@@ -254,6 +254,12 @@ enum Feature
 Q_DECLARE_FLAGS( Features, Feature )
 Q_DECLARE_OPERATORS_FOR_FLAGS( Features )
 
+enum BlackWhite
+{
+  BLACK = 0,
+  WHITE = 1
+};
+
 /// A dictionary. Can be used to query words.
 class Class
 {
@@ -279,7 +285,24 @@ protected:
   /// Make css content usable only for articles from this dictionary
   void isolateCSS( QString & css, QString const & wrapperSelector = QString() );
 
+  // this flag is used to clear dictionaries,especially when has a very large collection of dictionaries.
+  BlackWhite bw;
+
 public:
+  void setBlack()
+  {
+    bw = BLACK;
+  }
+
+  void setWhite()
+  {
+    bw = WHITE;
+  }
+
+  BlackWhite getBW()
+  {
+    return bw;
+  }
 
   /// Creates a dictionary. The id should be made using
   /// Format::makeDictionaryId(), the dictionaryFiles is the file names the

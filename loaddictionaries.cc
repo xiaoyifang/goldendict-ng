@@ -252,7 +252,12 @@ void loadDictionaries( QWidget * parent, bool showInitially,
                        QNetworkAccessManager & dictNetMgr,
                        bool doDeferredInit_ )
 {
-  dictionaries.clear();
+  // mark dictionaries to BLACK,waiting to clear.
+  // dictionaries.clear();
+  for( auto d : dictionaries )
+  {
+    d->setBlack();
+  }
 
   ::Initializing init( parent, showInitially );
 
@@ -282,7 +287,30 @@ void loadDictionaries( QWidget * parent, bool showInitially,
     return;
   }
 
-  dictionaries = loadDicts.getDictionaries();
+  auto dictMap         = Dictionary::dictToMap( dictionaries );
+  auto newdictionaries = loadDicts.getDictionaries();
+  for( auto const & dict : newdictionaries )
+  {
+    if( dictMap.contains( dict->getId() ) )
+    {
+      dictMap[ dict->getId() ]->setWhite();
+    }
+    else
+    {
+      dict->setWhite();
+      dictMap.insert( dict->getId(), dict );
+      dictionaries.push_back( dict );
+    }
+  }
+
+  //clear BLACK dict
+  auto end = std::remove_if(dictionaries.begin(),
+                             dictionaries.end(),
+                             [](sptr< Dictionary::Class >  const &dict) {
+                               return dict->getBW()==Dictionary::BLACK;
+                             });
+
+  dictionaries.erase(end, dictionaries.end());
 
   ///// We create transliterations synchronously since they are very simple
 
