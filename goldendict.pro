@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 22.4.19-alpha
+VERSION = 22.4.24-alpha
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -42,7 +42,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
-QT += sql
+#QT += sql
 CONFIG += exceptions \
     rtti \
     stl  \
@@ -70,14 +70,17 @@ win32 {
     TARGET = GoldenDict
 
     win32-msvc* {
-        VERSION = 22.4.19 # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
+        VERSION = 22.4.24 # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
         QMAKE_CXXFLAGS += /wd4290 # silence the warning C4290: C++ exception specification ignored
-        QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
+        # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
+        # QMAKE_LFLAGS_RELEASE = /INCREMENTAL:NO /DEBUG
+        QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
+        QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO
         DEFINES += GD_NO_MANIFEST
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
         LIBS += -lshell32 -luser32 -lsapi -lole32

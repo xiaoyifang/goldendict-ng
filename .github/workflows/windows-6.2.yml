@@ -49,21 +49,21 @@ jobs:
             qt_arch_install: msvc2019_64
     env:
       targetName: GoldenDict.exe
-      version: 22.4.19-alpha
-    # 步骤
+      version: 22.4.24-alpha
     steps:
-      # 安装Qt
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          # Version of Qt to install
           version: ${{ matrix.qt_ver }}
-          # Target platform for build
           # target: ${{ matrix.qt_target }}
           arch: ${{ matrix.qt_arch }}
           cached: 'false'
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats
-      # 拉取代码
+          setup-python: 'false'
+          py7zrversion: '==0.18.1'
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -115,13 +115,11 @@ jobs:
           & .github\scripts\windows-publish.ps1 ${env:archiveName} ${env:targetName}
            $name = ${env:archiveName}
            echo "::set-output name=packageName::$name" 
-      # tag 查询github-Release
-      # 上传artifacts          
+    
 #       - uses: actions/upload-artifact@v2
 #         with:
 #           name: ${{ steps.package.outputs.packageName }}
 #           path: ${{ steps.package.outputs.packageName }}.zip
-      # tag 上传Release
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -131,7 +129,7 @@ jobs:
           asset_name: ${{ matrix.qt_ver }}-${{ steps.package.outputs.packageName }}.zip
           tag: v${{env.version}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
-          release_name: win-linux-macos-${{steps.vars.outputs.release_date}} 
+          release_name: GoldenDict-v${{env.version}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: true
           body: |
             release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  
@@ -151,7 +149,7 @@ jobs:
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}
           tag: v${{env.version}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
-          release_name: win-linux-macos-${{steps.vars.outputs.release_date}} 
+          release_name: GoldenDict-v${{env.version}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: true
           body: |
             release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  
