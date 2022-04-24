@@ -1,4 +1,4 @@
-name: Windows-6.2
+name: Windows-PR-check
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
