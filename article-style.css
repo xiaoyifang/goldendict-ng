@@ -8,10 +8,6 @@ body
   font-size: 13px;
 }
 
-.ipa, .phon, .phone, .pron, .audio-gb, .audio-us {
-    font-family: 'Segoe UI', 'Lucida Grande', 'Lucida Sans', 'Droid Sans Mono', 'Droid Sans', 'Arial Unicode MS', "Charis SIL", 'Open Sans', Roboto, Helvetica, Arial, normal;
-}
-
 /* This stylesheet is used to highligh current selection when doing a search.
   It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
 
