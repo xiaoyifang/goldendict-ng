@@ -320,27 +320,29 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 #if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   settings->defaultSettings()->setAttribute( QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls, true );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::WebAttribute::ErrorPageEnabled, false);
-  settings->defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, cfg.preferences.enableWebPlugins);
-  settings->defaultSettings()->setAttribute(QWebEngineSettings::PlaybackRequiresUserGesture, false);
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::WebAttribute::ErrorPageEnabled, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::PluginsEnabled, cfg.preferences.enableWebPlugins );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
 #else
   settings->setAttribute( QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls, true );
   settings->setAttribute( QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls, true );
   settings->setAttribute( QWebEngineSettings::WebAttribute::ErrorPageEnabled, false );
   settings->setAttribute( QWebEngineSettings::PluginsEnabled, cfg.preferences.enableWebPlugins );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
 #endif
   // Load the default blank page instantly, so there would be no flicker.
 
   QString contentType;
-  QUrl blankPage( "gdlookup://localhost?blank=1" );
+//  QUrl blankPage( "gdlookup://localhost?blank=1" );
 
-  sptr< Dictionary::DataRequest > r = articleNetMgr.getResource( blankPage,
-                                                                 contentType );
+//  sptr< Dictionary::DataRequest > r = articleNetMgr.getResource( blankPage,
+//                                                                 contentType );
 
-  ui.definition->setHtml( QString::fromUtf8( &( r->getFullData().front() ),
-                                             r->getFullData().size() ),
-                          blankPage );
+//  ui.definition->setHtml( QString::fromUtf8( &( r->getFullData().front() ),
+//                                             r->getFullData().size() ),
+//                          blankPage );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 
@@ -1724,7 +1726,6 @@ void ArticleView::print( QPrinter * printer ) const
 void ArticleView::contextMenuRequested( QPoint const & pos )
 {
   // Is that a link? Is there a selection?
-
   QWebEnginePage* r=ui.definition->page();
   updateCurrentArticleFromCurrentFrame(ui.definition->page(), const_cast<QPoint *>(& pos));
 
