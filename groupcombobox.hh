@@ -25,7 +25,7 @@ public:
   /// Chooses the given group in the combobox. If there's no such group,
   /// does nothing.
   void setCurrentGroup( unsigned id );
-
+  void paintEvent( QPaintEvent * );
 
   /// Returns current group.
   unsigned getCurrentGroup() const;

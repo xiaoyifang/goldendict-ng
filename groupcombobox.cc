@@ -4,6 +4,7 @@
 #include "groupcombobox.hh"
 #include <QEvent>
 #include <QShortcutEvent>
+#include <QStyleOption>
 
 GroupComboBox::GroupComboBox( QWidget * parent ): QComboBox( parent ),
   popupAction( this ),
@@ -104,6 +105,14 @@ void GroupComboBox::setCurrentGroup( unsigned id )
       break;
     }
   }
+}
+
+void GroupComboBox::paintEvent( QPaintEvent * )
+{
+  QStyleOption opt;
+  opt.initFrom( this );
+  QPainter p( this );
+  style()->drawPrimitive( QStyle::PE_Widget, &opt, &p, this );
 }
 
 unsigned GroupComboBox::getCurrentGroup() const
