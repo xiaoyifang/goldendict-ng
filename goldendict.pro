@@ -65,6 +65,10 @@ LIBS += \
 
 CONFIG+=utf8_source
 
+CONFIG+=force_debug_info
+QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
+QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO
+
 win32 {
     TARGET = GoldenDict
 
@@ -79,9 +83,7 @@ win32 {
         QMAKE_CXXFLAGS += /wd4290 /Zc:__cplusplus /std:c++17 /permissive- 
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
         # QMAKE_LFLAGS_RELEASE = /INCREMENTAL:NO /DEBUG
-        CONFIG+=force_debug_info
-        QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
-        QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO
+
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
         LIBS += -lshell32 -luser32 -lsapi -lole32
         Debug: LIBS+= -lhunspelld
