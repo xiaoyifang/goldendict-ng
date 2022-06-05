@@ -103,19 +103,34 @@ void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStri
     // Check for CJK symbols in word
     bool parsed = false;
     QString hieroglyph;
+    QString lastGlyph;
     for( int x = 0; x < word.size(); x++ )
-      if( isCJKChar( word.at( x ).unicode() ) )
+    {if( isCJKChar( word.at( x ).unicode() ) )
       {
         parsed = true;
         hieroglyph.append( word[ x ] );
 
         if( QChar( word.at( x ) ).isHighSurrogate()
             &&  QChar( word[ x + 1 ] ).isLowSurrogate() )
+        {
           hieroglyph.append( word[ ++x ] );
+        }
+
+        //add two consecutive cjk character as one word
+        if(lastGlyph.size()){
+          QString newWord = lastGlyph+hieroglyph;
+          hieroglyphList.append(newWord);
+        }
+        lastGlyph = hieroglyph;
 
         hieroglyphList.append( hieroglyph );
+
         hieroglyph.clear();
       }
+      else{
+         lastGlyph.clear();
+      }
+    }
 
     // If word don't contains CJK symbols put it in list as is
     if( !parsed )
@@ -123,10 +138,10 @@ void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStri
   }
 
   indexWords = wordList.filter( wordRegExp );
-  indexWords.removeDuplicates();
 
-  hieroglyphList.removeDuplicates();
+//  hieroglyphList.removeDuplicates();
   indexWords += hieroglyphList;
+  indexWords.removeDuplicates();
 }
 
 bool containCJK( QString const & str)
@@ -250,8 +265,10 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
     QString hieroglyph;
 
     // If word contains CJK symbols we add to index only these symbols separately
+    // plus: add two consecutive cjk symbols as one word.
+    QString lastGlyph;
     for( int y = 0; y < word.size(); y++ )
-      if( isCJKChar( word.at( y ).unicode() ) )
+    {if( isCJKChar( word.at( y ).unicode() ) )
       {
         hasCJK = true;
         hieroglyph.append( word[ y ] );
@@ -260,6 +277,16 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
             &&  QChar( word[ y + 1 ] ).isLowSurrogate() )
           hieroglyph.append( word[ ++y ] );
 
+        if(lastGlyph.size()){
+          QString newWord = lastGlyph+hieroglyph;
+          if( !setOfWords.contains( newWord ) )
+          {
+            setOfWords.insert( newWord );
+            Mutex::Lock _( _mapLock );
+            words[ newWord ].push_back( articleAddress );
+          }
+        }
+        lastGlyph = hieroglyph;
         if( !setOfWords.contains( hieroglyph ) )
         {
           setOfWords.insert( hieroglyph );
@@ -269,6 +296,10 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
 
         hieroglyph.clear();
       }
+      else{
+        lastGlyph.clear();
+      }
+    }
 
     if( !hasCJK )
     {
