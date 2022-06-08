@@ -17,6 +17,9 @@ class GlobalBroadcaster : public QObject
 private:
   Config::Preferences * preference;
   std::vector<QString> whitelist;
+  unsigned groupId;
+
+
 public:
   void setPreference( Config::Preferences * _pre );
   Config::Preferences * getPreference();
@@ -24,6 +27,12 @@ public:
   void addWhitelist(QString host);
   bool existedInWhitelist(QString host);
   static GlobalBroadcaster * instance();
+
+  //store the latest groupId;
+  void setGroupId(unsigned groupId);
+  unsigned getGroupId();
+
+  QString mutedDicts;
 signals:
   void dictionaryChanges( ActiveDictIds ad );
 };

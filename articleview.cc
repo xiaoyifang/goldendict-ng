@@ -435,6 +435,8 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
   if ( mutedDicts.size() )
     Utils::Url::addQueryItem( req,  "muted", mutedDicts );
 
+  GlobalBroadcaster::instance()->mutedDicts = mutedDicts;
+
   // Update both histories (pages history and headwords history)
   saveHistoryUserData();
   emit sendWordToHistory( phrase.phrase );
