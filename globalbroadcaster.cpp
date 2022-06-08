@@ -30,11 +30,11 @@ bool GlobalBroadcaster::existedInWhitelist(QString url){
   return std::find(whitelist.begin(), whitelist.end(), url) != whitelist.end();
 }
 
-void GlobalBroadcaster::setGroupId(int groupId){
+void GlobalBroadcaster::setGroupId(unsigned groupId){
   this->groupId = groupId;
 }
 
-int GlobalBroadcaster::getGroupId(){
+unsigned GlobalBroadcaster::getGroupId(){
   return groupId;
 }
 // namespace global

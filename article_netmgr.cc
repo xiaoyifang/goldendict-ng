@@ -264,7 +264,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     url.setPath( "" );
     auto [ valid, word ] = Utils::Url::getQueryWord( resUrl );
     Utils::Url::addQueryItem( url, "word", word );
-    Utils::Url::addQueryItem( url, "group", QString( "%1" ).arg( GlobalBroadcaster::instance()->getGroupId() ) );
+    Utils::Url::addQueryItem( url, "group", QString::number( GlobalBroadcaster::instance()->getGroupId() ) );
+    Utils::Url::addQueryItem( url, "muted", GlobalBroadcaster::instance()->mutedDicts );
   }
 
   if ( url.scheme() == "gdlookup" )
@@ -285,8 +286,6 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool groupIsValid = false;
     unsigned group = Utils::Url::queryItemValue( url, "group" ).toUInt( &groupIsValid );
-
-    GlobalBroadcaster::instance()->setGroupId(group);
    
     QString dictIDs = Utils::Url::queryItemValue( url, "dictionaries" );
     if( !dictIDs.isEmpty() )

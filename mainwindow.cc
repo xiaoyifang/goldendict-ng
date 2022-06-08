@@ -1417,6 +1417,9 @@ void MainWindow::updateGroupList()
 
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );
+
+  GlobalBroadcaster::instance()->setGroupId( cfg.lastMainGroupId);
+
   updateCurrentGroupProperty();
 
   updateDictionaryBar();
@@ -2304,6 +2307,9 @@ void MainWindow::updateCurrentGroupProperty()
   // fonts based on group names
   Instances::Group * grp =
       groupInstances.findGroup( groupList->getCurrentGroup() );
+
+  //record the latest groupid
+  GlobalBroadcaster::instance()->setGroupId(groupList->getCurrentGroup());
 
   if ( grp && translateLine->property( "currentGroup" ).toString() !=
        grp->name )
