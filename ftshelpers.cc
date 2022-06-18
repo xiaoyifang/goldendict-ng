@@ -387,14 +387,19 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   for( auto & address : offsets )
   {
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    {
+      synchronizer.setCancelOnWait( true );
       return;
+    }
     sem.acquire();
     QFuture< void > f = QtConcurrent::run(
       [ & ]()
       {
         QSemaphoreReleaser releaser( sem );
         if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-          throw exUserAbort();
+        {
+          return;
+        }
 
         QString headword, articleStr;
 
@@ -404,7 +409,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       } );
     synchronizer.addFuture( f );
   }
-
+  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    throw exUserAbort();
   // Free memory
   offsets.clear();
 
