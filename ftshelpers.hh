@@ -61,7 +61,7 @@ bool parseSearchString( QString const & str, QStringList & IndexWords,
 
 void parseArticleForFts( uint32_t articleAddress, QString & articleText,
                          QMap< QString, QVector< uint32_t > > & words,
-                         bool handleRoundBrackets = false );
+                         Mutex & mapMutex,bool handleRoundBrackets = false );
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
 

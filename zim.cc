@@ -1098,6 +1098,8 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
     set< quint32 > indexedArticles;
     quint32 articleNumber;
 
+    Mutex mapLock;
+
     // index articles for full-text search
     for( int i = 0; i < offsets.size(); i++ )
     {
@@ -1113,7 +1115,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
 
       indexedArticles.insert( articleNumber );
 
-      FtsHelpers::parseArticleForFts( offsets.at( i ), articleStr, ftsWords );
+      FtsHelpers::parseArticleForFts( offsets.at( i ), articleStr, ftsWords, mapLock );
     }
 
     // Free memory
