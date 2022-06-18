@@ -379,22 +379,25 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     needHandleBrackets = name.endsWith( ".dsl" ) || name.endsWith( "dsl.dz" );
   }
 
-  const int parallel_count = QThread::idealThreadCount() / 2;
-  QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
+  QSemaphore sem( QThread::idealThreadCount() );
 
   QFutureSynchronizer< void > synchronizer;
 
   for( auto & address : offsets )
   {
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    {
       return;
+    }
     sem.acquire();
     QFuture< void > f = QtConcurrent::run(
       [ & ]()
       {
         QSemaphoreReleaser releaser( sem );
         if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-          throw exUserAbort();
+        {
+          return;
+        }
 
         QString headword, articleStr;
 
@@ -407,6 +410,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
   // Free memory
   offsets.clear();
+
+  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    throw exUserAbort();
 
   QMap< QString, QVector< uint32_t > >::iterator it = ftsWords.begin();
   while( it != ftsWords.end() )
