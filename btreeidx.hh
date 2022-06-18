@@ -183,6 +183,11 @@ public:
   Mutex & getFtsMutex()
   { return ftsIdxMutex; }
 
+  Mutex & getMapMutex()
+  {
+    return ftxMapMutex;
+  }
+
   virtual uint32_t getFtsIndexVersion()
   { return 0; }
 
@@ -202,6 +207,7 @@ public:
 
 protected:
   Mutex ftsIdxMutex;
+  Mutex ftxMapMutex;
   string ftsIdxName;
 
   friend class BtreeWordSearchRequest;

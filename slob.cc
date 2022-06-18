@@ -1174,6 +1174,8 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
       }
     }
 
+    Mutex mapLock;
+
     // index articles for full-text search
     for( int i = 0; i < offsets.size(); i++ )
     {
@@ -1203,7 +1205,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
       if( type == htmlType )
         articleStr = Html::unescape( articleStr );
 
-      FtsHelpers::parseArticleForFts( articleNom, articleStr, ftsWords );
+      FtsHelpers::parseArticleForFts( articleNom, articleStr, ftsWords, mapLock );
     }
 
     // Free memory
