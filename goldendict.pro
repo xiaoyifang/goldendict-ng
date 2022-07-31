@@ -45,7 +45,8 @@ QT += core \
       webchannel\
       printsupport \
       help \
-      concurrent
+      concurrent \
+      texttospeech
 
 greaterThan(QT_MAJOR_VERSION, 5): QT += webenginecore core5compat
 
@@ -246,8 +247,7 @@ mac {
     }
 
     OBJECTIVE_SOURCES += machotkeywrapper.mm \
-                         macmouseover.mm \
-                         speechclient_mac.mm
+                         macmouseover.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = myInfo.plist
 
@@ -544,27 +544,17 @@ SOURCES += folding.cc \
     src/ui/ftssearchpanel.cpp \
     src/ui/searchpanel.cpp
 
-win32 {
-    FORMS   += texttospeechsource.ui
-    SOURCES += guids.c \
-               speechclient_win.cc \
-               texttospeechsource.cc \
-               speechhlp.cc
-    HEADERS += texttospeechsource.hh \
-               sapi.hh \
-               sphelper.hh \
-               speechclient.hh \
-               speechhlp.hh
-}
+#speech to text
+FORMS   += texttospeechsource.ui
+SOURCES += speechclient.cc \
+           texttospeechsource.cc
+HEADERS += texttospeechsource.hh \
+           speechclient.hh
 
 mac {
     HEADERS += macmouseover.hh \
-               texttospeechsource.hh \
-               speechclient.hh \
                src/platform/gd_clipboard.h
-    FORMS   += texttospeechsource.ui
-    SOURCES += texttospeechsource.cc \
-               src/platform/gd_clipboard.cpp
+    SOURCES += src/platform/gd_clipboard.cpp
 }
 
 unix:!mac {
@@ -573,8 +563,8 @@ unix:!mac {
 }
 
 
-    HEADERS += wildcard.hh
-    SOURCES += wildcard.cc
+HEADERS += wildcard.hh
+SOURCES += wildcard.cc
 
 
 CONFIG( zim_support ) {

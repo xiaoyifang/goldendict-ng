@@ -841,21 +841,24 @@ Class load()
   {
     QDomNodeList nl = ves.toElement().elementsByTagName( "voiceEngine" );
 
-    for ( int x = 0; x < nl.length(); ++x )
-    {
+    for( int x = 0; x < nl.length(); ++x ) {
       QDomElement ve = nl.item( x ).toElement();
       VoiceEngine v;
 
-      v.enabled = ve.attribute( "enabled" ) == "1";
-      v.id = ve.attribute( "id" );
-      v.name = ve.attribute( "name" );
+      v.enabled      = ve.attribute( "enabled" ) == "1";
+      v.engine_name  = ve.attribute( "engine_name" );
+      v.name         = ve.attribute( "name" );
+      v.voice_name   = ve.attribute( "voice_name" );
+      v.locale       = QLocale( ve.attribute( "locale" ) );
       v.iconFilename = ve.attribute( "icon" );
-      v.volume = ve.attribute( "volume", "50" ).toInt();
-      if( v.volume < 0 || v.volume > 100 )
+      v.volume       = ve.attribute( "volume", "50" ).toInt();
+      if ( ( v.volume < 0 ) || ( v.volume > 100 ) ) {
         v.volume = 50;
-      v.rate = ve.attribute( "rate", "50" ).toInt();
-      if( v.rate < 0 || v.rate > 100 )
-        v.rate = 50;
+      }
+      v.rate = ve.attribute( "rate", "0" ).toInt();
+      if ( ( v.rate < -10 ) || ( v.rate > 10 ) ) {
+        v.rate = 0;
+      }
       c.voiceEngines.push_back( v );
     }
   }
@@ -1656,33 +1659,40 @@ void save( Class const & c )
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
 
-    for ( VoiceEngines::const_iterator i = c.voiceEngines.begin(); i != c.voiceEngines.end(); ++i )
-    {
+    for( const auto & voiceEngine : c.voiceEngines ) {
       QDomElement v = dd.createElement( "voiceEngine" );
       ves.appendChild( v );
 
-      QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      QDomAttr id = dd.createAttribute( "engine_name" );
+      id.setValue( voiceEngine.engine_name );
       v.setAttributeNode( id );
 
+      QDomAttr locale = dd.createAttribute( "locale" );
+      locale.setValue( voiceEngine.locale.name() );
+      v.setAttributeNode( locale );
+
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( voiceEngine.name );
       v.setAttributeNode( name );
 
+      QDomAttr voice_name = dd.createAttribute( "voice_name" );
+      voice_name.setValue( voiceEngine.voice_name );
+      v.setAttributeNode( voice_name );
+
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( voiceEngine.enabled ? "1" : "0" );
       v.setAttributeNode( enabled );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( voiceEngine.iconFilename );
       v.setAttributeNode( icon );
 
       QDomAttr volume = dd.createAttribute( "volume" );
-      volume.setValue( QString::number( i->volume ) );
+      volume.setValue( QString::number( voiceEngine.volume ) );
       v.setAttributeNode( volume );
 
       QDomAttr rate = dd.createAttribute( "rate" );
-      rate.setValue( QString::number( i->rate ) );
+      rate.setValue( QString::number( voiceEngine.rate ) );
       v.setAttributeNode( rate );
     }
   }

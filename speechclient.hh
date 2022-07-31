@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include "config.hh"
+#include <QTextToSpeech>
+#include <memory>
 
 class SpeechClient: public QObject
 {
@@ -12,42 +14,65 @@ public:
 
   struct Engine
   {
-    QString id;
+    //engine name
+    QString engine_name;
     QString name;
-    // Volume and rate may vary from 0 to 100
+    //voice name
+    QString voice_name;
+    QString locale;
+    // Volume vary from 0~1 and rate vary from -1 to 1
     int volume;
     int rate;
-    Engine( Config::VoiceEngine const & e ) :
-      id( e.id )
-      , name( e.name )
-      , volume( e.volume )
-      , rate( e.rate )
-    {}
+    explicit Engine( Config::VoiceEngine const & e ):
+      engine_name( e.engine_name ),
+      name( e.name ),
+      voice_name( e.voice_name ),
+      locale( e.locale.name() ),
+      volume( e.volume ),
+      rate( e.rate )
+    {
+    }
   };
 
-  typedef QList<Engine> Engines;
+  struct InternalData
+  {
+    explicit InternalData( Config::VoiceEngine const & e ):
+      sp( std::make_unique< QTextToSpeech >( e.engine_name ) ),
+      engine( e )
+    {
+      sp->setLocale( e.locale );
+      auto voices = sp->availableVoices();
+      for( const auto & voice : voices ) {
+        if( voice.name() == e.voice_name ) {
+          sp->setVoice( voice );
 
-  SpeechClient( Config::VoiceEngine const & e, QObject * parent = 0L );
-  virtual ~SpeechClient();
+          break;
+        }
+      }
+
+      sp->setVolume( e.volume / 100.0 );
+      sp->setRate( e.rate / 10.0 );
+    }
+
+    std::unique_ptr< QTextToSpeech > sp;
+    Engine engine;
+  };
+
+  using Engines = QList< Engine >;
+
+  explicit SpeechClient( Config::VoiceEngine const & e, QObject * parent = nullptr );
 
   static Engines availableEngines();
 
-  const Engine & engine() const;
+  bool tell( QString const & text, int volume, int rate );
+  bool tell( QString const & text );
 
-  bool tell( QString const & text, int volume = -1, int rate = -1 );
-  bool say( QString const & text, int volume = -1, int rate = -1 );
-
-signals:
+ signals:
   void started( bool ok );
   void finished();
 
-protected:
-  virtual void timerEvent( QTimerEvent * evt );
-
-private:
-  struct InternalData;
-  InternalData * internalData;
-
+ private:
+  std::unique_ptr< InternalData > internalData;
 };
 
 #endif // __SPEECHCLIENT_HH_INCLUDED__
