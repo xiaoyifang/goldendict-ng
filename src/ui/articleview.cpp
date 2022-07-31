@@ -43,9 +43,7 @@
 
 #include <QBuffer>
 
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #include "speechclient.hh"
-#endif
 
 #include "globalbroadcaster.h"
 using std::map;
@@ -1402,30 +1400,22 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
                            tr( "The referenced audio program doesn't exist." ) );
   }
   else
-  if ( url.scheme() == "gdtts" )
-  {
-// TODO: Port TTS
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+  if ( url.scheme() == "gdtts" ) {
     // Text to speech
     QString md5Id = Utils::Url::queryItemValue( url, "engine" );
     QString text( url.path().mid( 1 ) );
 
-    for ( Config::VoiceEngines::const_iterator i = cfg.voiceEngines.begin();
-          i != cfg.voiceEngines.end(); ++i )
-    {
-      QString itemMd5Id = QString( QCryptographicHash::hash(
-                                     i->id.toUtf8(),
-                                     QCryptographicHash::Md5 ).toHex() );
+    for( const auto & voiceEngine : cfg.voiceEngines ) {
+      QString itemMd5Id =
+        QString( QCryptographicHash::hash( voiceEngine.name.toUtf8(), QCryptographicHash::Md5 ).toHex() );
 
-      if ( itemMd5Id == md5Id )
-      {
-        SpeechClient * speechClient = new SpeechClient( *i, this );
+      if( itemMd5Id == md5Id ) {
+        SpeechClient * speechClient = new SpeechClient( voiceEngine, this );
         connect( speechClient, SIGNAL( finished() ), speechClient, SLOT( deleteLater() ) );
         speechClient->tell( text );
         break;
       }
     }
-#endif
   }
   else
   if ( isExternalLink( url ) )

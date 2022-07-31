@@ -38,7 +38,7 @@ public:
 
   VoiceEnginesDictionary( Config::VoiceEngine const & voiceEngine ):
     Dictionary::Class(
-      toMd5( voiceEngine.id.toUtf8() ),
+      toMd5( voiceEngine.name.toUtf8() ),
       vector< string >() ),
     voiceEngine( voiceEngine )
   {
