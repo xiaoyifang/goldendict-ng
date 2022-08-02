@@ -654,7 +654,7 @@ void Preferences::on_enableMainWindowHotkey_toggled( bool checked )
 
 void Preferences::on_enableClipboardHotkey_toggled( bool checked )
 {
-  ui.clipboardHotkey->setEnabled( checked );
+//  ui.clipboardHotkey->setEnabled( checked );
 }
 
 void Preferences::on_buttonBox_accepted()
