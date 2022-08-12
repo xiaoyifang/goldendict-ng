@@ -900,9 +900,8 @@ void MdxDictionary::loadIcon() noexcept
 
   // Remove the extension
   fileName.chop( 3 );
-  QString text = QString::fromStdString( dictionaryName );
 
-  if( !loadIconFromFile( fileName ) && !loadIconFromText( text ) )
+  if ( !loadIconFromFile( fileName ) )
   {
     // Use default icons
     dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/mdict.png" );

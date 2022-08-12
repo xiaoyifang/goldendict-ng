@@ -468,7 +468,12 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
 bool isCJKChar( ushort ch )
 {
-  return Utils::isCJKChar(ch);
+  if( ( ch >= 0x3400 && ch <= 0x9FFF )
+      || ( ch >= 0xF900 && ch <= 0xFAFF )
+      || ( ch >= 0xD800 && ch <= 0xDFFF ) )
+    return true;
+
+  return false;
 }
 
 void FTSResultsRequest::checkArticles( QVector< uint32_t > const & offsets,
