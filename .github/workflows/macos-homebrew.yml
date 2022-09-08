@@ -33,6 +33,11 @@ jobs:
       version-suffix: alpha
       prerelease: true
     steps:
+      - name: package
+        run: |
+          wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
+          tar -xvf macdeployqt.tar
+          ls -al
       # macos 11.0 默认环境变了,要指定
       - name: prepare env
         if: ${{ matrix.os == 'macos-11' }}
@@ -51,23 +56,7 @@ jobs:
           cached: 'false'
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats
           setup-python: 'false'
-          py7zrversion: '==0.18.1'     
-      - name: build custom macdeployqt
-        run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja
-          git clone https://github.com/xiaoyifang/qtbase.git
-          cd qtbase
-          cmake -GNinja -DCMAKE_PREFIX_PATH=/usr/local -DQT_FEATURE_macdeployqt=ON  .
-          cmake --build .
-          ls -al bin/
-          pwd   
-      # - name: uploadRelease
-      #   uses: svenstaro/upload-release-action@v2
-      #   with:
-      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #     file: qtbase/build/bin/macdeployqt
-                    
+          py7zrversion: '==0.18.1'               
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
@@ -109,9 +98,11 @@ jobs:
       # 打包
       - name: package
         run: |
-          ./qtbase/bin/macdeployqt ${targetName}.app -qmldir=. -verbose=1
+         # wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
+         # tar -xvf macdeployqt.tar
+          ./macdeployqt ${targetName}.app -qmldir=. -verbose=1
           codesign --force --deep -s - GoldenDict.app
-          # otool -L GoldenDict.app/Contents/MacOS/GoldenDict
+          otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           # otool -L GoldenDict.app/Contents/Frameworks/lib*
           mkdir tmp
           mv ${targetName}.app ./tmp
