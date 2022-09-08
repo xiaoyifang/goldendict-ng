@@ -3,9 +3,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: 
-  # workflow_run:
-  #   workflows: [AutoTag]
-  #   types: [completed]
   workflow_dispatch:
   push:
     branches:
@@ -24,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-11]
+        os: [macos-11,macos-12]
         qt_ver: [6.3.1]
         qt_arch: [clang_64]
     env:
@@ -94,7 +91,8 @@ jobs:
       - name: package
         run: |
           wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
-          tar -xvf macdeployqt.tar
+          tar -xf macdeployqt.tar
+          ln -s ${Qt6_DIR}/bin/qmlimportscanner  bin/qmlimportscanner
           ./bin/macdeployqt ${targetName}.app -qmldir=. -verbose=1
           codesign --force --deep -s - GoldenDict.app
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
