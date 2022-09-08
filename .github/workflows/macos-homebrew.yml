@@ -95,7 +95,7 @@ jobs:
         run: |
           wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
           tar -xvf macdeployqt.tar
-          ./macdeployqt ${targetName}.app -qmldir=. -verbose=1
+          ./bin/macdeployqt ${targetName}.app -qmldir=. -verbose=1
           codesign --force --deep -s - GoldenDict.app
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           # otool -L GoldenDict.app/Contents/Frameworks/lib*
