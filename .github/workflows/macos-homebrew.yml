@@ -33,11 +33,6 @@ jobs:
       version-suffix: alpha
       prerelease: true
     steps:
-      - name: download macdeployqt
-        run: |
-          wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
-          tar -xf macdeployqt.tar
-          pwd
       # macos 11.0 默认环境变了,要指定
       - name: prepare env
         if: ${{ matrix.os == 'macos-11' }}
@@ -98,11 +93,9 @@ jobs:
       # 打包
       - name: package
         run: |
-         # wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
-         # tar -xvf macdeployqt.tar
-          ls -al build/bin
-          pwd
-          ./build/bin/macdeployqt ${targetName}.app -qmldir=. -verbose=1
+          wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
+          tar -xvf macdeployqt.tar
+          ./macdeployqt ${targetName}.app -qmldir=. -verbose=1
           codesign --force --deep -s - GoldenDict.app
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           # otool -L GoldenDict.app/Contents/Frameworks/lib*
