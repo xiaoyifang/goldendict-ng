@@ -36,8 +36,7 @@ jobs:
       - name: download macdeployqt
         run: |
           wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
-          tar -xvf macdeployqt.tar
-          ls -al
+          tar -xf macdeployqt.tar
           pwd
       # macos 11.0 默认环境变了,要指定
       - name: prepare env
