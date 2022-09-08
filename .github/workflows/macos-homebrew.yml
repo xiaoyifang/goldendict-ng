@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-11,macos-12]
-        qt_ver: [6.3.1]
+        qt_ver: [6.4.0]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -90,10 +90,7 @@ jobs:
       # 打包
       - name: package
         run: |
-          wget -c https://github.com/xiaoyifang/qtbase/releases/download/dev/macdeployqt.tar
-          tar -xf macdeployqt.tar
-          ln -s ${Qt6_DIR}/bin/qmlimportscanner  bin/qmlimportscanner
-          ./bin/macdeployqt ${targetName}.app -qmldir=. -verbose=1
+          macdeployqt ${targetName}.app -qmldir=. -verbose=1
           codesign --force --deep -s - GoldenDict.app
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           # otool -L GoldenDict.app/Contents/Frameworks/lib*
