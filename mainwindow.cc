@@ -139,16 +139,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   firstCopyKeyTriggered(false),
   newReleaseCheckTimer( this ),
-  latestReleaseReply( 0 )
-  , wordListSelChanged( false )
-  , wasMaximized( false )
-  , blockUpdateWindowTitle( false )
-  , headwordsDlg( 0 )
-  , ftsIndexing( dictionaries )
-  , ftsDlg( 0 )
-  , helpWindow( 0 )
-  , starIcon( ":/icons/star.svg" )
-  , blueStarIcon( ":/icons/star_blue.svg" )
+  latestReleaseReply( 0 ),
+  wordListSelChanged( false )
+, wasMaximized( false )
+, blockUpdateWindowTitle( false )
+, headwordsDlg( 0 )
+, ftsIndexing( dictionaries )
+, ftsDlg( 0 )
+, helpWindow( 0 )
+, starIcon( ":/icons/star.svg" )
+, blueStarIcon( ":/icons/star_blue.svg" )
 #ifdef Q_OS_WIN32
 , gdAskMessage( 0xFFFFFFFF )
 #endif
