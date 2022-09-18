@@ -200,7 +200,7 @@ public:
 
 };
 
-class MdxDictionary: public BtreeIndexing::BtreeDictionary
+class MdxDictionary: public QObject, public BtreeIndexing::BtreeDictionary
 {
   Mutex idxMutex;
   File::Class idx;
@@ -695,10 +695,8 @@ class MddResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  MddResourceRequest( MdxDictionary & dict_,
-                      string const & resourceName_ ):
-    dict( dict_ ),
-    resourceName( Utf8::decode( resourceName_ ) )
+  MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ) :
+    Dictionary::DataRequest( &dict_ ), dict( dict_ ), resourceName( Utf8::decode( resourceName_ ) )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
     // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
