@@ -181,7 +181,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( wuri );
 
   if(!cfg.preferences.hideGoldenDictHeader){
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/webengine");
+    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
   }
 
   qRegisterMetaType< Config::InputPhrase >();
