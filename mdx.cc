@@ -852,7 +852,6 @@ void MddResourceRequest::run()
       if( Filetype::isNameOfTiff( u8ResourceName ) )
       {
         // Convert it
-        Mutex::Lock _( dataMutex );
         GdTiff::tiff2img( data );
       }
     }
