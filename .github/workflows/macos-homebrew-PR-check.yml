@@ -1,4 +1,4 @@
-name: macos-m1-PR-check
+name: macos-homebrew-PR-check
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
