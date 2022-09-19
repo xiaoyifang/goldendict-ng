@@ -178,7 +178,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}/GoldenDict-v22-Install.exe
-          asset_name: ${{ matrix.qt_ver }}-GoldenDict-v22-Install.exe
+          asset_name: ${{ matrix.qt_ver }}-GoldenDict-v${{env.version}}-${{env.version-suffix}}-Installer.exe
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
