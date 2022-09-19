@@ -47,10 +47,10 @@ QRegularExpression Mdx::stylesRe2( "([\\s\"']href\\s*=)\\s*(?![\\s\"']|\\b(?:(?:
 QRegularExpression Mdx::inlineScriptRe( "<\\s*script(?:(?=\\s)(?:(?![\\s\"']src\\s*=)[^>])+|\\s*)>",
                                         QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::closeScriptTagRe( "<\\s*/script\\s*>", QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::srcRe( "([\\s\"']src\\s*=)\\s*([\"'])(?!\\s*\\b(?:(?:bres|https?|ftp)://"
+QRegularExpression Mdx::srcRe( "([\\s\"'](?:src|srcset)\\s*=)\\s*([\"'])(?!\\s*\\b(?:(?:bres|https?|ftp)://"
                                "|(?:data|javascript):))(?:file://)?[\\x00-\\x1f\\x7f]*\\.*/?([^\">]+)\\2",
                                QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::srcRe2( "([\\s\"']src\\s*=)\\s*(?![\\s\"']|\\b(?:(?:bres|https?|ftp)://"
+QRegularExpression Mdx::srcRe2( "([\\s\"'](?:src|srcset)\\s*=)\\s*(?![\\s\"']|\\b(?:(?:bres|https?|ftp)://"
                                 "|(?:data|javascript):))(?:file://)?[\\x00-\\x1f\\x7f]*\\.*/?([^\\s\">]+)",
                                 QRegularExpression::CaseInsensitiveOption );
 
