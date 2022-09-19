@@ -95,6 +95,11 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
+  void findHeadWords( QSet<uint32_t> offsets,int& index, QSet< QString > * headwords, uint32_t length );
+  void findSingleNodeHeadwords( uint32_t offsets,
+                                            QSet< QString > * headwords);
+  QSet<uint32_t> findNodes( );
+
   /// Retrieve headwords for presented article addresses
   void getHeadwordsFromOffsets( QList< uint32_t > & offsets,
                                 QVector< QString > & headwords,
@@ -174,6 +179,7 @@ public:
   { return true; }
 
   virtual bool getHeadwords( QStringList &headwords );
+  virtual  void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
 
   virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
 

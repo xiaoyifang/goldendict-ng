@@ -1331,6 +1331,92 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   }
 }
 
+void BtreeIndex::findHeadWords( QSet<uint32_t> offsets,int& index,
+                                   QSet< QString > * headwords,
+                                   uint32_t length )
+{
+  int i=0;
+  for(auto begin=offsets.begin();begin!=offsets.end();begin++,i++){
+    if(i<index){
+      continue;
+    }
+    findSingleNodeHeadwords(*begin,headwords);
+    index++;
+
+    if(headwords->size()>=length)
+      break;
+  }
+}
+
+void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
+                                QSet< QString > * headwords)
+{
+  uint32_t currentNodeOffset = offsets;
+
+  Mutex::Lock _( *idxFileMutex );
+
+  char const * leaf = 0;
+  char const * leafEnd = 0;
+  char const * chainPtr = 0;
+
+  vector< char > extLeaf;
+
+       // A node
+  readNode( currentNodeOffset, extLeaf );
+  leaf = &extLeaf.front();
+  leafEnd = leaf + extLeaf.size();
+
+       // A leaf
+  chainPtr = leaf + sizeof( uint32_t );
+
+  for( ;; )
+  {
+    vector< WordArticleLink > result = readChain( chainPtr );
+
+    if( headwords )
+    {
+      for( unsigned i = 0; i < result.size(); i++ )
+      {
+        headwords->insert( QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() ) );
+      }
+    }
+
+    if( chainPtr >= leafEnd )
+    {
+        break; // That was the last leaf
+    }
+  }
+}
+
+//find the next chain ptr ,which is large than this currentChainPtr
+QSet<uint32_t> BtreeIndex::findNodes()
+{
+  Mutex::Lock _( *idxFileMutex );
+
+  if( !rootNodeLoaded )
+  {
+    // Time to load our root node. We do it only once, at the first request.
+    readNode( rootOffset, rootNode );
+    rootNodeLoaded = true;
+  }
+
+  char const * leaf     = &rootNode.front();
+
+  vector< char > extLeaf;
+  QSet<uint32_t> leafOffset;
+  // the current the btree's implementation has the  height = 2.
+
+  // A node offset
+  uint32_t * offsets = (uint32_t *)leaf + 1;
+  //      char const * ptr = leaf + sizeof( uint32_t ) +
+  //                         ( indexNodeSize + 1 ) * sizeof( uint32_t );
+  int i=0;
+  while(i++ < (indexNodeSize+1) )
+    leafOffset.insert(*(offsets++));
+
+  return leafOffset;
+}
+
 void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
                                           QVector<QString> & headwords,
                                           QAtomicInt * isCancelled )
@@ -1479,6 +1565,12 @@ bool BtreeDictionary::getHeadwords( QStringList &headwords )
   }
 
   return headwords.size() > 0;
+}
+
+void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
+{
+  auto leafNodeOffsets = findNodes();
+  findHeadWords(leafNodeOffsets,index,headwords,length);
 }
 
 void BtreeDictionary::getArticleText(uint32_t, QString &, QString & )
