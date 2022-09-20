@@ -113,6 +113,10 @@ HelpWindow::HelpWindow( QWidget * parent, Config::Class & cfg_ ) :
 
   helpEngine = new QHelpEngine( helpCollectionFile );
 
+#if (QT_VERSION > QT_VERSION_CHECK(6,0,0))
+  helpEngine->setReadOnly( false );
+#endif
+
   if( !helpEngine->setupData() )
   {
     gdWarning( "Help engine initialization error: %s", helpEngine->error().toUtf8().data() );
