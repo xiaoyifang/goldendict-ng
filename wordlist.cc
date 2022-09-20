@@ -51,52 +51,23 @@ void WordList::updateMatchResults( bool finished )
   WordFinder::SearchResults const & results = wordFinder->getResults();
 
   setUpdatesEnabled( false );
+  //clear all existed items
+  clear();
 
   for( unsigned x = 0; x < results.size(); ++x )
   {
-    QListWidgetItem * i = item( x );
+    QListWidgetItem * i = new QListWidgetItem( results[ x ].first, this );
+    i->setToolTip( results[ x ].first );
 
-    if ( !i )
+    if( results[ x ].second )
     {
-      i = new QListWidgetItem( results[ x ].first, this );
-      i->setToolTip( results[ x ].first );
-
-      if ( results[ x ].second )
-      {
-        QFont f = i->font();
-        f.setItalic( true );
-        i->setFont( f );
-      }
-      addItem( i );
-    }
-    else
-    {
-      if ( i->text() != results[ x ].first )
-      {
-        i->setText( results[ x ].first );
-        i->setToolTip( results[ x ].first );
-      }
-
       QFont f = i->font();
-      if ( f.italic() != results[ x ].second )
-      {
-        f.setItalic( results[ x ].second );
-        i->setFont( f );
-      }
+      f.setItalic( true );
+      i->setFont( f );
     }
+    //addItem( i );
 
-    i->setTextAlignment(Qt::AlignLeft);
-  }
-
-  while ( count() > (int) results.size() )
-  {
-    // Chop off any extra items that were there
-    QListWidgetItem * i = takeItem( count() - 1 );
-
-    if ( i )
-      delete i;
-    else
-      break;
+    i->setTextAlignment( Qt::AlignLeft );
   }
 
   if ( count() )
