@@ -7,6 +7,10 @@
 - concurrent fulltext index creation
 - add CJK fulltext search ability
 - many minor fixes .
+- add mdx source+srcset support
+- qt6.x help file can not open
+- many minor optimizations.
+- iframe website almost full support.(except some websites)
 
 ## Until 2022-8-31
 
