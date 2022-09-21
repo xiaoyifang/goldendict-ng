@@ -65,7 +65,6 @@ void WordList::updateMatchResults( bool finished )
       f.setItalic( true );
       i->setFont( f );
     }
-    //addItem( i );
 
     i->setTextAlignment( Qt::AlignLeft );
   }
@@ -111,21 +110,4 @@ void WordList::refreshTranslateLine()
     translateLine->setStyleSheet( translateLine->styleSheet() );
   }
 
-}
-
-void WordList::resizeEvent( QResizeEvent * ev )
-{
-  // In some rare cases Qt start send QResizeEvent recursively
-  // up to full stack depletion (tested on Qt 4.8.5, 4.8.6).
-  // We use this trick to break such suicidal process.
-
-  for( int x = 0; x < resizedSizes.size(); x++ )
-    if( resizedSizes.at( x ) == ev->size() )
-      return;
-
-  resizedSizes.push_back( ev->size() );
-
-  QListWidget::resizeEvent( ev );
-
-  resizedSizes.pop_back();
 }
