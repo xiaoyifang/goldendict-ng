@@ -3459,7 +3459,7 @@ static void filterAndCollectResources( QString & html, QRegExp & rx, const QStri
   {
     QUrl url( rx.cap( 1 ) );
     QString host = url.host();
-    QString resourcePath = QString::fromLatin1( QUrl::toPercentEncoding( Utils::Url::path( url ), "/" ) );
+    QString resourcePath = Utils::Url::path( url );
 
     if ( !host.startsWith( '/' ) )
       host.insert( 0, '/' );
@@ -3476,6 +3476,7 @@ static void filterAndCollectResources( QString & html, QRegExp & rx, const QStri
     }
 
     // Modify original url, set to the native one
+    resourcePath = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
     QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
     html.replace( pos, rx.cap().length(), newUrl );
     pos += newUrl.length();
