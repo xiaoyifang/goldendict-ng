@@ -69,19 +69,18 @@ CONFIG += exceptions \
     stl  \
     c++17 \
     lrelease \
-    embed_translations \
     utf8_source \
     force_debug_info
 
 mac {
-    DEBUG:CONFIG += app_bundle
+    CONFIG += app_bundle
 }
-
-QM_FILES_RESOURCE_PREFIX = /locale/
+    
+QM_FILES_INSTALL_PATH = /locale/
 OBJECTS_DIR = build
 UI_DIR = build
 MOC_DIR = build
-#RCC_DIR = build
+RCC_DIR = build
 LIBS += -lz \
         -lbz2 \
         -llzo2
@@ -628,13 +627,38 @@ TRANSLATIONS += locale/ru_RU.ts \
     locale/jb_JB.ts \
     locale/hi_IN.ts \
     locale/ie_001.ts
-
 # Build version file
 !isEmpty( hasGit ) {
   PRE_TARGETDEPS      += $$PWD/version.txt
 }
 
+# This makes qmake generate translations
 
+
+isEmpty(QMAKE_LRELEASE):QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+
+
+# The *.qm files might not exist when qmake is run for the first time,
+# causing the standard install rule to be ignored, and no translations
+# will be installed. With this, we create the qm files during qmake run.
+!win32 {
+  system($${QMAKE_LRELEASE} -silent $${_PRO_FILE_} 2> /dev/null)
+}
+else{
+  system($${QMAKE_LRELEASE} -silent $${_PRO_FILE_})
+}
+
+updateqm.input = TRANSLATIONS
+updateqm.output = locale/${QMAKE_FILE_BASE}.qm
+updateqm.commands = $$QMAKE_LRELEASE \
+    ${QMAKE_FILE_IN} \
+    -qm \
+    ${QMAKE_FILE_OUT}
+updateqm.CONFIG += no_link
+QMAKE_EXTRA_COMPILERS += updateqm
+TS_OUT = $$TRANSLATIONS
+TS_OUT ~= s/.ts/.qm/g
+PRE_TARGETDEPS += $$TS_OUT
 
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 

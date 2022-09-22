@@ -2264,17 +2264,12 @@ QString getProgramDataDir() noexcept
   #endif
 }
 
-QString getEmbedLocDir() noexcept
-{
-  return ":/locale";
-}
-
 QString getLocDir() noexcept
 {
-    if ( QDir( getProgramDataDir() ).cd( "locale" ) )
-      return getProgramDataDir() + "/locale";
-    else
-      return QCoreApplication::applicationDirPath() + "/locale";
+  if ( QDir( getProgramDataDir() ).cd( "locale" ) )
+    return getProgramDataDir() + "/locale";
+  else
+    return QCoreApplication::applicationDirPath() + "/locale";
 }
 
 QString getHelpDir() noexcept

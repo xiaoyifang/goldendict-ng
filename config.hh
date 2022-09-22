@@ -811,7 +811,6 @@ QString getUserQtCssFileName() ;
 QString getProgramDataDir() noexcept;
 
 /// Returns the directory storing program localizized files (.qm).
-QString getEmbedLocDir() noexcept;
 QString getLocDir() noexcept;
 
 /// Returns the directory storing program help files (.qch).
