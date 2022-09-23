@@ -181,7 +181,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( wuri );
 
   if(!cfg.preferences.hideGoldenDictHeader){
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/webengine");
+    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
   }
 
   qRegisterMetaType< Config::InputPhrase >();
@@ -237,8 +237,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   enableScanPopup->setCheckable( true );
   enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
   navToolbar->widgetForAction( enableScanPopup )->setObjectName( "scanPopupButton" );
-  if ( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
+  if( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
+  {
+    enableScanPopup->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
     enableScanPopup->setChecked( true );
+  }
+
 
   connect( enableScanPopup, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
@@ -1513,6 +1517,8 @@ void MainWindow::makeScanPopup()
 
   connect( scanPopup.get(), SIGNAL( setExpandMode( bool ) ),
            this, SLOT( setExpandMode( bool ) ) );
+
+  connect( scanPopup.get(), &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
 
   connect( scanPopup.get(), SIGNAL( forceAddWordToHistory( const QString & ) ),
            this, SLOT( forceAddWordToHistory( const QString & ) ) );
@@ -3453,7 +3459,7 @@ static void filterAndCollectResources( QString & html, QRegExp & rx, const QStri
   {
     QUrl url( rx.cap( 1 ) );
     QString host = url.host();
-    QString resourcePath = QString::fromLatin1( QUrl::toPercentEncoding( Utils::Url::path( url ), "/" ) );
+    QString resourcePath = Utils::Url::path( url );
 
     if ( !host.startsWith( '/' ) )
       host.insert( 0, '/' );
@@ -3470,6 +3476,7 @@ static void filterAndCollectResources( QString & html, QRegExp & rx, const QStri
     }
 
     // Modify original url, set to the native one
+    resourcePath = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
     QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
     html.replace( pos, rx.cap().length(), newUrl );
     pos += newUrl.length();
@@ -3512,7 +3519,8 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
-  bool complete = ( selectedFilter == filters[ 0 ] );
+  // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
+  bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
   if( fileName.isEmpty() )
     return;

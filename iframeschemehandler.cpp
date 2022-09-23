@@ -19,22 +19,29 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 
   auto finishAction     = [ = ]() -> void
   {
-    QByteArray contentType = "text/html;charset=UTF-8";
+    QByteArray contentType = "text/html";
 
     QBuffer * buffer = new QBuffer( requestJob );
-    // Handle reply data
-    if( reply->error() != QNetworkReply::NoError )
-    {
-      QString emptyHtml = QString( "<html><body>%1</body></html>" ).arg( reply->errorString() );
-      buffer->setData( emptyHtml.toUtf8() );
-      requestJob->reply( contentType, buffer );
-      return;
-    }
+
     QByteArray replyData = reply->readAll();
     QString articleString;
 
     QTextCodec * codec = QTextCodec::codecForHtml( replyData, QTextCodec::codecForName( "UTF-8" ) );
     articleString      = codec->toUnicode( replyData );
+    // Handle reply data
+    // 404 response may have response body.
+    if( reply->error() != QNetworkReply::NoError && articleString.isEmpty())
+    {
+      if(reply->error()==QNetworkReply::ContentNotFoundError){
+        //work around to fix QTBUG-106573
+        requestJob->redirect(url);
+        return;
+      }
+      QString emptyHtml = QString( "<html><body>%1</body></html>" ).arg( reply->errorString() );
+      buffer->setData( emptyHtml.toUtf8() );
+      requestJob->reply( contentType, buffer );
+      return;
+    }
 
     // Change links from relative to absolute
 
@@ -45,6 +52,10 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
                              QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption );
     
     QString baseTagHtml = "<base href=\"" + base + "\">";
+
+    QString depressionFocus ="<script type=\"application/javascript\"> HTMLElement.prototype.focus=function(){console.log(\"focus() has been disabled.\");}</script>"
+                      "<script type=\"text/javascript\" src=\"qrc:///scripts/iframeResizer.contentWindow.min.js\"></script>"
+                      "<script type=\"text/javascript\" src=\"qrc:///scripts/iframe-defer.js\"></script>";
     
     // remove existed base tag
     articleString.remove( baseTag ) ;
@@ -56,12 +67,14 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
     if( match.hasMatch() )
     {
       articleString.insert( match.capturedEnd(), baseTagHtml );
+      articleString.insert( match.capturedEnd(), depressionFocus );
     }
     else
     {
       // the html contain no head element
       // just insert at the beginning of the html ,and leave it at the mercy of browser(chrome webengine)
       articleString.insert( 0, baseTagHtml );
+      articleString.insert( 0, depressionFocus );
     }
 
     buffer->setData(codec->fromUnicode(articleString));

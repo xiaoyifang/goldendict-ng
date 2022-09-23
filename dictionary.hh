@@ -56,7 +56,9 @@ class Request: public QObject
   Q_OBJECT
 
 public:
-
+  Request( QObject * parent = nullptr ) : QObject( parent )
+  {
+  }
   /// Returns whether the request has been processed in full and finished.
   /// This means that the data accumulated is final and won't change anymore.
   bool isFinished();
@@ -177,7 +179,6 @@ class DataRequest: public Request
   Q_OBJECT
 
 public:
-
   /// Returns the number of bytes read, with a -1 meaning that so far it's
   /// uncertain whether resource even exists or not, and any non-negative value
   /// meaning that that amount of bytes is not available.
@@ -194,7 +195,9 @@ public:
   /// done, this can only be called after the request has finished.
   vector< char > & getFullData() ;
 
-  DataRequest(): hasAnyData( false ) {}
+  DataRequest( QObject * parent = 0 ) : Request( parent ), hasAnyData( false )
+  {
+  }
 
 protected:
 
@@ -276,7 +279,7 @@ protected:
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
   bool loadIconFromFile( QString const & filename, bool isFullName = false );
-  bool loadIconFromText( QString const & text );
+  bool loadIconFromText( QString iconUrl, QString const & text );
 
   QString getAbbrName( QString const & text );
 

@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 22.8.23
-      version-suffix: EndOfHeat
-      prerelease: false
+      version: 22.8.24
+      version-suffix: alpha
+      prerelease: true
 
     steps:
       - uses: actions/checkout@v3

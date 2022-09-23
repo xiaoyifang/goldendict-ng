@@ -1,6 +1,18 @@
 # Changes
 
-## Until to now
+## Until Now
+
+- change the original default style to classic style 
+- add clipboard tracking menu in trayicon
+- concurrent fulltext index creation
+- add CJK fulltext search ability
+- many minor fixes .
+- add mdx source+srcset support
+- qt6.x help file can not open
+- many minor optimizations.
+- iframe website almost full support.(except some websites)
+
+## Until 2022-8-31
 
 - **CLEANING OLD/USELESS CODE**
   - remove Runnable Class in dsl, zim , epwing etc files.

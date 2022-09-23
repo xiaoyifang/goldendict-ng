@@ -1,4 +1,4 @@
-name: macos-6.2
+name: macos-6.x
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -29,9 +29,9 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 22.8.23
-      version-suffix: EndOfHeat
-      prerelease: false
+      version: 22.8.24
+      version-suffix: alpha
+      prerelease: true
 
     steps:
       # macos 11.0 默认环境变了,要指定
@@ -110,7 +110,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ env.targetName }}.dmg
-          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.dmg
+          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_universal_${{steps.vars.outputs.release_date}}.dmg
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
@@ -128,7 +128,8 @@ jobs:
             macos built with:     macos-10.15,macos-11.0,clang_64 x86_64
                                   Qt6.X(Universal Build)
                                   Qt5.15.2(Intel Kind)
-            auto built by github action. use on your on risk:-)   
+            auto built by github action. use on your on risk:-)
+            **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)   
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
             CHANGES:

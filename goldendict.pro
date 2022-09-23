@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 22.8.23-EndOfHeat
+VERSION = 22.8.24-alpha
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -69,19 +69,18 @@ CONFIG += exceptions \
     stl  \
     c++17 \
     lrelease \
-    embed_translations \
     utf8_source \
     force_debug_info
 
 mac {
-    DEBUG:CONFIG += app_bundle
+    CONFIG += app_bundle
 }
-
-QM_FILES_RESOURCE_PREFIX = /locale/
+    
+QM_FILES_INSTALL_PATH = /locale/
 OBJECTS_DIR = build
 UI_DIR = build
 MOC_DIR = build
-#RCC_DIR = build
+RCC_DIR = build
 LIBS += -lz \
         -lbz2 \
         -llzo2
@@ -90,7 +89,8 @@ win32 {
     TARGET = GoldenDict
 
     win32-msvc* {
-        VERSION = 22.8.23 # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
+        # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
+        VERSION = 22.8.24 
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
@@ -138,7 +138,9 @@ win32 {
         CONFIG += chinese_conversion_support
     }
 }
-
+!CONFIG( no_macos_universal ) {
+    DEFINES += INCLUDE_LIBRARY_PATH
+}
 unix:!mac {
     DEFINES += HAVE_X11
 
@@ -202,8 +204,8 @@ mac {
         -lvorbisfile \
         -lvorbis \
         -logg \
-        -lhunspell \
         -llzo2
+
     !CONFIG( no_ffmpeg_player ) {
         LIBS += -lao \
             -lswresample \
@@ -211,21 +213,40 @@ mac {
             -lavformat \
             -lavcodec
     }
-    QT_CONFIG -= no-pkg-config 
+    QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
+
+
+!CONFIG( no_macos_universal ) {
+    LIBS+=        -lhunspell
     INCLUDEPATH = $${PWD}/maclibs/include
     LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
+}
+else{
+    PKGCONFIG +=   hunspell
+    INCLUDEPATH = /opt/homebrew/include /usr/local/include
+    LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
+}
+
     OBJECTIVE_SOURCES += lionsupport.mm \
                          machotkeywrapper.mm \
                          macmouseover.mm \
                          speechclient_mac.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = myInfo.plist
+
+!CONFIG( no_macos_universal ) {
     QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
                       cp -nR $${PWD}/maclibs/lib/ GoldenDict.app/Contents/Frameworks/ && \
                       mkdir -p GoldenDict.app/Contents/MacOS/help && \
                       cp -R $${PWD}/help/*.qch GoldenDict.app/Contents/MacOS/help/
-
+}
+else{
+    QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
+                      cp -nR $${PWD}/maclibs/lib/libeb.dylib GoldenDict.app/Contents/Frameworks/ && \
+                      mkdir -p GoldenDict.app/Contents/MacOS/help && \
+                      cp -R $${PWD}/help/*.qch GoldenDict.app/Contents/MacOS/help/
+}
     !CONFIG( no_chinese_conversion_support ) {
         CONFIG += chinese_conversion_support
         QMAKE_POST_LINK += && mkdir -p GoldenDict.app/Contents/MacOS/opencc && \
@@ -563,12 +584,14 @@ CONFIG( chinese_conversion_support ) {
 }
 
 RESOURCES += resources.qrc \
+    scripts.qrc \
     flags.qrc
 #EXTRA_TRANSLATIONS += thirdparty/qwebengine_ts/qtwebengine_zh_CN.ts
 TRANSLATIONS += locale/ru_RU.ts \
     locale/zh_CN.ts \
     locale/cs_CZ.ts \
     locale/de_DE.ts \
+    locale/de_CH.ts \
     locale/el_GR.ts \
     locale/bg_BG.ts \
     locale/ar_SA.ts \
@@ -604,13 +627,38 @@ TRANSLATIONS += locale/ru_RU.ts \
     locale/jb_JB.ts \
     locale/hi_IN.ts \
     locale/ie_001.ts
-
 # Build version file
 !isEmpty( hasGit ) {
   PRE_TARGETDEPS      += $$PWD/version.txt
 }
 
+# This makes qmake generate translations
 
+
+isEmpty(QMAKE_LRELEASE):QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+
+
+# The *.qm files might not exist when qmake is run for the first time,
+# causing the standard install rule to be ignored, and no translations
+# will be installed. With this, we create the qm files during qmake run.
+!win32 {
+  system($${QMAKE_LRELEASE} -silent $${_PRO_FILE_} 2> /dev/null)
+}
+else{
+  system($${QMAKE_LRELEASE} -silent $${_PRO_FILE_})
+}
+
+updateqm.input = TRANSLATIONS
+updateqm.output = locale/${QMAKE_FILE_BASE}.qm
+updateqm.commands = $$QMAKE_LRELEASE \
+    ${QMAKE_FILE_IN} \
+    -qm \
+    ${QMAKE_FILE_OUT}
+updateqm.CONFIG += no_link
+QMAKE_EXTRA_COMPILERS += updateqm
+TS_OUT = $$TRANSLATIONS
+TS_OUT ~= s/.ts/.qm/g
+PRE_TARGETDEPS += $$TS_OUT
 
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 

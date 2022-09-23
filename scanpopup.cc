@@ -114,6 +114,8 @@ ScanPopup::ScanPopup( QWidget * parent,
            definition, SLOT( receiveExpandOptionalParts( bool ) ) );
   connect( definition, SIGNAL( setExpandMode( bool ) ),
            this, SIGNAL( setExpandMode( bool ) ) );
+  connect( definition, SIGNAL( inspectSignal( QWebEnginePage* ) ),
+           this, SLOT( inspectElementWhenPinned( QWebEnginePage* ) ) );
   connect( definition, SIGNAL( forceAddWordToHistory( QString ) ),
            this, SIGNAL( forceAddWordToHistory( QString ) ) );
   connect( this, SIGNAL( closeMenu() ),
@@ -369,6 +371,11 @@ void ScanPopup::disableScanning()
   }
 }
 
+void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page ){
+  if(cfg.pinPopupWindow)
+    emit inspectSignal(page);
+}
+
 void ScanPopup::applyZoomFactor()
 {
   definition->setZoomFactor( cfg.preferences.zoomFactor );
@@ -514,6 +521,8 @@ void ScanPopup::delayShow()
 
 void ScanPopup::clipboardChanged( QClipboard::Mode m )
 {
+  if( !cfg.preferences.trackClipboardChanges )
+    return;
   if( !isScanningEnabled )
     return;
 
@@ -1085,6 +1094,7 @@ void ScanPopup::pinButtonClicked( bool checked )
 
     mouseEnteredOnce = true;
   }
+  cfg.pinPopupWindow = checked;
 
   show();
 }

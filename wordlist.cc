@@ -51,52 +51,22 @@ void WordList::updateMatchResults( bool finished )
   WordFinder::SearchResults const & results = wordFinder->getResults();
 
   setUpdatesEnabled( false );
+  //clear all existed items
+  clear();
 
   for( unsigned x = 0; x < results.size(); ++x )
   {
-    QListWidgetItem * i = item( x );
+    QListWidgetItem * i = new QListWidgetItem( results[ x ].first, this );
+    i->setToolTip( results[ x ].first );
 
-    if ( !i )
+    if( results[ x ].second )
     {
-      i = new QListWidgetItem( results[ x ].first, this );
-      i->setToolTip( results[ x ].first );
-
-      if ( results[ x ].second )
-      {
-        QFont f = i->font();
-        f.setItalic( true );
-        i->setFont( f );
-      }
-      addItem( i );
-    }
-    else
-    {
-      if ( i->text() != results[ x ].first )
-      {
-        i->setText( results[ x ].first );
-        i->setToolTip( results[ x ].first );
-      }
-
       QFont f = i->font();
-      if ( f.italic() != results[ x ].second )
-      {
-        f.setItalic( results[ x ].second );
-        i->setFont( f );
-      }
+      f.setItalic( true );
+      i->setFont( f );
     }
 
-    i->setTextAlignment(Qt::AlignLeft);
-  }
-
-  while ( count() > (int) results.size() )
-  {
-    // Chop off any extra items that were there
-    QListWidgetItem * i = takeItem( count() - 1 );
-
-    if ( i )
-      delete i;
-    else
-      break;
+    i->setTextAlignment( Qt::AlignLeft );
   }
 
   if ( count() )
@@ -140,21 +110,4 @@ void WordList::refreshTranslateLine()
     translateLine->setStyleSheet( translateLine->styleSheet() );
   }
 
-}
-
-void WordList::resizeEvent( QResizeEvent * ev )
-{
-  // In some rare cases Qt start send QResizeEvent recursively
-  // up to full stack depletion (tested on Qt 4.8.5, 4.8.6).
-  // We use this trick to break such suicidal process.
-
-  for( int x = 0; x < resizedSizes.size(); x++ )
-    if( resizedSizes.at( x ) == ev->size() )
-      return;
-
-  resizedSizes.push_back( ev->size() );
-
-  QListWidget::resizeEvent( ev );
-
-  resizedSizes.pop_back();
 }

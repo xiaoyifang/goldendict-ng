@@ -200,7 +200,7 @@ public:
 
 };
 
-class MdxDictionary: public BtreeIndexing::BtreeDictionary
+class MdxDictionary: public QObject, public BtreeIndexing::BtreeDictionary
 {
   Mutex idxMutex;
   File::Class idx;
@@ -695,10 +695,8 @@ class MddResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  MddResourceRequest( MdxDictionary & dict_,
-                      string const & resourceName_ ):
-    dict( dict_ ),
-    resourceName( Utf8::decode( resourceName_ ) )
+  MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ) :
+    Dictionary::DataRequest( &dict_ ), dict( dict_ ), resourceName( Utf8::decode( resourceName_ ) )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
     // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
@@ -854,7 +852,6 @@ void MddResourceRequest::run()
       if( Filetype::isNameOfTiff( u8ResourceName ) )
       {
         // Convert it
-        Mutex::Lock _( dataMutex );
         GdTiff::tiff2img( data );
       }
     }
@@ -902,7 +899,7 @@ void MdxDictionary::loadIcon() noexcept
   fileName.chop( 3 );
   QString text = QString::fromStdString( dictionaryName );
 
-  if( !loadIconFromFile( fileName ) && !loadIconFromText( text ) )
+  if( !loadIconFromFile( fileName ) && !loadIconFromText(":/icons/mdict-bg.png", text ) )
   {
     // Use default icons
     dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/mdict.png" );

@@ -399,7 +399,7 @@ int main( int argc, char ** argv )
     app.installTranslator( &qtTranslator );
   }
 
-  translator.load( Config::getEmbedLocDir() + "/" + localeName );
+  translator.load( Config::getLocDir() + "/" + localeName );
   app.installTranslator( &translator );
 
   QTranslator webengineTs;
