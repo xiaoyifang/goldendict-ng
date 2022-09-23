@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 22.8.24-alpha
+VERSION = 22.9.23-AutumnEquinox
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -90,7 +90,7 @@ win32 {
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
-        VERSION = 22.8.24 
+        VERSION = 22.9.23 
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
