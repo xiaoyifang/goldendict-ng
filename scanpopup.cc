@@ -440,20 +440,8 @@ void ScanPopup::applyWordsZoomLevel()
 
 Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
 {
-#ifdef ENABLE_SPWF_CUSTOMIZATION
-  const Config::ScanPopupWindowFlags spwf = cfg.preferences.scanPopupUnpinnedWindowFlags;
-  Qt::WindowFlags result;
-  if( spwf == Config::SPWF_Popup )
-    result = Qt::Popup;
-  else
-  if( spwf == Config::SPWF_Tool )
-    result = Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
-  else
-    return defaultUnpinnedWindowFlags; // Ignore BypassWMHint option.
-
-  if( cfg.preferences.scanPopupUnpinnedBypassWMHint )
-    result |= Qt::X11BypassWindowManagerHint;
-  return result;
+#if defined( HAVE_X11 )
+  return defaultUnpinnedWindowFlags | Qt::X11BypassWindowManagerHint;
 #else
   return defaultUnpinnedWindowFlags;
 #endif
@@ -663,7 +651,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
     show();
 
-#ifdef ENABLE_SPWF_CUSTOMIZATION
+#if defined( HAVE_X11 )
     // Ensure that the window always has focus on X11 with Qt::Tool flag.
     // This also often prevents the window from disappearing prematurely with Qt::Popup flag,
     // especially when combined with Qt::X11BypassWindowManagerHint flag.
@@ -695,7 +683,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     activateWindow();
     raise();
   }
-#ifdef ENABLE_SPWF_CUSTOMIZATION
+#if defined( HAVE_X11 )
   else
   if ( ( windowFlags() & Qt::Tool ) == Qt::Tool )
   {

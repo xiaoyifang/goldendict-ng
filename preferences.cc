@@ -172,8 +172,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
-  ui.scanPopupUnpinnedWindowFlags->setCurrentIndex( p.scanPopupUnpinnedWindowFlags );
-  ui.scanPopupUnpinnedBypassWMHint->setChecked( p.scanPopupUnpinnedBypassWMHint );
 
   ui.storeHistory->setChecked( p.storeHistory );
   ui.historyMaxSizeField->setValue( p.maxStringsInHistory );
@@ -202,10 +200,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Different platforms have different keys available
 
 //Platform-specific options
-
-#ifndef ENABLE_SPWF_CUSTOMIZATION
-  ui.groupBox_ScanPopupWindowFlags->hide();
-#endif
 
 #ifdef HAVE_X11
   ui.showScanFlag->setChecked( p.showScanFlag);
@@ -368,8 +362,6 @@ Config::Preferences Preferences::getPreferences()
 #ifdef HAVE_X11
   p.showScanFlag= ui.showScanFlag->isChecked();
 #endif
-  p.scanPopupUnpinnedWindowFlags = Config::spwfFromInt( ui.scanPopupUnpinnedWindowFlags->currentIndex() );
-  p.scanPopupUnpinnedBypassWMHint = ui.scanPopupUnpinnedBypassWMHint->isChecked();
 
   p.storeHistory = ui.storeHistory->isChecked();
   p.maxStringsInHistory = ui.historyMaxSizeField->text().toUInt();
@@ -523,11 +515,6 @@ void Preferences::enableScanPopupModifiersToggled( bool b )
   ui.scanPopupModifiers->setEnabled( b && ui.enableScanPopup->isChecked() );
   if( b )
     ui.showScanFlag->setChecked( false );
-}
-
-void Preferences::on_scanPopupUnpinnedWindowFlags_currentIndexChanged( int index )
-{
-  ui.scanPopupUnpinnedBypassWMHint->setEnabled( Config::spwfFromInt( index ) != Config::SPWF_default );
 }
 
 void Preferences::on_enableMainWindowHotkey_toggled( bool checked )
