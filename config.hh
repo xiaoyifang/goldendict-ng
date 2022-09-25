@@ -325,8 +325,7 @@ struct Preferences
   bool scanPopupAltMode; // When you press modifier shortly after the selection
   unsigned scanPopupAltModeSecs;
   bool ignoreOwnClipboardChanges;
-  ScanPopupWindowFlags scanPopupUnpinnedWindowFlags;
-  bool scanPopupUnpinnedBypassWMHint;
+
   bool scanToMainWindow;
   bool ignoreDiacritics;
   bool ignorePunctuation;

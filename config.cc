@@ -234,8 +234,6 @@ Preferences::Preferences():
   scanPopupAltMode( false ),
   scanPopupAltModeSecs( 3 ),
   ignoreOwnClipboardChanges( false ),
-  scanPopupUnpinnedWindowFlags( SPWF_default ),
-  scanPopupUnpinnedBypassWMHint( false ),
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
   ignorePunctuation( false ),
@@ -904,8 +902,6 @@ Class load()
 #ifdef HAVE_X11
     c.preferences.showScanFlag= ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
 #endif
-    c.preferences.scanPopupUnpinnedWindowFlags = spwfFromInt( preferences.namedItem( "scanPopupUnpinnedWindowFlags" ).toElement().text().toInt() );
-    c.preferences.scanPopupUnpinnedBypassWMHint = ( preferences.namedItem( "scanPopupUnpinnedBypassWMHint" ).toElement().text() == "1" );
 
     c.preferences.pronounceOnLoadMain = ( preferences.namedItem( "pronounceOnLoadMain" ).toElement().text() == "1" );
     c.preferences.pronounceOnLoadPopup = ( preferences.namedItem( "pronounceOnLoadPopup" ).toElement().text() == "1" );
@@ -1797,14 +1793,6 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.showScanFlag? "1":"0" ) );
     preferences.appendChild( opt );
 #endif
-
-    opt = dd.createElement( "scanPopupUnpinnedWindowFlags" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.scanPopupUnpinnedWindowFlags ) ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "scanPopupUnpinnedBypassWMHint" );
-    opt.appendChild( dd.createTextNode( c.preferences.scanPopupUnpinnedBypassWMHint ? "1":"0" ) );
-    preferences.appendChild( opt );
 
     opt = dd.createElement( "pronounceOnLoadMain" );
     opt.appendChild( dd.createTextNode( c.preferences.pronounceOnLoadMain ? "1" : "0" ) );
