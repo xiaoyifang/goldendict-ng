@@ -2956,41 +2956,7 @@ void MainWindow::toggleMainWindow( bool onlyShow )
       ftsDlg->show();
 
     focusTranslateLine();
-#ifdef HAVE_X11
-#if QT_VERSION < 0x060000
-    Display *displayID = QX11Info::display();
-#else
-    QNativeInterface::QX11Application *x11AppInfo = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    Display *displayID = x11AppInfo->display();
-#endif
-    Window wh = 0;
-    int rev = 0;
-    XGetInputFocus( displayID, &wh, &rev );
-    if( wh != translateLine->internalWinId() && !byIconClick )
-    {
-        QPoint p( 1, 1 );
-        mapToGlobal( p );
-        XEvent event;
-        memset( &event, 0, sizeof( event) );
-        event.type = ButtonPress;
-        event.xbutton.x = 1;
-        event.xbutton.y = 1;
-        event.xbutton.x_root = p.x();
-        event.xbutton.y_root = p.y();
-        event.xbutton.window = internalWinId();
-        event.xbutton.root = XDefaultRootWindow(displayID);
-        event.xbutton.state = Button1Mask;
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = true;
-        event.xbutton.time = CurrentTime;
 
-        XSendEvent( displayID, internalWinId(), true, 0xfff, &event );
-        XFlush( displayID );
-        event.type = ButtonRelease;
-        XSendEvent( displayID, internalWinId(), true, 0xfff, &event );
-        XFlush( displayID );
-    }
-#endif
   }
 }
 
