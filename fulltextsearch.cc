@@ -225,7 +225,19 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   ui.searchMode->addItem( tr( "Whole words" ), WholeWords );
   ui.searchMode->addItem( tr( "Plain text"), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
+#ifndef USE_XAPIAN
   ui.searchMode->addItem( tr( "RegExp" ), RegExp );
+#else
+  ui.matchCase->hide();
+  ui.articlesPerDictionary->hide();
+  ui.checkBoxArticlesPerDictionary->hide();
+  ui.checkBoxIgnoreDiacritics->hide();
+  ui.checkBoxDistanceBetweenWords->hide();
+  ui.distanceBetweenWords->hide();
+  ui.checkBoxIgnoreWordOrder->hide();
+
+  ui.searchLine->setToolTip(tr("support xapian search syntax,such as AND OR +/- etc"));
+#endif
   ui.searchMode->setCurrentIndex( cfg.preferences.fts.searchMode );
 
   ui.searchProgressBar->hide();
@@ -550,6 +562,26 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
   {
     QString headword = results[ idx.row() ].headword;
     QRegExp reg;
+#ifdef USE_XAPIAN
+    auto searchText = ui.searchLine->text();
+    searchText.replace(
+      QRegularExpression( "[\\*\\?\\+\\\"]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
+      " " );
+    auto parts = searchText.split( QRegularExpression( "\\s" ), Qt::SkipEmptyParts );
+    QString firstAvailbeItem;
+    for( auto & p : parts )
+    {
+      if( p.startsWith( '-' ) )
+        continue;
+      firstAvailbeItem = p;
+      break;
+    }
+    if( !firstAvailbeItem.isEmpty() )
+    {
+      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
+      reg.setMinimal( true );
+    }
+#else
     if( !results[ idx.row() ].foundHiliteRegExps.isEmpty() )
     {
       reg = QRegExp( results[ idx.row() ].foundHiliteRegExps.join( "|"),
@@ -559,6 +591,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     }
     else
       reg = searchRegExp;
+#endif
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, ignoreDiacritics );
   }
 }

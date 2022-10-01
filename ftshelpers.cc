@@ -1,6 +1,9 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-
+#ifdef USE_XAPIAN
+#include "xapian.h"
+#include <stdlib.h>
+#endif
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "wstring_qt.hh"
@@ -33,6 +36,25 @@ namespace FtsHelpers
 bool ftsIndexIsOldOrBad( string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict )
 {
+#ifdef USE_XAPIAN
+  try
+  {
+    Xapian::WritableDatabase db( dict->ftsIndexName() );
+  }
+  catch( const Xapian::Error & e )
+  {
+    qWarning() << e.get_description().c_str();
+    //the file is corrupted,remove it.
+    QFile::remove(QString::fromStdString(dict->ftsIndexName()));
+    return true;
+  }
+  catch( ... )
+  {
+    return true;
+  }
+  return false;
+#endif
+
   File::Class idx( indexFile, "rb" );
 
   FtsIdxHeader header;
@@ -321,8 +343,6 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
         words[ word ].push_back( articleAddress );*/
       }
     }
-
-
   }
 
   {
@@ -337,6 +357,10 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
+#ifdef USE_XAPIAN
+  return makeFTSIndexXapian(dict,isCancelled);
+#endif
+
   Mutex::Lock _( dict->getFtsMutex() );
 
   if( Utils::AtomicInt::loadAcquire( isCancelled ) )
@@ -465,6 +489,83 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   ftsIdx.rewind();
   ftsIdx.writeRecords( &ftsIdxHeader, sizeof(ftsIdxHeader), 1 );
 }
+
+// use xapian to create the index
+#ifdef USE_XAPIAN
+void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
+{
+  Mutex::Lock _( dict->getFtsMutex() );
+
+  try {
+  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    throw exUserAbort();
+
+  // Open the database for update, creating a new database if necessary.
+  Xapian::WritableDatabase db(dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN);
+
+  Xapian::TermGenerator indexer;
+  Xapian::Stem stemmer("english");
+  indexer.set_stemmer(stemmer);
+  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
+
+  BtreeIndexing::IndexedWords indexedWords;
+
+  QSet< uint32_t > setOfOffsets;
+  setOfOffsets.reserve( dict->getArticleCount() );
+
+  dict->findArticleLinks( 0, &setOfOffsets, 0, &isCancelled );
+
+  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    throw exUserAbort();
+
+  QVector< uint32_t > offsets;
+  offsets.resize( setOfOffsets.size() );
+  uint32_t * ptr = &offsets.front();
+
+  for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
+       it != setOfOffsets.constEnd(); ++it )
+  {
+    *ptr = *it;
+    ptr++;
+  }
+
+  // Free memory
+  setOfOffsets.clear();
+
+  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    throw exUserAbort();
+
+  dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
+
+  for( auto & address : offsets )
+  {
+    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    {
+      return;
+    }
+
+    QString headword, articleStr;
+
+    dict->getArticleText( address, headword, articleStr );
+
+    Xapian::Document doc;
+
+    indexer.set_document( doc );
+    indexer.index_text( articleStr.toStdString() );
+    doc.add_boolean_term( std::to_string( address ) );
+    doc.set_data( std::to_string( address ) );
+    // Add the document to the database.
+    db.add_document( doc );
+  }
+  // Free memory
+  offsets.clear();
+
+  db.commit();
+  } catch (Xapian::Error & e) {
+    qWarning()<<QString::fromStdString(e.get_description());
+  }
+}
+#endif
 
 bool isCJKChar( ushort ch )
 {
@@ -1056,6 +1157,10 @@ void FTSResultsRequest::fullSearch( QStringList & searchWords, QRegExp & regexp 
 
 void FTSResultsRequest::run()
 {
+#ifdef USE_XAPIAN
+  return runXapian();
+#endif
+
   if ( dict.ensureInitDone().size() )
   {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
@@ -1130,6 +1235,108 @@ void FTSResultsRequest::run()
 
   finish();
 }
+
+#ifdef USE_XAPIAN
+void FTSResultsRequest::runXapian()
+{
+  if ( dict.ensureInitDone().size() )
+  {
+    setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
+    finish();
+    return;
+  }
+
+  try
+  {
+    if( dict.haveFTSIndex() )
+    {
+      //no need to parse the search string,  use xapian directly.
+      //if the search mode is wildcard, change xapian search query flag?
+      // Open the database for searching.
+      Xapian::Database db(dict.ftsIndexName());
+
+      // Start an enquire session.
+      Xapian::Enquire enquire( db );
+
+      // Combine the rest of the command line arguments with spaces between
+      // them, so that simple queries don't have to be quoted at the shell
+      // level.
+      string query_string( searchString.toStdString() );
+
+      // Parse the query string to produce a Xapian::Query object.
+      Xapian::QueryParser qp;
+      Xapian::Stem stemmer( "english" );
+      qp.set_stemmer( stemmer );
+      qp.set_database( db );
+      qp.set_stemming_strategy( Xapian::QueryParser::STEM_SOME );
+      Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
+      if( searchMode == FTS::Wildcards )
+        flag = Xapian::QueryParser::FLAG_WILDCARD;
+      Xapian::Query query = qp.parse_query( query_string, flag );
+      qDebug() << "Parsed query is: " << query.get_description().c_str();
+
+      // Find the top 100 results for the query.
+      enquire.set_query( query );
+      Xapian::MSet matches = enquire.get_mset( 0, 100 );
+
+      // Display the results.
+      qDebug() << matches.get_matches_estimated() << " results found.\n";
+      qDebug() << "Matches 1-" << matches.size() << ":\n\n";
+      QList< uint32_t > offsetsForHeadwords;
+      for( Xapian::MSetIterator i = matches.begin(); i != matches.end(); ++i )
+      {
+        qDebug() << i.get_rank() + 1 << ": " << i.get_weight() << " docid=" << *i << " ["
+                 << i.get_document().get_data().c_str() << "]";
+        offsetsForHeadwords.append( atoi( i.get_document().get_data().c_str() ) );
+      }
+
+      if( !offsetsForHeadwords.isEmpty() )
+      {
+        QVector< QString > headwords;
+        Mutex::Lock _( dataMutex );
+        QString id = QString::fromUtf8( dict.getId().c_str() );
+        dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
+        for( int x = 0; x < headwords.size(); x++ )
+        {
+          foundHeadwords->append( FTS::FtsHeadword( headwords.at( x ), id, QStringList(), matchCase ) );
+        }
+      }
+    }
+    else
+    {
+      QStringList indexWords, searchWords;
+      QRegExp searchRegExp;
+      if( !FtsHelpers::parseSearchString( searchString, indexWords, searchWords, searchRegExp,
+                                          searchMode, matchCase, distanceBetweenWords, hasCJK, ignoreWordsOrder ) )
+      {
+        finish();
+        return;
+      }
+      fullSearch( searchWords, searchRegExp );
+    }
+
+    if( foundHeadwords && foundHeadwords->size() > 0 )
+    {
+      Mutex::Lock _( dataMutex );
+      data.resize( sizeof( foundHeadwords ) );
+      memcpy( &data.front(), &foundHeadwords, sizeof( foundHeadwords ) );
+      foundHeadwords = 0;
+      hasAnyData = true;
+    }
+  }
+  catch (const Xapian::Error &e) {
+    qWarning() << e.get_description().c_str();
+  }
+  catch( std::exception &ex )
+  {
+    gdWarning( "FTS: Failed full-text search for \"%s\", reason: %s\n",
+               dict.getName().c_str(), ex.what() );
+    // Results not loaded -- we don't set the hasAnyData flag then
+  }
+
+  finish();
+}
+#endif
 
 } // namespace
 

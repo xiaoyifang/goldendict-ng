@@ -56,6 +56,11 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
+CONFIG( use_xapian ) {
+  DEFINES += USE_XAPIAN
+  LIBS+= -lxapian
+}
+
 CONFIG += exceptions \
     rtti \
     stl  \

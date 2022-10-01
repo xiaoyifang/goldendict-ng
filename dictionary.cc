@@ -567,13 +567,24 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
     if ( ts > lastModified )
       lastModified = ts;
   }
-
+#ifndef USE_XAPIAN
+  QDir d(FsEncoding::decode( indexFile.c_str() ));
+  if(d.exists()){
+    d.removeRecursively();
+  }
   QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
 
   if ( !fileInfo.exists() )
     return true;
 
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
+#else
+  QDir d(FsEncoding::decode( indexFile.c_str() ));
+  if(!d.exists()){
+    return true;
+  }
+  return false;
+#endif
 }
 
 QString generateRandomDictionaryId()
