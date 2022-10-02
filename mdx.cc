@@ -1401,7 +1401,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     string dictId = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
+    if ( Dictionary::needToRebuildBTreeIndex( dictFiles, indexFile ) ||
          indexIsOldOrBad( dictFiles, indexFile ) )
     {
       // Building the index

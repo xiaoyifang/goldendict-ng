@@ -579,12 +579,61 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
 #else
-  QDir d(FsEncoding::decode( indexFile.c_str() ));
-  if(!d.exists()){
+  QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
+
+  if ( fileInfo.exists()&&fileInfo.isFile() )
+  {
+    QFile::remove(FsEncoding::decode( indexFile.c_str() ));
     return true;
   }
+
   return false;
 #endif
+}
+
+bool needToRebuildBTreeIndex( vector< string > const & dictionaryFiles,
+                         string const & indexFile ) noexcept
+{
+  unsigned long lastModified = 0;
+
+  for( std::vector< string >::const_iterator i = dictionaryFiles.begin();
+       i != dictionaryFiles.end(); ++i )
+  {
+    QString name = FsEncoding::decode( i->c_str() );
+    QFileInfo fileInfo( name );
+    unsigned long ts;
+
+    if( fileInfo.isDir() )
+      continue;
+
+    if( name.toLower().endsWith( ".zip" ) )
+    {
+      ZipFile::SplitZipFile zf( name );
+      if( !zf.exists() )
+        return true;
+      ts = zf.lastModified().toSecsSinceEpoch();
+    }
+    else
+    {
+      if ( !fileInfo.exists() )
+        return true;
+      ts = fileInfo.lastModified().toSecsSinceEpoch();
+    }
+
+    if ( ts > lastModified )
+      lastModified = ts;
+  }
+
+  QDir d(FsEncoding::decode( indexFile.c_str() ));
+  if(d.exists()){
+    d.removeRecursively();
+  }
+  QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
+
+  if ( !fileInfo.exists() )
+    return true;
+
+  return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
 }
 
 QString generateRandomDictionaryId()
