@@ -443,7 +443,7 @@ public:
   /// Retrieve all dictionary headwords
   virtual bool getHeadwords( QStringList & )
   { return false; }
-  virtual  void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length ){}
+  virtual  void findHeadWordsWithLenth( int &, QSet< QString > * /*headwords*/, uint32_t ){}
 
   /// Enable/disable search via synonyms
   void setSynonymSearchEnabled( bool enabled )
