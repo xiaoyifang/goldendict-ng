@@ -51,9 +51,7 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
 
   ui.matchCase->setChecked( cfg.headwordsDialog.matchCase );
 
-  model = new QStringListModel( this );
-  model->setStringList( headers );
-
+  model = new HeadwordListModel( this );
   proxy = new QSortFilterProxyModel( this );
 
   proxy->setSourceModel( model );
@@ -134,16 +132,12 @@ void DictHeadwords::setup( Dictionary::Class *dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  headers.clear();
-  model->setStringList( headers );
-
-  dict->getHeadwords( headers );
-  model->setStringList( headers );
-
+  auto size = dict->getWordCount();
+  model->setDict(dict);
   proxy->sort( 0 );
   filterChanged();
 
-  if( headers.size() > AUTO_APPLY_LIMIT )
+  if( size > AUTO_APPLY_LIMIT )
   {
     cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
     ui.autoApply->setChecked( false );
@@ -169,7 +163,7 @@ void DictHeadwords::savePos()
   cfg.headwordsDialog.searchMode = ui.searchModeCombo->currentIndex();
   cfg.headwordsDialog.matchCase = ui.matchCase->isChecked();
 
-  if( headers.size() <= AUTO_APPLY_LIMIT )
+  if( model->totalCount() <= AUTO_APPLY_LIMIT )
     cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
 
   cfg.headwordsDialog.headwordsDialogGeometry = saveGeometry();
@@ -226,12 +220,15 @@ void DictHeadwords::filterChanged()
   QString pattern;
   switch( syntax )
   {
-    case QRegExp::FixedString:  pattern = QRegularExpression::escape( ui.filterLine->text() );
-                                break;
-    case QRegExp::WildcardUnix: pattern = wildcardsToRegexp( ui.filterLine->text() );
-                                break;
-    default:                    pattern = ui.filterLine->text();
-                                break;
+  case QRegExp::FixedString:
+    pattern = QRegularExpression::escape( ui.filterLine->text() );
+    break;
+  case QRegExp::WildcardUnix:
+    pattern = wildcardsToRegexp( ui.filterLine->text() );
+    break;
+  default:
+    pattern = ui.filterLine->text();
+    break;
   }
 
   QRegularExpression regExp( pattern, options );
@@ -244,9 +241,9 @@ void DictHeadwords::filterChanged()
 
   QApplication::setOverrideCursor( Qt::WaitCursor );
 
+  model->setFilter(regExp);
+
   proxy->setFilterRegularExpression( regExp );
-
-
   proxy->sort( 0 );
 
   QApplication::restoreOverrideCursor();
@@ -272,8 +269,7 @@ void DictHeadwords::autoApplyStateChanged( int state )
 void DictHeadwords::showHeadwordsNumber()
 {
   ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered: %2" )
-                             .arg( QString::number( headers.size() ) )
-                             .arg( QString::number( proxy->rowCount() ) ) );
+                             .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
 }
 
 void DictHeadwords::saveHeadersToFile()
@@ -303,7 +299,7 @@ void DictHeadwords::saveHeadersToFile()
     if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
       break;
 
-    int headwordsNumber = proxy->rowCount();
+    int headwordsNumber = model->totalCount();
 
     // Setup progress dialog
     int n = headwordsNumber;
@@ -327,7 +323,7 @@ void DictHeadwords::saveHeadersToFile()
     // Write headwords
 
     int i;
-    for( i = 0; i < headwordsNumber; ++i )
+    for( i = 0; i < headwordsNumber&&i<model->wordCount(); ++i )
     {
       if( i % step == 0 )
         progress.setValue( i / step );
@@ -335,7 +331,7 @@ void DictHeadwords::saveHeadersToFile()
       if( progress.wasCanceled() )
         break;
 
-      QVariant value = proxy->data( proxy->index( i, 0 ) );
+      QVariant value = model->getRow(i);
       if( !value.canConvert< QString >() )
         continue;
 
@@ -348,6 +344,27 @@ void DictHeadwords::saveHeadersToFile()
 
       if ( file.write( line ) != line.size() )
         break;
+    }
+
+    //continue to write the remaining headword
+    int nodeIndex = model->getCurrentIndex();
+    auto headwords = model->getRemainRows(nodeIndex);
+    while(!headwords.isEmpty())
+    {
+      if( progress.wasCanceled() )
+        break;
+      for(auto & w:headwords){
+        //progress
+        if( ++i % step == 0 )
+          progress.setValue( i / step );
+
+        line = w.toUtf8();
+        line += "\n";
+
+        if ( file.write( line ) != line.size() )
+          break;
+      }
+      headwords = model->getRemainRows(nodeIndex);
     }
 
     if( i < headwordsNumber && !progress.wasCanceled() )
