@@ -301,6 +301,10 @@ private:
   /// Process resource links (images, audios, etc)
   QString & filterResource( QString const & articleId, QString & article );
 
+  void replaceLinks( QString & id, const QString & articleId, QString & article );
+  //@font-face
+  void replaceFontLinks( QString & id, QString & article );
+
   void removeDirectory( QString const & directory );
 
   friend class MdxHeadwordsRequest;
@@ -954,12 +958,19 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
 QString & MdxDictionary::filterResource( QString const & articleId, QString & article )
 {
   QString id = QString::fromStdString( getId() );
+  replaceLinks( id, articleId, article );
+  replaceFontLinks( id, article);
+  return article;
+}
+
+void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QString & article )
+{
   QString uniquePrefix = QString::fromLatin1( "g" ) + id + "_" + articleId + "_";
 
   QString articleNewText;
-  int linkPos = 0;
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
-  QMap<QString,QString> idMap;
+  QMap< QString, QString > idMap;
   while( it.hasNext() )
   {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -970,7 +981,7 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
     articleNewText += article.mid( linkPos, allLinksMatch.capturedStart() - linkPos );
     linkPos = allLinksMatch.capturedEnd();
 
-    QString linkTxt = allLinksMatch.captured();
+    QString linkTxt  = allLinksMatch.captured();
     QString linkType = allLinksMatch.captured( 1 ).toLower();
     QString newLink;
 
@@ -985,7 +996,7 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
           idMap.insert( wordMatch.captured( 3 ), uniquePrefix + wordMatch.captured( 3 ) );
         }
         QString newText = match.captured( 1 ) + match.captured( 2 ) + uniquePrefix;
-        newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
+        newLink         = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
       }
       else
         newLink = linkTxt.replace( RX::Mdx::anchorIdRe2, "\\1\"" + uniquePrefix + "\\2\"" );
@@ -996,19 +1007,18 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
       if( match.hasMatch() )
       {
         // sounds and audio link script
-        QString newTxt = match.captured( 1 ) + match.captured( 2 )
-                         + "gdau://" + id + "/"
-                         + match.captured( 3 ) + match.captured( 2 );
-        newLink = QString::fromUtf8( addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
-                  + newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
+        QString newTxt =
+          match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 ) + match.captured( 2 );
+        newLink =
+          QString::fromUtf8(
+            addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
+          + newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
       }
 
       match = RX::Mdx::wordCrossLink.match( newLink );
       if( match.hasMatch() )
       {
-        QString newTxt = match.captured( 1 ) + match.captured( 2 )
-                         + "gdlookup://localhost/"
-                         + match.captured( 3 );
+        QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdlookup://localhost/" + match.captured( 3 );
 
         if( match.lastCapturedIndex() >= 4 && !match.captured( 4 ).isEmpty() )
           newTxt += QString( "?gdanchor=" ) + uniquePrefix + match.captured( 4 ).mid( 1 );
@@ -1017,25 +1027,20 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
         newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
       }
     }
-    else
-    if( linkType.compare( "link" ) == 0 )
+    else if( linkType.compare( "link" ) == 0 )
     {
       // stylesheets
       QRegularExpressionMatch match = RX::Mdx::stylesRe.match( linkTxt );
       if( match.hasMatch() )
       {
-        QString newText = match.captured( 1 ) + match.captured( 2 )
-                          + "bres://" + id + "/"
-                          + match.captured( 3 ) + match.captured( 2 );
+        QString newText =
+          match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 ) + match.captured( 2 );
         newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
       }
       else
-        newLink = linkTxt.replace( RX::Mdx::stylesRe2,
-                                   "\\1\"bres://" + id + "/\\2\"" );
+        newLink = linkTxt.replace( RX::Mdx::stylesRe2, "\\1\"bres://" + id + "/\\2\"" );
     }
-    else
-    if( linkType.compare( "script" ) == 0 || linkType.compare( "img" ) == 0
-        || linkType.compare( "source" ) == 0 )
+    else if( linkType.compare( "script" ) == 0 || linkType.compare( "img" ) == 0 || linkType.compare( "source" ) == 0 )
     {
       // javascripts and images
       QRegularExpressionMatch match = RX::Mdx::inlineScriptRe.match( linkTxt );
@@ -1061,22 +1066,19 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
           if( linkType.at( 1 ) == 'o' ) // "source" tag
           {
             QString filename = match.captured( 3 );
-            QString newName = getCachedFileName( filename );
+            QString newName  = getCachedFileName( filename );
             newName.replace( '\\', '/' );
-            newText = match.captured( 1 ) + match.captured( 2 )
-                      + "file:///" + newName + match.captured( 2 );
+            newText = match.captured( 1 ) + match.captured( 2 ) + "file:///" + newName + match.captured( 2 );
           }
           else
           {
-            newText = match.captured( 1 ) + match.captured( 2 )
-                      + "bres://" + id + "/"
-                      + match.captured( 3 ) + match.captured( 2 );
+            newText = match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 )
+                      + match.captured( 2 );
           }
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else
-          newLink = linkTxt.replace( RX::Mdx::srcRe2,
-                                     "\\1\"bres://" + id + "/\\2\"" );
+          newLink = linkTxt.replace( RX::Mdx::srcRe2, "\\1\"bres://" + id + "/\\2\"" );
       }
     }
     if( !newLink.isEmpty() )
@@ -1092,14 +1094,46 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
     article = articleNewText;
   }
 
-  //some built-in javascript may reference this id. replace "idxxx" with "unique_idxxx"
-  foreach ( const auto& key, idMap.keys() )
+  // some built-in javascript may reference this id. replace "idxxx" with "unique_idxxx"
+  foreach( const auto & key, idMap.keys() )
   {
-    const auto& value = idMap[ key ];
-    article.replace("\""+key+"\"","\""+value+"\"");
+    const auto & value = idMap[ key ];
+    article.replace( "\"" + key + "\"", "\"" + value + "\"" );
   }
+}
 
-  return article;
+void MdxDictionary::replaceFontLinks( QString & id, QString & article )
+{
+  //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
+  QString articleNewText;
+  int linkPos                        = 0;
+  QRegularExpressionMatchIterator it = RX::Mdx::fontFace.globalMatch( article );
+  while( it.hasNext() )
+  {
+    QRegularExpressionMatch allLinksMatch = it.next();
+
+    if( allLinksMatch.capturedEnd() < linkPos )
+      continue;
+
+    articleNewText += article.mid( linkPos, allLinksMatch.capturedStart() - linkPos );
+    linkPos = allLinksMatch.capturedEnd();
+
+    QString linkTxt  = allLinksMatch.captured();
+    QString linkType = allLinksMatch.captured( 1 );
+    QString newLink  = linkTxt;
+
+    //skip remote url
+    if( !linkType.contains( ":" ) )
+    {
+      newLink = QString( "url(\"bres://%1/%2\")" ).arg( id, linkType );
+    }
+    articleNewText += newLink;
+  }
+  if( linkPos )
+  {
+    articleNewText += article.mid( linkPos );
+    article = articleNewText;
+  }
 }
 
 

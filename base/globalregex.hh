@@ -37,6 +37,7 @@ public:
   static QRegularExpression srcRe2;
 
   static QRegularExpression links;
+  static QRegularExpression fontFace;
 };
 
 } // namespace RX
