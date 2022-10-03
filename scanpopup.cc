@@ -1136,11 +1136,15 @@ void ScanPopup::altModePoll()
 
 void ScanPopup::pageLoaded( ArticleView * )
 {
-
-
-  definition->hasSound([this](bool has){
-      ui.pronounceButton->setVisible( has );
-  });
+  if( !isVisible() )
+    return;
+  auto pronounceBtn = ui.pronounceButton;
+  definition->hasSound(
+    [ pronounceBtn ]( bool has )
+    {
+      if( pronounceBtn )
+        pronounceBtn->setVisible( has );
+    } );
 
   updateBackForwardButtons();
 

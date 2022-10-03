@@ -268,8 +268,8 @@ HEADERS += folding.hh \
     articlewebpage.h \
     base/globalregex.hh \
     globalbroadcaster.h \
+    headwordsmodel.h \
     iframeschemehandler.h \
-    headwordslistmodel.h \
     inc_case_folding.hh \
     inc_diacritic_folding.hh \
     mainwindow.hh \
@@ -412,8 +412,8 @@ SOURCES += folding.cc \
     articlewebpage.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
+    headwordsmodel.cpp \
     iframeschemehandler.cpp \
-    headwordslistmodel.cpp \
     main.cc \
     dictionary.cc \
     config.cc \

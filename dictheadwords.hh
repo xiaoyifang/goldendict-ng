@@ -14,7 +14,7 @@
 #include "dictionary.hh"
 #include "delegate.hh"
 #include "helpwindow.hh"
-#include "headwordslistmodel.h"
+#include "headwordsmodel.h"
 
 class DictHeadwords : public QDialog
 {
