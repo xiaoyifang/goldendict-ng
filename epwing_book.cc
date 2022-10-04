@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QTextStream>
 #include <QTextDocumentFragment>
+#include <QHash>
 #include "gddebug.hh"
 #include "fsencoding.hh"
 #include "audiolink.hh"
@@ -732,7 +733,7 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
   }
 
   QString text = QString::fromUtf8( buf.data(), buf.size() ).trimmed();
-  finalizeText( text );
+  finalizeText( text);
   return text;
 }
 
@@ -776,7 +777,9 @@ void EpwingBook::getReferencesFromText( int page, int offset )
   }
 
   for( int x = 0; x < refPages.size(); x++ )
+  {
     LinksQueue.push_back( EWPos( refPages[ x ], refOffsets[ x ] ) );
+  }
 }
 
 EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
@@ -850,60 +853,13 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   fixHeadword( head.headword );
 
   EWPos epos( pos.page, pos.offset );
-  allHeadwordPositions[ head.headword ] << epos;
+  allHeadwordPositions[ ((uint64_t)pos.page)<<32|(pos.offset>>2) ] =true;
 }
 
 bool EpwingBook::getNextHeadword( EpwingHeadword & head )
 {
   EB_Position pos;
-
-  QRegularExpression badLinks( "#(v|n)\\d", QRegularExpression::UseUnicodePropertiesOption);
-
-  // At first we check references queue
-  while( !LinksQueue.isEmpty() )
-  {
-    EWPos epos = LinksQueue.last();
-    LinksQueue.pop_back();
-
-    pos.page = epos.first;
-    pos.offset = epos.second;
-
-    if( readHeadword( pos, head.headword, true ) )
-    {
-      if( head.headword.isEmpty()
-          || head.headword.contains( badLinks ) )
-        continue;
-
-      fixHeadword( head.headword );
-
-      head.page = pos.page;
-      head.offset = pos.offset;
-
-      if( allHeadwordPositions.contains( head.headword ) )
-      {
-        // existed position
-        bool existed = false;
-        foreach( EWPos epos, allHeadwordPositions[ head.headword ] )
-        {
-          if( pos.page == epos.first && abs( pos.offset - epos.second ) <= 4 )
-          {
-            existed = true;
-            break;
-          }
-        }
-        if( !existed )
-        {
-          allHeadwordPositions[ head.headword ] << EWPos( pos.page, pos.offset );
-          return true;
-        }
-      }
-      else
-      {
-        allHeadwordPositions[ head.headword ] << EWPos( pos.page, pos.offset );
-        return true;
-      }
-    }
-  }
+  
 
   // No queued positions - forward to next article
 
@@ -934,13 +890,7 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
 
     indexHeadwordsPosition = pos;
 
-    try
-    {
-      getReferencesFromText( pos.page, pos.offset );
-    }
-    catch( std::exception & )
-    {
-    }
+
 
     head.page = pos.page;
     head.offset = pos.offset;
@@ -953,32 +903,59 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
 
     fixHeadword( head.headword );
 
-    if( allHeadwordPositions.contains( head.headword ) )
+    try
     {
-      // existed position
-      bool existed = false;
-      foreach( EWPos epos, allHeadwordPositions[ head.headword ] )
-      {
-        if( pos.page == epos.first && abs( pos.offset - epos.second ) <= 4 )
-        {
-          existed = true;
-          break;
-        }
-      }
-      if( !existed )
-      {
-        allHeadwordPositions[ head.headword ] << EWPos( pos.page, pos.offset );
-        return true;
-      }
+      getReferencesFromText( pos.page, pos.offset);
     }
-    else
+    catch( std::exception & )
     {
-      allHeadwordPositions[ head.headword ] << EWPos( pos.page, pos.offset );
+    }
+
+    if( !allHeadwordPositions.contains( ((uint64_t)pos.page) << 32 | ( pos.offset / 4 ) ) )
+    {
+      allHeadwordPositions[ ((uint64_t)pos.page) << 32 | ( pos.offset / 4 ) ] = true;
       return true;
     }
   }
 
   return true;
+}
+
+bool EpwingBook::processRef( EpwingHeadword & head)
+{
+  EB_Position pos;
+
+  QRegularExpression badLinks( "#(v|n)\\d", QRegularExpression::UseUnicodePropertiesOption );
+  while( !LinksQueue.isEmpty() )
+  {
+    EWPos epos = LinksQueue.last();
+    LinksQueue.pop_back();
+
+    pos.page   = epos.first;
+    pos.offset = epos.second;
+
+    if( readHeadword( pos, head.headword, true ) )
+    {
+      if( head.headword.isEmpty() || head.headword.contains( badLinks ) )
+        continue;
+
+      fixHeadword( head.headword );
+
+      head.page   = pos.page;
+      head.offset = pos.offset;
+      auto key    = ( (uint64_t)pos.page ) << 32 | ( pos.offset >> 2 );
+      if( !allRefPositions.contains( key ) )
+      {
+        // fixed the reference headword ,to avoid the headword collision with other entry .
+        //if(!allHeadwordPositions.contains(key))
+        head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
+
+        allRefPositions[ key ] = true;
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 bool EpwingBook::readHeadword( EB_Position const& pos,
@@ -1094,7 +1071,7 @@ void EpwingBook::fixHeadword( QString & headword )
 }
 
 void EpwingBook::getArticle( QString & headword, QString & articleText,
-                             int page, int offset, bool text_only)
+                             int page, int offset, bool text_only, QString word)
 {
   error_string.clear();
   char buffer[ TextBufferSize + 1 ];
@@ -1126,12 +1103,12 @@ void EpwingBook::getArticle( QString & headword, QString & articleText,
   }
 
   headword = QString::fromUtf8( buffer, length );
-  finalizeText( headword );
+  finalizeText( headword);
 
   if( text_only )
     fixHeadword( headword );
 
-  articleText = getText( pos.page, pos.offset, text_only );
+  articleText = getText( pos.page, pos.offset, text_only);
 }
 
 const char * EpwingBook::beginDecoration( unsigned int code )
@@ -1268,7 +1245,7 @@ void EpwingBook::finalizeText( QString & text )
     {
       QString headword = QString::fromUtf8( buf, length );
       fixHeadword( headword );
-      url.setPath( Utils::Url::ensureLeadingSlash( headword ) );
+      url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg(ebpos.offset) ) );
     }
 
     QString link = "<a href=\"" + url.toEncoded() + "\">";
