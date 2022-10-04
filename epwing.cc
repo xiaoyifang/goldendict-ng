@@ -169,8 +169,12 @@ protected:
 private:
 
   /// Loads the article.
-  void loadArticle( quint32 address, string & articleHeadword,
-                    string & articleText, int & articlePage, int & articleOffset );
+  void loadArticle( quint32 address,
+                    string & articleHeadword,
+                    string & articleText,
+                    int & articlePage,
+                    int & articleOffset,
+                    QString word = 0 );
 
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword,
                     string & articleText );
@@ -284,10 +288,15 @@ void EpwingDictionary::removeDirectory( QString const & directory )
 }
 
 void EpwingDictionary::loadArticle( quint32 address,
+
                                     string & articleHeadword,
+
                                     string & articleText,
+
                                     int & articlePage,
-                                    int & articleOffset )
+
+                                    int & articleOffset,
+                                    QString word)
 {
   vector< char > chunk;
 
@@ -307,7 +316,7 @@ void EpwingDictionary::loadArticle( quint32 address,
   try
   {
     Mutex::Lock _( eBook.getLibMutex() );
-    eBook.getArticle( headword, text, articlePage, articleOffset, false );
+    eBook.getArticle( headword, text, articlePage, articleOffset, false, word );
   }
   catch( std::exception & e )
   {
@@ -521,8 +530,16 @@ void EpwingArticleRequest::run()
 
     try
     {
-      dict.loadArticle( chain[ x ].articleOffset, headword, articleText,
-                        articlePage, articleOffset );
+      dict.loadArticle( chain[ x ].articleOffset,
+
+                        headword,
+
+                        articleText,
+
+                        articlePage,
+
+                        articleOffset,
+                        gd::toQString(word) );
     }
     catch(...)
     {
@@ -939,6 +956,107 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
 
 } // anonymous namespace
 
+void addWordToChunks( Epwing::Book::EpwingHeadword & head,
+                      ChunkedStorage::Writer & chunks,
+                      BtreeIndexing::IndexedWords & indexedWords,
+                      int & wordCount,
+                      int & articleCount )
+{
+  if( !head.headword.isEmpty() )
+  {
+    uint32_t offset = chunks.startNewBlock();
+    chunks.addToBlock( &head.page, sizeof( head.page ) );
+    chunks.addToBlock( &head.offset, sizeof( head.offset ) );
+
+    wstring hw = gd::toWString( head.headword );
+
+    indexedWords.addWord( hw, offset );
+    wordCount++;
+    articleCount++;
+
+    vector< wstring > words;
+
+    // Parse combined kanji/katakana/hiragana headwords
+
+    int w_prev = 0;
+    wstring word;
+    for( wstring::size_type n = 0; n < hw.size(); n++ )
+    {
+      gd::wchar ch = hw[ n ];
+
+      if( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isSign( ch )
+          || EpwingDictionary::isJapanesePunctiation( ch ) )
+        continue;
+
+      int w = EpwingDictionary::japaneseWriting( ch );
+
+      if( w > 0 )
+      {
+        // Store only separated words
+        gd::wchar ch_prev = 0;
+        if( n )
+          ch_prev = hw[ n - 1 ];
+        bool needStore = ( n == 0 || Folding::isPunct( ch_prev ) || Folding::isWhitespace( ch_prev )
+                           || EpwingDictionary::isJapanesePunctiation( ch ) );
+
+        word.push_back( ch );
+        w_prev = w;
+        wstring::size_type i;
+        for( i = n + 1; i < hw.size(); i++ )
+        {
+          ch = hw[ i ];
+          if( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isJapanesePunctiation( ch ) )
+            break;
+          w = EpwingDictionary::japaneseWriting( ch );
+          if( w != w_prev )
+            break;
+          word.push_back( ch );
+        }
+
+        if( needStore )
+        {
+          if( i >= hw.size() || Folding::isPunct( ch ) || Folding::isWhitespace( ch )
+              || EpwingDictionary::isJapanesePunctiation( ch ) )
+            words.push_back( word );
+        }
+        word.clear();
+
+        if( i < hw.size() )
+          n = i;
+        else
+          break;
+      }
+    }
+
+    if( words.size() > 1 )
+    {
+      // Allow only one word in every charset
+
+      size_t n;
+      int writings[ 4 ];
+      memset( writings, 0, sizeof( writings ) );
+
+      for( n = 0; n < words.size(); n++ )
+      {
+        int w = EpwingDictionary::japaneseWriting( words[ n ][ 0 ] );
+        if( writings[ w ] )
+          break;
+        else
+          writings[ w ] = 1;
+      }
+
+      if( n >= words.size() )
+      {
+        for( n = 0; n < words.size(); n++ )
+        {
+          indexedWords.addWord( words[ n ], offset );
+          wordCount++;
+        }
+      }
+    }
+  }
+}
+
 vector< sptr< Dictionary::Class > > makeDictionaries(
                                       vector< string > const & fileNames,
                                       string const & indicesDir,
@@ -1045,105 +1163,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
             for( ; ; )
             {
-              if( !head.headword.isEmpty() )
-              {
-                uint32_t offset = chunks.startNewBlock();
-                chunks.addToBlock( &head.page, sizeof( head.page ) );
-                chunks.addToBlock( &head.offset, sizeof( head.offset ) );
-
-                wstring hw = gd::toWString( head.headword );
-
-                indexedWords.addWord( hw, offset );
-                wordCount++;
-                articleCount++;
-
-                vector< wstring > words;
-
-                // Parse combined kanji/katakana/hiragana headwords
-
-                int w_prev = 0;
-                wstring word;
-                for( wstring::size_type n = 0; n < hw.size(); n++ )
-                {
-                  gd::wchar ch = hw[ n ];
-
-                  if( Folding::isPunct( ch ) || Folding::isWhitespace( ch )
-                      || EpwingDictionary::isSign( ch ) || EpwingDictionary::isJapanesePunctiation( ch ) )
-                    continue;
-
-                  int w = EpwingDictionary::japaneseWriting( ch );
-
-                  if( w > 0 )
-                  {
-                    // Store only separated words
-                    gd::wchar ch_prev = 0;
-                    if( n )
-                      ch_prev = hw[ n - 1 ];
-                    bool needStore = ( n == 0
-                                       || Folding::isPunct( ch_prev )
-                                       || Folding::isWhitespace( ch_prev )
-                                       || EpwingDictionary::isJapanesePunctiation( ch ) );
-
-                    word.push_back( ch );
-                    w_prev = w;
-                    wstring::size_type i;
-                    for(  i = n + 1; i < hw.size(); i++ )
-                    {
-                      ch = hw[ i ];
-                      if( Folding::isPunct( ch ) || Folding::isWhitespace( ch )
-                          || EpwingDictionary::isJapanesePunctiation( ch ) )
-                        break;
-                      w = EpwingDictionary::japaneseWriting( ch );
-                      if( w != w_prev )
-                        break;
-                      word.push_back( ch );
-                    }
-
-                    if( needStore )
-                    {
-                      if( i >= hw.size() || Folding::isPunct( ch ) || Folding::isWhitespace( ch )
-                          || EpwingDictionary::isJapanesePunctiation( ch ) )
-                        words.push_back( word );
-                    }
-                    word.clear();
-
-                    if( i < hw.size() )
-                      n = i;
-                    else
-                      break;
-                  }
-                }
-
-                if( words.size() > 1 )
-                {
-                  // Allow only one word in every charset
-
-                  size_t n;
-                  int writings[ 4 ];
-                  memset( writings, 0, sizeof(writings) );
-
-                  for( n = 0; n < words.size(); n++ )
-                  {
-                    int w = EpwingDictionary::japaneseWriting( words[ n ][ 0 ] );
-                    if( writings[ w ] )
-                      break;
-                    else
-                      writings[ w ] = 1;
-                  }
-
-                  if( n >= words.size() )
-                  {
-                    for( n = 0; n < words.size(); n++ )
-                    {
-                      indexedWords.addWord( words[ n ], offset );
-                      wordCount++;
-                    }
-                  }
-                }
-
-              }
+              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
               if( !dict.getNextHeadword( head ) )
                 break;
+            }
+
+            while( dict.processRef( head ) )
+            {
+              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
             }
 
             dict.clearBuffers();
