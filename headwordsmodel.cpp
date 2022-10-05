@@ -81,12 +81,12 @@ void HeadwordListModel::requestFinished()
         filtered << w;
       }
     }
+    if( filtered.isEmpty() )
+      return;
 
     beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
-
     for( const auto & word : filtered )
       words.append( word );
-
     endInsertRows();
   }
 }
