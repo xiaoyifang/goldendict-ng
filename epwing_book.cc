@@ -1073,7 +1073,7 @@ void EpwingBook::fixHeadword( QString & headword )
 }
 
 void EpwingBook::getArticle( QString & headword, QString & articleText,
-                             int page, int offset, bool text_only, QString word)
+                             int page, int offset, bool text_only)
 {
   error_string.clear();
   char buffer[ TextBufferSize + 1 ];
