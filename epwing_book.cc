@@ -1032,6 +1032,9 @@ void EpwingBook::fixHeadword( QString & headword )
 
   headword.remove( QChar( 0x30FB ) ); // Used in Japan transcription
 
+  //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
+  headword.replace( QRegularExpression( "[\\p{N}\\p{S}\\p{P}\\p{M}]" ), " " );
+
   //if( isHeadwordCorrect( headword) )
   //  return;
 
@@ -1046,7 +1049,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //}
 
   gd::wstring folded = Folding::applyPunctOnly( gd::toWString( fixed ) );
-  fixed = gd::toQString( folded );
+  //fixed = gd::toQString( folded );
 
   //if( isHeadwordCorrect( fixed ) )
   //{
