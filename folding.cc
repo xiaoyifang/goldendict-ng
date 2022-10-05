@@ -596,7 +596,7 @@ bool isPunct( wchar ch )
     case 0xFF64: // HALFWIDTH IDEOGRAPHIC COMMA
       return true;
     default:
-      return false;
+      return QChar::isPunct(ch)||QChar::isSymbol(ch);
   }
 }
 

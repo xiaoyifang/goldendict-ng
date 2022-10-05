@@ -1032,42 +1032,44 @@ void EpwingBook::fixHeadword( QString & headword )
 
   headword.remove( QChar( 0x30FB ) ); // Used in Japan transcription
 
-  if( isHeadwordCorrect( headword) )
-    return;
+  //if( isHeadwordCorrect( headword) )
+  //  return;
 
   QString fixed = headword;
   QRegularExpression leadingSlashRx( "/[^/]+/" );
   fixed.remove(leadingSlashRx );
 
-  if( isHeadwordCorrect( fixed ) )
-  {
-    headword = fixed;
-    return;
-  }
+  //if( isHeadwordCorrect( fixed ) )
+  //{
+  //  headword = fixed;
+  //  return;
+  //}
 
   gd::wstring folded = Folding::applyPunctOnly( gd::toWString( fixed ) );
   fixed = gd::toQString( folded );
 
-  if( isHeadwordCorrect( fixed ) )
-  {
-    headword = fixed;
-    return;
-  }
+  //if( isHeadwordCorrect( fixed ) )
+  //{
+  //  headword = fixed;
+  //  return;
+  //}
 
   folded = Folding::applyDiacriticsOnly( folded );
   fixed = gd::toQString( folded );
 
-  if( isHeadwordCorrect( fixed ) )
-  {
-    headword = fixed;
-    return;
-  }
+  //if( isHeadwordCorrect( fixed ) )
+  //{
+  //  headword = fixed;
+  //  return;
+  //}
 
-  folded = Folding::applyWhitespaceOnly( folded );
-  fixed = gd::toQString( folded );
+  //folded = Folding::applyWhitespaceOnly( folded );
+  //fixed = gd::toQString( folded );
 
-  if( isHeadwordCorrect( fixed ) )
-    headword = fixed;
+  //if( isHeadwordCorrect( fixed ) )
+  //  headword = fixed;
+
+  headword = fixed;
 }
 
 void EpwingBook::getArticle( QString & headword, QString & articleText,
