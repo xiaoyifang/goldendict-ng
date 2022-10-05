@@ -56,6 +56,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
+# on windows platform ,only works in release build
 CONFIG( use_xapian ) {
   DEFINES += USE_XAPIAN
   LIBS+= -lxapian
