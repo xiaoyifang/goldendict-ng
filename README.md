@@ -123,6 +123,14 @@ Then, invoke `make clean` before `make` because the setting change:
 
 ### Building with xapian
 
+build xapian from source, download and extract the xapian-core source code.
+
+    ./configure
+    make 
+    make install
+
+    On Windows,follow the instructions in the xapian-core/INSTALL Visual Studio parts.
+
 use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be used to support as the the fulltext's backend engine.
 
     qmake "CONFIG+=use_xapian"
