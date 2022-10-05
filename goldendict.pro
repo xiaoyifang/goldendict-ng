@@ -13,15 +13,7 @@ system(git describe --tags --always --dirty): hasGit=1
     GIT_HASH=$$system(git rev-parse --short=8 HEAD )
 }
 
-win32{
-# date /T output is locale aware.
-    DATE=$$system(date /T)
-}
-else{
-    DATE=$$system(date '+%Y/%m/%d')
-}
-
-system(echo $${VERSION}.$${GIT_HASH} on $${DATE} > version.txt)
+system(echo $${VERSION}.$${GIT_HASH} on $${_DATE_} > version.txt)
 
 !CONFIG( verbose_build_output ) {
   !win32|*-msvc* {
