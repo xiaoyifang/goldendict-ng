@@ -173,8 +173,7 @@ private:
                     string & articleHeadword,
                     string & articleText,
                     int & articlePage,
-                    int & articleOffset,
-                    QString word = 0 );
+                    int & articleOffset );
 
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword,
                     string & articleText );
@@ -287,16 +286,8 @@ void EpwingDictionary::removeDirectory( QString const & directory )
   dir.rmdir( directory );
 }
 
-void EpwingDictionary::loadArticle( quint32 address,
-
-                                    string & articleHeadword,
-
-                                    string & articleText,
-
-                                    int & articlePage,
-
-                                    int & articleOffset,
-                                    QString word)
+void EpwingDictionary::loadArticle(
+  quint32 address, string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
 {
   vector< char > chunk;
 
@@ -316,7 +307,7 @@ void EpwingDictionary::loadArticle( quint32 address,
   try
   {
     Mutex::Lock _( eBook.getLibMutex() );
-    eBook.getArticle( headword, text, articlePage, articleOffset, false, word );
+    eBook.getArticle( headword, text, articlePage, articleOffset, false);
   }
   catch( std::exception & e )
   {
@@ -531,15 +522,10 @@ void EpwingArticleRequest::run()
     try
     {
       dict.loadArticle( chain[ x ].articleOffset,
-
                         headword,
-
                         articleText,
-
                         articlePage,
-
-                        articleOffset,
-                        gd::toQString(word) );
+                        articleOffset );
     }
     catch(...)
     {

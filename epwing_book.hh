@@ -195,7 +195,7 @@ public:
 
   // Retrieve article from dictionary
   void getArticle( QString & headword, QString & articleText,
-                   int page, int offset, bool text_only, QString word=0 );
+                   int page, int offset, bool text_only );
 
   const char * beginDecoration( unsigned int code );
   const char * endDecoration( unsigned int code );
