@@ -1031,9 +1031,11 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
 
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n",
            getName().c_str() );
-
   try
   {
+#ifdef USE_XAPIAN
+    return FtsHelpers::makeFTSIndexXapian(this,isCancelled);
+#endif
     Mutex::Lock _( getFtsMutex() );
 
     File::Class ftsIdx( ftsIndexName(), "wb" );
@@ -1541,7 +1543,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       try
       {
-        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
+        if ( Dictionary::needToRebuildBTreeIndex( dictFiles, indexFile ) ||
              indexIsOldOrBad( indexFile ) )
         {
           gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );
