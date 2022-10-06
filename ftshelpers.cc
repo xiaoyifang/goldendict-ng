@@ -518,6 +518,7 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
   Xapian::Stem stemmer("english");
   indexer.set_stemmer(stemmer);
   indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
+  // indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
 
   BtreeIndexing::IndexedWords indexedWords;
 
@@ -1310,7 +1311,7 @@ void FTSResultsRequest::runXapian()
       Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
       if( searchMode == FTS::Wildcards )
         flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag );
+      Xapian::Query query = qp.parse_query( query_string, flag|Xapian::QueryParser::FLAG_CJK_NGRAM );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.
