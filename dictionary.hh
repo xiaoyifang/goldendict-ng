@@ -440,10 +440,6 @@ public:
   bool canFTS()
   { return can_FTS; }
 
-  virtual int ftsIndexingProgress(){
-    return 0;
-  }
-
   /// Dictionary have index for full-text search
   bool haveFTSIndex()
   { return Utils::AtomicInt::loadAcquire( FTS_index_completed ) != 0; }

@@ -77,6 +77,7 @@ Q_OBJECT
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
   QSemaphore & hasExited;
   QTimer * timer;
+  QThread * timerThread;
 
 public:
   Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts,
@@ -84,15 +85,33 @@ public:
     isCancelled( cancelled ),
     dictionaries( dicts ),
     hasExited( hasExited_ ),
-    timer(new QTimer(this))
+    timer(new QTimer(0)),
+    timerThread(new QThread(this))
   {
     connect(timer, &QTimer::timeout, this, &Indexing::timeout);
-    timer->start(2000);
+//    timer->start(2000);
+    timer->moveToThread(timerThread);
+    connect(timerThread, &QThread::started, timer, [this](){timer->start(2000);});
+    connect(timerThread, &QThread::finished, timer, &QTimer::stop);
+    timerThread->start();
+
   }
 
   ~Indexing()
   {
-    timer->stop();
+    if(timerThread){
+      qInfo()<<"delete thread";
+      timerThread->quit();
+      timerThread->wait();
+      delete timerThread;
+      timerThread = nullptr;
+    }
+    if(timer){
+      qInfo()<<"delete timer";
+      delete timer;
+      timer = nullptr;
+    }
+
     emit sendNowIndexingName( QString() );
     hasExited.release();
   }
