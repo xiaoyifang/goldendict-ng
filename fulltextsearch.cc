@@ -70,6 +70,20 @@ void Indexing::run()
   emit sendNowIndexingName( QString() );
 }
 
+void Indexing::timeout(){
+  for( size_t x = 0; x < dictionaries.size(); x++ )
+  {
+    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      break;
+
+    auto progress = dictionaries.at( x )->getIndexingFtsProgress();
+    if( progress>0&&progress<100)
+    {
+      emit sendNowIndexingName( QString::fromUtf8( dictionaries.at( x )->getName().c_str() )+QString("......%1%2").arg("%").arg(progress) );
+    }
+  }
+}
+
 
 FtsIndexing::FtsIndexing( std::vector< sptr< Dictionary::Class > > const & dicts):
   dictionaries( dicts ),

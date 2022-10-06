@@ -1116,6 +1116,8 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
       indexedArticles.insert( articleNumber );
 
       FtsHelpers::parseArticleForFts( offsets.at( i ), articleStr, ftsWords );
+
+      setIndexedFtsDoc(i);
     }
 
     // Free memory

@@ -32,6 +32,8 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
 namespace FtsHelpers
 {
+    //finished  reversed   dehsinif
+const std::string finish_mark = "dehsinif";
 
 bool ftsIndexIsOldOrBad( string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict )
@@ -40,7 +42,11 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
   try
   {
     Xapian::WritableDatabase db( dict->ftsIndexName() );
-    return db.get_doccount()==0;
+    auto docid = db.get_lastdocid();
+    auto document = db.get_document(docid);
+
+    //use a special document to mark the end of the index.
+    return document.get_data()!=finish_mark;
   }
   catch( Xapian::Error & e )
   {
@@ -419,8 +425,10 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   QSemaphore sem( QThread::idealThreadCount() );
   //QFutureSynchronizer< void > synchronizer;
 
+  long indexedFtsDoc=0;
   for( auto & address : offsets )
   {
+    indexedFtsDoc++;
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
         //wait the future to be finished.
@@ -445,6 +453,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
         parseArticleForFts( address, articleStr, ftsWords, needHandleBrackets );
       } );
     //synchronizer.addFuture( f );
+
+    dict->setIndexedFtsDoc(indexedFtsDoc);
   }
   sem.acquire( QThread::idealThreadCount() );
   // Free memory
@@ -538,8 +548,27 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
 
   dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
 
+
+  //incremental build the index.
+  //get the last address.
+  Xapian::Document lastDoc = db.get_document(db.get_lastdocid());
+  auto lastAddress = atoi(lastDoc.get_data().c_str());
+  bool skip=true;
+
+  long indexedDoc=0L;
+
   for( auto & address : offsets )
   {
+    indexedDoc++;
+
+    if(address==lastAddress){
+      skip = false;
+    }
+    //skip until to the lastAddress;
+    if((address!=lastAddress)&&skip){
+      continue;
+    }
+
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
       return;
@@ -556,7 +585,16 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
     doc.set_data( std::to_string( address ) );
     // Add the document to the database.
     db.add_document( doc );
+
+    dict->setIndexedFtsDoc(indexedDoc);
   }
+
+  //add a special document to mark the end of the index.
+  Xapian::Document doc;
+  doc.set_data( finish_mark );
+  // Add the document to the database.
+  db.add_document( doc );
+
   // Free memory
   offsets.clear();
 
@@ -1287,6 +1325,8 @@ void FTSResultsRequest::runXapian()
       {
         qDebug() << i.get_rank() + 1 << ": " << i.get_weight() << " docid=" << *i << " ["
                  << i.get_document().get_data().c_str() << "]";
+        if(i.get_document().get_data()==finish_mark)
+          continue;
         offsetsForHeadwords.append( atoi( i.get_document().get_data().c_str() ) );
       }
 

@@ -76,17 +76,24 @@ Q_OBJECT
   QAtomicInt & isCancelled;
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
   QSemaphore & hasExited;
+  QTimer * timer;
 
 public:
   Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts,
             QSemaphore & hasExited_):
     isCancelled( cancelled ),
     dictionaries( dicts ),
-    hasExited( hasExited_ )
-  {}
+    hasExited( hasExited_ ),
+    timer(new QTimer(this))
+  {
+    connect(timer, &QTimer::timeout, this, &Indexing::timeout);
+    timer->start(2000);
+  }
 
   ~Indexing()
   {
+    timer->stop();
+    emit sendNowIndexingName( QString() );
     hasExited.release();
   }
 
@@ -94,6 +101,9 @@ public:
 
 signals:
   void sendNowIndexingName( QString );
+
+private slots:
+  void timeout();
 };
 
 class FtsIndexing : public QObject

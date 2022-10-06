@@ -263,6 +263,7 @@ class Class
 {
   string id;
   vector< string > dictionaryFiles;
+  long indexedFtsDoc;
 
 protected:
   QString dictionaryDescription;
@@ -323,6 +324,17 @@ public:
 
   /// Returns the number of articles in the dictionary.
   virtual unsigned long getArticleCount() noexcept=0;
+
+  void setIndexedFtsDoc(long _indexedFtsDoc){
+    indexedFtsDoc = _indexedFtsDoc;
+  }
+
+  int getIndexingFtsProgress(){
+    auto total = getArticleCount();
+    if(total==0)
+      return 0 ;
+    return indexedFtsDoc*100/total;
+  }
 
   /// Returns the number of words in the dictionary. This can be equal to
   /// the number of articles, or can be larger if some synonyms are present.
@@ -427,6 +439,10 @@ public:
   /// Dictionary can full-text search
   bool canFTS()
   { return can_FTS; }
+
+  virtual int ftsIndexingProgress(){
+    return 0;
+  }
 
   /// Dictionary have index for full-text search
   bool haveFTSIndex()

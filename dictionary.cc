@@ -132,8 +132,8 @@ vector< char > & DataRequest::getFullData()
 }
 
 Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
-  id( id_ ), dictionaryFiles( dictionaryFiles_ ), dictionaryIconLoaded( false )
-  , can_FTS( false), FTS_index_completed( false )
+  id( id_ ), dictionaryFiles( dictionaryFiles_ ), indexedFtsDoc(0)
+  , dictionaryIconLoaded( false ), can_FTS( false),FTS_index_completed( false )
 {
 }
 
