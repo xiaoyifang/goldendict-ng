@@ -565,10 +565,10 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
 #ifdef USE_XAPIAN
     auto searchText = ui.searchLine->text();
     searchText.replace(
-      QRegularExpression( "[\\*\\?\\+\\\"]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
+      QRegularExpression( "[\\*\\?\\+]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
       " " );
 
-    QRegularExpression tokenRx("\\\".*?\\\"|[\\w\\+\\-]+",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    QRegularExpression tokenRx("(\".*?\")|([\\w\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
     auto it = tokenRx.globalMatch(searchText);
     QString firstAvailbeItem;
     while( it.hasNext() )
@@ -578,6 +578,12 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
       auto p = match.captured();
       if( p.startsWith( '-' ) )
         continue;
+
+      //the searched text should be like "term".remove enclosed double quotation marks.
+      if(p.startsWith("\"")){
+        p.remove("\"");
+      }
+
       firstAvailbeItem = p;
       break;
     }
