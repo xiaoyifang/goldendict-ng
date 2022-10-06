@@ -781,7 +781,7 @@ ZimDictionary::ZimDictionary( string const & id,
 
     can_FTS = true;
 
-    ftsIdxName = indexFile + "_FTS";
+    ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
     if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
         && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )

@@ -591,6 +591,14 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 #endif
 }
 
+string getFtsSuffix(){
+#ifdef USE_XAPIAN
+  return "_FTS_x";
+#else
+  return "_FTS";
+#endif
+}
+
 bool needToRebuildBTreeIndex( vector< string > const & dictionaryFiles,
                          string const & indexFile ) noexcept
 {

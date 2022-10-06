@@ -485,7 +485,7 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 
 bool needToRebuildBTreeIndex( vector< string > const & dictionaryFiles,
                          string const & indexFile ) noexcept;
-
+string getFtsSuffix();
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();
