@@ -33,7 +33,7 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 namespace FtsHelpers
 {
     //finished  reversed   dehsinif
-const std::string finish_mark = "dehsinif";
+const static std::string finish_mark = std::string("dehsinif");
 
 bool ftsIndexIsOldOrBad( string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict )
@@ -45,8 +45,9 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
     auto docid = db.get_lastdocid();
     auto document = db.get_document(docid);
 
+    qDebug()<<document.get_data().c_str();
     //use a special document to mark the end of the index.
-    return document.get_data()!=finish_mark;
+    return document.get_data().compare(finish_mark)!=0;
   }
   catch( Xapian::Error & e )
   {
@@ -549,12 +550,20 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
 
   dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
 
-
-  //incremental build the index.
-  //get the last address.
-  Xapian::Document lastDoc = db.get_document(db.get_lastdocid());
-  auto lastAddress = atoi(lastDoc.get_data().c_str());
-  bool skip=true;
+  // incremental build the index.
+  // get the last address.
+  bool skip            = true;
+  uint32_t lastAddress = -1;
+  try
+  {
+    Xapian::Document lastDoc = db.get_document( db.get_lastdocid() );
+    lastAddress              = atoi( lastDoc.get_data().c_str() );
+  }
+  catch( Xapian::Error & e )
+  {
+    qDebug() << e.get_description().c_str();
+    skip = false;
+  }
 
   long indexedDoc=0L;
 
