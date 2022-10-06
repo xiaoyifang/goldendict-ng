@@ -42,9 +42,8 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
     Xapian::WritableDatabase db( dict->ftsIndexName() );
     return db.get_doccount()==0;
   }
-  catch( Xapian::Error  e )
+  catch( Xapian::Error & e )
   {
-    qDebug()<<e.get_type();
     qWarning() << e.get_description().c_str();
     //the file is corrupted,remove it.
     QFile::remove(QString::fromStdString(dict->ftsIndexName()));
