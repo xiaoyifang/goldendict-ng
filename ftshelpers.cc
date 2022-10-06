@@ -553,7 +553,6 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
 
     indexer.set_document( doc );
     indexer.index_text( articleStr.toStdString() );
-    doc.add_boolean_term( std::to_string( address ) );
     doc.set_data( std::to_string( address ) );
     // Add the document to the database.
     db.add_document( doc );

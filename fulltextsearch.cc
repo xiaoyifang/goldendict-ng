@@ -567,15 +567,21 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     searchText.replace(
       QRegularExpression( "[\\*\\?\\+\\\"]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
       " " );
-    auto parts = searchText.split( QRegularExpression( "\\s" ), Qt::SkipEmptyParts );
+
+    QRegularExpression tokenRx("\\\".*?\\\"|[\\w\\+\\-]+",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    auto it = tokenRx.globalMatch(searchText);
     QString firstAvailbeItem;
-    for( auto & p : parts )
+    while( it.hasNext() )
     {
+      QRegularExpressionMatch match = it.next();
+
+      auto p = match.captured();
       if( p.startsWith( '-' ) )
         continue;
       firstAvailbeItem = p;
       break;
     }
+
     if( !firstAvailbeItem.isEmpty() )
     {
       reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
