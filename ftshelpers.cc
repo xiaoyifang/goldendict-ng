@@ -32,8 +32,8 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
 namespace FtsHelpers
 {
-    //finished  reversed   dehsinif
-const static std::string finish_mark = std::string("dehsinif");
+// finished  reversed   dehsinif
+const static std::string finish_mark = std::string( "dehsinif" );
 
 bool ftsIndexIsOldOrBad( string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict )
