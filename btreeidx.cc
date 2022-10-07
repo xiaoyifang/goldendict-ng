@@ -1408,9 +1408,8 @@ QSet<uint32_t> BtreeIndex::findNodes()
 
   // A node offset
   uint32_t * offsets = (uint32_t *)leaf + 1;
-  //      char const * ptr = leaf + sizeof( uint32_t ) +
-  //                         ( indexNodeSize + 1 ) * sizeof( uint32_t );
-  int i=0;
+  uint32_t i=0;
+
   while(i++ < (indexNodeSize+1) )
     leafOffset.insert(*(offsets++));
 
