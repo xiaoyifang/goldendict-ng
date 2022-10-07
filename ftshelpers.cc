@@ -519,7 +519,7 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
   Xapian::Stem stemmer("english");
   indexer.set_stemmer(stemmer);
   indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
-  // indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
+  indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
 
   BtreeIndexing::IndexedWords indexedWords;
 
