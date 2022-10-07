@@ -591,7 +591,7 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
     Xapian::Document doc;
 
     indexer.set_document( doc );
-    indexer.index_text( articleStr.toStdString() );
+    indexer.index_text_without_positions( articleStr.toStdString() );
     doc.set_data( std::to_string( address ) );
     // Add the document to the database.
     db.add_document( doc );
@@ -1320,7 +1320,7 @@ void FTSResultsRequest::runXapian()
       Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
       if( searchMode == FTS::Wildcards )
         flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag/*|Xapian::QueryParser::FLAG_CJK_NGRAM*/ );
+      Xapian::Query query = qp.parse_query( query_string, flag|Xapian::QueryParser::FLAG_CJK_NGRAM );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.
