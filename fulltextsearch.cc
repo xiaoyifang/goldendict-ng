@@ -19,6 +19,7 @@
 #include <QOperatingSystemVersion>
 
 #endif
+#include "base/globalregex.hh"
 
 namespace FTS
 {
@@ -588,12 +589,9 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     QRegExp reg;
 #ifdef USE_XAPIAN
     auto searchText = ui.searchLine->text();
-    searchText.replace(
-      QRegularExpression( "[\\*\\?\\+]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
-      " " );
+    searchText.replace( RX::Ftx::tokenBoundary, " " );
 
-    QRegularExpression tokenRx("(\".*?\")|([\\w\\W\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
-    auto it = tokenRx.globalMatch(searchText);
+    auto it = RX::Ftx::token.globalMatch(searchText);
     QString firstAvailbeItem;
     while( it.hasNext() )
     {
