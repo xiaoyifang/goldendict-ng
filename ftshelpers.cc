@@ -1320,13 +1320,14 @@ void FTSResultsRequest::runXapian()
       Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
       if( searchMode == FTS::Wildcards )
         flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag|Xapian::QueryParser::FLAG_CJK_NGRAM );
+      Xapian::Query query = qp.parse_query( query_string, flag/*|Xapian::QueryParser::FLAG_CJK_NGRAM*/ );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.
       enquire.set_query( query );
       Xapian::MSet matches = enquire.get_mset( 0, 100 );
 
+      emit matchCount(matches.get_matches_estimated());
       // Display the results.
       qDebug() << matches.get_matches_estimated() << " results found.\n";
       qDebug() << "Matches 1-" << matches.size() << ":\n\n";

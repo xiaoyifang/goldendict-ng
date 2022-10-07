@@ -216,6 +216,7 @@ class FullTextSearchDialog : public QDialog
   FtsIndexing & ftsIdx;
 
   QRegExp searchRegExp;
+  int matchedCount;
 
 public:
   FullTextSearchDialog( QWidget * parent,
@@ -250,6 +251,7 @@ private slots:
   void ignoreWordsOrderClicked();
   void ignoreDiacriticsClicked();
   void searchReqFinished();
+  void matchCount(int);
   void reject();
   void itemClicked( QModelIndex const & idx );
   void updateDictionaries();

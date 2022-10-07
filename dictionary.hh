@@ -96,6 +96,8 @@ signals:
   /// finished. That is, it's emitted when isFinished() turns true.
   void finished();
 
+  void matchCount(int);
+
 protected:
 
   /// Called by derivatives to signal update().

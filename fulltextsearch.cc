@@ -436,6 +436,7 @@ void FullTextSearchDialog::accept()
                                ui.distanceBetweenWords->value() : -1;
 
   model->clear();
+  matchedCount=0;
   ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
 
   bool hasCJK;
@@ -488,6 +489,9 @@ void FullTextSearchDialog::accept()
                                                             );
     connect( req.get(), SIGNAL( finished() ),
              this, SLOT( searchReqFinished() ), Qt::QueuedConnection );
+
+    connect( req.get(), SIGNAL( matchCount(int) ),
+             this, SLOT( matchCount(int) ), Qt::QueuedConnection );
 
     searchReqs.push_back( req );
   }
@@ -546,9 +550,9 @@ void FullTextSearchDialog::searchReqFinished()
 
   if( !allHeadwords.isEmpty() )
   {
-     model->addResults( QModelIndex(), allHeadwords );
-     ui.articlesFoundLabel->setText( tr( "Articles found: " )
-                                     + QString::number( results.size() ) );
+    model->addResults( QModelIndex(), allHeadwords );
+    if( results.size() > matchedCount )
+      ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
   }
 
   if ( searchReqs.empty() )
@@ -557,6 +561,12 @@ void FullTextSearchDialog::searchReqFinished()
     ui.OKButton->setEnabled( true );
     QApplication::beep();
   }
+}
+
+void FullTextSearchDialog::matchCount(int _matchCount){
+  matchedCount+=_matchCount;
+  ui.articlesFoundLabel->setText( tr( "Articles found: " )
+                                  + QString::number( matchedCount ) );
 }
 
 void FullTextSearchDialog::reject()
@@ -582,7 +592,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
       QRegularExpression( "[\\*\\?\\+]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption ),
       " " );
 
-    QRegularExpression tokenRx("(\".*?\")|([\\w\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    QRegularExpression tokenRx("(\".*?\")|([\\w\\W\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
     auto it = tokenRx.globalMatch(searchText);
     QString firstAvailbeItem;
     while( it.hasNext() )
