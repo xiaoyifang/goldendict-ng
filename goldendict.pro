@@ -428,6 +428,7 @@ SOURCES += folding.cc \
     btreeidx.cc \
     stardict.cc \
     chunkedstorage.cc \
+    utils.cc \
     weburlrequestinterceptor.cpp \
     xdxf2html.cc \
     iconv.cc \

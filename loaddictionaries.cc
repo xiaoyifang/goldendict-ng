@@ -397,19 +397,24 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   QDir indexDir( Config::getIndexDir() );
 
-  QStringList allIdxFiles = indexDir.entryList( QDir::Files );
+  QStringList allIdxFiles = indexDir.entryList( QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
 
-  for( QStringList::const_iterator i = allIdxFiles.constBegin();
-       i != allIdxFiles.constEnd(); ++i )
+  for( QStringList::const_iterator i = allIdxFiles.constBegin(); i != allIdxFiles.constEnd(); ++i )
   {
-    if ( ids.find( FsEncoding::encode( *i ) ) == ids.end()
-         && i->size() == 32 )
-      indexDir.remove( *i );
-    else
-    if ( i->endsWith( "_FTS" )
-         && i->size() == 36
-         && ids.find( FsEncoding::encode( i->left( 32 ) ) ) == ids.end() )
-      indexDir.remove( *i );
+    if( i->size() >= 32 && ids.find( FsEncoding::encode( i->left( 32 ) ) ) == ids.end() )
+    {
+      if( QFile::exists( *i ) )
+      {
+        indexDir.remove( *i );
+      }
+      else
+      {
+        // must be folder .
+        auto dirPath = Utils::Path::combine( Config::getIndexDir(), *i );
+        QDir t( dirPath );
+        t.removeRecursively();
+      }
+    }
   }
 
   // Run deferred inits
