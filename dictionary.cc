@@ -572,23 +572,13 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
   if(d.exists()){
     d.removeRecursively();
   }
+#endif
   QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
 
   if ( !fileInfo.exists() )
     return true;
 
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
-#else
-  QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
-
-  if ( fileInfo.exists()&&fileInfo.isFile() )
-  {
-    QFile::remove(FsEncoding::decode( indexFile.c_str() ));
-    return true;
-  }
-
-  return false;
-#endif
 }
 
 string getFtsSuffix(){
