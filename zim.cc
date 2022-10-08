@@ -1545,7 +1545,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       try
       {
-        if ( Dictionary::needToRebuildBTreeIndex( dictFiles, indexFile ) ||
+        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
              indexIsOldOrBad( indexFile ) )
         {
           gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );

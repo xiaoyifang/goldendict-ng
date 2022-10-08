@@ -497,8 +497,6 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept;
 bool needToRebuildIndex( vector< string > const & dictionaryFiles,
                          string const & indexFile ) noexcept;
 
-bool needToRebuildBTreeIndex( vector< string > const & dictionaryFiles,
-                         string const & indexFile ) noexcept;
 string getFtsSuffix();
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
