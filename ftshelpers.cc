@@ -516,9 +516,9 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
   Xapian::WritableDatabase db(dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN);
 
   Xapian::TermGenerator indexer;
-  Xapian::Stem stemmer("english");
-  indexer.set_stemmer(stemmer);
-  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
+//  Xapian::Stem stemmer("english");
+//  indexer.set_stemmer(stemmer);
+//  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
   indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
 
   BtreeIndexing::IndexedWords indexedWords;
