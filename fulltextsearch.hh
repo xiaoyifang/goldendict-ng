@@ -76,17 +76,43 @@ Q_OBJECT
   QAtomicInt & isCancelled;
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
   QSemaphore & hasExited;
+  QTimer * timer;
+  QThread * timerThread;
 
 public:
   Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts,
             QSemaphore & hasExited_):
     isCancelled( cancelled ),
     dictionaries( dicts ),
-    hasExited( hasExited_ )
-  {}
+    hasExited( hasExited_ ),
+    timer(new QTimer(0)),
+    timerThread(new QThread(this))
+  {
+    connect(timer, &QTimer::timeout, this, &Indexing::timeout);
+//    timer->start(2000);
+    timer->moveToThread(timerThread);
+    connect(timerThread, &QThread::started, timer, [this](){timer->start(2000);});
+    connect(timerThread, &QThread::finished, timer, &QTimer::stop);
+    timerThread->start();
+
+  }
 
   ~Indexing()
   {
+    if(timerThread){
+      qInfo()<<"delete thread";
+      timerThread->quit();
+      timerThread->wait();
+      delete timerThread;
+      timerThread = nullptr;
+    }
+    if(timer){
+      qInfo()<<"delete timer";
+      delete timer;
+      timer = nullptr;
+    }
+
+    emit sendNowIndexingName( QString() );
     hasExited.release();
   }
 
@@ -94,6 +120,9 @@ public:
 
 signals:
   void sendNowIndexingName( QString );
+
+private slots:
+  void timeout();
 };
 
 class FtsIndexing : public QObject
@@ -187,6 +216,7 @@ class FullTextSearchDialog : public QDialog
   FtsIndexing & ftsIdx;
 
   QRegExp searchRegExp;
+  int matchedCount;
 
 public:
   FullTextSearchDialog( QWidget * parent,
@@ -221,6 +251,7 @@ private slots:
   void ignoreWordsOrderClicked();
   void ignoreDiacriticsClicked();
   void searchReqFinished();
+  void matchCount(int);
   void reject();
   void itemClicked( QModelIndex const & idx );
   void updateDictionaries();

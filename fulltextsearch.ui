@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
+    <width>562</width>
     <height>593</height>
    </rect>
   </property>
@@ -27,36 +27,39 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLineEdit" name="searchLine"/>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLineEdit" name="searchLine"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Mode:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="searchMode"/>
+        </item>
+       </layout>
       </item>
       <item>
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QGridLayout" name="fulltext_option_container">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="articlesPerDictionary"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="distanceBetweenWords"/>
+        </item>
         <item row="1" column="2">
          <widget class="QCheckBox" name="matchCase">
           <property name="text">
            <string>Match case</string>
           </property>
          </widget>
-        </item>
-        <item row="0" column="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>Mode:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="searchMode"/>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="1">
-         <widget class="QSpinBox" name="articlesPerDictionary"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QSpinBox" name="distanceBetweenWords"/>
         </item>
         <item row="0" column="0">
          <widget class="QCheckBox" name="checkBoxDistanceBetweenWords">
@@ -72,18 +75,14 @@
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
+        <item row="2" column="0">
          <widget class="QCheckBox" name="checkBoxIgnoreWordOrder">
           <property name="text">
            <string>Ignore words order</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="2" column="1">
          <widget class="QCheckBox" name="checkBoxIgnoreDiacritics">
           <property name="text">
            <string>Ignore diacritics</string>
@@ -272,11 +271,9 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>searchLine</tabstop>
   <tabstop>headwordsView</tabstop>
   <tabstop>checkBoxDistanceBetweenWords</tabstop>
   <tabstop>distanceBetweenWords</tabstop>
-  <tabstop>searchMode</tabstop>
   <tabstop>checkBoxArticlesPerDictionary</tabstop>
   <tabstop>articlesPerDictionary</tabstop>
   <tabstop>matchCase</tabstop>

@@ -274,6 +274,10 @@ inline bool isAudioUrl( QUrl const & url )
 
 }
 
+namespace Path{
+QString combine(const QString& path1, const QString& path2);
+}
+
 }
 
 namespace
@@ -312,5 +316,7 @@ inline QString getHostBaseFromUrl( QUrl const & url )
   return getHostBase( host );
 }
 }
+
+
 
 #endif // UTILS_HH

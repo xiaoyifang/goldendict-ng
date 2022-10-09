@@ -64,7 +64,9 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
                          bool handleRoundBrackets = false );
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
-
+#ifdef USE_XAPIAN
+void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
+#endif
 bool isCJKChar( ushort ch );
 
 class FTSResultsRequest : public Dictionary::DataRequest
@@ -142,7 +144,9 @@ public:
   }
 
   void run();
-
+  #ifdef USE_XAPIAN
+  void runXapian();
+  #endif
   virtual void cancel()
   {
     isCancelled.ref();
