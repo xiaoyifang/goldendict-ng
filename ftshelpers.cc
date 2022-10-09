@@ -1313,10 +1313,7 @@ void FTSResultsRequest::runXapian()
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
-      Xapian::Stem stemmer( "english" );
-      qp.set_stemmer( stemmer );
       qp.set_database( db );
-      qp.set_stemming_strategy( Xapian::QueryParser::STEM_SOME );
       Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
       if( searchMode == FTS::Wildcards )
         flag = Xapian::QueryParser::FLAG_WILDCARD;
