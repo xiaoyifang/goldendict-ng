@@ -96,6 +96,8 @@ signals:
   /// finished. That is, it's emitted when isFinished() turns true.
   void finished();
 
+  void matchCount(int);
+
 protected:
 
   /// Called by derivatives to signal update().
@@ -263,6 +265,7 @@ class Class
 {
   string id;
   vector< string > dictionaryFiles;
+  long indexedFtsDoc;
 
 protected:
   QString dictionaryDescription;
@@ -323,6 +326,17 @@ public:
 
   /// Returns the number of articles in the dictionary.
   virtual unsigned long getArticleCount() noexcept=0;
+
+  void setIndexedFtsDoc(long _indexedFtsDoc){
+    indexedFtsDoc = _indexedFtsDoc;
+  }
+
+  int getIndexingFtsProgress(){
+    auto total = getArticleCount();
+    if(total==0)
+      return 0 ;
+    return indexedFtsDoc*100/total;
+  }
 
   /// Returns the number of words in the dictionary. This can be equal to
   /// the number of articles, or can be larger if some synonyms are present.
@@ -483,6 +497,7 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept;
 bool needToRebuildIndex( vector< string > const & dictionaryFiles,
                          string const & indexFile ) noexcept;
 
+string getFtsSuffix();
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();

@@ -781,7 +781,7 @@ ZimDictionary::ZimDictionary( string const & id,
 
     can_FTS = true;
 
-    ftsIdxName = indexFile + "_FTS";
+    ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
     if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
         && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
@@ -1031,9 +1031,11 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
 
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n",
            getName().c_str() );
-
   try
   {
+#ifdef USE_XAPIAN
+    return FtsHelpers::makeFTSIndexXapian(this,isCancelled);
+#endif
     Mutex::Lock _( getFtsMutex() );
 
     File::Class ftsIdx( ftsIndexName(), "wb" );
@@ -1114,6 +1116,8 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
       indexedArticles.insert( articleNumber );
 
       FtsHelpers::parseArticleForFts( offsets.at( i ), articleStr, ftsWords );
+
+      setIndexedFtsDoc(i);
     }
 
     // Free memory
