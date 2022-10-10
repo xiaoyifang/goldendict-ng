@@ -2,7 +2,7 @@
 #include "wstring_qt.hh"
 
 HeadwordListModel::HeadwordListModel( QObject * parent ) :
-  QAbstractListModel( parent ), filtering( false ), index( 0 ), ptr( 0 )
+  QAbstractListModel( parent ), filtering( false ), totalSize(0), index( 0 ),ptr( 0 )
 {
 }
 
