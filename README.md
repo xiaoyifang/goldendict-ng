@@ -129,7 +129,8 @@ build xapian from source, download and extract the xapian-core source code.
     make 
     make install
 
-    On Windows,follow the instructions in the xapian-core/INSTALL Visual Studio parts.
+    On Windows,follow the instructions in the xapian-core/INSTALL Visual Studio parts.（**xapian does not support Debug in Windows**）
+    A precompiled version of xapian lib has provided in winlibs
 
 use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be used to support as the the fulltext's backend engine.
 
