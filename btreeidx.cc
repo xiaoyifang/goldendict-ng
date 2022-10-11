@@ -22,22 +22,7 @@
 // LZO mode is experimental and unsupported. Tests didn't show any substantial
 // speed improvements.
 
-#ifdef __BTREE_USE_LZO
-#include <lzo/lzo1x.h>
-
-namespace {
-struct __LzoInit
-{
-  __LzoInit()
-  {
-    lzo_init();
-  }
-} __lzoInit;
-}
-
-#else
 #include <zlib.h>
-#endif
 
 namespace BtreeIndexing {
 
@@ -492,17 +477,6 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
 
   idxFile->read( &compressedData.front(), compressedData.size() );
 
-  #ifdef __BTREE_USE_LZO
-
-  lzo_uint decompressedLength = out.size();
-
-  if ( lzo1x_decompress( &compressedData.front(), compressedData.size(),
-                         (unsigned char *)&out.front(), &decompressedLength, 0 )
-       != LZO_E_OK || decompressedLength != out.size() )
-    throw exFailedToDecompressNode();
-
-  #else
-
   unsigned long decompressedLength = out.size();
 
   if ( uncompress( (unsigned char *)&out.front(),
@@ -511,7 +485,6 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
                    compressedData.size() ) != Z_OK ||
        decompressedLength != out.size() )
     throw exFailedToDecompressNode();
-  #endif
 }
 
 char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
@@ -989,25 +962,6 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   }
 
   // Save the result.
-
-  #ifdef __BTREE_USE_LZO
-
-  vector< unsigned char > compressedData( uncompressedData.size() + uncompressedData.size() / 16 + 64 + 3 );
-
-  char workMem[ LZO1X_1_MEM_COMPRESS ];
-
-  lzo_uint compressedSize;
-
-  if ( lzo1x_1_compress( &uncompressedData.front(), uncompressedData.size(),
-                         &compressedData.front(), &compressedSize, workMem )
-       != LZO_E_OK )
-  {
-    FDPRINTF( stderr, "Failed to compress btree node.\n" );
-    abort();
-  }
-
-  #else
-
   vector< unsigned char > compressedData( compressBound( uncompressedData.size() ) );
 
   unsigned long compressedSize = compressedData.size();
@@ -1018,8 +972,6 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
     qFatal( "Failed to compress btree node." );
     abort();
   }
-
-  #endif
 
   uint32_t offset = file.tell();
 
