@@ -36,6 +36,7 @@ void Indexing::run()
 {
   try
   {
+    timerThread->start();
     // First iteration - dictionaries with no more MaxDictionarySizeForFastSearch articles
     for( size_t x = 0; x < dictionaries.size(); x++ )
     {
@@ -63,6 +64,9 @@ void Indexing::run()
         dictionaries.at( x )->makeFTSIndex( isCancelled, false );
       }
     }
+
+    timerThread->quit();
+    timerThread->wait();
   }
   catch( std::exception &ex )
   {
