@@ -61,4 +61,7 @@ QRegularExpression Mdx::links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
 QRegularExpression Mdx::fontFace( "(?:url\\s*\\(\\s*\\\"(.*?)\\\"\\s*)\\)",
                                     QRegularExpression::CaseInsensitiveOption|QRegularExpression::DotMatchesEverythingOption );
 
+QRegularExpression Mdx::styleElment( "(<style[^>]*>)([\\w\\W]*?)(<\\/style>)",
+                                  QRegularExpression::CaseInsensitiveOption);
+
 
