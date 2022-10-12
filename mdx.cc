@@ -303,6 +303,7 @@ private:
 
   void replaceLinks( QString & id, const QString & articleId, QString & article );
   //@font-face
+  void replaceStyleInHtml( QString & id, QString & article );
   void replaceFontLinks( QString & id, QString & article );
 
   void removeDirectory( QString const & directory );
@@ -959,7 +960,7 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
 {
   QString id = QString::fromStdString( getId() );
   replaceLinks( id, articleId, article );
-  replaceFontLinks( id, article);
+  replaceStyleInHtml( id, article);
   return article;
 }
 
@@ -1102,6 +1103,37 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
   }
 }
 
+void MdxDictionary::replaceStyleInHtml( QString & id, QString & article )
+{
+  //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
+  QString articleNewText;
+  int linkPos                        = 0;
+  QRegularExpressionMatchIterator it = RX::Mdx::styleElment.globalMatch( article );
+  while( it.hasNext() )
+  {
+    QRegularExpressionMatch allLinksMatch = it.next();
+
+    if( allLinksMatch.capturedEnd() < linkPos )
+      continue;
+
+    articleNewText += article.mid( linkPos, allLinksMatch.capturedStart() - linkPos );
+    linkPos = allLinksMatch.capturedEnd();
+
+    articleNewText+=allLinksMatch.captured(1);
+
+    // the style
+    auto style = allLinksMatch.captured(2);
+    replaceFontLinks(id, style);
+    articleNewText+=style;
+    articleNewText+=allLinksMatch.captured(3);
+  }
+  if( linkPos )
+  {
+    articleNewText += article.mid( linkPos );
+    article = articleNewText;
+  }
+}
+
 void MdxDictionary::replaceFontLinks( QString & id, QString & article )
 {
   //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
@@ -1117,7 +1149,6 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
 
     articleNewText += article.mid( linkPos, allLinksMatch.capturedStart() - linkPos );
     linkPos = allLinksMatch.capturedEnd();
-
     QString linkTxt  = allLinksMatch.captured();
     QString linkType = allLinksMatch.captured( 1 );
     QString newLink  = linkTxt;

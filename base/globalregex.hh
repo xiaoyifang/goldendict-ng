@@ -42,6 +42,7 @@ public:
 
   static QRegularExpression links;
   static QRegularExpression fontFace;
+  static QRegularExpression styleElment;
 };
 
 } // namespace RX

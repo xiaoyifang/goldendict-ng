@@ -89,28 +89,15 @@ public:
     timerThread(new QThread(this))
   {
     connect(timer, &QTimer::timeout, this, &Indexing::timeout);
-//    timer->start(2000);
     timer->moveToThread(timerThread);
     connect(timerThread, &QThread::started, timer, [this](){timer->start(2000);});
     connect(timerThread, &QThread::finished, timer, &QTimer::stop);
-    timerThread->start();
 
   }
 
   ~Indexing()
   {
-    if(timerThread){
-      qInfo()<<"delete thread";
-      timerThread->quit();
-      timerThread->wait();
-      delete timerThread;
-      timerThread = nullptr;
-    }
-    if(timer){
-      qInfo()<<"delete timer";
-      delete timer;
-      timer = nullptr;
-    }
+
 
     emit sendNowIndexingName( QString() );
     hasExited.release();
