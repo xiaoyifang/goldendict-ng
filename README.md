@@ -87,6 +87,8 @@ Then pass `"CONFIG+=zim_support"` to `qmake`
 
 ### Building without extra tiff handler( DEPRECATED )
 
+**deprecated: qt has offered b/w tiff support which means this options should always _enabled_.  intend to remove in the future.**
+
 If you have problem building with libtiff5-dev package, you can pass
 `"CONFIG+=no_extra_tiff_handler"` to `qmake` in order to disable extra tiff support
 (without such extra support some b/w tiff images will not be displayed):
