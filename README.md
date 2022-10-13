@@ -85,7 +85,7 @@ Then pass `"CONFIG+=zim_support"` to `qmake`
 
     qmake "CONFIG+=zim_support"
 
-### Building without extra tiff handler
+### Building without extra tiff handler( DEPRECATED )
 
 If you have problem building with libtiff5-dev package, you can pass
 `"CONFIG+=no_extra_tiff_handler"` to `qmake` in order to disable extra tiff support
