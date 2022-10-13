@@ -1739,7 +1739,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
 void MainWindow::inspectElement( QWebEnginePage * page )
 {
-  inspector->setInspectPage( page );
+  inspector->triggerAction( page );
 }
 
 void MainWindow::tabCloseRequested( int x )

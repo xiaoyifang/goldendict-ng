@@ -14,6 +14,7 @@ public:
   ArticleInspector( QWidget * parent = nullptr );
 
   void setInspectPage( QWebEnginePage * page);
+  void triggerAction( QWebEnginePage * page );
 private:
 
   virtual void closeEvent( QCloseEvent * );
