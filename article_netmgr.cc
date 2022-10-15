@@ -200,7 +200,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     QUrl refererUrl = QUrl::fromEncoded( referer );
 
     if ( !url.host().endsWith( refererUrl.host() ) &&
-         getHostBaseFromUrl( url ) != getHostBaseFromUrl( refererUrl ) && !url.scheme().startsWith("data") )
+        Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl ) && !url.scheme().startsWith("data") )
     {
       gdWarning( "Blocking element \"%s\" due to not same domain", url.toEncoded().data() );
 
