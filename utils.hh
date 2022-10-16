@@ -272,16 +272,6 @@ inline bool isAudioUrl( QUrl const & url )
          && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
-}
-
-namespace Path{
-QString combine(const QString& path1, const QString& path2);
-}
-
-}
-
-namespace
-{
 /// Uses some heuristics to chop off the first domain name from the host name,
 /// but only if it's not too base. Returns the resulting host name.
 inline QString getHostBase( QString const & host )
@@ -315,8 +305,15 @@ inline QString getHostBaseFromUrl( QUrl const & url )
 
   return getHostBase( host );
 }
+
+QString getSchemeAndHost( QUrl const & url );
+
 }
 
+namespace Path{
+QString combine(const QString& path1, const QString& path2);
+}
 
+}
 
 #endif // UTILS_HH

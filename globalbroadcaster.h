@@ -16,7 +16,7 @@ class GlobalBroadcaster : public QObject
   Q_OBJECT
 private:
   Config::Preferences * preference;
-  std::vector<QString> whitelist;
+  QSet<QString> whitelist;
 
 public:
   void setPreference( Config::Preferences * _pre );

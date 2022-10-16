@@ -1739,7 +1739,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
 void MainWindow::inspectElement( QWebEnginePage * page )
 {
-  inspector->setInspectPage( page );
+  inspector->triggerAction( page );
 }
 
 void MainWindow::tabCloseRequested( int x )
@@ -3057,21 +3057,7 @@ void MainWindow::checkForNewRelease()
   latestReleaseReply = 0;
 
   QNetworkRequest req(
-    QUrl( "http://goldendict.org/latest_release.php?current="
-          PROGRAM_VERSION "&platform="
-#ifdef HAVE_X11
-          "x11"
-#endif
-#ifdef Q_OS_MAC
-          "mac"
-#endif
-#ifdef Q_WS_QWS
-          "qws"
-#endif
-#ifdef Q_OS_WIN
-          "win"
-#endif
-          ) );
+    QUrl( "https://github.com/xiaoyifang/goldendict/releases") );
 
   latestReleaseReply = articleNetMgr.get( req );
 
@@ -3091,13 +3077,25 @@ void MainWindow::latestReleaseReplyReady()
 
   if ( latestReleaseReply->error() == QNetworkReply::NoError )
   {
-    QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readLine() ).trimmed();
-    QStringList parts = latestReleaseInfo.split( ' ' );
-    if ( parts.size() == 2 )
-    {
-      latestVersion = parts[ 0 ];
-      downloadUrl = parts[ 1 ];
-      success = true;
+    QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readAll() );
+    QRegularExpression firstReleaseAnchor ("<a\\s+[^>]*?class=\\\"Link--primary\\\"[^>]*?>[^<]*?<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    auto match = firstReleaseAnchor.match(latestReleaseInfo);
+    if(match.hasMatch()){
+      auto releaseAnchor = match.captured();
+      QRegularExpression extractReleaseRx ("<a\\s+.*?href=\\\"([^\\\"]*)\\\".*?>(.*?)<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+      auto matchParts = extractReleaseRx.match(releaseAnchor);
+      if(matchParts.hasMatch()){
+        latestVersion = matchParts.captured(2);
+        QString prefix("GoldenDict-v");
+        if(latestVersion.startsWith(prefix)){
+          latestVersion = latestVersion.mid(prefix.length());
+        }
+        downloadUrl = matchParts.captured(1);
+        if(downloadUrl.startsWith("/")){
+          downloadUrl = latestReleaseReply->request().url().host() + downloadUrl;
+        }
+        success = true;
+      }
     }
   }
 
