@@ -36,10 +36,73 @@ jobs:
           lipo -info build/arm64-osx-dynamic/lib/libavco*
 
           cd build
+          otool -L arm64-osx-dynamic/lib/libavcodec.dylib x64-osx-dynamic/lib/libavcodec.dylib
+          otool -L arm64-osx-dynamic/lib/libspeex.dylib x64-osx-dynamic/lib/libspeex.dylib
+
+          install_name_tool -id @executable_path/../Frameworks/libavcodec.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /usr/local/share/vcpkg/packages/ffmpeg_arm64-osx-dynamic/lib/libswresample.3.dylib @executable_path/../Frameworks/libswresample.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /usr/local/share/vcpkg/packages/ffmpeg_arm64-osx-dynamic/lib/libavutil.56.dylib  @executable_path/../Frameworks/libavutil.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libmp3lame.0.dylib  @executable_path/../Frameworks/libmp3lame.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libspeex.1.dylib  @executable_path/../Frameworks/libspeex.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+
+          install_name_tool -change @rpath/libfdk-aac.2.dylib @executable_path/../Frameworks/libfdk-aac.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libvorbis.0.4.9.dylib  @executable_path/../Frameworks/libvorbis.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libopus.0.dylib  @executable_path/../Frameworks/libopus.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libvorbisenc.2.0.12.dylib  @executable_path/../Frameworks/libvorbisenc.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libavcodec.dylib
+
+
+          install_name_tool -id @executable_path/../Frameworks/libavcodec.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /usr/local/share/vcpkg/packages/ffmpeg_x64-osx-dynamic/lib/libswresample.3.dylib @executable_path/../Frameworks/libswresample.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /usr/local/share/vcpkg/packages/ffmpeg_x64-osx-dynamic/lib/libavutil.56.dylib  @executable_path/../Frameworks/libavutil.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libmp3lame.0.dylib  @executable_path/../Frameworks/libmp3lame.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libspeex.1.dylib  @executable_path/../Frameworks/libspeex.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+
+          install_name_tool -change @rpath/libfdk-aac.2.dylib @executable_path/../Frameworks/libfdk-aac.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libvorbis.0.4.9.dylib  @executable_path/../Frameworks/libvorbis.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libopus.0.dylib  @executable_path/../Frameworks/libopus.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+          install_name_tool -change @rpath/libvorbisenc.2.0.12.dylib  @executable_path/../Frameworks/libvorbisenc.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libavcodec.dylib
+
+          install_name_tool -id   @executable_path/../Frameworks/libspeex.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libspeex.dylib
+          install_name_tool -id   @executable_path/../Frameworks/libspeex.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libspeex.dylib
+
+          install_name_tool -id   @executable_path/../Frameworks/libmp3lame.dylib /Users/runner/work/goldendict/goldendict/build/arm64-osx-dynamic/lib/libmp3lame.dylib
+          install_name_tool -id   @executable_path/../Frameworks/libmp3lame.dylib /Users/runner/work/goldendict/goldendict/build/x64-osx-dynamic/lib/libmp3lame.dylib
+
+
+          otool -L arm64-osx-dynamic/lib/libavcodec.dylib x64-osx-dynamic/lib/libavcodec.dylib
+          otool -L arm64-osx-dynamic/lib/libspeex.dylib x64-osx-dynamic/lib/libspeex.dylib
+          otool -L arm64-osx-dynamic/lib/libmp3lame.dylib x64-osx-dynamic/lib/libmp3lame.dylib
+
           lipo -create -output libavcodec.dylib arm64-osx-dynamic/lib/libavcodec.dylib x64-osx-dynamic/lib/libavcodec.dylib
           lipo -create -output libspeex.dylib arm64-osx-dynamic/lib/libspeex.dylib x64-osx-dynamic/lib/libspeex.dylib
-          lipo -detailed_info libavcodec.dylib
-          lipo -detailed_info libspeex.dylib
+          lipo -create -output libmp3lame.dylib arm64-osx-dynamic/lib/libmp3lame.dylib x64-osx-dynamic/lib/libmp3lame.dylib
+          lipo -create -output libfdk-aac.dylib arm64-osx-dynamic/lib/libfdk-aac.2.dylib x64-osx-dynamic/lib/libfdk-aac.2.dylib
+          lipo -create -output libopus.dylib arm64-osx-dynamic/lib/libopus.dylib x64-osx-dynamic/lib/libopus.dylib
+          lipo -create -output libvorbis.dylib arm64-osx-dynamic/lib/libvorbis.dylib x64-osx-dynamic/lib/libvorbis.dylib
+          lipo -create -output libvorbisenc.dylib arm64-osx-dynamic/lib/libvorbisenc.dylib x64-osx-dynamic/lib/libvorbisenc.dylib
+          lipo -create -output libogg.dylib arm64-osx-dynamic/lib/libogg.dylib x64-osx-dynamic/lib/libogg.dylib          
+
+          install_name_tool -change @rpath/libfdk-aac.2.dylib @executable_path/../Frameworks/libfdk-aac.dylib libavcodec.dylib
+          install_name_tool -change @rpath/libvorbis.0.4.9.dylib  @executable_path/../Frameworks/libvorbis.dylib libavcodec.dylib
+          install_name_tool -change @rpath/libopus.0.dylib  @executable_path/../Frameworks/libopus.dylib libavcodec.dylib
+          install_name_tool -change @rpath/libvorbisenc.2.0.12.dylib  @executable_path/../Frameworks/libvorbisenc.dylib libavcodec.dylib
+          install_name_tool -change @rpath/libogg.0.dylib  @executable_path/../Frameworks/libogg.dylib libvorbis.dylib
+          install_name_tool -change @rpath/libvorbis.0.4.9.dylib  @executable_path/../Frameworks/libvorbis.dylib libvorbisenc.dylib
+          install_name_tool -change @rpath/libogg.0.dylib  @executable_path/../Frameworks/libogg.dylib libvorbisenc.dylib
+
+          ls -al *.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libavcodec.dylib /Users/runner/work/goldendict/goldendict/build/libavcodec.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libmp3lame.dylib /Users/runner/work/goldendict/goldendict/build/libmp3lame.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libspeex.dylib /Users/runner/work/goldendict/goldendict/build/libspeex.dylib
+
+          sudo install_name_tool -id  @executable_path/../Frameworks/libfdk-aac.dylib /Users/runner/work/goldendict/goldendict/build/libfdk-aac.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libopus.dylib /Users/runner/work/goldendict/goldendict/build/libopus.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libvorbis.dylib /Users/runner/work/goldendict/goldendict/build/libvorbis.dylib
+          sudo install_name_tool -id  @executable_path/../Frameworks/libvorbisenc.dylib /Users/runner/work/goldendict/goldendict/build/libvorbisenc.dylib
+          install_name_tool -id  @executable_path/../Frameworks/libogg.dylib libogg.dylib
+
+          lipo -detailed_info libavcodec.dylib libmp3lame.dylib libspeex.dylib
+          otool -L libavcodec.dylib libmp3lame.dylib libspeex.dylib *.dylib
 
       - uses: actions/upload-artifact@v2
         with:
