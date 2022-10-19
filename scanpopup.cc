@@ -202,11 +202,17 @@ ScanPopup::ScanPopup( QWidget * parent,
     if( cfg.popupWindowAlwaysOnTop )
       flags |= Qt::WindowStaysOnTopHint;
     setWindowFlags( flags );
+#ifdef Q_OS_MACOS
+    setAttribute(Qt::WA_MacAlwaysShowToolWindow);
+#endif
   }
   else
   {
     dictionaryBar.setMovable( false );
     setWindowFlags( unpinnedWindowFlags() );
+#ifdef Q_OS_MACOS
+    setAttribute(Qt::WA_MacAlwaysShowToolWindow, false);
+#endif
   }
 
   connect( &configEvents, SIGNAL( mutedDictionariesChanged() ),
@@ -1070,6 +1076,10 @@ void ScanPopup::pinButtonClicked( bool checked )
       flags |= Qt::WindowStaysOnTopHint;
     setWindowFlags( flags );
 
+#ifdef Q_OS_MACOS
+    setAttribute(Qt::WA_MacAlwaysShowToolWindow);
+#endif
+
     setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
     dictionaryBar.setMovable( true );
     hideTimer.stop();
@@ -1079,6 +1089,10 @@ void ScanPopup::pinButtonClicked( bool checked )
     ui.onTopButton->setVisible( false );
     dictionaryBar.setMovable( false );
     setWindowFlags( unpinnedWindowFlags() );
+
+#ifdef Q_OS_MACOS
+    setAttribute(Qt::WA_MacAlwaysShowToolWindow, false);
+#endif
 
     mouseEnteredOnce = true;
   }
