@@ -2078,7 +2078,7 @@ void ArticleView::resourceDownloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() >= 0 )
+      if ( (*i)->dataSize() > 0 )
       {
         // Ok, got one finished, all others are irrelevant now
 
