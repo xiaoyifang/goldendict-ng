@@ -430,6 +430,7 @@ ArticleRequest::ArticleRequest(
   memcpy( &data.front(), header.data(), header.size() );
 
   // Accumulate main forms
+  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
 
   for( unsigned x = 0; x < activeDicts.size(); ++x )
   {
@@ -448,8 +449,6 @@ void ArticleRequest::altSearchFinished()
 {
   if ( altsDone )
     return;
-
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
 
   // Check every request for finishing
   for( list< sptr< Dictionary::WordSearchRequest > >::iterator i =
