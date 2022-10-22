@@ -667,5 +667,14 @@ TS_OUT = $$TRANSLATIONS
 TS_OUT ~= s/.ts/.qm/g
 PRE_TARGETDEPS += $$TS_OUT
 
+equals(QT_VERSION,6.4.0){
+    #QTBUG-105984
+    multimedia.files = $$[QT_INSTALL_PLUGINS]/multimedia/*
+    multimedia.path = plugins/multimedia
+    #multimedia.CONFIG += no_check_exist
+    message("copy qt6.4.0 multimedia")
+    INSTALLS += multimedia
+}
+
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 
