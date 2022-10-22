@@ -1668,7 +1668,6 @@ void ArticleView::playSound()
   });
 }
 
-// use eventloop to turn the async callback to sync execution.
 void ArticleView::toHtml( const std::function< void( QString & ) > & callback )
 {
   ui.definition->page()->toHtml(
