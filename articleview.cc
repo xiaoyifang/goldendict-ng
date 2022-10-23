@@ -1668,7 +1668,6 @@ void ArticleView::playSound()
   });
 }
 
-// use eventloop to turn the async callback to sync execution.
 void ArticleView::toHtml( const std::function< void( QString & ) > & callback )
 {
   ui.definition->page()->toHtml(
@@ -2079,7 +2078,7 @@ void ArticleView::resourceDownloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() >= 0 )
+      if ( (*i)->dataSize() > 0 )
       {
         // Ok, got one finished, all others are irrelevant now
 
