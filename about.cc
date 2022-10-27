@@ -34,7 +34,11 @@ About::About( QWidget * parent ): QDialog( parent )
   ui.qtVersion->setText( tr( "Based on Qt %1 (%2, %3 bit)" ).arg(
                            QLatin1String( qVersion() ),
                            compilerVersion,
-                           QString::number( QSysInfo::WordSize ) ) );
+                           QString::number( QSysInfo::WordSize ) )
+#ifdef USE_XAPIAN
+  +" (Xapian inside)"
+#endif
+                         );
 
   QFile creditsFile( ":/CREDITS.txt" );
 

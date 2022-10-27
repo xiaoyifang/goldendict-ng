@@ -335,7 +335,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
                 QByteArray bytes;
                 QBuffer buffer(&bytes);
                 buffer.open(QIODevice::WriteOnly);
-                dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "webp");
+                dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "PNG");
                 buffer.close();
                 sptr< Dictionary::DataRequestInstant > ico = new Dictionary::DataRequestInstant( true );
                 ico->getData().resize( bytes.size() );
