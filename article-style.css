@@ -11,7 +11,6 @@ body
 
 h1,h2,h3,h4,h5,h6 {
   unicode-bidi: plaintext;
-  text-align: start;
 }
 /* This stylesheet is used to highligh current selection when doing a search.
   It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
@@ -137,7 +136,6 @@ pre
 div.sdct_h
 {
   unicode-bidi: plaintext;
-  text-align: start;
 }
 
 .sdict_h_wav img

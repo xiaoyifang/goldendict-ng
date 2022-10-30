@@ -4,17 +4,17 @@ concurrency:
   cancel-in-progress: true
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - master
-      # - staged
-    paths-ignore:
-      - 'docs/**'
-      - ".github/**"
-      - "howto/**"
-      - "*.md"
-      - ".clang-format"
+  # push:
+  #   branches:
+  #     - dev
+  #     - master
+  #     # - staged
+  #   paths-ignore:
+  #     - 'docs/**'
+  #     - ".github/**"
+  #     - "howto/**"
+  #     - "*.md"
+  #     - ".clang-format"
 jobs:
   build:
     name: Build
