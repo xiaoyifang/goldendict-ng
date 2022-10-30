@@ -1,29 +1,65 @@
 # Format Style Options - Created with Clang Power Tools
 ---
-AlignAfterOpenBracket: Align
-AlignConsecutiveAssignments: AcrossComments
+AccessModifierOffset: -1
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments: Consecutive
 AlignEscapedNewlines: Left
-AlignOperands: Align
+AlignOperands: DontAlign
+AlignTrailingComments: false
 AllowAllArgumentsOnNextLine: false
-AllowShortBlocksOnASingleLine: false
-AllowShortFunctionsOnASingleLine: None
-AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: None
+AllowShortEnumsOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: true
 BasedOnStyle: LLVM
 BinPackArguments: false
 BinPackParameters: false
+BraceWrapping: 
+  AfterCaseLabel: false
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
 BreakBeforeBinaryOperators: NonAssignment
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Custom
+BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
+BreakStringLiterals: false
 ColumnLimit: 120
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
-ConstructorInitializerIndentWidth : 2
 ContinuationIndentWidth: 2
-MaxEmptyLinesToKeep: 1
+DeriveLineEnding: false
+EmptyLineBeforeAccessModifier: Leave
+ExperimentalAutoDetectBinPacking: true
+FixNamespaceComments: false
+IncludeBlocks: Regroup
+IndentCaseLabels: true
+IndentPPDirectives: BeforeHash
+MaxEmptyLinesToKeep: 2
+NamespaceIndentation: Inner
 PointerAlignment: Middle
+ReflowComments: false
 SortIncludes: false
 SortUsingDeclarations: false
+SpaceAfterCStyleCast: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
 SpaceBeforeParens: Never
 SpacesInAngles: true
+SpacesInConditionalStatement: true
 SpacesInParentheses: true
 SpacesInSquareBrackets: true
 UseTab: Never
