@@ -2078,7 +2078,7 @@ void ArticleView::resourceDownloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() > 0 )
+      if ( (*i)->dataSize() >= 0 )
       {
         // Ok, got one finished, all others are irrelevant now
 
@@ -2759,7 +2759,7 @@ void ResourceToSaveHandler::downloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() > 0 && !alreadyDone )
+      if ( (*i)->dataSize() >= 0 && !alreadyDone )
       {
         QByteArray resourceData;
         vector< char > const & data = (*i)->getFullData();
