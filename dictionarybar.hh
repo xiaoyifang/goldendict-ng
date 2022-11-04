@@ -61,10 +61,6 @@ private:
   QList< QAction * > dictActions;
   QAction * maxDictionaryRefsAction;
 
-  int timerId;
-
-  virtual bool eventFilter( QObject *, QEvent * );
-
 protected:
 
   void contextMenuEvent( QContextMenuEvent * event );

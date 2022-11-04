@@ -401,6 +401,9 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
                                   Contexts const & contexts_ )
 {
   currentWord = phrase.phrase.trimmed();
+  if( currentWord.isEmpty() )
+    return;
+  historyMode = false;
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
@@ -484,6 +487,9 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   if( dictIDs.isEmpty() )
     return;
   currentWord = word.trimmed();
+  if( currentWord.isEmpty() )
+    return;
+  historyMode = false;
   // first, let's stop the player
   audioPlayer->stop();
 
@@ -1623,6 +1629,8 @@ void ArticleView::back()
   if ( canGoBack() )
   {
     saveHistoryUserData();
+    currentActiveDictIds.clear();
+    historyMode = true;
     ui.definition->back();
   }
 }
@@ -1630,6 +1638,8 @@ void ArticleView::back()
 void ArticleView::forward()
 {
   saveHistoryUserData();
+  currentActiveDictIds.clear();
+  historyMode = true;
   ui.definition->forward();
 }
 
@@ -2078,7 +2088,7 @@ void ArticleView::resourceDownloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() > 0 )
+      if ( (*i)->dataSize() >= 0 )
       {
         // Ok, got one finished, all others are irrelevant now
 
@@ -2619,7 +2629,7 @@ void ArticleView::highlightAllFtsOccurences( QWebEnginePage::FindFlags flags )
 }
 
 void ArticleView::setActiveDictIds(ActiveDictIds ad) {
-  if (ad.word == currentWord) {
+  if (ad.word == currentWord || historyMode) {
     // ignore all other signals.
     qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
     currentActiveDictIds << ad.dictIds;
@@ -2712,10 +2722,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
 #endif
 
   ui.ftsSearchStatusLabel->setText( searchStatusMessage( ftsPosition + 1, allMatches.size() ) );
-  // Store new highlighted selection
-  // ui.definition->page()->
-  //        runJavaScript( QString( "%1=window.getSelection().getRangeAt(0);_=0;" )
-  //                            .arg( rangeVarName ) );
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
@@ -2759,7 +2765,7 @@ void ResourceToSaveHandler::downloadFinished()
   {
     if ( (*i)->isFinished() )
     {
-      if ( (*i)->dataSize() > 0 && !alreadyDone )
+      if ( (*i)->dataSize() >= 0 && !alreadyDone )
       {
         QByteArray resourceData;
         vector< char > const & data = (*i)->getFullData();

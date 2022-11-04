@@ -50,7 +50,6 @@
 #include "resourceschemehandler.h"
 
 #ifdef Q_OS_MAC
-#include "lionsupport.h"
 #include "macmouseover.hh"
 #endif
 
@@ -906,10 +905,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wasMaximized = isMaximized();
 
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
-
-  #ifdef Q_OS_MAC
-    LionSupport::addFullscreen(this);
-  #endif
 
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );

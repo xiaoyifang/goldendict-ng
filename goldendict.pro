@@ -226,8 +226,7 @@ mac {
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
-    OBJECTIVE_SOURCES += lionsupport.mm \
-                         machotkeywrapper.mm \
+    OBJECTIVE_SOURCES += machotkeywrapper.mm \
                          macmouseover.mm \
                          speechclient_mac.mm
     ICON = icons/macicon.icns
