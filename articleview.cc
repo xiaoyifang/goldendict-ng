@@ -401,6 +401,8 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
                                   Contexts const & contexts_ )
 {
   currentWord = phrase.phrase.trimmed();
+  if( currentWord.isEmpty() )
+    return;
   historyMode = false;
   currentActiveDictIds.clear();
   // first, let's stop the player
@@ -485,6 +487,8 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   if( dictIDs.isEmpty() )
     return;
   currentWord = word.trimmed();
+  if( currentWord.isEmpty() )
+    return;
   historyMode = false;
   // first, let's stop the player
   audioPlayer->stop();
