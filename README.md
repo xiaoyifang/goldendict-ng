@@ -35,10 +35,6 @@ sudo dnf install git pkg-config libzstd-devel opencc-devel xz-devel xz-lzma-comp
      libao-devel ffmpeg-devel libtiff-devel eb-devel qt5-qtx11extras-devel libXtst-devel \
      libxkbcommon-devel qt5-qtbase qt5-qttools qt5-qtsvg-devl qt5-qtwebengine-devel qt5-qtmultimedia-devl
      
-qmake-qt5 CONFIG+=release CONFIG+=no_extra_tiff_handler CONFIG+=no_epwing_support
-make
-
-
 ```
 
 ## How to build
@@ -48,10 +44,17 @@ First, clone this repository, e.g.:
     git clone https://github.com/xiaoyifang/goldendict.git
 
 
-### Linux 
+### Linux (fedora)
 And then invoke `qmake-qt5` and `make`:
 
     cd goldendict && qmake-qt5 && make
+
+### ArchLinux
+
+on archlinux based os, you can use `yay` to install the community goldendict-webengine-git .
+
+    pacman -S --needed git base-devel yay
+    yay -S goldendict-webengine-git
 
 ### macOS
 ```
