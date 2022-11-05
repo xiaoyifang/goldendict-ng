@@ -53,7 +53,9 @@ And then invoke `qmake-qt5` and `make`:
 
 on archlinux based os, you can use `yay` to install the community goldendict-webengine-git .
 
+    #(Manjaro distribution)
     pacman -S --needed git base-devel yay
+    
     yay -S goldendict-webengine-git
 
 ### macOS
