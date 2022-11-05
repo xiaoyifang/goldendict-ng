@@ -263,6 +263,7 @@ HEADERS += folding.hh \
     ankiconnector.h \
     article_inspect.h \
     articlewebpage.h \
+    audiooutput.h \
     base/globalregex.hh \
     globalbroadcaster.h \
     headwordsmodel.h \
@@ -407,6 +408,7 @@ SOURCES += folding.cc \
     ankiconnector.cpp \
     article_inspect.cpp \
     articlewebpage.cpp \
+    audiooutput.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
     headwordsmodel.cpp \
