@@ -170,17 +170,17 @@ namespace {
 /// @return true if @p tagName equals "mN" where N is a digit
 bool is_mN( wstring const & tagName )
 {
-  return tagName.size() == 2 && tagName[ 0 ] == L'm' && iswdigit( tagName[ 1 ] );
+  return tagName.size() == 2 && tagName[ 0 ] == U'm' && iswdigit( tagName[ 1 ] );
 }
 
 bool isAnyM( wstring const & tagName )
 {
-  return tagName == GD_NATIVE_TO_WS( L"m" ) || is_mN( tagName );
+  return tagName ==  U"m"  || is_mN( tagName );
 }
 
 bool checkM( wstring const & dest, wstring const & src )
 {
-  return src == GD_NATIVE_TO_WS( L"m" ) && is_mN( dest );
+  return src == U"m" && is_mN( dest );
 }
 
 /// Closing the [mN] tags is optional. Quote from https://documentation.help/ABBYY-Lingvo8/paragraph_form.htm:
