@@ -115,8 +115,7 @@ win32 {
         -lvorbis \
         -logg
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
@@ -151,8 +150,7 @@ unix:!mac {
         ogg \
         hunspell
     !CONFIG( no_ffmpeg_player ) {
-        PKGCONFIG += ao \
-            libavutil \
+        PKGCONFIG += libavutil \
             libavformat \
             libavcodec \
             libswresample \
@@ -205,8 +203,7 @@ mac {
         -llzo2
 
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
