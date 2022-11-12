@@ -239,12 +239,6 @@ bool DecoderContext::openCodec( QString & errorString )
   gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n", codec_->long_name,
           codecContext_->channels, codecContext_->sample_rate, av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
-//  if ( codecContext_->sample_fmt == AV_SAMPLE_FMT_S32  ||
-//       codecContext_->sample_fmt == AV_SAMPLE_FMT_S32P ||
-//       codecContext_->sample_fmt == AV_SAMPLE_FMT_FLT  ||
-//       codecContext_->sample_fmt == AV_SAMPLE_FMT_FLTP ||
-//       codecContext_->sample_fmt == AV_SAMPLE_FMT_DBL  ||
-//       codecContext_->sample_fmt == AV_SAMPLE_FMT_DBLP )
   {
     swr_ = swr_alloc_set_opts( NULL,
         av_get_default_channel_layout(2),
