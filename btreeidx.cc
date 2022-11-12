@@ -1313,12 +1313,12 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 
   vector< char > extLeaf;
 
-       // A node
+  // A node
   readNode( currentNodeOffset, extLeaf );
-  leaf = &extLeaf.front();
+  leaf    = &extLeaf.front();
   leafEnd = leaf + extLeaf.size();
 
-       // A leaf
+  // A leaf
   chainPtr = leaf + sizeof( uint32_t );
 
   for( ;; )
