@@ -1,19 +1,10 @@
 #ifdef MAKE_FFMPEG_PLAYER
 
+#include "audiooutput.h"
 #include "ffmpegaudio.hh"
 
 #include <math.h>
 #include <errno.h>
-
-#ifndef INT64_C
-#define INT64_C(c) (c ## LL)
-#endif
-
-#ifndef UINT64_C
-#define UINT64_C(c) (c ## ULL)
-#endif
-
-#include <ao/ao.h>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -27,7 +18,11 @@ extern "C" {
 #include <QDebug>
 
 #include <vector>
+#if( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )
+  #include <QMediaDevices>
 
+  #include <QAudioDevice>
+#endif
 #include "gddebug.hh"
 #include "utils.hh"
 
@@ -53,13 +48,13 @@ AudioService & AudioService::instance()
 
 AudioService::AudioService()
 {
-  ao_initialize();
+//  ao_initialize();
 }
 
 AudioService::~AudioService()
 {
   emit cancelPlaying( true );
-  ao_shutdown();
+//  ao_shutdown();
 }
 
 void AudioService::playMemory( const char * ptr, int size )
@@ -100,7 +95,8 @@ struct DecoderContext
   AVCodecContext * codecContext_;
   AVIOContext * avioContext_;
   AVStream * audioStream_;
-  ao_device * aoDevice_;
+//  ao_device * aoDevice_;
+  AudioOutput * audioOutput;
   bool avformatOpened_;
 
   SwrContext *swr_;
@@ -113,7 +109,7 @@ struct DecoderContext
   bool openOutputDevice( QString & errorString );
   void closeOutputDevice();
   bool play( QString & errorString );
-  bool normalizeAudio( AVFrame * frame, vector<char> & samples );
+  bool normalizeAudio( AVFrame * frame, vector<uint8_t> & samples );
   void playFrame( AVFrame * frame );
 };
 
@@ -126,7 +122,7 @@ DecoderContext::DecoderContext( QByteArray const & audioData, QAtomicInt & isCan
   codecContext_( NULL ),
   avioContext_( NULL ),
   audioStream_( NULL ),
-  aoDevice_( NULL ),
+  audioOutput( new AudioOutput ),
   avformatOpened_( false ),
   swr_( NULL )
 {
@@ -243,15 +239,9 @@ bool DecoderContext::openCodec( QString & errorString )
   gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n", codec_->long_name,
           codecContext_->channels, codecContext_->sample_rate, av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
-  if ( codecContext_->sample_fmt == AV_SAMPLE_FMT_S32  ||
-       codecContext_->sample_fmt == AV_SAMPLE_FMT_S32P ||
-       codecContext_->sample_fmt == AV_SAMPLE_FMT_FLT  ||
-       codecContext_->sample_fmt == AV_SAMPLE_FMT_FLTP ||
-       codecContext_->sample_fmt == AV_SAMPLE_FMT_DBL  ||
-       codecContext_->sample_fmt == AV_SAMPLE_FMT_DBLP )
   {
     swr_ = swr_alloc_set_opts( NULL,
-        codecContext_->channel_layout,
+        av_get_default_channel_layout(2),
         AV_SAMPLE_FMT_S16,
         codecContext_->sample_rate,
         codecContext_->channel_layout,
@@ -317,75 +307,25 @@ void DecoderContext::closeCodec()
 
 bool DecoderContext::openOutputDevice( QString & errorString )
 {
-  // Prepare for audio output
-  int aoDriverId = ao_default_driver_id();
-  ao_info * aoDrvInfo = ao_driver_info( aoDriverId );
-
-  if ( aoDriverId < 0 || !aoDrvInfo )
-  {
-    errorString = QObject::tr( "Cannot find usable audio output device." );
+  // only check device when qt version is greater than 6.2
+  #if  (QT_VERSION >= QT_VERSION_CHECK(6,2,0))
+  QAudioDevice m_outputDevice = QMediaDevices::defaultAudioOutput();
+  if(m_outputDevice.isNull()){
+    errorString += QObject::tr( "Can not found default audio output device" );
     return false;
   }
+  #endif
 
-  ao_sample_format aoSampleFormat;
-  memset (&aoSampleFormat, 0, sizeof(aoSampleFormat) );
-  aoSampleFormat.channels = codecContext_->channels;
-  aoSampleFormat.rate = codecContext_->sample_rate;
-  aoSampleFormat.byte_format = AO_FMT_NATIVE;
-  aoSampleFormat.matrix = 0;
-  aoSampleFormat.bits = qMin( 16, av_get_bytes_per_sample( codecContext_->sample_fmt ) << 3 );
-
-  if ( aoSampleFormat.bits == 0 )
-  {
-    errorString = QObject::tr( "Unsupported sample format." );
-    return false;
-  }
-
-  gdDebug( "ao_open_live(): %s: channels: %d, rate: %d, bits: %d\n",
-          aoDrvInfo->name, aoSampleFormat.channels, aoSampleFormat.rate, aoSampleFormat.bits );
-
-  aoDevice_ = ao_open_live( aoDriverId, &aoSampleFormat, NULL );
-  if ( !aoDevice_ )
-  {
-    errorString = QObject::tr( "ao_open_live() failed: " );
-
-    switch ( errno )
-    {
-      case AO_ENODRIVER:
-        errorString += QObject::tr( "No driver." );
-        break;
-      case AO_ENOTLIVE:
-        errorString += QObject::tr( "This driver is not a live output device." );
-        break;
-      case AO_EBADOPTION:
-        errorString += QObject::tr( "A valid option key has an invalid value." );
-        break;
-      case AO_EOPENDEVICE:
-        errorString += QObject::tr( "Cannot open the device: %1, channels: %2, rate: %3, bits: %4." )
-                       .arg( aoDrvInfo->short_name )
-                       .arg( aoSampleFormat.channels )
-                       .arg( aoSampleFormat.rate )
-                       .arg( aoSampleFormat.bits );
-        break;
-      default:
-        errorString += QObject::tr( "Unknown error." );
-        break;
-    }
-
-    return false;
-  }
-
+  audioOutput->setAudioFormat( codecContext_->sample_rate, codecContext_->channels );
   return true;
 }
 
 void DecoderContext::closeOutputDevice()
 {
-  // ao_close() is synchronous, it will wait until all audio streams flushed
-  if ( aoDevice_ )
-  {
-    ao_close( aoDevice_ );
-    aoDevice_ = NULL;
-  }
+//  if(audioOutput){
+//    delete audioOutput;
+//    audioOutput = 0;
+//  }
 }
 
 bool DecoderContext::play( QString & errorString )
@@ -440,79 +380,17 @@ bool DecoderContext::play( QString & errorString )
   return true;
 }
 
-bool DecoderContext::normalizeAudio( AVFrame * frame, vector<char> & samples )
+bool DecoderContext::normalizeAudio( AVFrame * frame, vector<uint8_t > & samples )
 {
   int lineSize = 0;
-  int dataSize = av_samples_get_buffer_size( &lineSize, codecContext_->channels,
-                                             frame->nb_samples, codecContext_->sample_fmt, 1 );
+//  int dataSize = av_samples_get_buffer_size( &lineSize, codecContext_->channels,
+//                                             frame->nb_samples, codecContext_->sample_fmt, 1 );
+  int dataSize = frame->nb_samples * 2 * 2;
+  samples.resize( dataSize );
+  uint8_t  *data[2] = { 0 };
+  data[0] = &samples.front();  //输出格式为AV_SAMPLE_FMT_S16(packet类型),所以转换后的LR两通道都存在data[0]中
 
-  // Portions from: https://code.google.com/p/lavfilters/source/browse/decoder/LAVAudio/LAVAudio.cpp
-  // But this one use 8, 16, 32 bits integer, respectively.
-  switch ( codecContext_->sample_fmt )
-  {
-    case AV_SAMPLE_FMT_U8:
-    case AV_SAMPLE_FMT_S16:
-    {
-      samples.resize( dataSize );
-      memcpy( &samples.front(), frame->data[0], lineSize );
-    }
-    break;
-    // Planar
-    case AV_SAMPLE_FMT_U8P:
-    {
-      samples.resize( dataSize );
-
-      uint8_t * out = ( uint8_t * )&samples.front();
-      for ( int i = 0; i < frame->nb_samples; i++ )
-      {
-        for ( int ch = 0; ch < codecContext_->channels; ch++ )
-        {
-          *out++ = ( ( uint8_t * )frame->extended_data[ch] )[i];
-        }
-      }
-    }
-    break;
-    case AV_SAMPLE_FMT_S16P:
-    {
-      samples.resize( dataSize );
-
-      int16_t * out = ( int16_t * )&samples.front();
-      for ( int i = 0; i < frame->nb_samples; i++ )
-      {
-        for ( int ch = 0; ch < codecContext_->channels; ch++ )
-        {
-          *out++ = ( ( int16_t * )frame->extended_data[ch] )[i];
-        }
-      }
-    }
-    break;
-    case AV_SAMPLE_FMT_S32:
-    /* Pass through */
-    case AV_SAMPLE_FMT_S32P:
-    /* Pass through */
-    case AV_SAMPLE_FMT_FLT:
-    /* Pass through */
-    case AV_SAMPLE_FMT_FLTP:
-    /* Pass through */
-    {
-      samples.resize( dataSize / 2 );
-
-      uint8_t *out = ( uint8_t * )&samples.front();
-      swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
-    }
-    break;
-    case AV_SAMPLE_FMT_DBL:
-    case AV_SAMPLE_FMT_DBLP:
-    {
-      samples.resize( dataSize / 4 );
-
-      uint8_t *out = ( uint8_t * )&samples.front();
-      swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
-    }
-    break;
-    default:
-      return false;
-  }
+  swr_convert( swr_, data, frame->nb_samples, (const uint8_t**)frame->data, frame->nb_samples );
 
   return true;
 }
@@ -522,9 +400,12 @@ void DecoderContext::playFrame( AVFrame * frame )
   if ( !frame )
     return;
 
-  vector<char> samples;
+  vector<uint8_t> samples;
   if ( normalizeAudio( frame, samples ) )
-    ao_play( aoDevice_, &samples.front(), samples.size() );
+  {
+//    ao_play( aoDevice_, &samples.front(), samples.size() );
+    audioOutput->play(&samples.front(), samples.size());
+  }
 }
 
 DecoderThread::DecoderThread( QByteArray const & audioData, QObject * parent ) :

@@ -46,13 +46,14 @@ greaterThan(QT_MAJOR_VERSION, 5): QT += webenginecore core5compat
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 
-# QMediaPlayer is not available in Qt4.
 !CONFIG( no_qtmultimedia_player ) {
   QT += multimedia
   DEFINES += MAKE_QTMULTIMEDIA_PLAYER
 }
 
 !CONFIG( no_ffmpeg_player ) {
+  # ffmpeg depended on multimedia now.
+  QT += multimedia
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
@@ -115,8 +116,7 @@ win32 {
         -lvorbis \
         -logg
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
@@ -151,8 +151,7 @@ unix:!mac {
         ogg \
         hunspell
     !CONFIG( no_ffmpeg_player ) {
-        PKGCONFIG += ao \
-            libavutil \
+        PKGCONFIG += libavutil \
             libavformat \
             libavcodec \
             libswresample \
@@ -205,8 +204,7 @@ mac {
         -llzo2
 
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
@@ -263,6 +261,7 @@ HEADERS += folding.hh \
     ankiconnector.h \
     article_inspect.h \
     articlewebpage.h \
+    audiooutput.h \
     base/globalregex.hh \
     globalbroadcaster.h \
     headwordsmodel.h \
@@ -407,6 +406,7 @@ SOURCES += folding.cc \
     ankiconnector.cpp \
     article_inspect.cpp \
     articlewebpage.cpp \
+    audiooutput.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
     headwordsmodel.cpp \
