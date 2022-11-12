@@ -1353,9 +1353,16 @@ QSet<uint32_t> BtreeIndex::findNodes()
   }
 
   char const * leaf     = &rootNode.front();
-
-  vector< char > extLeaf;
   QSet<uint32_t> leafOffset;
+
+  uint32_t leafEntries;
+  leafEntries = *(uint32_t *)leaf;
+  if ( leafEntries != 0xffffFFFF )
+  {
+    leafOffset.insert(rootOffset);
+    return leafOffset;
+  }
+
   // the current the btree's implementation has the  height = 2.
 
   // A node offset
