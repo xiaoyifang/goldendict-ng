@@ -46,13 +46,14 @@ greaterThan(QT_MAJOR_VERSION, 5): QT += webenginecore core5compat
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 
-# QMediaPlayer is not available in Qt4.
 !CONFIG( no_qtmultimedia_player ) {
   QT += multimedia
   DEFINES += MAKE_QTMULTIMEDIA_PLAYER
 }
 
 !CONFIG( no_ffmpeg_player ) {
+  # ffmpeg depended on multimedia now.
+  QT += multimedia
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
