@@ -15,6 +15,9 @@
 #include <QtGlobal>
 #include <QBuffer>
 
+// take reference from this file (https://github.com/valbok/QtAVPlayer/blob/6cc30e484b354d59511c9a60fabced4cb7c57c8e/src/QtAVPlayer/qavaudiooutput.cpp)
+// and make some changes.
+
 static QAudioFormat format( int sampleRate, int channelCount )
 {
   QAudioFormat out;
