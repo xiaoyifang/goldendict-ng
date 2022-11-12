@@ -1313,12 +1313,12 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 
   vector< char > extLeaf;
 
-       // A node
+  // A node
   readNode( currentNodeOffset, extLeaf );
-  leaf = &extLeaf.front();
+  leaf    = &extLeaf.front();
   leafEnd = leaf + extLeaf.size();
 
-       // A leaf
+  // A leaf
   chainPtr = leaf + sizeof( uint32_t );
 
   for( ;; )
@@ -1353,9 +1353,16 @@ QSet<uint32_t> BtreeIndex::findNodes()
   }
 
   char const * leaf     = &rootNode.front();
-
-  vector< char > extLeaf;
   QSet<uint32_t> leafOffset;
+
+  uint32_t leafEntries;
+  leafEntries = *(uint32_t *)leaf;
+  if ( leafEntries != 0xffffFFFF )
+  {
+    leafOffset.insert(rootOffset);
+    return leafOffset;
+  }
+
   // the current the btree's implementation has the  height = 2.
 
   // A node offset
