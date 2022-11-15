@@ -23,7 +23,7 @@ static QAudioFormat format( int sampleRate, int channelCount )
   QAudioFormat out;
 
   out.setSampleRate( sampleRate );
-  out.setChannelCount( 2 );
+  out.setChannelCount( channelCount );
 #if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
   out.setByteOrder( QAudioFormat::LittleEndian );
   out.setCodec( QLatin1String( "audio/pcm" ) );
