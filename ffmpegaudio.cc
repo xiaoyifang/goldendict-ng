@@ -241,7 +241,7 @@ bool DecoderContext::openCodec( QString & errorString )
 
   {
     swr_ = swr_alloc_set_opts( NULL,
-        av_get_default_channel_layout(2),
+        codecContext_->channel_layout,
         AV_SAMPLE_FMT_S16,
         codecContext_->sample_rate,
         codecContext_->channel_layout,
@@ -383,14 +383,75 @@ bool DecoderContext::play( QString & errorString )
 bool DecoderContext::normalizeAudio( AVFrame * frame, vector<uint8_t > & samples )
 {
   int lineSize = 0;
-//  int dataSize = av_samples_get_buffer_size( &lineSize, codecContext_->channels,
-//                                             frame->nb_samples, codecContext_->sample_fmt, 1 );
-  int dataSize = frame->nb_samples * 2 * 2;
-  samples.resize( dataSize );
-  uint8_t  *data[2] = { 0 };
-  data[0] = &samples.front();  //输出格式为AV_SAMPLE_FMT_S16(packet类型),所以转换后的LR两通道都存在data[0]中
+  int dataSize = av_samples_get_buffer_size( &lineSize, codecContext_->channels,
+                                             frame->nb_samples, codecContext_->sample_fmt, 1 );
+  // Portions from: https://code.google.com/p/lavfilters/source/browse/decoder/LAVAudio/LAVAudio.cpp
+  // But this one use 8, 16, 32 bits integer, respectively.
+  switch ( codecContext_->sample_fmt )
+  {
+    case AV_SAMPLE_FMT_U8:
+    case AV_SAMPLE_FMT_S16:
+    {
+      samples.resize( dataSize );
+      memcpy( &samples.front(), frame->data[0], lineSize );
+    }
+    break;
+    // Planar
+    case AV_SAMPLE_FMT_U8P:
+    {
+      samples.resize( dataSize );
 
-  swr_convert( swr_, data, frame->nb_samples, (const uint8_t**)frame->data, frame->nb_samples );
+      uint8_t * out = ( uint8_t * )&samples.front();
+      for ( int i = 0; i < frame->nb_samples; i++ )
+      {
+        for ( int ch = 0; ch < codecContext_->channels; ch++ )
+        {
+          *out++ = ( ( uint8_t * )frame->extended_data[ch] )[i];
+        }
+      }
+    }
+    break;
+    case AV_SAMPLE_FMT_S16P:
+    {
+      samples.resize( dataSize );
+
+      int16_t * out = ( int16_t * )&samples.front();
+      for ( int i = 0; i < frame->nb_samples; i++ )
+      {
+        for ( int ch = 0; ch < codecContext_->channels; ch++ )
+        {
+          *out++ = ( ( int16_t * )frame->extended_data[ch] )[i];
+        }
+      }
+    }
+    break;
+    case AV_SAMPLE_FMT_S32:
+    /* Pass through */
+    case AV_SAMPLE_FMT_S32P:
+    /* Pass through */
+    case AV_SAMPLE_FMT_FLT:
+    /* Pass through */
+    case AV_SAMPLE_FMT_FLTP:
+      /* Pass through */
+      {
+        samples.resize( dataSize / 2 );
+
+        uint8_t *out = ( uint8_t * )&samples.front();
+        swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
+      }
+      break;
+    case AV_SAMPLE_FMT_DBL:
+    case AV_SAMPLE_FMT_DBLP:
+    {
+      samples.resize( dataSize / 4 );
+
+      uint8_t *out = ( uint8_t * )&samples.front();
+      swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
+    }
+    break;
+    default:
+      return false;
+  }
 
   return true;
 }
