@@ -224,7 +224,7 @@ public:
 private:
 #ifdef MAKE_FFMPEG_PLAYER
   static InternalPlayerBackend ffmpeg()
-  { return InternalPlayerBackend( "FFmpeg+libao" ); }
+  { return InternalPlayerBackend( "FFmpeg" ); }
 #endif
 
 #ifdef MAKE_QTMULTIMEDIA_PLAYER

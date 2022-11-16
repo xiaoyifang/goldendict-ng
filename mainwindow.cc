@@ -3780,8 +3780,13 @@ void MainWindow::applyWordsZoomLevel()
   }
 
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
-  // groupList->setFixedHeight(translateLine->height());
-  groupList->parentWidget()->layout()->activate();
+
+  if( !cfg.preferences.searchInDock )
+  {
+    // Invalidating navToolbar's layout displays translateBoxWidget w/o the need to press the toolbar
+    // extension button when Words Zoom level decreases enough for translateBoxWidget to fit in the toolbar.
+    navToolbar->layout()->invalidate();
+  }
 
   if ( scanPopup.get() )
     scanPopup->applyWordsZoomLevel();
@@ -4120,7 +4125,7 @@ void MainWindow::on_importFavorites_triggered()
 
   QString fileName = QFileDialog::getOpenFileName( this, tr( "Import Favorites from file" ),
                                                    importPath,
-                                                   tr( "XML files (*.xml);;All files (*.*)" ) );
+                                                   tr( "XML files (*.xml);;Txt files (*.txt);;All files (*.*)" ) );
   if( fileName.size() == 0)
     return;
 
@@ -4139,8 +4144,14 @@ void MainWindow::on_importFavorites_triggered()
 
     QByteArray data = file.readAll();
 
-    if( !ui.favoritesPaneWidget->setDataFromXml( QString::fromUtf8( data.data(), data.size() ) ) )
-      break;
+    if(fileInfo.suffix().compare("txt",Qt::CaseInsensitive)==0){
+      if( !ui.favoritesPaneWidget->setDataFromTxt( QString::fromUtf8( data.data(), data.size() ) ) )
+        break;
+    }
+    else{
+      if( !ui.favoritesPaneWidget->setDataFromXml( QString::fromUtf8( data.data(), data.size() ) ) )
+        break;
+    }
 
     file.close();
     mainStatusBar->showMessage( tr( "Favorites import complete" ), 5000 );

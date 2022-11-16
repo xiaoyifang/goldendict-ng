@@ -281,6 +281,11 @@ bool FavoritesPaneWidget::setDataFromXml( QString const & dataStr )
   return m_favoritesModel->setDataFromXml( dataStr );
 }
 
+bool FavoritesPaneWidget::setDataFromTxt( QString const & dataStr )
+{
+  return m_favoritesModel->setDataFromTxt( dataStr );
+}
+
 void FavoritesPaneWidget::setSaveInterval( unsigned interval )
 {
   if( timerId )
@@ -1160,6 +1165,26 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
   endResetModel();
 
   dom.clear();
+  dirty = true;
+  return true;
+}
+
+bool FavoritesModel::setDataFromTxt( QString const & dataStr )
+{
+  auto words = dataStr.split('\n',Qt::SkipEmptyParts);
+
+  beginResetModel();
+
+  if( rootItem )
+    delete rootItem;
+
+  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
+
+  for(auto const & word : words){
+    rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
+  }
+  endResetModel();
+
   dirty = true;
   return true;
 }

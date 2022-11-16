@@ -46,6 +46,7 @@ public:
   void getDataInXml( QByteArray & dataStr );
   void getDataInPlainText( QString & dataStr );
   bool setDataFromXml( QString const & dataStr );
+  bool setDataFromTxt( QString const & dataStr );
 
   void setFocusOnTree()
   { m_favoritesTree->setFocus(); }
@@ -216,6 +217,7 @@ public:
   void getDataInXml( QByteArray & dataStr );
   void getDataInPlainText( QString & dataStr );
   bool setDataFromXml( QString const & dataStr );
+  bool setDataFromTxt( QString const & dataStr );
 
   void saveData();
 

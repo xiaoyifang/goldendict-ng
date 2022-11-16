@@ -2029,8 +2029,8 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       if ( result == saveSoundAction )
       {
         // Audio data
-        if ( name.indexOf( '.' ) < 0 )
-          name += ".wav";
+//        if ( name.indexOf( '.' ) < 0 )
+//          name += ".wav";
 
         fileName = savePath + "/" + name;
         fileName = QFileDialog::getSaveFileName( parentWidget(), tr( "Save sound" ),
