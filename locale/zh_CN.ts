@@ -376,7 +376,17 @@
         <translation>保存图片(&amp;I)...</translation>
     </message>
     <message>
-        <location filename="../articleview.cc" line="1763"/>
+        <location filename="../articleview.cc" line="202"/>
+        <source>Phrase not found</source>
+        <translation>没找到词组</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="210"/>
+        <source>%1 of %2 matches</source>
+        <translation>匹配（%1/%2）</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="1806"/>
         <source>Save s&amp;ound...</source>
         <translation>保存音频文件(&amp;O)...</translation>
     </message>
@@ -392,7 +402,12 @@
         <translation>将 &quot;%1&quot; 添加到历史(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../articleview.cc" line="2037"/>
+        <location filename="../articleview.cc" line="2038"/>
+        <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+        <translation>声音文件 (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="2104"/>
         <source>Failed to play sound file: %1</source>
         <translation>播放音频文件失败：%1</translation>
     </message>
