@@ -4735,7 +4735,17 @@ GoldenDict 尚不支持此方案。</translation>
         <translation>音频文件目录</translation>
     </message>
     <message>
-        <location filename="../sources.ui" line="753"/>
+        <location filename="../sources.ui" line="511"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>使用 Forvo 需要一个 API key，请在该网站注册以获取你自己的 key.</translation>
+    </message>
+    <message>
+        <location filename="../sources.ui" line="534"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>从&lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;这里&lt;/a&gt;获取自己的API Key。</translation>
+    </message>
+    <message>
+        <location filename="../sources.ui" line="689"/>
         <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
         <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>
