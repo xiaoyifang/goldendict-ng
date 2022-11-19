@@ -874,54 +874,35 @@ string ZimDictionary::convert( const string & in )
     for( int i = list.size(); i < 5; i++ )
       list.append( QString() );
 
+    QString formatTag;
     QString tag = list[3];     // a url, ex: Precambrian_Chaotian.html
     if ( !list[4].isEmpty() )  // a title, ex: title="Precambrian/Chaotian"
-      tag = list[4].split("\"")[1];
-
-    // Check type of links inside articles
-    if( linksType == UNKNOWN && tag.indexOf( '/' ) >= 0 )
     {
-      QString word = QUrl::fromPercentEncoding( tag.toLatin1() );
-      QRegularExpression htmlRx( "\\.(s|)htm(l|)$", QRegularExpression::CaseInsensitiveOption );
-      word.remove( htmlRx ).
-           replace( "_", " " );
-
-      vector< WordArticleLink > links;
-      links = findArticles( gd::toWString( word ) );
-
-      if( !links.empty() )
-      {
-        linksType = SLASH;
-      }
-      else
-      {
-        word.remove( QRegularExpression(".*/") );
-        links = findArticles( gd::toWString( word ) );
-        if( !links.empty() )
-        {
-          linksType = NO_SLASH;
-          links.clear();
-        }
-      }
+      tag = list[4];
+      formatTag=tag.split("\"")[1];
+    }
+    else{
+      //tag from list[3]
+      formatTag = tag;//tag.replace(QRegularExpression("[\\.\\/]"),"-");
     }
 
-    if( linksType == SLASH || linksType == UNKNOWN )
-    {
-      tag.remove( QRegularExpression( "\\.(s|)htm(l|)$", QRegularExpression::PatternOption::CaseInsensitiveOption ) ).
-          replace( "_", "%20" ).
-          prepend( "<a href=\"gdlookup://localhost/" ).
-          append( "\" " + list[4] + ">" );
+    formatTag.replace(QRegularExpression("[\\.\\/]"),"");
+
+    vector< WordArticleLink > links;
+    links = findArticles( gd::toWString( formatTag ) );
+
+
+    QString urlLink = match.captured();
+    QString replacedLink ;
+
+    if(!links.empty()){
+      replacedLink = urlLink.replace(tag,"gdlookup://localhost/"+formatTag);
     }
-    else
-    {
-      tag.remove( QRegularExpression(".*/") ).
-          remove( QRegularExpression( "\\.(s|)htm(l|)$", QRegularExpression::PatternOption::CaseInsensitiveOption ) ).
-          replace( "_", "%20" ).
-          prepend( "<a href=\"gdlookup://localhost/" ).
-          append( "\" " + list[4] + ">" );
+    else{
+      replacedLink = urlLink.replace(tag,"bres://localhost/"+formatTag);
     }
 
-    newText += tag;
+    newText += replacedLink;
   }
   if( pos )
   {
@@ -1648,25 +1629,43 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                                                                               || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) ) ) )
             {
               wstring word;
-              if( !title.empty() )
-                word = Utf8::decode( title );
-              else
-                word = Utf8::decode( url );
-
               if( df.isArticleMime( mimetype )
                   || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) )
               {
                 if( maxHeadwordsToExpand && zh.articleCount >= maxHeadwordsToExpand )
-                  indexedWords.addSingleWord( word, n );
+                {
+                  if( !title.empty() )
+                  {
+                    word = Utf8::decode( title );
+                    indexedWords.addSingleWord( word, n );
+                  }
+                  if( !url.empty() )
+                  {
+                    auto formatedUrl = QString::fromStdString( url ).replace( QRegularExpression( "[\\.\\/]" ), "" );
+                    indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+                  }
+                }
                 else
-                  indexedWords.addWord( word, n );
+                {
+                  if( !title.empty() )
+                  {
+                    word = Utf8::decode( title );
+                    indexedWords.addWord( word, n );
+                  }
+                  if( !url.empty() )
+                  {
+                    auto formatedUrl = QString::fromStdString( url ).replace( QRegularExpression( "[\\.\\/]" ), "" );
+                    indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+                  }
+                }
                 wordCount++;
               }
               else
               {
-                url.insert( url.begin(), '/' );
-                url.insert( url.begin(), nameSpace );
-                indexedResources.addSingleWord( Utf8::decode( url ), n );
+//                url.insert( url.begin(), '/' );
+//                url.insert( url.begin(), nameSpace );
+                auto formatedUrl = QString::fromStdString(url).replace(QRegularExpression("[\\.\\/]"),"");
+                indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
               }
             }
             else
@@ -1702,9 +1701,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             }
             else
             {
-              url.insert( url.begin(), '/' );
-              url.insert( url.begin(), nameSpace );
-              indexedResources.addSingleWord( Utf8::decode( url ), n );
+//              url.insert( url.begin(), '/' );
+//              url.insert( url.begin(), nameSpace );
+              auto formatedUrl = QString::fromStdString(url).replace(QRegularExpression("[\\.\\/]"),"");
+              indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
             }
           }
 
