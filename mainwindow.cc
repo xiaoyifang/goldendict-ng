@@ -3226,7 +3226,7 @@ void MainWindow::visitForum()
 
 void MainWindow::showAbout()
 {
-  About about( this );
+  About about(this, &dictionaries);
 
   about.show();
   about.exec();
