@@ -838,7 +838,7 @@ string ZimDictionary::convert( const string & in )
                 QString( "<body \\1" ) );
 
   // pattern of img and script
-  text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\"|)(\\.\\.|)/" ),
+  text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\"|)(\\.\\./)*" ),
                 QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
 
   // Fix links without '"'
@@ -1488,9 +1488,9 @@ void ZimResourceRequest::run()
 }
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
-  
 {
-  return new ZimResourceRequest( *this, name );
+  auto formatedName =  QString::fromStdString(name).replace(QRegularExpression("[\\.\\/]"),"");
+  return new ZimResourceRequest( *this, formatedName.toStdString() );
 }
 
 //} // anonymous namespace
@@ -1662,8 +1662,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
               else
               {
-//                url.insert( url.begin(), '/' );
-//                url.insert( url.begin(), nameSpace );
                 auto formatedUrl = QString::fromStdString(url).replace(QRegularExpression("[\\.\\/]"),"");
                 indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
               }
