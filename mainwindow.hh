@@ -484,7 +484,7 @@ private slots:
   void showGDHelp();
   void hideGDHelp();
 
-  void clipboardChange( );
+  void clipboardChange(QClipboard::Mode m);
 
   void inspectElement( QWebEnginePage * );
 

@@ -27,7 +27,7 @@ public:
 
   /// Returns true if all Modifiers present within the given mask are pressed
   /// right now.
-  bool checkModifiersPressed( int mask );
+  bool static checkModifiersPressed( int mask );
 };
 
 #endif

@@ -522,11 +522,15 @@ void ScanPopup::clipboardChanged( QClipboard::Mode m )
 #ifdef HAVE_X11
   if( cfg.preferences.ignoreOwnClipboardChanges && ownsClipboardMode( m ) )
     return;
-#endif
 
-  GD_DPRINTF( "clipboard changed\n" );
+  if(m == QClipboard::Clipboard && !cfg.preferences.trackClipboardScan){
+    return;
+  }
 
-#ifdef HAVE_X11
+  if(m == QClipboard::Selection && !cfg.preferences.trackSelectionScan){
+    return;
+  }
+
   if( m == QClipboard::Selection )
   {
     // Use delay show to prevent multiple popups while selection in progress

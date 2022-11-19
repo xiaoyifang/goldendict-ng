@@ -49,6 +49,8 @@
 #include "ui_authentication.h"
 #include "resourceschemehandler.h"
 
+#include "keyboardstate.hh"
+
 #ifdef Q_OS_MAC
 #include "macmouseover.hh"
 #endif
@@ -908,15 +910,25 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   inspector.reset( new ArticleInspector( this ));
 
-  connect( QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboardChange );
+  connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
 }
 
-void MainWindow::clipboardChange( )
+void MainWindow::clipboardChange( QClipboard::Mode m)
 {
-  qDebug() << "clipboard change ," << scanPopup.get();
-  if( scanPopup && enableScanningAction->isChecked() )
+  if( scanPopup && enableScanningAction->isChecked()  )
   {
-    scanPopup->translateWordFromClipboard();
+    if ( cfg.preferences.enableScanPopupModifiers && KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers))
+    {
+      if(m == QClipboard::Clipboard){
+        if(!cfg.preferences.trackClipboardScan) return;
+        scanPopup->translateWordFromClipboard();
+      }
+
+      if(m == QClipboard::Selection){
+        if(!cfg.preferences.trackSelectionScan) return;
+        scanPopup->translateWordFromSelection();
+      }
+    }
   }
 }
 
