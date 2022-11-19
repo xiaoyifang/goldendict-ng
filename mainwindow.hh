@@ -118,7 +118,7 @@ private:
   MainStatusBar * mainStatusBar;
   QAction * navBack, * navForward, * navPronounce, * enableScanPopupAction;
   QAction * actTrackingClipboard;
-  QAction * beforeScanPopupSeparator, * afterScanPopupSeparator, * beforeOptionsSeparator;
+  QAction * beforeOptionsSeparator;
   QAction * zoomIn, * zoomOut, * zoomBase;
   QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;
   QAction * addToFavorites, * beforeAddToFavoritesSeparator;

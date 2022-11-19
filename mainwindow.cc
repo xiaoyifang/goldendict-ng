@@ -228,27 +228,22 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
   // scan popup
-  beforeScanPopupSeparator = navToolbar->addSeparator();
-  beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( beforeScanPopupSeparator )->setObjectName( "beforeScanPopupSeparator" );
+  navToolbar->addSeparator();
 
   enableScanPopupAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
   enableScanPopupAction->setCheckable( true );
-  enableScanPopupAction->setVisible( cfg.preferences.enableScanPopup );
+
   navToolbar->widgetForAction( enableScanPopupAction )->setObjectName( "scanPopupButton" );
-  if( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
+  if( cfg.preferences.startWithScanPopupOn )
   {
     enableScanPopupAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
     enableScanPopupAction->setChecked( true );
   }
 
-
   connect( enableScanPopupAction, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
 
-  afterScanPopupSeparator = navToolbar->addSeparator();
-  afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( afterScanPopupSeparator )->setObjectName( "afterScanPopupSeparator" );
+  navToolbar->addSeparator();
 
   // sound
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
@@ -2252,13 +2247,6 @@ void MainWindow::editPreferences()
     cfg.preferences = p;
 
     audioPlayerFactory.setPreferences( cfg.preferences );
-
-    beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-    enableScanPopupAction->setVisible( cfg.preferences.enableScanPopup );
-    afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-
-    if ( !cfg.preferences.enableScanPopup )
-      enableScanPopupAction->setChecked( false );
 
     updateTrayIcon();
     applyProxySettings();
