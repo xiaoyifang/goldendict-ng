@@ -515,9 +515,9 @@ void ScanPopup::delayShow()
 
 void ScanPopup::clipboardChanged( QClipboard::Mode m )
 {
-  if( !cfg.preferences.trackClipboardChanges )
-    return;
-  if( !isScanningEnabled )
+//  if( !cfg.preferences.trackClipboardChanges )
+//    return;
+  if( !isScanningEnabled && !cfg.preferences.trackClipboardChanges)
     return;
 
 #ifdef HAVE_X11
