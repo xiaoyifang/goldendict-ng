@@ -116,7 +116,7 @@ private:
           addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
-  QAction * navBack, * navForward, * navPronounce, * enableScanPopupAction;
+  QAction * navBack, * navForward, * navPronounce, * enableScanningAction;
   QAction * beforeOptionsSeparator;
   QAction * zoomIn, * zoomOut, * zoomBase;
   QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;

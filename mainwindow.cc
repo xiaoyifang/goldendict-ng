@@ -230,17 +230,17 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // scan popup
   navToolbar->addSeparator();
 
-  enableScanPopupAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
-  enableScanPopupAction->setCheckable( true );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction->setCheckable( true );
 
-  navToolbar->widgetForAction( enableScanPopupAction )->setObjectName( "scanPopupButton" );
+  navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
   if( cfg.preferences.startWithScanPopupOn )
   {
-    enableScanPopupAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    enableScanPopupAction->setChecked( true );
+    enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    enableScanningAction->setChecked( true );
   }
 
-  connect( enableScanPopupAction, SIGNAL( toggled( bool ) ),
+  connect( enableScanningAction, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
 
   navToolbar->addSeparator();
@@ -405,7 +405,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
            this, SLOT( showMainWindow() ) );
-  trayIconMenu.addAction( enableScanPopupAction );
+  trayIconMenu.addAction( enableScanningAction );
 
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), SIGNAL( triggered() ),
@@ -1188,7 +1188,7 @@ void MainWindow::updateTrayIcon()
   if ( trayIcon )
   {
     // Update the icon to reflect the scanning mode
-    trayIcon->setIcon( enableScanPopupAction->isChecked() ?
+    trayIcon->setIcon( enableScanningAction->isChecked() ?
         QIcon::fromTheme("goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" )) :
         QIcon::fromTheme("goldendict-tray", QIcon( ":/icons/programicon_old.png" )) );
 
@@ -1488,7 +1488,7 @@ void MainWindow::makeScanPopup()
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( enableScanPopupAction->isChecked() )
+  if ( enableScanningAction->isChecked() )
     scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
@@ -3165,12 +3165,12 @@ void MainWindow::scanEnableToggled( bool on )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
                                           QPixmap( ":/icons/error.svg" ) );
 #endif
-      enableScanPopupAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
     }
     else
     {
       scanPopup->disableScanning();
-      enableScanPopupAction->setIcon(QIcon(":/icons/wizard.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }
 
