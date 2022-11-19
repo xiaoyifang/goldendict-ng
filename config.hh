@@ -329,6 +329,8 @@ struct Preferences
   bool ignoreDiacritics;
   bool ignorePunctuation;
 #ifdef HAVE_X11
+  bool trackClipboardScan;
+  bool trackSelectionScan;
   bool showScanFlag;
 #endif
 

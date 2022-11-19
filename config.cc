@@ -237,6 +237,10 @@ Preferences::Preferences():
   ignoreDiacritics( false ),
   ignorePunctuation( false ),
 #ifdef HAVE_X11
+  // Enable both Clipboard and Selection by default so that X users can enjoy full
+  // power and disable optionally.
+  trackClipboardScan ( true ),
+  trackSelectionScan ( true ),
   showScanFlag( false ),
 #endif
   pronounceOnLoadMain( false ),
@@ -895,6 +899,8 @@ Class load()
     if( !preferences.namedItem( "ignorePunctuation" ).isNull() )
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
 #ifdef HAVE_X11
+    c.preferences.trackClipboardScan= ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
+    c.preferences.trackSelectionScan= ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
     c.preferences.showScanFlag= ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
 #endif
 
@@ -1775,6 +1781,14 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
 #ifdef HAVE_X11
+    opt = dd.createElement( "trackClipboardScan" );
+    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardScan ? "1":"0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "trackSelectionScan" );
+    opt.appendChild( dd.createTextNode( c.preferences.trackSelectionScan ? "1":"0" ) );
+    preferences.appendChild( opt );
+
     opt = dd.createElement( "showScanFlag" );
     opt.appendChild( dd.createTextNode( c.preferences.showScanFlag? "1":"0" ) );
     preferences.appendChild( opt );

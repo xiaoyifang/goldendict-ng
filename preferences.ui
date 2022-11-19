@@ -712,6 +712,29 @@ seconds, which is specified here.</string>
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="enableX11SelectionTrack">
+         <property name="title">
+          <string>Track Selection change</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="enableClipboardTrack">
+         <property name="toolTip">
+          <string>Track clipboard changes when Scanning is enabled. Noice! You should always enable this unless you are on Linux.</string>
+         </property>
+         <property name="text">
+          <string>Track Clipboard change</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
