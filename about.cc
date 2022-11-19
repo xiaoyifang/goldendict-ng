@@ -8,7 +8,7 @@
 
 #include "utils.hh"
 
-About::About(std::vector< sptr< Dictionary::Class > > * dictonaries, QWidget * parent ): QDialog( parent )
+About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries ): QDialog( parent )
 {
   ui.setupUi( this );
 
@@ -49,31 +49,26 @@ About::About(std::vector< sptr< Dictionary::Class > > * dictonaries, QWidget * p
           "Qt " + QLatin1String(qVersion()) + " " +
           QSysInfo::buildAbi() + "\n" +
           compilerVersion + "\n"
-
-#ifdef Q_OS_LINUX
-      + "Flags:"
-
-    #ifdef USE_XAPIAN
-             +" USE_XAPIAN "
-    #endif
-
-    #ifdef MAKE_ZIM_SUPPORT
-             +" MAKE_ZIM_SUPPORT"
-    #endif
-
-    #ifdef MAKE_EXTRA_TIFF_HANDLER
-             +" MAKE_EXTRA_TIFF_HANDLER"
-    #endif
-
-    #ifdef NO_EPWING_SUPPORT
-             +" NO_EPWING_SUPPORT"
-    #endif
-
-    #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-             +" MAKE_CHINESE_CONVERSION_SUPPORT"
-    #endif
+    + "Flags:"
+#ifdef USE_XAPIAN
+         +" USE_XAPIAN "
 #endif
 
+#ifdef MAKE_ZIM_SUPPORT
+         +" MAKE_ZIM_SUPPORT"
+#endif
+
+#ifdef MAKE_EXTRA_TIFF_HANDLER
+         +" MAKE_EXTRA_TIFF_HANDLER"
+#endif
+
+#ifdef NO_EPWING_SUPPORT
+         +" NO_EPWING_SUPPORT"
+#endif
+
+#ifdef MAKE_CHINESE_CONVERSION_SUPPORT
+         +" MAKE_CHINESE_CONVERSION_SUPPORT"
+#endif
       );
   });
 

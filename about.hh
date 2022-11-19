@@ -14,7 +14,7 @@ class About: public QDialog
 {
   Q_OBJECT
 public:
-  About(std::vector< sptr< Dictionary::Class > > * dictonaries, QWidget * parent = 0 );
+  About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries);
 
 private:
 
