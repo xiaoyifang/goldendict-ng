@@ -914,7 +914,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 void MainWindow::clipboardChange( )
 {
   qDebug() << "clipboard change ," << scanPopup.get();
-  if( scanPopup )
+  if( scanPopup && enableScanningAction->isChecked() )
   {
     scanPopup->translateWordFromClipboard();
   }
