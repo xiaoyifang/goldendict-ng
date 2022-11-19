@@ -232,18 +232,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
   navToolbar->widgetForAction( beforeScanPopupSeparator )->setObjectName( "beforeScanPopupSeparator" );
 
-  enableScanPopup = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
-  enableScanPopup->setCheckable( true );
-  enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( enableScanPopup )->setObjectName( "scanPopupButton" );
+  enableScanPopupAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
+  enableScanPopupAction->setCheckable( true );
+  enableScanPopupAction->setVisible( cfg.preferences.enableScanPopup );
+  navToolbar->widgetForAction( enableScanPopupAction )->setObjectName( "scanPopupButton" );
   if( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
   {
-    enableScanPopup->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    enableScanPopup->setChecked( true );
+    enableScanPopupAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    enableScanPopupAction->setChecked( true );
   }
 
 
-  connect( enableScanPopup, SIGNAL( toggled( bool ) ),
+  connect( enableScanPopupAction, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
 
   afterScanPopupSeparator = navToolbar->addSeparator();
@@ -410,7 +410,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
            this, SLOT( showMainWindow() ) );
-  trayIconMenu.addAction( enableScanPopup );
+  trayIconMenu.addAction( enableScanPopupAction );
   actTrackingClipboard = trayIconMenu.addAction( tr( "Tracking Clipboard" ) );
   actTrackingClipboard->setCheckable(true);
   actTrackingClipboard->setChecked(cfg.preferences.trackClipboardChanges);
@@ -1198,7 +1198,7 @@ void MainWindow::updateTrayIcon()
   if ( trayIcon )
   {
     // Update the icon to reflect the scanning mode
-    trayIcon->setIcon( enableScanPopup->isChecked() ?
+    trayIcon->setIcon( enableScanPopupAction->isChecked() ?
         QIcon::fromTheme("goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" )) :
         QIcon::fromTheme("goldendict-tray", QIcon( ":/icons/programicon_old.png" )) );
 
@@ -1498,7 +1498,7 @@ void MainWindow::makeScanPopup()
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( cfg.preferences.enableScanPopup && enableScanPopup->isChecked() )
+  if ( cfg.preferences.enableScanPopup && enableScanPopupAction->isChecked() )
     scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
@@ -2254,11 +2254,11 @@ void MainWindow::editPreferences()
     audioPlayerFactory.setPreferences( cfg.preferences );
 
     beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-    enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
+    enableScanPopupAction->setVisible( cfg.preferences.enableScanPopup );
     afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
 
     if ( !cfg.preferences.enableScanPopup )
-      enableScanPopup->setChecked( false );
+      enableScanPopupAction->setChecked( false );
 
     updateTrayIcon();
     applyProxySettings();
@@ -3186,12 +3186,12 @@ void MainWindow::scanEnableToggled( bool on )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
                                           QPixmap( ":/icons/error.svg" ) );
 #endif
-      enableScanPopup->setIcon(QIcon(":/icons/wizard-selected.svg"));
+      enableScanPopupAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
     }
     else
     {
       scanPopup->disableScanning();
-      enableScanPopup->setIcon(QIcon(":/icons/wizard.svg"));
+      enableScanPopupAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }
 
