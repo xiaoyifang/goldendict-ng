@@ -318,7 +318,6 @@ struct Preferences
   bool enableClipboardHotkey;
   HotKey clipboardHotkey;
 
-  bool enableScanPopup;
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;
   unsigned long scanPopupModifiers; // Combination of KeyboardState::Modifier

@@ -16,9 +16,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   Config::Preferences const & p = cfg_.preferences;
   ui.setupUi( this );
 
-  connect( ui.enableScanPopup, SIGNAL( toggled( bool ) ),
-           this, SLOT( enableScanPopupToggled( bool ) ) );
-
   connect( ui.enableScanPopupModifiers, SIGNAL( toggled( bool ) ),
            this, SLOT( enableScanPopupModifiersToggled( bool ) ) );
 
@@ -190,7 +187,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enableClipboardHotkey->setChecked( p.enableClipboardHotkey );
   ui.clipboardHotkey->setHotKey( p.clipboardHotkey );
 
-  ui.enableScanPopup->setChecked( p.enableScanPopup );
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
 
@@ -407,7 +403,6 @@ Config::Preferences Preferences::getPreferences()
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
   p.clipboardHotkey = ui.clipboardHotkey->getHotKey();
 
-  p.enableScanPopup = ui.enableScanPopup->isChecked();
   p.startWithScanPopupOn = ui.startWithScanPopupOn->isChecked();
   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();
 
@@ -572,14 +567,9 @@ Config::Preferences Preferences::getPreferences()
   return p;
 }
 
-void Preferences::enableScanPopupToggled( bool b )
-{
-  ui.scanPopupModifiers->setEnabled( b && ui.enableScanPopupModifiers->isChecked() );
-}
-
 void Preferences::enableScanPopupModifiersToggled( bool b )
 {
-  ui.scanPopupModifiers->setEnabled( b && ui.enableScanPopup->isChecked() );
+  ui.scanPopupModifiers->setEnabled( b );
   if( b )
     ui.showScanFlag->setChecked( false );
 }
