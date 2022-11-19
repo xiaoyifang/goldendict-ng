@@ -369,9 +369,6 @@ struct Preferences
   InputPhrase sanitizeInputPhrase( QString const & inputPhrase ) const;
 
   unsigned short maxDictionaryRefsInContextMenu;
-#ifndef Q_WS_X11
-  bool trackClipboardChanges;
-#endif
 
   bool synonymSearchEnabled;
 

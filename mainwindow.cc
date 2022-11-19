@@ -406,12 +406,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
            this, SLOT( showMainWindow() ) );
   trayIconMenu.addAction( enableScanPopupAction );
-  actTrackingClipboard = trayIconMenu.addAction( tr( "Tracking Clipboard" ) );
-  actTrackingClipboard->setCheckable(true);
-  actTrackingClipboard->setChecked(cfg.preferences.trackClipboardChanges);
-//  actTrackingClipboard->setVisible( cfg.preferences.enableScanPopup );
-  connect( actTrackingClipboard , SIGNAL( triggered(bool) ),
-           this, SLOT( trackingClipboard(bool) ) );
+
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), SIGNAL( triggered() ),
            this, SLOT( quitApp() ) );
@@ -918,8 +913,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 void MainWindow::clipboardChange( )
 {
-  qDebug() << "clipboard change ," << cfg.preferences.trackClipboardChanges << scanPopup.get();
-  if( scanPopup && cfg.preferences.trackClipboardChanges )
+  qDebug() << "clipboard change ," << scanPopup.get();
+  if( scanPopup )
   {
     scanPopup->translateWordFromClipboard();
   }
@@ -1485,7 +1480,7 @@ void MainWindow::makeScanPopup()
   scanPopup.reset();
 
   // Later this will be remove, we want singluar way to toggling ScanPopup
-  if ( !cfg.preferences.enableClipboardHotkey && !cfg.preferences.trackClipboardChanges )
+  if ( !cfg.preferences.enableClipboardHotkey )
     return;
 
   scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
@@ -2181,9 +2176,7 @@ void MainWindow::editPreferences()
     p.hideMenubar = cfg.preferences.hideMenubar;
     p.searchInDock = cfg.preferences.searchInDock;
     p.alwaysOnTop = cfg.preferences.alwaysOnTop;
-#ifndef Q_WS_X11
-    p.trackClipboardChanges = cfg.preferences.trackClipboardChanges;
-#endif
+
     p.proxyServer.systemProxyUser = cfg.preferences.proxyServer.systemProxyUser;
     p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
@@ -3187,12 +3180,6 @@ void MainWindow::scanEnableToggled( bool on )
 void MainWindow::showMainWindow()
 {
   toggleMainWindow( true );
-}
-
-void MainWindow::trackingClipboard( bool on )
-{
-  cfg.preferences.trackClipboardChanges = on;
-  makeScanPopup();
 }
 
 void MainWindow::visitHomepage()

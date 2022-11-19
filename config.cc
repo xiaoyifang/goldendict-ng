@@ -263,9 +263,6 @@ Preferences::Preferences():
 , limitInputPhraseLength( false )
 , inputPhraseLengthLimit( 1000 )
 , maxDictionaryRefsInContextMenu ( 20 )
-#ifndef Q_WS_X11
-, trackClipboardChanges( false )
-#endif
 , synonymSearchEnabled( true )
 {
 }
@@ -999,11 +996,6 @@ Class load()
 
     if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() )
       c.preferences.maxDictionaryRefsInContextMenu = preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
-
-#ifndef Q_WS_X11
-    if ( !preferences.namedItem( "trackClipboardChanges" ).isNull() )
-      c.preferences.trackClipboardChanges = ( preferences.namedItem( "trackClipboardChanges" ).toElement().text() == "1" );
-#endif
 
     if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
       c.preferences.synonymSearchEnabled = ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
@@ -1954,12 +1946,6 @@ void save( Class const & c )
     opt = dd.createElement( "maxDictionaryRefsInContextMenu" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxDictionaryRefsInContextMenu ) ) );
     preferences.appendChild( opt );
-
-#ifndef Q_WS_X11
-    opt = dd.createElement( "trackClipboardChanges" );
-    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardChanges ? "1" : "0" ) );
-    preferences.appendChild( opt );
-#endif
 
     opt = dd.createElement( "synonymSearchEnabled" );
     opt.appendChild( dd.createTextNode( c.preferences.synonymSearchEnabled ? "1" : "0" ) );
