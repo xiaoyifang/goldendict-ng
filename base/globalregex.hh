@@ -45,6 +45,11 @@ public:
   static QRegularExpression styleElment;
 };
 
+class Zim{
+ public:
+  static QRegularExpression linkSpecialChar;
+};
+
 } // namespace RX
 
 #endif // GLOBALREGEX_HH

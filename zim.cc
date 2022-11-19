@@ -42,6 +42,7 @@
 #include <map>
 #include <algorithm>
 #include <QtConcurrent>
+#include "base/globalregex.hh"
 
 namespace Zim {
 
@@ -883,10 +884,10 @@ string ZimDictionary::convert( const string & in )
     }
     else{
       //tag from list[3]
-      formatTag = tag;//tag.replace(QRegularExpression("[\\.\\/]"),"-");
+      formatTag = tag;
     }
 
-    formatTag.replace(QRegularExpression("[\\.\\/]"),"");
+    formatTag.replace(RX::Zim::linkSpecialChar,"");
 
     vector< WordArticleLink > links;
     links = findArticles( gd::toWString( formatTag ) );
@@ -1489,7 +1490,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName =  QString::fromStdString(name).replace(QRegularExpression("[\\.\\/]"),"");
+  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
   return new ZimResourceRequest( *this, formatedName.toStdString() );
 }
 
@@ -1641,7 +1642,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                   }
                   if( !url.empty() )
                   {
-                    auto formatedUrl = QString::fromStdString( url ).replace( QRegularExpression( "[\\.\\/]" ), "" );
+                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
                     indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
                   }
                 }
@@ -1654,7 +1655,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                   }
                   if( !url.empty() )
                   {
-                    auto formatedUrl = QString::fromStdString( url ).replace( QRegularExpression( "[\\.\\/]" ), "" );
+                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
                     indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
                   }
                 }
@@ -1662,7 +1663,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
               else
               {
-                auto formatedUrl = QString::fromStdString(url).replace(QRegularExpression("[\\.\\/]"),"");
+                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
                 indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
               }
             }
@@ -1701,7 +1702,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             {
 //              url.insert( url.begin(), '/' );
 //              url.insert( url.begin(), nameSpace );
-              auto formatedUrl = QString::fromStdString(url).replace(QRegularExpression("[\\.\\/]"),"");
+              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
               indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
             }
           }
