@@ -167,10 +167,17 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
     if(req.url().scheme()=="gdlookup"){
         QString path=url.path();
-        if(!path.isEmpty()){
-            Utils::Url::addQueryItem(url,"word",path.mid(1));
-            url.setPath("");
-            Utils::Url::addQueryItem(url,"group","1");
+        if( !path.isEmpty() )
+        {
+          url.setPath( "" );
+          QByteArray referer = req.rawHeader( "Referer" );
+          QUrl refererUrl    = QUrl::fromEncoded( referer );
+
+          Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
+          if( Utils::Url::hasQueryItem( refererUrl, "group" ) )
+          {
+            Utils::Url::addQueryItem( url, "group", Utils::Url::queryItemValue( refererUrl, "group" ) );
+          }
         }
     }
 
@@ -311,7 +318,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( groupIsValid && phrase.isValid() ) // Require group and phrase to be passed
+    if ( phrase.isValid() ) // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( phrase, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
   }
 

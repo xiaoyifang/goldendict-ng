@@ -65,3 +65,4 @@ QRegularExpression Mdx::styleElment( "(<style[^>]*>)([\\w\\W]*?)(<\\/style>)",
                                   QRegularExpression::CaseInsensitiveOption);
 
 
+QRegularExpression Zim::linkSpecialChar("[\\.\\/]");
