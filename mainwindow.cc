@@ -1484,8 +1484,8 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  if ( !cfg.preferences.enableScanPopup &&
-       !cfg.preferences.enableClipboardHotkey && !cfg.preferences.trackClipboardChanges )
+  // Later this will be remove, we want singluar way to toggling ScanPopup
+  if ( !cfg.preferences.enableClipboardHotkey && !cfg.preferences.trackClipboardChanges )
     return;
 
   scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
@@ -1493,7 +1493,7 @@ void MainWindow::makeScanPopup()
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( cfg.preferences.enableScanPopup && enableScanPopupAction->isChecked() )
+  if ( enableScanPopupAction->isChecked() )
     scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
@@ -3161,8 +3161,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::scanEnableToggled( bool on )
 {
-  if ( !cfg.preferences.enableScanPopup )
-    return;
 
   if ( scanPopup )
   {
