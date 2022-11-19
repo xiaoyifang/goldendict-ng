@@ -2199,6 +2199,8 @@ void MainWindow::editPreferences()
     p.fts.searchMode = cfg.preferences.fts.searchMode;
     p.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
     p.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
+    p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
+    p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
     bool needReload = false;
 
@@ -3224,7 +3226,7 @@ void MainWindow::visitForum()
 
 void MainWindow::showAbout()
 {
-  About about( this );
+  About about(this, &dictionaries);
 
   about.show();
   about.exec();

@@ -5,14 +5,16 @@
 #define ABOUT_HH
 
 #include "ui_about.h"
+#include "sptr.hh"
+#include "dictionary.hh"
 #include <QDialog>
+#include <vector>
 
 class About: public QDialog
 {
   Q_OBJECT
 public:
-
-  About( QWidget * parent = 0 );
+  About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries);
 
 private:
 

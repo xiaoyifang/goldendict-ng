@@ -35,6 +35,15 @@ private slots:
 
   void enableScanPopupToggled( bool );
   void enableScanPopupModifiersToggled( bool );
+  void showScanFlagToggled( bool b );
+
+  void wholeAltClicked( bool );
+  void wholeCtrlClicked( bool );
+  void wholeShiftClicked( bool );
+
+  void sideAltClicked( bool );
+  void sideCtrlClicked( bool );
+  void sideShiftClicked( bool );
 
   void on_enableMainWindowHotkey_toggled( bool checked );
   void on_enableClipboardHotkey_toggled( bool checked );
