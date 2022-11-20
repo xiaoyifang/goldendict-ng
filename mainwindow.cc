@@ -1497,10 +1497,6 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  // Later this will be remove, we want singluar way to toggling ScanPopup
-  if ( !cfg.preferences.enableClipboardHotkey )
-    return;
-
   scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
                              dictionaries, groupInstances, history );
 
