@@ -917,18 +917,20 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 {
   if( scanPopup && enableScanningAction->isChecked()  )
   {
-    if ( cfg.preferences.enableScanPopupModifiers && KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers))
-    {
       if(m == QClipboard::Clipboard){
         if(!cfg.preferences.trackClipboardScan) return;
         scanPopup->translateWordFromClipboard();
+        return;
       }
 
       if(m == QClipboard::Selection){
         if(!cfg.preferences.trackSelectionScan) return;
+        if(cfg.preferences.enableScanPopupModifiers &&
+          !KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers)){
+          return;
+        }
         scanPopup->translateWordFromSelection();
       }
-    }
   }
 }
 
