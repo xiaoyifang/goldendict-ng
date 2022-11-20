@@ -317,7 +317,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
 
-  connect( this, SIGNAL( showScanFlag( bool ) ),
+  connect( this, SIGNAL( showScanFlag() ),
            scanFlag, SLOT( showScanFlag() ) );
 
   connect( this, SIGNAL( hideScanFlag() ),
@@ -572,7 +572,7 @@ void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
 #ifdef HAVE_X11
   if ( cfg.preferences.showScanFlag ) {
     inputPhrase = pendingInputPhrase;
-    emit showScanFlag( forcePopup );
+    emit showScanFlag();
     return;
   }
 #endif
