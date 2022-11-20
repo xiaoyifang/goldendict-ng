@@ -940,7 +940,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
         // Show a Flag instead of translate directly.
         // And hand over the control of showing the popup to scanFlag
         if ( cfg.preferences.showScanFlag ) {
-          emit scanPopup->showScanFlag();
+          scanPopup->showScanFlag();
           return;
         }
 

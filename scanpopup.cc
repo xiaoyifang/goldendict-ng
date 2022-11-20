@@ -317,13 +317,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
 
-  connect( this, SIGNAL( showScanFlag() ),
-           scanFlag, SLOT( showScanFlag() ) );
-
-  connect( this, SIGNAL( hideScanFlag() ),
-           scanFlag, SLOT( hideWindow() ) );
-
-  connect( scanFlag, &ScanFlag::showScanPopup,
+  connect( scanFlag, &ScanFlag::requestScanPopup,
     this, [=]{
     translateWordFromSelection();
   });
@@ -1343,4 +1337,13 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title )
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title, groupId ) ?
                                          blueStarIcon : starIcon );
+}
+
+
+void ScanPopup::showScanFlag(){
+  scanFlag->showScanFlag();
+}
+
+void ScanPopup::hideScanFlag(){
+  scanFlag->hideWindow();
 }

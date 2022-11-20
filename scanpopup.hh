@@ -53,6 +53,13 @@ public:
   void setDictionaryIconSize();
 
   void saveConfigData();
+
+#ifdef HAVE_X11
+  /// Interaction with scan flag window
+  void showScanFlag();
+  void hideScanFlag();
+#endif
+
 signals:
 
   /// Forwarded from the dictionary bar, so that main window could act on this.
@@ -78,12 +85,6 @@ signals:
   void sendWordToFavorites( QString const & word, unsigned groupId );
   /// Check is word already presented in Favorites
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
-
-#ifdef HAVE_X11
-  /// Interaction with scan flag window
-  void showScanFlag();
-  void hideScanFlag();
-#endif
 
 #ifdef Q_OS_WIN32
   /// Ask for source window is current translate tab
