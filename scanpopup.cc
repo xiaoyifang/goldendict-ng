@@ -289,18 +289,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &hideTimer, SIGNAL( timeout() ),
            this, SLOT( hideTimerExpired() ) );
 
-  altModeExpirationTimer.setSingleShot( true );
-  altModeExpirationTimer.setInterval( cfg.preferences.scanPopupAltModeSecs * 1000 );
-
-  connect( &altModeExpirationTimer, SIGNAL( timeout() ),
-           this, SLOT( altModeExpired() ) );
-
-  // This one polls constantly for modifiers while alt mode lasts
-  altModePollingTimer.setSingleShot( false );
-  altModePollingTimer.setInterval( 50 );
-  connect( &altModePollingTimer, SIGNAL( timeout() ),
-           this, SLOT( altModePoll() ) );
-
   mouseGrabPollTimer.setSingleShot( false );
   mouseGrabPollTimer.setInterval( 10 );
   connect( &mouseGrabPollTimer, SIGNAL( timeout() ),
@@ -477,10 +465,6 @@ void ScanPopup::translateWord( QString const & word )
   if ( !pendingInputPhrase.isValid() )
     return; // Nothing there
 
-  // In case we had any timers engaged before, cancel them now.
-  altModePollingTimer.stop();
-  altModeExpirationTimer.stop();
-
 #ifdef HAVE_X11
   emit hideScanFlag();
 #endif
@@ -555,17 +539,6 @@ void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
 
   pendingInputPhrase = sanitizedPhrase;
 
-  if ( !pendingInputPhrase.isValid() )
-  {
-    if ( cfg.preferences.scanPopupAltMode )
-    {
-      // In case we had any timers engaged before, cancel them now, since
-      // we're not going to translate anything anymore.
-      altModePollingTimer.stop();
-      altModeExpirationTimer.stop();
-    }
-    return;
-  }
 
 #ifdef HAVE_X11
   if ( cfg.preferences.showScanFlag ) {
@@ -574,19 +547,6 @@ void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
     return;
   }
 #endif
-
-  // Check key modifiers
-
-  if ( cfg.preferences.enableScanPopupModifiers && !checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
-  {
-    if ( cfg.preferences.scanPopupAltMode )
-    {
-      altModePollingTimer.start();
-      altModeExpirationTimer.start();
-    }
-
-    return;
-  }
 
   inputPhrase = pendingInputPhrase;
   engagePopup( forcePopup );
@@ -1117,31 +1077,6 @@ void ScanPopup::hideTimerExpired()
 {
   if ( isVisible() )
     hideWindow();
-}
-
-void ScanPopup::altModeExpired()
-{
-  // The alt mode duration has expired, so there's no need to poll for modifiers
-  // anymore.
-  altModePollingTimer.stop();
-}
-
-void ScanPopup::altModePoll()
-{
-  if ( !pendingInputPhrase.isValid() )
-  {
-    altModePollingTimer.stop();
-    altModeExpirationTimer.stop();
-  }
-  else
-  if ( checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
-  {
-    altModePollingTimer.stop();
-    altModeExpirationTimer.stop();
-
-    inputPhrase = pendingInputPhrase;
-    engagePopup( false );
-  }
 }
 
 void ScanPopup::pageLoaded( ArticleView * )

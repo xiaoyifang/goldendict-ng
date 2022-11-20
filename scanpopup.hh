@@ -157,7 +157,6 @@ private:
   QTimer hideTimer; // When mouse leaves the window, a grace period is
                     // given for it to return back. If it doesn't before
                     // this timer expires, the window gets hidden.
-  QTimer altModeExpirationTimer, altModePollingTimer; // Timers for alt mode
 
   QTimer mouseGrabPollTimer;
 
@@ -209,8 +208,6 @@ private slots:
   void on_goForwardButton_clicked();
 
   void hideTimerExpired();
-  void altModeExpired();
-  void altModePoll();
 
   /// Called repeatedly once the popup is initially engaged and we monitor the
   /// mouse as it may move away from the window. This simulates mouse grab, in

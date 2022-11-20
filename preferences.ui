@@ -24,7 +24,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="iconSize">
       <size>
@@ -661,67 +661,6 @@ in the pressed state when the word selection changes.</string>
              <string>Show scan flag when word is selected</string>
             </property>
            </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <item>
-             <widget class="QCheckBox" name="scanPopupAltMode">
-              <property name="toolTip">
-               <string>Normally, in order to activate a popup you have to
-maintain the chosen keys pressed while you select
-a word. With this enabled, the chosen keys may also
-be pressed shortly after the selection is done.</string>
-              </property>
-              <property name="text">
-               <string>Keys may also be pressed afterwards, within</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="scanPopupAltModeSecs">
-              <property name="toolTip">
-               <string>To avoid false positives, the keys are only monitored
-after the selection's done for a limited amount of
-seconds, which is specified here.</string>
-              </property>
-              <property name="wrapping">
-               <bool>false</bool>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>99</number>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>secs</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
           </item>
           <item>
            <widget class="QCheckBox" name="ignoreOwnClipboardChanges">
@@ -1858,8 +1797,6 @@ from Stardict, Babylon and GLS dictionaries</string>
   <tabstop>rightCtrl</tabstop>
   <tabstop>leftShift</tabstop>
   <tabstop>winKey</tabstop>
-  <tabstop>scanPopupAltMode</tabstop>
-  <tabstop>scanPopupAltModeSecs</tabstop>
   <tabstop>useProxyServer</tabstop>
   <tabstop>proxyType</tabstop>
   <tabstop>proxyHost</tabstop>

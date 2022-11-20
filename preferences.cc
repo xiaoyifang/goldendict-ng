@@ -201,8 +201,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.leftShift->setChecked( p.scanPopupModifiers & KeyboardState::LeftShift );
   ui.rightShift->setChecked( p.scanPopupModifiers & KeyboardState::RightShift );
 
-  ui.scanPopupAltMode->setChecked( p.scanPopupAltMode );
-  ui.scanPopupAltModeSecs->setValue( p.scanPopupAltModeSecs );
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
 
@@ -421,8 +419,6 @@ Config::Preferences Preferences::getPreferences()
   p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift: 0;
   p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift: 0;
 
-  p.scanPopupAltMode = ui.scanPopupAltMode->isChecked();
-  p.scanPopupAltModeSecs = ui.scanPopupAltModeSecs->value();
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow = ui.scanToMainWindow->isChecked();
 #ifdef HAVE_X11

@@ -321,8 +321,6 @@ struct Preferences
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;
   unsigned long scanPopupModifiers; // Combination of KeyboardState::Modifier
-  bool scanPopupAltMode; // When you press modifier shortly after the selection
-  unsigned scanPopupAltModeSecs;
   bool ignoreOwnClipboardChanges;
 
   bool scanToMainWindow;
