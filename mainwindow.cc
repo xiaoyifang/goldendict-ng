@@ -917,6 +917,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 {
   if( scanPopup && enableScanningAction->isChecked()  )
   {
+#ifdef HAVE_X11
       if(m == QClipboard::Clipboard){
         if(!cfg.preferences.trackClipboardScan) return;
         scanPopup->translateWordFromClipboard();
@@ -931,7 +932,10 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
         }
         scanPopup->translateWordFromSelection();
       }
-  }
+#else
+    scanPopup ->translateWordFromClipboard();
+#endif
+     }
 }
 
 void MainWindow::ctrlTabPressed()
