@@ -1339,7 +1339,7 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title )
                                          blueStarIcon : starIcon );
 }
 
-
+#ifdef HAVE_X11
 void ScanPopup::showScanFlag(){
   scanFlag->showScanFlag();
 }
@@ -1347,3 +1347,4 @@ void ScanPopup::showScanFlag(){
 void ScanPopup::hideScanFlag(){
   scanFlag->hideWindow();
 }
+#endif
