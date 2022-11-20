@@ -19,7 +19,17 @@
         <translation>授权基于 GNU 公共授权 GPLv3 或更高版本</translation>
     </message>
     <message>
-        <location filename="../about.ui" line="125"/>
+        <location filename="../about.ui" line="129"/>
+        <source>Copy version info</source>
+        <translation>拷贝版本信息</translation>
+    </message>
+    <message>
+        <location filename="../about.ui" line="142"/>
+        <source>Copy dictionaries list</source>
+        <translation>拷贝词典列表</translation>
+    </message>
+    <message>
+        <location filename="../about.ui" line="168"/>
         <source>Credits:</source>
         <translation>致谢名单：</translation>
     </message>

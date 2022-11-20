@@ -63,11 +63,11 @@ function Main() {
     Write-Host "copy qtwebengine qm from $($webengineqm)"
     Copy-Item $webengineqm $archiveName\locale\
     
-    $multimedia="{0}\plugins\multimedia" -f $env:QTDIR.Trim()
-    if(Test-Path $multimedia){
-    Write-Host "copy multimedia  $($multimedia) to plugins"
-    Copy-Item -Path $multimedia -Destination $archiveName\plugins -Recurse
-    }
+    # $multimedia="{0}\plugins\multimedia" -f $env:QTDIR.Trim()
+    # if(Test-Path $multimedia){
+    # Write-Host "copy multimedia  $($multimedia) to plugins"
+    # Copy-Item -Path $multimedia -Destination $archiveName\plugins -Recurse
+    # }
 
     Write-Host "compress zip..."
     # 打包zip

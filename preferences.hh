@@ -33,7 +33,6 @@ private:
 
 private slots:
 
-  void enableScanPopupToggled( bool );
   void enableScanPopupModifiersToggled( bool );
   void showScanFlagToggled( bool b );
 

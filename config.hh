@@ -318,18 +318,17 @@ struct Preferences
   bool enableClipboardHotkey;
   HotKey clipboardHotkey;
 
-  bool enableScanPopup;
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;
   unsigned long scanPopupModifiers; // Combination of KeyboardState::Modifier
-  bool scanPopupAltMode; // When you press modifier shortly after the selection
-  unsigned scanPopupAltModeSecs;
   bool ignoreOwnClipboardChanges;
 
   bool scanToMainWindow;
   bool ignoreDiacritics;
   bool ignorePunctuation;
 #ifdef HAVE_X11
+  bool trackClipboardScan;
+  bool trackSelectionScan;
   bool showScanFlag;
 #endif
 
@@ -370,9 +369,6 @@ struct Preferences
   InputPhrase sanitizeInputPhrase( QString const & inputPhrase ) const;
 
   unsigned short maxDictionaryRefsInContextMenu;
-#ifndef Q_WS_X11
-  bool trackClipboardChanges;
-#endif
 
   bool synonymSearchEnabled;
 

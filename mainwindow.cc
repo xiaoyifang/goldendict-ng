@@ -49,6 +49,8 @@
 #include "ui_authentication.h"
 #include "resourceschemehandler.h"
 
+#include "keyboardstate.hh"
+
 #ifdef Q_OS_MAC
 #include "macmouseover.hh"
 #endif
@@ -228,27 +230,22 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
   // scan popup
-  beforeScanPopupSeparator = navToolbar->addSeparator();
-  beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( beforeScanPopupSeparator )->setObjectName( "beforeScanPopupSeparator" );
+  navToolbar->addSeparator();
 
-  enableScanPopup = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
-  enableScanPopup->setCheckable( true );
-  enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( enableScanPopup )->setObjectName( "scanPopupButton" );
-  if( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction->setCheckable( true );
+
+  navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
+  if( cfg.preferences.startWithScanPopupOn )
   {
-    enableScanPopup->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    enableScanPopup->setChecked( true );
+    enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    enableScanningAction->setChecked( true );
   }
 
-
-  connect( enableScanPopup, SIGNAL( toggled( bool ) ),
+  connect( enableScanningAction, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
 
-  afterScanPopupSeparator = navToolbar->addSeparator();
-  afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( afterScanPopupSeparator )->setObjectName( "afterScanPopupSeparator" );
+  navToolbar->addSeparator();
 
   // sound
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
@@ -410,13 +407,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
            this, SLOT( showMainWindow() ) );
-  trayIconMenu.addAction( enableScanPopup );
-  actTrackingClipboard = trayIconMenu.addAction( tr( "Tracking Clipboard" ) );
-  actTrackingClipboard->setCheckable(true);
-  actTrackingClipboard->setChecked(cfg.preferences.trackClipboardChanges);
-//  actTrackingClipboard->setVisible( cfg.preferences.enableScanPopup );
-  connect( actTrackingClipboard , SIGNAL( triggered(bool) ),
-           this, SLOT( trackingClipboard(bool) ) );
+  trayIconMenu.addAction( enableScanningAction );
+
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), SIGNAL( triggered() ),
            this, SLOT( quitApp() ) );
@@ -918,16 +910,46 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   inspector.reset( new ArticleInspector( this ));
 
-  connect( QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboardChange );
+  connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
 }
 
-void MainWindow::clipboardChange( )
+void MainWindow::clipboardChange( QClipboard::Mode m)
 {
-  qDebug() << "clipboard change ," << cfg.preferences.trackClipboardChanges << scanPopup.get();
-  if( scanPopup && cfg.preferences.trackClipboardChanges )
+  if( scanPopup && enableScanningAction->isChecked()  )
   {
-    scanPopup->translateWordFromClipboard();
-  }
+#ifdef HAVE_X11
+      if(m == QClipboard::Clipboard){
+        if(!cfg.preferences.trackClipboardScan) return;
+        scanPopup->translateWordFromClipboard();
+        return;
+      }
+
+      if(m == QClipboard::Selection){
+
+        // Multiple ways to stoping a word from showing up when selecting
+
+        // Explictly disabled on preferences
+        if(!cfg.preferences.trackSelectionScan) return;
+
+        // Keyboard Modifier
+        if(cfg.preferences.enableScanPopupModifiers &&
+          !KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers)){
+          return;
+        }
+
+        // Show a Flag instead of translate directly.
+        // And hand over the control of showing the popup to scanFlag
+        if ( cfg.preferences.showScanFlag ) {
+          scanPopup->showScanFlag();
+          return;
+        }
+
+        scanPopup->translateWordFromSelection();
+      }
+#else
+    scanPopup ->translateWordFromClipboard();
+#endif
+     }
 }
 
 void MainWindow::ctrlTabPressed()
@@ -1198,7 +1220,7 @@ void MainWindow::updateTrayIcon()
   if ( trayIcon )
   {
     // Update the icon to reflect the scanning mode
-    trayIcon->setIcon( enableScanPopup->isChecked() ?
+    trayIcon->setIcon( enableScanningAction->isChecked() ?
         QIcon::fromTheme("goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" )) :
         QIcon::fromTheme("goldendict-tray", QIcon( ":/icons/programicon_old.png" )) );
 
@@ -1489,16 +1511,12 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  if ( !cfg.preferences.enableScanPopup &&
-       !cfg.preferences.enableClipboardHotkey && !cfg.preferences.trackClipboardChanges )
-    return;
-
   scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( cfg.preferences.enableScanPopup && enableScanPopup->isChecked() )
+  if ( enableScanningAction->isChecked() )
     scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
@@ -2186,9 +2204,7 @@ void MainWindow::editPreferences()
     p.hideMenubar = cfg.preferences.hideMenubar;
     p.searchInDock = cfg.preferences.searchInDock;
     p.alwaysOnTop = cfg.preferences.alwaysOnTop;
-#ifndef Q_WS_X11
-    p.trackClipboardChanges = cfg.preferences.trackClipboardChanges;
-#endif
+
     p.proxyServer.systemProxyUser = cfg.preferences.proxyServer.systemProxyUser;
     p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
@@ -2252,13 +2268,6 @@ void MainWindow::editPreferences()
     cfg.preferences = p;
 
     audioPlayerFactory.setPreferences( cfg.preferences );
-
-    beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-    enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
-    afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-
-    if ( !cfg.preferences.enableScanPopup )
-      enableScanPopup->setChecked( false );
 
     updateTrayIcon();
     applyProxySettings();
@@ -3173,8 +3182,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::scanEnableToggled( bool on )
 {
-  if ( !cfg.preferences.enableScanPopup )
-    return;
 
   if ( scanPopup )
   {
@@ -3186,12 +3193,12 @@ void MainWindow::scanEnableToggled( bool on )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
                                           QPixmap( ":/icons/error.svg" ) );
 #endif
-      enableScanPopup->setIcon(QIcon(":/icons/wizard-selected.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
     }
     else
     {
       scanPopup->disableScanning();
-      enableScanPopup->setIcon(QIcon(":/icons/wizard.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }
 
@@ -3201,12 +3208,6 @@ void MainWindow::scanEnableToggled( bool on )
 void MainWindow::showMainWindow()
 {
   toggleMainWindow( true );
-}
-
-void MainWindow::trackingClipboard( bool on )
-{
-  cfg.preferences.trackClipboardChanges = on;
-  makeScanPopup();
 }
 
 void MainWindow::visitHomepage()

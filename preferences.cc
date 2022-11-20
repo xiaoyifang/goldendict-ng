@@ -16,9 +16,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   Config::Preferences const & p = cfg_.preferences;
   ui.setupUi( this );
 
-  connect( ui.enableScanPopup, SIGNAL( toggled( bool ) ),
-           this, SLOT( enableScanPopupToggled( bool ) ) );
-
   connect( ui.enableScanPopupModifiers, SIGNAL( toggled( bool ) ),
            this, SLOT( enableScanPopupModifiersToggled( bool ) ) );
 
@@ -190,7 +187,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enableClipboardHotkey->setChecked( p.enableClipboardHotkey );
   ui.clipboardHotkey->setHotKey( p.clipboardHotkey );
 
-  ui.enableScanPopup->setChecked( p.enableScanPopup );
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
 
@@ -205,8 +201,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.leftShift->setChecked( p.scanPopupModifiers & KeyboardState::LeftShift );
   ui.rightShift->setChecked( p.scanPopupModifiers & KeyboardState::RightShift );
 
-  ui.scanPopupAltMode->setChecked( p.scanPopupAltMode );
-  ui.scanPopupAltModeSecs->setValue( p.scanPopupAltModeSecs );
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
 
@@ -255,8 +249,12 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 //Platform-specific options
 
 #ifdef HAVE_X11
-  ui.showScanFlag->setChecked( p.showScanFlag);
+  ui.enableX11SelectionTrack->setChecked(p.trackSelectionScan);
+  ui.enableClipboardTrack ->setChecked(p.trackClipboardScan);
+  ui.showScanFlag->setChecked(p.showScanFlag);
 #else
+  ui.enableX11SelectionTrack->hide();
+  ui.enableClipboardTrack->hide();
   ui.showScanFlag->hide();
   ui.ignoreOwnClipboardChanges->hide();
 #endif
@@ -407,7 +405,6 @@ Config::Preferences Preferences::getPreferences()
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
   p.clipboardHotkey = ui.clipboardHotkey->getHotKey();
 
-  p.enableScanPopup = ui.enableScanPopup->isChecked();
   p.startWithScanPopupOn = ui.startWithScanPopupOn->isChecked();
   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();
 
@@ -422,11 +419,11 @@ Config::Preferences Preferences::getPreferences()
   p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift: 0;
   p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift: 0;
 
-  p.scanPopupAltMode = ui.scanPopupAltMode->isChecked();
-  p.scanPopupAltModeSecs = ui.scanPopupAltModeSecs->value();
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow = ui.scanToMainWindow->isChecked();
 #ifdef HAVE_X11
+  p.trackSelectionScan = ui.enableX11SelectionTrack ->isChecked();
+  p.trackClipboardScan = ui.enableClipboardTrack ->isChecked();
   p.showScanFlag= ui.showScanFlag->isChecked();
 #endif
 
@@ -572,14 +569,9 @@ Config::Preferences Preferences::getPreferences()
   return p;
 }
 
-void Preferences::enableScanPopupToggled( bool b )
-{
-  ui.scanPopupModifiers->setEnabled( b && ui.enableScanPopupModifiers->isChecked() );
-}
-
 void Preferences::enableScanPopupModifiersToggled( bool b )
 {
-  ui.scanPopupModifiers->setEnabled( b && ui.enableScanPopup->isChecked() );
+  ui.scanPopupModifiers->setEnabled( b );
   if( b )
     ui.showScanFlag->setChecked( false );
 }
