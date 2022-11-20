@@ -278,11 +278,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, SIGNAL( titleChanged(  ArticleView *, QString const & ) ),
            this, SLOT( titleChanged(  ArticleView *, QString const & ) ) );
 
-  connect( QApplication::clipboard(),
-           SIGNAL( changed( QClipboard::Mode ) ),
-           this,
-           SLOT( clipboardChanged( QClipboard::Mode ) ) );
-
 #ifdef Q_OS_MAC
   connect( &MouseOver::instance(), SIGNAL( hovered( QString const &, bool ) ),
            this, SLOT( mouseHovered( QString const &, bool ) ) );
@@ -293,18 +288,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( &hideTimer, SIGNAL( timeout() ),
            this, SLOT( hideTimerExpired() ) );
-
-  altModeExpirationTimer.setSingleShot( true );
-  altModeExpirationTimer.setInterval( cfg.preferences.scanPopupAltModeSecs * 1000 );
-
-  connect( &altModeExpirationTimer, SIGNAL( timeout() ),
-           this, SLOT( altModeExpired() ) );
-
-  // This one polls constantly for modifiers while alt mode lasts
-  altModePollingTimer.setSingleShot( false );
-  altModePollingTimer.setInterval( 50 );
-  connect( &altModePollingTimer, SIGNAL( timeout() ),
-           this, SLOT( altModePoll() ) );
 
   mouseGrabPollTimer.setSingleShot( false );
   mouseGrabPollTimer.setInterval( 10 );
@@ -322,14 +305,10 @@ ScanPopup::ScanPopup( QWidget * parent,
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
 
-  connect( this, SIGNAL( showScanFlag( bool ) ),
-           scanFlag, SLOT( showScanFlag() ) );
-
-  connect( this, SIGNAL( hideScanFlag() ),
-           scanFlag, SLOT( hideWindow() ) );
-
-  connect( scanFlag, SIGNAL( showScanPopup() ),
-           this, SLOT( showEngagePopup() ) );
+  connect( scanFlag, &ScanFlag::requestScanPopup,
+    this, [=]{
+    translateWordFromSelection();
+  });
 
   delayTimer.setSingleShot( true );
   delayTimer.setInterval( 200 );
@@ -486,10 +465,6 @@ void ScanPopup::translateWord( QString const & word )
   if ( !pendingInputPhrase.isValid() )
     return; // Nothing there
 
-  // In case we had any timers engaged before, cancel them now.
-  altModePollingTimer.stop();
-  altModeExpirationTimer.stop();
-
 #ifdef HAVE_X11
   emit hideScanFlag();
 #endif
@@ -513,21 +488,25 @@ void ScanPopup::delayShow()
 }
 #endif
 
+[[deprecated("Favor the mainWindow's clipboardChanged ones")]]
 void ScanPopup::clipboardChanged( QClipboard::Mode m )
 {
-//  if( !cfg.preferences.trackClipboardChanges )
-//    return;
-  if( !isScanningEnabled && !cfg.preferences.trackClipboardChanges)
+
+  if( !isScanningEnabled )
     return;
 
 #ifdef HAVE_X11
   if( cfg.preferences.ignoreOwnClipboardChanges && ownsClipboardMode( m ) )
     return;
-#endif
 
-  GD_DPRINTF( "clipboard changed\n" );
+  if(m == QClipboard::Clipboard && !cfg.preferences.trackClipboardScan){
+    return;
+  }
 
-#ifdef HAVE_X11
+  if(m == QClipboard::Selection && !cfg.preferences.trackSelectionScan){
+    return;
+  }
+
   if( m == QClipboard::Selection )
   {
     // Use delay show to prevent multiple popups while selection in progress
@@ -546,6 +525,7 @@ void ScanPopup::mouseHovered( QString const & str, bool forcePopup )
   handleInputWord( str, forcePopup );
 }
 
+[[deprecated]]
 void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
 {
   Config::InputPhrase sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );
@@ -559,38 +539,14 @@ void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
 
   pendingInputPhrase = sanitizedPhrase;
 
-  if ( !pendingInputPhrase.isValid() )
-  {
-    if ( cfg.preferences.scanPopupAltMode )
-    {
-      // In case we had any timers engaged before, cancel them now, since
-      // we're not going to translate anything anymore.
-      altModePollingTimer.stop();
-      altModeExpirationTimer.stop();
-    }
-    return;
-  }
 
 #ifdef HAVE_X11
   if ( cfg.preferences.showScanFlag ) {
     inputPhrase = pendingInputPhrase;
-    emit showScanFlag( forcePopup );
+    emit showScanFlag();
     return;
   }
 #endif
-
-  // Check key modifiers
-
-  if ( cfg.preferences.enableScanPopupModifiers && !checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
-  {
-    if ( cfg.preferences.scanPopupAltMode )
-    {
-      altModePollingTimer.start();
-      altModeExpirationTimer.start();
-    }
-
-    return;
-  }
 
   inputPhrase = pendingInputPhrase;
   engagePopup( forcePopup );
@@ -1123,31 +1079,6 @@ void ScanPopup::hideTimerExpired()
     hideWindow();
 }
 
-void ScanPopup::altModeExpired()
-{
-  // The alt mode duration has expired, so there's no need to poll for modifiers
-  // anymore.
-  altModePollingTimer.stop();
-}
-
-void ScanPopup::altModePoll()
-{
-  if ( !pendingInputPhrase.isValid() )
-  {
-    altModePollingTimer.stop();
-    altModeExpirationTimer.stop();
-  }
-  else
-  if ( checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
-  {
-    altModePollingTimer.stop();
-    altModeExpirationTimer.stop();
-
-    inputPhrase = pendingInputPhrase;
-    engagePopup( false );
-  }
-}
-
 void ScanPopup::pageLoaded( ArticleView * )
 {
   if( !isVisible() )
@@ -1342,3 +1273,13 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title )
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title, groupId ) ?
                                          blueStarIcon : starIcon );
 }
+
+#ifdef HAVE_X11
+void ScanPopup::showScanFlag(){
+  scanFlag->showScanFlag();
+}
+
+void ScanPopup::hideScanFlag(){
+  scanFlag->hideWindow();
+}
+#endif

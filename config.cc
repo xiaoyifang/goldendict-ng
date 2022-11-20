@@ -227,17 +227,18 @@ Preferences::Preferences():
   enableClipboardHotkey( true ),
   clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
 
-  enableScanPopup( true ),
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
-  scanPopupAltMode( false ),
-  scanPopupAltModeSecs( 3 ),
   ignoreOwnClipboardChanges( false ),
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
   ignorePunctuation( false ),
 #ifdef HAVE_X11
+  // Enable both Clipboard and Selection by default so that X users can enjoy full
+  // power and disable optionally.
+  trackClipboardScan ( true ),
+  trackSelectionScan ( true ),
   showScanFlag( false ),
 #endif
   pronounceOnLoadMain( false ),
@@ -264,9 +265,6 @@ Preferences::Preferences():
 , limitInputPhraseLength( false )
 , inputPhraseLengthLimit( 1000 )
 , maxDictionaryRefsInContextMenu ( 20 )
-#ifndef Q_WS_X11
-, trackClipboardChanges( false )
-#endif
 , synonymSearchEnabled( true )
 {
 }
@@ -887,19 +885,17 @@ Class load()
     if ( !preferences.namedItem( "clipboardHotkey" ).isNull() )
       c.preferences.clipboardHotkey = QKeySequence::fromString( preferences.namedItem( "clipboardHotkey" ).toElement().text() );
 
-    c.preferences.enableScanPopup = ( preferences.namedItem( "enableScanPopup" ).toElement().text() == "1" );
     c.preferences.startWithScanPopupOn = ( preferences.namedItem( "startWithScanPopupOn" ).toElement().text() == "1" );
     c.preferences.enableScanPopupModifiers = ( preferences.namedItem( "enableScanPopupModifiers" ).toElement().text() == "1" );
     c.preferences.scanPopupModifiers = ( preferences.namedItem( "scanPopupModifiers" ).toElement().text().toULong() );
-    c.preferences.scanPopupAltMode = ( preferences.namedItem( "scanPopupAltMode" ).toElement().text() == "1" );
-    if ( !preferences.namedItem( "scanPopupAltModeSecs" ).isNull() )
-      c.preferences.scanPopupAltModeSecs = preferences.namedItem( "scanPopupAltModeSecs" ).toElement().text().toUInt();
     c.preferences.ignoreOwnClipboardChanges = ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
     if( !preferences.namedItem( "ignorePunctuation" ).isNull() )
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
 #ifdef HAVE_X11
+    c.preferences.trackClipboardScan= ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
+    c.preferences.trackSelectionScan= ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
     c.preferences.showScanFlag= ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
 #endif
 
@@ -1001,11 +997,6 @@ Class load()
 
     if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() )
       c.preferences.maxDictionaryRefsInContextMenu = preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
-
-#ifndef Q_WS_X11
-    if ( !preferences.namedItem( "trackClipboardChanges" ).isNull() )
-      c.preferences.trackClipboardChanges = ( preferences.namedItem( "trackClipboardChanges" ).toElement().text() == "1" );
-#endif
 
     if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
       c.preferences.synonymSearchEnabled = ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
@@ -1748,10 +1739,6 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.clipboardHotkey.toKeySequence().toString() ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "enableScanPopup" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableScanPopup ? "1":"0" ) );
-    preferences.appendChild( opt );
-
     opt = dd.createElement( "startWithScanPopupOn" );
     opt.appendChild( dd.createTextNode( c.preferences.startWithScanPopupOn ? "1":"0" ) );
     preferences.appendChild( opt );
@@ -1762,14 +1749,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "scanPopupModifiers" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.scanPopupModifiers ) ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "scanPopupAltMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.scanPopupAltMode ? "1":"0" ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "scanPopupAltModeSecs" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.scanPopupAltModeSecs ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "ignoreOwnClipboardChanges" );
@@ -1789,6 +1768,14 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
 #ifdef HAVE_X11
+    opt = dd.createElement( "trackClipboardScan" );
+    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardScan ? "1":"0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "trackSelectionScan" );
+    opt.appendChild( dd.createTextNode( c.preferences.trackSelectionScan ? "1":"0" ) );
+    preferences.appendChild( opt );
+
     opt = dd.createElement( "showScanFlag" );
     opt.appendChild( dd.createTextNode( c.preferences.showScanFlag? "1":"0" ) );
     preferences.appendChild( opt );
@@ -1960,12 +1947,6 @@ void save( Class const & c )
     opt = dd.createElement( "maxDictionaryRefsInContextMenu" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxDictionaryRefsInContextMenu ) ) );
     preferences.appendChild( opt );
-
-#ifndef Q_WS_X11
-    opt = dd.createElement( "trackClipboardChanges" );
-    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardChanges ? "1" : "0" ) );
-    preferences.appendChild( opt );
-#endif
 
     opt = dd.createElement( "synonymSearchEnabled" );
     opt.appendChild( dd.createTextNode( c.preferences.synonymSearchEnabled ? "1" : "0" ) );

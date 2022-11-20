@@ -116,9 +116,8 @@ private:
           addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
-  QAction * navBack, * navForward, * navPronounce, * enableScanPopup;
-  QAction * actTrackingClipboard;
-  QAction * beforeScanPopupSeparator, * afterScanPopupSeparator, * beforeOptionsSeparator;
+  QAction * navBack, * navForward, * navPronounce, * enableScanningAction;
+  QAction * beforeOptionsSeparator;
   QAction * zoomIn, * zoomOut, * zoomBase;
   QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;
   QAction * addToFavorites, * beforeAddToFavoritesSeparator;
@@ -416,8 +415,6 @@ private slots:
 
   void showMainWindow();
 
-  void trackingClipboard(bool);
-
   void visitHomepage();
   void visitForum();
   void openConfigFolder();
@@ -487,7 +484,7 @@ private slots:
   void showGDHelp();
   void hideGDHelp();
 
-  void clipboardChange( );
+  void clipboardChange(QClipboard::Mode m);
 
   void inspectElement( QWebEnginePage * );
 
