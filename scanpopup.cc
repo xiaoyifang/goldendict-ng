@@ -278,11 +278,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, SIGNAL( titleChanged(  ArticleView *, QString const & ) ),
            this, SLOT( titleChanged(  ArticleView *, QString const & ) ) );
 
-  connect( QApplication::clipboard(),
-           SIGNAL( changed( QClipboard::Mode ) ),
-           this,
-           SLOT( clipboardChanged( QClipboard::Mode ) ) );
-
 #ifdef Q_OS_MAC
   connect( &MouseOver::instance(), SIGNAL( hovered( QString const &, bool ) ),
            this, SLOT( mouseHovered( QString const &, bool ) ) );
