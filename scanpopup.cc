@@ -323,8 +323,10 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, SIGNAL( hideScanFlag() ),
            scanFlag, SLOT( hideWindow() ) );
 
-  connect( scanFlag, SIGNAL( showScanPopup() ),
-           this, SLOT( showEngagePopup() ) );
+  connect( scanFlag, &ScanFlag::showScanPopup,
+    this, [=]{
+    translateWordFromSelection();
+  });
 
   delayTimer.setSingleShot( true );
   delayTimer.setInterval( 200 );
@@ -508,6 +510,7 @@ void ScanPopup::delayShow()
 }
 #endif
 
+[[deprecated("Favor the mainWindow's clipboardChanged ones")]]
 void ScanPopup::clipboardChanged( QClipboard::Mode m )
 {
 
@@ -544,6 +547,7 @@ void ScanPopup::mouseHovered( QString const & str, bool forcePopup )
   handleInputWord( str, forcePopup );
 }
 
+[[deprecated]]
 void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
 {
   Config::InputPhrase sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );

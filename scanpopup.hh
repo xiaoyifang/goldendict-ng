@@ -81,7 +81,7 @@ signals:
 
 #ifdef HAVE_X11
   /// Interaction with scan flag window
-  void showScanFlag( bool forcePopup );
+  void showScanFlag();
   void hideScanFlag();
 #endif
 

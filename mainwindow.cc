@@ -925,11 +925,25 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
       }
 
       if(m == QClipboard::Selection){
+
+        // Multiple ways to stoping a word from showing up when selecting
+
+        // Explictly disabled on preferences
         if(!cfg.preferences.trackSelectionScan) return;
+
+        // Keyboard Modifier
         if(cfg.preferences.enableScanPopupModifiers &&
           !KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers)){
           return;
         }
+
+        // Show a Flag instead of translate directly.
+        // And hand over the control of showing the popup to scanFlag
+        if ( cfg.preferences.showScanFlag ) {
+          emit scanPopup->showScanFlag();
+          return;
+        }
+
         scanPopup->translateWordFromSelection();
       }
 #else
