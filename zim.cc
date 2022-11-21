@@ -859,7 +859,7 @@ string ZimDictionary::convert( const string & in )
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
-  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))(/|)([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))()([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
   QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -876,31 +876,26 @@ string ZimDictionary::convert( const string & in )
       list.append( QString() );
 
     QString formatTag;
-    QString tag = list[3];     // a url, ex: Precambrian_Chaotian.html
-    if ( !list[4].isEmpty() )  // a title, ex: title="Precambrian/Chaotian"
+    QString tag = list[ 3 ]; // a url, ex: Precambrian_Chaotian.html
+    QString url = tag;
+    if( !list[ 4 ].isEmpty() ) // a title, ex: title="Precambrian/Chaotian"
     {
-      tag = list[4];
-      formatTag=tag.split("\"")[1];
+      tag       = list[ 4 ];
+      formatTag = tag.split( "\"" )[ 1 ];
     }
-    else{
+    else
+    {
       //tag from list[3]
       formatTag = tag;
+      formatTag.replace( RX::Zim::linkSpecialChar, "" );
     }
-
-    formatTag.replace(RX::Zim::linkSpecialChar,"");
-
-    vector< WordArticleLink > links;
-    links = findArticles( gd::toWString( formatTag ) );
-
 
     QString urlLink = match.captured();
-    QString replacedLink ;
 
-    if(!links.empty()){
-      replacedLink = urlLink.replace(tag,"gdlookup://localhost/"+formatTag);
-    }
-    else{
-      replacedLink = urlLink.replace(tag,"bres://localhost/"+formatTag);
+    QString replacedLink = urlLink;
+    if( !url.isEmpty() && !url.startsWith( "//" ) )
+    {
+      replacedLink = urlLink.replace( url, "gdlookup://localhost/" + formatTag );
     }
 
     newText += replacedLink;
