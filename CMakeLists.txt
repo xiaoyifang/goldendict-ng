@@ -8,13 +8,9 @@ It assume those conditions:
 * Qt6.4+ Multimedia and no option to enable FFmpeg
 * Libraries are provided by the system
 
-Limitations that will probably be fixed
-
-* Linux only
-
 ]]#
 
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.25)
 
 project(goldendict
         VERSION 22.11.20
@@ -28,8 +24,6 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
 
 #### Importing Libraries (in 3 methods from Good to Should be avoided :)
 
@@ -47,25 +41,33 @@ find_package(Qt6 REQUIRED COMPONENTS
         )
 
 # Provided by Cmake
-find_package(ZLIB)
-find_package(X11 REQUIRED)
+find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
+
+if (APPLE)
+    find_library(CARBON_LIBRARY REQUIRED)
+endif ()
 
 # PkgConfig only packages
 find_package (PkgConfig REQUIRED)
-pkg_check_modules (PKGCONFIG_DEPS REQUIRED
+
+pkg_check_modules (PKGCONFIG_DEPS IMPORTED_TARGET
         hunspell
-        xtst # A X11 extension
         opencc
         vorbis # .ogg
         vorbisfile
         lzo2
         )
 
-# By hand. Eb is old project, unlikely to obtain a .pc file
-add_library(libeb SHARED IMPORTED)
-set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
-set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/eb/)
+if(LINUX)
+    find_package(X11 REQUIRED)
+    pkg_check_modules (PKGCONFIG_DEPS REQUIRED xtst)
+
+    # By hand. Eb is old project, unlikely to obtain a .pc file
+    add_library(libeb SHARED IMPORTED)
+    set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
+    set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/eb/)
+endif()
 
 #### Compile time files and preprocessor flags
 
@@ -77,18 +79,29 @@ execute_process(
         OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-configure_file(version.txt.in version.txt)
+configure_file(version.txt.in ${CMAKE_SOURCE_DIR}/version.txt)
 
 # hack -> this string will be compared with another string, thus having surrounding " "
 add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
 
 # temporal hack to avoid breaking qmake build
-add_compile_definitions(CMAKE_USED_HACK)
-
 add_compile_definitions(
-        HAVE_X11
+        CMAKE_USED_HACK
         MAKE_QTMULTIMEDIA_PLAYER
+        MAKE_CHINESE_CONVERSION_SUPPORT
 )
+
+if(LINUX)
+    add_compile_definitions(
+            HAVE_X11
+    )
+endif()
+
+if(APPLE)
+    add_compile_definitions(
+            NO_EPWING_SUPPORT
+    )
+endif()
 
 #### Sources Files
 
@@ -120,11 +133,37 @@ set(UI_SOURCES
         scanflag.ui
         scanpopup.ui
         sources.ui
-)
+        )
+
+if(LINUX)
+    set(EPWING_SUPPORT_SRC
+            epwing.cc
+            epwing.hh
+            epwing_book.cc
+            epwing_book.hh
+            epwing_charmap.cc
+            epwing_charmap.hh)
+endif()
+
+if (APPLE)
+    set(MAC_SRC
+            machotkeywrapper.mm
+            macmouseover.hh
+            macmouseover.mm
+            speechclient.hh
+            speechclient_mac.mm
+            texttospeechsource.cc
+            texttospeechsource.hh
+            texttospeechsource.ui
+            )
+endif ()
+
 
 set(PROJECT_SOURCES
         ${UI_SOURCES}
+        ${MAC_SRC}
         ${QRC_RESOURCES}
+        ${EPWING_SUPPORT_SRC}
         aard.cc
         aard.hh
         about.cc
@@ -197,12 +236,6 @@ set(PROJECT_SOURCES
         dsl_details.hh
         editdictionaries.cc
         editdictionaries.hh
-        epwing.cc
-        epwing.hh
-        epwing_book.cc
-        epwing_book.hh
-        epwing_charmap.cc
-        epwing_charmap.hh
         ex.hh
         externalaudioplayer.cc
         externalaudioplayer.hh
@@ -393,20 +426,18 @@ set(PROJECT_SOURCES
         zipfile.hh
         zipsounds.cc
         zipsounds.hh
-)
+        )
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
-    MANUAL_FINALIZATION
-    ${PROJECT_SOURCES}
-)
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+        )
 
 qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
 
-        # pkg-config packages need manually include
-        ${PKGCONFIG_DEPS_INCLUDE_DIRS}
         )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
@@ -419,35 +450,40 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         Qt6::Widgets
         Qt6::Svg
 
-        X11
         BZip2::BZip2
         ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
 
-        libeb
-
         # pkg-config packages need manually link
-        ${PKGCONFIG_DEPS_LIBRARIES}
-)
+        PkgConfig::PKGCONFIG_DEPS
+        )
+
+
+if(LINUX)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11)
+endif ()
+
+if(APPLE)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${CARBON_LIBRARY})
+endif()
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
+        MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+        MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+        MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        MACOSX_BUNDLE TRUE
+        WIN32_EXECUTABLE TRUE
+        )
 
 install(TARGETS ${CMAKE_PROJECT_NAME}
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        BUNDLE DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 # Preview Command at 6.2, Qt may change it later
 qt_add_translations(${CMAKE_PROJECT_NAME} TS_FILES ${TRANS_FILES})
 
-
 qt_finalize_target(${CMAKE_PROJECT_NAME})
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+if (LINUX)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.desktop DESTINATION share/applications)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
 endif()
