@@ -1,0 +1,1 @@
+${PROJECT_VERSION}.${GIT_HASH} on ${__DATE__}
