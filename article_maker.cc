@@ -429,8 +429,10 @@ ArticleRequest::ArticleRequest(
   data.resize( header.size() );
   memcpy( &data.front(), header.data(), header.size() );
 
-  // Accumulate main forms
+  //clear founded dicts.
+  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
 
+  // Accumulate main forms
   for( unsigned x = 0; x < activeDicts.size(); ++x )
   {
     sptr< Dictionary::WordSearchRequest > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::toWString( word ) );
@@ -448,8 +450,6 @@ void ArticleRequest::altSearchFinished()
 {
   if ( altsDone )
     return;
-
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
 
   // Check every request for finishing
   for( list< sptr< Dictionary::WordSearchRequest > >::iterator i =

@@ -28,13 +28,13 @@ Config::Preferences * GlobalBroadcaster::getPreference()
 
 void GlobalBroadcaster::addWhitelist( QString url )
 {
-  whitelist.push_back( url );
-  auto baseUrl = ::getHostBase( url );
-  whitelist.push_back( baseUrl );
+  whitelist.insert( url );
+  auto baseUrl = Utils::Url::getHostBase( url );
+  whitelist.insert( baseUrl );
 }
 
 bool GlobalBroadcaster::existedInWhitelist( QString url )
 {
-  return std::find( whitelist.begin(), whitelist.end(), url ) != whitelist.end();
+  return whitelist.contains(url);
 }
 // namespace global

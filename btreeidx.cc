@@ -22,22 +22,7 @@
 // LZO mode is experimental and unsupported. Tests didn't show any substantial
 // speed improvements.
 
-#ifdef __BTREE_USE_LZO
-#include <lzo/lzo1x.h>
-
-namespace {
-struct __LzoInit
-{
-  __LzoInit()
-  {
-    lzo_init();
-  }
-} __lzoInit;
-}
-
-#else
 #include <zlib.h>
-#endif
 
 namespace BtreeIndexing {
 
@@ -492,17 +477,6 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
 
   idxFile->read( &compressedData.front(), compressedData.size() );
 
-  #ifdef __BTREE_USE_LZO
-
-  lzo_uint decompressedLength = out.size();
-
-  if ( lzo1x_decompress( &compressedData.front(), compressedData.size(),
-                         (unsigned char *)&out.front(), &decompressedLength, 0 )
-       != LZO_E_OK || decompressedLength != out.size() )
-    throw exFailedToDecompressNode();
-
-  #else
-
   unsigned long decompressedLength = out.size();
 
   if ( uncompress( (unsigned char *)&out.front(),
@@ -511,7 +485,6 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
                    compressedData.size() ) != Z_OK ||
        decompressedLength != out.size() )
     throw exFailedToDecompressNode();
-  #endif
 }
 
 char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
@@ -989,25 +962,6 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   }
 
   // Save the result.
-
-  #ifdef __BTREE_USE_LZO
-
-  vector< unsigned char > compressedData( uncompressedData.size() + uncompressedData.size() / 16 + 64 + 3 );
-
-  char workMem[ LZO1X_1_MEM_COMPRESS ];
-
-  lzo_uint compressedSize;
-
-  if ( lzo1x_1_compress( &uncompressedData.front(), uncompressedData.size(),
-                         &compressedData.front(), &compressedSize, workMem )
-       != LZO_E_OK )
-  {
-    FDPRINTF( stderr, "Failed to compress btree node.\n" );
-    abort();
-  }
-
-  #else
-
   vector< unsigned char > compressedData( compressBound( uncompressedData.size() ) );
 
   unsigned long compressedSize = compressedData.size();
@@ -1018,8 +972,6 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
     qFatal( "Failed to compress btree node." );
     abort();
   }
-
-  #endif
 
   uint32_t offset = file.tell();
 
@@ -1331,6 +1283,98 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   }
 }
 
+void BtreeIndex::findHeadWords( QSet<uint32_t> offsets,int& index,
+                                   QSet< QString > * headwords,
+                                   uint32_t length )
+{
+  int i=0;
+  for(auto begin=offsets.begin();begin!=offsets.end();begin++,i++){
+    if(i<index){
+      continue;
+    }
+    findSingleNodeHeadwords(*begin,headwords);
+    index++;
+
+    if(headwords->size()>=length)
+      break;
+  }
+}
+
+void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
+                                QSet< QString > * headwords)
+{
+  uint32_t currentNodeOffset = offsets;
+
+  Mutex::Lock _( *idxFileMutex );
+
+  char const * leaf = 0;
+  char const * leafEnd = 0;
+  char const * chainPtr = 0;
+
+  vector< char > extLeaf;
+
+  // A node
+  readNode( currentNodeOffset, extLeaf );
+  leaf    = &extLeaf.front();
+  leafEnd = leaf + extLeaf.size();
+
+  // A leaf
+  chainPtr = leaf + sizeof( uint32_t );
+
+  for( ;; )
+  {
+    vector< WordArticleLink > result = readChain( chainPtr );
+
+    if( headwords )
+    {
+      for( unsigned i = 0; i < result.size(); i++ )
+      {
+        headwords->insert( QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() ) );
+      }
+    }
+
+    if( chainPtr >= leafEnd )
+    {
+        break; // That was the last leaf
+    }
+  }
+}
+
+//find the next chain ptr ,which is large than this currentChainPtr
+QSet<uint32_t> BtreeIndex::findNodes()
+{
+  Mutex::Lock _( *idxFileMutex );
+
+  if( !rootNodeLoaded )
+  {
+    // Time to load our root node. We do it only once, at the first request.
+    readNode( rootOffset, rootNode );
+    rootNodeLoaded = true;
+  }
+
+  char const * leaf     = &rootNode.front();
+  QSet<uint32_t> leafOffset;
+
+  uint32_t leafEntries;
+  leafEntries = *(uint32_t *)leaf;
+  if ( leafEntries != 0xffffFFFF )
+  {
+    leafOffset.insert(rootOffset);
+    return leafOffset;
+  }
+
+  // the current the btree's implementation has the  height = 2.
+
+  // A node offset
+  uint32_t * offsets = (uint32_t *)leaf + 1;
+  uint32_t i=0;
+
+  while(i++ < (indexNodeSize+1) )
+    leafOffset.insert(*(offsets++));
+
+  return leafOffset;
+}
+
 void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
                                           QVector<QString> & headwords,
                                           QAtomicInt * isCancelled )
@@ -1479,6 +1523,12 @@ bool BtreeDictionary::getHeadwords( QStringList &headwords )
   }
 
   return headwords.size() > 0;
+}
+
+void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
+{
+  auto leafNodeOffsets = findNodes();
+  findHeadWords(leafNodeOffsets,index,headwords,length);
 }
 
 void BtreeDictionary::getArticleText(uint32_t, QString &, QString & )

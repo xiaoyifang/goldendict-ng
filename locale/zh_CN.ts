@@ -19,7 +19,17 @@
         <translation>授权基于 GNU 公共授权 GPLv3 或更高版本</translation>
     </message>
     <message>
-        <location filename="../about.ui" line="125"/>
+        <location filename="../about.ui" line="129"/>
+        <source>Copy version info</source>
+        <translation>拷贝版本信息</translation>
+    </message>
+    <message>
+        <location filename="../about.ui" line="142"/>
+        <source>Copy dictionaries list</source>
+        <translation>拷贝词典列表</translation>
+    </message>
+    <message>
+        <location filename="../about.ui" line="168"/>
         <source>Credits:</source>
         <translation>致谢名单：</translation>
     </message>
@@ -376,7 +386,17 @@
         <translation>保存图片(&amp;I)...</translation>
     </message>
     <message>
-        <location filename="../articleview.cc" line="1763"/>
+        <location filename="../articleview.cc" line="202"/>
+        <source>Phrase not found</source>
+        <translation>没找到词组</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="210"/>
+        <source>%1 of %2 matches</source>
+        <translation>匹配（%1/%2）</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="1806"/>
         <source>Save s&amp;ound...</source>
         <translation>保存音频文件(&amp;O)...</translation>
     </message>
@@ -392,7 +412,12 @@
         <translation>将 &quot;%1&quot; 添加到历史(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../articleview.cc" line="2037"/>
+        <location filename="../articleview.cc" line="2038"/>
+        <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+        <translation>声音文件 (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../articleview.cc" line="2104"/>
         <source>Failed to play sound file: %1</source>
         <translation>播放音频文件失败：%1</translation>
     </message>
@@ -4720,7 +4745,17 @@ GoldenDict 尚不支持此方案。</translation>
         <translation>音频文件目录</translation>
     </message>
     <message>
-        <location filename="../sources.ui" line="753"/>
+        <location filename="../sources.ui" line="511"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>使用 Forvo 需要一个 API key，请在该网站注册以获取你自己的 key.</translation>
+    </message>
+    <message>
+        <location filename="../sources.ui" line="534"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>从&lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;这里&lt;/a&gt;获取自己的API Key。</translation>
+    </message>
+    <message>
+        <location filename="../sources.ui" line="689"/>
         <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
         <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>

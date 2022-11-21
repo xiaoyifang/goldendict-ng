@@ -4,29 +4,28 @@
 #include "ui_scanflag.h"
 #include <QScreen>
 
-static Qt::WindowFlags popupWindowFlags =
-
-Qt::ToolTip | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
- | Qt::WindowDoesNotAcceptFocus
-;
 
 ScanFlag::ScanFlag(QWidget *parent) :
     QMainWindow(parent)
 {
   ui.setupUi( this );
 
-  setWindowFlags( popupWindowFlags );
+  setWindowFlags( Qt::ToolTip
+                | Qt::FramelessWindowHint
+                | Qt::WindowStaysOnTopHint
+                | Qt::WindowDoesNotAcceptFocus);
 
   setAttribute(Qt::WA_X11DoNotAcceptFocus);
 
   hideTimer.setSingleShot( true );
-  hideTimer.setInterval( 1500 );
+  hideTimer.setInterval( 1000 );
 
-  connect( &hideTimer, SIGNAL( timeout() ),
-    this, SLOT( hideWindow() ) );
+  connect( &hideTimer, &QTimer::timeout,
+    this, [=]{ hideWindow();
+  });
 
-  connect( ui.pushButton, SIGNAL( clicked( bool ) ),
-                this, SLOT( pushButtonClicked() ) );
+  connect( ui.pushButton, &QPushButton::clicked,
+           this, &ScanFlag::pushButtonClicked );
 }
 
 ScanFlag::~ScanFlag()
@@ -37,7 +36,7 @@ void ScanFlag::pushButtonClicked()
 {
   hideTimer.stop();
   hide();
-  emit showScanPopup();
+  emit requestScanPopup();
 }
 
 void ScanFlag::hideWindow()

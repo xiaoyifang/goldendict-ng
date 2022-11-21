@@ -19,6 +19,7 @@
 #include <QOperatingSystemVersion>
 
 #endif
+#include "base/globalregex.hh"
 
 namespace FTS
 {
@@ -35,6 +36,7 @@ void Indexing::run()
 {
   try
   {
+    timerThread->start();
     // First iteration - dictionaries with no more MaxDictionarySizeForFastSearch articles
     for( size_t x = 0; x < dictionaries.size(); x++ )
     {
@@ -62,12 +64,29 @@ void Indexing::run()
         dictionaries.at( x )->makeFTSIndex( isCancelled, false );
       }
     }
+
+    timerThread->quit();
+    timerThread->wait();
   }
   catch( std::exception &ex )
   {
     gdWarning( "Exception occured while full-text search: %s", ex.what() );
   }
   emit sendNowIndexingName( QString() );
+}
+
+void Indexing::timeout(){
+  for( size_t x = 0; x < dictionaries.size(); x++ )
+  {
+    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      break;
+
+    auto progress = dictionaries.at( x )->getIndexingFtsProgress();
+    if( progress>0&&progress<100)
+    {
+      emit sendNowIndexingName( QString::fromUtf8( dictionaries.at( x )->getName().c_str() )+QString("......%1%2").arg("%").arg(progress) );
+    }
+  }
 }
 
 
@@ -225,7 +244,19 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   ui.searchMode->addItem( tr( "Whole words" ), WholeWords );
   ui.searchMode->addItem( tr( "Plain text"), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
+#ifndef USE_XAPIAN
   ui.searchMode->addItem( tr( "RegExp" ), RegExp );
+#else
+  ui.matchCase->hide();
+  ui.articlesPerDictionary->hide();
+  ui.checkBoxArticlesPerDictionary->hide();
+  ui.checkBoxIgnoreDiacritics->hide();
+  ui.checkBoxDistanceBetweenWords->hide();
+  ui.distanceBetweenWords->hide();
+  ui.checkBoxIgnoreWordOrder->hide();
+
+  ui.searchLine->setToolTip(tr("support xapian search syntax,such as AND OR +/- etc"));
+#endif
   ui.searchMode->setCurrentIndex( cfg.preferences.fts.searchMode );
 
   ui.searchProgressBar->hide();
@@ -410,6 +441,7 @@ void FullTextSearchDialog::accept()
                                ui.distanceBetweenWords->value() : -1;
 
   model->clear();
+  matchedCount=0;
   ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
 
   bool hasCJK;
@@ -462,6 +494,9 @@ void FullTextSearchDialog::accept()
                                                             );
     connect( req.get(), SIGNAL( finished() ),
              this, SLOT( searchReqFinished() ), Qt::QueuedConnection );
+
+    connect( req.get(), SIGNAL( matchCount(int) ),
+             this, SLOT( matchCount(int) ), Qt::QueuedConnection );
 
     searchReqs.push_back( req );
   }
@@ -520,9 +555,9 @@ void FullTextSearchDialog::searchReqFinished()
 
   if( !allHeadwords.isEmpty() )
   {
-     model->addResults( QModelIndex(), allHeadwords );
-     ui.articlesFoundLabel->setText( tr( "Articles found: " )
-                                     + QString::number( results.size() ) );
+    model->addResults( QModelIndex(), allHeadwords );
+    if( results.size() > matchedCount )
+      ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
   }
 
   if ( searchReqs.empty() )
@@ -531,6 +566,12 @@ void FullTextSearchDialog::searchReqFinished()
     ui.OKButton->setEnabled( true );
     QApplication::beep();
   }
+}
+
+void FullTextSearchDialog::matchCount(int _matchCount){
+  matchedCount+=_matchCount;
+  ui.articlesFoundLabel->setText( tr( "Articles found: " )
+                                  + QString::number( matchedCount ) );
 }
 
 void FullTextSearchDialog::reject()
@@ -550,6 +591,35 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
   {
     QString headword = results[ idx.row() ].headword;
     QRegExp reg;
+#ifdef USE_XAPIAN
+    auto searchText = ui.searchLine->text();
+    searchText.replace( RX::Ftx::tokenBoundary, " " );
+
+    auto it = RX::Ftx::token.globalMatch(searchText);
+    QString firstAvailbeItem;
+    while( it.hasNext() )
+    {
+      QRegularExpressionMatch match = it.next();
+
+      auto p = match.captured();
+      if( p.startsWith( '-' ) )
+        continue;
+
+      //the searched text should be like "term".remove enclosed double quotation marks.
+      if(p.startsWith("\"")){
+        p.remove("\"");
+      }
+
+      firstAvailbeItem = p;
+      break;
+    }
+
+    if( !firstAvailbeItem.isEmpty() )
+    {
+      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
+      reg.setMinimal( true );
+    }
+#else
     if( !results[ idx.row() ].foundHiliteRegExps.isEmpty() )
     {
       reg = QRegExp( results[ idx.row() ].foundHiliteRegExps.join( "|"),
@@ -559,6 +629,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     }
     else
       reg = searchRegExp;
+#endif
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, ignoreDiacritics );
   }
 }

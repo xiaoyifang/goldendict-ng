@@ -42,6 +42,7 @@
 #include <map>
 #include <algorithm>
 #include <QtConcurrent>
+#include "base/globalregex.hh"
 
 namespace Zim {
 
@@ -781,7 +782,7 @@ ZimDictionary::ZimDictionary( string const & id,
 
     can_FTS = true;
 
-    ftsIdxName = indexFile + "_FTS";
+    ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
     if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
         && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
@@ -838,7 +839,7 @@ string ZimDictionary::convert( const string & in )
                 QString( "<body \\1" ) );
 
   // pattern of img and script
-  text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\"|)(\\.\\.|)/" ),
+  text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\"|)(\\.\\./)*" ),
                 QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
 
   // Fix links without '"'
@@ -858,7 +859,7 @@ string ZimDictionary::convert( const string & in )
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
-  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))(/|)([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))()([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
   QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -874,54 +875,30 @@ string ZimDictionary::convert( const string & in )
     for( int i = list.size(); i < 5; i++ )
       list.append( QString() );
 
-    QString tag = list[3];     // a url, ex: Precambrian_Chaotian.html
-    if ( !list[4].isEmpty() )  // a title, ex: title="Precambrian/Chaotian"
-      tag = list[4].split("\"")[1];
-
-    // Check type of links inside articles
-    if( linksType == UNKNOWN && tag.indexOf( '/' ) >= 0 )
+    QString formatTag;
+    QString tag = list[ 3 ]; // a url, ex: Precambrian_Chaotian.html
+    QString url = tag;
+    if( !list[ 4 ].isEmpty() ) // a title, ex: title="Precambrian/Chaotian"
     {
-      QString word = QUrl::fromPercentEncoding( tag.toLatin1() );
-      QRegularExpression htmlRx( "\\.(s|)htm(l|)$", QRegularExpression::CaseInsensitiveOption );
-      word.remove( htmlRx ).
-           replace( "_", " " );
-
-      vector< WordArticleLink > links;
-      links = findArticles( gd::toWString( word ) );
-
-      if( !links.empty() )
-      {
-        linksType = SLASH;
-      }
-      else
-      {
-        word.remove( QRegularExpression(".*/") );
-        links = findArticles( gd::toWString( word ) );
-        if( !links.empty() )
-        {
-          linksType = NO_SLASH;
-          links.clear();
-        }
-      }
-    }
-
-    if( linksType == SLASH || linksType == UNKNOWN )
-    {
-      tag.remove( QRegularExpression( "\\.(s|)htm(l|)$", QRegularExpression::PatternOption::CaseInsensitiveOption ) ).
-          replace( "_", "%20" ).
-          prepend( "<a href=\"gdlookup://localhost/" ).
-          append( "\" " + list[4] + ">" );
+      tag       = list[ 4 ];
+      formatTag = tag.split( "\"" )[ 1 ];
     }
     else
     {
-      tag.remove( QRegularExpression(".*/") ).
-          remove( QRegularExpression( "\\.(s|)htm(l|)$", QRegularExpression::PatternOption::CaseInsensitiveOption ) ).
-          replace( "_", "%20" ).
-          prepend( "<a href=\"gdlookup://localhost/" ).
-          append( "\" " + list[4] + ">" );
+      //tag from list[3]
+      formatTag = tag;
+      formatTag.replace( RX::Zim::linkSpecialChar, "" );
     }
 
-    newText += tag;
+    QString urlLink = match.captured();
+
+    QString replacedLink = urlLink;
+    if( !url.isEmpty() && !url.startsWith( "//" ) )
+    {
+      replacedLink = urlLink.replace( url, "gdlookup://localhost/" + formatTag );
+    }
+
+    newText += replacedLink;
   }
   if( pos )
   {
@@ -1031,9 +1008,11 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
 
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n",
            getName().c_str() );
-
   try
   {
+#ifdef USE_XAPIAN
+    return FtsHelpers::makeFTSIndexXapian(this,isCancelled);
+#endif
     Mutex::Lock _( getFtsMutex() );
 
     File::Class ftsIdx( ftsIndexName(), "wb" );
@@ -1114,6 +1093,8 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
       indexedArticles.insert( articleNumber );
 
       FtsHelpers::parseArticleForFts( offsets.at( i ), articleStr, ftsWords );
+
+      setIndexedFtsDoc(i);
     }
 
     // Free memory
@@ -1503,9 +1484,9 @@ void ZimResourceRequest::run()
 }
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
-  
 {
-  return new ZimResourceRequest( *this, name );
+  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
+  return new ZimResourceRequest( *this, formatedName.toStdString() );
 }
 
 //} // anonymous namespace
@@ -1644,25 +1625,41 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                                                                               || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) ) ) )
             {
               wstring word;
-              if( !title.empty() )
-                word = Utf8::decode( title );
-              else
-                word = Utf8::decode( url );
-
               if( df.isArticleMime( mimetype )
                   || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) )
               {
                 if( maxHeadwordsToExpand && zh.articleCount >= maxHeadwordsToExpand )
-                  indexedWords.addSingleWord( word, n );
+                {
+                  if( !title.empty() )
+                  {
+                    word = Utf8::decode( title );
+                    indexedWords.addSingleWord( word, n );
+                  }
+                  if( !url.empty() )
+                  {
+                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+                    indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+                  }
+                }
                 else
-                  indexedWords.addWord( word, n );
+                {
+                  if( !title.empty() )
+                  {
+                    word = Utf8::decode( title );
+                    indexedWords.addWord( word, n );
+                  }
+                  if( !url.empty() )
+                  {
+                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+                    indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+                  }
+                }
                 wordCount++;
               }
               else
               {
-                url.insert( url.begin(), '/' );
-                url.insert( url.begin(), nameSpace );
-                indexedResources.addSingleWord( Utf8::decode( url ), n );
+                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
+                indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
               }
             }
             else
@@ -1698,9 +1695,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             }
             else
             {
-              url.insert( url.begin(), '/' );
-              url.insert( url.begin(), nameSpace );
-              indexedResources.addSingleWord( Utf8::decode( url ), n );
+//              url.insert( url.begin(), '/' );
+//              url.insert( url.begin(), nameSpace );
+              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
+              indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
             }
           }
 

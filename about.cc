@@ -2,12 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "about.hh"
+#include <QPushButton>
 #include <QtGui>
 #include <QSysInfo>
 
 #include "utils.hh"
 
-About::About( QWidget * parent ): QDialog( parent )
+About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries ): QDialog( parent )
 {
   ui.setupUi( this );
 
@@ -34,7 +35,50 @@ About::About( QWidget * parent ): QDialog( parent )
   ui.qtVersion->setText( tr( "Based on Qt %1 (%2, %3 bit)" ).arg(
                            QLatin1String( qVersion() ),
                            compilerVersion,
-                           QString::number( QSysInfo::WordSize ) ) );
+                           QString::number( QSysInfo::WordSize ) )
+#ifdef USE_XAPIAN
+  +" (Xapian inside)"
+#endif
+                         );
+
+  // copy basic debug info to clipboard
+  connect(ui.copyInfoBtn, &QPushButton::clicked, [=]{
+      QGuiApplication::clipboard()->setText(
+          "Goldendict " + version + "\n" +
+          QSysInfo::productType() + " " + QSysInfo::kernelType() + " " + QSysInfo::kernelVersion() + " " +
+          "Qt " + QLatin1String(qVersion()) + " " +
+          QSysInfo::buildAbi() + "\n" +
+          compilerVersion + "\n"
+    + "Flags:"
+#ifdef USE_XAPIAN
+         +" USE_XAPIAN "
+#endif
+
+#ifdef MAKE_ZIM_SUPPORT
+         +" MAKE_ZIM_SUPPORT"
+#endif
+
+#ifdef MAKE_EXTRA_TIFF_HANDLER
+         +" MAKE_EXTRA_TIFF_HANDLER"
+#endif
+
+#ifdef NO_EPWING_SUPPORT
+         +" NO_EPWING_SUPPORT"
+#endif
+
+#ifdef MAKE_CHINESE_CONVERSION_SUPPORT
+         +" MAKE_CHINESE_CONVERSION_SUPPORT"
+#endif
+      );
+  });
+
+  connect(ui.copyDictListBtn, &QPushButton::clicked, [=]{
+      QString tempDictList{};
+      for (auto dict : *dictonaries) {
+        tempDictList.append(QString::fromStdString(dict->getName() + "\n"));
+      }
+      QGuiApplication::clipboard()->setText(tempDictList);
+  });
 
   QFile creditsFile( ":/CREDITS.txt" );
 

@@ -13,15 +13,7 @@ system(git describe --tags --always --dirty): hasGit=1
     GIT_HASH=$$system(git rev-parse --short=8 HEAD )
 }
 
-win32{
-# date /T output is locale aware.
-    DATE=$$system(date /T)
-}
-else{
-    DATE=$$system(date '+%Y/%m/%d')
-}
-
-system(echo $${VERSION}.$${GIT_HASH} on $${DATE} > version.txt)
+system(echo $${VERSION}.$${GIT_HASH} on $${_DATE_} > version.txt)
 
 !CONFIG( verbose_build_output ) {
   !win32|*-msvc* {
@@ -54,14 +46,21 @@ greaterThan(QT_MAJOR_VERSION, 5): QT += webenginecore core5compat
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 
-# QMediaPlayer is not available in Qt4.
 !CONFIG( no_qtmultimedia_player ) {
   QT += multimedia
   DEFINES += MAKE_QTMULTIMEDIA_PLAYER
 }
 
 !CONFIG( no_ffmpeg_player ) {
+  # ffmpeg depended on multimedia now.
+  QT += multimedia
   DEFINES += MAKE_FFMPEG_PLAYER
+}
+
+# on windows platform ,only works in release build
+CONFIG( use_xapian ) {
+  DEFINES += USE_XAPIAN
+  LIBS+= -lxapian
 }
 
 CONFIG += exceptions \
@@ -76,7 +75,6 @@ mac {
     CONFIG += app_bundle
 }
     
-QM_FILES_INSTALL_PATH = /locale/
 OBJECTS_DIR = build
 UI_DIR = build
 MOC_DIR = build
@@ -86,6 +84,7 @@ LIBS += -lz \
         -llzo2
 
 win32 {
+    QM_FILES_INSTALL_PATH = /locale/
     TARGET = GoldenDict
 
     win32-msvc* {
@@ -117,8 +116,7 @@ win32 {
         -lvorbis \
         -logg
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
@@ -153,8 +151,7 @@ unix:!mac {
         ogg \
         hunspell
     !CONFIG( no_ffmpeg_player ) {
-        PKGCONFIG += ao \
-            libavutil \
+        PKGCONFIG += libavutil \
             libavformat \
             libavcodec \
             libswresample \
@@ -194,6 +191,7 @@ freebsd {
     LIBS +=   -lexecinfo
 }
 mac {
+    QM_FILES_INSTALL_PATH = /locale/
     TARGET = GoldenDict
     # Uncomment this line to make a universal binary.
     # You will need to use Xcode 3 and Qt Carbon SDK
@@ -207,8 +205,7 @@ mac {
         -llzo2
 
     !CONFIG( no_ffmpeg_player ) {
-        LIBS += -lao \
-            -lswresample \
+        LIBS += -lswresample \
             -lavutil \
             -lavformat \
             -lavcodec
@@ -228,8 +225,7 @@ mac {
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
-    OBJECTIVE_SOURCES += lionsupport.mm \
-                         machotkeywrapper.mm \
+    OBJECTIVE_SOURCES += machotkeywrapper.mm \
                          macmouseover.mm \
                          speechclient_mac.mm
     ICON = icons/macicon.icns
@@ -266,8 +262,10 @@ HEADERS += folding.hh \
     ankiconnector.h \
     article_inspect.h \
     articlewebpage.h \
+    audiooutput.h \
     base/globalregex.hh \
     globalbroadcaster.h \
+    headwordsmodel.h \
     iframeschemehandler.h \
     inc_case_folding.hh \
     inc_diacritic_folding.hh \
@@ -409,8 +407,10 @@ SOURCES += folding.cc \
     ankiconnector.cpp \
     article_inspect.cpp \
     articlewebpage.cpp \
+    audiooutput.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
+    headwordsmodel.cpp \
     iframeschemehandler.cpp \
     main.cc \
     dictionary.cc \
@@ -428,6 +428,7 @@ SOURCES += folding.cc \
     btreeidx.cc \
     stardict.cc \
     chunkedstorage.cc \
+    utils.cc \
     weburlrequestinterceptor.cpp \
     xdxf2html.cc \
     iconv.cc \
@@ -665,6 +666,16 @@ QMAKE_EXTRA_COMPILERS += updateqm
 TS_OUT = $$TRANSLATIONS
 TS_OUT ~= s/.ts/.qm/g
 PRE_TARGETDEPS += $$TS_OUT
+
+equals(QT_VERSION,6.4.0)
+{
+    #QTBUG-105984
+    multimedia.files = $$[QT_PLUGIN_PATH]/multimedia/*
+    multimedia.path = plugins/multimedia
+    #multimedia.CONFIG += no_check_exist
+    message("copy qt6.4.0 multimedia")
+    INSTALLS += multimedia
+}
 
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 

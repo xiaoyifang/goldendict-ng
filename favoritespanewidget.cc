@@ -208,12 +208,12 @@ void FavoritesPaneWidget::onSelectionChanged( QItemSelection const & selection )
     return;
 
   itemSelectionChanged = true;
-  emitFavoritesItemRequested( selection.indexes().front() );
+//  emitFavoritesItemRequested( selection.indexes().front() );
 }
 
 void FavoritesPaneWidget::onItemClicked( QModelIndex const & idx )
 {
-  if ( !itemSelectionChanged && m_favoritesTree->selectionModel()->selectedIndexes().size() == 1 )
+//  if ( !itemSelectionChanged && m_favoritesTree->selectionModel()->selectedIndexes().size() == 1 )
   {
     emitFavoritesItemRequested( idx );
   }
@@ -279,6 +279,11 @@ void FavoritesPaneWidget::getDataInPlainText( QString & dataStr )
 bool FavoritesPaneWidget::setDataFromXml( QString const & dataStr )
 {
   return m_favoritesModel->setDataFromXml( dataStr );
+}
+
+bool FavoritesPaneWidget::setDataFromTxt( QString const & dataStr )
+{
+  return m_favoritesModel->setDataFromTxt( dataStr );
 }
 
 void FavoritesPaneWidget::setSaveInterval( unsigned interval )
@@ -628,7 +633,7 @@ void FavoritesModel::readData()
   QFile favoritesFile( m_favoritesFilename );
   if( !favoritesFile.open( QFile::ReadOnly ) )
   {
-    gdWarning( "No favorities file found" );
+    gdDebug( "No favorites file found" );
     return;
   }
 
@@ -1160,6 +1165,26 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
   endResetModel();
 
   dom.clear();
+  dirty = true;
+  return true;
+}
+
+bool FavoritesModel::setDataFromTxt( QString const & dataStr )
+{
+  auto words = dataStr.split('\n',Qt::SkipEmptyParts);
+
+  beginResetModel();
+
+  if( rootItem )
+    delete rootItem;
+
+  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
+
+  for(auto const & word : words){
+    rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
+  }
+  endResetModel();
+
   dirty = true;
   return true;
 }

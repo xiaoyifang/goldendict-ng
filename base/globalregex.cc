@@ -20,7 +20,8 @@ QRegularExpression Ftx::handleRoundBracket( "[^\\w\\(\\)\\p{M}]+" ,
 QRegularExpression Ftx::noRoundBracket( "[^\\w\\p{M}]+",
                                         QRegularExpression::UseUnicodePropertiesOption );
 
-
+QRegularExpression Ftx::tokenBoundary( "[\\*\\?\\+]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Ftx::token("(\".*?\")|([\\w\\W\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
 //mdx
 
 QRegularExpression Mdx::allLinksRe( "(?:<\\s*(a(?:rea)?|img|link|script|source)(?:\\s+[^>]+|\\s*)>)",
@@ -56,3 +57,12 @@ QRegularExpression Mdx::srcRe2( "([\\s\"'](?:src|srcset)\\s*=)\\s*(?![\\s\"']|\\
 
 QRegularExpression Mdx::links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
                                QRegularExpression::CaseInsensitiveOption );
+
+QRegularExpression Mdx::fontFace( "(?:url\\s*\\(\\s*\\\"(.*?)\\\"\\s*)\\)",
+                                    QRegularExpression::CaseInsensitiveOption|QRegularExpression::DotMatchesEverythingOption );
+
+QRegularExpression Mdx::styleElment( "(<style[^>]*>)([\\w\\W]*?)(<\\/style>)",
+                                  QRegularExpression::CaseInsensitiveOption);
+
+
+QRegularExpression Zim::linkSpecialChar("[\\.\\/]");

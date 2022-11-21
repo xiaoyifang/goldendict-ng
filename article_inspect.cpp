@@ -27,17 +27,25 @@ void ArticleInspector::setInspectPage( QWebEnginePage * page )
     return;
   }
 
-  qDebug() << page->lifecycleState();
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK(6,3,0) )
-  page->triggerAction( QWebEnginePage::InspectElement );
-#else
-  // without this line, application will crash on qt6.2 ,see https://bugreports.qt.io/browse/QTBUG-101724
-  // and seems to hangup forever on qt6.3.0 ,so the best solution for now is to comment out the following lines.
-#endif
-
   raise();
   show();
   qDebug() << "inspector finished";
+}
+
+void ArticleInspector::triggerAction( QWebEnginePage * page )
+{
+  if( !page )
+  {
+    qDebug() << "set inspected page to nullptr";
+    return;
+  }
+
+  setInspectPage(page);
+
+#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK(6,3,0) )
+  page->triggerAction( QWebEnginePage::InspectElement );
+#endif
+
 }
 
 void ArticleInspector::closeEvent( QCloseEvent * )

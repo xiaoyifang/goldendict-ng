@@ -70,6 +70,8 @@ class ArticleView: public QFrame
   /// current active dict id list;
   QStringList currentActiveDictIds;
 
+  bool historyMode=false;
+
   //current active dictionary id;
   QString activeDictId;
 

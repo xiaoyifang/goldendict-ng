@@ -49,8 +49,9 @@
 #include "ui_authentication.h"
 #include "resourceschemehandler.h"
 
+#include "keyboardstate.hh"
+
 #ifdef Q_OS_MAC
-#include "lionsupport.h"
 #include "macmouseover.hh"
 #endif
 
@@ -229,27 +230,22 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
   // scan popup
-  beforeScanPopupSeparator = navToolbar->addSeparator();
-  beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( beforeScanPopupSeparator )->setObjectName( "beforeScanPopupSeparator" );
+  navToolbar->addSeparator();
 
-  enableScanPopup = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Scan Popup" ) );
-  enableScanPopup->setCheckable( true );
-  enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( enableScanPopup )->setObjectName( "scanPopupButton" );
-  if( cfg.preferences.enableScanPopup && cfg.preferences.startWithScanPopupOn )
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction->setCheckable( true );
+
+  navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
+  if( cfg.preferences.startWithScanPopupOn )
   {
-    enableScanPopup->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    enableScanPopup->setChecked( true );
+    enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    enableScanningAction->setChecked( true );
   }
 
-
-  connect( enableScanPopup, SIGNAL( toggled( bool ) ),
+  connect( enableScanningAction, SIGNAL( toggled( bool ) ),
            this, SLOT( scanEnableToggled( bool ) ) );
 
-  afterScanPopupSeparator = navToolbar->addSeparator();
-  afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-  navToolbar->widgetForAction( afterScanPopupSeparator )->setObjectName( "afterScanPopupSeparator" );
+  navToolbar->addSeparator();
 
   // sound
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
@@ -411,13 +407,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
            this, SLOT( showMainWindow() ) );
-  trayIconMenu.addAction( enableScanPopup );
-  actTrackingClipboard = trayIconMenu.addAction( tr( "Tracking Clipboard" ) );
-  actTrackingClipboard->setCheckable(true);
-  actTrackingClipboard->setChecked(cfg.preferences.trackClipboardChanges);
-//  actTrackingClipboard->setVisible( cfg.preferences.enableScanPopup );
-  connect( actTrackingClipboard , SIGNAL( triggered(bool) ),
-           this, SLOT( trackingClipboard(bool) ) );
+  trayIconMenu.addAction( enableScanningAction );
+
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), SIGNAL( triggered() ),
            this, SLOT( quitApp() ) );
@@ -907,10 +898,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
 
-  #ifdef Q_OS_MAC
-    LionSupport::addFullscreen(this);
-  #endif
-
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );
 
@@ -923,16 +910,46 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   inspector.reset( new ArticleInspector( this ));
 
-  connect( QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboardChange );
+  connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
 }
 
-void MainWindow::clipboardChange( )
+void MainWindow::clipboardChange( QClipboard::Mode m)
 {
-  qDebug() << "clipboard change ," << cfg.preferences.trackClipboardChanges << scanPopup.get();
-  if( scanPopup && cfg.preferences.trackClipboardChanges )
+  if( scanPopup && enableScanningAction->isChecked()  )
   {
-    scanPopup->translateWordFromClipboard();
-  }
+#ifdef HAVE_X11
+      if(m == QClipboard::Clipboard){
+        if(!cfg.preferences.trackClipboardScan) return;
+        scanPopup->translateWordFromClipboard();
+        return;
+      }
+
+      if(m == QClipboard::Selection){
+
+        // Multiple ways to stoping a word from showing up when selecting
+
+        // Explictly disabled on preferences
+        if(!cfg.preferences.trackSelectionScan) return;
+
+        // Keyboard Modifier
+        if(cfg.preferences.enableScanPopupModifiers &&
+          !KeyboardState::checkModifiersPressed(cfg.preferences.scanPopupModifiers)){
+          return;
+        }
+
+        // Show a Flag instead of translate directly.
+        // And hand over the control of showing the popup to scanFlag
+        if ( cfg.preferences.showScanFlag ) {
+          scanPopup->showScanFlag();
+          return;
+        }
+
+        scanPopup->translateWordFromSelection();
+      }
+#else
+    scanPopup ->translateWordFromClipboard();
+#endif
+     }
 }
 
 void MainWindow::ctrlTabPressed()
@@ -1203,7 +1220,7 @@ void MainWindow::updateTrayIcon()
   if ( trayIcon )
   {
     // Update the icon to reflect the scanning mode
-    trayIcon->setIcon( enableScanPopup->isChecked() ?
+    trayIcon->setIcon( enableScanningAction->isChecked() ?
         QIcon::fromTheme("goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" )) :
         QIcon::fromTheme("goldendict-tray", QIcon( ":/icons/programicon_old.png" )) );
 
@@ -1494,16 +1511,12 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  if ( !cfg.preferences.enableScanPopup &&
-       !cfg.preferences.enableClipboardHotkey && !cfg.preferences.trackClipboardChanges )
-    return;
-
   scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( cfg.preferences.enableScanPopup && enableScanPopup->isChecked() )
+  if ( enableScanningAction->isChecked() )
     scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
@@ -1739,7 +1752,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
 void MainWindow::inspectElement( QWebEnginePage * page )
 {
-  inspector->setInspectPage( page );
+  inspector->triggerAction( page );
 }
 
 void MainWindow::tabCloseRequested( int x )
@@ -2191,9 +2204,7 @@ void MainWindow::editPreferences()
     p.hideMenubar = cfg.preferences.hideMenubar;
     p.searchInDock = cfg.preferences.searchInDock;
     p.alwaysOnTop = cfg.preferences.alwaysOnTop;
-#ifndef Q_WS_X11
-    p.trackClipboardChanges = cfg.preferences.trackClipboardChanges;
-#endif
+
     p.proxyServer.systemProxyUser = cfg.preferences.proxyServer.systemProxyUser;
     p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
@@ -2204,6 +2215,8 @@ void MainWindow::editPreferences()
     p.fts.searchMode = cfg.preferences.fts.searchMode;
     p.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
     p.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
+    p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
+    p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
     bool needReload = false;
 
@@ -2255,13 +2268,6 @@ void MainWindow::editPreferences()
     cfg.preferences = p;
 
     audioPlayerFactory.setPreferences( cfg.preferences );
-
-    beforeScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-    enableScanPopup->setVisible( cfg.preferences.enableScanPopup );
-    afterScanPopupSeparator->setVisible( cfg.preferences.enableScanPopup );
-
-    if ( !cfg.preferences.enableScanPopup )
-      enableScanPopup->setChecked( false );
 
     updateTrayIcon();
     applyProxySettings();
@@ -2956,41 +2962,7 @@ void MainWindow::toggleMainWindow( bool onlyShow )
       ftsDlg->show();
 
     focusTranslateLine();
-#ifdef HAVE_X11
-#if QT_VERSION < 0x060000
-    Display *displayID = QX11Info::display();
-#else
-    QNativeInterface::QX11Application *x11AppInfo = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    Display *displayID = x11AppInfo->display();
-#endif
-    Window wh = 0;
-    int rev = 0;
-    XGetInputFocus( displayID, &wh, &rev );
-    if( wh != translateLine->internalWinId() && !byIconClick )
-    {
-        QPoint p( 1, 1 );
-        mapToGlobal( p );
-        XEvent event;
-        memset( &event, 0, sizeof( event) );
-        event.type = ButtonPress;
-        event.xbutton.x = 1;
-        event.xbutton.y = 1;
-        event.xbutton.x_root = p.x();
-        event.xbutton.y_root = p.y();
-        event.xbutton.window = internalWinId();
-        event.xbutton.root = XDefaultRootWindow(displayID);
-        event.xbutton.state = Button1Mask;
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = true;
-        event.xbutton.time = CurrentTime;
 
-        XSendEvent( displayID, internalWinId(), true, 0xfff, &event );
-        XFlush( displayID );
-        event.type = ButtonRelease;
-        XSendEvent( displayID, internalWinId(), true, 0xfff, &event );
-        XFlush( displayID );
-    }
-#endif
   }
 }
 
@@ -3091,21 +3063,7 @@ void MainWindow::checkForNewRelease()
   latestReleaseReply = 0;
 
   QNetworkRequest req(
-    QUrl( "http://goldendict.org/latest_release.php?current="
-          PROGRAM_VERSION "&platform="
-#ifdef HAVE_X11
-          "x11"
-#endif
-#ifdef Q_OS_MAC
-          "mac"
-#endif
-#ifdef Q_WS_QWS
-          "qws"
-#endif
-#ifdef Q_OS_WIN
-          "win"
-#endif
-          ) );
+    QUrl( "https://github.com/xiaoyifang/goldendict/releases") );
 
   latestReleaseReply = articleNetMgr.get( req );
 
@@ -3125,13 +3083,25 @@ void MainWindow::latestReleaseReplyReady()
 
   if ( latestReleaseReply->error() == QNetworkReply::NoError )
   {
-    QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readLine() ).trimmed();
-    QStringList parts = latestReleaseInfo.split( ' ' );
-    if ( parts.size() == 2 )
-    {
-      latestVersion = parts[ 0 ];
-      downloadUrl = parts[ 1 ];
-      success = true;
+    QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readAll() );
+    QRegularExpression firstReleaseAnchor ("<a\\s+[^>]*?class=\\\"Link--primary\\\"[^>]*?>[^<]*?<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    auto match = firstReleaseAnchor.match(latestReleaseInfo);
+    if(match.hasMatch()){
+      auto releaseAnchor = match.captured();
+      QRegularExpression extractReleaseRx ("<a\\s+.*?href=\\\"([^\\\"]*)\\\".*?>(.*?)<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+      auto matchParts = extractReleaseRx.match(releaseAnchor);
+      if(matchParts.hasMatch()){
+        latestVersion = matchParts.captured(2);
+        QString prefix("GoldenDict-v");
+        if(latestVersion.startsWith(prefix)){
+          latestVersion = latestVersion.mid(prefix.length());
+        }
+        downloadUrl = matchParts.captured(1);
+        if(downloadUrl.startsWith("/")){
+          downloadUrl = latestReleaseReply->request().url().host() + downloadUrl;
+        }
+        success = true;
+      }
     }
   }
 
@@ -3212,8 +3182,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::scanEnableToggled( bool on )
 {
-  if ( !cfg.preferences.enableScanPopup )
-    return;
 
   if ( scanPopup )
   {
@@ -3225,12 +3193,12 @@ void MainWindow::scanEnableToggled( bool on )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
                                           QPixmap( ":/icons/error.svg" ) );
 #endif
-      enableScanPopup->setIcon(QIcon(":/icons/wizard-selected.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
     }
     else
     {
       scanPopup->disableScanning();
-      enableScanPopup->setIcon(QIcon(":/icons/wizard.svg"));
+      enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }
 
@@ -3240,12 +3208,6 @@ void MainWindow::scanEnableToggled( bool on )
 void MainWindow::showMainWindow()
 {
   toggleMainWindow( true );
-}
-
-void MainWindow::trackingClipboard( bool on )
-{
-  cfg.preferences.trackClipboardChanges = on;
-  makeScanPopup();
 }
 
 void MainWindow::visitHomepage()
@@ -3265,7 +3227,7 @@ void MainWindow::visitForum()
 
 void MainWindow::showAbout()
 {
-  About about( this );
+  About about(this, &dictionaries);
 
   about.show();
   about.exec();
@@ -3821,8 +3783,13 @@ void MainWindow::applyWordsZoomLevel()
   }
 
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
-  // groupList->setFixedHeight(translateLine->height());
-  groupList->parentWidget()->layout()->activate();
+
+  if( !cfg.preferences.searchInDock )
+  {
+    // Invalidating navToolbar's layout displays translateBoxWidget w/o the need to press the toolbar
+    // extension button when Words Zoom level decreases enough for translateBoxWidget to fit in the toolbar.
+    navToolbar->layout()->invalidate();
+  }
 
   if ( scanPopup.get() )
     scanPopup->applyWordsZoomLevel();
@@ -4161,7 +4128,7 @@ void MainWindow::on_importFavorites_triggered()
 
   QString fileName = QFileDialog::getOpenFileName( this, tr( "Import Favorites from file" ),
                                                    importPath,
-                                                   tr( "XML files (*.xml);;All files (*.*)" ) );
+                                                   tr( "XML files (*.xml);;Txt files (*.txt);;All files (*.*)" ) );
   if( fileName.size() == 0)
     return;
 
@@ -4180,8 +4147,14 @@ void MainWindow::on_importFavorites_triggered()
 
     QByteArray data = file.readAll();
 
-    if( !ui.favoritesPaneWidget->setDataFromXml( QString::fromUtf8( data.data(), data.size() ) ) )
-      break;
+    if(fileInfo.suffix().compare("txt",Qt::CaseInsensitive)==0){
+      if( !ui.favoritesPaneWidget->setDataFromTxt( QString::fromUtf8( data.data(), data.size() ) ) )
+        break;
+    }
+    else{
+      if( !ui.favoritesPaneWidget->setDataFromXml( QString::fromUtf8( data.data(), data.size() ) ) )
+        break;
+    }
 
     file.close();
     mainStatusBar->showMessage( tr( "Favorites import complete" ), 5000 );

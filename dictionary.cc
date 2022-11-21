@@ -132,8 +132,8 @@ vector< char > & DataRequest::getFullData()
 }
 
 Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
-  id( id_ ), dictionaryFiles( dictionaryFiles_ ), dictionaryIconLoaded( false )
-  , can_FTS( false), FTS_index_completed( false )
+  id( id_ ), dictionaryFiles( dictionaryFiles_ ), indexedFtsDoc(0)
+  , dictionaryIconLoaded( false ), can_FTS( false),FTS_index_completed( false )
 {
 }
 
@@ -567,13 +567,26 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
     if ( ts > lastModified )
       lastModified = ts;
   }
-
+#ifndef USE_XAPIAN
+  QDir d(FsEncoding::decode( indexFile.c_str() ));
+  if(d.exists()){
+    d.removeRecursively();
+  }
+#endif
   QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
 
   if ( !fileInfo.exists() )
     return true;
 
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
+}
+
+string getFtsSuffix(){
+#ifdef USE_XAPIAN
+  return "_FTS_x";
+#else
+  return "_FTS";
+#endif
 }
 
 QString generateRandomDictionaryId()

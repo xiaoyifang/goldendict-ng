@@ -16,6 +16,10 @@ public:
   static QRegularExpression regexRegExp;
   static QRegularExpression handleRoundBracket;
   static QRegularExpression noRoundBracket;
+
+  static QRegularExpression tokenBoundary;
+
+  static QRegularExpression token;
 };
 
 
@@ -37,6 +41,13 @@ public:
   static QRegularExpression srcRe2;
 
   static QRegularExpression links;
+  static QRegularExpression fontFace;
+  static QRegularExpression styleElment;
+};
+
+class Zim{
+ public:
+  static QRegularExpression linkSpecialChar;
 };
 
 } // namespace RX

@@ -2,7 +2,6 @@
 #define SCAN_FLAG_H
 
 
-#include "config.hh"
 #include <QMainWindow>
 #include <QTimer>
 #include "ui_scanflag.h"
@@ -16,17 +15,16 @@ public:
 
   ~ScanFlag();
 
+  void showScanFlag();
+  void pushButtonClicked();
+  void hideWindow();
+
 signals:
-  void showScanPopup ();
+  void requestScanPopup ();
 
 private:
   Ui::ScanFlag ui;
   QTimer hideTimer;
-
-private slots:
-  void showScanFlag();
-  void pushButtonClicked();
-  void hideWindow();
 
 };
 

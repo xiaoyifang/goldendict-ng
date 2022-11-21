@@ -167,10 +167,17 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
     if(req.url().scheme()=="gdlookup"){
         QString path=url.path();
-        if(!path.isEmpty()){
-            Utils::Url::addQueryItem(url,"word",path.mid(1));
-            url.setPath("");
-            Utils::Url::addQueryItem(url,"group","1");
+        if( !path.isEmpty() )
+        {
+          url.setPath( "" );
+          QByteArray referer = req.rawHeader( "Referer" );
+          QUrl refererUrl    = QUrl::fromEncoded( referer );
+
+          Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
+          if( Utils::Url::hasQueryItem( refererUrl, "group" ) )
+          {
+            Utils::Url::addQueryItem( url, "group", Utils::Url::queryItemValue( refererUrl, "group" ) );
+          }
         }
     }
 
@@ -200,7 +207,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     QUrl refererUrl = QUrl::fromEncoded( referer );
 
     if ( !url.host().endsWith( refererUrl.host() ) &&
-         getHostBaseFromUrl( url ) != getHostBaseFromUrl( refererUrl ) && !url.scheme().startsWith("data") )
+        Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl ) && !url.scheme().startsWith("data") )
     {
       gdWarning( "Blocking element \"%s\" due to not same domain", url.toEncoded().data() );
 
@@ -252,9 +259,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
   QUrl const & url, QString & contentType )
 {
-  GD_DPRINTF( "getResource: %ls", url.toString().toStdWString().c_str() );
-  GD_DPRINTF( "scheme: %ls", url.scheme().toStdWString().c_str() );
-  GD_DPRINTF( "host: %ls", url.host().toStdWString().c_str() );
+  qDebug() << "getResource:" << url.toString();
+  qDebug() << "scheme:" << url.scheme();
+  qDebug() << "host:" << url.host();
 
   if ( url.scheme() == "gdlookup" )
   {
@@ -311,7 +318,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( groupIsValid && phrase.isValid() ) // Require group and phrase to be passed
+    if ( phrase.isValid() ) // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( phrase, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
   }
 
@@ -335,7 +342,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
                 QByteArray bytes;
                 QBuffer buffer(&bytes);
                 buffer.open(QIODevice::WriteOnly);
-                dictionaries[ x ]->getIcon().pixmap( 16 ).save(&buffer, "PNG");
+                dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "PNG");
                 buffer.close();
                 sptr< Dictionary::DataRequestInstant > ico = new Dictionary::DataRequestInstant( true );
                 ico->getData().resize( bytes.size() );

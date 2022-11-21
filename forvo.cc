@@ -79,15 +79,17 @@ sptr< DataRequest > ForvoDictionary::getArticle( wstring const & word,
                                                  wstring const &, bool )
   
 {
-  if ( word.size() > 80 )
+  if ( word.size() > 80 || apiKey.isEmpty() )
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
     return new DataRequestInstant( false );
   }
   else
+  {
     return new ForvoArticleRequest( word, alts, apiKey, languageCode, getId(),
                                     netMgr );
+  }
 }
 
 void ForvoDictionary::loadIcon() noexcept
@@ -130,17 +132,7 @@ void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr,
 {
   gdDebug( "Forvo: requesting article %s\n", gd::toQString( str ).toUtf8().data() );
 
-  QString key;
-
-  if ( apiKey.simplified().isEmpty() )
-  {
-    // Use the default api key. That's the key I have just registered myself.
-    // It has a limit of 1000 requests a day, and may also get banned in the
-    // future. Can't do much about it. Get your own key, it is simple.
-    key = "5efa5d045a16d10ad9c4705bd5d8e56a";
-  }
-  else
-    key = apiKey;
+  QString key = apiKey;
 
   QUrl reqUrl = QUrl::fromEncoded(
       QString( "https://apifree.forvo.com"
@@ -351,7 +343,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 {
   vector< sptr< Dictionary::Class > > result;
 
-  if ( forvo.enable )
+  if ( forvo.enable && !forvo.apiKey.isEmpty())
   {
     QStringList codes = forvo.languageCodes.split( ',', Qt::SkipEmptyParts );
 

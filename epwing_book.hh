@@ -78,7 +78,8 @@ class EpwingBook
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
   QMap< QString, QString > baseFontsMap, customFontsMap;
   QVector< int > refPages, refOffsets;
-  QMap< QString, QList< EWPos > > allHeadwordPositions;
+  QMap< uint64_t,bool > allHeadwordPositions;
+  QMap< uint64_t, bool > allRefPositions;
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static Mutex libMutex;
@@ -98,7 +99,7 @@ class EpwingBook
   EB_Error_Code forwardText( EB_Position & startPos );
 
   // Retrieve article text from dictionary
-  QString getText( int page, int offset, bool text_only );
+  QString getText( int page, int offset, bool text_only);
 
   unsigned int normalizeDecorationCode( unsigned int code );
 
@@ -151,6 +152,7 @@ public:
   void clearBuffers()
   {
     allHeadwordPositions.clear();
+    allRefPositions.clear();
     LinksQueue.clear();
   }
 
@@ -180,6 +182,8 @@ public:
 
   // Find next headword and article position
   bool getNextHeadword( EpwingHeadword & head );
+
+  bool processRef( EpwingHeadword & head );
 
   bool readHeadword( EB_Position const & pos,
                      QString & headword,
