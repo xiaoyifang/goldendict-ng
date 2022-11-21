@@ -30,8 +30,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 22.9.23
-      version-suffix: AutumnEquinox
+      version: 22.11.22
+      version-suffix: LightSnow
       prerelease: false
 
     steps:
