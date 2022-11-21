@@ -75,7 +75,6 @@ mac {
     CONFIG += app_bundle
 }
     
-QM_FILES_INSTALL_PATH = /locale/
 OBJECTS_DIR = build
 UI_DIR = build
 MOC_DIR = build
@@ -85,6 +84,7 @@ LIBS += -lz \
         -llzo2
 
 win32 {
+    QM_FILES_INSTALL_PATH = /locale/
     TARGET = GoldenDict
 
     win32-msvc* {
