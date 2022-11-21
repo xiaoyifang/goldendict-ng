@@ -191,6 +191,7 @@ freebsd {
     LIBS +=   -lexecinfo
 }
 mac {
+    QM_FILES_INSTALL_PATH = /locale/
     TARGET = GoldenDict
     # Uncomment this line to make a universal binary.
     # You will need to use Xcode 3 and Qt Carbon SDK
