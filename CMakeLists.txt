@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.23)
+
 #[[
 
 Experimental Cmake build only supposed to be used by dev
@@ -8,17 +10,18 @@ It assume those conditions:
 * Qt6.4+ Multimedia and no option to enable FFmpeg
 * Libraries are provided by the system
 
-Notes:
-
-Detect Windows via MSVC because WebEngine only support MSVC anyway
+LINUX, APPLE and MSVC are used to detect system
 
 ]]#
 
-cmake_minimum_required(VERSION 3.25)
+# Remove this once cmake 5.25 becomes minimum version
+if(UNIX AND NOT APPLE)
+    set(LINUX TRUE)
+endif()
 
 project(goldendict
         VERSION 22.11.20
-        LANGUAGES CXX C) # There is 1 `.c` file in the repo
+        LANGUAGES CXX C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -29,9 +32,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#### Importing Libraries (in 3 methods from Good to Should be avoided :)
+#### Importing Libraries
 
-# Qt's way
 find_package(Qt6 REQUIRED COMPONENTS
         Concurrent
         Core5Compat
@@ -57,10 +59,10 @@ if (LINUX OR APPLE)
     find_package (PkgConfig REQUIRED)
     pkg_check_modules (PKGCONFIG_DEPS IMPORTED_TARGET
             hunspell
+            lzo2
             opencc
             vorbis # .ogg
             vorbisfile
-            lzo2
             )
 endif ()
 
@@ -81,13 +83,11 @@ endif()
 
 if(LINUX)
     find_package(X11 REQUIRED)
-    pkg_check_modules (PKGCONFIG_DEPS REQUIRED xtst)
+    pkg_check_modules (LIBXTST IMPORTED_TARGET xtst)
 
-    # By hand. Eb is old project, unlikely to obtain a .pc file
-    # TODO: this can be replaced with find_path instead of hand written
     add_library(libeb SHARED IMPORTED)
     set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
-    set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/eb/)
+    set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
 endif()
 
 #### Compile time files and preprocessor flags
@@ -105,29 +105,21 @@ configure_file(version.txt.in ${CMAKE_SOURCE_DIR}/version.txt)
 # hack -> this string will be compared with another string, thus having surrounding " "
 add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
 
-# temporal hack to avoid breaking qmake build
+add_compile_definitions(CMAKE_USED_HACK) # temporal hack to avoid breaking qmake build
 add_compile_definitions(
-        CMAKE_USED_HACK
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
 )
 
 if(LINUX)
-    add_compile_definitions(
-            HAVE_X11
-    )
+    add_compile_definitions(HAVE_X11)
 endif()
 
 if(APPLE OR MSVC)
-    add_compile_definitions(
-            NO_EPWING_SUPPORT
-    )
+    add_compile_definitions(NO_EPWING_SUPPORT)
 endif()
 
 #### Sources Files
-
-# include all *ts files under locale
-file(GLOB TRANS_FILES "locale/*.ts")
 
 set(QRC_RESOURCES
         flags.qrc
@@ -135,7 +127,7 @@ set(QRC_RESOURCES
         scripts.qrc
         )
 
-set(UI_SOURCES
+set(UI_SRC
         about.ui
         articleview.ui
         authentication.ui
@@ -163,7 +155,8 @@ if(LINUX)
             epwing_book.cc
             epwing_book.hh
             epwing_charmap.cc
-            epwing_charmap.hh)
+            epwing_charmap.hh
+            )
 endif()
 
 if (APPLE)
@@ -190,12 +183,11 @@ if(MSVC)
             texttospeechsource.cc
             texttospeechsource.hh
             texttospeechsource.ui
-        )
+            )
 endif()
 
-
 set(PROJECT_SOURCES
-        ${UI_SOURCES}
+        ${UI_SRC}
         ${MAC_SRC}
         ${WIN_SRC}
         ${QRC_RESOURCES}
@@ -466,14 +458,10 @@ set(PROJECT_SOURCES
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
         MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-        )
-
-qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+        ${PROJECT_SOURCES})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
-        ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
-        )
+        ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src)
 
 if(MSVC)
     target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
@@ -493,7 +481,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
 
         BZip2::BZip2
         ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
-
         )
 
 if(LINUX OR MAC)
@@ -523,7 +510,7 @@ endif()
 
 
 if(LINUX)
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11 PkgConfig::LIBXTST)
 endif ()
 
 if(APPLE)
@@ -542,7 +529,11 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
         BUNDLE DESTINATION .
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-# Preview Command at 6.2, Qt may change it later
+
+# include all *ts files under locale
+file(GLOB TRANS_FILES "locale/*.ts")
+
+# a wrapper over qt_add_lupdate and  qt_add_lrelease
 qt_add_translations(${CMAKE_PROJECT_NAME} TS_FILES ${TRANS_FILES})
 
 qt_finalize_target(${CMAKE_PROJECT_NAME})
