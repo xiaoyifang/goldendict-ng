@@ -111,8 +111,10 @@ add_compile_definitions(
         MAKE_CHINESE_CONVERSION_SUPPORT
 )
 
-if (WITH_FFMPEG_PLAYER AND LINUX)
-    add_compile_definitions(MAKE_FFMPEG_PLAYER)
+if (WITH_FFMPEG_PLAYER)
+    if (APPLE OR LINUX) # remove if Win also support FFmpeg
+        add_compile_definitions(MAKE_FFMPEG_PLAYER)
+    endif ()
 endif ()
 
 
@@ -497,7 +499,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
         )
 
-if(LINUX OR MAC)
+if(LINUX OR APPLE)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
             # pkg-config packages need manually link
     PkgConfig::PKGCONFIG_DEPS
@@ -525,14 +527,17 @@ endif()
 
 if(LINUX)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11 PkgConfig::LIBXTST)
-    if(WITH_FFMPEG_PLAYER)
-        target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE  PkgConfig::FFMPEG)
-    endif()
 endif ()
 
 if(APPLE)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${CARBON_LIBRARY})
 endif()
+
+if (WITH_FFMPEG_PLAYER)
+    if (APPLE OR LINUX)
+        target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE  PkgConfig::FFMPEG)
+    endif ()
+endif ()
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

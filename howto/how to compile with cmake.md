@@ -1,3 +1,14 @@
+# macOS
+
+Install necessary dependencies
+
+```shell
+brew install pkg-config qt@6 bzip2 zlib \
+hunspell opencc libvorbis ffmpeg
+```
+
+Use standard CMake build commands, then use `macdeployqt ./goldendict.app` to copy necessary dependencies to the app bundle.
+
 # Windows 
 
 ## Steps
