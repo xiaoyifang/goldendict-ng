@@ -8,6 +8,10 @@ It assume those conditions:
 * Qt6.4+ Multimedia and no option to enable FFmpeg
 * Libraries are provided by the system
 
+Notes:
+
+Detect Windows via MSVC because WebEngine only support MSVC anyway
+
 ]]#
 
 cmake_minimum_required(VERSION 3.25)
@@ -48,22 +52,39 @@ if (APPLE)
     find_library(CARBON_LIBRARY REQUIRED)
 endif ()
 
-# PkgConfig only packages
-find_package (PkgConfig REQUIRED)
+if (LINUX OR APPLE)
+    # PkgConfig only packages
+    find_package (PkgConfig REQUIRED)
+    pkg_check_modules (PKGCONFIG_DEPS IMPORTED_TARGET
+            hunspell
+            opencc
+            vorbis # .ogg
+            vorbisfile
+            lzo2
+            )
+endif ()
 
-pkg_check_modules (PKGCONFIG_DEPS IMPORTED_TARGET
-        hunspell
-        opencc
-        vorbis # .ogg
-        vorbisfile
-        lzo2
-        )
+if (MSVC)
+    find_package(vorbis CONFIG REQUIRED)
+
+# Manually hack vcpkg packages that don't have cmake wrapper
+# Reference: the wrapper inside https://github.com/microsoft/vcpkg/tree/master/ports/zlib
+
+# TODO: these code can be improved accodring to vcpkg's sample
+    find_path(OPENCC_INCLUDE_DIR NAMES opecc.h PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include" NO_DEFAULT_PATH)
+    find_library(OPENCC_LIBRARY_RELEASE NAMES opencc  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
+
+    find_library(LZO_LIBRARY_RELEASE NAMES lzo2  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
+    find_library(HUNSPELL_LIBRARY_RELEASE NAMES libhunspell  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
+endif()
+
 
 if(LINUX)
     find_package(X11 REQUIRED)
     pkg_check_modules (PKGCONFIG_DEPS REQUIRED xtst)
 
     # By hand. Eb is old project, unlikely to obtain a .pc file
+    # TODO: this can be replaced with find_path instead of hand written
     add_library(libeb SHARED IMPORTED)
     set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
     set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/eb/)
@@ -97,7 +118,7 @@ if(LINUX)
     )
 endif()
 
-if(APPLE)
+if(APPLE OR MSVC)
     add_compile_definitions(
             NO_EPWING_SUPPORT
     )
@@ -158,10 +179,25 @@ if (APPLE)
             )
 endif ()
 
+if(MSVC)
+    set(WIN_SRC
+            winlibs/include/stub_msvc.h
+            guids.c # ONLY RELATED TO TTS
+            speechclient.hh
+            speechclient_win.cc
+            speechhlp.cc
+            speechhlp.hh
+            texttospeechsource.cc
+            texttospeechsource.hh
+            texttospeechsource.ui
+        )
+endif()
+
 
 set(PROJECT_SOURCES
         ${UI_SOURCES}
         ${MAC_SRC}
+        ${WIN_SRC}
         ${QRC_RESOURCES}
         ${EPWING_SUPPORT_SRC}
         aard.cc
@@ -437,8 +473,13 @@ qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
-
         )
+
+if(MSVC)
+    target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
+        ${PROJECT_SOURCE_DIR}/winlibs/include/
+)
+endif()
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         Qt6::Xml
@@ -453,9 +494,32 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         BZip2::BZip2
         ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
 
-        # pkg-config packages need manually link
-        PkgConfig::PKGCONFIG_DEPS
         )
+
+if(LINUX OR MAC)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
+            # pkg-config packages need manually link
+    PkgConfig::PKGCONFIG_DEPS
+    )
+endif()
+
+# indirect dependencies:
+# Windows's accessibility for tts https://learn.microsoft.com/en-us/windows/win32/api/oleacc/
+
+if(MSVC)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
+            ZLIB::ZLIB
+            Vorbis::vorbis
+            Vorbis::vorbisfile
+            BZip2::BZip2
+
+            ${OPENCC_LIBRARY_RELEASE}
+            ${LZO_LIBRARY_RELEASE}
+            ${HUNSPELL_LIBRARY_RELEASE}
+            )
+
+# For libraries without nvpkg cmake
+endif()
 
 
 if(LINUX)
