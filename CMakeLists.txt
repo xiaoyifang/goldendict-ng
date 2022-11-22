@@ -1,18 +1,10 @@
 cmake_minimum_required(VERSION 3.23)
 
-#[[
+# Experimental Cmake build only supposed to be used by dev
+# Qt6.4+ only
+# LINUX, APPLE and MSVC are used to detect system
 
-Experimental Cmake build only supposed to be used by dev
-
-It assume those conditions:
-
-* Qt6.4+ only
-* Qt6.4+ Multimedia and no option to enable FFmpeg
-* Libraries are provided by the system
-
-LINUX, APPLE and MSVC are used to detect system
-
-]]#
+option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 
 # Remove this once cmake 5.25 becomes minimum version
 if(UNIX AND NOT APPLE)
@@ -64,6 +56,14 @@ if (LINUX OR APPLE)
             vorbis # .ogg
             vorbisfile
             )
+    if (WITH_FFMPEG_PLAYER)
+        pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET
+                libavcodec
+                libavformat
+                libavutil
+                libswresample
+                )
+    endif ()
 endif ()
 
 if (MSVC)
@@ -110,6 +110,11 @@ add_compile_definitions(
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
 )
+
+if (WITH_FFMPEG_PLAYER AND LINUX)
+    add_compile_definitions(MAKE_FFMPEG_PLAYER)
+endif ()
+
 
 if(LINUX)
     add_compile_definitions(HAVE_X11)
@@ -186,12 +191,21 @@ if(MSVC)
             )
 endif()
 
+if(WITH_FFMPEG_PLAYER)
+    set(FFMPEG_SUPPORT_SRC
+            ffmpegaudio.cc
+            ffmpegaudio.hh
+            ffmpegaudioplayer.hh
+            )
+endif()
+
 set(PROJECT_SOURCES
         ${UI_SRC}
         ${MAC_SRC}
         ${WIN_SRC}
         ${QRC_RESOURCES}
         ${EPWING_SUPPORT_SRC}
+        ${FFMPEG_SUPPORT_SRC}
         aard.cc
         aard.hh
         about.cc
@@ -511,6 +525,9 @@ endif()
 
 if(LINUX)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11 PkgConfig::LIBXTST)
+    if(WITH_FFMPEG_PLAYER)
+        target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE  PkgConfig::FFMPEG)
+    endif()
 endif ()
 
 if(APPLE)
