@@ -863,7 +863,7 @@ string ZimDictionary::convert( const string & in )
     if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
     {
       //<\\1 \\2src=\\3bres://%1/
-      url.replace( RX::Zim::linkSpecialChar, "" );
+      url.remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -1520,8 +1520,8 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
-  return new ZimResourceRequest( *this, formatedName.toStdString() );
+//  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
+  return new ZimResourceRequest( *this, name );
 }
 
 //} // anonymous namespace
@@ -1693,10 +1693,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
               else
               {
-                url.insert( url.begin(), '/' );
-                url.insert( url.begin(), nameSpace );
-                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
-                indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+//                url.insert( url.begin(), '/' );
+//                url.insert( url.begin(), nameSpace );
+//                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
+                indexedResources.addSingleWord( Utf8::decode( url ), n );
               }
             }
             else
@@ -1726,16 +1726,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
             }
             else
-            if( nameSpace == 'X' )
+            if( nameSpace == 'X' || nameSpace=='V' || nameSpace=='U'|| nameSpace=='W' )
             {
               continue;
             }
             else
             {
-              url.insert( url.begin(), '/' );
-              url.insert( url.begin(), nameSpace );
-              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
-              indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+//              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
+              indexedResources.addSingleWord( Utf8::decode( url ), n );
             }
           }
 
