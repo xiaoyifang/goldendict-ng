@@ -43,7 +43,7 @@ find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
 
 if (APPLE)
-    find_library(CARBON_LIBRARY REQUIRED)
+    find_library(CARBON_LIBRARY Carbon REQUIRED)
 endif ()
 
 if (LINUX OR APPLE)
