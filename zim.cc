@@ -1520,8 +1520,8 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-//  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
-  return new ZimResourceRequest( *this, name );
+  auto formatedName = QString::fromStdString(name).remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+  return new ZimResourceRequest( *this, formatedName.toStdString() );
 }
 
 //} // anonymous namespace
