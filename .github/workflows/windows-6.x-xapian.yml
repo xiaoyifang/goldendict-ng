@@ -31,9 +31,9 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 22.9.24
-      version-suffix: alpha
-      prerelease: true
+      version: 22.11.22
+      version-suffix: LightSnow
+      prerelease: false
     steps:
       - uses: actions/setup-python@v3
         with:
