@@ -11,6 +11,8 @@ if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
 
+add_subdirectory(eb)
+
 project(goldendict
         VERSION 22.11.20
         LANGUAGES CXX C)
@@ -122,7 +124,7 @@ if(LINUX)
     add_compile_definitions(HAVE_X11)
 endif()
 
-if(APPLE OR MSVC)
+if(MSVC)
     add_compile_definitions(NO_EPWING_SUPPORT)
 endif()
 
@@ -155,7 +157,7 @@ set(UI_SRC
         sources.ui
         )
 
-if(LINUX)
+if(LINUX OR APPLE)
     set(EPWING_SUPPORT_SRC
             epwing.cc
             epwing.hh
@@ -497,6 +499,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
 
         BZip2::BZip2
         ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
+
+        eb
         )
 
 if(LINUX OR APPLE)
