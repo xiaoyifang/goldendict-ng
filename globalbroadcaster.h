@@ -25,6 +25,7 @@ public:
   void addWhitelist(QString host);
   bool existedInWhitelist(QString host);
   static GlobalBroadcaster * instance();
+  unsigned currentGroupId;
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
