@@ -40,3 +40,4 @@ GoldenDict.xcodeproj/
 
 # cmake files
 /cmake-build-**/
+/build**/

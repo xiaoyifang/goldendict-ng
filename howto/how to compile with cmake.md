@@ -1,3 +1,16 @@
+# Linux
+
+```shell
+cmake -S . -B build_dir \
+      --install-prefix=/usr/local/ \
+      -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release
+      
+cmake --build build_dir --parallel 7
+
+ cmake --install ./build_dir/
+```
+
 # macOS
 
 Install necessary dependencies

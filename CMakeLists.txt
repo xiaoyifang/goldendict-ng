@@ -11,7 +11,10 @@ if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
 
-add_subdirectory(eb)
+
+if (APPLE)
+    add_subdirectory(eb)
+endif ()
 
 project(goldendict
         VERSION 22.11.20
@@ -559,12 +562,25 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
 # include all *ts files under locale
 file(GLOB TRANS_FILES "locale/*.ts")
 
+# Put generated files to output dir's locale
+set_source_files_properties(${TRANS_FILES}
+        PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
+
 # a wrapper over qt_add_lupdate and  qt_add_lrelease
-qt_add_translations(${CMAKE_PROJECT_NAME} TS_FILES ${TRANS_FILES})
+qt_add_translations(${CMAKE_PROJECT_NAME} TS_FILES ${TRANS_FILES}
+        QM_FILES_OUTPUT_VARIABLE qm_files)
 
 qt_finalize_target(${CMAKE_PROJECT_NAME})
 
 if (LINUX)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.desktop DESTINATION share/applications)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.metainfo.xml DESTINATION share/metainfo)
+
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
+
+    install(FILES ${qm_files} DESTINATION share/goldendict/locale)
+
+    install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_en.qch DESTINATION share/goldendict/help)
+    install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_ru.qch DESTINATION share/goldendict/help)
+
 endif()
