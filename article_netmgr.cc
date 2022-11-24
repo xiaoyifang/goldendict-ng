@@ -170,14 +170,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
         if( !path.isEmpty() )
         {
           url.setPath( "" );
-          QByteArray referer = req.rawHeader( "Referer" );
-          QUrl refererUrl    = QUrl::fromEncoded( referer );
 
           Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
-          if( Utils::Url::hasQueryItem( refererUrl, "group" ) )
-          {
-            Utils::Url::addQueryItem( url, "group", Utils::Url::queryItemValue( refererUrl, "group" ) );
-          }
+          Utils::Url::addQueryItem( url, "group", QString::number(GlobalBroadcaster::instance()->currentGroupId ) );
         }
     }
 
@@ -318,7 +313,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( phrase.isValid() ) // Require group and phrase to be passed
+    if ( groupIsValid && phrase.isValid() ) // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( phrase, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
   }
 

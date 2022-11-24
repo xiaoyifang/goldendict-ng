@@ -572,6 +572,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       igrp->checkMutedDictionaries( &grp->mutedDictionaries );
     dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : 0 );
   }
+  GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
 
   showDictBarNamesTriggered(); // Make update its state according to initial
                                // setting
@@ -2321,6 +2322,10 @@ void MainWindow::currentGroupChanged( int )
     }
     else
       dictionaryBar.setMutedDictionaries( 0 );
+  }
+
+  if(igrp){
+    GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
   }
 
   updateDictionaryBar();

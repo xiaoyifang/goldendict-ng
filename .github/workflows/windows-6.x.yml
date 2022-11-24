@@ -27,11 +27,11 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [6.3.2,6.4.1]
+        qt_ver: [6.3.2]
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 22.9.24
+      version: 22.11.24
       version-suffix: alpha
       prerelease: true
     steps:

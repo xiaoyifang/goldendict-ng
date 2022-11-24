@@ -128,7 +128,7 @@ __attribute__((packed))
 enum
 {
   Signature = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
-  CurrentFormatVersion = 3 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
@@ -839,8 +839,44 @@ string ZimDictionary::convert( const string & in )
                 QString( "<body \\1" ) );
 
   // pattern of img and script
-  text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\"|)(\\.\\./)*" ),
-                QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
+  // text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" ),
+  //               QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
+
+  QRegularExpression rxImgScript( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" );
+  QRegularExpressionMatchIterator it = rxImgScript.globalMatch( text );
+  int pos = 0;
+  QString newText;
+  while( it.hasNext() )
+  {
+    QRegularExpressionMatch match = it.next();
+
+    newText += text.mid( pos, match.capturedStart() - pos );
+    pos = match.capturedEnd();
+
+    QStringList list = match.capturedTexts();
+
+    QString url = list[ 4 ]; // a url
+
+    QString urlLink = match.captured();
+
+    QString replacedLink = urlLink;
+    if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
+    {
+      //<\\1 \\2src=\\3bres://%1/
+      url.remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+      replacedLink =
+        QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
+    }
+
+    newText += replacedLink;
+  }
+  if( pos )
+  {
+    newText += text.mid( pos );
+    text = newText;
+  }
+  newText.clear();
+
 
   // Fix links without '"'
   text.replace( QRegularExpression( "href=(\\.\\.|)/([^\\s>]+)" ),
@@ -860,9 +896,8 @@ string ZimDictionary::convert( const string & in )
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
   QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))()([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
-  QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
-  int pos = 0;
-  QString newText;
+  it = rxLink.globalMatch( text );
+  pos = 0;
   while( it.hasNext() )
   {
     QRegularExpressionMatch match = it.next();
@@ -1485,7 +1520,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName =  QString::fromStdString(name).replace(RX::Zim::linkSpecialChar,"");
+  auto formatedName = QString::fromStdString(name).remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
   return new ZimResourceRequest( *this, formatedName.toStdString() );
 }
 
@@ -1658,8 +1693,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
               else
               {
-                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
-                indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+//                url.insert( url.begin(), '/' );
+//                url.insert( url.begin(), nameSpace );
+//                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
+                indexedResources.addSingleWord( Utf8::decode( url ), n );
               }
             }
             else
@@ -1689,16 +1726,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               }
             }
             else
-            if( nameSpace == 'X' )
+            if( nameSpace == 'X' || nameSpace=='V' || nameSpace=='U'|| nameSpace=='W' )
             {
               continue;
             }
             else
             {
-//              url.insert( url.begin(), '/' );
-//              url.insert( url.begin(), nameSpace );
-              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar,"");
-              indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+//              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
+              indexedResources.addSingleWord( Utf8::decode( url ), n );
             }
           }
 
