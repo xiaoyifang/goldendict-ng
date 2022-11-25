@@ -28,18 +28,11 @@ Use standard CMake build commands, then use `macdeployqt ./goldendict.app` to co
 
 Install Qt6(msvc) through the standard installer
 
-Setup vcpkg <https://github.com/microsoft/vcpkg#quick-start-windows>
-
 Pass those parameters to cmake, the path should be changed to your actual installation paths
 ```
 -DCMAKE_PREFIX_PATH=F:\Qt\6.4.1\msvc2019_64
--DCMAKE_TOOLCHAIN_FILE=F:\vcpkg\scripts\buildsystems\vcpkg.cmake
 ```
 
-Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the `.dll` and other necessary files automatically.
+Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related `.dll` and other necessary files automatically.
 
-## Notes
-
-The vcpkg uses manifests mode which will read the `vcpkg.json` and the packages will be automatically install when loading `CMakeLists.txt`
-
-https://github.com/microsoft/vcpkg/blob/master/docs/users/manifests.md
+Due to the `winlibs` are built on Release mode, there are troubles to build GoldenDict on Debug mode.

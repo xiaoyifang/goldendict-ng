@@ -11,7 +11,6 @@ if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
 
-
 if (APPLE)
     add_subdirectory(eb)
 endif ()
@@ -43,15 +42,15 @@ find_package(Qt6 REQUIRED COMPONENTS
         Xml
         )
 
-# Provided by Cmake
-find_package(ZLIB REQUIRED)
-find_package(BZip2 REQUIRED)
-
 if (APPLE)
     find_library(CARBON_LIBRARY Carbon REQUIRED)
 endif ()
 
-if (LINUX OR APPLE)
+if (UNIX)
+    # Provided by Cmake
+    find_package(ZLIB REQUIRED)
+    find_package(BZip2 REQUIRED)
+
     # PkgConfig only packages
     find_package (PkgConfig REQUIRED)
     pkg_check_modules (PKGCONFIG_DEPS IMPORTED_TARGET
@@ -70,21 +69,6 @@ if (LINUX OR APPLE)
                 )
     endif ()
 endif ()
-
-if (MSVC)
-    find_package(vorbis CONFIG REQUIRED)
-
-# Manually hack vcpkg packages that don't have cmake wrapper
-# Reference: the wrapper inside https://github.com/microsoft/vcpkg/tree/master/ports/zlib
-
-# TODO: these code can be improved accodring to vcpkg's sample
-    find_path(OPENCC_INCLUDE_DIR NAMES opecc.h PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include" NO_DEFAULT_PATH)
-    find_library(OPENCC_LIBRARY_RELEASE NAMES opencc  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
-
-    find_library(LZO_LIBRARY_RELEASE NAMES lzo2  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
-    find_library(HUNSPELL_LIBRARY_RELEASE NAMES libhunspell  PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib" NO_DEFAULT_PATH)
-endif()
-
 
 if(LINUX)
     find_package(X11 REQUIRED)
@@ -117,11 +101,8 @@ add_compile_definitions(
 )
 
 if (WITH_FFMPEG_PLAYER)
-    if (APPLE OR LINUX) # remove if Win also support FFmpeg
-        add_compile_definitions(MAKE_FFMPEG_PLAYER)
-    endif ()
+    add_compile_definitions(MAKE_FFMPEG_PLAYER)
 endif ()
-
 
 if(LINUX)
     add_compile_definitions(HAVE_X11)
@@ -160,16 +141,14 @@ set(UI_SRC
         sources.ui
         )
 
-if(LINUX OR APPLE)
-    set(EPWING_SUPPORT_SRC
-            epwing.cc
-            epwing.hh
-            epwing_book.cc
-            epwing_book.hh
-            epwing_charmap.cc
-            epwing_charmap.hh
-            )
-endif()
+set(EPWING_SUPPORT_SRC
+        epwing.cc
+        epwing.hh
+        epwing_book.cc
+        epwing_book.hh
+        epwing_charmap.cc
+        epwing_charmap.hh
+        )
 
 if (APPLE)
     set(MAC_SRC
@@ -186,7 +165,6 @@ endif ()
 
 if(MSVC)
     set(WIN_SRC
-            winlibs/include/stub_msvc.h
             guids.c # ONLY RELATED TO TTS
             speechclient.hh
             speechclient_win.cc
@@ -485,8 +463,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src)
 
 if(MSVC)
+    add_compile_definitions(INCLUDE_LIBRARY_PATH)
     target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
-        ${PROJECT_SOURCE_DIR}/winlibs/include/
+        ${CMAKE_SOURCE_DIR}/winlibs/include/
 )
 endif()
 
@@ -499,17 +478,19 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
-
-        BZip2::BZip2
-        ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
-
-        eb
         )
 
-if(LINUX OR APPLE)
+if(APPLE)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
+endif()
+
+if(UNIX)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
             # pkg-config packages need manually link
     PkgConfig::PKGCONFIG_DEPS
+
+    BZip2::BZip2
+    ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
     )
 endif()
 
@@ -517,18 +498,10 @@ endif()
 # Windows's accessibility for tts https://learn.microsoft.com/en-us/windows/win32/api/oleacc/
 
 if(MSVC)
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
-            ZLIB::ZLIB
-            Vorbis::vorbis
-            Vorbis::vorbisfile
-            BZip2::BZip2
-
-            ${OPENCC_LIBRARY_RELEASE}
-            ${LZO_LIBRARY_RELEASE}
-            ${HUNSPELL_LIBRARY_RELEASE}
-            )
-
-# For libraries without nvpkg cmake
+    file(GLOB WINLIBS_FILES "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.lib")
+    foreach(A_WIN_LIB ${WINLIBS_FILES})
+        target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${A_WIN_LIB})
+    endforeach()
 endif()
 
 
@@ -583,4 +556,13 @@ if (LINUX)
     install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_en.qch DESTINATION share/goldendict/help)
     install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_ru.qch DESTINATION share/goldendict/help)
 
+endif()
+
+# Copy .dlls to output dir
+if(MSVC)
+    file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.dll")
+    foreach(A_DLL_FILE ${DLL_FILES})
+        get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
+        configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
+    endforeach()
 endif()
