@@ -89,6 +89,7 @@ execute_process(
         OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
+string(TIMESTAMP date_for_version_file) # note: this variable is cached for every run, but for user installation, this doesn't matter much
 configure_file(version.txt.in ${CMAKE_SOURCE_DIR}/version.txt)
 
 # hack -> this string will be compared with another string, thus having surrounding " "
