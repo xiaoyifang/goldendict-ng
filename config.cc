@@ -2233,18 +2233,12 @@ QString getProgramDataDir() noexcept
   #endif
 }
 
-// Get translation file path
 QString getLocDir() noexcept
 {
-// in the /locale folder beside be binary
   if ( QDir( getProgramDataDir() ).cd( "locale" ) )
     return getProgramDataDir() + "/locale";
-// for linux: in /usr/share/golendict/locale
-  if (QDir(QCoreApplication::applicationDirPath()).cd("locale"))
-    return QCoreApplication::applicationDirPath() + "/locale";
-// for debug: right beside the binary
   else
-    return QCoreApplication::applicationDirPath();
+    return QCoreApplication::applicationDirPath() + "/locale";
 }
 
 QString getHelpDir() noexcept
