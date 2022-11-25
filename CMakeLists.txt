@@ -495,9 +495,6 @@ if(UNIX)
     )
 endif()
 
-# indirect dependencies:
-# Windows's accessibility for tts https://learn.microsoft.com/en-us/windows/win32/api/oleacc/
-
 if(MSVC)
     file(GLOB WINLIBS_FILES "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.lib")
     foreach(A_WIN_LIB ${WINLIBS_FILES})
