@@ -37,3 +37,7 @@ GoldenDict.xcodeproj/
 /.vs
 /.vscode
 /.qtc_clangd
+
+# cmake files
+/cmake-build-**/
+/build**/

@@ -23,7 +23,10 @@
 #include <map>
 #include <set>
 #include <string>
-#ifndef __WIN32
+// msvc defines _WIN32 https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170
+// gcc also defines __WIN32, _WIN32, __WIN32__
+// todo: unify how windows are detected on headers
+#ifndef _WIN32
 #include <arpa/inet.h>
 #else
 #include <winsock.h>
