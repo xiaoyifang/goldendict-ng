@@ -183,7 +183,7 @@ logFile( false )
       }
       else
         word = arguments[ i ];
-#ifdef Q_OS_WIN
+#if defined(Q_OS_LINUX) || defined (Q_OS_WIN)
         // handle url scheme like "goldendict://" on windows
         word.remove("goldendict://");
         // In microsoft Words, the / will be automatically appended
