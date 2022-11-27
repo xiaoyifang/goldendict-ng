@@ -912,6 +912,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   inspector.reset( new ArticleInspector( this ));
 
   connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+
+#ifdef Q_OS_WIN
+  // Regiser and update URL Scheme for windows
+  // https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)
+
+  // Windows will automatically map registry key to Computer\HKEY_CLASSES_ROOT\ */
+  QSettings urlRegistry(R"(HKEY_CURRENT_USER\Software\Classes)", QSettings::NativeFormat);
+
+  urlRegistry.beginGroup("goldendict");
+  urlRegistry.setValue("Default", "URL: goldendict Protocol");
+  urlRegistry.setValue("URL Protocol", "");
+  urlRegistry.setValue("shell/open/command/Default",
+    QString("\"%1\"").arg( QDir::toNativeSeparators(QApplication::applicationFilePath())) + " \"%1\"");
+  urlRegistry.endGroup();
+#endif
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
