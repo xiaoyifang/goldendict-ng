@@ -346,16 +346,14 @@ bool DecoderContext::play( QString & errorString )
     return false;
   }
 
-  AVPacket packet;
-  av_init_packet( &packet );
+  AVPacket * packet = av_packet_alloc();
 
   while ( !Utils::AtomicInt::loadAcquire( isCancelled_ ) &&
-          av_read_frame( formatContext_, &packet ) >= 0 )
+          av_read_frame( formatContext_, packet ) >= 0 )
   {
-    if ( packet.stream_index == audioStream_->index )
+    if ( packet->stream_index == audioStream_->index )
     {
-      AVPacket pack = packet;
-      int ret = avcodec_send_packet( codecContext_, &pack );
+      int ret = avcodec_send_packet( codecContext_, packet );
       /* read all the output frames (in general there may be any number of them) */
       while( ret >= 0 )
       {
@@ -369,15 +367,14 @@ bool DecoderContext::play( QString & errorString )
 
     }
 
-    av_packet_unref( &packet );
+    av_packet_unref( packet );
 
   }
 
   /* flush the decoder */
-  av_init_packet( &packet );
-  packet.data = NULL;
-  packet.size = 0;
-  int ret = avcodec_send_packet(codecContext_, &packet );
+  packet->data = NULL;
+  packet->size = 0;
+  int ret = avcodec_send_packet(codecContext_, packet );
   while( ret >= 0 )
   {
     ret = avcodec_receive_frame(codecContext_, frame);
@@ -386,6 +383,7 @@ bool DecoderContext::play( QString & errorString )
     playFrame( frame );
   }
   av_frame_free( &frame );
+  av_packet_free(&packet);
   return true;
 }
 
