@@ -1304,7 +1304,7 @@ sptr< Dictionary::DataRequest > SlobDictionary::getSearchResults( QString const 
                                                                   bool ignoreWordsOrder,
                                                                   bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString, searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString, searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 
@@ -1494,7 +1494,7 @@ sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word
                                                             bool ignoreDiacritics )
   
 {
-  return new SlobArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<SlobArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 //// SlobDictionary::getResource()
@@ -1619,7 +1619,7 @@ void SlobResourceRequest::run()
 sptr< Dictionary::DataRequest > SlobDictionary::getResource( string const & name )
   
 {
-  return new SlobResourceRequest( *this, name );
+  return std::make_shared<SlobResourceRequest>( *this, name );
 }
 
 
@@ -1752,7 +1752,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           idx.write( &idxHeader, sizeof( idxHeader ) );
 
         }
-        dictionaries.push_back( new SlobDictionary( dictId,
+        dictionaries.push_back(std::make_shared<SlobDictionary>( dictId,
                                                     indexFile,
                                                     dictFiles ) );
       }

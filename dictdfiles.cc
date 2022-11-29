@@ -418,7 +418,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
     }
 
     if ( mainArticles.empty() && alternateArticles.empty() )
-      return new Dictionary::DataRequestInstant( false );
+      return std::make_shared<Dictionary::DataRequestInstant>( false );
 
     string result;
 
@@ -431,7 +431,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       result += i->second;
 
     sptr< Dictionary::DataRequestInstant > ret =
-      new Dictionary::DataRequestInstant( true );
+      std::make_shared<Dictionary::DataRequestInstant>( true );
 
     ret->getData().resize( result.size() );
 
@@ -441,7 +441,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
   }
   catch( std::exception & e )
   {
-    return new Dictionary::DataRequestInstant( QString( e.what() ) );
+    return std::make_shared<Dictionary::DataRequestInstant>( QString( e.what() ) );
   }
 }
 
@@ -574,7 +574,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getSearchResults( QString const
                                                                    bool ignoreWordsOrder,
                                                                    bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 } // anonymous namespace
@@ -771,7 +771,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
 
-      dictionaries.push_back( new DictdDictionary( dictId,
+      dictionaries.push_back( std::make_shared<DictdDictionary>( dictId,
                                                    indexFile,
                                                    dictFiles ) );
     }

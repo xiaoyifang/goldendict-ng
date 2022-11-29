@@ -450,7 +450,7 @@ sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch(
   wstring const & str, unsigned long maxResults )
   
 {
-  return new BtreeWordSearchRequest( *this, str, 0, -1, true, maxResults );
+  return std::make_shared<BtreeWordSearchRequest>( *this, str, 0, -1, true, maxResults );
 }
 
 sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch(
@@ -458,7 +458,7 @@ sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch(
   unsigned long maxResults )
   
 {
-  return new BtreeWordSearchRequest( *this, str, minLength, (int)maxSuffixVariation,
+  return std::make_shared<BtreeWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
                                      false, maxResults );
 }
 

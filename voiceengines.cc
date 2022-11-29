@@ -76,7 +76,7 @@ sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( wstring const & /
 {
   WordSearchRequestInstant * sr = new WordSearchRequestInstant();
   sr->setUncertain( true );
-  return sr;
+  return std::shared_ptr<WordSearchRequestInstant>(sr);
 }
 
 sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
@@ -104,7 +104,7 @@ sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
   result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
   result += "</tr></table>";
 
-  sptr< DataRequestInstant > ret = new DataRequestInstant( true );
+  sptr< DataRequestInstant > ret = std::make_shared<DataRequestInstant>( true );
   ret->getData().resize( result.size() );
   memcpy( &( ret->getData().front() ), result.data(), result.size() );
   return ret;
@@ -135,7 +135,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
   for ( Config::VoiceEngines::const_iterator i = voiceEngines.begin(); i != voiceEngines.end(); ++i )
   {
     if ( i->enabled )
-      result.push_back( new VoiceEnginesDictionary( *i ) );
+      result.push_back( std::make_shared<VoiceEnginesDictionary>( *i ) );
   }
 
   return result;

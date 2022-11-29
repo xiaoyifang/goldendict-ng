@@ -1247,7 +1247,7 @@ void FTSResultsRequest::run()
                                                       ftsIdxHeader.indexRootOffset ),
                             ftsIdx, dict.getFtsMutex() );
 
-        chunks = new ChunkedStorage::Reader( ftsIdx, ftsIdxHeader.chunksOffset );
+        chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader(ftsIdx, ftsIdxHeader.chunksOffset));
       }
 
       if( hasCJK )

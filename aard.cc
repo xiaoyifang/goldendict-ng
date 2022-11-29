@@ -642,7 +642,7 @@ sptr< Dictionary::DataRequest > AardDictionary::getSearchResults( QString const 
                                                                   bool ignoreWordsOrder,
                                                                   bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 /// AardDictionary::getArticle()
@@ -829,7 +829,7 @@ sptr< Dictionary::DataRequest > AardDictionary::getArticle( wstring const & word
                                                             bool ignoreDiacritics )
   
 {
-  return new AardArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<AardArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 } // anonymous namespace
@@ -1070,7 +1070,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       } // if need to rebuild
       try
       {
-        dictionaries.push_back( new AardDictionary( dictId,
+        dictionaries.push_back( std::make_shared<AardDictionary>( dictId,
                                                     indexFile,
                                                     dictFiles ) );
       }

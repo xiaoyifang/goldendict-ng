@@ -240,7 +240,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   if ( rebuildGroups )
   {
     orderAndProps = new OrderAndProps( this, savedOrder, savedInactive, dictionaries );
-    groups = new Groups( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    groups =  std::make_shared<Groups>( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
     ui.tabs->removeTab( 1 );
     ui.tabs->removeTab( 1 );

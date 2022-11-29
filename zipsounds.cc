@@ -146,7 +146,7 @@ ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() )
 {
-  chunks = new ChunkedStorage::Reader( idx, idxHeader.chunksOffset );
+  chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader( idx, idxHeader.chunksOffset ));
 
   // Initialize the index
 
@@ -227,7 +227,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return new Dictionary::DataRequestInstant( false ); // No such word
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
 
   string result;
 
@@ -339,7 +339,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
   memcpy( &(ret->getData().front()), result.data(), result.size() );
 
-  return ret;
+  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
 }
 
 sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const & name )
@@ -352,7 +352,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
   vector< WordArticleLink > chain = findArticles( strippedName );
 
   if ( chain.empty() )
-    return new Dictionary::DataRequestInstant( false ); // No such resource
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
 
   // Find sound
 
@@ -375,13 +375,13 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
       break;
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = new
-    Dictionary::DataRequestInstant( true );
+  sptr< Dictionary::DataRequestInstant > dr =
+    std::make_shared<Dictionary::DataRequestInstant>( true );
 
   if ( zipsFile.loadFile( dataOffset, dr->getData() ) )
     return dr;
 
-  return new Dictionary::DataRequestInstant( false );
+  return std::make_shared<Dictionary::DataRequestInstant>( false );
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept
@@ -506,7 +506,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         }
       }
 
-      dictionaries.push_back( new ZipSoundsDictionary( dictId,
+      dictionaries.push_back( std::make_shared<ZipSoundsDictionary>( dictId,
                                                        indexFile,
                                                        dictFiles ) );
     }
