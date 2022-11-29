@@ -59,6 +59,8 @@ if (UNIX)
             opencc
             vorbis # .ogg
             vorbisfile
+            liblzma
+            libzstd
             )
     if (WITH_FFMPEG_PLAYER)
         pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET
@@ -97,6 +99,7 @@ add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
 
 add_compile_definitions(CMAKE_USED_HACK) # temporal hack to avoid breaking qmake build
 add_compile_definitions(
+        MAKE_ZIM_SUPPORT
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
 )
@@ -466,8 +469,8 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
 if(MSVC)
     add_compile_definitions(INCLUDE_LIBRARY_PATH)
     target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
-        ${CMAKE_SOURCE_DIR}/winlibs/include/
-)
+            ${CMAKE_SOURCE_DIR}/winlibs/include/
+            )
 endif()
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
@@ -488,11 +491,11 @@ endif()
 if(UNIX)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
             # pkg-config packages need manually link
-    PkgConfig::PKGCONFIG_DEPS
+            PkgConfig::PKGCONFIG_DEPS
 
-    BZip2::BZip2
-    ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
-    )
+            BZip2::BZip2
+            ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
+            )
 endif()
 
 if(MSVC)
