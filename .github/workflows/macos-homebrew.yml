@@ -266,7 +266,7 @@ jobs:
           brew install libtiff
           brew install libvorbis
           brew install hunspell
-          git clone https://github.com/jurplel/eb.git
+          git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
           brew install  xz lzo 
           brew install pkg-config
