@@ -1251,7 +1251,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getSearchResults( QString const &
                                                                  bool ignoreWordsOrder,
                                                                  bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 /// ZimDictionary::getArticle()
@@ -1428,7 +1428,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
                                                            bool ignoreDiacritics )
   
 {
-  return new ZimArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<ZimArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 //// ZimDictionary::getResource()
@@ -1521,7 +1521,7 @@ void ZimResourceRequest::run()
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
   auto formatedName = QString::fromStdString(name).remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
-  return new ZimResourceRequest( *this, formatedName.toStdString() );
+  return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 
 //} // anonymous namespace
@@ -1768,7 +1768,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           idx.write( &idxHeader, sizeof( idxHeader ) );
         }
 
-        dictionaries.push_back( new ZimDictionary( dictId,
+        dictionaries.push_back( std::make_shared<ZimDictionary>( dictId,
                                                    indexFile,
                                                    dictFiles ) );
       }

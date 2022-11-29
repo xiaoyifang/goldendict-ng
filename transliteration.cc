@@ -36,18 +36,18 @@ unsigned long BaseTransliterationDictionary::getWordCount() noexcept
 
 sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( wstring const &,
                                                                                   unsigned long ) 
-{ return new Dictionary::WordSearchRequestInstant(); }
+{ return std::make_shared<Dictionary::WordSearchRequestInstant>(); }
 
 sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( wstring const &,
                                                                            vector< wstring > const &,
                                                                            wstring const &, bool )
   
-{ return new Dictionary::DataRequestInstant( false ); }
+{ return std::make_shared<Dictionary::DataRequestInstant>( false ); }
 
 sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwordsForSynonym( wstring const & str )
   
 {
-  sptr< Dictionary::WordSearchRequestInstant > result = new Dictionary::WordSearchRequestInstant();
+  sptr< Dictionary::WordSearchRequestInstant > result = std::make_shared<Dictionary::WordSearchRequestInstant>();
 
   vector< wstring > alts = getAlternateWritings( str );
 

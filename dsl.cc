@@ -386,7 +386,7 @@ void DslDictionary::doDeferredInit()
       // the init is complete.
       //Mutex::Lock _( idxMutex );
 
-      chunks = new ChunkedStorage::Reader( idx, idxHeader.chunksOffset );
+      chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader(idx, idxHeader.chunksOffset));
 
       // Open the .dsl file
 
@@ -1727,7 +1727,7 @@ sptr< Dictionary::DataRequest > DslDictionary::getArticle( wstring const & word,
                                                            bool ignoreDiacritics )
   
 {
-  return new DslArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<DslArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 //// DslDictionary::getResource()
@@ -1861,7 +1861,7 @@ void DslResourceRequest::run()
 sptr< Dictionary::DataRequest > DslDictionary::getResource( string const & name )
   
 {
-  return new DslResourceRequest( *this, name );
+  return std::make_shared<DslResourceRequest>( *this, name );
 }
 
 
@@ -1872,7 +1872,7 @@ sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const &
                                                                  bool ignoreWordsOrder,
                                                                  bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 } // anonymous namespace
@@ -2389,7 +2389,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       } // if need to rebuild
 
-      dictionaries.push_back( new DslDictionary( dictId,
+      dictionaries.push_back( std::make_shared<DslDictionary>( dictId,
                                                  indexFile,
                                                  dictFiles,
                                                  maxPictureWidth ) );

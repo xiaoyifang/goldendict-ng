@@ -263,7 +263,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     if( !url.host().isEmpty() && url.host() != "localhost" )
     {
       // Strange request - ignore it
-      return new Dictionary::DataRequestInstant( false );
+      return std::make_shared<Dictionary::DataRequestInstant>( false );
     }
 
     contentType = "text/html";
@@ -339,7 +339,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
                 buffer.open(QIODevice::WriteOnly);
                 dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "PNG");
                 buffer.close();
-                sptr< Dictionary::DataRequestInstant > ico = new Dictionary::DataRequestInstant( true );
+                sptr< Dictionary::DataRequestInstant > ico = std::make_shared<Dictionary::DataRequestInstant>( true );
                 ico->getData().resize( bytes.size() );
                 memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
                 return ico;

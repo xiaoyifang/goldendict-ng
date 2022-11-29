@@ -130,7 +130,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
   Utils::Url::addQueryItem( reqUrl, "apfrom", gd::toQString( str ).replace( '+', "%2B" ) );
 
-  netReply = mgr.get( QNetworkRequest( reqUrl ) );
+  netReply = std::shared_ptr<QNetworkReply>(mgr.get( QNetworkRequest( reqUrl ) ));
 
   connect( netReply.get(), SIGNAL( finished() ),
            this, SLOT( downloadFinished() ) );
@@ -534,10 +534,10 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return new WordSearchRequestInstant();
+    return std::make_shared<WordSearchRequestInstant>();
   }
   else
-    return new MediaWikiWordSearchRequest( word, url, netMgr );
+    return std::make_shared< MediaWikiWordSearchRequest>( word, url, netMgr );
 }
 
 sptr< DataRequest > MediaWikiDictionary::getArticle( wstring const & word,
@@ -549,10 +549,10 @@ sptr< DataRequest > MediaWikiDictionary::getArticle( wstring const & word,
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return new DataRequestInstant( false );
+    return  std::make_shared<DataRequestInstant>( false );
   }
   else
-    return new MediaWikiArticleRequest( word, alts, url, netMgr, this );
+    return  std::make_shared<MediaWikiArticleRequest>( word, alts, url, netMgr, this );
 }
 
 }
@@ -568,7 +568,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
   for( int x = 0; x < wikis.size(); ++x )
   {
     if ( wikis[ x ].enabled )
-      result.push_back( new MediaWikiDictionary( wikis[ x ].id.toStdString(),
+      result.push_back(  std::make_shared<MediaWikiDictionary>( wikis[ x ].id.toStdString(),
                                                  wikis[ x ].name.toUtf8().data(),
                                                  wikis[ x ].url,
                                                  wikis[ x ].icon,

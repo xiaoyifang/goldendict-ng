@@ -45,6 +45,10 @@
 
 #include "qtlockedfile.h"
 
+#ifdef CMAKE_USED_HACK
+using namespace QtLP_Private;
+#endif
+
 bool QtLockedFile::lock(LockMode mode, bool block)
 {
     if (!isOpen()) {

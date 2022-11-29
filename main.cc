@@ -183,6 +183,14 @@ logFile( false )
       }
       else
         word = arguments[ i ];
+#if defined(Q_OS_LINUX) || defined (Q_OS_WIN)
+        // handle url scheme like "goldendict://" on windows
+        word.remove("goldendict://");
+        // In microsoft Words, the / will be automatically appended
+        if(word.endsWith("/")){
+          word.chop(1);
+        }
+#endif
     }
   }
 }

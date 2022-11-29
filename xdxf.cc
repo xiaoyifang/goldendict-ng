@@ -221,7 +221,7 @@ XdxfDictionary::XdxfDictionary( string const & id,
 {
   // Read the dictionary name
 
-  chunks = new ChunkedStorage::Reader( idx, idxHeader.chunksOffset );
+  chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader(idx, idxHeader.chunksOffset ));
 
   if ( idxHeader.nameSize )
   {
@@ -430,7 +430,7 @@ sptr< Dictionary::DataRequest > XdxfDictionary::getSearchResults( QString const 
                                                                   bool ignoreWordsOrder,
                                                                   bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 /// XdxfDictionary::getArticle()
@@ -626,7 +626,7 @@ sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( wstring const & word
                                                             bool ignoreDiacritics )
   
 {
-  return new XdxfArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<XdxfArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 void XdxfDictionary::loadArticle( uint32_t address,
@@ -1112,7 +1112,7 @@ void XdxfResourceRequest::run()
 sptr< Dictionary::DataRequest > XdxfDictionary::getResource( string const & name )
   
 {
-  return new XdxfResourceRequest( *this, name );
+  return std::make_shared<XdxfResourceRequest>( *this, name );
 }
 
 }
@@ -1452,7 +1452,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         }
       }
 
-      dictionaries.push_back( new XdxfDictionary( dictId,
+      dictionaries.push_back( std::make_shared<XdxfDictionary>( dictId,
                                                   indexFile,
                                                   dictFiles ) );
     }

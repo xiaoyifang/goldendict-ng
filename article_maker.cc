@@ -224,7 +224,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     string header = makeHtmlHeader( phrase.phrase, QString(), true );
 
-    return new ArticleRequest( phrase, "",
+    return std::make_shared<ArticleRequest>( phrase, "",
                                contexts, ftsDicts, header,
                                -1, true );
   }
@@ -278,7 +278,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     result += "</body></html>";
 
-    sptr< Dictionary::DataRequestInstant > r = new Dictionary::DataRequestInstant( true );
+    sptr< Dictionary::DataRequestInstant > r =  std::make_shared<Dictionary::DataRequestInstant>( true );
 
     r->getData().resize( result.size() );
     memcpy( &( r->getData().front() ), result.data(), result.size() );
@@ -318,13 +318,13 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
               QString::fromStdString( activeDicts[ x ]->getId() ) ) )
         unmutedDicts.push_back( activeDicts[ x ] );
 
-    return new ArticleRequest( phrase, activeGroup ? activeGroup->name : "",
+    return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, unmutedDicts, header,
                                collapseBigArticles ? articleLimitSize : -1,
                                needExpandOptionalParts, ignoreDiacritics );
   }
   else
-    return new ArticleRequest( phrase, activeGroup ? activeGroup->name : "",
+    return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, activeDicts, header,
                                collapseBigArticles ? articleLimitSize : -1,
                                needExpandOptionalParts, ignoreDiacritics );
@@ -336,7 +336,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
   string result = makeHtmlHeader( word, QString(), true ) + makeNotFoundBody( word, group ) +
     "</body></html>";
 
-  sptr< Dictionary::DataRequestInstant > r = new Dictionary::DataRequestInstant( true );
+  sptr< Dictionary::DataRequestInstant > r = std::make_shared<Dictionary::DataRequestInstant>( true );
 
   r->getData().resize( result.size() );
   memcpy( &( r->getData().front() ), result.data(), result.size() );
@@ -350,7 +350,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
     "</body></html>";
 
   sptr< Dictionary::DataRequestInstant > r =
-      new Dictionary::DataRequestInstant( true );
+    std::make_shared<Dictionary::DataRequestInstant>( true );
 
   r->getData().resize( result.size() );
   memcpy( &( r->getData().front() ), result.data(), result.size() );
@@ -366,7 +366,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
                   + "</body></html>";
 
   sptr< Dictionary::DataRequestInstant > r =
-      new Dictionary::DataRequestInstant( true );
+      std::make_shared<Dictionary::DataRequestInstant>( true );
 
   r->getData().resize( result.size() );
   memcpy( &( r->getData().front() ), result.data(), result.size() );
@@ -713,7 +713,7 @@ void ArticleRequest::bodyFinished()
         footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group );
 
         // When there were no definitions, we run stemmed search.
-        stemmedWordFinder = new WordFinder( this );
+        stemmedWordFinder =  std::make_shared<WordFinder>( this );
 
         connect( stemmedWordFinder.get(), SIGNAL( finished() ),
                  this, SLOT( stemmedSearchFinished() ), Qt::QueuedConnection );

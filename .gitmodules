@@ -1,0 +1,3 @@
+[submodule "eb"]
+	path = eb
+	url = git@github.com:xiaoyifang/simple-eb.git

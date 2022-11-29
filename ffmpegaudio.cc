@@ -239,17 +239,29 @@ bool DecoderContext::openCodec( QString & errorString )
   gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n", codec_->long_name,
           codecContext_->channels, codecContext_->sample_rate, av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
+  auto layout = codecContext_->channel_layout;
+  if(!layout)
   {
-    swr_ = swr_alloc_set_opts( NULL,
-        codecContext_->channel_layout,
-        AV_SAMPLE_FMT_S16,
-        codecContext_->sample_rate,
-        codecContext_->channel_layout,
-        codecContext_->sample_fmt,
-        codecContext_->sample_rate,
-        0,
-        NULL );
-    swr_init( swr_ );
+    layout=av_get_default_channel_layout( codecContext_->channels );
+    codecContext_->channel_layout = layout;
+  }
+
+  swr_ = swr_alloc_set_opts(
+    NULL,
+    layout,
+    AV_SAMPLE_FMT_S16,
+    44100,
+    layout,
+    codecContext_->sample_fmt,
+    codecContext_->sample_rate,
+    0,
+    NULL );
+
+  if( !swr_ || swr_init( swr_ ) < 0 )
+  {
+    av_log( NULL, AV_LOG_ERROR, "Cannot create sample rate converter \n" );
+    swr_free( &swr_ );
+    return false;
   }
 
   return true;
@@ -316,16 +328,13 @@ bool DecoderContext::openOutputDevice( QString & errorString )
   }
   #endif
 
-  audioOutput->setAudioFormat( codecContext_->sample_rate, codecContext_->channels );
+  audioOutput->setAudioFormat( 44100, codecContext_->channels );
   return true;
 }
 
 void DecoderContext::closeOutputDevice()
 {
-//  if(audioOutput){
-//    delete audioOutput;
-//    audioOutput = 0;
-//  }
+
 }
 
 bool DecoderContext::play( QString & errorString )
@@ -337,16 +346,14 @@ bool DecoderContext::play( QString & errorString )
     return false;
   }
 
-  AVPacket packet;
-  av_init_packet( &packet );
+  AVPacket * packet = av_packet_alloc();
 
   while ( !Utils::AtomicInt::loadAcquire( isCancelled_ ) &&
-          av_read_frame( formatContext_, &packet ) >= 0 )
+          av_read_frame( formatContext_, packet ) >= 0 )
   {
-    if ( packet.stream_index == audioStream_->index )
+    if ( packet->stream_index == audioStream_->index )
     {
-      AVPacket pack = packet;
-      int ret = avcodec_send_packet( codecContext_, &pack );
+      int ret = avcodec_send_packet( codecContext_, packet );
       /* read all the output frames (in general there may be any number of them) */
       while( ret >= 0 )
       {
@@ -360,15 +367,14 @@ bool DecoderContext::play( QString & errorString )
 
     }
 
-    av_packet_unref( &packet );
+    av_packet_unref( packet );
 
   }
 
   /* flush the decoder */
-  av_init_packet( &packet );
-  packet.data = NULL;
-  packet.size = 0;
-  int ret = avcodec_send_packet(codecContext_, &packet );
+  packet->data = NULL;
+  packet->size = 0;
+  int ret = avcodec_send_packet(codecContext_, packet );
   while( ret >= 0 )
   {
     ret = avcodec_receive_frame(codecContext_, frame);
@@ -377,82 +383,34 @@ bool DecoderContext::play( QString & errorString )
     playFrame( frame );
   }
   av_frame_free( &frame );
+  av_packet_free(&packet);
   return true;
 }
 
 bool DecoderContext::normalizeAudio( AVFrame * frame, vector<uint8_t > & samples )
 {
-  int lineSize = 0;
-  int dataSize = av_samples_get_buffer_size( &lineSize, codecContext_->channels,
-                                             frame->nb_samples, codecContext_->sample_fmt, 1 );
-  // Portions from: https://code.google.com/p/lavfilters/source/browse/decoder/LAVAudio/LAVAudio.cpp
-  // But this one use 8, 16, 32 bits integer, respectively.
-  switch ( codecContext_->sample_fmt )
+  auto dst_freq     = 44100;
+  auto dst_channels = codecContext_->channels;
+  int out_count     = (int64_t) frame->nb_samples * dst_freq / frame->sample_rate + 256;
+  int out_size      = av_samples_get_buffer_size( NULL, dst_channels, out_count, AV_SAMPLE_FMT_S16, 0 );
+  samples.resize( out_size );
+  uint8_t * data[ 2 ] = { 0 };
+  data[ 0 ] = &samples.front();
+
+  auto out_nb_samples = swr_convert( swr_, data, out_count, (const uint8_t **) frame->extended_data, frame->nb_samples );
+
+  if( out_nb_samples < 0 )
   {
-    case AV_SAMPLE_FMT_U8:
-    case AV_SAMPLE_FMT_S16:
-    {
-      samples.resize( dataSize );
-      memcpy( &samples.front(), frame->data[0], lineSize );
-    }
-    break;
-    // Planar
-    case AV_SAMPLE_FMT_U8P:
-    {
-      samples.resize( dataSize );
-
-      uint8_t * out = ( uint8_t * )&samples.front();
-      for ( int i = 0; i < frame->nb_samples; i++ )
-      {
-        for ( int ch = 0; ch < codecContext_->channels; ch++ )
-        {
-          *out++ = ( ( uint8_t * )frame->extended_data[ch] )[i];
-        }
-      }
-    }
-    break;
-    case AV_SAMPLE_FMT_S16P:
-    {
-      samples.resize( dataSize );
-
-      int16_t * out = ( int16_t * )&samples.front();
-      for ( int i = 0; i < frame->nb_samples; i++ )
-      {
-        for ( int ch = 0; ch < codecContext_->channels; ch++ )
-        {
-          *out++ = ( ( int16_t * )frame->extended_data[ch] )[i];
-        }
-      }
-    }
-    break;
-    case AV_SAMPLE_FMT_S32:
-    /* Pass through */
-    case AV_SAMPLE_FMT_S32P:
-    /* Pass through */
-    case AV_SAMPLE_FMT_FLT:
-    /* Pass through */
-    case AV_SAMPLE_FMT_FLTP:
-      /* Pass through */
-      {
-        samples.resize( dataSize / 2 );
-
-        uint8_t *out = ( uint8_t * )&samples.front();
-        swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
-      }
-      break;
-    case AV_SAMPLE_FMT_DBL:
-    case AV_SAMPLE_FMT_DBLP:
-    {
-      samples.resize( dataSize / 4 );
-
-      uint8_t *out = ( uint8_t * )&samples.front();
-      swr_convert( swr_, &out, frame->nb_samples, (const uint8_t**)frame->extended_data, frame->nb_samples );
-    }
-    break;
-    default:
-      return false;
+    av_log( NULL, AV_LOG_ERROR, "converte fail \n" );
+    return false;
+  }
+  else
+  {
+//    qDebug( "out_count:%d, out_nb_samples:%d, frame->nb_samples:%d \n", out_count, out_nb_samples, frame->nb_samples );
   }
 
+  int actual_size      = av_samples_get_buffer_size( NULL, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 0 );
+  samples.resize(actual_size);
   return true;
 }
 
@@ -464,7 +422,6 @@ void DecoderContext::playFrame( AVFrame * frame )
   vector<uint8_t> samples;
   if ( normalizeAudio( frame, samples ) )
   {
-//    ao_play( aoDevice_, &samples.front(), samples.size() );
     audioOutput->play(&samples.front(), samples.size());
   }
 }
