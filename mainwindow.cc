@@ -1170,7 +1170,7 @@ QPrinter & MainWindow::getPrinter()
   if ( printer.get() )
     return *printer;
 
-  printer = new QPrinter( QPrinter::HighResolution );
+  printer =  std::make_shared<QPrinter>( QPrinter::HighResolution );
 
   return *printer;
 }
@@ -1527,7 +1527,7 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
+  scanPopup =  std::make_shared<ScanPopup>( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
@@ -2995,7 +2995,7 @@ void MainWindow::installHotKeys()
   {
     try
     {
-      hotkeyWrapper = new HotkeyWrapper( this );
+      hotkeyWrapper =  std::make_shared<HotkeyWrapper>( this );
     }
     catch( HotkeyWrapper::exInit & )
     {

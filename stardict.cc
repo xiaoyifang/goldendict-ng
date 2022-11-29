@@ -1202,7 +1202,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString co
                                                                       bool ignoreWordsOrder,
                                                                       bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 /// StardictDictionary::findHeadwordsForSynonym()
@@ -1319,7 +1319,7 @@ sptr< Dictionary::WordSearchRequest >
   StardictDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
-  return synonymSearchEnabled ? new StardictHeadwordsRequest( word, *this ) :
+  return synonymSearchEnabled ? std::make_shared<StardictHeadwordsRequest>( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
 }
 
@@ -1524,7 +1524,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getArticle( wstring const & 
                                                                 bool ignoreDiacritics )
   
 {
-  return new StardictArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<StardictArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 
@@ -1806,7 +1806,7 @@ void StardictResourceRequest::run()
 sptr< Dictionary::DataRequest > StardictDictionary::getResource( string const & name )
   
 {
-  return new StardictResourceRequest( *this, name );
+  return std::make_shared<StardictResourceRequest>( *this, name );
 }
 
 } // anonymous namespace
@@ -2178,7 +2178,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
 
-      dictionaries.push_back( new StardictDictionary( dictId,
+      dictionaries.push_back( std::make_shared<StardictDictionary>( dictId,
                                                       indexFile,
                                                       dictFiles ) );
     }

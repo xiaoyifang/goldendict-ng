@@ -602,7 +602,7 @@ sptr< Dictionary::WordSearchRequest >
   BglDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
-  return synonymSearchEnabled ? new BglHeadwordsRequest( word, *this ) :
+  return synonymSearchEnabled ? std::make_shared<BglHeadwordsRequest>( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
 }
 
@@ -926,7 +926,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
                                                            bool ignoreDiacritics )
   
 {
-  return new BglArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<BglArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 
@@ -1070,8 +1070,8 @@ void BglResourceRequest::run()
 sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name )
   
 {
-  return new BglResourceRequest( idxMutex, idx, idxHeader.resourceListOffset,
-                                 idxHeader.resourcesCount, name );
+  return std::shared_ptr<BglResourceRequest>(new BglResourceRequest(idxMutex, idx, idxHeader.resourceListOffset,
+                                 idxHeader.resourcesCount, name ));
 }
 
   /// Replaces <CHARSET c="t">1234;</CHARSET> occurrences with &#x1234;
@@ -1161,7 +1161,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( QString const &
                                                                  bool ignoreWordsOrder,
                                                                  bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 
@@ -1347,7 +1347,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
     try
     {
-      dictionaries.push_back( new BglDictionary( dictId,
+      dictionaries.push_back( std::make_shared<BglDictionary>( dictId,
                                                  indexFile,
                                                  *i ) );
     }

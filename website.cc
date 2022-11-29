@@ -86,7 +86,7 @@ protected:
 sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/,
                                                           unsigned long ) 
 {
-  sptr< WordSearchRequestInstant > sr = new WordSearchRequestInstant;
+  sptr< WordSearchRequestInstant > sr = std::make_shared<WordSearchRequestInstant>();
 
   sr->setUncertain( true );
 
@@ -378,7 +378,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
   {
     // Just insert link in <iframe> tag
 
-    sptr< DataRequestInstant > dr = new DataRequestInstant( true );
+    sptr< DataRequestInstant > dr = std::make_shared<DataRequestInstant>( true );
 
     string result = "<div class=\"website_padding\"></div>";
 
@@ -412,7 +412,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
 
   // To load data from site
 
-  return new WebSiteArticleRequest( urlString, netMgr, this );
+  return std::make_shared<WebSiteArticleRequest>( urlString, netMgr, this );
 }
 
 class WebSiteResourceRequest: public WebSiteDataRequestSlots
@@ -523,7 +523,7 @@ sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( string const & n
   int pos = link.indexOf( '/' );
   if( pos > 0 )
     link.replace( pos, 1, "://" );
-  return new WebSiteResourceRequest( link, netMgr, this );
+  return std::make_shared<WebSiteResourceRequest>( link, netMgr, this );
 }
 
 void WebSiteDictionary::loadIcon() noexcept
@@ -553,7 +553,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   for( int x = 0; x < ws.size(); ++x )
   {
     if ( ws[ x ].enabled )
-      result.push_back( new WebSiteDictionary( ws[ x ].id.toUtf8().data(),
+      result.push_back( std::make_shared<WebSiteDictionary>( ws[ x ].id.toUtf8().data(),
                                                ws[ x ].name.toUtf8().data(),
                                                ws[ x ].url,
                                                ws[ x ].iconFilename,

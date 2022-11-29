@@ -178,7 +178,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return new Dictionary::DataRequestInstant( false ); // No such word
+    return  std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
 
   string result;
 
@@ -286,7 +286,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
   memcpy( &(ret->getData().front()), result.data(), result.size() );
 
-  return ret;
+  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
 }
 
 void SoundDirDictionary::loadIcon() noexcept
@@ -313,7 +313,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   uint32_t articleOffset = QString::fromUtf8( name.c_str() ).toULong( &isNumber );
 
   if ( !isNumber )
-    return new Dictionary::DataRequestInstant( false ); // No such resource
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
 
   vector< char > chunk;
   char * articleData;
@@ -334,7 +334,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   catch(  ChunkedStorage::exAddressOutOfRange & )
   {
     // Bad address
-    return new Dictionary::DataRequestInstant( false ); // No such resource
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
   }
 
   chunk.back() = 0; // It must end with 0 anyway, but just in case
@@ -349,8 +349,8 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   {
     File::Class f( FsEncoding::encode( fileName ), "rb" );
 
-    sptr< Dictionary::DataRequestInstant > dr = new
-      Dictionary::DataRequestInstant( true );
+    sptr< Dictionary::DataRequestInstant > dr =
+            std::make_shared<Dictionary::DataRequestInstant>( true );
 
     vector< char > & data = dr->getData();
 
@@ -365,7 +365,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   }
   catch( File::Ex & )
   {
-    return new Dictionary::DataRequestInstant( false ); // No such resource
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
   }
 }
 
@@ -481,7 +481,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
       idx.write( &idxHeader, sizeof( idxHeader ) );
     }
 
-    dictionaries.push_back( new SoundDirDictionary( dictId,
+    dictionaries.push_back( std::make_shared<SoundDirDictionary>( dictId,
                                                     i->name.toUtf8().data(),
                                                     indexFile,
                                                     dictFiles,
