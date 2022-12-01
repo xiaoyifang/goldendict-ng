@@ -105,7 +105,7 @@ class TreeItem
 public:
   enum Type { Word, Folder, Root };
 
-  TreeItem( const QVariant &data, TreeItem *parent = 0, Type type_ = Word );
+  explicit TreeItem( const QVariant &data, TreeItem *parent = 0, Type type_ = Word );
   ~TreeItem();
 
   void appendChild( TreeItem * child );

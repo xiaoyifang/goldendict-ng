@@ -35,8 +35,7 @@ class Writer
   size_t scratchPadOffset, scratchPadSize;
 
 public:
-
-  Writer( File::Class & );
+  explicit Writer( File::Class & );
 
   /// Starts new block. Returns its address.
   uint32_t startNewBlock();
