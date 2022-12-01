@@ -202,14 +202,14 @@ void HistoryPaneWidget::onSelectionChanged( QItemSelection const & selection )
     return;
 
   itemSelectionChanged = true;
-//  emitHistoryItemRequested( selection.front().topLeft() );
+  emitHistoryItemRequested( selection.front().topLeft() );
 }
 
 void HistoryPaneWidget::onItemClicked( QModelIndex const & idx )
 {
   // qDebug() << "clicked";
 
-//  if ( !itemSelectionChanged )
+  if ( !itemSelectionChanged )
   {
     emitHistoryItemRequested( idx );
   }
