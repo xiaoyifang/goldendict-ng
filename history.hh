@@ -47,7 +47,7 @@ public:
 
   /// Loads history from its file. If load fails, the result would be an empty
   /// history. The size parameter is same as in other constructor.
-  History( Load, unsigned size = 20, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
+  explicit History( Load, unsigned size = 20, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
 
   /// Adds new item. The item is always added at the beginning of the list.
   /// If there was such an item already somewhere on the list, it gets removed

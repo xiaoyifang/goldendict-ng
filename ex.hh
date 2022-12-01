@@ -30,7 +30,7 @@ virtual ~exName() noexcept {} };
 class exName: public exParent { \
 std::string value; \
 public: \
-  exName( std::string const & value_ ): value( std::string( exDescription ) + " " + value_ ) {} \
+  explicit exName( std::string const & value_ ): value( std::string( exDescription ) + " " + value_ ) {} \
 virtual const char * what() const noexcept { return value.c_str(); } \
 virtual ~exName() noexcept {} };
 
