@@ -71,7 +71,7 @@ struct ArticleDom
 
   /// Does the parse at construction. Refer to the 'root' member variable
   /// afterwards.
-  ArticleDom( wstring const &, string const & dictName = string(),
+  explicit ArticleDom( wstring const &, string const & dictName = string(),
               wstring const & headword_ = wstring() );
 
   /// Root of DOM's tree
@@ -128,7 +128,7 @@ public:
   DEF_EX( exUnknownCodePage, "The .dsl file specified an unknown code page", Ex )
   DEF_EX( exEncodingError, "Encoding error", Ex ) // Should never happen really
 
-  DslScanner( string const & fileName ) ;
+  explicit DslScanner( string const & fileName ) ;
   ~DslScanner() noexcept;
 
   /// Returns the detected encoding of this file.

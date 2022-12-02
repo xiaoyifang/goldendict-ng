@@ -392,7 +392,7 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector<uint8_t > & samples
   auto dst_freq     = 44100;
   auto dst_channels = codecContext_->channels;
   int out_count     = (int64_t) frame->nb_samples * dst_freq / frame->sample_rate + 256;
-  int out_size      = av_samples_get_buffer_size( NULL, dst_channels, out_count, AV_SAMPLE_FMT_S16, 0 );
+  int out_size      = av_samples_get_buffer_size( NULL, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
   samples.resize( out_size );
   uint8_t * data[ 2 ] = { 0 };
   data[ 0 ] = &samples.front();
@@ -409,7 +409,7 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector<uint8_t > & samples
 //    qDebug( "out_count:%d, out_nb_samples:%d, frame->nb_samples:%d \n", out_count, out_nb_samples, frame->nb_samples );
   }
 
-  int actual_size      = av_samples_get_buffer_size( NULL, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 0 );
+  int actual_size      = av_samples_get_buffer_size( NULL, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 1 );
   samples.resize(actual_size);
   return true;
 }
