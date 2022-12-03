@@ -78,8 +78,9 @@ class EpwingBook
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
   QMap< QString, QString > baseFontsMap, customFontsMap;
   QVector< int > refPages, refOffsets;
-  QMap< uint64_t,bool > allHeadwordPositions;
-  QMap< uint64_t, bool > allRefPositions;
+  QMap< uint64_t,EpwingHeadword > allHeadwordPositionMap;
+  QSet<uint64_t> allHeadwordsPageOffset;
+  QSet< uint64_t  > allRefPositions;
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static Mutex libMutex;
@@ -151,7 +152,8 @@ public:
 
   void clearBuffers()
   {
-    allHeadwordPositions.clear();
+    allHeadwordPositionMap.clear();
+    allHeadwordsPageOffset.clear();
     allRefPositions.clear();
     LinksQueue.clear();
   }
