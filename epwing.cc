@@ -332,6 +332,7 @@ void EpwingDictionary::loadArticle( int articlePage,
 
   try
   {
+    qDebug()<<"epwing"<<articlePage<<articleOffset;
     Mutex::Lock _( eBook.getLibMutex() );
     eBook.getArticle( headword, text, articlePage, articleOffset, false );
   }
@@ -400,7 +401,7 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 {
   headword.clear();
   text.clear();
-
+    qDebug()<<"epwing"<<articleAddress;
   vector< char > chunk;
   char * articleProps;
 

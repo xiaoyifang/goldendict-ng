@@ -951,12 +951,18 @@ bool EpwingBook::processRef( EpwingHeadword & head)
       if( !allRefPositions.contains( key ) )
       {
         //find the lower boundary of the key.
-        auto it = allHeadwordPositionMap.lowerBound(( (uint64_t)pos.page ) << 32 | ( pos.offset ));
-        if( it != allHeadwordPositionMap.end() )
+        auto key = ( (uint64_t)pos.page ) << 32 | ( pos.offset );
+        auto it = allHeadwordPositionMap.lowerBound(key);
+
+        if( it != allHeadwordPositionMap.end()  )
         {
-          auto v = it.value();
-          head.page       = v.page;
-          head.offset     = v.offset;
+          if( it.key() != key && it != allHeadwordPositionMap.begin() )
+          {
+            it--;
+            auto v      = it.value();
+            head.page   = v.page;
+            head.offset = v.offset;
+          }
         }
         head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
 
@@ -1082,7 +1088,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //if( isHeadwordCorrect( fixed ) )
   //  headword = fixed;
 
-  headword = fixed;
+  headword = fixed.trimmed();
 }
 
 void EpwingBook::getArticle( QString & headword, QString & articleText,
@@ -1241,14 +1247,11 @@ void EpwingBook::finalizeText( QString & text )
     if( pos < 0 )
       continue;
 
+    auto startPos = pos;
+
     EB_Position ebpos;
     ebpos.page = refPages[ x ];
     ebpos.offset = refOffsets[ x ];
-
-    QUrl url;
-    url.setScheme( "gdlookup" );
-    url.setHost( "localhost" );
-
     // Read headword
 
     eb_seek_text( &book, &ebpos );
@@ -1256,21 +1259,28 @@ void EpwingBook::finalizeText( QString & text )
     ssize_t length;
     EB_Error_Code ret = eb_read_heading( &book, &appendix, &hookSet, &cont,
                                          TextBufferSize, buf, &length );
-    if( ret == EB_SUCCESS )
+    if( ret != EB_SUCCESS )
     {
-      QString headword = QString::fromUtf8( buf, length );
-      fixHeadword( headword );
-      url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg(ebpos.offset) ) );
-      Utils::Url::addQueryItem(url,"regexp",headword);
+      continue;
     }
-
-    QString link = "<a href=\"" + url.toEncoded() + "\">";
-
-    text.replace( tag1, link );
 
     pos = text.indexOf( tag2, pos );
     if( pos < 0 )
       continue;
+
+    auto highlight_word    = text.mid( startPos, pos - startPos );
+
+
+    QString headword = QString::fromUtf8( buf, length );
+    fixHeadword( headword );
+    QUrl url;
+    url.setScheme( "gdlookup" );
+    url.setHost( "localhost" );
+    Utils::Url::addQueryItem( url, "regexp", highlight_word );
+    Utils::Url::addQueryItem( url, "word", QString( "r%1At%2" ).arg( ebpos.page ).arg( ebpos.offset ) );
+    QString link = "<a href=\"" + url.toEncoded() + "\">";
+
+    text.replace( tag1, link );
 
     text.replace( tag2, "</a>" );
   }
