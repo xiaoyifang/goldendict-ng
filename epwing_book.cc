@@ -853,6 +853,7 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   fixHeadword( head.headword );
 
   EWPos epos( pos.page, pos.offset );
+
   auto headPageOffset = (((uint64_t)pos.page)<<32|(pos.offset));
   allHeadwordPositionMap[ headPageOffset ] = head;
   allHeadwordsPageOffset.insert(headPageOffset);
@@ -916,6 +917,7 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     {
       allHeadwordPositionMap[ pageOffset ] = head;
       allHeadwordsPageOffset.insert(pageOffset);
+
       return true;
     }
   }
@@ -945,6 +947,7 @@ bool EpwingBook::processRef( EpwingHeadword & head)
 
       head.page   = pos.page;
       head.offset = pos.offset;
+
       auto pageOffset    = (( (uint64_t) pos.page ) << 32 | ( pos.offset  ));
       // fixed the reference headword ,to avoid the headword collision with other entry .
       if( !allRefPositions.contains( pageOffset ) )
@@ -968,6 +971,15 @@ bool EpwingBook::processRef( EpwingHeadword & head)
 
 
         allRefPositions.insert(pageOffset);
+
+        try
+        {
+          getReferencesFromText( pos.page, pos.offset);
+        }
+        catch( std::exception & )
+        {
+        }
+
         return true;
       }
     }
