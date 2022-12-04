@@ -70,6 +70,8 @@ inline QString trimNonChar( const QString & str )
   return "";
 }
 
+QString trim( const QString & str ,const QRegularExpression & reg);
+
 /**
  * str="abc\r\n\u0000" should be returned as "abc"
  * @brief rstripnull
@@ -312,6 +314,11 @@ QString getSchemeAndHost( QUrl const & url );
 
 namespace Path{
 QString combine(const QString& path1, const QString& path2);
+}
+
+namespace Html{
+  // Replace html entities
+  QString toPlainText( QString const & str );
 }
 
 }

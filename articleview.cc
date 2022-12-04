@@ -423,10 +423,15 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
   if ( scrollTo.size() )
     Utils::Url::addQueryItem( req, "scrollto", scrollTo );
 
-  if( delayedHighlightText.size() )
+  auto highlight = delayedHighlightText;
+  delayedHighlightText.clear();
+  if(highlight.isEmpty()&&contexts.contains("regexp")){
+    highlight= contexts["regexp"];
+  }
+
+  if( !highlight.isEmpty() )
   {
-    Utils::Url::addQueryItem( req, "regexp", delayedHighlightText );
-    delayedHighlightText.clear();
+    Utils::Url::addQueryItem( req, "regexp", highlight );
   }
 
   Contexts::Iterator pos = contexts.find( "gdanchor" );
@@ -1197,6 +1202,9 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
 
       if( Utils::Url::hasQueryItem( url, "gdanchor" ) )
         contexts[ "gdanchor" ] = Utils::Url::queryItemValue( url, "gdanchor" );
+
+      if( Utils::Url::hasQueryItem( url, "regexp" ) )
+        contexts[ "regexp" ] = Utils::Url::queryItemValue( url, "regexp" );
 
       showDefinition( word,
                       getGroup( ref ), newScrollTo, contexts );

@@ -853,8 +853,8 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   fixHeadword( head.headword );
 
   EWPos epos( pos.page, pos.offset );
-  auto headPageOffset = ((uint64_t)pos.page)<<32|(pos.offset>>2);
-  allHeadwordPositionMap[ ((uint64_t)pos.page)<<32|(pos.offset) ] = head;
+  auto headPageOffset = (((uint64_t)pos.page)<<32|(pos.offset));
+  allHeadwordPositionMap[ headPageOffset ] = head;
   allHeadwordsPageOffset.insert(headPageOffset);
 }
 
@@ -911,10 +911,11 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     {
     }
 
-    if( !allHeadwordsPageOffset.contains( ((uint64_t)pos.page) << 32 | ( pos.offset / 4 ) ) )
+    auto pageOffset = (((uint64_t)pos.page) << 32 | ( pos.offset ));
+    if( !allHeadwordsPageOffset.contains( pageOffset ) )
     {
-      allHeadwordPositionMap[ ((uint64_t)pos.page) << 32 | ( pos.offset ) ] = head;
-      allHeadwordsPageOffset.insert(((uint64_t)pos.page) << 32 | ( pos.offset / 4 ));
+      allHeadwordPositionMap[ pageOffset ] = head;
+      allHeadwordsPageOffset.insert(pageOffset);
       return true;
     }
   }
@@ -942,31 +943,31 @@ bool EpwingBook::processRef( EpwingHeadword & head)
 
       fixHeadword( head.headword );
 
-      auto originalHead = head.headword;
-
       head.page   = pos.page;
       head.offset = pos.offset;
-      auto key    = ( (uint64_t) pos.page ) << 32 | ( pos.offset >> 2 );
+      auto pageOffset    = (( (uint64_t) pos.page ) << 32 | ( pos.offset  ));
       // fixed the reference headword ,to avoid the headword collision with other entry .
-      if( !allRefPositions.contains( key ) )
+      if( !allRefPositions.contains( pageOffset ) )
       {
         //find the lower boundary of the key.
-        auto key = ( (uint64_t)pos.page ) << 32 | ( pos.offset );
+        auto key = pageOffset;//( (uint64_t)pos.page ) << 32 | ( pos.offset );
         auto it = allHeadwordPositionMap.lowerBound(key);
+
+        head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
 
         if( it != allHeadwordPositionMap.end()  )
         {
-          if( it.key() != key && it != allHeadwordPositionMap.begin() )
+          if( qAbs(it.key()-pageOffset)>4 && it != allHeadwordPositionMap.begin() )
           {
             it--;
-            auto v      = it.value();
-            head.page   = v.page;
-            head.offset = v.offset;
           }
+          auto v      = it.value();
+          head.page   = v.page;
+          head.offset = v.offset;
         }
-        head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
 
-        allRefPositions.insert(key);
+
+        allRefPositions.insert(pageOffset);
         return true;
       }
     }
@@ -1268,8 +1269,8 @@ void EpwingBook::finalizeText( QString & text )
     if( pos < 0 )
       continue;
 
-    auto highlight_word    = text.mid( startPos, pos - startPos );
-
+    QString highlight_word = Utils::Html::toPlainText( text.mid( startPos, pos - startPos ) ).trimmed();
+    highlight_word         = Utils::trim( highlight_word, QRegularExpression( "\\p{S}" ) );
 
     QString headword = QString::fromUtf8( buf, length );
     fixHeadword( headword );
