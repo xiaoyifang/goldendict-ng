@@ -1411,7 +1411,7 @@ download page.</string>
      <widget class="QWidget" name="tab_Advanced">
       <attribute name="icon">
        <iconset resource="resources.qrc">
-        <normaloff>:/icons/advanced.svg</normaloff>:/icons/advanced.svg</iconset>
+        <normaloff>:/icons/advanced.png</normaloff>:/icons/advanced.png</iconset>
       </attribute>
       <attribute name="title">
        <string>Ad&amp;vanced</string>

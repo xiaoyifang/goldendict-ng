@@ -71,9 +71,9 @@
         <file>icons/home.svg</file>
         <file>icons/hotkeys.svg</file>
         <file>icons/icon.svg</file>
-        <file>icons/icon32_zoombase.svg</file>
-        <file>icons/icon32_zoomin.svg</file>
-        <file>icons/icon32_zoomout.svg</file>
+        <file>icons/icon32_zoombase.png</file>
+        <file>icons/icon32_zoomin.png</file>
+        <file>icons/icon32_zoomout.png</file>
         <file>icons/interface.svg</file>
         <file>icons/internet.svg</file>
         <file>icons/network.svg</file>
@@ -82,14 +82,14 @@
         <file>icons/previous.svg</file>
         <file>icons/print.svg</file>
         <file>icons/programs.svg</file>
-        <file>icons/reload.svg</file>
+        <file>icons/reload.png</file>
         <file>icons/star.svg</file>
         <file>icons/star_blue.svg</file>
         <file>icons/system-search.svg</file>
         <file>icons/windows-list.svg</file>
         <file>icons/wizard.svg</file>
         <file>icons/dictionary.svg</file>
-        <file>icons/advanced.svg</file>
+        <file>icons/advanced.png</file>
         <file>icons/webdict.svg</file>
         <file>icons/transliteration.png</file>
         <file>icons/pushpin.svg</file>

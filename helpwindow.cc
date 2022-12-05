@@ -80,11 +80,11 @@ HelpWindow::HelpWindow( QWidget * parent, Config::Class & cfg_ ) :
 
   navToolBar->addSeparator();
 
-  zoomInAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoomin.svg" ), tr( "Zoom In" ) );
+  zoomInAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoomin.png" ), tr( "Zoom In" ) );
   navToolBar->widgetForAction( zoomInAction )->setObjectName( "zoomInButton" );
-  zoomOutAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoomout.svg" ), tr( "Zoom Out" ) );
+  zoomOutAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoomout.png" ), tr( "Zoom Out" ) );
   navToolBar->widgetForAction( zoomInAction )->setObjectName( "zoomOutButton" );
-  zoomBaseAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoombase.svg" ), tr( "Normal Size" ) );
+  zoomBaseAction = navToolBar->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Normal Size" ) );
   navToolBar->widgetForAction( zoomBaseAction )->setObjectName( "zoomBaseButton" );
 
   navForward->setEnabled( false );
