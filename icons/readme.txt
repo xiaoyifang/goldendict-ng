@@ -63,5 +63,6 @@ icon32_zoomout.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/1
 icon32_zoomin.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-zoom-in-icon.png
 reload.png https://iconarchive.com/show/oxygen-icons-by-oxygen-icons.org/Actions-edit-redo-icon.html
 advanced.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-system-run-icon.png
+sources.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-plasma-icon.png
 
 
