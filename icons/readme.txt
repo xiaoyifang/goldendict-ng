@@ -18,9 +18,6 @@ error
 star.svg
 star_blue.svg
 network.svg
-icon32_zoomin
-icon32_zoomout
-icon32_zoombase
 hotkeys
 previous
 next
@@ -58,3 +55,14 @@ lists:
 these two icons from sertoli @  https://forum.freemdict.com/u/sertoli/summary
 playsound.png
 playsound_full.png
+
+
+LGPL
+icon32_zoombase.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-page-zoom-icon.png
+icon32_zoomout.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-zoom-out-icon.png
+icon32_zoomin.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-zoom-in-icon.png
+reload.png https://iconarchive.com/show/oxygen-icons-by-oxygen-icons.org/Actions-edit-redo-icon.html
+advanced.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-system-run-icon.png
+sources.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-plasma-icon.png
+
+

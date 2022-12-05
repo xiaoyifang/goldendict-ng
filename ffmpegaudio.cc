@@ -240,14 +240,13 @@ bool DecoderContext::openCodec( QString & errorString )
           codecContext_->channels, codecContext_->sample_rate, av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
   auto layout = codecContext_->channel_layout;
-  if(!layout)
+  if( !layout )
   {
-    layout=av_get_default_channel_layout( codecContext_->channels );
+    layout                        = av_get_default_channel_layout( codecContext_->channels );
     codecContext_->channel_layout = layout;
   }
 
-  swr_ = swr_alloc_set_opts(
-    NULL,
+  swr_ = swr_alloc_set_opts( NULL,
     layout,
     AV_SAMPLE_FMT_S16,
     44100,
