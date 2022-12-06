@@ -76,9 +76,11 @@ if(LINUX)
     find_package(X11 REQUIRED)
     pkg_check_modules (LIBXTST IMPORTED_TARGET xtst)
 
-    add_library(libeb SHARED IMPORTED)
-    set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
-    set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
+    add_subdirectory(eb)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
+    # add_library(libeb SHARED IMPORTED)
+    # set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
+    # set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
 endif()
 
 #### Compile time files and preprocessor flags
