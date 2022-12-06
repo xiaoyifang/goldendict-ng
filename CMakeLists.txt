@@ -77,7 +77,6 @@ if(LINUX)
     pkg_check_modules (LIBXTST IMPORTED_TARGET xtst)
 
     add_subdirectory(eb)
-    add_dependencies(${CMAKE_PROJECT_NAME} eb)
     # target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
     # add_library(libeb SHARED IMPORTED)
     # set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
@@ -510,7 +509,9 @@ endif()
 
 
 if(LINUX)
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11 PkgConfig::LIBXTST)
+    add_dependencies(${CMAKE_PROJECT_NAME} eb)
+
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE X11 PkgConfig::LIBXTST)
 endif ()
 
 if(APPLE)
