@@ -150,6 +150,9 @@ unix:!mac {
         vorbis \
         ogg \
         hunspell
+
+    PKGCONFIG+=openssl
+
     !CONFIG( no_ffmpeg_player ) {
         PKGCONFIG += libavutil \
             libavformat \
@@ -224,6 +227,8 @@ mac {
         INCLUDEPATH = /opt/homebrew/include /usr/local/include
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
+
+    PKGCONFIG+=openssl
 
     OBJECTIVE_SOURCES += machotkeywrapper.mm \
                          macmouseover.mm \
