@@ -63,7 +63,7 @@ jobs:
       - name: build macos
         run: |
           brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 libtiff xz lzo libogg libvorbis zstd || true
-          
+          brew install openssl@1.1
           brew install create-dmg
           qmake CONFIG+=release CONFIG+=no_extra_tiff_handler   CONFIG+=zim_support   CONFIG+=chinese_conversion_support #QMAKE_APPLE_DEVICE_ARCHS="x86_64 arm64"
           make -j$(nproc)
