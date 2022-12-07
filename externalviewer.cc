@@ -35,7 +35,7 @@ void ExternalViewer::start()
 {
   connect( &viewer, SIGNAL( finished( int, QProcess::ExitStatus ) ),
            this, SLOT( deleteLater() ) );
-  connect( &viewer, SIGNAL( error( QProcess::ProcessError ) ),
+  connect( &viewer, SIGNAL( errorOccurred( QProcess::ProcessError ) ),
            this, SLOT( deleteLater() ) );
 
   QStringList args = parseCommandLine( viewerCmdLine );

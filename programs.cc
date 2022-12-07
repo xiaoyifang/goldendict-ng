@@ -141,7 +141,7 @@ RunInstance::RunInstance(): process( this )
   connect( this, SIGNAL(processFinished()), this,
            SLOT(handleProcessFinished()), Qt::QueuedConnection );
   connect( &process, SIGNAL(finished(int)), this, SIGNAL(processFinished()));
-  connect( &process, SIGNAL(error(QProcess::ProcessError)), this,
+  connect( &process, SIGNAL(errorOccurred(QProcess::ProcessError)), this,
            SIGNAL(processFinished()) );
 }
 
