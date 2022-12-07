@@ -509,8 +509,6 @@ endif()
 
 
 if(LINUX)
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE PkgConfig::LIBEB)
-
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE X11 PkgConfig::LIBXTST)
 endif ()
 
