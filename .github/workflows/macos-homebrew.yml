@@ -69,7 +69,7 @@ jobs:
           brew install wavpack
           brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
           brew install speex
-          brew install openssl@3
+          
           git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
           cd ffmpeg
           ./configure  --prefix=/usr/local  \
