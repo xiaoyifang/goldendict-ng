@@ -9,6 +9,7 @@ option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 # Remove this once cmake 5.25 becomes minimum version
 if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
+    add_subdirectory(eb)
 endif()
 
 if (APPLE)
@@ -76,8 +77,7 @@ if(LINUX)
     find_package(X11 REQUIRED)
     pkg_check_modules (LIBXTST IMPORTED_TARGET xtst)
 
-    pkg_check_modules (LIBEB IMPORTED_TARGET libeb)
-    # target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
     # add_library(libeb SHARED IMPORTED)
     # set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
     # set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
