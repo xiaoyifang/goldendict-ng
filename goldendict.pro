@@ -151,7 +151,7 @@ unix:!mac {
         ogg \
         hunspell
 
-    PKGCONFIG+=openssl
+    LIBS+= -lcrypto -lssl
 
     !CONFIG( no_ffmpeg_player ) {
         PKGCONFIG += libavutil \
@@ -228,7 +228,7 @@ mac {
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
-    PKGCONFIG+=openssl
+    LIBS+= -lcrypto -lssl
 
     OBJECTIVE_SOURCES += machotkeywrapper.mm \
                          macmouseover.mm \
