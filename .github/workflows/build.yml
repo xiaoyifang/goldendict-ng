@@ -1,5 +1,9 @@
 name: SonarCloud
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
@@ -48,8 +52,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v1
       - name: Run build-wrapper
         run: |
-          cmake .
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build .
+          qmake CONFIG+=release CONFIG+=no_extra_tiff_handler  CONFIG+=zim_support   CONFIG+=chinese_conversion_support
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make  -j8 
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -65,4 +65,6 @@ reload.png https://iconarchive.com/show/oxygen-icons-by-oxygen-icons.org/Actions
 advanced.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-system-run-icon.png
 sources.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-plasma-icon.png
 
+book.svg https://github.com/johnfactotum/foliate
+
 
