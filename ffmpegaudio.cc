@@ -186,7 +186,7 @@ bool DecoderContext::openCodec( QString & errorString )
   int ret = 0;
   avformatOpened_ = true;
 
-  ret = avformat_open_input( &formatContext_, "_STREAM_", NULL, NULL );
+  ret = avformat_open_input( &formatContext_, NULL, NULL, NULL );
   if ( ret < 0 )
   {
     errorString = QObject::tr( "avformat_open_input() failed: %1." ).arg( avErrorString( ret ) );
