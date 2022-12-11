@@ -181,6 +181,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick);
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
+  ui.darkMode->setChecked(p.darkMode);
 
   ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
   ui.mainWindowHotkey->setHotKey( p.mainWindowHotkey );
@@ -400,6 +401,7 @@ Config::Preferences Preferences::getPreferences()
   p.autoScrollToTargetArticle = ui.autoScrollToTargetArticle->isChecked();
   p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
 
+  p.darkMode = ui.darkMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
   p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();

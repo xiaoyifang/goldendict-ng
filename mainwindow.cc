@@ -834,7 +834,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   translateLine->setFocus();
 
-  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle );
+  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle, cfg.preferences.darkMode );
 
   makeScanPopup();
 
@@ -1175,8 +1175,45 @@ QPrinter & MainWindow::getPrinter()
   return *printer;
 }
 
-void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle )
+void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
 {
+  if( darkMode )
+  {
+    //https://forum.qt.io/topic/101391/windows-10-dark-theme
+    #ifdef Q_OS_WIN32
+    qApp->setStyle( QStyleFactory::create( "Fusion" ) );
+    #endif
+    QPalette darkPalette;
+    QColor darkColor     = QColor( 45, 45, 45 );
+    QColor disabledColor = QColor( 127, 127, 127 );
+    darkPalette.setColor( QPalette::Window, darkColor );
+    darkPalette.setColor( QPalette::WindowText, Qt::white );
+    darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+    darkPalette.setColor( QPalette::AlternateBase, darkColor );
+    darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+    darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+    darkPalette.setColor( QPalette::Text, Qt::white );
+    darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+    darkPalette.setColor( QPalette::Button, darkColor );
+    darkPalette.setColor( QPalette::ButtonText, Qt::white );
+    darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+    darkPalette.setColor( QPalette::BrightText, Qt::red );
+    darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+
+    darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+    darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+    darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+
+    qApp->setPalette( darkPalette );
+  }
+  else
+  {
+  #ifdef Q_OS_WIN32
+    qApp->setStyle( QStyleFactory::create( "Windows" ) );
+  #endif
+    qApp->setPalette( QPalette() );
+  }
+
   QFile builtInCssFile( ":/qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
   QByteArray css = builtInCssFile.readAll();
@@ -1208,6 +1245,10 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
     QFile addonCss( name );
     if( addonCss.open( QFile::ReadOnly ) )
       css += addonCss.readAll();
+  }
+
+  if(darkMode){
+    css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
 
   setStyleSheet( css );
@@ -2237,9 +2278,9 @@ void MainWindow::editPreferences()
     bool needReload = false;
 
     // See if we need to reapply stylesheets
-    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle )
+    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
     {
-      applyQtStyleSheet( p.displayStyle, p.addonStyle );
+      applyQtStyleSheet( p.displayStyle, p.addonStyle, p.darkMode );
       articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }

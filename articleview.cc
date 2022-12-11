@@ -2149,9 +2149,9 @@ void ArticleView::resourceDownloadFinished()
 
   if ( resourceDownloadRequests.empty() )
   {
-    emit statusBarMessage(
-        tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
-        10000, QPixmap(":/icons/error.svg"));
+    // emit statusBarMessage(
+    //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
+    //     10000, QPixmap(":/icons/error.svg"));
   }
 }
 

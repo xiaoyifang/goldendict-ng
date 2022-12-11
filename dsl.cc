@@ -809,9 +809,17 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   }
   else if( node.tagName ==  U"c"  )
   {
-    result += "<font color=\"" + ( node.tagAttrs.size() ?
-      Html::escape( Utf8::encode( node.tagAttrs ) ) : string( "c_default_color" ) )
-      + "\">" + processNodeChildren( node ) + "</font>";
+    if( node.tagAttrs.empty() )
+    {
+      result += "<span class=\"c_default_color\">"
+        + processNodeChildren( node ) + "</span>";
+    }
+    else
+    {
+      result += "<font color=\""
+        + Html::escape( Utf8::encode( node.tagAttrs ) ) + "\">"
+        + processNodeChildren( node ) + "</font>";
+    }
   }
   else if( node.tagName ==  U"*"  )
   {
