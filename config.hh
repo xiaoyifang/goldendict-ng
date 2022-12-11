@@ -307,6 +307,7 @@ struct Preferences
   bool selectWordBySingleClick;
   bool autoScrollToTargetArticle;
   bool escKeyHidesMainWindow;
+  bool darkMode;
   bool alwaysOnTop;
 
   /// An old UI mode when tranlateLine and wordList

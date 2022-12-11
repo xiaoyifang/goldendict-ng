@@ -412,6 +412,13 @@ be the last ones.</string>
          </item>
         </layout>
        </item>
+       <item row="12" column="0">
+        <widget class="QCheckBox" name="darkMode">
+         <property name="text">
+          <string>dark mode</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_4">
