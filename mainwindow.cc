@@ -1208,9 +1208,9 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
   }
   else
   {
-  #ifdef Q_OS_WIN32
-    qApp->setStyle( QStyleFactory::create( "Windows" ) );
-  #endif
+  // #ifdef Q_OS_WIN32
+  //   qApp->setStyle( QStyleFactory::create( "Windows" ) );
+  // #endif
     qApp->setPalette( QPalette() );
   }
 
