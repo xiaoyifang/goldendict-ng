@@ -59,6 +59,12 @@ jobs:
         with:
           fetch-depth: 0 
 
+      - name: version-file
+        shell: bash
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
+          echo "$previousTag">version.txt
+          
       - name: build goldendict
         run: |
           qmake CONFIG+=release CONFIG+=no_extra_tiff_handler PREFIX=/usr   CONFIG+=zim_support   CONFIG+=chinese_conversion_support

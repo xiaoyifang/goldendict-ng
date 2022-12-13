@@ -58,6 +58,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: version-file
+        shell: bash
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
+          echo "$previousTag">version.txt
+                    
       - name: build macos
         run: |
           brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 libtiff xz lzo libogg libvorbis zstd || true
