@@ -51,12 +51,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate changelog
-        if: ${{!env.prerelease}}
-        id: changelog1
-        uses: metcalfc/changelog-generator@v3.0.0
-        with:
-          myToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set outputs
         id: vars
@@ -68,21 +62,14 @@ jobs:
           echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
 
-      - name: changelog
-        if: $${{env.prerelease}}
-        id: changelog2
-        shell: bash
-        run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
-          echo "previousTag : $previousTag"
-          
-          CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
-          CHANGELOG="${CHANGELOG//'%'/'%25'}"
-          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-          CHANGELOG="${CHANGELOG//'\"'/'%22'}"
-          CHANGELOG="${CHANGELOG//"'"/ }"
-          echo "::set-output name=COMMIT_SUMMARY::$(echo "$CHANGELOG")"     
+      - name: Release Changelog Builder
+        id: changelog
+        uses: mikepenz/release-changelog-builder-action@v3.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          # ignorePreReleases: true 
+          commitMode: true
 
       - name: version-file
         shell: bash
@@ -149,8 +136,7 @@ jobs:
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
             CHANGES:
-            ${{ steps.changelog1.outputs.changelog }}  
-            ${{ steps.changelog2.outputs.COMMIT_SUMMARY }}            
+            ${{ steps.changelog.outputs.changelog }}  
 
       - name: upload goldendict.exe only
         # if: startsWith(github.event.ref, 'refs/tags/')
