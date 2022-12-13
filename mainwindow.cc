@@ -63,6 +63,7 @@
 
 #include <QWebEngineSettings>
 #include <QWebEngineProfile>
+#include <QProxyStyle>
 
 #ifdef HAVE_X11
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
@@ -1208,9 +1209,9 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
   }
   else
   {
-  #ifdef Q_OS_WIN32
-    qApp->setStyle( QStyleFactory::create( "Windows" ) );
-  #endif
+   #ifdef Q_OS_WIN32
+    qApp->setStyle( new QProxyStyle() );
+   #endif
     qApp->setPalette( QPalette() );
   }
 

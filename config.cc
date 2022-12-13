@@ -182,14 +182,24 @@ InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) cons
 {
   InputPhrase result;
 
-  if( limitInputPhraseLength && inputPhrase.size() > inputPhraseLengthLimit )
+  QString _phase = inputPhrase;
+  if( stripClipboard )
+  {
+    auto parts = inputPhrase.split( QChar::LineFeed, Qt::SkipEmptyParts );
+    if( !parts.empty() )
+    {
+      _phase = parts[ 0 ];
+    }
+  }
+
+  if( limitInputPhraseLength && _phase.size() > inputPhraseLengthLimit )
   {
     gdDebug( "Ignoring an input phrase %d symbols long. The configured maximum input phrase length is %d symbols.",
-             inputPhrase.size(), inputPhraseLengthLimit );
+             _phase.size(), inputPhraseLengthLimit );
     return result;
   }
 
-  const QString withPunct = inputPhrase.simplified();
+  const QString withPunct = _phase.simplified();
   result.phrase = gd::toQString( Folding::trimWhitespaceOrPunct( gd::toWString( withPunct ) ) );
   if ( !result.isValid() )
     return result; // The suffix of an invalid input phrase must be empty.
@@ -267,6 +277,7 @@ Preferences::Preferences():
 , inputPhraseLengthLimit( 1000 )
 , maxDictionaryRefsInContextMenu ( 20 )
 , synonymSearchEnabled( true )
+    , stripClipboard( false )
 {
 }
 
@@ -1004,6 +1015,9 @@ Class load()
 
     if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
       c.preferences.synonymSearchEnabled = ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem( "stripClipboard" ).isNull() )
+      c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
@@ -1958,6 +1972,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "synonymSearchEnabled" );
     opt.appendChild( dd.createTextNode( c.preferences.synonymSearchEnabled ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "stripClipboard" );
+    opt.appendChild( dd.createTextNode( c.preferences.stripClipboard ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     {

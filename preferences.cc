@@ -227,6 +227,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.synonymSearchEnabled->setChecked( p.synonymSearchEnabled );
 
+  ui.stripClipboard->setChecked( p.stripClipboard );
+
   ui.maxDictsInContextMenu->setValue( p.maxDictionaryRefsInContextMenu );
 
   // Different platforms have different keys available
@@ -443,6 +445,7 @@ Config::Preferences Preferences::getPreferences()
   p.inputPhraseLengthLimit = ui.inputPhraseLengthLimit->value();
   p.ignoreDiacritics = ui.ignoreDiacritics->isChecked();
   p.ignorePunctuation = ui.ignorePunctuation->isChecked();
+  p.stripClipboard = ui.stripClipboard->isChecked();
 
   p.synonymSearchEnabled = ui.synonymSearchEnabled->isChecked();
 
