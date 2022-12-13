@@ -372,6 +372,7 @@ struct Preferences
   unsigned short maxDictionaryRefsInContextMenu;
 
   bool synonymSearchEnabled;
+  bool stripClipboard;
 
   QString addonStyle;
 
