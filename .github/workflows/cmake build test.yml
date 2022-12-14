@@ -11,7 +11,7 @@ on:
   #   types: [opened, synchronize, reopened]
 jobs:
   job1:
-    name: Build and analyze
+    name: ubuntu Build and analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v3
@@ -53,7 +53,7 @@ jobs:
           cmake --build .
 
   job2:
-    name: Build and analyze
+    name: windows Build and analyze
     runs-on: windows-2019
     steps:
       - uses: actions/setup-python@v3
@@ -63,7 +63,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: 6.3.2
-          arch: gcc_64
+          arch: win64_msvc2019_64
           cached: 'false'
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtserialport
@@ -79,7 +79,7 @@ jobs:
           cmake .
           cmake --build .     
   job3:
-    name: Build and analyze
+    name: macos Build and analyze
     runs-on: macos-12
     steps:
       - uses: actions/setup-python@v3
@@ -89,7 +89,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: 6.3.2
-          arch: gcc_64
+          arch: clang_64
           cached: 'false'
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtserialport
