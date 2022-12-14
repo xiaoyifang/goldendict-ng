@@ -101,8 +101,28 @@ jobs:
           submodules: true
       - name: install dependencies
         run: |
-          brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 libtiff xz lzo libogg libvorbis zstd || true
-          brew install create-dmg
+          brew install pcre2 harfbuzz freetype
+          brew install cmake ninja python
+          brew install automake
+          brew install autoconf
+          brew install libtool
+          brew install opencc
+          brew install ffmpeg@5
+          #brew reinstall $(brew deps ffmpeg) ffmpeg
+          brew install libao
+          brew install libiconv
+          brew install lzo bzip2
+          brew install libogg
+          brew install zstd lzip
+          brew install libtiff
+          brew install libvorbis --force
+          brew install hunspell
+          wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+          tar xvjf eb-4.4.3.tar.bz2
+          cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
+          #brew install qt # or use official offline installer
+          brew install  xz lzo 
+          brew install pkg-config
       - name: Run build-wrapper
         run: |
           cmake .
