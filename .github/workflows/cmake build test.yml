@@ -76,8 +76,9 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake . -DCMAKE_BUILD_TYPE=Release
-          cmake --build .     
+          mkdir build_dir
+          cmake -S . -B build_dir  -DCMAKE_BUILD_TYPE=Release
+          cmake --build build_dir --parallel 7 --config Release
   job3:
     name: macos Build and analyze
     runs-on: macos-12
