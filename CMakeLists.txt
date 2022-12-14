@@ -5,14 +5,14 @@ cmake_minimum_required(VERSION 3.23)
 # LINUX, APPLE and MSVC are used to detect system
 
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
-
+option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 # Remove this once cmake 5.25 becomes minimum version
 if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
 
 if (APPLE)
-    add_subdirectory(eb)
+    add_subdirectory(thirdparty/eb)
 endif ()
 
 project(goldendict
@@ -76,9 +76,12 @@ if(LINUX)
     find_package(X11 REQUIRED)
     pkg_check_modules (LIBXTST IMPORTED_TARGET xtst)
 
-    add_library(libeb SHARED IMPORTED)
-    set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
-    set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
+    if(WITH_EPWING_SUPPORT)
+        add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
+    endif()
+    # add_library(libeb SHARED IMPORTED)
+    # set_target_properties(libeb PROPERTIES IMPORTED_LOCATION /usr/lib/libeb.so)
+    # set_target_properties(libeb PROPERTIES INCLUDE_DIRECTORIES /usr/include/)
 endif()
 
 #### Compile time files and preprocessor flags
@@ -144,7 +147,7 @@ set(UI_SRC
         scanpopup.ui
         sources.ui
         )
-
+if(WITH_EPWING_SUPPORT)
 set(EPWING_SUPPORT_SRC
         epwing.cc
         epwing.hh
@@ -153,6 +156,9 @@ set(EPWING_SUPPORT_SRC
         epwing_charmap.cc
         epwing_charmap.hh
         )
+else()
+    add_compile_definitions(NO_EPWING_SUPPORT)
+endif()        
 
 if (APPLE)
     set(MAC_SRC
@@ -489,10 +495,12 @@ if(APPLE)
 endif()
 
 if(UNIX)
+    target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+            ${PROJECT_SOURCE_DIR}/thirdparty)
+            
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
             # pkg-config packages need manually link
             PkgConfig::PKGCONFIG_DEPS
-
             BZip2::BZip2
             ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
             )
@@ -507,7 +515,11 @@ endif()
 
 
 if(LINUX)
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libeb X11 PkgConfig::LIBXTST)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE X11 PkgConfig::LIBXTST)
+
+    if(WITH_EPWING_SUPPORT)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb )
+    endif()
 endif ()
 
 if(APPLE)
