@@ -82,7 +82,7 @@ using std::wstring;
 using std::map;
 using std::pair;
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
 
 class InitSSLRunnable : public QRunnable
 {
@@ -157,7 +157,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 

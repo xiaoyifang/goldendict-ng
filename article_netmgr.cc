@@ -242,7 +242,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   if( url.scheme() == "https")
   {
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
     connect( reply, SIGNAL( sslErrors( QList< QSslError > ) ),
              reply, SLOT( ignoreSslErrors() ) );
 #endif

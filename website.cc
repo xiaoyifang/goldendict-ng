@@ -140,7 +140,7 @@ WebSiteArticleRequest::WebSiteArticleRequest( QString const & url_,
   request.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
   netReply = mgr.get( request );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ),
            netReply, SLOT( ignoreSslErrors() ) );
 #endif
@@ -173,7 +173,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
       disconnect( netReply, 0, 0, 0 );
       netReply->deleteLater();
       netReply = mgr.get( QNetworkRequest( redirectUrl ) );
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
       connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ),
                netReply, SLOT( ignoreSslErrors() ) );
 #endif
@@ -449,7 +449,7 @@ WebSiteResourceRequest::WebSiteResourceRequest( QString const & url_,
 
   netReply = mgr.get( QNetworkRequest( reqUrl ) );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ),
            netReply, SLOT( ignoreSslErrors() ) );
 #endif
@@ -482,7 +482,7 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
       disconnect( netReply, 0, 0, 0 );
       netReply->deleteLater();
       netReply = mgr.get( QNetworkRequest( redirectUrl ) );
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
       connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ),
                netReply, SLOT( ignoreSslErrors() ) );
 #endif
