@@ -76,8 +76,8 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake . -DCMAKE_BUILD_TYPE=Release
-          cmake --build .     
+          cmake -S . -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
   job3:
     name: macos Build and analyze
     runs-on: macos-12

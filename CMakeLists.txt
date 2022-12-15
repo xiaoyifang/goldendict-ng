@@ -12,7 +12,11 @@ if(UNIX AND NOT APPLE)
 endif()
 
 if (APPLE)
+    if(WITH_EPWING_SUPPORT)
     add_subdirectory(thirdparty/eb)
+    endif()
+
+    include_directories(/usr/local/include /opt/homebrew/include)
 endif ()
 
 project(goldendict
@@ -477,6 +481,9 @@ if(MSVC)
     target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
             ${CMAKE_SOURCE_DIR}/winlibs/include/
             )
+
+    set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY 
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")            
 endif()
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
@@ -491,7 +498,9 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         )
 
 if(APPLE)
+    if(WITH_EPWING_SUPPORT)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE eb)
+    endif()
 endif()
 
 if(UNIX)
