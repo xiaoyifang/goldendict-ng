@@ -15,7 +15,7 @@ redirectCount( 0 )
 
   reply = mgr.get( QNetworkRequest( url ) );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   connect( reply, SIGNAL( sslErrors( QList< QSslError > ) ),
            reply, SLOT( ignoreSslErrors() ) );
 #endif
@@ -52,7 +52,7 @@ void WebMultimediaDownload::replyFinished( QNetworkReply * r )
       }
 
       reply = mgr.get( QNetworkRequest( redirectUrl ) );
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
       connect( reply, SIGNAL( sslErrors( QList< QSslError > ) ),
                reply, SLOT( ignoreSslErrors() ) );
 #endif

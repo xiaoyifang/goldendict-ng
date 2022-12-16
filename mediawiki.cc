@@ -135,7 +135,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
   connect( netReply.get(), SIGNAL( finished() ),
            this, SLOT( downloadFinished() ) );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
 
   connect( netReply.get(), SIGNAL( sslErrors( QList< QSslError > ) ),
            netReply.get(), SLOT( ignoreSslErrors() ) );
@@ -279,7 +279,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr,
   connect( netReply, &QNetworkReply::errorOccurred, this, [=](QNetworkReply::NetworkError e){
             qDebug()<<  "error:"<<e;
    } );
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
 
   connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ),
            netReply, SLOT( ignoreSslErrors() ) );

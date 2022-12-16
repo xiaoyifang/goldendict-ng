@@ -82,7 +82,7 @@ using std::wstring;
 using std::map;
 using std::pair;
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
 
 class InitSSLRunnable : public QRunnable
 {
@@ -157,7 +157,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
@@ -1197,6 +1197,8 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
     darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
     darkPalette.setColor( QPalette::Button, darkColor );
     darkPalette.setColor( QPalette::ButtonText, Qt::white );
+    darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+    darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
     darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
     darkPalette.setColor( QPalette::BrightText, Qt::red );
     darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
