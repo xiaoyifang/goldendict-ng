@@ -26,13 +26,29 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
     QByteArray replyData = reply->readAll();
     QString articleString;
 
-    QTextCodec * codec = QTextCodec::codecForHtml( replyData, QTextCodec::codecForName( "UTF-8" ) );
-    articleString      = codec->toUnicode( replyData );
+    QString codecName;
+    auto contentTypeV = reply->header(QNetworkRequest::ContentTypeHeader);
+    if(contentTypeV.isValid())
+    {
+      auto _ct = contentTypeV.toString();
+      auto index = _ct.indexOf("charset=");
+      if(index>-1){
+        codecName=_ct.mid(index+QString("charset=").size());
+        qDebug()<<codecName;
+      }
+    }
+
+    QTextCodec * codec = QTextCodec::codecForUtfText( replyData, QTextCodec::codecForName( codecName.toUtf8() ) );
+    if(codec)
+      articleString      = codec->toUnicode( replyData );
+    else
+      articleString = QString::fromUtf8(replyData);
     // Handle reply data
     // 404 response may have response body.
     if( reply->error() != QNetworkReply::NoError && articleString.isEmpty())
     {
       if(reply->error()==QNetworkReply::ContentNotFoundError){
+        buffer->deleteLater();
         //work around to fix QTBUG-106573
         requestJob->redirect(url);
         return;
@@ -77,7 +93,10 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
       articleString.insert( 0, depressionFocus );
     }
 
-    buffer->setData(codec->fromUnicode(articleString));
+    if(codec)
+      buffer->setData(codec->fromUnicode(articleString));
+    else
+      buffer->setData(articleString.toUtf8());
 
     requestJob->reply(contentType , buffer );
   };
