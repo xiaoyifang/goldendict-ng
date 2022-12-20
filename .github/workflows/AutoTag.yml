@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 22.11.22
-      version-suffix: LightSnow
+      version: 22.12.22
+      version-suffix: WinterSolstice
       prerelease: false
 
     steps:

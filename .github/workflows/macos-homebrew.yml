@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 22.11.22
-      version-suffix: LightSnow
+      version: 22.12.22
+      version-suffix: WinterSolstice
       prerelease: false
     steps:
       # macos 11.0 默认环境变了,要指定
@@ -116,7 +116,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          # ignorePreReleases: true 
+          ignorePreReleases: true 
           commitMode: true
 
       - name: Set outputs

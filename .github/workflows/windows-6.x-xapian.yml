@@ -31,8 +31,8 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 22.11.22
-      version-suffix: LightSnow
+      version: 22.12.22
+      version-suffix: WinterSolstice
       prerelease: false
     steps:
       - uses: actions/setup-python@v3
@@ -57,7 +57,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # ignorePreReleases: true 
+          ignorePreReleases: true 
           commitMode: true
       - name: Set outputs
         id: vars

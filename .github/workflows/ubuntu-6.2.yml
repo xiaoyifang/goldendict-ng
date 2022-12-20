@@ -30,8 +30,8 @@ jobs:
         qt_ver: [6.3.2,6.4.1]
         qt_arch: [gcc_64]
     env:
-      version: 22.11.22
-      version-suffix: LightSnow
+      version: 22.12.22
+      version-suffix: WinterSolstice
       prerelease: false
     steps:
       - uses: actions/setup-python@v3
@@ -93,7 +93,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          # ignorePreReleases: true 
+          ignorePreReleases: true 
           commitMode: true
 
       - name: Set outputs
