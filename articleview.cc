@@ -1217,7 +1217,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
     if ( Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
     {
       sptr< Dictionary::DataRequest > req =
-        new Dictionary::WebMultimediaDownload( url, articleNetMgr );
+        std::make_shared<Dictionary::WebMultimediaDownload>( url, articleNetMgr );
 
       resourceDownloadRequests.push_back( req );
 
@@ -1552,7 +1552,7 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
   }
   else
   {
-    req = new Dictionary::WebMultimediaDownload( url, articleNetMgr );
+    req = std::make_shared<Dictionary::WebMultimediaDownload>( url, articleNetMgr );
 
     handler->addRequest( req );
   }
@@ -2149,9 +2149,9 @@ void ArticleView::resourceDownloadFinished()
 
   if ( resourceDownloadRequests.empty() )
   {
-    emit statusBarMessage(
-        tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
-        10000, QPixmap(":/icons/error.svg"));
+    // emit statusBarMessage(
+    //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
+    //     10000, QPixmap(":/icons/error.svg"));
   }
 }
 
@@ -2550,7 +2550,7 @@ void ArticleView::highlightFTSResults()
 
       if( regexp.pattern().isEmpty() || !regexp.isValid() )
         return;
-      sptr< AccentMarkHandler > marksHandler = ignoreDiacritics ? new DiacriticsHandler : new AccentMarkHandler;
+      sptr< AccentMarkHandler > marksHandler = ignoreDiacritics ? std::make_shared<DiacriticsHandler>() : std::make_shared<AccentMarkHandler>();
 
       marksHandler->setText( pageText );
 

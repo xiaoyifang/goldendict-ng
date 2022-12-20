@@ -35,7 +35,7 @@ jobs:
       prerelease: false
     steps:
       - name: Install Qt
-        uses: xiaoyifang/install-qt-action@v3
+        uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
           cached: 'false'
@@ -59,6 +59,12 @@ jobs:
         with:
           fetch-depth: 0 
 
+      - name: version-file
+        shell: bash
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
+          echo "$previousTag">version.txt
+          
       - name: build goldendict
         run: |
           qmake CONFIG+=release CONFIG+=no_extra_tiff_handler PREFIX=/usr   CONFIG+=zim_support   CONFIG+=chinese_conversion_support
@@ -77,13 +83,14 @@ jobs:
           chmod a+x linuxdeploy-x86_64.AppImage
           ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.goldendict.GoldenDict.desktop 
 
-      - name: Generate changelog
-        if: ${{!env.prerelease}}
-        id: changelog1
-        uses: metcalfc/changelog-generator@v3.0.0
+      - name: Release Changelog Builder
+        id: changelog
+        uses: mikepenz/release-changelog-builder-action@v3.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          myToken: ${{ secrets.GITHUB_TOKEN }}
-
+          # ignorePreReleases: true 
+          commitMode: true
       - name: Set outputs
         id: vars
         run: |
@@ -94,20 +101,6 @@ jobs:
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
           echo "::set-output name=appname::$(ls *.AppImage*)"
           
-      - name: changelog
-        if: $${{env.prerelease}}
-        id: changelog2
-        run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
-          echo "previousTag : $previousTag"
-          
-          CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
-          CHANGELOG="${CHANGELOG//'%'/'%25'}"
-          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-          CHANGELOG="${CHANGELOG//'\"'/'%22'}"
-          CHANGELOG="${CHANGELOG//"'"/ }"
-          echo "::set-output name=COMMIT_SUMMARY::$(echo "$CHANGELOG")"       
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -137,5 +130,4 @@ jobs:
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
             CHANGES:
-            ${{ steps.changelog1.outputs.changelog }}  
-            ${{ steps.changelog2.outputs.COMMIT_SUMMARY }}                
+            ${{ steps.changelog.outputs.changelog }}  

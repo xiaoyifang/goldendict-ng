@@ -853,7 +853,7 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   fixHeadword( head.headword );
 
   EWPos epos( pos.page, pos.offset );
-  allHeadwordPositions[ ((uint64_t)pos.page)<<32|(pos.offset>>2) ] =true;
+  allHeadwordPositions[ ((uint64_t)pos.page)<<32|(pos.offset) ] =true;
 }
 
 bool EpwingBook::getNextHeadword( EpwingHeadword & head )
@@ -911,9 +911,9 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     {
     }
 
-    if( !allHeadwordPositions.contains( ((uint64_t)pos.page) << 32 | ( pos.offset / 4 ) ) )
+    if( !allHeadwordPositions.contains( ((uint64_t)pos.page) << 32 | ( pos.offset  ) ) )
     {
-      allHeadwordPositions[ ((uint64_t)pos.page) << 32 | ( pos.offset / 4 ) ] = true;
+      allHeadwordPositions[ ((uint64_t)pos.page) << 32 | ( pos.offset  ) ] = true;
       return true;
     }
   }
@@ -943,7 +943,7 @@ bool EpwingBook::processRef( EpwingHeadword & head)
 
       head.page   = pos.page;
       head.offset = pos.offset;
-      auto key    = ( (uint64_t)pos.page ) << 32 | ( pos.offset >> 2 );
+      auto key    = ( (uint64_t)pos.page ) << 32 | ( pos.offset );
       if( !allRefPositions.contains( key ) )
       {
         // fixed the reference headword ,to avoid the headword collision with other entry .
@@ -951,6 +951,14 @@ bool EpwingBook::processRef( EpwingHeadword & head)
         head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
 
         allRefPositions[ key ] = true;
+
+        try
+        {
+          getReferencesFromText( pos.page, pos.offset);
+        }
+        catch( std::exception & )
+        {
+        }
         return true;
       }
     }

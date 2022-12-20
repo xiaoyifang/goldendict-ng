@@ -653,7 +653,7 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & wo
                                                               bool ignoreDiacritics )
   
 {
-  return new EpwingArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<EpwingArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 //// EpwingDictionary::getResource()
@@ -781,7 +781,7 @@ void EpwingResourceRequest::run()
 sptr< Dictionary::DataRequest > EpwingDictionary::getResource( string const & name )
   
 {
-  return new EpwingResourceRequest( *this, name );
+  return std::make_shared<EpwingResourceRequest>( *this, name );
 }
 
 
@@ -792,7 +792,7 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString cons
                                                                     bool ignoreWordsOrder,
                                                                     bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 int EpwingDictionary::japaneseWriting( gd::wchar ch )
@@ -928,7 +928,7 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch(
   wstring const & str, unsigned long maxResults )
   
 {
-  return new EpwingWordSearchRequest( *this, str, 0, -1, true, maxResults );
+  return std::make_shared<EpwingWordSearchRequest>( *this, str, 0, -1, true, maxResults );
 }
 
 sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
@@ -936,7 +936,7 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
   unsigned long maxResults )
   
 {
-  return new EpwingWordSearchRequest( *this, str, minLength, (int)maxSuffixVariation,
+  return std::make_shared<EpwingWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
                                       false, maxResults );
 }
 
@@ -1189,7 +1189,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           } // If need to rebuild
 
-          dictionaries.push_back( new EpwingDictionary( dictId,
+          dictionaries.push_back( std::make_shared<EpwingDictionary>( dictId,
                                                         indexFile,
                                                         dictFiles,
                                                         sb ) );

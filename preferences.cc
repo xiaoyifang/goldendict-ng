@@ -181,6 +181,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick);
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
+  ui.darkMode->setChecked(p.darkMode);
 
   ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
   ui.mainWindowHotkey->setHotKey( p.mainWindowHotkey );
@@ -225,6 +226,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ignorePunctuation->setChecked( p.ignorePunctuation );
 
   ui.synonymSearchEnabled->setChecked( p.synonymSearchEnabled );
+
+  ui.stripClipboard->setChecked( p.stripClipboard );
 
   ui.maxDictsInContextMenu->setValue( p.maxDictionaryRefsInContextMenu );
 
@@ -400,6 +403,7 @@ Config::Preferences Preferences::getPreferences()
   p.autoScrollToTargetArticle = ui.autoScrollToTargetArticle->isChecked();
   p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
 
+  p.darkMode = ui.darkMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
   p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
@@ -441,6 +445,7 @@ Config::Preferences Preferences::getPreferences()
   p.inputPhraseLengthLimit = ui.inputPhraseLengthLimit->value();
   p.ignoreDiacritics = ui.ignoreDiacritics->isChecked();
   p.ignorePunctuation = ui.ignorePunctuation->isChecked();
+  p.stripClipboard = ui.stripClipboard->isChecked();
 
   p.synonymSearchEnabled = ui.synonymSearchEnabled->isChecked();
 

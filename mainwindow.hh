@@ -184,7 +184,7 @@ private:
   ResourceSchemeHandler * resourceSchemeHandler;
 
   /// Applies the qt's stylesheet, given the style's name.
-  void applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle );
+  void applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.

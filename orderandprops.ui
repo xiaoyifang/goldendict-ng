@@ -168,43 +168,6 @@
         </item>
         <item>
          <widget class="QPlainTextEdit" name="dictionaryDescription">
-          <property name="palette">
-           <palette>
-            <active>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>224</red>
-                <green>223</green>
-                <blue>223</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </active>
-            <inactive>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>224</red>
-                <green>223</green>
-                <blue>223</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </inactive>
-            <disabled>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>212</red>
-                <green>208</green>
-                <blue>200</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </disabled>
-           </palette>
-          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -265,43 +228,6 @@
             <width>16777215</width>
             <height>65</height>
            </size>
-          </property>
-          <property name="palette">
-           <palette>
-            <active>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>224</red>
-                <green>223</green>
-                <blue>222</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </active>
-            <inactive>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>224</red>
-                <green>223</green>
-                <blue>222</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </inactive>
-            <disabled>
-             <colorrole role="Base">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>224</red>
-                <green>223</green>
-                <blue>222</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </disabled>
-           </palette>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>

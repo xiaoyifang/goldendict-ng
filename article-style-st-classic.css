@@ -390,7 +390,7 @@ div.xdxf
   display:inline;
 }
 
-.dsl_article font[color=c_default_color]
+.dsl_article .c_default_color
 {
   color: green;
 }

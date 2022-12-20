@@ -979,8 +979,8 @@ sptr< Dictionary::WordSearchRequest >
   GlsDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
-  return synonymSearchEnabled ? new GlsHeadwordsRequest( word, *this ) :
-                                Class::findHeadwordsForSynonym( word );
+  return synonymSearchEnabled ?  std::make_shared<GlsHeadwordsRequest>( word, *this ) :
+                                 Class::findHeadwordsForSynonym( word );
 }
 
 
@@ -1161,7 +1161,7 @@ sptr< Dictionary::DataRequest > GlsDictionary::getArticle( wstring const & word,
                                                            bool ignoreDiacritics )
   
 {
-  return new GlsArticleRequest( word, alts, *this, ignoreDiacritics );
+  return std::make_shared<GlsArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 //////////////// GlsDictionary::getResource()
@@ -1355,7 +1355,7 @@ void GlsResourceRequest::run()
 sptr< Dictionary::DataRequest > GlsDictionary::getResource( string const & name )
   
 {
-  return new GlsResourceRequest( *this, name );
+  return std::make_shared<GlsResourceRequest>( *this, name );
 }
 
 sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const & searchString,
@@ -1365,7 +1365,7 @@ sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const &
                                                                  bool ignoreWordsOrder,
                                                                  bool ignoreDiacritics )
 {
-  return new FtsHelpers::FTSResultsRequest( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
 }
 
 } // anonymous namespace
@@ -1594,7 +1594,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         }
 
       } // if need to rebuild
-      dictionaries.push_back( new GlsDictionary( dictId,
+      dictionaries.push_back( std::make_shared<GlsDictionary>( dictId,
                                                  indexFile,
                                                  dictFiles ) );
     }

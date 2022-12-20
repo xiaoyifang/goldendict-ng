@@ -63,6 +63,7 @@
 
 #include <QWebEngineSettings>
 #include <QWebEngineProfile>
+#include <QProxyStyle>
 
 #ifdef HAVE_X11
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
@@ -81,7 +82,7 @@ using std::wstring;
 using std::map;
 using std::pair;
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
 
 class InitSSLRunnable : public QRunnable
 {
@@ -156,7 +157,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
@@ -260,17 +261,17 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // named separator (to be able to hide it via CSS)
   navToolbar->widgetForAction( navToolbar->addSeparator() )->setObjectName( "separatorBeforeZoom" );
 
-  zoomIn = navToolbar->addAction( QIcon( ":/icons/icon32_zoomin.svg" ), tr( "Zoom In" ) );
+  zoomIn = navToolbar->addAction( QIcon( ":/icons/icon32_zoomin.png" ), tr( "Zoom In" ) );
   zoomIn->setShortcuts( QList< QKeySequence >() <<
                        QKeySequence::ZoomIn <<
                        QKeySequence( "Ctrl+=" ) );
   navToolbar->widgetForAction( zoomIn )->setObjectName( "zoomInButton" );
 
-  zoomOut = navToolbar->addAction( QIcon( ":/icons/icon32_zoomout.svg" ), tr( "Zoom Out" ) );
+  zoomOut = navToolbar->addAction( QIcon( ":/icons/icon32_zoomout.png" ), tr( "Zoom Out" ) );
   zoomOut->setShortcut( QKeySequence::ZoomOut );
   navToolbar->widgetForAction( zoomOut )->setObjectName( "zoomOutButton" );
 
-  zoomBase = navToolbar->addAction( QIcon( ":/icons/icon32_zoombase.svg" ), tr( "Normal Size" ) );
+  zoomBase = navToolbar->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Normal Size" ) );
   zoomBase->setShortcut( QKeySequence( "Ctrl+0" ) );
   navToolbar->widgetForAction( zoomBase )->setObjectName( "zoomBaseButton" );
 
@@ -391,13 +392,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-  wordsZoomIn = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomin.svg" ), tr( "Words Zoom In" ) );
+  wordsZoomIn = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomin.png" ), tr( "Words Zoom In" ) );
   wordsZoomIn->setShortcuts( QList< QKeySequence >() <<
                             QKeySequence( "Alt++" ) <<
                             QKeySequence( "Alt+=" ) );
-  wordsZoomOut = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomout.svg" ), tr( "Words Zoom Out" ) );
+  wordsZoomOut = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomout.png" ), tr( "Words Zoom Out" ) );
   wordsZoomOut->setShortcut( QKeySequence( "Alt+-" ) );
-  wordsZoomBase = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoombase.svg" ), tr( "Words Normal Size" ) );
+  wordsZoomBase = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Words Normal Size" ) );
   wordsZoomBase->setShortcut( QKeySequence( "Alt+0" ) );
 
   connect( wordsZoomIn, SIGNAL(triggered()), this, SLOT(doWordsZoomIn()) );
@@ -572,6 +573,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       igrp->checkMutedDictionaries( &grp->mutedDictionaries );
     dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : 0 );
   }
+  GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
 
   showDictBarNamesTriggered(); // Make update its state according to initial
                                // setting
@@ -833,7 +835,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   translateLine->setFocus();
 
-  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle );
+  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle, cfg.preferences.darkMode );
 
   makeScanPopup();
 
@@ -911,6 +913,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   inspector.reset( new ArticleInspector( this ));
 
   connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+
+#ifdef Q_OS_WIN
+  // Regiser and update URL Scheme for windows
+  // https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)
+
+  // Windows will automatically map registry key to Computer\HKEY_CLASSES_ROOT\ */
+  QSettings urlRegistry(R"(HKEY_CURRENT_USER\Software\Classes)", QSettings::NativeFormat);
+
+  urlRegistry.beginGroup("goldendict");
+  urlRegistry.setValue("Default", "URL: goldendict Protocol");
+  urlRegistry.setValue("URL Protocol", "");
+  urlRegistry.setValue("shell/open/command/Default",
+    QString("\"%1\"").arg( QDir::toNativeSeparators(QApplication::applicationFilePath())) + " \"%1\"");
+  urlRegistry.endGroup();
+#endif
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
@@ -1154,13 +1171,52 @@ QPrinter & MainWindow::getPrinter()
   if ( printer.get() )
     return *printer;
 
-  printer = new QPrinter( QPrinter::HighResolution );
+  printer =  std::make_shared<QPrinter>( QPrinter::HighResolution );
 
   return *printer;
 }
 
-void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle )
+void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
 {
+  if( darkMode )
+  {
+    //https://forum.qt.io/topic/101391/windows-10-dark-theme
+    #ifdef Q_OS_WIN32
+    qApp->setStyle( QStyleFactory::create( "Fusion" ) );
+    #endif
+    QPalette darkPalette;
+    QColor darkColor     = QColor( 45, 45, 45 );
+    QColor disabledColor = QColor( 127, 127, 127 );
+    darkPalette.setColor( QPalette::Window, darkColor );
+    darkPalette.setColor( QPalette::WindowText, Qt::white );
+    darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+    darkPalette.setColor( QPalette::AlternateBase, darkColor );
+    darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+    darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+    darkPalette.setColor( QPalette::Text, Qt::white );
+    darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+    darkPalette.setColor( QPalette::Button, darkColor );
+    darkPalette.setColor( QPalette::ButtonText, Qt::white );
+    darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+    darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
+    darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+    darkPalette.setColor( QPalette::BrightText, Qt::red );
+    darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+
+    darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+    darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+    darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+
+    qApp->setPalette( darkPalette );
+  }
+  else
+  {
+   #ifdef Q_OS_WIN32
+    qApp->setStyle( new QProxyStyle() );
+   #endif
+    qApp->setPalette( QPalette() );
+  }
+
   QFile builtInCssFile( ":/qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
   QByteArray css = builtInCssFile.readAll();
@@ -1192,6 +1248,10 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
     QFile addonCss( name );
     if( addonCss.open( QFile::ReadOnly ) )
       css += addonCss.readAll();
+  }
+
+  if(darkMode){
+    css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
 
   setStyleSheet( css );
@@ -1511,7 +1571,7 @@ void MainWindow::makeScanPopup()
 {
   scanPopup.reset();
 
-  scanPopup = new ScanPopup( 0, cfg, articleNetMgr, audioPlayerFactory.player(),
+  scanPopup =  std::make_shared<ScanPopup>( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
@@ -2221,9 +2281,9 @@ void MainWindow::editPreferences()
     bool needReload = false;
 
     // See if we need to reapply stylesheets
-    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle )
+    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
     {
-      applyQtStyleSheet( p.displayStyle, p.addonStyle );
+      applyQtStyleSheet( p.displayStyle, p.addonStyle, p.darkMode );
       articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }
@@ -2321,6 +2381,10 @@ void MainWindow::currentGroupChanged( int )
     }
     else
       dictionaryBar.setMutedDictionaries( 0 );
+  }
+
+  if(igrp){
+    GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
   }
 
   updateDictionaryBar();
@@ -2975,7 +3039,7 @@ void MainWindow::installHotKeys()
   {
     try
     {
-      hotkeyWrapper = new HotkeyWrapper( this );
+      hotkeyWrapper =  std::make_shared<HotkeyWrapper>( this );
     }
     catch( HotkeyWrapper::exInit & )
     {

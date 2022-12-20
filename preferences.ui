@@ -412,6 +412,13 @@ be the last ones.</string>
          </item>
         </layout>
        </item>
+       <item row="12" column="0">
+        <widget class="QCheckBox" name="darkMode">
+         <property name="text">
+          <string>dark mode</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_4">
@@ -1411,7 +1418,7 @@ download page.</string>
      <widget class="QWidget" name="tab_Advanced">
       <attribute name="icon">
        <iconset resource="resources.qrc">
-        <normaloff>:/icons/advanced.svg</normaloff>:/icons/advanced.svg</iconset>
+        <normaloff>:/icons/advanced.png</normaloff>:/icons/advanced.png</iconset>
       </attribute>
       <attribute name="title">
        <string>Ad&amp;vanced</string>
@@ -1733,6 +1740,13 @@ from Stardict, Babylon and GLS dictionaries</string>
          </property>
          <property name="text">
           <string>Extra search via synonyms</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="stripClipboard">
+         <property name="text">
+          <string>When using clipboard,strip everything after newline</string>
          </property>
         </widget>
        </item>

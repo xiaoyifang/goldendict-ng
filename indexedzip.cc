@@ -79,8 +79,6 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
     case ZipFile::Deflated:
     {
-      GD_DPRINTF( "Deflated" );
-
       // Now do the deflation
 
       QByteArray compressedData = zip.read( header.compressedSize );

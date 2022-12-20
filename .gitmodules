@@ -1,0 +1,3 @@
+[submodule "eb"]
+	path = thirdparty/eb
+	url = https://github.com/xiaoyifang/simple-eb.git

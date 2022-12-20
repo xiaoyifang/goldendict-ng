@@ -925,10 +925,10 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & wor
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return new WordSearchRequestInstant();
+    return std::make_shared<WordSearchRequestInstant>();
   }
   else
-    return new DictServerWordSearchRequest( word, *this );
+    return std::make_shared<DictServerWordSearchRequest>( word, *this );
 }
 
 sptr< DataRequest > DictServerDictionary::getArticle( wstring const & word,
@@ -940,10 +940,10 @@ sptr< DataRequest > DictServerDictionary::getArticle( wstring const & word,
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return new DataRequestInstant( false );
+    return std::make_shared<DataRequestInstant>( false );
   }
   else
-    return new DictServerArticleRequest( word, *this );
+    return std::make_shared<DictServerArticleRequest>( word, *this );
 }
 
 } // Anonimuos namespace
@@ -956,7 +956,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
   for( int x = 0; x < servers.size(); ++x )
   {
     if ( servers[ x ].enabled )
-      result.push_back( new DictServerDictionary( servers[ x ].id.toStdString(),
+      result.push_back( std::make_shared<DictServerDictionary>( servers[ x ].id.toStdString(),
                                                   servers[ x ].name.toUtf8().data(),
                                                   servers[ x ].url,
                                                   servers[ x ].databases,

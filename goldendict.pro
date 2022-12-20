@@ -13,7 +13,11 @@ system(git describe --tags --always --dirty): hasGit=1
     GIT_HASH=$$system(git rev-parse --short=8 HEAD )
 }
 
-system(echo $${VERSION}.$${GIT_HASH} on $${_DATE_} > version.txt)
+!exists( version.txt ) {
+      message( "generate version.txt...." )
+      system(echo $${VERSION}.$${GIT_HASH} on $${_DATE_} > version.txt)
+}
+
 
 !CONFIG( verbose_build_output ) {
   !win32|*-msvc* {

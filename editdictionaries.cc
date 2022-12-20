@@ -43,7 +43,7 @@ EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
 
   ui.tabs->clear();
 
-  ui.tabs->addTab( &sources, QIcon(":/icons/reload.svg"), tr( "&Sources" ) );
+  ui.tabs->addTab( &sources, QIcon(":/icons/sources.png"), tr( "&Sources" ) );
   ui.tabs->addTab( orderAndProps, QIcon(":/icons/book.svg"), tr( "&Dictionaries" ) );
   ui.tabs->addTab( groups.get(), QIcon(":/icons/bookcase.svg"), tr( "&Groups" ) );
 
@@ -240,7 +240,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   if ( rebuildGroups )
   {
     orderAndProps = new OrderAndProps( this, savedOrder, savedInactive, dictionaries );
-    groups = new Groups( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    groups =  std::make_shared<Groups>( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
     ui.tabs->removeTab( 1 );
     ui.tabs->removeTab( 1 );

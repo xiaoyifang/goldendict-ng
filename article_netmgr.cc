@@ -170,14 +170,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
         if( !path.isEmpty() )
         {
           url.setPath( "" );
-          QByteArray referer = req.rawHeader( "Referer" );
-          QUrl refererUrl    = QUrl::fromEncoded( referer );
 
           Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
-          if( Utils::Url::hasQueryItem( refererUrl, "group" ) )
-          {
-            Utils::Url::addQueryItem( url, "group", Utils::Url::queryItemValue( refererUrl, "group" ) );
-          }
+          Utils::Url::addQueryItem( url, "group", QString::number(GlobalBroadcaster::instance()->currentGroupId ) );
         }
     }
 
@@ -247,7 +242,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   if( url.scheme() == "https")
   {
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
     connect( reply, SIGNAL( sslErrors( QList< QSslError > ) ),
              reply, SLOT( ignoreSslErrors() ) );
 #endif
@@ -268,7 +263,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     if( !url.host().isEmpty() && url.host() != "localhost" )
     {
       // Strange request - ignore it
-      return new Dictionary::DataRequestInstant( false );
+      return std::make_shared<Dictionary::DataRequestInstant>( false );
     }
 
     contentType = "text/html";
@@ -318,7 +313,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( phrase.isValid() ) // Require group and phrase to be passed
+    if ( groupIsValid && phrase.isValid() ) // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( phrase, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
   }
 
@@ -344,7 +339,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
                 buffer.open(QIODevice::WriteOnly);
                 dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "PNG");
                 buffer.close();
-                sptr< Dictionary::DataRequestInstant > ico = new Dictionary::DataRequestInstant( true );
+                sptr< Dictionary::DataRequestInstant > ico = std::make_shared<Dictionary::DataRequestInstant>( true );
                 ico->getData().resize( bytes.size() );
                 memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
                 return ico;

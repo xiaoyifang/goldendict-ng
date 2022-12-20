@@ -266,7 +266,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return new Dictionary::DataRequestInstant( false ); // No such word
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
 
   string result;
 
@@ -318,7 +318,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   memcpy( &(ret->getData().front()), result.data(), result.size() );
 
-  return ret;
+  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
 }
 
 /// This wraps around file operations
@@ -410,7 +410,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
   vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
 
   if ( chain.empty() )
-    return new Dictionary::DataRequestInstant( false ); // No such resource
+    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
 
   File::Class f( getDictionaryFilenames()[ 0 ], "rb" );
 
@@ -440,8 +440,8 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
     throw exFailedToRetrieveVorbisInfo();
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = new
-    Dictionary::DataRequestInstant( true );
+  sptr< Dictionary::DataRequestInstant > dr = std::make_shared<
+    Dictionary::DataRequestInstant>( true );
 
   vector< char > & data = dr->getData();
 
@@ -633,7 +633,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
 
-      dictionaries.push_back( new LsaDictionary( dictId,
+      dictionaries.push_back( std::make_shared<LsaDictionary>( dictId,
                                                  indexFile,
                                                  dictFiles ) );
     }

@@ -575,7 +575,6 @@ void dict_data_close( dictData *header )
 	 xfree (header -> cache [i].inBuffer);
    }
 
-   memset( header, 0, sizeof( struct dictData ) );
    xfree( header );
 }
 

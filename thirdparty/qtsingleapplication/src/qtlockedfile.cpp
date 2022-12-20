@@ -40,6 +40,10 @@
 
 #include "qtlockedfile.h"
 
+#ifdef CMAKE_USED_HACK
+using namespace QtLP_Private;
+#endif
+
 /*!
     \class QtLockedFile
 

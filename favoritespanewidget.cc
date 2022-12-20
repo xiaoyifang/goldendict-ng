@@ -208,12 +208,12 @@ void FavoritesPaneWidget::onSelectionChanged( QItemSelection const & selection )
     return;
 
   itemSelectionChanged = true;
-//  emitFavoritesItemRequested( selection.indexes().front() );
+  emitFavoritesItemRequested( selection.indexes().front() );
 }
 
 void FavoritesPaneWidget::onItemClicked( QModelIndex const & idx )
 {
-//  if ( !itemSelectionChanged && m_favoritesTree->selectionModel()->selectedIndexes().size() == 1 )
+  if ( !itemSelectionChanged && m_favoritesTree->selectionModel()->selectedIndexes().size() == 1 )
   {
     emitFavoritesItemRequested( idx );
   }
