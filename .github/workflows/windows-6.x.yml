@@ -62,14 +62,19 @@ jobs:
           echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
 
-      - name: Release Changelog Builder
+      - name: changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v3.5.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          # ignorePreReleases: true 
-          commitMode: true
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
+          echo "previousTag : $previousTag"
+          
+          CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
+          CHANGELOG="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
+          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+          CHANGELOG="${CHANGELOG//'\"'/'%22'}"
+          CHANGELOG="${CHANGELOG//"'"/ }"
+          echo "::set-output name=changelog::$(echo "$CHANGELOG")"
 
       - name: version-file
         shell: bash
