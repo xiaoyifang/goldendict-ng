@@ -505,7 +505,9 @@ void BlockedNetworkReply::finishedSlot()
   emit finished();
 }
 
-LocalSchemeHandler::LocalSchemeHandler(ArticleNetworkAccessManager& articleNetMgr):mManager(articleNetMgr){
+LocalSchemeHandler::LocalSchemeHandler(ArticleNetworkAccessManager& articleNetMgr, QObject *parent):
+    QWebEngineUrlSchemeHandler(parent),
+    mManager(articleNetMgr){
 
 }
 

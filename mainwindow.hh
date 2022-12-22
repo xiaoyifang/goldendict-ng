@@ -84,8 +84,6 @@ private:
 
   QScopedPointer< ArticleInspector > inspector;
 
-  WebUrlRequestInterceptor *wuri;
-
   Ui::MainWindow ui;
 
   /// This widget is used as a title bar for the searchPane dock, and

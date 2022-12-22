@@ -163,7 +163,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   GlobalBroadcaster::instance()->setPreference(&cfg.preferences);
 
-  localSchemeHandler = new LocalSchemeHandler( articleNetMgr );
+  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this);
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "bword", localSchemeHandler );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "entry", localSchemeHandler );
@@ -172,15 +172,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdpicture", "gdtts" };
-  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr );
+  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this);
   for( int i = 0; i < localSchemes.size(); i++ )
   {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localSchemes.at( i ).toLatin1(),
                                                                   resourceSchemeHandler );
   }
 
-  wuri = new WebUrlRequestInterceptor();
-  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( wuri );
+  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor(this) );
 
   if(!cfg.preferences.hideGoldenDictHeader){
     QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
