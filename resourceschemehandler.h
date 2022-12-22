@@ -7,7 +7,7 @@ class ResourceSchemeHandler : public QWebEngineUrlSchemeHandler
 {
     Q_OBJECT
 public:
-    ResourceSchemeHandler(ArticleNetworkAccessManager& articleNetMgr);
+    ResourceSchemeHandler(ArticleNetworkAccessManager& articleNetMgr, QObject *parent = nullptr);
     void requestStarted(QWebEngineUrlRequestJob *requestJob);
 
 protected:

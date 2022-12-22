@@ -202,7 +202,7 @@ class LocalSchemeHandler : public QWebEngineUrlSchemeHandler
 {
   Q_OBJECT
 public:
-  LocalSchemeHandler( ArticleNetworkAccessManager & articleNetMgr );
+  LocalSchemeHandler( ArticleNetworkAccessManager & articleNetMgr, QObject *parent = nullptr);
   void requestStarted( QWebEngineUrlRequestJob * requestJob );
 
 protected:
