@@ -1177,6 +1177,7 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
 {
+  #ifdef Q_OS_WIN32
   if( darkMode )
   {
     //https://forum.qt.io/topic/101391/windows-10-dark-theme
@@ -1210,11 +1211,10 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
   }
   else
   {
-   #ifdef Q_OS_WIN32
     qApp->setStyle( new QProxyStyle() );
-   #endif
     qApp->setPalette( QPalette() );
   }
+  #endif
 
   QFile builtInCssFile( ":/qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
@@ -1249,9 +1249,11 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
       css += addonCss.readAll();
   }
 
+  #ifdef Q_OS_WIN32
   if(darkMode){
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
+  #endif
 
   setStyleSheet( css );
 }
