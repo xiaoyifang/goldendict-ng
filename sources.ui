@@ -25,6 +25,9 @@
        <height>15</height>
       </size>
      </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
      <property name="usesScrollButtons">
       <bool>false</bool>
      </property>
