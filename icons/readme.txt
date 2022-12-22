@@ -68,3 +68,6 @@ sources.png https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps
 book.svg https://github.com/johnfactotum/foliate
 
 
+lingualibre.svg https://en.m.wikipedia.org/wiki/File:Lingualibre-logo-no-text.svg
+
+
