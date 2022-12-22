@@ -85,7 +85,7 @@ public:
     isCancelled( cancelled ),
     dictionaries( dicts ),
     hasExited( hasExited_ ),
-    timer(new QTimer(this)),
+    timer(new QTimer(nullptr)), // must be null since it will live in separate thread
     timerThread(new QThread(this))
   {
     connect(timer, &QTimer::timeout, this, &Indexing::timeout);
