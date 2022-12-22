@@ -20,6 +20,10 @@ The download links above includes `.Appimage` for Linux users.
 
 Archlinux users can also use community maintained [goldendict-webengine-git](https://aur.archlinux.org/packages/goldendict-webengine-git).
 
+[Debian packages](https://tracker.debian.org/pkg/goldendict-webengine) are available in Debian 12 or later.
+
+[Ubuntu packages](https://launchpad.net/ubuntu/+source/goldendict-webengine) are available in Ubuntu 23.04 or later.
+
 openSUSE ships an old version of this fork.
 
 Helps are needed to deliver this fork to other distros!
