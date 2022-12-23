@@ -33,6 +33,7 @@ CONFIG( release, debug|release ) {
 
 # DEPENDPATH += . generators
 INCLUDEPATH += .
+INCLUDEPATH += ./src/
 
 QT += core \
       gui \
@@ -389,7 +390,8 @@ HEADERS += folding.hh \
     gls.hh \
     splitfile.hh \
     favoritespanewidget.hh \
-    treeview.hh
+    treeview.hh \
+    src/dict/lingualibre.h
 
 FORMS += groups.ui \
     dictgroupwidget.ui \
@@ -526,7 +528,8 @@ SOURCES += folding.cc \
     gls.cc \
     splitfile.cc \
     favoritespanewidget.cc \
-    treeview.cc
+    treeview.cc \
+    src/dict/lingualibre.cpp
 
 win32 {
     FORMS   += texttospeechsource.ui
