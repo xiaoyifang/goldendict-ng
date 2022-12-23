@@ -1,7 +1,9 @@
 #include "lingualibre.h"
 #include "utf8.hh"
+#include "audiolink.hh"
 #include <string>
 #include <mutex.hh>
+#include <QJsonDocument>
 
 namespace Lingua {
 
@@ -92,9 +94,7 @@ LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
   const string & dictionaryId_,
   QNetworkAccessManager & mgr )
 {
-  connect( &mgr, &QNetworkAccessManager::finished,
-    this, &LinguaArticleRequest::requestFinished,
-    Qt::QueuedConnection);
+  connect( &mgr, &QNetworkAccessManager::finished, this, &LinguaArticleRequest::requestFinished, Qt::QueuedConnection );
 
   addQuery( mgr, str );
 }
@@ -102,6 +102,7 @@ LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
 void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring & word )
 {
 
+  // Doc of the <https://www.mediawiki.org/wiki/API:Query>
   QString reqUrl = R"(https://commons.wikimedia.org/w/api.php?)"
                    R"(action=query)"
                    R"(&format=json)"
@@ -115,34 +116,100 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring 
                    R"(&gsrlimit=10)"
                    R"(&gsrwhat=text)";
 
-  auto netReply = std::shared_ptr<QNetworkReply>(
-      mgr.get(
-        QNetworkRequest(
-        reqUrl.arg( QString::fromStdU32String( word ) ))));
+  auto netReply =
+    std::shared_ptr< QNetworkReply >( mgr.get( QNetworkRequest( reqUrl.arg( QString::fromStdU32String( word ) ) ) ) );
 
-  netReplies.emplace_back(netReply,Utf8::encode(word));
-
+  netReplies.emplace_back( netReply, Utf8::encode( word ) );
 }
 
 
-void LinguaArticleRequest::requestFinished( QNetworkReply * r ) {
+void LinguaArticleRequest::requestFinished( QNetworkReply * r )
+{
 
-  qDebug()<<"Lingua query finished";
+  qDebug() << "Lingua query finished";
 
   sptr< QNetworkReply > netReply = netReplies.front().reply;
 
-  auto resultJson = netReply->readAll();
+  QJsonObject resultJson = QJsonDocument::fromJson( netReply->readAll() ).object();
 
-  Mutex::Lock _(dataMutex);
+  /*
 
-  size_t prevSize = data.size();
-  data.resize(prevSize+resultJson.length());
+ Code below is to process returned json:
 
-  memcpy(&data.front()+prevSize,resultJson.data(),resultJson.size());
+{
+  "batchcomplete": "",
+  "query": {
+    "pages": {
+      "88511149": {
+        "pageid": 88511149,
+        "ns": 6,
+        "title": "File:LL-Q1860 (eng)-Back ache-nice.wav",
+        "index": 2,
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/LL-Q1860_%28eng%29-Back_ache-nice.wav",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Back_ache-nice.wav",
+            "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=88511149"
+          }
+        ]
+      },
+      "73937351": {
+        "pageid": 73937351,
+        "ns": 6,
+        "title": "File:LL-Q1860 (eng)-Nattes à chat-nice.wav",
+        "index": 1,
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/LL-Q1860_%28eng%29-Nattes_%C3%A0_chat-nice.wav",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Nattes_%C3%A0_chat-nice.wav",
+            "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=73937351"
+          }
+        ]
+      }
+    }
+  }
+}
 
-  hasAnyData = true;
+*/
 
-  finish();
+  if( resultJson.contains( "query" ) )
+  {
+
+    string articleBody = "<p>";
+
+    for( auto pageJsonVal : resultJson[ "query" ].toObject()[ "pages" ].toObject() )
+    {
+      auto pageJsonObj = pageJsonVal.toObject();
+      string title     = pageJsonObj[ "title" ].toString().toHtmlEscaped().toStdString();
+      string audiolink =
+        pageJsonObj[ "imageinfo" ].toArray().at( 0 ).toObject()[ "url" ].toString().toHtmlEscaped().toStdString();
+      articleBody += addAudioLink( audiolink, dictionaryId );
+      articleBody += "<a href=";
+      articleBody += audiolink;
+      articleBody += ">";
+      articleBody += title;
+      articleBody += "</a><br>";
+    }
+
+    articleBody += "</p>";
+
+    Mutex::Lock _( dataMutex );
+
+    size_t prevSize = data.size();
+    data.resize( prevSize + articleBody.size() );
+
+    memcpy( &data.front() + prevSize, articleBody.data(), articleBody.size() );
+
+    hasAnyData = true;
+
+    finish();
+  }
+  else
+  {
+    hasAnyData = false;
+  }
 }
 
 
