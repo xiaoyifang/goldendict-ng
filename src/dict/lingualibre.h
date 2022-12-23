@@ -52,7 +52,7 @@ class LinguaArticleRequest: public Dictionary::DataRequest
 
  private:
 
-  void addQuery( QNetworkAccessManager & mgr, string const & word );
+  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
 
  private slots:
   virtual void requestFinished( QNetworkReply * );
