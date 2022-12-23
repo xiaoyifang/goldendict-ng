@@ -221,12 +221,12 @@ mac {
 
     !CONFIG( no_macos_universal ) {
         LIBS+=        -lhunspell
-        INCLUDEPATH = $${PWD}/maclibs/include
+        INCLUDEPATH += $${PWD}/maclibs/include
         LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
     }
     else{
         PKGCONFIG +=   hunspell
-        INCLUDEPATH = /opt/homebrew/include /usr/local/include
+        INCLUDEPATH += /opt/homebrew/include /usr/local/include
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
