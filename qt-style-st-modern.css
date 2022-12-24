@@ -16,7 +16,6 @@ MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
   margin: -3px;
 }
 
-
 /* Hide various buttons in the toolbar: */
 #navToolbar #menuButtonXX, #navToolbar #soundButtonXX, #navToolbar #backButtonXX, #navToolbar #forwardButtonXX, #navToolbar #zoomInButtonXX, #navToolbar #zoomOutButtonXX, #navToolbar #zoomBaseButtonXX, #navToolbar #saveArticleButton, #navToolbar #printButton {
   width:   0px;
@@ -35,13 +34,11 @@ MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
 
 /* Colored header for the "Found in Dictionaries:" pane */
 #dictsPaneTitleBar {
-  background: lightblue;
   margin: 2px;
 }
 
 /* Colored header for the History Pane */
 #historyPaneTitleBar {
-  background: lightsteelblue;
   margin: 2px;
 }
 
