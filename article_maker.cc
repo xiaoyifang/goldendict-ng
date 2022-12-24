@@ -59,15 +59,15 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     result += "<script> var $_$=$.noConflict(); </script>";
 
     //custom javascript
-    result += "<script type=\"text/javascript\" src=\"qrc:///scripts/gd-custom.js\"></script>";
+    result += R"(<script type="text/javascript" src="qrc:///scripts/gd-custom.js"></script>)";
 
     //iframe resizer javascript
-    result += "<script type=\"text/javascript\" src=\"qrc:///scripts/iframeResizer.min.js\"></script>";
+    result += R"(<script type="text/javascript" src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel
   {
-    result += "<script type=\"text/javascript\" src=\"qrc:///qtwebchannel/qwebchannel.js\"></script>";
+    result += R"(<script type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>)";
   }
 
   // document ready ,init webchannel
@@ -84,14 +84,14 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   // Add a css stylesheet
   {
-    result += "<link href=\"qrc:///article-style.css\"  media=\"all\" rel=\"stylesheet\" type=\"text/css\">";
+    result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
     if ( displayStyle.size() )
     {
       // Load an additional stylesheet
       QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(displayStyle);
       result += "<link href=\"" + displayStyleCssFile.toStdString() +
-                "\"  media=\"all\" rel=\"stylesheet\" type=\"text/css\">";
+                R"("  media="all" rel="stylesheet" type="text/css">)";
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
@@ -117,7 +117,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   // Add print-only css
   {
-    result += "<link href=\"qrc:///article-style-print.css\"  media=\"print\" rel=\"stylesheet\" type=\"text/css\">";
+    result += R"(<link href="qrc:///article-style-print.css"  media="print" rel="stylesheet" type="text/css">)";
 
     result += readCssFile(Config::getUserCssPrintFileName() ,"print");
 
@@ -134,20 +134,20 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
   if ( icon.size() )
-    result += "<link rel=\"icon\" type=\"image/png\" href=\"qrcx://localhost/flags/" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
+    result += R"(<link rel="icon" type="image/png" href="qrcx://localhost/flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
 
   result += "<script type=\"text/javascript\">"
             "function tr(key) {"
             " var tr_map = {"
             "\"Expand article\":\"";
   result += tr("Expand article").toUtf8().data();
-  result += "\",\"Collapse article\":\"";
+  result += R"(","Collapse article":")";
   result += tr("Collapse article").toUtf8().data();
   result += "\"  };"
             "return tr_map[key] || '';"
             "}"
             "</script>";
-  result+= "<script type=\"text/javascript\" src=\"qrc:///scripts/gd-builtin.js\"></script>";
+  result+= R"(<script type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
 
 #ifdef Q_OS_WIN32
   if( GlobalBroadcaster::instance()->getPreference()->darkMode )
@@ -175,7 +175,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     QByteArray css = addonCss.readAll();
     if (!css.isEmpty()) {
       result += "<!-- Addon style css -->\n";
-      result += "<style type=\"text/css\" media=\"" + media + "\">\n";
+      result += R"(<style type="text/css" media=")" + media + "\">\n";
       result += css.data();
       result += "</style>\n";
     }
@@ -585,7 +585,7 @@ void ArticleRequest::bodyFinished()
 
         if ( closePrevSpan )
         {
-          head += "</div></div><div style=\"clear:both;\"></div><span class=\"gdarticleseparator\"></span>";
+          head += R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
         }
 
         bool collapse = false;
@@ -637,15 +637,15 @@ void ArticleRequest::bodyFinished()
 
         closePrevSpan = true;
 
-        head += string( "<div class=\"gddictname\" onclick=\"gdExpandArticle(\'" ) + dictId + "\');"
+        head += string( R"(<div class="gddictname" onclick="gdExpandArticle(')" ) + dictId + "\');"
           + ( collapse ? "\" style=\"cursor:pointer;" : "" )
           + "\" id=\"gddictname-" + Html::escape( dictId ) + "\""
           + ( collapse ? string( " title=\"" ) + tr( "Expand article" ).toUtf8().data() + "\"" : "" )
-          + "><span class=\"gddicticon\"><img src=\"gico://" + Html::escape( dictId )
-          + "/dicticon.png\"></span><span class=\"gdfromprefix\">"  +
+          + R"(><span class="gddicticon"><img src="gico://)" + Html::escape( dictId )
+          + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
           Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
           Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + "<span class=\"collapse_expand_area\"><img src=\"qrcx://localhost/icons/blank.png\" class=\""
+          + R"(<span class="collapse_expand_area"><img src="qrcx://localhost/icons/blank.png" class=")"
           + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
           + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
           + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
@@ -782,7 +782,7 @@ int ArticleRequest::htmlTextSize( QString html )
   //https://bugreports.qt.io/browse/QTBUG-102757
   QString stripStyleSheet =
     html.remove( QRegularExpression( "<link\\s*[^>]*>", QRegularExpression::CaseInsensitiveOption ) )
-      .remove( QRegularExpression( "<script[\\s\\S]*?>[\\s\\S]*?<\\/script>", QRegularExpression::CaseInsensitiveOption|QRegularExpression::MultilineOption ) );
+      .remove( QRegularExpression( R"(<script[\s\S]*?>[\s\S]*?<\/script>)", QRegularExpression::CaseInsensitiveOption|QRegularExpression::MultilineOption ) );
   int size = QTextDocumentFragment::fromHtml( stripStyleSheet ).toPlainText().length();
 
   return size;
@@ -800,7 +800,7 @@ void ArticleRequest::stemmedSearchFinished()
 
   if ( sr.size() )
   {
-    footer += "<div class=\"gdstemmedsuggestion\"><span class=\"gdstemmedsuggestion_head\">" +
+    footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)" +
       Html::escape( tr( "Close words: " ).toUtf8().data() ) +
       "</span><span class=\"gdstemmedsuggestion_body\">";
 
@@ -871,7 +871,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
       if ( !firstCompoundWasFound )
       {
         // Append the beginning
-        footer += "<div class=\"gdstemmedsuggestion\"><span class=\"gdstemmedsuggestion_head\">" +
+        footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)" +
           Html::escape( tr( "Compound expressions: " ).toUtf8().data() ) +
           "</span><span class=\"gdstemmedsuggestion_body\">";
 
@@ -899,7 +899,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
       // Now add links to all the individual words. They conclude the result.
 
-      footer += "<div class=\"gdstemmedsuggestion\"><span class=\"gdstemmedsuggestion_head\">" +
+      footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)" +
         Html::escape( tr( "Individual words: " ).toUtf8().data() ) +
         "</span><span class=\"gdstemmedsuggestion_body\"";
       if( splittedWords.first[ 0 ].isRightToLeft() )

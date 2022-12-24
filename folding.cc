@@ -667,7 +667,7 @@ void normalizeWhitespace( wstring & str )
 QString escapeWildcardSymbols( const QString & str )
 {
   QString escaped( str );
-  escaped.replace( QRegularExpression( "([\\[\\]\\?\\*])" ), "\\\\1" );
+  escaped.replace( QRegularExpression( R"(([\[\]\?\*]))" ), "\\\\1" );
 
   return escaped;
 }
@@ -675,7 +675,7 @@ QString escapeWildcardSymbols( const QString & str )
 QString unescapeWildcardSymbols( const QString & str )
 {
   QString unescaped( str );
-  unescaped.replace( QRegularExpression( "\\\\([\\[\\]\\?\\*])" ), "\\1" );
+  unescaped.replace( QRegularExpression( R"(\\([\[\]\?\*]))" ), "\\1" );
 
   return unescaped;
 }
