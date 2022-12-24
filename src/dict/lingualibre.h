@@ -16,6 +16,7 @@ using gd::wstring;
 
 vector< sptr< Dictionary::Class > > makeDictionaries(
   Dictionary::Initializing &,
+  Config::Lingua const &,
   QNetworkAccessManager & );
 
 
@@ -37,7 +38,7 @@ class LinguaArticleRequest: public Dictionary::DataRequest
 
   typedef std::list< NetReply > NetReplies;
   NetReplies netReplies;
-  QString apiKey, languageCode;
+  QString languageCode,langWikipediaID;
   string dictionaryId;
 
  public:
@@ -45,6 +46,7 @@ class LinguaArticleRequest: public Dictionary::DataRequest
   LinguaArticleRequest( wstring const & word,
                         vector< wstring > const & alts,
                         QString const & languageCode_,
+                        QString const & langWikipediaID_,
                         string const & dictionaryId_,
                         QNetworkAccessManager & mgr );
 

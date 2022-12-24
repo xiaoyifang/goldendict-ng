@@ -356,7 +356,7 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   {
     vector< sptr< Dictionary::Class > > dicts =
-      Lingua::makeDictionaries( loadDicts, dictNetMgr );
+      Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr );
 
     dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
   }

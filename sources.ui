@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
+    <width>1010</width>
     <height>336</height>
    </rect>
   </property>
@@ -502,6 +502,9 @@ of the appropriate groups to use them.</string>
            <widget class="QLabel" name="label_19">
             <property name="text">
              <string>Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</string>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
