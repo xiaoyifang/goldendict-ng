@@ -148,6 +148,21 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
             "}"
             "</script>";
   result+= "<script type=\"text/javascript\" src=\"qrc:///scripts/gd-builtin.js\"></script>";
+
+#ifdef Q_OS_WIN32
+  if( GlobalBroadcaster::instance()->getPreference()->darkMode )
+  {
+    result += "<script type=\"text/javascript\" src=\"qrc:///scripts/darkreader.js\"></script>";
+    result +=
+      "<script type=\"text/javascript\">"
+      "DarkReader.enable({"
+      "    brightness: 100,"
+      "    contrast: 90,"
+      "    sepia: 10"
+      "});"
+      "</script>";
+  }
+#endif
   result += "</head><body>";
 
   return result;
