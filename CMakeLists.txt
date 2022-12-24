@@ -467,14 +467,15 @@ set(PROJECT_SOURCES
         zipfile.hh
         zipsounds.cc
         zipsounds.hh
-        )
+        src/dict/lingualibre.cpp src/dict/lingualibre.h)
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
-        ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src)
+        ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
+        ${PROJECT_SOURCE_DIR}/src/)
 
 if(MSVC)
     add_compile_definitions(INCLUDE_LIBRARY_PATH)

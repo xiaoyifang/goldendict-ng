@@ -31,6 +31,7 @@
 #include "dictserver.hh"
 #include "slob.hh"
 #include "gls.hh"
+#include "dict/lingualibre.h"
 
 #ifndef NO_EPWING_SUPPORT
 #include "epwing.hh"
@@ -347,6 +348,15 @@ void loadDictionaries( QWidget * parent, bool showInitially,
   {
     vector< sptr< Dictionary::Class > > dicts =
       Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr );
+
+    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
+  }
+
+  //// Lingua Libre
+
+  {
+    vector< sptr< Dictionary::Class > > dicts =
+      Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr );
 
     dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
   }
