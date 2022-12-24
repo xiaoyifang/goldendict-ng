@@ -484,24 +484,22 @@ of the appropriate groups to use them.</string>
           <bool>true</bool>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="linguaLangCode">
-            <property name="placeholderText">
-             <string notr="true">eng</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_18">
             <property name="text">
-             <string>A ISO 639-3 language code</string>
+             <string>ISO 639-3 language code</string>
             </property>
            </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="linguaLangCode"/>
           </item>
           <item row="1" column="1">
            <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</string>
+             <string>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</string>
             </property>
             <property name="openExternalLinks">
              <bool>true</bool>
