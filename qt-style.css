@@ -1,140 +1,107 @@
-MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
-{
+MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree {
 }
 
-MainWindow #translateLine[noResults="true"],
-ScanPopup #translateLine[noResults="true"] {
+#translateLine {
+    color: palette(Text); /* ensure the text is inverse of the background, and also placehold text is grey */
+}
+
+#translateLine[noResults="true"] {
     background: #febb7d;
 }
 
 #navToolbar #menuButton::menu-indicator {
-  image: none;
+    image: none;
 }
 
-#navToolbar #translateLine
-{
-  border: 1px solid gray;
-  border-radius: 3px;
-  padding: 1px 3px 2px 3px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  margin-left: 0px;
+#navToolbar #translateLine {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 1px 3px 2px 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
 }
 
-#navToolbar GroupComboBox
-{
-  margin-right: 0px;
-  border: 1px solid gray;
-  border-right: 1px transparent;
-  border-radius: 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding: 2px 4px 2px 4px;
+GroupComboBox {
+    margin-right: 0;
+    border: 1px solid gray;
+    border-right: 1px transparent;
+    border-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 2px 4px 2px 4px;
+
+    background: palette(window); /* Distinguish the combobox from the translate line by make it darker*/
+    color: palette(Text);
 }
 
-#navToolbar GroupComboBox:on {
-  padding: 3px 3px 1px 5px;
+GroupComboBox:on {
+    padding: 3px 3px 1px 5px;
 }
 
-#navToolbar GroupComboBox::drop-down {
-   subcontrol-origin: padding;
-   subcontrol-position: top right;
-   width: 15px;
-   border-left: 1px solid darkgray;
-   border-right: 1px transparent;
+GroupComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border-left: 1px solid darkgray;
+    border-right: 1px transparent;
+
+    /* Hack: For unknown reason, if the padding right is unset, the drop-down won't show full content */
+    padding-right: 4px;
+    border-right: 1px solid darkgray;
+    /* Hack: end*/
+
 }
 
-#navToolbar GroupComboBox::down-arrow {
+GroupComboBox::down-arrow {
     image: url(:/icons/1downarrow.svg);
     max-height: 100%;
 }
 
-QTabBar::close-button {
-  image: url(:/icons/closetab.svg)
-}
-QTabBar::close-button:hover {
-  image: url(:/icons/closetab-hover.png)
+
+ArticleView #searchText[noResults="true"] {
+    background: #febb7d;
 }
 
-
-ArticleView #searchText[noResults="true"]
-{
-  background: #febb7d;
+MainStatusBar #text {
+    border-top-right-radius: 3px;
+    border-top: 1px solid palette(dark);
+    border-right: 1px solid palette(dark);
+    background: palette(window);
+    padding: 2px;
 }
 
-MainStatusBar #text
-{
-  border-top-right-radius: 3px;
-  border-top: 1px solid palette(dark);
-  border-right: 1px solid palette(dark);
-  background: palette(window);
-  padding: 2px;
+MainStatusBar #icon {
+    border-top: 1px solid palette(dark);
+    background: palette(window);
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 0;
 }
 
-MainStatusBar #icon
-{
-  border-top: 1px solid palette(dark);
-  background: palette(window);
-  padding: 2px;
-  padding-left: 4px;
-  padding-right: 0px;
+ScanPopup #translateLine {
+    margin: 0;
+    padding: 1px 3px 1px 3px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-ScanPopup #translateLine
-{
-  margin: 0px;
-  padding: 1px 3px 1px 3px;
-  border: 1px solid gray;
-  border-radius: 3px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+
+.ScanPopup #outerFrame {
+    border: 1px solid palette(dark);
 }
 
-ScanPopup GroupComboBox
-{
-  margin: 0px 0px 0px 1px;
-  padding: 1px 4px 1px 4px;
-  border: 1px solid gray;
-  border-right: 1px transparent;
-  border-radius: 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+.ScanPopup MainStatusBar #text {
+    border-bottom: 1px solid palette(dark);
 }
 
-ScanPopup GroupComboBox:on {
-  padding: 3px 3px 1px 5px;
+.ScanPopup MainStatusBar[hasImage="false"] #text {
+    border-left: 1px solid palette(dark);
 }
 
-ScanPopup GroupComboBox::drop-down {
-   subcontrol-origin: padding;
-   subcontrol-position: top right;
-   width: 15px;
-   border-left: 1px solid darkgray;
-   border-right: 1px transparent;
-}
-
-ScanPopup GroupComboBox::down-arrow {
-   image: url(:/icons/1downarrow.svg);
-  max-height: 100%;
-}
-
-.ScanPopup #outerFrame
-{
-  border: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar #text
-{
-  border-bottom: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar[hasImage="false"] #text
-{
-  border-left: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar #icon
-{
-  border-left: 1px solid palette(dark);
-  border-bottom: 1px solid palette(dark);
+.ScanPopup MainStatusBar #icon {
+    border-left: 1px solid palette(dark);
+    border-bottom: 1px solid palette(dark);
 }

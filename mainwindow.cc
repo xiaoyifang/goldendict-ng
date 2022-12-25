@@ -445,7 +445,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   closeCurrentTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   closeCurrentTabAction.setShortcut( QKeySequence( "Ctrl+W" ) );
   closeCurrentTabAction.setText( tr("Close current tab") );
-  closeCurrentTabAction.setIcon( QIcon(":/icons/closetab-hover.png") );
 
   connect( &closeCurrentTabAction, SIGNAL( triggered() ),
            this, SLOT( closeCurrentTab() ) );
@@ -1226,13 +1225,11 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
   css += macCssFile.readAll();
 #endif
 
-  if ( displayStyle.size() )
-  {
-    // Load an additional stylesheet
-    QFile builtInCssFile( QString( ":/qt-style-st-%1.css" ).arg( displayStyle ) );
-    if ( builtInCssFile.open( QFile::ReadOnly ) )
-      css += builtInCssFile.readAll();
-  }
+#if defined(Q_OS_WIN)
+  QFile winCssFile( ":/qt-style-win.css" );
+  winCssFile.open( QFile::ReadOnly );
+  css += winCssFile.readAll();
+#endif
 
   // Try loading a style sheet if there's one
   QFile cssFile( Config::getUserQtCssFileName() );
