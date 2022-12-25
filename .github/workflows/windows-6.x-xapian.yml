@@ -53,6 +53,7 @@ jobs:
 
       - name: changelog
         id: changelog
+        shell: bash
         run: |   
           previousTag=$(git tag --sort=-creatordate | sed -n 2p)
           echo "previousTag : $previousTag"
