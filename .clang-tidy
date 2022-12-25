@@ -16,7 +16,7 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   -bugprone-reserved-identifier,
   -cppcoreguidelines-owning-memory,
-  -google-default-arguments
+  -google-default-arguments,
   -misc-non-private-member-variables-in-classes,
   -misc-const-correctness,
   -modernize-avoid-c-arrays,
@@ -24,6 +24,9 @@ Checks: >
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
   -readability-magic-numbers,
+  -google-readability-braces-around-statements,
+  -readability-braces-around-statements,
+  -readability-identifier-length,
   -readability-function-cognitive-complexity,
 CheckOptions:
   - key:             modernize-loop-convert.MinConfidence
