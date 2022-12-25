@@ -345,9 +345,9 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   if( css.isEmpty() )
     return;
 
-  QRegularExpression reg1( "\\/\\*(?:.(?!\\*\\/))*.?\\*\\/",
+  QRegularExpression reg1( R"(\/\*(?:.(?!\*\/))*.?\*\/)",
                            QRegularExpression::DotMatchesEverythingOption );
-  QRegularExpression reg2( "[ \\*\\>\\+,;:\\[\\{\\]]" );
+  QRegularExpression reg2( R"([ \*\>\+,;:\[\{\]])" );
   QRegularExpression reg3( "[,;\\{]" );
 
 

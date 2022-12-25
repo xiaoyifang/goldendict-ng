@@ -799,11 +799,11 @@ void DictServerArticleRequest::run()
             if( Utils::AtomicInt::loadAcquire( isCancelled ) || !errorString.isEmpty() )
               break;
 
-            static QRegularExpression phonetic( "\\\\([^\\\\]+)\\\\",
+            static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                                 QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
             static QRegularExpression divs_inside_phonetic( "</div([^>]*)><div([^>]*)>",
                                                             QRegularExpression::CaseInsensitiveOption );
-            static QRegularExpression refs( "\\{([^\\{\\}]+)\\}",
+            static QRegularExpression refs( R"(\{([^\{\}]+)\})",
                                             QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
             static QRegularExpression links( "<a href=\"gdlookup://localhost/([^\"]*)\">",
                                              QRegularExpression::CaseInsensitiveOption );
@@ -819,7 +819,7 @@ void DictServerArticleRequest::run()
             articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
             if( !contentInHtml )
             {
-              articleText = articleText.replace(refs, "<a href=\"gdlookup://localhost/\\1\">\\1</a>" );
+              articleText = articleText.replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
               pos = 0;
               QString articleNewText;
@@ -834,7 +834,7 @@ void DictServerArticleRequest::run()
                 pos = match.capturedEnd();
 
                 QString phonetic_text = match.captured( 1 );
-                phonetic_text.replace( divs_inside_phonetic, "</span></div\\1><div\\2><span class=\"dictd_phonetic\">" );
+                phonetic_text.replace( divs_inside_phonetic, R"(</span></div\1><div\2><span class="dictd_phonetic">)" );
 
                 articleNewText += "<span class=\"dictd_phonetic\">" + phonetic_text + "</span>";
               }

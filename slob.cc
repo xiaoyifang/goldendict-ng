@@ -822,16 +822,16 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
 
   // pattern of img and script
   text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=\"(?!(?:data|https?|ftp):)(|/)([^\"]*)\"" ),
-                QString( "<\\1 \\2src=\"bres://%1/\\4\"").arg( getId().c_str() ) );
+                QString( R"(<\1 \2src="bres://%1/\4")").arg( getId().c_str() ) );
 
   // pattern <link... href="..." ...>
-  text.replace( QRegularExpression( "<\\s*link\\s+([^>]*)href=\"(?!(?:data|https?|ftp):)" ),
+  text.replace( QRegularExpression( R"(<\s*link\s+([^>]*)href="(?!(?:data|https?|ftp):))" ),
                 QString( "<link \\1href=\"bres://%1/").arg( getId().c_str() ) );
 
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   QString anchor;
-  QRegularExpression rxLink( "<\\s*a\\s+([^>]*)href=\"(?!(?:\\w+://|#|mailto:|tel:))(/|)([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( R"lit(<\s*a\s+([^>]*)href="(?!(?:\w+://|#|mailto:|tel:))(/|)([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
   QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -881,11 +881,11 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
 
   if( !texCgiPath.isEmpty() )
   {
-      QRegularExpression texImage( "<\\s*img\\s+class=\"([^\"]+)\"\\s*([^>]*)alt=\"([^\"]+)\"[^>]*>" );
+      QRegularExpression texImage( R"lit(<\s*img\s+class="([^"]+)"\s*([^>]*)alt="([^"]+)"[^>]*>)lit" );
       QRegularExpression regFrac( "\\\\[dt]frac" );
-      QRegularExpression regSpaces( "\\s+([\\{\\(\\[\\}\\)\\]])" );
+      QRegularExpression regSpaces( R"(\s+([\{\(\[\}\)\]]))" );
 
-    QRegExp multReg( "\\*\\{(\\d+)\\}([^\\{]|\\{([^\\}]+)\\})", Qt::CaseSensitive, QRegExp::RegExp2 );
+    QRegExp multReg( R"(\*\{(\d+)\}([^\{]|\{([^\}]+)\}))", Qt::CaseSensitive, QRegExp::RegExp2 );
 
     QString arrayDesc( "\\begin{array}{" );
     pos = 0;
@@ -995,7 +995,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
           QProcess::execute( command,QStringList() );
         }
 
-        QString tag = QString( "<img class=\"imgtex\" src=\"file://" )
+        QString tag = QString( R"(<img class="imgtex" src="file://)" )
 #ifdef Q_OS_WIN32
                       + "/"
 #endif
@@ -1463,7 +1463,7 @@ void SlobArticleRequest::run()
 
   for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
   {
-      result += "<div class=\"slobdict\"><h3 class=\"slobdict_headword\">";
+      result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
       result += i->second.first;
       result += "</h3></div>";
       result += i->second.second;
@@ -1471,7 +1471,7 @@ void SlobArticleRequest::run()
 
   for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
   {
-      result += "<div class=\"slobdict\"><h3 class=\"slobdict_headword\">";
+      result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
       result += i->second.first;
       result += "</h3></div>";
       result += i->second.second;

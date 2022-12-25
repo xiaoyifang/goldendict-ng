@@ -3149,11 +3149,11 @@ void MainWindow::latestReleaseReplyReady()
   if ( latestReleaseReply->error() == QNetworkReply::NoError )
   {
     QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readAll() );
-    QRegularExpression firstReleaseAnchor ("<a\\s+[^>]*?class=\\\"Link--primary\\\"[^>]*?>[^<]*?<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    QRegularExpression firstReleaseAnchor (R"(<a\s+[^>]*?class=\"Link--primary\"[^>]*?>[^<]*?<\/a>)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
     auto match = firstReleaseAnchor.match(latestReleaseInfo);
     if(match.hasMatch()){
       auto releaseAnchor = match.captured();
-      QRegularExpression extractReleaseRx ("<a\\s+.*?href=\\\"([^\\\"]*)\\\".*?>(.*?)<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+      QRegularExpression extractReleaseRx (R"(<a\s+.*?href=\"([^\"]*)\".*?>(.*?)<\/a>)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
       auto matchParts = extractReleaseRx.match(releaseAnchor);
       if(matchParts.hasMatch()){
         latestVersion = matchParts.captured(2);
@@ -3517,7 +3517,7 @@ void MainWindow::on_saveArticle_triggered()
   QString fileName = view->getTitle().simplified();
 
   // Replace reserved filename characters
-  QRegularExpression rxName( "[/\\\\\\?\\*:\\|<>]" );
+  QRegularExpression rxName( R"([/\\\?\*:\|<>])" );
   fileName.replace( rxName, "_" );
 
   fileName += ".html";
@@ -3590,7 +3590,7 @@ void MainWindow::on_saveArticle_triggered()
 
         // MDict anchors
         QRegularExpression anchorLinkRe(
-          "(<\\s*a\\s+[^>]*\\b(?:name|id)\\b\\s*=\\s*[\"']*g[0-9a-f]{32}_)([0-9a-f]+_)(?=[^\"'])",
+          R"((<\s*a\s+[^>]*\b(?:name|id)\b\s*=\s*["']*g[0-9a-f]{32}_)([0-9a-f]+_)(?=[^"']))",
           QRegularExpression::PatternOption::CaseInsensitiveOption|QRegularExpression::UseUnicodePropertiesOption );
         html.replace( anchorLinkRe, "\\1" );
 

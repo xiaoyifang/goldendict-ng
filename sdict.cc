@@ -303,7 +303,7 @@ string SdictDictionary::convert( string const & in )
 
     result.replace( QRegularExpression( "<\\s*t\\s*>",
                                         QRegularExpression::CaseInsensitiveOption ),
-                    "<span class=\"sdict_tr\" dir=\"ltr\">" );
+                    R"(<span class="sdict_tr" dir="ltr">)" );
     result.replace( QRegularExpression( "<\\s*f\\s*>",
                                         QRegularExpression::CaseInsensitiveOption ),
                     "<span class=\"sdict_forms\">" );
@@ -341,7 +341,7 @@ string SdictDictionary::convert( string const & in )
 
       m= end_link_tag.match( result, 0, QRegularExpression::PartialPreferFirstMatch );
       result.replace( end, m.captured ().length(), "</a>" );
-      result.replace( n, tag_len, QString( "<a class=\"sdict_wordref\" href=\"bword:" ) + link_text + "\">");
+      result.replace( n, tag_len, QString( R"(<a class="sdict_wordref" href="bword:)" ) + link_text + "\">");
     }
 
     // Adjust text direction for lines

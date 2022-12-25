@@ -396,7 +396,7 @@ void loadDictionaries( QWidget * parent, bool showInitially,
     ret = ids.insert( dictionaries[ x ]->getId() );
     if( !ret.second )
     {
-      gdWarning( "Duplicate dictionary ID found: ID=%s, name=\"%s\", path=\"%s\"",
+      gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
                  dictionaries[ x ]->getId().c_str(),
                  dictionaries[ x ]->getName().c_str(),
                  dictionaries[ x ]->getDictionaryFilenames().empty() ?

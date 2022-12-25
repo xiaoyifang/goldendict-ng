@@ -1283,14 +1283,14 @@ QString MdxDictionary::getCachedFileName( QString filename )
 
       if( n < (qint64)data.size() )
       {
-        gdWarning( "Mdx: file \"%s\" writing error: \"%s\"", fullName.toUtf8().data(),
+        gdWarning( R"(Mdx: file "%s" writing error: "%s")", fullName.toUtf8().data(),
                                                              f.errorString().toUtf8().data() );
         return QString();
       }
     }
     else
     {
-      gdWarning( "Mdx: file \"%s\" creating error: \"%s\"", fullName.toUtf8().data(),
+      gdWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(),
                                                             f.errorString().toUtf8().data() );
       return QString();
     }

@@ -417,11 +417,11 @@ private:
     void translatePW(QString& s){
         const int TRANSLATE_TBL_SIZE=5;
         static PWSyntaxTranslate t[TRANSLATE_TBL_SIZE]={
-            PWSyntaxTranslate("&[bB]\\s*\\{([^\\{}&]+)\\}", "<B>\\1</B>"),
-            PWSyntaxTranslate("&[iI]\\s*\\{([^\\{}&]+)\\}", "<I>\\1</I>"),
-            PWSyntaxTranslate("&[uU]\\s*\\{([^\\{}&]+)\\}", "<U>\\1</U>"),
-            PWSyntaxTranslate("&[lL]\\s*\\{([^\\{}&]+)\\}", "<SPAN style=\"color:#0000ff\">\\1</SPAN>"),
-            PWSyntaxTranslate("&[2]\\s*\\{([^\\{}&]+)\\}", "<SPAN style=\"color:#0000ff\">\\1</SPAN>")
+            PWSyntaxTranslate(R"(&[bB]\s*\{([^\{}&]+)\})", "<B>\\1</B>"),
+            PWSyntaxTranslate(R"(&[iI]\s*\{([^\{}&]+)\})", "<I>\\1</I>"),
+            PWSyntaxTranslate(R"(&[uU]\s*\{([^\{}&]+)\})", "<U>\\1</U>"),
+            PWSyntaxTranslate(R"(&[lL]\s*\{([^\{}&]+)\})", R"(<SPAN style="color:#0000ff">\1</SPAN>)"),
+            PWSyntaxTranslate(R"(&[2]\s*\{([^\{}&]+)\})", R"(<SPAN style="color:#0000ff">\1</SPAN>)")
         };
 
         QString old;
@@ -456,10 +456,10 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      QRegularExpression imgRe( "(<\\s*img\\s+[^>]*src\\s*=\\s*[\"']+)(?!(?:data|https?|ftp):)",
+      QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp):))",
                                 QRegularExpression::CaseInsensitiveOption
                                 | QRegularExpression::InvertedGreedinessOption );
-      QRegularExpression linkRe( "(<\\s*link\\s+[^>]*href\\s*=\\s*[\"']+)(?!(?:data|https?|ftp):)",
+      QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
                                  QRegularExpression::CaseInsensitiveOption
                                  | QRegularExpression::InvertedGreedinessOption );
 
@@ -469,7 +469,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       // Handle links to articles
 
-      QRegularExpression linksReg( "<a(\\s*[^>]*)href\\s*=\\s*['\"](bword://)?([^'\"]+)['\"]",
+      QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
                                    QRegularExpression::CaseInsensitiveOption );
 
 
@@ -522,7 +522,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       // Handle "audio" tags
 
-      QRegularExpression audioRe( "<\\s*audio\\s*src\\s*=\\s*([\"']+)([^\"']+)([\"'])\\s*>(.*)</audio>",
+      QRegularExpression audioRe( R"(<\s*audio\s*src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
                                   QRegularExpression::CaseInsensitiveOption
                                   | QRegularExpression::DotMatchesEverythingOption
                                   | QRegularExpression::InvertedGreedinessOption );
@@ -549,7 +549,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           newTag += match.captured( 4 );
           if( match.captured( 4 ).indexOf( "<img " ) < 0 )
 
-            newTag += " <img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\">";
+            newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
           newTag += "</a></span>";
 
           articleNewText += newTag;
@@ -1478,11 +1478,11 @@ void StardictArticleRequest::run()
 
     for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
     {
-        result += dict.isFromLanguageRTL() ? "<h3 class=\"sdct_headwords\" dir=\"rtl\">" : "<h3 class=\"sdct_headwords\">";
+        result += dict.isFromLanguageRTL() ? R"(<h3 class="sdct_headwords" dir="rtl">)" : "<h3 class=\"sdct_headwords\">";
         result += i->second.first;
         result += "</h3>";
         if( dict.isToLanguageRTL() )
-          result += "<div style=\"display:inline;\" dir=\"rtl\">";
+          result += R"(<div style="display:inline;" dir="rtl">)";
         result += i->second.second;
         result += cleaner;
         if( dict.isToLanguageRTL() )
@@ -1491,11 +1491,11 @@ void StardictArticleRequest::run()
 
     for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
     {
-        result += dict.isFromLanguageRTL() ? "<h3 class=\"sdct_headwords\" dir=\"rtl\">" : "<h3 class=\"sdct_headwords\">";
+        result += dict.isFromLanguageRTL() ? R"(<h3 class="sdct_headwords" dir="rtl">)" : "<h3 class=\"sdct_headwords\">";
         result += i->second.first;
         result += "</h3>";
         if( dict.isToLanguageRTL() )
-          result += "<div style=\"display:inline;\" dir=\"rtl\">";
+          result += R"(<div style="display:inline;" dir="rtl">)";
         result += i->second.second;
         result += cleaner;
         if( dict.isToLanguageRTL() )
@@ -1750,7 +1750,7 @@ void StardictResourceRequest::run()
       QString id = QString::fromUtf8( dict.getId().c_str() );
       int pos = 0;
 
-      QRegularExpression links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
+      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
                                 QRegularExpression::CaseInsensitiveOption );
 
       QString newCSS;
