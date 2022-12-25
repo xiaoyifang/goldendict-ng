@@ -18,6 +18,7 @@ Checks: >
   -cppcoreguidelines-owning-memory,
   -google-default-arguments
   -misc-non-private-member-variables-in-classes,
+  -misc-const-correctness,
   -modernize-avoid-c-arrays,
   -modernize-use-auto,
   -modernize-use-nodiscard,
