@@ -63,6 +63,7 @@ jobs:
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
 
       - name: changelog
+        shell: bash
         id: changelog
         run: |   
           previousTag=$(git tag --sort=-creatordate | sed -n 2p)
