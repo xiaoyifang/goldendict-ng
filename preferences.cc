@@ -182,6 +182,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
   ui.darkMode->setChecked(p.darkMode);
+#ifndef Q_OS_WIN32
+  ui.darkMode->hide();
+#endif
 
   ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
   ui.mainWindowHotkey->setHotKey( p.mainWindowHotkey );

@@ -694,6 +694,14 @@ Class load()
     }
   }
 
+  QDomNode lingua = root.namedItem("lingua");
+
+  if(!lingua.isNull()){
+    applyBoolOption(c.lingua.enable,lingua.namedItem("enable"));
+    c.lingua.languageCodes = lingua.namedItem("languageCodes").toElement().text();
+  }
+
+
   QDomNode forvo = root.namedItem( "forvo" );
 
   if ( !forvo.isNull() )
@@ -1449,6 +1457,22 @@ void save( Class const & c )
     opt = dd.createElement( "enableKatakana" );
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKatakana ? "1":"0" ) );
     romaji.appendChild( opt );
+  }
+
+  {
+    // Lingua
+
+    QDomElement lingua = dd.createElement("lingua");
+    root.appendChild(lingua);
+
+    QDomElement opt = dd.createElement("enable");
+    opt.appendChild(dd.createTextNode(c.lingua.enable?"1":"0"));
+    lingua.appendChild(opt);
+
+    opt = dd.createElement( "languageCodes" );
+    opt.appendChild( dd.createTextNode( c.lingua.languageCodes ) );
+    lingua.appendChild( opt );
+
   }
 
   {

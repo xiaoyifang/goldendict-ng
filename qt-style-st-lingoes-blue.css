@@ -51,38 +51,19 @@ MainWindow #dictsPane #dictsList {
 ArticleView #searchFrame QMenu {background-color: none}
 ArticleView QMenu {background-color: none} 
 
-MainWindow #dictionaryBar QToolTip {
-   background: #839EC7;
-   color: white;
-   border-style: none;
-}
-
 QMainWindow::separator {
      width:  1px; /* when vertical */
      height: 1px; /* when horizontal */
 } 
 
 #dictsPaneTitleBar {
-  background: #A8C0E4;
   margin: 2px;
 } 
 
 /* Colored header for the History Pane */
 #historyPaneTitleBar {
-  background: #A8C0E4;
   margin: 2px;
 } 
-
-MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree {
-   background: 	#EAF0F8; 
-   color: #52627C;
-}
-
-MainStatusBar #text
-{
-  background: #839EC7;
-  color: #fff;
-}
 
 ScanPopup #outerFrame
 {

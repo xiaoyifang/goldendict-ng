@@ -31,6 +31,7 @@
 #include "dictserver.hh"
 #include "slob.hh"
 #include "gls.hh"
+#include "dict/lingualibre.h"
 
 #ifndef NO_EPWING_SUPPORT
 #include "epwing.hh"
@@ -351,6 +352,15 @@ void loadDictionaries( QWidget * parent, bool showInitially,
     dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
   }
 
+  //// Lingua Libre
+
+  {
+    vector< sptr< Dictionary::Class > > dicts =
+      Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr );
+
+    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
+  }
+
   //// Programs
   {
     vector< sptr< Dictionary::Class > > dicts =
@@ -386,7 +396,7 @@ void loadDictionaries( QWidget * parent, bool showInitially,
     ret = ids.insert( dictionaries[ x ]->getId() );
     if( !ret.second )
     {
-      gdWarning( "Duplicate dictionary ID found: ID=%s, name=\"%s\", path=\"%s\"",
+      gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
                  dictionaries[ x ]->getId().c_str(),
                  dictionaries[ x ]->getName().c_str(),
                  dictionaries[ x ]->getDictionaryFilenames().empty() ?

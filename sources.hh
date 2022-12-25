@@ -279,6 +279,8 @@ public:
 
   Config::Transliteration getTransliteration() const;
 
+  Config::Lingua getLingua() const;
+
   Config::Forvo getForvo() const;
 
 signals:

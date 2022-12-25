@@ -727,7 +727,7 @@ void GlsDictionary::loadArticle( uint32_t address,
   }
 
   if( isToLanguageRTL() )
-    article += "<div style=\"display:inline;\" dir=\"rtl\">";
+    article += R"(<div style="display:inline;" dir="rtl">)";
 
   QString text = QString::fromUtf8( articleBody.c_str(), articleBody.size() );
 
@@ -743,10 +743,10 @@ void GlsDictionary::loadArticle( uint32_t address,
 
 QString & GlsDictionary::filterResource( QString & article )
 {
-  QRegularExpression imgRe( "(<\\s*img\\s+[^>]*src\\s*=\\s*[\"']+)(?!(?:data|https?|ftp|qrcx):)",
+  QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp|qrcx):))",
                             QRegularExpression::CaseInsensitiveOption
                             | QRegularExpression::InvertedGreedinessOption );
-  QRegularExpression linkRe( "(<\\s*link\\s+[^>]*href\\s*=\\s*[\"']+)(?!(?:data|https?|ftp):)",
+  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
                              QRegularExpression::CaseInsensitiveOption
                              | QRegularExpression::InvertedGreedinessOption );
 
@@ -755,7 +755,7 @@ QString & GlsDictionary::filterResource( QString & article )
 
   // Handle links to articles
 
-  QRegularExpression linksReg( "<a(\\s+[^>]*)href\\s*=\\s*['\"](bword://)?([^'\"]+)['\"]",
+  QRegularExpression linksReg( R"(<a(\s+[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
                                QRegularExpression::CaseInsensitiveOption );
 
   int pos = 0;
@@ -803,7 +803,7 @@ QString & GlsDictionary::filterResource( QString & article )
 
   // Handle "audio" tags
 
-  QRegularExpression audioRe( "<\\s*audio\\s+src\\s*=\\s*([\"']+)([^\"']+)([\"'])\\s*>(.*)</audio>",
+  QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
                               QRegularExpression::CaseInsensitiveOption
                               | QRegularExpression::DotMatchesEverythingOption
                               | QRegularExpression::InvertedGreedinessOption );
@@ -828,7 +828,7 @@ QString & GlsDictionary::filterResource( QString & article )
       QString newTag = QString::fromUtf8( ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
       newTag += match.captured( 4 );
       if( match.captured( 4 ).indexOf( "<img " ) < 0 )
-        newTag += " <img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\">";
+        newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
       newTag += "</a></span>";
 
       articleNewText += newTag;
@@ -1302,7 +1302,7 @@ void GlsResourceRequest::run()
       QString id = QString::fromUtf8( dict.getId().c_str() );
       int pos = 0;
 
-      QRegularExpression links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
+      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
                                 QRegularExpression::CaseInsensitiveOption );
 
       QString newCSS;

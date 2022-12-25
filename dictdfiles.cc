@@ -341,9 +341,9 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       }
       else
       {
-        static QRegularExpression phonetic( "\\\\([^\\\\]+)\\\\",
+        static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                             QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
-        static QRegularExpression refs( "\\{([^\\{\\}]+)\\}",
+        static QRegularExpression refs( R"(\{([^\{\}]+)\})",
                                         QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
         static QRegularExpression links( "<a href=\"gdlookup://localhost/([^\"]*)\">",
                                          QRegularExpression::CaseInsensitiveOption );
@@ -360,8 +360,8 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         free( articleBody );
 
         QString articleString = QString::fromUtf8( convertedText.c_str() )
-                                .replace(phonetic, "<span class=\"dictd_phonetic\">\\1</span>")
-                                .replace(refs, "<a href=\"gdlookup://localhost/\\1\">\\1</a>");
+                                .replace(phonetic, R"(<span class="dictd_phonetic">\1</span>)")
+                                .replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)");
         convertedText.erase();
 
         int pos = 0;
@@ -546,17 +546,17 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
     }
     else
     {
-      static QRegularExpression phonetic( "\\\\([^\\\\]+)\\\\",
+      static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                           QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
-      static QRegularExpression refs( "\\{([^\\{\\}]+)\\}",
+      static QRegularExpression refs( R"(\{([^\{\}]+)\})",
                                       QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
 
       string convertedText = Html::preformat( articleBody, isToLanguageRTL() );
       free( articleBody );
 
       text = QString::fromUtf8( convertedText.data(), convertedText.size() )
-            .replace(phonetic, "<span class=\"dictd_phonetic\">\\1</span>")
-            .replace(refs, "<a href=\"gdlookup://localhost/\\1\">\\1</a>");
+            .replace(phonetic, R"(<span class="dictd_phonetic">\1</span>)")
+            .replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)");
 
       text = Html::unescape( text );
     }

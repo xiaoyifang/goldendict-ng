@@ -163,7 +163,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   GlobalBroadcaster::instance()->setPreference(&cfg.preferences);
 
-  localSchemeHandler = new LocalSchemeHandler( articleNetMgr );
+  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this);
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "bword", localSchemeHandler );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "entry", localSchemeHandler );
@@ -172,15 +172,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdpicture", "gdtts" };
-  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr );
+  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this);
   for( int i = 0; i < localSchemes.size(); i++ )
   {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localSchemes.at( i ).toLatin1(),
                                                                   resourceSchemeHandler );
   }
 
-  wuri = new WebUrlRequestInterceptor();
-  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( wuri );
+  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor(this) );
 
   if(!cfg.preferences.hideGoldenDictHeader){
     QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
@@ -1178,6 +1177,7 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
 {
+  #ifdef Q_OS_WIN32
   if( darkMode )
   {
     //https://forum.qt.io/topic/101391/windows-10-dark-theme
@@ -1211,11 +1211,10 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
   }
   else
   {
-   #ifdef Q_OS_WIN32
     qApp->setStyle( new QProxyStyle() );
-   #endif
     qApp->setPalette( QPalette() );
   }
+  #endif
 
   QFile builtInCssFile( ":/qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
@@ -1250,9 +1249,11 @@ void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const 
       css += addonCss.readAll();
   }
 
+  #ifdef Q_OS_WIN32
   if(darkMode){
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
+  #endif
 
   setStyleSheet( css );
 }
@@ -3148,11 +3149,11 @@ void MainWindow::latestReleaseReplyReady()
   if ( latestReleaseReply->error() == QNetworkReply::NoError )
   {
     QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readAll() );
-    QRegularExpression firstReleaseAnchor ("<a\\s+[^>]*?class=\\\"Link--primary\\\"[^>]*?>[^<]*?<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+    QRegularExpression firstReleaseAnchor (R"(<a\s+[^>]*?class=\"Link--primary\"[^>]*?>[^<]*?<\/a>)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
     auto match = firstReleaseAnchor.match(latestReleaseInfo);
     if(match.hasMatch()){
       auto releaseAnchor = match.captured();
-      QRegularExpression extractReleaseRx ("<a\\s+.*?href=\\\"([^\\\"]*)\\\".*?>(.*?)<\\/a>",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+      QRegularExpression extractReleaseRx (R"(<a\s+.*?href=\"([^\"]*)\".*?>(.*?)<\/a>)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
       auto matchParts = extractReleaseRx.match(releaseAnchor);
       if(matchParts.hasMatch()){
         latestVersion = matchParts.captured(2);
@@ -3516,7 +3517,7 @@ void MainWindow::on_saveArticle_triggered()
   QString fileName = view->getTitle().simplified();
 
   // Replace reserved filename characters
-  QRegularExpression rxName( "[/\\\\\\?\\*:\\|<>]" );
+  QRegularExpression rxName( R"([/\\\?\*:\|<>])" );
   fileName.replace( rxName, "_" );
 
   fileName += ".html";
@@ -3589,7 +3590,7 @@ void MainWindow::on_saveArticle_triggered()
 
         // MDict anchors
         QRegularExpression anchorLinkRe(
-          "(<\\s*a\\s+[^>]*\\b(?:name|id)\\b\\s*=\\s*[\"']*g[0-9a-f]{32}_)([0-9a-f]+_)(?=[^\"'])",
+          R"((<\s*a\s+[^>]*\b(?:name|id)\b\s*=\s*["']*g[0-9a-f]{32}_)([0-9a-f]+_)(?=[^"']))",
           QRegularExpression::PatternOption::CaseInsensitiveOption|QRegularExpression::UseUnicodePropertiesOption );
         html.replace( anchorLinkRe, "\\1" );
 

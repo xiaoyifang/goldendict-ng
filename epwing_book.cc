@@ -1041,7 +1041,7 @@ void EpwingBook::fixHeadword( QString & headword )
   headword.remove( QChar( 0x30FB ) ); // Used in Japan transcription
 
   //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
-  headword.replace( QRegularExpression( "[\\p{N}\\p{S}\\p{P}\\p{M}]" ), " " );
+  headword.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])" ), " " );
 
   //if( isHeadwordCorrect( headword) )
   //  return;
@@ -1320,7 +1320,7 @@ QByteArray EpwingBook::handleColorImage( EB_Hook_Code code,
   url.setScheme( "bres" );
   url.setHost( dictID );
   url.setPath( Utils::Url::ensureLeadingSlash( name ) );
-  QByteArray urlStr = "<p class=\"epwing_image\"><img src=\"" + url.toEncoded()
+  QByteArray urlStr = R"(<p class="epwing_image"><img src=")" + url.toEncoded()
                       + "\" alt=\"" + name.toUtf8() + "\"></p>";
 
   if( imageCacheList.contains( name, Qt::CaseSensitive ) )
@@ -1403,7 +1403,7 @@ QByteArray EpwingBook::handleMonoImage( EB_Hook_Code code,
   url.setScheme( "bres" );
   url.setHost( dictID );
   url.setPath( Utils::Url::ensureLeadingSlash( name ) );
-  QByteArray urlStr = "<span class=\"epwing_image\"><img src=\"" + url.toEncoded()
+  QByteArray urlStr = R"(<span class="epwing_image"><img src=")" + url.toEncoded()
                       + "\" alt=\"" + name.toUtf8() + "\"/></span>";
 
   if( imageCacheList.contains( name, Qt::CaseSensitive ) )
@@ -1451,7 +1451,7 @@ QByteArray EpwingBook::handleWave( EB_Hook_Code code, const unsigned int * argv 
 {
 
   if( code == EB_HOOK_END_WAVE )
-    return QByteArray( "<img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a></span>" );
+    return QByteArray( R"(<img src="qrcx://localhost/icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a></span>)" );
 
   // Handle EB_HOOK_BEGIN_WAVE
 
@@ -1638,7 +1638,7 @@ QByteArray EpwingBook::handleNarrowFont( const unsigned int * argv,
   url.setHost( "/");
   url.setPath( Utils::Url::ensureLeadingSlash( QDir::fromNativeSeparators( fullName ) ) );
 
-  QByteArray link = "<img class=\"epwing_narrow_font\" src=\"" + url.toEncoded() + "\"/>";
+  QByteArray link = R"(<img class="epwing_narrow_font" src=")" + url.toEncoded() + "\"/>";
 
   if( fontsCacheList.contains( fname, Qt::CaseSensitive ) )
   {
@@ -1708,7 +1708,7 @@ QByteArray EpwingBook::handleWideFont( const unsigned int * argv,
   url.setHost( "/");
   url.setPath( Utils::Url::ensureLeadingSlash( QDir::fromNativeSeparators( fullName ) ) );
 
-  QByteArray link = "<img class=\"epwing_wide_font\" src=\"" + url.toEncoded() + "\"/>";
+  QByteArray link = R"(<img class="epwing_wide_font" src=")" + url.toEncoded() + "\"/>";
 
   if( fontsCacheList.contains( fname, Qt::CaseSensitive ) )
   {

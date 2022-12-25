@@ -835,14 +835,14 @@ string ZimDictionary::convert( const string & in )
   QString text = QString::fromUtf8( in.c_str() );
 
   // replace background
-  text.replace( QRegularExpression( "<\\s*body\\s+([^>]*)(background(|-color)):([^;\"]*(;|))" ),
+  text.replace( QRegularExpression( R"(<\s*body\s+([^>]*)(background(|-color)):([^;"]*(;|)))" ),
                 QString( "<body \\1" ) );
 
   // pattern of img and script
   // text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" ),
   //               QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
 
-  QRegularExpression rxImgScript( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" );
+  QRegularExpression rxImgScript( R"(<\s*(img|script)\s+([^>]*)src=(")([^"]*)\3)" );
   QRegularExpressionMatchIterator it = rxImgScript.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -863,7 +863,7 @@ string ZimDictionary::convert( const string & in )
     if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
     {
       //<\\1 \\2src=\\3bres://%1/
-      url.remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+      url.remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -879,23 +879,23 @@ string ZimDictionary::convert( const string & in )
 
 
   // Fix links without '"'
-  text.replace( QRegularExpression( "href=(\\.\\.|)/([^\\s>]+)" ),
-                QString( "href=\"\\1/\\2\"" ) );
+  text.replace( QRegularExpression( R"(href=(\.\.|)/([^\s>]+))" ),
+                QString( R"(href="\1/\2")" ) );
 
   // pattern <link... href="..." ...>
-  text.replace( QRegularExpression( "<\\s*link\\s+([^>]*)href=\"(\\.\\.|)/" ),
+  text.replace( QRegularExpression( R"(<\s*link\s+([^>]*)href="(\.\.|)/)" ),
                 QString( "<link \\1href=\"bres://%1/").arg( getId().c_str() ) );
 
   // localize the http://en.wiki***.com|org/wiki/<key> series links
   // excluding those keywords that have ":" in it
   QString urlWiki = "\"http(s|)://en\\.(wiki(pedia|books|news|quote|source|voyage|versity)|wiktionary)\\.(org|com)/wiki/([^:\"]*)\"";
-  text.replace( QRegularExpression( "<\\s*a\\s+(class=\"external\"\\s+|)href=" + urlWiki ),
-                QString( "<a href=\"gdlookup://localhost/\\6\"" ) );
+  text.replace( QRegularExpression( R"(<\s*a\s+(class="external"\s+|)href=)" + urlWiki ),
+                QString( R"(<a href="gdlookup://localhost/\6")" ) );
 
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
-  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))()([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( R"lit(<\s*(?:a|meta)\s+([^>]*)(?:href|url)="?(?!(?:\w+://|#|mailto:|tel:))()([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
   it = rxLink.globalMatch( text );
   pos = 0;
   while( it.hasNext() )
@@ -944,7 +944,7 @@ string ZimDictionary::convert( const string & in )
 
   // Occasionally words needs to be displayed in vertical, but <br/> were changed to <br\> somewhere
   // proper style: <a href="gdlookup://localhost/Neoptera" ... >N<br/>e<br/>o<br/>p<br/>t<br/>e<br/>r<br/>a</a>
-  QRegularExpression rxBR( "(<a href=\"gdlookup://localhost/[^\"]*\"\\s*[^>]*>)\\s*((\\w\\s*&lt;br(\\\\|/|)&gt;\\s*)+\\w)\\s*</a>",
+  QRegularExpression rxBR( R"((<a href="gdlookup://localhost/[^"]*"\s*[^>]*>)\s*((\w\s*&lt;br(\\|/|)&gt;\s*)+\w)\s*</a>)",
                            QRegularExpression::UseUnicodePropertiesOption );
   pos = 0;
   QRegularExpressionMatchIterator it2 = rxBR.globalMatch( text );
@@ -1520,7 +1520,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString(name).remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+  auto formatedName = QString::fromStdString(name).remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
   return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 

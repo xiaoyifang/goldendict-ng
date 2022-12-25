@@ -7,7 +7,7 @@ class WebUrlRequestInterceptor : public QWebEngineUrlRequestInterceptor
 {
     Q_OBJECT
 public:
-    WebUrlRequestInterceptor(QObject *p = Q_NULLPTR);
+    WebUrlRequestInterceptor(QObject *p);
     void interceptRequest(QWebEngineUrlRequestInfo &info);
   signals:
     void linkClicked( const QUrl & url );

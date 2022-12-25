@@ -1,7 +1,8 @@
 #include "resourceschemehandler.h"
 
-ResourceSchemeHandler::ResourceSchemeHandler(ArticleNetworkAccessManager& articleNetMgr):mManager(articleNetMgr){
-
+ResourceSchemeHandler::ResourceSchemeHandler(ArticleNetworkAccessManager& articleNetMgr, QObject *parent):
+    QWebEngineUrlSchemeHandler(parent),
+    mManager(articleNetMgr){
 }
 void ResourceSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 {

@@ -145,7 +145,7 @@ string findCodeForDslId( int id )
 bool isAtSignFirst( wstring const & str )
 {
   // Test if '@' is first in string except spaces and dsl tags
-  QRegularExpression reg( "[ \\t]*(?:\\[[^\\]]+\\][ \\t]*)*@", QRegularExpression::PatternOption::CaseInsensitiveOption);
+  QRegularExpression reg( R"([ \t]*(?:\[[^\]]+\][ \t]*)*@)", QRegularExpression::PatternOption::CaseInsensitiveOption);
   return gd::toQString( str ).indexOf (reg) == 0;
 }
 
@@ -356,11 +356,11 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
         catch( eot )
         {
           if( !dictionaryName.empty() )
-            gdWarning( "DSL: Unfinished tag \"%s\" with attributes \"%s\" found in \"%s\", article \"%s\".",
+            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
                        gd::toQString( name ).toUtf8().data(), gd::toQString( attrs ).toUtf8().data(),
                        dictionaryName.c_str(), gd::toQString( headword ).toUtf8().data() );
           else
-            gdWarning( "DSL: Unfinished tag \"%s\" with attributes \"%s\" found",
+            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
                        gd::toQString( name ).toUtf8().data(), gd::toQString( attrs ).toUtf8().data() );
 
           throw eot();
@@ -814,7 +814,7 @@ void ArticleDom::closeTag( wstring const & name,
   if ( warn )
   {
     if( !dictionaryName.empty() )
-      gdWarning( "No corresponding opening tag for closing tag \"%s\" found in \"%s\", article \"%s\".",
+      gdWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
                  gd::toQString( name ).toUtf8().data(), dictionaryName.c_str(),
                  gd::toQString( headword ).toUtf8().data() );
     else

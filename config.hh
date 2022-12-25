@@ -556,6 +556,21 @@ struct Transliteration
   {}
 };
 
+struct Lingua
+{
+  bool enable;
+  QString languageCodes;
+
+  bool operator == ( Lingua const & other ) const
+  { return enable == other.enable &&
+      languageCodes == other.languageCodes;
+  }
+
+  bool operator != ( Lingua const & other ) const
+  { return ! operator == ( other ); }
+
+};
+
 struct Forvo
 {
   bool enable;
@@ -675,6 +690,7 @@ struct Class
   DictServers dictServers;
   Hunspell hunspell;
   Transliteration transliteration;
+  Lingua lingua;
   Forvo forvo;
   Programs programs;
   VoiceEngines voiceEngines;

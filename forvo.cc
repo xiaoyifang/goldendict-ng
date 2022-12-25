@@ -271,7 +271,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
                 string addTime =
                     tr( "Added %1" ).arg( item.namedItem( "addtime" ).toElement().text() ).toUtf8().data();
 
-                articleBody += "<td><a href=" + ref + " title=\"" + Html::escape( addTime ) + "\"><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+                articleBody += "<td><a href=" + ref + " title=\"" + Html::escape( addTime ) + R"("><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
                 articleBody += string( "<td>" ) + tr( "by" ).toUtf8().data() + " <a class='forvo_user' href='"
                                + userProfile + "'>"
                                + Html::escape( user.toUtf8().data() )

@@ -392,16 +392,16 @@ string AardDictionary::convert( const string & in )
 
     QString text = QString::fromUtf8( inConverted.c_str() );
 
-    text.replace( QRegularExpression( "<\\s*a\\s+href\\s*=\\s*\\\"(w:|s:){0,1}([^#](?!ttp://)[^\\\"]*)(.)",
+    text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*\"(w:|s:){0,1}([^#](?!ttp://)[^\"]*)(.))",
                                       QRegularExpression::DotMatchesEverythingOption ),
-                  "<a href=\"bword:\\2\"");
-    text.replace( QRegularExpression( "<\\s*a\\s+href\\s*=\\s*'(w:|s:){0,1}([^#](?!ttp://)[^']*)(.)",
+                  R"(<a href="bword:\2")");
+    text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*'(w:|s:){0,1}([^#](?!ttp://)[^']*)(.))",
                                       QRegularExpression::DotMatchesEverythingOption ),
-                  "<a href=\"bword:\\2\"");
+                  R"(<a href="bword:\2")");
 
     // Anchors
-    text.replace( QRegularExpression( "<a\\s+href=\"bword:([^#\"]+)#([^\"]+)" ),
-                  "<a href=\"gdlookup://localhost/\\1?gdanchor=\\2" );
+    text.replace( QRegularExpression( R"(<a\s+href="bword:([^#"]+)#([^"]+))" ),
+                  R"(<a href="gdlookup://localhost/\1?gdanchor=\2)" );
 
     static QRegularExpression self_closing_divs( "(<div\\s+[^>]*)/>",
                                                  QRegularExpression::CaseInsensitiveOption );  // <div ... />

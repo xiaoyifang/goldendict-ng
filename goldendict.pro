@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 22.11.24-alpha
+VERSION = 22.12.24-alpha
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -33,6 +33,7 @@ CONFIG( release, debug|release ) {
 
 # DEPENDPATH += . generators
 INCLUDEPATH += .
+INCLUDEPATH += ./src/
 
 QT += core \
       gui \
@@ -93,7 +94,7 @@ win32 {
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
-        VERSION = 22.11.24 
+        VERSION = 22.12.24 
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
@@ -220,12 +221,12 @@ mac {
 
     !CONFIG( no_macos_universal ) {
         LIBS+=        -lhunspell
-        INCLUDEPATH = $${PWD}/maclibs/include
+        INCLUDEPATH += $${PWD}/maclibs/include
         LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
     }
     else{
         PKGCONFIG +=   hunspell
-        INCLUDEPATH = /opt/homebrew/include /usr/local/include
+        INCLUDEPATH += /opt/homebrew/include /usr/local/include
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
@@ -389,7 +390,8 @@ HEADERS += folding.hh \
     gls.hh \
     splitfile.hh \
     favoritespanewidget.hh \
-    treeview.hh
+    treeview.hh \
+    src/dict/lingualibre.h
 
 FORMS += groups.ui \
     dictgroupwidget.ui \
@@ -526,7 +528,8 @@ SOURCES += folding.cc \
     gls.cc \
     splitfile.cc \
     favoritespanewidget.cc \
-    treeview.cc
+    treeview.cc \
+    src/dict/lingualibre.cpp
 
 win32 {
     FORMS   += texttospeechsource.ui

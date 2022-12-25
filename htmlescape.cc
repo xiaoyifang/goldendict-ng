@@ -159,7 +159,7 @@ QString unescape( QString const & str, bool saveFormat )
 
 QString fromHtmlEscaped( QString const & str){
   QString retVal = str;
-  QRegularExpression regExp("(?<lt>\\&lt\\;)|(?<gt>\\&gt\\;)|(?<amp>\\&amp\\;)|(?<quot>\\&quot\\;)", QRegularExpression::PatternOption::CaseInsensitiveOption);
+  QRegularExpression regExp(R"((?<lt>\&lt\;)|(?<gt>\&gt\;)|(?<amp>\&amp\;)|(?<quot>\&quot\;))", QRegularExpression::PatternOption::CaseInsensitiveOption);
   auto match = regExp.match(str, 0);
 
   while (match.hasMatch())

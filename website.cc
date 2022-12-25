@@ -198,9 +198,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     while( !base.isEmpty() && !base.endsWith( "/" ) )
       base.chop( 1 );
 
-    QRegularExpression tags( "<\\s*(a|link|img|script)\\s+[^>]*(src|href)\\s*=\\s*['\"][^>]+>",
+    QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
                              QRegularExpression::CaseInsensitiveOption );
-    QRegularExpression links( "\\b(src|href)\\s*=\\s*(['\"])([^'\"]+['\"])",
+    QRegularExpression links( R"(\b(src|href)\s*=\s*(['"])([^'"]+['"]))",
                               QRegularExpression::CaseInsensitiveOption );
     int pos = 0;
     QString articleNewString;
@@ -254,7 +254,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     // Redirect CSS links to own handler
 
     QString prefix = QString( "bres://" ) + dictPtr->getId().c_str() + "/";
-    QRegularExpression linkTags( "(<\\s*link\\s[^>]*rel\\s*=\\s*['\"]stylesheet['\"]\\s+[^>]*href\\s*=\\s*['\"])([^'\"]+)://([^'\"]+['\"][^>]+>)",
+    QRegularExpression linkTags( R"((<\s*link\s[^>]*rel\s*=\s*['"]stylesheet['"]\s+[^>]*href\s*=\s*['"])([^'"]+)://([^'"]+['"][^>]+>))",
                                  QRegularExpression::CaseInsensitiveOption );
     pos = 0;
     it = linkTags.globalMatch( articleString );

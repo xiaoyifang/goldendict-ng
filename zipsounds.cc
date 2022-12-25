@@ -279,7 +279,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + "><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
     result += "</tr>";
   }
@@ -325,7 +325,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + "><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
     result += "</tr>";
   }
