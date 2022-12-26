@@ -21,11 +21,17 @@ QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
 ,  mainWindow( 0 )
 #endif
 {
-  connect( this, SIGNAL( commitDataRequest( QSessionManager& ) ),
-           this, SLOT( hotkeyAppCommitData( QSessionManager& ) ), Qt::DirectConnection );
+  connect( this,
+    &QGuiApplication::commitDataRequest,
+    this,
+    &QHotkeyApplication::hotkeyAppCommitData,
+    Qt::DirectConnection );
 
-  connect( this, SIGNAL( saveStateRequest( QSessionManager& ) ),
-           this, SLOT( hotkeyAppSaveState( QSessionManager& ) ), Qt::DirectConnection );
+  connect( this,
+    &QGuiApplication::saveStateRequest,
+    this,
+    &QHotkeyApplication::hotkeyAppSaveState,
+    Qt::DirectConnection );
 
 #if defined( Q_OS_WIN ) 
   installNativeEventFilter( this );
@@ -39,11 +45,17 @@ QHotkeyApplication::QHotkeyApplication( QString const & id,
 ,  mainWindow( 0 )
 #endif
 {
-  connect( this, SIGNAL( commitDataRequest( QSessionManager& ) ),
-           this, SLOT( hotkeyAppCommitData( QSessionManager& ) ), Qt::DirectConnection );
+  connect( this,
+    &QGuiApplication::commitDataRequest,
+    this,
+    &QHotkeyApplication::hotkeyAppCommitData,
+    Qt::DirectConnection );
 
-  connect( this, SIGNAL( saveStateRequest( QSessionManager& ) ),
-           this, SLOT( hotkeyAppSaveState( QSessionManager& ) ), Qt::DirectConnection );
+  connect( this,
+    &QGuiApplication::saveStateRequest,
+    this,
+    &QHotkeyApplication::hotkeyAppSaveState,
+    Qt::DirectConnection );
 
 #if defined( Q_OS_WIN ) 
   installNativeEventFilter( this );
@@ -250,7 +262,7 @@ bool HotkeyWrapper::checkState(quint32 vk, quint32 mod)
 
       state2 = true;
       state2waiter = hs;
-      QTimer::singleShot(500, this, SLOT(waitKey2()));
+      QTimer::singleShot( 500, this, &HotkeyWrapper::waitKey2 );
 
       #ifdef HAVE_X11
 
@@ -530,9 +542,7 @@ void HotkeyWrapper::init()
   // This is required to ensure context was indeed created
   XSync( display, False );
 
-  connect( this, SIGNAL( keyRecorded( quint32, quint32 ) ),
-           this, SLOT( checkState( quint32, quint32 ) ),
-           Qt::QueuedConnection );
+  connect( this, &HotkeyWrapper::keyRecorded, this, &HotkeyWrapper::checkState, Qt::QueuedConnection );
 
   start();
 }

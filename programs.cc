@@ -138,11 +138,9 @@ void ProgramsDictionary::loadIcon() noexcept
 
 RunInstance::RunInstance(): process( this )
 {
-  connect( this, SIGNAL(processFinished()), this,
-           SLOT(handleProcessFinished()), Qt::QueuedConnection );
-  connect( &process, SIGNAL(finished(int)), this, SIGNAL(processFinished()));
-  connect( &process, SIGNAL(errorOccurred(QProcess::ProcessError)), this,
-           SIGNAL(processFinished()) );
+  connect( this, &RunInstance::processFinished, this, &RunInstance::handleProcessFinished, Qt::QueuedConnection );
+  connect( &process, &QProcess::finished, this, &RunInstance::processFinished );
+  connect( &process, &QProcess::errorOccurred, this, &RunInstance::processFinished );
 }
 
 bool RunInstance::start( Config::Program const & prg, QString const & word,
@@ -211,8 +209,7 @@ ProgramDataRequest::ProgramDataRequest( QString const & word,
                                         Config::Program const & prg_ ):
   prg( prg_ )
 {
-  connect( &instance, SIGNAL(finished(QByteArray,QString)),
-           this, SLOT(instanceFinished(QByteArray,QString)) );
+  connect( &instance, &RunInstance::finished, this, &ProgramDataRequest::instanceFinished );
 
   QString error;
   if ( !instance.start( prg, word, error ) )
@@ -335,8 +332,7 @@ ProgramWordSearchRequest::ProgramWordSearchRequest( QString const & word,
                                                     Config::Program const & prg_ ):
   prg( prg_ )
 {
-  connect( &instance, SIGNAL(finished(QByteArray,QString)),
-           this, SLOT(instanceFinished(QByteArray,QString)) );
+  connect( &instance, &RunInstance::finished, this, &ProgramWordSearchRequest::instanceFinished );
 
   QString error;
   if ( !instance.start( prg, word, error ) )

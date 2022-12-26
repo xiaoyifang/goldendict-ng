@@ -14,19 +14,16 @@ GroupComboBox::GroupComboBox( QWidget * parent ): QComboBox( parent ),
   setToolTip( tr( "Choose a Group (Alt+G)" ) );
 
   popupAction.setShortcut( QKeySequence( "Alt+G" ) );
-  connect( &popupAction, SIGNAL( triggered() ),
-           this, SLOT( popupGroups() ) );
+  connect( &popupAction, &QAction::triggered, this, &GroupComboBox::popupGroups );
 
   addAction( &popupAction );
 
   selectNextAction.setShortcut( QKeySequence( "Alt+PgDown" ) );
-  connect( &selectNextAction, SIGNAL( triggered() ),
-           this, SLOT( selectNextGroup() ) );
+  connect( &selectNextAction, &QAction::triggered, this, &GroupComboBox::selectNextGroup );
   addAction( &selectNextAction );
 
   selectPreviousAction.setShortcut( QKeySequence( "Alt+PgUp" ) );
-  connect( &selectPreviousAction, SIGNAL( triggered() ),
-           this, SLOT( selectPreviousGroup() ) );
+  connect( &selectPreviousAction, &QAction::triggered, this, &GroupComboBox::selectPreviousGroup );
   addAction( &selectPreviousAction );
 
   setMaxVisibleItems( 30 );

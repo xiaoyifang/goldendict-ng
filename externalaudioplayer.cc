@@ -84,8 +84,7 @@ void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
 QString ExternalAudioPlayer::startViewer()
 {
   Q_ASSERT( !exitingViewer && viewer );
-  connect( viewer.data(), SIGNAL( destroyed( QObject * ) ),
-           this, SLOT( onViewerDestroyed( QObject * ) ) );
+  connect( viewer.data(), &QObject::destroyed, this, &ExternalAudioPlayer::onViewerDestroyed );
   try
   {
     viewer->start();

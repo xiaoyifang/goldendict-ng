@@ -177,13 +177,11 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   LoadDictionaries loadDicts( cfg );
 
-  QObject::connect( &loadDicts, SIGNAL( indexingDictionarySignal( QString const & ) ),
-                    &init, SLOT( indexing( QString const & ) ) );
+  QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
 
   QEventLoop localLoop;
 
-  QObject::connect( &loadDicts, SIGNAL( finished() ),
-                    &localLoop, SLOT( quit() ) );
+  QObject::connect( &loadDicts, &QThread::finished, &localLoop, &QEventLoop::quit );
 
   loadDicts.start();
 

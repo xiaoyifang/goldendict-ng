@@ -103,26 +103,22 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   disableDictionaryDescription();
 
   ui.dictionaryOrder->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( ui.dictionaryOrder, SIGNAL( customContextMenuRequested( QPoint ) ),
-           this, SLOT( contextMenuRequested( QPoint ) ) );
+  connect( ui.dictionaryOrder, &QWidget::customContextMenuRequested, this, &OrderAndProps::contextMenuRequested );
 
-  connect( ui.dictionaryOrder, SIGNAL( gotFocus() ),
-           this, SLOT( dictListFocused() ) );
-  connect( ui.inactiveDictionaries, SIGNAL( gotFocus() ),
-           this, SLOT( inactiveDictListFocused() ) );
+  connect( ui.dictionaryOrder, &DictListWidget::gotFocus, this, &OrderAndProps::dictListFocused );
+  connect( ui.inactiveDictionaries, &DictListWidget::gotFocus, this, &OrderAndProps::inactiveDictListFocused );
 
   connect ( ui.dictionaryOrder->selectionModel(), SIGNAL( selectionChanged ( const QItemSelection & , const QItemSelection & ) ),
       this, SLOT( dictionarySelectionChanged( const QItemSelection & ) ) );
-  connect ( ui.inactiveDictionaries->selectionModel(), SIGNAL( selectionChanged( const QItemSelection &, const QItemSelection & ) ),
-      this, SLOT( inactiveDictionarySelectionChanged( QItemSelection const & ) ) );
+  connect( ui.inactiveDictionaries->selectionModel(),
+    &QItemSelectionModel::selectionChanged,
+    this,
+    &OrderAndProps::inactiveDictionarySelectionChanged );
 
-  connect (ui.searchLine, SIGNAL( filterChanged( QString const & ) ),
-      this, SLOT( filterChanged( QString const &) ) );
+  connect( ui.searchLine, &QuickFilterLine::filterChanged, this, &OrderAndProps::filterChanged );
 
-  connect( ui.dictionaryOrder->getModel(), SIGNAL( contentChanged() ),
-           this, SLOT( showDictNumbers() ) );
-  connect( ui.inactiveDictionaries->getModel(), SIGNAL( contentChanged() ),
-           this, SLOT( showDictNumbers() ) );
+  connect( ui.dictionaryOrder->getModel(), &DictListModel::contentChanged, this, &OrderAndProps::showDictNumbers );
+  connect( ui.inactiveDictionaries->getModel(), &DictListModel::contentChanged, this, &OrderAndProps::showDictNumbers );
 
   showDictNumbers();
 }

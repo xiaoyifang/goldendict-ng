@@ -22,11 +22,9 @@ DictionaryBar::DictionaryBar( QWidget * parent,
 
   maxDictionaryRefsAction = new QAction(  QIcon(":/icons/expand_opt.png"), tr( "Extended menu with all dictionaries..." ), this );
 
-  connect( &events, SIGNAL( mutedDictionariesChanged() ),
-           this, SLOT( mutedDictionariesChanged() ) );
+  connect( &events, &Config::Events::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
 
-  connect( this, SIGNAL(actionTriggered(QAction*)),
-           this, SLOT(actionWasTriggered(QAction*)) );
+  connect( this, &QToolBar::actionTriggered, this, &DictionaryBar::actionWasTriggered );
 }
 
 static QString elideDictName( QString const & name )
@@ -169,7 +167,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     action->setIconVisibleInMenu( true );
   }
 
-  connect( this, SIGNAL( closePopupMenu() ), &menu, SLOT( close() ) );
+  connect( this, &DictionaryBar::closePopupMenu, &menu, &QWidget::close );
 
   QAction * result = menu.exec( event->globalPos() );
 

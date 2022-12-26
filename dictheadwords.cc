@@ -72,46 +72,38 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
 
   ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
-  connect( this, SIGNAL( finished( int ) ), this, SLOT( savePos() ) );
+  connect( this, &QDialog::finished, this, &DictHeadwords::savePos );
 
   if( !fromMainWindow )
   {
     ui.helpButton->hide();
-    connect( this, SIGNAL( closeDialog() ), this, SLOT( accept() ) );
+    connect( this, &DictHeadwords::closeDialog, this, &QDialog::accept );
   }
   else
   {
-    connect( ui.helpButton, SIGNAL( clicked() ),
-             this, SLOT( helpRequested() ) );
+    connect( ui.helpButton, &QAbstractButton::clicked, this, &DictHeadwords::helpRequested );
 
     helpAction.setShortcut( QKeySequence( "F1" ) );
     helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-    connect( &helpAction, SIGNAL( triggered() ),
-             this, SLOT( helpRequested() ) );
+    connect( &helpAction, &QAction::triggered, this, &DictHeadwords::helpRequested );
 
     addAction( &helpAction );
   }
 
-  connect( ui.OKButton, SIGNAL( clicked( bool ) ), this, SLOT( okButtonClicked() ) );
-  connect( ui.exportButton, SIGNAL( clicked( bool ) ), this, SLOT( exportButtonClicked() ) );
-  connect( ui.applyButton, SIGNAL( clicked( bool ) ), this, SLOT( filterChanged() ) );
+  connect( ui.OKButton, &QAbstractButton::clicked, this, &DictHeadwords::okButtonClicked );
+  connect( ui.exportButton, &QAbstractButton::clicked, this, &DictHeadwords::exportButtonClicked );
+  connect( ui.applyButton, &QAbstractButton::clicked, this, &DictHeadwords::filterChanged );
 
-  connect( ui.autoApply, SIGNAL( stateChanged( int ) ),
-           this, SLOT( autoApplyStateChanged( int ) ) );
+  connect( ui.autoApply, &QCheckBox::stateChanged, this, &DictHeadwords::autoApplyStateChanged );
 
-  connect( ui.filterLine, SIGNAL( textChanged( QString ) ),
-           this, SLOT( filterChangedInternal() ) );
-  connect( ui.searchModeCombo, SIGNAL( currentIndexChanged( int ) ),
-           this, SLOT( filterChangedInternal() ) );
-  connect( ui.matchCase, SIGNAL( stateChanged( int ) ),
-           this, SLOT( filterChangedInternal() ) );
+  connect( ui.filterLine, &QLineEdit::textChanged, this, &DictHeadwords::filterChangedInternal );
+  connect( ui.searchModeCombo, &QComboBox::currentIndexChanged, this, &DictHeadwords::filterChangedInternal );
+  connect( ui.matchCase, &QCheckBox::stateChanged, this, &DictHeadwords::filterChangedInternal );
 
-  connect( ui.headersListView, SIGNAL( clicked( QModelIndex ) ),
-           this, SLOT( itemClicked( QModelIndex ) ) );
+  connect( ui.headersListView, &QAbstractItemView::clicked, this, &DictHeadwords::itemClicked );
 
-  connect( proxy, SIGNAL( dataChanged( QModelIndex, QModelIndex ) ),
-           this, SLOT( showHeadwordsNumber() ) );
+  connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
 
   ui.headersListView->installEventFilter( this );
 
@@ -204,7 +196,7 @@ void DictHeadwords::filterChangedInternal()
 {
   // emit signal in async manner, to avoid UI slowdown
   if( ui.autoApply->isChecked() )
-    QTimer::singleShot( 100, this, SLOT( filterChanged() ) );
+    QTimer::singleShot( 100, this, &DictHeadwords::filterChanged );
 }
 
 void DictHeadwords::filterChanged()

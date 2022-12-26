@@ -23,8 +23,7 @@ WordFinder::WordFinder( QObject * parent ):
   updateResultsTimer.setInterval( 1000 ); // We use a one second update timer
   updateResultsTimer.setSingleShot( true );
 
-  connect( &updateResultsTimer, SIGNAL( timeout() ),
-           this, SLOT( updateResults() ), Qt::QueuedConnection );
+  connect( &updateResultsTimer, &QTimer::timeout, this, &WordFinder::updateResults, Qt::QueuedConnection );
 }
 
 WordFinder::~WordFinder()
@@ -156,8 +155,7 @@ void WordFinder::startSearch()
             (*inputDicts)[ x ]->prefixMatch( allWordWritings[ y ], requestedMaxResults ) :
             (*inputDicts)[ x ]->stemmedMatch( allWordWritings[ y ], stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), SIGNAL( finished() ),
-                 this, SLOT( requestFinished() ), Qt::QueuedConnection );
+        connect( sr.get(), &Dictionary::Request::finished, this, &WordFinder::requestFinished, Qt::QueuedConnection );
 
         queuedRequests.push_back( sr );
       }
