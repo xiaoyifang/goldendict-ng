@@ -123,7 +123,7 @@
            <item>
             <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>Display style:</string>
+              <string>Article Display style:</string>
              </property>
             </widget>
            </item>
@@ -157,8 +157,21 @@
          </item>
          <item>
           <widget class="QCheckBox" name="darkMode">
+           <property name="toolTip">
+            <string>Turn the UI to dark.</string>
+           </property>
            <property name="text">
-            <string>dark mode</string>
+            <string>Dark Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="darkReaderMode">
+           <property name="toolTip">
+            <string>Turn the article display style to dark.</string>
+           </property>
+           <property name="text">
+            <string>Dark Reader Mode</string>
            </property>
           </widget>
          </item>

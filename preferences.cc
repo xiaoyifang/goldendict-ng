@@ -172,6 +172,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
   ui.darkMode->setChecked(p.darkMode);
+  ui.darkReaderMode -> setChecked(p.darkReaderMode);
 #ifndef Q_OS_WIN32
   ui.darkMode->hide();
 #endif
@@ -395,6 +396,7 @@ Config::Preferences Preferences::getPreferences()
   p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
 
   p.darkMode = ui.darkMode->isChecked();
+  p.darkReaderMode = ui.darkReaderMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
   p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
