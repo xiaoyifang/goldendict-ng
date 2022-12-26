@@ -40,9 +40,7 @@ public:
   std::string const & getExceptionText() const
   { return exceptionText; }
 
-signals:
 
-  void indexingDictionarySignal( QString const & dictionaryName );
 
 public:
 
@@ -51,6 +49,12 @@ public:
 private:
 
   void handlePath( Config::Path const & );
+
+  // Helper function that will add a vector of dictionary::Class to the dictionary list
+  void addDicts(const std::vector< sptr< Dictionary::Class > >& dicts);
+
+signals:
+  void indexingDictionarySignal( QString const & dictionaryName );
 };
 
 /// Loads all dictionaries mentioned in the configuration passed, into the
