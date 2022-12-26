@@ -32,8 +32,7 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   m_deleteSelectedAction->setShortcut( QKeySequence( QKeySequence::Delete ) );
   m_deleteSelectedAction->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( m_deleteSelectedAction );
-  connect( m_deleteSelectedAction, SIGNAL( triggered() ),
-           this, SLOT( deleteSelectedItems() ) );
+  connect( m_deleteSelectedAction, &QAction::triggered, this, &FavoritesPaneWidget::deleteSelectedItems );
 
   // Copy selected items to clipboard
   m_copySelectedToClipboard = new QAction( this );
@@ -41,14 +40,13 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   m_copySelectedToClipboard->setShortcut( QKeySequence( QKeySequence::Copy ) );
   m_copySelectedToClipboard->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( m_copySelectedToClipboard );
-  connect( m_copySelectedToClipboard, SIGNAL( triggered() ),
-           this, SLOT( copySelectedItems() ) );
+  connect( m_copySelectedToClipboard, &QAction::triggered, this, &FavoritesPaneWidget::copySelectedItems );
 
   // Add folder to tree view
   m_addFolder = new QAction( this );
   m_addFolder->setText( tr( "Add folder" ) );
   addAction( m_addFolder );
-  connect( m_addFolder, SIGNAL( triggered() ), this, SLOT( addFolder() ) );
+  connect( m_addFolder, &QAction::triggered, this, &FavoritesPaneWidget::addFolder );
 
 
   // Handle context menu, reusing some of the top-level window's History menu
@@ -88,14 +86,11 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   if( oldModel )
     oldModel->deleteLater();
 
-  connect( m_favoritesTree, SIGNAL( expanded( QModelIndex ) ),
-           m_favoritesModel, SLOT( itemExpanded( QModelIndex ) ) );
+  connect( m_favoritesTree, &QTreeView::expanded, m_favoritesModel, &FavoritesModel::itemExpanded );
 
-  connect( m_favoritesTree, SIGNAL( collapsed( QModelIndex ) ),
-           m_favoritesModel, SLOT( itemCollapsed( QModelIndex ) ) );
+  connect( m_favoritesTree, &QTreeView::collapsed, m_favoritesModel, &FavoritesModel::itemCollapsed );
 
-  connect( m_favoritesModel, SIGNAL( expandItem( QModelIndex) ),
-           m_favoritesTree, SLOT( expand( QModelIndex ) ) );
+  connect( m_favoritesModel, &FavoritesModel::expandItem, m_favoritesTree, &QTreeView::expand );
 
   m_favoritesModel->checkAllNodesForExpand();
   m_favoritesTree->viewport()->setAcceptDrops( true );
@@ -115,14 +110,14 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   m_favoritesTree->viewport()->installEventFilter( this );
 
   // list selection and keyboard navigation
-  connect( m_favoritesTree, SIGNAL( clicked( QModelIndex const & ) ),
-           this, SLOT( onItemClicked( QModelIndex const & ) ) );
+  connect( m_favoritesTree, &QAbstractItemView::clicked, this, &FavoritesPaneWidget::onItemClicked );
 
-  connect ( m_favoritesTree->selectionModel(), SIGNAL( selectionChanged ( QItemSelection const & , QItemSelection const & ) ),
-      this, SLOT( onSelectionChanged( QItemSelection const & ) ) );
+  connect( m_favoritesTree->selectionModel(),
+    SIGNAL( selectionChanged( QItemSelection const &, QItemSelection const & ) ),
+    this,
+    SLOT( onSelectionChanged( QItemSelection const & ) ) );
 
-  connect( m_favoritesTree, SIGNAL( customContextMenuRequested( QPoint const & ) ),
-           this, SLOT( showCustomMenu( QPoint const & ) ) );
+  connect( m_favoritesTree, &QWidget::customContextMenuRequested, this, &FavoritesPaneWidget::showCustomMenu );
 }
 
 FavoritesPaneWidget::~FavoritesPaneWidget()

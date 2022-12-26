@@ -117,10 +117,8 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
   apiKey( apiKey_ ), languageCode( languageCode_ ),
   dictionaryId( dictionaryId_ )
 {
-  connect( &mgr, SIGNAL( finished( QNetworkReply * ) ),
-           this, SLOT( requestFinished( QNetworkReply * ) ),
-           Qt::QueuedConnection );
-  
+  connect( &mgr, &QNetworkAccessManager::finished, this, &ForvoArticleRequest::requestFinished, Qt::QueuedConnection );
+
   addQuery(  mgr, str );
 
   for( unsigned x = 0; x < alts.size(); ++x )

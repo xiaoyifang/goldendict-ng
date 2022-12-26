@@ -424,8 +424,7 @@ int main( int argc, char ** argv )
 
   app.addDataCommiter( m );
 
-  QObject::connect( &app, SIGNAL(messageReceived(QString)),
-    &m, SLOT(messageFromAnotherInstanceReceived(QString)));
+  QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
   if( gdcl.needSetGroup() )
     m.setGroupByName( gdcl.getGroupName(), true );

@@ -33,10 +33,8 @@ ExternalViewer::ExternalViewer( const char * data, int size,
 
 void ExternalViewer::start() 
 {
-  connect( &viewer, SIGNAL( finished( int, QProcess::ExitStatus ) ),
-           this, SLOT( deleteLater() ) );
-  connect( &viewer, SIGNAL( errorOccurred( QProcess::ProcessError ) ),
-           this, SLOT( deleteLater() ) );
+  connect( &viewer, &QProcess::finished, this, &QObject::deleteLater );
+  connect( &viewer, &QProcess::errorOccurred, this, &QObject::deleteLater );
 
   QStringList args = parseCommandLine( viewerCmdLine );
 
@@ -58,7 +56,7 @@ bool ExternalViewer::stop()
   if( viewer.state() == QProcess::NotRunning )
     return true;
   viewer.terminate();
-  QTimer::singleShot( 1000, &viewer, SLOT( kill() ) ); // In case terminate() fails.
+  QTimer::singleShot( 1000, &viewer, &QProcess::kill ); // In case terminate() fails.
   return false;
 }
 

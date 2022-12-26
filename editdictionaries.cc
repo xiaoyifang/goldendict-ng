@@ -47,25 +47,23 @@ EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
   ui.tabs->addTab( orderAndProps, QIcon(":/icons/book.svg"), tr( "&Dictionaries" ) );
   ui.tabs->addTab( groups.get(), QIcon(":/icons/bookcase.svg"), tr( "&Groups" ) );
 
-  connect( ui.buttons, SIGNAL( clicked( QAbstractButton * ) ),
-           this, SLOT( buttonBoxClicked( QAbstractButton * ) ) );
+  connect( ui.buttons, &QDialogButtonBox::clicked, this, &EditDictionaries::buttonBoxClicked );
 
-  connect( &sources, SIGNAL( rescan() ), this, SLOT( rescanSources() ) );
+  connect( &sources, &Sources::rescan, this, &EditDictionaries::rescanSources );
 
-  connect( groups.get(), SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SIGNAL( showDictionaryInfo( QString const & ) ) );
+  connect( groups.get(), &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
 
-  connect( orderAndProps, SIGNAL( showDictionaryHeadwords( QString const & ) ),
-           this, SIGNAL( showDictionaryHeadwords( QString const & ) ) );
+  connect( orderAndProps.data(),
+    &OrderAndProps::showDictionaryHeadwords,
+    this,
+    &EditDictionaries::showDictionaryHeadwords );
 
-  connect( ui.buttons, SIGNAL( helpRequested() ),
-           this, SLOT( helpRequested() ) );
+  connect( ui.buttons, &QDialogButtonBox::helpRequested, this, &EditDictionaries::helpRequested );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, SIGNAL( triggered() ),
-           this, SLOT( helpRequested() ) );
+  connect( &helpAction, &QAction::triggered, this, &EditDictionaries::helpRequested );
 
   addAction( &helpAction );
 
@@ -278,8 +276,7 @@ void EditDictionaries::helpRequested()
     {
       helpWindow->setWindowFlags( Qt::Window );
 
-      connect( helpWindow, SIGNAL( needClose() ),
-               this, SLOT( closeHelp() ) );
+      connect( helpWindow, &Help::HelpWindow::needClose, this, &EditDictionaries::closeHelp );
       helpWindow->showHelpFor( "Manage dictionaries" );
       helpWindow->show();
     }

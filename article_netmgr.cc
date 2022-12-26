@@ -25,40 +25,38 @@ using std::string;
 
     // Signals to own slots
 
-    connect( baseReply, SIGNAL( metaDataChanged() ), this, SLOT( applyMetaData() ) );
+    connect( baseReply, &QNetworkReply::metaDataChanged, this, &AllowFrameReply::applyMetaData );
 
-    connect( baseReply, SIGNAL( errorOccurred( QNetworkReply::NetworkError) ),
-             this, SLOT( applyError( QNetworkReply::NetworkError ) ) );
+    connect( baseReply, &QNetworkReply::errorOccurred, this, &AllowFrameReply::applyError );
 
-    connect( baseReply, SIGNAL( readyRead() ), this, SIGNAL( readyRead() ) );
+    connect( baseReply, &QIODevice::readyRead, this, &QIODevice::readyRead );
 
     // Redirect QNetworkReply signals
 
-    connect( baseReply, SIGNAL( downloadProgress( qint64, qint64 ) ),
-             this, SIGNAL( downloadProgress( qint64, qint64 ) ) );
+    connect( baseReply, &QNetworkReply::downloadProgress, this, &QNetworkReply::downloadProgress );
 
-    connect( baseReply, SIGNAL( encrypted() ), this, SIGNAL( encrypted() ) );
+    connect( baseReply, &QNetworkReply::encrypted, this, &QNetworkReply::encrypted );
 
-    connect( baseReply, SIGNAL( finished() ), this, SIGNAL( finished() ) );
+    connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
 
-    connect( baseReply, SIGNAL( preSharedKeyAuthenticationRequired( QSslPreSharedKeyAuthenticator * ) ),
-             this, SIGNAL( preSharedKeyAuthenticationRequired( QSslPreSharedKeyAuthenticator * ) ) );
+    connect( baseReply,
+      &QNetworkReply::preSharedKeyAuthenticationRequired,
+      this,
+      &QNetworkReply::preSharedKeyAuthenticationRequired );
 
-    connect( baseReply, SIGNAL( redirected( const QUrl & ) ), this, SIGNAL( redirected( const QUrl & ) ) );
+    connect( baseReply, &QNetworkReply::redirected, this, &QNetworkReply::redirected );
 
-    connect( baseReply, SIGNAL( sslErrors( const QList< QSslError > & ) ),
-             this, SIGNAL( sslErrors( const QList< QSslError > & ) ) );
+    connect( baseReply, &QNetworkReply::sslErrors, this, &QNetworkReply::sslErrors );
 
-    connect( baseReply, SIGNAL( uploadProgress( qint64, qint64 ) ),
-             this, SIGNAL( uploadProgress( qint64, qint64 ) ) );
+    connect( baseReply, &QNetworkReply::uploadProgress, this, &QNetworkReply::uploadProgress );
 
     // Redirect QIODevice signals
 
-    connect( baseReply, SIGNAL( aboutToClose() ), this, SIGNAL( aboutToClose() ) );
+    connect( baseReply, &QIODevice::aboutToClose, this, &QIODevice::aboutToClose );
 
-    connect( baseReply, SIGNAL( bytesWritten( qint64 ) ), this, SIGNAL( bytesWritten( qint64 ) ) );
+    connect( baseReply, &QIODevice::bytesWritten, this, &QIODevice::bytesWritten );
 
-    connect( baseReply, SIGNAL( readChannelFinished() ), this, SIGNAL( readChannelFinished() ) );
+    connect( baseReply, &QIODevice::readChannelFinished, this, &QIODevice::readChannelFinished );
 
     setOpenMode( QIODevice::ReadOnly );
   }
@@ -383,18 +381,22 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   if ( contentType.size() )
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
 
-  connect( req.get(), SIGNAL( updated() ),
-           this, SLOT( reqUpdated() ) );
-  
-  connect( req.get(), SIGNAL( finished() ),
-           this, SLOT( reqFinished() ) );
-  
+  connect( req.get(), &Dictionary::Request::updated, this, &ArticleResourceReply::reqUpdated );
+
+  connect( req.get(), &Dictionary::Request::finished, this, &ArticleResourceReply::reqFinished );
+
   if ( req->isFinished() || req->dataSize() > 0 )
   {
-    connect( this, SIGNAL( readyReadSignal() ),
-             this, SLOT( readyReadSlot() ), Qt::QueuedConnection );
-    connect( this, SIGNAL( finishedSignal() ),
-            this, SLOT( finishedSlot() ), Qt::QueuedConnection );
+    connect( this,
+      &ArticleResourceReply::readyReadSignal,
+      this,
+      &ArticleResourceReply::readyReadSlot,
+      Qt::QueuedConnection );
+    connect( this,
+      &ArticleResourceReply::finishedSignal,
+      this,
+      &ArticleResourceReply::finishedSlot,
+      Qt::QueuedConnection );
 
     emit readyReadSignal();
 
@@ -492,8 +494,7 @@ BlockedNetworkReply::BlockedNetworkReply( QObject * parent ): QNetworkReply( par
 {
   setError( QNetworkReply::ContentOperationNotPermittedError, "Content Blocked" );
 
-  connect( this, SIGNAL( finishedSignal() ), this, SLOT( finishedSlot() ),
-           Qt::QueuedConnection );
+  connect( this, &BlockedNetworkReply::finishedSignal, this, &BlockedNetworkReply::finishedSlot, Qt::QueuedConnection );
 
   emit finishedSignal(); // This way we call readyRead()/finished() sometime later
 }
