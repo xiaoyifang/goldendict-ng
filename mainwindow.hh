@@ -437,7 +437,7 @@ private slots:
 
   void on_rescanFiles_triggered();
 
-  void on_showHideFavorites_triggered();
+  void toggle_favoritesPane();
   void toggle_historyPane(); // Toggling visibility
   void on_exportHistory_triggered();
   void on_importHistory_triggered();

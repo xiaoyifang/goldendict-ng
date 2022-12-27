@@ -525,7 +525,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( ui.dictsPane->toggleViewAction() );
   ui.dictsPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+R" ) );
   ui.menuView->addAction( ui.favoritesPane->toggleViewAction() );
-  ui.favoritesPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+I" ) );
   ui.menuView->addAction( ui.historyPane->toggleViewAction() );
 
   ui.menuView->addSeparator();
@@ -588,8 +587,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
 
   connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );
-
-  connect( ui.menuFavorites, &QMenu::aboutToShow, this, &MainWindow::updateFavoritesMenu );
+  connect(ui.showHideFavorites,&QAction::triggered,this,&MainWindow::toggle_favoritesPane);
 
   connect( ui.favoritesPaneWidget,
     &FavoritesPaneWidget::favoritesItemRequested,
@@ -2511,15 +2509,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   {
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
 
-    // Handle Ctrl+I to show the Favorities Pane.
-    if ( ke->key() == Qt::Key_I && ke->modifiers() == Qt::ControlModifier )
-    {
-      if( ev->type() == QEvent::KeyPress )
-        on_showHideFavorites_triggered();
-      ev->accept();
-      return true;
-    }
-
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
     {
@@ -3842,7 +3831,7 @@ void MainWindow::headwordReceived( const QString & word, const QString & ID )
 
 void MainWindow::updateFavoritesMenu()
 {
-  if ( ui.favoritesPane->toggleViewAction()->isChecked() )
+  if ( ui.favoritesPane->isVisible() )
   {
     ui.showHideFavorites->setText( tr( "&Hide" ) );
   }
@@ -3864,10 +3853,17 @@ void MainWindow::updateHistoryMenu()
   }
 }
 
-void MainWindow::on_showHideFavorites_triggered()
+void MainWindow::toggle_favoritesPane()
 {
-  ui.favoritesPane->toggleViewAction()->trigger();
-  ui.favoritesPane->raise(); // useful when the Pane is tabbed.
+  if( ui.favoritesPane->isVisible() )
+  {
+    ui.favoritesPane->hide();
+  }
+  else
+  {
+    ui.favoritesPane->show();
+    ui.favoritesPane->raise(); // useful when the Pane is tabbed.
+  }
 }
 
 void MainWindow::toggle_historyPane()
