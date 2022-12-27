@@ -1752,7 +1752,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   {
     if ( !isExternalLink( targetUrl ) )
     {
-      followLink = new QAction( tr( "&Open Link" ), &menu );
+      followLink = new QAction( tr( "Op&en Link" ), &menu );
       menu.addAction( followLink );
 
       if( !popupView && !isAudioLink( targetUrl ) )
