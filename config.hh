@@ -308,6 +308,7 @@ struct Preferences
   bool autoScrollToTargetArticle;
   bool escKeyHidesMainWindow;
   bool darkMode;
+  bool darkReaderMode;
   bool alwaysOnTop;
 
   /// An old UI mode when tranlateLine and wordList

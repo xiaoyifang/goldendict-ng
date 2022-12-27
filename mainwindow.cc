@@ -786,7 +786,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   translateLine->setFocus();
 
-  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle, cfg.preferences.darkMode );
+  applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.darkMode );
 
   makeScanPopup();
 
@@ -1125,7 +1125,7 @@ QPrinter & MainWindow::getPrinter()
   return *printer;
 }
 
-void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
+void MainWindow::applyQtStyleSheet( QString const & addonStyle, bool const & darkMode )
 {
   #ifdef Q_OS_WIN32
   if( darkMode )
@@ -2207,10 +2207,10 @@ void MainWindow::editPreferences()
 
     bool needReload = false;
 
-    // See if we need to reapply stylesheets
-    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
+    // See if we need to reapply Qt stylesheets
+    if ( cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
     {
-      applyQtStyleSheet( p.displayStyle, p.addonStyle, p.darkMode );
+      applyQtStyleSheet( p.addonStyle, p.darkMode );
       articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }
