@@ -527,7 +527,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( ui.favoritesPane->toggleViewAction() );
   ui.favoritesPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+I" ) );
   ui.menuView->addAction( ui.historyPane->toggleViewAction() );
-  ui.historyPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+H" ) );
+
   ui.menuView->addSeparator();
   ui.menuView->addAction( dictionaryBar.toggleViewAction() );
   ui.menuView->addAction( navToolbar->toggleViewAction() );
@@ -603,8 +603,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.historyPaneWidget, &HistoryPaneWidget::historyItemRequested, this, &MainWindow::showHistoryItem );
 
   connect( ui.historyPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateHistoryMenu );
+  connect( ui.showHideHistory, &QAction::triggered, this, &MainWindow::toggle_historyPane );
 
-  connect( ui.menuHistory, &QMenu::aboutToShow, this, &MainWindow::updateHistoryMenu );
 
 #if !defined( HAVE_X11 )
   // Show tray icon early so the user would be happy. It won't be functional
@@ -2509,15 +2509,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::ShortcutOverride
        || ev->type() == QEvent::KeyPress )
   {
-    // Handle Ctrl+H to show the History Pane.
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
-    if ( ke->key() == Qt::Key_H && ke->modifiers() == Qt::ControlModifier )
-    {
-      if( ev->type() == QEvent::KeyPress )
-        on_showHideHistory_triggered();
-      ev->accept();
-      return true;
-    }
 
     // Handle Ctrl+I to show the Favorities Pane.
     if ( ke->key() == Qt::Key_I && ke->modifiers() == Qt::ControlModifier )
@@ -3862,7 +3854,7 @@ void MainWindow::updateFavoritesMenu()
 
 void MainWindow::updateHistoryMenu()
 {
-  if ( ui.historyPane->toggleViewAction()->isChecked() )
+  if( ui.historyPane->isVisible() )
   {
     ui.showHideHistory->setText( tr( "&Hide" ) );
   }
@@ -3878,10 +3870,17 @@ void MainWindow::on_showHideFavorites_triggered()
   ui.favoritesPane->raise(); // useful when the Pane is tabbed.
 }
 
-void MainWindow::on_showHideHistory_triggered()
+void MainWindow::toggle_historyPane()
 {
-  ui.historyPane->toggleViewAction()->trigger();
-  ui.historyPane->raise(); // useful when the Pane is tabbed.
+  if( ui.historyPane->isVisible() )
+  {
+    ui.historyPane->hide();
+  }
+  else
+  {
+    ui.historyPane->show();
+    ui.historyPane->raise();
+  }
 }
 
 void MainWindow::on_exportHistory_triggered()
