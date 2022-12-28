@@ -22,18 +22,14 @@ void WordList::attachFinder( WordFinder * finder )
 
   if ( wordFinder )
   {
-    disconnect( wordFinder, SIGNAL( updated() ),
-             this, SLOT( prefixMatchUpdated() ) );
-    disconnect( wordFinder, SIGNAL( finished() ),
-             this, SLOT( prefixMatchFinished() ) );
+    disconnect( wordFinder, &WordFinder::updated, this, &WordList::prefixMatchUpdated );
+    disconnect( wordFinder, &WordFinder::finished, this, &WordList::prefixMatchFinished );
   }
 
   wordFinder = finder;
 
-  connect( wordFinder, SIGNAL( updated() ),
-           this, SLOT( prefixMatchUpdated() ) );
-  connect( wordFinder, SIGNAL( finished() ),
-           this, SLOT( prefixMatchFinished() ) );
+  connect( wordFinder, &WordFinder::updated, this, &WordList::prefixMatchUpdated );
+  connect( wordFinder, &WordFinder::finished, this, &WordList::prefixMatchFinished );
 }
 
 void WordList::prefixMatchUpdated()

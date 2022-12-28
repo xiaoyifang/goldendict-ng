@@ -108,24 +108,16 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 dictionaryBar.toggleViewAction()
                                 );
 
-  connect( this, SIGNAL(switchExpandMode() ),
-           definition, SLOT( switchExpandOptionalParts() ) );
-  connect( this, SIGNAL(setViewExpandMode( bool ) ),
-           definition, SLOT( receiveExpandOptionalParts( bool ) ) );
-  connect( definition, SIGNAL( setExpandMode( bool ) ),
-           this, SIGNAL( setExpandMode( bool ) ) );
-  connect( definition, SIGNAL( inspectSignal( QWebEnginePage* ) ),
-           this, SLOT( inspectElementWhenPinned( QWebEnginePage* ) ) );
-  connect( definition, SIGNAL( forceAddWordToHistory( QString ) ),
-           this, SIGNAL( forceAddWordToHistory( QString ) ) );
-  connect( this, SIGNAL( closeMenu() ),
-           definition, SIGNAL( closePopupMenu() ) );
-  connect( definition, SIGNAL( sendWordToHistory( QString ) ),
-           this, SIGNAL( sendWordToHistory( QString ) ) );
-  connect( definition, SIGNAL( typingEvent( QString const & ) ),
-           this, SLOT( typingEvent( QString const & ) ) );
+  connect( this, &ScanPopup::switchExpandMode, definition, &ArticleView::switchExpandOptionalParts );
+  connect( this, &ScanPopup::setViewExpandMode, definition, &ArticleView::receiveExpandOptionalParts );
+  connect( definition, &ArticleView::setExpandMode, this, &ScanPopup::setExpandMode );
+  connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
+  connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
+  connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
+  connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
+  connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
-  wordListDefaultFont = ui.translateBox->wordList()->font();
+  wordListDefaultFont      = ui.translateBox->wordList()->font();
   translateLineDefaultFont = ui.translateBox->font();
   groupListDefaultFont = ui.groupList->font();
 
@@ -135,20 +127,18 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.translateBox->wordList()->setFocusPolicy(Qt::ClickFocus);
   ui.translateBox->translateLine()->installEventFilter( this );
 
-  connect( ui.translateBox->translateLine(), SIGNAL( textChanged( QString const & ) ),
-           this, SLOT( translateInputChanged( QString const & ) ) );
+  connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
 
-  connect( ui.translateBox->translateLine(), SIGNAL( returnPressed() ),
-           this, SLOT( translateInputFinished() ) );
+  connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
 
-  connect( ui.translateBox->wordList(), SIGNAL( itemClicked( QListWidgetItem * ) ),
-           this, SLOT( wordListItemActivated( QListWidgetItem * ) ) );
+  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
 
-  connect( ui.translateBox->wordList(), SIGNAL( itemDoubleClicked ( QListWidgetItem * ) ),
-           this, SLOT( wordListItemActivated( QListWidgetItem * ) ) );
+  connect( ui.translateBox->wordList(),
+    SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
+    this,
+    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
 
-  connect( ui.translateBox->wordList(), SIGNAL( statusBarMessage( QString const &, int, QPixmap const & ) ),
-           this, SLOT( showStatusBarMessage( QString const &, int, QPixmap const & ) ) );
+  connect( ui.translateBox->wordList(), &WordList::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   ui.pronounceButton->hide();
 
@@ -176,14 +166,11 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( &dictionaryBar, SIGNAL(editGroupRequested()),
            this, SLOT(editGroupRequested()) );
-  connect( this, SIGNAL( closeMenu() ),
-           &dictionaryBar, SIGNAL( closePopupMenu() ) );
-  connect( &dictionaryBar, SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SIGNAL( showDictionaryInfo( QString const & ) ) );
-  connect( &dictionaryBar, SIGNAL( openDictionaryFolder( QString const & ) ),
-           this, SIGNAL( openDictionaryFolder( QString const & ) ) );
+  connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
+  connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
+  connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
 
-  if ( cfg.popupWindowGeometry.size() )
+  if( cfg.popupWindowGeometry.size() )
     restoreGeometry( cfg.popupWindowGeometry );
 
   if ( cfg.popupWindowState.size() )
@@ -191,7 +178,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
-  connect( ui.onTopButton, SIGNAL( clicked( bool ) ), this, SLOT( alwaysOnTopClicked( bool ) ) );
+  connect( ui.onTopButton, &QAbstractButton::clicked, this, &ScanPopup::alwaysOnTopClicked );
 
   ui.pinButton->setChecked( cfg.pinPopupWindow );
 
@@ -215,8 +202,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
   }
 
-  connect( &configEvents, SIGNAL( mutedDictionariesChanged() ),
-           this, SLOT( mutedDictionariesChanged() ) );
+  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &ScanPopup::mutedDictionariesChanged );
 
   definition->focus();
 
@@ -233,8 +219,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   escapeAction.setShortcut( QKeySequence( "Esc" ) );
   addAction( &escapeAction );
-  connect( &escapeAction, SIGNAL( triggered() ),
-           this, SLOT( escapePressed() ) );
+  connect( &escapeAction, &QAction::triggered, this, &ScanPopup::escapePressed );
 
   focusTranslateLineAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( &focusTranslateLineAction );
@@ -242,14 +227,13 @@ ScanPopup::ScanPopup( QWidget * parent,
                                          QKeySequence( "Alt+D" ) <<
                                          QKeySequence( "Ctrl+L" ) );
 
-  connect( &focusTranslateLineAction, SIGNAL( triggered() ),
-           this, SLOT( focusTranslateLine() ) );
+  connect( &focusTranslateLineAction, &QAction::triggered, this, &ScanPopup::focusTranslateLine );
 
   QAction * const focusArticleViewAction = new QAction( this );
   focusArticleViewAction->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   focusArticleViewAction->setShortcut( QKeySequence( "Ctrl+N" ) );
   addAction( focusArticleViewAction );
-  connect( focusArticleViewAction, SIGNAL( triggered() ), definition, SLOT( focus() ) );
+  connect( focusArticleViewAction, &QAction::triggered, definition, &ArticleView::focus );
 
   switchExpandModeAction.setShortcuts( QList< QKeySequence >() <<
                                        QKeySequence( Qt::CTRL | Qt::Key_8 ) <<
@@ -257,42 +241,36 @@ ScanPopup::ScanPopup( QWidget * parent,
                                        QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_8 ) );
 
   addAction( &switchExpandModeAction );
-  connect( &switchExpandModeAction, SIGNAL( triggered() ),
-           this, SLOT(switchExpandOptionalPartsMode() ) );
+  connect( &switchExpandModeAction, &QAction::triggered, this, &ScanPopup::switchExpandOptionalPartsMode );
 
   connect( ui.groupList, &QComboBox::currentIndexChanged,
            this, &ScanPopup::currentGroupChanged);
 
-  connect( &wordFinder, SIGNAL( finished() ),
-           this, SLOT( prefixMatchFinished() ) );
+  connect( &wordFinder, &WordFinder::finished, this, &ScanPopup::prefixMatchFinished );
 
-  connect( ui.pinButton, SIGNAL( clicked( bool ) ),
-           this, SLOT( pinButtonClicked( bool ) ) );
+  connect( ui.pinButton, &QAbstractButton::clicked, this, &ScanPopup::pinButtonClicked );
 
-  connect( definition, SIGNAL( pageLoaded( ArticleView * ) ),
-           this, SLOT( pageLoaded( ArticleView * ) ) );
+  connect( definition, &ArticleView::pageLoaded, this, &ScanPopup::pageLoaded );
 
-  connect( definition, SIGNAL( statusBarMessage( QString const &, int, QPixmap const & ) ),
-           this, SLOT( showStatusBarMessage( QString const &, int, QPixmap const & ) ) );
+  connect( definition, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
-  connect( definition, SIGNAL( titleChanged(  ArticleView *, QString const & ) ),
-           this, SLOT( titleChanged(  ArticleView *, QString const & ) ) );
+  connect( definition, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
 
 #ifdef Q_OS_MAC
-  connect( &MouseOver::instance(), SIGNAL( hovered( QString const &, bool ) ),
-           this, SLOT( mouseHovered( QString const &, bool ) ) );
+  connect( &MouseOver::instance(),
+    SIGNAL( hovered( QString const &, bool ) ),
+    this,
+    SLOT( mouseHovered( QString const &, bool ) ) );
 #endif
 
   hideTimer.setSingleShot( true );
   hideTimer.setInterval( 400 );
 
-  connect( &hideTimer, SIGNAL( timeout() ),
-           this, SLOT( hideTimerExpired() ) );
+  connect( &hideTimer, &QTimer::timeout, this, &ScanPopup::hideTimerExpired );
 
   mouseGrabPollTimer.setSingleShot( false );
   mouseGrabPollTimer.setInterval( 10 );
-  connect( &mouseGrabPollTimer, SIGNAL( timeout() ),
-           this, SLOT(mouseGrabPoll())  );
+  connect( &mouseGrabPollTimer, &QTimer::timeout, this, &ScanPopup::mouseGrabPoll );
 #ifdef Q_OS_MAC
   MouseOver::instance().setPreferencesPtr( &( cfg.preferences ) );
 #endif
@@ -313,8 +291,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   delayTimer.setSingleShot( true );
   delayTimer.setInterval( 200 );
 
-  connect( &delayTimer, SIGNAL( timeout() ),
-    this, SLOT( delayShow() ) );
+  connect( &delayTimer, &QTimer::timeout, this, &ScanPopup::delayShow );
 #endif
 
   applyZoomFactor();
@@ -823,7 +800,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
       // select all on mouse click
       if ( focusEvent->reason() == Qt::MouseFocusReason ) {
-        QTimer::singleShot(0, this, SLOT(focusTranslateLine()));
+        QTimer::singleShot( 0, this, &ScanPopup::focusTranslateLine );
       }
       return false;
     }
@@ -988,7 +965,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
 {
   QMainWindow::showEvent( ev );
 
-  QTimer::singleShot(100, this, SLOT( requestWindowFocus() ) );
+  QTimer::singleShot( 100, this, &ScanPopup::requestWindowFocus );
 
   if ( groups.size() <= 1 ) // Only the default group? Hide then.
     ui.groupList->hide();

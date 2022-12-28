@@ -88,7 +88,7 @@ About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dicto
       QString::fromUtf8(
         creditsFile.readAll() ).split( '\n', Qt::SkipEmptyParts );
 
-    QString html = "<html><body style='color: black; background: #f4f4f4;'>";
+    QString html = "<html><body>";
 
     for( int x = 0; x < creditsList.size(); ++x )
     {

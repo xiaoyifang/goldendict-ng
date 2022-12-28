@@ -3947,9 +3947,29 @@ however, the article from the topmost dictionary is shown.</source>
         <translation>设置词典的备用字体</translation>
     </message>
     <message>
-        <location filename="../preferences.ui" line="418"/>
-        <source>dark mode</source>
-        <translation>深色模式</translation>
+        <location filename="../preferences.ui" line="126"/>
+        <source>Article Display style:</source>
+        <translation type="unfinished">文章显示风格</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="161"/>
+        <source>Turn the UI to dark.</source>
+        <translation type="unfinished">启用暗色界面</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="164"/>
+        <source>Dark Mode</source>
+        <translation type="unfinished">深色模式</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="171"/>
+        <source>Turn the article display style to dark.</source>
+        <translation type="unfinished">将文章以暗色风格显示</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="174"/>
+        <source>Dark Reader Mode</source>
+        <translation type="unfinished">深色阅读模式</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="457"/>

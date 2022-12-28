@@ -230,6 +230,7 @@ Preferences::Preferences():
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
+  darkReaderMode ( false ),
   alwaysOnTop ( false ),
   searchInDock ( false ),
 
@@ -891,6 +892,9 @@ Class load()
 
     if ( !preferences.namedItem( "darkMode" ).isNull() )
       c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem("darkReaderMode").isNull())
+      c.preferences.darkReaderMode = (preferences.namedItem("darkReaderMode").toElement().text() == "1");
 
     if ( !preferences.namedItem( "zoomFactor" ).isNull() )
       c.preferences.zoomFactor = preferences.namedItem( "zoomFactor" ).toElement().text().toDouble();
@@ -1755,6 +1759,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "darkMode" );
     opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1":"0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "darkReaderMode" );
+    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1":"0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "zoomFactor" );

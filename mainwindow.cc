@@ -242,8 +242,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     enableScanningAction->setChecked( true );
   }
 
-  connect( enableScanningAction, SIGNAL( toggled( bool ) ),
-           this, SLOT( scanEnableToggled( bool ) ) );
+  connect( enableScanningAction, &QAction::toggled, this, &MainWindow::scanEnableToggled );
 
   navToolbar->addSeparator();
 
@@ -288,8 +287,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addToFavorites = navToolbar->addAction( starIcon, tr( "Add current tab to Favorites" ) );
   navToolbar->widgetForAction( addToFavorites )->setObjectName( "addToFavoritesButton" );
 
-  connect( addToFavorites, SIGNAL( triggered() ), this, SLOT( handleAddToFavoritesButton() ) );
-  connect( ui.actionAddToFavorites, SIGNAL( triggered() ), this, SLOT( addCurrentTabToFavorites() ) );
+  connect( addToFavorites, &QAction::triggered, this, &MainWindow::handleAddToFavoritesButton );
+  connect( ui.actionAddToFavorites, &QAction::triggered, this, &MainWindow::addCurrentTabToFavorites );
 
   beforeOptionsSeparator = navToolbar->addSeparator();
   navToolbar->widgetForAction( beforeOptionsSeparator )->setObjectName( "beforeOptionsSeparator" );
@@ -333,8 +332,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   searchPaneTitleBar.setLayout( &searchPaneTitleBarLayout );
 
   ui.searchPane->setTitleBarWidget( &searchPaneTitleBar );
-  connect( ui.searchPane->toggleViewAction(), SIGNAL( triggered( bool ) ),
-           this, SLOT( updateSearchPaneAndBar( bool ) ) );
+  connect( ui.searchPane->toggleViewAction(), &QAction::triggered, this, &MainWindow::updateSearchPaneAndBar );
 
   if ( cfg.preferences.searchInDock )
   {
@@ -372,18 +370,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.dictsPane, SIGNAL( visibilityChanged( bool ) ),
            this, SLOT( dictsPaneVisibilityChanged ( bool ) ) );
 
-  connect( ui.dictsList, SIGNAL( itemClicked( QListWidgetItem * ) ),
-           this, SLOT( foundDictsPaneClicked( QListWidgetItem * ) ) );
+  connect( ui.dictsList, &QListWidget::itemClicked, this, &MainWindow::foundDictsPaneClicked );
 
-  connect( ui.dictsList, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this, SLOT( foundDictsContextMenuRequested( const QPoint & ) ) );
+  connect( ui.dictsList, &QWidget::customContextMenuRequested, this, &MainWindow::foundDictsContextMenuRequested );
 
-  connect( zoomIn, SIGNAL( triggered() ),
-           this, SLOT( zoomin() ) );
-  connect( zoomOut, SIGNAL( triggered() ),
-           this, SLOT( zoomout() ) );
-  connect( zoomBase, SIGNAL( triggered() ),
-           this, SLOT( unzoom() ) );
+  connect( zoomIn, &QAction::triggered, this, &MainWindow::zoomin );
+  connect( zoomOut, &QAction::triggered, this, &MainWindow::zoomout );
+  connect( zoomBase, &QAction::triggered, this, &MainWindow::unzoom );
 
   ui.menuZoom->addAction( zoomIn );
   ui.menuZoom->addAction( zoomOut );
@@ -400,18 +393,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordsZoomBase = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Words Normal Size" ) );
   wordsZoomBase->setShortcut( QKeySequence( "Alt+0" ) );
 
-  connect( wordsZoomIn, SIGNAL(triggered()), this, SLOT(doWordsZoomIn()) );
-  connect( wordsZoomOut, SIGNAL(triggered()), this, SLOT(doWordsZoomOut()) );
-  connect( wordsZoomBase, SIGNAL(triggered()), this, SLOT(doWordsZoomBase()) );
+  connect( wordsZoomIn, &QAction::triggered, this, &MainWindow::doWordsZoomIn );
+  connect( wordsZoomOut, &QAction::triggered, this, &MainWindow::doWordsZoomOut );
+  connect( wordsZoomBase, &QAction::triggered, this, &MainWindow::doWordsZoomBase );
 
   // tray icon
-  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), SIGNAL( triggered() ),
-           this, SLOT( showMainWindow() ) );
+  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ),
+    &QAction::triggered,
+    this,
+    &MainWindow::showMainWindow );
   trayIconMenu.addAction( enableScanningAction );
 
   trayIconMenu.addSeparator();
-  connect( trayIconMenu.addAction( tr( "&Quit" ) ), SIGNAL( triggered() ),
-           this, SLOT( quitApp() ) );
+  connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
 
   addGlobalAction( &escAction, SLOT( handleEsc() ) );
   escAction.setShortcut( QKeySequence( "Esc" ) );
@@ -435,10 +429,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Tab management
   tabListMenu = new MRUQMenu(tr("Opened tabs"), ui.tabWidget);
 
-  connect (tabListMenu, SIGNAL(ctrlReleased()), this, SLOT(ctrlReleased()));
+  connect( tabListMenu, &MRUQMenu::ctrlReleased, this, &MainWindow::ctrlReleased );
 
-  connect( &addTabAction, SIGNAL( triggered() ),
-           this, SLOT( addNewTab() ) );
+  connect( &addTabAction, &QAction::triggered, this, &MainWindow::addNewTab );
 
   addAction( &addTabAction );
 
@@ -446,8 +439,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   closeCurrentTabAction.setShortcut( QKeySequence( "Ctrl+W" ) );
   closeCurrentTabAction.setText( tr("Close current tab") );
 
-  connect( &closeCurrentTabAction, SIGNAL( triggered() ),
-           this, SLOT( closeCurrentTab() ) );
+  connect( &closeCurrentTabAction, &QAction::triggered, this, &MainWindow::closeCurrentTab );
 
   addAction( &closeCurrentTabAction );
 
@@ -455,32 +447,28 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   closeAllTabAction.setShortcut( QKeySequence( "Ctrl+Shift+W" ) );
   closeAllTabAction.setText( tr("Close all tabs") );
 
-  connect( &closeAllTabAction, SIGNAL( triggered() ),
-           this, SLOT( closeAllTabs() ) );
+  connect( &closeAllTabAction, &QAction::triggered, this, &MainWindow::closeAllTabs );
 
   addAction( &closeAllTabAction );
 
   closeRestTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   closeRestTabAction.setText( tr("Close all tabs except current") );
 
-  connect( &closeRestTabAction, SIGNAL( triggered() ),
-           this, SLOT( closeRestTabs() ) );
+  connect( &closeRestTabAction, &QAction::triggered, this, &MainWindow::closeRestTabs );
 
   addAction( &closeRestTabAction );
 
   switchToNextTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   switchToNextTabAction.setShortcut( QKeySequence( "Ctrl+PgDown" ) );
 
-  connect( &switchToNextTabAction, SIGNAL( triggered() ),
-           this, SLOT( switchToNextTab() ) );
+  connect( &switchToNextTabAction, &QAction::triggered, this, &MainWindow::switchToNextTab );
 
   addAction( &switchToNextTabAction );
 
   switchToPrevTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   switchToPrevTabAction.setShortcut( QKeySequence( "Ctrl+PgUp" ) );
 
-  connect( &switchToPrevTabAction, SIGNAL( triggered() ),
-           this, SLOT( switchToPrevTab() ) );
+  connect( &switchToPrevTabAction, &QAction::triggered, this, &MainWindow::switchToPrevTab );
 
   addAction( &switchToPrevTabAction );
 
@@ -490,15 +478,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                                        QKeySequence( Qt::CTRL | Qt::Key_Asterisk ) <<
                                        QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_8 ) );
 
-  connect( &switchExpandModeAction, SIGNAL( triggered() ),
-           this, SLOT(switchExpandOptionalPartsMode() ) );
+  connect( &switchExpandModeAction, &QAction::triggered, this, &MainWindow::switchExpandOptionalPartsMode );
 
   addAction( &switchExpandModeAction );
 
   addAllTabToFavoritesAction.setText( tr( "Add all tabs to Favorites" ) );
 
-  connect( &addAllTabToFavoritesAction, SIGNAL( triggered() ),
-           this, SLOT( addAllTabsToFavorites() ) );
+  connect( &addAllTabToFavoritesAction, &QAction::triggered, this, &MainWindow::addAllTabsToFavorites );
 
   tabMenu = new QMenu(this);
   tabMenu->addAction( &closeCurrentTabAction );
@@ -514,24 +500,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesAction.setCheckable( true );
   showDictBarNamesAction.setChecked( cfg.showingDictBarNames );
 
-  connect( &showDictBarNamesAction, SIGNAL( triggered() ),
-           this, SLOT( showDictBarNamesTriggered() ) );
+  connect( &showDictBarNamesAction, &QAction::triggered, this, &MainWindow::showDictBarNamesTriggered );
 
   // Use small icons in toolbars
 
   useSmallIconsInToolbarsAction.setCheckable( true );
   useSmallIconsInToolbarsAction.setChecked( cfg.usingSmallIconsInToolbars );
 
-  connect( &useSmallIconsInToolbarsAction, SIGNAL( triggered() ),
-           this, SLOT( useSmallIconsInToolbarsTriggered() ) );
+  connect( &useSmallIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useSmallIconsInToolbarsTriggered );
 
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );
   toggleMenuBarAction.setChecked( !cfg.preferences.hideMenubar );
   toggleMenuBarAction.setShortcut( QKeySequence( "Ctrl+M" ) );
 
-  connect( &toggleMenuBarAction, SIGNAL( triggered() ),
-           this, SLOT( toggleMenuBarTriggered() ) );
+  connect( &toggleMenuBarAction, &QAction::triggered, this, &MainWindow::toggleMenuBarTriggered );
 
   // Populate 'View' menu
 
@@ -542,9 +525,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( ui.dictsPane->toggleViewAction() );
   ui.dictsPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+R" ) );
   ui.menuView->addAction( ui.favoritesPane->toggleViewAction() );
-  ui.favoritesPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+I" ) );
   ui.menuView->addAction( ui.historyPane->toggleViewAction() );
-  ui.historyPane->toggleViewAction()->setShortcut( QKeySequence( "Ctrl+H" ) );
+
   ui.menuView->addSeparator();
   ui.menuView->addAction( dictionaryBar.toggleViewAction() );
   ui.menuView->addAction( navToolbar->toggleViewAction() );
@@ -583,51 +565,44 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   addToolBar( &dictionaryBar );
 
-  connect( dictionaryBar.toggleViewAction(), SIGNAL(triggered(bool)),
-           this, SLOT(dictionaryBarToggled(bool)) );
+  connect( dictionaryBar.toggleViewAction(), &QAction::triggered, this, &MainWindow::dictionaryBarToggled );
   // This one will be disconnected once the slot is activated. It exists
   // only to handle the initial appearance of the dictionary bar.
-  connect( dictionaryBar.toggleViewAction(), SIGNAL(toggled(bool)),
-           this, SLOT(dictionaryBarToggled(bool)) );
+  connect( dictionaryBar.toggleViewAction(), &QAction::toggled, this, &MainWindow::dictionaryBarToggled );
 
-  connect( &dictionaryBar, SIGNAL(editGroupRequested()),
-           this, SLOT(editCurrentGroup()) );
+  connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &MainWindow::editCurrentGroup );
 
-  connect( &dictionaryBar, SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SLOT( showDictionaryInfo( QString const & ) ) );
+  connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
-  connect( &dictionaryBar, SIGNAL( showDictionaryHeadwords( QString const & ) ),
-           this, SLOT( showDictionaryHeadwords( QString const & ) ) );
+  connect( &dictionaryBar,
+    SIGNAL( showDictionaryHeadwords( QString const & ) ),
+    this,
+    SLOT( showDictionaryHeadwords( QString const & ) ) );
 
-  connect( &dictionaryBar, SIGNAL( openDictionaryFolder( QString const & ) ),
-           this, SLOT( openDictionaryFolder( QString const & ) ) );
+  connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
 
   // Favorites
 
   ui.favoritesPaneWidget->setUp( &cfg, ui.menuFavorites );
   ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
 
-  connect( ui.favoritesPane, SIGNAL( visibilityChanged( bool ) ),
-           this, SLOT( updateFavoritesMenu() ) );
+  connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );
+  connect(ui.showHideFavorites,&QAction::triggered,this,&MainWindow::toggle_favoritesPane);
 
-  connect( ui.menuFavorites, SIGNAL( aboutToShow() ),
-           this, SLOT( updateFavoritesMenu() ) );
-
-  connect( ui.favoritesPaneWidget, SIGNAL( favoritesItemRequested( QString, QString ) ),
-           this, SLOT( headwordFromFavorites( QString, QString ) ) );
+  connect( ui.favoritesPaneWidget,
+    &FavoritesPaneWidget::favoritesItemRequested,
+    this,
+    &MainWindow::headwordFromFavorites );
 
   // History
   ui.historyPaneWidget->setUp( &cfg, &history, ui.menuHistory );
   history.enableAdd( cfg.preferences.storeHistory );
 
-  connect( ui.historyPaneWidget, SIGNAL( historyItemRequested( QString const & ) ),
-           this, SLOT( showHistoryItem( QString const & ) ) );
+  connect( ui.historyPaneWidget, &HistoryPaneWidget::historyItemRequested, this, &MainWindow::showHistoryItem );
 
-  connect( ui.historyPane, SIGNAL( visibilityChanged( bool ) ),
-           this, SLOT( updateHistoryMenu() ) );
+  connect( ui.historyPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateHistoryMenu );
+  connect( ui.showHideHistory, &QAction::triggered, this, &MainWindow::toggle_historyPane );
 
-  connect( ui.menuHistory, SIGNAL( aboutToShow() ),
-           this, SLOT( updateHistoryMenu() ) );
 
 #if !defined( HAVE_X11 )
   // Show tray icon early so the user would be happy. It won't be functional
@@ -643,10 +618,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 #endif
 
-  connect( navBack, SIGNAL( triggered() ),
-           this, SLOT( backClicked() ) );
-  connect( navForward, SIGNAL( triggered() ),
-           this, SLOT( forwardClicked() ) );
+  connect( navBack, &QAction::triggered, this, &MainWindow::backClicked );
+  connect( navForward, &QAction::triggered, this, &MainWindow::forwardClicked );
 
   addTab.setAutoRaise( true );
   addTab.setToolTip( tr( "New Tab"  ) );
@@ -667,42 +640,29 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.tabWidget->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  connect( &addTab, SIGNAL( clicked() ),
-           this, SLOT( addNewTab() ) );
+  connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, SIGNAL( doubleClicked() ),
-           this, SLOT( addNewTab() ) );
+  connect( ui.tabWidget, &MainTabWidget::doubleClicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, SIGNAL( tabCloseRequested( int ) ),
-           this, SLOT( tabCloseRequested( int ) ) );
+  connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
-  connect( ui.tabWidget, SIGNAL( currentChanged( int ) ),
-           this, SLOT( tabSwitched( int ) ) );
+  connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
 
-  connect( ui.tabWidget, SIGNAL( customContextMenuRequested(QPoint)) ,
-           this, SLOT( tabMenuRequested(QPoint)) );
+  connect( ui.tabWidget, &QWidget::customContextMenuRequested, this, &MainWindow::tabMenuRequested );
 
   ui.tabWidget->setTabsClosable( true );
 
-  connect( ui.quit, SIGNAL( triggered() ),
-           this, SLOT( quitApp() ) );
+  connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
-  connect( ui.dictionaries, SIGNAL( triggered() ),
-           this, SLOT( editDictionaries() ) );
+  connect( ui.dictionaries, &QAction::triggered, this, &MainWindow::editDictionaries );
 
-  connect( ui.preferences, SIGNAL( triggered() ),
-           this, SLOT( editPreferences() ) );
+  connect( ui.preferences, &QAction::triggered, this, &MainWindow::editPreferences );
 
-  connect( ui.visitHomepage, SIGNAL( triggered() ),
-           this, SLOT( visitHomepage() ) );
-  connect( ui.visitForum, SIGNAL( triggered() ),
-           this, SLOT( visitForum() ) );
-  connect( ui.openConfigFolder, SIGNAL( triggered() ),
-           this, SLOT( openConfigFolder() ) );
-  connect( ui.about, SIGNAL( triggered() ),
-           this, SLOT( showAbout() ) );
-  connect( ui.showReference, SIGNAL( triggered() ),
-           this, SLOT( showGDHelp() ) );
+  connect( ui.visitHomepage, &QAction::triggered, this, &MainWindow::visitHomepage );
+  connect( ui.visitForum, &QAction::triggered, this, &MainWindow::visitForum );
+  connect( ui.openConfigFolder, &QAction::triggered, this, &MainWindow::openConfigFolder );
+  connect( ui.about, &QAction::triggered, this, &MainWindow::showAbout );
+  connect( ui.showReference, &QAction::triggered, this, &MainWindow::showGDHelp );
 
   connect( groupListInDock, &GroupComboBox::currentIndexChanged,
            this, &MainWindow::currentGroupChanged );
@@ -710,41 +670,31 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( groupListInToolbar, &GroupComboBox::currentIndexChanged,
            this, &MainWindow::currentGroupChanged );
 
-  connect( ui.translateLine, SIGNAL( textChanged( QString const & ) ),
-           this, SLOT( translateInputChanged( QString const & ) ) );
+  connect( ui.translateLine, &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
-  connect( translateBox->translateLine(), SIGNAL( textChanged( QString const & ) ),
-           this, SLOT( translateInputChanged( QString const & ) ) );
+  connect( translateBox->translateLine(), &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
-  connect( ui.translateLine, SIGNAL( returnPressed() ),
-           this, SLOT( translateInputFinished() ) );
+  connect( ui.translateLine, SIGNAL( returnPressed() ), this, SLOT( translateInputFinished() ) );
 
   connect( translateBox->translateLine(), SIGNAL( returnPressed() ),
            this, SLOT( translateInputFinished() ) );
 
-  connect( ui.wordList, SIGNAL( itemSelectionChanged() ),
-           this, SLOT( wordListSelectionChanged() ) );
+  connect( ui.wordList, &QListWidget::itemSelectionChanged, this, &MainWindow::wordListSelectionChanged );
 
   connect( translateBox->wordList(), SIGNAL( itemDoubleClicked ( QListWidgetItem * ) ),
            this, SLOT( wordListItemActivated( QListWidgetItem * ) ) );
 
-  connect( ui.wordList, SIGNAL( itemClicked( QListWidgetItem * ) ),
-           this, SLOT( wordListItemActivated( QListWidgetItem * ) ) );
+  connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
 
-  connect( ui.wordList, SIGNAL( statusBarMessage( QString const &, int, QPixmap const & ) ),
-           this, SLOT( showStatusBarMessage( QString const &, int, QPixmap const & ) ) );
+  connect( ui.wordList, &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
-  connect( translateBox->wordList(), SIGNAL( statusBarMessage( QString const &, int, QPixmap const & ) ),
-           this, SLOT( showStatusBarMessage( QString const &, int, QPixmap const & ) ) );
+  connect( translateBox->wordList(), &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
-  connect( ui.dictsList, SIGNAL( itemSelectionChanged() ),
-           this, SLOT( dictsListSelectionChanged() ) );
+  connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
 
-  connect( ui.dictsList, SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-           this, SLOT( dictsListItemActivated( QListWidgetItem * ) ) );
+  connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
-  connect( &configEvents, SIGNAL( mutedDictionariesChanged() ),
-           this, SLOT( mutedDictionariesChanged() ) );
+  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
 
   this->installEventFilter( this );
 
@@ -769,7 +719,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   groupListInDock->installEventFilter( this );
   groupListInToolbar->installEventFilter( this );
 
-  connect( &ftsIndexing, SIGNAL( newIndexingName( QString ) ), this, SLOT( showFTSIndexingName( QString ) ) );
+  connect( &ftsIndexing, &FTS::FtsIndexing::newIndexingName, this, &MainWindow::showFTSIndexingName );
 
 #ifndef Q_OS_MAC
   {
@@ -787,11 +737,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   //set  webengineview font
   changeWebEngineViewFont();
 
-  connect( &dictNetMgr, SIGNAL( proxyAuthenticationRequired( QNetworkProxy, QAuthenticator * ) ),
-           this, SLOT( proxyAuthentication( QNetworkProxy, QAuthenticator * ) ) );
+  connect( &dictNetMgr, &QNetworkAccessManager::proxyAuthenticationRequired, this, &MainWindow::proxyAuthentication );
 
-  connect( &articleNetMgr, SIGNAL( proxyAuthenticationRequired( QNetworkProxy, QAuthenticator * ) ),
-           this, SLOT( proxyAuthentication( QNetworkProxy, QAuthenticator * ) ) );
+  connect( &articleNetMgr,
+    &QNetworkAccessManager::proxyAuthenticationRequired,
+    this,
+    &MainWindow::proxyAuthentication );
 
   setupNetworkCache( cfg.preferences.maxNetworkCacheSize );
 
@@ -833,7 +784,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   translateLine->setFocus();
 
-  applyQtStyleSheet( cfg.preferences.displayStyle, cfg.preferences.addonStyle, cfg.preferences.darkMode );
+  applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.darkMode );
 
   makeScanPopup();
 
@@ -844,8 +795,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     trayIcon->setContextMenu( &trayIconMenu );
     trayIcon->show();
 
-    connect( trayIcon, SIGNAL( activated( QSystemTrayIcon::ActivationReason ) ),
-             this, SLOT( trayIconActivated( QSystemTrayIcon::ActivationReason ) ) );
+    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
   }
 
   updateTrayIcon();
@@ -873,8 +823,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     focusTranslateLine();
   }
 
-  connect( &newReleaseCheckTimer, SIGNAL( timeout() ),
-           this, SLOT( checkForNewRelease() ) );
+  connect( &newReleaseCheckTimer, &QTimer::timeout, this, &MainWindow::checkForNewRelease );
 
   if ( cfg.preferences.hideMenubar )
   {
@@ -1174,7 +1123,7 @@ QPrinter & MainWindow::getPrinter()
   return *printer;
 }
 
-void MainWindow::applyQtStyleSheet( QString const & displayStyle, QString const & addonStyle, bool const & darkMode )
+void MainWindow::applyQtStyleSheet( QString const & addonStyle, bool const & darkMode )
 {
   #ifdef Q_OS_WIN32
   if( darkMode )
@@ -1264,11 +1213,9 @@ void MainWindow::updateTrayIcon()
     trayIcon->setContextMenu( &trayIconMenu );
     trayIcon->show();
 
-    connect( trayIcon, SIGNAL( activated( QSystemTrayIcon::ActivationReason ) ),
-             this, SLOT( trayIconActivated( QSystemTrayIcon::ActivationReason ) ) );
+    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
   }
-  else
-  if ( trayIcon && !cfg.preferences.enableTrayIcon )
+  else if( trayIcon && !cfg.preferences.enableTrayIcon )
   {
     // Need to hide it
     delete trayIcon;
@@ -1580,37 +1527,31 @@ void MainWindow::makeScanPopup()
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
            this, SLOT(editDictionaries( unsigned )), Qt::QueuedConnection );
 
-  connect( scanPopup.get(), SIGNAL(sendPhraseToMainWindow( Config::InputPhrase const & ) ),
-           this, SLOT(phraseReceived( Config::InputPhrase const & )), Qt::QueuedConnection );
+  connect( scanPopup.get(),
+    &ScanPopup::sendPhraseToMainWindow,
+    this,
+    &MainWindow::phraseReceived,
+    Qt::QueuedConnection );
 
-  connect( this, SIGNAL( setExpandOptionalParts( bool ) ),
-           scanPopup.get(), SIGNAL( setViewExpandMode( bool ) ) );
+  connect( this, &MainWindow::setExpandOptionalParts, scanPopup.get(), &ScanPopup::setViewExpandMode );
 
-  connect( scanPopup.get(), SIGNAL( setExpandMode( bool ) ),
-           this, SLOT( setExpandMode( bool ) ) );
+  connect( scanPopup.get(), &ScanPopup::setExpandMode, this, &MainWindow::setExpandMode );
 
   connect( scanPopup.get(), &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
 
-  connect( scanPopup.get(), SIGNAL( forceAddWordToHistory( const QString & ) ),
-           this, SLOT( forceAddWordToHistory( const QString & ) ) );
+  connect( scanPopup.get(), &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
 
-  connect( scanPopup.get(), SIGNAL( showDictionaryInfo( const QString & ) ),
-           this, SLOT( showDictionaryInfo( const QString & ) ) );
+  connect( scanPopup.get(), &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
-  connect( scanPopup.get(), SIGNAL( openDictionaryFolder( const QString & ) ),
-           this, SLOT( openDictionaryFolder( const QString & ) ) );
+  connect( scanPopup.get(), &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
 
-  connect( scanPopup.get(), SIGNAL( sendWordToHistory( QString ) ),
-           this, SLOT( addWordToHistory( QString ) ) );
+  connect( scanPopup.get(), &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
 
-  connect( this, SIGNAL( setPopupGroupByName( QString ) ),
-           scanPopup.get(), SLOT( setGroupByName( QString ) ) );
+  connect( this, &MainWindow::setPopupGroupByName, scanPopup.get(), &ScanPopup::setGroupByName );
 
-  connect( scanPopup.get(), SIGNAL( sendWordToFavorites( QString, uint ) ),
-           this, SLOT( addWordToFavorites( QString, uint ) ) );
+  connect( scanPopup.get(), &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
 
-  connect( scanPopup.get(), SIGNAL( isWordPresentedInFavorites( QString, uint ) ),
-           this, SLOT( isWordPresentedInFavorites( QString, uint ) ) );
+  connect( scanPopup.get(), &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
 
 #ifdef Q_OS_WIN32
   connect( scanPopup.get(), SIGNAL( isGoldenDictWindow( HWND ) ),
@@ -1657,8 +1598,8 @@ vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
 void MainWindow::createTabList()
 {
   tabListMenu->setIcon(QIcon(":/icons/windows-list.svg"));
-  connect(tabListMenu, SIGNAL(aboutToShow()), this, SLOT(fillWindowsMenu()));
-  connect(tabListMenu, SIGNAL(triggered(QAction*)), this, SLOT(switchToWindow(QAction*)));
+  connect( tabListMenu, &QMenu::aboutToShow, this, &MainWindow::fillWindowsMenu );
+  connect( tabListMenu, &QMenu::triggered, this, &MainWindow::switchToWindow );
 
   tabListButton = new QToolButton(ui.tabWidget);
   tabListButton->setAutoRaise(true);
@@ -1735,55 +1676,41 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
   connect( view, &ArticleView::inspectSignal,this,&MainWindow::inspectElement);
 
-  connect( view, SIGNAL( titleChanged(  ArticleView *, QString const & ) ),
-           this, SLOT( titleChanged(  ArticleView *, QString const & ) ) );
+  connect( view, &ArticleView::titleChanged, this, &MainWindow::titleChanged );
 
-  connect( view, SIGNAL( iconChanged( ArticleView *, QIcon const & ) ),
-           this, SLOT( iconChanged( ArticleView *, QIcon const & ) ) );
+  connect( view, &ArticleView::iconChanged, this, &MainWindow::iconChanged );
 
-  connect( view, SIGNAL( pageLoaded( ArticleView * ) ),
-           this, SLOT( pageLoaded( ArticleView * ) ) );
+  connect( view, &ArticleView::pageLoaded, this, &MainWindow::pageLoaded );
 
-  connect( view, SIGNAL( updateFoundInDictsList( ) ),
-          this, SLOT( updateFoundInDictsList() ) );
+  connect( view, &ArticleView::updateFoundInDictsList, this, &MainWindow::updateFoundInDictsList );
 
-  connect( view, SIGNAL( openLinkInNewTab( QUrl const &, QUrl const &, QString const &, ArticleView::Contexts const & ) ),
-           this, SLOT( openLinkInNewTab( QUrl const &, QUrl const &, QString const &, ArticleView::Contexts const & ) ) );
+  connect( view, &ArticleView::openLinkInNewTab, this, &MainWindow::openLinkInNewTab );
 
-  connect( view, SIGNAL( showDefinitionInNewTab( QString const &, unsigned, QString const &, ArticleView::Contexts const & ) ),
-           this, SLOT( showDefinitionInNewTab( QString const &, unsigned, QString const &, ArticleView::Contexts const & ) ) );
+  connect( view, &ArticleView::showDefinitionInNewTab, this, &MainWindow::showDefinitionInNewTab );
 
-  connect( view, SIGNAL( typingEvent( QString const & ) ),
-           this, SLOT( typingEvent( QString const & ) ) );
+  connect( view, &ArticleView::typingEvent, this, &MainWindow::typingEvent );
 
-  connect( view, SIGNAL( activeArticleChanged( ArticleView const *, const QString & ) ),
-           this, SLOT( activeArticleChanged( ArticleView const *, const QString & ) ) );
+  connect( view, &ArticleView::activeArticleChanged, this, &MainWindow::activeArticleChanged );
 
-  connect( view, SIGNAL( statusBarMessage( QString const &, int, QPixmap const & ) ),
-           this, SLOT( showStatusBarMessage( QString const &, int, QPixmap const & ) ) );
+  connect( view, &ArticleView::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
-  connect( view, SIGNAL( showDictsPane( ) ), this, SLOT( showDictsPane( ) ) );
+  connect( view, &ArticleView::showDictsPane, this, &MainWindow::showDictsPane );
 
-  connect( view, SIGNAL( forceAddWordToHistory( const QString & ) ),
-           this, SLOT( forceAddWordToHistory( const QString & ) ) );
+  connect( view, &ArticleView::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
 
-  connect( this, SIGNAL( setExpandOptionalParts( bool ) ),
-           view, SLOT( receiveExpandOptionalParts( bool ) ) );
+  connect( this, &MainWindow::setExpandOptionalParts, view, &ArticleView::receiveExpandOptionalParts );
 
-  connect( view, SIGNAL( setExpandMode( bool ) ), this, SLOT( setExpandMode( bool ) ) );
+  connect( view, &ArticleView::setExpandMode, this, &MainWindow::setExpandMode );
 
-  connect( view, SIGNAL( sendWordToHistory( QString ) ),
-           this, SLOT( addWordToHistory( QString ) ) );
+  connect( view, &ArticleView::sendWordToHistory, this, &MainWindow::addWordToHistory );
 
-  connect( view, SIGNAL( sendWordToInputLine( QString const & ) ),
-           this, SLOT( sendWordToInputLine( QString const & ) ) );
+  connect( view, &ArticleView::sendWordToInputLine, this, &MainWindow::sendWordToInputLine );
 
-  connect( view, SIGNAL( storeResourceSavePath( QString const & ) ),
-           this, SLOT( storeResourceSavePath( QString const & ) ) );
+  connect( view, &ArticleView::storeResourceSavePath, this, &MainWindow::storeResourceSavePath );
 
-  connect( view, SIGNAL( zoomIn()), this, SLOT( zoomin() ) );
+  connect( view, &ArticleView::zoomIn, this, &MainWindow::zoomin );
 
-  connect( view, SIGNAL( zoomOut()), this, SLOT( zoomout() ) );
+  connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
 
   view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
@@ -2051,8 +1978,7 @@ void MainWindow::tabMenuRequested(QPoint pos)
 void MainWindow::dictionaryBarToggled( bool )
 {
   // From now on, only the triggered() signal is interesting to us
-  disconnect( dictionaryBar.toggleViewAction(), SIGNAL(toggled(bool)),
-              this, SLOT(dictionaryBarToggled(bool)) );
+  disconnect( dictionaryBar.toggleViewAction(), &QAction::toggled, this, &MainWindow::dictionaryBarToggled );
 
   updateDictionaryBar(); // Updates dictionary bar contents if it's shown
   applyMutedDictionariesState(); // Visibility change affects searches and results
@@ -2172,11 +2098,12 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
   Config::Class newCfg = cfg;
   EditDictionaries dicts( this, newCfg, dictionaries, groupInstances, dictNetMgr );
 
-  connect( &dicts, SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SLOT( showDictionaryInfo( QString const & ) ) );
+  connect( &dicts, &EditDictionaries::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
-  connect( &dicts, SIGNAL( showDictionaryHeadwords( QString const & ) ),
-           this, SLOT( showDictionaryHeadwords( QString const & ) ) );
+  connect( &dicts,
+    SIGNAL( showDictionaryHeadwords( QString const & ) ),
+    this,
+    SLOT( showDictionaryHeadwords( QString const & ) ) );
 
   if ( editDictionaryGroup != Instances::Group::NoGroupId )
     dicts.editGroup( editDictionaryGroup );
@@ -2278,10 +2205,10 @@ void MainWindow::editPreferences()
 
     bool needReload = false;
 
-    // See if we need to reapply stylesheets
-    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
+    // See if we need to reapply Qt stylesheets
+    if ( cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
     {
-      applyQtStyleSheet( p.displayStyle, p.addonStyle, p.darkMode );
+      applyQtStyleSheet( p.addonStyle, p.darkMode );
       articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }
@@ -2580,24 +2507,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::ShortcutOverride
        || ev->type() == QEvent::KeyPress )
   {
-    // Handle Ctrl+H to show the History Pane.
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
-    if ( ke->key() == Qt::Key_H && ke->modifiers() == Qt::ControlModifier )
-    {
-      if( ev->type() == QEvent::KeyPress )
-        on_showHideHistory_triggered();
-      ev->accept();
-      return true;
-    }
-
-    // Handle Ctrl+I to show the Favorities Pane.
-    if ( ke->key() == Qt::Key_I && ke->modifiers() == Qt::ControlModifier )
-    {
-      if( ev->type() == QEvent::KeyPress )
-        on_showHideFavorites_triggered();
-      ev->accept();
-      return true;
-    }
 
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
@@ -2690,7 +2600,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
       // select all on mouse click
       if ( focusEvent->reason() == Qt::MouseFocusReason ) {
-        QTimer::singleShot(0, this, SLOT(focusTranslateLine()));
+        QTimer::singleShot( 0, this, &MainWindow::focusTranslateLine );
       }
       return false;
     }
@@ -3062,9 +2972,11 @@ void MainWindow::installHotKeys()
                                    1 );
     }
 
-    connect( hotkeyWrapper.get(), SIGNAL( hotkeyActivated( int ) ),
-             this, SLOT( hotKeyActivated( int ) ),
-             Qt::AutoConnection );
+    connect( hotkeyWrapper.get(),
+      &HotkeyWrapper::hotkeyActivated,
+      this,
+      &MainWindow::hotKeyActivated,
+      Qt::AutoConnection );
   }
 }
 
@@ -3129,8 +3041,11 @@ void MainWindow::checkForNewRelease()
 
   latestReleaseReply = articleNetMgr.get( req );
 
-  connect( latestReleaseReply, SIGNAL( finished() ),
-           this, SLOT( latestReleaseReplyReady() ), Qt::QueuedConnection );
+  connect( latestReleaseReply,
+    &QNetworkReply::finished,
+    this,
+    &MainWindow::latestReleaseReplyReady,
+    Qt::QueuedConnection );
 }
 
 void MainWindow::latestReleaseReplyReady()
@@ -3445,8 +3360,7 @@ void MainWindow::on_printPreview_triggered()
   int index=combox->findText( "100%" );
   combox->setCurrentIndex( index );
 
-  connect( &dialog, SIGNAL( paintRequested( QPrinter * ) ),
-           this, SLOT( printPreviewPaintRequested( QPrinter * ) ) );
+  connect( &dialog, &QPrintPreviewDialog::paintRequested, this, &MainWindow::printPreviewPaintRequested );
 
   dialog.showMaximized();
   dialog.exec();
@@ -3615,7 +3529,7 @@ void MainWindow::on_saveArticle_triggered()
             if( !handler->isEmpty() )
             {
               maxVal += 1;
-              connect( handler, SIGNAL( done() ), progressDialog, SLOT( perform() ) );
+              connect( handler, &ResourceToSaveHandler::done, progressDialog, &ArticleSaveProgressDialog::perform );
             }
           }
 
@@ -3732,7 +3646,7 @@ void MainWindow::applyZoomFactor()
   // so all of them except for the first one don't change anything and run very fast.
   // In effect, some intermediate zoom factors are skipped when scaling is slow.
   // The slower the scaling, the more steps are skipped.
-  QTimer::singleShot( 0, this, SLOT( scaleArticlesByCurrentZoomFactor() ) );
+  QTimer::singleShot( 0, this, &MainWindow::scaleArticlesByCurrentZoomFactor );
 }
 
 void MainWindow::adjustCurrentZoomFactor()
@@ -3917,7 +3831,7 @@ void MainWindow::headwordReceived( const QString & word, const QString & ID )
 
 void MainWindow::updateFavoritesMenu()
 {
-  if ( ui.favoritesPane->toggleViewAction()->isChecked() )
+  if ( ui.favoritesPane->isVisible() )
   {
     ui.showHideFavorites->setText( tr( "&Hide" ) );
   }
@@ -3929,7 +3843,7 @@ void MainWindow::updateFavoritesMenu()
 
 void MainWindow::updateHistoryMenu()
 {
-  if ( ui.historyPane->toggleViewAction()->isChecked() )
+  if( ui.historyPane->isVisible() )
   {
     ui.showHideHistory->setText( tr( "&Hide" ) );
   }
@@ -3939,16 +3853,30 @@ void MainWindow::updateHistoryMenu()
   }
 }
 
-void MainWindow::on_showHideFavorites_triggered()
+void MainWindow::toggle_favoritesPane()
 {
-  ui.favoritesPane->toggleViewAction()->trigger();
-  ui.favoritesPane->raise(); // useful when the Pane is tabbed.
+  if( ui.favoritesPane->isVisible() )
+  {
+    ui.favoritesPane->hide();
+  }
+  else
+  {
+    ui.favoritesPane->show();
+    ui.favoritesPane->raise(); // useful when the Pane is tabbed.
+  }
 }
 
-void MainWindow::on_showHideHistory_triggered()
+void MainWindow::toggle_historyPane()
 {
-  ui.historyPane->toggleViewAction()->trigger();
-  ui.historyPane->raise(); // useful when the Pane is tabbed.
+  if( ui.historyPane->isVisible() )
+  {
+    ui.historyPane->hide();
+  }
+  else
+  {
+    ui.historyPane->show();
+    ui.historyPane->raise();
+  }
 }
 
 void MainWindow::on_exportHistory_triggered()
@@ -4364,10 +4292,8 @@ void MainWindow::showDictionaryHeadwords( QWidget * owner, Dictionary::Class * d
     headwordsDlg = new DictHeadwords( this, cfg, dict );
     addGlobalActionsToDialog( headwordsDlg );
     addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
-    connect( headwordsDlg, SIGNAL( headwordSelected( QString, QString ) ),
-             this, SLOT( headwordReceived( QString, QString ) ) );
-    connect( headwordsDlg, SIGNAL( closeDialog() ),
-             this, SLOT( closeHeadwordsDialog() ), Qt::QueuedConnection );
+    connect( headwordsDlg, &DictHeadwords::headwordSelected, this, &MainWindow::headwordReceived );
+    connect( headwordsDlg, &DictHeadwords::closeDialog, this, &MainWindow::closeHeadwordsDialog, Qt::QueuedConnection );
   }
   else
     headwordsDlg->setup( dict );
@@ -4590,8 +4516,11 @@ void MainWindow::showFullTextSearchDialog()
 
     connect( ftsDlg, SIGNAL( showTranslationFor( QString, QStringList, QRegExp, bool ) ),
              this, SLOT( showTranslationFor( QString, QStringList, QRegExp, bool ) ) );
-    connect( ftsDlg, SIGNAL( closeDialog() ),
-             this, SLOT( closeFullTextSearchDialog() ), Qt::QueuedConnection );
+    connect( ftsDlg,
+      &FTS::FullTextSearchDialog::closeDialog,
+      this,
+      &MainWindow::closeFullTextSearchDialog,
+      Qt::QueuedConnection );
     connect( &configEvents, SIGNAL( mutedDictionariesChanged() ),
              ftsDlg, SLOT( updateDictionaries() ) );
 
@@ -4628,7 +4557,7 @@ void MainWindow::showGDHelp()
 
     if( helpWindow->getHelpEngine() )
     {
-      connect( helpWindow, SIGNAL( needClose() ), this, SLOT( hideGDHelp() ) );
+      connect( helpWindow, &Help::HelpWindow::needClose, this, &MainWindow::hideGDHelp );
       helpWindow->showHelpFor( "Content" );
       helpWindow->show();
     }

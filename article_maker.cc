@@ -149,20 +149,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
             "</script>";
   result+= R"(<script type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
 
-#ifdef Q_OS_WIN32
-  if( GlobalBroadcaster::instance()->getPreference()->darkMode )
+  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
-    result += "<script type=\"text/javascript\" src=\"qrc:///scripts/darkreader.js\"></script>";
-    result +=
-      "<script type=\"text/javascript\">"
-      "DarkReader.enable({"
-      "    brightness: 100,"
-      "    contrast: 90,"
-      "    sepia: 10"
-      "});"
-      "</script>";
+    result += R"(
+<script src="qrc:///scripts/darkreader.js"></script>
+<script>
+  DarkReader.enable({
+    brightness: 100,
+    contrast: 90,
+    sepia: 10
+  });
+</script>
+)";
   }
-#endif
   result += "</head><body>";
 
   return result;
@@ -452,8 +451,7 @@ ArticleRequest::ArticleRequest(
   {
     sptr< Dictionary::WordSearchRequest > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::toWString( word ) );
 
-    connect( s.get(), SIGNAL( finished() ),
-             this, SLOT( altSearchFinished() ), Qt::QueuedConnection );
+    connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
     altSearches.push_back( s );
   }
@@ -515,8 +513,7 @@ void ArticleRequest::altSearchFinished()
                                         gd::toWString( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
                                         ignoreDiacritics );
 
-        connect( r.get(), SIGNAL( finished() ),
-                 this, SLOT( bodyFinished() ), Qt::QueuedConnection );
+        connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
 
         bodyRequests.push_back( r );
       }
@@ -730,8 +727,11 @@ void ArticleRequest::bodyFinished()
         // When there were no definitions, we run stemmed search.
         stemmedWordFinder =  std::make_shared<WordFinder>( this );
 
-        connect( stemmedWordFinder.get(), SIGNAL( finished() ),
-                 this, SLOT( stemmedSearchFinished() ), Qt::QueuedConnection );
+        connect( stemmedWordFinder.get(),
+          &WordFinder::finished,
+          this,
+          &ArticleRequest::stemmedSearchFinished,
+          Qt::QueuedConnection );
 
         stemmedWordFinder->stemmedMatch( word, activeDicts );
       }
@@ -821,11 +821,13 @@ void ArticleRequest::stemmedSearchFinished()
 
   if ( splittedWords.first.size() > 1 ) // Contains more than one word
   {
-    disconnect( stemmedWordFinder.get(), SIGNAL( finished() ),
-                this, SLOT( stemmedSearchFinished() ) );
+    disconnect( stemmedWordFinder.get(), &WordFinder::finished, this, &ArticleRequest::stemmedSearchFinished );
 
-    connect( stemmedWordFinder.get(), SIGNAL( finished() ),
-             this, SLOT( individualWordFinished() ), Qt::QueuedConnection );
+    connect( stemmedWordFinder.get(),
+      &WordFinder::finished,
+      this,
+      &ArticleRequest::individualWordFinished,
+      Qt::QueuedConnection );
 
     currentSplittedWordStart = -1;
     currentSplittedWordEnd = currentSplittedWordStart;

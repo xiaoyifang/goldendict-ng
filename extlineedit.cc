@@ -20,10 +20,10 @@ ExtLineEdit::ExtLineEdit(QWidget *parent) :
     ensurePolished();
     updateMargins();
 
-    connect(iconButtons[Left], SIGNAL(clicked()), this, SLOT(iconClicked()));
-    connect(iconButtons[Right], SIGNAL(clicked()), this, SLOT(iconClicked()));
+    connect( iconButtons[ Left ], &QAbstractButton::clicked, this, &ExtLineEdit::iconClicked );
+    connect( iconButtons[ Right ], &QAbstractButton::clicked, this, &ExtLineEdit::iconClicked );
 
-    connect(this, SIGNAL( textChanged( QString ) ), this, SLOT( updateButtons( QString ) ) );
+    connect( this, &QLineEdit::textChanged, this, &ExtLineEdit::updateButtons );
 }
 
 ExtLineEdit::~ExtLineEdit()

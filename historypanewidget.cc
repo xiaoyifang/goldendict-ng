@@ -24,8 +24,7 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   m_deleteSelectedAction->setShortcut( QKeySequence( QKeySequence::Delete ) );
   m_deleteSelectedAction->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( m_deleteSelectedAction );
-  connect( m_deleteSelectedAction, SIGNAL( triggered() ),
-           this, SLOT( deleteSelectedItems() ) );
+  connect( m_deleteSelectedAction, &QAction::triggered, this, &HistoryPaneWidget::deleteSelectedItems );
 
   // Copy selected items to clipboard
   m_copySelectedToClipboard = new QAction( this );
@@ -33,8 +32,7 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   m_copySelectedToClipboard->setShortcut( QKeySequence( QKeySequence::Copy ) );
   m_copySelectedToClipboard->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( m_copySelectedToClipboard );
-  connect( m_copySelectedToClipboard, SIGNAL( triggered() ),
-           this, SLOT( copySelectedItems() ) );
+  connect( m_copySelectedToClipboard, &QAction::triggered, this, &HistoryPaneWidget::copySelectedItems );
 
 
   // Handle context menu, reusing some of the top-level window's History menu
@@ -79,15 +77,12 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   m_historyList->viewport()->installEventFilter( this );
 
   // list selection and keyboard navigation
-  connect( m_historyList, SIGNAL( clicked( QModelIndex const & ) ),
-           this, SLOT( onItemClicked( QModelIndex const & ) ) );
-  connect( m_history, SIGNAL( itemsChanged() ),
-           this, SLOT( updateHistoryCounts() ) );
+  connect( m_historyList, &QAbstractItemView::clicked, this, &HistoryPaneWidget::onItemClicked );
+  connect( m_history, &History::itemsChanged, this, &HistoryPaneWidget::updateHistoryCounts );
   connect ( m_historyList->selectionModel(), SIGNAL( selectionChanged ( QItemSelection const & , QItemSelection const & ) ),
       this, SLOT( onSelectionChanged( QItemSelection const & ) ) );
 
-  connect( m_historyList, SIGNAL( customContextMenuRequested( QPoint const & ) ),
-           this, SLOT( showCustomMenu( QPoint const & ) ) );
+  connect( m_historyList, &QWidget::customContextMenuRequested, this, &HistoryPaneWidget::showCustomMenu );
 
   listItemDelegate = new WordListItemDelegate( m_historyList->itemDelegate() );
   m_historyList->setItemDelegate( listItemDelegate );
@@ -231,9 +226,7 @@ HistoryModel::HistoryModel( History * history, QObject * parent )
   : QAbstractListModel( parent ), m_history(history)
 {
 
-  connect( m_history, SIGNAL( itemsChanged() ),
-           this, SLOT( historyChanged() ) );
-
+  connect( m_history, &History::itemsChanged, this, &HistoryModel::historyChanged );
 }
 
 int HistoryModel::rowCount( QModelIndex const & /*parent*/ ) const

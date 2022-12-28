@@ -63,9 +63,9 @@ void AudioService::playMemory( const char * ptr, int size )
   QByteArray audioData( ptr, size );
   DecoderThread * thread = new DecoderThread( audioData, this );
 
-  connect( thread, SIGNAL( error( QString ) ), this, SIGNAL( error( QString ) ) );
-  connect( this, SIGNAL( cancelPlaying( bool ) ), thread, SLOT( cancel( bool ) ), Qt::DirectConnection );
-  connect( thread, SIGNAL( finished() ), thread, SLOT( deleteLater() ) );
+  connect( thread, &DecoderThread::error, this, &AudioService::error );
+  connect( this, &AudioService::cancelPlaying, thread, &DecoderThread::cancel, Qt::DirectConnection );
+  connect( thread, &QThread::finished, thread, &QObject::deleteLater );
 
   thread->start();
 }

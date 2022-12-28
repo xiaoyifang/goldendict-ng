@@ -108,7 +108,7 @@ void FtsIndexing::doIndexing()
 
     Indexing *idx = new Indexing( isCancelled, dictionaries, indexingExited );
 
-    connect( idx, SIGNAL( sendNowIndexingName( QString ) ), this, SLOT( setNowIndexedName( QString ) ) );
+    connect( idx, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
 
     QThreadPool::globalInstance()->start( idx );
 
@@ -238,8 +238,7 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
 
   setNewIndexingName( ftsIdx.nowIndexingName() );
 
-  connect( &ftsIdx, SIGNAL( newIndexingName( QString ) ),
-           this, SLOT( setNewIndexingName( QString ) ) );
+  connect( &ftsIdx, &FtsIndexing::newIndexingName, this, &FullTextSearchDialog::setNewIndexingName );
 
   ui.searchMode->addItem( tr( "Whole words" ), WholeWords );
   ui.searchMode->addItem( tr( "Plain text"), PlainText );
@@ -297,38 +296,33 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
 
   setLimitsUsing();
 
-  connect( ui.checkBoxDistanceBetweenWords, SIGNAL( stateChanged( int ) ),
-           this, SLOT( setLimitsUsing() ) );
-  connect( ui.checkBoxArticlesPerDictionary, SIGNAL( stateChanged( int ) ),
-           this, SLOT( setLimitsUsing() ) );
-  connect( ui.searchMode, SIGNAL( currentIndexChanged( int ) ),
-           this, SLOT( setLimitsUsing() ) );
-  connect( ui.checkBoxIgnoreWordOrder, SIGNAL( stateChanged( int ) ),
-           this, SLOT( ignoreWordsOrderClicked() ) );
-  connect( ui.checkBoxIgnoreDiacritics, SIGNAL( stateChanged( int ) ),
-           this, SLOT( ignoreDiacriticsClicked() ) );
+  connect( ui.checkBoxDistanceBetweenWords, &QCheckBox::stateChanged, this, &FullTextSearchDialog::setLimitsUsing );
+  connect( ui.checkBoxArticlesPerDictionary, &QCheckBox::stateChanged, this, &FullTextSearchDialog::setLimitsUsing );
+  connect( ui.searchMode, &QComboBox::currentIndexChanged, this, &FullTextSearchDialog::setLimitsUsing );
+  connect( ui.checkBoxIgnoreWordOrder, &QCheckBox::stateChanged, this, &FullTextSearchDialog::ignoreWordsOrderClicked );
+  connect( ui.checkBoxIgnoreDiacritics,
+    &QCheckBox::stateChanged,
+    this,
+    &FullTextSearchDialog::ignoreDiacriticsClicked );
 
   model = new HeadwordsListModel( this, results, activeDicts );
   ui.headwordsView->setModel( model );
 
   ui.articlesFoundLabel->setText( tr( "Articles found: " ) + "0" );
 
-  connect( ui.headwordsView, SIGNAL( clicked( QModelIndex ) ),
-           this, SLOT( itemClicked( QModelIndex ) ) );
+  connect( ui.headwordsView, &QAbstractItemView::clicked, this, &FullTextSearchDialog::itemClicked );
 
-  connect( this, SIGNAL( finished( int ) ), this, SLOT( saveData() ) );
+  connect( this, &QDialog::finished, this, &FullTextSearchDialog::saveData );
 
   connect( ui.OKButton, SIGNAL( clicked() ), this, SLOT( accept() ) );
   connect( ui.cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
 
-  connect( ui.helpButton, SIGNAL( clicked() ),
-           this, SLOT( helpRequested() ) );
+  connect( ui.helpButton, &QAbstractButton::clicked, this, &FullTextSearchDialog::helpRequested );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, SIGNAL( triggered() ),
-           this, SLOT( helpRequested() ) );
+  connect( &helpAction, &QAction::triggered, this, &FullTextSearchDialog::helpRequested );
 
   addAction( &helpAction );
 
@@ -492,11 +486,17 @@ void FullTextSearchDialog::accept()
                                                               ignoreWordsOrder,
                                                               ignoreDiacritics
                                                             );
-    connect( req.get(), SIGNAL( finished() ),
-             this, SLOT( searchReqFinished() ), Qt::QueuedConnection );
+    connect( req.get(),
+      &Dictionary::Request::finished,
+      this,
+      &FullTextSearchDialog::searchReqFinished,
+      Qt::QueuedConnection );
 
-    connect( req.get(), SIGNAL( matchCount(int) ),
-             this, SLOT( matchCount(int) ), Qt::QueuedConnection );
+    connect( req.get(),
+      &Dictionary::Request::matchCount,
+      this,
+      &FullTextSearchDialog::matchCount,
+      Qt::QueuedConnection );
 
     searchReqs.push_back( req );
   }

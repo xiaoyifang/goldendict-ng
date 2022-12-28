@@ -78,8 +78,8 @@ void LoadDictionaries::run()
 {
   try
   {
-    for( Config::Paths::const_iterator i = paths.begin(); i != paths.end(); ++i )
-      handlePath( *i );
+    for(const auto & path : paths)
+      handlePath( path );
 
     // Make soundDirs
     {
@@ -107,6 +107,10 @@ void LoadDictionaries::run()
   }
 }
 
+void LoadDictionaries::addDicts( const std::vector< sptr< Dictionary::Class > >& dicts ) {
+  std::move(dicts.begin(), dicts.end(), std::back_inserter(dictionaries));
+}
+
 void LoadDictionaries::handlePath( Config::Path const & path )
 {
   vector< string > allFiles;
@@ -132,112 +136,24 @@ void LoadDictionaries::handlePath( Config::Path const & path )
       allFiles.push_back( FsEncoding::encode( QDir::toNativeSeparators( fullName ) ) );
   }
 
-  {
-    vector< sptr< Dictionary::Class > > bglDictionaries =
-      Bgl::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
+  addDicts(Bgl::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Stardict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
+  addDicts(Lsa::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Dsl::makeDictionaries( allFiles,FsEncoding::encode( Config::getIndexDir() ),*this,maxPictureWidth,maxHeadwordSize ) );
+  addDicts(DictdFiles::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Xdxf::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Sdict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Aard::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
+  addDicts(ZipSounds::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Mdx::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts(Gls::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
 
-    dictionaries.insert( dictionaries.end(), bglDictionaries.begin(),
-                         bglDictionaries.end() );
-  }
-
-  {
-    vector< sptr< Dictionary::Class > > stardictDictionaries =
-      Stardict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand );
-
-    dictionaries.insert( dictionaries.end(), stardictDictionaries.begin(),
-                         stardictDictionaries.end() );
-  }
-
-  {
-    vector< sptr< Dictionary::Class > > lsaDictionaries =
-      Lsa::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), lsaDictionaries.begin(),
-                         lsaDictionaries.end() );
-  }
-
-  {
-    vector< sptr< Dictionary::Class > > dslDictionaries =
-      Dsl::makeDictionaries(
-          allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxPictureWidth, maxHeadwordSize );
-
-    dictionaries.insert( dictionaries.end(), dslDictionaries.begin(),
-                         dslDictionaries.end() );
-  }
-
-  {
-    vector< sptr< Dictionary::Class > > dictdDictionaries =
-      DictdFiles::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), dictdDictionaries.begin(),
-                         dictdDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > xdxfDictionaries =
-      Xdxf::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), xdxfDictionaries.begin(),
-                         xdxfDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > sdictDictionaries =
-      Sdict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), sdictDictionaries.begin(),
-                         sdictDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > aardDictionaries =
-      Aard::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand );
-
-    dictionaries.insert( dictionaries.end(), aardDictionaries.begin(),
-                         aardDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > zipSoundsDictionaries =
-      ZipSounds::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), zipSoundsDictionaries.begin(),
-                         zipSoundsDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > mdxDictionaries =
-      Mdx::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), mdxDictionaries.begin(),
-                         mdxDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > glsDictionaries =
-      Gls::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), glsDictionaries.begin(),
-                         glsDictionaries.end() );
-  }
 #ifdef MAKE_ZIM_SUPPORT
-  {
-    vector< sptr< Dictionary::Class > > zimDictionaries =
-      Zim::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand );
-
-    dictionaries.insert( dictionaries.end(), zimDictionaries.begin(),
-                         zimDictionaries.end() );
-  }
-  {
-    vector< sptr< Dictionary::Class > > slobDictionaries =
-      Slob::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand );
-
-    dictionaries.insert( dictionaries.end(), slobDictionaries.begin(),
-                         slobDictionaries.end() );
-  }
+  addDicts(Zim::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
+  addDicts(Slob::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
 #endif
 #ifndef NO_EPWING_SUPPORT
-  {
-    vector< sptr< Dictionary::Class > > epwingDictionaries =
-      Epwing::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this );
-
-    dictionaries.insert( dictionaries.end(), epwingDictionaries.begin(),
-                         epwingDictionaries.end() );
-  }
+  addDicts( Epwing::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
 #endif
 }
 
@@ -261,13 +177,11 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   LoadDictionaries loadDicts( cfg );
 
-  QObject::connect( &loadDicts, SIGNAL( indexingDictionarySignal( QString const & ) ),
-                    &init, SLOT( indexing( QString const & ) ) );
+  QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
 
   QEventLoop localLoop;
 
-  QObject::connect( &loadDicts, SIGNAL( finished() ),
-                    &localLoop, SLOT( quit() ) );
+  QObject::connect( &loadDicts, &QThread::finished, &localLoop, &QEventLoop::quit );
 
   loadDicts.start();
 
@@ -285,27 +199,20 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   dictionaries = loadDicts.getDictionaries();
 
+  // Helper function that will add a vector of dictionary::Class to the dictionary list
+  // Implemented as lambda to access method's `dictionaries` variable
+  auto  static addDicts = [&dictionaries](const vector< sptr< Dictionary::Class >> &dicts) {
+    std::move(dicts.begin(), dicts.end(), std::back_inserter(dictionaries));
+  };
+
   ///// We create transliterations synchronously since they are very simple
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  // Make Chinese conversion
-  {
-    vector< sptr< Dictionary::Class > > chineseDictionaries =
-      Chinese::makeDictionaries( cfg.transliteration.chinese );
-
-    dictionaries.insert( dictionaries.end(), chineseDictionaries.begin(),
-                         chineseDictionaries.end() );
-  }
+  addDicts(Chinese::makeDictionaries( cfg.transliteration.chinese ));
 #endif
 
-  // Make Romaji
-  {
-    vector< sptr< Dictionary::Class > > romajiDictionaries =
-      Romaji::makeDictionaries( cfg.transliteration.romaji );
+  addDicts(Romaji::makeDictionaries( cfg.transliteration.romaji ));
 
-    dictionaries.insert( dictionaries.end(), romajiDictionaries.begin(),
-                         romajiDictionaries.end() );
-  }
 
   // Make Russian transliteration
   if ( cfg.transliteration.enableRussianTransliteration )
@@ -322,67 +229,17 @@ void loadDictionaries( QWidget * parent, bool showInitially,
   // Make Belarusian transliteration
   if ( cfg.transliteration.enableBelarusianTransliteration )
   {
-    vector< sptr< Dictionary::Class > > dicts = BelarusianTranslit::makeDictionaries();
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
+    addDicts(BelarusianTranslit::makeDictionaries());
   }
 
-  ///// We create MediaWiki dicts synchronously, since they use netmgr
+  addDicts(MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ));
+  addDicts(WebSite::makeDictionaries( cfg.webSites, dictNetMgr ));
+  addDicts(Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ));
+  addDicts(Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ));
+  addDicts(Programs::makeDictionaries( cfg.programs ));
+  addDicts(VoiceEngines::makeDictionaries( cfg.voiceEngines ));
+  addDicts(DictServer::makeDictionaries( cfg.dictServers ));
 
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  ///// WebSites are very simple, no need to create them asynchronously
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      WebSite::makeDictionaries( cfg.webSites, dictNetMgr );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  //// Forvo dictionaries
-
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  //// Lingua Libre
-
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  //// Programs
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      Programs::makeDictionaries( cfg.programs );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  //// Text to Speech
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      VoiceEngines::makeDictionaries( cfg.voiceEngines );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
-
-  {
-    vector< sptr< Dictionary::Class > > dicts =
-      DictServer::makeDictionaries( cfg.dictServers );
-
-    dictionaries.insert( dictionaries.end(), dicts.begin(), dicts.end() );
-  }
 
   GD_DPRINTF( "Load done\n" );
 

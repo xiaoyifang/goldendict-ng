@@ -252,13 +252,11 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
   ui.definition->addAction( &goBackAction );
-  connect( &goBackAction, SIGNAL( triggered() ),
-           this, SLOT( back() ) );
+  connect( &goBackAction, &QAction::triggered, this, &ArticleView::back );
 
   goForwardAction.setShortcut( QKeySequence( "Alt+Right" ) );
   ui.definition->addAction( &goForwardAction );
-  connect( &goForwardAction, SIGNAL( triggered() ),
-           this, SLOT( forward() ) );
+  connect( &goForwardAction, &QAction::triggered, this, &ArticleView::forward );
 
   ui.definition->pageAction( QWebEnginePage::Copy )->setShortcut( QKeySequence::Copy );
   ui.definition->addAction( ui.definition->pageAction( QWebEnginePage::Copy ) );
@@ -270,53 +268,48 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   ui.definition->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  connect(ui.definition, SIGNAL(loadFinished(bool)), this,
-          SLOT(loadFinished(bool)));
+  connect( ui.definition, &QWebEngineView::loadFinished, this, &ArticleView::loadFinished );
 
-  connect(ui.definition, SIGNAL(loadProgress(int)), this,
-          SLOT(loadProgress(int)));
-  connect( ui.definition, SIGNAL( linkClicked( QUrl ) ), this, SLOT( linkClicked( QUrl ) ) );
+  connect( ui.definition, &QWebEngineView::loadProgress, this, &ArticleView::loadProgress );
+  connect( ui.definition, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
 
-  connect( ui.definition->page(), SIGNAL( titleChanged( QString  ) ),
-           this, SLOT( handleTitleChanged( QString  ) ) );
+  connect( ui.definition->page(), &QWebEnginePage::titleChanged, this, &ArticleView::handleTitleChanged );
 
-  connect( ui.definition->page(), SIGNAL( urlChanged(QUrl) ),
-           this, SLOT( handleUrlChanged(QUrl) ) );
+  connect( ui.definition->page(), &QWebEnginePage::urlChanged, this, &ArticleView::handleUrlChanged );
 
-  connect( ui.definition, SIGNAL( customContextMenuRequested( QPoint const & ) ),
-           this, SLOT( contextMenuRequested( QPoint const & ) ) );
+  connect( ui.definition, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
 
-  connect( ui.definition->page(), SIGNAL( linkHovered ( const QString &) ),
-           this, SLOT( linkHovered ( const QString & ) ) );
+  connect( ui.definition->page(),
+    SIGNAL( linkHovered( const QString & ) ),
+    this,
+    SLOT( linkHovered( const QString & ) ) );
 
-  connect( ui.definition, SIGNAL( doubleClicked( QPoint ) ),this,SLOT( doubleClicked( QPoint ) ) );
+  connect( ui.definition, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
 
   pasteAction.setShortcut( QKeySequence::Paste  );
   ui.definition->addAction( &pasteAction );
-  connect( &pasteAction, SIGNAL( triggered() ), this, SLOT( pasteTriggered() ) );
+  connect( &pasteAction, &QAction::triggered, this, &ArticleView::pasteTriggered );
 
   articleUpAction.setShortcut( QKeySequence( "Alt+Up" ) );
   ui.definition->addAction( &articleUpAction );
-  connect( &articleUpAction, SIGNAL( triggered() ), this, SLOT( moveOneArticleUp() ) );
+  connect( &articleUpAction, &QAction::triggered, this, &ArticleView::moveOneArticleUp );
 
   articleDownAction.setShortcut( QKeySequence( "Alt+Down" ) );
   ui.definition->addAction( &articleDownAction );
-  connect( &articleDownAction, SIGNAL( triggered() ), this, SLOT( moveOneArticleDown() ) );
+  connect( &articleDownAction, &QAction::triggered, this, &ArticleView::moveOneArticleDown );
 
   ui.definition->addAction( &openSearchAction );
-  connect( &openSearchAction, SIGNAL( triggered() ), this, SLOT( openSearch() ) );
+  connect( &openSearchAction, &QAction::triggered, this, &ArticleView::openSearch );
 
   selectCurrentArticleAction.setShortcut( QKeySequence( "Ctrl+Shift+A" ));
   selectCurrentArticleAction.setText( tr( "Select Current Article" ) );
   ui.definition->addAction( &selectCurrentArticleAction );
-  connect( &selectCurrentArticleAction, SIGNAL( triggered() ),
-           this, SLOT( selectCurrentArticle() ) );
+  connect( &selectCurrentArticleAction, &QAction::triggered, this, &ArticleView::selectCurrentArticle );
 
   copyAsTextAction.setShortcut( QKeySequence( "Ctrl+Shift+C" ) );
   copyAsTextAction.setText( tr( "Copy as text" ) );
   ui.definition->addAction( &copyAsTextAction );
-  connect( &copyAsTextAction, SIGNAL( triggered() ),
-           this, SLOT( copyAsText() ) );
+  connect( &copyAsTextAction, &QAction::triggered, this, &ArticleView::copyAsText );
 
   inspectAction.setShortcut( QKeySequence( Qt::Key_F12 ) );
   inspectAction.setText( tr( "Inspect" ) );
@@ -359,11 +352,9 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  connect(GlobalBroadcaster::instance(), SIGNAL( dictionaryChanges(ActiveDictIds)), this,
-          SLOT(setActiveDictIds(ActiveDictIds)));
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this,
-           &ArticleView::dictionaryClear );
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
 
   channel = new QWebChannel(ui.definition->page());
   agent = new ArticleViewAgent(this);
@@ -1221,8 +1212,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
 
       resourceDownloadRequests.push_back( req );
 
-      connect( req.get(), SIGNAL( finished() ),
-               this, SLOT( resourceDownloadFinished() ) );
+      connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
     }
     else
     if ( url.scheme() == "gdau" && url.host() == "search" )
@@ -1270,8 +1260,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
                 if ( !req->isFinished() )
                 {
                   // Queued loading
-                  connect( req.get(), SIGNAL( finished() ),
-                           this, SLOT( resourceDownloadFinished() ) );
+                  connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
                 }
                 else
                 {
@@ -1310,8 +1299,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
             if ( !req->isFinished() )
             {
               // Queued loading
-              connect( req.get(), SIGNAL( finished() ),
-                       this, SLOT( resourceDownloadFinished() ) );
+              connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
             }
             else
             {
@@ -1360,8 +1348,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
 
         resourceDownloadRequests.push_back( req );
 
-        connect( req.get(), SIGNAL( finished() ),
-                 this, SLOT( resourceDownloadFinished() ) );
+        connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
       }
     }
 
@@ -1387,8 +1374,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref,
         // Found the corresponding program.
         Programs::RunInstance * req = new Programs::RunInstance;
 
-        connect( req, SIGNAL(finished(QByteArray,QString)),
-                 req, SLOT( deleteLater() ) );
+        connect( req, &Programs::RunInstance::finished, req, &QObject::deleteLater );
 
         QString error;
 
@@ -1766,7 +1752,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   {
     if ( !isExternalLink( targetUrl ) )
     {
-      followLink = new QAction( tr( "&Open Link" ), &menu );
+      followLink = new QAction( tr( "Op&en Link" ), &menu );
       menu.addAction( followLink );
 
       if( !popupView && !isAudioLink( targetUrl ) )
@@ -1964,7 +1950,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
   if ( !menu.isEmpty() )
   {
-    connect( this, SIGNAL( closePopupMenu() ), &menu, SLOT( close() ) );
+    connect( this, &ArticleView::closePopupMenu, &menu, &QWidget::close );
     QAction * result = menu.exec( ui.definition->mapToGlobal( pos ) );
 
     if ( !result )
@@ -2098,7 +2084,11 @@ void ArticleView::resourceDownloadFinished()
              Dictionary::WebMultimediaDownload::isAudioUrl( resourceDownloadUrl ) )
         {
           // Audio data
-          connect( audioPlayer.data(), SIGNAL( error( QString ) ), this, SLOT( audioPlayerError( QString ) ), Qt::UniqueConnection );
+          connect( audioPlayer.data(),
+            &AudioPlayerInterface::error,
+            this,
+            &ArticleView::audioPlayerError,
+            Qt::UniqueConnection );
           QString errorMessage = audioPlayer->play( data.data(), data.size() );
           if( !errorMessage.isEmpty() )
             QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
@@ -2739,18 +2729,16 @@ ResourceToSaveHandler::ResourceToSaveHandler(ArticleView * view, QString const &
   fileName( fileName ),
   alreadyDone( false )
 {
-  connect( this, SIGNAL( statusBarMessage( QString, int, QPixmap ) ),
-           view, SIGNAL( statusBarMessage( QString, int, QPixmap ) ) );
+  connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
 }
 
-void ResourceToSaveHandler::addRequest( sptr<Dictionary::DataRequest> req )
+void ResourceToSaveHandler::addRequest( sptr< Dictionary::DataRequest > req )
 {
   if( !alreadyDone )
   {
     downloadRequests.push_back( req );
 
-    connect( req.get(), SIGNAL( finished() ),
-             this, SLOT( downloadFinished() ) );
+    connect( req.get(), &Dictionary::Request::finished, this, &ResourceToSaveHandler::downloadFinished );
   }
 }
 

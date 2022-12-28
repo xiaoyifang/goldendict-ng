@@ -16,40 +16,30 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   Config::Preferences const & p = cfg_.preferences;
   ui.setupUi( this );
 
-  connect( ui.enableScanPopupModifiers, SIGNAL( toggled( bool ) ),
-           this, SLOT( enableScanPopupModifiersToggled( bool ) ) );
+  connect( ui.enableScanPopupModifiers,
+    &QAbstractButton::toggled,
+    this,
+    &Preferences::enableScanPopupModifiersToggled );
 
-  connect( ui.showScanFlag, SIGNAL( toggled( bool ) ),
-           this, SLOT( showScanFlagToggled( bool ) ) );
+  connect( ui.showScanFlag, &QAbstractButton::toggled, this, &Preferences::showScanFlagToggled );
 
-  connect( ui.altKey, SIGNAL( clicked( bool ) ),
-           this, SLOT( wholeAltClicked( bool ) ) );
-  connect( ui.ctrlKey, SIGNAL( clicked( bool ) ),
-           this, SLOT( wholeCtrlClicked( bool ) ) );
-  connect( ui.shiftKey, SIGNAL( clicked( bool ) ),
-           this, SLOT( wholeShiftClicked( bool ) ) );
+  connect( ui.altKey, &QAbstractButton::clicked, this, &Preferences::wholeAltClicked );
+  connect( ui.ctrlKey, &QAbstractButton::clicked, this, &Preferences::wholeCtrlClicked );
+  connect( ui.shiftKey, &QAbstractButton::clicked, this, &Preferences::wholeShiftClicked );
 
-  connect( ui.leftAlt, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideAltClicked( bool ) ) );
-  connect( ui.rightAlt, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideAltClicked( bool ) ) );
-  connect( ui.leftCtrl, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideCtrlClicked( bool ) ) );
-  connect( ui.rightCtrl, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideCtrlClicked( bool ) ) );
-  connect( ui.leftShift, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideShiftClicked( bool ) ) );
-  connect( ui.rightShift, SIGNAL( clicked( bool ) ),
-           this, SLOT( sideShiftClicked( bool ) ) );
+  connect( ui.leftAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
+  connect( ui.rightAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
+  connect( ui.leftCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
+  connect( ui.rightCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
+  connect( ui.leftShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
+  connect( ui.rightShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
 
-  connect( ui.buttonBox, SIGNAL( helpRequested() ),
-           this, SLOT( helpRequested() ) );
+  connect( ui.buttonBox, &QDialogButtonBox::helpRequested, this, &Preferences::helpRequested );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, SIGNAL( triggered() ),
-           this, SLOT( helpRequested() ) );
+  connect( &helpAction, &QAction::triggered, this, &Preferences::helpRequested );
 
   addAction( &helpAction );
 
@@ -182,6 +172,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
   ui.darkMode->setChecked(p.darkMode);
+  ui.darkReaderMode -> setChecked(p.darkReaderMode);
 #ifndef Q_OS_WIN32
   ui.darkMode->hide();
 #endif
@@ -329,11 +320,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ankiModel->setText( p.ankiConnectServer.model );
   ui.ankiDeck->setText(p.ankiConnectServer.deck);
 
-  connect( ui.customProxy, SIGNAL( toggled( bool ) ),
-           this, SLOT( customProxyToggled( bool ) ) );
+  connect( ui.customProxy, &QAbstractButton::toggled, this, &Preferences::customProxyToggled );
 
-  connect( ui.useProxyServer, SIGNAL( toggled( bool ) ),
-           this, SLOT( customProxyToggled( bool ) ) );
+  connect( ui.useProxyServer, &QGroupBox::toggled, this, &Preferences::customProxyToggled );
 
   ui.checkForNewReleases->setChecked( p.checkForNewReleases );
   ui.disallowContentFromOtherSites->setChecked( p.disallowContentFromOtherSites );
@@ -407,6 +396,7 @@ Config::Preferences Preferences::getPreferences()
   p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
 
   p.darkMode = ui.darkMode->isChecked();
+  p.darkReaderMode = ui.darkReaderMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
   p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
@@ -709,8 +699,7 @@ void Preferences::helpRequested()
     {
       helpWindow->setWindowFlags( Qt::Window );
 
-      connect( helpWindow, SIGNAL( needClose() ),
-               this, SLOT( closeHelp() ) );
+      connect( helpWindow, &Help::HelpWindow::needClose, this, &Preferences::closeHelp );
       helpWindow->showHelpFor( "Preferences" );
       helpWindow->show();
     }
