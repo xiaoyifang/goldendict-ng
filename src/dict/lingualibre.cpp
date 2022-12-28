@@ -30,33 +30,30 @@ namespace {
     {
       /* map of iso lang code to wikipedia lang id
 
-      Data was obtained by this query on https://commons-query.wikimedia.org/
+Data was obtained by this query on https://commons-query.wikimedia.org/
+SELECT ?language ?languageLabel ?iso ?audios
+WHERE {
+  {
+    SELECT ?language (COUNT(?audio) AS ?audios) WHERE {
+      ?audio # Filter: P2 'instance of' is Q2 'record'
+      wdt:P407 ?language .
+    }
+    GROUP BY ?language
+  }
 
-                                                SELECT ?language ?languageLabel ?iso ?audios
-                                                  WHERE {
-                                                    {
-                                                      SELECT ?language (COUNT(?audio) AS ?audios) WHERE {
-# Comment out the below statement to filter to only certain languages (e.g. Q34 or others)
-# VALUES ?language { entity:Q34 }
-
-                                                        ?audio # Filter: P2 'instance of' is Q2 'record'
-                                                          wdt:P407 ?language .
-      }
-                                                          GROUP BY ?language
-      }
-
-                                                          SERVICE <https://query.wikidata.org/sparql> {
-                                                          ?language wdt:P220 ?iso .      # Assign value: P220 'ISO-639-3' into ?iso.
-      }
+            SERVICE <https://query.wikidata.org/sparql> {
+                ?language wdt:P220 ?iso .      # Assign value: P220 'ISO-639-3' into ?iso.
+    }
 
 
-                                                            SERVICE <https://query.wikidata.org/sparql> {
-                                                            SERVICE wikibase:label {
-      bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
-          ?language rdfs:label ?languageLabel .
-      }
+                  SERVICE <https://query.wikidata.org/sparql> {
+                  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+        ?language rdfs:label ?languageLabel .
     }
   }
+}
+
       */
 
       const map< string, string > iso_to_wikipedia_id = { { "grc", "Q35497" },
@@ -313,13 +310,12 @@ namespace {
     sptr< DataRequest > getArticle(
       wstring const & word, vector< wstring > const & alts, wstring const &, bool ) override
     {
-      if( word.size() > 50 )
-      {
-        return std::make_shared< DataRequestInstant >( false );
-      }
-      else
+      if( word.size() < 50 )
       {
         return std::make_shared< LinguaArticleRequest >( word, alts, languageCode,langWikipediaID, getId(), netMgr );
+
+      } else {
+        return std::make_shared< DataRequestInstant >( false );
       }
     }
 
@@ -334,7 +330,7 @@ namespace {
     }
   };
 
-}
+}  // namespace
 
 vector< sptr< Dictionary::Class > > makeDictionaries(
   Dictionary::Initializing &, Config::Lingua const & lingua, QNetworkAccessManager & mgr )
@@ -383,18 +379,20 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring 
                    R"(&iiprop=url)"
                    R"(&iimetadataversion=1)"
                    R"(&iiextmetadatafilter=Categories)"
-                   R"(&gsrsearch=intitle:LL-%1 \(%2\)-.*-%3\.wav/)"
+                   R"(&gsrsearch=intitle:LL-%1 \(%2\)-.*-%3\.wav/)" // https://en.wikipedia.org/wiki/Help:Searching/Regex
                    R"(&gsrnamespace=6)"
                    R"(&gsrlimit=10)"
                    R"(&gsrwhat=text)";
 
-  reqUrl =  reqUrl.arg(languageCode,langWikipediaID,QString::fromStdU32String( word ) );
+  reqUrl =  reqUrl.arg(langWikipediaID,languageCode,QString::fromStdU32String( word ) );
 
   qDebug()<< "lingualibre query " << reqUrl;
 
+  auto netRequest = QNetworkRequest( reqUrl );
+  netRequest.setTransferTimeout(3000);
+
   auto netReply =
-    std::shared_ptr< QNetworkReply >( mgr.get(
-      QNetworkRequest( reqUrl ) ) );
+  std::shared_ptr< QNetworkReply >( mgr.get(netRequest));
 
 
   netReplies.emplace_back( netReply, Utf8::encode( word ) );
@@ -404,9 +402,16 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring 
 void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 {
 
-  qDebug() << "Lingua query finished";
+  qDebug() << "Lingua query finished ";
 
   sptr< QNetworkReply > netReply = netReplies.front().reply;
+
+  if( isFinished() || // Was cancelled
+      !netReply->isFinished() ||
+      netReply->error() != QNetworkReply::NoError  ){
+    qWarning()<< "Lingua query failed: " << netReply->error();
+    return;
+  }
 
   QJsonObject resultJson = QJsonDocument::fromJson( netReply->readAll() ).object();
 
@@ -488,6 +493,7 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
   else
   {
     hasAnyData = false;
+    finish();
   }
 }
 
