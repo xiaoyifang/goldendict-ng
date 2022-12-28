@@ -2213,6 +2213,10 @@ void MainWindow::editPreferences()
       needReload = true;
     }
 
+    if (cfg.preferences.darkReaderMode != p.darkReaderMode) {
+      needReload = true;
+    }
+
     if( cfg.preferences.collapseBigArticles != p.collapseBigArticles
         || cfg.preferences.articleSizeLimit != p.articleSizeLimit )
     {
