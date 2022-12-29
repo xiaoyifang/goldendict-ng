@@ -127,7 +127,7 @@ public:
 
   /// Create text without diacriticss
   /// and store diacritic marks positions
-  virtual void setText( QString const & baseString )
+  void setText( QString const & baseString ) override
   {
     accentMarkPos.clear();
     normalizedString.clear();

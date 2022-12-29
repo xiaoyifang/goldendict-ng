@@ -48,33 +48,33 @@ public:
       langId = LangCoder::code2toInt( url.mid( n - 2, 2 ).toLatin1().data() );
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const &,
-                                                 unsigned long maxResults ) ;
+  sptr< WordSearchRequest > prefixMatch( wstring const &,
+                                                 unsigned long maxResults ) override ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool );
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+                                          wstring const &, bool ) override;
 
-  virtual quint32 getLangFrom() const
+  quint32 getLangFrom() const override
   { return langId; }
 
-  virtual quint32 getLangTo() const
+  quint32 getLangTo() const override
   { return langId; }
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 };
 
@@ -111,11 +111,11 @@ public:
 
   ~MediaWikiWordSearchRequest();
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  virtual void downloadFinished();
+  void downloadFinished() override;
 };
 
 MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
@@ -212,13 +212,13 @@ public:
                            QString const & url, QNetworkAccessManager & mgr,
                            Class * dictPtr_ );
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
   void addQuery( QNetworkAccessManager & mgr, wstring const & word );
 
-  virtual void requestFinished( QNetworkReply * );
+  void requestFinished( QNetworkReply * ) override;
 
   /// This simple set implementation should be much more efficient than tree-
   /// and hash-based standard/Qt containers when there are very few elements.

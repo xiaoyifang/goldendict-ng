@@ -29,7 +29,11 @@ Checks: >
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
 CheckOptions:
-  - key:             modernize-loop-convert.MinConfidence
-    value:           reasonable
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+  - key: modernize-use-override.IgnoreDestructors
+    value: 1
+  - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value: 1
 ...
 
