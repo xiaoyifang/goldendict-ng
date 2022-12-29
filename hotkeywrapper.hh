@@ -68,6 +68,8 @@ public:
   bool setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier,
                      int handle );
 
+  bool setGlobalKey( QKeySequence & , int );
+
   /// Unregisters everything
   void unregister();
 

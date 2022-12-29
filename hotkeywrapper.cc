@@ -329,6 +329,12 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2,
   return true;
 }
 
+bool HotkeyWrapper::setGlobalKey( QKeySequence & seq, int handle )
+{
+  Config::HotKey hk(seq);
+  return setGlobalKey(hk.key1,hk.key2,hk.modifiers,handle);
+}
+
 #if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
 bool HotkeyWrapper::winEvent ( MSG * message, long * result )
 #else

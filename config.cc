@@ -1782,7 +1782,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "mainWindowHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.mainWindowHotkey.toKeySequence().toString() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.mainWindowHotkey.toString() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableClipboardHotkey" );
@@ -1790,7 +1790,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "clipboardHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.clipboardHotkey.toKeySequence().toString() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.clipboardHotkey.toString() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "startWithScanPopupOn" );
