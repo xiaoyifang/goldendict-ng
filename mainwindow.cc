@@ -890,10 +890,17 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 
       if(m == QClipboard::Selection){
 
-        // Multiple ways to stoping a word from showing up when selecting
+        // Multiple ways to stopping a word from showing up when selecting
 
-        // Explictly disabled on preferences
+        // Explicitly disabled on preferences
         if(!cfg.preferences.trackSelectionScan) return;
+
+        // Explicitly disabled on preferences to ignore gd's own selection
+
+        if( cfg.preferences.ignoreOwnClipboardChanges
+          && QApplication::clipboard()->ownsSelection() ){
+          return ;
+        }
 
         // Keyboard Modifier
         if(cfg.preferences.enableScanPopupModifiers &&
