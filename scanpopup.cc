@@ -288,10 +288,11 @@ ScanPopup::ScanPopup( QWidget * parent,
     translateWordFromSelection();
   });
 
-  delayTimer.setSingleShot( true );
-  delayTimer.setInterval( 200 );
+  // Use delay show to prevent multiple popups while selection in progress
+  selectionDelayTimer.setSingleShot( true );
+  selectionDelayTimer.setInterval( 200 );
 
-  connect( &delayTimer, &QTimer::timeout, this, &ScanPopup::delayShow );
+  connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
 #endif
 
   applyZoomFactor();
@@ -457,14 +458,6 @@ void ScanPopup::translateWord( QString const & word )
       );
 }
 
-#ifdef HAVE_X11
-void ScanPopup::delayShow()
-{
-  QString subtype = "plain";
-  handleInputWord( QApplication::clipboard()->text( subtype, QClipboard::Selection ) );
-}
-#endif
-
 [[deprecated("Favor the mainWindow's clipboardChanged ones")]]
 void ScanPopup::clipboardChanged( QClipboard::Mode m )
 {
@@ -487,7 +480,7 @@ void ScanPopup::clipboardChanged( QClipboard::Mode m )
   if( m == QClipboard::Selection )
   {
     // Use delay show to prevent multiple popups while selection in progress
-    delayTimer.start();
+    selectionDelayTimer.start();
     return;
   }
 #endif

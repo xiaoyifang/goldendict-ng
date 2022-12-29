@@ -58,6 +58,8 @@ public:
   /// Interaction with scan flag window
   void showScanFlag();
   void hideScanFlag();
+
+  QTimer selectionDelayTimer;
 #endif
 
 signals:
@@ -146,7 +148,6 @@ private:
 
 #ifdef HAVE_X11
   ScanFlag * scanFlag;
-  QTimer delayTimer;
 #endif
 
   bool mouseEnteredOnce;
@@ -235,9 +236,6 @@ private slots:
 
   void titleChanged( ArticleView *, QString const & title );
 
-#ifdef HAVE_X11
-  void delayShow();
-#endif
 };
 
 #endif

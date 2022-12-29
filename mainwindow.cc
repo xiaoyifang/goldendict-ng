@@ -915,7 +915,8 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
           return;
         }
 
-        scanPopup->translateWordFromSelection();
+        // Use delay show to prevent multiple popups while selection in progress
+        scanPopup->selectionDelayTimer.start();
       }
 #else
     scanPopup ->translateWordFromClipboard();
