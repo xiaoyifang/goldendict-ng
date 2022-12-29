@@ -469,9 +469,9 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
       string audiolink =
         pageJsonObj[ "imageinfo" ].toArray().at( 0 ).toObject()[ "url" ].toString().toHtmlEscaped().toStdString();
       articleBody += addAudioLink( audiolink, dictionaryId );
-      articleBody += "<a href=";
+      articleBody += R"(<a href=")";
       articleBody += audiolink;
-      articleBody += ">";
+      articleBody += R"(">)";
       articleBody += R"(<img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/>)";
       articleBody += title;
       articleBody += "</a><br>";
