@@ -121,12 +121,12 @@ public:
                                                       hasExited( hasExited_ )
   {}
 
-  ~BtreeWordSearchRunnable()
+  ~BtreeWordSearchRunnable() override
   {
     hasExited.release();
   }
   
-  virtual void run();
+  void run() override;
 };
 
 void BtreeWordSearchRunnable::run()

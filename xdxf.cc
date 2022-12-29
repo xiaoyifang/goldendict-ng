@@ -145,62 +145,62 @@ public:
   XdxfDictionary( string const & id, string const & indexFile,
                    vector< string > const & dictionaryFiles );
 
-  ~XdxfDictionary();
+  ~XdxfDictionary() override;
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return dictionaryName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual QString const& getDescription();
+  QString const& getDescription() override;
 
-  virtual QString getMainFilename();
+  QString getMainFilename() override;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                            bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     can_FTS = fts.enabled
               && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
               && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
-  virtual uint32_t getFtsIndexVersion()
+  uint32_t getFtsIndexVersion() override
   { return 1; }
 
 protected:
 
-  void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
@@ -449,12 +449,12 @@ public:
                                                              hasExited( hasExited_ )
   {}
 
-  ~XdxfArticleRequestRunnable()
+  ~XdxfArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class XdxfArticleRequest: public Dictionary::DataRequest
@@ -482,12 +482,12 @@ public:
 
   void run(); // Run from another thread by XdxfArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~XdxfArticleRequest()
+  ~XdxfArticleRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -690,7 +690,7 @@ public:
 
   GzippedFile( char const * fileName ) ;
 
-  ~GzippedFile();
+  ~GzippedFile() override;
 
 //  size_t gzTell();
 
@@ -700,22 +700,22 @@ protected:
 
   dictData *dz;
 
-  virtual bool isSequential () const
+  bool isSequential () const override
   { return false; } // Which is a lie, but else pos() won't work
 
-  bool waitForReadyRead ( int )
+  bool waitForReadyRead ( int ) override
   { return !gzeof( gz ); }
 
-  qint64 bytesAvailable() const
+  qint64 bytesAvailable() const override
   {
      return ( gzeof( gz ) ? 0 : 1 ) + QIODevice::bytesAvailable();
   }
 
-  virtual qint64 readData( char * data, qint64 maxSize );
+  qint64 readData( char * data, qint64 maxSize ) override;
 
-  virtual bool atEnd() const;
+  bool atEnd() const override;
 
-  virtual qint64 writeData ( const char * /*data*/, qint64 /*maxSize*/ )
+  qint64 writeData ( const char * /*data*/, qint64 /*maxSize*/ ) override
   { return -1; }
 };
 
@@ -978,12 +978,12 @@ public:
                                                           hasExited( hasExited_ )
   {}
 
-  ~XdxfResourceRequestRunnable()
+  ~XdxfResourceRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class XdxfResourceRequest: public Dictionary::DataRequest
@@ -1010,12 +1010,12 @@ public:
 
   void run(); // Run from another thread by XdxfResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~XdxfResourceRequest()
+  ~XdxfResourceRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();

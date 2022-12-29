@@ -28,10 +28,10 @@ public:
 
   CharacterConversionDictionary( std::string const & id, std::string const & name,
                                  QIcon icon, QString const & openccConfig);
-  ~CharacterConversionDictionary();
+  ~CharacterConversionDictionary() override;
 
   std::vector< gd::wstring > getAlternateWritings( gd::wstring const & )
-    noexcept;
+    noexcept override;
 };
 
 CharacterConversionDictionary::CharacterConversionDictionary( std::string const & id,

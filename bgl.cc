@@ -198,49 +198,49 @@ namespace
     BglDictionary( string const & id, string const & indexFile,
                    string const & dictionaryFile );
 
-    virtual string getName() noexcept
+    string getName() noexcept override
     { return dictionaryName; }
 
-    virtual map< Dictionary::Property, string > getProperties() noexcept
+    map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
 
-    virtual unsigned long getArticleCount() noexcept
+    unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
 
-    virtual unsigned long getWordCount() noexcept
+    unsigned long getWordCount() noexcept override
     { return idxHeader.wordCount; }
 
-    inline virtual quint32 getLangFrom() const
+    inline quint32 getLangFrom() const override
     { return idxHeader.langFrom; }
 
-    inline virtual quint32 getLangTo() const
+    inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & )
+    sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
-                                                        bool ignoreDiacritics )
+                                                        bool ignoreDiacritics ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+    sptr< Dictionary::DataRequest > getResource( string const & name ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                               int searchMode, bool matchCase,
                                                               int distanceBetweenWords,
                                                               int maxResults,
                                                               bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics );
-    virtual QString const& getDescription();
+                                                              bool ignoreDiacritics ) override;
+    QString const& getDescription() override;
 
-    virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-    virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    virtual void setFTSParameters( Config::FullTextSearch const & fts )
+    void setFTSParameters( Config::FullTextSearch const & fts ) override
     {
       can_FTS = fts.enabled
                 && !fts.disabledTypes.contains( "BGL", Qt::CaseInsensitive )
@@ -249,7 +249,7 @@ namespace
 
   protected:
 
-    virtual void loadIcon() noexcept;
+    void loadIcon() noexcept override;
 
   private:
 
@@ -504,12 +504,12 @@ public:
                                                           hasExited( hasExited_ )
   {}
 
-  ~BglHeadwordsRequestRunnable()
+  ~BglHeadwordsRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class BglHeadwordsRequest: public Dictionary::WordSearchRequest
@@ -534,12 +534,12 @@ public:
 
   void run(); // Run from another thread by BglHeadwordsRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~BglHeadwordsRequest()
+  ~BglHeadwordsRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -651,12 +651,12 @@ public:
                                                              hasExited( hasExited_ )
   {}
 
-  ~BglArticleRequestRunnable()
+  ~BglArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class BglArticleRequest: public Dictionary::DataRequest
@@ -684,7 +684,7 @@ public:
 
   void run(); // Run from another thread by BglArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -692,7 +692,7 @@ public:
   void fixHebString(string & hebStr); // Hebrew support
   void fixHebArticle(string & hebArticle); // Hebrew support
 
-  ~BglArticleRequest()
+  ~BglArticleRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -946,12 +946,12 @@ public:
                                                          hasExited( hasExited_ )
   {}
 
-  ~BglResourceRequestRunnable()
+  ~BglResourceRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class BglResourceRequest: public Dictionary::DataRequest
@@ -985,12 +985,12 @@ public:
 
   void run(); // Run from another thread by BglResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~BglResourceRequest()
+  ~BglResourceRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -1126,8 +1126,8 @@ sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name 
     { return resources; }
 
   protected:
-    virtual void handleBabylonResource( string const & filename,
-                                        char const * data, size_t size );
+    void handleBabylonResource( string const & filename,
+                                        char const * data, size_t size ) override;
   };
 
   void ResourceHandler::handleBabylonResource( string const & filename,

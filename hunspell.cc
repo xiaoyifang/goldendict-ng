@@ -67,39 +67,39 @@ public:
   {
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const &,
-                                                 unsigned long maxResults )
+  sptr< WordSearchRequest > prefixMatch( wstring const &,
+                                                 unsigned long maxResults ) override
     ;
 
-  virtual sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & )
+  sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
     ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &,
+  sptr< DataRequest > getArticle( wstring const &,
                                           vector< wstring > const & alts,
                                           wstring const &,
-                                          bool )
+                                          bool ) override
     ;
 
-  virtual bool isLocalDictionary()
+  bool isLocalDictionary() override
   { return true; }
 
-  virtual vector< wstring > getAlternateWritings( const wstring & word ) noexcept;
+  vector< wstring > getAlternateWritings( const wstring & word ) noexcept override;
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
@@ -194,12 +194,12 @@ public:
                                                              hasExited( hasExited_ )
   {}
 
-  ~HunspellArticleRequestRunnable()
+  ~HunspellArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class HunspellArticleRequest: public Dictionary::DataRequest
@@ -228,12 +228,12 @@ public:
 
   void run(); // Run from another thread by HunspellArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~HunspellArticleRequest()
+  ~HunspellArticleRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -358,12 +358,12 @@ public:
                                                              hasExited( hasExited_ )
   {}
 
-  ~HunspellHeadwordsRequestRunnable()
+  ~HunspellHeadwordsRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
@@ -392,12 +392,12 @@ public:
 
   void run(); // Run from another thread by HunspellHeadwordsRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~HunspellHeadwordsRequest()
+  ~HunspellHeadwordsRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -533,12 +533,12 @@ public:
                                                                  hasExited( hasExited_ )
   {}
 
-  ~HunspellPrefixMatchRequestRunnable()
+  ~HunspellPrefixMatchRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
@@ -567,12 +567,12 @@ public:
 
   void run(); // Run from another thread by HunspellPrefixMatchRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~HunspellPrefixMatchRequest()
+  ~HunspellPrefixMatchRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();

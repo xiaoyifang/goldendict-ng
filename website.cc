@@ -54,33 +54,33 @@ public:
     dictionaryDescription = temp;
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const & word,
-                                                 unsigned long ) ;
+  sptr< WordSearchRequest > prefixMatch( wstring const & word,
+                                                 unsigned long ) override ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &,
+  sptr< DataRequest > getArticle( wstring const &,
                                           vector< wstring > const & alts,
-                                          wstring const & context, bool )
+                                          wstring const & context, bool ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name ) ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override ;
 
   void isolateWebCSS( QString & css );
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 };
 
 sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/,
@@ -109,14 +109,14 @@ public:
 
   WebSiteArticleRequest( QString const & url, QNetworkAccessManager & _mgr,
                          Class * dictPtr_ );
-  ~WebSiteArticleRequest()
+  ~WebSiteArticleRequest() override
   {}
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  virtual void requestFinished( QNetworkReply * );
+  void requestFinished( QNetworkReply * ) override;
   static QTextCodec * codecForHtml( QByteArray const & ba );
 };
 
@@ -426,14 +426,14 @@ public:
 
   WebSiteResourceRequest( QString const & url_, QNetworkAccessManager & _mgr,
                           WebSiteDictionary * dictPtr_ );
-  ~WebSiteResourceRequest()
+  ~WebSiteResourceRequest() override
   {}
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  virtual void requestFinished( QNetworkReply * );
+  void requestFinished( QNetworkReply * ) override;
 };
 
 WebSiteResourceRequest::WebSiteResourceRequest( QString const & url_,

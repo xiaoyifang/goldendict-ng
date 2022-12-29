@@ -585,65 +585,65 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
     SlobDictionary( string const & id, string const & indexFile,
                     vector< string > const & dictionaryFiles );
 
-    ~SlobDictionary();
+    ~SlobDictionary() override;
 
-    virtual string getName() noexcept
+    string getName() noexcept override
     { return dictionaryName; }
 
-    virtual map< Dictionary::Property, string > getProperties() noexcept
+    map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
 
-    virtual unsigned long getArticleCount() noexcept
+    unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
 
-    virtual unsigned long getWordCount() noexcept
+    unsigned long getWordCount() noexcept override
     { return idxHeader.wordCount; }
 
-    inline virtual quint32 getLangFrom() const
+    inline quint32 getLangFrom() const override
     { return idxHeader.langFrom; }
 
-    inline virtual quint32 getLangTo() const
+    inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
-                                                        bool ignoreDiacritics )
+                                                        bool ignoreDiacritics ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+    sptr< Dictionary::DataRequest > getResource( string const & name ) override
       ;
 
-    virtual QString const& getDescription();
+    QString const& getDescription() override;
 
     /// Loads the resource.
     void loadResource( std::string &resourceName, string & data );
 
-    virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                               int searchMode, bool matchCase,
                                                               int distanceBetweenWords,
                                                               int maxResults,
                                                               bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics );
-    virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                              bool ignoreDiacritics ) override;
+    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     quint64 getArticlePos(uint32_t articleNumber );
 
-    virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    virtual void setFTSParameters( Config::FullTextSearch const & fts )
+    void setFTSParameters( Config::FullTextSearch const & fts ) override
     {
       can_FTS = fts.enabled
                 && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
                 && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
     }
 
-    virtual uint32_t getFtsIndexVersion()
+    uint32_t getFtsIndexVersion() override
     { return 2; }
 
 protected:
 
-    virtual void loadIcon() noexcept;
+    void loadIcon() noexcept override;
 
 private:
 
@@ -1324,12 +1324,12 @@ public:
                                                          hasExited( hasExited_ )
   {}
 
-  ~SlobArticleRequestRunnable()
+  ~SlobArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class SlobArticleRequest: public Dictionary::DataRequest
@@ -1357,12 +1357,12 @@ public:
 
   void run(); // Run from another thread by DslArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~SlobArticleRequest()
+  ~SlobArticleRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -1513,12 +1513,12 @@ public:
                                                           hasExited( hasExited_ )
   {}
 
-  ~SlobResourceRequestRunnable()
+  ~SlobResourceRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class SlobResourceRequest: public Dictionary::DataRequest
@@ -1545,12 +1545,12 @@ public:
 
   void run(); // Run from another thread by ZimResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~SlobResourceRequest()
+  ~SlobResourceRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();

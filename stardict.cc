@@ -156,53 +156,53 @@ public:
   StardictDictionary( string const & id, string const & indexFile,
                       vector< string > const & dictionaryFiles );
 
-  ~StardictDictionary();
+  ~StardictDictionary() override;
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return bookName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.wordCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount + idxHeader.synWordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & )
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual QString const& getDescription();
+  QString const& getDescription() override;
 
-  virtual QString getMainFilename();
+  QString getMainFilename() override;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                            bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     can_FTS = fts.enabled
               && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
@@ -210,7 +210,7 @@ public:
   }
 protected:
 
-  void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
@@ -1221,12 +1221,12 @@ public:
                                                                hasExited( hasExited_ )
   {}
 
-  ~StardictHeadwordsRequestRunnable()
+  ~StardictHeadwordsRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
@@ -1251,12 +1251,12 @@ public:
 
   void run(); // Run from another thread by StardictHeadwordsRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~StardictHeadwordsRequest()
+  ~StardictHeadwordsRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -1340,12 +1340,12 @@ public:
                                                              hasExited( hasExited_ )
   {}
 
-  ~StardictArticleRequestRunnable()
+  ~StardictArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class StardictArticleRequest: public Dictionary::DataRequest
@@ -1374,12 +1374,12 @@ public:
 
   void run(); // Run from another thread by StardictArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~StardictArticleRequest()
+  ~StardictArticleRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();
@@ -1634,12 +1634,12 @@ public:
                                                           hasExited( hasExited_ )
   {}
 
-  ~StardictResourceRequestRunnable()
+  ~StardictResourceRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class StardictResourceRequest: public Dictionary::DataRequest
@@ -1666,12 +1666,12 @@ public:
 
   void run(); // Run from another thread by StardictResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
 
-  ~StardictResourceRequest()
+  ~StardictResourceRequest() override
   {
     isCancelled.ref();
     hasExited.acquire();

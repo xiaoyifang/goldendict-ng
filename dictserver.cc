@@ -209,35 +209,35 @@ public:
       strategies.append( "prefix" );
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const &,
-                                                 unsigned long maxResults ) ;
+  sptr< WordSearchRequest > prefixMatch( wstring const &,
+                                                 unsigned long maxResults ) override ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool )
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+                                          wstring const &, bool ) override
     ;
 
-  virtual quint32 getLangFrom() const
+  quint32 getLangFrom() const override
   { return langId; }
 
-  virtual quint32 getLangTo() const
+  quint32 getLangTo() const override
   { return langId; }
 
-  virtual QString const & getDescription();
+  QString const & getDescription() override;
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
   void getServerDatabases();
 
@@ -361,12 +361,12 @@ public:
                                        hasExited( hasExited_ )
   {}
 
-  ~DictServerWordSearchRequestRunnable()
+  ~DictServerWordSearchRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
@@ -392,12 +392,12 @@ public:
 
   void run();
 
-  ~DictServerWordSearchRequest()
+  ~DictServerWordSearchRequest() override
   {
     hasExited.acquire();
   }
 
-  virtual void cancel();
+  void cancel() override;
 
 };
 
@@ -575,12 +575,12 @@ public:
                                     hasExited( hasExited_ )
   {}
 
-  ~DictServerArticleRequestRunnable()
+  ~DictServerArticleRequestRunnable() override
   {
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class DictServerArticleRequest: public Dictionary::DataRequest
@@ -606,12 +606,12 @@ public:
 
   void run();
 
-  ~DictServerArticleRequest()
+  ~DictServerArticleRequest() override
   {
     hasExited.acquire();
   }
 
-  virtual void cancel();
+  void cancel() override;
 
 };
 
