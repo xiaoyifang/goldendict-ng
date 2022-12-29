@@ -2211,14 +2211,17 @@ void MainWindow::editPreferences()
     bool needReload = false;
 
     // See if we need to reapply Qt stylesheets
-    if ( cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
+    if( cfg.preferences.darkMode != p.darkMode )
     {
       applyQtStyleSheet( p.addonStyle, p.darkMode );
-      articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
-      needReload = true;
     }
 
-    if (cfg.preferences.darkReaderMode != p.darkReaderMode) {
+    // see if we need to reapply articleview style
+    if( cfg.preferences.displayStyle != p.displayStyle ||
+      cfg.preferences.addonStyle != p.addonStyle ||
+      cfg.preferences.darkReaderMode != p.darkReaderMode )
+    {
+      articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }
 
