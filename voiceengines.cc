@@ -44,30 +44,30 @@ public:
   {
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return voiceEngine.name.toUtf8().data(); }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const & word,
-                                                 unsigned long maxResults )
+  sptr< WordSearchRequest > prefixMatch( wstring const & word,
+                                                 unsigned long maxResults ) override
     ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &,
+  sptr< DataRequest > getArticle( wstring const &,
                                           vector< wstring > const & alts,
-                                          wstring const &, bool )
+                                          wstring const &, bool ) override
     ;
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 };
 
 sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( wstring const & /*word*/,

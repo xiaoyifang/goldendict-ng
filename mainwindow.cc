@@ -86,7 +86,7 @@ using std::pair;
 
 class InitSSLRunnable : public QRunnable
 {
-  virtual void run()
+  void run() override
   {
     /// This action force SSL library initialisation which may continue a few seconds
     QSslConfiguration::setDefaultConfiguration( QSslConfiguration::defaultConfiguration() );
