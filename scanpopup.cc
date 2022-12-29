@@ -458,38 +458,6 @@ void ScanPopup::translateWord( QString const & word )
       );
 }
 
-[[deprecated("Favor the mainWindow's clipboardChanged ones")]]
-void ScanPopup::clipboardChanged( QClipboard::Mode m )
-{
-
-  if( !isScanningEnabled )
-    return;
-
-#ifdef HAVE_X11
-  if( cfg.preferences.ignoreOwnClipboardChanges && ownsClipboardMode( m ) )
-    return;
-
-  if(m == QClipboard::Clipboard && !cfg.preferences.trackClipboardScan){
-    return;
-  }
-
-  if(m == QClipboard::Selection && !cfg.preferences.trackSelectionScan){
-    return;
-  }
-
-  if( m == QClipboard::Selection )
-  {
-    // Use delay show to prevent multiple popups while selection in progress
-    selectionDelayTimer.start();
-    return;
-  }
-#endif
-
-  QString subtype = "plain";
-
-  handleInputWord( QApplication::clipboard()->text( subtype, m ) );
-}
-
 void ScanPopup::mouseHovered( QString const & str, bool forcePopup )
 {
   handleInputWord( str, forcePopup );
