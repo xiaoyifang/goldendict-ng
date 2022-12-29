@@ -890,10 +890,17 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 
       if(m == QClipboard::Selection){
 
-        // Multiple ways to stoping a word from showing up when selecting
+        // Multiple ways to stopping a word from showing up when selecting
 
-        // Explictly disabled on preferences
+        // Explicitly disabled on preferences
         if(!cfg.preferences.trackSelectionScan) return;
+
+        // Explicitly disabled on preferences to ignore gd's own selection
+
+        if( cfg.preferences.ignoreOwnClipboardChanges
+          && QApplication::clipboard()->ownsSelection() ){
+          return ;
+        }
 
         // Keyboard Modifier
         if(cfg.preferences.enableScanPopupModifiers &&
@@ -908,7 +915,8 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
           return;
         }
 
-        scanPopup->translateWordFromSelection();
+        // Use delay show to prevent multiple popups while selection in progress
+        scanPopup->selectionDelayTimer.start();
       }
 #else
     scanPopup ->translateWordFromClipboard();
@@ -1520,9 +1528,6 @@ void MainWindow::makeScanPopup()
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
-
-  if ( enableScanningAction->isChecked() )
-    scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
            this, SLOT(editDictionaries( unsigned )), Qt::QueuedConnection );
@@ -3168,7 +3173,6 @@ void MainWindow::scanEnableToggled( bool on )
   {
     if ( on )
     {
-      scanPopup->enableScanning();
 #ifdef Q_OS_MAC
       if( !MacMouseOver::isAXAPIEnabled() )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
@@ -3178,7 +3182,6 @@ void MainWindow::scanEnableToggled( bool on )
     }
     else
     {
-      scanPopup->disableScanning();
       enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }

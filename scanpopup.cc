@@ -71,7 +71,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                       History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),
-  isScanningEnabled( false ),
   allDictionaries( allDictionaries_ ),
   groups( groups_ ),
   history( history_ ),
@@ -288,10 +287,11 @@ ScanPopup::ScanPopup( QWidget * parent,
     translateWordFromSelection();
   });
 
-  delayTimer.setSingleShot( true );
-  delayTimer.setInterval( 200 );
+  // Use delay show to prevent multiple popups while selection in progress
+  selectionDelayTimer.setSingleShot( true );
+  selectionDelayTimer.setInterval( 200 );
 
-  connect( &delayTimer, &QTimer::timeout, this, &ScanPopup::delayShow );
+  connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
 #endif
 
   applyZoomFactor();
@@ -301,8 +301,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
-
-  disableScanning();
 
   ungrabGesture( Gestures::GDPinchGestureType );
   ungrabGesture( Gestures::GDSwipeGestureType );
@@ -315,22 +313,6 @@ void ScanPopup::saveConfigData()
   cfg.popupWindowGeometry = saveGeometry();
   cfg.pinPopupWindow = ui.pinButton->isChecked();
   cfg.popupWindowAlwaysOnTop = ui.onTopButton->isChecked();
-}
-
-void ScanPopup::enableScanning()
-{
-  if ( !isScanningEnabled )
-  {
-    isScanningEnabled = true;
-  }
-}
-
-void ScanPopup::disableScanning()
-{
-  if ( isScanningEnabled )
-  {
-    isScanningEnabled = false;
-  }
 }
 
 void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page ){
@@ -455,46 +437,6 @@ void ScanPopup::translateWord( QString const & word )
       false
 #endif
       );
-}
-
-#ifdef HAVE_X11
-void ScanPopup::delayShow()
-{
-  QString subtype = "plain";
-  handleInputWord( QApplication::clipboard()->text( subtype, QClipboard::Selection ) );
-}
-#endif
-
-[[deprecated("Favor the mainWindow's clipboardChanged ones")]]
-void ScanPopup::clipboardChanged( QClipboard::Mode m )
-{
-
-  if( !isScanningEnabled )
-    return;
-
-#ifdef HAVE_X11
-  if( cfg.preferences.ignoreOwnClipboardChanges && ownsClipboardMode( m ) )
-    return;
-
-  if(m == QClipboard::Clipboard && !cfg.preferences.trackClipboardScan){
-    return;
-  }
-
-  if(m == QClipboard::Selection && !cfg.preferences.trackSelectionScan){
-    return;
-  }
-
-  if( m == QClipboard::Selection )
-  {
-    // Use delay show to prevent multiple popups while selection in progress
-    delayTimer.start();
-    return;
-  }
-#endif
-
-  QString subtype = "plain";
-
-  handleInputWord( QApplication::clipboard()->text( subtype, m ) );
 }
 
 void ScanPopup::mouseHovered( QString const & str, bool forcePopup )
