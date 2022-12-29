@@ -33,6 +33,11 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   ui.setupUi( this );
   ui.dictionaries->populate( Instances::Group( group, dicts, Config::Group() ).dictionaries, dicts );
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+  ui.shortcut->setClearButtonEnabled(true);
+  ui.clearShortCut->hide();
+#endif
+
   // Populate icons' list
 
   QStringList icons = QDir( ":/flags/" ).entryList( QDir::Files, QDir::NoSort );
@@ -61,7 +66,7 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   if ( usesIconData )
     ui.groupIcon->setCurrentIndex( 1 );
 
-  ui.shortcut->setHotKey( Config::HotKey( group.shortcut ) );
+  ui.shortcut->setKeySequence( group.shortcut );
 
   ui.favoritesFolder->setText( group.favoritesFolder );
 
@@ -126,7 +131,7 @@ Config::Group DictGroupWidget::makeGroup() const
 
   g.icon = ui.groupIcon->itemData( currentIndex ).toString();
 
-  g.shortcut = ui.shortcut->getHotKey().toKeySequence();
+  g.shortcut = ui.shortcut->keySequence();
 
   g.favoritesFolder = ui.favoritesFolder->text().replace( '\\', '/' );
 
