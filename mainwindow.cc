@@ -1529,9 +1529,6 @@ void MainWindow::makeScanPopup()
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  if ( enableScanningAction->isChecked() )
-    scanPopup->enableScanning();
-
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
            this, SLOT(editDictionaries( unsigned )), Qt::QueuedConnection );
 
@@ -3176,7 +3173,6 @@ void MainWindow::scanEnableToggled( bool on )
   {
     if ( on )
     {
-      scanPopup->enableScanning();
 #ifdef Q_OS_MAC
       if( !MacMouseOver::isAXAPIEnabled() )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
@@ -3186,7 +3182,6 @@ void MainWindow::scanEnableToggled( bool on )
     }
     else
     {
-      scanPopup->disableScanning();
       enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }

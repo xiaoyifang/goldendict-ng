@@ -71,7 +71,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                       History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),
-  isScanningEnabled( false ),
   allDictionaries( allDictionaries_ ),
   groups( groups_ ),
   history( history_ ),
@@ -303,8 +302,6 @@ ScanPopup::~ScanPopup()
 {
   saveConfigData();
 
-  disableScanning();
-
   ungrabGesture( Gestures::GDPinchGestureType );
   ungrabGesture( Gestures::GDSwipeGestureType );
 }
@@ -316,22 +313,6 @@ void ScanPopup::saveConfigData()
   cfg.popupWindowGeometry = saveGeometry();
   cfg.pinPopupWindow = ui.pinButton->isChecked();
   cfg.popupWindowAlwaysOnTop = ui.onTopButton->isChecked();
-}
-
-void ScanPopup::enableScanning()
-{
-  if ( !isScanningEnabled )
-  {
-    isScanningEnabled = true;
-  }
-}
-
-void ScanPopup::disableScanning()
-{
-  if ( isScanningEnabled )
-  {
-    isScanningEnabled = false;
-  }
 }
 
 void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page ){

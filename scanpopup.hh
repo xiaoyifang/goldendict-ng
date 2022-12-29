@@ -36,12 +36,6 @@ public:
              History & );
 
   ~ScanPopup();
-  
-  /// Enables scanning. When the object is created, the scanning is disabled
-  /// initially.
-  void enableScanning();
-  /// Disables scanning.
-  void disableScanning();
 
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
@@ -128,7 +122,6 @@ private:
   void updateDictionaryBar();
 
   Config::Class & cfg;
-  bool isScanningEnabled;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups const & groups;
@@ -195,7 +188,6 @@ private:
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 private slots:
-  void clipboardChanged( QClipboard::Mode );
   void mouseHovered( QString const & , bool forcePopup);
   void currentGroupChanged( int );
   void prefixMatchFinished();
