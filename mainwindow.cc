@@ -2922,10 +2922,23 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   else
   if ( !onlyShow )
   {
+
+// On Windows and Linux, a hidden window won't show a task bar icon
+// When trayicon is enabled, the duplication is unneeded
+
+// On macOS, a hidden window will still show on the Dock,
+// but click it won't bring it back, thus we can only minimize it.
+
+#ifdef Q_OS_MAC
+      if (cfg.preferences.enableTrayIcon)
+          showMinimized();
+#else
     if (cfg.preferences.enableTrayIcon)
-      hide();
+        hide();
     else
-      showMinimized();
+        showMinimized();
+#endif
+
 
     if( headwordsDlg )
       headwordsDlg->hide();
