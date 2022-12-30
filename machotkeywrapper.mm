@@ -180,6 +180,12 @@ void HotkeyWrapper::unregister()
   (static_cast< QHotkeyApplication * >( qApp ))->unregisterWrapper( this );
 }
 
+bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+{
+  Config::HotKey hk(seq);
+  return setGlobalKey(hk.key1,hk.key2,hk.modifiers,handle);
+}
+
 bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
 {
   if ( !key )
