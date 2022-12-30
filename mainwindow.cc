@@ -2984,17 +2984,11 @@ void MainWindow::installHotKeys()
     }
 
     if ( cfg.preferences.enableMainWindowHotkey )
-      hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey.key1,
-                                   cfg.preferences.mainWindowHotkey.key2,
-                                   cfg.preferences.mainWindowHotkey.modifiers,
-                                   0 );
+      hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey,0 );
 
     if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() )
     {
-      hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey.key1,
-                                   cfg.preferences.clipboardHotkey.key2,
-                                   cfg.preferences.clipboardHotkey.modifiers,
-                                   1 );
+      hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey,1 );
     }
 
     connect( hotkeyWrapper.get(),

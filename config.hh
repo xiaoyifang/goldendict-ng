@@ -320,9 +320,9 @@ struct Preferences
   bool searchInDock;
 
   bool enableMainWindowHotkey;
-  HotKey mainWindowHotkey;
+  QKeySequence mainWindowHotkey;
   bool enableClipboardHotkey;
-  HotKey clipboardHotkey;
+  QKeySequence clipboardHotkey;
 
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;

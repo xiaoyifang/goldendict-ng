@@ -709,11 +709,7 @@ in the pressed state when the word selection changes.</string>
           </spacer>
          </item>
          <item>
-          <widget class="HotKeyEdit" name="mainWindowHotkey">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
+          <widget class="QKeySequenceEdit" name="mainWindowHotkey"/>
          </item>
         </layout>
        </item>
@@ -740,11 +736,7 @@ in the pressed state when the word selection changes.</string>
           </spacer>
          </item>
          <item>
-          <widget class="HotKeyEdit" name="clipboardHotkey">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
+          <widget class="QKeySequenceEdit" name="clipboardHotkey"/>
          </item>
         </layout>
        </item>
@@ -1760,11 +1752,6 @@ from Stardict, Babylon and GLS dictionaries</string>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>HotKeyEdit</class>
-   <extends>QLineEdit</extends>
-   <header>hotkeyedit.hh</header>
-  </customwidget>
   <customwidget>
    <class>StylesComboBox</class>
    <extends>QComboBox</extends>
