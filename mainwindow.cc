@@ -86,7 +86,7 @@ using std::pair;
 
 class InitSSLRunnable : public QRunnable
 {
-  virtual void run()
+  void run() override
   {
     /// This action force SSL library initialisation which may continue a few seconds
     QSslConfiguration::setDefaultConfiguration( QSslConfiguration::defaultConfiguration() );
@@ -890,10 +890,17 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 
       if(m == QClipboard::Selection){
 
-        // Multiple ways to stoping a word from showing up when selecting
+        // Multiple ways to stopping a word from showing up when selecting
 
-        // Explictly disabled on preferences
+        // Explicitly disabled on preferences
         if(!cfg.preferences.trackSelectionScan) return;
+
+        // Explicitly disabled on preferences to ignore gd's own selection
+
+        if( cfg.preferences.ignoreOwnClipboardChanges
+          && QApplication::clipboard()->ownsSelection() ){
+          return ;
+        }
 
         // Keyboard Modifier
         if(cfg.preferences.enableScanPopupModifiers &&
@@ -908,7 +915,8 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
           return;
         }
 
-        scanPopup->translateWordFromSelection();
+        // Use delay show to prevent multiple popups while selection in progress
+        scanPopup->selectionDelayTimer.start();
       }
 #else
     scanPopup ->translateWordFromClipboard();
@@ -1520,9 +1528,6 @@ void MainWindow::makeScanPopup()
                              dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet( styleSheet() );
-
-  if ( enableScanningAction->isChecked() )
-    scanPopup->enableScanning();
 
   connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
            this, SLOT(editDictionaries( unsigned )), Qt::QueuedConnection );
@@ -2206,9 +2211,16 @@ void MainWindow::editPreferences()
     bool needReload = false;
 
     // See if we need to reapply Qt stylesheets
-    if ( cfg.preferences.addonStyle != p.addonStyle || cfg.preferences.darkMode != p.darkMode)
+    if( cfg.preferences.darkMode != p.darkMode )
     {
       applyQtStyleSheet( p.addonStyle, p.darkMode );
+    }
+
+    // see if we need to reapply articleview style
+    if( cfg.preferences.displayStyle != p.displayStyle ||
+      cfg.preferences.addonStyle != p.addonStyle ||
+      cfg.preferences.darkReaderMode != p.darkReaderMode )
+    {
       articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
       needReload = true;
     }
@@ -2910,10 +2922,23 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   else
   if ( !onlyShow )
   {
+
+// On Windows and Linux, a hidden window won't show a task bar icon
+// When trayicon is enabled, the duplication is unneeded
+
+// On macOS, a hidden window will still show on the Dock,
+// but click it won't bring it back, thus we can only minimize it.
+
+#ifdef Q_OS_MAC
+      if (cfg.preferences.enableTrayIcon)
+          showMinimized();
+#else
     if (cfg.preferences.enableTrayIcon)
-      hide();
+        hide();
     else
-      showMinimized();
+        showMinimized();
+#endif
+
 
     if( headwordsDlg )
       headwordsDlg->hide();
@@ -2959,17 +2984,11 @@ void MainWindow::installHotKeys()
     }
 
     if ( cfg.preferences.enableMainWindowHotkey )
-      hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey.key1,
-                                   cfg.preferences.mainWindowHotkey.key2,
-                                   cfg.preferences.mainWindowHotkey.modifiers,
-                                   0 );
+      hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey,0 );
 
     if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() )
     {
-      hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey.key1,
-                                   cfg.preferences.clipboardHotkey.key2,
-                                   cfg.preferences.clipboardHotkey.modifiers,
-                                   1 );
+      hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey,1 );
     }
 
     connect( hotkeyWrapper.get(),
@@ -3164,7 +3183,6 @@ void MainWindow::scanEnableToggled( bool on )
   {
     if ( on )
     {
-      scanPopup->enableScanning();
 #ifdef Q_OS_MAC
       if( !MacMouseOver::isAXAPIEnabled() )
           mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
@@ -3174,7 +3192,6 @@ void MainWindow::scanEnableToggled( bool on )
     }
     else
     {
-      scanPopup->disableScanning();
       enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
     }
   }

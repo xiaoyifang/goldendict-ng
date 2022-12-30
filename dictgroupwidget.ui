@@ -19,6 +19,9 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>3</number>
+     </property>
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
@@ -75,7 +78,37 @@
       </widget>
      </item>
      <item>
-      <widget class="HotKeyEdit" name="shortcut"/>
+      <widget class="QKeySequenceEdit" name="shortcut">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="clearShortCut">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/clear.png</normaloff>:/icons/clear.png</iconset>
+       </property>
+       <property name="shortcut">
+        <string notr="true"/>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -101,14 +134,16 @@
    <extends>QListWidget</extends>
    <header>groups_widgets.hh</header>
   </customwidget>
-  <customwidget>
-   <class>HotKeyEdit</class>
-   <extends>QLineEdit</extends>
-   <header>hotkeyedit.hh</header>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>clearShortCut</sender>
+   <signal>clicked()</signal>
+   <receiver>shortcut</receiver>
+   <slot>clear()</slot>
+  </connection>
+ </connections>
 </ui>

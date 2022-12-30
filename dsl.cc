@@ -181,26 +181,26 @@ public:
                  vector< string > const & dictionaryFiles,
                  int maxPictureWidth_ );
 
-  virtual void deferredInit();
+  void deferredInit() override;
 
   ~DslDictionary();
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return dictionaryName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
   inline virtual string getResourceDir1() const
@@ -211,30 +211,30 @@ public:
 
 
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual QString const& getDescription();
+                                                            bool ignoreDiacritics ) override;
+  QString const& getDescription() override;
 
-  virtual QString getMainFilename();
+  QString getMainFilename() override;
 
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     if( ensureInitDone().size() )
       return;
@@ -244,16 +244,16 @@ public:
               && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
-  virtual uint32_t getFtsIndexVersion()
+  uint32_t getFtsIndexVersion() override
   { return CurrentFtsIndexVersion; }
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
-  virtual string const & ensureInitDone();
+  string const & ensureInitDone() override;
   void doDeferredInit();
 
   /// Loads the article. Does not process the DSL language.
@@ -1588,7 +1588,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1763,7 +1763,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }

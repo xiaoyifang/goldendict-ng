@@ -36,12 +36,6 @@ public:
              History & );
 
   ~ScanPopup();
-  
-  /// Enables scanning. When the object is created, the scanning is disabled
-  /// initially.
-  void enableScanning();
-  /// Disables scanning.
-  void disableScanning();
 
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
@@ -58,6 +52,8 @@ public:
   /// Interaction with scan flag window
   void showScanFlag();
   void hideScanFlag();
+
+  QTimer selectionDelayTimer;
 #endif
 
 signals:
@@ -126,7 +122,6 @@ private:
   void updateDictionaryBar();
 
   Config::Class & cfg;
-  bool isScanningEnabled;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups const & groups;
@@ -146,7 +141,6 @@ private:
 
 #ifdef HAVE_X11
   ScanFlag * scanFlag;
-  QTimer delayTimer;
 #endif
 
   bool mouseEnteredOnce;
@@ -194,7 +188,6 @@ private:
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 private slots:
-  void clipboardChanged( QClipboard::Mode );
   void mouseHovered( QString const & , bool forcePopup);
   void currentGroupChanged( int );
   void prefixMatchFinished();
@@ -235,9 +228,6 @@ private slots:
 
   void titleChanged( ArticleView *, QString const & title );
 
-#ifdef HAVE_X11
-  void delayShow();
-#endif
 };
 
 #endif

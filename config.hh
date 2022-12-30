@@ -157,8 +157,12 @@ struct HotKey
 
   HotKey();
 
-  /// We use the first two keys of QKeySequence, with modifiers being stored
-  /// in the first one.
+  /// Hotkey's constructor, take a QKeySequence's first two keys
+  /// 1st key's modifier will be the `modifiers` above
+  /// 1st key without modifier will becomes `key1`
+  /// 2nd key without modifier will becomes `key2`
+  /// The relation between the int and qt's KeyCode should consult qt's doc
+
   HotKey( QKeySequence const & );
 
   QKeySequence toKeySequence() const;
@@ -316,9 +320,9 @@ struct Preferences
   bool searchInDock;
 
   bool enableMainWindowHotkey;
-  HotKey mainWindowHotkey;
+  QKeySequence mainWindowHotkey;
   bool enableClipboardHotkey;
-  HotKey clipboardHotkey;
+  QKeySequence clipboardHotkey;
 
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;

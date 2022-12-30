@@ -97,46 +97,46 @@ public:
 
   ~EpwingDictionary();
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return bookName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  virtual QString const& getDescription();
+  QString const& getDescription() override;
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                            bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     if( ensureInitDone().size() )
       return;
@@ -152,19 +152,19 @@ public:
 
   static bool isJapanesePunctiation( gd::wchar ch );
 
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
-                                                             unsigned long )
+  sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
+                                                             unsigned long ) override
     ;
 
-  virtual sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
+  sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
                                                               unsigned minLength,
                                                               unsigned maxSuffixVariation,
-                                                              unsigned long maxResults )
+                                                              unsigned long maxResults ) override
     ;
 
 protected:
 
-  void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
@@ -460,7 +460,7 @@ public:
                           QVector< int > & offsets,
                           multimap< wstring, pair< string, string > > & mainArticles );
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -677,7 +677,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class EpwingResourceRequest: public Dictionary::DataRequest
@@ -704,7 +704,7 @@ public:
 
   void run(); // Run from another thread by EpwingResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -860,7 +860,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class EpwingWordSearchRequest: public BtreeIndexing::BtreeWordSearchRequest
@@ -884,7 +884,7 @@ public:
       new EpwingWordSearchRunnable( *this, hasExited ) );
   }
 
-  virtual void findMatches();
+  void findMatches() override;
 };
 
 void EpwingWordSearchRunnable::run()

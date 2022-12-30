@@ -31,7 +31,7 @@ public:
   ~CharacterConversionDictionary();
 
   std::vector< gd::wstring > getAlternateWritings( gd::wstring const & )
-    noexcept;
+    noexcept override;
 };
 
 CharacterConversionDictionary::CharacterConversionDictionary( std::string const & id,

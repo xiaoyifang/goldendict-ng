@@ -178,9 +178,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #endif
 
   ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
-  ui.mainWindowHotkey->setHotKey( p.mainWindowHotkey );
+  ui.mainWindowHotkey->setKeySequence( p.mainWindowHotkey );
   ui.enableClipboardHotkey->setChecked( p.enableClipboardHotkey );
-  ui.clipboardHotkey->setHotKey( p.clipboardHotkey );
+  ui.clipboardHotkey->setKeySequence( p.clipboardHotkey );
 
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
@@ -398,9 +398,9 @@ Config::Preferences Preferences::getPreferences()
   p.darkMode = ui.darkMode->isChecked();
   p.darkReaderMode = ui.darkReaderMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
-  p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
+  p.mainWindowHotkey = ui.mainWindowHotkey->keySequence();
   p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
-  p.clipboardHotkey = ui.clipboardHotkey->getHotKey();
+  p.clipboardHotkey = ui.clipboardHotkey->keySequence();
 
   p.startWithScanPopupOn = ui.startWithScanPopupOn->isChecked();
   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();

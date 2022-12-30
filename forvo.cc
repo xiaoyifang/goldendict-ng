@@ -42,20 +42,20 @@ public:
   {
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/,
-                                                 unsigned long /*maxResults*/ ) 
+  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/,
+                                                 unsigned long /*maxResults*/ ) override 
   {
     sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
 
@@ -64,13 +64,13 @@ public:
     return sr;
   }
 
-  virtual sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool )
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+                                          wstring const &, bool ) override
     ;
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 };
 

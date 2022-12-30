@@ -100,45 +100,45 @@ public:
 
   ~DictdDictionary();
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return dictionaryName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual QString const& getDescription();
+  QString const& getDescription() override;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                            bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     can_FTS = fts.enabled
               && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )

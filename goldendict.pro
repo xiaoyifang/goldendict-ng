@@ -327,7 +327,6 @@ HEADERS += folding.hh \
     processwrapper.hh \
     hotkeywrapper.hh \
     searchpanewidget.hh \
-    hotkeyedit.hh \
     langcoder.hh \
     editdictionaries.hh \
     loaddictionaries.hh \
@@ -467,7 +466,6 @@ SOURCES += folding.cc \
     wstring_qt.cc \
     processwrapper.cc \
     hotkeywrapper.cc \
-    hotkeyedit.cc \
     langcoder.cc \
     editdictionaries.cc \
     loaddictionaries.cc \

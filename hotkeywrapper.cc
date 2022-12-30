@@ -295,6 +295,12 @@ void HotkeyWrapper::init()
   hwnd = (HWND)root->winId();
 }
 
+bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+{
+  Config::HotKey hk(seq);
+  return setGlobalKey(hk.key1,hk.key2,hk.modifiers,handle);
+}
+
 bool HotkeyWrapper::setGlobalKey( int key, int key2,
                                   Qt::KeyboardModifiers modifier, int handle )
 {
@@ -620,6 +626,12 @@ void HotkeyWrapper::handleRecordEvent( XRecordInterceptData * data )
   }
 
   XRecordFreeData( data );
+}
+
+bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+{
+  Config::HotKey hk(seq);
+  return setGlobalKey(hk.key1,hk.key2,hk.modifiers,handle);
 }
 
 bool HotkeyWrapper::setGlobalKey( int key, int key2,
