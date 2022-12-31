@@ -17,6 +17,7 @@
 #include <QRegularExpression>
 #include "wildcard.hh"
 #include "gddebug.hh"
+#include <QMessageBox>
 
 #define AUTO_APPLY_LIMIT 150000
 
@@ -282,92 +283,95 @@ void DictHeadwords::saveHeadersToFile()
   if( fileName.size() == 0)
       return;
 
-  cfg.headwordsDialog.headwordsExportPath = QDir::toNativeSeparators(
-                                              QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
 
-  for(;;)
+  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
   {
-    if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
-      break;
-
-    int headwordsNumber = model->totalCount();
-
-    // Setup progress dialog
-    int n = headwordsNumber;
-    int step = 1;
-    while( n > 1000 )
-    {
-      step *= 10;
-      n /= 10;
-    }
-
-    QProgressDialog progress( tr( "Export headwords..."), tr( "Cancel" ),
-                              0, n, this );
-    progress.setWindowModality( Qt::WindowModal );
-
-    // Write UTF-8 BOM
-    QByteArray line;
-    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-    if ( file.write( line ) != line.size() )
-      break;
-
-    // Write headwords
-
-    int i;
-    for( i = 0; i < headwordsNumber&&i<model->wordCount(); ++i )
-    {
-      if( i % step == 0 )
-        progress.setValue( i / step );
-
-      if( progress.wasCanceled() )
-        break;
-
-      QVariant value = model->getRow(i);
-      if( !value.canConvert< QString >() )
-        continue;
-
-      line = value.toString().toUtf8();
-
-      line.replace( '\n', ' ' );
-      line.replace( '\r', ' ' );
-
-      line += "\n";
-
-      if ( file.write( line ) != line.size() )
-        break;
-    }
-
-    //continue to write the remaining headword
-    int nodeIndex = model->getCurrentIndex();
-    auto headwords = model->getRemainRows(nodeIndex);
-    while(!headwords.isEmpty())
-    {
-      if( progress.wasCanceled() )
-        break;
-      for(auto & w:headwords){
-        //progress
-        if( ++i % step == 0 )
-          progress.setValue( i / step );
-
-        line = w.toUtf8();
-        line += "\n";
-
-        if ( file.write( line ) != line.size() )
-          break;
-      }
-      headwords = model->getRemainRows(nodeIndex);
-    }
-
-    if( i < headwordsNumber && !progress.wasCanceled() )
-      break;
-
-    file.close();
+    QMessageBox::critical( this, "GoldenDict", tr( "Can not open exported file" ) );
     return;
   }
 
-  gdWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+  cfg.headwordsDialog.headwordsExportPath = QDir::toNativeSeparators(
+                                              QFileInfo( fileName ).absoluteDir().absolutePath() );
+
+  QSet< QString > allHeadwords;
+  int headwordsNumber = model->totalCount();
+
+  //headwordsNumber*2  ,  read + write
+  QProgressDialog progress( tr( "Export headwords..." ), tr( "Cancel" ), 0, headwordsNumber*2, this );
+  progress.setWindowModality( Qt::WindowModal );
+
+  int totalCount=0;
+  for( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i )
+  {
+    if( progress.wasCanceled() )
+      break;
+    progress.setValue( totalCount++ );
+
+    QVariant value = model->getRow( i );
+    if( !value.canConvert< QString >() )
+      continue;
+
+    allHeadwords.insert( value.toString() );
+  }
+
+  // continue to write the remaining headword
+  int nodeIndex  = model->getCurrentIndex();
+  auto headwords = model->getRemainRows( nodeIndex );
+  while( !headwords.isEmpty() )
+  {
+    if( progress.wasCanceled() )
+      break;
+    allHeadwords.unite(headwords);
+
+    totalCount += headwords.size();
+    progress.setValue( totalCount );
+
+    headwords = model->getRemainRows( nodeIndex );
+  }
+
+  qDebug()<<model->getCurrentIndex();
+
+  // Write UTF-8 BOM
+  QByteArray line;
+  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
+  file.write( line );
+
+  QList< QString > sortedWords = allHeadwords.values();
+  sortedWords.sort();
+
+  // Write headwords
+  for( auto const & word : sortedWords )
+  {
+    if( progress.wasCanceled() )
+      break;
+    progress.setValue( totalCount++ );
+
+    line = word.toUtf8();
+
+    line.replace( '\n', ' ' );
+    line.replace( '\r', ' ' );
+
+    line += "\n";
+
+    if( file.write( line ) != line.size() )
+      break;
+  }
+
   file.close();
+
+  if( progress.wasCanceled() )
+  {
+    QMessageBox::warning( this, "GoldenDict", tr( "Export process is interrupted" ) );
+    gdWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+  }
+  else
+  {
+    //completed.
+    progress.setValue(headwordsNumber*2);
+    progress.hide();
+    QMessageBox::information( this, "GoldenDict", tr( "Export finished" ) );
+  }
 }
 
 void DictHeadwords::helpRequested()
