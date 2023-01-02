@@ -30,6 +30,7 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "helpwindow.hh"
+#include "base_type.h"
 
 #include "hotkeywrapper.hh"
 #include "weburlrequestinterceptor.h"
@@ -386,10 +387,10 @@ private slots:
                               QString const & name );
 
   void openLinkInNewTab( QUrl const &, QUrl const &, QString const &,
-                         ArticleView::Contexts const & contexts );
+                         Contexts const & contexts );
   void showDefinitionInNewTab( QString const & word, unsigned group,
                                QString const & fromArticle,
-                               ArticleView::Contexts const & contexts );
+                               Contexts const & contexts );
   void typingEvent( QString const & );
 
   void activeArticleChanged( ArticleView const *, QString const & id );

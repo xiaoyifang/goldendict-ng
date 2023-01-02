@@ -10,6 +10,7 @@
 #include <QMouseEvent>
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QDesktopWidget>
+#include <QStringList>
 #endif
 #include "gddebug.hh"
 #include "gestures.hh"
@@ -18,7 +19,7 @@
 #include "macmouseover.hh"
 #define MouseOver MacMouseOver
 #endif
-
+#include "base_type.h"
 using std::wstring;
 
 /// We use different window flags under Windows and X11 due to slight differences
