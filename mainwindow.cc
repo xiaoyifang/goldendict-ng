@@ -2986,7 +2986,7 @@ void MainWindow::installHotKeys()
     if ( cfg.preferences.enableMainWindowHotkey )
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey,0 );
 
-    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() )
+    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() && !enableScanningAction->isChecked() )
     {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey,1 );
     }
@@ -3196,6 +3196,7 @@ void MainWindow::scanEnableToggled( bool on )
     }
   }
 
+  installHotKeys();
   updateTrayIcon();
 }
 
