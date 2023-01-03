@@ -269,6 +269,7 @@ HEADERS += folding.hh \
     articlewebpage.h \
     audiooutput.h \
     base/globalregex.hh \
+    base_type.h \
     globalbroadcaster.h \
     headwordsmodel.h \
     iframeschemehandler.h \

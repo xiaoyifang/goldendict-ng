@@ -2765,7 +2765,7 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 void MainWindow::openLinkInNewTab( QUrl const & url,
                                    QUrl const & referrer,
                                    QString const & fromArticle,
-                                   ArticleView::Contexts const & contexts )
+                                   Contexts const & contexts )
 {
   createNewTab( !cfg.preferences.newTabsOpenInBackground, "" )->
       openLink( url, referrer, fromArticle, contexts );
@@ -2774,7 +2774,7 @@ void MainWindow::openLinkInNewTab( QUrl const & url,
 void MainWindow::showDefinitionInNewTab( QString const & word,
                                          unsigned group,
                                          QString const & fromArticle,
-                                         ArticleView::Contexts const & contexts )
+                                         Contexts const & contexts )
 {
   createNewTab( !cfg.preferences.newTabsOpenInBackground, word )->
       showDefinition( word, group, fromArticle, contexts );
@@ -2986,7 +2986,7 @@ void MainWindow::installHotKeys()
     if ( cfg.preferences.enableMainWindowHotkey )
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey,0 );
 
-    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() )
+    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() && !enableScanningAction->isChecked() )
     {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey,1 );
     }
@@ -3196,6 +3196,7 @@ void MainWindow::scanEnableToggled( bool on )
     }
   }
 
+  installHotKeys();
   updateTrayIcon();
 }
 
