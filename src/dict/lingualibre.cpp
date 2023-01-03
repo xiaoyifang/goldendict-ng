@@ -351,7 +351,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 };
 
 
-void LinguaArticleRequest::cancel() {}
+void LinguaArticleRequest::cancel() {
+  finish();
+}
 
 LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
   const vector< wstring > & alts,
