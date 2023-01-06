@@ -164,7 +164,7 @@ To start coding, the easiest way is load the `goldendict.pro` file to Qt Creator
 
 ## Support
 
-Bug reporting: [GoldenDict issue tracker](https://github.com/goldendict/goldendict/issues)
+Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict/issues)
 
 General discussions: [discussions](https://github.com/xiaoyifang/goldendict/discussions)
 

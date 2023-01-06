@@ -325,7 +325,7 @@ int main( int argc, char ** argv )
   }
 
   app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "http://goldendict.org/" );
+  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
 
   //this line will forbid stylesheet applying on GroupComboBox
 //  app.setStyle(new GdAppStyle);
