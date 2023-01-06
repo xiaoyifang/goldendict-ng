@@ -259,8 +259,8 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
 "All settings there have tooltips, be sure to read them if you are in doubt about anything."
 "<p>Should you need further help, have any questions, "
-"suggestions or just wonder what the others think, you are welcome at the program's <a href=\"http://goldendict.org/forum/\">forum</a>."
-"<p>Check program's <a href=\"http://goldendict.org/\">website</a> for the updates. "
+"suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
+"<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
 "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
 
         ).toUtf8().data();
