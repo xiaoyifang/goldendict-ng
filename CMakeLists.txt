@@ -329,8 +329,6 @@ set(PROJECT_SOURCES
         history.hh
         historypanewidget.cc
         historypanewidget.hh
-        hotkeyedit.cc
-        hotkeyedit.hh
         hotkeywrapper.cc
         hotkeywrapper.hh
         htmlescape.cc

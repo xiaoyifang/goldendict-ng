@@ -3207,7 +3207,7 @@ void MainWindow::showMainWindow()
 
 void MainWindow::visitHomepage()
 {
-  QDesktopServices::openUrl( QUrl( "http://goldendict.org/" ) );
+  QDesktopServices::openUrl( QApplication::organizationDomain() );
 }
 
 void MainWindow::openConfigFolder()
@@ -3217,7 +3217,7 @@ void MainWindow::openConfigFolder()
 
 void MainWindow::visitForum()
 {
-  QDesktopServices::openUrl( QUrl( "http://goldendict.org/forum/" ) );
+  QDesktopServices::openUrl( QUrl( "https://github.com/xiaoyifang/goldendict/discussions" ) );
 }
 
 void MainWindow::showAbout()
