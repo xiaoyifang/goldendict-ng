@@ -532,6 +532,7 @@ void ArticleView::inspectElement()
 
 void ArticleView::loadFinished( bool result )
 {
+  ui.definition->setFocus();
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = ui.definition->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
