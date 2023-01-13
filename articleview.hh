@@ -396,10 +396,6 @@ private:
   /// url to the appropriate "contexts" entry.
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
 
-  /// Saves current article and scroll position for the current history item.
-  /// Should be used when leaving the page.
-  void saveHistoryUserData();
-
   /// Loads a page at @p url into view.
   void load( QUrl const & url );
 

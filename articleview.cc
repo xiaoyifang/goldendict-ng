@@ -532,6 +532,7 @@ void ArticleView::inspectElement()
 
 void ArticleView::loadFinished( bool result )
 {
+  ui.definition->setFocus();
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = ui.definition->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
@@ -729,15 +730,8 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
   }
 }
 
-void ArticleView::saveHistoryUserData()
-{
-  ui.definition->setProperty("sx", ui.definition->page()->scrollPosition().x());
-  ui.definition->setProperty("sy", ui.definition->page()->scrollPosition().y());
-}
-
 void ArticleView::load( QUrl const & url )
 {
-  saveHistoryUserData();
   ui.definition->load( url );
 }
 
@@ -1614,7 +1608,6 @@ void ArticleView::back()
   // empty page
   if ( canGoBack() )
   {
-    saveHistoryUserData();
     currentActiveDictIds.clear();
     historyMode = true;
     ui.definition->back();
@@ -1623,7 +1616,6 @@ void ArticleView::back()
 
 void ArticleView::forward()
 {
-  saveHistoryUserData();
   currentActiveDictIds.clear();
   historyMode = true;
   ui.definition->forward();
