@@ -199,7 +199,7 @@ InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) cons
     return result;
   }
 
-  const QString withPunct = _phase.simplified();
+  const QString withPunct = _phase.simplified().remove( QChar( 0xAD ) ); // Simplify whitespaces and remove soft hyphens;
   result.phrase = gd::toQString( Folding::trimWhitespaceOrPunct( gd::toWString( withPunct ) ) );
   if ( !result.isValid() )
     return result; // The suffix of an invalid input phrase must be empty.
