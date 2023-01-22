@@ -673,8 +673,7 @@ TS_OUT = $$TRANSLATIONS
 TS_OUT ~= s/.ts/.qm/g
 PRE_TARGETDEPS += $$TS_OUT
 
-equals(QT_VERSION,6.4.0)
-{
+equals(QT_VERSION,6.4.0) {
     #QTBUG-105984
     multimedia.files = $$[QT_PLUGIN_PATH]/multimedia/*
     multimedia.path = plugins/multimedia
