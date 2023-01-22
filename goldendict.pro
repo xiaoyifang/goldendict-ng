@@ -62,6 +62,11 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
+contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
+  HEADERS += audiooutput.h
+  SOURCES += audiooutput.cpp
+}
+
 # on windows platform ,only works in release build
 CONFIG( use_xapian ) {
   DEFINES += USE_XAPIAN
@@ -267,7 +272,6 @@ HEADERS += folding.hh \
     ankiconnector.h \
     article_inspect.h \
     articlewebpage.h \
-    audiooutput.h \
     base/globalregex.hh \
     base_type.h \
     globalbroadcaster.h \
@@ -413,7 +417,6 @@ SOURCES += folding.cc \
     ankiconnector.cpp \
     article_inspect.cpp \
     articlewebpage.cpp \
-    audiooutput.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
     headwordsmodel.cpp \
