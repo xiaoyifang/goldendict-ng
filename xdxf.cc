@@ -1235,7 +1235,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               regNum.indexIn( stream.attributes().value( "revision" ).toString() );
               idxHeader.revisionNumber = regNum.cap().toUInt();
 
-              bool isLogical = ( stream.attributes().value( "format" ) == "logical" || idxHeader.revisionNumber >= 34 );
+              bool isLogical = ( stream.attributes().value( "format" ) == u"logical" || idxHeader.revisionNumber >= 34 );
 
               idxHeader.articleFormat = isLogical ? Logical : Visual;
 
@@ -1282,7 +1282,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                     if( isLogical )
                     {
                       desc = desc.simplified();
-                      desc.replace( QRegExp( "<br\\s*>\\s*</br>" ), QChar( '\n' ) );
+                      QRegularExpression br( "<br\\s*>\\s*</br>" );
+                      desc.replace( br, QString("\n") );
                     }
 
                     if ( dictionaryDescription.isEmpty() )
@@ -1302,15 +1303,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                     }
                   }
                   else
-                  if( stream.name() == "languages" )
+                  if( stream.name() == u"languages" )
                   {
-                    while( !( stream.isEndElement() && stream.name() == "languages" ) && !stream.atEnd() )
+                    while( !( stream.isEndElement() && stream.name() == u"languages" ) && !stream.atEnd() )
                     {
                       if( !stream.readNext() )
                         break;
                       if ( stream.isStartElement() )
                       {
-                        if( stream.name() == "from" )
+                        if( stream.name() == u"from" )
                         {
                           if( idxHeader.langFrom == 0 )
                           {
@@ -1318,7 +1319,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                             idxHeader.langFrom = getLanguageId( lang );
                           }
                         }
-                        else if( stream.name() == "to" )
+                        else if( stream.name() == u"to" )
                         {
                           if( idxHeader.langTo == 0 )
                           {
@@ -1327,7 +1328,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                           }
                         }
                       }
-                      else if ( stream.isEndElement() && stream.name() == "languages" )
+                      else if ( stream.isEndElement() && stream.name() == u"languages" )
                         break;
                     }
                   }
