@@ -26,8 +26,10 @@ Iconv::~Iconv()
 
 QString Iconv::convert(void const* & inBuf, size_t& inBytesLeft)
 {
-    return codec->toUnicode(static_cast<const char*>(inBuf), inBytesLeft);
- 
+  if( codec )
+    return codec->toUnicode( static_cast< const char * >( inBuf ), inBytesLeft );
+  QByteArray ba( static_cast< const char * >( inBuf ), inBytesLeft );
+  return QString( ba );
 }
 
 gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData,
