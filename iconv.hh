@@ -9,15 +9,24 @@
 #include "wstring.hh"
 #include "ex.hh"
 
+#ifdef USE_ICONV
+#include <iconv.h>
+#endif
+
 /// A wrapper for the iconv() character set conversion functions
 class Iconv
 {
-  //iconv_t state;
-    QTextCodec* codec;
+#ifdef USE_ICONV
+  iconv_t state;
+#else
+  QTextCodec* codec;
+
+#endif
 
 public:
 
   DEF_EX( Ex, "Iconv exception", std::exception )
+  DEF_EX_STR( exCantInit, "Can't initialize iconv conversion:", Ex )
 
   // Some predefined character sets' names
 

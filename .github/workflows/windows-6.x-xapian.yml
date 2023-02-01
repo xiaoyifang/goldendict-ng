@@ -90,7 +90,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
