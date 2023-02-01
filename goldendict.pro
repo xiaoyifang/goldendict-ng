@@ -73,6 +73,11 @@ CONFIG( use_xapian ) {
   LIBS+= -lxapian
 }
 
+CONFIG( use_iconv ) {
+  DEFINES += USE_ICONV
+  LIBS+= -liconv
+}
+
 CONFIG += exceptions \
     rtti \
     stl  \
@@ -207,7 +212,7 @@ mac {
     # You will need to use Xcode 3 and Qt Carbon SDK
     # if you want the support for PowerPC and/or Mac OS X 10.4
     # CONFIG += x86 x86_64 ppc
-    LIBS = -lz \
+    LIBS += -lz \
         -lbz2 \
         -lvorbisfile \
         -lvorbis \
@@ -676,14 +681,8 @@ TS_OUT = $$TRANSLATIONS
 TS_OUT ~= s/.ts/.qm/g
 PRE_TARGETDEPS += $$TS_OUT
 
-equals(QT_VERSION,6.4.0) {
-    #QTBUG-105984
-    multimedia.files = $$[QT_PLUGIN_PATH]/multimedia/*
-    multimedia.path = plugins/multimedia
-    #multimedia.CONFIG += no_check_exist
-    message("copy qt6.4.0 multimedia")
-    INSTALLS += multimedia
-}
+#QTBUG-105984
+# avoid qt6.4.0-6.4.2 .  the qtmultimedia module is buggy in all these versions
 
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 
