@@ -156,6 +156,15 @@ use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be us
 qmake "CONFIG+=use_xapian"
 ```
 
+use `CONFIG+=use_iconv` to enable this feature. when enabled ,iconv will be used to convert encoding other than the QTextCodec(which will be deprecated in future Qt version)
+
+```
+qmake "CONFIG+=use_iconv"
+```
+
+when enabled ,iconv should be installed on the platform at the same time.
+
+
 ## Contributing
 
 All kinds of help like answering questions, bug reporting, testing translation and coding are welcomed.
