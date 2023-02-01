@@ -75,7 +75,12 @@ CONFIG( use_xapian ) {
 
 CONFIG( use_iconv ) {
   DEFINES += USE_ICONV
-  LIBS+= -liconv
+  unix:!mac{
+    #ignore
+  }
+  else {
+      LIBS+= -liconv
+  }
 }
 
 CONFIG += exceptions \
