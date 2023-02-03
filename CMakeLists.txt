@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22)
 
 # Experimental Cmake build only supposed to be used by dev
 # Qt6.4+ only
