@@ -1,9 +1,6 @@
 MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree {
 }
 
-#translateLine {
-    color: palette(Text); /* ensure the text is inverse of the background, and also placehold text is grey */
-}
 
 #translateLine[noResults="true"] {
     background: #febb7d;
@@ -13,19 +10,27 @@ MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainW
     image: none;
 }
 
-#navToolbar #translateLine {
+#translateLine {
+    color: palette(Text); /* ensure the text is inverse of the background, and also placehold text is grey */
+    margin-left: 0;
+    padding: 1px 3px 1px 3px;
+
     border: 1px solid gray;
+    border-left: 0; /* When not in #searchPane the border-left is provided by GroupComboBox */
+
     border-radius: 3px;
-    padding: 1px 3px 2px 3px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    margin-left: 0;
+}
+
+#searchPane #translateLine {
+    border: 1px solid gray;
+    border-radius: 0;
 }
 
 GroupComboBox {
     margin-right: 0;
     border: 1px solid gray;
-    border-right: 1px transparent;
     border-radius: 3px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -35,22 +40,20 @@ GroupComboBox {
     color: palette(Text);
 }
 
-GroupComboBox:on {
-    padding: 3px 3px 1px 5px;
+#searchPane GroupComboBox{
+    border-radius: 3px;
 }
 
 GroupComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 15px;
-    border-left: 1px solid darkgray;
+    border-left: 1px solid gray;
     border-right: 1px transparent;
 
-    /* Hack: For unknown reason, if the padding right is unset, the drop-down won't show full content */
-    padding-right: 4px;
-    border-right: 1px solid darkgray;
-    /* Hack: end*/
-
+    /* Hack: Padding must be >= 2px, or the drop-down won't show full content */
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 GroupComboBox::down-arrow {
@@ -78,16 +81,6 @@ MainStatusBar #icon {
     padding-left: 4px;
     padding-right: 0;
 }
-
-ScanPopup #translateLine {
-    margin: 0;
-    padding: 1px 3px 1px 3px;
-    border: 1px solid gray;
-    border-radius: 3px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
 
 .ScanPopup #outerFrame {
     border: 1px solid palette(dark);
