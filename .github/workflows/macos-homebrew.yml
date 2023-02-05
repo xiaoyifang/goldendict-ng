@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 22.12.22
-      version-suffix: WinterSolstice
+      version: 23.02.06
+      version-suffix: LanternFestival
       prerelease: false
     steps:
       # macos 11.0 默认环境变了,要指定
