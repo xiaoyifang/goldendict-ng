@@ -1603,8 +1603,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       idxHeader.formatVersion = kCurrentFormatVersion;
       idxHeader.parserVersion = MdictParser::kParserVersion;
       idxHeader.foldingVersion = Folding::Version;
-      idxHeader.articleCount = indexedWords.size();
-      idxHeader.wordCount = indexedWords.size();
+      idxHeader.articleCount = parser.wordCount();
+      idxHeader.wordCount = parser.wordCount();
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );
