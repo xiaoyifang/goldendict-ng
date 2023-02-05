@@ -126,7 +126,7 @@ public:
     hasExited.release();
   }
   
-  virtual void run();
+  void run() override;
 };
 
 void BtreeWordSearchRunnable::run()

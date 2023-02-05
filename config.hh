@@ -157,8 +157,12 @@ struct HotKey
 
   HotKey();
 
-  /// We use the first two keys of QKeySequence, with modifiers being stored
-  /// in the first one.
+  /// Hotkey's constructor, take a QKeySequence's first two keys
+  /// 1st key's modifier will be the `modifiers` above
+  /// 1st key without modifier will becomes `key1`
+  /// 2nd key without modifier will becomes `key2`
+  /// The relation between the int and qt's KeyCode should consult qt's doc
+
   HotKey( QKeySequence const & );
 
   QKeySequence toKeySequence() const;
@@ -308,6 +312,7 @@ struct Preferences
   bool autoScrollToTargetArticle;
   bool escKeyHidesMainWindow;
   bool darkMode;
+  bool darkReaderMode;
   bool alwaysOnTop;
 
   /// An old UI mode when tranlateLine and wordList
@@ -315,9 +320,9 @@ struct Preferences
   bool searchInDock;
 
   bool enableMainWindowHotkey;
-  HotKey mainWindowHotkey;
+  QKeySequence mainWindowHotkey;
   bool enableClipboardHotkey;
-  HotKey clipboardHotkey;
+  QKeySequence clipboardHotkey;
 
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;
@@ -556,6 +561,21 @@ struct Transliteration
   {}
 };
 
+struct Lingua
+{
+  bool enable;
+  QString languageCodes;
+
+  bool operator == ( Lingua const & other ) const
+  { return enable == other.enable &&
+      languageCodes == other.languageCodes;
+  }
+
+  bool operator != ( Lingua const & other ) const
+  { return ! operator == ( other ); }
+
+};
+
 struct Forvo
 {
   bool enable;
@@ -675,6 +695,7 @@ struct Class
   DictServers dictServers;
   Hunspell hunspell;
   Transliteration transliteration;
+  Lingua lingua;
   Forvo forvo;
   Programs programs;
   VoiceEngines voiceEngines;

@@ -41,3 +41,8 @@ GoldenDict.xcodeproj/
 # cmake files
 /cmake-build-**/
 /build**/
+CMakeLists.txt.user
+
+# kdevelop
+.kdev4/
+*.kdev4

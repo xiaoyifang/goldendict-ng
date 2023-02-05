@@ -4,39 +4,39 @@
 using namespace RX;
 
 QRegularExpression Ftx::regBrackets(
-  "(\\([\\w\\p{M}]+\\)){0,1}([\\w\\p{M}]+)(\\([\\w\\p{M}]+\\)){0,1}([\\w\\p{M}]+){0,1}(\\([\\w\\p{M}]+\\)){0,1}",
+  R"((\([\w\p{M}]+\)){0,1}([\w\p{M}]+)(\([\w\p{M}]+\)){0,1}([\w\p{M}]+){0,1}(\([\w\p{M}]+\)){0,1})",
   QRegularExpression::UseUnicodePropertiesOption );
 QRegularExpression Ftx::regSplit( "[^\\w\\p{M}]+", QRegularExpression::UseUnicodePropertiesOption );
 
 QRegularExpression Ftx::spacesRegExp( "\\W+", QRegularExpression::UseUnicodePropertiesOption );
 QRegularExpression Ftx::wordRegExp( QString( "\\w{" ) + QString::number( FTS::MinimumWordSize ) + ",}",
                                     QRegularExpression::UseUnicodePropertiesOption );
-QRegularExpression Ftx::setsRegExp( "\\[[^\\]]+\\]", QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Ftx::regexRegExp( "\\\\[afnrtvdDwWsSbB]|\\\\x([0-9A-Fa-f]{4})|\\\\0([0-7]{3})",
+QRegularExpression Ftx::setsRegExp( R"(\[[^\]]+\])", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Ftx::regexRegExp( R"(\\[afnrtvdDwWsSbB]|\\x([0-9A-Fa-f]{4})|\\0([0-7]{3}))",
                                      QRegularExpression::CaseInsensitiveOption );
 
-QRegularExpression Ftx::handleRoundBracket( "[^\\w\\(\\)\\p{M}]+" ,
+QRegularExpression Ftx::handleRoundBracket( R"([^\w\(\)\p{M}]+)" ,
                                             QRegularExpression::UseUnicodePropertiesOption );
 QRegularExpression Ftx::noRoundBracket( "[^\\w\\p{M}]+",
                                         QRegularExpression::UseUnicodePropertiesOption );
 
-QRegularExpression Ftx::tokenBoundary( "[\\*\\?\\+]|\\bAnd\\b|\\bOR\\b", QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Ftx::token("(\".*?\")|([\\w\\W\\+\\-]+)",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
+QRegularExpression Ftx::tokenBoundary( R"([\*\?\+]|\bAnd\b|\bOR\b)", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Ftx::token(R"((".*?")|([\w\W\+\-]+))",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
 //mdx
 
-QRegularExpression Mdx::allLinksRe( "(?:<\\s*(a(?:rea)?|img|link|script|source)(?:\\s+[^>]+|\\s*)>)",
+QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source)(?:\s+[^>]+|\s*)>))",
                                     QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::wordCrossLink( "([\\s\"']href\\s*=)\\s*([\"'])entry://([^>#]*?)((?:#[^>]*?)?)\\2",
+QRegularExpression Mdx::wordCrossLink( R"(([\s"']href\s*=)\s*(["'])entry://([^>#]*?)((?:#[^>]*?)?)\2)",
                                        QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::anchorIdRe( "([\\s\"'](?:name|id)\\s*=)\\s*([\"'])\\s*(?=\\S)",
+QRegularExpression Mdx::anchorIdRe( R"(([\s"'](?:name|id)\s*=)\s*(["'])\s*(?=\S))",
                                     QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::anchorIdReWord( "([\\s\"'](?:name|id)\\s*=)\\s*([\"'])\\s*(?=\\S)([^\"]*)",
+QRegularExpression Mdx::anchorIdReWord( R"(([\s"'](?:name|id)\s*=)\s*(["'])\s*(?=\S)([^"]*))",
                                         QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::anchorIdRe2( "([\\s\"'](?:name|id)\\s*=)\\s*(?=[^\"'])([^\\s\">]+)",
+QRegularExpression Mdx::anchorIdRe2( R"(([\s"'](?:name|id)\s*=)\s*(?=[^"'])([^\s">]+))",
                                      QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::anchorLinkRe( "([\\s\"']href\\s*=\\s*[\"'])entry://#",
+QRegularExpression Mdx::anchorLinkRe( R"(([\s"']href\s*=\s*["'])entry://#)",
                                       QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::audioRe( "([\\s\"']href\\s*=)\\s*([\"'])sound://([^\">]+)\\2",
+QRegularExpression Mdx::audioRe( R"(([\s"']href\s*=)\s*(["'])sound://([^">]+)\2)",
                                  QRegularExpression::CaseInsensitiveOption
                                    | QRegularExpression::InvertedGreedinessOption );
 QRegularExpression Mdx::stylesRe( "([\\s\"']href\\s*=)\\s*([\"'])(?!\\s*\\b(?:(?:bres|https?|ftp)://"
@@ -45,7 +45,7 @@ QRegularExpression Mdx::stylesRe( "([\\s\"']href\\s*=)\\s*([\"'])(?!\\s*\\b(?:(?
 QRegularExpression Mdx::stylesRe2( "([\\s\"']href\\s*=)\\s*(?![\\s\"']|\\b(?:(?:bres|https?|ftp)://"
                                    "|(?:data|javascript):))(?:file://)?[\\x00-\\x1f\\x7f]*\\.*/?([^\\s\">]+)",
                                    QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::inlineScriptRe( "<\\s*script(?:(?=\\s)(?:(?![\\s\"']src\\s*=)[^>])+|\\s*)>",
+QRegularExpression Mdx::inlineScriptRe( R"(<\s*script(?:(?=\s)(?:(?![\s"']src\s*=)[^>])+|\s*)>)",
                                         QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::closeScriptTagRe( "<\\s*/script\\s*>", QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::srcRe( "([\\s\"'](?:src|srcset)\\s*=)\\s*([\"'])(?!\\s*\\b(?:(?:bres|https?|ftp)://"
@@ -55,13 +55,13 @@ QRegularExpression Mdx::srcRe2( "([\\s\"'](?:src|srcset)\\s*=)\\s*(?![\\s\"']|\\
                                 "|(?:data|javascript):))(?:file://)?[\\x00-\\x1f\\x7f]*\\.*/?([^\\s\">]+)",
                                 QRegularExpression::CaseInsensitiveOption );
 
-QRegularExpression Mdx::links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
+QRegularExpression Mdx::links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
                                QRegularExpression::CaseInsensitiveOption );
 
-QRegularExpression Mdx::fontFace( "(?:url\\s*\\(\\s*\\\"(.*?)\\\"\\s*)\\)",
+QRegularExpression Mdx::fontFace( R"((?:url\s*\(\s*\"(.*?)\"\s*)\))",
                                     QRegularExpression::CaseInsensitiveOption|QRegularExpression::DotMatchesEverythingOption );
 
-QRegularExpression Mdx::styleElment( "(<style[^>]*>)([\\w\\W]*?)(<\\/style>)",
+QRegularExpression Mdx::styleElment( R"((<style[^>]*>)([\w\W]*?)(<\/style>))",
                                   QRegularExpression::CaseInsensitiveOption);
 
 

@@ -19,7 +19,7 @@ HelpBrowser::HelpBrowser( QHelpEngineCore * engine, QWidget *parent ) :
     QTextBrowser( parent ),
     helpEngine( engine )
 {
-  connect( this, SIGNAL( anchorClicked( QUrl ) ), this, SLOT( linkClicked( QUrl ) ) );
+  connect( this, &QTextBrowser::anchorClicked, this, &HelpBrowser::linkClicked );
 }
 
 void HelpBrowser::showHelpForKeyword( QString const & id )
@@ -143,22 +143,19 @@ HelpWindow::HelpWindow( QWidget * parent, Config::Class & cfg_ ) :
     connect( helpEngine->indexWidget(), SIGNAL( linkActivated( QUrl, QString ) ),
              helpBrowser, SLOT( setSource( QUrl ) ) );
 
-    connect( navHome, SIGNAL( triggered() ), helpBrowser, SLOT( home() ) );
-    connect( navForward, SIGNAL( triggered() ), helpBrowser, SLOT( forward() ) );
-    connect( navBack, SIGNAL( triggered() ), helpBrowser, SLOT( backward() ) );
+    connect( navHome, &QAction::triggered, helpBrowser, &QTextBrowser::home );
+    connect( navForward, &QAction::triggered, helpBrowser, &QTextBrowser::forward );
+    connect( navBack, &QAction::triggered, helpBrowser, &QTextBrowser::backward );
 
-    connect( helpBrowser, SIGNAL( forwardAvailable( bool ) ),
-             this, SLOT( forwardEnabled( bool ) ) );
+    connect( helpBrowser, &QTextBrowser::forwardAvailable, this, &HelpWindow::forwardEnabled );
 
-    connect( helpBrowser, SIGNAL( backwardAvailable( bool ) ),
-             this, SLOT( backwardEnabled( bool ) ) );
+    connect( helpBrowser, &QTextBrowser::backwardAvailable, this, &HelpWindow::backwardEnabled );
 
-    connect( helpEngine->contentWidget(), SIGNAL( clicked( QModelIndex ) ),
-             this, SLOT( contentsItemClicked( QModelIndex ) ) );
+    connect( helpEngine->contentWidget(), &QAbstractItemView::clicked, this, &HelpWindow::contentsItemClicked );
 
-    connect( zoomInAction, SIGNAL( triggered( ) ), this, SLOT( zoomIn() ) );
-    connect( zoomOutAction, SIGNAL( triggered( ) ), this, SLOT( zoomOut() ) );
-    connect( zoomBaseAction, SIGNAL( triggered( ) ), this, SLOT( zoomBase() ) );
+    connect( zoomInAction, &QAction::triggered, this, &HelpWindow::zoomIn );
+    connect( zoomOutAction, &QAction::triggered, this, &HelpWindow::zoomOut );
+    connect( zoomBaseAction, &QAction::triggered, this, &HelpWindow::zoomBase );
 
     splitter = new QSplitter( this );
     splitter->addWidget( tabWidget );

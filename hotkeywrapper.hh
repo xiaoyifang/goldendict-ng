@@ -30,6 +30,7 @@
 #include "ex.hh"
 #include "qtsingleapplication.h"
 #include "utils.hh"
+#include "config.hh"
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -67,6 +68,8 @@ public:
   /// was activated.
   bool setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier,
                      int handle );
+
+  bool setGlobalKey( QKeySequence const  & , int );
 
   /// Unregisters everything
   void unregister();
@@ -180,6 +183,8 @@ public:
   bool setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier,
                      int handle )
   { return true; }
+
+  bool setGlobalKey( QKeySequence const &, int ) { return true; }
 
   void unregister()
   {}

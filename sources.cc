@@ -34,6 +34,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
 
   Config::Hunspell const & hunspell = cfg.hunspell;
   Config::Transliteration const & trs = cfg.transliteration;
+
+  Config::Lingua const & lingua = cfg.lingua;
   Config::Forvo const & forvo = cfg.forvo;
 
   // TODO: will programTypeEditorCreator and itemEditorFactory be destroyed by
@@ -113,6 +115,9 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
   ui.enableKunreiShiki->setChecked( trs.romaji.enableKunreiShiki );
   ui.enableHiragana->setChecked( trs.romaji.enableHiragana );
   ui.enableKatakana->setChecked( trs.romaji.enableKatakana );
+
+  ui.linguaEnabled->setChecked(lingua.enable);
+  ui.linguaLangCode->setText(lingua.languageCodes);
 
   ui.forvoEnabled->setChecked( forvo.enable );
   ui.forvoApiKey->setText( forvo.apiKey );
@@ -375,6 +380,17 @@ Config::Transliteration Sources::getTransliteration() const
 
   return tr;
 }
+
+Config::Lingua Sources::getLingua() const
+{
+  Config::Lingua lingua;
+
+  lingua.enable = ui.linguaEnabled->isChecked();
+  lingua.languageCodes = ui.linguaLangCode -> text();
+
+  return lingua;
+}
+
 
 Config::Forvo Sources::getForvo() const
 {

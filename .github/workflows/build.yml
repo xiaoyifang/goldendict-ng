@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - dev
+      - staged
+
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:

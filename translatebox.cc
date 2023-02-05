@@ -27,11 +27,9 @@ CompletionList::CompletionList(TranslateBox * parent) : WordList(parent),
   setAutoFillBackground( true );
 #endif
 
-  connect(this, SIGNAL( activated( QModelIndex ) ),
-          this, SLOT( acceptCurrentEntry() ) );
+  connect( this, &QAbstractItemView::activated, this, &CompletionList::acceptCurrentEntry );
 
-  connect(this, SIGNAL( itemClicked( QListWidgetItem * ) ),
-          this, SLOT( acceptCurrentEntry() ) );
+  connect( this, &QListWidget::itemClicked, this, &CompletionList::acceptCurrentEntry );
 
   translateBox->window()->installEventFilter(this);
 }
@@ -134,14 +132,11 @@ TranslateBox::TranslateBox(QWidget *parent) : QWidget(parent),
   translate_line->installEventFilter( this );
   this->installEventFilter( this );
 
-  connect(translate_line, SIGNAL( textChanged( QString const & ) ),
-          this, SLOT( onTextEdit() ) );
+  connect( translate_line, &QLineEdit::textChanged, this, &TranslateBox::onTextEdit );
 
-  connect(translate_line, SIGNAL( rightButtonClicked() ),
-          this, SLOT( rightButtonClicked() ) );
+  connect( translate_line, &ExtLineEdit::rightButtonClicked, this, &TranslateBox::rightButtonClicked );
 
-  connect(word_list, SIGNAL( contentChanged() ),
-          this, SLOT( showPopup() ) );
+  connect( word_list, &WordList::contentChanged, this, &TranslateBox::showPopup );
 }
 
 bool TranslateBox::eventFilter(QObject *obj, QEvent *event)

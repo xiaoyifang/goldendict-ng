@@ -33,6 +33,7 @@ CONFIG( release, debug|release ) {
 
 # DEPENDPATH += . generators
 INCLUDEPATH += .
+INCLUDEPATH += ./src/
 
 QT += core \
       gui \
@@ -61,10 +62,25 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
   DEFINES += MAKE_FFMPEG_PLAYER
 }
 
+contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
+  HEADERS += audiooutput.h
+  SOURCES += audiooutput.cpp
+}
+
 # on windows platform ,only works in release build
 CONFIG( use_xapian ) {
   DEFINES += USE_XAPIAN
   LIBS+= -lxapian
+}
+
+CONFIG( use_iconv ) {
+  DEFINES += USE_ICONV
+  unix:!mac{
+    #ignore
+  }
+  else {
+      LIBS+= -liconv
+  }
 }
 
 CONFIG += exceptions \
@@ -201,7 +217,7 @@ mac {
     # You will need to use Xcode 3 and Qt Carbon SDK
     # if you want the support for PowerPC and/or Mac OS X 10.4
     # CONFIG += x86 x86_64 ppc
-    LIBS = -lz \
+    LIBS += -lz \
         -lbz2 \
         -lvorbisfile \
         -lvorbis \
@@ -220,12 +236,12 @@ mac {
 
     !CONFIG( no_macos_universal ) {
         LIBS+=        -lhunspell
-        INCLUDEPATH = $${PWD}/maclibs/include
+        INCLUDEPATH += $${PWD}/maclibs/include
         LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
     }
     else{
         PKGCONFIG +=   hunspell
-        INCLUDEPATH = /opt/homebrew/include /usr/local/include
+        INCLUDEPATH += /opt/homebrew/include /usr/local/include
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
@@ -266,8 +282,8 @@ HEADERS += folding.hh \
     ankiconnector.h \
     article_inspect.h \
     articlewebpage.h \
-    audiooutput.h \
     base/globalregex.hh \
+    base_type.h \
     globalbroadcaster.h \
     headwordsmodel.h \
     iframeschemehandler.h \
@@ -326,7 +342,6 @@ HEADERS += folding.hh \
     processwrapper.hh \
     hotkeywrapper.hh \
     searchpanewidget.hh \
-    hotkeyedit.hh \
     langcoder.hh \
     editdictionaries.hh \
     loaddictionaries.hh \
@@ -389,7 +404,8 @@ HEADERS += folding.hh \
     gls.hh \
     splitfile.hh \
     favoritespanewidget.hh \
-    treeview.hh
+    treeview.hh \
+    src/dict/lingualibre.h
 
 FORMS += groups.ui \
     dictgroupwidget.ui \
@@ -411,7 +427,6 @@ SOURCES += folding.cc \
     ankiconnector.cpp \
     article_inspect.cpp \
     articlewebpage.cpp \
-    audiooutput.cpp \
     base/globalregex.cc \
     globalbroadcaster.cpp \
     headwordsmodel.cpp \
@@ -465,7 +480,6 @@ SOURCES += folding.cc \
     wstring_qt.cc \
     processwrapper.cc \
     hotkeywrapper.cc \
-    hotkeyedit.cc \
     langcoder.cc \
     editdictionaries.cc \
     loaddictionaries.cc \
@@ -526,7 +540,8 @@ SOURCES += folding.cc \
     gls.cc \
     splitfile.cc \
     favoritespanewidget.cc \
-    treeview.cc
+    treeview.cc \
+    src/dict/lingualibre.cpp
 
 win32 {
     FORMS   += texttospeechsource.ui
@@ -671,15 +686,8 @@ TS_OUT = $$TRANSLATIONS
 TS_OUT ~= s/.ts/.qm/g
 PRE_TARGETDEPS += $$TS_OUT
 
-equals(QT_VERSION,6.4.0)
-{
-    #QTBUG-105984
-    multimedia.files = $$[QT_PLUGIN_PATH]/multimedia/*
-    multimedia.path = plugins/multimedia
-    #multimedia.CONFIG += no_check_exist
-    message("copy qt6.4.0 multimedia")
-    INSTALLS += multimedia
-}
+#QTBUG-105984
+# avoid qt6.4.0-6.4.2 .  the qtmultimedia module is buggy in all these versions
 
 include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
 

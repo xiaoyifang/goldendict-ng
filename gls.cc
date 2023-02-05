@@ -372,52 +372,52 @@ public:
 
   ~GlsDictionary();
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return dictionaryName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & )
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual QString const& getDescription();
+  QString const& getDescription() override;
 
-  virtual QString getMainFilename();
+  QString getMainFilename() override;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
+                                                            bool ignoreDiacritics ) override;
 
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     can_FTS = fts.enabled
               && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
@@ -425,7 +425,7 @@ public:
   }
 protected:
 
-  void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
@@ -727,7 +727,7 @@ void GlsDictionary::loadArticle( uint32_t address,
   }
 
   if( isToLanguageRTL() )
-    article += "<div style=\"display:inline;\" dir=\"rtl\">";
+    article += R"(<div style="display:inline;" dir="rtl">)";
 
   QString text = QString::fromUtf8( articleBody.c_str(), articleBody.size() );
 
@@ -743,10 +743,10 @@ void GlsDictionary::loadArticle( uint32_t address,
 
 QString & GlsDictionary::filterResource( QString & article )
 {
-  QRegularExpression imgRe( "(<\\s*img\\s+[^>]*src\\s*=\\s*[\"']+)(?!(?:data|https?|ftp|qrcx):)",
+  QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp|qrcx):))",
                             QRegularExpression::CaseInsensitiveOption
                             | QRegularExpression::InvertedGreedinessOption );
-  QRegularExpression linkRe( "(<\\s*link\\s+[^>]*href\\s*=\\s*[\"']+)(?!(?:data|https?|ftp):)",
+  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
                              QRegularExpression::CaseInsensitiveOption
                              | QRegularExpression::InvertedGreedinessOption );
 
@@ -755,7 +755,7 @@ QString & GlsDictionary::filterResource( QString & article )
 
   // Handle links to articles
 
-  QRegularExpression linksReg( "<a(\\s+[^>]*)href\\s*=\\s*['\"](bword://)?([^'\"]+)['\"]",
+  QRegularExpression linksReg( R"(<a(\s+[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
                                QRegularExpression::CaseInsensitiveOption );
 
   int pos = 0;
@@ -803,7 +803,7 @@ QString & GlsDictionary::filterResource( QString & article )
 
   // Handle "audio" tags
 
-  QRegularExpression audioRe( "<\\s*audio\\s+src\\s*=\\s*([\"']+)([^\"']+)([\"'])\\s*>(.*)</audio>",
+  QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
                               QRegularExpression::CaseInsensitiveOption
                               | QRegularExpression::DotMatchesEverythingOption
                               | QRegularExpression::InvertedGreedinessOption );
@@ -828,7 +828,7 @@ QString & GlsDictionary::filterResource( QString & article )
       QString newTag = QString::fromUtf8( ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
       newTag += match.captured( 4 );
       if( match.captured( 4 ).indexOf( "<img " ) < 0 )
-        newTag += " <img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\">";
+        newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
       newTag += "</a></span>";
 
       articleNewText += newTag;
@@ -886,7 +886,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class GlsHeadwordsRequest: public Dictionary::WordSearchRequest
@@ -910,7 +910,7 @@ public:
 
   void run(); // Run from another thread by StardictHeadwordsRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1005,7 +1005,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class GlsArticleRequest: public Dictionary::DataRequest
@@ -1033,7 +1033,7 @@ public:
 
   void run(); // Run from another thread by GlsArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1185,7 +1185,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class GlsResourceRequest: public Dictionary::DataRequest
@@ -1212,7 +1212,7 @@ public:
 
   void run(); // Run from another thread by GlsResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1302,7 +1302,7 @@ void GlsResourceRequest::run()
       QString id = QString::fromUtf8( dict.getId().c_str() );
       int pos = 0;
 
-      QRegularExpression links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
+      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
                                 QRegularExpression::CaseInsensitiveOption );
 
       QString newCSS;

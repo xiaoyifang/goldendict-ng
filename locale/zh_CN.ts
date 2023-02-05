@@ -3017,7 +3017,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation>导入收藏文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cc" line="4168"/>
+        <location filename="../mainwindow.cc" line="4195"/>
+        <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
+        <translation>XML文件(*.xml);;文本文件(*.txt);;所有文件(*.*)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cc" line="4224"/>
         <source>Favorites import complete</source>
         <translation>收藏导入完成</translation>
     </message>
@@ -3188,7 +3193,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation>导航栏(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cc" line="3500"/>
+        <location filename="../mainwindow.cc" line="236"/>
+        <source>Enable Scanning</source>
+        <translation>取词弹窗</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cc" line="3537"/>
         <source>Article, Complete (*.html)</source>
         <translation>文章, 完整 (*.html)</translation>
     </message>
@@ -3937,7 +3947,52 @@ however, the article from the topmost dictionary is shown.</source>
         <translation>设置词典的备用字体</translation>
     </message>
     <message>
-        <location filename="../preferences.ui" line="708"/>
+        <location filename="../preferences.ui" line="126"/>
+        <source>Article Display style:</source>
+        <translation type="unfinished">文章显示风格</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="161"/>
+        <source>Turn the UI to dark.</source>
+        <translation type="unfinished">启用暗色界面</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="164"/>
+        <source>Dark Mode</source>
+        <translation type="unfinished">深色模式</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="171"/>
+        <source>Turn the article display style to dark.</source>
+        <translation type="unfinished">将文章以暗色风格显示</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="174"/>
+        <source>Dark Reader Mode</source>
+        <translation type="unfinished">深色阅读模式</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="457"/>
+        <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
+        <translation>剪贴板取词。注意！非Linux系统，这个选项必须打开</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="460"/>
+        <source>Track Clipboard change</source>
+        <translation>剪贴板取词</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="467"/>
+        <source>Track Selection change</source>
+        <translation>选择文本取词</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="483"/>
+        <source>Only tack selection when all selected keys are kept pressed:</source>
+        <translation>仅当指定按钮被按时，文本取词</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="668"/>
         <source>Show scan flag when word is selected</source>
         <translation>单词被选中时显示扫描旗标</translation>
     </message>
@@ -4042,7 +4097,11 @@ clears its network cache from disk during exit.</source>
         <translation>高级(&amp;v)</translation>
     </message>
     <message>
-        <location filename="../preferences.ui" line="1444"/>
+        <location filename="../preferences.ui" line="1749"/>
+        <source>When using clipboard,strip everything after newline</source>
+        <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
+    </message>
+    <message>
         <source>ScanPopup unpinned window flags</source>
         <translation>非固定弹窗选项</translation>
     </message>

@@ -10,8 +10,7 @@ WebMultimediaDownload::WebMultimediaDownload( QUrl const & url,
 mgr( _mgr ),
 redirectCount( 0 )
 {
-  connect( &mgr, SIGNAL(finished(QNetworkReply*)),
-           this, SLOT(replyFinished(QNetworkReply*)), Qt::QueuedConnection );
+  connect( &mgr, &QNetworkAccessManager::finished, this, &WebMultimediaDownload::replyFinished, Qt::QueuedConnection );
 
   reply = mgr.get( QNetworkRequest( url ) );
 

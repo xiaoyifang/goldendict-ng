@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [6.3.2]
+        qt_ver: [6.4.2]
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
@@ -51,14 +51,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Release Changelog Builder
+      - name: changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v3.5.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          ignorePreReleases: true 
-          commitMode: true
+        shell: bash
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
+          echo "previousTag : $previousTag"
+          
+          CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
+          CHANGELOG="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
+          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+          CHANGELOG="${CHANGELOG//'\"'/'%22'}"
+          CHANGELOG="${CHANGELOG//"'"/ }"
+          echo "::set-output name=changelog::$(echo "$CHANGELOG")"
       - name: Set outputs
         id: vars
         shell: bash
@@ -84,7 +90,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%

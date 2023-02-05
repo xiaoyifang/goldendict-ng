@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12]
-        qt_ver: [6.3.2,6.4.1]
+        qt_ver: [6.3.2,6.4.2]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -73,9 +73,10 @@ jobs:
           #brew install qt # or use official offline installer
           brew install  xz lzo 
           brew install pkg-config
+          brew install libiconv
 
       - name: compile
         run: |          
-          qmake   CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=no_extra_tiff_handler  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=no_extra_tiff_handler CONFIG+=use_iconv  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
           make 
      

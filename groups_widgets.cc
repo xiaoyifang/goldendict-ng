@@ -33,6 +33,11 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   ui.setupUi( this );
   ui.dictionaries->populate( Instances::Group( group, dicts, Config::Group() ).dictionaries, dicts );
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+  ui.shortcut->setClearButtonEnabled(true);
+  ui.clearShortCut->hide();
+#endif
+
   // Populate icons' list
 
   QStringList icons = QDir( ":/flags/" ).entryList( QDir::Files, QDir::NoSort );
@@ -61,19 +66,16 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   if ( usesIconData )
     ui.groupIcon->setCurrentIndex( 1 );
 
-  ui.shortcut->setHotKey( Config::HotKey( group.shortcut ) );
+  ui.shortcut->setKeySequence( group.shortcut );
 
   ui.favoritesFolder->setText( group.favoritesFolder );
 
-  connect( ui.groupIcon, SIGNAL(activated(int)),this,SLOT(groupIconActivated(int)),
-           Qt::QueuedConnection );
+  connect( ui.groupIcon, &QComboBox::activated, this, &DictGroupWidget::groupIconActivated, Qt::QueuedConnection );
 
   ui.dictionaries->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( ui.dictionaries, SIGNAL( customContextMenuRequested( QPoint ) ),
-           this, SLOT( showDictInfo( QPoint ) ) );
+  connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &DictGroupWidget::showDictInfo );
 
-  connect( ui.dictionaries, SIGNAL( doubleClicked( QModelIndex ) ),
-           this, SLOT( removeCurrentItem( QModelIndex ) ) );
+  connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &DictGroupWidget::removeCurrentItem );
 }
 
 void DictGroupWidget::groupIconActivated( int index )
@@ -129,7 +131,7 @@ Config::Group DictGroupWidget::makeGroup() const
 
   g.icon = ui.groupIcon->itemData( currentIndex ).toString();
 
-  g.shortcut = ui.shortcut->getHotKey().toKeySequence();
+  g.shortcut = ui.shortcut->keySequence();
 
   g.favoritesFolder = ui.favoritesFolder->text().replace( '\\', '/' );
 
@@ -548,8 +550,7 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
 {
   setMovable( true );
   setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( this, SIGNAL( customContextMenuRequested( QPoint ) ),
-           this, SLOT( contextMenu( QPoint ) ) );
+  connect( this, &QWidget::customContextMenuRequested, this, &DictGroupsWidget::contextMenu );
 }
 
 namespace {
@@ -585,7 +586,7 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
     DictGroupWidget *gr = new DictGroupWidget( this, *allDicts, groups[ x ] );
     addTab( gr, escapeAmps( groups[ x ].name ) );
     connect( gr, &DictGroupWidget::showDictionaryInfo,this, &DictGroupsWidget::showDictionaryInfo );
-    connect( gr->getModel(), SIGNAL( contentChanged() ), this, SLOT( tabDataChanged() ) );
+    connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
     setCurrentIndex( x );
     QString toolTipStr = "\"" + tabText( x ) + "\"\n" + tr( "Dictionaries: " )
@@ -656,12 +657,11 @@ void DictGroupsWidget::addNewGroup( QString const & name )
 
   DictGroupWidget *gr = new DictGroupWidget( this, *allDicts, newGroup );
   insertTab( idx, gr, escapeAmps( name ) );
-  connect( gr, SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SIGNAL( showDictionaryInfo( QString const & ) ) );
+  connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
 
   setCurrentIndex( idx );
 
-  connect( gr->getModel(), SIGNAL( contentChanged() ), this, SLOT( tabDataChanged() ) );
+  connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
   QString toolTipStr = "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " )
                        + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
@@ -829,12 +829,12 @@ void DictGroupsWidget::combineGroups( int source, int target )
   setCurrentIndex( target );
   DictListModel *model = getCurrentModel();
 
-  disconnect( model, SIGNAL( contentChanged() ), this, SLOT( tabDataChanged() ) );
+  disconnect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
   for( unsigned i = 0; i < dicts.size(); i++ )
     model->addRow( QModelIndex(), dicts[ i ] );
 
-  connect( model, SIGNAL( contentChanged() ), this, SLOT( tabDataChanged() ) );
+  connect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
   QString toolTipStr = "\"" + tabText( target ) + "\"\n" + tr( "Dictionaries: " )
                        + QString::number( model->getCurrentDictionaries().size() );
@@ -1023,8 +1023,7 @@ QuickFilterLine::QuickFilterLine( QWidget * parent ): ExtLineEdit( parent ), m_f
   setPlaceholderText( tr( "Dictionary search/filter (Ctrl+F)" ) );
 
   m_focusAction.setShortcut( QKeySequence( "Ctrl+F" ) );
-  connect( &m_focusAction, SIGNAL( triggered() ),
-           this, SLOT( focusFilterLine() ) );
+  connect( &m_focusAction, &QAction::triggered, this, &QuickFilterLine::focusFilterLine );
 
   QPixmap image(":/icons/system-search.svg");
   setButtonPixmap(ExtLineEdit::Left, image.scaled(18, 18, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -1036,12 +1035,11 @@ QuickFilterLine::QuickFilterLine( QWidget * parent ): ExtLineEdit( parent ), m_f
   setButtonToolTip(ExtLineEdit::Right, tr("Clear Search"));
   setButtonVisible(ExtLineEdit::Right, true);
   setButtonAutoHide(ExtLineEdit::Right, true);
-  connect( this, SIGNAL( rightButtonClicked() ), this, SLOT( clear() ) );
+  connect( this, &ExtLineEdit::rightButtonClicked, this, &QLineEdit::clear );
 
   setFocusPolicy(Qt::StrongFocus);
 
-  connect (this, SIGNAL( textChanged( QString const & ) ),
-      this, SLOT( filterChangedInternal() ) );
+  connect( this, &QLineEdit::textChanged, this, &QuickFilterLine::filterChangedInternal );
 }
 
 QuickFilterLine::~QuickFilterLine()
@@ -1070,7 +1068,7 @@ QModelIndex QuickFilterLine::mapToSource( QModelIndex const & idx )
 void QuickFilterLine::filterChangedInternal()
 {
   // emit signal in async manner, to avoid UI slowdown
-  QTimer::singleShot( 1, this, SLOT( emitFilterChanged() ) );
+  QTimer::singleShot( 1, this, &QuickFilterLine::emitFilterChanged );
 }
 
 void QuickFilterLine::emitFilterChanged()

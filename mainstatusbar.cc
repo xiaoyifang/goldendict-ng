@@ -38,7 +38,7 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
 
   parentWidget()->installEventFilter( this );
 
-  connect( timer, SIGNAL( timeout() ), SLOT( clearMessage() ) );
+  connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 }
 
 bool MainStatusBar::hasImage() const

@@ -209,35 +209,35 @@ public:
       strategies.append( "prefix" );
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const &,
-                                                 unsigned long maxResults ) ;
+  sptr< WordSearchRequest > prefixMatch( wstring const &,
+                                                 unsigned long maxResults ) override ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool )
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+                                          wstring const &, bool ) override
     ;
 
-  virtual quint32 getLangFrom() const
+  quint32 getLangFrom() const override
   { return langId; }
 
-  virtual quint32 getLangTo() const
+  quint32 getLangTo() const override
   { return langId; }
 
-  virtual QString const & getDescription();
+  QString const & getDescription() override;
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
   void getServerDatabases();
 
@@ -366,7 +366,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
@@ -397,7 +397,7 @@ public:
     hasExited.acquire();
   }
 
-  virtual void cancel();
+  void cancel() override;
 
 };
 
@@ -580,7 +580,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class DictServerArticleRequest: public Dictionary::DataRequest
@@ -611,7 +611,7 @@ public:
     hasExited.acquire();
   }
 
-  virtual void cancel();
+  void cancel() override;
 
 };
 
@@ -799,11 +799,11 @@ void DictServerArticleRequest::run()
             if( Utils::AtomicInt::loadAcquire( isCancelled ) || !errorString.isEmpty() )
               break;
 
-            static QRegularExpression phonetic( "\\\\([^\\\\]+)\\\\",
+            static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                                 QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
             static QRegularExpression divs_inside_phonetic( "</div([^>]*)><div([^>]*)>",
                                                             QRegularExpression::CaseInsensitiveOption );
-            static QRegularExpression refs( "\\{([^\\{\\}]+)\\}",
+            static QRegularExpression refs( R"(\{([^\{\}]+)\})",
                                             QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
             static QRegularExpression links( "<a href=\"gdlookup://localhost/([^\"]*)\">",
                                              QRegularExpression::CaseInsensitiveOption );
@@ -819,7 +819,7 @@ void DictServerArticleRequest::run()
             articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
             if( !contentInHtml )
             {
-              articleText = articleText.replace(refs, "<a href=\"gdlookup://localhost/\\1\">\\1</a>" );
+              articleText = articleText.replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
               pos = 0;
               QString articleNewText;
@@ -834,7 +834,7 @@ void DictServerArticleRequest::run()
                 pos = match.capturedEnd();
 
                 QString phonetic_text = match.captured( 1 );
-                phonetic_text.replace( divs_inside_phonetic, "</span></div\\1><div\\2><span class=\"dictd_phonetic\">" );
+                phonetic_text.replace( divs_inside_phonetic, R"(</span></div\1><div\2><span class="dictd_phonetic">)" );
 
                 articleNewText += "<span class=\"dictd_phonetic\">" + phonetic_text + "</span>";
               }

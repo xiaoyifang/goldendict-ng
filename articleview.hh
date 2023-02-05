@@ -21,6 +21,7 @@
 #endif
 #include "ankiconnector.h"
 #include "webmultimediadownload.hh"
+#include "base_type.h"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent ;
@@ -111,7 +112,7 @@ public:
 
   ~ArticleView();
 
-  typedef QMap< QString, QString > Contexts;
+
 
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( QString const & dictionaryId );
@@ -247,11 +248,11 @@ signals:
   /// Signals that the following link was requested to be opened in new tab
   void openLinkInNewTab( QUrl const &, QUrl const & referrer,
                          QString const & fromArticle,
-                         ArticleView::Contexts const & contexts );
+                         Contexts const & contexts );
   /// Signals that the following definition was requested to be showed in new tab
   void showDefinitionInNewTab( QString const & word, unsigned group,
                                QString const & fromArticle,
-                               ArticleView::Contexts const & contexts );
+                               Contexts const & contexts );
 
   /// Put translated word into history
   void sendWordToHistory( QString const & word );
@@ -394,10 +395,6 @@ private:
   /// to point to url text translation instead, and saves the original
   /// url to the appropriate "contexts" entry.
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
-
-  /// Saves current article and scroll position for the current history item.
-  /// Should be used when leaving the page.
-  void saveHistoryUserData();
 
   /// Loads a page at @p url into view.
   void load( QUrl const & url );

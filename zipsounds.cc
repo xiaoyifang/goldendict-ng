@@ -114,29 +114,29 @@ public:
   ZipSoundsDictionary( string const & id, string const & indexFile,
                        vector< string > const & dictionaryFiles );
 
-  virtual string getName() noexcept;
+  string getName() noexcept override;
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.soundsCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return getArticleCount(); }
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 };
 
 ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
@@ -279,7 +279,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + "><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
     result += "</tr>";
   }
@@ -325,7 +325,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + "><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
     result += "</tr>";
   }

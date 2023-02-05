@@ -199,7 +199,7 @@ InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) cons
     return result;
   }
 
-  const QString withPunct = _phase.simplified();
+  const QString withPunct = _phase.simplified().remove( QChar( 0xAD ) ); // Simplify whitespaces and remove soft hyphens;
   result.phrase = gd::toQString( Folding::trimWhitespaceOrPunct( gd::toWString( withPunct ) ) );
   if ( !result.isValid() )
     return result; // The suffix of an invalid input phrase must be empty.
@@ -230,6 +230,7 @@ Preferences::Preferences():
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
+  darkReaderMode ( false ),
   alwaysOnTop ( false ),
   searchInDock ( false ),
 
@@ -694,6 +695,14 @@ Class load()
     }
   }
 
+  QDomNode lingua = root.namedItem("lingua");
+
+  if(!lingua.isNull()){
+    applyBoolOption(c.lingua.enable,lingua.namedItem("enable"));
+    c.lingua.languageCodes = lingua.namedItem("languageCodes").toElement().text();
+  }
+
+
   QDomNode forvo = root.namedItem( "forvo" );
 
   if ( !forvo.isNull() )
@@ -883,6 +892,9 @@ Class load()
 
     if ( !preferences.namedItem( "darkMode" ).isNull() )
       c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem("darkReaderMode").isNull())
+      c.preferences.darkReaderMode = (preferences.namedItem("darkReaderMode").toElement().text() == "1");
 
     if ( !preferences.namedItem( "zoomFactor" ).isNull() )
       c.preferences.zoomFactor = preferences.namedItem( "zoomFactor" ).toElement().text().toDouble();
@@ -1452,6 +1464,22 @@ void save( Class const & c )
   }
 
   {
+    // Lingua
+
+    QDomElement lingua = dd.createElement("lingua");
+    root.appendChild(lingua);
+
+    QDomElement opt = dd.createElement("enable");
+    opt.appendChild(dd.createTextNode(c.lingua.enable?"1":"0"));
+    lingua.appendChild(opt);
+
+    opt = dd.createElement( "languageCodes" );
+    opt.appendChild( dd.createTextNode( c.lingua.languageCodes ) );
+    lingua.appendChild( opt );
+
+  }
+
+  {
     // Forvo
 
     QDomElement forvo = dd.createElement( "forvo" );
@@ -1733,6 +1761,10 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1":"0" ) );
     preferences.appendChild( opt );
 
+    opt = dd.createElement( "darkReaderMode" );
+    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1":"0" ) );
+    preferences.appendChild( opt );
+
     opt = dd.createElement( "zoomFactor" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.zoomFactor ) ) );
     preferences.appendChild( opt );
@@ -1750,7 +1782,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "mainWindowHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.mainWindowHotkey.toKeySequence().toString() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.mainWindowHotkey.toString() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableClipboardHotkey" );
@@ -1758,7 +1790,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "clipboardHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.clipboardHotkey.toKeySequence().toString() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.clipboardHotkey.toString() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "startWithScanPopupOn" );

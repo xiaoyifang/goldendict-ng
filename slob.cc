@@ -587,63 +587,63 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
 
     ~SlobDictionary();
 
-    virtual string getName() noexcept
+    string getName() noexcept override
     { return dictionaryName; }
 
-    virtual map< Dictionary::Property, string > getProperties() noexcept
+    map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
 
-    virtual unsigned long getArticleCount() noexcept
+    unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
 
-    virtual unsigned long getWordCount() noexcept
+    unsigned long getWordCount() noexcept override
     { return idxHeader.wordCount; }
 
-    inline virtual quint32 getLangFrom() const
+    inline quint32 getLangFrom() const override
     { return idxHeader.langFrom; }
 
-    inline virtual quint32 getLangTo() const
+    inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
-                                                        bool ignoreDiacritics )
+                                                        bool ignoreDiacritics ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+    sptr< Dictionary::DataRequest > getResource( string const & name ) override
       ;
 
-    virtual QString const& getDescription();
+    QString const& getDescription() override;
 
     /// Loads the resource.
     void loadResource( std::string &resourceName, string & data );
 
-    virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                               int searchMode, bool matchCase,
                                                               int distanceBetweenWords,
                                                               int maxResults,
                                                               bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics );
-    virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                              bool ignoreDiacritics ) override;
+    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     quint64 getArticlePos(uint32_t articleNumber );
 
-    virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    virtual void setFTSParameters( Config::FullTextSearch const & fts )
+    void setFTSParameters( Config::FullTextSearch const & fts ) override
     {
       can_FTS = fts.enabled
                 && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
                 && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
     }
 
-    virtual uint32_t getFtsIndexVersion()
+    uint32_t getFtsIndexVersion() override
     { return 2; }
 
 protected:
 
-    virtual void loadIcon() noexcept;
+    void loadIcon() noexcept override;
 
 private:
 
@@ -822,16 +822,16 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
 
   // pattern of img and script
   text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=\"(?!(?:data|https?|ftp):)(|/)([^\"]*)\"" ),
-                QString( "<\\1 \\2src=\"bres://%1/\\4\"").arg( getId().c_str() ) );
+                QString( R"(<\1 \2src="bres://%1/\4")").arg( getId().c_str() ) );
 
   // pattern <link... href="..." ...>
-  text.replace( QRegularExpression( "<\\s*link\\s+([^>]*)href=\"(?!(?:data|https?|ftp):)" ),
+  text.replace( QRegularExpression( R"(<\s*link\s+([^>]*)href="(?!(?:data|https?|ftp):))" ),
                 QString( "<link \\1href=\"bres://%1/").arg( getId().c_str() ) );
 
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   QString anchor;
-  QRegularExpression rxLink( "<\\s*a\\s+([^>]*)href=\"(?!(?:\\w+://|#|mailto:|tel:))(/|)([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( R"lit(<\s*a\s+([^>]*)href="(?!(?:\w+://|#|mailto:|tel:))(/|)([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
   QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -881,11 +881,11 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
 
   if( !texCgiPath.isEmpty() )
   {
-      QRegularExpression texImage( "<\\s*img\\s+class=\"([^\"]+)\"\\s*([^>]*)alt=\"([^\"]+)\"[^>]*>" );
+      QRegularExpression texImage( R"lit(<\s*img\s+class="([^"]+)"\s*([^>]*)alt="([^"]+)"[^>]*>)lit" );
       QRegularExpression regFrac( "\\\\[dt]frac" );
-      QRegularExpression regSpaces( "\\s+([\\{\\(\\[\\}\\)\\]])" );
+      QRegularExpression regSpaces( R"(\s+([\{\(\[\}\)\]]))" );
 
-    QRegExp multReg( "\\*\\{(\\d+)\\}([^\\{]|\\{([^\\}]+)\\})", Qt::CaseSensitive, QRegExp::RegExp2 );
+    QRegExp multReg( R"(\*\{(\d+)\}([^\{]|\{([^\}]+)\}))", Qt::CaseSensitive, QRegExp::RegExp2 );
 
     QString arrayDesc( "\\begin{array}{" );
     pos = 0;
@@ -995,7 +995,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
           QProcess::execute( command,QStringList() );
         }
 
-        QString tag = QString( "<img class=\"imgtex\" src=\"file://" )
+        QString tag = QString( R"(<img class="imgtex" src="file://)" )
 #ifdef Q_OS_WIN32
                       + "/"
 #endif
@@ -1329,7 +1329,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class SlobArticleRequest: public Dictionary::DataRequest
@@ -1357,7 +1357,7 @@ public:
 
   void run(); // Run from another thread by DslArticleRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1463,7 +1463,7 @@ void SlobArticleRequest::run()
 
   for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
   {
-      result += "<div class=\"slobdict\"><h3 class=\"slobdict_headword\">";
+      result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
       result += i->second.first;
       result += "</h3></div>";
       result += i->second.second;
@@ -1471,7 +1471,7 @@ void SlobArticleRequest::run()
 
   for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
   {
-      result += "<div class=\"slobdict\"><h3 class=\"slobdict_headword\">";
+      result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
       result += i->second.first;
       result += "</h3></div>";
       result += i->second.second;
@@ -1518,7 +1518,7 @@ public:
     hasExited.release();
   }
 
-  virtual void run();
+  void run() override;
 };
 
 class SlobResourceRequest: public Dictionary::DataRequest
@@ -1545,7 +1545,7 @@ public:
 
   void run(); // Run from another thread by ZimResourceRequestRunnable
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }

@@ -325,7 +325,7 @@ int main( int argc, char ** argv )
   }
 
   app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "http://goldendict.org/" );
+  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
 
   //this line will forbid stylesheet applying on GroupComboBox
 //  app.setStyle(new GdAppStyle);
@@ -424,8 +424,7 @@ int main( int argc, char ** argv )
 
   app.addDataCommiter( m );
 
-  QObject::connect( &app, SIGNAL(messageReceived(QString)),
-    &m, SLOT(messageFromAnotherInstanceReceived(QString)));
+  QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
   if( gdcl.needSetGroup() )
     m.setGroupByName( gdcl.getGroupName(), true );

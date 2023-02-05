@@ -17,6 +17,7 @@
 #include <QRegularExpression>
 #include "wildcard.hh"
 #include "gddebug.hh"
+#include <QMessageBox>
 
 #define AUTO_APPLY_LIMIT 150000
 
@@ -72,46 +73,38 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
 
   ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
-  connect( this, SIGNAL( finished( int ) ), this, SLOT( savePos() ) );
+  connect( this, &QDialog::finished, this, &DictHeadwords::savePos );
 
   if( !fromMainWindow )
   {
     ui.helpButton->hide();
-    connect( this, SIGNAL( closeDialog() ), this, SLOT( accept() ) );
+    connect( this, &DictHeadwords::closeDialog, this, &QDialog::accept );
   }
   else
   {
-    connect( ui.helpButton, SIGNAL( clicked() ),
-             this, SLOT( helpRequested() ) );
+    connect( ui.helpButton, &QAbstractButton::clicked, this, &DictHeadwords::helpRequested );
 
     helpAction.setShortcut( QKeySequence( "F1" ) );
     helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-    connect( &helpAction, SIGNAL( triggered() ),
-             this, SLOT( helpRequested() ) );
+    connect( &helpAction, &QAction::triggered, this, &DictHeadwords::helpRequested );
 
     addAction( &helpAction );
   }
 
-  connect( ui.OKButton, SIGNAL( clicked( bool ) ), this, SLOT( okButtonClicked() ) );
-  connect( ui.exportButton, SIGNAL( clicked( bool ) ), this, SLOT( exportButtonClicked() ) );
-  connect( ui.applyButton, SIGNAL( clicked( bool ) ), this, SLOT( filterChanged() ) );
+  connect( ui.OKButton, &QAbstractButton::clicked, this, &DictHeadwords::okButtonClicked );
+  connect( ui.exportButton, &QAbstractButton::clicked, this, &DictHeadwords::exportButtonClicked );
+  connect( ui.applyButton, &QAbstractButton::clicked, this, &DictHeadwords::filterChanged );
 
-  connect( ui.autoApply, SIGNAL( stateChanged( int ) ),
-           this, SLOT( autoApplyStateChanged( int ) ) );
+  connect( ui.autoApply, &QCheckBox::stateChanged, this, &DictHeadwords::autoApplyStateChanged );
 
-  connect( ui.filterLine, SIGNAL( textChanged( QString ) ),
-           this, SLOT( filterChangedInternal() ) );
-  connect( ui.searchModeCombo, SIGNAL( currentIndexChanged( int ) ),
-           this, SLOT( filterChangedInternal() ) );
-  connect( ui.matchCase, SIGNAL( stateChanged( int ) ),
-           this, SLOT( filterChangedInternal() ) );
+  connect( ui.filterLine, &QLineEdit::textChanged, this, &DictHeadwords::filterChangedInternal );
+  connect( ui.searchModeCombo, &QComboBox::currentIndexChanged, this, &DictHeadwords::filterChangedInternal );
+  connect( ui.matchCase, &QCheckBox::stateChanged, this, &DictHeadwords::filterChangedInternal );
 
-  connect( ui.headersListView, SIGNAL( clicked( QModelIndex ) ),
-           this, SLOT( itemClicked( QModelIndex ) ) );
+  connect( ui.headersListView, &QAbstractItemView::clicked, this, &DictHeadwords::itemClicked );
 
-  connect( proxy, SIGNAL( dataChanged( QModelIndex, QModelIndex ) ),
-           this, SLOT( showHeadwordsNumber() ) );
+  connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
 
   ui.headersListView->installEventFilter( this );
 
@@ -204,7 +197,7 @@ void DictHeadwords::filterChangedInternal()
 {
   // emit signal in async manner, to avoid UI slowdown
   if( ui.autoApply->isChecked() )
-    QTimer::singleShot( 100, this, SLOT( filterChanged() ) );
+    QTimer::singleShot( 100, this, &DictHeadwords::filterChanged );
 }
 
 void DictHeadwords::filterChanged()
@@ -290,92 +283,95 @@ void DictHeadwords::saveHeadersToFile()
   if( fileName.size() == 0)
       return;
 
-  cfg.headwordsDialog.headwordsExportPath = QDir::toNativeSeparators(
-                                              QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
 
-  for(;;)
+  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
   {
-    if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
-      break;
-
-    int headwordsNumber = model->totalCount();
-
-    // Setup progress dialog
-    int n = headwordsNumber;
-    int step = 1;
-    while( n > 1000 )
-    {
-      step *= 10;
-      n /= 10;
-    }
-
-    QProgressDialog progress( tr( "Export headwords..."), tr( "Cancel" ),
-                              0, n, this );
-    progress.setWindowModality( Qt::WindowModal );
-
-    // Write UTF-8 BOM
-    QByteArray line;
-    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-    if ( file.write( line ) != line.size() )
-      break;
-
-    // Write headwords
-
-    int i;
-    for( i = 0; i < headwordsNumber&&i<model->wordCount(); ++i )
-    {
-      if( i % step == 0 )
-        progress.setValue( i / step );
-
-      if( progress.wasCanceled() )
-        break;
-
-      QVariant value = model->getRow(i);
-      if( !value.canConvert< QString >() )
-        continue;
-
-      line = value.toString().toUtf8();
-
-      line.replace( '\n', ' ' );
-      line.replace( '\r', ' ' );
-
-      line += "\n";
-
-      if ( file.write( line ) != line.size() )
-        break;
-    }
-
-    //continue to write the remaining headword
-    int nodeIndex = model->getCurrentIndex();
-    auto headwords = model->getRemainRows(nodeIndex);
-    while(!headwords.isEmpty())
-    {
-      if( progress.wasCanceled() )
-        break;
-      for(auto & w:headwords){
-        //progress
-        if( ++i % step == 0 )
-          progress.setValue( i / step );
-
-        line = w.toUtf8();
-        line += "\n";
-
-        if ( file.write( line ) != line.size() )
-          break;
-      }
-      headwords = model->getRemainRows(nodeIndex);
-    }
-
-    if( i < headwordsNumber && !progress.wasCanceled() )
-      break;
-
-    file.close();
+    QMessageBox::critical( this, "GoldenDict", tr( "Can not open exported file" ) );
     return;
   }
 
-  gdWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+  cfg.headwordsDialog.headwordsExportPath = QDir::toNativeSeparators(
+                                              QFileInfo( fileName ).absoluteDir().absolutePath() );
+
+  QSet< QString > allHeadwords;
+  int headwordsNumber = model->totalCount();
+
+  //headwordsNumber*2  ,  read + write
+  QProgressDialog progress( tr( "Export headwords..." ), tr( "Cancel" ), 0, headwordsNumber*2, this );
+  progress.setWindowModality( Qt::WindowModal );
+
+  int totalCount=0;
+  for( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i )
+  {
+    if( progress.wasCanceled() )
+      break;
+    progress.setValue( totalCount++ );
+
+    QVariant value = model->getRow( i );
+    if( !value.canConvert< QString >() )
+      continue;
+
+    allHeadwords.insert( value.toString() );
+  }
+
+  // continue to write the remaining headword
+  int nodeIndex  = model->getCurrentIndex();
+  auto headwords = model->getRemainRows( nodeIndex );
+  while( !headwords.isEmpty() )
+  {
+    if( progress.wasCanceled() )
+      break;
+    allHeadwords.unite(headwords);
+
+    totalCount += headwords.size();
+    progress.setValue( totalCount );
+
+    headwords = model->getRemainRows( nodeIndex );
+  }
+
+  qDebug()<<model->getCurrentIndex();
+
+  // Write UTF-8 BOM
+  QByteArray line;
+  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
+  file.write( line );
+
+  QList< QString > sortedWords = allHeadwords.values();
+  sortedWords.sort();
+
+  // Write headwords
+  for( auto const & word : sortedWords )
+  {
+    if( progress.wasCanceled() )
+      break;
+    progress.setValue( totalCount++ );
+
+    line = word.toUtf8();
+
+    line.replace( '\n', ' ' );
+    line.replace( '\r', ' ' );
+
+    line += "\n";
+
+    if( file.write( line ) != line.size() )
+      break;
+  }
+
   file.close();
+
+  if( progress.wasCanceled() )
+  {
+    QMessageBox::warning( this, "GoldenDict", tr( "Export process is interrupted" ) );
+    gdWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+  }
+  else
+  {
+    //completed.
+    progress.setValue(headwordsNumber*2);
+    progress.hide();
+    QMessageBox::information( this, "GoldenDict", tr( "Export finished" ) );
+  }
 }
 
 void DictHeadwords::helpRequested()

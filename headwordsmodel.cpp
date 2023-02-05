@@ -41,8 +41,8 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   }
   filtering = true;
   filterWords.clear();
-  auto sr = _dict->prefixMatch( gd::toWString( reg.pattern() ), 30 );
-  connect( sr.get(), SIGNAL( finished() ), this, SLOT( requestFinished() ), Qt::QueuedConnection );
+  auto sr = _dict->prefixMatch( gd::toWString( reg.pattern() ), 500 );
+  connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
   queuedRequests.push_back( sr );
 }
 

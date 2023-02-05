@@ -181,26 +181,26 @@ public:
                  vector< string > const & dictionaryFiles,
                  int maxPictureWidth_ );
 
-  virtual void deferredInit();
+  void deferredInit() override;
 
   ~DslDictionary();
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return dictionaryName; }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return idxHeader.articleCount; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return idxHeader.wordCount; }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   { return idxHeader.langFrom; }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
   inline virtual string getResourceDir1() const
@@ -211,30 +211,30 @@ public:
 
 
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics )
+                                                      bool ignoreDiacritics ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual QString const& getDescription();
+                                                            bool ignoreDiacritics ) override;
+  QString const& getDescription() override;
 
-  virtual QString getMainFilename();
+  QString getMainFilename() override;
 
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     if( ensureInitDone().size() )
       return;
@@ -244,16 +244,16 @@ public:
               && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
-  virtual uint32_t getFtsIndexVersion()
+  uint32_t getFtsIndexVersion() override
   { return CurrentFtsIndexVersion; }
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
-  virtual string const & ensureInitDone();
+  string const & ensureInitDone() override;
   void doDeferredInit();
 
   /// Loads the article. Does not process the DSL language.
@@ -826,7 +826,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       string id = "O" + getId().substr( 0, 7 ) + "_" +
                 QString::number( articleNom ).toStdString() +
                 "_opt_" + QString::number( optionalPartNom++ ).toStdString();
-    result += "<span class=\"dsl_opt\" id=\"" + id + "\">" + processNodeChildren( node ) + "</span>";
+    result += R"(<span class="dsl_opt" id=")" + id + "\">" + processNodeChildren( node ) + "</span>";
   }
   else if( node.tagName ==  U"m"  )
     result += "<div class=\"dsl_m\">" + processNodeChildren( node ) + "</div>";
@@ -869,7 +869,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 
       result += addAudioLink( ref, getId() );
 
-      result += "<span class=\"dsl_s_wav\"><a href=" + ref + "><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a></span>";
+      result += "<span class=\"dsl_s_wav\"><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a></span>)";
     }
     else
     if ( Filetype::isNameOfPicture( filename ) )
@@ -968,7 +968,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
-      result += string( "<a class=\"dsl_s dsl_video\" href=\"" ) + url.toEncoded().data() + "\">"
+      result += string( R"(<a class="dsl_s dsl_video" href=")" ) + url.toEncoded().data() + "\">"
              + "<span class=\"img\"></span>"
              + "<span class=\"filename\">" + processNodeChildren( node ) + "</span>" + "</a>";
     }
@@ -981,7 +981,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
-      result += string( "<a class=\"dsl_s\" href=\"" ) + url.toEncoded().data()
+      result += string( R"(<a class="dsl_s" href=")" ) + url.toEncoded().data()
              + "\">" + processNodeChildren( node ) + "</a>";
     }
   }
@@ -1006,7 +1006,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       }
     }
 
-    result += "<a class=\"dsl_url\" href=\"" + link +"\">" + processNodeChildren( node ) + "</a>";
+    result += R"(<a class="dsl_url" href=")" + link +"\">" + processNodeChildren( node ) + "</a>";
   }
   else if( node.tagName ==  U"!trs"  )
   {
@@ -1065,7 +1065,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     // We generate two spans, one with accented data and another one without it, so the
     // user could pick up the best suitable option.
     string data = processNodeChildren( node );
-    result += "<span class=\"dsl_stress\"><span class=\"dsl_stress_without_accent\">" + data + "</span>"
+    result += R"(<span class="dsl_stress"><span class="dsl_stress_without_accent">)" + data + "</span>"
         + "<span class=\"dsl_stress_with_accent\">" + data + Utf8::encode( wstring( 1, 0x301 ) )
         + "</span></span>";
   }
@@ -1123,7 +1123,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       }
     }
 
-    result += string( "<a class=\"dsl_ref\" href=\"" ) + url.toEncoded().data() +"\">"
+    result += string( R"(<a class="dsl_ref" href=")" ) + url.toEncoded().data() +"\">"
               + processNodeChildren( node ) + "</a>";
   }
   else if( node.tagName ==  U"@"  )
@@ -1138,7 +1138,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     normalizeHeadword( nodeStr );
     url.setPath( Utils::Url::ensureLeadingSlash( gd::toQString( nodeStr ) ) );
 
-    result += string( "<a class=\"dsl_ref\" href=\"" ) + url.toEncoded().data() +"\">"
+    result += string( R"(<a class="dsl_ref" href=")" ) + url.toEncoded().data() +"\">"
               + processNodeChildren( node ) + "</a>";
   }
   else if( node.tagName ==  U"sub"  )
@@ -1159,7 +1159,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   }
   else
   {
-    gdWarning( "DSL: Unknown tag \"%s\" with attributes \"%s\" found in \"%s\", article \"%s\".",
+    gdWarning( R"(DSL: Unknown tag "%s" with attributes "%s" found in "%s", article "%s".)",
                gd::toQString( node.tagName ).toUtf8().data(), gd::toQString( node.tagAttrs ).toUtf8().data(),
                getName().c_str(), gd::toQString( currentHeadword ).toUtf8().data() );
 
@@ -1513,9 +1513,9 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
     // Strip tags
 
-    text.replace( QRegularExpression( "\\[(|/)(p|trn|ex|com|\\*|t|br|m[0-9]?)\\]" ), " " );
-    text.replace( QRegularExpression( "\\[(|/)lang(\\s[^\\]]*)?\\]" ), " " );
-    text.remove( QRegularExpression( "\\[[^\\\\\\[\\]]+\\]" ) );
+    text.replace( QRegularExpression( R"(\[(|/)(p|trn|ex|com|\*|t|br|m[0-9]?)\])" ), " " );
+    text.replace( QRegularExpression( R"(\[(|/)lang(\s[^\]]*)?\])" ), " " );
+    text.remove( QRegularExpression( R"(\[[^\\\[\]]+\])" ) );
 
     text.remove( QString::fromLatin1( "<<" ) );
     text.remove( QString::fromLatin1( ">>" ) );
@@ -1588,7 +1588,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1698,7 +1698,7 @@ void DslArticleRequest::run()
         string prefix = "O" + dict.getId().substr( 0, 7 ) + "_" + QString::number( dict.articleNom ).toStdString();
         string id1 = prefix + "_expand";
         string id2 = prefix + "_opt_";
-        string button = " <img src=\"qrcx://localhost/icons/expand_opt.png\" class=\"hidden_expand_opt\" id=\"" + id1 +
+        string button = R"( <img src="qrcx://localhost/icons/expand_opt.png" class="hidden_expand_opt" id=")" + id1 +
                         "\" onclick=\"gdExpandOptPart('" + id1 + "','" + id2 +"')\" alt=\"[+]\"/>";
         if( articleText.compare( articleText.size() - 4, 4, "</p>" ) == 0 )
           articleText.insert( articleText.size() - 4, " " + button );
@@ -1763,7 +1763,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }

@@ -54,33 +54,33 @@ public:
     dictionaryDescription = temp;
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const & word,
-                                                 unsigned long ) ;
+  sptr< WordSearchRequest > prefixMatch( wstring const & word,
+                                                 unsigned long ) override ;
 
-  virtual sptr< DataRequest > getArticle( wstring const &,
+  sptr< DataRequest > getArticle( wstring const &,
                                           vector< wstring > const & alts,
-                                          wstring const & context, bool )
+                                          wstring const & context, bool ) override
     ;
 
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name ) ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override ;
 
   void isolateWebCSS( QString & css );
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 };
 
 sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/,
@@ -112,11 +112,11 @@ public:
   ~WebSiteArticleRequest()
   {}
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  virtual void requestFinished( QNetworkReply * );
+  void requestFinished( QNetworkReply * ) override;
   static QTextCodec * codecForHtml( QByteArray const & ba );
 };
 
@@ -198,9 +198,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     while( !base.isEmpty() && !base.endsWith( "/" ) )
       base.chop( 1 );
 
-    QRegularExpression tags( "<\\s*(a|link|img|script)\\s+[^>]*(src|href)\\s*=\\s*['\"][^>]+>",
+    QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
                              QRegularExpression::CaseInsensitiveOption );
-    QRegularExpression links( "\\b(src|href)\\s*=\\s*(['\"])([^'\"]+['\"])",
+    QRegularExpression links( R"(\b(src|href)\s*=\s*(['"])([^'"]+['"]))",
                               QRegularExpression::CaseInsensitiveOption );
     int pos = 0;
     QString articleNewString;
@@ -254,7 +254,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     // Redirect CSS links to own handler
 
     QString prefix = QString( "bres://" ) + dictPtr->getId().c_str() + "/";
-    QRegularExpression linkTags( "(<\\s*link\\s[^>]*rel\\s*=\\s*['\"]stylesheet['\"]\\s+[^>]*href\\s*=\\s*['\"])([^'\"]+)://([^'\"]+['\"][^>]+>)",
+    QRegularExpression linkTags( R"((<\s*link\s[^>]*rel\s*=\s*['"]stylesheet['"]\s+[^>]*href\s*=\s*['"])([^'"]+)://([^'"]+['"][^>]+>))",
                                  QRegularExpression::CaseInsensitiveOption );
     pos = 0;
     it = linkTags.globalMatch( articleString );
@@ -429,11 +429,11 @@ public:
   ~WebSiteResourceRequest()
   {}
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  virtual void requestFinished( QNetworkReply * );
+  void requestFinished( QNetworkReply * ) override;
 };
 
 WebSiteResourceRequest::WebSiteResourceRequest( QString const & url_,

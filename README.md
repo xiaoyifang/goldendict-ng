@@ -20,6 +20,10 @@ The download links above includes `.Appimage` for Linux users.
 
 Archlinux users can also use community maintained [goldendict-webengine-git](https://aur.archlinux.org/packages/goldendict-webengine-git).
 
+[Debian packages](https://tracker.debian.org/pkg/goldendict-webengine) are available in Debian 12 or later.
+
+[Ubuntu packages](https://launchpad.net/ubuntu/+source/goldendict-webengine) are available in Ubuntu 23.04 or later.
+
 openSUSE ships an old version of this fork.
 
 Helps are needed to deliver this fork to other distros!
@@ -152,6 +156,15 @@ use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be us
 qmake "CONFIG+=use_xapian"
 ```
 
+use `CONFIG+=use_iconv` to enable this feature. when enabled ,iconv will be used to convert encoding other than the QTextCodec(which will be deprecated in future Qt version)
+
+```
+qmake "CONFIG+=use_iconv"
+```
+
+when enabled ,iconv should be installed on the platform at the same time.
+
+
 ## Contributing
 
 All kinds of help like answering questions, bug reporting, testing translation and coding are welcomed.
@@ -160,7 +173,7 @@ To start coding, the easiest way is load the `goldendict.pro` file to Qt Creator
 
 ## Support
 
-Bug reporting: [GoldenDict issue tracker](https://github.com/goldendict/goldendict/issues)
+Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict/issues)
 
 General discussions: [discussions](https://github.com/xiaoyifang/goldendict/discussions)
 

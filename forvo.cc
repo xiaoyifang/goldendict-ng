@@ -42,20 +42,20 @@ public:
   {
   }
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   { return name; }
 
-  virtual map< Property, string > getProperties() noexcept
+  map< Property, string > getProperties() noexcept override
   { return map< Property, string >(); }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   { return 0; }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   { return 0; }
 
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/,
-                                                 unsigned long /*maxResults*/ ) 
+  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/,
+                                                 unsigned long /*maxResults*/ ) override 
   {
     sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
 
@@ -64,13 +64,13 @@ public:
     return sr;
   }
 
-  virtual sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool )
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+                                          wstring const &, bool ) override
     ;
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 };
 
@@ -117,10 +117,8 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
   apiKey( apiKey_ ), languageCode( languageCode_ ),
   dictionaryId( dictionaryId_ )
 {
-  connect( &mgr, SIGNAL( finished( QNetworkReply * ) ),
-           this, SLOT( requestFinished( QNetworkReply * ) ),
-           Qt::QueuedConnection );
-  
+  connect( &mgr, &QNetworkAccessManager::finished, this, &ForvoArticleRequest::requestFinished, Qt::QueuedConnection );
+
   addQuery(  mgr, str );
 
   for( unsigned x = 0; x < alts.size(); ++x )
@@ -271,7 +269,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
                 string addTime =
                     tr( "Added %1" ).arg( item.namedItem( "addtime" ).toElement().text() ).toUtf8().data();
 
-                articleBody += "<td><a href=" + ref + " title=\"" + Html::escape( addTime ) + "\"><img src=\"qrcx://localhost/icons/playsound.png\" border=\"0\" alt=\"Play\"/></a></td>";
+                articleBody += "<td><a href=" + ref + " title=\"" + Html::escape( addTime ) + R"("><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
                 articleBody += string( "<td>" ) + tr( "by" ).toUtf8().data() + " <a class='forvo_user' href='"
                                + userProfile + "'>"
                                + Html::escape( user.toUtf8().data() )

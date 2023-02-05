@@ -225,56 +225,56 @@ public:
 
   ~MdxDictionary();
 
-  virtual void deferredInit();
+  void deferredInit() override;
 
-  virtual string getName() noexcept
+  string getName() noexcept override
   {
     return dictionaryName;
   }
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept
+  map< Dictionary::Property, string > getProperties() noexcept override
   {
     return map< Dictionary::Property, string >();
   }
 
-  virtual unsigned long getArticleCount() noexcept
+  unsigned long getArticleCount() noexcept override
   {
     return idxHeader.articleCount;
   }
 
-  virtual unsigned long getWordCount() noexcept
+  unsigned long getWordCount() noexcept override
   {
     return idxHeader.wordCount;
   }
 
-  inline virtual quint32 getLangFrom() const
+  inline quint32 getLangFrom() const override
   {
     return idxHeader.langFrom;
   }
 
-  inline virtual quint32 getLangTo() const
+  inline quint32 getLangTo() const override
   {
     return idxHeader.langTo;
   }
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const & word,
+  sptr< Dictionary::DataRequest > getArticle( wstring const & word,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
-                                                      bool ignoreDiacritics ) ;
-  virtual sptr< Dictionary::DataRequest > getResource( string const & name ) ;
-  virtual QString const & getDescription();
+                                                      bool ignoreDiacritics ) override ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override ;
+  QString const & getDescription() override;
 
-  virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                             int searchMode, bool matchCase,
                                                             int distanceBetweenWords,
                                                             int maxResults,
                                                             bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics );
-  virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                            bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-  virtual void setFTSParameters( Config::FullTextSearch const & fts )
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     if( ensureInitDone().size() )
       return;
@@ -288,11 +288,11 @@ public:
 
 protected:
 
-  virtual void loadIcon() noexcept;
+  void loadIcon() noexcept override;
 
 private:
 
-  virtual string const & ensureInitDone();
+  string const & ensureInitDone() override;
   void doDeferredInit();
 
   /// Loads an article with the given offset, filling the given strings.
@@ -558,7 +558,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -709,7 +709,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1283,14 +1283,14 @@ QString MdxDictionary::getCachedFileName( QString filename )
 
       if( n < (qint64)data.size() )
       {
-        gdWarning( "Mdx: file \"%s\" writing error: \"%s\"", fullName.toUtf8().data(),
+        gdWarning( R"(Mdx: file "%s" writing error: "%s")", fullName.toUtf8().data(),
                                                              f.errorString().toUtf8().data() );
         return QString();
       }
     }
     else
     {
-      gdWarning( "Mdx: file \"%s\" creating error: \"%s\"", fullName.toUtf8().data(),
+      gdWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(),
                                                             f.errorString().toUtf8().data() );
       return QString();
     }
@@ -1338,7 +1338,7 @@ public:
   {
   }
 
-  virtual void handleRecord( QString const & headWord, MdictParser::RecordInfo const & recordInfo )
+  void handleRecord( QString const & headWord, MdictParser::RecordInfo const & recordInfo ) override
   {
     // Save the article's record info
     uint32_t articleAddress = chunks.startNewBlock();
@@ -1361,7 +1361,7 @@ public:
   {
   }
 
-  virtual void handleRecord( QString const & fileName, MdictParser::RecordInfo const & recordInfo )
+  void handleRecord( QString const & fileName, MdictParser::RecordInfo const & recordInfo ) override
   {
     uint32_t resourceInfoAddress = chunks.startNewBlock();
     chunks.addToBlock( &recordInfo, sizeof( recordInfo ) );
@@ -1603,8 +1603,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       idxHeader.formatVersion = kCurrentFormatVersion;
       idxHeader.parserVersion = MdictParser::kParserVersion;
       idxHeader.foldingVersion = Folding::Version;
-      idxHeader.articleCount = indexedWords.size();
-      idxHeader.wordCount = indexedWords.size();
+      idxHeader.articleCount = parser.wordCount();
+      idxHeader.wordCount = parser.wordCount();
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );

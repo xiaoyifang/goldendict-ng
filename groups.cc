@@ -37,36 +37,25 @@ Groups::Groups( QWidget * parent,
   ui.groups->setCornerWidget( groupsListButton );
   groupsListButton->setFocusPolicy( Qt::ClickFocus );
 
-  connect(groupsListMenu, SIGNAL( aboutToShow() ), this, SLOT( fillGroupsMenu() ) );
-  connect(groupsListMenu, SIGNAL( triggered( QAction * ) ),
-          this, SLOT( switchToGroup( QAction * ) ) );
+  connect( groupsListMenu, &QMenu::aboutToShow, this, &Groups::fillGroupsMenu );
+  connect( groupsListMenu, &QMenu::triggered, this, &Groups::switchToGroup );
 
   // Populate groups' widget
 
   ui.groups->populate( groups, dicts, ui.dictionaries->getCurrentDictionaries() );
 
-  connect( ui.addGroup, SIGNAL( clicked() ),
-           this, SLOT( addNew() ) );
-  connect( ui.renameGroup, SIGNAL( clicked() ),
-           this, SLOT( renameCurrent() ) );
-  connect( ui.removeGroup, SIGNAL( clicked() ),
-           this, SLOT( removeCurrent() ) );
-  connect( ui.removeAllGroups, SIGNAL( clicked() ),
-           this, SLOT( removeAll() ) );
-  connect( ui.addDictsToGroup, SIGNAL( clicked() ),
-           this, SLOT( addToGroup() ) );
-  connect( ui.dictionaries, SIGNAL(  doubleClicked(const QModelIndex &) ),
-           this, SLOT( addToGroup() ) );
-  connect( ui.removeDictsFromGroup, SIGNAL( clicked() ),
-           this, SLOT( removeFromGroup() ) );
-  connect( ui.autoGroups, SIGNAL( clicked() ),
-           this, SLOT( addAutoGroups() ) );
-  connect( ui.groups, SIGNAL( showDictionaryInfo( QString const & ) ),
-           this, SIGNAL( showDictionaryInfo( QString const & ) ) );
+  connect( ui.addGroup, &QAbstractButton::clicked, this, &Groups::addNew );
+  connect( ui.renameGroup, &QAbstractButton::clicked, this, &Groups::renameCurrent );
+  connect( ui.removeGroup, &QAbstractButton::clicked, this, &Groups::removeCurrent );
+  connect( ui.removeAllGroups, &QAbstractButton::clicked, this, &Groups::removeAll );
+  connect( ui.addDictsToGroup, &QAbstractButton::clicked, this, &Groups::addToGroup );
+  connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &Groups::addToGroup );
+  connect( ui.removeDictsFromGroup, &QAbstractButton::clicked, this, &Groups::removeFromGroup );
+  connect( ui.autoGroups, &QAbstractButton::clicked, this, &Groups::addAutoGroups );
+  connect( ui.groups, &DictGroupsWidget::showDictionaryInfo, this, &Groups::showDictionaryInfo );
 
   ui.dictionaries->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( ui.dictionaries, SIGNAL( customContextMenuRequested( QPoint ) ),
-           this, SLOT( showDictInfo( QPoint ) ) );
+  connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &Groups::showDictInfo );
 
   countChanged();
 }

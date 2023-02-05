@@ -62,6 +62,7 @@ using BtreeIndexing::IndexInfo;
 
 DEF_EX_STR( exNotZimFile, "Not an Zim file", Dictionary::Ex )
 DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+DEF_EX_STR( exInvalidZimHeader, "Invalid Zim header", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
 
@@ -180,7 +181,7 @@ public:
   ZimFile( const QString & name );
   ~ZimFile();
 
-  virtual void setFileName( const QString & name );
+  void setFileName( const QString & name ) override;
   bool open();
   void close()
   {
@@ -285,6 +286,9 @@ bool ZimFile::open()
   memset( &zimHeader, 0, sizeof( zimHeader ) );
 
   if( read( reinterpret_cast< char * >( &zimHeader ), sizeof( zimHeader ) ) != sizeof( zimHeader ) )
+    return false;
+
+  if( zimHeader.magicNumber != 0x44D495A || zimHeader.mimeListPos != sizeof( zimHeader ) )
     return false;
 
 // Clusters in zim file may be placed in random order.
@@ -671,63 +675,63 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
 
     ~ZimDictionary();
 
-    virtual string getName() noexcept
+    string getName() noexcept override
     { return dictionaryName; }
 
-    virtual map< Dictionary::Property, string > getProperties() noexcept
+    map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
 
-    virtual unsigned long getArticleCount() noexcept
+    unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
 
-    virtual unsigned long getWordCount() noexcept
+    unsigned long getWordCount() noexcept override
     { return idxHeader.wordCount; }
 
-    inline virtual quint32 getLangFrom() const
+    inline quint32 getLangFrom() const override
     { return idxHeader.langFrom; }
 
-    inline virtual quint32 getLangTo() const
+    inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
-                                                        bool ignoreDiacritics )
+                                                        bool ignoreDiacritics ) override
       ;
 
-    virtual sptr< Dictionary::DataRequest > getResource( string const & name )
+    sptr< Dictionary::DataRequest > getResource( string const & name ) override
       ;
 
-    virtual QString const& getDescription();
+    QString const& getDescription() override;
 
     /// Loads the resource.
     void loadResource( std::string &resourceName, string & data );
 
-    virtual sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
                                                               int searchMode, bool matchCase,
                                                               int distanceBetweenWords,
                                                               int maxResults,
                                                               bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics );
-    virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
+                                                              bool ignoreDiacritics ) override;
+    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     quint32 getArticleText( uint32_t articleAddress, QString & headword, QString & text,
                             set< quint32 > * loadedArticles );
 
-    virtual void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration );
+    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    virtual void setFTSParameters( Config::FullTextSearch const & fts )
+    void setFTSParameters( Config::FullTextSearch const & fts ) override
     {
       can_FTS = fts.enabled
                 && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
                 && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
     }
 
-    virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled );
+    void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
 
 protected:
 
-    virtual void loadIcon() noexcept;
+    void loadIcon() noexcept override;
 
 private:
 
@@ -835,14 +839,14 @@ string ZimDictionary::convert( const string & in )
   QString text = QString::fromUtf8( in.c_str() );
 
   // replace background
-  text.replace( QRegularExpression( "<\\s*body\\s+([^>]*)(background(|-color)):([^;\"]*(;|))" ),
+  text.replace( QRegularExpression( R"(<\s*body\s+([^>]*)(background(|-color)):([^;"]*(;|)))" ),
                 QString( "<body \\1" ) );
 
   // pattern of img and script
   // text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" ),
   //               QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
 
-  QRegularExpression rxImgScript( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" );
+  QRegularExpression rxImgScript( R"(<\s*(img|script)\s+([^>]*)src=(")([^"]*)\3)" );
   QRegularExpressionMatchIterator it = rxImgScript.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -863,7 +867,7 @@ string ZimDictionary::convert( const string & in )
     if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
     {
       //<\\1 \\2src=\\3bres://%1/
-      url.remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+      url.remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -879,23 +883,23 @@ string ZimDictionary::convert( const string & in )
 
 
   // Fix links without '"'
-  text.replace( QRegularExpression( "href=(\\.\\.|)/([^\\s>]+)" ),
-                QString( "href=\"\\1/\\2\"" ) );
+  text.replace( QRegularExpression( R"(href=(\.\.|)/([^\s>]+))" ),
+                QString( R"(href="\1/\2")" ) );
 
   // pattern <link... href="..." ...>
-  text.replace( QRegularExpression( "<\\s*link\\s+([^>]*)href=\"(\\.\\.|)/" ),
+  text.replace( QRegularExpression( R"(<\s*link\s+([^>]*)href="(\.\.|)/)" ),
                 QString( "<link \\1href=\"bres://%1/").arg( getId().c_str() ) );
 
   // localize the http://en.wiki***.com|org/wiki/<key> series links
   // excluding those keywords that have ":" in it
   QString urlWiki = "\"http(s|)://en\\.(wiki(pedia|books|news|quote|source|voyage|versity)|wiktionary)\\.(org|com)/wiki/([^:\"]*)\"";
-  text.replace( QRegularExpression( "<\\s*a\\s+(class=\"external\"\\s+|)href=" + urlWiki ),
-                QString( "<a href=\"gdlookup://localhost/\\6\"" ) );
+  text.replace( QRegularExpression( R"(<\s*a\s+(class="external"\s+|)href=)" + urlWiki ),
+                QString( R"(<a href="gdlookup://localhost/\6")" ) );
 
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
-  QRegularExpression rxLink( "<\\s*(?:a|meta)\\s+([^>]*)(?:href|url)=\"?(?!(?:\\w+://|#|mailto:|tel:))()([^\"]*)\"\\s*(title=\"[^\"]*\")?[^>]*>" );
+  QRegularExpression rxLink( R"lit(<\s*(?:a|meta)\s+([^>]*)(?:href|url)="?(?!(?:\w+://|#|mailto:|tel:))()([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
   it = rxLink.globalMatch( text );
   pos = 0;
   while( it.hasNext() )
@@ -944,7 +948,7 @@ string ZimDictionary::convert( const string & in )
 
   // Occasionally words needs to be displayed in vertical, but <br/> were changed to <br\> somewhere
   // proper style: <a href="gdlookup://localhost/Neoptera" ... >N<br/>e<br/>o<br/>p<br/>t<br/>e<br/>r<br/>a</a>
-  QRegularExpression rxBR( "(<a href=\"gdlookup://localhost/[^\"]*\"\\s*[^>]*>)\\s*((\\w\\s*&lt;br(\\\\|/|)&gt;\\s*)+\\w)\\s*</a>",
+  QRegularExpression rxBR( R"((<a href="gdlookup://localhost/[^"]*"\s*[^>]*>)\s*((\w\s*&lt;br(\\|/|)&gt;\s*)+\w)\s*</a>)",
                            QRegularExpression::UseUnicodePropertiesOption );
   pos = 0;
   QRegularExpressionMatchIterator it2 = rxBR.globalMatch( text );
@@ -1280,7 +1284,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1452,7 +1456,7 @@ public:
 
   void run();
 
-  virtual void cancel()
+  void cancel() override
   {
     isCancelled.ref();
   }
@@ -1520,7 +1524,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString(name).remove(QRegularExpression("^\\.*\\/[A-Z]\\/", QRegularExpression::CaseInsensitiveOption));
+  auto formatedName = QString::fromStdString(name).remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
   return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 
@@ -1567,10 +1571,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           df.open();
           ZIM_header const & zh = df.header();
-          bool new_namespaces = ( zh.majorVersion >= 6 && zh.minorVersion >= 1 );
 
           if( zh.magicNumber != 0x44D495A )
             throw exNotZimFile( i->c_str() );
+
+          if( zh.mimeListPos != sizeof( ZIM_header ) )
+            throw exInvalidZimHeader( i->c_str() );
+
+          bool new_namespaces = ( zh.majorVersion >= 6 && zh.minorVersion >= 1 );
 
           {
             int n = firstName.lastIndexOf( '/' );
