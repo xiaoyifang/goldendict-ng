@@ -121,7 +121,10 @@ class AudioOutputPrivate: public QIODevice
         {
           case QAudio::StoppedState:
             if( audioOutput->error() != QAudio::NoError )
+            {
               qWarning() << "QAudioOutput stopped:" << audioOutput->error();
+              quit = true;
+            }
             break;
           default:
             break;
@@ -129,6 +132,8 @@ class AudioOutputPrivate: public QIODevice
       } );
 
       audioOutput->start( this );
+      if( audioOutput && audioOutput->state() == QAudio::StoppedState )
+        quit = true;
     }
 
     //    audioOutput->setVolume(volume);
