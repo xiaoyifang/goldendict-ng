@@ -16,7 +16,8 @@ using gd::wchar;
 
 Iconv::Iconv( char const * to, char const * from )
 #ifdef USE_ICONV
-    :state( iconv_open( to, from ) )
+// the to encoding must be UTF8
+    :state( iconv_open( Utf8, from ) )
 #endif
 {
 #ifdef USE_ICONV
@@ -96,8 +97,8 @@ QString Iconv::convert(void const* & inBuf, size_t& inBytesLeft)
  }
 
  size_t datasize = outBuf.size() - outBufLeft;
- QByteArray ba( &outBuf.front(), datasize );
- return QString( ba );
+//  QByteArray ba( &outBuf.front(), datasize );
+ return QString::fromUtf8( &outBuf.front(), datasize );
 #else
   if( codec )
     return codec->toUnicode( static_cast< const char * >( inBuf ), inBytesLeft );
@@ -116,7 +117,7 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData,
   if ( !dataSize )
     return gd::wstring();
 
-  Iconv ic( GdWchar, fromEncoding );
+  Iconv ic( Utf8, fromEncoding );
 
   QString outStr = ic.convert(fromData, dataSize);
   return gd::toWString(outStr);
