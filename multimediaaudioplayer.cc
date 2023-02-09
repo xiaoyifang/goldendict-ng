@@ -44,6 +44,7 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
 
 void MultimediaAudioPlayer::stop()
 {
+  player.stop();
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
   player.setMedia( QMediaContent() ); // Forget about audioBuffer.
 #endif
