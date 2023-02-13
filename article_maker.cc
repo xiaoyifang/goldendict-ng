@@ -160,6 +160,11 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     sepia: 10
   });
 </script>
+<style>
+body , .gdarticle {
+  background: white;
+}
+</style>
 )";
   }
   result += "</head><body>";

@@ -1,6 +1,12 @@
-MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree {
+#translateLine,
+#wordList,
+#dictsPane,
+#dictsList,
+#historyPane,
+#historyList,
+#favoritesPane,
+#favoritesTree {
 }
-
 
 #translateLine[noResults="true"] {
     background: #febb7d;

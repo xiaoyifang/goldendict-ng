@@ -9,7 +9,6 @@
         <file>icons/warning.png</file>
         <file>article-style.css</file>
         <file>article-style-print.css</file>
-        <file>qt-style.css</file>
         <file>icons/icon32_dsl.png</file>
         <file>icons/icon32_stardict.png</file>
         <file>icons/icon32_xdxf.png</file>
@@ -36,8 +35,6 @@
         <file>article-style-st-lingoes.css</file>
         <file>icons/icon32_lingoes.png</file>
         <file>article-style-st-lingoes-blue.css</file>
-        <file>qt-style-macos.css</file>
-        <file>qt-style-win.css</file>
         <file>icons/mdict.png</file>
         <file>icons/downarrow.png</file>
         <file>icons/blank.png</file>
@@ -99,5 +96,14 @@
         <file>article-style-st-classic.css</file>
         <file>icons/old-arrow.png</file>
         <file>icons/old-downarrow.png</file>
+        <file>src/qtstyle/qt-babylon.css</file>
+        <file>src/qtstyle/qt-classic.css</file>
+        <file>src/qtstyle/qt-lingoes-blue.css</file>
+        <file>src/qtstyle/qt-lingoes.css</file>
+        <file>src/qtstyle/qt-lingvo.css</file>
+        <file>src/qtstyle/qt-modern.css</file>
+        <file>src/qtstyle/qt-style-macos.css</file>
+        <file>src/qtstyle/qt-style-win.css</file>
+        <file>src/qtstyle/qt-style.css</file>
     </qresource>
 </RCC>
