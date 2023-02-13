@@ -1,0 +1,11 @@
+#translateLine,
+#wordList,
+#dictsPane,
+#dictsList,
+#historyPane,
+#historyList,
+#favoritesPane,
+#favoritesTree {
+  background: #fefdeb;
+  color: black;
+}
