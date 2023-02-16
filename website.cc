@@ -48,11 +48,7 @@ public:
     }
     //else file:/// local dictionary file path
 
-
-    if(experimentalIframe)
-        urlTemplate = QUrl( urlTemplate_ ).toEncoded() ;
-      
-
+    urlTemplate = QUrl( urlTemplate_ ).toEncoded() ;
     dictionaryDescription = urlTemplate_;
   }
 
