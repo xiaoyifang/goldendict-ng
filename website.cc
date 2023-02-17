@@ -42,16 +42,14 @@ public:
     netMgr( netMgr_ ),
     experimentalIframe(false)
   {
-    QString temp=urlTemplate_;
-    if(temp.endsWith("##")){
-      temp.chop(2);
+    if( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) )
+    {
+      experimentalIframe = true;
     }
-    //make this default.
-    experimentalIframe = true;
+    //else file:/// local dictionary file path
 
-    urlTemplate = QUrl( temp ).toEncoded() ;
-
-    dictionaryDescription = temp;
+    urlTemplate = QUrl( urlTemplate_ ).toEncoded() ;
+    dictionaryDescription = urlTemplate_;
   }
 
   string getName() noexcept override
