@@ -14,8 +14,6 @@
 #include "mruqmenu.hh"
 #include "gestures.hh"
 #include "dictheadwords.hh"
-#include <limits.h>
-#include <QDebug>
 #include <QTextStream>
 #include <QDir>
 #include <QUrl>
@@ -36,7 +34,6 @@
 #include <QThreadPool>
 #include <QSslConfiguration>
 
-#include <limits.h>
 #include <set>
 #include <map>
 #include "gddebug.hh"
@@ -859,7 +856,26 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   inspector.reset( new ArticleInspector( this ));
 
-  connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+  // Clipboard related
+#ifdef Q_OS_MAC
+    macClipboard = new gd_clipboard();
+    connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
+    connect(enableScanningAction,&QAction::changed,[this](){
+        if (enableScanningAction->isChecked()){
+            macClipboard->start();
+        } else {
+            macClipboard->stop();
+        }
+    });
+#else
+    connect(enableScanningAction,&QAction::changed,[this](){
+      if (enableScanningAction->isChecked()){
+          connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+      } else {
+          disconnect(QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange);
+      }
+    });
+#endif
 
 #ifdef Q_OS_WIN
   // Regiser and update URL Scheme for windows
@@ -879,9 +895,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
 {
-  if( scanPopup && enableScanningAction->isChecked()  )
+  if( scanPopup )
   {
-#ifdef HAVE_X11
+#if defined(HAVE_X11)
       if(m == QClipboard::Clipboard){
         if(!cfg.preferences.trackClipboardScan) return;
         scanPopup->translateWordFromClipboard();
@@ -918,10 +934,12 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
         // Use delay show to prevent multiple popups while selection in progress
         scanPopup->selectionDelayTimer.start();
       }
+#elif defined(Q_OS_MAC)
+      scanPopup->translateWord(macClipboard->text());
 #else
-    scanPopup ->translateWordFromClipboard();
+      scanPopup->translateWordFromClipboard();
 #endif
-     }
+  }
 }
 
 void MainWindow::ctrlTabPressed()

@@ -40,6 +40,10 @@
 #include <fixx11h.h>
 #endif
 
+#if defined(Q_OS_MAC)
+#include "platform/gd_clipboard.h"
+#endif
+
 using std::string;
 using std::vector;
 
@@ -181,6 +185,10 @@ private:
   LocalSchemeHandler * localSchemeHandler;
   IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
+
+#ifdef Q_OS_MAC
+    gd_clipboard * macClipboard;
+#endif
 
   /// Applies the custom Qt stylesheet
   void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle ,bool const & darkMode );
