@@ -174,6 +174,8 @@ if (APPLE)
             texttospeechsource.cc
             texttospeechsource.hh
             texttospeechsource.ui
+            src/platform/gd_clipboard.cpp
+            src/platform/gd_clipboard.h
             )
 endif ()
 

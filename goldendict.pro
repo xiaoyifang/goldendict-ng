@@ -559,9 +559,11 @@ win32 {
 mac {
     HEADERS += macmouseover.hh \
                texttospeechsource.hh \
-               speechclient.hh
+               speechclient.hh \
+               src/platform/gd_clipboard.h
     FORMS   += texttospeechsource.ui
-    SOURCES += texttospeechsource.cc
+    SOURCES += texttospeechsource.cc \
+               src/platform/gd_clipboard.cpp
 }
 
 unix:!mac {
