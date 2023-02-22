@@ -1,10 +1,9 @@
 #ifndef SCAN_FLAG_H
 #define SCAN_FLAG_H
 
-
 #include <QMainWindow>
+#include <QPushButton>
 #include <QTimer>
-#include "ui_scanflag.h"
 
 class ScanFlag : public QMainWindow
 {
@@ -13,7 +12,7 @@ class ScanFlag : public QMainWindow
 public:
   ScanFlag( QWidget *parent );
 
-  ~ScanFlag();
+  ~ScanFlag()=default;
 
   void showScanFlag();
   void pushButtonClicked();
@@ -23,9 +22,8 @@ signals:
   void requestScanPopup ();
 
 private:
-  Ui::ScanFlag ui;
   QTimer hideTimer;
-
+  QPushButton * pushButton;
 };
 
 #endif // SCAN_FLAG_H

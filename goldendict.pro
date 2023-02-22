@@ -568,7 +568,6 @@ mac {
 
 unix:!mac {
     HEADERS += scanflag.hh
-    FORMS   += scanflag.ui
     SOURCES += scanflag.cc
 }
 
