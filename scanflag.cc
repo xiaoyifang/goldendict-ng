@@ -1,35 +1,35 @@
-#include <QCursor>
-
 #include "scanflag.hh"
-#include "ui_scanflag.h"
+#include <QCursor>
+#include <QGuiApplication>
 #include <QScreen>
 
 
 ScanFlag::ScanFlag(QWidget *parent) :
-    QMainWindow(parent)
+    QMainWindow(parent),
+    pushButton(new QPushButton(this))
 {
-  ui.setupUi( this );
+
+  pushButton->setIcon(QIcon(":/icons/programicon.png"));
+
+  setCentralWidget(pushButton);
+
+  setFixedSize(30,30);
 
   setWindowFlags( Qt::ToolTip
                 | Qt::FramelessWindowHint
                 | Qt::WindowStaysOnTopHint
                 | Qt::WindowDoesNotAcceptFocus);
 
+
+  setAttribute(Qt::WA_TranslucentBackground);
   setAttribute(Qt::WA_X11DoNotAcceptFocus);
 
   hideTimer.setSingleShot( true );
   hideTimer.setInterval( 1000 );
 
-  connect( &hideTimer, &QTimer::timeout,
-    this, [=]{ hideWindow();
-  });
-
-  connect( ui.pushButton, &QPushButton::clicked,
+  connect( &hideTimer, &QTimer::timeout,this,&ScanFlag::hideWindow);
+  connect( pushButton, &QPushButton::clicked,
            this, &ScanFlag::pushButtonClicked );
-}
-
-ScanFlag::~ScanFlag()
-{
 }
 
 void ScanFlag::pushButtonClicked()

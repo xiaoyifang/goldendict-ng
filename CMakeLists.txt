@@ -147,7 +147,6 @@ set(UI_SRC
         options.ui
         orderandprops.ui
         preferences.ui
-        scanflag.ui
         scanpopup.ui
         sources.ui
         )
