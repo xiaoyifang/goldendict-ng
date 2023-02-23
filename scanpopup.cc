@@ -299,6 +299,26 @@ ScanPopup::ScanPopup( QWidget * parent,
   applyWordsZoomLevel();
 }
 
+void ScanPopup::refresh() {
+
+  // TODO: GroupCombox's update should be moved inside GroupCombox
+
+  // currentIndexChanged() signal is very trigger-happy. To avoid triggering
+  // it, we disconnect it while we're clearing and filling back groups.
+  disconnect( ui.groupList, &GroupComboBox::currentIndexChanged,
+    this, &ScanPopup::currentGroupChanged );
+  ui.groupList->clear();
+  ui.groupList->fill(groups);
+  ui.groupList->setCurrentGroup(0); // user edited group list, force reset to default
+  ui.groupList->setVisible(!cfg.groups.empty());
+
+  updateDictionaryBar();
+
+  connect( ui.groupList, &GroupComboBox::currentIndexChanged,
+    this, &ScanPopup::currentGroupChanged );
+}
+
+
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
@@ -385,11 +405,7 @@ void ScanPopup::applyWordsZoomLevel()
 
 Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
 {
-#if defined( HAVE_X11 )
-  return defaultUnpinnedWindowFlags | Qt::X11BypassWindowManagerHint;
-#else
   return defaultUnpinnedWindowFlags;
-#endif
 }
 
 void ScanPopup::translateWordFromClipboard()
@@ -689,33 +705,30 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 {
   int current = ui.groupList->currentIndex();
 
-  if ( current < 0 || current >= (int) groups.size() )
-  {
-    // This shouldn't ever happen
-    return allDictionaries;
-  }
+  Q_ASSERT(0 <= current || current <= groups.size());
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
-  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == 0 )
-    return groups[ current ].dictionaries;
-  else
-  {
-    vector< sptr< Dictionary::Class > > const & activeDicts =
-      groups[ current ].dictionaries;
 
-    // Populate the special dictionariesUnmuted array with only unmuted
-    // dictionaries
-
-    dictionariesUnmuted.clear();
-    dictionariesUnmuted.reserve( activeDicts.size() );
-
-    for( unsigned x = 0; x < activeDicts.size(); ++x )
-      if ( !mutedDictionaries->contains(
-              QString::fromStdString( activeDicts[ x ]->getId() ) ) )
-        dictionariesUnmuted.push_back( activeDicts[ x ] );
-
-    return dictionariesUnmuted;
+  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == 0 ){
+    return groups[current].dictionaries;
   }
+
+  vector< sptr< Dictionary::Class > > const & activeDicts =
+  groups[current].dictionaries;
+
+  // Populate the special dictionariesUnmuted array with only unmuted
+  // dictionaries
+
+  dictionariesUnmuted.clear();
+  dictionariesUnmuted.reserve( activeDicts.size() );
+
+  for(const auto & activeDict : activeDicts){
+    if ( !mutedDictionaries->contains(QString::fromStdString( activeDict->getId() ) ) ){
+      dictionariesUnmuted.push_back( activeDict );
+    }
+  }
+
+  return dictionariesUnmuted;
 }
 
 void ScanPopup::typingEvent( QString const & t )
