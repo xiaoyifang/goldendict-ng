@@ -154,7 +154,7 @@ private:
 
   WordFinder wordFinder;
 
-  sptr< ScanPopup > scanPopup;
+  ScanPopup * scanPopup;
 
   sptr< HotkeyWrapper > hotkeyWrapper;
 
@@ -206,7 +206,6 @@ private:
   void updateStatusLine();
   void updateGroupList();
   void updateDictionaryBar();
-  void makeScanPopup();
 
   void updatePronounceAvailability();
 
@@ -511,9 +510,6 @@ protected:
   unsigned gdAskMessage;
 public:
 
-private slots:
-  /// Return true while scanning GoldenDict window
-  bool isGoldenDictWindow( HWND hwnd );
 #endif
 };
 

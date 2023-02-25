@@ -22,7 +22,6 @@
     padding: 1px 3px 1px 3px;
 
     border: 1px solid gray;
-    border-left: 0; /* When not in #searchPane the border-left is provided by GroupComboBox */
 
     border-radius: 3px;
     border-top-left-radius: 0;
@@ -44,6 +43,10 @@ GroupComboBox {
 
     background: palette(window); /* Distinguish the combobox from the translate line by make it darker*/
     color: palette(Text);
+}
+
+#navToolbar GroupComboBox {
+    border-right: 0; /* The right border is provided by translateLine when they are together */
 }
 
 #searchPane GroupComboBox{

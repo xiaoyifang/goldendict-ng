@@ -555,8 +555,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesTriggered(); // Make update its state according to initial
                                // setting
 
-  useSmallIconsInToolbarsTriggered();
-
   connect( this, SIGNAL( clickOnDictPane( QString const & ) ),
            &dictionaryBar, SLOT( dictsPaneClicked( QString const & ) ) );
 
@@ -726,8 +724,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       restoreState( cfg.mainWindowState, 1 );
   }
 #endif
-  updateSearchPaneAndBar( cfg.preferences.searchInDock );
-  ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
   applyProxySettings();
 
@@ -783,7 +779,33 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.displayStyle, cfg.preferences.darkMode );
 
-  makeScanPopup();
+  // Scanpopup related
+  scanPopup = new ScanPopup(nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
+    dictionaries, groupInstances, history );
+
+  scanPopup->setStyleSheet(styleSheet());
+
+  connect( scanPopup,SIGNAL(editGroupRequested(unsigned)),
+    this, SLOT(editDictionaries(unsigned)),
+    Qt::QueuedConnection);
+
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow,
+    this,&MainWindow::phraseReceived,
+    Qt::QueuedConnection);
+
+  connect( this, &MainWindow::setExpandOptionalParts, scanPopup, &ScanPopup::setViewExpandMode );
+  connect( scanPopup, &ScanPopup::setExpandMode, this, &MainWindow::setExpandMode );
+  connect( scanPopup, &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
+  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+  connect ( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
+  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
+  connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
+  connect( scanPopup, &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
+
+  updateSearchPaneAndBar( cfg.preferences.searchInDock );
+  ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
   if ( trayIcon )
   {
@@ -891,12 +913,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     QString("\"%1\"").arg( QDir::toNativeSeparators(QApplication::applicationFilePath())) + " \"%1\"");
   urlRegistry.endGroup();
 #endif
+
+  useSmallIconsInToolbarsTriggered();
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
 {
-  if( scanPopup )
-  {
+
 #if defined(HAVE_X11)
       if(m == QClipboard::Clipboard){
         if(!cfg.preferences.trackClipboardScan) return;
@@ -939,7 +962,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m)
 #else
       scanPopup->translateWordFromClipboard();
 #endif
-  }
+
 }
 
 void MainWindow::ctrlTabPressed()
@@ -1114,8 +1137,7 @@ void MainWindow::commitData()
 
     // Save popup window state and geometry
 
-    if( scanPopup.get() )
-      scanPopup->saveConfigData();
+    scanPopup->saveConfigData();
 
     // Save any changes in last chosen groups etc
     try
@@ -1416,8 +1438,6 @@ void MainWindow::setupNetworkCache( int maxSize )
 
 void MainWindow::makeDictionaries()
 {
-  Q_ASSERT( !scanPopup && "Scan popup must not exist while dictionaries are initialized. "
-                          "It does not support dictionaries changes and must be constructed anew." );
 
   wordFinder.clear();
 
@@ -1546,50 +1566,6 @@ void MainWindow::updateDictionaryBar()
 
     dictionaryBar.setDictionaryIconSize( extent );
   }
-}
-
-void MainWindow::makeScanPopup()
-{
-  scanPopup.reset();
-
-  scanPopup =  std::make_shared<ScanPopup>( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
-                             dictionaries, groupInstances, history );
-
-  scanPopup->setStyleSheet( styleSheet() );
-
-  connect( scanPopup.get(), SIGNAL(editGroupRequested( unsigned ) ),
-           this, SLOT(editDictionaries( unsigned )), Qt::QueuedConnection );
-
-  connect( scanPopup.get(),
-    &ScanPopup::sendPhraseToMainWindow,
-    this,
-    &MainWindow::phraseReceived,
-    Qt::QueuedConnection );
-
-  connect( this, &MainWindow::setExpandOptionalParts, scanPopup.get(), &ScanPopup::setViewExpandMode );
-
-  connect( scanPopup.get(), &ScanPopup::setExpandMode, this, &MainWindow::setExpandMode );
-
-  connect( scanPopup.get(), &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
-
-  connect( scanPopup.get(), &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
-
-  connect( scanPopup.get(), &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
-
-  connect( scanPopup.get(), &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-
-  connect( scanPopup.get(), &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
-
-  connect( this, &MainWindow::setPopupGroupByName, scanPopup.get(), &ScanPopup::setGroupByName );
-
-  connect( scanPopup.get(), &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
-
-  connect( scanPopup.get(), &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
-
-#ifdef Q_OS_WIN32
-  connect( scanPopup.get(), SIGNAL( isGoldenDictWindow( HWND ) ),
-           this, SLOT( isGoldenDictWindow( HWND ) ) );
-#endif
 }
 
 vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
@@ -2117,7 +2093,6 @@ void MainWindow::updatePronounceAvailability()
 void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 {
   hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
-  scanPopup.reset(); // No scan popup either. No one should use dictionaries.
   closeHeadwordsDialog();
   closeFullTextSearchDialog();
 
@@ -2184,7 +2159,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
   }
 
-  makeScanPopup();
+  scanPopup->refresh();
   installHotKeys();
 
 
@@ -2198,7 +2173,6 @@ void MainWindow::editCurrentGroup()
 void MainWindow::editPreferences()
 {
   hotkeyWrapper.reset(); // So we could use the keys it hooks
-  scanPopup.reset(); // No scan popup either. No one should use dictionaries.
   closeHeadwordsDialog();
   closeFullTextSearchDialog();
 
@@ -2319,7 +2293,7 @@ void MainWindow::editPreferences()
     Config::save( cfg );
   }
 
-  makeScanPopup();
+  scanPopup->refresh();
   installHotKeys();
 
   ftsIndexing.setDictionaries( dictionaries );
@@ -3015,7 +2989,7 @@ void MainWindow::installHotKeys()
     if ( cfg.preferences.enableMainWindowHotkey )
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey,0 );
 
-    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() && !enableScanningAction->isChecked() )
+    if ( cfg.preferences.enableClipboardHotkey && !enableScanningAction->isChecked() )
     {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey,1 );
     }
@@ -3033,7 +3007,7 @@ void MainWindow::hotKeyActivated( int hk )
   if ( !hk )
     toggleMainWindow();
   else
-  if ( scanPopup.get() )
+  if ( scanPopup )
   {
 #ifdef HAVE_X11
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
@@ -3042,7 +3016,7 @@ void MainWindow::hotKeyActivated( int hk )
     // the clipboard empty, silently cancels the translation request, and users report
     // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
     // hotkey to give the active application more time and thus work around the issue.
-    QTimer::singleShot( 10, scanPopup.get(), SLOT( translateWordFromClipboard() ) );
+    QTimer::singleShot( 10, scanPopup, SLOT( translateWordFromClipboard() ) );
 #else
     scanPopup->translateWordFromClipboard();
 #endif
@@ -3195,9 +3169,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
-      if ( scanPopup.get() ) {
         scanPopup->translateWordFromSelection();
-      }
       break;
     default:
       break;
@@ -3282,8 +3254,7 @@ void MainWindow::useSmallIconsInToolbarsTriggered()
 
   cfg.usingSmallIconsInToolbars = useSmallIcons;
 
-  if( scanPopup.get() )
-    scanPopup->setDictionaryIconSize();
+  scanPopup->setDictionaryIconSize();
 }
 
 void MainWindow::toggleMenuBarTriggered(bool announce)
@@ -3599,7 +3570,6 @@ void MainWindow::on_saveArticle_triggered()
 void MainWindow::on_rescanFiles_triggered()
 {
   hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
-  scanPopup.reset(); // No scan popup either. No one should use dictionaries.
   closeHeadwordsDialog();
   closeFullTextSearchDialog();
 
@@ -3625,7 +3595,8 @@ void MainWindow::on_rescanFiles_triggered()
 
   updateGroupList();
 
-  makeScanPopup();
+
+  scanPopup->refresh();
   installHotKeys();
 
   updateSuggestionList();
@@ -3717,8 +3688,7 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
     view.setZoomFactor( cfg.preferences.zoomFactor );
   }
 
-  if ( scanPopup.get() )
-    scanPopup->applyZoomFactor();
+  scanPopup->applyZoomFactor();
 }
 
 void MainWindow::doWordsZoomIn()
@@ -3814,8 +3784,7 @@ void MainWindow::applyWordsZoomLevel()
     navToolbar->layout()->invalidate();
   }
 
-  if ( scanPopup.get() )
-    scanPopup->applyWordsZoomLevel();
+  scanPopup->applyWordsZoomLevel();
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
@@ -3827,7 +3796,7 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
   }
   if( message.left( 15 ) == "translateWord: " )
   {
-    if( scanPopup.get() )
+    if( scanPopup )
       scanPopup->translateWord( message.mid( 15 ) );
     else
       wordReceived( message.mid( 15 ) );
@@ -4437,10 +4406,10 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
     if( !pDict->isLocalDictionary() )
     {
       if ( scanPopup )
-        scanPopup.get()->blockSignals( true );
+        scanPopup->blockSignals( true );
       showDictionaryInfo( id );
       if ( scanPopup )
-        scanPopup.get()->blockSignals( false );
+        scanPopup->blockSignals( false );
     }
     else
     {
@@ -4464,19 +4433,19 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
       if( result && result == infoAction )
       {
         if ( scanPopup )
-          scanPopup.get()->blockSignals( true );
+          scanPopup->blockSignals( true );
         showDictionaryInfo( id );
         if ( scanPopup )
-          scanPopup.get()->blockSignals( false );
+          scanPopup->blockSignals( false );
       }
       else
       if( result && result == headwordsAction )
       {
         if ( scanPopup )
-          scanPopup.get()->blockSignals( true );
+          scanPopup->blockSignals( true );
         showDictionaryHeadwords( this, pDict );
         if ( scanPopup )
-          scanPopup.get()->blockSignals( false );
+          scanPopup->blockSignals( false );
       }
       else
       if( result && result == openDictFolderAction )
@@ -4826,12 +4795,3 @@ void MainWindow::headwordFromFavorites( QString const & headword,
 
   showTranslationFor( words[ 0 ] );
 }
-
-#ifdef Q_OS_WIN32
-
-bool MainWindow::isGoldenDictWindow( HWND hwnd )
-{
-  return hwnd == (HWND)winId() || hwnd == (HWND)ui.centralWidget->winId();
-}
-
-#endif

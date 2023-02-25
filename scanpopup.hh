@@ -37,6 +37,9 @@ public:
 
   ~ScanPopup();
 
+  // update dictionary bar, group data and possibly other data
+  void refresh();
+
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
   void applyZoomFactor();
