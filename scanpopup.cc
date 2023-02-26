@@ -170,6 +170,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
 
+  pinnedGeometry = cfg.popupWindowGeometry;
   if( cfg.popupWindowGeometry.size() )
     restoreGeometry( cfg.popupWindowGeometry );
 
@@ -545,6 +546,11 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
         y = desktop.y() + ( desktop.height() - windowSize.height() ) / 2;
 
       move( x, y );
+    }
+    else
+    {
+      if( pinnedGeometry.size() > 0 )
+        restoreGeometry( pinnedGeometry );
     }
 
     show();
@@ -933,6 +939,22 @@ void ScanPopup::showEvent( QShowEvent * ev )
   }
 }
 
+void ScanPopup::closeEvent( QCloseEvent * ev )
+{
+  if( isVisible() && ui.pinButton->isChecked() )
+    pinnedGeometry = saveGeometry();
+
+  QMainWindow::closeEvent( ev );
+}
+
+void ScanPopup::moveEvent( QMoveEvent * ev )
+{
+  if( isVisible() && ui.pinButton->isChecked() )
+    pinnedGeometry = saveGeometry();
+
+  QMainWindow::moveEvent( ev );
+}
+
 void ScanPopup::prefixMatchFinished()
 {
   // Check that there's a window there at all
@@ -988,6 +1010,9 @@ void ScanPopup::pinButtonClicked( bool checked )
   cfg.pinPopupWindow = checked;
 
   show();
+
+  if( checked )
+    pinnedGeometry = saveGeometry();
 }
 
 void ScanPopup::focusTranslateLine()
