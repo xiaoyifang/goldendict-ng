@@ -151,8 +151,13 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
+    // #242525 because Darkreader will invert pure white to this value
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
+<style>
+body { background: #242525; }
+.gdarticle { background: initial;}
+</style>
 <script>
   DarkReader.enable({
     brightness: 100,
@@ -160,11 +165,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     sepia: 10
   });
 </script>
-<style>
-body , .gdarticle {
-  background: white;
-}
-</style>
 )";
   }
   result += "</head><body>";
