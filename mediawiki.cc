@@ -617,6 +617,10 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             // Add url scheme to other urls like  "//xxx"
             articleString.replace( " href=\"//", " href=\"" + wikiUrl.scheme() + "://" );
 
+            // Add url scheme to other urls like    embed css background: url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat
+            articleString.replace( "url(\"//", "url(\"" + wikiUrl.scheme() + "://" );
+
+
             // Fix urls in "srcset" attribute
             pos = 0;
             QRegularExpression regSrcset( R"( srcset\s*=\s*"/[^"]+")" );
