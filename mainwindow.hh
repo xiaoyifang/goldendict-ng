@@ -415,8 +415,6 @@ private slots:
 
   void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
-  void scanEnableToggled( bool );
-
   void setAutostart( bool );
 
   void showMainWindow();
