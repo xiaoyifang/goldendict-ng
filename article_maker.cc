@@ -159,6 +159,35 @@ body { background: #242525; }
 .gdarticle { background: initial;}
 </style>
 <script>
+  // This function returns a promise, but it is synchroneous because it does not use await
+  function fetchShim(src) {
+    if (src.startsWith('gdlookup://')) {
+      // See https://github.com/xiaoyifang/goldendict/issues/363
+      console.error('Dark Reader discovered unexpected URL', src);
+      return Promise.resolve({blob: () => new Blob()});
+    }
+    if (src.startsWith('qrcx://') || src.startsWith('qrc://')) {
+      // This is a resource URL, need to fetch and transform
+      return new Promise((resolve) => {
+        const img = document.createElement('img');
+        img.addEventListener('load', () => {
+          // Set willReadFrequently to true to tell engine to store data in RAM-backed buffer and not on GPU
+          const canvas = document.createElement('canvas', {willReadFrequently: true});
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob((blob) => {
+            resolve({blob: () => blob});
+          });
+        }, false);
+        img.src = src;
+      });
+    }
+    // This is a standard URL, can fetch it directly
+    return fetch(src);
+  }
+  DarkReader.setFetchMethod(fetchShim);
   DarkReader.enable({
     brightness: 100,
     contrast: 90,
