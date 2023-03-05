@@ -380,7 +380,6 @@ HEADERS += folding.hh \
     dictinfo.hh \
     zipsounds.hh \
     stylescombobox.hh \
-    extlineedit.hh \
     translatebox.hh \
     historypanewidget.hh \
     wordlist.hh \
@@ -517,7 +516,6 @@ SOURCES += folding.cc \
     dictinfo.cc \
     zipsounds.cc \
     stylescombobox.cc \
-    extlineedit.cc \
     translatebox.cc \
     historypanewidget.cc \
     wordlist.cc \

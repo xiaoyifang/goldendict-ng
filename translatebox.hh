@@ -4,10 +4,10 @@
 #ifndef TRANSLATEBOX_HH
 #define TRANSLATEBOX_HH
 
-#include "extlineedit.hh"
 #include "wordlist.hh"
 #include "mutex.hh"
 
+#include <QLineEdit>
 #include <QWidget>
 #include <QListWidget>
 #include <QFocusEvent>
@@ -62,7 +62,7 @@ private slots:
 private:
   bool eventFilter(QObject *obj, QEvent *event);
   CompletionList * word_list;
-  ExtLineEdit * translate_line;
+  QLineEdit * translate_line;
   bool m_popupEnabled;
   Mutex translateBoxMutex;
   // QCompleter * completer; // disabled for now

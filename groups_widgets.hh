@@ -10,11 +10,11 @@
 
 #include <QAction>
 #include <QListWidget>
+#include <QLineEdit>
 #include <QSortFilterProxyModel>
 
 #include "config.hh"
 #include "dictionary.hh"
-#include "extlineedit.hh"
 
 /// A model to be projected into the view, according to Qt's MVC model
 class DictListModel: public QAbstractListModel
@@ -200,7 +200,7 @@ signals:
   void showDictionaryInfo( QString const & id );
 };
 
-class QuickFilterLine: public ExtLineEdit
+class QuickFilterLine: public QLineEdit
 {
   Q_OBJECT
 

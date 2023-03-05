@@ -5,7 +5,6 @@ list:
 internet.svg
 home.svg
 configure.svg
-system-search.svg
 fileopen.svg
 addtab.svg
 wizard.svg
@@ -71,3 +70,7 @@ book.svg https://github.com/johnfactotum/foliate
 lingualibre.svg https://en.m.wikipedia.org/wiki/File:Lingualibre-logo-no-text.svg
 
 
+Apache License Version 2.0
+1downarrow.svg
+system-search.svg
+Modified from  https://github.com/google/material-design-icons
