@@ -134,11 +134,6 @@ void ExtLineEdit::setButtonPixmap(Side side, const QPixmap &buttonPixmap)
     update();
 }
 
-QPixmap ExtLineEdit::buttonPixmap(Side side) const
-{
-    return pixmaps[side];
-}
-
 void ExtLineEdit::setButtonToolTip(Side side, const QString &tip)
 {
     iconButtons[side]->setToolTip(tip);
