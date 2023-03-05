@@ -134,7 +134,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
   if ( icon.size() )
-    result += R"(<link rel="icon" type="image/png" href="qrcx://localhost/flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
+    result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
 
   result += "<script type=\"text/javascript\">"
             "function tr(key) {"
@@ -676,7 +676,7 @@ void ArticleRequest::bodyFinished()
           + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
           Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
           Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + R"(<span class="collapse_expand_area"><img src="qrcx://localhost/icons/blank.png" class=")"
+          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
           + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
           + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
           + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
