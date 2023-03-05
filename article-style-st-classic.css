@@ -93,7 +93,7 @@ pre
 .gderrordesc
 {
   font-style: italic;
-  background: url("qrcx://localhost/icons/warning.png") center left no-repeat !important;
+  background: url("qrc:///icons/warning.png") center left no-repeat !important;
   padding-left: 22px !important;
   margin: 1em;
 }
@@ -516,7 +516,7 @@ div.xdxf
 .dsl_video .img
 {
   display: inline-block;
-  background: url('qrcx://localhost/icons/video.png');
+  background: url('qrc:///icons/video.png');
   background-repeat: no-repeat;
   /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
   vertical-align: -30%;
@@ -2909,7 +2909,7 @@ in bg url to hide it from iemac */
     width:16px;
     height:16px;
     vertical-align: text-bottom;
-    background-image:url('qrcx://localhost/icons/old-arrow.png');
+    background-image:url('qrc:///icons/old-arrow.png');
 }
 
 .gdcollapseicon {
@@ -2917,7 +2917,7 @@ in bg url to hide it from iemac */
     width:16px;
     height:16px;
     vertical-align: text-bottom;
-    background-image:url('qrcx://localhost/icons/old-downarrow.png');
+    background-image:url('qrc:///icons/old-downarrow.png');
 }
 
 /********** Slob dictionaries ***********/
