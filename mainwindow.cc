@@ -819,7 +819,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.displayStyle, cfg.preferences.darkMode );
 
   // Scanpopup related
-  scanPopup = new ScanPopup(nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
+  scanPopup = new ScanPopup(this, cfg, articleNetMgr, audioPlayerFactory.player(),
     dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet(styleSheet());
@@ -937,6 +937,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
 {
+  if( !scanPopup )
+  {
+    return;
+  }
 
 #if defined(HAVE_X11)
       if(m == QClipboard::Clipboard){
@@ -1154,8 +1158,8 @@ void MainWindow::commitData()
     cfg.mainWindowGeometry = saveGeometry();
 
     // Save popup window state and geometry
-
-    scanPopup->saveConfigData();
+    if( scanPopup )
+      scanPopup->saveConfigData();
 
     // Save any changes in last chosen groups etc
     try

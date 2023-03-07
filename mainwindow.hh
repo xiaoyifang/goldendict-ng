@@ -154,7 +154,7 @@ private:
 
   WordFinder wordFinder;
 
-  ScanPopup * scanPopup;
+  ScanPopup * scanPopup = nullptr;
 
   sptr< HotkeyWrapper > hotkeyWrapper;
 
