@@ -1101,6 +1101,7 @@ MainWindow::~MainWindow()
 #ifndef NO_EPWING_SUPPORT
   Epwing::finalize();
 #endif
+  delete scanPopup;
 }
 
 void MainWindow::addGlobalAction( QAction * action, const char * slot )
