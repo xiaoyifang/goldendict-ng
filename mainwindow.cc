@@ -231,52 +231,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
 
-#ifdef Q_OS_MAC
-  macClipboard = new gd_clipboard();
-  connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
-#endif
-
-  connect( enableScanningAction, &QAction::toggled, this, [ = ]( bool on ) {
-    if( on )
-    {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    }
-    else
-    {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
-    }
-
-#ifdef Q_OS_MAC
-    if( !MacMouseOver::isAXAPIEnabled() )
-      mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
-
-    if( on )
-    {
-      macClipboard->start();
-    }
-    else
-    {
-      macClipboard->stop();
-    }
-#else
-  if( on ) {
-    connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
-  }
-  else
-  {
-    disconnect(QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange);
-  }
-#endif
-
-    installHotKeys();
-    updateTrayIcon();
-  } );
-
-  if( cfg.preferences.startWithScanPopupOn )
-  {
-    enableScanningAction->trigger();
-  }
-
   navToolbar->addSeparator();
 
   // sound
@@ -839,6 +793,52 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
   connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
   connect( scanPopup, &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
+
+#ifdef Q_OS_MAC
+  macClipboard = new gd_clipboard();
+  connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
+#endif
+
+  connect( enableScanningAction, &QAction::toggled, this, [ = ]( bool on ) {
+    if( on )
+    {
+      enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    }
+    else
+    {
+      enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
+    }
+
+#ifdef Q_OS_MAC
+    if( !MacMouseOver::isAXAPIEnabled() )
+      mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
+
+    if( on )
+    {
+      macClipboard->start();
+    }
+    else
+    {
+      macClipboard->stop();
+    }
+#else
+      if( on ) {
+        connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+      }
+      else
+      {
+        disconnect(QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange);
+      }
+#endif
+
+    installHotKeys();
+    updateTrayIcon();
+  } );
+
+  if( cfg.preferences.startWithScanPopupOn )
+  {
+    enableScanningAction->trigger();
+  }
 
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
