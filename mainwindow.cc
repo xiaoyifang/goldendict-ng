@@ -147,9 +147,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 , helpWindow( 0 )
 , starIcon( ":/icons/star.svg" )
 , blueStarIcon( ":/icons/star_blue.svg" )
-#ifdef Q_OS_WIN32
-, gdAskMessage( 0xFFFFFFFF )
-#endif
 {
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
