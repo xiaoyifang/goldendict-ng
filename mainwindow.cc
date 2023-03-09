@@ -770,7 +770,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.displayStyle, cfg.preferences.darkMode );
 
   // Scanpopup related
-  scanPopup = new ScanPopup(this, cfg, articleNetMgr, audioPlayerFactory.player(),
+  scanPopup = new ScanPopup(nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
     dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet(styleSheet());
@@ -795,7 +795,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( scanPopup, &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
 
 #ifdef Q_OS_MAC
-  macClipboard = new gd_clipboard();
+  macClipboard = new gd_clipboard(this);
   connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
 #endif
 
