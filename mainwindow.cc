@@ -194,8 +194,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   Gestures::registerRecognizers();
 #endif
   // use our own, custom statusbar
-  setStatusBar(0);
   mainStatusBar = new MainStatusBar( this );
+  setStatusBar(mainStatusBar);
 
   // Make the toolbar
   navToolbar = addToolBar( tr( "&Navigation" ) );

@@ -99,6 +99,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   }
 
   mainStatusBar = new MainStatusBar( this );
+  setStatusBar(mainStatusBar);
 
   ui.queryError->hide();
 

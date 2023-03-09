@@ -8,15 +8,14 @@
 #include <QLabel>
 #include <QString>
 #include <QTimer>
+#include <QStatusBar>
 
-class MainStatusBar : public QWidget
+class MainStatusBar : public QStatusBar
 {
   Q_OBJECT
-  Q_PROPERTY(bool hasImage READ hasImage)
 
 public:
   explicit MainStatusBar(QWidget * parent);
-  QString currentMessage() const;
 
 signals:
 
@@ -25,23 +24,14 @@ public slots:
   void clearMessage();
   void setBackgroundMessage( QString const & message );
 
-protected:
-  virtual void mousePressEvent(QMouseEvent * event);
-
 private:
   // component to display a small picture
   QLabel * picWidget;
 
   // component to display text
   QLabel * textWidget;
-
   QTimer * timer;
   QString backgroungMessage;
-  QString message;
-
-  bool eventFilter(QObject *obj, QEvent * event);
-  void refresh();
-  bool hasImage() const;
 };
 
 #endif // MAINSTATUSBAR_HH

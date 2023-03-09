@@ -3,131 +3,66 @@
 
 #include "mainstatusbar.hh"
 
-#include <Qt>
-#include <QFrame>
-#include <QVBoxLayout>
-#include <QDebug>
-#include <QEvent>
 #include <QApplication>
 
-MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
+MainStatusBar::MainStatusBar( QWidget *parent ) : QStatusBar( parent )
 {
   textWidget = new QLabel( QString(), this );
   textWidget->setObjectName( "text" );
   textWidget->setFont( QApplication::font( "QStatusBar" ) );
   textWidget->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  textWidget->setWindowFlag( Qt::FramelessWindowHint ); // No frame
+  textWidget->setAttribute( Qt::WA_NoSystemBackground ); // No background
+  textWidget->setAttribute( Qt::WA_TranslucentBackground );
 
   picWidget = new QLabel( QString(), this );
   picWidget->setObjectName( "icon" );
   picWidget->setPixmap( QPixmap() );
   picWidget->setScaledContents( true );
   picWidget->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Ignored );
-
+  picWidget->setFixedSize( textWidget->height(), textWidget->height() );
+  picWidget->setWindowFlag( Qt::FramelessWindowHint ); // No frame
+  picWidget->setAttribute( Qt::WA_NoSystemBackground ); // No background
+  picWidget->setAttribute( Qt::WA_TranslucentBackground );
+  addWidget( picWidget, 1 );
+  addWidget( textWidget, 1 );
   timer = new QTimer( this );
   timer->setSingleShot( true );
-
-  // layout
-  QHBoxLayout * layout = new QHBoxLayout;
-  layout->setSpacing( 0 );
-  layout->setSizeConstraint( QLayout::SetFixedSize );
-  layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
-  layout->setContentsMargins( 0, 0, 0, 0 );
-  layout->addWidget( picWidget );
-  layout->addWidget( textWidget );
-  setLayout( layout );
-
-  parentWidget()->installEventFilter( this );
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 }
 
-bool MainStatusBar::hasImage() const
-{
-  return !picWidget->pixmap().isNull();
-}
-
 void MainStatusBar::clearMessage()
 {
-  message.clear();
   textWidget->setText( backgroungMessage );
-  picWidget->setPixmap( QPixmap() );
+  removeWidget( picWidget );
   timer->stop();
-  refresh();
+  QStatusBar::clearMessage();
 }
 
-QString MainStatusBar::currentMessage() const
-{
-  return message;
-}
-
-void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
+void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 {
   backgroungMessage = bkg_message;
-  if( message.isEmpty() )
-  {
-    textWidget->setText( backgroungMessage );
-    refresh();
-  }
+  showMessage( bkg_message );
 }
 
-void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap & pixmap)
+void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
-  textWidget->setText( message = str );
-  picWidget->setPixmap( pixmap );
+  textWidget->setText( str );
+  if( pixmap.isNull() )
+  {
+    removeWidget( picWidget );
+  }
+  else
+  {
+    picWidget->setPixmap( pixmap );
+    insertWidget( 0, picWidget, 1 );
+    picWidget->show();
+  }
 
-  // reload stylesheet
-  setStyleSheet( styleSheet() );
-
+  //  QStatusBar::showMessage(str,timeout);
   if ( timeout > 0 )
   {
     timer->start( timeout );
   }
-
-  refresh();
-}
-
-void MainStatusBar::refresh()
-{
-  if ( !textWidget->text().isEmpty() )
-  {
-    adjustSize();
-
-    if ( !picWidget->pixmap().isNull() )
-    {
-      picWidget->setFixedSize( textWidget->height(), textWidget->height() );
-    }
-    else
-    {
-      picWidget->setFixedSize( 0, 0 );
-    }
-
-    adjustSize();
-
-    move( QPoint( 0, parentWidget()->height() - height() ) );
-
-    show();
-    raise();
-  }
-  else
-  {
-    hide();
-  }
-}
-
-void MainStatusBar::mousePressEvent ( QMouseEvent * )
-{
-  clearMessage();
-}
-
-bool MainStatusBar::eventFilter( QObject *, QEvent * e )
-{
-  switch ( e->type() ) {
-    case QEvent::Resize:
-      refresh();
-      break;
-    default:
-      break;
-  };
-
-  return false;
 }
