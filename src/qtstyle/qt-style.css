@@ -19,7 +19,7 @@
 #translateLine {
     color: palette(Text); /* ensure the text is inverse of the background, and also placehold text is grey */
     margin-left: 0;
-    padding: 1px 3px 1px 3px;
+    padding: 1px;
 
     border: 1px solid gray;
 

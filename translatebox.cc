@@ -3,6 +3,7 @@
 
 #include "translatebox.hh"
 
+#include <QAction>
 #include <QHBoxLayout>
 #include <QEvent>
 #include <QKeyEvent>
@@ -87,8 +88,11 @@ bool CompletionList::acceptCurrentEntry()
   return true;
 }
 
-TranslateBox::TranslateBox(QWidget *parent) : QWidget(parent),
-  word_list(new CompletionList(this)), translate_line(new ExtLineEdit(this)), m_popupEnabled(false)
+TranslateBox::TranslateBox( QWidget * parent ):
+    QWidget( parent ),
+    word_list( new CompletionList( this ) ),
+    translate_line( new QLineEdit( this ) ),
+    m_popupEnabled( false )
 {
   // initially hidden
   word_list->hide();
@@ -114,18 +118,11 @@ TranslateBox::TranslateBox(QWidget *parent) : QWidget(parent),
   layout->setContentsMargins(0,0,0,0);
   layout->addWidget(translate_line);
 
-  QPixmap image(":/icons/system-search.svg");
-  
-  translate_line->setButtonPixmap(ExtLineEdit::Left, image);
-  // translate_line->setButtonToolTip(ExtLineEdit::Left, tr("Options"));
-  translate_line->setButtonVisible(ExtLineEdit::Left, true);
-  translate_line->setButtonFocusPolicy(ExtLineEdit::Left, Qt::ClickFocus);
+  QAction * dropdown = new QAction( QIcon(":/icons/1downarrow.svg"), tr("Drop-down"),this);
+  connect( dropdown,&QAction::triggered,this, &TranslateBox::rightButtonClicked );
 
-  QPixmap right(":/icons/1downarrow.svg");
-  translate_line->setButtonPixmap(ExtLineEdit::Right, right);
-  translate_line->setButtonToolTip(ExtLineEdit::Right, tr("Drop-down"));
-  translate_line->setButtonVisible(ExtLineEdit::Right, true);
-  translate_line->setButtonFocusPolicy(ExtLineEdit::Right, Qt::NoFocus);
+  translate_line->addAction( dropdown,QLineEdit::TrailingPosition);
+  translate_line->addAction( new QAction(QIcon(":/icons/system-search.svg"),"",this),QLineEdit::LeadingPosition);
 
   translate_line->setFocusPolicy(Qt::ClickFocus);
 
@@ -134,7 +131,6 @@ TranslateBox::TranslateBox(QWidget *parent) : QWidget(parent),
 
   connect( translate_line, &QLineEdit::textChanged, this, &TranslateBox::onTextEdit );
 
-  connect( translate_line, &ExtLineEdit::rightButtonClicked, this, &TranslateBox::rightButtonClicked );
 
   connect( word_list, &WordList::contentChanged, this, &TranslateBox::showPopup );
 }

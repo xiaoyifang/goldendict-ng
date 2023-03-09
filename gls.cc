@@ -828,7 +828,7 @@ QString & GlsDictionary::filterResource( QString & article )
       QString newTag = QString::fromUtf8( ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
       newTag += match.captured( 4 );
       if( match.captured( 4 ).indexOf( "<img " ) < 0 )
-        newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
+        newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
       newTag += "</a></span>";
 
       articleNewText += newTag;

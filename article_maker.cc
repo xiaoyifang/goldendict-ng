@@ -134,7 +134,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
   if ( icon.size() )
-    result += R"(<link rel="icon" type="image/png" href="qrcx://localhost/flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
+    result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
 
   result += "<script type=\"text/javascript\">"
             "function tr(key) {"
@@ -151,20 +151,49 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
+    // #242525 because Darkreader will invert pure white to this value
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
+<style>
+body { background: #242525; }
+.gdarticle { background: initial;}
+</style>
 <script>
+  // This function returns a promise, but it is synchroneous because it does not use await
+  function fetchShim(src) {
+    if (src.startsWith('gdlookup://')) {
+      // See https://github.com/xiaoyifang/goldendict/issues/363
+      console.error('Dark Reader discovered unexpected URL', src);
+      return Promise.resolve({blob: () => new Blob()});
+    }
+    if (src.startsWith('qrcx://') || src.startsWith('qrc://')) {
+      // This is a resource URL, need to fetch and transform
+      return new Promise((resolve) => {
+        const img = document.createElement('img');
+        img.addEventListener('load', () => {
+          // Set willReadFrequently to true to tell engine to store data in RAM-backed buffer and not on GPU
+          const canvas = document.createElement('canvas', {willReadFrequently: true});
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob((blob) => {
+            resolve({blob: () => blob});
+          });
+        }, false);
+        img.src = src;
+      });
+    }
+    // This is a standard URL, can fetch it directly
+    return fetch(src);
+  }
+  DarkReader.setFetchMethod(fetchShim);
   DarkReader.enable({
     brightness: 100,
     contrast: 90,
     sepia: 10
   });
 </script>
-<style>
-body , .gdarticle {
-  background: white;
-}
-</style>
 )";
   }
   result += "</head><body>";
@@ -647,7 +676,7 @@ void ArticleRequest::bodyFinished()
           + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
           Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
           Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + R"(<span class="collapse_expand_area"><img src="qrcx://localhost/icons/blank.png" class=")"
+          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
           + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
           + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
           + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )

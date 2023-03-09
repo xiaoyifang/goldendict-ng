@@ -154,7 +154,7 @@ private:
 
   WordFinder wordFinder;
 
-  ScanPopup * scanPopup;
+  ScanPopup * scanPopup = nullptr;
 
   sptr< HotkeyWrapper > hotkeyWrapper;
 
@@ -415,8 +415,6 @@ private slots:
 
   void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
-  void scanEnableToggled( bool );
-
   void setAutostart( bool );
 
   void showMainWindow();
@@ -503,14 +501,6 @@ signals:
 
   /// Set group for popup window
   void setPopupGroupByName( QString const & name );
-
-#ifdef Q_OS_WIN32
-  /// For receiving message from scan libraries
-protected:
-  unsigned gdAskMessage;
-public:
-
-#endif
 };
 
 class ArticleSaveProgressDialog : public QProgressDialog

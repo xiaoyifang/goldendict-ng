@@ -283,8 +283,6 @@ set(PROJECT_SOURCES
         externalaudioplayer.hh
         externalviewer.cc
         externalviewer.hh
-        extlineedit.cc
-        extlineedit.hh
         favoritespanewidget.cc
         favoritespanewidget.hh
         file.cc

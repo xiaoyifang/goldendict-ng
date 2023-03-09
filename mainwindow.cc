@@ -147,9 +147,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 , helpWindow( 0 )
 , starIcon( ":/icons/star.svg" )
 , blueStarIcon( ":/icons/star_blue.svg" )
-#ifdef Q_OS_WIN32
-, gdAskMessage( 0xFFFFFFFF )
-#endif
 {
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
@@ -233,13 +230,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
-  if( cfg.preferences.startWithScanPopupOn )
-  {
-    enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
-    enableScanningAction->setChecked( true );
-  }
-
-  connect( enableScanningAction, &QAction::toggled, this, &MainWindow::scanEnableToggled );
 
   navToolbar->addSeparator();
 
@@ -780,7 +770,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.displayStyle, cfg.preferences.darkMode );
 
   // Scanpopup related
-  scanPopup = new ScanPopup(nullptr, cfg, articleNetMgr, audioPlayerFactory.player(),
+  scanPopup = new ScanPopup(this, cfg, articleNetMgr, audioPlayerFactory.player(),
     dictionaries, groupInstances, history );
 
   scanPopup->setStyleSheet(styleSheet());
@@ -803,6 +793,52 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
   connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
   connect( scanPopup, &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
+
+#ifdef Q_OS_MAC
+  macClipboard = new gd_clipboard();
+  connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
+#endif
+
+  connect( enableScanningAction, &QAction::toggled, this, [ = ]( bool on ) {
+    if( on )
+    {
+      enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+    }
+    else
+    {
+      enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
+    }
+
+#ifdef Q_OS_MAC
+    if( !MacMouseOver::isAXAPIEnabled() )
+      mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
+
+    if( on )
+    {
+      macClipboard->start();
+    }
+    else
+    {
+      macClipboard->stop();
+    }
+#else
+      if( on ) {
+        connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
+      }
+      else
+      {
+        disconnect(QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange);
+      }
+#endif
+
+    installHotKeys();
+    updateTrayIcon();
+  } );
+
+  if( cfg.preferences.startWithScanPopupOn )
+  {
+    enableScanningAction->trigger();
+  }
 
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
@@ -878,27 +914,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   inspector.reset( new ArticleInspector( this ));
 
-  // Clipboard related
-#ifdef Q_OS_MAC
-    macClipboard = new gd_clipboard();
-    connect(macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
-    connect(enableScanningAction,&QAction::changed,[this](){
-        if (enableScanningAction->isChecked()){
-            macClipboard->start();
-        } else {
-            macClipboard->stop();
-        }
-    });
-#else
-    connect(enableScanningAction,&QAction::changed,[this](){
-      if (enableScanningAction->isChecked()){
-          connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
-      } else {
-          disconnect(QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange);
-      }
-    });
-#endif
-
 #ifdef Q_OS_WIN
   // Regiser and update URL Scheme for windows
   // https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)
@@ -919,6 +934,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 void MainWindow::clipboardChange( QClipboard::Mode m)
 {
+  if( !scanPopup )
+  {
+    return;
+  }
 
 #if defined(HAVE_X11)
       if(m == QClipboard::Clipboard){
@@ -1136,8 +1155,8 @@ void MainWindow::commitData()
     cfg.mainWindowGeometry = saveGeometry();
 
     // Save popup window state and geometry
-
-    scanPopup->saveConfigData();
+    if( scanPopup )
+      scanPopup->saveConfigData();
 
     // Save any changes in last chosen groups etc
     try
@@ -3175,30 +3194,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
       break;
 
   }
-}
-
-void MainWindow::scanEnableToggled( bool on )
-{
-
-  if ( scanPopup )
-  {
-    if ( on )
-    {
-#ifdef Q_OS_MAC
-      if( !MacMouseOver::isAXAPIEnabled() )
-          mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000,
-                                          QPixmap( ":/icons/error.svg" ) );
-#endif
-      enableScanningAction->setIcon(QIcon(":/icons/wizard-selected.svg"));
-    }
-    else
-    {
-      enableScanningAction->setIcon(QIcon(":/icons/wizard.svg"));
-    }
-  }
-
-  installHotKeys();
-  updateTrayIcon();
 }
 
 void MainWindow::showMainWindow()

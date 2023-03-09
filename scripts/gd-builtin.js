@@ -53,7 +53,7 @@ function gdExpandOptPart(expanderId, optionalId) {
     var i = 0
     if (d1.alt == '[+]') {
         d1.alt = '[-]'
-        d1.src = 'qrcx://localhost/icons/collapse_opt.png'
+        d1.src = 'qrc:///icons/collapse_opt.png'
         for (i = 0; i < 1000; i++) {
             var d2 = document.getElementById(optionalId + i)
             if (!d2)
@@ -62,7 +62,7 @@ function gdExpandOptPart(expanderId, optionalId) {
         }
     } else {
         d1.alt = '[+]'
-        d1.src = 'qrcx://localhost/icons/expand_opt.png'
+        d1.src = 'qrc:///icons/expand_opt.png'
         for (i = 0; i < 1000; i++) {
             var d2 = document.getElementById(optionalId + i)
             if (!d2)

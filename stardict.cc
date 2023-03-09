@@ -549,7 +549,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           newTag += match.captured( 4 );
           if( match.captured( 4 ).indexOf( "<img " ) < 0 )
 
-            newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
+            newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
           newTag += "</a></span>";
 
           articleNewText += newTag;
