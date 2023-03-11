@@ -971,7 +971,6 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
   QString articleNewText;
   int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
-  QMap< QString, QString > idMap;
   while( it.hasNext() )
   {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -988,23 +987,9 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
 
     if( !linkType.isEmpty() && linkType.at( 0 ) == 'a' )
     {
-      QRegularExpressionMatch match = RX::Mdx::anchorIdRe.match( linkTxt );
-      if( match.hasMatch() )
-      {
-        auto wordMatch = RX::Mdx::anchorIdReWord.match( linkTxt );
-        if( wordMatch.hasMatch() )
-        {
-          idMap.insert( wordMatch.captured( 3 ), uniquePrefix + wordMatch.captured( 3 ) );
-        }
-        QString newText = match.captured( 1 ) + match.captured( 2 ) + uniquePrefix;
-        newLink         = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
-      }
-      else
-        newLink = linkTxt.replace( RX::Mdx::anchorIdRe2, "\\1\"" + uniquePrefix + "\\2\"" );
+      newLink = linkTxt;
 
-      newLink = newLink.replace( RX::Mdx::anchorLinkRe, "\\1#" + uniquePrefix );
-
-      match = RX::Mdx::audioRe.match( newLink );
+      QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
       if( match.hasMatch() )
       {
         // sounds and audio link script
@@ -1093,13 +1078,6 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
   {
     articleNewText += article.mid( linkPos );
     article = articleNewText;
-  }
-
-  // some built-in javascript may reference this id. replace "idxxx" with "unique_idxxx"
-  foreach( const auto & key, idMap.keys() )
-  {
-    const auto & value = idMap[ key ];
-    article.replace( "\"" + key + "\"", "\"" + value + "\"" );
   }
 }
 
