@@ -32,7 +32,9 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text, QStr
   QJsonObject fields;
   fields.insert( cfg.preferences.ankiConnectServer.word, word );
   fields.insert( cfg.preferences.ankiConnectServer.text, text );
-  fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence );
+  if (!cfg.preferences.ankiConnectServer.sentence.isEmpty()) {
+    fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence );
+  }
 
   QString postData = postTemplate.arg( cfg.preferences.ankiConnectServer.deck,
                                        cfg.preferences.ankiConnectServer.model,
