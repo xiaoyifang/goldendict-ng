@@ -221,8 +221,11 @@ QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
 ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, AudioPlayerPtr const & audioPlayer_,
                           std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
                           Instances::Groups const & groups_, bool popupView_, Config::Class const & cfg_,
-                          QAction & openSearchAction_, QAction * dictionaryBarToggled_,
-                          GroupComboBox const * groupComboBox_ ) :
+                          QAction & openSearchAction_,
+                          QLineEdit const * translateLine_,
+                          QAction * dictionaryBarToggled_,
+                          GroupComboBox const * groupComboBox_
+                        ):
   QFrame( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
@@ -242,6 +245,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
   groupComboBox( groupComboBox_ ),
+  translateLine( translateLine_ ),
   ftsSearchIsOpened( false ),
   ftsSearchMatchCase( false ),
   ftsPosition( 0 )
@@ -515,8 +519,8 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   ui.definition->setCursor( Qt::WaitCursor );
 }
 
-void ArticleView::sendToAnki(QString const & word, QString const & text ){
-  ankiConnector->sendToAnki(word,text);
+void ArticleView::sendToAnki(QString const & word, QString const & text, QString const & sentence ){
+  ankiConnector->sendToAnki(word,text,sentence);
 }
 
 void ArticleView::showAnticipation()
@@ -1962,7 +1966,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     }
     else if( result == sendToAnkiAction )
     {
-      sendToAnki( ui.definition->title(), ui.definition->selectedText() );
+      sendToAnki( ui.definition->title(), ui.definition->selectedText(), translateLine->text() );
     }
     else
     if ( result == lookupSelectionGr && groupComboBox )

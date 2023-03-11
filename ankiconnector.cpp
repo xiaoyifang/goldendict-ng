@@ -9,7 +9,7 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ) : Q
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( QString const & word, QString const & text )
+void AnkiConnector::sendToAnki( QString const & word, QString const & text, QString const & sentence )
 {
   //for simplicity. maybe use QJsonDocument in future?
   QString postTemplate = QString( "{"
@@ -30,8 +30,9 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text )
                                   "" );
 
   QJsonObject fields;
-  fields.insert( "Front", word );
-  fields.insert( "Back", text );
+  fields.insert( cfg.preferences.ankiConnectServer.word, word );
+  fields.insert( cfg.preferences.ankiConnectServer.text, text );
+  fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence );
 
   QString postData = postTemplate.arg( cfg.preferences.ankiConnectServer.deck,
                                        cfg.preferences.ankiConnectServer.model,

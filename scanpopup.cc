@@ -105,6 +105,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   definition = new ArticleView( ui.outerFrame, articleNetMgr, audioPlayer_,
                                 allDictionaries, groups, true, cfg,
                                 openSearchAction,
+                                ui.translateBox->translateLine(),
                                 dictionaryBar.toggleViewAction()
                                 );
 

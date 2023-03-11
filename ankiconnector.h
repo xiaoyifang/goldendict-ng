@@ -13,7 +13,7 @@ class AnkiConnector : public QObject
 public:
   explicit AnkiConnector( QObject * parent, Config::Class const & cfg );
 
-  void sendToAnki( QString const & word, QString const & text );
+  void sendToAnki( QString const & word, QString const & text, QString const & sentence );
 
 private:
   QNetworkAccessManager * mgr;
