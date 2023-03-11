@@ -1024,7 +1024,7 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
         newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
       }
       else
-        newLink = linkTxt.replace( RX::Mdx::stylesRe2, "\\1\"bres://" + id + "/\\2\"" );
+        newLink = linkTxt.replace( RX::Mdx::stylesRe2, R"(\1"bres://)" + id + R"(/\2")" );
     }
     else if( linkType.compare( "script" ) == 0 || linkType.compare( "img" ) == 0 || linkType.compare( "source" ) == 0 )
     {
@@ -1064,7 +1064,7 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else
-          newLink = linkTxt.replace( RX::Mdx::srcRe2, "\\1\"bres://" + id + "/\\2\"" );
+          newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
     }
     if( !newLink.isEmpty() )
