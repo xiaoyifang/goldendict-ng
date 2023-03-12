@@ -14,7 +14,7 @@
 #include "wstring_qt.hh"
 #include "folding.hh"
 #include "epwing_charmap.hh"
-
+#include "htmlescape.hh"
 #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #define _FILE_OFFSET_BITS 64
 #endif
@@ -687,18 +687,7 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
 {
   error_string.clear();
 
-  EB_Position pos;
-  pos.page = page;
-  pos.offset = offset;
-  currentPosition = pos;
-
-  EB_Error_Code ret = eb_seek_text(&book, &pos);
-  if( ret != EB_SUCCESS )
-  {
-    setErrorString( "eb_seek_text", ret );
-    currentPosition.page = 0;
-    throw exEbLibrary( error_string.toUtf8().data() );
-  }
+  seekBookThrow( page, offset );
 
   QByteArray buf;
   char buffer[ TextBufferSize + 1 ];
@@ -710,7 +699,7 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
 
   for( ; ; )
   {
-    ret = eb_read_text( &book, &appendix, &hookSet, &container,
+    EB_Error_Code ret = eb_read_text( &book, &appendix, &hookSet, &container,
                         TextBufferSize, buffer, &buffer_length );
 
     if( ret != EB_SUCCESS )
@@ -736,6 +725,129 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
   finalizeText( text);
   return text;
 }
+
+void EpwingBook::seekBookThrow( int page, int offset )
+{
+  EB_Position pos;
+  pos.page        = page;
+  pos.offset      = offset;
+  currentPosition = pos;
+
+  EB_Error_Code ret = eb_seek_text( &book, &pos );
+  if( ret != EB_SUCCESS )
+  {
+    setErrorString( "eb_seek_text", ret );
+    currentPosition.page = 0;
+    throw exEbLibrary( error_string.toUtf8().data() );
+  }
+}
+
+  QString EpwingBook::getTextWithLength( int page, int offset, int total, EB_Position & pos )
+{
+  error_string.clear();
+  int currentLength = 0;
+
+  seekBookThrow( page, offset );
+
+  QByteArray buf;
+  char buffer[ TextBufferSize + 1 ];
+  ssize_t buffer_length;
+  EContainer container( this, false );
+
+  prepareToRead();
+
+  for( ;; )
+  {
+    EB_Error_Code ret = eb_read_text( &book, &appendix, &hookSet, &container, TextBufferSize, buffer, &buffer_length );
+
+    if( ret != EB_SUCCESS )
+    {
+      setErrorString( "eb_read_text", ret );
+      break;
+    }
+
+    buf += QByteArray( buffer, buffer_length );
+    currentLength += buffer_length;
+
+    if( currentLength > total || buffer_length == 0 )
+      break;
+
+    if( buf.length() > TextSizeLimit )
+    {
+      error_string         = "Data too large";
+      currentPosition.page = 0;
+      return QString();
+    }
+
+    ret = eb_forward_text( &book, &appendix );
+    if( ret != EB_SUCCESS )
+    {
+      setErrorString( "eb_seek_text", ret );
+      currentPosition.page = 0;
+      throw exEbLibrary( error_string.toUtf8().data() );
+    }
+  }
+
+  eb_tell_text( &book, &pos );
+  QString text = QString::fromUtf8( buf.data(), buf.size() ).trimmed();
+  finalizeText( text );
+  return text;
+}
+
+QString EpwingBook::getPreviousTextWithLength( int page, int offset, int total, EB_Position & pos )
+{
+  error_string.clear();
+  int currentLength = 0;
+
+  QByteArray buf;
+  char buffer[ TextBufferSize + 1 ];
+  ssize_t buffer_length;
+  EContainer container( this, false );
+
+  prepareToRead();
+
+  for( ;; )
+  {
+    seekBookThrow( page, offset );
+    EB_Error_Code ret = eb_backward_text( &book, &appendix );
+    if( ret != EB_SUCCESS )
+    {
+      setErrorString( "eb_backward_text", ret );
+      currentPosition.page = 0;
+      throw exEbLibrary( error_string.toUtf8().data() );
+    }
+    eb_tell_text( &book, &pos );
+    page   = pos.page;
+    offset = pos.offset;
+
+    ret = eb_read_text( &book, &appendix, &hookSet, &container, TextBufferSize, buffer, &buffer_length );
+
+    if( ret != EB_SUCCESS )
+    {
+      setErrorString( "eb_read_text", ret );
+      break;
+    }
+
+    buf.prepend( QByteArray( buffer, buffer_length ));
+    currentLength += buffer_length;
+
+    if( currentLength > total || buffer_length == 0 )
+      break;
+
+    if( buf.length() > TextSizeLimit )
+    {
+      error_string         = "Data too large";
+      currentPosition.page = 0;
+      return QString();
+    }
+  }
+
+  QString text = QString::fromUtf8( buf.data(), buf.size() ).trimmed();
+  finalizeText( text );
+  return text;
+}
+
+  
 
 void EpwingBook::getReferencesFromText( int page, int offset )
 {
@@ -934,6 +1046,7 @@ bool EpwingBook::processRef( EpwingHeadword & head)
     pos.page   = epos.first;
     pos.offset = epos.second;
 
+    // epwing ebook use ref link to navigate , the headword(at such position) usually has no meaningful point.
     if( readHeadword( pos, head.headword, true ) )
     {
       if( head.headword.isEmpty() || head.headword.contains( badLinks ) )
@@ -944,13 +1057,16 @@ bool EpwingBook::processRef( EpwingHeadword & head)
       head.page   = pos.page;
       head.offset = pos.offset;
       auto key    = ( (uint64_t)pos.page ) << 32 | ( pos.offset );
-      if( !allRefPositions.contains( key ) )
+      //this  only add the existed reference point which has already in the headwords as another headword(rxxxxAtxxxx) in the headword list.
+      //this will make the loadarticle's real reference link judgement easier.
+
+      if( allRefPositions.contains( key ) )
       {
         // fixed the reference headword ,to avoid the headword collision with other entry .
         //if(!allHeadwordPositions.contains(key))
         head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
 
-        allRefPositions[ key ] = true;
+        //allRefPositions[ key ] = true;
 
         try
         {
@@ -1080,6 +1196,10 @@ void EpwingBook::fixHeadword( QString & headword )
   //if( isHeadwordCorrect( fixed ) )
   //  headword = fixed;
 
+  //remove leading number and space.
+  QRegularExpression leadingNumAndSpace( R"(^[\d\s]+\b)" );
+  fixed.remove( leadingNumAndSpace );
+
   headword = fixed;
 }
 
@@ -1087,28 +1207,30 @@ void EpwingBook::getArticle( QString & headword, QString & articleText,
                              int page, int offset, bool text_only)
 {
   error_string.clear();
-  char buffer[ TextBufferSize + 1 ];
 
-  EB_Position pos;
-  pos.page = page;
-  pos.offset = offset;
+  seekBookThrow( page, offset );
 
-  currentPosition = pos;
+  readHeadword( headword, text_only );
 
-  EB_Error_Code ret = eb_seek_text( &book, &pos );
-  if( ret != EB_SUCCESS )
-  {
-    setErrorString( "eb_seek_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
-  }
+  QString hw = Html::unescape( headword, true );
+  fixHeadword( hw );
 
+  auto parts = hw.split( QChar::Space, Qt::SkipEmptyParts );
+  articleText = getText( page, offset, text_only );
+
+}
+
+void EpwingBook::readHeadword(QString & headword, bool text_only)
+{
   EContainer container( this, text_only );
   ssize_t length;
 
   prepareToRead();
 
-  ret = eb_read_heading( &book, &appendix, &hookSet, &container,
-                         TextBufferSize, buffer, &length );
+  char buffer[ TextBufferSize + 1 ];
+
+  EB_Error_Code ret = eb_read_heading( &book, &appendix, &hookSet, &container,
+    TextBufferSize, buffer, &length );
   if( ret != EB_SUCCESS )
   {
     setErrorString( "eb_read_heading", ret );
@@ -1120,8 +1242,35 @@ void EpwingBook::getArticle( QString & headword, QString & articleText,
 
   if( text_only )
     fixHeadword( headword );
+}
 
-  articleText = getText( pos.page, pos.offset, text_only);
+EB_Position EpwingBook::getArticleNextPage(
+  QString & headword, QString & articleText,
+  int page, int offset, bool text_only)
+{
+  error_string.clear();
+
+  seekBookThrow( page, offset );
+
+  readHeadword( headword, text_only );
+
+  EB_Position pos;
+  articleText = getTextWithLength( page, offset, 4000, pos);
+  return pos;
+}
+
+EB_Position EpwingBook::getArticlePreviousPage(
+  QString & headword, QString & articleText, int page, int offset, bool text_only )
+{
+  error_string.clear();
+
+  seekBookThrow( page, offset );
+
+  readHeadword( headword, text_only );
+
+  EB_Position pos;
+  articleText = getPreviousTextWithLength( page, offset, 4000, pos );
+  return pos;
 }
 
 const char * EpwingBook::beginDecoration( unsigned int code )

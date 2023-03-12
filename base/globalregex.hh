@@ -50,6 +50,11 @@ class Zim{
   static QRegularExpression linkSpecialChar;
 };
 
+class Epwing{
+ public:
+  static QRegularExpression refWord;
+};
+
 } // namespace RX
 
 #endif // GLOBALREGEX_HH

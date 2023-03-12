@@ -100,6 +100,9 @@ class EpwingBook
 
   // Retrieve article text from dictionary
   QString getText( int page, int offset, bool text_only);
+  void seekBookThrow( int page, int offset );
+  QString getTextWithLength( int page, int offset, int total, EB_Position & pos );
+  QString getPreviousTextWithLength( int page, int offset, int total, EB_Position & pos );
 
   unsigned int normalizeDecorationCode( unsigned int code );
 
@@ -196,7 +199,11 @@ public:
   // Retrieve article from dictionary
   void getArticle( QString & headword, QString & articleText,
                    int page, int offset, bool text_only );
+  void readHeadword( QString & headword, bool text_only);
 
+  EB_Position getArticleNextPage( QString & headword, QString & articleText,
+    int page, int offset, bool text_only );
+  EB_Position getArticlePreviousPage( QString & headword, QString & articleText, int page, int offset, bool text_only );
   const char * beginDecoration( unsigned int code );
   const char * endDecoration( unsigned int code );
 
