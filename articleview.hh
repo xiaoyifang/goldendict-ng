@@ -164,6 +164,8 @@ public:
 
   void setDelayedHighlightText(QString const & text);
 
+  void setBackgroundColor(const QColor &color);
+
 public slots:
 
   /// Goes back in history

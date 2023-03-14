@@ -364,6 +364,13 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
            &AnkiConnector::errorText,
            this,
            [ this ]( QString const & errorText ) { emit statusBarMessage( errorText ); } );
+
+  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
+    setBackgroundColor( QColor::fromString("#242525") );
+  }
+  else{
+    setBackgroundColor(Qt::transparent);
+  }
 }
 
 // explicitly report the minimum size, to avoid
@@ -1602,6 +1609,10 @@ void ArticleView::setDelayedHighlightText(QString const & text)
   delayedHighlightText = text;
 }
 
+void ArticleView::setBackgroundColor(const QColor &color){
+  ui.definition->page()->setBackgroundColor(color);
+}
+
 void ArticleView::back()
 {
   // Don't allow navigating back to page 0, which is usually the initial
@@ -1623,6 +1634,7 @@ void ArticleView::forward()
 
 void ArticleView::reload()
 {
+
   ui.definition->reload();
 }
 
