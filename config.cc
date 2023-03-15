@@ -89,7 +89,13 @@ ProxyServer::ProxyServer(): enabled( false ), useSystemProxy( false ), type( Soc
 {
 }
 
-AnkiConnectServer::AnkiConnectServer(): enabled( false ), host("127.0.0.1"), port( 8765 ), word("VocabKanji"), text("VocabDef"), sentence("SentKanji")
+AnkiConnectServer::AnkiConnectServer():
+    enabled( false ),
+    host("127.0.0.1"),
+    port( 8765 ),
+    word("word"),
+    text("selected_text"),
+    sentence("marked_sentence")
 {
 }
 
