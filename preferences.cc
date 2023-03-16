@@ -319,6 +319,10 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ankiPort->setValue( p.ankiConnectServer.port );
   ui.ankiModel->setText( p.ankiConnectServer.model );
   ui.ankiDeck->setText(p.ankiConnectServer.deck);
+  //anki connect fields
+  ui.ankiText->setText(p.ankiConnectServer.text);
+  ui.ankiWord->setText(p.ankiConnectServer.word);
+  ui.ankiSentence->setText(p.ankiConnectServer.sentence);
 
   connect( ui.customProxy, &QAbstractButton::toggled, this, &Preferences::customProxyToggled );
 
@@ -467,6 +471,10 @@ Config::Preferences Preferences::getPreferences()
   p.ankiConnectServer.port    = (unsigned)ui.ankiPort->value();
   p.ankiConnectServer.deck = ui.ankiDeck->text();
   p.ankiConnectServer.model = ui.ankiModel->text();
+  //anki connect fields
+  p.ankiConnectServer.text = ui.ankiText->text();
+  p.ankiConnectServer.word = ui.ankiWord->text();
+  p.ankiConnectServer.sentence = ui.ankiSentence->text();
 
   p.checkForNewReleases = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
