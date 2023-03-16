@@ -171,7 +171,7 @@ All kinds of help like answering questions, bug reporting, testing translation a
 
 To start coding, the easiest way is load the `goldendict.pro` file to Qt Creator, make some changes then press the run button.
 
-### the code guildline
+### the code guideline
 
 check the document [how to use clang-format](howto/how%20to%20use%20.clang-format%20to%20format%20the%20code.md)
 

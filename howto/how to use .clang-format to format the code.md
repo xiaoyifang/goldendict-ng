@@ -1,7 +1,7 @@
 # Goal
 
 
-the project has included a .clang-format as the code guildline.
+the project has included a .clang-format as the code guideline.
 
 # How to use this file
 
