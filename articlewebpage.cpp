@@ -1,9 +1,15 @@
 #include "articlewebpage.h"
 #include "utils.hh"
+#include "globalbroadcaster.h"
+#include <QColor>
 
 ArticleWebPage::ArticleWebPage(QObject *parent)
   : QWebEnginePage{parent}
 {
+  // when opening a new tab in dark reader mode, there will be a white flash without this
+  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
+    setBackgroundColor( QColor(39,40,40) );
+  }
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {

@@ -51,6 +51,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
       "<html><head>"
       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
 
+  // background is #242525 because Darkreader will invert pure white to this value
+  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ){
+    result += R"(<style> html { background-color: #242525;} body { background-color: #242525;} </style>)"; }
+
   // add jquery
   {
     result += "<script type=\"text/javascript\"  "
@@ -151,13 +155,12 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
-    // #242525 because Darkreader will invert pure white to this value
+    // Why .gdarticle background reset?
+    // some custom theme may change it to other colors and they looks horrible in darkreader mode
+
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
-<style>
-body { background: #242525; }
-.gdarticle { background: initial;}
-</style>
+<style> .gdarticle { background: initial;} </style>
 <script>
   // This function returns a promise, but it is synchroneous because it does not use await
   function fetchShim(src) {

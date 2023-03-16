@@ -364,6 +364,16 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
            &AnkiConnector::errorText,
            this,
            [ this ]( QString const & errorText ) { emit statusBarMessage( errorText ); } );
+
+  connect( ui.definition, &ArticleWebView::loadFinished, this, [ this ]( bool ) {
+    ui.definition->show();
+
+    // search lightui+darkmode to jump to another section of this hack
+    // reset the background back to normal
+    if( cfg.preferences.darkReaderMode ) {
+      setStyleSheet( "ArticleView {background-color: palette(window);}" );
+    }
+  } );
 }
 
 // explicitly report the minimum size, to avoid
@@ -394,6 +404,16 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
   currentWord = phrase.phrase.trimmed();
   if( currentWord.isEmpty() )
     return;
+
+  // search lightui+darkmode to jump to another section of this hack
+  // set the underlying Frame's background to Dark so that when
+  // the page is loading there is no flash when user has light ui + dark reader mode
+  // TODO: this is not efficient. rewrite ArticleView.ui so that the background of the search widget and the page is decoupled.
+  if( cfg.preferences.darkReaderMode ) {
+    setStyleSheet( "ArticleView {background-color: #242525;}" );
+  }
+  ui.definition->hide();
+
   historyMode = false;
   currentActiveDictIds.clear();
   // first, let's stop the player
@@ -480,6 +500,16 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   currentWord = word.trimmed();
   if( currentWord.isEmpty() )
     return;
+
+  // search lightui+darkmode to jump to another section of this hack
+  // set the underlying Frame's background to Dark so that when
+  // the page is loading there is no flash when user has light ui + dark reader mode
+  // TODO: this is not efficient. rewrite ArticleView.ui so that the background of the search widget and the page is decoupled.
+  if( cfg.preferences.darkReaderMode ) {
+    setStyleSheet( "ArticleView {background-color: #242525;}" );
+  }
+  ui.definition->hide();
+
   historyMode = false;
   // first, let's stop the player
   audioPlayer->stop();
