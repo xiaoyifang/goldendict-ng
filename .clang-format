@@ -1,11 +1,11 @@
 # Format Style Options - Created with Clang Power Tools
 ---
 AccessModifierOffset: -1
-AlignAfterOpenBracket: DontAlign
+AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: DontAlign
-AlignTrailingComments: false
+AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: false
 AllowShortBlocksOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: None
@@ -17,7 +17,7 @@ BinPackParameters: false
 BraceWrapping: 
   AfterCaseLabel: false
   AfterClass: true
-  AfterControlStatement: true
+  AfterControlStatement: false
   AfterEnum: false
   AfterFunction: true
   AfterNamespace: false
@@ -25,7 +25,7 @@ BraceWrapping:
   AfterStruct: true
   AfterUnion: true
   AfterExternBlock: false
-  BeforeCatch: false
+  BeforeCatch: true
   BeforeElse: true
   IndentBraces: false
   SplitEmptyFunction: true

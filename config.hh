@@ -146,6 +146,10 @@ struct AnkiConnectServer
   QString deck;
   QString model;
 
+  QString word;
+  QString text;
+  QString sentence;
+
   AnkiConnectServer();
 };
 

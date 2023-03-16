@@ -64,6 +64,7 @@ class ArticleView: public QFrame
 
   QAction * dictionaryBarToggled;
   GroupComboBox const *groupComboBox;
+  QLineEdit const * translateLine;
 
   /// current searching word.
   QString currentWord;
@@ -100,8 +101,10 @@ public:
                bool popupView,
                Config::Class const & cfg,
                QAction & openSearchAction_,
-               QAction * dictionaryBarToggled = 0,
-               GroupComboBox const * groupComboBox = 0 );
+               QLineEdit const * translateLine,
+               QAction * dictionaryBarToggled = nullptr,
+               GroupComboBox const * groupComboBox = nullptr
+              );
 
   /// Sets the currently active group combo box. When looking up selections,
   /// this allows presenting a choice of looking up in the currently chosen
@@ -137,7 +140,7 @@ public:
                        QRegExp const & searchRegExp, unsigned group,
                        bool ignoreDiacritics );
 
-  void sendToAnki(QString const & word, QString const & text );
+  void sendToAnki(QString const & word, QString const & text, QString const & sentence );
   /// Clears the view and sets the application-global waiting cursor,
   /// which will be restored when some article loads eventually.
   void showAnticipation();

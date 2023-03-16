@@ -1699,6 +1699,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
   ArticleView * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(),
                                         dictionaries, groupInstances, false, cfg,
                                         *ui.searchInPageAction,
+                                        translateLine,
                                         dictionaryBar.toggleViewAction(),
                                         groupList );
 

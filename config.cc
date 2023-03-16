@@ -89,7 +89,13 @@ ProxyServer::ProxyServer(): enabled( false ), useSystemProxy( false ), type( Soc
 {
 }
 
-AnkiConnectServer::AnkiConnectServer(): enabled( false ), host("127.0.0.1"), port( 8765 )
+AnkiConnectServer::AnkiConnectServer():
+    enabled( false ),
+    host("127.0.0.1"),
+    port( 8765 ),
+    word("word"),
+    text("selected_text"),
+    sentence("marked_sentence")
 {
 }
 
@@ -969,6 +975,10 @@ Class load()
       c.preferences.ankiConnectServer.port = ankiConnectServer.namedItem( "port" ).toElement().text().toULong();
       c.preferences.ankiConnectServer.deck = ankiConnectServer.namedItem( "deck" ).toElement().text();
       c.preferences.ankiConnectServer.model = ankiConnectServer.namedItem( "model" ).toElement().text();
+
+      c.preferences.ankiConnectServer.word = ankiConnectServer.namedItem( "word" ).toElement().text();
+      c.preferences.ankiConnectServer.text = ankiConnectServer.namedItem( "text" ).toElement().text();
+      c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
     }
 
     if ( !preferences.namedItem( "checkForNewReleases" ).isNull() )
@@ -1939,6 +1949,18 @@ void save( Class const & c )
 
       opt = dd.createElement( "model" );
       opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.model ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "text" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.text ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "word" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.word ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "sentence" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.sentence ) );
       proxy.appendChild( opt );
     }
 

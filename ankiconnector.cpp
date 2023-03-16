@@ -3,13 +3,21 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include "utils.hh"
+
+QString markTargetWord(QString const& sentence, QString const& word)
+{
+  // TODO properly handle inflected words.
+  QString result = sentence;
+  return result.replace(word, "<b>" + word + "</b>", Qt::CaseInsensitive);
+}
+
 AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ) : QObject{ parent }, cfg( _cfg )
 {
   mgr = new QNetworkAccessManager( this );
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( QString const & word, QString const & text )
+void AnkiConnector::sendToAnki( QString const & word, QString const & text, QString const & sentence )
 {
   //for simplicity. maybe use QJsonDocument in future?
   QString postTemplate = QString( "{"
@@ -30,8 +38,12 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text )
                                   "" );
 
   QJsonObject fields;
-  fields.insert( "Front", word );
-  fields.insert( "Back", text );
+  fields.insert( cfg.preferences.ankiConnectServer.word, word );
+  fields.insert( cfg.preferences.ankiConnectServer.text, text );
+  if (!cfg.preferences.ankiConnectServer.sentence.isEmpty()) {
+    QString sentence_changed = markTargetWord(sentence, word);
+    fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
+  }
 
   QString postData = postTemplate.arg( cfg.preferences.ankiConnectServer.deck,
                                        cfg.preferences.ankiConnectServer.model,
