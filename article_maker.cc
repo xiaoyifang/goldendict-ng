@@ -155,8 +155,8 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
 <style>
-body { background: #242525; }
-.gdarticle { background: initial;}
+body { background: transparent;  }
+.gdarticle { background: transparent; }
 </style>
 <script>
   // This function returns a promise, but it is synchroneous because it does not use await

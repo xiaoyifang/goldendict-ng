@@ -2272,13 +2272,6 @@ void MainWindow::editPreferences()
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
 
-      if( p.darkReaderMode ) {
-        view.setBackgroundColor( QColor::fromString("#242525") );
-      }
-      else{
-        view.setBackgroundColor( Qt::transparent );
-      }
-
       if( needReload )
         view.reload();
     }

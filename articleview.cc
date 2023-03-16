@@ -365,12 +365,14 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
            this,
            [ this ]( QString const & errorText ) { emit statusBarMessage( errorText ); } );
 
-  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
-    setBackgroundColor( QColor::fromString("#242525") );
-  }
-  else{
-    setBackgroundColor(Qt::transparent);
-  }
+
+  setBackgroundColor( Qt::transparent );
+  ui.definition->setAttribute( Qt::WA_TranslucentBackground );
+  ui.definition->setStyleSheet( "background:transparent" );
+
+  setAttribute( Qt::WA_TranslucentBackground );
+  setAutoFillBackground( true );
+//  setWindowFlags( Qt::FramelessWindowHint );
 }
 
 // explicitly report the minimum size, to avoid
@@ -1609,8 +1611,8 @@ void ArticleView::setDelayedHighlightText(QString const & text)
   delayedHighlightText = text;
 }
 
-void ArticleView::setBackgroundColor(const QColor &color){
-  ui.definition->page()->setBackgroundColor(color);
+void ArticleView::setBackgroundColor( const QColor &color ){
+  ui.definition->page()->setBackgroundColor( color );
 }
 
 void ArticleView::back()
@@ -1634,7 +1636,6 @@ void ArticleView::forward()
 
 void ArticleView::reload()
 {
-
   ui.definition->reload();
 }
 
