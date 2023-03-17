@@ -217,8 +217,6 @@ set(PROJECT_SOURCES
         article_maker.hh
         article_netmgr.cc
         article_netmgr.hh
-        articleview.cc
-        articleview.hh
         articlewebpage.cpp
         articlewebpage.h
         articlewebview.cc
@@ -463,7 +461,11 @@ set(PROJECT_SOURCES
         zipfile.hh
         zipsounds.cc
         zipsounds.hh
-        src/dict/lingualibre.cpp src/dict/lingualibre.h)
+        src/dict/lingualibre.cpp src/dict/lingualibre.h
+        src/ui/articleview.cpp src/ui/articleview.h
+        src/ui/ftssearchpanel.cpp src/ui/ftssearchpanel.h
+        src/ui/searchpanel.cpp src/ui/searchpanel.h
+        )
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
         MANUAL_FINALIZATION

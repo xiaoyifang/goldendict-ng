@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "articleview.hh"
-#include "QtCore/qvariant.h"
+#include "articleview.h"
 #include "folding.hh"
 #include "fulltextsearch.hh"
 #include "gddebug.hh"
@@ -21,6 +20,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <QVariant>
 #include <QWebChannel>
 #include <QWebEngineHistory>
 #include <QWebEngineScript>
@@ -250,71 +250,11 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   ftsPosition( 0 )
 {
   // setup GUI
-  webview = new ArticleWebView( this );
+  webview        = new ArticleWebView( this );
+  ftsSearchPanel = new FtsSearchPanel( this );
+  searchPanel    = new SearchPanel( this );
 
-  // fts Search Panel
-  ftsSearchPanel = new QWidget( this );
-
-  auto * ftsLayout     = new QHBoxLayout( ftsSearchPanel );
-  ftsSearchPrevious    = new QPushButton( ftsSearchPanel );
-  ftsSearchNext        = new QPushButton( ftsSearchPanel );
-  ftsSearchStatusLabel = new QLabel( ftsSearchPanel );
-
-  ftsLayout->addWidget( ftsSearchPrevious );
-  ftsLayout->addWidget( ftsSearchNext );
-  ftsLayout->addWidget( ftsSearchStatusLabel );
-
-  ftsSearchPrevious->setIcon( QIcon( ":/icons/previous.svg" ) );
-  ftsSearchNext->setIcon( QIcon( ":/icons/next.svg" ) );
-
-  ftsSearchPrevious->setText( tr( "&Previous" ) );
-  ftsSearchNext->setText( tr( "&Next" ) );
-
-  ftsLayout->addStretch();
-
-  // Search Panel
-  searchPanel = new QWidget( this );
-
-  auto * searchLabel = new QLabel( tr( "Find:" ) );
-
-  searchText = new QLineEdit( searchPanel );
-
-  searchCloseButton = new QPushButton( searchPanel );
-  searchCloseButton->setIcon( QIcon( ":/icons/closetab.svg" ) );
-
-  searchPrevious = new QPushButton( searchPanel );
-  searchPrevious->setIcon( QIcon( ":/icons/previous.svg" ) );
-  searchPrevious->setText( tr( "&Previous" ) );
-
-  searchNext = new QPushButton( searchPanel );
-  searchNext->setIcon( QIcon( ":/icons/next.svg" ) );
-  searchNext->setText( tr( "&Next" ) );
-
-  highlightAllButton = new QCheckBox( searchPanel );
-  highlightAllButton->setIcon( QIcon( ":/icons/highlighter.png" ) );
-  highlightAllButton->setText( tr( "Highlight &all" ) );
-  highlightAllButton->setChecked( true );
-
-  searchCaseSensitive = new QCheckBox( searchPanel );
-  searchCaseSensitive->setText( tr( "&Case Sensitive" ) );
-
-  auto * searchEditRow = new QHBoxLayout;
-  searchEditRow->addWidget( searchLabel );
-  searchEditRow->addWidget( searchText );
-  searchEditRow->addWidget( searchCloseButton );
-
-  auto * searchButtonsRow = new QHBoxLayout;
-  searchButtonsRow->addWidget( searchPrevious );
-  searchButtonsRow->addWidget( searchNext );
-  searchButtonsRow->addWidget( highlightAllButton );
-  searchButtonsRow->addWidget( searchCaseSensitive );
-  searchButtonsRow->addStretch();
-
-  auto * searchPanelLayout = new QVBoxLayout( searchPanel );
-  searchPanelLayout->addLayout( searchEditRow );
-  searchPanelLayout->addLayout( searchButtonsRow );
-
-  // Combine Layouts
+  // Layout
   auto * mainLayout = new QVBoxLayout( this );
   mainLayout->addWidget( webview );
   mainLayout->addWidget( ftsSearchPanel );
@@ -322,22 +262,21 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   webview->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   ftsSearchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
-
   searchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
 
   mainLayout->setContentsMargins( 0, 0, 0, 0 );
 
   // end UI setup
 
-  connect( searchPrevious, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
-  connect( searchNext, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
-  connect( searchCloseButton, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
-  connect( searchCaseSensitive, &QPushButton::clicked, this, &ArticleView::on_searchCaseSensitive_clicked );
-  connect( highlightAllButton, &QPushButton::clicked, this, &ArticleView::on_highlightAllButton_clicked );
-  connect( searchText, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
-  connect( searchText, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
-  connect( ftsSearchNext, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
-  connect( ftsSearchPrevious, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
+  connect( searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
+  connect( searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
+  connect( searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
+  connect( searchPanel->caseSensitive, &QPushButton::clicked, this, &ArticleView::on_searchCaseSensitive_clicked );
+  connect( searchPanel->highlightAll, &QPushButton::clicked, this, &ArticleView::on_highlightAllButton_clicked );
+  connect( searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
+  connect( searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
+  connect( ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
+  connect( ftsSearchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
 
   //
 
@@ -590,7 +529,7 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   closeSearch();
 
   // Clear highlight all button selection
-  highlightAllButton->setChecked( false );
+  searchPanel->highlightAll->setChecked( false );
 
   emit setExpandMode( expandOptionalParts );
 
@@ -2263,20 +2202,20 @@ void ArticleView::openSearch()
   if ( !searchIsOpened )
   {
     searchPanel->show();
-    searchText->setText( getTitle() );
+    searchPanel->lineEdit->setText( getTitle() );
     searchIsOpened = true;
   }
 
-  searchText->setFocus();
-  searchText->selectAll();
+  searchPanel->lineEdit->setFocus();
+  searchPanel->lineEdit->selectAll();
 
   // Clear any current selection
   if( webview->selectedText().size() ) {
     webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
   }
 
-  if( searchText->property( "noResults" ).toBool() ) {
-    searchText->setProperty( "noResults", false );
+  if( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
+    searchPanel->lineEdit->setProperty( "noResults", false );
 
     // Reload stylesheet
     reloadStyleSheet();
@@ -2371,7 +2310,7 @@ void ArticleView::doubleClicked( QPoint pos )
 
 void ArticleView::performFindOperation( bool restart, bool backwards, bool checkHighlight )
 {
-  QString text = searchText->text();
+  QString text = searchPanel->lineEdit->text();
 
   if ( restart || checkHighlight )
   {
@@ -2385,12 +2324,12 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
 
     QWebEnginePage::FindFlags f( 0 );
 
-    if( searchCaseSensitive->isChecked() )
+    if( searchPanel->caseSensitive->isChecked() )
       f |= QWebEnginePage::FindCaseSensitively;
 
     webview->findText( "", f );
 
-    if( highlightAllButton->isChecked() )
+    if( searchPanel->highlightAll->isChecked() )
       webview->findText( text, f );
 
     if( checkHighlight )
@@ -2399,7 +2338,7 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
 
   QWebEnginePage::FindFlags f( 0 );
 
-  if( searchCaseSensitive->isChecked() )
+  if( searchPanel->caseSensitive->isChecked() )
     f |= QWebEnginePage::FindCaseSensitively;
 
   if( backwards )
@@ -2411,8 +2350,8 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
             {
               bool setMark = !text.isEmpty() && !match;
 
-    if( searchText->property( "noResults" ).toBool() != setMark ) {
-      searchText->setProperty( "noResults", setMark );
+    if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
+      searchPanel->lineEdit->setProperty( "noResults", setMark );
 
                 // Reload stylesheet
                 reloadStyleSheet();
@@ -2595,7 +2534,7 @@ void ArticleView::highlightFTSResults()
         flags |= QWebEnginePage::FindCaseSensitively;
 
       if( allMatches.isEmpty() )
-        ftsSearchStatusLabel->setText( searchStatusMessageNoMatches() );
+        ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
       else {
         //        highlightAllFtsOccurences( flags );
         webview->findText( allMatches.at( 0 ), flags );
@@ -2605,13 +2544,13 @@ void ArticleView::highlightFTSResults()
         //     QString( "%1=window.getSelection().getRangeAt(0);_=0;" ).arg( rangeVarName ) );
         // }
 		Q_ASSERT( ftsPosition == 0 );
-    	ftsSearchStatusLabel->setText( searchStatusMessage( 1, allMatches.size() ) );
+                ftsSearchPanel->statusLabel->setText( searchStatusMessage( 1, allMatches.size() ) );
       }
 
 
       ftsSearchPanel->show();
-      ftsSearchPrevious->setEnabled( false );
-      ftsSearchNext->setEnabled( allMatches.size() > 1 );
+      ftsSearchPanel->previous->setEnabled( false );
+      ftsSearchPanel->next->setEnabled( allMatches.size() > 1 );
 
       ftsSearchIsOpened = true;
     } );
@@ -2663,9 +2602,9 @@ void ArticleView::performFtsFindOperation( bool backwards )
     return;
 
   if( allMatches.isEmpty() ) {
-    ftsSearchStatusLabel->setText( searchStatusMessageNoMatches() );
-    ftsSearchNext->setEnabled( false );
-    ftsSearchPrevious->setEnabled( false );
+    ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
+    ftsSearchPanel->next->setEnabled( false );
+    ftsSearchPanel->previous->setEnabled( false );
     return;
   }
 
@@ -2689,15 +2628,15 @@ void ArticleView::performFtsFindOperation( bool backwards )
                        [ this ]( const QWebEngineFindTextResult & result ) {
                          if( result.numberOfMatches() == 0 )
                            return;
-                         ftsSearchPrevious->setEnabled( true );
-                         if( !ftsSearchNext->isEnabled() )
-                           ftsSearchNext->setEnabled( true );
+                         ftsSearchPanel->previous->setEnabled( true );
+                         if( !ftsSearchPanel->next->isEnabled() )
+                           ftsSearchPanel->next->setEnabled( true );
                        } );
 #else
     webview->findText( allMatches.at( ftsPosition ), flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
-      ftsSearchPrevious->setEnabled( res );
-      if( !ftsSearchNext->isEnabled() )
-        ftsSearchNext->setEnabled( res );
+      ftsSearchPanel->previous->setEnabled( res );
+      if( !ftsSearchPanel->next->isEnabled() )
+        ftsSearchPanel->next->setEnabled( res );
     } );
 #endif
   }
@@ -2709,23 +2648,23 @@ void ArticleView::performFtsFindOperation( bool backwards )
     webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( const QWebEngineFindTextResult & result ) {
       if( result.numberOfMatches() == 0 )
         return;
-      ftsSearchNext->setEnabled( true );
-      if( !ftsSearchPrevious->isEnabled() )
-        ftsSearchPrevious->setEnabled( true );
+      ftsSearchPanel->next->setEnabled( true );
+      if( !ftsSearchPanel->previous->isEnabled() )
+        ftsSearchPanel->previous->setEnabled( true );
     } );
   }
 #else
 
     webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( bool res ) {
-      ftsSearchNext->setEnabled( res );
-      if( !ftsSearchPrevious->isEnabled() )
-        ftsSearchPrevious->setEnabled( res );
+      ftsSearchPanel->next->setEnabled( res );
+      if( !ftsSearchPanel->previous->isEnabled() )
+        ftsSearchPanel->previous->setEnabled( res );
     } );
   }
 
 #endif
 
-  ftsSearchStatusLabel->setText( searchStatusMessage( ftsPosition + 1, allMatches.size() ) );
+  ftsSearchPanel->statusLabel->setText( searchStatusMessage( ftsPosition + 1, allMatches.size() ) );
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
