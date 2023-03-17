@@ -222,70 +222,70 @@ InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) cons
 }
 
 Preferences::Preferences():
-    newTabsOpenAfterCurrentOne( false ),
-    newTabsOpenInBackground( true ),
-    hideSingleTab( false ),
-    mruTabOrder( false ),
-    hideMenubar( false ),
-    enableTrayIcon( true ),
-    startToTray( false ),
-    closeToTray( true ),
-    autoStart( false ),
-    doubleClickTranslates( true ),
-    selectWordBySingleClick( false ),
-    autoScrollToTargetArticle( true ),
-    escKeyHidesMainWindow( false ),
-    darkMode( false ),
-    darkReaderMode( false ),
-    alwaysOnTop( false ),
-    searchInDock( false ),
+  newTabsOpenAfterCurrentOne( false ),
+  newTabsOpenInBackground( true ),
+  hideSingleTab( false ),
+  mruTabOrder ( false ),
+  hideMenubar( false ),
+  enableTrayIcon( true ),
+  startToTray( false ),
+  closeToTray( true ),
+  autoStart( false ),
+  doubleClickTranslates( true ),
+  selectWordBySingleClick( false ),
+  autoScrollToTargetArticle( true ),
+  escKeyHidesMainWindow( false ),
+  darkMode( false ),
+  darkReaderMode ( false ),
+  alwaysOnTop ( false ),
+  searchInDock ( false ),
 
-    enableMainWindowHotkey( true ),
-    mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
-    enableClipboardHotkey( true ),
-    clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
+  enableMainWindowHotkey( true ),
+  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
+  enableClipboardHotkey( true ),
+  clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
 
-    startWithScanPopupOn( false ),
-    enableScanPopupModifiers( false ),
-    scanPopupModifiers( 0 ),
-    ignoreOwnClipboardChanges( false ),
-    scanToMainWindow( false ),
-    ignoreDiacritics( false ),
-    ignorePunctuation( false ),
+  startWithScanPopupOn( false ),
+  enableScanPopupModifiers( false ),
+  scanPopupModifiers( 0 ),
+  ignoreOwnClipboardChanges( false ),
+  scanToMainWindow( false ),
+  ignoreDiacritics( false ),
+  ignorePunctuation( false ),
 #ifdef HAVE_X11
-    // Enable both Clipboard and Selection by default so that X users can enjoy full
-    // power and disable optionally.
-    trackClipboardScan( true ),
-    trackSelectionScan( true ),
-    showScanFlag( false ),
+  // Enable both Clipboard and Selection by default so that X users can enjoy full
+  // power and disable optionally.
+  trackClipboardScan ( true ),
+  trackSelectionScan ( true ),
+  showScanFlag( false ),
 #endif
-    pronounceOnLoadMain( false ),
-    pronounceOnLoadPopup( false ),
-    useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
-    internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
-    checkForNewReleases( true ),
-    disallowContentFromOtherSites( false ),
-    enableWebPlugins( false ),
-    hideGoldenDictHeader( false ),
-    maxNetworkCacheSize( 50 ),
-    clearNetworkCacheOnExit( true ),
-    zoomFactor( 1 ),
-    helpZoomFactor( 1 ),
-    wordsZoomLevel( 0 ),
-    maxStringsInHistory( 500 ),
-    storeHistory( 1 ),
-    alwaysExpandOptionalParts( false ),
-    historyStoreInterval( 0 ),
-    favoritesStoreInterval( 0 ),
-    confirmFavoritesDeletion( true ),
-    collapseBigArticles( false ),
-    articleSizeLimit( 2000 ),
-    limitInputPhraseLength( false ),
-    inputPhraseLengthLimit( 1000 ),
-    maxDictionaryRefsInContextMenu( 20 ),
-    synonymSearchEnabled( true ),
-    stripClipboard( false ),
-    raiseWindowOnSearch( true )
+  pronounceOnLoadMain( false ),
+  pronounceOnLoadPopup( false ),
+  useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
+  internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
+  checkForNewReleases( true ),
+  disallowContentFromOtherSites( false ),
+  enableWebPlugins( false ),
+  hideGoldenDictHeader( false ),
+  maxNetworkCacheSize( 50 ),
+  clearNetworkCacheOnExit( true ),
+  zoomFactor( 1 ),
+  helpZoomFactor( 1 ),
+  wordsZoomLevel( 0 ),
+  maxStringsInHistory( 500 ),
+  storeHistory( 1 ),
+  alwaysExpandOptionalParts( false )
+, historyStoreInterval( 0 )
+, favoritesStoreInterval( 0 )
+, confirmFavoritesDeletion( true )
+, collapseBigArticles( false )
+, articleSizeLimit( 2000 )
+, limitInputPhraseLength( false )
+, inputPhraseLengthLimit( 1000 )
+, maxDictionaryRefsInContextMenu ( 20 )
+, synonymSearchEnabled( true ),
+  stripClipboard( false ),
+  raiseWindowOnSearch(true)
 {
 }
 
