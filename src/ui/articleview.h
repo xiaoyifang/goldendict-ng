@@ -1,14 +1,11 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef GOLDENDICT_ARTICLEVIEW_HH
-#define GOLDENDICT_ARTICLEVIEW_HH
+#ifndef GOLDENDICT_ARTICLEVIEW_H
+#define GOLDENDICT_ARTICLEVIEW_H
 
 #include <QAction>
-#include <QCheckBox>
-#include <QLabel>
 #include <QMap>
-#include <QPushButton>
 #include <QSet>
 #include <QUrl>
 #include <QWebEngineView>
@@ -27,6 +24,8 @@
 #include "webmultimediadownload.hh"
 #include "base_type.h"
 #include "articlewebview.hh"
+#include "ui/searchpanel.h"
+#include "ui/ftssearchpanel.h"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent ;
@@ -174,20 +173,8 @@ public:
  private:
   // widgets
   ArticleWebView * webview;
-
-  QWidget * searchPanel;
-  QLineEdit * searchText;
-  QPushButton * searchCloseButton;
-  QPushButton * searchPrevious;
-  QPushButton * searchNext;
-  QCheckBox * highlightAllButton;
-  QCheckBox * searchCaseSensitive;
-
-  QWidget * ftsSearchPanel;
-  QLabel * ftsSearchStatusLabel;
-  QPushButton * ftsSearchPrevious;
-  QPushButton * ftsSearchNext;
-
+  SearchPanel * searchPanel;
+  FtsSearchPanel * ftsSearchPanel;
 
  public slots:
 

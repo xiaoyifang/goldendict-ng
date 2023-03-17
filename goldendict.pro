@@ -320,7 +320,6 @@ HEADERS += folding.hh \
     instances.hh \
     article_maker.hh \
     scanpopup.hh \
-    articleview.hh \
     audioplayerinterface.hh \
     audioplayerfactory.hh \
     ffmpegaudioplayer.hh \
@@ -404,7 +403,10 @@ HEADERS += folding.hh \
     splitfile.hh \
     favoritespanewidget.hh \
     treeview.hh \
-    src/dict/lingualibre.h
+    src/dict/lingualibre.h \
+    src/ui/articleview.h \
+    src/ui/ftssearchpanel.h \
+    src/ui/searchpanel.h
 
 FORMS += groups.ui \
     dictgroupwidget.ui \
@@ -460,7 +462,6 @@ SOURCES += folding.cc \
     instances.cc \
     article_maker.cc \
     scanpopup.cc \
-    articleview.cc \
     audioplayerfactory.cc \
     multimediaaudioplayer.cc \
     externalaudioplayer.cc \
@@ -538,7 +539,10 @@ SOURCES += folding.cc \
     splitfile.cc \
     favoritespanewidget.cc \
     treeview.cc \
-    src/dict/lingualibre.cpp
+    src/dict/lingualibre.cpp \
+    src/ui/articleview.cpp \
+    src/ui/ftssearchpanel.cpp \
+    src/ui/searchpanel.cpp
 
 win32 {
     FORMS   += texttospeechsource.ui
