@@ -580,18 +580,16 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // This produced some funky mouse grip-related bugs so we commented it out
     //QApplication::processEvents(); // Make window appear immediately no matter what
   }
-  else
-  if ( ui.pinButton->isChecked() )
-  {
+  else if( ui.pinButton->isChecked() ) {
     // Pinned-down window isn't always on top, so we need to raise it
     show();
-    activateWindow();
-    raise();
+    if( cfg.preferences.raiseWindowOnSearch ) {
+      activateWindow();
+      raise();
+    }
   }
 #if defined( HAVE_X11 )
-  else
-  if ( ( windowFlags() & Qt::Tool ) == Qt::Tool )
-  {
+  else if( ( windowFlags() & Qt::Tool ) == Qt::Tool && cfg.preferences.raiseWindowOnSearch ) {
     // Ensure that the window with Qt::Tool flag always has focus on X11.
     activateWindow();
     raise();
