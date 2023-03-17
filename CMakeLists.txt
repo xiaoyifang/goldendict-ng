@@ -133,7 +133,6 @@ set(QRC_RESOURCES
 
 set(UI_SRC
         about.ui
-        articleview.ui
         authentication.ui
         chineseconversion.ui
         dictgroupwidget.ui

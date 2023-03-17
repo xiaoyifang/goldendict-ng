@@ -16,6 +16,7 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   -bugprone-reserved-identifier,
   -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-prefer-member-initializer,
   -google-default-arguments,
   -misc-non-private-member-variables-in-classes,
   -misc-const-correctness,

@@ -412,7 +412,6 @@ FORMS += groups.ui \
     sources.ui \
     initializing.ui \
     scanpopup.ui \
-    articleview.ui \
     preferences.ui \
     about.ui \
     editdictionaries.ui \

@@ -48,6 +48,7 @@ ExperimentalAutoDetectBinPacking: true
 FixNamespaceComments: false
 IncludeBlocks: Regroup
 IndentCaseLabels: true
+IndentAccessModifiers: false
 IndentPPDirectives: BeforeHash
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: Inner
