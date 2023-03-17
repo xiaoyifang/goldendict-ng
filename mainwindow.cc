@@ -2934,11 +2934,9 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     raise();
     shown = true;
   }
-  else
-  if ( !isActiveWindow() )
-  {
+  else if( !isActiveWindow() ) {
     qApp->setActiveWindow( this );
-    if (cfg.preferences.raiseWindowOnSearch) {
+    if( cfg.preferences.raiseWindowOnSearch ) {
       raise();
       activateWindow();
     }
