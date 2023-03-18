@@ -42,6 +42,7 @@
 #endif
 
 #include <QBuffer>
+#include <QStackedWidget>
 
 #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #include "speechclient.hh"
@@ -250,13 +251,45 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   ftsPosition( 0 )
 {
   // setup GUI
-  webview        = new ArticleWebView( this );
+
+  webview        = new ArticleWebView( this , const_cast< Config::Class * >( &cfg ) );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
 
-  // Layout
   auto * mainLayout = new QVBoxLayout( this );
-  mainLayout->addWidget( webview );
+
+  // Special treatment of darkReaderMode
+  // As of Qt6.4, the Qt WebEngine/Chromium's white loading color cannot be changed.
+  // Here we cover the problem by swapping it out when the page is loading.
+
+  // if darkReaderMode not enabled, then just add webview normally.
+  if( !cfg.preferences.darkReaderMode ) {
+    mainLayout->addWidget( webview );
+  }
+  else {
+
+    auto * container  = new QStackedWidget( this );
+    auto * dummyBlack = new QWidget( this );
+    dummyBlack->setStyleSheet( "background-color:#242525;" );
+    container->setStyleSheet( "background-color:#242525;" );
+    container->addWidget( webview );
+    container->addWidget( dummyBlack );
+
+    connect( webview, &ArticleWebView::loadFinished, this, [ = ]() {
+      // delay showing the webview because page rendering will show a glimpse of white
+      QTimer::singleShot( 200, [ = ]() { container->setCurrentWidget( webview );});
+    });
+
+    connect( webview, &ArticleWebView::loadStarted, this, [ = ]() {
+      container->setCurrentWidget( dummyBlack );
+    } );
+
+    mainLayout->addWidget( container );
+
+    container->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  }
+
+  // Layout
   mainLayout->addWidget( ftsSearchPanel );
   mainLayout->addWidget( searchPanel );
 
@@ -279,8 +312,6 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   connect( ftsSearchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
 
   //
-
-  webview->setUp( const_cast< Config::Class * >( &cfg ) );
 
   goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
   webview->addAction( &goBackAction );
