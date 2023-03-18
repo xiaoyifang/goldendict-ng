@@ -1,34 +1,38 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __ARTICLEVIEW_HH_INCLUDED__
-#define __ARTICLEVIEW_HH_INCLUDED__
+#ifndef GOLDENDICT_ARTICLEVIEW_H
+#define GOLDENDICT_ARTICLEVIEW_H
 
-#include <QWebEngineView>
+#include <QAction>
 #include <QMap>
-#include <QUrl>
 #include <QSet>
+#include <QUrl>
+#include <QWebEngineView>
 #include <list>
 #include "article_netmgr.hh"
 #include "audioplayerinterface.hh"
 #include "instances.hh"
 #include "groupcombobox.hh"
-#include "ui_articleview.h"
 #include "globalbroadcaster.h"
 #include "article_inspect.h"
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QRegExp>
+#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QRegExp>
+
 #endif
 #include "ankiconnector.h"
 #include "webmultimediadownload.hh"
 #include "base_type.h"
+#include "articlewebview.hh"
+#include "ui/searchpanel.h"
+#include "ui/ftssearchpanel.h"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent ;
 
 /// A widget with the web view tailored to view and handle articles -- it
 /// uses the appropriate netmgr, handles link clicks, rmb clicks etc
-class ArticleView: public QFrame
+class ArticleView: public QWidget
 {
   Q_OBJECT
 
@@ -38,9 +42,8 @@ class ArticleView: public QFrame
   Instances::Groups const & groups;
   bool popupView;
   Config::Class const & cfg;
-  QWebChannel *channel;
+  QWebChannel * channel;
   ArticleViewAgent * agent;
-  Ui::ArticleView ui;
 
   AnkiConnector  * ankiConnector;
 
@@ -167,7 +170,13 @@ public:
 
   void setDelayedHighlightText(QString const & text);
 
-public slots:
+ private:
+  // widgets
+  ArticleWebView * webview;
+  SearchPanel * searchPanel;
+  FtsSearchPanel * ftsSearchPanel;
+
+ public slots:
 
   /// Goes back in history
   void back();
@@ -176,8 +185,7 @@ public slots:
   void forward();
 
   /// Takes the focus to the view
-  void focus()
-  { ui.definition->setFocus( Qt::ShortcutFocusReason ); }
+  void focus() { webview->setFocus( Qt::ShortcutFocusReason ); }
 
 public:
 
@@ -192,11 +200,11 @@ public:
 
   void setZoomFactor( qreal factor )
   {
-    qreal existedFactor = ui.definition->zoomFactor();
-    if(!qFuzzyCompare(existedFactor,factor)){
-      qDebug()<<"zoom factor ,existed:"<<existedFactor<<"set:"<<factor;
-      ui.definition->setZoomFactor( factor );
-      //ui.definition->page()->setZoomFactor(factor);
+    qreal existedFactor = webview->zoomFactor();
+    if( !qFuzzyCompare( existedFactor, factor ) ) {
+      qDebug() << "zoom factor ,existed:" << existedFactor << "set:" << factor;
+      webview->setZoomFactor( factor );
+      //webview->page()->setZoomFactor(factor);
     }
   }
 
@@ -275,7 +283,7 @@ signals:
   /// typically in response to user actions
   /// (clicking on the article or using shortcuts).
   /// id - the dictionary id of the active article.
-  void activeArticleChanged ( ArticleView const *, QString const & id );
+  void activeArticleChanged( ArticleView const *, QString const & id );
 
   /// Signal to add word to history even if history is disabled
   void forceAddWordToHistory( const QString & word);
@@ -417,7 +425,6 @@ private:
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries(unsigned group);
-
 
   protected:
   // We need this to hide the search bar when we're showed

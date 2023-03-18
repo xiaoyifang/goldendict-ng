@@ -382,6 +382,7 @@ struct Preferences
 
   bool synonymSearchEnabled;
   bool stripClipboard;
+  bool raiseWindowOnSearch;
 
   QString addonStyle;
 

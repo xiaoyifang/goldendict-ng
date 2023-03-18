@@ -283,8 +283,9 @@ Preferences::Preferences():
 , limitInputPhraseLength( false )
 , inputPhraseLengthLimit( 1000 )
 , maxDictionaryRefsInContextMenu ( 20 )
-, synonymSearchEnabled( true )
-    , stripClipboard( false )
+, synonymSearchEnabled( true ),
+  stripClipboard( false ),
+  raiseWindowOnSearch(true)
 {
 }
 
@@ -1040,6 +1041,9 @@ Class load()
 
     if ( !preferences.namedItem( "stripClipboard" ).isNull() )
       c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
+
+    if( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
+      c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
@@ -2030,6 +2034,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "stripClipboard" );
     opt.appendChild( dd.createTextNode( c.preferences.stripClipboard ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "raiseWindowOnSearch" );
+    opt.appendChild( dd.createTextNode( c.preferences.raiseWindowOnSearch ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     {
