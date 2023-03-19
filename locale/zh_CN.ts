@@ -4564,6 +4564,16 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>anki: post to anki failed</source>
         <translation>anki:发布失败</translation>
     </message>
+    <message>
+        <location filename="../epwing.cc" line="337"/>
+        <source>Previous Page</source>
+        <translation>上一页</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="373"/>
+        <source>Next Page</source>
+        <translation>下一页</translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>

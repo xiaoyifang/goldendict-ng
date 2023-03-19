@@ -1,15 +1,9 @@
-html
-{
-  background-color: white;
-}
-
 body
 {
   margin-top: 1px;
   margin-right: 3px;
   margin-left:  2px;
   margin-bottom: 3px;
-  background: white;
 }
 
 a
@@ -30,7 +24,6 @@ a:hover
   padding: 5px;
   border: 1px solid #d0dde2;
   border-radius: 8px;
-  background: white;
 }
 
 .gdactivearticle

@@ -22,9 +22,8 @@ class ArticleWebView: public QWebEngineView
 
 public:
 
-  ArticleWebView( QWidget * parent );
+  ArticleWebView( QWidget * parent, Config::Class * cfg);
   ~ArticleWebView();
-  void setUp( Config::Class * cfg );
 
   bool isMidButtonPressed() const
   { return midButtonPressed; }

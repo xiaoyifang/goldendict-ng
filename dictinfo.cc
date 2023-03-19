@@ -48,8 +48,11 @@ void DictInfo::showInfo( sptr<Dictionary::Class> dict )
 
   QString info = dict->getDescription();
 
-  if( !info.isEmpty() && info.compare( "NONE" ) != 0 )
-    ui.infoLabel->setPlainText( info );
+  if( !info.isEmpty() && info.compare( "NONE" ) != 0 ) {
+    //qtbug QTBUG-112020
+    info.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
+    ui.infoLabel->setHtml( info );
+  }
   else
     ui.infoLabel->clear();
 
