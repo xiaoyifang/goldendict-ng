@@ -47,6 +47,7 @@
 #include "resourceschemehandler.h"
 
 #include "keyboardstate.hh"
+#include "base/globalregex.hh"
 
 #ifdef Q_OS_MAC
 #include "macmouseover.hh"
@@ -4199,7 +4200,10 @@ void MainWindow::focusWordList()
 
 void MainWindow::addWordToHistory( const QString & word )
 {
-  history.addItem( History::Item( 1, word.trimmed() ) );
+    QRegularExpressionMatch m = RX::Epwing::refWord.match( word );
+    if( m.hasMatch() )
+        return;
+    history.addItem( History::Item( 1, word.trimmed() ) );
 }
 
 void MainWindow::forceAddWordToHistory( const QString & word )
