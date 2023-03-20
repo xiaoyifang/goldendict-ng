@@ -4200,8 +4200,7 @@ void MainWindow::focusWordList()
 
 void MainWindow::addWordToHistory( const QString & word )
 {
-    QRegularExpressionMatch m = RX::Epwing::refWord.match( word );
-    if( m.hasMatch() )
+    if(QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
         return;
     history.addItem( History::Item( 1, word.trimmed() ) );
 }
