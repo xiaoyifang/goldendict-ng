@@ -352,6 +352,8 @@ void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & ar
   {
     text = QString( "Article reading error: %1")
              .arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
   }
 
   articleHeadword = string( headword.toUtf8().data() );
@@ -384,9 +386,11 @@ void EpwingDictionary::loadArticlePreviousPage(
   {
     Mutex::Lock _( eBook.getLibMutex() );
     pos = eBook.getArticlePreviousPage( headword, text, articlePage, articleOffset, false );
-  } catch( std::exception & e )
-  {
-    text = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
+  }
+  catch( std::exception & e ) {
+    text        = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
   }
 
   articleHeadword = string( headword.toUtf8().data() );
@@ -629,16 +633,16 @@ void EpwingArticleRequest::run()
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
-  // Also try to find word in the built-in dictionary index
-  getBuiltInArticle(word, pages, offsets, mainArticles );
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
-    getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
-  }
-
-
   QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
   bool ref                  = m.hasMatch();
+
+  if( !ref ) {
+    // Also try to find word in the built-in dictionary index
+    getBuiltInArticle( word, pages, offsets, mainArticles );
+    for( unsigned x = 0; x < alts.size(); ++x ) {
+      getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
+    }
+  }
 
   if ( mainArticles.empty() && alternateArticles.empty() && !ref)
   {
