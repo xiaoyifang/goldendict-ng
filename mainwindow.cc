@@ -706,8 +706,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &ftsIndexing, &FTS::FtsIndexing::newIndexingName, this, &MainWindow::showFTSIndexingName );
 
-
-
   applyProxySettings();
 
   //set  webengineview font
@@ -735,21 +733,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-#ifndef Q_OS_MAC
-  {
-    if( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#else
-  {
-    if( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#endif
+  if( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
+  if( cfg.mainWindowState.size() )
+    restoreState( cfg.mainWindowState, 1 );
 
   // Show the initial welcome text
 
