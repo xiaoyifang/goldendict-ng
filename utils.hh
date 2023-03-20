@@ -11,6 +11,7 @@
 #include <QUrlQuery>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QWidget>
 #include "filetype.hh"
 
 namespace Utils
@@ -312,6 +313,10 @@ QString getSchemeAndHost( QUrl const & url );
 
 namespace Path{
 QString combine(const QString& path1, const QString& path2);
+}
+
+namespace Widget{
+void setNoResultColor(QWidget * widget, bool noResult);
 }
 
 }

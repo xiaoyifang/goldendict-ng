@@ -103,7 +103,8 @@ void WordList::refreshTranslateLine()
   if ( translateLine->property( "noResults" ).toBool() != setMark )
   {
     translateLine->setProperty( "noResults", setMark );
-    translateLine->setStyleSheet( translateLine->styleSheet() );
+
+    Utils::Widget::setNoResultColor( translateLine, setMark );
   }
 
 }

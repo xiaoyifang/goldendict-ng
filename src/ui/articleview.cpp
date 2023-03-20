@@ -2217,8 +2217,7 @@ void ArticleView::openSearch()
   if( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
     searchPanel->lineEdit->setProperty( "noResults", false );
 
-    // Reload stylesheet
-    reloadStyleSheet();
+    Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
   }
 }
 
@@ -2350,11 +2349,10 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
             {
               bool setMark = !text.isEmpty() && !match;
 
-    if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
-      searchPanel->lineEdit->setProperty( "noResults", setMark );
+              if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
+                searchPanel->lineEdit->setProperty( "noResults", setMark );
 
-                // Reload stylesheet
-                reloadStyleSheet();
+                Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
               }
             } );
 }
@@ -2376,19 +2374,6 @@ void ArticleView::findText( QString & text,
   } );
 #endif
 }
-
-void ArticleView::reloadStyleSheet()
-{
-  for( QWidget * w = parentWidget(); w; w = w->parentWidget() )
-  {
-    if ( w->styleSheet().size() )
-    {
-      w->setStyleSheet( w->styleSheet() );
-      break;
-    }
-  }
-}
-
 
 bool ArticleView::closeSearch()
 {
