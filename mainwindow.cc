@@ -706,14 +706,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &ftsIndexing, &FTS::FtsIndexing::newIndexingName, this, &MainWindow::showFTSIndexingName );
 
-#ifndef Q_OS_MAC
-  {
-    if ( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if ( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#endif
+
 
   applyProxySettings();
 
@@ -736,20 +729,27 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setWindowTitle( "GoldenDict" );
 
-#ifdef Q_OS_MAC
-  {
-    if ( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if ( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#endif
-
   blockUpdateWindowTitle = true;
   addNewTab();
 
   // Create tab list menu
   createTabList();
+
+#ifndef Q_OS_MAC
+  {
+    if( cfg.mainWindowGeometry.size() )
+      restoreGeometry( cfg.mainWindowGeometry );
+    if( cfg.mainWindowState.size() )
+      restoreState( cfg.mainWindowState, 1 );
+  }
+#else
+  {
+    if( cfg.mainWindowGeometry.size() )
+      restoreGeometry( cfg.mainWindowGeometry );
+    if( cfg.mainWindowState.size() )
+      restoreState( cfg.mainWindowState, 1 );
+  }
+#endif
 
   // Show the initial welcome text
 
