@@ -129,8 +129,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   cfg( cfg_ ),
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  articleMaker( dictionaries, groupInstances, cfg.preferences.displayStyle,
-                cfg.preferences.addonStyle ),
+  articleMaker( dictionaries, groupInstances, cfg_.preferences ),
   articleNetMgr( this, dictionaries, articleMaker,
                  cfg.preferences.disallowContentFromOtherSites, cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
@@ -186,8 +185,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   ui.setupUi( this );
-
-  articleMaker.setCollapseParameters( cfg.preferences.collapseBigArticles, cfg.preferences.articleSizeLimit );
 
   // Set own gesture recognizers
 #ifndef Q_OS_MAC
@@ -2230,8 +2227,6 @@ void MainWindow::editPreferences()
     newCfg.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
     newCfg.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
-    bool needReload = false;
-
     // See if we need to reapply Qt stylesheets
     if( cfg.preferences.displayStyle != newCfg.displayStyle ||
       cfg.preferences.darkMode != newCfg.darkMode )
@@ -2239,20 +2234,9 @@ void MainWindow::editPreferences()
       applyQtStyleSheet( newCfg.addonStyle, newCfg.displayStyle, newCfg.darkMode );
     }
 
-    // see if we need to reapply articleview style
-    if( cfg.preferences.displayStyle != newCfg.displayStyle ||
-      cfg.preferences.addonStyle != newCfg.addonStyle ||
-      cfg.preferences.darkReaderMode != newCfg.darkReaderMode )
-    {
-      articleMaker.setDisplayStyle( newCfg.displayStyle, newCfg.addonStyle );
-      needReload = true;
-    }
-
-    if( cfg.preferences.collapseBigArticles != newCfg.collapseBigArticles
-        || cfg.preferences.articleSizeLimit != newCfg.articleSizeLimit )
-    {
-      articleMaker.setCollapseParameters( newCfg.collapseBigArticles, newCfg.articleSizeLimit );
-    }
+    bool needReload = ( cfg.preferences.displayStyle != newCfg.displayStyle ||
+                        cfg.preferences.addonStyle != newCfg.addonStyle ||
+                        cfg.preferences.darkReaderMode != newCfg.darkReaderMode );
 
     // See if we need to reapply expand optional parts mode
     if( cfg.preferences.alwaysExpandOptionalParts != newCfg.alwaysExpandOptionalParts )
@@ -2285,6 +2269,8 @@ void MainWindow::editPreferences()
 
     if( cfg.preferences.maxNetworkCacheSize != newCfg.maxNetworkCacheSize )
       setupNetworkCache( newCfg.maxNetworkCacheSize );
+
+    // Some widget's update depends on cfg, so this line  must be here.
     cfg.preferences = newCfg;
 
     audioPlayerFactory.setPreferences( cfg.preferences );
