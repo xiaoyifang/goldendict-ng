@@ -971,6 +971,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
 </context>
 <context>
+    <name>Epwing::EpwingDictionary</name>
+    <message>
+        <location filename="../epwing.cc" line="339"/>
+        <source>Previous Page</source>
+        <translation>上一页</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="375"/>
+        <source>Next Page</source>
+        <translation>下一页</translation>
+    </message>
+</context>
+<context>
     <name>ExternalViewer</name>
     <message>
         <location filename="../externalviewer.cc" line="53"/>

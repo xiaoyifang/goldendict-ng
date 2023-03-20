@@ -83,6 +83,8 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 {
+  Q_DECLARE_TR_FUNCTIONS(Epwing::EpwingDictionary)
+
   Mutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
@@ -334,7 +336,7 @@ string Epwing::EpwingDictionary::epwing_previous_button(int& articlePage, int& a
 {
     QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
     string previousLink    = "<p><a class=\"epwing_previous_page\" href=\"gdlookup://localhost/"
-      + previousButton.toStdString() + "\">" + QObject::tr( "Previous Page" ).toStdString() + "</a></p>";
+      + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
 
     return previousLink;
 }
@@ -370,7 +372,7 @@ string Epwing::EpwingDictionary::epwing_next_button(int& articlePage, int& artic
 {
     QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
     string nextLink = "<p><a class=\"epwing_next_page\" href=\"gdlookup://localhost/" + refLink.toStdString() + "\">"
-      + QObject::tr( "Next Page" ).toStdString() + "</a></p>";
+      + tr( "Next Page" ).toStdString() + "</a></p>";
 
     return nextLink;
 }
