@@ -2207,63 +2207,63 @@ void MainWindow::editPreferences()
 
   if ( preferences.exec() == QDialog::Accepted )
   {
-    Config::Preferences p = preferences.getPreferences();
+    Config::Preferences newCfg = preferences.getPreferences();
 
     // These parameters are not set in dialog
-    p.zoomFactor = cfg.preferences.zoomFactor;
-    p.helpZoomFactor = cfg.preferences.helpZoomFactor;
-    p.wordsZoomLevel = cfg.preferences.wordsZoomLevel;
-    p.hideMenubar = cfg.preferences.hideMenubar;
-    p.searchInDock = cfg.preferences.searchInDock;
-    p.alwaysOnTop = cfg.preferences.alwaysOnTop;
+    newCfg.zoomFactor = cfg.preferences.zoomFactor;
+    newCfg.helpZoomFactor = cfg.preferences.helpZoomFactor;
+    newCfg.wordsZoomLevel = cfg.preferences.wordsZoomLevel;
+    newCfg.hideMenubar = cfg.preferences.hideMenubar;
+    newCfg.searchInDock = cfg.preferences.searchInDock;
+    newCfg.alwaysOnTop = cfg.preferences.alwaysOnTop;
 
-    p.proxyServer.systemProxyUser = cfg.preferences.proxyServer.systemProxyUser;
-    p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
+    newCfg.proxyServer.systemProxyUser = cfg.preferences.proxyServer.systemProxyUser;
+    newCfg.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
-    p.fts.dialogGeometry = cfg.preferences.fts.dialogGeometry;
-    p.fts.matchCase = cfg.preferences.fts.matchCase;
-    p.fts.maxArticlesPerDictionary = cfg.preferences.fts.maxArticlesPerDictionary;
-    p.fts.maxDistanceBetweenWords = cfg.preferences.fts.maxDistanceBetweenWords;
-    p.fts.searchMode = cfg.preferences.fts.searchMode;
-    p.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
-    p.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
-    p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
-    p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
+    newCfg.fts.dialogGeometry = cfg.preferences.fts.dialogGeometry;
+    newCfg.fts.matchCase = cfg.preferences.fts.matchCase;
+    newCfg.fts.maxArticlesPerDictionary = cfg.preferences.fts.maxArticlesPerDictionary;
+    newCfg.fts.maxDistanceBetweenWords = cfg.preferences.fts.maxDistanceBetweenWords;
+    newCfg.fts.searchMode = cfg.preferences.fts.searchMode;
+    newCfg.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
+    newCfg.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
+    newCfg.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
+    newCfg.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
     bool needReload = false;
 
     // See if we need to reapply Qt stylesheets
-    if( cfg.preferences.displayStyle != p.displayStyle ||
-      cfg.preferences.darkMode != p.darkMode )
+    if( cfg.preferences.displayStyle != newCfg.displayStyle ||
+      cfg.preferences.darkMode != newCfg.darkMode )
     {
-      applyQtStyleSheet( p.addonStyle, p.displayStyle, p.darkMode );
+      applyQtStyleSheet( newCfg.addonStyle, newCfg.displayStyle, newCfg.darkMode );
     }
 
     // see if we need to reapply articleview style
-    if( cfg.preferences.displayStyle != p.displayStyle ||
-      cfg.preferences.addonStyle != p.addonStyle ||
-      cfg.preferences.darkReaderMode != p.darkReaderMode )
+    if( cfg.preferences.displayStyle != newCfg.displayStyle ||
+      cfg.preferences.addonStyle != newCfg.addonStyle ||
+      cfg.preferences.darkReaderMode != newCfg.darkReaderMode )
     {
-      articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
+      articleMaker.setDisplayStyle( newCfg.displayStyle, newCfg.addonStyle );
       needReload = true;
     }
 
-    if( cfg.preferences.collapseBigArticles != p.collapseBigArticles
-        || cfg.preferences.articleSizeLimit != p.articleSizeLimit )
+    if( cfg.preferences.collapseBigArticles != newCfg.collapseBigArticles
+        || cfg.preferences.articleSizeLimit != newCfg.articleSizeLimit )
     {
-      articleMaker.setCollapseParameters( p.collapseBigArticles, p.articleSizeLimit );
+      articleMaker.setCollapseParameters( newCfg.collapseBigArticles, newCfg.articleSizeLimit );
     }
 
     // See if we need to reapply expand optional parts mode
-    if( cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts )
+    if( cfg.preferences.alwaysExpandOptionalParts != newCfg.alwaysExpandOptionalParts )
     {
-      emit setExpandOptionalParts( p.alwaysExpandOptionalParts );
+      emit setExpandOptionalParts( newCfg.alwaysExpandOptionalParts );
       // Signal setExpandOptionalParts reload all articles
       needReload = false;
     }
 
     // See if we need to change help language
-    if( cfg.preferences.helpLanguage != p.helpLanguage )
+    if( cfg.preferences.helpLanguage != newCfg.helpLanguage )
       closeGDHelp();
 
     for( int x = 0; x < ui.tabWidget->count(); ++x )
@@ -2271,21 +2271,21 @@ void MainWindow::editPreferences()
       ArticleView & view =
         dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
-      view.setSelectionBySingleClick( p.selectWordBySingleClick );
+      view.setSelectionBySingleClick( newCfg.selectWordBySingleClick );
 
       if( needReload )
         view.reload();
     }
 
-    if( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
-      history.setSaveInterval( p.historyStoreInterval );
+    if( cfg.preferences.historyStoreInterval != newCfg.historyStoreInterval )
+      history.setSaveInterval( newCfg.historyStoreInterval );
 
-    if( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval )
-      ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
+    if( cfg.preferences.favoritesStoreInterval != newCfg.favoritesStoreInterval )
+      ui.favoritesPaneWidget->setSaveInterval( newCfg.favoritesStoreInterval );
 
-    if( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize )
-      setupNetworkCache( p.maxNetworkCacheSize );
-    cfg.preferences = p;
+    if( cfg.preferences.maxNetworkCacheSize != newCfg.maxNetworkCacheSize )
+      setupNetworkCache( newCfg.maxNetworkCacheSize );
+    cfg.preferences = newCfg;
 
     audioPlayerFactory.setPreferences( cfg.preferences );
 
