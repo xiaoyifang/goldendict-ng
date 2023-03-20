@@ -9,32 +9,29 @@
 #include <QTimer>
 #include <QDialog>
 #include <QMainWindow>
-#include <QColor>
 
 #ifdef Q_OS_WIN32
 #include <qt_windows.h>
 #endif
 
-ArticleWebView::ArticleWebView( QWidget * parent, Config::Class * cfg ):
+ArticleWebView::ArticleWebView( QWidget *parent ):
   QWebEngineView( parent ),
   midButtonPressed( false ),
-  selectionBySingleClick( false ),
-  cfg(cfg)
+  selectionBySingleClick( false )
 {
-  auto *page = new ArticleWebPage( this );
-
-  if(cfg->preferences.darkReaderMode){
-    page->setBackgroundColor(QColor(36,37,37));
-  }
-
+  auto page = new ArticleWebPage( this );
   connect( page, &ArticleWebPage::linkClicked, this, &ArticleWebView::linkClicked );
   this->setPage( page );
-  setZoomFactor(cfg->preferences.zoomFactor);
-
 }
 
 ArticleWebView::~ArticleWebView()
 {
+}
+
+void ArticleWebView::setUp( Config::Class * cfg )
+{
+  this->cfg = cfg;
+  setZoomFactor(cfg->preferences.zoomFactor);
 }
 
 QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType type )
