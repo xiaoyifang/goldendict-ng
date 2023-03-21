@@ -14,10 +14,12 @@ public:
   explicit AnkiConnector( QObject * parent, Config::Class const & cfg );
 
   void sendToAnki( QString const & word, QString const & text, QString const & sentence );
+  void ankiSearch( QString const & word);
 
 private:
   QNetworkAccessManager * mgr;
   Config::Class const & cfg;
+  void postToAnki( QString const & postData );
 public :
 signals:
   void errorText( QString const & );
@@ -26,3 +28,4 @@ private slots:
 };
 
 #endif // ANKICONNECTOR_H
+
