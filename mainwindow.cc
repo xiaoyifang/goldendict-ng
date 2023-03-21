@@ -121,7 +121,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
   useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
-  switchExpandModeAction( this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
@@ -130,7 +129,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   cfg( cfg_ ),
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  articleMaker( dictionaries, groupInstances, cfg.preferences.displayStyle,
+  articleMaker( dictionaries, groupInstances, cfg.preferences , cfg.preferences.displayStyle,
                 cfg.preferences.addonStyle ),
   articleNetMgr( this, dictionaries, articleMaker,
                  cfg.preferences.disallowContentFromOtherSites, cfg.preferences.hideGoldenDictHeader ),
@@ -460,16 +459,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   addAction( &switchToPrevTabAction );
 
-  switchExpandModeAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
-  switchExpandModeAction.setShortcuts( QList< QKeySequence >() <<
-                                       QKeySequence( Qt::CTRL | Qt::Key_8 ) <<
-                                       QKeySequence( Qt::CTRL | Qt::Key_Asterisk ) <<
-                                       QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_8 ) );
-
-  connect( &switchExpandModeAction, &QAction::triggered, this, &MainWindow::switchExpandOptionalPartsMode );
-
-  addAction( &switchExpandModeAction );
-
   addAllTabToFavoritesAction.setText( tr( "Add all tabs to Favorites" ) );
 
   connect( &addAllTabToFavoritesAction, &QAction::triggered, this, &MainWindow::addAllTabsToFavorites );
@@ -771,8 +760,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this,&MainWindow::phraseReceived,
     Qt::QueuedConnection);
 
-  connect( this, &MainWindow::setExpandOptionalParts, scanPopup, &ScanPopup::setViewExpandMode );
-  connect( scanPopup, &ScanPopup::setExpandMode, this, &MainWindow::setExpandMode );
   connect( scanPopup, &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
   connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
   connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
@@ -1715,10 +1702,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
   connect( view, &ArticleView::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
 
-  connect( this, &MainWindow::setExpandOptionalParts, view, &ArticleView::receiveExpandOptionalParts );
-
-  connect( view, &ArticleView::setExpandMode, this, &MainWindow::setExpandMode );
-
   connect( view, &ArticleView::sendWordToHistory, this, &MainWindow::addWordToHistory );
 
   connect( view, &ArticleView::sendWordToInputLine, this, &MainWindow::sendWordToInputLine );
@@ -2245,9 +2228,7 @@ void MainWindow::editPreferences()
     // See if we need to reapply expand optional parts mode
     if( cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts )
     {
-      emit setExpandOptionalParts( p.alwaysExpandOptionalParts );
-      // Signal setExpandOptionalParts reload all articles
-      needReload = false;
+      needReload = true;
     }
 
     // See if we need to change help language
@@ -4197,18 +4178,6 @@ void MainWindow::forceAddWordToHistory( const QString & word )
     history.enableAdd( true );
     history.addItem( History::Item( 1, word.trimmed() ) );
     history.enableAdd( cfg.preferences.storeHistory );
-}
-
-void MainWindow::setExpandMode( bool expand )
-{
-  articleMaker.setExpandOptionalParts( expand );
-}
-
-void MainWindow::switchExpandOptionalPartsMode()
-{
-  ArticleView * view = getCurrentArticleView();
-  if( view )
-    view->switchExpandOptionalParts();
 }
 
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )

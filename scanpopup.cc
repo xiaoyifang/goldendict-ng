@@ -109,9 +109,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 dictionaryBar.toggleViewAction()
                                 );
 
-  connect( this, &ScanPopup::switchExpandMode, definition, &ArticleView::switchExpandOptionalParts );
-  connect( this, &ScanPopup::setViewExpandMode, definition, &ArticleView::receiveExpandOptionalParts );
-  connect( definition, &ArticleView::setExpandMode, this, &ScanPopup::setExpandMode );
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
