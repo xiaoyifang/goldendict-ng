@@ -13,7 +13,6 @@
 #else
 #include <QTextCodec>
 #endif
-#include <QDebug>
 
 using namespace BtreeIndexing;
 using std::vector;

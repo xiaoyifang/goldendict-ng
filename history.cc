@@ -5,7 +5,6 @@
 #include "config.hh"
 #include "atomic_rename.hh"
 #include <QFile>
-#include <QDebug>
 
 History::History( unsigned size, unsigned maxItemLength_ ): maxSize( size ),
   maxItemLength( maxItemLength_ ), addingEnabled( true )

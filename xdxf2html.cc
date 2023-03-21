@@ -13,7 +13,6 @@
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "utils.hh"
-#include <QDebug>
 #include "xdxf.hh"
 
 #include <QRegularExpression>

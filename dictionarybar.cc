@@ -6,7 +6,6 @@
 #include <QProcess>
 #include "gddebug.hh"
 #include "fsencoding.hh"
-#include <QDebug>
 
 using std::vector;
 

@@ -6,7 +6,6 @@
 #include <Qt>
 #include <QFrame>
 #include <QVBoxLayout>
-#include <QDebug>
 #include <QEvent>
 #include <QApplication>
 

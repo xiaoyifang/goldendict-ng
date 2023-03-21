@@ -5,7 +5,6 @@
 #include <vector>
 #include <errno.h>
 #include <string.h>
-#include <QDebug>
 #include "wstring_qt.hh"
 
 char const * const Iconv::GdWchar = "UTF-32LE";

@@ -20,7 +20,6 @@
 #include "ftshelpers.hh"
 #include <QUrl>
 
-#include <QDebug>
 
 #include <QRegularExpression>
 

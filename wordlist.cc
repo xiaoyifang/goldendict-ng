@@ -1,7 +1,6 @@
 /* This file is (c) 2013 Tvangeste <i.4m.l33t@yandex.ru>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <QDebug>
 
 #include "wordlist.hh"
 
