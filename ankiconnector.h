@@ -28,4 +28,3 @@ private slots:
 };
 
 #endif // ANKICONNECTOR_H
-

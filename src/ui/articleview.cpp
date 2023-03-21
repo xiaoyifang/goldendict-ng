@@ -552,7 +552,7 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = webview->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
-
+  
   if( url.url() == "about:blank" )
   {
     return;
@@ -560,7 +560,7 @@ void ArticleView::loadFinished( bool result )
 
   if( !result )
   {
-    qWarning() << "article loaded unsuccessful";
+    qWarning() << "article loaded unsuccessful"; 
     return;
   }
 
@@ -601,7 +601,7 @@ void ArticleView::loadFinished( bool result )
       url.setFragment(hash);
       webview->page()->runJavaScript(
         QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
-
+      
     }
     else
     {
@@ -1142,14 +1142,10 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   if( url.scheme().compare( "gdpicture" ) == 0 )
     load( url );
-  else
-  if ( url.scheme().compare( "ankisearch" ) == 0 )
-  {
+  else if( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
   }
-  else
-  if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 )
-  {
+  else if( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )
     {
       QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" )
@@ -2457,7 +2453,7 @@ void ArticleView::highlightFTSResults()
       QString regString = Utils::Url::queryItemValue( url, "regexp" );
 	  if( regString.isEmpty() )
 	    return;
-
+      
       bool ignoreDiacritics = Utils::Url::hasQueryItem( url, "ignore_diacritics" );
 
       if( ignoreDiacritics )
