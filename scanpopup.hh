@@ -67,10 +67,8 @@ signals:
   void sendPhraseToMainWindow( Config::InputPhrase const & phrase );
   /// Close opened menus when window hide
   void closeMenu();
-  /// Signals to set expand optional parts mode (retranslation from/to MainWindow and dictionary bar)
-  void setExpandMode( bool expand );
+
   void inspectSignal(QWebEnginePage * page);
-  void setViewExpandMode( bool expand );
   /// Signal to switch expand optional parts mode
   void switchExpandMode();
   /// Signal to add word to history even if history is disabled

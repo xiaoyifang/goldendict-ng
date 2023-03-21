@@ -24,14 +24,15 @@ using std::list;
 
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
+                            const Config::Preferences & cfg_,
                             QString const & displayStyle_,
                             QString const & addonStyle_):
   dictionaries( dictionaries_ ),
   groups( groups_ ),
+  cfg(cfg_),
   displayStyle( displayStyle_ ),
   addonStyle( addonStyle_ ),
-  needExpandOptionalParts( true )
-, collapseBigArticles( true )
+  collapseBigArticles( true )
 , articleLimitSize( 500 )
 {
 }
@@ -280,7 +281,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   if ( groupId == Instances::Group::HelpGroupId )
   {
     // This is a special group containing internal welcome/help pages
-    string result = makeHtmlHeader( phrase.phrase, QString(), needExpandOptionalParts );
+    string result = makeHtmlHeader( phrase.phrase, QString(), cfg.alwaysExpandOptionalParts);
 
     if ( phrase.phrase == tr( "Welcome!" ) )
     {
@@ -353,7 +354,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   string header = makeHtmlHeader( phrase.phrase,
                                   activeGroup && activeGroup->icon.size() ?
                                     activeGroup->icon : QString(),
-                                  needExpandOptionalParts );
+                                  cfg.alwaysExpandOptionalParts );
 
   if ( mutedDicts.size() )
   {
@@ -369,13 +370,13 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
     return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, unmutedDicts, header,
                                collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
   }
   else
     return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, activeDicts, header,
                                collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
 }
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
@@ -420,11 +421,6 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   memcpy( &( r->getData().front() ), result.data(), result.size() );
 
   return r;
-}
-
-void ArticleMaker::setExpandOptionalParts( bool expand )
-{
-  needExpandOptionalParts = expand;
 }
 
 void ArticleMaker::setCollapseParameters( bool autoCollapse, int articleSize )

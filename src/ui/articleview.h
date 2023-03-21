@@ -291,9 +291,6 @@ signals:
   /// Signal to close popup menu
   void closePopupMenu();
 
-  /// Signal to set optional parts expand mode
-  void setExpandMode ( bool  expand );
-
   void sendWordToInputLine( QString const & word );
 
   void storeResourceSavePath(QString const & );
@@ -317,10 +314,6 @@ public slots:
 
   /// Handles F3 and Shift+F3 for search navigation
   bool handleF3( QObject * obj, QEvent * ev );
-
-  /// Control optional parts expanding
-  void receiveExpandOptionalParts( bool expand );
-  void switchExpandOptionalParts();
 
   /// Selects an entire text of the current article
   void selectCurrentArticle();

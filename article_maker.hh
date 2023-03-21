@@ -20,10 +20,10 @@ class ArticleMaker: public QObject
 
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
   std::vector< Instances::Group > const & groups;
+  const Config::Preferences & cfg;
 
   QString displayStyle, addonStyle;
 
-  bool needExpandOptionalParts;
   bool collapseBigArticles;
   int articleLimitSize;
 
@@ -35,6 +35,7 @@ public:
   /// of the inquiries, although those changes are perfectly legal.
   ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
                 std::vector< Instances::Group > const & groups,
+                const Config::Preferences & cfg,
                 QString const & displayStyle,
                 QString const & addonStyle);
 
@@ -68,9 +69,6 @@ public:
 
   /// Create page with one picture
   sptr< Dictionary::DataRequest > makePicturePage( std::string const & url ) const;
-
-  /// Set auto expanding optional parts of articles
-  void setExpandOptionalParts( bool expand );
 
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted

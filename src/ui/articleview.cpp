@@ -479,8 +479,6 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
   // Any search opened is probably irrelevant now
   closeSearch();
 
-  emit setExpandMode( expandOptionalParts );
-
   load( req );
 
   //QApplication::setOverrideCursor( Qt::WaitCursor );
@@ -530,8 +528,6 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
 
   // Clear highlight all button selection
   searchPanel->highlightAll->setChecked( false );
-
-  emit setExpandMode( expandOptionalParts );
 
   load( req );
 
@@ -2431,19 +2427,6 @@ void ArticleView::showEvent( QShowEvent * ev )
 
   if( !ftsSearchIsOpened )
     ftsSearchPanel->hide();
-}
-
-void ArticleView::receiveExpandOptionalParts( bool expand )
-{
-  if( expandOptionalParts != expand )
-    switchExpandOptionalParts();
-}
-
-void ArticleView::switchExpandOptionalParts()
-{
-  expandOptionalParts = !expandOptionalParts;
-  emit setExpandMode( expandOptionalParts );
-  reload();
 }
 
 void ArticleView::copyAsText()
