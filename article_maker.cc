@@ -24,24 +24,13 @@ using std::list;
 
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
-                            const Config::Preferences & cfg_,
-                            QString const & displayStyle_,
-                            QString const & addonStyle_):
+                            const Config::Preferences & cfg_ ):
   dictionaries( dictionaries_ ),
   groups( groups_ ),
-  cfg(cfg_),
-  displayStyle( displayStyle_ ),
-  addonStyle( addonStyle_ ),
-  collapseBigArticles( true )
-, articleLimitSize( 500 )
+  cfg( cfg_ )
 {
 }
 
-void ArticleMaker::setDisplayStyle( QString const & st, QString const & adst )
-{
-  displayStyle = st;
-  addonStyle = adst;
-}
 
 std::string ArticleMaker::makeHtmlHeader( QString const & word,
                                           QString const & icon,
@@ -87,19 +76,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   {
     result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
-    if ( displayStyle.size() )
+    if ( cfg.displayStyle.size() )
     {
       // Load an additional stylesheet
-      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(displayStyle);
+      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(cfg.displayStyle);
       result += "<link href=\"" + displayStyleCssFile.toStdString() +
                 R"("  media="all" rel="stylesheet" type="text/css">)";
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style.css";
 
       result += readCssFile(name ,"all");
@@ -122,9 +111,9 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
     result += readCssFile(Config::getUserCssPrintFileName() ,"print");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style-print.css";
       result += readCssFile(name ,"print");
     }
@@ -369,13 +358,13 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, unmutedDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
                                cfg.alwaysExpandOptionalParts, ignoreDiacritics );
   }
   else
     return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, activeDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
                                cfg.alwaysExpandOptionalParts, ignoreDiacritics );
 }
 
@@ -421,12 +410,6 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   memcpy( &( r->getData().front() ), result.data(), result.size() );
 
   return r;
-}
-
-void ArticleMaker::setCollapseParameters( bool autoCollapse, int articleSize )
-{
-  collapseBigArticles = autoCollapse;
-  articleLimitSize = articleSize;
 }
 
 

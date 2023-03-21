@@ -129,8 +129,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   cfg( cfg_ ),
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  articleMaker( dictionaries, groupInstances, cfg.preferences , cfg.preferences.displayStyle,
-                cfg.preferences.addonStyle ),
+  articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this, dictionaries, articleMaker,
                  cfg.preferences.disallowContentFromOtherSites, cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
@@ -186,8 +185,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   ui.setupUi( this );
-
-  articleMaker.setCollapseParameters( cfg.preferences.collapseBigArticles, cfg.preferences.articleSizeLimit );
 
   // Set own gesture recognizers
 #ifndef Q_OS_MAC
@@ -2201,8 +2198,6 @@ void MainWindow::editPreferences()
     p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
     p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
-    bool needReload = false;
-
     // See if we need to reapply Qt stylesheets
     if( cfg.preferences.displayStyle != p.displayStyle ||
       cfg.preferences.darkMode != p.darkMode )
@@ -2210,41 +2205,9 @@ void MainWindow::editPreferences()
       applyQtStyleSheet( p.addonStyle, p.displayStyle, p.darkMode );
     }
 
-    // see if we need to reapply articleview style
-    if( cfg.preferences.displayStyle != p.displayStyle ||
-      cfg.preferences.addonStyle != p.addonStyle ||
-      cfg.preferences.darkReaderMode != p.darkReaderMode )
-    {
-      articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
-      needReload = true;
-    }
-
-    if( cfg.preferences.collapseBigArticles != p.collapseBigArticles
-        || cfg.preferences.articleSizeLimit != p.articleSizeLimit )
-    {
-      articleMaker.setCollapseParameters( p.collapseBigArticles, p.articleSizeLimit );
-    }
-
-    // See if we need to reapply expand optional parts mode
-    if( cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts )
-    {
-      needReload = true;
-    }
-
     // See if we need to change help language
     if( cfg.preferences.helpLanguage != p.helpLanguage )
       closeGDHelp();
-
-    for( int x = 0; x < ui.tabWidget->count(); ++x )
-    {
-      ArticleView & view =
-        dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
-
-      view.setSelectionBySingleClick( p.selectWordBySingleClick );
-
-      if( needReload )
-        view.reload();
-    }
 
     if( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
       history.setSaveInterval( p.historyStoreInterval );
@@ -2254,7 +2217,32 @@ void MainWindow::editPreferences()
 
     if( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize )
       setupNetworkCache( p.maxNetworkCacheSize );
+
+    bool needReload =
+      ( cfg.preferences.displayStyle != p.displayStyle
+        || cfg.preferences.addonStyle != p.addonStyle
+        || cfg.preferences.darkReaderMode != p.darkReaderMode
+        || cfg.preferences.collapseBigArticles != p.collapseBigArticles
+        || cfg.preferences.articleSizeLimit != p.articleSizeLimit
+        || cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts // DSL format's special feature
+      );
+
+    // This line must be here because the components below require cfg's value to reconfigure
+    // After this point, p must not be accessed.
     cfg.preferences = p;
+
+    // Loop through all tabs and reload pages due to ArticleMaker's change.
+    for( int x = 0; x < ui.tabWidget->count(); ++x )
+    {
+      ArticleView & view =
+        dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
+
+      view.setSelectionBySingleClick( p.selectWordBySingleClick );
+
+      if( needReload ) {
+        view.reload();
+      }
+    }
 
     audioPlayerFactory.setPreferences( cfg.preferences );
 
