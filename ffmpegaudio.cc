@@ -15,7 +15,6 @@ extern "C" {
 
 #include <QString>
 #include <QDataStream>
-#include <QDebug>
 
 #include <vector>
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )

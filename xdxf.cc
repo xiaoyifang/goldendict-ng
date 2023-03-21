@@ -37,7 +37,6 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
-#include <QDebug>
 #include <QRegExp>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat>

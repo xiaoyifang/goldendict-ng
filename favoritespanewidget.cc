@@ -1,7 +1,6 @@
 /* This file is (c) 2017 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <QDebug>
 #include <QApplication>
 #include <QDockWidget>
 #include <QKeyEvent>

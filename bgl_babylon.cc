@@ -33,7 +33,6 @@
 #include "iconv.hh"
 #include "htmlescape.hh"
 #include <QString>
-#include <QDebug>
 #include "dictionary.hh"
 #include "wstring_qt.hh"
 

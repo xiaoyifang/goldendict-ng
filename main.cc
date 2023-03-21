@@ -28,7 +28,6 @@
 #include "atomic_rename.hh"
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 #include <QMessageBox>
-#include <QDebug>
 #include <QFile>
 #include <QByteArray>
 #include <QString>

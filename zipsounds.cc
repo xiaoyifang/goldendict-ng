@@ -18,7 +18,6 @@
 #include <string>
 #include <QFile>
 #include <QDir>
-#include <QDebug>
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>

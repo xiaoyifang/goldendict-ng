@@ -17,7 +17,6 @@
 #include <set>
 #include <QDir>
 #include <QFileInfo>
-#include <QDebug>
 
 namespace SoundDir {
 
