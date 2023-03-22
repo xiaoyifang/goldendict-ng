@@ -1063,7 +1063,7 @@ bool EpwingBook::processRef( EpwingHeadword & head)
       {
         // fixed the reference headword ,to avoid the headword collision with other entry .
         //if(!allHeadwordPositions.contains(key))
-        head.headword = QString( "r%1At%2" ).arg( pos.page ).arg( pos.offset );
+        head.headword = QString( "r%1at%2" ).arg( pos.page ).arg( pos.offset );
 
         //allRefPositions[ key ] = true;
 
