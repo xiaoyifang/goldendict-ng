@@ -83,6 +83,8 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 {
+  Q_DECLARE_TR_FUNCTIONS(Epwing::EpwingDictionary)
+
   Mutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
@@ -334,7 +336,7 @@ string Epwing::EpwingDictionary::epwing_previous_button(int& articlePage, int& a
 {
     QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
     string previousLink    = "<p><a class=\"epwing_previous_page\" href=\"gdlookup://localhost/"
-      + previousButton.toStdString() + "\">" + QObject::tr( "Previous Page" ).toStdString() + "</a></p>";
+      + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
 
     return previousLink;
 }
@@ -352,6 +354,8 @@ void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & ar
   {
     text = QString( "Article reading error: %1")
              .arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
   }
 
   articleHeadword = string( headword.toUtf8().data() );
@@ -370,7 +374,7 @@ string Epwing::EpwingDictionary::epwing_next_button(int& articlePage, int& artic
 {
     QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
     string nextLink = "<p><a class=\"epwing_next_page\" href=\"gdlookup://localhost/" + refLink.toStdString() + "\">"
-      + QObject::tr( "Next Page" ).toStdString() + "</a></p>";
+      + tr( "Next Page" ).toStdString() + "</a></p>";
 
     return nextLink;
 }
@@ -384,9 +388,11 @@ void EpwingDictionary::loadArticlePreviousPage(
   {
     Mutex::Lock _( eBook.getLibMutex() );
     pos = eBook.getArticlePreviousPage( headword, text, articlePage, articleOffset, false );
-  } catch( std::exception & e )
-  {
-    text = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
+  }
+  catch( std::exception & e ) {
+    text        = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
   }
 
   articleHeadword = string( headword.toUtf8().data() );
@@ -629,16 +635,16 @@ void EpwingArticleRequest::run()
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
-  // Also try to find word in the built-in dictionary index
-  getBuiltInArticle(word, pages, offsets, mainArticles );
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
-    getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
-  }
-
-
   QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
   bool ref                  = m.hasMatch();
+
+  if( !ref ) {
+    // Also try to find word in the built-in dictionary index
+    getBuiltInArticle( word, pages, offsets, mainArticles );
+    for( unsigned x = 0; x < alts.size(); ++x ) {
+      getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
+    }
+  }
 
   if ( mainArticles.empty() && alternateArticles.empty() && !ref)
   {

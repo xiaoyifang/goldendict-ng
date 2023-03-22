@@ -109,9 +109,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 dictionaryBar.toggleViewAction()
                                 );
 
-  connect( this, &ScanPopup::switchExpandMode, definition, &ArticleView::switchExpandOptionalParts );
-  connect( this, &ScanPopup::setViewExpandMode, definition, &ArticleView::receiveExpandOptionalParts );
-  connect( definition, &ArticleView::setExpandMode, this, &ScanPopup::setExpandMode );
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
@@ -679,8 +676,10 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
     {
-      ui.translateBox->translateLine()->setProperty( "noResults", false );
-      setStyleSheet( styleSheet() );
+      auto translateLine=ui.translateBox->translateLine();
+      translateLine->setProperty( "noResults", false );
+
+      Utils::Widget::setNoResultColor( translateLine, false );
     }
     return;
   }

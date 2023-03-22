@@ -1,4 +1,3 @@
-#translateLine,
 #wordList,
 #dictsPane,
 #dictsList,
@@ -12,44 +11,6 @@
 
 #navToolbar #menuButton::menu-indicator {
   image: none;
-}
-
-#navToolbar #translateLine
-{
-  border: 1px solid gray;
-  border-radius: 3px;
-  padding: 1px 3px 2px 3px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  margin-left: 0px;
-}
-
-#navToolbar GroupComboBox
-{
-  margin-right: 0px;
-  border: 1px solid gray;
-  border-right: 1px transparent;
-  border-radius: 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding: 2px 4px 2px 4px;
-}
-
-#navToolbar GroupComboBox:on {
-  padding: 3px 3px 1px 5px;
-}
-
-#navToolbar GroupComboBox::drop-down {
-   subcontrol-origin: padding;
-   subcontrol-position: top right;
-   width: 15px;
-   border-left: 1px solid darkgray;
-   border-right: 1px transparent;
-}
-
-#navToolbar GroupComboBox::down-arrow {
-    image: url(:/icons/1downarrow.svg);
-    max-height: 100%;
 }
 
 QTabBar::close-button {

@@ -20,12 +20,7 @@ class ArticleMaker: public QObject
 
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
   std::vector< Instances::Group > const & groups;
-
-  QString displayStyle, addonStyle;
-
-  bool needExpandOptionalParts;
-  bool collapseBigArticles;
-  int articleLimitSize;
+  const Config::Preferences & cfg;
 
 public:
 
@@ -33,14 +28,9 @@ public:
   /// groups' instances are to be passed. Those references are kept stored as
   /// references, and as such, any changes to them would reflect on the results
   /// of the inquiries, although those changes are perfectly legal.
-  ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
-                std::vector< Instances::Group > const & groups,
-                QString const & displayStyle,
-                QString const & addonStyle);
-
-  /// Sets the display style to use for any new requests. This affects the
-  /// choice of the stylesheet file.
-  void setDisplayStyle( QString const &, QString const & addonStyle );
+ ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
+               std::vector< Instances::Group > const & groups,
+               const Config::Preferences & cfg );
 
   /// Looks up the given phrase within the given group, and creates a full html
   /// page text containing its definition.
@@ -69,15 +59,9 @@ public:
   /// Create page with one picture
   sptr< Dictionary::DataRequest > makePicturePage( std::string const & url ) const;
 
-  /// Set auto expanding optional parts of articles
-  void setExpandOptionalParts( bool expand );
-
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
   static bool adjustFilePath( QString & fileName );
-
-  /// Set collapse articles parameters
-  void setCollapseParameters( bool autoCollapse, int articleSize );
 
 private:
   std::string readCssFile(QString const& fileName, std::string type) const;

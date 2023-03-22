@@ -73,7 +73,6 @@ public slots:
   void phraseReceived( Config::InputPhrase const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );
-  void setExpandMode( bool expand );
   void headwordFromFavorites( QString const &, QString const & );
   void quitApp();
 
@@ -115,7 +114,7 @@ private:
           closeAllTabAction, closeRestTabAction,
           switchToNextTabAction, switchToPrevTabAction,
           showDictBarNamesAction, useSmallIconsInToolbarsAction, toggleMenuBarAction,
-          switchExpandModeAction, focusHeadwordsDlgAction, focusArticleViewAction,
+          focusHeadwordsDlgAction, focusArticleViewAction,
           addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
@@ -320,9 +319,6 @@ private slots:
   void switchToPrevTab();
   void ctrlReleased();
 
-  // Switch optional parts expand mode for current tab
-  void switchExpandOptionalPartsMode();
-
   // Handling of active tab list
   void createTabList();
   void fillWindowsMenu();
@@ -493,9 +489,6 @@ private slots:
   void inspectElement( QWebEnginePage * );
 
 signals:
-  /// Set optional parts expand mode for all tabs
-  void setExpandOptionalParts( bool expand );
-
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( QString const & id );
 

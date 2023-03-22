@@ -22,7 +22,6 @@
 #include <vorbis/vorbisfile.h>
 #include <QDir>
 #include <QUrl>
-#include <QDebug>
 #include <QFile>
 
 #include "utils.hh"

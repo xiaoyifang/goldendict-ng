@@ -1,3 +1,13 @@
+html
+{
+  background-color: white;
+}
+
+body
+{
+  background: white;
+}
+
 a
 {
   text-decoration: none;
@@ -7,6 +17,11 @@ a
 a:hover
 {
   text-decoration: underline;
+}
+
+.gdarticle
+{
+  background: white;
 }
 
 /* The 'From ' string which preceeds dictionary name in the heading */

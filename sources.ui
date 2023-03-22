@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1010</width>
-    <height>336</height>
+    <width>831</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
       <enum>Qt::ElideNone</enum>
      </property>
      <property name="usesScrollButtons">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <widget class="QWidget" name="filesTab">
       <attribute name="icon">
@@ -858,8 +858,8 @@ Not implemented yet in GoldenDict.</string>
   <tabstop>paths</tabstop>
  </tabstops>
  <resources>
-  <include location="resources.qrc"/>
   <include location="flags.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>

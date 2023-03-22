@@ -7,7 +7,6 @@
 
 #include <QWidget>
 #include <QToolButton>
-#include <QDebug>
 
 GdAppStyle::GdAppStyle(QProxyStyle * parent) : QProxyStyle(parent) {}
 

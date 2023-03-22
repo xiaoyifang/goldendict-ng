@@ -42,7 +42,6 @@
 #endif
 
 #include <QBuffer>
-#include <QStackedWidget>
 
 #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #include "speechclient.hh"
@@ -251,45 +250,13 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   ftsPosition( 0 )
 {
   // setup GUI
-
-  webview        = new ArticleWebView( this , const_cast< Config::Class * >( &cfg ) );
+  webview        = new ArticleWebView( this );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
 
-  auto * mainLayout = new QVBoxLayout( this );
-
-  // Special treatment of darkReaderMode
-  // As of Qt6.4, the Qt WebEngine/Chromium's white loading color cannot be changed.
-  // Here we cover the problem by swapping it out when the page is loading.
-
-  // if darkReaderMode not enabled, then just add webview normally.
-  if( !cfg.preferences.darkReaderMode ) {
-    mainLayout->addWidget( webview );
-  }
-  else {
-
-    auto * container  = new QStackedWidget( this );
-    auto * dummyBlack = new QWidget( this );
-    dummyBlack->setStyleSheet( "background-color:#242525;" );
-    container->setStyleSheet( "background-color:#242525;" );
-    container->addWidget( webview );
-    container->addWidget( dummyBlack );
-
-    connect( webview, &ArticleWebView::loadFinished, this, [ = ]() {
-      // delay showing the webview because page rendering will show a glimpse of white
-      QTimer::singleShot( 200, [ = ]() { container->setCurrentWidget( webview );});
-    });
-
-    connect( webview, &ArticleWebView::loadStarted, this, [ = ]() {
-      container->setCurrentWidget( dummyBlack );
-    } );
-
-    mainLayout->addWidget( container );
-
-    container->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  }
-
   // Layout
+  auto * mainLayout = new QVBoxLayout( this );
+  mainLayout->addWidget( webview );
   mainLayout->addWidget( ftsSearchPanel );
   mainLayout->addWidget( searchPanel );
 
@@ -312,6 +279,8 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   connect( ftsSearchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
 
   //
+
+  webview->setUp( const_cast< Config::Class * >( &cfg ) );
 
   goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
   webview->addAction( &goBackAction );
@@ -510,8 +479,6 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
   // Any search opened is probably irrelevant now
   closeSearch();
 
-  emit setExpandMode( expandOptionalParts );
-
   load( req );
 
   //QApplication::setOverrideCursor( Qt::WaitCursor );
@@ -561,8 +528,6 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
 
   // Clear highlight all button selection
   searchPanel->highlightAll->setChecked( false );
-
-  emit setExpandMode( expandOptionalParts );
 
   load( req );
 
@@ -2248,8 +2213,7 @@ void ArticleView::openSearch()
   if( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
     searchPanel->lineEdit->setProperty( "noResults", false );
 
-    // Reload stylesheet
-    reloadStyleSheet();
+    Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
   }
 }
 
@@ -2381,11 +2345,10 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
             {
               bool setMark = !text.isEmpty() && !match;
 
-    if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
-      searchPanel->lineEdit->setProperty( "noResults", setMark );
+              if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
+                searchPanel->lineEdit->setProperty( "noResults", setMark );
 
-                // Reload stylesheet
-                reloadStyleSheet();
+                Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
               }
             } );
 }
@@ -2407,19 +2370,6 @@ void ArticleView::findText( QString & text,
   } );
 #endif
 }
-
-void ArticleView::reloadStyleSheet()
-{
-  for( QWidget * w = parentWidget(); w; w = w->parentWidget() )
-  {
-    if ( w->styleSheet().size() )
-    {
-      w->setStyleSheet( w->styleSheet() );
-      break;
-    }
-  }
-}
-
 
 bool ArticleView::closeSearch()
 {
@@ -2462,19 +2412,6 @@ void ArticleView::showEvent( QShowEvent * ev )
 
   if( !ftsSearchIsOpened )
     ftsSearchPanel->hide();
-}
-
-void ArticleView::receiveExpandOptionalParts( bool expand )
-{
-  if( expandOptionalParts != expand )
-    switchExpandOptionalParts();
-}
-
-void ArticleView::switchExpandOptionalParts()
-{
-  expandOptionalParts = !expandOptionalParts;
-  emit setExpandMode( expandOptionalParts );
-  reload();
 }
 
 void ArticleView::copyAsText()

@@ -52,6 +52,7 @@ IndentAccessModifiers: false
 IndentPPDirectives: BeforeHash
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: Inner
+PackConstructorInitializers: Never
 PointerAlignment: Middle
 ReflowComments: false
 SortIncludes: false

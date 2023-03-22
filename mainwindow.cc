@@ -47,6 +47,7 @@
 #include "resourceschemehandler.h"
 
 #include "keyboardstate.hh"
+#include "base/globalregex.hh"
 
 #ifdef Q_OS_MAC
 #include "macmouseover.hh"
@@ -120,7 +121,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
   useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
-  switchExpandModeAction( this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
@@ -129,8 +129,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   cfg( cfg_ ),
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  articleMaker( dictionaries, groupInstances, cfg.preferences.displayStyle,
-                cfg.preferences.addonStyle ),
+  articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this, dictionaries, articleMaker,
                  cfg.preferences.disallowContentFromOtherSites, cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
@@ -186,8 +185,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   ui.setupUi( this );
-
-  articleMaker.setCollapseParameters( cfg.preferences.collapseBigArticles, cfg.preferences.articleSizeLimit );
 
   // Set own gesture recognizers
 #ifndef Q_OS_MAC
@@ -459,16 +456,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   addAction( &switchToPrevTabAction );
 
-  switchExpandModeAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
-  switchExpandModeAction.setShortcuts( QList< QKeySequence >() <<
-                                       QKeySequence( Qt::CTRL | Qt::Key_8 ) <<
-                                       QKeySequence( Qt::CTRL | Qt::Key_Asterisk ) <<
-                                       QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_8 ) );
-
-  connect( &switchExpandModeAction, &QAction::triggered, this, &MainWindow::switchExpandOptionalPartsMode );
-
-  addAction( &switchExpandModeAction );
-
   addAllTabToFavoritesAction.setText( tr( "Add all tabs to Favorites" ) );
 
   connect( &addAllTabToFavoritesAction, &QAction::triggered, this, &MainWindow::addAllTabsToFavorites );
@@ -706,15 +693,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &ftsIndexing, &FTS::FtsIndexing::newIndexingName, this, &MainWindow::showFTSIndexingName );
 
-#ifndef Q_OS_MAC
-  {
-    if ( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if ( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#endif
-
   applyProxySettings();
 
   //set  webengineview font
@@ -736,20 +714,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setWindowTitle( "GoldenDict" );
 
-#ifdef Q_OS_MAC
-  {
-    if ( cfg.mainWindowGeometry.size() )
-      restoreGeometry( cfg.mainWindowGeometry );
-    if ( cfg.mainWindowState.size() )
-      restoreState( cfg.mainWindowState, 1 );
-  }
-#endif
-
   blockUpdateWindowTitle = true;
   addNewTab();
 
   // Create tab list menu
   createTabList();
+
+  if( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
+  if( cfg.mainWindowState.size() )
+    restoreState( cfg.mainWindowState, 1 );
 
   // Show the initial welcome text
 
@@ -783,8 +757,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this,&MainWindow::phraseReceived,
     Qt::QueuedConnection);
 
-  connect( this, &MainWindow::setExpandOptionalParts, scanPopup, &ScanPopup::setViewExpandMode );
-  connect( scanPopup, &ScanPopup::setExpandMode, this, &MainWindow::setExpandMode );
   connect( scanPopup, &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
   connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
   connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
@@ -1727,10 +1699,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt,
 
   connect( view, &ArticleView::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
 
-  connect( this, &MainWindow::setExpandOptionalParts, view, &ArticleView::receiveExpandOptionalParts );
-
-  connect( view, &ArticleView::setExpandMode, this, &MainWindow::setExpandMode );
-
   connect( view, &ArticleView::sendWordToHistory, this, &MainWindow::addWordToHistory );
 
   connect( view, &ArticleView::sendWordToInputLine, this, &MainWindow::sendWordToInputLine );
@@ -2230,8 +2198,6 @@ void MainWindow::editPreferences()
     p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
     p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
-    bool needReload = false;
-
     // See if we need to reapply Qt stylesheets
     if( cfg.preferences.displayStyle != p.displayStyle ||
       cfg.preferences.darkMode != p.darkMode )
@@ -2239,43 +2205,9 @@ void MainWindow::editPreferences()
       applyQtStyleSheet( p.addonStyle, p.displayStyle, p.darkMode );
     }
 
-    // see if we need to reapply articleview style
-    if( cfg.preferences.displayStyle != p.displayStyle ||
-      cfg.preferences.addonStyle != p.addonStyle ||
-      cfg.preferences.darkReaderMode != p.darkReaderMode )
-    {
-      articleMaker.setDisplayStyle( p.displayStyle, p.addonStyle );
-      needReload = true;
-    }
-
-    if( cfg.preferences.collapseBigArticles != p.collapseBigArticles
-        || cfg.preferences.articleSizeLimit != p.articleSizeLimit )
-    {
-      articleMaker.setCollapseParameters( p.collapseBigArticles, p.articleSizeLimit );
-    }
-
-    // See if we need to reapply expand optional parts mode
-    if( cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts )
-    {
-      emit setExpandOptionalParts( p.alwaysExpandOptionalParts );
-      // Signal setExpandOptionalParts reload all articles
-      needReload = false;
-    }
-
     // See if we need to change help language
     if( cfg.preferences.helpLanguage != p.helpLanguage )
       closeGDHelp();
-
-    for( int x = 0; x < ui.tabWidget->count(); ++x )
-    {
-      ArticleView & view =
-        dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
-
-      view.setSelectionBySingleClick( p.selectWordBySingleClick );
-
-      if( needReload )
-        view.reload();
-    }
 
     if( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
       history.setSaveInterval( p.historyStoreInterval );
@@ -2285,7 +2217,32 @@ void MainWindow::editPreferences()
 
     if( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize )
       setupNetworkCache( p.maxNetworkCacheSize );
+
+    bool needReload =
+      ( cfg.preferences.displayStyle != p.displayStyle
+        || cfg.preferences.addonStyle != p.addonStyle
+        || cfg.preferences.darkReaderMode != p.darkReaderMode
+        || cfg.preferences.collapseBigArticles != p.collapseBigArticles
+        || cfg.preferences.articleSizeLimit != p.articleSizeLimit
+        || cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts // DSL format's special feature
+      );
+
+    // This line must be here because the components below require cfg's value to reconfigure
+    // After this point, p must not be accessed.
     cfg.preferences = p;
+
+    // Loop through all tabs and reload pages due to ArticleMaker's change.
+    for( int x = 0; x < ui.tabWidget->count(); ++x )
+    {
+      ArticleView & view =
+        dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
+
+      view.setSelectionBySingleClick( p.selectWordBySingleClick );
+
+      if( needReload ) {
+        view.reload();
+      }
+    }
 
     audioPlayerFactory.setPreferences( cfg.preferences );
 
@@ -2420,7 +2377,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     if ( translateLine->property( "noResults" ).toBool() )
     {
       translateLine->setProperty( "noResults", false );
-      setStyleSheet( styleSheet() );
+
+      Utils::Widget::setNoResultColor( translateLine, false );
     }
     return;
   }
@@ -4199,7 +4157,9 @@ void MainWindow::focusWordList()
 
 void MainWindow::addWordToHistory( const QString & word )
 {
-  history.addItem( History::Item( 1, word.trimmed() ) );
+    if(QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
+        return;
+    history.addItem( History::Item( 1, word.trimmed() ) );
 }
 
 void MainWindow::forceAddWordToHistory( const QString & word )
@@ -4207,18 +4167,6 @@ void MainWindow::forceAddWordToHistory( const QString & word )
     history.enableAdd( true );
     history.addItem( History::Item( 1, word.trimmed() ) );
     history.enableAdd( cfg.preferences.storeHistory );
-}
-
-void MainWindow::setExpandMode( bool expand )
-{
-  articleMaker.setExpandOptionalParts( expand );
-}
-
-void MainWindow::switchExpandOptionalPartsMode()
-{
-  ArticleView * view = getCurrentArticleView();
-  if( view )
-    view->switchExpandOptionalParts();
 }
 
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )

@@ -24,23 +24,13 @@ using std::list;
 
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
-                            QString const & displayStyle_,
-                            QString const & addonStyle_):
+                            const Config::Preferences & cfg_ ):
   dictionaries( dictionaries_ ),
   groups( groups_ ),
-  displayStyle( displayStyle_ ),
-  addonStyle( addonStyle_ ),
-  needExpandOptionalParts( true )
-, collapseBigArticles( true )
-, articleLimitSize( 500 )
+  cfg( cfg_ )
 {
 }
 
-void ArticleMaker::setDisplayStyle( QString const & st, QString const & adst )
-{
-  displayStyle = st;
-  addonStyle = adst;
-}
 
 std::string ArticleMaker::makeHtmlHeader( QString const & word,
                                           QString const & icon,
@@ -50,11 +40,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
       "<!DOCTYPE html>"
       "<html><head>"
       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
-
-  // background is #242525 because Darkreader will invert pure white to this value
-  if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ){
-    result += R"(<style> html { background-color: #242525;} body { background-color: #242525;} </style>)";
-  }
 
   // add jquery
   {
@@ -91,19 +76,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   {
     result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
-    if ( displayStyle.size() )
+    if ( cfg.displayStyle.size() )
     {
       // Load an additional stylesheet
-      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(displayStyle);
+      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(cfg.displayStyle);
       result += "<link href=\"" + displayStyleCssFile.toStdString() +
                 R"("  media="all" rel="stylesheet" type="text/css">)";
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style.css";
 
       result += readCssFile(name ,"all");
@@ -126,9 +111,9 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
     result += readCssFile(Config::getUserCssPrintFileName() ,"print");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style-print.css";
       result += readCssFile(name ,"print");
     }
@@ -156,11 +141,13 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
-    // Why .gdarticle background reset?
-    // some custom theme may change it to other colors and they looks horrible in darkreader mode
+    // #242525 because Darkreader will invert pure white to this value
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
-<style> .gdarticle { background: initial;} </style>
+<style>
+body { background: #242525; }
+.gdarticle { background: initial;}
+</style>
 <script>
   // This function returns a promise, but it is synchroneous because it does not use await
   function fetchShim(src) {
@@ -283,7 +270,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   if ( groupId == Instances::Group::HelpGroupId )
   {
     // This is a special group containing internal welcome/help pages
-    string result = makeHtmlHeader( phrase.phrase, QString(), needExpandOptionalParts );
+    string result = makeHtmlHeader( phrase.phrase, QString(), cfg.alwaysExpandOptionalParts);
 
     if ( phrase.phrase == tr( "Welcome!" ) )
     {
@@ -356,7 +343,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   string header = makeHtmlHeader( phrase.phrase,
                                   activeGroup && activeGroup->icon.size() ?
                                     activeGroup->icon : QString(),
-                                  needExpandOptionalParts );
+                                  cfg.alwaysExpandOptionalParts );
 
   if ( mutedDicts.size() )
   {
@@ -371,14 +358,14 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, unmutedDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
   }
   else
     return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, activeDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
 }
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
@@ -423,17 +410,6 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   memcpy( &( r->getData().front() ), result.data(), result.size() );
 
   return r;
-}
-
-void ArticleMaker::setExpandOptionalParts( bool expand )
-{
-  needExpandOptionalParts = expand;
-}
-
-void ArticleMaker::setCollapseParameters( bool autoCollapse, int articleSize )
-{
-  collapseBigArticles = autoCollapse;
-  articleLimitSize = articleSize;
 }
 
 

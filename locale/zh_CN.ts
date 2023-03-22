@@ -971,6 +971,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
 </context>
 <context>
+    <name>Epwing::EpwingDictionary</name>
+    <message>
+        <location filename="../epwing.cc" line="339"/>
+        <source>Previous Page</source>
+        <translation>上一页</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="375"/>
+        <source>Next Page</source>
+        <translation>下一页</translation>
+    </message>
+</context>
+<context>
     <name>ExternalViewer</name>
     <message>
         <location filename="../externalviewer.cc" line="53"/>
@@ -4033,6 +4046,36 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
         <location filename="../preferences.ui" line="1214"/>
+        <source>Word</source>
+        <translation>单词</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1118"/>
+        <source>Vocabulary field...</source>
+        <translation>对应anki里面的变量名，如设置word，则用{{Word}}引用</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1125"/>
+        <source>Text</source>
+        <translation>释义</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1132"/>
+        <source>Definition field...</source>
+        <translation>释义的变量字段</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1139"/>
+        <source>Sentence</source>
+        <translation>句子</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1146"/>
+        <source>Sentence field (can be empty)...</source>
+        <translation>句子的变量（可选）</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1182"/>
         <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
         <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
@@ -4100,6 +4143,11 @@ clears its network cache from disk during exit.</source>
         <location filename="../preferences.ui" line="1749"/>
         <source>When using clipboard,strip everything after newline</source>
         <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1774"/>
+        <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+        <translation>查询时，窗口获取焦点</translation>
     </message>
     <message>
         <source>ScanPopup unpinned window flags</source>
