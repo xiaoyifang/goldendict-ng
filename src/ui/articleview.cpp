@@ -1142,9 +1142,10 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   if( url.scheme().compare( "gdpicture" ) == 0 )
     load( url );
-  else
-  if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 )
-  {
+  else if( url.scheme().compare( "ankisearch" ) == 0 ) {
+    ankiConnector->ankiSearch( url.path() );
+  }
+  else if( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )
     {
       QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" )

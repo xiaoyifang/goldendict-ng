@@ -50,6 +50,28 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text, QStr
                                        Utils::json2String( fields ) );
 
 //  qDebug().noquote() << postData;
+    postToAnki( postData );
+}
+
+void AnkiConnector::ankiSearch( QString const & word )
+{
+    if( !cfg.preferences.ankiConnectServer.enabled ) {
+      emit this->errorText( tr( "Anki search: AnkiConnect is not enabled." ) );
+      return;
+    }
+
+    QString postTemplate = R"anki({
+        "action": "guiBrowse",
+        "version": 6,
+        "params": {
+            "query": "%1"
+        }
+    })anki";
+    postToAnki( postTemplate.arg( word ) );
+}
+
+void AnkiConnector::postToAnki( QString const & postData )
+{
   QUrl url;
   url.setScheme( "http" );
   url.setHost( cfg.preferences.ankiConnectServer.host );
