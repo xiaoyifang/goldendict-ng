@@ -516,15 +516,12 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 
 class EpwingArticleRequest: public Dictionary::DataRequest
 {
-  friend class EpwingArticleRequestRunnable;
-
   wstring word;
   vector< wstring > alts;
   EpwingDictionary & dict;
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -535,8 +532,6 @@ public:
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start(
-    //   new EpwingArticleRequestRunnable( *this, hasExited ) );
   }
 
   void run();
@@ -554,7 +549,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    // hasExited.acquire();
   }
 };
 
