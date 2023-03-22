@@ -19,23 +19,21 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ) : Q
 
 void AnkiConnector::sendToAnki( QString const & word, QString const & text, QString const & sentence )
 {
-  //for simplicity. maybe use QJsonDocument in future?
-  QString postTemplate = QString( "{"
-                                  "\"action\": \"addNote\","
-                                  "\"version\": 6,"
-                                  "\"params\": {"
-                                  "   \"note\": {"
-                                  "  \"deckName\": \"%1\","
-                                  "  \"modelName\": \"%2\","
-                                  "  \"fields\":%3,"
-                                  "  \"options\": {"
-                                  "    \"allowDuplicate\": true"
-                                  "  },"
-                                  "  \"tags\": []"
-                                  "}"
-                                  "}"
-                                  "}"
-                                  "" );
+  QString postTemplate = R"anki({
+      "action": "addNote",
+      "version": 6,
+      "params": {
+          "note": {
+              "deckName": "%1",
+              "modelName": "%2",
+              "fields": %3,
+              "options": {
+                  "allowDuplicate": true
+              },
+              "tags": []
+          }
+      }
+  })anki";
 
   QJsonObject fields;
   fields.insert( cfg.preferences.ankiConnectServer.word, word );
