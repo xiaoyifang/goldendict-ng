@@ -1059,8 +1059,7 @@ bool EpwingBook::processRef( EpwingHeadword & head)
       auto key    = ( (uint64_t)pos.page ) << 32 | ( pos.offset );
       //this  only add the existed reference point which has already in the headwords as another headword(rxxxxAtxxxx) in the headword list.
       //this will make the loadarticle's real reference link judgement easier.
-
-      if( allRefPositions.contains( key ) )
+      if( allHeadwordPositions.contains( key ) )
       {
         // fixed the reference headword ,to avoid the headword collision with other entry .
         //if(!allHeadwordPositions.contains(key))
@@ -1371,20 +1370,15 @@ void EpwingBook::finalizeText( QString & text )
   }
 
   // Replace references
-
   int pos = 0;
   QString reg1( "<R%1>");
   QString reg2( "</R%1>");
-
-  EContainer cont( this, true );
-
-  char buf[ TextBufferSize + 1 ];
 
   for( int x = 0; x < refCloseCount; x++ )
   {
     auto tag1=reg1.arg(x);
     auto tag2=reg2.arg(x);
-    pos = text.indexOf( tag1, pos );
+    pos = text.indexOf( tag1 );
     if( pos < 0 )
       continue;
 
@@ -1396,25 +1390,13 @@ void EpwingBook::finalizeText( QString & text )
     url.setScheme( "gdlookup" );
     url.setHost( "localhost" );
 
-    // Read headword
-
-    eb_seek_text( &book, &ebpos );
-
-    ssize_t length;
-    EB_Error_Code ret = eb_read_heading( &book, &appendix, &hookSet, &cont,
-                                         TextBufferSize, buf, &length );
-    if( ret == EB_SUCCESS )
-    {
-      QString headword = QString::fromUtf8( buf, length );
-      fixHeadword( headword );
-      url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg(ebpos.offset) ) );
-    }
+    url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg(ebpos.offset) ) );
 
     QString link = "<a href=\"" + url.toEncoded() + "\">";
 
     text.replace( tag1, link );
 
-    pos = text.indexOf( tag2, pos );
+    pos = text.indexOf( tag2 );
     if( pos < 0 )
       continue;
 
