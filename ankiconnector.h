@@ -20,8 +20,9 @@ private:
   QNetworkAccessManager * mgr;
   Config::Class const & cfg;
   void postToAnki( QString const & postData );
-public :
-signals:
+  static constexpr auto transfer_timeout = 3000;
+ public:
+ signals:
   void errorText( QString const & );
 private slots:
   void finishedSlot(QNetworkReply * reply);
