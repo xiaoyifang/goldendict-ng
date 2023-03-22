@@ -319,7 +319,7 @@ HEADERS += folding.hh \
     groups_widgets.hh \
     instances.hh \
     article_maker.hh \
-    scanpopup.hh \
+    src/ui/scanpopup.hh \
     audioplayerinterface.hh \
     audioplayerfactory.hh \
     ffmpegaudioplayer.hh \
@@ -413,7 +413,7 @@ FORMS += groups.ui \
     mainwindow.ui \
     sources.ui \
     initializing.ui \
-    scanpopup.ui \
+    src/ui/scanpopup.ui \
     preferences.ui \
     about.ui \
     editdictionaries.ui \
@@ -461,7 +461,7 @@ SOURCES += folding.cc \
     groups_widgets.cc \
     instances.cc \
     article_maker.cc \
-    scanpopup.cc \
+    src/ui/scanpopup.cc \
     audioplayerfactory.cc \
     multimediaaudioplayer.cc \
     externalaudioplayer.cc \
@@ -568,8 +568,8 @@ mac {
 }
 
 unix:!mac {
-    HEADERS += scanflag.hh
-    SOURCES += scanflag.cc
+    HEADERS += src/ui/scanflag.hh
+    SOURCES += src/ui/scanflag.cc
 }
 
 

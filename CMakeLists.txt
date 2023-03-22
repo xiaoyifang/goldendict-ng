@@ -146,7 +146,7 @@ set(UI_SRC
         options.ui
         orderandprops.ui
         preferences.ui
-        scanpopup.ui
+        src/ui/scanpopup.ui
         sources.ui
         )
 if(WITH_EPWING_SUPPORT)
@@ -391,10 +391,10 @@ set(PROJECT_SOURCES
         russiantranslit.cc
         russiantranslit.hh
         sapi.hh
-        scanflag.cc
-        scanflag.hh
-        scanpopup.cc
-        scanpopup.hh
+        src/ui/scanflag.cc
+        src/ui/scanflag.hh
+        src/ui/scanpopup.cc
+        src/ui/scanpopup.hh
         sdict.cc
         sdict.hh
         searchpanewidget.hh

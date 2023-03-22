@@ -18,7 +18,7 @@
 #include "audioplayerfactory.hh"
 #include "instances.hh"
 #include "article_maker.hh"
-#include "scanpopup.hh"
+#include "ui/scanpopup.hh"
 #include "ui/articleview.h"
 #include "wordfinder.hh"
 #include "dictionarybar.hh"
