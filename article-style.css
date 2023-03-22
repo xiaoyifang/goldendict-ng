@@ -47,6 +47,20 @@ pre
   user-select: none;
 }
 
+/* The anki plus button, which is shown if enabled. */
+.ankibutton {
+  float: right;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+  transition: background-color 0.2s;
+}
+.ankibutton:active {
+  background-color: hsl(0deg 0% 70%);
+}
+
 .gddicttitle
 {
 	user-select: none;

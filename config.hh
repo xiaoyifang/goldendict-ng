@@ -143,7 +143,8 @@ struct AnkiConnectServer
   bool enabled;
 
   QString host;
-  unsigned port;
+  int port; // Port will be passed to QUrl::setPort() which expects an int.
+
   QString deck;
   QString model;
 

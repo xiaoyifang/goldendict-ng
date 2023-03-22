@@ -22,6 +22,8 @@ using gd::wstring;
 using std::set;
 using std::list;
 
+inline bool ankiConnectEnabled() { return GlobalBroadcaster::instance()->getPreference()->ankiConnectServer.enabled; }
+
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
                             const Config::Preferences & cfg_ ):
@@ -428,19 +430,21 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
 
 //////// ArticleRequest
 
-ArticleRequest::ArticleRequest(
-  Config::InputPhrase const & phrase, QString const & group_,
-  QMap< QString, QString > const & contexts_,
-  vector< sptr< Dictionary::Class > > const & activeDicts_,
-  string const & header,
-  int sizeLimit, bool needExpandOptionalParts_, bool ignoreDiacritics_ ):
-    word( phrase.phrase ), group( group_ ), contexts( contexts_ ),
-    activeDicts( activeDicts_ ),
-    altsDone( false ), bodyDone( false ), foundAnyDefinitions( false ),
-    closePrevSpan( false )
-,   articleSizeLimit( sizeLimit )
-,   needExpandOptionalParts( needExpandOptionalParts_ )
-,   ignoreDiacritics( ignoreDiacritics_ )
+ArticleRequest::ArticleRequest( Config::InputPhrase const & phrase,
+                                QString const & group_,
+                                QMap< QString, QString > const & contexts_,
+                                vector< sptr< Dictionary::Class > > const & activeDicts_,
+                                string const & header,
+                                int sizeLimit,
+                                bool needExpandOptionalParts_,
+                                bool ignoreDiacritics_ ):
+  word( phrase.phrase ),
+  group( group_ ),
+  contexts( contexts_ ),
+  activeDicts( activeDicts_ ),
+  articleSizeLimit( sizeLimit ),
+  needExpandOptionalParts( needExpandOptionalParts_ ),
+  ignoreDiacritics( ignoreDiacritics_ )
 {
   if ( !phrase.punctuationSuffix.isEmpty() )
     alts.insert( gd::toWString( phrase.phraseWithSuffix() ) );
@@ -657,6 +661,17 @@ void ArticleRequest::bodyFinished()
           + "></span>" + "</div>";
 
         head += "<div class=\"gddictnamebodyseparator\"></div>";
+
+        // If the user has enabled Anki integration in settings,
+        // Show a (+) button that lets the user add a new Anki card.
+        if ( ankiConnectEnabled() ) {
+          QString link{ R"EOF(
+          <a href="ankicard:%1" class="ankibutton" title="%2" >
+          <img src="qrc:///icons/add-anki-icon.svg">
+          </a>
+          )EOF" };
+          head += link.arg( Html::escape( dictId ).c_str(), tr( "Make a new Anki note" ) ).toStdString();
+        }
 
         head += "<div class=\"gdarticlebody gdlangfrom-";
         head += LangCoder::intToCode2( activeDict->getLangFrom() ).toLatin1().data();

@@ -17,9 +17,17 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ) : Q
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( QString const & word, QString const & text, QString const & sentence )
+void AnkiConnector::sendToAnki( QString const & word, QString text, QString const & sentence )
 {
-  QString postTemplate = R"anki({
+  if ( word.isEmpty() ) {
+    emit this->errorText( tr( "anki: can't create a card without a word" ) );
+    return;
+  }
+
+  // Anki doesn't understand the newline character, so it should be escaped.
+  text = text.replace( "\n", "<br>" );
+
+  QString const postTemplate = R"anki({
       "action": "addNote",
       "version": 6,
       "params": {
@@ -48,7 +56,7 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text, QStr
                                        Utils::json2String( fields ) );
 
 //  qDebug().noquote() << postData;
-    postToAnki( postData );
+  postToAnki( postData );
 }
 
 void AnkiConnector::ankiSearch( QString const & word )
@@ -91,26 +99,25 @@ void AnkiConnector::postToAnki( QString const & postData )
 
 void AnkiConnector::finishedSlot( QNetworkReply * reply )
 {
-  if( reply->error() == QNetworkReply::NoError )
-  {
-    QByteArray bytes   = reply->readAll();
-    QJsonDocument json = QJsonDocument::fromJson( bytes );
-    auto obj           = json.object();
-    if( obj.size() != 2 || !obj.contains( "error" ) || !obj.contains( "result" ) ||
-        obj[ "result" ].toString().isEmpty() )
-    {
-      emit errorText( QObject::tr( "anki: post to anki failed" ) );
-    }
-    QString result = obj[ "result" ].toString();
+  if ( reply->error() == QNetworkReply::NoError ) {
+      QByteArray const bytes   = reply->readAll();
+      QJsonDocument const json = QJsonDocument::fromJson( bytes );
+      auto const obj           = json.object();
 
-    qDebug() << "anki result:" << result;
+      // Normally AnkiConnect always returns result and error,
+      // unless Anki is not running.
+      if ( obj.size() == 2 && obj.contains( "result" ) && obj.contains( "error" ) && obj[ "error" ].isNull() ) {
+        emit errorText( tr( "anki: post to anki success" ) );
+      }
+      else {
+        emit errorText( tr( "anki: post to anki failed" ) );
+      }
 
-    emit errorText( tr( "anki: post to anki success" ) );
+      qDebug().noquote() << "anki response:" << Utils::json2String( obj );
   }
-  else
-  {
-    qDebug() << "anki connect error" << reply->errorString();
-    emit errorText( "anki:" + reply->errorString() );
+  else {
+      qDebug() << "anki connect error" << reply->errorString();
+      emit errorText( "anki:" + reply->errorString() );
   }
 
   reply->deleteLater();
