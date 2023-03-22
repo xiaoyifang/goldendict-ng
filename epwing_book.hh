@@ -186,8 +186,6 @@ public:
   // Find next headword and article position
   bool getNextHeadword( EpwingHeadword & head );
 
-  bool processRef( EpwingHeadword & head );
-
   bool readHeadword( EB_Position const & pos,
                      QString & headword,
                      bool text_only );
