@@ -2377,7 +2377,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     if ( translateLine->property( "noResults" ).toBool() )
     {
       translateLine->setProperty( "noResults", false );
-      setStyleSheet( styleSheet() );
+
+      Utils::Widget::setNoResultColor( translateLine, false );
     }
     return;
   }

@@ -70,7 +70,7 @@
      <x>0</x>
      <y>0</y>
      <width>653</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -189,12 +189,6 @@
        <property name="minimumSize">
         <size>
          <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
          <height>0</height>
         </size>
        </property>
@@ -380,8 +374,9 @@
   </action>
   <action name="saveArticle">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normalon>:/icons/filesave.png</normalon>:/icons/filesave.png</iconset>
+    <iconset>
+     <normalon>:/icons/filesave.png</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Save Article</string>

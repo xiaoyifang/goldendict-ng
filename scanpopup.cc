@@ -676,8 +676,10 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
     {
-      ui.translateBox->translateLine()->setProperty( "noResults", false );
-      setStyleSheet( styleSheet() );
+      auto translateLine=ui.translateBox->translateLine();
+      translateLine->setProperty( "noResults", false );
+
+      Utils::Widget::setNoResultColor( translateLine, false );
     }
     return;
   }

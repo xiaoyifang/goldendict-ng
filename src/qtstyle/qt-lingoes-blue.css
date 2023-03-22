@@ -2,7 +2,6 @@ MainWindow {
     background-color: #CFDDF0;
 }
 
-#translateLine,
 #wordList,
 #dictsPane,
 #dictsList,
@@ -10,11 +9,6 @@ MainWindow {
 #historyList,
 #favoritesPane,
 #favoritesTree {
-    background: #EAF0F8;
-    color: darkblue;
-}
-
-GroupComboBox {
     background: #EAF0F8;
     color: darkblue;
 }
