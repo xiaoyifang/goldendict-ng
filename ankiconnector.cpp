@@ -55,6 +55,11 @@ void AnkiConnector::sendToAnki( QString const & word, QString const & text, QStr
 
 void AnkiConnector::ankiSearch( QString const & word )
 {
+    if( !cfg.preferences.ankiConnectServer.enabled ) {
+      emit this->errorText( tr( "Anki search: AnkiConnect is not enabled." ) );
+      return;
+    }
+
     QString postTemplate = R"anki({
         "action": "guiBrowse",
         "version": 6,
