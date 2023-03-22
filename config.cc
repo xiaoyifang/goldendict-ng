@@ -976,7 +976,7 @@ Class load()
     {
       c.preferences.ankiConnectServer.enabled = ( ankiConnectServer.toElement().attribute( "enabled" ) == "1" );
       c.preferences.ankiConnectServer.host = ankiConnectServer.namedItem( "host" ).toElement().text();
-      c.preferences.ankiConnectServer.port = ankiConnectServer.namedItem( "port" ).toElement().text().toULong();
+      c.preferences.ankiConnectServer.port    = ankiConnectServer.namedItem( "port" ).toElement().text().toInt();
       c.preferences.ankiConnectServer.deck = ankiConnectServer.namedItem( "deck" ).toElement().text();
       c.preferences.ankiConnectServer.model = ankiConnectServer.namedItem( "model" ).toElement().text();
 

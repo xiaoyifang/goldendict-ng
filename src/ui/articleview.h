@@ -148,6 +148,10 @@ public:
   /// which will be restored when some article loads eventually.
   void showAnticipation();
 
+  /// Create a new Anki card from a currently displayed article with the provided id.
+  /// This function will call QWebEnginePage::runJavaScript() to fetch the corresponding HTML.
+  void makeAnkiCardFromArticle( QString const & article_id );
+
   /// Opens the given link. Supposed to be used in response to
   /// openLinkInNewTab() signal. The link scheme is therefore supposed to be
   /// one of the internal ones.

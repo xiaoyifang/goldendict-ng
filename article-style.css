@@ -45,6 +45,24 @@ pre
   padding-left: 0.5em;
   background: #def;
   user-select: none;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+/* The anki plus button, which is shown if enabled. */
+.ankibutton {
+  display: grid;
+  place-items: center;
+  margin-inline-start: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+  transition: background-color 0.2s;
+}
+.ankibutton:active {
+  background-color: hsl(0deg 0% 70%);
 }
 
 .gddicttitle

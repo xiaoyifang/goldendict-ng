@@ -22,6 +22,8 @@ using gd::wstring;
 using std::set;
 using std::list;
 
+inline bool ankiConnectEnabled() { return GlobalBroadcaster::instance()->getPreference()->ankiConnectServer.enabled; }
+
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
                             const Config::Preferences & cfg_ ):
@@ -428,19 +430,21 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
 
 //////// ArticleRequest
 
-ArticleRequest::ArticleRequest(
-  Config::InputPhrase const & phrase, QString const & group_,
-  QMap< QString, QString > const & contexts_,
-  vector< sptr< Dictionary::Class > > const & activeDicts_,
-  string const & header,
-  int sizeLimit, bool needExpandOptionalParts_, bool ignoreDiacritics_ ):
-    word( phrase.phrase ), group( group_ ), contexts( contexts_ ),
-    activeDicts( activeDicts_ ),
-    altsDone( false ), bodyDone( false ), foundAnyDefinitions( false ),
-    closePrevSpan( false )
-,   articleSizeLimit( sizeLimit )
-,   needExpandOptionalParts( needExpandOptionalParts_ )
-,   ignoreDiacritics( ignoreDiacritics_ )
+ArticleRequest::ArticleRequest( Config::InputPhrase const & phrase,
+                                QString const & group_,
+                                QMap< QString, QString > const & contexts_,
+                                vector< sptr< Dictionary::Class > > const & activeDicts_,
+                                string const & header,
+                                int sizeLimit,
+                                bool needExpandOptionalParts_,
+                                bool ignoreDiacritics_ ):
+  word( phrase.phrase ),
+  group( group_ ),
+  contexts( contexts_ ),
+  activeDicts( activeDicts_ ),
+  articleSizeLimit( sizeLimit ),
+  needExpandOptionalParts( needExpandOptionalParts_ ),
+  ignoreDiacritics( ignoreDiacritics_ )
 {
   if ( !phrase.punctuationSuffix.isEmpty() )
     alts.insert( gd::toWString( phrase.phraseWithSuffix() ) );
@@ -554,6 +558,56 @@ int ArticleRequest::findEndOfCloseDiv( const QString &str, int pos )
   }
 }
 
+QString ArticleRequest::constructDictHeading( std::string const & dict_id_html,
+                                              std::string const & dict_name,
+                                              bool const collapse )
+{
+  // Start .gddictname
+  // Resort to QString here to be able to use its arg() method.
+  QString gd_dict_name = QString( R"EOF(<div class="gddictname" id="gddictname-%1">)EOF" ).arg( dict_id_html.c_str() );
+
+  // Icon
+  gd_dict_name += [ &dict_name, &dict_id_html ]() {
+    auto html = QString( R"EOF(
+          <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
+          <span class="gdfromprefix">%2</span>
+          <span class="gddicttitle">%3</span>
+          )EOF" );
+    return html.arg( dict_id_html.c_str(), tr( "From " ), dict_name.c_str() );
+  }();
+
+  // Collapse/expand button (blue arrow)
+  gd_dict_name += [ collapse, &dict_id_html ]() {
+    auto html = QString( R"EOF(
+          <span class="collapse_expand_area" onclick="gdExpandArticle('%1');" >
+          <img src="qrc:///icons/blank.png" class="%2" id="expandicon-%3" title="%4">
+          </span>)EOF" );
+    return html.arg( dict_id_html.c_str(),
+                     collapse ? "gdexpandicon" : "gdcollapseicon",
+                     dict_id_html.c_str(),
+                     collapse ? tr( "Expand article" ) : tr( "Collapse article" ) );
+  }();
+
+  // If the user has enabled Anki integration in settings,
+  // Show a (+) button that lets the user add a new Anki card.
+  gd_dict_name += [ &dict_id_html ]() {
+    if ( ankiConnectEnabled() ) {
+      auto link = QString( R"EOF(
+            <a href="ankicard:%1" class="ankibutton" title="%2" >
+            <img src="qrc:///icons/add-anki-icon.svg">
+            </a>
+            )EOF" );
+      return link.arg( dict_id_html.c_str(), tr( "Make a new Anki note" ) );
+    }
+    return QString{};
+  }();
+
+  // Close .gddictname
+  gd_dict_name += "</div>";
+
+  return gd_dict_name;
+}
+
 void ArticleRequest::bodyFinished()
 {
   if ( bodyDone )
@@ -642,19 +696,8 @@ void ArticleRequest::bodyFinished()
 
         closePrevSpan = true;
 
-        head += string( R"(<div class="gddictname" onclick="gdExpandArticle(')" ) + dictId + "\');"
-          + ( collapse ? "\" style=\"cursor:pointer;" : "" )
-          + "\" id=\"gddictname-" + Html::escape( dictId ) + "\""
-          + ( collapse ? string( " title=\"" ) + tr( "Expand article" ).toUtf8().data() + "\"" : "" )
-          + R"(><span class="gddicticon"><img src="gico://)" + Html::escape( dictId )
-          + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
-          Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
-          Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
-          + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
-          + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
-          + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
-          + "></span>" + "</div>";
+        // Add .gddictname to head.
+        head += constructDictHeading( Html::escape( dictId ), activeDict->getName(), collapse ).toStdString();
 
         head += "<div class=\"gddictnamebodyseparator\"></div>";
 

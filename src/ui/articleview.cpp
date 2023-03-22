@@ -1124,6 +1124,15 @@ void ArticleView::linkClickedInHtml( QUrl const & url_ )
     linkClicked( url_ );
   }
 }
+
+void ArticleView::makeAnkiCardFromArticle( QString const & article_id )
+{
+  auto const js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
+  webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
+    sendToAnki( webview->title(), article_text.toString(), translateLine->text() );
+  } );
+}
+
 void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & scrollTo, Contexts const & contexts_ )
 {
   audioPlayer->stop();
@@ -1142,6 +1151,19 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     load( url );
   else if( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
+  }
+  else if ( url.scheme().compare( "ankicard" ) == 0 ) {
+    // If article id is set in path and selection is empty, use text from the current article.
+    // Otherwise, grab currently selected text and use it as the definition.
+    if ( auto const selected_text = webview->selectedText(), article_id = url.path();
+         !article_id.isEmpty() && selected_text.isEmpty() ) {
+      makeAnkiCardFromArticle( article_id );
+    }
+    else {
+      sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+    }
+    qDebug() << "requested to make Anki card.";
+    return;
   }
   else if( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )

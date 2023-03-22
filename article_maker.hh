@@ -87,11 +87,12 @@ class ArticleRequest: public Dictionary::DataRequest
   
   std::set< gd::wstring > alts; // Accumulated main forms
   std::list< sptr< Dictionary::WordSearchRequest > > altSearches;
-  bool altsDone, bodyDone;
   std::list< sptr< Dictionary::DataRequest > > bodyRequests;
-  bool foundAnyDefinitions;
-  bool closePrevSpan; // Indicates whether the last opened article span is to
-                      // be closed after the article ends.
+  bool altsDone{ false };
+  bool bodyDone{ false };
+  bool foundAnyDefinitions{ false };
+  bool closePrevSpan{ false };          // Indicates whether the last opened article span is to
+                                        // be closed after the article ends.
   sptr< WordFinder > stemmedWordFinder; // Used when there're no results
 
   /// A sequence of words and spacings between them, including the initial
@@ -151,6 +152,10 @@ private:
 
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( QString const &, int pos );
+
+  // A method used for constructing a dictionary heading,
+  // e.g. <div class="gddictname" >...</div>
+  QString constructDictHeading( std::string const & dict_id_html, std::string const & dict_name, bool const collapse );
 };
 
 
