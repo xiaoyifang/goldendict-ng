@@ -79,7 +79,7 @@ void AnkiConnector::postToAnki( QString const & postData )
   QNetworkRequest request( url );
   request.setTransferTimeout( 3000 );
   //  request.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
-  request.setHeader( QNetworkRequest::ContentTypeHeader, "applicaion/json" );
+  request.setHeader( QNetworkRequest::ContentTypeHeader, "application/json" );
   auto reply = mgr->post( request, postData.toUtf8() );
   connect( reply,
            &QNetworkReply::errorOccurred,
