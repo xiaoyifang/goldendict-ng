@@ -146,7 +146,6 @@ set(UI_SRC
         options.ui
         orderandprops.ui
         preferences.ui
-        src/ui/scanpopup.ui
         sources.ui
         )
 if(WITH_EPWING_SUPPORT)
@@ -465,7 +464,7 @@ set(PROJECT_SOURCES
         src/ui/articleview.cpp src/ui/articleview.h
         src/ui/ftssearchpanel.cpp src/ui/ftssearchpanel.h
         src/ui/searchpanel.cpp src/ui/searchpanel.h
-        )
+        src/ui/scanpopup_bar.cpp src/ui/scanpopup_bar.h)
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
         MANUAL_FINALIZATION

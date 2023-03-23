@@ -319,7 +319,6 @@ HEADERS += folding.hh \
     groups_widgets.hh \
     instances.hh \
     article_maker.hh \
-    src/ui/scanpopup.hh \
     audioplayerinterface.hh \
     audioplayerfactory.hh \
     ffmpegaudioplayer.hh \
@@ -406,6 +405,8 @@ HEADERS += folding.hh \
     src/dict/lingualibre.h \
     src/ui/articleview.h \
     src/ui/ftssearchpanel.h \
+    src/ui/scanpopup.hh \
+    src/ui/scanpopup_bar.h \
     src/ui/searchpanel.h
 
 FORMS += groups.ui \
@@ -413,7 +414,6 @@ FORMS += groups.ui \
     mainwindow.ui \
     sources.ui \
     initializing.ui \
-    src/ui/scanpopup.ui \
     preferences.ui \
     about.ui \
     editdictionaries.ui \
@@ -461,7 +461,6 @@ SOURCES += folding.cc \
     groups_widgets.cc \
     instances.cc \
     article_maker.cc \
-    src/ui/scanpopup.cc \
     audioplayerfactory.cc \
     multimediaaudioplayer.cc \
     externalaudioplayer.cc \
@@ -542,6 +541,8 @@ SOURCES += folding.cc \
     src/dict/lingualibre.cpp \
     src/ui/articleview.cpp \
     src/ui/ftssearchpanel.cpp \
+    src/ui/scanpopup.cc \
+    src/ui/scanpopup_bar.cpp \
     src/ui/searchpanel.cpp
 
 win32 {

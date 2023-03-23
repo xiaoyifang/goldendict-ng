@@ -4,17 +4,20 @@
 #ifndef __SCANPOPUP_HH_INCLUDED__
 #define __SCANPOPUP_HH_INCLUDED__
 
-#include "article_netmgr.hh"
-#include "ui/articleview.h"
-#include "wordfinder.hh"
-#include "keyboardstate.hh"
-#include "config.hh"
-#include "ui_scanpopup.h"
-#include <QDialog>
 #include <QClipboard>
-#include "history.hh"
+#include <QDialog>
+#include <QMainWindow>
+
+#include "article_netmgr.hh"
+#include "config.hh"
 #include "dictionarybar.hh"
+#include "history.hh"
+#include "keyboardstate.hh"
 #include "mainstatusbar.hh"
+#include "ui/articleview.h"
+#include "ui/scanpopup_bar.h"
+#include "wordfinder.hh"
+
 #ifdef HAVE_X11
 #include "scanflag.hh"
 #endif
@@ -127,7 +130,7 @@ private:
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups const & groups;
   History & history;
-  Ui::ScanPopup ui;
+  ScanPopupBar * topbar;
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction openSearchAction;
@@ -195,14 +198,11 @@ private slots:
   void mouseHovered( QString const & , bool forcePopup);
   void currentGroupChanged( int );
   void prefixMatchFinished();
-  void on_pronounceButton_clicked();
   void pinButtonClicked( bool checked );
-  void on_showDictionaryBar_clicked( bool checked );
+  void showDictionaryBar( bool checked );
   void showStatusBarMessage ( QString const &, int, QPixmap const & );
-  void on_sendWordButton_clicked();
+  void sendWordToMainWindow();
   void on_sendWordToFavoritesButton_clicked();
-  void on_goBackButton_clicked();
-  void on_goForwardButton_clicked();
 
   void hideTimerExpired();
 
