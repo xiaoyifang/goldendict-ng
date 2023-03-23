@@ -203,6 +203,7 @@ private:
   friend class EpwingWordSearchRequest;
   string epwing_previous_button(int& articleOffset, int& articlePage);
   string epwing_next_button(int& articleOffset, int& articlePage);
+  bool readHeadword( EB_Position & pos, QString & headword );
 };
 
 
@@ -515,15 +516,12 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 
 class EpwingArticleRequest: public Dictionary::DataRequest
 {
-  friend class EpwingArticleRequestRunnable;
-
   wstring word;
   vector< wstring > alts;
   EpwingDictionary & dict;
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -534,8 +532,6 @@ public:
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start(
-    //   new EpwingArticleRequestRunnable( *this, hasExited ) );
   }
 
   void run();
@@ -553,7 +549,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    // hasExited.acquire();
   }
 };
 
@@ -578,8 +573,8 @@ void EpwingArticleRequest::run()
   multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonims make it that the articles
-                                    // appear several times. We combat this
-                                    // by only allowing them to appear once.
+                                   // appear several times. We combat this
+                                   // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if( ignoreDiacritics )
@@ -1043,6 +1038,20 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
   return std::make_shared<EpwingWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
                                       false, maxResults );
 }
+bool Epwing::EpwingDictionary::readHeadword( EB_Position & pos, QString & headword )
+{
+  try
+  {
+    Mutex::Lock _( eBook.getLibMutex() );
+    eBook.readHeadword( pos,headword, true);
+    eBook.fixHeadword( headword );
+    return eBook.isHeadwordCorrect( headword ) ;
+  }
+  catch( std::exception & e )
+  {
+    return false;
+  }
+}
 
 } // anonymous namespace
 
@@ -1256,11 +1265,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
               if( !dict.getNextHeadword( head ) )
                 break;
-            }
-
-            while( dict.processRef( head ) )
-            {
-              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
             }
 
             dict.clearBuffers();

@@ -38,6 +38,8 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   parentWidget()->installEventFilter( this );
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
+
+  setAutoFillBackground( true );
 }
 
 void MainStatusBar::clearMessage()
