@@ -157,13 +157,13 @@ bool RunInstance::start( Config::Program const & prg, QString const & word,
     bool writeToStdInput = true;
     auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
 
-    for( int x = 0; x < args.size(); ++x ) {
-    if( args[ x ].indexOf( "%GDWORD%" ) >= 0 ) {
+    for( auto & arg : args ) {
+    if( arg.indexOf( "%GDWORD%" ) >= 0 ) {
       writeToStdInput = false;
-      args[ x ].replace( "%GDWORD%", word );
+      arg.replace( "%GDWORD%", word );
     }
-    if( args[ x ].indexOf( "%GDSEARCH%" ) >= 0 ) {
-      args[ x ].replace( "%GDSEARCH%", search_string );
+    if( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
+      arg.replace( "%GDSEARCH%", search_string );
     }
     }
 
