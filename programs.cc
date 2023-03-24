@@ -163,6 +163,7 @@ bool RunInstance::start( Config::Program const & prg, QString const & word,
         arg.replace( "%GDWORD%", word );
       }
       if( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
+        writeToStdInput = false;
         arg.replace( "%GDSEARCH%", search_string );
       }
     }
