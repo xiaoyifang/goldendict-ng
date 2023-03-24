@@ -4738,8 +4738,8 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
         <location filename="../sources.ui" line="409"/>
-        <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input. A string %GDSEARCH% will be replaced with the text in the searchbar.</source>
-        <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Если такой строки нет, слово будет отправлено в стандартный входной поток. Строка %GDSEARCH% будет заменена на текст в поисковой строке.</translation>
+        <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
+        <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Строка %GDSEARCH% будет заменена на текст в поисковой строке. Если обоих строк нет задано, запрашиваемое слово будет отправлено в стандартный входной поток внешней программы.</translation>
     </message>
     <message>
         <location filename="../sources.ui" line="462"/>
