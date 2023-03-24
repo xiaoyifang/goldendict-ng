@@ -2342,6 +2342,8 @@ void MainWindow::translateInputChanged( QString const & newValue )
 {
   updateSuggestionList( newValue );
   translateBoxSuffix = QString();
+  // Save translate line text. Later it can be passed to external applications.
+  GlobalBroadcaster::instance()->translateLineText = newValue;
 }
 
 void MainWindow::updateSuggestionList()

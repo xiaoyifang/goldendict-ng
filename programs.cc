@@ -9,6 +9,7 @@
 #include "parsecmdline.hh"
 #include "iconv.hh"
 #include "utils.hh"
+#include "globalbroadcaster.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -154,13 +155,17 @@ bool RunInstance::start( Config::Program const & prg, QString const & word,
     args.pop_front();
 
     bool writeToStdInput = true;
+    auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
 
-    for( int x = 0; x < args.size(); ++x )
-      if( args[ x ].indexOf( "%GDWORD%" ) >= 0 )
-      {
-        writeToStdInput = false;
-        args[ x ].replace( "%GDWORD%", word );
-      }
+    for( int x = 0; x < args.size(); ++x ) {
+    if( args[ x ].indexOf( "%GDWORD%" ) >= 0 ) {
+      writeToStdInput = false;
+      args[ x ].replace( "%GDWORD%", word );
+    }
+    if( args[ x ].indexOf( "%GDSEARCH%" ) >= 0 ) {
+      args[ x ].replace( "%GDSEARCH%", search_string );
+    }
+    }
 
     process.start( programName, args );
     if( writeToStdInput )
