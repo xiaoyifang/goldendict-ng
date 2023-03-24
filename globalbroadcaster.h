@@ -26,6 +26,7 @@ public:
   bool existedInWhitelist(QString host);
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
+  QString translateLineText{};
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
