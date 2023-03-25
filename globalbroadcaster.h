@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <vector>
+#include <QWebEngineProfile>
 #include "config.hh"
 
 struct ActiveDictIds
@@ -27,6 +28,7 @@ public:
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
+  QWebEngineProfile * profile;
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );

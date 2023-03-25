@@ -97,12 +97,11 @@ void MainWindow::changeWebEngineViewFont()
 {
   if( cfg.preferences.webFontFamily.isEmpty() )
   {
-    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    webEngineProfile->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
   }
   else
   {
-    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
-                                                                    cfg.preferences.webFontFamily );
+    webEngineProfile->settings()->setFontFamily( QWebEngineSettings::StandardFont, cfg.preferences.webFontFamily );
   }
 }
 
@@ -154,28 +153,28 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
-  GlobalBroadcaster::instance()->setPreference(&cfg.preferences);
+  GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
-  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this);
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "bword", localSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "entry", localSchemeHandler );
+  webEngineProfile.reset( new QWebEngineProfile( "GoldenDictProfile" ) );
+  GlobalBroadcaster::instance()->profile = webEngineProfile.get();
+  localSchemeHandler                     = new LocalSchemeHandler( articleNetMgr, this );
+  webEngineProfile->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
+  webEngineProfile->installUrlSchemeHandler( "bword", localSchemeHandler );
+  webEngineProfile->installUrlSchemeHandler( "entry", localSchemeHandler );
 
   iframeSchemeHandler = new IframeSchemeHandler( this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
+  webEngineProfile->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdpicture", "gdtts" };
-  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this);
-  for( int i = 0; i < localSchemes.size(); i++ )
-  {
-    QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localSchemes.at( i ).toLatin1(),
-                                                                  resourceSchemeHandler );
+  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
+  for( const auto & localScheme : localSchemes ) {
+    webEngineProfile->installUrlSchemeHandler( localScheme.toLatin1(), resourceSchemeHandler );
   }
 
-  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor(this) );
+  webEngineProfile->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
 
-  if(!cfg.preferences.hideGoldenDictHeader){
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
+  if( !cfg.preferences.hideGoldenDictHeader ) {
+    webEngineProfile->setHttpUserAgent( webEngineProfile->httpUserAgent() + " GoldenDict/WebEngine" );
   }
 
   qRegisterMetaType< Config::InputPhrase >();
@@ -1416,8 +1415,7 @@ void MainWindow::setupNetworkCache( int maxSize )
     return; // There is currently no cache and it is not needed.
 
   QString const cacheDirectory = Config::getNetworkCacheDir();
-  if( !QDir().mkpath( cacheDirectory ) )
-  {
+  if( !QDir().mkpath( cacheDirectory ) ) {
     gdWarning( "Cannot create a cache directory %s. Disabling network cache.", cacheDirectory.toUtf8().constData() );
     return;
   }
@@ -1425,6 +1423,9 @@ void MainWindow::setupNetworkCache( int maxSize )
   diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
   diskCache->setCacheDirectory( cacheDirectory );
   articleNetMgr.setCache( diskCache );
+
+  webEngineProfile->setCachePath( cacheDirectory );
+  webEngineProfile->setPersistentStoragePath( cacheDirectory );
 }
 
 void MainWindow::makeDictionaries()
