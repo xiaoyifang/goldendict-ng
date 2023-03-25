@@ -311,6 +311,7 @@ private:
   friend class MdxHeadwordsRequest;
   friend class MdxArticleRequest;
   friend class MddResourceRequest;
+  void loadResourceFile( const wstring & resourceName, vector< char > & data );
 };
 
 MdxDictionary::MdxDictionary( string const & id, string const & indexFile,
@@ -738,7 +739,7 @@ void MddResourceRequest::run()
   }
 
   // In order to prevent recursive internal redirection...
-  set< QByteArray > resourceIncluded;
+  set< wstring > resourceIncluded;
 
   for ( ;; )
   {
@@ -748,43 +749,14 @@ void MddResourceRequest::run()
       finish();
       return;
     }
-
     string u8ResourceName = Utf8::encode( resourceName );
-    QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( u8ResourceName.data(), u8ResourceName.size() );
-    if ( !resourceIncluded.insert( hash.result() ).second )
+    if( !resourceIncluded.insert( resourceName ).second )
       continue;
-
-    // Convert to the Windows separator
-    std::replace( resourceName.begin(), resourceName.end(), '/', '\\' );
-    if(resourceName[0]=='.'){
-        resourceName.erase(0,1);
-    }
-    if ( resourceName[ 0 ] != '\\' )
-    {
-      resourceName.insert( 0, 1, '\\' );
-    }
 
     Mutex::Lock _( dataMutex );
     data.clear();
 
-    try
-    {
-      // local file takes precedence
-      string fn = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) +
-                  FsEncoding::separator() + u8ResourceName;
-      File::loadFromFile( fn, data );
-    }
-    catch ( File::exCantOpen & )
-    {
-      for ( vector< sptr< IndexedMdd > >::const_iterator i = dict.mddResources.begin();
-            i != dict.mddResources.end(); ++i  )
-      {
-        sptr< IndexedMdd > mddResource = *i;
-        if ( mddResource->loadFile( resourceName, data ) )
-          break;
-      }
-    }
+    dict.loadResourceFile( resourceName, data );
 
     // Check if this file has a redirection
     // Always encoded in UTF16-LE
@@ -1195,40 +1167,14 @@ QString MdxDictionary::getCachedFileName( QString filename )
       vector< char > data;
 
       // In order to prevent recursive internal redirection...
-      set< QByteArray > resourceIncluded;
+      set< wstring > resourceIncluded;
 
       for ( ;; )
       {
-        string u8ResourceName = Utf8::encode( resourceName );
-        QCryptographicHash hash( QCryptographicHash::Md5 );
-        hash.addData( u8ResourceName.data(), u8ResourceName.size() );
-        if ( !resourceIncluded.insert( hash.result() ).second )
+        if( !resourceIncluded.insert( resourceName ).second )
           continue;
 
-        // Convert to the Windows separator
-        std::replace( resourceName.begin(), resourceName.end(), '/', '\\' );
-        if ( resourceName[ 0 ] != '\\' )
-        {
-          resourceName.insert( 0, 1, '\\' );
-        }
-
-        try
-        {
-          // local file takes precedence
-          string fn = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) +
-                      FsEncoding::separator() + u8ResourceName;
-          File::loadFromFile( fn, data );
-        }
-        catch ( File::exCantOpen & )
-        {
-          for ( vector< sptr< IndexedMdd > >::const_iterator i = mddResources.begin();
-                i != mddResources.end(); ++i )
-          {
-            sptr< IndexedMdd > mddResource = *i;
-            if ( mddResource->loadFile( resourceName, data ) )
-              break;
-          }
-        }
+        loadResourceFile( resourceName, data );
 
         // Check if this file has a redirection
         // Always encoded in UTF16-LE
@@ -1274,6 +1220,32 @@ QString MdxDictionary::getCachedFileName( QString filename )
     }
   }
   return fullName;
+}
+
+void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char > & data )
+{
+  wstring newResourceName = resourceName;
+  string u8ResourceName   = Utf8::encode( resourceName );
+
+  // Convert to the Windows separator
+  std::replace( newResourceName.begin(), newResourceName.end(), '/', '\\' );
+  if( newResourceName[ 0 ] == '.' ) {
+    newResourceName.erase( 0, 1 );
+  }
+  if( newResourceName[ 0 ] != '\\' ) {
+    newResourceName.insert( 0, 1, '\\' );
+  }
+  // local file takes precedence
+  string fn = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + u8ResourceName;
+
+  if( File::exists( fn ) ) {
+    File::loadFromFile( fn, data );
+    return;
+  }
+  for( auto mddResource : mddResources ) {
+    if( mddResource->loadFile( newResourceName, data ) )
+      break;
+  }
 }
 
 void MdxDictionary::removeDirectory( QString const & directory )
