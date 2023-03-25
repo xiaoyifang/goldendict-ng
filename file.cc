@@ -114,7 +114,6 @@ void Class::open( char const * filename, char const * mode )
 
   f.setFileName( FsEncoding::decode( filename ) );
 
-  //maybe directory, the xapian use directory to store the index.
   if ( !f.open( openMode ) )
     throw exCantOpen( std::string( filename ) + ": " + f.errorString().toUtf8().data() );
 }
