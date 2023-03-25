@@ -657,14 +657,11 @@ void Preferences::on_buttonBox_accepted()
   if( prevWebFontFamily != currentFontFamily )
   {
     //reset to default font .
-    if( currentFontFamily.isEmpty() )
-    {
-      QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    if( currentFontFamily.isEmpty() ) {
+      GlobalBroadcaster::instance()->profile->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
     }
-    else
-    {
-      QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
-                                                                      currentFontFamily );
+    else {
+      GlobalBroadcaster::instance()->profile->settings()->setFontFamily( QWebEngineSettings::StandardFont, currentFontFamily );
     }
   }
 }
