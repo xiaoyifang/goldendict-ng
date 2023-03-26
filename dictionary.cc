@@ -63,25 +63,25 @@ QString Request::getErrorString()
 
 
 ///////// WordSearchRequest
-  
+
 size_t WordSearchRequest::matchesCount()
 {
   Mutex::Lock _( dataMutex );
-  
+
   return matches.size();
 }
 
-WordMatch WordSearchRequest::operator [] ( size_t index ) 
+WordMatch WordSearchRequest::operator [] ( size_t index )
 {
   Mutex::Lock _( dataMutex );
-  
+
   if ( index >= matches.size() )
     throw exIndexOutOfRange();
-  
+
   return matches[ index ];
 }
 
-vector< WordMatch > & WordSearchRequest::getAllMatches() 
+vector< WordMatch > & WordSearchRequest::getAllMatches()
 {
   if ( !isFinished() )
     throw exRequestUnfinished();
@@ -105,25 +105,48 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 long DataRequest::dataSize()
 {
   Mutex::Lock _( dataMutex );
-  
-  return hasAnyData ? (long)data.size() : -1;
+
+  return hasAnyData ? (long) data.size() : -1;
+}
+
+void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
+  Mutex::Lock _( dataMutex );
+
+  size_t offset = data.size();
+
+  data.resize( data.size() + size );
+
+  memcpy( &data.front() + offset, buffer, size );
+  cond.wakeAll();
 }
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
-  
 {
   if ( size == 0 )
     return;
 
   Mutex::Lock _( dataMutex );
 
-  if ( offset + size > data.size() || !hasAnyData )
+  if( !hasAnyData )
     throw exSliceOutOfRange();
+
+  while( offset + size > data.size() && !quit ) {
+    cond.wait( &dataMutex,10 );
+  }
+  if(quit)
+    return;
 
   memcpy( buffer, &data[ offset ], size );
 }
 
-vector< char > & DataRequest::getFullData() 
+DataRequest::~DataRequest()
+{
+  quit = true;
+  cond.wakeAll();
+  finish();
+}
+
+vector< char > & DataRequest::getFullData()
 {
   if ( !isFinished() )
     throw exRequestUnfinished();
@@ -145,13 +168,13 @@ sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
-  
+
 {
   return std::make_shared<WordSearchRequestInstant>();
 }
 
 sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
-  
+
 {
   return std::make_shared<WordSearchRequestInstant>();
 }
@@ -163,7 +186,7 @@ vector< wstring > Class::getAlternateWritings( wstring const & )
 }
 
 sptr< DataRequest > Class::getResource( string const & /*name*/ )
-  
+
 {
   return std::make_shared<DataRequestInstant>( false );
 }
