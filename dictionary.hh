@@ -8,7 +8,7 @@
 #include <string>
 #include <map>
 #include <QObject>
-#include <QIcon>
+#include <QWaitCondition>
 #include "sptr.hh"
 #include "ex.hh"
 #include "mutex.hh"
@@ -190,8 +190,8 @@ public:
 
   /// Writes "size" bytes starting from "offset" of the data read to the given
   /// buffer. "size + offset" must be <= than dataSize().
-  void getDataSlice( size_t offset, size_t size, void * buffer )
-    ;
+  void getDataSlice( size_t offset, size_t size, void * buffer );
+  void appendDataSlice( const void * buffer, size_t size );
 
   /// Returns all the data read. Since no further locking can or would be
   /// done, this can only be called after the request has finished.
@@ -201,13 +201,18 @@ public:
   {
   }
 
+  ~DataRequest();
+
 protected:
 
   // Subclasses should be filling up the 'data' array, locking the mutex when
   // whey work with it.
   Mutex dataMutex;
 
+  QWaitCondition cond;
+
   bool hasAnyData; // With this being false, dataSize() always returns -1
+  bool quit = false;
   vector< char > data;
 };
 

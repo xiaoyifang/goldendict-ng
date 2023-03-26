@@ -318,9 +318,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     sptr< Dictionary::DataRequestInstant > r =  std::make_shared<Dictionary::DataRequestInstant>( true );
 
-    r->getData().resize( result.size() );
-    memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+    r->appendDataSlice( result.data(), result.size() );
     return r;
   }
 
@@ -376,9 +374,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
 }
 
@@ -390,9 +386,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
   sptr< Dictionary::DataRequestInstant > r =
     std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
 }
 
@@ -406,9 +400,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   sptr< Dictionary::DataRequestInstant > r =
       std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
 }
 
@@ -453,8 +445,7 @@ ArticleRequest::ArticleRequest(
 
   hasAnyData = true;
 
-  data.resize( header.size() );
-  memcpy( &data.front(), header.data(), header.size() );
+  appendDataSlice( (void *) header.data(), header.size() );
 
   //clear founded dicts.
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
@@ -672,29 +663,20 @@ void ArticleRequest::bodyFinished()
         head += collapse ? "none" : "inline";
         head += string( "\" id=\"gdarticlefrom-" ) + Html::escape( dictId ) + "\">";
 
-        if ( errorString.size() )
-        {
-          head += "<div class=\"gderrordesc\">" +
-            Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() )
-          + "</div>";
+        if( errorString.size() ) {
+          head += "<div class=\"gderrordesc\">"
+            + Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() ) + "</div>";
         }
 
-        Mutex::Lock _( dataMutex );
+        appendDataSlice( head.data(), head.size() );
 
-        size_t offset = data.size();
-
-        data.resize( data.size() + head.size() + ( req.dataSize() > 0 ? req.dataSize() : 0 ) );
-
-        memcpy( &data.front() + offset, head.data(), head.size() );
-
-        try
-        {
-          if ( req.dataSize() > 0 )
-            bodyRequests.front()->getDataSlice( 0, req.dataSize(),
-                                                &data.front() + offset + head.size() );
+        try {
+          if( req.dataSize() > 0 ) {
+            auto d = bodyRequests.front()->getFullData();
+            appendDataSlice( &d.front(), d.size() );
+          }
         }
-        catch( std::exception & e )
-        {
+        catch( std::exception & e ) {
           gdWarning( "getDataSlice error: %s\n", e.what() );
         }
 
@@ -738,47 +720,40 @@ void ArticleRequest::bodyFinished()
         footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group );
 
         // When there were no definitions, we run stemmed search.
-        stemmedWordFinder =  std::make_shared<WordFinder>( this );
+        stemmedWordFinder = std::make_shared< WordFinder >( this );
 
         connect( stemmedWordFinder.get(),
-          &WordFinder::finished,
-          this,
-          &ArticleRequest::stemmedSearchFinished,
-          Qt::QueuedConnection );
+                 &WordFinder::finished,
+                 this,
+                 &ArticleRequest::stemmedSearchFinished,
+                 Qt::QueuedConnection );
 
         stemmedWordFinder->stemmedMatch( word, activeDicts );
       }
-      else
-      {
+      else {
         footer += "</body></html>";
       }
 
-      Mutex::Lock _( dataMutex );
-
-      size_t offset = data.size();
-
-      data.resize( data.size() + footer.size() );
-
-      memcpy( &data.front() + offset, footer.data(), footer.size() );
+      appendDataSlice( footer.data(), footer.size() );
     }
 
-    if ( stemmedWordFinder.get() )
-    {
-        update();
-        qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
-        emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
-        dictIds.clear();
+    if( stemmedWordFinder.get() ) {
+      update();
+      qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
+      dictIds.clear();
     }
     else {
       finish();
       qDebug() << "send dicts(finished):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
       dictIds.clear();
     }
-  } else if (wasUpdated) {
+  }
+  else if( wasUpdated ) {
     update();
     qDebug() << "send dicts(updated):" << word << ":" << dictIds;
-    emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
+    emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
     dictIds.clear();
   }
 }
@@ -856,16 +831,10 @@ void ArticleRequest::stemmedSearchFinished()
     footer += "</body></html>";
 
   {
-    Mutex::Lock _( dataMutex );
-
-    size_t offset = data.size();
-
-    data.resize( data.size() + footer.size() );
-
-    memcpy( &data.front() + offset, footer.data(), footer.size() );
+    appendDataSlice( footer.data(), footer.size() );
   }
 
-  if ( continueMatching )
+  if( continueMatching )
     update();
   else
     finish();
@@ -1059,14 +1028,7 @@ void ArticleRequest::individualWordFinished()
 
 void ArticleRequest::appendToData( std::string const & str )
 {
-  Mutex::Lock _( dataMutex );
-
-  size_t offset = data.size();
-
-  data.resize( data.size() + str.size() );
-
-  memcpy( &data.front() + offset, str.data(), str.size() );
-
+  appendDataSlice( str.data(), str.size() );
 }
 
 QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )

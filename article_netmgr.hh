@@ -73,6 +73,7 @@ public slots:
   { baseReply->abort(); }
   virtual void ignoreSslErrors()
   { baseReply->ignoreSslErrors(); }
+  void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions
