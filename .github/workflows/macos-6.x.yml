@@ -50,7 +50,7 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
           cached: 'false'
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
           
       - uses: actions/checkout@v3

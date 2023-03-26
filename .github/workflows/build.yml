@@ -28,7 +28,7 @@ jobs:
           arch: gcc_64
           cached: 'false'
           #serialport linuxdeploy need serialport to work.
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtserialport
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
           setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies

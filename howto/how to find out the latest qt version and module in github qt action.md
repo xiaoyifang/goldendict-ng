@@ -8,6 +8,6 @@ there are several commands
 ```
 pip install aqt
 aqt list-qt linux desktop
-aqt list-qt linux desktop --arch 6.2.4
-aqt list-qt linux desktop --modules 6.2.4 gcc_64
+aqt list-qt linux desktop --arch 6.4.3
+aqt list-qt linux desktop --modules 6.4.3 gcc_64
 ```
