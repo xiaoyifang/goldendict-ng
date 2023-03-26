@@ -6,8 +6,13 @@ the project has included a .clang-format as the code guideline.
 # How to use this file
 
 
-## QtCreator:
+## CommandLine
 
+Stash changes via `git add files` then `git-clang-format`
+
+<https://clang.llvm.org/docs/ClangFormat.html#git-integration>
+
+## QtCreator:
 
 Check the steps in the following webpage.
 https://doc.qt.io/qtcreator/creator-indenting-code.html#automatic-formatting-and-indentation
