@@ -750,8 +750,10 @@ void MddResourceRequest::run()
       return;
     }
     string u8ResourceName = Utf8::encode( resourceName );
-    if( !resourceIncluded.insert( resourceName ).second )
-      continue;
+    if( !resourceIncluded.insert( resourceName ).second ) {
+      finish();
+      return;
+    }
 
     Mutex::Lock _( dataMutex );
     data.clear();
