@@ -147,6 +147,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 <style>
 body { background: #242525; }
 .gdarticle { background: initial;}
+
+img{
+  background: white;
+}
 </style>
 <script>
   // This function returns a promise, but it is synchroneous because it does not use await
