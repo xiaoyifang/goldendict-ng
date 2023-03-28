@@ -100,6 +100,8 @@ private:
 
   std::unique_ptr< SpeechClient > speechClient;
 
+  QSet<QString>  occupiedEngines;
+
   void fitSelectedVoiceEnginesColumns();
   void adjustSliders();
 };

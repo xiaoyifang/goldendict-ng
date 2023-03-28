@@ -22,6 +22,8 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent,
   ui.selectedVoiceEngines->setItemDelegateForColumn( VoiceEnginesModel::kColumnEngineDName,
                                                      new VoiceEngineItemDelegate( engines, this ) );
 
+  foreach( Config::VoiceEngine ve, voiceEngines ) { occupiedEngines.insert( ve.name ); }
+
   foreach ( SpeechClient::Engine engine, engines )
   {
     QMap<QString,QVariant> map;
@@ -29,6 +31,18 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent,
     map[ "locale" ]      = engine.locale;
     map["voice_name"] = engine.voice_name;
     ui.availableVoiceEngines->addItem( engine.name, QVariant(map) );
+  }
+
+  //disable the already added engines.
+  // This is the effective 'disable' flag
+  QVariant v( 0 );
+  for ( int index = 0; index < ui.availableVoiceEngines->count(); index++ ) {
+    auto name = ui.availableVoiceEngines->itemText( index );
+    if ( occupiedEngines.contains( name ) ) {
+      auto modelIndex = ui.availableVoiceEngines->model()->index( index, 0 );
+
+      ui.availableVoiceEngines->model()->setData( modelIndex, v, Qt::UserRole - 1 );
+    }
   }
 
   if( voiceEngines.count() > 0 )
@@ -46,6 +60,8 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent,
            this, SLOT( slidersChanged() ) );
   connect( ui.selectedVoiceEngines->selectionModel(), SIGNAL( selectionChanged( QItemSelection, QItemSelection ) ),
            this, SLOT( selectionChanged() ) );
+
+  ui.availableVoiceEngines->view()->setVerticalScrollBarPolicy( Qt::ScrollBarAsNeeded );
 }
 
 void TextToSpeechSource::slidersChanged()
@@ -76,21 +92,42 @@ void TextToSpeechSource::on_addVoiceEngine_clicked()
     QString voice_name = map["voice_name"].toString();
     voiceEnginesModel.addNewVoiceEngine( engine_name, QLocale(locale), name, voice_name, ui.volumeSlider->value(), ui.rateSlider->value() );
     fitSelectedVoiceEnginesColumns();
+
+    occupiedEngines.insert( name );
+    auto modelIndex = ui.availableVoiceEngines->model()->index( idx, 0 );
+    // This is the effective 'disable' flag
+    QVariant v( 0 );
+    ui.availableVoiceEngines->model()->setData( modelIndex, v, Qt::UserRole - 1 );
   }
 }
 
 void TextToSpeechSource::on_removeVoiceEngine_clicked()
 {
   QModelIndex current = ui.selectedVoiceEngines->currentIndex();
+  auto selected_name = voiceEnginesModel.getCurrentVoiceEngines()[ current.row() ].name;
 
   if ( current.isValid() &&
        QMessageBox::question( this, tr( "Confirm removal" ),
                               tr( "Remove voice engine <b>%1</b> from the list?" ).arg(
-                                voiceEnginesModel.getCurrentVoiceEngines()[ current.row() ].name ),
+                              selected_name ),
                               QMessageBox::Ok,
                               QMessageBox::Cancel ) == QMessageBox::Ok )
   {
     voiceEnginesModel.removeVoiceEngine( current.row() );
+
+    occupiedEngines.remove( selected_name );
+    // This is the effective 'enable' flag
+    QVariant v( 1 | 32 );
+
+    //enable this engine.
+    for ( int index = 0; index < ui.availableVoiceEngines->count(); index++ ) {
+      auto name = ui.availableVoiceEngines->itemText( index );
+      if ( name == selected_name ) {
+        auto modelIndex = ui.availableVoiceEngines->model()->index( index, 0 );
+        ui.availableVoiceEngines->model()->setData( modelIndex, v, Qt::UserRole - 1 );
+        break;
+      }
+    }
   }
 }
 
