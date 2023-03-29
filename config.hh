@@ -13,6 +13,7 @@
 #include <QSet>
 #include <QMetaType>
 #include "ex.hh"
+#include <QLocale>
 
 #ifdef Q_OS_WIN
 #include <QRect>
@@ -639,32 +640,37 @@ typedef QVector< Program > Programs;
 struct VoiceEngine
 {
   bool enabled;
-  QString id;
+  //engine name.
+  QString engine_name;
   QString name;
+  //voice name.
+  QString voice_name;
   QString iconFilename;
-  int volume; // 0-100 allowed
-  int rate;   // 0-100 allowed
+  QLocale locale;
+  int volume; // 0~1 allowed
+  int rate;   // -1 ~ 1 allowed
 
-  VoiceEngine(): enabled( false )
-    , volume( 50 )
-    , rate( 50 )
-  {}
-  VoiceEngine( QString id_, QString name_, int volume_, int rate_ ):
-    enabled( false )
-    , id( id_ )
-    , name( name_ )
-    , volume( volume_ )
-    , rate( rate_ )
+  VoiceEngine():
+    enabled( false ),
+    volume( 50 ),
+    rate( 0 )
+  {
+  }
+  VoiceEngine( QString engine_nane_, QString name_, QString voice_name_, QLocale locale_, int volume_, int rate_ ):
+    enabled( false ),
+    engine_name( engine_nane_ ),
+    name( name_ ),
+    voice_name( voice_name_ ),
+    locale( locale_ ),
+    volume( volume_ ),
+    rate( rate_ )
   {}
 
   bool operator == ( VoiceEngine const & other ) const
   {
-    return enabled == other.enabled &&
-           id == other.id &&
-           name == other.name &&
-           iconFilename == other.iconFilename &&
-           volume == other.volume &&
-           rate == other.rate;
+    return enabled == other.enabled && engine_name == other.engine_name && name == other.name
+      && voice_name == other.voice_name && locale == other.locale && iconFilename == other.iconFilename
+      && volume == other.volume && rate == other.rate;
   }
 
   bool operator != ( VoiceEngine const & other ) const
