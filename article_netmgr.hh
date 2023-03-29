@@ -73,6 +73,7 @@ public slots:
   { baseReply->abort(); }
   virtual void ignoreSslErrors()
   { baseReply->ignoreSslErrors(); }
+  void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions
@@ -147,7 +148,7 @@ public:
 protected:
 
   virtual qint64 bytesAvailable() const;
-
+  bool atEnd() const override;
   virtual void abort()
   {}
   virtual qint64 readData( char * data, qint64 maxSize );

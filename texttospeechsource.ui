@@ -109,11 +109,20 @@
       </item>
       <item>
        <widget class="QSlider" name="rateSlider">
+        <property name="minimum">
+         <number>-10</number>
+        </property>
         <property name="maximum">
-         <number>100</number>
+         <number>10</number>
+        </property>
+        <property name="pageStep">
+         <number>2</number>
+        </property>
+        <property name="value">
+         <number>0</number>
         </property>
         <property name="sliderPosition">
-         <number>50</number>
+         <number>0</number>
         </property>
         <property name="tracking">
          <bool>false</bool>

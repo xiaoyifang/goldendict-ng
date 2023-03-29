@@ -137,14 +137,18 @@ using std::string;
     baseReply->read( data, size );
     return size;
   }
+  void AllowFrameReply::finishedSlot()
+  {
+    setFinished( true );
+    emit finished();
+  }
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest const & req )
 {
   QUrl url;
   auto op = GetOperation;
-//  if ( op == GetOperation )
-  {
-    if ( req.url().scheme() == "qrcx" )
+
+  if ( req.url().scheme() == "qrcx" )
     {
     // We had to override the local load policy for the qrc URL scheme until QWebSecurityOrigin::addLocalScheme() was
     // introduced in Qt 4.6. Hence we used a custom qrcx URL scheme and redirected it here back to qrc. Qt versions
@@ -185,7 +189,6 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
       return new ArticleResourceReply( this, req, dr, contentType );
 
     //dr.get() can be null. code continue to execute.
-  }
 
   //can not match dictionary in the above code,means the url must be external links.
   //if not external url,can be blocked from here. no need to continue execute the following code.
@@ -393,15 +396,15 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   if ( req->isFinished() || req->dataSize() > 0 )
   {
     connect( this,
-      &ArticleResourceReply::readyReadSignal,
-      this,
-      &ArticleResourceReply::readyReadSlot,
-      Qt::QueuedConnection );
+             &ArticleResourceReply::readyReadSignal,
+             this,
+             &ArticleResourceReply::readyReadSlot,
+             Qt::QueuedConnection );
     connect( this,
-      &ArticleResourceReply::finishedSignal,
-      this,
-      &ArticleResourceReply::finishedSlot,
-      Qt::QueuedConnection );
+             &ArticleResourceReply::finishedSignal,
+             this,
+             &ArticleResourceReply::finishedSlot,
+             Qt::QueuedConnection );
 
     emit readyReadSignal();
 
@@ -439,6 +442,14 @@ qint64 ArticleResourceReply::bytesAvailable() const
   return avail - alreadyRead + QNetworkReply::bytesAvailable();
 }
 
+bool ArticleResourceReply::atEnd() const
+{
+  // QWebEngineUrlRequestJob finishes and is destroyed as soon as QIODevice::atEnd() returns true.
+  // QNetworkReply::atEnd() returns true while bytesAvailable() returns 0.
+  // Return false if the data request is not finished to work around always-blank web page.
+  return req->isFinished() && QNetworkReply::atEnd();
+}
+
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 {
   // From the doc: "This function might be called with a maxSize of 0,
@@ -456,7 +467,7 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   qint64 left = avail - alreadyRead;
   
   qint64 toRead = maxSize < left ? maxSize : left;
-  GD_DPRINTF( "====reading %d bytes", (int)toRead );
+  GD_DPRINTF( "====reading  %d of (%d) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try
   {
@@ -486,11 +497,11 @@ void ArticleResourceReply::finishedSlot()
     emit errorOccurred(ContentNotFoundError);
     setError(ContentNotFoundError, "content not found");
   }
-
   //prevent sent multi times.
   if (!finishSignalSent.loadAcquire())
   {
     finishSignalSent.ref();
+    setFinished( true );
     emit finished();
   }
 }
@@ -508,6 +519,7 @@ BlockedNetworkReply::BlockedNetworkReply( QObject * parent ): QNetworkReply( par
 void BlockedNetworkReply::finishedSlot()
 {
   emit readyRead();
+  setFinished( true );
   emit finished();
 }
 
@@ -534,6 +546,7 @@ void LocalSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
   }
 
   QNetworkReply * reply = this->mManager.getArticleReply( request );
-  connect( reply, &QNetworkReply::finished, requestJob, [ = ]() { requestJob->reply( "text/html", reply ); } );
+  requestJob->reply( "text/html", reply );
+  //connect( reply, &QNetworkReply::finished, requestJob, [ = ]() {  } );
   connect( requestJob, &QObject::destroyed, reply, &QObject::deleteLater );
 }

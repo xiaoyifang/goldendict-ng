@@ -1,8 +1,9 @@
 #include "articlewebpage.h"
 #include "utils.hh"
+#include "globalbroadcaster.h"
 
-ArticleWebPage::ArticleWebPage(QObject *parent)
-  : QWebEnginePage{parent}
+ArticleWebPage::ArticleWebPage( QObject * parent ):
+  QWebEnginePage{ GlobalBroadcaster::instance()->profile, parent }
 {
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )

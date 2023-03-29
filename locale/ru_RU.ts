@@ -3338,6 +3338,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation>&amp;Интерфейс</translation>
     </message>
     <message>
+        <location filename="../preferences.ui" line="174"/>
+        <source>Dark Reader Mode</source>
+        <translation type="unfinished">Темная тема просмотрщика</translation>
+    </message>
+    <message>
         <location filename="../preferences.ui" line="187"/>
         <source>Tabbed browsing</source>
         <translation>Работа со вкладками</translation>
@@ -3433,10 +3438,30 @@ the application.</source>
         <translation>Переводить выбранное слово по двойному щелчку</translation>
     </message>
     <message>
+        <location filename="../preferences.ui" line="356"/>
+        <source>Dictionary Font: </source>
+        <translation>Шрифт словаря</translation>
+    </message>
+    <message>
         <location filename="../preferences.ui" line="417"/>
         <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
         <translation>Включать или нет режим всплывающего окна при запуске программы.</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="460"/>
+        <source>Track Clipboard change</source>
+        <translation>Следить за изменениями в буфере обмена</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="467"/>
+        <source>Track Selection change</source>
+        <translation>Следить за выделенным текстом</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="483"/>
+        <source>Only tack selection when all selected keys are kept pressed:</source>
+        <translation>Следить за выделенным текстом только когда все эти клавиши зажаты</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="616"/>
@@ -4133,6 +4158,16 @@ GoldenDict. Если новая версия появилась, програм�
 страницу загрузки.</translation>
     </message>
     <message>
+        <location filename="../preferences.ui" line="1749"/>
+        <source>When using clipboard,strip everything after newline</source>
+        <translation>При использовании буфера обмена игнорировать весь текст после символа перевода строки</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1774"/>
+        <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+        <translation>При каждом поиске переводить фокус на окно программы даже если оно уже открыто</translation>
+    </message>
+    <message>
         <location filename="../preferences.ui" line="1234"/>
         <source>Check for new program releases periodically</source>
         <translation>Проверять наличие новой версии</translation>
@@ -4738,8 +4773,8 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
         <location filename="../sources.ui" line="409"/>
-        <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
-        <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Если такой строки нет, слово будет отправлено в стандартный входной поток.</translation>
+        <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
+        <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Строка %GDSEARCH% будет заменена на текст в поисковой строке. Если обоих строк нет задано, запрашиваемое слово будет отправлено в стандартный входной поток внешней программы.</translation>
     </message>
     <message>
         <location filename="../sources.ui" line="462"/>
