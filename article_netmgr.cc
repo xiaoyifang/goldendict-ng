@@ -442,6 +442,14 @@ qint64 ArticleResourceReply::bytesAvailable() const
   return avail - alreadyRead + QNetworkReply::bytesAvailable();
 }
 
+bool ArticleResourceReply::atEnd() const
+{
+  // QWebEngineUrlRequestJob finishes and is destroyed as soon as QIODevice::atEnd() returns true.
+  // QNetworkReply::atEnd() returns true while bytesAvailable() returns 0.
+  // Return false if the data request is not finished to work around always-blank web page.
+  return req->isFinished() && QNetworkReply::atEnd();
+}
+
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 {
   // From the doc: "This function might be called with a maxSize of 0,
