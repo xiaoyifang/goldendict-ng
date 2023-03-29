@@ -120,23 +120,25 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
   cond.wakeAll();
 }
 
-void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
+size_t DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  if ( size == 0 )
-    return;
-
+  size_t actual_size = size;
   Mutex::Lock _( dataMutex );
+
+  while( offset == data.size() && !quit ) {
+    cond.wait( &dataMutex, 10 );
+  }
+
+  actual_size = data.size() - offset;
 
   if( !hasAnyData )
     throw exSliceOutOfRange();
 
-  while( offset + size > data.size() && !quit ) {
-    cond.wait( &dataMutex,10 );
-  }
-  if(quit)
-    return;
+  if( quit )
+    return 0;
 
-  memcpy( buffer, &data[ offset ], size );
+  memcpy( buffer, &data[ offset ], actual_size );
+  return actual_size;
 }
 
 DataRequest::~DataRequest()

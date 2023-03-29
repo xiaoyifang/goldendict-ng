@@ -190,7 +190,7 @@ public:
 
   /// Writes "size" bytes starting from "offset" of the data read to the given
   /// buffer. "size + offset" must be <= than dataSize().
-  void getDataSlice( size_t offset, size_t size, void * buffer );
+  size_t getDataSlice( size_t offset, size_t size, void * buffer );
   void appendDataSlice( const void * buffer, size_t size );
 
   /// Returns all the data read. Since no further locking can or would be
