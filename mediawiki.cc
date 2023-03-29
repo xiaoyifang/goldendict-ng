@@ -145,6 +145,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
 MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest()
 {
+  finish();
   GD_DPRINTF( "request end\n" );
 }
 
@@ -425,10 +426,10 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr,
   Utils::Url::addQueryItem( reqUrl, "page", gd::toQString( str ).replace( '+', "%2B" ) );
   QNetworkRequest req( reqUrl ) ;
   //millseconds.
-  req.setTransferTimeout(3000);
+  req.setTransferTimeout(2000);
   QNetworkReply * netReply = mgr.get(req);
   connect( netReply, &QNetworkReply::errorOccurred, this, [=](QNetworkReply::NetworkError e){
-            qDebug()<<  "error:"<<e;
+      qDebug()<<  "error:"<<e;
    } );
 #ifndef QT_NO_SSL
 

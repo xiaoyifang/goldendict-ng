@@ -467,16 +467,16 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   qint64 left = avail - alreadyRead;
   
   qint64 toRead = maxSize < left ? maxSize : left;
-  GD_DPRINTF( "====reading  %d of (%d) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try
   {
-    req->getDataSlice( alreadyRead, toRead, out );
+    toRead = req->getDataSlice( alreadyRead, toRead, out );
   }
   catch( std::exception & e )
   {
     qWarning( "getDataSlice error: %s", e.what() );
   }
+  GD_DPRINTF( "====reading already readed: %d of %d bytes, toRead:%d.%d  Finished: %d", alreadyRead, avail, (int)toRead,maxSize, finished );
 
   alreadyRead += toRead;
 
@@ -546,7 +546,8 @@ void LocalSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
   }
 
   QNetworkReply * reply = this->mManager.getArticleReply( request );
+
   requestJob->reply( "text/html", reply );
-  //connect( reply, &QNetworkReply::finished, requestJob, [ = ]() {  } );
+
   connect( requestJob, &QObject::destroyed, reply, &QObject::deleteLater );
 }

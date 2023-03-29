@@ -23,6 +23,7 @@
 #include <QRegularExpression>
 #include "utils.hh"
 #include "zipfile.hh"
+#include <QtGlobal>
 
 namespace Dictionary {
 
@@ -120,30 +121,38 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
   cond.wakeAll();
 }
 
-void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
+size_t DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  if ( size == 0 )
-    return;
+  size_t actual_size = size;
 
   Mutex::Lock _( dataMutex );
 
+  while( actual_size==0 ) {
+    cond.wait( &dataMutex );
+    actual_size = qMin(60000, (int)(data.size()-offset));
+  }
+
+  if(actual_size==0)
+    return 0;
   if( !hasAnyData )
     throw exSliceOutOfRange();
 
-  while( offset + size > data.size() && !quit ) {
-    cond.wait( &dataMutex,10 );
-  }
-  if(quit)
-    return;
 
-  memcpy( buffer, &data[ offset ], size );
+  while( offset + actual_size > data.size() ) {
+    cond.wait( &dataMutex );
+  }
+
+  if(offset + actual_size > data.size()){
+    return 0;
+  }
+
+  memcpy( buffer, &data[ offset ], actual_size );
+  return actual_size;
 }
 
 DataRequest::~DataRequest()
 {
-  quit = true;
   cond.wakeAll();
-  finish();
 }
 
 vector< char > & DataRequest::getFullData()
