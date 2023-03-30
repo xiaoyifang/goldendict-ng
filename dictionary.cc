@@ -117,7 +117,6 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
   data.resize( data.size() + size );
 
   memcpy( &data.front() + offset, buffer, size );
-  cond.wakeAll();
 }
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
@@ -130,20 +129,7 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
   if( !hasAnyData )
     throw exSliceOutOfRange();
 
-  while( offset + size > data.size() && !quit ) {
-    cond.wait( &dataMutex,10 );
-  }
-  if(quit)
-    return;
-
   memcpy( buffer, &data[ offset ], size );
-}
-
-DataRequest::~DataRequest()
-{
-  quit = true;
-  cond.wakeAll();
-  finish();
 }
 
 vector< char > & DataRequest::getFullData()

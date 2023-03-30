@@ -466,6 +466,18 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 
   qint64 left = avail - alreadyRead;
   
+  if(  left == 0 && !finished )
+  {
+    // Work around endlessly repeated useless calls to readData(). The sleep duration is a tradeoff.
+    // On the one hand, lowering the duration reduces CPU usage. On the other hand, overly long
+    // sleep duration reduces page content update frequency in the web view.
+    // Waiting on a condition variable is more complex and actually works worse than
+    // simple fixed-duration sleeping, because the web view is not updated until
+    // the data request is finished if readData() returns only when new data arrives.
+    QThread::msleep( 30 );
+    return 0;
+  }
+
   qint64 toRead = maxSize < left ? maxSize : left;
   GD_DPRINTF( "====reading  %d of (%d) bytes . Finished: %d", (int)toRead, avail, finished );
 
