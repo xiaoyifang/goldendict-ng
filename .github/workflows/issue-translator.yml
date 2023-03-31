@@ -1,7 +1,7 @@
 name: 'issue-translator'
 on: 
   issue_comment: 
-    types: [created]
+    types: [created,edited]
   issues: 
     types: [opened]
 
