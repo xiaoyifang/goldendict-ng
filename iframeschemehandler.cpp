@@ -17,26 +17,23 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 
   QNetworkReply * reply = mgr.get( request );
 
-  auto finishAction     = [ = ]() -> void
-  {
-    QByteArray contentType = "text/html";
+  auto finishAction = [ = ]() {
 
+    QByteArray contentType = "text/html";
+    QString codecName;
+    const auto ctHeader = reply->header( QNetworkRequest::ContentTypeHeader );
+    if (  ctHeader.isValid() ) {
+      contentType = ctHeader.toByteArray();
+      const auto ct     = ctHeader.toString();
+      const auto index  = ct.indexOf( "charset=" );
+      if ( index > -1 ) {
+        codecName = ct.mid( index + 8 );
+      }
+    }
     QBuffer * buffer = new QBuffer( requestJob );
 
     QByteArray replyData = reply->readAll();
     QString articleString;
-
-    QString codecName;
-    auto contentTypeV = reply->header(QNetworkRequest::ContentTypeHeader);
-    if(contentTypeV.isValid())
-    {
-      auto _ct = contentTypeV.toString();
-      auto index = _ct.indexOf("charset=");
-      if(index>-1){
-        codecName=_ct.mid(index+QString("charset=").size());
-        qDebug()<<codecName;
-      }
-    }
 
     QTextCodec * codec = QTextCodec::codecForUtfText( replyData, QTextCodec::codecForName( codecName.toUtf8() ) );
     if(codec)
@@ -93,17 +90,14 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
       articleString.insert( 0, depressionFocus );
     }
 
-    if(codec)
-      buffer->setData(codec->fromUnicode(articleString));
-    else
-      buffer->setData(articleString.toUtf8());
+    buffer->setData(articleString.toUtf8());
 
-  #ifdef Q_OS_WIN32
-    requestJob->reply(contentTypeV.toByteArray() , buffer );
-  #else
-    //use "text/html;charset=utf-8" will make the response html text rendered on the webpage?
-    requestJob->reply(contentType , buffer );
-  #endif
+    //"text/html;charset=utf-8" will be treated as text/plain in Linux .
+#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+    requestJob->reply( contentType, buffer );
+#else
+    requestJob->reply( "text/html", buffer );
+#endif
   };
   connect( reply, &QNetworkReply::finished, requestJob, finishAction );
 
