@@ -3,32 +3,31 @@
 #include "utils.hh"
 #include "globalbroadcaster.h"
 
-WebUrlRequestInterceptor::WebUrlRequestInterceptor(QObject *p)
-  :QWebEngineUrlRequestInterceptor(p)
+WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
+  QWebEngineUrlRequestInterceptor( p )
+{
+}
+void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
 
-}
-void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo &info) {
-  info.setHttpHeader("origin",Utils::Url::getHostBaseFromUrl(info.requestUrl()).toUtf8());
-  info.setHttpHeader("referer",info.requestUrl().url().toUtf8());
-  if(  GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( info.requestUrl() ) )
-  {
+  info.setHttpHeader( "origin", "*" );
+  info.setHttpHeader( "referer", info.requestUrl().url().toUtf8() );
+  if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites
+       && Utils::isExternalLink( info.requestUrl() ) ) {
     //file:// link ,pass
-    if(info.requestUrl().scheme()=="file"){
+    if ( info.requestUrl().scheme() == "file" ) {
       return;
     }
     auto hostBase = Utils::Url::getHostBase( info.requestUrl().host() );
-    if( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) )
-    {
+    if ( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) ) {
       //whitelist url does not block
       return;
     }
-    if( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage
-        || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeFontResource
-        || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeStylesheet
-        || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMedia
-        || Utils::isHtmlResources( info.requestUrl() ) )
-    {
+    if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage
+         || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeFontResource
+         || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeStylesheet
+         || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMedia
+         || Utils::isHtmlResources( info.requestUrl() ) ) {
       //let throuth the resources file.
       return;
     }
