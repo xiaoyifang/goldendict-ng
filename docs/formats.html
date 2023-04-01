@@ -55,17 +55,17 @@
 <p><b class="redFont"><code translate=\"no\">\chapter</code></b>Other resources</p>
 <ul>
 <li>External programs</li>
-<li>Text-to-speech engines (under Windows and MacOS)</li>
+<li>Text-to-speech engines</li>
 </ul>
 <p><b class="redFont"><code translate=\"no\">\chapter</code></b>Local dictionary features <span id="stardict-features"></span></p>
 <h2 id="1-stardict">1. Stardict</h2>
 <p>Main file of Stardict dictionary (.dict) can be compressed by Dictzip program to reduce its size.</p>
 <p>Additional dictionary resources (images, style sheets, etc.) placed in &quot;res&quot; folder also can be compressed into zip archive. This archive must be named &quot;res.zip&quot; and placed beside other dictionary files or inside &quot;res&quot; folder.</p>
-<p>Size of such archive must not exceed 4 GB.</p>
+
 <span id="dsl-features"></span><h2 id="2-abbyy-lingvo">2. ABBYY Lingvo</h2>
 <p>Main file of ABBYY Lingvo dictionary (.dsl) can be compressed by Dictzip program to reduce its size.</p>
 <p>Additional dictionary resources (images, sound files, etc.) also can be compressed into zip archive. This archive must be named on main dictionary file name (include extension) with adding &quot;.files.zip&quot; and placed beside other dictionary files. If main file of your dictionary, for example, named &quot;My_best_dictionary.dsl&quot; therefore archive with resources must be named &quot;My_best_dictionary.dsl.files.zip&quot;.</p>
-<p>Size of such archive must not exceed 4 GB.</p>
+
 <p>GoldenDict supports the &quot;#SOUND_DICTIONARY&quot; directive. Sounds missing in the resources of the dictionary will be searched first in the dictionary specified in this directive.</p>
 <span id="xdxf-features"></span><h2 id="3-dictd-xdxf">3. DictD, Xdxf</h2>
 <p>Main file of DictD dictionary (.dict) or Xdxf dictionary (.xdxf) can be compressed by Dictzip program to reduce its size.</p>
@@ -79,7 +79,7 @@
 <p>The separate folder with sound files can be added into GoldenDict dictionaries list. GoldenDict will handle this folders like ABBYY Lingvo sound archives (inapplicable in <a href="portable.html" translate="no">portable mode</a>).</p>
 <span id="zips-features"></span><h2 id="8-zips-sound-packs">8. Zips sound packs</h2>
 <p>Zips sound pack is zip archive with extension &quot;.zips&quot; contains set of sound files. To create suck pack it needs to compress sound files into zip archive and change extension of this archive to &quot;.zips&quot;. GoldenDict will handle such sound packs like ABBYY Lingvo sound archives.</p>
-<p>Zips file size must not exceed 4 GB.</p>
+
 <h2 id="9-individual-dictionary-icons">9. Individual dictionary icons</h2>
 <p>Every local dictionary can have individual icon. BMP, PNG, JPG or ICO files can be used for this icon.</p>
 <p>For Babylon, StarDict, DictD, ABBYY Lingvo, AardDictionary, SDictionary, Zim, MDict, Lsa, Zips, Slob, Gls dictionaries such graphics file must be named by main dictionary file name and places beside one. That is if main file of your dictionary, for example, named &quot;My_best_dictionary.dsl&quot; therefore icon file must be named &quot;My_best_dictionary.bmp&quot; (.png, .jpg etc.)&#x2e;</p>
