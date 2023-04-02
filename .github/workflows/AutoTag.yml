@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 23.02.06
-      version-suffix: LanternFestival
+      version: 23.04.02
+      version-suffix: QingmingFestival
       prerelease: false
 
     steps:

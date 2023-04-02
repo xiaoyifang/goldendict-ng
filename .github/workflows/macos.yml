@@ -30,8 +30,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.02.06
-      version-suffix: LanternFestival
+      version: 23.04.02
+      version-suffix: QingmingFestival
       prerelease: false
 
     steps:

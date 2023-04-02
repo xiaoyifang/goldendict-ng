@@ -30,8 +30,8 @@ jobs:
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.02.06
-      version-suffix: LanternFestival
+      version: 23.04.02
+      version-suffix: QingmingFestival
       prerelease: false
     steps:
       - name: Install Qt
