@@ -69,9 +69,16 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
 }
 
 # on windows platform ,only works in release build
+
 CONFIG( use_xapian ) {
   DEFINES += USE_XAPIAN
-  LIBS+= -lxapian
+
+  win32{
+    LIBS+= -lxapian
+  }
+  else{
+    LIBS+=-lxapian-core
+  }
 }
 
 CONFIG( use_iconv ) {
