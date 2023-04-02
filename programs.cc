@@ -9,6 +9,7 @@
 #include "parsecmdline.hh"
 #include "iconv.hh"
 #include "utils.hh"
+#include "globalbroadcaster.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -96,7 +97,7 @@ sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
 
       result += addAudioLink( ref, getId() );
 
-      result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
+      result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
       result += "<td><a href=" + ref + ">" +
                 Html::escape( wordUtf8 ) + "</a></td>";
       result += "</tr></table>";
@@ -154,13 +155,18 @@ bool RunInstance::start( Config::Program const & prg, QString const & word,
     args.pop_front();
 
     bool writeToStdInput = true;
+    auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
 
-    for( int x = 0; x < args.size(); ++x )
-      if( args[ x ].indexOf( "%GDWORD%" ) >= 0 )
-      {
+    for( auto & arg : args ) {
+      if( arg.indexOf( "%GDWORD%" ) >= 0 ) {
         writeToStdInput = false;
-        args[ x ].replace( "%GDWORD%", word );
+        arg.replace( "%GDWORD%", word );
       }
+      if( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
+        writeToStdInput = false;
+        arg.replace( "%GDSEARCH%", search_string );
+      }
+    }
 
     process.start( programName, args );
     if( writeToStdInput )

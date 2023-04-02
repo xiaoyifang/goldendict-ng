@@ -1,0 +1,20 @@
+name: 'issue-translator'
+on: 
+  issue_comment: 
+    types: [created]
+  issues: 
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: a631807682/issues-translator@v1.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          match-languages: cmn
+          min-match-percent: 0.15
+          modify-title: true
+          modify-body: true
+          modify-comment: true
+          comment-note: Bot detected the issue body's language is not English, translate it automatically.

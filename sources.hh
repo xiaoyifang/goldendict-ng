@@ -12,9 +12,7 @@
 #include <QItemDelegate>
 #include <QItemEditorFactory>
 
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #include "texttospeechsource.hh"
-#endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
 // Forward declaration
@@ -295,9 +293,7 @@ private:
   ChineseConversion *chineseConversion;
 #endif
 
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
   TextToSpeechSource *textToSpeechSource;
-#endif
 
   QItemDelegate * itemDelegate;
   QItemEditorFactory * itemEditorFactory;

@@ -38,7 +38,7 @@ public:
 
   VoiceEnginesDictionary( Config::VoiceEngine const & voiceEngine ):
     Dictionary::Class(
-      toMd5( voiceEngine.id.toUtf8() ),
+      toMd5( voiceEngine.name.toUtf8() ),
       vector< string >() ),
     voiceEngine( voiceEngine )
   {
@@ -100,7 +100,7 @@ sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
   string ref = string( "\"" ) + encodedUrl + "\"";
   result += addAudioLink( ref, getId() );
 
-  result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
+  result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
   result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
   result += "</tr></table>";
 

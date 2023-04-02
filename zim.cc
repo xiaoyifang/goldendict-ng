@@ -33,7 +33,6 @@
 #include <QAtomicInt>
 #include <QImage>
 #include <QDir>
-#include <QDebug>
 
 #include <QRegularExpression>
 

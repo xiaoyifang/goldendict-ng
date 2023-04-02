@@ -44,6 +44,7 @@ find_package(Qt6 REQUIRED COMPONENTS
         Widgets
         Svg
         Xml
+        TextToSpeech
         )
 
 if (APPLE)
@@ -133,7 +134,6 @@ set(QRC_RESOURCES
 
 set(UI_SRC
         about.ui
-        articleview.ui
         authentication.ui
         chineseconversion.ui
         dictgroupwidget.ui
@@ -147,9 +147,9 @@ set(UI_SRC
         options.ui
         orderandprops.ui
         preferences.ui
-        scanflag.ui
         scanpopup.ui
         sources.ui
+        texttospeechsource.ui
         )
 if(WITH_EPWING_SUPPORT)
 set(EPWING_SUPPORT_SRC
@@ -169,26 +169,12 @@ if (APPLE)
             machotkeywrapper.mm
             macmouseover.hh
             macmouseover.mm
-            speechclient.hh
-            speechclient_mac.mm
-            texttospeechsource.cc
-            texttospeechsource.hh
-            texttospeechsource.ui
+
+            src/platform/gd_clipboard.cpp
+            src/platform/gd_clipboard.h
             )
 endif ()
 
-if(MSVC)
-    set(WIN_SRC
-            guids.c # ONLY RELATED TO TTS
-            speechclient.hh
-            speechclient_win.cc
-            speechhlp.cc
-            speechhlp.hh
-            texttospeechsource.cc
-            texttospeechsource.hh
-            texttospeechsource.ui
-            )
-endif()
 
 if(WITH_FFMPEG_PLAYER)
     set(FFMPEG_SUPPORT_SRC
@@ -201,7 +187,6 @@ endif()
 set(PROJECT_SOURCES
         ${UI_SRC}
         ${MAC_SRC}
-        ${WIN_SRC}
         ${QRC_RESOURCES}
         ${EPWING_SUPPORT_SRC}
         ${FFMPEG_SUPPORT_SRC}
@@ -217,8 +202,6 @@ set(PROJECT_SOURCES
         article_maker.hh
         article_netmgr.cc
         article_netmgr.hh
-        articleview.cc
-        articleview.hh
         articlewebpage.cpp
         articlewebpage.h
         articlewebview.cc
@@ -282,8 +265,6 @@ set(PROJECT_SOURCES
         externalaudioplayer.hh
         externalviewer.cc
         externalviewer.hh
-        extlineedit.cc
-        extlineedit.hh
         favoritespanewidget.cc
         favoritespanewidget.hh
         file.cc
@@ -408,7 +389,6 @@ set(PROJECT_SOURCES
         sounddir.hh
         sources.cc
         sources.hh
-        sphelper.hh
         splitfile.cc
         splitfile.hh
         sptr.hh
@@ -465,7 +445,15 @@ set(PROJECT_SOURCES
         zipfile.hh
         zipsounds.cc
         zipsounds.hh
-        src/dict/lingualibre.cpp src/dict/lingualibre.h)
+        src/dict/lingualibre.cpp src/dict/lingualibre.h
+        src/ui/articleview.cpp src/ui/articleview.h
+        src/ui/ftssearchpanel.cpp src/ui/ftssearchpanel.h
+        src/ui/searchpanel.cpp src/ui/searchpanel.h
+        speechclient.hh
+        speechclient.cc
+        texttospeechsource.cc
+        texttospeechsource.hh
+        )
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
         MANUAL_FINALIZATION
@@ -494,6 +482,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
+        Qt6::TextToSpeech
         )
 
 if(APPLE)

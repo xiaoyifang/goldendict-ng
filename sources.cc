@@ -5,7 +5,6 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStandardItemModel>
-#include "gddebug.hh"
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
 #include "chineseconversion.hh"
@@ -17,9 +16,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
 #endif
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
-  textToSpeechSource( NULL ),
-#endif
+  textToSpeechSource( nullptr ),
   itemDelegate( new QItemDelegate( this ) ),
   itemEditorFactory( new QItemEditorFactory() ),
   mediawikisModel( this, cfg.mediawikis ),
@@ -124,10 +121,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
   ui.forvoLanguageCodes->setText( forvo.languageCodes );
 
   // Text to speech
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
   textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
   ui.tabWidget->addTab( textToSpeechSource, QIcon(":/icons/text2speech.svg"), tr( "Text to Speech" ) );
-#endif
 
   if ( Config::isPortableVersion() )
   {
@@ -341,13 +336,9 @@ void Sources::on_removeProgram_clicked()
 
 Config::VoiceEngines Sources::getVoiceEngines() const
 {
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
   if ( !textToSpeechSource )
     return Config::VoiceEngines();
   return textToSpeechSource->getVoiceEnginesModel().getCurrentVoiceEngines();
-#else
-  return Config::VoiceEngines();
-#endif
 }
 
 Config::Hunspell Sources::getHunspell() const

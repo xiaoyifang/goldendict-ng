@@ -223,6 +223,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.stripClipboard->setChecked( p.stripClipboard );
 
+  ui.raiseWindowOnSearch->setChecked( p.raiseWindowOnSearch );
+
   ui.maxDictsInContextMenu->setValue( p.maxDictionaryRefsInContextMenu );
 
   // Different platforms have different keys available
@@ -319,6 +321,10 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ankiPort->setValue( p.ankiConnectServer.port );
   ui.ankiModel->setText( p.ankiConnectServer.model );
   ui.ankiDeck->setText(p.ankiConnectServer.deck);
+  //anki connect fields
+  ui.ankiText->setText(p.ankiConnectServer.text);
+  ui.ankiWord->setText(p.ankiConnectServer.word);
+  ui.ankiSentence->setText(p.ankiConnectServer.sentence);
 
   connect( ui.customProxy, &QAbstractButton::toggled, this, &Preferences::customProxyToggled );
 
@@ -439,6 +445,7 @@ Config::Preferences Preferences::getPreferences()
   p.ignoreDiacritics = ui.ignoreDiacritics->isChecked();
   p.ignorePunctuation = ui.ignorePunctuation->isChecked();
   p.stripClipboard = ui.stripClipboard->isChecked();
+  p.raiseWindowOnSearch = ui.raiseWindowOnSearch->isChecked();
 
   p.synonymSearchEnabled = ui.synonymSearchEnabled->isChecked();
 
@@ -467,6 +474,10 @@ Config::Preferences Preferences::getPreferences()
   p.ankiConnectServer.port    = (unsigned)ui.ankiPort->value();
   p.ankiConnectServer.deck = ui.ankiDeck->text();
   p.ankiConnectServer.model = ui.ankiModel->text();
+  //anki connect fields
+  p.ankiConnectServer.text = ui.ankiText->text();
+  p.ankiConnectServer.word = ui.ankiWord->text();
+  p.ankiConnectServer.sentence = ui.ankiSentence->text();
 
   p.checkForNewReleases = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
@@ -646,14 +657,11 @@ void Preferences::on_buttonBox_accepted()
   if( prevWebFontFamily != currentFontFamily )
   {
     //reset to default font .
-    if( currentFontFamily.isEmpty() )
-    {
-      QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    if( currentFontFamily.isEmpty() ) {
+      GlobalBroadcaster::instance()->profile->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
     }
-    else
-    {
-      QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
-                                                                      currentFontFamily );
+    else {
+      GlobalBroadcaster::instance()->profile->settings()->setFontFamily( QWebEngineSettings::StandardFont, currentFontFamily );
     }
   }
 }

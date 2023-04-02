@@ -19,7 +19,7 @@
 #include "instances.hh"
 #include "article_maker.hh"
 #include "scanpopup.hh"
-#include "articleview.hh"
+#include "ui/articleview.h"
 #include "wordfinder.hh"
 #include "dictionarybar.hh"
 #include "history.hh"
@@ -38,6 +38,10 @@
 #include "iframeschemehandler.h"
 #ifdef HAVE_X11
 #include <fixx11h.h>
+#endif
+
+#if defined(Q_OS_MAC)
+#include "platform/gd_clipboard.h"
 #endif
 
 using std::string;
@@ -69,7 +73,6 @@ public slots:
   void phraseReceived( Config::InputPhrase const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );
-  void setExpandMode( bool expand );
   void headwordFromFavorites( QString const &, QString const & );
   void quitApp();
 
@@ -111,7 +114,7 @@ private:
           closeAllTabAction, closeRestTabAction,
           switchToNextTabAction, switchToPrevTabAction,
           showDictBarNamesAction, useSmallIconsInToolbarsAction, toggleMenuBarAction,
-          switchExpandModeAction, focusHeadwordsDlgAction, focusArticleViewAction,
+          focusHeadwordsDlgAction, focusArticleViewAction,
           addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
@@ -133,7 +136,7 @@ private:
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;
-  QMap<std::string, sptr< Dictionary::Class > > dictMap;
+  QMap< std::string, sptr< Dictionary::Class > > dictMap;
   /// Here we store unmuted dictionaries when the dictionary bar is active
   vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups groupInstances;
@@ -142,6 +145,9 @@ private:
   QNetworkAccessManager dictNetMgr; // We give dictionaries a separate manager,
                                     // since their requests can be destroyed
                                     // in a separate thread
+
+  QScopedPointer< QWebEngineProfile > webEngineProfile;
+
   AudioPlayerFactory audioPlayerFactory;
 
   WordList * wordList;
@@ -150,7 +156,7 @@ private:
 
   WordFinder wordFinder;
 
-  sptr< ScanPopup > scanPopup;
+  ScanPopup * scanPopup = nullptr;
 
   sptr< HotkeyWrapper > hotkeyWrapper;
 
@@ -182,8 +188,12 @@ private:
   IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
 
+#ifdef Q_OS_MAC
+    gd_clipboard * macClipboard;
+#endif
+
   /// Applies the custom Qt stylesheet
-  void applyQtStyleSheet( QString const & addonStyle, bool const & darkMode );
+  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle ,bool const & darkMode );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
@@ -198,7 +208,6 @@ private:
   void updateStatusLine();
   void updateGroupList();
   void updateDictionaryBar();
-  void makeScanPopup();
 
   void updatePronounceAvailability();
 
@@ -313,9 +322,6 @@ private slots:
   void switchToPrevTab();
   void ctrlReleased();
 
-  // Switch optional parts expand mode for current tab
-  void switchExpandOptionalPartsMode();
-
   // Handling of active tab list
   void createTabList();
   void fillWindowsMenu();
@@ -408,8 +414,6 @@ private slots:
 
   void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
-  void scanEnableToggled( bool );
-
   void setAutostart( bool );
 
   void showMainWindow();
@@ -488,25 +492,11 @@ private slots:
   void inspectElement( QWebEnginePage * );
 
 signals:
-  /// Set optional parts expand mode for all tabs
-  void setExpandOptionalParts( bool expand );
-
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( QString const & id );
 
   /// Set group for popup window
   void setPopupGroupByName( QString const & name );
-
-#ifdef Q_OS_WIN32
-  /// For receiving message from scan libraries
-protected:
-  unsigned gdAskMessage;
-public:
-
-private slots:
-  /// Return true while scanning GoldenDict window
-  bool isGoldenDictWindow( HWND hwnd );
-#endif
 };
 
 class ArticleSaveProgressDialog : public QProgressDialog

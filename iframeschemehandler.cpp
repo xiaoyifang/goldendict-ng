@@ -98,7 +98,12 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
     else
       buffer->setData(articleString.toUtf8());
 
+  #ifdef Q_OS_WIN32
+    requestJob->reply(contentTypeV.toByteArray() , buffer );
+  #else
+    //use "text/html;charset=utf-8" will make the response html text rendered on the webpage?
     requestJob->reply(contentType , buffer );
+  #endif
   };
   connect( reply, &QNetworkReply::finished, requestJob, finishAction );
 

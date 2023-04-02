@@ -13,13 +13,16 @@ class AnkiConnector : public QObject
 public:
   explicit AnkiConnector( QObject * parent, Config::Class const & cfg );
 
-  void sendToAnki( QString const & word, QString const & text );
+  void sendToAnki( QString const & word, QString const & text, QString const & sentence );
+  void ankiSearch( QString const & word);
 
 private:
   QNetworkAccessManager * mgr;
   Config::Class const & cfg;
-public :
-signals:
+  void postToAnki( QString const & postData );
+  static constexpr auto transfer_timeout = 3000;
+ public:
+ signals:
   void errorText( QString const & );
 private slots:
   void finishedSlot(QNetworkReply * reply);

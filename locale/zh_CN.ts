@@ -125,8 +125,8 @@
     </message>
     <message>
         <location filename="../article_maker.cc" line="236"/>
-        <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;http://goldendict.org/forum/&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;http://goldendict.org/&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-        <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 词典程序！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用时请首先打开&lt;b&gt;编辑 | 词典&lt;/b&gt;菜单以添加并扫描含有词典文件的目录，添加维基百科网站查询或其它资源，调整词典排序或创建新的词典群组。这些设置都完成以后，就可以开始使用了。你可以使用左侧的查询面板，或者&lt;a href=&quot;使用屏幕取词功能&quot;&gt;直接从其它程序中抓词查询&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要改变设置，可以在&lt;b&gt;编辑 | 首选项&lt;/b&gt;菜单中查看一下可用的系统设置。所有的设置都有鼠标指针提示信息，如果有不明之处，请仔细阅读提示信息。如果你需要更多帮助，有任何疑问、建议，或者仅仅想了解其他人的想法，欢迎访问此程序的&lt;a href=&quot;http://goldendict.org/forum/&quot;&gt;官方论坛&lt;/a&gt;。访问此程序的&lt;a href=&quot;http://goldendict.org/&quot;&gt;官方网站&lt;/a&gt;以获取更新。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授权基于 GPLv3 或更高版本。</translation>
+        <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+        <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 词典程序！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用时请首先打开&lt;b&gt;编辑 | 词典&lt;/b&gt;菜单以添加并扫描含有词典文件的目录，添加维基百科网站查询或其它资源，调整词典排序或创建新的词典群组。这些设置都完成以后，就可以开始使用了。你可以使用左侧的查询面板，或者&lt;a href=&quot;使用屏幕取词功能&quot;&gt;直接从其它程序中抓词查询&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要改变设置，可以在&lt;b&gt;编辑 | 首选项&lt;/b&gt;菜单中查看一下可用的系统设置。所有的设置都有鼠标指针提示信息，如果有不明之处，请仔细阅读提示信息。如果你需要更多帮助，有任何疑问、建议，或者仅仅想了解其他人的想法，欢迎访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;官方论坛&lt;/a&gt;。访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;官方网站&lt;/a&gt;以获取更新。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授权基于 GPLv3 或更高版本。</translation>
     </message>
     <message>
         <location filename="../article_maker.cc" line="360"/>
@@ -968,6 +968,19 @@ between classic and school orthography in cyrillic)</source>
         <location filename="../editdictionaries.cc" line="125"/>
         <source>Some sources were changed. Would you like to accept the changes?</source>
         <translation>某些词典文件的所在目录已变更，是否接受变更？</translation>
+    </message>
+</context>
+<context>
+    <name>Epwing::EpwingDictionary</name>
+    <message>
+        <location filename="../epwing.cc" line="339"/>
+        <source>Previous Page</source>
+        <translation>上一页</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="375"/>
+        <source>Next Page</source>
+        <translation>下一页</translation>
     </message>
 </context>
 <context>
@@ -4033,6 +4046,36 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
         <location filename="../preferences.ui" line="1214"/>
+        <source>Word</source>
+        <translation>单词</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1118"/>
+        <source>Vocabulary field...</source>
+        <translation>对应anki里面的变量名，如设置word，则用{{Word}}引用</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1125"/>
+        <source>Text</source>
+        <translation>释义</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1132"/>
+        <source>Definition field...</source>
+        <translation>释义的变量字段</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1139"/>
+        <source>Sentence</source>
+        <translation>句子</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1146"/>
+        <source>Sentence field (can be empty)...</source>
+        <translation>句子的变量（可选）</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1182"/>
         <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
         <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
@@ -4100,6 +4143,11 @@ clears its network cache from disk during exit.</source>
         <location filename="../preferences.ui" line="1749"/>
         <source>When using clipboard,strip everything after newline</source>
         <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1774"/>
+        <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+        <translation>查询时，窗口获取焦点</translation>
     </message>
     <message>
         <source>ScanPopup unpinned window flags</source>
@@ -4563,6 +4611,16 @@ from Stardict, Babylon and GLS dictionaries</source>
         <location filename="../ankiconnector.cpp" line="69"/>
         <source>anki: post to anki failed</source>
         <translation>anki:发布失败</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="337"/>
+        <source>Previous Page</source>
+        <translation>上一页</translation>
+    </message>
+    <message>
+        <location filename="../epwing.cc" line="373"/>
+        <source>Next Page</source>
+        <translation>下一页</translation>
     </message>
 </context>
 <context>

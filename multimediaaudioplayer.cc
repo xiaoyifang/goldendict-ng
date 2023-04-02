@@ -29,14 +29,14 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
 QString MultimediaAudioPlayer::play( const char * data, int size )
 {
   stop();
-
-  audioBuffer.setData( data, size );
-  if( !audioBuffer.open( QIODevice::ReadOnly ) )
+  audioBuffer = new QBuffer();
+  audioBuffer->setData( data, size );
+  if( !audioBuffer->open( QIODevice::ReadOnly ) )
     return tr( "Couldn't open audio buffer for reading." );
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-  player.setSourceDevice (&audioBuffer );
+#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  player.setSourceDevice( audioBuffer );
 #else
-  player.setMedia( QMediaContent(), &audioBuffer );
+  player.setMedia( QMediaContent(), audioBuffer );
 #endif
   player.play();
   return QString();
@@ -44,11 +44,16 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
 
 void MultimediaAudioPlayer::stop()
 {
+  player.stop();
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
   player.setMedia( QMediaContent() ); // Forget about audioBuffer.
 #endif
-  audioBuffer.close();
-  audioBuffer.setData( QByteArray() ); // Free memory.
+  if( audioBuffer )
+  {
+    audioBuffer->close();
+    audioBuffer->setData( QByteArray() ); // Free memory.
+    audioBuffer.clear();
+  }
 }
 
 void MultimediaAudioPlayer::onMediaPlayerError()

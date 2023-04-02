@@ -570,7 +570,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               {
                 QString ref = match2.captured( 1 );
                 QString audio_url = "<a href=\"" + ref
-                                    + R"("><img src="qrcx://localhost/icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
+                                    + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
               else
@@ -616,6 +616,10 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
             // Add url scheme to other urls like  "//xxx"
             articleString.replace( " href=\"//", " href=\"" + wikiUrl.scheme() + "://" );
+
+            // Add url scheme to other urls like    embed css background: url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat
+            articleString.replace( "url(\"//", "url(\"" + wikiUrl.scheme() + "://" );
+
 
             // Fix urls in "srcset" attribute
             pos = 0;

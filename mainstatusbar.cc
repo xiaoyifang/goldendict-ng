@@ -6,7 +6,6 @@
 #include <Qt>
 #include <QFrame>
 #include <QVBoxLayout>
-#include <QDebug>
 #include <QEvent>
 #include <QApplication>
 
@@ -39,11 +38,8 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   parentWidget()->installEventFilter( this );
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
-}
 
-bool MainStatusBar::hasImage() const
-{
-  return !picWidget->pixmap().isNull();
+  setAutoFillBackground( true );
 }
 
 void MainStatusBar::clearMessage()
@@ -52,7 +48,7 @@ void MainStatusBar::clearMessage()
   textWidget->setText( backgroungMessage );
   picWidget->setPixmap( QPixmap() );
   timer->stop();
-  refresh();
+  hide();
 }
 
 QString MainStatusBar::currentMessage() const
@@ -66,7 +62,8 @@ void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
   if( message.isEmpty() )
   {
     textWidget->setText( backgroungMessage );
-    refresh();
+    raise();
+    show();
   }
 }
 
@@ -75,43 +72,22 @@ void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap 
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
-  // reload stylesheet
-  setStyleSheet( styleSheet() );
+  if ( !picWidget->pixmap().isNull() )
+  {
+    picWidget->setFixedSize( textWidget->height(), textWidget->height() );
+  }
+  else
+  {
+    picWidget->setFixedSize( 0, 0 );
+  }
 
   if ( timeout > 0 )
   {
     timer->start( timeout );
   }
-
-  refresh();
-}
-
-void MainStatusBar::refresh()
-{
-  if ( !textWidget->text().isEmpty() )
-  {
-    adjustSize();
-
-    if ( !picWidget->pixmap().isNull() )
-    {
-      picWidget->setFixedSize( textWidget->height(), textWidget->height() );
-    }
-    else
-    {
-      picWidget->setFixedSize( 0, 0 );
-    }
-
-    adjustSize();
-
-    move( QPoint( 0, parentWidget()->height() - height() ) );
-
-    show();
-    raise();
-  }
-  else
-  {
-    hide();
-  }
+  raise();
+  show();
+  move( QPoint( 0, parentWidget()->height() - height() ) );
 }
 
 void MainStatusBar::mousePressEvent ( QMouseEvent * )
@@ -123,11 +99,11 @@ bool MainStatusBar::eventFilter( QObject *, QEvent * e )
 {
   switch ( e->type() ) {
     case QEvent::Resize:
-      refresh();
+      move( QPoint( 0, parentWidget()->height() - height() ) );
       break;
     default:
       break;
-  };
+  }
 
   return false;
 }

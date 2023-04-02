@@ -24,23 +24,13 @@ using std::list;
 
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
                             vector< Instances::Group > const & groups_,
-                            QString const & displayStyle_,
-                            QString const & addonStyle_):
+                            const Config::Preferences & cfg_ ):
   dictionaries( dictionaries_ ),
   groups( groups_ ),
-  displayStyle( displayStyle_ ),
-  addonStyle( addonStyle_ ),
-  needExpandOptionalParts( true )
-, collapseBigArticles( true )
-, articleLimitSize( 500 )
+  cfg( cfg_ )
 {
 }
 
-void ArticleMaker::setDisplayStyle( QString const & st, QString const & adst )
-{
-  displayStyle = st;
-  addonStyle = adst;
-}
 
 std::string ArticleMaker::makeHtmlHeader( QString const & word,
                                           QString const & icon,
@@ -86,19 +76,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   {
     result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
-    if ( displayStyle.size() )
+    if ( cfg.displayStyle.size() )
     {
       // Load an additional stylesheet
-      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(displayStyle);
+      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(cfg.displayStyle);
       result += "<link href=\"" + displayStyleCssFile.toStdString() +
                 R"("  media="all" rel="stylesheet" type="text/css">)";
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style.css";
 
       result += readCssFile(name ,"all");
@@ -121,9 +111,9 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
     result += readCssFile(Config::getUserCssPrintFileName() ,"print");
 
-    if( !addonStyle.isEmpty() )
+    if( !cfg.addonStyle.isEmpty() )
     {
-      QString name = Config::getStylesDir() + addonStyle
+      QString name = Config::getStylesDir() + cfg.addonStyle
                      + QDir::separator() + "article-style-print.css";
       result += readCssFile(name ,"print");
     }
@@ -134,7 +124,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
   if ( icon.size() )
-    result += R"(<link rel="icon" type="image/png" href="qrcx://localhost/flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
+    result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
 
   result += "<script type=\"text/javascript\">"
             "function tr(key) {"
@@ -151,9 +141,47 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
+    // #242525 because Darkreader will invert pure white to this value
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
+<style>
+body { background: #242525; }
+.gdarticle { background: initial;}
+
+img{
+  background: white;
+}
+</style>
 <script>
+  // This function returns a promise, but it is synchroneous because it does not use await
+  function fetchShim(src) {
+    if (src.startsWith('gdlookup://')) {
+      // See https://github.com/xiaoyifang/goldendict/issues/363
+      console.error('Dark Reader discovered unexpected URL', src);
+      return Promise.resolve({blob: () => new Blob()});
+    }
+    if (src.startsWith('qrcx://') || src.startsWith('qrc://')) {
+      // This is a resource URL, need to fetch and transform
+      return new Promise((resolve) => {
+        const img = document.createElement('img');
+        img.addEventListener('load', () => {
+          // Set willReadFrequently to true to tell engine to store data in RAM-backed buffer and not on GPU
+          const canvas = document.createElement('canvas', {willReadFrequently: true});
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob((blob) => {
+            resolve({blob: () => blob});
+          });
+        }, false);
+        img.src = src;
+      });
+    }
+    // This is a standard URL, can fetch it directly
+    return fetch(src);
+  }
+  DarkReader.setFetchMethod(fetchShim);
   DarkReader.enable({
     brightness: 100,
     contrast: 90,
@@ -246,7 +274,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   if ( groupId == Instances::Group::HelpGroupId )
   {
     // This is a special group containing internal welcome/help pages
-    string result = makeHtmlHeader( phrase.phrase, QString(), needExpandOptionalParts );
+    string result = makeHtmlHeader( phrase.phrase, QString(), cfg.alwaysExpandOptionalParts);
 
     if ( phrase.phrase == tr( "Welcome!" ) )
     {
@@ -294,9 +322,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     sptr< Dictionary::DataRequestInstant > r =  std::make_shared<Dictionary::DataRequestInstant>( true );
 
-    r->getData().resize( result.size() );
-    memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+    r->appendDataSlice( result.data(), result.size() );
     return r;
   }
 
@@ -319,7 +345,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
   string header = makeHtmlHeader( phrase.phrase,
                                   activeGroup && activeGroup->icon.size() ?
                                     activeGroup->icon : QString(),
-                                  needExpandOptionalParts );
+                                  cfg.alwaysExpandOptionalParts );
 
   if ( mutedDicts.size() )
   {
@@ -334,14 +360,14 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, unmutedDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
   }
   else
     return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
                                contexts, activeDicts, header,
-                               collapseBigArticles ? articleLimitSize : -1,
-                               needExpandOptionalParts, ignoreDiacritics );
+                               cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
+                               cfg.alwaysExpandOptionalParts, ignoreDiacritics );
 }
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
@@ -352,9 +378,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
 }
 
@@ -366,9 +390,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
   sptr< Dictionary::DataRequestInstant > r =
     std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
 }
 
@@ -382,21 +404,8 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   sptr< Dictionary::DataRequestInstant > r =
       std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->getData().resize( result.size() );
-  memcpy( &( r->getData().front() ), result.data(), result.size() );
-
+  r->appendDataSlice( result.data(), result.size() );
   return r;
-}
-
-void ArticleMaker::setExpandOptionalParts( bool expand )
-{
-  needExpandOptionalParts = expand;
-}
-
-void ArticleMaker::setCollapseParameters( bool autoCollapse, int articleSize )
-{
-  collapseBigArticles = autoCollapse;
-  articleLimitSize = articleSize;
 }
 
 
@@ -440,8 +449,7 @@ ArticleRequest::ArticleRequest(
 
   hasAnyData = true;
 
-  data.resize( header.size() );
-  memcpy( &data.front(), header.data(), header.size() );
+  appendDataSlice( (void *) header.data(), header.size() );
 
   //clear founded dicts.
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
@@ -642,7 +650,7 @@ void ArticleRequest::bodyFinished()
           + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
           Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
           Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + R"(<span class="collapse_expand_area"><img src="qrcx://localhost/icons/blank.png" class=")"
+          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
           + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
           + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
           + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
@@ -659,29 +667,20 @@ void ArticleRequest::bodyFinished()
         head += collapse ? "none" : "inline";
         head += string( "\" id=\"gdarticlefrom-" ) + Html::escape( dictId ) + "\">";
 
-        if ( errorString.size() )
-        {
-          head += "<div class=\"gderrordesc\">" +
-            Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() )
-          + "</div>";
+        if( errorString.size() ) {
+          head += "<div class=\"gderrordesc\">"
+            + Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() ) + "</div>";
         }
 
-        Mutex::Lock _( dataMutex );
+        appendDataSlice( head.data(), head.size() );
 
-        size_t offset = data.size();
-
-        data.resize( data.size() + head.size() + ( req.dataSize() > 0 ? req.dataSize() : 0 ) );
-
-        memcpy( &data.front() + offset, head.data(), head.size() );
-
-        try
-        {
-          if ( req.dataSize() > 0 )
-            bodyRequests.front()->getDataSlice( 0, req.dataSize(),
-                                                &data.front() + offset + head.size() );
+        try {
+          if( req.dataSize() > 0 ) {
+            auto d = bodyRequests.front()->getFullData();
+            appendDataSlice( &d.front(), d.size() );
+          }
         }
-        catch( std::exception & e )
-        {
+        catch( std::exception & e ) {
           gdWarning( "getDataSlice error: %s\n", e.what() );
         }
 
@@ -725,47 +724,40 @@ void ArticleRequest::bodyFinished()
         footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group );
 
         // When there were no definitions, we run stemmed search.
-        stemmedWordFinder =  std::make_shared<WordFinder>( this );
+        stemmedWordFinder = std::make_shared< WordFinder >( this );
 
         connect( stemmedWordFinder.get(),
-          &WordFinder::finished,
-          this,
-          &ArticleRequest::stemmedSearchFinished,
-          Qt::QueuedConnection );
+                 &WordFinder::finished,
+                 this,
+                 &ArticleRequest::stemmedSearchFinished,
+                 Qt::QueuedConnection );
 
         stemmedWordFinder->stemmedMatch( word, activeDicts );
       }
-      else
-      {
+      else {
         footer += "</body></html>";
       }
 
-      Mutex::Lock _( dataMutex );
-
-      size_t offset = data.size();
-
-      data.resize( data.size() + footer.size() );
-
-      memcpy( &data.front() + offset, footer.data(), footer.size() );
+      appendDataSlice( footer.data(), footer.size() );
     }
 
-    if ( stemmedWordFinder.get() )
-    {
-        update();
-        qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
-        emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
-        dictIds.clear();
+    if( stemmedWordFinder.get() ) {
+      update();
+      qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
+      dictIds.clear();
     }
     else {
       finish();
       qDebug() << "send dicts(finished):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
       dictIds.clear();
     }
-  } else if (wasUpdated) {
+  }
+  else if( wasUpdated ) {
     update();
     qDebug() << "send dicts(updated):" << word << ":" << dictIds;
-    emit GlobalBroadcaster::instance()->dictionaryChanges(ActiveDictIds{word, dictIds});
+    emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
     dictIds.clear();
   }
 }
@@ -843,16 +835,10 @@ void ArticleRequest::stemmedSearchFinished()
     footer += "</body></html>";
 
   {
-    Mutex::Lock _( dataMutex );
-
-    size_t offset = data.size();
-
-    data.resize( data.size() + footer.size() );
-
-    memcpy( &data.front() + offset, footer.data(), footer.size() );
+    appendDataSlice( footer.data(), footer.size() );
   }
 
-  if ( continueMatching )
+  if( continueMatching )
     update();
   else
     finish();
@@ -1046,14 +1032,7 @@ void ArticleRequest::individualWordFinished()
 
 void ArticleRequest::appendToData( std::string const & str )
 {
-  Mutex::Lock _( dataMutex );
-
-  size_t offset = data.size();
-
-  data.resize( data.size() + str.size() );
-
-  memcpy( &data.front() + offset, str.data(), str.size() );
-
+  appendDataSlice( str.data(), str.size() );
 }
 
 QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )

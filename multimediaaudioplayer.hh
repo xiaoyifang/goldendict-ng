@@ -12,6 +12,7 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QAudioOutput>
 #endif
+#include <QPointer>
 
 class MultimediaAudioPlayer : public AudioPlayerInterface
 {
@@ -26,7 +27,7 @@ private slots:
   void onMediaPlayerError();
 
 private:
-  QBuffer audioBuffer;
+  QPointer<QBuffer> audioBuffer;
   QMediaPlayer player; ///< Depends on audioBuffer.
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
   QAudioOutput audioOutput;

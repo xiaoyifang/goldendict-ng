@@ -176,15 +176,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="infoLabel">
+    <widget class="QTextEdit" name="infoLabel">
      <property name="toolTip">
       <string notr="true"/>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="undoRedoEnabled">
-      <bool>false</bool>
      </property>
      <property name="readOnly">
       <bool>true</bool>

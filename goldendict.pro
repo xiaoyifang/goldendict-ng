@@ -45,7 +45,8 @@ QT += core \
       webchannel\
       printsupport \
       help \
-      concurrent
+      concurrent \
+      texttospeech
 
 greaterThan(QT_MAJOR_VERSION, 5): QT += webenginecore core5compat
 
@@ -246,8 +247,7 @@ mac {
     }
 
     OBJECTIVE_SOURCES += machotkeywrapper.mm \
-                         macmouseover.mm \
-                         speechclient_mac.mm
+                         macmouseover.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = myInfo.plist
 
@@ -320,7 +320,6 @@ HEADERS += folding.hh \
     instances.hh \
     article_maker.hh \
     scanpopup.hh \
-    articleview.hh \
     audioplayerinterface.hh \
     audioplayerfactory.hh \
     ffmpegaudioplayer.hh \
@@ -380,7 +379,6 @@ HEADERS += folding.hh \
     dictinfo.hh \
     zipsounds.hh \
     stylescombobox.hh \
-    extlineedit.hh \
     translatebox.hh \
     historypanewidget.hh \
     wordlist.hh \
@@ -405,7 +403,10 @@ HEADERS += folding.hh \
     splitfile.hh \
     favoritespanewidget.hh \
     treeview.hh \
-    src/dict/lingualibre.h
+    src/dict/lingualibre.h \
+    src/ui/articleview.h \
+    src/ui/ftssearchpanel.h \
+    src/ui/searchpanel.h
 
 FORMS += groups.ui \
     dictgroupwidget.ui \
@@ -413,7 +414,6 @@ FORMS += groups.ui \
     sources.ui \
     initializing.ui \
     scanpopup.ui \
-    articleview.ui \
     preferences.ui \
     about.ui \
     editdictionaries.ui \
@@ -462,7 +462,6 @@ SOURCES += folding.cc \
     instances.cc \
     article_maker.cc \
     scanpopup.cc \
-    articleview.cc \
     audioplayerfactory.cc \
     multimediaaudioplayer.cc \
     externalaudioplayer.cc \
@@ -517,7 +516,6 @@ SOURCES += folding.cc \
     dictinfo.cc \
     zipsounds.cc \
     stylescombobox.cc \
-    extlineedit.cc \
     translatebox.cc \
     historypanewidget.cc \
     wordlist.cc \
@@ -541,38 +539,32 @@ SOURCES += folding.cc \
     splitfile.cc \
     favoritespanewidget.cc \
     treeview.cc \
-    src/dict/lingualibre.cpp
+    src/dict/lingualibre.cpp \
+    src/ui/articleview.cpp \
+    src/ui/ftssearchpanel.cpp \
+    src/ui/searchpanel.cpp
 
-win32 {
-    FORMS   += texttospeechsource.ui
-    SOURCES += guids.c \
-               speechclient_win.cc \
-               texttospeechsource.cc \
-               speechhlp.cc
-    HEADERS += texttospeechsource.hh \
-               sapi.hh \
-               sphelper.hh \
-               speechclient.hh \
-               speechhlp.hh
-}
+#speech to text
+FORMS   += texttospeechsource.ui
+SOURCES += speechclient.cc \
+           texttospeechsource.cc
+HEADERS += texttospeechsource.hh \
+           speechclient.hh
 
 mac {
     HEADERS += macmouseover.hh \
-               texttospeechsource.hh \
-               speechclient.hh
-    FORMS   += texttospeechsource.ui
-    SOURCES += texttospeechsource.cc
+               src/platform/gd_clipboard.h
+    SOURCES += src/platform/gd_clipboard.cpp
 }
 
 unix:!mac {
     HEADERS += scanflag.hh
-    FORMS   += scanflag.ui
     SOURCES += scanflag.cc
 }
 
 
-    HEADERS += wildcard.hh
-    SOURCES += wildcard.cc
+HEADERS += wildcard.hh
+SOURCES += wildcard.cc
 
 
 CONFIG( zim_support ) {

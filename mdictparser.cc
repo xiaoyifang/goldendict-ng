@@ -411,7 +411,7 @@ bool MdictParser::readHeader( QDataStream & in )
       title_ = title;
   }
   QString description = headerAttributes.namedItem( "Description" ).toAttr().value();
-  description_ = QTextDocumentFragment::fromHtml( description ).toPlainText();
+  description_ = description; //QTextDocumentFragment::fromHtml( description ).toPlainText();
   return true;
 }
 

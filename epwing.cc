@@ -13,6 +13,7 @@
 #include <QtConcurrent>
 #include <set>
 #include <string>
+#include <QObject>
 
 #include "btreeidx.hh"
 #include "folding.hh"
@@ -24,6 +25,7 @@
 #include "utf8.hh"
 #include "filetype.hh"
 #include "ftshelpers.hh"
+#include "base/globalregex.hh"
 
 namespace Epwing {
 
@@ -81,6 +83,8 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 {
+  Q_DECLARE_TR_FUNCTIONS(Epwing::EpwingDictionary)
+
   Mutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
@@ -175,6 +179,9 @@ private:
                     int & articlePage,
                     int & articleOffset );
 
+ void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
+ void loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
+  
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword,
                     string & articleText );
 
@@ -194,6 +201,9 @@ private:
   friend class EpwingArticleRequest;
   friend class EpwingResourceRequest;
   friend class EpwingWordSearchRequest;
+  string epwing_previous_button(int& articleOffset, int& articlePage);
+  string epwing_next_button(int& articleOffset, int& articlePage);
+  bool readHeadword( EB_Position & pos, QString & headword );
 };
 
 
@@ -323,6 +333,81 @@ void EpwingDictionary::loadArticle(
   articleText = prefix + articleText + "</div>";
 }
 
+string Epwing::EpwingDictionary::epwing_previous_button(int& articlePage, int& articleOffset)
+{
+    QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
+    string previousLink    = "<p><a class=\"epwing_previous_page\" href=\"gdlookup://localhost/"
+      + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
+
+    return previousLink;
+}
+
+void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
+{
+  QString headword, text;
+  EB_Position pos;
+  try
+  {
+    Mutex::Lock _( eBook.getLibMutex() );
+    pos = eBook.getArticleNextPage( headword, text, articlePage, articleOffset, false );
+  }
+  catch( std::exception & e )
+  {
+    text = QString( "Article reading error: %1")
+             .arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
+  }
+
+  articleHeadword = string( headword.toUtf8().data() );
+  articleText = string( text.toUtf8().data() );
+
+  string prefix( "<div class=\"epwing_text\">" );
+  string previousLink = epwing_previous_button(articlePage, articleOffset);
+
+  articleText     = prefix + previousLink + articleText;
+  string nextLink = epwing_next_button(pos.page, pos.offset);
+  articleText = articleText + nextLink;
+  articleText = articleText + "</div>";
+}
+
+string Epwing::EpwingDictionary::epwing_next_button(int& articlePage, int& articleOffset )
+{
+    QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
+    string nextLink = "<p><a class=\"epwing_next_page\" href=\"gdlookup://localhost/" + refLink.toStdString() + "\">"
+      + tr( "Next Page" ).toStdString() + "</a></p>";
+
+    return nextLink;
+}
+
+void EpwingDictionary::loadArticlePreviousPage(
+  string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
+{
+  QString headword, text;
+  EB_Position pos;
+  try
+  {
+    Mutex::Lock _( eBook.getLibMutex() );
+    pos = eBook.getArticlePreviousPage( headword, text, articlePage, articleOffset, false );
+  }
+  catch( std::exception & e ) {
+    text        = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
+    articleText = string( text.toUtf8().data() );
+    return;
+  }
+
+  articleHeadword = string( headword.toUtf8().data() );
+  articleText     = string( text.toUtf8().data() );
+
+  string prefix( "<div class=\"epwing_text\">" );
+
+  string previousLink = epwing_previous_button(pos.page, pos.offset );
+  articleText     = prefix + previousLink + articleText;
+  string nextLink = epwing_next_button( articlePage, articleOffset );
+  articleText = articleText + nextLink;
+  articleText = articleText + "</div>";
+}
+
 void EpwingDictionary::loadArticle( int articlePage,
                                     int articleOffset,
                                     string & articleHeadword,
@@ -431,15 +516,12 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 
 class EpwingArticleRequest: public Dictionary::DataRequest
 {
-  friend class EpwingArticleRequestRunnable;
-
   wstring word;
   vector< wstring > alts;
   EpwingDictionary & dict;
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -450,8 +532,6 @@ public:
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start(
-    //   new EpwingArticleRequestRunnable( *this, hasExited ) );
   }
 
   void run();
@@ -469,7 +549,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    // hasExited.acquire();
   }
 };
 
@@ -494,8 +573,8 @@ void EpwingArticleRequest::run()
   multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonims make it that the articles
-                                    // appear several times. We combat this
-                                    // by only allowing them to appear once.
+                                   // appear several times. We combat this
+                                   // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if( ignoreDiacritics )
@@ -521,11 +600,7 @@ void EpwingArticleRequest::run()
 
     try
     {
-      dict.loadArticle( chain[ x ].articleOffset,
-                        headword,
-                        articleText,
-                        articlePage,
-                        articleOffset );
+      dict.loadArticle( chain[ x ].articleOffset, headword, articleText, articlePage, articleOffset );
     }
     catch(...)
     {
@@ -555,14 +630,18 @@ void EpwingArticleRequest::run()
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
-  // Also try to find word in the built-in dictionary index
-  getBuiltInArticle(word, pages, offsets, mainArticles );
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
-    getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
+  QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
+  bool ref                  = m.hasMatch();
+
+  if( !ref ) {
+    // Also try to find word in the built-in dictionary index
+    getBuiltInArticle( word, pages, offsets, mainArticles );
+    for( unsigned x = 0; x < alts.size(); ++x ) {
+      getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
+    }
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
+  if ( mainArticles.empty() && alternateArticles.empty() && !ref)
   {
     // No such word
     finish();
@@ -587,6 +666,26 @@ void EpwingArticleRequest::run()
       result += i->second.first;
       result += "</h3>";
       result += i->second.second;
+  }
+
+  {
+    QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
+    if( m.hasMatch() )
+    {
+      string headword, articleText;
+      int articlePage   = m.captured( 1 ).toInt();
+      int articleOffset = m.captured( 2 ).toInt();
+      if( word[ 0 ] =='r' )
+        dict.loadArticleNextPage( headword, articleText, articlePage, articleOffset );
+      else
+      {
+        //starts with p
+        dict.loadArticlePreviousPage( headword, articleText, articlePage, articleOffset );
+      }
+
+      result += articleText;
+
+    }
   }
 
   result += "</div>";
@@ -939,6 +1038,20 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
   return std::make_shared<EpwingWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
                                       false, maxResults );
 }
+bool Epwing::EpwingDictionary::readHeadword( EB_Position & pos, QString & headword )
+{
+  try
+  {
+    Mutex::Lock _( eBook.getLibMutex() );
+    eBook.readHeadword( pos,headword, true);
+    eBook.fixHeadword( headword );
+    return eBook.isHeadwordCorrect( headword ) ;
+  }
+  catch( std::exception & e )
+  {
+    return false;
+  }
+}
 
 } // anonymous namespace
 
@@ -1152,11 +1265,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
               if( !dict.getNextHeadword( head ) )
                 break;
-            }
-
-            while( dict.processRef( head ) )
-            {
-              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
             }
 
             dict.clearBuffers();

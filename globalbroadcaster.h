@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <vector>
+#include <QWebEngineProfile>
 #include "config.hh"
 
 struct ActiveDictIds
@@ -26,6 +27,8 @@ public:
   bool existedInWhitelist(QString host);
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
+  QString translateLineText{};
+  QWebEngineProfile * profile;
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );

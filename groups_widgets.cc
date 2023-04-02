@@ -1016,7 +1016,7 @@ void DictGroupsWidget::tabDataChanged()
   setTabToolTip( currentIndex(), toolTipStr );
 }
 
-QuickFilterLine::QuickFilterLine( QWidget * parent ): ExtLineEdit( parent ), m_focusAction(this)
+QuickFilterLine::QuickFilterLine( QWidget * parent ): QLineEdit( parent ), m_focusAction(this)
 {
   m_proxyModel.setFilterCaseSensitivity( Qt::CaseInsensitive );
 
@@ -1025,17 +1025,11 @@ QuickFilterLine::QuickFilterLine( QWidget * parent ): ExtLineEdit( parent ), m_f
   m_focusAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   connect( &m_focusAction, &QAction::triggered, this, &QuickFilterLine::focusFilterLine );
 
-  QPixmap image(":/icons/system-search.svg");
-  setButtonPixmap(ExtLineEdit::Left, image.scaled(18, 18, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-  setButtonToolTip(ExtLineEdit::Left, tr("Quick Search"));
-  setButtonVisible(ExtLineEdit::Left, true);
+  QAction * clear = new QAction( QIcon(":/icons/clear.png"), tr("Clear Search"),this);
+  connect(clear,&QAction::triggered,this, &QLineEdit::clear);
 
-  QPixmap right(":/icons/clear.png");
-  setButtonPixmap(ExtLineEdit::Right, right);
-  setButtonToolTip(ExtLineEdit::Right, tr("Clear Search"));
-  setButtonVisible(ExtLineEdit::Right, true);
-  setButtonAutoHide(ExtLineEdit::Right, true);
-  connect( this, &ExtLineEdit::rightButtonClicked, this, &QLineEdit::clear );
+  addAction(clear,QLineEdit::TrailingPosition);
+  addAction(new QAction(QIcon(":/icons/system-search.svg"),"",this),QLineEdit::LeadingPosition);
 
   setFocusPolicy(Qt::StrongFocus);
 
@@ -1095,6 +1089,6 @@ void QuickFilterLine::keyPressEvent( QKeyEvent * event )
       }
       break;
     default:
-      ExtLineEdit::keyPressEvent( event );
+      QLineEdit::keyPressEvent( event );
   }
 }

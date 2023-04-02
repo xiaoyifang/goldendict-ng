@@ -22,7 +22,6 @@
 #include <vorbis/vorbisfile.h>
 #include <QDir>
 #include <QUrl>
-#include <QDebug>
 #include <QFile>
 
 #include "utils.hh"
@@ -286,7 +285,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
+    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + i->second + "</a></td>";
     result += "</tr>";
   }
@@ -304,7 +303,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     result += addAudioLink( ref, getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play"/></a></td>)";
+    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + i->second + "</a></td>";
     result += "</tr>";
   }

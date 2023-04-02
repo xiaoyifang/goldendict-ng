@@ -89,7 +89,13 @@ ProxyServer::ProxyServer(): enabled( false ), useSystemProxy( false ), type( Soc
 {
 }
 
-AnkiConnectServer::AnkiConnectServer(): enabled( false ), host("127.0.0.1"), port( 8765 )
+AnkiConnectServer::AnkiConnectServer():
+    enabled( false ),
+    host("127.0.0.1"),
+    port( 8765 ),
+    word("word"),
+    text("selected_text"),
+    sentence("marked_sentence")
 {
 }
 
@@ -277,8 +283,9 @@ Preferences::Preferences():
 , limitInputPhraseLength( false )
 , inputPhraseLengthLimit( 1000 )
 , maxDictionaryRefsInContextMenu ( 20 )
-, synonymSearchEnabled( true )
-    , stripClipboard( false )
+, synonymSearchEnabled( true ),
+  stripClipboard( false ),
+  raiseWindowOnSearch(true)
 {
 }
 
@@ -834,21 +841,24 @@ Class load()
   {
     QDomNodeList nl = ves.toElement().elementsByTagName( "voiceEngine" );
 
-    for ( int x = 0; x < nl.length(); ++x )
-    {
+    for( int x = 0; x < nl.length(); ++x ) {
       QDomElement ve = nl.item( x ).toElement();
       VoiceEngine v;
 
-      v.enabled = ve.attribute( "enabled" ) == "1";
-      v.id = ve.attribute( "id" );
-      v.name = ve.attribute( "name" );
+      v.enabled      = ve.attribute( "enabled" ) == "1";
+      v.engine_name  = ve.attribute( "engine_name" );
+      v.name         = ve.attribute( "name" );
+      v.voice_name   = ve.attribute( "voice_name" );
+      v.locale       = QLocale( ve.attribute( "locale" ) );
       v.iconFilename = ve.attribute( "icon" );
-      v.volume = ve.attribute( "volume", "50" ).toInt();
-      if( v.volume < 0 || v.volume > 100 )
+      v.volume       = ve.attribute( "volume", "50" ).toInt();
+      if ( ( v.volume < 0 ) || ( v.volume > 100 ) ) {
         v.volume = 50;
-      v.rate = ve.attribute( "rate", "50" ).toInt();
-      if( v.rate < 0 || v.rate > 100 )
-        v.rate = 50;
+      }
+      v.rate = ve.attribute( "rate", "0" ).toInt();
+      if ( ( v.rate < -10 ) || ( v.rate > 10 ) ) {
+        v.rate = 0;
+      }
       c.voiceEngines.push_back( v );
     }
   }
@@ -969,6 +979,10 @@ Class load()
       c.preferences.ankiConnectServer.port = ankiConnectServer.namedItem( "port" ).toElement().text().toULong();
       c.preferences.ankiConnectServer.deck = ankiConnectServer.namedItem( "deck" ).toElement().text();
       c.preferences.ankiConnectServer.model = ankiConnectServer.namedItem( "model" ).toElement().text();
+
+      c.preferences.ankiConnectServer.word = ankiConnectServer.namedItem( "word" ).toElement().text();
+      c.preferences.ankiConnectServer.text = ankiConnectServer.namedItem( "text" ).toElement().text();
+      c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
     }
 
     if ( !preferences.namedItem( "checkForNewReleases" ).isNull() )
@@ -1030,6 +1044,9 @@ Class load()
 
     if ( !preferences.namedItem( "stripClipboard" ).isNull() )
       c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
+
+    if( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
+      c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
@@ -1642,33 +1659,40 @@ void save( Class const & c )
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
 
-    for ( VoiceEngines::const_iterator i = c.voiceEngines.begin(); i != c.voiceEngines.end(); ++i )
-    {
+    for( const auto & voiceEngine : c.voiceEngines ) {
       QDomElement v = dd.createElement( "voiceEngine" );
       ves.appendChild( v );
 
-      QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      QDomAttr id = dd.createAttribute( "engine_name" );
+      id.setValue( voiceEngine.engine_name );
       v.setAttributeNode( id );
 
+      QDomAttr locale = dd.createAttribute( "locale" );
+      locale.setValue( voiceEngine.locale.name() );
+      v.setAttributeNode( locale );
+
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( voiceEngine.name );
       v.setAttributeNode( name );
 
+      QDomAttr voice_name = dd.createAttribute( "voice_name" );
+      voice_name.setValue( voiceEngine.voice_name );
+      v.setAttributeNode( voice_name );
+
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( voiceEngine.enabled ? "1" : "0" );
       v.setAttributeNode( enabled );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( voiceEngine.iconFilename );
       v.setAttributeNode( icon );
 
       QDomAttr volume = dd.createAttribute( "volume" );
-      volume.setValue( QString::number( i->volume ) );
+      volume.setValue( QString::number( voiceEngine.volume ) );
       v.setAttributeNode( volume );
 
       QDomAttr rate = dd.createAttribute( "rate" );
-      rate.setValue( QString::number( i->rate ) );
+      rate.setValue( QString::number( voiceEngine.rate ) );
       v.setAttributeNode( rate );
     }
   }
@@ -1940,6 +1964,18 @@ void save( Class const & c )
       opt = dd.createElement( "model" );
       opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.model ) );
       proxy.appendChild( opt );
+
+      opt = dd.createElement( "text" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.text ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "word" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.word ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "sentence" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.sentence ) );
+      proxy.appendChild( opt );
     }
 
     opt = dd.createElement( "checkForNewReleases" );
@@ -2008,6 +2044,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "stripClipboard" );
     opt.appendChild( dd.createTextNode( c.preferences.stripClipboard ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "raiseWindowOnSearch" );
+    opt.appendChild( dd.createTextNode( c.preferences.raiseWindowOnSearch ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     {

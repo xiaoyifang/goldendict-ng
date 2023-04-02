@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12]
-        qt_ver: [6.3.2,6.4.2]
+        qt_ver: [6.4.3]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -40,7 +40,7 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
           cached: 'false'
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia               
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtspeech
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1

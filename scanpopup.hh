@@ -5,7 +5,7 @@
 #define __SCANPOPUP_HH_INCLUDED__
 
 #include "article_netmgr.hh"
-#include "articleview.hh"
+#include "ui/articleview.h"
 #include "wordfinder.hh"
 #include "keyboardstate.hh"
 #include "config.hh"
@@ -37,6 +37,9 @@ public:
 
   ~ScanPopup();
 
+  // update dictionary bar, group data and possibly other data
+  void refresh();
+
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
   void applyZoomFactor();
@@ -64,10 +67,8 @@ signals:
   void sendPhraseToMainWindow( Config::InputPhrase const & phrase );
   /// Close opened menus when window hide
   void closeMenu();
-  /// Signals to set expand optional parts mode (retranslation from/to MainWindow and dictionary bar)
-  void setExpandMode( bool expand );
+
   void inspectSignal(QWebEnginePage * page);
-  void setViewExpandMode( bool expand );
   /// Signal to switch expand optional parts mode
   void switchExpandMode();
   /// Signal to add word to history even if history is disabled
@@ -147,6 +148,7 @@ private:
   bool mouseIntercepted;
 
   QPoint startPos; // For window moving
+  QByteArray pinnedGeometry;
 
   QTimer hideTimer; // When mouse leaves the window, a grace period is
                     // given for it to return back. If it doesn't before
@@ -177,6 +179,8 @@ private:
   virtual void enterEvent( QEvent * event );
 #endif
   virtual void showEvent( QShowEvent * );
+  virtual void closeEvent( QCloseEvent * );
+  virtual void moveEvent( QMoveEvent * );
 
   /// Returns inputWord, chopped with appended ... if it's too long/
   QString elideInputWord();

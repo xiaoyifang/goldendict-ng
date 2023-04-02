@@ -41,7 +41,6 @@
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
-#include <QDebug>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #else
@@ -549,7 +548,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           newTag += match.captured( 4 );
           if( match.captured( 4 ).indexOf( "<img " ) < 0 )
 
-            newTag += R"( <img src="qrcx://localhost/icons/playsound.png" border="0" alt="Play">)";
+            newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
           newTag += "</a></span>";
 
           articleNewText += newTag;
