@@ -73,12 +73,7 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
 CONFIG( use_xapian ) {
   DEFINES += USE_XAPIAN
 
-  unix:!mac{
-    LIBS+= -lxapian-core
-  }
-  else{
-    LIBS+=-lxapian
-  }
+  LIBS+= -lxapian
 }
 
 CONFIG( use_iconv ) {
