@@ -19,6 +19,11 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ) : Q
 
 void AnkiConnector::sendToAnki( QString const & word, QString text, QString const & sentence )
 {
+  if ( word.isEmpty() ) {
+    emit this->errorText( tr( "anki: can't create a card without a word" ) );
+    return;
+  }
+
   // Anki doesn't understand the newline character, so it should be escaped.
   text = text.replace( "\n", "<br>" );
 
