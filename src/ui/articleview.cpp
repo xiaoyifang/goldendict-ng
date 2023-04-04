@@ -1795,7 +1795,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       menu.addAction( saveSoundAction );
   }
 
-  QString selectedText = webview->selectedText();
+  QString const selectedText = webview->selectedText();
   QString text         = Utils::trimNonChar( selectedText );
 
   if ( text.size() && text.size() < 60 )
