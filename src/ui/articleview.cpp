@@ -539,8 +539,9 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   webview->setCursor( Qt::WaitCursor );
 }
 
-void ArticleView::sendToAnki(QString const & word, QString const & text, QString const & sentence ){
-  ankiConnector->sendToAnki(word,text,sentence);
+void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
+{
+  ankiConnector->sendToAnki( word, dict_definition, sentence );
 }
 
 void ArticleView::showAnticipation()
