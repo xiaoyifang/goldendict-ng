@@ -55,6 +55,9 @@ class ArticleView: public QWidget
   bool expandOptionalParts;
   QString rangeVarName;
 
+  /// An action used to create Anki notes.
+  QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
+
   /// Any resource we've decided to download off the dictionary gets stored here.
   /// Full vector capacity is used for search requests, where we have to make
   /// a multitude of requests.
@@ -190,6 +193,9 @@ public:
 
   /// Takes the focus to the view
   void focus() { webview->setFocus( Qt::ShortcutFocusReason ); }
+
+  /// Sends *word* to Anki.
+  void handleAnkiAction();
 
 public:
 

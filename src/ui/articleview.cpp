@@ -391,6 +391,13 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
            &AnkiConnector::errorText,
            this,
            [ this ]( QString const & errorText ) { emit statusBarMessage( errorText ); } );
+
+  // Set up an Anki action if Anki integration is enabled in settings.
+  if ( cfg.preferences.ankiConnectServer.enabled ) {
+    sendToAnkiAction.setShortcut( QKeySequence( "Ctrl+Shift+N" ) );
+    webview->addAction( &sendToAnkiAction );
+    connect( &sendToAnkiAction, &QAction::triggered, this, &ArticleView::handleAnkiAction );
+  }
 }
 
 // explicitly report the minimum size, to avoid
@@ -1639,6 +1646,18 @@ void ArticleView::forward()
   webview->forward();
 }
 
+void ArticleView::handleAnkiAction()
+{
+  // React to the "send *word* to anki" action.
+  // If selected text is empty, use the whole article as the definition.
+  if ( webview->selectedText().isEmpty() ) {
+    makeAnkiCardFromArticle( getActiveArticleId() );
+  }
+  else {
+    sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+  }
+}
+
 void ArticleView::reload() { webview->reload(); }
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
@@ -1728,8 +1747,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QAction * followLink = 0;
   QAction * followLinkExternal = 0;
   QAction * followLinkNewTab = 0;
-  QAction * lookupSelection = 0;
-  QAction * sendToAnkiAction = 0 ;
+  QAction * lookupSelection           = 0;
   QAction * lookupSelectionGr = 0;
   QAction * lookupSelectionNewTab = 0;
   QAction * lookupSelectionNewTabGr = 0;
@@ -1866,12 +1884,10 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( saveBookmark );
   }
 
-  // add anki menu
-  if( !text.isEmpty() && cfg.preferences.ankiConnectServer.enabled )
-  {
-    QString txt      = webview->title();
-    sendToAnkiAction = new QAction( tr( "&Send \"%1\" to anki with selected text." ).arg( txt ), &menu );
-    menu.addAction( sendToAnkiAction );
+  // Add anki menu (if enabled)
+  // If there is no selected text, it will extract text from the current article.
+  if ( cfg.preferences.ankiConnectServer.enabled ) {
+    menu.addAction( &sendToAnkiAction );
   }
 
   if( text.isEmpty() && !cfg.preferences.storeHistory)
@@ -1968,8 +1984,9 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     else if( result == saveBookmark ) {
       emit saveBookmarkSignal( text.left( 60 ) );
     }
-    else if( result == sendToAnkiAction ) {
-      sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+    else if( result == &sendToAnkiAction ) {
+      // This action is handled by a slot.
+      return;
     }
     else
     if ( result == lookupSelectionGr && groupComboBox )
