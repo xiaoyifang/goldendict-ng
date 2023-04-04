@@ -1164,9 +1164,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   else if ( url.scheme().compare( "ankicard" ) == 0 ) {
     // If article id is set in path and selection is empty, use text from the current article.
     // Otherwise, grab currently selected text and use it as the definition.
-    if ( auto const selected_text = webview->selectedText(), article_id = url.path();
-         !article_id.isEmpty() && selected_text.isEmpty() ) {
-      makeAnkiCardFromArticle( article_id );
+    if ( !url.path().isEmpty() && webview->selectedText().isEmpty() ) {
+      makeAnkiCardFromArticle( url.path() );
     }
     else {
       sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
