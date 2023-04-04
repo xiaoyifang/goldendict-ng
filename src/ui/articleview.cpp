@@ -1159,6 +1159,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     load( url );
   else if( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
+    return;
   }
   else if ( url.scheme().compare( "ankicard" ) == 0 ) {
     // If article id is set in path and selection is empty, use text from the current article.
