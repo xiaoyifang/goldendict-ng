@@ -565,42 +565,25 @@ QString ArticleRequest::constructDictHeading( std::string const & dict_id_html,
   // Start .gddictname
   // Resort to QString here to be able to use its arg() method.
   QString gd_dict_name = QString( R"EOF(<div class="gddictname" id="gddictname-%1">)EOF" ).arg( dict_id_html.c_str() );
+  QString html_temp{};
 
   // Icon
-  gd_dict_name += [ &dict_name, &dict_id_html ]() {
-    auto html = QString( R"EOF(
-          <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
-          <span class="gdfromprefix">%2</span>
-          <span class="gddicttitle">%3</span>
-          )EOF" );
-    return html.arg( dict_id_html.c_str(), tr( "From " ), dict_name.c_str() );
-  }();
+  html_temp = R"EOF(
+  <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
+  <span class="gdfromprefix">%2</span>
+  <span class="gddicttitle">%3</span>
+  )EOF";
+  gd_dict_name += html_temp.arg( dict_id_html.c_str(), tr( "From " ), dict_name.c_str() );
 
   // Collapse/expand button (blue arrow)
-  gd_dict_name += [ collapse, &dict_id_html ]() {
-    auto html = QString( R"EOF(
-          <span class="collapse_expand_area" onclick="gdExpandArticle('%1');" >
-          <img src="qrc:///icons/blank.png" class="%2" id="expandicon-%3" title="%4">
-          </span>)EOF" );
-    return html.arg( dict_id_html.c_str(),
-                     collapse ? "gdexpandicon" : "gdcollapseicon",
-                     dict_id_html.c_str(),
-                     collapse ? tr( "Expand article" ) : tr( "Collapse article" ) );
-  }();
-
-  // If the user has enabled Anki integration in settings,
-  // Show a (+) button that lets the user add a new Anki card.
-  gd_dict_name += [ &dict_id_html ]() {
-    if ( ankiConnectEnabled() ) {
-      auto link = QString( R"EOF(
-            <a href="ankicard:%1" class="ankibutton" title="%2" >
-            <img src="qrc:///icons/add-anki-icon.svg">
-            </a>
-            )EOF" );
-      return link.arg( dict_id_html.c_str(), tr( "Make a new Anki note" ) );
-    }
-    return QString{};
-  }();
+  html_temp = R"EOF(
+  <span class="collapse_expand_area" onclick="gdExpandArticle('%1');" >
+  <img src="qrc:///icons/blank.png" class="%2" id="expandicon-%3" title="%4">
+  </span>)EOF";
+  gd_dict_name += html_temp.arg( dict_id_html.c_str(),
+                                 collapse ? "gdexpandicon" : "gdcollapseicon",
+                                 dict_id_html.c_str(),
+                                 collapse ? tr( "Expand article" ) : tr( "Collapse article" ) );
 
   // Close .gddictname
   gd_dict_name += "</div>";
@@ -700,6 +683,17 @@ void ArticleRequest::bodyFinished()
         head += constructDictHeading( Html::escape( dictId ), activeDict->getName(), collapse ).toStdString();
 
         head += "<div class=\"gddictnamebodyseparator\"></div>";
+
+        // If the user has enabled Anki integration in settings,
+        // Show a (+) button that lets the user add a new Anki card.
+        if ( ankiConnectEnabled() ) {
+          QString link{ R"EOF(
+          <a href="ankicard:%1" class="ankibutton" title="%2" >
+          <img src="qrc:///icons/add-anki-icon.svg">
+          </a>
+          )EOF" };
+          head += link.arg( Html::escape( dictId ).c_str(), tr( "Make a new Anki note" ) ).toStdString();
+        }
 
         head += "<div class=\"gdarticlebody gdlangfrom-";
         head += LangCoder::intToCode2( activeDict->getLangFrom() ).toLatin1().data();

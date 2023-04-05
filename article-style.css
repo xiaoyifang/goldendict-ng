@@ -45,17 +45,13 @@ pre
   padding-left: 0.5em;
   background: #def;
   user-select: none;
-
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
 }
 
 /* The anki plus button, which is shown if enabled. */
 .ankibutton {
+  float: right;
   display: grid;
   place-items: center;
-  margin-inline-start: auto;
   cursor: pointer;
   border-radius: 4px;
   padding: 3px;
