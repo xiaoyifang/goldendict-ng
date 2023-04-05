@@ -558,39 +558,6 @@ int ArticleRequest::findEndOfCloseDiv( const QString &str, int pos )
   }
 }
 
-QString ArticleRequest::constructDictHeading( std::string const & dict_id_html,
-                                              std::string const & dict_name,
-                                              bool const collapse )
-{
-  // Start .gddictname
-  // Resort to QString here to be able to use its arg() method.
-  QString gd_dict_name = QString( R"EOF(<div class="gddictname" id="gddictname-%1">)EOF" ).arg( dict_id_html.c_str() );
-  QString html_temp{};
-
-  // Icon
-  html_temp = R"EOF(
-  <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
-  <span class="gdfromprefix">%2</span>
-  <span class="gddicttitle">%3</span>
-  )EOF";
-  gd_dict_name += html_temp.arg( dict_id_html.c_str(), tr( "From " ), dict_name.c_str() );
-
-  // Collapse/expand button (blue arrow)
-  html_temp = R"EOF(
-  <span class="collapse_expand_area" onclick="gdExpandArticle('%1');" >
-  <img src="qrc:///icons/blank.png" class="%2" id="expandicon-%3" title="%4">
-  </span>)EOF";
-  gd_dict_name += html_temp.arg( dict_id_html.c_str(),
-                                 collapse ? "gdexpandicon" : "gdcollapseicon",
-                                 dict_id_html.c_str(),
-                                 collapse ? tr( "Expand article" ) : tr( "Collapse article" ) );
-
-  // Close .gddictname
-  gd_dict_name += "</div>";
-
-  return gd_dict_name;
-}
-
 void ArticleRequest::bodyFinished()
 {
   if ( bodyDone )
@@ -679,8 +646,19 @@ void ArticleRequest::bodyFinished()
 
         closePrevSpan = true;
 
-        // Add .gddictname to head.
-        head += constructDictHeading( Html::escape( dictId ), activeDict->getName(), collapse ).toStdString();
+        head += string( R"(<div class="gddictname" onclick="gdExpandArticle(')" ) + dictId + "\');"
+          + ( collapse ? "\" style=\"cursor:pointer;" : "" )
+          + "\" id=\"gddictname-" + Html::escape( dictId ) + "\""
+          + ( collapse ? string( " title=\"" ) + tr( "Expand article" ).toUtf8().data() + "\"" : "" )
+          + R"(><span class="gddicticon"><img src="gico://)" + Html::escape( dictId )
+          + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
+          Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
+          Html::escape( activeDict->getName().c_str() ) + "</span>"
+          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
+          + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
+          + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
+          + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
+          + "></span>" + "</div>";
 
         head += "<div class=\"gddictnamebodyseparator\"></div>";
 

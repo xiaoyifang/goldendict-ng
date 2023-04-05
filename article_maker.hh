@@ -152,10 +152,6 @@ private:
 
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( QString const &, int pos );
-
-  // A method used for constructing a dictionary heading,
-  // e.g. <div class="gddictname" >...</div>
-  QString constructDictHeading( std::string const & dict_id_html, std::string const & dict_name, bool const collapse );
 };
 
 
