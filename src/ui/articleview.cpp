@@ -1889,6 +1889,8 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   // If there is no selected text, it will extract text from the current article.
   if ( cfg.preferences.ankiConnectServer.enabled ) {
     menu.addAction( &sendToAnkiAction );
+    sendToAnkiAction.setText( webview->selectedText().isEmpty() ? tr( "&Send Current Article to Anki" ) :
+                                                                  tr( "&Send selected text to Anki" ) );
   }
 
   if( text.isEmpty() && !cfg.preferences.storeHistory)
