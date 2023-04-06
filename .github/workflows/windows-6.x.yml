@@ -26,9 +26,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2019]
+        os: [windows-2019, windows-latest]
         qt_ver: [6.4.3]
-        qt_arch: [win64_msvc2019_64]
+        qt_arch: [win64_msvc2019_64,win64_msvc2019_arm64]
     env:
       targetName: GoldenDict.exe
       version: 23.04.03
