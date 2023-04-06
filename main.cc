@@ -6,9 +6,7 @@
 #include "gdappstyle.hh"
 #include "mainwindow.hh"
 #include "config.hh"
-#include "article_netmgr.hh"
 #include <QWebEngineProfile>
-#include "processwrapper.hh"
 #include "hotkeywrapper.hh"
 #ifdef HAVE_X11
 #include <fixx11h.h>
@@ -18,19 +16,18 @@
 #include <clocale>
 #endif
 
-#define LOG_TO_FILE_KEY "--log-to-file"
-
 #ifdef Q_OS_WIN32
 #include <QtCore/qt_windows.h>
 #endif
 
 #include "termination.hh"
 #include "atomic_rename.hh"
-#include <QtWebEngineCore/QWebEngineUrlScheme>
-#include <QMessageBox>
-#include <QFile>
 #include <QByteArray>
+#include <QCommandLineParser>
+#include <QFile>
+#include <QMessageBox>
 #include <QString>
+#include <QtWebEngineCore/QWebEngineUrlScheme>
 
 #include "gddebug.hh"
 
@@ -92,17 +89,12 @@ void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
 
 class GDCommandLine
 {
-  bool crashReport, logFile;
-  QString word, groupName, popupGroupName, errFileName;
-  QVector< QString > arguments;
+private:
+  bool logFile= false;
+  QString word, groupName, popupGroupName;
+
 public:
-  GDCommandLine( int argc, char **argv );
-
-  inline bool needCrashReport()
-  { return crashReport; }
-
-  inline QString errorFileName()
-  { return errFileName; }
+  explicit GDCommandLine(QCoreApplication * app);
 
   inline bool needSetGroup()
   { return !groupName.isEmpty(); }
@@ -126,71 +118,62 @@ public:
   { return word; }
 };
 
-GDCommandLine::GDCommandLine( int argc, char **argv ):
-crashReport( false ),
-logFile( false )
+GDCommandLine::GDCommandLine( QCoreApplication * app )
 {
-  if( argc > 1 )
-  {
-#ifdef Q_OS_WIN32
-    (void) argv;
-    int num;
-    LPWSTR *pstr = CommandLineToArgvW( GetCommandLineW(), &num );
-    if( pstr && num > 1 )
-    {
-      for( int i = 1; i < num; i++ )
-        arguments.push_back( QString::fromWCharArray( pstr[ i ] ) );
+  QCommandLineParser qcmd;
+
+  qcmd.setApplicationDescription( QObject::tr( "A dictionary lookup program." ) );
+  qcmd.addHelpOption(); // -h --help
+
+  qcmd.addPositionalArgument( "word", QObject::tr( "Word or sentence to query." ), "[word]" );
+
+  QCommandLineOption logFileOption( QStringList() << "l"
+                                                  << "log-to-file",
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+
+  QCommandLineOption groupNameOption( QStringList() << "g"
+                                                    << "group-name",
+                                      QObject::tr( "Change the group of main window." ),
+                                      "groupName" );
+  QCommandLineOption popupGroupNameOption( QStringList() << "p"
+                                                         << "popup-group-name",
+                                           QObject::tr( "Change the group of popup." ),
+                                           "popupGroupName" );
+
+  qcmd.addOption( logFileOption );
+  qcmd.addOption( groupNameOption );
+  qcmd.addOption( popupGroupNameOption );
+
+  QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
+  doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
+  qcmd.addOption( doNothingOption );
+
+  qcmd.process( *app );
+
+  if ( qcmd.isSet( logFileOption ) ) {
+    logFile = true;
+  }
+
+  if ( qcmd.isSet( groupNameOption ) ) {
+    groupName = qcmd.value( groupNameOption );
+  }
+
+  if ( qcmd.isSet( popupGroupNameOption ) ) {
+    popupGroupName = qcmd.value( popupGroupNameOption );
+  }
+
+  const QStringList posArgs = qcmd.positionalArguments();
+  if ( !posArgs.empty() ) {
+    word = posArgs.at( 0 );
+
+#if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
+    // handle url scheme like "goldendict://" on windows
+    word.remove( "goldendict://" );
+    // In microsoft Words, the / will be automatically appended
+    if ( word.endsWith( "/" ) ) {
+      word.chop( 1 );
     }
-#else
-    for( int i = 1; i < argc; i++ )
-      arguments.push_back( QString::fromLocal8Bit( argv[ i ] ) );
 #endif
-    // Parse command line
-    for( int i = 0; i < arguments.size(); i++ )
-    {
-      if( arguments[ i ].compare( "--show-error-file" ) == 0 )
-      {
-        if( i < arguments.size() - 1 )
-        {
-          errFileName = arguments[ ++i ];
-          crashReport = true;
-        }
-        continue;
-      }
-      else
-      if( arguments[ i ].compare( "--log-to-file" ) == 0 )
-      {
-        logFile = true;
-        continue;
-      }
-      else
-      if( arguments[ i ].startsWith( "--group-name=" ) )
-      {
-        groupName = arguments[ i ].mid( arguments[ i ].indexOf( '=' ) + 1 );
-        continue;
-      }
-      else
-      if( arguments[ i ].startsWith( "--popup-group-name=" ) )
-      {
-        popupGroupName = arguments[ i ].mid( arguments[ i ].indexOf( '=' ) + 1 );
-        continue;
-      }
-      if( arguments[ i ].startsWith( "-style" ) )
-      {
-        // skip next argument,  -style fusion
-        i++;
-      }
-      else
-        word = arguments[ i ];
-#if defined(Q_OS_LINUX) || defined (Q_OS_WIN)
-        // handle url scheme like "goldendict://" on windows
-        word.remove("goldendict://");
-        // In microsoft Words, the / will be automatically appended
-        if(word.endsWith("/")){
-          word.chop(1);
-        }
-#endif
-    }
   }
 }
 
@@ -225,30 +208,34 @@ int main( int argc, char ** argv )
   setlocale( LC_ALL, "" ); // use correct char set mapping
 #endif
 
-  GDCommandLine gdcl( argc, argv );
+  //high dpi screen support
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
+  QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+#endif
+  qputenv( "QT_AUTO_SCREEN_SCALE_FACTOR", "1" );
+  QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
-  if ( gdcl.needCrashReport() )
+
+  char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
+  int newArgc                     = argc + 1 + 1;
+  char ** newArgv                 = new char *[ newArgc ];
+  for( int i = 0; i < argc; i++ )
   {
-    // The program has crashed -- show a message about it
-
-    QApplication app( argc, argv );
-
-    QFile errFile( gdcl.errorFileName() );
-
-    QString errorText;
-
-    if ( errFile.open( QFile::ReadOnly ) )
-      errorText = QString::fromUtf8( errFile.readAll() );
-
-    errorText += "\n" + QString( "This information is located in file %1, "
-                                 "which will be removed once you close this dialog.").arg( errFile.fileName() );
-
-    QMessageBox::critical( 0, "GoldenDict has crashed", errorText );
-
-    errFile.remove();
-
-    return 0;
+        newArgv[ i ] = argv[ i ];
   }
+  newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
+  newArgv[ argc + 1 ] = nullptr;
+
+  QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
+
+  app.setApplicationName( "GoldenDict" );
+  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
+#ifndef Q_OS_MAC
+  app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+#endif
+
+  GDCommandLine gdcl(&app);
 
   installTerminationHandler();
 
@@ -273,26 +260,6 @@ int main( int argc, char ** argv )
       QWebEngineUrlScheme::registerScheme(webUiScheme);
   }
 
-  //high dpi screen support
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-  qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
-  QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-
-
-  char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
-  int newArgc                     = argc + 1 + 1;
-  char ** newArgv                 = new char *[ newArgc ];
-  for( int i = 0; i < argc; i++ )
-  {
-    newArgv[ i ] = argv[ i ];
-  }
-  newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
-  newArgv[ argc + 1 ] = nullptr;
-
-  QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
   LogFilePtrGuard logFilePtrGuard;
 
   if ( app.isRunning() )
@@ -322,16 +289,6 @@ int main( int argc, char ** argv )
 
     return 0; // Another instance is running
   }
-
-  app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
-
-  //this line will forbid stylesheet applying on GroupComboBox
-//  app.setStyle(new GdAppStyle);
-
-  #ifndef Q_OS_MAC
-    app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
-  #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   // OpenCC needs to load it's data files by relative path on Windows and OS X
