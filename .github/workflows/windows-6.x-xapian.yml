@@ -28,7 +28,7 @@ jobs:
       matrix:
         os: [windows-2019]
         qt_ver: [6.4.3]
-        qt_arch: [win64_msvc2019_64,win64_msvc2019_arm64]
+        qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
       version: 23.04.03
@@ -144,12 +144,11 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}  
 
       - name: upload goldendict.exe only
-        # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/${{ env.targetName }}
-          asset_name: ${{ matrix.qt_ver }}-xapian-${{ env.targetName }}
+          asset_name: ${{ matrix.os }}.${{ matrix.qt_arch }}.${{ matrix.qt_ver }}-xapian-${{ env.targetName }}
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
