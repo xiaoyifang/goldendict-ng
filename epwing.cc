@@ -26,6 +26,7 @@
 #include "filetype.hh"
 #include "ftshelpers.hh"
 #include "base/globalregex.hh"
+#include "sptr.hh"
 
 namespace Epwing {
 
@@ -80,6 +81,7 @@ bool indexIsOldOrBad( string const & indexFile )
          header.signature != Signature ||
          header.formatVersion != CurrentFormatVersion;
 }
+class EpwingHeadwordsRequest;
 
 class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 {
@@ -120,6 +122,8 @@ public:
   { return idxHeader.langTo; }
 
   QString const& getDescription() override;
+
+  void getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off );
 
   sptr< Dictionary::DataRequest > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
@@ -179,8 +183,11 @@ private:
                     int & articlePage,
                     int & articleOffset );
 
- void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
- void loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
+
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & word ) override;
+
+  void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
+  void loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
   
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword,
                     string & articleText );
@@ -201,6 +208,8 @@ private:
   friend class EpwingArticleRequest;
   friend class EpwingResourceRequest;
   friend class EpwingWordSearchRequest;
+
+  friend class EpwingHeadwordsRequest;
   string epwing_previous_button(int& articleOffset, int& articlePage);
   string epwing_next_button(int& articleOffset, int& articlePage);
   bool readHeadword( EB_Position & pos, QString & headword );
@@ -341,6 +350,8 @@ string Epwing::EpwingDictionary::epwing_previous_button(int& articlePage, int& a
 
     return previousLink;
 }
+
+
 
 void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
 {
@@ -512,6 +523,98 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
   }
 }
 
+
+
+
+class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
+{
+  wstring str;
+  EpwingDictionary & dict;
+
+  QAtomicInt isCancelled;
+  QFuture< void > f;
+
+public:
+
+  EpwingHeadwordsRequest( wstring const & word_, EpwingDictionary & dict_ ):
+    str( word_ ),
+    dict( dict_ )
+  {
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
+  }
+
+  void run();
+
+  void cancel() override { isCancelled.ref(); }
+
+  ~EpwingHeadwordsRequest()
+  {
+    isCancelled.ref();
+    f.waitForFinished();
+  }
+};
+
+
+void EpwingHeadwordsRequest::run()
+{
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    finish();
+    return;
+  }
+
+  QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( str ) );
+  if ( !m.hasMatch() ) {
+    finish();
+    return;
+  }
+  int articlePage   = m.captured( 1 ).toInt();
+  int articleOffset = m.captured( 2 ).toInt();
+  EB_Position pos;
+  pos.offset = articleOffset;
+  pos.page   = articlePage;
+  QString headword;
+  dict.readHeadword( pos, headword );
+  if ( headword.isEmpty() ) {
+    finish();
+    return;
+  }
+
+  auto parts = headword.split(' ',Qt::SkipEmptyParts);
+  if(parts.empty())
+  {
+    finish();
+    return;
+  }
+
+
+  QVector< int > pg;
+  QVector< int > off;
+  dict.getHeadwordPos( parts[0].toStdU32String(), pg, off );
+
+  for ( unsigned i = 0; i < pg.size(); ++i ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      finish();
+      return;
+    }
+
+    if ( pg.at( i ) == articlePage && off.at( i ) == articleOffset ) {
+
+      Mutex::Lock _( dataMutex );
+
+      matches.emplace_back( parts[0].toStdU32String() );
+      break;
+    }
+  }
+
+  finish();
+}
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( wstring const & word )
+{
+  return synonymSearchEnabled ? std::make_shared< EpwingHeadwordsRequest >( word, *this ) :
+                                Class::findHeadwordsForSynonym( word );
+}
 /// EpwingDictionary::getArticle()
 
 class EpwingArticleRequest: public Dictionary::DataRequest
@@ -633,12 +736,10 @@ void EpwingArticleRequest::run()
   QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
   bool ref                  = m.hasMatch();
 
-  if( !ref ) {
-    // Also try to find word in the built-in dictionary index
-    getBuiltInArticle( word, pages, offsets, mainArticles );
-    for( unsigned x = 0; x < alts.size(); ++x ) {
-      getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
-    }
+  // Also try to find word in the built-in dictionary index
+  getBuiltInArticle( word, pages, offsets, mainArticles );
+  for( unsigned x = 0; x < alts.size(); ++x ) {
+    getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() && !ref)
@@ -668,24 +769,21 @@ void EpwingArticleRequest::run()
       result += i->second.second;
   }
 
+  //only load the next/previous page when not hitted.
+  if( mainArticles.empty() && alternateArticles.empty() && ref )
   {
-    QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
-    if( m.hasMatch() )
+    string headword, articleText;
+    int articlePage   = m.captured( 1 ).toInt();
+    int articleOffset = m.captured( 2 ).toInt();
+    if( word[ 0 ] =='r' )
+      dict.loadArticleNextPage( headword, articleText, articlePage, articleOffset );
+    else
     {
-      string headword, articleText;
-      int articlePage   = m.captured( 1 ).toInt();
-      int articleOffset = m.captured( 2 ).toInt();
-      if( word[ 0 ] =='r' )
-        dict.loadArticleNextPage( headword, articleText, articlePage, articleOffset );
-      else
-      {
-        //starts with p
-        dict.loadArticlePreviousPage( headword, articleText, articlePage, articleOffset );
-      }
-
-      result += articleText;
-
+      //starts with p
+      dict.loadArticlePreviousPage( headword, articleText, articlePage, articleOffset );
     }
+
+    result += articleText;
   }
 
   result += "</div>";
@@ -743,6 +841,16 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
   }
   catch( ... )
   {
+  }
+}
+
+void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off )
+{
+  try {
+      Mutex::Lock _( eBook.getLibMutex() );
+      eBook.getArticlePos( gd::toQString( word_ ), pg, off );
+  }
+  catch ( ... ) {
   }
 }
 
