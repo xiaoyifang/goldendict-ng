@@ -45,21 +45,21 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   // add jquery
   {
-    result += "<script type=\"text/javascript\"  "
+    result += "<script defer type=\"text/javascript\"  "
               "src=\"qrc:///scripts/jquery-3.6.0.slim.min.js\"></script>";
 
     result += "<script> var $_$=$.noConflict(); </script>";
 
     //custom javascript
-    result += R"(<script type="text/javascript" src="qrc:///scripts/gd-custom.js"></script>)";
+    result += R"(<script defer type="text/javascript" src="qrc:///scripts/gd-custom.js"></script>)";
 
     //iframe resizer javascript
-    result += R"(<script type="text/javascript" src="qrc:///scripts/iframeResizer.min.js"></script>)";
+    result += R"(<script defer type="text/javascript" src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel
   {
-    result += R"(<script type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>)";
+    result += R"(<script defer type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>)";
   }
 
   // document ready ,init webchannel
@@ -139,13 +139,13 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
             "return tr_map[key] || '';"
             "}"
             "</script>";
-  result+= R"(<script type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
+  result+= R"(<script defer type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
     // #242525 because Darkreader will invert pure white to this value
     result += R"(
-<script src="qrc:///scripts/darkreader.js"></script>
+<script defer src="qrc:///scripts/darkreader.js"></script>
 <style>
 body { background: #242525; }
 .gdarticle { background: initial;}
