@@ -53,9 +53,4 @@
     });
 })($_$);
 
-function playSound(sound) {
-    var a = new Audio(sound);
-    a.play();
-}
-
 
