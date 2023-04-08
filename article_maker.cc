@@ -226,8 +226,7 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word,
 
   if ( word.size() )
     result += tr( "No translation for <b>%1</b> was found in group <b>%2</b>." ).
-              arg( QString::fromUtf8( Html::escape( str.toUtf8().data() ).c_str() ) ).
-              arg( QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) ).
+              arg( QString::fromUtf8( Html::escape( str.toUtf8().data() ).c_str() ), QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) ).
                 toUtf8().data();
   else
     result += tr( "No translation was found in group <b>%1</b>." ).
