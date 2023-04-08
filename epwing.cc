@@ -843,8 +843,8 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
 void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off )
 {
   try {
-      Mutex::Lock _( eBook.getLibMutex() );
-      eBook.getArticlePos( gd::toQString( word_ ), pg, off );
+    Mutex::Lock _( eBook.getLibMutex() );
+    eBook.getArticlePos( gd::toQString( word_ ), pg, off );
   }
   catch ( ... ) {
     //ignore
@@ -862,68 +862,36 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & wo
 
 //// EpwingDictionary::getResource()
 
-class EpwingResourceRequest;
-
-class EpwingResourceRequestRunnable: public QRunnable
-{
-  EpwingResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  EpwingResourceRequestRunnable( EpwingResourceRequest & r_,
-                              QSemaphore & hasExited_ ): r( r_ ),
-                                                         hasExited( hasExited_ )
-  {}
-
-  ~EpwingResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class EpwingResourceRequest: public Dictionary::DataRequest
 {
-  friend class EpwingResourceRequestRunnable;
-
   EpwingDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
-  EpwingResourceRequest( EpwingDictionary & dict_,
-                      string const & resourceName_ ):
+  EpwingResourceRequest( EpwingDictionary & dict_, string const & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new EpwingResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by EpwingResourceRequestRunnable
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
+  void cancel() override { isCancelled.ref(); }
 
   ~EpwingResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void EpwingResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void EpwingResourceRequest::run()
 {
