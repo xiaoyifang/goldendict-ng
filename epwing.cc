@@ -210,9 +210,9 @@ private:
   friend class EpwingWordSearchRequest;
 
   friend class EpwingHeadwordsRequest;
-  string epwing_previous_button(int& articleOffset, int& articlePage);
-  string epwing_next_button(int& articleOffset, int& articlePage);
-  bool readHeadword( EB_Position & pos, QString & headword );
+  string epwing_previous_button( const int& articleOffset, const int& articlePage);
+  string epwing_next_button( const int& articleOffset, const int& articlePage);
+  bool readHeadword( const EB_Position & pos, QString & headword );
 };
 
 
@@ -342,16 +342,14 @@ void EpwingDictionary::loadArticle(
   articleText = prefix + articleText + "</div>";
 }
 
-string Epwing::EpwingDictionary::epwing_previous_button(int& articlePage, int& articleOffset)
+string Epwing::EpwingDictionary::epwing_previous_button( const int& articlePage, const int& articleOffset)
 {
     QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
-    string previousLink    = "<p><a class=\"epwing_previous_page\" href=\"gdlookup://localhost/"
+    string previousLink    = R"(<p><a class="epwing_previous_page" href="gdlookup://localhost/)"
       + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
 
     return previousLink;
 }
-
-
 
 void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
 {
@@ -382,10 +380,10 @@ void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & ar
   articleText = articleText + "</div>";
 }
 
-string Epwing::EpwingDictionary::epwing_next_button(int& articlePage, int& articleOffset )
+string Epwing::EpwingDictionary::epwing_next_button( const int& articlePage, const int& articleOffset )
 {
     QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
-    string nextLink = "<p><a class=\"epwing_next_page\" href=\"gdlookup://localhost/" + refLink.toStdString() + "\">"
+    string nextLink = R"(<p><a class="epwing_next_page" href="gdlookup://localhost/)" + refLink.toStdString() + "\">"
       + tr( "Next Page" ).toStdString() + "</a></p>";
 
     return nextLink;
@@ -665,10 +663,9 @@ void EpwingArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( auto & alt : alts ) {
     /// Make an additional query for each alt
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -685,15 +682,14 @@ void EpwingArticleRequest::run()
 
   QVector< int > pages, offsets;
 
-  for( unsigned x = 0; x < chain.size(); ++x )
-  {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
       finish();
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Now grab that article
@@ -703,7 +699,7 @@ void EpwingArticleRequest::run()
 
     try
     {
-      dict.loadArticle( chain[ x ].articleOffset, headword, articleText, articlePage, articleOffset );
+      dict.loadArticle( x.articleOffset, headword, articleText, articlePage, articleOffset );
     }
     catch(...)
     {
@@ -730,7 +726,7 @@ void EpwingArticleRequest::run()
       Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
       pair< string, string >( headword, articleText ) ) );
 
-    articlesIncluded.insert( chain[ x ].articleOffset );
+    articlesIncluded.insert( x.articleOffset );
   }
 
   QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
@@ -738,8 +734,8 @@ void EpwingArticleRequest::run()
 
   // Also try to find word in the built-in dictionary index
   getBuiltInArticle( word, pages, offsets, mainArticles );
-  for( unsigned x = 0; x < alts.size(); ++x ) {
-    getBuiltInArticle( alts[ x ], pages, offsets, alternateArticles );
+  for ( auto & alt : alts ) {
+    getBuiltInArticle( alt, pages, offsets, alternateArticles );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() && !ref)
@@ -851,6 +847,7 @@ void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & p
       eBook.getArticlePos( gd::toQString( word_ ), pg, off );
   }
   catch ( ... ) {
+    //ignore
   }
 }
 
@@ -1122,8 +1119,8 @@ void EpwingWordSearchRequest::findMatches()
 
     Mutex::Lock _( dataMutex );
 
-    for( int i = 0; i < headwords.size(); i++ )
-      addMatch( gd::toWString( headwords.at( i ) ) );
+    for ( const auto & headword : headwords )
+      addMatch( gd::toWString( headword ) );
 
     break;
   }
@@ -1146,7 +1143,7 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
   return std::make_shared<EpwingWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
                                       false, maxResults );
 }
-bool Epwing::EpwingDictionary::readHeadword( EB_Position & pos, QString & headword )
+bool Epwing::EpwingDictionary::readHeadword( const EB_Position & pos, QString & headword )
 {
   try
   {
@@ -1155,7 +1152,7 @@ bool Epwing::EpwingDictionary::readHeadword( EB_Position & pos, QString & headwo
     eBook.fixHeadword( headword );
     return eBook.isHeadwordCorrect( headword ) ;
   }
-  catch( std::exception & e )
+  catch( std::exception &  )
   {
     return false;
   }
@@ -1275,20 +1272,18 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
   vector< string > dictFiles;
   QByteArray catName = QString("%1catalogs").arg(QDir::separator()).toUtf8();
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( const auto & fileName : fileNames ) {
       // Skip files other than "catalogs" to speed up the scanning
 
-      if ( i->size() < (unsigned)catName.size() ||
-          strcasecmp( i->c_str() + ( i->size() - catName.size() ), catName.data() ) != 0 )
+      if ( fileName.size() < (unsigned)catName.size() ||
+          strcasecmp( fileName.c_str() + ( fileName.size() - catName.size() ), catName.data() ) != 0 )
         continue;
 
-      int ndir = i->size() - catName.size();
+      int ndir = fileName.size() - catName.size();
       if( ndir < 1 )
         ndir = 1;
 
-      string mainDirectory = i->substr( 0, ndir );
+      string mainDirectory = fileName.substr( 0, ndir );
 
       Epwing::Book::EpwingBook dict;
       int subBooksNumber = 0;
@@ -1311,7 +1306,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         {
           dictFiles.clear();
           dictFiles.push_back( mainDirectory );
-          dictFiles.push_back( *i );
+          dictFiles.push_back( fileName );
 
           dict.setSubBook( sb );
 
