@@ -6,6 +6,20 @@
 
 A feature-rich dictionary lookup program, supporting multiple dictionary formats (StarDict/Babylon/Lingvo/Dictd/AARD/MDict/SDict) and online dictionaries, featuring perfect article rendering with the complete markup, illustrations and other content retained, and allowing you to type in words without any accents or correct case.
 
+# Some significant features of this repository
+
+- webengine with latest html/css feature support
+- support >4GB dictionary
+- support highdpi screen resolution
+- built with xapian(optional) as fulltext engine
+- support Qt5.15.2 and higher ,include latest Qt6
+- performance optimization(eg. >10000000 headwords support) 
+- anki integration
+- dark theme
+- daily auto release support
+- lots of bug fixes and improvements
+
+
 ## Installation
 
 ### Windows and macOS
