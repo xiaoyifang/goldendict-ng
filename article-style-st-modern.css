@@ -57,7 +57,7 @@ a:hover
 
 .gddictname
 {
-  display: -webkit-box; /* needed to be able to reorder elements, e.g. icon, dictionary name, collapse icon */
+  display: flex;
   font-size: 12px;
   font-weight: normal;
   float: right;
@@ -78,8 +78,7 @@ a:hover
 .gddicttitle
 {
   display:block;
-  -webkit-box-ordinal-group: 1;
-  -webkit-box-flex: 1;
+  order: 1;
 }
 
 .gdactivearticle .gddictname
@@ -111,7 +110,7 @@ a:hover
 .collapse_expand_area
 {
   display: block;
-  -webkit-box-ordinal-group: 3;
+  order: 3;
 }
 
 .gddicticon
@@ -120,7 +119,7 @@ a:hover
   vertical-align: text-bottom;
   padding-right: -1em;
   padding-left: 0.3em;
-  -webkit-box-ordinal-group: 2;
+  order: 2;
 }
 
 .gddicticon img {
