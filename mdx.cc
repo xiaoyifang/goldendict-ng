@@ -299,9 +299,9 @@ private:
   void loadArticle( uint32_t offset, string & articleText, bool noFilter = false );
 
   /// Process resource links (images, audios, etc)
-  QString & filterResource( QString const & articleId, QString & article );
+  QString & filterResource( QString & article );
 
-  void replaceLinks( QString & id, const QString & articleId, QString & article );
+  void replaceLinks( QString & id, QString & article );
   //@font-face
   void replaceStyleInHtml( QString & id, QString & article );
   void replaceFontLinks( QString & id, QString & article );
@@ -739,7 +739,7 @@ void MddResourceRequest::run()
   }
 
   // In order to prevent recursive internal redirection...
-  set< wstring > resourceIncluded;
+  set< wstring, std::less<> > resourceIncluded;
 
   for ( ;; )
   {
@@ -894,12 +894,8 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
 
   // Load record info from index
   MdictParser::RecordInfo recordInfo;
-  char * pRecordInfo = chunks.getBlock( offset, chunk );
+  const char * pRecordInfo = chunks.getBlock( offset, chunk );
   memcpy( &recordInfo, pRecordInfo, sizeof( recordInfo ) );
-
-  // Make a sub unique id for this article
-  QString articleId;
-  articleId.setNum( ( quint64 )pRecordInfo, 16 );
 
   QByteArray decompressed;
 
@@ -923,22 +919,22 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
   if( !noFilter )
   {
     article = MdictParser::substituteStylesheet( article, styleSheets );
-    article = filterResource( articleId, article );
+    article = filterResource( article );
   }
 
   // articleText = article.toStdString();
   articleText = string( article.toUtf8().constData() );
 }
 
-QString & MdxDictionary::filterResource( QString const & articleId, QString & article )
+QString & MdxDictionary::filterResource( QString & article )
 {
   QString id = QString::fromStdString( getId() );
-  replaceLinks( id, articleId, article );
+  replaceLinks( id, article );
   replaceStyleInHtml( id, article);
   return article;
 }
 
-void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QString & article )
+void MdxDictionary::replaceLinks( QString & id, QString & article )
 {
   QString articleNewText;
   int linkPos                        = 0;
@@ -1181,7 +1177,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
   vector< char > data;
 
   // In order to prevent recursive internal redirection...
-  set< wstring > resourceIncluded;
+  set< wstring, std::less<> > resourceIncluded;
 
   for( ;; ) {
     if( !resourceIncluded.insert( resourceName ).second )

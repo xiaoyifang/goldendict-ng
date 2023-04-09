@@ -585,7 +585,7 @@ void ArticleView::loadFinished( bool result )
   webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
 
   if( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
-    QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
+    const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
 
     // Find GD anchor on page
     url.clear();
