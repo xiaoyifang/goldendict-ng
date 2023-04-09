@@ -52,7 +52,7 @@ body
 .gddictname
 {
   display: inline-block;
-  border: 1px solid #92b0dd;
+  /* border: 1px solid #92b0dd; */
   padding: 0.2em;
   padding-left: 0.5em;
   padding-right: 0.5em;
