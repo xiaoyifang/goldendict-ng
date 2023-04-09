@@ -584,38 +584,14 @@ void ArticleView::loadFinished( bool result )
   // Expand collapsed article if only one loaded
   webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
 
-  if( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() )
-  {
+  if( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
     QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
 
     // Find GD anchor on page
-
-    int n = anchor.indexOf( '_' );
-    if( n == 33 )
-      // MDict pattern: ("g" + dictionary ID (33 chars total))_(articleID(quint64, hex))_(original anchor)
-      n = anchor.indexOf( '_', n + 1 );
-    else
-      n = 0;
-
-    if( n > 0 )
-    {
-      QString originalAnchor = anchor.mid( n + 1 );
-
-      int end = originalAnchor.indexOf('_');
-      QString hash=originalAnchor.left(end);
-      url.clear();
-      url.setFragment(hash);
-      webview->page()->runJavaScript(
-        QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
-      
-    }
-    else
-    {
-      url.clear();
-      url.setFragment( anchor );
-      webview->page()->runJavaScript(
-        QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
-    }
+    url.clear();
+    url.setFragment( anchor );
+    webview->page()->runJavaScript(
+      QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
   }
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
@@ -1149,7 +1125,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   auto [valid, word] = Utils::Url::getQueryWord( url );
   if( valid && word.isEmpty() )
   {
-    // invalid gdlookup url.
+    //if valid=true and word is empty,the url must be a invalid gdlookup url.
+    //else if valid=false,the url should be external urls.
     return;
   }
 
