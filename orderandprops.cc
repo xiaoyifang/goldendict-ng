@@ -225,10 +225,12 @@ void OrderAndProps::describeDictionary( DictListWidget * lst, QModelIndex const 
 
     ui.dictionaryFileList->setPlainText( filenamesText );
 
-    QString const& descText = dict->getDescription();
+    QString descText = dict->getDescription();
     if( !descText.isEmpty() && descText.compare( "NONE" ) != 0 )
     {
-      ui.dictionaryDescription->setPlainText( descText );
+      //qtbug QTBUG-112020
+      descText.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
+      ui.dictionaryDescription->setHtml( descText );
       ui.dictionaryDescription->setVisible( true );
       ui.dictionaryDescriptionLabel->setVisible( true );
       ui.infoVerticalSpacer->changeSize( 0, 0, QSizePolicy::Minimum, QSizePolicy::Minimum );
