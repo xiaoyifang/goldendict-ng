@@ -167,7 +167,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="dictionaryDescription">
+         <widget class="QTextEdit" name="dictionaryDescription">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
