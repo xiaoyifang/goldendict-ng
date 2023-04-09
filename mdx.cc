@@ -940,8 +940,6 @@ QString & MdxDictionary::filterResource( QString const & articleId, QString & ar
 
 void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QString & article )
 {
-  QString uniquePrefix = QString::fromLatin1( "g" ) + id + "_" + articleId + "_";
-
   QString articleNewText;
   int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
@@ -978,13 +976,25 @@ void MdxDictionary::replaceLinks( QString & id, const QString & articleId, QStri
       match = RX::Mdx::wordCrossLink.match( newLink );
       if( match.hasMatch() )
       {
-        QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdlookup://localhost/" + match.captured( 3 );
+        if ( !match.captured( 3 ).isEmpty() ) {
+          QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdlookup://localhost/" + match.captured( 3 );
 
-        if( match.lastCapturedIndex() >= 4 && !match.captured( 4 ).isEmpty() )
-          newTxt += QString( "?gdanchor=" ) + uniquePrefix + match.captured( 4 ).mid( 1 );
+          if ( match.lastCapturedIndex() >= 4 && !match.captured( 4 ).isEmpty() )
+            newTxt += QString( "?gdanchor=" ) + match.captured( 4 ).mid( 1 );
 
-        newTxt += match.captured( 2 );
-        newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
+          newTxt += match.captured( 2 );
+          newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
+        }
+        else {
+          //links like entry://#abc,just remove the prefix entry://
+          QString newTxt = match.captured( 1 ) + match.captured( 2 );
+
+          if ( match.lastCapturedIndex() >= 4 && !match.captured( 4 ).isEmpty() )
+            newTxt += match.captured( 4 );
+
+          newTxt += match.captured( 2 );
+          newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
+        }
       }
     }
     else if( linkType.compare( "link" ) == 0 )

@@ -11,6 +11,7 @@
                 return;
             }
 
+            //return if the link is like gdlookup:// or other valid url.
             if (link.indexOf(":") >= 0) {
                 emitClickedEvent(link);
                 return false;
@@ -29,7 +30,13 @@
                 else {
                     newLink = href + link;
                 }
-            } else {
+            }
+            //if hashtag # is not in the start position,it must greater than 0
+            else if (link.indexOf("#")>0) {
+                index = link.indexOf("#");
+                newLink = "gdlookup://localhost/"+link.substring(0,index)+"?gdanchor="+link.substring(index+1);
+            }
+            else {
                 index = href.indexOf("?");
 
                 if (link.indexOf("?gdanchor") > -1) {
