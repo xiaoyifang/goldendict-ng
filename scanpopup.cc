@@ -713,7 +713,7 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
-  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == 0 ){
+  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ){
     return groups[current].dictionaries;
   }
 
@@ -752,18 +752,15 @@ void ScanPopup::typingEvent( QString const & t )
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 {
-  if ( watched == ui.translateBox->translateLine() )
+  if ( watched == ui.translateBox->translateLine() && event->type() == QEvent::FocusIn )
   {
-    if ( event->type() == QEvent::FocusIn )
-    {
-      QFocusEvent * focusEvent = static_cast< QFocusEvent * >( event );
+    const QFocusEvent * focusEvent = static_cast< QFocusEvent * >( event );
 
-      // select all on mouse click
-      if ( focusEvent->reason() == Qt::MouseFocusReason ) {
-        QTimer::singleShot( 0, this, &ScanPopup::focusTranslateLine );
-      }
-      return false;
+    // select all on mouse click
+    if ( focusEvent->reason() == Qt::MouseFocusReason ) {
+      QTimer::singleShot( 0, this, &ScanPopup::focusTranslateLine );
     }
+    return false;
   }
 
   if ( mouseIntercepted )
@@ -772,7 +769,6 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
     if ( event->type() == QEvent::MouseMove )
     {
-//    GD_DPRINTF( "Object: %s\n", watched->objectName().toUtf8().data() );
       QMouseEvent * mouseEvent = ( QMouseEvent * ) event;
       reactOnMouseMove( mouseEvent->globalPos() );
     }
