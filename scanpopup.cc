@@ -20,7 +20,6 @@
 #define MouseOver MacMouseOver
 #endif
 #include "base_type.h"
-using std::wstring;
 
 /// We use different window flags under Windows and X11 due to slight differences
 /// in their behavior on those platforms.

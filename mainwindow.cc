@@ -76,7 +76,6 @@
 #define MIN_THREAD_COUNT 4
 
 using std::set;
-using std::wstring;
 using std::map;
 using std::pair;
 
