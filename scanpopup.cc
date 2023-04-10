@@ -763,17 +763,6 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
       }
       return false;
     }
-
-    if ( event->type() == QEvent::Resize )
-    {
-      // The UI looks ugly when group combobox is higher than translate line.
-      // Make the height of the combobox the same as the line edit's height.
-      // The fonts of these UI items should be kept in sync by applyWordsZoomLevel()
-      // so that text in the combobox is not clipped.
-      const QResizeEvent * const resizeEvent = static_cast< const QResizeEvent * >( event );
-      ui.groupList->setFixedHeight( resizeEvent->size().height() );
-      return false;
-    }
   }
 
   if ( mouseIntercepted )
