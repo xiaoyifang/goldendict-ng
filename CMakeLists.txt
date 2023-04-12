@@ -410,8 +410,6 @@ set(PROJECT_SOURCES
         translatebox.hh
         transliteration.cc
         transliteration.hh
-        treeview.cc
-        treeview.hh
         ufile.cc
         ufile.hh
         utf8.cc
