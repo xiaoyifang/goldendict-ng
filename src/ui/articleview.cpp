@@ -554,7 +554,6 @@ void ArticleView::inspectElement() { emit inspectSignal( webview->page() ); }
 
 void ArticleView::loadFinished( bool result )
 {
-  webview->setFocus();
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = webview->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
