@@ -38,7 +38,7 @@ private:
   void describeDictionary( DictListWidget *, QModelIndex const & );
 
 signals:
-  void showDictionaryHeadwords( QString const & dictId );
+  void showDictionaryHeadwords( Dictionary::Class * dict );
 };
 
 #endif

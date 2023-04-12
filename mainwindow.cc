@@ -544,10 +544,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
-  connect( &dictionaryBar,
-    SIGNAL( showDictionaryHeadwords( QString const & ) ),
-    this,
-    SLOT( showDictionaryHeadwords( QString const & ) ) );
+  connect( &dictionaryBar,&DictionaryBar::showDictionaryHeadwords,this,&MainWindow::showDictionaryHeadwords);
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
 
@@ -2083,10 +2080,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
   connect( &dicts, &EditDictionaries::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
-  connect( &dicts,
-    SIGNAL( showDictionaryHeadwords( QString const & ) ),
-    this,
-    SLOT( showDictionaryHeadwords( QString const & ) ) );
+  connect( &dicts, &EditDictionaries::showDictionaryHeadwords,this, &MainWindow::showDictionaryHeadwords);
 
   if ( editDictionaryGroup != Instances::Group::NoGroupId )
     dicts.editGroup( editDictionaryGroup );
@@ -4199,7 +4193,7 @@ void MainWindow::showDictionaryInfo( const QString & id )
       }
       else if( result == DictInfo::SHOW_HEADWORDS )
       {
-        showDictionaryHeadwords( owner, dictionaries[x].get() );
+        showDictionaryHeadwords( dictionaries[x].get() );
       }
 
       break;
@@ -4207,48 +4201,36 @@ void MainWindow::showDictionaryInfo( const QString & id )
   }
 }
 
-void MainWindow::showDictionaryHeadwords( const QString & id )
+void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
 {
-  QWidget * owner = 0;
 
-  if( sender()->objectName().compare( "EditDictionaries" ) == 0 )
-    owner = qobject_cast< QWidget * >( sender() );
+  QWidget * owner = qobject_cast< QWidget * >( sender() );
 
-  if( owner == 0 )
-    owner = this;
+  // DictHeadwords internally check parent== mainwindow to know why it is requested.
+  // If the DictHeadwords is requested by Edit->Dictionaries->ShowHeadWords, (owner = "EditDictionaries")
+  // it will be a modal dialog. When click a word, that word will NOT be queried.
+  // In all other cases, just set owner = mainwindow(this),
 
-  for( unsigned x = 0; x < dictionaries.size(); x++ )
-  {
-    if( dictionaries[ x ]->getId() == id.toUtf8().data() )
-    {
-      showDictionaryHeadwords( owner, dictionaries[ x ].get() );
-      break;
-    }
-  }
-}
-
-void MainWindow::showDictionaryHeadwords( QWidget * owner, Dictionary::Class * dict )
-{
-  if( owner && owner != this )
-  {
+  if ( owner->objectName() == "EditDictionaries" ) {
     DictHeadwords headwords( owner, cfg, dict );
     headwords.exec();
-    return;
   }
-
-  if( headwordsDlg == 0 )
-  {
-    headwordsDlg = new DictHeadwords( this, cfg, dict );
-    addGlobalActionsToDialog( headwordsDlg );
-    addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
-    connect( headwordsDlg, &DictHeadwords::headwordSelected, this, &MainWindow::headwordReceived );
-    connect( headwordsDlg, &DictHeadwords::closeDialog, this, &MainWindow::closeHeadwordsDialog, Qt::QueuedConnection );
+  else {
+    if ( headwordsDlg == nullptr ) {
+      headwordsDlg = new DictHeadwords( this, cfg, dict );
+      addGlobalActionsToDialog( headwordsDlg );
+      addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
+      connect( headwordsDlg, &DictHeadwords::headwordSelected, this, &MainWindow::headwordReceived );
+      connect( headwordsDlg, &DictHeadwords::closeDialog,
+               this, &MainWindow::closeHeadwordsDialog, Qt::QueuedConnection );
+    }
+    else{
+      headwordsDlg->setup( dict );
+    }
+    headwordsDlg->show();
   }
-  else
-    headwordsDlg->setup( dict );
-
-  headwordsDlg->show();
 }
+
 
 void MainWindow::closeHeadwordsDialog()
 {
@@ -4376,7 +4358,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
       {
         if ( scanPopup )
           scanPopup->blockSignals( true );
-        showDictionaryHeadwords( this, pDict );
+        showDictionaryHeadwords( pDict );
         if ( scanPopup )
           scanPopup->blockSignals( false );
       }

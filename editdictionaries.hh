@@ -62,7 +62,7 @@ signals:
 
   void showDictionaryInfo( QString const & dictId );
 
-  void showDictionaryHeadwords( QString const & dictId );
+  void showDictionaryHeadwords( Dictionary::Class * dict );
 
 private:
 

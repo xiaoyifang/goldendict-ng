@@ -40,7 +40,7 @@ signals:
   void showDictionaryInfo( QString const & id );
 
   /// Signal for show dictionary headwords command from context menu
-  void showDictionaryHeadwords( QString const & id );
+  void showDictionaryHeadwords( Dictionary::Class * dict );
 
   /// Signal for open dictionary folder from context menu
   void openDictionaryFolder( QString const & id );
