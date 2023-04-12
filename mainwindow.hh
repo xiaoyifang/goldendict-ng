@@ -320,7 +320,6 @@ private slots:
   void closeRestTabs();
   void switchToNextTab();
   void switchToPrevTab();
-  void ctrlReleased();
 
   // Handling of active tab list
   void createTabList();

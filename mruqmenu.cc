@@ -2,20 +2,19 @@
 #include <QKeyEvent>
 
 MRUQMenu::MRUQMenu(const QString title, QWidget *parent):
-        QMenu(title,parent)
-{
-    installEventFilter(this);
-}
+  QMenu(title,parent)
+{}
 
-bool MRUQMenu::eventFilter(QObject *obj, QEvent *event)
-{
-    (void) obj;
-    if (event->type() == QEvent::KeyRelease){
-        QKeyEvent *keyevent = static_cast<QKeyEvent*>(event);
-        if (keyevent->key() == Qt::Key_Control){
-	    emit ctrlReleased();
-            return true;
-        }
+void MRUQMenu::keyReleaseEvent (QKeyEvent * kev){
+  if (kev->key() == Qt::Key_Control && actions().size() > 1){
+    QAction *act = activeAction();
+    if( act == nullptr ){
+      act = actions().at( 1 );
     }
-    return false;
-}
+    emit requestTabChange( act->data().toInt() );
+    hide();
+  }
+  else {
+    kev->ignore();
+  }
+};

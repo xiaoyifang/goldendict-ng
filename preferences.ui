@@ -359,6 +359,9 @@ be the last ones.</string>
           </item>
           <item row="1" column="1">
            <widget class="QCheckBox" name="mruTabOrder">
+            <property name="toolTip">
+             <string>MRU order: Most recently used order.</string>
+            </property>
             <property name="text">
              <string>Ctrl-Tab navigates tabs in MRU order</string>
             </property>

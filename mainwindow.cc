@@ -411,7 +411,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Tab management
   tabListMenu = new MRUQMenu(tr("Opened tabs"), ui.tabWidget);
 
-  connect( tabListMenu, &MRUQMenu::ctrlReleased, this, &MainWindow::ctrlReleased );
+  connect( tabListMenu, &MRUQMenu::requestTabChange, ui.tabWidget, &MainTabWidget::setCurrentIndex );
 
   connect( &addTabAction, &QAction::triggered, this, &MainWindow::addNewTab );
 
@@ -1813,19 +1813,6 @@ void MainWindow::switchToPrevTab()
     ui.tabWidget->setCurrentIndex( ui.tabWidget->count() - 1 );
   else
     ui.tabWidget->setCurrentIndex( ui.tabWidget->currentIndex() - 1 );
-}
-
-//emitted by tabListMenu when user releases Ctrl
-void MainWindow::ctrlReleased()
-{
-    if (tabListMenu->actions().size() > 1)
-    {
-        QAction *act = tabListMenu->activeAction();
-        if( act == 0 )
-          act = tabListMenu->actions().at( 1 );
-        ui.tabWidget->setCurrentIndex( act->data().toInt() );
-    }
-    tabListMenu->hide();
 }
 
 void MainWindow::backClicked()
