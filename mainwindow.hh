@@ -252,8 +252,6 @@ private:
 
   void fillWordListFromHistory();
 
-  void showDictionaryHeadwords( QWidget * owner, Dictionary::Class * dict );
-
   QString unescapeTabHeader( QString const & header );
 
   void respondToTranslationRequest( Config::InputPhrase const & phrase,
@@ -294,7 +292,7 @@ private slots:
 
   void showDictionaryInfo( QString const & id );
 
-  void showDictionaryHeadwords( QString const & id );
+  void showDictionaryHeadwords( Dictionary::Class * dict );
 
   void openDictionaryFolder( QString const & id );
 

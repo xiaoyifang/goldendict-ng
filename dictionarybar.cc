@@ -177,10 +177,15 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     return;
   }
 
-  if( result && result == headwordsAction )
-  {
-    QString id = dictAction->data().toString();
-    emit showDictionaryHeadwords( id );
+  if ( result && result == headwordsAction ) {
+    std::string id = dictAction->data().toString().toStdString();
+    // TODO: use `Dictionary::class*` instead of `QString id` at action->setData to remove all similar `for` loops
+    for ( const auto & dict : allDictionaries ) {
+      if ( id == dict->getId() ) {
+        emit showDictionaryHeadwords( dict.get() );
+        break;
+      }
+    }
     return;
   }
 

@@ -279,7 +279,7 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
 
   if( result && result == showHeadwordsAction )
   {
-    emit showDictionaryHeadwords( QString::fromUtf8( dict->getId().c_str() ) );
+    emit showDictionaryHeadwords( dict.get() );
   }
 }
 
