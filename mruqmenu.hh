@@ -4,20 +4,20 @@
 #include <QMenu>
 #include <QEvent>
 
-//The only difference between this class and QMenu is that this class emits
-//a signal when Ctrl button is released
+// Detail: http://goldendict.org/forum/viewtopic.php?f=4&t=1176
+// When ctrl during ctrl+tab released, a request to change current tab will be emitted.
 class MRUQMenu: public QMenu
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    MRUQMenu(const QString title, QWidget *parent = 0);
+  explicit MRUQMenu(const QString title, QWidget *parent = 0);
 
 private:
-    bool eventFilter (QObject*, QEvent*);
+  void keyReleaseEvent (QKeyEvent * kev) override;
 
-    signals:
-    void ctrlReleased();
+signals:
+  void requestTabChange(int index);
 };
 
 
