@@ -252,7 +252,7 @@
       <number>1</number>
      </property>
      <item>
-      <widget class="TreeView" name="favoritesTree"/>
+      <widget class="QTreeView" name="favoritesTree"/>
      </item>
     </layout>
    </widget>
@@ -623,11 +623,6 @@
    <extends>QWidget</extends>
    <header>favoritespanewidget.hh</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TreeView</class>
-   <extends>QTreeView</extends>
-   <header>treeview.hh</header>
   </customwidget>
  </customwidgets>
  <tabstops>

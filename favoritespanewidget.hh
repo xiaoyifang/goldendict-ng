@@ -13,10 +13,11 @@
 #include <QDomNode>
 #include <QList>
 #include <QMimeData>
+#include <QItemSelection>
+#include <QTreeView>
 
 #include <config.hh>
 #include "delegate.hh"
-#include "treeview.hh"
 
 class FavoritesModel;
 
@@ -78,7 +79,7 @@ private:
   virtual bool eventFilter( QObject *, QEvent * );
 
   Config::Class * m_cfg ;
-  TreeView * m_favoritesTree;
+  QTreeView * m_favoritesTree;
   QMenu * m_favoritesMenu;
   QAction * m_deleteSelectedAction;
   QAction * m_separator;

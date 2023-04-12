@@ -404,7 +404,6 @@ HEADERS += folding.hh \
     gls.hh \
     splitfile.hh \
     favoritespanewidget.hh \
-    treeview.hh \
     src/dict/lingualibre.h \
     src/ui/articleview.h \
     src/ui/ftssearchpanel.h \
@@ -540,7 +539,6 @@ SOURCES += folding.cc \
     gls.cc \
     splitfile.cc \
     favoritespanewidget.cc \
-    treeview.cc \
     src/dict/lingualibre.cpp \
     src/ui/articleview.cpp \
     src/ui/ftssearchpanel.cpp \
