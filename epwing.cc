@@ -272,9 +272,8 @@ void EpwingDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName = FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() )
-                     + QDir::separator()
-                     + eBook.getCurrentSubBookDirectory() + ".";
+  QString fileName = QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator()
+    + eBook.getCurrentSubBookDirectory() + ".";
 
   if( !fileName.isEmpty() )
     loadIconFromFile( fileName );
@@ -486,7 +485,7 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIterati
   catch( std::exception &ex )
   {
     gdWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
 
@@ -923,8 +922,7 @@ void EpwingResourceRequest::run()
       return;
     }
 
-    QString fullName = cacheDir + QDir::separator()
-                       + FsEncoding::decode( resourceName.c_str() );
+    QString fullName = cacheDir + QDir::separator() + QString::fromStdString( resourceName );
 
     QFile f( fullName );
     if( f.open( QFile::ReadOnly ) )
@@ -1278,18 +1276,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           dict.setSubBook( sb );
 
-          dir = FsEncoding::decode( mainDirectory.c_str() )
-                + FsEncoding::separator()
-                + dict.getCurrentSubBookDirectory();
+          dir = QString::fromStdString( mainDirectory ) + FsEncoding::separator() + dict.getCurrentSubBookDirectory();
 
           Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
 
-          QString fontSubName = FsEncoding::decode( mainDirectory.c_str() )
-                                + QDir::separator()
-                                + "afonts_" + QString::number( sb );
+          QString fontSubName =
+            QString::fromStdString( mainDirectory ) + QDir::separator() + "afonts_" + QString::number( sb );
           QFileInfo info( fontSubName );
           if( info.exists() && info.isFile() )
-            dictFiles.push_back( FsEncoding::encode( fontSubName ) );
+          dictFiles.push_back( fontSubName.toStdString() );
 
           // Check if we need to rebuid the index
 

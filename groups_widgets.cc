@@ -247,7 +247,7 @@ QVariant DictListModel::data( QModelIndex const & index, int role ) const
       if ( dirs.size() )
       {
         tt += "<hr>";
-        tt += FsEncoding::decode( dirs.at( 0 ).c_str() );
+        tt += dirs.at( 0 ).c_str();
       }
 
       tt.replace( " ", "&nbsp;" );
@@ -727,7 +727,7 @@ void DictGroupsWidget::addAutoGroups()
     {
       // Handle special case - morphology dictionaries
 
-      QString fileName = QFileInfo( FsEncoding::decode( dict->getDictionaryFilenames()[ 0 ].c_str() ) ).fileName();
+      QString fileName = QFileInfo( dict->getDictionaryFilenames()[ 0 ].c_str() ).fileName();
       if( fileName.endsWith( ".aff", Qt::CaseInsensitive ) )
       {
         QString code = fileName.left( 2 ).toLower();

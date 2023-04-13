@@ -43,8 +43,7 @@ bool tryPossibleName( std::string const & name, std::string & copyTo )
 
 bool tryPossibleZipName( std::string const & name, std::string & copyTo )
 {
-  if ( ZipFile::SplitZipFile( FsEncoding::decode( name.c_str() ) ).exists() )
-  {
+  if ( ZipFile::SplitZipFile( name.c_str() ).exists() ) {
     copyTo = name;
     return true;
   }
@@ -112,7 +111,7 @@ void Class::open( char const * filename, char const * mode )
     ++pch;
   }
 
-  f.setFileName( FsEncoding::decode( filename ) );
+  f.setFileName( filename );
 
   if ( !f.open( openMode ) )
     throw exCantOpen( std::string( filename ) + ": " + f.errorString().toUtf8().data() );

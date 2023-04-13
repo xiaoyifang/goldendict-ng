@@ -296,8 +296,7 @@ XdxfDictionary::XdxfDictionary( string const & id,
                                         idxHeader.zipIndexRootOffset ),
                              idx, idxMutex );
 
-      QString zipName = QDir::fromNativeSeparators(
-          FsEncoding::decode( getDictionaryFilenames().back().c_str() ) );
+      QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
       if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
         resourceZip.openZipFile( zipName );
@@ -332,8 +331,7 @@ void XdxfDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   QFileInfo baseInfo( fileName );
 
@@ -386,10 +384,7 @@ QString const& XdxfDictionary::getDescription()
     return dictionaryDescription;
 }
 
-QString XdxfDictionary::getMainFilename()
-{
-  return FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() );
-}
+QString XdxfDictionary::getMainFilename() { return getDictionaryFilenames()[ 0 ].c_str(); }
 
 void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
@@ -417,7 +412,7 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   catch( std::exception &ex )
   {
     gdWarning( "Xdxf: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -1058,10 +1053,7 @@ void XdxfResourceRequest::run()
     return;
   }
 
-  string n =
-    FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) +
-    FsEncoding::separator() +
-    FsEncoding::encode( resourceName );
+  string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1075,9 +1067,7 @@ void XdxfResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getDictionaryFilenames()[ 0 ] + ".files" +
-          FsEncoding::separator() +
-          FsEncoding::encode( resourceName );
+      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + resourceName;
 
       try
       {
@@ -1446,9 +1436,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
                 IndexedWords zipFileNames;
                 IndexedZip zipFile;
-                if( zipFile.openZipFile( QDir::fromNativeSeparators(
-                                         FsEncoding::decode( zipFileName.c_str() ) ) ) )
-                    zipFile.indexFile( zipFileNames );
+                if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+                  zipFile.indexFile( zipFileNames );
 
                 if( !zipFileNames.empty() )
                 {

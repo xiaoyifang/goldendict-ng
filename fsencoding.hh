@@ -13,22 +13,6 @@
 namespace FsEncoding {
 
 using std::string;
-using gd::wstring;
-
-/// Encodes the given wide string to the utf8 encoding.
-string encode( wstring const & );
-
-/// Encodes the given string in utf8 to the system 8bit encoding.
-string encode( string const & );
-
-/// Encodes the QString to the utf8/local 8-bit encoding.
-string encode( QString const & );
-
-/// Decodes the given utf8-encoded string to a wide string.
-wstring decode( string const & str );
-
-/// Decodes the given utf8/local 8-bit string to a QString.
-QString decode( const char *str );
 
 /// Returns the filesystem separator (/ on Unix and clones, \ on Windows).
 char separator();

@@ -493,8 +493,7 @@ GlsDictionary::GlsDictionary( string const & id,
                                       idxHeader.zipIndexRootOffset ),
                            idx, idxMutex );
 
-    QString zipName = QDir::fromNativeSeparators(
-        FsEncoding::decode( getDictionaryFilenames().back().c_str() ) );
+    QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
     if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
       resourceZip.openZipFile( zipName );
@@ -522,8 +521,7 @@ void GlsDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   if ( fileName.endsWith( ".gls.dz", Qt::CaseInsensitive ) )
@@ -574,10 +572,7 @@ QString const& GlsDictionary::getDescription()
   return dictionaryDescription;
 }
 
-QString GlsDictionary::getMainFilename()
-{
-  return FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() );
-}
+QString GlsDictionary::getMainFilename() { return getDictionaryFilenames()[ 0 ].c_str(); }
 
 void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
@@ -605,7 +600,7 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   catch( std::exception &ex )
   {
     gdWarning( "Gls: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -1240,10 +1235,7 @@ void GlsResourceRequest::run()
 
   try
   {
-    string n =
-      FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) +
-      FsEncoding::separator() +
-      FsEncoding::encode( resourceName );
+    string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1255,9 +1247,7 @@ void GlsResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getDictionaryFilenames()[ 0 ] + ".files" +
-          FsEncoding::separator() +
-          FsEncoding::encode( resourceName );
+      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + resourceName;
 
       try
       {
@@ -1532,9 +1522,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
             IndexedWords zipFileNames;
             IndexedZip zipFile;
-            if( zipFile.openZipFile( QDir::fromNativeSeparators(
-                                     FsEncoding::decode( zipFileName.c_str() ) ) ) )
-                zipFile.indexFile( zipFileNames );
+            if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+              zipFile.indexFile( zipFileNames );
 
             if( !zipFileNames.empty() )
             {

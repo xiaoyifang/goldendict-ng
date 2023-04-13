@@ -21,7 +21,6 @@
 #include "programs.hh"
 #include "voiceengines.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
 #include "xdxf.hh"
 #include "sdict.hh"
 #include "aard.hh"
@@ -84,7 +83,7 @@ void LoadDictionaries::run()
     // Make soundDirs
     {
       vector< sptr< Dictionary::Class > > soundDirDictionaries =
-        SoundDir::makeDictionaries( soundDirs, FsEncoding::encode( Config::getIndexDir() ), *this );
+        SoundDir::makeDictionaries( soundDirs, Config::getIndexDir().toStdString(), *this );
 
       dictionaries.insert( dictionaries.end(), soundDirDictionaries.begin(),
                            soundDirDictionaries.end() );
@@ -133,27 +132,28 @@ void LoadDictionaries::handlePath( Config::Path const & path )
     }
 
     if ( !i->isDir() )
-      allFiles.push_back( FsEncoding::encode( QDir::toNativeSeparators( fullName ) ) );
+      allFiles.push_back( QDir::toNativeSeparators( fullName ).toStdString() );
   }
 
-  addDicts(Bgl::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Stardict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
-  addDicts(Lsa::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Dsl::makeDictionaries( allFiles,FsEncoding::encode( Config::getIndexDir() ),*this,maxPictureWidth,maxHeadwordSize ) );
-  addDicts(DictdFiles::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Xdxf::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Sdict::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Aard::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
-  addDicts(ZipSounds::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Mdx::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
-  addDicts(Gls::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Stardict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
+  addDicts( Lsa::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts(
+    Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxPictureWidth, maxHeadwordSize ) );
+  addDicts( DictdFiles::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Xdxf::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Sdict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Aard::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
+  addDicts( ZipSounds::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Mdx::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Gls::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 
 #ifdef MAKE_ZIM_SUPPORT
-  addDicts(Zim::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
-  addDicts(Slob::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this, maxHeadwordToExpand ) );
+  addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
+  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
 #ifndef NO_EPWING_SUPPORT
-  addDicts( Epwing::makeDictionaries( allFiles, FsEncoding::encode( Config::getIndexDir() ), *this ) );
+  addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
 }
 
@@ -266,18 +266,17 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   QStringList allIdxFiles = indexDir.entryList( QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
 
-  for( QStringList::const_iterator i = allIdxFiles.constBegin(); i != allIdxFiles.constEnd(); ++i )
+  for( const auto & file : allIdxFiles)
   {
-    if( i->size() >= 32 && ids.find( FsEncoding::encode( i->left( 32 ) ) ) == ids.end() )
-    {
-      if( QFile::exists( *i ) )
+    if ( file.size() >= 32 && ids.find( file.left( 32 ).toStdString() ) == ids.end() ) {
+      if( QFile::exists( file ) )
       {
-        indexDir.remove( *i );
+        indexDir.remove( file );
       }
       else
       {
         // must be folder .
-        auto dirPath = Utils::Path::combine( Config::getIndexDir(), *i );
+        auto dirPath = Utils::Path::combine( Config::getIndexDir(), file );
         QDir t( dirPath );
         t.removeRecursively();
       }
