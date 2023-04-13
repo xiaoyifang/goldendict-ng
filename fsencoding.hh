@@ -5,7 +5,11 @@
 #define __FSENCODING_HH_INCLUDED__
 
 #include "wstring.hh"
+#include "wstring_qt.hh"
 #include <QString>
+#include <QFile>
+#include <QDir>
+
 
 /// Utilities to convert a wide string or an utf8 string to the local 8bit
 /// encoding of the file system, and to do other manipulations on the file
@@ -16,20 +20,34 @@ using std::string;
 using gd::wstring;
 
 /// Encodes the given wide string to the utf8 encoding.
-string encode( wstring const & );
+inline string encode( wstring const & str )
+{
+  return QFile::encodeName( gd::toQString( str ) ).toStdString();
+};
 
 /// Encodes the given string in utf8 to the system 8bit encoding.
-string encode( string const & );
+inline string encode( string const & str )
+{
+  return QFile::encodeName( QString::fromUtf8( str.c_str() ) ).toStdString();
+}
 
 /// Encodes the QString to the utf8/local 8-bit encoding.
-string encode( QString const & );
+inline string encode( QString const & str )
+{
+  return QFile::encodeName( str ).toStdString();
+};
 
 /// Decodes the given utf8-encoded string to a wide string.
-wstring decode( string const & str );
+inline wstring decode( string const & str )
+{
+  return QFile::decodeName( str.c_str() ).toStdU32String();
+};
 
 /// Decodes the given utf8/local 8-bit string to a QString.
-QString decode( const char *str );
-
+inline QString decode( const char * str )
+{
+  return QFile::decodeName( str );
+}
 /// Returns the filesystem separator (/ on Unix and clones, \ on Windows).
 char separator();
 
