@@ -121,7 +121,8 @@ if(LINUX)
 endif()
 
 if(MSVC)
-    add_compile_definitions(NO_EPWING_SUPPORT)
+    add_compile_definitions(NO_EPWING_SUPPORT
+                            __WIN32)
 endif()
 
 #### Sources Files
