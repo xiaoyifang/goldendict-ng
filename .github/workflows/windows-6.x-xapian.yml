@@ -148,7 +148,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/${{ env.targetName }}
-          asset_name: ${{ matrix.os }}.${{ matrix.qt_arch }}.${{ matrix.qt_ver }}-xapian-${{ env.targetName }}
+          asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-xapian-${{ env.targetName }}
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
