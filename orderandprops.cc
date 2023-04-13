@@ -219,7 +219,7 @@ void OrderAndProps::describeDictionary( DictListWidget * lst, QModelIndex const 
 
     for( unsigned x = 0; x < filenames.size(); x++ )
     {
-      filenamesText += FsEncoding::decode( filenames[ x ].c_str() );
+      filenamesText += filenames[ x ].c_str();
       filenamesText += '\n';
     }
 

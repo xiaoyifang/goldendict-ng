@@ -4279,7 +4279,7 @@ void MainWindow::openDictionaryFolder( const QString & id )
     {
       if( dictionaries[ x ]->getDictionaryFilenames().size() > 0 )
       {
-        QString fileName = FsEncoding::decode( dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+        QString fileName = dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str();
 
         QString folder = QFileInfo( fileName ).absoluteDir().absolutePath();
         if( !folder.isEmpty() )

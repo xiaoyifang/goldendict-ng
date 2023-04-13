@@ -151,8 +151,7 @@ void HunspellDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   fileName.chop( 3 );
@@ -743,7 +742,7 @@ string encodeToHunspell( Hunspell & hunspell, wstring const & str )
   size_t outLeft = result.size();
 
   QString convStr= conv.convert( in, inLeft);
-  return FsEncoding::encode(convStr);
+  return convStr.toStdString();
 }
 
 wstring decodeFromHunspell( Hunspell & hunspell, char const * str )
@@ -781,10 +780,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
 
         vector< string > dictFiles;
 
-        dictFiles.push_back(
-          FsEncoding::encode( QDir::toNativeSeparators( dataFiles[ d ].affFileName ) ) );
-        dictFiles.push_back(
-          FsEncoding::encode( QDir::toNativeSeparators( dataFiles[ d ].dicFileName ) ) );
+        dictFiles.push_back( QDir::toNativeSeparators( dataFiles[ d ].affFileName ).toStdString() );
+        dictFiles.push_back( QDir::toNativeSeparators( dataFiles[ d ].dicFileName ).toStdString() );
 
         result.push_back(
             std::make_shared<HunspellDictionary>( Dictionary::makeDictionaryId( dictFiles ),

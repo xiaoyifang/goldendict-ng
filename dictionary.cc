@@ -514,10 +514,10 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
     {
       string const & full( dictionaryFiles[ x ] );
 
-      QFileInfo fileInfo( FsEncoding::decode( full.c_str() ) );
+      QFileInfo fileInfo( QString::fromStdString( full ) );
 
       if ( fileInfo.isAbsolute() )
-        sortedList.push_back( FsEncoding::encode( dictionariesDir.relativeFilePath( fileInfo.filePath() ) ) );
+        sortedList.push_back( dictionariesDir.relativeFilePath( fileInfo.filePath() ).toStdString() );
       else
       {
         // Well, it's relative. We don't technically support those, but
@@ -552,7 +552,7 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
   for( std::vector< string >::const_iterator i = dictionaryFiles.begin();
        i != dictionaryFiles.end(); ++i )
   {
-    QString name = FsEncoding::decode( i->c_str() );
+    QString name = QString::fromUtf8( i->c_str() );
     QFileInfo fileInfo( name );
     unsigned long ts;
 
@@ -577,12 +577,12 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
       lastModified = ts;
   }
 #ifndef USE_XAPIAN
-  QDir d(FsEncoding::decode( indexFile.c_str() ));
+  QDir d( indexFile.c_str() );
   if(d.exists()){
     d.removeRecursively();
   }
 #endif
-  QFileInfo fileInfo( FsEncoding::decode( indexFile.c_str() ) );
+  QFileInfo fileInfo( indexFile.c_str() );
 
   if ( !fileInfo.exists() )
     return true;

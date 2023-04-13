@@ -153,8 +153,7 @@ ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
                         idxHeader.indexRootOffset ),
                         idx, idxMutex );
 
-  QString zipName = QDir::fromNativeSeparators(
-                    FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   zipsFile.openZipFile( zipName );
   zipsFile.openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
@@ -388,8 +387,7 @@ void ZipSoundsDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   fileName.chop( 4 );
@@ -447,8 +445,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         quint32 namesCount;
 
         IndexedZip zipFile;
-        if( zipFile.openZipFile( QDir::fromNativeSeparators(
-                                 FsEncoding::decode( i->c_str() ) ) ) )
+        if ( zipFile.openZipFile( QDir::fromNativeSeparators( i->c_str() ) ) )
           zipFile.indexFile( zipFileNames, &namesCount );
 
         if( !zipFileNames.empty() )
@@ -499,8 +496,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         else
         {
           idx.close();
-          QFile::remove( QDir::fromNativeSeparators(
-                         FsEncoding::decode( indexFile.c_str() ) ) );
+          QFile::remove( QDir::fromNativeSeparators( indexFile.c_str() ) );
           throw exInvalidData();
         }
       }

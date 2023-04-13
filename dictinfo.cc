@@ -40,7 +40,7 @@ void DictInfo::showInfo( sptr<Dictionary::Class> dict )
 
   for( unsigned x = 0; x < filenames.size(); x++ )
   {
-    filenamesText += FsEncoding::decode( filenames[ x ].c_str() );
+    filenamesText += QString::fromStdString( filenames[ x ] );
     filenamesText += '\n';
   }
 

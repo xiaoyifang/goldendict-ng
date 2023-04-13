@@ -211,7 +211,7 @@ string nameFromFileName( string const & indexFileName )
   if ( !dot )
     dot = indexFileName.c_str() + indexFileName.size();
 
-  return Utf8::encode( FsEncoding::decode( string( sep + 1, dot - sep - 1 ) ) );
+  return  string( sep + 1, dot - sep - 1 );
 }
 
 void DictdDictionary::loadIcon() noexcept
@@ -219,8 +219,7 @@ void DictdDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
   // Remove the extension
   fileName.chop( 5 );
@@ -486,7 +485,7 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteratio
   catch( std::exception &ex )
   {
     gdWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
 

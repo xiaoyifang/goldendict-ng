@@ -499,7 +499,7 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   catch( std::exception &ex )
   {
     gdWarning( "MDict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -871,8 +871,7 @@ void MdxDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   fileName.chop( 3 );
@@ -1173,7 +1172,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
     gdWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
     return QString();
   }
-  gd::wstring resourceName = FsEncoding::decode( filename.toStdString() );
+  gd::wstring resourceName = filename.toStdU32String();
   vector< char > data;
 
   // In order to prevent recursive internal redirection...

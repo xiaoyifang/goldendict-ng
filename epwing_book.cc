@@ -449,7 +449,7 @@ void EpwingBook::collectFilenames( QString const & directory, vector< string > &
     if( i->isDir() )
       collectFilenames( fullName, files );
     else
-      files.push_back( FsEncoding::encode( fullName ) );
+      files.push_back( fullName.toStdString() );
   }
 }
 
@@ -499,7 +499,7 @@ int EpwingBook::setBook( string const & directory )
       || ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && !codec_GB ) )
     throw exEpwing( "No required codec to decode dictionary" );
 
-  rootDir = FsEncoding::decode( directory.c_str() );
+  rootDir = QString::fromStdString( directory );
 
   return subBookCount;
 }

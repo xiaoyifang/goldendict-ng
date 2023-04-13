@@ -270,8 +270,7 @@ StardictDictionary::StardictDictionary( string const & id,
                                       idxHeader.zipIndexRootOffset ),
                            idx, idxMutex );
 
-    QString zipName = QDir::fromNativeSeparators(
-        FsEncoding::decode( getDictionaryFilenames().back().c_str() ) );
+    QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
     if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
       resourceZip.openZipFile( zipName );
@@ -299,8 +298,7 @@ void StardictDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   fileName.chop( 3 );
@@ -1140,10 +1138,7 @@ QString const& StardictDictionary::getDescription()
     return dictionaryDescription;
 }
 
-QString StardictDictionary::getMainFilename()
-{
-  return FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() );
-}
+QString StardictDictionary::getMainFilename() { return getDictionaryFilenames()[ 0 ].c_str(); }
 
 void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
@@ -1171,7 +1166,7 @@ void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstItera
   catch( std::exception &ex )
   {
     gdWarning( "Stardict: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -1698,12 +1693,8 @@ void StardictResourceRequest::run()
     if( resourceName.at( resourceName.length() - 1 ) == '\x1F' )
       resourceName.erase( resourceName.length() - 1, 1 );
 
-    string n =
-      FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) +
-      FsEncoding::separator() +
-      "res" +
-      FsEncoding::separator() +
-      FsEncoding::encode( resourceName );
+    string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + "res"
+      + FsEncoding::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -2146,9 +2137,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           IndexedWords zipFileNames;
           IndexedZip zipFile;
-          if( zipFile.openZipFile( QDir::fromNativeSeparators(
-                                   FsEncoding::decode( zipFileName.c_str() ) ) ) )
-              zipFile.indexFile( zipFileNames );
+          if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+            zipFile.indexFile( zipFileNames );
 
           if( !zipFileNames.empty() )
           {

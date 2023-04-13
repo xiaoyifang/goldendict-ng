@@ -745,14 +745,12 @@ private:
     friend class ZimResourceRequest;
 };
 
-ZimDictionary::ZimDictionary( string const & id,
-                              string const & indexFile,
-                              vector< string > const & dictionaryFiles ):
-    BtreeDictionary( id, dictionaryFiles ),
-    idx( indexFile, "rb" ),
-    idxHeader( idx.read< IdxHeader >() ),
-    df( FsEncoding::decode( dictionaryFiles[ 0 ].c_str() ) ),
-    linksType( UNKNOWN )
+ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+  BtreeDictionary( id, dictionaryFiles ),
+  idx( indexFile, "rb" ),
+  idxHeader( idx.read< IdxHeader >() ),
+  df( dictionaryFiles[ 0 ].c_str() ),
+  linksType( UNKNOWN )
 {
     // Open data file
 
@@ -772,7 +770,7 @@ ZimDictionary::ZimDictionary( string const & id,
 
     if( idxHeader.namePtr == 0xFFFFFFFF )
     {
-      QString name = QDir::fromNativeSeparators( FsEncoding::decode( dictionaryFiles[ 0 ].c_str() ) );
+      QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
       int n = name.lastIndexOf( '/' );
       dictionaryName = name.mid( n + 1 ).toStdString();
     }
@@ -802,8 +800,7 @@ void ZimDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   fileName.chop( 3 );
@@ -1186,7 +1183,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   catch( std::exception &ex )
   {
     gdWarning( "Zim: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -1544,9 +1541,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // Skip files with the extensions different to .zim to speed up the
       // scanning
 
-      QString firstName = QDir::fromNativeSeparators( FsEncoding::decode( i->c_str() ) );
-      if( !firstName.endsWith( ".zim") && !firstName.endsWith( ".zimaa" ) )
-        continue;
+    QString firstName = QDir::fromNativeSeparators( i->c_str() );
+    if ( !firstName.endsWith( ".zim" ) && !firstName.endsWith( ".zimaa" ) )
+      continue;
 
       // Got the file -- check if we need to rebuid the index
       ZimFile df( firstName );

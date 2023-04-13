@@ -321,10 +321,10 @@ DslDictionary::DslDictionary( string const & id,
   }
 
   resourceDir1 = getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator();
-  QString s = FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() );
+  QString s    = QString::fromStdString( getDictionaryFilenames()[ 0 ] );
   if( s.endsWith( QString::fromLatin1( ".dz" ), Qt::CaseInsensitive ) )
     s.chop( 3 );
-  resourceDir2 = FsEncoding::encode( s ) + ".files" + FsEncoding::separator();
+  resourceDir2 = s.toStdString() + ".files" + FsEncoding::separator();
 
   // Everything else would be done in deferred init
 }
@@ -447,8 +447,7 @@ void DslDictionary::doDeferredInit()
                                           idxHeader.zipIndexRootOffset ),
                                idx, idxMutex );
 
-        QString zipName = QDir::fromNativeSeparators(
-            FsEncoding::decode( getDictionaryFilenames().back().c_str() ) );
+        QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
         if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
           resourceZip.openZipFile( zipName );
@@ -473,8 +472,7 @@ void DslDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName =
-    QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
   // Remove the extension
   if ( fileName.endsWith( ".dsl.dz", Qt::CaseInsensitive ) )
@@ -843,20 +841,16 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   else if( node.tagName ==  U"s"  || node.tagName ==  U"video"  )
   {
     string filename = Filetype::simplifyString( Utf8::encode( node.renderAsText() ), false );
-    string n = resourceDir1 + FsEncoding::encode( filename );
+    string n        = resourceDir1 + filename;
 
     if ( Filetype::isNameOfSound( filename ) )
     {
       // If we have the file here, do the exact reference to this dictionary.
       // Otherwise, make a global 'search' one.
 
-      bool search =
-          !File::exists( n ) && !File::exists( resourceDir2 + FsEncoding::encode( filename ) ) &&
-          !File::exists( FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) +
-                                              FsEncoding::separator() +
-                                              FsEncoding::encode( filename ) ) &&
-          ( !resourceZip.isOpen() ||
-            !resourceZip.hasFile( Utf8::decode( filename ) ) );
+      bool search = !File::exists( n ) && !File::exists( resourceDir2 + filename )
+        && !File::exists( FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + filename )
+        && ( !resourceZip.isOpen() || !resourceZip.hasFile( Utf8::decode( filename ) ) );
 
       QUrl url;
       url.setScheme( "gdau" );
@@ -890,16 +884,14 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       {
         try
         {
-          n = resourceDir2 + FsEncoding::encode( filename );
+          n = resourceDir2 + filename;
           File::loadFromFile( n, imgdata );
         }
         catch( File::exCantOpen & )
         {
           try
           {
-            n = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) +
-                FsEncoding::separator() +
-                FsEncoding::encode( filename );
+            n = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + filename;
             File::loadFromFile( n, imgdata );
           }
           catch( File::exCantOpen & )
@@ -1179,8 +1171,7 @@ QString const& DslDictionary::getDescription()
 
     dictionaryDescription = "NONE";
 
-    QString fileName =
-      QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) );
+    QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
     // Remove the extension
     if ( fileName.endsWith( ".dsl.dz", Qt::CaseInsensitive ) )
@@ -1239,10 +1230,7 @@ QString const& DslDictionary::getDescription()
     return dictionaryDescription;
 }
 
-QString DslDictionary::getMainFilename()
-{
-  return FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() );
-}
+QString DslDictionary::getMainFilename() { return getDictionaryFilenames()[ 0 ].c_str(); }
 
 void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
@@ -1271,7 +1259,7 @@ void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   catch( std::exception &ex )
   {
     gdWarning( "DSL: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-    QFile::remove( FsEncoding::decode( ftsIdxName.c_str() ) );
+    QFile::remove( ftsIdxName.c_str() );
   }
 }
 
@@ -1792,10 +1780,7 @@ void DslResourceRequest::run()
     return;
   }
 
-  string n =
-    FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) +
-    FsEncoding::separator() +
-    FsEncoding::encode( resourceName );
+  string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1809,7 +1794,7 @@ void DslResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getResourceDir1() + FsEncoding::encode( resourceName );
+      n = dict.getResourceDir1() + resourceName;
       try {
         Mutex::Lock _( dataMutex );
 
@@ -1817,7 +1802,7 @@ void DslResourceRequest::run()
       }
       catch( File::exCantOpen & )
       {
-        n = dict.getResourceDir2() + FsEncoding::encode( resourceName );
+        n = dict.getResourceDir2() + resourceName;
 
         try
         {
@@ -2348,9 +2333,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           IndexedWords zipFileNames;
           IndexedZip zipFile;
-          if( zipFile.openZipFile( QDir::fromNativeSeparators(
-                                   FsEncoding::decode( zipFileName.c_str() ) ) ) )
-              zipFile.indexFile( zipFileNames );
+          if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+            zipFile.indexFile( zipFileNames );
 
           if( !zipFileNames.empty() )
           {

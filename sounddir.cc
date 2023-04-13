@@ -338,7 +338,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
 
   chunk.back() = 0; // It must end with 0 anyway, but just in case
 
-  QDir dir( QDir::fromNativeSeparators( FsEncoding::decode( getDictionaryFilenames()[ 0 ].c_str() ) ) );
+  QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
 
   QString fileName = QDir::toNativeSeparators( dir.filePath( QString::fromUtf8( articleData ) ) );
 
@@ -346,7 +346,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
 
   try
   {
-    File::Class f( FsEncoding::encode( fileName ), "rb" );
+    File::Class f( fileName.toStdString(), "rb" );
 
     sptr< Dictionary::DataRequestInstant > dr =
             std::make_shared<Dictionary::DataRequestInstant>( true );
@@ -419,8 +419,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
     if ( !dir.exists() )
       continue; // No such dir, no dictionary then
 
-    vector< string > dictFiles( 1,
-      FsEncoding::encode( QDir::toNativeSeparators( dir.canonicalPath() ) ) );
+    vector< string > dictFiles( 1, QDir::toNativeSeparators( dir.canonicalPath() ).toStdString() );
 
     dictFiles.push_back( "SoundDir" ); // A mixin
 
