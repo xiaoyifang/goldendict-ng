@@ -4167,14 +4167,6 @@ void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )
 
 void MainWindow::showDictionaryInfo( const QString & id )
 {
-  QWidget * owner = 0;
-
-  if( sender()->objectName().compare( "EditDictionaries" ) == 0 )
-    owner = qobject_cast< QWidget * >( sender() );
-
-  if( owner == 0 )
-    owner = this;
-
   for( unsigned x = 0; x < dictionaries.size(); x++ )
   {
     if( dictionaries[ x ]->getId() == id.toUtf8().data() )
