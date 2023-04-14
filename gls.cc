@@ -1235,7 +1235,7 @@ void GlsResourceRequest::run()
 
   try
   {
-    string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + resourceName;
+    string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 

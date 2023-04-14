@@ -649,8 +649,7 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
             bool search = false;
             if( type == STARDICT )
             {
-              string n = FsEncoding::dirname( dictPtr->getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator()
-                + string( "res" ) + FsEncoding::separator() + filename;
+              string n = dictPtr->getContainingFolder().toStdString() + FsEncoding::separator() + string( "res" ) + FsEncoding::separator() + filename;
               search = !File::exists( n ) &&
                        ( !resourceZip ||
                          !resourceZip->isOpen() ||
@@ -660,8 +659,7 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
             {
               string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + filename;
               search   = !File::exists( n )
-                && !File::exists( FsEncoding::dirname( dictPtr->getDictionaryFilenames()[ 0 ] )
-                                  + FsEncoding::separator() + filename )
+                && !File::exists( dictPtr->getContainingFolder().toStdString() + FsEncoding::separator() + filename )
                 && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
             }
 

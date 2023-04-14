@@ -4277,13 +4277,8 @@ void MainWindow::openDictionaryFolder( const QString & id )
   {
     if( dictionaries[ x ]->getId() == id.toUtf8().data() )
     {
-      if( dictionaries[ x ]->getDictionaryFilenames().size() > 0 )
-      {
-        QString fileName = dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str();
-
-        QString folder = QFileInfo( fileName ).absoluteDir().absolutePath();
-        if( !folder.isEmpty() )
-          QDesktopServices::openUrl( QUrl::fromLocalFile( folder ) );
+      if ( !dictionaries[ x ]->getDictionaryFilenames().empty() ) {
+        QDesktopServices::openUrl( QUrl::fromLocalFile( dictionaries[ x ]->getContainingFolder() ) );
       }
       break;
     }

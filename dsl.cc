@@ -849,7 +849,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       // Otherwise, make a global 'search' one.
 
       bool search = !File::exists( n ) && !File::exists( resourceDir2 + filename )
-        && !File::exists( FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + filename )
+        && !File::exists( getContainingFolder().toStdString() + FsEncoding::separator() + filename )
         && ( !resourceZip.isOpen() || !resourceZip.hasFile( Utf8::decode( filename ) ) );
 
       QUrl url;
@@ -891,7 +891,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
         {
           try
           {
-            n = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + filename;
+            n = getContainingFolder().toStdString() + FsEncoding::separator() + filename;
             File::loadFromFile( n, imgdata );
           }
           catch( File::exCantOpen & )
@@ -1780,7 +1780,7 @@ void DslResourceRequest::run()
     return;
   }
 
-  string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + resourceName;
+  string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 
