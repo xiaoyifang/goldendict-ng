@@ -17,9 +17,6 @@ using std::string;
 /// Returns the filesystem separator (/ on Unix and clones, \ on Windows).
 char separator();
 
-/// Returns the directory part of the given filename.
-string dirname( string const & );
-
 /// Returns the name part of the given filename.
 string basename( string const & );
 

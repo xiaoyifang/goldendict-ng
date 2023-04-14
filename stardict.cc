@@ -1693,8 +1693,7 @@ void StardictResourceRequest::run()
     if( resourceName.at( resourceName.length() - 1 ) == '\x1F' )
       resourceName.erase( resourceName.length() - 1, 1 );
 
-    string n = FsEncoding::dirname( dict.getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + "res"
-      + FsEncoding::separator() + resourceName;
+    string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + "res" + FsEncoding::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -2005,7 +2004,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // See if there's a zip file with resources present. If so, include it.
 
       string zipFileName;
-      string baseName = FsEncoding::dirname( idxFileName ) + FsEncoding::separator();
+      string baseName =
+        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + FsEncoding::separator();
 
       if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName ) ||
            File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName ) ||

@@ -171,6 +171,11 @@ vector< wstring > Class::getAlternateWritings( wstring const & )
   return vector< wstring >();
 }
 
+QString Class::getContainingFolder()
+{
+  return QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).absolutePath();
+}
+
 sptr< DataRequest > Class::getResource( string const & /*name*/ )
 
 {

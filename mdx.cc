@@ -1227,8 +1227,8 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     newResourceName.insert( 0, 1, '\\' );
   }
   // local file takes precedence
-  if( string fn = FsEncoding::dirname( getDictionaryFilenames()[ 0 ] ) + FsEncoding::separator() + u8ResourceName;
-      File::exists( fn ) ) {
+  if ( string fn = getContainingFolder().toStdString() + FsEncoding::separator() + u8ResourceName;
+       File::exists( fn ) ) {
     File::loadFromFile( fn, data );
     return;
   }
