@@ -557,6 +557,50 @@ int ArticleRequest::findEndOfCloseDiv( const QString &str, int pos )
   }
 }
 
+bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req ,QString const & dictId) {
+  if ( GlobalBroadcaster::instance()->collapsedDicts.contains( dictId ) )
+    return true;
+
+  bool collapse = false;
+
+  if( articleSizeLimit >= 0 )
+  {
+    try
+    {
+      Mutex::Lock _( dataMutex );
+      QString text = QString::fromUtf8( req.getFullData().data(), req.getFullData().size() );
+
+      if( !needExpandOptionalParts )
+      {
+        // Strip DSL optional parts
+        int pos = 0;
+        for( ; ; )
+        {
+          pos = text.indexOf( "<div class=\"dsl_opt\"" );
+          if( pos > 0 )
+          {
+            int endPos = findEndOfCloseDiv( text, pos + 1 );
+            if( endPos > pos)
+              text.remove( pos, endPos - pos );
+            else
+              break;
+          }
+          else
+            break;
+        }
+      }
+
+      int size = htmlTextSize( text );
+      if( size > articleSizeLimit )
+        collapse = true;
+    }
+    catch(...)
+    {
+    }
+  }
+  return collapse;
+}
+
 void ArticleRequest::bodyFinished()
 {
   if ( bodyDone )
@@ -596,42 +640,7 @@ void ArticleRequest::bodyFinished()
           head += R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
         }
 
-        bool collapse = false;
-        if( articleSizeLimit >= 0 )
-        {
-          try
-          {
-            Mutex::Lock _( dataMutex );
-            QString text = QString::fromUtf8( req.getFullData().data(), req.getFullData().size() );
-
-            if( !needExpandOptionalParts )
-            {
-              // Strip DSL optional parts
-              int pos = 0;
-              for( ; ; )
-              {
-                pos = text.indexOf( "<div class=\"dsl_opt\"" );
-                if( pos > 0 )
-                {
-                  int endPos = findEndOfCloseDiv( text, pos + 1 );
-                  if( endPos > pos)
-                    text.remove( pos, endPos - pos );
-                  else
-                    break;
-                }
-                else
-                  break;
-              }
-            }
-
-            int size = htmlTextSize( text );
-            if( size > articleSizeLimit )
-              collapse = true;
-          }
-          catch(...)
-          {
-          }
-        }
+        bool collapse = isCollapsable( req, QString::fromStdString( dictId ) );
 
         string jsVal = Html::escapeForJavaScript( dictId );
 

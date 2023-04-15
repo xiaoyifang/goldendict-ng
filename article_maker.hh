@@ -152,6 +152,7 @@ private:
 
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( QString const &, int pos );
+  bool isCollapsable( Dictionary::DataRequest & req,QString const & dictId );
 };
 
 

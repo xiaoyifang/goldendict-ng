@@ -2753,3 +2753,16 @@ void ArticleViewAgent::linkClickedInHtml( QUrl const & url )
 {
   articleView->linkClickedInHtml( url );
 }
+
+void ArticleViewAgent::collapseInHtml( QString const & dictId, bool on )
+{
+  if ( GlobalBroadcaster::instance()->getPreference()->sessionCollapse ) {
+    if ( on ) {
+      GlobalBroadcaster::instance()->collapsedDicts.insert( dictId );
+    }
+    else {
+      GlobalBroadcaster::instance()->collapsedDicts.remove( dictId );
+    }
+  }
+}
+

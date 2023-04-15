@@ -29,6 +29,9 @@ public:
   unsigned currentGroupId;
   QString translateLineText{};
   QWebEngineProfile * profile;
+  //hold the dictionary id;
+  QSet<QString> collapsedDicts;
+
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );

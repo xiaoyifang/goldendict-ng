@@ -463,11 +463,11 @@ class ArticleViewAgent : public QObject
 public:
   ArticleViewAgent( ArticleView * articleView );
 
-signals:
 
 public slots:
   Q_INVOKABLE void onJsActiveArticleChanged( QString const & id );
   Q_INVOKABLE void linkClickedInHtml( QUrl const & );
+  Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true );
 };
 
 #endif
