@@ -32,3 +32,11 @@ void Utils::Widget::setNoResultColor(QWidget * widget, bool noResult)
     widget->setPalette( pal );
   }
 }
+
+std::string Utils::Html::getHtmlCleaner()
+{
+  return R"(</font></font></font></font></font></font></font></font></font></font></font></font>
+                     </b></b></b></b></b></b></b></b>
+                     </i></i></i></i></i></i></i></i>
+                     </a></a></a></a></a></a></a></a>)";
+}

@@ -664,11 +664,7 @@ void MdxArticleRequest::run()
     }
 
     // See Issue #271: A mechanism to clean-up invalid HTML cards.
-    string cleaner = "</font>""</font>""</font>""</font>""</font>""</font>"
-                     "</font>""</font>""</font>""</font>""</font>""</font>"
-                     "</b></b></b></b></b></b></b></b>"
-                     "</i></i></i></i></i></i></i></i>"
-                     "</a></a></a></a></a></a></a></a>";
+    string cleaner = Utils::Html::getHtmlCleaner();
     articleText += "<div class=\"mdict\">" + articleBody + cleaner + "</div>\n";
   }
 

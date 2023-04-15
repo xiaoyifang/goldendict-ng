@@ -319,6 +319,11 @@ namespace Widget{
 void setNoResultColor(QWidget * widget, bool noResult);
 }
 
+namespace Html {
+// See Issue #271: A mechanism to clean-up invalid HTML cards.
+std::string getHtmlCleaner();
+}
+
 }
 
 #endif // UTILS_HH

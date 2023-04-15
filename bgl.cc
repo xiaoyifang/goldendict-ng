@@ -848,10 +848,7 @@ void BglArticleRequest::run()
 
   multimap< wstring, pair< string, string > >::const_iterator i;
 
-  string cleaner = "</font>""</font>""</font>""</font>""</font>""</font>"
-                   "</font>""</font>""</font>""</font>""</font>""</font>"
-                   "</b></b></b></b></b></b></b></b>"
-                   "</i></i></i></i></i></i></i></i>";
+  string cleaner = Utils::Html::getHtmlCleaner();
   for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
   {
       if (dict.isFromLanguageRTL() ) // RTL support
