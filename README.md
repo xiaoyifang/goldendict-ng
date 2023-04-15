@@ -60,7 +60,7 @@ Steps below are using qt5, and you may use qt6 by replacing `5` with `6`.
 sudo apt-get install git pkg-config build-essential qt5-qmake \
         libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
         qtdeclarative5-dev libxtst-dev liblzo2-dev libbz2-dev \
-        libavutil-dev libavformat-dev libtiff5-dev libeb16-dev \
+        libavutil-dev libavformat-dev libeb16-dev \
         libqt5svg5-dev libqt5x11extras5-dev qttools5-dev \
         qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins libqt5webchannel5-dev qtwebengine5-dev \
         libqt5texttospeech5-dev
@@ -71,7 +71,7 @@ sudo apt-get install git pkg-config build-essential qt5-qmake \
 ```
 sudo dnf install git pkg-config libzstd-devel opencc-devel xz-devel xz-lzma-compat\
      libvorbis-devel zlib-devel hunspell-devel lzo-devel bzip2-devel \
-     ffmpeg-devel libtiff-devel eb-devel qt5-qtx11extras-devel libXtst-devel \
+     ffmpeg-devel eb-devel qt5-qtx11extras-devel libXtst-devel \
      libxkbcommon-devel qt5-qtbase qt5-qttools qt5-qtsvg-devl qt5-qtwebengine-devel qt5-qtmultimedia-devel
 ```
 
@@ -130,14 +130,6 @@ To add Zim and Slob formats support you need at first install lzma-dev and zstd-
 ```
 sudo apt-get install liblzma-dev libzstd-dev
 ```
-
-#### Building without extra tiff handler( DEPRECATED )
-
-**deprecated: qt has offered b/w tiff support which means this options should always _enabled_.  intend to remove in the future.**
-
-If you have problem building with libtiff5-dev package, you can pass
-`"CONFIG+=no_extra_tiff_handler"` to `qmake` in order to disable extra tiff support
-(without such extra support some b/w tiff images will not be displayed):
 
 #### Building without Epwing format support
 
