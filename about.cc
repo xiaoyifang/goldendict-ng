@@ -58,10 +58,6 @@ About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dicto
          +" MAKE_ZIM_SUPPORT"
 #endif
 
-#ifdef MAKE_EXTRA_TIFF_HANDLER
-         +" MAKE_EXTRA_TIFF_HANDLER"
-#endif
-
 #ifdef NO_EPWING_SUPPORT
          +" NO_EPWING_SUPPORT"
 #endif

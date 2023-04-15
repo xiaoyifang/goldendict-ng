@@ -572,11 +572,6 @@ CONFIG( zim_support ) {
   LIBS += -llzma -lzstd
 }
 
-!CONFIG( no_extra_tiff_handler ) {
-  DEFINES += MAKE_EXTRA_TIFF_HANDLER
-  LIBS += -ltiff
-}
-
 CONFIG( no_epwing_support ) {
   DEFINES += NO_EPWING_SUPPORT
 }
