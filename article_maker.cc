@@ -64,14 +64,16 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   // document ready ,init webchannel
   {
-    result += "<script>"
-              " $_$(document).ready( function ($){ "
-              "     console.log(\"webchannel ready...\"); "
-              "     new QWebChannel(qt.webChannelTransport, function(channel) { "
-              "         window.articleview = channel.objects.articleview; "
-              "   }); "
-              " }); "
-              "</script>";
+    result += R"(
+    <script>
+     $_$(document).ready( function ($){ 
+         console.log("webchannel ready..."); 
+         new QWebChannel(qt.webChannelTransport, function(channel) { 
+             window.articleview = channel.objects.articleview; 
+       }); 
+     }); 
+    </script>
+    )";
   }
 
   // Add a css stylesheet
@@ -99,10 +101,13 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
     // Turn on/off expanding of article optional parts
     if( expandOptionalParts )
     {
-      result += "<!-- Expand optional parts css -->\n";
-      result += "<style type=\"text/css\" media=\"all\">\n";
-      result += "\n.dsl_opt\n{\n  display: inline;\n}\n\n.hidden_expand_opt\n{\n  display: none;\n}\n";
-      result += "</style>\n";
+      result += R"(<!-- Expand optional parts css -->
+                   <style type="text/css" media="all">
+                    .dsl_opt{
+                      display: inline;
+                     }
+                    .hidden_expand_opt{  display: none;}
+                    </style>)";
     }
 
   }
@@ -128,17 +133,18 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   if ( icon.size() )
     result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
 
-  result += "<script type=\"text/javascript\">"
-            "function tr(key) {"
-            " var tr_map = {"
-            "\"Expand article\":\"";
-  result += tr("Expand article").toUtf8().data();
-  result += R"(","Collapse article":")";
-  result += tr("Collapse article").toUtf8().data();
-  result += "\"  };"
-            "return tr_map[key] || '';"
-            "}"
-            "</script>";
+  result += QString::fromUtf8( R"(
+<script type="text/javascript">
+     function tr(key) {
+            var tr_map = {
+                "Expand article": "%1", "Collapse article": "%2"
+            };
+            return tr_map[key] || '';
+        }
+</script>
+)" ).arg( tr( "Expand article" ), tr( "Collapse article" ) )
+            .toStdString();
+
   result+= R"(<script type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
@@ -643,31 +649,37 @@ void ArticleRequest::bodyFinished()
 
         string jsVal = Html::escapeForJavaScript( dictId );
 
-        head += string( "<div class=\"gdarticle" ) +
-                ( closePrevSpan ? "" : " gdactivearticle" ) +
-                ( collapse ? " gdcollapsedarticle" : "" ) +
-                "\" id=\"" + gdFrom +
-                "\" onClick=\"gdMakeArticleActive( '" + jsVal + "' );\" " +
-                " onContextMenu=\"gdMakeArticleActive( '" + jsVal + "' );\""
-                + ">";
+        head += QString::fromUtf8(
+                  R"( <div class="gdarticle %1 %2" id="%3" 
+                    onClick="gdMakeArticleActive( '%4' );" 
+                    onContextMenu="gdMakeArticleActive( '%4' );">)" )
+                  .arg(  closePrevSpan ? "" : " gdactivearticle" ,
+                         collapse ? " gdcollapsedarticle" : "" ,
+                         gdFrom.c_str() ,
+                         jsVal.c_str() )
+                  .toStdString();
 
         closePrevSpan = true;
 
-        head += string( R"(<div class="gddictname" onclick="gdExpandArticle(')" ) + dictId + "\');"
-          + ( collapse ? "\" style=\"cursor:pointer;" : "" )
-          + "\" id=\"gddictname-" + Html::escape( dictId ) + "\""
-          + ( collapse ? string( " title=\"" ) + tr( "Expand article" ).toUtf8().data() + "\"" : "" )
-          + R"(><span class="gddicticon"><img src="gico://)" + Html::escape( dictId )
-          + R"(/dicticon.png"></span><span class="gdfromprefix">)"  +
-          Html::escape( tr( "From " ).toUtf8().data() ) + "</span><span class=\"gddicttitle\">" +
-          Html::escape( activeDict->getName().c_str() ) + "</span>"
-          + R"(<span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class=")"
-          + ( collapse ? "gdexpandicon" : "gdcollapseicon" )
-          + "\" id=\"expandicon-" + Html::escape( dictId ) + "\""
-          + ( collapse ? "" : string( " title=\"" ) + tr( "Collapse article" ).toUtf8().data() + "\"" )
-          + "></span>" + "</div>";
+        head += QString::fromUtf8(
+                  R"(<div class="gddictname" onclick="gdExpandArticle('%1');"  %2  id="gddictname-%1" title="%3">
+                      <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
+                      <span class="gdfromprefix">%4</span>
+                      <span class="gddicttitle">%5</span>
+                      <span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class="%6" id="expandicon-%1" title="%7" ></span>
+                     </div>)" )
+                  .arg( dictId.c_str(),
+                        collapse ? R"(style="cursor:pointer;")" : "",
+                        collapse ? tr( "Expand article" ) : QString(),
+                        Html::escape( tr( "From " ).toStdString() ).c_str(),
+                        Html::escape( activeDict->getName() ).c_str(),
+                        collapse ? "gdexpandicon" : "gdcollapseicon",
+                        collapse ? "" : tr( "Collapse article" )
 
-        head += "<div class=\"gddictnamebodyseparator\"></div>";
+                          )
+                  .toStdString();
+
+        head += R"(<div class="gddictnamebodyseparator"></div>)";
 
         // If the user has enabled Anki integration in settings,
         // Show a (+) button that lets the user add a new Anki card.
@@ -680,14 +692,13 @@ void ArticleRequest::bodyFinished()
           head += link.arg( Html::escape( dictId ).c_str(), tr( "Make a new Anki note" ) ).toStdString();
         }
 
-        head += "<div class=\"gdarticlebody gdlangfrom-";
-        head += LangCoder::intToCode2( activeDict->getLangFrom() ).toLatin1().data();
-        head += "\" lang=\"";
-        head += LangCoder::intToCode2( activeDict->getLangTo() ).toLatin1().data();
-        head += "\"";
-        head += " style=\"display:";
-        head += collapse ? "none" : "inline";
-        head += string( "\" id=\"gdarticlefrom-" ) + Html::escape( dictId ) + "\">";
+        head += QString::fromUtf8(
+                  R"(<div class="gdarticlebody gdlangfrom-%1" lang="%2" style="display:%3" id="gdarticlefrom-%4">)" )
+                  .arg( LangCoder::intToCode2( activeDict->getLangFrom() ),
+                        LangCoder::intToCode2( activeDict->getLangTo() ),
+                        collapse ? "none" : "inline",
+                        dictId.c_str()  )
+                  .toStdString();
 
         if( errorString.size() ) {
           head += "<div class=\"gderrordesc\">"

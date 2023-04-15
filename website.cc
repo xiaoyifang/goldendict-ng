@@ -275,11 +275,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     }
 
     // See Issue #271: A mechanism to clean-up invalid HTML cards.
-    articleString += "</font>""</font>""</font>""</font>""</font>""</font>"
-                     "</font>""</font>""</font>""</font>""</font>""</font>"
-                     "</b></b></b></b></b></b></b></b>"
-                     "</i></i></i></i></i></i></i></i>"
-                     "</a></a></a></a></a></a></a></a>";
+    articleString += QString::fromStdString(Utils::Html::getHtmlCleaner());
 
     QByteArray articleBody = articleString.toUtf8();
 
