@@ -265,7 +265,6 @@ Preferences::Preferences():
   internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
-  enableWebPlugins( false ),
   hideGoldenDictHeader( false ),
   maxNetworkCacheSize( 50 ),
   clearNetworkCacheOnExit( true ),
@@ -990,9 +989,6 @@ Class load()
 
     if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() )
       c.preferences.disallowContentFromOtherSites = ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
-
-    if ( !preferences.namedItem( "enableWebPlugins" ).isNull() )
-      c.preferences.enableWebPlugins = ( preferences.namedItem( "enableWebPlugins" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() )
       c.preferences.hideGoldenDictHeader = ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
@@ -1984,10 +1980,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "disallowContentFromOtherSites" );
     opt.appendChild( dd.createTextNode( c.preferences.disallowContentFromOtherSites ? "1" : "0" ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "enableWebPlugins" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableWebPlugins ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "hideGoldenDictHeader" );

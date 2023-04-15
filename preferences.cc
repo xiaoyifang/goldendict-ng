@@ -332,7 +332,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.checkForNewReleases->setChecked( p.checkForNewReleases );
   ui.disallowContentFromOtherSites->setChecked( p.disallowContentFromOtherSites );
-  ui.enableWebPlugins->setChecked( p.enableWebPlugins );
   ui.hideGoldenDictHeader->setChecked( p.hideGoldenDictHeader );
   ui.maxNetworkCacheSize->setValue( p.maxNetworkCacheSize );
   ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
@@ -481,7 +480,6 @@ Config::Preferences Preferences::getPreferences()
 
   p.checkForNewReleases = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
-  p.enableWebPlugins = ui.enableWebPlugins->isChecked();
   p.hideGoldenDictHeader = ui.hideGoldenDictHeader->isChecked();
   p.maxNetworkCacheSize = ui.maxNetworkCacheSize->value();
   p.clearNetworkCacheOnExit = ui.clearNetworkCacheOnExit->isChecked();
