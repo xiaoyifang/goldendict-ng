@@ -445,6 +445,8 @@ private:
 string StardictDictionary::handleResource( char type, char const * resource, size_t size )
 {
   QString text;
+
+  // See "Type identifiers" at http://www.huzheng.org/stardict/StarDictFileFormat
   switch( type )
   {
     case 'x': // Xdxf content
@@ -590,8 +592,24 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     case 'n': // WordNet data. We don't know anything about it.
       return "<div class=\"sdct_n\">" + Html::escape( string( resource, size ) ) + "</div>";
 
-    case 'r': // Resource file list. For now, resources aren't handled.
-      return "<div class=\"sdct_r\">" + Html::escape( string( resource, size ) ) + "</div>";
+    case 'r': // Resource file list. For now, only img: is handled.
+    {
+      string result = R"(<div class="sdct_r">)";
+
+      // Handle img:example.jpg
+      QString imgTemplate( R"(<img src="bres://)" + QString::fromStdString( getId() ) + R"(/%1">)" );
+
+      for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
+        if ( file.startsWith( "img:" ) ) {
+          result += imgTemplate.arg( file.right( file.size() - file.indexOf( ":" ) - 1 ) ).toStdString();
+        }
+        else {
+          result += Html::escape( file.toStdString() );
+        }
+      }
+
+      return result + "</div>";
+    }
 
     case 'W': // An embedded Wav file. Unhandled yet.
       return "<div class=\"sdct_W\">(an embedded .wav file)</div>";
