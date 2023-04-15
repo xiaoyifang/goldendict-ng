@@ -17,4 +17,7 @@ var interval = setInterval(function () {
         console.log("iframe set height to " + height);
         parentIFrame.size(height); 
     }
+    else {
+        clearInterval(interval);
+    }
 }, 500);
