@@ -355,7 +355,6 @@ struct Preferences
 
   bool checkForNewReleases;
   bool disallowContentFromOtherSites;
-  bool enableWebPlugins;
   bool hideGoldenDictHeader;
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;

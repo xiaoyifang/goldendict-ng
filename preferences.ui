@@ -1168,18 +1168,6 @@ you are browsing. If some site breaks because of this, try disabling this.</stri
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="enableWebPlugins">
-         <property name="toolTip">
-          <string>Enabling this would allow to listen to sound pronunciations from
-online dictionaries that rely on Flash or other web plugins.
-Plugin must be installed for this option to work.</string>
-         </property>
-         <property name="text">
-          <string>Enable web plugins</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QCheckBox" name="hideGoldenDictHeader">
          <property name="toolTip">
           <string>Some sites detect GoldenDict via HTTP headers and block the requests.

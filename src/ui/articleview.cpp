@@ -355,7 +355,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::PluginsEnabled, cfg.preferences.enableWebPlugins );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::PluginsEnabled, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
@@ -363,7 +363,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->setAttribute( QWebEngineSettings::PluginsEnabled, cfg.preferences.enableWebPlugins );
+  settings->setAttribute( QWebEngineSettings::PluginsEnabled, true );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
