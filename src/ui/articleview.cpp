@@ -2754,7 +2754,7 @@ void ArticleViewAgent::linkClickedInHtml( QUrl const & url )
   articleView->linkClickedInHtml( url );
 }
 
-void ArticleViewAgent::collapseInHtml( QString const & dictId, bool on )
+void ArticleViewAgent::collapseInHtml( QString const & dictId, bool on ) const
 {
   if ( GlobalBroadcaster::instance()->getPreference()->sessionCollapse ) {
     if ( on ) {
