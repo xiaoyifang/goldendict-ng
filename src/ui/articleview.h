@@ -467,7 +467,7 @@ public:
 public slots:
   Q_INVOKABLE void onJsActiveArticleChanged( QString const & id );
   Q_INVOKABLE void linkClickedInHtml( QUrl const & );
-  Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true );
+  Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true ) const;
 };
 
 #endif

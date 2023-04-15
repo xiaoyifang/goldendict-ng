@@ -573,13 +573,12 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req ,QString const
       if( !needExpandOptionalParts )
       {
         // Strip DSL optional parts
-        int pos = 0;
         for( ; ; )
         {
-          pos = text.indexOf( "<div class=\"dsl_opt\"" );
+          const int pos = text.indexOf( "<div class=\"dsl_opt\"" );
           if( pos > 0 )
           {
-            int endPos = findEndOfCloseDiv( text, pos + 1 );
+            const int endPos = findEndOfCloseDiv( text, pos + 1 );
             if( endPos > pos)
               text.remove( pos, endPos - pos );
             else
