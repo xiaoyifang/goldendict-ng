@@ -102,6 +102,7 @@ function gdExpandArticle(id) {
             ev.stopPropagation()
         ico.title = tr("Expand article")
         nm.title = ''
+        articleview.collapseInHtml(id,true);
     } else if (elem.style.display == 'none') {
         elem.style.display = 'inline'
         ico.className = 'gdcollapseicon'
@@ -110,6 +111,7 @@ function gdExpandArticle(id) {
         nm.style.cursor = 'default'
         nm.title = ''
         ico.title = tr("Collapse article")
+        articleview.collapseInHtml(id,false);
     }
 }
 

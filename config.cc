@@ -930,6 +930,11 @@ Class load()
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
     if( !preferences.namedItem( "ignorePunctuation" ).isNull() )
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem( "sessionCollapse" ).isNull() ) {
+      c.preferences.sessionCollapse = ( preferences.namedItem( "sessionCollapse" ).toElement().text() == "1" );
+    }
+
 #ifdef HAVE_X11
     c.preferences.trackClipboardScan= ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
     c.preferences.trackSelectionScan= ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
@@ -1843,6 +1848,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "ignorePunctuation" );
     opt.appendChild( dd.createTextNode( c.preferences.ignorePunctuation ? "1":"0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "sessionCollapse" );
+    opt.appendChild( dd.createTextNode( c.preferences.sessionCollapse ? "1" : "0" ) );
     preferences.appendChild( opt );
 
 #ifdef HAVE_X11

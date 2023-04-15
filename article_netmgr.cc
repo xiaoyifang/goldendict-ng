@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <QUrl>
 #include "article_netmgr.hh"
-#include "wstring_qt.hh"
 #include "gddebug.hh"
 #include "utils.hh"
 #include <QNetworkAccessManager>

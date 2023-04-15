@@ -3985,7 +3985,12 @@ however, the article from the topmost dictionary is shown.</source>
         <translation type="unfinished">深色阅读模式</translation>
     </message>
     <message>
-        <location filename="../preferences.ui" line="457"/>
+        <location filename="../preferences.ui" line="363"/>
+        <source>MRU order: Most recently used order.</source>
+        <translation>排序：最近使用优先</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="440"/>
         <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
         <translation>剪贴板取词。注意！非Linux系统，这个选项必须打开</translation>
     </message>
@@ -4140,7 +4145,17 @@ clears its network cache from disk during exit.</source>
         <translation>高级(&amp;v)</translation>
     </message>
     <message>
-        <location filename="../preferences.ui" line="1749"/>
+        <location filename="../preferences.ui" line="1769"/>
+        <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
+        <translation>如果用户折叠了词典，下次搜索的时候，保持折叠状态。</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1772"/>
+        <source>Session collapse</source>
+        <translation>搜索期间保持折叠</translation>
+    </message>
+    <message>
+        <location filename="../preferences.ui" line="1793"/>
         <source>When using clipboard,strip everything after newline</source>
         <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
     </message>
