@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2019, windows-latest]
+        os: [windows-2019, windows-2022]
         qt_ver: [6.4.3]
         qt_arch: [win64_msvc2019_64]
     env:

@@ -22,7 +22,7 @@ on:
 jobs:
   build:
     name: Build
-    # 运行平台， windows-latest目前是windows server 2019 
+    # 运行平台
     # 参考文档 https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md
     runs-on: ${{ matrix.os }}
     strategy:
