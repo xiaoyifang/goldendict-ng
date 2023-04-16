@@ -340,7 +340,6 @@ HEADERS += folding.hh \
     audiolink.hh \
     wstring.hh \
     wstring_qt.hh \
-    processwrapper.hh \
     hotkeywrapper.hh \
     searchpanewidget.hh \
     langcoder.hh \
@@ -478,7 +477,6 @@ SOURCES += folding.cc \
     dictdfiles.cc \
     audiolink.cc \
     wstring_qt.cc \
-    processwrapper.cc \
     hotkeywrapper.cc \
     langcoder.cc \
     editdictionaries.cc \
