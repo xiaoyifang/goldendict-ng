@@ -683,7 +683,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
       articleText = articleText.normalized( QString::NormalizationForm_C );
 
       if( ignoreDiacritics )
-        articleText = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
+        articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
 
       if( articleText.contains( searchRegularExpression ) )
       {
@@ -726,7 +726,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
       articleText = articleText.normalized( QString::NormalizationForm_C );
 
       if( ignoreDiacritics )
-        articleText = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
+        articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
 
       if( ignoreWordsOrder )
       {
@@ -1106,7 +1106,7 @@ void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
     QString word = QString::fromUtf8( links[ x ].word.data(), links[ x ].word.size() );
 
     if( ignoreDiacritics )
-      word = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
+      word = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
 
     for( int i = 0; i < indexWords.size(); i++ )
     {

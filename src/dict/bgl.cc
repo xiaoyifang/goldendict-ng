@@ -451,7 +451,7 @@ namespace
         }
       }
 
-      text = Html::unescape( gd::toQString( wstr ) );
+      text = Html::unescape( QString::fromStdU32String( wstr ) );
     }
     catch( std::exception &ex )
     {

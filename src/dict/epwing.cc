@@ -561,7 +561,7 @@ void EpwingHeadwordsRequest::run()
     return;
   }
 
-  QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( str ) );
+  QRegularExpressionMatch m = RX::Epwing::refWord.match( QString::fromStdU32String( str ) );
   if ( !m.hasMatch() ) {
     finish();
     return;
@@ -728,7 +728,7 @@ void EpwingArticleRequest::run()
     articlesIncluded.insert( x.articleOffset );
   }
 
-  QRegularExpressionMatch m = RX::Epwing::refWord.match( gd::toQString( word ) );
+  QRegularExpressionMatch m = RX::Epwing::refWord.match( QString::fromStdU32String( word ) );
   bool ref                  = m.hasMatch();
 
   // Also try to find word in the built-in dictionary index
@@ -806,7 +806,7 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
     QVector< int > pg, off;
     {
       Mutex::Lock _( dict.eBook.getLibMutex() );
-      dict.eBook.getArticlePos( gd::toQString( word_ ), pg, off );
+      dict.eBook.getArticlePos( QString::fromStdU32String( word_ ), pg, off );
     }
 
     for( int i = 0; i < pg.size(); i++ )
@@ -843,7 +843,7 @@ void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & p
 {
   try {
     Mutex::Lock _( eBook.getLibMutex() );
-    eBook.getArticlePos( gd::toQString( word_ ), pg, off );
+    eBook.getArticlePos( QString::fromStdU32String( word_ ), pg, off );
   }
   catch ( ... ) {
     //ignore
@@ -1079,7 +1079,7 @@ void EpwingWordSearchRequest::findMatches()
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
         break;
 
-      if( !edict.eBook.getMatches( gd::toQString( str ), headwords ) )
+      if( !edict.eBook.getMatches( QString::fromStdU32String( str ), headwords ) )
         break;
     }
 

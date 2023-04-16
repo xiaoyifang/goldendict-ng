@@ -1122,7 +1122,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //}
 
   gd::wstring folded = Folding::applyPunctOnly( gd::toWString( fixed ) );
-  //fixed = gd::toQString( folded );
+  //fixed = QString::fromStdU32String( folded );
 
   //if( isHeadwordCorrect( fixed ) )
   //{
@@ -1131,7 +1131,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //}
 
   folded = Folding::applyDiacriticsOnly( folded );
-  fixed = gd::toQString( folded );
+  fixed = QString::fromStdU32String( folded );
 
   //if( isHeadwordCorrect( fixed ) )
   //{
@@ -1140,7 +1140,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //}
 
   //folded = Folding::applyWhitespaceOnly( folded );
-  //fixed = gd::toQString( folded );
+  //fixed = QString::fromStdU32String( folded );
 
   //if( isHeadwordCorrect( fixed ) )
   //  headword = fixed;

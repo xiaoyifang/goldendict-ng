@@ -88,7 +88,7 @@ void HeadwordListModel::requestFinished()
       {
         auto allmatches = ( *i )->getAllMatches();
         for( auto & match : allmatches )
-          filterWords.append( gd::toQString( match.word ) );
+          filterWords.append( QString::fromStdU32String( match.word ) );
       }
       queuedRequests.erase( i++ );
     }

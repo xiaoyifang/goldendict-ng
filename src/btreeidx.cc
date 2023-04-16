@@ -184,7 +184,7 @@ void BtreeWordSearchRequest::findMatches()
 
   if( useWildcards )
   {
-    regexp.setPattern( wildcardsToRegexp( gd::toQString( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( str ) ) ) ) );
+    regexp.setPattern( wildcardsToRegexp( QString::fromStdU32String( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( str ) ) ) ) );
     if( !regexp.isValid() )
       regexp.setPattern( QRegularExpression::escape( regexp.pattern() ) );
     regexp.setPatternOptions( QRegularExpression::CaseInsensitiveOption );
@@ -337,7 +337,7 @@ void BtreeWordSearchRequest::findMatches()
               wstring result = Folding::applyDiacriticsOnly( word );
               if( result.size() >= (wstring::size_type)minMatchLength )
               {
-                QRegularExpressionMatch match = regexp.match( gd::toQString( result ) );
+                QRegularExpressionMatch match = regexp.match( QString::fromStdU32String( result ) );
                 if( match.hasMatch() && match.capturedStart() == 0 )
                 {
                   addMatch( word );

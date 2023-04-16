@@ -62,7 +62,7 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
   
 {
   if ( prg.type == Config::Program::PrefixMatch )
-    return  std::make_shared<ProgramWordSearchRequest>( gd::toQString( word ), prg );
+    return  std::make_shared<ProgramWordSearchRequest>( QString::fromStdU32String( word ), prg );
   else
   {
     sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
@@ -112,7 +112,7 @@ sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
 
     case Config::Program::Html:
     case Config::Program::PlainText:
-      return  std::make_shared<ProgramDataRequest>( gd::toQString( word ), prg );
+      return  std::make_shared<ProgramDataRequest>( QString::fromStdU32String( word ), prg );
 
     default:
       return  std::make_shared<DataRequestInstant>( false );

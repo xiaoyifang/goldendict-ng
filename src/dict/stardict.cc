@@ -1199,7 +1199,7 @@ void StardictDictionary::getArticleText( uint32_t articleAddress, QString & head
 
     wstring wstr = Utf8::decode( articleStr );
 
-    text = Html::unescape( gd::toQString( wstr ) );
+    text = Html::unescape( QString::fromStdU32String( wstr ) );
   }
   catch( std::exception &ex )
   {

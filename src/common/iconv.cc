@@ -133,7 +133,7 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData,
 
   Iconv ic( Utf8, fromEncoding );
 
-  QString outStr = ic.convert(fromData, dataSize);
-  return gd::toStdString(outStr);
+  const QString outStr = ic.convert(fromData, dataSize);
+  return outStr.toStdString();
 }
 

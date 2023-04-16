@@ -433,7 +433,7 @@ void DictServerWordSearchRequest::run()
         QString matchReq = QString( "MATCH " )
                            + dict.databases.at( i )
                            + " " + dict.strategies.at( ns )
-                           + " \"" + gd::toQString( word )
+                           + " \"" + QString::fromStdU32String( word )
                            + "\"\r\n";
         socket->write( matchReq.toUtf8() );
         socket->waitForBytesWritten( 1000 );
@@ -644,7 +644,7 @@ void DictServerArticleRequest::run()
     {
       QString defineReq = QString( "DEFINE " )
                          + dict.databases.at( i )
-                         + " \"" + gd::toQString( word ) + "\"\r\n";
+                         + " \"" + QString::fromStdU32String( word ) + "\"\r\n";
       socket->write( defineReq.toUtf8() );
       socket->waitForBytesWritten( 1000 );
 

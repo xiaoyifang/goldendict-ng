@@ -1063,7 +1063,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     {
       // Find ISO 639-1 code
       string langcode;
-      QString attr = gd::toQString( node.tagAttrs );
+      QString attr = QString::fromStdU32String( node.tagAttrs );
       int n = attr.indexOf( "id=" );
       if( n >= 0 )
       {
@@ -1097,10 +1097,10 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     url.setHost( "localhost" );
     wstring nodeStr = node.renderAsText();
     normalizeHeadword( nodeStr );
-    url.setPath( Utils::Url::ensureLeadingSlash( gd::toQString( nodeStr ) ) );
+    url.setPath( Utils::Url::ensureLeadingSlash( QString::fromStdU32String( nodeStr ) ) );
     if( !node.tagAttrs.empty() )
     {
-      QString attr = gd::toQString( node.tagAttrs ).remove( '\"' );
+      QString attr = QString::fromStdU32String( node.tagAttrs ).remove( '\"' );
       int n = attr.indexOf( '=' );
       if( n > 0 )
       {
@@ -1123,7 +1123,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     url.setHost( "localhost" );
     wstring nodeStr = node.renderAsText();
     normalizeHeadword( nodeStr );
-    url.setPath( Utils::Url::ensureLeadingSlash( gd::toQString( nodeStr ) ) );
+    url.setPath( Utils::Url::ensureLeadingSlash( QString::fromStdU32String( nodeStr ) ) );
 
     result += string( R"(<a class="dsl_ref" href=")" ) + url.toEncoded().data() +"\">"
               + processNodeChildren( node ) + "</a>";
@@ -1147,12 +1147,12 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   else
   {
     gdWarning( R"(DSL: Unknown tag "%s" with attributes "%s" found in "%s", article "%s".)",
-               gd::toQString( node.tagName ).toUtf8().data(), gd::toQString( node.tagAttrs ).toUtf8().data(),
-               getName().c_str(), gd::toQString( currentHeadword ).toUtf8().data() );
+               QString::fromStdU32String( node.tagName ).toUtf8().data(), QString::fromStdU32String( node.tagAttrs ).toUtf8().data(),
+               getName().c_str(), QString::fromStdU32String( currentHeadword ).toUtf8().data() );
 
-    result += "<span class=\"dsl_unknown\">[" + string( gd::toQString( node.tagName ).toUtf8().data() );
+    result += "<span class=\"dsl_unknown\">[" + string( QString::fromStdU32String( node.tagName ).toUtf8().data() );
     if( !node.tagAttrs.empty() )
-      result += " " + string( gd::toQString( node.tagAttrs ).toUtf8().data() );
+      result += " " + string( QString::fromStdU32String( node.tagAttrs ).toUtf8().data() );
     result += "]" + processNodeChildren( node ) + "</span>";
   }
 
@@ -1410,7 +1410,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   {
     unescapeDsl( articleHeadword );
     normalizeHeadword( articleHeadword );
-    headword = gd::toQString( articleHeadword );
+    headword = QString::fromStdU32String( articleHeadword );
   }
 
   wstring articleText;
@@ -1433,7 +1433,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
   if( !articleText.empty() )
   {
-    text = gd::toQString( articleText ).normalized( QString::NormalizationForm_C );
+    text = QString::fromStdU32String( articleText ).normalized( QString::NormalizationForm_C );
 
     articleText.clear();
 
@@ -1524,7 +1524,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     {
       // Use base DSL parser for articles with insided cards
       ArticleDom dom( gd::toWString( text ), getName(), articleHeadword );
-      text = gd::toQString( dom.root.renderAsText( true ) );
+      text = QString::fromStdU32String( dom.root.renderAsText( true ) );
     }
     else
     {
@@ -1946,7 +1946,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           initializing.indexingDictionary( Utf8::encode( scanner.getDictionaryName() ) );
 
           gdDebug( "Dsl: Building the index for dictionary: %s\n",
-                   gd::toQString( scanner.getDictionaryName() ).toUtf8().data() );
+                   QString::fromStdU32String( scanner.getDictionaryName() ).toUtf8().data() );
 
           File::Class idx( indexFile, "wb" );
 
@@ -2136,7 +2136,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               break; // No more headwords
 
 #ifdef QT_DEBUG
-            qDebug() << "Alt headword" << gd::toQString( curString );
+            qDebug() << "Alt headword" << QString::fromStdU32String( curString );
 #endif
 
             processUnsortedParts( curString, true );

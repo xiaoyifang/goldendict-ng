@@ -3,11 +3,10 @@
 
 namespace gd
 {
-  QString toQString( wstring const & in )
-  {
-    return QString::fromStdU32String( in );
-  }
 
+  //This is not only about non-BMP characters.even without non-BMP. this wrapper has removed the tailing \0
+  //so even https://bugreports.qt-project.org/browse/QTBUG-25536 has been fixed . It can not directly be replaced by
+  // QString::toStd32String();
   wstring toWString( QString const & in )
   {
     QVector< unsigned int > v = in.toUcs4();
@@ -25,12 +24,9 @@ namespace gd
 
   wstring normalize( const wstring & str )
   {
-    return gd::toWString( gd::toQString( str ).normalized( QString::NormalizationForm_C ) );
+    return gd::toWString( QString::fromStdU32String( str ).normalized( QString::NormalizationForm_C ) );
   }
 
-  std::string toStdString(const QString& str)
-  {
-      return str.toStdString();
-  }
+
 
 }

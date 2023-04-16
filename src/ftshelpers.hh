@@ -135,7 +135,7 @@ public:
     wordsInIndex( 0 )
   {
     if( ignoreDiacritics_ )
-      searchString = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( searchString_ ) ) );
+      searchString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( searchString_ ) ) );
 
     foundHeadwords = new QList< FTS::FtsHeadword >;
     results         = 0;

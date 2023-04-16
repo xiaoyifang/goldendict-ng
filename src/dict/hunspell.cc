@@ -476,7 +476,7 @@ QVector< wstring > suggest( wstring & word, Mutex & hunspellMutex, Hunspell & hu
 
       for( vector< string >::size_type x = 0; x < suggestions.size(); ++x )
       {
-        QString suggestion = gd::toQString( decodeFromHunspell( hunspell, suggestions[ x ].c_str() ) );
+        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, suggestions[ x ].c_str() ) );
 
         // Strip comments
         int n = suggestion.indexOf( '#' );
@@ -492,7 +492,7 @@ QVector< wstring > suggest( wstring & word, Mutex & hunspellMutex, Hunspell & hu
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
 #ifdef QT_DEBUG
-            qDebug() << ">>>>>Alt:" << gd::toQString( alt );
+            qDebug() << ">>>>>Alt:" << QString::fromStdU32String( alt );
 #endif
             result.append( alt );
           }

@@ -169,7 +169,7 @@ public:
       nextChar += consumed;
       left -= consumed;
     }
-    normalizedString = gd::toQString( normText );
+    normalizedString = QString::fromStdU32String( normText );
   }
 };
 /// End of DiacriticsHandler class
@@ -2450,7 +2450,7 @@ void ArticleView::highlightFTSResults()
       bool ignoreDiacritics = Utils::Url::hasQueryItem( url, "ignore_diacritics" );
 
       if( ignoreDiacritics )
-        regString = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( regString ) ) );
+        regString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( regString ) ) );
       else
         regString = regString.remove( AccentMarkHandler::accentMark() );
 
