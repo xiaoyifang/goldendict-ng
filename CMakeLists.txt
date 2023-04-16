@@ -376,7 +376,6 @@ set(PROJECT_SOURCES
         romaji.hh
         russiantranslit.cc
         russiantranslit.hh
-        sapi.hh
         scanflag.cc
         scanflag.hh
         scanpopup.cc
