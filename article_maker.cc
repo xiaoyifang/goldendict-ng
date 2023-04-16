@@ -15,6 +15,7 @@
 #include "gddebug.hh"
 #include "utils.hh"
 #include "globalbroadcaster.h"
+#include "base/globalregex.hh"
 
 using std::vector;
 using std::string;
@@ -549,11 +550,12 @@ int ArticleRequest::findEndOfCloseDiv( const QString &str, int pos )
 {
   for( ; ; )
   {
-    int n1 = str.indexOf( "</div>", pos );
+    const int n1 = str.indexOf( "</div>", pos );
     if( n1 <= 0 )
       return n1;
 
-    int n2 = str.indexOf( "<div ", pos );
+    // will there be some custom tags starts with <div but not <div> ,such as <divider>
+    const int n2 = str.indexOf( RX::Html::startDivTag, pos );
     if( n2 <= 0 || n2 > n1 )
       return n1 + 6;
 
