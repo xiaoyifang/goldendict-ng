@@ -1,0 +1,45 @@
+site_name: GoldenDict-NG
+site_description: Goldendict is a dictionary 是一个可以用在 Windows Linux 和 mac 上的字典程序
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.expand
+    - content.action.edit
+    # - navigation.tabs -> for tabs
+
+# top right repo widget
+repo_name: goldendict
+repo_url: https://github.com/xiaoyifang/goldendict
+edit_uri: edit/website/docs/
+
+
+markdown_extensions:
+  - attr_list # for image ![](/img/a.webp){ widget=300}
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - Getting started: index.md
+  - Installation : install.md
+  - Dictionary Formats: dictformats.md
+  - Manage Dictionaries: managedicts.md
+  - Interface:
+      - Popup Window: ui_popup.md
+      - Headwords Dialog: ui_headwords.md
+      - Full Text Search: ui_fulltextsearch.md
+      - ToolBar & DictBar: ui_toolbar.md
+      - Favorites: ui_favorites.md
+      - Shortcuts: ui_shortcuts.md
+  - Special Usages:
+      - Anki Integration: topic_anki.md
+      - Command Lines: topic_commandline.md
+      - Custom Stylesheets: topic_userstyle.md
+      - Portable Mode: topic_portablemode.md
+  - Report Bugs & Feedbacks: feedbacks.md
+  - Contributor Guides:
+    - Developer: developer.md
+  - 中文文档: index_cn.md
