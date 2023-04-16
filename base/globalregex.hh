@@ -55,6 +55,10 @@ class Epwing{
   static QRegularExpression refWord;
 };
 
+namespace Html {
+const static QRegularExpression startDivTag( R"(<div[\s>])" );
+}
+
 } // namespace RX
 
 #endif // GLOBALREGEX_HH
