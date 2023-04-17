@@ -44,7 +44,6 @@ QT += core \
       webenginewidgets\
       webchannel\
       printsupport \
-      help \
       concurrent \
       texttospeech
 
@@ -206,9 +205,6 @@ unix:!mac {
     metainfo.path = $$PREFIX/share/metainfo
     metainfo.files = redist/*.metainfo.xml
     INSTALLS += metainfo
-    helps.path = $$PREFIX/share/goldendict/help/
-    helps.files = help/*.qch
-    INSTALLS += helps
 }
 freebsd {
     LIBS +=   -lexecinfo
@@ -257,17 +253,13 @@ mac {
         QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
                           cp -nR $${PWD}/maclibs/lib/ GoldenDict.app/Contents/Frameworks/ && \
                           mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/ && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/help && \
-                          cp -R $${PWD}/help/*.qch GoldenDict.app/Contents/MacOS/help/
+                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
     }
     else{
         QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
                           cp -nR $${PWD}/maclibs/lib/libeb.dylib GoldenDict.app/Contents/Frameworks/ && \
                           mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/ && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/help && \
-                          cp -R $${PWD}/help/*.qch GoldenDict.app/Contents/MacOS/help/
+                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
     }
 
     !CONFIG( no_chinese_conversion_support ) {
@@ -397,7 +389,6 @@ HEADERS += folding.hh \
     fulltextsearch.hh \
     ftshelpers.hh \
     dictserver.hh \
-    helpwindow.hh \
     slob.hh \
     ripemd.hh \
     gls.hh \
@@ -531,7 +522,6 @@ SOURCES += folding.cc \
     fulltextsearch.cc \
     ftshelpers.cc \
     dictserver.cc \
-    helpwindow.cc \
     slob.cc \
     ripemd.cc \
     gls.cc \

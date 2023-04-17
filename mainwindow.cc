@@ -141,7 +141,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 , headwordsDlg( 0 )
 , ftsIndexing( dictionaries )
 , ftsDlg( 0 )
-, helpWindow( 0 )
 , starIcon( ":/icons/star.svg" )
 , blueStarIcon( ":/icons/star_blue.svg" )
 {
@@ -629,7 +628,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.visitForum, &QAction::triggered, this, &MainWindow::visitForum );
   connect( ui.openConfigFolder, &QAction::triggered, this, &MainWindow::openConfigFolder );
   connect( ui.about, &QAction::triggered, this, &MainWindow::showAbout );
-  connect( ui.showReference, &QAction::triggered, this, &MainWindow::showGDHelp );
+  connect( ui.showReference, &QAction::triggered, []() {
+    Utils::Help::openHelpWebpage();
+  } );
 
   connect( groupListInDock, &GroupComboBox::currentIndexChanged,
            this, &MainWindow::currentGroupChanged );
@@ -2071,8 +2072,6 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
   wordFinder.clear();
   dictionariesUnmuted.clear();
 
-  hideGDHelp();
-
   { // Limit existence of newCfg
 
   Config::Class newCfg = cfg;
@@ -2150,8 +2149,6 @@ void MainWindow::editPreferences()
 
   Preferences preferences( this, cfg );
 
-  hideGDHelp();
-
   preferences.show();
 
   if ( preferences.exec() == QDialog::Accepted )
@@ -2185,10 +2182,6 @@ void MainWindow::editPreferences()
     {
       applyQtStyleSheet( p.addonStyle, p.displayStyle, p.darkMode );
     }
-
-    // See if we need to change help language
-    if( cfg.preferences.helpLanguage != p.helpLanguage )
-      closeGDHelp();
 
     if( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
       history.setSaveInterval( p.historyStoreInterval );
@@ -2910,8 +2903,6 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     if( ftsDlg )
       ftsDlg->hide();
 
-    if( helpWindow )
-      helpWindow->hide();
   }
 
   if ( shown )
@@ -4464,62 +4455,6 @@ void MainWindow::closeFullTextSearchDialog()
     ftsDlg->stopSearch();
     delete ftsDlg;
     ftsDlg = 0;
-  }
-}
-
-void MainWindow::showGDHelp()
-{
-  if( !helpWindow )
-  {
-    helpWindow = new Help::HelpWindow( this, cfg );
-
-    if( helpWindow->getHelpEngine() )
-    {
-      connect( helpWindow, &Help::HelpWindow::needClose, this, &MainWindow::hideGDHelp );
-      helpWindow->showHelpFor( "Content" );
-      helpWindow->show();
-    }
-    else
-    {
-      delete helpWindow;
-      helpWindow = 0;
-    }
-  }
-  else
-  {
-    helpWindow->show();
-    helpWindow->activateWindow();
-  }
-}
-
-void MainWindow::hideGDHelp()
-{
-  if( helpWindow )
-    helpWindow->hide();
-}
-
-void MainWindow::showGDHelpForID( QString const & id )
-{
-  if( !helpWindow )
-    showGDHelp();
-
-  if( helpWindow )
-  {
-    helpWindow->showHelpFor( id );
-    if( !helpWindow->isVisible() )
-    {
-      helpWindow->show();
-      helpWindow->activateWindow();
-    }
-  }
-}
-
-void MainWindow::closeGDHelp()
-{
-  if( helpWindow )
-  {
-    delete helpWindow;
-    helpWindow = 0;
   }
 }
 

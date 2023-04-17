@@ -2,6 +2,8 @@
 #include <QDir>
 #include <QPalette>
 #include <QStyle>
+#include <QDesktopServices>
+#include <QMessageBox>
 
 QString Utils::Path::combine(const QString& path1, const QString& path2)
 {
@@ -39,4 +41,15 @@ std::string Utils::Html::getHtmlCleaner()
                      </b></b></b></b></b></b></b></b>
                      </i></i></i></i></i></i></i></i>
                      </a></a></a></a></a></a></a></a>)";
+}
+
+void Utils::Help::openHelpWebpage( const QString & chapter )
+{
+  if ( !QDesktopServices::openUrl( QUrl( QStringLiteral( "https://xiaoyifang.github.io/goldendict/" ) + chapter ) ) ) {
+    QMessageBox msgBox;
+    msgBox.setIcon( QMessageBox::Warning );
+    msgBox.setText(
+      R"(Unable to open documentation.<br><a href="https://xiaoyifang.github.io/goldendict/">https://xiaoyifang.github.io/goldendict/</a>)" );
+    msgBox.exec();
+  }
 }

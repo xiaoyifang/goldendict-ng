@@ -305,8 +305,6 @@ set(PROJECT_SOURCES
         groups_widgets.hh
         headwordsmodel.cpp
         headwordsmodel.h
-        helpwindow.cc
-        helpwindow.hh
         history.cc
         history.hh
         historypanewidget.cc
@@ -364,8 +362,6 @@ set(PROJECT_SOURCES
         parsecmdline.hh
         preferences.cc
         preferences.hh
-        processwrapper.cc
-        processwrapper.hh
         programs.cc
         programs.hh
         resourceschemehandler.cpp
@@ -475,7 +471,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         Qt6::Xml
         Qt6::Concurrent
         Qt6::Core5Compat
-        Qt6::Help
         Qt6::Multimedia
         Qt6::WebEngineWidgets
         Qt6::Widgets
@@ -560,10 +555,6 @@ if (LINUX)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
 
     install(FILES ${qm_files} DESTINATION share/goldendict/locale)
-
-    install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_en.qch DESTINATION share/goldendict/help)
-    install(FILES ${CMAKE_SOURCE_DIR}/help/gdhelp_ru.qch DESTINATION share/goldendict/help)
-
 endif()
 
 # Copy .dlls to output dir

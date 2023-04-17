@@ -317,12 +317,14 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   connect( ui.OKButton, SIGNAL( clicked() ), this, SLOT( accept() ) );
   connect( ui.cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
 
-  connect( ui.helpButton, &QAbstractButton::clicked, this, &FullTextSearchDialog::helpRequested );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, this, &FullTextSearchDialog::helpRequested );
+  connect( &helpAction, &QAction::triggered, [](){
+    Utils::Help::openHelpWebpage("ui_fulltextsearch");
+  } );
+  connect( ui.helpButton, &QAbstractButton::clicked, &helpAction,&QAction::trigger);
 
   addAction( &helpAction );
 
@@ -695,13 +697,6 @@ bool FullTextSearchDialog::eventFilter( QObject * obj, QEvent * ev )
     }
   }
   return QDialog::eventFilter( obj, ev );
-}
-
-void FullTextSearchDialog::helpRequested()
-{
-  MainWindow * mainWindow = qobject_cast< MainWindow * >( parentWidget() );
-  if( mainWindow )
-    mainWindow->showGDHelpForID( "Full-text search" );
 }
 
 /// HeadwordsListModel
