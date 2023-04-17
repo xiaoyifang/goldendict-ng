@@ -123,6 +123,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.translateBox->wordList()->attachFinder( &wordFinder );
   ui.translateBox->wordList()->setFocusPolicy(Qt::ClickFocus);
   ui.translateBox->translateLine()->installEventFilter( this );
+  definition->installEventFilter(this);
+  this->installEventFilter(this);
 
   connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
 
@@ -736,16 +738,14 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 
 void ScanPopup::typingEvent( QString const & t )
 {
-  if ( t == "\n" || t == "\r" )
-  {
+  if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
   }
-  else
-  {
-      ui.translateBox->translateLine()->clear();
-      ui.translateBox->translateLine()->setFocus();
-      //    ui.translateBox->setText( t, true );
-      //    ui.translateBox->translateLine()->setCursorPosition( t.size() );
+  else {
+    ui.translateBox->translateLine()->clear();
+    ui.translateBox->translateLine()->setFocus();
+    ui.translateBox->setText( t, true );
+    ui.translateBox->translateLine()->setCursorPosition( t.size() );
   }
 }
 
@@ -771,6 +771,24 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
       QMouseEvent * mouseEvent = ( QMouseEvent * ) event;
       reactOnMouseMove( mouseEvent->globalPos() );
     }
+  }
+
+  if ( event->type() == QEvent::KeyPress && watched != ui.translateBox->translateLine() ) {
+
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >(event);  key_event->modifiers() == Qt::NoModifier ) {
+      const QString text = key_event->text();
+
+      if ( Utils::ignoreKeyEvent( key_event ) ||
+           key_event->key() == Qt::Key_Return ||
+           key_event->key() == Qt::Key_Enter )
+          return false; // Those key have other uses than to start typing
+      // or don't make sense
+      if ( !text.isEmpty() ) {
+          typingEvent( text );
+          return true;
+      }
+    }
+
   }
 
   return QMainWindow::eventFilter( watched, event );
