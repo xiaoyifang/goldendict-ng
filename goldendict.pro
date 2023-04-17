@@ -399,20 +399,7 @@ HEADERS += folding.hh \
     src/ui/ftssearchpanel.h \
     src/ui/searchpanel.h
 
-FORMS += groups.ui \
-    dictgroupwidget.ui \
-    mainwindow.ui \
-    sources.ui \
-    initializing.ui \
-    scanpopup.ui \
-    preferences.ui \
-    about.ui \
-    editdictionaries.ui \
-    orderandprops.ui \
-    dictinfo.ui \
-    dictheadwords.ui \
-    authentication.ui \
-    fulltextsearch.ui
+FORMS += $$files(src/ui/*.ui)
 
 SOURCES += folding.cc \
     ankiconnector.cpp \
@@ -533,7 +520,6 @@ SOURCES += folding.cc \
     src/ui/searchpanel.cpp
 
 #speech to text
-FORMS   += texttospeechsource.ui
 SOURCES += speechclient.cc \
            texttospeechsource.cc
 HEADERS += texttospeechsource.hh \
@@ -586,48 +572,11 @@ CONFIG( chinese_conversion_support ) {
 
 RESOURCES += resources.qrc \
     scripts.qrc \
-    flags.qrc
+    flags.qrc \
+    src/stylesheets/css.qrc
 #EXTRA_TRANSLATIONS += thirdparty/qwebengine_ts/qtwebengine_zh_CN.ts
-TRANSLATIONS += locale/ru_RU.ts \
-    locale/zh_CN.ts \
-    locale/cs_CZ.ts \
-    locale/de_DE.ts \
-    locale/de_CH.ts \
-    locale/el_GR.ts \
-    locale/bg_BG.ts \
-    locale/ar_SA.ts \
-    locale/lt_LT.ts \
-    locale/uk_UA.ts \
-    locale/vi_VN.ts \
-    locale/it_IT.ts \
-    locale/pl_PL.ts \
-    locale/ja_JP.ts \
-    locale/zh_TW.ts \
-    locale/sq_AL.ts \
-    locale/pt_BR.ts \
-    locale/es_AR.ts \
-    locale/es_BO.ts \
-    locale/es_ES.ts \
-    locale/sk_SK.ts \
-    locale/tr_TR.ts \
-    locale/qu_WI.ts \
-    locale/tg_TJ.ts \
-    locale/ay_WI.ts \
-    locale/be_BY.ts \
-    locale/be_BY@latin.ts \
-    locale/fr_FR.ts \
-    locale/ko_KR.ts \
-    locale/nl_NL.ts \
-    locale/sr_SR.ts \
-    locale/sv_SE.ts \
-    locale/tk_TM.ts \
-    locale/fa_IR.ts \
-    locale/mk_MK.ts \
-    locale/eo_EO.ts \
-    locale/fi_FI.ts \
-    locale/jb_JB.ts \
-    locale/hi_IN.ts \
-    locale/ie_001.ts
+TRANSLATIONS += $$files(locale/*.ts)
+
 # Build version file
 !isEmpty( hasGit ) {
   PRE_TARGETDEPS      += $$PWD/version.txt

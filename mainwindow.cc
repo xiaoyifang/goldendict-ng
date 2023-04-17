@@ -1199,25 +1199,25 @@ void MainWindow::applyQtStyleSheet( QString const & addonStyle,QString const & d
   }
   #endif
 
-  QFile builtInCssFile( ":src/qtstyle/qt-style.css" );
+  QFile builtInCssFile( ":qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
   QByteArray css = builtInCssFile.readAll();
 
 #if defined(Q_OS_MAC)
-  QFile macCssFile( ":src/qtstyle/qt-style-macos.css" );
+  QFile macCssFile( ":qt-style-macos.css" );
   macCssFile.open( QFile::ReadOnly );
   css += macCssFile.readAll();
 #endif
 
 #if defined(Q_OS_WIN)
-  QFile winCssFile( ":src/qtstyle/qt-style-win.css" );
+  QFile winCssFile( ":qt-style-win.css" );
   winCssFile.open( QFile::ReadOnly );
   css += winCssFile.readAll();
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
   if (!darkMode){
-    QFile additionalStyle( QString( ":src/qtstyle/qt-%1.css" ).arg( displayStyle ) );
+    QFile additionalStyle( QString( ":qt-%1.css" ).arg( displayStyle ) );
     if ( additionalStyle.open( QFile::ReadOnly ) ){
       css += additionalStyle.readAll();
     }
