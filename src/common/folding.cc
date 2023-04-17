@@ -4,6 +4,8 @@
 #include "folding.hh"
 #include <QRegularExpression>
 
+#include "wstring_qt.hh"
+
 namespace Folding {
 
 #include "inc_case_folding.hh"
@@ -25,8 +27,7 @@ bool isCombiningMark( wchar ch )
 
 wstring apply( wstring const & in, bool preserveWildcards )
 {
-  // First, strip diacritics and apply ws/punctuation removal
-
+  //First, strip diacritics and apply ws/punctuation removal
   wstring withoutDiacritics;
 
   withoutDiacritics.reserve( in.size() );
@@ -35,7 +36,7 @@ wstring apply( wstring const & in, bool preserveWildcards )
 
   size_t consumed;
 
-  for( size_t left = in.size(); left; )
+  for(int left=in.size() ; left; )
   {
     wchar ch = foldDiacritic( nextChar, left, consumed );
 

@@ -864,7 +864,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
     }
 
     vector< BtreeIndexing::WordArticleLink > links =
-      ftsIndex.findArticles( gd::toWString( word ), ignoreDiacritics );
+      ftsIndex.findArticles( gd::removeTrailingZero( word ), ignoreDiacritics );
     for( unsigned x = 0; x < links.size(); x++ )
     {
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
@@ -986,7 +986,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
     auto fn_wordLink = [ & ](const QString & word )
     {
       QSet< uint32_t > tmp;
-      vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::toWString( word ) );
+      vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
       for( unsigned x = 0; x < links.size(); x++ )
       {
         if( Utils::AtomicInt::loadAcquire( isCancelled ) )

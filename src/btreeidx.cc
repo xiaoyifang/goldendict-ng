@@ -67,8 +67,10 @@ void BtreeIndex::openIndex( IndexInfo const & indexInfo,
   rootNode.clear();
 }
 
-vector< WordArticleLink > BtreeIndex::findArticles( wstring const & word, bool ignoreDiacritics )
+vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics )
 {
+  //First trim ending zero
+  wstring word = gd::removeTrailingZero( search_word );
   vector< WordArticleLink > result;
 
   try
@@ -1003,8 +1005,9 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   return offset;
 }
 
-void IndexedWords::addWord( wstring const & word, uint32_t articleOffset, unsigned int maxHeadwordSize )
+void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
+  wstring const & word = gd::removeTrailingZero( index_word );
   wchar const * wordBegin = word.c_str();
   string::size_type wordSize = word.size();
 
@@ -1095,8 +1098,9 @@ void IndexedWords::addWord( wstring const & word, uint32_t articleOffset, unsign
   }
 }
 
-void IndexedWords::addSingleWord( wstring const & word, uint32_t articleOffset )
+void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOffset )
 {
+  wstring const & word = gd::removeTrailingZero( index_word );
   wstring folded = Folding::apply( word );
   if( folded.empty() )
       folded = Folding::applyWhitespaceOnly( word );
