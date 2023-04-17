@@ -33,7 +33,7 @@
 #include "dict/lingualibre.hh"
 
 #ifndef NO_EPWING_SUPPORT
-#include "epwing.hh"
+#include "dict/epwing.hh"
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT

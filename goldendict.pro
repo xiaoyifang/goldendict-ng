@@ -556,12 +556,12 @@ CONFIG( no_epwing_support ) {
 }
 
 !CONFIG( no_epwing_support ) {
-  HEADERS += src/epwing.hh \
-             src/epwing_book.hh \
-             src/epwing_charmap.hh
-  SOURCES += src/epwing.cc \
-             src/epwing_book.cc \
-             src/epwing_charmap.cc
+  HEADERS += src/dict/epwing.hh \
+             src/dict/epwing_book.hh \
+             src/dict/epwing_charmap.hh
+  SOURCES += src/dict/epwing.cc \
+             src/dict/epwing_book.cc \
+             src/dict/epwing_charmap.cc
   LIBS += -leb
 }
 
