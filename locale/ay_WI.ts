@@ -12,7 +12,7 @@
         <translation>Yanapirinaka:</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, aru pirwa electrónico, jakhu uñjawi </translation>
     </message>
     <message>
@@ -1126,7 +1126,7 @@ Abrir una lista de grupos</translation>
     <name>Help::HelpWindow</name>
     <message>
         <source>GoldenDict help</source>
-        <translation>GoldenDict yatichawi</translation>
+        <translation>GoldenDict-ng yatichawi</translation>
     </message>
     <message>
         <source>Home</source>
@@ -1229,8 +1229,8 @@ Tamaño original</translation>
         <translation>Amp suma suyt&apos;am aru pirwanaka uñjañataki</translation>
     </message>
     <message>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - qaltaña</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - qaltaña</translation>
     </message>
     <message>
         <source>Dictionary Name</source>
@@ -2258,15 +2258,15 @@ Pronunciar palabra (Alt+S)</translation>
     </message>
     <message>
         <source>&amp;Homepage</source>
-        <translation>GoldenDict &amp;web laphi</translation>
+        <translation>GoldenDict-ng &amp;web laphi</translation>
     </message>
     <message>
         <source>&amp;About</source>
         <translation>&amp;GoldenDictxata</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation>GoldenDict ukxata</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>GoldenDict-ng ukxata</translation>
     </message>
     <message>
         <source>F1</source>
@@ -2539,7 +2539,7 @@ los símbolos &apos;[...]&apos;. Para encontrar &apos;*&apos;, &apos;?&apos;, &a
     </message>
     <message>
         <source>GoldenDict reference</source>
-        <translation>GoldenDict y&amp;atichawi</translation>
+        <translation>GoldenDict-ng y&amp;atichawi</translation>
     </message>
     <message>
         <source>Now indexing for full-text search: </source>
@@ -2895,7 +2895,7 @@ lim&apos;tasispawa arunak ajllitakis ukjaru.</translation>
     </message>
     <message>
         <source>Automatically starts GoldenDict after operation system bootup.</source>
-        <translation>GoldenDict sapitakiw qaltani .</translation>
+        <translation>GoldenDict-ng sapitakiw qaltani .</translation>
     </message>
     <message>
         <source>When enabled, a translation popup window would be shown each time
@@ -3312,7 +3312,7 @@ mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translati
     </message>
     <message>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>GoldenDict janiw uskañakiti HTTP p&apos;iqi tuqi laphina</translation>
+        <translation>GoldenDict-ng janiw uskañakiti HTTP p&apos;iqi tuqi laphina</translation>
     </message>
     <message>
         <source>Select this option to automatic collapse big articles</source>
@@ -3445,7 +3445,7 @@ Reproducir archivos de audio con el audio por defecto del sistema.</translation>
     </message>
     <message>
         <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-        <translation>GoldenDict ukan ajllit qillqataxa, ukhamaraki mayjt&apos;ayat portapapeles, janiw yäqañakiti</translation>
+        <translation>GoldenDict-ng ukan ajllit qillqataxa, ukhamaraki mayjt&apos;ayat portapapeles, janiw yäqañakiti</translation>
     </message>
     <message>
         <source>ScanPopup unpinned window flags</source>

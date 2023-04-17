@@ -8,7 +8,7 @@
         <translation>Giới thiệu</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Chương trình tra từ điển Từ điển Vàng, phiên bản </translation>
     </message>
     <message>
@@ -1143,7 +1143,7 @@ between classic and school orthography in cyrillic)</source>
 <context>
     <name>Initializing</name>
     <message>
-        <source>GoldenDict - Initializing</source>
+        <source>GoldenDict-ng - Initializing</source>
         <translation>Từ điển Vàng - Đang khởi chạy</translation>
     </message>
     <message>
@@ -2035,7 +2035,7 @@ between classic and school orthography in cyrillic)</source>
         <translation>&amp;Giới thiệu</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
+        <source>About GoldenDict-ng</source>
         <translation>Về Từ điển Vàng</translation>
     </message>
     <message>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string notr="true">GoldenDict</string>
+   <string notr="true">GoldenDict-ng</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -330,7 +330,7 @@
     <string>&amp;About</string>
    </property>
    <property name="toolTip">
-    <string>About GoldenDict</string>
+    <string>About GoldenDict-ng</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>

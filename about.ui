@@ -63,7 +63,7 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>GoldenDict dictionary lookup program, version </string>
+            <string>GoldenDict-ng dictionary lookup program, version </string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

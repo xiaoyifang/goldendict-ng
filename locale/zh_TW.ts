@@ -8,8 +8,8 @@
         <translation>關於</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict 字典查詢程式，版本 </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng 字典查詢程式，版本 </translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3 or later</source>
@@ -1058,7 +1058,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Help::HelpWindow</name>
     <message>
         <source>GoldenDict help</source>
-        <translation>GoldenDict 說明</translation>
+        <translation>GoldenDict-ng 說明</translation>
     </message>
     <message>
         <source>Home</source>
@@ -1145,8 +1145,8 @@ between classic and school orthography in cyrillic)</source>
         <translation>字典名稱</translation>
     </message>
     <message>
-        <source>GoldenDict - Initializing</source>
-        <translation>初始化 GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>初始化 GoldenDict-ng</translation>
     </message>
     <message>
         <source>Please wait while indexing dictionary</source>
@@ -2109,8 +2109,8 @@ between classic and school orthography in cyrillic)</source>
         <translation>顯示主視窗(&amp;M)</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation>關於 GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>關於 GoldenDict-ng</translation>
     </message>
     <message>
         <source>Download</source>
@@ -2435,7 +2435,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>GoldenDict reference</source>
-        <translation>GoldenDict 參考資料</translation>
+        <translation>GoldenDict-ng 參考資料</translation>
     </message>
     <message>
         <source>Now indexing for full-text search: </source>
@@ -3137,7 +3137,7 @@ Enable this option to workaround the problem.</source>
     </message>
     <message>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>在 HTTP 標頭檔中不要顯示 GoldenDict</translation>
+        <translation>在 HTTP 標頭檔中不要顯示 GoldenDict-ng</translation>
     </message>
     <message>
         <source>Select this option to automatic collapse big articles</source>

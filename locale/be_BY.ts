@@ -10,8 +10,8 @@
     </message>
     <message>
       <location filename="../about.ui" line="66"/>
-      <source>GoldenDict dictionary lookup program, version </source>
-      <translation>GoldenDict — праграма для прагляду слоўнікаў, версія </translation>
+      <source>GoldenDict-ng dictionary lookup program, version </source>
+      <translation>GoldenDict-ng — праграма для прагляду слоўнікаў, версія </translation>
     </message>
     <message>
       <location filename="../about.ui" line="91"/>
@@ -1364,7 +1364,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../helpwindow.cc" line="64"/>
       <source>GoldenDict help</source>
-      <translation>Даведка GoldenDict</translation>
+      <translation>Даведка GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../helpwindow.cc" line="71"/>
@@ -1465,8 +1465,8 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
       <location filename="../initializing.ui" line="22"/>
-      <source>GoldenDict - Initializing</source>
-      <translation>GoldenDict - ініцыялізацыя</translation>
+      <source>GoldenDict-ng - Initializing</source>
+      <translation>GoldenDict-ng - ініцыялізацыя</translation>
     </message>
     <message>
       <location filename="../initializing.ui" line="28"/>
@@ -2604,13 +2604,13 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../mainwindow.ui" line="414"/>
-      <source>About GoldenDict</source>
-      <translation>Пра GoldenDict</translation>
+      <source>About GoldenDict-ng</source>
+      <translation>Пра GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../mainwindow.ui" line="630"/>
       <source>GoldenDict reference</source>
-      <translation>Спасылка на GoldenDict</translation>
+      <translation>Спасылка на GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../mainwindow.ui" line="633"/>
@@ -2999,7 +2999,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../mainwindow.cc" line="3221"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>GoldenDict версіі &lt;b&gt;%1&lt;/b&gt; даступны для спампоўвання.&lt;br&gt;Пстрыкніце па &lt;b&gt;Спампаваць&lt;/b&gt;, каб перайсці на старонку спампоўвання.</translation>
+      <translation>GoldenDict-ng версіі &lt;b&gt;%1&lt;/b&gt; даступны для спампоўвання.&lt;br&gt;Пстрыкніце па &lt;b&gt;Спампаваць&lt;/b&gt;, каб перайсці на старонку спампоўвання.</translation>
     </message>
     <message>
       <location filename="../mainwindow.cc" line="3226"/>
@@ -3698,12 +3698,12 @@ seconds, which is specified here.</source>
     <message>
       <location filename="../preferences.ui" line="685"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не паказваць выплыўное акно пры змене абранага слова або слова з буфера абмену ў вокнах GoldenDict</translation>
+      <translation>Не паказваць выплыўное акно пры змене абранага слова або слова з буфера абмену ў вокнах GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../preferences.ui" line="688"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Не зважаць на змену абранага і змены ў буферы абмену ў вокнах GoldenDict</translation>
+      <translation>Не зважаць на змену абранага і змены ў буферы абмену ў вокнах GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../preferences.ui" line="698"/>
@@ -4035,7 +4035,7 @@ It is not needed to select this option if you don&apos;t use such programs.</sou
     <message>
       <location filename="../preferences.ui" line="1476"/>
       <source>Use &amp;GoldenDict message</source>
-      <translation>Выкарыстоўваць &amp;паведамленні GoldenDict</translation>
+      <translation>Выкарыстоўваць &amp;паведамленні GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../preferences.ui" line="1486"/>

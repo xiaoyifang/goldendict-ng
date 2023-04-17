@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>골든딕 사전검색 프로그램，버전 </translation>
     </message>
     <message>
@@ -1430,7 +1430,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
+        <source>GoldenDict-ng - Initializing</source>
         <translation>골든딕 - 시작 중</translation>
     </message>
     <message>
@@ -2940,7 +2940,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
+        <source>About GoldenDict-ng</source>
         <translation>골든딕 정보</translation>
     </message>
     <message>

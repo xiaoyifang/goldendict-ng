@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Dicionário Eletrônico GoldenDict, versão </translation>
     </message>
     <message>
@@ -1319,7 +1319,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Ajuda GoldenDict</translation>
+        <translation>Ajuda GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1420,8 +1420,8 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Processando</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Processando</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2559,13 +2559,13 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Sobre o GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Sobre o GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Referência GoldenDict</translation>
+        <translation>Referência GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>
@@ -2576,7 +2576,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
         <location filename="../mainwindow.ui" line="422"/>
         <location filename="../mainwindow.cc" line="385"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Fechar o GoldenDict</translation>
+        <translation>&amp;Fechar o GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="316"/>
@@ -3842,7 +3842,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
         <location filename="../preferences.ui" line="688"/>
         <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-        <translation>Ignorar as próprias alterações de seleção e área de transferência do GoldenDict</translation>
+        <translation>Ignorar as próprias alterações de seleção e área de transferência do GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="919"/>

@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict - sozlükleri açmak üçin programma,  wersiýa </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng - sozlükleri açmak üçin programma,  wersiýa </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1416,8 +1416,8 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict -  başlangyç</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng -  başlangyç</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2555,8 +2555,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>GoldenDict barada</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>GoldenDict-ng barada</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
@@ -4083,7 +4083,7 @@ Enable this option to workaround the problem.</source>
     <message>
         <location filename="../preferences.ui" line="1151"/>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>GoldenDict HTTP ady arkaly görkezme</translation>
+        <translation>GoldenDict-ng HTTP ady arkaly görkezme</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="1227"/>

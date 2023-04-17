@@ -20,8 +20,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict simi-pirwapi mask&apos;ana, versión </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng simi-pirwapi mask&apos;ana, versión </translation>
     </message>
     <message>
         <location filename="../about.ui" line="101"/>
@@ -1426,8 +1426,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - qallarispa</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - qallarispa</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2935,7 +2935,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
+        <source>About GoldenDict-ng</source>
         <translation>GoldenDictmanta willaway</translation>
     </message>
     <message>

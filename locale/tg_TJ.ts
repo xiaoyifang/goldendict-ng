@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Луғати GoldenDict, версияи </translation>
     </message>
     <message>
@@ -1318,7 +1318,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Кумаки GoldenDict</translation>
+        <translation>Кумаки GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1419,8 +1419,8 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>Омодасозии GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>Омодасозии GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2558,13 +2558,13 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Дар бораи GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Дар бораи GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Маълумоти GoldenDict</translation>
+        <translation>Маълумоти GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>

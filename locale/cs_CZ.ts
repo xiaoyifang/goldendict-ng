@@ -8,7 +8,7 @@
         <translation>О programu</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Prohledávač slovníků GoldenDict, verze </translation>
     </message>
     <message>
@@ -1148,8 +1148,8 @@ a školní ortografií v cyrilici)</translation>
         <translation>Prosím počkejte na dokončení indexace slovníku</translation>
     </message>
     <message>
-        <source>GoldenDict - Initializing</source>
-        <translation>Načítám GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>Načítám GoldenDict-ng</translation>
     </message>
     <message>
         <source>Dictionary Name</source>
@@ -2128,8 +2128,8 @@ a školní ortografií v cyrilici)</translation>
         <translation>&amp;O programu</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation>О programu GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>О programu GoldenDict-ng</translation>
     </message>
     <message>
         <source>F1</source>

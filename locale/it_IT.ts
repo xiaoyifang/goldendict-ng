@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, dizionario elettronico, versione </translation>
     </message>
     <message>
@@ -1318,7 +1318,7 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Guida di GoldenDict</translation>
+        <translation>Guida di GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1430,8 +1430,8 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Inizializzazione</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Inizializzazione</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2941,13 +2941,13 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
+        <source>About GoldenDict-ng</source>
         <translation>Info...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Guida di GoldenDict</translation>
+        <translation>Guida di GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>

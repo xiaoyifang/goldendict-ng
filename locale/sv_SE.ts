@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Ordliste- och uppslagsverksprogrammet GoldenDict, version </translation>
     </message>
     <message>
@@ -1319,7 +1319,7 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>GoldenDict hjälp</translation>
+        <translation>GoldenDict-ng hjälp</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1420,8 +1420,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Initierar</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Initierar</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2559,8 +2559,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Om GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Om GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>

@@ -708,7 +708,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // After we have dictionaries and groups, we can populate history
 //  historyChanged();
 
-  setWindowTitle( "GoldenDict" );
+  setWindowTitle( "GoldenDict-ng" );
 
   blockUpdateWindowTitle = true;
   addNewTab();
@@ -1274,7 +1274,7 @@ void MainWindow::updateTrayIcon()
         QIcon::fromTheme("goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" )) :
         QIcon::fromTheme("goldendict-tray", QIcon( ":/icons/programicon_old.png" )) );
 
-    trayIcon->setToolTip( "GoldenDict" );
+    trayIcon->setToolTip( "GoldenDict-ng" );
   }
 
   // The 'Close to tray' action is associated with the tray icon, so we hide
@@ -1891,7 +1891,7 @@ void MainWindow::updateWindowTitle()
         str.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
       }
       if( !blockUpdateWindowTitle )
-        setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict" ) );
+        setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
       blockUpdateWindowTitle = false;
     }
   }
@@ -3043,7 +3043,7 @@ void MainWindow::latestReleaseReplyReady()
       auto matchParts = extractReleaseRx.match(releaseAnchor);
       if(matchParts.hasMatch()){
         latestVersion = matchParts.captured(2);
-        QString prefix("GoldenDict-v");
+        QString prefix("GoldenDict-ng-v");
         if(latestVersion.startsWith(prefix)){
           latestVersion = latestVersion.mid(prefix.length());
         }

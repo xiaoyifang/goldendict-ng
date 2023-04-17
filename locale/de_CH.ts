@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict Programm-Version: </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng Programm-Version: </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1370,7 +1370,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../helpwindow.cc" line="67"/>
         <source>GoldenDict help</source>
-        <translation>GoldenDict Hilfe</translation>
+        <translation>GoldenDict-ng Hilfe</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="74"/>
@@ -1482,8 +1482,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Initialisierung</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Initialisierung</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2992,8 +2992,8 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Über GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Über GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
@@ -3776,7 +3776,7 @@ Mit dieser Option können die Tasten auch kurz nach der Markierung gedrückt wer
     <message>
         <location filename="../preferences.ui" line="718"/>
         <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-        <translation>Ignoriere eigene Selektion oder Zwischenablage Änderungen von GoldenDict</translation>
+        <translation>Ignoriere eigene Selektion oder Zwischenablage Änderungen von GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="728"/>
@@ -4250,7 +4250,7 @@ Diese Option kann dieses Problem beheben.</translation>
     <message>
         <location filename="../preferences.ui" line="1218"/>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>GoldenDict nicht in HTTP-Kopfzeilen identifizieren</translation>
+        <translation>GoldenDict-ng nicht in HTTP-Kopfzeilen identifizieren</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="1278"/>

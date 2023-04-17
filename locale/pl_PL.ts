@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict — program do przeszukiwania słowników, wersja </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng — program do przeszukiwania słowników, wersja </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1319,7 +1319,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Pomoc do programu GoldenDict</translation>
+        <translation>Pomoc do programu GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1431,8 +1431,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - inicjowanie</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - inicjowanie</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2936,13 +2936,13 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Informacje o programie GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Informacje o programie GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Pomoc do programu GoldenDict</translation>
+        <translation>Pomoc do programu GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>

@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict — pragrama prahladu słoŭnikaŭ, versija </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng — pragrama prahladu słoŭnikaŭ, versija </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -54,12 +54,12 @@
     <message>
         <location filename="../article_maker.cc" line="181"/>
         <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-        <translation>GoldenDict nie znajšoŭ pierakładu dla &lt;b&gt;%1&lt;/b&gt; u grupie &lt;b&gt;%2&lt;/b&gt;.</translation>
+        <translation>GoldenDict-ng nie znajšoŭ pierakładu dla &lt;b&gt;%1&lt;/b&gt; u grupie &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../article_maker.cc" line="186"/>
         <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-        <translation>GoldenDict nie znajšoŭ pierakładu ŭ grupie &lt;b&gt;%1&lt;/b&gt;.</translation>
+        <translation>GoldenDict-ng nie znajšoŭ pierakładu ŭ grupie &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../article_maker.cc" line="234"/>
@@ -1416,7 +1416,7 @@ miž klasyčnym i školnym pravapisam)</translation>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
+        <source>GoldenDict-ng - Initializing</source>
         <translation>Inicyjalizacyja</translation>
     </message>
     <message>
@@ -2555,8 +2555,8 @@ miž klasyčnym i školnym pravapisam)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Infarmacyja pra GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Infarmacyja pra GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
@@ -2950,7 +2950,7 @@ miž klasyčnym i školnym pravapisam)</translation>
     <message>
         <location filename="../mainwindow.cc" line="3165"/>
         <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-        <translation>GoldenDict versii &lt;b&gt;%1&lt;/b&gt; dastupny dla załadavańnia.&lt;br&gt;Pstrykni pa &lt;b&gt;Zładavać&lt;/b&gt;, kab pierajści na bačynu ściahvańnia.</translation>
+        <translation>GoldenDict-ng versii &lt;b&gt;%1&lt;/b&gt; dastupny dla załadavańnia.&lt;br&gt;Pstrykni pa &lt;b&gt;Zładavać&lt;/b&gt;, kab pierajści na bačynu ściahvańnia.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cc" line="3170"/>
@@ -4291,7 +4291,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <location filename="../ffmpegaudio.cc" line="222"/>
         <location filename="../ffmpegaudio.cc" line="229"/>
         <source>Codec [id: %1] not found.</source>
-        <translation>GoldenDict nie znajšoŭ kodeka [id: %1].</translation>
+        <translation>GoldenDict-ng nie znajšoŭ kodeka [id: %1].</translation>
     </message>
     <message>
         <location filename="../ffmpegaudio.cc" line="235"/>
@@ -4945,7 +4945,7 @@ U GoldenDict jašče nie padtrymlivajecca.</translation>
     <message>
         <location filename="../texttospeechsource.cc" line="59"/>
         <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-        <translation>GoldenDict nie znajšoŭ žadnaha dastupnaha syntezatara hołasu.&lt;br&gt;Pierakanajsia ŭ najaŭnaści choć adnaho ŭstalavanaha syntazatara na svaim kamputary.</translation>
+        <translation>GoldenDict-ng nie znajšoŭ žadnaha dastupnaha syntezatara hołasu.&lt;br&gt;Pierakanajsia ŭ najaŭnaści choć adnaho ŭstalavanaha syntazatara na svaim kamputary.</translation>
     </message>
     <message>
         <location filename="../texttospeechsource.cc" line="79"/>

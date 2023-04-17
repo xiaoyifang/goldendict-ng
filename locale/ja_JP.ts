@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict 辞書検索プログラム version </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng 辞書検索プログラム version </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1426,8 +1426,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - 初期化中</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - 初期化中</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2565,7 +2565,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../mainwindow.cc" line="3165"/>
         <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-        <translation>GoldenDict のバージョン &lt;b&gt;%1&lt;/b&gt; のダウンロードが利用可能です。&lt;br&gt;ダウンロード ページへ移動するには&lt;b&gt;ダウンロード&lt;/b&gt;をクリックします。</translation>
+        <translation>GoldenDict-ng のバージョン &lt;b&gt;%1&lt;/b&gt; のダウンロードが利用可能です。&lt;br&gt;ダウンロード ページへ移動するには&lt;b&gt;ダウンロード&lt;/b&gt;をクリックします。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cc" line="3170"/>
@@ -2935,8 +2935,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>GoldenDict のバージョン情報</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>GoldenDict-ng のバージョン情報</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
