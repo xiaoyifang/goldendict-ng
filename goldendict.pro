@@ -577,8 +577,8 @@ CONFIG( chinese_conversion_support ) {
 }
 
 RESOURCES += resources.qrc \
-    scripts.qrc \
-    flags.qrc \
+    src/scripts.qrc \
+    src/flags.qrc \
     src/stylesheets/css.qrc
 #EXTRA_TRANSLATIONS += thirdparty/qwebengine_ts/qtwebengine_zh_CN.ts
 TRANSLATIONS += $$files(locale/*.ts)
