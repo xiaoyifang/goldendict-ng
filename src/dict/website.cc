@@ -9,7 +9,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include "gddebug.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 #include <QRegularExpression>
 

@@ -15,7 +15,7 @@
 #include "utils.hh"
 
 #include <QRegularExpression>
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 namespace MediaWiki {
 

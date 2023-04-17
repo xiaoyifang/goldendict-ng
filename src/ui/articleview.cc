@@ -9,7 +9,7 @@
 #include "dict/programs.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
-#include "weburlrequestinterceptor.h"
+#include "weburlrequestinterceptor.hh"
 #include "wildcard.hh"
 #include "wstring_qt.hh"
 #include <QCryptographicHash>
@@ -45,7 +45,7 @@
 
 #include "speechclient.hh"
 
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 using std::map;
 using std::list;
 

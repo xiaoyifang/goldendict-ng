@@ -16,7 +16,7 @@
 
 #include <QRegularExpression>
 #include "wildcard.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 //#define __BTREE_USE_LZO
 // LZO mode is experimental and unsupported. Tests didn't show any substantial

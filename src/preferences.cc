@@ -1,4 +1,4 @@
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 #include "keyboardstate.hh"
 #include "langcoder.hh"
 #include "language.hh"

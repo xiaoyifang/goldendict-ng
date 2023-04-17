@@ -9,7 +9,7 @@
 #include "parsecmdline.hh"
 #include "iconv.hh"
 #include "utils.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 #include <QDir>
 #include <QFileInfo>

@@ -9,7 +9,7 @@
 #include <QTimer>
 #include <QDialog>
 #include <QMainWindow>
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 #ifdef Q_OS_WIN32
 #include <qt_windows.h>
 #endif

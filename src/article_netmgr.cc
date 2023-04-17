@@ -7,7 +7,7 @@
 #include "gddebug.hh"
 #include "utils.hh"
 #include <QNetworkAccessManager>
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 using std::string;
 

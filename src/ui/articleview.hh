@@ -14,7 +14,7 @@
 #include "audioplayerinterface.hh"
 #include "instances.hh"
 #include "groupcombobox.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 #include "article_inspect.hh"
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   #include <QtCore5Compat/QRegExp>

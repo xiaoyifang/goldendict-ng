@@ -1,6 +1,6 @@
 #include "articlewebpage.hh"
 #include "utils.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 ArticleWebPage::ArticleWebPage( QObject * parent ):
   QWebEnginePage{ GlobalBroadcaster::instance()->profile, parent }

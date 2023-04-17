@@ -64,9 +64,9 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 
 contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
   HEADERS += \
-  audiooutput.hh
+  src/audiooutput.hh
   SOURCES += \
-  audiooutput.cc
+  src/audiooutput.cc
 }
 
 # on windows platform ,only works in release build
@@ -305,6 +305,7 @@ HEADERS += \
     src/dict/german.hh \
     src/dict/gls.hh \
     src/dict/greektranslit.hh \
+    src/dict/hunspell.hh \
     src/dict/lingualibre.hh \
     src/dict/lsa.hh \
     src/dict/mdx.hh \
@@ -347,7 +348,7 @@ HEADERS += \
     src/gdappstyle.hh \
     src/gddebug.hh \
     src/gestures.hh \
-    src/globalbroadcaster.h \
+    src/globalbroadcaster.hh \
     src/groupcombobox.hh \
     src/groups.hh \
     src/groups_widgets.hh \
@@ -356,7 +357,6 @@ HEADERS += \
     src/historypanewidget.hh \
     src/hotkeywrapper.hh \
     src/htmlescape.hh \
-    src/hunspell.hh \
     src/iconv.hh \
     src/iframeschemehandler.hh \
     src/inc_case_folding.hh \
@@ -395,7 +395,7 @@ HEADERS += \
     src/utf8.hh \
     src/utils.hh \
     src/webmultimediadownload.hh \
-    src/weburlrequestinterceptor.h \
+    src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
     src/wordlist.hh \
     src/wstring.hh \
@@ -433,6 +433,7 @@ SOURCES += \
     src/dict/german.cc \
     src/dict/gls.cc \
     src/dict/greektranslit.cc \
+    src/dict/hunspell.cc \
     src/dict/hunspell.cc \
     src/dict/lingualibre.cc \
     src/dict/lsa.cc \
@@ -524,10 +525,10 @@ SOURCES += \
     src/zipfile.cc
 
 #speech to text
-SOURCES += speechclient.cc \
-           texttospeechsource.cc
-HEADERS += texttospeechsource.hh \
-           speechclient.hh
+SOURCES += src/speechclient.cc \
+           src/texttospeechsource.cc
+HEADERS += src/texttospeechsource.hh \
+           src/speechclient.hh
 
 mac {
     HEADERS += macmouseover.hh \
@@ -537,13 +538,13 @@ mac {
 }
 
 unix:!mac {
-    HEADERS += scanflag.hh
-    SOURCES += scanflag.cc
+    HEADERS += src/scanflag.hh
+    SOURCES += src/scanflag.cc
 }
 
 
-HEADERS += wildcard.hh
-SOURCES += wildcard.cc
+HEADERS += src/wildcard.hh
+SOURCES += src/wildcard.cc
 
 
 CONFIG( zim_support ) {
@@ -556,12 +557,12 @@ CONFIG( no_epwing_support ) {
 }
 
 !CONFIG( no_epwing_support ) {
-  HEADERS += epwing.hh \
-             epwing_book.hh \
-             epwing_charmap.hh
-  SOURCES += epwing.cc \
-             epwing_book.cc \
-             epwing_charmap.cc
+  HEADERS += src/epwing.hh \
+             src/epwing_book.hh \
+             src/epwing_charmap.hh
+  SOURCES += src/epwing.cc \
+             src/epwing_book.cc \
+             src/epwing_charmap.cc
   LIBS += -leb
 }
 

@@ -1,7 +1,7 @@
-#include "weburlrequestinterceptor.h"
+#include "weburlrequestinterceptor.hh"
 #include <QDebug>
 #include "utils.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 
 WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
   QWebEngineUrlRequestInterceptor( p )

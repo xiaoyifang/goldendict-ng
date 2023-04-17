@@ -14,7 +14,7 @@
 #include "langcoder.hh"
 #include "gddebug.hh"
 #include "utils.hh"
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 #include "base/globalregex.hh"
 
 using std::vector;

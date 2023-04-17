@@ -1,4 +1,4 @@
-#include "globalbroadcaster.h"
+#include "globalbroadcaster.hh"
 #include <QGlobalStatic>
 #include "utils.hh"
 
