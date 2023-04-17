@@ -34,6 +34,7 @@ CONFIG( release, debug|release ) {
 # DEPENDPATH += . generators
 INCLUDEPATH += .
 INCLUDEPATH += ./src/
+INCLUDEPATH += ./src/ui # for compiled .ui files to find headers
 
 QT += core \
       gui \
@@ -275,13 +276,9 @@ DEFINES += PROGRAM_VERSION=\\\"$$VERSION\\\"
 
 # Input
 HEADERS += \
-    src/about.hh \
     src/ankiconnector.hh \
-    src/article_inspect.hh \
     src/article_maker.hh \
     src/article_netmgr.hh \
-    src/articlewebpage.hh \
-    src/articlewebview.hh \
     src/atomic_rename.hh \
     src/audiolink.hh \
     src/audioplayerfactory.hh \
@@ -298,7 +295,9 @@ HEADERS += \
     src/dict/belarusiantranslit.hh \
     src/dict/bgl.hh \
     src/dict/bgl_babylon.hh \
+    src/dict/dictdfiles.hh \
     src/dict/dictionary.hh \
+    src/dict/dictserver.hh \
     src/dict/dsl.hh \
     src/dict/dsl_details.hh \
     src/dict/forvo.hh \
@@ -307,7 +306,9 @@ HEADERS += \
     src/dict/greektranslit.hh \
     src/dict/hunspell.hh \
     src/dict/lingualibre.hh \
+    src/dict/loaddictionaries.hh \
     src/dict/lsa.hh \
+    src/dict/mdictparser.hh \
     src/dict/mdx.hh \
     src/dict/mediawiki.hh \
     src/dict/programs.hh \
@@ -325,18 +326,10 @@ HEADERS += \
     src/dict/xdxf2html.hh \
     src/dict/zim.hh \
     src/dict/zipsounds.hh \
-    src/dict/dictdfiles.hh \
-    src/dictheadwords.hh \
-    src/dictinfo.hh \
-    src/dictionarybar.hh \
-    src/dict/dictserver.hh \
-    src/dictspanewidget.hh \
     src/dictzip.hh \
-    src/editdictionaries.hh \
     src/ex.hh \
     src/externalaudioplayer.hh \
     src/externalviewer.hh \
-    src/favoritespanewidget.hh \
     src/ffmpegaudio.hh \
     src/ffmpegaudioplayer.hh \
     src/file.hh \
@@ -349,12 +342,8 @@ HEADERS += \
     src/gddebug.hh \
     src/gestures.hh \
     src/globalbroadcaster.hh \
-    src/groupcombobox.hh \
-    src/groups.hh \
-    src/groups_widgets.hh \
     src/headwordsmodel.hh \
     src/history.hh \
-    src/historypanewidget.hh \
     src/hotkeywrapper.hh \
     src/htmlescape.hh \
     src/iconv.hh \
@@ -367,31 +356,43 @@ HEADERS += \
     src/keyboardstate.hh \
     src/langcoder.hh \
     src/language.hh \
-    src/dict/loaddictionaries.hh \
-    src/mainstatusbar.hh \
-    src/maintabwidget.hh \
-    src/mainwindow.hh \
-    src/dict/mdictparser.hh \
-    src/mruqmenu.hh \
     src/multimediaaudioplayer.hh \
     src/mutex.hh \
-    src/orderandprops.hh \
     src/parsecmdline.hh \
-    src/preferences.hh \
     src/resourceschemehandler.hh \
     src/ripemd.hh \
-    src/scanpopup.hh \
-    src/searchpanewidget.hh \
     src/splitfile.hh \
     src/sptr.hh \
-    src/stylescombobox.hh \
     src/termination.hh \
     src/tiff.hh \
-    src/translatebox.hh \
     src/ufile.hh \
+    src/ui/about.hh \
+    src/ui/article_inspect.hh \
     src/ui/articleview.hh \
+    src/ui/articlewebpage.hh \
+    src/ui/articlewebview.hh \
+    src/ui/dictheadwords.hh \
+    src/ui/dictinfo.hh \
+    src/ui/dictionarybar.hh \
+    src/ui/dictspanewidget.hh \
+    src/ui/editdictionaries.hh \
+    src/ui/favoritespanewidget.hh \
     src/ui/ftssearchpanel.hh \
+    src/ui/groupcombobox.hh \
+    src/ui/groups.hh \
+    src/ui/groups_widgets.hh \
+    src/ui/historypanewidget.hh \
+    src/ui/mainstatusbar.hh \
+    src/ui/maintabwidget.hh \
+    src/ui/mainwindow.hh \
+    src/ui/mruqmenu.hh \
+    src/ui/orderandprops.hh \
+    src/ui/preferences.hh \
+    src/ui/scanpopup.hh \
     src/ui/searchpanel.hh \
+    src/ui/searchpanewidget.hh \
+    src/ui/stylescombobox.hh \
+    src/ui/translatebox.hh \
     src/utf8.hh \
     src/utils.hh \
     src/webmultimediadownload.hh \
@@ -405,13 +406,9 @@ HEADERS += \
 FORMS += $$files(src/ui/*.ui)
 
 SOURCES += \
-    src/about.cc \
     src/ankiconnector.cc \
-    src/article_inspect.cc \
     src/article_maker.cc \
     src/article_netmgr.cc \
-    src/articlewebpage.cc \
-    src/articlewebview.cc \
     src/atomic_rename.cc \
     src/audiolink.cc \
     src/audioplayerfactory.cc \
@@ -426,7 +423,9 @@ SOURCES += \
     src/dict/belarusiantranslit.cc \
     src/dict/bgl.cc \
     src/dict/bgl_babylon.cc \
+    src/dict/dictdfiles.cc \
     src/dict/dictionary.cc \
+    src/dict/dictserver.cc \
     src/dict/dsl.cc \
     src/dict/dsl_details.cc \
     src/dict/forvo.cc \
@@ -435,7 +434,9 @@ SOURCES += \
     src/dict/greektranslit.cc \
     src/dict/hunspell.cc \
     src/dict/lingualibre.cc \
+    src/dict/loaddictionaries.cc \
     src/dict/lsa.cc \
+    src/dict/mdictparser.cc \
     src/dict/mdx.cc \
     src/dict/mediawiki.cc \
     src/dict/programs.cc \
@@ -453,16 +454,9 @@ SOURCES += \
     src/dict/xdxf2html.cc \
     src/dict/zim.cc \
     src/dict/zipsounds.cc \
-    src/dict/dictdfiles.cc \
-    src/dictheadwords.cc \
-    src/dictinfo.cc \
-    src/dictionarybar.cc \
-    src/dict/dictserver.cc \
     src/dictzip.c \
-    src/editdictionaries.cc \
     src/externalaudioplayer.cc \
     src/externalviewer.cc \
-    src/favoritespanewidget.cc \
     src/ffmpegaudio.cc \
     src/file.cc \
     src/filetype.cc \
@@ -474,12 +468,8 @@ SOURCES += \
     src/gddebug.cc \
     src/gestures.cc \
     src/globalbroadcaster.cc \
-    src/groupcombobox.cc \
-    src/groups.cc \
-    src/groups_widgets.cc \
     src/headwordsmodel.cc \
     src/history.cc \
-    src/historypanewidget.cc \
     src/hotkeywrapper.cc \
     src/htmlescape.cc \
     src/iconv.cc \
@@ -490,30 +480,41 @@ SOURCES += \
     src/keyboardstate.cc \
     src/langcoder.cc \
     src/language.cc \
-    src/dict/loaddictionaries.cc \
     src/main.cc \
-    src/mainstatusbar.cc \
-    src/maintabwidget.cc \
-    src/mainwindow.cc \
-    src/dict/mdictparser.cc \
-    src/mruqmenu.cc \
     src/multimediaaudioplayer.cc \
     src/mutex.cc \
-    src/orderandprops.cc \
     src/parsecmdline.cc \
-    src/preferences.cc \
     src/resourceschemehandler.cc \
     src/ripemd.cc \
-    src/scanpopup.cc \
     src/splitfile.cc \
-    src/stylescombobox.cc \
     src/termination.cc \
     src/tiff.cc \
-    src/translatebox.cc \
     src/ufile.cc \
+    src/ui/about.cc \
+    src/ui/article_inspect.cc \
     src/ui/articleview.cc \
+    src/ui/articlewebpage.cc \
+    src/ui/articlewebview.cc \
+    src/ui/dictheadwords.cc \
+    src/ui/dictinfo.cc \
+    src/ui/dictionarybar.cc \
+    src/ui/editdictionaries.cc \
+    src/ui/favoritespanewidget.cc \
     src/ui/ftssearchpanel.cc \
+    src/ui/groupcombobox.cc \
+    src/ui/groups.cc \
+    src/ui/groups_widgets.cc \
+    src/ui/historypanewidget.cc \
+    src/ui/mainstatusbar.cc \
+    src/ui/maintabwidget.cc \
+    src/ui/mainwindow.cc \
+    src/ui/mruqmenu.cc \
+    src/ui/orderandprops.cc \
+    src/ui/preferences.cc \
+    src/ui/scanpopup.cc \
     src/ui/searchpanel.cc \
+    src/ui/stylescombobox.cc \
+    src/ui/translatebox.cc \
     src/utf8.cc \
     src/utils.cc \
     src/webmultimediadownload.cc \
@@ -537,8 +538,8 @@ mac {
 }
 
 unix:!mac {
-    HEADERS += src/scanflag.hh
-    SOURCES += src/scanflag.cc
+    HEADERS += src/ui/scanflag.hh
+    SOURCES += src/ui/scanflag.cc
 }
 
 
@@ -569,9 +570,9 @@ CONFIG( chinese_conversion_support ) {
   DEFINES += MAKE_CHINESE_CONVERSION_SUPPORT
   FORMS   += src/ui/chineseconversion.ui
   HEADERS += src/dict/chinese.hh \
-             src/dict/chineseconversion.hh
+             src/ui/chineseconversion.hh
   SOURCES += src/dict/chinese.cc \
-             src/dict/chineseconversion.cc
+             src/ui/chineseconversion.cc
   LIBS += -lopencc
 }
 
