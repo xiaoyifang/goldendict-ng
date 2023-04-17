@@ -4,10 +4,10 @@
 #ifndef __EDITDICTIONARIES_HH_INCLUDED__
 #define __EDITDICTIONARIES_HH_INCLUDED__
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include "config.hh"
 #include "ui_editdictionaries.h"
-#include "sources.hh"
+#include "dict/sources.hh"
 #include "orderandprops.hh"
 #include "groups.hh"
 #include "instances.hh"

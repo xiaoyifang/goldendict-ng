@@ -14,7 +14,7 @@
 #include <QSortFilterProxyModel>
 
 #include "config.hh"
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 
 /// A model to be projected into the view, according to Qt's MVC model
 class DictListModel: public QAbstractListModel

@@ -1,7 +1,7 @@
 #ifndef __EPWING_HH__INCLUDED__
 #define __EPWING_HH__INCLUDED__
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include "epwing_book.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"

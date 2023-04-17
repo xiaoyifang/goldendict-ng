@@ -4,7 +4,7 @@
 #ifndef __DICTDFILES_HH_INCLUDED__
 #define __DICTDFILES_HH_INCLUDED__
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 
 /// Support for the dictd (.index/dict.dz) files.
 namespace DictdFiles {

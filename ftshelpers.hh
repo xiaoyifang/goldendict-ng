@@ -12,7 +12,7 @@
 #include <QList>
 #include <QtConcurrent>
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include "btreeidx.hh"
 #include "fulltextsearch.hh"
 #include "chunkedstorage.hh"

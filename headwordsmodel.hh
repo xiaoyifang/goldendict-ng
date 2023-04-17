@@ -1,7 +1,7 @@
 #ifndef HEADWORDSMODEL_H
 #define HEADWORDSMODEL_H
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 
 #include <QAbstractListModel>
 #include <QStringList>

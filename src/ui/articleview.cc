@@ -6,7 +6,7 @@
 #include "fulltextsearch.hh"
 #include "gddebug.hh"
 #include "gestures.hh"
-#include "programs.hh"
+#include "dict/programs.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "weburlrequestinterceptor.h"

@@ -12,7 +12,7 @@
 #include <QList>
 #include <QAction>
 
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
 #include "mutex.hh"
 #include "config.hh"

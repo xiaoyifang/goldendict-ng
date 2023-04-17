@@ -6,7 +6,7 @@
 
 #include "ui_about.h"
 #include "sptr.hh"
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include <QDialog>
 #include <vector>
 

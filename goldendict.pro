@@ -274,252 +274,254 @@ mac {
 DEFINES += PROGRAM_VERSION=\\\"$$VERSION\\\"
 
 # Input
-HEADERS += folding.hh \
+HEADERS += \
+    about.hh \
     ankiconnector.hh \
     article_inspect.hh \
+    article_maker.hh \
+    article_netmgr.hh \
     articlewebpage.hh \
+    articlewebview.hh \
+    atomic_rename.hh \
+    audiolink.hh \
+    audioplayerfactory.hh \
+    audioplayerinterface.hh \
     base/globalregex.hh \
     base_type.hh \
+    btreeidx.hh \
+    chunkedstorage.hh \
+    config.hh \
+    country.hh \
+    decompress.hh \
+    delegate.hh \
+    dictdfiles.hh \
+    dictheadwords.hh \
+    dictinfo.hh \
+    dictionarybar.hh \
+    dictserver.hh \
+    dictspanewidget.hh \
     dictzip.hh \
+    editdictionaries.hh \
+    ex.hh \
+    externalaudioplayer.hh \
+    externalviewer.hh \
+    favoritespanewidget.hh \
+    ffmpegaudio.hh \
+    ffmpegaudioplayer.hh \
+    file.hh \
+    filetype.hh \
+    folding.hh \
+    fsencoding.hh \
+    ftshelpers.hh \
+    fulltextsearch.hh \
+    gdappstyle.hh \
+    gddebug.hh \
+    gestures.hh \
     globalbroadcaster.h \
+    groupcombobox.hh \
+    groups.hh \
+    groups_widgets.hh \
     headwordsmodel.hh \
+    history.hh \
+    historypanewidget.hh \
+    hotkeywrapper.hh \
+    htmlescape.hh \
+    iconv.hh \
     iframeschemehandler.hh \
     inc_case_folding.hh \
     inc_diacritic_folding.hh \
+    indexedzip.hh \
+    initializing.hh \
+    instances.hh \
+    keyboardstate.hh \
+    langcoder.hh \
+    language.hh \
+    loaddictionaries.hh \
+    mainstatusbar.hh \
+    maintabwidget.hh \
     mainwindow.hh \
+    mdictparser.hh \
+    mruqmenu.hh \
+    multimediaaudioplayer.hh \
+    mutex.hh \
+    orderandprops.hh \
+    parsecmdline.hh \
+    preferences.hh \
     resourceschemehandler.hh \
+    ripemd.hh \
+    scanpopup.hh \
+    searchpanewidget.hh \
+    splitfile.hh \
     sptr.hh \
-    dictionary.hh \
-    ex.hh \
-    config.hh \
-    sources.hh \
+    src/dict/aard.hh \
+    src/dict/belarusiantranslit.hh \
+    src/dict/bgl.hh \
+    src/dict/bgl_babylon.hh \
+    src/dict/dictionary.hh \
+    src/dict/dsl.hh \
+    src/dict/dsl_details.hh \
+    src/dict/forvo.hh \
+    src/dict/german.hh \
+    src/dict/gls.hh \
+    src/dict/greektranslit.hh \
     src/dict/lingualibre.hh \
+    src/dict/lsa.hh \
+    src/dict/mdx.hh \
+    src/dict/mediawiki.hh \
+    src/dict/programs.hh \
+    src/dict/romaji.hh \
+    src/dict/russiantranslit.hh \
+    src/dict/sdict.hh \
+    src/dict/slob.hh \
+    src/dict/sounddir.hh \
+    src/dict/sources.hh \
+    src/dict/stardict.hh \
+    src/dict/transliteration.hh \
+    src/dict/voiceengines.hh \
+    src/dict/website.hh \
+    src/dict/xdxf.hh \
+    src/dict/xdxf2html.hh \
+    src/dict/zim.hh \
+    src/dict/zipsounds.hh \
+    src/hunspell.hh \
     src/ui/articleview.hh \
     src/ui/ftssearchpanel.hh \
     src/ui/searchpanel.hh \
+    stylescombobox.hh \
+    termination.hh \
+    tiff.hh \
+    translatebox.hh \
+    ufile.hh \
     utf8.hh \
-    file.hh \
-    bgl_babylon.hh \
-    bgl.hh \
-    initializing.hh \
-    article_netmgr.hh \
-    btreeidx.hh \
-    stardict.hh \
-    chunkedstorage.hh \
+    utils.hh \
+    webmultimediadownload.hh \
     weburlrequestinterceptor.h \
-    xdxf2html.hh \
-    iconv.hh \
-    lsa.hh \
-    htmlescape.hh \
-    dsl.hh \
-    dsl_details.hh \
-    filetype.hh \
-    fsencoding.hh \
-    groups.hh \
-    groups_widgets.hh \
-    instances.hh \
-    article_maker.hh \
-    scanpopup.hh \
-    audioplayerinterface.hh \
-    audioplayerfactory.hh \
-    ffmpegaudioplayer.hh \
-    multimediaaudioplayer.hh \
-    externalaudioplayer.hh \
-    externalviewer.hh \
     wordfinder.hh \
-    groupcombobox.hh \
-    keyboardstate.hh \
-    preferences.hh \
-    mutex.hh \
-    mediawiki.hh \
-    sounddir.hh \
-    hunspell.hh \
-    dictdfiles.hh \
-    audiolink.hh \
+    wordlist.hh \
     wstring.hh \
     wstring_qt.hh \
-    hotkeywrapper.hh \
-    searchpanewidget.hh \
-    langcoder.hh \
-    editdictionaries.hh \
-    loaddictionaries.hh \
-    transliteration.hh \
-    romaji.hh \
-    belarusiantranslit.hh \
-    russiantranslit.hh \
-    german.hh \
-    website.hh \
-    orderandprops.hh \
-    language.hh \
-    dictionarybar.hh \
-    history.hh \
-    atomic_rename.hh \
-    articlewebview.hh \
-    zipfile.hh \
-    indexedzip.hh \
-    termination.hh \
-    greektranslit.hh \
-    webmultimediadownload.hh \
-    forvo.hh \
-    country.hh \
-    about.hh \
-    programs.hh \
-    parsecmdline.hh \
-    dictspanewidget.hh \
-    maintabwidget.hh \
-    mainstatusbar.hh \
-    gdappstyle.hh \
-    ufile.hh \
-    xdxf.hh \
-    sdict.hh \
-    decompress.hh \
-    aard.hh \
-    mruqmenu.hh \
-    dictinfo.hh \
-    zipsounds.hh \
-    stylescombobox.hh \
-    translatebox.hh \
-    historypanewidget.hh \
-    wordlist.hh \
-    mdictparser.hh \
-    mdx.hh \
-    voiceengines.hh \
-    ffmpegaudio.hh \
-    delegate.hh \
-    zim.hh \
-    gddebug.hh \
-    utils.hh \
-    gestures.hh \
-    tiff.hh \
-    dictheadwords.hh \
-    fulltextsearch.hh \
-    ftshelpers.hh \
-    dictserver.hh \
-    slob.hh \
-    ripemd.hh \
-    gls.hh \
-    splitfile.hh \
-    favoritespanewidget.hh
+    zipfile.hh
 
 FORMS += $$files(src/ui/*.ui)
 
-SOURCES += folding.cc \
+SOURCES += \
+    about.cc \
     ankiconnector.cc \
     article_inspect.cc \
+    article_maker.cc \
+    article_netmgr.cc \
     articlewebpage.cc \
+    articlewebview.cc \
+    atomic_rename.cc \
+    audiolink.cc \
+    audioplayerfactory.cc \
     base/globalregex.cc \
-    globalbroadcaster.cc \
-    headwordsmodel.cc \
-    iframeschemehandler.cc \
-    main.cc \
-    dictionary.cc \
+    btreeidx.cc \
+    chunkedstorage.cc \
     config.cc \
-    resourceschemehandler.cc \
-    sources.cc \
+    country.cc \
+    decompress.cc \
+    delegate.cc \
+    dictdfiles.cc \
+    dictheadwords.cc \
+    dictinfo.cc \
+    dictionarybar.cc \
+    dictserver.cc \
+    dictzip.c \
+    editdictionaries.cc \
+    externalaudioplayer.cc \
+    externalviewer.cc \
+    favoritespanewidget.cc \
+    ffmpegaudio.cc \
+    file.cc \
+    filetype.cc \
+    folding.cc \
+    fsencoding.cc \
+    ftshelpers.cc \
+    fulltextsearch.cc \
+    gdappstyle.cc \
+    gddebug.cc \
+    gestures.cc \
+    globalbroadcaster.cc \
+    groupcombobox.cc \
+    groups.cc \
+    groups_widgets.cc \
+    headwordsmodel.cc \
+    history.cc \
+    historypanewidget.cc \
+    hotkeywrapper.cc \
+    htmlescape.cc \
+    iconv.cc \
+    iframeschemehandler.cc \
+    indexedzip.cc \
+    initializing.cc \
+    instances.cc \
+    keyboardstate.cc \
+    langcoder.cc \
+    language.cc \
+    loaddictionaries.cc \
+    main.cc \
+    mainstatusbar.cc \
+    maintabwidget.cc \
     mainwindow.cc \
+    mdictparser.cc \
+    mruqmenu.cc \
+    multimediaaudioplayer.cc \
+    mutex.cc \
+    orderandprops.cc \
+    parsecmdline.cc \
+    preferences.cc \
+    resourceschemehandler.cc \
+    ripemd.cc \
+    scanpopup.cc \
+    splitfile.cc \
+    src/dict/aard.cc \
+    src/dict/belarusiantranslit.cc \
+    src/dict/bgl.cc \
+    src/dict/bgl_babylon.cc \
+    src/dict/dictionary.cc \
+    src/dict/dsl.cc \
+    src/dict/dsl_details.cc \
+    src/dict/forvo.cc \
+    src/dict/german.cc \
+    src/dict/gls.cc \
+    src/dict/greektranslit.cc \
+    src/dict/hunspell.cc \
     src/dict/lingualibre.cc \
+    src/dict/lsa.cc \
+    src/dict/mdx.cc \
+    src/dict/mediawiki.cc \
+    src/dict/programs.cc \
+    src/dict/romaji.cc \
+    src/dict/russiantranslit.cc \
+    src/dict/sdict.cc \
+    src/dict/slob.cc \
+    src/dict/sounddir.cc \
+    src/dict/sources.cc \
+    src/dict/stardict.cc \
+    src/dict/transliteration.cc \
+    src/dict/voiceengines.cc \
+    src/dict/website.cc \
+    src/dict/xdxf.cc \
+    src/dict/xdxf2html.cc \
+    src/dict/zim.cc \
+    src/dict/zipsounds.cc \
     src/ui/articleview.cc \
     src/ui/ftssearchpanel.cc \
     src/ui/searchpanel.cc \
-    utf8.cc \
-    file.cc \
-    bgl_babylon.cc \
-    bgl.cc \
-    initializing.cc \
-    article_netmgr.cc \
-    dictzip.c \
-    btreeidx.cc \
-    stardict.cc \
-    chunkedstorage.cc \
-    utils.cc \
-    weburlrequestinterceptor.cc \
-    xdxf2html.cc \
-    iconv.cc \
-    lsa.cc \
-    htmlescape.cc \
-    dsl.cc \
-    dsl_details.cc \
-    filetype.cc \
-    fsencoding.cc \
-    groups.cc \
-    groups_widgets.cc \
-    instances.cc \
-    article_maker.cc \
-    scanpopup.cc \
-    audioplayerfactory.cc \
-    multimediaaudioplayer.cc \
-    externalaudioplayer.cc \
-    externalviewer.cc \
-    wordfinder.cc \
-    groupcombobox.cc \
-    keyboardstate.cc \
-    preferences.cc \
-    mutex.cc \
-    mediawiki.cc \
-    sounddir.cc \
-    hunspell.cc \
-    dictdfiles.cc \
-    audiolink.cc \
-    wstring_qt.cc \
-    hotkeywrapper.cc \
-    langcoder.cc \
-    editdictionaries.cc \
-    loaddictionaries.cc \
-    transliteration.cc \
-    romaji.cc \
-    belarusiantranslit.cc \
-    russiantranslit.cc \
-    german.cc \
-    website.cc \
-    orderandprops.cc \
-    language.cc \
-    dictionarybar.cc \
-    history.cc \
-    atomic_rename.cc \
-    articlewebview.cc \
-    zipfile.cc \
-    indexedzip.cc \
-    termination.cc \
-    greektranslit.cc \
-    webmultimediadownload.cc \
-    forvo.cc \
-    country.cc \
-    about.cc \
-    programs.cc \
-    parsecmdline.cc \
-    maintabwidget.cc \
-    mainstatusbar.cc \
-    gdappstyle.cc \
-    ufile.cc \
-    xdxf.cc \
-    sdict.cc \
-    decompress.cc \
-    aard.cc \
-    mruqmenu.cc \
-    dictinfo.cc \
-    zipsounds.cc \
     stylescombobox.cc \
-    translatebox.cc \
-    historypanewidget.cc \
-    wordlist.cc \
-    mdictparser.cc \
-    mdx.cc \
-    voiceengines.cc \
-    ffmpegaudio.cc \
-    delegate.cc \
-    zim.cc \
-    gddebug.cc \
-    gestures.cc \
+    termination.cc \
     tiff.cc \
-    dictheadwords.cc \
-    fulltextsearch.cc \
-    ftshelpers.cc \
-    dictserver.cc \
-    slob.cc \
-    ripemd.cc \
-    gls.cc \
-    splitfile.cc \
-    favoritespanewidget.cc
+    translatebox.cc \
+    ufile.cc \
+    utf8.cc \
+    utils.cc \
+    webmultimediadownload.cc \
+    weburlrequestinterceptor.cc \
+    wordfinder.cc \
+    wordlist.cc \
+    wstring_qt.cc \
+    zipfile.cc
 
 #speech to text
 SOURCES += speechclient.cc \
