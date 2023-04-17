@@ -352,7 +352,6 @@ HEADERS += \
     src/common/folding.hh \
     src/ftshelpers.hh \
     src/fulltextsearch.hh \
-    src/gdappstyle.hh \
     src/gestures.hh \
     src/headwordsmodel.hh \
     src/history.hh \
@@ -474,7 +473,6 @@ SOURCES += \
     src/common/folding.cc \
     src/ftshelpers.cc \
     src/fulltextsearch.cc \
-    src/gdappstyle.cc \
     src/gestures.cc \
     src/headwordsmodel.cc \
     src/history.cc \
