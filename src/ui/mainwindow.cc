@@ -33,6 +33,7 @@
 #include <QRunnable>
 #include <QThreadPool>
 #include <QSslConfiguration>
+#include <QStyleFactory>
 
 #include <set>
 #include <map>
@@ -45,7 +46,6 @@
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
 
-#include "keyboardstate.hh"
 #include "globalregex.hh"
 
 #ifdef Q_OS_MAC

@@ -4,28 +4,7 @@
 #ifndef __INITIALIZING_HH_INCLUDED__
 #define __INITIALIZING_HH_INCLUDED__
 
-#include <QDialog>
 #include "ui_initializing.h"
-
-#if defined( Q_OS_WIN32 )
-
-#include <QtWidgets/QStyleFactory>
-
-class WindowsStyle {
-public:
-  /// The class is a singleton.
-  static WindowsStyle & instance();
-
-  QStyle * getStyle()
-  { return style; }
-
-private:
-  WindowsStyle();
-
-  QStyle * style;
-};
-
-#endif
 
 class Initializing: public QDialog
 {
@@ -34,9 +13,6 @@ class Initializing: public QDialog
 public:
 
   Initializing( QWidget * parent, bool showOnStartup );
-#if defined( Q_OS_WIN32 )
-  ~Initializing();
-#endif
 
 public slots:
 

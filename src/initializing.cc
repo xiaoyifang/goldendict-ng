@@ -5,23 +5,6 @@
 #include "initializing.hh"
 #include <QCloseEvent>
 
-#if defined( Q_OS_WIN32 )
-#include <qt_windows.h>
-#include <QOperatingSystemVersion>
-
-WindowsStyle::WindowsStyle()
-{
-  style = QStyleFactory::create( "windows" );
-}
-
-WindowsStyle & WindowsStyle::instance()
-{
-  static WindowsStyle ws;
-  return ws;
-}
-
-#endif
-
 Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( parent )
 {
   ui.setupUi( this );
@@ -62,10 +45,3 @@ void Initializing::reject()
 {
 }
 
-#if defined( Q_OS_WIN32 )
-
-Initializing::~Initializing()
-{
-}
-
-#endif
