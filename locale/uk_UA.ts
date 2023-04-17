@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict — програма для роботи зі словниками, версія </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng — програма для роботи зі словниками, версія </translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1418,8 +1418,8 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>Запуск GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>Запуск GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2558,8 +2558,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Про GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Про GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>

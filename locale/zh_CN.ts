@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict 电子词典程序，版本 </translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng 电子词典程序，版本 </translation>
     </message>
     <message>
         <location filename="../about.ui" line="101"/>
@@ -1387,7 +1387,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>GoldenDict 帮助</translation>
+        <translation>GoldenDict-ng 帮助</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1493,8 +1493,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>初始化 GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>初始化 GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2707,8 +2707,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>关于 GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>关于 GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.cc" line="3170"/>
@@ -3149,7 +3149,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>GoldenDict 帮助</translation>
+        <translation>GoldenDict-ng 帮助</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="638"/>

@@ -8,7 +8,7 @@
         <translation>Hakkında</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, sözlük arama programı, sürüm </translation>
     </message>
     <message>
@@ -1073,7 +1073,7 @@ arasındaki farkı giderir)</translation>
     <name>Help::HelpWindow</name>
     <message>
         <source>GoldenDict help</source>
-        <translation>GoldenDict yardım</translation>
+        <translation>GoldenDict-ng yardım</translation>
     </message>
     <message>
         <source>Home</source>
@@ -1160,8 +1160,8 @@ arasındaki farkı giderir)</translation>
         <translation>Sözlük Adı</translation>
     </message>
     <message>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Başlatılıyor</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Başlatılıyor</translation>
     </message>
     <message>
         <source>Please wait while indexing dictionary</source>
@@ -2140,8 +2140,8 @@ arasındaki farkı giderir)</translation>
         <translation>&amp;Ana Pencereyi Göster</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation>GoldenDict Hakkında</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>GoldenDict-ng Hakkında</translation>
     </message>
     <message>
         <source>Download</source>
@@ -3024,7 +3024,7 @@ its main window.</source>
     </message>
     <message>
         <source>Automatically starts GoldenDict after operation system bootup.</source>
-        <translation>GoldenDict bilgisayarın her açılışında kendiliğinden başlar.</translation>
+        <translation>GoldenDict-ng bilgisayarın her açılışında kendiliğinden başlar.</translation>
     </message>
     <message>
         <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>

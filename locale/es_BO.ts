@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, diccionario electrónico, versión </translation>
     </message>
     <message>
@@ -1426,8 +1426,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Iniciando</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Iniciando</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2935,8 +2935,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Acerca de GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Acerca de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
@@ -3514,7 +3514,7 @@ despues la seleccion esté hecha.</translation>
     <message>
         <location filename="../preferences.ui" line="59"/>
         <source>Automatically starts GoldenDict after operation system bootup.</source>
-        <translation>GoldenDict inicia automáticamente cuando el sistema arranca.</translation>
+        <translation>GoldenDict-ng inicia automáticamente cuando el sistema arranca.</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="399"/>

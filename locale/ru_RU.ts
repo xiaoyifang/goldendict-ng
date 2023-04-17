@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Словарь GoldenDict, версия </translation>
     </message>
     <message>
@@ -1329,7 +1329,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Справка GoldenDict</translation>
+        <translation>Справка GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1441,8 +1441,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>Запуск GoldenDict</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>Запуск GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2952,13 +2952,13 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>О программе GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>О программе GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Справка GoldenDict</translation>
+        <translation>Справка GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>
@@ -3722,12 +3722,12 @@ seconds, which is specified here.</source>
     <message>
         <location filename="../preferences.ui" line="685"/>
         <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-        <translation>Не показывать всплывающее окно при выделении/копировании текста в одном из собственных окон GoldenDict</translation>
+        <translation>Не показывать всплывающее окно при выделении/копировании текста в одном из собственных окон GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="688"/>
         <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-        <translation>Игнорировать выделение/копирование в GoldenDict</translation>
+        <translation>Игнорировать выделение/копирование в GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="698"/>

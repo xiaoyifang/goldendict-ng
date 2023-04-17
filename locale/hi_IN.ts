@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>गोल्डेनडिक्ट शब्दकोश अवलोकन प्रोग्राम, संस्करण</translation>
     </message>
     <message>
@@ -1425,7 +1425,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
+        <source>GoldenDict-ng - Initializing</source>
         <translation>गोल्डेनडिक्ट - प्रारम्भ कर रहा है</translation>
     </message>
     <message>
@@ -2564,13 +2564,13 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>À propos de GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>À propos de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Référence de GoldenDict</translation>
+        <translation>Référence de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>

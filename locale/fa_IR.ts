@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>برنامه جست‌وجوگر واژه‌نامه گلدن‌دیکت، نسخه </translation>
     </message>
     <message>
@@ -1416,7 +1416,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
+        <source>GoldenDict-ng - Initializing</source>
         <translation>گلدن‌دیکت - برپاسازی</translation>
     </message>
     <message>
@@ -2555,7 +2555,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
+        <source>About GoldenDict-ng</source>
         <translation>درباره گلدن‌دیکت</translation>
     </message>
     <message>

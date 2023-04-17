@@ -2,7 +2,9 @@
 [![Windows](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml) [![Ubuntu](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml)
 [![macos](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml)
 
-# GoldenDict
+# GoldenDict-ng
+
+GoldenDict the next generation.
 
 A feature-rich dictionary lookup program, supporting multiple dictionary formats (StarDict/Babylon/Lingvo/Dictd/AARD/MDict/SDict) and online dictionaries, featuring perfect article rendering with the complete markup, illustrations and other content retained, and allowing you to type in words without any accents or correct case.
 
@@ -79,20 +81,20 @@ sudo dnf install git pkg-config libzstd-devel opencc-devel xz-devel xz-lzma-comp
 
 Clone this repository:
 ```
-git clone https://github.com/xiaoyifang/goldendict.git
+git clone https://github.com/xiaoyifang/goldendict-ng.git
 ```
 
 #### Linux build
 
 ```
-cd goldendict && qmake-qt5 && make
+cd goldendict-ng && qmake-qt5 && make
 ```
 
 #### macOS build
 
 ```
 brew install qt # or use official offline installer
-qmake CONFIG+=release CONFIG+=zim_support   CONFIG+=chinese_conversion_support QMAKE_APPLE_DEVICE_ARCHS="x86_64 arm64"
+qmake CONFIG+=release CONFIG+=zim_support CONFIG+=chinese_conversion_support QMAKE_APPLE_DEVICE_ARCHS="x86_64 arm64"
 make 
 make install
 ```

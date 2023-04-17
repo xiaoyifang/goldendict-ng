@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, programa para consulta de diccionarios, versión </translation>
     </message>
     <message>
@@ -1428,8 +1428,8 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Inicializando</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Inicializando</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2937,8 +2937,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Acerca de GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Acerca de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>

@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation>GoldenDict woordenboek zoekprogramma, versie</translation>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
+        <translation>GoldenDict-ng woordenboek zoekprogramma, versie</translation>
     </message>
     <message>
         <location filename="../about.ui" line="91"/>
@@ -1431,8 +1431,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Initialiseren</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Initialiseren</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2935,8 +2935,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Over GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Over GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
@@ -3486,7 +3486,7 @@ U kunt dit in- of uitschakelen in het hoofdvenster of via het systeemvakpictogra
     <message>
         <location filename="../preferences.ui" line="59"/>
         <source>Automatically starts GoldenDict after operation system bootup.</source>
-        <translation>GoldenDict automatisch starten wanneer het besturingssysteem opstart.</translation>
+        <translation>GoldenDict-ng automatisch starten wanneer het besturingssysteem opstart.</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="217"/>
@@ -4140,7 +4140,7 @@ en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translatio
     <message>
         <location filename="../preferences.ui" line="1151"/>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>GoldenDict niet identificeren in HTTP-headers</translation>
+        <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="1227"/>

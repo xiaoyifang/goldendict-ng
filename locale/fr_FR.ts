@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Logiciel de recherche de dictionnaires GoldenDict, version </translation>
     </message>
     <message>
@@ -1324,7 +1324,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <location filename="../helpwindow.cc" line="64"/>
         <source>GoldenDict help</source>
-        <translation>Aide de GoldenDict</translation>
+        <translation>Aide de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../helpwindow.cc" line="71"/>
@@ -1425,8 +1425,8 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Initialisation</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Initialisation</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="28"/>
@@ -2564,13 +2564,13 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>À propos de GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>À propos de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>Référence de GoldenDict</translation>
+        <translation>Référence de GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>
@@ -3912,7 +3912,7 @@ pour toutes les requêtes passant par le réseau.</translation>
         <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-        <translation>GoldenDict bloquera la plupart des publicités en désactivant le contenu
+        <translation>GoldenDict-ng bloquera la plupart des publicités en désactivant le contenu
 (images, frames) ne provenant pas du site visité. Si vous remarquez
 que du contenu est manquant, essayez de désactiver cette option.</translation>
     </message>

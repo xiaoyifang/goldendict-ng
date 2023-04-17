@@ -8,7 +8,7 @@
         <translation>Относно</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>Речник GoldenDict, версия </translation>
     </message>
     <message>
@@ -1059,7 +1059,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Help::HelpWindow</name>
     <message>
         <source>GoldenDict help</source>
-        <translation>Помощ GoldenDict</translation>
+        <translation>Помощ GoldenDict-ng</translation>
     </message>
     <message>
         <source>Home</source>
@@ -1150,8 +1150,8 @@ between classic and school orthography in cyrillic)</source>
         <translation>Моля изчакайте докато се индексира речника</translation>
     </message>
     <message>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - инициализиране</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - инициализиране</translation>
     </message>
     <message>
         <source>Dictionary Name</source>
@@ -2130,8 +2130,8 @@ between classic and school orthography in cyrillic)</source>
         <translation>&amp;Относно</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation>Относно GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Относно GoldenDict-ng</translation>
     </message>
     <message>
         <source>F1</source>
@@ -2433,7 +2433,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>GoldenDict reference</source>
-        <translation>Помощ за GoldenDict</translation>
+        <translation>Помощ за GoldenDict-ng</translation>
     </message>
     <message>
         <source>Now indexing for full-text search: </source>
@@ -3254,11 +3254,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-        <translation>Не показвай изскачащ прозорецо при избиране/копиране на текст в някой от подпрозорците на GoldenDict</translation>
+        <translation>Не показвай изскачащ прозорецо при избиране/копиране на текст в някой от подпрозорците на GoldenDict-ng</translation>
     </message>
     <message>
         <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-        <translation>Игнорирайте собствения избор и промени в клипборда на GoldenDict</translation>
+        <translation>Игнорирайте собствения избор и промени в клипборда на GoldenDict-ng</translation>
     </message>
     <message>
         <source>ScanPopup unpinned window flags</source>

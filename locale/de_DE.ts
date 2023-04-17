@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../about.ui" line="66"/>
-        <source>GoldenDict dictionary lookup program, version </source>
+        <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict, ein Programm zum Nachschlagen in Wörterbüchern, Version </translation>
     </message>
     <message>
@@ -1430,8 +1430,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <location filename="../initializing.ui" line="22"/>
-        <source>GoldenDict - Initializing</source>
-        <translation>GoldenDict - Initialisierung</translation>
+        <source>GoldenDict-ng - Initializing</source>
+        <translation>GoldenDict-ng - Initialisierung</translation>
     </message>
     <message>
         <location filename="../initializing.ui" line="44"/>
@@ -2934,13 +2934,13 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <location filename="../mainwindow.ui" line="414"/>
-        <source>About GoldenDict</source>
-        <translation>Über GoldenDict</translation>
+        <source>About GoldenDict-ng</source>
+        <translation>Über GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="630"/>
         <source>GoldenDict reference</source>
-        <translation>GoldenDict Referenz</translation>
+        <translation>GoldenDict-ng Referenz</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="633"/>
@@ -4137,7 +4137,7 @@ Diese Option kann dieses Problem beheben.</translation>
     <message>
         <location filename="../preferences.ui" line="1151"/>
         <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation>GoldenDict nicht in HTTP-Kopfzeilen identifizieren</translation>
+        <translation>GoldenDict-ng nicht in HTTP-Kopfzeilen identifizieren</translation>
     </message>
     <message>
         <location filename="../preferences.ui" line="1227"/>
