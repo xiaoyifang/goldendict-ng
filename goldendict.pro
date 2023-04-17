@@ -325,11 +325,11 @@ HEADERS += \
     src/dict/xdxf2html.hh \
     src/dict/zim.hh \
     src/dict/zipsounds.hh \
-    src/dictdfiles.hh \
+    src/dict/dictdfiles.hh \
     src/dictheadwords.hh \
     src/dictinfo.hh \
     src/dictionarybar.hh \
-    src/dictserver.hh \
+    src/dict/dictserver.hh \
     src/dictspanewidget.hh \
     src/dictzip.hh \
     src/editdictionaries.hh \
@@ -367,11 +367,11 @@ HEADERS += \
     src/keyboardstate.hh \
     src/langcoder.hh \
     src/language.hh \
-    src/loaddictionaries.hh \
+    src/dict/loaddictionaries.hh \
     src/mainstatusbar.hh \
     src/maintabwidget.hh \
     src/mainwindow.hh \
-    src/mdictparser.hh \
+    src/dict/mdictparser.hh \
     src/mruqmenu.hh \
     src/multimediaaudioplayer.hh \
     src/mutex.hh \
@@ -453,11 +453,11 @@ SOURCES += \
     src/dict/xdxf2html.cc \
     src/dict/zim.cc \
     src/dict/zipsounds.cc \
-    src/dictdfiles.cc \
+    src/dict/dictdfiles.cc \
     src/dictheadwords.cc \
     src/dictinfo.cc \
     src/dictionarybar.cc \
-    src/dictserver.cc \
+    src/dict/dictserver.cc \
     src/dictzip.c \
     src/editdictionaries.cc \
     src/externalaudioplayer.cc \
@@ -490,12 +490,12 @@ SOURCES += \
     src/keyboardstate.cc \
     src/langcoder.cc \
     src/language.cc \
-    src/loaddictionaries.cc \
+    src/dict/loaddictionaries.cc \
     src/main.cc \
     src/mainstatusbar.cc \
     src/maintabwidget.cc \
     src/mainwindow.cc \
-    src/mdictparser.cc \
+    src/dict/mdictparser.cc \
     src/mruqmenu.cc \
     src/multimediaaudioplayer.cc \
     src/mutex.cc \

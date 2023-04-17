@@ -8,7 +8,7 @@
 #include "mainwindow.hh"
 #include <QWebEngineProfile>
 #include "editdictionaries.hh"
-#include "loaddictionaries.hh"
+#include "dict/loaddictionaries.hh"
 #include "preferences.hh"
 #include "about.hh"
 #include "mruqmenu.hh"

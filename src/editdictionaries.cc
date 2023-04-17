@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "editdictionaries.hh"
-#include "loaddictionaries.hh"
+#include "dict/loaddictionaries.hh"
 #include "dictinfo.hh"
 #include "mainwindow.hh"
 #include "utils.hh"
