@@ -37,7 +37,7 @@
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-#include "chinese.hh"
+#include "dict/chinese.hh"
 #endif
 
 #include <QMessageBox>

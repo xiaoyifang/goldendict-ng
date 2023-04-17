@@ -434,7 +434,6 @@ SOURCES += \
     src/dict/gls.cc \
     src/dict/greektranslit.cc \
     src/dict/hunspell.cc \
-    src/dict/hunspell.cc \
     src/dict/lingualibre.cc \
     src/dict/lsa.cc \
     src/dict/mdx.cc \
@@ -568,11 +567,11 @@ CONFIG( no_epwing_support ) {
 
 CONFIG( chinese_conversion_support ) {
   DEFINES += MAKE_CHINESE_CONVERSION_SUPPORT
-  FORMS   += chineseconversion.ui
-  HEADERS += chinese.hh \
-             chineseconversion.hh
-  SOURCES += chinese.cc \
-             chineseconversion.cc
+  FORMS   += src/ui/chineseconversion.ui
+  HEADERS += src/dict/chinese.hh \
+             src/dict/chineseconversion.hh
+  SOURCES += src/dict/chinese.cc \
+             src/dict/chineseconversion.cc
   LIBS += -lopencc
 }
 
