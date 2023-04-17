@@ -29,7 +29,6 @@
 #include "wordlist.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
-#include "helpwindow.hh"
 #include "base_type.h"
 
 #include "hotkeywrapper.hh"
@@ -58,8 +57,6 @@ public:
 
   virtual void commitData( QSessionManager & );
 
-  void showGDHelpForID( QString const & id );
-  void closeGDHelp();
   QString getTranslateLineText() const
   { return translateLine->text(); }
 
@@ -179,8 +176,6 @@ private:
   FTS::FtsIndexing ftsIndexing;
 
   FTS::FullTextSearchDialog * ftsDlg;
-
-  Help::HelpWindow * helpWindow;
 
   QIcon starIcon, blueStarIcon;
 
@@ -480,9 +475,6 @@ private slots:
 
   void showFullTextSearchDialog();
   void closeFullTextSearchDialog();
-
-  void showGDHelp();
-  void hideGDHelp();
 
   void clipboardChange(QClipboard::Mode m);
 

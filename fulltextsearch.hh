@@ -242,7 +242,6 @@ private slots:
   void reject();
   void itemClicked( QModelIndex const & idx );
   void updateDictionaries();
-  void helpRequested();
 
 signals:
   void showTranslationFor( QString const &, QStringList const & dictIDs,

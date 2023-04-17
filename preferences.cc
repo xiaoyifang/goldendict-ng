@@ -1,15 +1,15 @@
-#include "preferences.hh"
+#include "globalbroadcaster.h"
 #include "keyboardstate.hh"
-#include "language.hh"
 #include "langcoder.hh"
+#include "language.hh"
+#include "preferences.hh"
+#include "utils.hh"
 #include <QMessageBox>
-#include "mainwindow.hh"
-#include <QWebEngineSettings>
 #include <QWebEngineProfile>
+#include <QWebEngineSettings>
 
 Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   QDialog( parent ), prevInterfaceLanguage( 0 )
-, helpWindow( 0 )
 , cfg( cfg_ )
 , helpAction( this )
 {
@@ -34,12 +34,23 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( ui.leftShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
   connect( ui.rightShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
 
-  connect( ui.buttonBox, &QDialogButtonBox::helpRequested, this, &Preferences::helpRequested );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, this, &Preferences::helpRequested );
+  connect( &helpAction, &QAction::triggered, [ this ]() {
+    const auto * currentTab = ui.tabWidget->currentWidget();
+    if ( ui.tab_popup == currentTab ) {
+      Utils::Help::openHelpWebpage( "ui_popup" );
+    }
+    else if ( ui.tab_FTS == currentTab ) {
+      Utils::Help::openHelpWebpage( "ui_fulltextsearch" );
+    }
+    else {
+      Utils::Help::openHelpWebpage();
+    }
+  } );
+  connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
   addAction( &helpAction );
 
@@ -96,47 +107,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   if(!p.webFontFamily.isEmpty())
     ui.fontFamilies->setCurrentText( p.webFontFamily );
-  // Fill help languages combobox
-
-  ui.helpLanguage->addItem( tr( "Default" ), QString() );
-
-  // See which helps do we have
-
-  QStringList availHelps = QDir( Config::getHelpDir() ).entryList( QStringList( "*.qch" ),
-                                                                 QDir::Files );
-
-  QMultiMap< QString, QPair< QIcon, QString > > sortedHelps;
-
-  for( QStringList::iterator i = availHelps.begin(); i != availHelps.end(); ++i )
-  {
-    QString loc = i->mid( 7, i->length() - 11 ); // e.g. *i == "gdhelp_en.qch" => loc == "en"
-    QString lang = loc.mid( 0, 2 );
-    QString reg;
-    if(loc.length() >= 5 )
-      reg = loc.mid( 3, 2 ).toLower();
-    else
-    {
-      if( lang.compare( "en", Qt::CaseInsensitive ) == 0 )
-        reg = "US";
-      else
-        reg = lang.toUpper();
-    }
-
-    sortedHelps.insert(
-      Language::localizedNameForId( LangCoder::code2toInt( lang.toLatin1().data() ) ),
-      QPair< QIcon, QString >(
-        QIcon( QString( ":/flags/%1.png" ).arg( reg.toLower() ) ), lang + "_" + reg ) );
-  }
-
-  for( QMultiMap< QString, QPair< QIcon, QString > >::iterator i = sortedHelps.begin(); i != sortedHelps.end(); ++i )
-    ui.helpLanguage->addItem( i.value().first, i.key(), i.value().second );
-
-  for( int x = 0; x < ui.helpLanguage->count(); ++x )
-    if ( ui.helpLanguage->itemData( x ).toString() == p.helpLanguage )
-    {
-      ui.helpLanguage->setCurrentIndex( x );
-      break;
-    }
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Classic" ), QString( "classic" ) );
@@ -379,10 +349,6 @@ Config::Preferences Preferences::getPreferences()
     p.webFontFamily = ui.fontFamilies->currentText();
   else
     p.webFontFamily = "";
-
-  p.helpLanguage =
-    ui.helpLanguage->itemData(
-      ui.helpLanguage->currentIndex() ).toString();
 
   p.displayStyle =
     ui.displayStyle->itemData(
@@ -691,38 +657,4 @@ void Preferences::on_collapseBigArticles_toggled( bool checked )
 void Preferences::on_limitInputPhraseLength_toggled( bool checked )
 {
   ui.inputPhraseLengthLimit->setEnabled( checked );
-}
-
-void Preferences::helpRequested()
-{
-  if( !helpWindow )
-  {
-    MainWindow * mainWindow = qobject_cast< MainWindow * >( parentWidget() );
-    if( mainWindow )
-      mainWindow->closeGDHelp();
-
-    helpWindow = new Help::HelpWindow( this, cfg );
-
-    if( helpWindow )
-    {
-      helpWindow->setWindowFlags( Qt::Window );
-
-      connect( helpWindow, &Help::HelpWindow::needClose, this, &Preferences::closeHelp );
-      helpWindow->showHelpFor( "Preferences" );
-      helpWindow->show();
-    }
-  }
-  else
-  {
-    if( !helpWindow->isVisible() )
-      helpWindow->show();
-
-    helpWindow->activateWindow();
-  }
-}
-
-void Preferences::closeHelp()
-{
-  if( helpWindow )
-    helpWindow->hide();
 }

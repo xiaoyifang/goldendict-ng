@@ -324,6 +324,10 @@ namespace Html {
 std::string getHtmlCleaner();
 }
 
+namespace Help {
+void openHelpWebpage( const QString & chapter = "" );
 }
+
+} // namespace Utils
 
 #endif // UTILS_HH

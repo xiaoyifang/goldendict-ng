@@ -13,7 +13,6 @@
 #include "ui_dictheadwords.h"
 #include "dictionary.hh"
 #include "delegate.hh"
-#include "helpwindow.hh"
 #include "headwordsmodel.h"
 
 class DictHeadwords : public QDialog
@@ -53,7 +52,6 @@ private slots:
   void autoApplyStateChanged( int state );
   void showHeadwordsNumber();
   virtual void reject();
-  void helpRequested();
 
 signals:
   void headwordSelected( QString const &, QString const & );

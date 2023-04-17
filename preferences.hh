@@ -2,8 +2,8 @@
 #define __PREFERENCES_HH_INCLUDED__
 
 #include <QDialog>
+#include <QAction>
 #include "config.hh"
-#include "helpwindow.hh"
 #include "ui_preferences.h"
 
 /// Preferences dialog -- allows changing various program options.
@@ -15,15 +15,13 @@ class Preferences: public QDialog
 
   QString prevWebFontFamily;
 
-  Help::HelpWindow * helpWindow;
   Config::Class & cfg;
   QAction helpAction;
 
 public:
 
   Preferences( QWidget * parent, Config::Class & cfg_ );
-  ~Preferences()
-  { if( helpWindow ) delete helpWindow; }
+  ~Preferences() = default;
 
   Config::Preferences getPreferences();
 
@@ -57,8 +55,7 @@ private slots:
   void on_collapseBigArticles_toggled( bool checked );
   void on_limitInputPhraseLength_toggled( bool checked );
 
-  void helpRequested();
-  void closeHelp();
+
 };
 
 #endif

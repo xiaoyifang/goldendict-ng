@@ -41,7 +41,7 @@
      <property name="documentMode">
       <bool>false</bool>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tab_interface">
       <attribute name="icon">
        <iconset resource="resources.qrc">
         <normaloff>:/icons/interface.svg</normaloff>:/icons/interface.svg</iconset>
@@ -66,22 +66,6 @@
            </item>
            <item>
             <widget class="QComboBox" name="interfaceLanguage"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_16">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>Help language</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="helpLanguage"/>
            </item>
            <item>
             <widget class="QLabel" name="label_21">
@@ -404,7 +388,7 @@ be the last ones.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_4">
+     <widget class="QWidget" name="tab_popup">
       <attribute name="icon">
        <iconset resource="resources.qrc">
         <normaloff>:/icons/wizard.svg</normaloff>:/icons/wizard.svg</iconset>
@@ -680,7 +664,7 @@ in the pressed state when the word selection changes.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_5">
+     <widget class="QWidget" name="tab_hotkey">
       <attribute name="icon">
        <iconset resource="resources.qrc">
         <normaloff>:/icons/hotkeys.svg</normaloff>:/icons/hotkeys.svg</iconset>
@@ -784,7 +768,7 @@ in the pressed state when the word selection changes.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tab_audio">
       <attribute name="icon">
        <iconset resource="resources.qrc">
         <normaloff>:/icons/playsound_color.svg</normaloff>:/icons/playsound_color.svg</iconset>
@@ -877,7 +861,7 @@ in the pressed state when the word selection changes.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3">
+     <widget class="QWidget" name="tab_network">
       <attribute name="icon">
        <iconset resource="resources.qrc">
         <normaloff>:/icons/network.svg</normaloff>:/icons/network.svg</iconset>

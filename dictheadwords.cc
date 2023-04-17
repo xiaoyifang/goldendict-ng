@@ -16,7 +16,7 @@
 
 #include <QRegularExpression>
 #include "wildcard.hh"
-#include "gddebug.hh"
+#include "utils.hh"
 #include <QMessageBox>
 
 #define AUTO_APPLY_LIMIT 150000
@@ -82,12 +82,14 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
   }
   else
   {
-    connect( ui.helpButton, &QAbstractButton::clicked, this, &DictHeadwords::helpRequested );
 
     helpAction.setShortcut( QKeySequence( "F1" ) );
     helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-    connect( &helpAction, &QAction::triggered, this, &DictHeadwords::helpRequested );
+    connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
+    connect( &helpAction, &QAction::triggered, []() {
+      Utils::Help::openHelpWebpage( QStringLiteral( "ui_headwords" ) );
+    } );
 
     addAction( &helpAction );
   }
@@ -372,11 +374,4 @@ void DictHeadwords::saveHeadersToFile()
     progress.hide();
     QMessageBox::information( this, "GoldenDict", tr( "Export finished" ) );
   }
-}
-
-void DictHeadwords::helpRequested()
-{
-  MainWindow * mainWindow = qobject_cast< MainWindow * >( parentWidget() );
-  if( mainWindow )
-    mainWindow->showGDHelpForID( "Dictionary headwords" );
 }
