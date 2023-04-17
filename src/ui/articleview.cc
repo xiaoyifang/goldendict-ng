@@ -818,10 +818,10 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
     if( handled )
     {
       if( result == Gestures::ZOOM_IN )
-        zoomIn();
+        emit zoomIn();
       else
       if( result == Gestures::ZOOM_OUT )
-        zoomOut();
+        emit zoomOut();
       else
       if( result == Gestures::SWIPE_LEFT )
         back();
@@ -881,7 +881,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       }
     }
     else
-    if ( ev->type() == QEvent::KeyPress || ev->type ()==QEvent::ShortcutOverride)
+    if ( ev->type() == QEvent::KeyPress )
     {
       QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
 

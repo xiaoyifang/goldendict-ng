@@ -2476,6 +2476,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
        || ev->type() == QEvent::KeyPress )
   {
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
+    qDebug()<<obj<<ke->type()<<ke->text();
 
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
@@ -2582,8 +2583,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   else
   if ( obj == wordList )
   {
-    if (ev->type() == QEvent::KeyPress || ev->type() == QEvent::ShortcutOverride) 
-    {
+    if ( ev->type() == QEvent::KeyPress ) {
       QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) &&
@@ -2607,54 +2607,29 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
         return cfg.preferences.searchInDock;
       }
+    }
+  }
 
-      // Handle typing events used to initiate new lookups
-      // TODO: refactor to eliminate duplication (see below)
+  if ( ev->type() == QEvent::KeyPress && obj != translateLine ) {
 
-      if ( keyEvent->modifiers() &
-           ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
-        return false; // A non-typing modifier is pressed
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >(ev);  key_event->modifiers() == Qt::NoModifier ) {
+      const QString text = key_event->text();
 
-      if (  Utils::ignoreKeyEvent(keyEvent))
+      if ( Utils::ignoreKeyEvent( key_event ) ||
+        key_event->key() == Qt::Key_Return ||
+        key_event->key() == Qt::Key_Enter )
         return false; // Those key have other uses than to start typing
-                      // or don't make sense
-
-      QString text = keyEvent->text();
-
-      if ( text.size() )
-      {
+      // or don't make sense
+      if ( !text.isEmpty() ) {
         typingEvent( text );
         return true;
       }
     }
+
   }
-  else
-  if (obj == ui.dictsList) {
-    if ( ev->type() == QEvent::KeyPress || ev->type() == QEvent::ShortcutOverride)
-    {
-      QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
 
-      // Handle typing events used to initiate new lookups
-      // TODO: refactor to eliminate duplication (see above)
 
-      if ( keyEvent->modifiers() &
-           ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
-        return false; // A non-typing modifier is pressed
-
-      if ( Utils::ignoreKeyEvent(keyEvent))
-        return false; // Those key have other uses than to start typing
-                      // or don't make sense
-
-      QString text = keyEvent->text();
-
-      if ( text.size() )
-      {
-        typingEvent( text );
-        return true;
-      }
-    }
-  }
-    return QMainWindow::eventFilter( obj, ev );
+  return QMainWindow::eventFilter( obj, ev );
 
   return false;
 }
@@ -2770,13 +2745,12 @@ void MainWindow::typingEvent( QString const & t )
     if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() )
       ui.searchPane->activateWindow();
 
-    if( translateLine->isEnabled() )
-    {
-        translateLine->clear();
-        translateLine->setFocus();
-        // Escaping the typed-in characters is the user's responsibility.
-        //      setTranslateBoxTextAndClearSuffix( t, WildcardsAreAlreadyEscaped, EnablePopup );
-        //      translateLine->setCursorPosition( t.size() );
+    if ( translateLine->isEnabled() ) {
+      translateLine->clear();
+      translateLine->setFocus();
+      // Escaping the typed-in characters is the user's responsibility.
+      setTranslateBoxTextAndClearSuffix( t, WildcardsAreAlreadyEscaped, EnablePopup );
+      translateLine->setCursorPosition( t.size() );
     }
   }
 }
