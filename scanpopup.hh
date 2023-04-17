@@ -5,7 +5,7 @@
 #define __SCANPOPUP_HH_INCLUDED__
 
 #include "article_netmgr.hh"
-#include "ui/articleview.h"
+#include "ui/articleview.hh"
 #include "wordfinder.hh"
 #include "keyboardstate.hh"
 #include "config.hh"

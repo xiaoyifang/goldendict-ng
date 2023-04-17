@@ -63,8 +63,10 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 }
 
 contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
-  HEADERS += audiooutput.h
-  SOURCES += audiooutput.cpp
+  HEADERS += \
+  audiooutput.hh
+  SOURCES += \
+  audiooutput.cc
 }
 
 # on windows platform ,only works in release build
@@ -273,30 +275,34 @@ DEFINES += PROGRAM_VERSION=\\\"$$VERSION\\\"
 
 # Input
 HEADERS += folding.hh \
-    ankiconnector.h \
-    article_inspect.h \
-    articlewebpage.h \
+    ankiconnector.hh \
+    article_inspect.hh \
+    articlewebpage.hh \
     base/globalregex.hh \
-    base_type.h \
+    base_type.hh \
+    dictzip.hh \
     globalbroadcaster.h \
-    headwordsmodel.h \
-    iframeschemehandler.h \
+    headwordsmodel.hh \
+    iframeschemehandler.hh \
     inc_case_folding.hh \
     inc_diacritic_folding.hh \
     mainwindow.hh \
-    resourceschemehandler.h \
+    resourceschemehandler.hh \
     sptr.hh \
     dictionary.hh \
     ex.hh \
     config.hh \
     sources.hh \
+    src/dict/lingualibre.hh \
+    src/ui/articleview.hh \
+    src/ui/ftssearchpanel.hh \
+    src/ui/searchpanel.hh \
     utf8.hh \
     file.hh \
     bgl_babylon.hh \
     bgl.hh \
     initializing.hh \
     article_netmgr.hh \
-    dictzip.h \
     btreeidx.hh \
     stardict.hh \
     chunkedstorage.hh \
@@ -393,28 +399,28 @@ HEADERS += folding.hh \
     ripemd.hh \
     gls.hh \
     splitfile.hh \
-    favoritespanewidget.hh \
-    src/dict/lingualibre.h \
-    src/ui/articleview.h \
-    src/ui/ftssearchpanel.h \
-    src/ui/searchpanel.h
+    favoritespanewidget.hh
 
 FORMS += $$files(src/ui/*.ui)
 
 SOURCES += folding.cc \
-    ankiconnector.cpp \
-    article_inspect.cpp \
-    articlewebpage.cpp \
+    ankiconnector.cc \
+    article_inspect.cc \
+    articlewebpage.cc \
     base/globalregex.cc \
-    globalbroadcaster.cpp \
-    headwordsmodel.cpp \
-    iframeschemehandler.cpp \
+    globalbroadcaster.cc \
+    headwordsmodel.cc \
+    iframeschemehandler.cc \
     main.cc \
     dictionary.cc \
     config.cc \
-    resourceschemehandler.cpp \
+    resourceschemehandler.cc \
     sources.cc \
     mainwindow.cc \
+    src/dict/lingualibre.cc \
+    src/ui/articleview.cc \
+    src/ui/ftssearchpanel.cc \
+    src/ui/searchpanel.cc \
     utf8.cc \
     file.cc \
     bgl_babylon.cc \
@@ -426,7 +432,7 @@ SOURCES += folding.cc \
     stardict.cc \
     chunkedstorage.cc \
     utils.cc \
-    weburlrequestinterceptor.cpp \
+    weburlrequestinterceptor.cc \
     xdxf2html.cc \
     iconv.cc \
     lsa.cc \
@@ -513,11 +519,7 @@ SOURCES += folding.cc \
     ripemd.cc \
     gls.cc \
     splitfile.cc \
-    favoritespanewidget.cc \
-    src/dict/lingualibre.cpp \
-    src/ui/articleview.cpp \
-    src/ui/ftssearchpanel.cpp \
-    src/ui/searchpanel.cpp
+    favoritespanewidget.cc
 
 #speech to text
 SOURCES += speechclient.cc \
@@ -527,8 +529,9 @@ HEADERS += texttospeechsource.hh \
 
 mac {
     HEADERS += macmouseover.hh \
-               src/platform/gd_clipboard.h
-    SOURCES += src/platform/gd_clipboard.cpp
+    src/platform/gd_clipboard.hh
+    SOURCES += \
+    src/platform/gd_clipboard.cc
 }
 
 unix:!mac {

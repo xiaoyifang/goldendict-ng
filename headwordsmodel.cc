@@ -1,4 +1,4 @@
-#include "headwordsmodel.h"
+#include "headwordsmodel.hh"
 #include "wstring_qt.hh"
 
 HeadwordListModel::HeadwordListModel( QObject * parent ) :

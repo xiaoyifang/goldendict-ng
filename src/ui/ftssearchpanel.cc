@@ -1,4 +1,4 @@
-#include "ftssearchpanel.h"
+#include "ftssearchpanel.hh"
 #include <QHBoxLayout>
 
 FtsSearchPanel::FtsSearchPanel( QWidget * parent ): QWidget( parent )

@@ -13,7 +13,7 @@
 #include "ui_dictheadwords.h"
 #include "dictionary.hh"
 #include "delegate.hh"
-#include "headwordsmodel.h"
+#include "headwordsmodel.hh"
 
 class DictHeadwords : public QDialog
 {

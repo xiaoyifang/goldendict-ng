@@ -15,17 +15,17 @@
 #include "instances.hh"
 #include "groupcombobox.hh"
 #include "globalbroadcaster.h"
-#include "article_inspect.h"
+#include "article_inspect.hh"
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   #include <QtCore5Compat/QRegExp>
 
 #endif
-#include "ankiconnector.h"
+#include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
-#include "base_type.h"
+#include "base_type.hh"
 #include "articlewebview.hh"
-#include "ui/searchpanel.h"
-#include "ui/ftssearchpanel.h"
+#include "ui/searchpanel.hh"
+#include "ui/ftssearchpanel.hh"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent ;

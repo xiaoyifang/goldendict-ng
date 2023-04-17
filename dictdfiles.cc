@@ -5,7 +5,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "utf8.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "htmlescape.hh"
 #include "fsencoding.hh"
 #include "langcoder.hh"

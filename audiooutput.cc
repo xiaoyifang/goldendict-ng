@@ -1,4 +1,4 @@
-#include "audiooutput.h"
+#include "audiooutput.hh"
 
 #include <QAudioFormat>
 #include <QDebug>

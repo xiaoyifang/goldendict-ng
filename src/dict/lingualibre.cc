@@ -1,4 +1,4 @@
-#include "lingualibre.h"
+#include "lingualibre.hh"
 #include "utf8.hh"
 #include "audiolink.hh"
 #include <string>

@@ -1,4 +1,4 @@
-#include "searchpanel.h"
+#include "searchpanel.hh"
 #include <QLabel>
 #include <QVBoxLayout>
 

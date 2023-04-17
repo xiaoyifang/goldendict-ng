@@ -19,7 +19,7 @@
 #include "instances.hh"
 #include "article_maker.hh"
 #include "scanpopup.hh"
-#include "ui/articleview.h"
+#include "ui/articleview.hh"
 #include "wordfinder.hh"
 #include "dictionarybar.hh"
 #include "history.hh"
@@ -29,12 +29,12 @@
 #include "wordlist.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
-#include "base_type.h"
+#include "base_type.hh"
 
 #include "hotkeywrapper.hh"
 #include "weburlrequestinterceptor.h"
-#include "resourceschemehandler.h"
-#include "iframeschemehandler.h"
+#include "resourceschemehandler.hh"
+#include "iframeschemehandler.hh"
 #ifdef HAVE_X11
 #include <fixx11h.h>
 #endif

@@ -1,5 +1,5 @@
 #ifndef BASE_TYPE_H
-  #define BASE_TYPE_H
+#define BASE_TYPE_H
 
 #include <QString>
 

@@ -1,4 +1,4 @@
-#include "iframeschemehandler.h"
+#include "iframeschemehandler.hh"
 
 #include <QTextCodec>
 

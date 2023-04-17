@@ -1,4 +1,4 @@
-#include "resourceschemehandler.h"
+#include "resourceschemehandler.hh"
 
 ResourceSchemeHandler::ResourceSchemeHandler(ArticleNetworkAccessManager& articleNetMgr, QObject *parent):
     QWebEngineUrlSchemeHandler(parent),

@@ -6,7 +6,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "chunkedstorage.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "htmlescape.hh"
 #include "fsencoding.hh"
 #include <map>
@@ -20,7 +20,7 @@
 #include "wstring_qt.hh"
 #include "xdxf2html.hh"
 #include "ufile.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "langcoder.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"

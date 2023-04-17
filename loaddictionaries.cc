@@ -30,7 +30,7 @@
 #include "dictserver.hh"
 #include "slob.hh"
 #include "gls.hh"
-#include "dict/lingualibre.h"
+#include "dict/lingualibre.hh"
 
 #ifndef NO_EPWING_SUPPORT
 #include "epwing.hh"

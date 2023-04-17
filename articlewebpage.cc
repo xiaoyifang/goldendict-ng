@@ -1,4 +1,4 @@
-#include "articlewebpage.h"
+#include "articlewebpage.hh"
 #include "utils.hh"
 #include "globalbroadcaster.h"
 

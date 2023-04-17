@@ -44,7 +44,7 @@
 #include "utils.hh"
 #include <qscreen.h>
 #include "ui_authentication.h"
-#include "resourceschemehandler.h"
+#include "resourceschemehandler.hh"
 
 #include "keyboardstate.hh"
 #include "base/globalregex.hh"

@@ -7,7 +7,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "chunkedstorage.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "htmlescape.hh"
 #include "iconv.hh"
 #include "filetype.hh"

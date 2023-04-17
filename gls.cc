@@ -13,7 +13,7 @@
 #include "wstring_qt.hh"
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "indexedzip.hh"
 #include "ftshelpers.hh"
 #include "fsencoding.hh"

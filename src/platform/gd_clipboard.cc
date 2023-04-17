@@ -1,4 +1,4 @@
-#include "gd_clipboard.h"
+#include "gd_clipboard.hh"
 #include <QGuiApplication>
 
 gd_clipboard::gd_clipboard(QObject *parent)

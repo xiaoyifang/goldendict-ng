@@ -1,6 +1,6 @@
 #ifdef MAKE_FFMPEG_PLAYER
 
-#include "audiooutput.h"
+#include "audiooutput.hh"
 #include "ffmpegaudio.hh"
 
 #include <math.h>

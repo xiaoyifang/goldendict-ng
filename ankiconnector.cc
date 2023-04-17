@@ -1,4 +1,4 @@
-#include "ankiconnector.h"
+#include "ankiconnector.hh"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>

@@ -5,7 +5,7 @@
 #include <QSwipeGesture>
 #include <QVariant>
 #include <math.h>
-#include "ui/articleview.h"
+#include "ui/articleview.hh"
 #include "gestures.hh"
 
 namespace Gestures

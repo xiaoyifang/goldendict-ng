@@ -6,7 +6,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "chunkedstorage.hh"
-#include "dictzip.h"
+#include "dictzip.hh"
 #include "xdxf2html.hh"
 #include "htmlescape.hh"
 #include "langcoder.hh"

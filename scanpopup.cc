@@ -19,7 +19,7 @@
 #include "macmouseover.hh"
 #define MouseOver MacMouseOver
 #endif
-#include "base_type.h"
+#include "base_type.hh"
 
 /// We use different window flags under Windows and X11 due to slight differences
 /// in their behavior on those platforms.

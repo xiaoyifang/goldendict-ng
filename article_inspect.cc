@@ -1,4 +1,4 @@
-#include "article_inspect.h"
+#include "article_inspect.hh"
 #include <QCloseEvent>
 #if (QT_VERSION > QT_VERSION_CHECK(6,0,0))
 #include <QWebEngineContextMenuRequest>
