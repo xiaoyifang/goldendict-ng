@@ -32,7 +32,6 @@ CONFIG( release, debug|release ) {
 }
 
 # DEPENDPATH += . generators
-INCLUDEPATH += .
 INCLUDEPATH += ./src/
 INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
 INCLUDEPATH += ./src/common
