@@ -40,7 +40,7 @@
 #endif
 
 #if defined(Q_OS_MAC)
-#include "platform/gd_clipboard.h"
+#include "macos/gd_clipboard.hh"
 #endif
 
 using std::string;

@@ -16,7 +16,7 @@
 #include "gestures.hh"
 
 #ifdef Q_OS_MAC
-#include "macmouseover.hh"
+#include "macos/macmouseover.hh"
 #define MouseOver MacMouseOver
 #endif
 #include "base_type.hh"

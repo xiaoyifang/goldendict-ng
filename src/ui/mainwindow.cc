@@ -50,7 +50,7 @@
 #include "base/globalregex.hh"
 
 #ifdef Q_OS_MAC
-#include "macmouseover.hh"
+#include "macos/macmouseover.hh"
 #endif
 
 #ifdef Q_OS_WIN32

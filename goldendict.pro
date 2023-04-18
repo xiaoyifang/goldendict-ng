@@ -247,8 +247,8 @@ mac {
         LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
     }
 
-    OBJECTIVE_SOURCES += machotkeywrapper.mm \
-                         macmouseover.mm
+    OBJECTIVE_SOURCES += src/macos/machotkeywrapper.mm \
+                         src/macos/macmouseover.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = myInfo.plist
 
@@ -531,10 +531,9 @@ HEADERS += src/texttospeechsource.hh \
            src/speechclient.hh
 
 mac {
-    HEADERS += macmouseover.hh \
-    src/platform/gd_clipboard.hh
-    SOURCES += \
-    src/platform/gd_clipboard.cc
+    HEADERS += src/macos/macmouseover.hh \
+               src/macos/gd_clipboard.hh
+    SOURCES += src/macos/gd_clipboard.cc
 }
 
 unix:!mac {
