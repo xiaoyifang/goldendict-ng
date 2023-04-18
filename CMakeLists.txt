@@ -131,27 +131,12 @@ set(QRC_RESOURCES
         flags.qrc
         resources.qrc
         scripts.qrc
+        src/stylesheets/css.qrc
         )
 
-set(UI_SRC
-        about.ui
-        authentication.ui
-        chineseconversion.ui
-        dictgroupwidget.ui
-        dictheadwords.ui
-        dictinfo.ui
-        editdictionaries.ui
-        fulltextsearch.ui
-        groups.ui
-        initializing.ui
-        mainwindow.ui
-        options.ui
-        orderandprops.ui
-        preferences.ui
-        scanpopup.ui
-        sources.ui
-        texttospeechsource.ui
-        )
+# auto discovery of ui files https://cmake.org/cmake/help/v3.26/prop_tgt/AUTOUIC_SEARCH_PATHS.html
+set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/")
+
 if(WITH_EPWING_SUPPORT)
 set(EPWING_SUPPORT_SRC
         epwing.cc
@@ -186,7 +171,6 @@ if(WITH_FFMPEG_PLAYER)
 endif()
 
 set(PROJECT_SOURCES
-        ${UI_SRC}
         ${MAC_SRC}
         ${QRC_RESOURCES}
         ${EPWING_SUPPORT_SRC}

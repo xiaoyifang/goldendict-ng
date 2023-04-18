@@ -1,6 +1,7 @@
 *.o
 *~
 
+.cache/
 locale/*.qm
 debug/
 build/
