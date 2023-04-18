@@ -62,6 +62,10 @@ About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dicto
          +" NO_EPWING_SUPPORT"
 #endif
 
+#ifdef USE_ICONV
+        +" USE_ICONV"
+#endif
+
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
          +" MAKE_CHINESE_CONVERSION_SUPPORT"
 #endif

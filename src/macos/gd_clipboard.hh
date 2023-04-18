@@ -1,3 +1,4 @@
+#ifdef __APPLE__
 #pragma once
 
 #include <QClipboard>
@@ -36,3 +37,4 @@ signals:
     void changed(QClipboard::Mode mode);
 };
 
+#endif

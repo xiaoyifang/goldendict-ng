@@ -1,3 +1,5 @@
+#ifdef __APPLE__
+
 #include "gd_clipboard.hh"
 #include <QGuiApplication>
 
@@ -34,3 +36,5 @@ void gd_clipboard::stop() {
 void gd_clipboard::start() {
     m_monitoringTimer.start(1000); // 1s
 }
+
+#endif

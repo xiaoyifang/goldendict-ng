@@ -1,3 +1,5 @@
+#ifdef __APPLE__
+
 #ifndef __MACMOUSEOVER_HH_INCLUDED__
 #define __MACMOUSEOVER_HH_INCLUDED__
 
@@ -63,3 +65,4 @@ private:
 
 #endif
 
+#endif
