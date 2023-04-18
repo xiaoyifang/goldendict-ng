@@ -86,38 +86,34 @@ void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
   }
 }
 
-class GDCommandLine
+struct GDOptions
 {
-private:
   bool logFile= false;
   QString word, groupName, popupGroupName;
 
-public:
-  explicit GDCommandLine(QCoreApplication * app);
-
-  inline bool needSetGroup()
+  inline bool needSetGroup() const
   { return !groupName.isEmpty(); }
 
-  inline QString getGroupName()
+  inline QString getGroupName() const
   { return groupName; }
 
-  inline bool needSetPopupGroup()
+  inline bool needSetPopupGroup() const
   { return !popupGroupName.isEmpty(); }
 
-  inline QString getPopupGroupName()
+  inline QString getPopupGroupName() const
   { return popupGroupName; }
 
-  inline bool needLogFile()
+  inline bool needLogFile() const
   { return logFile; }
 
-  inline bool needTranslateWord()
+  inline bool needTranslateWord() const
   { return !word.isEmpty(); }
 
-  inline QString wordToTranslate()
+  inline QString wordToTranslate() const
   { return word; }
 };
 
-GDCommandLine::GDCommandLine( QCoreApplication * app )
+void processCommandLine( QCoreApplication * app, GDOptions * result)
 {
   QCommandLineParser qcmd;
 
@@ -150,27 +146,27 @@ GDCommandLine::GDCommandLine( QCoreApplication * app )
   qcmd.process( *app );
 
   if ( qcmd.isSet( logFileOption ) ) {
-    logFile = true;
+    result->logFile = true;
   }
 
   if ( qcmd.isSet( groupNameOption ) ) {
-    groupName = qcmd.value( groupNameOption );
+    result->groupName = qcmd.value( groupNameOption );
   }
 
   if ( qcmd.isSet( popupGroupNameOption ) ) {
-    popupGroupName = qcmd.value( popupGroupNameOption );
+    result->popupGroupName = qcmd.value( popupGroupNameOption );
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
   if ( !posArgs.empty() ) {
-    word = posArgs.at( 0 );
+    result->word = posArgs.at( 0 );
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" on windows
-    word.remove( "goldendict://" );
+    result->word.remove( "goldendict://" );
     // In microsoft Words, the / will be automatically appended
-    if ( word.endsWith( "/" ) ) {
-      word.chop( 1 );
+    if ( result->word.endsWith( "/" ) ) {
+      result->word.chop( 1 );
     }
 #endif
   }
@@ -179,7 +175,7 @@ GDCommandLine::GDCommandLine( QCoreApplication * app )
 class LogFilePtrGuard
 {
   QFile logFile;
-  Q_DISABLE_COPY( LogFilePtrGuard )  
+  Q_DISABLE_COPY( LogFilePtrGuard ) 
 public:
   LogFilePtrGuard() { logFilePtr = &logFile; }
   ~LogFilePtrGuard() { logFilePtr = 0; }
@@ -234,7 +230,11 @@ int main( int argc, char ** argv )
   app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
 
-  GDCommandLine gdcl(&app);
+  GDOptions gdcl{};
+
+  if ( argc > 1 ) {
+        processCommandLine( &app, &gdcl );
+  }
 
   installTerminationHandler();
 
