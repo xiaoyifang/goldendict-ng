@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <QIcon>
-#include "gdappstyle.hh"
 #include "mainwindow.hh"
 #include "config.hh"
 #include <QWebEngineProfile>

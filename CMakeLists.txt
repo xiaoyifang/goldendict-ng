@@ -267,8 +267,6 @@ set(PROJECT_SOURCES
         ftshelpers.hh
         fulltextsearch.cc
         fulltextsearch.hh
-        gdappstyle.cc
-        gdappstyle.hh
         gddebug.cc
         gddebug.hh
         german.cc
