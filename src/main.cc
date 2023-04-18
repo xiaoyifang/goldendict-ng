@@ -89,7 +89,8 @@ void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
 
 struct GDOptions
 {
-  bool logFile= false;
+  bool logFile     = false;
+  bool togglePopup = false;
   QString word, groupName, popupGroupName;
 
   inline bool needSetGroup() const
@@ -112,6 +113,9 @@ struct GDOptions
 
   inline QString wordToTranslate() const
   { return word; }
+
+  inline bool needTogglePopup() const
+  { return togglePopup; }
 };
 
 void processCommandLine( QCoreApplication * app, GDOptions * result)
@@ -136,9 +140,14 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
                                            QObject::tr( "Change the group of popup." ),
                                            "popupGroupName" );
 
+  QCommandLineOption togglePopupOption( QStringList() << "t"
+                                                      << "toggle-scan-popup",
+                                        QObject::tr( "Toggle scan popup." ) );
+
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
+  qcmd.addOption( togglePopupOption );
 
   QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
   doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
@@ -156,6 +165,10 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
   if ( qcmd.isSet( popupGroupNameOption ) ) {
     result->popupGroupName = qcmd.value( popupGroupNameOption );
+  }
+
+  if ( qcmd.isSet( togglePopupOption ) ) {
+    result->togglePopup = true;
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
@@ -281,6 +294,11 @@ int main( int argc, char ** argv )
     if( gdcl.needTranslateWord() )
     {
       app.sendMessage( QString( "translateWord: " ) + gdcl.wordToTranslate() );
+      wasMessage = true;
+    }
+
+    if ( gdcl.needTogglePopup() ) {
+      app.sendMessage( QStringLiteral( "toggleScanPopup" ) );
       wasMessage = true;
     }
 

@@ -3716,11 +3716,16 @@ void MainWindow::applyWordsZoomLevel()
 
 void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
 {
-  if ( message == "bringToFront" )
-  {
+  if ( message == "bringToFront" ) {
     toggleMainWindow( true );
     return;
   }
+
+  if ( message == "toggleScanPopup" ) {
+    enableScanningAction->trigger();
+    return;
+  }
+
   if( message.left( 15 ) == "translateWord: " )
   {
     if( scanPopup )
