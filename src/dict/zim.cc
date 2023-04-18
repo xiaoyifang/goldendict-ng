@@ -41,7 +41,7 @@
 #include <map>
 #include <algorithm>
 #include <QtConcurrent>
-#include "base/globalregex.hh"
+#include "globalregex.hh"
 
 namespace Zim {
 
