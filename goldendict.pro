@@ -279,7 +279,7 @@ HEADERS += \
     src/ankiconnector.hh \
     src/article_maker.hh \
     src/article_netmgr.hh \
-    src/atomic_rename.hh \
+    src/common/atomic_rename.hh \
     src/audiolink.hh \
     src/audioplayerfactory.hh \
     src/audioplayerinterface.hh \
@@ -349,7 +349,7 @@ HEADERS += \
     src/externalviewer.hh \
     src/ffmpegaudio.hh \
     src/ffmpegaudioplayer.hh \
-    src/folding.hh \
+    src/common/folding.hh \
     src/ftshelpers.hh \
     src/fulltextsearch.hh \
     src/gdappstyle.hh \
@@ -409,7 +409,7 @@ SOURCES += \
     src/ankiconnector.cc \
     src/article_maker.cc \
     src/article_netmgr.cc \
-    src/atomic_rename.cc \
+    src/common/atomic_rename.cc \
     src/audiolink.cc \
     src/audioplayerfactory.cc \
     src/btreeidx.cc \
@@ -471,7 +471,7 @@ SOURCES += \
     src/externalaudioplayer.cc \
     src/externalviewer.cc \
     src/ffmpegaudio.cc \
-    src/folding.cc \
+    src/common/folding.cc \
     src/ftshelpers.cc \
     src/fulltextsearch.cc \
     src/gdappstyle.cc \
@@ -542,8 +542,8 @@ unix:!mac {
 }
 
 
-HEADERS += src/wildcard.hh
-SOURCES += src/wildcard.cc
+HEADERS += src/common/wildcard.hh
+SOURCES += src/common/wildcard.cc
 
 
 CONFIG( zim_support ) {
