@@ -3,19 +3,18 @@
 
 #include "article_maker.hh"
 #include "config.hh"
-#include "htmlescape.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
-#include <limits.h>
-#include <QFile>
-#include <QUrl>
-#include <QTextDocumentFragment>
 #include "folding.hh"
-#include "langcoder.hh"
 #include "gddebug.hh"
-#include "utils.hh"
 #include "globalbroadcaster.hh"
-#include "base/globalregex.hh"
+#include "globalregex.hh"
+#include "htmlescape.hh"
+#include "langcoder.hh"
+#include "utils.hh"
+#include "wstring_qt.hh"
+#include <QFile>
+#include <QTextDocumentFragment>
+#include <QUrl>
+#include <limits.h>
 
 using std::vector;
 using std::string;

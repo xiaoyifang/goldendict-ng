@@ -34,7 +34,8 @@ CONFIG( release, debug|release ) {
 # DEPENDPATH += . generators
 INCLUDEPATH += .
 INCLUDEPATH += ./src/
-INCLUDEPATH += ./src/ui # for compiled .ui files to find headers
+INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
+INCLUDEPATH += ./src/common
 
 QT += core \
       gui \
@@ -283,10 +284,27 @@ HEADERS += \
     src/audiolink.hh \
     src/audioplayerfactory.hh \
     src/audioplayerinterface.hh \
-    src/base/globalregex.hh \
-    src/base_type.hh \
     src/btreeidx.hh \
     src/chunkedstorage.hh \
+    src/common/base_type.hh \
+    src/common/ex.hh \
+    src/common/file.hh \
+    src/common/filetype.hh \
+    src/common/fsencoding.hh \
+    src/common/gddebug.hh \
+    src/common/globalbroadcaster.hh \
+    src/common/globalregex.hh \
+    src/common/htmlescape.hh \
+    src/common/iconv.hh \
+    src/common/inc_case_folding.hh \
+    src/common/inc_diacritic_folding.hh \
+    src/common/mutex.hh \
+    src/common/sptr.hh \
+    src/common/ufile.hh \
+    src/common/utf8.hh \
+    src/common/utils.hh \
+    src/common/wstring.hh \
+    src/common/wstring_qt.hh \
     src/config.hh \
     src/country.hh \
     src/decompress.hh \
@@ -312,6 +330,7 @@ HEADERS += \
     src/dict/mdx.hh \
     src/dict/mediawiki.hh \
     src/dict/programs.hh \
+    src/dict/ripemd.hh \
     src/dict/romaji.hh \
     src/dict/russiantranslit.hh \
     src/dict/sdict.hh \
@@ -327,29 +346,19 @@ HEADERS += \
     src/dict/zim.hh \
     src/dict/zipsounds.hh \
     src/dictzip.hh \
-    src/ex.hh \
     src/externalaudioplayer.hh \
     src/externalviewer.hh \
     src/ffmpegaudio.hh \
     src/ffmpegaudioplayer.hh \
-    src/file.hh \
-    src/filetype.hh \
     src/folding.hh \
-    src/fsencoding.hh \
     src/ftshelpers.hh \
     src/fulltextsearch.hh \
     src/gdappstyle.hh \
-    src/gddebug.hh \
     src/gestures.hh \
-    src/globalbroadcaster.hh \
     src/headwordsmodel.hh \
     src/history.hh \
     src/hotkeywrapper.hh \
-    src/htmlescape.hh \
-    src/iconv.hh \
     src/iframeschemehandler.hh \
-    src/inc_case_folding.hh \
-    src/inc_diacritic_folding.hh \
     src/indexedzip.hh \
     src/initializing.hh \
     src/instances.hh \
@@ -357,15 +366,11 @@ HEADERS += \
     src/langcoder.hh \
     src/language.hh \
     src/multimediaaudioplayer.hh \
-    src/mutex.hh \
     src/parsecmdline.hh \
     src/resourceschemehandler.hh \
-    src/ripemd.hh \
     src/splitfile.hh \
-    src/sptr.hh \
     src/termination.hh \
     src/tiff.hh \
-    src/ufile.hh \
     src/ui/about.hh \
     src/ui/article_inspect.hh \
     src/ui/articleview.hh \
@@ -393,15 +398,11 @@ HEADERS += \
     src/ui/searchpanewidget.hh \
     src/ui/stylescombobox.hh \
     src/ui/translatebox.hh \
-    src/utf8.hh \
-    src/utils.hh \
     src/webmultimediadownload.hh \
     src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
     src/wordlist.hh \
-    src/wstring.hh \
-    src/wstring_qt.hh \
-    src/zipfile.hh
+    src/zipfile.hh \
 
 FORMS += $$files(src/ui/*.ui)
 
@@ -412,9 +413,21 @@ SOURCES += \
     src/atomic_rename.cc \
     src/audiolink.cc \
     src/audioplayerfactory.cc \
-    src/base/globalregex.cc \
     src/btreeidx.cc \
     src/chunkedstorage.cc \
+    src/common/file.cc \
+    src/common/filetype.cc \
+    src/common/fsencoding.cc \
+    src/common/gddebug.cc \
+    src/common/globalbroadcaster.cc \
+    src/common/globalregex.cc \
+    src/common/htmlescape.cc \
+    src/common/iconv.cc \
+    src/common/mutex.cc \
+    src/common/ufile.cc \
+    src/common/utf8.cc \
+    src/common/utils.cc \
+    src/common/wstring_qt.cc \
     src/config.cc \
     src/country.cc \
     src/decompress.cc \
@@ -440,6 +453,7 @@ SOURCES += \
     src/dict/mdx.cc \
     src/dict/mediawiki.cc \
     src/dict/programs.cc \
+    src/dict/ripemd.cc \
     src/dict/romaji.cc \
     src/dict/russiantranslit.cc \
     src/dict/sdict.cc \
@@ -458,21 +472,14 @@ SOURCES += \
     src/externalaudioplayer.cc \
     src/externalviewer.cc \
     src/ffmpegaudio.cc \
-    src/file.cc \
-    src/filetype.cc \
     src/folding.cc \
-    src/fsencoding.cc \
     src/ftshelpers.cc \
     src/fulltextsearch.cc \
     src/gdappstyle.cc \
-    src/gddebug.cc \
     src/gestures.cc \
-    src/globalbroadcaster.cc \
     src/headwordsmodel.cc \
     src/history.cc \
     src/hotkeywrapper.cc \
-    src/htmlescape.cc \
-    src/iconv.cc \
     src/iframeschemehandler.cc \
     src/indexedzip.cc \
     src/initializing.cc \
@@ -482,14 +489,11 @@ SOURCES += \
     src/language.cc \
     src/main.cc \
     src/multimediaaudioplayer.cc \
-    src/mutex.cc \
     src/parsecmdline.cc \
     src/resourceschemehandler.cc \
-    src/ripemd.cc \
     src/splitfile.cc \
     src/termination.cc \
     src/tiff.cc \
-    src/ufile.cc \
     src/ui/about.cc \
     src/ui/article_inspect.cc \
     src/ui/articleview.cc \
@@ -515,13 +519,10 @@ SOURCES += \
     src/ui/searchpanel.cc \
     src/ui/stylescombobox.cc \
     src/ui/translatebox.cc \
-    src/utf8.cc \
-    src/utils.cc \
     src/webmultimediadownload.cc \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
     src/wordlist.cc \
-    src/wstring_qt.cc \
     src/zipfile.cc
 
 #speech to text

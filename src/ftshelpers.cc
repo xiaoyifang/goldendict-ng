@@ -21,7 +21,7 @@
 
 #include "wildcard.hh"
 #include <QtConcurrent>
-#include "base/globalregex.hh"
+#include "globalregex.hh"
 #include <QFutureSynchronizer>
 #include <QSemaphoreReleaser>
 

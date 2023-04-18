@@ -19,7 +19,7 @@
 #include <QOperatingSystemVersion>
 
 #endif
-#include "base/globalregex.hh"
+#include "globalregex.hh"
 
 namespace FTS
 {

@@ -39,7 +39,6 @@
 #include "gddebug.hh"
 
 #include "dictinfo.hh"
-#include "fsencoding.hh"
 #include "historypanewidget.hh"
 #include "utils.hh"
 #include <qscreen.h>
@@ -47,7 +46,7 @@
 #include "resourceschemehandler.hh"
 
 #include "keyboardstate.hh"
-#include "base/globalregex.hh"
+#include "globalregex.hh"
 
 #ifdef Q_OS_MAC
 #include "macos/macmouseover.hh"

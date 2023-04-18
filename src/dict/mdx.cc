@@ -30,19 +30,17 @@
 #include <stub_msvc.h>
 #endif
 
-#include <QDir>
-#include <QString>
-#include <QSemaphore>
-#include <QThreadPool>
-#include <QAtomicInt>
-#include <QTextDocument>
-#include <QCryptographicHash>
-
-#include <QRegularExpression>
-
+#include "globalregex.hh"
 #include "tiff.hh"
 #include "utils.hh"
-#include "base/globalregex.hh"
+#include <QAtomicInt>
+#include <QCryptographicHash>
+#include <QDir>
+#include <QRegularExpression>
+#include <QSemaphore>
+#include <QString>
+#include <QTextDocument>
+#include <QThreadPool>
 #include <QtConcurrent>
 
 namespace Mdx

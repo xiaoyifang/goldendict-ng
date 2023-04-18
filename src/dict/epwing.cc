@@ -25,7 +25,7 @@
 #include "utf8.hh"
 #include "filetype.hh"
 #include "ftshelpers.hh"
-#include "base/globalregex.hh"
+#include "globalregex.hh"
 #include "sptr.hh"
 
 namespace Epwing {
