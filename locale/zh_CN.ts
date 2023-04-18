@@ -321,7 +321,7 @@
     <message>
       <location filename="../articleview.cc" line="1040"/>
       <source>Video: %1</source>
-      <translation type="unfinished">Video: %1</translation>
+      <translation>视频：%1</translation>
     </message>
     <message>
       <location filename="../articleview.cc" line="1057"/>
@@ -5182,7 +5182,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../texttospeechsource.ui" line="190"/>
       <source>Type text to be previewed here.</source>
-      <translation type="unfinished">Type text to be previewed here.</translation>
+      <translation>在这里输入要预览的文本。</translation>
     </message>
     <message>
       <location filename="../texttospeechsource.ui" line="224"/>
@@ -5230,7 +5230,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../translatebox.cc" line="101"/>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation type="unfinished">Type a word or phrase to search dictionaries</translation>
+      <translation>输入单词或短语以搜索字典</translation>
     </message>
     <message>
       <location filename="../translatebox.cc" line="122"/>
