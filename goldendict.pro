@@ -250,7 +250,7 @@ mac {
     OBJECTIVE_SOURCES += src/macos/machotkeywrapper.mm \
                          src/macos/macmouseover.mm
     ICON = icons/macicon.icns
-    QMAKE_INFO_PLIST = myInfo.plist
+    QMAKE_INFO_PLIST = redist/myInfo.plist
 
     !CONFIG( no_macos_universal ) {
         QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
