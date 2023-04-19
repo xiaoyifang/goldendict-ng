@@ -54,12 +54,11 @@ function Main() {
     Copy-Item $sdkDll $archiveName\
     Copy-Item winlibs\lib\msvc\*.dll $archiveName\
     Copy-Item locale\*.qm $archiveName\locale\
-    Write-Host "copy qwebengine zh_CN translation"
-    Copy-Item thirdparty\qwebengine_ts\*.qm $archiveName\locale\
+
     $webengineqm="{0}\translations\qtwebengine_*.qm" -f $env:QTDIR.Trim()
     Write-Host "copy qtwebengine qm from $($webengineqm)"
     Copy-Item $webengineqm $archiveName\locale\
-    
+
     # $multimedia="{0}\plugins\multimedia" -f $env:QTDIR.Trim()
     # if(Test-Path $multimedia){
     # Write-Host "copy multimedia  $($multimedia) to plugins"
