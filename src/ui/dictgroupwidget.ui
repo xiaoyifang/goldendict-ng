@@ -63,7 +63,7 @@
         <string notr="true"/>
        </property>
        <property name="pixmap">
-        <pixmap resource="resources.qrc">:/icons/hotkeys.svg</pixmap>
+        <pixmap resource="../../resources.qrc">:/icons/hotkeys.svg</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -102,7 +102,7 @@
         </sizepolicy>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="../../resources.qrc">
          <normaloff>:/icons/clear.png</normaloff>:/icons/clear.png</iconset>
        </property>
        <property name="shortcut">
@@ -136,7 +136,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../../resources.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -144,6 +144,16 @@
    <signal>clicked()</signal>
    <receiver>shortcut</receiver>
    <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
  </connections>
 </ui>
