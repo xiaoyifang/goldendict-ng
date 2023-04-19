@@ -14,7 +14,7 @@
    <string>Preferences</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../../resources.qrc">
     <normaloff>:/icons/configure.svg</normaloff>:/icons/configure.svg</iconset>
   </property>
   <property name="modal">
@@ -43,7 +43,7 @@
      </property>
      <widget class="QWidget" name="tab_interface">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/interface.svg</normaloff>:/icons/interface.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -53,28 +53,48 @@
        <property name="topMargin">
         <number>9</number>
        </property>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+         <property name="toolTip">
+          <string>Normally, clicking on a link, double-clicking on a word or looking up
+selection in an article loads the translation and almost immediately
+scrolls to the article from the same dictionary. With this option off,
+however, the article from the topmost dictionary is shown.</string>
+         </property>
+         <property name="text">
+          <string>Automatically scroll to target article</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="2">
         <layout class="QVBoxLayout" name="verticalLayout_16">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
             <widget class="QLabel" name="label_6">
              <property name="text">
               <string>Interface language:</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QComboBox" name="interfaceLanguage"/>
-           </item>
-           <item>
+           <item row="0" column="3">
             <widget class="QLabel" name="label_21">
              <property name="text">
               <string>Dictionary Font: </string>
              </property>
             </widget>
            </item>
-           <item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="interfaceLanguage">
+             <property name="sizeAdjustPolicy">
+              <enum>QComboBox::AdjustToContents</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
             <widget class="QComboBox" name="fontFamilies">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -86,19 +106,6 @@
               <string>set the fallback font family for dictionary</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_7">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </item>
@@ -124,19 +131,6 @@
            <item>
             <widget class="StylesComboBox" name="addonStyles"/>
            </item>
-           <item>
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
           </layout>
          </item>
          <item>
@@ -161,67 +155,33 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="enableTrayIcon">
-         <property name="toolTip">
-          <string>When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</string>
-         </property>
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Enable system tray icon</string>
+          <string>Startup</string>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QCheckBox" name="startToTray">
+           <widget class="QCheckBox" name="cbAutostart">
             <property name="toolTip">
-             <string>With this on, the application starts directly to system tray without showing
-its main window.</string>
+             <string>Automatically starts GoldenDict after operation system bootup.</string>
             </property>
             <property name="text">
-             <string>Start to system tray</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="closeToTray">
-            <property name="toolTip">
-             <string>With this on, an attempt to close main window would hide it instead of closing
-the application.</string>
-            </property>
-            <property name="text">
-             <string>Close to system tray</string>
+             <string>Start with system</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="selectBySingleClick">
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="escKeyHidesMainWindow">
          <property name="toolTip">
-          <string>Turn this option on if you want to select words by single mouse click</string>
+          <string>Normally, pressing ESC key moves focus to the translation line.
+With this on however, it will hide the main window.</string>
          </property>
          <property name="text">
-          <string>Select word by single click</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="doubleClickTranslates">
-         <property name="text">
-          <string>Double-click translates the word clicked</string>
+          <string>ESC key hides main window</string>
          </property>
         </widget>
        </item>
@@ -274,31 +234,71 @@ the application.</string>
          </item>
         </layout>
        </item>
-       <item row="4" column="0">
-        <widget class="QCheckBox" name="escKeyHidesMainWindow">
-         <property name="toolTip">
-          <string>Normally, pressing ESC key moves focus to the translation line.
-With this on however, it will hide the main window.</string>
-         </property>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="doubleClickTranslates">
          <property name="text">
-          <string>ESC key hides main window</string>
+          <string>Double-click translates the word clicked</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+       <item row="15" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="enableTrayIcon">
          <property name="toolTip">
-          <string>Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</string>
+          <string>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</string>
          </property>
-         <property name="text">
-          <string>Automatically scroll to target article</string>
+         <property name="title">
+          <string>Enable system tray icon</string>
          </property>
-         <property name="checked">
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
           <bool>true</bool>
          </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="startToTray">
+            <property name="toolTip">
+             <string>With this on, the application starts directly to system tray without showing
+its main window.</string>
+            </property>
+            <property name="text">
+             <string>Start to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="closeToTray">
+            <property name="toolTip">
+             <string>With this on, an attempt to close main window would hide it instead of closing
+the application.</string>
+            </property>
+            <property name="text">
+             <string>Close to system tray</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item row="0" column="0" colspan="2">
@@ -354,43 +354,21 @@ be the last ones.</string>
          </layout>
         </widget>
        </item>
-       <item row="15" column="0" colspan="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="selectBySingleClick">
+         <property name="toolTip">
+          <string>Turn this option on if you want to select words by single mouse click</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
+         <property name="text">
+          <string>Select word by single click</string>
          </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
-          <string>Startup</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QCheckBox" name="cbAutostart">
-            <property name="toolTip">
-             <string>Automatically starts GoldenDict after operation system bootup.</string>
-            </property>
-            <property name="text">
-             <string>Start with system</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_popup">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/wizard.svg</normaloff>:/icons/wizard.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -666,7 +644,7 @@ in the pressed state when the word selection changes.</string>
      </widget>
      <widget class="QWidget" name="tab_hotkey">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/hotkeys.svg</normaloff>:/icons/hotkeys.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -770,7 +748,7 @@ in the pressed state when the word selection changes.</string>
      </widget>
      <widget class="QWidget" name="tab_audio">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/playsound_color.svg</normaloff>:/icons/playsound_color.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -863,7 +841,7 @@ in the pressed state when the word selection changes.</string>
      </widget>
      <widget class="QWidget" name="tab_network">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/network.svg</normaloff>:/icons/network.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -1246,7 +1224,7 @@ download page.</string>
      </widget>
      <widget class="QWidget" name="tab_FTS">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/fulltext.svg</normaloff>:/icons/fulltext.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -1410,7 +1388,7 @@ download page.</string>
      </widget>
      <widget class="QWidget" name="tab_Advanced">
       <attribute name="icon">
-       <iconset resource="resources.qrc">
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/advanced.png</normaloff>:/icons/advanced.png</iconset>
       </attribute>
       <attribute name="title">
@@ -1818,7 +1796,6 @@ from Stardict, Babylon and GLS dictionaries</string>
   <tabstop>startToTray</tabstop>
   <tabstop>closeToTray</tabstop>
   <tabstop>cbAutostart</tabstop>
-  <tabstop>interfaceLanguage</tabstop>
   <tabstop>leftCtrl</tabstop>
   <tabstop>rightShift</tabstop>
   <tabstop>altKey</tabstop>
@@ -1837,7 +1814,7 @@ from Stardict, Babylon and GLS dictionaries</string>
   <tabstop>proxyPassword</tabstop>
  </tabstops>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../../resources.qrc"/>
  </resources>
  <connections>
   <connection>
