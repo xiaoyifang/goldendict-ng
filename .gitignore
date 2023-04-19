@@ -47,3 +47,9 @@ CMakeLists.txt.user
 # kdevelop
 .kdev4/
 *.kdev4
+.qmake.stash
+aqtinstall.log
+CMakeSettings.json
+goldendict.vcxproj
+goldendict.vcxproj.filters
+GoldenDict_resource.rc
