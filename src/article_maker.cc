@@ -149,6 +149,8 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
+    result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";
+
     // #242525 because Darkreader will invert pure white to this value
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
@@ -156,7 +158,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 body { background: #242525; }
 .gdarticle { background: initial;}
 
-img{
+.gdarticlebody img{
   background: white;
 }
 </style>
@@ -168,7 +170,7 @@ img{
       console.error('Dark Reader discovered unexpected URL', src);
       return Promise.resolve({blob: () => new Blob()});
     }
-    if (src.startsWith('qrcx://') || src.startsWith('qrc://')) {
+    if (src.startsWith('qrcx://') || src.startsWith('qrc://') || src.startsWith('bres://') || src.startsWith('gico://')) {
       // This is a resource URL, need to fetch and transform
       return new Promise((resolve) => {
         const img = document.createElement('img');

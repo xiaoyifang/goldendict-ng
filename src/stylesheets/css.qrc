@@ -17,5 +17,6 @@
         <file>qt-style-macos.css</file>
         <file>qt-style-win.css</file>
         <file>qt-style.css</file>
+        <file>article-style-darkmode.css</file>
     </qresource>
 </RCC>
