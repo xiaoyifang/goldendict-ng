@@ -769,6 +769,8 @@ void ArticleRequest::bodyFinished()
         stemmedWordFinder->stemmedMatch( word, activeDicts );
       }
       else {
+        footer += R"(<div class="empty-space"></div>)";
+
         footer += "</body></html>";
       }
 
