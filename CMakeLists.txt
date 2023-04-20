@@ -120,8 +120,6 @@ set(QSINGLEAPP_SOURCE_FILES
         thirdparty/qtsingleapplication/src/qtlocalpeer.h
         thirdparty/qtsingleapplication/src/qtsingleapplication.cpp
         thirdparty/qtsingleapplication/src/qtsingleapplication.h
-        thirdparty/qtsingleapplication/src/qtsinglecoreapplication.cpp
-        thirdparty/qtsingleapplication/src/qtsinglecoreapplication.h
         )
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
@@ -248,7 +246,7 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
         MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
         MACOSX_BUNDLE TRUE
-        WIN32_EXECUTABLE TRUE
+        # WIN32_EXECUTABLE TRUE # TODO: this will prevent any qDebug() from showing up.
         )
 
 install(TARGETS ${CMAKE_PROJECT_NAME}

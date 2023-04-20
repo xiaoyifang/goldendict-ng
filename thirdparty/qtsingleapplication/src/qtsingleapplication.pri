@@ -1,5 +1,5 @@
 QT += core network widgets
-CONFIG += c++11
+CONFIG += c++17
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
