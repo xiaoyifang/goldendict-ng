@@ -6,17 +6,17 @@
     <message>
       <location filename="../src/ui/about.ui" line="17"/>
       <source>About</source>
-      <translation type="unfinished">About</translation>
+      <translation>GoldenDictmanta</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="66"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation type="unfinished">GoldenDict-ng dictionary lookup program, version </translation>
+      <translation>GoldenDict-ng simi-pirwapi mask&apos;ana, versión </translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="101"/>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
+      <translation>GNU GPL kamachiyuq, versión 3 qhipamantataq</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
@@ -31,12 +31,12 @@
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
       <source>Credits:</source>
-      <translation type="unfinished">Credits:</translation>
+      <translation>Yanapaqkuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="20"/>
       <source>[Unknown]</source>
-      <translation type="unfinished">[Unknown]</translation>
+      <translation>[mana yachasqachu]</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="35"/>
@@ -87,12 +87,12 @@
     <message>
       <location filename="../src/article_maker.cc" line="313"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation type="unfinished">Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</translation>
+      <translation>Luego detenga el cursor sobre la palabra que Ud. quiere buscar en otra aplicación y una ventana emergente aparecerá para hacer la consulta.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="306"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Cómo Utilizar la ventana emergente&lt;/h3&gt;Para buscar palabras desde otras aplicaciones activas, primero hay que habilitar la opción &lt;i&gt;&quot;Escaneo en una ventana emergente&quot;&lt;/i&gt; en &lt;b&gt;Editar|Preferencias&lt;/b&gt;. Luego puede utilizarla en cualquier momento, activando el icono arriba de la &apos;Ventana Emergente&apos;. Alternativamente, haga clic a derecha abajo en la bandeja del sistema y seleccione la opción &lt;b&gt;Escanear con Ventana Emergente&lt;/b&gt; en el menú.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="145"/>
@@ -107,37 +107,37 @@
     <message>
       <location filename="../src/article_maker.cc" line="234"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>Mana &lt;b&gt;%2&lt;/b&gt; juñupi &lt;b&gt;%1&lt;/b&gt; simita tarinchu.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>Working with popup</source>
-      <translation type="unfinished">Working with popup</translation>
+      <translation>Juch&apos;uy qhawanapi mask&apos;anapaq</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="394"/>
       <source>(untitled)</source>
-      <translation type="unfinished">(untitled)</translation>
+      <translation>(mana sutiyuq)</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="286"/>
       <source>Welcome!</source>
-      <translation type="unfinished">Welcome!</translation>
+      <translation>Qallarinapaq</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="316"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation type="unfinished">Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</translation>
+      <translation>Luego, seleccione una palabra deseada con su ratón para buscarla desde otra aplicación. Para seleccionar una palabra haga doble clic o arrastra sobre la palabra mientras oprimiendo el botón del ratón, y una ventana emergente aparecerá con la definición de la palabra.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="238"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>Mana &lt;b&gt;%1&lt;/b&gt; juñupi simita tarinchu.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="288"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;¡Bienvenido a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Qallarinapaq, &lt;b&gt;Allinchay &gt; Simi-pirwakuna&lt;/b&gt; riy. Jaqaypi simi-pirwakunata mask&apos;anapaq ñankunata yapay. Chaymanta, simi-pirwakunata ñiqichayta atinki. Juñukunaman simi-pirwakunata yapayta atinkitaq. &lt;p&gt;Chaymantari, simikunapi simikunata atinki. Mask&apos;anapaq tawak&apos;uchupi simita qillqapay. Wak programakunapi simikunata mask&apos;anapaq, &lt;a href=&quot;Working with popup&quot;&gt;Juch&apos;uy qhawanapi mask&apos;ayta&lt;/a&gt; qhaway. &lt;p&gt;Kay programata kamachinapaq &lt;b&gt;Allinchay &amp;gt; Aqllanakuna&lt;/b&gt; menuman riy. Achkhata yachanapaq qqllanakunaqpa willaynkukunata nawichayta atinki. &lt;p&gt;Aswan yanapata munaspaqa, &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;GoldenDictpa foronpi&lt;/a&gt; tapuyta atinki. Kay programata kunanchanapaq &lt;p&gt;&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web raphiman&lt;/a&gt; riy. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GoldenDictqa GPL kamachiyyuq, versión 3 qhipamantataq.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="406"/>
@@ -155,7 +155,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="675"/>
       <source>From </source>
-      <translation type="unfinished">From </translation>
+      <translation> </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="678"/>
@@ -170,22 +170,22 @@
     <message>
       <location filename="../src/article_maker.cc" line="706"/>
       <source>Query error: %1</source>
-      <translation type="unfinished">Query error: %1</translation>
+      <translation>Pantay mask&apos;aspa: %1</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="830"/>
       <source>Close words: </source>
-      <translation type="unfinished">Close words: </translation>
+      <translation>Simikunata wisq&apos;ay:</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="897"/>
       <source>Compound expressions: </source>
-      <translation type="unfinished">Compound expressions: </translation>
+      <translation>Expresiones compuestas:</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="925"/>
       <source>Individual words: </source>
-      <translation type="unfinished">Individual words: </translation>
+      <translation>Palabras individuales:</translation>
     </message>
   </context>
   <context>
@@ -196,24 +196,24 @@
     </message>
     <message>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Qhipa</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Mask&apos;ay:</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation type="unfinished">The referenced resource failed to download.</translation>
+      <translation>El recurso ha fallado de descargar.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2096"/>
       <source>Failed to create temporary file.</source>
-      <translation type="unfinished">Failed to create temporary file.</translation>
+      <translation>Temporal archiwuta yurichispa pantay.</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -222,7 +222,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1807"/>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation type="unfinished">&amp;Look up &quot;%1&quot;</translation>
+      <translation>&quot;%1&quot;ta &amp;mask&apos;ay </translation>
     </message>
     <message>
       <source>about:blank</source>
@@ -230,36 +230,36 @@
     </message>
     <message>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Ñawpa</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1815"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in &amp;New Tab</translation>
+      <translation>&amp;Musuq pestañapi &quot;%1&quot;ta mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1367"/>
       <location filename="../src/ui/articleview.cc" line="1551"/>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
+      <translation>El recurso referido no existe.</translation>
     </message>
     <message>
       <source>&amp;Open Link</source>
-      <translation type="unfinished">&amp;Open Link</translation>
+      <translation>&amp;T&apos;inkisqata kichay</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;JATUNKUNA/juch&apos;uykuna</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2107"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation type="unfinished">Failed to auto-open resource file, try opening manually: %1.</translation>
+      <translation>Fallo abriendo automáticamente el archivo de recursos. Intente abrirlo manualmente: %1.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1841"/>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in %2</translation>
+      <translation>%2pi &quot;%1&quot;ta mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="332"/>
@@ -279,17 +279,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1849"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in %2 in &amp;New Tab</translation>
+      <translation>&amp;Musuq pestañapi %2pi &quot;%1&quot;ta mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1759"/>
       <source>Open Link in New &amp;Tab</source>
-      <translation type="unfinished">Open Link in New &amp;Tab</translation>
+      <translation>Musuq pestañapi t&apos;inkisqata kichay</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1766"/>
       <source>Open Link in &amp;External Browser</source>
-      <translation type="unfinished">Open Link in &amp;External Browser</translation>
+      <translation>Abrir enlace en un &amp;navegador web externo</translation>
     </message>
     <message>
       <source>Highlight &amp;all</source>
@@ -439,7 +439,7 @@
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WILLAY: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
@@ -550,7 +550,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/authentication.ui" line="40"/>
       <source>Password:</source>
-      <translation type="unfinished">Password:</translation>
+      <translation>Pakasqa simi:</translation>
     </message>
   </context>
   <context>
@@ -558,17 +558,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
       <source>Group icon:</source>
-      <translation type="unfinished">Group icon:</translation>
+      <translation>Juñuqpa unanchan:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
       <source>Shortcut:</source>
-      <translation type="unfinished">Shortcut:</translation>
+      <translation>Tecla de acceso rápido:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
@@ -578,37 +578,37 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
       <source>None</source>
-      <translation type="unfinished">None</translation>
+      <translation>Ni ima</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="50"/>
       <source>From file...</source>
-      <translation type="unfinished">From file...</translation>
+      <translation>Archiwumanta...</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="96"/>
       <source>Choose a file to use as group icon</source>
-      <translation type="unfinished">Choose a file to use as group icon</translation>
+      <translation>Juñuqpa uñanchanwan archiwuta aqllay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="98"/>
       <source>Images</source>
-      <translation type="unfinished">Images</translation>
+      <translation>Rikch&apos;aykuna</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="99"/>
       <source>All files</source>
-      <translation type="unfinished">All files</translation>
+      <translation>Tukuy archiwukuna</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Pantay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Can&apos;t read the specified image file.</source>
-      <translation type="unfinished">Can&apos;t read the specified image file.</translation>
+      <translation>Mana rikch&apos;aywan archiwuta kichayta atinchu</translation>
     </message>
   </context>
   <context>
@@ -616,12 +616,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
       <source>Confirmation</source>
-      <translation type="unfinished">Confirmation</translation>
+      <translation>Confirmación</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="692"/>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on language pairs?</translation>
+      <translation>¿Estás seguro que quiere generar un conjunto de grupos basado en pares de lengua?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="851"/>
@@ -773,7 +773,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="367"/>
@@ -791,22 +791,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="83"/>
       <source>Total articles:</source>
-      <translation type="unfinished">Total articles:</translation>
+      <translation>Jayk&apos;a articulokuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="52"/>
       <source>Translates from:</source>
-      <translation type="unfinished">Translates from:</translation>
+      <translation>Simimanta:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="59"/>
       <source>Total words:</source>
-      <translation type="unfinished">Total words:</translation>
+      <translation>Jayk&apos;a simikuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="66"/>
       <source>Translates to:</source>
-      <translation type="unfinished">Translates to:</translation>
+      <translation>Simiman:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="36"/>
@@ -821,7 +821,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="130"/>
       <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
+      <translation>Kay simi-pirwaqa chay archiwukunayoq:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="174"/>
@@ -851,7 +851,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="243"/>
       <source>%1 entries</source>
-      <translation type="unfinished">%1 entries</translation>
+      <translation>%1 willaykuna</translation>
     </message>
   </context>
   <context>
@@ -882,17 +882,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="817"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="819"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="821"/>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Maypi</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="823"/>
@@ -934,7 +934,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="96"/>
       <source>Edit this group</source>
-      <translation type="unfinished">Edit this group</translation>
+      <translation>Kay juñuta allinchay</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="120"/>
@@ -968,43 +968,43 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/editdictionaries.cc" line="47"/>
       <location filename="../src/ui/editdictionaries.cc" line="248"/>
       <source>&amp;Dictionaries</source>
-      <translation type="unfinished">&amp;Dictionaries</translation>
+      <translation>&amp;Simi-pirwakuna</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.ui" line="14"/>
       <source>Dictionaries</source>
-      <translation type="unfinished">Dictionaries</translation>
+      <translation>Simi-pirwakuna</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Accept</source>
-      <translation type="unfinished">Accept</translation>
+      <translation>Chaskiy</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="133"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="127"/>
       <source>Sources changed</source>
-      <translation type="unfinished">Sources changed</translation>
+      <translation>Fuentes modificados</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="46"/>
       <source>&amp;Sources</source>
-      <translation type="unfinished">&amp;Sources</translation>
+      <translation>&amp;Pukyukuna</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="48"/>
       <location filename="../src/ui/editdictionaries.cc" line="250"/>
       <source>&amp;Groups</source>
-      <translation type="unfinished">&amp;Groups</translation>
+      <translation>&amp;Juñukuna</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="128"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation type="unfinished">Some sources were changed. Would you like to accept the changes?</translation>
+      <translation>Algunos fuentes fueron cambiados. ¿Quieres aceptar los cambios?</translation>
     </message>
   </context>
   <context>
@@ -1086,7 +1086,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="395"/>
       <source>None</source>
-      <translation type="unfinished">None</translation>
+      <translation>Ni ima</translation>
     </message>
     <message>
       <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
@@ -1149,37 +1149,37 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/forvo.cc" line="194"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
+      <translation>XMLta ñawichaspa pantay: &quot;%2,%3&quot; nisqaman %1</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="270"/>
       <source>Added %1</source>
-      <translation type="unfinished">Added %1</translation>
+      <translation>%1 yapasqa</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="273"/>
       <source>by</source>
-      <translation type="unfinished">by</translation>
+      <translation>por</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Male</source>
-      <translation type="unfinished">Male</translation>
+      <translation>Qhari</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Female</source>
-      <translation type="unfinished">Female</translation>
+      <translation>Warmi</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="279"/>
       <source>from</source>
-      <translation type="unfinished">from</translation>
+      <translation>imamanta</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="317"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation type="unfinished">Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</translation>
+      <translation>Vaya a Editar|Diccionarios|Fuentes|Forvo y solicitar su propia clave de API para hacer desaparecer este error.</translation>
     </message>
   </context>
   <context>
@@ -1261,7 +1261,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Chinkachiy</translation>
     </message>
   </context>
   <context>
@@ -1269,7 +1269,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/german.cc" line="48"/>
       <source>German Transliteration</source>
-      <translation type="unfinished">German Transliteration</translation>
+      <translation>Aleman qillqapi churana</translation>
     </message>
   </context>
   <context>
@@ -1277,7 +1277,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/greektranslit.cc" line="839"/>
       <source>Greek Transliteration</source>
-      <translation type="unfinished">Greek Transliteration</translation>
+      <translation>Griego qillqapi churana</translation>
     </message>
   </context>
   <context>
@@ -1285,7 +1285,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groupcombobox.cc" line="14"/>
       <source>Choose a Group (Alt+G)</source>
-      <translation type="unfinished">Choose a Group (Alt+G)</translation>
+      <translation>Juñuta aqllay (Alt+G)</translation>
     </message>
   </context>
   <context>
@@ -1303,27 +1303,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
       <source>Del</source>
-      <translation type="unfinished">Del</translation>
+      <translation>DEL</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="70"/>
       <source>Ins</source>
-      <translation type="unfinished">Ins</translation>
+      <translation>INS</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="133"/>
       <source>Tab 2</source>
-      <translation type="unfinished">Tab 2</translation>
+      <translation>Pestaña 2</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="162"/>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
+      <translation>Tukuy juñukunata chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="149"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation>&lt;b&gt;%1&lt;/b&gt; juñuta chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="29"/>
@@ -1338,103 +1338,103 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.cc" line="148"/>
       <source>Remove group</source>
-      <translation type="unfinished">Remove group</translation>
+      <translation>Juñuta chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="136"/>
       <source>Rename group</source>
-      <translation type="unfinished">Rename group</translation>
+      <translation>Waq sutita churay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="137"/>
       <source>Give a new name for the group:</source>
-      <translation type="unfinished">Give a new name for the group:</translation>
+      <translation>Churay musuq sutita kay juñuman:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="22"/>
       <source>Dictionaries available:</source>
-      <translation type="unfinished">Dictionaries available:</translation>
+      <translation>Jap&apos;inapaq simi-pirwakuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="146"/>
       <source>&amp;Add group</source>
-      <translation type="unfinished">&amp;Add group</translation>
+      <translation>&amp;Juñuta yapay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="110"/>
       <source>Add group</source>
-      <translation type="unfinished">Add group</translation>
+      <translation>J&amp;uñuta yapay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="143"/>
       <source>Create new dictionary group</source>
-      <translation type="unfinished">Create new dictionary group</translation>
+      <translation>Simi-pirwakunaqpa musuq juñunkuta yurichiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="197"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation type="unfinished">Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</translation>
+      <translation>Para añadir diccionarios a grupos, utilice el ratón para arrastre y suelte los diccionarios a los grupos utilizando el ratón. Además cambie el orden de los grupos arrastrándolos con el ratón.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="163"/>
       <source>Rename current dictionary group</source>
-      <translation type="unfinished">Rename current dictionary group</translation>
+      <translation>Renombrar el grupo actual de diccionarios</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove current dictionary group</source>
-      <translation type="unfinished">Remove current dictionary group</translation>
+      <translation>Simi-pirwakunawan kunan juñuta chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="111"/>
       <source>Give a name for the new group:</source>
-      <translation type="unfinished">Give a name for the new group:</translation>
+      <translation>Musuq juñuman churay kay sutita:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="186"/>
       <location filename="../src/ui/groups.cc" line="161"/>
       <source>Remove all groups</source>
-      <translation type="unfinished">Remove all groups</translation>
+      <translation>&amp;Tukuy juñukunata chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="89"/>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation type="unfinished">Remove selected dictionaries from group (Del)</translation>
+      <translation>(SUPR)wan juñumanta aqllasqa simi-pirwakunata chinkachiy </translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="64"/>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation type="unfinished">Add selected dictionaries to group (Ins)</translation>
+      <translation>(INS)wan juñuman aqllasqa simi-pirwakunata yapay </translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="176"/>
       <source>&amp;Remove group</source>
-      <translation type="unfinished">&amp;Remove group</translation>
+      <translation>Juñuta &amp;chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="119"/>
       <source>Groups:</source>
-      <translation type="unfinished">Groups:</translation>
+      <translation>Juñukuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="166"/>
       <source>Re&amp;name group</source>
-      <translation type="unfinished">Re&amp;name group</translation>
+      <translation>Juñuqpa &amp;waq sutinta churay</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="183"/>
       <source>Remove all dictionary groups</source>
-      <translation type="unfinished">Remove all dictionary groups</translation>
+      <translation>Simi-pirwakunawan tukuy juñukunata chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="153"/>
       <source>Create language-based groups</source>
-      <translation type="unfinished">Create language-based groups</translation>
+      <translation>Simimanta juñukunata yurichiy</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
-      <translation type="unfinished">Auto groups</translation>
+      <translation>Mana aqllasqachu juñukuna</translation>
     </message>
   </context>
   <context>
@@ -1449,23 +1449,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Ñawpaq</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Qhipa</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation type="unfinished">Zoom In</translation>
+      <translation>Jatunyachiy</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation type="unfinished">Zoom Out</translation>
+      <translation>Juch&apos;uyyachiy</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation type="unfinished">Normal Size</translation>
+      <translation>Mana aqllasqa chhikan</translation>
     </message>
     <message>
       <source>Content</source>
@@ -1509,12 +1509,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/hunspell.cc" line="285"/>
       <source>Spelling suggestions: </source>
-      <translation type="unfinished">Spelling suggestions: </translation>
+      <translation>Qillqata allinchanapaq: </translation>
     </message>
     <message>
       <location filename="../src/dict/hunspell.cc" line="856"/>
       <source>%1 Morphology</source>
-      <translation type="unfinished">%1 Morphology</translation>
+      <translation>Morfología %1</translation>
     </message>
   </context>
   <context>
@@ -1522,12 +1522,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1398"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1396"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
   </context>
   <context>
@@ -1535,23 +1535,23 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/initializing.ui" line="44"/>
       <source>Dictionary Name</source>
-      <translation type="unfinished">Dictionary Name</translation>
+      <translation>Simi-pirwaqpa sutin</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="22"/>
       <source>GoldenDict-ng - Initializing</source>
-      <translation type="unfinished">GoldenDict-ng - Initializing</translation>
+      <translation>GoldenDict-ng - qallarispa</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="28"/>
       <location filename="../src/initializing.cc" line="31"/>
       <source>Please wait while indexing dictionary</source>
-      <translation type="unfinished">Please wait while indexing dictionary</translation>
+      <translation>Siqipi simi-pirwakunata ñiqichachkan. Suyariy. </translation>
     </message>
     <message>
       <location filename="../src/initializing.cc" line="22"/>
       <source>Please wait...</source>
-      <translation type="unfinished">Please wait...</translation>
+      <translation>Suyariy...</translation>
     </message>
   </context>
   <context>
@@ -1569,7 +1569,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="148"/>
       <source>Lao</source>
-      <translation type="unfinished">Lao</translation>
+      <translation>Laosiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="220"/>
@@ -1584,7 +1584,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Akan</source>
-      <translation type="unfinished">Akan</translation>
+      <translation>Acano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
@@ -1604,7 +1604,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="106"/>
       <source>Manx</source>
-      <translation type="unfinished">Manx</translation>
+      <translation>Manés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="179"/>
@@ -1614,7 +1614,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="211"/>
       <source>Thai</source>
-      <translation type="unfinished">Thai</translation>
+      <translation>Tailandés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="224"/>
@@ -1629,12 +1629,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Checo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="167"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>Danés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="145"/>
@@ -1644,12 +1644,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="95"/>
       <source>Fulah</source>
-      <translation type="unfinished">Fulah</translation>
+      <translation>Fula</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="88"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>Griego</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="107"/>
@@ -1664,27 +1664,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="101"/>
       <source>Irish</source>
-      <translation type="unfinished">Irish</translation>
+      <translation>Irlandés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="134"/>
       <source>Khmer</source>
-      <translation type="unfinished">Khmer</translation>
+      <translation>Camboyano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="129"/>
       <source>Kongo</source>
-      <translation type="unfinished">Kongo</translation>
+      <translation>Kikongo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="143"/>
       <source>Latin</source>
-      <translation type="unfinished">Latin</translation>
+      <translation>Latín</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="159"/>
       <source>Malay</source>
-      <translation type="unfinished">Malay</translation>
+      <translation>Malayo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="154"/>
@@ -1694,7 +1694,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="162"/>
       <source>Nauru</source>
-      <translation type="unfinished">Nauru</translation>
+      <translation>Nauruano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="176"/>
@@ -1719,7 +1719,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="210"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tayiko</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="208"/>
@@ -1729,7 +1729,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="219"/>
       <source>Tatar</source>
-      <translation type="unfinished">Tatar</translation>
+      <translation>Tártaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="203"/>
@@ -1754,17 +1754,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="225"/>
       <source>Uzbek</source>
-      <translation type="unfinished">Uzbek</translation>
+      <translation>Uzbeco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="82"/>
       <source>Welsh</source>
-      <translation type="unfinished">Welsh</translation>
+      <translation>Galés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="230"/>
       <source>Wolof</source>
-      <translation type="unfinished">Wolof</translation>
+      <translation>Wólof</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="231"/>
@@ -1774,12 +1774,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="124"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Italiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="184"/>
       <source>Raeto-Romance</source>
-      <translation type="unfinished">Raeto-Romance</translation>
+      <translation>Retorrománico</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="86"/>
@@ -1794,17 +1794,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="164"/>
       <source>North Ndebele</source>
-      <translation type="unfinished">North Ndebele</translation>
+      <translation>Ndebele norteño</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Abkhazian</source>
-      <translation type="unfinished">Abkhazian</translation>
+      <translation>Abjasio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="142"/>
       <source>Kirghiz</source>
-      <translation type="unfinished">Kirghiz</translation>
+      <translation>Kirguís</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="185"/>
@@ -1814,17 +1814,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="102"/>
       <source>Scottish Gaelic</source>
-      <translation type="unfinished">Scottish Gaelic</translation>
+      <translation>Gaélico escocés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="201"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albanés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="151"/>
       <source>Latvian</source>
-      <translation type="unfinished">Latvian</translation>
+      <translation>Letón</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="156"/>
@@ -1834,12 +1834,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="139"/>
       <source>Kurdish</source>
-      <translation type="unfinished">Kurdish</translation>
+      <translation>Kurdo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Búlgaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="147"/>
@@ -1849,7 +1849,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="160"/>
       <source>Maltese</source>
-      <translation type="unfinished">Maltese</translation>
+      <translation>Maltés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="158"/>
@@ -1859,17 +1859,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Arabic</source>
-      <translation type="unfinished">Arabic</translation>
+      <translation>Arabé</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="93"/>
       <source>Basque</source>
-      <translation type="unfinished">Basque</translation>
+      <translation>Vasco (Euskara)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Avaric</source>
-      <translation type="unfinished">Avaric</translation>
+      <translation>Ávaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
@@ -1884,17 +1884,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>Breton</source>
-      <translation type="unfinished">Breton</translation>
+      <translation>Bretón</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="205"/>
       <source>Sundanese</source>
-      <translation type="unfinished">Sundanese</translation>
+      <translation>Sudanés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="83"/>
       <source>Danish</source>
-      <translation type="unfinished">Danish</translation>
+      <translation>Danés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="85"/>
@@ -1909,32 +1909,32 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="97"/>
       <source>Fijian</source>
-      <translation type="unfinished">Fijian</translation>
+      <translation>Fiyiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="113"/>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Húngaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="99"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Francés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="84"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Alemán</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="157"/>
       <source>Mongolian</source>
-      <translation type="unfinished">Mongolian</translation>
+      <translation>Mongol</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="108"/>
       <source>Hebrew</source>
-      <translation type="unfinished">Hebrew</translation>
+      <translation>Hebreo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="115"/>
@@ -1944,7 +1944,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="144"/>
       <source>Luxembourgish</source>
-      <translation type="unfinished">Luxembourgish</translation>
+      <translation>Luxemburgués</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="137"/>
@@ -1954,7 +1954,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="132"/>
       <source>Kazakh</source>
-      <translation type="unfinished">Kazakh</translation>
+      <translation>Cazaco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="130"/>
@@ -1964,7 +1964,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="136"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Coreano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="171"/>
@@ -1979,7 +1979,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="165"/>
       <source>Nepali</source>
-      <translation type="unfinished">Nepali</translation>
+      <translation>Nepalés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="174"/>
@@ -1989,22 +1989,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="181"/>
       <source>Pashto</source>
-      <translation type="unfinished">Pashto</translation>
+      <translation>Pastún</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="180"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Polaco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="198"/>
       <source>Samoan</source>
-      <translation type="unfinished">Samoan</translation>
+      <translation>Samoano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="173"/>
       <source>Occitan</source>
-      <translation type="unfinished">Occitan</translation>
+      <translation>Occitano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="191"/>
@@ -2014,12 +2014,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="196"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>Slovaco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="200"/>
       <source>Somali</source>
-      <translation type="unfinished">Somali</translation>
+      <translation>Somalí</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="209"/>
@@ -2039,12 +2039,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="222"/>
       <source>Uighur</source>
-      <translation type="unfinished">Uighur</translation>
+      <translation>Uigur</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="194"/>
       <source>Serbo-Croatian</source>
-      <translation type="unfinished">Serbo-Croatian</translation>
+      <translation>Serbo-Croato</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="233"/>
@@ -2059,12 +2059,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="186"/>
       <source>Romanian</source>
-      <translation type="unfinished">Romanian</translation>
+      <translation>Rumano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="117"/>
       <source>Indonesian</source>
-      <translation type="unfinished">Indonesian</translation>
+      <translation>Indonés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="178"/>
@@ -2074,12 +2074,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="204"/>
       <source>Southern Sotho</source>
-      <translation type="unfinished">Southern Sotho</translation>
+      <translation>Sesotho</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Corsican</source>
-      <translation type="unfinished">Corsican</translation>
+      <translation>Corso</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="90"/>
@@ -2089,62 +2089,62 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="94"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Farsì</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="197"/>
       <source>Slovenian</source>
-      <translation type="unfinished">Slovenian</translation>
+      <translation>Sloveno</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="100"/>
       <source>Western Frisian</source>
-      <translation type="unfinished">Western Frisian</translation>
+      <translation>Frisón occidental</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Aragonese</source>
-      <translation type="unfinished">Aragonese</translation>
+      <translation>Aragonés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="221"/>
       <source>Tahitian</source>
-      <translation type="unfinished">Tahitian</translation>
+      <translation>Tahitiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="152"/>
       <source>Malagasy</source>
-      <translation type="unfinished">Malagasy</translation>
+      <translation>Malgache</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="103"/>
       <source>Galician</source>
-      <translation type="unfinished">Galician</translation>
+      <translation>Gallego</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Azerbaijani</source>
-      <translation type="unfinished">Azerbaijani</translation>
+      <translation>Azerí</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Amharic</source>
-      <translation type="unfinished">Amharic</translation>
+      <translation>Amárico</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="189"/>
       <source>Sanskrit</source>
-      <translation type="unfinished">Sanskrit</translation>
+      <translation>Sanscrito</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="126"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Japonés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="223"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Ucranio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
@@ -2154,7 +2154,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="133"/>
       <source>Kalaallisut</source>
-      <translation type="unfinished">Kalaallisut</translation>
+      <translation>Groenlandés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
@@ -2164,17 +2164,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Bielorruso</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="138"/>
       <source>Kashmiri</source>
-      <translation type="unfinished">Kashmiri</translation>
+      <translation>Cachemir</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="190"/>
       <source>Sardinian</source>
-      <translation type="unfinished">Sardinian</translation>
+      <translation>Sardo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="110"/>
@@ -2184,22 +2184,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="183"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Quechua (Runasimi)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Bengali</source>
-      <translation type="unfinished">Bengali</translation>
+      <translation>Bengalí</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="127"/>
       <source>Javanese</source>
-      <translation type="unfinished">Javanese</translation>
+      <translation>Javanés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Avestan</source>
-      <translation type="unfinished">Avestan</translation>
+      <translation>Avéstico</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="188"/>
@@ -2209,7 +2209,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Afrikaans</source>
-      <translation type="unfinished">Afrikaans</translation>
+      <translation>Afrikáans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
@@ -2219,22 +2219,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="114"/>
       <source>Armenian</source>
-      <translation type="unfinished">Armenian</translation>
+      <translation>Armenio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
       <source>Norwegian Bokmal</source>
-      <translation type="unfinished">Norwegian Bokmal</translation>
+      <translation>Noruego bokmål</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="111"/>
       <source>Croatian</source>
-      <translation type="unfinished">Croatian</translation>
+      <translation>Croato</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Bosnian</source>
-      <translation type="unfinished">Bosnian</translation>
+      <translation>Bosnio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="116"/>
@@ -2244,67 +2244,67 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="118"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>Interlingua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Catalan</source>
-      <translation type="unfinished">Catalan</translation>
+      <translation>Catalán</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="202"/>
       <source>Serbian</source>
-      <translation type="unfinished">Serbian</translation>
+      <translation>Serbio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="161"/>
       <source>Burmese</source>
-      <translation type="unfinished">Burmese</translation>
+      <translation>Birmano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="187"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Ruso</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="146"/>
       <source>Limburgish</source>
-      <translation type="unfinished">Limburgish</translation>
+      <translation>Limburgés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="169"/>
       <source>Norwegian</source>
-      <translation type="unfinished">Norwegian</translation>
+      <translation>Noruego</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Chechen</source>
-      <translation type="unfinished">Chechen</translation>
+      <translation>Chechén</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="235"/>
       <source>Chinese</source>
-      <translation type="unfinished">Chinese</translation>
+      <translation>Chino</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>Chuvash</source>
-      <translation type="unfinished">Chuvash</translation>
+      <translation>Chuvasio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="195"/>
       <source>Sinhala</source>
-      <translation type="unfinished">Sinhala</translation>
+      <translation>Cingalés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="91"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Español</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="141"/>
       <source>Cornish</source>
-      <translation type="unfinished">Cornish</translation>
+      <translation>Córnico</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
@@ -2314,67 +2314,67 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Assamese</source>
-      <translation type="unfinished">Assamese</translation>
+      <translation>Asamés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="177"/>
       <source>Ossetian</source>
-      <translation type="unfinished">Ossetian</translation>
+      <translation>Osseto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="92"/>
       <source>Estonian</source>
-      <translation type="unfinished">Estonian</translation>
+      <translation>Estonio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="207"/>
       <source>Swahili</source>
-      <translation type="unfinished">Swahili</translation>
+      <translation>Suajili</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="206"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Sueco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Tibetan</source>
-      <translation type="unfinished">Tibetan</translation>
+      <translation>Tibetano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="227"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Vietnamita</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="155"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>Macedonio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="182"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Portugués</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="217"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Turco</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Turcomano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="105"/>
       <source>Gujarati</source>
-      <translation type="unfinished">Gujarati</translation>
+      <translation>Guyaratí</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="123"/>
       <source>Icelandic</source>
-      <translation type="unfinished">Icelandic</translation>
+      <translation>Islandés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="125"/>
@@ -2384,27 +2384,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="89"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Inglés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="128"/>
       <source>Georgian</source>
-      <translation type="unfinished">Georgian</translation>
+      <translation>Georgiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Church Slavic</source>
-      <translation type="unfinished">Church Slavic</translation>
+      <translation>Eslavo eclesiástico</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="98"/>
       <source>Faroese</source>
-      <translation type="unfinished">Faroese</translation>
+      <translation>Feroés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="96"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Finlandés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="228"/>
@@ -2414,7 +2414,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="229"/>
       <source>Walloon</source>
-      <translation type="unfinished">Walloon</translation>
+      <translation>Valón</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="131"/>
@@ -2424,17 +2424,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="153"/>
       <source>Marshallese</source>
-      <translation type="unfinished">Marshallese</translation>
+      <translation>Marshalés</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="192"/>
       <source>Northern Sami</source>
-      <translation type="unfinished">Northern Sami</translation>
+      <translation>Sami norteño</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="112"/>
       <source>Haitian</source>
-      <translation type="unfinished">Haitian</translation>
+      <translation>Criollo haitiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
@@ -2444,17 +2444,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="168"/>
       <source>Norwegian Nynorsk</source>
-      <translation type="unfinished">Norwegian Nynorsk</translation>
+      <translation>Noruego Nynorsk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="104"/>
       <source>Guarani</source>
-      <translation type="unfinished">Guarani</translation>
+      <translation>Guaraní</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="170"/>
       <source>South Ndebele</source>
-      <translation type="unfinished">South Ndebele</translation>
+      <translation>Ndebele sureño</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="172"/>
@@ -2464,7 +2464,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="149"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Lituano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="120"/>
@@ -2474,12 +2474,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="212"/>
       <source>Tigrinya</source>
-      <translation type="unfinished">Tigrinya</translation>
+      <translation>Tigriña</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="232"/>
       <source>Yiddish</source>
-      <translation type="unfinished">Yiddish</translation>
+      <translation>Yidis</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="373"/>
@@ -2567,7 +2567,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="194"/>
       <source>Error loading dictionaries</source>
-      <translation type="unfinished">Error loading dictionaries</translation>
+      <translation>Simi-pirwakunata jap&apos;ikuspa pantay </translation>
     </message>
   </context>
   <context>
@@ -2608,32 +2608,32 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1494"/>
       <source>All</source>
-      <translation type="unfinished">All</translation>
+      <translation>Tukuy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="197"/>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Ñawpaq</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1465"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation type="unfinished">%1 dictionaries, %2 articles, %3 words</translation>
+      <translation>%1 simi-pirwakuna, %2 articulokuna, %3 simikuna</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="95"/>
       <source>&amp;Edit</source>
-      <translation type="unfinished">&amp;Edit</translation>
+      <translation>&amp;Allinchay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="78"/>
       <source>&amp;File</source>
-      <translation type="unfinished">&amp;File</translation>
+      <translation>&amp;Archiwu</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="102"/>
       <source>&amp;Help</source>
-      <translation type="unfinished">&amp;Help</translation>
+      <translation>&amp;Yanapa</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="136"/>
@@ -2644,66 +2644,66 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
       <location filename="../src/ui/mainwindow.cc" line="388"/>
       <source>&amp;Quit</source>
-      <translation type="unfinished">&amp;Quit</translation>
+      <translation>&amp;Lluqsiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Pantay</translation>
     </message>
     <message>
       <source>Scan Popup</source>
-      <translation type="unfinished">Scan Popup</translation>
+      <translation>Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="344"/>
       <source>Quit from application</source>
-      <translation type="unfinished">Quit from application</translation>
+      <translation>Programa nisqamanta lluqsiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="363"/>
       <source>&amp;Close To Tray</source>
-      <translation type="unfinished">&amp;Close To Tray</translation>
+      <translation>&amp;Sistema nisqaqpa chumpinman wisq&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>&quot;%1&quot; articulota mana jallch&apos;ayta atinchu </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="242"/>
       <source>Zoom In</source>
-      <translation type="unfinished">Zoom In</translation>
+      <translation>Jatunyachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="296"/>
       <source>&amp;Dictionaries...</source>
-      <translation type="unfinished">&amp;Dictionaries...</translation>
+      <translation>&amp;Simi-pirwakuna...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="330"/>
       <source>&amp;About</source>
-      <translation type="unfinished">&amp;About</translation>
+      <translation>&amp;GoldenDictmanta willaway</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="355"/>
       <source>&amp;Forum</source>
-      <translation type="unfinished">&amp;Forum</translation>
+      <translation>&amp;Foro (Rimanakusun)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="400"/>
       <source>&amp;Print</source>
-      <translation type="unfinished">&amp;Print</translation>
+      <translation>&amp;Raphipi ñit&apos;iy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="382"/>
       <source>&amp;Save Article</source>
-      <translation type="unfinished">&amp;Save Article</translation>
+      <translation>&amp;Articulo nisqata jallch&apos;ay </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3373"/>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Jinata articulota jallch&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
@@ -2718,73 +2718,73 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
       <source>Minimizes the window to tray</source>
-      <translation type="unfinished">Minimizes the window to tray</translation>
+      <translation>Sistema nisqaqpa chumpinman programata juch&apos;uyyachin</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="411"/>
       <source>Page Set&amp;up</source>
-      <translation type="unfinished">Page Set&amp;up</translation>
+      <translation>Raphita kamachina</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="322"/>
       <source>&amp;Homepage</source>
-      <translation type="unfinished">&amp;Homepage</translation>
+      <translation>&amp;GoldenDictpa raphin</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3059"/>
       <source>New Release Available</source>
-      <translation type="unfinished">New Release Available</translation>
+      <translation>Una nueva versión está disponible</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1476"/>
       <source>Look up:</source>
-      <translation type="unfinished">Look up:</translation>
+      <translation>Mask&apos;ay:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="248"/>
       <source>Zoom Out</source>
-      <translation type="unfinished">Zoom Out</translation>
+      <translation>Juch&apos;uyyachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="381"/>
       <source>Show &amp;Main Window</source>
-      <translation type="unfinished">Show &amp;Main Window</translation>
+      <translation>Qhapaq qhawanata &amp;rikhuchiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="333"/>
       <source>About GoldenDict-ng</source>
-      <translation type="unfinished">About GoldenDict-ng</translation>
+      <translation>GoldenDictmanta willaway</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3065"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Urayachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3270"/>
       <source>Page Setup</source>
-      <translation type="unfinished">Page Setup</translation>
+      <translation>Raphita kamachina</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="304"/>
       <location filename="../src/ui/mainwindow.cc" line="1476"/>
       <source>Look up in:</source>
-      <translation type="unfinished">Look up in:</translation>
+      <translation>Mask&apos;ay:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="252"/>
       <source>Normal Size</source>
-      <translation type="unfinished">Normal Size</translation>
+      <translation>Mana aqllasqa chhikan</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="2908"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation type="unfinished">Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</translation>
+      <translation>Fallo de inicializar monitoreo de teclas de acceso rápido.&lt;br&gt;Asegúrese que su XServer tiene activada la extensión RECORD.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3060"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation type="unfinished">Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</translation>
+      <translation>Ahora versión &lt;b&gt;%1&lt;/b&gt; de GoldenDict está disponible para descargar.&lt;br&gt;Haga clic en &lt;b&gt;Descargar&lt;/b&gt; para ir a página de descargas.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="369"/>
@@ -2799,108 +2799,108 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Jap&apos;ikuchkan...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1662"/>
       <source>(untitled)</source>
-      <translation type="unfinished">(untitled)</translation>
+      <translation>(Mana sutiyuq)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="311"/>
       <source>&amp;Preferences...</source>
-      <translation type="unfinished">&amp;Preferences...</translation>
+      <translation>&amp;Aqllanakuna...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="46"/>
       <location filename="../src/ui/mainwindow.cc" line="732"/>
       <source>Welcome!</source>
-      <translation type="unfinished">Welcome!</translation>
+      <translation>¡Bienvenido!</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="230"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
+      <translation>Simita parlachiy (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="385"/>
       <source>Save Article</source>
-      <translation type="unfinished">Save Article</translation>
+      <translation>Articulo nisqata jallch&apos;ay </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3066"/>
       <source>Skip This Release</source>
-      <translation type="unfinished">Skip This Release</translation>
+      <translation>Saltar esta versión</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="199"/>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Qhipa</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3292"/>
       <source>Print Article</source>
-      <translation type="unfinished">Print Article</translation>
+      <translation>Raphipi articulota ñit&apos;iy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3271"/>
       <source>No printer is available. Please install one first.</source>
-      <translation type="unfinished">No printer is available. Please install one first.</translation>
+      <translation>Mana impresora nisqaqa kanchu. Por favor instale una impresora.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="115"/>
       <source>&amp;View</source>
-      <translation type="unfinished">&amp;View</translation>
+      <translation>&amp;Qhaway</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="126"/>
       <source>H&amp;istory</source>
-      <translation type="unfinished">H&amp;istory</translation>
+      <translation>&amp;Yuyaynin</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="438"/>
       <source>&amp;Clear</source>
-      <translation type="unfinished">&amp;Clear</translation>
+      <translation>&amp;Pichay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="119"/>
       <source>&amp;Zoom</source>
-      <translation type="unfinished">&amp;Zoom</translation>
+      <translation>&amp;Jatunyachiy/Juch&apos;uyachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="367"/>
       <source>Words Zoom In</source>
-      <translation type="unfinished">Words Zoom In</translation>
+      <translation>Simikunata jatunyachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="371"/>
       <source>Words Zoom Out</source>
-      <translation type="unfinished">Words Zoom Out</translation>
+      <translation>Simikunata juch&apos;uyyachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="373"/>
       <source>Words Normal Size</source>
-      <translation type="unfinished">Words Normal Size</translation>
+      <translation>Mana aqllasqa chhikanpa simikunan</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="420"/>
       <source>Close current tab</source>
-      <translation type="unfinished">Close current tab</translation>
+      <translation>Kunan pestañata wisq&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="428"/>
       <source>Close all tabs</source>
-      <translation type="unfinished">Close all tabs</translation>
+      <translation>Tukuy pestañakunata wisq&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="435"/>
       <source>Close all tabs except current</source>
-      <translation type="unfinished">Close all tabs except current</translation>
+      <translation>Tukuy pestañakunata wisq&apos;ay, mana kunan pestañachu </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="410"/>
       <source>Opened tabs</source>
-      <translation type="unfinished">Opened tabs</translation>
+      <translation>Kichasqa Pestañas</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="590"/>
@@ -3302,7 +3302,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="485"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
+      <translation>XMLta ñawichaspa pantay: %1 &quot;%2,%3&quot;pi </translation>
     </message>
   </context>
   <context>
@@ -3310,7 +3310,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="178"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
+      <translation>XMLta ñawichaspa pantay: %1 &quot;%2,%3&quot;pi</translation>
     </message>
   </context>
   <context>
@@ -3318,17 +3318,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="475"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="477"/>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Maypi</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="473"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="479"/>
@@ -3349,57 +3349,57 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="53"/>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation type="unfinished">Inactive (disabled) dictionaries:</translation>
+      <translation>Mana jap&apos;isqa simi-pirwakuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="75"/>
       <source>Name:</source>
-      <translation type="unfinished">Name:</translation>
+      <translation>Suti:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="105"/>
       <source>Total articles:</source>
-      <translation type="unfinished">Total articles:</translation>
+      <translation>Jayk&apos;a articulokuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="129"/>
       <source>Translates from:</source>
-      <translation type="unfinished">Translates from:</translation>
+      <translation>Simimanta:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="136"/>
       <source>Translates to:</source>
-      <translation type="unfinished">Translates to:</translation>
+      <translation>Simiman:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="112"/>
       <source>Total words:</source>
-      <translation type="unfinished">Total words:</translation>
+      <translation>Jayk&apos;a simikuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="251"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation type="unfinished">Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
+      <translation>Ajuste el orden, arrastrando y soltando los diccionarios con el ratón. Mueva diccionarios al grupo deshabilitado para desactivar su uso</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="37"/>
       <source>Dictionary order:</source>
-      <translation type="unfinished">Dictionary order:</translation>
+      <translation>Siqipi simi-pirwakunata ñiqichanapaq:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="208"/>
       <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
+      <translation>Kay simi-pirwaqa chay archiwukunayoq:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="67"/>
       <source>Dictionary information</source>
-      <translation type="unfinished">Dictionary information</translation>
+      <translation>Simi-pirwamanta willay</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="165"/>
@@ -3432,12 +3432,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="1177"/>
       <source>Path</source>
-      <translation type="unfinished">Path</translation>
+      <translation>Ñan</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1179"/>
       <source>Recursive</source>
-      <translation type="unfinished">Recursive</translation>
+      <translation>Recursivo</translation>
     </message>
   </context>
   <context>
@@ -3445,36 +3445,36 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="521"/>
       <source>Alt</source>
-      <translation type="unfinished">Alt</translation>
+      <translation>ALT</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="193"/>
       <source>Start to system tray</source>
-      <translation type="unfinished">Start to system tray</translation>
+      <translation>Sistema nisqaqpa chumpinpi qalliriy</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="578"/>
       <source>Left Shift only</source>
-      <translation type="unfinished">Left Shift only</translation>
+      <translation>Sola MAYÚSCULA de izquierda</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="531"/>
       <source>Ctrl</source>
-      <translation type="unfinished">Ctrl</translation>
+      <translation>CTRL</translation>
     </message>
     <message>
       <source>secs</source>
-      <translation type="unfinished">secs</translation>
+      <translation>qhipa segundokuna </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="591"/>
       <source>Win/Meta</source>
-      <translation type="unfinished">Win/Meta</translation>
+      <translation>WINDOWSchu METAchu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="171"/>
       <source>Enable system tray icon</source>
-      <translation type="unfinished">Enable system tray icon</translation>
+      <translation>Sistema nisqaqpa chumpinpi unanchata churay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="930"/>
@@ -3486,124 +3486,124 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/preferences.ui" line="940"/>
       <location filename="../src/ui/preferences.ui" line="1027"/>
       <source>Port:</source>
-      <translation type="unfinished">Port:</translation>
+      <translation>Punku:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="551"/>
       <source>Shift</source>
-      <translation type="unfinished">Shift</translation>
+      <translation>MAYÚSCULA</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="917"/>
       <source>Type:</source>
-      <translation type="unfinished">Type:</translation>
+      <translation>Tipo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="961"/>
       <source>User:</source>
-      <translation type="unfinished">User:</translation>
+      <translation>jap&apos;iq masi:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="397"/>
       <source>&amp;Scan Popup</source>
-      <translation type="unfinished">&amp;Scan Popup</translation>
+      <translation>&amp;Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="313"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation type="unfinished">Normally, opening a new tab switches to it immediately.
-With this on however, new tabs will be opened without
-switching to them.</translation>
+      <translation>Normalmente, abriendo una pestaña nueva traslada allí 
+inmediatamente. Con esta opción pestañas nuevas serán 
+abiertas sin trasladar a ellas.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="880"/>
       <source>Use proxy server</source>
-      <translation type="unfinished">Use proxy server</translation>
+      <translation>Servidor proxy nisqawan t&apos;inkichiy</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="706"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation type="unfinished">Use the following hotkey to translate a word from clipboard:</translation>
+      <translation>Usar la tecla siguiente para traducir una palabra en la porta-papeles:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="588"/>
       <source>Windows key or Meta key</source>
-      <translation type="unfinished">Windows key or Meta key</translation>
+      <translation>Tecla de WINDOWS o META</translation>
     </message>
     <message>
       <source>Only show popup when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only show popup when all selected keys are kept pressed:</translation>
+      <translation>Tukuy kay teclakunata ñit&apos;inaykikama, juch&apos;uy qhawanata rikhurichinqa:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Auto-pronounce words in main window</source>
-      <translation type="unfinished">Auto-pronounce words in main window</translation>
+      <translation>Qhapaq qhawanapi kunanpacha simikunata parlachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="382"/>
       <source>Start with system</source>
-      <translation type="unfinished">Start with system</translation>
+      <translation>Sistema nisqaqa qallariqtin GoldenDict qallarintaq</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="538"/>
       <source>Left Alt only</source>
-      <translation type="unfinished">Left Alt only</translation>
+      <translation>Sapalla lluq&apos;i ALT</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="307"/>
       <source>Tabbed browsing</source>
-      <translation type="unfinished">Tabbed browsing</translation>
+      <translation>Pestaña nisqawan wamp&apos;una</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="508"/>
       <source>Right Shift only</source>
-      <translation type="unfinished">Right Shift only</translation>
+      <translation>Sapalla paña MAYÚSCULA</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="200"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation type="unfinished">With this on, an attempt to close main window would hide it instead of closing
-the application.</translation>
+      <translation>Con esta opción un intento de cerrar la ventana principal la ocultaría sin 
+cerrar la aplicación.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="777"/>
       <source>&amp;Audio</source>
-      <translation type="unfinished">&amp;Audio</translation>
+      <translation>&amp;Chanra</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="876"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation type="unfinished">Enable if you wish to use a proxy server
-for all program&apos;s network requests.</translation>
+      <translation>Habilite está opción si Ud. quiere utilizar un 
+servidor proxy por todas las solicitudes de red del programa.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Interface language:</source>
-      <translation type="unfinished">Interface language:</translation>
+      <translation>GoldenDictpa simin:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="498"/>
       <source>Left Ctrl only</source>
-      <translation type="unfinished">Left Ctrl only</translation>
+      <translation>Sapalla lluq&apos;i CTRL </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="318"/>
       <source>Open new tabs in background</source>
-      <translation type="unfinished">Open new tabs in background</translation>
+      <translation>Musuq pestañata kichaqtin kunan pestañamanta ama ripuychu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="870"/>
       <source>&amp;Network</source>
-      <translation type="unfinished">&amp;Network</translation>
+      <translation>&amp;Llika</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="568"/>
       <source>Right Ctrl only</source>
-      <translation type="unfinished">Right Ctrl only</translation>
+      <translation>Sapalla paña CTRL</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="114"/>
@@ -3613,89 +3613,89 @@ for all program&apos;s network requests.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="511"/>
       <source>Right Shift</source>
-      <translation type="unfinished">Right Shift</translation>
+      <translation>Paña MAYÚSCULA</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="581"/>
       <source>Left Shift</source>
-      <translation type="unfinished">Left Shift</translation>
+      <translation>Lluq&apos;i MAYÚSCULA</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="446"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation type="unfinished">With this enabled, the popup would only show up if all chosen keys are
-in the pressed state when the word selection changes.</translation>
+      <translation>Con esto habilitado, la ventana emergente sólo aparece si todas las teclas 
+seleccionadas estén oprimidas cuando la selección de la palabra cambie.</translation>
     </message>
     <message>
       <source>Display style:</source>
-      <translation type="unfinished">Display style:</translation>
+      <translation>Imayna rikhurin:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Auto-pronounce words in scan popup</source>
-      <translation type="unfinished">Auto-pronounce words in scan popup</translation>
+      <translation>Juch&apos;uy qhawanapi kunanpacha simikunata parlachiy</translation>
     </message>
     <message>
       <source>Enable scan popup functionality</source>
-      <translation type="unfinished">Enable scan popup functionality</translation>
+      <translation>Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="330"/>
       <source>Open new tabs after the current one</source>
-      <translation type="unfinished">Open new tabs after the current one</translation>
+      <translation>Kunan pestañaqpa chirunman musuq pestañata kichay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="620"/>
       <source>Restart the program to apply the language change.</source>
-      <translation type="unfinished">Restart the program to apply the language change.</translation>
+      <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="518"/>
       <source>Alt key</source>
-      <translation type="unfinished">Alt key</translation>
+      <translation>Tecla ALT</translation>
     </message>
     <message>
       <source>When enabled, a translation popup window would be shown each time
 you point your mouse on any word on the screen (Windows) or select
 any word with mouse (Linux). When enabled, you can switch it on and
 off from main window or tray icon.</source>
-      <translation type="unfinished">When enabled, a translation popup window would be shown each time
-you point your mouse on any word on the screen (Windows) or select
-any word with mouse (Linux). When enabled, you can switch it on and
-off from main window or tray icon.</translation>
+      <translation>Con esta opción habilitada, la ventana emergente aparecerá 
+cada vez que el ratón apunta a una palabra en la pantalla (Windows) o 
+una palabra está seleccionada con el ratón (Linux). Cuando habilitada, 
+se puede prenderla o apagarla desde la ventana principal o el icono 
+en la bandeja del sistema.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1228"/>
       <source>Check for new program releases periodically</source>
-      <translation type="unfinished">Check for new program releases periodically</translation>
+      <translation>Verificar periódicamente si haya una nueva versión del programa</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="325"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</translation>
+      <translation>Por defecto, nuevas pestañas son agregadas al final 
+de la lista. Con está opción pestañas nuevas son 
+abiertas al lado de la pestaña actual.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="204"/>
       <source>Close to system tray</source>
-      <translation type="unfinished">Close to system tray</translation>
+      <translation>Sistema nisqaqpa chimpunman wisq&apos;ay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
       <location filename="../src/ui/preferences.cc" line="61"/>
       <source>System default</source>
-      <translation type="unfinished">System default</translation>
+      <translation>Sistema nisqaqpa simin</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="167"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation type="unfinished">When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</translation>
+      <translation>Cuando activado un icono aparece en la bandeja del sistema que puede ser utilizado para abrir la ventana principal y realizar otras tareas. </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1221"/>
@@ -3704,137 +3704,135 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation type="unfinished">When this is enabled, the program periodically
-checks if a new, updated version of GoldenDict
-is available for download. If it is so, the program
-informs the user about it and prompts to open a
-download page.</translation>
+      <translation>Cuando habilitado, el programa periódicamente 
+verifica si una versión nueva de GoldenDict está 
+disponible para descargarla. Si está disponible, 
+el programa le informa al usuario y le apunta a 
+la página web para descargarla.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="373"/>
       <source>Startup</source>
-      <translation type="unfinished">Startup</translation>
+      <translation>Qallariynin</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="971"/>
       <source>Password:</source>
-      <translation type="unfinished">Password:</translation>
+      <translation>Pakasqa simi:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="111"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Mana aqllasqa</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="50"/>
       <source>&amp;Interface</source>
-      <translation type="unfinished">&amp;Interface</translation>
+      <translation>&amp;Programaqpa uyan</translation>
     </message>
     <message>
       <source>To avoid false positives, the keys are only monitored
 after the selection&apos;s done for a limited amount of
 seconds, which is specified here.</source>
-      <translation type="unfinished">To avoid false positives, the keys are only monitored
-after the selection&apos;s done for a limited amount of
-seconds, which is specified here.</translation>
+      <translation>Para evitar positivos falsos, las teclas sólo son monitoreadas después de la terminación de la selección adentro un tiempo limitado, que está especificado aquí.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="619"/>
       <source>Changing Language</source>
-      <translation type="unfinished">Changing Language</translation>
+      <translation>Simita t&apos;ikrachkan</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="528"/>
       <source>Ctrl key</source>
-      <translation type="unfinished">Ctrl key</translation>
+      <translation>Tecla CTRL</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="679"/>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation type="unfinished">Use the following hotkey to show or hide the main window:</translation>
+      <translation>Usar la siguiente combinación de teclas para mostrar u ocultar la ventana principal:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="541"/>
       <source>Left Alt</source>
-      <translation type="unfinished">Left Alt</translation>
+      <translation>Lluq&apos;i ALT</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="558"/>
       <source>Right Alt only</source>
-      <translation type="unfinished">Right Alt only</translation>
+      <translation>Sapalla paña ALT</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="14"/>
       <source>Preferences</source>
-      <translation type="unfinished">Preferences</translation>
+      <translation>Aqllanakuna</translation>
     </message>
     <message>
       <source>Keys may also be pressed afterwards, within</source>
-      <translation type="unfinished">Keys may also be pressed afterwards, within</translation>
+      <translation>Teclasta ñit&apos;iyta atinki</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="501"/>
       <source>Left Ctrl</source>
-      <translation type="unfinished">Left Ctrl</translation>
+      <translation>Lluq&apos;i CTRL</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="561"/>
       <source>Right Alt</source>
-      <translation type="unfinished">Right Alt</translation>
+      <translation>Paña ALT</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="749"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation type="unfinished">The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</translation>
+      <translation>Las teclas de acceso rápido están globales y funcionan desde cualquier programa o contexto mientras que GoldenDict estén ejecutando en el fondo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="571"/>
       <source>Right Ctrl</source>
-      <translation type="unfinished">Right Ctrl</translation>
+      <translation>Paña CTRL</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="673"/>
       <source>Hotkeys</source>
-      <translation type="unfinished">Hotkeys</translation>
+      <translation>Teclakuna</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="407"/>
       <source>Start with scan popup turned on</source>
-      <translation type="unfinished">Start with scan popup turned on</translation>
+      <translation>Programaqa qallariqtin juch&apos;uy qhawanapi maskay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="189"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation type="unfinished">With this on, the application starts directly to system tray without showing
-its main window.</translation>
+      <translation>Con esta opción, la aplicación inicia directamente en la bandeja del sistema sin mostrar su ventana principal.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="548"/>
       <source>Shift key</source>
-      <translation type="unfinished">Shift key</translation>
+      <translation>Tecla MAYÚSCULA</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="379"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation type="unfinished">Automatically starts GoldenDict after operation system bootup.</translation>
+      <translation>Sistema nisqaqa qallariqtinkama, GoldenDictqa qallarinpis.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="403"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
-      <translation type="unfinished">Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</translation>
+      <translation>Selecciona si el modo de escaneo está activado por defecto o no. Si está
+marcado, el programa siempre iniciará con el modo de escaneo habilitado.</translation>
     </message>
     <message>
       <source>Normally, in order to activate a popup you have to
 maintain the chosen keys pressed while you select
 a word. With this enabled, the chosen keys may also
 be pressed shortly after the selection is done.</source>
-      <translation type="unfinished">Normally, in order to activate a popup you have to
-maintain the chosen keys pressed while you select
-a word. With this enabled, the chosen keys may also
-be pressed shortly after the selection is done.</translation>
+      <translation>Normalmente, para activar la ventana emergente, tiene 
+que mantener las teclas escogidas oprimidas mientras 
+Ud. selecciona una palabra. Con esta opción habilitada, 
+las teclas escogidas puede ser oprimidas un poco 
+despues la seleccion esté hecha.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="642"/>
@@ -3852,11 +3850,11 @@ be pressed shortly after the selection is done.</translation>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+      <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Nota: Aparece que la extensión RECORD está rota en tu instalación de X.Org XServer. Las teclas de acceso rápido de GoldenDict probablemente no funcionan. Este problema puede ser arreglado en el servidor mismo. Por favor consulte al &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;reportaje de bug&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; y se puede entregar comentarios allí.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="812"/>
@@ -3883,39 +3881,37 @@ p, li { white-space: pre-wrap; }
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</translation>
+      <translation>Habilitando esta opción bloqueará la mayoría de propagando comercial, porque no permite contenido (imágenes y marcos) que no vienen directamente del sitio utilizado. Si causa problemas con algunos sitios, deshabilite esta opción. </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1150"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
+      <translation>No permite la carga de contenido de otros sitios (oculta la mayoría de propaganda)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="783"/>
       <source>Pronunciation</source>
-      <translation type="unfinished">Pronunciation</translation>
+      <translation>Parlachina</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Playback</source>
-      <translation type="unfinished">Playback</translation>
+      <translation>Takichina</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="832"/>
       <source>Use external program:</source>
-      <translation type="unfinished">Use external program:</translation>
+      <translation>Takichiy jawa programawan:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="224"/>
       <source>Double-click translates the word clicked</source>
-      <translation type="unfinished">Double-click translates the word clicked</translation>
+      <translation>Simita mask&apos;anapaq iskay klik ruway</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="829"/>
       <source>Use any external program to play audio files</source>
-      <translation type="unfinished">Use any external program to play audio files</translation>
+      <translation>Usar cualquier programa para reproducir archivos de audio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="280"/>
@@ -4494,7 +4490,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="993"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="995"/>
@@ -4504,7 +4500,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="997"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="999"/>
@@ -4735,12 +4731,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/articleview.cc" line="2735"/>
       <source>The referenced resource failed to download.</source>
-      <translation type="unfinished">The referenced resource failed to download.</translation>
+      <translation>El recurso ha fallado de descargar.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2735"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WILLAY: %1</translation>
     </message>
   </context>
   <context>
@@ -4748,12 +4744,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/romaji.cc" line="117"/>
       <source>Hepburn Romaji for Katakana</source>
-      <translation type="unfinished">Hepburn Romaji for Katakana</translation>
+      <translation>Romanización hepburn de Katakana</translation>
     </message>
     <message>
       <location filename="../src/dict/romaji.cc" line="108"/>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation type="unfinished">Hepburn Romaji for Hiragana</translation>
+      <translation>Romanización hepburn de Hiragana</translation>
     </message>
   </context>
   <context>
@@ -4761,7 +4757,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/russiantranslit.cc" line="107"/>
       <source>Russian Transliteration</source>
-      <translation type="unfinished">Russian Transliteration</translation>
+      <translation>Ruso qillqapi churay</translation>
     </message>
   </context>
   <context>
@@ -4790,12 +4786,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Rimanakuy</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="141"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
+      <translation>Simita parlachiy (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="178"/>
@@ -4805,7 +4801,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="208"/>
       <source>Shows or hides the dictionary bar</source>
-      <translation type="unfinished">Shows or hides the dictionary bar</translation>
+      <translation>Simi-pirwakunawan chumpita rikhurichin chaymanta pakachintaq</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="231"/>
@@ -4816,8 +4812,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/ui/scanpopup.ui" line="251"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
-could be resized or managed in other ways.</translation>
+      <translation>Utilice esto para fijar la ventana en la pantalla, redimensionarla o gerenciarla en otra manera.</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="161"/>
@@ -4832,12 +4827,12 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Ñawpaq</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="127"/>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Qhipa</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="598"/>
@@ -4879,12 +4874,12 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1285"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1283"/>
       <source>Path</source>
-      <translation type="unfinished">Path</translation>
+      <translation>Ñan</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1287"/>
@@ -4897,7 +4892,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="40"/>
       <source>Files</source>
-      <translation type="unfinished">Files</translation>
+      <translation>Archiwukuna</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="813"/>
@@ -4907,7 +4902,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="753"/>
       <source>Systems:</source>
-      <translation type="unfinished">Systems:</translation>
+      <translation>Sistemas:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="780"/>
@@ -4919,7 +4914,7 @@ could be resized or managed in other ways.</translation>
       <location filename="../src/dict/sources.cc" line="283"/>
       <location filename="../src/dict/sources.cc" line="307"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>¿&lt;b&gt;%1&lt;/b&gt; raphita chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="227"/>
@@ -4929,23 +4924,23 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="820"/>
       <source>Katakana Japanese syllabary</source>
-      <translation type="unfinished">Katakana Japanese syllabary</translation>
+      <translation>Silabario de Japonés Katakana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="109"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation type="unfinished">Make dictionaries from bunches of audiofiles by adding paths here:</translation>
+      <translation>Crear diccionarios de grupos de archivos de audio, encontrados en rutas aquí:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="192"/>
       <location filename="../src/dict/sources.cc" line="219"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>¿&lt;b&gt;%1&lt;/b&gt; directorio chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="741"/>
       <source>Japanese Romaji</source>
-      <translation type="unfinished">Japanese Romaji</translation>
+      <translation>Romano qillqapi japonés simita t&apos;ikray</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="790"/>
@@ -4953,20 +4948,20 @@ could be resized or managed in other ways.</translation>
 Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
+      <translation>Basado en el sistema Nihon-shiki, pero modificado para el japonés moderno estándar.
+Estandarizado como ISO 3602
 
-Not implemented yet in GoldenDict.</translation>
+Todavía no implementado en GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="233"/>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation type="unfinished">Wikipedia (MediaWiki) sites:</translation>
+      <translation>Wikipedia (MediaWiki) raphikuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="103"/>
       <source>Sound Dirs</source>
-      <translation type="unfinished">Sound Dirs</translation>
+      <translation>Chanrawan directoriokuna</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
@@ -5016,18 +5011,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <location filename="../src/ui/sources.ui" line="760"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,
-based on English phonology</translation>
+      <translation>El sistema más utilizado para transcribir japonés,
+basado en la fonología inglesa</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="810"/>
       <source>Hiragana Japanese syllabary</source>
-      <translation type="unfinished">Hiragana Japanese syllabary</translation>
+      <translation>Silabario de Japonés Hiragana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
       <source>Transliteration</source>
-      <translation type="unfinished">Transliteration</translation>
+      <translation>Waq qillqaman t&apos;ikray</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="774"/>
@@ -5035,25 +5030,25 @@ based on English phonology</translation>
 kana writing systems. Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
+      <translation>El sistema más utilizado, con una relación uno-a-uno con sistemas de escritura kana.
+Su estándar es ISO-3602.
 
-Not implemented yet in GoldenDict.</translation>
+Todavia no implementado en GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="703"/>
       <source>Russian transliteration</source>
-      <translation type="unfinished">Russian transliteration</translation>
+      <translation>Ruso qillqaman t&apos;ikray</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="159"/>
       <source>Morphology</source>
-      <translation type="unfinished">Morphology</translation>
+      <translation>Morfología</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="181"/>
       <source>&amp;Change...</source>
-      <translation type="unfinished">&amp;Change...</translation>
+      <translation>&amp;Allinchay...</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
@@ -5063,22 +5058,22 @@ Not implemented yet in GoldenDict.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="165"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation type="unfinished">Path to a directory with Hunspell/Myspell dictionaries:</translation>
+      <translation>Hunspell/Myspell simi-pirwakunawan directoriokunaman ñan:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="87"/>
       <source>Re&amp;scan now</source>
-      <translation type="unfinished">Re&amp;scan now</translation>
+      <translation>Kunan &amp;hukmanta ñawichay</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="714"/>
       <source>German transliteration</source>
-      <translation type="unfinished">German transliteration</translation>
+      <translation>Aleman qillqaman t&apos;ikray</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="292"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation type="unfinished">Any websites. A string %GDWORD% will be replaced with the query word:</translation>
+      <translation>Web raphikuna: (Mask&apos;asqa simiwan &quot;%GDWORD%&quot;ta rantinqa)</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="60"/>
@@ -5088,14 +5083,14 @@ Not implemented yet in GoldenDict.</translation>
       <location filename="../src/ui/sources.ui" line="370"/>
       <location filename="../src/ui/sources.ui" line="429"/>
       <source>&amp;Add...</source>
-      <translation type="unfinished">&amp;Add...</translation>
+      <translation>&amp;Yapay...</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="177"/>
       <location filename="../src/dict/sources.cc" line="204"/>
       <location filename="../src/dict/sources.cc" line="231"/>
       <source>Choose a directory</source>
-      <translation type="unfinished">Choose a directory</translation>
+      <translation>Directorio nisqata aqllay</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="67"/>
@@ -5105,17 +5100,17 @@ Not implemented yet in GoldenDict.</translation>
       <location filename="../src/ui/sources.ui" line="377"/>
       <location filename="../src/ui/sources.ui" line="436"/>
       <source>&amp;Remove</source>
-      <translation type="unfinished">&amp;Remove</translation>
+      <translation>&amp;Chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="286"/>
       <source>Websites</source>
-      <translation type="unfinished">Websites</translation>
+      <translation>Web raphikuna</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="46"/>
       <source>Paths to search for the dictionary files:</source>
-      <translation type="unfinished">Paths to search for the dictionary files:</translation>
+      <translation>Simi-pirwakunaqpa archiwunkuta tarinapaq ñankuna:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="191"/>
@@ -5125,22 +5120,22 @@ Not implemented yet in GoldenDict.</translation>
       <location filename="../src/dict/sources.cc" line="306"/>
       <location filename="../src/dict/sources.cc" line="330"/>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="803"/>
       <source>Syllabaries:</source>
-      <translation type="unfinished">Syllabaries:</translation>
+      <translation>Silabario:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="190"/>
       <source>Available morphology dictionaries:</source>
-      <translation type="unfinished">Available morphology dictionaries:</translation>
+      <translation>Jap&apos;ikunapaq morfológicos simi-pirwakuna:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="738"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation type="unfinished">Enables to use the Latin alphabet to write the Japanese language</translation>
+      <translation>Habilita el alfabeto romano para escribir la lengua japonesa</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="202"/>
@@ -5150,12 +5145,12 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation type="unfinished">Each morphology dictionary appears as a
-separate auxiliary dictionary which
-provides stem words for searches and
-spelling suggestions for mistyped words.
-Add appropriate dictionaries to the bottoms
-of the appropriate groups to use them.</translation>
+      <translation>Cada diccionario morfológico aparece como 
+un diccionario auxiliar separado que 
+provee palabras raíces para búsquedas
+y sugerencias ortográficas de palabras
+mal escritas. Agregar diccionarios a los 
+fondos de grupos apropriados para utilizarlos.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="764"/>
@@ -5189,50 +5184,51 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="545"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation type="unfinished">Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
+      <translation>Pronuncia directamente de &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Este sito permite que la gente grabe y comparta pronunciaciones de palabras que pueden ser escuchadas desde GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="558"/>
       <source>Enable pronunciations from Forvo</source>
-      <translation type="unfinished">Enable pronunciations from Forvo</translation>
+      <translation>Forvo nisqawan parlachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
-      <translation type="unfinished">API Key:</translation>
+      <translation>API nisqaqpa chimpun:</translation>
     </message>
     <message>
       <source>Use of Forvo currently requires an API key. Leave this field
 blank to use the default key, which may become unavailable
 in the future, or register on the site to get your own key.</source>
-      <translation type="unfinished">Use of Forvo currently requires an API key. Leave this field
-blank to use the default key, which may become unavailable
-in the future, or register on the site to get your own key.</translation>
+      <translation>Actualmente el uso de Forvo requiere una clave de API. Deje este campo 
+en blanco para utilizar la clave por defecto, que tal vez no será 
+disponible en el futuro, o registre en el sitio para obtener tu 
+propia clave personalizada.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
       <source>Language codes (comma-separated):</source>
-      <translation type="unfinished">Language codes (comma-separated):</translation>
+      <translation>Simikunaqpa chimpunku (coma nisqakunawan t&apos;aqasqa):</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="625"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation type="unfinished">List of language codes you would like to have. Example: &quot;en, ru&quot;.</translation>
+      <translation>Simi munaykinkiLista de códigos de lenguas que Ud. quiere utilizar. Por Ejemplo: &quot;en, ru, es&quot;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="648"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation type="unfinished">Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</translation>
+      <translation>Una lista completa de los códigos de lenguas está disponible &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;aquí&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="692"/>
       <source>Greek transliteration</source>
-      <translation type="unfinished">Greek transliteration</translation>
+      <translation>Griego qillqaman t&apos;ikray</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="140"/>
       <source>(not available in portable version)</source>
-      <translation type="unfinished">(not available in portable version)</translation>
+      <translation>(no disponible en versión portátil)</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="406"/>
@@ -5271,7 +5267,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/stylescombobox.cc" line="17"/>
       <source>None</source>
-      <translation type="unfinished">None</translation>
+      <translation>Ni ima</translation>
     </message>
   </context>
   <context>
@@ -5289,7 +5285,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="47"/>
       <source>&amp;Remove</source>
-      <translation type="unfinished">&amp;Remove</translation>
+      <translation>&amp;Chinkachiy</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="147"/>
@@ -5324,7 +5320,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="110"/>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Chinkachiyta munankichu?</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="111"/>
@@ -5339,7 +5335,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="71"/>
       <source>Preferences</source>
-      <translation type="unfinished">Preferences</translation>
+      <translation>Aqllanakuna</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="77"/>
@@ -5370,12 +5366,12 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="280"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="282"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
@@ -5393,17 +5389,17 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="644"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Suti</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="646"/>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Maypi</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="640"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Llank&apos;achkanña</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="631"/>
@@ -5427,7 +5423,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/wordfinder.cc" line="201"/>
       <source>Failed to query some dictionaries.</source>
-      <translation type="unfinished">Failed to query some dictionaries.</translation>
+      <translation>Simi-pirwakunapi mask&apos;aspa pantay</translation>
     </message>
   </context>
   <context>
@@ -5435,7 +5431,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/wordlist.cc" line="82"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WILLAY: %1</translation>
     </message>
   </context>
 </TS>
