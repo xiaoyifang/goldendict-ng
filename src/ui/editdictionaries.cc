@@ -4,7 +4,6 @@
 #include "editdictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "dictinfo.hh"
-#include "mainwindow.hh"
 #include "utils.hh"
 #include <QMessageBox>
 

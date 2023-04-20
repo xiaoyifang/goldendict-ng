@@ -213,6 +213,8 @@ public:
                         FtsIndexing & ftsidx );
   virtual ~FullTextSearchDialog();
 
+  void setSearchText( const QString & text );
+
   void setCurrentGroup( unsigned group_ )
   { group = group_; updateDictionaries(); }
 

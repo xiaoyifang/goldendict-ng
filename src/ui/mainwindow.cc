@@ -4398,6 +4398,8 @@ void MainWindow::showFullTextSearchDialog()
   if( !ftsDlg )
   {
     ftsDlg = new FTS::FullTextSearchDialog( this, cfg, dictionaries, groupInstances, ftsIndexing );
+    ftsDlg->setSearchText( translateLine->text() );
+
     addGlobalActionsToDialog( ftsDlg );
     addGroupComboBoxActionsToDialog( ftsDlg, groupList );
 
