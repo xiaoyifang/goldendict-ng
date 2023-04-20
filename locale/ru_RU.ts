@@ -4977,7 +4977,7 @@ Not implemented yet in GoldenDict.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Любые внешние программы. Строка %GDWORD% будет заменена на слово запроса. Строка %GDSEARCH% будет заменена на текст в строке поиска. Если оба параметра не указаны, то головное слово будет включено в стандартный ввод.</translation>
+      <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Строка %GDSEARCH% будет заменена на текст в поисковой строке. Если обоих строк нет задано, запрашиваемое слово будет отправлено в стандартный входной поток внешней программы.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
