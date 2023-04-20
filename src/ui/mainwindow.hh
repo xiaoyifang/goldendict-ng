@@ -57,9 +57,6 @@ public:
 
   virtual void commitData( QSessionManager & );
 
-  QString getTranslateLineText() const
-  { return translateLine->text(); }
-
   /// Set group for main/popup window
   void setGroupByName( QString const & name, bool main_window );
 

@@ -4,11 +4,9 @@
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "gddebug.hh"
-#include "mainwindow.hh"
 #include "utils.hh"
 
 #include <QThreadPool>
-#include <QIntValidator>
 #include <QMessageBox>
 #include <qalgorithms.h>
 
@@ -334,8 +332,12 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   if( delegate )
     ui.headwordsView->setItemDelegate( delegate );
 
-  ui.searchLine->setText( static_cast< MainWindow * >( parent )->getTranslateLineText() );
   ui.searchLine->selectAll();
+}
+
+void FullTextSearchDialog::setSearchText( const QString & text )
+{
+  ui.searchLine->setText( text );
 }
 
 FullTextSearchDialog::~FullTextSearchDialog()
