@@ -667,7 +667,7 @@ void ArticleRequest::bodyFinished()
                       <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
                       <span class="gdfromprefix">%4</span>
                       <span class="gddicttitle">%5</span>
-                      <span class="collapse_expand_area"><img src="qrc:///icons/blank.png" class="%6" id="expandicon-%1" title="%7" ></span>
+                      <span class="collapse_expand_area"><img class="%6" id="expandicon-%1" title="%7" ></span>
                      </div>)" )
                   .arg( dictId.c_str(),
                         collapse ? R"(style="cursor:pointer;")" : "",
