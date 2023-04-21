@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
+    <width>791</width>
     <height>319</height>
    </rect>
   </property>
@@ -148,16 +148,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="autoGroups">
-         <property name="toolTip">
-          <string>Create language-based groups</string>
-         </property>
-         <property name="text">
-          <string>Auto groups</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="renameGroup">
          <property name="toolTip">
           <string>Rename current dictionary group</string>
@@ -186,6 +176,56 @@
           <string>Remove all groups</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="autoGroups">
+         <property name="toolTip">
+          <string>Create language-based groups</string>
+         </property>
+         <property name="text">
+          <string>Auto groups by Languages</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="autoGroupsFolders">
+         <property name="toolTip">
+          <string>Create folder-based groups.</string>
+         </property>
+         <property name="text">
+          <string>Auto groups by Folders</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -227,7 +267,6 @@
   <tabstop>removeDictsFromGroup</tabstop>
   <tabstop>groups</tabstop>
   <tabstop>addGroup</tabstop>
-  <tabstop>autoGroups</tabstop>
   <tabstop>renameGroup</tabstop>
   <tabstop>removeGroup</tabstop>
   <tabstop>removeAllGroups</tabstop>

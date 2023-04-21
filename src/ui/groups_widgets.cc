@@ -15,6 +15,7 @@
 #include <QDir>
 #include <QIcon>
 #include <QMap>
+#include <QMultiMap>
 #include <QVector>
 #include <QFileInfo>
 #include <QFileDialog>
@@ -771,6 +772,57 @@ void DictGroupsWidget::addAutoGroups()
       model->addRow(QModelIndex(), vd.at( i ) );
   }
 }
+
+
+void DictGroupsWidget::addAutoGroupsByFolders()
+{
+  if ( activeDicts->empty() ) {
+    return;
+  }
+
+  if ( QMessageBox::information( this,
+                                 tr( "Confirmation" ),
+                                 tr( "Are you sure you want to generate a set of groups "
+                                     "based on containing folders?" ),
+                                 QMessageBox::Yes,
+                                 QMessageBox::Cancel )
+       != QMessageBox::Yes ) {
+    return;
+  }
+
+  QMultiMap< QString, sptr< Dictionary::Class > > dictMap;
+
+  for ( const auto & dict : *activeDicts ) {
+    QString dictFolder = dict->getContainingFolder();
+
+    if ( dictFolder.isEmpty() ) {
+      continue;
+    }
+
+    QDir dir = dictFolder;
+    if ( dir.cdUp() ) {
+      dictMap.insert( dir.dirName(), dict );
+    }
+    else {
+      qWarning() << "Cannot auto group because parent folder cannot be reached: " << dir;
+      continue;
+    }
+  }
+
+  for ( const auto & group : dictMap.uniqueKeys() ) {
+    if ( count() != 0 ) {
+      setCurrentIndex( count() - 1 );
+    }
+
+    addUniqueGroup( group );
+    DictListModel * model = getCurrentModel();
+
+    for ( auto dict : dictMap.values( group ) ) {
+      model->addRow( QModelIndex(), dict );
+    }
+  }
+}
+
 
 QString DictGroupsWidget::getCurrentGroupName() const
 {

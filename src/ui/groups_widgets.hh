@@ -164,6 +164,9 @@ public:
 
   void addAutoGroups();
 
+  /// auto grouping by containning folder
+  void addAutoGroupsByFolders();
+
   /// Returns currently chosen group's name
   QString getCurrentGroupName() const;
 
@@ -187,7 +190,7 @@ private:
 
   /// Add source group to target group
   void combineGroups( int source, int target );
-
+  
   unsigned nextId;
   std::vector< sptr< Dictionary::Class > > const * allDicts;
   std::vector< sptr< Dictionary::Class > > const * activeDicts;
