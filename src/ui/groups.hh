@@ -49,7 +49,12 @@ private slots:
   void removeAll();
   void addToGroup();
   void removeFromGroup();
+
+  /// Traditional Add Group by Language
   void addAutoGroups();
+  /// by Containing Folder
+  void addAutoGroupsByFolders();
+
   void showDictInfo( const QPoint & pos );
   void fillGroupsMenu();
   void switchToGroup( QAction * act );

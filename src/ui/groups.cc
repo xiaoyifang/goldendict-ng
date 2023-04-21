@@ -51,8 +51,10 @@ Groups::Groups( QWidget * parent,
   connect( ui.addDictsToGroup, &QAbstractButton::clicked, this, &Groups::addToGroup );
   connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &Groups::addToGroup );
   connect( ui.removeDictsFromGroup, &QAbstractButton::clicked, this, &Groups::removeFromGroup );
-  connect( ui.autoGroups, &QAbstractButton::clicked, this, &Groups::addAutoGroups );
   connect( ui.groups, &DictGroupsWidget::showDictionaryInfo, this, &Groups::showDictionaryInfo );
+
+  connect( ui.autoGroups, &QAbstractButton::clicked, this, &Groups::addAutoGroups );
+  connect( ui.autoGroupsFolders, &QAbstractButton::clicked, this, &Groups::addAutoGroupsByFolders );
 
   ui.dictionaries->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &Groups::showDictInfo );
@@ -121,6 +123,11 @@ void Groups::addNew()
 void Groups::addAutoGroups()
 {
   ui.groups->addAutoGroups();
+  countChanged();
+}
+
+void Groups::addAutoGroupsByFolders() {
+  ui.groups->addAutoGroupsByFolders();
   countChanged();
 }
 
