@@ -374,9 +374,9 @@ int main( int argc, char ** argv )
 
   QLocale locale( localeName );
   QLocale::setDefault( locale );
-  if( !qtTranslator.load( "qt_" + localeName, Config::getLocDir() ) )
+  if( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) )
   {
-    qtTranslator.load( "qt_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( &qtTranslator );
   }
 
