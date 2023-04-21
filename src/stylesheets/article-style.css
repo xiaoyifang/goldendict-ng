@@ -88,7 +88,7 @@ pre
 /*fix for invalid blg*/
   font-style:normal;
   content-visibility: auto;
-  contain-intrinsic-size: 600px;
+  contain-intrinsic-height: auto 600px;
 }
 
 .empty-space
