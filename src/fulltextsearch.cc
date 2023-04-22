@@ -4,7 +4,7 @@
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "gddebug.hh"
-#include "utils.hh"
+#include "help.hh"
 
 #include <QThreadPool>
 #include <QMessageBox>
@@ -320,7 +320,7 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
   connect( &helpAction, &QAction::triggered, [](){
-    Utils::Help::openHelpWebpage("ui_fulltextsearch");
+    Help::openHelpWebpage(Help::section::ui_fulltextserch);
   } );
   connect( ui.helpButton, &QAbstractButton::clicked, &helpAction,&QAction::trigger);
 

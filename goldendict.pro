@@ -293,6 +293,7 @@ HEADERS += \
     src/common/gddebug.hh \
     src/common/globalbroadcaster.hh \
     src/common/globalregex.hh \
+    src/common/help.hh \
     src/common/htmlescape.hh \
     src/common/iconv.hh \
     src/common/inc_case_folding.hh \
@@ -419,6 +420,7 @@ SOURCES += \
     src/common/gddebug.cc \
     src/common/globalbroadcaster.cc \
     src/common/globalregex.cc \
+    src/common/help.cc \
     src/common/htmlescape.cc \
     src/common/iconv.cc \
     src/common/mutex.cc \

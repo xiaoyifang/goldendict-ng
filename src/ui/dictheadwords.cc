@@ -15,7 +15,7 @@
 
 #include <QRegularExpression>
 #include "wildcard.hh"
-#include "utils.hh"
+#include "help.hh"
 #include <QMessageBox>
 
 #define AUTO_APPLY_LIMIT 150000
@@ -87,7 +87,7 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
 
     connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
     connect( &helpAction, &QAction::triggered, []() {
-      Utils::Help::openHelpWebpage( QStringLiteral( "ui_headwords" ) );
+      Help::openHelpWebpage( Help::section::ui_headwords );
     } );
 
     addAction( &helpAction );
