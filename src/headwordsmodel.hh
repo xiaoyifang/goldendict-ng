@@ -22,7 +22,7 @@ public:
   void setFilter( QRegularExpression );
   void appendWord( const QString & word );
   void addMatches( QStringList matches );
-  int getCurrentIndex();
+  int getCurrentIndex() const;
   bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
 signals:

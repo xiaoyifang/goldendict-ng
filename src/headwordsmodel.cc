@@ -124,16 +124,16 @@ int HeadwordListModel::wordCount() const
 QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
 {
   if( !index.isValid() )
-    return QVariant();
+    return {};
 
   if( index.row() >= totalSize || index.row() < 0 || index.row() >= words.size() )
-    return QVariant();
+    return {};
 
   if( role == Qt::DisplayRole )
   {
     return words.at( index.row() );
   }
-  return QVariant();
+  return {};
 }
 
 bool HeadwordListModel::canFetchMore( const QModelIndex & parent ) const
@@ -174,7 +174,7 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   emit numberPopulated( words.size() );
 }
 
-int HeadwordListModel::getCurrentIndex()
+int HeadwordListModel::getCurrentIndex() const
 {
   return index;
 }
