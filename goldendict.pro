@@ -305,7 +305,6 @@ HEADERS += \
     src/common/wstring.hh \
     src/common/wstring_qt.hh \
     src/config.hh \
-    src/country.hh \
     src/decompress.hh \
     src/delegate.hh \
     src/dict/aard.hh \
@@ -427,7 +426,6 @@ SOURCES += \
     src/common/utils.cc \
     src/common/wstring_qt.cc \
     src/config.cc \
-    src/country.cc \
     src/decompress.cc \
     src/delegate.cc \
     src/dict/aard.cc \
