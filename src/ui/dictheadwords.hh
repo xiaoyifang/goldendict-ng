@@ -48,7 +48,7 @@ private:
 private slots:
   void savePos();
   void filterChangedInternal();
-  QRegularExpression getFilterRegex();
+  QRegularExpression getFilterRegex() const;
   void filterChanged();
   void exportButtonClicked();
   void okButtonClicked();

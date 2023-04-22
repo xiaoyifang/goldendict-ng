@@ -201,7 +201,7 @@ void DictHeadwords::filterChangedInternal()
     QTimer::singleShot( 100, this, &DictHeadwords::filterChanged );
 }
 
-QRegularExpression DictHeadwords::getFilterRegex(  )
+QRegularExpression DictHeadwords::getFilterRegex(  ) const
 {
   const QRegExp::PatternSyntax syntax =
     static_cast< QRegExp::PatternSyntax >(ui.searchModeCombo->itemData(
@@ -368,8 +368,7 @@ void DictHeadwords::saveHeadersToFile()
 
   QStringList filtered;
 
-  const QRegularExpression regExp = getFilterRegex();
-  if(regExp.isValid() && !regExp.pattern().isEmpty()){
+  if ( const QRegularExpression regExp = getFilterRegex(); regExp.isValid() && !regExp.pattern().isEmpty() ) {
     filtered = sortedWords.filter( regExp );
   }
   else{
