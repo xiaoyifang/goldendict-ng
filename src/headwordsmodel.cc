@@ -2,7 +2,7 @@
 #include "wstring_qt.hh"
 
 HeadwordListModel::HeadwordListModel( QObject * parent ) :
-  QAbstractListModel( parent ), filtering( false ), totalSize(0), index( 0 ),ptr( 0 )
+  QAbstractListModel( parent ), filtering( false ), totalSize(0), index( 0 ),ptr( nullptr )
 {
 }
 
@@ -49,7 +49,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
 void HeadwordListModel::addMatches( QStringList matches)
 {
   QStringList filtered;
-  for ( auto & w : matches ) {
+  for ( auto const & w : matches ) {
     if ( !words.contains( w ) ) {
       filtered << w;
     }
