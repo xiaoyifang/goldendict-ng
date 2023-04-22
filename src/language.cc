@@ -389,77 +389,77 @@ const BabylonLang BabylonDb[] ={
 
 BabylonLang getBabylonLangByIndex( int index )
 {
-    return BabylonDb[ index ];
+  return BabylonDb[ index ];
 }
 
 quint32 findBlgLangIDByEnglishName( gd::wstring const & lang )
 {
-    QString enName = gd::toQString( lang );
-    for( int idx=0;idx < 15 ; ++idx )
-    {
-        if( QString::compare( BabylonDb[ idx ].englishName, enName, Qt::CaseInsensitive  ) == 0 )
-            return BabylonDb[ idx ].id;
-    }
-    return 0;
+  const QString enName = gd::toQString( lang );
+  for ( const auto & idx : BabylonDb ) {
+    if ( QString::compare( idx.englishName, enName, Qt::CaseInsensitive ) == 0 )
+      return idx.id;
+  }
+  return 0;
 }
 
 QString englishNameForId( Id id )
 {
-    if(  id >= 0x010000 && id <= 0x0fffff ) //babylon
-    {
-        return BabylonDb[ ( (id >> 16 ) & 0x0f) - 1 ].englishName;
-    }
-  map< QString, QString >::const_iterator i =
-      Db::instance().getIso2ToEnglish().find( LangCoder::intToCode2( id ) );
+  if ( id >= 0x010000 && id <= 0x0fffff ) //babylon
+  {
+    return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].englishName;
+  }
+  const auto i =
+    Db::instance().getIso2ToEnglish().find( LangCoder::intToCode2( id ) );
 
   if ( i == Db::instance().getIso2ToEnglish().end() )
-    return QString();
+    return {};
 
   return i->second;
 }
 
 QString localizedNameForId( Id id )
 {
-    if(  id >= 0x010000 && id <= 0x0fffff ) //babylon
-    {
-        return QCoreApplication::translate( "Language", BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].localizedName );
-    }
-  map< QString, QString >::const_iterator i =
-      Db::instance().getIso2ToLocalized().find( LangCoder::intToCode2( id ) );
+  if ( id >= 0x010000 && id <= 0x0fffff ) //babylon
+  {
+    return QCoreApplication::translate( "Language", BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].localizedName );
+  }
+  const auto i =
+    Db::instance().getIso2ToLocalized().find( LangCoder::intToCode2( id ) );
 
   if ( i == Db::instance().getIso2ToLocalized().end() )
-    return QString();
+    return {};
 
   return i->second;
 }
 
 QString countryCodeForId( Id id )
 {
-    if(  id >= 0x010000 && id <= 0x0fffff ) //babylon
-    {
-        return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].contryCode;
-    }
-  map< QString, QString >::const_iterator i =
-      Db::instance().getIso2ToCountry().find( LangCoder::intToCode2( id ) );
+  if ( id >= 0x010000 && id <= 0x0fffff ) //babylon
+  {
+    return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].contryCode;
+  }
+  const auto i =
+    Db::instance().getIso2ToCountry().find( LangCoder::intToCode2( id ) );
 
   if ( i == Db::instance().getIso2ToCountry().end() )
-    return QString();
+    return {};
 
   return i->second;
 }
 
 QString localizedStringForId( Id langId )
 {
-    QString name = localizedNameForId( langId );
+  QString name = localizedNameForId( langId );
 
-    if ( name.isEmpty() )
-      return name;
+  if ( name.isEmpty() )
+    return name;
 
-    QString iconId = countryCodeForId( langId );
+  QString iconId = countryCodeForId( langId );
 
-    if( iconId.isEmpty() )
-      return name;
-    else
-      return QString( "<img src=\":/flags/%1.png\"> %2" ).arg( iconId , name );
-  }
+  if ( iconId.isEmpty() )
+    return name;
+  else
+    return QString( "<img src=\":/flags/%1.png\"> %2" ).arg( iconId, name );
+}
+
 }
