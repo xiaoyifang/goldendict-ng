@@ -236,11 +236,10 @@ QRegularExpression DictHeadwords::getFilterRegex(  ) const
 
 void DictHeadwords::filterChanged()
 {
-  const QRegularExpression regExp= getFilterRegex();
+  const QRegularExpression regExp = getFilterRegex();
 
   QApplication::setOverrideCursor( Qt::WaitCursor );
 
-  qDebug()<<regExp.pattern();
   if ( sortedWords.isEmpty() && regExp.isValid() && !regExp.pattern().isEmpty() ) {
     const int headwordsNumber = model->totalCount();
 
@@ -251,9 +250,8 @@ void DictHeadwords::filterChanged()
   }
 
   const auto filtered = sortedWords.filter( regExp );
+
   model->addMatches( filtered );
-  
-  // model->setFilter(regExp);
 
   proxy->setFilterRegularExpression( regExp );
   proxy->sort( 0 );
