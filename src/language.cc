@@ -11,26 +11,33 @@ namespace {
 
 using std::map;
 
+struct LangData
+{
+  QString english;
+  QString localized;
+  QString country;
+};
+
 struct Db
 {
   static Db const & instance();
 
-  map< QString, QString > const & getIso2ToEnglish() const
-  { return iso2ToEnglish; }
-  map< QString, QString > const & getIso2ToLocalized() const
-  { return iso2ToLocalized; }
-
-  map< QString, QString > const & getIso2ToCountry() const
-  { return iso2ToCountry; }
+  [[nodiscard]] QMap< QString, LangData > const & getIso2ToLangData() const
+  {
+    return iso2LangData;
+  }
 
 private:
 
-  map< QString, QString > iso2ToEnglish, iso2ToLocalized, iso2ToCountry;
+  QMap< QString, LangData > iso2LangData;
 
   Db();
 
-  void addEntry( QString const & iso2, QString const & english,
+  void addEntry( QString const & iso2,
+                 QString const & english,
                  QString const & localized );
+
+  void addExtraCountry( QString const & iso2, QString const & country );
 };
 
 Db const & Db::instance()
@@ -43,8 +50,17 @@ Db const & Db::instance()
 void Db::addEntry( QString const & iso2, QString const & english,
                    QString const & localized )
 {
-  iso2ToEnglish[ iso2 ] = english;
-  iso2ToLocalized[ iso2 ] = localized;
+  LangData lang_data;
+  lang_data.english = english;
+  lang_data.localized = localized;
+  iso2LangData.insert( iso2, lang_data );
+}
+
+void Db::addExtraCountry( QString const & iso2, QString const & country ) {
+  if(!iso2LangData.contains( iso2 )) {
+    return;
+  }
+  iso2LangData[ iso2 ].country = country;
 }
 
 Db::Db()
@@ -238,129 +254,129 @@ Db::Db()
 
   // Countries
 
-  iso2ToCountry[ "aa" ] = "et";
-  iso2ToCountry[ "af" ] = "za";
-  iso2ToCountry[ "am" ] = "et";
-  iso2ToCountry[ "an" ] = "es";
-  iso2ToCountry[ "ar" ] = "ae";
-  iso2ToCountry[ "as" ] = "in";
-  iso2ToCountry[ "az" ] = "az";
-  iso2ToCountry[ "be" ] = "by";
-  iso2ToCountry[ "bg" ] = "bg";
-  iso2ToCountry[ "bn" ] = "bd";
-  iso2ToCountry[ "bo" ] = "cn";
-  iso2ToCountry[ "br" ] = "fr";
-  iso2ToCountry[ "bs" ] = "ba";
-  iso2ToCountry[ "ca" ] = "ad";
-  iso2ToCountry[ "cs" ] = "cz";
-  iso2ToCountry[ "cy" ] = "gb";
-  iso2ToCountry[ "da" ] = "dk";
-  iso2ToCountry[ "de" ] = "de";
-  iso2ToCountry[ "dz" ] = "bt";
-  iso2ToCountry[ "el" ] = "gr";
-  iso2ToCountry[ "en" ] = "gb";
-  iso2ToCountry[ "es" ] = "es";
-  iso2ToCountry[ "et" ] = "ee";
-  iso2ToCountry[ "eu" ] = "es";
-  iso2ToCountry[ "fa" ] = "ir";
-  iso2ToCountry[ "fi" ] = "fi";
-  iso2ToCountry[ "fo" ] = "fo";
-  iso2ToCountry[ "fr" ] = "fr";
-  iso2ToCountry[ "fy" ] = "nl";
-  iso2ToCountry[ "ga" ] = "ie";
-  iso2ToCountry[ "gd" ] = "gb";
-  iso2ToCountry[ "gl" ] = "es";
-  iso2ToCountry[ "gu" ] = "in";
-  iso2ToCountry[ "gv" ] = "gb";
-  iso2ToCountry[ "ha" ] = "ng";
-  iso2ToCountry[ "he" ] = "il";
-  iso2ToCountry[ "hi" ] = "in";
-  iso2ToCountry[ "hr" ] = "hr";
-  iso2ToCountry[ "ht" ] = "ht";
-  iso2ToCountry[ "hu" ] = "hu";
-  iso2ToCountry[ "hy" ] = "am";
-  iso2ToCountry[ "id" ] = "id";
-  iso2ToCountry[ "ig" ] = "ng";
-  iso2ToCountry[ "ik" ] = "ca";
-  iso2ToCountry[ "is" ] = "is";
-  iso2ToCountry[ "it" ] = "it";
-  iso2ToCountry[ "iu" ] = "ca";
-  iso2ToCountry[ "iw" ] = "il";
-  iso2ToCountry[ "ja" ] = "jp";
-  iso2ToCountry[ "jb" ] = "jb";
-  iso2ToCountry[ "ka" ] = "ge";
-  iso2ToCountry[ "kk" ] = "kz";
-  iso2ToCountry[ "kl" ] = "gl";
-  iso2ToCountry[ "km" ] = "kh";
-  iso2ToCountry[ "kn" ] = "in";
-  iso2ToCountry[ "ko" ] = "kr";
-  iso2ToCountry[ "ku" ] = "tr";
-  iso2ToCountry[ "kw" ] = "gb";
-  iso2ToCountry[ "ky" ] = "kg";
-  iso2ToCountry[ "lg" ] = "ug";
-  iso2ToCountry[ "li" ] = "be";
-  iso2ToCountry[ "lo" ] = "la";
-  iso2ToCountry[ "lt" ] = "lt";
-  iso2ToCountry[ "lv" ] = "lv";
-  iso2ToCountry[ "mg" ] = "mg";
-  iso2ToCountry[ "mi" ] = "nz";
-  iso2ToCountry[ "mk" ] = "mk";
-  iso2ToCountry[ "ml" ] = "in";
-  iso2ToCountry[ "mn" ] = "mn";
-  iso2ToCountry[ "mr" ] = "in";
-  iso2ToCountry[ "ms" ] = "my";
-  iso2ToCountry[ "mt" ] = "mt";
-  iso2ToCountry[ "nb" ] = "no";
-  iso2ToCountry[ "ne" ] = "np";
-  iso2ToCountry[ "nl" ] = "nl";
-  iso2ToCountry[ "nn" ] = "no";
-  iso2ToCountry[ "nr" ] = "za";
-  iso2ToCountry[ "oc" ] = "fr";
-  iso2ToCountry[ "om" ] = "et";
-  iso2ToCountry[ "or" ] = "in";
-  iso2ToCountry[ "pa" ] = "pk";
-  iso2ToCountry[ "pl" ] = "pl";
-  iso2ToCountry[ "pt" ] = "pt";
-  iso2ToCountry[ "ro" ] = "ro";
-  iso2ToCountry[ "ru" ] = "ru";
-  iso2ToCountry[ "rw" ] = "rw";
-  iso2ToCountry[ "sa" ] = "in";
-  iso2ToCountry[ "sc" ] = "it";
-  iso2ToCountry[ "sd" ] = "in";
-  iso2ToCountry[ "se" ] = "no";
-  iso2ToCountry[ "si" ] = "lk";
-  iso2ToCountry[ "sk" ] = "sk";
-  iso2ToCountry[ "sl" ] = "si";
-  iso2ToCountry[ "so" ] = "so";
-  iso2ToCountry[ "sq" ] = "al";
-  iso2ToCountry[ "sr" ] = "rs";
-  iso2ToCountry[ "ss" ] = "za";
-  iso2ToCountry[ "st" ] = "za";
-  iso2ToCountry[ "sv" ] = "se";
-  iso2ToCountry[ "ta" ] = "in";
-  iso2ToCountry[ "te" ] = "in";
-  iso2ToCountry[ "tg" ] = "tj";
-  iso2ToCountry[ "th" ] = "th";
-  iso2ToCountry[ "ti" ] = "er";
-  iso2ToCountry[ "tk" ] = "tm";
-  iso2ToCountry[ "tl" ] = "ph";
-  iso2ToCountry[ "tn" ] = "za";
-  iso2ToCountry[ "tr" ] = "tr";
-  iso2ToCountry[ "ts" ] = "za";
-  iso2ToCountry[ "tt" ] = "ru";
-  iso2ToCountry[ "ug" ] = "cn";
-  iso2ToCountry[ "uk" ] = "ua";
-  iso2ToCountry[ "ur" ] = "pk";
-  iso2ToCountry[ "uz" ] = "uz";
-  iso2ToCountry[ "ve" ] = "za";
-  iso2ToCountry[ "vi" ] = "vn";
-  iso2ToCountry[ "wa" ] = "be";
-  iso2ToCountry[ "wo" ] = "sn";
-  iso2ToCountry[ "xh" ] = "za";
-  iso2ToCountry[ "yi" ] = "us";
-  iso2ToCountry[ "yo" ] = "ng";
-  iso2ToCountry[ "zh" ] = "cn";
-  iso2ToCountry[ "zu" ] = "za";
+  addExtraCountry( "aa", "et" );
+  addExtraCountry( "af", "za" );
+  addExtraCountry( "am", "et" );
+  addExtraCountry( "an", "es" );
+  addExtraCountry( "ar", "ae" );
+  addExtraCountry( "as", "in" );
+  addExtraCountry( "az", "az" );
+  addExtraCountry( "be", "by" );
+  addExtraCountry( "bg", "bg" );
+  addExtraCountry( "bn", "bd" );
+  addExtraCountry( "bo", "cn" );
+  addExtraCountry( "br", "fr" );
+  addExtraCountry( "bs", "ba" );
+  addExtraCountry( "ca", "ad" );
+  addExtraCountry( "cs", "cz" );
+  addExtraCountry( "cy", "gb" );
+  addExtraCountry( "da", "dk" );
+  addExtraCountry( "de", "de" );
+  addExtraCountry( "dz", "bt" );
+  addExtraCountry( "el", "gr" );
+  addExtraCountry( "en", "gb" );
+  addExtraCountry( "es", "es" );
+  addExtraCountry( "et", "ee" );
+  addExtraCountry( "eu", "es" );
+  addExtraCountry( "fa", "ir" );
+  addExtraCountry( "fi", "fi" );
+  addExtraCountry( "fo", "fo" );
+  addExtraCountry( "fr", "fr" );
+  addExtraCountry( "fy", "nl" );
+  addExtraCountry( "ga", "ie" );
+  addExtraCountry( "gd", "gb" );
+  addExtraCountry( "gl", "es" );
+  addExtraCountry( "gu", "in" );
+  addExtraCountry( "gv", "gb" );
+  addExtraCountry( "ha", "ng" );
+  addExtraCountry( "he", "il" );
+  addExtraCountry( "hi", "in" );
+  addExtraCountry( "hr", "hr" );
+  addExtraCountry( "ht", "ht" );
+  addExtraCountry( "hu", "hu" );
+  addExtraCountry( "hy", "am" );
+  addExtraCountry( "id", "id" );
+  addExtraCountry( "ig", "ng" );
+  addExtraCountry( "ik", "ca" );
+  addExtraCountry( "is", "is" );
+  addExtraCountry( "it", "it" );
+  addExtraCountry( "iu", "ca" );
+  addExtraCountry( "iw", "il" );
+  addExtraCountry( "ja", "jp" );
+  addExtraCountry( "jb", "jb" );
+  addExtraCountry( "ka", "ge" );
+  addExtraCountry( "kk", "kz" );
+  addExtraCountry( "kl", "gl" );
+  addExtraCountry( "km", "kh" );
+  addExtraCountry( "kn", "in" );
+  addExtraCountry( "ko", "kr" );
+  addExtraCountry( "ku", "tr" );
+  addExtraCountry( "kw", "gb" );
+  addExtraCountry( "ky", "kg" );
+  addExtraCountry( "lg", "ug" );
+  addExtraCountry( "li", "be" );
+  addExtraCountry( "lo", "la" );
+  addExtraCountry( "lt", "lt" );
+  addExtraCountry( "lv", "lv" );
+  addExtraCountry( "mg", "mg" );
+  addExtraCountry( "mi", "nz" );
+  addExtraCountry( "mk", "mk" );
+  addExtraCountry( "ml", "in" );
+  addExtraCountry( "mn", "mn" );
+  addExtraCountry( "mr", "in" );
+  addExtraCountry( "ms", "my" );
+  addExtraCountry( "mt", "mt" );
+  addExtraCountry( "nb", "no" );
+  addExtraCountry( "ne", "np" );
+  addExtraCountry( "nl", "nl" );
+  addExtraCountry( "nn", "no" );
+  addExtraCountry( "nr", "za" );
+  addExtraCountry( "oc", "fr" );
+  addExtraCountry( "om", "et" );
+  addExtraCountry( "or", "in" );
+  addExtraCountry( "pa", "pk" );
+  addExtraCountry( "pl", "pl" );
+  addExtraCountry( "pt", "pt" );
+  addExtraCountry( "ro", "ro" );
+  addExtraCountry( "ru", "ru" );
+  addExtraCountry( "rw", "rw" );
+  addExtraCountry( "sa", "in" );
+  addExtraCountry( "sc", "it" );
+  addExtraCountry( "sd", "in" );
+  addExtraCountry( "se", "no" );
+  addExtraCountry( "si", "lk" );
+  addExtraCountry( "sk", "sk" );
+  addExtraCountry( "sl", "si" );
+  addExtraCountry( "so", "so" );
+  addExtraCountry( "sq", "al" );
+  addExtraCountry( "sr", "rs" );
+  addExtraCountry( "ss", "za" );
+  addExtraCountry( "st", "za" );
+  addExtraCountry( "sv", "se" );
+  addExtraCountry( "ta", "in" );
+  addExtraCountry( "te", "in" );
+  addExtraCountry( "tg", "tj" );
+  addExtraCountry( "th", "th" );
+  addExtraCountry( "ti", "er" );
+  addExtraCountry( "tk", "tm" );
+  addExtraCountry( "tl", "ph" );
+  addExtraCountry( "tn", "za" );
+  addExtraCountry( "tr", "tr" );
+  addExtraCountry( "ts", "za" );
+  addExtraCountry( "tt", "ru" );
+  addExtraCountry( "ug", "cn" );
+  addExtraCountry( "uk", "ua" );
+  addExtraCountry( "ur", "pk" );
+  addExtraCountry( "uz", "uz" );
+  addExtraCountry( "ve", "za" );
+  addExtraCountry( "vi", "vn" );
+  addExtraCountry( "wa", "be" );
+  addExtraCountry( "wo", "sn" );
+  addExtraCountry( "xh", "za" );
+  addExtraCountry( "yi", "us" );
+  addExtraCountry( "yo", "ng" );
+  addExtraCountry( "zh", "cn" );
+  addExtraCountry( "zu", "za" );
 }
 
 }
@@ -409,12 +425,12 @@ QString englishNameForId( Id id )
     return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].englishName;
   }
   const auto i =
-    Db::instance().getIso2ToEnglish().find( LangCoder::intToCode2( id ) );
+    Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
 
-  if ( i == Db::instance().getIso2ToEnglish().end() )
+  if ( i == Db::instance().getIso2ToLangData().end() )
     return {};
 
-  return i->second;
+  return i->english;
 }
 
 QString localizedNameForId( Id id )
@@ -423,13 +439,12 @@ QString localizedNameForId( Id id )
   {
     return QCoreApplication::translate( "Language", BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].localizedName );
   }
-  const auto i =
-    Db::instance().getIso2ToLocalized().find( LangCoder::intToCode2( id ) );
+  const auto i = Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
 
-  if ( i == Db::instance().getIso2ToLocalized().end() )
+  if ( i == Db::instance().getIso2ToLangData().end() )
     return {};
 
-  return i->second;
+  return i->localized;
 }
 
 QString countryCodeForId( Id id )
@@ -439,12 +454,12 @@ QString countryCodeForId( Id id )
     return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].contryCode;
   }
   const auto i =
-    Db::instance().getIso2ToCountry().find( LangCoder::intToCode2( id ) );
+    Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
 
-  if ( i == Db::instance().getIso2ToCountry().end() )
+  if ( i == Db::instance().getIso2ToLangData().end() )
     return {};
 
-  return i->second;
+  return i->country;
 }
 
 QString localizedStringForId( Id langId )
@@ -458,8 +473,7 @@ QString localizedStringForId( Id langId )
 
   if ( iconId.isEmpty() )
     return name;
-  else
-    return QString( "<img src=\":/flags/%1.png\"> %2" ).arg( iconId, name );
+  return QString( "<img src=\":/flags/%1.png\"> %2" ).arg( iconId, name );
 }
 
 }
