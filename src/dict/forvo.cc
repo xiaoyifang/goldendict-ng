@@ -64,9 +64,7 @@ public:
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool ) override
-    ;
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
 
 protected:
 

@@ -46,11 +46,17 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   queuedRequests.push_back( sr );
 }
 
+void HeadwordListModel::appendWord( const QString & word )
+{
+  hashedWords.insert( word );
+  words.append( word );
+}
+
 void HeadwordListModel::addMatches( QStringList matches)
 {
   QStringList filtered;
   for ( auto const & w : matches ) {
-    if ( !words.contains( w ) ) {
+    if ( !containWord( w ) ) {
       filtered << w;
     }
   }
@@ -60,7 +66,7 @@ void HeadwordListModel::addMatches( QStringList matches)
 
   beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
   for ( const auto & word : filtered ) {
-    words.append( word );
+    appendWord( word );
   }
   endInsertRows();
 }
@@ -95,7 +101,7 @@ void HeadwordListModel::requestFinished()
     QStringList filtered;
     for( auto & w : filterWords )
     {
-      if( !words.contains( w ) )
+      if( !containWord( w ) )
       {
         filtered << w;
       }
@@ -105,7 +111,7 @@ void HeadwordListModel::requestFinished()
 
     beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
     for( const auto & word : filtered )
-      words.append( word );
+      appendWord( word );
     endInsertRows();
   }
 }
@@ -154,14 +160,14 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   QSet< QString > filtered;
   for( const auto & word : qAsConst( headword ) )
   {
-    if( !words.contains( word ) )
+    if( !containWord( word ) )
       filtered.insert( word );
   }
 
   beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
   for( const auto & word : filtered )
   {
-    words.append( word );
+    appendWord( word );
   }
   endInsertRows();
 
@@ -173,6 +179,11 @@ int HeadwordListModel::getCurrentIndex()
   return index;
 }
 
+bool HeadwordListModel::containWord( const QString & word )
+{
+  return hashedWords.contains( word );
+}
+
 QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
 {
   QSet< QString > headword;
@@ -182,7 +193,7 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
   QSet< QString > filtered;
   for( const auto & word : headword )
   {
-    if( !words.contains( word ) )
+    if( !containWord( word ) )
       filtered.insert( word );
   }
   return filtered;
