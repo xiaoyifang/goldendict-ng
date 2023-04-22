@@ -5,14 +5,14 @@ Popular dictionary formats are all supported.
 * MDict dictionaries (.mdx/.mdd)
 * StarDict dictionaries (.ifo/.dict./.idx/.syn)
 * DSL dictionaries (ABBYY Lingvo source files .dsl(.dz))
-* Xdxf dictionaries (.xdxf(.dz))
-* Zim dictionaries (.zim)
-* Babylon dictionaries (.BGL), complete with images and resources
+* [Xdxf](https://github.com/soshial/xdxf_makedict) dictionaries (.xdxf(.dz))
+* [Zim](https://wiki.openzim.org/wiki/OpenZIM) dictionaries (.zim)
+* [Slob (Aard 2)](https://aarddict.org/) dictionaries (.slob)
 * DictD dictionaries (.index/.dict(.dz))
-* Aard Dictionary dictionaries (.aar)
-* SDictionary dictionaries (.dct)
 * Epwing dictionaries
-* Slob dictionaries (.slob)
+* Babylon dictionaries (.BGL), complete with images and resources
+* Aard Dictionary dictionaries (.aar)
+* [SDictionary](http://swaj.net/sdict/index.html) dictionaries (.dct)
 * Babylon source files (.gls(.dz))
 * ABBYY Lingvo sound archives (.lsa/.dat)
 * Sound files in separate folders
@@ -20,7 +20,7 @@ Popular dictionary formats are all supported.
 
 ## Network Sources
 
-* Wikipedia and Wikitionary
+* Wikipedia and Wiktionary
 * [DICT](https://en.wikipedia.org/wiki/DICT) protocol
 * LinguaLibre/Forvo pronunciations
 * Any sites which allow set target word in address line

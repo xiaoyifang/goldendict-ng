@@ -42,6 +42,7 @@
 #include "dictinfo.hh"
 #include "historypanewidget.hh"
 #include "utils.hh"
+#include "help.hh"
 #include <qscreen.h>
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
@@ -628,7 +629,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.openConfigFolder, &QAction::triggered, this, &MainWindow::openConfigFolder );
   connect( ui.about, &QAction::triggered, this, &MainWindow::showAbout );
   connect( ui.showReference, &QAction::triggered, []() {
-    Utils::Help::openHelpWebpage();
+    Help::openHelpWebpage();
   } );
 
   connect( groupListInDock, &GroupComboBox::currentIndexChanged,
