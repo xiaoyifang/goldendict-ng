@@ -235,7 +235,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords &zipFileNames, quint32 *
             wstring decoded = Iconv::toWstring( "CP866", entry.fileName.constData(),
                                                 entry.fileName.size() );
 
-            if( nameInSystemLocale.compare( decoded ) != 0 )
+            if( nameInSystemLocale != decoded )
             {
               zipFileNames.addSingleWord( decoded,
                                           entry.localHeaderOffset );
@@ -258,7 +258,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords &zipFileNames, quint32 *
             wstring decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(),
                                                 entry.fileName.size() );
 
-            if( nameInSystemLocale.compare( decoded ) != 0 )
+            if( nameInSystemLocale != decoded )
             {
               zipFileNames.addSingleWord( decoded,
                                           entry.localHeaderOffset );

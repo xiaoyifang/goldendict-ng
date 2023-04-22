@@ -114,7 +114,7 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData,
   /// behaviour in that regard.
 
   if ( !dataSize )
-    return gd::wstring();
+    return {};
 
   Iconv ic( Utf8, fromEncoding );
 
@@ -129,7 +129,7 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData,
   // Similar to toWstring
 
   if ( !dataSize )
-    return std::string();
+    return {};
 
   Iconv ic( Utf8, fromEncoding );
 
