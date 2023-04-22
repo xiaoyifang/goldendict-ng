@@ -20,6 +20,7 @@ public:
   QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const override;
   QString getRow( int row );
   void setFilter( QRegularExpression );
+  void addMatches( QStringList matches );
   int getCurrentIndex();
   QSet< QString > getRemainRows( int & nodeIndex );
 signals:

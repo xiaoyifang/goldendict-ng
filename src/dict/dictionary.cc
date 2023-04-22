@@ -17,7 +17,6 @@
 #include <QFileInfo>
 #include <QCryptographicHash>
 #include <QDateTime>
-#include "fsencoding.hh"
 #include <QImage>
 #include <QPainter>
 #include <QRegularExpression>
