@@ -46,10 +46,29 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   queuedRequests.push_back( sr );
 }
 
+void HeadwordListModel::addMatches( QStringList matches)
+{
+  QStringList filtered;
+  for ( auto & w : matches ) {
+    if ( !words.contains( w ) ) {
+      filtered << w;
+    }
+  }
+
+  if ( filtered.isEmpty() )
+    return;
+
+  beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
+  for ( const auto & word : filtered ) {
+    words.append( word );
+  }
+  endInsertRows();
+}
+
 void HeadwordListModel::requestFinished()
 {
   // See how many new requests have finished, and if we have any new results
-  for( std::list< sptr< Dictionary::WordSearchRequest > >::iterator i = queuedRequests.begin();
+  for( auto i = queuedRequests.begin();
        i != queuedRequests.end(); )
   {
     if( ( *i )->isFinished() )
