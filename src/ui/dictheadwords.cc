@@ -360,9 +360,12 @@ void DictHeadwords::saveHeadersToFile()
   loadAllSortedWords( progress );
 
   // Write UTF-8 BOM
-  QByteArray line;
-  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-  file.write( line );
+  QTextStream out( &file );
+  out.setGenerateByteOrderMark( true );
+//qt 6 will use utf-8 default.
+#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
+  out.setCodec("UTF-8");
+#endif
 
   QStringList filtered;
 
@@ -379,15 +382,14 @@ void DictHeadwords::saveHeadersToFile()
     if( progress.wasCanceled() )
       break;
     progress.setValue( currentValue++ );
-    line = word.toUtf8();
+    QByteArray line = word.toUtf8();
 
+    //usually the headword should not contain \r \n;
     line.replace( '\n', ' ' );
     line.replace( '\r', ' ' );
 
-    line += "\n";
-
-    if( file.write( line ) != line.size() )
-      break;
+    //write one line
+    out << line << Qt::endl;
   }
 
   file.close();
