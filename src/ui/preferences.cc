@@ -3,7 +3,7 @@
 #include "langcoder.hh"
 #include "language.hh"
 #include "preferences.hh"
-#include "utils.hh"
+#include "help.hh"
 #include <QMessageBox>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
@@ -41,13 +41,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( &helpAction, &QAction::triggered, [ this ]() {
     const auto * currentTab = ui.tabWidget->currentWidget();
     if ( ui.tab_popup == currentTab ) {
-      Utils::Help::openHelpWebpage( "ui_popup" );
+      Help::openHelpWebpage( Help::section::ui_popup );
     }
     else if ( ui.tab_FTS == currentTab ) {
-      Utils::Help::openHelpWebpage( "ui_fulltextsearch" );
+      Help::openHelpWebpage( Help::section::ui_fulltextserch );
     }
     else {
-      Utils::Help::openHelpWebpage();
+      Help::openHelpWebpage();
     }
   } );
   connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );

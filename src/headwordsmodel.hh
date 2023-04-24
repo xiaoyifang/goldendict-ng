@@ -20,7 +20,10 @@ public:
   QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const override;
   QString getRow( int row );
   void setFilter( QRegularExpression );
-  int getCurrentIndex();
+  void appendWord( const QString & word );
+  void addMatches( QStringList matches );
+  int getCurrentIndex() const;
+  bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
 signals:
   void numberPopulated( int number );
@@ -36,6 +39,7 @@ protected:
 
 private:
   QStringList words;
+  QSet< QString > hashedWords;
   QStringList filterWords;
   bool filtering;
   QStringList fileSortedList;

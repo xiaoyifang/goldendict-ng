@@ -1,5 +1,5 @@
 site_name: GoldenDict-NG
-site_description: Goldendict is a dictionary 是一个可以用在 Windows Linux 和 mac 上的字典程序
+site_description: Goldendict-ng is a dictionary 是一个可以用在 Windows Linux 和 mac 上的字典程序
 
 theme:
   name: material
@@ -11,10 +11,9 @@ theme:
     # - navigation.tabs -> for tabs
 
 # top right repo widget
-repo_name: goldendict
-repo_url: https://github.com/xiaoyifang/goldendict
-edit_uri: edit/website/docs/
-
+repo_name: GoldenDict-ng
+repo_url: https://github.com/xiaoyifang/goldendict-ng
+edit_uri: edit/staged/website/docs/
 
 markdown_extensions:
   - attr_list # for image ![](/img/a.webp){ widget=300}
@@ -26,7 +25,9 @@ nav:
   - Getting started: index.md
   - Installation : install.md
   - Dictionary Formats: dictformats.md
-  - Manage Dictionaries: managedicts.md
+  - Manage Dictionaries: 
+      - Sources: manage_sources.md
+      - Groups: manage_groups.md
   - Interface:
       - Popup Window: ui_popup.md
       - Headwords Dialog: ui_headwords.md

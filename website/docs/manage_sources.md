@@ -1,12 +1,12 @@
 Dictionaries management dialog can be opened via menu `Edit` -> `Dictionaries`.
 
-To use local dictionaries, add them to `Sources` -> `Files`.
+To use local dictionaries, add them via `Sources` -> `Files`.
+
+To inspect or disable individual dictionaries, go `Edit` -> `Dictionaries` -> `Dictionaries`.
 
 If you have too many dictionaries, consider use `Groups` to manage them.
 
-## Sources Tab
-
-### Files
+## Files
 
 ![Dict File Tab](img/dict_file_tab.webp)
 
@@ -20,14 +20,13 @@ GoldenDict will scan these folders and add found dictionaries into dictionaries 
 "Rescan" button start forced scan of all folders in list.
 
 
-
-### Sound Dirs
+## Sound Dirs
 
 Similar to Files, you can either add a folder which contains sound files or a `.zip` archive which contains the sound files.
 
 Goldendict will search through the sound file names when querying words.
 
-### Morphology
+## Morphology
 
 Here you can turn on/off morphology dictionaries. 
 
@@ -35,7 +34,7 @@ You can specify a path that includes Hunspell format data files (.aff + .dic).
 
 GoldenDict scan this folder and create list of available dictionaries. To turn on dictionary just set mark in corresponding column.
 
-### Websites
+## Websites
 
 Here you can add any website which allow to set target word in url. To add such site you should set it url with target word template, name for dictionaries list and set mark in "Enabled" column. In the "Icon" column you can set custom icon for this site. If you add icon file name without path GoldenDict will search this file in configuration folder. "As link" column define method of article insertion into common page. If this option is set article will be inserted as link inside `<iframe>` tag (preferable mode). If articles are not loaded in this mode turn this option off, then articles will be inserted as html-code.
 
@@ -51,13 +50,13 @@ Target word can be inserted into url in next encodings::
 | %GDGBK%                | GBK and GB 18030                        |
 | %GDSHIFTJIS%           | Shift-JIS                               |
 
-### DICT servers
+## DICT servers
 
 Here you can add servers which uses DICT protocol. To add such server you should set its url, name for dictionaries list, server bases list, search strategies list and set mark in "Enabled" column. If bases list is empty GoldenDict will use all server bases. If search strategies list is empty GoldenDict will use "prefix" strategy (comparing the first part of the word).
 
 In the "Icon" column you can set custom icon for every server. If you add icon file name without path GoldenDict will search this file in configuration folder.
 
-### Programs
+## Programs
 
 Here you can add external applications. To add such application you should set command line for its launch, name for dictionaries list and application type. The `%GDWORD%` template in command line will be replaced by word from search line. If command line don't contains such template the word will be fed into standard input stream in 8-bit current locale encoding.
 
@@ -70,14 +69,6 @@ Here you can add external applications. To add such application you should set c
 
 In the "Icon" column you can set custom icon for every application. If you add icon file name without path GoldenDict will search this file in configuration folder.
 
-### Transliteration
+## Transliteration
 
 Here you can add transliteration algorithms. To add algorithm into dictionaries list just set mark beside it. When such dictionary added into current dictionaries group GoldenDict will search word in the input line as well as result of its handling by corresponding transliteration algorithm.
-
-## Dictionaries Tab
-
-Here you can inspect available dictionaries and disable some of them.
-
-## Groups Tab
-
-Here you can create and edit dictionary groups. To add dictionary into group just drag it into groups window, to remove it drag it back to dictionaries list. Also you can press "Auto groups button" to automatically create groups for all presented in dictionaries list language directions. Via context menu of such automatically created groups you can execute additional dictionaries grouping by source or target language and combine dictionaries in more large groups.

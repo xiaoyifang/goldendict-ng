@@ -4,7 +4,7 @@
 #include "editdictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "dictinfo.hh"
-#include "utils.hh"
+#include "help.hh"
 #include <QMessageBox>
 
 using std::vector;
@@ -60,8 +60,13 @@ EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, []() {
-    Utils::Help::openHelpWebpage( "managedicts" );
+  connect( &helpAction, &QAction::triggered, [ this ]() {
+    if ( ui.tabs->currentWidget() == this->groups.get() ) {
+      Help::openHelpWebpage( Help::section::manage_groups );
+    }
+    else {
+      Help::openHelpWebpage( Help::section::manage_sources );
+    }
   } );
   connect( ui.buttons, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 

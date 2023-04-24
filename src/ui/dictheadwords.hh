@@ -8,6 +8,7 @@
 #include <QStringListModel>
 #include <QSortFilterProxyModel>
 #include <QAction>
+#include <qprogressdialog.h>
 
 #include "config.hh"
 #include "ui_dictheadwords.h"
@@ -42,15 +43,19 @@ protected:
 
 private:
   Ui::DictHeadwords ui;
+  QStringList sortedWords;
+  QMutex mutex;
 private slots:
   void savePos();
   void filterChangedInternal();
+  QRegularExpression getFilterRegex() const;
   void filterChanged();
   void exportButtonClicked();
   void okButtonClicked();
   void itemClicked( const QModelIndex & index );
   void autoApplyStateChanged( int state );
   void showHeadwordsNumber();
+  void loadAllSortedWords( QProgressDialog & progress );
   virtual void reject();
 
 signals:

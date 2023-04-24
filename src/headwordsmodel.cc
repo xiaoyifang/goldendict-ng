@@ -2,7 +2,7 @@
 #include "wstring_qt.hh"
 
 HeadwordListModel::HeadwordListModel( QObject * parent ) :
-  QAbstractListModel( parent ), filtering( false ), totalSize(0), index( 0 ),ptr( 0 )
+  QAbstractListModel( parent ), filtering( false ), totalSize(0), index( 0 ),ptr( nullptr )
 {
 }
 
@@ -46,10 +46,35 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   queuedRequests.push_back( sr );
 }
 
+void HeadwordListModel::appendWord( const QString & word )
+{
+  hashedWords.insert( word );
+  words.append( word );
+}
+
+void HeadwordListModel::addMatches( QStringList matches)
+{
+  QStringList filtered;
+  for ( auto const & w : matches ) {
+    if ( !containWord( w ) ) {
+      filtered << w;
+    }
+  }
+
+  if ( filtered.isEmpty() )
+    return;
+
+  beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
+  for ( const auto & word : filtered ) {
+    appendWord( word );
+  }
+  endInsertRows();
+}
+
 void HeadwordListModel::requestFinished()
 {
   // See how many new requests have finished, and if we have any new results
-  for( std::list< sptr< Dictionary::WordSearchRequest > >::iterator i = queuedRequests.begin();
+  for( auto i = queuedRequests.begin();
        i != queuedRequests.end(); )
   {
     if( ( *i )->isFinished() )
@@ -76,7 +101,7 @@ void HeadwordListModel::requestFinished()
     QStringList filtered;
     for( auto & w : filterWords )
     {
-      if( !words.contains( w ) )
+      if( !containWord( w ) )
       {
         filtered << w;
       }
@@ -86,7 +111,7 @@ void HeadwordListModel::requestFinished()
 
     beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
     for( const auto & word : filtered )
-      words.append( word );
+      appendWord( word );
     endInsertRows();
   }
 }
@@ -99,16 +124,16 @@ int HeadwordListModel::wordCount() const
 QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
 {
   if( !index.isValid() )
-    return QVariant();
+    return {};
 
   if( index.row() >= totalSize || index.row() < 0 || index.row() >= words.size() )
-    return QVariant();
+    return {};
 
   if( role == Qt::DisplayRole )
   {
     return words.at( index.row() );
   }
-  return QVariant();
+  return {};
 }
 
 bool HeadwordListModel::canFetchMore( const QModelIndex & parent ) const
@@ -135,23 +160,28 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   QSet< QString > filtered;
   for( const auto & word : qAsConst( headword ) )
   {
-    if( !words.contains( word ) )
+    if( !containWord( word ) )
       filtered.insert( word );
   }
 
   beginInsertRows( QModelIndex(), words.size(), words.size() + filtered.count() - 1 );
   for( const auto & word : filtered )
   {
-    words.append( word );
+    appendWord( word );
   }
   endInsertRows();
 
   emit numberPopulated( words.size() );
 }
 
-int HeadwordListModel::getCurrentIndex()
+int HeadwordListModel::getCurrentIndex() const
 {
   return index;
+}
+
+bool HeadwordListModel::containWord( const QString & word )
+{
+  return hashedWords.contains( word );
 }
 
 QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
@@ -163,7 +193,7 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
   QSet< QString > filtered;
   for( const auto & word : headword )
   {
-    if( !words.contains( word ) )
+    if( !containWord( word ) )
       filtered.insert( word );
   }
   return filtered;

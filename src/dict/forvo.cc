@@ -9,12 +9,8 @@
 #include <list>
 #include "audiolink.hh"
 #include "htmlescape.hh"
-#include "country.hh"
-#include "language.hh"
-#include "langcoder.hh"
 #include "utf8.hh"
 #include "gddebug.hh"
-#include "utils.hh"
 
 namespace Forvo {
 
@@ -64,9 +60,7 @@ public:
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
-                                          wstring const &, bool ) override
-    ;
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
 
 protected:
 
@@ -278,8 +272,6 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
                                + " "
                                + tr( "from" ).toUtf8().data()
                                + " "
-                               + "<img src='qrc:///flags/" + Country::englishNametoIso2( country ).toUtf8().data()
-                               + ".png'/> "
                                + Html::escape( country.toUtf8().data() )
                                + ")</span>"
                                + votes

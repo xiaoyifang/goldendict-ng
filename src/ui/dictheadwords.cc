@@ -15,21 +15,21 @@
 
 #include <QRegularExpression>
 #include "wildcard.hh"
-#include "utils.hh"
+#include "help.hh"
 #include <QMessageBox>
+#include <QMutexLocker>
 
 #define AUTO_APPLY_LIMIT 150000
 
-DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
-                              Dictionary::Class * dict_ ) :
-  QDialog(parent)
-, cfg( cfg_ )
-, dict( dict_ )
-, helpAction( this )
+DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary::Class * dict_ ):
+  QDialog( parent ),
+  cfg( cfg_ ),
+  dict( dict_ ),
+  helpAction( this )
 {
   ui.setupUi( this );
 
-  bool fromMainWindow = parent->objectName() == "MainWindow";
+  const bool fromMainWindow = parent->objectName() == "MainWindow";
 
   if( fromMainWindow )
     setAttribute( Qt::WA_DeleteOnClose, false );
@@ -87,7 +87,7 @@ DictHeadwords::DictHeadwords( QWidget *parent, Config::Class & cfg_,
 
     connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
     connect( &helpAction, &QAction::triggered, []() {
-      Utils::Help::openHelpWebpage( QStringLiteral( "ui_headwords" ) );
+      Help::openHelpWebpage( Help::section::ui_headwords );
     } );
 
     addAction( &helpAction );
@@ -126,7 +126,7 @@ void DictHeadwords::setup( Dictionary::Class *dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  auto size = dict->getWordCount();
+  const auto size = dict->getWordCount();
   model->setDict(dict);
   proxy->sort( 0 );
   filterChanged();
@@ -180,13 +180,13 @@ bool DictHeadwords::eventFilter( QObject * obj, QEvent * ev )
 void DictHeadwords::okButtonClicked()
 {
   savePos();
-  closeDialog();
+  emit closeDialog();
 }
 
 void DictHeadwords::reject()
 {
   savePos();
-  closeDialog();
+  emit closeDialog();
 }
 
 void DictHeadwords::exportButtonClicked()
@@ -201,11 +201,11 @@ void DictHeadwords::filterChangedInternal()
     QTimer::singleShot( 100, this, &DictHeadwords::filterChanged );
 }
 
-void DictHeadwords::filterChanged()
+QRegularExpression DictHeadwords::getFilterRegex(  ) const
 {
-  QRegExp::PatternSyntax syntax =
-          QRegExp::PatternSyntax( ui.searchModeCombo->itemData(
-                  ui.searchModeCombo->currentIndex()).toInt() );
+  const QRegExp::PatternSyntax syntax =
+    static_cast< QRegExp::PatternSyntax >(ui.searchModeCombo->itemData(
+      ui.searchModeCombo->currentIndex() ).toInt());
 
   QRegularExpression::PatternOptions options = QRegularExpression::UseUnicodePropertiesOption;
   if( !ui.matchCase->isChecked() )
@@ -214,28 +214,44 @@ void DictHeadwords::filterChanged()
   QString pattern;
   switch( syntax )
   {
-  case QRegExp::FixedString:
-    pattern = QRegularExpression::escape( ui.filterLine->text() );
-    break;
-  case QRegExp::WildcardUnix:
-    pattern = wildcardsToRegexp( ui.filterLine->text() );
-    break;
-  default:
-    pattern = ui.filterLine->text();
-    break;
+    case QRegExp::FixedString:
+      pattern = QRegularExpression::escape( ui.filterLine->text() );
+      break;
+    case QRegExp::WildcardUnix:
+      pattern = wildcardsToRegexp( ui.filterLine->text() );
+      break;
+    default:
+      pattern = ui.filterLine->text();
+      break;
   }
 
-  QRegularExpression regExp( pattern, options );
+  QRegularExpression regExp = QRegularExpression( pattern, options );
 
   if( !regExp.isValid() )
   {
     gdWarning( "Invalid regexp pattern: %s\n", pattern.toUtf8().data() );
-    regExp.setPattern( QString::fromLatin1( "\1" ) );
   }
+  return regExp;
+}
+
+void DictHeadwords::filterChanged()
+{
+  const QRegularExpression regExp = getFilterRegex();
 
   QApplication::setOverrideCursor( Qt::WaitCursor );
 
-  model->setFilter(regExp);
+  if ( sortedWords.isEmpty() && regExp.isValid() && !regExp.pattern().isEmpty() ) {
+    const int headwordsNumber = model->totalCount();
+
+    QProgressDialog progress( tr( "Loading headwords..." ), tr( "Cancel" ), 0, headwordsNumber, this );
+    progress.setWindowModality( Qt::WindowModal );
+    loadAllSortedWords( progress );
+    progress.close();
+  }
+
+  const auto filtered = sortedWords.filter( regExp );
+
+  model->addMatches( filtered );
 
   proxy->setFilterRegularExpression( regExp );
   proxy->sort( 0 );
@@ -264,6 +280,47 @@ void DictHeadwords::showHeadwordsNumber()
 {
   ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered: %2" )
                              .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
+}
+
+// TODO , the ui and the code mixed together , this is not the right way to do this. need future refactor
+void  DictHeadwords::loadAllSortedWords( QProgressDialog & progress )
+{
+  const int headwordsNumber = model->totalCount();
+
+  QMutexLocker _( &mutex );
+  if ( sortedWords.isEmpty() ) {
+    QSet< QString > allHeadwords;
+
+    int totalCount = 0;
+    for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
+      if ( progress.wasCanceled() )
+        break;
+      progress.setValue( totalCount++ );
+
+      QVariant value = model->getRow( i );
+      if ( !value.canConvert< QString >() )
+        continue;
+
+      allHeadwords.insert( value.toString() );
+    }
+
+    // continue to write the remaining headword
+    int nodeIndex  = model->getCurrentIndex();
+    auto headwords = model->getRemainRows( nodeIndex );
+    while ( !headwords.isEmpty() ) {
+      if ( progress.wasCanceled() )
+        break;
+      allHeadwords.unite( headwords );
+
+      totalCount += headwords.size();
+      progress.setValue( totalCount );
+
+      headwords = model->getRemainRows( nodeIndex );
+    }
+
+    sortedWords = allHeadwords.values();
+    sortedWords.sort();
+  }
 }
 
 void DictHeadwords::saveHeadersToFile()
@@ -295,72 +352,49 @@ void DictHeadwords::saveHeadersToFile()
   cfg.headwordsDialog.headwordsExportPath = QDir::toNativeSeparators(
                                               QFileInfo( fileName ).absoluteDir().absolutePath() );
 
-  QSet< QString > allHeadwords;
-  int headwordsNumber = model->totalCount();
+  const int headwordsNumber = model->totalCount();
 
-  //headwordsNumber*2  ,  read + write
   QProgressDialog progress( tr( "Export headwords..." ), tr( "Cancel" ), 0, headwordsNumber*2, this );
   progress.setWindowModality( Qt::WindowModal );
 
-  int totalCount=0;
-  for( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i )
-  {
-    if( progress.wasCanceled() )
-      break;
-    progress.setValue( totalCount++ );
-
-    QVariant value = model->getRow( i );
-    if( !value.canConvert< QString >() )
-      continue;
-
-    allHeadwords.insert( value.toString() );
-  }
-
-  // continue to write the remaining headword
-  int nodeIndex  = model->getCurrentIndex();
-  auto headwords = model->getRemainRows( nodeIndex );
-  while( !headwords.isEmpty() )
-  {
-    if( progress.wasCanceled() )
-      break;
-    allHeadwords.unite(headwords);
-
-    totalCount += headwords.size();
-    progress.setValue( totalCount );
-
-    headwords = model->getRemainRows( nodeIndex );
-  }
-
-  qDebug()<<model->getCurrentIndex();
+  loadAllSortedWords( progress );
 
   // Write UTF-8 BOM
-  QByteArray line;
-  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-  file.write( line );
+  QTextStream out( &file );
+  out.setGenerateByteOrderMark( true );
+//qt 6 will use utf-8 default.
+#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
+  out.setCodec("UTF-8");
+#endif
 
-  QList< QString > sortedWords = allHeadwords.values();
-  sortedWords.sort();
+  QStringList filtered;
 
+  if ( const QRegularExpression regExp = getFilterRegex(); regExp.isValid() && !regExp.pattern().isEmpty() ) {
+    filtered = sortedWords.filter( regExp );
+  }
+  else{
+    filtered = sortedWords;
+  }
+  auto currentValue = progress.value();
   // Write headwords
-  for( auto const & word : sortedWords )
+  for ( auto const & word : filtered )
   {
     if( progress.wasCanceled() )
       break;
-    progress.setValue( totalCount++ );
+    progress.setValue( currentValue++ );
+    QByteArray line = word.toUtf8();
 
-    line = word.toUtf8();
-
+    //usually the headword should not contain \r \n;
     line.replace( '\n', ' ' );
     line.replace( '\r', ' ' );
 
-    line += "\n";
-
-    if( file.write( line ) != line.size() )
-      break;
+    //write one line
+    out << line << Qt::endl;
   }
 
   file.close();
 
+  progress.setValue( progress.maximum() );
   if( progress.wasCanceled() )
   {
     QMessageBox::warning( this, "GoldenDict", tr( "Export process is interrupted" ) );
@@ -370,7 +404,7 @@ void DictHeadwords::saveHeadersToFile()
   {
     //completed.
     progress.setValue(headwordsNumber*2);
-    progress.hide();
+    progress.close();
     QMessageBox::information( this, "GoldenDict", tr( "Export finished" ) );
   }
 }

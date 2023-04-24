@@ -293,6 +293,7 @@ HEADERS += \
     src/common/gddebug.hh \
     src/common/globalbroadcaster.hh \
     src/common/globalregex.hh \
+    src/common/help.hh \
     src/common/htmlescape.hh \
     src/common/iconv.hh \
     src/common/inc_case_folding.hh \
@@ -305,7 +306,6 @@ HEADERS += \
     src/common/wstring.hh \
     src/common/wstring_qt.hh \
     src/config.hh \
-    src/country.hh \
     src/decompress.hh \
     src/delegate.hh \
     src/dict/aard.hh \
@@ -419,6 +419,7 @@ SOURCES += \
     src/common/gddebug.cc \
     src/common/globalbroadcaster.cc \
     src/common/globalregex.cc \
+    src/common/help.cc \
     src/common/htmlescape.cc \
     src/common/iconv.cc \
     src/common/mutex.cc \
@@ -427,7 +428,6 @@ SOURCES += \
     src/common/utils.cc \
     src/common/wstring_qt.cc \
     src/config.cc \
-    src/country.cc \
     src/decompress.cc \
     src/delegate.cc \
     src/dict/aard.cc \
