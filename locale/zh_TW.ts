@@ -344,7 +344,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1753"/>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>開啟連結(&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1860"/>
@@ -782,7 +782,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="375"/>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>匯出完成</translation>
     </message>
   </context>
   <context>
@@ -1302,12 +1302,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
       <source>Del</source>
-      <translation type="unfinished">Del</translation>
+      <translation>Del</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="70"/>
       <source>Ins</source>
-      <translation type="unfinished">Ins</translation>
+      <translation>Ins</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="133"/>
@@ -4001,7 +4001,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="110"/>
       <source>Article Display style:</source>
-      <translation type="unfinished">Article Display style:</translation>
+      <translation>文章顯示樣式：</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="145"/>
@@ -4011,7 +4011,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="148"/>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>暗黑模式</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="155"/>
@@ -4046,7 +4046,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="450"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>僅在按住下列特定的按鍵時螢幕取詞才會啟動：</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="635"/>
@@ -4076,22 +4076,22 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1017"/>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1061"/>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>牌組：</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1071"/>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>模型：</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1098"/>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>單字</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1105"/>
@@ -4101,7 +4101,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1112"/>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>文字</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1119"/>
@@ -4111,7 +4111,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1126"/>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>語句</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1133"/>
@@ -4147,7 +4147,7 @@ If set to 0 the network disk cache will be disabled.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1182"/>
       <source> MiB</source>
-      <translation type="unfinished"> MiB</translation>
+      <translation> MB</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1195"/>
