@@ -69,3 +69,9 @@ QRegularExpression Zim::linkSpecialChar("[\\.\\/]");
 
 
 QRegularExpression Epwing::refWord(R"([r|p](\d+)at(\d+))", QRegularExpression::CaseInsensitiveOption);
+
+
+bool Html::containHtmlEntity( std::string const & text )
+{
+  return QString::fromStdString( text ).contains( htmlEntity );
+}
