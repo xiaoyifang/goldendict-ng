@@ -2477,7 +2477,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
        || ev->type() == QEvent::KeyPress )
   {
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
-    qDebug()<<obj<<ke->type()<<ke->text();
 
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
@@ -3465,6 +3464,8 @@ void MainWindow::on_saveArticle_triggered()
         {
           file.write( html.toUtf8() );
         }
+
+        mainStatusBar->showMessage( tr( "Save article complete" ), 5000 );
       }
     } );
 }
