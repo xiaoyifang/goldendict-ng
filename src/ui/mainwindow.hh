@@ -259,7 +259,7 @@ private:
   void setTranslateBoxTextAndClearSuffix( QString const & text, WildcardPolicy wildcardPolicy,
                                           TranslateBoxPopup popupAction );
   void changeWebEngineViewFont();
-  
+  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
 private slots:
 
   void hotKeyActivated( int );
@@ -297,8 +297,6 @@ private slots:
   void addCurrentTabToFavorites();
 
   void addAllTabsToFavorites();
-
-private slots:
 
   // Executed in response to a user click on an 'add tab' tool button
   void addNewTab();
@@ -452,11 +450,9 @@ private slots:
   /// Add word to history even if history is disabled in options
   void forceAddWordToHistory( const QString & word);
 
-  void addWordToFavorites( QString const & word, unsigned groupId );
+  void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
   void addBookmarkToFavorite( QString const & text );
-
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
 
   void sendWordToInputLine( QString const & word );
 

@@ -15,6 +15,7 @@
 #include "favoritespanewidget.hh"
 #include "gddebug.hh"
 #include "atomic_rename.hh"
+#include "globalbroadcaster.hh"
 
 /************************************************** FavoritesPaneWidget *********************************************/
 
@@ -248,10 +249,13 @@ void FavoritesPaneWidget::addFolder()
 void FavoritesPaneWidget::addHeadword( QString const & path, QString const & headword )
 {
   m_favoritesModel->addNewHeadword( path, headword );
+  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].insert( headword );
 }
 
 bool FavoritesPaneWidget::removeHeadword( QString const & path, QString const & headword )
 {
+  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].remove( headword );
+
   return m_favoritesModel->removeHeadword( path, headword );
 }
 
@@ -713,6 +717,8 @@ void FavoritesModel::addFolder( TreeItem *parent, QDomNode &node )
     {
       QString word = el.text();
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
+
+      GlobalBroadcaster::instance()->folderFavoritesMap[ parent->data().toString() ].insert( word );
     }
   }
   dirty = true;

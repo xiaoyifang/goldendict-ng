@@ -760,7 +760,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
   connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
   connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
-  connect( scanPopup, &ScanPopup::isWordPresentedInFavorites, this, &MainWindow::isWordPresentedInFavorites );
 
 #ifdef Q_OS_MAC
   macClipboard = new gd_clipboard(this);
@@ -1499,8 +1498,11 @@ void MainWindow::updateGroupList()
     groupInstances.push_back( g );
   }
 
-  for( int x  = 0; x < cfg.groups.size(); ++x )
+  GlobalBroadcaster::instance()->groupFolderMap.clear();
+  for ( int x = 0; x < cfg.groups.size(); ++x ) {
     groupInstances.push_back( Instances::Group( cfg.groups[ x ], dictionaries, cfg.inactiveDictionaries ) );
+    GlobalBroadcaster::instance()->groupFolderMap.insert( cfg.groups[ x ].id, cfg.groups[ x ].favoritesFolder );
+  }
 
   // Update names for dictionaries that are present, so that they could be
   // found in case they got moved.
@@ -4505,14 +4507,17 @@ void MainWindow::handleAddToFavoritesButton()
   }
 }
 
-void MainWindow::addWordToFavorites( QString const & word, unsigned groupId )
+void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, bool exist )
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( groupId );
   if( igrp )
     folder = igrp->favoritesFolder;
 
-  ui.favoritesPaneWidget->addHeadword( folder, word );
+  if ( !exist )
+    ui.favoritesPaneWidget->addHeadword( folder, word );
+  else
+    ui.favoritesPaneWidget->removeHeadword( folder, word );
 }
 
 void MainWindow::addBookmarkToFavorite( QString const & text )
