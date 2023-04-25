@@ -2415,10 +2415,4 @@ QString getCacheDir() noexcept
                              : QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
   #endif
 }
-
-QString getNetworkCacheDir() noexcept
-{
-  return getCacheDir() + "/network";
-}
-
 }
