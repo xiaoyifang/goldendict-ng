@@ -468,7 +468,7 @@ ArticleRequest::ArticleRequest( Config::InputPhrase const & phrase,
   // Accumulate main forms
   for( unsigned x = 0; x < activeDicts.size(); ++x )
   {
-    sptr< Dictionary::WordSearchRequest > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::toWString( word ) );
+    sptr< Dictionary::WordSearchRequest > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
 
     connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
@@ -514,7 +514,7 @@ void ArticleRequest::altSearchFinished()
 #ifdef QT_DEBUG
     for( unsigned x = 0; x < altsVector.size(); ++x )
     {
-      qDebug() << "Alt:" << gd::toQString( altsVector[ x ] );
+      qDebug() << "Alt:" << QString::fromStdU32String( altsVector[ x ] );
     }
 #endif
 
@@ -529,7 +529,7 @@ void ArticleRequest::altSearchFinished()
       {
         sptr< Dictionary::DataRequest > r =
           activeDicts[ x ]->getArticle( wordStd, altsVector,
-                                        gd::toWString( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
+                                        gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
                                         ignoreDiacritics );
 
         connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
@@ -1012,7 +1012,7 @@ QString ArticleRequest::makeSplittedWordCompound()
 
       Folding::normalizeWhitespace( ws );
 
-      result.append( gd::toQString( ws ) );
+      result.append( QString::fromStdU32String( ws ) );
     }
   }
 

@@ -850,9 +850,7 @@ void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     if( !headwords.empty() )
       headword = QString::fromUtf8( headwords.front().data(), headwords.front().size() );
 
-    wstring wstr = Utf8::decode( articleStr );
-
-    text = Html::unescape( gd::toQString( wstr ) );
+    text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch( std::exception &ex )
   {
@@ -1414,7 +1412,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           initializing.indexingDictionary( Utf8::encode( scanner.getDictionaryName() ) );
 
           gdDebug( "Gls: Building the index for dictionary: %s\n",
-                   gd::toQString( scanner.getDictionaryName() ).toUtf8().data() );
+                   QString::fromStdU32String( scanner.getDictionaryName() ).toUtf8().data() );
 
           File::Class idx( indexFile, "wb" );
 

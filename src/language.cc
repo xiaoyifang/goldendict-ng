@@ -410,7 +410,7 @@ BabylonLang getBabylonLangByIndex( int index )
 
 quint32 findBlgLangIDByEnglishName( gd::wstring const & lang )
 {
-  const QString enName = gd::toQString( lang );
+  QString enName = QString::fromStdU32String( lang );
   for ( const auto & idx : BabylonDb ) {
     if ( QString::compare( idx.englishName, enName, Qt::CaseInsensitive ) == 0 )
       return idx.id;

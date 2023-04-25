@@ -683,7 +683,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
       articleText = articleText.normalized( QString::NormalizationForm_C );
 
       if( ignoreDiacritics )
-        articleText = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
+        articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
 
       if( articleText.contains( searchRegularExpression ) )
       {
@@ -726,7 +726,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
       articleText = articleText.normalized( QString::NormalizationForm_C );
 
       if( ignoreDiacritics )
-        articleText = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
+        articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
 
       if( ignoreWordsOrder )
       {
@@ -864,7 +864,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
     }
 
     vector< BtreeIndexing::WordArticleLink > links =
-      ftsIndex.findArticles( gd::toWString( word ), ignoreDiacritics );
+      ftsIndex.findArticles( gd::removeTrailingZero( word ), ignoreDiacritics );
     for( unsigned x = 0; x < links.size(); x++ )
     {
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
@@ -986,7 +986,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
     auto fn_wordLink = [ & ](const QString & word )
     {
       QSet< uint32_t > tmp;
-      vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::toWString( word ) );
+      vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
       for( unsigned x = 0; x < links.size(); x++ )
       {
         if( Utils::AtomicInt::loadAcquire( isCancelled ) )
@@ -1106,7 +1106,7 @@ void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
     QString word = QString::fromUtf8( links[ x ].word.data(), links[ x ].word.size() );
 
     if( ignoreDiacritics )
-      word = gd::toQString( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
+      word = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
 
     for( int i = 0; i < indexWords.size(); i++ )
     {

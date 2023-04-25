@@ -331,7 +331,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
   {
     urlString = urlTemplate;
 
-    QString inputWord = gd::toQString( str );
+    QString inputWord = QString::fromStdU32String( str );
 
     urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
 

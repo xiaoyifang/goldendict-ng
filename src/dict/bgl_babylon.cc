@@ -763,10 +763,9 @@ void Babylon::convertToUtf8( std::string &s, unsigned int type )
 
   size_t inbufbytes = s.size();
 
-  char *inbuf;
-  inbuf = (char *)s.data();
+  char* inbuf = (char*)s.data();
   const void* test = inbuf;
 
-  QString convStr = conv_.convert(test,inbufbytes);
-  s = gd::toStdString(convStr);
+  const QString convStr = conv_.convert(test,inbufbytes);
+  s               = convStr.toStdString();
 }

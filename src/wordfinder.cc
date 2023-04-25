@@ -495,7 +495,7 @@ void WordFinder::updateResults()
     //GD_DPRINTF( "%d: %ls\n", i->second, i->first.c_str() );
 
     if ( searchResults.size() < maxSearchResults )
-      searchResults.push_back( std::pair< QString, bool >( gd::toQString( i->word ), i->wasSuggested ) );
+      searchResults.push_back( std::pair< QString, bool >( QString::fromStdU32String( i->word ), i->wasSuggested ) );
     else
       break;
   }

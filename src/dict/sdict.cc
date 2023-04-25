@@ -454,8 +454,7 @@ void SdictDictionary::getArticleText( uint32_t articleAddress, QString & headwor
 
     try
     {
-      wstring wstr = Utf8::decode( articleStr );
-      text = Html::unescape( gd::toQString( wstr ) );
+      text = Html::unescape( QString::fromStdString( articleStr ) );
     }
     catch( std::exception & )
     {

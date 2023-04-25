@@ -41,7 +41,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   }
   filtering = true;
   filterWords.clear();
-  auto sr = _dict->prefixMatch( gd::toWString( reg.pattern() ), 500 );
+  auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), 500 );
   connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
   queuedRequests.push_back( sr );
 }
@@ -88,7 +88,7 @@ void HeadwordListModel::requestFinished()
       {
         auto allmatches = ( *i )->getAllMatches();
         for( auto & match : allmatches )
-          filterWords.append( gd::toQString( match.word ) );
+          filterWords.append( QString::fromStdU32String( match.word ) );
       }
       queuedRequests.erase( i++ );
     }

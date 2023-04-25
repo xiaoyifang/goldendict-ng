@@ -146,7 +146,7 @@ bool isAtSignFirst( wstring const & str )
 {
   // Test if '@' is first in string except spaces and dsl tags
   QRegularExpression reg( R"([ \t]*(?:\[[^\]]+\][ \t]*)*@)", QRegularExpression::PatternOption::CaseInsensitiveOption);
-  return gd::toQString( str ).indexOf (reg) == 0;
+  return QString::fromStdU32String( str ).indexOf (reg) == 0;
 }
 
 /////////////// ArticleDom
@@ -357,11 +357,11 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
         {
           if( !dictionaryName.empty() )
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
-                       gd::toQString( name ).toUtf8().data(), gd::toQString( attrs ).toUtf8().data(),
-                       dictionaryName.c_str(), gd::toQString( headword ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data(),
+                       dictionaryName.c_str(), QString::fromStdU32String( headword ).toUtf8().data() );
           else
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
-                       gd::toQString( name ).toUtf8().data(), gd::toQString( attrs ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data() );
 
           throw eot();
         }
@@ -659,7 +659,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
     list< Node * >::iterator it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
     if( it == stack.end() )
       return; // no unclosed tags that must be closed => nothing to warn about
-    QByteArray const firstTagName = gd::toQString( ( *it )->tagName ).toUtf8();
+    QByteArray const firstTagName = QString::fromStdU32String( ( *it )->tagName ).toUtf8();
     ++it;
     unsigned const unclosedTagCount = 1 + std::count_if( it, stack.end(), MustTagBeClosed() );
 
@@ -671,7 +671,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
     else
     {
       gdWarning( "Warning: %u tag(s) were unclosed in \"%s\", article \"%s\", first tag name \"%s\".\n",
-                 unclosedTagCount, dictName.c_str(), gd::toQString( headword ).toUtf8().constData(),
+                 unclosedTagCount, dictName.c_str(), QString::fromStdU32String( headword ).toUtf8().constData(),
                  firstTagName.constData() );
     }
   }
@@ -815,11 +815,11 @@ void ArticleDom::closeTag( wstring const & name,
   {
     if( !dictionaryName.empty() )
       gdWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
-                 gd::toQString( name ).toUtf8().data(), dictionaryName.c_str(),
-                 gd::toQString( headword ).toUtf8().data() );
+                 QString::fromStdU32String( name ).toUtf8().data(), dictionaryName.c_str(),
+                 QString::fromStdU32String( headword ).toUtf8().data() );
     else
       gdWarning( "No corresponding opening tag for closing tag \"%s\" found.",
-                 gd::toQString( name ).toUtf8().data() );
+                 QString::fromStdU32String( name ).toUtf8().data() );
   }
 }
 

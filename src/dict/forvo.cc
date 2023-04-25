@@ -122,7 +122,7 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
 void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr,
                                     wstring const & str )
 {
-  gdDebug( "Forvo: requesting article %s\n", gd::toQString( str ).toUtf8().data() );
+  gdDebug( "Forvo: requesting article %s\n", QString::fromStdU32String( str ).toUtf8().data() );
 
   QString key = apiKey;
 
@@ -131,7 +131,7 @@ void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr,
                "/key/" + key +
                "/action/word-pronunciations"
                "/format/xml"
-               "/word/" + QLatin1String( QUrl::toPercentEncoding( gd::toQString( str ) ) ) +
+               "/word/" + QLatin1String( QUrl::toPercentEncoding( QString::fromStdU32String( str ) ) ) +
                "/language/" + languageCode +
                "/order/rate-desc"
        ).toUtf8() );
