@@ -850,9 +850,7 @@ void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     if( !headwords.empty() )
       headword = QString::fromUtf8( headwords.front().data(), headwords.front().size() );
 
-    wstring wstr = Utf8::decode( articleStr );
-
-    text = Html::unescape( QString::fromStdU32String( wstr ) );
+    text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch( std::exception &ex )
   {

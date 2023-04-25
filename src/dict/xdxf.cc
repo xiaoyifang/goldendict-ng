@@ -423,9 +423,7 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
     string articleStr;
     loadArticle( articleAddress, articleStr, &headword );
 
-    wstring wstr = Utf8::decode( articleStr );
-
-    text = Html::unescape( QString::fromStdU32String( wstr ) );
+    text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch( std::exception &ex )
   {
