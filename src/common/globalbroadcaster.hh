@@ -31,6 +31,8 @@ public:
   QWebEngineProfile * profile;
   //hold the dictionary id;
   QSet<QString> collapsedDicts;
+  QMap< QString, QSet< QString > > folderFavoritesMap;
+  QMap< unsigned, QString > groupFolderMap;
 
 
 signals:

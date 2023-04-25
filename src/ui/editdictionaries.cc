@@ -3,7 +3,6 @@
 
 #include "editdictionaries.hh"
 #include "dict/loaddictionaries.hh"
-#include "dictinfo.hh"
 #include "help.hh"
 #include <QMessageBox>
 
