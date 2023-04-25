@@ -127,7 +127,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // 1 MB stands for 2^20 bytes on Windows. "MiB" is never used by this OS.
   ui.maxNetworkCacheSize->setSuffix( tr( " MB" ) );
 #endif
-  ui.maxNetworkCacheSize->setToolTip( ui.maxNetworkCacheSize->toolTip().arg( Config::getNetworkCacheDir() ) );
+  ui.maxNetworkCacheSize->setToolTip( ui.maxNetworkCacheSize->toolTip().arg( Config::getCacheDir() ) );
 
   ui.newTabsOpenAfterCurrentOne->setChecked( p.newTabsOpenAfterCurrentOne );
   ui.newTabsOpenInBackground->setChecked( p.newTabsOpenInBackground );

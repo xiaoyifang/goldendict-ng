@@ -1410,18 +1410,20 @@ void MainWindow::setupNetworkCache( int maxSize )
   if( maxCacheSizeInBytes == 0 )
     return; // There is currently no cache and it is not needed.
 
-  QString const cacheDirectory = Config::getNetworkCacheDir();
-  if( !QDir().mkpath( cacheDirectory ) ) {
-    gdWarning( "Cannot create a cache directory %s. Disabling network cache.", cacheDirectory.toUtf8().constData() );
-    return;
+  QString cacheDirectory = Config::getCacheDir();
+  if ( !QDir().mkpath( cacheDirectory ) ) {
+    cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
+
+    gdWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
   }
+
   QNetworkDiskCache * const diskCache = new QNetworkDiskCache( this );
   diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
   diskCache->setCacheDirectory( cacheDirectory );
   articleNetMgr.setCache( diskCache );
 
   webEngineProfile->setCachePath( cacheDirectory );
-  webEngineProfile->setPersistentStoragePath( cacheDirectory );
+  webEngineProfile->setPersistentStoragePath( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
 }
 
 void MainWindow::makeDictionaries()

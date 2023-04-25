@@ -868,9 +868,6 @@ QString getStylesDir();
 /// Returns the directory where user-specific non-essential (cached) data should be written.
 QString getCacheDir() noexcept;
 
-/// Returns the article network disk cache directory.
-QString getNetworkCacheDir() noexcept;
-
 }
 
 Q_DECLARE_METATYPE( Config::InputPhrase )
