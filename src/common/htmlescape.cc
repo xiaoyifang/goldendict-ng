@@ -188,7 +188,7 @@ QString fromHtmlEscaped( QString const & str){
 
 string unescapeUtf8( const string &str, bool saveFormat )
 {
-  return string( unescape( QString::fromUtf8( str.c_str(), str.size() ) ).toUtf8().data(), saveFormat );
+  return string( unescape( QString::fromStdString( str ), saveFormat ).toUtf8().data() );
 }
 
 }
