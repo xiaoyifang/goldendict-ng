@@ -57,6 +57,9 @@ class Epwing{
 
 namespace Html {
 const static QRegularExpression startDivTag( R"(<div[\s>])" );
+const static QRegularExpression htmlEntity( R"(&(?:#\d+|#[xX][\da-fA-F]+|[0-9a-zA-Z]+);)" );
+
+bool containHtmlEntity( std::string const & text );
 }
 
 } // namespace RX

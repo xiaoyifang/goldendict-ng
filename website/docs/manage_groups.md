@@ -36,3 +36,19 @@ For example, the structure below will be auto grouped into two groups:
         ├── Wikipedia_ru.slob
         └── Wikipedia.zim
 ```
+
+Note that if two groups share the same name but in different folder, then upper level's folder name will be prepended with group name. The Example below will be grouped into `epistularum/Japanese` and `Mastameta/Japanese`.
+
+More levels of folder nesting are not supported.
+
+```
+.
+├─epistularum
+│   └─Japanese   <- Group
+│       └─DictA  <- Dict Files's container folder
+|          └─ DictA Files
+├─Mastameta
+│   └─Japanese   <- Group
+|       └─DictB  <- Dict Files's container folder
+|          └─ DictB Files  
+```

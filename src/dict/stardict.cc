@@ -53,6 +53,7 @@
 #include "utils.hh"
 
 #include <QRegularExpression>
+#include "globalregex.hh"
 
 namespace Stardict {
 
@@ -483,16 +484,20 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
         QString link = match.captured( 3 );
 
-        if( link.indexOf( ':' ) < 0 )
-        {
+        if ( link.indexOf( ':' ) < 0 ) {
+          //compatible with issue #567
+          //such as bword://fl&#x205;k
+          if ( link.contains( RX::Html::htmlEntity ) ) {
+            link = Html::unescape( link );
+          }
+
           QString newLink;
           if( link.indexOf( '#' ) < 0 )
             newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"bword:" + link + "\"";
 
 
           // Anchors
-
-          if( link.indexOf( '#' ) > 0 )
+          if( link.indexOf( '#' ) > 0 &&  link.indexOf( "&#" ) < 0 )
           {
             newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"gdlookup://localhost/" + link + "\"";
 
@@ -502,7 +507,6 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           if( !newLink.isEmpty() )
           {
             articleNewText += newLink;
-
           }
           else
             articleNewText += match.captured();
@@ -517,7 +521,6 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleText = articleNewText;
         articleNewText.clear();
       }
-
 
       // Handle "audio" tags
 

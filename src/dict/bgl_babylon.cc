@@ -27,14 +27,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <QTextDocument>
 #include "gddebug.hh"
 #include "ufile.hh"
 #include "iconv.hh"
 #include "htmlescape.hh"
 #include <QString>
 #include "dictionary.hh"
-#include "wstring_qt.hh"
+#include "globalregex.hh"
 
 #ifdef _WIN32
 #include <io.h>
@@ -396,7 +395,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
         convertToUtf8( headword, BGL_SOURCE_CHARSET );
 
         // Try to repair malformed headwords
-        if( headword.find( "&#" ) != string::npos )
+        if( RX::Html::containHtmlEntity( headword ) )
           headword = Html::unescapeUtf8( headword );
 
         if( block.type == 11 )
@@ -422,7 +421,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             convertToUtf8( alternate, BGL_SOURCE_CHARSET );
 
             // Try to repair malformed forms
-            if( alternate.find( "&#" ) != string::npos )
+            if ( RX::Html::containHtmlEntity( alternate ) )
               alternate = Html::unescapeUtf8( alternate );
 
             alternates.push_back( alternate );
@@ -661,7 +660,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           convertToUtf8( alternate, BGL_SOURCE_CHARSET );
 
           // Try to repair malformed forms
-          if( alternate.find( "&#" ) != string::npos )
+          if ( RX::Html::containHtmlEntity( alternate ) )
             alternate = Html::unescapeUtf8( alternate );
 
           alternates.push_back( alternate );
