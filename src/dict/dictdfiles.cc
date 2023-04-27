@@ -451,10 +451,14 @@ QString const& DictdDictionary::getDescription()
     sptr< Dictionary::DataRequest > req =
       getArticle(  U"00databaseinfo" , vector< wstring >(), wstring(), false );
 
-    if( req->dataSize() > 0 )
-      dictionaryDescription = Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ), true );
-    else
+    if ( req->dataSize() > 0 ) {
+      dictionaryDescription =
+        Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
+                        Html::HtmlOption::Keep );
+    }
+    else {
       dictionaryDescription = "NONE";
+    }
 
     return dictionaryDescription;
 }

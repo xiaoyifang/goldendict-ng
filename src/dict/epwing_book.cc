@@ -1168,7 +1168,7 @@ void EpwingBook::getArticle( QString & headword, QString & articleText,
 
   readHeadword( headword, text_only );
 
-  QString hw = Html::unescape( headword, true );
+  QString hw = Html::unescape( headword, Html::HtmlOption::Keep );
   fixHeadword( hw );
 
   auto parts = hw.split( QChar::Space, Qt::SkipEmptyParts );

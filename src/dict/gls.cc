@@ -557,7 +557,7 @@ QString const& GlsDictionary::getDescription()
       desc.replace( "\t", "<br/>" );
       desc.replace( "\\n", "<br/>" );
       desc.replace( "<br>", "<br/>", Qt::CaseInsensitive );
-      dictionaryDescription += Html::unescape( desc, true );
+      dictionaryDescription += Html::unescape( desc, Html::HtmlOption::Keep );
     }
   }
   catch( std::exception & e )

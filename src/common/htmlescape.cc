@@ -139,18 +139,23 @@ string escapeForJavaScript( string const & str )
   return result;
 }
 
-QString unescape( QString const & str, bool saveFormat )
+QString & stripHtml( QString & tmp )
+{
+  tmp.replace( QRegularExpression( "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
+                                   QRegularExpression::CaseInsensitiveOption ), " " );
+  tmp.replace( QRegularExpression( "<[^>]*>"), " ");
+  return tmp;
+}
+
+QString unescape( QString const & str, HtmlOption option  )
 {
   // Does it contain HTML? If it does, we need to strip it
   if ( str.contains( '<' ) || str.contains( '&' ) )
   {
     QString tmp = str;
-    if( !saveFormat )
+    if ( option == HtmlOption::Strip )
     {
-        tmp.replace( QRegularExpression( "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
-                                         QRegularExpression::CaseInsensitiveOption ), " " );
-        tmp.replace( QRegularExpression( "<[^>]*>"), " ");
-
+        stripHtml( tmp );
     }
     return QTextDocumentFragment::fromHtml( tmp.trimmed() ).toPlainText();
   }
@@ -186,9 +191,9 @@ QString fromHtmlEscaped( QString const & str){
   return retVal;
 }
 
-string unescapeUtf8( const string &str, bool saveFormat )
+string unescapeUtf8( const string &str, HtmlOption option )
 {
-  return string( unescape( QString::fromStdString( str ), saveFormat ).toUtf8().data() );
+  return string( unescape( QString::fromStdString( str ), option ).toUtf8().data() );
 }
 
 }
