@@ -14,7 +14,6 @@
 #include <QFile>
 #include <QTextDocumentFragment>
 #include <QUrl>
-#include <limits.h>
 
 using std::vector;
 using std::string;
@@ -38,28 +37,22 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
                                           QString const & icon,
                                           bool expandOptionalParts ) const
 {
-  string result =
-      "<!DOCTYPE html>"
-      "<html><head>"
-      "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+  string result = R"(<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+)";
 
   // add jquery
   {
-    result += "<script type=\"text/javascript\"  "
-              "src=\"qrc:///scripts/jquery-3.6.0.slim.min.js\"></script>";
-
-    result += "<script> var $_$=$.noConflict(); </script>";
-
-    //custom javascript
-    result += R"(<script type="text/javascript" src="qrc:///scripts/gd-custom.js"></script>)";
-
-    //iframe resizer javascript
-    result += R"(<script type="text/javascript" src="qrc:///scripts/iframeResizer.min.js"></script>)";
+    result += R"(<script src="qrc:///scripts/jquery-3.6.0.slim.min.js"></script>)";
+    result += R"(<script> var $_$=$.noConflict(); </script>)";
+    result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel
   {
-    result += R"(<script type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>)";
+    result += R"(<script src="qrc:///qtwebchannel/qwebchannel.js"></script>)";
   }
 
   // document ready ,init webchannel
@@ -131,10 +124,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
   if ( icon.size() )
-    result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" />\n";
+    result += R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" >\n";
 
   result += QString::fromUtf8( R"(
-<script type="text/javascript">
+<script>
      function tr(key) {
             var tr_map = {
                 "Expand article": "%1", "Collapse article": "%2"
@@ -145,7 +138,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 )" ).arg( tr( "Expand article" ), tr( "Collapse article" ) )
             .toStdString();
 
-  result+= R"(<script type="text/javascript" src="qrc:///scripts/gd-builtin.js"></script>)";
+  result+= R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {

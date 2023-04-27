@@ -1423,7 +1423,7 @@ void MainWindow::setupNetworkCache( int maxSize )
   articleNetMgr.setCache( diskCache );
 
   webEngineProfile->setCachePath( cacheDirectory );
-  webEngineProfile->setPersistentStoragePath( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
+  webEngineProfile->setPersistentStoragePath( cacheDirectory );
 }
 
 void MainWindow::makeDictionaries()
