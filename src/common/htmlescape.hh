@@ -8,7 +8,10 @@
 #include <string>
 
 namespace Html {
-
+enum class HtmlOption {
+  Strip,
+  Keep
+};
 using std::string;
 
 // Replaces &, <, > and " by their html entity equivalents
@@ -22,12 +25,12 @@ string preformat( string const &, bool baseRightToLeft = false );
 
 // Escapes the given string to be included in JavaScript.
 string escapeForJavaScript( string const & );
-
-// Replace html entities
-QString unescape( QString const & str, bool saveFormat = false );
+QString & stripHtml( QString & tmp );
+  // Replace html entities
+QString unescape( QString const & str, HtmlOption option = HtmlOption::Strip);
 
 QString fromHtmlEscaped( QString const & str);
-string unescapeUtf8( string const & str, bool saveFormat = false );
+string unescapeUtf8( string const & str, HtmlOption option = HtmlOption::Strip );
 
 }
 
