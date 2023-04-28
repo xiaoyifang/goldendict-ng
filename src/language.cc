@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 
 #include <stdint.h>
+#include <QObject>
 
 namespace Language {
 
@@ -27,9 +28,58 @@ struct Db
     return iso2LangData;
   }
 
+  [[nodiscard]] QMap< QString, QString > const & locale2LanguageMap() const
+  {
+    return localeLanguage;
+  }
+
 private:
 
   QMap< QString, LangData > iso2LangData;
+
+  QMap< QString, QString > localeLanguage = {
+    {"fr_FR", QT_TR_NOOP( "French" )},
+    {"es_ES", QT_TR_NOOP( "Spanish" )},
+    {"be_BY", QT_TR_NOOP( "Belarusian" )},
+    {"bg_BG", QT_TR_NOOP( "Bulgarian" )},
+    {"cs_CZ", QT_TR_NOOP( "Czech" )},
+    {"de_DE", QT_TR_NOOP( "German" )},
+    {"el_GR", QT_TR_NOOP( "Greek" )},
+    {"fi_FI", QT_TR_NOOP( "Finnish" )},
+    {"it_IT", QT_TR_NOOP( "Italian" )},
+    {"ja_JP", QT_TR_NOOP( "Japanese" )},
+    {"ko_KR", QT_TR_NOOP( "Korean" )},
+    {"lt_LT", QT_TR_NOOP( "Lithuanian" )},
+    {"mk_MK", QT_TR_NOOP( "Macedonian" )},
+    {"nl_NL", QT_TR_NOOP( "Dutch" )},
+    {"pl_PL", QT_TR_NOOP( "Polish" )},
+    {"pt_PT", QT_TR_NOOP( "Portuguese" )},
+    {"ru_RU", QT_TR_NOOP( "Russian" )},
+    {"sk_SK", QT_TR_NOOP( "Slovak" )},
+    {"sq_AL", QT_TR_NOOP( "Albanian" )},
+    {"sr_SP", QT_TR_NOOP( "Serbian (Cyrillic)" )},
+    {"sv_SE", QT_TR_NOOP( "Swedish" )},
+    {"tr_TR", QT_TR_NOOP( "Turkish" )},
+    {"uk_UA", QT_TR_NOOP( "Ukrainian" )},
+    {"zh_CN", QT_TR_NOOP( "Chinese Simplified" )},
+    {"zh_TW", QT_TR_NOOP( "Chinese Traditional" )},
+    {"vi_VN", QT_TR_NOOP( "Vietnamese" )},
+    {"pt_BR", QT_TR_NOOP( "Portuguese, Brazilian" )},
+    {"fa_IR", QT_TR_NOOP( "Persian" )},
+    {"es_AR", QT_TR_NOOP( "Spanish, Argentina" )},
+    {"hi_IN", QT_TR_NOOP( "Hindi" )},
+    {"eo_UY", QT_TR_NOOP( "Esperanto" )},
+    {"de_CH", QT_TR_NOOP( "German, Switzerland" )},
+    {"es_BO", QT_TR_NOOP( "Spanish, Bolivia" )},
+    {"tg_TJ", QT_TR_NOOP( "Tajik" )},
+    {"qu_PE", QT_TR_NOOP( "Quechua" )},
+    {"ay_BO", QT_TR_NOOP( "Aymara" )},
+    {"ar_SA", QT_TR_NOOP( "Arabic, Saudi Arabia" )},
+    {"tk_TM", QT_TR_NOOP( "Turkmen" )},
+    {"ie_001", QT_TR_NOOP( "Interlingue" )},
+    {"jbo_EN", QT_TR_NOOP( "Lojban" )},
+    {"en_US", QT_TR_NOOP( "English" )}
+  };
 
   Db();
 
@@ -476,4 +526,8 @@ QString localizedStringForId( Id langId )
   return QString( "<img src=\":/flags/%1.png\"> %2" ).arg( iconId, name );
 }
 
+QString languageForLocale( const QString & locale )
+{
+  return QCoreApplication::translate( "Language::Db", Db::instance().locale2LanguageMap()[ locale ].toStdString().c_str() );
+}
 }
