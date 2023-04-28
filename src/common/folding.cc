@@ -234,6 +234,11 @@ wstring trimWhitespace( wstring const & in )
   return wstring( wordBegin, wordSize );
 }
 
+QString trimWhitespace( QString const & in )
+{
+  return in.trimmed();
+}
+
 void normalizeWhitespace( wstring & str )
 {
   for( size_t x = str.size(); x-- > 1; ) // >1 -- Don't test the first char

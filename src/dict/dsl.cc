@@ -651,16 +651,15 @@ articleData =  U"\n\r\t"  + gd::toWString( QString( "DICTZIP error: " ) + dict_e
         // Does one of the results match the requested word? If so, we'd choose
         // it as our headword.
 
-        for( list< wstring >::iterator i = lst.begin(); i != lst.end(); ++i )
-        {
-          unescapeDsl( *i );
-          normalizeHeadword( *i );
+        for ( auto & i : lst ) {
+          unescapeDsl( i );
+          normalizeHeadword( i );
 
           bool found;
           if( ignoreDiacritics )
-            found = Folding::applyDiacriticsOnly( Folding::trimWhitespace( *i ) ) == Folding::applyDiacriticsOnly( requestedHeadwordFolded );
+            found = Folding::applyDiacriticsOnly( Folding::trimWhitespace( i ) ) == Folding::applyDiacriticsOnly( requestedHeadwordFolded );
           else
-            found = Folding::trimWhitespace( *i ) == requestedHeadwordFolded;
+            found = Folding::trimWhitespace( i ) == requestedHeadwordFolded;
 
           if ( found )
           {
@@ -761,9 +760,8 @@ string DslDictionary::processNodeChildren( ArticleDom::Node const & node )
 {
   string result;
 
-  for( ArticleDom::Node::const_iterator i = node.begin(); i != node.end();
-       ++i )
-    result += nodeToHtml( *i );
+  for ( const auto & i : node )
+    result += nodeToHtml( i );
 
   return result;
 }
@@ -1598,11 +1596,10 @@ void DslArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -1615,8 +1612,7 @@ void DslArticleRequest::run()
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
 
-  for( unsigned x = 0; x < chain.size(); ++x )
-  {
+  for ( auto & x : chain ) {
     // Check if we're cancelled occasionally
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
@@ -1635,10 +1631,10 @@ void DslArticleRequest::run()
 
     try
     {
-      dict.loadArticle( chain[ x ].articleOffset, wordCaseFolded, ignoreDiacritics, tildeValue,
+      dict.loadArticle( x.articleOffset, wordCaseFolded, ignoreDiacritics, tildeValue,
                         displayedHeadword, headwordIndex, articleBody );
 
-      if ( !articlesIncluded.insert( std::make_pair( chain[ x ].articleOffset,
+      if ( !articlesIncluded.insert( std::make_pair( x.articleOffset,
                                                      headwordIndex ) ).second )
         continue; // We already have this article in the body.
 
@@ -1872,23 +1868,21 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( const auto & fileName : fileNames ) {
     // Try .dsl and .dsl.dz suffixes
 
-    bool uncompressedDsl = ( i->size() >= 4 &&
-                             strcasecmp( i->c_str() + ( i->size() - 4 ), ".dsl" ) == 0 );
+    bool uncompressedDsl = ( fileName.size() >= 4 &&
+                             strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".dsl" ) == 0 );
     if ( !uncompressedDsl &&
-         ( i->size() < 7 ||
-           strcasecmp( i->c_str() + ( i->size() - 7 ), ".dsl.dz" ) != 0 ) )
+         ( fileName.size() < 7 ||
+           strcasecmp( fileName.c_str() + ( fileName.size() - 7 ), ".dsl.dz" ) != 0 ) )
       continue;
 
     // Make sure it's not an abbreviation file
 
     int extSize = ( uncompressedDsl ? 4 : 7 );
-    if ( i->size() - extSize >= 5 &&
-         strncasecmp( i->c_str() + i->size() - extSize - 5, "_abrv", 5 ) == 0 )
+    if ( fileName.size() - extSize >= 5 &&
+         strncasecmp( fileName.c_str() + fileName.size() - extSize - 5, "_abrv", 5 ) == 0 )
     {
       // It is, skip it
       continue;
@@ -1898,11 +1892,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
     try
     {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
       // Check if there is an 'abrv' file present
-      string baseName = ( (*i)[ i->size() - 4 ] == '.' ) ?
-               string( *i, 0, i->size() - 4 ) : string( *i, 0, i->size() - 7 );
+      string baseName = ( fileName[ fileName.size() - 4 ] == '.' ) ?
+               string( fileName, 0, fileName.size() - 4 ) : string( fileName, 0, fileName.size() - 7 );
 
       string abrvFileName;
 
@@ -1930,7 +1924,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
            indexIsOldOrBad( indexFile, zipFileName.size() ) )
       {
-        DslScanner scanner( *i );
+        DslScanner scanner( fileName );
 
         try { // Here we intercept any errors during the read to save line at
               // which the incident happened. We need alive scanner for that.
@@ -2031,13 +2025,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               // If the string has any dsl markup, we strip it
               string value = Utf8::encode( ArticleDom( curString ).root.renderAsText() );
 
-              for( list< wstring >::iterator i = keys.begin(); i != keys.end();
-                   ++i )
-              {
-                unescapeDsl( *i );
-                normalizeHeadword( *i );
+              for ( auto & key : keys ) {
+                unescapeDsl( key );
+                normalizeHeadword( key );
 
-                abrv[ Utf8::encode( Folding::trimWhitespace( *i ) ) ] = value;
+                abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
               }
             }
 
@@ -2048,17 +2040,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
             chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
-            for( map< string, string >::const_iterator i = abrv.begin();
-                 i != abrv.end(); ++i )
-            {
+            for ( const auto & i : abrv ) {
 //              GD_DPRINTF( "%s:%s\n", i->first.c_str(), i->second.c_str() );
 
-              sz = i->first.size();
+              sz = i.first.size();
               chunks.addToBlock( &sz, sizeof( uint32_t ) );
-              chunks.addToBlock( i->first.data(), sz );
-              sz = i->second.size();
+              chunks.addToBlock( i.first.data(), sz );
+              sz = i.second.size();
               chunks.addToBlock( &sz, sizeof( uint32_t ) );
-              chunks.addToBlock( i->second.data(), sz );
+              chunks.addToBlock( i.second.data(), sz );
             }
           }
           catch( std::exception & e )
@@ -2096,7 +2086,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             {
               if ( !isDslWs( curString[ x ] ) )
               {
-                gdWarning( "Garbage string in %s at offset 0x%lX\n", i->c_str(), (unsigned long) curOffset );
+                gdWarning( "Garbage string in %s at offset 0x%lX\n", fileName.c_str(), (unsigned long) curOffset );
                 break;
               }
             }
@@ -2120,7 +2110,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           {
             if ( ! ( hasString = scanner.readNextLineWithoutComments( curString, curOffset ) ) )
             {
-              gdWarning( "Premature end of file %s\n", i->c_str() );
+              gdWarning( "Premature end of file %s\n", fileName.c_str() );
               break;
             }
 
@@ -2149,12 +2139,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           chunks.addToBlock( &articleOffset, sizeof( articleOffset ) );
 
-          for( list< wstring >::iterator j = allEntryWords.begin();
-               j != allEntryWords.end(); ++j )
-          {
-            unescapeDsl( *j );
-            normalizeHeadword( *j );
-            indexedWords.addWord( *j, descOffset, maxHeadwordSize );
+          for ( auto & allEntryWord : allEntryWords ) {
+            unescapeDsl( allEntryWord );
+            normalizeHeadword( allEntryWord );
+            indexedWords.addWord( allEntryWord, descOffset, maxHeadwordSize );
           }
 
           ++articleCount;
@@ -2273,23 +2261,20 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           chunks.addToBlock( &articleSize, sizeof( articleSize ) );
 
-          for( QVector< InsidedCard >::iterator i = insidedCards.begin(); i != insidedCards.end(); ++i )
-          {
+          for ( auto & insidedCard : insidedCards ) {
             uint32_t descOffset = chunks.startNewBlock();
-            chunks.addToBlock( &(*i).offset, sizeof( (*i).offset ) );
-            chunks.addToBlock( &(*i).size, sizeof( (*i).size ) );
+            chunks.addToBlock( &insidedCard.offset, sizeof( insidedCard.offset ) );
+            chunks.addToBlock( &insidedCard.size, sizeof( insidedCard.size ) );
 
-            for( int x = 0; x < (*i).headwords.size(); x++ )
+            for( int x = 0; x < insidedCard.headwords.size(); x++ )
             {
               allEntryWords.clear();
-              expandOptionalParts( (*i).headwords[ x ], &allEntryWords );
+              expandOptionalParts( insidedCard.headwords[ x ], &allEntryWords );
 
-              for( list< wstring >::iterator j = allEntryWords.begin();
-                   j != allEntryWords.end(); ++j )
-              {
-                unescapeDsl( *j );
-                normalizeHeadword( *j );
-                indexedWords.addWord( *j, descOffset, maxHeadwordSize );
+              for ( auto & allEntryWord : allEntryWords ) {
+                unescapeDsl( allEntryWord );
+                normalizeHeadword( allEntryWord );
+                indexedWords.addWord( allEntryWord, descOffset, maxHeadwordSize );
               }
 
               wordCount += allEntryWords.size();
@@ -2380,7 +2365,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
     catch( std::exception & e )
     {
       gdWarning( "DSL dictionary reading failed: %s:%u, error: %s\n",
-                 i->c_str(), atLine, e.what() );
+                 fileName.c_str(), atLine, e.what() );
     }
   }
 

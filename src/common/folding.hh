@@ -68,8 +68,8 @@ QString trimWhitespaceOrPunct( QString const & in );
 /// Removes any whitespace from the beginning and the end of
 /// the word.
 wstring trimWhitespace( wstring const & );
-
-/// Turns any sequences of consecutive whitespace into a single basic space.
+QString trimWhitespace( QString const & in );
+  /// Turns any sequences of consecutive whitespace into a single basic space.
 void normalizeWhitespace( wstring & );
 
 /// Same as apply( wstring ), but without any heap operations, therefore

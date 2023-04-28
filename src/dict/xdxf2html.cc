@@ -425,13 +425,13 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_abbr" );
-    if( type == XDXF && pAbrv != NULL )
+    if( type == XDXF && pAbrv != nullptr )
     {
-        string val = Utf8::encode( Folding::trimWhitespace( gd::toWString( el.text() ) ) );
+      string val = Folding::trimWhitespace( el.text() ).toStdString();
 
         // If we have such a key, display a title
 
-        map< string, string >::const_iterator i = pAbrv->find( val );
+      auto i = pAbrv->find( val );
 
         if ( i != pAbrv->end() )
         {
