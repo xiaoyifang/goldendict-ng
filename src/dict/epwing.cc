@@ -18,7 +18,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "chunkedstorage.hh"
 #include "wstring.hh"
 #include "wstring_qt.hh"
@@ -1276,7 +1276,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           dict.setSubBook( sb );
 
-          dir = QString::fromStdString( mainDirectory ) + FsEncoding::separator() + dict.getCurrentSubBookDirectory();
+          dir = QString::fromStdString( mainDirectory ) + Utils::Fs::separator() + dict.getCurrentSubBookDirectory();
 
           Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
 

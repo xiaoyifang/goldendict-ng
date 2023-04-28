@@ -8,7 +8,7 @@
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "decompress.hh"
 #include "htmlescape.hh"
 #include "ftshelpers.hh"

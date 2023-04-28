@@ -16,7 +16,7 @@
 #include "dictzip.hh"
 #include "indexedzip.hh"
 #include "ftshelpers.hh"
-#include "fsencoding.hh"
+
 #include "htmlescape.hh"
 #include "filetype.hh"
 #include "tiff.hh"
@@ -1233,7 +1233,7 @@ void GlsResourceRequest::run()
 
   try
   {
-    string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
+    string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1245,7 +1245,7 @@ void GlsResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + resourceName;
+      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + resourceName;
 
       try
       {

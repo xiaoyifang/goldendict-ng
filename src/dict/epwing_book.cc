@@ -8,7 +8,7 @@
 #include <QTextDocumentFragment>
 #include <QHash>
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "wstring.hh"
 #include "wstring_qt.hh"

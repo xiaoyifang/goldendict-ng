@@ -289,7 +289,6 @@ HEADERS += \
     src/common/ex.hh \
     src/common/file.hh \
     src/common/filetype.hh \
-    src/common/fsencoding.hh \
     src/common/gddebug.hh \
     src/common/globalbroadcaster.hh \
     src/common/globalregex.hh \
@@ -415,7 +414,6 @@ SOURCES += \
     src/chunkedstorage.cc \
     src/common/file.cc \
     src/common/filetype.cc \
-    src/common/fsencoding.cc \
     src/common/gddebug.cc \
     src/common/globalbroadcaster.cc \
     src/common/globalregex.cc \

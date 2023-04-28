@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "splitfile.hh"
-#include "fsencoding.hh"
+
 
 namespace SplitFile
 {

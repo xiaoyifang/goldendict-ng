@@ -11,7 +11,7 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "filetype.hh"
 #include "indexedzip.hh"
 #include "tiff.hh"
@@ -1709,7 +1709,7 @@ void StardictResourceRequest::run()
     if( resourceName.at( resourceName.length() - 1 ) == '\x1F' )
       resourceName.erase( resourceName.length() - 1, 1 );
 
-    string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + "res" + FsEncoding::separator() + resourceName;
+    string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -2021,11 +2021,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       string zipFileName;
       string baseName =
-        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + FsEncoding::separator();
+        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + Utils::Fs::separator();
 
       if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName ) ||
            File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName ) ||
-           File::tryPossibleZipName( baseName + "res" + FsEncoding::separator() + "res.zip", zipFileName ) )
+           File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) )
         dictFiles.push_back( zipFileName );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );

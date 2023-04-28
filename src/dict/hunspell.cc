@@ -29,7 +29,7 @@
 #include <hunspell/hunspell.hxx>
 #endif
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "utils.hh"
 
 namespace HunspellMorpho {
