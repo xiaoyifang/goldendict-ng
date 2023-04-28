@@ -12,10 +12,12 @@ SearchPanel::SearchPanel( QWidget * parent ): QWidget( parent )
   previous = new QPushButton( this );
   previous->setIcon( QIcon( ":/icons/previous.svg" ) );
   previous->setText( tr( "&Previous" ) );
+  previous->setShortcut( QKeySequence( tr( "Ctrl+Shift+G" ) ) );
 
   next = new QPushButton( this );
   next->setIcon( QIcon( ":/icons/next.svg" ) );
   next->setText( tr( "&Next" ) );
+  next->setShortcut( QKeySequence( tr( "Ctrl+G" ) ) );
 
   highlightAll = new QCheckBox( this );
   highlightAll->setIcon( QIcon( ":/icons/highlighter.png" ) );
