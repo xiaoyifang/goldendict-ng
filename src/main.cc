@@ -207,14 +207,11 @@ int main( int argc, char ** argv )
         setenv("QT_QPA_PLATFORM", "xcb", 1);
     }
 #endif
-  #ifdef Q_OS_MAC
+#ifdef Q_OS_MAC
     setenv("LANG", "en_US.UTF-8", 1);
 
-  #endif
-
-#if defined( Q_OS_UNIX )
-  setlocale( LC_ALL, "" ); // use correct char set mapping
 #endif
+
 
   //high dpi screen support
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
