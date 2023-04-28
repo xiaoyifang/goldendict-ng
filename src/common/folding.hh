@@ -63,6 +63,7 @@ bool isPunct( wchar ch );
 /// Removes any whitespace or punctuation from the beginning and the end of
 /// the word.
 wstring trimWhitespaceOrPunct( wstring const & );
+QString trimWhitespaceOrPunct( QString const & in );
 
 /// Removes any whitespace from the beginning and the end of
 /// the word.
