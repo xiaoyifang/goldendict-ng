@@ -307,9 +307,15 @@ void ScanPopup::refresh() {
   // it, we disconnect it while we're clearing and filling back groups.
   disconnect( ui.groupList, &GroupComboBox::currentIndexChanged,
     this, &ScanPopup::currentGroupChanged );
+
+  auto OldGroupID = ui.groupList->getCurrentGroup();
+
+  // repopulate
   ui.groupList->clear();
-  ui.groupList->fill(groups);
-  ui.groupList->setCurrentGroup(0); // user edited group list, force reset to default
+  ui.groupList->fill( groups );
+
+  ui.groupList->setCurrentGroup( OldGroupID ); // This does nothing if OldGroupID doesn't exist;
+
   ui.groupList->setVisible(!cfg.groups.empty());
 
   updateDictionaryBar();
