@@ -11,7 +11,7 @@
 #include "htmlescape.hh"
 #include "audiolink.hh"
 #include "wstring_qt.hh"
-#include "fsencoding.hh"
+
 #include "utils.hh"
 
 #include <set>

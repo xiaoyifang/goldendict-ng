@@ -11,7 +11,7 @@
 #include "chunkedstorage.hh"
 #include "gddebug.hh"
 #include "langcoder.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "ex.hh"
 #include "mdictparser.hh"
@@ -1221,7 +1221,7 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     newResourceName.insert( 0, 1, '\\' );
   }
   // local file takes precedence
-  if ( string fn = getContainingFolder().toStdString() + FsEncoding::separator() + u8ResourceName;
+  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + u8ResourceName;
        File::exists( fn ) ) {
     File::loadFromFile( fn, data );
     return;

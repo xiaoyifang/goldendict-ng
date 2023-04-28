@@ -7,7 +7,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "gddebug.hh"
 
@@ -190,7 +190,7 @@ protected:
 
 string LsaDictionary::getName() noexcept
 {
-  string result = FsEncoding::basename( getDictionaryFilenames()[ 0 ] );
+  string result = Utils::Fs::basename( getDictionaryFilenames()[ 0 ] );
 
   // Strip the extension
   result.erase( result.rfind( '.' ) );
@@ -562,7 +562,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         gdDebug( "Lsa: Building the index for dictionary: %s\n", i->c_str() );
 
-        initializing.indexingDictionary( FsEncoding::basename( *i ) );
+        initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
         File::Class idx( indexFile, "wb" );
 

@@ -11,7 +11,7 @@
 #include "htmlescape.hh"
 #include "iconv.hh"
 #include "filetype.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "wstring_qt.hh"
@@ -320,11 +320,11 @@ DslDictionary::DslDictionary( string const & id,
     preferredSoundDictionary = string( &sName.front(), sName.size() );
   }
 
-  resourceDir1 = getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator();
+  resourceDir1 = getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator();
   QString s    = QString::fromStdString( getDictionaryFilenames()[ 0 ] );
   if( s.endsWith( QString::fromLatin1( ".dz" ), Qt::CaseInsensitive ) )
     s.chop( 3 );
-  resourceDir2 = s.toStdString() + ".files" + FsEncoding::separator();
+  resourceDir2 = s.toStdString() + ".files" + Utils::Fs::separator();
 
   // Everything else would be done in deferred init
 }
@@ -849,7 +849,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       // Otherwise, make a global 'search' one.
 
       bool search = !File::exists( n ) && !File::exists( resourceDir2 + filename )
-        && !File::exists( getContainingFolder().toStdString() + FsEncoding::separator() + filename )
+        && !File::exists( getContainingFolder().toStdString() + Utils::Fs::separator() + filename )
         && ( !resourceZip.isOpen() || !resourceZip.hasFile( Utf8::decode( filename ) ) );
 
       QUrl url;
@@ -891,7 +891,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
         {
           try
           {
-            n = getContainingFolder().toStdString() + FsEncoding::separator() + filename;
+            n = getContainingFolder().toStdString() + Utils::Fs::separator() + filename;
             File::loadFromFile( n, imgdata );
           }
           catch( File::exCantOpen & )
@@ -1775,7 +1775,7 @@ void DslResourceRequest::run()
     return;
   }
 
-  string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
+  string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 

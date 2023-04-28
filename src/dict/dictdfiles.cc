@@ -7,7 +7,7 @@
 #include "utf8.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-#include "fsencoding.hh"
+
 #include "langcoder.hh"
 #include <map>
 #include <set>
@@ -201,7 +201,7 @@ string nameFromFileName( string const & indexFileName )
   if ( indexFileName.empty() )
     return string();
 
-  char const * sep = strrchr( indexFileName.c_str(), FsEncoding::separator() );
+  char const * sep = strrchr( indexFileName.c_str(), Utils::Fs::separator() );
 
   if ( !sep )
     sep = indexFileName.c_str();

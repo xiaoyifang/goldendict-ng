@@ -8,7 +8,7 @@
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-#include "fsencoding.hh"
+
 #include <map>
 #include <set>
 #include <string>
@@ -1048,7 +1048,7 @@ void XdxfResourceRequest::run()
     return;
   }
 
-  string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
+  string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1062,7 +1062,7 @@ void XdxfResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + resourceName;
+      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + resourceName;
 
       try
       {

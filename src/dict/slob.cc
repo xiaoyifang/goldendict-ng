@@ -5,7 +5,7 @@
 
 #include "slob.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "folding.hh"
 #include "gddebug.hh"
 #include "utf8.hh"

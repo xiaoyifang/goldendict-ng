@@ -11,7 +11,7 @@
 #include "langcoder.hh"
 #include "language.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "htmlescape.hh"
 #include "ftshelpers.hh"
 

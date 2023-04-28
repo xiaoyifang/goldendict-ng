@@ -6,7 +6,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
@@ -164,7 +164,7 @@ ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
 
 string ZipSoundsDictionary::getName() noexcept
 {
-  string result = FsEncoding::basename( getDictionaryFilenames()[ 0 ] );
+  string result = Utils::Fs::basename( getDictionaryFilenames()[ 0 ] );
 
   // Strip the extension
   result.erase( result.rfind( '.' ) );
