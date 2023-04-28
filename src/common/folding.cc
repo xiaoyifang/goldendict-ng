@@ -192,6 +192,27 @@ wstring trimWhitespaceOrPunct( wstring const & in )
   return wstring( wordBegin, wordSize );
 }
 
+QString trimWhitespaceOrPunct( QString const & in )
+{
+  auto wordSize = in.size();
+
+  int wordBegin = 0;
+  int wordEnd   = wordSize ;
+  // Skip any leading whitespace
+  while ( wordBegin < wordSize && ( in[ wordBegin ].isSpace() || in[ wordBegin ].isPunct() ) ) {
+    ++wordBegin;
+    wordSize--;
+  }
+
+  // Skip any trailing whitespace
+  while ( wordEnd > 0 && ( in[ wordEnd - 1 ].isSpace() || in[ wordEnd - 1 ].isPunct() ) ) {
+    --wordEnd;
+    wordSize--;
+  }
+
+  return in.mid( wordBegin,wordSize );
+}
+
 wstring trimWhitespace( wstring const & in )
 {
   if( in.empty() )
