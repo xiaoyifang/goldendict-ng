@@ -206,25 +206,10 @@ public:
   {}
 };
 
-// Intermediate class to avoid misunderstanding of #ifdef's
-// by Qt meta-object compiler
-
-class QIntermediateApplication : public QtSingleApplication
-#if defined( Q_OS_WIN ) 
-        , public QAbstractNativeEventFilter
+class QHotkeyApplication: public QtSingleApplication
+#if defined( Q_OS_WIN )
+  ,public QAbstractNativeEventFilter
 #endif
-{
-public:
-  QIntermediateApplication( int & argc, char ** argv ) :
-    QtSingleApplication( argc, argv )
-  {}
-
-  QIntermediateApplication( QString const & id, int & argc, char ** argv ) :
-    QtSingleApplication( id, argc, argv )
-  {}
-};
-
-class QHotkeyApplication : public QIntermediateApplication
 {
   Q_OBJECT
 
@@ -257,11 +242,6 @@ protected:
   virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
 #endif
 
-
-  QWidget * mainWindow;
-public:
-  void setMainWindow( QWidget * widget )
-  { mainWindow = widget; }
 protected:
 #endif // Q_OS_WIN32
   QList<HotkeyWrapper*> hotkeyWrappers;
