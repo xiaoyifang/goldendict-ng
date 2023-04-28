@@ -1001,11 +1001,7 @@ QString ArticleRequest::makeSplittedWordCompound()
 
     if ( x < currentSplittedWordEnd )
     {
-      wstring ws( gd::toWString( splittedWords.second[ x + 1 ] ) );
-
-      Folding::normalizeWhitespace( ws );
-
-      result.append( QString::fromStdU32String( ws ) );
+      result.append( splittedWords.second[ x + 1 ].simplified() );
     }
   }
 

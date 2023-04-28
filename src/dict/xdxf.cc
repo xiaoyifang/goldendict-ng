@@ -492,7 +492,7 @@ void XdxfArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( auto & alt : alts ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
     vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
@@ -510,7 +510,7 @@ void XdxfArticleRequest::run()
   if( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( auto & x : chain ) {
+  for ( const auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
       finish();
@@ -1284,7 +1284,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                           {
                             s =  readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
-                              for ( auto & key : keys ) {
+                              for ( const auto & key : keys ) {
                                 abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
                               }
                               keys.clear();
@@ -1307,7 +1307,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                           {
                             s =  readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
-                              for ( auto & key : keys ) {
+                              for ( const auto & key : keys ) {
                                 abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
                               }
                               keys.clear();
