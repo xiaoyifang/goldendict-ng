@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"   
        
-      - name: build macos
+      - name: install deps on macos
         run: |
           brew install pcre2 harfbuzz freetype
           brew install cmake ninja python
