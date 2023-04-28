@@ -1599,7 +1599,7 @@ void DslArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( auto & alt : alts ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
     vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
@@ -2090,7 +2090,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             {
               if ( !isDslWs( curString[ x ] ) )
               {
-                gdWarning( "Garbage string in %s at offset 0x%lX\n", fileName.c_str(), (unsigned long) curOffset );
+                gdWarning( "Garbage string in %s at offset 0x%lX\n", fileName.c_str(), curOffset );
                 break;
               }
             }
@@ -2266,19 +2266,18 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           chunks.addToBlock( &articleSize, sizeof( articleSize ) );
 
           for ( auto & insidedCard : insidedCards ) {
-            uint32_t descOffset = chunks.startNewBlock();
+            uint32_t desc_offset = chunks.startNewBlock();
             chunks.addToBlock( &insidedCard.offset, sizeof( insidedCard.offset ) );
             chunks.addToBlock( &insidedCard.size, sizeof( insidedCard.size ) );
 
-            for( int x = 0; x < insidedCard.headwords.size(); x++ )
-            {
+            for ( auto & hw : insidedCard.headwords ) {
               allEntryWords.clear();
-              expandOptionalParts( insidedCard.headwords[ x ], &allEntryWords );
+              expandOptionalParts( hw, &allEntryWords );
 
               for ( auto & allEntryWord : allEntryWords ) {
                 unescapeDsl( allEntryWord );
                 normalizeHeadword( allEntryWord );
-                indexedWords.addWord( allEntryWord, descOffset, maxHeadwordSize );
+                indexedWords.addWord( allEntryWord, desc_offset, maxHeadwordSize );
               }
 
               wordCount += allEntryWords.size();
