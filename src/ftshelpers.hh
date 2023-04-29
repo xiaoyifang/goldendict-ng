@@ -140,7 +140,6 @@ public:
     foundHeadwords = new QList< FTS::FtsHeadword >;
     results         = 0;
     f              = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); }, -100 );
   }
 
   void run();

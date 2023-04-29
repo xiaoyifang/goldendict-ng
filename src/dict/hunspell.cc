@@ -31,6 +31,7 @@
 #include "gddebug.hh"
 
 #include "utils.hh"
+#include <QtConcurrent>
 
 namespace HunspellMorpho {
 
@@ -179,38 +180,15 @@ vector< wstring > HunspellDictionary::getAlternateWritings( wstring const & word
 
 /// HunspellDictionary::getArticle()
 
-class HunspellArticleRequest;
-
-class HunspellArticleRequestRunnable: public QRunnable
-{
-  HunspellArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  HunspellArticleRequestRunnable( HunspellArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~HunspellArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class HunspellArticleRequest: public Dictionary::DataRequest
 {
-  friend class HunspellArticleRequestRunnable;
 
   Mutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -221,8 +199,9 @@ public:
     hunspell( hunspell_ ),
     word( word_ )
   {
-    QThreadPool::globalInstance()->start(
-      new HunspellArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by HunspellArticleRequestRunnable
@@ -235,14 +214,9 @@ public:
   ~HunspellArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void HunspellArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void HunspellArticleRequest::run()
 {
@@ -343,38 +317,16 @@ sptr< DataRequest > HunspellDictionary::getArticle( wstring const & word,
 
 /// HunspellDictionary::findHeadwordsForSynonym()
 
-class HunspellHeadwordsRequest;
-
-class HunspellHeadwordsRequestRunnable: public QRunnable
-{
-  HunspellHeadwordsRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  HunspellHeadwordsRequestRunnable( HunspellHeadwordsRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~HunspellHeadwordsRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  friend class HunspellHeadwordsRequestRunnable;
 
   Mutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
+
 
 public:
 
@@ -385,8 +337,10 @@ public:
     hunspell( hunspell_ ),
     word( word_ )
   {
-    QThreadPool::globalInstance()->start(
-      new HunspellHeadwordsRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
+
   }
 
   void run(); // Run from another thread by HunspellHeadwordsRequestRunnable
@@ -399,14 +353,10 @@ public:
   ~HunspellHeadwordsRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void HunspellHeadwordsRequestRunnable::run()
-{
-  r.run();
-}
 
 void HunspellHeadwordsRequest::run()
 {
@@ -518,38 +468,15 @@ sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( wstring c
 
 /// HunspellDictionary::prefixMatch()
 
-class HunspellPrefixMatchRequest;
-
-class HunspellPrefixMatchRequestRunnable: public QRunnable
-{
-  HunspellPrefixMatchRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  HunspellPrefixMatchRequestRunnable( HunspellPrefixMatchRequest & r_,
-                                      QSemaphore & hasExited_ ): r( r_ ),
-                                                                 hasExited( hasExited_ )
-  {}
-
-  ~HunspellPrefixMatchRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
 {
-  friend class HunspellPrefixMatchRequestRunnable;
 
   Mutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -560,8 +487,9 @@ public:
     hunspell( hunspell_ ),
     word( word_ )
   {
-    QThreadPool::globalInstance()->start(
-      new HunspellPrefixMatchRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by HunspellPrefixMatchRequestRunnable
@@ -574,14 +502,10 @@ public:
   ~HunspellPrefixMatchRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void HunspellPrefixMatchRequestRunnable::run()
-{
-  r.run();
-}
 
 void HunspellPrefixMatchRequest::run()
 {

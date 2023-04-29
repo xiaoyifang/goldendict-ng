@@ -278,7 +278,6 @@ private:
   friend class DslArticleRequest;
   friend class DslResourceRequest;
   friend class DslFTSResultsRequest;
-  friend class DslDeferredInitRunnable;
 };
 
 DslDictionary::DslDictionary( string const & id,
@@ -1566,7 +1565,6 @@ public:
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
   }
 
   void run();
@@ -1580,7 +1578,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    //hasExited.acquire();
   }
 };
 
@@ -1741,7 +1738,6 @@ public:
     resourceName( resourceName_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
   }
 
   void run();

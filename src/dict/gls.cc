@@ -860,45 +860,22 @@ void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
 /// GlsDictionary::findHeadwordsForSynonym()
 
-class GlsHeadwordsRequest;
-
-class GlsHeadwordsRequestRunnable: public QRunnable
-{
-  GlsHeadwordsRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  GlsHeadwordsRequestRunnable( GlsHeadwordsRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~GlsHeadwordsRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class GlsHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  friend class GlsHeadwordsRequestRunnable;
-
   wstring word;
   GlsDictionary & dict;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
   GlsHeadwordsRequest( wstring const & word_, GlsDictionary & dict_ ):
     word( word_ ), dict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new GlsHeadwordsRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictHeadwordsRequestRunnable
@@ -911,14 +888,9 @@ public:
   ~GlsHeadwordsRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void GlsHeadwordsRequestRunnable::run()
-{
-  r.run();
-}
 
 void GlsHeadwordsRequest::run()
 {
@@ -979,31 +951,8 @@ sptr< Dictionary::WordSearchRequest >
 
 /// GlsDictionary::getArticle()
 
-class GlsArticleRequest;
-
-class GlsArticleRequestRunnable: public QRunnable
-{
-  GlsArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  GlsArticleRequestRunnable( GlsArticleRequest & r_,
-                             QSemaphore & hasExited_ ): r( r_ ),
-                                                        hasExited( hasExited_ )
-  {}
-
-  ~GlsArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class GlsArticleRequest: public Dictionary::DataRequest
 {
-  friend class GlsArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -1011,7 +960,7 @@ class GlsArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1020,8 +969,9 @@ public:
                      GlsDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new GlsArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by GlsArticleRequestRunnable
@@ -1034,14 +984,9 @@ public:
   ~GlsArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void GlsArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void GlsArticleRequest::run()
 {
@@ -1159,38 +1104,15 @@ sptr< Dictionary::DataRequest > GlsDictionary::getArticle( wstring const & word,
 
 //////////////// GlsDictionary::getResource()
 
-class GlsResourceRequest;
-
-class GlsResourceRequestRunnable: public QRunnable
-{
-  GlsResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  GlsResourceRequestRunnable( GlsResourceRequest & r_,
-                              QSemaphore & hasExited_ ): r( r_ ),
-                                                         hasExited( hasExited_ )
-  {}
-
-  ~GlsResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class GlsResourceRequest: public Dictionary::DataRequest
 {
-  friend class GlsResourceRequestRunnable;
 
   GlsDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1199,8 +1121,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new GlsResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by GlsResourceRequestRunnable
@@ -1213,14 +1136,9 @@ public:
   ~GlsResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void GlsResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void GlsResourceRequest::run()
 {

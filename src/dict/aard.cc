@@ -641,39 +641,15 @@ sptr< Dictionary::DataRequest > AardDictionary::getSearchResults( QString const 
 
 /// AardDictionary::getArticle()
 
-class AardArticleRequest;
-
-class AardArticleRequestRunnable: public QRunnable
-{
-  AardArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  AardArticleRequestRunnable( AardArticleRequest & r_,
-                              QSemaphore & hasExited_ ): r( r_ ),
-                                                         hasExited( hasExited_ )
-  {}
-
-  ~AardArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class AardArticleRequest: public Dictionary::DataRequest
 {
-  friend class AardArticleRequestRunnable;
-
   wstring word;
   vector< wstring > alts;
   AardDictionary & dict;
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -682,8 +658,9 @@ public:
                       AardDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new AardArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by DslArticleRequestRunnable
@@ -696,14 +673,9 @@ public:
   ~AardArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void AardArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void AardArticleRequest::run()
 {

@@ -1011,31 +1011,9 @@ bool EpwingDictionary::isJapanesePunctiation( gd::wchar ch )
   return ch >= 0x3000 && ch <= 0x303F;
 }
 
-class EpwingWordSearchRequest;
-
-class EpwingWordSearchRunnable: public QRunnable
-{
-  EpwingWordSearchRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  EpwingWordSearchRunnable( EpwingWordSearchRequest & r_,
-                            QSemaphore & hasExited_ ): r( r_ ),
-                                                       hasExited( hasExited_ )
-  {}
-
-  ~EpwingWordSearchRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class EpwingWordSearchRequest: public BtreeIndexing::BtreeWordSearchRequest
 {
-  friend class EpwingWordSearchRunnable;
 
   EpwingDictionary & edict;
 
@@ -1050,17 +1028,14 @@ public:
     BtreeWordSearchRequest( dict_, str_, minLength_, maxSuffixVariation_, allowMiddleMatches_, maxResults_, false ),
     edict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new EpwingWordSearchRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void findMatches() override;
 };
 
-void EpwingWordSearchRunnable::run()
-{
-  r.run();
-}
 
 void EpwingWordSearchRequest::findMatches()
 {

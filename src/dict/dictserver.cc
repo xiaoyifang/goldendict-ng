@@ -11,6 +11,7 @@
 #include "htmlescape.hh"
 
 #include <QRegularExpression>
+#include <QtConcurrent>
 
 namespace DictServer {
 
@@ -347,34 +348,12 @@ void DictServerDictionary::getServerDatabases()
   delete socket;
 }
 
-class DictServerWordSearchRequest;
-
-class DictServerWordSearchRequestRunnable: public QRunnable
-{
-  DictServerWordSearchRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  DictServerWordSearchRequestRunnable( DictServerWordSearchRequest & r_,
-                                       QSemaphore & hasExited_ ): r( r_ ),
-                                       hasExited( hasExited_ )
-  {}
-
-  ~DictServerWordSearchRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
   QAtomicInt isCancelled;
   wstring word;
   QString errorString;
-  QSemaphore hasExited;
+  QFuture< void > f;
   DictServerDictionary & dict;
   QTcpSocket * socket;
 
@@ -386,25 +365,21 @@ public:
     dict( dict_ ),
     socket( 0 )
   {
-    QThreadPool::globalInstance()->start(
-      new DictServerWordSearchRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
 
-  ~DictServerWordSearchRequest()
+  ~DictServerWordSearchRequest() override
   {
-    hasExited.acquire();
+    f.waitForFinished();
   }
 
   void cancel() override;
 
 };
-
-void DictServerWordSearchRequestRunnable::run()
-{
-  r.run();
-}
 
 void DictServerWordSearchRequest::run()
 {
@@ -561,34 +536,12 @@ void DictServerWordSearchRequest::cancel()
   finish();
 }
 
-class DictServerArticleRequest;
-
-class DictServerArticleRequestRunnable: public QRunnable
-{
-  DictServerArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  DictServerArticleRequestRunnable( DictServerArticleRequest & r_,
-                                    QSemaphore & hasExited_ ): r( r_ ),
-                                    hasExited( hasExited_ )
-  {}
-
-  ~DictServerArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class DictServerArticleRequest: public Dictionary::DataRequest
 {
   QAtomicInt isCancelled;
   wstring word;
   QString errorString;
-  QSemaphore hasExited;
+  QFuture< void > f;
   DictServerDictionary & dict;
   QTcpSocket * socket;
 
@@ -600,25 +553,21 @@ public:
     dict( dict_ ),
     socket( 0 )
   {
-    QThreadPool::globalInstance()->start(
-      new DictServerArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
 
   ~DictServerArticleRequest()
   {
-    hasExited.acquire();
+    f.waitForFinished();
   }
 
   void cancel() override;
 
 };
-
-void DictServerArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void DictServerArticleRequest::run()
 {
