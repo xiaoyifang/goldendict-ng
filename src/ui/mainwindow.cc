@@ -233,8 +233,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navPronounce->setEnabled( false );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
 
-  connect( navPronounce, SIGNAL( triggered() ),
-           this, SLOT( pronounce() ) );
+  connect( navPronounce, &QAction::triggered, [ this ]() {
+    getCurrentArticleView()->playSound();
+  } );
 
   // zooming
   // named separator (to be able to hide it via CSS)
@@ -1910,8 +1911,9 @@ void MainWindow::pageLoaded( ArticleView * view )
 
   updatePronounceAvailability();
 
-  if ( cfg.preferences.pronounceOnLoadMain )
-    pronounce( view );
+  if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
+    view->playSound();
+  }
 
   //updateFoundInDictsList();
 }
@@ -1968,14 +1970,6 @@ void MainWindow::dictionaryBarToggled( bool )
 
   updateDictionaryBar(); // Updates dictionary bar contents if it's shown
   applyMutedDictionariesState(); // Visibility change affects searches and results
-}
-
-void MainWindow::pronounce( ArticleView * view )
-{
-  if ( view )
-    view->playSound();
-  else
-    getCurrentArticleView()->playSound();
 }
 
 void MainWindow::showDictsPane( )
