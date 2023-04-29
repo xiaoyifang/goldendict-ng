@@ -139,7 +139,7 @@ string escapeForJavaScript( string const & str )
   return result;
 }
 
-QString & stripHtml( QString & tmp )
+QString stripHtml( QString & tmp )
 {
   tmp.replace( QRegularExpression( "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
                                    QRegularExpression::CaseInsensitiveOption ), " " );

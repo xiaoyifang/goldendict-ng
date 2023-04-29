@@ -713,7 +713,7 @@ void EpwingArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+      Folding::applySimpleCaseOnly( headword );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -721,9 +721,9 @@ void EpwingArticleRequest::run()
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( pair< wstring, pair< string, string > >(
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-      pair< string, string >( headword, articleText ) ) );
+    mapToUse.insert( pair(
+      Folding::applySimpleCaseOnly( headword ),
+      pair( headword, articleText ) ) );
 
     articlesIncluded.insert( x.articleOffset );
   }
@@ -826,8 +826,8 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
         dict.loadArticle( pg.at( i ), off.at( i ), headword, articleText );
 
         mainArticles.insert(
-          pair< wstring, pair< string, string > >( Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-                                                   pair< string, string >( headword, articleText ) ) );
+          pair( Folding::applySimpleCaseOnly( headword ),
+                                                   pair( headword, articleText ) ) );
 
         pages.append( pg.at( i ) );
         offsets.append( off.at( i ) );

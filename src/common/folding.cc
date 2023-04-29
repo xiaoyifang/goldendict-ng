@@ -4,6 +4,7 @@
 #include "folding.hh"
 #include <QRegularExpression>
 
+#include "utf8.hh"
 #include "wstring_qt.hh"
 
 namespace Folding {
@@ -75,6 +76,18 @@ wstring applySimpleCaseOnly( wstring const & in )
     out.push_back( foldCaseSimple( *nextChar++ ) );
 
   return out;
+}
+
+wstring applySimpleCaseOnly( QString const & in )
+{
+  //qt only support simple case folding.
+  return in.toCaseFolded().toStdU32String();
+}
+
+wstring applySimpleCaseOnly( std::string const & in )
+{
+  return applySimpleCaseOnly( Utf8::decode( in ) );
+  // return QString::fromStdString( in ).toCaseFolded().toStdU32String();
 }
 
 wstring applyFullCaseOnly( wstring const & in )

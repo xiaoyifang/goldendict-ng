@@ -34,6 +34,8 @@ wstring apply( wstring const &, bool preserveWildcards = false );
 /// Applies only simple case folding algorithm. Since many dictionaries have
 /// different case style, we interpret words differing only by case as synonyms.
 wstring applySimpleCaseOnly( wstring const & );
+wstring applySimpleCaseOnly( QString const & in );
+wstring applySimpleCaseOnly( std::string const & in );
 
 /// Applies only full case folding algorithm. This includes simple case, but also
 /// decomposing ligatures and complex letters.

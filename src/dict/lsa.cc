@@ -250,7 +250,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+      Folding::applySimpleCaseOnly( chain[ x ].word );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -258,8 +258,8 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair< wstring, string >(
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ), chain[ x ].word ) );
+    mapToUse.insert( std::pair(
+      Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].word ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }

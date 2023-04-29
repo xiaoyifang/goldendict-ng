@@ -25,7 +25,7 @@ string preformat( string const &, bool baseRightToLeft = false );
 
 // Escapes the given string to be included in JavaScript.
 string escapeForJavaScript( string const & );
-QString & stripHtml( QString & tmp );
+QString stripHtml( QString & tmp );
   // Replace html entities
 QString unescape( QString const & str, HtmlOption option = HtmlOption::Strip);
 

@@ -797,7 +797,7 @@ void BglArticleRequest::run()
     // We do the case-folded and postfix-less comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( removePostfix( headword ) ) );
+      Folding::applySimpleCaseOnly( removePostfix( headword ) );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -824,9 +824,9 @@ void BglArticleRequest::run()
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( pair< wstring, pair< string, string > >(
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-      pair< string, string >( targetHeadword, articleText ) ) );
+    mapToUse.insert( pair(
+      Folding::applySimpleCaseOnly( headword ),
+      pair( targetHeadword, articleText ) ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
 

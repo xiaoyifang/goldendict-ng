@@ -400,7 +400,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       // We do the case-folded comparison here.
 
       wstring headwordStripped =
-        Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+        Folding::applySimpleCaseOnly( chain[ x ].word );
       if( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -408,8 +408,8 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         ( wordCaseFolded == headwordStripped ) ?
           mainArticles : alternateArticles;
 
-      mapToUse.insert( pair< wstring, string >(
-        Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ),
+      mapToUse.insert( pair(
+        Folding::applySimpleCaseOnly(  chain[ x ].word  ),
         articleText ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );

@@ -1104,9 +1104,9 @@ void GlsArticleRequest::run()
         ( wordCaseFolded == headwordStripped ) ?
           mainArticles : alternateArticles;
 
-      mapToUse.insert( pair< wstring, pair< string, string > >(
+      mapToUse.insert( pair(
         Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-        pair< string, string >( headword, articleText ) ) );
+        pair( headword, articleText ) ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );
     }
