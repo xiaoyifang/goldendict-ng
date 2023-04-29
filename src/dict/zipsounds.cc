@@ -6,7 +6,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
@@ -164,7 +164,7 @@ ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
 
 string ZipSoundsDictionary::getName() noexcept
 {
-  string result = FsEncoding::basename( getDictionaryFilenames()[ 0 ] );
+  string result = Utils::Fs::basename( getDictionaryFilenames()[ 0 ] );
 
   // Strip the extension
   result.erase( result.rfind( '.' ) );
@@ -210,7 +210,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+      Folding::applySimpleCaseOnly( chain[ x ].word );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -218,8 +218,8 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair< wstring, uint32_t >(
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ), chain[ x ].articleOffset ) );
+    mapToUse.insert( std::pair(
+      Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].articleOffset ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }

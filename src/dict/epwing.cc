@@ -18,7 +18,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "chunkedstorage.hh"
 #include "wstring.hh"
 #include "wstring_qt.hh"
@@ -713,7 +713,7 @@ void EpwingArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+      Folding::applySimpleCaseOnly( headword );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -721,9 +721,9 @@ void EpwingArticleRequest::run()
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( pair< wstring, pair< string, string > >(
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-      pair< string, string >( headword, articleText ) ) );
+    mapToUse.insert( pair(
+      Folding::applySimpleCaseOnly( headword ),
+      pair( headword, articleText ) ) );
 
     articlesIncluded.insert( x.articleOffset );
   }
@@ -826,8 +826,8 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
         dict.loadArticle( pg.at( i ), off.at( i ), headword, articleText );
 
         mainArticles.insert(
-          pair< wstring, pair< string, string > >( Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-                                                   pair< string, string >( headword, articleText ) ) );
+          pair( Folding::applySimpleCaseOnly( headword ),
+                                                   pair( headword, articleText ) ) );
 
         pages.append( pg.at( i ) );
         offsets.append( off.at( i ) );
@@ -1011,31 +1011,9 @@ bool EpwingDictionary::isJapanesePunctiation( gd::wchar ch )
   return ch >= 0x3000 && ch <= 0x303F;
 }
 
-class EpwingWordSearchRequest;
-
-class EpwingWordSearchRunnable: public QRunnable
-{
-  EpwingWordSearchRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  EpwingWordSearchRunnable( EpwingWordSearchRequest & r_,
-                            QSemaphore & hasExited_ ): r( r_ ),
-                                                       hasExited( hasExited_ )
-  {}
-
-  ~EpwingWordSearchRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class EpwingWordSearchRequest: public BtreeIndexing::BtreeWordSearchRequest
 {
-  friend class EpwingWordSearchRunnable;
 
   EpwingDictionary & edict;
 
@@ -1050,17 +1028,14 @@ public:
     BtreeWordSearchRequest( dict_, str_, minLength_, maxSuffixVariation_, allowMiddleMatches_, maxResults_, false ),
     edict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new EpwingWordSearchRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void findMatches() override;
 };
 
-void EpwingWordSearchRunnable::run()
-{
-  r.run();
-}
 
 void EpwingWordSearchRequest::findMatches()
 {
@@ -1276,7 +1251,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           dict.setSubBook( sb );
 
-          dir = QString::fromStdString( mainDirectory ) + FsEncoding::separator() + dict.getCurrentSubBookDirectory();
+          dir = QString::fromStdString( mainDirectory ) + Utils::Fs::separator() + dict.getCurrentSubBookDirectory();
 
           Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
 

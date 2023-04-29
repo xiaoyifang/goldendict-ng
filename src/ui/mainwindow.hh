@@ -329,11 +329,6 @@ private slots:
 
   void dictionaryBarToggled( bool checked );
 
-  /// Pronounces the currently displayed word by playing its first audio
-  /// reference, if it has any.
-  /// If view is 0, the operation is done for the currently open tab.
-  void pronounce( ArticleView * view = 0 );
-
   void zoomin();
   void zoomout();
   void unzoom();

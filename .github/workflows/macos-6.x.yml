@@ -61,7 +61,7 @@ jobs:
         run: |   
           previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
           echo "$previousTag">version.txt
-      - name: build macos
+      - name: install deps on macos
         run: |
           brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 xz lzo libogg libvorbis zstd || true
           brew install create-dmg

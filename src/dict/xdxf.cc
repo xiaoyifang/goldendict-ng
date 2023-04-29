@@ -8,7 +8,7 @@
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-#include "fsencoding.hh"
+
 #include <map>
 #include <set>
 #include <string>
@@ -443,31 +443,9 @@ sptr< Dictionary::DataRequest > XdxfDictionary::getSearchResults( QString const 
 
 /// XdxfDictionary::getArticle()
 
-class XdxfArticleRequest;
-
-class XdxfArticleRequestRunnable: public QRunnable
-{
-  XdxfArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  XdxfArticleRequestRunnable( XdxfArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~XdxfArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class XdxfArticleRequest: public Dictionary::DataRequest
 {
-  friend class XdxfArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -475,7 +453,7 @@ class XdxfArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -484,8 +462,9 @@ public:
                      XdxfDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new XdxfArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by XdxfArticleRequestRunnable
@@ -498,14 +477,10 @@ public:
   ~XdxfArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void XdxfArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void XdxfArticleRequest::run()
 {
@@ -517,11 +492,10 @@ void XdxfArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -536,26 +510,25 @@ void XdxfArticleRequest::run()
   if( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for( unsigned x = 0; x < chain.size(); ++x )
-  {
+  for ( const auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
       finish();
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Now grab that article
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
 
     try
     {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
 
       // Ok. Now, does it go to main articles, or to alternate ones? We list
       // main ones first, and alternates after.
@@ -563,7 +536,7 @@ void XdxfArticleRequest::run()
       // We do the case-folded comparison here.
 
       wstring headwordStripped =
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+        Folding::applySimpleCaseOnly( headword );
       if( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -571,11 +544,11 @@ void XdxfArticleRequest::run()
         ( wordCaseFolded == headwordStripped ) ?
           mainArticles : alternateArticles;
 
-      mapToUse.insert( pair< wstring, pair< string, string > >(
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-        pair< string, string >( headword, articleText ) ) );
+      mapToUse.insert( pair(
+        Folding::applySimpleCaseOnly( headword ),
+        pair( headword, articleText ) ) );
 
-      articlesIncluded.insert( chain[ x ].articleOffset );
+      articlesIncluded.insert( x.articleOffset );
     }
     catch( std::exception &ex )
     {
@@ -948,9 +921,8 @@ void indexArticle( GzippedFile & gzFile,
 
         // Add words to index
 
-        for( list< QString >::const_iterator i = words.begin(); i != words.end();
-             ++i )
-            indexedWords.addWord( gd::toWString( *i ), offset );
+        for ( const auto & word : words )
+          indexedWords.addWord( gd::toWString( word ), offset );
 
         ++articleCount;
 
@@ -969,38 +941,15 @@ void indexArticle( GzippedFile & gzFile,
 
 //// XdxfDictionary::getResource()
 
-class XdxfResourceRequest;
-
-class XdxfResourceRequestRunnable: public QRunnable
-{
-  XdxfResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  XdxfResourceRequestRunnable( XdxfResourceRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~XdxfResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class XdxfResourceRequest: public Dictionary::DataRequest
 {
-  friend class XdxfResourceRequestRunnable;
 
   XdxfDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1009,8 +958,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new XdxfResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by XdxfResourceRequestRunnable
@@ -1023,14 +973,10 @@ public:
   ~XdxfResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void XdxfResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void XdxfResourceRequest::run()
 {
@@ -1048,7 +994,7 @@ void XdxfResourceRequest::run()
     return;
   }
 
-  string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + resourceName;
+  string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -1062,7 +1008,7 @@ void XdxfResourceRequest::run()
     }
     catch( File::exCantOpen & )
     {
-      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + resourceName;
+      n = dict.getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + resourceName;
 
       try
       {
@@ -1126,22 +1072,20 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( const auto & fileName : fileNames ) {
     // Only allow .xdxf and .xdxf.dz suffixes
 
-    if ( ( i->size() < 5  || strcasecmp( i->c_str() + ( i->size() - 5 ), ".xdxf" ) != 0 ) &&
-         ( i->size() < 8 ||
-           strcasecmp( i->c_str() + ( i->size() - 8 ), ".xdxf.dz" ) != 0 ) )
+    if ( ( fileName.size() < 5  || strcasecmp( fileName.c_str() + ( fileName.size() - 5 ), ".xdxf" ) != 0 ) &&
+         ( fileName.size() < 8 ||
+           strcasecmp( fileName.c_str() + ( fileName.size() - 8 ), ".xdxf.dz" ) != 0 ) )
       continue;
 
     try
     {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
-      string baseName = ( (*i)[ i->size() - 5 ] == '.' ) ?
-               string( *i, 0, i->size() - 5 ) : string( *i, 0, i->size() - 8 );
+      string baseName = ( fileName[ fileName.size() - 5 ] == '.' ) ?
+               string( fileName, 0, fileName.size() - 5 ) : string( fileName, 0, fileName.size() - 8 );
 
       // See if there's a zip file with resources present. If so, include it.
 
@@ -1162,7 +1106,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       {
         // Building the index
 
-        gdDebug( "Xdxf: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Xdxf: Building the index for dictionary: %s\n", fileName.c_str() );
 
         //initializing.indexingDictionary( nameFromFileName( dictFiles[ 0 ] ) );
 
@@ -1339,10 +1283,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                           else if ( stream.isStartElement() && stream.name() == u"abbr_v" )
                           {
                             s =  readElementText( stream );
-                              value = Utf8::encode( Folding::trimWhitespace( gd::toWString( s ) ) );
-                              for( list< wstring >::iterator i = keys.begin(); i != keys.end(); ++i )
-                              {
-                                abrv[ Utf8::encode( Folding::trimWhitespace( *i ) ) ] = value;
+                            value = Folding::trimWhitespace( s ).toStdString();
+                              for ( const auto & key : keys ) {
+                                abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
                               }
                               keys.clear();
                           }
@@ -1363,10 +1306,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                           else if ( stream.isStartElement() && stream.name() == u"v" )
                           {
                             s =  readElementText( stream );
-                              value = Utf8::encode( Folding::trimWhitespace( gd::toWString( s ) ) );
-                              for( list< wstring >::iterator i = keys.begin(); i != keys.end(); ++i )
-                              {
-                                abrv[ Utf8::encode( Folding::trimWhitespace( *i ) ) ] = value;
+                            value = Folding::trimWhitespace( s ).toStdString();
+                              for ( const auto & key : keys ) {
+                                abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
                               }
                               keys.clear();
                           }
@@ -1397,14 +1339,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
-                for( map< string, string >::const_iterator i = abrv.begin();  i != abrv.end(); ++i )
-                {
-                  sz = i->first.size();
+                for ( const auto & i : abrv ) {
+                  sz = i.first.size();
                   chunks.addToBlock( &sz, sizeof( uint32_t ) );
-                  chunks.addToBlock( i->first.data(), sz );
-                  sz = i->second.size();
+                  chunks.addToBlock( i.first.data(), sz );
+                  sz = i.second.size();
                   chunks.addToBlock( &sz, sizeof( uint32_t ) );
-                  chunks.addToBlock( i->second.data(), sz );
+                  chunks.addToBlock( i.second.data(), sz );
                 }
               }
 
@@ -1489,7 +1430,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
     catch( std::exception & e )
     {
       gdWarning( "Xdxf dictionary initializing failed: %s, error: %s\n",
-                 i->c_str(), e.what() );
+                 fileName.c_str(), e.what() );
     }
   }
 

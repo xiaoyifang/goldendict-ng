@@ -8,7 +8,7 @@
 #include <QTextDocumentFragment>
 #include <QHash>
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "wstring.hh"
 #include "wstring_qt.hh"
@@ -1168,7 +1168,7 @@ void EpwingBook::getArticle( QString & headword, QString & articleText,
 
   readHeadword( headword, text_only );
 
-  QString hw = Html::unescape( headword, true );
+  QString hw = Html::unescape( headword, Html::HtmlOption::Keep );
   fixHeadword( hw );
 
   auto parts = hw.split( QChar::Space, Qt::SkipEmptyParts );

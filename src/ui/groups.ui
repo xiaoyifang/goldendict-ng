@@ -200,7 +200,7 @@
           <string>Create language-based groups</string>
          </property>
          <property name="text">
-          <string>Auto groups by Languages</string>
+          <string>Group by Languages</string>
          </property>
         </widget>
        </item>
@@ -210,7 +210,14 @@
           <string>Create folder-based groups.</string>
          </property>
          <property name="text">
-          <string>Auto groups by Folders</string>
+          <string>Group by Folders</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="groupMetadata">
+         <property name="text">
+          <string>Group by Metadata</string>
          </property>
         </widget>
        </item>

@@ -16,10 +16,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
-  QIntermediateApplication( argc, argv )
-#ifdef Q_OS_WIN32
-,  mainWindow( 0 )
-#endif
+  QtSingleApplication( argc, argv )
 {
   connect( this,
     &QGuiApplication::commitDataRequest,
@@ -40,10 +37,7 @@ QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
 
 QHotkeyApplication::QHotkeyApplication( QString const & id,
                                         int & argc, char ** argv ):
-  QIntermediateApplication( id, argc, argv )
-#ifdef Q_OS_WIN32
-,  mainWindow( 0 )
-#endif
+  QtSingleApplication( id, argc, argv )
 {
   connect( this,
     &QGuiApplication::commitDataRequest,

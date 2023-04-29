@@ -5,7 +5,7 @@
 
 #include "slob.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "folding.hh"
 #include "gddebug.hh"
 #include "utf8.hh"
@@ -1305,31 +1305,9 @@ sptr< Dictionary::DataRequest > SlobDictionary::getSearchResults( QString const 
 
 /// SlobDictionary::getArticle()
 
-class SlobArticleRequest;
-
-class SlobArticleRequestRunnable: public QRunnable
-{
-  SlobArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  SlobArticleRequestRunnable( SlobArticleRequest & r_,
-                              QSemaphore & hasExited_ ): r( r_ ),
-                                                         hasExited( hasExited_ )
-  {}
-
-  ~SlobArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class SlobArticleRequest: public Dictionary::DataRequest
 {
-  friend class SlobArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -1337,7 +1315,7 @@ class SlobArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1346,8 +1324,9 @@ public:
                       SlobDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new SlobArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by DslArticleRequestRunnable
@@ -1360,14 +1339,10 @@ public:
   ~SlobArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void SlobArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void SlobArticleRequest::run()
 {
@@ -1430,7 +1405,7 @@ void SlobArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+      Folding::applySimpleCaseOnly( headword );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -1438,9 +1413,9 @@ void SlobArticleRequest::run()
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( pair< wstring, pair< string, string > >(
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-      pair< string, string >( headword, articleText ) ) );
+    mapToUse.insert( pair(
+      Folding::applySimpleCaseOnly( headword ),
+      pair( headword, articleText ) ) );
 
     articlesIncluded.insert( pos );
   }
@@ -1494,38 +1469,15 @@ sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word
 
 //// SlobDictionary::getResource()
 
-class SlobResourceRequest;
-
-class SlobResourceRequestRunnable: public QRunnable
-{
-  SlobResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  SlobResourceRequestRunnable( SlobResourceRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~SlobResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class SlobResourceRequest: public Dictionary::DataRequest
 {
-  friend class SlobResourceRequestRunnable;
 
   SlobDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1534,8 +1486,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new SlobResourceRequestRunnable( *this, hasExited ) );
+      f = QtConcurrent::run( [ this ]() {
+        this->run();
+      } );
   }
 
   void run(); // Run from another thread by ZimResourceRequestRunnable
@@ -1548,14 +1501,10 @@ public:
   ~SlobResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void SlobResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void SlobResourceRequest::run()
 {

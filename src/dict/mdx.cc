@@ -11,7 +11,7 @@
 #include "chunkedstorage.hh"
 #include "gddebug.hh"
 #include "langcoder.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "ex.hh"
 #include "mdictparser.hh"
@@ -537,7 +537,6 @@ class MdxArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -552,7 +551,6 @@ public:
     ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start(  );
   }
 
   void run();
@@ -566,7 +564,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    // hasExited.acquire();
   }
 };
 
@@ -690,7 +687,6 @@ class MddResourceRequest: public Dictionary::DataRequest
   MdxDictionary & dict;
   wstring resourceName;
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -699,7 +695,6 @@ public:
     Dictionary::DataRequest( &dict_ ), dict( dict_ ), resourceName( Utf8::decode( resourceName_ ) )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
   }
 
   void run();
@@ -713,7 +708,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    //hasExited.acquire();
   }
 };
 
@@ -1221,7 +1215,7 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     newResourceName.insert( 0, 1, '\\' );
   }
   // local file takes precedence
-  if ( string fn = getContainingFolder().toStdString() + FsEncoding::separator() + u8ResourceName;
+  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + u8ResourceName;
        File::exists( fn ) ) {
     File::loadFromFile( fn, data );
     return;

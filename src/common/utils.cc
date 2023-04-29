@@ -2,7 +2,6 @@
 #include <QDir>
 #include <QPalette>
 #include <QStyle>
-#include <QDesktopServices>
 #include <QMessageBox>
 
 QString Utils::Path::combine(const QString& path1, const QString& path2)
@@ -42,3 +41,23 @@ std::string Utils::Html::getHtmlCleaner()
                      </i></i></i></i></i></i></i></i>
                      </a></a></a></a></a></a></a></a>)";
 }
+
+
+namespace Utils::Fs {
+
+char separator()
+{
+  return QDir::separator().toLatin1();
+}
+
+std::string basename( std::string const & str )
+{
+  size_t x = str.rfind( separator() );
+
+  if ( x == std::string::npos )
+    return str;
+
+  return std::string( str, x + 1 );
+}
+
+} // namespace FsEncoding

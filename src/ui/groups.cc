@@ -55,6 +55,7 @@ Groups::Groups( QWidget * parent,
 
   connect( ui.autoGroups, &QAbstractButton::clicked, this, &Groups::addAutoGroups );
   connect( ui.autoGroupsFolders, &QAbstractButton::clicked, this, &Groups::addAutoGroupsByFolders );
+  connect( ui.groupMetadata, &QAbstractButton::clicked, this, &Groups::groupsByMetadata );
 
   ui.dictionaries->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &Groups::showDictInfo );
@@ -131,6 +132,10 @@ void Groups::addAutoGroupsByFolders() {
   countChanged();
 }
 
+void Groups::groupsByMetadata() {
+  ui.groups->groupsByMetadata();
+  countChanged();
+}
 void Groups::renameCurrent()
 {
   int current = ui.groups->currentIndex();

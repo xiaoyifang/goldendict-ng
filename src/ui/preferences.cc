@@ -57,7 +57,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Load values into form
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-  ui.interfaceLanguage->addItem( QIcon( ":/flags/us.png" ), Language::localizedNameForId( LangCoder::code2toInt( "en" ) ), QString( "en_US" ) );
   ui.fontFamilies->addItem( tr( "System default" ), QString() );
 
   // See which other translations do we have
@@ -66,33 +65,38 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
                                                                  QDir::Files );
 
   // We need to sort by language name -- otherwise list looks really weird
-  QMultiMap< QString, QPair< QIcon, QString > > sortedLocs;
-
-  for( QStringList::iterator i = availLocs.begin(); i != availLocs.end(); ++i )
-  {
+  QMultiMap< QString, QString > sortedLocs;
+  sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US");
+  for ( const auto & availLoc : availLocs ) {
     // Here we assume the xx_YY naming, where xx is language and YY is region.
-    QString lang = i->mid( 0, 2 );
+    //remove .qm suffix.
+    QString locale = availLoc.left( availLoc.size() - 3 );
 
-    if ( lang == "qt" )
+    if ( locale == "qt" )
       continue; // We skip qt's own localizations
 
-    sortedLocs.insert(
-      Language::localizedNameForId( LangCoder::code2toInt( lang.toLatin1().data() ) ),
-      QPair< QIcon, QString >(
-        QIcon( QString( ":/flags/%1.png" ).arg( i->mid( 3, 2 ).toLower() ) ),
-        i->mid( 0, i->size() - 3 ) ) );
+    auto language = Language::languageForLocale( locale );
+    if ( language.isEmpty() ) {
+      qWarning() << "can not found the corresponding language from locale:" << locale;
+    }
+    else {
+      sortedLocs.insert( language, locale );
+    }
   }
 
-  for( QMultiMap< QString, QPair< QIcon, QString > >::iterator i = sortedLocs.begin(); i != sortedLocs.end(); ++i )
-    ui.interfaceLanguage->addItem( i.value().first, i.key(), i.value().second );
+  for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
+    ui.interfaceLanguage->addItem(  i.key(), i.value() );
+  }
 
-  for( int x = 0; x < ui.interfaceLanguage->count(); ++x )
+  for( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {
     if ( ui.interfaceLanguage->itemData( x ).toString() == p.interfaceLanguage )
     {
       ui.interfaceLanguage->setCurrentIndex( x );
       prevInterfaceLanguage = x;
       break;
     }
+  }
+
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   const QStringList fontFamilies = QFontDatabase::families();
 #else

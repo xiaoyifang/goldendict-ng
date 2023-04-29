@@ -7,7 +7,7 @@
 #include "utf8.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-#include "fsencoding.hh"
+
 #include "langcoder.hh"
 #include <map>
 #include <set>
@@ -201,7 +201,7 @@ string nameFromFileName( string const & indexFileName )
   if ( indexFileName.empty() )
     return string();
 
-  char const * sep = strrchr( indexFileName.c_str(), FsEncoding::separator() );
+  char const * sep = strrchr( indexFileName.c_str(), Utils::Fs::separator() );
 
   if ( !sep )
     sep = indexFileName.c_str();
@@ -400,7 +400,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       // We do the case-folded comparison here.
 
       wstring headwordStripped =
-        Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+        Folding::applySimpleCaseOnly( chain[ x ].word );
       if( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -408,8 +408,8 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         ( wordCaseFolded == headwordStripped ) ?
           mainArticles : alternateArticles;
 
-      mapToUse.insert( pair< wstring, string >(
-        Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ),
+      mapToUse.insert( pair(
+        Folding::applySimpleCaseOnly(  chain[ x ].word  ),
         articleText ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );
@@ -451,10 +451,14 @@ QString const& DictdDictionary::getDescription()
     sptr< Dictionary::DataRequest > req =
       getArticle(  U"00databaseinfo" , vector< wstring >(), wstring(), false );
 
-    if( req->dataSize() > 0 )
-      dictionaryDescription = Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ), true );
-    else
+    if ( req->dataSize() > 0 ) {
+      dictionaryDescription =
+        Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
+                        Html::HtmlOption::Keep );
+    }
+    else {
       dictionaryDescription = "NONE";
+    }
 
     return dictionaryDescription;
 }

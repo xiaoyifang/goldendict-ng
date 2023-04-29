@@ -7,7 +7,7 @@
 #include "utf8.hh"
 #include "wstring_qt.hh"
 #include "folding.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "file.hh"
 #include "filetype.hh"
@@ -425,13 +425,13 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_abbr" );
-    if( type == XDXF && pAbrv != NULL )
+    if( type == XDXF && pAbrv != nullptr )
     {
-        string val = Utf8::encode( Folding::trimWhitespace( gd::toWString( el.text() ) ) );
+      string val = Folding::trimWhitespace( el.text() ).toStdString();
 
         // If we have such a key, display a title
 
-        map< string, string >::const_iterator i = pAbrv->find( val );
+      auto i = pAbrv->find( val );
 
         if ( i != pAbrv->end() )
         {
@@ -649,7 +649,7 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
             bool search = false;
             if( type == STARDICT )
             {
-              string n = dictPtr->getContainingFolder().toStdString() + FsEncoding::separator() + string( "res" ) + FsEncoding::separator() + filename;
+              string n = dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + string( "res" ) + Utils::Fs::separator() + filename;
               search = !File::exists( n ) &&
                        ( !resourceZip ||
                          !resourceZip->isOpen() ||
@@ -657,9 +657,9 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
             }
             else
             {
-              string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + FsEncoding::separator() + filename;
+              string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + filename;
               search   = !File::exists( n )
-                && !File::exists( dictPtr->getContainingFolder().toStdString() + FsEncoding::separator() + filename )
+                && !File::exists( dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + filename )
                 && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
             }
 

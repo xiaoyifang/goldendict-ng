@@ -216,7 +216,6 @@ protected:
 
 class BtreeWordSearchRequest: public Dictionary::WordSearchRequest
 {
-  friend class BtreeWordSearchRunnable;
 protected:
   BtreeDictionary & dict;
   wstring str;
@@ -225,7 +224,7 @@ protected:
   int maxSuffixVariation;
   bool allowMiddleMatches;
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 

@@ -7,7 +7,7 @@
 #include "config.hh"
 #include "langcoder.hh"
 #include "language.hh"
-#include "fsencoding.hh"
+#include "toml.hpp"
 
 //#include "initializing.hh"
 
@@ -863,6 +863,11 @@ void DictGroupsWidget::addAutoGroupsByFolders()
 
   // create and insert groups
   // modifying user's groups begins here
+  addGroupBasedOnMap( groupToDicts );
+}
+
+void DictGroupsWidget::addGroupBasedOnMap( const QMultiMap<QString, sptr<Dictionary::Class>> & groupToDicts )
+{
   for ( const auto & group : groupToDicts.uniqueKeys() ) {
     if ( count() != 0 ) {
       setCurrentIndex( count() - 1 );
@@ -871,10 +876,60 @@ void DictGroupsWidget::addAutoGroupsByFolders()
     addUniqueGroup( group );
     DictListModel * model = getCurrentModel();
 
-    for ( const auto& dict : groupToDicts.values( group ) ) {
+    for ( const auto & dict : groupToDicts.values( group ) ) {
       model->addRow( QModelIndex(), dict );
     }
   }
+}
+
+void DictGroupsWidget::groupsByMetadata()
+{
+  if ( activeDicts->empty() ) {
+    return;
+  }
+  if ( QMessageBox::information( this,
+                                 tr( "Confirmation" ),
+                                 tr( "Are you sure you want to generate a set of groups based on metadata.toml?" ),
+                                 QMessageBox::Yes,
+                                 QMessageBox::Cancel )
+       != QMessageBox::Yes ) {
+    return;
+  }
+  // map from GroupName to dicts
+  QMultiMap< QString, sptr< Dictionary::Class > > groupToDicts;
+
+  for ( const auto & dict : *activeDicts ) {
+    auto baseDir = dict->getContainingFolder();
+    if ( baseDir.isEmpty() )
+      continue;
+
+    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+    if ( !QFile::exists( filePath ) ) {
+      qDebug() << "the dictionary folder:" << baseDir << " contain no metadata.toml";
+      continue;
+    }
+    try {
+      auto config = toml::parse_file( filePath.toStdString() );
+
+      toml::array * categories = config.get_as< toml::array >( "category" );
+      if (!categories) {
+        continue;
+      }
+      categories->for_each( [ &groupToDicts, &dict ]( auto && elem ) {
+        auto group = QString::fromStdString( elem.as_string()->value_or( "" ) ).trimmed();
+        if ( group.isEmpty() )
+          return;
+        groupToDicts.insert( group, dict );
+      } );
+    }catch( toml::parse_error & e) {
+      qWarning() << "can not open the metadata.toml" << e.what();
+    }
+  }
+    
+
+  // create and insert groups
+  // modifying user's groups begins here
+  addGroupBasedOnMap( groupToDicts );
 }
 
 

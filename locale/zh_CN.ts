@@ -633,6 +633,26 @@ between classic and school orthography in cyrillic)</source>
       <translation>根据目标语言合并群组&quot;-&gt;%1&quot;</translation>
     </message>
     <message>
+        <location filename="../src/ui/groups_widgets.cc" line="785"/>
+        <source>Auto group by folder failed.</source>
+        <translation>根据文件分组失败</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="786"/>
+        <source>The parent directory of %1 can be reached.</source>
+        <translation>无法获取父文件夹 %1 </translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="791"/>
+        <source>Are you sure you want to generate a set of groups based on containing folders?</source>
+        <translation>您确定根据文件夹结构生成词组吗？</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="892"/>
+        <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
+        <translation>您确定需要基于metadata.txt生成分组吗？</translation>
+    </message>
+    <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>建立双向群组&quot;%1-%2-%1&quot;</translation>
@@ -1962,7 +1982,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="136"/>
       <source>Korean</source>
-      <translation>韩国语（朝鲜语）</translation>
+      <translation>韩语</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="171"/>
@@ -2561,6 +2581,214 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
+    <name>Language::Db</name>
+    <message>
+        <location filename="../src/language.cc" line="41"/>
+        <source>French</source>
+        <translation>法语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="42"/>
+        <source>Spanish</source>
+        <translation>西班牙语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="43"/>
+        <source>Belarusian</source>
+        <translation>白俄罗斯语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="44"/>
+        <source>Bulgarian</source>
+        <translation>保加利亚语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="45"/>
+        <source>Czech</source>
+        <translation>捷克语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="46"/>
+        <source>German</source>
+        <translation>德语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="47"/>
+        <source>Greek</source>
+        <translation>希腊语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="48"/>
+        <source>Finnish</source>
+        <translation>芬兰语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="49"/>
+        <source>Italian</source>
+        <translation>意大利语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="50"/>
+        <source>Japanese</source>
+        <translation>日语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="51"/>
+        <source>Korean</source>
+        <translation>韩语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="52"/>
+        <source>Lithuanian</source>
+        <translation>立陶宛语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="53"/>
+        <source>Macedonian</source>
+        <translation>马其顿语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="54"/>
+        <source>Dutch</source>
+        <translation>荷兰语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="55"/>
+        <source>Polish</source>
+        <translation>波兰语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="56"/>
+        <source>Portuguese</source>
+        <translation>葡萄牙语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="57"/>
+        <source>Russian</source>
+        <translation>俄语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="58"/>
+        <source>Slovak</source>
+        <translation>斯洛伐克语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="59"/>
+        <source>Albanian</source>
+        <translation>阿尔巴尼亚语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="60"/>
+        <source>Serbian (Cyrillic)</source>
+        <translation>塞尔维亚语（西里尔文）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="61"/>
+        <source>Swedish</source>
+        <translation>瑞典语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="62"/>
+        <source>Turkish</source>
+        <translation>土耳其语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="63"/>
+        <source>Ukrainian</source>
+        <translation>乌克兰语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="64"/>
+        <source>Chinese Simplified</source>
+        <translation>中文（简体）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="65"/>
+        <source>Chinese Traditional</source>
+        <translation>中文（繁体）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="66"/>
+        <source>Vietnamese</source>
+        <translation>越南语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="67"/>
+        <source>Portuguese, Brazilian</source>
+        <translation>葡萄牙语（巴西）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="68"/>
+        <source>Persian</source>
+        <translation>波斯语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="69"/>
+        <source>Spanish, Argentina</source>
+        <translation>西班牙语（阿根廷）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="70"/>
+        <source>Hindi</source>
+        <translation>印地语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="71"/>
+        <source>Esperanto</source>
+        <translation>世界语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="72"/>
+        <source>German, Switzerland</source>
+        <translation>德语（瑞士）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="73"/>
+        <source>Spanish, Bolivia</source>
+        <translation>西班牙语（玻利维亚）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="74"/>
+        <source>Tajik</source>
+        <translation>塔吉克语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="75"/>
+        <source>Quechua</source>
+        <translation>科察语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="76"/>
+        <source>Aymara</source>
+        <translation>艾马拉语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="77"/>
+        <source>Arabic, Saudi Arabia</source>
+        <translation>阿拉伯语（沙特阿拉伯）</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="78"/>
+        <source>Turkmen</source>
+        <translation>土库曼语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="79"/>
+        <source>Interlingue</source>
+        <translation>国际语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="80"/>
+        <source>Lojban</source>
+        <translation>逻辑语</translation>
+    </message>
+    <message>
+        <location filename="../src/language.cc" line="81"/>
+        <source>English</source>
+        <translation>英语</translation>
+    </message>
+</context>
+<context>
     <name>LoadDictionaries</name>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="194"/>
@@ -3490,7 +3718,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="551"/>
       <source>Shift</source>
-      <translation>偏移</translation>
+      <translation>Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="917"/>
@@ -4388,6 +4616,11 @@ from Stardict, Babylon and GLS dictionaries</source>
       <location filename="../src/ui/preferences.ui" line="1575"/>
       <source>minutes</source>
       <translation>分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/preferences.cc" line="60"/>
+        <source>English</source>
+        <translation>英语</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="112"/>

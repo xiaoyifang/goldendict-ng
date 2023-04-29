@@ -34,6 +34,8 @@ wstring apply( wstring const &, bool preserveWildcards = false );
 /// Applies only simple case folding algorithm. Since many dictionaries have
 /// different case style, we interpret words differing only by case as synonyms.
 wstring applySimpleCaseOnly( wstring const & );
+wstring applySimpleCaseOnly( QString const & in );
+wstring applySimpleCaseOnly( std::string const & in );
 
 /// Applies only full case folding algorithm. This includes simple case, but also
 /// decomposing ligatures and complex letters.
@@ -44,8 +46,8 @@ wstring applyDiacriticsOnly( wstring const & );
 
 /// Applies only punctuation folding algorithm.
 wstring applyPunctOnly( wstring const & );
-
-/// Applies only whitespace folding algorithm.
+QString applyPunctOnly( QString const & in );
+  /// Applies only whitespace folding algorithm.
 wstring applyWhitespaceOnly( wstring const & );
 
 /// Applies only whitespace&punctuation folding algorithm.
@@ -63,13 +65,12 @@ bool isPunct( wchar ch );
 /// Removes any whitespace or punctuation from the beginning and the end of
 /// the word.
 wstring trimWhitespaceOrPunct( wstring const & );
+QString trimWhitespaceOrPunct( QString const & in );
 
 /// Removes any whitespace from the beginning and the end of
 /// the word.
 wstring trimWhitespace( wstring const & );
-
-/// Turns any sequences of consecutive whitespace into a single basic space.
-void normalizeWhitespace( wstring & );
+QString trimWhitespace( QString const & in );
 
 /// Same as apply( wstring ), but without any heap operations, therefore
 /// preferable when there're many strings to process. Returns -1 if the

@@ -11,7 +11,7 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "gddebug.hh"
-#include "fsencoding.hh"
+
 #include "filetype.hh"
 #include "indexedzip.hh"
 #include "tiff.hh"
@@ -1150,7 +1150,7 @@ QString const& StardictDictionary::getDescription()
       desc.replace( "\t", "<br/>" );
       desc.replace( "\\n", "<br/>" );
       desc.replace( "<br>", "<br/>", Qt::CaseInsensitive );
-      dictionaryDescription += Html::unescape( desc, true );
+      dictionaryDescription += Html::unescape( desc, Html::HtmlOption::Keep );
     }
 
     if( dictionaryDescription.isEmpty() )
@@ -1220,37 +1220,14 @@ sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString co
 
 /// StardictDictionary::findHeadwordsForSynonym()
 
-class StardictHeadwordsRequest;
-
-class StardictHeadwordsRequestRunnable: public QRunnable
-{
-  StardictHeadwordsRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictHeadwordsRequestRunnable( StardictHeadwordsRequest & r_,
-                                    QSemaphore & hasExited_ ): r( r_ ),
-                                                               hasExited( hasExited_ )
-  {}
-
-  ~StardictHeadwordsRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  friend class StardictHeadwordsRequestRunnable;
 
   wstring word;
   StardictDictionary & dict;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1258,8 +1235,9 @@ public:
                             StardictDictionary & dict_ ):
     word( word_ ), dict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictHeadwordsRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictHeadwordsRequestRunnable
@@ -1272,14 +1250,10 @@ public:
   ~StardictHeadwordsRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void StardictHeadwordsRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictHeadwordsRequest::run()
 {
@@ -1339,31 +1313,9 @@ sptr< Dictionary::WordSearchRequest >
 
 /// StardictDictionary::getArticle()
 
-class StardictArticleRequest;
-
-class StardictArticleRequestRunnable: public QRunnable
-{
-  StardictArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictArticleRequestRunnable( StardictArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~StardictArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class StardictArticleRequest: public Dictionary::DataRequest
 {
-  friend class StardictArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -1371,7 +1323,8 @@ class StardictArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
+
 
 public:
 
@@ -1381,8 +1334,9 @@ public:
                      bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictArticleRequestRunnable
@@ -1395,14 +1349,9 @@ public:
   ~StardictArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void StardictArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictArticleRequest::run()
 {
@@ -1458,7 +1407,7 @@ void StardictArticleRequest::run()
       // We do the case-folded comparison here.
 
       wstring headwordStripped =
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+        Folding::applySimpleCaseOnly( headword );
       if( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -1466,9 +1415,9 @@ void StardictArticleRequest::run()
         ( wordCaseFolded == headwordStripped ) ?
           mainArticles : alternateArticles;
 
-      mapToUse.insert( pair< wstring, pair< string, string > >(
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-        pair< string, string >( headword, articleText ) ) );
+      mapToUse.insert( pair(
+        Folding::applySimpleCaseOnly( headword ),
+        pair( headword, articleText ) ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );
     }
@@ -1630,38 +1579,16 @@ Ifo::Ifo( File::Class & f ):
 
 //// StardictDictionary::getResource()
 
-class StardictResourceRequest;
-
-class StardictResourceRequestRunnable: public QRunnable
-{
-  StardictResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictResourceRequestRunnable( StardictResourceRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~StardictResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class StardictResourceRequest: public Dictionary::DataRequest
 {
-  friend class StardictResourceRequestRunnable;
 
   StardictDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1670,8 +1597,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictResourceRequestRunnable
@@ -1684,14 +1612,9 @@ public:
   ~StardictResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void StardictResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictResourceRequest::run()
 {
@@ -1709,7 +1632,7 @@ void StardictResourceRequest::run()
     if( resourceName.at( resourceName.length() - 1 ) == '\x1F' )
       resourceName.erase( resourceName.length() - 1, 1 );
 
-    string n = dict.getContainingFolder().toStdString() + FsEncoding::separator() + "res" + FsEncoding::separator() + resourceName;
+    string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
@@ -2021,11 +1944,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       string zipFileName;
       string baseName =
-        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + FsEncoding::separator();
+        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + Utils::Fs::separator();
 
       if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName ) ||
            File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName ) ||
-           File::tryPossibleZipName( baseName + "res" + FsEncoding::separator() + "res.zip", zipFileName ) )
+           File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) )
         dictFiles.push_back( zipFileName );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );

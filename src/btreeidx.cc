@@ -18,10 +18,7 @@
 #include "wildcard.hh"
 #include "globalbroadcaster.hh"
 
-//#define __BTREE_USE_LZO
-// LZO mode is experimental and unsupported. Tests didn't show any substantial
-// speed improvements.
-
+#include <QtConcurrent>
 #include <zlib.h>
 
 namespace BtreeIndexing {
@@ -111,31 +108,6 @@ vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word,
   return result;
 }
 
-class BtreeWordSearchRunnable: public QRunnable
-{
-  BtreeWordSearchRequest & r;
-  QSemaphore & hasExited;
-  
-public:
-
-  BtreeWordSearchRunnable( BtreeWordSearchRequest & r_,
-                           QSemaphore & hasExited_ ): r( r_ ),
-                                                      hasExited( hasExited_ )
-  {}
-
-  ~BtreeWordSearchRunnable()
-  {
-    hasExited.release();
-  }
-  
-  void run() override;
-};
-
-void BtreeWordSearchRunnable::run()
-{
-  r.run();
-}
-
 BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
                                                 wstring const & str_,
                                                 unsigned minLength_,
@@ -151,8 +123,9 @@ BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
 {
   if( startRunnable )
   {
-    QThreadPool::globalInstance()->start(
-      new BtreeWordSearchRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 }
 
@@ -445,7 +418,7 @@ void BtreeWordSearchRequest::run()
 BtreeWordSearchRequest::~BtreeWordSearchRequest()
 {
   isCancelled.ref();
-  hasExited.acquire();
+  f.waitForFinished();
 }
 
 sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch(

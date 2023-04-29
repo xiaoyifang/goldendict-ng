@@ -233,8 +233,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navPronounce->setEnabled( false );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
 
-  connect( navPronounce, SIGNAL( triggered() ),
-           this, SLOT( pronounce() ) );
+  connect( navPronounce, &QAction::triggered, [ this ]() {
+    getCurrentArticleView()->playSound();
+  } );
 
   // zooming
   // named separator (to be able to hide it via CSS)
@@ -348,8 +349,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.dictsPane->setTitleBarWidget( &dictsPaneTitleBar );
   ui.dictsList->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  connect( ui.dictsPane, SIGNAL( visibilityChanged( bool ) ),
-           this, SLOT( dictsPaneVisibilityChanged ( bool ) ) );
+  connect( ui.dictsPane, &QDockWidget::visibilityChanged, this, &MainWindow::dictsPaneVisibilityChanged );
 
   connect( ui.dictsList, &QListWidget::itemClicked, this, &MainWindow::foundDictsPaneClicked );
 
@@ -529,8 +529,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesTriggered(); // Make update its state according to initial
                                // setting
 
-  connect( this, SIGNAL( clickOnDictPane( QString const & ) ),
-           &dictionaryBar, SLOT( dictsPaneClicked( QString const & ) ) );
+  connect( this, &MainWindow::clickOnDictPane, &dictionaryBar, &DictionaryBar::dictsPaneClicked );
 
   addToolBar( &dictionaryBar );
 
@@ -1910,8 +1909,9 @@ void MainWindow::pageLoaded( ArticleView * view )
 
   updatePronounceAvailability();
 
-  if ( cfg.preferences.pronounceOnLoadMain )
-    pronounce( view );
+  if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
+    view->playSound();
+  }
 
   //updateFoundInDictsList();
 }
@@ -1968,14 +1968,6 @@ void MainWindow::dictionaryBarToggled( bool )
 
   updateDictionaryBar(); // Updates dictionary bar contents if it's shown
   applyMutedDictionariesState(); // Visibility change affects searches and results
-}
-
-void MainWindow::pronounce( ArticleView * view )
-{
-  if ( view )
-    view->playSound();
-  else
-    getCurrentArticleView()->playSound();
 }
 
 void MainWindow::showDictsPane( )

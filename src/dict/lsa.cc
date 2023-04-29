@@ -7,7 +7,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
-#include "fsencoding.hh"
+
 #include "audiolink.hh"
 #include "gddebug.hh"
 
@@ -190,7 +190,7 @@ protected:
 
 string LsaDictionary::getName() noexcept
 {
-  string result = FsEncoding::basename( getDictionaryFilenames()[ 0 ] );
+  string result = Utils::Fs::basename( getDictionaryFilenames()[ 0 ] );
 
   // Strip the extension
   result.erase( result.rfind( '.' ) );
@@ -250,7 +250,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+      Folding::applySimpleCaseOnly( chain[ x ].word );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -258,8 +258,8 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair< wstring, string >(
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ), chain[ x ].word ) );
+    mapToUse.insert( std::pair(
+      Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].word ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
@@ -562,7 +562,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         gdDebug( "Lsa: Building the index for dictionary: %s\n", i->c_str() );
 
-        initializing.indexingDictionary( FsEncoding::basename( *i ) );
+        initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
         File::Class idx( indexFile, "wb" );
 

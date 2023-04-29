@@ -35,6 +35,7 @@ CONFIG( release, debug|release ) {
 INCLUDEPATH += ./src/
 INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
 INCLUDEPATH += ./src/common
+INCLUDEPATH += ./thirdparty/tomlplusplus
 
 QT += core \
       gui \
@@ -289,7 +290,6 @@ HEADERS += \
     src/common/ex.hh \
     src/common/file.hh \
     src/common/filetype.hh \
-    src/common/fsencoding.hh \
     src/common/gddebug.hh \
     src/common/globalbroadcaster.hh \
     src/common/globalregex.hh \
@@ -401,6 +401,7 @@ HEADERS += \
     src/wordfinder.hh \
     src/wordlist.hh \
     src/zipfile.hh \
+    thirdparty/tomlplusplus/toml.hpp
 
 FORMS += $$files(src/ui/*.ui)
 
@@ -415,7 +416,6 @@ SOURCES += \
     src/chunkedstorage.cc \
     src/common/file.cc \
     src/common/filetype.cc \
-    src/common/fsencoding.cc \
     src/common/gddebug.cc \
     src/common/globalbroadcaster.cc \
     src/common/globalregex.cc \

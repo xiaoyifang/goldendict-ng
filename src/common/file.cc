@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "file.hh"
-#include "fsencoding.hh"
+
 #include "zipfile.hh"
 
 #include <string>

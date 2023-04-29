@@ -175,8 +175,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
     result->word = posArgs.at( 0 );
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
-    // handle url scheme like "goldendict://" on windows
-    result->word.remove( "goldendict://" );
+    // handle url scheme like "goldendict://" or "dict://" on windows/linux
+    result->word.remove( 0, result->word.indexOf( "://" ) + 3 );
     // In microsoft Words, the / will be automatically appended
     if ( result->word.endsWith( "/" ) ) {
       result->word.chop( 1 );
@@ -207,14 +207,11 @@ int main( int argc, char ** argv )
         setenv("QT_QPA_PLATFORM", "xcb", 1);
     }
 #endif
-  #ifdef Q_OS_MAC
+#ifdef Q_OS_MAC
     setenv("LANG", "en_US.UTF-8", 1);
 
-  #endif
-
-#if defined( Q_OS_UNIX )
-  setlocale( LC_ALL, "" ); // use correct char set mapping
 #endif
+
 
   //high dpi screen support
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )

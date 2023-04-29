@@ -324,6 +324,21 @@ namespace Html {
 std::string getHtmlCleaner();
 }
 
+/// Utilities to convert a wide string or an utf8 string to the local 8bit
+/// encoding of the file system, and to do other manipulations on the file
+/// names.
+namespace Fs {
+
+using std::string;
+
+/// Returns the filesystem separator (/ on Unix and clones, \ on Windows).
+char separator();
+
+/// Returns the name part of the given filename.
+string basename( string const & );
+
+}
+
 } // namespace Utils
 
 #endif // UTILS_HH
