@@ -53,121 +53,47 @@
        <property name="topMargin">
         <number>9</number>
        </property>
-       <item row="3" column="1">
-        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="enableTrayIcon">
          <property name="toolTip">
-          <string>Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</string>
+          <string>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</string>
          </property>
-         <property name="text">
-          <string>Automatically scroll to target article</string>
+         <property name="title">
+          <string>Enable system tray icon</string>
          </property>
-         <property name="checked">
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
           <bool>true</bool>
          </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <layout class="QVBoxLayout" name="verticalLayout_16">
-         <item>
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>Interface language:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="label_21">
-             <property name="text">
-              <string>Dictionary Font: </string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="interfaceLanguage">
-             <property name="sizeAdjustPolicy">
-              <enum>QComboBox::AdjustToContents</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="4">
-            <widget class="QComboBox" name="fontFamilies">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="toolTip">
-              <string>set the fallback font family for dictionary</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Article Display style:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="displayStyle"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="addonStylesLabel">
-             <property name="text">
-              <string>Add-on style:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="StylesComboBox" name="addonStyles"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="darkMode">
-           <property name="toolTip">
-            <string>Turn the UI to dark.</string>
-           </property>
-           <property name="text">
-            <string>Dark Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="darkReaderMode">
-           <property name="toolTip">
-            <string>Turn the article display style to dark.</string>
-           </property>
-           <property name="text">
-            <string>Dark Reader Mode</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="1">
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
-          <string>Startup</string>
+         <property name="checked">
+          <bool>false</bool>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QCheckBox" name="cbAutostart">
+           <widget class="QCheckBox" name="startToTray">
             <property name="toolTip">
-             <string>Automatically starts GoldenDict after operation system bootup.</string>
+             <string>With this on, the application starts directly to system tray without showing
+its main window.</string>
             </property>
             <property name="text">
-             <string>Start with system</string>
+             <string>Start to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="closeToTray">
+            <property name="toolTip">
+             <string>With this on, an attempt to close main window would hide it instead of closing
+the application.</string>
+            </property>
+            <property name="text">
+             <string>Close to system tray</string>
             </property>
            </widget>
           </item>
@@ -182,6 +108,22 @@ With this on however, it will hide the main window.</string>
          </property>
          <property name="text">
           <string>ESC key hides main window</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+         <property name="toolTip">
+          <string>Normally, clicking on a link, double-clicking on a word or looking up
+selection in an article loads the translation and almost immediately
+scrolls to the article from the same dictionary. With this option off,
+however, the article from the topmost dictionary is shown.</string>
+         </property>
+         <property name="text">
+          <string>Automatically scroll to target article</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -234,14 +176,40 @@ With this on however, it will hide the main window.</string>
          </item>
         </layout>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="doubleClickTranslates">
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Startup</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="cbAutostart">
+            <property name="toolTip">
+             <string>Automatically starts GoldenDict after operation system bootup.</string>
+            </property>
+            <property name="text">
+             <string>Start with system</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Double-click translates the word clicked</string>
+          <string>Interface language:</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="0" colspan="2">
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Dictionary Font: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -254,51 +222,65 @@ With this on however, it will hide the main window.</string>
          </property>
         </spacer>
        </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="enableTrayIcon">
+       <item row="10" column="0" colspan="2">
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QCheckBox" name="darkMode">
+           <property name="toolTip">
+            <string>Turn the UI to dark.</string>
+           </property>
+           <property name="text">
+            <string>Dark Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="darkReaderMode">
+           <property name="toolTip">
+            <string>Turn the article display style to dark.</string>
+           </property>
+           <property name="text">
+            <string>Dark Reader Mode</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="selectBySingleClick">
          <property name="toolTip">
-          <string>When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</string>
+          <string>Turn this option on if you want to select words by single mouse click</string>
          </property>
-         <property name="title">
-          <string>Enable system tray icon</string>
+         <property name="text">
+          <string>Select word by single click</string>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QComboBox" name="interfaceLanguage">
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
          </property>
-         <property name="flat">
-          <bool>false</bool>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QComboBox" name="fontFamilies">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="checkable">
-          <bool>true</bool>
+         <property name="toolTip">
+          <string>set the fallback font family for dictionary</string>
          </property>
-         <property name="checked">
-          <bool>false</bool>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="doubleClickTranslates">
+         <property name="text">
+          <string>Double-click translates the word clicked</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QCheckBox" name="startToTray">
-            <property name="toolTip">
-             <string>With this on, the application starts directly to system tray without showing
-its main window.</string>
-            </property>
-            <property name="text">
-             <string>Start to system tray</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="closeToTray">
-            <property name="toolTip">
-             <string>With this on, an attempt to close main window would hide it instead of closing
-the application.</string>
-            </property>
-            <property name="text">
-             <string>Close to system tray</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
        <item row="0" column="0" colspan="2">
@@ -354,15 +336,29 @@ be the last ones.</string>
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="selectBySingleClick">
-         <property name="toolTip">
-          <string>Turn this option on if you want to select words by single mouse click</string>
-         </property>
-         <property name="text">
-          <string>Select word by single click</string>
-         </property>
-        </widget>
+       <item row="9" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Article Display style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="displayStyle"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="addonStylesLabel">
+           <property name="text">
+            <string>Add-on style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StylesComboBox" name="addonStyles"/>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
