@@ -71,9 +71,11 @@ private slots:
 
   void actionWasTriggered( QAction * );
 
-  void dictsPaneClicked( QString const & );
-
   void showContextMenu( QContextMenuEvent * event, bool extended = false );
+
+public slots:
+
+  void dictsPaneClicked( QString const & );
 };
 
 #endif
