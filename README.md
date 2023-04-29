@@ -58,6 +58,16 @@ If Qt's version is not changed, you can also download a single `goldendict.exe` 
 
 One of the `.dmg` installers.
 
+## Help GoldenDict's Development
+
+GoldenDict is developed by volunteers.
+
+All kinds of help like answering questions, bug reporting, testing, translation and coding are welcomed.
+
+To translate the interface, you can use the Crowdin <https://crowdin.com/project/goldendict-ng>
+
+To start development, check out [developer guide](https://xiaoyifang.github.io/goldendict-ng/developer/)
+
 ## Build from source
 
 ### Dependencies
@@ -186,11 +196,6 @@ qmake "CONFIG+=use_iconv"
 ```
 
 when enabled ,iconv should be installed on the platform at the same time.
-
-
-## Contributing
-
-All kinds of help like answering questions, bug reporting, testing, translation and coding are welcomed.
 
 ## Support
 
