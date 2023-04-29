@@ -912,20 +912,24 @@ void DictGroupsWidget::groupsByMetadata()
       auto config = toml::parse_file( filePath.toStdString() );
 
       toml::array * categories = config.get_as< toml::array >( "category" );
-      if (!categories) {
+      if ( !categories ) {
         continue;
       }
       categories->for_each( [ &groupToDicts, &dict ]( auto && elem ) {
-        auto group = QString::fromStdString( elem.as_string()->value_or( "" ) ).trimmed();
-        if ( group.isEmpty() )
-          return;
-        groupToDicts.insert( group, dict );
+        if ( elem.is_string() ) {
+          auto group = QString::fromStdString( elem.as_string()->get() ).trimmed();
+
+          if ( group.isEmpty() )
+            return;
+
+          groupToDicts.insert( group, dict );
+        }
       } );
-    }catch( toml::parse_error & e) {
+    }
+    catch ( toml::parse_error & e ) {
       qWarning() << "can not open the metadata.toml" << e.what();
     }
   }
-    
 
   // create and insert groups
   // modifying user's groups begins here
