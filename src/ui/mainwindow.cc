@@ -348,8 +348,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.dictsPane->setTitleBarWidget( &dictsPaneTitleBar );
   ui.dictsList->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  connect( ui.dictsPane, SIGNAL( visibilityChanged( bool ) ),
-           this, SLOT( dictsPaneVisibilityChanged ( bool ) ) );
+  connect( ui.dictsPane, &QDockWidget::visibilityChanged, this, &MainWindow::dictsPaneVisibilityChanged );
 
   connect( ui.dictsList, &QListWidget::itemClicked, this, &MainWindow::foundDictsPaneClicked );
 
@@ -529,8 +528,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   showDictBarNamesTriggered(); // Make update its state according to initial
                                // setting
 
-  connect( this, SIGNAL( clickOnDictPane( QString const & ) ),
-           &dictionaryBar, SLOT( dictsPaneClicked( QString const & ) ) );
+  connect( this, &MainWindow::clickOnDictPane, &dictionaryBar, &DictionaryBar::dictsPaneClicked );
 
   addToolBar( &dictionaryBar );
 
