@@ -1264,7 +1264,6 @@ class ZimArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -1275,7 +1274,6 @@ public:
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
   }
 
   void run();
@@ -1289,7 +1287,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    //hasExited.acquire();
   }
 };
 
@@ -1436,14 +1433,12 @@ class ZimResourceRequest: public Dictionary::DataRequest
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
   ZimResourceRequest(ZimDictionary &dict_, string const &resourceName_)
       : dict(dict_), resourceName(resourceName_) {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
-    // QThreadPool::globalInstance()->start( [ this ]() { this->run(); } );
   }
 
   void run();
@@ -1457,7 +1452,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    //hasExited.acquire();
   }
 };
 

@@ -478,31 +478,9 @@ sptr< Dictionary::DataRequest > SdictDictionary::getSearchResults( QString const
 
 /// SdictDictionary::getArticle()
 
-class SdictArticleRequest;
-
-class SdictArticleRequestRunnable: public QRunnable
-{
-  SdictArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  SdictArticleRequestRunnable( SdictArticleRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~SdictArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class SdictArticleRequest: public Dictionary::DataRequest
 {
-  friend class SdictArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -510,7 +488,8 @@ class SdictArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+
+  QFuture< void > f;
 
 public:
 
@@ -519,8 +498,10 @@ public:
                        SdictDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new SdictArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
+
   }
 
   void run(); // Run from another thread by DslArticleRequestRunnable
@@ -533,14 +514,9 @@ public:
   ~SdictArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void SdictArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void SdictArticleRequest::run()
 {

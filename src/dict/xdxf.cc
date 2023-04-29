@@ -443,31 +443,9 @@ sptr< Dictionary::DataRequest > XdxfDictionary::getSearchResults( QString const 
 
 /// XdxfDictionary::getArticle()
 
-class XdxfArticleRequest;
-
-class XdxfArticleRequestRunnable: public QRunnable
-{
-  XdxfArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  XdxfArticleRequestRunnable( XdxfArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~XdxfArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class XdxfArticleRequest: public Dictionary::DataRequest
 {
-  friend class XdxfArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -475,7 +453,7 @@ class XdxfArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -484,8 +462,9 @@ public:
                      XdxfDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new XdxfArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by XdxfArticleRequestRunnable
@@ -498,14 +477,10 @@ public:
   ~XdxfArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void XdxfArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void XdxfArticleRequest::run()
 {
@@ -969,38 +944,15 @@ void indexArticle( GzippedFile & gzFile,
 
 //// XdxfDictionary::getResource()
 
-class XdxfResourceRequest;
-
-class XdxfResourceRequestRunnable: public QRunnable
-{
-  XdxfResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  XdxfResourceRequestRunnable( XdxfResourceRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~XdxfResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class XdxfResourceRequest: public Dictionary::DataRequest
 {
-  friend class XdxfResourceRequestRunnable;
 
   XdxfDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1009,8 +961,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new XdxfResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by XdxfResourceRequestRunnable
@@ -1023,14 +976,10 @@ public:
   ~XdxfResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void XdxfResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void XdxfResourceRequest::run()
 {

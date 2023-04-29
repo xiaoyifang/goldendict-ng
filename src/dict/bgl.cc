@@ -488,46 +488,24 @@ namespace
 
 /// BglDictionary::findHeadwordsForSynonym()
 
-class BglHeadwordsRequest;
-
-class BglHeadwordsRequestRunnable: public QRunnable
-{
-  BglHeadwordsRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  BglHeadwordsRequestRunnable( BglHeadwordsRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~BglHeadwordsRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class BglHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  friend class BglHeadwordsRequestRunnable;
-
   wstring str;
   BglDictionary & dict;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
   BglHeadwordsRequest( wstring const & word_,
                        BglDictionary & dict_ ):
-    str( word_ ), dict( dict_ )
+    str( word_ ),
+    dict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new BglHeadwordsRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by BglHeadwordsRequestRunnable
@@ -537,17 +515,12 @@ public:
     isCancelled.ref();
   }
 
-  ~BglHeadwordsRequest()
+  ~BglHeadwordsRequest() override
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void BglHeadwordsRequestRunnable::run()
-{
-  r.run();
-}
 
 void BglHeadwordsRequest::run()
 {
@@ -635,39 +608,16 @@ string postfixToSuperscript( string const & in )
 
 /// BglDictionary::getArticle()
 
-class BglArticleRequest;
-
-class BglArticleRequestRunnable: public QRunnable
-{
-  BglArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  BglArticleRequestRunnable( BglArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~BglArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class BglArticleRequest: public Dictionary::DataRequest
 {
-  friend class BglArticleRequestRunnable;
-
   wstring word;
   vector< wstring > alts;
   BglDictionary & dict;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   bool ignoreDiacritics;
+  QFuture< void > f;
 
 public:
 
@@ -676,8 +626,9 @@ public:
                      BglDictionary & dict_, bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new BglArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by BglArticleRequestRunnable
@@ -693,14 +644,9 @@ public:
   ~BglArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void BglArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void BglArticleRequest::fixHebString(string & hebStr) // Hebrew support - convert non-unicode to unicode
 {
@@ -927,31 +873,8 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
 
 //// BglDictionary::getResource()
 
-class BglResourceRequest;
-
-class BglResourceRequestRunnable: public QRunnable
-{
-  BglResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  BglResourceRequestRunnable( BglResourceRequest & r_,
-                              QSemaphore & hasExited_ ): r( r_ ),
-                                                         hasExited( hasExited_ )
-  {}
-
-  ~BglResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class BglResourceRequest: public Dictionary::DataRequest
 {
-  friend class BglResourceRequestRunnable;
 
   Mutex & idxMutex;
   File::Class & idx;
@@ -959,7 +882,7 @@ class BglResourceRequest: public Dictionary::DataRequest
   string name;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -974,8 +897,9 @@ public:
     resourcesCount( resourcesCount_ ),
     name( name_ )
   {
-    QThreadPool::globalInstance()->start(
-      new BglResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by BglResourceRequestRunnable
@@ -988,14 +912,9 @@ public:
   ~BglResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void BglResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void BglResourceRequest::run()
 {

@@ -1220,37 +1220,14 @@ sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString co
 
 /// StardictDictionary::findHeadwordsForSynonym()
 
-class StardictHeadwordsRequest;
-
-class StardictHeadwordsRequestRunnable: public QRunnable
-{
-  StardictHeadwordsRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictHeadwordsRequestRunnable( StardictHeadwordsRequest & r_,
-                                    QSemaphore & hasExited_ ): r( r_ ),
-                                                               hasExited( hasExited_ )
-  {}
-
-  ~StardictHeadwordsRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
-
 class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  friend class StardictHeadwordsRequestRunnable;
 
   wstring word;
   StardictDictionary & dict;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1258,8 +1235,9 @@ public:
                             StardictDictionary & dict_ ):
     word( word_ ), dict( dict_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictHeadwordsRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictHeadwordsRequestRunnable
@@ -1272,14 +1250,10 @@ public:
   ~StardictHeadwordsRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
 
-void StardictHeadwordsRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictHeadwordsRequest::run()
 {
@@ -1339,31 +1313,9 @@ sptr< Dictionary::WordSearchRequest >
 
 /// StardictDictionary::getArticle()
 
-class StardictArticleRequest;
-
-class StardictArticleRequestRunnable: public QRunnable
-{
-  StardictArticleRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictArticleRequestRunnable( StardictArticleRequest & r_,
-                                  QSemaphore & hasExited_ ): r( r_ ),
-                                                             hasExited( hasExited_ )
-  {}
-
-  ~StardictArticleRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class StardictArticleRequest: public Dictionary::DataRequest
 {
-  friend class StardictArticleRequestRunnable;
 
   wstring word;
   vector< wstring > alts;
@@ -1371,7 +1323,8 @@ class StardictArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
+
 
 public:
 
@@ -1381,8 +1334,9 @@ public:
                      bool ignoreDiacritics_ ):
     word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictArticleRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictArticleRequestRunnable
@@ -1395,14 +1349,9 @@ public:
   ~StardictArticleRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void StardictArticleRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictArticleRequest::run()
 {
@@ -1630,38 +1579,16 @@ Ifo::Ifo( File::Class & f ):
 
 //// StardictDictionary::getResource()
 
-class StardictResourceRequest;
-
-class StardictResourceRequestRunnable: public QRunnable
-{
-  StardictResourceRequest & r;
-  QSemaphore & hasExited;
-
-public:
-
-  StardictResourceRequestRunnable( StardictResourceRequest & r_,
-                               QSemaphore & hasExited_ ): r( r_ ),
-                                                          hasExited( hasExited_ )
-  {}
-
-  ~StardictResourceRequestRunnable()
-  {
-    hasExited.release();
-  }
-
-  void run() override;
-};
 
 class StardictResourceRequest: public Dictionary::DataRequest
 {
-  friend class StardictResourceRequestRunnable;
 
   StardictDictionary & dict;
 
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
+  QFuture< void > f;
 
 public:
 
@@ -1670,8 +1597,9 @@ public:
     dict( dict_ ),
     resourceName( resourceName_ )
   {
-    QThreadPool::globalInstance()->start(
-      new StardictResourceRequestRunnable( *this, hasExited ) );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run(); // Run from another thread by StardictResourceRequestRunnable
@@ -1684,14 +1612,9 @@ public:
   ~StardictResourceRequest()
   {
     isCancelled.ref();
-    hasExited.acquire();
+    f.waitForFinished();
   }
 };
-
-void StardictResourceRequestRunnable::run()
-{
-  r.run();
-}
 
 void StardictResourceRequest::run()
 {

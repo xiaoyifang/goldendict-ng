@@ -4,7 +4,6 @@
 #include "wordfinder.hh"
 #include "folding.hh"
 #include "wstring_qt.hh"
-#include <QThreadPool>
 #include <map>
 #include "gddebug.hh"
 
