@@ -1,19 +1,28 @@
-Here you can create and edit dictionary groups. To add dictionary into group just drag it into groups window, to remove it drag it back to dictionaries list. Also you can press "Auto groups button" to automatically create groups for all presented in dictionaries list language directions. Via context menu of such automatically created groups you can execute additional dictionaries grouping by source or target language and combine dictionaries in more large groups.
+At `Edit` -> `Dictioanries` -> `Groups`, you can create and edit dictionary groups.
 
-## Group by dictionary language
+To add a dictionary into a group, just drag it from the dictionary list into the group window on the right. To remove a dict, just drag it back to the dictionary list. Hold `Shift` to select a range of dictionaries or hold `Ctrl` to select multiple dictionaries.
 
-When group by dictionary language,the language is taken from dictionary's built-in metadata which has been embed when creating dictionary.
+Additionally, multiple strategies of automatic grouping are provided:
 
-If the language is not present in the dictionary,  it will try to detect the language from dictionary file name.
+* based on the language info embedded within dictionary files
+* based on the folder structure
+* based on customizable metadata files
+
+## Auto groups by dictionary language
+
+When group by dictionary language, the language is taken from dictionary's built-in metadata which has been embed when creating dictionary.
+
+If the language is not present in the dictionary, it will try to detect the language from the dictionary file name.
 
 Then use the founded language to create dictionary groups.
 
+Groups created in this method also include a context menu when rich click the group name, in which you can do additional dictionaries grouping by source or target language and combine dictionaries in more large groups.
 
 ## Auto groups by folders
 
-Click the "Auto groups by folders" will group your dicts based on folder structure.
+Click the "Group by folders" will group your dicts based on folder structure.
 
-Two dictionaries will be in the same group if their container folder's direct parent are the same.
+Two dictionaries will be in the same group if their container folder's direct parent is the same.
 
 ![Auto Group By Folder](img/autoGroupByFolder.svg)
 
@@ -62,15 +71,16 @@ More levels of folder nesting are not supported.
 |          └─ DictB Files  
 ```
 
-## group by metadata.toml
+## Auto groups by `metadata.toml`
 
-Click the "group by metadata" will group your dicts based on metadata.toml file.
+Click the "group by metadata" will group your dicts based on `metadata.toml`.
 
-the location of the metadata file is at the same location as the dictionary.
+The `metadata.toml` should be placed beside dictionary files. One `metadata.toml` for each dictionary.
 
-The structure of the metadata file use [toml](https://toml.io) format
-```
-category = [ "english", "yellow", "green" ]
+The metadata file uses [TOML](https://toml.io) format.
+
+```toml
+category = [ "English", "Russian", "Chinese" ]
 
 # the following fields have not supported yet.
 [metadata]
@@ -79,40 +89,37 @@ langfrom = "English"
 langto = "Russian"
 ```
 
-
-For example, 
+For example,
 
 ```
 .
-English<>Chinese
-── Cambridge
-   ├── Cambridge.dict.dz
-   ├── Cambridge.idx
-   ├── Cambridge.info
-   └── Cambridge.syn
-   └── metadata.toml     (A)
-── Collins
-   ├── Collins.dsl
-   └── res.zip
-   └── metadata.toml (B)  
+├── Cambridge
+│    ├── metadata.toml     (A)
+│    ├── Cambridge.idx
+│    ├── Cambridge.info
+│    ├── Cambridge.syn
+│    └── Cambridge.dict.dz    
+└── Collins
+     ├── metadata.toml
+     ├── res.zip
+     └── Collins.dsl       (B)  
 
 ```
 
-The content of the metadata(A) is
-```
-category=["en-zh","汉英词典"]
-```
-
-
-The content of the metadata(B) is
-```
-category=["图片词典","en-zh","汉英词典"]
+The content of the metadata `(A)` is
+```toml
+category = ["en-zh", "汉英词典"]
 ```
 
-the structure below will be auto grouped into three groups:
+The content of the metadata `(B)` is
+```toml
+category = ["图片词典", "en-zh", "汉英词典"]
+```
 
-* `en-zh` with `Cambridge`, `Collins` 
-* `图片词典` with `Collins` 
-* `汉英词典` with `Cambridge`,`Collins` 
+The structure above will be auto grouped into three groups:
 
-Note: you can configure only the dictionaries you like .
+* `en-zh` with `Cambridge`, `Collins`
+* `图片词典` with `Collins`
+* `汉英词典` with `Cambridge`,`Collins`
+
+Note: Dictionaries without `metadata.toml` won't be auto-grouped.
