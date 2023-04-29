@@ -7,7 +7,6 @@
 #include "ui_groups.h"
 #include "config.hh"
 #include "dict/dictionary.hh"
-#include "groups_widgets.hh"
 #include <QToolButton>
 #include <QMenu>
 
@@ -54,6 +53,7 @@ private slots:
   void addAutoGroups();
   /// by Containing Folder
   void addAutoGroupsByFolders();
+  void groupsByMetadata();
 
   void showDictInfo( const QPoint & pos );
   void fillGroupsMenu();

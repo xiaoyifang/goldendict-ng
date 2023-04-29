@@ -633,6 +633,26 @@ between classic and school orthography in cyrillic)</source>
       <translation>根据目标语言合并群组&quot;-&gt;%1&quot;</translation>
     </message>
     <message>
+        <location filename="../src/ui/groups_widgets.cc" line="785"/>
+        <source>Auto group by folder failed.</source>
+        <translation>根据文件分组失败</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="786"/>
+        <source>The parent directory of %1 can be reached.</source>
+        <translation>无法获取父文件夹 %1 </translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="791"/>
+        <source>Are you sure you want to generate a set of groups based on containing folders?</source>
+        <translation>您确定根据文件夹结构生成词组吗？</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/groups_widgets.cc" line="892"/>
+        <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
+        <translation>您确定需要基于metadata.txt生成分组吗？</translation>
+    </message>
+    <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>建立双向群组&quot;%1-%2-%1&quot;</translation>

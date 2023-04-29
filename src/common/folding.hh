@@ -44,8 +44,8 @@ wstring applyDiacriticsOnly( wstring const & );
 
 /// Applies only punctuation folding algorithm.
 wstring applyPunctOnly( wstring const & );
-
-/// Applies only whitespace folding algorithm.
+QString applyPunctOnly( QString const & in );
+  /// Applies only whitespace folding algorithm.
 wstring applyWhitespaceOnly( wstring const & );
 
 /// Applies only whitespace&punctuation folding algorithm.

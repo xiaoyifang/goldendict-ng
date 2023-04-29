@@ -132,6 +132,16 @@ wstring applyPunctOnly( wstring const & in )
   return out;
 }
 
+QString applyPunctOnly( QString const & in )
+{
+  QString out;
+  for ( auto c : in )
+    if ( !c.isPunct() )
+      out.push_back( c );
+
+  return out;
+}
+
 wstring applyWhitespaceOnly( wstring const & in )
 {
   wchar const * nextChar = in.data();

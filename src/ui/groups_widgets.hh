@@ -166,6 +166,9 @@ public:
 
   /// auto grouping by containning folder
   void addAutoGroupsByFolders();
+  void addGroupBasedOnMap( const QMultiMap<QString, sptr<Dictionary::Class>> & groupToDicts );
+
+  void groupsByMetadata();
 
   /// Returns currently chosen group's name
   QString getCurrentGroupName() const;
