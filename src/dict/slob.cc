@@ -1405,7 +1405,7 @@ void SlobArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+      Folding::applySimpleCaseOnly( headword );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -1413,9 +1413,9 @@ void SlobArticleRequest::run()
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( pair< wstring, pair< string, string > >(
-      Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-      pair< string, string >( headword, articleText ) ) );
+    mapToUse.insert( pair(
+      Folding::applySimpleCaseOnly( headword ),
+      pair( headword, articleText ) ) );
 
     articlesIncluded.insert( pos );
   }

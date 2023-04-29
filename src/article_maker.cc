@@ -1014,7 +1014,7 @@ void ArticleRequest::individualWordFinished()
 
   if ( results.size() )
   {
-    wstring source = Folding::applySimpleCaseOnly( gd::toWString( currentSplittedWordCompound ) );
+    wstring source = Folding::applySimpleCaseOnly(currentSplittedWordCompound);
 
     bool hadSomething = false;
 
@@ -1030,7 +1030,7 @@ void ArticleRequest::individualWordFinished()
 
       // Prefix match found. Check if the aliases are acceptable.
 
-      wstring result( Folding::applySimpleCaseOnly( gd::toWString( results[ x ].first ) ) );
+      wstring result( Folding::applySimpleCaseOnly( results[ x ].first ) );
 
       if ( source.size() <= result.size() && result.compare( 0, source.size(), source ) == 0 )
       {

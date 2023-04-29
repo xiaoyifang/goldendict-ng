@@ -210,7 +210,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     // We do the case-folded comparison here.
 
     wstring headwordStripped =
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) );
+      Folding::applySimpleCaseOnly( chain[ x ].word );
     if( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
@@ -218,8 +218,8 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
       ( wordCaseFolded == headwordStripped ) ?
         mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair< wstring, uint32_t >(
-      Folding::applySimpleCaseOnly( Utf8::decode( chain[ x ].word ) ), chain[ x ].articleOffset ) );
+    mapToUse.insert( std::pair(
+      Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].articleOffset ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
