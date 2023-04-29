@@ -3490,7 +3490,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="551"/>
       <source>Shift</source>
-      <translation>Shift</translation>
+      <translation>偏移</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="917"/>
