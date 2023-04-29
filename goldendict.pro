@@ -35,6 +35,7 @@ CONFIG( release, debug|release ) {
 INCLUDEPATH += ./src/
 INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
 INCLUDEPATH += ./src/common
+INCLUDEPATH += ./thirdparty/tomlplusplus
 
 QT += core \
       gui \
@@ -400,6 +401,7 @@ HEADERS += \
     src/wordfinder.hh \
     src/wordlist.hh \
     src/zipfile.hh \
+    thirdparty/tomlplusplus/toml.hpp
 
 FORMS += $$files(src/ui/*.ui)
 

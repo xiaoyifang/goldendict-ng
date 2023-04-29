@@ -161,7 +161,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/src/common
         ${PROJECT_SOURCE_DIR}/src/dict
-        ${PROJECT_SOURCE_DIR}/src/ui)
+        ${PROJECT_SOURCE_DIR}/src/ui
+        ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus
+)
 
 
 if (WITH_FFMPEG_PLAYER)

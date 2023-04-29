@@ -2,7 +2,6 @@
 #include <QDir>
 #include <QPalette>
 #include <QStyle>
-#include <QDesktopServices>
 #include <QMessageBox>
 
 QString Utils::Path::combine(const QString& path1, const QString& path2)
