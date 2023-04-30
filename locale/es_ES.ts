@@ -435,7 +435,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2081"/>
       <source>Failed to play sound file: %1</source>
-      <translation>Error al reproducir el archivo de sonido: %1</translation>
+      <translation>Hubo un fallo al reproducir el archivo de sonido: %1</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -507,12 +507,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="55"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Habilitar la conversión de caracteres tradicionales a caracteres simplificados</translation>
+      <translation>Habilitar conversión desde los caracteres tradicionales a los simplificados</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="58"/>
       <source>TC to SC</source>
-      <translation>TC a SC</translation>
+      <translation>CT a CS</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="129"/>
@@ -634,6 +634,26 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Combinar grupos por lengua destino a &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <source>Auto group by folder failed.</source>
+      <translation type="unfinished">Auto group by folder failed.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <source>The parent directory of %1 can be reached.</source>
+      <translation type="unfinished">The parent directory of %1 can be reached.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <source>Are you sure you want to generate a set of groups based on containing folders?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="892"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
+    </message>
+    <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Crear grupo de traducción bidireccional &quot;%1-%2-%1&quot;</translation>
@@ -678,12 +698,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="83"/>
       <source>Match case</source>
-      <translation>Coincidir caso</translation>
+      <translation>Coincidir mayúsculas y minúsculas</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="93"/>
       <source>Exports headwords to file</source>
-      <translation>Exporta cabeceras al archivo</translation>
+      <translation>Exportar lemas a un archivo</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="96"/>
@@ -698,7 +718,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="129"/>
       <source>OK</source>
-      <translation>Ok</translation>
+      <translation>Vale</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="35"/>
@@ -768,7 +788,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
       <source>Export headwords...</source>
-      <translation>Exportar palabras de cabeza...</translation>
+      <translation>Exportar lemas...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
@@ -811,7 +831,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="36"/>
       <source>Open folder</source>
-      <translation>Abrir directorio</translation>
+      <translation>Abrir carpeta</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="76"/>
@@ -831,12 +851,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="196"/>
       <source>Show all unique dictionary headwords</source>
-      <translation>Mostrar todas las palabras de encabezado únicas del diccionario</translation>
+      <translation>Mostrar todos los lemas únicos del diccionario</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="199"/>
       <source>Headwords</source>
-      <translation>Encabezados</translation>
+      <translation>Lemas</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.cc" line="30"/>
@@ -874,7 +894,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/dict/dictserver.cc" line="280"/>
       <source>Server databases</source>
-      <translation>Bases de datos del servidor</translation>
+      <translation>Servidor de las bases de datos</translation>
     </message>
   </context>
   <context>
@@ -882,7 +902,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="817"/>
       <source>Enabled</source>
-      <translation>Activado</translation>
+      <translation>Habilitado</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="819"/>
@@ -944,12 +964,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="125"/>
       <source>Dictionary headwords</source>
-      <translation>Palabras de cabeza de diccionario</translation>
+      <translation>Lemas del diccionario</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="127"/>
       <source>Open dictionary folder</source>
-      <translation>Abrir directorio de diccionario</translation>
+      <translation>Abrir carpeta del diccionario</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="134"/>
@@ -1043,7 +1063,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="244"/>
       <source>Plain text</source>
-      <translation>Texto simple</translation>
+      <translation>Texto sencillo</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="245"/>
@@ -1113,7 +1133,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="644"/>
       <source>Error in favorities file</source>
-      <translation>Error en el archivo de favoritos</translation>
+      <translation>Error en el archivo de Favoritos</translation>
     </message>
   </context>
   <context>
@@ -1126,7 +1146,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
       <source>Copy Selected</source>
-      <translation>Copiar Seleccionado</translation>
+      <translation>Copiar seleccionado</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
@@ -1141,7 +1161,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
       <source>All selected items will be deleted. Continue?</source>
-      <translation>Se eliminarán todos los elementos seleccionados. ¿Continuar?</translation>
+      <translation>Todos los elementos seleccionados serán eliminados. ¿Continuar?</translation>
     </message>
   </context>
   <context>
@@ -1206,7 +1226,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="60"/>
       <source>Match case</source>
-      <translation>Coincidir caso</translation>
+      <translation>Coincidir mayúsculas y minúsculas</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="37"/>
@@ -1216,7 +1236,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="81"/>
       <source>Ignore words order</source>
-      <translation>Orden de palabras Ignoradas</translation>
+      <translation>Ignorar orden de palabras</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="88"/>
@@ -1231,12 +1251,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="133"/>
       <source>Available dictionaries in group:</source>
-      <translation>Diccionarios disponibles en grupo:</translation>
+      <translation>Diccionarios disponibles en el grupo:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="139"/>
       <source>Wait for indexing:</source>
-      <translation>Espere a la indexación:</translation>
+      <translation>Esperar para indexar:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="252"/>
@@ -1256,7 +1276,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="184"/>
       <source>Now indexing: None</source>
-      <translation>Ahora indexando: ninguno</translation>
+      <translation>Ahora indexando: Ninguno</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
@@ -1486,7 +1506,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="30"/>
       <source>Copy Selected</source>
-      <translation>Copiar Seleccionado</translation>
+      <translation>Copiar seleccionado</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="46"/>
@@ -2484,12 +2504,12 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/language.cc" line="373"/>
       <source>Traditional Chinese</source>
-      <translation>Chino Tradicional</translation>
+      <translation>Chino tradicional</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="374"/>
       <source>Simplified Chinese</source>
-      <translation>Chino Simplificado</translation>
+      <translation>Chino simplificado</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="375"/>
@@ -2499,7 +2519,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/language.cc" line="376"/>
       <source>Other Simplified Chinese dialects</source>
-      <translation>Otros dialectos del Chino Simplificado</translation>
+      <translation>Otros dialectos del chino simplificado</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="377"/>
@@ -2560,6 +2580,214 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <location filename="../src/language.cc" line="237"/>
       <source>Lojban</source>
       <translation>Lojban</translation>
+    </message>
+  </context>
+  <context>
+    <name>Language::Db</name>
+    <message>
+      <location filename="../src/language.cc" line="41"/>
+      <source>French</source>
+      <translation type="unfinished">French</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="42"/>
+      <source>Spanish</source>
+      <translation type="unfinished">Spanish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="43"/>
+      <source>Belarusian</source>
+      <translation type="unfinished">Belarusian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="44"/>
+      <source>Bulgarian</source>
+      <translation type="unfinished">Bulgarian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="45"/>
+      <source>Czech</source>
+      <translation type="unfinished">Czech</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="46"/>
+      <source>German</source>
+      <translation type="unfinished">German</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="47"/>
+      <source>Greek</source>
+      <translation type="unfinished">Greek</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="48"/>
+      <source>Finnish</source>
+      <translation type="unfinished">Finnish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="49"/>
+      <source>Italian</source>
+      <translation type="unfinished">Italian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="50"/>
+      <source>Japanese</source>
+      <translation type="unfinished">Japanese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="51"/>
+      <source>Korean</source>
+      <translation type="unfinished">Korean</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="52"/>
+      <source>Lithuanian</source>
+      <translation type="unfinished">Lithuanian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="53"/>
+      <source>Macedonian</source>
+      <translation type="unfinished">Macedonian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="54"/>
+      <source>Dutch</source>
+      <translation type="unfinished">Dutch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="55"/>
+      <source>Polish</source>
+      <translation type="unfinished">Polish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="56"/>
+      <source>Portuguese</source>
+      <translation type="unfinished">Portuguese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="57"/>
+      <source>Russian</source>
+      <translation type="unfinished">Russian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="58"/>
+      <source>Slovak</source>
+      <translation type="unfinished">Slovak</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="59"/>
+      <source>Albanian</source>
+      <translation type="unfinished">Albanian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="60"/>
+      <source>Serbian (Cyrillic)</source>
+      <translation type="unfinished">Serbian (Cyrillic)</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="61"/>
+      <source>Swedish</source>
+      <translation type="unfinished">Swedish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="62"/>
+      <source>Turkish</source>
+      <translation type="unfinished">Turkish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="63"/>
+      <source>Ukrainian</source>
+      <translation type="unfinished">Ukrainian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="64"/>
+      <source>Chinese Simplified</source>
+      <translation type="unfinished">Chinese Simplified</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="65"/>
+      <source>Chinese Traditional</source>
+      <translation type="unfinished">Chinese Traditional</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="66"/>
+      <source>Vietnamese</source>
+      <translation type="unfinished">Vietnamese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="67"/>
+      <source>Portuguese, Brazilian</source>
+      <translation type="unfinished">Portuguese, Brazilian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="68"/>
+      <source>Persian</source>
+      <translation type="unfinished">Persian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="69"/>
+      <source>Spanish, Argentina</source>
+      <translation type="unfinished">Spanish, Argentina</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="70"/>
+      <source>Hindi</source>
+      <translation type="unfinished">Hindi</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="71"/>
+      <source>Esperanto</source>
+      <translation type="unfinished">Esperanto</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="72"/>
+      <source>German, Switzerland</source>
+      <translation type="unfinished">German, Switzerland</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="73"/>
+      <source>Spanish, Bolivia</source>
+      <translation type="unfinished">Spanish, Bolivia</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="74"/>
+      <source>Tajik</source>
+      <translation type="unfinished">Tajik</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="75"/>
+      <source>Quechua</source>
+      <translation type="unfinished">Quechua</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="76"/>
+      <source>Aymara</source>
+      <translation type="unfinished">Aymara</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="77"/>
+      <source>Arabic, Saudi Arabia</source>
+      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="78"/>
+      <source>Turkmen</source>
+      <translation type="unfinished">Turkmen</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="79"/>
+      <source>Interlingue</source>
+      <translation type="unfinished">Interlingue</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="80"/>
+      <source>Lojban</source>
+      <translation type="unfinished">Lojban</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="81"/>
+      <source>English</source>
+      <translation type="unfinished">English</translation>
     </message>
   </context>
   <context>
@@ -2925,7 +3153,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="342"/>
       <source>Found in Dictionaries:</source>
-      <translation>Encontrado en los Diccionarios:</translation>
+      <translation>Encontrado en los diccionarios:</translation>
     </message>
     <message>
       <source>Tracking Clipboard</source>
@@ -2934,7 +3162,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="455"/>
       <source>Add all tabs to Favorites</source>
-      <translation>Añadir todas las pestañas a favoritos</translation>
+      <translation>Añadir todas las pestañas a Favoritos</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1012"/>
@@ -3027,12 +3255,12 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3878"/>
       <source>Import history from file</source>
-      <translation>Importar historial de fichero</translation>
+      <translation>Importar Historial desde un archivo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3927"/>
       <source>Import error: invalid data in file</source>
-      <translation>Error de importación: datos incorrectos en el fichero</translation>
+      <translation>Error de importación: datos incorrectos en el archivo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3931"/>
@@ -3048,7 +3276,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3951"/>
       <source>Export Favorites to file</source>
-      <translation>Exportar favoritos al archivo</translation>
+      <translation>Exportar Favoritos a un archivo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3953"/>
@@ -3059,17 +3287,17 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <location filename="../src/ui/mainwindow.cc" line="3972"/>
       <location filename="../src/ui/mainwindow.cc" line="4021"/>
       <source>Favorites export complete</source>
-      <translation>Exportación de Favoritos completa</translation>
+      <translation>Exportación de Favoritos completada</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3992"/>
       <source>Export Favorites to file as plain list</source>
-      <translation>Exportar Favoritos a archivo como lista simple</translation>
+      <translation>Exportar Favoritos a un archivo como lista en texto sencillo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4041"/>
       <source>Import Favorites from file</source>
-      <translation>Importar Favoritos desde archivo</translation>
+      <translation>Importar Favoritos desde un archivo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4043"/>
@@ -3079,12 +3307,12 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4072"/>
       <source>Favorites import complete</source>
-      <translation>Importación de favoritos completada</translation>
+      <translation>Importación de Favoritos completada</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4078"/>
       <source>Data parsing error</source>
-      <translation>Error de análisis de datos</translation>
+      <translation>Error al analizar los datos</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4288"/>
@@ -3094,7 +3322,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4292"/>
       <source>Dictionary headwords</source>
-      <translation>Palabras de cabeza de diccionario</translation>
+      <translation>Lemas del diccionario</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4294"/>
@@ -3109,7 +3337,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4444"/>
       <source>Now indexing for full-text search: </source>
-      <translation>Ahora indexando para búsqueda en texto completo: </translation>
+      <translation>Indexando ahora la búsqueda de texto completo:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4486"/>
@@ -3171,7 +3399,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.ui" line="525"/>
       <source>Search in page</source>
-      <translation>Buscar en la página</translation>
+      <translation>Buscar en página</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
@@ -3220,7 +3448,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <location filename="../src/ui/mainwindow.cc" line="1946"/>
       <location filename="../src/ui/mainwindow.cc" line="4493"/>
       <source>Add current tab to Favorites</source>
-      <translation>Añadir pestaña actual a favoritos</translation>
+      <translation>Añadir la pestaña actual a Favoritos</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
@@ -3230,7 +3458,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/mainwindow.ui" line="587"/>
       <source>Export to list</source>
-      <translation>Exportar a la lista</translation>
+      <translation>Exportar a lista</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="118"/>
@@ -3289,7 +3517,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/dict/mdx.cc" line="628"/>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>Fichero de diccionario alterado o corrupto</translation>
+      <translation>Archivo de diccionario alterado o corrupto</translation>
     </message>
     <message>
       <location filename="../src/dict/mdx.cc" line="639"/>
@@ -3414,12 +3642,12 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/ui/orderandprops.cc" line="265"/>
       <source>Sort by languages</source>
-      <translation>Ordenar por lenguas</translation>
+      <translation>Ordenar por idiomas</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="259"/>
       <source>Dictionary headwords</source>
-      <translation>Palabras de cabeza de diccionario</translation>
+      <translation>Lemas del diccionario</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="288"/>
@@ -3480,7 +3708,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <location filename="../src/ui/preferences.ui" line="930"/>
       <location filename="../src/ui/preferences.ui" line="1010"/>
       <source>Host:</source>
-      <translation>Anfitrión:</translation>
+      <translation>Servidor:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="940"/>
@@ -4057,7 +4285,7 @@ sin embargo, el artículo del diccionario superior se muestra.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="635"/>
       <source>Show scan flag when word is selected</source>
-      <translation>Mostrar indicador de escaneo cuando la palabra está seleccionada</translation>
+      <translation>Mostrar una notificación de búsqueda cuando una palabra está seleccionada</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="892"/>
@@ -4175,7 +4403,7 @@ borra su caché de red del disco durante la salida.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1259"/>
       <source>Allow full-text search for:</source>
-      <translation>Permitir búsqueda de texto completo para:</translation>
+      <translation>Permitir la búsqueda de texto completo para:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1357"/>
@@ -4222,7 +4450,7 @@ borra su caché de red del disco durante la salida.</translation>
     </message>
     <message>
       <source>&lt;default&gt;</source>
-      <translation>&lt;default&gt;</translation>
+      <translation>&lt;por defecto&gt;</translation>
     </message>
     <message>
       <source>Popup</source>
@@ -4253,12 +4481,12 @@ borra su caché de red del disco durante la salida.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1584"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>Active esta opción para confirmar cada operación de borrado de elementos</translation>
+      <translation>Active esta opción para confirmar cada operación en que se eliminen elementos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1587"/>
       <source>Confirmation for items deletion</source>
-      <translation>Confirmación para eliminar elementos</translation>
+      <translation>Confirmación para la eliminación de elementos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1658"/>
@@ -4280,12 +4508,12 @@ del ratón sobre el ratón, la selección, el portapapeles o la línea de comand
     <message>
       <location filename="../src/ui/preferences.ui" line="1718"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Active esta opción para ignorar diacríticos al buscar artículos</translation>
+      <translation>Active esta opción para ignorar los diacríticos al buscar artículos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1721"/>
       <source>Ignore diacritics while searching</source>
-      <translation>Ignorar diacríticos durante la búsqueda</translation>
+      <translation>Ignorar los diacríticos al buscar</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1708"/>
@@ -4310,7 +4538,7 @@ del ratón sobre el ratón, la selección, el portapapeles o la línea de comand
     <message>
       <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>Los artículos con una longitud mayor que esta se mostrarán plegados</translation>
+      <translation>Los artículos con una longitud mayor que ésta se mostrarán plegados</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1618"/>
@@ -4353,7 +4581,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1431"/>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Activar esta opción para almacenar el historial de palabras traducidas</translation>
+      <translation>Active esta opción para almacenar el historial de palabras traducidas</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1434"/>
@@ -4408,6 +4636,11 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>minutos</translation>
     </message>
     <message>
+      <location filename="../src/ui/preferences.cc" line="60"/>
+      <source>English</source>
+      <translation type="unfinished">English</translation>
+    </message>
+    <message>
       <location filename="../src/ui/preferences.cc" line="112"/>
       <source>Classic</source>
       <translation>Clásico</translation>
@@ -4451,7 +4684,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1087"/>
       <source>Plain Text</source>
-      <translation>Texto simple</translation>
+      <translation>Texto sencillo</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1089"/>
@@ -4521,7 +4754,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <location filename="../src/dict/aard.cc" line="430"/>
       <location filename="../src/dict/dsl.cc" line="1698"/>
       <source>Article loading error</source>
-      <translation>Error al cargar artículo</translation>
+      <translation>Error al cargar el artículo</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="522"/>
@@ -4595,7 +4828,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Cannot find usable audio output device.</source>
-      <translation>No se encontró dispositivo de audio utilizable.</translation>
+      <translation>No se encontró un dispositivo de salida de audio utilizable.</translation>
     </message>
     <message>
       <source>Unsupported sample format.</source>
@@ -4808,7 +5041,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="231"/>
       <source>Always stay on top of all other windows</source>
-      <translation>Permanecer siempre encima de todas las demás ventanas</translation>
+      <translation>Mantener siempre por encima de otras ventanas</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="251"/>
@@ -5261,7 +5494,7 @@ o regístrese en el sitio para obtener su propia clave.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="125"/>
       <source>Text to Speech</source>
-      <translation>Síntesis de Voz</translation>
+      <translation>Síntesis de voz</translation>
     </message>
   </context>
   <context>
@@ -5307,7 +5540,7 @@ o regístrese en el sitio para obtener su propia clave.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="186"/>
       <source>Type text to be previewed here.</source>
-      <translation>Introduzca aquí el texto a previsualizar.</translation>
+      <translation>Introduzca aquí el texto que previsualizar.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="220"/>
