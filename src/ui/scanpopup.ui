@@ -112,9 +112,6 @@
              <property name="toolTip">
               <string>Back</string>
              </property>
-             <property name="text">
-              <string>...</string>
-             </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
                <normaloff>:/icons/previous.svg</normaloff>:/icons/previous.svg</iconset>
@@ -126,9 +123,6 @@
              <property name="toolTip">
               <string>Forward</string>
              </property>
-             <property name="text">
-              <string>...</string>
-             </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
                <normaloff>:/icons/next.svg</normaloff>:/icons/next.svg</iconset>
@@ -139,9 +133,6 @@
             <widget class="QToolButton" name="pronounceButton">
              <property name="toolTip">
               <string>Pronounce Word (Alt+S)</string>
-             </property>
-             <property name="text">
-              <string>...</string>
              </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
@@ -160,9 +151,6 @@
              <property name="toolTip">
               <string>Send word to main window (Alt+W)</string>
              </property>
-             <property name="text">
-              <string notr="true">...</string>
-             </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
                <normaloff>:/icons/programicon.png</normaloff>:/icons/programicon.png</iconset>
@@ -176,9 +164,6 @@
             <widget class="QToolButton" name="sendWordToFavoritesButton">
              <property name="toolTip">
               <string>Add word to Favorites (Ctrl+E)</string>
-             </property>
-             <property name="text">
-              <string notr="true">...</string>
              </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
@@ -207,9 +192,6 @@
              <property name="toolTip">
               <string>Shows or hides the dictionary bar</string>
              </property>
-             <property name="text">
-              <string>...</string>
-             </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
                <normaloff>:/icons/bookcase.svg</normaloff>:/icons/bookcase.svg</iconset>
@@ -230,9 +212,6 @@
              <property name="toolTip">
               <string>Always stay on top of all other windows</string>
              </property>
-             <property name="text">
-              <string notr="true"/>
-             </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
                <normaloff>:/icons/ontop.svg</normaloff>:/icons/ontop.svg</iconset>
@@ -250,9 +229,6 @@
              <property name="toolTip">
               <string>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</string>
-             </property>
-             <property name="text">
-              <string>...</string>
              </property>
              <property name="icon">
               <iconset resource="../../resources.qrc">
