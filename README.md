@@ -1,6 +1,6 @@
 # GoldenDict-ng
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e507f9bf83bd48f7a5b76f71dfe9f0dd)](https://app.codacy.com/gh/xiaoyifang/goldendict?utm_source=github.com&utm_medium=referral&utm_content=xiaoyifang/goldendict&utm_campaign=Badge_Grade_Settings)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
 [![Windows](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml) [![Ubuntu](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml)
 [![macos](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml)
 
