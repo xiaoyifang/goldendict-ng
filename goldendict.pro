@@ -363,6 +363,7 @@ HEADERS += \
     src/keyboardstate.hh \
     src/langcoder.hh \
     src/language.hh \
+    src/metadata.hh \
     src/multimediaaudioplayer.hh \
     src/parsecmdline.hh \
     src/resourceschemehandler.hh \
@@ -485,6 +486,7 @@ SOURCES += \
     src/langcoder.cc \
     src/language.cc \
     src/main.cc \
+    src/metadata.cc \
     src/multimediaaudioplayer.cc \
     src/parsecmdline.cc \
     src/resourceschemehandler.cc \
