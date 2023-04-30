@@ -7,7 +7,7 @@
 #include "config.hh"
 #include "langcoder.hh"
 #include "language.hh"
-#include "toml.hpp"
+#include "metadata.hh"
 
 //#include "initializing.hh"
 
@@ -15,7 +15,6 @@
 #include <QDir>
 #include <QIcon>
 #include <QMap>
-#include <QMultiMap>
 #include <QVector>
 #include <QFileInfo>
 #include <QFileDialog>
@@ -904,30 +903,16 @@ void DictGroupsWidget::groupsByMetadata()
       continue;
 
     auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-    if ( !QFile::exists( filePath ) ) {
-      qDebug() << "the dictionary folder:" << baseDir << " contain no metadata.toml";
-      continue;
-    }
-    try {
-      auto config = toml::parse_file( filePath.toStdString() );
 
-      toml::array * categories = config.get_as< toml::array >( "category" );
-      if ( !categories ) {
-        continue;
-      }
-      categories->for_each( [ &groupToDicts, &dict ]( auto && elem ) {
-        if ( elem.is_string() ) {
-          auto group = QString::fromStdString( elem.as_string()->get() ).trimmed();
-
-          if ( group.isEmpty() )
-            return;
-
-          groupToDicts.insert( group, dict );
+    auto dictMetaData = Metadata::load( filePath.toStdString() );
+    if ( dictMetaData && dictMetaData->categories ) {
+      for ( const auto & category : dictMetaData->categories.value() ) {
+        auto group = QString::fromStdString( category ).trimmed();
+        if ( group.isEmpty() ) {
+          continue;
         }
-      } );
-    }
-    catch ( toml::parse_error & e ) {
-      qWarning() << "can not open the metadata.toml" << e.what();
+        groupToDicts.insert( group, dict );
+      }
     }
   }
 
