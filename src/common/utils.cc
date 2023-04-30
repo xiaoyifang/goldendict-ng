@@ -4,6 +4,14 @@
 #include <QStyle>
 #include <QMessageBox>
 
+namespace Utils {
+//some str has \0 in the middle of the string. return the string before the \0
+std::string c_string( const QString & str )
+{
+  return std::string( str.toUtf8().constData() );
+}
+}
+
 QString Utils::Path::combine(const QString& path1, const QString& path2)
 {
   return QDir::cleanPath(path1 + QDir::separator() + path2);
