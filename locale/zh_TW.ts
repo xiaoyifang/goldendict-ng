@@ -2746,7 +2746,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation>西班牙语(玻利维亚)</translation>
+      <translation>西班牙語（玻利維亞）</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
