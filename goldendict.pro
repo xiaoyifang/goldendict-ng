@@ -126,7 +126,8 @@ win32 {
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
         }
-        LIBS += -L$${PWD}/winlibs/lib/msvc
+        #LIBS += -L$${PWD}/winlibs/lib/msvc
+        LIBS += -L$${PWD}/winlibs/lib
         # silence the warning C4290: C++ exception specification ignored
         QMAKE_CXXFLAGS += /wd4290 /Zc:__cplusplus /std:c++17 /permissive- 
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
