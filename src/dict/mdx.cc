@@ -909,8 +909,7 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
     article = filterResource( article );
   }
 
-  // articleText = article.toStdString();
-  articleText = string( article.toUtf8().constData() );
+  articleText = Utils::c_string( article );
 }
 
 QString & MdxDictionary::filterResource( QString & article )
