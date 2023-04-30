@@ -4456,7 +4456,7 @@ clears its network cache from disk during exit.</source>
     </message>
     <message>
       <source>&lt;default&gt;</source>
-      <translation>&lt;default&gt;</translation>
+      <translation>&lt;по умолчанию&gt;</translation>
     </message>
     <message>
       <source>Popup</source>
