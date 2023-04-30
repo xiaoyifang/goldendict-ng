@@ -10,7 +10,7 @@ dictionaries.
 
 | Linux | Windows | macOS |
 |--|--|--|
-| [<img src="website/docs/img/linux_genshin.webp" width="500"/>](website/docs/img/linux_genshin.webp) | [<img src="website/docs/img/windows_white.webp" width="500"/>](website/docs/img/windows_white.webp) | [<img src="website/docs/img/mac_black.webp" width="500"/>](website/docs/img/mac_black.webp) |
+| [<img src="website/docs/img/linux_genshin.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/windows_white.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/mac_black.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) |
 
 # Some significant features of this fork
 
