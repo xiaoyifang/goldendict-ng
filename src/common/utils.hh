@@ -35,8 +35,10 @@ inline QString rstrip(const QString &str) {
       return str.left(n + 1);
     }
   }
-  return "";
+  return {};
 }
+
+std::string c_string( const QString & str );
 
 /**
  * remove punctuation , space, symbol

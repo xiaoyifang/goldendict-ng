@@ -139,7 +139,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( ui.translateBox->wordList(), &WordList::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
-  ui.pronounceButton->hide();
+  ui.pronounceButton->setDisabled( true );
 
   ui.groupList->fill( groups );
   ui.groupList->setCurrentGroup( cfg.lastPopupGroupId );
@@ -705,7 +705,7 @@ void ScanPopup::translateInputFinished()
 
 void ScanPopup::showTranslationFor( Config::InputPhrase const & inputPhrase )
 {
-  ui.pronounceButton->hide();
+  ui.pronounceButton->setDisabled( true );
 
   unsigned groupId = ui.groupList->getCurrentGroup();
   definition->showDefinition( inputPhrase, groupId );
@@ -1052,7 +1052,7 @@ void ScanPopup::pageLoaded( ArticleView * )
     [ pronounceBtn ]( bool has )
     {
       if( pronounceBtn )
-        pronounceBtn->setVisible( has );
+        pronounceBtn->setDisabled( !has );
     } );
 
   updateBackForwardButtons();

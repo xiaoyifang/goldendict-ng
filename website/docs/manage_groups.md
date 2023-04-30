@@ -80,7 +80,7 @@ The `metadata.toml` should be placed beside dictionary files. One `metadata.toml
 The metadata file uses [TOML](https://toml.io) format.
 
 ```toml
-category = [ "English", "Russian", "Chinese" ]
+categories = [ "English", "Russian", "Chinese" ]
 
 # the following fields have not supported yet.
 [metadata]
@@ -108,12 +108,12 @@ For example,
 
 The content of the metadata `(A)` is
 ```toml
-category = ["en-zh", "汉英词典"]
+categories = ["en-zh", "汉英词典"]
 ```
 
 The content of the metadata `(B)` is
 ```toml
-category = ["图片词典", "en-zh", "汉英词典"]
+categories = ["图片词典", "en-zh", "汉英词典"]
 ```
 
 The structure above will be auto grouped into three groups:
