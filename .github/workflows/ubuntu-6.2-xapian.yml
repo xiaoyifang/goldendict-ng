@@ -33,10 +33,7 @@ jobs:
       version: 23.04.03
       version-suffix: alpha
       prerelease: true
-    steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'               
+    steps:          
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -45,7 +42,6 @@ jobs:
           cached: 'false'
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
-          setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies
         run: |
