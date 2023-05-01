@@ -105,9 +105,15 @@ OBJECTS_DIR = build
 UI_DIR = build
 MOC_DIR = build
 RCC_DIR = build
-LIBS += -lz \
-        -lbz2 \
+LIBS += -lbz2 \
         -llzo2
+
+win32{
+  LIBS += -lzlib 
+}else{
+  LIBS += -lz 
+}
+
 
 win32 {
     QM_FILES_INSTALL_PATH = /locale/
