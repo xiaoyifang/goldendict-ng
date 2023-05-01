@@ -30,6 +30,24 @@
 
 #include "gddebug.hh"
 
+#if defined(USE_BREAKPAD)
+  #include "client/windows/handler/exception_handler.h"
+#endif
+
+#if defined(USE_BREAKPAD)
+bool callback(const wchar_t* dump_path, const wchar_t* id,
+               void* context, EXCEPTION_POINTERS* exinfo,
+               MDRawAssertionInfo* assertion,
+               bool succeeded) {
+  if (succeeded) {
+    qDebug() << "Create dump file success";
+  } else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+#endif
+
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
   Q_UNUSED( context );
@@ -225,8 +243,7 @@ int main( int argc, char ** argv )
   char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
   int newArgc                     = argc + 1 + 1;
   char ** newArgv                 = new char *[ newArgc ];
-  for( int i = 0; i < argc; i++ )
-  {
+  for ( int i = 0; i < argc; i++ ) {
         newArgv[ i ] = argv[ i ];
   }
   newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
@@ -235,10 +252,26 @@ int main( int argc, char ** argv )
   QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
 
   app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
+  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
 #ifndef Q_OS_MAC
   app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
+
+#if defined(USE_BREAKPAD)
+  QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";
+
+  QDir dir;
+  if (!dir.exists(appDirPath)) {
+        bool res = dir.mkpath(appDirPath);
+        qDebug() << "New mkdir " << appDirPath << " " << res;
+  }
+
+  google_breakpad::ExceptionHandler eh(
+    appDirPath.toStdWString(), NULL, callback, NULL,
+    google_breakpad::ExceptionHandler::HANDLER_ALL);
+
+
+  #endif
 
   GDOptions gdcl{};
 
