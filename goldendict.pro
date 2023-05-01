@@ -79,6 +79,22 @@ CONFIG( use_xapian ) {
   LIBS+= -lxapian
 }
 
+CONFIG( use_breakpad ) {
+  DEFINES += USE_BREAKPAD
+
+  win32: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
+  else:unix: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpa
+
+  INCLUDEPATH += $$PWD/thirdparty/breakpad/include
+  DEPENDPATH += $$PWD/thirdparty/breakpad/include
+
+  CONFIG( release, debug|release ) {
+    # create debug symbols for release builds
+    CONFIG*=force_debug_info
+    QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO -= -O2
+  }
+}
+
 CONFIG( use_iconv ) {
   DEFINES += USE_ICONV
   unix:!mac{
