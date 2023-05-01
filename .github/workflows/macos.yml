@@ -65,11 +65,11 @@ jobs:
           previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
           echo "$previousTag">version.txt
                     
-      - name: build macos
+      - name: install deps on macos
         run: |
-          brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 libtiff xz lzo libogg libvorbis zstd || true
+          brew uninstall opencc hunspell ffmpeg@5 ffmpeg@4 xz lzo libogg libvorbis zstd || true
           brew install create-dmg
-          qmake CONFIG+=release CONFIG+=no_extra_tiff_handler   CONFIG+=zim_support   CONFIG+=chinese_conversion_support
+          qmake CONFIG+=release CONFIG+=zim_support   CONFIG+=chinese_conversion_support
           make -j$(nproc)
       # 打包
       - name: package
@@ -114,7 +114,7 @@ jobs:
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.dmg
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
-          release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
             release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  

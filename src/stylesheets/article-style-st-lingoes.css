@@ -1,0 +1,101 @@
+a 
+{
+  color: #2233bb;
+  text-decoration: none;
+}
+
+a:hover
+{
+  color: #6677ff;
+}
+
+::selection
+{
+  background: #3399ff;
+  color: white;
+}
+
+body
+{
+  background: #fffef2;
+  color: black;
+  font-family: Tahoma, Verdana, SimSun, SimSun-ExtB, sans-serif;
+  margin: 5px;
+}
+
+.gdarticle
+{
+  background: #fffef2;
+  margin-top: -8px;
+  position: relative;
+}
+
+.gddicticon
+{
+  display: inline;
+  margin-left: -3px;
+  padding-right: 5px;
+}
+
+.gddicticon img
+{
+  border: 0px;
+  height: 16px;
+  vertical-align: text-top;
+}
+
+.gdfromprefix
+{
+  display: none;
+}
+
+.gddictname
+{
+  display: inline-block;
+  /* border: 1px solid #92b0dd; */
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-top: 1em;
+  margin-bottom: -0.1em;
+  background: #cfddf0;
+  color: #000080;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.collapse_expand_area
+{
+  position: absolute;
+  right: 0px;
+}
+
+.gdexpandicon, .gdexpandicon:hover, .gdcollapseicon, .gdcollapseicon:hover
+{
+  background-position: center 35%;
+  background-repeat:no-repeat;
+}
+
+
+.gdexpandicon {
+  content:url('qrc:///icons/expand_article.png');
+}
+
+.gdexpandicon:hover {
+  content:url('qrc:///icons/expand_article_hovered.png');
+}
+
+.gdcollapseicon {
+  content:url('qrc:///icons/collapse_article.png');
+}
+
+.gdcollapseicon:hover {
+  content:url('qrc:///icons/collapse_article_hovered.png');
+}
+
+.gddictnamebodyseparator
+{
+  clear: both;
+  border-top: 1px solid #92b0dd;
+  margin-bottom: 1em;
+}

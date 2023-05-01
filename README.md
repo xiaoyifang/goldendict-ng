@@ -1,32 +1,72 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e507f9bf83bd48f7a5b76f71dfe9f0dd)](https://app.codacy.com/gh/xiaoyifang/goldendict?utm_source=github.com&utm_medium=referral&utm_content=xiaoyifang/goldendict&utm_campaign=Badge_Grade_Settings)
+# GoldenDict-ng
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
 [![Windows](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml) [![Ubuntu](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml)
 [![macos](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml)
 
-# GoldenDict
+The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
+supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
+dictionaries.
 
-A feature-rich dictionary lookup program, supporting multiple dictionary formats (StarDict/Babylon/Lingvo/Dictd/AARD/MDict/SDict) and online dictionaries, featuring perfect article rendering with the complete markup, illustrations and other content retained, and allowing you to type in words without any accents or correct case.
+| Linux | Windows | macOS |
+|--|--|--|
+| [<img src="website/docs/img/linux_genshin.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/windows_white.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/mac_black.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) |
+
+# Some significant features of this fork
+
+- webengine with latest html/css feature support
+- support >4GB dictionary
+- support highdpi screen resolution
+- built with xapian(optional) as fulltext engine
+- support Qt5.15.2 and higher ,include latest Qt6
+- performance optimization(eg. >10000000 headwords support) 
+- anki integration
+- dark theme
+- daily auto release support
+- lots of bug fixes and improvements
 
 ## Installation
 
-### Windows and macOS
+### Downloads
 
-Download latest [stable](https://github.com/xiaoyifang/goldendict/releases/latest) version or daily [pre-release builds](https://github.com/xiaoyifang/goldendict/releases).
+* [Latest stable version](https://github.com/xiaoyifang/goldendict/releases/latest)
+* [Daily pre-release builds](https://github.com/xiaoyifang/goldendict/releases).
 
-`.exe` for Windows users and `.dmg` for macOS users.
+Both Qt5 and Qt6 builds are provided.
 
-### Linux
+## Windows
 
-The download links above includes `.Appimage` for Linux users.
+Choose either
 
-Archlinux users can also use community maintained [goldendict-webengine-git](https://aur.archlinux.org/packages/goldendict-webengine-git).
+* `****-installer.exe ` for traditional installer experience
+* `****.zip` for simply unzip and run experience
 
-[Debian packages](https://tracker.debian.org/pkg/goldendict-webengine) are available in Debian 12 or later.
+If Qt's version is not changed, you can also download a single `goldendict.exe` and drop it into previous installation's folder.
 
-[Ubuntu packages](https://launchpad.net/ubuntu/+source/goldendict-webengine) are available in Ubuntu 23.04 or later.
+## Linux
 
-openSUSE ships an old version of this fork.
+* `.Appimage` can be used in any recent linux distros.
+* [Debian packages](https://tracker.debian.org/pkg/goldendict-webengine) are available in Debian 12 or later.
+* [Ubuntu packages](https://launchpad.net/ubuntu/+source/goldendict-webengine) are available in Ubuntu 23.04 or later.
+* Archlinux can use [goldendict-ng-git](https://aur.archlinux.org/packages/goldendict-ng-git). Built binary is also availiable from [archlinuxcn's repo](https://github.com/archlinuxcn/repo/tree/master/archlinuxcn/goldendict-ng-git).
+* [Gentoo package from PG_Overlay](https://gitlab.com/Perfect_Gentleman/PG_Overlay/-/blob/master/app-text/goldendict/goldendict-9999-r6.ebuild)
+* openSUSE ships an old version of this fork.
 
-Helps are needed to deliver this fork to other distros!
+> Help wanted to package this GoldenDict for linux distros.
+
+## macOS
+
+One of the `.dmg` installers.
+
+## Help GoldenDict's Development
+
+GoldenDict is developed by volunteers.
+
+All kinds of help like answering questions, bug reporting, testing, translation and coding are welcomed.
+
+To translate the interface, you can use the Crowdin <https://crowdin.com/project/goldendict-ng>
+
+To start development, check out [developer guide](https://xiaoyifang.github.io/goldendict-ng/developer/)
 
 ## Build from source
 
@@ -45,10 +85,11 @@ Steps below are using qt5, and you may use qt6 by replacing `5` with `6`.
 ```
 sudo apt-get install git pkg-config build-essential qt5-qmake \
         libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
-        qtdeclarative5-dev libxtst-dev liblzo2-dev libbz2-dev \
-        libavutil-dev libavformat-dev libtiff5-dev libeb16-dev \
+        libxtst-dev liblzo2-dev libbz2-dev \
+        libavutil-dev libavformat-dev libeb16-dev \
         libqt5svg5-dev libqt5x11extras5-dev qttools5-dev \
-        qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins libqt5webchannel5-dev qtwebengine5-dev
+        qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins libqt5webchannel5-dev qtwebengine5-dev \
+        libqt5texttospeech5-dev
 ```
 
 #### Fedora 35
@@ -56,7 +97,7 @@ sudo apt-get install git pkg-config build-essential qt5-qmake \
 ```
 sudo dnf install git pkg-config libzstd-devel opencc-devel xz-devel xz-lzma-compat\
      libvorbis-devel zlib-devel hunspell-devel lzo-devel bzip2-devel \
-     ffmpeg-devel libtiff-devel eb-devel qt5-qtx11extras-devel libXtst-devel \
+     ffmpeg-devel eb-devel qt5-qtx11extras-devel libXtst-devel \
      libxkbcommon-devel qt5-qtbase qt5-qttools qt5-qtsvg-devl qt5-qtwebengine-devel qt5-qtmultimedia-devel
 ```
 
@@ -64,20 +105,20 @@ sudo dnf install git pkg-config libzstd-devel opencc-devel xz-devel xz-lzma-comp
 
 Clone this repository:
 ```
-git clone https://github.com/xiaoyifang/goldendict.git
+git clone https://github.com/xiaoyifang/goldendict-ng.git
 ```
 
 #### Linux build
 
 ```
-cd goldendict && qmake-qt5 && make
+cd goldendict-ng && qmake-qt5 && make
 ```
 
 #### macOS build
 
 ```
 brew install qt # or use official offline installer
-qmake CONFIG+=release CONFIG+=zim_support   CONFIG+=chinese_conversion_support QMAKE_APPLE_DEVICE_ARCHS="x86_64 arm64"
+qmake CONFIG+=release CONFIG+=zim_support CONFIG+=chinese_conversion_support QMAKE_APPLE_DEVICE_ARCHS="x86_64 arm64"
 make 
 make install
 ```
@@ -115,14 +156,6 @@ To add Zim and Slob formats support you need at first install lzma-dev and zstd-
 ```
 sudo apt-get install liblzma-dev libzstd-dev
 ```
-
-#### Building without extra tiff handler( DEPRECATED )
-
-**deprecated: qt has offered b/w tiff support which means this options should always _enabled_.  intend to remove in the future.**
-
-If you have problem building with libtiff5-dev package, you can pass
-`"CONFIG+=no_extra_tiff_handler"` to `qmake` in order to disable extra tiff support
-(without such extra support some b/w tiff images will not be displayed):
 
 #### Building without Epwing format support
 
@@ -164,26 +197,11 @@ qmake "CONFIG+=use_iconv"
 
 when enabled ,iconv should be installed on the platform at the same time.
 
-
-## Contributing
-
-All kinds of help like answering questions, bug reporting, testing translation and coding are welcomed.
-
-To start coding, the easiest way is load the `goldendict.pro` file to Qt Creator, make some changes then press the run button.
-
-### the code guideline
-
-check the document [how to use clang-format](howto/how%20to%20use%20.clang-format%20to%20format%20the%20code.md)
-
-## Online document
-
-[document](https://xiaoyifang.github.io/goldendict/)
-
 ## Support
 
-Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict/issues)
+Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
 
-General discussions: [discussions](https://github.com/xiaoyifang/goldendict/discussions)
+General discussions: [discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
 
 ## License
 

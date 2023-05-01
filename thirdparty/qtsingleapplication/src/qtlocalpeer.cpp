@@ -41,7 +41,6 @@
 
 #include "qtlocalpeer.h"
 #include <QCoreApplication>
-#include <QTime>
 #include <QDataStream>
 
 #if defined(Q_OS_WIN)
@@ -51,21 +50,12 @@ typedef BOOL(WINAPI*PProcessIdToSessionId)(DWORD,DWORD*);
 static PProcessIdToSessionId pProcessIdToSessionId = 0;
 #endif
 #if defined(Q_OS_UNIX)
-#include <sys/types.h>
-#include <time.h>
+#include <ctime>
 #include <unistd.h>
 #endif
 
 #include <QRegularExpression>
 
-namespace QtLP_Private {
-#include "qtlockedfile.cpp"
-#if defined(Q_OS_WIN)
-#include "qtlockedfile_win.cpp"
-#else
-#include "qtlockedfile_unix.cpp"
-#endif
-}
 
 const char* QtLocalPeer::ack = "ack";
 
@@ -105,18 +95,21 @@ QtLocalPeer::QtLocalPeer(QObject* parent, const QString &appId)
     server = new QLocalServer(this);
     QString lockName = QDir(QDir::tempPath()).absolutePath()
                        + QLatin1Char('/') + socketName
-                       + QLatin1String("-lockfile");
-    lockFile.setFileName(lockName);
-    lockFile.open(QIODevice::ReadWrite);
+                       + QLatin1String("-gdlockfile");
+    lockFile = new QLockFile(lockName);
+    lockFile->setStaleLockTime(0);
+    if ( !lockFile->tryLock( 0 ) ) {
+        if ( lockFile->error() != QLockFile::NoError && lockFile->error() != QLockFile::LockFailedError ) {
+          qWarning() << "QLockFile error: " << lockFile->error();
+        }
+    }
 }
 
 bool QtLocalPeer::isClient()
 {
-    if (lockFile.isLocked())
-        return false;
-
-    if (!lockFile.lock(QtLP_Private::QtLockedFile::WriteLock, false))
+    if ( !lockFile->isLocked() ) {
         return true;
+    }
 
     bool res = server->listen(socketName);
 #if defined(Q_OS_UNIX) && (QT_VERSION >= QT_VERSION_CHECK(4,5,0))
@@ -198,4 +191,8 @@ void QtLocalPeer::receiveConnection()
     socket->waitForBytesWritten(1000);
     delete socket;
     emit messageReceived(message); //### (might take a long time to return)
+}
+
+QtLocalPeer::~QtLocalPeer() {
+    lockFile->unlock(); // Ensure file unlocked
 }

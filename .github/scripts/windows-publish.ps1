@@ -48,21 +48,17 @@ function Main() {
     Copy-Item "opencc\*" $archiveName\opencc\
     Write-Host "opencc config files.."
 
-    New-Item -ItemType Directory $archiveName\help
-    Copy-Item "help\*" $archiveName\help\
-    Write-Host "help files.."
     # 拷贝WinSDK dll
     $sdkDll="{0}Redist\{1}ucrt\DLLs\{2}\*.dll" -f $env:winSdkDir.Trim(),$env:winSdkVer.Trim(),$env:msvcArch
     Write-Host "copy sdk dll$($sdkDll)"
     Copy-Item $sdkDll $archiveName\
     Copy-Item winlibs\lib\msvc\*.dll $archiveName\
     Copy-Item locale\*.qm $archiveName\locale\
-    Write-Host "copy qwebengine zh_CN translation"
-    Copy-Item thirdparty\qwebengine_ts\*.qm $archiveName\locale\
+
     $webengineqm="{0}\translations\qtwebengine_*.qm" -f $env:QTDIR.Trim()
     Write-Host "copy qtwebengine qm from $($webengineqm)"
     Copy-Item $webengineqm $archiveName\locale\
-    
+
     # $multimedia="{0}\plugins\multimedia" -f $env:QTDIR.Trim()
     # if(Test-Path $multimedia){
     # Write-Host "copy multimedia  $($multimedia) to plugins"

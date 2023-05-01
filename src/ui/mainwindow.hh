@@ -1,0 +1,504 @@
+/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+ * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+
+#ifndef __MAINWINDOW_HH_INCLUDED__
+#define __MAINWINDOW_HH_INCLUDED__
+
+#include <QMainWindow>
+#include <QThread>
+#include <QToolButton>
+#include <QSystemTrayIcon>
+#include <QNetworkAccessManager>
+#include <QProgressDialog>
+#include "ui_mainwindow.h"
+#include "folding.hh"
+#include "config.hh"
+#include "dict/dictionary.hh"
+#include "article_netmgr.hh"
+#include "audioplayerfactory.hh"
+#include "instances.hh"
+#include "article_maker.hh"
+#include "scanpopup.hh"
+#include "ui/articleview.hh"
+#include "wordfinder.hh"
+#include "dictionarybar.hh"
+#include "history.hh"
+#include "mainstatusbar.hh"
+#include "mruqmenu.hh"
+#include "translatebox.hh"
+#include "wordlist.hh"
+#include "dictheadwords.hh"
+#include "fulltextsearch.hh"
+#include "base_type.hh"
+
+#include "hotkeywrapper.hh"
+#include "weburlrequestinterceptor.hh"
+#include "resourceschemehandler.hh"
+#include "iframeschemehandler.hh"
+#ifdef HAVE_X11
+#include <fixx11h.h>
+#endif
+
+#if defined(Q_OS_MAC)
+#include "macos/gd_clipboard.hh"
+#endif
+
+using std::string;
+using std::vector;
+
+class MainWindow: public QMainWindow, public DataCommitter
+{
+  Q_OBJECT
+
+public:
+
+  MainWindow( Config::Class & cfg );
+  ~MainWindow();
+
+  virtual void commitData( QSessionManager & );
+
+  /// Set group for main/popup window
+  void setGroupByName( QString const & name, bool main_window );
+
+public slots:
+
+  void messageFromAnotherInstanceReceived( QString const & );
+  void showStatusBarMessage ( QString const &, int, QPixmap const & );
+  void phraseReceived( Config::InputPhrase const & );
+  void wordReceived( QString const & );
+  void headwordReceived( QString const &, QString const & );
+  void headwordFromFavorites( QString const &, QString const & );
+  void quitApp();
+
+private:
+  void addGlobalAction( QAction * action, const char * slot );
+  void addGlobalActionsToDialog( QDialog * dialog );
+  void addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
+  void removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
+
+  void commitData();
+
+  QSystemTrayIcon * trayIcon;
+
+  QScopedPointer< ArticleInspector > inspector;
+
+  Ui::MainWindow ui;
+
+  /// This widget is used as a title bar for the searchPane dock, and
+  /// incorporates the next three objects inside
+  QWidget searchPaneTitleBar;
+  QHBoxLayout searchPaneTitleBarLayout;
+  QLabel groupLabel;
+  GroupComboBox * groupList, * groupListInToolbar, * groupListInDock;
+
+  // Needed to be able to show/hide the translate box in the toolbar, since hiding
+  // the list expilictily doesn't work, see docs for QToolBar::addWidget().
+  QAction * translateBoxToolBarAction;
+
+  QWidget dictsPaneTitleBar;
+  QHBoxLayout dictsPaneTitleBarLayout;
+  QLabel foundInDictsLabel;
+
+  TranslateBox * translateBox;
+
+  /// Fonts saved before words zooming is in effect, so it could be reset back.
+  QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
+
+  QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction,
+          closeAllTabAction, closeRestTabAction,
+          switchToNextTabAction, switchToPrevTabAction,
+          showDictBarNamesAction, useSmallIconsInToolbarsAction, toggleMenuBarAction,
+          focusHeadwordsDlgAction, focusArticleViewAction,
+          addAllTabToFavoritesAction;
+  QToolBar * navToolbar;
+  MainStatusBar * mainStatusBar;
+  QAction * navBack, * navForward, * navPronounce, * enableScanningAction;
+  QAction * beforeOptionsSeparator;
+  QAction * zoomIn, * zoomOut, * zoomBase;
+  QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;
+  QAction * addToFavorites, * beforeAddToFavoritesSeparator;
+  QMenu trayIconMenu;
+  QMenu * tabMenu;
+  QAction * menuButtonAction;
+  QToolButton * menuButton;
+  MRUQMenu *tabListMenu;
+  //List that contains indexes of tabs arranged in a most-recently-used order
+  QList<QWidget*> mruList;
+  QToolButton addTab, *tabListButton;
+  Config::Class & cfg;
+  Config::Events configEvents;
+  History history;
+  DictionaryBar dictionaryBar;
+  vector< sptr< Dictionary::Class > > dictionaries;
+  QMap< std::string, sptr< Dictionary::Class > > dictMap;
+  /// Here we store unmuted dictionaries when the dictionary bar is active
+  vector< sptr< Dictionary::Class > > dictionariesUnmuted;
+  Instances::Groups groupInstances;
+  ArticleMaker articleMaker;
+  ArticleNetworkAccessManager articleNetMgr;
+  QNetworkAccessManager dictNetMgr; // We give dictionaries a separate manager,
+                                    // since their requests can be destroyed
+                                    // in a separate thread
+
+  QScopedPointer< QWebEngineProfile > webEngineProfile;
+
+  AudioPlayerFactory audioPlayerFactory;
+
+  WordList * wordList;
+  QLineEdit * translateLine;
+  QString translateBoxSuffix; ///< A punctuation suffix that corresponds to translateLine's text.
+
+  WordFinder wordFinder;
+
+  ScanPopup * scanPopup = nullptr;
+
+  sptr< HotkeyWrapper > hotkeyWrapper;
+
+  QTimer newReleaseCheckTimer; // Countdown to a check for the new program
+                               // release, if enabled
+  QNetworkReply *latestReleaseReply;
+
+  sptr< QPrinter > printer; // The printer we use for all printing operations
+
+  bool wordListSelChanged;
+
+  bool wasMaximized; // Window state before minimization
+
+  bool blockUpdateWindowTitle;
+
+  QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
+
+  DictHeadwords * headwordsDlg;
+
+  FTS::FtsIndexing ftsIndexing;
+
+  FTS::FullTextSearchDialog * ftsDlg;
+
+  QIcon starIcon, blueStarIcon;
+
+  LocalSchemeHandler * localSchemeHandler;
+  IframeSchemeHandler * iframeSchemeHandler;
+  ResourceSchemeHandler * resourceSchemeHandler;
+
+#ifdef Q_OS_MAC
+    gd_clipboard * macClipboard;
+#endif
+
+  /// Applies the custom Qt stylesheet
+  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle ,bool const & darkMode );
+
+  /// Creates, destroys or otherwise updates tray icon, according to the
+  /// current configuration and situation.
+  void updateTrayIcon();
+
+  void wheelEvent( QWheelEvent * );
+  void closeEvent( QCloseEvent * );
+
+  void applyProxySettings();
+  void setupNetworkCache( int maxSize );
+  void makeDictionaries();
+  void updateStatusLine();
+  void updateGroupList();
+  void updateDictionaryBar();
+
+  void updatePronounceAvailability();
+
+  void updateBackForwardButtons();
+
+  void updateWindowTitle();
+
+  /// Updates word search request and active article view in response to
+  /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
+  void applyMutedDictionariesState();
+
+  virtual bool eventFilter( QObject *, QEvent * );
+
+  /// Returns the reference to dictionaries stored in the currently active
+  /// group, or to all dictionaries if there are no groups.
+  vector< sptr< Dictionary::Class > > const & getActiveDicts();
+
+  /// Brings the main window to front if it's not currently, or hides it
+  /// otherwise. The hiding part is omitted if onlyShow is true.
+#ifdef HAVE_X11
+  void toggleMainWindow( bool onlyShow = false, bool byIconClick = false );
+#else
+  void toggleMainWindow( bool onlyShow = false );
+#endif
+
+  /// Creates hotkeyWrapper and hooks the currently set keys for it
+  void installHotKeys();
+
+  void applyZoomFactor();
+  void adjustCurrentZoomFactor();
+
+  void mousePressEvent ( QMouseEvent * event );
+
+  void updateCurrentGroupProperty();
+
+  /// Handles backward and forward mouse buttons and
+  /// returns true if the event is handled.
+  bool handleBackForwardMouseButtons(QMouseEvent *ev);
+
+  ArticleView * getCurrentArticleView();
+  void ctrlTabPressed();
+
+  void fillWordListFromHistory();
+
+  QString unescapeTabHeader( QString const & header );
+
+  void respondToTranslationRequest( Config::InputPhrase const & phrase,
+                                    bool checkModifiers, QString const & scrollTo = QString() );
+
+  void updateSuggestionList();
+  void updateSuggestionList( QString const & text );
+
+  enum WildcardPolicy { EscapeWildcards, WildcardsAreAlreadyEscaped };
+  enum TranslateBoxPopup { NoPopupChange, EnablePopup, DisablePopup };
+  void setTranslateBoxTextAndKeepSuffix( QString text, WildcardPolicy wildcardPolicy,
+                                         TranslateBoxPopup popupAction );
+  void setTranslateBoxTextAndClearSuffix( QString const & text, WildcardPolicy wildcardPolicy,
+                                          TranslateBoxPopup popupAction );
+  void changeWebEngineViewFont();
+  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
+private slots:
+
+  void hotKeyActivated( int );
+
+  /// If new release checks are on, santizies the next check time and starts
+  /// the timer. Does nothing otherwise.
+  void prepareNewReleaseChecks();
+
+  void updateFoundInDictsList();
+
+  /// Does the new release check.
+  void checkForNewRelease();
+
+  /// Signalled when the lastestReleaseReply is finished()
+  void latestReleaseReplyReady();
+
+  /// Receive click on "Found in:" pane
+  void foundDictsPaneClicked( QListWidgetItem * item );
+
+  /// Receive right click on "Found in:" pane
+  void foundDictsContextMenuRequested( const QPoint & pos );
+
+  void showDictionaryInfo( QString const & id );
+
+  void showDictionaryHeadwords( Dictionary::Class * dict );
+
+  void openDictionaryFolder( QString const & id );
+
+  void editDictionary ( Dictionary::Class * dict );
+
+  void showFTSIndexingName( QString const & name );
+
+  void handleAddToFavoritesButton();
+
+  void addCurrentTabToFavorites();
+
+  void addAllTabsToFavorites();
+
+  // Executed in response to a user click on an 'add tab' tool button
+  void addNewTab();
+  // Executed in response to a user click on an 'close' button on a tab
+  void tabCloseRequested( int );
+  // Closes current tab.
+  void closeCurrentTab();
+  void closeAllTabs();
+  void closeRestTabs();
+  void switchToNextTab();
+  void switchToPrevTab();
+
+  // Handling of active tab list
+  void createTabList();
+  void fillWindowsMenu();
+  void switchToWindow(QAction *act);
+
+  /// Triggered by the actions in the nav toolbar
+  void backClicked();
+  void forwardClicked();
+
+  /// ArticleView's title has changed
+  void titleChanged( ArticleView *, QString const & );
+  /// ArticleView's icon has changed
+  void iconChanged( ArticleView *, QIcon const & );
+
+  void pageLoaded( ArticleView * );
+  void tabSwitched( int );
+  void tabMenuRequested(QPoint pos);
+
+  void dictionaryBarToggled( bool checked );
+
+  void zoomin();
+  void zoomout();
+  void unzoom();
+
+  void scaleArticlesByCurrentZoomFactor();
+
+  void doWordsZoomIn();
+  void doWordsZoomOut();
+  void doWordsZoomBase();
+
+  void applyWordsZoomLevel();
+
+  /// If editDictionaryGroup is specified, the dialog positions on that group
+  /// initially.
+  void editDictionaries( unsigned editDictionaryGroup = Instances::Group::NoGroupId );
+  /// Edits current group when triggered from the dictionary bar.
+  void editCurrentGroup();
+  void editPreferences();
+
+  void currentGroupChanged( int );
+  void translateInputChanged( QString const & );
+  void translateInputFinished( bool checkModifiers = true );
+
+  /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
+  void handleEsc();
+
+  /// Gives the keyboard focus to the translateLine and selects all the text
+  /// it has.
+  void focusTranslateLine();
+
+  void wordListItemActivated( QListWidgetItem * );
+  void wordListSelectionChanged();
+
+  void dictsListItemActivated( QListWidgetItem * );
+  void dictsListSelectionChanged();
+
+  void jumpToDictionary( QListWidgetItem *, bool force = false );
+
+  void showDictsPane( );
+  void dictsPaneVisibilityChanged ( bool );
+
+  /// Creates a new tab, which is to be populated then with some content.
+  ArticleView * createNewTab( bool switchToIt,
+                              QString const & name );
+
+  void openLinkInNewTab( QUrl const &, QUrl const &, QString const &,
+                         Contexts const & contexts );
+  void showDefinitionInNewTab( QString const & word, unsigned group,
+                               QString const & fromArticle,
+                               Contexts const & contexts );
+  void typingEvent( QString const & );
+
+  void activeArticleChanged( ArticleView const *, QString const & id );
+
+  void mutedDictionariesChanged();
+
+  void showTranslationFor( Config::InputPhrase const &, unsigned inGroup = 0,
+                           QString const & scrollTo = QString() );
+  void showTranslationFor( QString const & );
+
+  void showTranslationFor( QString const &, QStringList const & dictIDs,
+                           QRegExp const & searchRegExp, bool ignoreDiacritics );
+
+  void showHistoryItem( QString const & );
+
+  void trayIconActivated( QSystemTrayIcon::ActivationReason );
+
+  void setAutostart( bool );
+
+  void showMainWindow();
+
+  void visitHomepage();
+  void visitForum();
+  void openConfigFolder();
+  void showAbout();
+
+  void showDictBarNamesTriggered();
+  void useSmallIconsInToolbarsTriggered();
+  void toggleMenuBarTriggered( bool announce = true );
+
+  void on_clearHistory_triggered();
+
+  void on_newTab_triggered();
+
+  void on_actionCloseToTray_triggered();
+
+  void on_pageSetup_triggered();
+  void on_printPreview_triggered();
+  void on_print_triggered();
+  void printPreviewPaintRequested( QPrinter * );
+
+  void on_saveArticle_triggered();
+
+  void on_rescanFiles_triggered();
+
+  void toggle_favoritesPane();
+  void toggle_historyPane(); // Toggling visibility
+  void on_exportHistory_triggered();
+  void on_importHistory_triggered();
+  void on_alwaysOnTop_triggered( bool checked );
+  void focusWordList();
+
+  void on_exportFavorites_triggered();
+  void on_importFavorites_triggered();
+  void on_ExportFavoritesToList_triggered();
+
+  void updateSearchPaneAndBar( bool searchInDock );
+
+  void updateFavoritesMenu();
+  void updateHistoryMenu();
+
+  /// Add word to history
+  void addWordToHistory( const QString & word );
+  /// Add word to history even if history is disabled in options
+  void forceAddWordToHistory( const QString & word);
+
+  void addWordToFavorites( QString const & word, unsigned groupId, bool );
+
+  void addBookmarkToFavorite( QString const & text );
+
+  void sendWordToInputLine( QString const & word );
+
+  void storeResourceSavePath( QString const & );
+
+  void closeHeadwordsDialog();
+
+  void focusHeadwordsDialog();
+
+  void focusArticleView();
+
+  void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
+
+  void showFullTextSearchDialog();
+  void closeFullTextSearchDialog();
+
+  void clipboardChange(QClipboard::Mode m);
+
+  void inspectElement( QWebEnginePage * );
+
+signals:
+  /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
+  void clickOnDictPane( QString const & id );
+
+  /// Set group for popup window
+  void setPopupGroupByName( QString const & name );
+};
+
+class ArticleSaveProgressDialog : public QProgressDialog
+{
+Q_OBJECT
+
+public:
+  explicit ArticleSaveProgressDialog( QWidget * parent = 0,  Qt::WindowFlags f = Qt::Widget ):
+    QProgressDialog( parent, f )
+  {
+    setAutoReset( false );
+    setAutoClose( false );
+  }
+
+public slots:
+  void perform()
+  {
+    int progress = value() + 1;
+    if ( progress == maximum() )
+    {
+      emit close();
+      deleteLater();
+    }
+    setValue( progress );
+  }
+};
+
+#endif

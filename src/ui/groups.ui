@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Groups</class>
+ <widget class="QWidget" name="Groups">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>791</width>
+    <height>319</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Groups</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" columnstretch="1,0,0">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Dictionaries available:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QuickFilterLine" name="searchLine"/>
+     </item>
+     <item>
+      <widget class="DictListWidget" name="dictionaries"/>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addDictsToGroup">
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Add selected dictionaries to group (Ins)</string>
+       </property>
+       <property name="text">
+        <string>&gt;</string>
+       </property>
+       <property name="shortcut">
+        <string>Ins</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeDictsFromGroup">
+       <property name="minimumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Remove selected dictionaries from group (Del)</string>
+       </property>
+       <property name="text">
+        <string>&lt;</string>
+       </property>
+       <property name="shortcut">
+        <string>Del</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Groups:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DictGroupsWidget" name="groups">
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="elideMode">
+        <enum>Qt::ElideRight</enum>
+       </property>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>Tab 2</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="addGroup">
+         <property name="toolTip">
+          <string>Create new dictionary group</string>
+         </property>
+         <property name="text">
+          <string>&amp;Add group</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="renameGroup">
+         <property name="toolTip">
+          <string>Rename current dictionary group</string>
+         </property>
+         <property name="text">
+          <string>Re&amp;name group</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeGroup">
+         <property name="toolTip">
+          <string>Remove current dictionary group</string>
+         </property>
+         <property name="text">
+          <string>&amp;Remove group</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeAllGroups">
+         <property name="toolTip">
+          <string>Remove all dictionary groups</string>
+         </property>
+         <property name="text">
+          <string>Remove all groups</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="autoGroups">
+         <property name="toolTip">
+          <string>Create language-based groups</string>
+         </property>
+         <property name="text">
+          <string>Group by Languages</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="autoGroupsFolders">
+         <property name="toolTip">
+          <string>Create folder-based groups.</string>
+         </property>
+         <property name="text">
+          <string>Group by Folders</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="groupMetadata">
+         <property name="text">
+          <string>Group by Metadata</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DictListWidget</class>
+   <extends>QListWidget</extends>
+   <header>groups_widgets.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>QuickFilterLine</class>
+   <extends>QLineEdit</extends>
+   <header>groups_widgets.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>DictGroupsWidget</class>
+   <extends>QTabWidget</extends>
+   <header>groups_widgets.hh</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>dictionaries</tabstop>
+  <tabstop>addDictsToGroup</tabstop>
+  <tabstop>removeDictsFromGroup</tabstop>
+  <tabstop>groups</tabstop>
+  <tabstop>addGroup</tabstop>
+  <tabstop>renameGroup</tabstop>
+  <tabstop>removeGroup</tabstop>
+  <tabstop>removeAllGroups</tabstop>
+  <tabstop>searchLine</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

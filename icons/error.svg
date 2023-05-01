@@ -1,32 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
-  <defs>
-    <linearGradient id="c">
-      <stop offset="0" stop-color="#fff"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="b">
-      <stop offset="0" stop-color="#fff"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="a">
-      <stop offset="0" stop-color="#f56e6e"/>
-      <stop offset="1" stop-color="#ff2929"/>
-    </linearGradient>
-    <filter id="d" width="1.201" height="2.807" x="-.1" y="-.904">
-      <feGaussianBlur stdDeviation="1.788"/>
-    </filter>
-    <linearGradient id="e" x1="29.456" x2="28.444" y1="43.948" y2="15.222" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
-    <linearGradient id="f" x1="24" x2="26.878" y1="10.619" y2="70.744" gradientUnits="userSpaceOnUse" xlink:href="#b"/>
-    <radialGradient id="h" cx="17.125" cy="23.839" r="2" fx="17.125" fy="23.839" gradientTransform="matrix(0 -15.82179 7.34069 0 -150.991 303.006)" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
-  </defs>
-  <g color="#000">
-    <rect width="42.75" height="4.75" x="2.375" y="37.75" filter="url(#d)" opacity=".506" rx="2.5" ry="2.5" style="marker:none"/>
-    <path id="g" fill="url(#e)" stroke="#a40000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M 41.5,38.500001 L 6.4999954,38.500001 L 23.999998,7.5000006 L 41.5,38.500001 z" style="marker:none"/>
-    <path fill="none" stroke="url(#f)" stroke-linecap="round" stroke-linejoin="round" d="M 23.84375,6.5 C 23.540505,6.5484647 23.275899,6.7325383 23.125,7 L 5.625,38 C 5.4507626,38.31141 5.4541778,38.691739 5.6339793,38.99997 C 5.8137809,39.308202 6.1431632,39.498383 6.5,39.5 L 41.5,39.5 C 41.856837,39.498383 42.186219,39.308202 42.366021,38.99997 C 42.545822,38.691739 42.549237,38.31141 42.375,38 L 24.875,7 C 24.668678,6.6350934 24.258031,6.4359916 23.84375,6.5 z" opacity=".596" style="marker:none"/>
-    <g fill="url(#h)">
-      <path d="M 25.721009,31.294601 A 3.0052037,3.0052037 0 1 1 19.710601,31.294601 A 3.0052037,3.0052037 0 1 1 25.721009,31.294601 z" style="marker:none" transform="translate(9.15 10.638) scale(.65196)"/>
-      <path d="M 23,28 L 25,28 L 26,19 L 22,19 L 23,28 z" style="marker:none"/>
-    </g>
-  </g>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<filter id="d" y="-.904" width="1.201" height="2.807">
+<feGaussianBlur stdDeviation="1.788"/>
+</filter>
+<linearGradient id="e" x1="29.456" x2="28.444" y1="43.948" y2="15.222" gradientUnits="userSpaceOnUse">
+<stop stop-color="#f56e6e" offset="0"/>
+<stop stop-color="#ff2929" offset="1"/>
+</linearGradient>
+<linearGradient id="f" x1="24" x2="26.878" y1="10.619" y2="70.744" gradientUnits="userSpaceOnUse">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-color="#fff" stop-opacity="0" offset="1"/>
+</linearGradient>
+<radialGradient id="h" cx="17.125" cy="23.839" r="2" gradientTransform="matrix(0 -15.822 7.3407 0 -150.99 303.01)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-color="#fff" stop-opacity="0" offset="1"/>
+</radialGradient>
+</defs>
+<g>
+<rect x="2.375" y="37.75" width="42.75" height="4.75" rx="2.5" ry="2.5" filter="url(#d)" opacity=".506"/>
+<path d="m41.5 38.5h-35l17.5-31 17.5 31z" fill="url(#e)" stroke="#a40000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+<path d="m23.844 6.5c-0.30324 0.048465-0.56785 0.23254-0.71875 0.5l-17.5 31c-0.17424 0.31141-0.17082 0.69174 0.0089793 0.99997 0.1798 0.30823 0.50918 0.49841 0.86602 0.50003h35c0.35684-0.001617 0.68622-0.1918 0.86602-0.50003 0.1798-0.30823 0.18322-0.68856 0.008979-0.99997l-17.5-31c-0.20632-0.36491-0.61697-0.56401-1.0312-0.5z" fill="none" opacity=".596" stroke="url(#f)" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="url(#h)">
+<path transform="translate(9.15 10.638) scale(.65196)" d="m25.721 31.295a3.0052 3.0052 0 1 1-6.0104 0 3.0052 3.0052 0 1 1 6.0104 0z"/>
+<path d="m23 28h2l1-9h-4l1 9z"/>
+</g>
+</g>
 </svg>

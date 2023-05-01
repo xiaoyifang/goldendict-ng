@@ -1,0 +1,1849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Preferences</class>
+ <widget class="QDialog" name="Preferences">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>787</width>
+    <height>629</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../resources.qrc">
+    <normaloff>:/icons/configure.svg</normaloff>:/icons/configure.svg</iconset>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_8">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>15</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>false</bool>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab_interface">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/interface.svg</normaloff>:/icons/interface.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>&amp;Interface</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="enableTrayIcon">
+         <property name="toolTip">
+          <string>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</string>
+         </property>
+         <property name="title">
+          <string>Enable system tray icon</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="startToTray">
+            <property name="toolTip">
+             <string>With this on, the application starts directly to system tray without showing
+its main window.</string>
+            </property>
+            <property name="text">
+             <string>Start to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="closeToTray">
+            <property name="toolTip">
+             <string>With this on, an attempt to close main window would hide it instead of closing
+the application.</string>
+            </property>
+            <property name="text">
+             <string>Close to system tray</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="escKeyHidesMainWindow">
+         <property name="toolTip">
+          <string>Normally, pressing ESC key moves focus to the translation line.
+With this on however, it will hide the main window.</string>
+         </property>
+         <property name="text">
+          <string>ESC key hides main window</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+         <property name="toolTip">
+          <string>Normally, clicking on a link, double-clicking on a word or looking up
+selection in an article loads the translation and almost immediately
+scrolls to the article from the same dictionary. With this option off,
+however, the article from the topmost dictionary is shown.</string>
+         </property>
+         <property name="text">
+          <string>Automatically scroll to target article</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QLabel" name="maxDictsInContextMenuLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Adjust this value to avoid huge context menus.</string>
+           </property>
+           <property name="text">
+            <string>Context menu dictionaries limit:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="maxDictsInContextMenu">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Startup</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="cbAutostart">
+            <property name="toolTip">
+             <string>Automatically starts GoldenDict after operation system bootup.</string>
+            </property>
+            <property name="text">
+             <string>Start with system</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Interface language:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Dictionary Font: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="10" column="0" colspan="2">
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QCheckBox" name="darkMode">
+           <property name="toolTip">
+            <string>Turn the UI to dark.</string>
+           </property>
+           <property name="text">
+            <string>Dark Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="darkReaderMode">
+           <property name="toolTip">
+            <string>Turn the article display style to dark.</string>
+           </property>
+           <property name="text">
+            <string>Dark Reader Mode</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="selectBySingleClick">
+         <property name="toolTip">
+          <string>Turn this option on if you want to select words by single mouse click</string>
+         </property>
+         <property name="text">
+          <string>Select word by single click</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QComboBox" name="interfaceLanguage">
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QComboBox" name="fontFamilies">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>set the fallback font family for dictionary</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="doubleClickTranslates">
+         <property name="text">
+          <string>Double-click translates the word clicked</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Tabbed browsing</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="newTabsOpenInBackground">
+            <property name="toolTip">
+             <string>Normally, opening a new tab switches to it immediately.
+With this on however, new tabs will be opened without
+switching to them.</string>
+            </property>
+            <property name="text">
+             <string>Open new tabs in background</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="newTabsOpenAfterCurrentOne">
+            <property name="toolTip">
+             <string>With this on, new tabs are opened just after the
+current, active one. Otherwise they are added to
+be the last ones.</string>
+            </property>
+            <property name="text">
+             <string>Open new tabs after the current one</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="hideSingleTab">
+            <property name="toolTip">
+             <string>Select this option if you don't want to see the main tab bar when only a single tab is opened.</string>
+            </property>
+            <property name="text">
+             <string>Hide single tab</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="mruTabOrder">
+            <property name="toolTip">
+             <string>MRU order: Most recently used order.</string>
+            </property>
+            <property name="text">
+             <string>Ctrl-Tab navigates tabs in MRU order</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Article Display style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="displayStyle"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="addonStylesLabel">
+           <property name="text">
+            <string>Add-on style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StylesComboBox" name="addonStyles"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_popup">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/wizard.svg</normaloff>:/icons/wizard.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>&amp;Scan Popup</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QCheckBox" name="startWithScanPopupOn">
+         <property name="toolTip">
+          <string>Chooses whether the scan popup mode is on by default or not. If checked,
+the program would always start with the scan popup active.</string>
+         </property>
+         <property name="text">
+          <string>Start with scan popup turned on</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="scanToMainWindow">
+         <property name="toolTip">
+          <string>Send translated word to main window instead of to show it in popup window</string>
+         </property>
+         <property name="text">
+          <string>Send translated word to main window</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="enableClipboardTrack">
+         <property name="toolTip">
+          <string>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</string>
+         </property>
+         <property name="text">
+          <string>Track Clipboard change</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="enableX11SelectionTrack">
+         <property name="title">
+          <string>Track Selection change</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QCheckBox" name="enableScanPopupModifiers">
+            <property name="toolTip">
+             <string>With this enabled, the popup would only show up if all chosen keys are
+in the pressed state when the word selection changes.</string>
+            </property>
+            <property name="text">
+             <string>Only tack selection when all selected keys are kept pressed:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="scanPopupModifiers">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <layout class="QGridLayout" name="gridLayout">
+                 <item row="1" column="1">
+                  <widget class="QCheckBox" name="leftCtrl">
+                   <property name="toolTip">
+                    <string>Left Ctrl only</string>
+                   </property>
+                   <property name="text">
+                    <string>Left Ctrl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QCheckBox" name="rightShift">
+                   <property name="toolTip">
+                    <string>Right Shift only</string>
+                   </property>
+                   <property name="text">
+                    <string>Right Shift</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QCheckBox" name="altKey">
+                   <property name="toolTip">
+                    <string>Alt key</string>
+                   </property>
+                   <property name="text">
+                    <string>Alt</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QCheckBox" name="ctrlKey">
+                   <property name="toolTip">
+                    <string>Ctrl key</string>
+                   </property>
+                   <property name="text">
+                    <string>Ctrl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QCheckBox" name="leftAlt">
+                   <property name="toolTip">
+                    <string>Left Alt only</string>
+                   </property>
+                   <property name="text">
+                    <string>Left Alt</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QCheckBox" name="shiftKey">
+                   <property name="toolTip">
+                    <string>Shift key</string>
+                   </property>
+                   <property name="text">
+                    <string>Shift</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QCheckBox" name="rightAlt">
+                   <property name="toolTip">
+                    <string>Right Alt only</string>
+                   </property>
+                   <property name="text">
+                    <string>Right Alt</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QCheckBox" name="rightCtrl">
+                   <property name="toolTip">
+                    <string>Right Ctrl only</string>
+                   </property>
+                   <property name="text">
+                    <string>Right Ctrl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QCheckBox" name="leftShift">
+                   <property name="toolTip">
+                    <string>Left Shift only</string>
+                   </property>
+                   <property name="text">
+                    <string>Left Shift</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="3">
+                  <widget class="QCheckBox" name="winKey">
+                   <property name="toolTip">
+                    <string>Windows key or Meta key</string>
+                   </property>
+                   <property name="text">
+                    <string>Win/Meta</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <property name="lineWidth">
+                  <number>0</number>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="showScanFlag">
+            <property name="toolTip">
+             <string>Show a flag window before showing popup window, click the flag to show popup window. </string>
+            </property>
+            <property name="text">
+             <string>Show scan flag when word is selected</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="ignoreOwnClipboardChanges">
+            <property name="toolTip">
+             <string>Do not show popup when selection or clipboard in one of GoldenDict's own windows changes</string>
+            </property>
+            <property name="text">
+             <string>Ignore GoldenDict's own selection and clipboard changes</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_hotkey">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/hotkeys.svg</normaloff>:/icons/hotkeys.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Hotkeys</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <item>
+        <widget class="QCheckBox" name="enableMainWindowHotkey">
+         <property name="text">
+          <string>Use the following hotkey to show or hide the main window:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QKeySequenceEdit" name="mainWindowHotkey"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="enableClipboardHotkey">
+         <property name="text">
+          <string>Use the following hotkey to translate a word from clipboard:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QKeySequenceEdit" name="clipboardHotkey"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_13">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>53</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_audio">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/playsound_color.svg</normaloff>:/icons/playsound_color.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>&amp;Audio</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Pronunciation</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <widget class="QCheckBox" name="pronounceOnLoadMain">
+            <property name="text">
+             <string>Auto-pronounce words in main window</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="pronounceOnLoadPopup">
+            <property name="text">
+             <string>Auto-pronounce words in scan popup</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Playback</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_audioPlayer">
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="useInternalPlayer">
+            <property name="toolTip">
+             <string>Play audio files via built-in audio support</string>
+            </property>
+            <property name="text">
+             <string>Use internal player:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="internalPlayerBackend">
+            <property name="toolTip">
+             <string>Choose audio back end</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="useExternalPlayer">
+            <property name="toolTip">
+             <string>Use any external program to play audio files</string>
+            </property>
+            <property name="text">
+             <string>Use external program:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="audioPlaybackProgram">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Enter audio player command line</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>46</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_network">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/network.svg</normaloff>:/icons/network.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>&amp;Network</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QGroupBox" name="useProxyServer">
+         <property name="toolTip">
+          <string>Enable if you wish to use a proxy server
+for all program's network requests.</string>
+         </property>
+         <property name="title">
+          <string>Use proxy server</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QRadioButton" name="systemProxy">
+            <property name="text">
+             <string>System proxy</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="customProxy">
+            <property name="text">
+             <string>Custom proxy</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="customSettingsGroup">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="title">
+             <string>Custom settings</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Type:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="proxyType"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Host:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="proxyHost"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>Port:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="proxyPort">
+                 <property name="maximum">
+                  <number>65535</number>
+                 </property>
+                 <property name="value">
+                  <number>8080</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>User:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="proxyUser"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>Password:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="proxyPassword">
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="useAnkiConnect">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Anki Connect</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_21">
+            <item>
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>Host:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_24">
+              <property name="text">
+               <string>http://</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ankiHost"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_23">
+              <property name="text">
+               <string>Port:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="ankiPort">
+              <property name="maximum">
+               <number>65535</number>
+              </property>
+              <property name="value">
+               <number>8080</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_16">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_22">
+            <item>
+             <widget class="QLabel" name="label_28">
+              <property name="text">
+               <string>Deck:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ankiDeck"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_25">
+              <property name="text">
+               <string>Model:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ankiModel"/>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_17">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="wordLabel">
+              <property name="text">
+               <string>Word</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="ankiWord">
+              <property name="placeholderText">
+               <string>Vocabulary field...</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="textLabel">
+              <property name="text">
+               <string>Text</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="ankiText">
+              <property name="placeholderText">
+               <string>Definition field...</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="sentenceLabel">
+              <property name="text">
+               <string>Sentence</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="ankiSentence">
+              <property name="placeholderText">
+               <string>Sentence field (can be empty)...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="disallowContentFromOtherSites">
+         <property name="toolTip">
+          <string>Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</string>
+         </property>
+         <property name="text">
+          <string>Disallow loading content from other sites (hides most advertisements)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="hideGoldenDictHeader">
+         <property name="toolTip">
+          <string>Some sites detect GoldenDict via HTTP headers and block the requests.
+Enable this option to workaround the problem.</string>
+         </property>
+         <property name="text">
+          <string>Do not identify GoldenDict in HTTP headers</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>Maximum network cache size:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="maxNetworkCacheSize">
+           <property name="toolTip">
+            <string>Maximum disk space occupied by GoldenDict's network cache in
+%1
+If set to 0 the network disk cache will be disabled.</string>
+           </property>
+           <property name="suffix">
+            <string> MiB</string>
+           </property>
+           <property name="maximum">
+            <number>2000</number>
+           </property>
+           <property name="value">
+            <number>50</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="clearNetworkCacheOnExit">
+           <property name="toolTip">
+            <string>When this option is enabled, GoldenDict
+clears its network cache from disk during exit.</string>
+           </property>
+           <property name="text">
+            <string>Clear network cache on exit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkForNewReleases">
+         <property name="toolTip">
+          <string>When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</string>
+         </property>
+         <property name="text">
+          <string>Check for new program releases periodically</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>39</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_FTS">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/fulltext.svg</normaloff>:/icons/fulltext.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Full-text search</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_19">
+       <item>
+        <widget class="QGroupBox" name="ftsGroupBox">
+         <property name="title">
+          <string>Allow full-text search for:</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="allowAard">
+            <property name="text">
+             <string notr="true">Aard</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="allowBGL">
+            <property name="text">
+             <string notr="true">BGL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="allowDictD">
+            <property name="text">
+             <string notr="true">DictD</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="allowDSL">
+            <property name="text">
+             <string notr="true">DSL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="allowMDict">
+            <property name="text">
+             <string notr="true">MDict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="allowSDict">
+            <property name="text">
+             <string notr="true">SDict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="allowSlob">
+            <property name="text">
+             <string notr="true">Slob</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="allowStardict">
+            <property name="text">
+             <string notr="true">Stardict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="allowXDXF">
+            <property name="text">
+             <string notr="true">XDXF</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="allowZim">
+            <property name="text">
+             <string notr="true">Zim</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="allowEpwing">
+            <property name="text">
+             <string notr="true">Epwing</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="allowGls">
+            <property name="text">
+             <string notr="true">GLS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Don't search in dictionaries containing more than</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="maxDictionarySize">
+              <property name="maximum">
+               <number>10000000</number>
+              </property>
+              <property name="singleStep">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>articles (0 - unlimited)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_10">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_Advanced">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/advanced.png</normaloff>:/icons/advanced.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Ad&amp;vanced</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QGroupBox" name="historyBox">
+           <property name="title">
+            <string>History</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QCheckBox" name="storeHistory">
+              <property name="toolTip">
+               <string>Turn this option on to store history of the translated words</string>
+              </property>
+              <property name="text">
+               <string>Store &amp;history</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="historySizeLabel">
+                <property name="toolTip">
+                 <string>Specify the maximum number of entries to keep in history.</string>
+                </property>
+                <property name="text">
+                 <string>Maximum history size:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="historyMaxSizeField">
+                <property name="accelerated">
+                 <bool>true</bool>
+                </property>
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+                <property name="value">
+                 <number>500</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_10">
+                <property name="toolTip">
+                 <string>History saving interval. If set to 0 history will be saved only during exit.</string>
+                </property>
+                <property name="statusTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Save every</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="historySaveIntervalField">
+                <property name="statusTip">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>120</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>minutes</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="favoritesBox">
+           <property name="title">
+            <string>Favorites</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_21">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <item>
+               <widget class="QLabel" name="label_17">
+                <property name="toolTip">
+                 <string>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</string>
+                </property>
+                <property name="text">
+                 <string>Save every</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="favoritesSaveIntervalField">
+                <property name="maximum">
+                 <number>120</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>minutes</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="confirmFavoritesDeletion">
+              <property name="toolTip">
+               <string>Turn this option on to confirm every operation of items deletion</string>
+              </property>
+              <property name="text">
+               <string>Confirmation for items deletion</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_15">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>Articles</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="2" column="4">
+           <widget class="QCheckBox" name="ignorePunctuation">
+            <property name="text">
+             <string>Ignore punctuation while searching</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="inputPhraseLengthLimit">
+            <property name="toolTip">
+             <string>Input phrases longer than this size will be ignored</string>
+            </property>
+            <property name="maximum">
+             <number>9999999</number>
+            </property>
+            <property name="singleStep">
+             <number>10</number>
+            </property>
+            <property name="value">
+             <number>1000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>symbols</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="collapseBigArticles">
+            <property name="toolTip">
+             <string>Select this option to automatic collapse big articles</string>
+            </property>
+            <property name="text">
+             <string>Collapse articles more than</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="limitInputPhraseLength">
+            <property name="toolTip">
+             <string>Turn this option on to ignore unreasonably long input text
+from mouse-over, selection, clipboard or command line</string>
+            </property>
+            <property name="text">
+             <string>Ignore input phrases longer than</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>symbols</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="articleSizeLimit">
+            <property name="toolTip">
+             <string>Articles longer than this size will be collapsed</string>
+            </property>
+            <property name="maximum">
+             <number>100000</number>
+            </property>
+            <property name="singleStep">
+             <number>50</number>
+            </property>
+            <property name="value">
+             <number>2000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QCheckBox" name="alwaysExpandOptionalParts">
+            <property name="toolTip">
+             <string>Turn this option on to always expand optional parts of articles</string>
+            </property>
+            <property name="text">
+             <string>Expand optional &amp;parts</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QCheckBox" name="ignoreDiacritics">
+            <property name="toolTip">
+             <string>Turn this option on to ignore diacritics while searching articles</string>
+            </property>
+            <property name="text">
+             <string>Ignore diacritics while searching</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="4">
+           <widget class="QCheckBox" name="sessionCollapse">
+            <property name="toolTip">
+             <string>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</string>
+            </property>
+            <property name="text">
+             <string>Session collapse</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="synonymSearchEnabled">
+         <property name="toolTip">
+          <string>Turn this option on to enable extra articles search via synonym lists
+from Stardict, Babylon and GLS dictionaries</string>
+         </property>
+         <property name="text">
+          <string>Extra search via synonyms</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="stripClipboard">
+         <property name="text">
+          <string>When using clipboard,strip everything after newline</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="raiseWindowOnSearch">
+         <property name="text">
+          <string>On a new search, focus the main or popup window even if it's visible</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_17">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Help|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StylesComboBox</class>
+   <extends>QComboBox</extends>
+   <header>stylescombobox.hh</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>newTabsOpenInBackground</tabstop>
+  <tabstop>newTabsOpenAfterCurrentOne</tabstop>
+  <tabstop>enableTrayIcon</tabstop>
+  <tabstop>startToTray</tabstop>
+  <tabstop>closeToTray</tabstop>
+  <tabstop>cbAutostart</tabstop>
+  <tabstop>leftCtrl</tabstop>
+  <tabstop>rightShift</tabstop>
+  <tabstop>altKey</tabstop>
+  <tabstop>ctrlKey</tabstop>
+  <tabstop>leftAlt</tabstop>
+  <tabstop>shiftKey</tabstop>
+  <tabstop>rightAlt</tabstop>
+  <tabstop>rightCtrl</tabstop>
+  <tabstop>leftShift</tabstop>
+  <tabstop>winKey</tabstop>
+  <tabstop>useProxyServer</tabstop>
+  <tabstop>proxyType</tabstop>
+  <tabstop>proxyHost</tabstop>
+  <tabstop>proxyPort</tabstop>
+  <tabstop>proxyUser</tabstop>
+  <tabstop>proxyPassword</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Preferences</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Preferences</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

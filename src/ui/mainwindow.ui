@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>653</width>
+    <height>538</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">GoldenDict-ng</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="leftMargin">
+     <number>1</number>
+    </property>
+    <property name="topMargin">
+     <number>2</number>
+    </property>
+    <property name="rightMargin">
+     <number>1</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="MainTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideRight</enum>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Welcome!</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>653</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="newTab"/>
+    <addaction name="separator"/>
+    <addaction name="pageSetup"/>
+    <addaction name="printPreview"/>
+    <addaction name="print"/>
+    <addaction name="separator"/>
+    <addaction name="saveArticle"/>
+    <addaction name="separator"/>
+    <addaction name="rescanFiles"/>
+    <addaction name="separator"/>
+    <addaction name="actionCloseToTray"/>
+    <addaction name="quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="dictionaries"/>
+    <addaction name="preferences"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="showReference"/>
+    <addaction name="separator"/>
+    <addaction name="visitHomepage"/>
+    <addaction name="visitForum"/>
+    <addaction name="separator"/>
+    <addaction name="openConfigFolder"/>
+    <addaction name="separator"/>
+    <addaction name="about"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menuZoom">
+     <property name="title">
+      <string>&amp;Zoom</string>
+     </property>
+    </widget>
+    <addaction name="menuZoom"/>
+   </widget>
+   <widget class="QMenu" name="menuHistory">
+    <property name="title">
+     <string>H&amp;istory</string>
+    </property>
+    <addaction name="showHideHistory"/>
+    <addaction name="exportHistory"/>
+    <addaction name="importHistory"/>
+    <addaction name="separator"/>
+    <addaction name="clearHistory"/>
+   </widget>
+   <widget class="QMenu" name="menuSearch">
+    <property name="title">
+     <string>Search</string>
+    </property>
+    <addaction name="searchInPageAction"/>
+    <addaction name="fullTextSearchAction"/>
+   </widget>
+   <widget class="QMenu" name="menuFavorites">
+    <property name="title">
+     <string>Favo&amp;rites</string>
+    </property>
+    <addaction name="showHideFavorites"/>
+    <addaction name="exportFavorites"/>
+    <addaction name="ExportFavoritesToList"/>
+    <addaction name="importFavorites"/>
+    <addaction name="separator"/>
+    <addaction name="actionAddToFavorites"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menuSearch"/>
+   <addaction name="menuHistory"/>
+   <addaction name="menuFavorites"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QDockWidget" name="searchPane">
+   <property name="windowTitle">
+    <string>&amp;Search Pane</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="SearchPaneWidget" name="searchPaneWidget">
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QLineEdit" name="translateLine">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="WordList" name="wordList"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dictsPane">
+   <property name="windowTitle">
+    <string>&amp;Results Navigation Pane</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="DictsPaneWidget" name="dictsPaneWidget">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QListWidget" name="dictsList"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="favoritesPane">
+   <property name="windowTitle">
+    <string>Favor&amp;ites Pane</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="FavoritesPaneWidget" name="favoritesPaneWidget">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QTreeView" name="favoritesTree"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="historyPane">
+   <property name="windowTitle">
+    <string>&amp;History Pane</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="HistoryPaneWidget" name="historyPaneWidget">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QListView" name="historyList"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="dictionaries">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/book.svg</normaloff>:/icons/book.svg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Dictionaries...</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="preferences">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/configure.svg</normaloff>:/icons/configure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Preferences...</string>
+   </property>
+   <property name="shortcut">
+    <string>F4</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
+  </action>
+  <action name="visitHomepage">
+   <property name="text">
+    <string>&amp;Homepage</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="about">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="toolTip">
+    <string>About GoldenDict-ng</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
+  </action>
+  <action name="quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+   <property name="toolTip">
+    <string>Quit from application</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="visitForum">
+   <property name="text">
+    <string>&amp;Forum</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionCloseToTray">
+   <property name="text">
+    <string>&amp;Close To Tray</string>
+   </property>
+   <property name="toolTip">
+    <string>Minimizes the window to tray</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F4</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="saveArticle">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icons/filesave.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save Article</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Article</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="print">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/print.svg</normaloff>:/icons/print.svg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Print</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="pageSetup">
+   <property name="text">
+    <string>Page Set&amp;up</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="printPreview">
+   <property name="text">
+    <string>Print Pre&amp;view</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="rescanFiles">
+   <property name="text">
+    <string>&amp;Rescan Files</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F5</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="clearHistory">
+   <property name="text">
+    <string>&amp;Clear</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="newTab">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/addtab.svg</normaloff>:/icons/addtab.svg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WidgetShortcut</enum>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="openConfigFolder">
+   <property name="text">
+    <string>&amp;Configuration Folder</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="showHideHistory">
+   <property name="text">
+    <string>&amp;Show</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="exportHistory">
+   <property name="text">
+    <string>&amp;Export</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="importHistory">
+   <property name="text">
+    <string>&amp;Import</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="alwaysOnTop">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Always on Top</string>
+   </property>
+   <property name="toolTip">
+    <string>Always on Top</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="menuOptions">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/menu_button.svg</normaloff>:/icons/menu_button.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Menu Button</string>
+   </property>
+   <property name="toolTip">
+    <string>Menu Button</string>
+   </property>
+  </action>
+  <action name="searchInPageAction">
+   <property name="text">
+    <string>Search in page</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="fullTextSearchAction">
+   <property name="text">
+    <string>Full-text search</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WidgetWithChildrenShortcut</enum>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="showReference">
+   <property name="text">
+    <string>GoldenDict reference</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="showHideFavorites">
+   <property name="text">
+    <string>Show</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+I</string>
+   </property>
+  </action>
+  <action name="exportFavorites">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="importFavorites">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionAddToFavorites">
+   <property name="text">
+    <string>Add</string>
+   </property>
+   <property name="statusTip">
+    <string>Add current tab to Favorites</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="ExportFavoritesToList">
+   <property name="text">
+    <string>Export to list</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SearchPaneWidget</class>
+   <extends>QWidget</extends>
+   <header>searchpanewidget.hh</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DictsPaneWidget</class>
+   <extends>QWidget</extends>
+   <header>dictspanewidget.hh</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MainTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>maintabwidget.hh</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HistoryPaneWidget</class>
+   <extends>QWidget</extends>
+   <header>historypanewidget.hh</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WordList</class>
+   <extends>QListWidget</extends>
+   <header>wordlist.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>FavoritesPaneWidget</class>
+   <extends>QWidget</extends>
+   <header>favoritespanewidget.hh</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>translateLine</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>dictsList</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

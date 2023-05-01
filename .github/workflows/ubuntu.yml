@@ -45,7 +45,7 @@ jobs:
           sudo apt-get install git pkg-config build-essential qt5-qmake 
           sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
           sudo apt-get install qtdeclarative5-dev libxtst-dev liblzo2-dev libbz2-dev 
-          sudo apt-get install libao-dev libavutil-dev libavformat-dev libtiff5-dev libeb16-dev 
+          sudo apt-get install libao-dev libavutil-dev libavformat-dev libeb16-dev
           sudo apt-get install libqt5webkit5-dev libqt5svg5-dev libqt5x11extras5-dev qttools5-dev 
           sudo apt-get install qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins doxygen libzstd-dev libspeechd-dev #libopencc-dev
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
@@ -67,7 +67,7 @@ jobs:
           
       - name: build goldendict
         run: |
-          qmake CONFIG+=release CONFIG+=no_extra_tiff_handler PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv
+          qmake CONFIG+=release PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv
           make INSTALL_ROOT=appdir -j`nproc` install; find appdir/
 
           #copy missing shared dll to appdir.
@@ -115,7 +115,7 @@ jobs:
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.AppImage
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
-          release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
             release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  

@@ -1,7 +1,7 @@
 !include "MUI2.nsh"
 
   Name "GoldenDict"
-  OutFile "GoldenDict-v22-Install.exe"
+  OutFile "GoldenDict-ng-v23-Installer.exe"
 
   InstallDir "$PROGRAMFILES\GoldenDict"
 

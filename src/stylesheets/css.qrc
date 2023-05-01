@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>article-style.css</file>
+        <file>article-style-print.css</file>
+        <file>article-style-st-lingvo.css</file>
+        <file>article-style-st-babylon.css</file>
+        <file>article-style-st-modern.css</file>
+        <file>article-style-st-lingoes.css</file>
+        <file>article-style-st-lingoes-blue.css</file>
+        <file>article-style-st-classic.css</file>
+        <file>qt-babylon.css</file>
+        <file>qt-classic.css</file>
+        <file>qt-lingoes-blue.css</file>
+        <file>qt-lingoes.css</file>
+        <file>qt-lingvo.css</file>
+        <file>qt-modern.css</file>
+        <file>qt-style-macos.css</file>
+        <file>qt-style-win.css</file>
+        <file>qt-style.css</file>
+        <file>article-style-darkmode.css</file>
+    </qresource>
+</RCC>

@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"   
        
-      - name: build macos
+      - name: install deps on macos
         run: |
           brew install pcre2 harfbuzz freetype
           brew install cmake ninja python
@@ -77,7 +77,6 @@ jobs:
           brew install lzo bzip2
           brew install libogg
           brew install zstd lzip
-          brew install libtiff
           brew install libvorbis
           brew install hunspell
           git clone https://github.com/xiaoyifang/eb.git
@@ -92,7 +91,7 @@ jobs:
           echo "$previousTag">version.txt          
       - name: compile
         run: |          
-          qmake   CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=no_extra_tiff_handler  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
+          qmake   CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
           make -j8
           
       # # 打包
@@ -142,7 +141,7 @@ jobs:
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
-          release_name: GoldenDict-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
             release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  

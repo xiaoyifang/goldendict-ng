@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>icons/add-anki-icon.svg</file>
         <file>version.txt</file>
         <file>icons/arrow.png</file>
         <file>icons/prefix.png</file>
@@ -7,8 +8,6 @@
         <file>icons/programicon.png</file>
         <file>icons/programicon_scan.png</file>
         <file>icons/warning.png</file>
-        <file>article-style.css</file>
-        <file>article-style-print.css</file>
         <file>icons/icon32_dsl.png</file>
         <file>icons/icon32_stardict.png</file>
         <file>icons/icon32_xdxf.png</file>
@@ -17,7 +16,6 @@
         <file>icons/icon32_hunspell.png</file>
         <file>icons/icon32_wiki.png</file>
         <file>icons/wiktionary.png</file>
-        <file>article-style-st-lingvo.css</file>
         <file>icons/icon_dsl_native.png</file>
         <file>icons/forvo.png</file>
         <file>icons/lingualibre.svg</file>
@@ -28,16 +26,11 @@
         <file>icons/icon32_aard.png</file>
         <file>icons/expand_opt.png</file>
         <file>icons/collapse_opt.png</file>
-        <file>article-style-st-babylon.css</file>
         <file>icons/menu_button.svg</file>
         <file>icons/clear.png</file>
-        <file>article-style-st-modern.css</file>
-        <file>article-style-st-lingoes.css</file>
         <file>icons/icon32_lingoes.png</file>
-        <file>article-style-st-lingoes-blue.css</file>
         <file>icons/mdict.png</file>
         <file>icons/downarrow.png</file>
-        <file>icons/blank.png</file>
         <file>icons/expand_article_hovered.png</file>
         <file>icons/expand_article.png</file>
         <file>icons/collapse_article_hovered.png</file>
@@ -93,17 +86,7 @@
         <file>icons/1downarrow.svg</file>
         <file>icons/wizard-selected.svg</file>
         <file>icons/mdict-bg.png</file>
-        <file>article-style-st-classic.css</file>
         <file>icons/old-arrow.png</file>
         <file>icons/old-downarrow.png</file>
-        <file>src/qtstyle/qt-babylon.css</file>
-        <file>src/qtstyle/qt-classic.css</file>
-        <file>src/qtstyle/qt-lingoes-blue.css</file>
-        <file>src/qtstyle/qt-lingoes.css</file>
-        <file>src/qtstyle/qt-lingvo.css</file>
-        <file>src/qtstyle/qt-modern.css</file>
-        <file>src/qtstyle/qt-style-macos.css</file>
-        <file>src/qtstyle/qt-style-win.css</file>
-        <file>src/qtstyle/qt-style.css</file>
     </qresource>
 </RCC>

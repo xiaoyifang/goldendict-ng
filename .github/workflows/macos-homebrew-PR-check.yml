@@ -49,7 +49,7 @@ jobs:
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"   
        
-      - name: build macos
+      - name: install deps on macos
         run: |
           brew install pcre2 harfbuzz freetype
           brew install cmake ninja python
@@ -57,14 +57,13 @@ jobs:
           brew install autoconf
           brew install libtool
           brew install opencc
-          brew install ffmpeg@5
-          #brew reinstall $(brew deps ffmpeg) ffmpeg
+          brew tap homebrew-ffmpeg/ffmpeg
+          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
           brew install libiconv
           brew install lzo bzip2
           brew install libogg
           brew install zstd lzip
-          brew install libtiff
           brew install libvorbis --force
           brew install hunspell
           wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
@@ -77,6 +76,6 @@ jobs:
 
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=no_extra_tiff_handler CONFIG+=use_iconv  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
           make 
      
