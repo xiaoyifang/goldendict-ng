@@ -30,8 +30,8 @@ jobs:
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.04.02
-      version-suffix: QingmingFestival
+      version: 23.05.01
+      version-suffix: WuYi
       prerelease: false
     steps:
       - name: Install Qt

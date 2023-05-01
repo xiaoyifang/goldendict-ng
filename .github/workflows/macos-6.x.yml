@@ -29,8 +29,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.04.02
-      version-suffix: QingmingFestival
+      version: 23.05.01
+      version-suffix: WuYi
       prerelease: false
 
     steps:

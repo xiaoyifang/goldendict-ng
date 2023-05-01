@@ -30,8 +30,8 @@ jobs:
         qt_ver: [6.4.3]
         qt_arch: [gcc_64]
     env:
-      version: 23.04.02
-      version-suffix: QingmingFestival
+      version: 23.05.01
+      version-suffix: WuYi
       prerelease: false
     steps:
       - uses: actions/setup-python@v4
