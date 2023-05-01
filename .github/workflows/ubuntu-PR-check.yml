@@ -64,6 +64,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1 
+          submodules: true
 
       - name: build goldendict
         run: |
