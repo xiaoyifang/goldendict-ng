@@ -27,9 +27,6 @@ jobs:
         qt_arch: [gcc_64]
 
     steps:
-      - uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'    
       - name: Install Qt
         if: ${{ matrix.qt_ver == '5.15.2' }}
         uses: jurplel/install-qt-action@v3
@@ -37,7 +34,6 @@ jobs:
           version: ${{ matrix.qt_ver }}
           cached: 'false'
           modules: qtwebengine
-          setup-python: 'false'
           
       - name: Install Qt
         if: ${{ matrix.qt_ver != '5.15.2' }}
@@ -47,7 +43,6 @@ jobs:
           arch: ${{ matrix.qt_arch }}
           cached: 'false'
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          setup-python: 'false'
                     
       - name: ubuntu install thirdparty dependencies
         run: |
