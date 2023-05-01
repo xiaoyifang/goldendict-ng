@@ -52,7 +52,8 @@ jobs:
       # 拉取代码
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 200
+          submodules: true
 
       - name: changelog
         id: changelog
