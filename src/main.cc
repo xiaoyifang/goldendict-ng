@@ -251,10 +251,10 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
 
-  app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
+  QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
+  QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
 #ifndef Q_OS_MAC
-  app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+  QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
 
 #if defined(USE_BREAKPAD)
@@ -289,12 +289,11 @@ int main( int argc, char ** argv )
 
 #endif
 
-  QStringList localSchemes={"gdlookup","gdau","gico","qrcx","bres","bword","gdprg","gdvideo","gdpicture","gdtts","ifr", "entry"};
+  const QStringList localSchemes =
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdpicture", "gdtts", "ifr", "entry" };
 
-  for (int i = 0; i < localSchemes.size(); ++i)
-  {
-      QString localScheme=localSchemes.at(i);
-      QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
+  for ( const auto & localScheme : localSchemes ) {
+    QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
       webUiScheme.setFlags(QWebEngineUrlScheme::SecureScheme |
                            QWebEngineUrlScheme::LocalScheme |
                            QWebEngineUrlScheme::LocalAccessAllowed|
