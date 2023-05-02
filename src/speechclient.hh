@@ -64,8 +64,8 @@ public:
 
   static Engines availableEngines();
 
-  bool tell( QString const & text, int volume, int rate );
-  bool tell( QString const & text );
+  bool tell( QString const & text, int volume, int rate ) const;
+  bool tell( QString const & text ) const;
 
  signals:
   void started( bool ok );
