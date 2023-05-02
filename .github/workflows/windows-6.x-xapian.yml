@@ -82,6 +82,19 @@ jobs:
           echo "$previousTag">version.txt
           cat version.txt
 
+      - name: vcpkg install
+        shell: powershell
+        run: |   
+          git clone --depth 1 https://github.com/microsoft/vcpkg.git
+          .\vcpkg\bootstrap-vcpkg.bat
+          # .\vcpkg\vcpkg.exe install  ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  --triplet=x64-windows-release
+          .\vcpkg\vcpkg.exe install breakpad --triplet=x64-windows-release
+      - name: copy vcpkg packages into winlibs
+        shell: bash
+        run: |   
+          cp -R vcpkg/packages/breakpad_x64-windows-release/*  thirdparty/breakpad
+          ls -al thirdparty/breakpad
+
       # # msvc编译
       - uses: ilammy/msvc-dev-cmd@v1
       #   with:
@@ -90,7 +103,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%

@@ -30,6 +30,24 @@
 
 #include "gddebug.hh"
 
+#if defined(USE_BREAKPAD)
+  #include "client/windows/handler/exception_handler.h"
+#endif
+
+#if defined(USE_BREAKPAD)
+bool callback(const wchar_t* dump_path, const wchar_t* id,
+               void* context, EXCEPTION_POINTERS* exinfo,
+               MDRawAssertionInfo* assertion,
+               bool succeeded) {
+  if (succeeded) {
+    qDebug() << "Create dump file success";
+  } else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+#endif
+
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
   Q_UNUSED( context );
@@ -176,10 +194,13 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
-    result->word.remove( 0, result->word.indexOf( "://" ) + 3 );
-    // In microsoft Words, the / will be automatically appended
-    if ( result->word.endsWith( "/" ) ) {
-      result->word.chop( 1 );
+    auto schemePos = result->word.indexOf( "://" );
+    if ( schemePos != -1 ) {
+      result->word.remove( 0, schemePos + 3 );
+      // In microsoft Words, the / will be automatically appended
+      if ( result->word.endsWith( "/" ) ) {
+        result->word.chop( 1 );
+      }
     }
 #endif
   }
@@ -225,8 +246,7 @@ int main( int argc, char ** argv )
   char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
   int newArgc                     = argc + 1 + 1;
   char ** newArgv                 = new char *[ newArgc ];
-  for( int i = 0; i < argc; i++ )
-  {
+  for ( int i = 0; i < argc; i++ ) {
         newArgv[ i ] = argv[ i ];
   }
   newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
@@ -234,11 +254,27 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
 
-  app.setApplicationName( "GoldenDict" );
-  app.setOrganizationDomain( "https://github.com/xiaoyifang/goldendict" );
+  QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
+  QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
 #ifndef Q_OS_MAC
-  app.setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+  QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
+
+#if defined(USE_BREAKPAD)
+  QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";
+
+  QDir dir;
+  if (!dir.exists(appDirPath)) {
+        bool res = dir.mkpath(appDirPath);
+        qDebug() << "New mkdir " << appDirPath << " " << res;
+  }
+
+  google_breakpad::ExceptionHandler eh(
+    appDirPath.toStdWString(), NULL, callback, NULL,
+    google_breakpad::ExceptionHandler::HANDLER_ALL);
+
+
+  #endif
 
   GDOptions gdcl{};
 
@@ -256,12 +292,11 @@ int main( int argc, char ** argv )
 
 #endif
 
-  QStringList localSchemes={"gdlookup","gdau","gico","qrcx","bres","bword","gdprg","gdvideo","gdpicture","gdtts","ifr", "entry"};
+  const QStringList localSchemes =
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdpicture", "gdtts", "ifr", "entry" };
 
-  for (int i = 0; i < localSchemes.size(); ++i)
-  {
-      QString localScheme=localSchemes.at(i);
-      QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
+  for ( const auto & localScheme : localSchemes ) {
+    QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
       webUiScheme.setFlags(QWebEngineUrlScheme::SecureScheme |
                            QWebEngineUrlScheme::LocalScheme |
                            QWebEngineUrlScheme::LocalAccessAllowed|
