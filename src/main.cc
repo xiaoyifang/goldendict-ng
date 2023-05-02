@@ -176,10 +176,13 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
-    result->word.remove( 0, result->word.indexOf( "://" ) + 3 );
-    // In microsoft Words, the / will be automatically appended
-    if ( result->word.endsWith( "/" ) ) {
-      result->word.chop( 1 );
+    auto schemePos = result->word.indexOf( "://" );
+    if ( schemePos != -1 ) {
+      result->word.remove( 0, schemePos + 3 );
+      // In microsoft Words, the / will be automatically appended
+      if ( result->word.endsWith( "/" ) ) {
+        result->word.chop( 1 );
+      }
     }
 #endif
   }
