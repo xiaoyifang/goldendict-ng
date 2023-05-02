@@ -18,17 +18,12 @@ system(git describe --tags --always --dirty): hasGit=1
       system(echo $${VERSION}.$${GIT_HASH} on $${_DATE_} > version.txt)
 }
 
-
 !CONFIG( verbose_build_output ) {
   !win32|*-msvc* {
     # Reduce build log verbosity except for MinGW builds (mingw-make cannot
     # execute "@echo ..." commands inserted by qmake).
     CONFIG += silent
   }
-}
-
-CONFIG( release, debug|release ) {
-  DEFINES += NDEBUG
 }
 
 # DEPENDPATH += . generators
