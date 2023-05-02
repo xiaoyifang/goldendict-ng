@@ -197,6 +197,38 @@ qmake "CONFIG+=use_iconv"
 
 when enabled ,iconv should be installed on the platform at the same time.
 
+
+use `CONFIG+=use_breakpad` to enable this crash dump. when enabled [breakpad](https://chromium.googlesource.com/breakpad/breakpad/+/master/docs), goldendict will generate a crash dump alongside with Goldendict in the `crash` directory.
+
+on Windows:
+`vcpkg install breakpad:x64-windows-release` and copy the installed packages into `thirdparty/breakpad` directory.
+with a structure like this:
+```
+├─breakpad
+│  ├─include
+│  │  ├─client
+│  │  │  └─windows
+│  │  │      ├─common
+│  │  │      ├─crash_generation
+│  │  │      ├─handler
+│  │  │      └─sender
+│  │  ├─common
+│  │  │  └─windows
+│  │  └─google_breakpad
+│  │      ├─common
+│  │      └─processor
+│  └─lib
+```
+
+on Mac/Linux:
+[vcpkg](https://techviewleo.com/install-vcpkg-c-library-manager-on-linux-macos-windows/) can also be used or you can just install breakpad from source or use precompiled packages. 
+
+Then enable google breakpad like this with qmake:
+
+```
+qmake "CONFIG+=use_breakpad"
+```
+
 ## Support
 
 Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
