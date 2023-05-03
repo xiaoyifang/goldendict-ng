@@ -636,6 +636,26 @@ between classic and school orthography in cyrillic)</source>
       <translation>Kombiniere Gruppen nach Zielsprache nach &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <source>Auto group by folder failed.</source>
+      <translation>Automatische Gruppierung nach Ordner fehlgeschlagen.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <source>The parent directory of %1 can be reached.</source>
+      <translation>Das übergeordnete Verzeichnis von %1 ist erreichbar.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <source>Are you sure you want to generate a set of groups based on containing folders?</source>
+      <translation>Sind Sie sicher, dass Sie eine Serie von Gruppen basierend auf den enthaltenen Ordnern erstellen möchten?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="892"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
+      <translation>Sind Sie sicher, dass Sie eine Serie von Gruppen auf der Grundlage von metadata.txt erstellen möchten?</translation>
+    </message>
+    <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Doppelseitige Übersetzungsgruppen erstellen: &quot;%1-%2-%1&quot;</translation>
@@ -2565,6 +2585,214 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
+    <name>Language::Db</name>
+    <message>
+      <location filename="../src/language.cc" line="41"/>
+      <source>French</source>
+      <translation>Französisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="42"/>
+      <source>Spanish</source>
+      <translation>Spanisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="43"/>
+      <source>Belarusian</source>
+      <translation>Belarussisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="44"/>
+      <source>Bulgarian</source>
+      <translation>Bulgarisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="45"/>
+      <source>Czech</source>
+      <translation>Tschechisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="46"/>
+      <source>German</source>
+      <translation>Deutsch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="47"/>
+      <source>Greek</source>
+      <translation>Griechisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="48"/>
+      <source>Finnish</source>
+      <translation>Finnisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="49"/>
+      <source>Italian</source>
+      <translation>Italienisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="50"/>
+      <source>Japanese</source>
+      <translation>Japanisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="51"/>
+      <source>Korean</source>
+      <translation>Koreanisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="52"/>
+      <source>Lithuanian</source>
+      <translation>Litauisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="53"/>
+      <source>Macedonian</source>
+      <translation>Mazedonisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="54"/>
+      <source>Dutch</source>
+      <translation>Niederländisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="55"/>
+      <source>Polish</source>
+      <translation>Polnisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="56"/>
+      <source>Portuguese</source>
+      <translation>Portugiesisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="57"/>
+      <source>Russian</source>
+      <translation>Russisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="58"/>
+      <source>Slovak</source>
+      <translation>Slowakisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="59"/>
+      <source>Albanian</source>
+      <translation>Albanisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="60"/>
+      <source>Serbian (Cyrillic)</source>
+      <translation>Serbisch (Kyrillisch)</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="61"/>
+      <source>Swedish</source>
+      <translation>Schwedisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="62"/>
+      <source>Turkish</source>
+      <translation>Türkisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="63"/>
+      <source>Ukrainian</source>
+      <translation>Ukrainisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="64"/>
+      <source>Chinese Simplified</source>
+      <translation>Chinesisch (vereinfacht)</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="65"/>
+      <source>Chinese Traditional</source>
+      <translation>Chinesisch (traditionell)</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="66"/>
+      <source>Vietnamese</source>
+      <translation>Vietnamesisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="67"/>
+      <source>Portuguese, Brazilian</source>
+      <translation>Portugiesisch, Brasilien</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="68"/>
+      <source>Persian</source>
+      <translation>Persisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="69"/>
+      <source>Spanish, Argentina</source>
+      <translation>Spanisch, Argentinien</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="70"/>
+      <source>Hindi</source>
+      <translation>Hindi</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="71"/>
+      <source>Esperanto</source>
+      <translation>Esperanto</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="72"/>
+      <source>German, Switzerland</source>
+      <translation>Deutsch, Schweiz</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="73"/>
+      <source>Spanish, Bolivia</source>
+      <translation>Spanisch, Bolivien</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="74"/>
+      <source>Tajik</source>
+      <translation>Tadschikisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="75"/>
+      <source>Quechua</source>
+      <translation>Quechua</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="76"/>
+      <source>Aymara</source>
+      <translation>Aymara</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="77"/>
+      <source>Arabic, Saudi Arabia</source>
+      <translation>Arabisch, Saudi-Arabien</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="78"/>
+      <source>Turkmen</source>
+      <translation>Turkmenisch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="79"/>
+      <source>Interlingue</source>
+      <translation>Interlingue</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="80"/>
+      <source>Lojban</source>
+      <translation>Lojban</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="81"/>
+      <source>English</source>
+      <translation>Englisch</translation>
+    </message>
+  </context>
+  <context>
     <name>LoadDictionaries</name>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="194"/>
@@ -3488,7 +3716,7 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <location filename="../src/ui/preferences.ui" line="940"/>
       <location filename="../src/ui/preferences.ui" line="1027"/>
       <source>Port:</source>
-      <translation>Hafen:</translation>
+      <translation>Port:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="551"/>
@@ -3982,10 +4210,10 @@ Ein Plugin muss für diese Option installiert sein.</translation>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Normalerweise bewirkt ein Klick auf einen Link, ein Doppelklick auf ein Wort oder das Nachschlagen einer
+Auswahl in einem Artikel, dass die Übersetzung geladen und unmittelbar
+zu dem Artikel aus demselben Wörterbuch gescrollt wird. Wenn diese Option deaktiviert ist,
+wird jedoch der Artikel aus dem obersten Wörterbuch angezeigt.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="297"/>
@@ -4020,12 +4248,12 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="155"/>
       <source>Turn the article display style to dark.</source>
-      <translation>Schalten Sie den Stil der Artikelanzeige in Dunkelheit.</translation>
+      <translation>Stellen Sie den Anzeigestil des Artikels in den dunklen Modus.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="158"/>
       <source>Dark Reader Mode</source>
-      <translation>Dunkel-Lese-Modus</translation>
+      <translation>Dunkler Lesemodus</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="347"/>
@@ -4198,7 +4426,7 @@ den Netzwerk-Cache beim Beenden von der Festplatte.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1744"/>
       <source>Session collapse</source>
-      <translation>Sitzungszusammenbruch</translation>
+      <translation>Sitzungsabbruch</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1765"/>
@@ -4403,6 +4631,11 @@ from Stardict, Babylon and GLS dictionaries</source>
       <location filename="../src/ui/preferences.ui" line="1575"/>
       <source>minutes</source>
       <translation>Minuten</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.cc" line="60"/>
+      <source>English</source>
+      <translation>Englisch</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="112"/>
@@ -4805,7 +5038,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="231"/>
       <source>Always stay on top of all other windows</source>
-      <translation>Immer auf allen anderen Fenstern bleiben</translation>
+      <translation>Immer über allen anderen Fenstern anzeigen</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="251"/>
