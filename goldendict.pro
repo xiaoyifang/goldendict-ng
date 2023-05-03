@@ -184,9 +184,11 @@ win32 {
         CONFIG += chinese_conversion_support
     }
 }
-!CONFIG( no_macos_universal ) {
+
+!mac {
     DEFINES += INCLUDE_LIBRARY_PATH
 }
+
 unix:!mac {
     DEFINES += HAVE_X11
 
@@ -258,34 +260,21 @@ mac {
     QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
 
-
-    !CONFIG( no_macos_universal ) {
-        LIBS+=        -lhunspell
-        INCLUDEPATH += $${PWD}/maclibs/include
-        LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
-    }
-    else{
-        PKGCONFIG +=   hunspell
-        INCLUDEPATH += /opt/homebrew/include /usr/local/include
-        LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
-    }
+    PKGCONFIG +=   hunspell
+    INCLUDEPATH += /opt/homebrew/include /usr/local/include
+    LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
+    
 
     OBJECTIVE_SOURCES += src/macos/machotkeywrapper.mm \
                          src/macos/macmouseover.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = redist/myInfo.plist
 
-    !CONFIG( no_macos_universal ) {
-        QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                          cp -nR $${PWD}/maclibs/lib/ GoldenDict.app/Contents/Frameworks/ && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
-    }
-    else{
-        QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
-    }
+
+    QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
+                      mkdir -p GoldenDict.app/Contents/MacOS/locale && \
+                      cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
+    
 
     !CONFIG( no_chinese_conversion_support ) {
         CONFIG += chinese_conversion_support
