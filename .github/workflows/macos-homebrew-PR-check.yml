@@ -75,9 +75,10 @@ jobs:
           brew install  xz lzo 
           brew install pkg-config
           brew install libiconv
+          brew install xapian
 
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv  #CONFIG+=no_epwing_support # CONFIG+=no_ffmpeg_player #CONFIG+=no_qtmultimedia_player
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv CONFIG+=use_xapian
           make 
      

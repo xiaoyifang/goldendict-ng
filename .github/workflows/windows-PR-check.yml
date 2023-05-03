@@ -62,5 +62,5 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv CONFIG+=use_xapian
           nmake

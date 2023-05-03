@@ -36,9 +36,7 @@ About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dicto
                            QLatin1String( qVersion() ),
                            compilerVersion,
                            QString::number( QSysInfo::WordSize ) )
-#ifdef USE_XAPIAN
   +" (Xapian inside)"
-#endif
                          );
 
   // copy basic debug info to clipboard
@@ -50,9 +48,7 @@ About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dicto
           QSysInfo::buildAbi() + "\n" +
           compilerVersion + "\n"
     + "Flags:"
-#ifdef USE_XAPIAN
          +" USE_XAPIAN "
-#endif
 
 #ifdef MAKE_ZIM_SUPPORT
          +" MAKE_ZIM_SUPPORT"
