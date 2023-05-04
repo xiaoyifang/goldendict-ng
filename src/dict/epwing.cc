@@ -361,9 +361,7 @@ void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & ar
   }
   catch( std::exception & e )
   {
-    text = QString( "Article reading error: %1")
-             .arg( QString::fromUtf8( e.what() ) );
-    articleText = string( text.toUtf8().data() );
+    qWarning() << QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
     return;
   }
 
@@ -399,8 +397,7 @@ void EpwingDictionary::loadArticlePreviousPage(
     pos = eBook.getArticlePreviousPage( headword, text, articlePage, articleOffset, false );
   }
   catch( std::exception & e ) {
-    text        = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
-    articleText = string( text.toUtf8().data() );
+    qDebug() << QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
     return;
   }
 
@@ -776,6 +773,15 @@ void EpwingArticleRequest::run()
     {
       //starts with p
       dict.loadArticlePreviousPage( headword, articleText, articlePage, articleOffset );
+    }
+
+    //the reference may not contain valid text. at this point ,should return directly.
+    if ( articleText.empty() ) {
+      //clear result.
+      result.clear();
+      // No such word
+      finish();
+      return;
     }
 
     result += articleText;
