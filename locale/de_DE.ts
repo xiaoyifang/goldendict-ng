@@ -805,7 +805,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="375"/>
       <source>Export finished</source>
-      <translation>Export beendet</translation>
+      <translation>Export abgeschlossen</translation>
     </message>
   </context>
   <context>
@@ -1153,7 +1153,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
       <source>Add folder</source>
-      <translation>Ordner einfügen</translation>
+      <translation>Ordner hinzufügen</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
