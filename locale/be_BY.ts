@@ -4252,7 +4252,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>Сачэнне за зменамі ў буферы абмену, калі ўключана апрацоўванне ў выплыўных вокнах. Увага! Гэты параметр павінен быць заўсёды ўключаны, калі вы выкарыстоўваеце не Linux.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="427"/>
