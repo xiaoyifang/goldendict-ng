@@ -4417,7 +4417,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1765"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>Пры выкарыстанні буфера абмену не зважаць на тэкст пасля пераносу радка</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1772"/>
