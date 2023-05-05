@@ -4199,10 +4199,8 @@ Plugin must be installed for this option to work.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Звычайна пры пстрыканні па спасылцы, падвойным пстрыканні па слове або пошуку ў артыкулах загружаецца пераклад і амаль адразу
+выконваецца пракручванне да артыкула з таго ж слоўніка. Калі гэты параметр адключаны, паказваецца артыкул з самага верхняга слоўніка.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="297"/>
@@ -4257,17 +4255,17 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="427"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>Сачыць за зменамі ў буферы абмену</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="434"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>Сачыць за зменамі абірання тэксту</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="450"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>Сачыць за абіраннем тэксту толькі націсканні ўсіх наступных клавіш:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="635"/>
@@ -4409,7 +4407,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>Падчас выканання паслядоўных пошукаў, калі адзін слоўнік згортваецца ўручную, ён застанецца згорнутым пры выкананні наступнага пошуку</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1744"/>
