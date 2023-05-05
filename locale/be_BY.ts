@@ -4292,7 +4292,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="996"/>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>Падлучэнне Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1017"/>
@@ -4414,7 +4414,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1744"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>Згарнуць сеанс</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1765"/>
