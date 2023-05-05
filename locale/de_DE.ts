@@ -785,7 +785,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="292"/>
       <source>Can not open exported file</source>
-      <translation>Kann exportierte Datei nicht öffnen</translation>
+      <translation>Exportierte Datei kann nicht geöffnet werden</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
@@ -1158,7 +1158,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
       <source>Favorites:</source>
-      <translation>Lesezeichen:</translation>
+      <translation>Favoriten:</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
@@ -3426,7 +3426,7 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <location filename="../src/ui/mainwindow.ui" line="558"/>
       <source>Show</source>
-      <translation>Zeigen</translation>
+      <translation>Anzeigen</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
@@ -4469,7 +4469,7 @@ den Netzwerk-Cache beim Beenden von der Festplatte.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1550"/>
       <source>Favorites</source>
-      <translation>Lesezeichen</translation>
+      <translation>Favoriten</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1558"/>
