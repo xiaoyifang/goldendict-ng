@@ -16,6 +16,7 @@ on:
       # - ".github/**"
       - "howto/**"
       - "*.md"
+      - "locale/**"
 jobs:
   build:
     name: Build
