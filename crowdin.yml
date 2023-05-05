@@ -1,3 +1,6 @@
+"commit_message": "New translations %language% from Crowdin"
+"append_commit_message": false
+
 files:
   - source: locale/zh_CN.ts
     translation: /locale/%locale_with_underscore%.%file_extension%
