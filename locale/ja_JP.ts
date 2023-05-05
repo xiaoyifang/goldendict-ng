@@ -634,6 +634,26 @@ between classic and school orthography in cyrillic)</source>
       <translation>翻訳先の言語で &quot;-&gt;%1&quot; にグループを結合します</translation>
     </message>
     <message>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <source>Auto group by folder failed.</source>
+      <translation type="unfinished">Auto group by folder failed.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <source>The parent directory of %1 can be reached.</source>
+      <translation type="unfinished">The parent directory of %1 can be reached.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <source>Are you sure you want to generate a set of groups based on containing folders?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="892"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
+    </message>
+    <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>二面翻訳グループ &quot;%1-%2-%1&quot;</translation>
@@ -2563,6 +2583,214 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
+    <name>Language::Db</name>
+    <message>
+      <location filename="../src/language.cc" line="41"/>
+      <source>French</source>
+      <translation type="unfinished">French</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="42"/>
+      <source>Spanish</source>
+      <translation type="unfinished">Spanish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="43"/>
+      <source>Belarusian</source>
+      <translation type="unfinished">Belarusian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="44"/>
+      <source>Bulgarian</source>
+      <translation type="unfinished">Bulgarian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="45"/>
+      <source>Czech</source>
+      <translation type="unfinished">Czech</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="46"/>
+      <source>German</source>
+      <translation type="unfinished">German</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="47"/>
+      <source>Greek</source>
+      <translation type="unfinished">Greek</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="48"/>
+      <source>Finnish</source>
+      <translation type="unfinished">Finnish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="49"/>
+      <source>Italian</source>
+      <translation type="unfinished">Italian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="50"/>
+      <source>Japanese</source>
+      <translation type="unfinished">Japanese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="51"/>
+      <source>Korean</source>
+      <translation type="unfinished">Korean</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="52"/>
+      <source>Lithuanian</source>
+      <translation type="unfinished">Lithuanian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="53"/>
+      <source>Macedonian</source>
+      <translation type="unfinished">Macedonian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="54"/>
+      <source>Dutch</source>
+      <translation type="unfinished">Dutch</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="55"/>
+      <source>Polish</source>
+      <translation type="unfinished">Polish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="56"/>
+      <source>Portuguese</source>
+      <translation type="unfinished">Portuguese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="57"/>
+      <source>Russian</source>
+      <translation type="unfinished">Russian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="58"/>
+      <source>Slovak</source>
+      <translation type="unfinished">Slovak</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="59"/>
+      <source>Albanian</source>
+      <translation type="unfinished">Albanian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="60"/>
+      <source>Serbian (Cyrillic)</source>
+      <translation type="unfinished">Serbian (Cyrillic)</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="61"/>
+      <source>Swedish</source>
+      <translation type="unfinished">Swedish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="62"/>
+      <source>Turkish</source>
+      <translation type="unfinished">Turkish</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="63"/>
+      <source>Ukrainian</source>
+      <translation type="unfinished">Ukrainian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="64"/>
+      <source>Chinese Simplified</source>
+      <translation type="unfinished">Chinese Simplified</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="65"/>
+      <source>Chinese Traditional</source>
+      <translation type="unfinished">Chinese Traditional</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="66"/>
+      <source>Vietnamese</source>
+      <translation type="unfinished">Vietnamese</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="67"/>
+      <source>Portuguese, Brazilian</source>
+      <translation type="unfinished">Portuguese, Brazilian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="68"/>
+      <source>Persian</source>
+      <translation type="unfinished">Persian</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="69"/>
+      <source>Spanish, Argentina</source>
+      <translation type="unfinished">Spanish, Argentina</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="70"/>
+      <source>Hindi</source>
+      <translation type="unfinished">Hindi</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="71"/>
+      <source>Esperanto</source>
+      <translation type="unfinished">Esperanto</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="72"/>
+      <source>German, Switzerland</source>
+      <translation type="unfinished">German, Switzerland</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="73"/>
+      <source>Spanish, Bolivia</source>
+      <translation type="unfinished">Spanish, Bolivia</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="74"/>
+      <source>Tajik</source>
+      <translation type="unfinished">Tajik</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="75"/>
+      <source>Quechua</source>
+      <translation type="unfinished">Quechua</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="76"/>
+      <source>Aymara</source>
+      <translation type="unfinished">Aymara</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="77"/>
+      <source>Arabic, Saudi Arabia</source>
+      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="78"/>
+      <source>Turkmen</source>
+      <translation type="unfinished">Turkmen</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="79"/>
+      <source>Interlingue</source>
+      <translation type="unfinished">Interlingue</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="80"/>
+      <source>Lojban</source>
+      <translation type="unfinished">Lojban</translation>
+    </message>
+    <message>
+      <location filename="../src/language.cc" line="81"/>
+      <source>English</source>
+      <translation type="unfinished">English</translation>
+    </message>
+  </context>
+  <context>
     <name>LoadDictionaries</name>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="194"/>
@@ -4407,6 +4635,11 @@ from Stardict, Babylon and GLS dictionaries</source>
       <location filename="../src/ui/preferences.ui" line="1575"/>
       <source>minutes</source>
       <translation>分</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.cc" line="60"/>
+      <source>English</source>
+      <translation type="unfinished">English</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="112"/>
