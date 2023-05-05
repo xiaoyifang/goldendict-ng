@@ -31,7 +31,7 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 23.04.03
+      version: 23.05.03
       version-suffix: alpha
       prerelease: true
     steps:
@@ -153,6 +153,15 @@ jobs:
             **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
+            `-xapian` is built with [xapian](https://xapian.org/) support which offers 10X~20X performance 
+            ------------------------------
+            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
+            `-xapian` 表示使用的是 [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
+            比如：
+            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
+            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+
+
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  
 
