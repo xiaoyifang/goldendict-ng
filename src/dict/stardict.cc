@@ -22,10 +22,8 @@
 #include <map>
 #include <set>
 #include <string>
-// msvc defines _WIN32 https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170
-// gcc also defines __WIN32, _WIN32, __WIN32__
-// todo: unify how windows are detected on headers
-#ifndef _WIN32
+
+#ifndef Q_OS_WIN
 #include <arpa/inet.h>
 #else
 #include <winsock.h>
@@ -94,7 +92,7 @@ struct Ifo
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  Ifo( File::Class & );
+  explicit Ifo( File::Class & );
 };
 
 enum
@@ -799,7 +797,7 @@ void StardictDictionary::pangoToHtml( QString & text )
           else if( style.compare( "font_style", Qt::CaseInsensitive ) == 0
                    || style.compare( "style", Qt::CaseInsensitive ) == 0)
             newSpan += QString( "font-style:" ) + styleRegex.cap( 2 ) + ";";
-          else if( style.compare( "weight", Qt::CaseInsensitive ) == 0
+          else if( style.compare( "font_weight", Qt::CaseInsensitive ) == 0
                    || style.compare( "weight", Qt::CaseInsensitive ) == 0)
           {
             QString str = styleRegex.cap( 2 );
