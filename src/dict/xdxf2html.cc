@@ -17,6 +17,8 @@
 
 #include <QRegularExpression>
 
+#include "globalregex.hh"
+
 namespace Xdxf2Html {
 
 static void fixLink( QDomElement & el, string const & dictId, const char *attrName )
@@ -69,8 +71,6 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
                 Dictionary::Class *dictPtr,  IndexedZip * resourceZip,
                 bool isLogicalFormat, unsigned revisionNumber, QString * headword )
 {
-//  GD_DPRINTF( "Source>>>>>>>>>>: %s\n\n\n", in.c_str() );
-
   // Convert spaces after each end of line to &nbsp;s, and then each end of
   // line to a <br>
 
@@ -107,11 +107,6 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
         afterEol = false;
     }
   }
-
-  // Strip "<nu />" tags - QDomDocument don't handle it correctly
-  string::size_type n;
-  while( ( n = inConverted.find( "<nu />" ) ) != string::npos )
-      inConverted.erase( n, 6 );
 
   // We build a dom representation of the given xml, then do some transforms
   QDomDocument dd;
@@ -703,9 +698,8 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
     el.setAttribute( "class", "xdxf_rref" );
   }
 
-//  GD_DPRINTF( "Result>>>>>>>>>>: %s\n\n\n", dd.toByteArray( 0 ).data() );
-
-  return dd.toString( 1 ).remove('\n').remove( QRegularExpression( "<(b|i)/>" ) ).toUtf8().data();
+  //workaround,  the xml is not very suitable to process the html content.  such as <blockquote/> is valid in xml ,while invalid in html.
+  return dd.toString().remove( RX::Html::emptyXmlTag ).toUtf8().data();
 }
 
 }
