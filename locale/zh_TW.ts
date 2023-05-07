@@ -71,7 +71,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation>anki: 傳送成功</translation>
+      <translation type="unfinished">anki: post to anki success</translation>
     </message>
   </context>
   <context>
