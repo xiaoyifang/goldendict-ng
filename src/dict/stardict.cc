@@ -16,7 +16,6 @@
 #include "indexedzip.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
-#include "wstring_qt.hh"
 #include "audiolink.hh"
 
 #include <zlib.h>
@@ -176,17 +175,12 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
-    ;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
   QString const& getDescription() override;
 
@@ -953,7 +947,7 @@ void StardictDictionary::loadArticle( uint32_t address,
 
   char * ptr = articleBody;
 
-  if ( sameTypeSequence.size() )
+  if ( !sameTypeSequence.empty() )
   {
     /// The sequence is known, it's not stored in the article itself
     for( unsigned seq = 0; seq < sameTypeSequence.size(); ++seq )
@@ -1339,7 +1333,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
