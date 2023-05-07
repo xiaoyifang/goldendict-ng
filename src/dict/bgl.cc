@@ -391,21 +391,21 @@ namespace
       char * dictDescription = chunks.getBlock( idxHeader.descriptionAddress, chunk );
       string str( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+        dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                                  .arg( Html::unescape( QString::fromUtf8( str.data(), str.size() ) ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;
 
       str = string( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "Author: %1%2" ) )
+        dictionaryDescription += QObject::tr( "Author: %1%2" )
                                  .arg( QString::fromUtf8( str.data(), str.size() ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;
 
       str = string( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "E-mail: %1%2" ) )
+        dictionaryDescription += QObject::tr( "E-mail: %1%2" )
                                  .arg( QString::fromUtf8( str.data(), str.size() ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;

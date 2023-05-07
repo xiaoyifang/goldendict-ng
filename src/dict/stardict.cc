@@ -1107,7 +1107,7 @@ QString const& StardictDictionary::getDescription()
     {
       QString copyright = QString::fromUtf8( ifo.copyright.c_str() )
                           .replace( "<br>", "\n", Qt::CaseInsensitive );
-      dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                               .arg( copyright )
                               .arg( "\n\n" );
     }
@@ -1115,7 +1115,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.author.empty() )
     {
       QString author = QString::fromUtf8( ifo.author.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Author: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Author: %1%2" )
                               .arg( author )
                               .arg( "\n\n" );
     }
@@ -1123,7 +1123,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.email.empty() )
     {
       QString email = QString::fromUtf8( ifo.email.c_str() );
-      dictionaryDescription += QString( QObject::tr( "E-mail: %1%2" ) )
+      dictionaryDescription += QObject::tr( "E-mail: %1%2" )
                                .arg( email )
                                .arg( "\n\n" );
     }
@@ -1131,7 +1131,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.website.empty() )
     {
       QString website = QString::fromUtf8( ifo.website.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Website: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Website: %1%2" )
                                .arg( website )
                                .arg( "\n\n" );
     }
@@ -1139,7 +1139,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.date.empty() )
     {
       QString date = QString::fromUtf8( ifo.date.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Date: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Date: %1%2" )
                                .arg( date )
                                .arg( "\n\n" );
     }
