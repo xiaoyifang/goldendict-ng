@@ -252,7 +252,7 @@ int main( int argc, char ** argv )
   newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
   newArgv[ argc + 1 ] = nullptr;
 
-  QHotkeyApplication app( "GoldenDict", newArgc, newArgv );
+  QHotkeyApplication app( "GoldenDict-ng", newArgc, newArgv );
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );

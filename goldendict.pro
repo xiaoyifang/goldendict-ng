@@ -283,7 +283,6 @@ mac {
     }
     else{
         QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                          cp -nR $${PWD}/maclibs/lib/libeb.dylib GoldenDict.app/Contents/Frameworks/ && \
                           mkdir -p GoldenDict.app/Contents/MacOS/locale && \
                           cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
     }
@@ -584,7 +583,9 @@ CONFIG( no_epwing_support ) {
   SOURCES += src/dict/epwing.cc \
              src/dict/epwing_book.cc \
              src/dict/epwing_charmap.cc
-  LIBS += -leb
+  INCLUDEPATH += thirdparty
+  HEADERS += $$files(thirdparty/eb/*.h)
+  SOURCES += $$files(thirdparty/eb/*.c)
 }
 
 CONFIG( chinese_conversion_support ) {
