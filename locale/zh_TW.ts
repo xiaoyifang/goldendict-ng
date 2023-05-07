@@ -192,7 +192,7 @@
     <name>ArticleView</name>
     <message>
       <source>x</source>
-      <translation type="unfinished">x</translation>
+      <translation>x</translation>
     </message>
     <message>
       <source>Form</source>
@@ -217,7 +217,7 @@
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1807"/>
@@ -226,7 +226,7 @@
     </message>
     <message>
       <source>about:blank</source>
-      <translation type="unfinished">about:blank</translation>
+      <translation>about:blank</translation>
     </message>
     <message>
       <source>&amp;Previous</source>
@@ -4632,7 +4632,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.cc" line="60"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>英文</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="112"/>
@@ -4773,27 +4773,27 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
-      <translation type="unfinished">avformat_alloc_context() failed.</translation>
+      <translation>avformat_alloc_context() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
-      <translation type="unfinished">av_malloc() failed.</translation>
+      <translation>av_malloc() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
-      <translation type="unfinished">avio_alloc_context() failed.</translation>
+      <translation>avio_alloc_context() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
-      <translation type="unfinished">avformat_open_input() failed: %1.</translation>
+      <translation>avformat_open_input() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
-      <translation type="unfinished">avformat_find_stream_info() failed: %1.</translation>
+      <translation>avformat_find_stream_info() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="213"/>
@@ -4813,7 +4813,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
-      <translation type="unfinished">avcodec_open2() failed: %1.</translation>
+      <translation>avcodec_open2() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="324"/>
@@ -4830,7 +4830,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>ao_open_live() failed: </source>
-      <translation type="unfinished">ao_open_live() failed: </translation>
+      <translation>ao_open_live() failed: </translation>
     </message>
     <message>
       <source>No driver.</source>
@@ -4855,7 +4855,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
-      <translation type="unfinished">avcodec_alloc_frame() failed.</translation>
+      <translation>avcodec_alloc_frame() failed.</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
@@ -4887,11 +4887,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>anki: post to anki failed</source>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: 調用失敗</translation>
     </message>
     <message>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>上一頁</translation>
     </message>
     <message>
       <source>Next Page</source>
@@ -5392,7 +5392,7 @@ of the appropriate groups to use them.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="533"/>
       <source>Forvo</source>
-      <translation type="unfinished">Forvo</translation>
+      <translation>Forvo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="350"/>
@@ -5421,7 +5421,7 @@ of the appropriate groups to use them.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
-      <translation type="unfinished">API Key:</translation>
+      <translation>API Key:</translation>
     </message>
     <message>
       <source>Use of Forvo currently requires an API key. Leave this field
@@ -5601,7 +5601,7 @@ Big-5 使用%GDBIG5%，Big5-HKSCS 使用 %GDBIG5HKSCS% ，GBK 和 GB18030 使用
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
