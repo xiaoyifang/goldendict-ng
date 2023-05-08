@@ -4234,7 +4234,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="145"/>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>將UI頁面調為深色</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="148"/>
@@ -4244,12 +4244,12 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="155"/>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>將文章顯示樣式調為深色。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="158"/>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>深色瀏覽模式</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="347"/>
@@ -4259,7 +4259,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>當掃描啟動時會記錄剪貼簿變更。注意！除非您正在使用Linux，否則您應該一直啟用此功能。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="427"/>
@@ -5096,7 +5096,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>尋找：</translation>
     </message>
   </context>
   <context>
@@ -5211,7 +5211,7 @@ GoldenDict 尚不支援此方案。</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>啟用Lingua Libre</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="490"/>
