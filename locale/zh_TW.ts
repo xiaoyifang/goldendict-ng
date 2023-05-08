@@ -635,7 +635,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>依文件夾自動分組失敗</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="786"/>
@@ -4206,15 +4206,12 @@ Plugin must be installed for this option to work.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>在正常情況下，單擊鏈接、雙擊單詞或查找文章中的選錄部分會載入翻譯功能並即時滾動到同一詞字典中的條目。然而，若將此選項關掉，則會顯示該字典最頂層的條目</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="297"/>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>自動滾動到目標文章</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="73"/>
@@ -4324,7 +4321,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1105"/>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>字彙輸入欄</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1112"/>
@@ -4334,7 +4331,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>定義輸入欄</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1126"/>
@@ -4344,7 +4341,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1133"/>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>句子輸入欄(可為空)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1157"/>
