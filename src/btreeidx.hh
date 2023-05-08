@@ -238,7 +238,7 @@ public:
 
   virtual void findMatches();
 
-  void run(); // Run from another thread by BtreeWordSearchRunnable
+  void run();
 
   virtual void cancel()
   {
