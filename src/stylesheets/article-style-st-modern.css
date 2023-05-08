@@ -151,6 +151,10 @@ a:hover
   content:url('qrc:///icons/collapse_article_hovered.png');
 }
 
+.gdarticlebody{
+  position: relative;
+}
+
 /* The first headword in a (possibly) multi-headword DSL article */
 .gdarticlebody > div:first-child .dsl_headwords,
 {
