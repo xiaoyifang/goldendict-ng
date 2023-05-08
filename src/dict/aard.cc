@@ -663,7 +663,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by DslArticleRequestRunnable
+  void run();
 
   void cancel() override
   {

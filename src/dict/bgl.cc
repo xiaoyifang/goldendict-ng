@@ -508,7 +508,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -631,7 +631,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -902,7 +902,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglResourceRequestRunnable
+  void run();
 
   void cancel() override
   {

@@ -887,7 +887,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by EpwingResourceRequestRunnable
+  void run();
 
   void cancel() override { isCancelled.ref(); }
 

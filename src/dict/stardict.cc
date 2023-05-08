@@ -1232,7 +1232,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1594,7 +1594,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictResourceRequestRunnable
+  void run();
 
   void cancel() override
   {

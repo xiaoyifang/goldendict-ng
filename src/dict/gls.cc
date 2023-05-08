@@ -878,7 +878,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -974,7 +974,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by GlsArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1126,7 +1126,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by GlsResourceRequestRunnable
+  void run();
 
   void cancel() override
   {
