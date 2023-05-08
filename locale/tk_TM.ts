@@ -6,17 +6,17 @@
     <message>
       <location filename="../src/ui/about.ui" line="17"/>
       <source>About</source>
-      <translation>Hakynda</translation>
+      <translation type="unfinished">About</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="66"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng - sozlükleri açmak üçin programma,  wersiýa </translation>
+      <translation type="unfinished">GoldenDict-ng dictionary lookup program, version </translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="101"/>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>GNU GPLv3 we ondan soňky çykan lisenziýasy boýunça</translation>
+      <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
@@ -31,22 +31,22 @@
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
       <source>Credits:</source>
-      <translation>Hormatlar:</translation>
+      <translation type="unfinished">Credits:</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="20"/>
       <source>[Unknown]</source>
-      <translation>[Näbelli]</translation>
+      <translation type="unfinished">[Unknown]</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="35"/>
       <source>Based on Qt %1 (%2, %3 bit)</source>
-      <translation>Esaslanýar  Qt %1 (%2, %3 bit)</translation>
+      <translation type="unfinished">Based on Qt %1 (%2, %3 bit)</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="91"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2011 Konstantin Isakow (ikm@goldendict.org)</translation>
+      <translation type="unfinished">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
   </context>
   <context>
@@ -87,62 +87,62 @@
     <message>
       <location filename="../src/article_maker.cc" line="313"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Ondan soň, başga programmanyň içinde kursory gyzyklanýan sözüň üstüne getiriň - ýüze çykan penjirede onuň düşündirilişi görkeziler.</translation>
+      <translation type="unfinished">Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="306"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Ýüze çykýan penjireler ( popup) bilen işlemegiň düzgünleri&lt;/h3&gt;Başga programmalaryň içinden sözleri terjime etmek üçin, şuny açmak gerek: &lt;i&gt;&quot;Skan popup&quot;&lt;/i&gt; in &lt;b&gt;Saýlamalar menýusynyň içinde ýerleşýär&lt;/b&gt;, soň ony Popup nyşany açyp ýa-da aşakdaky panelden myşkanyň sag düwmesine basyp işe göýbermek bolýar.</translation>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="145"/>
       <source>Expand article</source>
-      <translation>Makalany giňelt</translation>
+      <translation type="unfinished">Expand article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="145"/>
       <source>Collapse article</source>
-      <translation>Makalany kiçelt</translation>
+      <translation type="unfinished">Collapse article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="234"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; üçin &lt;b&gt;%2&lt;/b&gt; toparynda hiç terjime tapylmady.</translation>
+      <translation type="unfinished">No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>Working with popup</source>
-      <translation>Ýüzüne çykýan penjire (popup) bilen işlemek</translation>
+      <translation type="unfinished">Working with popup</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="394"/>
       <source>(untitled)</source>
-      <translation>(atsyz)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="286"/>
       <source>Welcome!</source>
-      <translation>Hoş geldiňiz!</translation>
+      <translation type="unfinished">Welcome!</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="316"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Ondan soň, başga programmanyň içinde gyzyklanýan sözüňiziň üstüne myşka bilen iki gezek basyň ýa-da bellik ediň,soň- ýüze çykan penjirede onuň düşündirilişi görkeziler.</translation>
+      <translation type="unfinished">Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="238"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; toparda hiç terjime tapylmady..</translation>
+      <translation type="unfinished">No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="288"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Hoş geldiňiz! &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Programany ulanyp başlamak üçin, ilki bilen &lt;b&gt;Redaktrile|Dictionaries menýusyna baryň&lt;/b&gt; we şol ýerden sözlük faýllaryň ýerleşýän bukjalaryny görkeziň, Wikipedia ýa-da başga çeşmeleri saýlaň, sözlükleriň görkeziş tertibini goýuň ýa-da sözlükleriň toparyny dörediň.&lt;p&gt;Şondan soň sözleriň terjimesini gözlemäge başlap bolýar! Ony şu penjiräniň sag tarapynda ýerleşýän meýdançasyndan edip bolýar ýa-da &lt;a href=&quot;Ýüzüne çykýan penjire (popup) bilen işlemek&quot;&gt;göni başga programmalaryň içinden hem edip bolýar&lt;/a&gt;. &lt;p&gt;Programmany sazlamak üçin, serediň &lt;b&gt;Redaktirle|Saýlamalar menýusyna&lt;/b&gt;. Şol ýerde ýerleşen ähli sazlamalaryň gysga düşündirişi bar, bir zat düşünmeseňiz olary okamagy unutmaň.&lt;p&gt;Eger goşmaça soragyňyz bar bolsa,maslahat gerek bolsa, pikiriňizi paýlaşmak isleseňiz ýa-da beýleki ulanyjylaryň pikirlerini bilmek isleseňiz &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foruma giriň&lt;/a&gt;.&lt;p&gt;Programmanyň &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;websaýtyndan&lt;/a&gt; täzelikleri bilip bilersiňiz. &lt;p&gt;(c) 2008-2013 Konstantin Isakow.  GPLv3 ýa-da soňky çykan lisenziýasy boýunça.</translation>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="406"/>
       <source>(picture)</source>
-      <translation>(surat)</translation>
+      <translation type="unfinished">(picture)</translation>
     </message>
   </context>
   <context>
@@ -150,17 +150,17 @@
     <message>
       <location filename="../src/article_maker.cc" line="674"/>
       <source>Expand article</source>
-      <translation>Makalany giňelt</translation>
+      <translation type="unfinished">Expand article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="675"/>
       <source>From </source>
-      <translation>Sözlük  </translation>
+      <translation type="unfinished">From </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="678"/>
       <source>Collapse article</source>
-      <translation>Makalany kiçelt</translation>
+      <translation type="unfinished">Collapse article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="693"/>
@@ -170,22 +170,22 @@
     <message>
       <location filename="../src/article_maker.cc" line="706"/>
       <source>Query error: %1</source>
-      <translation>Sorag ýalňyşlygy: %1</translation>
+      <translation type="unfinished">Query error: %1</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="830"/>
       <source>Close words: </source>
-      <translation>Ýakyn sözler: </translation>
+      <translation type="unfinished">Close words: </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="897"/>
       <source>Compound expressions: </source>
-      <translation>Goşma aňlatmalar: </translation>
+      <translation type="unfinished">Compound expressions: </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="925"/>
       <source>Individual words: </source>
-      <translation>Aýry sözler: </translation>
+      <translation type="unfinished">Individual words: </translation>
     </message>
   </context>
   <context>
@@ -196,24 +196,24 @@
     </message>
     <message>
       <source>Form</source>
-      <translation>Forma</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Indiki</translation>
+      <translation type="unfinished">&amp;Next</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>Tap:</translation>
+      <translation type="unfinished">Find:</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation>Salgylanýan çeşmäni ýükläp almak bolmady.</translation>
+      <translation type="unfinished">The referenced resource failed to download.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2096"/>
       <source>Failed to create temporary file.</source>
-      <translation>Wagtlaýyn faýly döredip bolmady.</translation>
+      <translation type="unfinished">Failed to create temporary file.</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -222,83 +222,83 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1807"/>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;Tap &quot;%1&quot;</translation>
+      <translation type="unfinished">&amp;Look up &quot;%1&quot;</translation>
     </message>
     <message>
       <source>about:blank</source>
-      <translation>barada: boş</translation>
+      <translation type="unfinished">about:blank</translation>
     </message>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Yza</translation>
+      <translation type="unfinished">&amp;Previous</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1815"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>Tap &quot;%1&quot; in &amp;New Tab</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in &amp;New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1367"/>
       <location filename="../src/ui/articleview.cc" line="1551"/>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Salgylanan çeşme ýok.</translation>
+      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>&amp;Open Link</source>
-      <translation>&amp;Linki aç</translation>
+      <translation type="unfinished">&amp;Open Link</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Uly-kiçi harplara duýgurlyk</translation>
+      <translation type="unfinished">&amp;Case Sensitive</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2107"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>Çeşme faýly awtomat açyp bolmady, özbaşdak açmaga synanşyň: %1.</translation>
+      <translation type="unfinished">Failed to auto-open resource file, try opening manually: %1.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1841"/>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation>Tap &quot;%1&quot; in %2</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in %2</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="332"/>
       <source>Select Current Article</source>
-      <translation>Şu makalany saýla</translation>
+      <translation type="unfinished">Select Current Article</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="337"/>
       <source>Copy as text</source>
-      <translation>Tekst görnüşinde kopiýa et</translation>
+      <translation type="unfinished">Copy as text</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="342"/>
       <source>Inspect</source>
-      <translation>Gözden geçir</translation>
+      <translation type="unfinished">Inspect</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1849"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>Tap &quot;%1&quot; in %2 in &amp;New Tab</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in %2 in &amp;New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1759"/>
       <source>Open Link in New &amp;Tab</source>
-      <translation>Linki täze aç &amp;Tab-dan</translation>
+      <translation type="unfinished">Open Link in New &amp;Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1766"/>
       <source>Open Link in &amp;External Browser</source>
-      <translation>Linki &amp;Daşky Brauzerden aç</translation>
+      <translation type="unfinished">Open Link in &amp;External Browser</translation>
     </message>
     <message>
       <source>Highlight &amp;all</source>
-      <translation>Belle&amp;hemmesini</translation>
+      <translation type="unfinished">Highlight &amp;all</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1004"/>
       <source>Resource</source>
-      <translation>Çeşme</translation>
+      <translation type="unfinished">Resource</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1009"/>
@@ -308,38 +308,38 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1014"/>
       <source>TTS Voice</source>
-      <translation>TTS sesi</translation>
+      <translation type="unfinished">TTS Voice</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1019"/>
       <source>Picture</source>
-      <translation>Surat</translation>
+      <translation type="unfinished">Picture</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
-      <translation>Wideo</translation>
+      <translation type="unfinished">Video</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1035"/>
       <source>Video: %1</source>
-      <translation>Wideo: %1</translation>
+      <translation type="unfinished">Video: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1052"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>Adalga şu sözlükden alyndy - &quot;%1&quot;: %2</translation>
+      <translation type="unfinished">Definition from dictionary &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1060"/>
       <source>Definition: %1</source>
-      <translation>Kesgitleme: %1</translation>
+      <translation type="unfinished">Definition: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1406"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>Salgylanan audio programa ýok.</translation>
+      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1753"/>
@@ -369,27 +369,27 @@
       <location filename="../src/ui/articleview.cc" line="1327"/>
       <location filename="../src/ui/articleview.cc" line="1551"/>
       <source>ERROR: %1</source>
-      <translation>ÝALŇYŞLYK: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2009"/>
       <source>Save sound</source>
-      <translation>Ýatda sakla sesini</translation>
+      <translation type="unfinished">Save sound</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2024"/>
       <source>Save image</source>
-      <translation>Surady ýatda sakla</translation>
+      <translation type="unfinished">Save image</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2026"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Surat faýllary (*.bmp *.jpg *.png *.tif);;All files (*.*)</translation>
+      <translation type="unfinished">Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1782"/>
       <source>Save &amp;image...</source>
-      <translation>Surady &amp;ýatda sakla - ...</translation>
+      <translation type="unfinished">Save &amp;image...</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="199"/>
@@ -404,18 +404,18 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1789"/>
       <source>Save s&amp;ound...</source>
-      <translation>Ýatda sakla s&amp;esi - ...</translation>
+      <translation type="unfinished">Save s&amp;ound...</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1820"/>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation>Iber &quot;%1&quot; girizme setire</translation>
+      <translation type="unfinished">Send &quot;%1&quot; to input line</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1826"/>
       <location filename="../src/ui/articleview.cc" line="1878"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>&amp;Goş &quot;%1&quot; geçmişe</translation>
+      <translation type="unfinished">&amp;Add &quot;%1&quot; to history</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1868"/>
@@ -439,7 +439,7 @@
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>ÄGÄ BOLUŇ %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
@@ -452,18 +452,19 @@
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="417"/>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation>Belarus transliterasiýa - latinden kirilisa (klassyk orfografiýa)</translation>
+      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (classic orthography)</translation>
     </message>
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="420"/>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation>Belarus transliterasiýa - latinden kirillisa (mekdep orfografiýa)</translation>
+      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (school orthography)</translation>
     </message>
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="423"/>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation>Belarus transliterasiýa (klassyk we mekdep kirillisa orfografiýalary arasynda tapawutlaryny sazlaýar)</translation>
+      <translation type="unfinished">Belarusian transliteration (smoothes out the difference
+between classic and school orthography in cyrillic)</translation>
     </message>
   </context>
   <context>
@@ -549,7 +550,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/authentication.ui" line="40"/>
       <source>Password:</source>
-      <translation>Parol:</translation>
+      <translation type="unfinished">Password:</translation>
     </message>
   </context>
   <context>
@@ -557,17 +558,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
       <source>Form</source>
-      <translation>Forma</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
       <source>Group icon:</source>
-      <translation>Toparyň nyşany:</translation>
+      <translation type="unfinished">Group icon:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
       <source>Shortcut:</source>
-      <translation>Çalt açar:</translation>
+      <translation type="unfinished">Shortcut:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
@@ -577,37 +578,37 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
       <source>None</source>
-      <translation>Hiç birisi</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="50"/>
       <source>From file...</source>
-      <translation>Şu faýldan...</translation>
+      <translation type="unfinished">From file...</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="96"/>
       <source>Choose a file to use as group icon</source>
-      <translation>Topar nyşany hökmünde ulanyljak faýly saýla</translation>
+      <translation type="unfinished">Choose a file to use as group icon</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="98"/>
       <source>Images</source>
-      <translation>Suratlar</translation>
+      <translation type="unfinished">Images</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="99"/>
       <source>All files</source>
-      <translation>Ähli faýllar</translation>
+      <translation type="unfinished">All files</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Error</source>
-      <translation>Ýalňyş</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Bellenen şekiliň faýlyny okap bolanok.</translation>
+      <translation type="unfinished">Can&apos;t read the specified image file.</translation>
     </message>
   </context>
   <context>
@@ -615,22 +616,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
       <source>Confirmation</source>
-      <translation>Tassyklama</translation>
+      <translation type="unfinished">Confirmation</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="692"/>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation>Çyndan hem toparlary dil jübütleriň esasynda gurmak isleýäýäňizmi?</translation>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on language pairs?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="851"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>Toparlary çeşme dillere görä utgaşdyr -  &quot;%1-&gt;&quot;</translation>
+      <translation type="unfinished">Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="868"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>Toparlary terjime dillere görä utgaşdyr - &quot;-&gt;%1&quot;</translation>
+      <translation type="unfinished">Combine groups by target language to &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
@@ -655,13 +656,13 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="886"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation>Iki-taraplaýyn terjime topary ýasa -  &quot;%1-%2-%1&quot;</translation>
+      <translation type="unfinished">Make two-side translate group &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="904"/>
       <location filename="../src/ui/groups_widgets.cc" line="923"/>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation>Utgaşdyr toparlary we &quot;%1&quot;</translation>
+      <translation type="unfinished">Combine groups with &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
@@ -669,12 +670,12 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/groups_widgets.cc" line="835"/>
       <location filename="../src/ui/groups_widgets.cc" line="1010"/>
       <source>Dictionaries: </source>
-      <translation>Sözlükler: </translation>
+      <translation type="unfinished">Dictionaries: </translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="717"/>
       <source>Unassigned</source>
-      <translation>Bellenmedik</translation>
+      <translation type="unfinished">Unassigned</translation>
     </message>
   </context>
   <context>
@@ -777,7 +778,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="284"/>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Tekst faýllary (*.txt);;Ähli faýllar (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="292"/>
@@ -792,7 +793,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
       <source>Cancel</source>
-      <translation>Yza Gaýtar</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="367"/>
@@ -810,42 +811,42 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="83"/>
       <source>Total articles:</source>
-      <translation>Jemi makala sany:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="52"/>
       <source>Translates from:</source>
-      <translation>Terjime edýär şu dilden:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="59"/>
       <source>Total words:</source>
-      <translation>Jemi söz sany:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="66"/>
       <source>Translates to:</source>
-      <translation>Terjime edýär şu dile:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="36"/>
       <source>Open folder</source>
-      <translation>Aç bukjany</translation>
+      <translation type="unfinished">Open folder</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="76"/>
       <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="130"/>
       <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
+      <translation type="unfinished">Files comprising this dictionary:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="174"/>
       <source>Description:</source>
-      <translation>Häsiýetnama:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="196"/>
@@ -861,7 +862,7 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/dictinfo.cc" line="30"/>
       <source>Edit the dictionary via command:
 %1</source>
-      <translation>Sözlügi şu komanda bilen üýtget:
+      <translation type="unfinished">Edit the dictionary via command:
 %1</translation>
     </message>
   </context>
@@ -870,7 +871,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="243"/>
       <source>%1 entries</source>
-      <translation>%1 girizmeler</translation>
+      <translation type="unfinished">%1 entries</translation>
     </message>
   </context>
   <context>
@@ -901,17 +902,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/sources.cc" line="817"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="819"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="821"/>
       <source>Address</source>
-      <translation>Adres</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="823"/>
@@ -926,7 +927,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/sources.cc" line="827"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="860"/>
@@ -948,17 +949,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="22"/>
       <source>Extended menu with all dictionaries...</source>
-      <translation>Ähli sözlükleri görkezýän giňeldilen menýu...</translation>
+      <translation type="unfinished">Extended menu with all dictionaries...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="96"/>
       <source>Edit this group</source>
-      <translation>Şu topary üýtget</translation>
+      <translation type="unfinished">Edit this group</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="120"/>
       <source>Dictionary info</source>
-      <translation>Sözlük barada maglumat</translation>
+      <translation type="unfinished">Dictionary info</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="125"/>
@@ -968,17 +969,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="127"/>
       <source>Open dictionary folder</source>
-      <translation>Sözlügiň bukjasyny aç</translation>
+      <translation type="unfinished">Open dictionary folder</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="134"/>
       <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="14"/>
       <source>&amp;Dictionary Bar</source>
-      <translation>&amp;Sözlük zolagy</translation>
+      <translation type="unfinished">&amp;Dictionary Bar</translation>
     </message>
   </context>
   <context>
@@ -987,43 +988,43 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/editdictionaries.cc" line="47"/>
       <location filename="../src/ui/editdictionaries.cc" line="248"/>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;Sözlükler</translation>
+      <translation type="unfinished">&amp;Dictionaries</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.ui" line="14"/>
       <source>Dictionaries</source>
-      <translation>Sözlükler</translation>
+      <translation type="unfinished">Dictionaries</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Accept</source>
-      <translation>Kabul et</translation>
+      <translation type="unfinished">Accept</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="133"/>
       <source>Cancel</source>
-      <translation>Yza Gaýtar</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="127"/>
       <source>Sources changed</source>
-      <translation>Çeşmeler üýtgedildi</translation>
+      <translation type="unfinished">Sources changed</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="46"/>
       <source>&amp;Sources</source>
-      <translation>&amp;Çeşmeler</translation>
+      <translation type="unfinished">&amp;Sources</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="48"/>
       <location filename="../src/ui/editdictionaries.cc" line="250"/>
       <source>&amp;Groups</source>
-      <translation>&amp;Toparlar</translation>
+      <translation type="unfinished">&amp;Groups</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="128"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>Käbir çeşmeler üýtgedildi. Üýtgeşmeleri kabul etmek isleýäňmi?</translation>
+      <translation type="unfinished">Some sources were changed. Would you like to accept the changes?</translation>
     </message>
   </context>
   <context>
@@ -1044,7 +1045,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/externalviewer.cc" line="51"/>
       <source>the viewer program name is empty</source>
-      <translation>Görmek üçin programanyň ady boş</translation>
+      <translation type="unfinished">the viewer program name is empty</translation>
     </message>
   </context>
   <context>
@@ -1105,7 +1106,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="395"/>
       <source>None</source>
-      <translation>Hiç birisi</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
@@ -1140,12 +1141,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="30"/>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Saýlananlary ýok et</translation>
+      <translation type="unfinished">&amp;Delete Selected</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
       <source>Copy Selected</source>
-      <translation>Saýlananlary kopiýa et</translation>
+      <translation type="unfinished">Copy Selected</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
@@ -1168,37 +1169,37 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/forvo.cc" line="194"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML analizinde ýalňyşlyk: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="270"/>
       <source>Added %1</source>
-      <translation>Goşuldy %1</translation>
+      <translation type="unfinished">Added %1</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="273"/>
       <source>by</source>
-      <translation> -</translation>
+      <translation type="unfinished">by</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Male</source>
-      <translation>Erkek</translation>
+      <translation type="unfinished">Male</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Female</source>
-      <translation>Aýal</translation>
+      <translation type="unfinished">Female</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="279"/>
       <source>from</source>
-      <translation>kimden</translation>
+      <translation type="unfinished">from</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="317"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Redkatirle|Dictionaries|Çeşmeler|Forvo açyň we öz API açaryňyzy soraň, şeýlelikde bu ýalňyşlyk ýok bolar.</translation>
+      <translation type="unfinished">Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</translation>
     </message>
   </context>
   <context>
@@ -1280,7 +1281,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
       <source>Cancel</source>
-      <translation>Yza Gaýtar</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
   </context>
   <context>
@@ -1288,7 +1289,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/german.cc" line="48"/>
       <source>German Transliteration</source>
-      <translation>Nemes transliterasiýa</translation>
+      <translation type="unfinished">German Transliteration</translation>
     </message>
   </context>
   <context>
@@ -1296,7 +1297,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/greektranslit.cc" line="839"/>
       <source>Greek Transliteration</source>
-      <translation>Grek transliterasiýa</translation>
+      <translation type="unfinished">Greek Transliteration</translation>
     </message>
   </context>
   <context>
@@ -1304,7 +1305,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groupcombobox.cc" line="14"/>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Topary saýla (Alt+G)</translation>
+      <translation type="unfinished">Choose a Group (Alt+G)</translation>
     </message>
   </context>
   <context>
@@ -1337,12 +1338,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.cc" line="162"/>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation>Siz çyndanam ähli toparlary aýyrmak isleýärsiňizmi?</translation>
+      <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="149"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt;? topary çyndan hem aýyrmak isleýäňmi?</translation>
+      <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="29"/>
@@ -1357,103 +1358,103 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.cc" line="148"/>
       <source>Remove group</source>
-      <translation>Topary aýyr</translation>
+      <translation type="unfinished">Remove group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="136"/>
       <source>Rename group</source>
-      <translation>Toparyň adyny üýtget</translation>
+      <translation type="unfinished">Rename group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="137"/>
       <source>Give a new name for the group:</source>
-      <translation>Topara täze adyny ber:</translation>
+      <translation type="unfinished">Give a new name for the group:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="22"/>
       <source>Dictionaries available:</source>
-      <translation>Elýeterli sözlükler:</translation>
+      <translation type="unfinished">Dictionaries available:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="146"/>
       <source>&amp;Add group</source>
-      <translation>&amp;Topary goş</translation>
+      <translation type="unfinished">&amp;Add group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="110"/>
       <source>Add group</source>
-      <translation>Topary goş</translation>
+      <translation type="unfinished">Add group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="143"/>
       <source>Create new dictionary group</source>
-      <translation>Täze sözlük toparyny döret</translation>
+      <translation type="unfinished">Create new dictionary group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="197"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation>Süýre&amp;taşla sözlükleri toparyň içine ýa-da daşyna, myşkanyň kömegi bilen toparyň içinde ýerlerini ýa-da tertibini üýtget.</translation>
+      <translation type="unfinished">Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="163"/>
       <source>Rename current dictionary group</source>
-      <translation>Häzirki sözlük toparynyň adyny üýtget</translation>
+      <translation type="unfinished">Rename current dictionary group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove current dictionary group</source>
-      <translation>Häzirki sözlük toparyny aýyr</translation>
+      <translation type="unfinished">Remove current dictionary group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="111"/>
       <source>Give a name for the new group:</source>
-      <translation>Täze topara at ber:</translation>
+      <translation type="unfinished">Give a name for the new group:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="186"/>
       <location filename="../src/ui/groups.cc" line="161"/>
       <source>Remove all groups</source>
-      <translation>Ähli toparlary aýyr</translation>
+      <translation type="unfinished">Remove all groups</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="89"/>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation>Saýlanan sözlükleri topardan aýyr (Del)</translation>
+      <translation type="unfinished">Remove selected dictionaries from group (Del)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="64"/>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation>Saýlanan sözlükleri topara goş (Ins)</translation>
+      <translation type="unfinished">Add selected dictionaries to group (Ins)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="176"/>
       <source>&amp;Remove group</source>
-      <translation>&amp;Topary aýyr</translation>
+      <translation type="unfinished">&amp;Remove group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="119"/>
       <source>Groups:</source>
-      <translation>Toparlar:</translation>
+      <translation type="unfinished">Groups:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="166"/>
       <source>Re&amp;name group</source>
-      <translation>Toparyň adyny&amp;üýtget</translation>
+      <translation type="unfinished">Re&amp;name group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="183"/>
       <source>Remove all dictionary groups</source>
-      <translation>Ähli sözlük toparlaryny aýyr</translation>
+      <translation type="unfinished">Remove all dictionary groups</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="153"/>
       <source>Create language-based groups</source>
-      <translation>Dil esasynda toparlary döret</translation>
+      <translation type="unfinished">Create language-based groups</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
-      <translation>Awto toparlar</translation>
+      <translation type="unfinished">Auto groups</translation>
     </message>
   </context>
   <context>
@@ -1468,7 +1469,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Back</source>
-      <translation>Yza gaýt</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -1476,15 +1477,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>Ulalt</translation>
+      <translation type="unfinished">Zoom In</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>Kiçelt</translation>
+      <translation type="unfinished">Zoom Out</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>Normal ululygy</translation>
+      <translation type="unfinished">Normal Size</translation>
     </message>
     <message>
       <source>Content</source>
@@ -1500,17 +1501,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="22"/>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Saýlananlary ýok et</translation>
+      <translation type="unfinished">&amp;Delete Selected</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="30"/>
       <source>Copy Selected</source>
-      <translation>Saýlananlary kopiýa et</translation>
+      <translation type="unfinished">Copy Selected</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="46"/>
       <source>History:</source>
-      <translation>Geçmiş:</translation>
+      <translation type="unfinished">History:</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
@@ -1520,7 +1521,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="219"/>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>Geçmişde görkeziljek terjimeleriň göwrümi: %1 girizmeler maksimum %2</translation>
+      <translation type="unfinished">History size: %1 entries out of maximum %2</translation>
     </message>
   </context>
   <context>
@@ -1528,12 +1529,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/hunspell.cc" line="285"/>
       <source>Spelling suggestions: </source>
-      <translation>Dürs ýazuw kadalary hödürlemek: </translation>
+      <translation type="unfinished">Spelling suggestions: </translation>
     </message>
     <message>
       <location filename="../src/dict/hunspell.cc" line="856"/>
       <source>%1 Morphology</source>
-      <translation>%1 Morfologiýa</translation>
+      <translation type="unfinished">%1 Morphology</translation>
     </message>
   </context>
   <context>
@@ -1541,12 +1542,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/sources.cc" line="1398"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1396"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
   </context>
   <context>
@@ -1554,23 +1555,23 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/initializing.ui" line="44"/>
       <source>Dictionary Name</source>
-      <translation>Sözlügiň ady</translation>
+      <translation type="unfinished">Dictionary Name</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="22"/>
       <source>GoldenDict-ng - Initializing</source>
-      <translation>GoldenDict-ng -  başlangyç</translation>
+      <translation type="unfinished">GoldenDict-ng - Initializing</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="28"/>
       <location filename="../src/initializing.cc" line="31"/>
       <source>Please wait while indexing dictionary</source>
-      <translation>Sözlükler indeksirlenýär, garaşyň</translation>
+      <translation type="unfinished">Please wait while indexing dictionary</translation>
     </message>
     <message>
       <location filename="../src/initializing.cc" line="22"/>
       <source>Please wait...</source>
-      <translation>Haýyş garaşyň...</translation>
+      <translation type="unfinished">Please wait...</translation>
     </message>
   </context>
   <context>
@@ -1608,12 +1609,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Cree</source>
-      <translation>Kri</translation>
+      <translation type="unfinished">Cree</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="119"/>
       <source>Igbo</source>
-      <translation>Irland</translation>
+      <translation type="unfinished">Igbo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="140"/>
@@ -1623,7 +1624,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="106"/>
       <source>Manx</source>
-      <translation>Manks</translation>
+      <translation type="unfinished">Manx</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="179"/>
@@ -1633,7 +1634,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="211"/>
       <source>Thai</source>
-      <translation>tayland</translation>
+      <translation type="unfinished">Thai</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="224"/>
@@ -1643,17 +1644,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="236"/>
       <source>Zulu</source>
-      <translation>Zulus</translation>
+      <translation type="unfinished">Zulu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Czech</source>
-      <translation>Çeh</translation>
+      <translation type="unfinished">Czech</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="167"/>
       <source>Dutch</source>
-      <translation>Golland</translation>
+      <translation type="unfinished">Dutch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="145"/>
@@ -1663,17 +1664,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="95"/>
       <source>Fulah</source>
-      <translation>Fula</translation>
+      <translation type="unfinished">Fulah</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="88"/>
       <source>Greek</source>
-      <translation>Grek</translation>
+      <translation type="unfinished">Greek</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="107"/>
       <source>Hausa</source>
-      <translation>Hauza</translation>
+      <translation type="unfinished">Hausa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="109"/>
@@ -1683,7 +1684,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="101"/>
       <source>Irish</source>
-      <translation>Irland</translation>
+      <translation type="unfinished">Irish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="134"/>
@@ -1698,12 +1699,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="143"/>
       <source>Latin</source>
-      <translation>Latyn</translation>
+      <translation type="unfinished">Latin</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="159"/>
       <source>Malay</source>
-      <translation>Malaý</translation>
+      <translation type="unfinished">Malay</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="154"/>
@@ -1718,7 +1719,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="176"/>
       <source>Oriya</source>
-      <translation>Oriwa</translation>
+      <translation type="unfinished">Oriya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="175"/>
@@ -1733,12 +1734,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="199"/>
       <source>Shona</source>
-      <translation>Şona</translation>
+      <translation type="unfinished">Shona</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="210"/>
       <source>Tajik</source>
-      <translation>Täjik</translation>
+      <translation type="unfinished">Tajik</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="208"/>
@@ -1763,22 +1764,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="121"/>
       <source>Inupiaq</source>
-      <translation>Inupak</translation>
+      <translation type="unfinished">Inupiaq</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="226"/>
       <source>Venda</source>
-      <translation>Wenda</translation>
+      <translation type="unfinished">Venda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="225"/>
       <source>Uzbek</source>
-      <translation>Özbek</translation>
+      <translation type="unfinished">Uzbek</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="82"/>
       <source>Welsh</source>
-      <translation>Welş</translation>
+      <translation type="unfinished">Welsh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="230"/>
@@ -1788,22 +1789,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="231"/>
       <source>Xhosa</source>
-      <translation>Kosa</translation>
+      <translation type="unfinished">Xhosa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="124"/>
       <source>Italian</source>
-      <translation>italiyan</translation>
+      <translation type="unfinished">Italian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="184"/>
       <source>Raeto-Romance</source>
-      <translation>Rito-Roman</translation>
+      <translation type="unfinished">Raeto-Romance</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="86"/>
       <source>Dzongkha</source>
-      <translation>Jonka</translation>
+      <translation type="unfinished">Dzongkha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="135"/>
@@ -1813,52 +1814,52 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="164"/>
       <source>North Ndebele</source>
-      <translation>Demirgazyk Ndbele</translation>
+      <translation type="unfinished">North Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Abkhazian</source>
-      <translation>Abhaz</translation>
+      <translation type="unfinished">Abkhazian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="142"/>
       <source>Kirghiz</source>
-      <translation>Gyrgyz</translation>
+      <translation type="unfinished">Kirghiz</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="185"/>
       <source>Kirundi</source>
-      <translation>Kirundu</translation>
+      <translation type="unfinished">Kirundi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="102"/>
       <source>Scottish Gaelic</source>
-      <translation>Şotland gall</translation>
+      <translation type="unfinished">Scottish Gaelic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="201"/>
       <source>Albanian</source>
-      <translation>Alban</translation>
+      <translation type="unfinished">Albanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="151"/>
       <source>Latvian</source>
-      <translation>Latyş</translation>
+      <translation type="unfinished">Latvian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="156"/>
       <source>Malayalam</source>
-      <translation>Malaý</translation>
+      <translation type="unfinished">Malayalam</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="139"/>
       <source>Kurdish</source>
-      <translation>Kürt</translation>
+      <translation type="unfinished">Kurdish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Bulgarian</source>
-      <translation>Bolgar</translation>
+      <translation type="unfinished">Bulgarian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="147"/>
@@ -1868,37 +1869,37 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="160"/>
       <source>Maltese</source>
-      <translation>Malta</translation>
+      <translation type="unfinished">Maltese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="158"/>
       <source>Marathi</source>
-      <translation>Marati</translation>
+      <translation type="unfinished">Marathi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Arabic</source>
-      <translation>Arap</translation>
+      <translation type="unfinished">Arabic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="93"/>
       <source>Basque</source>
-      <translation>Bask</translation>
+      <translation type="unfinished">Basque</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Avaric</source>
-      <translation>Awar</translation>
+      <translation type="unfinished">Avaric</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Bihari</source>
-      <translation>Bengal</translation>
+      <translation type="unfinished">Bihari</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Aymara</source>
-      <translation>Aýmar</translation>
+      <translation type="unfinished">Aymara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
@@ -1908,22 +1909,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="205"/>
       <source>Sundanese</source>
-      <translation>Sundan</translation>
+      <translation type="unfinished">Sundanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="83"/>
       <source>Danish</source>
-      <translation>Daniýa</translation>
+      <translation type="unfinished">Danish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="85"/>
       <source>Divehi</source>
-      <translation>Diweli</translation>
+      <translation type="unfinished">Divehi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="150"/>
       <source>Luba-Katanga</source>
-      <translation>Luba-katanga</translation>
+      <translation type="unfinished">Luba-Katanga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="97"/>
@@ -1933,27 +1934,27 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="113"/>
       <source>Hungarian</source>
-      <translation>Wenger</translation>
+      <translation type="unfinished">Hungarian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="99"/>
       <source>French</source>
-      <translation>Fransuz</translation>
+      <translation type="unfinished">French</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="84"/>
       <source>German</source>
-      <translation>Nemes</translation>
+      <translation type="unfinished">German</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="157"/>
       <source>Mongolian</source>
-      <translation>Mongol</translation>
+      <translation type="unfinished">Mongolian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="108"/>
       <source>Hebrew</source>
-      <translation>Yewreý</translation>
+      <translation type="unfinished">Hebrew</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="115"/>
@@ -1963,7 +1964,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="144"/>
       <source>Luxembourgish</source>
-      <translation>Lýuksemburg</translation>
+      <translation type="unfinished">Luxembourgish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="137"/>
@@ -1973,22 +1974,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="132"/>
       <source>Kazakh</source>
-      <translation>Gazak</translation>
+      <translation type="unfinished">Kazakh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="130"/>
       <source>Kikuyu</source>
-      <translation>Kikuýu</translation>
+      <translation type="unfinished">Kikuyu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="136"/>
       <source>Korean</source>
-      <translation>Koreý</translation>
+      <translation type="unfinished">Korean</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="171"/>
       <source>Navajo</source>
-      <translation>Nawaho</translation>
+      <translation type="unfinished">Navajo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="166"/>
@@ -1998,32 +1999,32 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="165"/>
       <source>Nepali</source>
-      <translation>Nepal</translation>
+      <translation type="unfinished">Nepali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="174"/>
       <source>Ojibwa</source>
-      <translation>Ojibwe</translation>
+      <translation type="unfinished">Ojibwa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="181"/>
       <source>Pashto</source>
-      <translation>Puştu</translation>
+      <translation type="unfinished">Pashto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="180"/>
       <source>Polish</source>
-      <translation>Polýak</translation>
+      <translation type="unfinished">Polish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="198"/>
       <source>Samoan</source>
-      <translation>Samoa</translation>
+      <translation type="unfinished">Samoan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="173"/>
       <source>Occitan</source>
-      <translation>Okkitan</translation>
+      <translation type="unfinished">Occitan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="191"/>
@@ -2033,7 +2034,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="196"/>
       <source>Slovak</source>
-      <translation>Slowak</translation>
+      <translation type="unfinished">Slovak</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="200"/>
@@ -2043,7 +2044,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="209"/>
       <source>Telugu</source>
-      <translation>Telügü</translation>
+      <translation type="unfinished">Telugu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="218"/>
@@ -2058,32 +2059,32 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="222"/>
       <source>Uighur</source>
-      <translation>Uýgur</translation>
+      <translation type="unfinished">Uighur</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="194"/>
       <source>Serbo-Croatian</source>
-      <translation>Singala</translation>
+      <translation type="unfinished">Serbo-Croatian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="233"/>
       <source>Yoruba</source>
-      <translation>Ýoruba</translation>
+      <translation type="unfinished">Yoruba</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="234"/>
       <source>Zhuang</source>
-      <translation>Žuang</translation>
+      <translation type="unfinished">Zhuang</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="186"/>
       <source>Romanian</source>
-      <translation>Rumyn</translation>
+      <translation type="unfinished">Romanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="117"/>
       <source>Indonesian</source>
-      <translation>Endoneziýa</translation>
+      <translation type="unfinished">Indonesian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="178"/>
@@ -2093,12 +2094,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="204"/>
       <source>Southern Sotho</source>
-      <translation>Günorta Soto</translation>
+      <translation type="unfinished">Southern Sotho</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Corsican</source>
-      <translation>Korsika</translation>
+      <translation type="unfinished">Corsican</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="90"/>
@@ -2108,47 +2109,47 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="94"/>
       <source>Persian</source>
-      <translation>Pars (Parsça)</translation>
+      <translation type="unfinished">Persian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="197"/>
       <source>Slovenian</source>
-      <translation>Slowen</translation>
+      <translation type="unfinished">Slovenian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="100"/>
       <source>Western Frisian</source>
-      <translation>Günbatar Friz</translation>
+      <translation type="unfinished">Western Frisian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Aragonese</source>
-      <translation>Aragon</translation>
+      <translation type="unfinished">Aragonese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="221"/>
       <source>Tahitian</source>
-      <translation>Taiti</translation>
+      <translation type="unfinished">Tahitian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="152"/>
       <source>Malagasy</source>
-      <translation>Malagazi</translation>
+      <translation type="unfinished">Malagasy</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="103"/>
       <source>Galician</source>
-      <translation>Galisiýa</translation>
+      <translation type="unfinished">Galician</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Azerbaijani</source>
-      <translation>Azerbeýjan</translation>
+      <translation type="unfinished">Azerbaijani</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Amharic</source>
-      <translation>Amhar</translation>
+      <translation type="unfinished">Amharic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="189"/>
@@ -2158,12 +2159,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="126"/>
       <source>Japanese</source>
-      <translation>Ýapon</translation>
+      <translation type="unfinished">Japanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="223"/>
       <source>Ukrainian</source>
-      <translation>Ukrain</translation>
+      <translation type="unfinished">Ukrainian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
@@ -2178,52 +2179,52 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Bashkir</source>
-      <translation>Başkir</translation>
+      <translation type="unfinished">Bashkir</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Belarusian</source>
-      <translation>Belarus</translation>
+      <translation type="unfinished">Belarusian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="138"/>
       <source>Kashmiri</source>
-      <translation>Kaşmir</translation>
+      <translation type="unfinished">Kashmiri</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="190"/>
       <source>Sardinian</source>
-      <translation>Sardin</translation>
+      <translation type="unfinished">Sardinian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="110"/>
       <source>Hiri Motu</source>
-      <translation>Hindi</translation>
+      <translation type="unfinished">Hiri Motu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="183"/>
       <source>Quechua</source>
-      <translation>Keçua</translation>
+      <translation type="unfinished">Quechua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Bengali</source>
-      <translation>Bengal</translation>
+      <translation type="unfinished">Bengali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="127"/>
       <source>Javanese</source>
-      <translation>Ýawa</translation>
+      <translation type="unfinished">Javanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Avestan</source>
-      <translation>Awest</translation>
+      <translation type="unfinished">Avestan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="188"/>
       <source>Kinyarwanda</source>
-      <translation>Kinýarwanda</translation>
+      <translation type="unfinished">Kinyarwanda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
@@ -2233,82 +2234,82 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Bislama</source>
-      <translation>Bihari</translation>
+      <translation type="unfinished">Bislama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="114"/>
       <source>Armenian</source>
-      <translation>Ermeni</translation>
+      <translation type="unfinished">Armenian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
       <source>Norwegian Bokmal</source>
-      <translation>Norwegiýa bokmal</translation>
+      <translation type="unfinished">Norwegian Bokmal</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="111"/>
       <source>Croatian</source>
-      <translation>Horwat</translation>
+      <translation type="unfinished">Croatian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Bosnian</source>
-      <translation>Boşnýak</translation>
+      <translation type="unfinished">Bosnian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="116"/>
       <source>Interlingua</source>
-      <translation>Interlingwa</translation>
+      <translation type="unfinished">Interlingua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="118"/>
       <source>Interlingue</source>
-      <translation>Interlingwe</translation>
+      <translation type="unfinished">Interlingue</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Catalan</source>
-      <translation>Katalon</translation>
+      <translation type="unfinished">Catalan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="202"/>
       <source>Serbian</source>
-      <translation>Serb</translation>
+      <translation type="unfinished">Serbian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="161"/>
       <source>Burmese</source>
-      <translation>Birma</translation>
+      <translation type="unfinished">Burmese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="187"/>
       <source>Russian</source>
-      <translation>Rus</translation>
+      <translation type="unfinished">Russian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="146"/>
       <source>Limburgish</source>
-      <translation>Limburg</translation>
+      <translation type="unfinished">Limburgish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="169"/>
       <source>Norwegian</source>
-      <translation>Norweg</translation>
+      <translation type="unfinished">Norwegian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Chechen</source>
-      <translation>Çeçen</translation>
+      <translation type="unfinished">Chechen</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="235"/>
       <source>Chinese</source>
-      <translation>Hytay</translation>
+      <translation type="unfinished">Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>Chuvash</source>
-      <translation>Çuvaş</translation>
+      <translation type="unfinished">Chuvash</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="195"/>
@@ -2318,12 +2319,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="91"/>
       <source>Spanish</source>
-      <translation>Ispan</translation>
+      <translation type="unfinished">Spanish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="141"/>
       <source>Cornish</source>
-      <translation>Korniş</translation>
+      <translation type="unfinished">Cornish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
@@ -2333,17 +2334,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Assamese</source>
-      <translation>Assamen</translation>
+      <translation type="unfinished">Assamese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="177"/>
       <source>Ossetian</source>
-      <translation>Osetin</translation>
+      <translation type="unfinished">Ossetian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="92"/>
       <source>Estonian</source>
-      <translation>Eston</translation>
+      <translation type="unfinished">Estonian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="207"/>
@@ -2353,117 +2354,117 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="206"/>
       <source>Swedish</source>
-      <translation>Şwed</translation>
+      <translation type="unfinished">Swedish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Tibetan</source>
-      <translation>Tibet</translation>
+      <translation type="unfinished">Tibetan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="227"/>
       <source>Vietnamese</source>
-      <translation>Vetnam</translation>
+      <translation type="unfinished">Vietnamese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="155"/>
       <source>Macedonian</source>
-      <translation>Makedon</translation>
+      <translation type="unfinished">Macedonian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="182"/>
       <source>Portuguese</source>
-      <translation>Portugal</translation>
+      <translation type="unfinished">Portuguese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="217"/>
       <source>Turkish</source>
-      <translation>Türki</translation>
+      <translation type="unfinished">Turkish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Turkmen</source>
-      <translation>Türkmen</translation>
+      <translation type="unfinished">Turkmen</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="105"/>
       <source>Gujarati</source>
-      <translation>Gujarat</translation>
+      <translation type="unfinished">Gujarati</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="123"/>
       <source>Icelandic</source>
-      <translation>Island</translation>
+      <translation type="unfinished">Icelandic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="125"/>
       <source>Inuktitut</source>
-      <translation>Inuktikut</translation>
+      <translation type="unfinished">Inuktitut</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="89"/>
       <source>English</source>
-      <translation>Iňlis</translation>
+      <translation type="unfinished">English</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="128"/>
       <source>Georgian</source>
-      <translation>Gruzin</translation>
+      <translation type="unfinished">Georgian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Church Slavic</source>
-      <translation>Gadymy slawýan</translation>
+      <translation type="unfinished">Church Slavic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="98"/>
       <source>Faroese</source>
-      <translation>Friz</translation>
+      <translation type="unfinished">Faroese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="96"/>
       <source>Finnish</source>
-      <translation>Fin</translation>
+      <translation type="unfinished">Finnish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="228"/>
       <source>Volapuk</source>
-      <translation>Wolapuk</translation>
+      <translation type="unfinished">Volapuk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="229"/>
       <source>Walloon</source>
-      <translation>Walon</translation>
+      <translation type="unfinished">Walloon</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="131"/>
       <source>Kwanyama</source>
-      <translation>Kwanýama</translation>
+      <translation type="unfinished">Kwanyama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="153"/>
       <source>Marshallese</source>
-      <translation>Marşal</translation>
+      <translation type="unfinished">Marshallese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="192"/>
       <source>Northern Sami</source>
-      <translation>Demirgazyk Sami</translation>
+      <translation type="unfinished">Northern Sami</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="112"/>
       <source>Haitian</source>
-      <translation>Gaiti</translation>
+      <translation type="unfinished">Haitian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Chamorro</source>
-      <translation>Çamoro</translation>
+      <translation type="unfinished">Chamorro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="168"/>
       <source>Norwegian Nynorsk</source>
-      <translation>Norwegiýa Ninorsk</translation>
+      <translation type="unfinished">Norwegian Nynorsk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="104"/>
@@ -2473,112 +2474,112 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="170"/>
       <source>South Ndebele</source>
-      <translation>Günorta Ndbele</translation>
+      <translation type="unfinished">South Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="172"/>
       <source>Chichewa</source>
-      <translation>Çiçewa</translation>
+      <translation type="unfinished">Chichewa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="149"/>
       <source>Lithuanian</source>
-      <translation>Litwanýa</translation>
+      <translation type="unfinished">Lithuanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="120"/>
       <source>Sichuan Yi</source>
-      <translation>Syçuan Ýi</translation>
+      <translation type="unfinished">Sichuan Yi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="212"/>
       <source>Tigrinya</source>
-      <translation>Tigrinýa</translation>
+      <translation type="unfinished">Tigrinya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="232"/>
       <source>Yiddish</source>
-      <translation>Idiş</translation>
+      <translation type="unfinished">Yiddish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="373"/>
       <source>Traditional Chinese</source>
-      <translation>Adaty Hytaý</translation>
+      <translation type="unfinished">Traditional Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="374"/>
       <source>Simplified Chinese</source>
-      <translation>Ýönekeýleşdirlen Hytaý</translation>
+      <translation type="unfinished">Simplified Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="375"/>
       <source>Other</source>
-      <translation>Başgalar</translation>
+      <translation type="unfinished">Other</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="376"/>
       <source>Other Simplified Chinese dialects</source>
-      <translation>Başga ýönekeýleşdirlen Hytaý şiweleri</translation>
+      <translation type="unfinished">Other Simplified Chinese dialects</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="377"/>
       <source>Other Traditional Chinese dialects</source>
-      <translation>Başga adaty Hytaý şiweleri</translation>
+      <translation type="unfinished">Other Traditional Chinese dialects</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="378"/>
       <source>Other Eastern-European languages</source>
-      <translation>Başga Gündogar-Ýewropa dilleri</translation>
+      <translation type="unfinished">Other Eastern-European languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="379"/>
       <source>Other Western-European languages</source>
-      <translation>Başga Günbatar-Ýewropa dilleri</translation>
+      <translation type="unfinished">Other Western-European languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="380"/>
       <source>Other Russian languages</source>
-      <translation>Başga rus dilleri</translation>
+      <translation type="unfinished">Other Russian languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="381"/>
       <source>Other Japanese languages</source>
-      <translation>Başga ýapon dilleri</translation>
+      <translation type="unfinished">Other Japanese languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="382"/>
       <source>Other Baltic languages</source>
-      <translation>Başga baltik dilleri</translation>
+      <translation type="unfinished">Other Baltic languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="383"/>
       <source>Other Greek languages</source>
-      <translation>Başga grek dilleri</translation>
+      <translation type="unfinished">Other Greek languages</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="384"/>
       <source>Other Korean dialects</source>
-      <translation>Başga koreýa dilleri</translation>
+      <translation type="unfinished">Other Korean dialects</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="385"/>
       <source>Other Turkish dialects</source>
-      <translation>Başga türki dilleri</translation>
+      <translation type="unfinished">Other Turkish dialects</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="386"/>
       <source>Other Thai dialects</source>
-      <translation>Başga tailand dilleri</translation>
+      <translation type="unfinished">Other Thai dialects</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="387"/>
       <source>Tamazight</source>
-      <translation>Tamazigt</translation>
+      <translation type="unfinished">Tamazight</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="237"/>
       <source>Lojban</source>
-      <translation>Ložban</translation>
+      <translation type="unfinished">Lojban</translation>
     </message>
   </context>
   <context>
@@ -2794,7 +2795,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="194"/>
       <source>Error loading dictionaries</source>
-      <translation>Sözlük ýüklenende ýalňyşlyk çykdy</translation>
+      <translation type="unfinished">Error loading dictionaries</translation>
     </message>
   </context>
   <context>
@@ -2802,7 +2803,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/main.cc" line="328"/>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation>Konfigurasiýa faýlynda ýalňyşlyk bar. Başlangyç sazlamalar bilen dowam etjekmi?</translation>
+      <translation type="unfinished">Error in configuration file. Continue with default settings?</translation>
     </message>
   </context>
   <context>
@@ -2835,32 +2836,32 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1494"/>
       <source>All</source>
-      <translation>Ählisi</translation>
+      <translation type="unfinished">All</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="197"/>
       <source>Back</source>
-      <translation>Yza gaýt</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1465"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 sözlükler, %2 makalalar, %3 sözler</translation>
+      <translation type="unfinished">%1 dictionaries, %2 articles, %3 words</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="95"/>
       <source>&amp;Edit</source>
-      <translation>&amp;Redaktirle</translation>
+      <translation type="unfinished">&amp;Edit</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="78"/>
       <source>&amp;File</source>
-      <translation>&amp;Faýl</translation>
+      <translation type="unfinished">&amp;File</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="102"/>
       <source>&amp;Help</source>
-      <translation>&amp;Kömek</translation>
+      <translation type="unfinished">&amp;Help</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="136"/>
@@ -2871,46 +2872,46 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
       <location filename="../src/ui/mainwindow.cc" line="388"/>
       <source>&amp;Quit</source>
-      <translation>&amp;Çyk</translation>
+      <translation type="unfinished">&amp;Quit</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Error</source>
-      <translation>Ýalňyş</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <source>Scan Popup</source>
-      <translation>Skan popup</translation>
+      <translation type="unfinished">Scan Popup</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="344"/>
       <source>Quit from application</source>
-      <translation>Programadan çyk</translation>
+      <translation type="unfinished">Quit from application</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="363"/>
       <source>&amp;Close To Tray</source>
-      <translation>&amp;Panel içine buk</translation>
+      <translation type="unfinished">&amp;Close To Tray</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Can&apos;t save article: %1</source>
-      <translation>Makalany ýatda saklap bolmady %1</translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="242"/>
       <source>Zoom In</source>
-      <translation>Ulalt</translation>
+      <translation type="unfinished">Zoom In</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="296"/>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;Sözlükler...</translation>
+      <translation type="unfinished">&amp;Dictionaries...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="330"/>
       <source>&amp;About</source>
-      <translation>&amp;Maglumat</translation>
+      <translation type="unfinished">&amp;About</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="355"/>
@@ -2920,17 +2921,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="400"/>
       <source>&amp;Print</source>
-      <translation>&amp;Çap et</translation>
+      <translation type="unfinished">&amp;Print</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="382"/>
       <source>&amp;Save Article</source>
-      <translation>&amp;Makalany ýatda sakla</translation>
+      <translation type="unfinished">&amp;Save Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3373"/>
       <source>Save Article As</source>
-      <translation>Makalany şular ýaly ýatda sakla</translation>
+      <translation type="unfinished">Save Article As</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
@@ -2945,63 +2946,63 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
       <source>Minimizes the window to tray</source>
-      <translation>Penjireleri paneliň içinde gizlemek</translation>
+      <translation type="unfinished">Minimizes the window to tray</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="411"/>
       <source>Page Set&amp;up</source>
-      <translation>Sahypany &amp;sazla</translation>
+      <translation type="unfinished">Page Set&amp;up</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="322"/>
       <source>&amp;Homepage</source>
-      <translation>&amp;Baş sahypa</translation>
+      <translation type="unfinished">&amp;Homepage</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3059"/>
       <source>New Release Available</source>
-      <translation>Täze neşir elýeterli</translation>
+      <translation type="unfinished">New Release Available</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1476"/>
       <source>Look up:</source>
-      <translation>Tap:</translation>
+      <translation type="unfinished">Look up:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="248"/>
       <source>Zoom Out</source>
-      <translation>Kiçelt</translation>
+      <translation type="unfinished">Zoom Out</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="381"/>
       <source>Show &amp;Main Window</source>
-      <translation>Görkez &amp;Esasy penjiräni</translation>
+      <translation type="unfinished">Show &amp;Main Window</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="333"/>
       <source>About GoldenDict-ng</source>
-      <translation>GoldenDict-ng barada</translation>
+      <translation type="unfinished">About GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3065"/>
       <source>Download</source>
-      <translation>Ýükläp almak</translation>
+      <translation type="unfinished">Download</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3270"/>
       <source>Page Setup</source>
-      <translation>Sahypany sazlamak</translation>
+      <translation type="unfinished">Page Setup</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="304"/>
       <location filename="../src/ui/mainwindow.cc" line="1476"/>
       <source>Look up in:</source>
-      <translation>Tap şu ýerde:</translation>
+      <translation type="unfinished">Look up in:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="252"/>
       <source>Normal Size</source>
-      <translation>Normal ululygy</translation>
+      <translation type="unfinished">Normal Size</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="2908"/>
@@ -3026,113 +3027,113 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
       <source>Loading...</source>
-      <translation>Ýüklenip alynýar...</translation>
+      <translation type="unfinished">Loading...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1662"/>
       <source>(untitled)</source>
-      <translation>(atsyz)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="311"/>
       <source>&amp;Preferences...</source>
-      <translation>&amp;Saýlamalar...</translation>
+      <translation type="unfinished">&amp;Preferences...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="46"/>
       <location filename="../src/ui/mainwindow.cc" line="732"/>
       <source>Welcome!</source>
-      <translation>Hoş geldiňiz!</translation>
+      <translation type="unfinished">Welcome!</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="230"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Sözi eşitdirmek (Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="385"/>
       <source>Save Article</source>
-      <translation>Ýatda sakla</translation>
+      <translation type="unfinished">Save Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3066"/>
       <source>Skip This Release</source>
-      <translation>Şu neşiri böküp geç</translation>
+      <translation type="unfinished">Skip This Release</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="199"/>
       <source>Forward</source>
-      <translation>Ugrukdyr</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3292"/>
       <source>Print Article</source>
-      <translation>Makalany çap et</translation>
+      <translation type="unfinished">Print Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3271"/>
       <source>No printer is available. Please install one first.</source>
-      <translation>Printer ýok. Ilki bilen gurna ony.</translation>
+      <translation type="unfinished">No printer is available. Please install one first.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="115"/>
       <source>&amp;View</source>
-      <translation>&amp;Görnüş</translation>
+      <translation type="unfinished">&amp;View</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="126"/>
       <source>H&amp;istory</source>
-      <translation>&amp;Geçmiş</translation>
+      <translation type="unfinished">H&amp;istory</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="438"/>
       <source>&amp;Clear</source>
-      <translation>&amp;Arassala</translation>
+      <translation type="unfinished">&amp;Clear</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="119"/>
       <source>&amp;Zoom</source>
-      <translation>&amp;Ulalt</translation>
+      <translation type="unfinished">&amp;Zoom</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="367"/>
       <source>Words Zoom In</source>
-      <translation>Sözleri ulalt</translation>
+      <translation type="unfinished">Words Zoom In</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="371"/>
       <source>Words Zoom Out</source>
-      <translation>Sözleri kiçelt</translation>
+      <translation type="unfinished">Words Zoom Out</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="373"/>
       <source>Words Normal Size</source>
-      <translation>Sözleriň normal ululygy</translation>
+      <translation type="unfinished">Words Normal Size</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="420"/>
       <source>Close current tab</source>
-      <translation>Şu wagtky wkladkany ýap</translation>
+      <translation type="unfinished">Close current tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="428"/>
       <source>Close all tabs</source>
-      <translation>Ähli açyk wkladkalary ýap</translation>
+      <translation type="unfinished">Close all tabs</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="435"/>
       <source>Close all tabs except current</source>
-      <translation>Şu wagtky açylandan daşary ähli başga wkladkalary ýap</translation>
+      <translation type="unfinished">Close all tabs except current</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="410"/>
       <source>Opened tabs</source>
-      <translation>Açyk wkladkalar</translation>
+      <translation type="unfinished">Opened tabs</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="590"/>
       <source>New Tab</source>
-      <translation>Täze wkladka</translation>
+      <translation type="unfinished">New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
@@ -3142,17 +3143,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="464"/>
       <source>&amp;Configuration Folder</source>
-      <translation>&amp;Konfigurasiýa bukjasy</translation>
+      <translation type="unfinished">&amp;Configuration Folder</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>&amp;Menubar</source>
-      <translation>&amp;Menýu zolagy</translation>
+      <translation type="unfinished">&amp;Menubar</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="342"/>
       <source>Found in Dictionaries:</source>
-      <translation>Sözlüklerden tapylan:</translation>
+      <translation type="unfinished">Found in Dictionaries:</translation>
     </message>
     <message>
       <source>Tracking Clipboard</source>
@@ -3173,7 +3174,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1605"/>
       <source>Open Tabs List</source>
-      <translation>Açyk wkladkalaryň sanawy</translation>
+      <translation type="unfinished">Open Tabs List</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1862"/>
@@ -3192,7 +3193,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3170"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>Siz menýu zolagyny gizlemägi saýladyňyz. %1 ulanyp ýenede çykaryp görkez.</translation>
+      <translation type="unfinished">You have chosen to hide a menubar. Use %1 to show it back.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3171"/>
@@ -3204,42 +3205,42 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="3762"/>
       <location filename="../src/ui/mainwindow.cc" line="3774"/>
       <source>&amp;Show</source>
-      <translation>&amp;Görkez</translation>
+      <translation type="unfinished">&amp;Show</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="483"/>
       <source>&amp;Export</source>
-      <translation>&amp;Eksport</translation>
+      <translation type="unfinished">&amp;Export</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3758"/>
       <location filename="../src/ui/mainwindow.cc" line="3770"/>
       <source>&amp;Hide</source>
-      <translation>&amp;Gizle</translation>
+      <translation type="unfinished">&amp;Hide</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3816"/>
       <source>Export history to file</source>
-      <translation>Geçmişi faýl görnüşinde eksport et</translation>
+      <translation type="unfinished">Export history to file</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3818"/>
       <location filename="../src/ui/mainwindow.cc" line="3880"/>
       <location filename="../src/ui/mainwindow.cc" line="3994"/>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Tekst faýllary (*.txt);;Ähli faýllar (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3857"/>
       <source>History export complete</source>
-      <translation>Geşmiş eksport edildi</translation>
+      <translation type="unfinished">History export complete</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <location filename="../src/ui/mainwindow.cc" line="3975"/>
       <location filename="../src/ui/mainwindow.cc" line="4024"/>
       <source>Export error: </source>
-      <translation>Eksport ýalnyşlygy:</translation>
+      <translation type="unfinished">Export error: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="475"/>
@@ -3254,23 +3255,23 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3878"/>
       <source>Import history from file</source>
-      <translation>Faýldan geçmişi import et</translation>
+      <translation type="unfinished">Import history from file</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3927"/>
       <source>Import error: invalid data in file</source>
-      <translation>Import ýalňyşlygy: faýlda nädogry maglumatlar bar</translation>
+      <translation type="unfinished">Import error: invalid data in file</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3931"/>
       <source>History import complete</source>
-      <translation>Geçmiş import edildi</translation>
+      <translation type="unfinished">History import complete</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3934"/>
       <location filename="../src/ui/mainwindow.cc" line="4076"/>
       <source>Import error: </source>
-      <translation>Import ýalňyşlygy:</translation>
+      <translation type="unfinished">Import error: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3951"/>
@@ -3316,7 +3317,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4288"/>
       <source>Dictionary info</source>
-      <translation>Sözlük barada maglumat</translation>
+      <translation type="unfinished">Dictionary info</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4292"/>
@@ -3326,12 +3327,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4294"/>
       <source>Open dictionary folder</source>
-      <translation>Sözlügiň bukjasyny aç</translation>
+      <translation type="unfinished">Open dictionary folder</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4300"/>
       <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4444"/>
@@ -3346,12 +3347,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
       <source>&amp;Search Pane</source>
-      <translation>&amp;Gözleg tagtasy</translation>
+      <translation type="unfinished">&amp;Search Pane</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="208"/>
       <source>&amp;Results Navigation Pane</source>
-      <translation>&amp;Nawigasiýa tagtasyndan netijeler</translation>
+      <translation type="unfinished">&amp;Results Navigation Pane</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="235"/>
@@ -3361,27 +3362,27 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="419"/>
       <source>Print Pre&amp;view</source>
-      <translation>Çap edilen &amp;görnüşi</translation>
+      <translation type="unfinished">Print Pre&amp;view</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="427"/>
       <source>&amp;Rescan Files</source>
-      <translation>&amp;Faýllary täzeden gözden geçirmek</translation>
+      <translation type="unfinished">&amp;Rescan Files</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="450"/>
       <source>&amp;New Tab</source>
-      <translation>&amp;Täze wkladka</translation>
+      <translation type="unfinished">&amp;New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="502"/>
       <source>&amp;Always on Top</source>
-      <translation>&amp;Mydama ýokarda</translation>
+      <translation type="unfinished">&amp;Always on Top</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="505"/>
       <source>Always on Top</source>
-      <translation>Mydama ýokarda</translation>
+      <translation type="unfinished">Always on Top</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="508"/>
@@ -3393,7 +3394,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.ui" line="520"/>
       <location filename="../src/ui/mainwindow.cc" line="296"/>
       <source>Menu Button</source>
-      <translation>Menýu düwmesi</translation>
+      <translation type="unfinished">Menu Button</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="525"/>
@@ -3462,17 +3463,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="118"/>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>Sözlük &amp;tagtasynda atlary görkez</translation>
+      <translation type="unfinished">Show Names in Dictionary &amp;Bar</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Kiçi nyşanlary görkez &amp;gurallar-tagtasynda</translation>
+      <translation type="unfinished">Show Small Icons in &amp;Toolbars</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="194"/>
       <source>&amp;Navigation</source>
-      <translation>&amp;Nawigasiýa</translation>
+      <translation type="unfinished">&amp;Navigation</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="222"/>
@@ -3482,33 +3483,33 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3368"/>
       <source>Article, Complete (*.html)</source>
-      <translation>Makala, taýýar (*.html)</translation>
+      <translation type="unfinished">Article, Complete (*.html)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3369"/>
       <source>Article, HTML Only (*.html)</source>
-      <translation>Makala, HTML diňe (*.html)</translation>
+      <translation type="unfinished">Article, HTML Only (*.html)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3455"/>
       <source>Saving article...</source>
-      <translation>Makala ýatda saklanýar...</translation>
+      <translation type="unfinished">Saving article...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3517"/>
       <source>The main window is set to be always on top.</source>
-      <translation>Baş penjire mydama ýokarda durar ýaly edilen.</translation>
+      <translation type="unfinished">The main window is set to be always on top.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="262"/>
       <source>&amp;History Pane</source>
-      <translation>&amp;Geçmiş tagtasy</translation>
+      <translation type="unfinished">&amp;History Pane</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="781"/>
       <location filename="../src/ui/mainwindow.cc" line="864"/>
       <source>Accessibility API is not enabled</source>
-      <translation>API elýeterli edilmedik</translation>
+      <translation type="unfinished">Accessibility API is not enabled</translation>
     </message>
   </context>
   <context>
@@ -3516,12 +3517,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mdx.cc" line="628"/>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>Sözlük faýly bozuldy ýa-da zaýa boldy</translation>
+      <translation type="unfinished">Dictionary file was tampered or corrupted</translation>
     </message>
     <message>
       <location filename="../src/dict/mdx.cc" line="639"/>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation> %1-den/dan makalany ýükläp bolmady, sebäbi: %2</translation>
+      <translation type="unfinished">Failed loading article from %1, reason: %2</translation>
     </message>
   </context>
   <context>
@@ -3529,7 +3530,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="485"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML analizinde ýalňyşlyk: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
@@ -3537,7 +3538,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="178"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML analizinde ýalňyşlyk: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
@@ -3545,22 +3546,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="475"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="477"/>
       <source>Address</source>
-      <translation>Adres</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="473"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="479"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -3576,72 +3577,72 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="14"/>
       <source>Form</source>
-      <translation>Forma</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="53"/>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation>Işjeň däl (öçürilen) sözlükler:</translation>
+      <translation type="unfinished">Inactive (disabled) dictionaries:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="75"/>
       <source>Name:</source>
-      <translation>Ady:</translation>
+      <translation type="unfinished">Name:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="105"/>
       <source>Total articles:</source>
-      <translation>Jemi makala sany:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="129"/>
       <source>Translates from:</source>
-      <translation>Terjime edýär şu dilden:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="136"/>
       <source>Translates to:</source>
-      <translation>Terjime edýär şu dile:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="112"/>
       <source>Total words:</source>
-      <translation>Jemi söz sany:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="251"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>Içine zatlary süýräp we taşlap tertibini üýtgedip bolýar. Sözlükleri öçürmek üçin, olary aktiw däl toparyna taşlamaly.</translation>
+      <translation type="unfinished">Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="37"/>
       <source>Dictionary order:</source>
-      <translation>Sözlügiň tertibi:</translation>
+      <translation type="unfinished">Dictionary order:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="208"/>
       <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
+      <translation type="unfinished">Files comprising this dictionary:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="67"/>
       <source>Dictionary information</source>
-      <translation>Sözlük barada maglumat</translation>
+      <translation type="unfinished">Dictionary information</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="165"/>
       <source>Description:</source>
-      <translation>Häsiýetnama:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="263"/>
       <source>Sort by name</source>
-      <translation>Ady boýunça sortla</translation>
+      <translation type="unfinished">Sort by name</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="265"/>
       <source>Sort by languages</source>
-      <translation>Dili boýunça sorla</translation>
+      <translation type="unfinished">Sort by languages</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="259"/>
@@ -3659,12 +3660,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="1177"/>
       <source>Path</source>
-      <translation>Ýol</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1179"/>
       <source>Recursive</source>
-      <translation>Rekursiw</translation>
+      <translation type="unfinished">Recursive</translation>
     </message>
   </context>
   <context>
@@ -3677,12 +3678,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="193"/>
       <source>Start to system tray</source>
-      <translation>Sistema panelinden başlat</translation>
+      <translation type="unfinished">Start to system tray</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="578"/>
       <source>Left Shift only</source>
-      <translation>Çep Shift diňe</translation>
+      <translation type="unfinished">Left Shift only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="531"/>
@@ -3691,7 +3692,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>secs</source>
-      <translation>sekunt</translation>
+      <translation type="unfinished">secs</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="591"/>
@@ -3701,13 +3702,13 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="171"/>
       <source>Enable system tray icon</source>
-      <translation>Sistema paneli nyşany görkez</translation>
+      <translation type="unfinished">Enable system tray icon</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="930"/>
       <location filename="../src/ui/preferences.ui" line="1010"/>
       <source>Host:</source>
-      <translation>Öy eyesi:</translation>
+      <translation type="unfinished">Host:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="940"/>
@@ -3723,17 +3724,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="917"/>
       <source>Type:</source>
-      <translation>Tip:</translation>
+      <translation type="unfinished">Type:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="961"/>
       <source>User:</source>
-      <translation>Ulanyjy:</translation>
+      <translation type="unfinished">User:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="397"/>
       <source>&amp;Scan Popup</source>
-      <translation>&amp;Skan popup</translation>
+      <translation type="unfinished">&amp;Scan Popup</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="313"/>
@@ -3747,46 +3748,46 @@ switching to them.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="880"/>
       <source>Use proxy server</source>
-      <translation>Proksi serweri ulan</translation>
+      <translation type="unfinished">Use proxy server</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="706"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>Buferde saklanan sözi terjime etmek üçin şeýle düwmeleri ulan:</translation>
+      <translation type="unfinished">Use the following hotkey to translate a word from clipboard:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="588"/>
       <source>Windows key or Meta key</source>
-      <translation>Windows düwme ýa-da Meta düwme</translation>
+      <translation type="unfinished">Windows key or Meta key</translation>
     </message>
     <message>
       <source>Only show popup when all selected keys are kept pressed:</source>
-      <translation>Ýüze çykarmagy (popup) görkez diňe ähli saýlanan düwmler basylyp saklananda:</translation>
+      <translation type="unfinished">Only show popup when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Auto-pronounce words in main window</source>
-      <translation>Baş penjirede sözleriň awto-aýdylyşy</translation>
+      <translation type="unfinished">Auto-pronounce words in main window</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="382"/>
       <source>Start with system</source>
-      <translation>Sistema bilen bile b</translation>
+      <translation type="unfinished">Start with system</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="538"/>
       <source>Left Alt only</source>
-      <translation>Çep Alt diňe</translation>
+      <translation type="unfinished">Left Alt only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="307"/>
       <source>Tabbed browsing</source>
-      <translation>Wkladkaly agdaryp seretmek</translation>
+      <translation type="unfinished">Tabbed browsing</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="508"/>
       <source>Right Shift only</source>
-      <translation>Sag Shift diňe</translation>
+      <translation type="unfinished">Right Shift only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="200"/>
@@ -3810,27 +3811,27 @@ for all program&apos;s network requests.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Interface language:</source>
-      <translation>Interfeýs dili:</translation>
+      <translation type="unfinished">Interface language:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="498"/>
       <source>Left Ctrl only</source>
-      <translation>Çep Ctrl diňe</translation>
+      <translation type="unfinished">Left Ctrl only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="318"/>
       <source>Open new tabs in background</source>
-      <translation>Yzynda täze wkladkalary aç</translation>
+      <translation type="unfinished">Open new tabs in background</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="870"/>
       <source>&amp;Network</source>
-      <translation>&amp;Baglanyşyk ulgamy</translation>
+      <translation type="unfinished">&amp;Network</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="568"/>
       <source>Right Ctrl only</source>
-      <translation>Sag Alt diňe</translation>
+      <translation type="unfinished">Right Ctrl only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="114"/>
@@ -3840,12 +3841,12 @@ for all program&apos;s network requests.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="511"/>
       <source>Right Shift</source>
-      <translation>Sag Shift</translation>
+      <translation type="unfinished">Right Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="581"/>
       <source>Left Shift</source>
-      <translation>Çep Shift</translation>
+      <translation type="unfinished">Left Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="446"/>
@@ -3856,31 +3857,31 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Display style:</source>
-      <translation>Görkeziş usuly:</translation>
+      <translation type="unfinished">Display style:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Auto-pronounce words in scan popup</source>
-      <translation>Skan popup-dan sözleriň awto-aýdylyşy</translation>
+      <translation type="unfinished">Auto-pronounce words in scan popup</translation>
     </message>
     <message>
       <source>Enable scan popup functionality</source>
-      <translation>Skan ýüze çykarmagyna rugsat ber</translation>
+      <translation type="unfinished">Enable scan popup functionality</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="330"/>
       <source>Open new tabs after the current one</source>
-      <translation>Täze wkladkalary şu wagtky wkladkadan soň aç</translation>
+      <translation type="unfinished">Open new tabs after the current one</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="620"/>
       <source>Restart the program to apply the language change.</source>
-      <translation>Diliň çalşmagyny işe girizmek üçin programmany täzeden işlet.</translation>
+      <translation type="unfinished">Restart the program to apply the language change.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="518"/>
       <source>Alt key</source>
-      <translation>Alt düwmesi</translation>
+      <translation type="unfinished">Alt key</translation>
     </message>
     <message>
       <source>When enabled, a translation popup window would be shown each time
@@ -3895,7 +3896,7 @@ off from main window or tray icon.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1228"/>
       <source>Check for new program releases periodically</source>
-      <translation>Programmanyň täze neşirlerini wagtal-wagtal barlap dur</translation>
+      <translation type="unfinished">Check for new program releases periodically</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="325"/>
@@ -3909,13 +3910,13 @@ be the last ones.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="204"/>
       <source>Close to system tray</source>
-      <translation>Sistema panelinden ýap</translation>
+      <translation type="unfinished">Close to system tray</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
       <location filename="../src/ui/preferences.cc" line="61"/>
       <source>System default</source>
-      <translation>Sistemanyň başlangyç bahalary</translation>
+      <translation type="unfinished">System default</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="167"/>
@@ -3940,22 +3941,22 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="373"/>
       <source>Startup</source>
-      <translation>Başlangyç</translation>
+      <translation type="unfinished">Startup</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="971"/>
       <source>Password:</source>
-      <translation>Parol:</translation>
+      <translation type="unfinished">Password:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="111"/>
       <source>Default</source>
-      <translation>Ilkibaşky ýagdaýy</translation>
+      <translation type="unfinished">Default</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="50"/>
       <source>&amp;Interface</source>
-      <translation>&amp;Interfeýs</translation>
+      <translation type="unfinished">&amp;Interface</translation>
     </message>
     <message>
       <source>To avoid false positives, the keys are only monitored
@@ -3968,66 +3969,66 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="619"/>
       <source>Changing Language</source>
-      <translation>Dili çalşmak</translation>
+      <translation type="unfinished">Changing Language</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="528"/>
       <source>Ctrl key</source>
-      <translation>Ctrl düwmesi</translation>
+      <translation type="unfinished">Ctrl key</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="679"/>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>Baş penjiräni görkezmek ýa-da gizlemek üçin şeýle  düwmeleri ulan:</translation>
+      <translation type="unfinished">Use the following hotkey to show or hide the main window:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="541"/>
       <source>Left Alt</source>
-      <translation>Çep Alt </translation>
+      <translation type="unfinished">Left Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="558"/>
       <source>Right Alt only</source>
-      <translation>Sag Alt diňe</translation>
+      <translation type="unfinished">Right Alt only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="14"/>
       <source>Preferences</source>
-      <translation>Saýlamalar</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <source>Keys may also be pressed afterwards, within</source>
-      <translation>Düwmeleri soň hem basmak bolýar, şu çäklerde</translation>
+      <translation type="unfinished">Keys may also be pressed afterwards, within</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="501"/>
       <source>Left Ctrl</source>
-      <translation>Çep Ctrl</translation>
+      <translation type="unfinished">Left Ctrl</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="561"/>
       <source>Right Alt</source>
-      <translation>Sag Alt</translation>
+      <translation type="unfinished">Right Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="749"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>Bu gyzgyn düwmeler globaldyr we GoldenDict açyk duran wagty islendik başga programmada hem ýerlerde  işleýärler.</translation>
+      <translation type="unfinished">The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="571"/>
       <source>Right Ctrl</source>
-      <translation>Sag Alt</translation>
+      <translation type="unfinished">Right Ctrl</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="673"/>
       <source>Hotkeys</source>
-      <translation>Gyzgyn düwmeler</translation>
+      <translation type="unfinished">Hotkeys</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="407"/>
       <source>Start with scan popup turned on</source>
-      <translation>Skan ýüze çykarmany işledip başlat</translation>
+      <translation type="unfinished">Start with scan popup turned on</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="189"/>
@@ -4039,12 +4040,12 @@ its main window.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="548"/>
       <source>Shift key</source>
-      <translation>Shift düwmesi</translation>
+      <translation type="unfinished">Shift key</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="379"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>Operasion ulgam açylandan soň, GoldenDict öz işini awtomat başlar.</translation>
+      <translation type="unfinished">Automatically starts GoldenDict after operation system bootup.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="403"/>
@@ -4117,32 +4118,32 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
     <message>
       <location filename="../src/ui/preferences.ui" line="1150"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>Özge saýtlardan zat ýüklemegi gadagan et (köp sanly reklama/mahabt gizlemgegini üpjün edýär)</translation>
+      <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="783"/>
       <source>Pronunciation</source>
-      <translation>Aýdyş</translation>
+      <translation type="unfinished">Pronunciation</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Playback</source>
-      <translation>Oýnatmak</translation>
+      <translation type="unfinished">Playback</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="832"/>
       <source>Use external program:</source>
-      <translation>Daşky programmany ulan:</translation>
+      <translation type="unfinished">Use external program:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="224"/>
       <source>Double-click translates the word clicked</source>
-      <translation>Sözüň üstünde iki gezek basylanda ol terjime edilýär</translation>
+      <translation type="unfinished">Double-click translates the word clicked</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="829"/>
       <source>Use any external program to play audio files</source>
-      <translation>Audio faýllary oýnatmak üçin islendik özge programmany ulan</translation>
+      <translation type="unfinished">Use any external program to play audio files</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="280"/>
@@ -4154,7 +4155,7 @@ With this on however, it will hide the main window.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="284"/>
       <source>ESC key hides main window</source>
-      <translation>ESC düwmesini basmak bilen baş penjire ýapylýar</translation>
+      <translation type="unfinished">ESC key hides main window</translation>
     </message>
     <message>
       <source>Enabling this would allow to listen to sound pronunciations from
@@ -4166,7 +4167,7 @@ Plugin must be installed for this option to work.</translation>
     </message>
     <message>
       <source>Enable web plugins</source>
-      <translation>Web plugin-leri işlet</translation>
+      <translation type="unfinished">Enable web plugins</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="337"/>
@@ -4176,7 +4177,7 @@ Plugin must be installed for this option to work.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="340"/>
       <source>Hide single tab</source>
-      <translation>Ýeke wkladkany gizle</translation>
+      <translation type="unfinished">Hide single tab</translation>
     </message>
     <message>
       <source>Help language</source>
@@ -4185,22 +4186,22 @@ Plugin must be installed for this option to work.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="239"/>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation>Şu bahany sazlap juda uly kontekst menýularyň öňüni almak mümkin.</translation>
+      <translation type="unfinished">Adjust this value to avoid huge context menus.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="242"/>
       <source>Context menu dictionaries limit:</source>
-      <translation>Kontekst menýu sözlükleriň çägi:</translation>
+      <translation type="unfinished">Context menu dictionaries limit:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="414"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>Terjime edilen sözleri ýüze çykýan penjireden görkezmän olary baş penjirä iber</translation>
+      <translation type="unfinished">Send translated word to main window instead of to show it in popup window</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="417"/>
       <source>Send translated word to main window</source>
-      <translation>Terjime edilen sözleri baş penjirä iber</translation>
+      <translation type="unfinished">Send translated word to main window</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="632"/>
@@ -4357,13 +4358,13 @@ however, the article from the topmost dictionary is shown.</translation>
       <location filename="../src/ui/preferences.ui" line="1157"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation>Käbir websaýtlar GoldenDict programmany HTTP ady arkaly görýärler we olara ýüz tutmaga rugsat berenoklar. 
-Şeýle meseläni çözmek üçin, şuny işlediň.</translation>
+      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
+Enable this option to workaround the problem.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1161"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng HTTP ady arkaly görkezme</translation>
+      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1170"/>
@@ -4419,7 +4420,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1417"/>
       <source>Ad&amp;vanced</source>
-      <translation>Has &amp;çylşyrymly</translation>
+      <translation type="unfinished">Ad&amp;vanced</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
@@ -4519,27 +4520,27 @@ from mouse-over, selection, clipboard or command line</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1708"/>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>Makalalaryň goşmaça ýerlerini giňeldip görkezmek üçin şuny saýlaň</translation>
+      <translation type="unfinished">Turn this option on to always expand optional parts of articles</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1711"/>
       <source>Expand optional &amp;parts</source>
-      <translation>Goşmaça &amp;ýerlerini giňeldip görkez</translation>
+      <translation type="unfinished">Expand optional &amp;parts</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1648"/>
       <source>Select this option to automatic collapse big articles</source>
-      <translation>Uly makalalaryň awtomat kiçi edilip görkezilmegi üçin şuny saýlaň</translation>
+      <translation type="unfinished">Select this option to automatic collapse big articles</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1651"/>
       <source>Collapse articles more than</source>
-      <translation>Makalalary kiçelt şundan köp - </translation>
+      <translation type="unfinished">Collapse articles more than</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>Şundan uly bolan makalalar kiçi edilip görkeziljek</translation>
+      <translation type="unfinished">Articles longer than this size will be collapsed</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1618"/>
@@ -4562,12 +4563,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/ui/preferences.ui" line="1641"/>
       <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>symbols</source>
-      <translation>nyşanlar</translation>
+      <translation type="unfinished">symbols</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="350"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Ctrl-Tab arkaly wkladkalary MRU tertipde nawigasiýa edilýär</translation>
+      <translation type="unfinished">Ctrl-Tab navigates tabs in MRU order</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="115"/>
@@ -4577,64 +4578,64 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1425"/>
       <source>History</source>
-      <translation>Geçmiş</translation>
+      <translation type="unfinished">History</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1431"/>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Şuny aç eger-de geçmişde terjime edilen sözleri ýatda saklajak bolsaň</translation>
+      <translation type="unfinished">Turn this option on to store history of the translated words</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1434"/>
       <source>Store &amp;history</source>
-      <translation>Saklanma &amp;geçmiş</translation>
+      <translation type="unfinished">Store &amp;history</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1612"/>
       <source>Articles</source>
-      <translation>makalalar</translation>
+      <translation type="unfinished">Articles</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="214"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>Şuny aç eger-de sözleri bir gezek myşka bilen basyp saýlamak isleseň</translation>
+      <translation type="unfinished">Turn this option on if you want to select words by single mouse click</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="217"/>
       <source>Select word by single click</source>
-      <translation>Sözleri bir gezek myşka bilen basyp saýlamak</translation>
+      <translation type="unfinished">Select word by single click</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="120"/>
       <source>Add-on style:</source>
-      <translation>Add-on stili:</translation>
+      <translation type="unfinished">Add-on style:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1449"/>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>Geçmişde iň köp saklanjak girizmeleriň sany.</translation>
+      <translation type="unfinished">Specify the maximum number of entries to keep in history.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1452"/>
       <source>Maximum history size:</source>
-      <translation>Geçmişiň maksimum sany:</translation>
+      <translation type="unfinished">Maximum history size:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1489"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Geçmişi ýatda saklanmagyň döwri. Eger 0 goýulsa, geçmiş diňe çykan wagty ýatda saklanar.</translation>
+      <translation type="unfinished">History saving interval. If set to 0 history will be saved only during exit.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1495"/>
       <location filename="../src/ui/preferences.ui" line="1561"/>
       <source>Save every</source>
-      <translation>Ýatda sakla her</translation>
+      <translation type="unfinished">Save every</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1512"/>
       <location filename="../src/ui/preferences.ui" line="1575"/>
       <source>minutes</source>
-      <translation>minut</translation>
+      <translation type="unfinished">minutes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="60"/>
@@ -4649,7 +4650,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="113"/>
       <source>Modern</source>
-      <translation>Häzirki zaman</translation>
+      <translation type="unfinished">Modern</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
@@ -4685,7 +4686,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1087"/>
       <source>Plain Text</source>
-      <translation>Düz tekst</translation>
+      <translation type="unfinished">Plain Text</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1089"/>
@@ -4695,12 +4696,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1091"/>
       <source>Prefix Match</source>
-      <translation>Prefiks gabat getirme</translation>
+      <translation type="unfinished">Prefix Match</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1093"/>
       <source>Unknown</source>
-      <translation>Näbelli</translation>
+      <translation type="unfinished">Unknown</translation>
     </message>
   </context>
   <context>
@@ -4708,17 +4709,17 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/programs.cc" line="182"/>
       <source>No program name was given.</source>
-      <translation>Hiç programma ady berilmedi.</translation>
+      <translation type="unfinished">No program name was given.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="198"/>
       <source>The program has crashed.</source>
-      <translation>Programma doňdy.</translation>
+      <translation type="unfinished">The program has crashed.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="201"/>
       <source>The program has returned exit code %1.</source>
-      <translation>Programma %1 çykyş koduny çykardy.</translation>
+      <translation type="unfinished">The program has returned exit code %1.</translation>
     </message>
   </context>
   <context>
@@ -4726,27 +4727,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="993"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="995"/>
       <source>Type</source>
-      <translation>Tip</translation>
+      <translation type="unfinished">Type</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="997"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="999"/>
       <source>Command Line</source>
-      <translation>Komanda setiri</translation>
+      <translation type="unfinished">Command Line</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1001"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -4755,13 +4756,13 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/dict/aard.cc" line="430"/>
       <location filename="../src/dict/dsl.cc" line="1698"/>
       <source>Article loading error</source>
-      <translation>Makala ýüklenende ýalňyşlyk ýüze çykdy</translation>
+      <translation type="unfinished">Article loading error</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="522"/>
       <location filename="../src/dict/slob.cc" line="801"/>
       <source>Article decoding error</source>
-      <translation>Makala dekodirlenen wagty ýalňyşlyk ýüze çykdy</translation>
+      <translation type="unfinished">Article decoding error</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
@@ -4780,37 +4781,37 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
-      <translation>avformat_alloc_context() bolmady.</translation>
+      <translation type="unfinished">avformat_alloc_context() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
-      <translation>av_malloc() bolmady.</translation>
+      <translation type="unfinished">av_malloc() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
-      <translation>avio_alloc_context() bolmady.</translation>
+      <translation type="unfinished">avio_alloc_context() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
-      <translation>avformat_open_input() bomady: %1.</translation>
+      <translation type="unfinished">avformat_open_input() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
-      <translation>avformat_find_stream_info() bolmady: %1.</translation>
+      <translation type="unfinished">avformat_find_stream_info() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="213"/>
       <source>Could not find audio stream.</source>
-      <translation>Audio akymy tapylmady.</translation>
+      <translation type="unfinished">Could not find audio stream.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="220"/>
       <source>Codec [id: %1] not found.</source>
-      <translation>Kodek [id: %1] tapylmady.</translation>
+      <translation type="unfinished">Codec [id: %1] not found.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="226"/>
@@ -4820,7 +4821,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
-      <translation>avcodec_open2() tapylmady: %1.</translation>
+      <translation type="unfinished">avcodec_open2() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="324"/>
@@ -4829,40 +4830,40 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Cannot find usable audio output device.</source>
-      <translation>Ulanyp boljak audio çykaryjy enjam tapylanok.</translation>
+      <translation type="unfinished">Cannot find usable audio output device.</translation>
     </message>
     <message>
       <source>Unsupported sample format.</source>
-      <translation>Nusga format näbelli.</translation>
+      <translation type="unfinished">Unsupported sample format.</translation>
     </message>
     <message>
       <source>ao_open_live() failed: </source>
-      <translation>ao_open_live() bolmady: </translation>
+      <translation type="unfinished">ao_open_live() failed: </translation>
     </message>
     <message>
       <source>No driver.</source>
-      <translation>Draýwer ýok.</translation>
+      <translation type="unfinished">No driver.</translation>
     </message>
     <message>
       <source>This driver is not a live output device.</source>
-      <translation>Bu draýwer janly çukaryş enjam däl.</translation>
+      <translation type="unfinished">This driver is not a live output device.</translation>
     </message>
     <message>
       <source>A valid option key has an invalid value.</source>
-      <translation>Dogry sazlama açaryň bahasy nädogry.</translation>
+      <translation type="unfinished">A valid option key has an invalid value.</translation>
     </message>
     <message>
       <source>Cannot open the device: %1, channels: %2, rate: %3, bits: %4.</source>
-      <translation>Şu enjamy açyp bolanok: %1, kanallar: %2, reýt: %3, bit: %4.</translation>
+      <translation type="unfinished">Cannot open the device: %1, channels: %2, rate: %3, bits: %4.</translation>
     </message>
     <message>
       <source>Unknown error.</source>
-      <translation>Näbelli ýalňyşlyk.</translation>
+      <translation type="unfinished">Unknown error.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
-      <translation>avcodec_alloc_frame() bolmady.</translation>
+      <translation type="unfinished">avcodec_alloc_frame() failed.</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
@@ -4940,16 +4941,16 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1019"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation>Sözlük gözlegi/filtri  (Ctrl+F)</translation>
+      <translation type="unfinished">Dictionary search/filter (Ctrl+F)</translation>
     </message>
     <message>
       <source>Quick Search</source>
-      <translation>Tiz gözleg</translation>
+      <translation type="unfinished">Quick Search</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1024"/>
       <source>Clear Search</source>
-      <translation>Gözlegi arassala</translation>
+      <translation type="unfinished">Clear Search</translation>
     </message>
   </context>
   <context>
@@ -4957,22 +4958,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/articleview.cc" line="2709"/>
       <source>ERROR: %1</source>
-      <translation>ÝALŇYŞLYK: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2709"/>
       <source>Resource saving error: </source>
-      <translation>Çeşmäni ýatda saklamagyň ýalňyşlygy:</translation>
+      <translation type="unfinished">Resource saving error: </translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2735"/>
       <source>The referenced resource failed to download.</source>
-      <translation>Salgylanýan çeşmäni ýükläp almak bolmady.</translation>
+      <translation type="unfinished">The referenced resource failed to download.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2735"/>
       <source>WARNING: %1</source>
-      <translation>ÄGÄ BOLUŇ %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
   </context>
   <context>
@@ -4980,12 +4981,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/romaji.cc" line="117"/>
       <source>Hepburn Romaji for Katakana</source>
-      <translation>Katakana üçin Hepburn Romaji</translation>
+      <translation type="unfinished">Hepburn Romaji for Katakana</translation>
     </message>
     <message>
       <location filename="../src/dict/romaji.cc" line="108"/>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>Hiragana üçin Hepburn Romaji </translation>
+      <translation type="unfinished">Hepburn Romaji for Hiragana</translation>
     </message>
   </context>
   <context>
@@ -4993,7 +4994,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/russiantranslit.cc" line="107"/>
       <source>Russian Transliteration</source>
-      <translation>Rus transliterasiýa</translation>
+      <translation type="unfinished">Russian Transliteration</translation>
     </message>
   </context>
   <context>
@@ -5027,7 +5028,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="141"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Sözi eşitdirmek (Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="178"/>
@@ -5037,7 +5038,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="208"/>
       <source>Shows or hides the dictionary bar</source>
-      <translation>Sözlük zolagy görkezýär ýa-da gizleýär</translation>
+      <translation type="unfinished">Shows or hides the dictionary bar</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="231"/>
@@ -5054,7 +5055,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="161"/>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Sözi baş penjirä iber (Alt+W)</translation>
+      <translation type="unfinished">Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="171"/>
@@ -5064,12 +5065,12 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
       <source>Back</source>
-      <translation>Yza gaýt</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="127"/>
       <source>Forward</source>
-      <translation>Öňe geç</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="598"/>
@@ -5111,17 +5112,17 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1285"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1283"/>
       <source>Path</source>
-      <translation>Ýol</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1287"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5129,7 +5130,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="40"/>
       <source>Files</source>
-      <translation>Faýllar</translation>
+      <translation type="unfinished">Files</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="813"/>
@@ -5139,7 +5140,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="753"/>
       <source>Systems:</source>
-      <translation>Sistemalar:</translation>
+      <translation type="unfinished">Systems:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="780"/>
@@ -5151,7 +5152,7 @@ could be resized or managed in other ways.</translation>
       <location filename="../src/dict/sources.cc" line="283"/>
       <location filename="../src/dict/sources.cc" line="307"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; saýty sanawdan aýyrmalymy?</translation>
+      <translation type="unfinished">Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="227"/>
@@ -5161,23 +5162,23 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="820"/>
       <source>Katakana Japanese syllabary</source>
-      <translation>Katakana ýapon bogunlaryň elipbiýi</translation>
+      <translation type="unfinished">Katakana Japanese syllabary</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="109"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>Birtopar  audiofaýllardan sözlýkleri ýasamak üçin şu ýerde ýollaryny görkez:</translation>
+      <translation type="unfinished">Make dictionaries from bunches of audiofiles by adding paths here:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="192"/>
       <location filename="../src/dict/sources.cc" line="219"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; bukjasyny sanawdan aýyrmalymy?</translation>
+      <translation type="unfinished">Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="741"/>
       <source>Japanese Romaji</source>
-      <translation>Ýapon romaji</translation>
+      <translation type="unfinished">Japanese Romaji</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="790"/>
@@ -5185,20 +5186,20 @@ could be resized or managed in other ways.</translation>
 Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation>Nihon-şiki sistemasyna esaslanýar, ýöne häzirki zaman adaty Ýapon dili üçin üýtgedilen görnüşindedir.
-ISO 3602 boýunça standartlaşdyrlan.
+      <translation type="unfinished">Based on Nihon-shiki system, but modified for modern standard Japanese.
+Standardized as ISO 3602
 
-Entek GoldenDict-de edilmedik.</translation>
+Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="233"/>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>Wikipedia (MediaWiki) saýtlary:</translation>
+      <translation type="unfinished">Wikipedia (MediaWiki) sites:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="103"/>
       <source>Sound Dirs</source>
-      <translation>Sesli bukjalar</translation>
+      <translation type="unfinished">Sound Dirs</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
@@ -5248,17 +5249,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <location filename="../src/ui/sources.ui" line="760"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
-      <translation> Ýapon diliniň iňlis fonologiýasynda iň köp ulanylýan transkripsiýa usuly. </translation>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,
+based on English phonology</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="810"/>
       <source>Hiragana Japanese syllabary</source>
-      <translation>Hiragana ýapon bogunlaryň elipbiýi</translation>
+      <translation type="unfinished">Hiragana Japanese syllabary</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
       <source>Transliteration</source>
-      <translation>Transliterasiýa</translation>
+      <translation type="unfinished">Transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="774"/>
@@ -5266,24 +5268,25 @@ based on English phonology</source>
 kana writing systems. Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation> Iň tertipli sistemasy, kana ýazylyş sistemalara brimeňzeşlik gatnaşygy bar. ISO 3602 boýunça standartlaşdyrlan.
+      <translation type="unfinished">The most regular system, having a one-to-one relation to the
+kana writing systems. Standardized as ISO 3602
 
-Entek GoldenDict-de edilmedik.</translation>
+Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="703"/>
       <source>Russian transliteration</source>
-      <translation>Rus transliterasiýa</translation>
+      <translation type="unfinished">Russian transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="159"/>
       <source>Morphology</source>
-      <translation>Morfologiýa</translation>
+      <translation type="unfinished">Morphology</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="181"/>
       <source>&amp;Change...</source>
-      <translation>&amp;Özgertmek...</translation>
+      <translation type="unfinished">&amp;Change...</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
@@ -5293,22 +5296,22 @@ Entek GoldenDict-de edilmedik.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="165"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>Hunspell/Myspell sözlükli bukjalar ýol:</translation>
+      <translation type="unfinished">Path to a directory with Hunspell/Myspell dictionaries:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="87"/>
       <source>Re&amp;scan now</source>
-      <translation>Şu wagt &amp;gaýtadan skanerle</translation>
+      <translation type="unfinished">Re&amp;scan now</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="714"/>
       <source>German transliteration</source>
-      <translation>Nemes transliterasiýa</translation>
+      <translation type="unfinished">German transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="292"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Islendik websaýt %GDWORD% setiri soralýan söz bilen çalşyrylar:</translation>
+      <translation type="unfinished">Any websites. A string %GDWORD% will be replaced with the query word:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="60"/>
@@ -5318,14 +5321,14 @@ Entek GoldenDict-de edilmedik.</translation>
       <location filename="../src/ui/sources.ui" line="370"/>
       <location filename="../src/ui/sources.ui" line="429"/>
       <source>&amp;Add...</source>
-      <translation>&amp;Goşmak...</translation>
+      <translation type="unfinished">&amp;Add...</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="177"/>
       <location filename="../src/dict/sources.cc" line="204"/>
       <location filename="../src/dict/sources.cc" line="231"/>
       <source>Choose a directory</source>
-      <translation>Bukjany saýla</translation>
+      <translation type="unfinished">Choose a directory</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="67"/>
@@ -5335,17 +5338,17 @@ Entek GoldenDict-de edilmedik.</translation>
       <location filename="../src/ui/sources.ui" line="377"/>
       <location filename="../src/ui/sources.ui" line="436"/>
       <source>&amp;Remove</source>
-      <translation>&amp;Aýyr</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="286"/>
       <source>Websites</source>
-      <translation>Websaýtlar</translation>
+      <translation type="unfinished">Websites</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="46"/>
       <source>Paths to search for the dictionary files:</source>
-      <translation>Sözlük faýllary gözlemegiň ýollary:</translation>
+      <translation type="unfinished">Paths to search for the dictionary files:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="191"/>
@@ -5355,22 +5358,22 @@ Entek GoldenDict-de edilmedik.</translation>
       <location filename="../src/dict/sources.cc" line="306"/>
       <location filename="../src/dict/sources.cc" line="330"/>
       <source>Confirm removal</source>
-      <translation>Aýyrmagy tassykla</translation>
+      <translation type="unfinished">Confirm removal</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="803"/>
       <source>Syllabaries:</source>
-      <translation>Bogunlaryň elipbiýi:</translation>
+      <translation type="unfinished">Syllabaries:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="190"/>
       <source>Available morphology dictionaries:</source>
-      <translation>Bar bolan morfologiýa sözlükler:</translation>
+      <translation type="unfinished">Available morphology dictionaries:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="738"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>Ýapon dilinde ýazan mahalynda latin harplary ulanmaga rugsat berýär</translation>
+      <translation type="unfinished">Enables to use the Latin alphabet to write the Japanese language</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="202"/>
@@ -5380,10 +5383,12 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation>Her morfologiýa sözlügi aýry bir goşmaça sözlük ýaly 
-görkezilip gözleg üçin esasy sözleri üpjün edýär 
-we ýalňyş ýazylan sözler üçin dogrylary hödürleýär. 
-Laýyk gelýän sözlükleri degişli toparlaryň aşagyna goşup ulan.</translation>
+      <translation type="unfinished">Each morphology dictionary appears as a
+separate auxiliary dictionary which
+provides stem words for searches and
+spelling suggestions for mistyped words.
+Add appropriate dictionaries to the bottoms
+of the appropriate groups to use them.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="764"/>
@@ -5412,84 +5417,86 @@ Laýyk gelýän sözlükleri degişli toparlaryň aşagyna goşup ulan.</transla
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
-      <translation>Islendik daşky programma. Setir %GDWORD% gözlenýän sözi bilen çalşyryljak. Eger şeýle setir berilmese, şol söz standart girizmä geçiriler.</translation>
+      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="545"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation>Janly aýdylyşy şu ýerden alynýar -  &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Bu websaýt adamlar üçin sözleriň aýdyşyny ýazga geçirmäge we paýlaşmaga mümkinçilik berýär. Olary GoldenDict arkaly diňläp bolýar.</translation>
+      <translation type="unfinished">Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="558"/>
       <source>Enable pronunciations from Forvo</source>
-      <translation>Forvo-dan aýdyşyny aç</translation>
+      <translation type="unfinished">Enable pronunciations from Forvo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
-      <translation>API açary:</translation>
+      <translation type="unfinished">API Key:</translation>
     </message>
     <message>
       <source>Use of Forvo currently requires an API key. Leave this field
 blank to use the default key, which may become unavailable
 in the future, or register on the site to get your own key.</source>
-      <translation>Forvo häzirki wagtda API açary talap edýär. Özüň üçin täze açary almak üçin, websaýtda hasaba durmak gerek. Eger başdaky berlen açary ulanmak isleseň, şu meýdançany boş galdyr. Ýone başdaky berlen açar wagtyň geçmegi bilen ýiter.</translation>
+      <translation type="unfinished">Use of Forvo currently requires an API key. Leave this field
+blank to use the default key, which may become unavailable
+in the future, or register on the site to get your own key.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
       <source>Language codes (comma-separated):</source>
-      <translation>Dil kodlary (otur bilen bölünen):</translation>
+      <translation type="unfinished">Language codes (comma-separated):</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="625"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation>Almak isleýän dil kodlarynyň sanawy: Mysal: &quot;en, ru&quot;.</translation>
+      <translation type="unfinished">List of language codes you would like to have. Example: &quot;en, ru&quot;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="648"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation>Dil kodlarynyň doly sanawy bar &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</translation>
+      <translation type="unfinished">Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="692"/>
       <source>Greek transliteration</source>
-      <translation>Grek transliterasiýa</translation>
+      <translation type="unfinished">Greek transliteration</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="140"/>
       <source>(not available in portable version)</source>
-      <translation>(ykjam/portable wersiýada elýeterli däl)</translation>
+      <translation type="unfinished">(not available in portable version)</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="406"/>
       <source>Programs</source>
-      <translation>Programmalar</translation>
+      <translation type="unfinished">Programs</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="331"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; programmany sanawdan aýyrmalymy?</translation>
+      <translation type="unfinished">Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="725"/>
       <source>Belarusian transliteration</source>
-      <translation>Belarus transliterasiýa</translation>
+      <translation type="unfinished">Belarusian transliteration</translation>
     </message>
     <message>
       <source>Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</source>
-      <translation>Öz açaryňy &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;şu ýerden al&lt;/a&gt;, ýa-da, başdaky açary ulanmak üçin, boş goý.</translation>
+      <translation type="unfinished">Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="337"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Ýogsam, degişlilikde ulan %GD1251% -  CP1251 üçin, %GDISO1%...%GDISO16% -  ISO 8859-1...ISO 8859-16 üçin,
-%GDBIG5% - Big-5 üçin, %GDBIG5HKSCS% - Big5-HKSCS üçin, %GDGBK% - GBK and GB18030 üçin, %GDSHIFTJIS% - Shift-JIS üçin.</translation>
+      <translation type="unfinished">Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
+%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="125"/>
       <source>Text to Speech</source>
-      <translation>Teksti gürläp aýtdyrmak</translation>
+      <translation type="unfinished">Text to Speech</translation>
     </message>
   </context>
   <context>
@@ -5497,7 +5504,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/ui/stylescombobox.cc" line="17"/>
       <source>None</source>
-      <translation>Hiç birisi</translation>
+      <translation type="unfinished">None</translation>
     </message>
   </context>
   <context>
@@ -5505,77 +5512,77 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="20"/>
       <source>Selected voice engines:</source>
-      <translation>Saýlanan ses gurallary:</translation>
+      <translation type="unfinished">Selected voice engines:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="40"/>
       <source>&amp;Add</source>
-      <translation>&amp;Goş</translation>
+      <translation type="unfinished">&amp;Add</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="47"/>
       <source>&amp;Remove</source>
-      <translation>&amp;Aýyr</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="147"/>
       <source>Preview</source>
-      <translation>Öňünden barlamak</translation>
+      <translation type="unfinished">Preview</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="161"/>
       <source>Available voice engines:</source>
-      <translation>Bar bolan ses gurallary:</translation>
+      <translation type="unfinished">Available voice engines:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="179"/>
       <source>Text to be previewed:</source>
-      <translation>Öňünden görüljek tekst:</translation>
+      <translation type="unfinished">Text to be previewed:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="186"/>
       <source>Type text to be previewed here.</source>
-      <translation>Öňünden görüljek teksti şu ýerden giriz.</translation>
+      <translation type="unfinished">Type text to be previewed here.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="220"/>
       <source>&amp;Preview</source>
-      <translation>&amp;Öňünden görmek</translation>
+      <translation type="unfinished">&amp;Preview</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="79"/>
       <source>No TTS voice available</source>
-      <translation>TTS ses ýok</translation>
+      <translation type="unfinished">No TTS voice available</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="110"/>
       <source>Confirm removal</source>
-      <translation>Aýyrmagy tassykla</translation>
+      <translation type="unfinished">Confirm removal</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="111"/>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Ses &lt;b&gt;%1&lt;/b&gt; guraly sanawdan  aýyrmalymy?</translation>
+      <translation type="unfinished">Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="80"/>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>TTS ses tapylanok.&lt;br&gt; TTS gurallaryň azyndan biri kompýuterde gurnalandygyny barlaň.</translation>
+      <translation type="unfinished">Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="71"/>
       <source>Preferences</source>
-      <translation>Saýlamalar</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="77"/>
       <source>Volume:</source>
-      <translation>Sesiň güýçlüligi:</translation>
+      <translation type="unfinished">Volume:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="106"/>
       <source>Rate:</source>
-      <translation>Derejesi:</translation>
+      <translation type="unfinished">Rate:</translation>
     </message>
   </context>
   <context>
@@ -5583,12 +5590,12 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/ui/translatebox.cc" line="108"/>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation>Sözlükleri ýa-da söz düzümleri gözlemek üçin söz giriz</translation>
+      <translation type="unfinished">Type a word or phrase to search dictionaries</translation>
     </message>
     <message>
       <location filename="../src/ui/translatebox.cc" line="120"/>
       <source>Drop-down</source>
-      <translation>Gaçyrma</translation>
+      <translation type="unfinished">Drop-down</translation>
     </message>
   </context>
   <context>
@@ -5596,12 +5603,12 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/texttospeechsource.cc" line="280"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="282"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
@@ -5611,7 +5618,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5619,17 +5626,17 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/dict/sources.cc" line="644"/>
       <source>Name</source>
-      <translation>Ady</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="646"/>
       <source>Address</source>
-      <translation>Adres</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="640"/>
       <source>Enabled</source>
-      <translation>Işledilen</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="631"/>
@@ -5645,7 +5652,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/dict/sources.cc" line="648"/>
       <source>Icon</source>
-      <translation>Nyşan</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5653,7 +5660,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/wordfinder.cc" line="201"/>
       <source>Failed to query some dictionaries.</source>
-      <translation>Käbir sözlükleri tapyp bolmady.</translation>
+      <translation type="unfinished">Failed to query some dictionaries.</translation>
     </message>
   </context>
   <context>
@@ -5661,7 +5668,7 @@ in the future, or register on the site to get your own key.</source>
     <message>
       <location filename="../src/wordlist.cc" line="82"/>
       <source>WARNING: %1</source>
-      <translation>ÄGÄ BOLUŇ %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
   </context>
 </TS>
