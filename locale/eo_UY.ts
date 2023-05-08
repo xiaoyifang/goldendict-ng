@@ -6,17 +6,17 @@
     <message>
       <location filename="../src/ui/about.ui" line="17"/>
       <source>About</source>
-      <translation>Pri</translation>
+      <translation type="unfinished">About</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="66"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>La vortaro-programo GoldenDict, versio </translation>
+      <translation type="unfinished">GoldenDict-ng dictionary lookup program, version </translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="101"/>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Disponebla laŭ la permesilo GNU GPLv3 kaj poste</translation>
+      <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
@@ -31,17 +31,17 @@
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
       <source>Credits:</source>
-      <translation>Kontribuantoj:</translation>
+      <translation type="unfinished">Credits:</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="20"/>
       <source>[Unknown]</source>
-      <translation>[Nekonata]</translation>
+      <translation type="unfinished">[Unknown]</translation>
     </message>
     <message>
       <location filename="../src/ui/about.cc" line="35"/>
       <source>Based on Qt %1 (%2, %3 bit)</source>
-      <translation>Bazita sur Qt %1 (%2, %3-bita)</translation>
+      <translation type="unfinished">Based on Qt %1 (%2, %3 bit)</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="91"/>
@@ -97,17 +97,17 @@
     <message>
       <location filename="../src/article_maker.cc" line="145"/>
       <source>Expand article</source>
-      <translation>Etendi artikolon</translation>
+      <translation type="unfinished">Expand article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="145"/>
       <source>Collapse article</source>
-      <translation>Maletendi artikolon</translation>
+      <translation type="unfinished">Collapse article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="234"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Neniu traduko por &lt;b&gt;%1&lt;/b&gt; estis trovita en grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation type="unfinished">No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
@@ -117,12 +117,12 @@
     <message>
       <location filename="../src/article_maker.cc" line="394"/>
       <source>(untitled)</source>
-      <translation>(sentitola)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="286"/>
       <source>Welcome!</source>
-      <translation>Bonvenon!</translation>
+      <translation type="unfinished">Welcome!</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="316"/>
@@ -132,7 +132,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="238"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>Neniu traduko estis trovita en grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation type="unfinished">No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="288"/>
@@ -142,7 +142,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="406"/>
       <source>(picture)</source>
-      <translation>(bildo)</translation>
+      <translation type="unfinished">(picture)</translation>
     </message>
   </context>
   <context>
@@ -150,17 +150,17 @@
     <message>
       <location filename="../src/article_maker.cc" line="674"/>
       <source>Expand article</source>
-      <translation>Etendi artikolon</translation>
+      <translation type="unfinished">Expand article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="675"/>
       <source>From </source>
-      <translation>El </translation>
+      <translation type="unfinished">From </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="678"/>
       <source>Collapse article</source>
-      <translation>Maletendi artikolon</translation>
+      <translation type="unfinished">Collapse article</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="693"/>
@@ -170,22 +170,22 @@
     <message>
       <location filename="../src/article_maker.cc" line="706"/>
       <source>Query error: %1</source>
-      <translation>Informpeta eraro: %1</translation>
+      <translation type="unfinished">Query error: %1</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="830"/>
       <source>Close words: </source>
-      <translation>Proksimaj vortoj: </translation>
+      <translation type="unfinished">Close words: </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="897"/>
       <source>Compound expressions: </source>
-      <translation>Kompundaj esprimoj: </translation>
+      <translation type="unfinished">Compound expressions: </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="925"/>
       <source>Individual words: </source>
-      <translation>Apartaj vortoj: </translation>
+      <translation type="unfinished">Individual words: </translation>
     </message>
   </context>
   <context>
@@ -196,15 +196,15 @@
     </message>
     <message>
       <source>Form</source>
-      <translation>Formularo</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Sekva</translation>
+      <translation type="unfinished">&amp;Next</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>Serĉi:</translation>
+      <translation type="unfinished">Find:</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
@@ -230,7 +230,7 @@
     </message>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Antaŭa</translation>
+      <translation type="unfinished">&amp;Previous</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1815"/>
@@ -245,11 +245,11 @@
     </message>
     <message>
       <source>&amp;Open Link</source>
-      <translation>&amp;Malfermi ligilon</translation>
+      <translation type="unfinished">&amp;Open Link</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Usklecodistinga</translation>
+      <translation type="unfinished">&amp;Case Sensitive</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2107"/>
@@ -264,17 +264,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="332"/>
       <source>Select Current Article</source>
-      <translation>Elekti aktualan artikolon</translation>
+      <translation type="unfinished">Select Current Article</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="337"/>
       <source>Copy as text</source>
-      <translation>Kopii kiel teksto</translation>
+      <translation type="unfinished">Copy as text</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="342"/>
       <source>Inspect</source>
-      <translation>Inspekti</translation>
+      <translation type="unfinished">Inspect</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1849"/>
@@ -284,21 +284,21 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1759"/>
       <source>Open Link in New &amp;Tab</source>
-      <translation>Malfermi ligilon en nova &amp;tabo</translation>
+      <translation type="unfinished">Open Link in New &amp;Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1766"/>
       <source>Open Link in &amp;External Browser</source>
-      <translation>Malfermi ligilon en &amp;ekstera retumilo</translation>
+      <translation type="unfinished">Open Link in &amp;External Browser</translation>
     </message>
     <message>
       <source>Highlight &amp;all</source>
-      <translation>Emfazi ĉi&amp;ujn</translation>
+      <translation type="unfinished">Highlight &amp;all</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1004"/>
       <source>Resource</source>
-      <translation>Risurco</translation>
+      <translation type="unfinished">Resource</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1009"/>
@@ -308,12 +308,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1014"/>
       <source>TTS Voice</source>
-      <translation>Parolsintezo</translation>
+      <translation type="unfinished">TTS Voice</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1019"/>
       <source>Picture</source>
-      <translation>Bildo</translation>
+      <translation type="unfinished">Picture</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1026"/>
@@ -329,12 +329,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1052"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>Difino el vortaro &quot;%1&quot;: %2</translation>
+      <translation type="unfinished">Definition from dictionary &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1060"/>
       <source>Definition: %1</source>
-      <translation>Difino: %1</translation>
+      <translation type="unfinished">Definition: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1406"/>
@@ -369,7 +369,7 @@
       <location filename="../src/ui/articleview.cc" line="1327"/>
       <location filename="../src/ui/articleview.cc" line="1551"/>
       <source>ERROR: %1</source>
-      <translation>ERARO: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2009"/>
@@ -379,17 +379,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2024"/>
       <source>Save image</source>
-      <translation>Konservi bildon</translation>
+      <translation type="unfinished">Save image</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2026"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Bildodosieroj (*.bmp *.jpg *.png *.tif);;Ĉiuj dosieroj (*.*)</translation>
+      <translation type="unfinished">Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1782"/>
       <source>Save &amp;image...</source>
-      <translation>Konservi &amp;bildon...</translation>
+      <translation type="unfinished">Save &amp;image...</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="199"/>
@@ -404,7 +404,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1789"/>
       <source>Save s&amp;ound...</source>
-      <translation>Konservi s&amp;onon...</translation>
+      <translation type="unfinished">Save s&amp;ound...</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1820"/>
@@ -439,7 +439,7 @@
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVERTO: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
@@ -545,12 +545,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/authentication.ui" line="30"/>
       <source>Username:</source>
-      <translation>Uzantnomo:</translation>
+      <translation type="unfinished">Username:</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="40"/>
       <source>Password:</source>
-      <translation>Pasvorto:</translation>
+      <translation type="unfinished">Password:</translation>
     </message>
   </context>
   <context>
@@ -558,17 +558,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
       <source>Form</source>
-      <translation>Formularo</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
       <source>Group icon:</source>
-      <translation>Grupon bildsimbolo:</translation>
+      <translation type="unfinished">Group icon:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
       <source>Shortcut:</source>
-      <translation>Fulmoklavo:</translation>
+      <translation type="unfinished">Shortcut:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
@@ -578,12 +578,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
       <source>None</source>
-      <translation>Nenio</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="50"/>
       <source>From file...</source>
-      <translation>El dosiero...</translation>
+      <translation type="unfinished">From file...</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="96"/>
@@ -593,17 +593,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="98"/>
       <source>Images</source>
-      <translation>Bildoj</translation>
+      <translation type="unfinished">Images</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="99"/>
       <source>All files</source>
-      <translation>Ĉiuj dosieroj</translation>
+      <translation type="unfinished">All files</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Error</source>
-      <translation>Eraro</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
@@ -616,7 +616,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
       <source>Confirmation</source>
-      <translation>Konfirmo</translation>
+      <translation type="unfinished">Confirmation</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="692"/>
@@ -670,12 +670,12 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/groups_widgets.cc" line="835"/>
       <location filename="../src/ui/groups_widgets.cc" line="1010"/>
       <source>Dictionaries: </source>
-      <translation>Vortaroj: </translation>
+      <translation type="unfinished">Dictionaries: </translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="717"/>
       <source>Unassigned</source>
-      <translation>Neatribuita</translation>
+      <translation type="unfinished">Unassigned</translation>
     </message>
   </context>
   <context>
@@ -683,7 +683,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="67"/>
       <source>Search mode</source>
-      <translation>Serĉreĝimo</translation>
+      <translation type="unfinished">Search mode</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="73"/>
@@ -698,7 +698,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="83"/>
       <source>Match case</source>
-      <translation>Atenti usklecon</translation>
+      <translation type="unfinished">Match case</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="93"/>
@@ -708,12 +708,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="96"/>
       <source>Export</source>
-      <translation>Eksporto</translation>
+      <translation type="unfinished">Export</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="119"/>
       <source>Help</source>
-      <translation>Helpo</translation>
+      <translation type="unfinished">Help</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="129"/>
@@ -728,7 +728,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="38"/>
       <source>Apply</source>
-      <translation>Apliki</translation>
+      <translation type="unfinished">Apply</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="22"/>
@@ -743,7 +743,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="58"/>
       <source>Filter:</source>
-      <translation>Filtrilo:</translation>
+      <translation type="unfinished">Filter:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="51"/>
@@ -753,17 +753,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="43"/>
       <source>Text</source>
-      <translation>Teksto</translation>
+      <translation type="unfinished">Text</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>Wildcards</source>
-      <translation>Ĵokeroj</translation>
+      <translation type="unfinished">Wildcards</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="45"/>
       <source>RegExp</source>
-      <translation>RegEsp</translation>
+      <translation type="unfinished">RegExp</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="266"/>
@@ -778,7 +778,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="284"/>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Tekstaj dosieroj (*.txt);;Ĉiuj dosieroj (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="292"/>
@@ -793,7 +793,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="303"/>
       <source>Cancel</source>
-      <translation>Rezigni</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="367"/>
@@ -811,32 +811,32 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="83"/>
       <source>Total articles:</source>
-      <translation>Tuta artikoloj:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="52"/>
       <source>Translates from:</source>
-      <translation>Traduki el:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="59"/>
       <source>Total words:</source>
-      <translation>Tuta vortoj:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="66"/>
       <source>Translates to:</source>
-      <translation>Traduki en:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="36"/>
       <source>Open folder</source>
-      <translation>Malfermi dosierujon</translation>
+      <translation type="unfinished">Open folder</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="76"/>
       <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="130"/>
@@ -846,7 +846,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="174"/>
       <source>Description:</source>
-      <translation>Priskribo:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="196"/>
@@ -871,7 +871,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="243"/>
       <source>%1 entries</source>
-      <translation>%1 artikoloj</translation>
+      <translation type="unfinished">%1 entries</translation>
     </message>
   </context>
   <context>
@@ -879,12 +879,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/dictserver.cc" line="274"/>
       <source>Url: </source>
-      <translation>Url:</translation>
+      <translation type="unfinished">Url: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Databases: </source>
-      <translation>Datumbazoj:</translation>
+      <translation type="unfinished">Databases: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="276"/>
@@ -902,32 +902,32 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="817"/>
       <source>Enabled</source>
-      <translation>Ŝaltita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="819"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="821"/>
       <source>Address</source>
-      <translation>Adreso</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="823"/>
       <source>Databases</source>
-      <translation>Datumbazoj</translation>
+      <translation type="unfinished">Databases</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="825"/>
       <source>Strategies</source>
-      <translation>Strategioj</translation>
+      <translation type="unfinished">Strategies</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="827"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="860"/>
@@ -974,7 +974,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="134"/>
       <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="14"/>
@@ -988,22 +988,22 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/editdictionaries.cc" line="47"/>
       <location filename="../src/ui/editdictionaries.cc" line="248"/>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;Vortaroj</translation>
+      <translation type="unfinished">&amp;Dictionaries</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.ui" line="14"/>
       <source>Dictionaries</source>
-      <translation>Vortaroj</translation>
+      <translation type="unfinished">Dictionaries</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Accept</source>
-      <translation>Akcepti</translation>
+      <translation type="unfinished">Accept</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="133"/>
       <source>Cancel</source>
-      <translation>Rezigni</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="127"/>
@@ -1019,7 +1019,7 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/editdictionaries.cc" line="48"/>
       <location filename="../src/ui/editdictionaries.cc" line="250"/>
       <source>&amp;Groups</source>
-      <translation>&amp;Grupoj</translation>
+      <translation type="unfinished">&amp;Groups</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="128"/>
@@ -1053,7 +1053,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>Full-text search</source>
-      <translation>Plenteksta serĉo</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1063,17 +1063,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="244"/>
       <source>Plain text</source>
-      <translation>Plata teksto</translation>
+      <translation type="unfinished">Plain text</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>Wildcards</source>
-      <translation>Ĵokeroj</translation>
+      <translation type="unfinished">Wildcards</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="247"/>
       <source>RegExp</source>
-      <translation>RegEsp</translation>
+      <translation type="unfinished">RegExp</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="257"/>
@@ -1106,7 +1106,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="395"/>
       <source>None</source>
-      <translation>Nenio</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
@@ -1169,12 +1169,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/forvo.cc" line="194"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-analizeraro: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="270"/>
       <source>Added %1</source>
-      <translation>Aldonita %1</translation>
+      <translation type="unfinished">Added %1</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="273"/>
@@ -1184,17 +1184,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Male</source>
-      <translation>Viro</translation>
+      <translation type="unfinished">Male</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="277"/>
       <source>Female</source>
-      <translation>Virino</translation>
+      <translation type="unfinished">Female</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="279"/>
       <source>from</source>
-      <translation>el</translation>
+      <translation type="unfinished">from</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="317"/>
@@ -1221,17 +1221,17 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/fulltextsearch.ui" line="26"/>
       <location filename="../src/ui/fulltextsearch.ui" line="206"/>
       <source>Search</source>
-      <translation>Serĉi</translation>
+      <translation type="unfinished">Search</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="60"/>
       <source>Match case</source>
-      <translation>Atenti usklecon</translation>
+      <translation type="unfinished">Match case</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="37"/>
       <source>Mode:</source>
-      <translation>Reĝimo:</translation>
+      <translation type="unfinished">Mode:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="81"/>
@@ -1261,7 +1261,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="252"/>
       <source>Help</source>
-      <translation>Helpo</translation>
+      <translation type="unfinished">Help</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="160"/>
@@ -1271,7 +1271,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="167"/>
       <source>Indexed:</source>
-      <translation>Indeksita:</translation>
+      <translation type="unfinished">Indexed:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="184"/>
@@ -1281,7 +1281,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
       <source>Cancel</source>
-      <translation>Rezigni</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
   </context>
   <context>
@@ -1289,7 +1289,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/german.cc" line="48"/>
       <source>German Transliteration</source>
-      <translation>Germana transliterado</translation>
+      <translation type="unfinished">German Transliteration</translation>
     </message>
   </context>
   <context>
@@ -1297,7 +1297,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/greektranslit.cc" line="839"/>
       <source>Greek Transliteration</source>
-      <translation>Greka transliterado</translation>
+      <translation type="unfinished">Greek Transliteration</translation>
     </message>
   </context>
   <context>
@@ -1305,7 +1305,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groupcombobox.cc" line="14"/>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Elekti grupon (Alt+G)</translation>
+      <translation type="unfinished">Choose a Group (Alt+G)</translation>
     </message>
   </context>
   <context>
@@ -1358,12 +1358,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.cc" line="148"/>
       <source>Remove group</source>
-      <translation>Forigi grupon</translation>
+      <translation type="unfinished">Remove group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="136"/>
       <source>Rename group</source>
-      <translation>Renomi grupon</translation>
+      <translation type="unfinished">Rename group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="137"/>
@@ -1378,12 +1378,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="146"/>
       <source>&amp;Add group</source>
-      <translation>&amp;Aldoni grupon</translation>
+      <translation type="unfinished">&amp;Add group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="110"/>
       <source>Add group</source>
-      <translation>Aldoni grupon</translation>
+      <translation type="unfinished">Add group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="143"/>
@@ -1414,7 +1414,7 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/groups.ui" line="186"/>
       <location filename="../src/ui/groups.cc" line="161"/>
       <source>Remove all groups</source>
-      <translation>Forigi ĉiujn grupojn</translation>
+      <translation type="unfinished">Remove all groups</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="89"/>
@@ -1429,17 +1429,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="176"/>
       <source>&amp;Remove group</source>
-      <translation>&amp;Forigi grupon</translation>
+      <translation type="unfinished">&amp;Remove group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="119"/>
       <source>Groups:</source>
-      <translation>Grupoj:</translation>
+      <translation type="unfinished">Groups:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="166"/>
       <source>Re&amp;name group</source>
-      <translation>Re&amp;nomi grupon</translation>
+      <translation type="unfinished">Re&amp;name group</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="183"/>
@@ -1461,39 +1461,39 @@ between classic and school orthography in cyrillic)</translation>
     <name>Help::HelpWindow</name>
     <message>
       <source>GoldenDict help</source>
-      <translation>GoldenDict-helpo</translation>
+      <translation type="unfinished">GoldenDict help</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation>Hejmo</translation>
+      <translation type="unfinished">Home</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>Malantaŭen</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Antaŭen</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>Zomi</translation>
+      <translation type="unfinished">Zoom In</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>Malzomi</translation>
+      <translation type="unfinished">Zoom Out</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>Normala grandeco</translation>
+      <translation type="unfinished">Normal Size</translation>
     </message>
     <message>
       <source>Content</source>
-      <translation>Enhavo</translation>
+      <translation type="unfinished">Content</translation>
     </message>
     <message>
       <source>Index</source>
-      <translation>Indekso</translation>
+      <translation type="unfinished">Index</translation>
     </message>
   </context>
   <context>
@@ -1511,7 +1511,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="46"/>
       <source>History:</source>
-      <translation>Historio:</translation>
+      <translation type="unfinished">History:</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
@@ -1534,7 +1534,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/hunspell.cc" line="856"/>
       <source>%1 Morphology</source>
-      <translation>%1 Morfologio</translation>
+      <translation type="unfinished">%1 Morphology</translation>
     </message>
   </context>
   <context>
@@ -1542,12 +1542,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1398"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1396"/>
       <source>Enabled</source>
-      <translation>Ŝaltita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
   </context>
   <context>
@@ -1555,7 +1555,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/initializing.ui" line="44"/>
       <source>Dictionary Name</source>
-      <translation>Nomo de vortaro</translation>
+      <translation type="unfinished">Dictionary Name</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="22"/>
@@ -1571,7 +1571,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/initializing.cc" line="22"/>
       <source>Please wait...</source>
-      <translation>Atendu...</translation>
+      <translation type="unfinished">Please wait...</translation>
     </message>
   </context>
   <context>
@@ -1579,7 +1579,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="87"/>
       <source>Ewe</source>
-      <translation>Evea</translation>
+      <translation type="unfinished">Ewe</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="122"/>
@@ -1589,72 +1589,72 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="148"/>
       <source>Lao</source>
-      <translation>Laŭa</translation>
+      <translation type="unfinished">Lao</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="220"/>
       <source>Twi</source>
-      <translation>Tvia</translation>
+      <translation type="unfinished">Twi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Afar</source>
-      <translation>Afara</translation>
+      <translation type="unfinished">Afar</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Akan</source>
-      <translation>Akana</translation>
+      <translation type="unfinished">Akan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Cree</source>
-      <translation>Kria</translation>
+      <translation type="unfinished">Cree</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="119"/>
       <source>Igbo</source>
-      <translation>Igba</translation>
+      <translation type="unfinished">Igbo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="140"/>
       <source>Komi</source>
-      <translation>Komia</translation>
+      <translation type="unfinished">Komi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="106"/>
       <source>Manx</source>
-      <translation>Manska</translation>
+      <translation type="unfinished">Manx</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="179"/>
       <source>Pali</source>
-      <translation>Palia</translation>
+      <translation type="unfinished">Pali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="211"/>
       <source>Thai</source>
-      <translation>Taja</translation>
+      <translation type="unfinished">Thai</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="224"/>
       <source>Urdu</source>
-      <translation>Urduo</translation>
+      <translation type="unfinished">Urdu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="236"/>
       <source>Zulu</source>
-      <translation>Zulua</translation>
+      <translation type="unfinished">Zulu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Czech</source>
-      <translation>Ĉeĥa</translation>
+      <translation type="unfinished">Czech</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="167"/>
       <source>Dutch</source>
-      <translation>Nederlanda</translation>
+      <translation type="unfinished">Dutch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="145"/>
@@ -1664,107 +1664,107 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="95"/>
       <source>Fulah</source>
-      <translation>Fula</translation>
+      <translation type="unfinished">Fulah</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="88"/>
       <source>Greek</source>
-      <translation>Greka</translation>
+      <translation type="unfinished">Greek</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="107"/>
       <source>Hausa</source>
-      <translation>Haŭsa</translation>
+      <translation type="unfinished">Hausa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="109"/>
       <source>Hindi</source>
-      <translation>Hindia</translation>
+      <translation type="unfinished">Hindi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="101"/>
       <source>Irish</source>
-      <translation>Irlanda</translation>
+      <translation type="unfinished">Irish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="134"/>
       <source>Khmer</source>
-      <translation>Kmera</translation>
+      <translation type="unfinished">Khmer</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="129"/>
       <source>Kongo</source>
-      <translation>Konga</translation>
+      <translation type="unfinished">Kongo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="143"/>
       <source>Latin</source>
-      <translation>Latina</translation>
+      <translation type="unfinished">Latin</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="159"/>
       <source>Malay</source>
-      <translation>Malaja</translation>
+      <translation type="unfinished">Malay</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="154"/>
       <source>Maori</source>
-      <translation>Maoria</translation>
+      <translation type="unfinished">Maori</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="162"/>
       <source>Nauru</source>
-      <translation>Naura</translation>
+      <translation type="unfinished">Nauru</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="176"/>
       <source>Oriya</source>
-      <translation>Odia</translation>
+      <translation type="unfinished">Oriya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="175"/>
       <source>Oromo</source>
-      <translation>Oroma</translation>
+      <translation type="unfinished">Oromo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="193"/>
       <source>Sango</source>
-      <translation>Sangoa</translation>
+      <translation type="unfinished">Sango</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="199"/>
       <source>Shona</source>
-      <translation>Ŝona</translation>
+      <translation type="unfinished">Shona</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="210"/>
       <source>Tajik</source>
-      <translation>Taĝika</translation>
+      <translation type="unfinished">Tajik</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="208"/>
       <source>Tamil</source>
-      <translation>Tamila</translation>
+      <translation type="unfinished">Tamil</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="219"/>
       <source>Tatar</source>
-      <translation>Tatara</translation>
+      <translation type="unfinished">Tatar</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="203"/>
       <source>Swati</source>
-      <translation>Svazia</translation>
+      <translation type="unfinished">Swati</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="216"/>
       <source>Tonga</source>
-      <translation>Tongana</translation>
+      <translation type="unfinished">Tonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="121"/>
       <source>Inupiaq</source>
-      <translation>Inupiaka</translation>
+      <translation type="unfinished">Inupiaq</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="226"/>
@@ -1774,37 +1774,37 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="225"/>
       <source>Uzbek</source>
-      <translation>Uzbeka</translation>
+      <translation type="unfinished">Uzbek</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="82"/>
       <source>Welsh</source>
-      <translation>Kimra</translation>
+      <translation type="unfinished">Welsh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="230"/>
       <source>Wolof</source>
-      <translation>Volofa</translation>
+      <translation type="unfinished">Wolof</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="231"/>
       <source>Xhosa</source>
-      <translation>Kosa</translation>
+      <translation type="unfinished">Xhosa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="124"/>
       <source>Italian</source>
-      <translation>Itala</translation>
+      <translation type="unfinished">Italian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="184"/>
       <source>Raeto-Romance</source>
-      <translation>Romanĉa</translation>
+      <translation type="unfinished">Raeto-Romance</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="86"/>
       <source>Dzongkha</source>
-      <translation>Dzonka</translation>
+      <translation type="unfinished">Dzongkha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="135"/>
@@ -1819,47 +1819,47 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Abkhazian</source>
-      <translation>Abĥaza</translation>
+      <translation type="unfinished">Abkhazian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="142"/>
       <source>Kirghiz</source>
-      <translation>Kirgiza</translation>
+      <translation type="unfinished">Kirghiz</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="185"/>
       <source>Kirundi</source>
-      <translation>Burunda</translation>
+      <translation type="unfinished">Kirundi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="102"/>
       <source>Scottish Gaelic</source>
-      <translation>Skotgaela</translation>
+      <translation type="unfinished">Scottish Gaelic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="201"/>
       <source>Albanian</source>
-      <translation>Albana</translation>
+      <translation type="unfinished">Albanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="151"/>
       <source>Latvian</source>
-      <translation>Latva</translation>
+      <translation type="unfinished">Latvian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="156"/>
       <source>Malayalam</source>
-      <translation>Malajala</translation>
+      <translation type="unfinished">Malayalam</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="139"/>
       <source>Kurdish</source>
-      <translation>Kurda</translation>
+      <translation type="unfinished">Kurdish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Bulgarian</source>
-      <translation>Bulgara</translation>
+      <translation type="unfinished">Bulgarian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="147"/>
@@ -1869,57 +1869,57 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="160"/>
       <source>Maltese</source>
-      <translation>Malta</translation>
+      <translation type="unfinished">Maltese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="158"/>
       <source>Marathi</source>
-      <translation>Marata</translation>
+      <translation type="unfinished">Marathi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Arabic</source>
-      <translation>Araba</translation>
+      <translation type="unfinished">Arabic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="93"/>
       <source>Basque</source>
-      <translation>Eŭska</translation>
+      <translation type="unfinished">Basque</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Avaric</source>
-      <translation>Avara</translation>
+      <translation type="unfinished">Avaric</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Bihari</source>
-      <translation>Bihara</translation>
+      <translation type="unfinished">Bihari</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Aymara</source>
-      <translation>Ajmara</translation>
+      <translation type="unfinished">Aymara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>Breton</source>
-      <translation>Bretona</translation>
+      <translation type="unfinished">Breton</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="205"/>
       <source>Sundanese</source>
-      <translation>Sunda</translation>
+      <translation type="unfinished">Sundanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="83"/>
       <source>Danish</source>
-      <translation>Dana</translation>
+      <translation type="unfinished">Danish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="85"/>
       <source>Divehi</source>
-      <translation>Mahla</translation>
+      <translation type="unfinished">Divehi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="150"/>
@@ -1929,67 +1929,67 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="97"/>
       <source>Fijian</source>
-      <translation>Fiĝia</translation>
+      <translation type="unfinished">Fijian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="113"/>
       <source>Hungarian</source>
-      <translation>Hungara</translation>
+      <translation type="unfinished">Hungarian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="99"/>
       <source>French</source>
-      <translation>Franca</translation>
+      <translation type="unfinished">French</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="84"/>
       <source>German</source>
-      <translation>Germana</translation>
+      <translation type="unfinished">German</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="157"/>
       <source>Mongolian</source>
-      <translation>Mongola</translation>
+      <translation type="unfinished">Mongolian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="108"/>
       <source>Hebrew</source>
-      <translation>Hebrea</translation>
+      <translation type="unfinished">Hebrew</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="115"/>
       <source>Herero</source>
-      <translation>Herera</translation>
+      <translation type="unfinished">Herero</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="144"/>
       <source>Luxembourgish</source>
-      <translation>Luksemburga</translation>
+      <translation type="unfinished">Luxembourgish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="137"/>
       <source>Kanuri</source>
-      <translation>Kanura</translation>
+      <translation type="unfinished">Kanuri</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="132"/>
       <source>Kazakh</source>
-      <translation>Kazaĥa</translation>
+      <translation type="unfinished">Kazakh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="130"/>
       <source>Kikuyu</source>
-      <translation>Kikuja</translation>
+      <translation type="unfinished">Kikuyu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="136"/>
       <source>Korean</source>
-      <translation>Korea</translation>
+      <translation type="unfinished">Korean</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="171"/>
       <source>Navajo</source>
-      <translation>Navaha</translation>
+      <translation type="unfinished">Navajo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="166"/>
@@ -1999,107 +1999,107 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="165"/>
       <source>Nepali</source>
-      <translation>Nepalia</translation>
+      <translation type="unfinished">Nepali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="174"/>
       <source>Ojibwa</source>
-      <translation>Aniŝinabeka</translation>
+      <translation type="unfinished">Ojibwa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="181"/>
       <source>Pashto</source>
-      <translation>Paŝtoa</translation>
+      <translation type="unfinished">Pashto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="180"/>
       <source>Polish</source>
-      <translation>Pola</translation>
+      <translation type="unfinished">Polish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="198"/>
       <source>Samoan</source>
-      <translation>Samoa</translation>
+      <translation type="unfinished">Samoan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="173"/>
       <source>Occitan</source>
-      <translation>Okcitana</translation>
+      <translation type="unfinished">Occitan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="191"/>
       <source>Sindhi</source>
-      <translation>Sinda</translation>
+      <translation type="unfinished">Sindhi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="196"/>
       <source>Slovak</source>
-      <translation>Slovaka</translation>
+      <translation type="unfinished">Slovak</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="200"/>
       <source>Somali</source>
-      <translation>Somala</translation>
+      <translation type="unfinished">Somali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="209"/>
       <source>Telugu</source>
-      <translation>Telugua</translation>
+      <translation type="unfinished">Telugu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="218"/>
       <source>Tsonga</source>
-      <translation>Conga</translation>
+      <translation type="unfinished">Tsonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="215"/>
       <source>Tswana</source>
-      <translation>Cvana</translation>
+      <translation type="unfinished">Tswana</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="222"/>
       <source>Uighur</source>
-      <translation>Ujgura</translation>
+      <translation type="unfinished">Uighur</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="194"/>
       <source>Serbo-Croatian</source>
-      <translation>Serbokroata</translation>
+      <translation type="unfinished">Serbo-Croatian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="233"/>
       <source>Yoruba</source>
-      <translation>Joruba</translation>
+      <translation type="unfinished">Yoruba</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="234"/>
       <source>Zhuang</source>
-      <translation>Ĝŭanga</translation>
+      <translation type="unfinished">Zhuang</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="186"/>
       <source>Romanian</source>
-      <translation>Rumana</translation>
+      <translation type="unfinished">Romanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="117"/>
       <source>Indonesian</source>
-      <translation>Indonezia</translation>
+      <translation type="unfinished">Indonesian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="178"/>
       <source>Panjabi</source>
-      <translation>Panĝaba</translation>
+      <translation type="unfinished">Panjabi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="204"/>
       <source>Southern Sotho</source>
-      <translation>Sota</translation>
+      <translation type="unfinished">Southern Sotho</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Corsican</source>
-      <translation>Korsika</translation>
+      <translation type="unfinished">Corsican</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="90"/>
@@ -2109,62 +2109,62 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="94"/>
       <source>Persian</source>
-      <translation>Persa</translation>
+      <translation type="unfinished">Persian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="197"/>
       <source>Slovenian</source>
-      <translation>Slovena</translation>
+      <translation type="unfinished">Slovenian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="100"/>
       <source>Western Frisian</source>
-      <translation>Okcidentfrisa</translation>
+      <translation type="unfinished">Western Frisian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Aragonese</source>
-      <translation>Aragona</translation>
+      <translation type="unfinished">Aragonese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="221"/>
       <source>Tahitian</source>
-      <translation>Tahitia</translation>
+      <translation type="unfinished">Tahitian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="152"/>
       <source>Malagasy</source>
-      <translation>Malagasa</translation>
+      <translation type="unfinished">Malagasy</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="103"/>
       <source>Galician</source>
-      <translation>Galega</translation>
+      <translation type="unfinished">Galician</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Azerbaijani</source>
-      <translation>Azerbajĝana</translation>
+      <translation type="unfinished">Azerbaijani</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Amharic</source>
-      <translation>Amhara</translation>
+      <translation type="unfinished">Amharic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="189"/>
       <source>Sanskrit</source>
-      <translation>Sanskrito</translation>
+      <translation type="unfinished">Sanskrit</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="126"/>
       <source>Japanese</source>
-      <translation>Japana</translation>
+      <translation type="unfinished">Japanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="223"/>
       <source>Ukrainian</source>
-      <translation>Ukraina</translation>
+      <translation type="unfinished">Ukrainian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
@@ -2174,62 +2174,62 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="133"/>
       <source>Kalaallisut</source>
-      <translation>Gronlanda</translation>
+      <translation type="unfinished">Kalaallisut</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Bashkir</source>
-      <translation>Baŝkira</translation>
+      <translation type="unfinished">Bashkir</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Belarusian</source>
-      <translation>Belorusa</translation>
+      <translation type="unfinished">Belarusian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="138"/>
       <source>Kashmiri</source>
-      <translation>Kaŝmira</translation>
+      <translation type="unfinished">Kashmiri</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="190"/>
       <source>Sardinian</source>
-      <translation>Sarda</translation>
+      <translation type="unfinished">Sardinian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="110"/>
       <source>Hiri Motu</source>
-      <translation>Hirimotua</translation>
+      <translation type="unfinished">Hiri Motu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="183"/>
       <source>Quechua</source>
-      <translation>Keĉua</translation>
+      <translation type="unfinished">Quechua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Bengali</source>
-      <translation>Bengala</translation>
+      <translation type="unfinished">Bengali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="127"/>
       <source>Javanese</source>
-      <translation>Java</translation>
+      <translation type="unfinished">Javanese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Avestan</source>
-      <translation>Avesta</translation>
+      <translation type="unfinished">Avestan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="188"/>
       <source>Kinyarwanda</source>
-      <translation>Ruanda</translation>
+      <translation type="unfinished">Kinyarwanda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Afrikaans</source>
-      <translation>Afrikansa</translation>
+      <translation type="unfinished">Afrikaans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
@@ -2239,77 +2239,77 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="114"/>
       <source>Armenian</source>
-      <translation>Armena</translation>
+      <translation type="unfinished">Armenian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
       <source>Norwegian Bokmal</source>
-      <translation>Bokmål</translation>
+      <translation type="unfinished">Norwegian Bokmal</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="111"/>
       <source>Croatian</source>
-      <translation>Kroata</translation>
+      <translation type="unfinished">Croatian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Bosnian</source>
-      <translation>Bosnia</translation>
+      <translation type="unfinished">Bosnian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="116"/>
       <source>Interlingua</source>
-      <translation>Interlingvao</translation>
+      <translation type="unfinished">Interlingua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="118"/>
       <source>Interlingue</source>
-      <translation>Okcidentalo</translation>
+      <translation type="unfinished">Interlingue</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Catalan</source>
-      <translation>Kataluna</translation>
+      <translation type="unfinished">Catalan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="202"/>
       <source>Serbian</source>
-      <translation>Serba</translation>
+      <translation type="unfinished">Serbian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="161"/>
       <source>Burmese</source>
-      <translation>Birma</translation>
+      <translation type="unfinished">Burmese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="187"/>
       <source>Russian</source>
-      <translation>Rusa</translation>
+      <translation type="unfinished">Russian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="146"/>
       <source>Limburgish</source>
-      <translation>Limburga</translation>
+      <translation type="unfinished">Limburgish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="169"/>
       <source>Norwegian</source>
-      <translation>Norvega</translation>
+      <translation type="unfinished">Norwegian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Chechen</source>
-      <translation>Ĉeĉena</translation>
+      <translation type="unfinished">Chechen</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="235"/>
       <source>Chinese</source>
-      <translation>Ĉina</translation>
+      <translation type="unfinished">Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>Chuvash</source>
-      <translation>Ĉuvaŝa</translation>
+      <translation type="unfinished">Chuvash</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="195"/>
@@ -2319,202 +2319,202 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="91"/>
       <source>Spanish</source>
-      <translation>Hispana</translation>
+      <translation type="unfinished">Spanish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="141"/>
       <source>Cornish</source>
-      <translation>Kornvala</translation>
+      <translation type="unfinished">Cornish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
       <source>Tagalog</source>
-      <translation>Tagaloga</translation>
+      <translation type="unfinished">Tagalog</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Assamese</source>
-      <translation>Asama</translation>
+      <translation type="unfinished">Assamese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="177"/>
       <source>Ossetian</source>
-      <translation>Oseta</translation>
+      <translation type="unfinished">Ossetian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="92"/>
       <source>Estonian</source>
-      <translation>Estona</translation>
+      <translation type="unfinished">Estonian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="207"/>
       <source>Swahili</source>
-      <translation>Svahila</translation>
+      <translation type="unfinished">Swahili</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="206"/>
       <source>Swedish</source>
-      <translation>Sveda</translation>
+      <translation type="unfinished">Swedish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Tibetan</source>
-      <translation>Tibeta</translation>
+      <translation type="unfinished">Tibetan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="227"/>
       <source>Vietnamese</source>
-      <translation>Vjetnama</translation>
+      <translation type="unfinished">Vietnamese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="155"/>
       <source>Macedonian</source>
-      <translation>Makedona</translation>
+      <translation type="unfinished">Macedonian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="182"/>
       <source>Portuguese</source>
-      <translation>Portugala</translation>
+      <translation type="unfinished">Portuguese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="217"/>
       <source>Turkish</source>
-      <translation>Turka</translation>
+      <translation type="unfinished">Turkish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Turkmen</source>
-      <translation>Turkmena</translation>
+      <translation type="unfinished">Turkmen</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="105"/>
       <source>Gujarati</source>
-      <translation>Guĝarata</translation>
+      <translation type="unfinished">Gujarati</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="123"/>
       <source>Icelandic</source>
-      <translation>Islanda</translation>
+      <translation type="unfinished">Icelandic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="125"/>
       <source>Inuktitut</source>
-      <translation>Inuktituta</translation>
+      <translation type="unfinished">Inuktitut</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="89"/>
       <source>English</source>
-      <translation>Angla</translation>
+      <translation type="unfinished">English</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="128"/>
       <source>Georgian</source>
-      <translation>Kartvela</translation>
+      <translation type="unfinished">Georgian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Church Slavic</source>
-      <translation>Slavona</translation>
+      <translation type="unfinished">Church Slavic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="98"/>
       <source>Faroese</source>
-      <translation>Feroa</translation>
+      <translation type="unfinished">Faroese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="96"/>
       <source>Finnish</source>
-      <translation>Finna</translation>
+      <translation type="unfinished">Finnish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="228"/>
       <source>Volapuk</source>
-      <translation>Volapuko</translation>
+      <translation type="unfinished">Volapuk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="229"/>
       <source>Walloon</source>
-      <translation>Valona</translation>
+      <translation type="unfinished">Walloon</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="131"/>
       <source>Kwanyama</source>
-      <translation>Kuanjama</translation>
+      <translation type="unfinished">Kwanyama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="153"/>
       <source>Marshallese</source>
-      <translation>Marŝala</translation>
+      <translation type="unfinished">Marshallese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="192"/>
       <source>Northern Sami</source>
-      <translation>Nord-samea</translation>
+      <translation type="unfinished">Northern Sami</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="112"/>
       <source>Haitian</source>
-      <translation>Haitia kreola</translation>
+      <translation type="unfinished">Haitian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Chamorro</source>
-      <translation>Ĉamora</translation>
+      <translation type="unfinished">Chamorro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="168"/>
       <source>Norwegian Nynorsk</source>
-      <translation>Nynorsk</translation>
+      <translation type="unfinished">Norwegian Nynorsk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="104"/>
       <source>Guarani</source>
-      <translation>Gvarania</translation>
+      <translation type="unfinished">Guarani</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="170"/>
       <source>South Ndebele</source>
-      <translation>Suda Ndebela</translation>
+      <translation type="unfinished">South Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="172"/>
       <source>Chichewa</source>
-      <translation>Njanĝa</translation>
+      <translation type="unfinished">Chichewa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="149"/>
       <source>Lithuanian</source>
-      <translation>Litova</translation>
+      <translation type="unfinished">Lithuanian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="120"/>
       <source>Sichuan Yi</source>
-      <translation>Siĉuana jia</translation>
+      <translation type="unfinished">Sichuan Yi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="212"/>
       <source>Tigrinya</source>
-      <translation>Tigraja</translation>
+      <translation type="unfinished">Tigrinya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="232"/>
       <source>Yiddish</source>
-      <translation>Jida</translation>
+      <translation type="unfinished">Yiddish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="373"/>
       <source>Traditional Chinese</source>
-      <translation>Tradicia ĉina</translation>
+      <translation type="unfinished">Traditional Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="374"/>
       <source>Simplified Chinese</source>
-      <translation>Simpligita ĉina</translation>
+      <translation type="unfinished">Simplified Chinese</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="375"/>
       <source>Other</source>
-      <translation>Alia</translation>
+      <translation type="unfinished">Other</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="376"/>
@@ -2579,7 +2579,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="237"/>
       <source>Lojban</source>
-      <translation>Loĵbano</translation>
+      <translation type="unfinished">Lojban</translation>
     </message>
   </context>
   <context>
@@ -2836,48 +2836,48 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1494"/>
       <source>All</source>
-      <translation>Ĉiuj</translation>
+      <translation type="unfinished">All</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="197"/>
       <source>Back</source>
-      <translation>Malantaŭen</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1465"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 vortaroj, %2 artikoloj, %3 vortoj</translation>
+      <translation type="unfinished">%1 dictionaries, %2 articles, %3 words</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="95"/>
       <source>&amp;Edit</source>
-      <translation>&amp;Redakti</translation>
+      <translation type="unfinished">&amp;Edit</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="78"/>
       <source>&amp;File</source>
-      <translation>&amp;Dosiero</translation>
+      <translation type="unfinished">&amp;File</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="102"/>
       <source>&amp;Help</source>
-      <translation>&amp;Helpo</translation>
+      <translation type="unfinished">&amp;Help</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="136"/>
       <source>Search</source>
-      <translation>Serĉi</translation>
+      <translation type="unfinished">Search</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
       <location filename="../src/ui/mainwindow.cc" line="388"/>
       <source>&amp;Quit</source>
-      <translation>&amp;Eliri</translation>
+      <translation type="unfinished">&amp;Quit</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Error</source>
-      <translation>Eraro</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <source>Scan Popup</source>
@@ -2896,42 +2896,42 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3391"/>
       <source>Can&apos;t save article: %1</source>
-      <translation>Ne eblas konservi artikolon: %1</translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="242"/>
       <source>Zoom In</source>
-      <translation>Zomi</translation>
+      <translation type="unfinished">Zoom In</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="296"/>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;Vortaroj...</translation>
+      <translation type="unfinished">&amp;Dictionaries...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="330"/>
       <source>&amp;About</source>
-      <translation>&amp;Pri</translation>
+      <translation type="unfinished">&amp;About</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="355"/>
       <source>&amp;Forum</source>
-      <translation>&amp;Forumo</translation>
+      <translation type="unfinished">&amp;Forum</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="400"/>
       <source>&amp;Print</source>
-      <translation>&amp;Presi</translation>
+      <translation type="unfinished">&amp;Print</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="382"/>
       <source>&amp;Save Article</source>
-      <translation>&amp;Konservi Artikolon</translation>
+      <translation type="unfinished">&amp;Save Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3373"/>
       <source>Save Article As</source>
-      <translation>Konservi artikolon kiel</translation>
+      <translation type="unfinished">Save Article As</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
@@ -2951,12 +2951,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="411"/>
       <source>Page Set&amp;up</source>
-      <translation>Paĝo-ag&amp;ordoj</translation>
+      <translation type="unfinished">Page Set&amp;up</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="322"/>
       <source>&amp;Homepage</source>
-      <translation>&amp;Hejmpaĝo</translation>
+      <translation type="unfinished">&amp;Homepage</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3059"/>
@@ -2971,7 +2971,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="248"/>
       <source>Zoom Out</source>
-      <translation>Malzomi</translation>
+      <translation type="unfinished">Zoom Out</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="381"/>
@@ -2981,17 +2981,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="333"/>
       <source>About GoldenDict-ng</source>
-      <translation>Pri GoldenDict-ng</translation>
+      <translation type="unfinished">About GoldenDict-ng</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3065"/>
       <source>Download</source>
-      <translation>Elŝuti</translation>
+      <translation type="unfinished">Download</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3270"/>
       <source>Page Setup</source>
-      <translation>Paĝo-agordoj</translation>
+      <translation type="unfinished">Page Setup</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="304"/>
@@ -3002,7 +3002,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="252"/>
       <source>Normal Size</source>
-      <translation>Normala grandeco</translation>
+      <translation type="unfinished">Normal Size</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="2908"/>
@@ -3027,23 +3027,23 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
       <source>Loading...</source>
-      <translation>Ŝargo…</translation>
+      <translation type="unfinished">Loading...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1662"/>
       <source>(untitled)</source>
-      <translation>(sentitola)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="311"/>
       <source>&amp;Preferences...</source>
-      <translation>&amp;Agordoj...</translation>
+      <translation type="unfinished">&amp;Preferences...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="46"/>
       <location filename="../src/ui/mainwindow.cc" line="732"/>
       <source>Welcome!</source>
-      <translation>Bonvenon!</translation>
+      <translation type="unfinished">Welcome!</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="230"/>
@@ -3053,7 +3053,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="385"/>
       <source>Save Article</source>
-      <translation>Konservi Artikolon</translation>
+      <translation type="unfinished">Save Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3066"/>
@@ -3063,12 +3063,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="199"/>
       <source>Forward</source>
-      <translation>Antaŭen</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3292"/>
       <source>Print Article</source>
-      <translation>Presi artikolon</translation>
+      <translation type="unfinished">Print Article</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3271"/>
@@ -3078,22 +3078,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="115"/>
       <source>&amp;View</source>
-      <translation>&amp;Vido</translation>
+      <translation type="unfinished">&amp;View</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="126"/>
       <source>H&amp;istory</source>
-      <translation>&amp;Historio</translation>
+      <translation type="unfinished">H&amp;istory</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="438"/>
       <source>&amp;Clear</source>
-      <translation>&amp;Vakigi</translation>
+      <translation type="unfinished">&amp;Clear</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="119"/>
       <source>&amp;Zoom</source>
-      <translation>&amp;Zomo</translation>
+      <translation type="unfinished">&amp;Zoom</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="367"/>
@@ -3113,17 +3113,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="420"/>
       <source>Close current tab</source>
-      <translation>Fermi aktualan langeton</translation>
+      <translation type="unfinished">Close current tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="428"/>
       <source>Close all tabs</source>
-      <translation>Fermi ĉiujn langetojn</translation>
+      <translation type="unfinished">Close all tabs</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="435"/>
       <source>Close all tabs except current</source>
-      <translation>Fermi ĉiujn langetojn krom aktuala</translation>
+      <translation type="unfinished">Close all tabs except current</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="410"/>
@@ -3133,7 +3133,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="590"/>
       <source>New Tab</source>
-      <translation>Nova langeto</translation>
+      <translation type="unfinished">New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
@@ -3148,7 +3148,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>&amp;Menubar</source>
-      <translation>&amp;Menubreto</translation>
+      <translation type="unfinished">&amp;Menubar</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="342"/>
@@ -3205,18 +3205,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="3762"/>
       <location filename="../src/ui/mainwindow.cc" line="3774"/>
       <source>&amp;Show</source>
-      <translation>&amp;Montri</translation>
+      <translation type="unfinished">&amp;Show</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="483"/>
       <source>&amp;Export</source>
-      <translation>&amp;Eksporti</translation>
+      <translation type="unfinished">&amp;Export</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3758"/>
       <location filename="../src/ui/mainwindow.cc" line="3770"/>
       <source>&amp;Hide</source>
-      <translation>&amp;Kaŝi</translation>
+      <translation type="unfinished">&amp;Hide</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3816"/>
@@ -3228,7 +3228,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="3880"/>
       <location filename="../src/ui/mainwindow.cc" line="3994"/>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Tekstaj dosieroj (*.txt);;Ĉiuj dosieroj (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3857"/>
@@ -3250,7 +3250,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="491"/>
       <source>&amp;Import</source>
-      <translation>&amp;importi</translation>
+      <translation type="unfinished">&amp;Import</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3878"/>
@@ -3332,7 +3332,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4300"/>
       <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
+      <translation type="unfinished">Edit dictionary</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4444"/>
@@ -3347,7 +3347,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
       <source>&amp;Search Pane</source>
-      <translation>&amp;Serĉa panelo</translation>
+      <translation type="unfinished">&amp;Search Pane</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="208"/>
@@ -3367,12 +3367,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="427"/>
       <source>&amp;Rescan Files</source>
-      <translation>&amp;Reskani dosierojn</translation>
+      <translation type="unfinished">&amp;Rescan Files</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="450"/>
       <source>&amp;New Tab</source>
-      <translation>&amp;Nova langeto</translation>
+      <translation type="unfinished">&amp;New Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="502"/>
@@ -3394,12 +3394,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.ui" line="520"/>
       <location filename="../src/ui/mainwindow.cc" line="296"/>
       <source>Menu Button</source>
-      <translation>Menubutono</translation>
+      <translation type="unfinished">Menu Button</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="525"/>
       <source>Search in page</source>
-      <translation>Serĉi en la paĝo</translation>
+      <translation type="unfinished">Search in page</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
@@ -3409,7 +3409,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="536"/>
       <source>Full-text search</source>
-      <translation>Plenteksta serĉo</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="539"/>
@@ -3429,7 +3429,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
       <source>Export</source>
-      <translation>Eksporto</translation>
+      <translation type="unfinished">Export</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="571"/>
@@ -3473,7 +3473,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="194"/>
       <source>&amp;Navigation</source>
-      <translation>&amp;Navigado</translation>
+      <translation type="unfinished">&amp;Navigation</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="222"/>
@@ -3503,7 +3503,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="262"/>
       <source>&amp;History Pane</source>
-      <translation>&amp;Historia panelo</translation>
+      <translation type="unfinished">&amp;History Pane</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="781"/>
@@ -3530,7 +3530,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="485"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-analizeraro: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
@@ -3538,7 +3538,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mediawiki.cc" line="178"/>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-analizeraro: %1 at %2,%3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
@@ -3546,22 +3546,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="475"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="477"/>
       <source>Address</source>
-      <translation>Adreso</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="473"/>
       <source>Enabled</source>
-      <translation>Ŝaltita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="479"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -3577,7 +3577,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="14"/>
       <source>Form</source>
-      <translation>Formularo</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="53"/>
@@ -3587,27 +3587,27 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="75"/>
       <source>Name:</source>
-      <translation>Nomo:</translation>
+      <translation type="unfinished">Name:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="105"/>
       <source>Total articles:</source>
-      <translation>Tuta artikoloj:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="129"/>
       <source>Translates from:</source>
-      <translation>Traduki el:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="136"/>
       <source>Translates to:</source>
-      <translation>Traduki en:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="112"/>
       <source>Total words:</source>
-      <translation>Tuta vortoj:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="251"/>
@@ -3632,17 +3632,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="165"/>
       <source>Description:</source>
-      <translation>Priskribo:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="263"/>
       <source>Sort by name</source>
-      <translation>Ordigi laŭ nomo</translation>
+      <translation type="unfinished">Sort by name</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="265"/>
       <source>Sort by languages</source>
-      <translation>Ordigi laŭ lingvoj</translation>
+      <translation type="unfinished">Sort by languages</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="259"/>
@@ -3660,12 +3660,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="1177"/>
       <source>Path</source>
-      <translation>Vojo</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1179"/>
       <source>Recursive</source>
-      <translation>Rikure</translation>
+      <translation type="unfinished">Recursive</translation>
     </message>
   </context>
   <context>
@@ -3724,7 +3724,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="917"/>
       <source>Type:</source>
-      <translation>Tipo:</translation>
+      <translation type="unfinished">Type:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="961"/>
@@ -3841,12 +3841,12 @@ for all program&apos;s network requests.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="511"/>
       <source>Right Shift</source>
-      <translation>Dekstra Shift</translation>
+      <translation type="unfinished">Right Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="581"/>
       <source>Left Shift</source>
-      <translation>Maldekstra Shift</translation>
+      <translation type="unfinished">Left Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="446"/>
@@ -3881,7 +3881,7 @@ in the pressed state when the word selection changes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="518"/>
       <source>Alt key</source>
-      <translation>Alt-klavo</translation>
+      <translation type="unfinished">Alt key</translation>
     </message>
     <message>
       <source>When enabled, a translation popup window would be shown each time
@@ -3941,22 +3941,22 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="373"/>
       <source>Startup</source>
-      <translation>Startigo</translation>
+      <translation type="unfinished">Startup</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="971"/>
       <source>Password:</source>
-      <translation>Pasvorto:</translation>
+      <translation type="unfinished">Password:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="111"/>
       <source>Default</source>
-      <translation>Defaŭlto</translation>
+      <translation type="unfinished">Default</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="50"/>
       <source>&amp;Interface</source>
-      <translation>&amp;Interfaco</translation>
+      <translation type="unfinished">&amp;Interface</translation>
     </message>
     <message>
       <source>To avoid false positives, the keys are only monitored
@@ -3974,7 +3974,7 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="528"/>
       <source>Ctrl key</source>
-      <translation>Ctrl-klavo</translation>
+      <translation type="unfinished">Ctrl key</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="679"/>
@@ -3984,7 +3984,7 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="541"/>
       <source>Left Alt</source>
-      <translation>Maldekstra Alt</translation>
+      <translation type="unfinished">Left Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="558"/>
@@ -3994,7 +3994,7 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="14"/>
       <source>Preferences</source>
-      <translation>Agordoj</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <source>Keys may also be pressed afterwards, within</source>
@@ -4003,12 +4003,12 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="501"/>
       <source>Left Ctrl</source>
-      <translation>Maldekstra Ctrl</translation>
+      <translation type="unfinished">Left Ctrl</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="561"/>
       <source>Right Alt</source>
-      <translation>Dekstra Alt</translation>
+      <translation type="unfinished">Right Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="749"/>
@@ -4018,7 +4018,7 @@ seconds, which is specified here.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="571"/>
       <source>Right Ctrl</source>
-      <translation>Dekstra Ctrl</translation>
+      <translation type="unfinished">Right Ctrl</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="673"/>
@@ -4040,7 +4040,7 @@ its main window.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="548"/>
       <source>Shift key</source>
-      <translation>Shift-klavo</translation>
+      <translation type="unfinished">Shift key</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="379"/>
@@ -4123,7 +4123,7 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
     <message>
       <location filename="../src/ui/preferences.ui" line="783"/>
       <source>Pronunciation</source>
-      <translation>Prononco</translation>
+      <translation type="unfinished">Pronunciation</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="806"/>
@@ -4400,7 +4400,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1253"/>
       <source>Full-text search</source>
-      <translation>Plenteksta serĉo</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1259"/>
@@ -4563,7 +4563,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/ui/preferences.ui" line="1641"/>
       <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>symbols</source>
-      <translation>simboloj</translation>
+      <translation type="unfinished">symbols</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="350"/>
@@ -4593,7 +4593,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1612"/>
       <source>Articles</source>
-      <translation>Artikoloj</translation>
+      <translation type="unfinished">Articles</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="214"/>
@@ -4635,7 +4635,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/ui/preferences.ui" line="1512"/>
       <location filename="../src/ui/preferences.ui" line="1575"/>
       <source>minutes</source>
-      <translation>minutoj</translation>
+      <translation type="unfinished">minutes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="60"/>
@@ -4686,7 +4686,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1087"/>
       <source>Plain Text</source>
-      <translation>Plata teksto</translation>
+      <translation type="unfinished">Plain Text</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1089"/>
@@ -4701,7 +4701,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1093"/>
       <source>Unknown</source>
-      <translation>Nekonata</translation>
+      <translation type="unfinished">Unknown</translation>
     </message>
   </context>
   <context>
@@ -4727,27 +4727,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="993"/>
       <source>Enabled</source>
-      <translation>Ŝaltita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="995"/>
       <source>Type</source>
-      <translation>Tipo</translation>
+      <translation type="unfinished">Type</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="997"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="999"/>
       <source>Command Line</source>
-      <translation>Komandolinio</translation>
+      <translation type="unfinished">Command Line</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1001"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -4786,22 +4786,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
-      <translation>av_malloc() fiaskis.</translation>
+      <translation type="unfinished">av_malloc() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
-      <translation>avio_alloc_context() fiaskis.</translation>
+      <translation type="unfinished">avio_alloc_context() failed.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
-      <translation>avformat_open_input() fiaskis: %1.</translation>
+      <translation type="unfinished">avformat_open_input() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
-      <translation>avformat_find_stream_info() fiaskis: %1.</translation>
+      <translation type="unfinished">avformat_find_stream_info() failed: %1.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="213"/>
@@ -4838,7 +4838,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>ao_open_live() failed: </source>
-      <translation>ao_open_live() fiaskis: </translation>
+      <translation type="unfinished">ao_open_live() failed: </translation>
     </message>
     <message>
       <source>No driver.</source>
@@ -4858,12 +4858,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Unknown error.</source>
-      <translation>Nekonata eraro.</translation>
+      <translation type="unfinished">Unknown error.</translation>
     </message>
     <message>
       <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
-      <translation>avcodec_alloc_frame() fiaskis.</translation>
+      <translation type="unfinished">avcodec_alloc_frame() failed.</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
@@ -4958,7 +4958,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/articleview.cc" line="2709"/>
       <source>ERROR: %1</source>
-      <translation>ERARO: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2709"/>
@@ -4973,7 +4973,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/articleview.cc" line="2735"/>
       <source>WARNING: %1</source>
-      <translation>AVERTO: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
   </context>
   <context>
@@ -4994,7 +4994,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/russiantranslit.cc" line="107"/>
       <source>Russian Transliteration</source>
-      <translation>Rusa Transliterado</translation>
+      <translation type="unfinished">Russian Transliteration</translation>
     </message>
   </context>
   <context>
@@ -5013,7 +5013,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/ui/scanpopup.ui" line="211"/>
       <location filename="../src/ui/scanpopup.ui" line="255"/>
       <source>...</source>
-      <translation>…</translation>
+      <translation type="unfinished">...</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="151"/>
@@ -5023,7 +5023,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
       <source>Dialog</source>
-      <translation>Dialogo</translation>
+      <translation type="unfinished">Dialog</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="141"/>
@@ -5065,12 +5065,12 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
       <source>Back</source>
-      <translation>Malantaŭen</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="127"/>
       <source>Forward</source>
-      <translation>Antaŭen</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="598"/>
@@ -5112,17 +5112,17 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1285"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1283"/>
       <source>Path</source>
-      <translation>Vojo</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1287"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5130,12 +5130,12 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="40"/>
       <source>Files</source>
-      <translation>Dosieroj</translation>
+      <translation type="unfinished">Files</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="813"/>
       <source>Hiragana</source>
-      <translation>Rondaj kanaoj</translation>
+      <translation type="unfinished">Hiragana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="753"/>
@@ -5157,7 +5157,7 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="227"/>
       <source>Wikipedia</source>
-      <translation>Vikipedio</translation>
+      <translation type="unfinished">Wikipedia</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="820"/>
@@ -5260,7 +5260,7 @@ based on English phonology</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
       <source>Transliteration</source>
-      <translation>Transliterado</translation>
+      <translation type="unfinished">Transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="774"/>
@@ -5276,22 +5276,22 @@ Not implemented yet in GoldenDict.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="703"/>
       <source>Russian transliteration</source>
-      <translation>Rusa transliterado</translation>
+      <translation type="unfinished">Russian transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="159"/>
       <source>Morphology</source>
-      <translation>Morfologio</translation>
+      <translation type="unfinished">Morphology</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="181"/>
       <source>&amp;Change...</source>
-      <translation>&amp;Ŝanĝi...</translation>
+      <translation type="unfinished">&amp;Change...</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
       <source>Katakana</source>
-      <translation>Strekaj kanaoj</translation>
+      <translation type="unfinished">Katakana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="165"/>
@@ -5306,7 +5306,7 @@ Not implemented yet in GoldenDict.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="714"/>
       <source>German transliteration</source>
-      <translation>Germana transliterado</translation>
+      <translation type="unfinished">German transliteration</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="292"/>
@@ -5321,14 +5321,14 @@ Not implemented yet in GoldenDict.</translation>
       <location filename="../src/ui/sources.ui" line="370"/>
       <location filename="../src/ui/sources.ui" line="429"/>
       <source>&amp;Add...</source>
-      <translation>&amp;Aldoni...</translation>
+      <translation type="unfinished">&amp;Add...</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="177"/>
       <location filename="../src/dict/sources.cc" line="204"/>
       <location filename="../src/dict/sources.cc" line="231"/>
       <source>Choose a directory</source>
-      <translation>Elekti dosierujon</translation>
+      <translation type="unfinished">Choose a directory</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="67"/>
@@ -5338,7 +5338,7 @@ Not implemented yet in GoldenDict.</translation>
       <location filename="../src/ui/sources.ui" line="377"/>
       <location filename="../src/ui/sources.ui" line="436"/>
       <source>&amp;Remove</source>
-      <translation>&amp;Forigi</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="286"/>
@@ -5408,12 +5408,12 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="350"/>
       <source>DICT servers</source>
-      <translation>DICT-serviloj</translation>
+      <translation type="unfinished">DICT servers</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="356"/>
       <source>DICT servers:</source>
-      <translation>DICT-serviloj:</translation>
+      <translation type="unfinished">DICT servers:</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
@@ -5432,7 +5432,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
-      <translation>API ŝlosilo:</translation>
+      <translation type="unfinished">API Key:</translation>
     </message>
     <message>
       <source>Use of Forvo currently requires an API key. Leave this field
@@ -5460,7 +5460,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="692"/>
       <source>Greek transliteration</source>
-      <translation>Greka transliterado</translation>
+      <translation type="unfinished">Greek transliteration</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="140"/>
@@ -5470,7 +5470,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="406"/>
       <source>Programs</source>
-      <translation>Programoj</translation>
+      <translation type="unfinished">Programs</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="331"/>
@@ -5480,7 +5480,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="725"/>
       <source>Belarusian transliteration</source>
-      <translation>Belorusa transliterado</translation>
+      <translation type="unfinished">Belarusian transliteration</translation>
     </message>
     <message>
       <source>Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</source>
@@ -5496,7 +5496,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="125"/>
       <source>Text to Speech</source>
-      <translation>Parolsintezo</translation>
+      <translation type="unfinished">Text to Speech</translation>
     </message>
   </context>
   <context>
@@ -5504,7 +5504,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/stylescombobox.cc" line="17"/>
       <source>None</source>
-      <translation>Nenio</translation>
+      <translation type="unfinished">None</translation>
     </message>
   </context>
   <context>
@@ -5517,12 +5517,12 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="40"/>
       <source>&amp;Add</source>
-      <translation>&amp;Aldoni</translation>
+      <translation type="unfinished">&amp;Add</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="47"/>
       <source>&amp;Remove</source>
-      <translation>&amp;Forigi</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="147"/>
@@ -5572,12 +5572,12 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="71"/>
       <source>Preferences</source>
-      <translation>Agordoj</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="77"/>
       <source>Volume:</source>
-      <translation>Laŭteco:</translation>
+      <translation type="unfinished">Volume:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="106"/>
@@ -5595,7 +5595,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/ui/translatebox.cc" line="120"/>
       <source>Drop-down</source>
-      <translation>Fallisto</translation>
+      <translation type="unfinished">Drop-down</translation>
     </message>
   </context>
   <context>
@@ -5603,12 +5603,12 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="280"/>
       <source>Enabled</source>
-      <translation>Ebligita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="282"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
@@ -5618,7 +5618,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5626,17 +5626,17 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="644"/>
       <source>Name</source>
-      <translation>Nomo</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="646"/>
       <source>Address</source>
-      <translation>Adreso</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="640"/>
       <source>Enabled</source>
-      <translation>Ŝaltita</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="631"/>
@@ -5647,12 +5647,12 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="642"/>
       <source>As link</source>
-      <translation>Kiel ligilo</translation>
+      <translation type="unfinished">As link</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="648"/>
       <source>Icon</source>
-      <translation>Bildsimbolo</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -5668,7 +5668,7 @@ in the future, or register on the site to get your own key.</translation>
     <message>
       <location filename="../src/wordlist.cc" line="82"/>
       <source>WARNING: %1</source>
-      <translation>AVERTO: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
   </context>
 </TS>
