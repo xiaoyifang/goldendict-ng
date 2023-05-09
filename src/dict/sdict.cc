@@ -504,7 +504,7 @@ public:
 
   }
 
-  void run(); // Run from another thread by DslArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -650,7 +650,7 @@ QString const& SdictDictionary::getDescription()
   if( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  dictionaryDescription = QString( QObject::tr( "Title: %1%2" ) )
+  dictionaryDescription = QObject::tr( "Title: %1%2" )
                           .arg( QString::fromUtf8( getName().c_str() ) )
                           .arg( "\n\n" );
 
@@ -682,7 +682,7 @@ QString const& SdictDictionary::getDescription()
     else
       str = string( data.data(), size );
 
-    dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+    dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                              .arg( QString::fromUtf8( str.c_str(), str.size() ) )
                              .arg( "\n\n" );
 
@@ -698,7 +698,7 @@ QString const& SdictDictionary::getDescription()
     else
       str = string( data.data(), size );
 
-    dictionaryDescription += QString( QObject::tr( "Version: %1%2" ) )
+    dictionaryDescription += QObject::tr( "Version: %1%2" )
                              .arg( QString::fromUtf8( str.c_str(), str.size() ) )
                              .arg( "\n\n" );
   }

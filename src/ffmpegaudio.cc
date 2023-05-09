@@ -154,7 +154,7 @@ bool DecoderContext::openCodec( QString & errorString )
   formatContext_ = avformat_alloc_context();
   if ( !formatContext_ )
   {
-    errorString = QObject::tr( "avformat_alloc_context() failed." );
+    errorString = "avformat_alloc_context() failed.";
     return false;
   }
 
@@ -162,7 +162,7 @@ bool DecoderContext::openCodec( QString & errorString )
 
   if ( !avioBuffer )
   {
-    errorString = QObject::tr( "av_malloc() failed." );
+    errorString = "av_malloc() failed.";
     return false;
   }
 
@@ -171,7 +171,7 @@ bool DecoderContext::openCodec( QString & errorString )
   if ( !avioContext_ )
   {
     av_free( avioBuffer );
-    errorString = QObject::tr( "avio_alloc_context() failed." );
+    errorString = "avio_alloc_context() failed.";
     return false;
   }
 
@@ -188,14 +188,14 @@ bool DecoderContext::openCodec( QString & errorString )
   ret = avformat_open_input( &formatContext_, NULL, NULL, NULL );
   if ( ret < 0 )
   {
-    errorString = QObject::tr( "avformat_open_input() failed: %1." ).arg( avErrorString( ret ) );
+    errorString = QString( "avformat_open_input() failed: %1." ).arg( avErrorString( ret ) );
     return false;
   }
 
   ret = avformat_find_stream_info( formatContext_, NULL );
   if ( ret < 0 )
   {
-    errorString = QObject::tr( "avformat_find_stream_info() failed: %1." ).arg( avErrorString( ret ) );
+    errorString = QString( "avformat_find_stream_info() failed: %1." ).arg( avErrorString( ret ) );
     return false;
   }
 
@@ -210,20 +210,20 @@ bool DecoderContext::openCodec( QString & errorString )
   }
   if ( !audioStream_ )
   {
-    errorString = QObject::tr( "Could not find audio stream." );
+    errorString = QString( "Could not find audio stream." );
     return false;
   }
 
   codec_ = avcodec_find_decoder( audioStream_->codecpar->codec_id );
   if ( !codec_ )
   {
-    errorString = QObject::tr( "Codec [id: %1] not found." ).arg( audioStream_->codecpar->codec_id );
+    errorString = QString( "Codec [id: %1] not found." ).arg( audioStream_->codecpar->codec_id );
     return false;
   }
   codecContext_ = avcodec_alloc_context3( codec_ );
   if ( !codecContext_ )
   {
-    errorString = QObject::tr( "avcodec_alloc_context3() failed." );
+    errorString = QString( "avcodec_alloc_context3() failed." );
     return false;
   }
   avcodec_parameters_to_context( codecContext_, audioStream_->codecpar );
@@ -231,7 +231,7 @@ bool DecoderContext::openCodec( QString & errorString )
   ret = avcodec_open2( codecContext_, codec_, NULL );
   if ( ret < 0 )
   {
-    errorString = QObject::tr( "avcodec_open2() failed: %1." ).arg( avErrorString( ret ) );
+    errorString = QString( "avcodec_open2() failed: %1." ).arg( avErrorString( ret ) );
     return false;
   }
 
@@ -321,7 +321,7 @@ bool DecoderContext::openOutputDevice( QString & errorString )
   #if  (QT_VERSION >= QT_VERSION_CHECK(6,2,0))
   QAudioDevice m_outputDevice = QMediaDevices::defaultAudioOutput();
   if(m_outputDevice.isNull()){
-    errorString += QObject::tr( "Can not found default audio output device" );
+    errorString += QString( "Can not found default audio output device" );
     return false;
   }
   #endif
@@ -340,7 +340,7 @@ bool DecoderContext::play( QString & errorString )
   AVFrame * frame = av_frame_alloc();
   if ( !frame )
   {
-    errorString = QObject::tr( "avcodec_alloc_frame() failed." );
+    errorString = QString( "avcodec_alloc_frame() failed." );
     return false;
   }
 

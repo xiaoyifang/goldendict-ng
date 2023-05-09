@@ -204,7 +204,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by HunspellArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -343,7 +343,7 @@ public:
 
   }
 
-  void run(); // Run from another thread by HunspellHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -492,7 +492,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by HunspellPrefixMatchRequestRunnable
+  void run();
 
   void cancel() override
   {

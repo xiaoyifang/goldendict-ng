@@ -547,7 +547,7 @@ QString const& GlsDictionary::getDescription()
     GlsScanner scanner( getDictionaryFilenames()[ 0 ] );
     string str = Utf8::encode( scanner.getDictionaryAuthor() );
     if( !str.empty() )
-      dictionaryDescription = QString( QObject::tr( "Author: %1%2" ) )
+      dictionaryDescription = QObject::tr( "Author: %1%2" )
                               .arg( QString::fromUtf8( str.c_str() ) )
                               .arg( "\n\n" );
     str = Utf8::encode( scanner.getDictionaryDescription() );
@@ -878,7 +878,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -974,7 +974,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by GlsArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1126,7 +1126,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by GlsResourceRequestRunnable
+  void run();
 
   void cancel() override
   {

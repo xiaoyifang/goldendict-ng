@@ -110,8 +110,7 @@ CONFIG += exceptions \
     stl  \
     c++17 \
     lrelease \
-    utf8_source \
-    force_debug_info
+    utf8_source
 
 mac {
     CONFIG += app_bundle

@@ -16,17 +16,14 @@
 #include "indexedzip.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
-#include "wstring_qt.hh"
 #include "audiolink.hh"
 
 #include <zlib.h>
 #include <map>
 #include <set>
 #include <string>
-// msvc defines _WIN32 https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170
-// gcc also defines __WIN32, _WIN32, __WIN32__
-// todo: unify how windows are detected on headers
-#ifndef _WIN32
+
+#ifndef Q_OS_WIN
 #include <arpa/inet.h>
 #else
 #include <winsock.h>
@@ -95,7 +92,7 @@ struct Ifo
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  Ifo( File::Class & );
+  explicit Ifo( File::Class & );
 };
 
 enum
@@ -176,17 +173,12 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
-    ;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
   QString const& getDescription() override;
 
@@ -805,7 +797,7 @@ void StardictDictionary::pangoToHtml( QString & text )
           else if( style.compare( "font_style", Qt::CaseInsensitive ) == 0
                    || style.compare( "style", Qt::CaseInsensitive ) == 0)
             newSpan += QString( "font-style:" ) + styleRegex.cap( 2 ) + ";";
-          else if( style.compare( "weight", Qt::CaseInsensitive ) == 0
+          else if( style.compare( "font_weight", Qt::CaseInsensitive ) == 0
                    || style.compare( "weight", Qt::CaseInsensitive ) == 0)
           {
             QString str = styleRegex.cap( 2 );
@@ -953,7 +945,7 @@ void StardictDictionary::loadArticle( uint32_t address,
 
   char * ptr = articleBody;
 
-  if ( sameTypeSequence.size() )
+  if ( !sameTypeSequence.empty() )
   {
     /// The sequence is known, it's not stored in the article itself
     for( unsigned seq = 0; seq < sameTypeSequence.size(); ++seq )
@@ -1107,7 +1099,7 @@ QString const& StardictDictionary::getDescription()
     {
       QString copyright = QString::fromUtf8( ifo.copyright.c_str() )
                           .replace( "<br>", "\n", Qt::CaseInsensitive );
-      dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                               .arg( copyright )
                               .arg( "\n\n" );
     }
@@ -1115,7 +1107,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.author.empty() )
     {
       QString author = QString::fromUtf8( ifo.author.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Author: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Author: %1%2" )
                               .arg( author )
                               .arg( "\n\n" );
     }
@@ -1123,7 +1115,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.email.empty() )
     {
       QString email = QString::fromUtf8( ifo.email.c_str() );
-      dictionaryDescription += QString( QObject::tr( "E-mail: %1%2" ) )
+      dictionaryDescription += QObject::tr( "E-mail: %1%2" )
                                .arg( email )
                                .arg( "\n\n" );
     }
@@ -1131,7 +1123,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.website.empty() )
     {
       QString website = QString::fromUtf8( ifo.website.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Website: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Website: %1%2" )
                                .arg( website )
                                .arg( "\n\n" );
     }
@@ -1139,7 +1131,7 @@ QString const& StardictDictionary::getDescription()
     if( !ifo.date.empty() )
     {
       QString date = QString::fromUtf8( ifo.date.c_str() );
-      dictionaryDescription += QString( QObject::tr( "Date: %1%2" ) )
+      dictionaryDescription += QObject::tr( "Date: %1%2" )
                                .arg( date )
                                .arg( "\n\n" );
     }
@@ -1240,7 +1232,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1339,7 +1331,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1602,7 +1594,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by StardictResourceRequestRunnable
+  void run();
 
   void cancel() override
   {

@@ -467,7 +467,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by XdxfArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -963,7 +963,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by XdxfResourceRequestRunnable
+  void run();
 
   void cancel() override
   {
