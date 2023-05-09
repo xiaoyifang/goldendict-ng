@@ -748,9 +748,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this, SLOT(editDictionaries(unsigned)),
     Qt::QueuedConnection);
 
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow,
-    this,&MainWindow::phraseReceived,
-    Qt::QueuedConnection);
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( Config::InputPhrase const & phrase ) {
+    phraseReceived( phrase, WildcardsAreAlreadyEscaped );
+  } );
 
   connect( scanPopup, &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
   connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
@@ -3728,17 +3728,17 @@ ArticleView * MainWindow::getCurrentArticleView()
   return 0;
 }
 
-void MainWindow::phraseReceived( Config::InputPhrase const & phrase )
+void MainWindow::phraseReceived( Config::InputPhrase const & phrase, WildcardPolicy wildcardPolicy )
 {
   toggleMainWindow( true );
-  setTranslateBoxTextAndKeepSuffix( phrase.phrase, EscapeWildcards, NoPopupChange );
+  setTranslateBoxTextAndKeepSuffix( phrase.phrase, wildcardPolicy, NoPopupChange );
   translateBoxSuffix = phrase.punctuationSuffix;
   respondToTranslationRequest( phrase, false );
 }
 
 void MainWindow::wordReceived( const QString & word)
 {
-  phraseReceived( Config::InputPhrase::fromPhrase( word ) );
+  phraseReceived( Config::InputPhrase::fromPhrase( word ), EscapeWildcards );
 }
 
 void MainWindow::headwordReceived( const QString & word, const QString & ID )
