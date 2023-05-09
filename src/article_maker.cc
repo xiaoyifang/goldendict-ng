@@ -142,7 +142,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
 
   if( GlobalBroadcaster::instance()->getPreference()->darkReaderMode )
   {
-    result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";
+    //only enable this darkmode on modern style.
+    if( cfg.displayStyle == "modern" ) {
+      result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";
+    }
 
     // #242525 because Darkreader will invert pure white to this value
     result += R"(
