@@ -142,8 +142,8 @@ win32 {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
-        # silence the warning C4290: C++ exception specification ignored
-        QMAKE_CXXFLAGS += /wd4290 /Zc:__cplusplus /std:c++17 /permissive- 
+        # silence the warning C4290: C++ exception specification ignored,C4267  size_t to const T , lost data.
+        QMAKE_CXXFLAGS += /wd4290 /wd4267 /Zc:__cplusplus /std:c++17 /permissive-
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
 
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
