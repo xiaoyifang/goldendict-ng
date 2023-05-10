@@ -2667,16 +2667,7 @@ void MainWindow::dictsListSelectionChanged()
   QList< QListWidgetItem * > selected = ui.dictsList->selectedItems();
   if( selected.size() )
   {
-    ArticleView * view = getCurrentArticleView();
-    if( view )
-    {
-      QString dictId = ui.dictsList->selectedItems().at( 0 )->data( Qt::UserRole ).toString();
-      view->setActiveArticleId( dictId );
-    }
-    // selection change ,no need to jump to article ,if jump to article ,the position in webview would be changed
-    // when click the dictionary in the html.
-
-    // jumpToDictionary( selected.front() );
+    jumpToDictionary( selected.front() );
   }
 }
 
