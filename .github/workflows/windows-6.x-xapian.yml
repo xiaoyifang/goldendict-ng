@@ -96,6 +96,19 @@ jobs:
           cp -R vcpkg/packages/breakpad_x64-windows-release/*  thirdparty/breakpad
           ls -al thirdparty/breakpad
 
+      - name: vcpkg install
+        shell: powershell
+        run: |   
+          git clone --depth 1 https://github.com/microsoft/vcpkg.git
+          .\vcpkg\bootstrap-vcpkg.bat
+          .\vcpkg\vcpkg.exe install xapian --triplet=x64-windows-release
+      - name: copy vcpkg packages into winlibs
+        shell: bash
+        run: |   
+          ls -al vcpkg/installed/x64-windows-release/
+          cp -R vcpkg/installed/x64-windows-release/*  winlibs
+          ls -al winlibs/lib
+
       # # msvc编译
       - uses: ilammy/msvc-dev-cmd@v1
       #   with:

@@ -56,8 +56,20 @@ jobs:
           submodules: true
       
       - uses: ilammy/msvc-dev-cmd@v1
-        # with:
-        #   arch: ${{ matrix.msvc_arch }}    
+
+      - name: vcpkg install
+        shell: powershell
+        run: |   
+          git clone --depth 1 https://github.com/microsoft/vcpkg.git
+          .\vcpkg\bootstrap-vcpkg.bat
+          .\vcpkg\vcpkg.exe install xapian --triplet=x64-windows-release
+      - name: copy vcpkg packages into winlibs
+        shell: bash
+        run: |   
+          ls -al vcpkg/installed/x64-windows-release/
+          cp -R vcpkg/installed/x64-windows-release/*  winlibs
+          ls -al winlibs/lib
+          
       - name: msvc-build goldendict
         id: build
         shell: cmd

@@ -65,10 +65,8 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
 }
 
 contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
-  HEADERS += \
-  src/audiooutput.hh
-  SOURCES += \
-  src/audiooutput.cc
+  HEADERS += src/audiooutput.hh
+  SOURCES += src/audiooutput.cc
 }
 
 #xapian is the must option now.
@@ -138,6 +136,9 @@ win32 {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
+        #vcpkg package will be installed in this folder
+        LIBS += -L$${PWD}/winlibs/lib
+
         # silence the warning C4290: C++ exception specification ignored,C4267  size_t to const T , lost data.
         QMAKE_CXXFLAGS += /wd4290 /wd4267 /Zc:__cplusplus /std:c++17 /permissive-
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
