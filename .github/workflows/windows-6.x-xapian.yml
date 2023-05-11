@@ -125,10 +125,6 @@ jobs:
            $name = ${env:archiveName}
            echo "::set-output name=packageName::$name" 
     
-#       - uses: actions/upload-artifact@v2
-#         with:
-#           name: ${{ steps.package.outputs.packageName }}
-#           path: ${{ steps.package.outputs.packageName }}.zip
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -176,6 +172,17 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
+
+      - name: upload pdb
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/GoldenDict.pdb
+          asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-xapian-GoldenDict.pdb
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true 
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}          
 
       - name: copy nsis 
         shell: bash
