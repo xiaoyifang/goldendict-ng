@@ -571,9 +571,14 @@ CONFIG( no_epwing_support ) {
   SOURCES += src/dict/epwing.cc \
              src/dict/epwing_book.cc \
              src/dict/epwing_charmap.cc
-  INCLUDEPATH += thirdparty
-  HEADERS += $$files(thirdparty/eb/*.h)
-  SOURCES += $$files(thirdparty/eb/*.c)
+  if(win32){
+    INCLUDEPATH += thirdparty
+    HEADERS += $$files(thirdparty/eb/*.h)
+    SOURCES += $$files(thirdparty/eb/*.c)
+  }
+  else{
+    LIBS += -leb
+  }
 }
 
 CONFIG( chinese_conversion_support ) {
