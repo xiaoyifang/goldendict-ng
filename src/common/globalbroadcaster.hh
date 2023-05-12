@@ -8,6 +8,7 @@
 
 struct ActiveDictIds
 {
+  unsigned groupId;
   QString word;
   QStringList dictIds;
 };

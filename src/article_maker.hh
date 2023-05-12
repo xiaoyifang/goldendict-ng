@@ -81,7 +81,8 @@ class ArticleRequest: public Dictionary::DataRequest
 {
   Q_OBJECT
 
-  QString word, group;
+  QString word;
+  Instances::Group group;
   QMap< QString, QString > contexts;
   std::vector< sptr< Dictionary::Class > > activeDicts;
   
@@ -115,7 +116,7 @@ class ArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ArticleRequest( Config::InputPhrase const & phrase, QString const & group,
+  ArticleRequest( Config::InputPhrase const & phrase, Instances::Group const & group,
                   QMap< QString, QString > const & contexts,
                   std::vector< sptr< Dictionary::Class > > const & activeDicts,
                   std::string const & header,
