@@ -649,9 +649,9 @@ void ArticleRequest::bodyFinished()
         string jsVal = Html::escapeForJavaScript( dictId );
 
         head += QString::fromUtf8(
-                  R"( <div class="gdarticle %1 %2" id="%3" 
-                    onClick="gdMakeArticleActive( '%4' );" 
-                    onContextMenu="gdMakeArticleActive( '%4' );">)" )
+                  R"( <div class="gdarticle %1 %2" id="%3"
+                    onClick="gdMakeArticleActive( '%4', false );"
+                    onContextMenu="gdMakeArticleActive( '%4', false );">)" )
                   .arg(  closePrevSpan ? "" : " gdactivearticle" ,
                          collapse ? " gdcollapsedarticle" : "" ,
                          gdFrom.c_str() ,
