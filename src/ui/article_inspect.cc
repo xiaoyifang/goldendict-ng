@@ -21,26 +21,22 @@ void ArticleInspector::setInspectPage( QWebEnginePage * page )
 {
   viewContainer->page()->setInspectedPage( page );
 
-  if( !page )
-  {
-    qDebug() << "set inspected page to nullptr";
+  if ( !page ) {
+    qDebug() << "reset inspector";
     return;
   }
 
   raise();
   show();
-  qDebug() << "inspector finished";
 }
 
 void ArticleInspector::triggerAction( QWebEnginePage * page )
 {
-  if( !page )
-  {
-    qDebug() << "set inspected page to nullptr";
+  setInspectPage( page );
+
+  if ( !page ) {
     return;
   }
-
-  setInspectPage(page);
 
 #if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK(6,3,0) )
   page->triggerAction( QWebEnginePage::InspectElement );
