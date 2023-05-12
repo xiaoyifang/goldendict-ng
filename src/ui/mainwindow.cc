@@ -1912,8 +1912,6 @@ void MainWindow::pageLoaded( ArticleView * view )
   if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
     view->playSound();
   }
-
-  //updateFoundInDictsList();
 }
 
 void MainWindow::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
@@ -2473,13 +2471,21 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
        || ev->type() == QEvent::KeyPress )
   {
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
-
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
     {
       ArticleView  * view = getCurrentArticleView();
       if ( view  && view->handleF3( obj, ev ) )
         return true;
+    }
+
+    //workaround to fix #660
+    if ( obj == this && ev->type() == QEvent::KeyPress && ( ke->key() == Qt::Key_Up || ke->key() == Qt::Key_Down ) ) {
+      ArticleView * view = getCurrentArticleView();
+      if ( view ) {
+        view->focus();
+        return true;
+      }
     }
   }
 
@@ -2560,16 +2566,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
     }
 
-    if ( ev->type() == QEvent::FocusIn ) {
-      QFocusEvent * focusEvent = static_cast< QFocusEvent * >( ev );
-
-      // select all on mouse click
-      if ( focusEvent->reason() == Qt::MouseFocusReason ) {
-        QTimer::singleShot( 0, this, &MainWindow::focusTranslateLine );
-      }
-      return false;
-    }
-
     if ( ev->type() == QEvent::Resize ) {
       QResizeEvent * resizeEvent = static_cast< QResizeEvent * >( ev );
       groupList->setFixedHeight( resizeEvent->size().height() );
@@ -2624,10 +2620,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   }
 
-
   return QMainWindow::eventFilter( obj, ev );
-
-  return false;
 }
 
 void MainWindow::wordListItemActivated( QListWidgetItem * item )

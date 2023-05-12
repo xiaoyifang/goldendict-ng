@@ -9,7 +9,6 @@
 #include <QTimer>
 #include <QDialog>
 #include <QMainWindow>
-#include "globalbroadcaster.hh"
 #ifdef Q_OS_WIN32
 #include <qt_windows.h>
 #endif
@@ -22,10 +21,6 @@ ArticleWebView::ArticleWebView( QWidget *parent ):
   auto page = new ArticleWebPage( this );
   connect( page, &ArticleWebPage::linkClicked, this, &ArticleWebView::linkClicked );
   this->setPage( page );
-}
-
-ArticleWebView::~ArticleWebView()
-{
 }
 
 void ArticleWebView::setUp( Config::Class * cfg )
@@ -105,12 +100,6 @@ bool ArticleWebView::eventFilter(QObject *obj, QEvent *ev) {
           return true;
         }
     }
-    if( ev->type() == QEvent::FocusIn )
-    {
-      QFocusEvent * pe = static_cast< QFocusEvent * >( ev );
-      focusInEvent( pe );
-      return true;
-    }
 
     return QWebEngineView::eventFilter(obj, ev);
 }
@@ -164,23 +153,6 @@ void ArticleWebView::mouseReleaseEvent(QMouseEvent *event) {
 void ArticleWebView::doubleClickAction(QMouseEvent *event) {
   if (Qt::MouseEventSynthesizedByApplication != event->source()) {
     emit doubleClicked(event->pos());
-  }
-}
-
-void ArticleWebView::focusInEvent( QFocusEvent * event )
-{
-  QWebEngineView::focusInEvent( event );
-
-  switch( event->reason() )
-  {
-    case Qt::MouseFocusReason:
-    case Qt::TabFocusReason:
-    case Qt::BacktabFocusReason:
-      page()->runJavaScript("top.focus();");
-      break;
-
-    default:
-      break;
   }
 }
 

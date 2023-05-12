@@ -23,7 +23,6 @@ class ArticleWebView: public QWebEngineView
 public:
 
   ArticleWebView( QWidget * parent );
-  ~ArticleWebView();
   void setUp( Config::Class * cfg );
 
   bool isMidButtonPressed() const
@@ -55,7 +54,6 @@ protected:
   void mousePressEvent(QMouseEvent *event);
   void mouseReleaseEvent( QMouseEvent * event );
   void doubleClickAction( QMouseEvent * event );
-  void focusInEvent( QFocusEvent * event );
   void wheelEvent( QWheelEvent * event );
 
 

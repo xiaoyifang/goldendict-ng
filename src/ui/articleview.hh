@@ -192,7 +192,10 @@ public:
   void forward();
 
   /// Takes the focus to the view
-  void focus() { webview->setFocus( Qt::ShortcutFocusReason ); }
+  void focus()
+  {
+    webview->setFocus();
+  }
 
   /// Sends *word* to Anki.
   void handleAnkiAction();
