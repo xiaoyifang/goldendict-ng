@@ -9,7 +9,6 @@
 #include "dict/programs.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
-#include "weburlrequestinterceptor.hh"
 #include "wildcard.hh"
 #include "wstring_qt.hh"
 #include <QCryptographicHash>
@@ -379,9 +378,15 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
+  const bool fromMainWindow = parent && parent->objectName() == "MainWindow";
+  if ( fromMainWindow ) {
+    connect( GlobalBroadcaster::instance(),
+             &GlobalBroadcaster::dictionaryChanges,
+             this,
+             &ArticleView::setActiveDictIds );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+    connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+  }
 
   channel = new QWebChannel( webview->page() );
   agent = new ArticleViewAgent(this);
@@ -2153,6 +2158,11 @@ void ArticleView::pasteTriggered()
   }
 }
 
+unsigned ArticleView::getCurrentGroup()
+{
+  return groupComboBox->getCurrentGroup();
+}
+
 void ArticleView::moveOneArticleUp()
 {
   QString current = getCurrentArticle();
@@ -2553,19 +2563,20 @@ void ArticleView::highlightAllFtsOccurences( QWebEnginePage::FindFlags flags )
 }
 
 void ArticleView::setActiveDictIds(ActiveDictIds ad) {
-  if (ad.word == currentWord || historyMode) {
-    // ignore all other signals.
-    qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
-    currentActiveDictIds << ad.dictIds;
-    currentActiveDictIds.removeDuplicates();
-    emit updateFoundInDictsList();
-  }
+  if ( ( ad.word == currentWord  &&  ad.groupId == getCurrentGroup() ) || historyMode)
+    {
+      // ignore all other signals.
+      qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
+      currentActiveDictIds << ad.dictIds;
+      currentActiveDictIds.removeDuplicates();
+      emit updateFoundInDictsList();
+    }
 }
 
 void ArticleView::dictionaryClear( ActiveDictIds ad )
 {
   // ignore all other signals.
-  if( ad.word == currentWord )
+  if( ad.word == currentWord && ad.groupId==getCurrentGroup() )
   {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();

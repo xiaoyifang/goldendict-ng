@@ -352,6 +352,8 @@ private slots:
   /// We handle pasting by attempting to define the word in clipboard.
   void pasteTriggered();
 
+  unsigned getCurrentGroup();
+
   /// Nagivates to the previous article relative to the active one.
   void moveOneArticleUp();
 

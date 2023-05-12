@@ -58,6 +58,12 @@ Group::Group( QString const & name_ ): id( 0 ), name( name_ )
 {
 }
 
+Group::Group( unsigned id_, QString const & name_ ):
+  id( id_ ),
+  name( name_ )
+{
+}
+
 Config::Group Group::makeConfigGroup()
 {
   Config::Group result;
