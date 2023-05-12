@@ -206,15 +206,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   }
 }
 
-class LogFilePtrGuard
-{
-  QFile logFile;
-  Q_DISABLE_COPY( LogFilePtrGuard ) 
-public:
-  LogFilePtrGuard() { logFilePtr = &logFile; }
-  ~LogFilePtrGuard() { logFilePtr = 0; }
-};
-
 int main( int argc, char ** argv )
 {
 #ifdef Q_OS_UNIX
@@ -304,7 +295,15 @@ int main( int argc, char ** argv )
       QWebEngineUrlScheme::registerScheme(webUiScheme);
   }
 
-  LogFilePtrGuard logFilePtrGuard;
+  QFile file;
+  logFilePtr = &file;
+  auto guard = qScopeGuard( [ &file ]() {
+    logFilePtr = nullptr;
+    file.close();
+  } );
+
+  Q_UNUSED( guard )
+
 
   if ( app.isRunning() )
   {
