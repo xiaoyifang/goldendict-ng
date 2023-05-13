@@ -287,12 +287,10 @@ int main( int argc, char ** argv )
     { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdpicture", "gdtts", "ifr", "entry" };
 
   for ( const auto & localScheme : localSchemes ) {
-    QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
-      webUiScheme.setFlags(QWebEngineUrlScheme::SecureScheme |
-                           QWebEngineUrlScheme::LocalScheme |
-                           QWebEngineUrlScheme::LocalAccessAllowed|
-                           QWebEngineUrlScheme::CorsEnabled);
-      QWebEngineUrlScheme::registerScheme(webUiScheme);
+        QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+        webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
+                              | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+        QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
   QFile file;
@@ -304,6 +302,9 @@ int main( int argc, char ** argv )
 
   Q_UNUSED( guard )
 
+  QFont f = QApplication::font();
+  f.setStyleStrategy( QFont::PreferAntialias );
+  QApplication::setFont( f );
 
   if ( app.isRunning() )
   {
