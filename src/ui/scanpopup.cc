@@ -80,11 +80,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  mouseEnteredOnce( false ),
-  mouseIntercepted( false ),
-  hideTimer( this ),
-  starIcon( ":/icons/star.svg" ),
-  blueStarIcon( ":/icons/star_blue.svg" )
+  hideTimer( this )
 {
   ui.setupUi( this );
 
@@ -522,7 +518,11 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
       QPoint currentPos = QCursor::pos();
 
-      QRect desktop = QGuiApplication::primaryScreen()->geometry();
+      auto screen = QGuiApplication::screenAt( currentPos );
+      if ( !screen )
+        return;
+
+      QRect desktop = screen->geometry();
 
       QSize windowSize = geometry().size();
 

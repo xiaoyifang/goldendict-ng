@@ -748,9 +748,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this, SLOT(editDictionaries(unsigned)),
     Qt::QueuedConnection);
 
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow,
-    this,&MainWindow::phraseReceived,
-    Qt::QueuedConnection);
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( Config::InputPhrase const & phrase ) {
+    phraseReceived( phrase, WildcardsAreAlreadyEscaped );
+  } );
 
   connect( scanPopup, &ScanPopup::inspectSignal,this,&MainWindow::inspectElement );
   connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
@@ -1912,8 +1912,6 @@ void MainWindow::pageLoaded( ArticleView * view )
   if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
     view->playSound();
   }
-
-  //updateFoundInDictsList();
 }
 
 void MainWindow::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
@@ -2473,13 +2471,21 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
        || ev->type() == QEvent::KeyPress )
   {
     QKeyEvent * ke = static_cast<QKeyEvent*>( ev );
-
     // Handle F3/Shift+F3 shortcuts
     if ( ke->key() == Qt::Key_F3 )
     {
       ArticleView  * view = getCurrentArticleView();
       if ( view  && view->handleF3( obj, ev ) )
         return true;
+    }
+
+    //workaround to fix #660
+    if ( obj == this && ev->type() == QEvent::KeyPress && ( ke->key() == Qt::Key_Up || ke->key() == Qt::Key_Down ) ) {
+      ArticleView * view = getCurrentArticleView();
+      if ( view ) {
+        view->focus();
+        return true;
+      }
     }
   }
 
@@ -2560,16 +2566,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
     }
 
-    if ( ev->type() == QEvent::FocusIn ) {
-      QFocusEvent * focusEvent = static_cast< QFocusEvent * >( ev );
-
-      // select all on mouse click
-      if ( focusEvent->reason() == Qt::MouseFocusReason ) {
-        QTimer::singleShot( 0, this, &MainWindow::focusTranslateLine );
-      }
-      return false;
-    }
-
     if ( ev->type() == QEvent::Resize ) {
       QResizeEvent * resizeEvent = static_cast< QResizeEvent * >( ev );
       groupList->setFixedHeight( resizeEvent->size().height() );
@@ -2624,10 +2620,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   }
 
-
   return QMainWindow::eventFilter( obj, ev );
-
-  return false;
 }
 
 void MainWindow::wordListItemActivated( QListWidgetItem * item )
@@ -2667,16 +2660,7 @@ void MainWindow::dictsListSelectionChanged()
   QList< QListWidgetItem * > selected = ui.dictsList->selectedItems();
   if( selected.size() )
   {
-    ArticleView * view = getCurrentArticleView();
-    if( view )
-    {
-      QString dictId = ui.dictsList->selectedItems().at( 0 )->data( Qt::UserRole ).toString();
-      view->setActiveArticleId( dictId );
-    }
-    // selection change ,no need to jump to article ,if jump to article ,the position in webview would be changed
-    // when click the dictionary in the html.
-
-    // jumpToDictionary( selected.front() );
+    jumpToDictionary( selected.front() );
   }
 }
 
@@ -3728,17 +3712,17 @@ ArticleView * MainWindow::getCurrentArticleView()
   return 0;
 }
 
-void MainWindow::phraseReceived( Config::InputPhrase const & phrase )
+void MainWindow::phraseReceived( Config::InputPhrase const & phrase, WildcardPolicy wildcardPolicy )
 {
   toggleMainWindow( true );
-  setTranslateBoxTextAndKeepSuffix( phrase.phrase, EscapeWildcards, NoPopupChange );
+  setTranslateBoxTextAndKeepSuffix( phrase.phrase, wildcardPolicy, NoPopupChange );
   translateBoxSuffix = phrase.punctuationSuffix;
   respondToTranslationRequest( phrase, false );
 }
 
 void MainWindow::wordReceived( const QString & word)
 {
-  phraseReceived( Config::InputPhrase::fromPhrase( word ) );
+  phraseReceived( Config::InputPhrase::fromPhrase( word ), EscapeWildcards );
 }
 
 void MainWindow::headwordReceived( const QString & word, const QString & ID )

@@ -206,15 +206,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   }
 }
 
-class LogFilePtrGuard
-{
-  QFile logFile;
-  Q_DISABLE_COPY( LogFilePtrGuard ) 
-public:
-  LogFilePtrGuard() { logFilePtr = &logFile; }
-  ~LogFilePtrGuard() { logFilePtr = 0; }
-};
-
 int main( int argc, char ** argv )
 {
 #ifdef Q_OS_UNIX
@@ -296,15 +287,24 @@ int main( int argc, char ** argv )
     { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdpicture", "gdtts", "ifr", "entry" };
 
   for ( const auto & localScheme : localSchemes ) {
-    QWebEngineUrlScheme webUiScheme(localScheme.toLatin1());
-      webUiScheme.setFlags(QWebEngineUrlScheme::SecureScheme |
-                           QWebEngineUrlScheme::LocalScheme |
-                           QWebEngineUrlScheme::LocalAccessAllowed|
-                           QWebEngineUrlScheme::CorsEnabled);
-      QWebEngineUrlScheme::registerScheme(webUiScheme);
+        QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+        webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
+                              | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+        QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
-  LogFilePtrGuard logFilePtrGuard;
+  QFile file;
+  logFilePtr = &file;
+  auto guard = qScopeGuard( [ &file ]() {
+    logFilePtr = nullptr;
+    file.close();
+  } );
+
+  Q_UNUSED( guard )
+
+  QFont f = QApplication::font();
+  f.setStyleStrategy( QFont::PreferAntialias );
+  QApplication::setFont( f );
 
   if ( app.isRunning() )
   {

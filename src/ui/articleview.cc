@@ -9,7 +9,6 @@
 #include "dict/programs.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
-#include "weburlrequestinterceptor.hh"
 #include "wildcard.hh"
 #include "wstring_qt.hh"
 #include <QCryptographicHash>
@@ -60,10 +59,8 @@ protected:
   QString normalizedString;
   QVector< int > accentMarkPos;
 public:
-  AccentMarkHandler()
-  {}
-  virtual ~AccentMarkHandler()
-  {}
+  AccentMarkHandler()          = default;
+  virtual ~AccentMarkHandler() = default;
   static QChar accentMark()
   { return QChar( 0x301 ); }
 
@@ -76,14 +73,12 @@ public:
     int pos = 0;
     QChar mark = accentMark();
 
-    for( int x = 0; x < baseString.length(); x++ )
-    {
-      if( baseString.at( x ) == mark )
-      {
+    for ( auto const & str : baseString ) {
+      if ( str == mark ) {
         accentMarkPos.append( pos );
         continue;
       }
-      normalizedString.append( baseString.at( x ) );
+      normalizedString.append( str );
       pos++;
     }
   }
@@ -96,9 +91,9 @@ public:
   int mirrorPosition( int const & pos ) const
   {
     int newPos = pos;
-    for( int x = 0; x < accentMarkPos.size(); x++ )
+    for( auto const accentPos: accentMarkPos)
     {
-      if( accentMarkPos.at( x ) < pos )
+      if ( accentPos < pos )
         newPos++;
       else
         break;
@@ -117,10 +112,8 @@ public:
 class DiacriticsHandler : public AccentMarkHandler
 {
 public:
-  DiacriticsHandler()
-  {}
-  ~DiacriticsHandler()
-  {}
+  DiacriticsHandler() = default;
+  ~DiacriticsHandler() = default;
 
   /// Create text without diacriticss
   /// and store diacritic marks positions
@@ -242,10 +235,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
   groupComboBox( groupComboBox_ ),
-  translateLine( translateLine_ ),
-  ftsSearchIsOpened( false ),
-  ftsSearchMatchCase( false ),
-  ftsPosition( 0 )
+  translateLine( translateLine_ )
 {
   // setup GUI
   webview        = new ArticleWebView( this );
@@ -300,7 +290,6 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   connect( webview, &QWebEngineView::loadFinished, this, &ArticleView::loadFinished );
 
-  connect( webview, &QWebEngineView::loadProgress, this, &ArticleView::loadProgress );
   connect( webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
 
   connect( webview->page(), &QWebEnginePage::titleChanged, this, &ArticleView::handleTitleChanged );
@@ -379,9 +368,15 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
+  const bool fromMainWindow = parent && parent->objectName() == "MainWindow";
+  if ( fromMainWindow ) {
+    connect( GlobalBroadcaster::instance(),
+             &GlobalBroadcaster::dictionaryChanges,
+             this,
+             &ArticleView::setActiveDictIds );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+    connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+  }
 
   channel = new QWebChannel( webview->page() );
   agent = new ArticleViewAgent(this);
@@ -602,9 +597,6 @@ void ArticleView::loadFinished( bool result )
     highlightFTSResults();
 }
 
-void ArticleView::loadProgress(int ){
-}
-
 void ArticleView::handleTitleChanged( QString const & title )
 {
   if( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
@@ -620,14 +612,13 @@ void ArticleView::handleUrlChanged( QUrl const & url )
   if ( group )
   {
     // Find the group's instance corresponding to the fragment value
-    for( unsigned x = 0; x < groups.size(); ++x )
-      if ( groups[ x ].id == group )
-      {
+    for ( auto const & g : groups ) {
+      if ( g.id == group ) {
         // Found it
-
-        icon = groups[ x ].makeIcon();
+        icon = g.makeIcon();
         break;
       }
+    }
   }
 
   emit iconChanged( this, icon );
@@ -735,7 +726,7 @@ void ArticleView::load( QUrl const & url ) { webview->load( url ); }
 
 void ArticleView::cleanupTemp()
 {
-  QSet< QString >::iterator it = desktopOpenedTempFiles.begin();
+  auto it = desktopOpenedTempFiles.begin();
   while( it != desktopOpenedTempFiles.end() )
   {
     if( QFile::remove( *it ) )
@@ -937,7 +928,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
     if( group == Instances::Group::AllGroupId )
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     else
-        mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : 0;
+        mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
     if( !mutedDictionaries )
       return QString();
 
@@ -973,7 +964,7 @@ QStringList ArticleView::getMutedDictionaries(unsigned group) {
     if (group == Instances::Group::AllGroupId)
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     else
-      mutedDictionaries = grp ? (popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries) : 0;
+      mutedDictionaries = grp ? (popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries) : nullptr;
     if (!mutedDictionaries)
       return QStringList();
 
@@ -2153,6 +2144,11 @@ void ArticleView::pasteTriggered()
   }
 }
 
+unsigned ArticleView::getCurrentGroup()
+{
+  return groupComboBox->getCurrentGroup();
+}
+
 void ArticleView::moveOneArticleUp()
 {
   QString current = getCurrentArticle();
@@ -2553,19 +2549,20 @@ void ArticleView::highlightAllFtsOccurences( QWebEnginePage::FindFlags flags )
 }
 
 void ArticleView::setActiveDictIds(ActiveDictIds ad) {
-  if (ad.word == currentWord || historyMode) {
-    // ignore all other signals.
-    qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
-    currentActiveDictIds << ad.dictIds;
-    currentActiveDictIds.removeDuplicates();
-    emit updateFoundInDictsList();
-  }
+  if ( ( ad.word == currentWord  &&  ad.groupId == getCurrentGroup() ) || historyMode)
+    {
+      // ignore all other signals.
+      qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
+      currentActiveDictIds << ad.dictIds;
+      currentActiveDictIds.removeDuplicates();
+      emit updateFoundInDictsList();
+    }
 }
 
 void ArticleView::dictionaryClear( ActiveDictIds ad )
 {
   // ignore all other signals.
-  if( ad.word == currentWord )
+  if( ad.word == currentWord && ad.groupId==getCurrentGroup() )
   {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();

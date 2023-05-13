@@ -142,8 +142,8 @@ win32 {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
-        # silence the warning C4290: C++ exception specification ignored
-        QMAKE_CXXFLAGS += /wd4290 /Zc:__cplusplus /std:c++17 /permissive- 
+        # silence the warning C4290: C++ exception specification ignored,C4267  size_t to const T , lost data.
+        QMAKE_CXXFLAGS += /wd4290 /wd4267 /Zc:__cplusplus /std:c++17 /permissive-
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
 
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
@@ -183,9 +183,11 @@ win32 {
         CONFIG += chinese_conversion_support
     }
 }
-!CONFIG( no_macos_universal ) {
+
+!mac {
     DEFINES += INCLUDE_LIBRARY_PATH
 }
+
 unix:!mac {
     DEFINES += HAVE_X11
 
@@ -257,34 +259,21 @@ mac {
     QT_CONFIG -= no-pkg-config
     CONFIG += link_pkgconfig
 
-
-    !CONFIG( no_macos_universal ) {
-        LIBS+=        -lhunspell
-        INCLUDEPATH += $${PWD}/maclibs/include
-        LIBS += -L$${PWD}/maclibs/lib -framework AppKit -framework Carbon
-    }
-    else{
-        PKGCONFIG +=   hunspell
-        INCLUDEPATH += /opt/homebrew/include /usr/local/include
-        LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
-    }
+    PKGCONFIG +=   hunspell
+    INCLUDEPATH += /opt/homebrew/include /usr/local/include
+    LIBS += -L/opt/homebrew/lib -L/usr/local/lib -framework AppKit -framework Carbon
+    
 
     OBJECTIVE_SOURCES += src/macos/machotkeywrapper.mm \
                          src/macos/macmouseover.mm
     ICON = icons/macicon.icns
     QMAKE_INFO_PLIST = redist/myInfo.plist
 
-    !CONFIG( no_macos_universal ) {
-        QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                          cp -nR $${PWD}/maclibs/lib/ GoldenDict.app/Contents/Frameworks/ && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
-    }
-    else{
-        QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                          mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                          cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
-    }
+
+    QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
+                      mkdir -p GoldenDict.app/Contents/MacOS/locale && \
+                      cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
+    
 
     !CONFIG( no_chinese_conversion_support ) {
         CONFIG += chinese_conversion_support
@@ -582,9 +571,14 @@ CONFIG( no_epwing_support ) {
   SOURCES += src/dict/epwing.cc \
              src/dict/epwing_book.cc \
              src/dict/epwing_charmap.cc
-  INCLUDEPATH += thirdparty
-  HEADERS += $$files(thirdparty/eb/*.h)
-  SOURCES += $$files(thirdparty/eb/*.c)
+  if(win32){
+    INCLUDEPATH += thirdparty
+    HEADERS += $$files(thirdparty/eb/*.h)
+    SOURCES += $$files(thirdparty/eb/*.c)
+  }
+  else{
+    LIBS += -leb
+  }
 }
 
 CONFIG( chinese_conversion_support ) {

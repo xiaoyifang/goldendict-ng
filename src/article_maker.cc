@@ -271,7 +271,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     string header = makeHtmlHeader( phrase.phrase, QString(), true );
 
-    return std::make_shared<ArticleRequest>( phrase, "",
+    return std::make_shared<ArticleRequest>( phrase, Instances::Group{},
                                contexts, ftsDicts, header,
                                -1, true );
   }
@@ -363,13 +363,13 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
               QString::fromStdString( activeDicts[ x ]->getId() ) ) )
         unmutedDicts.push_back( activeDicts[ x ] );
 
-    return  std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
+    return  std::make_shared<ArticleRequest>( phrase, Instances::Group{ activeGroup ? activeGroup->id:0, activeGroup ? activeGroup->name : ""},
                                contexts, unmutedDicts, header,
                                cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
                                cfg.alwaysExpandOptionalParts, ignoreDiacritics );
   }
   else
-    return std::make_shared<ArticleRequest>( phrase, activeGroup ? activeGroup->name : "",
+    return std::make_shared<ArticleRequest>( phrase, Instances::Group{ activeGroup ? activeGroup->id:0, activeGroup ? activeGroup->name : ""},
                                contexts, activeDicts, header,
                                cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
                                cfg.alwaysExpandOptionalParts, ignoreDiacritics );
@@ -434,7 +434,7 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
 //////// ArticleRequest
 
 ArticleRequest::ArticleRequest( Config::InputPhrase const & phrase,
-                                QString const & group_,
+                                Instances::Group const & group_,
                                 QMap< QString, QString > const & contexts_,
                                 vector< sptr< Dictionary::Class > > const & activeDicts_,
                                 string const & header,
@@ -459,7 +459,7 @@ ArticleRequest::ArticleRequest( Config::InputPhrase const & phrase,
   appendDataSlice( (void *) header.data(), header.size() );
 
   //clear founded dicts.
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{word} );
+  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{group.id, word} );
 
   // Accumulate main forms
   for( unsigned x = 0; x < activeDicts.size(); ++x )
@@ -649,9 +649,9 @@ void ArticleRequest::bodyFinished()
         string jsVal = Html::escapeForJavaScript( dictId );
 
         head += QString::fromUtf8(
-                  R"( <div class="gdarticle %1 %2" id="%3" 
-                    onClick="gdMakeArticleActive( '%4' );" 
-                    onContextMenu="gdMakeArticleActive( '%4' );">)" )
+                  R"( <div class="gdarticle %1 %2" id="%3"
+                    onClick="gdMakeArticleActive( '%4', false );"
+                    onContextMenu="gdMakeArticleActive( '%4', false );">)" )
                   .arg(  closePrevSpan ? "" : " gdactivearticle" ,
                          collapse ? " gdcollapsedarticle" : "" ,
                          gdFrom.c_str() ,
@@ -753,7 +753,7 @@ void ArticleRequest::bodyFinished()
 
         // Larger words are usually whole sentences - don't clutter the output
         // with their full bodies.
-        footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group );
+        footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group.name );
 
         // When there were no definitions, we run stemmed search.
         stemmedWordFinder = std::make_shared< WordFinder >( this );
@@ -775,23 +775,23 @@ void ArticleRequest::bodyFinished()
       appendDataSlice( footer.data(), footer.size() );
     }
 
-    if( stemmedWordFinder.get() ) {
+    if ( stemmedWordFinder.get() ) {
       update();
       qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
       dictIds.clear();
     }
     else {
       finish();
       qDebug() << "send dicts(finished):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
+      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
       dictIds.clear();
     }
   }
-  else if( wasUpdated ) {
+  else if ( wasUpdated ) {
     update();
     qDebug() << "send dicts(updated):" << word << ":" << dictIds;
-    emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ word, dictIds } );
+    emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
     dictIds.clear();
   }
 }
