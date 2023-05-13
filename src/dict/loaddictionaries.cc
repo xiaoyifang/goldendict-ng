@@ -12,6 +12,7 @@
 #include "dict/hunspell.hh"
 #include "dictdfiles.hh"
 #include "dict/romaji.hh"
+#include "dict/customtransliteration.hh"
 #include "dict/russiantranslit.hh"
 #include "dict/german.hh"
 #include "dict/greektranslit.hh"
@@ -212,7 +213,7 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 #endif
 
   addDicts(Romaji::makeDictionaries( cfg.transliteration.romaji ));
-
+  addDicts(CustomTranslit::makeDictionaries( cfg.transliteration.customTrans));
 
   // Make Russian transliteration
   if ( cfg.transliteration.enableRussianTransliteration )

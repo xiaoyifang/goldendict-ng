@@ -321,6 +321,7 @@ HEADERS += \
     src/dict/belarusiantranslit.hh \
     src/dict/bgl.hh \
     src/dict/bgl_babylon.hh \
+    src/dict/customtransliteration.hh \
     src/dict/dictdfiles.hh \
     src/dict/dictionary.hh \
     src/dict/dictserver.hh \
@@ -444,6 +445,7 @@ SOURCES += \
     src/dict/belarusiantranslit.cc \
     src/dict/bgl.cc \
     src/dict/bgl_babylon.cc \
+    src/dict/customtransliteration.cpp \
     src/dict/dictdfiles.cc \
     src/dict/dictionary.cc \
     src/dict/dictserver.cc \
