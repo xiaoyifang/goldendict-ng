@@ -63,26 +63,28 @@ void ScanFlag::showScanFlag()
   int x, y;
 
   /// Try the to-the-right placement
-  if ( currentPos.x() + 4 + windowSize.width() <= desktop.topRight().x() )
+  if ( currentPos.x() + 4 + windowSize.width() <= desktop.topRight().x() ) {
     x = currentPos.x() + 4;
-  else
-  /// Try the to-the-left placement
-  if ( currentPos.x() - 4 - windowSize.width() >= desktop.x() )
+  }
+  else if ( currentPos.x() - 4 - windowSize.width() >= desktop.x() ) {
+    /// Try the to-the-left placement
     x = currentPos.x() - 4 - windowSize.width();
-  else
-  // Center it
+  }
+  else { // Center it
     x = desktop.x() + ( desktop.width() - windowSize.width() ) / 2;
+  }
 
   /// Try the to-the-top placement
-  if ( currentPos.y() - 15 - windowSize.height() >= desktop.y() )
+  if ( currentPos.y() - 15 - windowSize.height() >= desktop.y() ) {
     y = currentPos.y() - 15 - windowSize.height();
-  else
-  /// Try the to-the-bottom placement
-  if ( currentPos.y() + 15 + windowSize.height() <= desktop.bottomLeft().y() )
+  }
+  else if ( currentPos.y() + 15 + windowSize.height() <= desktop.bottomLeft().y() ) {
+    /// Try the to-the-bottom placement
     y = currentPos.y() + 15;
-  else
-  // Center it
+  }
+  else { // Center it
     y = desktop.y() + ( desktop.height() - windowSize.height() ) / 2;
+  }
 
   move( x, y );
 

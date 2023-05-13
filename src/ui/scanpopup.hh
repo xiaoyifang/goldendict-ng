@@ -145,8 +145,8 @@ private:
   ScanFlag * scanFlag;
 #endif
 
-  bool mouseEnteredOnce;
-  bool mouseIntercepted;
+  bool mouseEnteredOnce = false;
+  bool mouseIntercepted = false;
 
   QPoint startPos; // For window moving
   QByteArray pinnedGeometry;
@@ -157,7 +157,8 @@ private:
 
   QTimer mouseGrabPollTimer;
 
-  QIcon starIcon, blueStarIcon;
+  QIcon starIcon     = QIcon( ":/icons/star.svg" );
+  QIcon blueStarIcon = QIcon( ":/icons/star_blue.svg" );
 
   void handleInputWord( QString const & , bool forcePopup = false );
   void engagePopup( bool forcePopup, bool giveFocus = false );

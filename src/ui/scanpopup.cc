@@ -80,11 +80,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  mouseEnteredOnce( false ),
-  mouseIntercepted( false ),
-  hideTimer( this ),
-  starIcon( ":/icons/star.svg" ),
-  blueStarIcon( ":/icons/star_blue.svg" )
+  hideTimer( this )
 {
   ui.setupUi( this );
 
