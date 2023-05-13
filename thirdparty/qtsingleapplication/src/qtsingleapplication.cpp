@@ -210,7 +210,7 @@ bool QtSingleApplication::sendMessage(const QString &message, int timeout)
     Returns the application identifier. Two processes with the same
     identifier will be regarded as instances of the same application.
 */
-QString QtSingleApplication::id() const
+QString QtSingleApplication::appId() const
 {
     return peer->applicationId();
 }

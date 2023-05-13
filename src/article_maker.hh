@@ -86,7 +86,7 @@ class ArticleRequest: public Dictionary::DataRequest
   QMap< QString, QString > contexts;
   std::vector< sptr< Dictionary::Class > > activeDicts;
   
-  std::set< gd::wstring > alts; // Accumulated main forms
+  std::set< gd::wstring, std::less<> > alts; // Accumulated main forms
   std::list< sptr< Dictionary::WordSearchRequest > > altSearches;
   std::list< sptr< Dictionary::DataRequest > > bodyRequests;
   bool altsDone{ false };
