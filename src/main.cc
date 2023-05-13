@@ -29,6 +29,8 @@
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 
 #include "gddebug.hh"
+#include <QMutexLocker>
+#include <QMutex>
 
 #if defined(USE_BREAKPAD)
   #include "client/windows/handler/exception_handler.h"
@@ -48,6 +50,8 @@ bool callback(const wchar_t* dump_path, const wchar_t* id,
 }
 #endif
 
+QMutex logMutex;
+
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
@@ -59,6 +63,8 @@ void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
                       .arg( mess );
 
   if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
+    //without the lock ,on multithread,there would be assert error.
+    QMutexLocker _( &logMutex );
     switch ( type ) {
       case QtDebugMsg:
         message.insert( 0, "Debug: " );
@@ -84,6 +90,8 @@ void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
 
     return;
   }
+
+  //the following code lines actually will have no chance to run, schedule to remove in the future.
   QByteArray msg = mess.toUtf8().constData();
   switch ( type ) {
     case QtDebugMsg:
