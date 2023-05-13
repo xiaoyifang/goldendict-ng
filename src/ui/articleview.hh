@@ -86,8 +86,9 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QStringList allMatches;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened, ftsSearchMatchCase;
-  int ftsPosition;
+  bool ftsSearchIsOpened = false;
+  bool ftsSearchMatchCase = false;
+  int ftsPosition=0;
 
   QString delayedHighlightText;
 
@@ -334,7 +335,6 @@ public slots:
 private slots:
   void inspectElement();
   void loadFinished( bool ok );
-  void loadProgress(int);
   void handleTitleChanged( QString const & title );
   void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
