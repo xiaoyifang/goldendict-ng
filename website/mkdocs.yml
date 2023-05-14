@@ -40,6 +40,7 @@ nav:
       - Command Lines: topic_commandline.md
       - Custom Stylesheets: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
+      - Custom transliteration: topic_transliteration.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Contributor Guides:
     - Developer: developer.md
