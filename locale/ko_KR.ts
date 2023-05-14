@@ -5280,6 +5280,21 @@ based on English phonology</source>
       <translation>히라가나 일본어 문자표</translation>
     </message>
     <message>
+      <location filename="../src/ui/sources.ui" line="835"/>
+      <source>Custom transliteration</source>
+      <translation type="unfinished">Custom transliteration</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="844"/>
+      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
+      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="854"/>
+      <source>ae;æ #this is an example</source>
+      <translation type="unfinished">ae;æ #this is an example</translation>
+    </message>
+    <message>
       <location filename="../src/ui/sources.ui" line="681"/>
       <source>Transliteration</source>
       <translation>문자변환</translation>
