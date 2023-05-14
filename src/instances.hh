@@ -37,8 +37,6 @@ struct Group
 
   Group(unsigned id, QString const & name_);
 
-  Group() = default;
-
   /// Makes the configuration group from the current contents.
   Config::Group makeConfigGroup();
 
