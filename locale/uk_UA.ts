@@ -85,62 +85,62 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="313"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>Потім наведіть курсор миші на слово, котре ви бажаєте перекласти, у сторонній програмі, тоді появиться контекстне вікно з потрібним описом слова.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="306"/>
+      <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Контекстні вікна&lt;/h3&gt;Для пошуку слів з інших запущених програм вам потрібно ввімкнути &lt;i&gt;«Контекстні вікна»&lt;/i&gt; в меню &lt;b&gt;Налаштування&lt;/b&gt; і потім може увімкнути його в будь-який момент натиснувши піктограму «Контекстне вікно» вище, або натиснувши піктограму в лотку нижче правим клацом мишки і вибравши його в контекстному меню. </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Expand article</source>
       <translation>Розкрити статтю</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Collapse article</source>
       <translation>Згорнути статтю</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="234"/>
+      <location filename="../src/article_maker.cc" line="232"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Нема перекладу для &lt;b&gt;%1&lt;/b&gt; в групі &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="302"/>
       <source>Working with popup</source>
       <translation>Контекстні вікна</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="394"/>
+      <location filename="../src/article_maker.cc" line="392"/>
       <source>(untitled)</source>
       <translation>(без назви)</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="284"/>
       <source>Welcome!</source>
       <translation>Ласкаво просимо!</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="316"/>
+      <location filename="../src/article_maker.cc" line="314"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>Тепер виберіть будь-яке слово,котре ви бажаєте перекласти, у сторонній програмі за допомогою мишки (подвійний клац або підвівши курсор при затиснутій лівій кнопці), тоді появиться контекстне вікно з потрібним описом слова.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="238"/>
+      <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Нема перекладу в групі &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="288"/>
+      <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спочатку відвідайте &lt;b&gt;Зміни|Словники&lt;/b&gt;, та додайте деякі шляхи до словників, де їх можна знайти, вкажіть варіанти сайтів Wikipedia або інших джерел, встановити порядок словників або згрупувати словники.&lt;p&gt;І тоді ви зможете шукати самі слова! Ви можете це здійснити в цьому вікні, використовуючи панель зліва, або можете через &lt;a href=&quot;Контекстні вікна&quot;&gt;шукати слова з інших запущених програм&lt;/a&gt;. &lt;p&gt;Щоб налаштувати програму, перевірте доступність налаштувань в &lt;b&gt;Зміни|Налаштування&lt;/b&gt;. Всі параметри мають підказки, переконайтесь, що прочитали їх, якщо в чомусь не впевнені.&lt;p&gt;Якщо потрібна допомога, маєте якісь запитання, поради або просто бажаєте поділитись враженнями, ми будемо раді кожному на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форумі&lt;/a&gt; програми.&lt;p&gt;Відвідайте &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайт&lt;/a&gt; програми щодо оновлень. &lt;p&gt;© 2008–2013 Konstantin Isakov. Ліцензовано за GPLv3 або пізнішої версії.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="406"/>
+      <location filename="../src/article_maker.cc" line="404"/>
       <source>(picture)</source>
       <translation>(зображення)</translation>
     </message>
@@ -148,27 +148,27 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="674"/>
+      <location filename="../src/article_maker.cc" line="672"/>
       <source>Expand article</source>
       <translation>Розкрити статтю</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="675"/>
+      <location filename="../src/article_maker.cc" line="673"/>
       <source>From </source>
       <translation>Зі словника</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="678"/>
+      <location filename="../src/article_maker.cc" line="676"/>
       <source>Collapse article</source>
       <translation>Згорнути статтю</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="693"/>
+      <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
       <translation>Створити нову нотатку Анкі</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="706"/>
+      <location filename="../src/article_maker.cc" line="704"/>
       <source>Query error: %1</source>
       <translation>Помилка запиту: %1</translation>
     </message>
@@ -211,7 +211,7 @@
       <translation>Не вдалось звантажити вказаний ресурс.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2096"/>
+      <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>Не вдалось створити тимчасовий файл.</translation>
     </message>
@@ -220,7 +220,7 @@
       <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1807"/>
+      <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&amp;Пошук «%1»</translation>
     </message>
@@ -233,13 +233,13 @@
       <translation>&amp;Попереднє</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1815"/>
+      <location filename="../src/ui/articleview.cc" line="1806"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>Пошук «%1» в &amp;новій вкладці</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1367"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1358"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>Вказаного ресурсу не існує.</translation>
     </message>
@@ -252,42 +252,42 @@
       <translation>&amp;З урахуванням регістру</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2107"/>
+      <location filename="../src/ui/articleview.cc" line="2098"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>Не вдалось відкрити файл ресурсу, спробуйте відкрити вручну: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1841"/>
+      <location filename="../src/ui/articleview.cc" line="1832"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>Пошук «%1» в %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="332"/>
+      <location filename="../src/ui/articleview.cc" line="321"/>
       <source>Select Current Article</source>
       <translation>Вибрати поточний об&apos;єкт</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="337"/>
+      <location filename="../src/ui/articleview.cc" line="326"/>
       <source>Copy as text</source>
       <translation>Скопіювати як текст</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="342"/>
+      <location filename="../src/ui/articleview.cc" line="331"/>
       <source>Inspect</source>
       <translation>Дослідити</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1849"/>
+      <location filename="../src/ui/articleview.cc" line="1840"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>Пошук «%1»в %2 в &amp;новій вкладці</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1759"/>
+      <location filename="../src/ui/articleview.cc" line="1750"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>Відкрити посилання в новій в&amp;кладці</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1766"/>
+      <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Відкрити посилання у &amp;зовнішньому переглядачі</translation>
     </message>
@@ -296,58 +296,58 @@
       <translation>Виділити &amp;все</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1004"/>
+      <location filename="../src/ui/articleview.cc" line="995"/>
       <source>Resource</source>
       <translation>Ресурс</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1009"/>
+      <location filename="../src/ui/articleview.cc" line="1000"/>
       <source>Audio</source>
       <translation>Аудіо</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1014"/>
+      <location filename="../src/ui/articleview.cc" line="1005"/>
       <source>TTS Voice</source>
       <translation>Голос TTS</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1019"/>
+      <location filename="../src/ui/articleview.cc" line="1010"/>
       <source>Picture</source>
       <translation>Зображення</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Відеозапис</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1035"/>
+      <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
       <translation>Відеозапис: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1052"/>
+      <location filename="../src/ui/articleview.cc" line="1043"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>Визначення зі словника &quot;%1&quot;: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1060"/>
+      <location filename="../src/ui/articleview.cc" line="1051"/>
       <source>Definition: %1</source>
       <translation>Визначення: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1406"/>
+      <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Вказана аудіо програма не існує.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1753"/>
+      <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
       <translation>Відкрити &amp;посилання</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Зберегти Закладку &quot;%1...&quot;</translation>
     </message>
@@ -360,80 +360,80 @@
       <translation>Звукові файли (*.wav *.oga *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2137"/>
+      <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>ПОПЕРЕДЖЕННЯ: Аудіо-плеєр: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1292"/>
-      <location filename="../src/ui/articleview.cc" line="1327"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1283"/>
+      <location filename="../src/ui/articleview.cc" line="1318"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>ERROR: %1</source>
       <translation>Помилка:%1 </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2009"/>
+      <location filename="../src/ui/articleview.cc" line="2000"/>
       <source>Save sound</source>
       <translation>Зберегти звук</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2024"/>
+      <location filename="../src/ui/articleview.cc" line="2015"/>
       <source>Save image</source>
       <translation>Зберегти малюнок</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2026"/>
+      <location filename="../src/ui/articleview.cc" line="2017"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>Графічні файли (*.bmp *.jpg *.png *.tif);;Усі файли (*.*) </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1782"/>
+      <location filename="../src/ui/articleview.cc" line="1773"/>
       <source>Save &amp;image...</source>
       <translation>Зберегти &amp;зображення…</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="199"/>
+      <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
       <translation>Фраза не знайдена</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="207"/>
+      <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
       <translation>%1 з %2 збігів</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1789"/>
+      <location filename="../src/ui/articleview.cc" line="1780"/>
       <source>Save s&amp;ound...</source>
       <translation>Зберегти з&amp;вук</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1820"/>
+      <location filename="../src/ui/articleview.cc" line="1811"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>Послати &quot;%1&quot; до стрічки введення</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1826"/>
-      <location filename="../src/ui/articleview.cc" line="1878"/>
+      <location filename="../src/ui/articleview.cc" line="1817"/>
+      <location filename="../src/ui/articleview.cc" line="1869"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>&amp;Додати &quot;%1&quot; до історії</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1868"/>
+      <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;Надіслати поточну статтю Анкі</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>&amp;Надіслати текст анекдоту</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2011"/>
+      <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Звукові файли (*.wav *.oga *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2081"/>
+      <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>Не вдалося відтворити звуковий файл: %1</translation>
     </message>
@@ -615,6 +615,8 @@ between classic and school orthography in cyrillic)</source>
     <name>DictGroupsWidget</name>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
+      <location filename="../src/ui/groups_widgets.cc" line="789"/>
+      <location filename="../src/ui/groups_widgets.cc" line="890"/>
       <source>Confirmation</source>
       <translation>Підтвердження</translation>
     </message>
@@ -624,51 +626,55 @@ between classic and school orthography in cyrillic)</source>
       <translation>Бажаєте створити групи, впорядковані за різними мовами?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="851"/>
+      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Об&apos;єднати групи за основною мовою у &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="868"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>Об&apos;єднати групи за бажаною мовою у &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
       <translation type="unfinished">Auto group by folder failed.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can be reached.</source>
       <translation type="unfinished">The parent directory of %1 can be reached.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="892"/>
       <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="886"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Зробити двох-бокову групу перекладу &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="904"/>
-      <location filename="../src/ui/groups_widgets.cc" line="923"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Об&apos;єднати групи з &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
       <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="835"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1010"/>
+      <location filename="../src/ui/groups_widgets.cc" line="985"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
       <source>Dictionaries: </source>
       <translation>Словники: </translation>
     </message>
@@ -751,57 +757,63 @@ between classic and school orthography in cyrillic)</source>
       <translation>Фільтр рядка (фіксована стрічка, підстановка або регулярний вираз)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="42"/>
       <source>Text</source>
       <translation>Текст</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="43"/>
       <source>Wildcards</source>
       <translation>Шаблони</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="45"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="266"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <source>Loading headwords...</source>
+      <translation type="unfinished">Loading headwords...</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictheadwords.cc" line="281"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>Унікальний загальний заголовок: %1, фільтрувати: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="282"/>
+      <location filename="../src/ui/dictheadwords.cc" line="338"/>
       <source>Save headwords to file</source>
       <translation>Зберігати заголовки у файл</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="284"/>
+      <location filename="../src/ui/dictheadwords.cc" line="340"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Текстові файли (*.txt);;Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="292"/>
+      <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
       <translation>Не вдалося відкрити експортований файл</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Export headwords...</source>
       <translation>Експортувати слова заголовків...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Cancel</source>
       <translation>Скасувати</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="367"/>
+      <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
       <translation>Процес експорту перервано</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="375"/>
+      <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
       <translation>Експорт завершено</translation>
     </message>
@@ -877,22 +889,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictServer</name>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="274"/>
+      <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Url: </source>
       <translation>Адреса: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="275"/>
+      <location filename="../src/dict/dictserver.cc" line="276"/>
       <source>Databases: </source>
       <translation>Бази даних: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="276"/>
+      <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
       <translation>Пошукові стратегії: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="280"/>
+      <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
       <translation>База даних сервера</translation>
     </message>
@@ -985,8 +997,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>EditDictionaries</name>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="47"/>
-      <location filename="../src/ui/editdictionaries.cc" line="248"/>
+      <location filename="../src/ui/editdictionaries.cc" line="45"/>
+      <location filename="../src/ui/editdictionaries.cc" line="251"/>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Словники</translation>
     </message>
@@ -996,33 +1008,33 @@ between classic and school orthography in cyrillic)</source>
       <translation>Словники</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="134"/>
       <source>Accept</source>
       <translation>Прийняти</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="133"/>
+      <location filename="../src/ui/editdictionaries.cc" line="136"/>
       <source>Cancel</source>
       <translation>Скасувати</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="127"/>
+      <location filename="../src/ui/editdictionaries.cc" line="130"/>
       <source>Sources changed</source>
       <translation>Джерела змінено</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="44"/>
       <source>&amp;Sources</source>
       <translation>&amp;Джерела</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="48"/>
-      <location filename="../src/ui/editdictionaries.cc" line="250"/>
+      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="253"/>
       <source>&amp;Groups</source>
       <translation>&amp;Групи</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="128"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>Деякі джерела змінено. Бажаєте прийняти ці зміни?</translation>
     </message>
@@ -1035,7 +1047,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Попередня сторінка</translation>
     </message>
     <message>
-      <location filename="../src/dict/epwing.cc" line="386"/>
+      <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
       <translation>Наступна сторінка</translation>
     </message>
@@ -1051,60 +1063,60 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="234"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Full-text search</source>
       <translation>Повнотекстовий пошук</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
       <translation>Цілі слова</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="244"/>
+      <location filename="../src/fulltextsearch.cc" line="242"/>
       <source>Plain text</source>
       <translation>Простий текст</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
       <source>Wildcards</source>
       <translation>Шаблони</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="247"/>
+      <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="257"/>
+      <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>підтримати синтаксис пошуку xapian наприклад AND +/- тощо</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="263"/>
+      <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
       <translation>Максимальна відстань між словами (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="272"/>
+      <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
       <translation>Максимум статей на словник (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="311"/>
-      <location filename="../src/fulltextsearch.cc" line="441"/>
-      <location filename="../src/fulltextsearch.cc" line="562"/>
-      <location filename="../src/fulltextsearch.cc" line="575"/>
+      <location filename="../src/fulltextsearch.cc" line="309"/>
+      <location filename="../src/fulltextsearch.cc" line="443"/>
+      <location filename="../src/fulltextsearch.cc" line="564"/>
+      <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
       <translation>Знайдено статей: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="394"/>
+      <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
       <translation>Зараз індексування: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="395"/>
+      <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>Без ефекту</translation>
     </message>
@@ -1113,17 +1125,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>Символи CJK у пошуковому рядку не сумісні з пошуковим режимом &quot;Цілі слова&quot; і &quot;Простий текст&quot;</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="452"/>
+      <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
       <translation>У рядку пошуку повинно міститися хоча б одне слово </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="453"/>
+      <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
       <translation> або більше символів</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="464"/>
+      <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
       <translation>Немає словників для повнотекстового пошуку</translation>
     </message>
@@ -1131,7 +1143,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="644"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
       <translation>Помилка в файлі уподобань</translation>
     </message>
@@ -1139,27 +1151,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="30"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="31"/>
       <source>&amp;Delete Selected</source>
       <translation>&amp;Вилучити виділене</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="39"/>
       <source>Copy Selected</source>
       <translation>Скопіювати виділене</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
       <translation>Додати теку</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
       <translation>Обране:</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Всі вибрані елементи буде видалено. Продовжити?</translation>
     </message>
@@ -1167,37 +1179,37 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
-      <location filename="../src/dict/forvo.cc" line="194"/>
+      <location filename="../src/dict/forvo.cc" line="188"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>Помилка аналізу XML: %1 в %2,%3</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="270"/>
+      <location filename="../src/dict/forvo.cc" line="264"/>
       <source>Added %1</source>
       <translation>Додано %1</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="273"/>
+      <location filename="../src/dict/forvo.cc" line="267"/>
       <source>by</source>
       <translation> </translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Male</source>
       <translation>чоловіком</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Female</source>
       <translation>жінкою</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="279"/>
+      <location filename="../src/dict/forvo.cc" line="273"/>
       <source>from</source>
       <translation>з</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="317"/>
+      <location filename="../src/dict/forvo.cc" line="309"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>Перейдіть до меню &lt;b&gt;Зміни|Словники|Джерела|Forvo&lt;/b&gt; та застосуйте наш власний ключ API, щоб усунути цю проблему.</translation>
     </message>
@@ -1336,12 +1348,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Вкладка 2</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="162"/>
+      <location filename="../src/ui/groups.cc" line="174"/>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Бажаєте вилучити всі групи?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="149"/>
+      <location filename="../src/ui/groups.cc" line="161"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Бажаєте вилучити групу &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
@@ -1356,17 +1368,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>Відкрити список груп</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="148"/>
+      <location filename="../src/ui/groups.cc" line="160"/>
       <source>Remove group</source>
       <translation>Вилучити групу</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="136"/>
+      <location filename="../src/ui/groups.cc" line="148"/>
       <source>Rename group</source>
       <translation>Перейменуйте групу</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="137"/>
+      <location filename="../src/ui/groups.cc" line="149"/>
       <source>Give a new name for the group:</source>
       <translation>Надайте нову назву групі:</translation>
     </message>
@@ -1381,7 +1393,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Додати групу</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="110"/>
+      <location filename="../src/ui/groups.cc" line="113"/>
       <source>Add group</source>
       <translation>Додати групу</translation>
     </message>
@@ -1391,28 +1403,48 @@ between classic and school orthography in cyrillic)</source>
       <translation>Створити нову групу словників</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="197"/>
+      <location filename="../src/ui/groups.ui" line="203"/>
+      <source>Group by Languages</source>
+      <translation type="unfinished">Group by Languages</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="210"/>
+      <source>Create folder-based groups.</source>
+      <translation type="unfinished">Create folder-based groups.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="213"/>
+      <source>Group by Folders</source>
+      <translation type="unfinished">Group by Folders</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="220"/>
+      <source>Group by Metadata</source>
+      <translation type="unfinished">Group by Metadata</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="244"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Перено&amp;сьте словники з/в групи, переміщайте їх усередині групи, впорядковуйте використовуючи мишку.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui" line="153"/>
       <source>Rename current dictionary group</source>
       <translation>Перейменувати поточну групу</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui" line="163"/>
       <source>Remove current dictionary group</source>
       <translation>Вилучити поточну групу</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="111"/>
+      <location filename="../src/ui/groups.cc" line="114"/>
       <source>Give a name for the new group:</source>
       <translation>Надайте назву новій групі:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="186"/>
-      <location filename="../src/ui/groups.cc" line="161"/>
+      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Вилучити всі групи</translation>
     </message>
@@ -1427,7 +1459,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>І додати вибрані словники у групу (Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui" line="166"/>
       <source>&amp;Remove group</source>
       <translation>&amp;Вилучити групу</translation>
     </message>
@@ -1437,22 +1469,21 @@ between classic and school orthography in cyrillic)</source>
       <translation>Групи:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Re&amp;name group</source>
       <translation>&amp;Перейменувати</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="183"/>
+      <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove all dictionary groups</source>
       <translation>Вилучити всі групи</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui" line="200"/>
       <source>Create language-based groups</source>
       <translation>Створити групи, впорядковані за мовою</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
       <translation>Автоматичне групування</translation>
     </message>
@@ -1527,12 +1558,12 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="285"/>
+      <location filename="../src/dict/hunspell.cc" line="259"/>
       <source>Spelling suggestions: </source>
       <translation>Орфографічні підказки: </translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="856"/>
+      <location filename="../src/dict/hunspell.cc" line="780"/>
       <source>%1 Morphology</source>
       <translation>Морфологія %1</translation>
     </message>
@@ -1577,1008 +1608,1008 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="87"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
       <translation>Еве</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
       <translation>Ідо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
       <translation>Лаоська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Twi</source>
       <translation>Тві</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
       <translation>Афар</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
       <translation>Акан</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Cree</source>
       <translation>Крі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
       <translation>Ігбо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
       <translation>Комі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="106"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Manx</source>
       <translation>Манкс</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pali</source>
       <translation>Палі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Thai</source>
       <translation>Тайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Urdu</source>
       <translation>Урду</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="302"/>
       <source>Zulu</source>
       <translation>Зулуська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Czech</source>
       <translation>Чеська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Dutch</source>
       <translation>Голландська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
       <translation>Ганда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="95"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fulah</source>
       <translation>Фула</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="88"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Greek</source>
       <translation>Грецька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="107"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hausa</source>
       <translation>Гауса</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="109"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
       <translation>Хінді</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="101"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Irish</source>
       <translation>Ірландська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Khmer</source>
       <translation>Кхмерська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kongo</source>
       <translation>Конґолезька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Latin</source>
       <translation>Латинська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Malay</source>
       <translation>Малайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Maori</source>
       <translation>Маорі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>Nauru</source>
       <translation>Науру</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Oriya</source>
       <translation>Орія</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
       <translation>Оромо
 </translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
       <translation>Санго</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
       <translation>Шона</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tajik</source>
       <translation>Таджицька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tamil</source>
       <translation>Тамільська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
       <translation>Татарська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
       <translation>Свазі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tonga</source>
       <translation>Тонга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Inupiaq</source>
       <translation>Інупіак</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
       <translation>Венда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Uzbek</source>
       <translation>Узбецька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="82"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>Welsh</source>
       <translation>Уельська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
       <translation>Волоф</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
       <translation>Хоза</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Italian</source>
       <translation>Італійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Raeto-Romance</source>
       <translation>Ретороманська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="86"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
       <translation>Дзонг-ке</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
       <translation>Каннада</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
       <translation>Північна Ндебелє</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Abkhazian</source>
       <translation>Абхазька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Kirghiz</source>
       <translation>Киргизька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
       <translation>Рунді</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="102"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Scottish Gaelic</source>
       <translation>Гаельська (Шотландія)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Albanian</source>
       <translation>Албанська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Latvian</source>
       <translation>Латвійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Malayalam</source>
       <translation>Малайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Kurdish</source>
       <translation>Курдська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bulgarian</source>
       <translation>Болгарська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
       <translation>Лінгала</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Maltese</source>
       <translation>Мальтійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Marathi</source>
       <translation>Мараті</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Arabic</source>
       <translation>Арабська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="93"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
       <translation>Баскська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Avaric</source>
       <translation>Аварська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bihari</source>
       <translation>Біхарі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
       <translation>Аймарська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
       <translation>Бретонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Sundanese</source>
       <translation>Сунданська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="83"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Danish</source>
       <translation>Данська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="85"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
       <translation>Дівехі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
       <translation>Луба-катанга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="97"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>Fijian</source>
       <translation>Фіджійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="113"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Hungarian</source>
       <translation>Угорська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="99"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>French</source>
       <translation>Французька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="84"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>German</source>
       <translation>Німецька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Mongolian</source>
       <translation>Монгольська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="108"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hebrew</source>
       <translation>Єврейська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="115"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Herero</source>
       <translation>Гереро</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Luxembourgish</source>
       <translation>Люксембурзька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
       <translation>Канурі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Kazakh</source>
       <translation>Казахська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kikuyu</source>
       <translation>Кікуйю</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Korean</source>
       <translation>Корейська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Navajo</source>
       <translation>Навахо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
       <translation>Ндонга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Nepali</source>
       <translation>Непальська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Ojibwa</source>
       <translation>Оджібва</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Pashto</source>
       <translation>Пуштунська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Polish</source>
       <translation>Польська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Samoan</source>
       <translation>Самоанська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Occitan</source>
       <translation>Оксітанська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sindhi</source>
       <translation>Синдхі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Slovak</source>
       <translation>Словацька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Somali</source>
       <translation>Сомалійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Telugu</source>
       <translation>Телугу</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Tsonga</source>
       <translation>Цонґа</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Tswana</source>
       <translation>Тсвана</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Uighur</source>
       <translation>Уйгур</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Serbo-Croatian</source>
       <translation>Сербсько-хорватська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Yoruba</source>
       <translation>Йоруба</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zhuang</source>
       <translation>Чжуань</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Romanian</source>
       <translation>Румунська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="117"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Indonesian</source>
       <translation>Індонезійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Panjabi</source>
       <translation>Панджабська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Southern Sotho</source>
       <translation>Південна Сото</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Corsican</source>
       <translation>Корсиканська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="90"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
       <translation>Есперанто</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="94"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Persian</source>
       <translation>Перська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Slovenian</source>
       <translation>Словенська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="100"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Western Frisian</source>
       <translation>Фризька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Aragonese</source>
       <translation>Арагонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Tahitian</source>
       <translation>Таїтянська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Malagasy</source>
       <translation>Малагасійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="103"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Galician</source>
       <translation>Галісійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Azerbaijani</source>
       <translation>Азербайджанська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Amharic</source>
       <translation>Амхарська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sanskrit</source>
       <translation>Санскрит</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Japanese</source>
       <translation>Японська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Ukrainian</source>
       <translation>Українська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
       <translation>Бенгальська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kalaallisut</source>
       <translation>Калаалісут</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bashkir</source>
       <translation>Башкирська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Belarusian</source>
       <translation>Білоруська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Kashmiri</source>
       <translation>Кашмірська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Sardinian</source>
       <translation>Сардинська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="110"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Hiri Motu</source>
       <translation>Хірімоту</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Quechua</source>
       <translation>Кечуа</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Bengali</source>
       <translation>Бенгальська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Javanese</source>
       <translation>Яванська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Avestan</source>
       <translation>Авестан</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Kinyarwanda</source>
       <translation>Кіньяруанда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Afrikaans</source>
       <translation>Африкаанс</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
       <translation>Біслама</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="114"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Armenian</source>
       <translation>Вірменська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Norwegian Bokmal</source>
       <translation>Норвезька (Букмол)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="111"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Croatian</source>
       <translation>Хорватська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Bosnian</source>
       <translation>Боснійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="116"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingua</source>
       <translation>Інтерлінгва</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Interlingue</source>
       <translation>Окциденталь</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Catalan</source>
       <translation>Каталонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Serbian</source>
       <translation>Сербська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Burmese</source>
       <translation>Бірманська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Russian</source>
       <translation>Російська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Limburgish</source>
       <translation>Лімбурганська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Norwegian</source>
       <translation>Норвезька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Chechen</source>
       <translation>Чеченська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Chinese</source>
       <translation>Китайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Chuvash</source>
       <translation>Чуваська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
       <translation>Сингала</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="91"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Spanish</source>
       <translation>Іспанська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Cornish</source>
       <translation>Корнійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tagalog</source>
       <translation>Тсвана</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Assamese</source>
       <translation>Асамійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Ossetian</source>
       <translation>Осетинська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="92"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Estonian</source>
       <translation>Естонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Swahili</source>
       <translation>Суахілі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Swedish</source>
       <translation>Шведська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Tibetan</source>
       <translation>Тибетська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Vietnamese</source>
       <translation>В&apos;єтнамська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Macedonian</source>
       <translation>Македонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Portuguese</source>
       <translation>Португальська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Turkish</source>
       <translation>Турецька</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Turkmen</source>
       <translation>Туркменська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="105"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Gujarati</source>
       <translation>Гуджараті</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Icelandic</source>
       <translation>Ісландська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Inuktitut</source>
       <translation>Інуктітут</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="89"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>English</source>
       <translation>Англійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Georgian</source>
       <translation>Грузинська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Church Slavic</source>
       <translation>Церковнослов&apos;янська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="98"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Faroese</source>
       <translation>Фарерська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="96"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Finnish</source>
       <translation>Фінська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Volapuk</source>
       <translation>Волапюк</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Walloon</source>
       <translation>Валлонська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kwanyama</source>
       <translation>Кваньяма</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Marshallese</source>
       <translation>Маршальська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Northern Sami</source>
       <translation>Північна Саамі</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="112"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Haitian</source>
       <translation>Гаїтянська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Chamorro</source>
       <translation>Чаморо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>Norwegian Nynorsk</source>
       <translation>Норвезька (Нюношк)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="104"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Guarani</source>
       <translation>Гуарані</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>South Ndebele</source>
       <translation>Південна Ндебелє</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Chichewa</source>
       <translation>Чічеванська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Lithuanian</source>
       <translation>Литовська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Sichuan Yi</source>
       <translation>Сичуань</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tigrinya</source>
       <translation>Тигринійська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Yiddish</source>
       <translation>Ідиш</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="373"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Traditional Chinese</source>
       <translation>Традиційна китайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="374"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Simplified Chinese</source>
       <translation>Спрощена китайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="375"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other</source>
       <translation>Інша</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="376"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>Інша спрощена китайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="377"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>Інша традиційна китайська</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="378"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
       <translation>Інші східно-європейські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="379"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
       <translation>Інші західно-європейські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="380"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
       <translation>Інші слов&apos;яньські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="381"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
       <translation>Інш японські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="382"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
       <translation>Інші балтійські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="383"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
       <translation>Інші грецькі мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="384"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
       <translation>Інші корейські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="385"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
       <translation>Інші турецькі мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="386"/>
+      <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
       <translation>Інші тайські мови</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="387"/>
+      <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
       <translation>Тамазит</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="303"/>
       <source>Lojban</source>
       <translation>Ложбан</translation>
     </message>
@@ -2802,7 +2833,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="328"/>
+      <location filename="../src/main.cc" line="360"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Помилка в файлі налаштувань. Продовжити з типовими параметрами?</translation>
     </message>
@@ -2835,17 +2866,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ф4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1494"/>
+      <location filename="../src/ui/mainwindow.cc" line="1495"/>
       <source>All</source>
       <translation>Усьому</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="197"/>
+      <location filename="../src/ui/mainwindow.cc" line="198"/>
       <source>Back</source>
       <translation>Назад</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1465"/>
+      <location filename="../src/ui/mainwindow.cc" line="1466"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>%1 словників, %2 статей, %3 слів</translation>
     </message>
@@ -2871,12 +2902,12 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="388"/>
+      <location filename="../src/ui/mainwindow.cc" line="389"/>
       <source>&amp;Quit</source>
       <translation>&amp;Вихід</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>Помилка</translation>
     </message>
@@ -2895,12 +2926,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Сховати в лоток</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
       <translation>Неможливо зберегти статтю: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="242"/>
+      <location filename="../src/ui/mainwindow.cc" line="244"/>
       <source>Zoom In</source>
       <translation>Зблизити</translation>
     </message>
@@ -2930,7 +2961,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Зберегти статтю</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3373"/>
+      <location filename="../src/ui/mainwindow.cc" line="3353"/>
       <source>Save Article As</source>
       <translation>Зберегти статтю як</translation>
     </message>
@@ -2960,22 +2991,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Сторінка проекту</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3059"/>
+      <location filename="../src/ui/mainwindow.cc" line="3039"/>
       <source>New Release Available</source>
       <translation>Доступний новий випуск</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up:</source>
       <translation>Шукати:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="248"/>
+      <location filename="../src/ui/mainwindow.cc" line="250"/>
       <source>Zoom Out</source>
       <translation>Віддалити</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="381"/>
+      <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
       <translation>Показати &amp;головне вікно</translation>
     </message>
@@ -2985,33 +3016,33 @@ between classic and school orthography in cyrillic)</source>
       <translation>Про GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3065"/>
+      <location filename="../src/ui/mainwindow.cc" line="3045"/>
       <source>Download</source>
       <translation>Звантажити</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3270"/>
+      <location filename="../src/ui/mainwindow.cc" line="3250"/>
       <source>Page Setup</source>
       <translation>Параметри сторінки</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="304"/>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="306"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up in:</source>
       <translation>Пошук в:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="252"/>
+      <location filename="../src/ui/mainwindow.cc" line="254"/>
       <source>Normal Size</source>
       <translation>Нормальний розмір</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2908"/>
+      <location filename="../src/ui/mainwindow.cc" line="2888"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>Не вдалось запустити механізм стеження за гарячими клавішами.&lt;br&gt;Переконайтесь, що ваш XServer має розширення RECORD увімкнутим.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3040"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>Версія &lt;b&gt;%1&lt;/b&gt; GoldenDict доступна до звантаження.&lt;br&gt;Натисніть &lt;b&gt;Звантажити&lt;/b&gt;, щоб перейти до сторінки звантаження.</translation>
     </message>
@@ -3031,7 +3062,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Завантаження…</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1662"/>
+      <location filename="../src/ui/mainwindow.cc" line="1666"/>
       <source>(untitled)</source>
       <translation>(без назви)</translation>
     </message>
@@ -3047,7 +3078,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ласкаво просимо!</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="230"/>
+      <location filename="../src/ui/mainwindow.cc" line="231"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Вимовити слово (Alt+S)</translation>
     </message>
@@ -3057,22 +3088,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>Зберегти статтю</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3066"/>
+      <location filename="../src/ui/mainwindow.cc" line="3046"/>
       <source>Skip This Release</source>
       <translation>Пропустити цей випуск</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="199"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Forward</source>
       <translation>Вперед</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3292"/>
+      <location filename="../src/ui/mainwindow.cc" line="3272"/>
       <source>Print Article</source>
       <translation>Надрукувати статтю</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3271"/>
+      <location filename="../src/ui/mainwindow.cc" line="3251"/>
       <source>No printer is available. Please install one first.</source>
       <translation>Не знайдено жодного принтера. Будь ласка, спершу встановіть хоч якийсь.</translation>
     </message>
@@ -3097,37 +3128,37 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Масштаб</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="367"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Zoom In</source>
       <translation>Зблизити слова</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="371"/>
+      <location filename="../src/ui/mainwindow.cc" line="372"/>
       <source>Words Zoom Out</source>
       <translation>Віддалити слова</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="373"/>
+      <location filename="../src/ui/mainwindow.cc" line="374"/>
       <source>Words Normal Size</source>
       <translation>Звичайний розмір слів</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="420"/>
+      <location filename="../src/ui/mainwindow.cc" line="421"/>
       <source>Close current tab</source>
       <translation>Закрити поточну вкладку</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="428"/>
+      <location filename="../src/ui/mainwindow.cc" line="429"/>
       <source>Close all tabs</source>
       <translation>Закрити всі вкладки</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="435"/>
+      <location filename="../src/ui/mainwindow.cc" line="436"/>
       <source>Close all tabs except current</source>
       <translation>Закрити всі вкладки заодно з поточною</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="410"/>
+      <location filename="../src/ui/mainwindow.cc" line="411"/>
       <source>Opened tabs</source>
       <translation>Відкриті вкладки</translation>
     </message>
@@ -3147,12 +3178,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Тека конфігурації</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>&amp;Menubar</source>
       <translation>&amp;Лоток меню</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="342"/>
+      <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>Знайдено у словниках:</translation>
     </message>
@@ -3161,50 +3192,50 @@ between classic and school orthography in cyrillic)</source>
       <translation>Буфер обміну</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="455"/>
+      <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
       <translation>Додати всі вкладки в Улюблене</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1012"/>
+      <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1605"/>
+      <location filename="../src/ui/mainwindow.cc" line="1609"/>
       <source>Open Tabs List</source>
       <translation>Відчинити список вкладок</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1862"/>
-      <location filename="../src/ui/mainwindow.cc" line="1941"/>
-      <location filename="../src/ui/mainwindow.cc" line="4473"/>
-      <location filename="../src/ui/mainwindow.cc" line="4501"/>
-      <location filename="../src/ui/mainwindow.cc" line="4537"/>
+      <location filename="../src/ui/mainwindow.cc" line="1866"/>
+      <location filename="../src/ui/mainwindow.cc" line="1944"/>
+      <location filename="../src/ui/mainwindow.cc" line="4457"/>
+      <location filename="../src/ui/mainwindow.cc" line="4485"/>
+      <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
       <translation>Вилучити поточну вкладку з Обраного</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1893"/>
+      <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3170"/>
+      <location filename="../src/ui/mainwindow.cc" line="3150"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>Ви вирішили сховати лоток меню. Викор. %1 аби показувати його знову.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3171"/>
+      <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+М</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3762"/>
-      <location filename="../src/ui/mainwindow.cc" line="3774"/>
+      <location filename="../src/ui/mainwindow.cc" line="3744"/>
+      <location filename="../src/ui/mainwindow.cc" line="3756"/>
       <source>&amp;Show</source>
       <translation>&amp;Показати</translation>
     </message>
@@ -3214,32 +3245,32 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>&amp;Експортувати</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3758"/>
-      <location filename="../src/ui/mainwindow.cc" line="3770"/>
+      <location filename="../src/ui/mainwindow.cc" line="3740"/>
+      <location filename="../src/ui/mainwindow.cc" line="3752"/>
       <source>&amp;Hide</source>
       <translation>&amp;Сховати</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3816"/>
+      <location filename="../src/ui/mainwindow.cc" line="3798"/>
       <source>Export history to file</source>
       <translation>Експортувати файл історії</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3818"/>
-      <location filename="../src/ui/mainwindow.cc" line="3880"/>
-      <location filename="../src/ui/mainwindow.cc" line="3994"/>
+      <location filename="../src/ui/mainwindow.cc" line="3800"/>
+      <location filename="../src/ui/mainwindow.cc" line="3862"/>
+      <location filename="../src/ui/mainwindow.cc" line="3976"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Текстові файли (*.txt);;Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3857"/>
+      <location filename="../src/ui/mainwindow.cc" line="3839"/>
       <source>History export complete</source>
       <translation>Експорти історії завершено</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
-      <location filename="../src/ui/mainwindow.cc" line="3975"/>
-      <location filename="../src/ui/mainwindow.cc" line="4024"/>
+      <location filename="../src/ui/mainwindow.cc" line="3842"/>
+      <location filename="../src/ui/mainwindow.cc" line="3957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4006"/>
       <source>Export error: </source>
       <translation>Помилка експортування:</translation>
     </message>
@@ -3254,94 +3285,94 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>&amp;Імпортувати</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3878"/>
+      <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <source>Import history from file</source>
       <translation>Імпортувати історію з файлу</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3927"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: invalid data in file</source>
       <translation>Помилка імпорту: недійсна дата у файлі</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3931"/>
+      <location filename="../src/ui/mainwindow.cc" line="3913"/>
       <source>History import complete</source>
       <translation>Імпорти історії завершено</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3934"/>
-      <location filename="../src/ui/mainwindow.cc" line="4076"/>
+      <location filename="../src/ui/mainwindow.cc" line="3916"/>
+      <location filename="../src/ui/mainwindow.cc" line="4058"/>
       <source>Import error: </source>
       <translation>Помилка імпортування:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3951"/>
+      <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
       <translation>Експорт уподобань до файлу</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3953"/>
+      <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML файли (*.xml);;Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3972"/>
-      <location filename="../src/ui/mainwindow.cc" line="4021"/>
+      <location filename="../src/ui/mainwindow.cc" line="3954"/>
+      <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
       <translation>Експорт уподобань завершено</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3992"/>
+      <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
       <translation>Експорт уподобань до файлу як звичайний список</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4041"/>
+      <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
       <translation>Імпорт уподобань із файлу</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4043"/>
+      <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>XML файли (*.xml);;Txt файли (*.txt);Всі файли (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4072"/>
+      <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
       <translation>Імпорт уподобань завершено</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4078"/>
+      <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
       <translation>Помилка під час аналізу даних</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4288"/>
+      <location filename="../src/ui/mainwindow.cc" line="4270"/>
       <source>Dictionary info</source>
       <translation>Інфа про словник</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4292"/>
+      <location filename="../src/ui/mainwindow.cc" line="4274"/>
       <source>Dictionary headwords</source>
       <translation>Словник для заголовків</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4294"/>
+      <location filename="../src/ui/mainwindow.cc" line="4276"/>
       <source>Open dictionary folder</source>
       <translation>Відкрити словникову теку</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4300"/>
+      <location filename="../src/ui/mainwindow.cc" line="4282"/>
       <source>Edit dictionary</source>
       <translation>Редагувати словник</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4444"/>
+      <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
       <translation>Індексування для повнотекстового пошуку: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4486"/>
+      <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Видалити заголовки &quot;%1&quot; з вибраного?</translation>
     </message>
@@ -3393,7 +3424,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
       <location filename="../src/ui/mainwindow.ui" line="520"/>
-      <location filename="../src/ui/mainwindow.cc" line="296"/>
+      <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Кнопка меню</translation>
     </message>
@@ -3444,10 +3475,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
-      <location filename="../src/ui/mainwindow.cc" line="267"/>
-      <location filename="../src/ui/mainwindow.cc" line="1867"/>
-      <location filename="../src/ui/mainwindow.cc" line="1946"/>
-      <location filename="../src/ui/mainwindow.cc" line="4493"/>
+      <location filename="../src/ui/mainwindow.cc" line="269"/>
+      <location filename="../src/ui/mainwindow.cc" line="1871"/>
+      <location filename="../src/ui/mainwindow.cc" line="1949"/>
+      <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
       <translation>Додати поточну вкладку до Обраного</translation>
     </message>
@@ -3462,42 +3493,47 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Експортувати у список</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="118"/>
+      <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Відображувати назви у &amp;Рядку словника</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>Показувати малі налички у &amp;тулбарі</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="194"/>
+      <location filename="../src/ui/mainwindow.cc" line="195"/>
       <source>&amp;Navigation</source>
       <translation>&amp;Навігація</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="222"/>
+      <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
       <translation>Увімкнути сканування</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3368"/>
+      <location filename="../src/ui/mainwindow.cc" line="3348"/>
       <source>Article, Complete (*.html)</source>
       <translation>Стаття, Повна (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3369"/>
+      <location filename="../src/ui/mainwindow.cc" line="3349"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>Стаття, тільки HTML (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3455"/>
+      <location filename="../src/ui/mainwindow.cc" line="3435"/>
       <source>Saving article...</source>
       <translation>Збередення статті…</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3517"/>
+      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="3499"/>
       <source>The main window is set to be always on top.</source>
       <translation>Головне меню налаштовано аби завжди бути зверху.</translation>
     </message>
@@ -3507,8 +3543,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>&amp;Лоток історії</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="781"/>
-      <location filename="../src/ui/mainwindow.cc" line="864"/>
+      <location filename="../src/ui/mainwindow.cc" line="780"/>
+      <location filename="../src/ui/mainwindow.cc" line="863"/>
       <source>Accessibility API is not enabled</source>
       <translation>API доступності не ввімкнено</translation>
     </message>
@@ -3516,12 +3552,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="628"/>
+      <location filename="../src/dict/mdx.cc" line="625"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>Словниковий файл пошкоджено</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="639"/>
+      <location filename="../src/dict/mdx.cc" line="636"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>Не вдалося завантажити статтю з%1, причина: %2</translation>
     </message>
@@ -3672,22 +3708,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="521"/>
+      <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
       <translation>Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="193"/>
+      <location filename="../src/ui/preferences.ui" line="85"/>
       <source>Start to system tray</source>
       <translation>Запускати в системному лотку</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="578"/>
+      <location filename="../src/ui/preferences.ui" line="552"/>
       <source>Left Shift only</source>
       <translation>Лише лівий Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="531"/>
+      <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>Сtrl</translation>
     </message>
@@ -3696,49 +3732,49 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>секунд</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="591"/>
+      <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
       <translation>Win/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="171"/>
+      <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Enable system tray icon</source>
       <translation>Увімкнути піктограму системного лотка</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="930"/>
-      <location filename="../src/ui/preferences.ui" line="1010"/>
+      <location filename="../src/ui/preferences.ui" line="904"/>
+      <location filename="../src/ui/preferences.ui" line="984"/>
       <source>Host:</source>
       <translation>Вузол:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="940"/>
-      <location filename="../src/ui/preferences.ui" line="1027"/>
+      <location filename="../src/ui/preferences.ui" line="914"/>
+      <location filename="../src/ui/preferences.ui" line="1001"/>
       <source>Port:</source>
       <translation>Порт:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="551"/>
+      <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
       <translation>Зсув</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="917"/>
+      <location filename="../src/ui/preferences.ui" line="891"/>
       <source>Type:</source>
       <translation>Тип:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="961"/>
+      <location filename="../src/ui/preferences.ui" line="935"/>
       <source>User:</source>
       <translation>Користувач:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="397"/>
+      <location filename="../src/ui/preferences.ui" line="371"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="313"/>
+      <location filename="../src/ui/preferences.ui" line="295"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3747,17 +3783,17 @@ switching to them.</source>
 відкриватимуться без перемикання на них.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="880"/>
+      <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
       <translation>Використати проксі-сервер</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="706"/>
+      <location filename="../src/ui/preferences.ui" line="680"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Щоб перекладати слово з кишені, використовується така комбінація клавіш:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="588"/>
+      <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Будь-яка Windows або Meta</translation>
     </message>
@@ -3766,90 +3802,90 @@ switching to them.</source>
       <translation>Показувати контекстні вікна лише, коли затиснено всі ці вибрані клавіші:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="763"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматично вимовляти слово в головному меню</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="382"/>
+      <location filename="../src/ui/preferences.ui" line="191"/>
       <source>Start with system</source>
       <translation>Запускати разом із системою</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="538"/>
+      <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
       <translation>Лише лівий Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
       <translation>Вкладки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="508"/>
+      <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
       <translation>Лише правий Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="200"/>
+      <location filename="../src/ui/preferences.ui" line="92"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Коли це ввімкнено, закриття головного вікна сховає програму в лоток.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="777"/>
+      <location filename="../src/ui/preferences.ui" line="751"/>
       <source>&amp;Audio</source>
       <translation>&amp;Аудіо</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="876"/>
+      <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Увімкніть, якщо ви бажаєте використовувати 
 проксі-сервер для всіх мережевих запитів.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui" line="201"/>
       <source>Interface language:</source>
       <translation>Мова інтерфейсу:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="498"/>
+      <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
       <translation>Лише лівий Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="318"/>
+      <location filename="../src/ui/preferences.ui" line="300"/>
       <source>Open new tabs in background</source>
       <translation>Відкрити нові вкладки фоново</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="870"/>
+      <location filename="../src/ui/preferences.ui" line="844"/>
       <source>&amp;Network</source>
       <translation>&amp;Мережа</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="568"/>
+      <location filename="../src/ui/preferences.ui" line="542"/>
       <source>Right Ctrl only</source>
       <translation>Лише правий Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="114"/>
+      <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="511"/>
+      <location filename="../src/ui/preferences.ui" line="485"/>
       <source>Right Shift</source>
       <translation>Правий Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="581"/>
+      <location filename="../src/ui/preferences.ui" line="555"/>
       <source>Left Shift</source>
       <translation>Лівий Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="446"/>
+      <location filename="../src/ui/preferences.ui" line="420"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Коли це ввімкнено, контекстні вікна будуть появлятись лише при затисненні
@@ -3860,7 +3896,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Стиль інтерфейсу:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Автоматично вимовляти слова в контекстному меню</translation>
     </message>
@@ -3869,17 +3905,17 @@ in the pressed state when the word selection changes.</source>
       <translation>Увімкнути контекстні вікна</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="330"/>
+      <location filename="../src/ui/preferences.ui" line="312"/>
       <source>Open new tabs after the current one</source>
       <translation>Відкрити нові вкладки за поточною</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="620"/>
+      <location filename="../src/ui/preferences.cc" line="624"/>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустіть програму, щоб змінити мову.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="518"/>
+      <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>Будь-який Alt</translation>
     </message>
@@ -3894,12 +3930,12 @@ off from main window or tray icon.</source>
 вимкнути/ввімкнути це з головного меню або піктограми лотку.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1228"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Check for new program releases periodically</source>
       <translation>Періодично перевіряти на випуски нової версії</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="325"/>
+      <location filename="../src/ui/preferences.ui" line="307"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3908,25 +3944,25 @@ be the last ones.</source>
 до останніх.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="204"/>
+      <location filename="../src/ui/preferences.ui" line="96"/>
       <source>Close to system tray</source>
       <translation>Згорнути до системного лотка</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="61"/>
+      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>System default</source>
       <translation>Системна</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="167"/>
+      <location filename="../src/ui/preferences.ui" line="59"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Коли це ввімкнено, піктограма з&apos;явиться в системному лотку, якою можна
 буде відкривати головне вікно і здійснювати інші задачі.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1221"/>
+      <location filename="../src/ui/preferences.ui" line="1195"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3939,17 +3975,17 @@ download page.</source>
 відкрити сторінку звантаження.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="373"/>
+      <location filename="../src/ui/preferences.ui" line="182"/>
       <source>Startup</source>
       <translation>Запуск</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="971"/>
+      <location filename="../src/ui/preferences.ui" line="945"/>
       <source>Password:</source>
       <translation>Пароль:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="111"/>
+      <location filename="../src/ui/preferences.cc" line="115"/>
       <source>Default</source>
       <translation>Типово</translation>
     </message>
@@ -3967,27 +4003,27 @@ seconds, which is specified here.</source>
 Значення в секундах вказується тут.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="619"/>
+      <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>Зміна мови</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="528"/>
+      <location filename="../src/ui/preferences.ui" line="502"/>
       <source>Ctrl key</source>
       <translation>Будь-яка Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="679"/>
+      <location filename="../src/ui/preferences.ui" line="653"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Щоб показувати і ховати головне вікно, використовується така комбінація клавіш:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="541"/>
+      <location filename="../src/ui/preferences.ui" line="515"/>
       <source>Left Alt</source>
       <translation>Лівий Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="558"/>
+      <location filename="../src/ui/preferences.ui" line="532"/>
       <source>Right Alt only</source>
       <translation>Лише правий Alt</translation>
     </message>
@@ -4001,54 +4037,54 @@ seconds, which is specified here.</source>
       <translation>Клавіші можна натиснути згодом</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="501"/>
+      <location filename="../src/ui/preferences.ui" line="475"/>
       <source>Left Ctrl</source>
       <translation>Лівий Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="561"/>
+      <location filename="../src/ui/preferences.ui" line="535"/>
       <source>Right Alt</source>
       <translation>Правий Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="749"/>
+      <location filename="../src/ui/preferences.ui" line="723"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Гарячі клавіші — загальні та працюють з будь-якої програми і з будь-яким текстом, поки GoldenDict працює фоново.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="571"/>
+      <location filename="../src/ui/preferences.ui" line="545"/>
       <source>Right Ctrl</source>
       <translation>Правий Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="673"/>
+      <location filename="../src/ui/preferences.ui" line="647"/>
       <source>Hotkeys</source>
       <translation>Гарячі клавіші</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="407"/>
+      <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
       <translation>Увімкнути контекстні меню при запуску</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="189"/>
+      <location filename="../src/ui/preferences.ui" line="81"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Коли це ввімкнено, програма запускається відразу в системному лотку без 
 запуску головного вікна.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="548"/>
+      <location filename="../src/ui/preferences.ui" line="522"/>
       <source>Shift key</source>
       <translation>Будь-який Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="379"/>
+      <location filename="../src/ui/preferences.ui" line="188"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>Автоматично запускати GoldenDict при завантаженні системи.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="403"/>
+      <location filename="../src/ui/preferences.ui" line="377"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Визначає, чи типово ввімкнуті контекстні вікна, чи ні. Якщо це відмічено,
@@ -4065,12 +4101,12 @@ be pressed shortly after the selection is done.</source>
 клавіші можуть бути затиснуті й опісля виділення.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="642"/>
+      <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Не показувати спливаюче вікно під час вибору або буфера обміну в одному з GoldenDict&apos;змінює власні вікна</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="645"/>
+      <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Ігнорувати золотий словник&apos;вибір і зміни буфера обміну</translation>
     </message>
@@ -4087,27 +4123,27 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Майте на увазі: ви використовуєте випуск X.Org XServer, який не підтримує розширення RECORD. Гарячі клавіші в GoldenDict, імовірно, не працюватимуть. Це має бути виправлено сервером. Будь ласка, зверніться за &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;інформацію про ваду&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; та залиште коментарі, якщо бажаєте.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="812"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Відтворення аудіо файлів через вбудовану підтримку аудіо</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
       <translation>Використовувати внутрішній програвач:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="822"/>
+      <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
       <translation>Виберіть повернутися до кінця аудіо</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="842"/>
+      <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
       <translation>Введіть командний рядок аудіо програвача</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1145"/>
+      <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -4116,44 +4152,44 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
 Якщо деякі сайти не працюють, вимкніть це.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1150"/>
+      <location filename="../src/ui/preferences.ui" line="1124"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Заборонити завантажувати вміст з інших сайтів (ховає більшість реклами)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="783"/>
+      <location filename="../src/ui/preferences.ui" line="757"/>
       <source>Pronunciation</source>
       <translation>Вимова</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>Playback</source>
       <translation>Відтворення</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Use external program:</source>
       <translation>Використовувати сторонню програму:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="224"/>
+      <location filename="../src/ui/preferences.ui" line="282"/>
       <source>Double-click translates the word clicked</source>
       <translation>Подвійний клац перекладе слово натиснувши</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="829"/>
+      <location filename="../src/ui/preferences.ui" line="803"/>
       <source>Use any external program to play audio files</source>
       <translation>Використовувати якусь сторонню програму для відтворення звукових файлів</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="280"/>
+      <location filename="../src/ui/preferences.ui" line="106"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Зазвичай, коли ви натискаєте клавішу ESC то цим ви переміщуєте фокус рядка перекладу.
  З цією ж опцією, ви просто сховаєте основне вікно.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="284"/>
+      <location filename="../src/ui/preferences.ui" line="110"/>
       <source>ESC key hides main window</source>
       <translation>Кнопка ESC  приховує основне вікно</translation>
     </message>
@@ -4170,12 +4206,12 @@ Plugin must be installed for this option to work.</source>
       <translation>Увімкнути веб плагіни</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="337"/>
+      <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Оберіть цю опцію якщови не хочете бачити головну вкладку, у випадку якщо відкрито лише одну вкладку.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="340"/>
+      <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>Сховати єдину вкладку</translation>
     </message>
@@ -4184,32 +4220,32 @@ Plugin must be installed for this option to work.</source>
       <translation>Допомога</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="239"/>
+      <location filename="../src/ui/preferences.ui" line="141"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Скоригуйте це значення, щоб уникнути величезних контекстних меню.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="242"/>
+      <location filename="../src/ui/preferences.ui" line="144"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Обмеження контекстного меню для словників:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="414"/>
+      <location filename="../src/ui/preferences.ui" line="388"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Послилати перекладене слово до головного вікна, замість того аби показувати його у виринаючому вікні</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="417"/>
+      <location filename="../src/ui/preferences.ui" line="391"/>
       <source>Send translated word to main window</source>
       <translation>Послилати перекладене слово до головного вікна</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="632"/>
+      <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Перед відображенням спливаючого вікна показувати спливаюче вікно, натисніть на прапорець, щоб показати спливаюче вікно. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="291"/>
+      <location filename="../src/ui/preferences.ui" line="117"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4220,159 +4256,159 @@ scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="297"/>
+      <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
       <translation>Автоматичне прокручування до цільової статті</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="73"/>
+      <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
       <translation>Словник шрифту: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="86"/>
+      <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
       <translation>встановити сімейство резервних шрифтів для словника</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
       <translation>Стиль відображення статей:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="145"/>
+      <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
       <translation>Перетворіть інтерфейс для затемнення.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="148"/>
+      <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
       <translation>Темний режим</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="155"/>
+      <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
       <translation>Перетворіть стиль відображення статті в темряву.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="158"/>
+      <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
       <translation>Темний режим читання</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="347"/>
+      <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
       <translation>Замовлення MRU: найдавніше використовуване замовлення.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Відстежувати зміни в буфері обміну, коли ввімкнено сканування. Зверніть увагу! Ви завжди повинні увімкнути це, якщо не використовуєте Linux.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="427"/>
+      <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
       <translation>Зміна буфера обміну</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="434"/>
+      <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
       <translation>Зміна виділення пісні</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="450"/>
+      <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Вибір буде скинуто лише коли всі вибрані ключі будуть збережені:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="635"/>
+      <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
       <translation>Показувати позначку сканування, коли вибрано слово</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="892"/>
+      <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
       <translation>Системний проксі</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="899"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
       <translation>Власний проксі</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="909"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
       <translation>Користувацькі налаштування</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="996"/>
+      <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
       <translation>Анкі Коннехт</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1017"/>
+      <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1061"/>
+      <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
       <translation>Колода:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1071"/>
+      <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
       <translation>Модель:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1098"/>
+      <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
       <translation>Слово</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1105"/>
+      <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
       <translation>Словникове поле...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1112"/>
+      <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
       <translation>Текст</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
       <translation>Поле визначення...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1126"/>
+      <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
       <translation>Речення</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1133"/>
+      <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Поле речення (може бути порожнім)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1157"/>
+      <location filename="../src/ui/preferences.ui" line="1131"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Деякі сайти виявлять GoldenDict через загловок HTTP і блокують запити.
 Щоб обійти цю проблему, ввімкніть цей параметр.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1161"/>
+      <location filename="../src/ui/preferences.ui" line="1135"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Не отожнювати GoldenDict в заголовках HTTP</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1170"/>
+      <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
       <translation>Максимальний розмір кеша в мережі :</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1177"/>
+      <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4381,64 +4417,64 @@ If set to 0 the network disk cache will be disabled.</source>
 Якщо встановлено 0 мережевого кешу на диску буде вимкнено.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1182"/>
+      <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
       <translation> Міб</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Коли цю опцію ввімкнено, Золотик
 очищує з диска кеш у мережі.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1199"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
       <translation>Очистити кеш мережі при виході</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1253"/>
+      <location filename="../src/ui/preferences.ui" line="1227"/>
       <source>Full-text search</source>
       <translation>Повнотекстовий пошук</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1259"/>
+      <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
       <translation>Дозволити повнотекстовий пошук для:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1357"/>
+      <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Дон&apos;t пошук в словниках, що містить більше ніж</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1374"/>
+      <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
       <translation>Статті (0 - необмежено)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1417"/>
+      <location filename="../src/ui/preferences.ui" line="1391"/>
       <source>Ad&amp;vanced</source>
       <translation>До&amp;даткові</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1715"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Під час послідовних пошуків, якщо один словник згортається вручну, він залишатиметься згорнутим у наступному пошуку</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1744"/>
+      <location filename="../src/ui/preferences.ui" line="1718"/>
       <source>Session collapse</source>
       <translation>Згорнути сесію</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1765"/>
+      <location filename="../src/ui/preferences.ui" line="1739"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>При використанні буфера обміну, відрізати все після нової лінії</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1772"/>
+      <location filename="../src/ui/preferences.ui" line="1746"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Під час нового пошуку сфокусуватися на головному або спливаючому вікні, навіть якщо воно&apos;видиме</translation>
     </message>
@@ -4471,199 +4507,198 @@ clears its network cache from disk during exit.</source>
       <translation>Ігнорувати підказку менеджера вікон</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui" line="1524"/>
       <source>Favorites</source>
       <translation>Вподобання</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1532"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Інтервал збереження уподобань. Якщо встановлено 0 Обраних буде збережено тільки під час виходу.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1584"/>
+      <location filename="../src/ui/preferences.ui" line="1558"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Увімкніть цю опцію, щоб підтвердити кожну операцію видалення елементів</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1587"/>
+      <location filename="../src/ui/preferences.ui" line="1561"/>
       <source>Confirmation for items deletion</source>
       <translation>Підтвердження видалення елементів</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1658"/>
+      <location filename="../src/ui/preferences.ui" line="1632"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Увімкніть цю функцію, щоб ігнорувати необґрунтовано довгий текст введення
 з імені мишки, виділення, буфера обміну чи командного рядка</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1662"/>
+      <location filename="../src/ui/preferences.ui" line="1636"/>
       <source>Ignore input phrases longer than</source>
       <translation>Ігнорувати вхідні фрази довші, ніж</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Вхідні фрази довші, ніж цей розмір ігнорується</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Увімкніть цю опцію, щоб ігнорувати діакритики під час пошуку статей</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1721"/>
+      <location filename="../src/ui/preferences.ui" line="1695"/>
       <source>Ignore diacritics while searching</source>
       <translation>Ігнорувати діакритики під час пошуку</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1708"/>
+      <location filename="../src/ui/preferences.ui" line="1682"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Увімкніть цю опцію аби завжди додаткові частини статтей</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1711"/>
+      <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>Expand optional &amp;parts</source>
       <translation>Показувати додаткові &amp;частини</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1648"/>
+      <location filename="../src/ui/preferences.ui" line="1622"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Виберіть це, щоб автоматично згортати великі статті</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1651"/>
+      <location filename="../src/ui/preferences.ui" line="1625"/>
       <source>Collapse articles more than</source>
       <translation>Згортати статті з понад</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Статті довші за цей розмір буде згорнуто</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1618"/>
+      <location filename="../src/ui/preferences.ui" line="1592"/>
       <source>Ignore punctuation while searching</source>
       <translation>Ігнорувати пунктуацію при пошуку</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1754"/>
+      <location filename="../src/ui/preferences.ui" line="1728"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Увімкніть цю опцію, щоб увімкнути додаткові статті пошуку за допомогою списків синонімів
 з Stardict, Babylon та GLS словників</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1758"/>
+      <location filename="../src/ui/preferences.ui" line="1732"/>
       <source>Extra search via synonyms</source>
       <translation>Додатковий пошук за синонімами</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1641"/>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1615"/>
+      <location filename="../src/ui/preferences.ui" line="1659"/>
       <source>symbols</source>
       <translation>символів</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="350"/>
+      <location filename="../src/ui/preferences.ui" line="332"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab керує вкладками у MRU порядку</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
       <translation>Вавилон</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1425"/>
+      <location filename="../src/ui/preferences.ui" line="1399"/>
       <source>History</source>
       <translation>Історія</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1431"/>
+      <location filename="../src/ui/preferences.ui" line="1405"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Увімкніть цю опцію аби зберігати історію перекладених слів</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1434"/>
+      <location filename="../src/ui/preferences.ui" line="1408"/>
       <source>Store &amp;history</source>
       <translation>Зберегти &amp;Історію</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1612"/>
+      <location filename="../src/ui/preferences.ui" line="1586"/>
       <source>Articles</source>
       <translation>Статей</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="214"/>
+      <location filename="../src/ui/preferences.ui" line="252"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Оберіть цю опцію, якщо ви волієте обирати слова одним кліком миші</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="217"/>
+      <location filename="../src/ui/preferences.ui" line="255"/>
       <source>Select word by single click</source>
       <translation>Обрати слово одним кліком миші</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="120"/>
+      <location filename="../src/ui/preferences.ui" line="354"/>
       <source>Add-on style:</source>
       <translation>Стиль додатку:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1449"/>
+      <location filename="../src/ui/preferences.ui" line="1423"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Зазначте максимальну кількість статей, що зберігають в історії.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1452"/>
+      <location filename="../src/ui/preferences.ui" line="1426"/>
       <source>Maximum history size:</source>
       <translation>Максимальний розмір історії:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1489"/>
+      <location filename="../src/ui/preferences.ui" line="1463"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Проміжок збереження історії. Якщо вказати 0, то історія зберігатиметься тільки після виходу з програми.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1495"/>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1469"/>
+      <location filename="../src/ui/preferences.ui" line="1535"/>
       <source>Save every</source>
       <translation>Зберігати кожні</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1512"/>
-      <location filename="../src/ui/preferences.ui" line="1575"/>
+      <location filename="../src/ui/preferences.ui" line="1486"/>
+      <location filename="../src/ui/preferences.ui" line="1549"/>
       <source>minutes</source>
       <translation>хвилин</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>English</source>
       <translation type="unfinished">English</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="112"/>
+      <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
       <translation>Класичний</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="113"/>
+      <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
       <translation>Модерн</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
       <translation>Лінго</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
       <translation>Лінго-Блю</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="128"/>
+      <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
       <translation> МБ</translation>
     </message>
@@ -4754,7 +4789,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1698"/>
+      <location filename="../src/dict/dsl.cc" line="1691"/>
       <source>Article loading error</source>
       <translation>Помилка завантаження статті</translation>
     </message>
@@ -4767,64 +4802,54 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
       <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="710"/>
-      <location filename="../src/dict/stardict.cc" line="1107"/>
+      <location filename="../src/dict/sdict.cc" line="685"/>
+      <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
       <translation>Авторські права: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="726"/>
+      <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
       <translation>Версія: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
       <translation>Помилка: avformat_alloc_context().</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
       <translation>Помилка: av_malloc().</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
       <translation>Помилка: avio_alloc_context().</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
       <translation>Помилка: avformat_open_input() %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
       <translation>Помилка: avformat_find_stream_info() %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="213"/>
       <source>Could not find audio stream.</source>
       <translation>Неможливо знайти аудіопотік.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="220"/>
       <source>Codec [id: %1] not found.</source>
       <translation>Кодек [ід: %1] не знайдено.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="226"/>
       <source>avcodec_alloc_context3() failed.</source>
       <translation>avcodec_alloc_context3() не вдалося.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
       <translation>Помилка: avcodec_open2() %1. </translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="324"/>
       <source>Can not found default audio output device</source>
       <translation>Неможливо знайти пристрій виводу за замовчуванням</translation>
     </message>
@@ -4861,35 +4886,34 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Невідома помилка.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
       <translation>Помилка: avcodec_alloc_frame().</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1115"/>
+      <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
       <translation>Автор: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1123"/>
+      <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
       <translation>Електронна пошта: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="678"/>
+      <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
       <translation>Назва: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1131"/>
+      <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
       <translation>Веб-сайт: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1139"/>
+      <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
       <translation>Дата: %1%2</translation>
     </message>
@@ -4906,32 +4930,32 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Наступна сторінка</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="124"/>
+      <location filename="../src/main.cc" line="142"/>
       <source>A dictionary lookup program.</source>
       <translation>Словник програми фільтрування.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="127"/>
+      <location filename="../src/main.cc" line="145"/>
       <source>Word or sentence to query.</source>
       <translation>Слово або речення запиту.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="131"/>
+      <location filename="../src/main.cc" line="149"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці конфігурації.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="135"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Change the group of main window.</source>
       <translation>Змінити групу головного вікна.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="139"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Change the group of popup.</source>
       <translation>Змінити групу виринаючого вікна.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="144"/>
+      <location filename="../src/main.cc" line="162"/>
       <source>Toggle scan popup.</source>
       <translation>Увімкнути або вимкнути вікно сканування.</translation>
     </message>
@@ -4939,7 +4963,7 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1019"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Словниковий пошук/фільтр (Ctrl+F)</translation>
     </message>
@@ -4948,7 +4972,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Швидкий пошук</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1024"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
       <translation>Очистити пошук</translation>
     </message>
@@ -4956,22 +4980,22 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>ERROR: %1</source>
       <translation>Помилка: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>Resource saving error: </source>
       <translation>Помилка зберігання ресурсів: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>The referenced resource failed to download.</source>
       <translation>Не вдалось звантажити поданий ресурс.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>WARNING: %1</source>
       <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
@@ -5007,16 +5031,11 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="116"/>
-      <location filename="../src/ui/scanpopup.ui" line="130"/>
-      <location filename="../src/ui/scanpopup.ui" line="144"/>
-      <location filename="../src/ui/scanpopup.ui" line="211"/>
-      <location filename="../src/ui/scanpopup.ui" line="255"/>
       <source>...</source>
       <translation>…</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="151"/>
+      <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
       <translation>Alt+S</translation>
     </message>
@@ -5026,39 +5045,39 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Діалог</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="141"/>
+      <location filename="../src/ui/scanpopup.ui" line="135"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Вимовити слово (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="178"/>
+      <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Додати слово до обраного (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="208"/>
+      <location filename="../src/ui/scanpopup.ui" line="193"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Показує або ховає панель словника</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="231"/>
+      <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
       <translation>Завжди залишатися поверх інших вікон</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="251"/>
+      <location filename="../src/ui/scanpopup.ui" line="230"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Використайте шпильку, щоб вікно залишалось на екрані,
 можна змінювати розмір або керувати ним у зручний вам спосіб.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="161"/>
+      <location filename="../src/ui/scanpopup.ui" line="152"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Послати слово до основного вікна (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="171"/>
+      <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
       <translation>Alt+клавiша переходу</translation>
     </message>
@@ -5068,13 +5087,13 @@ could be resized or managed in other ways.</source>
       <translation>Назад</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="127"/>
+      <location filename="../src/ui/scanpopup.ui" line="124"/>
       <source>Forward</source>
       <translation>Вперед</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="598"/>
-      <location filename="../src/ui/scanpopup.cc" line="994"/>
+      <location filename="../src/ui/scanpopup.cc" line="604"/>
+      <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
@@ -5087,22 +5106,32 @@ could be resized or managed in other ways.</source>
       <translation>&amp;Попередня</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="18"/>
+      <location filename="../src/ui/searchpanel.cc" line="15"/>
+      <source>Ctrl+Shift+G</source>
+      <translation type="unfinished">Ctrl+Shift+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
       <translation>&amp;Далі</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="22"/>
+      <location filename="../src/ui/searchpanel.cc" line="20"/>
+      <source>Ctrl+G</source>
+      <translation type="unfinished">Ctrl+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
       <translation>Виділити &amp;все</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="26"/>
+      <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Чутливість до регістру</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="28"/>
+      <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
       <translation>Знайти:</translation>
     </message>
@@ -5256,6 +5285,21 @@ based on English phonology</source>
       <location filename="../src/ui/sources.ui" line="810"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>Складова азбука японської хіраґани</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="835"/>
+      <source>Custom transliteration</source>
+      <translation type="unfinished">Custom transliteration</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="844"/>
+      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
+      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="854"/>
+      <source>ae;æ #this is an example</source>
+      <translation type="unfinished">ae;æ #this is an example</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -5655,7 +5699,7 @@ in the future, or register on the site to get your own key.</source>
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="201"/>
+      <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
       <translation>Не вдалось здійснити пошук по деяких словниках.</translation>
     </message>
