@@ -11,6 +11,11 @@ struct ActiveDictIds
   unsigned groupId;
   QString word;
   QStringList dictIds;
+
+  operator QString() const
+  {
+    return QString( "groupId:%1,word:%2,dictId:%3" ).arg( QString::number( groupId ), word, dictIds.join( "," ) );
+  }
 };
 
 class GlobalBroadcaster : public QObject
