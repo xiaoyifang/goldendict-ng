@@ -286,7 +286,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   // Use delay show to prevent multiple popups while selection in progress
   selectionDelayTimer.setSingleShot( true );
-  selectionDelayTimer.setInterval( 200 );
+  selectionDelayTimer.setInterval( 800 );
 
   connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
 #endif

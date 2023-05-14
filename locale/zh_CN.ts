@@ -85,62 +85,62 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="313"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>然后只要将鼠标指针停留在你想要进行抓词查询的单词上，程序就会在弹出式窗口中显示释义。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="306"/>
+      <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;使用屏幕取词功能&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;如要从其它程序中直接进行抓词查询，需要首先在&lt;b&gt;首选项&lt;/b&gt;中启用“屏幕取词功能”，然后点击上面的“弹出菜单”图标，或者右键点击系统托盘图标后从弹出菜单中选定“屏幕取词”以激活此功能。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Expand article</source>
       <translation>展开文章</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Collapse article</source>
       <translation>收起文章</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="234"/>
+      <location filename="../src/article_maker.cc" line="232"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>在 &lt;b&gt;%2&lt;/b&gt; 群组中找不到 &lt;b&gt;%1&lt;/b&gt; 的可用翻译。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="302"/>
       <source>Working with popup</source>
       <translation>使用屏幕取词功能</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="394"/>
+      <location filename="../src/article_maker.cc" line="392"/>
       <source>(untitled)</source>
       <translation>（未命名）</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="284"/>
       <source>Welcome!</source>
       <translation>欢迎使用！</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="316"/>
+      <location filename="../src/article_maker.cc" line="314"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>然后只要用鼠标指针选定你要进行抓词查询的词（双击单词或者用鼠标拖拉选定），程序就会在弹出式窗口中显示释义。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="238"/>
+      <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>在 &lt;b&gt;%1&lt;/b&gt; 群组中找不到可用的翻译。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="288"/>
+      <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 词典程序！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用时请首先打开&lt;b&gt;编辑 | 词典&lt;/b&gt;菜单以添加并扫描含有词典文件的目录，添加维基百科网站查询或其它资源，调整词典排序或创建新的词典群组。这些设置都完成以后，就可以开始使用了。你可以使用左侧的查询面板，或者&lt;a href=&quot;使用屏幕取词功能&quot;&gt;直接从其它程序中抓词查询&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要改变设置，可以在&lt;b&gt;编辑 | 首选项&lt;/b&gt;菜单中查看一下可用的系统设置。所有的设置都有鼠标指针提示信息，如果有不明之处，请仔细阅读提示信息。如果你需要更多帮助，有任何疑问、建议，或者仅仅想了解其他人的想法，欢迎访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;官方论坛&lt;/a&gt;。访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;官方网站&lt;/a&gt;以获取更新。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授权基于 GPLv3 或更高版本。</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="406"/>
+      <location filename="../src/article_maker.cc" line="404"/>
       <source>(picture)</source>
       <translation>（图片）</translation>
     </message>
@@ -148,27 +148,27 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="674"/>
+      <location filename="../src/article_maker.cc" line="672"/>
       <source>Expand article</source>
       <translation>展开文章</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="675"/>
+      <location filename="../src/article_maker.cc" line="673"/>
       <source>From </source>
       <translation>来自</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="678"/>
+      <location filename="../src/article_maker.cc" line="676"/>
       <source>Collapse article</source>
       <translation>收起文章</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="693"/>
+      <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
       <translation>创建新的 Anki 笔记</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="706"/>
+      <location filename="../src/article_maker.cc" line="704"/>
       <source>Query error: %1</source>
       <translation>查询错误：%1</translation>
     </message>
@@ -211,7 +211,7 @@
       <translation>所引用的资源下载失败。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2096"/>
+      <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>创建临时文件失败。</translation>
     </message>
@@ -220,7 +220,7 @@
       <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1807"/>
+      <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>查找 &quot;%1&quot;(&amp;L)</translation>
     </message>
@@ -233,13 +233,13 @@
       <translation>前一个(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1815"/>
+      <location filename="../src/ui/articleview.cc" line="1806"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>在新标签页中查找 &quot;%1&quot;(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1367"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1358"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>所引用的资源不存在。</translation>
     </message>
@@ -252,42 +252,42 @@
       <translation>区分大小写(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2107"/>
+      <location filename="../src/ui/articleview.cc" line="2098"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>自动打开资源文件时失败，请尝试手动打开：%1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1841"/>
+      <location filename="../src/ui/articleview.cc" line="1832"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>在 %2 中查找 &quot;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="332"/>
+      <location filename="../src/ui/articleview.cc" line="321"/>
       <source>Select Current Article</source>
       <translation>选择当前文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="337"/>
+      <location filename="../src/ui/articleview.cc" line="326"/>
       <source>Copy as text</source>
       <translation>复制为文本</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="342"/>
+      <location filename="../src/ui/articleview.cc" line="331"/>
       <source>Inspect</source>
       <translation>审查元素</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1849"/>
+      <location filename="../src/ui/articleview.cc" line="1840"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>在 %2 中查找 &quot;%1&quot; 并使用新标签页(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1759"/>
+      <location filename="../src/ui/articleview.cc" line="1750"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>在新标签页中打开链接(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1766"/>
+      <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>在外部浏览器中打开链接(&amp;E)</translation>
     </message>
@@ -296,58 +296,58 @@
       <translation>高亮所有结果(&amp;a)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1004"/>
+      <location filename="../src/ui/articleview.cc" line="995"/>
       <source>Resource</source>
       <translation>资源</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1009"/>
+      <location filename="../src/ui/articleview.cc" line="1000"/>
       <source>Audio</source>
       <translation>音频</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1014"/>
+      <location filename="../src/ui/articleview.cc" line="1005"/>
       <source>TTS Voice</source>
       <translation>TTS 音频</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1019"/>
+      <location filename="../src/ui/articleview.cc" line="1010"/>
       <source>Picture</source>
       <translation>图片</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>视频</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1035"/>
+      <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
       <translation>视频：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1052"/>
+      <location filename="../src/ui/articleview.cc" line="1043"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>定义：&quot;%1&quot;: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1060"/>
+      <location filename="../src/ui/articleview.cc" line="1051"/>
       <source>Definition: %1</source>
       <translation>定义：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1406"/>
+      <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>引用的音频播放程序不存在。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1753"/>
+      <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
       <translation>打开链接(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>保存为书签（&amp;S）“%1...”</translation>
     </message>
@@ -360,80 +360,80 @@
       <translation>声音文件(*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;所有文件（*.*）</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2137"/>
+      <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>警告：音频播放器：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1292"/>
-      <location filename="../src/ui/articleview.cc" line="1327"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1283"/>
+      <location filename="../src/ui/articleview.cc" line="1318"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>ERROR: %1</source>
       <translation>错误： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2009"/>
+      <location filename="../src/ui/articleview.cc" line="2000"/>
       <source>Save sound</source>
       <translation>保存音频文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2024"/>
+      <location filename="../src/ui/articleview.cc" line="2015"/>
       <source>Save image</source>
       <translation>保存图片</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2026"/>
+      <location filename="../src/ui/articleview.cc" line="2017"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>图片文件 (*.bmp *.jpg *.png *.tif);;所有文件 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1782"/>
+      <location filename="../src/ui/articleview.cc" line="1773"/>
       <source>Save &amp;image...</source>
       <translation>保存图片(&amp;I)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="199"/>
+      <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
       <translation>没找到词组</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="207"/>
+      <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
       <translation>匹配（%1/%2）</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1789"/>
+      <location filename="../src/ui/articleview.cc" line="1780"/>
       <source>Save s&amp;ound...</source>
       <translation>保存音频文件(&amp;O)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1820"/>
+      <location filename="../src/ui/articleview.cc" line="1811"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>将 &quot;%1&quot; 发送到输入框</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1826"/>
-      <location filename="../src/ui/articleview.cc" line="1878"/>
+      <location filename="../src/ui/articleview.cc" line="1817"/>
+      <location filename="../src/ui/articleview.cc" line="1869"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>将 &quot;%1&quot; 添加到历史(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1868"/>
+      <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>发送当前文章到 Anki(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>发送选中文本到 Anki(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2011"/>
+      <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>声音文件 (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2081"/>
+      <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>播放音频文件失败：%1</translation>
     </message>
@@ -614,6 +614,8 @@ between classic and school orthography in cyrillic)</source>
     <name>DictGroupsWidget</name>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
+      <location filename="../src/ui/groups_widgets.cc" line="789"/>
+      <location filename="../src/ui/groups_widgets.cc" line="890"/>
       <source>Confirmation</source>
       <translation>确定</translation>
     </message>
@@ -623,51 +625,55 @@ between classic and school orthography in cyrillic)</source>
       <translation>你确定要产生基于语言配对的群组吗？</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="851"/>
+      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation>您确定需要基于metadata.toml生成分组吗？</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>根据源语言合并群组&quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="868"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>根据目标语言合并群组&quot;-&gt;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
       <translation>根据文件分组失败</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can be reached.</source>
       <translation>%1 的父目录可以达到。</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation>您确定根据文件夹结构生成词组吗？</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="892"/>
       <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
       <translation>您确定需要基于metadata.txt生成分组吗？</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="886"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>建立双向群组&quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="904"/>
-      <location filename="../src/ui/groups_widgets.cc" line="923"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>与群组&quot;%1&quot;合并</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
       <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="835"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1010"/>
+      <location filename="../src/ui/groups_widgets.cc" line="985"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
       <source>Dictionaries: </source>
       <translation>词典：</translation>
     </message>
@@ -750,57 +756,63 @@ between classic and school orthography in cyrillic)</source>
       <translation>过滤器字符串（可以是固定的字符串、通配符或者正则表达式）</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="42"/>
       <source>Text</source>
       <translation>纯文本</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="43"/>
       <source>Wildcards</source>
       <translation>通配符</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="45"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
       <translation>正则表达式</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="266"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <source>Loading headwords...</source>
+      <translation>正在加载词条...</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictheadwords.cc" line="281"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>总共有%1个不同的词条，已过滤%2个</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="282"/>
+      <location filename="../src/ui/dictheadwords.cc" line="338"/>
       <source>Save headwords to file</source>
       <translation>保存词条至文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="284"/>
+      <location filename="../src/ui/dictheadwords.cc" line="340"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>文本文件 (*.txt);;所有文件 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="292"/>
+      <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
       <translation>无法打开导出的文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Export headwords...</source>
       <translation>导出词条...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="367"/>
+      <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
       <translation>导出过程被中断</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="375"/>
+      <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
       <translation>导出完成</translation>
     </message>
@@ -875,22 +887,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictServer</name>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="274"/>
+      <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Url: </source>
       <translation>URL：</translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="275"/>
+      <location filename="../src/dict/dictserver.cc" line="276"/>
       <source>Databases: </source>
       <translation>数据库：</translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="276"/>
+      <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
       <translation>搜索策略：</translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="280"/>
+      <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
       <translation>服务器数据库</translation>
     </message>
@@ -983,8 +995,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>EditDictionaries</name>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="47"/>
-      <location filename="../src/ui/editdictionaries.cc" line="248"/>
+      <location filename="../src/ui/editdictionaries.cc" line="45"/>
+      <location filename="../src/ui/editdictionaries.cc" line="251"/>
       <source>&amp;Dictionaries</source>
       <translation>词典(&amp;D)</translation>
     </message>
@@ -994,33 +1006,33 @@ between classic and school orthography in cyrillic)</source>
       <translation>词典</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="134"/>
       <source>Accept</source>
       <translation>接受</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="133"/>
+      <location filename="../src/ui/editdictionaries.cc" line="136"/>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="127"/>
+      <location filename="../src/ui/editdictionaries.cc" line="130"/>
       <source>Sources changed</source>
       <translation>词典文件所在目录已变更</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="44"/>
       <source>&amp;Sources</source>
       <translation>词典来源(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="48"/>
-      <location filename="../src/ui/editdictionaries.cc" line="250"/>
+      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="253"/>
       <source>&amp;Groups</source>
       <translation>群组(&amp;G)</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="128"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>某些词典文件的所在目录已变更，是否接受变更？</translation>
     </message>
@@ -1033,7 +1045,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>上一页</translation>
     </message>
     <message>
-      <location filename="../src/dict/epwing.cc" line="386"/>
+      <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
       <translation>下一页</translation>
     </message>
@@ -1049,60 +1061,60 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="234"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Full-text search</source>
       <translation>全文搜索</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
       <translation>全字匹配</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="244"/>
+      <location filename="../src/fulltextsearch.cc" line="242"/>
       <source>Plain text</source>
       <translation>纯文本</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
       <source>Wildcards</source>
       <translation>通配符</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="247"/>
+      <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
       <translation>正则表达式</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="257"/>
+      <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>支持 xapian 搜索语法，例如 AND OR +/- 等</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="263"/>
+      <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
       <translation>最大词间距 (%1-%2)：</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="272"/>
+      <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
       <translation>每个词典最大词条数 (%1-%2)：</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="311"/>
-      <location filename="../src/fulltextsearch.cc" line="441"/>
-      <location filename="../src/fulltextsearch.cc" line="562"/>
-      <location filename="../src/fulltextsearch.cc" line="575"/>
+      <location filename="../src/fulltextsearch.cc" line="309"/>
+      <location filename="../src/fulltextsearch.cc" line="443"/>
+      <location filename="../src/fulltextsearch.cc" line="564"/>
+      <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
       <translation>搜索到的词条：</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="394"/>
+      <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
       <translation>正在索引：</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="395"/>
+      <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>无</translation>
     </message>
@@ -1111,17 +1123,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>不能使用“全字匹配”模式或者“纯文本”模式搜索包含CJK字符的字符串</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="452"/>
+      <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
       <translation>搜索关键词至少包含</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="453"/>
+      <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
       <translation>个或更多字符</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="464"/>
+      <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
       <translation>没有可供全文搜索的词典</translation>
     </message>
@@ -1129,7 +1141,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="644"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
       <translation>收藏文件中存在错误</translation>
     </message>
@@ -1137,27 +1149,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="30"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="31"/>
       <source>&amp;Delete Selected</source>
       <translation>删除选中内容(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="39"/>
       <source>Copy Selected</source>
       <translation>复制选中内容</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
       <translation>添加文件夹</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
       <translation>收藏：</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
       <translation>所有选中项将被删除。是否继续？</translation>
     </message>
@@ -1165,37 +1177,37 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
-      <location filename="../src/dict/forvo.cc" line="194"/>
+      <location filename="../src/dict/forvo.cc" line="188"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>XML 语法错误：%1 于 %2, %3</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="270"/>
+      <location filename="../src/dict/forvo.cc" line="264"/>
       <source>Added %1</source>
       <translation>添加 %1</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="273"/>
+      <location filename="../src/dict/forvo.cc" line="267"/>
       <source>by</source>
       <translation>由</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Male</source>
       <translation>男</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Female</source>
       <translation>女</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="279"/>
+      <location filename="../src/dict/forvo.cc" line="273"/>
       <source>from</source>
       <translation>来自</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="317"/>
+      <location filename="../src/dict/forvo.cc" line="309"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>进入 编辑|词典|词典来源|Forvo, 申请自己的 API-key 来消除此错误。</translation>
     </message>
@@ -1334,12 +1346,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>标签页 2</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="162"/>
+      <location filename="../src/ui/groups.cc" line="174"/>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>确定移除全部群组吗？</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="149"/>
+      <location filename="../src/ui/groups.cc" line="161"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>确定要移除&lt;b&gt;%1&lt;/b&gt;群组吗？</translation>
     </message>
@@ -1354,17 +1366,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>打开群组列表</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="148"/>
+      <location filename="../src/ui/groups.cc" line="160"/>
       <source>Remove group</source>
       <translation>移除群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="136"/>
+      <location filename="../src/ui/groups.cc" line="148"/>
       <source>Rename group</source>
       <translation>重命名群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="137"/>
+      <location filename="../src/ui/groups.cc" line="149"/>
       <source>Give a new name for the group:</source>
       <translation>为群组起一个新名字：</translation>
     </message>
@@ -1379,7 +1391,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>添加群组(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="110"/>
+      <location filename="../src/ui/groups.cc" line="113"/>
       <source>Add group</source>
       <translation>添加群组</translation>
     </message>
@@ -1389,28 +1401,48 @@ between classic and school orthography in cyrillic)</source>
       <translation>创建新的词典群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="197"/>
+      <location filename="../src/ui/groups.ui" line="203"/>
+      <source>Group by Languages</source>
+      <translation>按语言分组</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="210"/>
+      <source>Create folder-based groups.</source>
+      <translation>创建基于文件夹的群组。</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="213"/>
+      <source>Group by Folders</source>
+      <translation>按文件夹分组</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="220"/>
+      <source>Group by Metadata</source>
+      <translation>按元数据分组</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="244"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>可以用鼠标拖拽词典以改变其群组设置或排序(&amp;D)。</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui" line="153"/>
       <source>Rename current dictionary group</source>
       <translation>重命名当前词典群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui" line="163"/>
       <source>Remove current dictionary group</source>
       <translation>移除词典群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="111"/>
+      <location filename="../src/ui/groups.cc" line="114"/>
       <source>Give a name for the new group:</source>
       <translation>为新群组命名：</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="186"/>
-      <location filename="../src/ui/groups.cc" line="161"/>
+      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>移除全部群组</translation>
     </message>
@@ -1425,7 +1457,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>将所选词典添加进群组(Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui" line="166"/>
       <source>&amp;Remove group</source>
       <translation>移除群组(&amp;R)</translation>
     </message>
@@ -1435,22 +1467,21 @@ between classic and school orthography in cyrillic)</source>
       <translation>群组：</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Re&amp;name group</source>
       <translation>重命名群组(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="183"/>
+      <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove all dictionary groups</source>
       <translation>移除全部词典群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui" line="200"/>
       <source>Create language-based groups</source>
       <translation>创建基于语言的群组</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
       <translation>自动分组</translation>
     </message>
@@ -1525,12 +1556,12 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="285"/>
+      <location filename="../src/dict/hunspell.cc" line="259"/>
       <source>Spelling suggestions: </source>
       <translation>拼写建议：</translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="856"/>
+      <location filename="../src/dict/hunspell.cc" line="780"/>
       <source>%1 Morphology</source>
       <translation>%1 构词法</translation>
     </message>
@@ -1575,1007 +1606,1007 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="87"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
       <translation>埃维语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
       <translation>伊多语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
       <translation>老挝语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Twi</source>
       <translation>维特语（加纳）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
       <translation>阿法尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
       <translation>阿肯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Cree</source>
       <translation>克里语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
       <translation>伊博语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
       <translation>科米语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="106"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Manx</source>
       <translation>曼岛语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pali</source>
       <translation>巴利语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Thai</source>
       <translation>泰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Urdu</source>
       <translation>乌尔都语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="302"/>
       <source>Zulu</source>
       <translation>祖鲁语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Czech</source>
       <translation>捷克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Dutch</source>
       <translation>荷兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
       <translation>卢甘达语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="95"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fulah</source>
       <translation>富拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="88"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Greek</source>
       <translation>希腊语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="107"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hausa</source>
       <translation>豪萨语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="109"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
       <translation>印地语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="101"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Irish</source>
       <translation>爱尔兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Khmer</source>
       <translation>高棉语（柬埔寨语）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kongo</source>
       <translation>刚果语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Latin</source>
       <translation>拉丁语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Malay</source>
       <translation>马来语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Maori</source>
       <translation>毛利语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>Nauru</source>
       <translation>瑙鲁语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Oriya</source>
       <translation>奥里亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
       <translation>奥洛莫语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
       <translation>桑戈语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
       <translation>绍纳语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tajik</source>
       <translation>塔吉克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tamil</source>
       <translation>泰米尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
       <translation>鞑靼语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
       <translation>斯瓦特语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tonga</source>
       <translation>东加语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Inupiaq</source>
       <translation>伊努庇克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
       <translation>文达语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Uzbek</source>
       <translation>乌兹别克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="82"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>Welsh</source>
       <translation>威尔士语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
       <translation>沃洛夫语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
       <translation>科萨语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Italian</source>
       <translation>意大利语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Raeto-Romance</source>
       <translation>罗曼斯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="86"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
       <translation>宗喀语（不丹语）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
       <translation>卡纳达语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
       <translation>北恩德贝勒语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Abkhazian</source>
       <translation>阿布哈西亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Kirghiz</source>
       <translation>吉尔吉斯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
       <translation>科隆地语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="102"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Scottish Gaelic</source>
       <translation>苏格兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Albanian</source>
       <translation>阿尔巴尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Latvian</source>
       <translation>拉脱维亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Malayalam</source>
       <translation>马拉雅拉姆语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Kurdish</source>
       <translation>库尔德语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bulgarian</source>
       <translation>保加利亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
       <translation>林加拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Maltese</source>
       <translation>马耳他语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Marathi</source>
       <translation>马拉地语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Arabic</source>
       <translation>阿拉伯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="93"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
       <translation>巴斯克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Avaric</source>
       <translation>阿瓦尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bihari</source>
       <translation>比哈尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
       <translation>艾马拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
       <translation>布列塔尼语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Sundanese</source>
       <translation>巽他语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="83"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Danish</source>
       <translation>丹麦语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="85"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
       <translation>迪维希语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
       <translation>卢巴卡丹加语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="97"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>Fijian</source>
       <translation>斐济语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="113"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Hungarian</source>
       <translation>匈牙利语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="99"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>French</source>
       <translation>法语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="84"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>German</source>
       <translation>德语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Mongolian</source>
       <translation>蒙古语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="108"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hebrew</source>
       <translation>希伯来语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="115"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Herero</source>
       <translation>赫雷罗语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Luxembourgish</source>
       <translation>卢森堡语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
       <translation>卡努里语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Kazakh</source>
       <translation>哈萨克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kikuyu</source>
       <translation>基库尤语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Korean</source>
       <translation>韩语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Navajo</source>
       <translation>纳瓦霍语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
       <translation>恩敦加语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Nepali</source>
       <translation>尼泊尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Ojibwa</source>
       <translation>奥吉布瓦语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Pashto</source>
       <translation>普什图语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Polish</source>
       <translation>波兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Samoan</source>
       <translation>萨摩亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Occitan</source>
       <translation>奥西坦语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sindhi</source>
       <translation>信德语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Slovak</source>
       <translation>斯洛伐克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Somali</source>
       <translation>索马里语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Telugu</source>
       <translation>泰卢固语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Tsonga</source>
       <translation>颂加语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Tswana</source>
       <translation>茨瓦纳语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Uighur</source>
       <translation>维吾尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Serbo-Croatian</source>
       <translation>塞尔维亚-克罗地亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Yoruba</source>
       <translation>约鲁巴语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zhuang</source>
       <translation>壮语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Romanian</source>
       <translation>罗马尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="117"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Indonesian</source>
       <translation>印度尼西亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Panjabi</source>
       <translation>旁遮普语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Southern Sotho</source>
       <translation>梭托语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Corsican</source>
       <translation>科西嘉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="90"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
       <translation>世界语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="94"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Persian</source>
       <translation>波斯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Slovenian</source>
       <translation>斯洛文尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="100"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Western Frisian</source>
       <translation>西弗里西语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Aragonese</source>
       <translation>阿拉贡语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Tahitian</source>
       <translation>塔希提语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Malagasy</source>
       <translation>马达加斯加语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="103"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Galician</source>
       <translation>加利西亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Azerbaijani</source>
       <translation>阿塞拜疆语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Amharic</source>
       <translation>阿姆哈拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sanskrit</source>
       <translation>梵语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Japanese</source>
       <translation>日语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Ukrainian</source>
       <translation>乌克兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
       <translation>班巴拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kalaallisut</source>
       <translation>格陵兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bashkir</source>
       <translation>巴什基尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Belarusian</source>
       <translation>白俄罗斯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Kashmiri</source>
       <translation>克什米尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Sardinian</source>
       <translation>撒丁语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="110"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Hiri Motu</source>
       <translation>希里莫图语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Quechua</source>
       <translation>科察语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Bengali</source>
       <translation>孟加拉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Javanese</source>
       <translation>爪哇语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Avestan</source>
       <translation>阿维斯陀语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Kinyarwanda</source>
       <translation>卢旺达语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Afrikaans</source>
       <translation>南非语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
       <translation>比斯拉马语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="114"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Armenian</source>
       <translation>亚美尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Norwegian Bokmal</source>
       <translation>波克默尔语（挪威）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="111"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Croatian</source>
       <translation>克罗地亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Bosnian</source>
       <translation>波斯尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="116"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingua</source>
       <translation>国际语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Interlingue</source>
       <translation>西方国际语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Catalan</source>
       <translation>加泰罗尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Serbian</source>
       <translation>塞尔维亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Burmese</source>
       <translation>缅甸语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Russian</source>
       <translation>俄语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Limburgish</source>
       <translation>林堡语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Norwegian</source>
       <translation>挪威语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Chechen</source>
       <translation>车臣语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Chinese</source>
       <translation>汉语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Chuvash</source>
       <translation>楚瓦什语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
       <translation>僧加罗语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="91"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Spanish</source>
       <translation>西班牙语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Cornish</source>
       <translation>凯尔特语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tagalog</source>
       <translation>他加禄语（菲律宾）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Assamese</source>
       <translation>阿萨姆语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Ossetian</source>
       <translation>奥塞梯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="92"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Estonian</source>
       <translation>爱沙尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Swahili</source>
       <translation>斯瓦希里语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Swedish</source>
       <translation>瑞典语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Tibetan</source>
       <translation>西藏语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Vietnamese</source>
       <translation>越南语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Macedonian</source>
       <translation>马其顿语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Portuguese</source>
       <translation>葡萄牙语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Turkish</source>
       <translation>土耳其语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Turkmen</source>
       <translation>土库曼语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="105"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Gujarati</source>
       <translation>古吉拉特语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Icelandic</source>
       <translation>冰岛语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Inuktitut</source>
       <translation>因纽特语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="89"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>English</source>
       <translation>英语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Georgian</source>
       <translation>格鲁吉亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Church Slavic</source>
       <translation>教会斯拉夫语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="98"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Faroese</source>
       <translation>法罗语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="96"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Finnish</source>
       <translation>芬兰语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Volapuk</source>
       <translation>沃拉普克语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Walloon</source>
       <translation>华隆语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kwanyama</source>
       <translation>宽亚玛语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Marshallese</source>
       <translation>马绍尔语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Northern Sami</source>
       <translation>北萨莫斯语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="112"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Haitian</source>
       <translation>海地语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Chamorro</source>
       <translation>查莫罗语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>Norwegian Nynorsk</source>
       <translation>尼诺斯克语（挪威）</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="104"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Guarani</source>
       <translation>瓜拉尼语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>South Ndebele</source>
       <translation>南恩德贝勒语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Chichewa</source>
       <translation>奇契瓦语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Lithuanian</source>
       <translation>立陶宛语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Sichuan Yi</source>
       <translation>四川彝语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tigrinya</source>
       <translation>提格里尼亚语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Yiddish</source>
       <translation>意第绪语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="373"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Traditional Chinese</source>
       <translation>繁体中文</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="374"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Simplified Chinese</source>
       <translation>简体中文</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="375"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other</source>
       <translation>其它</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="376"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>简体中文其它方言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="377"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>繁体中文其它方言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="378"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
       <translation>东欧其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="379"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
       <translation>西欧其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="380"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
       <translation>俄罗斯其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="381"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
       <translation>日本其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="382"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
       <translation>波罗地海其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="383"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
       <translation>希腊其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="384"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
       <translation>其他韩国方言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="385"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
       <translation>土尔其其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="386"/>
+      <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
       <translation>泰国其它语言</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="387"/>
+      <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
       <translation>塔马塞特语</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="303"/>
       <source>Lojban</source>
       <translation>逻辑语</translation>
     </message>
@@ -2799,7 +2830,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="328"/>
+      <location filename="../src/main.cc" line="360"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>配置文件错误，使用默认配置并继续？</translation>
     </message>
@@ -2832,17 +2863,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1494"/>
+      <location filename="../src/ui/mainwindow.cc" line="1495"/>
       <source>All</source>
       <translation>全部</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="197"/>
+      <location filename="../src/ui/mainwindow.cc" line="198"/>
       <source>Back</source>
       <translation>回退</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1465"/>
+      <location filename="../src/ui/mainwindow.cc" line="1466"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>词典数：%1，文章数：%2，词条数：%3</translation>
     </message>
@@ -2868,12 +2899,12 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="388"/>
+      <location filename="../src/ui/mainwindow.cc" line="389"/>
       <source>&amp;Quit</source>
       <translation>退出(&amp;Q)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>错误</translation>
     </message>
@@ -2892,12 +2923,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>关闭至系统托盘(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
       <translation>无法保存文章：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="242"/>
+      <location filename="../src/ui/mainwindow.cc" line="244"/>
       <source>Zoom In</source>
       <translation>放大</translation>
     </message>
@@ -2927,7 +2958,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>保存文章(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3373"/>
+      <location filename="../src/ui/mainwindow.cc" line="3353"/>
       <source>Save Article As</source>
       <translation>文章另存为</translation>
     </message>
@@ -2957,22 +2988,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>主页(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3059"/>
+      <location filename="../src/ui/mainwindow.cc" line="3039"/>
       <source>New Release Available</source>
       <translation>有新版本可用</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up:</source>
       <translation>查找：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="248"/>
+      <location filename="../src/ui/mainwindow.cc" line="250"/>
       <source>Zoom Out</source>
       <translation>缩小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="381"/>
+      <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
       <translation>显示主窗口(&amp;M)</translation>
     </message>
@@ -2982,33 +3013,33 @@ between classic and school orthography in cyrillic)</source>
       <translation>关于 GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3065"/>
+      <location filename="../src/ui/mainwindow.cc" line="3045"/>
       <source>Download</source>
       <translation>下载</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3270"/>
+      <location filename="../src/ui/mainwindow.cc" line="3250"/>
       <source>Page Setup</source>
       <translation>页面设置</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="304"/>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="306"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up in:</source>
       <translation>查找于：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="252"/>
+      <location filename="../src/ui/mainwindow.cc" line="254"/>
       <source>Normal Size</source>
       <translation>正常大小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2908"/>
+      <location filename="../src/ui/mainwindow.cc" line="2888"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>初始化热键监视机制失败。&lt;br&gt;请确保你的 XServer 已启用 RECORD 扩展。</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3040"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>有新版 GoldenDict 可用，版本为 &lt;b&gt;%1&lt;/b&gt;。&lt;br&gt;
 点击&lt;b&gt;下载&lt;/b&gt;，打开下载页面。</translation>
@@ -3029,7 +3060,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>加载中……</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1662"/>
+      <location filename="../src/ui/mainwindow.cc" line="1666"/>
       <source>(untitled)</source>
       <translation>（未命名）</translation>
     </message>
@@ -3045,7 +3076,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>欢迎使用！</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="230"/>
+      <location filename="../src/ui/mainwindow.cc" line="231"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>朗读词条(Alt+S)</translation>
     </message>
@@ -3055,22 +3086,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>保存文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3066"/>
+      <location filename="../src/ui/mainwindow.cc" line="3046"/>
       <source>Skip This Release</source>
       <translation>忽略此次升级</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="199"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Forward</source>
       <translation>前进</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3292"/>
+      <location filename="../src/ui/mainwindow.cc" line="3272"/>
       <source>Print Article</source>
       <translation>打印文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3271"/>
+      <location filename="../src/ui/mainwindow.cc" line="3251"/>
       <source>No printer is available. Please install one first.</source>
       <translation>找不到可用的打印机，请先安装一个打印机。</translation>
     </message>
@@ -3095,37 +3126,37 @@ between classic and school orthography in cyrillic)</source>
       <translation>缩放(&amp;Z)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="367"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Zoom In</source>
       <translation>单词列表 - 放大</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="371"/>
+      <location filename="../src/ui/mainwindow.cc" line="372"/>
       <source>Words Zoom Out</source>
       <translation>单词列表 - 缩小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="373"/>
+      <location filename="../src/ui/mainwindow.cc" line="374"/>
       <source>Words Normal Size</source>
       <translation>单词列表 - 正常大小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="420"/>
+      <location filename="../src/ui/mainwindow.cc" line="421"/>
       <source>Close current tab</source>
       <translation>关闭当前标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="428"/>
+      <location filename="../src/ui/mainwindow.cc" line="429"/>
       <source>Close all tabs</source>
       <translation>关闭所有标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="435"/>
+      <location filename="../src/ui/mainwindow.cc" line="436"/>
       <source>Close all tabs except current</source>
       <translation>关闭其它标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="410"/>
+      <location filename="../src/ui/mainwindow.cc" line="411"/>
       <source>Opened tabs</source>
       <translation>已打开的标签页</translation>
     </message>
@@ -3145,12 +3176,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>配置文件夹(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>&amp;Menubar</source>
       <translation>菜单栏(&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="342"/>
+      <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>在以下词典中找到：</translation>
     </message>
@@ -3159,50 +3190,50 @@ between classic and school orthography in cyrillic)</source>
       <translation>剪贴板取词</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="455"/>
+      <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
       <translation>将全部标签页添加至收藏</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1012"/>
+      <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>词典搜索中的字符串：可以使用通配符“*”、“?”和符号分组“[...]”。
 如需查找“*”、“?”、“[”和“]”字符，请对应使用“\*”、“\?”、“\[”和“\]”</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1605"/>
+      <location filename="../src/ui/mainwindow.cc" line="1609"/>
       <source>Open Tabs List</source>
       <translation>打开标签页列表</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1862"/>
-      <location filename="../src/ui/mainwindow.cc" line="1941"/>
-      <location filename="../src/ui/mainwindow.cc" line="4473"/>
-      <location filename="../src/ui/mainwindow.cc" line="4501"/>
-      <location filename="../src/ui/mainwindow.cc" line="4537"/>
+      <location filename="../src/ui/mainwindow.cc" line="1866"/>
+      <location filename="../src/ui/mainwindow.cc" line="1944"/>
+      <location filename="../src/ui/mainwindow.cc" line="4457"/>
+      <location filename="../src/ui/mainwindow.cc" line="4485"/>
+      <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
       <translation>从收藏中删除当前标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1893"/>
+      <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3170"/>
+      <location filename="../src/ui/mainwindow.cc" line="3150"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>你选择了隐藏菜单栏，使用 %1 再次显示。</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3171"/>
+      <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3762"/>
-      <location filename="../src/ui/mainwindow.cc" line="3774"/>
+      <location filename="../src/ui/mainwindow.cc" line="3744"/>
+      <location filename="../src/ui/mainwindow.cc" line="3756"/>
       <source>&amp;Show</source>
       <translation>显示(&amp;S)</translation>
     </message>
@@ -3212,32 +3243,32 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>导出(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3758"/>
-      <location filename="../src/ui/mainwindow.cc" line="3770"/>
+      <location filename="../src/ui/mainwindow.cc" line="3740"/>
+      <location filename="../src/ui/mainwindow.cc" line="3752"/>
       <source>&amp;Hide</source>
       <translation>隐藏(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3816"/>
+      <location filename="../src/ui/mainwindow.cc" line="3798"/>
       <source>Export history to file</source>
       <translation>导出历史记录到文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3818"/>
-      <location filename="../src/ui/mainwindow.cc" line="3880"/>
-      <location filename="../src/ui/mainwindow.cc" line="3994"/>
+      <location filename="../src/ui/mainwindow.cc" line="3800"/>
+      <location filename="../src/ui/mainwindow.cc" line="3862"/>
+      <location filename="../src/ui/mainwindow.cc" line="3976"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>文本文件 (*.txt);;所有文件 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3857"/>
+      <location filename="../src/ui/mainwindow.cc" line="3839"/>
       <source>History export complete</source>
       <translation>历史记录导出完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
-      <location filename="../src/ui/mainwindow.cc" line="3975"/>
-      <location filename="../src/ui/mainwindow.cc" line="4024"/>
+      <location filename="../src/ui/mainwindow.cc" line="3842"/>
+      <location filename="../src/ui/mainwindow.cc" line="3957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4006"/>
       <source>Export error: </source>
       <translation>导出错误：</translation>
     </message>
@@ -3252,94 +3283,94 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>导入(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3878"/>
+      <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <source>Import history from file</source>
       <translation>导入历史文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3927"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: invalid data in file</source>
       <translation>导入失败：无效数据</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3931"/>
+      <location filename="../src/ui/mainwindow.cc" line="3913"/>
       <source>History import complete</source>
       <translation>历史导入成功</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3934"/>
-      <location filename="../src/ui/mainwindow.cc" line="4076"/>
+      <location filename="../src/ui/mainwindow.cc" line="3916"/>
+      <location filename="../src/ui/mainwindow.cc" line="4058"/>
       <source>Import error: </source>
       <translation>导入错误：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3951"/>
+      <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
       <translation>导出收藏记录到文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3953"/>
+      <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML 文件 (*.xml);;所有文件 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3972"/>
-      <location filename="../src/ui/mainwindow.cc" line="4021"/>
+      <location filename="../src/ui/mainwindow.cc" line="3954"/>
+      <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
       <translation>收藏导出完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3992"/>
+      <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
       <translation>以纯列表形式导出收藏列表到文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4041"/>
+      <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
       <translation>导入收藏文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4043"/>
+      <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>XML文件(*.xml);;文本文件(*.txt);;所有文件(*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4072"/>
+      <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
       <translation>收藏导入完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4078"/>
+      <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
       <translation>数据解析错误</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4288"/>
+      <location filename="../src/ui/mainwindow.cc" line="4270"/>
       <source>Dictionary info</source>
       <translation>词典信息</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4292"/>
+      <location filename="../src/ui/mainwindow.cc" line="4274"/>
       <source>Dictionary headwords</source>
       <translation>词典词条</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4294"/>
+      <location filename="../src/ui/mainwindow.cc" line="4276"/>
       <source>Open dictionary folder</source>
       <translation>打开词典文件夹</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4300"/>
+      <location filename="../src/ui/mainwindow.cc" line="4282"/>
       <source>Edit dictionary</source>
       <translation>编辑词典信息</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4444"/>
+      <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
       <translation>正在为全文搜索进行索引：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4486"/>
+      <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>从收藏中删除标题字“%1”？</translation>
     </message>
@@ -3391,7 +3422,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
       <location filename="../src/ui/mainwindow.ui" line="520"/>
-      <location filename="../src/ui/mainwindow.cc" line="296"/>
+      <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>菜单按钮</translation>
     </message>
@@ -3442,10 +3473,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
-      <location filename="../src/ui/mainwindow.cc" line="267"/>
-      <location filename="../src/ui/mainwindow.cc" line="1867"/>
-      <location filename="../src/ui/mainwindow.cc" line="1946"/>
-      <location filename="../src/ui/mainwindow.cc" line="4493"/>
+      <location filename="../src/ui/mainwindow.cc" line="269"/>
+      <location filename="../src/ui/mainwindow.cc" line="1871"/>
+      <location filename="../src/ui/mainwindow.cc" line="1949"/>
+      <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
       <translation>将当前标签页添加至收藏</translation>
     </message>
@@ -3460,42 +3491,47 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>导出至列表</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="118"/>
+      <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>在词典栏中显示词典名称(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>在工具栏上显示小图标(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="194"/>
+      <location filename="../src/ui/mainwindow.cc" line="195"/>
       <source>&amp;Navigation</source>
       <translation>导航栏(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="222"/>
+      <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
       <translation>取词弹窗</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3368"/>
+      <location filename="../src/ui/mainwindow.cc" line="3348"/>
       <source>Article, Complete (*.html)</source>
       <translation>文章, 完整 (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3369"/>
+      <location filename="../src/ui/mainwindow.cc" line="3349"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>文章, 仅 HTML (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3455"/>
+      <location filename="../src/ui/mainwindow.cc" line="3435"/>
       <source>Saving article...</source>
       <translation>文章保存中……</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3517"/>
+      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <source>Save article complete</source>
+      <translation>文章保存完成</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="3499"/>
       <source>The main window is set to be always on top.</source>
       <translation>主窗口已设置为总在最前。</translation>
     </message>
@@ -3505,8 +3541,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>历史面板(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="781"/>
-      <location filename="../src/ui/mainwindow.cc" line="864"/>
+      <location filename="../src/ui/mainwindow.cc" line="780"/>
+      <location filename="../src/ui/mainwindow.cc" line="863"/>
       <source>Accessibility API is not enabled</source>
       <translation>无障碍API未启用</translation>
     </message>
@@ -3514,12 +3550,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="628"/>
+      <location filename="../src/dict/mdx.cc" line="625"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>词典文件被修改或已损坏</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="639"/>
+      <location filename="../src/dict/mdx.cc" line="636"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>从 %1 加载文章失败：%2</translation>
     </message>
@@ -3670,22 +3706,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="521"/>
+      <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
       <translation>Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="193"/>
+      <location filename="../src/ui/preferences.ui" line="85"/>
       <source>Start to system tray</source>
       <translation>启动至系统托盘</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="578"/>
+      <location filename="../src/ui/preferences.ui" line="552"/>
       <source>Left Shift only</source>
       <translation>仅限左 Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="531"/>
+      <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -3694,49 +3730,49 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>秒</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="591"/>
+      <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
       <translation>Win/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="171"/>
+      <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Enable system tray icon</source>
       <translation>启用系统托盘图标</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="930"/>
-      <location filename="../src/ui/preferences.ui" line="1010"/>
+      <location filename="../src/ui/preferences.ui" line="904"/>
+      <location filename="../src/ui/preferences.ui" line="984"/>
       <source>Host:</source>
       <translation>主机：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="940"/>
-      <location filename="../src/ui/preferences.ui" line="1027"/>
+      <location filename="../src/ui/preferences.ui" line="914"/>
+      <location filename="../src/ui/preferences.ui" line="1001"/>
       <source>Port:</source>
       <translation>端口：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="551"/>
+      <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
       <translation>Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="917"/>
+      <location filename="../src/ui/preferences.ui" line="891"/>
       <source>Type:</source>
       <translation>类型：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="961"/>
+      <location filename="../src/ui/preferences.ui" line="935"/>
       <source>User:</source>
       <translation>用户名：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="397"/>
+      <location filename="../src/ui/preferences.ui" line="371"/>
       <source>&amp;Scan Popup</source>
       <translation>屏幕取词(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="313"/>
+      <location filename="../src/ui/preferences.ui" line="295"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3744,17 +3780,17 @@ switching to them.</source>
 启用此选项将会在打开新标签页时不自动选定。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="880"/>
+      <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
       <translation>使用代理服务器</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="706"/>
+      <location filename="../src/ui/preferences.ui" line="680"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>使用下列热键翻译剪贴板中的单词：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="588"/>
+      <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Windows 键或 Meta 键</translation>
     </message>
@@ -3763,91 +3799,91 @@ switching to them.</source>
       <translation>仅在按住下列特定的按键时屏幕取词才会启动：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="763"/>
       <source>Auto-pronounce words in main window</source>
       <translation>自动朗读主窗口中的词条</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="382"/>
+      <location filename="../src/ui/preferences.ui" line="191"/>
       <source>Start with system</source>
       <translation>随系统启动</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="538"/>
+      <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
       <translation>仅限左 Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
       <translation>标签页浏览</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="508"/>
+      <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
       <translation>仅限右 Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="200"/>
+      <location filename="../src/ui/preferences.ui" line="92"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>启用此选项，关闭窗口将使程序最小化至系统托盘，
 而不是退出程序。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="777"/>
+      <location filename="../src/ui/preferences.ui" line="751"/>
       <source>&amp;Audio</source>
       <translation>音频(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="876"/>
+      <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>如果你希望通过代理服务器执行程序的网络查
 询功能，启用此选项。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui" line="201"/>
       <source>Interface language:</source>
       <translation>界面语言：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="498"/>
+      <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
       <translation>仅限左 Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="318"/>
+      <location filename="../src/ui/preferences.ui" line="300"/>
       <source>Open new tabs in background</source>
       <translation>在后台打开新标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="870"/>
+      <location filename="../src/ui/preferences.ui" line="844"/>
       <source>&amp;Network</source>
       <translation>网络(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="568"/>
+      <location filename="../src/ui/preferences.ui" line="542"/>
       <source>Right Ctrl only</source>
       <translation>仅限右 Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="114"/>
+      <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="511"/>
+      <location filename="../src/ui/preferences.ui" line="485"/>
       <source>Right Shift</source>
       <translation>右 Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="581"/>
+      <location filename="../src/ui/preferences.ui" line="555"/>
       <source>Left Shift</source>
       <translation>左 Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="446"/>
+      <location filename="../src/ui/preferences.ui" line="420"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>启用后，屏幕取词窗口只有在按住特定按键时才会弹出。</translation>
@@ -3857,7 +3893,7 @@ in the pressed state when the word selection changes.</source>
       <translation>显示风格：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>自动朗读屏幕取词弹出窗口中的词条</translation>
     </message>
@@ -3866,17 +3902,17 @@ in the pressed state when the word selection changes.</source>
       <translation>启用屏幕取词功能</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="330"/>
+      <location filename="../src/ui/preferences.ui" line="312"/>
       <source>Open new tabs after the current one</source>
       <translation>在当前页之后打开新标签页</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="620"/>
+      <location filename="../src/ui/preferences.cc" line="624"/>
       <source>Restart the program to apply the language change.</source>
       <translation>变更界面语言需要重新启动程序才能生效。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="518"/>
+      <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>Alt 键</translation>
     </message>
@@ -3891,12 +3927,12 @@ off from main window or tray icon.</source>
 托盘菜单中选择是否激活屏幕取词功能。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1228"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Check for new program releases periodically</source>
       <translation>定期检查可用版本</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="325"/>
+      <location filename="../src/ui/preferences.ui" line="307"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3904,24 +3940,24 @@ be the last ones.</source>
 打开此选项，新标签页将会自动添加到末尾。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="204"/>
+      <location filename="../src/ui/preferences.ui" line="96"/>
       <source>Close to system tray</source>
       <translation>关闭至系统托盘</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="61"/>
+      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>System default</source>
       <translation>系统默认</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="167"/>
+      <location filename="../src/ui/preferences.ui" line="59"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>启用此选项，将会启用系统托盘图标。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1221"/>
+      <location filename="../src/ui/preferences.ui" line="1195"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3932,17 +3968,17 @@ download page.</source>
 页面。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="373"/>
+      <location filename="../src/ui/preferences.ui" line="182"/>
       <source>Startup</source>
       <translation>开机自动启动</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="971"/>
+      <location filename="../src/ui/preferences.ui" line="945"/>
       <source>Password:</source>
       <translation>密码：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="111"/>
+      <location filename="../src/ui/preferences.cc" line="115"/>
       <source>Default</source>
       <translation>默认</translation>
     </message>
@@ -3959,27 +3995,27 @@ seconds, which is specified here.</source>
 被监视。热键监视的秒数可以在这里设置。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="619"/>
+      <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>变更界面语言</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="528"/>
+      <location filename="../src/ui/preferences.ui" line="502"/>
       <source>Ctrl key</source>
       <translation>Ctr l键</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="679"/>
+      <location filename="../src/ui/preferences.ui" line="653"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>使用下列热键显示或隐藏主窗口：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="541"/>
+      <location filename="../src/ui/preferences.ui" line="515"/>
       <source>Left Alt</source>
       <translation>左 Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="558"/>
+      <location filename="../src/ui/preferences.ui" line="532"/>
       <source>Right Alt only</source>
       <translation>仅限右 Alt</translation>
     </message>
@@ -3993,53 +4029,53 @@ seconds, which is specified here.</source>
       <translation>按键取词容许的延迟时间：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="501"/>
+      <location filename="../src/ui/preferences.ui" line="475"/>
       <source>Left Ctrl</source>
       <translation>左 Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="561"/>
+      <location filename="../src/ui/preferences.ui" line="535"/>
       <source>Right Alt</source>
       <translation>右 Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="749"/>
+      <location filename="../src/ui/preferences.ui" line="723"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>热键均为全局键，只要 GoldenDict 在后台运行，热键就可以在任何程序中使用。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="571"/>
+      <location filename="../src/ui/preferences.ui" line="545"/>
       <source>Right Ctrl</source>
       <translation>右 Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="673"/>
+      <location filename="../src/ui/preferences.ui" line="647"/>
       <source>Hotkeys</source>
       <translation>热键</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="407"/>
+      <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
       <translation>启动程序时同时启动屏幕取词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="189"/>
+      <location filename="../src/ui/preferences.ui" line="81"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>启用此选项，程序启动时将直接最小化至系统托盘。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="548"/>
+      <location filename="../src/ui/preferences.ui" line="522"/>
       <source>Shift key</source>
       <translation>Shift 键</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="379"/>
+      <location filename="../src/ui/preferences.ui" line="188"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>开机自动启动 GoldenDict.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="403"/>
+      <location filename="../src/ui/preferences.ui" line="377"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>选择是否默认启用屏幕取词模式。如果选中，程序启动时将会自动激活屏幕取词功能。</translation>
@@ -4054,12 +4090,12 @@ be pressed shortly after the selection is done.</source>
 的一小段时间内按下键即可。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="642"/>
+      <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>在 GoldenDict 自身窗口口内选择或进行剪贴板操作时不要弹出窗口</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="645"/>
+      <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>忽略 GoldenDict 自身的选择和剪贴板变更</translation>
     </message>
@@ -4076,27 +4112,27 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:2em;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;注意： 你正在运行的 X.Org XServer 版本 RECORD 扩展功能不能正常工作。GoldenDict 中的热键可能因此而失效。问题的解决依赖于 xserver 自身的恢复。请参照如下链接： &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug 记录&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; 并留下评论。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="812"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
       <translation>使用内建音频支持播放音频文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
       <translation>使用内部播放器：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="822"/>
+      <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
       <translation>选择音频后端</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="842"/>
+      <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
       <translation>输入音频播放器命令行</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1145"/>
+      <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -4105,43 +4141,43 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
 用此选项。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1150"/>
+      <location filename="../src/ui/preferences.ui" line="1124"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>禁止载入来自其它站点的内容（封杀广告）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="783"/>
+      <location filename="../src/ui/preferences.ui" line="757"/>
       <source>Pronunciation</source>
       <translation>朗读</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>Playback</source>
       <translation>播放</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Use external program:</source>
       <translation>使用外部程序播放：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="224"/>
+      <location filename="../src/ui/preferences.ui" line="282"/>
       <source>Double-click translates the word clicked</source>
       <translation>双击翻译词条（在主界面中）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="829"/>
+      <location filename="../src/ui/preferences.ui" line="803"/>
       <source>Use any external program to play audio files</source>
       <translation>使用外部程序播放音频文件</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="280"/>
+      <location filename="../src/ui/preferences.ui" line="106"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>通常，按下 ESC 键会将焦点移至翻译输入框，若启用此选项则会隐藏主窗口。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="284"/>
+      <location filename="../src/ui/preferences.ui" line="110"/>
       <source>ESC key hides main window</source>
       <translation>ESC 键隐藏主窗口</translation>
     </message>
@@ -4157,12 +4193,12 @@ Plugin must be installed for this option to work.</source>
       <translation>启用 web 插件</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="337"/>
+      <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>如果你不想在单标签页时见到主标签栏，请启用此选项。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="340"/>
+      <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>隐藏单标签页</translation>
     </message>
@@ -4171,32 +4207,32 @@ Plugin must be installed for this option to work.</source>
       <translation>帮助语言</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="239"/>
+      <location filename="../src/ui/preferences.ui" line="141"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>避免右键菜单出现过多词典条目。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="242"/>
+      <location filename="../src/ui/preferences.ui" line="144"/>
       <source>Context menu dictionaries limit:</source>
       <translation>右键菜单词典数目限制：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="414"/>
+      <location filename="../src/ui/preferences.ui" line="388"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>将翻译词条发送至主窗口，而非在取词窗口中显示</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="417"/>
+      <location filename="../src/ui/preferences.ui" line="391"/>
       <source>Send translated word to main window</source>
       <translation>发送翻译词条到主窗口</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="632"/>
+      <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>显示弹出窗口之前先显示一个旗标窗口，点击旗标以显示弹出窗口。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="291"/>
+      <location filename="../src/ui/preferences.ui" line="117"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4204,158 +4240,158 @@ however, the article from the topmost dictionary is shown.</source>
       <translation>单击link或双击翻译的时候是否自动定位到当前正在浏览的词典。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="297"/>
+      <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
       <translation>自动定位到当前词典</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="73"/>
+      <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
       <translation>词典字体：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="86"/>
+      <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
       <translation>设置词典的备用字体</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
       <translation>文章显示风格</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="145"/>
+      <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
       <translation>启用暗色界面</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="148"/>
+      <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
       <translation>深色模式</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="155"/>
+      <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
       <translation>将文章以暗色风格显示</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="158"/>
+      <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
       <translation>深色阅读模式</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="347"/>
+      <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
       <translation>排序：最近使用优先</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>剪贴板取词。注意！非Linux系统，这个选项必须打开</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="427"/>
+      <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
       <translation>剪贴板取词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="434"/>
+      <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
       <translation>选择文本取词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="450"/>
+      <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>仅当指定按钮被按时，文本取词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="635"/>
+      <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
       <translation>单词被选中时显示扫描旗标</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="892"/>
+      <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
       <translation>系统代理</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="899"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
       <translation>自定义代理</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="909"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
       <translation>自定义设置</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="996"/>
+      <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
       <translation>Anki连接</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1017"/>
+      <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
       <translation>http:///</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1061"/>
+      <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
       <translation>牌组：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1071"/>
+      <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
       <translation>模板：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1098"/>
+      <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
       <translation>单词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1105"/>
+      <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
       <translation>对应anki里面的变量名，如设置word，则用{{Word}}引用</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1112"/>
+      <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
       <translation>释义</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
       <translation>释义的变量字段</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1126"/>
+      <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
       <translation>句子</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1133"/>
+      <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
       <translation>句子的变量（可选）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1157"/>
+      <location filename="../src/ui/preferences.ui" line="1131"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1161"/>
+      <location filename="../src/ui/preferences.ui" line="1135"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>不使用 GoldenDict 浏览器标识（UA）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1170"/>
+      <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
       <translation>允许的最大网络缓存：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1177"/>
+      <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4363,63 +4399,63 @@ If set to 0 the network disk cache will be disabled.</source>
 如果设置为0，磁盘缓存会被禁用。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1182"/>
+      <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
       <translation> MB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>GoldenDict退出时清空网络缓存。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1199"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
       <translation>退出时清空网络缓存</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1253"/>
+      <location filename="../src/ui/preferences.ui" line="1227"/>
       <source>Full-text search</source>
       <translation>全文搜索</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1259"/>
+      <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
       <translation>允许对以下格式词典进行全文搜索：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1357"/>
+      <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>不要在词条数多于</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1374"/>
+      <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
       <translation>个 (0 - 无限制) 的词典中进行搜索</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1417"/>
+      <location filename="../src/ui/preferences.ui" line="1391"/>
       <source>Ad&amp;vanced</source>
       <translation>高级(&amp;v)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1715"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>如果用户折叠了词典，下次搜索的时候，保持折叠状态。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1744"/>
+      <location filename="../src/ui/preferences.ui" line="1718"/>
       <source>Session collapse</source>
       <translation>搜索期间保持折叠</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1765"/>
+      <location filename="../src/ui/preferences.ui" line="1739"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1772"/>
+      <location filename="../src/ui/preferences.ui" line="1746"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>查询时，窗口获取焦点</translation>
     </message>
@@ -4452,198 +4488,197 @@ clears its network cache from disk during exit.</source>
       <translation>绕过窗口管理器提示（hint）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui" line="1524"/>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1532"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>收藏内容保存周期。若为 0 则只在程序退出时保存。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1584"/>
+      <location filename="../src/ui/preferences.ui" line="1558"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>开启此选项以在每次进行删除操作时进行确认</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1587"/>
+      <location filename="../src/ui/preferences.ui" line="1561"/>
       <source>Confirmation for items deletion</source>
       <translation>删除条目时确认</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1658"/>
+      <location filename="../src/ui/preferences.ui" line="1632"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>启用后，避免过长的输入（来自鼠标选择，剪贴板或命令行）</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1662"/>
+      <location filename="../src/ui/preferences.ui" line="1636"/>
       <source>Ignore input phrases longer than</source>
       <translation>忽略大于</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>忽略超过设置长度的字符</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>启用该选项以在搜索文章时忽略变音符号</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1721"/>
+      <location filename="../src/ui/preferences.ui" line="1695"/>
       <source>Ignore diacritics while searching</source>
       <translation>搜索时忽略变音符号</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1708"/>
+      <location filename="../src/ui/preferences.ui" line="1682"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>开启此选项以自动展开文章的可选部分</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1711"/>
+      <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>Expand optional &amp;parts</source>
       <translation>展开可选部分(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1648"/>
+      <location filename="../src/ui/preferences.ui" line="1622"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>开启此选项以自动收起过长的文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1651"/>
+      <location filename="../src/ui/preferences.ui" line="1625"/>
       <source>Collapse articles more than</source>
       <translation>收起大于</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>大于此大小的文章将被收起</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1618"/>
+      <location filename="../src/ui/preferences.ui" line="1592"/>
       <source>Ignore punctuation while searching</source>
       <translation>搜索时忽略标点符号</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1754"/>
+      <location filename="../src/ui/preferences.ui" line="1728"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>启用该选项可以激活基于同义词列表的额外搜索功能
 列表可以来源于星际翻王、Babylon 和 GLS 的词典</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1758"/>
+      <location filename="../src/ui/preferences.ui" line="1732"/>
       <source>Extra search via synonyms</source>
       <translation>基于同义词的额外搜索</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1641"/>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1615"/>
+      <location filename="../src/ui/preferences.ui" line="1659"/>
       <source>symbols</source>
       <translation>字符的文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="350"/>
+      <location filename="../src/ui/preferences.ui" line="332"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>用 Ctrl-tab 浏览标签页时，以“最近使用”为序</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
       <translation>巴比伦文</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1425"/>
+      <location filename="../src/ui/preferences.ui" line="1399"/>
       <source>History</source>
       <translation>历史</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1431"/>
+      <location filename="../src/ui/preferences.ui" line="1405"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>开启此选项以保存查询历史</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1434"/>
+      <location filename="../src/ui/preferences.ui" line="1408"/>
       <source>Store &amp;history</source>
       <translation>保存历史(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1612"/>
+      <location filename="../src/ui/preferences.ui" line="1586"/>
       <source>Articles</source>
       <translation>文章</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="214"/>
+      <location filename="../src/ui/preferences.ui" line="252"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>开启此选项以启用单击选择单词功能</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="217"/>
+      <location filename="../src/ui/preferences.ui" line="255"/>
       <source>Select word by single click</source>
       <translation>单击选择单词</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="120"/>
+      <location filename="../src/ui/preferences.ui" line="354"/>
       <source>Add-on style:</source>
       <translation>附加样式：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1449"/>
+      <location filename="../src/ui/preferences.ui" line="1423"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>指定历史最大条数。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1452"/>
+      <location filename="../src/ui/preferences.ui" line="1426"/>
       <source>Maximum history size:</source>
       <translation>最大历史条数：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1489"/>
+      <location filename="../src/ui/preferences.ui" line="1463"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>历史保存周期。若为 0 则只在程序退出时保存。</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1495"/>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1469"/>
+      <location filename="../src/ui/preferences.ui" line="1535"/>
       <source>Save every</source>
       <translation>保存周期：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1512"/>
-      <location filename="../src/ui/preferences.ui" line="1575"/>
+      <location filename="../src/ui/preferences.ui" line="1486"/>
+      <location filename="../src/ui/preferences.ui" line="1549"/>
       <source>minutes</source>
       <translation>分钟</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>English</source>
       <translation>英语</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="112"/>
+      <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
       <translation>经典</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="113"/>
+      <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
       <translation>现代</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
       <translation>灵格斯</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
       <translation>灵格斯-蓝色调</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="128"/>
+      <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
       <translation> MB</translation>
     </message>
@@ -4734,7 +4769,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1698"/>
+      <location filename="../src/dict/dsl.cc" line="1691"/>
       <source>Article loading error</source>
       <translation>文章加载错误</translation>
     </message>
@@ -4747,64 +4782,54 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
       <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="710"/>
-      <location filename="../src/dict/stardict.cc" line="1107"/>
+      <location filename="../src/dict/sdict.cc" line="685"/>
+      <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
       <translation>版权：%1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="726"/>
+      <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
       <translation>版本：%1%2</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
       <translation>avformat_alloc_context() 调用失败。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
       <translation>av_malloc() 调用失败。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
       <translation>avio_alloc_context() 调用失败。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
       <translation>avformat_open_input() 调用失败：%1。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
       <translation>avformat_find_stream_info() 调用失败：%1。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="213"/>
       <source>Could not find audio stream.</source>
       <translation>未找到有效的音频流数据。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="220"/>
       <source>Codec [id: %1] not found.</source>
       <translation>未找到有效的解码器 [id: %1]。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="226"/>
       <source>avcodec_alloc_context3() failed.</source>
       <translation>avcodec_alloc_context3() 失败。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
       <translation>avcodec_open2() 调用失败：%1。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="324"/>
       <source>Can not found default audio output device</source>
       <translation>未找到默认音频输出设备。</translation>
     </message>
@@ -4841,35 +4866,34 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>未知错误。</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
       <translation>avcodec_alloc_frame() 调用失败。</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1115"/>
+      <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
       <translation>作者：%1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1123"/>
+      <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
       <translation>电子邮件：%1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="678"/>
+      <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
       <translation>标题：%1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1131"/>
+      <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
       <translation>网站：%1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1139"/>
+      <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
       <translation>日期：%1%2</translation>
     </message>
@@ -4886,32 +4910,32 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>下一页</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="124"/>
+      <location filename="../src/main.cc" line="142"/>
       <source>A dictionary lookup program.</source>
       <translation>一款电子词典程序。</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="127"/>
+      <location filename="../src/main.cc" line="145"/>
       <source>Word or sentence to query.</source>
       <translation>单词或句子查询。</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="131"/>
+      <location filename="../src/main.cc" line="149"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt。</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="135"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Change the group of main window.</source>
       <translation>更改主窗口组。</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="139"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Change the group of popup.</source>
       <translation>更改弹出窗口组。</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="144"/>
+      <location filename="../src/main.cc" line="162"/>
       <source>Toggle scan popup.</source>
       <translation>切换扫描弹出窗口。</translation>
     </message>
@@ -4919,7 +4943,7 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1019"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>词典查询/过滤 (Ctrl+F)</translation>
     </message>
@@ -4928,7 +4952,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>快速查询</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1024"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
       <translation>清除查询结果</translation>
     </message>
@@ -4936,22 +4960,22 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>ERROR: %1</source>
       <translation>错误： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>Resource saving error: </source>
       <translation>资源保存失败：</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>The referenced resource failed to download.</source>
       <translation>所引用的资源下载失败。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
     </message>
@@ -4987,16 +5011,11 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="116"/>
-      <location filename="../src/ui/scanpopup.ui" line="130"/>
-      <location filename="../src/ui/scanpopup.ui" line="144"/>
-      <location filename="../src/ui/scanpopup.ui" line="211"/>
-      <location filename="../src/ui/scanpopup.ui" line="255"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="151"/>
+      <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
       <translation>Alt+S</translation>
     </message>
@@ -5006,38 +5025,38 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>对话框</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="141"/>
+      <location filename="../src/ui/scanpopup.ui" line="135"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>朗读词条(Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="178"/>
+      <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>将词条添加至收藏 (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="208"/>
+      <location filename="../src/ui/scanpopup.ui" line="193"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>显示或隐藏词典栏</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="231"/>
+      <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
       <translation>总是位于其它窗口上方</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="251"/>
+      <location filename="../src/ui/scanpopup.ui" line="230"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>使用此按钮可以固定窗口，以便它能停留在屏幕上进行改变大小等相关窗口管理操作。</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="161"/>
+      <location filename="../src/ui/scanpopup.ui" line="152"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>将词条发送到主窗口 (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="171"/>
+      <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
       <translation>Alt+W</translation>
     </message>
@@ -5047,13 +5066,13 @@ could be resized or managed in other ways.</source>
       <translation>回退</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="127"/>
+      <location filename="../src/ui/scanpopup.ui" line="124"/>
       <source>Forward</source>
       <translation>前进</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="598"/>
-      <location filename="../src/ui/scanpopup.cc" line="994"/>
+      <location filename="../src/ui/scanpopup.cc" line="604"/>
+      <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
@@ -5066,22 +5085,32 @@ could be resized or managed in other ways.</source>
       <translation>前一个(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="18"/>
+      <location filename="../src/ui/searchpanel.cc" line="15"/>
+      <source>Ctrl+Shift+G</source>
+      <translation>Ctrl+Shift+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
       <translation>后一个(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="22"/>
+      <location filename="../src/ui/searchpanel.cc" line="20"/>
+      <source>Ctrl+G</source>
+      <translation>Ctrl+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
       <translation>高亮所有结果(&amp;a)</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="26"/>
+      <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
       <translation>区分大小写(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="28"/>
+      <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
       <translation>查找：</translation>
     </message>
@@ -5234,6 +5263,21 @@ based on English phonology</source>
       <location filename="../src/ui/sources.ui" line="810"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>日语的平假名</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="835"/>
+      <source>Custom transliteration</source>
+      <translation>自定义转写</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="844"/>
+      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
+      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入ae代替实际要输入的æ。</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/sources.ui" line="854"/>
+      <source>ae;æ #this is an example</source>
+      <translation>ae;æ #这是一个例子</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -5633,7 +5677,7 @@ in the future, or register on the site to get your own key.</source>
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="201"/>
+      <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
       <translation>在某些词典中进行查询时失败。</translation>
     </message>

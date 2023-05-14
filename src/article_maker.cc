@@ -271,7 +271,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     string header = makeHtmlHeader( phrase.phrase, QString(), true );
 
-    return std::make_shared<ArticleRequest>( phrase, Instances::Group{},
+    return std::make_shared<ArticleRequest>( phrase, Instances::Group{groupId,""},
                                contexts, ftsDicts, header,
                                -1, true );
   }
@@ -731,6 +731,7 @@ void ArticleRequest::bodyFinished()
     }
   }
 
+  ActiveDictIds hittedWord{ group.id, word, dictIds };
 
   if ( bodyRequests.empty() )
   {
@@ -775,23 +776,24 @@ void ArticleRequest::bodyFinished()
       appendDataSlice( footer.data(), footer.size() );
     }
 
+
     if ( stemmedWordFinder.get() ) {
       update();
-      qDebug() << "send dicts(stemmed):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
+      qDebug() << "send dicts(stemmed):" << hittedWord;
+      emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
       dictIds.clear();
     }
     else {
       finish();
-      qDebug() << "send dicts(finished):" << word << ":" << dictIds;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
+      qDebug() << "send dicts(finished):" << hittedWord;
+      emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
       dictIds.clear();
     }
   }
   else if ( wasUpdated ) {
     update();
-    qDebug() << "send dicts(updated):" << word << ":" << dictIds;
-    emit GlobalBroadcaster::instance()->dictionaryChanges( ActiveDictIds{ group.id, word, dictIds } );
+    qDebug() << "send dicts(updated):" << hittedWord;
+    emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
     dictIds.clear();
   }
 }

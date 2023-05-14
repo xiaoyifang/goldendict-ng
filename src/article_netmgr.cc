@@ -287,7 +287,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     {
       // Individual dictionaries set from full-text search
       QStringList dictIDList = dictIDs.split( "," );
-      return articleMaker.makeDefinitionFor( phrase, 0, QMap< QString, QString >(), QSet< QString >(), dictIDList );
+      return articleMaker.makeDefinitionFor( phrase, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
     }
 
     // See if we have some dictionaries muted

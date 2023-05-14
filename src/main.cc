@@ -29,6 +29,8 @@
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 
 #include "gddebug.hh"
+#include <QMutexLocker>
+#include <QMutex>
 
 #if defined(USE_BREAKPAD)
   #include "client/windows/handler/exception_handler.h"
@@ -48,59 +50,65 @@ bool callback(const wchar_t* dump_path, const wchar_t* id,
 }
 #endif
 
+QMutex logMutex;
+
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
-  Q_UNUSED( context );
-  QString message( mess );
-  QByteArray msg = message.toUtf8().constData();
+  QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
+  QString message = QString( "%1 file:%2,line:%3,function:%4 %5\r\n" )
+                      .arg( strTime )
+                      .arg( context.file )
+                      .arg( context.line )
+                      .arg( context.function )
+                      .arg( mess );
 
-  switch (type) {
-
-    case QtDebugMsg:
-      if( logFilePtr && logFilePtr->isOpen() )
+  if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
+    //without the lock ,on multithread,there would be assert error.
+    QMutexLocker _( &logMutex );
+    switch ( type ) {
+      case QtDebugMsg:
         message.insert( 0, "Debug: " );
-      else
-        fprintf(stderr, "Debug: %s\n", msg.constData());
-      break;
-
-    case QtWarningMsg:
-      if( logFilePtr && logFilePtr->isOpen() )
+        break;
+      case QtWarningMsg:
         message.insert( 0, "Warning: " );
-      else
-        fprintf(stderr, "Warning: %s\n", msg.constData());
-      break;
-
-    case QtCriticalMsg:
-      if( logFilePtr && logFilePtr->isOpen() )
+        break;
+      case QtCriticalMsg:
         message.insert( 0, "Critical: " );
-      else
-        fprintf(stderr, "Critical: %s\n", msg.constData());
-      break;
-
-    case QtFatalMsg:
-      if( logFilePtr && logFilePtr->isOpen() )
-      {
-        logFilePtr->write( "Fatal: " );
-        logFilePtr->write( msg );
+        break;
+      case QtFatalMsg:
+        message.insert( 0, "Fatal: " );
+        logFilePtr->write( message.toUtf8() );
         logFilePtr->flush();
-      }
-      else
-        fprintf(stderr, "Fatal: %s\n", msg.constData());
-      abort();
-    case QtInfoMsg:
-      if( logFilePtr && logFilePtr->isOpen() )
+        abort();
+      case QtInfoMsg:
         message.insert( 0, "Info: " );
-      else
-        fprintf(stderr, "Info: %s\n", msg.constData());
-      break;
-  }
+        break;
+    }
 
-  if( logFilePtr && logFilePtr->isOpen() )
-  {
-    message.insert( 0, QDateTime::currentDateTime().toString( "yyyy-MM-dd HH:mm:ss.zzz " ) );
-    message.append( "\n" );
     logFilePtr->write( message.toUtf8() );
     logFilePtr->flush();
+
+    return;
+  }
+
+  //the following code lines actually will have no chance to run, schedule to remove in the future.
+  QByteArray msg = mess.toUtf8().constData();
+  switch ( type ) {
+    case QtDebugMsg:
+      fprintf( stderr, "Debug: %s\n", msg.constData() );
+      break;
+    case QtWarningMsg:
+      fprintf( stderr, "Warning: %s\n", msg.constData() );
+      break;
+    case QtCriticalMsg:
+      fprintf( stderr, "Critical: %s\n", msg.constData() );
+      break;
+    case QtFatalMsg:
+      fprintf( stderr, "Fatal: %s\n", msg.constData() );
+      abort();
+    case QtInfoMsg:
+      fprintf( stderr, "Info: %s\n", msg.constData() );
+      break;
   }
 }
 
@@ -356,8 +364,8 @@ int main( int argc, char ** argv )
     }
     catch( Config::exError & )
     {
-      QMessageBox mb( QMessageBox::Warning, app.applicationName(),
-                      app.translate( "Main", "Error in configuration file. Continue with default settings?" ),
+      QMessageBox mb( QMessageBox::Warning, QHotkeyApplication::applicationName(),
+                      QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
                       QMessageBox::Yes | QMessageBox::No );
       mb.exec();
       if( mb.result() != QMessageBox::Yes )

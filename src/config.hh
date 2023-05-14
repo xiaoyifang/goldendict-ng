@@ -15,10 +15,6 @@
 #include "ex.hh"
 #include <QLocale>
 
-#ifdef Q_OS_WIN
-#include <QRect>
-#endif
-
 /// GoldenDict's configuration
 namespace Config {
 
@@ -508,6 +504,23 @@ struct Chinese
 };
 
 
+struct CustomTrans
+{
+  bool enable = false;
+
+  QString context;
+
+  bool operator==( CustomTrans const & other ) const
+  {
+    return enable == other.enable && context == other.context;
+  }
+
+  bool operator!=( CustomTrans const & other ) const
+  {
+    return !operator==( other );
+  }
+};
+
 /// Romaji transliteration configuration
 struct Romaji
 {
@@ -540,20 +553,24 @@ struct Transliteration
   bool enableGermanTransliteration;
   bool enableGreekTransliteration;
   bool enableBelarusianTransliteration;
+
+  CustomTrans customTrans;
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   Chinese chinese;
 #endif
   Romaji romaji;
 
-  bool operator == ( Transliteration const & other ) const
-  { return enableRussianTransliteration == other.enableRussianTransliteration &&
-           enableGermanTransliteration == other.enableGermanTransliteration &&
-           enableGreekTransliteration == other.enableGreekTransliteration &&
-           enableBelarusianTransliteration == other.enableBelarusianTransliteration &&
+  bool operator==( Transliteration const & other ) const
+  {
+    return enableRussianTransliteration == other.enableRussianTransliteration
+      && enableGermanTransliteration == other.enableGermanTransliteration
+      && enableGreekTransliteration == other.enableGreekTransliteration
+      && enableBelarusianTransliteration == other.enableBelarusianTransliteration
+      && customTrans == other.customTrans &&
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-           chinese == other.chinese &&
+      chinese == other.chinese &&
 #endif
-           romaji == other.romaji;
+      romaji == other.romaji;
   }
 
   bool operator != ( Transliteration const & other ) const

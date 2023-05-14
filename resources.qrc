@@ -88,5 +88,6 @@
         <file>icons/mdict-bg.png</file>
         <file>icons/old-arrow.png</file>
         <file>icons/old-downarrow.png</file>
+        <file>icons/custom_trans.svg</file>
     </qresource>
 </RCC>
