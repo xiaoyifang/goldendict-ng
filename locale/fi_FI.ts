@@ -85,62 +85,62 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="313"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>Sitten vain pysäyttää kohdistimen sanan yli haluat etsiä toisessa sovelluksessa, ja ikkuna pop up joka kuvaisi sitä sinulle.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="306"/>
+      <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Ponnahdusikkunan kanssa työskentely&lt;/h3&gt;Voit etsiä sanoja muista aktiivisista sovelluksista, sinun täytyy ensin aktivoida &lt;i&gt;&quot;Skannaa ponnahdusikkuna toiminto&quot;&lt;/i&gt; &lt;b&gt;Asetukset&lt;/b&gt;, ja sitten ota se käyttöön milloin tahansa joko käynnistämällä &apos;ponnahdusikkuna&apos; kuvake edellä, tai klikkaamalla tarjotin kuvaketta alhaalla oikealla hiiren painikkeella ja valitsemalla niin valikossa&apos;on silvottu. </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Expand article</source>
       <translation>Laajenna artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Collapse article</source>
       <translation>Piilota artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="234"/>
+      <location filename="../src/article_maker.cc" line="232"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Käännöstä &lt;b&gt;%1&lt;/b&gt; ei löytynyt ryhmässä &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="302"/>
       <source>Working with popup</source>
       <translation>Työskentely ponnahdusikkunan kanssa</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="394"/>
+      <location filename="../src/article_maker.cc" line="392"/>
       <source>(untitled)</source>
       <translation>(nimetön)</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="284"/>
       <source>Welcome!</source>
       <translation>Tervetuloa!</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="316"/>
+      <location filename="../src/article_maker.cc" line="314"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>Valitse sitten mitä tahansa sanaa, jonka haluat katsoa toiseen sovellukseen hiirelläsi (kaksoisnapsauta sitä tai pyyhkäise sitä hiirellä painamalla painiketta), ja ikkuna pop up joka kuvaisi sanaa sinulle.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="238"/>
+      <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Käännöstä ei löytynyt ryhmässä &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="288"/>
+      <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Tervetuloa &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Aloittaaksesi työskentelyn ohjelman kanssa, ensimmäinen vierailu &lt;b&gt;Muokkaus: Sanakirjoja&lt;/b&gt; lisätäksesi joitakin hakemistopolkuja, joista voit etsiä sanakirjatiedostoja, määrittää erilaisia Wikipedian sivustoja tai muita lähteitä, säädä sanakirjajärjestystä tai luo sanakirjaryhmiä.&lt;p&gt;Ja sitten&apos;ovat valmiita etsimään sanojasi! Voit tehdä sen tässä ikkunassa käyttämällä vasemmalla olevaa paneelia, tai voit &lt;a href=&quot;Working with popup&quot;&gt;etsiä sanoja muista aktiivisista sovelluksista&lt;/a&gt;. &lt;p&gt;Voit muokata ohjelmaa, tutustu käytettävissä oleviin asetuksiin osoitteessa &lt;b&gt;Muokkausasetukset&lt;/b&gt;. Kaikissa asetuksissa on työkaluvihjeitä, muista lukea ne, jos olet epävarma mistä tahansa.&lt;p&gt;Jos tarvitset lisäapua, sinulla on kysyttävää, ehdotuksia tai vain miettiä, mitä muut ajattelevat, olet tervetullut ohjelmaan&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foorumi&lt;/a&gt;.&lt;p&gt;Tarkista ohjelma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sivusto&lt;/a&gt; päivitykset. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lisenssi GPLv3 tai uudempi.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="406"/>
+      <location filename="../src/article_maker.cc" line="404"/>
       <source>(picture)</source>
       <translation>(kuva)</translation>
     </message>
@@ -148,27 +148,27 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="674"/>
+      <location filename="../src/article_maker.cc" line="672"/>
       <source>Expand article</source>
       <translation>Laajenna artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="675"/>
+      <location filename="../src/article_maker.cc" line="673"/>
       <source>From </source>
       <translation>Sanakirjasta </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="678"/>
+      <location filename="../src/article_maker.cc" line="676"/>
       <source>Collapse article</source>
       <translation>Piilota artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="693"/>
+      <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
       <translation>Tee uusi Anki-muistio</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="706"/>
+      <location filename="../src/article_maker.cc" line="704"/>
       <source>Query error: %1</source>
       <translation>Kyselyvirhe: %1</translation>
     </message>
@@ -211,7 +211,7 @@
       <translation>Viitattua resurssia ei voitu ladata.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2096"/>
+      <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>Väliaikaistiedoston luonti epäonnistui.</translation>
     </message>
@@ -220,7 +220,7 @@
       <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1807"/>
+      <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&amp;Hae &quot;%1&quot;</translation>
     </message>
@@ -233,13 +233,13 @@
       <translation>&amp;Edellinen</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1815"/>
+      <location filename="../src/ui/articleview.cc" line="1806"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>Etsi &quot;%1&quot; &amp;uudessa välilehdessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1367"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1358"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>Viittattu resurssi ei ole&apos;t olemassa.</translation>
     </message>
@@ -252,42 +252,42 @@
       <translation>&amp;Merkkikokoriippuvainen</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2107"/>
+      <location filename="../src/ui/articleview.cc" line="2098"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>Resurssitiedoston automaattinen avaaminen epäonnistui, yritä avata manuaalisesti: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1841"/>
+      <location filename="../src/ui/articleview.cc" line="1832"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>Hae &quot;%1&quot; %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="332"/>
+      <location filename="../src/ui/articleview.cc" line="321"/>
       <source>Select Current Article</source>
       <translation>Valitse nykyinen artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="337"/>
+      <location filename="../src/ui/articleview.cc" line="326"/>
       <source>Copy as text</source>
       <translation>Kopioi tekstinä</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="342"/>
+      <location filename="../src/ui/articleview.cc" line="331"/>
       <source>Inspect</source>
       <translation>Tarkista</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1849"/>
+      <location filename="../src/ui/articleview.cc" line="1840"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>Hae &quot;%1&quot; %2 &amp;uudessa välilehdessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1759"/>
+      <location filename="../src/ui/articleview.cc" line="1750"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>Avaa linkki uuteen &amp;välilehteen</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1766"/>
+      <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Avaa linkki ulkoisessa &amp;selaimessa</translation>
     </message>
@@ -296,58 +296,58 @@
       <translation>Korosta &amp;kaikki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1004"/>
+      <location filename="../src/ui/articleview.cc" line="995"/>
       <source>Resource</source>
       <translation>Resurssi</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1009"/>
+      <location filename="../src/ui/articleview.cc" line="1000"/>
       <source>Audio</source>
       <translation>Ääni</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1014"/>
+      <location filename="../src/ui/articleview.cc" line="1005"/>
       <source>TTS Voice</source>
       <translation>TTS-ääni</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1019"/>
+      <location filename="../src/ui/articleview.cc" line="1010"/>
       <source>Picture</source>
       <translation>Kuva</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1035"/>
+      <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
       <translation>Video: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1052"/>
+      <location filename="../src/ui/articleview.cc" line="1043"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>Määritelmä sanakirjasta &quot;%1&quot;: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1060"/>
+      <location filename="../src/ui/articleview.cc" line="1051"/>
       <source>Definition: %1</source>
       <translation>Määritelmä: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1406"/>
+      <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Viittattu ääniohjelma ei ole&apos;t olemassa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1753"/>
+      <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
       <translation>Avaa Linkki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Tallenna kirjanmerkki &quot;%1...&quot;</translation>
     </message>
@@ -360,80 +360,80 @@
       <translation>Äänitiedostot (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2137"/>
+      <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>VAROITUS: äänisoitin: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1292"/>
-      <location filename="../src/ui/articleview.cc" line="1327"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1283"/>
+      <location filename="../src/ui/articleview.cc" line="1318"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>ERROR: %1</source>
       <translation>VIRHE: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2009"/>
+      <location filename="../src/ui/articleview.cc" line="2000"/>
       <source>Save sound</source>
       <translation>Tallenna ääni</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2024"/>
+      <location filename="../src/ui/articleview.cc" line="2015"/>
       <source>Save image</source>
       <translation>Tallenna kuva</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2026"/>
+      <location filename="../src/ui/articleview.cc" line="2017"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>Kuvatiedostot (*.bmp *.jpg *.png *.tif);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1782"/>
+      <location filename="../src/ui/articleview.cc" line="1773"/>
       <source>Save &amp;image...</source>
       <translation>Tallenna &amp;kuva...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="199"/>
+      <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
       <translation>Ilmausta ei löydy</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="207"/>
+      <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 ottelua</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1789"/>
+      <location filename="../src/ui/articleview.cc" line="1780"/>
       <source>Save s&amp;ound...</source>
       <translation>Tallenna ää&amp;ni...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1820"/>
+      <location filename="../src/ui/articleview.cc" line="1811"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>Lähetä &quot;%1&quot; syöttääksesi riviä</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1826"/>
-      <location filename="../src/ui/articleview.cc" line="1878"/>
+      <location filename="../src/ui/articleview.cc" line="1817"/>
+      <location filename="../src/ui/articleview.cc" line="1869"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>&amp;Lisää &quot;%1&quot; historiaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1868"/>
+      <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;Lähetä nykyinen artikkeli Ankille</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>&amp;Lähetä valittu teksti Ankiin</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2011"/>
+      <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Äänitiedostot (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2081"/>
+      <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>Äänitiedoston toistaminen epäonnistui: %1</translation>
     </message>
@@ -615,6 +615,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <name>DictGroupsWidget</name>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
+      <location filename="../src/ui/groups_widgets.cc" line="789"/>
+      <location filename="../src/ui/groups_widgets.cc" line="890"/>
       <source>Confirmation</source>
       <translation>Vahvistus</translation>
     </message>
@@ -624,51 +626,55 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Oletko varma, että haluat luoda joukon ryhmiä, jotka perustuvat kielipareihin?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="851"/>
+      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Yhdistä ryhmät lähdekielen mukaan &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="868"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>Yhdistä ryhmät kohdekielen mukaan &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
       <translation type="unfinished">Auto group by folder failed.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can be reached.</source>
       <translation type="unfinished">The parent directory of %1 can be reached.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="892"/>
       <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="886"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Tee kaksipuolinen kääntää ryhmä &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="904"/>
-      <location filename="../src/ui/groups_widgets.cc" line="923"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Yhdistä ryhmät &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
       <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="835"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1010"/>
+      <location filename="../src/ui/groups_widgets.cc" line="985"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
       <source>Dictionaries: </source>
       <translation>Sanakirjaa: </translation>
     </message>
@@ -751,57 +757,63 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Suodatinmerkkijono (kiinteä merkkijono, jokerimerkit tai säännöllinen lauseke)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="42"/>
       <source>Text</source>
       <translation>Teksti</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="43"/>
       <source>Wildcards</source>
       <translation>Jokerimerkit</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="45"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="266"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <source>Loading headwords...</source>
+      <translation type="unfinished">Loading headwords...</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictheadwords.cc" line="281"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>Ainutlaatuiset otsikot yhteensä: %1, filtered: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="282"/>
+      <location filename="../src/ui/dictheadwords.cc" line="338"/>
       <source>Save headwords to file</source>
       <translation>Tallenna otsikkosanat tiedostoon</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="284"/>
+      <location filename="../src/ui/dictheadwords.cc" line="340"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Tekstitiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="292"/>
+      <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
       <translation>Vietyä tiedostoa ei voi avata</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Export headwords...</source>
       <translation>Vie otsikot...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Cancel</source>
       <translation>Peruuta</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="367"/>
+      <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
       <translation>Vienti prosessi on keskeytynyt</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="375"/>
+      <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
       <translation>Vienti valmis</translation>
     </message>
@@ -877,22 +889,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>DictServer</name>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="274"/>
+      <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Url: </source>
       <translation>Url: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="275"/>
+      <location filename="../src/dict/dictserver.cc" line="276"/>
       <source>Databases: </source>
       <translation>Tietokannat: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="276"/>
+      <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
       <translation>Hakustrategiat: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="280"/>
+      <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
       <translation>Palvelintietokannat</translation>
     </message>
@@ -985,8 +997,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>EditDictionaries</name>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="47"/>
-      <location filename="../src/ui/editdictionaries.cc" line="248"/>
+      <location filename="../src/ui/editdictionaries.cc" line="45"/>
+      <location filename="../src/ui/editdictionaries.cc" line="251"/>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Sanakirjat</translation>
     </message>
@@ -996,33 +1008,33 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Sanakirjat</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="134"/>
       <source>Accept</source>
       <translation>Hyväksy</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="133"/>
+      <location filename="../src/ui/editdictionaries.cc" line="136"/>
       <source>Cancel</source>
       <translation>Peruuta</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="127"/>
+      <location filename="../src/ui/editdictionaries.cc" line="130"/>
       <source>Sources changed</source>
       <translation>Lähteet vaihdettu</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="44"/>
       <source>&amp;Sources</source>
       <translation>&amp;Lähteet</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="48"/>
-      <location filename="../src/ui/editdictionaries.cc" line="250"/>
+      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="253"/>
       <source>&amp;Groups</source>
       <translation>&amp;Ryhmät</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="128"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>Joitakin lähteitä on muutettu. Haluatko hyväksyä muutokset?</translation>
     </message>
@@ -1035,7 +1047,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Edellinen Sivu</translation>
     </message>
     <message>
-      <location filename="../src/dict/epwing.cc" line="386"/>
+      <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
       <translation>Seuraava Sivu</translation>
     </message>
@@ -1051,60 +1063,60 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="234"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Full-text search</source>
       <translation>Täystekstihaku</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
       <translation>Kokonaiset sanat</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="244"/>
+      <location filename="../src/fulltextsearch.cc" line="242"/>
       <source>Plain text</source>
       <translation>Pelkkä teksti</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
       <source>Wildcards</source>
       <translation>Jokerimerkit</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="247"/>
+      <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="257"/>
+      <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>tukea xapian hakusyntaksia, kuten JA TAI +/- jne.</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="263"/>
+      <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
       <translation>Maksimi etäisyys sanojen välillä (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="272"/>
+      <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
       <translation>Artikkeleiden enimmäismäärä sanakirjassa (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="311"/>
-      <location filename="../src/fulltextsearch.cc" line="441"/>
-      <location filename="../src/fulltextsearch.cc" line="562"/>
-      <location filename="../src/fulltextsearch.cc" line="575"/>
+      <location filename="../src/fulltextsearch.cc" line="309"/>
+      <location filename="../src/fulltextsearch.cc" line="443"/>
+      <location filename="../src/fulltextsearch.cc" line="564"/>
+      <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
       <translation>Löydetyt artiklat: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="394"/>
+      <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
       <translation>Nyt indeksointi: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="395"/>
+      <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>Tyhjä</translation>
     </message>
@@ -1113,17 +1125,17 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Hakumerkkijonon CJK-symbolit eivät ole yhteensopivia hakutilojen kanssa &quot;Koko sanat&quot; ja &quot;Pelkkä teksti&quot;</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="452"/>
+      <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
       <translation>Hakurivin tulee sisältää vähintään yksi sana joka sisältää </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="453"/>
+      <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
       <translation> tai enemmän symboleja</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="464"/>
+      <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
       <translation>Ei sanakirjoja koko tekstin hakuun</translation>
     </message>
@@ -1131,7 +1143,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="644"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
       <translation>Virhe suosikkitiedostossa</translation>
     </message>
@@ -1139,27 +1151,27 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="30"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="31"/>
       <source>&amp;Delete Selected</source>
       <translation>&amp;Poista valittu</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="39"/>
       <source>Copy Selected</source>
       <translation>Kopioi valittu</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
       <translation>Lisää kansio</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
       <translation>Suosikit:</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Kaikki valitut kohteet poistetaan. Jatketaanko?</translation>
     </message>
@@ -1167,37 +1179,37 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
-      <location filename="../src/dict/forvo.cc" line="194"/>
+      <location filename="../src/dict/forvo.cc" line="188"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>XML-jäsennysvirhe: %1 %2:lla,%3</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="270"/>
+      <location filename="../src/dict/forvo.cc" line="264"/>
       <source>Added %1</source>
       <translation>Lisätty %1</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="273"/>
+      <location filename="../src/dict/forvo.cc" line="267"/>
       <source>by</source>
       <translation>mennessä</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Male</source>
       <translation>Mies</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Female</source>
       <translation>Nainen</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="279"/>
+      <location filename="../src/dict/forvo.cc" line="273"/>
       <source>from</source>
       <translation>alkaen</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="317"/>
+      <location filename="../src/dict/forvo.cc" line="309"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>Siirry Muokkaus: Sanakirjat. Lähteet Forvo ja hakea oman API avain jotta tämä virhe katoaa.</translation>
     </message>
@@ -1336,12 +1348,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="162"/>
+      <location filename="../src/ui/groups.cc" line="174"/>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="149"/>
+      <location filename="../src/ui/groups.cc" line="161"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
@@ -1356,17 +1368,17 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Avaa ryhmäluettelo</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="148"/>
+      <location filename="../src/ui/groups.cc" line="160"/>
       <source>Remove group</source>
       <translation>Poista ryhmä</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="136"/>
+      <location filename="../src/ui/groups.cc" line="148"/>
       <source>Rename group</source>
       <translation>Nimeä ryhmä uudelleen</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="137"/>
+      <location filename="../src/ui/groups.cc" line="149"/>
       <source>Give a new name for the group:</source>
       <translation>Anna ryhmälle uusi nimi:</translation>
     </message>
@@ -1381,7 +1393,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>&amp;Lisää ryhmä</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="110"/>
+      <location filename="../src/ui/groups.cc" line="113"/>
       <source>Add group</source>
       <translation>Lisää ryhmä</translation>
     </message>
@@ -1391,28 +1403,48 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Luo uusi sanakirja ryhmä</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="197"/>
+      <location filename="../src/ui/groups.ui" line="203"/>
+      <source>Group by Languages</source>
+      <translation type="unfinished">Group by Languages</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="210"/>
+      <source>Create folder-based groups.</source>
+      <translation type="unfinished">Create folder-based groups.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="213"/>
+      <source>Group by Folders</source>
+      <translation type="unfinished">Group by Folders</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="220"/>
+      <source>Group by Metadata</source>
+      <translation type="unfinished">Group by Metadata</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="244"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Vedä ja pudota sanakirjoja ryhmiin, siirrä ne ryhmien sisälle, järjestä ryhmät uudelleen hiirellä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui" line="153"/>
       <source>Rename current dictionary group</source>
       <translation>Nimeä nykyinen sanakirja uudestaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui" line="163"/>
       <source>Remove current dictionary group</source>
       <translation>Poista nykyinen sanakirja ryhmä</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="111"/>
+      <location filename="../src/ui/groups.cc" line="114"/>
       <source>Give a name for the new group:</source>
       <translation>Anna uuden ryhmän nimi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="186"/>
-      <location filename="../src/ui/groups.cc" line="161"/>
+      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Poista kaikki ryhmät</translation>
     </message>
@@ -1427,7 +1459,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää valitut sanakirjat ryhmään (Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui" line="166"/>
       <source>&amp;Remove group</source>
       <translation>&amp;Poista ryhmä</translation>
     </message>
@@ -1437,22 +1469,21 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Ryhmät:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Re&amp;name group</source>
       <translation>Ni&amp;meä ryhmä uudelleen</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="183"/>
+      <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove all dictionary groups</source>
       <translation>Poista kaikki sanakirjaryhmät</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui" line="200"/>
       <source>Create language-based groups</source>
       <translation>Luo kielipohjaisia ryhmiä</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
       <translation>Automaattiset ryhmät</translation>
     </message>
@@ -1527,12 +1558,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="285"/>
+      <location filename="../src/dict/hunspell.cc" line="259"/>
       <source>Spelling suggestions: </source>
       <translation>Oikeinkirjoituksen ehdotukset: </translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="856"/>
+      <location filename="../src/dict/hunspell.cc" line="780"/>
       <source>%1 Morphology</source>
       <translation>%1 Morfologia</translation>
     </message>
@@ -1577,1007 +1608,1007 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="87"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
       <translation>ewe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
       <translation>ido</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
       <translation>lao</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Twi</source>
       <translation>twi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
       <translation>afari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
       <translation>akani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Cree</source>
       <translation>cree</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
       <translation>igbo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
       <translation>komi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="106"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Manx</source>
       <translation>manski</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pali</source>
       <translation>paali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Thai</source>
       <translation>thai</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Urdu</source>
       <translation>urdu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="302"/>
       <source>Zulu</source>
       <translation>zulu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Czech</source>
       <translation>tšekki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Dutch</source>
       <translation>hollanti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
       <translation>ganda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="95"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fulah</source>
       <translation>fulani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="88"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Greek</source>
       <translation>kreikka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="107"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hausa</source>
       <translation>hausa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="109"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
       <translation>hindi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="101"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Irish</source>
       <translation>iiri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Khmer</source>
       <translation>khmeri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kongo</source>
       <translation>kongo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Latin</source>
       <translation>latina</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Malay</source>
       <translation>malaiji</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Maori</source>
       <translation>maori</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>Nauru</source>
       <translation>nauru</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Oriya</source>
       <translation>orija</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
       <translation>oromo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
       <translation>sango</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
       <translation>Šona</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tajik</source>
       <translation>tadžikki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tamil</source>
       <translation>tamili</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
       <translation>tataari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
       <translation>swazi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tonga</source>
       <translation>tonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Inupiaq</source>
       <translation>inupiatu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
       <translation>venda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Uzbek</source>
       <translation>uzbekki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="82"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>Welsh</source>
       <translation>kymri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
       <translation>wolofi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
       <translation>xhosa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Italian</source>
       <translation>italia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Raeto-Romance</source>
       <translation>retoromaani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="86"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
       <translation>dzongkha</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
       <translation>kannada</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
       <translation>pohjois-ndebele</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Abkhazian</source>
       <translation>abhaasi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Kirghiz</source>
       <translation>kirgiisi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
       <translation>kirundi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="102"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Scottish Gaelic</source>
       <translation>gaeli</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Albanian</source>
       <translation>albania</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Latvian</source>
       <translation>latvia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Malayalam</source>
       <translation>malajalam</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Kurdish</source>
       <translation>kurdi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bulgarian</source>
       <translation>bulgaria</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
       <translation>lingala</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Maltese</source>
       <translation>malta</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Marathi</source>
       <translation>marathi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Arabic</source>
       <translation>arabia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="93"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
       <translation>baski</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Avaric</source>
       <translation>avaari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bihari</source>
       <translation>bihar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
       <translation>aimara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
       <translation>bretoni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Sundanese</source>
       <translation>sunda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="83"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Danish</source>
       <translation>tanska</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="85"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
       <translation>divehi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
       <translation>katanganluba</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="97"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>Fijian</source>
       <translation>fidži</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="113"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Hungarian</source>
       <translation>unkari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="99"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>French</source>
       <translation>ranska</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="84"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>German</source>
       <translation>saksa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Mongolian</source>
       <translation>mongoli</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="108"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hebrew</source>
       <translation>heprea</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="115"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Herero</source>
       <translation>herero</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Luxembourgish</source>
       <translation>luxemburgi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
       <translation>kanuri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Kazakh</source>
       <translation>kazaki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kikuyu</source>
       <translation>kikuju</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Korean</source>
       <translation>korea</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Navajo</source>
       <translation>navajo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
       <translation>ndonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Nepali</source>
       <translation>nepali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Ojibwa</source>
       <translation>odžibwa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Pashto</source>
       <translation>paštu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Polish</source>
       <translation>puola</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Samoan</source>
       <translation>samoa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Occitan</source>
       <translation>oksitaani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sindhi</source>
       <translation>sindhi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Slovak</source>
       <translation>slovakki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Somali</source>
       <translation>somali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Telugu</source>
       <translation>telugu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Tsonga</source>
       <translation>tsonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Tswana</source>
       <translation>tswana</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Uighur</source>
       <translation>uiguuri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Serbo-Croatian</source>
       <translation>serbokroaati</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Yoruba</source>
       <translation>joruba</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zhuang</source>
       <translation>zhuangi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Romanian</source>
       <translation>romania</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="117"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Indonesian</source>
       <translation>indonesia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Panjabi</source>
       <translation>pandžabi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Southern Sotho</source>
       <translation>eteläsotho</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Corsican</source>
       <translation>korsika</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="90"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
       <translation>esperanto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="94"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Persian</source>
       <translation>persia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Slovenian</source>
       <translation>sloveeni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="100"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Western Frisian</source>
       <translation>länsifriisi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Aragonese</source>
       <translation>aragonia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Tahitian</source>
       <translation>tahiti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Malagasy</source>
       <translation>malagassi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="103"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Galician</source>
       <translation>galicia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Azerbaijani</source>
       <translation>azeri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Amharic</source>
       <translation>amhara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sanskrit</source>
       <translation>sanskrit</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Japanese</source>
       <translation>japani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Ukrainian</source>
       <translation>ukraina</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
       <translation>bambara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kalaallisut</source>
       <translation>grönlanti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bashkir</source>
       <translation>baškiiri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Belarusian</source>
       <translation>valkovenäjä</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Kashmiri</source>
       <translation>kašmiri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Sardinian</source>
       <translation>sardi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="110"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Hiri Motu</source>
       <translation>hiri-motu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Quechua</source>
       <translation>ketšua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Bengali</source>
       <translation>bengali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Javanese</source>
       <translation>jaava</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Avestan</source>
       <translation>avesta</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Kinyarwanda</source>
       <translation>ruanda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Afrikaans</source>
       <translation>afrikaansi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
       <translation>bislama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="114"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Armenian</source>
       <translation>armenia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Norwegian Bokmal</source>
       <translation>kirjanorja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="111"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Croatian</source>
       <translation>kroatia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Bosnian</source>
       <translation>bosnia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="116"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingua</source>
       <translation>interlingua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Interlingue</source>
       <translation>interlingue</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Catalan</source>
       <translation>katalaani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Serbian</source>
       <translation>serbia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Burmese</source>
       <translation>burma</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Russian</source>
       <translation>venäjä</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Limburgish</source>
       <translation>limburgi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Norwegian</source>
       <translation>norja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Chechen</source>
       <translation>tšetšeeni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Chinese</source>
       <translation>kiina</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Chuvash</source>
       <translation>tšuvassi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
       <translation>sinhali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="91"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Spanish</source>
       <translation>espanja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Cornish</source>
       <translation>korni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tagalog</source>
       <translation>tagalog</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Assamese</source>
       <translation>assami</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Ossetian</source>
       <translation>osseeti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="92"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Estonian</source>
       <translation>eesti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Swahili</source>
       <translation>swahili</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Swedish</source>
       <translation>ruotsi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Tibetan</source>
       <translation>tiibeti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Vietnamese</source>
       <translation>vietnami</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Macedonian</source>
       <translation>makedonia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Portuguese</source>
       <translation>portugali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Turkish</source>
       <translation>turki</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Turkmen</source>
       <translation>turkmeeni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="105"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Gujarati</source>
       <translation>gudžarati</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Icelandic</source>
       <translation>islanti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Inuktitut</source>
       <translation>inuktitut</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="89"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>English</source>
       <translation>englanti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Georgian</source>
       <translation>georgia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Church Slavic</source>
       <translation>kirkkoslaavi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="98"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Faroese</source>
       <translation>fääri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="96"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Finnish</source>
       <translation>suomi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Volapuk</source>
       <translation>volapük</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Walloon</source>
       <translation>valloni</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kwanyama</source>
       <translation>Kwanyama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Marshallese</source>
       <translation>marshalli</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Northern Sami</source>
       <translation>pohjoissaame</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="112"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Haitian</source>
       <translation>haiti</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Chamorro</source>
       <translation>tšamorro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>Norwegian Nynorsk</source>
       <translation>uusnorja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="104"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Guarani</source>
       <translation>guarani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>South Ndebele</source>
       <translation>etelä-ndebele</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Chichewa</source>
       <translation>njandža</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Lithuanian</source>
       <translation>liettua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Sichuan Yi</source>
       <translation>sichuanin-yi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tigrinya</source>
       <translation>tigrinja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Yiddish</source>
       <translation>jiddiš</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="373"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Traditional Chinese</source>
       <translation>perinteiset merkit</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="374"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Simplified Chinese</source>
       <translation>yksinkertaistetut merkit</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="375"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other</source>
       <translation>muu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="376"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>Muut yksinkertaistetut Kiinan murteet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="377"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>Muut perinteiset Kiinan murteet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="378"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
       <translation>Muut itäeurooppalaiset kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="379"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
       <translation>Muut Länsi-Euroopan kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="380"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
       <translation>Muut venäjän kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="381"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
       <translation>Muut japanin kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="382"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
       <translation>Muut Baltian kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="383"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
       <translation>Muut kreikkalaiset kielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="384"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
       <translation>Muut Korean murteet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="385"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
       <translation>Muut Turkin murteet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="386"/>
+      <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
       <translation>Muut thaimaalaiset murteet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="387"/>
+      <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
       <translation>berberikielet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="303"/>
       <source>Lojban</source>
       <translation>lojban</translation>
     </message>
@@ -2801,7 +2832,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="328"/>
+      <location filename="../src/main.cc" line="360"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Virhe asetustiedostossa. Jatketaanko oletusasetuksilla?</translation>
     </message>
@@ -2834,17 +2865,17 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1494"/>
+      <location filename="../src/ui/mainwindow.cc" line="1495"/>
       <source>All</source>
       <translation>Kaikki</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="197"/>
+      <location filename="../src/ui/mainwindow.cc" line="198"/>
       <source>Back</source>
       <translation>Taaksepäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1465"/>
+      <location filename="../src/ui/mainwindow.cc" line="1466"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>%1 sanakirjaa, %2 artikkelia, %3 sanaa</translation>
     </message>
@@ -2870,12 +2901,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="388"/>
+      <location filename="../src/ui/mainwindow.cc" line="389"/>
       <source>&amp;Quit</source>
       <translation>Lopeta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>Virhe</translation>
     </message>
@@ -2894,12 +2925,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>&amp;Sulje Kaukalon</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
       <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="242"/>
+      <location filename="../src/ui/mainwindow.cc" line="244"/>
       <source>Zoom In</source>
       <translation>Lähennä</translation>
     </message>
@@ -2929,7 +2960,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tallenna artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3373"/>
+      <location filename="../src/ui/mainwindow.cc" line="3353"/>
       <source>Save Article As</source>
       <translation>Tallenna artikkeli nimellä</translation>
     </message>
@@ -2959,22 +2990,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Kotisivu</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3059"/>
+      <location filename="../src/ui/mainwindow.cc" line="3039"/>
       <source>New Release Available</source>
       <translation>Uusi Versio Saatavilla</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up:</source>
       <translation>Hae:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="248"/>
+      <location filename="../src/ui/mainwindow.cc" line="250"/>
       <source>Zoom Out</source>
       <translation>Loitonna</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="381"/>
+      <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
       <translation>Näytä Pääikkuna</translation>
     </message>
@@ -2984,33 +3015,33 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tietoja GoldenDictista</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3065"/>
+      <location filename="../src/ui/mainwindow.cc" line="3045"/>
       <source>Download</source>
       <translation>Lataa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3270"/>
+      <location filename="../src/ui/mainwindow.cc" line="3250"/>
       <source>Page Setup</source>
       <translation>Sivun asetukset</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="304"/>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="306"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up in:</source>
       <translation>Etsi ryhmästä:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="252"/>
+      <location filename="../src/ui/mainwindow.cc" line="254"/>
       <source>Normal Size</source>
       <translation>Normaalikoko</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2908"/>
+      <location filename="../src/ui/mainwindow.cc" line="2888"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>Pikanäppäinten seurantamekanismin alustus epäonnistui.&lt;br&gt;Varmista, että XServer on ottanut RECORD-laajennuksen käyttöön.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3040"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>GoldenDictin &lt;b&gt;%1&lt;/b&gt; versio on nyt ladattavissa.&lt;br&gt;Napsauta &lt;b&gt;Lataa&lt;/b&gt; päästäksesi lataussivulle.</translation>
     </message>
@@ -3030,7 +3061,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Ladataan…</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1662"/>
+      <location filename="../src/ui/mainwindow.cc" line="1666"/>
       <source>(untitled)</source>
       <translation>(nimetön)</translation>
     </message>
@@ -3046,7 +3077,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tervetuloa!</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="230"/>
+      <location filename="../src/ui/mainwindow.cc" line="231"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Prounce Word (Alt+S)</translation>
     </message>
@@ -3056,22 +3087,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tallenna artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3066"/>
+      <location filename="../src/ui/mainwindow.cc" line="3046"/>
       <source>Skip This Release</source>
       <translation>Ohita Tämä Versio</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="199"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Forward</source>
       <translation>Eteenpäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3292"/>
+      <location filename="../src/ui/mainwindow.cc" line="3272"/>
       <source>Print Article</source>
       <translation>Tulosta artikkeli</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3271"/>
+      <location filename="../src/ui/mainwindow.cc" line="3251"/>
       <source>No printer is available. Please install one first.</source>
       <translation>Tulostinta ei ole saatavilla. Asenna se ensin.</translation>
     </message>
@@ -3096,37 +3127,37 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Zoomaus</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="367"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Zoom In</source>
       <translation>Sanojen Lähennys</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="371"/>
+      <location filename="../src/ui/mainwindow.cc" line="372"/>
       <source>Words Zoom Out</source>
       <translation>Sanat Lähennä Loitonna</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="373"/>
+      <location filename="../src/ui/mainwindow.cc" line="374"/>
       <source>Words Normal Size</source>
       <translation>Sanojen Normaali Koko</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="420"/>
+      <location filename="../src/ui/mainwindow.cc" line="421"/>
       <source>Close current tab</source>
       <translation>Sulje nykyinen välilehti</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="428"/>
+      <location filename="../src/ui/mainwindow.cc" line="429"/>
       <source>Close all tabs</source>
       <translation>Sulje kaikki välilehdet</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="435"/>
+      <location filename="../src/ui/mainwindow.cc" line="436"/>
       <source>Close all tabs except current</source>
       <translation>Sulje kaikki välilehdet paitsi nykyisen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="410"/>
+      <location filename="../src/ui/mainwindow.cc" line="411"/>
       <source>Opened tabs</source>
       <translation>Avatut välilehdet</translation>
     </message>
@@ -3146,12 +3177,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>&amp;Asetuskansio</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>&amp;Menubar</source>
       <translation>Valikkopalkki</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="342"/>
+      <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>Löytyi sanakirjoista:</translation>
     </message>
@@ -3160,50 +3191,50 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Seuranta Leikepöytä</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="455"/>
+      <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
       <translation>Lisää kaikki välilehdet suosikkeihin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1012"/>
+      <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>Merkkijono hakemaan sanakirjoja. Villikortit &apos;*&apos;, &apos;?&apos; ja symbolisarjat &apos;[...]&apos; ovat sallittuja.
 Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnusta käytetään &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos;</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1605"/>
+      <location filename="../src/ui/mainwindow.cc" line="1609"/>
       <source>Open Tabs List</source>
       <translation>Avaa Välilehdet</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1862"/>
-      <location filename="../src/ui/mainwindow.cc" line="1941"/>
-      <location filename="../src/ui/mainwindow.cc" line="4473"/>
-      <location filename="../src/ui/mainwindow.cc" line="4501"/>
-      <location filename="../src/ui/mainwindow.cc" line="4537"/>
+      <location filename="../src/ui/mainwindow.cc" line="1866"/>
+      <location filename="../src/ui/mainwindow.cc" line="1944"/>
+      <location filename="../src/ui/mainwindow.cc" line="4457"/>
+      <location filename="../src/ui/mainwindow.cc" line="4485"/>
+      <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
       <translation>Poista nykyinen välilehti suosikeista</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1893"/>
+      <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3170"/>
+      <location filename="../src/ui/mainwindow.cc" line="3150"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>Olet valinnut valikkopalkin piilottamisen. Käytä %1 näyttääksesi sen takaisin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3171"/>
+      <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3762"/>
-      <location filename="../src/ui/mainwindow.cc" line="3774"/>
+      <location filename="../src/ui/mainwindow.cc" line="3744"/>
+      <location filename="../src/ui/mainwindow.cc" line="3756"/>
       <source>&amp;Show</source>
       <translation>&amp;Näytä</translation>
     </message>
@@ -3213,32 +3244,32 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Vie</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3758"/>
-      <location filename="../src/ui/mainwindow.cc" line="3770"/>
+      <location filename="../src/ui/mainwindow.cc" line="3740"/>
+      <location filename="../src/ui/mainwindow.cc" line="3752"/>
       <source>&amp;Hide</source>
       <translation>Piilota</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3816"/>
+      <location filename="../src/ui/mainwindow.cc" line="3798"/>
       <source>Export history to file</source>
       <translation>Vie historia tiedostoon</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3818"/>
-      <location filename="../src/ui/mainwindow.cc" line="3880"/>
-      <location filename="../src/ui/mainwindow.cc" line="3994"/>
+      <location filename="../src/ui/mainwindow.cc" line="3800"/>
+      <location filename="../src/ui/mainwindow.cc" line="3862"/>
+      <location filename="../src/ui/mainwindow.cc" line="3976"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Tekstitiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3857"/>
+      <location filename="../src/ui/mainwindow.cc" line="3839"/>
       <source>History export complete</source>
       <translation>Historian vienti valmis</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
-      <location filename="../src/ui/mainwindow.cc" line="3975"/>
-      <location filename="../src/ui/mainwindow.cc" line="4024"/>
+      <location filename="../src/ui/mainwindow.cc" line="3842"/>
+      <location filename="../src/ui/mainwindow.cc" line="3957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4006"/>
       <source>Export error: </source>
       <translation>Vientivirhe: </translation>
     </message>
@@ -3253,94 +3284,94 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Tuo</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3878"/>
+      <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <source>Import history from file</source>
       <translation>Tuo historia tiedostosta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3927"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: invalid data in file</source>
       <translation>Tuontivirhe: virheellinen data tiedostossa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3931"/>
+      <location filename="../src/ui/mainwindow.cc" line="3913"/>
       <source>History import complete</source>
       <translation>Historian tuonti valmis</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3934"/>
-      <location filename="../src/ui/mainwindow.cc" line="4076"/>
+      <location filename="../src/ui/mainwindow.cc" line="3916"/>
+      <location filename="../src/ui/mainwindow.cc" line="4058"/>
       <source>Import error: </source>
       <translation>Tuontivirhe: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3951"/>
+      <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
       <translation>Vie suosikit tiedostoon</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3953"/>
+      <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML-tiedostot (*.xml);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3972"/>
-      <location filename="../src/ui/mainwindow.cc" line="4021"/>
+      <location filename="../src/ui/mainwindow.cc" line="3954"/>
+      <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
       <translation>Suosikkien vienti valmis</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3992"/>
+      <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
       <translation>Vie suosikit tiedostoon pelkkänä listana</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4041"/>
+      <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
       <translation>Tuo suosikit tiedostosta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4043"/>
+      <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>XML-tiedostot (*.xml);;Txt tiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4072"/>
+      <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
       <translation>Suosikkien tuonti valmis</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4078"/>
+      <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
       <translation>Datan jäsennysvirhe</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4288"/>
+      <location filename="../src/ui/mainwindow.cc" line="4270"/>
       <source>Dictionary info</source>
       <translation>Sanakirjan tiedot</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4292"/>
+      <location filename="../src/ui/mainwindow.cc" line="4274"/>
       <source>Dictionary headwords</source>
       <translation>Sanakirjan otsikot</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4294"/>
+      <location filename="../src/ui/mainwindow.cc" line="4276"/>
       <source>Open dictionary folder</source>
       <translation>Avaa sanakirjakansio</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4300"/>
+      <location filename="../src/ui/mainwindow.cc" line="4282"/>
       <source>Edit dictionary</source>
       <translation>Muokkaa sanakirjaa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4444"/>
+      <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
       <translation>Nyt indeksoidaan koko tekstin hakuun: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4486"/>
+      <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
     </message>
@@ -3392,7 +3423,7 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
       <location filename="../src/ui/mainwindow.ui" line="520"/>
-      <location filename="../src/ui/mainwindow.cc" line="296"/>
+      <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Valikkopainike</translation>
     </message>
@@ -3443,10 +3474,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
-      <location filename="../src/ui/mainwindow.cc" line="267"/>
-      <location filename="../src/ui/mainwindow.cc" line="1867"/>
-      <location filename="../src/ui/mainwindow.cc" line="1946"/>
-      <location filename="../src/ui/mainwindow.cc" line="4493"/>
+      <location filename="../src/ui/mainwindow.cc" line="269"/>
+      <location filename="../src/ui/mainwindow.cc" line="1871"/>
+      <location filename="../src/ui/mainwindow.cc" line="1949"/>
+      <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
       <translation>Lisää nykyinen välilehti suosikkeihin</translation>
     </message>
@@ -3461,42 +3492,47 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Vie listana</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="118"/>
+      <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Näytä nimet sanakirjassa &amp;palkki</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>Näytä pienet kuvakkeet työkalupalkeissa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="194"/>
+      <location filename="../src/ui/mainwindow.cc" line="195"/>
       <source>&amp;Navigation</source>
       <translation>Navigointi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="222"/>
+      <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
       <translation>Ota Skannaus Käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3368"/>
+      <location filename="../src/ui/mainwindow.cc" line="3348"/>
       <source>Article, Complete (*.html)</source>
       <translation>Artikkeli, Täydellinen (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3369"/>
+      <location filename="../src/ui/mainwindow.cc" line="3349"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>Vain Artikkeli, Html (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3455"/>
+      <location filename="../src/ui/mainwindow.cc" line="3435"/>
       <source>Saving article...</source>
       <translation>Tallennetaan artikkelia...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3517"/>
+      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="3499"/>
       <source>The main window is set to be always on top.</source>
       <translation>Tärkein ikkuna on asetettu aina päälle.</translation>
     </message>
@@ -3506,8 +3542,8 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Historiapaneeli</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="781"/>
-      <location filename="../src/ui/mainwindow.cc" line="864"/>
+      <location filename="../src/ui/mainwindow.cc" line="780"/>
+      <location filename="../src/ui/mainwindow.cc" line="863"/>
       <source>Accessibility API is not enabled</source>
       <translation>Esteettömyyden API ei ole käytössä</translation>
     </message>
@@ -3515,12 +3551,12 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="628"/>
+      <location filename="../src/dict/mdx.cc" line="625"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>Sanakirjatiedosto on kajottu tai vioittunut</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="639"/>
+      <location filename="../src/dict/mdx.cc" line="636"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>Artikkelin lataaminen kohteesta %1epäonnistui, syy: %2</translation>
     </message>
@@ -3671,22 +3707,22 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="521"/>
+      <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
       <translation>Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="193"/>
+      <location filename="../src/ui/preferences.ui" line="85"/>
       <source>Start to system tray</source>
       <translation>Aloita ilmoitusalueelle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="578"/>
+      <location filename="../src/ui/preferences.ui" line="552"/>
       <source>Left Shift only</source>
       <translation>Vain vasen siirto</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="531"/>
+      <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -3695,49 +3731,49 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>sekuntia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="591"/>
+      <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
       <translation>Win/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="171"/>
+      <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Enable system tray icon</source>
       <translation>Ota käyttöön ilmoitusalueen kuvake</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="930"/>
-      <location filename="../src/ui/preferences.ui" line="1010"/>
+      <location filename="../src/ui/preferences.ui" line="904"/>
+      <location filename="../src/ui/preferences.ui" line="984"/>
       <source>Host:</source>
       <translation>Isäntä:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="940"/>
-      <location filename="../src/ui/preferences.ui" line="1027"/>
+      <location filename="../src/ui/preferences.ui" line="914"/>
+      <location filename="../src/ui/preferences.ui" line="1001"/>
       <source>Port:</source>
       <translation>Portti:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="551"/>
+      <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
       <translation>Vaihto</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="917"/>
+      <location filename="../src/ui/preferences.ui" line="891"/>
       <source>Type:</source>
       <translation>Tyyppi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="961"/>
+      <location filename="../src/ui/preferences.ui" line="935"/>
       <source>User:</source>
       <translation>Käyttäjä:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="397"/>
+      <location filename="../src/ui/preferences.ui" line="371"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Kartoita Ponnahdusikkuna</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="313"/>
+      <location filename="../src/ui/preferences.ui" line="295"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3746,17 +3782,17 @@ Tällä avataan kuitenkin uusia välilehtiä ilman
 vaihtamista niihin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="880"/>
+      <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
       <translation>Käytä välityspalvelinta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="706"/>
+      <location filename="../src/ui/preferences.ui" line="680"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Käytä seuraavaa pikanäppäintä kääntääksesi sanan leikepöydältä:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="588"/>
+      <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Windows-näppäin tai Meta-näppäin</translation>
     </message>
@@ -3765,91 +3801,91 @@ vaihtamista niihin.</translation>
       <translation>Näytä ponnahdusikkuna vain, kun kaikkia valittuja näppäimiä pidetään painettuna:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="763"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="382"/>
+      <location filename="../src/ui/preferences.ui" line="191"/>
       <source>Start with system</source>
       <translation>Aloita järjestelmällä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="538"/>
+      <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
       <translation>Vain vasen Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
       <translation>Välilehden selaus</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="508"/>
+      <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
       <translation>Vain oikea siirto</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="200"/>
+      <location filename="../src/ui/preferences.ui" line="92"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Tämän avulla pääikkunan sulkeminen piilottaisi sen sen sijaan, että suljettaisiin
 sovellus.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="777"/>
+      <location filename="../src/ui/preferences.ui" line="751"/>
       <source>&amp;Audio</source>
       <translation>&amp;Ääni</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="876"/>
+      <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Ota käyttöön, jos haluat käyttää välityspalvelinta
 kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui" line="201"/>
       <source>Interface language:</source>
       <translation>Käyttöliittymän kieli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="498"/>
+      <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
       <translation>Vain vasen Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="318"/>
+      <location filename="../src/ui/preferences.ui" line="300"/>
       <source>Open new tabs in background</source>
       <translation>Avaa uudet välilehdet taustalla</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="870"/>
+      <location filename="../src/ui/preferences.ui" line="844"/>
       <source>&amp;Network</source>
       <translation>&amp;Verkko</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="568"/>
+      <location filename="../src/ui/preferences.ui" line="542"/>
       <source>Right Ctrl only</source>
       <translation>Vain oikea Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="114"/>
+      <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="511"/>
+      <location filename="../src/ui/preferences.ui" line="485"/>
       <source>Right Shift</source>
       <translation>Oikea Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="581"/>
+      <location filename="../src/ui/preferences.ui" line="555"/>
       <source>Left Shift</source>
       <translation>Vasen Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="446"/>
+      <location filename="../src/ui/preferences.ui" line="420"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Tämän ollessa käytössä, ponnahdusikkuna näkyisi vain, jos kaikki valitut avaimet ovat
@@ -3860,7 +3896,7 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Näytä tyyli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Ääntää automaattisesti sanoja skannauksessa</translation>
     </message>
@@ -3869,17 +3905,17 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Ota käyttöön skannaa ponnahdusikkunan toiminnot</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="330"/>
+      <location filename="../src/ui/preferences.ui" line="312"/>
       <source>Open new tabs after the current one</source>
       <translation>Avaa uudet välilehdet nykyisen välilehtien jälkeen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="620"/>
+      <location filename="../src/ui/preferences.cc" line="624"/>
       <source>Restart the program to apply the language change.</source>
       <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="518"/>
+      <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>Alt-näppäin</translation>
     </message>
@@ -3894,12 +3930,12 @@ mikä tahansa sana hiirellä (Linux). Kun käytössä, voit kytkeä sen päälle
 pois pääikkunasta tai kuvakkeesta.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1228"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Check for new program releases periodically</source>
       <translation>Tarkista uusien ohjelmien julkaisut ajoittain</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="325"/>
+      <location filename="../src/ui/preferences.ui" line="307"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3908,25 +3944,25 @@ virtauksen jälkeen, aktiivinen välilehti. Muuten ne lisätään
 ovat viimeisiä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="204"/>
+      <location filename="../src/ui/preferences.ui" line="96"/>
       <source>Close to system tray</source>
       <translation>Sulje ilmoitusalue</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="61"/>
+      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>System default</source>
       <translation>Järjestelmän oletus</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="167"/>
+      <location filename="../src/ui/preferences.ui" line="59"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Kun käytössä, kuvake näkyy ilmoitusalueen alueella, jota voidaan käyttää
 avaamaan pääikkuna ja suorittamaan muita tehtäviä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1221"/>
+      <location filename="../src/ui/preferences.ui" line="1195"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3939,17 +3975,17 @@ ilmoittaa siitä käyttäjälle ja pyytää avaamaan
 lataussivun.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="373"/>
+      <location filename="../src/ui/preferences.ui" line="182"/>
       <source>Startup</source>
       <translation>Käynnistys</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="971"/>
+      <location filename="../src/ui/preferences.ui" line="945"/>
       <source>Password:</source>
       <translation>Salasana:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="111"/>
+      <location filename="../src/ui/preferences.cc" line="115"/>
       <source>Default</source>
       <translation>Oletus</translation>
     </message>
@@ -3967,27 +4003,27 @@ vasta valinnan jälkeen&apos;s tehdään rajalliseksi määräksi
 sekuntia, joka on eritelty tässä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="619"/>
+      <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>Vaihdetaan Kieltä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="528"/>
+      <location filename="../src/ui/preferences.ui" line="502"/>
       <source>Ctrl key</source>
       <translation>Ctrl-näppäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="679"/>
+      <location filename="../src/ui/preferences.ui" line="653"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Käytä seuraavaa pikanäppäintä näyttääksesi tai piilottaaksesi pääikkunan:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="541"/>
+      <location filename="../src/ui/preferences.ui" line="515"/>
       <source>Left Alt</source>
       <translation>Vasen Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="558"/>
+      <location filename="../src/ui/preferences.ui" line="532"/>
       <source>Right Alt only</source>
       <translation>Vain oikea Alt</translation>
     </message>
@@ -4001,54 +4037,54 @@ sekuntia, joka on eritelty tässä.</translation>
       <translation>Avaimet voidaan painaa myös jälkeenpäin, sisällä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="501"/>
+      <location filename="../src/ui/preferences.ui" line="475"/>
       <source>Left Ctrl</source>
       <translation>Vasen Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="561"/>
+      <location filename="../src/ui/preferences.ui" line="535"/>
       <source>Right Alt</source>
       <translation>Oikea Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="749"/>
+      <location filename="../src/ui/preferences.ui" line="723"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Pikanäppäimet ovat globaaleja ja toimivat mistä tahansa ohjelmasta ja missä tahansa kontekstissa niin kauan kuin GoldenDict on käynnissä taustalla.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="571"/>
+      <location filename="../src/ui/preferences.ui" line="545"/>
       <source>Right Ctrl</source>
       <translation>Oikea Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="673"/>
+      <location filename="../src/ui/preferences.ui" line="647"/>
       <source>Hotkeys</source>
       <translation>Pikanäppäimet</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="407"/>
+      <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
       <translation>Aloita skannaus ponnahdusikkuna otettu käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="189"/>
+      <location filename="../src/ui/preferences.ui" line="81"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Tämän avulla sovellus alkaa suoraan ilmoitusalueelle näyttämättä
 sen pääikkunaa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="548"/>
+      <location filename="../src/ui/preferences.ui" line="522"/>
       <source>Shift key</source>
       <translation>Shift-näppäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="379"/>
+      <location filename="../src/ui/preferences.ui" line="188"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>Käynnistä GoldenDict automaattisesti käyttöjärjestelmän käynnistyksen jälkeen.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="403"/>
+      <location filename="../src/ui/preferences.ui" line="377"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Valitsee onko skannaus ponnahdusikkuna oletusarvoisesti päällä vai ei. Jos valittuna,
@@ -4065,12 +4101,12 @@ sanan. Kun tämä on käytössä, valittuja näppäimiä voidaan painaa myös
 pian valinnan jälkeen.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="642"/>
+      <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Älä näytä ponnahdusikkunoita kun valinta tai leikepöytä yhdessä GoldenDict&apos;s omat ikkunat muuttuvat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="645"/>
+      <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Ohita GoldenDict&apos;s oma valinta ja leikepöydän muutokset</translation>
     </message>
@@ -4087,27 +4123,27 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Huomautus: Näytät käyttävän X:ää. rg XServer julkaisu, joka on RECORD laajennus rikki. Pikanäppäimet GoldenDict luultavasti ei toimi. Tämä täytyy korjata palvelimella itse. Katso seuraavat &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug merkintä&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; ja jätä kommentti tähän, jos haluat.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="812"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Toista äänitiedostoja sisäänrakennetun äänituen kautta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
       <translation>Käytä sisäistä pelaajaa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="822"/>
+      <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
       <translation>Valitse audio back end</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="842"/>
+      <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
       <translation>Syötä soittimen komentorivi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1145"/>
+      <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -4116,44 +4152,44 @@ kieltämällä sisällön (kuvien, kehyksien) käytön, jotka eivät ole peräis
 joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä käytöstä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1150"/>
+      <location filename="../src/ui/preferences.ui" line="1124"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="783"/>
+      <location filename="../src/ui/preferences.ui" line="757"/>
       <source>Pronunciation</source>
       <translation>Ääntäminen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>Playback</source>
       <translation>Toisto</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Use external program:</source>
       <translation>Käytä ulkoista ohjelmaa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="224"/>
+      <location filename="../src/ui/preferences.ui" line="282"/>
       <source>Double-click translates the word clicked</source>
       <translation>Kaksoisnapsauta kääntää sanan napsautettuna</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="829"/>
+      <location filename="../src/ui/preferences.ui" line="803"/>
       <source>Use any external program to play audio files</source>
       <translation>Käytä mitä tahansa ulkoista ohjelmaa äänitiedostojen toistamiseen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="280"/>
+      <location filename="../src/ui/preferences.ui" line="106"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Tavallisesti painamalla TSK:n näppäintä siirtyy painopiste käännösriviin.
 Tämän avulla se kuitenkin piilottaa pääikkunan.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="284"/>
+      <location filename="../src/ui/preferences.ui" line="110"/>
       <source>ESC key hides main window</source>
       <translation>ESC-näppäin piilottaa pääikkunan</translation>
     </message>
@@ -4170,12 +4206,12 @@ Liitännäinen on asennettava, jotta tämä asetus toimisi.</translation>
       <translation>Ota web-liitännäiset käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="337"/>
+      <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Valitse tämä vaihtoehto, jos et halua&apos;t nähdä päävälilehden palkin, kun vain yksi välilehti on avattu.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="340"/>
+      <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>Piilota yksi välilehti</translation>
     </message>
@@ -4184,32 +4220,32 @@ Liitännäinen on asennettava, jotta tämä asetus toimisi.</translation>
       <translation>Ohjeiden kieli</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="239"/>
+      <location filename="../src/ui/preferences.ui" line="141"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Säädä tätä arvoa välttääksesi valtavat kontekstivalikot.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="242"/>
+      <location filename="../src/ui/preferences.ui" line="144"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Kontekstivalikon sanakirjojen raja:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="414"/>
+      <location filename="../src/ui/preferences.ui" line="388"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Lähetä käännetty sana pääikkunaan sen sijaan, että se näytetään ponnahdusikkunassa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="417"/>
+      <location filename="../src/ui/preferences.ui" line="391"/>
       <source>Send translated word to main window</source>
       <translation>Lähetä käännetty sana pääikkunaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="632"/>
+      <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Näytä lippuikkuna ennen kuin näytetään ponnahdusikkuna, napsauta lippua näyttääksesi ponnahdusikkunan. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="291"/>
+      <location filename="../src/ui/preferences.ui" line="117"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4220,159 +4256,159 @@ vierittää artikkeliin samasta sanakirjasta. Tällä valinnalla pois päältä,
 kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="297"/>
+      <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
       <translation>Vieritä automaattisesti kohdistetulle artikkelille</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="73"/>
+      <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
       <translation>Sanakirjasin: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="86"/>
+      <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
       <translation>aseta varmennuskirjasinperhe sanakirjaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
       <translation>Artikkelin esitystyyli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="145"/>
+      <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
       <translation>Käännä käyttöliittymä pimeäksi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="148"/>
+      <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
       <translation>Tumma Tila</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="155"/>
+      <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
       <translation>Käännä artikkelin näytön tyyli pimeäksi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="158"/>
+      <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
       <translation>Tumma Lukija -tila</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="347"/>
+      <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
       <translation>MRU-tilaus: Viimeksi käytetty tilaus.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Seuraa leikepöytää muuttuu, kun skannaus on käytössä. Huomio! Sinun pitäisi aina ottaa tämä käyttöön, ellet ole Linuxissa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="427"/>
+      <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
       <translation>Kappaleen leikepöydän vaihto</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="434"/>
+      <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
       <translation>Kappaleen valinnan muutos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="450"/>
+      <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Valitse vain kun kaikki valitut näppäimet pidetään painettuna:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="635"/>
+      <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
       <translation>Näytä skannaus kun sana on valittu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="892"/>
+      <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
       <translation>Järjestelmän välityspalvelin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="899"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
       <translation>Oma välityspalvelin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="909"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
       <translation>Mukautetut asetukset</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="996"/>
+      <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
       <translation>Yhdistä Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1017"/>
+      <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1061"/>
+      <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
       <translation>Pakka:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1071"/>
+      <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
       <translation>Malli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1098"/>
+      <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
       <translation>Sana</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1105"/>
+      <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
       <translation>Sanaston kenttä...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1112"/>
+      <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
       <translation>Teksti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
       <translation>Määritelmän kenttä...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1126"/>
+      <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
       <translation>Lause</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1133"/>
+      <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Lausekkeen kenttä (voi olla tyhjä)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1157"/>
+      <location filename="../src/ui/preferences.ui" line="1131"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Jotkut sivustot havaitsevat GoldenDictin HTTP-otsikoiden kautta ja estävät pyynnöt.
 Ota tämä asetus käyttöön korjataksesi ongelman.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1161"/>
+      <location filename="../src/ui/preferences.ui" line="1135"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Älä tunnista GoldenDictia HTTP-otsikoissa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1170"/>
+      <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
       <translation>Verkon välimuistin enimmäiskoko:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1177"/>
+      <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4381,64 +4417,64 @@ If set to 0 the network disk cache will be disabled.</source>
 Jos arvo on 0, verkkovälimuisti ei ole käytössä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1182"/>
+      <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Kun tämä asetus on käytössä, GoldenDict
 tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1199"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
       <translation>Tyhjennä verkkovälimuisti poistuttaessa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1253"/>
+      <location filename="../src/ui/preferences.ui" line="1227"/>
       <source>Full-text search</source>
       <translation>Täystekstihaku</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1259"/>
+      <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
       <translation>Salli koko tekstin haku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1357"/>
+      <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Don&apos;t haku sanakirjoissa, jotka sisältävät enemmän kuin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1374"/>
+      <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
       <translation>artikkelit (0 - rajoittamaton)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1417"/>
+      <location filename="../src/ui/preferences.ui" line="1391"/>
       <source>Ad&amp;vanced</source>
       <translation>Ad&amp;vanced</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1715"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Aikana peräkkäisiä hakuja, jos yksi sanakirja on romahtanut manuaalisesti, se pysyy romahti seuraavassa haussa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1744"/>
+      <location filename="../src/ui/preferences.ui" line="1718"/>
       <source>Session collapse</source>
       <translation>Istunto romahtaa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1765"/>
+      <location filename="../src/ui/preferences.ui" line="1739"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Kun käytät leikepöydällä, nauhat kaiken jälkeen uudemman</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1772"/>
+      <location filename="../src/ui/preferences.ui" line="1746"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Tarkenna uudessa haussa pää- tai ponnahdusikkuna, vaikka se olisi&apos;s näkyvissä</translation>
     </message>
@@ -4471,199 +4507,198 @@ tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
       <translation>Ohita ikkunanhallinnan vihje</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui" line="1524"/>
       <source>Favorites</source>
       <translation>Suosikit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1532"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Suosikkien tallennusväli. Jos arvo on 0 Suosikkia, tallennetaan vain ulostulon aikana.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1584"/>
+      <location filename="../src/ui/preferences.ui" line="1558"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Ota tämä asetus käyttöön vahvistaaksesi jokaisen toimintojen poistamisen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1587"/>
+      <location filename="../src/ui/preferences.ui" line="1561"/>
       <source>Confirmation for items deletion</source>
       <translation>Vahvistus kohteiden poistolle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1658"/>
+      <location filename="../src/ui/preferences.ui" line="1632"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Ota tämä asetus käyttöön ohittaaksesi kohtuuttoman pitkän tekstin
 hiiren yli, valinnan, leikepöydältä tai komentoriviltä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1662"/>
+      <location filename="../src/ui/preferences.ui" line="1636"/>
       <source>Ignore input phrases longer than</source>
       <translation>Jätä huomiotta pidemmät syöttölauseet</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Tämän kokoisia pidempiä ilmaisuja ei oteta huomioon</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Ota tämä asetus käyttöön, jos haluat ohittaa diakritiikan artikkeleita etsittäessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1721"/>
+      <location filename="../src/ui/preferences.ui" line="1695"/>
       <source>Ignore diacritics while searching</source>
       <translation>Ohita diakritiikka etsittäessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1708"/>
+      <location filename="../src/ui/preferences.ui" line="1682"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Laita tämä asetus päälle laajentaaksesi aina artikkeleiden valinnaisia osia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1711"/>
+      <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>Expand optional &amp;parts</source>
       <translation>Laajenna valinnaiset &amp;osat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1648"/>
+      <location filename="../src/ui/preferences.ui" line="1622"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Valitse tämä vaihtoehto suurien artikkeleiden automaattiseen tiivistämiseen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1651"/>
+      <location filename="../src/ui/preferences.ui" line="1625"/>
       <source>Collapse articles more than</source>
       <translation>Tiivistä artikkelit enemmän kuin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Tämän kokoisia pidempiä artikkeleita romahtaa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1618"/>
+      <location filename="../src/ui/preferences.ui" line="1592"/>
       <source>Ignore punctuation while searching</source>
       <translation>Ohita välimerkit etsittäessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1754"/>
+      <location filename="../src/ui/preferences.ui" line="1728"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Laita tämä asetus päälle ottaaksesi käyttöön ylimääräiset artikkelit haun synonyymilistojen kautta
 alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1758"/>
+      <location filename="../src/ui/preferences.ui" line="1732"/>
       <source>Extra search via synonyms</source>
       <translation>Ylimääräinen haku synonyymien kautta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1641"/>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1615"/>
+      <location filename="../src/ui/preferences.ui" line="1659"/>
       <source>symbols</source>
       <translation>symbolit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="350"/>
+      <location filename="../src/ui/preferences.ui" line="332"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-välilehti navigoi välilehdet MRU-järjestyksessä</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
       <translation>Babylon</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1425"/>
+      <location filename="../src/ui/preferences.ui" line="1399"/>
       <source>History</source>
       <translation>Historia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1431"/>
+      <location filename="../src/ui/preferences.ui" line="1405"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Ota tämä asetus käyttöön tallentaaksesi käännettyjen sanojen historian</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1434"/>
+      <location filename="../src/ui/preferences.ui" line="1408"/>
       <source>Store &amp;history</source>
       <translation>Kaupan &amp;historia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1612"/>
+      <location filename="../src/ui/preferences.ui" line="1586"/>
       <source>Articles</source>
       <translation>Artikkelit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="214"/>
+      <location filename="../src/ui/preferences.ui" line="252"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Ota tämä asetus käyttöön, jos haluat valita sanat yhdellä hiiren napsautuksella</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="217"/>
+      <location filename="../src/ui/preferences.ui" line="255"/>
       <source>Select word by single click</source>
       <translation>Valitse sana yhdellä napsautuksella</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="120"/>
+      <location filename="../src/ui/preferences.ui" line="354"/>
       <source>Add-on style:</source>
       <translation>Lisäosan tyyli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1449"/>
+      <location filename="../src/ui/preferences.ui" line="1423"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Määritä historiassa säilytettävien merkintöjen enimmäismäärä.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1452"/>
+      <location filename="../src/ui/preferences.ui" line="1426"/>
       <source>Maximum history size:</source>
       <translation>Historian enimmäiskoko:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1489"/>
+      <location filename="../src/ui/preferences.ui" line="1463"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Historian tallennus aika. Jos asetettu 0 historiaan, tallennetaan vain poistumisen aikana.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1495"/>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1469"/>
+      <location filename="../src/ui/preferences.ui" line="1535"/>
       <source>Save every</source>
       <translation>Tallenna joka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1512"/>
-      <location filename="../src/ui/preferences.ui" line="1575"/>
+      <location filename="../src/ui/preferences.ui" line="1486"/>
+      <location filename="../src/ui/preferences.ui" line="1549"/>
       <source>minutes</source>
       <translation>minuuttia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>English</source>
       <translation type="unfinished">English</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="112"/>
+      <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
       <translation>Klassinen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="113"/>
+      <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
       <translation>Moderni</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
       <translation>Lingot</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
       <translation>Lingo-sininen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="128"/>
+      <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
       <translation> Mt</translation>
     </message>
@@ -4754,7 +4789,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1698"/>
+      <location filename="../src/dict/dsl.cc" line="1691"/>
       <source>Article loading error</source>
       <translation>Artikkelin latausvirhe</translation>
     </message>
@@ -4767,64 +4802,54 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
       <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="710"/>
-      <location filename="../src/dict/stardict.cc" line="1107"/>
+      <location filename="../src/dict/sdict.cc" line="685"/>
+      <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
       <translation>Tekijänoikeus: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="726"/>
+      <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
       <translation>Versio: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
       <translation>avformat_alloc_context() epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
       <translation>av_malloc() epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
       <translation>avio_alloc_context() epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
       <translation>avformat_open_input() epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
       <translation>avformat_find_stream_info() epäonnistui. %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="213"/>
       <source>Could not find audio stream.</source>
       <translation>Äänivirtaa ei löytynyt.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="220"/>
       <source>Codec [id: %1] not found.</source>
       <translation>Koodia [id: %1] ei löytynyt.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="226"/>
       <source>avcodec_alloc_context3() failed.</source>
       <translation>avcodec_alloc_context3() epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
       <translation>avcodec_open2() epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="324"/>
       <source>Can not found default audio output device</source>
       <translation>Oletusäänituloituslaitetta ei löydy</translation>
     </message>
@@ -4861,35 +4886,34 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tuntematon virhe.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
       <translation>avcodec_alloc_frame() epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1115"/>
+      <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
       <translation>Tekijä: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1123"/>
+      <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
       <translation>Sähköposti: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="678"/>
+      <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
       <translation>Otsikko: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1131"/>
+      <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
       <translation>Verkkosivu: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1139"/>
+      <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
       <translation>Päivämäärä: %1%2</translation>
     </message>
@@ -4906,32 +4930,32 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Seuraava Sivu</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="124"/>
+      <location filename="../src/main.cc" line="142"/>
       <source>A dictionary lookup program.</source>
       <translation>Sanakirjan hakuohjelma.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="127"/>
+      <location filename="../src/main.cc" line="145"/>
       <source>Word or sentence to query.</source>
       <translation>Kyselyyn käytettävä sana tai lause.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="131"/>
+      <location filename="../src/main.cc" line="149"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Tallenna debug viestit gd_log.txt config kansioon.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="135"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Change the group of main window.</source>
       <translation>Muuta pääikkunan ryhmää.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="139"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Change the group of popup.</source>
       <translation>Muuta ponnahdusikkunan ryhmää.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="144"/>
+      <location filename="../src/main.cc" line="162"/>
       <source>Toggle scan popup.</source>
       <translation>Vaihda skannauksen ponnahdusikkuna.</translation>
     </message>
@@ -4939,7 +4963,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1019"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Sanakirjan haku/suodatin (Ctrl+F)</translation>
     </message>
@@ -4948,7 +4972,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Nopea Haku</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1024"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
       <translation>Tyhjennä Haku</translation>
     </message>
@@ -4956,22 +4980,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>ERROR: %1</source>
       <translation>VIRHE: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>Resource saving error: </source>
       <translation>Resurssien tallennusvirhe: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>The referenced resource failed to download.</source>
       <translation>Viitattua resurssia ei voitu ladata.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>WARNING: %1</source>
       <translation>VAROITUS: %1</translation>
     </message>
@@ -5007,16 +5031,11 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="116"/>
-      <location filename="../src/ui/scanpopup.ui" line="130"/>
-      <location filename="../src/ui/scanpopup.ui" line="144"/>
-      <location filename="../src/ui/scanpopup.ui" line="211"/>
-      <location filename="../src/ui/scanpopup.ui" line="255"/>
       <source>...</source>
       <translation>…</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="151"/>
+      <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
       <translation>Alt+S</translation>
     </message>
@@ -5026,39 +5045,39 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Dialogi</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="141"/>
+      <location filename="../src/ui/scanpopup.ui" line="135"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Prounce Word (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="178"/>
+      <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Lisää sana suosikeihin (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="208"/>
+      <location filename="../src/ui/scanpopup.ui" line="193"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Näyttää tai piilottaa sanakirjan</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="231"/>
+      <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
       <translation>Pysy aina kaikkien muiden ikkunoiden päällä</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="251"/>
+      <location filename="../src/ui/scanpopup.ui" line="230"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="161"/>
+      <location filename="../src/ui/scanpopup.ui" line="152"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Lähetä sana pääikkunaan (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="171"/>
+      <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
       <translation>Alt+W</translation>
     </message>
@@ -5068,13 +5087,13 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
       <translation>Taaksepäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="127"/>
+      <location filename="../src/ui/scanpopup.ui" line="124"/>
       <source>Forward</source>
       <translation>Eteenpäin</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="598"/>
-      <location filename="../src/ui/scanpopup.cc" line="994"/>
+      <location filename="../src/ui/scanpopup.cc" line="604"/>
+      <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
@@ -5087,22 +5106,32 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
       <translation>&amp;Edellinen</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="18"/>
+      <location filename="../src/ui/searchpanel.cc" line="15"/>
+      <source>Ctrl+Shift+G</source>
+      <translation type="unfinished">Ctrl+Shift+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
       <translation>&amp;Seuraava</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="22"/>
+      <location filename="../src/ui/searchpanel.cc" line="20"/>
+      <source>Ctrl+G</source>
+      <translation type="unfinished">Ctrl+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
       <translation>Korosta &amp;kaikki</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="26"/>
+      <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Huomioi Kirjainkoko</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="28"/>
+      <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
       <translation>Etsi:</translation>
     </message>
@@ -5658,7 +5687,7 @@ tulevaisuudessa, tai rekisteröityä sivustolle saadaksesi oman avaimen.</transl
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="201"/>
+      <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
       <translation>Joidenkin sanakirjojen kysely epäonnistui.</translation>
     </message>
