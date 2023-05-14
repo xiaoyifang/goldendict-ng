@@ -85,12 +85,12 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="313"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>Ukat cursor uk uchasmawa kuna arutix thaqhañ munt ukxaru yaqha aplicación ukana, ukatja mä wintanaw uñstanini, thaqhawi uñachayañataki.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="306"/>
+      <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Uñstir wintana apnaqasa&lt;/h3&gt;
 Yaqha aplicaciones ukat arunak thaqhañatakixa, &lt;i&gt;&quot;Escaneo apnaqañatakixa uñstir wintanana&quot;&lt;/i&gt; &lt;b&gt;Askichaña&gt;Ajlliñanaka&lt;/b&gt; ukan naktayañama. Ukatxa jist&apos;arasmawa klik ukampi salta uñstir wintanana jan ukjax klik ukampi sistema wak&apos;ana achakut kupi wutunampi. 
@@ -100,38 +100,38 @@ antes la &lt;i&gt;&quot;función de ventana emergente de búsqueda&quot;&lt;/i&g
 &lt;b&gt;Askichaña&gt;Ajlliñanaka&lt;/b&gt;, y entonces activar la ventana en cualquier momento con el icono &apos;Ventana emergente&apos; mostrado arriba, o pulsando el icono de la bandeja mostrado abajo con el botón derecho del ratón y eligiendo la opción en el menú que aparece. </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Expand article</source>
       <translation>Qillqa janatataña</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="145"/>
+      <location filename="../src/article_maker.cc" line="138"/>
       <source>Collapse article</source>
       <translation>Qillqa suk&apos;aña</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="234"/>
+      <location filename="../src/article_maker.cc" line="232"/>
       <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%2&lt;/b&gt; qutuna janiw &lt;b&gt;%1&lt;/b&gt; aru utjkiti.&lt;br&gt;&lt;br&gt;
 No se ha encontrado la palabra &lt;b&gt;%1&lt;/b&gt; en el grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="302"/>
       <source>Working with popup</source>
       <translation>Uñstir wintanampi apnaqkasa</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="394"/>
+      <location filename="../src/article_maker.cc" line="392"/>
       <source>(untitled)</source>
       <translation>(jan sutini)</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="284"/>
       <source>Welcome!</source>
       <translation>¡Aski jutawi!</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="316"/>
+      <location filename="../src/article_maker.cc" line="314"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>&lt;p&gt;Ukat kawkir aru thaqhañ munt uk ajllismawa yaqha aplicación ukana ukaxa achakumpi (pä kuti limt&apos;am jan ukjax llust&apos;ayam achakun wutunap limt&apos;asa) ukatxa mä wintana uñstanini, thaqhawi uñachayañataki.
 &lt;p&gt;Entonces puedes seleccionar cualquier palabra que 
@@ -140,13 +140,13 @@ sobre la palabra con el botón del ratón oprimido), y aparecerá una ventana
  que mostrará los resultados de la búsqueda.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="238"/>
+      <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; qutuna janiw aru utjkiti.&lt;br&gt;&lt;br&gt;
 No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="288"/>
+      <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Suma puriwi &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;
 &lt;p&gt;Aka programampi apnaqañatakixa nayraqataxa, &lt;b&gt;Askichaña &gt; Aru-pirwanaka&lt;/b&gt; ukar saram, kawkinkisa uka aru-pirwanak q’ipinakaxa churañataki. Wikipedia ukhamaraki yaqha jalsunaka uskusmawa, kunjams thaqhaña aru-pirwanakana, jan ukjax qutu aru-pirwanaka uñstayañ, ukanak lurasma.
@@ -174,7 +174,7 @@ programa para estar al corriente de las actualizaciones.
 &lt;p&gt;© 2008-2013 Konstantin Isakov. Licencia GNU GPLv3 o posterior.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="406"/>
+      <location filename="../src/article_maker.cc" line="404"/>
       <source>(picture)</source>
       <translation>(jamuqa)</translation>
     </message>
@@ -182,27 +182,27 @@ programa para estar al corriente de las actualizaciones.
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="674"/>
+      <location filename="../src/article_maker.cc" line="672"/>
       <source>Expand article</source>
       <translation>Qillqa janatataña</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="675"/>
+      <location filename="../src/article_maker.cc" line="673"/>
       <source>From </source>
       <translation>Ukata </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="678"/>
+      <location filename="../src/article_maker.cc" line="676"/>
       <source>Collapse article</source>
       <translation>Qillqa suk&apos;aña</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="693"/>
+      <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
       <translation type="unfinished">Make a new Anki note</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="706"/>
+      <location filename="../src/article_maker.cc" line="704"/>
       <source>Query error: %1</source>
       <translation>Thaqtawit pantjata: %1</translation>
     </message>
@@ -245,7 +245,7 @@ programa para estar al corriente de las actualizaciones.
       <translation>Internet ukat apaqasinxa pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2096"/>
+      <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>Temporal wayaqax panthiwa.</translation>
     </message>
@@ -254,7 +254,7 @@ programa para estar al corriente de las actualizaciones.
       <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1807"/>
+      <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&quot;%1&quot; &amp;thaqhaña</translation>
     </message>
@@ -267,13 +267,13 @@ programa para estar al corriente de las actualizaciones.
       <translation>&amp;Nayriri</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1815"/>
+      <location filename="../src/ui/articleview.cc" line="1806"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>&amp;Machaq phichhun &quot;%1&quot; thaqhaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1367"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1358"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>Janiw Chiqanchata wakiskirix utjkiti.</translation>
     </message>
@@ -286,42 +286,42 @@ programa para estar al corriente de las actualizaciones.
       <translation>J&amp;ACH&apos;A / jisk&apos;a qillqa jikhthaptaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2107"/>
+      <location filename="../src/ui/articleview.cc" line="2098"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>Wayaqax ist&apos;arañ pantthiwa. Manualmente yant&apos;am: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1841"/>
+      <location filename="../src/ui/articleview.cc" line="1832"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>%2 ukan &quot;%1&quot; thaqhaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="332"/>
+      <location filename="../src/ui/articleview.cc" line="321"/>
       <source>Select Current Article</source>
       <translation>Jichha qillqata uk ajlliña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="337"/>
+      <location filename="../src/ui/articleview.cc" line="326"/>
       <source>Copy as text</source>
       <translation>Qillqjama qillqaqaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="342"/>
+      <location filename="../src/ui/articleview.cc" line="331"/>
       <source>Inspect</source>
       <translation>Uñakipaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1849"/>
+      <location filename="../src/ui/articleview.cc" line="1840"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>&amp;Machaq phichhun %2 ukan &quot;%1&quot; thaqhaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1759"/>
+      <location filename="../src/ui/articleview.cc" line="1750"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>&amp;Machaq phichhunxa chinuñ jist&apos;araña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1766"/>
+      <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>&amp;Internet tuyurinxa chinuñ jist&apos;araña</translation>
     </message>
@@ -330,58 +330,58 @@ programa para estar al corriente de las actualizaciones.
       <translation>&amp;Taqpach qhanstayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1004"/>
+      <location filename="../src/ui/articleview.cc" line="995"/>
       <source>Resource</source>
       <translation>Yatiyawi jalsu</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1009"/>
+      <location filename="../src/ui/articleview.cc" line="1000"/>
       <source>Audio</source>
       <translation>Ist&apos;añataki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1014"/>
+      <location filename="../src/ui/articleview.cc" line="1005"/>
       <source>TTS Voice</source>
       <translation>TTS Aru</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1019"/>
+      <location filename="../src/ui/articleview.cc" line="1010"/>
       <source>Picture</source>
       <translation>Jamuqa</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation type="unfinished">Video</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1035"/>
+      <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
       <translation type="unfinished">Video: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1052"/>
+      <location filename="../src/ui/articleview.cc" line="1043"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>&quot;%1&quot; aru-pirwat aru qhanañchaña: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1060"/>
+      <location filename="../src/ui/articleview.cc" line="1051"/>
       <source>Definition: %1</source>
       <translation>Aru qhanañchaña: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1406"/>
+      <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Ist&apos;añataki uka programax janiw utjkiti.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1753"/>
+      <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
       <translation type="unfinished">Op&amp;en Link</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
     </message>
@@ -394,80 +394,80 @@ programa para estar al corriente de las actualizaciones.
       <translation type="unfinished">Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2137"/>
+      <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>UKATARAKI: Kirkiyiri: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1292"/>
-      <location filename="../src/ui/articleview.cc" line="1327"/>
-      <location filename="../src/ui/articleview.cc" line="1551"/>
+      <location filename="../src/ui/articleview.cc" line="1283"/>
+      <location filename="../src/ui/articleview.cc" line="1318"/>
+      <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>ERROR: %1</source>
       <translation>PANTJATA: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2009"/>
+      <location filename="../src/ui/articleview.cc" line="2000"/>
       <source>Save sound</source>
       <translation>Ist&apos;añataki imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2024"/>
+      <location filename="../src/ui/articleview.cc" line="2015"/>
       <source>Save image</source>
       <translation>Jamuqa imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2026"/>
+      <location filename="../src/ui/articleview.cc" line="2017"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>Jamuqan uka wayaqanaka (*.bmp *.jpg *.png *.tif);;Taqpach wayaqanaka (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1782"/>
+      <location filename="../src/ui/articleview.cc" line="1773"/>
       <source>Save &amp;image...</source>
       <translation>&amp;Jamuqa imaña...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="199"/>
+      <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
       <translation type="unfinished">Phrase not found</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="207"/>
+      <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
       <translation type="unfinished">%1 of %2 matches</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1789"/>
+      <location filename="../src/ui/articleview.cc" line="1780"/>
       <source>Save s&amp;ound...</source>
       <translation>&amp;Ist&apos;añataki imaña...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1820"/>
+      <location filename="../src/ui/articleview.cc" line="1811"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>Arunak thaqiriru &quot;%1&quot; qillqaqaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1826"/>
-      <location filename="../src/ui/articleview.cc" line="1878"/>
+      <location filename="../src/ui/articleview.cc" line="1817"/>
+      <location filename="../src/ui/articleview.cc" line="1869"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>Thaqhat arunakaru &quot;%1&quot; yapxataña</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1868"/>
+      <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation type="unfinished">&amp;Send Current Article to Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
       <translation type="unfinished">&amp;Send selected text to Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2011"/>
+      <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation type="unfinished">Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2081"/>
+      <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>Ist&apos;añataki wayaqaxa janiw kirkiyañ yatkiti: %1</translation>
     </message>
@@ -648,6 +648,8 @@ between classic and school orthography in cyrillic)</source>
     <name>DictGroupsWidget</name>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="691"/>
+      <location filename="../src/ui/groups_widgets.cc" line="789"/>
+      <location filename="../src/ui/groups_widgets.cc" line="890"/>
       <source>Confirmation</source>
       <translation>Jaysawi</translation>
     </message>
@@ -659,51 +661,55 @@ between classic and school orthography in cyrillic)</source>
 ¿Quiere generar grupos basados en pares de idiomas?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="851"/>
+      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Aru qalltampi &quot;%1-&gt;&quot; ukarjama qutunak kisantaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="868"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>Aru tukutampi &quot;-&gt;%1&quot; ukarjama qutunak kisantaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
       <translation type="unfinished">Auto group by folder failed.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="786"/>
+      <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can be reached.</source>
       <translation type="unfinished">The parent directory of %1 can be reached.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="791"/>
+      <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="892"/>
       <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="886"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Jaqukipayir qutu uñstayaña purapata &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="904"/>
-      <location filename="../src/ui/groups_widgets.cc" line="923"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot; ukampi qutunak kisantaña</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
       <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="835"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1010"/>
+      <location filename="../src/ui/groups_widgets.cc" line="985"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
       <source>Dictionaries: </source>
       <translation>Aru-pirwanaka: </translation>
     </message>
@@ -786,57 +792,63 @@ between classic and school orthography in cyrillic)</source>
       <translation>Susuña (arsuta ch&apos;akuntata, taqi kunatakis wakisi o expresiones regulares)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="42"/>
       <source>Text</source>
       <translation>Qillqa</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="43"/>
       <source>Wildcards</source>
       <translation>Taqi kunatakis wakisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="45"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
       <translation>Expresión regular</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="266"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <source>Loading headwords...</source>
+      <translation type="unfinished">Loading headwords...</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictheadwords.cc" line="281"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>Jakhu p&apos;iqi arunaka mayaki: %1, susuyata: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="282"/>
+      <location filename="../src/ui/dictheadwords.cc" line="338"/>
       <source>Save headwords to file</source>
       <translation>Wayaqa ukan p&apos;iqi arunak imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="284"/>
+      <location filename="../src/ui/dictheadwords.cc" line="340"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Qillqa wayaqanaka (*.txt);;Taqpacha wayaqanaka (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="292"/>
+      <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
       <translation type="unfinished">Can not open exported file</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Export headwords...</source>
       <translation>P&apos;iqi arunak anqar apsuña...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="303"/>
+      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Cancel</source>
       <translation>Jan saña</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="367"/>
+      <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
       <translation type="unfinished">Export process is interrupted</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="375"/>
+      <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
       <translation type="unfinished">Export finished</translation>
     </message>
@@ -912,22 +924,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictServer</name>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="274"/>
+      <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Url: </source>
       <translation>URL: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="275"/>
+      <location filename="../src/dict/dictserver.cc" line="276"/>
       <source>Databases: </source>
       <translation>Yatiya base: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="276"/>
+      <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
       <translation>Kunjams thaqhaña: </translation>
     </message>
     <message>
-      <location filename="../src/dict/dictserver.cc" line="280"/>
+      <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
       <translation>Yatiyawinak lakiriri</translation>
     </message>
@@ -1020,8 +1032,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>EditDictionaries</name>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="47"/>
-      <location filename="../src/ui/editdictionaries.cc" line="248"/>
+      <location filename="../src/ui/editdictionaries.cc" line="45"/>
+      <location filename="../src/ui/editdictionaries.cc" line="251"/>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Aru-pirwanaka</translation>
     </message>
@@ -1031,33 +1043,33 @@ between classic and school orthography in cyrillic)</source>
       <translation>Aru-pirwanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="134"/>
       <source>Accept</source>
       <translation>Jis saña</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="133"/>
+      <location filename="../src/ui/editdictionaries.cc" line="136"/>
       <source>Cancel</source>
       <translation>Jan saña</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="127"/>
+      <location filename="../src/ui/editdictionaries.cc" line="130"/>
       <source>Sources changed</source>
       <translation>Mayjt&apos;ayat yatiyaw jalsunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="44"/>
       <source>&amp;Sources</source>
       <translation>&amp;Yatiyaw jalsunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="48"/>
-      <location filename="../src/ui/editdictionaries.cc" line="250"/>
+      <location filename="../src/ui/editdictionaries.cc" line="46"/>
+      <location filename="../src/ui/editdictionaries.cc" line="253"/>
       <source>&amp;Groups</source>
       <translation>&amp;Qutunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="128"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>Yaqhip yatiyaw jalsunakax mayjt&apos;ayatawa.
 Uka majt&apos;ayatanakxa, jisa sañ muntati?
@@ -1074,7 +1086,7 @@ Se han modificado algunas fuentes.
       <translation type="unfinished">Previous Page</translation>
     </message>
     <message>
-      <location filename="../src/dict/epwing.cc" line="386"/>
+      <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
       <translation type="unfinished">Next Page</translation>
     </message>
@@ -1090,60 +1102,60 @@ Se han modificado algunas fuentes.
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="234"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Full-text search</source>
       <translation>Taqpach qillqan thaqhaña</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
       <translation>Ukch&apos;pacha arunaka</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="244"/>
+      <location filename="../src/fulltextsearch.cc" line="242"/>
       <source>Plain text</source>
       <translation>Q&apos;ala qillqa</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
       <source>Wildcards</source>
       <translation>Taqi kunatakis wakisi</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="247"/>
+      <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
       <translation>Expresión regular</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="257"/>
+      <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="263"/>
+      <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
       <translation>Qawqha mayjas arupurkama (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="272"/>
+      <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
       <translation>Qawqha qillqatanakas sapa aru-pirwana (%1-%2):</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="311"/>
-      <location filename="../src/fulltextsearch.cc" line="441"/>
-      <location filename="../src/fulltextsearch.cc" line="562"/>
-      <location filename="../src/fulltextsearch.cc" line="575"/>
+      <location filename="../src/fulltextsearch.cc" line="309"/>
+      <location filename="../src/fulltextsearch.cc" line="443"/>
+      <location filename="../src/fulltextsearch.cc" line="564"/>
+      <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
       <translation>Qillqatanak jikita: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="394"/>
+      <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
       <translation>Jichhax ullaskiwa: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="395"/>
+      <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>Ni maya</translation>
     </message>
@@ -1152,17 +1164,17 @@ Se han modificado algunas fuentes.
       <translation>CJK uka chimpunakaxa janiw lurkiti &quot;q&apos;ala qillqa&quot; &quot;ukch&apos;pacha arunaka&quot; uka thaqhawinakampi.</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="452"/>
+      <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
       <translation>Thaqhañatakixa utjañapapuniwa mä aru ukampi </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="453"/>
+      <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
       <translation> jan ukaxa juk&apos;amp chimpunakampi</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="464"/>
+      <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
       <translation>Taqpach qillqan thaqhañataki janiw aru-pirwanakax utjkiti</translation>
     </message>
@@ -1170,7 +1182,7 @@ Se han modificado algunas fuentes.
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="644"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
       <translation>Wayaqa munat arunakan pantjasiwa</translation>
     </message>
@@ -1178,27 +1190,27 @@ Se han modificado algunas fuentes.
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="30"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="31"/>
       <source>&amp;Delete Selected</source>
       <translation>&amp;Ajllitanak chhaqtayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="38"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="39"/>
       <source>Copy Selected</source>
       <translation>Ajllit uk qillaqaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="46"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
       <translation>Q&apos;ipi yapaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="60"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
       <translation>Munat arunaka:</translation>
     </message>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="163"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Ajllit mantañakax chhaqtayataniwa. ¿Saraskakiñ muntati?
 
@@ -1208,37 +1220,37 @@ Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
-      <location filename="../src/dict/forvo.cc" line="194"/>
+      <location filename="../src/dict/forvo.cc" line="188"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>Uyllan phanta XML: %1 al %2,%3</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="270"/>
+      <location filename="../src/dict/forvo.cc" line="264"/>
       <source>Added %1</source>
       <translation>%1 yapata</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="273"/>
+      <location filename="../src/dict/forvo.cc" line="267"/>
       <source>by</source>
       <translation>khitisa</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Male</source>
       <translation>Chacha</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="277"/>
+      <location filename="../src/dict/forvo.cc" line="271"/>
       <source>Female</source>
       <translation>Warmi</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="279"/>
+      <location filename="../src/dict/forvo.cc" line="273"/>
       <source>from</source>
       <translation>ukata</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="317"/>
+      <location filename="../src/dict/forvo.cc" line="309"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>Askichaña&gt;Aru-pirwanaka&gt;Yatiyaw jalsunaka&gt;Forvo ukar saram,
 ukat API chimpuma churam, aka pantjawi chhaqtayañataki.
@@ -1383,14 +1395,14 @@ Elegir un grupo (Alt+G)</translation>
       <translation>Phichhu 2</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="162"/>
+      <location filename="../src/ui/groups.cc" line="174"/>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Chiqpach taqpach qutunaka chhaqtayañ muntati?
 
 ¿Esta seguro que quiere eliminar todos los grupos?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="149"/>
+      <location filename="../src/ui/groups.cc" line="161"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Chiqpacha &lt;b&gt;%1&lt;/b&gt; qutu chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
 ¿Esta seguro de que quiere eliminar el grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
@@ -1408,17 +1420,17 @@ Elegir un grupo (Alt+G)</translation>
 Abrir una lista de grupos</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="148"/>
+      <location filename="../src/ui/groups.cc" line="160"/>
       <source>Remove group</source>
       <translation>Qutu chhaqtayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="136"/>
+      <location filename="../src/ui/groups.cc" line="148"/>
       <source>Rename group</source>
       <translation>Mayamp qutur suticht&apos;aña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="137"/>
+      <location filename="../src/ui/groups.cc" line="149"/>
       <source>Give a new name for the group:</source>
       <translation>Machaq suti qutur ucham:</translation>
     </message>
@@ -1433,7 +1445,7 @@ Abrir una lista de grupos</translation>
       <translation>Qutu &amp;yapaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="110"/>
+      <location filename="../src/ui/groups.cc" line="113"/>
       <source>Add group</source>
       <translation>Qutu yapaña</translation>
     </message>
@@ -1445,33 +1457,53 @@ Abrir una lista de grupos</translation>
 Crear un nuevo grupo de diccionarios.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="197"/>
+      <location filename="../src/ui/groups.ui" line="203"/>
+      <source>Group by Languages</source>
+      <translation type="unfinished">Group by Languages</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="210"/>
+      <source>Create folder-based groups.</source>
+      <translation type="unfinished">Create folder-based groups.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="213"/>
+      <source>Group by Folders</source>
+      <translation type="unfinished">Group by Folders</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="220"/>
+      <source>Group by Metadata</source>
+      <translation type="unfinished">Group by Metadata</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/groups.ui" line="244"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Qutunakan aru-pirwanaka qatatim ukhamaraki uskum achakumpi. Aru-pirwanakxa unuqiyasmawa ukxa wakichañataki.
 Arrastre y suelte con el ratón para pasar diccionarios de un grupo a otro, para moverlos dentro de un grupo o para ordenar los grupos.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui" line="153"/>
       <source>Rename current dictionary group</source>
       <translation>Jichha qutu aru-pirwanak mayampi suticht&apos;aña.
 
 Renombrar el grupo de diccionarios actual.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui" line="163"/>
       <source>Remove current dictionary group</source>
       <translation>Jiccha qutu aru-pirwanaka chhaqtayaña.
 
 Eliminar el grupo actual de diccionarios.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.cc" line="111"/>
+      <location filename="../src/ui/groups.cc" line="114"/>
       <source>Give a name for the new group:</source>
       <translation>Machaq quturu suti qillqam:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="186"/>
-      <location filename="../src/ui/groups.cc" line="161"/>
+      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Taqi qutunaka chhaqtayaña</translation>
     </message>
@@ -1490,7 +1522,7 @@ Eliminar los diccionarios seleccionados del grupo (SUPR)</translation>
 Añadir los diccionarios seleccionados al grupo (INS)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui" line="166"/>
       <source>&amp;Remove group</source>
       <translation>Qutu &amp;chhaqtayaña</translation>
     </message>
@@ -1500,26 +1532,25 @@ Añadir los diccionarios seleccionados al grupo (INS)</translation>
       <translation>Qutunaka:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Re&amp;name group</source>
       <translation>&amp;Mayamp qutur suticht&apos;aña</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="183"/>
+      <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove all dictionary groups</source>
       <translation>Taqpach qutu aru-pirwanaka chhaqtayaña.
 
 Eliminar todos los grupos de diccionarios.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui" line="200"/>
       <source>Create language-based groups</source>
       <translation>Parisa arunakataki qutunak uñstayaña.
 
 Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
       <source>Auto groups</source>
       <translation>Justupaki qutunakan uñstaña</translation>
     </message>
@@ -1606,12 +1637,12 @@ Tamaño original</translation>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="285"/>
+      <location filename="../src/dict/hunspell.cc" line="259"/>
       <source>Spelling suggestions: </source>
       <translation>Arunak amuyt&apos;awinaka: </translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="856"/>
+      <location filename="../src/dict/hunspell.cc" line="780"/>
       <source>%1 Morphology</source>
       <translation>Morfología %1</translation>
     </message>
@@ -1656,1007 +1687,1007 @@ Tamaño original</translation>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="87"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
       <translation type="unfinished">Ewe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
       <translation type="unfinished">Ido</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
       <translation>Laosiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Twi</source>
       <translation type="unfinished">Twi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
       <translation type="unfinished">Afar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
       <translation>Acano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Cree</source>
       <translation type="unfinished">Cree</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
       <translation type="unfinished">Igbo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
       <translation type="unfinished">Komi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="106"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Manx</source>
       <translation>Manés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pali</source>
       <translation type="unfinished">Pali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Thai</source>
       <translation>Tailandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Urdu</source>
       <translation type="unfinished">Urdu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="302"/>
       <source>Zulu</source>
       <translation type="unfinished">Zulu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Czech</source>
       <translation>Checo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Dutch</source>
       <translation>Neerlandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
       <translation type="unfinished">Ganda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="95"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fulah</source>
       <translation>Fula</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="88"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Greek</source>
       <translation>Griego</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="107"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hausa</source>
       <translation type="unfinished">Hausa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="109"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
       <translation type="unfinished">Hindi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="101"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Irish</source>
       <translation>Irlandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Khmer</source>
       <translation>Camboyano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kongo</source>
       <translation>Kikongo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Latin</source>
       <translation>Latín</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Malay</source>
       <translation>Malayo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Maori</source>
       <translation type="unfinished">Maori</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>Nauru</source>
       <translation>Nauruano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Oriya</source>
       <translation type="unfinished">Oriya</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
       <translation type="unfinished">Oromo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
       <translation type="unfinished">Sango</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
       <translation type="unfinished">Shona</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tajik</source>
       <translation>Tayiko</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tamil</source>
       <translation type="unfinished">Tamil</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
       <translation>Tártaro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
       <translation type="unfinished">Swati</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tonga</source>
       <translation type="unfinished">Tonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Inupiaq</source>
       <translation type="unfinished">Inupiaq</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
       <translation type="unfinished">Venda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Uzbek</source>
       <translation>Uzbeco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="82"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>Welsh</source>
       <translation>Galés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
       <translation>Wólof</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
       <translation type="unfinished">Xhosa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Italian</source>
       <translation>Italiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Raeto-Romance</source>
       <translation>Retorrománico</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="86"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
       <translation type="unfinished">Dzongkha</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
       <translation type="unfinished">Kannada</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
       <translation>Ndebele norteño</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Abkhazian</source>
       <translation>Abjasio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Kirghiz</source>
       <translation>Kirguís</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
       <translation type="unfinished">Kirundi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="102"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Scottish Gaelic</source>
       <translation>Gaélico escocés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Albanian</source>
       <translation>Albanés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Latvian</source>
       <translation>Letón</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Malayalam</source>
       <translation type="unfinished">Malayalam</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Kurdish</source>
       <translation>Kurdo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bulgarian</source>
       <translation>Búlgaro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
       <translation type="unfinished">Lingala</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Maltese</source>
       <translation>Maltés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Marathi</source>
       <translation type="unfinished">Marathi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Arabic</source>
       <translation>Arabé</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="93"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
       <translation>Vasco (Euskara)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Avaric</source>
       <translation>Ávaro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bihari</source>
       <translation type="unfinished">Bihari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
       <translation type="unfinished">Aymara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
       <translation>Bretón</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Sundanese</source>
       <translation>Sudanés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="83"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Danish</source>
       <translation>Danés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="85"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
       <translation type="unfinished">Divehi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
       <translation type="unfinished">Luba-Katanga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="97"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>Fijian</source>
       <translation>Fiyiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="113"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Hungarian</source>
       <translation>Húngaro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="99"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>French</source>
       <translation>Francés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="84"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>German</source>
       <translation>Alemán</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Mongolian</source>
       <translation>Mongol</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="108"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hebrew</source>
       <translation>Hebreo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="115"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Herero</source>
       <translation type="unfinished">Herero</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Luxembourgish</source>
       <translation>Luxemburgués</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
       <translation type="unfinished">Kanuri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Kazakh</source>
       <translation>Cazaco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kikuyu</source>
       <translation type="unfinished">Kikuyu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Korean</source>
       <translation>Coreano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Navajo</source>
       <translation type="unfinished">Navajo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
       <translation type="unfinished">Ndonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Nepali</source>
       <translation>Nepalés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Ojibwa</source>
       <translation type="unfinished">Ojibwa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Pashto</source>
       <translation>Pastún</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Polish</source>
       <translation>Polaco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Samoan</source>
       <translation>Samoano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Occitan</source>
       <translation>Occitano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sindhi</source>
       <translation type="unfinished">Sindhi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Slovak</source>
       <translation>Slovaco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Somali</source>
       <translation>Somalí</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Telugu</source>
       <translation type="unfinished">Telugu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Tsonga</source>
       <translation type="unfinished">Tsonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Tswana</source>
       <translation type="unfinished">Tswana</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Uighur</source>
       <translation>Uigur</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Serbo-Croatian</source>
       <translation>Serbo-Croato</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Yoruba</source>
       <translation type="unfinished">Yoruba</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zhuang</source>
       <translation type="unfinished">Zhuang</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Romanian</source>
       <translation>Rumano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="117"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Indonesian</source>
       <translation>Indonés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Panjabi</source>
       <translation type="unfinished">Panjabi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Southern Sotho</source>
       <translation>Sotho sureño</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Corsican</source>
       <translation>Corso</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="90"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
       <translation type="unfinished">Esperanto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="94"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Persian</source>
       <translation>Farsí</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Slovenian</source>
       <translation>Sloveno</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="100"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Western Frisian</source>
       <translation>Frisón occidental</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Aragonese</source>
       <translation>Aragonés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Tahitian</source>
       <translation>Tahitiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Malagasy</source>
       <translation>Malgache</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="103"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Galician</source>
       <translation>Gallego</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Azerbaijani</source>
       <translation>Azerí</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Amharic</source>
       <translation>Amárico</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sanskrit</source>
       <translation>Sanscrito</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Japanese</source>
       <translation>Japonés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Ukrainian</source>
       <translation>Ucranio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
       <translation type="unfinished">Bambara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kalaallisut</source>
       <translation>Groenlandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bashkir</source>
       <translation type="unfinished">Bashkir</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Belarusian</source>
       <translation>Bielorruso</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Kashmiri</source>
       <translation>Cachemir</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Sardinian</source>
       <translation>Sardo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="110"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Hiri Motu</source>
       <translation type="unfinished">Hiri Motu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Quechua</source>
       <translation type="unfinished">Quechua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Bengali</source>
       <translation>Bengalí</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Javanese</source>
       <translation>Javanés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Avestan</source>
       <translation>Avéstico</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Kinyarwanda</source>
       <translation type="unfinished">Kinyarwanda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Afrikaans</source>
       <translation>Africanos</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
       <translation type="unfinished">Bislama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="114"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Armenian</source>
       <translation>Armenio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Norwegian Bokmal</source>
       <translation>Noruego bokmål</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="111"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Croatian</source>
       <translation>Croato</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Bosnian</source>
       <translation>Bosnio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="116"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingua</source>
       <translation type="unfinished">Interlingua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Interlingue</source>
       <translation>Interlingua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Catalan</source>
       <translation>Catalán</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Serbian</source>
       <translation>Serbio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Burmese</source>
       <translation>Birmano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Russian</source>
       <translation>Ruso</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Limburgish</source>
       <translation>Limburgés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Norwegian</source>
       <translation>Noruego</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Chechen</source>
       <translation>Chechén</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Chinese</source>
       <translation>Chino</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Chuvash</source>
       <translation>Chuvasio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
       <translation>Cingalés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="91"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Spanish</source>
       <translation>Español</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Cornish</source>
       <translation>Córnico</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tagalog</source>
       <translation type="unfinished">Tagalog</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Assamese</source>
       <translation>Asamés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Ossetian</source>
       <translation>Osseto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="92"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Estonian</source>
       <translation>Estonio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Swahili</source>
       <translation>Suajili</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Swedish</source>
       <translation>Sueco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Tibetan</source>
       <translation>Tibetano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Vietnamese</source>
       <translation>Vietnamita</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Macedonian</source>
       <translation>Macedonio</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Portuguese</source>
       <translation>Portugués</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Turkish</source>
       <translation>Turco</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Turkmen</source>
       <translation>Turcomano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="105"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Gujarati</source>
       <translation>Guyaratí</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Icelandic</source>
       <translation>Islandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Inuktitut</source>
       <translation type="unfinished">Inuktitut</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="89"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>English</source>
       <translation>Inglés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Georgian</source>
       <translation>Georgiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Church Slavic</source>
       <translation>Eslavo eclesiástico</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="98"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Faroese</source>
       <translation>Feroés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="96"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Finnish</source>
       <translation>Finlandés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Volapuk</source>
       <translation type="unfinished">Volapuk</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Walloon</source>
       <translation>Valón</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kwanyama</source>
       <translation type="unfinished">Kwanyama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Marshallese</source>
       <translation>Marshalés</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Northern Sami</source>
       <translation>Sami norteño</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="112"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Haitian</source>
       <translation>Criollo haitiano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Chamorro</source>
       <translation type="unfinished">Chamorro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>Norwegian Nynorsk</source>
       <translation>Noruego Nynorsk</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="104"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Guarani</source>
       <translation>Guaraní</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>South Ndebele</source>
       <translation>Ndebele sureño</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Chichewa</source>
       <translation type="unfinished">Chichewa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Lithuanian</source>
       <translation>Lituano</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Sichuan Yi</source>
       <translation type="unfinished">Sichuan Yi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tigrinya</source>
       <translation>Tigriña</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Yiddish</source>
       <translation>Yidis</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="373"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Traditional Chinese</source>
       <translation>Chino tradicional</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="374"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Simplified Chinese</source>
       <translation>Chino simplificado</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="375"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other</source>
       <translation>Yaqha</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="376"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>Yaqha chino simplificado arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="377"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>Yaqha chino tradicional arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="378"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
       <translation>Europeos orientales yaqha arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="379"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
       <translation>Europeos occidentales yaqha arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="380"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
       <translation>Yaqha ruso arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="381"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
       <translation>Yaqha japonés arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="382"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
       <translation>Yaqha baltico arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="383"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
       <translation>Yaqha griego arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="384"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
       <translation>Yaqha coreano arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="385"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
       <translation>Yaqha turco arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="386"/>
+      <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
       <translation>Yaqha tailandés arunaka</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="387"/>
+      <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
       <translation type="unfinished">Tamazight</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="303"/>
       <source>Lojban</source>
       <translation type="unfinished">Lojban</translation>
     </message>
@@ -2880,7 +2911,7 @@ Tamaño original</translation>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="328"/>
+      <location filename="../src/main.cc" line="360"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Mayjachat wayaqaxa pantjiwa. Qallta mayjachat apnaqañ muntati?
 
@@ -2915,19 +2946,19 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
       <translation type="unfinished">F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1494"/>
+      <location filename="../src/ui/mainwindow.cc" line="1495"/>
       <source>All</source>
       <translation>Taqpacha</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="197"/>
+      <location filename="../src/ui/mainwindow.cc" line="198"/>
       <source>Back</source>
       <translation>Nayriri
 
 Anterior</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1465"/>
+      <location filename="../src/ui/mainwindow.cc" line="1466"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>%1 aru-pirwanaka, %2 qillqatanaka, %3 arunaka</translation>
     </message>
@@ -2953,12 +2984,12 @@ Anterior</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="388"/>
+      <location filename="../src/ui/mainwindow.cc" line="389"/>
       <source>&amp;Quit</source>
       <translation>&amp;Mistuña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>Pantja</translation>
     </message>
@@ -2977,12 +3008,12 @@ Anterior</translation>
       <translation>&amp;Wak&apos;a ukan imantaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3391"/>
+      <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
       <translation>Janiw qillqa imañ atiykiti: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="242"/>
+      <location filename="../src/ui/mainwindow.cc" line="244"/>
       <source>Zoom In</source>
       <translation>Jach&apos;aptayaña</translation>
     </message>
@@ -3012,7 +3043,7 @@ Anterior</translation>
       <translation>&amp;Qillqat imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3373"/>
+      <location filename="../src/ui/mainwindow.cc" line="3353"/>
       <source>Save Article As</source>
       <translation>Kunjam qillqata imaña</translation>
     </message>
@@ -3042,22 +3073,22 @@ Anterior</translation>
       <translation>GoldenDict-ng &amp;web laphi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3059"/>
+      <location filename="../src/ui/mainwindow.cc" line="3039"/>
       <source>New Release Available</source>
       <translation>Machaq jakhuwi apnaqasmawa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up:</source>
       <translation>Thaqham:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="248"/>
+      <location filename="../src/ui/mainwindow.cc" line="250"/>
       <source>Zoom Out</source>
       <translation>Jisk&apos;aptayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="381"/>
+      <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
       <translation>&amp;Nayrankir wintanax uñachayaña</translation>
     </message>
@@ -3067,35 +3098,35 @@ Anterior</translation>
       <translation>GoldenDict-ng ukxata</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3065"/>
+      <location filename="../src/ui/mainwindow.cc" line="3045"/>
       <source>Download</source>
       <translation>Apaqaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3270"/>
+      <location filename="../src/ui/mainwindow.cc" line="3250"/>
       <source>Page Setup</source>
       <translation>Laphi askichaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="304"/>
-      <location filename="../src/ui/mainwindow.cc" line="1476"/>
+      <location filename="../src/ui/mainwindow.cc" line="306"/>
+      <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up in:</source>
       <translation>Kawkins thaqhaña:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="252"/>
+      <location filename="../src/ui/mainwindow.cc" line="254"/>
       <source>Normal Size</source>
       <translation>Qawqhch&apos;akansa ukhama</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2908"/>
+      <location filename="../src/ui/mainwindow.cc" line="2888"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>Pantjiw teclas jank&apos;aki uñjañataki.&lt;br&gt;Uñjam XServer naqañapaw RECORD.&lt;br&gt;
 Se se ha podido iniciar la monitorización de teclas de acceso rápido.&lt;br&gt;
 Asegúrese de que su servidor X tiene activada la extensión RECORD.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3040"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>Machaq jakhuwi &lt;b&gt;%1&lt;/b&gt; GoldenDict ukata utjxiwa.&lt;br&gt;
 &lt;b&gt;Apaqaña&lt;/b&gt; ukjar klik luram apaqañataki.&lt;br&gt;&lt;br&gt;
@@ -3118,7 +3149,7 @@ Pulse en &lt;b&gt;Apaqaña&lt;/b&gt; para ir a la página de descarga.</translat
       <translation>Ullaskiwa...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1662"/>
+      <location filename="../src/ui/mainwindow.cc" line="1666"/>
       <source>(untitled)</source>
       <translation>(jan sutini)</translation>
     </message>
@@ -3134,7 +3165,7 @@ Pulse en &lt;b&gt;Apaqaña&lt;/b&gt; para ir a la página de descarga.</translat
       <translation>¡Aski jutawi!</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="230"/>
+      <location filename="../src/ui/mainwindow.cc" line="231"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Aru arst&apos;aña (Alt+S)
 
@@ -3148,24 +3179,24 @@ Pronunciar palabra (Alt+S)</translation>
 Guardar artículo</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3066"/>
+      <location filename="../src/ui/mainwindow.cc" line="3046"/>
       <source>Skip This Release</source>
       <translation>Aka version thuqukipaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="199"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Forward</source>
       <translation>Jutiri
 
 Posterior</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3292"/>
+      <location filename="../src/ui/mainwindow.cc" line="3272"/>
       <source>Print Article</source>
       <translation>Laphin qillqata liq&apos;suña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3271"/>
+      <location filename="../src/ui/mainwindow.cc" line="3251"/>
       <source>No printer is available. Please install one first.</source>
       <translation>Janiw liq&apos;suri utjkiti. Amp suma mayampi ucham.
 
@@ -3193,37 +3224,37 @@ instale una primero.</translation>
       <translation>Ja&amp;ch&apos;a/Jisk&apos;aptayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="367"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Zoom In</source>
       <translation>Arunak jach&apos;aptaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="371"/>
+      <location filename="../src/ui/mainwindow.cc" line="372"/>
       <source>Words Zoom Out</source>
       <translation>Arunak jisk&apos;aptaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="373"/>
+      <location filename="../src/ui/mainwindow.cc" line="374"/>
       <source>Words Normal Size</source>
       <translation>Arunaka qawqhch&apos;akansa ukhamraki</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="420"/>
+      <location filename="../src/ui/mainwindow.cc" line="421"/>
       <source>Close current tab</source>
       <translation>Jichha phichhu ist&apos;antaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="428"/>
+      <location filename="../src/ui/mainwindow.cc" line="429"/>
       <source>Close all tabs</source>
       <translation>Taqi phichhu jist&apos;antaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="435"/>
+      <location filename="../src/ui/mainwindow.cc" line="436"/>
       <source>Close all tabs except current</source>
       <translation>Taqi phichhu jist&apos;antaña, jichhakis ukax janiwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="410"/>
+      <location filename="../src/ui/mainwindow.cc" line="411"/>
       <source>Opened tabs</source>
       <translation>Phichhunaka jist&apos;arata</translation>
     </message>
@@ -3245,12 +3276,12 @@ Pestaña nueva</translation>
       <translation>&amp;Mayjachañatak q&apos;ipi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>&amp;Menubar</source>
       <translation>&amp;Menú uka wak&apos;a</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="342"/>
+      <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>Aka aru-pirwanakan jikita:</translation>
     </message>
@@ -3259,12 +3290,12 @@ Pestaña nueva</translation>
       <translation type="unfinished">Tracking Clipboard</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="455"/>
+      <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
       <translation>Munat arunakar taqpach phichhunaka yapaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1012"/>
+      <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>Aru-pirwanakan qillqat thaqhañataki. Comodines &apos;*&apos;, &apos;?&apos; ukhamaraki chimpunaka
@@ -3274,42 +3305,42 @@ Buscar texto en los diccionarios. Puede utilizar los comodines &apos;*&apos; y &
 los símbolos &apos;[...]&apos;. Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos; y &apos;]&apos;, utilice &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos; o &apos;\]&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1605"/>
+      <location filename="../src/ui/mainwindow.cc" line="1609"/>
       <source>Open Tabs List</source>
       <translation>Tanta phichhunak jist&apos;araña
 
 Abrir lista de pestañas</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1862"/>
-      <location filename="../src/ui/mainwindow.cc" line="1941"/>
-      <location filename="../src/ui/mainwindow.cc" line="4473"/>
-      <location filename="../src/ui/mainwindow.cc" line="4501"/>
-      <location filename="../src/ui/mainwindow.cc" line="4537"/>
+      <location filename="../src/ui/mainwindow.cc" line="1866"/>
+      <location filename="../src/ui/mainwindow.cc" line="1944"/>
+      <location filename="../src/ui/mainwindow.cc" line="4457"/>
+      <location filename="../src/ui/mainwindow.cc" line="4485"/>
+      <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
       <translation>Munat arunakat jichha phichhu chhaqtayaña
 
 Eliminar la pestaña actual de favoritos</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1893"/>
+      <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
       <translation type="unfinished">%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3170"/>
+      <location filename="../src/ui/mainwindow.cc" line="3150"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>Menú wak&apos;xa imantasiwa. Limt&apos;am %1 wasitampi uñachayañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3171"/>
+      <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
       <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3762"/>
-      <location filename="../src/ui/mainwindow.cc" line="3774"/>
+      <location filename="../src/ui/mainwindow.cc" line="3744"/>
+      <location filename="../src/ui/mainwindow.cc" line="3756"/>
       <source>&amp;Show</source>
       <translation>&amp;Uñachayaña</translation>
     </message>
@@ -3319,32 +3350,32 @@ Eliminar la pestaña actual de favoritos</translation>
       <translation>&amp;Anqar apsuña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3758"/>
-      <location filename="../src/ui/mainwindow.cc" line="3770"/>
+      <location filename="../src/ui/mainwindow.cc" line="3740"/>
+      <location filename="../src/ui/mainwindow.cc" line="3752"/>
       <source>&amp;Hide</source>
       <translation>I&amp;mantaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3816"/>
+      <location filename="../src/ui/mainwindow.cc" line="3798"/>
       <source>Export history to file</source>
       <translation>Thaqhat arunak wayaqar imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3818"/>
-      <location filename="../src/ui/mainwindow.cc" line="3880"/>
-      <location filename="../src/ui/mainwindow.cc" line="3994"/>
+      <location filename="../src/ui/mainwindow.cc" line="3800"/>
+      <location filename="../src/ui/mainwindow.cc" line="3862"/>
+      <location filename="../src/ui/mainwindow.cc" line="3976"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Qillqa wayaqanaka (*.txt);;Taqpacha wayaqanaka (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3857"/>
+      <location filename="../src/ui/mainwindow.cc" line="3839"/>
       <source>History export complete</source>
       <translation>Wayaqan imantañaxa tukuyataxiwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
-      <location filename="../src/ui/mainwindow.cc" line="3975"/>
-      <location filename="../src/ui/mainwindow.cc" line="4024"/>
+      <location filename="../src/ui/mainwindow.cc" line="3842"/>
+      <location filename="../src/ui/mainwindow.cc" line="3957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4006"/>
       <source>Export error: </source>
       <translation>Imañ ukjax pantjasiwa: </translation>
     </message>
@@ -3359,96 +3390,96 @@ Eliminar la pestaña actual de favoritos</translation>
       <translation>A&amp;nqaxat apaniña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3878"/>
+      <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <source>Import history from file</source>
       <translation>Thaqhat arunak wayaqat apaniña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3927"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: invalid data in file</source>
       <translation>Anqat apanisinxa pantjasiwa: wayaqat jan wali yatiyawinaka.
 
 Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3931"/>
+      <location filename="../src/ui/mainwindow.cc" line="3913"/>
       <source>History import complete</source>
       <translation>Anqat apanitaxa tukuyataxiwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3934"/>
-      <location filename="../src/ui/mainwindow.cc" line="4076"/>
+      <location filename="../src/ui/mainwindow.cc" line="3916"/>
+      <location filename="../src/ui/mainwindow.cc" line="4058"/>
       <source>Import error: </source>
       <translation>Anqat apanisinxa pantjasiwa: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3951"/>
+      <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
       <translation>Munat arunak wayaqar apsuña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3953"/>
+      <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML wayaqanaka (*.txt);;Taqpacha wayaqanaka (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3972"/>
-      <location filename="../src/ui/mainwindow.cc" line="4021"/>
+      <location filename="../src/ui/mainwindow.cc" line="3954"/>
+      <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
       <translation>Munata arunak imañxa tukuyatawa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3992"/>
+      <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
       <translation>Munat arunak wayaqar apsuña, ukja q&apos;ala qillqjama</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4041"/>
+      <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
       <translation>Munat arunak wayaqat apaniña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4043"/>
+      <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4072"/>
+      <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
       <translation>Munat arunak apaniñxa tukuyatawa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4078"/>
+      <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
       <translation>Yatiyawinak ullasiñxa pantjasiwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4288"/>
+      <location filename="../src/ui/mainwindow.cc" line="4270"/>
       <source>Dictionary info</source>
       <translation>Aru-pirwat yatiyawi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4292"/>
+      <location filename="../src/ui/mainwindow.cc" line="4274"/>
       <source>Dictionary headwords</source>
       <translation>Aru-pirwat p&apos;iqi arunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4294"/>
+      <location filename="../src/ui/mainwindow.cc" line="4276"/>
       <source>Open dictionary folder</source>
       <translation>Aru-pirwa ukat q&apos;ipi jist&apos;araña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4300"/>
+      <location filename="../src/ui/mainwindow.cc" line="4282"/>
       <source>Edit dictionary</source>
       <translation>Aru-pirwa askichaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4444"/>
+      <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
       <translation>Taqpach qillqat thaqhawix ullasiskiwa: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4486"/>
+      <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Munat arunakatxa &quot;%1&quot; chhaqtayañ muntati?
 
@@ -3502,7 +3533,7 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
       <location filename="../src/ui/mainwindow.ui" line="520"/>
-      <location filename="../src/ui/mainwindow.cc" line="296"/>
+      <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Menu ukan wutuna</translation>
     </message>
@@ -3553,10 +3584,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
-      <location filename="../src/ui/mainwindow.cc" line="267"/>
-      <location filename="../src/ui/mainwindow.cc" line="1867"/>
-      <location filename="../src/ui/mainwindow.cc" line="1946"/>
-      <location filename="../src/ui/mainwindow.cc" line="4493"/>
+      <location filename="../src/ui/mainwindow.cc" line="269"/>
+      <location filename="../src/ui/mainwindow.cc" line="1871"/>
+      <location filename="../src/ui/mainwindow.cc" line="1949"/>
+      <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
       <translation>Jichha phichhu ukax munata arunakar yapaña
 
@@ -3573,42 +3604,47 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>&amp;Tanta arunak anqar apsuña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="118"/>
+      <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Aru-pirwanak wak&apos;an &amp;sutinak uñachayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>Irnaqañatak &amp;wak&apos;an jisk&apos;a saltanak uñachayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="194"/>
+      <location filename="../src/ui/mainwindow.cc" line="195"/>
       <source>&amp;Navigation</source>
       <translation>Tuyu&amp;wi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="222"/>
+      <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
       <translation type="unfinished">Enable Scanning</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3368"/>
+      <location filename="../src/ui/mainwindow.cc" line="3348"/>
       <source>Article, Complete (*.html)</source>
       <translation>Qillqata, Taqi kunaniwa (*.hmtl)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3369"/>
+      <location filename="../src/ui/mainwindow.cc" line="3349"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>Qillqata, HTML ukampiki (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3455"/>
+      <location filename="../src/ui/mainwindow.cc" line="3435"/>
       <source>Saving article...</source>
       <translation>Qillqatax imasiskiwa...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3517"/>
+      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="3499"/>
       <source>The main window is set to be always on top.</source>
       <translation>Nayrankir wintanax uñjkayapuniñapawa.</translation>
     </message>
@@ -3618,8 +3654,8 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>T&amp;haqhat arunak kaja</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="781"/>
-      <location filename="../src/ui/mainwindow.cc" line="864"/>
+      <location filename="../src/ui/mainwindow.cc" line="780"/>
+      <location filename="../src/ui/mainwindow.cc" line="863"/>
       <source>Accessibility API is not enabled</source>
       <translation>API jaqiwisanakataki janiw naktatakiti</translation>
     </message>
@@ -3627,12 +3663,12 @@ Añadir la pestaña actual a favoritos</translation>
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="628"/>
+      <location filename="../src/dict/mdx.cc" line="625"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>Wayaqa aru-pirwa pantjatawa</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="639"/>
+      <location filename="../src/dict/mdx.cc" line="636"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>Qillqata ullasinxa pantjiwa akat %1, kunalayku: %2</translation>
     </message>
@@ -3783,22 +3819,22 @@ Añadir la pestaña actual a favoritos</translation>
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="521"/>
+      <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
       <translation>ALT</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="193"/>
+      <location filename="../src/ui/preferences.ui" line="85"/>
       <source>Start to system tray</source>
       <translation>Wak&apos;a sistema ukan qalltaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="578"/>
+      <location filename="../src/ui/preferences.ui" line="552"/>
       <source>Left Shift only</source>
       <translation>Chiqaki JACH&apos;A QILLQA</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="531"/>
+      <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>CTRL</translation>
     </message>
@@ -3807,49 +3843,49 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>ch&apos;ipxtanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="591"/>
+      <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
       <translation>Windows jan ukjax Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="171"/>
+      <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Enable system tray icon</source>
       <translation>Wak&apos;a sistema ukanxa salta naktayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="930"/>
-      <location filename="../src/ui/preferences.ui" line="1010"/>
+      <location filename="../src/ui/preferences.ui" line="904"/>
+      <location filename="../src/ui/preferences.ui" line="984"/>
       <source>Host:</source>
       <translation>Anfitrión:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="940"/>
-      <location filename="../src/ui/preferences.ui" line="1027"/>
+      <location filename="../src/ui/preferences.ui" line="914"/>
+      <location filename="../src/ui/preferences.ui" line="1001"/>
       <source>Port:</source>
       <translation>Punku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="551"/>
+      <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
       <translation>JACH&apos;A QILLQA</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="917"/>
+      <location filename="../src/ui/preferences.ui" line="891"/>
       <source>Type:</source>
       <translation>Kasta:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="961"/>
+      <location filename="../src/ui/preferences.ui" line="935"/>
       <source>User:</source>
       <translation>Apnaqiri:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="397"/>
+      <location filename="../src/ui/preferences.ui" line="371"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Uñstir wintanampi ullaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="313"/>
+      <location filename="../src/ui/preferences.ui" line="295"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3860,17 +3896,17 @@ Akax naktayatakis ukjaxa, machaq phichhu jist&apos;araskis ukjaxa,
 jichha phicchun qhiparasi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="880"/>
+      <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
       <translation>Servidor proxy apnaqaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="706"/>
+      <location filename="../src/ui/preferences.ui" line="680"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Aka teclampi portapapeles ukat aru jaqukipañatakiwa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="588"/>
+      <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Windows jan ukjax Meta tecla</translation>
     </message>
@@ -3879,32 +3915,32 @@ jichha phicchun qhiparasi.</translation>
       <translation>Taqpach ajllit teclanaka limt&apos;atakis ukjakiw uñstir wintanak uñachayi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="763"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Nayrir wintanan justupak arunak arst&apos;awi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="382"/>
+      <location filename="../src/ui/preferences.ui" line="191"/>
       <source>Start with system</source>
       <translation>Sistemampi qalltaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="538"/>
+      <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
       <translation>Chiqaki ALT</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
       <translation>Phichhutjam phicchutjam tuyuri</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="508"/>
+      <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
       <translation>Kupiki JACH&apos;A QILLQA</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="200"/>
+      <location filename="../src/ui/preferences.ui" line="92"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Cerrar en la bandeja del sistema.
@@ -3913,12 +3949,12 @@ Akamp naktayataxa, nayrir wintan jist&apos;antasinixa, wintanax imantasiniwa.
 Aplicación ukatxa janiw mistkaniti.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="777"/>
+      <location filename="../src/ui/preferences.ui" line="751"/>
       <source>&amp;Audio</source>
       <translation>&amp;Ist&apos;añataki</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="876"/>
+      <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Ak naktayaña, jumati servidor proxy apnaqañ
@@ -3928,47 +3964,47 @@ Activar si desea utilizar un servidor proxy
 para todos los accesos a la red del programa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui" line="201"/>
       <source>Interface language:</source>
       <translation>Interfaz aru:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="498"/>
+      <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
       <translation>Chiqaki CTRL</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="318"/>
+      <location filename="../src/ui/preferences.ui" line="300"/>
       <source>Open new tabs in background</source>
       <translation>Manqhajanx machaq phichhunak jist&apos;araña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="870"/>
+      <location filename="../src/ui/preferences.ui" line="844"/>
       <source>&amp;Network</source>
       <translation>&amp;Llika</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="568"/>
+      <location filename="../src/ui/preferences.ui" line="542"/>
       <source>Right Ctrl only</source>
       <translation>Kupiki CTRL</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="114"/>
+      <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
       <translation type="unfinished">Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="511"/>
+      <location filename="../src/ui/preferences.ui" line="485"/>
       <source>Right Shift</source>
       <translation>Kupi JACH&apos;A QILLQA</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="581"/>
+      <location filename="../src/ui/preferences.ui" line="555"/>
       <source>Left Shift</source>
       <translation>Chiqa JACH&apos;A QILLQA</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="446"/>
+      <location filename="../src/ui/preferences.ui" line="420"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Mostrar la ventana emergente sólo si todas las teclas 
@@ -3982,7 +4018,7 @@ uñstiri wintanaxa uñstaraki, ajllit aru mayjt&apos;i ukja.</translation>
       <translation>Ajan kasta:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Uñstiri wintanan justupak arunak arst&apos;awi</translation>
     </message>
@@ -3991,17 +4027,17 @@ uñstiri wintanaxa uñstaraki, ajllit aru mayjt&apos;i ukja.</translation>
       <translation>Mä uñstiri wintananxa escaneo uk naktayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="330"/>
+      <location filename="../src/ui/preferences.ui" line="312"/>
       <source>Open new tabs after the current one</source>
       <translation>Jiccha phichhu ukjaruxa, machaq phichhunak jist&apos;araña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="620"/>
+      <location filename="../src/ui/preferences.cc" line="624"/>
       <source>Restart the program to apply the language change.</source>
       <translation>Mayat programa aktayan sun apñaqañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="518"/>
+      <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>ALT tecla</translation>
     </message>
@@ -4024,12 +4060,12 @@ se puede prenderla o apagarla desde la ventana principal o
 el icono en la bandeja del sistema.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1228"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Check for new program releases periodically</source>
       <translation>Sapa kuti uñakipaña machaq jakhu programa utjiti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="325"/>
+      <location filename="../src/ui/preferences.ui" line="307"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -4039,18 +4075,18 @@ Phantat layku, mach&apos;aq phicchunaka tukuwin uskutawa listata.
 Akampi machaq phichhunakawa phichhu chiqan ist&apos;aratatawal.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="204"/>
+      <location filename="../src/ui/preferences.ui" line="96"/>
       <source>Close to system tray</source>
       <translation>Wak&apos;a sistema ukar jist&apos;antaña</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="61"/>
+      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>System default</source>
       <translation>Sistemaw phanti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="167"/>
+      <location filename="../src/ui/preferences.ui" line="59"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Activar icono de bandeja del sistema
@@ -4059,7 +4095,7 @@ Naktatakis ukjaxa wak&apos;a sistema ukan mä salta uñsti, ukax nayrir wintana
  jist&apos;arañatakiw apnaqasispawa, ukjmaraki yaqha lurawinak lurasispawa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1221"/>
+      <location filename="../src/ui/preferences.ui" line="1195"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -4071,17 +4107,17 @@ Programa ist&apos;arasisa GoldenDict yantam apaqañataki.
 Apnaqañatakispa apaqanataki yatiyatam.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="373"/>
+      <location filename="../src/ui/preferences.ui" line="182"/>
       <source>Startup</source>
       <translation>Qalltawi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="971"/>
+      <location filename="../src/ui/preferences.ui" line="945"/>
       <source>Password:</source>
       <translation>Mantawi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="111"/>
+      <location filename="../src/ui/preferences.cc" line="115"/>
       <source>Default</source>
       <translation>Phanta layku</translation>
     </message>
@@ -4101,27 +4137,27 @@ Jani pantjataniñatakixa mä pachani ukjakiw teclanaka limt&apos;aña,
 qillqata ajllitakixis ukja.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="619"/>
+      <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>Aru turkawi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="528"/>
+      <location filename="../src/ui/preferences.ui" line="502"/>
       <source>Ctrl key</source>
       <translation>CTRL tecla</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="679"/>
+      <location filename="../src/ui/preferences.ui" line="653"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Aka jank&apos;a teclanakampi apnaqam, nayrir wintana uñachayañataki jan ukjax imantañataki:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="541"/>
+      <location filename="../src/ui/preferences.ui" line="515"/>
       <source>Left Alt</source>
       <translation>Chiqa ALT</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="558"/>
+      <location filename="../src/ui/preferences.ui" line="532"/>
       <source>Right Alt only</source>
       <translation>Kupiki JACH&apos;A QILLQA</translation>
     </message>
@@ -4135,37 +4171,37 @@ qillqata ajllitakixis ukja.</translation>
       <translation>Teclanaka ukat apnaqatawa, mankhata</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="501"/>
+      <location filename="../src/ui/preferences.ui" line="475"/>
       <source>Left Ctrl</source>
       <translation>Chiqa CTRL</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="561"/>
+      <location filename="../src/ui/preferences.ui" line="535"/>
       <source>Right Alt</source>
       <translation>ALT qhiqata</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="749"/>
+      <location filename="../src/ui/preferences.ui" line="723"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Kunayman programampi jank&apos;a teclanakax apnaqasi, GoldenDict apnaqasiski ukja.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="571"/>
+      <location filename="../src/ui/preferences.ui" line="545"/>
       <source>Right Ctrl</source>
       <translation>Kupi CTRL</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="673"/>
+      <location filename="../src/ui/preferences.ui" line="647"/>
       <source>Hotkeys</source>
       <translation>Jank&apos;a teclanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="407"/>
+      <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
       <translation>Mä uñstiri wintananxa escaneo uk naktayaña, qalltkis ukja</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="189"/>
+      <location filename="../src/ui/preferences.ui" line="81"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Iniciar en bandeja del sistema
@@ -4174,17 +4210,17 @@ Ak naktataxa, aplicación ukaxa wak&apos;a sistema ukan qallti,
 nayrir wintanap jani uñachasa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="548"/>
+      <location filename="../src/ui/preferences.ui" line="522"/>
       <source>Shift key</source>
       <translation>JACH&apos;A QILLQA tecla</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="379"/>
+      <location filename="../src/ui/preferences.ui" line="188"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>GoldenDict-ng sapitakiw qaltani .</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="403"/>
+      <location filename="../src/ui/preferences.ui" line="377"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Habilitar escaneo en una ventana emergente cuando inicia.
@@ -4204,12 +4240,12 @@ arunak ajllkis ukjanaka, akamp naktatakisa tecalanakaxa
 lim&apos;tasispawa arunak ajllitakis ukjaru.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="642"/>
+      <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Ajllit qillqata mayjt&apos;yasi GoldenDict uka wintana ukjax, janiw uñstir wintana uñachaykiti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="645"/>
+      <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>GoldenDict-ng ukan ajllit qillqataxa, ukhamaraki mayjt&apos;ayat portapapeles, janiw yäqañakiti</translation>
     </message>
@@ -4226,7 +4262,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Nota: Aparece que la extensión RECORD está rota en tu instalación de X.Org XServer. Las teclas de acceso rápido de GoldenDict probablemente no funcionan. Este problema puede ser arreglado en el servidor mismo. Por favor consulte al &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;reportaje de bug&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; y se puede entregar comentarios allí.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="812"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Utilizar el audio interno:
 
@@ -4235,22 +4271,22 @@ Sistema ist&apos;añataki ukampi, ist&apos;añataki wayaqanak arst&apos;ayaña.
 Reproducir archivos de audio con el audio por defecto del sistema.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
       <translation>Manqhax ist&apos;awi apnaqaña:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="822"/>
+      <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
       <translation>Arst&apos;ayiri ist&apos;añataki ajllim</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="842"/>
+      <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
       <translation>Ist&apos;añataki arst&apos;ayañatakixa, comando uk qillqam</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1145"/>
+      <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -4263,37 +4299,37 @@ web laphi jutirinaka. Janiti mayninak web laphi lurkan ukjax,
 aka jiwt&apos;ayañ yant&apos;am.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1150"/>
+      <location filename="../src/ui/preferences.ui" line="1124"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Yaqha web laphinakat janiw apaqañakiti (yatiyanaka imantañataki)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="783"/>
+      <location filename="../src/ui/preferences.ui" line="757"/>
       <source>Pronunciation</source>
       <translation>Arstawi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>Playback</source>
       <translation>Arst&apos;awi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Use external program:</source>
       <translation>Anqat programa apnaqaña:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="224"/>
+      <location filename="../src/ui/preferences.ui" line="282"/>
       <source>Double-click translates the word clicked</source>
       <translation>Pä klik aru jaqukipañataki</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="829"/>
+      <location filename="../src/ui/preferences.ui" line="803"/>
       <source>Use any external program to play audio files</source>
       <translation>Taxpach wakist&apos;awi arunakax apnakaskaniwa </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="280"/>
+      <location filename="../src/ui/preferences.ui" line="106"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>La tecla ESC oculta la ventana principal.
@@ -4302,7 +4338,7 @@ Aktixa naktayataxa, ESC tiklaxa nayrankir wintana imantani.
 Janitix naktayatanixa, ESC tiklaxa jaquqipayiri ukaruw ixtayi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="284"/>
+      <location filename="../src/ui/preferences.ui" line="110"/>
       <source>ESC key hides main window</source>
       <translation>Tecla ESC ukax nayrankir wintan imanti</translation>
     </message>
@@ -4323,14 +4359,14 @@ El plugin debe estar instalado para que funcione esta opción.</translation>
       <translation>Complementos de web uk naktayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="337"/>
+      <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Ocultar pestaña cuando sólo hay una.
 
 Ak ajlliña wak&apos;a phichhunak jan uñjañataki, utjkis mä phichhuki ukja.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="340"/>
+      <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>Mä phichhukisa ukjaxa imantaña</translation>
     </message>
@@ -4339,31 +4375,31 @@ Ak ajlliña wak&apos;a phichhunak jan uñjañataki, utjkis mä phichhuki ukja.</
       <translation>Yanapañataki aru</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="239"/>
+      <location filename="../src/ui/preferences.ui" line="141"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Límite de diccionarios para el menú contextual:
 
 Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="242"/>
+      <location filename="../src/ui/preferences.ui" line="144"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Qawqha aru-pirwanakas menú ukan uñachayi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="414"/>
+      <location filename="../src/ui/preferences.ui" line="388"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Enviar palabra traducida a la ventana principal
 
 Jaqukipat aru uk nayrankiri wintanaru apayaña, uñstir wintanar uka lanti.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="417"/>
+      <location filename="../src/ui/preferences.ui" line="391"/>
       <source>Send translated word to main window</source>
       <translation>Nayrankir wintana ukar aru jaquikipata apayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="632"/>
+      <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Mostrar el icono del escaneo cuando una palabra es seleccionada.
 
@@ -4371,7 +4407,7 @@ GoldenDict ukan thaqhañatakiwa salta uñachaña.
 Uñstir wintana uñachañatakixa salta ukan mä klik luram. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="291"/>
+      <location filename="../src/ui/preferences.ui" line="117"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4382,142 +4418,142 @@ scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="297"/>
+      <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
       <translation type="unfinished">Automatically scroll to target article</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="73"/>
+      <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
       <translation type="unfinished">Dictionary Font: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="86"/>
+      <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
       <translation type="unfinished">set the fallback font family for dictionary</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
       <translation type="unfinished">Article Display style:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="145"/>
+      <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
       <translation type="unfinished">Turn the UI to dark.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="148"/>
+      <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
       <translation type="unfinished">Dark Mode</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="155"/>
+      <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
       <translation type="unfinished">Turn the article display style to dark.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="158"/>
+      <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
       <translation type="unfinished">Dark Reader Mode</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="347"/>
+      <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
       <translation type="unfinished">MRU order: Most recently used order.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="427"/>
+      <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
       <translation type="unfinished">Track Clipboard change</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="434"/>
+      <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
       <translation type="unfinished">Track Selection change</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="450"/>
+      <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="635"/>
+      <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
       <translation>Escaneo ukan saltapa uñachaña, mä aru ajllitakis ukja</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="892"/>
+      <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
       <translation>Proxy del sistema</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="899"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
       <translation>Proxy personalizado</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="909"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
       <translation>Ajlliñanaka, kunjams munta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="996"/>
+      <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
       <translation type="unfinished">Anki Connect</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1017"/>
+      <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
       <translation type="unfinished">http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1061"/>
+      <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
       <translation type="unfinished">Deck:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1071"/>
+      <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
       <translation type="unfinished">Model:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1098"/>
+      <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
       <translation type="unfinished">Word</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1105"/>
+      <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
       <translation type="unfinished">Vocabulary field...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1112"/>
+      <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
       <translation type="unfinished">Text</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
       <translation type="unfinished">Definition field...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1126"/>
+      <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
       <translation type="unfinished">Sentence</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1133"/>
+      <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
       <translation type="unfinished">Sentence field (can be empty)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1157"/>
+      <location filename="../src/ui/preferences.ui" line="1131"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Impedir la identificación de GoldenDict a partir de las cabeceras HTTP.
@@ -4526,17 +4562,17 @@ Yaqhiq web laphi GoldenDict uk uñt&apos;apxi HTTP p&apos;iqi laphi kuampi
 mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1161"/>
+      <location filename="../src/ui/preferences.ui" line="1135"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>GoldenDict-ng janiw uskañakiti HTTP p&apos;iqi tuqi laphina</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1170"/>
+      <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
       <translation>Llika cachep ukax kawkch&apos;akamasa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1177"/>
+      <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4545,64 +4581,64 @@ If set to 0 the network disk cache will be disabled.</source>
 0 ukaninixa, cache de red ukaxa jiwt&apos;ayataniwa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1182"/>
+      <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
       <translation type="unfinished"> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Programa ukat mistusinxa, GoldenDict
 ukax llikat cachep chhaqtayi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1199"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
       <translation>Mistjani ukjax llika cache uk chhaqtayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1253"/>
+      <location filename="../src/ui/preferences.ui" line="1227"/>
       <source>Full-text search</source>
       <translation>Taqi qillqan thaqhaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1259"/>
+      <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
       <translation>Taqpach qillqan thaqhawi uk lurayakiña kunataki:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1357"/>
+      <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Aru-pirwanakanxa janiw thaqhkiti, kunati utjki uka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1374"/>
+      <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
       <translation>qillqatanaka (0 ukax janix tukuwinikiti)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1417"/>
+      <location filename="../src/ui/preferences.ui" line="1391"/>
       <source>Ad&amp;vanced</source>
       <translation>Nayrankaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1715"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1744"/>
+      <location filename="../src/ui/preferences.ui" line="1718"/>
       <source>Session collapse</source>
       <translation type="unfinished">Session collapse</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1765"/>
+      <location filename="../src/ui/preferences.ui" line="1739"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation type="unfinished">When using clipboard,strip everything after newline</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1772"/>
+      <location filename="../src/ui/preferences.ui" line="1746"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
@@ -4644,12 +4680,12 @@ de ventanas.</translation>
       <translation>Gerente de ventana ukan amuyupa jan uñachayaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui" line="1524"/>
       <source>Favorites</source>
       <translation>Munat arunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1532"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Guardar cada N minutos.
 
@@ -4657,82 +4693,82 @@ Qawqha pachas munat arunaka imañataki.
 0 ukanixa, munat arunakaxa mistjan ukjaw imasini.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1584"/>
+      <location filename="../src/ui/preferences.ui" line="1558"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Confirmar cuando borra items.
 
 Aka naktayaña jiskht&apos;awitaki janir chhaqtayañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1587"/>
+      <location filename="../src/ui/preferences.ui" line="1561"/>
       <source>Confirmation for items deletion</source>
       <translation>Jiskt&apos;awi janir chhaqtayañataki</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1658"/>
+      <location filename="../src/ui/preferences.ui" line="1632"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Ak naktayaña jach&apos;a mantir qillqat jan yäqañataki achakut jutki
 uka ajlliwi, portapapeles jan ukjax siqi comando</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1662"/>
+      <location filename="../src/ui/preferences.ui" line="1636"/>
       <source>Ignore input phrases longer than</source>
       <translation>Janiw apnaqaña qillqata mantiri juk&apos;amp jach&apos;a ukata</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Qillqatanaka akat juk&apos;amp jach&apos;anixa, janiw yäqataniti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1692"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Ignorar marcas diacríticas en búsquedas.
 
 Ak naktayaña qillqat chimpunaka (´`¨˜¯) jan yaqaña thaqhkis ukja.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1721"/>
+      <location filename="../src/ui/preferences.ui" line="1695"/>
       <source>Ignore diacritics while searching</source>
       <translation>Qillqat chimpunaka (´`¨˜¯) jan yaqaña thaqhkis ukja</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1708"/>
+      <location filename="../src/ui/preferences.ui" line="1682"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Desplegar partes opcionales.
 
 Aka naktayaña taqpach t&apos;aqanak janatatañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1711"/>
+      <location filename="../src/ui/preferences.ui" line="1685"/>
       <source>Expand optional &amp;parts</source>
       <translation>&amp;T&apos;aqanak janatataña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1648"/>
+      <location filename="../src/ui/preferences.ui" line="1622"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Colapsar artículos con más que N caracteres.
 
 Ak naktayam, jach&apos;a qillqatanaka justupaki suk&apos;asiñataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1651"/>
+      <location filename="../src/ui/preferences.ui" line="1625"/>
       <source>Collapse articles more than</source>
       <translation>Qillqatanak suk&apos;aña juk&apos;ampi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Juk&apos;amp jach&apos;a qillqatanakaxa suk&apos;ataniwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1618"/>
+      <location filename="../src/ui/preferences.ui" line="1592"/>
       <source>Ignore punctuation while searching</source>
       <translation type="unfinished">Ignore punctuation while searching</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1754"/>
+      <location filename="../src/ui/preferences.ui" line="1728"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Búsqueda extra con sinónimos.
@@ -4742,50 +4778,50 @@ Aka naktayaña juk&apos;amp thaqhañataki tanta kikpa amuyuninakampi (sinónimos
 Activar esta opción para realizar búsquedas adicionales con listas de sinónimos en diccionarios de StarDict, Babylon y GLS.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1758"/>
+      <location filename="../src/ui/preferences.ui" line="1732"/>
       <source>Extra search via synonyms</source>
       <translation>Juk&apos;amp thaqhañataki kikpa amuyuninakampi (sinónimos)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1641"/>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1615"/>
+      <location filename="../src/ui/preferences.ui" line="1659"/>
       <source>symbols</source>
       <translation>qillqanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="350"/>
+      <location filename="../src/ui/preferences.ui" line="332"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl+Tab phichhut phichhut sari MRU siqichawjama</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
       <translation type="unfinished">Babylon</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1425"/>
+      <location filename="../src/ui/preferences.ui" line="1399"/>
       <source>History</source>
       <translation>Thaqhat arunaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1431"/>
+      <location filename="../src/ui/preferences.ui" line="1405"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Almacenar historial.
 
 Tantan jaqukipat arunakaxa imañatakixa uk naktayaña.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1434"/>
+      <location filename="../src/ui/preferences.ui" line="1408"/>
       <source>Store &amp;history</source>
       <translation>&amp;Thaqhat arunak imaña</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1612"/>
+      <location filename="../src/ui/preferences.ui" line="1586"/>
       <source>Articles</source>
       <translation>Qillqatanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="214"/>
+      <location filename="../src/ui/preferences.ui" line="252"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Seleccionar palabra con un solo clic.
 
@@ -4793,29 +4829,29 @@ Mä klik ukampi arunaka ajlliñataki, aka naktayaña.
 Active esta opción para seleccionar palabras con un clic del ratón.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="217"/>
+      <location filename="../src/ui/preferences.ui" line="255"/>
       <source>Select word by single click</source>
       <translation>Aru ajlliña mä klik ukampi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="120"/>
+      <location filename="../src/ui/preferences.ui" line="354"/>
       <source>Add-on style:</source>
       <translation>Kasta yapt&apos;ata:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1449"/>
+      <location filename="../src/ui/preferences.ui" line="1423"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Tamaño máximo del historial:
 
 Jakhu qillqatanakata uskuña imañataki.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1452"/>
+      <location filename="../src/ui/preferences.ui" line="1426"/>
       <source>Maximum history size:</source>
       <translation>Thaqhat arunak qawqhch&apos;asa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1489"/>
+      <location filename="../src/ui/preferences.ui" line="1463"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Guardar cada N minutos.
 
@@ -4823,44 +4859,43 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
 0 ukanixa thaqhat arunakaxa imt&apos;asiniwa mistxani ukja.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1495"/>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1469"/>
+      <location filename="../src/ui/preferences.ui" line="1535"/>
       <source>Save every</source>
       <translation>Imaña sapa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1512"/>
-      <location filename="../src/ui/preferences.ui" line="1575"/>
+      <location filename="../src/ui/preferences.ui" line="1486"/>
+      <location filename="../src/ui/preferences.ui" line="1549"/>
       <source>minutes</source>
       <translation>k&apos;atanaka</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="60"/>
       <source>English</source>
       <translation type="unfinished">English</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="112"/>
+      <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
       <translation type="unfinished">Classic</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="113"/>
+      <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
       <translation type="unfinished">Modern</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
       <translation type="unfinished">Lingoes</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Larama</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="128"/>
+      <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
       <translation type="unfinished"> MB</translation>
     </message>
@@ -4951,7 +4986,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1698"/>
+      <location filename="../src/dict/dsl.cc" line="1691"/>
       <source>Article loading error</source>
       <translation>Qillqata (artículo) uñachasinxa pantjiwa</translation>
     </message>
@@ -4964,64 +4999,54 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
       <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="710"/>
-      <location filename="../src/dict/stardict.cc" line="1107"/>
+      <location filename="../src/dict/sdict.cc" line="685"/>
+      <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
       <translation>Qillqirini kamachi: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="726"/>
+      <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
       <translation>Jakhu uñjawi: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="157"/>
       <source>avformat_alloc_context() failed.</source>
       <translation>avformat_alloc_context() pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="165"/>
       <source>av_malloc() failed.</source>
       <translation>av_malloc() pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="174"/>
       <source>avio_alloc_context() failed.</source>
       <translation>avio_alloc_context() pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="191"/>
       <source>avformat_open_input() failed: %1.</source>
       <translation>avformat_open_input() pantjiwa: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="198"/>
       <source>avformat_find_stream_info() failed: %1.</source>
       <translation>avformat_find_stream_info() pantjiwa: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="213"/>
       <source>Could not find audio stream.</source>
       <translation>Flujo de audio ukaxa, janiw jikiskiti.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="220"/>
       <source>Codec [id: %1] not found.</source>
       <translation>Codec [id: %1] janiw jikiskiti.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="226"/>
       <source>avcodec_alloc_context3() failed.</source>
       <translation>avcodec_alloc_context3() pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="234"/>
       <source>avcodec_open2() failed: %1.</source>
       <translation>avcodec_open2() pantjawi: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="324"/>
       <source>Can not found default audio output device</source>
       <translation type="unfinished">Can not found default audio output device</translation>
     </message>
@@ -5058,35 +5083,34 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
       <translation>Pantja jan uñt&apos;ata.</translation>
     </message>
     <message>
-      <location filename="../src/ffmpegaudio.cc" line="343"/>
       <source>avcodec_alloc_frame() failed.</source>
       <translation>avcodec_alloc_frame() pantjiwa.</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1115"/>
+      <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
       <translation>Qillqiri: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1123"/>
+      <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
       <translation type="unfinished">E-mail: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="678"/>
+      <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
       <translation>Qillqa suti: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1131"/>
+      <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
       <translation>Web laphi: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1139"/>
+      <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
       <translation>Uru jakhu: %1%2</translation>
     </message>
@@ -5103,32 +5127,32 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
       <translation type="unfinished">Next Page</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="124"/>
+      <location filename="../src/main.cc" line="142"/>
       <source>A dictionary lookup program.</source>
       <translation type="unfinished">A dictionary lookup program.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="127"/>
+      <location filename="../src/main.cc" line="145"/>
       <source>Word or sentence to query.</source>
       <translation type="unfinished">Word or sentence to query.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="131"/>
+      <location filename="../src/main.cc" line="149"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="135"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Change the group of main window.</source>
       <translation type="unfinished">Change the group of main window.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="139"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Change the group of popup.</source>
       <translation type="unfinished">Change the group of popup.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="144"/>
+      <location filename="../src/main.cc" line="162"/>
       <source>Toggle scan popup.</source>
       <translation type="unfinished">Toggle scan popup.</translation>
     </message>
@@ -5136,7 +5160,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1019"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Aru-pirwan thaqhawi / susuña</translation>
     </message>
@@ -5145,7 +5169,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
       <translation>Jank&apos;ak thaqhawi</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1024"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
       <translation>Thaqhawi chhaqtayaña</translation>
     </message>
@@ -5153,22 +5177,22 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>ERROR: %1</source>
       <translation>PANTJATA: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2709"/>
+      <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>Resource saving error: </source>
       <translation>Yatiyawi jalsu imasisinxa pantjasiwa: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>The referenced resource failed to download.</source>
       <translation>Internet ukat apaqasinxa pantjiwa.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2735"/>
+      <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>WARNING: %1</source>
       <translation>UKATARAKI: %1</translation>
     </message>
@@ -5204,16 +5228,11 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="116"/>
-      <location filename="../src/ui/scanpopup.ui" line="130"/>
-      <location filename="../src/ui/scanpopup.ui" line="144"/>
-      <location filename="../src/ui/scanpopup.ui" line="211"/>
-      <location filename="../src/ui/scanpopup.ui" line="255"/>
       <source>...</source>
       <translation type="unfinished">...</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="151"/>
+      <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
       <translation type="unfinished">Alt+S</translation>
     </message>
@@ -5223,39 +5242,39 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
       <translation>Tantachaw aru</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="141"/>
+      <location filename="../src/ui/scanpopup.ui" line="135"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Aru arstaña (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="178"/>
+      <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Munat arunakar yapaña (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="208"/>
+      <location filename="../src/ui/scanpopup.ui" line="193"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Aru pirwa uñjam jan ukat imantam</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="231"/>
+      <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
       <translation>Aka wintanaxa yaqhipatxa nayrankiripuniwa</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="251"/>
+      <location filename="../src/ui/scanpopup.ui" line="230"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Utilice esto para fijar la ventana en la pantalla,
 redimensionarla o gerenciarla en otra manera.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="161"/>
+      <location filename="../src/ui/scanpopup.ui" line="152"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Nayrankir wintanar aru apayaña (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="171"/>
+      <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
       <translation type="unfinished">Alt+W</translation>
     </message>
@@ -5267,15 +5286,15 @@ redimensionarla o gerenciarla en otra manera.</translation>
 Anterior</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="127"/>
+      <location filename="../src/ui/scanpopup.ui" line="124"/>
       <source>Forward</source>
       <translation>Jutiri
 
 Posterior</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="598"/>
-      <location filename="../src/ui/scanpopup.cc" line="994"/>
+      <location filename="../src/ui/scanpopup.cc" line="604"/>
+      <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
       <translation type="unfinished">%1 - %2</translation>
     </message>
@@ -5288,22 +5307,32 @@ Posterior</translation>
       <translation type="unfinished">&amp;Previous</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="18"/>
+      <location filename="../src/ui/searchpanel.cc" line="15"/>
+      <source>Ctrl+Shift+G</source>
+      <translation type="unfinished">Ctrl+Shift+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
       <translation type="unfinished">&amp;Next</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="22"/>
+      <location filename="../src/ui/searchpanel.cc" line="20"/>
+      <source>Ctrl+G</source>
+      <translation type="unfinished">Ctrl+G</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
       <translation type="unfinished">Highlight &amp;all</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="26"/>
+      <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
       <translation type="unfinished">&amp;Case Sensitive</translation>
     </message>
     <message>
-      <location filename="../src/ui/searchpanel.cc" line="28"/>
+      <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
       <translation type="unfinished">Find:</translation>
     </message>
@@ -5872,7 +5901,7 @@ Insertar artículo como un enlace adentro de un &lt;iframe&gt;.</translation>
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="201"/>
+      <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
       <translation>Phantjiw aru pirwa thaqhawi.</translation>
     </message>
