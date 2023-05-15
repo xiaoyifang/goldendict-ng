@@ -5239,7 +5239,7 @@ GoldenDict 尚不支持此方案。</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>示例：  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; 对于法语 &lt;br&gt;
+      <translation>示例：  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; 对于法语) &lt;br&gt;
 
 可用语言的完整列表可在这里查找 &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
     </message>
