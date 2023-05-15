@@ -445,7 +445,7 @@ SOURCES += \
     src/dict/belarusiantranslit.cc \
     src/dict/bgl.cc \
     src/dict/bgl_babylon.cc \
-    src/dict/customtransliteration.cpp \
+    src/dict/customtransliteration.cc \
     src/dict/dictdfiles.cc \
     src/dict/dictionary.cc \
     src/dict/dictserver.cc \
