@@ -173,17 +173,17 @@
       <translation>Chyba dotazu: %1</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="830"/>
+      <location filename="../src/article_maker.cc" line="832"/>
       <source>Close words: </source>
       <translation>Blízká slova: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="897"/>
+      <location filename="../src/article_maker.cc" line="899"/>
       <source>Compound expressions: </source>
       <translation>Složené výrazy:</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="925"/>
+      <location filename="../src/article_maker.cc" line="927"/>
       <source>Individual words: </source>
       <translation>Jednotlivá slova:</translation>
     </message>
@@ -191,46 +191,14 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <source>x</source>
-      <translation type="unfinished">x</translation>
-    </message>
-    <message>
-      <source>Form</source>
-      <translation>Formulář</translation>
-    </message>
-    <message>
-      <source>&amp;Next</source>
-      <translation>&amp;Následující</translation>
-    </message>
-    <message>
-      <source>Find:</source>
-      <translation>Najít:</translation>
-    </message>
-    <message>
-      <source>The referenced resource failed to download.</source>
-      <translation>Odkázaný zdroj se nepovedlo stáhnout.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>Nepovedlo se vytvořit dočasný soubor.</translation>
     </message>
     <message>
-      <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
-    </message>
-    <message>
       <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>Vyh&amp;ledat &quot;%1&quot;</translation>
-    </message>
-    <message>
-      <source>about:blank</source>
-      <translation type="unfinished">about:blank</translation>
-    </message>
-    <message>
-      <source>&amp;Previous</source>
-      <translation>&amp;Předchozí</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1806"/>
@@ -242,14 +210,6 @@
       <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>Odkazovaný zdroj neexistuje.</translation>
-    </message>
-    <message>
-      <source>&amp;Open Link</source>
-      <translation>&amp;Otevřít odkaz</translation>
-    </message>
-    <message>
-      <source>&amp;Case Sensitive</source>
-      <translation>Rozlišovat velikost pís&amp;ma</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2098"/>
@@ -290,10 +250,6 @@
       <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Otevřít odkaz v &amp;externím prohlížeči</translation>
-    </message>
-    <message>
-      <source>Highlight &amp;all</source>
-      <translation>Zvýr&amp;aznit vše</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="995"/>
@@ -350,14 +306,6 @@
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Uložit &amp;záložku &quot;%1...&quot;</translation>
-    </message>
-    <message>
-      <source>&amp;Send &quot;%1&quot; to anki with selected text.</source>
-      <translation>&amp;Odeslat &quot;%1&quot; do anki s vybraným textem.</translation>
-    </message>
-    <message>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</source>
-      <translation>Zvukové soubory (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);; Všechny soubory (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
@@ -436,10 +384,6 @@
       <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>Nepodařilo se přehrát zvukový soubor: %1</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VAROVÁNÍ: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
@@ -528,6 +472,14 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/dict/chinese.cc" line="143"/>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradiční zjednodušený čínský převod</translation>
+    </message>
+  </context>
+  <context>
+    <name>CustomTranslit</name>
+    <message>
+      <location filename="../src/dict/customtransliteration.cpp" line="51"/>
+      <source>custom transliteration</source>
+      <translation type="unfinished">custom transliteration</translation>
     </message>
   </context>
   <context>
@@ -654,10 +606,6 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
-    </message>
-    <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -912,44 +860,44 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>DictServersModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="817"/>
+      <location filename="../src/dict/sources.cc" line="823"/>
       <source>Enabled</source>
       <translation>Povoleno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="819"/>
+      <location filename="../src/dict/sources.cc" line="825"/>
       <source>Name</source>
       <translation>Název</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="821"/>
+      <location filename="../src/dict/sources.cc" line="827"/>
       <source>Address</source>
       <translation>Adresa</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="823"/>
+      <location filename="../src/dict/sources.cc" line="829"/>
       <source>Databases</source>
       <translation>Databáze</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="825"/>
+      <location filename="../src/dict/sources.cc" line="831"/>
       <source>Strategies</source>
       <translation>Strategie</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="827"/>
+      <location filename="../src/dict/sources.cc" line="833"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="860"/>
+      <location filename="../src/dict/sources.cc" line="866"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
       <translation>Seznam databází oddělených čárkami
 (prázdný řetězec nebo &quot;*&quot; odpovídá všem databázím)</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="863"/>
+      <location filename="../src/dict/sources.cc" line="869"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
       <translation>Seznam strategií vyhledávání oddělených čárkami
@@ -1119,10 +1067,6 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>Žádná</translation>
-    </message>
-    <message>
-      <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
-      <translation>CJK symboly ve vyhledávacím řetězci nejsou kompatibilní s režimy vyhledávání &quot;Celá slova&quot; a &quot;prostý text&quot;</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="454"/>
@@ -1483,49 +1427,6 @@ a školní ortografií v cyrilici)</translation>
       <source>Create language-based groups</source>
       <translation>Vytvořit skupiny založené na jazycích</translation>
     </message>
-    <message>
-      <source>Auto groups</source>
-      <translation>Automatické skupiny</translation>
-    </message>
-  </context>
-  <context>
-    <name>Help::HelpWindow</name>
-    <message>
-      <source>GoldenDict help</source>
-      <translation>Pomoc GoldenDict</translation>
-    </message>
-    <message>
-      <source>Home</source>
-      <translation>Domů</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>Zpět</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>Vpřed</translation>
-    </message>
-    <message>
-      <source>Zoom In</source>
-      <translation>Přiblížit</translation>
-    </message>
-    <message>
-      <source>Zoom Out</source>
-      <translation>Oddálit</translation>
-    </message>
-    <message>
-      <source>Normal Size</source>
-      <translation>Normální velikost</translation>
-    </message>
-    <message>
-      <source>Content</source>
-      <translation>Obsah</translation>
-    </message>
-    <message>
-      <source>Index</source>
-      <translation>Objem dovozu (v tunách)</translation>
-    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -1571,12 +1472,12 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1398"/>
+      <location filename="../src/dict/sources.cc" line="1404"/>
       <source>Name</source>
       <translation>Jméno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1396"/>
+      <location filename="../src/dict/sources.cc" line="1402"/>
       <source>Enabled</source>
       <translation>Povoleno</translation>
     </message>
@@ -2824,7 +2725,7 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>LoadDictionaries</name>
     <message>
-      <location filename="../src/dict/loaddictionaries.cc" line="194"/>
+      <location filename="../src/dict/loaddictionaries.cc" line="195"/>
       <source>Error loading dictionaries</source>
       <translation>Chyba při načítání slovníků</translation>
     </message>
@@ -2832,7 +2733,7 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="360"/>
+      <location filename="../src/main.cc" line="368"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Chyba v konfiguračním souboru. Pokračovat s výchozím nastavením?</translation>
     </message>
@@ -2909,10 +2810,6 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>Chyba</translation>
-    </message>
-    <message>
-      <source>Scan Popup</source>
-      <translation>Vyskakovací okno</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="344"/>
@@ -3185,10 +3082,6 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>Nalezeno ve slovnících:</translation>
-    </message>
-    <message>
-      <source>Tracking Clipboard</source>
-      <translation>Schránka pro sledování</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
@@ -3580,22 +3473,22 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>MediaWikisModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="475"/>
+      <location filename="../src/dict/sources.cc" line="481"/>
       <source>Name</source>
       <translation>Jméno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="477"/>
+      <location filename="../src/dict/sources.cc" line="483"/>
       <source>Address</source>
       <translation>Adresa</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="473"/>
+      <location filename="../src/dict/sources.cc" line="479"/>
       <source>Enabled</source>
       <translation>Povoleno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="479"/>
+      <location filename="../src/dict/sources.cc" line="485"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -3694,12 +3587,12 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>PathsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1177"/>
+      <location filename="../src/dict/sources.cc" line="1183"/>
       <source>Path</source>
       <translation>Cesta</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1179"/>
+      <location filename="../src/dict/sources.cc" line="1185"/>
       <source>Recursive</source>
       <translation>Rekurzívně</translation>
     </message>
@@ -3725,10 +3618,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
-    </message>
-    <message>
-      <source>secs</source>
-      <translation>sekund (s)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="565"/>
@@ -3794,10 +3683,6 @@ Takto se budou nové karty otevírat bez přepnutí.</translation>
       <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Klávesa Windows nebo Meta</translation>
-    </message>
-    <message>
-      <source>Only show popup when all selected keys are kept pressed:</source>
-      <translation>Zobrazit vyskakovací okno pouze pokud jsou podrženy vybrané klávesy:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="763"/>
@@ -3891,17 +3776,9 @@ in the pressed state when the word selection changes.</source>
 zvolené klávesy stisknuty při změně výběru.</translation>
     </message>
     <message>
-      <source>Display style:</source>
-      <translation>Styl zobrazení:</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Automaticky vyslovovat slova ve vyskakovacím okně</translation>
-    </message>
-    <message>
-      <source>Enable scan popup functionality</source>
-      <translation>Povolit vyskakovací okno</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="312"/>
@@ -3917,16 +3794,6 @@ zvolené klávesy stisknuty při změně výběru.</translation>
       <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>Klávesa Alt</translation>
-    </message>
-    <message>
-      <source>When enabled, a translation popup window would be shown each time
-you point your mouse on any word on the screen (Windows) or select
-any word with mouse (Linux). When enabled, you can switch it on and
-off from main window or tray icon.</source>
-      <translation>Pokud povoleno, pokaždé když najedete na obrazovce myší na slovo
-(Windows) nebo jej označíte (Linux), zobrazí se okno s překladem. Když
-je povoleno, můžete toto zapnout nebo vypnout v hlavním okně nebo
-v ikoně v systémové liště.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1202"/>
@@ -3992,14 +3859,6 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>&amp;Rozhraní</translation>
     </message>
     <message>
-      <source>To avoid false positives, the keys are only monitored
-after the selection&apos;s done for a limited amount of
-seconds, which is specified here.</source>
-      <translation>Abyste se vyhnuli neúmyslnému spuštění, klávesy jsou
-detekovány pouze pár sekund (počet můžete
-nastavit zde) poté co označíte text.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>Měním jazyk</translation>
@@ -4028,10 +3887,6 @@ nastavit zde) poté co označíte text.</translation>
       <location filename="../src/ui/preferences.ui" line="14"/>
       <source>Preferences</source>
       <translation>Předvolby</translation>
-    </message>
-    <message>
-      <source>Keys may also be pressed afterwards, within</source>
-      <translation>Klávesy poté mohou být stisknuty po</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="475"/>
@@ -4088,16 +3943,6 @@ the program would always start with the scan popup active.</source>
 zaškrtnuto, program bude automaticky startovat s aktivovaným vyskakovacím oknem.</translation>
     </message>
     <message>
-      <source>Normally, in order to activate a popup you have to
-maintain the chosen keys pressed while you select
-a word. With this enabled, the chosen keys may also
-be pressed shortly after the selection is done.</source>
-      <translation>Normálně musíte pro aktivaci vyskakovacího okna
-držet zkratkouvou klávesu během vybírání slova.
-Takto stačí abyste tuto klávesu krátce stiskli až
-po označení slova.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Nezobrazovat vyskakovací okna, když se změní výběr nebo schránka v jednom z oken Zlatého Dict&apos;</translation>
@@ -4106,18 +3951,6 @@ po označení slova.</translation>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Ignorovat změny vlastního výběru a schránky GoldenDict&apos;</translation>
-    </message>
-    <message>
-      <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Poznámka: Zdá se, že máte spuštěnu verzi ZServeru X.Org, která ma rozbité rozšíření RECORD. Zkratkové klávesy v GoldenDict nejspíš nebudou fungovat. Toto musí být opraveno v serveru samotném. Prosím, podívejte se na následující &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;chybové hlášení&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; a pokud chcete, zanechte komentář.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4191,18 +4024,6 @@ S touto volbou ale sryje hlavní okno.</translation>
       <translation>Klávesa ESC skryje hlavní okno</translation>
     </message>
     <message>
-      <source>Enabling this would allow to listen to sound pronunciations from
-online dictionaries that rely on Flash or other web plugins.
-Plugin must be installed for this option to work.</source>
-      <translation>Pokud toto povolíte, umožníte poslech výslovností ze slovníků
-online, jenž závisí na Flashi a jiných webových modulech.
-Aby tato volba fungovala,.modul musí být nainstalován.</translation>
-    </message>
-    <message>
-      <source>Enable web plugins</source>
-      <translation>Powolit webové moduly</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Vyberte tuto volbu pokud chcete aby se zobrazoval pruh s kartami ikdyž je otevřena jenom jedna karta.</translation>
@@ -4211,10 +4032,6 @@ Aby tato volba fungovala,.modul musí být nainstalován.</translation>
       <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>Skrýt jednu kartu</translation>
-    </message>
-    <message>
-      <source>Help language</source>
-      <translation>Jazyk pomoci</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="141"/>
@@ -4456,145 +4273,117 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
       <translation>Pok&amp;ročilé</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1715"/>
+      <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Při postupném vyhledávání,pokud je jeden slovník zřícený manuálně, zůstane zkrachován při příštím hledání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
       <translation>Sbalování relace</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1739"/>
+      <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Při používání schránky odstraňte vše po nové lince</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1746"/>
+      <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Při novém vyhledávání zaostřit hlavní okno nebo vyskakovací okno, i když je viditelné&apos;s</translation>
     </message>
     <message>
-      <source>ScanPopup unpinned window flags</source>
-      <translation>Skenovací okno nepřipnuté vlajky</translation>
-    </message>
-    <message>
-      <source>Experiment with non-default flags if the unpinned scan popup window misbehaves</source>
-      <translation>Experimentovat s nevýchozími příznaky, pokud nepřipnutá skenovací okno nefunguje</translation>
-    </message>
-    <message>
-      <source>&lt;default&gt;</source>
-      <translation>&lt;default&gt;</translation>
-    </message>
-    <message>
-      <source>Popup</source>
-      <translation>Popup</translation>
-    </message>
-    <message>
-      <source>Tool</source>
-      <translation>Nástroj</translation>
-    </message>
-    <message>
-      <source>This hint can be combined with non-default window flags</source>
-      <translation>Tento nápovědu lze kombinovat s jinými než výchozími indikátory okna</translation>
-    </message>
-    <message>
-      <source>Bypass window manager hint</source>
-      <translation>Obejít nápovědu správce oken</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1524"/>
+      <location filename="../src/ui/preferences.ui" line="1511"/>
       <source>Favorites</source>
       <translation>Oblíbené</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1532"/>
+      <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Interval ukládání Oblíbených položek. Je-li nastaveno na 0 Oblíbených bude uloženo pouze při ukončení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Zapněte tuto možnost pro potvrzení každé operace odstranění položek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1563"/>
       <source>Confirmation for items deletion</source>
       <translation>Potvrzení pro odstranění položek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1632"/>
+      <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Zapněte tuto možnost pro ignorování nepřiměřeně dlouhého textu
 od přejetí myší, výběru, schránky nebo příkazové řádky</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1636"/>
+      <location filename="../src/ui/preferences.ui" line="1638"/>
       <source>Ignore input phrases longer than</source>
       <translation>Ignorovat vstupní fráze delší než</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Vstupní fráze delší než tato velikost bude ignorována</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1694"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Zapněte tuto možnost pro ignorování diakritiky při hledání článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1695"/>
+      <location filename="../src/ui/preferences.ui" line="1697"/>
       <source>Ignore diacritics while searching</source>
       <translation>Ignorovat diakritiku při hledání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1682"/>
+      <location filename="../src/ui/preferences.ui" line="1684"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Zapněte tuto volbu aby byly vždy rozbalovány volitelné části článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1687"/>
       <source>Expand optional &amp;parts</source>
       <translation>&amp;Rozbalovat volitelné části</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1622"/>
+      <location filename="../src/ui/preferences.ui" line="1624"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Vyberte tuto volbu pro automatické sbalení článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1627"/>
       <source>Collapse articles more than</source>
       <translation>Sbalit čláky delší než</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui" line="1668"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Články delší než tato velikost budou sbaleny</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1592"/>
+      <location filename="../src/ui/preferences.ui" line="1594"/>
       <source>Ignore punctuation while searching</source>
       <translation>Při hledání ignorovat interpunkci</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1728"/>
+      <location filename="../src/ui/preferences.ui" line="1730"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Zapněte tuto možnost pro povolení hledání dalších článků přes seznamy synonym
 ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1732"/>
+      <location filename="../src/ui/preferences.ui" line="1734"/>
       <source>Extra search via synonyms</source>
       <translation>Další hledání pomocí synonym</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1615"/>
-      <location filename="../src/ui/preferences.ui" line="1659"/>
+      <location filename="../src/ui/preferences.ui" line="1617"/>
+      <location filename="../src/ui/preferences.ui" line="1661"/>
       <source>symbols</source>
       <translation>symboly</translation>
     </message>
@@ -4624,7 +4413,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat &amp;historii</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1586"/>
+      <location filename="../src/ui/preferences.ui" line="1588"/>
       <source>Articles</source>
       <translation>Články</translation>
     </message>
@@ -4660,19 +4449,15 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1469"/>
-      <location filename="../src/ui/preferences.ui" line="1535"/>
+      <location filename="../src/ui/preferences.ui" line="1531"/>
       <source>Save every</source>
       <translation>Uložit každých</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1486"/>
-      <location filename="../src/ui/preferences.ui" line="1549"/>
+      <location filename="../src/ui/preferences.ui" line="1551"/>
       <source>minutes</source>
       <translation>minut</translation>
-    </message>
-    <message>
-      <source>English</source>
-      <translation type="unfinished">English</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
@@ -4699,39 +4484,31 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source> MB</source>
       <translation> MB</translation>
     </message>
-    <message>
-      <source>Changing Dictionary Font Family</source>
-      <translation>Změna skupiny písma slovníku</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the dictionary font family change.</source>
-      <translation>Restartujte program pro aplikaci změny ve slovnících.</translation>
-    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1085"/>
+      <location filename="../src/dict/sources.cc" line="1091"/>
       <source>Audio</source>
       <translation>Zvuk</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1087"/>
+      <location filename="../src/dict/sources.cc" line="1093"/>
       <source>Plain Text</source>
       <translation>Čistý text</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1089"/>
+      <location filename="../src/dict/sources.cc" line="1095"/>
       <source>Html</source>
       <translation>Html</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1091"/>
+      <location filename="../src/dict/sources.cc" line="1097"/>
       <source>Prefix Match</source>
       <translation>Předpona zápas</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1093"/>
+      <location filename="../src/dict/sources.cc" line="1099"/>
       <source>Unknown</source>
       <translation>Neznámý</translation>
     </message>
@@ -4757,27 +4534,27 @@ ze Stardict, Babylon a GLS slovníků</translation>
   <context>
     <name>ProgramsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="993"/>
+      <location filename="../src/dict/sources.cc" line="999"/>
       <source>Enabled</source>
       <translation>Povoleno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="995"/>
+      <location filename="../src/dict/sources.cc" line="1001"/>
       <source>Type</source>
       <translation>Typ</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="997"/>
+      <location filename="../src/dict/sources.cc" line="1003"/>
       <source>Name</source>
       <translation>Název</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="999"/>
+      <location filename="../src/dict/sources.cc" line="1005"/>
       <source>Command Line</source>
       <translation>Příkazový řádek</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1001"/>
+      <location filename="../src/dict/sources.cc" line="1007"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -4811,82 +4588,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Verze: %1%2</translation>
     </message>
     <message>
-      <source>avformat_alloc_context() failed.</source>
-      <translation>Selhal avformat_alloc_context().</translation>
-    </message>
-    <message>
-      <source>av_malloc() failed.</source>
-      <translation>Selhal av_malloc().</translation>
-    </message>
-    <message>
-      <source>avio_alloc_context() failed.</source>
-      <translation>Selhal avio_alloc_context().</translation>
-    </message>
-    <message>
-      <source>avformat_open_input() failed: %1.</source>
-      <translation>Selhal avformat_open_input(): %1.</translation>
-    </message>
-    <message>
-      <source>avformat_find_stream_info() failed: %1.</source>
-      <translation>Selhal avformat_find_stream_info(): %1.</translation>
-    </message>
-    <message>
-      <source>Could not find audio stream.</source>
-      <translation>Nelze najít najít proud audio.</translation>
-    </message>
-    <message>
-      <source>Codec [id: %1] not found.</source>
-      <translation>Kodekc [id: %1] nenalezen.</translation>
-    </message>
-    <message>
-      <source>avcodec_alloc_context3() failed.</source>
-      <translation>avcodec_alloc_context3() selhalo.</translation>
-    </message>
-    <message>
-      <source>avcodec_open2() failed: %1.</source>
-      <translation>Selhal avcodec_open2(): %1.</translation>
-    </message>
-    <message>
-      <source>Can not found default audio output device</source>
-      <translation>Nelze nalézt výchozí zvukový výstup</translation>
-    </message>
-    <message>
-      <source>Cannot find usable audio output device.</source>
-      <translation>Nelze najít použitelné výstupní audio zařízení.</translation>
-    </message>
-    <message>
-      <source>Unsupported sample format.</source>
-      <translation>Nepodporovaný formát vzorku.</translation>
-    </message>
-    <message>
-      <source>ao_open_live() failed: </source>
-      <translation>Selhal ao_open_live(): </translation>
-    </message>
-    <message>
-      <source>No driver.</source>
-      <translation>Není ovladač.</translation>
-    </message>
-    <message>
-      <source>This driver is not a live output device.</source>
-      <translation>Tento ovladač není aktivní výstupní zařízení.</translation>
-    </message>
-    <message>
-      <source>A valid option key has an invalid value.</source>
-      <translation>Platná volba má neplatnou hodnotu.</translation>
-    </message>
-    <message>
-      <source>Cannot open the device: %1, channels: %2, rate: %3, bits: %4.</source>
-      <translation>Nelze otevřít zařízení: %1, kanálů: %2, frekvence: %3, bitů: %4.</translation>
-    </message>
-    <message>
-      <source>Unknown error.</source>
-      <translation>Neznámá chyba.</translation>
-    </message>
-    <message>
-      <source>avcodec_alloc_frame() failed.</source>
-      <translation>Selhal avcodec_alloc_frame().</translation>
-    </message>
-    <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
       <location filename="../src/dict/stardict.cc" line="1110"/>
@@ -4915,44 +4616,32 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Datum: %1%2</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: příspěvek do anki selhal</translation>
-    </message>
-    <message>
-      <source>Previous Page</source>
-      <translation>Předchozí stránka</translation>
-    </message>
-    <message>
-      <source>Next Page</source>
-      <translation>Další stránka</translation>
-    </message>
-    <message>
-      <location filename="../src/main.cc" line="142"/>
+      <location filename="../src/main.cc" line="150"/>
       <source>A dictionary lookup program.</source>
       <translation>Slovníkový vyhledávací program.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="145"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
       <translation>Slovo nebo věta k dotazu.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="149"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Uložte zprávy ladění do gd_log.txt do složky konfigurace.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="153"/>
+      <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
       <translation>Změnit skupinu hlavního okna.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="157"/>
+      <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
       <translation>Změnit skupinu vyskakovacích oken.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="162"/>
+      <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
       <translation>Přepnout vyskakovací okno.</translation>
     </message>
@@ -4963,10 +4652,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Hledání-filtrování slovníků (Ctrl+F)</translation>
-    </message>
-    <message>
-      <source>Quick Search</source>
-      <translation>Rychlé hledání</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1174"/>
@@ -5019,18 +4704,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
   </context>
   <context>
-    <name>ScanFlag</name>
-    <message>
-      <source>MainWindow</source>
-      <translation>Hlavní okno</translation>
-    </message>
-  </context>
-  <context>
     <name>ScanPopup</name>
-    <message>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
@@ -5136,17 +4810,17 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1285"/>
+      <location filename="../src/dict/sources.cc" line="1291"/>
       <source>Name</source>
       <translation>Jméno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1283"/>
+      <location filename="../src/dict/sources.cc" line="1289"/>
       <source>Path</source>
       <translation>Cesta</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1287"/>
+      <location filename="../src/dict/sources.cc" line="1293"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -5174,9 +4848,9 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
       <translation>Nihon-shiki</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="259"/>
-      <location filename="../src/dict/sources.cc" line="283"/>
-      <location filename="../src/dict/sources.cc" line="307"/>
+      <location filename="../src/dict/sources.cc" line="262"/>
+      <location filename="../src/dict/sources.cc" line="286"/>
+      <location filename="../src/dict/sources.cc" line="310"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Odstranit stránky &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
@@ -5196,8 +4870,8 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
       <translation>Vytvořit ze skupin audio souborů slovníky tak, že zde vložíte jejich cesty:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="192"/>
-      <location filename="../src/dict/sources.cc" line="219"/>
+      <location filename="../src/dict/sources.cc" line="195"/>
+      <location filename="../src/dict/sources.cc" line="222"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Odstranit adresář &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
@@ -5251,15 +4925,6 @@ V GoldenDictu ještě není implementován.</translation>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
       <translation>Kód jazyka podle ISO 639-3</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
-      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
-
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
-
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
@@ -5330,6 +4995,15 @@ V GoldenDictu ještě není implementován.</translation>
       <translation>Z&amp;měnit...</translation>
     </message>
     <message>
+      <location filename="../src/ui/sources.ui" line="500"/>
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
+      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+    </message>
+    <message>
       <location filename="../src/ui/sources.ui" line="823"/>
       <source>Katakana</source>
       <translation>Katakana</translation>
@@ -5365,9 +5039,9 @@ V GoldenDictu ještě není implementován.</translation>
       <translation>Přid&amp;at...</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="177"/>
-      <location filename="../src/dict/sources.cc" line="204"/>
-      <location filename="../src/dict/sources.cc" line="231"/>
+      <location filename="../src/dict/sources.cc" line="180"/>
+      <location filename="../src/dict/sources.cc" line="207"/>
+      <location filename="../src/dict/sources.cc" line="234"/>
       <source>Choose a directory</source>
       <translation>Vyberte adresář</translation>
     </message>
@@ -5392,12 +5066,12 @@ V GoldenDictu ještě není implementován.</translation>
       <translation>Cesty k vyhledávání souborů slovníků:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="191"/>
-      <location filename="../src/dict/sources.cc" line="218"/>
-      <location filename="../src/dict/sources.cc" line="258"/>
-      <location filename="../src/dict/sources.cc" line="282"/>
-      <location filename="../src/dict/sources.cc" line="306"/>
-      <location filename="../src/dict/sources.cc" line="330"/>
+      <location filename="../src/dict/sources.cc" line="194"/>
+      <location filename="../src/dict/sources.cc" line="221"/>
+      <location filename="../src/dict/sources.cc" line="261"/>
+      <location filename="../src/dict/sources.cc" line="285"/>
+      <location filename="../src/dict/sources.cc" line="309"/>
+      <location filename="../src/dict/sources.cc" line="333"/>
       <source>Confirm removal</source>
       <translation>Potvrdit odebrání</translation>
     </message>
@@ -5457,10 +5131,6 @@ na spodek vhodných skupin.</translation>
       <translation>DICT servery:</translation>
     </message>
     <message>
-      <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
-      <translation>Všechny externí programy. Řetězec %GDWORD% bude nahrazen hledaným slovem. Pokud takový řetězec nebude předán, slovo bude posláno na standardní vstup.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/sources.ui" line="545"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>Živá výslovnost z &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Stránky umožňují lidem nahrávat a sdílet výslovnosti slov. V GoldenDictu si je můžete poslechnout.</translation>
@@ -5474,14 +5144,6 @@ na spodek vhodných skupin.</translation>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
       <translation>Klíč API:</translation>
-    </message>
-    <message>
-      <source>Use of Forvo currently requires an API key. Leave this field
-blank to use the default key, which may become unavailable
-in the future, or register on the site to get your own key.</source>
-      <translation>Použití Forvo vyžaduje API klíč. Ponechte toto pole prázdné
-pro použití výchozího klíče, který se časem může stát nedostupný,
-nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
@@ -5504,7 +5166,7 @@ nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
       <translation>Řecký přepis</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="140"/>
+      <location filename="../src/dict/sources.cc" line="143"/>
       <source>(not available in portable version)</source>
       <translation>(nedostupné v portabilní verzi)</translation>
     </message>
@@ -5514,7 +5176,7 @@ nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
       <translation>Programy</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="331"/>
+      <location filename="../src/dict/sources.cc" line="334"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
@@ -5524,10 +5186,6 @@ nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
       <translation>Běloruský přepis</translation>
     </message>
     <message>
-      <source>Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</source>
-      <translation>Získejte &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;vlastní klíč&lt;/a&gt;, nebo ponechte prázdné a použijte výchozí.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/sources.ui" line="337"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
@@ -5535,7 +5193,7 @@ nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
 %GDBIG5% pro Big-5, %GDBIG5HKSCS% pro Big5-HKSCS, %GDGBK% pro GBK a GB18030, %GDSHIFTJIS% pro Shift-JIS.</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="125"/>
+      <location filename="../src/dict/sources.cc" line="128"/>
       <source>Text to Speech</source>
       <translation>Zvuková syntéza</translation>
     </message>
@@ -5665,33 +5323,33 @@ nebo se na stránkách zaregistrujte a získejte vlastní klíč.</translation>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="644"/>
+      <location filename="../src/dict/sources.cc" line="650"/>
       <source>Name</source>
       <translation>Jméno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="646"/>
+      <location filename="../src/dict/sources.cc" line="652"/>
       <source>Address</source>
       <translation>Adresa</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="640"/>
+      <location filename="../src/dict/sources.cc" line="646"/>
       <source>Enabled</source>
       <translation>Povoleno</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="631"/>
-      <location filename="../src/dict/sources.cc" line="664"/>
+      <location filename="../src/dict/sources.cc" line="637"/>
+      <location filename="../src/dict/sources.cc" line="670"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
       <translation>Vložit článek jako odkaz do &lt;iframe&gt; tagu</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="642"/>
+      <location filename="../src/dict/sources.cc" line="648"/>
       <source>As link</source>
       <translation>Jako odkaz</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="648"/>
+      <location filename="../src/dict/sources.cc" line="654"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
