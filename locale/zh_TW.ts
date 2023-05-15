@@ -71,7 +71,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki：發佈到 anki 成功</translation>
     </message>
   </context>
   <context>
@@ -773,7 +773,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>加載詞條...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -1404,22 +1404,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>按語言分組</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>創建基於文件夾的群組</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>按文件夾分組</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>按元數據分組</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -3531,7 +3531,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>保存文章完成</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -4096,12 +4096,12 @@ be pressed shortly after the selection is done.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>當 GoldenDict 自己的窗口之一中的選擇或剪貼板發生變化時不顯示彈出窗口</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>忽略GoldenDict自身的選擇和剪貼板變化</translation>
     </message>
     <message>
       <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -4257,7 +4257,7 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
-      <translation type="unfinished">set the fallback font family for dictionary</translation>
+      <translation>為字典設置後備字體系列</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="344"/>
@@ -4287,7 +4287,7 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>MRU 順序：最近使用的順序。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="398"/>
@@ -4297,12 +4297,12 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>跟踪剪貼板更改</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>跟踪選擇變化</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
@@ -4394,16 +4394,15 @@ Enable this option to workaround the problem.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
-      <translation type="unfinished">Maximum network cache size:</translation>
+      <translation>最大網絡緩存大小：</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</translation>
+      <translation>GoldenDict的網絡緩存佔用的最大磁盤空間在%1
+如果設置為 0，網絡磁盤緩存將被禁用。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4414,8 +4413,8 @@ If set to 0 the network disk cache will be disabled.</translation>
       <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation type="unfinished">When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</translation>
+      <translation>啟用此選項時，GoldenDict
+在退出期間從磁盤清除其網絡緩存。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1173"/>
@@ -4450,7 +4449,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1715"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>在連續搜索過程中，如果一個字典被手動折疊，在下一次搜索時它將保持折疊狀態</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1718"/>
@@ -4460,20 +4459,20 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1739"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>使用剪貼板時，刪除換行符後的所有內容</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1746"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>在新搜索中，聚焦主窗口或彈出窗口，即使它是可見的</translation>
     </message>
     <message>
       <source>ScanPopup unpinned window flags</source>
-      <translation type="unfinished">ScanPopup unpinned window flags</translation>
+      <translation>ScanPopup 取消固定的窗口標誌</translation>
     </message>
     <message>
       <source>Experiment with non-default flags if the unpinned scan popup window misbehaves</source>
-      <translation type="unfinished">Experiment with non-default flags if the unpinned scan popup window misbehaves</translation>
+      <translation>如果未固定的掃描彈出窗口行為不當，請嘗試使用非默認標誌</translation>
     </message>
     <message>
       <source>&lt;default&gt;</source>
@@ -4489,7 +4488,7 @@ clears its network cache from disk during exit.</translation>
     </message>
     <message>
       <source>This hint can be combined with non-default window flags</source>
-      <translation type="unfinished">This hint can be combined with non-default window flags</translation>
+      <translation>此提示可以與非默認窗口標誌結合使用</translation>
     </message>
     <message>
       <source>Bypass window manager hint</source>
