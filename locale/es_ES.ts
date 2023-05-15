@@ -647,8 +647,8 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
-      <source>The parent directory of %1 can be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can be reached.</translation>
+      <source>The parent directory of %1 can not be reached.</source>
+      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
@@ -5255,12 +5255,12 @@ Todavía no implementado en GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="500"/>
-      <source>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Ejemplos:  &amp;quot;es&amp;quot; for Enligh, &amp;quot;fra&amp;quot; para francés) &lt;br&gt;
+      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
 
-La lista completa de idiomas disponibles se puede encontrar &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; aquí &lt;/a&gt;</translation>
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
