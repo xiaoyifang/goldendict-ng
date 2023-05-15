@@ -646,8 +646,8 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
-      <source>The parent directory of %1 can be reached.</source>
-      <translation>%1 的父目录可以达到。</translation>
+      <source>The parent directory of %1 can not be reached.</source>
+      <translation>无法访问 %1 的父目录。</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
@@ -5236,10 +5236,10 @@ GoldenDict 尚不支持此方案。</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="500"/>
-      <source>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>示例：  &amp;quot;eng&amp;quot; for Enlight, &amp;quot;fra&amp;quot; 对于法语 &lt;br&gt;
+      <translation>示例：  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; 对于法语 &lt;br&gt;
 
 可用语言的完整列表可在这里查找 &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
     </message>
