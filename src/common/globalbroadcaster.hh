@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <vector>
-#include <QWebEngineProfile>
 #include "config.hh"
 
 struct ActiveDictIds
@@ -34,7 +33,6 @@ public:
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
-  QWebEngineProfile * profile;
   //hold the dictionary id;
   QSet<QString> collapsedDicts;
   QMap< QString, QSet< QString > > folderFavoritesMap;

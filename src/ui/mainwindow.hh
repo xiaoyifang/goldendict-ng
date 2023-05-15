@@ -131,7 +131,7 @@ private:
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;
-  QMap< std::string, sptr< Dictionary::Class > > dictMap;
+  QMap<std::string, sptr< Dictionary::Class > > dictMap;
   /// Here we store unmuted dictionaries when the dictionary bar is active
   vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups groupInstances;
@@ -140,9 +140,6 @@ private:
   QNetworkAccessManager dictNetMgr; // We give dictionaries a separate manager,
                                     // since their requests can be destroyed
                                     // in a separate thread
-
-  QScopedPointer< QWebEngineProfile > webEngineProfile;
-
   AudioPlayerFactory audioPlayerFactory;
 
   WordList * wordList;
