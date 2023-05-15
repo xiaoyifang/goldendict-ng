@@ -6,5 +6,5 @@ Name=GoldenDict
 GenericName=Multiformat Dictionary
 Comment=A feature-rich dictionary lookup program
 Icon=goldendict
-Exec=goldendict %u
+Exec=goldendict-ng %u
 MimeType=x-scheme-handler/goldendict;x-scheme-handler/dict;

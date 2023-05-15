@@ -73,7 +73,7 @@ jobs:
 
           #copy missing shared dll to appdir.
           mkdir -p appdir/usr/lib
-          cp  $(ldd appdir/usr/bin/goldendict | grep -o '\W/[^ ]*' |grep gobject ) appdir/usr/lib
-          cp  $(ldd appdir/usr/bin/goldendict | grep -o '\W/[^ ]*' |grep libpango ) appdir/usr/lib
+          cp  $(ldd appdir/usr/bin/goldendict-ng | grep -o '\W/[^ ]*' |grep gobject ) appdir/usr/lib
+          cp  $(ldd appdir/usr/bin/goldendict-ng | grep -o '\W/[^ ]*' |grep libpango ) appdir/usr/lib
 
                 

@@ -13,7 +13,7 @@ project(goldendict-ng
         VERSION 23.05.01
         LANGUAGES CXX C)
 
-set(GOLDENDICT "goldendict") # binary/executable name
+set(GOLDENDICT "goldendict-ng") # binary/executable name
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -168,12 +168,12 @@ if (APPLE)
 endif ()
 
 if (LINUX OR BSD)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.desktop DESTINATION share/applications)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.metainfo.xml DESTINATION share/metainfo)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict-ng.desktop DESTINATION share/applications)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict-ng.metainfo.xml DESTINATION share/metainfo)
 
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
 
-    install(FILES ${qm_files} DESTINATION share/goldendict/locale)
+    install(FILES ${qm_files} DESTINATION share/goldendict-ng/locale)
 endif ()
 
 qt_finalize_target(${GOLDENDICT})

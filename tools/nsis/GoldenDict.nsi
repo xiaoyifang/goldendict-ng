@@ -1,9 +1,9 @@
 !include "MUI2.nsh"
 
-  Name "GoldenDict"
+  Name "GoldenDict-ng"
   OutFile "GoldenDict-ng-v23-Installer.exe"
 
-  InstallDir "$PROGRAMFILES\GoldenDict"
+  InstallDir "$PROGRAMFILES\GoldenDict-ng"
 
   RequestExecutionLevel admin
 
@@ -103,44 +103,44 @@ Section
   File /r *.*
 
   ; Write the installation path into the registry
-  WriteRegStr HKLM SOFTWARE\GoldenDict "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM SOFTWARE\GoldenDict-ng "Install_Dir" "$INSTDIR"
   
   ; Write the uninstall keys for Windows
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict" "DisplayName" "GoldenDict"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict" "UninstallString" '"$INSTDIR\uninstall.exe"'
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict" "NoModify" 1
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict" "NoRepair" 1
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict-ng" "DisplayName" "GoldenDict-ng"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict-ng" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict-ng" "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict-ng" "NoRepair" 1
   WriteUninstaller "$INSTDIR\uninstall.exe"
 
-  CreateDirectory "$SMPROGRAMS\GoldenDict"
-  CreateShortcut "$SMPROGRAMS\GoldenDict\Uninstall.lnk" "$INSTDIR\uninstall.exe"
-  CreateShortcut "$SMPROGRAMS\GoldenDict\GoldenDict.lnk" "$INSTDIR\GoldenDict.exe"
+  CreateDirectory "$SMPROGRAMS\GoldenDict-ng"
+  CreateShortcut "$SMPROGRAMS\GoldenDict-ng\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+  CreateShortcut "$SMPROGRAMS\GoldenDict-ng\GoldenDict-ng.lnk" "$INSTDIR\GoldenDict-ng.exe"
 
 SectionEnd
 
-!define PROGRAM_NAME "GoldenDict"
+!define PROGRAM_NAME "GoldenDict-ng"
 
 ; Uninstaller
 
 Section "Uninstall"
   
   ; Remove registry keys
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GoldenDict-ng"
 
   ; Remove registry keys
-  DeleteRegKey HKLM SOFTWARE\GoldenDict
+  DeleteRegKey HKLM SOFTWARE\GoldenDict-ng
 
   ; Remove files and uninstaller
   Delete $INSTDIR\GoldenDict.nsi
-  Delete $INSTDIR\GoldenDict.exe
+  Delete $INSTDIR\GoldenDict-ng.exe
   Delete $INSTDIR\uninstall.exe
   Delete $INSTDIR\*.*
 
   ; Remove shortcuts, if any
-  Delete "$SMPROGRAMS\GoldenDict\*.lnk"
+  Delete "$SMPROGRAMS\GoldenDict-ng\*.lnk"
 
   ; Remove directories
-  RMDir "$SMPROGRAMS\GoldenDict"
+  RMDir "$SMPROGRAMS\GoldenDict-ng"
   RMDir "$INSTDIR"
 
 SectionEnd

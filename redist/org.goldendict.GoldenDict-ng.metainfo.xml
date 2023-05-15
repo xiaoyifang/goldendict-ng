@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Vitaly Zaitsev <vitaly@easycoding.org> -->
+<component type="desktop">
+  <id>org.goldendict.GoldenDict-ng</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>GoldenDict-ng</name>
+  <summary>Dictionary lookup program</summary>
+  <description>
+    <p>
+        GoldenDict-ng is a feature-rich dictionary lookup program, supporting multiple
+        dictionary formats (StarDict/Babylon/Lingvo/Dictd/AARD/MDict/SDict) and
+        online dictionaries, featuring perfect article rendering with the complete
+        markup, illustrations and other content retained, and allowing you to type
+        in words without any accents or correct case.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://xiaoyifang.github.io/goldendict-ng/img/mac_black.webp</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://xiaoyifang.github.io/goldendict-ng</url>
+  <update_contact>https://github.com/xiaoyifang/goldendict</update_contact>
+  <launchable type="desktop-id">org.goldendict.GoldenDict-ng.desktop</launchable>
+  <content_rating type="oars-1.0" />
+  <provides>
+    <id>org.goldendict.GoldenDict-ng.desktop</id>
+  </provides>
+</component>

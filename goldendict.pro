@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = goldendict
+TARGET = goldendict-ng
 VERSION = 23.05.03-alpha
 
 # Generate version file. We do this here and in a build rule described later.
@@ -132,7 +132,7 @@ win32{
 
 win32 {
     QM_FILES_INSTALL_PATH = /locale/
-    TARGET = GoldenDict
+    TARGET = GoldenDict-ng
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
@@ -217,9 +217,9 @@ unix:!mac {
     isEmpty( PREFIX ):PREFIX = /usr/local
     message(Install Prefix is: $$PREFIX)
 
-    DEFINES += PROGRAM_DATA_DIR=\\\"$$PREFIX/share/goldendict/\\\"
+    DEFINES += PROGRAM_DATA_DIR=\\\"$$PREFIX/share/goldendict-ng/\\\"
     target.path = $$PREFIX/bin/
-    locale.path = $$PREFIX/share/goldendict/locale/
+    locale.path = $$PREFIX/share/goldendict-ng/locale/
     locale.files = locale/*.qm
     INSTALLS += target \
         locale
@@ -238,7 +238,7 @@ freebsd {
 }
 mac {
     QM_FILES_INSTALL_PATH = /locale/
-    TARGET = GoldenDict
+    TARGET = GoldenDict-ng
     # Uncomment this line to make a universal binary.
     # You will need to use Xcode 3 and Qt Carbon SDK
     # if you want the support for PowerPC and/or Mac OS X 10.4
@@ -270,15 +270,15 @@ mac {
     QMAKE_INFO_PLIST = redist/myInfo.plist
 
 
-    QMAKE_POST_LINK = mkdir -p GoldenDict.app/Contents/Frameworks && \
-                      mkdir -p GoldenDict.app/Contents/MacOS/locale && \
-                      cp -R locale/*.qm GoldenDict.app/Contents/MacOS/locale/
+    QMAKE_POST_LINK = mkdir -p GoldenDict-ng.app/Contents/Frameworks && \
+                      mkdir -p GoldenDict-ng.app/Contents/MacOS/locale && \
+                      cp -R locale/*.qm GoldenDict-ng.app/Contents/MacOS/locale/
     
 
     !CONFIG( no_chinese_conversion_support ) {
         CONFIG += chinese_conversion_support
-        QMAKE_POST_LINK += && mkdir -p GoldenDict.app/Contents/MacOS/opencc && \
-                             cp -R $${PWD}/opencc/*.* GoldenDict.app/Contents/MacOS/opencc/
+        QMAKE_POST_LINK += && mkdir -p GoldenDict-ng.app/Contents/MacOS/opencc && \
+                             cp -R $${PWD}/opencc/*.* GoldenDict-ng.app/Contents/MacOS/opencc/
     }
 
 }

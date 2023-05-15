@@ -25,7 +25,7 @@ jobs:
         qt_ver: [6.4.3]
         qt_arch: [clang_64]
     env:
-      targetName: GoldenDict
+      targetName: GoldenDict-ng
       version: 23.05.03
       version-suffix: alpha
       prerelease: true
@@ -104,9 +104,9 @@ jobs:
       - name: package
         run: |
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
-          codesign --force --deep -s - GoldenDict.app
-          otool -L GoldenDict.app/Contents/MacOS/GoldenDict
-          # otool -L GoldenDict.app/Contents/Frameworks/lib*
+          codesign --force --deep -s - GoldenDict-ng.app
+          otool -L GoldenDict-ng.app/Contents/MacOS/GoldenDict
+          # otool -L GoldenDict-ng.app/Contents/Frameworks/lib*
           mkdir tmp
           mv ${targetName}.app ./tmp
           # --background "installer_background.png"
