@@ -497,7 +497,7 @@ of the appropriate groups to use them.</string>
           <item row="1" column="1">
            <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
+             <string>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</string>
             </property>
