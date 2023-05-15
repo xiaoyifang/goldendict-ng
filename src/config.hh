@@ -173,27 +173,15 @@ struct HotKey
 struct FullTextSearch
 {
   int searchMode;
-  bool matchCase;
-  int maxArticlesPerDictionary;
-  int maxDistanceBetweenWords;
-  bool useMaxDistanceBetweenWords;
-  bool useMaxArticlesPerDictionary;
   bool enabled;
-  bool ignoreWordsOrder;
-  bool ignoreDiacritics;
+
   quint32 maxDictionarySize;
   QByteArray dialogGeometry;
   QString disabledTypes;
 
   FullTextSearch() :
-    searchMode( 0 ), matchCase( false ),
-    maxArticlesPerDictionary( 100 ),
-    maxDistanceBetweenWords( 2 ),
-    useMaxDistanceBetweenWords( true ),
-    useMaxArticlesPerDictionary( false ),
+    searchMode( 0 ),
     enabled( true ),
-    ignoreWordsOrder( false ),
-    ignoreDiacritics( false ),
     maxDictionarySize( 0 )
   {}
 };

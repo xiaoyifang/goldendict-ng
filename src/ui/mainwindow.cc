@@ -2121,8 +2121,6 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
   scanPopup->refresh();
   installHotKeys();
-
-
 }
 
 void MainWindow::editCurrentGroup()
@@ -2159,14 +2157,8 @@ void MainWindow::editPreferences()
     p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
     p.fts.dialogGeometry = cfg.preferences.fts.dialogGeometry;
-    p.fts.matchCase = cfg.preferences.fts.matchCase;
-    p.fts.maxArticlesPerDictionary = cfg.preferences.fts.maxArticlesPerDictionary;
-    p.fts.maxDistanceBetweenWords = cfg.preferences.fts.maxDistanceBetweenWords;
+
     p.fts.searchMode = cfg.preferences.fts.searchMode;
-    p.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
-    p.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
-    p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
-    p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
     // See if we need to reapply Qt stylesheets
     if( cfg.preferences.displayStyle != p.displayStyle ||

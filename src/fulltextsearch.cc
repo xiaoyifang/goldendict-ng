@@ -219,8 +219,6 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   dictionaries( dictionaries_ ),
   groups( groups_ ),
   group( 0 ),
-  ignoreWordsOrder( cfg_.preferences.fts.ignoreWordsOrder ),
-  ignoreDiacritics( cfg_.preferences.fts.ignoreDiacritics ),
   ftsIdx( ftsidx )
 , helpAction( this )
 {
@@ -242,64 +240,11 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   ui.searchMode->addItem( tr( "Plain text"), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
 
-  ui.matchCase->hide();
-  ui.articlesPerDictionary->hide();
-  ui.checkBoxArticlesPerDictionary->hide();
-  ui.checkBoxIgnoreDiacritics->hide();
-  ui.checkBoxDistanceBetweenWords->hide();
-  ui.distanceBetweenWords->hide();
-  ui.checkBoxIgnoreWordOrder->hide();
-
   ui.searchLine->setToolTip(tr("support xapian search syntax,such as AND OR +/- etc"));
 
   ui.searchMode->setCurrentIndex( cfg.preferences.fts.searchMode );
 
   ui.searchProgressBar->hide();
-
-  ui.checkBoxDistanceBetweenWords->setText( tr( "Max distance between words (%1-%2):" )
-                                            .arg( QString::number( MinDistanceBetweenWords ) )
-                                            .arg( QString::number( MaxDistanceBetweenWords ) ) );
-  ui.checkBoxDistanceBetweenWords->setChecked( cfg.preferences.fts.useMaxDistanceBetweenWords );
-
-  ui.distanceBetweenWords->setMinimum( MinDistanceBetweenWords );
-  ui.distanceBetweenWords->setMaximum( MaxDistanceBetweenWords );
-  ui.distanceBetweenWords->setValue( cfg.preferences.fts.maxDistanceBetweenWords );
-
-  ui.checkBoxArticlesPerDictionary->setText( tr( "Max articles per dictionary (%1-%2):" )
-                                             .arg( QString::number( MinArticlesPerDictionary ) )
-                                             .arg( QString::number( MaxArticlesPerDictionary ) ) );
-  ui.checkBoxArticlesPerDictionary->setChecked( cfg.preferences.fts.useMaxArticlesPerDictionary );
-
-  ui.articlesPerDictionary->setMinimum( MinArticlesPerDictionary );
-  ui.articlesPerDictionary->setMaximum( MaxArticlesPerDictionary );
-  ui.articlesPerDictionary->setValue( cfg.preferences.fts.maxArticlesPerDictionary );
-
-  int mode = ui.searchMode->itemData( ui.searchMode->currentIndex() ).toInt();
-  if( mode == WholeWords || mode == PlainText )
-  {
-    ui.checkBoxIgnoreWordOrder->setChecked( ignoreWordsOrder );
-    ui.checkBoxIgnoreWordOrder->setEnabled( true );
-  }
-  else
-  {
-    ui.checkBoxIgnoreWordOrder->setChecked( false );
-    ui.checkBoxIgnoreWordOrder->setEnabled( false );
-  }
-
-  ui.checkBoxIgnoreDiacritics->setChecked( ignoreDiacritics );
-
-  ui.matchCase->setChecked( cfg.preferences.fts.matchCase );
-
-  setLimitsUsing();
-
-  connect( ui.checkBoxDistanceBetweenWords, &QCheckBox::stateChanged, this, &FullTextSearchDialog::setLimitsUsing );
-  connect( ui.checkBoxArticlesPerDictionary, &QCheckBox::stateChanged, this, &FullTextSearchDialog::setLimitsUsing );
-  connect( ui.searchMode, &QComboBox::currentIndexChanged, this, &FullTextSearchDialog::setLimitsUsing );
-  connect( ui.checkBoxIgnoreWordOrder, &QCheckBox::stateChanged, this, &FullTextSearchDialog::ignoreWordsOrderClicked );
-  connect( ui.checkBoxIgnoreDiacritics,
-    &QCheckBox::stateChanged,
-    this,
-    &FullTextSearchDialog::ignoreDiacriticsClicked );
 
   model = new HeadwordsListModel( this, results, activeDicts );
   ui.headwordsView->setModel( model );
@@ -378,13 +323,6 @@ void FullTextSearchDialog::showDictNumbers()
 void FullTextSearchDialog::saveData()
 {
   cfg.preferences.fts.searchMode = ui.searchMode->currentIndex();
-  cfg.preferences.fts.matchCase = ui.matchCase->isChecked();
-  cfg.preferences.fts.maxArticlesPerDictionary = ui.articlesPerDictionary->text().toInt();
-  cfg.preferences.fts.maxDistanceBetweenWords = ui.distanceBetweenWords->text().toInt();
-  cfg.preferences.fts.useMaxDistanceBetweenWords = ui.checkBoxDistanceBetweenWords->isChecked();
-  cfg.preferences.fts.useMaxArticlesPerDictionary = ui.checkBoxArticlesPerDictionary->isChecked();
-  cfg.preferences.fts.ignoreWordsOrder = ignoreWordsOrder;
-  cfg.preferences.fts.ignoreDiacritics = ignoreDiacritics;
 
   cfg.preferences.fts.dialogGeometry = saveGeometry();
 }
@@ -396,45 +334,10 @@ void FullTextSearchDialog::setNewIndexingName( QString name )
   showDictNumbers();
 }
 
-void FullTextSearchDialog::setLimitsUsing()
-{
-  int mode = ui.searchMode->itemData( ui.searchMode->currentIndex() ).toInt();
-  if( mode == WholeWords || mode == PlainText )
-  {
-    ui.checkBoxDistanceBetweenWords->setEnabled( true );
-    ui.distanceBetweenWords->setEnabled( ui.checkBoxDistanceBetweenWords->isChecked() );
-    ui.checkBoxIgnoreWordOrder->setChecked( ignoreWordsOrder );
-    ui.checkBoxIgnoreWordOrder->setEnabled( true );
-  }
-  else
-  {
-    ui.checkBoxIgnoreWordOrder->setEnabled( false );
-    ui.checkBoxIgnoreWordOrder->setChecked( false );
-    ui.checkBoxDistanceBetweenWords->setEnabled( false );
-    ui.distanceBetweenWords->setEnabled( false );
-  }
-  ui.articlesPerDictionary->setEnabled( ui.checkBoxArticlesPerDictionary->isChecked() );
-}
-
-void FullTextSearchDialog::ignoreWordsOrderClicked()
-{
-  ignoreWordsOrder = ui.checkBoxIgnoreWordOrder->isChecked();
-}
-
-void FullTextSearchDialog::ignoreDiacriticsClicked()
-{
-  ignoreDiacritics = ui.checkBoxIgnoreDiacritics->isChecked();
-}
-
 void FullTextSearchDialog::accept()
 {
   QStringList list1, list2;
   int mode = ui.searchMode->itemData( ui.searchMode->currentIndex() ).toInt();
-
-  int maxResultsPerDict = ui.checkBoxArticlesPerDictionary->isChecked() ?
-                            ui.articlesPerDictionary->value() : -1;
-  int distanceBetweenWords = ui.checkBoxDistanceBetweenWords->isChecked() ?
-                               ui.distanceBetweenWords->value() : -1;
 
   model->clear();
   matchedCount=0;
@@ -443,9 +346,9 @@ void FullTextSearchDialog::accept()
   bool hasCJK;
   if( !FtsHelpers::parseSearchString( ui.searchLine->text(), list1, list2,
                                       searchRegExp, mode,
-                                      ui.matchCase->isChecked(),
-                                      distanceBetweenWords,
-                                      hasCJK, ignoreWordsOrder ) )
+                                      false,
+                                      0,
+                                      hasCJK, false ) )
   {
     QMessageBox message( QMessageBox::Warning,
                          "GoldenDict",
@@ -479,14 +382,15 @@ void FullTextSearchDialog::accept()
     {
       continue;
     }
+    //max results=100
     sptr< Dictionary::DataRequest > req = activeDicts[ x ]->getSearchResults(
                                                               ui.searchLine->text(),
                                                               mode,
-                                                              ui.matchCase->isChecked(),
-                                                              distanceBetweenWords,
-                                                              maxResultsPerDict,
-                                                              ignoreWordsOrder,
-                                                              ignoreDiacritics
+                                                              false,
+                                                              0,
+                                                              100,
+                                                              false,
+                                                              false
                                                             );
     connect( req.get(),
       &Dictionary::Request::finished,
@@ -621,7 +525,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
       reg.setMinimal( true );
     }
 
-    emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, ignoreDiacritics );
+    emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );
   }
 }
 

@@ -195,8 +195,6 @@ class FullTextSearchDialog : public QDialog
   std::vector< Instances::Group > const & groups;
   unsigned group;
   std::vector< sptr< Dictionary::Class > > activeDicts;
-  bool ignoreWordsOrder;
-  bool ignoreDiacritics;
 
   std::list< sptr< Dictionary::DataRequest > > searchReqs;
 
@@ -236,9 +234,6 @@ private slots:
   void setNewIndexingName( QString );
   void saveData();
   void accept();
-  void setLimitsUsing();
-  void ignoreWordsOrderClicked();
-  void ignoreDiacriticsClicked();
   void searchReqFinished();
   void matchCount(int);
   void reject();
