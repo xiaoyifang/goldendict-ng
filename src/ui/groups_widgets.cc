@@ -782,7 +782,7 @@ void DictGroupsWidget::addAutoGroupsByFolders()
   auto cdUpWentWrong = [ this ]( const QString & path ) {
     QMessageBox::warning( this,
                           tr( "Auto group by folder failed." ),
-                          tr( "The parent directory of %1 can be reached." ).arg( path ) );
+                          tr( "The parent directory of %1 can not be reached." ).arg( path ) );
   };
 
   if ( QMessageBox::information( this,
