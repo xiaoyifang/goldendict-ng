@@ -1,14 +1,20 @@
-name: CMake Test
+name: CMake Build Check
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - dev
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
+  pull_request:
+    branches:
+      - dev
+      - master
+      - staged
+    paths-ignore:
+      - 'docs/**'
+      # - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - "locale/**"
 jobs:
   job1:
     name: ubuntu Build and analyze
@@ -35,6 +41,7 @@ jobs:
           sudo apt-get install libao-dev libavutil-dev libavformat-dev libeb16-dev
           sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
+          sudo apt install libxapian-dev
           
           #build opencc
           git clone https://github.com/BYVoid/OpenCC
@@ -76,7 +83,7 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake -S . -DCMAKE_BUILD_TYPE=Release
+          cmake -S . 
           cmake --build . --config Release
   job3:
     name: macos Build and analyze
@@ -107,8 +114,8 @@ jobs:
           brew install autoconf
           brew install libtool
           brew install opencc
-          brew install ffmpeg@5
-          #brew reinstall $(brew deps ffmpeg) ffmpeg
+          brew tap homebrew-ffmpeg/ffmpeg
+          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
           brew install libiconv
           brew install lzo bzip2
@@ -122,6 +129,7 @@ jobs:
           #brew install qt # or use official offline installer
           brew install  xz lzo 
           brew install pkg-config
+          brew install xapian
       - name: Run build-wrapper
         run: |
           cmake .

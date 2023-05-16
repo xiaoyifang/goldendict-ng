@@ -23,4 +23,10 @@ foreach (A_DLL_FILE ${DLL_FILES})
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
 endforeach ()
 
-
+if (WITH_EPWING_SUPPORT)
+    add_subdirectory(thirdparty/eb)
+    target_include_directories(${GOLDENDICT} PRIVATE
+        thirdparty
+    )
+    target_link_libraries(${GOLDENDICT} PRIVATE eb)
+endif ()
