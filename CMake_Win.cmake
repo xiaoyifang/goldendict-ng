@@ -25,5 +25,8 @@ endforeach ()
 
 if (WITH_EPWING_SUPPORT)
     add_subdirectory(thirdparty/eb)
+    target_include_directories(${GOLDENDICT} PRIVATE
+        thirdparty
+    )
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
 endif ()
