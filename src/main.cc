@@ -17,6 +17,7 @@
 
 #ifdef Q_OS_WIN32
 #include <QtCore/qt_windows.h>
+#include <windows.h>
 #endif
 
 #include "termination.hh"
@@ -217,18 +218,27 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 int main( int argc, char ** argv )
 {
 #ifdef Q_OS_UNIX
-    // GoldenDict use lots of X11 functions and it currently cannot work
-    // natively on Wayland. This workaround will force GoldenDict to use
-    // XWayland.
-    char * xdg_envc = getenv("XDG_SESSION_TYPE");
-    QString xdg_session = xdg_envc ? QString::fromLatin1(xdg_envc) : QString();
-    if (!QString::compare(xdg_session, QString("wayland"), Qt::CaseInsensitive))
-    {
-        setenv("QT_QPA_PLATFORM", "xcb", 1);
-    }
+  // GoldenDict use lots of X11 functions and it currently cannot work
+  // natively on Wayland. This workaround will force GoldenDict to use
+  // XWayland.
+  char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
+  QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
+  if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
+    setenv( "QT_QPA_PLATFORM", "xcb", 1 );
+  }
 #endif
+
 #ifdef Q_OS_MAC
-    setenv("LANG", "en_US.UTF-8", 1);
+  setenv( "LANG", "en_US.UTF-8", 1 );
+#endif
+
+#ifdef Q_OS_WIN32
+  // attach the new console to this application's process
+  if ( AttachConsole( GetCurrentProcessId() ) ) {
+    // reopen the std I/O streams to redirect I/O to the new console
+    freopen( "CON", "w", stdout );
+     freopen( "CON", "w", stderr );
+  }
 
 #endif
 
