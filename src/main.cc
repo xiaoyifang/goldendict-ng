@@ -17,7 +17,7 @@
 
 #ifdef Q_OS_WIN32
 #include <QtCore/qt_windows.h>
-#include <windows.h>
+  #include <windows.h>
 #endif
 
 #include "termination.hh"
@@ -234,10 +234,10 @@ int main( int argc, char ** argv )
 
 #ifdef Q_OS_WIN32
   // attach the new console to this application's process
-  if ( AttachConsole( GetCurrentProcessId() ) ) {
+  if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
     // reopen the std I/O streams to redirect I/O to the new console
     freopen( "CON", "w", stdout );
-     freopen( "CON", "w", stderr );
+    freopen( "CON", "w", stderr );
   }
 
 #endif
@@ -256,7 +256,7 @@ int main( int argc, char ** argv )
   int newArgc                     = argc + 1 + 1;
   char ** newArgv                 = new char *[ newArgc ];
   for ( int i = 0; i < argc; i++ ) {
-        newArgv[ i ] = argv[ i ];
+    newArgv[ i ] = argv[ i ];
   }
   newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
   newArgv[ argc + 1 ] = nullptr;
@@ -273,9 +273,8 @@ int main( int argc, char ** argv )
   QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";
 
   QDir dir;
-  if (!dir.exists(appDirPath)) {
-        bool res = dir.mkpath(appDirPath);
-        qDebug() << "New mkdir " << appDirPath << " " << res;
+  if ( !dir.exists( appDirPath ) ) {
+    dir.mkpath( appDirPath );
   }
 
   google_breakpad::ExceptionHandler eh(
