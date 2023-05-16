@@ -580,7 +580,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Está seguro que quiere generar un conjunto de grupos basado en pares de idiomas?</translation>
+      <translation>¿Está seguro que desea generar un conjunto de grupos basados en metadata.toml?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
