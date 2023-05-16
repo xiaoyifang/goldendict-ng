@@ -479,7 +479,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>Transliteración del ruso</translation>
     </message>
   </context>
   <context>
@@ -580,7 +580,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>¿Está seguro que quiere generar un conjunto de grupos basado en pares de idiomas?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
