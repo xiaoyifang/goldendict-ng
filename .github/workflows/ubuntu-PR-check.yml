@@ -61,6 +61,7 @@ jobs:
           make PREFIX=/usr -j$(nproc)
           sudo make install
           cd ..
+          sudo apt install libxapian-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1 
@@ -68,7 +69,7 @@ jobs:
 
       - name: build goldendict
         run: |
-          qmake CONFIG+=release PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv
+          qmake CONFIG+=release PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv CONFIG+=use_xapian
           make INSTALL_ROOT=appdir -j`nproc` install; find appdir/
 
           #copy missing shared dll to appdir.

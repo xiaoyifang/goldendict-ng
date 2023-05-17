@@ -174,17 +174,17 @@
       <translation>Erro de Consulta: %1</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="830"/>
+      <location filename="../src/article_maker.cc" line="832"/>
       <source>Close words: </source>
       <translation>Palavras semelhantes: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="897"/>
+      <location filename="../src/article_maker.cc" line="899"/>
       <source>Compound expressions: </source>
       <translation>Termos compostos: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="925"/>
+      <location filename="../src/article_maker.cc" line="927"/>
       <source>Individual words: </source>
       <translation>Palavras independentes: </translation>
     </message>
@@ -192,46 +192,14 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <source>x</source>
-      <translation type="unfinished">x</translation>
-    </message>
-    <message>
-      <source>Form</source>
-      <translation>Formulário</translation>
-    </message>
-    <message>
-      <source>&amp;Next</source>
-      <translation>&amp;Próxima</translation>
-    </message>
-    <message>
-      <source>Find:</source>
-      <translation>Localizar:</translation>
-    </message>
-    <message>
-      <source>The referenced resource failed to download.</source>
-      <translation>Não foi possível efetuar o download do arquivo de fontes de dados.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
       <translation>Não foi possível criar o arquivo temporário.</translation>
     </message>
     <message>
-      <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
-    </message>
-    <message>
       <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&amp;Procurar &quot;%1&quot;</translation>
-    </message>
-    <message>
-      <source>about:blank</source>
-      <translation>sobre:vazio</translation>
-    </message>
-    <message>
-      <source>&amp;Previous</source>
-      <translation>A&amp;nterior</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1806"/>
@@ -243,14 +211,6 @@
       <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>A fonte de dados procurada não existe.</translation>
-    </message>
-    <message>
-      <source>&amp;Open Link</source>
-      <translation>Abrir Ligação (&amp;O)</translation>
-    </message>
-    <message>
-      <source>&amp;Case Sensitive</source>
-      <translation>&amp;Diferenciar maiúsculas/minúsculas</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2098"/>
@@ -291,10 +251,6 @@
       <location filename="../src/ui/articleview.cc" line="1757"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Abrir link em &amp;Navegador da Web Externo</translation>
-    </message>
-    <message>
-      <source>Highlight &amp;all</source>
-      <translation>Destacar &amp;tudo</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="995"/>
@@ -351,14 +307,6 @@
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Salvar &amp;Marcador &quot;%1...&quot;</translation>
-    </message>
-    <message>
-      <source>&amp;Send &quot;%1&quot; to anki with selected text.</source>
-      <translation>&amp;Enviar &quot;%1&quot; para o anki com o texto selecionado.</translation>
-    </message>
-    <message>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</source>
-      <translation>Arquivos de som (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;Todos os arquivos (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
@@ -437,10 +385,6 @@
       <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
       <translation>Falha ao reproduzir som do arquivo: %1</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ATENÇÃO: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
@@ -529,6 +473,14 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <location filename="../src/dict/chinese.cc" line="143"/>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Conversão tradicional para chinês simplificado</translation>
+    </message>
+  </context>
+  <context>
+    <name>CustomTranslit</name>
+    <message>
+      <location filename="../src/dict/customtransliteration.cpp" line="51"/>
+      <source>custom transliteration</source>
+      <translation type="unfinished">custom transliteration</translation>
     </message>
   </context>
   <context>
@@ -648,17 +600,13 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
-      <source>The parent directory of %1 can be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can be reached.</translation>
+      <source>The parent directory of %1 can not be reached.</source>
+      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
-    </message>
-    <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.txt?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.txt?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -913,44 +861,44 @@ entre clássico e ortografia escolar em cirílico)</translation>
   <context>
     <name>DictServersModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="817"/>
+      <location filename="../src/dict/sources.cc" line="823"/>
       <source>Enabled</source>
       <translation>Habilitado</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="819"/>
+      <location filename="../src/dict/sources.cc" line="825"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="821"/>
+      <location filename="../src/dict/sources.cc" line="827"/>
       <source>Address</source>
       <translation>Endereço</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="823"/>
+      <location filename="../src/dict/sources.cc" line="829"/>
       <source>Databases</source>
       <translation>Bancos de dados</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="825"/>
+      <location filename="../src/dict/sources.cc" line="831"/>
       <source>Strategies</source>
       <translation>Estratégias</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="827"/>
+      <location filename="../src/dict/sources.cc" line="833"/>
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="860"/>
+      <location filename="../src/dict/sources.cc" line="866"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
       <translation>Lista de bancos de dados delimitada por vírgulas
 (cadeia vazia ou &quot;*&quot; corresponde a todos os bancos de dados)</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="863"/>
+      <location filename="../src/dict/sources.cc" line="869"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
       <translation>Lista delimitada por vírgula de estratégias de pesquisa
@@ -1120,10 +1068,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
       <translation>Nenhum</translation>
-    </message>
-    <message>
-      <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
-      <translation>Os símbolos CJK na cadeia de pesquisa não são compatíveis com os modos de pesquisa &quot;Palavras inteiras&quot; e &quot;Texto sem formatação&quot;</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="454"/>
@@ -1484,49 +1428,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <source>Create language-based groups</source>
       <translation>Cria grupos de dicionários com base nos tipos de idioma</translation>
     </message>
-    <message>
-      <source>Auto groups</source>
-      <translation>Agrupar automaticamente</translation>
-    </message>
-  </context>
-  <context>
-    <name>Help::HelpWindow</name>
-    <message>
-      <source>GoldenDict help</source>
-      <translation>Ajuda GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>Home</source>
-      <translation>Início</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>Anterior</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>Seguinte</translation>
-    </message>
-    <message>
-      <source>Zoom In</source>
-      <translation>Aumentar as letras das definições</translation>
-    </message>
-    <message>
-      <source>Zoom Out</source>
-      <translation>Diminuir as letras das definições</translation>
-    </message>
-    <message>
-      <source>Normal Size</source>
-      <translation>Restaurar as letras das definições</translation>
-    </message>
-    <message>
-      <source>Content</source>
-      <translation>Conteúdo</translation>
-    </message>
-    <message>
-      <source>Index</source>
-      <translation>Índice</translation>
-    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -1572,12 +1473,12 @@ entre clássico e ortografia escolar em cirílico)</translation>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1398"/>
+      <location filename="../src/dict/sources.cc" line="1404"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1396"/>
+      <location filename="../src/dict/sources.cc" line="1402"/>
       <source>Enabled</source>
       <translation>Habilitado</translation>
     </message>
@@ -2825,7 +2726,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
   <context>
     <name>LoadDictionaries</name>
     <message>
-      <location filename="../src/dict/loaddictionaries.cc" line="194"/>
+      <location filename="../src/dict/loaddictionaries.cc" line="195"/>
       <source>Error loading dictionaries</source>
       <translation>Erro ao carregar dicionários</translation>
     </message>
@@ -2833,7 +2734,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="360"/>
+      <location filename="../src/main.cc" line="368"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Erro no arquivo de configuração. Continuar com as configurações padrão?</translation>
     </message>
@@ -2910,10 +2811,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Error</source>
       <translation>Erro</translation>
-    </message>
-    <message>
-      <source>Scan Popup</source>
-      <translation>Definição Semiautomática</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="344"/>
@@ -3186,10 +3083,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
       <translation>Achado nos dicionários:</translation>
-    </message>
-    <message>
-      <source>Tracking Clipboard</source>
-      <translation>Área de Acompanhamento</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
@@ -3581,22 +3474,22 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
   <context>
     <name>MediaWikisModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="475"/>
+      <location filename="../src/dict/sources.cc" line="481"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="477"/>
+      <location filename="../src/dict/sources.cc" line="483"/>
       <source>Address</source>
       <translation>Endereço</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="473"/>
+      <location filename="../src/dict/sources.cc" line="479"/>
       <source>Enabled</source>
       <translation>Habilitado</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="479"/>
+      <location filename="../src/dict/sources.cc" line="485"/>
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
@@ -3696,12 +3589,12 @@ Se quiser desativar dicionários, arraste-os para o grupo de desativados.</trans
   <context>
     <name>PathsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1177"/>
+      <location filename="../src/dict/sources.cc" line="1183"/>
       <source>Path</source>
       <translation>Caminho</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1179"/>
+      <location filename="../src/dict/sources.cc" line="1185"/>
       <source>Recursive</source>
       <translation>Buscar em subpastas</translation>
     </message>
@@ -3727,10 +3620,6 @@ Se quiser desativar dicionários, arraste-os para o grupo de desativados.</trans
       <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
-    </message>
-    <message>
-      <source>secs</source>
-      <translation>segundos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="565"/>
@@ -3797,10 +3686,6 @@ programa as exiba nas frente das outras automaticamente.</translation>
       <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
       <translation>Tecla Windows ou Tecla Meta</translation>
-    </message>
-    <message>
-      <source>Only show popup when all selected keys are kept pressed:</source>
-      <translation>Só exibir a janela de definições/tradução semiautomática se o usuário premer as teclas escolhidas abaixo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="763"/>
@@ -3895,17 +3780,9 @@ in the pressed state when the word selection changes.</source>
 teclas do atalho estiverem premidas quando a seleção de palavra mudar.</translation>
     </message>
     <message>
-      <source>Display style:</source>
-      <translation>Capa da interface:</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Pronunciar automaticamente palavras da janela de definições/tradução semiautomáticas</translation>
-    </message>
-    <message>
-      <source>Enable scan popup functionality</source>
-      <translation>Habilitar funcionalidades de janela de definições/tradução semiautomáticas</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="312"/>
@@ -3921,17 +3798,6 @@ teclas do atalho estiverem premidas quando a seleção de palavra mudar.</transl
       <location filename="../src/ui/preferences.ui" line="492"/>
       <source>Alt key</source>
       <translation>Tecla Alt</translation>
-    </message>
-    <message>
-      <source>When enabled, a translation popup window would be shown each time
-you point your mouse on any word on the screen (Windows) or select
-any word with mouse (Linux). When enabled, you can switch it on and
-off from main window or tray icon.</source>
-      <translation>Se habilitada esta opção, será exibida uma janela secundária de definições/
-tradução toda vez que você pairar o ponteiro do mouse sobre uma palavra de
-alguma janela (Windows) ou selecioná-la (Linux). Mas você pode habilitar/
-desabilitar este comando, tanto na janela principal, como pelo ícone do
-programa na Área de Notificação.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1202"/>
@@ -4000,14 +3866,6 @@ e pergunta se ele deseja visitar a página de download.</translation>
       <translation>&amp;Interface</translation>
     </message>
     <message>
-      <source>To avoid false positives, the keys are only monitored
-after the selection&apos;s done for a limited amount of
-seconds, which is specified here.</source>
-      <translation>Para evitar acionamentos de atalhos de teclado falsos, o status das
-teclas é verificado só depois de feita a seleção de palavra/expressão
-dentro do limite de tempo especificado aqui.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
       <translation>Modificando Idioma</translation>
@@ -4036,10 +3894,6 @@ dentro do limite de tempo especificado aqui.</translation>
       <location filename="../src/ui/preferences.ui" line="14"/>
       <source>Preferences</source>
       <translation>Configuração</translation>
-    </message>
-    <message>
-      <source>Keys may also be pressed afterwards, within</source>
-      <translation>As teclas também podem ser pressionadas depois, dentro de</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="475"/>
@@ -4096,15 +3950,6 @@ the program would always start with the scan popup active.</source>
       <translation>Permite especificar se a janela secundária de definições/tradução semiautomáticas deve ficar ativa por padrão. Se habilitada esta opção, o programa será sempre executado com a janela secundária ativada.</translation>
     </message>
     <message>
-      <source>Normally, in order to activate a popup you have to
-maintain the chosen keys pressed while you select
-a word. With this enabled, the chosen keys may also
-be pressed shortly after the selection is done.</source>
-      <translation>Normalmente, para ativar uma janela de consulta/tradução,é necessário manter premidas
-as teclas de atalho enquanto se seleciona uma palavra. Se habilitada esta opção, as
-teclas de atalho podem ser premidas também pouco depois da seleção da palavra/expressão.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Não mostrar pop-up quando a seleção ou a área de transferência em uma das janelas do GoldenDict mudar</translation>
@@ -4113,18 +3958,6 @@ teclas de atalho podem ser premidas também pouco depois da seleção da palavra
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Ignorar as próprias alterações de seleção e área de transferência do GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Nota: Parece que você está executando uma versão do X.Org XServer com a extensão RECORD quebrada. Os atalhos de teclado talvez não funcionem no GoldenDict. Isso deve ser consertado no próprio servidor. Veja a documentação no site: &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;sugli errori &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; e deixe um comentário lá, se quiser.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4199,18 +4032,6 @@ pesquisa. Com isto, porém, a janela principal será ocultada.</translation>
       <translation>Usar a tecla ESC para ocultar a janela principal</translation>
     </message>
     <message>
-      <source>Enabling this would allow to listen to sound pronunciations from
-online dictionaries that rely on Flash or other web plugins.
-Plugin must be installed for this option to work.</source>
-      <translation>Se você habilitar esta opção, poderá ouvir pronúncias de dicionários online que usam
-Flash ou outros plugins da web.
-O plugin precisa estar instalado em seu sistema para isto funcionar.</translation>
-    </message>
-    <message>
-      <source>Enable web plugins</source>
-      <translation>Habilitar plugins da web</translation>
-    </message>
-    <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Habilite esta opção se não quiser exibir a guia principal
@@ -4220,10 +4041,6 @@ quando apenas uma delas estiver aberta.</translation>
       <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
       <translation>Ocultar guia única</translation>
-    </message>
-    <message>
-      <source>Help language</source>
-      <translation>Idioma de ajuda</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="141"/>
@@ -4465,145 +4282,117 @@ apaga seu cache de rede do disco durante a saída.</translation>
       <translation>A&amp;vançada</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1715"/>
+      <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Durante buscas sucessivas, se um dicionário for recolhido pelo manual, ele permanecerá recolhido na próxima busca</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1718"/>
+      <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
       <translation>Colapso da sessão</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1739"/>
+      <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Ao usar a área de transferência, remova tudo após a nova linha</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1746"/>
+      <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Em uma nova pesquisa, focar a janela principal ou pop-up, mesmo que&apos;seja visível</translation>
     </message>
     <message>
-      <source>ScanPopup unpinned window flags</source>
-      <translation>Pesquisador de janela secundária (popup) para janelas não selecionadas sinalizadas</translation>
-    </message>
-    <message>
-      <source>Experiment with non-default flags if the unpinned scan popup window misbehaves</source>
-      <translation>Experimente com sinalizadores não padrão se a janela pop-up de verificação não fixada se comportar mal</translation>
-    </message>
-    <message>
-      <source>&lt;default&gt;</source>
-      <translation>&lt;default&gt;</translation>
-    </message>
-    <message>
-      <source>Popup</source>
-      <translation>Janela secundária (popup)</translation>
-    </message>
-    <message>
-      <source>Tool</source>
-      <translation>Ferramenta</translation>
-    </message>
-    <message>
-      <source>This hint can be combined with non-default window flags</source>
-      <translation>Essa dica pode ser combinada com sinalizadores de janela não padrão</translation>
-    </message>
-    <message>
-      <source>Bypass window manager hint</source>
-      <translation>Ignorar dica do gerenciador de janelas</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1524"/>
+      <location filename="../src/ui/preferences.ui" line="1511"/>
       <source>Favorites</source>
       <translation>Favoritos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1532"/>
+      <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Intervalo para salvar Favoritos. Se definido como 0, os Favoritos serão salvos apenas durante a saída.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1558"/>
+      <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Ative esta opção para confirmar todas as operações de exclusão de itens</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1561"/>
+      <location filename="../src/ui/preferences.ui" line="1563"/>
       <source>Confirmation for items deletion</source>
       <translation>Confirmação para exclusão de itens</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1632"/>
+      <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Ligue esta opção para ignorar texto de entrada excessivamente longo
 do mouse-over, seleção, área de transferência ou linha de comando</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1636"/>
+      <location filename="../src/ui/preferences.ui" line="1638"/>
       <source>Ignore input phrases longer than</source>
       <translation>Ignorar frases inseridas maiores que</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Frases de entrada maiores que este tamanho serão ignoradas</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1692"/>
+      <location filename="../src/ui/preferences.ui" line="1694"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Ative esta opção para ignorar sinais diacríticos ao pesquisar artigos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1695"/>
+      <location filename="../src/ui/preferences.ui" line="1697"/>
       <source>Ignore diacritics while searching</source>
       <translation>Ignorar diacríticos durante a pesquisa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1682"/>
+      <location filename="../src/ui/preferences.ui" line="1684"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Habilite esta opção se quise expandir sempre partes opcionais de artigos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1685"/>
+      <location filename="../src/ui/preferences.ui" line="1687"/>
       <source>Expand optional &amp;parts</source>
       <translation>E&amp;xpandir partes opcionais</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1622"/>
+      <location filename="../src/ui/preferences.ui" line="1624"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Selecione essa opção para automaticamente recolher grandes artigos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1625"/>
+      <location filename="../src/ui/preferences.ui" line="1627"/>
       <source>Collapse articles more than</source>
       <translation>Recolher artigos mais de</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui" line="1668"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Artigos mais longos que esse tamanho vai ser recolhido</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1592"/>
+      <location filename="../src/ui/preferences.ui" line="1594"/>
       <source>Ignore punctuation while searching</source>
       <translation>Ignorar pontuação ao pesquisar</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1728"/>
+      <location filename="../src/ui/preferences.ui" line="1730"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Ative esta opção para habilitar a pesquisa de artigos extras por meio de listas de sinônimos
 dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1732"/>
+      <location filename="../src/ui/preferences.ui" line="1734"/>
       <source>Extra search via synonyms</source>
       <translation>Pesquisa extra via sinônimos</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1615"/>
-      <location filename="../src/ui/preferences.ui" line="1659"/>
+      <location filename="../src/ui/preferences.ui" line="1617"/>
+      <location filename="../src/ui/preferences.ui" line="1661"/>
       <source>symbols</source>
       <translation>símbolos</translation>
     </message>
@@ -4633,7 +4422,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Gravar o &amp;histórico</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1586"/>
+      <location filename="../src/ui/preferences.ui" line="1588"/>
       <source>Articles</source>
       <translation>Artigos</translation>
     </message>
@@ -4669,19 +4458,15 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1469"/>
-      <location filename="../src/ui/preferences.ui" line="1535"/>
+      <location filename="../src/ui/preferences.ui" line="1531"/>
       <source>Save every</source>
       <translation>Salvar tudo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1486"/>
-      <location filename="../src/ui/preferences.ui" line="1549"/>
+      <location filename="../src/ui/preferences.ui" line="1551"/>
       <source>minutes</source>
       <translation>minutos</translation>
-    </message>
-    <message>
-      <source>English</source>
-      <translation type="unfinished">English</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
@@ -4708,39 +4493,31 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source> MB</source>
       <translation> MB</translation>
     </message>
-    <message>
-      <source>Changing Dictionary Font Family</source>
-      <translation>Alterar família de fontes do Dicionário</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the dictionary font family change.</source>
-      <translation>Reinicie o programa para aplicar a mudança na família da fonte do dicionário.</translation>
-    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1085"/>
+      <location filename="../src/dict/sources.cc" line="1091"/>
       <source>Audio</source>
       <translation>Áudio</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1087"/>
+      <location filename="../src/dict/sources.cc" line="1093"/>
       <source>Plain Text</source>
       <translation>Texto simples</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1089"/>
+      <location filename="../src/dict/sources.cc" line="1095"/>
       <source>Html</source>
       <translation>HTML</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1091"/>
+      <location filename="../src/dict/sources.cc" line="1097"/>
       <source>Prefix Match</source>
       <translation>Correspondência de prefixo</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1093"/>
+      <location filename="../src/dict/sources.cc" line="1099"/>
       <source>Unknown</source>
       <translation>Desconhecido</translation>
     </message>
@@ -4766,27 +4543,27 @@ dos dicionários Stardict, Babylon e GLS</translation>
   <context>
     <name>ProgramsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="993"/>
+      <location filename="../src/dict/sources.cc" line="999"/>
       <source>Enabled</source>
       <translation>Habilitada</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="995"/>
+      <location filename="../src/dict/sources.cc" line="1001"/>
       <source>Type</source>
       <translation>Tipo</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="997"/>
+      <location filename="../src/dict/sources.cc" line="1003"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="999"/>
+      <location filename="../src/dict/sources.cc" line="1005"/>
       <source>Command Line</source>
       <translation>Linha de comando</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1001"/>
+      <location filename="../src/dict/sources.cc" line="1007"/>
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
@@ -4820,82 +4597,6 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Versão: %1%2</translation>
     </message>
     <message>
-      <source>avformat_alloc_context() failed.</source>
-      <translation>avformat_alloc_context() falhou.</translation>
-    </message>
-    <message>
-      <source>av_malloc() failed.</source>
-      <translation>av_malloc() falhou.</translation>
-    </message>
-    <message>
-      <source>avio_alloc_context() failed.</source>
-      <translation>avio_alloc_context() falhou.</translation>
-    </message>
-    <message>
-      <source>avformat_open_input() failed: %1.</source>
-      <translation>avformat_open_input() falhou: %1.</translation>
-    </message>
-    <message>
-      <source>avformat_find_stream_info() failed: %1.</source>
-      <translation>avformat_find_stream_info() falhou: %1.</translation>
-    </message>
-    <message>
-      <source>Could not find audio stream.</source>
-      <translation>Não foi possível encontrar o fluxo de áudio.</translation>
-    </message>
-    <message>
-      <source>Codec [id: %1] not found.</source>
-      <translation>Codec [id: %1] não encontrado.</translation>
-    </message>
-    <message>
-      <source>avcodec_alloc_context3() failed.</source>
-      <translation>avcodec_alloc_context3() falhou.</translation>
-    </message>
-    <message>
-      <source>avcodec_open2() failed: %1.</source>
-      <translation>avcodec_open2() falhou: %1.</translation>
-    </message>
-    <message>
-      <source>Can not found default audio output device</source>
-      <translation>Não foi encontrado o dispositivo de saída de áudio padrão</translation>
-    </message>
-    <message>
-      <source>Cannot find usable audio output device.</source>
-      <translation>Não foi possível encontrar o dispositivo de saída de áudio utilizável.</translation>
-    </message>
-    <message>
-      <source>Unsupported sample format.</source>
-      <translation>Formato de amostra não suportado.</translation>
-    </message>
-    <message>
-      <source>ao_open_live() failed: </source>
-      <translation>ao_open_live() falhou: </translation>
-    </message>
-    <message>
-      <source>No driver.</source>
-      <translation>Nenhum driver.</translation>
-    </message>
-    <message>
-      <source>This driver is not a live output device.</source>
-      <translation>Este driver não é um dispositivo de saída ao vivo.</translation>
-    </message>
-    <message>
-      <source>A valid option key has an invalid value.</source>
-      <translation>Uma tecla de opção válida teve um valor inválido .</translation>
-    </message>
-    <message>
-      <source>Cannot open the device: %1, channels: %2, rate: %3, bits: %4.</source>
-      <translation>Não é possível abrir o dispositivo: %1, canais: %2, taxa: %3, bits: %4.</translation>
-    </message>
-    <message>
-      <source>Unknown error.</source>
-      <translation>Erro desconhecido.</translation>
-    </message>
-    <message>
-      <source>avcodec_alloc_frame() failed.</source>
-      <translation>avcodec_alloc_frame() falhou.</translation>
-    </message>
-    <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
       <location filename="../src/dict/stardict.cc" line="1110"/>
@@ -4924,44 +4625,32 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Data: %1%2</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post para anki falhou</translation>
-    </message>
-    <message>
-      <source>Previous Page</source>
-      <translation>Página anterior</translation>
-    </message>
-    <message>
-      <source>Next Page</source>
-      <translation>Página seguinte</translation>
-    </message>
-    <message>
-      <location filename="../src/main.cc" line="142"/>
+      <location filename="../src/main.cc" line="150"/>
       <source>A dictionary lookup program.</source>
       <translation>Um programa de pesquisa de dicionário.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="145"/>
+      <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
       <translation>Palavra ou frase a consultar.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="149"/>
+      <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="153"/>
+      <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
       <translation>Altera o grupo da janela principal.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="157"/>
+      <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
       <translation>Alterar o grupo de popup.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="162"/>
+      <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
       <translation>Alternar pop-up de verificação.</translation>
     </message>
@@ -4972,10 +4661,6 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Dicionário pesquisar/filtro (Ctrl+F)</translation>
-    </message>
-    <message>
-      <source>Quick Search</source>
-      <translation>Pesquisa Rápida</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1174"/>
@@ -5028,18 +4713,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
   </context>
   <context>
-    <name>ScanFlag</name>
-    <message>
-      <source>MainWindow</source>
-      <translation>Janela Principal</translation>
-    </message>
-  </context>
-  <context>
     <name>ScanPopup</name>
-    <message>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
@@ -5145,17 +4819,17 @@ das outras janelas, redimensioná-la ou geri-la à vontade.</translation>
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1285"/>
+      <location filename="../src/dict/sources.cc" line="1291"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1283"/>
+      <location filename="../src/dict/sources.cc" line="1289"/>
       <source>Path</source>
       <translation>Caminho</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1287"/>
+      <location filename="../src/dict/sources.cc" line="1293"/>
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
@@ -5183,9 +4857,9 @@ das outras janelas, redimensioná-la ou geri-la à vontade.</translation>
       <translation>Nihon-shiki</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="259"/>
-      <location filename="../src/dict/sources.cc" line="283"/>
-      <location filename="../src/dict/sources.cc" line="307"/>
+      <location filename="../src/dict/sources.cc" line="262"/>
+      <location filename="../src/dict/sources.cc" line="286"/>
+      <location filename="../src/dict/sources.cc" line="310"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Quer mesmo remover o site &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
     </message>
@@ -5205,8 +4879,8 @@ das outras janelas, redimensioná-la ou geri-la à vontade.</translation>
       <translation>Caminhos de coleções de arquivos de áudio de pronúncia:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="192"/>
-      <location filename="../src/dict/sources.cc" line="219"/>
+      <location filename="../src/dict/sources.cc" line="195"/>
+      <location filename="../src/dict/sources.cc" line="222"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Quer mesmo remover a pasta &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
     </message>
@@ -5260,15 +4934,6 @@ Ainda não implementado no GoldenDict.</translation>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
       <translation>Código do idioma ISO 639-3</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
-      <source>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
-
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Exemplos:  &amp;quot;eng&amp;quot; para iluminar, &amp;quot;fra&amp;quot; para o francês) &lt;br&gt;
-
-Lista completa de línguas disponíveis pode ser encontrada &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; aqui &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
@@ -5340,6 +5005,15 @@ Ainda não implementado no GoldenDict.</translation>
       <translation>&amp;Modificar...</translation>
     </message>
     <message>
+      <location filename="../src/ui/sources.ui" line="500"/>
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
+      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+    </message>
+    <message>
       <location filename="../src/ui/sources.ui" line="823"/>
       <source>Katakana</source>
       <translation>Katakana</translation>
@@ -5375,9 +5049,9 @@ Ainda não implementado no GoldenDict.</translation>
       <translation>&amp;Adicionar...</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="177"/>
-      <location filename="../src/dict/sources.cc" line="204"/>
-      <location filename="../src/dict/sources.cc" line="231"/>
+      <location filename="../src/dict/sources.cc" line="180"/>
+      <location filename="../src/dict/sources.cc" line="207"/>
+      <location filename="../src/dict/sources.cc" line="234"/>
       <source>Choose a directory</source>
       <translation>Escolha uma pasta</translation>
     </message>
@@ -5402,12 +5076,12 @@ Ainda não implementado no GoldenDict.</translation>
       <translation>Caminhos dos arquivos de dicionário:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="191"/>
-      <location filename="../src/dict/sources.cc" line="218"/>
-      <location filename="../src/dict/sources.cc" line="258"/>
-      <location filename="../src/dict/sources.cc" line="282"/>
-      <location filename="../src/dict/sources.cc" line="306"/>
-      <location filename="../src/dict/sources.cc" line="330"/>
+      <location filename="../src/dict/sources.cc" line="194"/>
+      <location filename="../src/dict/sources.cc" line="221"/>
+      <location filename="../src/dict/sources.cc" line="261"/>
+      <location filename="../src/dict/sources.cc" line="285"/>
+      <location filename="../src/dict/sources.cc" line="309"/>
+      <location filename="../src/dict/sources.cc" line="333"/>
       <source>Confirm removal</source>
       <translation>Confirmar remoção</translation>
     </message>
@@ -5469,10 +5143,6 @@ dos grupos apropriados para usá-los.</translation>
       <translation>Servidores DICT:</translation>
     </message>
     <message>
-      <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
-      <translation>Todos os programas externos. Um texto %GDWORD% vai ser substituído com a palavra consultada. Se nenhum texto não é apresentado, a palavra vai ser alimentada com a entrada padrão.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/sources.ui" line="545"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>Pronunciar palavras diretamente de &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Este site permite gravar e compartilhar pronúncias de palavras. É possível ouvi-las no GoldenDict.</translation>
@@ -5486,15 +5156,6 @@ dos grupos apropriados para usá-los.</translation>
       <location filename="../src/ui/sources.ui" line="575"/>
       <source>API Key:</source>
       <translation>Chave API:</translation>
-    </message>
-    <message>
-      <source>Use of Forvo currently requires an API key. Leave this field
-blank to use the default key, which may become unavailable
-in the future, or register on the site to get your own key.</source>
-      <translation>O uso do Forvo atualmente requer uma chave API. Deixe este
-campo em branco para usar a chave padrão, que poderá
-ficar indisponível no futuro, ou cadastre-se no site para
-obter sua própria chave.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
@@ -5518,7 +5179,7 @@ obter sua própria chave.</translation>
       <translation>Transliteração do Grego</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="140"/>
+      <location filename="../src/dict/sources.cc" line="143"/>
       <source>(not available in portable version)</source>
       <translation>(indisponível na versão portátil)</translation>
     </message>
@@ -5528,7 +5189,7 @@ obter sua própria chave.</translation>
       <translation>Programas</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="331"/>
+      <location filename="../src/dict/sources.cc" line="334"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Quer mesmo remover o programa &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
     </message>
@@ -5538,10 +5199,6 @@ obter sua própria chave.</translation>
       <translation>Bielorrusso transliteração</translation>
     </message>
     <message>
-      <source>Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</source>
-      <translation>Obter sua própria chave &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;aqui&lt;/a&gt;, ou deixe em branco para usar o padrão.</translation>
-    </message>
-    <message>
       <location filename="../src/ui/sources.ui" line="337"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
@@ -5549,7 +5206,7 @@ obter sua própria chave.</translation>
 %GDBIG5% por Big-5, %GDBIG5HKSCS% por Big5-HKSCS, %GDGBK% por GBK e GB18030, %GDSHIFTJIS% por Shift-JIS.</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="125"/>
+      <location filename="../src/dict/sources.cc" line="128"/>
       <source>Text to Speech</source>
       <translation>Texto para Fala</translation>
     </message>
@@ -5679,33 +5336,33 @@ obter sua própria chave.</translation>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="644"/>
+      <location filename="../src/dict/sources.cc" line="650"/>
       <source>Name</source>
       <translation>Nome</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="646"/>
+      <location filename="../src/dict/sources.cc" line="652"/>
       <source>Address</source>
       <translation>Endereço</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="640"/>
+      <location filename="../src/dict/sources.cc" line="646"/>
       <source>Enabled</source>
       <translation>Habilitado</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="631"/>
-      <location filename="../src/dict/sources.cc" line="664"/>
+      <location filename="../src/dict/sources.cc" line="637"/>
+      <location filename="../src/dict/sources.cc" line="670"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
       <translation>Inserir artigo como link dentro da tag &lt;iframe&gt;</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="642"/>
+      <location filename="../src/dict/sources.cc" line="648"/>
       <source>As link</source>
       <translation>Como link</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="648"/>
+      <location filename="../src/dict/sources.cc" line="654"/>
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>

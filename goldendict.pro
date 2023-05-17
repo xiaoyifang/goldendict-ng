@@ -71,13 +71,8 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
   src/audiooutput.cc
 }
 
-# on windows platform ,only works in release build
-
-CONFIG( use_xapian ) {
-  DEFINES += USE_XAPIAN
-
-  LIBS+= -lxapian
-}
+#xapian is the must option now.
+LIBS += -lxapian
 
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
@@ -445,7 +440,7 @@ SOURCES += \
     src/dict/belarusiantranslit.cc \
     src/dict/bgl.cc \
     src/dict/bgl_babylon.cc \
-    src/dict/customtransliteration.cpp \
+    src/dict/customtransliteration.cc \
     src/dict/dictdfiles.cc \
     src/dict/dictionary.cc \
     src/dict/dictserver.cc \

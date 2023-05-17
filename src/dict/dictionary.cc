@@ -584,12 +584,8 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
     if ( ts > lastModified )
       lastModified = ts;
   }
-#ifndef USE_XAPIAN
-  QDir d( indexFile.c_str() );
-  if(d.exists()){
-    d.removeRecursively();
-  }
-#endif
+
+
   QFileInfo fileInfo( indexFile.c_str() );
 
   if ( !fileInfo.exists() )
@@ -599,11 +595,9 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 }
 
 string getFtsSuffix(){
-#ifdef USE_XAPIAN
+
   return "_FTS_x";
-#else
-  return "_FTS";
-#endif
+
 }
 
 QString generateRandomDictionaryId()

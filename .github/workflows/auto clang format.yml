@@ -1,0 +1,45 @@
+name: "auto clang-format code"
+
+on:
+  pull_request:
+    branches:
+      # - dev
+      # - master
+      - staged
+    paths-ignore:
+      - "docs/**"
+      # - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - "locale/**"
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # check out HEAD on the branch
+          ref: ${{ github.head_ref }}
+          # make sure the parent commit is grabbed as well, because
+          # that's what will get formatted (i.e. the most recent commit)
+          fetch-depth: 2
+      # format the latest commit
+      - name: ubuntu install clang-format
+        run: |
+          sudo apt-get install git  lsb-release wget software-properties-common
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh
+          rm -f llvm.sh
+          sudo apt-get update 
+          sudo apt-get install -y clang-format
+          git-clang-format --style=file HEAD^
+          git diff --staged
+
+      # commit the changes (if there are any)
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        with:
+          commit_message: 🎨 apply clang-format changes
+          branch: ${{ github.head_ref }}

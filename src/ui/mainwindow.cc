@@ -96,11 +96,12 @@ void MainWindow::changeWebEngineViewFont()
 {
   if( cfg.preferences.webFontFamily.isEmpty() )
   {
-    webEngineProfile->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
   }
   else
   {
-    webEngineProfile->settings()->setFontFamily( QWebEngineSettings::StandardFont, cfg.preferences.webFontFamily );
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
+                                                                    cfg.preferences.webFontFamily );
   }
 }
 
@@ -151,28 +152,28 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
-  GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
+  GlobalBroadcaster::instance()->setPreference(&cfg.preferences);
 
-  webEngineProfile.reset( new QWebEngineProfile( "GoldenDictProfile" ) );
-  GlobalBroadcaster::instance()->profile = webEngineProfile.get();
-  localSchemeHandler                     = new LocalSchemeHandler( articleNetMgr, this );
-  webEngineProfile->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
-  webEngineProfile->installUrlSchemeHandler( "bword", localSchemeHandler );
-  webEngineProfile->installUrlSchemeHandler( "entry", localSchemeHandler );
+  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this);
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "bword", localSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "entry", localSchemeHandler );
 
   iframeSchemeHandler = new IframeSchemeHandler( this );
-  webEngineProfile->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdpicture", "gdtts" };
-  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
-  for( const auto & localScheme : localSchemes ) {
-    webEngineProfile->installUrlSchemeHandler( localScheme.toLatin1(), resourceSchemeHandler );
+  resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this);
+  for( int i = 0; i < localSchemes.size(); i++ )
+  {
+    QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localSchemes.at( i ).toLatin1(),
+                                                                  resourceSchemeHandler );
   }
 
-  webEngineProfile->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
+  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor(this) );
 
-  if( !cfg.preferences.hideGoldenDictHeader ) {
-    webEngineProfile->setHttpUserAgent( webEngineProfile->httpUserAgent() + " GoldenDict/WebEngine" );
+  if(!cfg.preferences.hideGoldenDictHeader){
+    QWebEngineProfile::defaultProfile()->setHttpUserAgent(QWebEngineProfile::defaultProfile()->httpUserAgent()+" GoldenDict/WebEngine");
   }
 
   qRegisterMetaType< Config::InputPhrase >();
@@ -1410,9 +1411,9 @@ void MainWindow::setupNetworkCache( int maxSize )
     return; // There is currently no cache and it is not needed.
 
   QString cacheDirectory = Config::getCacheDir();
-  if ( !QDir().mkpath( cacheDirectory ) ) {
+  if( !QDir().mkpath( cacheDirectory ) )
     cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-
+  {
     gdWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
   }
 
@@ -1420,9 +1421,6 @@ void MainWindow::setupNetworkCache( int maxSize )
   diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
   diskCache->setCacheDirectory( cacheDirectory );
   articleNetMgr.setCache( diskCache );
-
-  webEngineProfile->setCachePath( cacheDirectory );
-  webEngineProfile->setPersistentStoragePath( cacheDirectory );
 }
 
 void MainWindow::makeDictionaries()
@@ -2123,8 +2121,6 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
   scanPopup->refresh();
   installHotKeys();
-
-
 }
 
 void MainWindow::editCurrentGroup()
@@ -2161,14 +2157,8 @@ void MainWindow::editPreferences()
     p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
 
     p.fts.dialogGeometry = cfg.preferences.fts.dialogGeometry;
-    p.fts.matchCase = cfg.preferences.fts.matchCase;
-    p.fts.maxArticlesPerDictionary = cfg.preferences.fts.maxArticlesPerDictionary;
-    p.fts.maxDistanceBetweenWords = cfg.preferences.fts.maxDistanceBetweenWords;
+
     p.fts.searchMode = cfg.preferences.fts.searchMode;
-    p.fts.useMaxArticlesPerDictionary = cfg.preferences.fts.useMaxArticlesPerDictionary;
-    p.fts.useMaxDistanceBetweenWords = cfg.preferences.fts.useMaxDistanceBetweenWords;
-    p.fts.ignoreWordsOrder = cfg.preferences.fts.ignoreWordsOrder;
-    p.fts.ignoreDiacritics = cfg.preferences.fts.ignoreDiacritics;
 
     // See if we need to reapply Qt stylesheets
     if( cfg.preferences.displayStyle != p.displayStyle ||

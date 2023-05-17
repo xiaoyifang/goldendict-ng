@@ -1,9 +1,7 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-#ifdef USE_XAPIAN
 #include "xapian.h"
 #include <stdlib.h>
-#endif
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "wstring_qt.hh"
@@ -38,7 +36,6 @@ const static std::string finish_mark = std::string( "dehsinif" );
 bool ftsIndexIsOldOrBad( string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict )
 {
-#ifdef USE_XAPIAN
   try
   {
     Xapian::WritableDatabase db( dict->ftsIndexName() );
@@ -61,15 +58,6 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
     return true;
   }
   return false;
-#endif
-
-  File::Class idx( indexFile, "rb" );
-
-  FtsIdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != FtsSignature ||
-         header.formatVersion != CurrentFtsFormatVersion + dict->getFtsIndexVersion();
 }
 
 static QString makeHiliteRegExpString( QStringList const & words,
@@ -365,145 +353,10 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
-#ifdef USE_XAPIAN
   return makeFTSIndexXapian(dict,isCancelled);
-#endif
-
-  Mutex::Lock _( dict->getFtsMutex() );
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
-
-  File::Class ftsIdx( dict->ftsIndexName(), "wb" );
-
-  FtsIdxHeader ftsIdxHeader;
-  memset( &ftsIdxHeader, 0, sizeof( ftsIdxHeader ) );
-
-  // We write a dummy header first. At the end of the process the header
-  // will be rewritten with the right values.
-
-  ftsIdx.write( ftsIdxHeader );
-
-  ChunkedStorage::Writer chunks( ftsIdx );
-
-  BtreeIndexing::IndexedWords indexedWords;
-
-  QSet< uint32_t > setOfOffsets;
-  setOfOffsets.reserve( dict->getArticleCount() );
-
-  dict->findArticleLinks( 0, &setOfOffsets, 0, &isCancelled );
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
-
-  QVector< uint32_t > offsets;
-  offsets.resize( setOfOffsets.size() );
-  uint32_t * ptr = &offsets.front();
-
-  for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-       it != setOfOffsets.constEnd(); ++it )
-  {
-    *ptr = *it;
-    ptr++;
-  }
-
-  // Free memory
-  setOfOffsets.clear();
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
-
-  dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
-
-  QMap< QString, QVector< uint32_t > > ftsWords;
-
-  bool needHandleBrackets;
-  {
-    QString name = QString::fromUtf8( dict->getDictionaryFilenames()[ 0 ].c_str() ).toLower();
-    needHandleBrackets = name.endsWith( ".dsl" ) || name.endsWith( "dsl.dz" );
-  }
-
-  QSemaphore sem( QThread::idealThreadCount() );
-  //QFutureSynchronizer< void > synchronizer;
-
-  long indexedFtsDoc=0;
-  for( auto & address : offsets )
-  {
-    indexedFtsDoc++;
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
-        //wait the future to be finished.
-      sem.acquire( QThread::idealThreadCount() );
-      return;
-    }
-
-    sem.acquire();
-    QFuture< void > f = QtConcurrent::run(
-      [ & ]()
-      {
-        QSemaphoreReleaser releaser( sem );
-        if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        {
-          return;
-        }
-
-        QString headword, articleStr;
-
-        dict->getArticleText( address, headword, articleStr );
-
-        parseArticleForFts( address, articleStr, ftsWords, needHandleBrackets );
-      } );
-    //synchronizer.addFuture( f );
-
-    dict->setIndexedFtsDoc(indexedFtsDoc);
-  }
-  sem.acquire( QThread::idealThreadCount() );
-  // Free memory
-  offsets.clear();
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
-
-  QMap< QString, QVector< uint32_t > >::iterator it = ftsWords.begin();
-  while( it != ftsWords.end() )
-  {
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    uint32_t offset = chunks.startNewBlock();
-    uint32_t size = it.value().size();
-
-    chunks.addToBlock( &size, sizeof(uint32_t) );
-    chunks.addToBlock( it.value().data(), size * sizeof(uint32_t) );
-
-    indexedWords.addSingleWord( gd::toWString( it.key() ), offset );
-
-    it = ftsWords.erase( it );
-  }
-
-  ftsIdxHeader.chunksOffset = chunks.finish();
-  ftsIdxHeader.wordCount = indexedWords.size();
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
-
-  BtreeIndexing::IndexInfo ftsIdxInfo = BtreeIndexing::buildIndex( indexedWords, ftsIdx );
-
-  // Free memory
-  indexedWords.clear();
-
-  ftsIdxHeader.indexBtreeMaxElements = ftsIdxInfo.btreeMaxElements;
-  ftsIdxHeader.indexRootOffset = ftsIdxInfo.rootOffset;
-
-  ftsIdxHeader.signature = FtsHelpers::FtsSignature;
-  ftsIdxHeader.formatVersion = FtsHelpers::CurrentFtsFormatVersion + dict->getFtsIndexVersion();
-
-  ftsIdx.rewind();
-  ftsIdx.writeRecords( &ftsIdxHeader, sizeof(ftsIdxHeader), 1 );
 }
 
 // use xapian to create the index
-#ifdef USE_XAPIAN
 void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
   Mutex::Lock _( dict->getFtsMutex() );
@@ -613,7 +466,6 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
     qWarning()<<QString::fromStdString(e.get_description());
   }
 }
-#endif
 
 bool isCJKChar( ushort ch )
 {
@@ -1205,86 +1057,9 @@ void FTSResultsRequest::fullSearch( QStringList & searchWords, QRegExp & regexp 
 
 void FTSResultsRequest::run()
 {
-#ifdef USE_XAPIAN
   return runXapian();
-#endif
-
-  if ( dict.ensureInitDone().size() )
-  {
-    setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
-    finish();
-    return;
-  }
-
-  try
-  {
-    QStringList indexWords, searchWords;
-    QRegExp searchRegExp;
-
-    if( !FtsHelpers::parseSearchString( searchString, indexWords, searchWords, searchRegExp,
-                                        searchMode, matchCase, distanceBetweenWords, hasCJK, ignoreWordsOrder ) )
-    {
-      finish();
-      return;
-    }
-
-    if( dict.haveFTSIndex() && !indexWords.isEmpty() )
-    {
-      FtsIdxHeader ftsIdxHeader;
-      BtreeIndexing::BtreeIndex ftsIndex;
-      sptr< ChunkedStorage::Reader > chunks;
-
-      File::Class ftsIdx( dict.ftsIndexName(), "rb" );
-
-      {
-        Mutex::Lock _( dict.getFtsMutex() );
-
-        ftsIdxHeader = ftsIdx.read< FtsIdxHeader >();
-
-        wordsInIndex = ftsIdxHeader.wordCount;
-
-        ftsIndex.openIndex( BtreeIndexing::IndexInfo( ftsIdxHeader.indexBtreeMaxElements,
-                                                      ftsIdxHeader.indexRootOffset ),
-                            ftsIdx, dict.getFtsMutex() );
-
-        chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader(ftsIdx, ftsIdxHeader.chunksOffset));
-      }
-
-      if( hasCJK )
-        combinedIndexSearch( ftsIndex, chunks, indexWords, searchWords, searchRegExp );
-      else
-      {
-        if( searchMode == FTS::WholeWords )
-          indexSearch( ftsIndex, chunks, indexWords, searchWords, searchRegExp );
-        else
-          fullIndexSearch( ftsIndex, chunks, indexWords, searchWords, searchRegExp );
-      }
-    }
-    else
-    {
-      fullSearch( searchWords, searchRegExp );
-    }
-
-    if( foundHeadwords && foundHeadwords->size() > 0 )
-    {
-      Mutex::Lock _( dataMutex );
-      data.resize( sizeof( foundHeadwords ) );
-      memcpy( &data.front(), &foundHeadwords, sizeof( foundHeadwords ) );
-      foundHeadwords = 0;
-      hasAnyData = true;
-    }
-  }
-  catch( std::exception &ex )
-  {
-    gdWarning( "FTS: Failed full-text search for \"%s\", reason: %s\n",
-               dict.getName().c_str(), ex.what() );
-    // Results not loaded -- we don't set the hasAnyData flag then
-  }
-
-  finish();
 }
 
-#ifdef USE_XAPIAN
 void FTSResultsRequest::runXapian()
 {
   if ( dict.ensureInitDone().size() )
@@ -1384,7 +1159,6 @@ void FTSResultsRequest::runXapian()
 
   finish();
 }
-#endif
 
 } // namespace
 

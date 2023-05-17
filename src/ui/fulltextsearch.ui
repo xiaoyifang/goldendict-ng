@@ -43,54 +43,6 @@
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QGridLayout" name="fulltext_option_container">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetMinAndMaxSize</enum>
-        </property>
-        <item row="1" column="1">
-         <widget class="QSpinBox" name="articlesPerDictionary"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QSpinBox" name="distanceBetweenWords"/>
-        </item>
-        <item row="1" column="2">
-         <widget class="QCheckBox" name="matchCase">
-          <property name="text">
-           <string>Match case</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QCheckBox" name="checkBoxDistanceBetweenWords">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="checkBoxArticlesPerDictionary">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QCheckBox" name="checkBoxIgnoreWordOrder">
-          <property name="text">
-           <string>Ignore words order</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QCheckBox" name="checkBoxIgnoreDiacritics">
-          <property name="text">
-           <string>Ignore diacritics</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
      </layout>
     </widget>
    </item>
@@ -272,11 +224,6 @@
  </widget>
  <tabstops>
   <tabstop>headwordsView</tabstop>
-  <tabstop>checkBoxDistanceBetweenWords</tabstop>
-  <tabstop>distanceBetweenWords</tabstop>
-  <tabstop>checkBoxArticlesPerDictionary</tabstop>
-  <tabstop>articlesPerDictionary</tabstop>
-  <tabstop>matchCase</tabstop>
   <tabstop>OKButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
