@@ -203,7 +203,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}/GoldenDict-ng-v23-Installer.exe
-          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}-xapian-Installer.exe
+          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-Installer.exe
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
