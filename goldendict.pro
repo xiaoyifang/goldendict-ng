@@ -71,13 +71,8 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
   src/audiooutput.cc
 }
 
-# on windows platform ,only works in release build
-
-CONFIG( use_xapian ) {
-  DEFINES += USE_XAPIAN
-
-  LIBS+= -lxapian
-}
+#xapian is the must option now.
+LIBS += -lxapian
 
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD

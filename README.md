@@ -183,12 +183,10 @@ make install
 
  On Windows,follow the instructions in the xapian-core/INSTALL Visual Studio parts.（**xapian does not support to use the  Debug lib in Windows. have to debug in release version mode using xapian's release lib**）.
 A precompiled version of xapian lib has provided in winlibs
+On Linux,  install libxapian-dev package using package manager.
+On Mac, use homebrew to install xapian `brew install xapian`
 
-use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be used to support as the the fulltext's backend engine.
-
-```
-qmake "CONFIG+=use_xapian"
-```
+Goldendict-ng has used xapian as the default and the only one fulltext engine.
 
 use `CONFIG+=use_iconv` to enable this feature. when enabled ,iconv will be used to convert encoding other than the QTextCodec(which will be deprecated in future Qt version)
 
