@@ -168,8 +168,8 @@ if (APPLE)
 endif ()
 
 if (LINUX OR BSD)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.desktop DESTINATION share/applications)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.goldendict.GoldenDict.metainfo.xml DESTINATION share/metainfo)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.xiaoyifang.GoldenDict_NG.desktop DESTINATION share/applications)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.xiaoyifang.GoldenDict_NG.metainfo.xml DESTINATION share/metainfo)
 
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
 
