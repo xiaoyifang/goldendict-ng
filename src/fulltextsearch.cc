@@ -213,14 +213,14 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
                                             Config::Class & cfg_,
                                             std::vector< sptr< Dictionary::Class > > const & dictionaries_,
                                             std::vector< Instances::Group > const & groups_,
-                                            FtsIndexing & ftsidx ) :
+                                            FtsIndexing & ftsidx ):
   QDialog( parent ),
   cfg( cfg_ ),
   dictionaries( dictionaries_ ),
   groups( groups_ ),
   group( 0 ),
-  ftsIdx( ftsidx )
-, helpAction( this )
+  ftsIdx( ftsidx ),
+  helpAction( this )
 {
   ui.setupUi( this );
 
@@ -344,12 +344,15 @@ void FullTextSearchDialog::accept()
   ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
 
   bool hasCJK;
-  if( !FtsHelpers::parseSearchString( ui.searchLine->text(), list1, list2,
-                                      searchRegExp, mode,
-                                      false,
-                                      0,
-                                      hasCJK, false ) )
-  {
+  if ( !FtsHelpers::parseSearchString( ui.searchLine->text(),
+                                       list1,
+                                       list2,
+                                       searchRegExp,
+                                       mode,
+                                       false,
+                                       0,
+                                       hasCJK,
+                                       false ) ) {
     QMessageBox message( QMessageBox::Warning,
                          "GoldenDict",
                          tr( "The search line must contains at least one word containing " )
@@ -383,15 +386,8 @@ void FullTextSearchDialog::accept()
       continue;
     }
     //max results=100
-    sptr< Dictionary::DataRequest > req = activeDicts[ x ]->getSearchResults(
-                                                              ui.searchLine->text(),
-                                                              mode,
-                                                              false,
-                                                              0,
-                                                              100,
-                                                              false,
-                                                              false
-                                                            );
+    sptr< Dictionary::DataRequest > req =
+      activeDicts[ x ]->getSearchResults( ui.searchLine->text(), mode, false, 0, 100, false, false );
     connect( req.get(),
       &Dictionary::Request::finished,
       this,

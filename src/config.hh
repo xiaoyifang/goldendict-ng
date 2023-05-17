@@ -179,7 +179,7 @@ struct FullTextSearch
   QByteArray dialogGeometry;
   QString disabledTypes;
 
-  FullTextSearch() :
+  FullTextSearch():
     searchMode( 0 ),
     enabled( true ),
     maxDictionarySize( 0 )
