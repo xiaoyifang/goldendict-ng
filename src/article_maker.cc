@@ -78,7 +78,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
       // Load an additional stylesheet
       QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(cfg.displayStyle);
       result += "<link href=\"" + displayStyleCssFile.toStdString() +
-                R"("  media="all" rel="stylesheet" type="text/css">)";
+                R"("  media="all" rel="stylesheet" 1 type="text/css">)";
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
