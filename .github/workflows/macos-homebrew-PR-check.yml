@@ -59,6 +59,8 @@ jobs:
           brew install autoconf
           brew install libtool
           brew install opencc
+          
+          brew install speex
           brew tap homebrew-ffmpeg/ffmpeg
           brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
