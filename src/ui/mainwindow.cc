@@ -1844,12 +1844,6 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   }
   escaped.replace( "&", "&&" );
 
-  if( escaped.isRightToLeft() )
-  {
-    escaped.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-    escaped.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-  }
-
   int index = ui.tabWidget->indexOf( view );
   if( !escaped.isEmpty() )
     ui.tabWidget->setTabText( index, escaped );
@@ -1885,11 +1879,6 @@ void MainWindow::updateWindowTitle()
     QString str = view->getTitle();
     if( !str.isEmpty() )
     {
-      if( str.isRightToLeft() )
-      {
-        str.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-        str.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-      }
       if( !blockUpdateWindowTitle )
         setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
       blockUpdateWindowTitle = false;

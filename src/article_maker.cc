@@ -221,16 +221,9 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word,
 {
   string result( "<div class=\"gdnotfound\"><p>" );
 
-  QString str( word );
-  if( str.isRightToLeft() )
-  {
-    str.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-    str.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-  }
-
   if ( word.size() )
-    result += tr( "No translation for <b>%1</b> was found in group <b>%2</b>." ).
-              arg( QString::fromUtf8( Html::escape( str.toUtf8().data() ).c_str() ), QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) ).
+    result += tr( "No translation for <b dir=\"%3\">%1</b> was found in group <b>%2</b>." ).
+              arg( QString::fromUtf8( Html::escape( word.toUtf8().data() ).c_str() ), QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ), word.isRightToLeft()?"rtl":"ltr" ).
                 toUtf8().data();
   else
     result += tr( "No translation was found in group <b>%1</b>." ).
