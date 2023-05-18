@@ -4411,10 +4411,6 @@ QString MainWindow::unescapeTabHeader(QString const & header )
 
   QString escaped = header;
   escaped.replace( "&&", "&" );
-  if( escaped.startsWith( QChar( 0x202E ) ) )
-    escaped = escaped.mid( 1 );
-  if( escaped.endsWith( QChar( 0x202C ) ) )
-    escaped.chop( 1 );
 
   return escaped;
 }
