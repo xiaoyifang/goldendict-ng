@@ -1877,8 +1877,7 @@ void MainWindow::updateWindowTitle()
   if ( view )
   {
     QString str = view->getTitle();
-    if( !str.isEmpty() )
-    {
+    if ( !str.isEmpty() ) {
       if( !blockUpdateWindowTitle )
         setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
       blockUpdateWindowTitle = false;
