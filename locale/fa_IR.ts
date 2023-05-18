@@ -2903,7 +2903,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
-      <translation>&amp;نمایش پنجره اصلی</translation>
+      <translation>&amp;نمایش پنجرهٔ اصلی</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="333"/>
