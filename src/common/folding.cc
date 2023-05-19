@@ -103,7 +103,7 @@ wstring applyFullCaseOnly( wstring const & in )
 
 wstring applyDiacriticsOnly( wstring const & in )
 {
-  auto noAccent = QString::fromStdU32String(in).normalized(QString::NormalizationForm_KD).remove(RX::accentMark);
+  auto noAccent = QString::fromStdU32String( in ).normalized( QString::NormalizationForm_KD ).remove( RX::accentMark );
   return noAccent.toStdU32String();
 }
 
@@ -254,5 +254,4 @@ QString unescapeWildcardSymbols( const QString & str )
 
   return unescaped;
 }
-
 }
