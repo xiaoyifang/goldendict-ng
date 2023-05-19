@@ -1411,9 +1411,8 @@ void MainWindow::setupNetworkCache( int maxSize )
     return; // There is currently no cache and it is not needed.
 
   QString cacheDirectory = Config::getCacheDir();
-  if( !QDir().mkpath( cacheDirectory ) )
+  if ( !QDir().mkpath( cacheDirectory ) ) {
     cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-  {
     gdWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
   }
 
