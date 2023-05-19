@@ -20,16 +20,8 @@
 #ifndef XAPIAN_INCLUDED_VERSION_H
 #define XAPIAN_INCLUDED_VERSION_H
 
-#ifdef _MSC_VER
-#ifdef _DEBUG
-#error You are compiling with _DEBUG defined, but the library
-#error was not compiled with this flag. The settings must match or your
-#error program will not work correctly.
-#endif
-#endif
-
 /// The version of Xapian as a C string literal.
-#define XAPIAN_VERSION "1.4.21"
+#define XAPIAN_VERSION "1.4.22"
 
 /** The major component of the Xapian version.
  * E.g. for Xapian 1.0.14 this would be: 1
@@ -44,7 +36,7 @@
 /** The revision component of the Xapian version.
  * E.g. for Xapian 1.0.14 this would be: 14
  */
-#define XAPIAN_REVISION 21
+#define XAPIAN_REVISION 22
 
 /// Base (signed) type for Xapian::docid and related types.
 #define XAPIAN_DOCID_BASE_TYPE int

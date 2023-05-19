@@ -72,7 +72,12 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
 }
 
 #xapian is the must option now.
-LIBS += -lxapian
+win32{
+  Debug: LIBS+= -L$$PWD/winlibs/lib/xapian/dbg/ -lxapian
+  Release: LIBS+= -L$$PWD/winlibs/lib/xapian/rel/ -lxapian
+}else{
+  LIBS += -lxapian
+}
 
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
@@ -137,6 +142,7 @@ win32 {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
+        LIBS += -L$${PWD}/winlibs/lib
         # silence the warning C4290: C++ exception specification ignored,C4267  size_t to const T , lost data.
         QMAKE_CXXFLAGS += /wd4290 /wd4267 /Zc:__cplusplus /std:c++17 /permissive-
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
