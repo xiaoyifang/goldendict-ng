@@ -142,7 +142,7 @@ public:
         continue;
       }
 
-      gd::wchar ch = Folding::foldedDiacritic( nextChar, left, consumed );
+      gd::wchar ch = *nextChar;
 
       if( Folding::isCombiningMark( ch ) )
       {
@@ -151,16 +151,10 @@ public:
         continue;
       }
 
-      if( consumed > 1 )
-      {
-        for( size_t i = 1; i < consumed; i++ )
-          accentMarkPos.append( pos );
-      }
-
       normText.push_back( ch );
       pos += 1;
-      nextChar += consumed;
-      left -= consumed;
+      nextChar += 1;
+      left -= 1;
     }
     normalizedString = QString::fromStdU32String( normText );
   }
