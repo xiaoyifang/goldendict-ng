@@ -36,6 +36,7 @@ INCLUDEPATH += ./src/
 INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
 INCLUDEPATH += ./src/common
 INCLUDEPATH += ./thirdparty/tomlplusplus
+INCLUDEPATH += ./thirdparty/fmt/include
 
 QT += core \
       gui \
@@ -528,7 +529,8 @@ SOURCES += \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
     src/wordlist.cc \
-    src/zipfile.cc
+    src/zipfile.cc \
+    thirdparty/fmt/format.cc
 
 #speech to text
 SOURCES += src/speechclient.cc \
