@@ -301,7 +301,6 @@ HEADERS += \
     src/common/htmlescape.hh \
     src/common/iconv.hh \
     src/common/inc_case_folding.hh \
-    src/common/inc_diacritic_folding.hh \
     src/common/mutex.hh \
     src/common/sptr.hh \
     src/common/ufile.hh \
