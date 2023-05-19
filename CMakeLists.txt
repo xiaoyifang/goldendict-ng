@@ -77,6 +77,7 @@ target_sources(${GOLDENDICT} PUBLIC
         resources.qrc
         src/scripts/scripts.qrc
         src/stylesheets/css.qrc
+        thirdparty/fmt/format.cc
         ${ALL_SOURCE_FILES}
         ${MACOS_SOURCE_FILES}
         ${QSINGLEAPP_SOURCE_FILES})
@@ -105,6 +106,7 @@ target_include_directories(${GOLDENDICT} PUBLIC
         ${PROJECT_SOURCE_DIR}/src/dict
         ${PROJECT_SOURCE_DIR}/src/ui
         ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus
+        ${PROJECT_SOURCE_DIR}/thirdparty/fmt/include
         )
 
 #### Compile definitions
