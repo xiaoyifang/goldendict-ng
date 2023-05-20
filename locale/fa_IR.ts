@@ -525,7 +525,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
       <source>Favorites folder:</source>
-      <translation type="unfinished">Favorites folder:</translation>
+      <translation>پوشهٔ پسندیده‌ها:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
@@ -1088,7 +1088,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
-      <translation type="unfinished">Error in favorities file</translation>
+      <translation>خطا در پروندهٔ پسندیده‌ها</translation>
     </message>
   </context>
   <context>
@@ -1106,17 +1106,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
-      <translation type="unfinished">Add folder</translation>
+      <translation>افزودن پوشه</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
-      <translation type="unfinished">Favorites:</translation>
+      <translation>پسندیده‌ها:</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
-      <translation type="unfinished">All selected items will be deleted. Continue?</translation>
+      <translation>تمام موارد برگزیده حذف خواهند شد. ادامه می‌دهید؟</translation>
     </message>
   </context>
   <context>
@@ -3085,7 +3085,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
-      <translation type="unfinished">Add all tabs to Favorites</translation>
+      <translation>افزودن تمام زبانه‌ها به پسندیده‌ها</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
@@ -3106,7 +3106,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="4485"/>
       <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
-      <translation type="unfinished">Remove current tab from Favorites</translation>
+      <translation>حذف زبانهٔ کنونی از پسندیده‌ها</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1897"/>
@@ -3199,7 +3199,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
-      <translation type="unfinished">Export Favorites to file</translation>
+      <translation>برون‌ریزی پسندیده‌ها به پرونده</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3935"/>
@@ -3210,17 +3210,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="3954"/>
       <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
-      <translation type="unfinished">Favorites export complete</translation>
+      <translation>برون‌ریزی پسندیده‌ها کامل شد</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
-      <translation type="unfinished">Export Favorites to file as plain list</translation>
+      <translation>برون‌ریزی پسندیده‌ها به پرونده به عنوان متن ساده</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
-      <translation type="unfinished">Import Favorites from file</translation>
+      <translation>درون‌ریزی پسندیده‌ها از پرونده</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
@@ -3230,7 +3230,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
-      <translation type="unfinished">Favorites import complete</translation>
+      <translation>درون‌ریزی پسندیده‌ها کامل شد</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4060"/>
@@ -3371,7 +3371,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="1949"/>
       <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
-      <translation type="unfinished">Add current tab to Favorites</translation>
+      <translation>افزودن زبانهٔ کنونی به پسندیده‌ها</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
@@ -4295,7 +4295,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
       <source>Favorites</source>
-      <translation type="unfinished">Favorites</translation>
+      <translation>پسندیده‌ها</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1528"/>
@@ -4723,7 +4723,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
+      <translation>افزودن واژه به پسندیده‌ها (مهار+E)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="193"/>

@@ -152,7 +152,6 @@ class XdxfDictionary: public BtreeIndexing::BtreeDictionary
   dictData * dz;
   Mutex resourceZipMutex;
   IndexedZip resourceZip;
-  string dictionaryName;
   map< string, string > abrv;
 
 public:

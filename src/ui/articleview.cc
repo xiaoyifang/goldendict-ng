@@ -142,7 +142,7 @@ public:
         continue;
       }
 
-      gd::wchar ch = Folding::foldedDiacritic( nextChar, left, consumed );
+      gd::wchar ch = *nextChar;
 
       if( Folding::isCombiningMark( ch ) )
       {
@@ -151,16 +151,10 @@ public:
         continue;
       }
 
-      if( consumed > 1 )
-      {
-        for( size_t i = 1; i < consumed; i++ )
-          accentMarkPos.append( pos );
-      }
-
       normText.push_back( ch );
       pos += 1;
-      nextChar += consumed;
-      left -= consumed;
+      nextChar += 1;
+      left -= 1;
     }
     normalizedString = QString::fromStdU32String( normText );
   }
@@ -1788,12 +1782,6 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   {
     // We don't prompt for selections larger or equal to 60 chars, since
     // it ruins the menu and it's hardly a single word anyway.
-
-    if( text.isRightToLeft() )
-    {
-      text.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-      text.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-    }
 
     lookupSelection = new QAction( tr( "&Look up \"%1\"" ).
                                    arg( text ),

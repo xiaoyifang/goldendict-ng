@@ -173,7 +173,10 @@ vector< wstring > Class::getAlternateWritings( wstring const & )
 QString Class::getContainingFolder() const
 {
   if ( !dictionaryFiles.empty() ) {
-    return QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).absolutePath();
+    auto fileInfo = QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) );
+    if ( fileInfo.isDir() )
+      return fileInfo.absoluteFilePath();
+    return fileInfo.absolutePath();
   }
 
   return QString();
@@ -594,10 +597,9 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
 }
 
-string getFtsSuffix(){
-
+string getFtsSuffix()
+{
   return "_FTS_x";
-
 }
 
 QString generateRandomDictionaryId()

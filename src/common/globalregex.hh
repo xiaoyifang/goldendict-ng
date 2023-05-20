@@ -65,6 +65,12 @@ const static QRegularExpression emptyXmlTag(R"(<(?!(br|hr)\b)([^/ >]*)\s*/>)");
 bool containHtmlEntity( std::string const & text );
 }
 
+const static QRegularExpression accentMark( R"(\p{M})" );
+//contain unicode space mark and punctuation
+const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{P}])" );
+//contain unicode space and mark.
+const static QRegularExpression markSpace( R"([\p{M}\p{Z}])" );
+
 } // namespace RX
 
 #endif // GLOBALREGEX_HH

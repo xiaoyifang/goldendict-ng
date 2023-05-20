@@ -203,7 +203,6 @@ class MdxDictionary: public QObject, public BtreeIndexing::BtreeDictionary
   Mutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
-  string dictionaryName;
   string encoding;
   ChunkedStorage::Reader chunks;
   QFile dictFile;

@@ -1411,9 +1411,8 @@ void MainWindow::setupNetworkCache( int maxSize )
     return; // There is currently no cache and it is not needed.
 
   QString cacheDirectory = Config::getCacheDir();
-  if( !QDir().mkpath( cacheDirectory ) )
+  if ( !QDir().mkpath( cacheDirectory ) ) {
     cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-  {
     gdWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
   }
 
@@ -1845,12 +1844,6 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   }
   escaped.replace( "&", "&&" );
 
-  if( escaped.isRightToLeft() )
-  {
-    escaped.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-    escaped.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-  }
-
   int index = ui.tabWidget->indexOf( view );
   if( !escaped.isEmpty() )
     ui.tabWidget->setTabText( index, escaped );
@@ -1884,13 +1877,7 @@ void MainWindow::updateWindowTitle()
   if ( view )
   {
     QString str = view->getTitle();
-    if( !str.isEmpty() )
-    {
-      if( str.isRightToLeft() )
-      {
-        str.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-        str.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-      }
+    if ( !str.isEmpty() ) {
       if( !blockUpdateWindowTitle )
         setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
       blockUpdateWindowTitle = false;
@@ -4424,10 +4411,6 @@ QString MainWindow::unescapeTabHeader(QString const & header )
 
   QString escaped = header;
   escaped.replace( "&&", "&" );
-  if( escaped.startsWith( QChar( 0x202E ) ) )
-    escaped = escaped.mid( 1 );
-  if( escaped.endsWith( QChar( 0x202C ) ) )
-    escaped.chop( 1 );
 
   return escaped;
 }

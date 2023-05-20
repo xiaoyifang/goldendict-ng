@@ -189,16 +189,12 @@ namespace
     Mutex idxMutex;
     File::Class idx;
     IdxHeader idxHeader;
-    string dictionaryName;
     ChunkedStorage::Reader chunks;
 
   public:
 
     BglDictionary( string const & id, string const & indexFile,
                    string const & dictionaryFile );
-
-    string getName() noexcept override
-    { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }

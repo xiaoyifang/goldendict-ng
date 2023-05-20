@@ -14,6 +14,8 @@
 #include <QFile>
 #include <QTextDocumentFragment>
 #include <QUrl>
+#include "fmt/core.h"
+#include "fmt/compile.h"
 
 using std::vector;
 using std::string;
@@ -73,12 +75,13 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word,
   {
     result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
-    if ( cfg.displayStyle.size() )
-    {
+    if ( cfg.displayStyle.size() ) {
       // Load an additional stylesheet
-      QString displayStyleCssFile = QString("qrc:///article-style-st-%1.css").arg(cfg.displayStyle);
-      result += "<link href=\"" + displayStyleCssFile.toStdString() +
-                R"("  media="all" rel="stylesheet" type="text/css">)";
+      fmt::format_to(
+        std::back_inserter( result ),
+        FMT_COMPILE(
+          R"(<link href="qrc:///article-style-st-{}.css" media="all" media="all" rel="stylesheet" type="text/css">)" ),
+        cfg.displayStyle.toStdString() );
     }
 
     result += readCssFile(Config::getUserCssFileName() ,"all");
@@ -221,17 +224,13 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word,
 {
   string result( "<div class=\"gdnotfound\"><p>" );
 
-  QString str( word );
-  if( str.isRightToLeft() )
-  {
-    str.insert( 0, (ushort)0x202E ); // RLE, Right-to-Left Embedding
-    str.append( (ushort)0x202C ); // PDF, POP DIRECTIONAL FORMATTING
-  }
-
   if ( word.size() )
-    result += tr( "No translation for <b>%1</b> was found in group <b>%2</b>." ).
-              arg( QString::fromUtf8( Html::escape( str.toUtf8().data() ).c_str() ), QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) ).
-                toUtf8().data();
+    result += tr( "No translation for <b dir=\"%3\">%1</b> was found in group <b>%2</b>." )
+                .arg( QString::fromUtf8( Html::escape( word.toUtf8().data() ).c_str() ),
+                      QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ),
+                      word.isRightToLeft() ? "rtl" : "ltr" )
+                .toUtf8()
+                .data();
   else
     result += tr( "No translation was found in group <b>%1</b>." ).
               arg( QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) ).
@@ -648,35 +647,34 @@ void ArticleRequest::bodyFinished()
 
         string jsVal = Html::escapeForJavaScript( dictId );
 
-        head += QString::fromUtf8(
-                  R"( <div class="gdarticle %1 %2" id="%3"
-                    onClick="gdMakeArticleActive( '%4', false );"
-                    onContextMenu="gdMakeArticleActive( '%4', false );">)" )
-                  .arg(  closePrevSpan ? "" : " gdactivearticle" ,
-                         collapse ? " gdcollapsedarticle" : "" ,
-                         gdFrom.c_str() ,
-                         jsVal.c_str() )
-                  .toStdString();
+        fmt::format_to( std::back_inserter( head ),
+                        FMT_COMPILE(
+                          R"( <div class="gdarticle {0} {1}" id="{2}"
+                              onClick="gdMakeArticleActive( '{3}', false );"
+                              onContextMenu="gdMakeArticleActive( '{3}', false );">)" ),
+                        closePrevSpan ? "" : " gdactivearticle",
+                        collapse ? " gdcollapsedarticle" : "",
+                        gdFrom,
+                        jsVal );
 
         closePrevSpan = true;
 
-        head += QString::fromUtf8(
-                  R"(<div class="gddictname" onclick="gdExpandArticle('%1');"  %2  id="gddictname-%1" title="%3">
-                      <span class="gddicticon"><img src="gico://%1/dicticon.png"></span>
-                      <span class="gdfromprefix">%4</span>
-                      <span class="gddicttitle">%5</span>
-                      <span class="collapse_expand_area"><img class="%6" id="expandicon-%1" title="%7" ></span>
-                     </div>)" )
-                  .arg( dictId.c_str(),
-                        collapse ? R"(style="cursor:pointer;")" : "",
-                        collapse ? tr( "Expand article" ) : QString(),
-                        Html::escape( tr( "From " ).toStdString() ).c_str(),
-                        Html::escape( activeDict->getName() ).c_str(),
-                        collapse ? "gdexpandicon" : "gdcollapseicon",
-                        collapse ? "" : tr( "Collapse article" )
-
-                          )
-                  .toStdString();
+        fmt::format_to(
+          std::back_inserter( head ),
+          FMT_COMPILE(
+            R"(<div class="gddictname" onclick="gdExpandArticle('{0}');"  {1}  id="gddictname-{0}" title="{2}">
+                      <span class="gddicticon"><img src="gico://{0}/dicticon.png"></span>
+                      <span class="gdfromprefix">{3}</span>
+                      <span class="gddicttitle">{4}</span>
+                      <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" ></span>
+                     </div>)" ),
+          dictId,
+          collapse ? R"(style="cursor:pointer;")" : "",
+          collapse ? tr( "Expand article" ).toStdString() : "",
+          Html::escape( tr( "From " ).toStdString() ),
+          Html::escape( activeDict->getName() ),
+          collapse ? "gdexpandicon" : "gdcollapseicon",
+          collapse ? "" : tr( "Collapse article" ).toStdString() );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 
@@ -691,13 +689,14 @@ void ArticleRequest::bodyFinished()
           head += link.arg( Html::escape( dictId ).c_str(), tr( "Make a new Anki note" ) ).toStdString();
         }
 
-        head += QString::fromUtf8(
-                  R"(<div class="gdarticlebody gdlangfrom-%1" lang="%2" style="display:%3" id="gdarticlefrom-%4">)" )
-                  .arg( LangCoder::intToCode2( activeDict->getLangFrom() ),
-                        LangCoder::intToCode2( activeDict->getLangTo() ),
-                        collapse ? "none" : "inline",
-                        dictId.c_str()  )
-                  .toStdString();
+        fmt::format_to(
+          std::back_inserter( head ),
+          FMT_COMPILE(
+            R"(<div class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gdarticlefrom-{}">)" ),
+          LangCoder::intToCode2( activeDict->getLangFrom() ).toStdString(),
+          LangCoder::intToCode2( activeDict->getLangTo() ).toStdString(),
+          collapse ? "none" : "inline",
+          dictId );
 
         if( errorString.size() ) {
           head += "<div class=\"gderrordesc\">"

@@ -32,6 +32,7 @@
 #include "dict/slob.hh"
 #include "dict/gls.hh"
 #include "dict/lingualibre.hh"
+#include "metadata.hh"
 
 #ifndef NO_EPWING_SUPPORT
 #include "dict/epwing.hh"
@@ -156,6 +157,20 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
+
+  //handle the custom dictionary name
+  for ( const auto & dict : dictionaries ) {
+    auto baseDir = dict->getContainingFolder();
+    if ( baseDir.isEmpty() )
+      continue;
+
+    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+
+    auto dictMetaData = Metadata::load( filePath.toStdString() );
+    if ( dictMetaData && !dictMetaData->name->empty() ) {
+      dict->setName( dictMetaData->name.value() );
+    }
+  }
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
