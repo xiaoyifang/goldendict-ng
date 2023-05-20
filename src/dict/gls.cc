@@ -363,7 +363,6 @@ class GlsDictionary: public BtreeIndexing::BtreeDictionary
   Mutex dzMutex;
   Mutex resourceZipMutex;
   IndexedZip resourceZip;
-  string dictionaryName;
 
 public:
 

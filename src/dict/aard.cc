@@ -228,7 +228,6 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
     File::Class idx;
     IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
-    string dictionaryName;
     File::Class df;
 
   public:
@@ -237,9 +236,6 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
                      vector< string > const & dictionaryFiles );
 
     ~AardDictionary();
-
-    string getName() noexcept override
-    { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }

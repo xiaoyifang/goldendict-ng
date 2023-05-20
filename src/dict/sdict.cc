@@ -132,7 +132,6 @@ class SdictDictionary: public BtreeIndexing::BtreeDictionary
     File::Class idx;
     IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
-    string dictionaryName;
     File::Class df;
 
   public:
