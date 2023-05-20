@@ -152,7 +152,6 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
   File::Class idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
-  string dictionaryName;
   string preferredSoundDictionary;
   map< string, string > abrv;
   Mutex dzMutex;

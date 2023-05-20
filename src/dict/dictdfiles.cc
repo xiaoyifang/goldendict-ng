@@ -89,7 +89,6 @@ class DictdDictionary: public BtreeIndexing::BtreeDictionary
   File::Class idx, indexFile; // The later is .index file
   IdxHeader idxHeader;
   dictData * dz;
-  string dictionaryName;
   Mutex indexFileMutex, dzMutex;
 
 public:

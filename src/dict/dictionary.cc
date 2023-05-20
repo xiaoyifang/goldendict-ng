@@ -598,9 +598,7 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 }
 
 string getFtsSuffix(){
-
   return "_FTS_x";
-
 }
 
 QString generateRandomDictionaryId()
