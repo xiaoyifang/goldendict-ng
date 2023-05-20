@@ -12,9 +12,12 @@ struct GDLangCode
     char const * lang; // Language name in English
 };
 
-                   
-template <typename T, int N>
-inline int arraySize(T (&)[N])   { return N; }
+
+template< typename T, int N >
+inline int arraySize( T ( & )[ N ] )
+{
+  return N;
+}
 
 struct LangStruct
 {
@@ -51,9 +54,9 @@ public:
   static QIcon icon(quint32 code);
 
   /// Return true for RTL languages
-  static bool isLanguageRTL(quint32 code);
+  static bool isLanguageRTL( quint32 code );
 
-  LangStruct langStruct(quint32 code);
+  LangStruct langStruct( quint32 code );
 
 private:
   QMap< quint32, int > codeMap;
@@ -61,7 +64,7 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#define LangCodeRole	Qt::UserRole
+#define LangCodeRole Qt::UserRole
 
 
 #endif // LANGCODER_H
