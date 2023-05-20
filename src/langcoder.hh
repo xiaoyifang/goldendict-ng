@@ -16,7 +16,6 @@ struct GDLangCode
 template <typename T, int N>
 inline int arraySize(T (&)[N])   { return N; }
 
-
 struct LangStruct
 {
   int order;
@@ -54,39 +53,15 @@ public:
   /// Return true for RTL languages
   static bool isLanguageRTL(quint32 code);
 
-  //const QMap<quint32, int>& codes() { return codeMap; }
-
   LangStruct langStruct(quint32 code);
-
-//	QString CodeToHtml(const QString &code);
-
-//	bool CheckCode(QString &code);
 
 private:
   QMap<quint32, int> codeMap;
-//	LangStruct dummyLS;
 };
-
-//extern LangCoder langCoder;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 #define LangCodeRole	Qt::UserRole
 
-/*
-class LangModel : public QAbstractItemModel
-{
-public:
-  LangModel(QObject * parent = 0);
-
-  virtual int columnCount ( const QModelIndex & parent = QModelIndex(}, const;
-  virtual int rowCount ( const QModelIndex & parent = QModelIndex(}, const;
-
-  virtual QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-
-  virtual QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex(}, const;
-  virtual QModelIndex parent ( const QModelIndex & index ) const;
-};
-*/
 
 #endif // LANGCODER_H
