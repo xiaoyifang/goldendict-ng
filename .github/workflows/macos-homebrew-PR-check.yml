@@ -79,6 +79,7 @@ jobs:
           brew install pkg-config
           brew install libiconv
           brew install xapian
+          brew install libzim
 
       - name: compile
         run: |          

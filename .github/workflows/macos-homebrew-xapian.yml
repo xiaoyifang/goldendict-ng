@@ -86,6 +86,7 @@ jobs:
           brew install pkg-config
           brew install create-dmg
           brew install xapian
+          brew install libzim
       - name: version-file
         shell: bash
         run: |   
