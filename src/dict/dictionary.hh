@@ -475,8 +475,7 @@ public:
   void setSynonymSearchEnabled( bool enabled )
   { synonymSearchEnabled = enabled; }
 
-  virtual ~Class()
-  {}
+  virtual ~Class() = default;
 };
 
 /// Callbacks to be used when the dictionaries are being initialized.
@@ -490,8 +489,7 @@ public:
   /// The dictionaryName is in utf8.
   virtual void indexingDictionary( string const & dictionaryName ) noexcept=0;
 
-  virtual ~Initializing()
-  {}
+  virtual ~Initializing() = default;
 };
 
 /// Generates an id based on the set of file names which the dictionary

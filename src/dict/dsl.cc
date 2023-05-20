@@ -130,7 +130,7 @@ struct InsidedCard
   InsidedCard( uint32_t _offset, uint32_t _size, QVector< wstring > const & words ) :
   offset( _offset ), size( _size ), headwords( words )
   {}
-  InsidedCard() {}
+  InsidedCard() = default;
 };
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
