@@ -662,7 +662,6 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     File::Class idx;
     BtreeIndex resourceIndex;
     IdxHeader idxHeader;
-    string dictionaryName;
     ZimFile df;
     set< quint32 > articlesIndexedForFTS;
     LINKS_TYPE linksType;

@@ -41,6 +41,7 @@ nav:
       - Custom Stylesheets: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
+      - Customize Dictionary Name: custom_dictionary_name.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Contributor Guides:
     - Developer: developer.md

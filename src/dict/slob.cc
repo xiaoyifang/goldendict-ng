@@ -576,7 +576,6 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
     File::Class idx;
     BtreeIndex resourceIndex;
     IdxHeader idxHeader;
-    string dictionaryName;
     SlobFile sf;
     QString texCgiPath, texCachePath;
 

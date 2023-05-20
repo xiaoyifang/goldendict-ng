@@ -274,6 +274,7 @@ protected:
   bool can_FTS;
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
+  string dictionaryName;
 
   // Load user icon if it exist
   // By default set icon to empty
@@ -316,7 +317,15 @@ public:
   QString getContainingFolder() const;
 
   /// Returns the dictionary's full name, utf8.
-  virtual string getName() noexcept=0;
+  virtual string getName()
+  {
+    return dictionaryName;
+  }
+
+  virtual void setName( string _dictionaryName )
+  {
+    dictionaryName = _dictionaryName;
+  }
 
   /// Returns all the available properties, like the author's name, copyright,
   /// description etc. All strings are in utf8.
@@ -466,8 +475,7 @@ public:
   void setSynonymSearchEnabled( bool enabled )
   { synonymSearchEnabled = enabled; }
 
-  virtual ~Class()
-  {}
+  virtual ~Class() = default;
 };
 
 /// Callbacks to be used when the dictionaries are being initialized.
@@ -481,8 +489,7 @@ public:
   /// The dictionaryName is in utf8.
   virtual void indexingDictionary( string const & dictionaryName ) noexcept=0;
 
-  virtual ~Initializing()
-  {}
+  virtual ~Initializing() = default;
 };
 
 /// Generates an id based on the set of file names which the dictionary
