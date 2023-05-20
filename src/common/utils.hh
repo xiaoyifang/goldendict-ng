@@ -333,8 +333,16 @@ namespace Fs {
 
 using std::string;
 
-/// Returns the filesystem separator (/ on Unix and clones, \ on Windows).
-char separator();
+/// Copied from Qt but with char as return type
+/// https://github.com/qt/qtbase/blob/6.5.0/src/corelib/io/qdir.h#L206-L213
+static char separator()
+{
+#if defined( Q_OS_WIN )
+  return u'\\';
+#else
+  return u'/';
+#endif
+};
 
 /// Returns the name part of the given filename.
 string basename( string const & );

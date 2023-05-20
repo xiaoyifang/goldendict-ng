@@ -53,11 +53,6 @@ std::string Utils::Html::getHtmlCleaner()
 
 namespace Utils::Fs {
 
-char separator()
-{
-  return QDir::separator().toLatin1();
-}
-
 std::string basename( std::string const & str )
 {
   size_t x = str.rfind( separator() );
