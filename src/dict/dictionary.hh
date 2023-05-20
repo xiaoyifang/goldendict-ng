@@ -322,7 +322,8 @@ public:
     return dictionaryName;
   }
 
-  virtual void setName(string _dictionaryName) {
+  virtual void setName( string _dictionaryName )
+  {
     dictionaryName = _dictionaryName;
   }
 

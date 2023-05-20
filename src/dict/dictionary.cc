@@ -597,7 +597,8 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
 }
 
-string getFtsSuffix(){
+string getFtsSuffix()
+{
   return "_FTS_x";
 }
 

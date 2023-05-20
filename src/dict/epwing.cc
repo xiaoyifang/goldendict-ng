@@ -106,8 +106,10 @@ public:
   string getName() noexcept override
   { return bookName; }
 
-  void setName(string _name) noexcept override
-  {  bookName=_name; }
+  void setName( string _name ) noexcept override
+  {
+    bookName = _name;
+  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
   { return map< Dictionary::Property, string >(); }
