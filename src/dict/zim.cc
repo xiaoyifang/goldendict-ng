@@ -9,16 +9,13 @@
 #include "folding.hh"
 #include "gddebug.hh"
 #include "utf8.hh"
-#include "decompress.hh"
 #include "langcoder.hh"
-#include "wstring_qt.hh"
 #include "filetype.hh"
 #include "file.hh"
 #include "utils.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
 #include "htmlescape.hh"
-#include "splitfile.hh"
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>
@@ -42,7 +39,10 @@
 #include <algorithm>
 #include <QtConcurrent>
 #include "globalregex.hh"
-
+#include <zim/zim.h>
+#include <zim/archive.h>
+#include <zim/entry.h>
+#include <zim/item.h>
 namespace Zim {
 
 #define CACHE_SIZE 3
@@ -67,7 +67,8 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
 //namespace {
 
-class ZimFile;
+using ZimFile=zim::Archive;
+
 
 #pragma pack( push, 1 )
 
@@ -153,361 +154,6 @@ __attribute__((packed))
 
 #pragma pack( pop )
 
-// Class for support of split zim files
-
-struct Cache
-{
-  char * data;
-  quint32 clusterNumber;
-  int stamp;
-  int count, size;
-  unsigned blobs_offset_size;
-
-  Cache() :
-    data( 0 ),
-    clusterNumber( 0 ),
-    stamp( -1 ),
-    count( 0 ),
-    size( 0 ),
-    blobs_offset_size( 0 )
-  {}
-};
-
-class ZimFile : public SplitFile::SplitFile
-{
-public:
-  ZimFile();
-  ZimFile( const QString & name );
-  ~ZimFile();
-
-  void setFileName( const QString & name ) override;
-  bool open();
-  void close()
-  {
-    SplitFile::close();
-    clearCache();
-  }
-  const ZIM_header & header() const
-  { return zimHeader; }
-
-  string getClusterData( quint32 cluster_nom, unsigned & blob_offset_size );
-
-  const QString getMimeType( quint16 nom )
-  { return mimeTypes.value( nom ); }
-
-  bool isArticleMime( quint16 mime_type )
-  { return getMimeType( mime_type ).startsWith( "text/html", Qt::CaseInsensitive )
-           || getMimeType( mime_type ).startsWith( "text/plain", Qt::CaseInsensitive ); }
-
-
-  quint16 redirectedMimeType( RedirectEntry const & redEntry );
-
-private:
-  ZIM_header zimHeader;
-  Cache cache[ CACHE_SIZE ];
-  int stamp;
-  QVector< QPair< quint64, quint32 > > clusterOffsets;
-  QStringList mimeTypes;
-
-  void clearCache();
-};
-
-ZimFile::ZimFile() :
-  stamp( 0 )
-{
-  memset( &zimHeader, 0, sizeof( zimHeader ) );
-}
-
-ZimFile::ZimFile( const QString & name )
-{
-  setFileName( name );
-}
-
-ZimFile::~ZimFile()
-{
-  clearCache();
-}
-
-void ZimFile::setFileName( const QString & name )
-{
-  close();
-  memset( &zimHeader, 0, sizeof( zimHeader ) );
-  clearCache();
-
-  appendFile( name );
-
-  if( name.endsWith( ".zimaa", Qt::CaseInsensitive ) )
-  {
-    QString fname = name;
-
-    for( int i = 0; i < 26; i++ )
-    {
-      fname[ fname.size() - 2 ] = (char)( 'a' + i );
-
-      int j;
-      for( j = 1; j < 26; j++ )
-      {
-        fname[ fname.size() - 1 ] = (char)( 'a' + j );
-        if( !QFileInfo( fname ).isFile() )
-          break;
-
-        appendFile( fname );
-      }
-
-      if( j < 26 )
-        break;
-    }
-  }
-}
-
-void ZimFile::clearCache()
-{
-  for( int i = 0; i < CACHE_SIZE; i++ )
-  {
-    if( cache[ i ].data )
-    {
-      free( cache[ i ].data );
-      cache[ i ].data = 0;
-    }
-    cache[ i ].clusterNumber = 0;
-    cache[ i ].stamp = -1;
-    cache[ i ].count = 0;
-    cache[ i ].size = 0;
-  }
-  stamp = 0;
-}
-
-bool ZimFile::open()
-{
-  if( !SplitFile::open( QIODevice::ReadOnly ) )
-    return false;
-
-  memset( &zimHeader, 0, sizeof( zimHeader ) );
-
-  if( read( reinterpret_cast< char * >( &zimHeader ), sizeof( zimHeader ) ) != sizeof( zimHeader ) )
-    return false;
-
-  if( zimHeader.magicNumber != 0x44D495A || zimHeader.mimeListPos != sizeof( zimHeader ) )
-    return false;
-
-// Clusters in zim file may be placed in random order.
-// We create sorted offsets list to calculate clusters size.
-
-  clusterOffsets.resize( zimHeader.clusterCount );
-  QVector< quint64 > offs;
-  offs.resize( zimHeader.clusterCount );
-
-  seek( zimHeader.clusterPtrPos );
-  qint64 size = zimHeader.clusterCount * sizeof( quint64 );
-  if( read( reinterpret_cast< char * >( offs.data() ), size) != size )
-  {
-    vector< string > names;
-    getFilenames( names );
-    throw exCantReadFile( names[ 0 ] );
-  }
-
-  for( quint32 i = 0; i < zimHeader.clusterCount; i++ )
-    clusterOffsets[ i ] = QPair< quint64, quint32 >( offs.at( i ), i );
-
-  std::sort( clusterOffsets.begin(), clusterOffsets.end() );
-
-// Read mime types
-
-  string type;
-  char ch;
-
-  seek( zimHeader.mimeListPos );
-
-  for( ; ; )
-  {
-    type.clear();
-    while( getChar( &ch ) )
-    {
-      if( ch == 0 )
-        break;
-      type.push_back( ch );
-    }
-    if( type.empty() )
-      break;
-
-    QString s = QString::fromUtf8( type.c_str(), type.size() );
-    mimeTypes.append( s );
-  }
-
-  return true;
-}
-
-string ZimFile::getClusterData( quint32 cluster_nom, unsigned & blobs_offset_size )
-{
-  // Check cache
-  int target = 0;
-  bool found = false;
-  int lastStamp = INT_MAX;
-
-  for( int i = 0; i < CACHE_SIZE; i++ )
-  {
-    if( cache[ i ].clusterNumber == cluster_nom && cache[ i ].count )
-    {
-      found = true;
-      target = i;
-      break;
-    }
-
-    if( cache[ i ].stamp < lastStamp )
-    {
-      lastStamp = cache[ i ].stamp;
-      target = i;
-    }
-  }
-
-  cache[ target ].stamp = ++stamp;
-  if( stamp < 0 )
-  {
-     stamp = 0;
-     for (int i = 0; i < CACHE_SIZE; i++)
-       cache[ i ].stamp = -1;
-  }
-
-  if( found )
-  {
-    // Cache hit
-    blobs_offset_size = cache[ target ].blobs_offset_size;
-    return string( cache[ target ].data, cache[ target ].count );
-  }
-
-  // Cache miss, read data from file
-
-  // Calculate cluster size
-
-  quint64 clusterSize;
-  quint32 nom;
-  for( nom = 0; nom < zimHeader.clusterCount; nom++ )
-    if( clusterOffsets.at( nom ).second == cluster_nom )
-      break;
-
-  if( nom >= zimHeader.clusterCount ) // Invalid cluster nom
-    return string();
-
-  if( nom < zimHeader.clusterCount - 1 )
-    clusterSize = clusterOffsets.at( nom + 1 ).first - clusterOffsets.at( nom ).first;
-  else
-    clusterSize = size() - clusterOffsets.at( nom ).first;
-
-  // Read cluster data
-
-  seek( clusterOffsets.at( nom ).first );
-
-  char compressionType, cluster_info;
-  if( !getChar( &cluster_info ) )
-    return string();
-  compressionType = cluster_info & 0x0F;
-  blobs_offset_size = cluster_info & 0x10 && zimHeader.majorVersion >= 6 ? 8 : 4;
-
-  string decompressedData;
-
-  QByteArray data = read( clusterSize );
-
-  if( compressionType == Default || compressionType == None )
-    decompressedData = string( data.data(), data.size() );
-  else
-  if( compressionType == Zlib )
-    decompressedData = decompressZlib( data.constData(), data.size() );
-  else
-  if( compressionType == Bzip2 )
-    decompressedData = decompressBzip2( data.constData(), data.size() );
-  else
-  if( compressionType == Lzma2 )
-    decompressedData = decompressLzma2( data.constData(), data.size() );
-  else
-  if( compressionType == Zstd )
-    decompressedData = decompressZstd( data.constData(), data.size() );
-  else
-    return string();
-
-  if( decompressedData.empty() )
-    return string();
-
-  // Check BLOBs number in the cluster
-  // We cache multi-element clusters only
-
-  quint32 firstOffset32;
-  quint64 firstOffset;
-  if( blobs_offset_size == 8 )
-    memcpy( &firstOffset, decompressedData.data(), sizeof(firstOffset) );
-  else
-  {
-    memcpy( &firstOffset32, decompressedData.data(), sizeof(firstOffset32) );
-    firstOffset = firstOffset32;
-  }
-  quint32 blobCount = ( firstOffset - blobs_offset_size ) / blobs_offset_size;
-
-  if( blobCount > 1 )
-  {
-    // Fill cache
-    int size = decompressedData.size();
-    if( cache[ target ].count < size )
-    {
-      if( cache[ target ].data )
-        free( cache[ target ].data );
-      cache[ target ].data = ( char * )malloc( size );
-      if( cache[ target ].data )
-        cache[ target ].size = size;
-      else
-      {
-        cache[ target ].size = 0;
-        cache[ target ].count = 0;
-      }
-    }
-    if( cache[ target ].size )
-    {
-      memcpy( cache[ target ].data, decompressedData.c_str(), size );
-      cache[ target ].count = size;
-      cache[ target ].clusterNumber = cluster_nom;
-      cache[ target ].blobs_offset_size = blobs_offset_size;
-    }
-  }
-
-  return decompressedData;
-}
-
-quint16 ZimFile::redirectedMimeType( RedirectEntry const & redEntry )
-{
-  RedirectEntry current_entry = redEntry;
-  quint64 current_pos = pos();
-  quint16 mimetype = 0xFFFF;
-
-  for( ; ; )
-  {
-    quint32 current_nom = current_entry.redirectIndex;
-
-    seek( zimHeader.urlPtrPos + (quint64)current_nom * 8 );
-    quint64 new_pos;
-    if( read( reinterpret_cast< char * >( &new_pos ), sizeof(new_pos) ) != sizeof(new_pos) )
-      break;
-
-    seek( new_pos );
-    quint16 new_mimetype;
-    if( read( reinterpret_cast< char * >( &new_mimetype ), sizeof(new_mimetype) ) != sizeof(new_mimetype) )
-      break;
-
-    if( new_mimetype == 0xFFFF ) // Redirect to other article
-    {
-      if( read( reinterpret_cast< char * >( &current_entry ) + 2, sizeof( current_entry ) - 2 ) != sizeof( current_entry ) - 2 )
-        break;
-      if( current_nom == current_entry.redirectIndex )
-        break;
-    }
-    else
-    {
-      mimetype = new_mimetype;
-      break;
-    }
-  }
-
-  seek( current_pos );
-  return mimetype;
-}
-
 
 // Some supporting functions
 
@@ -524,131 +170,38 @@ bool indexIsOldOrBad( string const & indexFile )
 
 quint32 getArticleCluster( ZimFile & file, quint32 articleNumber )
 {
-  while( 1 )
-  {
-    ZIM_header const & header = file.header();
-    if( articleNumber >= header.articleCount )
-      break;
+  try {
+    auto entry = file.getEntryByPath( articleNumber );
 
-    file.seek( header.urlPtrPos + (quint64)articleNumber * 8 );
-    quint64 pos;
-    if( file.read( reinterpret_cast< char * >( &pos ), sizeof(pos) ) != sizeof(pos) )
-      break;
+    auto item = entry.getItem( true );
 
-    // Read article info
-
-    quint16 mimetype;
-
-    file.seek( pos );
-    if( file.read( reinterpret_cast< char * >( &mimetype ), sizeof(mimetype) ) != sizeof(mimetype) )
-      break;
-
-    if( mimetype == 0xFFFF ) // Redirect to other article
-    {
-      RedirectEntry redEntry;
-      if( file.read( reinterpret_cast< char * >( &redEntry ) + 2, sizeof(redEntry) - 2 ) != sizeof(redEntry) - 2 )
-        break;
-      if( articleNumber == redEntry.redirectIndex )
-        break;
-      articleNumber = redEntry.redirectIndex;
-      continue;
-    }
-
-    ArticleEntry artEntry;
-    artEntry.mimetype = mimetype;
-    if( file.read( reinterpret_cast< char * >( &artEntry ) + 2, sizeof(artEntry) - 2 ) != sizeof(artEntry) - 2 )
-      break;
-
-    return artEntry.clusterNumber;
+    return item.getIndex();
   }
-  return 0xFFFFFFFF;
+  catch ( std::exception & e ) {
+    qDebug() << e.what();
+    return 0xFFFFFFFF;
+  }
 }
+
+bool isArticleMime( string mime_type )
+{ return mime_type.compare( "text/html")==0
+         || mime_type.compare( "text/plain" )==0; }
 
 quint32 readArticle( ZimFile & file, quint32 articleNumber, string & result,
                      set< quint32 > * loadedArticles = NULL )
 {
-  result.clear();
+  try {
+    auto entry = file.getEntryByPath( articleNumber );
 
-  while( 1 )
-  {
-    ZIM_header const & header = file.header();
-    if( articleNumber >= header.articleCount )
-      break;
-
-    file.seek( header.urlPtrPos + (quint64)articleNumber * 8 );
-    quint64 pos;
-    if( file.read( reinterpret_cast< char * >( &pos ), sizeof(pos) ) != sizeof(pos) )
-      break;
-
-    // Read article info
-
-    quint16 mimetype;
-
-    file.seek( pos );
-    if( file.read( reinterpret_cast< char * >( &mimetype ), sizeof(mimetype) ) != sizeof(mimetype) )
-      break;
-
-    if( mimetype == 0xFFFF ) // Redirect to other article
-    {
-      RedirectEntry redEntry;
-      if( file.read( reinterpret_cast< char * >( &redEntry ) + 2, sizeof(redEntry) - 2 ) != sizeof(redEntry) - 2 )
-        break;
-      if( articleNumber == redEntry.redirectIndex )
-        break;
-      articleNumber = redEntry.redirectIndex;
-      continue;
-    }
-
-    if( loadedArticles && loadedArticles->find( articleNumber ) != loadedArticles->end() )
-      break;
-
-    ArticleEntry artEntry;
-    artEntry.mimetype = mimetype;
-    if( file.read( reinterpret_cast< char * >( &artEntry ) + 2, sizeof(artEntry) - 2 ) != sizeof(artEntry) - 2 )
-      break;
-
-    // Read cluster data
-
-    unsigned offset_size = 0;
-    string decompressedData = file.getClusterData( artEntry.clusterNumber, offset_size );
-    if( decompressedData.empty() )
-      break;
-
-    // Take article data from cluster
-
-    quint32 firstOffset32;
-    quint64 firstOffset;
-
-    if( offset_size == 8 )
-      memcpy( &firstOffset, decompressedData.data(), sizeof(firstOffset) );
-    else
-    {
-      memcpy( &firstOffset32, decompressedData.data(), sizeof(firstOffset32) );
-      firstOffset = firstOffset32;
-    }
-    quint32 blobCount = ( firstOffset - offset_size ) / offset_size;
-    if( artEntry.blobNumber > blobCount )
-      break;
-
-    quint32 size;
-    if( offset_size == 8 )
-    {
-      quint64 offsets[ 2 ];
-      memcpy( offsets, decompressedData.data() + artEntry.blobNumber * 8, sizeof(offsets) );
-      size = offsets[ 1 ] - offsets[ 0 ];
-      result.append( decompressedData, offsets[ 0 ], size );
-    }
-    else
-    {
-      quint32 offsets[ 2 ];
-      memcpy( offsets, decompressedData.data() + artEntry.blobNumber * 4, sizeof(offsets) );
-      size = offsets[ 1 ] - offsets[ 0 ];
-      result.append( decompressedData, offsets[ 0 ], size );
-    }
-
-    return articleNumber;
+    auto item = entry.getItem( true );
+    result    = string( item.getData( 0 ).data(), item.getData( 0 ).size() );
+    qDebug().noquote()<<result.c_str();
+    return item.getIndex();
   }
-  return 0xFFFFFFFF;
+  catch ( std::exception & e ) {
+    qDebug() << e.what();
+    return 0xFFFFFFFF;
+  }
 }
 
 // ZimDictionary
@@ -664,7 +217,6 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     IdxHeader idxHeader;
     ZimFile df;
     set< quint32 > articlesIndexedForFTS;
-    LINKS_TYPE linksType;
 
   public:
 
@@ -691,14 +243,10 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                        vector< wstring > const & alts,
-                                                        wstring const &,
-                                                        bool ignoreDiacritics ) override
-      ;
+    sptr< Dictionary::DataRequest >
+    getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-    sptr< Dictionary::DataRequest > getResource( string const & name ) override
-      ;
+    sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
     QString const& getDescription() override;
 
@@ -748,13 +296,8 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
-  df( dictionaryFiles[ 0 ].c_str() ),
-  linksType( UNKNOWN )
+  df( dictionaryFiles[ 0 ].c_str() )
 {
-    // Open data file
-
-    df.open();
-
     // Initialize the indexes
 
     openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
@@ -791,7 +334,6 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
 
 ZimDictionary::~ZimDictionary()
 {
-    df.close();
 }
 
 void ZimDictionary::loadIcon() noexcept
@@ -1398,39 +940,33 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // scanning
 
     QString firstName = QDir::fromNativeSeparators( i->c_str() );
-    if ( !firstName.endsWith( ".zim" ) && !firstName.endsWith( ".zimaa" ) )
+    if ( !firstName.endsWith( ".zim" ))
+    {
       continue;
+    }
 
       // Got the file -- check if we need to rebuid the index
-      ZimFile df( firstName );
+      ZimFile df( firstName.toStdString() );
 
       vector< string > dictFiles;
-      df.getFilenames( dictFiles );
+      dictFiles.push_back(firstName.toStdString());
 
-      string dictId = Dictionary::makeDictionaryId( dictFiles );
+      string dictId = df.getChecksum();
 
       string indexFile = indicesDir + dictId;
 
+      initializing.indexingDictionary( df.getFilename() );
+
       try
       {
+      //only check zim file.
         if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
              indexIsOldOrBad( indexFile ) )
         {
           gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );
 
-          unsigned articleCount = 0;
+          unsigned articleCount = df.getArticleCount();
           unsigned wordCount = 0;
-
-          df.open();
-          ZIM_header const & zh = df.header();
-
-          if( zh.magicNumber != 0x44D495A )
-            throw exNotZimFile( i->c_str() );
-
-          if( zh.mimeListPos != sizeof( ZIM_header ) )
-            throw exInvalidZimHeader( i->c_str() );
-
-          bool new_namespaces = ( zh.majorVersion >= 6 && zh.minorVersion >= 1 );
 
           {
             int n = firstName.lastIndexOf( '/' );
@@ -1443,6 +979,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           idxHeader.namePtr = 0xFFFFFFFF;
           idxHeader.descriptionPtr = 0xFFFFFFFF;
 
+          auto lang=df.getMetadata("Language");
+          if(lang.size()==2)
+            idxHeader.langFrom = LangCoder::code2toInt( lang );
+          else if( lang.size() == 3 )
+              idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
+          idxHeader.langTo = idxHeader.langFrom;
           // We write a dummy header first. At the end of the process the header
           // will be rewritten with the right values.
 
@@ -1450,151 +992,35 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           IndexedWords indexedWords, indexedResources;
 
-          QByteArray artEntries;
-          df.seek( zh.urlPtrPos );
-          artEntries = df.read( (quint64)zh.articleCount * 8 );
-
-          QVector< quint64 > clusters;
-          clusters.reserve( zh.clusterCount );
-          df.seek( zh.clusterPtrPos );
-          {
-            QByteArray data = df.read( (quint64)zh.clusterCount * 8 );
-            for( unsigned n = 0; n < zh.clusterCount; n++ )
-              clusters.append( *( reinterpret_cast< const quint64 * >( data.constData() ) + n ) );
-          }
-
-          const quint64 * ptr;
-          quint16 mimetype, redirected_mime = 0xFFFF;
-          ArticleEntry artEntry;
-          RedirectEntry redEntry;
           string url, title;
-          char nameSpace;
-          for( unsigned n = 0; n < zh.articleCount; n++ )
-          {
-            ptr = reinterpret_cast< const quint64 * >( artEntries.constData() ) + n;
-            df.seek( *ptr );
-            df.read( reinterpret_cast< char * >( &mimetype ), sizeof(mimetype) );
-            if( mimetype == 0xFFFF )
-            {
-              redEntry.mimetype = mimetype;
-              qint64 ret = df.read( reinterpret_cast< char * >( &redEntry ) + 2, sizeof(RedirectEntry) - 2 );
-              if( ret != sizeof(RedirectEntry) - 2 )
-                throw exCantReadFile( i->c_str() );
+          for ( unsigned n = 0; n < articleCount; n++ ) {
+              try {
+                auto entry    = df.getEntryByPath( n );
+                auto item     = entry.getItem( true );
+                auto mimeType = item.getMimetype();
+                qDebug() << n << mimeType;
+                if(!isArticleMime(mimeType))
+                    continue;
 
-              redirected_mime = df.redirectedMimeType( redEntry );
-              nameSpace = redEntry.nameSpace;
-            }
-            else
-            {
-              artEntry.mimetype = mimetype;
-              qint64 ret = df.read( reinterpret_cast< char * >( &artEntry ) + 2, sizeof(ArticleEntry) - 2 );
-              if( ret != sizeof(ArticleEntry) - 2 )
-                throw exCantReadFile( i->c_str() );
+                auto url   = item.getPath();
+                auto title = item.getTitle();
+                // Read article url and title
 
-              nameSpace = artEntry.nameSpace;
-
-              if( ( nameSpace == 'A' || ( nameSpace == 'C' && new_namespaces ) ) && df.isArticleMime( mimetype ) )
-                articleCount++;
-            }
-
-            // Read article url and title
-            char ch;
-
-            url.clear();
-            while( df.getChar( &ch ) )
-            {
-              if( ch == 0 )
-                break;
-              url.push_back( ch );
-            }
-
-            title.clear();
-            while( df.getChar( &ch ) )
-            {
-              if( ch == 0 )
-                break;
-              title.push_back( ch );
-            }
-
-            if( nameSpace == 'A' || ( nameSpace == 'C' && new_namespaces && ( df.isArticleMime( mimetype )
-                                                                              || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) ) ) )
-            {
-              wstring word;
-              if( df.isArticleMime( mimetype )
-                  || ( mimetype == 0xFFFF && df.isArticleMime( redirected_mime ) ) )
-              {
-                if( maxHeadwordsToExpand && zh.articleCount >= maxHeadwordsToExpand )
-                {
-                  if( !title.empty() )
-                  {
-                    word = Utf8::decode( title );
-                    indexedWords.addSingleWord( word, n );
-                  }
-                  if( !url.empty() )
-                  {
-                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-                    indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
-                  }
+                wstring word;
+                if ( !title.empty() ) {
+                  word = Utf8::decode( title );
+                  indexedWords.addSingleWord( word, n );
                 }
-                else
-                {
-                  if( !title.empty() )
-                  {
-                    word = Utf8::decode( title );
-                    indexedWords.addWord( word, n );
-                  }
-                  if( !url.empty() )
-                  {
-                    auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-                    indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
-                  }
+                if ( !url.empty() ) {
+                  auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+                  indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
                 }
                 wordCount++;
               }
-              else
-              {
-//                url.insert( url.begin(), '/' );
-//                url.insert( url.begin(), nameSpace );
-//                auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
-                indexedResources.addSingleWord( Utf8::decode( url ), n );
+              catch ( std::exception &e ) {
+                qWarning()<<e.what();
+                continue;
               }
-            }
-            else
-            if( nameSpace == 'M' )
-            {
-              if( url.compare( "Title" ) == 0 )
-              {
-                idxHeader.namePtr = n;
-                string name;
-                readArticle( df, n, name );
-                initializing.indexingDictionary( name );
-              }
-              else
-              if( url.compare( "Description" ) == 0 )
-                idxHeader.descriptionPtr = n;
-              else
-              if( url.compare( "Language" ) == 0 )
-              {
-                string lang;
-                readArticle( df, n, lang );
-                if( lang.size() == 2 )
-                  idxHeader.langFrom = LangCoder::code2toInt( lang.c_str() );
-                else
-                if( lang.size() == 3 )
-                  idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
-                idxHeader.langTo = idxHeader.langFrom;
-              }
-            }
-            else
-            if( nameSpace == 'X' || nameSpace=='V' || nameSpace=='U'|| nameSpace=='W' )
-            {
-              continue;
-            }
-            else
-            {
-//              auto formatedUrl = QString::fromStdString(url).replace(RX::Zim::linkSpecialChar," ");
-              indexedResources.addSingleWord( Utf8::decode( url ), n );
-            }
           }
 
           // Build index

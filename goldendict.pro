@@ -562,7 +562,12 @@ SOURCES += src/common/wildcard.cc
 
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
-  LIBS += -llzma -lzstd
+  LIBS += -llzma -lzstd -lzim
+
+    win32{
+      Debug: LIBS+= -L$$PWD/winlibs/lib/zim/dbg/
+      Release: LIBS+= -L$$PWD/winlibs/lib/zim/rel/
+    }
 }
 
 CONFIG( no_epwing_support ) {
