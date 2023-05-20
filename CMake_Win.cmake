@@ -15,9 +15,20 @@ foreach (A_WIN_LIB ${WINLIBS_FILES})
     target_link_libraries(${GOLDENDICT} PRIVATE ${A_WIN_LIB})
 endforeach ()
 
+file(GLOB WINLIBS_FILES "${CMAKE_SOURCE_DIR}/winlibs/lib/xapian/rel/*.lib")
+foreach (A_WIN_LIB ${WINLIBS_FILES})
+    target_link_libraries(${GOLDENDICT} PRIVATE ${A_WIN_LIB})
+endforeach ()
+
 # Copy .dlls to output dir
 
 file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.dll")
+foreach (A_DLL_FILE ${DLL_FILES})
+    get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
+    configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
+endforeach ()
+
+file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/xapian/rel/*.dll")
 foreach (A_DLL_FILE ${DLL_FILES})
     get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
