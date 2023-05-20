@@ -158,7 +158,7 @@ public:
   string getName() noexcept override
   { return bookName; }
 
-  void setName(string _name) noexcept override
+  void setName( string _name ) noexcept override
   {
     bookName = _name;
   }
