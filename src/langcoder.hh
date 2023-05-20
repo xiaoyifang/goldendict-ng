@@ -56,7 +56,7 @@ public:
   LangStruct langStruct(quint32 code);
 
 private:
-  QMap<quint32, int> codeMap;
+  QMap< quint32, int > codeMap;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
