@@ -26,14 +26,12 @@
 #include <zim/zim.h>
 #include <zim/writer/item.h>
 
-namespace zim
-{
-  class Fileheader;
-  namespace writer
-  {
-    class CreatorData;
+namespace zim {
+class Fileheader;
+namespace writer {
+class CreatorData;
 
-    /**
+/**
      * The `Creator` is responsible to create a zim file.
      *
      * Once the `Creator` is instantiated, it can be configured with the
@@ -61,35 +59,35 @@ namespace zim
      * - Any other exception thrown for unknown reason.
      * By default, creator status is not changed by thrown exception and creation should stop.
      */
-    class LIBZIM_API Creator
-    {
-      public:
-        /**
+class LIBZIM_API Creator
+{
+public:
+  /**
          * Creator constructor.
          *
          * @param verbose If the creator print verbose information.
          * @param comptype The compression algorithm to use.
          */
-        Creator();
-        virtual ~Creator();
+  Creator();
+  virtual ~Creator();
 
-        /**
+  /**
          * Configure the verbosity of the creator
          *
          * @param verbose if the creator print verbose information.
          * @return a reference to itself.
          */
-        Creator& configVerbose(bool verbose);
+  Creator & configVerbose( bool verbose );
 
-        /**
+  /**
          * Configure the compression algorithm to use.
          *
          * @param comptype the compression algorithm to use.
          * @return a reference to itself.
          */
-        Creator& configCompression(Compression compression);
+  Creator & configCompression( Compression compression );
 
-        /**
+  /**
          * Set the size of the created clusters.
          *
          * The creator will try to create cluster with (uncompressed) size
@@ -106,42 +104,42 @@ namespace zim
          * @param targetSize The target size of a cluster (in byte).
          * @return a reference to itself.
          */
-        Creator& configClusterSize(zim::size_type targetSize);
+  Creator & configClusterSize( zim::size_type targetSize );
 
-        /**
+  /**
          * Configure the fulltext indexing feature.
          *
          * @param indexing True if we must fulltext index the content.
          * @param language Language to use for the indexation.
          * @return a reference to itself.
          */
-        Creator& configIndexing(bool indexing, const std::string& language);
+  Creator & configIndexing( bool indexing, const std::string & language );
 
-        /**
+  /**
          * Set the number of thread to use for the internal worker.
          *
          * @param nbWorkers The number of workers to use.
          * @return a reference to itself.
          */
-        Creator& configNbWorkers(unsigned nbWorkers);
+  Creator & configNbWorkers( unsigned nbWorkers );
 
-        /**
+  /**
          * Start the zim creation.
          *
          * The creator must have been configured before calling this method.
          *
          * @param filepath the path of the zim file to create.
          */
-        void startZimCreation(const std::string& filepath);
+  void startZimCreation( const std::string & filepath );
 
-        /**
+  /**
          * Add a item to the archive.
          *
          * @param item The item to add.
          */
-        void addItem(std::shared_ptr<Item> item);
+  void addItem( std::shared_ptr< Item > item );
 
-        /**
+  /**
          * Add a metadata to the archive.
          *
          * @param name the name of the metadata
@@ -149,9 +147,11 @@ namespace zim
          * @param mimetype the mimetype of the metadata.
          *                 Only used to detect if the metadata must be compressed or not.
          */
-        void addMetadata(const std::string& name, const std::string& content, const std::string& mimetype = "text/plain;charset=utf-8");
+  void addMetadata( const std::string & name,
+                    const std::string & content,
+                    const std::string & mimetype = "text/plain;charset=utf-8" );
 
-        /**
+  /**
          * Add a metadata to the archive using a contentProvider instead of plain string.
          *
          * @param name the name of the metadata.
@@ -159,25 +159,27 @@ namespace zim
          * @param mimetype the mimetype of the metadata.
          *                 Only used to detect if the metadata must be compressed.
          */
-        void addMetadata(const std::string& name, std::unique_ptr<ContentProvider> provider, const std::string& mimetype = "text/plain;charset=utf-8");
+  void addMetadata( const std::string & name,
+                    std::unique_ptr< ContentProvider > provider,
+                    const std::string & mimetype = "text/plain;charset=utf-8" );
 
-        /**
+  /**
          * Add illustration to the archive.
          *
          * @param size the size (width and height) of the illustration.
          * @param content the content of the illustration (must be a png content)
          */
-        void addIllustration(unsigned int size, const std::string& content);
+  void addIllustration( unsigned int size, const std::string & content );
 
-        /**
+  /**
          * Add illustration to the archive.
          *
          * @param size the size (width and height) of the illustration.
          * @param provider the provider of the content of the illustration (must be a png content)
          */
-        void addIllustration(unsigned int size, std::unique_ptr<ContentProvider> provider);
+  void addIllustration( unsigned int size, std::unique_ptr< ContentProvider > provider );
 
-        /**
+  /**
          * Add a redirection to the archive.
          *
          * Hints (especially FRONT_ARTICLE) can be used to put the redirection
@@ -189,52 +191,57 @@ namespace zim
          * @param targetpath the path of the target of the redirection.
          * @param hints hints associated to the redirection.
          */
-        void addRedirection(
-            const std::string& path,
-            const std::string& title,
-            const std::string& targetpath,
-            const Hints& hints = Hints());
+  void addRedirection( const std::string & path,
+                       const std::string & title,
+                       const std::string & targetpath,
+                       const Hints & hints = Hints() );
 
-        /**
+  /**
          * Finalize the zim creation.
          */
-        void finishZimCreation();
+  void finishZimCreation();
 
-        /**
+  /**
          * Set the path of the main page.
          *
          * @param mainPath The path of the main page.
          */
-        void setMainPath(const std::string& mainPath) { m_mainPath = mainPath; }
+  void setMainPath( const std::string & mainPath )
+  {
+    m_mainPath = mainPath;
+  }
 
-        /**
+  /**
          * Set the uuid of the the archive.
          *
          * @param uuid The uuid of the archive.
          */
-        void setUuid(const zim::Uuid& uuid) { m_uuid = uuid; }
-
-      private:
-        std::unique_ptr<CreatorData> data;
-
-        // configuration
-        bool m_verbose = false;
-        Compression m_compression = Compression::Zstd;
-        bool m_withIndex = false;
-        size_t m_clusterSize;
-        std::string m_indexingLanguage;
-        unsigned m_nbWorkers = 4;
-
-        // zim data
-        std::string m_mainPath;
-        Uuid m_uuid = Uuid::generate();
-
-        void fillHeader(Fileheader* header) const;
-        void writeLastParts() const;
-        void checkError();
-    };
+  void setUuid( const zim::Uuid & uuid )
+  {
+    m_uuid = uuid;
   }
 
-}
+private:
+  std::unique_ptr< CreatorData > data;
+
+  // configuration
+  bool m_verbose            = false;
+  Compression m_compression = Compression::Zstd;
+  bool m_withIndex          = false;
+  size_t m_clusterSize;
+  std::string m_indexingLanguage;
+  unsigned m_nbWorkers = 4;
+
+  // zim data
+  std::string m_mainPath;
+  Uuid m_uuid = Uuid::generate();
+
+  void fillHeader( Fileheader * header ) const;
+  void writeLastParts() const;
+  void checkError();
+};
+} // namespace writer
+
+} // namespace zim
 
 #endif // ZIM_WRITER_CREATOR_H

@@ -25,27 +25,26 @@
 #include <string>
 #include <memory>
 
-namespace zim
-{
-  class Item;
-  class Dirent;
-  class FileImpl;
+namespace zim {
+class Item;
+class Dirent;
+class FileImpl;
 
-  /**
+/**
    * An entry in an `Archive`.
    *
    * All `Entry`'s methods are threadsafe.
    */
-  class LIBZIM_API Entry
-  {
-    public:
-      explicit Entry(std::shared_ptr<FileImpl> file_, entry_index_type idx_);
+class LIBZIM_API Entry
+{
+public:
+  explicit Entry( std::shared_ptr< FileImpl > file_, entry_index_type idx_ );
 
-      bool isRedirect() const;
-      std::string getTitle() const;
-      std::string getPath() const;
+  bool isRedirect() const;
+  std::string getTitle() const;
+  std::string getPath() const;
 
-      /** Get the item associated to the entry.
+  /** Get the item associated to the entry.
        *
        * An item is associated only if the entry is not a redirect.
        * For convenience, if follow is true, return the item associated to the targeted entry.
@@ -54,9 +53,9 @@ namespace zim
        * @return The Item associated to the entry.
        * @exception InvalidType if the entry is a redirection and follow is false.
        */
-      Item getItem(bool follow=false) const;
+  Item getItem( bool follow = false ) const;
 
-      /** Get the item associated to the target entry.
+  /** Get the item associated to the target entry.
        *
        * If there is a chain of redirection, the whole chain is resolved
        * and the item associted to the last entry is returned.
@@ -64,32 +63,34 @@ namespace zim
        * @return the Item associated with the targeted entry.
        * @exception InvalidType if the entry is not a redirection.
        */
-      Item getRedirect() const;
+  Item getRedirect() const;
 
-      /** Get the Entry targeted by the entry.
+  /** Get the Entry targeted by the entry.
        *
        * @return The entry directly targeted by this redirect entry.
        * @exception InvalidEntry if the entry is not a redirection.
        */
-      Entry getRedirectEntry() const;
+  Entry getRedirectEntry() const;
 
-      /** Get the index of the Entry targeted by the entry.
+  /** Get the index of the Entry targeted by the entry.
        *
        * @return The index of the entry directly targeted by this redirect
        *         entry.
        * @exception InvalidEntry if the entry is not a redirection.
        */
-      entry_index_type getRedirectEntryIndex() const;
+  entry_index_type getRedirectEntryIndex() const;
 
-      entry_index_type getIndex() const   { return m_idx; }
+  entry_index_type getIndex() const
+  {
+    return m_idx;
+  }
 
-    private:
-      std::shared_ptr<FileImpl> m_file;
-      entry_index_type m_idx;
-      std::shared_ptr<const Dirent> m_dirent;
-  };
+private:
+  std::shared_ptr< FileImpl > m_file;
+  entry_index_type m_idx;
+  std::shared_ptr< const Dirent > m_dirent;
+};
 
-}
+} // namespace zim
 
 #endif // ZIM_ENTRY_H
-

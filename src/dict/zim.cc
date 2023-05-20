@@ -8,41 +8,41 @@
 
 #include "folding.hh"
 #include "gddebug.hh"
-#include "utf8.hh"
-#include "langcoder.hh"
-#include "filetype.hh"
-#include "file.hh"
-#include "utils.hh"
-#include "tiff.hh"
-#include "ftshelpers.hh"
-#include "htmlescape.hh"
+  #include "utf8.hh"
+  #include "langcoder.hh"
+  #include "filetype.hh"
+  #include "file.hh"
+  #include "utils.hh"
+  #include "tiff.hh"
+  #include "ftshelpers.hh"
+  #include "htmlescape.hh"
 
-#ifdef _MSC_VER
-#include <stub_msvc.h>
-#endif
+  #ifdef _MSC_VER
+    #include <stub_msvc.h>
+  #endif
 
-#include <QByteArray>
-#include <QFile>
-#include <QFileInfo>
-#include <QString>
-#include <QRunnable>
-#include <QSemaphore>
-#include <QAtomicInt>
-#include <QImage>
-#include <QDir>
+  #include <QByteArray>
+  #include <QFile>
+  #include <QFileInfo>
+  #include <QString>
+  #include <QRunnable>
+  #include <QSemaphore>
+  #include <QAtomicInt>
+  #include <QImage>
+  #include <QDir>
 
-#include <QRegularExpression>
+  #include <QRegularExpression>
 
-#include <string>
-#include <set>
-#include <map>
-#include <algorithm>
-#include <QtConcurrent>
-#include "globalregex.hh"
-#include <zim/zim.h>
-#include <zim/archive.h>
-#include <zim/entry.h>
-#include <zim/item.h>
+  #include <string>
+  #include <set>
+  #include <map>
+  #include <algorithm>
+  #include <QtConcurrent>
+  #include "globalregex.hh"
+  #include <zim/zim.h>
+  #include <zim/archive.h>
+  #include <zim/entry.h>
+  #include <zim/item.h>
 namespace Zim {
 
 #define CACHE_SIZE 3
@@ -67,10 +67,10 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
 //namespace {
 
-using ZimFile=zim::Archive;
+using ZimFile = zim::Archive;
 
 
-#pragma pack( push, 1 )
+  #pragma pack( push, 1 )
 
 enum CompressionType
 {
@@ -184,8 +184,9 @@ quint32 getArticleCluster( ZimFile & file, quint32 articleNumber )
 }
 
 bool isArticleMime( string mime_type )
-{ return mime_type.compare( "text/html")==0
-         || mime_type.compare( "text/plain" )==0; }
+{
+  return mime_type.compare( "text/html" ) == 0 || mime_type.compare( "text/plain" ) == 0;
+}
 
 quint32 readArticle( ZimFile & file, quint32 articleNumber, string & result,
                      set< quint32 > * loadedArticles = NULL )
@@ -195,7 +196,7 @@ quint32 readArticle( ZimFile & file, quint32 articleNumber, string & result,
 
     auto item = entry.getItem( true );
     result    = string( item.getData( 0 ).data(), item.getData( 0 ).size() );
-    qDebug().noquote()<<result.c_str();
+    qDebug().noquote() << result.c_str();
     return item.getIndex();
   }
   catch ( std::exception & e ) {
@@ -298,43 +299,37 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
   idxHeader( idx.read< IdxHeader >() ),
   df( dictionaryFiles[ 0 ].c_str() )
 {
-    // Initialize the indexes
+  // Initialize the indexes
 
-    openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                          idxHeader.indexRootOffset ),
-               idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
-    resourceIndex.openIndex( IndexInfo( idxHeader.resourceIndexBtreeMaxElements,
-                                        idxHeader.resourceIndexRootOffset ),
-                             idx, idxResourceMutex );
+  resourceIndex.openIndex( IndexInfo( idxHeader.resourceIndexBtreeMaxElements, idxHeader.resourceIndexRootOffset ),
+                           idx,
+                           idxResourceMutex );
 
-    // Read dictionary name
+  // Read dictionary name
 
-    if( idxHeader.namePtr == 0xFFFFFFFF )
-    {
-      QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-      int n = name.lastIndexOf( '/' );
-      dictionaryName = name.mid( n + 1 ).toStdString();
-    }
-    else
-    {
-      readArticle( df, idxHeader.namePtr, dictionaryName );
-    }
+  if ( idxHeader.namePtr == 0xFFFFFFFF ) {
+    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
+    int n          = name.lastIndexOf( '/' );
+    dictionaryName = name.mid( n + 1 ).toStdString();
+  }
+  else {
+    readArticle( df, idxHeader.namePtr, dictionaryName );
+  }
 
-    // Full-text search parameters
+  // Full-text search parameters
 
-    can_FTS = true;
+  can_FTS = true;
 
-    ftsIdxName = indexFile + Dictionary::getFtsSuffix();
+  ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-    if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-        && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
-      FTS_index_completed.ref();
+  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
+       && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
+    FTS_index_completed.ref();
 }
 
-ZimDictionary::~ZimDictionary()
-{
-}
+ZimDictionary::~ZimDictionary() {}
 
 void ZimDictionary::loadIcon() noexcept
 {
@@ -940,123 +935,117 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // scanning
 
     QString firstName = QDir::fromNativeSeparators( i->c_str() );
-    if ( !firstName.endsWith( ".zim" ))
-    {
+    if ( !firstName.endsWith( ".zim" ) ) {
       continue;
     }
 
       // Got the file -- check if we need to rebuid the index
-      ZimFile df( firstName.toStdString() );
+    ZimFile df( firstName.toStdString() );
 
-      vector< string > dictFiles;
-      dictFiles.push_back(firstName.toStdString());
+    vector< string > dictFiles;
+    dictFiles.push_back( firstName.toStdString() );
 
-      string dictId = df.getChecksum();
+    string dictId = df.getChecksum();
 
-      string indexFile = indicesDir + dictId;
+    string indexFile = indicesDir + dictId;
 
-      initializing.indexingDictionary( df.getFilename() );
+    initializing.indexingDictionary( df.getFilename() );
 
-      try
-      {
+    try {
       //only check zim file.
-        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-             indexIsOldOrBad( indexFile ) )
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+        gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );
+
+        unsigned articleCount = df.getArticleCount();
+        unsigned wordCount    = 0;
+
         {
-          gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );
-
-          unsigned articleCount = df.getArticleCount();
-          unsigned wordCount = 0;
-
-          {
-            int n = firstName.lastIndexOf( '/' );
-            initializing.indexingDictionary( firstName.mid( n + 1 ).toUtf8().constData() );
-          }
-
-          File::Class idx( indexFile, "wb" );
-          IdxHeader idxHeader;
-          memset( &idxHeader, 0, sizeof( idxHeader ) );
-          idxHeader.namePtr = 0xFFFFFFFF;
-          idxHeader.descriptionPtr = 0xFFFFFFFF;
-
-          auto lang=df.getMetadata("Language");
-          if(lang.size()==2)
-            idxHeader.langFrom = LangCoder::code2toInt( lang );
-          else if( lang.size() == 3 )
-              idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
-          idxHeader.langTo = idxHeader.langFrom;
-          // We write a dummy header first. At the end of the process the header
-          // will be rewritten with the right values.
-
-          idx.write( idxHeader );
-
-          IndexedWords indexedWords, indexedResources;
-
-          string url, title;
-          for ( unsigned n = 0; n < articleCount; n++ ) {
-              try {
-                auto entry    = df.getEntryByPath( n );
-                auto item     = entry.getItem( true );
-                auto mimeType = item.getMimetype();
-                qDebug() << n << mimeType;
-                if(!isArticleMime(mimeType))
-                    continue;
-
-                auto url   = item.getPath();
-                auto title = item.getTitle();
-                // Read article url and title
-
-                wstring word;
-                if ( !title.empty() ) {
-                  word = Utf8::decode( title );
-                  indexedWords.addSingleWord( word, n );
-                }
-                if ( !url.empty() ) {
-                  auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-                  indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
-                }
-                wordCount++;
-              }
-              catch ( std::exception &e ) {
-                qWarning()<<e.what();
-                continue;
-              }
-          }
-
-          // Build index
-
-          {
-            IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
-
-            idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-            idxHeader.indexRootOffset = idxInfo.rootOffset;
-
-            indexedWords.clear(); // Release memory -- no need for this data
-          }
-
-          {
-            IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedResources, idx );
-
-            idxHeader.resourceIndexBtreeMaxElements = idxInfo.btreeMaxElements;
-            idxHeader.resourceIndexRootOffset = idxInfo.rootOffset;
-
-            indexedResources.clear(); // Release memory -- no need for this data
-          }
-
-          idxHeader.signature = Signature;
-          idxHeader.formatVersion = CurrentFormatVersion;
-
-          idxHeader.articleCount = articleCount;
-          idxHeader.wordCount = wordCount;
-
-          idx.rewind();
-
-          idx.write( &idxHeader, sizeof( idxHeader ) );
+          int n = firstName.lastIndexOf( '/' );
+          initializing.indexingDictionary( firstName.mid( n + 1 ).toUtf8().constData() );
         }
 
-        dictionaries.push_back( std::make_shared<ZimDictionary>( dictId,
-                                                   indexFile,
-                                                   dictFiles ) );
+        File::Class idx( indexFile, "wb" );
+        IdxHeader idxHeader;
+        memset( &idxHeader, 0, sizeof( idxHeader ) );
+        idxHeader.namePtr        = 0xFFFFFFFF;
+        idxHeader.descriptionPtr = 0xFFFFFFFF;
+
+        auto lang = df.getMetadata( "Language" );
+        if ( lang.size() == 2 )
+          idxHeader.langFrom = LangCoder::code2toInt( lang );
+        else if ( lang.size() == 3 )
+          idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
+        idxHeader.langTo = idxHeader.langFrom;
+        // We write a dummy header first. At the end of the process the header
+        // will be rewritten with the right values.
+
+        idx.write( idxHeader );
+
+        IndexedWords indexedWords, indexedResources;
+
+        string url, title;
+        for ( unsigned n = 0; n < articleCount; n++ ) {
+          try {
+            auto entry    = df.getEntryByPath( n );
+            auto item     = entry.getItem( true );
+            auto mimeType = item.getMimetype();
+            qDebug() << n << mimeType;
+            if ( !isArticleMime( mimeType ) )
+              continue;
+
+            auto url   = item.getPath();
+            auto title = item.getTitle();
+            // Read article url and title
+
+            wstring word;
+            if ( !title.empty() ) {
+              word = Utf8::decode( title );
+              indexedWords.addSingleWord( word, n );
+            }
+            if ( !url.empty() ) {
+              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+              indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            }
+            wordCount++;
+          }
+          catch ( std::exception & e ) {
+            qWarning() << e.what();
+            continue;
+          }
+        }
+
+        // Build index
+
+        {
+          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
+
+          idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
+          idxHeader.indexRootOffset       = idxInfo.rootOffset;
+
+          indexedWords.clear(); // Release memory -- no need for this data
+        }
+
+        {
+          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedResources, idx );
+
+          idxHeader.resourceIndexBtreeMaxElements = idxInfo.btreeMaxElements;
+          idxHeader.resourceIndexRootOffset       = idxInfo.rootOffset;
+
+          indexedResources.clear(); // Release memory -- no need for this data
+        }
+
+        idxHeader.signature     = Signature;
+        idxHeader.formatVersion = CurrentFormatVersion;
+
+        idxHeader.articleCount = articleCount;
+        idxHeader.wordCount    = wordCount;
+
+        idx.rewind();
+
+        idx.write( &idxHeader, sizeof( idxHeader ) );
+      }
+
+      dictionaries.push_back( std::make_shared< ZimDictionary >( dictId, indexFile, dictFiles ) );
       }
       catch( std::exception & e )
       {

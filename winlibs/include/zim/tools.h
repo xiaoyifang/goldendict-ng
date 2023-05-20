@@ -23,17 +23,17 @@
 #include "zim.h"
 
 namespace zim {
-#if defined(LIBZIM_WITH_XAPIAN)
+#if defined( LIBZIM_WITH_XAPIAN )
 
-  /** Helper function to set the icu data directory.
+/** Helper function to set the icu data directory.
    *
    * On Android, we compile ICU without data integrated
    * in the library. So android application needs to set
    * the data directory where ICU can find its data.
    */
-  LIBZIM_API void setICUDataDirectory(const std::string& path);
+LIBZIM_API void setICUDataDirectory( const std::string & path );
 
 #endif
-}
+} // namespace zim
 
 #endif // ZIM_TOOLS_H
