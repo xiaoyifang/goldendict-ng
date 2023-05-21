@@ -134,6 +134,7 @@ jobs:
           brew install pkg-config
           brew install xapian
           brew install libzim
+          brew install icu4c
       - name: Run build-wrapper
         run: |
           cmake .
