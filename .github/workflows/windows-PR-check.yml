@@ -17,6 +17,8 @@ on:
       - "howto/**"
       - "*.md"
       - "locale/**"
+      - "website/**"
+
 jobs:
   build:
     name: Build
