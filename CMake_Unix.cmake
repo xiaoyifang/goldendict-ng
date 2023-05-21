@@ -71,3 +71,7 @@ if (WITH_EPWING_SUPPORT)
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
 endif ()
 
+if(MAKE_ZIM_SUPPORT)
+    find_package(zim REQUIRED)
+    target_link_libraries(${GOLDENDICT} PRIVATE ${ZIM_LIBRARIES})
+endif()
