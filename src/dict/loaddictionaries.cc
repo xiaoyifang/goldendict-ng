@@ -167,7 +167,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
     auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
 
     auto dictMetaData = Metadata::load( filePath.toStdString() );
-    if ( dictMetaData && !dictMetaData->name->empty() ) {
+    if ( dictMetaData && dictMetaData->name ) {
       dict->setName( dictMetaData->name.value() );
     }
   }
