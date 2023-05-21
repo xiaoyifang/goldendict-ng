@@ -43,12 +43,11 @@
 #include <QCoreApplication>
 #include <QDataStream>
 
-#if defined(Q_OS_WIN)
-#include <QLibrary>
-#include <qt_windows.h>
-typedef BOOL(WINAPI*PProcessIdToSessionId)(DWORD,DWORD*);
-static PProcessIdToSessionId pProcessIdToSessionId = 0;
+
+#if defined( Q_OS_WIN )
+  #include <qt_windows.h>
 #endif
+
 #if defined(Q_OS_UNIX)
 #include <ctime>
 #include <unistd.h>
@@ -74,7 +73,12 @@ QtLocalPeer::QtLocalPeer(QObject* parent, const QString &appId)
     prefix.truncate(6);
 
     QByteArray idc = QDir::home().dirName().toUtf8();
-    quint16 idNum = qChecksum(idc.constData(), idc.size());
+#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
+    quint16 idNum = qChecksum( idc.constData(), idc.size() );
+#else
+    quint16 idNum = qChecksum( idc );
+#endif
+
     socketName = QLatin1String("single-") + prefix
                  + QLatin1Char('-') + QString::number(idNum, 16);
 
