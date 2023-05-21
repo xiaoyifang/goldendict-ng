@@ -408,11 +408,10 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 
   sptr< QNetworkReply > netReply = netReplies.front().reply;
 
-  if( isFinished()  ){
+  if ( isFinished() ) {
     return;
   }
-  if( !netReply->isFinished() ||
-      netReply->error() != QNetworkReply::NoError  ){
+  if ( !netReply->isFinished() || netReply->error() != QNetworkReply::NoError ) {
     qWarning()<< "Lingua query failed: " << netReply->error();
     cancel();
     return;
