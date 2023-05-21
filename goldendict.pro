@@ -369,6 +369,7 @@ HEADERS += \
     src/metadata.hh \
     src/multimediaaudioplayer.hh \
     src/parsecmdline.hh \
+    src/pronounceengine.hh \
     src/resourceschemehandler.hh \
     src/splitfile.hh \
     src/termination.hh \
@@ -492,6 +493,7 @@ SOURCES += \
     src/metadata.cc \
     src/multimediaaudioplayer.cc \
     src/parsecmdline.cc \
+    src/pronounceengine.cc \
     src/resourceschemehandler.cc \
     src/splitfile.cc \
     src/termination.cc \

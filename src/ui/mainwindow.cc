@@ -685,6 +685,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::showFTSIndexingName );
 
+  connect( &GlobalBroadcaster::instance()->pronounce_engine,
+           &PronounceEngine::emitAudio,
+           this,
+           [ this ]( auto audioUrl ) {
+             auto view = getCurrentArticleView();
+             if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
+               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+             }
+           } );
   applyProxySettings();
 
   //set  webengineview font
@@ -1918,9 +1927,9 @@ void MainWindow::pageLoaded( ArticleView * view )
 
   updatePronounceAvailability();
 
-  if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
-    view->playSound();
-  }
+  // if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
+  //   view->playSound();
+  // }
 }
 
 void MainWindow::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )

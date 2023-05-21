@@ -294,6 +294,7 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
                                   QString const & scrollTo,
                                   Contexts const & contexts_ )
 {
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   currentWord = word.trimmed();
   if( currentWord.isEmpty() )
     return;

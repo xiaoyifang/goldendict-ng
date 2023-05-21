@@ -4,6 +4,7 @@
 #include <QObject>
 #include <vector>
 #include "config.hh"
+#include "pronounceengine.hh"
 
 struct ActiveDictIds
 {
@@ -17,10 +18,11 @@ struct ActiveDictIds
   }
 };
 
+
 class GlobalBroadcaster : public QObject
 {
   Q_OBJECT
-private:
+
   Config::Preferences * preference;
   QSet<QString> whitelist;
 
@@ -37,7 +39,7 @@ public:
   QSet< QString > collapsedDicts;
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
-
+  PronounceEngine pronounce_engine;
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
