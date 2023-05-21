@@ -18,7 +18,7 @@ dictionaries.
 - webengine with latest html/css feature support
 - support >4GB dictionary
 - support highdpi screen resolution
-- built with xapian(optional) as fulltext engine
+- built with xapian as fulltext engine
 - support Qt5.15.2 and higher ,include latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
 - anki integration
