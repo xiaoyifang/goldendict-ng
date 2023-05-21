@@ -114,7 +114,7 @@ bool indexIsOldOrBad( string const & indexFile )
          header.formatVersion != CurrentFormatVersion;
 }
 
-quint32 getArticleCluster( ZimFile & file, quint32 articleNumber )
+quint32 getArticleCluster( ZimFile const & file, quint32 articleNumber )
 {
   try {
     auto entry = file.getEntryByPath( articleNumber );
@@ -129,13 +129,12 @@ quint32 getArticleCluster( ZimFile & file, quint32 articleNumber )
   }
 }
 
-bool isArticleMime( string mime_type )
+bool isArticleMime( const string & mime_type )
 {
   return mime_type.compare( "text/html" ) == 0 || mime_type.compare( "text/plain" ) == 0;
 }
 
-quint32 readArticle( ZimFile & file, quint32 articleNumber, string & result,
-                     set< quint32 > * loadedArticles = NULL )
+quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & result )
 {
   try {
     auto entry = file.getEntryByPath( articleNumber );
@@ -169,7 +168,7 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     ZimDictionary( string const & id, string const & indexFile,
                      vector< string > const & dictionaryFiles );
 
-    ~ZimDictionary();
+    ~ZimDictionary() = default;
 
     string getName() noexcept override
     { return dictionaryName; }
@@ -260,7 +259,7 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
     dictionaryName = name.mid( n + 1 ).toStdString();
   }
   else {
-    readArticle( df, idxHeader.namePtr, dictionaryName );
+    readArticle( df, idxHeader.namePtr, dictionaryName);
   }
 
   // Full-text search parameters
@@ -273,8 +272,6 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
        && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
     FTS_index_completed.ref();
 }
-
-ZimDictionary::~ZimDictionary() {}
 
 void ZimDictionary::loadIcon() noexcept
 {
@@ -303,7 +300,7 @@ quint32 ZimDictionary::loadArticle( quint32 address,
 quint32 ret;
   {
     Mutex::Lock _( zimMutex );
-    ret = readArticle( df, address, articleText, loadedArticles );
+    ret = readArticle( df, address, articleText);
   }
   if( !rawText )
     articleText = convert( articleText );
@@ -486,7 +483,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
 
   {
     Mutex::Lock _( zimMutex );
-    readArticle( df, link[ 0 ].articleOffset, data );
+    readArticle( df, link[ 0 ].articleOffset, data);
   }
 }
 
@@ -498,7 +495,7 @@ QString const& ZimDictionary::getDescription()
     string str;
     {
       Mutex::Lock _( zimMutex );
-      readArticle( df, idxHeader.descriptionPtr, str );
+      readArticle( df, idxHeader.descriptionPtr, str);
     }
 
     if( !str.empty() )
@@ -928,7 +925,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         IndexedWords indexedWords, indexedResources;
 
-        string url, title;
         for ( unsigned n = 0; n < articleCount; n++ ) {
           try {
             auto entry    = df.getEntryByPath( n );
@@ -943,15 +939,27 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               continue;
             }
 
-            wstring word;
-            if ( !title.empty() ) {
-              word = Utf8::decode( title );
-              indexedWords.addSingleWord( word, n );
+            if ( maxHeadwordsToExpand && articleCount >= maxHeadwordsToExpand ) {
+              if ( !title.empty() ) {
+                wstring word = Utf8::decode( title );
+                indexedWords.addSingleWord( word, n );
+              }
+              if ( !url.empty() ) {
+                auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+                indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+              }
             }
-            if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-              indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            else {
+              if ( !title.empty() ) {
+                auto word = Utf8::decode( title );
+                indexedWords.addWord( word, n );
+              }
+              if ( !url.empty() ) {
+                auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+                indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+              }
             }
+
             wordCount++;
           }
           catch ( std::exception & e ) {
@@ -961,7 +969,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         }
 
         // Build index
-
         {
           IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
 
