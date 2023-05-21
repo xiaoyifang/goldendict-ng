@@ -989,7 +989,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             auto entry    = df.getEntryByPath( n );
             auto item     = entry.getItem( true );
             auto mimeType = item.getMimetype();
-            qDebug() << n << mimeType;
+            qDebug() << n << mimeType.c_str();
             if ( !isArticleMime( mimeType ) )
               continue;
 

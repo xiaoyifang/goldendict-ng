@@ -565,8 +565,8 @@ CONFIG( zim_support ) {
   LIBS += -llzma -lzstd -lzim
 
     win32{
-      Debug: LIBS+= -L$$PWD/winlibs/lib/zim/dbg/
-      Release: LIBS+= -L$$PWD/winlibs/lib/zim/rel/
+      Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/
+      Release: LIBS+= -L$$PWD/winlibs/lib/
     }
 }
 
