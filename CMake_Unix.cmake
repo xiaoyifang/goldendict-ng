@@ -72,6 +72,8 @@ if (WITH_EPWING_SUPPORT)
 endif ()
 
 if(WITH_ZIM)
-    find_package(zim REQUIRED)
-    target_link_libraries(${GOLDENDICT} PRIVATE ${ZIM_LIBRARIES})
+    pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET
+     libzim
+    )
+    target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 endif()
