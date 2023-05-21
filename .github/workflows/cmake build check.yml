@@ -137,6 +137,7 @@ jobs:
           brew install icu4c
       - name: Run build-wrapper
         run: |
+          export PKG_CONFIG_PATH=/opt/homebrew/opt/icu4c/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:"$PKG_CONFIG_PATH"
           cmake .
           cmake --build .                  
       
