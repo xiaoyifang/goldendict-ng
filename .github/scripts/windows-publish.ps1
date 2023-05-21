@@ -58,6 +58,7 @@ function Main() {
     Copy-Item $sdkDll $archiveName\
     Copy-Item winlibs\lib\msvc\*.dll $archiveName\
     Copy-Item winlibs\lib\xapian\rel\*.dll $archiveName\
+    Copy-Item winlibs\lib\*.dll $archiveName\
     Copy-Item locale\*.qm $archiveName\locale\
 
     $webengineqm="{0}\translations\qtwebengine_*.qm" -f $env:QTDIR.Trim()

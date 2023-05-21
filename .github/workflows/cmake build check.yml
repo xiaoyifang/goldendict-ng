@@ -49,6 +49,7 @@ jobs:
           make PREFIX=/usr -j$(nproc)
           sudo make install
           cd ..
+          sudo apt-get install libzim-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -132,6 +133,7 @@ jobs:
           brew install  xz lzo 
           brew install pkg-config
           brew install xapian
+          brew install libzim
       - name: Run build-wrapper
         run: |
           cmake .

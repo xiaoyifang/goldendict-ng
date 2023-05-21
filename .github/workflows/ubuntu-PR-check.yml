@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-latest]
         qt_ver: [5.15.2,6.4.3]
         qt_arch: [gcc_64]
 
