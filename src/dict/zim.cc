@@ -72,60 +72,6 @@ using ZimFile = zim::Archive;
 
   #pragma pack( push, 1 )
 
-enum CompressionType
-{
-  Default = 0, None, Zlib, Bzip2, Lzma2, Zstd
-};
-
-/// Zim file header
-struct ZIM_header
-{
-    quint32 magicNumber;
-    quint16 majorVersion;
-    quint16 minorVersion;
-    quint8 uuid[ 16 ];
-    quint32 articleCount;
-    quint32 clusterCount;
-    quint64 urlPtrPos;
-    quint64 titlePtrPos;
-    quint64 clusterPtrPos;
-    quint64 mimeListPos;
-    quint32 mainPage;
-    quint32 layoutPage;
-    quint64 checksumPos;
-}
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
-;
-
-struct ArticleEntry
-{
-    quint16 mimetype;
-    quint8 parameterLen;
-    char nameSpace;
-    quint32 revision;
-    quint32 clusterNumber;
-    quint32 blobNumber;
-}
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
-;
-
-struct RedirectEntry
-{
-    quint16 mimetype;
-    quint8 parameterLen;
-    char nameSpace;
-    quint32 revision;
-    quint32 redirectIndex;
-}
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
-;
-
 enum
 {
   Signature = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
@@ -196,7 +142,6 @@ quint32 readArticle( ZimFile & file, quint32 articleNumber, string & result,
 
     auto item = entry.getItem( true );
     result    = string( item.getData( 0 ).data(), item.getData( 0 ).size() );
-    qDebug().noquote() << result.c_str();
     return item.getIndex();
   }
   catch ( std::exception & e ) {
@@ -989,13 +934,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             auto entry    = df.getEntryByPath( n );
             auto item     = entry.getItem( true );
             auto mimeType = item.getMimetype();
-            qDebug() << n << mimeType.c_str();
-            if ( !isArticleMime( mimeType ) )
-              continue;
-
             auto url   = item.getPath();
             auto title = item.getTitle();
+            qDebug() << n << mimeType.c_str()<<url.c_str()<<title.c_str();
             // Read article url and title
+            if ( !isArticleMime( mimeType ) ) {
+              indexedResources.addSingleWord( Utf8::decode( url ), n );
+              continue;
+            }
 
             wstring word;
             if ( !title.empty() ) {
