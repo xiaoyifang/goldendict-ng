@@ -6,6 +6,8 @@ cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_XAPIAN "enable Xapian support" ON)
+option(WITH_ZIM "enable zim support" ON)
+
 
 include(FeatureSummary)
 
@@ -114,7 +116,6 @@ target_include_directories(${GOLDENDICT} PUBLIC
 target_compile_definitions(${GOLDENDICT} PUBLIC
         CMAKE_USED_HACK  # temporal hack to avoid breaking qmake build
         USE_ICONV
-        MAKE_ZIM_SUPPORT
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         )
@@ -132,6 +133,12 @@ endif ()
 if (WITH_XAPIAN)
     target_compile_definitions(${GOLDENDICT} PUBLIC USE_XAPIAN)
 endif ()
+
+if(WITH_ZIM)
+        target_compile_definitions(${GOLDENDICT} PUBLIC
+        MAKE_ZIM_SUPPORT
+        )
+endif()
 
 #### libraries linking && includes for Win or Unix
 
