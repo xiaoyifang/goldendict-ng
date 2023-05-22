@@ -2,8 +2,9 @@
 
 [![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
-[![Windows](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml) [![Ubuntu](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml)
-[![macos](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml)
+[![Windows-6.x-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x-xapian.yml)
+[![Ubuntu-6.2-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2-xapian.yml)
+[![macos-homebrew-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew-xapian.yml)
 
 The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
 supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
