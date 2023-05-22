@@ -9,7 +9,7 @@ struct GDLangCode
     char code[ 3 ]; // ISO 639-1
     char code3[ 4 ]; // ISO 639-2B ( http://www.loc.gov/standards/iso639-2/ )
     int isRTL; // Right-to-left writing; 0 - no, 1 - yes, -1 - let Qt define
-    char const * lang; // Language name in English
+    QString lang; // Language name in English
 };
 
 

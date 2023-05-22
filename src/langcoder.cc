@@ -211,7 +211,7 @@ static GDLangCode LangCodes[] = {
 LangCoder::LangCoder()
 {
   int i = 0;
-  for (const auto lc : LangCodes)
+  for ( const auto & lc : LangCodes )
   {
     codeMap[ code2toInt( lc.code ) ] = i++;
   }
@@ -222,7 +222,7 @@ QString LangCoder::decode(quint32 code)
   if (langCoder.codeMap.contains(code))
     return LangCodes[langCoder.codeMap[code]].lang;
 
-  return QString();
+  return {};
 }
 
 QIcon LangCoder::icon(quint32 code)
@@ -233,7 +233,7 @@ QIcon LangCoder::icon(quint32 code)
     return QIcon( ":/flags/" + QString(lc.code) + ".png" );
   }
 
-  return QIcon();
+  return {};
 }
 
 LangStruct LangCoder::langStruct(quint32 code)
@@ -242,7 +242,7 @@ LangStruct LangCoder::langStruct(quint32 code)
   ls.code = code;
   ls.order = -1;
   if (codeMap.contains(code)) {
-    int order = codeMap[code];
+    const int order = codeMap[code];
     const GDLangCode &lc = LangCodes[order];
     ls.order = order;
     ls.lang = lc.lang;
@@ -254,7 +254,7 @@ LangStruct LangCoder::langStruct(quint32 code)
 QString LangCoder::intToCode2( quint32 val )
 {
   if ( !val || val == 0xFFffFFff )
-    return QString();
+    return {};
 
   char code[ 2 ];
 
@@ -266,14 +266,14 @@ QString LangCoder::intToCode2( quint32 val )
 
 quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
 {
-  gd::wstring langFolded = Folding::apply( lang );
+  const auto langFolded = QString::fromStdU32String(   Folding::apply( lang ));
 
-  for( GDLangCode const * lc = LangCodes; lc->code[ 0 ]; ++lc )
+  for(auto const & lc: LangCodes)
   {
-    if ( langFolded == Folding::apply( gd::toWString( lc->lang ) ) )
+    if ( langFolded ==  lc.lang )
     {
       // We've got a match
-      return code2toInt( lc->code );
+      return code2toInt( lc.code );
     }
   }
 
@@ -283,12 +283,12 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
 
 quint32 LangCoder::findIdForLanguageCode3( const char * code3 )
 {
-  for( GDLangCode const * lc = LangCodes; lc->code[ 0 ]; ++lc )
+  for ( auto const & lc : LangCodes )
   {
-    if ( strcasecmp( code3, lc->code3 ) == 0 )
+    if ( strcasecmp( code3, lc.code3 ) == 0 )
     {
       // We've got a match
-      return code2toInt( lc->code );
+      return code2toInt( lc.code );
     }
   }
 
@@ -306,12 +306,12 @@ quint32 LangCoder::guessId( const QString & lang )
   // check if it could be the whole language name
   if (lstr.size() >= 3)
   {
-    for( GDLangCode const * lc = LangCodes; lc->code[ 0 ]; ++lc )
+    for ( auto const & lc : LangCodes )
     {
-      if ( lstr == ( lstr.size() == 3 ? QString( lc->code3 ) : QString( lc->lang ) ) )
+      if ( lstr == ( lstr.size() == 3 ? QString( lc.code3 ) : QString( lc.lang ) ) )
       {
         // We've got a match
-        return code2toInt( lc->code );
+        return code2toInt( lc.code );
       }
     }
   }
