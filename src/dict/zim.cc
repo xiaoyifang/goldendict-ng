@@ -1581,7 +1581,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                   idxHeader.langFrom = LangCoder::code2toInt( lang.c_str() );
                 else
                 if( lang.size() == 3 )
-                  idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang.c_str() );
+                  idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
                 idxHeader.langTo = idxHeader.langFrom;
               }
             }

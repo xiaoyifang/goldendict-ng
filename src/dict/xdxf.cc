@@ -72,7 +72,8 @@ quint32 getLanguageId( const QString & lang )
   switch( lstr.size() )
   {
     case 2: return LangCoder::code2toInt( lstr.toLatin1().data() );
-    case 3: return LangCoder::findIdForLanguageCode3( lstr.toLatin1().data() );
+    case 3:
+      return LangCoder::findIdForLanguageCode3( lstr.toStdString() );
   }
 
   return 0;
