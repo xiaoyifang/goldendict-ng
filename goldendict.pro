@@ -125,7 +125,8 @@ LIBS += -lbz2 \
         -llzo2
 
 win32{
-  LIBS += -lzlib 
+    Debug: LIBS+= -lzlibd
+    Release: LIBS+= -lzlib
 }else{
   LIBS += -lz 
 }
