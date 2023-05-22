@@ -869,11 +869,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // scanning
 
     QString firstName = QDir::fromNativeSeparators( i->c_str() );
-    if ( !firstName.endsWith( ".zim" ) ) {
+    if ( !firstName.endsWith( ".zim" ) || !firstName.endsWith( ".zimaa" ) ) {
       continue;
     }
 
       // Got the file -- check if we need to rebuid the index
+    //fileName  is logical.
+    if ( firstName.endsWith( ".zimaa" ) ) {
+      //remove aa
+      firstName.remove( firstName.length() - 2, 2 );
+    }
+
     ZimFile df( firstName.toStdString() );
 
     vector< string > dictFiles;
