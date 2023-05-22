@@ -227,10 +227,7 @@ protected:
 private:
 
     /// Loads the article.
-    quint32 loadArticle( quint32 address,
-                         string & articleText,
-                         set< quint32 > * loadedArticles,
-                         bool rawText = false );
+  quint32 loadArticle( quint32 address, string & articleText, bool rawText = false );
 
     string convert( string const & in_data );
     friend class ZimArticleRequest;
@@ -292,12 +289,9 @@ void ZimDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-quint32 ZimDictionary::loadArticle( quint32 address,
-                                    string & articleText,
-                                    set< quint32 > * loadedArticles,
-                                    bool rawText )
+quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool rawText )
 {
-quint32 ret;
+  quint32 ret = 0;
   {
     Mutex::Lock _( zimMutex );
     ret = readArticle( df, address, articleText);
@@ -553,7 +547,7 @@ void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     headword.clear();
     string articleText;
 
-    loadArticle( articleAddress, articleText, 0, true );
+    loadArticle( articleAddress, articleText, true );
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
   catch( std::exception &ex )
@@ -571,7 +565,7 @@ quint32 ZimDictionary::getArticleText( uint32_t articleAddress, QString & headwo
     headword.clear();
     string articleText;
 
-    articleNumber = loadArticle( articleAddress, articleText, loadedArticles, true );
+    articleNumber = loadArticle( articleAddress, articleText, true );
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
   catch( std::exception &ex )
@@ -673,7 +667,7 @@ void ZimArticleRequest::run()
     quint32 articleNumber = 0xFFFFFFFF;
     try
     {
-      articleNumber = dict.loadArticle( chain[ x ].articleOffset, articleText, &articlesIncluded );
+      articleNumber = dict.loadArticle( chain[ x ].articleOffset, articleText );
     }
     catch(...)
     {
