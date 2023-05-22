@@ -241,7 +241,7 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
-  df( dictionaryFiles[ 0 ].c_str() )
+  df( dictionaryFiles[ 0 ] )
 {
   // Initialize the indexes
 
@@ -259,7 +259,7 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
     dictionaryName = name.mid( n + 1 ).toStdString();
   }
   else {
-    readArticle( df, idxHeader.namePtr, dictionaryName);
+    dictionaryName = df.getMetadata("Title");
   }
 
   // Full-text search parameters
@@ -492,15 +492,7 @@ QString const& ZimDictionary::getDescription()
     if( !dictionaryDescription.isEmpty() || idxHeader.descriptionPtr == 0xFFFFFFFF )
         return dictionaryDescription;
 
-    string str;
-    {
-      Mutex::Lock _( zimMutex );
-      readArticle( df, idxHeader.descriptionPtr, str);
-    }
-
-    if( !str.empty() )
-      dictionaryDescription = QString::fromUtf8( str.c_str(), str.size() );
-
+    dictionaryDescription=QString::fromStdString(df.getMetadata("Description"));
     return dictionaryDescription;
 }
 
