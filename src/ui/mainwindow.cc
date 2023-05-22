@@ -107,7 +107,7 @@ void MainWindow::changeWebEngineViewFont()
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( 0 ),
-  groupLabel( &searchPaneTitleBar ),
+//  groupLabel( &searchPaneTitleBar ),
   foundInDictsLabel( &dictsPaneTitleBar ),
   escAction( this ),
   focusTranslateLineAction( this ),
@@ -304,11 +304,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   menuButtonAction->setVisible( cfg.preferences.hideMenubar );
 
   // Make the search pane's titlebar
-  groupLabel.setText( tr( "Look up in:" ) );
+//  groupLabel.setText( tr( "Look up in:" ) );
   groupListInDock = new GroupComboBox( &searchPaneTitleBar );
 
   searchPaneTitleBarLayout.setContentsMargins( 8, 5, 8, 4 );
-  searchPaneTitleBarLayout.addWidget( &groupLabel );
+//  searchPaneTitleBarLayout.addWidget( &groupLabel );
   searchPaneTitleBarLayout.addWidget( groupListInDock );
   searchPaneTitleBarLayout.addStretch();
 
@@ -1471,7 +1471,7 @@ void MainWindow::updateGroupList()
 
   groupList->setVisible( haveGroups );
 
-  groupLabel.setText( haveGroups ? tr( "Look up in:" ) : tr( "Look up:" ) );
+//  groupLabel.setText( haveGroups ? tr( "Look up in:" ) : tr( "Look up:" ) );
 
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
