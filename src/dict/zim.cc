@@ -259,7 +259,7 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
     dictionaryName = name.mid( n + 1 ).toStdString();
   }
   else {
-    dictionaryName = df.getMetadata("Title");
+    dictionaryName = df.getMetadata( "Title" );
   }
 
   // Full-text search parameters
@@ -492,7 +492,7 @@ QString const& ZimDictionary::getDescription()
     if( !dictionaryDescription.isEmpty() || idxHeader.descriptionPtr == 0xFFFFFFFF )
         return dictionaryDescription;
 
-    dictionaryDescription=QString::fromStdString(df.getMetadata("Description"));
+    dictionaryDescription = QString::fromStdString( df.getMetadata( "Description" ) );
     return dictionaryDescription;
 }
 
