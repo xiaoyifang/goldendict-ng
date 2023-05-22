@@ -229,9 +229,9 @@ private:
     /// Loads the article.
   quint32 loadArticle( quint32 address, string & articleText, bool rawText = false );
 
-    string convert( string const & in_data );
-    friend class ZimArticleRequest;
-    friend class ZimResourceRequest;
+  string convert( string const & in_data );
+  friend class ZimArticleRequest;
+  friend class ZimResourceRequest;
 };
 
 ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
