@@ -263,7 +263,7 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
   return Language::findBlgLangIDByEnglishName( lang );
 }
 
-quint32 LangCoder::findIdForLanguageCode3( std::string code3 )
+quint32 LangCoder::findIdForLanguageCode3( std::string const & code3 )
 {
   auto code = QString::fromStdString( code3 );
   for ( auto const & lc : LangCodes ) {

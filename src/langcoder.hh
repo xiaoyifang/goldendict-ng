@@ -52,10 +52,10 @@ public:
   /// is case- and punctuation insensitive.
   static quint32 findIdForLanguage( gd::wstring const & );
 
-  static quint32 findIdForLanguageCode3( std::string );
+  static quint32 findIdForLanguageCode3( std::string const & );
 
-  static QPair<quint32,quint32> findIdsForName( QString const & );
-  static QPair<quint32,quint32> findIdsForFilename( QString const & );
+  static QPair< quint32, quint32 > findIdsForName( QString const & );
+  static QPair< quint32, quint32 > findIdsForFilename( QString const & );
 
   static quint32 guessId( const QString & lang );
 
