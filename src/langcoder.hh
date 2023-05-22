@@ -32,7 +32,7 @@ class LangCoder
 public:
   LangCoder();
 
-  static quint32 code2toInt(const char code[2])
+  static quint32 code2toInt( const char code[ 2 ] )
   {
     return ( ( (quint32)code[ 1 ] ) << 8 ) + (quint32)code[ 0 ];
   }
