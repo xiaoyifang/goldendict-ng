@@ -906,9 +906,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         auto lang = df.getMetadata( "Language" );
         if ( lang.size() == 2 )
-          idxHeader.langFrom = LangCoder::code2toInt( lang );
+          idxHeader.langFrom = LangCoder::code2toInt( lang.c_str() );
         else if ( lang.size() == 3 )
-          idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang );
+          idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang.c_str() );
         idxHeader.langTo = idxHeader.langFrom;
         // We write a dummy header first. At the end of the process the header
         // will be rewritten with the right values.
