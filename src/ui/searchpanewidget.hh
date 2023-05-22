@@ -12,11 +12,13 @@ class SearchPaneWidget: public QWidget
 {
 public:
 
-  SearchPaneWidget( QWidget * parent = 0 ): QWidget( parent )
-  {}
+  SearchPaneWidget( QWidget * parent = nullptr ): QWidget( parent )
+  {
+    setSizePolicy(QSizePolicy::Policy::Preferred,QSizePolicy::Policy::Expanding);
+  }
 
   virtual QSize sizeHint() const
-  { return QSize( 204, 204 ); }
+  { return QSize( 150, 204 ); }
 
 };
 
