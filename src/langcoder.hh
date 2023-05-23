@@ -6,10 +6,10 @@
 
 struct GDLangCode
 {
-  QString code;  // ISO 639-1
-  QString code3; // ISO 639-2B ( http://www.loc.gov/standards/iso639-2/ )
-  int isRTL;     // Right-to-left writing; 0 - no, 1 - yes, -1 - let Qt define
-  QString lang;  // Language name in English
+  QString code;      // ISO 639-1
+  std::string code3; // ISO 639-2B ( http://www.loc.gov/standards/iso639-2/ )
+  int isRTL;         // Right-to-left writing; 0 - no, 1 - yes, -1 - let Qt define
+  std::string lang;  // Language name in English
 };
 
 

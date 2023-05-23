@@ -4,6 +4,7 @@
 #include "langcoder.hh"
 #include "folding.hh"
 #include "language.hh"
+#include "utf8.hh"
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>
@@ -218,7 +219,7 @@ QString LangCoder::decode(quint32 code)
 {
   auto code2 = intToCode2( code );
   if ( langCoder.codeMap.contains( code2 ) )
-    return langCoder.codeMap[ code2 ].lang;
+    return QString::fromStdString( langCoder.codeMap[ code2 ].lang );
 
   return {};
 }
@@ -251,7 +252,7 @@ QString LangCoder::intToCode2( quint32 val )
 
 quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
 {
-  const auto langFolded = QString::fromStdU32String( Folding::apply( lang ) );
+  const auto langFolded = Utf8::encode( lang );
 
   for ( auto const & lc : LangCodes ) {
     if ( langFolded == lc.lang ) {
@@ -262,9 +263,8 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
   return Language::findBlgLangIDByEnglishName( lang );
 }
 
-quint32 LangCoder::findIdForLanguageCode3( std::string const & code3 )
+quint32 LangCoder::findIdForLanguageCode3( std::string const & code )
 {
-  auto code = QString::fromStdString( code3 );
   for ( auto const & lc : LangCodes ) {
     if ( code == lc.code3 ) {
       return code2toInt( lc.code );
@@ -286,7 +286,7 @@ quint32 LangCoder::guessId( const QString & lang )
   if (lstr.size() >= 3)
   {
     for ( auto const & lc : LangCodes ) {
-      if ( lstr == ( lstr.size() == 3 ? QString( lc.code3 ) : QString( lc.lang ) ) ) {
+      if ( lstr == ( lstr.size() == 3 ? QString::fromStdString( lc.code3 ) : QString::fromStdString( lc.lang ) ) ) {
         return code2toInt( lc.code );
       }
     }
