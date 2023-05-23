@@ -251,10 +251,10 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
   // Read dictionary name
 
   dictionaryName = df.getMetadata( "Title" );
-  if(dictionaryName.empty()){
-      QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-      int n          = name.lastIndexOf( '/' );
-      dictionaryName = name.mid( n + 1 ).toStdString();
+  if ( dictionaryName.empty() ) {
+    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
+    int n          = name.lastIndexOf( '/' );
+    dictionaryName = name.mid( n + 1 ).toStdString();
   }
 
   // Full-text search parameters
@@ -481,11 +481,11 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
 
 QString const& ZimDictionary::getDescription()
 {
-    if( !dictionaryDescription.isEmpty() )
-        return dictionaryDescription;
-
-    dictionaryDescription = QString::fromStdString( df.getMetadata( "Description" ) );
+  if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
+
+  dictionaryDescription = QString::fromStdString( df.getMetadata( "Description" ) );
+  return dictionaryDescription;
 }
 
 void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
@@ -929,7 +929,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               continue;
             }
 
-            if ( maxHeadwordsToExpand && (articleCount >= maxHeadwordsToExpand) ) {
+            if ( maxHeadwordsToExpand && ( articleCount >= maxHeadwordsToExpand ) ) {
               if ( !title.empty() ) {
                 wstring word = Utf8::decode( title );
                 indexedWords.addSingleWord( word, n );
