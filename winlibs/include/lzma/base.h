@@ -138,7 +138,7 @@ typedef enum {
 		 */
 
 	LZMA_MEMLIMIT_ERROR     = 6,
-		/**
+        /**
 		 * \brief       Memory usage limit was reached
 		 *
 		 * Decoder would need more memory than allowed by the
@@ -153,7 +153,7 @@ typedef enum {
 		 * Other decoders worked correctly.
 		 */
 
-	LZMA_FORMAT_ERROR       = 7,
+        LZMA_FORMAT_ERROR       = 7,
 		/**<
 		 * \brief       File format not recognized
 		 *
@@ -241,8 +241,8 @@ typedef enum {
 		 * how to report bugs.
 		 */
 
-	LZMA_SEEK_NEEDED        = 12,
-		/**<
+        LZMA_SEEK_NEEDED = 12,
+        /**<
 		 * \brief       Request to change the input file position
 		 *
 		 * Some coders can do random access in the input file. The
@@ -258,18 +258,18 @@ typedef enum {
 		 * pass it normally via lzma_stream.next_in and .avail_in.
 		 */
 
-	/*
+        /*
 	 * These eumerations may be used internally by liblzma
 	 * but they will never be returned to applications.
 	 */
-	LZMA_RET_INTERNAL1      = 101,
-	LZMA_RET_INTERNAL2      = 102,
-	LZMA_RET_INTERNAL3      = 103,
-	LZMA_RET_INTERNAL4      = 104,
-	LZMA_RET_INTERNAL5      = 105,
-	LZMA_RET_INTERNAL6      = 106,
-	LZMA_RET_INTERNAL7      = 107,
-	LZMA_RET_INTERNAL8      = 108
+        LZMA_RET_INTERNAL1 = 101,
+        LZMA_RET_INTERNAL2 = 102,
+        LZMA_RET_INTERNAL3 = 103,
+        LZMA_RET_INTERNAL4 = 104,
+        LZMA_RET_INTERNAL5 = 105,
+        LZMA_RET_INTERNAL6 = 106,
+        LZMA_RET_INTERNAL7 = 107,
+        LZMA_RET_INTERNAL8 = 108
 } lzma_ret;
 
 
@@ -551,7 +551,7 @@ typedef struct {
 	void *reserved_ptr3;
 	void *reserved_ptr4;
 
-	/**
+        /**
 	 * \brief       New seek input position for LZMA_SEEK_NEEDED
 	 *
 	 * When lzma_code() returns LZMA_SEEK_NEEDED, the new input position
@@ -561,9 +561,9 @@ typedef struct {
 	 *
 	 * In all other situations the value of this variable is undefined.
 	 */
-	uint64_t seek_pos;
+        uint64_t seek_pos;
 
-	uint64_t reserved_int2;
+        uint64_t reserved_int2;
 	size_t reserved_int3;
 	size_t reserved_int4;
 	lzma_reserved_enum reserved_enum1;

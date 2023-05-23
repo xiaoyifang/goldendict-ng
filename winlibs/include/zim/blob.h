@@ -28,61 +28,71 @@
 #include <algorithm>
 #include <memory>
 
-namespace zim
-{
-  /**
+namespace zim {
+/**
    * A blob is a pointer to data, potentially stored in an `Archive`.
    *
    * All `Blob`'s methods are threadsafe.
    */
-  class LIBZIM_API Blob
-  {
-    public: // types
-      using DataPtr = std::shared_ptr<const char>;
+class LIBZIM_API Blob
+{
+public: // types
+  using DataPtr = std::shared_ptr< const char >;
 
-    public: // functions
-      /**
+public: // functions
+  /**
        * Constuct a empty `Blob`
        */
-      Blob();
+  Blob();
 
-      /**
+  /**
        * Constuct `Blob` pointing to `data`.
        *
        * The created blob only point to the data and doesn't own it.
        * User must care that data is not freed before using the blob.
        */
-      Blob(const char* data, size_type size);
+  Blob( const char * data, size_type size );
 
-      /**
+  /**
        * Constuct `Blob` pointing to `data`.
        *
        * The created blob shares the ownership on data.
        */
-      Blob(const DataPtr& buffer, size_type size);
+  Blob( const DataPtr & buffer, size_type size );
 
-      operator std::string() const { return std::string(_data.get(), _size); }
-      const char* data() const  { return _data.get(); }
-      const char* end() const   { return _data.get() + _size; }
-      size_type size() const     { return _size; }
-
-   private:
-     DataPtr _data;
-     size_type _size;
-  };
-
-  inline std::ostream& operator<< (std::ostream& out, const Blob& blob)
+  operator std::string() const
   {
-    if (blob.data())
-      out.write(blob.data(), blob.size());
-    return out;
+    return std::string( _data.get(), _size );
+  }
+  const char * data() const
+  {
+    return _data.get();
+  }
+  const char * end() const
+  {
+    return _data.get() + _size;
+  }
+  size_type size() const
+  {
+    return _size;
   }
 
-  inline bool operator== (const Blob& b1, const Blob& b2)
-  {
-    return b1.size() == b2.size()
-        && std::equal(b1.data(), b1.data() + b1.size(), b2.data());
+private:
+  DataPtr _data;
+  size_type _size;
+};
+
+inline std::ostream & operator<<( std::ostream & out, const Blob & blob )
+{
+  if ( blob.data() )
+    out.write( blob.data(), blob.size() );
+  return out;
   }
-}
+
+  inline bool operator==( const Blob & b1, const Blob & b2 )
+  {
+    return b1.size() == b2.size() && std::equal( b1.data(), b1.data() + b1.size(), b2.data() );
+  }
+  } // namespace zim
 
 #endif // ZIM_BLOB_H

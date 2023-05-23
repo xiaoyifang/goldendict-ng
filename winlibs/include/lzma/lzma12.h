@@ -50,7 +50,7 @@
  * for example, LZMA_FILTER_X86 in a filter chain with LZMA_FILTER_LZMA1EXT,
  * which might be needed to handle some file formats.
  */
-#define LZMA_FILTER_LZMA1EXT    LZMA_VLI_C(0x4000000000000002)
+#define LZMA_FILTER_LZMA1EXT LZMA_VLI_C( 0x4000000000000002 )
 
 /**
  * \brief       LZMA2 Filter ID
@@ -316,7 +316,7 @@ typedef struct {
 	uint32_t lp;
 #	define LZMA_LP_DEFAULT  0
 
-	/**
+        /**
 	 * \brief       Number of position bits
 	 *
 	 * pb affects what kind of alignment in the uncompressed data is
@@ -336,7 +336,7 @@ typedef struct {
 	 * It might be worth taking into account when designing file formats
 	 * that are likely to be often compressed with LZMA1 or LZMA2.
 	 */
-	uint32_t pb;
+        uint32_t pb;
 #	define LZMA_PB_MIN      0
 #	define LZMA_PB_MAX      4
 #	define LZMA_PB_DEFAULT  2
@@ -397,7 +397,7 @@ typedef struct {
 	 */
 	uint32_t depth;
 
-	/**
+        /**
 	 * \brief       For LZMA_FILTER_LZMA1EXT: Extended flags
 	 *
 	 * This is used only with LZMA_FILTER_LZMA1EXT.
@@ -433,10 +433,10 @@ typedef struct {
 	 *     in .7z files (valid .7z files that have the end marker in
 	 *     LZMA1 streams are rare but they do exist).
 	 */
-	uint32_t ext_flags;
-#	define LZMA_LZMA1EXT_ALLOW_EOPM   UINT32_C(0x01)
+        uint32_t ext_flags;
+#define LZMA_LZMA1EXT_ALLOW_EOPM UINT32_C( 0x01 )
 
-	/**
+        /**
 	 * \brief       For LZMA_FILTER_LZMA1EXT: Uncompressed size (low bits)
 	 *
 	 * The 64-bit uncompressed size is needed for decompression with
@@ -464,23 +464,23 @@ typedef struct {
 	 * uint32_t members with one uint64_t changes the ABI on some systems
 	 * as the alignment of this struct can increase from 4 bytes to 8.)
 	 */
-	uint32_t ext_size_low;
+        uint32_t ext_size_low;
 
-	/**
+        /**
 	 * \brief       For LZMA_FILTER_LZMA1EXT: Uncompressed size (high bits)
 	 *
 	 * This holds the most significant 32 bits of the uncompressed size.
 	 */
-	uint32_t ext_size_high;
+        uint32_t ext_size_high;
 
-	/*
+        /*
 	 * Reserved space to allow possible future extensions without
 	 * breaking the ABI. You should not touch these, because the names
 	 * of these variables may change. These are and will never be used
 	 * with the currently supported options, so it is safe to leave these
 	 * uninitialized.
 	 */
-	uint32_t reserved_int4;
+        uint32_t reserved_int4;
 	uint32_t reserved_int5;
 	uint32_t reserved_int6;
 	uint32_t reserved_int7;
@@ -501,11 +501,11 @@ typedef struct {
  * This might be convenient when decoding using LZMA_FILTER_LZMA1EXT.
  * This isn't used with LZMA_FILTER_LZMA1 or LZMA_FILTER_LZMA2.
  */
-#define lzma_set_ext_size(opt_lzma2, u64size) \
-do { \
-	(opt_lzma2).ext_size_low = (uint32_t)(u64size); \
-	(opt_lzma2).ext_size_high = (uint32_t)((uint64_t)(u64size) >> 32); \
-} while (0)
+#define lzma_set_ext_size( opt_lzma2, u64size )                              \
+  do {                                                                       \
+    ( opt_lzma2 ).ext_size_low  = (uint32_t)( u64size );                     \
+    ( opt_lzma2 ).ext_size_high = (uint32_t)( (uint64_t)( u64size ) >> 32 ); \
+  } while ( 0 )
 
 
 /**

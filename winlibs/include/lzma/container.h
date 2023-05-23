@@ -64,7 +64,7 @@
  * \brief       Multithreading options
  */
 typedef struct {
-	/**
+  /**
 	 * \brief       Flags
 	 *
 	 * Set this to zero if no flags are wanted.
@@ -76,14 +76,14 @@ typedef struct {
 	 * LZMA_TELL_ANY_CHECK, LZMA_IGNORE_CHECK,
 	 * LZMA_CONCATENATED, LZMA_FAIL_FAST
 	 */
-	uint32_t flags;
+  uint32_t flags;
 
-	/**
+  /**
 	 * \brief       Number of worker threads to use
 	 */
-	uint32_t threads;
+  uint32_t threads;
 
-	/**
+  /**
 	 * \brief       Encoder only: Maximum uncompressed size of a Block
 	 *
 	 * The encoder will start a new .xz Block every block_size bytes.
@@ -106,9 +106,9 @@ typedef struct {
 	 * allocated. This may change in later liblzma versions. If so,
 	 * the memory usage will probably be reduced, not increased.
 	 */
-	uint64_t block_size;
+  uint64_t block_size;
 
-	/**
+  /**
 	 * \brief       Timeout to allow lzma_code() to return early
 	 *
 	 * Multithreading can make liblzma to consume input and produce
@@ -137,49 +137,49 @@ typedef struct {
 	 *              somewhat long time to return. No timing guarantees
 	 *              are made.
 	 */
-	uint32_t timeout;
+  uint32_t timeout;
 
-	/**
+  /**
 	 * \brief       Encoder only: Compression preset
 	 *
 	 * The preset is set just like with lzma_easy_encoder().
 	 * The preset is ignored if filters below is non-NULL.
 	 */
-	uint32_t preset;
+  uint32_t preset;
 
-	/**
+  /**
 	 * \brief       Encoder only: Filter chain (alternative to a preset)
 	 *
 	 * If this is NULL, the preset above is used. Otherwise the preset
 	 * is ignored and the filter chain specified here is used.
 	 */
-	const lzma_filter *filters;
+  const lzma_filter * filters;
 
-	/**
+  /**
 	 * \brief       Encoder only: Integrity check type
 	 *
 	 * See check.h for available checks. The xz command line tool
 	 * defaults to LZMA_CHECK_CRC64, which is a good choice if you
 	 * are unsure.
 	 */
-	lzma_check check;
+  lzma_check check;
 
-	/*
+  /*
 	 * Reserved space to allow possible future extensions without
 	 * breaking the ABI. You should not touch these, because the names
 	 * of these variables may change. These are and will never be used
 	 * with the currently supported options, so it is safe to leave these
 	 * uninitialized.
 	 */
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-	lzma_reserved_enum reserved_enum3;
-	uint32_t reserved_int1;
-	uint32_t reserved_int2;
-	uint32_t reserved_int3;
-	uint32_t reserved_int4;
+  lzma_reserved_enum reserved_enum1;
+  lzma_reserved_enum reserved_enum2;
+  lzma_reserved_enum reserved_enum3;
+  uint32_t reserved_int1;
+  uint32_t reserved_int2;
+  uint32_t reserved_int3;
+  uint32_t reserved_int4;
 
-	/**
+  /**
 	 * \brief       Memory usage limit to reduce the number of threads
 	 *
 	 * Encoder: Ignored.
@@ -209,9 +209,9 @@ typedef struct {
 	 * If memlimit_threading is greater than memlimit_stop, then the value
 	 * of memlimit_stop will be used for both.
 	 */
-	uint64_t memlimit_threading;
+  uint64_t memlimit_threading;
 
-	/**
+  /**
 	 * \brief       Memory usage limit that should never be exceeded
 	 *
 	 * Encoder: Ignored.
@@ -220,14 +220,14 @@ typedef struct {
 	 * memory even in the single-threaded mode, then lzma_code() will
 	 * return LZMA_MEMLIMIT_ERROR.
 	 */
-	uint64_t memlimit_stop;
+  uint64_t memlimit_stop;
 
-	uint64_t reserved_int7;
-	uint64_t reserved_int8;
-	void *reserved_ptr1;
-	void *reserved_ptr2;
-	void *reserved_ptr3;
-	void *reserved_ptr4;
+  uint64_t reserved_int7;
+  uint64_t reserved_int8;
+  void * reserved_ptr1;
+  void * reserved_ptr2;
+  void * reserved_ptr3;
+  void * reserved_ptr4;
 
 } lzma_mt;
 
@@ -541,8 +541,7 @@ extern LZMA_API(lzma_ret) lzma_stream_buffer_encode(
  *                error code, this may also be returned if there isn't enough
  *                output space (6 bytes) to create a valid MicroLZMA stream.
  */
-extern LZMA_API(lzma_ret) lzma_microlzma_encoder(
-		lzma_stream *strm, const lzma_options_lzma *options);
+extern LZMA_API( lzma_ret ) lzma_microlzma_encoder( lzma_stream * strm, const lzma_options_lzma * options );
 
 
 /************
@@ -642,7 +641,7 @@ extern LZMA_API(lzma_ret) lzma_microlzma_encoder(
  * versions this flag isn't supported (LZMA_OPTIONS_ERROR) even by functions
  * that ignore this flag in newer liblzma versions.
  */
-#define LZMA_FAIL_FAST                  UINT32_C(0x20)
+#define LZMA_FAIL_FAST UINT32_C( 0x20 )
 
 
 /**
@@ -694,9 +693,8 @@ extern LZMA_API(lzma_ret) lzma_stream_decoder(
  *              - LZMA_OPTIONS_ERROR: Unsupported flags.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_stream_decoder_mt(
-		lzma_stream *strm, const lzma_mt *options)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( lzma_ret )
+  lzma_stream_decoder_mt( lzma_stream * strm, const lzma_mt * options ) lzma_nothrow lzma_attr_warn_unused_result;
 
 
 /**
@@ -812,9 +810,8 @@ extern LZMA_API(lzma_ret) lzma_alone_decoder(
  *              - LZMA_OPTIONS_ERROR: Unsupported flags
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_lzip_decoder(
-		lzma_stream *strm, uint64_t memlimit, uint32_t flags)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( lzma_ret )
+  lzma_lzip_decoder( lzma_stream * strm, uint64_t memlimit, uint32_t flags ) lzma_nothrow lzma_attr_warn_unused_result;
 
 
 /**
@@ -898,7 +895,5 @@ extern LZMA_API(lzma_ret) lzma_stream_buffer_decode(
  *                          affect the memory usage if one specifies bigger
  *                          dictionary than actually required.)
  */
-extern LZMA_API(lzma_ret) lzma_microlzma_decoder(
-		lzma_stream *strm, uint64_t comp_size,
-		uint64_t uncomp_size, lzma_bool uncomp_size_is_exact,
-		uint32_t dict_size);
+extern LZMA_API( lzma_ret ) lzma_microlzma_decoder(
+  lzma_stream * strm, uint64_t comp_size, uint64_t uncomp_size, lzma_bool uncomp_size_is_exact, uint32_t dict_size );

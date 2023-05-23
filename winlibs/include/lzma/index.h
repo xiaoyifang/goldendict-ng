@@ -746,7 +746,7 @@ extern LZMA_API(lzma_ret) lzma_index_buffer_decode(lzma_index **i,
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_file_info_decoder(
-		lzma_stream *strm, lzma_index **dest_index,
-		uint64_t memlimit, uint64_t file_size)
-		lzma_nothrow;
+extern LZMA_API( lzma_ret ) lzma_file_info_decoder( lzma_stream * strm,
+                                                    lzma_index ** dest_index,
+                                                    uint64_t memlimit,
+                                                    uint64_t file_size ) lzma_nothrow;

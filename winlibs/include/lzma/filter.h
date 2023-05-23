@@ -118,10 +118,10 @@ extern LZMA_API(lzma_bool) lzma_filter_decoder_is_supported(lzma_vli id)
  *                is not NULL.
  *              - LZMA_PROG_ERROR: src or dest is NULL.
  */
-extern LZMA_API(lzma_ret) lzma_filters_copy(
-		const lzma_filter *src, lzma_filter *dest,
-		const lzma_allocator *allocator)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( lzma_ret )
+  lzma_filters_copy( const lzma_filter * src,
+                     lzma_filter * dest,
+                     const lzma_allocator * allocator ) lzma_nothrow lzma_attr_warn_unused_result;
 
 
 /**
@@ -140,9 +140,7 @@ extern LZMA_API(lzma_ret) lzma_filters_copy(
  * If filters is NULL, this does nothing but remember that this never frees
  * the filters array itself.
  */
-extern LZMA_API(void) lzma_filters_free(
-		lzma_filter *filters, const lzma_allocator *allocator)
-		lzma_nothrow;
+extern LZMA_API( void ) lzma_filters_free( lzma_filter * filters, const lzma_allocator * allocator ) lzma_nothrow;
 
 
 /**
@@ -466,7 +464,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * By default only the filters supported in the .xz format are accept by
  * lzma_str_to_filters() or shown by lzma_str_list_filters().
  */
-#define LZMA_STR_ALL_FILTERS    UINT32_C(0x01)
+#define LZMA_STR_ALL_FILTERS UINT32_C( 0x01 )
 
 
 /**
@@ -477,7 +475,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * With this flag the validation is skipped (this doesn't affect the handling
  * of the individual filter options).
  */
-#define LZMA_STR_NO_VALIDATION  UINT32_C(0x02)
+#define LZMA_STR_NO_VALIDATION UINT32_C( 0x02 )
 
 
 /**
@@ -489,7 +487,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * Note that if options were decoded from .xz headers then the encoder options
  * may be undefined. This flag shouldn't be used in such a situation.
  */
-#define LZMA_STR_ENCODER        UINT32_C(0x10)
+#define LZMA_STR_ENCODER UINT32_C( 0x10 )
 
 
 /**
@@ -499,7 +497,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * This may be useful for showing what filter options were decoded
  * from file headers.
  */
-#define LZMA_STR_DECODER        UINT32_C(0x20)
+#define LZMA_STR_DECODER UINT32_C( 0x20 )
 
 
 /**
@@ -511,7 +509,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * This syntax is compatible with xz 5.0.0 as long as the filters and
  * their options are supported too.
  */
-#define LZMA_STR_GETOPT_LONG    UINT32_C(0x40)
+#define LZMA_STR_GETOPT_LONG UINT32_C( 0x40 )
 
 
 /**
@@ -527,7 +525,7 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * It is guaranteed that the single quote (') will never be used in
  * filter chain strings (even if LZMA_STR_NO_SPACES isn't used).
  */
-#define LZMA_STR_NO_SPACES      UINT32_C(0x80)
+#define LZMA_STR_NO_SPACES UINT32_C( 0x80 )
 
 
 /**
@@ -619,10 +617,12 @@ extern LZMA_API(lzma_ret) lzma_filter_flags_decode(
  * }
  * \endcode
  */
-extern LZMA_API(const char *) lzma_str_to_filters(
-		const char *str, int *error_pos, lzma_filter *filters,
-		uint32_t flags, const lzma_allocator *allocator)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( const char * )
+  lzma_str_to_filters( const char * str,
+                       int * error_pos,
+                       lzma_filter * filters,
+                       uint32_t flags,
+                       const lzma_allocator * allocator ) lzma_nothrow lzma_attr_warn_unused_result;
 
 
 /**
@@ -665,10 +665,9 @@ extern LZMA_API(const char *) lzma_str_to_filters(
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_str_from_filters(
-		char **str, const lzma_filter *filters, uint32_t flags,
-		const lzma_allocator *allocator)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( lzma_ret )
+  lzma_str_from_filters( char ** str, const lzma_filter * filters, uint32_t flags, const lzma_allocator * allocator )
+    lzma_nothrow lzma_attr_warn_unused_result;
 
 
 /**
@@ -708,7 +707,6 @@ extern LZMA_API(lzma_ret) lzma_str_from_filters(
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_str_list_filters(
-		char **str, lzma_vli filter_id, uint32_t flags,
-		const lzma_allocator *allocator)
-		lzma_nothrow lzma_attr_warn_unused_result;
+extern LZMA_API( lzma_ret )
+  lzma_str_list_filters( char ** str, lzma_vli filter_id, uint32_t flags, const lzma_allocator * allocator )
+    lzma_nothrow lzma_attr_warn_unused_result;

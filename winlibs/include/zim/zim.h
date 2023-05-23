@@ -25,100 +25,96 @@
 #include <cstdint>
 
 #ifdef __GNUC__
-#define DEPRECATED __attribute__((deprecated))
-#elif defined(_MSC_VER)
-#define DEPRECATED __declspec(deprecated)
+  #define DEPRECATED __attribute__( ( deprecated ) )
+#elif defined( _MSC_VER )
+  #define DEPRECATED __declspec( deprecated )
 #else
-#praga message("WARNING: You need to implement DEPRECATED for this compiler")
-#define DEPRECATED
+  #praga message( "WARNING: You need to implement DEPRECATED for this compiler" )
+  #define DEPRECATED
 #endif
 
 #include <zim/zim_config.h>
 
-#if defined(LIBZIM_DLL) && defined(LIBZIM_BUILDING_LIBRARY)
-    #define LIBZIM_API __declspec(dllexport)
-#elif defined(LIBZIM_DLL)
-    #define LIBZIM_API __declspec(dllimport)
+#if defined( LIBZIM_DLL ) && defined( LIBZIM_BUILDING_LIBRARY )
+  #define LIBZIM_API __declspec( dllexport )
+#elif defined( LIBZIM_DLL )
+  #define LIBZIM_API __declspec( dllimport )
 #else
-    #define LIBZIM_API
+  #define LIBZIM_API
 #endif
 
-namespace zim
-{
-  // An index of an entry (in a zim file)
-  typedef uint32_t entry_index_type;
+namespace zim {
+// An index of an entry (in a zim file)
+typedef uint32_t entry_index_type;
 
-  // An index of an cluster (in a zim file)
-  typedef uint32_t cluster_index_type;
+// An index of an cluster (in a zim file)
+typedef uint32_t cluster_index_type;
 
-  // An index of a blog (in a cluster)
-  typedef uint32_t blob_index_type;
+// An index of a blog (in a cluster)
+typedef uint32_t blob_index_type;
 
-  // The size of something (entry, zim, cluster, blob, ...)
-  typedef uint64_t size_type;
+// The size of something (entry, zim, cluster, blob, ...)
+typedef uint64_t size_type;
 
-  // An offset.
-  typedef uint64_t offset_type;
+// An offset.
+typedef uint64_t offset_type;
 
-  enum class Compression
-  {
-    None = 1,
+enum class Compression {
+  None = 1,
 
-    // intermediate values correspond to compression
-    // methods that are no longer supported
+  // intermediate values correspond to compression
+  // methods that are no longer supported
 
-    Zstd = 5
-  };
+  Zstd = 5
+};
 
-  static const char MimeHtmlTemplate[] = "text/x-zim-htmltemplate";
+static const char MimeHtmlTemplate[] = "text/x-zim-htmltemplate";
 
-  /**
+/**
    * Various types of integrity checks performed by `zim::validate()`.
    */
-  enum class IntegrityCheck
-  {
-    /**
+enum class IntegrityCheck {
+  /**
      * Validates the checksum of the ZIM file.
      */
-    CHECKSUM,
+  CHECKSUM,
 
-    /**
+  /**
      * Checks that offsets in UrlPtrList are valid.
      */
-    DIRENT_PTRS,
+  DIRENT_PTRS,
 
-    /**
+  /**
      * Checks that dirents are properly sorted.
      */
-    DIRENT_ORDER,
+  DIRENT_ORDER,
 
-    /**
+  /**
      * Checks that entries in the title index are valid and properly sorted.
      */
-    TITLE_INDEX,
+  TITLE_INDEX,
 
-    /**
+  /**
      * Checks that offsets in ClusterPtrList are valid.
      */
-    CLUSTER_PTRS,
+  CLUSTER_PTRS,
 
-    /**
+  /**
      * Checks that mime-type values in dirents are valid.
      */
-    DIRENT_MIMETYPES,
+  DIRENT_MIMETYPES,
 
-    ////////////////////////////////////////////////////////////////////////////
-    // End of integrity check types.
-    // COUNT must be the last one and denotes the count of all checks
-    ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+  // End of integrity check types.
+  // COUNT must be the last one and denotes the count of all checks
+  ////////////////////////////////////////////////////////////////////////////
 
-    /**
+  /**
      * `COUNT` is not a valid integrity check type. It exists to tell the
      * number of all supported integrity checks.
      */
-    COUNT
-  };
-}
+  COUNT
+};
+} // namespace zim
 
 #endif // ZIM_ZIM_H
-
