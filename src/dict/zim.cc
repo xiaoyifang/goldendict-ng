@@ -333,7 +333,10 @@ string ZimDictionary::convert( const string & in )
     if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
     {
       //<\\1 \\2src=\\3bres://%1/
-      url.remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
+
+
+      //remove leading dot and slash
+      url.remove(QRegularExpression(R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption));
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
