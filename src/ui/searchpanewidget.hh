@@ -20,7 +20,7 @@ public:
 
   virtual QSize sizeHint() const
   {
-    return QSize( 150, 204 );
+    return QSize( 10, 204 );
   }
 };
 
