@@ -206,9 +206,6 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
                                                               bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-    quint32 getArticleText( uint32_t articleAddress, QString & headword, QString & text,
-                            set< quint32 > * loadedArticles );
-
     void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
 
     void setFTSParameters( Config::FullTextSearch const & fts ) override
@@ -557,25 +554,6 @@ void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-quint32 ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text,
-                                    set< quint32 > * loadedArticles )
-{
-  quint32 articleNumber = 0xFFFFFFFF;
-  try
-  {
-    headword.clear();
-    string articleText;
-
-    articleNumber = loadArticle( articleAddress, articleText, true );
-    text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
-  }
-  catch( std::exception &ex )
-  {
-    gdWarning( "Zim: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-  }
-  return articleNumber;
-}
-
 sptr< Dictionary::DataRequest > ZimDictionary::getSearchResults( QString const & searchString,
                                                                  int searchMode, bool matchCase,
                                                                  int distanceBetweenWords,
@@ -919,48 +897,42 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         IndexedWords indexedWords, indexedResources;
 
         for ( unsigned n = 0; n < df.getAllEntryCount(); n++ ) {
-          try {
-            auto entry    = df.getEntryByPath( n );
-            auto item     = entry.getItem( true );
-            auto mimeType = item.getMimetype();
-            auto url   = item.getPath();
-            auto title = item.getTitle();
-            qDebug() << n << mimeType.c_str()<<url.c_str()<<title.c_str();
-            // Read article url and title
-            if ( !isArticleMime( mimeType ) ) {
-              indexedResources.addSingleWord( Utf8::decode( url ), n );
-              continue;
-            }
-
-            if ( maxHeadwordsToExpand && ( articleCount >= maxHeadwordsToExpand ) ) {
-              if ( !title.empty() ) {
-                wstring word = Utf8::decode( title );
-                indexedWords.addSingleWord( word, n );
-              }
-              if ( !url.empty() ) {
-                auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-                indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
-              }
-            }
-            else {
-              if ( !title.empty() ) {
-                auto word = Utf8::decode( title );
-                indexedWords.addWord( word, n );
-                wordCount++;
-              }
-              if ( !url.empty() ) {
-                auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
-                indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
-                wordCount++;
-              }
-            }
-
-            articleCount++;
-          }
-          catch ( std::exception & e ) {
-            qWarning() << e.what();
+          auto entry    = df.getEntryByPath( n );
+          auto item     = entry.getItem( true );
+          auto mimeType = item.getMimetype();
+          auto url      = item.getPath();
+          auto title    = item.getTitle();
+          qDebug() << n << mimeType.c_str() << url.c_str() << title.c_str();
+          // Read article url and title
+          if ( !isArticleMime( mimeType ) ) {
+            indexedResources.addSingleWord( Utf8::decode( url ), n );
             continue;
           }
+
+          if ( maxHeadwordsToExpand && ( articleCount >= maxHeadwordsToExpand ) ) {
+            if ( !title.empty() ) {
+              wstring word = Utf8::decode( title );
+              indexedWords.addSingleWord( word, n );
+            }
+            if ( !url.empty() ) {
+              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+              indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            }
+          }
+          else {
+            if ( !title.empty() ) {
+              auto word = Utf8::decode( title );
+              indexedWords.addWord( word, n );
+              wordCount++;
+            }
+            if ( !url.empty() ) {
+              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+              indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+              wordCount++;
+            }
+          }
+
+          articleCount++;
         }
 
         // Build index
