@@ -336,7 +336,7 @@ string ZimDictionary::convert( const string & in )
 
 
       //remove leading dot and slash
-      url.remove(QRegularExpression(R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption));
+      url.remove( QRegularExpression( R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption ) );
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
