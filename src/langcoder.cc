@@ -255,7 +255,6 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
 
   for ( auto const & lc : LangCodes ) {
     if ( langFolded == lc.lang ) {
-      // We've got a match
       return code2toInt( lc.code.toStdString().c_str() );
     }
   }
@@ -268,7 +267,6 @@ quint32 LangCoder::findIdForLanguageCode3( std::string const & code3 )
   auto code = QString::fromStdString( code3 );
   for ( auto const & lc : LangCodes ) {
     if ( code == lc.code3 ) {
-      // We've got a match
       return code2toInt( lc.code );
     }
   }
@@ -289,7 +287,6 @@ quint32 LangCoder::guessId( const QString & lang )
   {
     for ( auto const & lc : LangCodes ) {
       if ( lstr == ( lstr.size() == 3 ? QString( lc.code3 ) : QString( lc.lang ) ) ) {
-        // We've got a match
         return code2toInt( lc.code );
       }
     }
