@@ -12,21 +12,6 @@ struct GDLangCode
   std::string lang;  // Language name in English
 };
 
-
-template< typename T, int N >
-inline int arraySize( T ( & )[ N ] )
-{
-  return N;
-}
-
-struct LangStruct
-{
-  int order;
-  quint32 code;
-  QIcon icon;
-  QString lang;
-};
-
 class LangCoder
 {
 public:

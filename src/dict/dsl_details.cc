@@ -7,7 +7,6 @@
 #include "langcoder.hh"
 #include "gddebug.hh"
 #include "ufile.hh"
-#include "wstring_qt.hh"
 #include "utf8.hh"
 
 #include <stdio.h>
