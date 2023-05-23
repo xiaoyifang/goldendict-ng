@@ -107,7 +107,7 @@ void MainWindow::changeWebEngineViewFont()
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( 0 ),
-//  groupLabel( &searchPaneTitleBar ),
+  //  groupLabel( &searchPaneTitleBar ),
   foundInDictsLabel( &dictsPaneTitleBar ),
   escAction( this ),
   focusTranslateLineAction( this ),
@@ -129,21 +129,24 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
-  articleNetMgr( this, dictionaries, articleMaker,
-                 cfg.preferences.disallowContentFromOtherSites, cfg.preferences.hideGoldenDictHeader ),
+  articleNetMgr( this,
+                 dictionaries,
+                 articleMaker,
+                 cfg.preferences.disallowContentFromOtherSites,
+                 cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   newReleaseCheckTimer( this ),
   latestReleaseReply( 0 ),
-  wordListSelChanged( false )
-, wasMaximized( false )
-, blockUpdateWindowTitle( false )
-, headwordsDlg( 0 )
-, ftsIndexing( dictionaries )
-, ftsDlg( 0 )
-, starIcon( ":/icons/star.svg" )
-, blueStarIcon( ":/icons/star_blue.svg" )
+  wordListSelChanged( false ),
+  wasMaximized( false ),
+  blockUpdateWindowTitle( false ),
+  headwordsDlg( 0 ),
+  ftsIndexing( dictionaries ),
+  ftsDlg( 0 ),
+  starIcon( ":/icons/star.svg" ),
+  blueStarIcon( ":/icons/star_blue.svg" )
 {
   if( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
@@ -304,11 +307,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   menuButtonAction->setVisible( cfg.preferences.hideMenubar );
 
   // Make the search pane's titlebar
-//  groupLabel.setText( tr( "Look up in:" ) );
+  //  groupLabel.setText( tr( "Look up in:" ) );
   groupListInDock = new GroupComboBox( &searchPaneTitleBar );
 
   searchPaneTitleBarLayout.setContentsMargins( 8, 5, 8, 4 );
-//  searchPaneTitleBarLayout.addWidget( &groupLabel );
+  //  searchPaneTitleBarLayout.addWidget( &groupLabel );
   searchPaneTitleBarLayout.addWidget( groupListInDock );
   searchPaneTitleBarLayout.addStretch();
 
@@ -1471,7 +1474,7 @@ void MainWindow::updateGroupList()
 
   groupList->setVisible( haveGroups );
 
-//  groupLabel.setText( haveGroups ? tr( "Look up in:" ) : tr( "Look up:" ) );
+  //  groupLabel.setText( haveGroups ? tr( "Look up in:" ) : tr( "Look up:" ) );
 
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
