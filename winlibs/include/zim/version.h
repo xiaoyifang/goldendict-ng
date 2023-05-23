@@ -23,10 +23,12 @@
 #include <string>
 #include <vector>
 
-namespace zim {
-typedef std::vector< std::pair< std::string, std::string > > LibVersions;
-LibVersions getVersions();
-void printVersions( std::ostream & out = std::cout );
-} // namespace zim
+namespace zim
+{
+  typedef std::vector<std::pair<std::string, std::string>> LibVersions;
+  LibVersions getVersions();
+  void printVersions(std::ostream& out = std::cout);
+}
 
 #endif // ZIM_VERSION_H
+

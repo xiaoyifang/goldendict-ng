@@ -863,7 +863,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       // scanning
 
     QString firstName = QDir::fromNativeSeparators( i->c_str() );
-    if ( !firstName.endsWith( ".zim" ) || !firstName.endsWith( ".zimaa" ) ) {
+    if ( !firstName.endsWith( ".zim" ) && !firstName.endsWith( ".zimaa" ) ) {
       continue;
     }
 

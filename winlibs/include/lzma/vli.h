@@ -54,7 +54,7 @@
  *
  * Valid VLI values are in the range [0, LZMA_VLI_MAX]. Unknown value is
  * indicated with LZMA_VLI_UNKNOWN, which is the maximum value of the
- * underlaying integer type.
+ * underlying integer type.
  *
  * lzma_vli will be uint64_t for the foreseeable future. If a bigger size
  * is needed in the future, it is guaranteed that 2 * LZMA_VLI_MAX will
@@ -158,6 +158,8 @@ extern LZMA_API(lzma_ret) lzma_vli_decode(lzma_vli *vli, size_t *vli_pos,
 
 /**
  * \brief       Get the number of bytes required to encode a VLI
+ *
+ * \param       vli       Integer whose encoded size is to be determined
  *
  * \return      Number of bytes on success (1-9). If vli isn't valid,
  *              zero is returned.

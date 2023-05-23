@@ -10,3 +10,4 @@
 #define LIBZIM_VERSION "8.2.0"
 
 #undef LIBZIM_WITH_XAPIAN
+
