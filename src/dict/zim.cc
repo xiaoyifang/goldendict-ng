@@ -131,7 +131,7 @@ quint32 getArticleCluster( ZimFile const & file, quint32 articleNumber )
 
 bool isArticleMime( const string & mime_type )
 {
-  return mime_type.compare( "text/html" ) == 0 || mime_type.compare( "text/plain" ) == 0;
+  return mime_type.compare( "text/html" ) == 0 /*|| mime_type.compare( "text/plain" ) == 0*/;
 }
 
 quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & result )
@@ -250,13 +250,11 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
 
   // Read dictionary name
 
-  if ( idxHeader.namePtr == 0xFFFFFFFF ) {
-    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-    int n          = name.lastIndexOf( '/' );
-    dictionaryName = name.mid( n + 1 ).toStdString();
-  }
-  else {
-    dictionaryName = df.getMetadata( "Title" );
+  dictionaryName = df.getMetadata( "Title" );
+  if(dictionaryName.empty()){
+      QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
+      int n          = name.lastIndexOf( '/' );
+      dictionaryName = name.mid( n + 1 ).toStdString();
   }
 
   // Full-text search parameters
@@ -314,7 +312,7 @@ string ZimDictionary::convert( const string & in )
   // text.replace( QRegularExpression( "<\\s*(img|script)\\s+([^>]*)src=(\")([^\"]*)\\3" ),
   //               QString( "<\\1 \\2src=\\3bres://%1/").arg( getId().c_str() ) );
 
-  QRegularExpression rxImgScript( R"(<\s*(img|script)\s+([^>]*)src=(")([^"]*)\3)" );
+  QRegularExpression rxImgScript( R"(<\s*(img|script|source)\s+([^>]*)src=(")([^"]*)\3)" );
   QRegularExpressionMatchIterator it = rxImgScript.globalMatch( text );
   int pos = 0;
   QString newText;
@@ -483,7 +481,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
 
 QString const& ZimDictionary::getDescription()
 {
-    if( !dictionaryDescription.isEmpty() || idxHeader.descriptionPtr == 0xFFFFFFFF )
+    if( !dictionaryDescription.isEmpty() )
         return dictionaryDescription;
 
     dictionaryDescription = QString::fromStdString( df.getMetadata( "Description" ) );
@@ -917,7 +915,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         IndexedWords indexedWords, indexedResources;
 
-        for ( unsigned n = 0; n < articleCount; n++ ) {
+        for ( unsigned n = 0; n < df.getAllEntryCount(); n++ ) {
           try {
             auto entry    = df.getEntryByPath( n );
             auto item     = entry.getItem( true );
@@ -931,7 +929,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               continue;
             }
 
-            if ( maxHeadwordsToExpand && articleCount >= maxHeadwordsToExpand ) {
+            if ( maxHeadwordsToExpand && (articleCount >= maxHeadwordsToExpand) ) {
               if ( !title.empty() ) {
                 wstring word = Utf8::decode( title );
                 indexedWords.addSingleWord( word, n );
@@ -945,14 +943,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               if ( !title.empty() ) {
                 auto word = Utf8::decode( title );
                 indexedWords.addWord( word, n );
+                wordCount++;
               }
               if ( !url.empty() ) {
                 auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
                 indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+                wordCount++;
               }
             }
 
-            wordCount++;
+            articleCount++;
           }
           catch ( std::exception & e ) {
             qWarning() << e.what();
