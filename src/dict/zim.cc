@@ -131,7 +131,7 @@ quint32 getArticleCluster( ZimFile const & file, quint32 articleNumber )
 
 bool isArticleMime( const string & mime_type )
 {
-  return mime_type.compare( "text/html" ) == 0 /*|| mime_type.compare( "text/plain" ) == 0*/;
+  return mime_type == "text/html" /*|| mime_type.compare( "text/plain" ) == 0*/;
 }
 
 quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & result )
@@ -149,6 +149,21 @@ quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & resul
   }
 }
 
+quint32 readArticleByPath( ZimFile const & file, const string & path, string & result )
+{
+  try {
+    auto entry = file.getEntryByPath( path );
+
+    auto item = entry.getItem( true );
+    result    = item.getData();
+    return item.getIndex();
+  }
+  catch ( std::exception & e ) {
+    qDebug() << e.what();
+    return 0xFFFFFFFF;
+  }
+}
+
 // ZimDictionary
 
 class ZimDictionary: public BtreeIndexing::BtreeDictionary
@@ -158,7 +173,6 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     Mutex idxMutex;
     Mutex zimMutex, idxResourceMutex;
     File::Class idx;
-    BtreeIndex resourceIndex;
     IdxHeader idxHeader;
     ZimFile df;
     set< quint32 > articlesIndexedForFTS;
@@ -242,10 +256,6 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
   // Initialize the indexes
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
-
-  resourceIndex.openIndex( IndexInfo( idxHeader.resourceIndexBtreeMaxElements, idxHeader.resourceIndexRootOffset ),
-                           idx,
-                           idxResourceMutex );
 
   // Read dictionary name
 
@@ -445,19 +455,6 @@ string ZimDictionary::convert( const string & in )
   }
   newText.clear();
 
-
-  // // output all links in the page - only for analysis
-  // QRegExp rxPrintAllLinks( "<\\s*a\\s+[^>]*href=\"[^\"]*\"[^>]*>",
-  //                         Qt::CaseSensitive,
-  //                         QRegExp::RegExp2 );
-  // pos = 0;
-  // while( (pos = rxPrintAllLinks.indexIn( text, pos )) >= 0 )
-  // {
-  //   QStringList list = rxPrintAllLinks.capturedTexts();
-  //   qDebug() << "\n--Alllinks--" << list[0];
-  //   pos += list[0].length() + 1;
-  // }
-
   // Fix outstanding elements
   text += "<br style=\"clear:both;\" />";
 
@@ -466,17 +463,9 @@ string ZimDictionary::convert( const string & in )
 
 void ZimDictionary::loadResource( std::string & resourceName, string & data )
 {
-  string resData;
-
-  vector< WordArticleLink > link = resourceIndex.findArticles( Utf8::decode( resourceName ) );
-
-  if( link.empty() )
+  if ( resourceName.empty() )
     return;
-
-  {
-    Mutex::Lock _( zimMutex );
-    readArticle( df, link[ 0 ].articleOffset, data);
-  }
+  readArticleByPath( df, resourceName, data );
 }
 
 QString const& ZimDictionary::getDescription()
@@ -818,8 +807,8 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
-  return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
+  auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
+  return std::make_shared<ZimResourceRequest>( *this, noLeadingDot.toStdString() );
 }
 
 //} // anonymous namespace
@@ -833,13 +822,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
+  for(const auto & fileName : fileNames)
   {
       // Skip files with the extensions different to .zim to speed up the
       // scanning
 
-    QString firstName = QDir::fromNativeSeparators( i->c_str() );
+    QString firstName = QDir::fromNativeSeparators( fileName.c_str() );
     if ( !firstName.endsWith( ".zim" ) && !firstName.endsWith( ".zimaa" ) ) {
       continue;
     }
@@ -865,7 +853,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
     try {
       //only check zim file.
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        gdDebug( "Zim: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Zim: Building the index for dictionary: %s\n", fileName.c_str() );
 
         unsigned articleCount = df.getArticleCount();
         unsigned wordCount    = 0;
@@ -892,7 +880,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         idx.write( idxHeader );
 
-        IndexedWords indexedWords, indexedResources;
+        IndexedWords indexedWords;
 
         for ( unsigned n = 0; n < df.getAllEntryCount(); n++ ) {
           auto entry    = df.getEntryByPath( n );
@@ -903,8 +891,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           qDebug() << n << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
-            auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
-            indexedResources.addSingleWord( formatedUrl.toStdU32String(), n );
             continue;
           }
 
@@ -942,15 +928,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           indexedWords.clear(); // Release memory -- no need for this data
         }
 
-        {
-          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedResources, idx );
-
-          idxHeader.resourceIndexBtreeMaxElements = idxInfo.btreeMaxElements;
-          idxHeader.resourceIndexRootOffset       = idxInfo.rootOffset;
-
-          indexedResources.clear(); // Release memory -- no need for this data
-        }
-
         idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
@@ -967,7 +944,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       catch( std::exception & e )
       {
         gdWarning( "Zim dictionary initializing failed: %s, error: %s\n",
-                   i->c_str(), e.what() );
+                   fileName.c_str(), e.what() );
         continue;
       }
       catch( ... )
