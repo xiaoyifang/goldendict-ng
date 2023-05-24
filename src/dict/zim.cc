@@ -882,13 +882,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         IndexedWords indexedWords;
 
-        for ( unsigned n = 0; n < df.getAllEntryCount(); n++ ) {
-          auto entry    = df.getEntryByPath( n );
+        //only iterate the article
+        for ( const auto & entry : df.iterByTitle() ) {
           auto item     = entry.getItem( true );
           auto mimeType = item.getMimetype();
           auto url      = item.getPath();
           auto title    = item.getTitle();
-          qDebug() << n << mimeType.c_str() << url.c_str() << title.c_str();
+          auto index = item.getIndex();
+          qDebug() << index << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
             continue;
@@ -897,22 +898,22 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           if ( maxHeadwordsToExpand > 0 && ( articleCount >= maxHeadwordsToExpand ) ) {
             if ( !title.empty() ) {
               wstring word = Utf8::decode( title );
-              indexedWords.addSingleWord( word, n );
+              indexedWords.addSingleWord( word, index );
             }
             else if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
-              indexedWords.addSingleWord( formatedUrl.toStdU32String(), n );
+              auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+              indexedWords.addSingleWord( formattedUrl.toStdU32String(), index );
             }
           }
           else {
             if ( !title.empty() ) {
               auto word = Utf8::decode( title );
-              indexedWords.addWord( word, n );
+              indexedWords.addWord( word, index );
               wordCount++;
             }
             else if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
-              indexedWords.addWord( formatedUrl.toStdU32String(), n );
+              auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+              indexedWords.addWord( formattedUrl.toStdU32String(), index );
               wordCount++;
             }
           }
