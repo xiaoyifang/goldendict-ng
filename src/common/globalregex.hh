@@ -58,7 +58,7 @@ class Epwing{
 namespace Html {
 const static QRegularExpression startDivTag( R"(<div[\s>])" );
 const static QRegularExpression htmlEntity( R"(&(?:#\d+|#[xX][\da-fA-F]+|[0-9a-zA-Z]+);)" );
-const static QRegularExpression leadingDotSlash( R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption ) ;
+const static QRegularExpression leadingDotSlash( R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption );
 
 // exclude <br/> <hr/>
 const static QRegularExpression emptyXmlTag(R"(<(?!(br|hr)\b)([^/ >]*)\s*/>)");
