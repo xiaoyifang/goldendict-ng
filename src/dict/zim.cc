@@ -497,7 +497,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if( haveFTSIndex() )
     return;
 
-  if( !ensureInitDone().empty() )
+  if ( !ensureInitDone().empty() )
     return;
 
   if( firstIteration )
@@ -610,8 +610,7 @@ void ZimArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for(const auto & alt : alts)
-  {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
     vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
@@ -622,15 +621,14 @@ void ZimArticleRequest::run()
   multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonyms make it that the articles
-                                    // appear several times. We combat this
-                                    // by only allowing them to appear once.
+                                   // appear several times. We combat this
+                                   // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for(auto & x : chain)
-  {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
       finish();

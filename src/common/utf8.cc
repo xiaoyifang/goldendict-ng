@@ -134,7 +134,7 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
 
 string encode( wstring const & in ) noexcept
 {
-  if( in.empty() )
+  if ( in.empty() )
     return {};
 
   std::vector< char > buffer( in.size() * 4 );
