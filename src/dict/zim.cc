@@ -38,7 +38,7 @@
   #include <map>
   #include <algorithm>
   #include <QtConcurrent>
-#include <utility>
+  #include <utility>
   #include "globalregex.hh"
   #include <zim/zim.h>
   #include <zim/archive.h>
@@ -568,10 +568,11 @@ class ZimArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ZimArticleRequest( wstring  word_,
-                     vector< wstring > const & alts_,
-                     ZimDictionary & dict_, bool ignoreDiacritics_ ):
-    word(std::move( word_ )), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
+  ZimArticleRequest( wstring word_, vector< wstring > const & alts_, ZimDictionary & dict_, bool ignoreDiacritics_ ):
+    word( std::move( word_ ) ),
+    alts( alts_ ),
+    dict( dict_ ),
+    ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
   }
