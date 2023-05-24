@@ -408,8 +408,7 @@ string ZimDictionary::convert( const string & in )
 
     newText += replacedLink;
   }
-  if( pos != 0 )
-  {
+  if ( pos != 0 ) {
     newText += text.mid( pos );
     text = newText;
   }
