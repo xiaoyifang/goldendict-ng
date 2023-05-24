@@ -45,10 +45,10 @@ public:
   static QRegularExpression styleElment;
 };
 
-namespace Zim{
+namespace Zim {
 //leading dot slash namespace
 const static QRegularExpression leadingDSN( R"(^\.{0,2}\/([A-Z\-]/)?)" );
-}
+} // namespace Zim
 
 class Epwing{
  public:

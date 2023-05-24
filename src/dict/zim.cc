@@ -174,7 +174,9 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
-    { return {}; }
+    {
+      return {};
+    }
 
     unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
@@ -821,7 +823,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString(name).remove(RX::Zim::leadingDSN);
+  auto formatedName = QString::fromStdString( name ).remove( RX::Zim::leadingDSN );
   return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 
@@ -911,7 +913,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             continue;
           }
 
-          if ( maxHeadwordsToExpand>0 && ( articleCount >= maxHeadwordsToExpand ) ) {
+          if ( maxHeadwordsToExpand > 0 && ( articleCount >= maxHeadwordsToExpand ) ) {
             if ( !title.empty() ) {
               wstring word = Utf8::decode( title );
               indexedWords.addSingleWord( word, n );
