@@ -174,7 +174,7 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
     { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
-    { return map< Dictionary::Property, string >(); }
+    { return {}; }
 
     unsigned long getArticleCount() noexcept override
     { return idxHeader.articleCount; }
@@ -332,7 +332,7 @@ string ZimDictionary::convert( const string & in )
       //the pattern like : <\\1 \\2src=\\3bres://%1/
 
       //remove leading dot and slash
-      url.remove( RX::Html::leadingDotSlash );
+      url.remove( RX::Zim::leadingDSN );
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -391,7 +391,7 @@ string ZimDictionary::convert( const string & in )
     {
       //tag from list[3]
       formatTag = tag;
-      formatTag.replace( RX::Zim::linkSpecialChar, "" );
+      formatTag.remove( RX::Zim::leadingDSN );
     }
 
     QString urlLink = match.captured();
@@ -467,7 +467,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
   string resData;
 
   auto r = QString::fromStdString( resourceName );
-  r.remove( RX::Html::leadingDotSlash );
+  r.remove( RX::Zim::leadingDSN );
 
   vector< WordArticleLink > link = resourceIndex.findArticles( Utf8::decode( r.toStdString() ) );
 
@@ -821,7 +821,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString(name).remove(QRegularExpression(R"(^\.*\/[A-Z]\/)", QRegularExpression::CaseInsensitiveOption));
+  auto formatedName = QString::fromStdString(name).remove(RX::Zim::leadingDSN);
   return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 
@@ -906,17 +906,18 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           qDebug() << n << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
-            indexedResources.addSingleWord( Utf8::decode( url ), n );
+            auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
+            indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
             continue;
           }
 
-          if ( maxHeadwordsToExpand && ( articleCount >= maxHeadwordsToExpand ) ) {
+          if ( maxHeadwordsToExpand>0 && ( articleCount >= maxHeadwordsToExpand ) ) {
             if ( !title.empty() ) {
               wstring word = Utf8::decode( title );
               indexedWords.addSingleWord( word, n );
             }
             if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
               indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
             }
           }
@@ -927,13 +928,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               wordCount++;
             }
             if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).replace( RX::Zim::linkSpecialChar, "" );
+              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
               indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
               wordCount++;
             }
           }
-
-          articleCount++;
         }
 
         // Build index

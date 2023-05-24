@@ -65,9 +65,6 @@ QRegularExpression Mdx::styleElment( R"((<style[^>]*>)([\w\W]*?)(<\/style>))",
                                   QRegularExpression::CaseInsensitiveOption);
 
 
-QRegularExpression Zim::linkSpecialChar("[\\.\\/]");
-
-
 QRegularExpression Epwing::refWord(R"([r|p](\d+)at(\d+))", QRegularExpression::CaseInsensitiveOption);
 
 

@@ -45,10 +45,10 @@ public:
   static QRegularExpression styleElment;
 };
 
-class Zim{
- public:
-  static QRegularExpression linkSpecialChar;
-};
+namespace Zim{
+//leading dot slash namespace
+const static QRegularExpression leadingDSN( R"(^\.{0,2}\/([A-Z\-]/)?)" );
+}
 
 class Epwing{
  public:
@@ -58,7 +58,7 @@ class Epwing{
 namespace Html {
 const static QRegularExpression startDivTag( R"(<div[\s>])" );
 const static QRegularExpression htmlEntity( R"(&(?:#\d+|#[xX][\da-fA-F]+|[0-9a-zA-Z]+);)" );
-const static QRegularExpression leadingDotSlash( R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption );
+
 
 // exclude <br/> <hr/>
 const static QRegularExpression emptyXmlTag(R"(<(?!(br|hr)\b)([^/ >]*)\s*/>)");
