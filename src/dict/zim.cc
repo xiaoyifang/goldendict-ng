@@ -815,6 +815,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name 
 
 //} // anonymous namespace
 
+wstring normalizeWord( const std::string& url );
 vector< sptr< Dictionary::Class > > makeDictionaries(
                                       vector< string > const & fileNames,
                                       string const & indicesDir,
@@ -901,8 +902,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               indexedWords.addSingleWord( word, index );
             }
             else if ( !url.empty() ) {
-              auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
-              indexedWords.addSingleWord( formattedUrl.toStdU32String(), index );
+              indexedWords.addSingleWord( normalizeWord( url ), index );
             }
           }
           else {
@@ -912,8 +912,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               wordCount++;
             }
             else if ( !url.empty() ) {
-              auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
-              indexedWords.addWord( formattedUrl.toStdU32String(), index );
+              indexedWords.addWord( normalizeWord( url ), index );
               wordCount++;
             }
           }
@@ -955,6 +954,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       }
   }
   return dictionaries;
+}
+wstring normalizeWord( const std::string & url )
+{
+  auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+  return formattedUrl.toStdU32String();
 }
 
 } // namespace Zim
