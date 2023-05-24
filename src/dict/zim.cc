@@ -329,11 +329,10 @@ string ZimDictionary::convert( const string & in )
     QString replacedLink = urlLink;
     if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
     {
-      //<\\1 \\2src=\\3bres://%1/
-
+      //the pattern like : <\\1 \\2src=\\3bres://%1/
 
       //remove leading dot and slash
-      url.remove( QRegularExpression( R"(^\.*\/)", QRegularExpression::CaseInsensitiveOption ) );
+      url.remove( RX::Html::leadingDotSlash );
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -465,10 +464,12 @@ string ZimDictionary::convert( const string & in )
 
 void ZimDictionary::loadResource( std::string & resourceName, string & data )
 {
-  vector< WordArticleLink > link;
   string resData;
 
-  link = resourceIndex.findArticles( Utf8::decode( resourceName ) );
+  auto r = QString::fromStdString( resourceName );
+  r.remove( RX::Html::leadingDotSlash );
+
+  vector< WordArticleLink > link = resourceIndex.findArticles( Utf8::decode( r.toStdString() ) );
 
   if( link.empty() )
     return;
