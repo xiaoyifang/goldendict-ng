@@ -38,6 +38,7 @@
   #include <map>
   #include <algorithm>
   #include <QtConcurrent>
+#include <utility>
   #include "globalregex.hh"
   #include <zim/zim.h>
   #include <zim/archive.h>
@@ -567,10 +568,10 @@ class ZimArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ZimArticleRequest( wstring const & word_,
+  ZimArticleRequest( wstring  word_,
                      vector< wstring > const & alts_,
                      ZimDictionary & dict_, bool ignoreDiacritics_ ):
-    word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
+    word(std::move( word_ )), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
   }
@@ -877,7 +878,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         idxHeader.langTo = idxHeader.langFrom;
         // We write a dummy header first. At the end of the process the header
         // will be rewritten with the right values.
-
         idx.write( idxHeader );
 
         IndexedWords indexedWords;
@@ -889,7 +889,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           auto url      = item.getPath();
           auto title    = item.getTitle();
           auto index    = item.getIndex();
-          qDebug() << index << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
             continue;
