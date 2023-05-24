@@ -47,7 +47,7 @@ public:
 
 namespace Zim {
 //leading dot slash namespace
-const static QRegularExpression leadingDSN( R"(^\.{0,2}\/([A-Z\-]/)?)" );
+const static QRegularExpression leadingDotSlash( R"(^\.{0,2}\/)" );
 } // namespace Zim
 
 class Epwing{

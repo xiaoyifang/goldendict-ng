@@ -334,7 +334,7 @@ string ZimDictionary::convert( const string & in )
       //the pattern like : <\\1 \\2src=\\3bres://%1/
 
       //remove leading dot and slash
-      url.remove( RX::Zim::leadingDSN );
+      url.remove( RX::Zim::leadingDotSlash );
       replacedLink =
         QString( "<%1 %2 src=\"bres://%3/%4\"" ).arg( list[ 1 ], list[ 2 ], QString::fromStdString( getId() ), url );
     }
@@ -393,7 +393,7 @@ string ZimDictionary::convert( const string & in )
     {
       //tag from list[3]
       formatTag = tag;
-      formatTag.remove( RX::Zim::leadingDSN );
+      formatTag.remove( RX::Zim::leadingDotSlash );
     }
 
     QString urlLink = match.captured();
@@ -468,10 +468,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
 {
   string resData;
 
-  auto r = QString::fromStdString( resourceName );
-  r.remove( RX::Zim::leadingDSN );
-
-  vector< WordArticleLink > link = resourceIndex.findArticles( Utf8::decode( r.toStdString() ) );
+  vector< WordArticleLink > link = resourceIndex.findArticles( Utf8::decode( resourceName ) );
 
   if( link.empty() )
     return;
@@ -500,7 +497,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
+  if( !ensureInitDone().empty() )
     return;
 
   if( firstIteration )
@@ -613,18 +610,18 @@ void ZimArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
+  for(const auto & alt : alts)
   {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
   multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
-  set< quint32 > articlesIncluded; // Some synonims make it that the articles
+  set< quint32 > articlesIncluded; // Some synonyms make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
@@ -632,7 +629,7 @@ void ZimArticleRequest::run()
   if( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for( unsigned x = 0; x < chain.size(); ++x )
+  for(auto & x : chain)
   {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
@@ -644,12 +641,12 @@ void ZimArticleRequest::run()
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
 
     quint32 articleNumber = 0xFFFFFFFF;
     try
     {
-      articleNumber = dict.loadArticle( chain[ x ].articleOffset, articleText );
+      articleNumber = dict.loadArticle( x.articleOffset, articleText );
     }
     catch(...)
     {
@@ -823,7 +820,7 @@ void ZimResourceRequest::run()
 
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
-  auto formatedName = QString::fromStdString( name ).remove( RX::Zim::leadingDSN );
+  auto formatedName = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
   return std::make_shared<ZimResourceRequest>( *this, formatedName.toStdString() );
 }
 
@@ -849,11 +846,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       continue;
     }
 
-      // Got the file -- check if we need to rebuid the index
+    // Got the file -- check if we need to rebuid the index
     //fileName  is logical.
     if ( firstName.endsWith( ".zimaa" ) ) {
       //remove aa
-      firstName.remove( firstName.length() - 2, 2 );
+      firstName.chop( 2 );
     }
 
     ZimFile df( firstName.toStdString() );
@@ -908,8 +905,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           qDebug() << n << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
-            auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
-            indexedResources.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+            indexedResources.addSingleWord( formatedUrl.toStdU32String(), n );
             continue;
           }
 
@@ -918,9 +915,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               wstring word = Utf8::decode( title );
               indexedWords.addSingleWord( word, n );
             }
-            if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
-              indexedWords.addSingleWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            else if ( !url.empty() ) {
+              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+              indexedWords.addSingleWord( formatedUrl.toStdU32String(), n );
             }
           }
           else {
@@ -929,9 +926,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               indexedWords.addWord( word, n );
               wordCount++;
             }
-            if ( !url.empty() ) {
-              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDSN );
-              indexedWords.addWord( Utf8::decode( formatedUrl.toStdString() ), n );
+            else if ( !url.empty() ) {
+              auto formatedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
+              indexedWords.addWord( formatedUrl.toStdU32String(), n );
               wordCount++;
             }
           }
