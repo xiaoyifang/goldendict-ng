@@ -888,7 +888,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           auto mimeType = item.getMimetype();
           auto url      = item.getPath();
           auto title    = item.getTitle();
-          auto index = item.getIndex();
+          auto index    = item.getIndex();
           qDebug() << index << mimeType.c_str() << url.c_str() << title.c_str();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
