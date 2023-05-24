@@ -23,10 +23,7 @@
 
   #include <QByteArray>
   #include <QFile>
-  #include <QFileInfo>
   #include <QString>
-  #include <QRunnable>
-  #include <QSemaphore>
   #include <QAtomicInt>
   #include <QImage>
   #include <QDir>
@@ -46,8 +43,6 @@
   #include <zim/item.h>
 namespace Zim {
 
-#define CACHE_SIZE 3
-
 using std::string;
 using std::map;
 using std::vector;
@@ -65,8 +60,6 @@ DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 DEF_EX_STR( exInvalidZimHeader, "Invalid Zim header", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 
-
-//namespace {
 
 using ZimFile = zim::Archive;
 
@@ -101,9 +94,7 @@ __attribute__((packed))
 
 #pragma pack( pop )
 
-
 // Some supporting functions
-
 bool indexIsOldOrBad( string const & indexFile )
 {
   File::Class idx( indexFile, "rb" );
@@ -417,7 +408,7 @@ string ZimDictionary::convert( const string & in )
 
     newText += replacedLink;
   }
-  if( pos )
+  if( pos != 0 )
   {
     newText += text.mid( pos );
     text = newText;
@@ -812,8 +803,6 @@ sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name 
   auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
   return std::make_shared<ZimResourceRequest>( *this, noLeadingDot.toStdString() );
 }
-
-//} // anonymous namespace
 
 wstring normalizeWord( const std::string & url );
 vector< sptr< Dictionary::Class > > makeDictionaries(
