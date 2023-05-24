@@ -36,7 +36,7 @@ jobs:
           sudo apt-get install git pkg-config build-essential 
           sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
           sudo apt-get install libxtst-dev liblzo2-dev libbz2-dev 
-          sudo apt-get install libao-dev libavutil-dev libavformat-dev libeb16-dev
+          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
           sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
           sudo apt install libxapian-dev
