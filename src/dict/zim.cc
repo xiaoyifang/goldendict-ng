@@ -815,7 +815,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name 
 
 //} // anonymous namespace
 
-wstring normalizeWord( const std::string& url );
+wstring normalizeWord( const std::string & url );
 vector< sptr< Dictionary::Class > > makeDictionaries(
                                       vector< string > const & fileNames,
                                       string const & indicesDir,
