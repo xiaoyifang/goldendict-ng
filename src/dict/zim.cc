@@ -738,9 +738,9 @@ public:
     dict( dict_ ),
     resourceName( std::move( resourceName_ ) )
   {
-      f = QtConcurrent::run( [ this ]() {
-        this->run();
-      } );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
