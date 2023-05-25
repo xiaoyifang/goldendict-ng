@@ -160,68 +160,77 @@ quint32 readArticleByPath( ZimFile const & file, const string & path, string & r
 
 class ZimDictionary: public BtreeIndexing::BtreeDictionary
 {
-    Mutex idxMutex;
-    Mutex zimMutex;
-    File::Class idx;
-    IdxHeader idxHeader;
-    ZimFile df;
-    set< quint32 > articlesIndexedForFTS;
+  Mutex idxMutex;
+  Mutex zimMutex;
+  File::Class idx;
+  IdxHeader idxHeader;
+  ZimFile df;
+  set< quint32 > articlesIndexedForFTS;
 
-  public:
+public:
 
-    ZimDictionary( string const & id, string const & indexFile,
-                     vector< string > const & dictionaryFiles );
+  ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
-    ~ZimDictionary() = default;
+  ~ZimDictionary() = default;
 
-    string getName() noexcept override
-    { return dictionaryName; }
+  string getName() noexcept override
+  {
+    return dictionaryName;
+  }
 
-    map< Dictionary::Property, string > getProperties() noexcept override
-    {
-      return {};
-    }
+  map< Dictionary::Property, string > getProperties() noexcept override
+  {
+    return {};
+  }
 
-    unsigned long getArticleCount() noexcept override
-    { return idxHeader.articleCount; }
+  unsigned long getArticleCount() noexcept override
+  {
+    return idxHeader.articleCount;
+  }
 
-    unsigned long getWordCount() noexcept override
-    { return idxHeader.wordCount; }
+  unsigned long getWordCount() noexcept override
+  {
+    return idxHeader.wordCount;
+  }
 
-    inline quint32 getLangFrom() const override
-    { return idxHeader.langFrom; }
+  inline quint32 getLangFrom() const override
+  {
+    return idxHeader.langFrom;
+  }
 
-    inline quint32 getLangTo() const override
-    { return idxHeader.langTo; }
+  inline quint32 getLangTo() const override
+  {
+    return idxHeader.langTo;
+  }
 
-    sptr< Dictionary::DataRequest >
-    getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-    sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
-    QString const& getDescription() override;
+  QString const & getDescription() override;
 
-    /// Loads the resource.
-    void loadResource( std::string &resourceName, string & data );
+  /// Loads the resource.
+  void loadResource( std::string & resourceName, string & data );
 
-    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                              int searchMode, bool matchCase,
-                                                              int distanceBetweenWords,
-                                                              int maxResults,
-                                                              bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics ) override;
-    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
+  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
+                                                    int searchMode,
+                                                    bool matchCase,
+                                                    int distanceBetweenWords,
+                                                    int maxResults,
+                                                    bool ignoreWordsOrder,
+                                                    bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    void setFTSParameters( Config::FullTextSearch const & fts ) override
-    {
-      can_FTS = fts.enabled
-                && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
-                && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
-    }
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  {
+    can_FTS = fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
+      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+  }
 
-    void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
+  void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
 
 protected:
 
