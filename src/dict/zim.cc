@@ -725,6 +725,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
 
 class ZimResourceRequest: public Dictionary::DataRequest
 {
+  //the dict will outlive this object, so the reference & used here is proper.
   ZimDictionary & dict;
 
   string resourceName;
@@ -733,9 +734,13 @@ class ZimResourceRequest: public Dictionary::DataRequest
   QFuture< void > f;
 
 public:
-  ZimResourceRequest(ZimDictionary &dict_, string const &resourceName_)
-      : dict(dict_), resourceName(resourceName_) {
-    f = QtConcurrent::run( [ this ]() { this->run(); } );
+  ZimResourceRequest( ZimDictionary & dict_, string resourceName_ ):
+    dict( dict_ ),
+    resourceName( std::move( resourceName_ ) )
+  {
+      f = QtConcurrent::run( [ this ]() {
+        this->run();
+      } );
   }
 
   void run();
