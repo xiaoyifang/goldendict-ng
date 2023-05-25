@@ -160,10 +160,8 @@ quint32 readArticleByPath( ZimFile const & file, const string & path, string & r
 
 class ZimDictionary: public BtreeIndexing::BtreeDictionary
 {
-    enum LINKS_TYPE { UNKNOWN, SLASH, NO_SLASH };
-
     Mutex idxMutex;
-    Mutex zimMutex, idxResourceMutex;
+    Mutex zimMutex;
     File::Class idx;
     IdxHeader idxHeader;
     ZimFile df;
@@ -456,6 +454,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
 {
   if ( resourceName.empty() )
     return;
+  QMutexLocker _( &zimMutex );
   readArticleByPath( df, resourceName, data );
 }
 
