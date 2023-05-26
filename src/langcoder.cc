@@ -218,8 +218,7 @@ QIcon LangCoder::icon( quint32 _code )
 {
   auto code = intToCode2( _code );
 
-  if ( LANG_CODE_MAP.contains(code))
-  {
+  if ( LANG_CODE_MAP.contains( code ) ) {
     const GDLangCode & lc = LANG_CODE_MAP[ code ];
     return QIcon( ":/flags/" + QString(lc.code) + ".png" );
   }
@@ -313,8 +312,7 @@ QPair<quint32,quint32> LangCoder::findIdsForFilename( QString const & name )
 bool LangCoder::isLanguageRTL( quint32 _code )
 {
   auto code = intToCode2( _code );
-  if ( LANG_CODE_MAP.contains( code ) )
-  {
+  if ( LANG_CODE_MAP.contains( code ) ) {
     GDLangCode lc = LANG_CODE_MAP[ code ];
     if( lc.isRTL < 0 )
     {
