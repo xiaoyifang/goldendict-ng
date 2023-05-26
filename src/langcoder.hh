@@ -52,7 +52,7 @@ public:
   static bool isLanguageRTL( quint32 code );
 
 private:
-  const static QMap< QString, GDLangCode > LANG_CODE_MAP;
+  static QMap< QString, GDLangCode > LANG_CODE_MAP;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
