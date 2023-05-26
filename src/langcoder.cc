@@ -15,7 +15,7 @@
 
 // Language codes
 
-const static QMap< QString, GDLangCode > LANG_CODE_MAP = {
+QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
 
   { "aa", { "aa", "aar", -1, "Afar" } },
   { "ab", { "ab", "abk", -1, "Abkhazian" } },
