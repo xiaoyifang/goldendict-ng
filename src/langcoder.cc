@@ -16,7 +16,6 @@
 // Language codes
 
 QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
-
   { "aa", { "aa", "aar", -1, "Afar" } },
   { "ab", { "ab", "abk", -1, "Abkhazian" } },
   { "ae", { "ae", "ave", -1, "Avestan" } },
@@ -205,20 +204,21 @@ QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
   { "jb", { "jb", "jbo", 0, "Lojban" } },
 };
 
-QString LangCoder::decode(quint32 code)
+QString LangCoder::decode(quint32 _code )
 {
-  auto code2 = intToCode2( code );
-  if ( LANG_CODE_MAP.contains( code2 ) )
-    return QString::fromStdString( LANG_CODE_MAP[ code2 ].lang );
+  if ( auto code = intToCode2( _code ); exists( code ) )
+    return QString::fromStdString( LANG_CODE_MAP[ code ].lang );
 
   return {};
+}
+bool LangCoder::exists( const QString & _code )
+{
+  return LANG_CODE_MAP.contains( _code );
 }
 
 QIcon LangCoder::icon( quint32 _code )
 {
-  auto code = intToCode2( _code );
-
-  if ( LANG_CODE_MAP.contains( code ) ) {
+  if ( auto code = intToCode2( _code ); exists( code ) ) {
     const GDLangCode & lc = LANG_CODE_MAP[ code ];
     return QIcon( ":/flags/" + QString(lc.code) + ".png" );
   }
@@ -311,11 +311,9 @@ QPair<quint32,quint32> LangCoder::findIdsForFilename( QString const & name )
 
 bool LangCoder::isLanguageRTL( quint32 _code )
 {
-  auto code = intToCode2( _code );
-  if ( LANG_CODE_MAP.contains( code ) ) {
+  if ( auto code = intToCode2( _code ); exists( code ) ) {
     GDLangCode lc = LANG_CODE_MAP[ code ];
-    if( lc.isRTL < 0 )
-    {
+    if ( lc.isRTL < 0 ) {
       lc.isRTL = static_cast< int >( QLocale( lc.code ).textDirection() == Qt::RightToLeft );
     }
     return lc.isRTL != 0;
