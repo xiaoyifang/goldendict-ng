@@ -15,7 +15,6 @@ struct GDLangCode
 class LangCoder
 {
 public:
-  LangCoder();
 
   static quint32 code2toInt( const char code[ 2 ] )
   {
@@ -51,9 +50,6 @@ public:
 
   /// Return true for RTL languages
   static bool isLanguageRTL( quint32 code );
-
-private:
-  QMap< QString, GDLangCode > codeMap;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
