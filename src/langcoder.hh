@@ -15,7 +15,6 @@ struct GDLangCode
 class LangCoder
 {
 public:
-  LangCoder();
 
   static quint32 code2toInt( const char code[ 2 ] )
   {
@@ -45,7 +44,7 @@ public:
   static quint32 guessId( const QString & lang );
 
   /// Returns decoded name of language or empty string if not found.
-  static QString decode(quint32 code);
+  static QString decode( quint32 _code );
   /// Returns icon for language or empty string if not found.
   static QIcon icon( quint32 code );
 
@@ -53,7 +52,8 @@ public:
   static bool isLanguageRTL( quint32 code );
 
 private:
-  QMap< QString, GDLangCode > codeMap;
+  static QMap< QString, GDLangCode > LANG_CODE_MAP;
+  static bool exists( const QString & _code );
 };
 
 ///////////////////////////////////////////////////////////////////////////////
