@@ -32,8 +32,8 @@ public:
   static QRegularExpression anchorIdReWord;
   static QRegularExpression anchorIdRe2;
   static QRegularExpression anchorLinkRe;
-  static QRegularExpression audioRe;
-  static QRegularExpression stylesRe;
+  const static QRegularExpression audioRe;
+  const static QRegularExpression stylesRe;
   static QRegularExpression stylesRe2;
   static QRegularExpression inlineScriptRe;
   static QRegularExpression closeScriptTagRe;
@@ -42,7 +42,7 @@ public:
 
   static QRegularExpression links;
   static QRegularExpression fontFace;
-  static QRegularExpression styleElment;
+  static QRegularExpression styleElement;
 };
 
 class Zim{

@@ -1051,7 +1051,7 @@ void MdxDictionary::replaceStyleInHtml( QString & id, QString & article )
   //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
   QString articleNewText;
   int linkPos                        = 0;
-  QRegularExpressionMatchIterator it = RX::Mdx::styleElment.globalMatch( article );
+  QRegularExpressionMatchIterator it = RX::Mdx::styleElement.globalMatch( article );
   while( it.hasNext() )
   {
     QRegularExpressionMatch allLinksMatch = it.next();
