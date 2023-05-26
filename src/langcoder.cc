@@ -204,7 +204,7 @@ QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
   { "jb", { "jb", "jbo", 0, "Lojban" } },
 };
 
-QString LangCoder::decode(quint32 _code )
+QString LangCoder::decode( quint32 _code )
 {
   if ( auto code = intToCode2( _code ); exists( code ) )
     return QString::fromStdString( LANG_CODE_MAP[ code ].lang );
