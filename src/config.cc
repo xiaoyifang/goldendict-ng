@@ -185,7 +185,6 @@ ScanPopupWindowFlags spwfFromInt( int id )
 
 QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
-
   QString result = inputWord;
   if ( stripClipboard ) {
     auto parts = inputWord.split( QChar::LineFeed, Qt::SkipEmptyParts );
@@ -202,7 +201,7 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   // Simplify whitespaces and remove soft hyphens (0xAD);
-  return result.simplified();
+  return Folding::trimWhitespaceOrPunct(  result.simplified() );
 }
 
 Preferences::Preferences():

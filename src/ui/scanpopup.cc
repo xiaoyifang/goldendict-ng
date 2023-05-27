@@ -256,7 +256,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &MouseOver::instance(),
     SIGNAL( hovered( QString const &, bool ) ),
     this,
-    SLOT( mouseHovered( QString const &, bool ) ) );
+    SLOT( handleInputWord( QString const &, bool ) ) );
 #endif
 
   hideTimer.setSingleShot( true );
@@ -463,6 +463,30 @@ void ScanPopup::showEngagePopup()
   engagePopup(false);
 }
 #endif
+
+[[deprecated]]
+void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
+{
+  auto sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );
+
+  if ( isVisible() && sanitizedPhrase == pendingWord )
+  {
+    // Attempt to translate the same word we already have shown in scan popup.
+    // Ignore it, as it is probably a spurious mouseover event.
+    return;
+  }
+
+  pendingWord = sanitizedPhrase;
+
+#ifdef HAVE_X11
+  if ( cfg.preferences.showScanFlag ) {
+    emit showScanFlag();
+    return;
+  }
+#endif
+
+  engagePopup( forcePopup );
+}
 
 void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 {

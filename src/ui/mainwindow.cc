@@ -4054,9 +4054,9 @@ void MainWindow::focusWordList()
 
 void MainWindow::addWordToHistory( const QString & word )
 {
+//    skip epwing reference link. epwing reference link has the pattern of r%dAt%d
     if(QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
         return;
-    qDebug()<<"WHATISTHIS" << word;
     history.addItem( History::Item( 1, word.trimmed() ) );
 }
 
