@@ -760,14 +760,21 @@ struct Class
 
   QString editDictionaryCommandLine; // Command line to call external editor for dictionary
 
-  Class(): lastMainGroupId( 0 ), lastPopupGroupId( 0 ),
-           pinPopupWindow( false ), showingDictBarNames( false ),
-           usingSmallIconsInToolbars( false ),
-           maxPictureWidth( 0 ), maxHeadwordSize ( 256U ),
-           maxHeadwordsToExpand( 0 )
-  {}
+  Class():
+    lastMainGroupId( 0 ),
+    lastPopupGroupId( 0 ),
+    pinPopupWindow( false ),
+    showingDictBarNames( false ),
+    usingSmallIconsInToolbars( false ),
+    maxPictureWidth( 0 ),
+    maxHeadwordSize( 256U ),
+    maxHeadwordsToExpand( 0 )
+  {
+  }
   Group * getGroup( unsigned id );
   Group const * getGroup( unsigned id ) const;
+  //disable tts dictionary. does not need to save to persistent file
+  bool notts = false;
 };
 
 #ifdef Q_OS_WIN

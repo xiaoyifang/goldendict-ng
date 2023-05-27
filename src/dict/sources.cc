@@ -116,19 +116,20 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
   ui.enableCustomTransliteration->setChecked( trs.customTrans.enable );
   ui.customTransliteration->setPlainText( trs.customTrans.context );
 
-  ui.linguaEnabled->setChecked(lingua.enable);
-  ui.linguaLangCode->setText(lingua.languageCodes);
+  ui.linguaEnabled->setChecked( lingua.enable );
+  ui.linguaLangCode->setText( lingua.languageCodes );
 
   ui.forvoEnabled->setChecked( forvo.enable );
   ui.forvoApiKey->setText( forvo.apiKey );
   ui.forvoLanguageCodes->setText( forvo.languageCodes );
 
   // Text to speech
-  textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
-  ui.tabWidget->addTab( textToSpeechSource, QIcon(":/icons/text2speech.svg"), tr( "Text to Speech" ) );
+  if ( !cfg.notts ) {
+    textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
+    ui.tabWidget->addTab( textToSpeechSource, QIcon( ":/icons/text2speech.svg" ), tr( "Text to Speech" ) );
+  }
 
-  if ( Config::isPortableVersion() )
-  {
+  if ( Config::isPortableVersion() ) {
     // Paths
 
     ui.paths->setEnabled( false );
