@@ -3,6 +3,7 @@
 
 #include "dictheadwords.hh"
 #include "gddebug.hh"
+#include "headwordsmodel.hh"
 
 #include <QRegExp>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
@@ -18,6 +19,7 @@
 #include "help.hh"
 #include <QMessageBox>
 #include <QMutexLocker>
+#include <memory>
 
 #define AUTO_APPLY_LIMIT 150000
 
@@ -51,10 +53,10 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.matchCase->setChecked( cfg.headwordsDialog.matchCase );
 
-  model = new HeadwordListModel( this );
+  model = std::make_shared< HeadwordListModel >();
   proxy = new QSortFilterProxyModel( this );
 
-  proxy->setSourceModel( model );
+  proxy->setSourceModel( model.get() );
 
   proxy->setSortCaseSensitivity( Qt::CaseInsensitive );
   proxy->setSortLocaleAware( true );
@@ -126,13 +128,15 @@ void DictHeadwords::setup( Dictionary::Class *dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  const auto size = dict->getWordCount();
-  model->setDict(dict);
+  const auto size                            = dict->getWordCount();
+  std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
+  model.swap( other );
+  model->setDict( dict );
+  proxy->setSourceModel( model.get() );
   proxy->sort( 0 );
   filterChanged();
 
-  if( size > AUTO_APPLY_LIMIT )
-  {
+  if ( size > AUTO_APPLY_LIMIT ) {
     cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
     ui.autoApply->setChecked( false );
     ui.autoApply->setEnabled( false );
