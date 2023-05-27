@@ -144,7 +144,6 @@ win32 {
             DEFINES += NOMINMAX __WIN64
         }
         LIBS += -L$${PWD}/winlibs/lib/msvc
-        LIBS += -L$${PWD}/winlibs/lib
         # silence the warning C4290: C++ exception specification ignored,C4267  size_t to const T , lost data.
         QMAKE_CXXFLAGS += /wd4290 /wd4267 /Zc:__cplusplus /std:c++17 /permissive-
         # QMAKE_LFLAGS_RELEASE += /OPT:REF /OPT:ICF
@@ -562,7 +561,12 @@ SOURCES += src/common/wildcard.cc
 
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
-  LIBS += -llzma -lzstd
+  LIBS += -llzma -lzstd -lzim
+
+    win32{
+      Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/
+      Release: LIBS+= -L$$PWD/winlibs/lib/
+    }
 }
 
 CONFIG( no_epwing_support ) {

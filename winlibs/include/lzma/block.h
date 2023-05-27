@@ -448,7 +448,7 @@ extern LZMA_API(lzma_vli) lzma_block_total_size(const lzma_block *block)
  *              - LZMA_MEM_ERROR
  *              - LZMA_OPTIONS_ERROR
  *              - LZMA_UNSUPPORTED_CHECK: block->check specifies a Check ID
- *                that is not supported by this buid of liblzma. Initializing
+ *                that is not supported by this build of liblzma. Initializing
  *                the encoder failed.
  *              - LZMA_PROG_ERROR
  */
@@ -464,9 +464,6 @@ extern LZMA_API(lzma_ret) lzma_block_encoder(
  * LZMA_FINISH is not required. It is supported only for convenience.
  *
  * \return      - LZMA_OK: All good, continue with lzma_code().
- *              - LZMA_UNSUPPORTED_CHECK: Initialization was successful, but
- *                the given Check ID is not supported, thus Check will be
- *                ignored.
  *              - LZMA_PROG_ERROR
  *              - LZMA_MEM_ERROR
  */

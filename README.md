@@ -156,8 +156,16 @@ sudo apt-get install libopencc-dev
 To add Zim and Slob formats support you need at first install lzma-dev and zstd-dev packages, then pass `"CONFIG+=zim_support"` to `qmake`
 
 ```
-sudo apt-get install liblzma-dev libzstd-dev
+sudo apt-get install liblzma-dev libzstd-dev libzim-dev
 ```
+
+**Note**: Some linux distros do not support latest zim version, so you need to compile from latest source.
+On Windows,  you can use vcpkg to compile the libzim
+```
+vcpkg install libzim:x64-windows
+```
+and copy the corresponding(debug/release) library to the `winlibs/lib` folder. the zim's `include` directory to the `winlibs/include` directory.
+
 
 #### Building without Epwing format support
 
