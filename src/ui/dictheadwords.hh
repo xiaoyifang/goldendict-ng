@@ -31,7 +31,7 @@ protected:
   Config::Class & cfg;
   Dictionary::Class * dict;
 
-  HeadwordListModel * model;
+  std::shared_ptr< HeadwordListModel > model;
   QSortFilterProxyModel * proxy;
   WordListItemDelegate * delegate;
   QString dictId;
