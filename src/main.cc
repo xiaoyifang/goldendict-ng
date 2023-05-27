@@ -142,6 +142,7 @@ struct GDOptions
 
   inline bool needTogglePopup() const
   { return togglePopup; }
+  bool notts;
 };
 
 void processCommandLine( QCoreApplication * app, GDOptions * result)
@@ -156,6 +157,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
                                     QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+
+  QCommandLineOption notts( "no-tts", QObject::tr( "Disable tts." ) );
 
   QCommandLineOption groupNameOption( QStringList() << "g"
                                                     << "group-name",
@@ -174,6 +177,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
   qcmd.addOption( togglePopupOption );
+  qcmd.addOption( notts );
 
   QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
   doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
@@ -195,6 +199,10 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
   if ( qcmd.isSet( togglePopupOption ) ) {
     result->togglePopup = true;
+  }
+
+  if ( qcmd.isSet( notts ) ) {
+    result->notts = true;
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
@@ -377,7 +385,7 @@ int main( int argc, char ** argv )
                       QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
                       QMessageBox::Yes | QMessageBox::No );
       mb.exec();
-      if( mb.result() != QMessageBox::Yes )
+      if ( mb.result() != QMessageBox::Yes )
         return -1;
 
       QString configFile = Config::getConfigFileName();
@@ -387,8 +395,11 @@ int main( int argc, char ** argv )
     break;
   }
 
-  if( gdcl.needLogFile() )
-  {
+  if ( gdcl.notts ) {
+    cfg.notts = true;
+  }
+
+  if ( gdcl.needLogFile() ) {
     // Open log file
     logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
     logFilePtr->remove();
