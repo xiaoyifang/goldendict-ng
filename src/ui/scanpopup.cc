@@ -672,7 +672,7 @@ void ScanPopup::showTranslationFor( QString const & word )
   ui.pronounceButton->setDisabled( true );
 
   unsigned groupId = ui.groupList->getCurrentGroup();
-  definition->showDefinition( word, groupId = groupId );
+  definition->showDefinition( word, groupId );
   definition->focus();
 }
 
