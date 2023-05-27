@@ -201,7 +201,7 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   // Simplify whitespaces and remove soft hyphens (0xAD);
-  return Folding::trimWhitespaceOrPunct(  result.simplified() );
+  return Folding::trimWhitespace(  result.simplified() );
 }
 
 Preferences::Preferences():
