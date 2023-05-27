@@ -21,7 +21,7 @@ Checks: >
   -misc-non-private-member-variables-in-classes,
   -misc-const-correctness,
   -modernize-avoid-c-arrays,
-  -modernize-use-auto,
+#  -modernize-use-auto,
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
   -readability-magic-numbers,
