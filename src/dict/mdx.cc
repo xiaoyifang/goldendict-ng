@@ -197,7 +197,7 @@ public:
 
 };
 
-class MdxDictionary: public QObject, public BtreeIndexing::BtreeDictionary
+class MdxDictionary: public BtreeIndexing::BtreeDictionary
 {
   Mutex idxMutex;
   File::Class idx;
@@ -305,17 +305,15 @@ private:
 
   void removeDirectory( QString const & directory );
 
-  friend class MdxHeadwordsRequest;
   friend class MdxArticleRequest;
   friend class MddResourceRequest;
   void loadResourceFile( const wstring & resourceName, vector< char > & data );
 };
 
-MdxDictionary::MdxDictionary( string const & id, string const & indexFile,
-                              vector<string> const & dictionaryFiles ):
+MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idxFile(indexFile),
   idx( indexFile, "rb" ),
+  idxFile( indexFile ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
   deferredInitRunnableStarted( false )
