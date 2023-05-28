@@ -97,8 +97,6 @@ public:
 
   ~Indexing()
   {
-
-
     emit sendNowIndexingName( QString() );
     hasExited.release();
   }

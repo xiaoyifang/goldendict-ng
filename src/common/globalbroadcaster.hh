@@ -34,7 +34,7 @@ public:
   unsigned currentGroupId;
   QString translateLineText{};
   //hold the dictionary id;
-  QSet<QString> collapsedDicts;
+  QSet< QString > collapsedDicts;
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
 
@@ -42,6 +42,8 @@ public:
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );
+
+  void indexingDictionary( QString );
 };
 
 #endif // GLOBAL_GLOBALBROADCASTER_H

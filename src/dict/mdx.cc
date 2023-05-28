@@ -23,11 +23,10 @@
 #include <map>
 #include <set>
 #include <list>
-#include <ctype.h>
-#include <stdlib.h>
-
+#include <cctype>
+#include <cstdlib>
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 #include "globalregex.hh"
@@ -232,7 +231,7 @@ public:
 
   map< Dictionary::Property, string > getProperties() noexcept override
   {
-    return map< Dictionary::Property, string >();
+    return {};
   }
 
   unsigned long getArticleCount() noexcept override
@@ -274,7 +273,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    if( ensureInitDone().size() )
+    if ( !ensureInitDone().empty() )
       return;
 
     can_FTS = fts.enabled
@@ -1478,16 +1477,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.styleSheetAddress = idx.tell();
         idxHeader.styleSheetCount = styleSheets.size();
 
-        for ( MdictParser::StyleSheets::const_iterator iter = styleSheets.begin();
-              iter != styleSheets.end(); ++iter )
-        {
-          string styleBegin(iter->second.first.toStdString());
+        for ( auto iter = styleSheets.begin(); iter != styleSheets.end(); ++iter ) {
+          string styleBegin( iter->second.first.toStdString() );
           string styleEnd( iter->second.second.toStdString() );
 
           // key
-          idx.write<qint32>( iter->first );
+          idx.write< qint32 >( iter->first );
           // styleBegin
-          idx.write<quint32>( ( quint32 )styleBegin.size() + 1 );
+          idx.write< quint32 >( (quint32)styleBegin.size() + 1 );
           idx.write( styleBegin.c_str(), styleBegin.size() + 1 );
           // styleEnd
           idx.write<quint32>( ( quint32 )styleEnd.size() + 1 );
