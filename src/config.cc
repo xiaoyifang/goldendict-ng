@@ -183,41 +183,26 @@ ScanPopupWindowFlags spwfFromInt( int id )
   return SPWF_default;
 }
 
-InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) const
+QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
-  InputPhrase result;
 
-  QString _phase = inputPhrase;
-  if( stripClipboard )
-  {
-    auto parts = inputPhrase.split( QChar::LineFeed, Qt::SkipEmptyParts );
-    if( !parts.empty() )
-    {
-      _phase = parts[ 0 ];
+  QString result = inputWord;
+  if ( stripClipboard ) {
+    auto parts = inputWord.split( QChar::LineFeed, Qt::SkipEmptyParts );
+    if ( !parts.empty() ) {
+      result = parts[ 0 ];
     }
   }
 
-  if( limitInputPhraseLength && _phase.size() > inputPhraseLengthLimit )
-  {
+  if ( limitInputPhraseLength && result.size() > inputPhraseLengthLimit ) {
     gdDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
-             _phase.size(), inputPhraseLengthLimit );
-    return result;
+             result.size(),
+             inputPhraseLengthLimit );
+    return {};
   }
 
-  const QString withPunct = _phase.simplified().remove( QChar( 0xAD ) ); // Simplify whitespaces and remove soft hyphens;
-  result.phrase = Folding::trimWhitespaceOrPunct(  withPunct );
-  if ( !result.isValid() )
-    return result; // The suffix of an invalid input phrase must be empty.
-
-  const int prefixSize = withPunct.indexOf( result.phrase.at(0) );
-  const int suffixSize = withPunct.size() - prefixSize - result.phrase.size();
-  Q_ASSERT( suffixSize >= 0 );
-  Q_ASSERT( withPunct.size() - suffixSize - 1
-            == withPunct.lastIndexOf( result.phrase.at( result.phrase.size() - 1 ) ) );
-  if ( suffixSize != 0 )
-    result.punctuationSuffix = withPunct.right( suffixSize );
-
-  return result;
+  // Simplify whitespaces and remove soft hyphens (0xAD);
+  return result.simplified();
 }
 
 Preferences::Preferences():
@@ -250,7 +235,7 @@ Preferences::Preferences():
   ignoreOwnClipboardChanges( false ),
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
-  ignorePunctuation( false ),
+  ignorePunctuation( true ),
 #ifdef HAVE_X11
   // Enable both Clipboard and Selection by default so that X users can enjoy full
   // power and disable optionally.

@@ -41,7 +41,6 @@ class TranslateBox : public QWidget
 
 public:
   explicit TranslateBox(QWidget * parent = 0);
-  void setPlaceholderText(const QString &text);
   QLineEdit * translateLine();
   WordList * wordList();
   void setText(QString text, bool showPopup=true);

@@ -64,7 +64,7 @@ signals:
   /// Forwarded from the dictionary bar, so that main window could act on this.
   void editGroupRequested( unsigned id );
   /// Send word to main window
-  void sendPhraseToMainWindow( Config::InputPhrase const & phrase );
+  void sendPhraseToMainWindow( QString const & word );
   /// Close opened menus when window hide
   void closeMenu();
 
@@ -132,8 +132,7 @@ private:
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction openSearchAction;
-  Config::InputPhrase pendingInputPhrase, inputPhrase;
-  QString translateBoxSuffix; ///< A punctuation suffix that corresponds to translateBox's text.
+  QString pendingWord; // Word that is going to be translated
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
@@ -189,12 +188,11 @@ private:
 
   void updateBackForwardButtons();
 
-  void showTranslationFor( Config::InputPhrase const & inputPhrase );
+  void showTranslationFor( QString const & inputPhrase );
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 private slots:
-  void mouseHovered( QString const & , bool forcePopup);
   void currentGroupChanged( int );
   void prefixMatchFinished();
   void on_pronounceButton_clicked();

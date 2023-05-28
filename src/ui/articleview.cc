@@ -407,11 +407,11 @@ ArticleView::~ArticleView()
   webview->ungrabGesture( Gestures::GDSwipeGestureType );
 }
 
-void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned group,
+void ArticleView::showDefinition( QString const & word, unsigned group,
                                   QString const & scrollTo,
                                   Contexts const & contexts_ )
 {
-  currentWord = phrase.phrase.trimmed();
+  currentWord = word.trimmed();
   if( currentWord.isEmpty() )
     return;
   historyMode = false;
@@ -424,9 +424,7 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
 
   req.setScheme( "gdlookup" );
   req.setHost( "localhost" );
-  Utils::Url::addQueryItem( req, "word", phrase.phrase );
-  if ( !phrase.punctuationSuffix.isEmpty() )
-    Utils::Url::addQueryItem( req, "punctuation_suffix", phrase.punctuationSuffix );
+  Utils::Url::addQueryItem( req, "word", word );
   Utils::Url::addQueryItem( req, "group", QString::number( group ) );
   if( cfg.preferences.ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
@@ -468,7 +466,7 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
     Utils::Url::addQueryItem( req,  "muted", mutedDicts );
 
   // Update headwords history
-  emit sendWordToHistory( phrase.phrase );
+  emit sendWordToHistory( word );
 
   // Any search opened is probably irrelevant now
   closeSearch();
@@ -477,13 +475,6 @@ void ArticleView::showDefinition( Config::InputPhrase const & phrase, unsigned g
 
   //QApplication::setOverrideCursor( Qt::WaitCursor );
   webview->setCursor( Qt::WaitCursor );
-}
-
-void ArticleView::showDefinition( QString const & word, unsigned group,
-                                  QString const & scrollTo,
-                                  Contexts const & contexts_ )
-{
-  showDefinition( Config::InputPhrase::fromPhrase( word ), group, scrollTo, contexts_ );
 }
 
 void ArticleView::showDefinition( QString const & word, QStringList const & dictIDs,
@@ -1671,11 +1662,9 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 
 QString ArticleView::getTitle() { return webview->page()->title(); }
 
-Config::InputPhrase ArticleView::getPhrase() const
+QString ArticleView::getWord() const
 {
-  const QUrl url = webview->url();
-  return Config::InputPhrase( Utils::Url::queryItemValue( url, "word" ),
-                              Utils::Url::queryItemValue( url, "punctuation_suffix" ) );
+  return currentWord;
 }
 
 void ArticleView::print( QPrinter * printer ) const
@@ -2119,16 +2108,16 @@ void ArticleView::audioPlayerError( QString const & message )
 
 void ArticleView::pasteTriggered()
 {
-  Config::InputPhrase phrase = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
+  QString word = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
 
-  if( phrase.isValid() ) {
+  if( !word.isEmpty() ) {
     unsigned groupId = getGroup( webview->url() );
     if( groupId == 0 ) {
       // We couldn't figure out the group out of the URL,
       // so let's try the currently selected group.
       groupId = groupComboBox->getCurrentGroup();
     }
-    showDefinition( phrase, groupId, getCurrentArticle() );
+    showDefinition( word, groupId, getCurrentArticle() );
   }
 }
 
