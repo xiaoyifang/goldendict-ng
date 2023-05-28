@@ -74,7 +74,7 @@ set(QSINGLEAPP_SOURCE_FILES
 
 qt_add_executable(${GOLDENDICT} MANUAL_FINALIZATION)
 
-target_sources(${GOLDENDICT} PUBLIC
+target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
         resources.qrc
         src/scripts/scripts.qrc
@@ -101,7 +101,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         )
 
 
-target_include_directories(${GOLDENDICT} PUBLIC
+target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/src/common
