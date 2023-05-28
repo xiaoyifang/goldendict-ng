@@ -23,8 +23,6 @@
 #include <map>
 #include <set>
 #include <list>
-#include <cctype>
-#include <cstdlib>
 #ifdef _MSC_VER
   #include <stub_msvc.h>
 #endif
@@ -36,9 +34,7 @@
 #include <QCryptographicHash>
 #include <QDir>
 #include <QRegularExpression>
-#include <QSemaphore>
 #include <QString>
-#include <QTextDocument>
 #include <QThreadPool>
 #include <QtConcurrent>
 
@@ -577,8 +573,7 @@ void MdxArticleRequest::run()
     return;
   }
 
-  if ( dict.ensureInitDone().size() )
-  {
+  if ( !dict.ensureInitDone().empty() ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -586,10 +581,9 @@ void MdxArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
@@ -1347,30 +1341,27 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i )
-  {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .mdx to speed up the
     // scanning
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".mdx" ) != 0 )
+    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".mdx" ) != 0 )
       continue;
 
-    vector< string > dictFiles( 1, *i );
-    findResourceFiles( *i, dictFiles );
+    vector< string > dictFiles( 1, fileName );
+    findResourceFiles( fileName, dictFiles );
 
-    string dictId = Dictionary::makeDictionaryId( dictFiles );
+    string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-         indexIsOldOrBad( dictFiles, indexFile ) )
-    {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( dictFiles, indexFile ) ) {
       // Building the index
 
-      gdDebug( "MDict: Building the index for dictionary: %s\n", i->c_str() );
+      gdDebug( "MDict: Building the index for dictionary: %s\n", fileName.c_str() );
 
       MdictParser parser;
       list< sptr< MdictParser > > mddParsers;
 
-      if ( !parser.open( i->c_str() ) )
+      if ( !parser.open( fileName.c_str() ) )
         continue;
 
       string title = parser.title().toStdString();
@@ -1491,31 +1482,27 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       }
 
       // read languages
-      QPair<quint32, quint32> langs = LangCoder::findIdsForFilename( QString::fromStdString( *i ) );
+      QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( fileName ) );
 
       // if no languages found, try dictionary's name
-      if ( langs.first == 0 || langs.second == 0 )
-      {
+      if ( langs.first == 0 || langs.second == 0 ) {
         langs = LangCoder::findIdsForFilename( parser.title() );
       }
 
       idxHeader.langFrom = langs.first;
-      idxHeader.langTo = langs.second;
+      idxHeader.langTo   = langs.second;
 
       // Build index info for each mdd file
       vector< IndexInfo > mddIndexInfos;
-      for ( vector< sptr< IndexedWords > >::const_iterator mddIndexIter = mddIndices.begin();
-            mddIndexIter != mddIndices.end(); ++mddIndexIter )
-      {
-        IndexInfo resourceIdxInfo = BtreeIndexing::buildIndex( *( *mddIndexIter ), idx );
+      for ( const auto & mddIndice : mddIndices ) {
+        IndexInfo const resourceIdxInfo = BtreeIndexing::buildIndex( *mddIndice, idx );
         mddIndexInfos.push_back( resourceIdxInfo );
       }
 
       // Save address of IndexInfos for resource files
       idxHeader.mddIndexInfosOffset = idx.tell();
-      idxHeader.mddIndexInfosCount = mddIndexInfos.size();
-      for ( uint32_t mi = 0; mi < mddIndexInfos.size(); mi++ )
-      {
+      idxHeader.mddIndexInfosCount  = mddIndexInfos.size();
+      for ( uint32_t mi = 0; mi < mddIndexInfos.size(); mi++ ) {
         const string & mddfile = mddFileNames[ mi ];
 
         idx.write<quint32>( ( quint32 )mddfile.size() + 1 );
