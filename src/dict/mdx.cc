@@ -1472,20 +1472,20 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       // Save dictionary stylesheets
       {
         MdictParser::StyleSheets const & styleSheets = parser.styleSheets();
-        idxHeader.styleSheetAddress = idx.tell();
-        idxHeader.styleSheetCount = styleSheets.size();
+        idxHeader.styleSheetAddress                  = idx.tell();
+        idxHeader.styleSheetCount                    = styleSheets.size();
 
-        for ( auto iter = styleSheets.begin(); iter != styleSheets.end(); ++iter ) {
-          string styleBegin( iter->second.first.toStdString() );
-          string styleEnd( iter->second.second.toStdString() );
+        for ( auto const & [ key, value ] : styleSheets ) {
+          string const styleBegin( value.first.toStdString() );
+          string const styleEnd( value.second.toStdString() );
 
           // key
-          idx.write< qint32 >( iter->first );
+          idx.write< qint32 >( key );
           // styleBegin
           idx.write< quint32 >( (quint32)styleBegin.size() + 1 );
           idx.write( styleBegin.c_str(), styleBegin.size() + 1 );
           // styleEnd
-          idx.write<quint32>( ( quint32 )styleEnd.size() + 1 );
+          idx.write< quint32 >( (quint32)styleEnd.size() + 1 );
           idx.write( styleEnd.c_str(), styleEnd.size() + 1 );
         }
       }
