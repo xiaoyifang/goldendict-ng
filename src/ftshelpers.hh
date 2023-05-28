@@ -64,7 +64,6 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
                          bool handleRoundBrackets = false );
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
-void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
 bool isCJKChar( ushort ch );
 
 class FTSResultsRequest : public Dictionary::DataRequest
@@ -91,7 +90,7 @@ class FTSResultsRequest : public Dictionary::DataRequest
   void checkArticles( QVector< uint32_t > const & offsets,
                       QStringList const & words,
                       QRegExp const & searchRegexp = QRegExp() );
-  QRegularExpression createMatchRegex( QRegExp const & searchRegexp );
+  QRegularExpression createMatchRegex( QRegExp const & searchRegexp ) const;
 
   void checkSingleArticle( uint32_t offset,
                            QStringList const & words,

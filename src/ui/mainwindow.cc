@@ -691,6 +691,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   groupListInToolbar->installEventFilter( this );
 
   connect( &ftsIndexing, &FTS::FtsIndexing::newIndexingName, this, &MainWindow::showFTSIndexingName );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::indexingDictionary,
+           this,
+           &MainWindow::showFTSIndexingName );
 
   applyProxySettings();
 

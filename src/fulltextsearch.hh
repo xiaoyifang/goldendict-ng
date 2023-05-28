@@ -97,8 +97,6 @@ public:
 
   ~Indexing()
   {
-
-
     emit sendNowIndexingName( QString() );
     hasExited.release();
   }
@@ -146,7 +144,7 @@ protected:
   Mutex nameMutex;
 
 private slots:
-  void setNowIndexedName( QString name );
+  void setNowIndexedName( const QString & name );
 
 signals:
   void newIndexingName( QString name );

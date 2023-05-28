@@ -17,6 +17,7 @@
 #include "config.hh"
 #include "utils.hh"
 #include <QString>
+#include "globalbroadcaster.hh"
 
 /// Abstract dictionary-related stuff
 namespace Dictionary {
@@ -261,11 +262,15 @@ Q_DECLARE_FLAGS( Features, Feature )
 Q_DECLARE_OPERATORS_FOR_FLAGS( Features )
 
 /// A dictionary. Can be used to query words.
-class Class
+class Class: public QObject
 {
+  Q_OBJECT
+
   string id;
   vector< string > dictionaryFiles;
   long indexedFtsDoc;
+
+  long lastProgress = 0;
 
 protected:
   QString dictionaryDescription;
@@ -339,8 +344,16 @@ public:
   /// Returns the number of articles in the dictionary.
   virtual unsigned long getArticleCount() noexcept=0;
 
-  void setIndexedFtsDoc(long _indexedFtsDoc){
+  void setIndexedFtsDoc(long _indexedFtsDoc)
+  {
     indexedFtsDoc = _indexedFtsDoc;
+
+    auto newProgress = getIndexingFtsProgress();
+    if ( newProgress != lastProgress ) {
+      lastProgress = newProgress;
+      emit GlobalBroadcaster::instance()->indexingDictionary(
+        QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+    }
   }
 
   int getIndexingFtsProgress(){
