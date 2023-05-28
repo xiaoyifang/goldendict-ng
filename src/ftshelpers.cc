@@ -1,7 +1,7 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 #include "xapian.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "wstring_qt.hh"
@@ -18,9 +18,7 @@
 #include <QRegularExpression>
 
 #include "wildcard.hh"
-#include <QtConcurrent>
 #include "globalregex.hh"
-#include <QFutureSynchronizer>
 #include <QSemaphoreReleaser>
 
 using std::vector;
@@ -44,7 +42,7 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
 
     qDebug()<<document.get_data().c_str();
     //use a special document to mark the end of the index.
-    return document.get_data().compare(finish_mark)!=0;
+    return document.get_data()!=finish_mark;
   }
   catch( Xapian::Error & e )
   {
@@ -114,10 +112,8 @@ static QString makeHiliteRegExpString( QStringList const & words,
 void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStringList list )
 {
   QStringList wordList, hieroglyphList;
-  for( int i = 0; i < list.size(); i ++ )
+  for(auto word : list)
   {
-    QString word = list.at( i );
-
     // Check for CJK symbols in word
     bool parsed = false;
     QString hieroglyph;
@@ -150,8 +146,8 @@ void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStri
 bool containCJK( QString const & str)
 {
   bool hasCJK = false;
-  for( int x = 0; x < str.size(); x++ )
-    if( isCJKChar( str.at( x ).unicode() ) )
+  for(auto x : str)
+    if( isCJKChar( x.unicode() ) )
     {
       hasCJK = true;
       break;
@@ -255,9 +251,9 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
   QVector< QString > setOfWords;
   setOfWords.reserve( articleWords.size() );
 
-  for( int x = 0; x < articleWords.size(); x++ )
+  for(const auto & articleWord : articleWords)
   {
-    QString word = articleWords.at( x ).toLower();
+    QString word = articleWord.toLower();
 
     bool hasCJK = false;
     QString hieroglyph;
@@ -295,9 +291,9 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
         QStringList list;
 
         QStringList oldVariant = word.split( RX::Ftx::regSplit, Qt::SkipEmptyParts );
-        for( QStringList::iterator it = oldVariant.begin(); it != oldVariant.end(); ++it )
-          if( it->size() >= FTS::MinimumWordSize && !list.contains( *it ) )
-            list.append( *it );
+        for(auto & it : oldVariant)
+          if( it.size() >= FTS::MinimumWordSize && !list.contains( it ) )
+            list.append( it );
 
         QRegularExpressionMatch match = RX::Ftx::regBrackets.match( word );
         if( match.hasMatch() )
@@ -321,11 +317,11 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
             list.append( parsedWord );
         }
 
-        for( QStringList::iterator it = list.begin(); it != list.end(); ++it )
+        for(auto & it : list)
         {
           //if( !setOfWords.contains( *it ) )
           {
-            setOfWords.push_back( *it );
+            setOfWords.push_back( it );
             /*Mutex::Lock _( _mapLock );
             words[ *it ].push_back( articleAddress );*/
           }
@@ -353,12 +349,6 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
-  return makeFTSIndexXapian(dict,isCancelled);
-}
-
-// use xapian to create the index
-void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
-{
   Mutex::Lock _( dict->getFtsMutex() );
 
   try {
@@ -379,7 +369,7 @@ void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isC
   QSet< uint32_t > setOfOffsets;
   setOfOffsets.reserve( dict->getArticleCount() );
 
-  dict->findArticleLinks( 0, &setOfOffsets, 0, &isCancelled );
+  dict->findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
 
   if( Utils::AtomicInt::loadAcquire( isCancelled ) )
     throw exUserAbort();
@@ -492,7 +482,7 @@ void FTSResultsRequest::checkArticles( QVector< uint32_t > const & offsets,
   }
 }
 
-QRegularExpression FTSResultsRequest::createMatchRegex( QRegExp const & searchRegexp )
+QRegularExpression FTSResultsRequest::createMatchRegex( QRegExp const & searchRegexp ) const
 {
   QRegularExpression searchRegularExpression;
 
@@ -559,8 +549,8 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
     QVector< QPair< QString, bool > > wordsList;
     if( ignoreWordsOrder )
     {
-      for( QStringList::const_iterator it = words.begin(); it != words.end(); ++it )
-        wordsList.append( QPair< QString, bool >( *it, true ) );
+      for(const auto & word : words)
+        wordsList.append( QPair< QString, bool >( word, true ) );
     }
 
     // for( int i = 0; i < offsets.size(); i++ )
@@ -569,8 +559,8 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
 
       if( ignoreWordsOrder )
       {
-        for( int i = 0; i < wordsList.size(); i++ )
-          wordsList[ i ].second = true;
+        for(auto & i : wordsList)
+          i.second = true;
       }
 
       dict.getArticleText( offset, headword, articleText );
@@ -717,7 +707,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
 
     vector< BtreeIndexing::WordArticleLink > links =
       ftsIndex.findArticles( gd::removeTrailingZero( word ), ignoreDiacritics );
-    for( unsigned x = 0; x < links.size(); x++ )
+    for(auto & link : links)
     {
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
       {
@@ -729,7 +719,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
       char * linksPtr;
       {
         // Mutex::Lock _( dict.getFtsMutex() );
-        linksPtr = chunks->getBlock( links[ x ].articleOffset, chunk );
+        linksPtr = chunks->getBlock( link.articleOffset, chunk );
       }
 
       memcpy( &size, linksPtr, sizeof( uint32_t ) );
@@ -750,7 +740,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
   // int n = indexWords.length();
   // QtConcurrent::blockingMap( indexWords, findLinks );
 
-  for(QString word:indexWords)
+  for(const QString& word:indexWords)
   {
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
     {
@@ -812,9 +802,8 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
 
   QStringList wordsList, hieroglyphsList;
 
-  for( int x = 0; x < indexWords.size(); x++ )
+  for(const auto & word : indexWords)
   {
-    QString const & word = indexWords.at( x );
     if( isCJKChar( word[ 0 ].unicode() ) )
       hieroglyphsList.append( word );
     else
@@ -839,7 +828,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
     {
       QSet< uint32_t > tmp;
       vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
-      for( unsigned x = 0; x < links.size(); x++ )
+      for(auto & link : links)
       {
         if( Utils::AtomicInt::loadAcquire( isCancelled ) )
         {
@@ -852,7 +841,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
         char * linksPtr;
         {
           // Mutex::Lock _( dict.getFtsMutex() );
-          linksPtr = chunks->getBlock( links[ x ].articleOffset, chunk );
+          linksPtr = chunks->getBlock( link.articleOffset, chunk );
         }
 
         memcpy( &size, linksPtr, sizeof( uint32_t ) );
@@ -945,17 +934,17 @@ void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
     return;
 
   links.reserve( wordsInIndex );
-  ftsIndex.findArticleLinks( &links, 0, 0, &isCancelled );
+  ftsIndex.findArticleLinks( &links, nullptr, nullptr, &isCancelled );
 
   QVector< QSet< uint32_t > > allWordsLinks;
   allWordsLinks.resize( indexWords.size() );
 
-  for( int x = 0; x < links.size(); x++ )
+  for(auto & link : links)
   {
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
       return;
 
-    QString word = QString::fromUtf8( links[ x ].word.data(), links[ x ].word.size() );
+    QString word = QString::fromUtf8( link.word.data(), link.word.size() );
 
     if( ignoreDiacritics )
       word = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
@@ -968,7 +957,7 @@ void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
         char * linksPtr;
         {
           // Mutex::Lock _( dict.getFtsMutex() );
-          linksPtr = chunks->getBlock( links[ x ].articleOffset, chunk );
+          linksPtr = chunks->getBlock( link.articleOffset, chunk );
         }
 
         memcpy( &size, linksPtr, sizeof(uint32_t) );
@@ -1026,7 +1015,7 @@ void FTSResultsRequest::fullSearch( QStringList & searchWords, QRegExp & regexp 
 
   QSet< uint32_t > setOfOffsets;
   setOfOffsets.reserve( dict.getArticleCount() );
-  dict.findArticleLinks( 0, &setOfOffsets, 0, &isCancelled );
+  dict.findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
 
   if( Utils::AtomicInt::loadAcquire( isCancelled ) )
     return;
@@ -1119,9 +1108,9 @@ void FTSResultsRequest::runXapian()
         Mutex::Lock _( dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
         dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
-        for( int x = 0; x < headwords.size(); x++ )
+        for(const auto & headword : headwords)
         {
-          foundHeadwords->append( FTS::FtsHeadword( headwords.at( x ), id, QStringList(), matchCase ) );
+          foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
         }
       }
     }
@@ -1143,7 +1132,7 @@ void FTSResultsRequest::runXapian()
       Mutex::Lock _( dataMutex );
       data.resize( sizeof( foundHeadwords ) );
       memcpy( &data.front(), &foundHeadwords, sizeof( foundHeadwords ) );
-      foundHeadwords = 0;
+      foundHeadwords = nullptr;
       hasAnyData = true;
     }
   }

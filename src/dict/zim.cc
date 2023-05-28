@@ -495,7 +495,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
            getName().c_str() );
   try
   {
-    return FtsHelpers::makeFTSIndexXapian(this,isCancelled);
+    return FtsHelpers::makeFTSIndex(this,isCancelled);
   }
   catch( std::exception &ex )
   {

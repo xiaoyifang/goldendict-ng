@@ -202,6 +202,7 @@ class MdxDictionary: public QObject, public BtreeIndexing::BtreeDictionary
 {
   Mutex idxMutex;
   File::Class idx;
+  string idxFile;
   IdxHeader idxHeader;
   string encoding;
   ChunkedStorage::Reader chunks;
@@ -314,6 +315,7 @@ private:
 MdxDictionary::MdxDictionary( string const & id, string const & indexFile,
                               vector<string> const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
+  idxFile(indexFile),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
@@ -479,8 +481,8 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
-    return;
+//  if( !ensureInitDone().empty() )
+//    return;
 
   if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
     return;
@@ -490,7 +492,10 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
 
   try
   {
-    FtsHelpers::makeFTSIndex( this, isCancelled );
+    auto _dict = std::make_shared<MdxDictionary>( this->getId(),idxFile,this->getDictionaryFilenames());
+    if( !_dict->ensureInitDone().empty() )
+      return;
+    FtsHelpers::makeFTSIndex( _dict.get(), isCancelled );
     FTS_index_completed.ref();
   }
   catch( std::exception &ex )
