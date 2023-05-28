@@ -59,10 +59,6 @@ bool parseSearchString( QString const & str, QStringList & IndexWords,
                         bool & hasCJK,
                         bool ignoreWordsOrder = false );
 
-void parseArticleForFts( uint32_t articleAddress, QString & articleText,
-                         QMap< QString, QVector< uint32_t > > & words,
-                         bool handleRoundBrackets = false );
-
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
 bool isCJKChar( ushort ch );
 
@@ -87,33 +83,11 @@ class FTSResultsRequest : public Dictionary::DataRequest
 
   QList< FTS::FtsHeadword > * foundHeadwords;
 
-  void checkArticles( QVector< uint32_t > const & offsets,
-                      QStringList const & words,
-                      QRegExp const & searchRegexp = QRegExp() );
   QRegularExpression createMatchRegex( QRegExp const & searchRegexp ) const;
 
   void checkSingleArticle( uint32_t offset,
                            QStringList const & words,
                            QRegularExpression const & searchRegexp = QRegularExpression() );
-
-  void indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                    sptr< ChunkedStorage::Reader > chunks,
-                    QStringList & indexWords,
-                    QStringList & searchWords, QRegExp & regexp );
-
-  void combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                            sptr< ChunkedStorage::Reader > chunks,
-                            QStringList & indexWords,
-                            QStringList & searchWords,
-                            QRegExp & regexp );
-
-  void fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                        sptr< ChunkedStorage::Reader > chunks,
-                        QStringList & indexWords,
-                        QStringList & searchWords,
-                        QRegExp & regexp );
-
-  void fullSearch( QStringList & searchWords, QRegExp & regexp );
 
 public:
 
@@ -140,7 +114,6 @@ public:
   }
 
   void run();
-  void runXapian();
   virtual void cancel()
   {
     isCancelled.ref();

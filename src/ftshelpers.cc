@@ -214,8 +214,8 @@ bool parseSearchString( QString const & str, QStringList & indexWords,
     // Remove all symbol sets
     tmp.replace( RX::Ftx::setsRegExp, " " );
 
-    QStringList list = tmp.normalized( QString::NormalizationForm_C )
-                          .toLower().split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
+    QStringList const list =
+      tmp.normalized( QString::NormalizationForm_C ).toLower().split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
 
     if( hasCJK )
     {
@@ -233,117 +233,6 @@ bool parseSearchString( QString const & str, QStringList & indexWords,
   }
 
   return true;
-}
-//definition;
-QMutex lockMutex;
-
-void parseArticleForFts( uint32_t articleAddress, QString & articleText,
-                         QMap< QString, QVector< uint32_t > > & words,
-                         bool handleRoundBrackets )
-{
-  if( articleText.isEmpty() )
-    return;
-
-  QStringList articleWords = articleText.normalized( QString::NormalizationForm_C )
-      .split( handleRoundBrackets ? RX::Ftx::handleRoundBracket : RX::Ftx::noRoundBracket,
-                                                Qt::SkipEmptyParts );
-
-  QVector< QString > setOfWords;
-  setOfWords.reserve( articleWords.size() );
-
-  for(const auto & articleWord : articleWords)
-  {
-    QString word = articleWord.toLower();
-
-    bool hasCJK = false;
-    QString hieroglyph;
-
-    // If word contains CJK symbols we add to index only these symbols separately
-    for( int y = 0; y < word.size(); y++ )
-      if( isCJKChar( word.at( y ).unicode() ) )
-      {
-        hasCJK = true;
-        hieroglyph.append( word[ y ] );
-
-        if( QChar( word.at( y ) ).isHighSurrogate()
-            &&  QChar( word[ y + 1 ] ).isLowSurrogate() )
-          hieroglyph.append( word[ ++y ] );
-
-        //if( !setOfWords.contains( hieroglyph ) )
-        {
-          setOfWords.push_back( hieroglyph );
-          /*QMutexLocker _( &_mapLock );
-          words[ hieroglyph ].push_back( articleAddress );*/
-        }
-
-        hieroglyph.clear();
-      }
-
-    if( !hasCJK )
-    {
-      // Else we add word to index as is
-      if( word.size() < FTS::MinimumWordSize )
-        continue;
-
-      if( handleRoundBrackets && ( word.indexOf( '(' ) >= 0 || word.indexOf( ')' ) >= 0 ) )
-      {
-        // Special handle for words with round brackets - DSL feature
-        QStringList list;
-
-        QStringList oldVariant = word.split( RX::Ftx::regSplit, Qt::SkipEmptyParts );
-        for ( auto const & it : oldVariant )
-          if ( it.size() >= FTS::MinimumWordSize && !list.contains( it ) )
-            list.append( it );
-
-        QRegularExpressionMatch match = RX::Ftx::regBrackets.match( word );
-        if( match.hasMatch() )
-        {
-          QStringList parts = match.capturedTexts();
-          // Add empty strings for compatibility with QRegExp behaviour
-          for( int i = match.lastCapturedIndex() + 1; i < 6; i++ )
-            parts.append( QString() );
-          QString parsedWord = parts[ 2 ] + parts[ 4 ]; // Brackets removed
-
-          if( parsedWord.size() >= FTS::MinimumWordSize && !list.contains( parsedWord ) )
-            list.append( parsedWord );
-
-          parsedWord = parts[ 1 ].remove( '(' ).remove( ')' )
-                       + parts[ 2 ]
-                       + parts[ 3 ].remove( '(' ).remove( ')' )
-                       + parts[ 4 ]
-                       + parts[ 5 ].remove( '(' ).remove( ')' ); // Brackets expansed
-
-          if( parsedWord.size() >= FTS::MinimumWordSize && !list.contains( parsedWord ) )
-            list.append( parsedWord );
-        }
-
-        for ( auto const & it : list ) {
-          //if( !setOfWords.contains( *it ) )
-          {
-            setOfWords.push_back( it );
-            /*QMutexLocker _( &_mapLock );
-            words[ *it ].push_back( articleAddress );*/
-          }
-        }
-      }
-      else
-      //if( !setOfWords.contains( word ) )
-      {
-        setOfWords.push_back( word );
-        /*QMutexLocker _( &_mapLock );
-        words[ word ].push_back( articleAddress );*/
-      }
-    }
-  }
-
-  {
-    QMutexLocker _( &lockMutex );
-
-    for( const QString & word : setOfWords )
-    {
-      words[ word ].push_back( articleAddress );
-    }
-  }
 }
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
@@ -464,26 +353,6 @@ bool isCJKChar( ushort ch )
   return Utils::isCJKChar(ch);
 }
 
-void FTSResultsRequest::checkArticles( QVector< uint32_t > const & offsets,
-                                       QStringList const & words,
-                                       QRegExp const & searchRegexp )
-{
-  // const int parallel_count = QThread::idealThreadCount()/2;
-  // QSemaphore sem( parallel_count  < 1 ? 1 : parallel_count  );
-  //
-  // QFutureSynchronizer< void > synchronizer;
-  const auto searchRegularExpression = createMatchRegex( searchRegexp );
-
-  for( auto & address : offsets )
-  {
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
-      return;
-    }
-    checkSingleArticle( address, words, searchRegularExpression );
-  }
-}
-
 QRegularExpression FTSResultsRequest::createMatchRegex( QRegExp const & searchRegexp ) const
 {
   QRegularExpression searchRegularExpression;
@@ -516,33 +385,28 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
 
   // RegExp mode
 
-  if( searchMode == FTS::Wildcards || searchMode == FTS::RegExp )
-  {
-    // for( int i = 0; i < offsets.size(); i++ )
-      if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        return;
+  if ( searchMode == FTS::Wildcards || searchMode == FTS::RegExp ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      return;
 
-      // auto article_address = offsets.at( i );
-      dict.getArticleText( offset, headword, articleText );
-      articleText = articleText.normalized( QString::NormalizationForm_C );
+    dict.getArticleText( offset, headword, articleText );
+    articleText = articleText.normalized( QString::NormalizationForm_C );
 
-      if( ignoreDiacritics )
-        articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
+    if ( ignoreDiacritics )
+      articleText = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( articleText ) ) );
 
-      if( articleText.contains( searchRegularExpression ) )
-      {
-        if( headword.isEmpty() )
-          offsetsForHeadwords.append( offset );
-        else
-        {
-          QMutexLocker _( &dataMutex );
-          foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
-        }
-
-        ++results;
-        if( maxResults > 0 && results >= maxResults )
-          return;
+    if ( articleText.contains( searchRegularExpression ) ) {
+      if ( headword.isEmpty() )
+        offsetsForHeadwords.append( offset );
+      else {
+        QMutexLocker _( &dataMutex );
+        foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
       }
+
+      ++results;
+      if ( maxResults > 0 && results >= maxResults )
+        return;
+    }
   }
   else
   {
@@ -555,7 +419,6 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
         wordsList.append( QPair< QString, bool >( word, true ) );
     }
 
-    // for( int i = 0; i < offsets.size(); i++ )
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
         return;
 
@@ -681,375 +544,9 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
   }
 }
 
-void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                                     sptr< ChunkedStorage::Reader > chunks,
-                                     QStringList & indexWords,
-                                     QStringList & searchWords, QRegExp & regexp )
-{
-  // Find articles which contains all requested words
-
-  QSet< uint32_t > setOfOffsets;
-
-  if( indexWords.isEmpty() )
-    return;
-
-  QList< QSet< uint32_t > > addressLists;
-
-  auto findLinks = [ & ]( const QString & word )
-  {
-    QSet< uint32_t > tmp;
-    uint32_t size;
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
-      addressLists << tmp;
-      return;
-    }
-
-    vector< BtreeIndexing::WordArticleLink > links =
-      ftsIndex.findArticles( gd::removeTrailingZero( word ), ignoreDiacritics );
-    for ( auto const & link : links ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-        addressLists << tmp;
-        return;
-      }
-
-      vector< char > chunk;
-      char * linksPtr;
-      {
-        // QMutexLocker _( &dict.getFtsMutex() );
-        linksPtr = chunks->getBlock( link.articleOffset, chunk );
-      }
-
-      memcpy( &size, linksPtr, sizeof( uint32_t ) );
-      linksPtr += sizeof( uint32_t );
-      for( uint32_t y = 0; y < size; y++ )
-      {
-        tmp.insert( *( reinterpret_cast< uint32_t * >( linksPtr ) ) );
-        linksPtr += sizeof( uint32_t );
-      }
-    }
-
-    links.clear();
-    {
-      QMutexLocker _( &dataMutex );
-      addressLists << tmp;
-    }
-  };
-  // int n = indexWords.length();
-  // QtConcurrent::blockingMap( indexWords, findLinks );
-
-  for(const QString& word:indexWords)
-  {
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
-      return;
-    }
-    findLinks( word );
-  }
-
-  // blocked execution.
-
-  int i = 0;
-  for( auto & elem : addressLists )
-  {
-    if( i++ == 0 )
-      setOfOffsets = elem;
-    else
-      setOfOffsets = setOfOffsets.intersect( elem );
-  }
-
-
-  if( setOfOffsets.isEmpty() )
-    return;
-
-  QVector< uint32_t > offsets;
-  offsets.resize( setOfOffsets.size() );
-  uint32_t * ptr = &offsets.front();
-
-  for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-       it != setOfOffsets.constEnd(); ++it )
-  {
-    *ptr = *it;
-    ptr++;
-  }
-
-  setOfOffsets.clear();
-
-  dict.sortArticlesOffsetsForFTS( offsets, isCancelled );
-
-  checkArticles( offsets, searchWords, regexp );
-}
-
-void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                                             sptr< ChunkedStorage::Reader > chunks,
-                                             QStringList & indexWords,
-                                             QStringList & searchWords,
-                                             QRegExp & regexp )
-{
-  // Special case - combination of index search for hieroglyphs
-  // and full index search for other words
-
-  QSet< uint32_t > setOfOffsets;
-  uint32_t size;
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  if( indexWords.isEmpty() )
-    return;
-
-  QStringList wordsList, hieroglyphsList;
-
-  for(const auto & word : indexWords)
-  {
-    if( isCJKChar( word[ 0 ].unicode() ) )
-      hieroglyphsList.append( word );
-    else
-      wordsList.append( word );
-  }
-
-  QVector< QSet< uint32_t > > allWordsLinks;
-
-  int n = wordsList.size();
-  if( !hieroglyphsList.isEmpty() )
-  {
-    wordsList += hieroglyphsList;
-    n += 1;
-  }
-
-  allWordsLinks.resize( n );
-
-  if( !wordsList.empty() )
-  {
-    QList< QSet< uint32_t > > sets;
-    auto fn_wordLink = [ & ](const QString & word )
-    {
-      QSet< uint32_t > tmp;
-      vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
-      for ( auto const & link : links ) {
-        if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-          QMutexLocker _( &dataMutex );
-          sets << tmp;
-          return;
-        }
-
-        vector< char > chunk;
-        char * linksPtr;
-        {
-          // QMutexLocker _( &dict.getFtsMutex() );
-          linksPtr = chunks->getBlock( link.articleOffset, chunk );
-        }
-
-        memcpy( &size, linksPtr, sizeof( uint32_t ) );
-        linksPtr += sizeof( uint32_t );
-        // across chunks, need further investigation
-        uint32_t max = ( chunk.size() - ( linksPtr - &chunk.front() )) / 4;
-
-        tmp.reserve( size );
-        uint32_t q_max = qMin(size,max);
-        for( uint32_t y = 0; y < q_max; y++ )
-        {
-          tmp.insert( *( reinterpret_cast< uint32_t * >( linksPtr ) ) );
-          linksPtr += sizeof( uint32_t );
-        }
-      }
-
-      links.clear();
-
-      {
-        QMutexLocker _( &dataMutex );
-        sets << tmp;
-      }
-    };
-    // QtConcurrent::blockingMap( wordsList, fn_wordLink );
-
-    {
-
-      for(const auto & word : wordsList )
-      {
-        if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        {
-          return;
-        }
-        fn_wordLink( word );
-      }
-    }
-    //blocked execution.
-
-    int i = 0;
-    for( auto & elem : sets )
-    {
-      if( i++ == 0 )
-        setOfOffsets = elem;
-      else
-        setOfOffsets = setOfOffsets.intersect( elem );
-    }
-
-    // allWordsLinks[ wordNom ] = setOfOffsets;
-    // setOfOffsets.clear();
-    // wordNom += 1;
-  }
-
-  if( setOfOffsets.isEmpty() )
-    return;
-
-  allWordsLinks.clear();
-
-  QVector< uint32_t > offsets( setOfOffsets.begin(),setOfOffsets.end() );
-  // offsets.resize( setOfOffsets.size() );
-  // uint32_t * ptr = &offsets.front();
-  //
-  // for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-  //      it != setOfOffsets.constEnd(); ++it )
-  // {
-  //   *ptr = *it;
-  //   ptr++;
-  // }
-
-  setOfOffsets.clear();
-
-  dict.sortArticlesOffsetsForFTS( offsets, isCancelled );
-
-  checkArticles( offsets, searchWords, regexp );
-}
-
-void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                                         sptr< ChunkedStorage::Reader > chunks,
-                                         QStringList & indexWords,
-                                         QStringList & searchWords,
-                                         QRegExp & regexp )
-{
-  QSet< uint32_t > setOfOffsets;
-  uint32_t size;
-  QVector< BtreeIndexing::WordArticleLink > links;
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  if( indexWords.isEmpty() )
-    return;
-
-  links.reserve( wordsInIndex );
-  ftsIndex.findArticleLinks( &links, nullptr, nullptr, &isCancelled );
-
-  QVector< QSet< uint32_t > > allWordsLinks;
-  allWordsLinks.resize( indexWords.size() );
-
-  for(auto & link : links)
-  {
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      return;
-
-    QString word = QString::fromUtf8( link.word.data(), link.word.size() );
-
-    if( ignoreDiacritics )
-      word = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( word ) ) );
-
-    for( int i = 0; i < indexWords.size(); i++ )
-    {
-      if( word.length() >= indexWords.at( i ).length() && word.contains( indexWords.at( i ) ) )
-      {
-        vector< char > chunk;
-        char * linksPtr;
-        {
-          // QMutexLocker _( &dict.getFtsMutex() );
-          linksPtr = chunks->getBlock( link.articleOffset, chunk );
-        }
-
-        memcpy( &size, linksPtr, sizeof(uint32_t) );
-        linksPtr += sizeof(uint32_t);
-        for( uint32_t y = 0; y < size; y++ )
-        {
-          allWordsLinks[ i ].insert( *( reinterpret_cast< uint32_t * >( linksPtr ) ) );
-          linksPtr += sizeof(uint32_t);
-        }
-        if( searchMode == FTS::PlainText )
-          break;
-      }
-    }
-  }
-
-  links.clear();
-
-  for( int i = 0; i < allWordsLinks.size(); i++ )
-  {
-    if( i == 0 )
-      setOfOffsets = allWordsLinks.at( i );
-    else
-      setOfOffsets = setOfOffsets.intersect( allWordsLinks.at( i ) );
-  }
-
-  if( setOfOffsets.isEmpty() )
-    return;
-
-  allWordsLinks.clear();
-
-  QVector< uint32_t > offsets( setOfOffsets.begin(), setOfOffsets.end() );
-  // offsets.resize( setOfOffsets.size() );
-  // uint32_t * ptr = &offsets.front();
-  //
-  // for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-  //      it != setOfOffsets.constEnd(); ++it )
-  // {
-  //   *ptr = *it;
-  //   ptr++;
-  // }
-
-  setOfOffsets.clear();
-
-  dict.sortArticlesOffsetsForFTS( offsets, isCancelled );
-
-  checkArticles( offsets, searchWords, regexp );
-}
-
-void FTSResultsRequest::fullSearch( QStringList & searchWords, QRegExp & regexp )
-{
-  // Whole file survey
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  QSet< uint32_t > setOfOffsets;
-  setOfOffsets.reserve( dict.getArticleCount() );
-  dict.findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  QVector< uint32_t > offsets;
-  offsets.resize( setOfOffsets.size() );
-  uint32_t * ptr = &offsets.front();
-
-  for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-       it != setOfOffsets.constEnd(); ++it )
-  {
-    *ptr = *it;
-    ptr++;
-  }
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  setOfOffsets.clear();
-
-  dict.sortArticlesOffsetsForFTS( offsets, isCancelled );
-
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    return;
-
-  checkArticles( offsets, searchWords, regexp );
-}
-
 void FTSResultsRequest::run()
 {
-  return runXapian();
-}
-
-void FTSResultsRequest::runXapian()
-{
-  if ( dict.ensureInitDone().size() )
-  {
+  if ( !dict.ensureInitDone().empty() ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -1111,26 +608,19 @@ void FTSResultsRequest::runXapian()
         }
       }
     }
-    else
-    {
-      QStringList indexWords, searchWords;
-      QRegExp searchRegExp;
-      if( !FtsHelpers::parseSearchString( searchString, indexWords, searchWords, searchRegExp,
-                                          searchMode, matchCase, distanceBetweenWords, hasCJK, ignoreWordsOrder ) )
-      {
-        finish();
-        return;
-      }
-      fullSearch( searchWords, searchRegExp );
+    else {
+      //if no fulltext index,just returned.
+      qWarning() << "There is no fulltext index right now.";
+      finish();
+      return;
     }
 
-    if( foundHeadwords && foundHeadwords->size() > 0 )
-    {
+    if ( foundHeadwords && !foundHeadwords->empty() ) {
       QMutexLocker _( &dataMutex );
       data.resize( sizeof( foundHeadwords ) );
       memcpy( &data.front(), &foundHeadwords, sizeof( foundHeadwords ) );
       foundHeadwords = nullptr;
-      hasAnyData = true;
+      hasAnyData     = true;
     }
   }
   catch (const Xapian::Error &e) {

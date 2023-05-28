@@ -150,28 +150,33 @@ private:
   QString readString( unsigned length );
 
 public:
-  SlobFile() :
-    compression( UNKNOWN )
-  , codec( 0 )
-  , blobCount( 0 )
-  , storeOffset( 0 )
-  , fileSize( 0 )
-  , refsOffset( 0 )
-  , refsCount( 0 )
-  , itemsCount( 0 )
-  , itemsOffset( 0 )
-  , itemsDataOffset( 0 )
-  , currentItem( 0xFFFFFFFF )
-  , contentTypesCount( 0 )
-  {}
+  SlobFile():
+    compression( UNKNOWN ),
+    codec( 0 ),
+    blobCount( 0 ),
+    storeOffset( 0 ),
+    fileSize( 0 ),
+    refsOffset( 0 ),
+    refsCount( 0 ),
+    itemsCount( 0 ),
+    itemsOffset( 0 ),
+    itemsDataOffset( 0 ),
+    currentItem( 0xFFFFFFFF ),
+    contentTypesCount( 0 )
+  {
+  }
 
   ~SlobFile();
 
   Compressions getCompression() const
-  { return compression; }
+  {
+    return compression;
+  }
 
   QString const & getEncoding() const
-  { return encoding; }
+  {
+    return encoding;
+  }
 
   QString const & getDictionaryName() const
   { return dictionaryName; }
@@ -618,22 +623,23 @@ public:
     void loadResource( std::string &resourceName, string & data );
 
     sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                              int searchMode, bool matchCase,
-                                                              int distanceBetweenWords,
-                                                              int maxResults,
-                                                              bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics ) override;
+                                                      int searchMode,
+                                                      bool matchCase,
+                                                      int distanceBetweenWords,
+                                                      int maxResults,
+                                                      bool ignoreWordsOrder,
+                                                      bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-    quint64 getArticlePos(uint32_t articleNumber );
+    quint64 getArticlePos( uint32_t articleNumber );
 
-    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+    void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
+    void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
     void setFTSParameters( Config::FullTextSearch const & fts ) override
     {
-      can_FTS = fts.enabled
-                && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
-                && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
     }
 
     uint32_t getFtsIndexVersion() override
@@ -1086,13 +1092,35 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
 }
 
+void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
+{
+  QVector< uint32_t > newOffsets;
+  newOffsets.reserve( offsets.size() );
+
+  {
+    QMutexLocker _( &slobMutex );
+
+    SlobFile::RefOffsetsVector const & sortedOffsets = sf.getSortedRefOffsets();
+
+    qint32 entries = sf.getRefsCount();
+    for ( qint32 i = 0; i < entries; i++ ) {
+      if ( offsets.contains( sortedOffsets[ i ].second ) )
+        newOffsets.append( sortedOffsets[ i ].second );
+    }
+  }
+
+  offsets.reserve( newOffsets.size() );
+  for ( int i = 0; i < newOffsets.size(); i++ )
+    offsets[ i ] = newOffsets.at( i );
+}
+
 void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
-  if( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-         || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+  if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
+          || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
     FTS_index_completed.ref();
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
   if( ensureInitDone().size() )
@@ -1106,148 +1134,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
 
   try
   {
-    QMutexLocker _( &getFtsMutex() );
-
-    File::Class ftsIdx( ftsIndexName(), "wb" );
-
-    FtsHelpers::FtsIdxHeader ftsIdxHeader;
-    memset( &ftsIdxHeader, 0, sizeof( ftsIdxHeader ) );
-
-    // We write a dummy header first. At the end of the process the header
-    // will be rewritten with the right values.
-
-    ftsIdx.write( ftsIdxHeader );
-
-    ChunkedStorage::Writer chunks( ftsIdx );
-
-    BtreeIndexing::IndexedWords indexedWords;
-
-    QSet< uint32_t > setOfOffsets;
-    setOfOffsets.reserve( getWordCount() );
-
-    findArticleLinks( 0, &setOfOffsets, 0, &isCancelled );
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    QVector< uint32_t > offsets;
-    offsets.reserve( setOfOffsets.size() );
-
-    slobMutex.lock();
-    SlobFile::RefOffsetsVector const & sortedOffsets = sf.getSortedRefOffsets();
-    slobMutex.unlock();
-
-    qint32 entries = sf.getRefsCount();
-    for( qint32 i = 0; i < entries; i++ )
-    {
-      if( setOfOffsets.find( sortedOffsets[ i ].second ) != setOfOffsets.end() )
-        offsets.append( sortedOffsets[ i ].second );
-    }
-
-    // Free memory
-    sf.clearRefOffsets();
-    setOfOffsets.clear();
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    QMap< QString, QVector< uint32_t > > ftsWords;
-
-    set< quint64 > indexedArticles;
-    RefEntry entry;
-    string articleText;
-    quint32 htmlType = 0xFFFFFFFF;
-
-    for( unsigned i = 0; i < sf.getContentTypesCount(); i++ )
-    {
-      if( sf.getContentType( i ).startsWith( "text/html", Qt::CaseInsensitive ) )
-      {
-        htmlType = i;
-        break;
-      }
-    }
-
-    // index articles for full-text search
-    for( int i = 0; i < offsets.size(); i++ )
-    {
-      if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        throw exUserAbort();
-
-      QString articleStr;
-      quint32 articleNom = offsets.at( i );
-
-      {
-        QMutexLocker _( &slobMutex );
-        sf.getRefEntry( articleNom, entry );
-      }
-
-      quint64 articleID = ( ( (quint64)entry.itemIndex ) << 32 ) | entry.binIndex;
-
-      set< quint64 >::iterator it = indexedArticles.find( articleID );
-      if( it != indexedArticles.end() )
-        continue;
-
-      indexedArticles.insert( articleID );
-
-      quint32 type = readArticle( 0, articleText, entry );
-
-      articleStr = QString::fromUtf8( articleText.c_str(), articleText.length() );
-
-      if( type == htmlType )
-        articleStr = Html::unescape( articleStr );
-
-      FtsHelpers::parseArticleForFts( articleNom, articleStr, ftsWords );
-    }
-
-    // Free memory
-    offsets.clear();
-
-    QMap< QString, QVector< uint32_t > >::iterator it = ftsWords.begin();
-    while( it != ftsWords.end() )
-    {
-      if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        throw exUserAbort();
-
-      uint32_t offset = chunks.startNewBlock();
-      uint32_t size = it.value().size();
-
-      chunks.addToBlock( &size, sizeof(uint32_t) );
-      chunks.addToBlock( it.value().data(), size * sizeof(uint32_t) );
-
-      indexedWords.addSingleWord( gd::toWString( it.key() ), offset );
-
-      it = ftsWords.erase( it );
-    }
-
-    // Free memory
-    ftsWords.clear();
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    ftsIdxHeader.chunksOffset = chunks.finish();
-    ftsIdxHeader.wordCount = indexedWords.size();
-
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      throw exUserAbort();
-
-    BtreeIndexing::IndexInfo ftsIdxInfo = BtreeIndexing::buildIndex( indexedWords, ftsIdx );
-
-    // Free memory
-    indexedWords.clear();
-
-    ftsIdxHeader.indexBtreeMaxElements = ftsIdxInfo.btreeMaxElements;
-    ftsIdxHeader.indexRootOffset = ftsIdxInfo.rootOffset;
-
-    ftsIdxHeader.signature = FtsHelpers::FtsSignature;
-    ftsIdxHeader.formatVersion = FtsHelpers::CurrentFtsFormatVersion + getFtsIndexVersion();
-
-    ftsIdx.rewind();
-    ftsIdx.writeRecords( &ftsIdxHeader, sizeof(ftsIdxHeader), 1 );
-
+    FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch( std::exception &ex )
