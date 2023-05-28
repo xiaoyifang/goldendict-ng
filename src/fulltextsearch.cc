@@ -67,10 +67,10 @@ void Indexing::timeout()
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
 
-    auto progress = dictionary->getIndexingFtsProgress();
-    if ( progress > 0 && progress < 100 ) {
-      emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() )
-                                + QString( "......%1%2" ).arg( "%" ).arg( progress ) );
+    auto newProgress = dictionary->getIndexingFtsProgress();
+    if ( newProgress > 0 && newProgress < 100 ) {
+      emit sendNowIndexingName(
+        QString( "%1......%%2" ).arg( QString::fromStdString( dictionary->getName() ) ).arg( newProgress ) );
     }
   }
 }
