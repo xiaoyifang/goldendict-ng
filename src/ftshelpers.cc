@@ -291,8 +291,8 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
         QStringList list;
 
         QStringList oldVariant = word.split( RX::Ftx::regSplit, Qt::SkipEmptyParts );
-        for(auto & it : oldVariant)
-          if( it.size() >= FTS::MinimumWordSize && !list.contains( it ) )
+        for ( auto const & it : oldVariant )
+          if ( it.size() >= FTS::MinimumWordSize && !list.contains( it ) )
             list.append( it );
 
         QRegularExpressionMatch match = RX::Ftx::regBrackets.match( word );
@@ -317,8 +317,7 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
             list.append( parsedWord );
         }
 
-        for(auto & it : list)
-        {
+        for ( auto const & it : list ) {
           //if( !setOfWords.contains( *it ) )
           {
             setOfWords.push_back( it );
@@ -415,7 +414,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     long indexedDoc = 0L;
 
-    for ( auto & address : offsets ) {
+    for ( auto const & address : offsets ) {
       indexedDoc++;
 
       if ( address > lastAddress && skip ) {
@@ -710,10 +709,8 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
 
     vector< BtreeIndexing::WordArticleLink > links =
       ftsIndex.findArticles( gd::removeTrailingZero( word ), ignoreDiacritics );
-    for(auto & link : links)
-    {
-      if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      {
+    for ( auto const & link : links ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         addressLists << tmp;
         return;
       }
@@ -831,10 +828,8 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
     {
       QSet< uint32_t > tmp;
       vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
-      for(auto & link : links)
-      {
-        if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        {
+      for ( auto const & link : links ) {
+        if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
           Mutex::Lock _( dataMutex );
           sets << tmp;
           return;
