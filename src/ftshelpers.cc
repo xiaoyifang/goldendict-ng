@@ -352,108 +352,107 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   Mutex::Lock _( dict->getFtsMutex() );
 
   try {
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      throw exUserAbort();
 
-  // Open the database for update, creating a new database if necessary.
-  Xapian::WritableDatabase db(dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN);
+    // Open the database for update, creating a new database if necessary.
+    Xapian::WritableDatabase db( dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN );
 
-  Xapian::TermGenerator indexer;
-//  Xapian::Stem stemmer("english");
-//  indexer.set_stemmer(stemmer);
-//  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
-  indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
+    Xapian::TermGenerator indexer;
+    //  Xapian::Stem stemmer("english");
+    //  indexer.set_stemmer(stemmer);
+    //  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
+    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
-  BtreeIndexing::IndexedWords indexedWords;
+    BtreeIndexing::IndexedWords indexedWords;
 
-  QSet< uint32_t > setOfOffsets;
-  setOfOffsets.reserve( dict->getArticleCount() );
+    QSet< uint32_t > setOfOffsets;
+    setOfOffsets.reserve( dict->getArticleCount() );
 
-  dict->findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
+    dict->findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
 
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      throw exUserAbort();
 
-  QVector< uint32_t > offsets;
-  offsets.resize( setOfOffsets.size() );
-  uint32_t * ptr = &offsets.front();
+    QVector< uint32_t > offsets;
+    offsets.resize( setOfOffsets.size() );
+    uint32_t * ptr = &offsets.front();
 
-  for( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin();
-       it != setOfOffsets.constEnd(); ++it )
-  {
-    *ptr = *it;
-    ptr++;
-  }
+    for ( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin(); it != setOfOffsets.constEnd(); ++it ) {
+      *ptr = *it;
+      ptr++;
+    }
 
-  // Free memory
-  setOfOffsets.clear();
+    // Free memory
+    setOfOffsets.clear();
 
-  if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    throw exUserAbort();
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      throw exUserAbort();
 
-  dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
+    dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
 
-  // incremental build the index.
-  // get the last address.
-  bool skip            = true;
-  uint32_t lastAddress = -1;
-  try
-  {
-    Xapian::Document lastDoc = db.get_document( db.get_lastdocid() );
-    lastAddress              = atoi( lastDoc.get_data().c_str() );
-  }
-  catch( Xapian::Error & e )
-  {
-    qDebug() << e.get_description().c_str();
-    skip = false;
-  }
-
-  long indexedDoc=0L;
-
-  for( auto & address : offsets )
-  {
-    indexedDoc++;
-
-    if(address==lastAddress){
+    // incremental build the index.
+    // get the last address.
+    bool skip            = true;
+    uint32_t lastAddress = -1;
+    try {
+      if ( db.get_lastdocid() > 0 ) {
+        Xapian::Document lastDoc = db.get_document( db.get_lastdocid() );
+        lastAddress              = atoi( lastDoc.get_data().c_str() );
+      }
+      else {
+        skip = false;
+      }
+    }
+    catch ( Xapian::Error & e ) {
+      qDebug() << "get last doc failed: " << e.get_description().c_str();
       skip = false;
     }
-    //skip until to the lastAddress;
-    if((address!=lastAddress)&&skip){
-      continue;
+
+    long indexedDoc = 0L;
+
+    for ( auto & address : offsets ) {
+      indexedDoc++;
+
+      if ( address > lastAddress && skip ) {
+        skip = false;
+      }
+      //skip until to the lastAddress;
+      if ( skip ) {
+        continue;
+      }
+
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+        return;
+      }
+
+      QString headword, articleStr;
+
+      dict->getArticleText( address, headword, articleStr );
+
+      Xapian::Document doc;
+
+      indexer.set_document( doc );
+      indexer.index_text_without_positions( articleStr.toStdString() );
+      doc.set_data( std::to_string( address ) );
+      // Add the document to the database.
+      db.add_document( doc );
+      dict->setIndexedFtsDoc( indexedDoc );
     }
 
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
-      return;
-    }
-
-    QString headword, articleStr;
-
-    dict->getArticleText( address, headword, articleStr );
-
+    //add a special document to mark the end of the index.
     Xapian::Document doc;
-
-    indexer.set_document( doc );
-    indexer.index_text_without_positions( articleStr.toStdString() );
-    doc.set_data( std::to_string( address ) );
+    doc.set_data( finish_mark );
     // Add the document to the database.
     db.add_document( doc );
 
-    dict->setIndexedFtsDoc(indexedDoc);
+    // Free memory
+    offsets.clear();
+
+    db.commit();
   }
-
-  //add a special document to mark the end of the index.
-  Xapian::Document doc;
-  doc.set_data( finish_mark );
-  // Add the document to the database.
-  db.add_document( doc );
-
-  // Free memory
-  offsets.clear();
-
-  db.commit();
-  } catch (Xapian::Error & e) {
-    qWarning()<<QString::fromStdString(e.get_description());
+  catch ( Xapian::Error & e ) {
+    qWarning() << "create xapian index:" << QString::fromStdString( e.get_description() );
   }
 }
 
