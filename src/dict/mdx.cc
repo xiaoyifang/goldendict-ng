@@ -216,7 +216,7 @@ public:
 
   MdxDictionary( string const & id, string const & indexFile, vector<string> const & dictionaryFiles );
 
-  ~MdxDictionary();
+  ~MdxDictionary() override;
 
   void deferredInit() override;
 
@@ -557,7 +557,7 @@ public:
     isCancelled.ref();
   }
 
-  ~MdxArticleRequest()
+  ~MdxArticleRequest() override
   {
     isCancelled.ref();
     f.waitForFinished();
