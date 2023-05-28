@@ -235,6 +235,10 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   setNewIndexingName( ftsIdx.nowIndexingName() );
 
   connect( &ftsIdx, &FtsIndexing::newIndexingName, this, &FullTextSearchDialog::setNewIndexingName );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::indexingDictionary,
+           this,
+           &FullTextSearchDialog::setNewIndexingName );
 
   ui.searchMode->addItem( tr( "Whole words" ), WholeWords );
   ui.searchMode->addItem( tr( "Plain text"), PlainText );

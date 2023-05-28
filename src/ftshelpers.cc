@@ -351,6 +351,10 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 {
   Mutex::Lock _( dict->getFtsMutex() );
 
+  //check the index again.
+  if ( dict->haveFTSIndex() )
+    return;
+
   try {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       throw exUserAbort();
