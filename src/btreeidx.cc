@@ -818,9 +818,8 @@ void BtreeIndex::antialias( wstring const & str,
 
     if ( entry != caseFolded )
       chain.erase( chain.begin() + x );
-    else
-    if ( !chain[ x ].prefix.empty() ) // If there's a prefix, merge it with the word,
-                                    // since it's what dictionaries expect
+    else if ( !chain[ x ].prefix.empty() ) // If there's a prefix, merge it with the word,
+                                           // since it's what dictionaries expect
     {
       chain[ x ].word.insert( 0, chain[ x ].prefix );
       chain[ x ].prefix.clear();
@@ -856,7 +855,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
       vector< WordArticleLink > const & chain = nextWord->second;
 
-      for(const auto & y : chain)
+      for ( const auto & y : chain )
         totalChainsLength += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
     }
 
@@ -877,15 +876,14 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
       uint32_t size = 0;
 
-      for(const auto & y : chain)
-      {
+      for ( const auto & y : chain ) {
         memcpy( ptr, y.word.c_str(), y.word.size() + 1 );
         ptr += y.word.size() + 1;
 
         memcpy( ptr, y.prefix.c_str(), y.prefix.size() + 1 );
         ptr += y.prefix.size() + 1;
 
-        memcpy( ptr, &(y.articleOffset), sizeof( uint32_t ) );
+        memcpy( ptr, &( y.articleOffset ), sizeof( uint32_t ) );
         ptr += sizeof( uint32_t );
 
         size += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
@@ -1022,9 +1020,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
               wstring folded = Folding::applyWhitespaceOnly( wstring( wordBegin, wordSize ) );
               if( !folded.empty() )
               {
-                auto i = insert( { Utf8::encode( folded ),
-                                       vector< WordArticleLink >() } )
-                               .first;
+                auto i = insert( { Utf8::encode( folded ), vector< WordArticleLink >() } ).first;
 
                 string utfWord=Utf8::encode( wstring(wordBegin, wordSize )) ;
                   string utfPrefix;
@@ -1042,7 +1038,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
     wstring folded = Folding::apply( nextChar );
     auto name      = Utf8::encode( folded );
 
-    auto i = insert( { std::move(name), vector< WordArticleLink >() } ).first;
+    auto i = insert( { std::move( name ), vector< WordArticleLink >() } ).first;
 
     if( ( i->second.size() < 1024 ) || ( nextChar == wordBegin ) ) // Don't overpopulate chains with middle matches
     {
@@ -1083,7 +1079,7 @@ void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOf
 IndexInfo buildIndex( IndexedWords const & indexedWords, File::Class & file )
 {
   size_t indexSize = indexedWords.size();
-  auto nextIndex = indexedWords.begin();
+  auto nextIndex   = indexedWords.begin();
 
   // Skip any empty words. No point in indexing those, and some dictionaries
   // are known to have buggy empty-word entries (Stardict's jargon for instance).
