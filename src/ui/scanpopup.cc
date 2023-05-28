@@ -256,7 +256,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &MouseOver::instance(),
     SIGNAL( hovered( QString const &, bool ) ),
     this,
-    SLOT( mouseHovered( QString const &, bool ) ) );
+    SLOT( handleInputWord( QString const &, bool ) ) );
 #endif
 
   hideTimer.setSingleShot( true );
@@ -438,16 +438,15 @@ void ScanPopup::translateWordFromClipboard(QClipboard::Mode m)
 
 void ScanPopup::translateWord( QString const & word )
 {
-  pendingInputPhrase = cfg.preferences.sanitizeInputPhrase( word );
+  pendingWord = cfg.preferences.sanitizeInputPhrase( word );
 
-  if ( !pendingInputPhrase.isValid() )
+  if ( pendingWord.isEmpty() )
     return; // Nothing there
 
 #ifdef HAVE_X11
   emit hideScanFlag();
 #endif
 
-  inputPhrase = pendingInputPhrase;
   engagePopup( false,
 #ifdef Q_OS_WIN
       true // We only focus popup under Windows when activated via Ctrl+C+C
@@ -458,38 +457,6 @@ void ScanPopup::translateWord( QString const & word )
       );
 }
 
-void ScanPopup::mouseHovered( QString const & str, bool forcePopup )
-{
-  handleInputWord( str, forcePopup );
-}
-
-[[deprecated]]
-void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
-{
-  Config::InputPhrase sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );
-
-  if ( isVisible() && sanitizedPhrase == inputPhrase )
-  {
-    // Attempt to translate the same word we already have shown in scan popup.
-    // Ignore it, as it is probably a spurious mouseover event.
-    return;
-  }
-
-  pendingInputPhrase = sanitizedPhrase;
-
-
-#ifdef HAVE_X11
-  if ( cfg.preferences.showScanFlag ) {
-    inputPhrase = pendingInputPhrase;
-    emit showScanFlag();
-    return;
-  }
-#endif
-
-  inputPhrase = pendingInputPhrase;
-  engagePopup( forcePopup );
-}
-
 #ifdef HAVE_X11
 void ScanPopup::showEngagePopup()
 {
@@ -497,12 +464,36 @@ void ScanPopup::showEngagePopup()
 }
 #endif
 
+[[deprecated]]
+void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
+{
+  auto sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );
+
+  if ( isVisible() && sanitizedPhrase == pendingWord )
+  {
+    // Attempt to translate the same word we already have shown in scan popup.
+    // Ignore it, as it is probably a spurious mouseover event.
+    return;
+  }
+
+  pendingWord = sanitizedPhrase;
+
+#ifdef HAVE_X11
+  if ( cfg.preferences.showScanFlag ) {
+    emit showScanFlag();
+    return;
+  }
+#endif
+
+  engagePopup( forcePopup );
+}
+
 void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 {
   if( cfg.preferences.scanToMainWindow && !forcePopup )
   {
     // Send translated word to main window istead of show popup
-    emit sendPhraseToMainWindow( inputPhrase );
+    emit sendPhraseToMainWindow( definition->getWord() );
     return;
   }
 
@@ -605,17 +596,16 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
   /// Too large strings make window expand which is probably not what user
   /// wants
-  ui.translateBox->setText( Folding::escapeWildcardSymbols( inputPhrase.phrase ), false );
-  translateBoxSuffix = inputPhrase.punctuationSuffix;
+  ui.translateBox->setText( Folding::escapeWildcardSymbols( pendingWord ), false );
 
-  showTranslationFor( inputPhrase );
+  showTranslationFor( pendingWord );
 }
 
 QString ScanPopup::elideInputWord()
 {
-  QString const & inputWord = inputPhrase.phrase;
-  return inputWord.size() > 32 ? inputWord.mid( 0, 32 ) + "..." : inputWord;
+  return pendingWord.size() > 32 ? pendingWord.mid( 0, 32 ) + "..." : pendingWord;
 }
+
 void ScanPopup::currentGroupChanged( int )
 {
     cfg.lastPopupGroupId = ui.groupList->getCurrentGroup();
@@ -652,13 +642,12 @@ void ScanPopup::currentGroupChanged( int )
 
 void ScanPopup::wordListItemActivated( QListWidgetItem * item )
 {
-  showTranslationFor( Config::InputPhrase::fromPhrase( item->text() ) );
+  showTranslationFor( item->text() );
 }
 
 void ScanPopup::translateInputChanged( QString const & text )
 {
   updateSuggestionList( text );
-  translateBoxSuffix = QString();
 }
 
 void ScanPopup::updateSuggestionList()
@@ -698,17 +687,16 @@ void ScanPopup::updateSuggestionList( QString const & text )
 
 void ScanPopup::translateInputFinished()
 {
-  inputPhrase.phrase = Folding::unescapeWildcardSymbols( ui.translateBox->translateLine()->text().trimmed() );
-  inputPhrase.punctuationSuffix = translateBoxSuffix;
-  showTranslationFor( inputPhrase );
+  pendingWord = Folding::unescapeWildcardSymbols( ui.translateBox->translateLine()->text().trimmed() );
+  showTranslationFor( pendingWord );
 }
 
-void ScanPopup::showTranslationFor( Config::InputPhrase const & inputPhrase )
+void ScanPopup::showTranslationFor( QString const & word )
 {
   ui.pronounceButton->setDisabled( true );
 
   unsigned groupId = ui.groupList->getCurrentGroup();
-  definition->showDefinition( inputPhrase, groupId );
+  definition->showDefinition( word, groupId );
   definition->focus();
 }
 
@@ -1157,7 +1145,7 @@ void ScanPopup::on_sendWordButton_clicked()
     definition->closeSearch();
     hideWindow();
   }
-  emit sendPhraseToMainWindow( definition->getPhrase() );
+  emit sendPhraseToMainWindow( definition->getWord() );
 }
 
 void ScanPopup::on_sendWordToFavoritesButton_clicked()

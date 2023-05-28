@@ -276,8 +276,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     if ( Utils::Url::queryItemValue( url, "blank" ) == "1" )
       return articleMaker.makeEmptyPage();
 
-    Config::InputPhrase phrase ( Utils::Url::queryItemValue( url, "word" ).trimmed(),
-                                 Utils::Url::queryItemValue( url, "punctuation_suffix" ) );
+    QString word =  Utils::Url::queryItemValue( url, "word" ).trimmed();
 
     bool groupIsValid = false;
     unsigned group = Utils::Url::queryItemValue( url, "group" ).toUInt( &groupIsValid );
@@ -287,7 +286,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     {
       // Individual dictionaries set from full-text search
       QStringList dictIDList = dictIDs.split( "," );
-      return articleMaker.makeDefinitionFor( phrase, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
+      return articleMaker.makeDefinitionFor( word, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
     }
 
     // See if we have some dictionaries muted
@@ -318,8 +317,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( groupIsValid && phrase.isValid() ) // Require group and phrase to be passed
-      return articleMaker.makeDefinitionFor( phrase, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
+    if ( groupIsValid && !word.isEmpty() ) // Require group and phrase to be passed
+      return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
   }
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" ) &&

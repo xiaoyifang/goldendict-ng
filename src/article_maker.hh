@@ -41,7 +41,7 @@ public:
   /// the keys are dictionary ids.
   /// If mutedDicts is not empty, the search would be limited only to those
   /// dictionaries in group which aren't listed there.
-  sptr< Dictionary::DataRequest > makeDefinitionFor( Config::InputPhrase const & phrase, unsigned groupId,
+  sptr< Dictionary::DataRequest > makeDefinitionFor( QString const & word, unsigned groupId,
                                                      QMap< QString, QString > const & contexts,
                                                      QSet< QString > const & mutedDicts =
                                                        QSet< QString >(),
@@ -116,7 +116,7 @@ class ArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ArticleRequest( Config::InputPhrase const & phrase, Instances::Group const & group,
+  ArticleRequest( QString const & phrase, Instances::Group const & group,
                   QMap< QString, QString > const & contexts,
                   std::vector< sptr< Dictionary::Class > > const & activeDicts,
                   std::string const & header,
