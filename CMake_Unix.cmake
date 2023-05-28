@@ -67,7 +67,7 @@ if (WITH_XAPIAN)
 endif ()
 
 if (WITH_EPWING_SUPPORT)
-    add_subdirectory(thirdparty/eb)
+    add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
 endif ()
 

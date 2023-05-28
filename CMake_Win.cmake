@@ -47,7 +47,7 @@ foreach (A_DLL_FILE ${DLL_FILES})
 endforeach ()
 
 if (WITH_EPWING_SUPPORT)
-    add_subdirectory(thirdparty/eb)
+    add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
     target_include_directories(${GOLDENDICT} PRIVATE
         thirdparty
     )
