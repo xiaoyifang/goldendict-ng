@@ -559,9 +559,9 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
       if( Utils::AtomicInt::loadAcquire( isCancelled ) )
         return;
 
-      if( ignoreWordsOrder ) {
+      if ( ignoreWordsOrder ) {
         for ( auto & [ fst, snd ] : wordsList )
-        snd = true;
+          snd = true;
       }
 
       dict.getArticleText( offset, headword, articleText );
