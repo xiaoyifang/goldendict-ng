@@ -71,10 +71,8 @@ class FTSResultsRequest : public Dictionary::DataRequest
   bool matchCase;
   int distanceBetweenWords;
   int maxResults;
-  bool hasCJK;
   bool ignoreWordsOrder;
   bool ignoreDiacritics;
-  int wordsInIndex;
 
   QAtomicInt isCancelled;
 
@@ -82,12 +80,6 @@ class FTSResultsRequest : public Dictionary::DataRequest
   QFuture< void > f;
 
   QList< FTS::FtsHeadword > * foundHeadwords;
-
-  QRegularExpression createMatchRegex( QRegExp const & searchRegexp ) const;
-
-  void checkSingleArticle( uint32_t offset,
-                           QStringList const & words,
-                           QRegularExpression const & searchRegexp = QRegularExpression() );
 
 public:
 
@@ -100,10 +92,8 @@ public:
     matchCase( matchCase_ ),
     distanceBetweenWords( distanceBetweenWords_ ),
     maxResults( maxResults_ ),
-    hasCJK( false ),
     ignoreWordsOrder( ignoreWordsOrder_ ),
-    ignoreDiacritics( ignoreDiacritics_ ),
-    wordsInIndex( 0 )
+    ignoreDiacritics( ignoreDiacritics_ )
   {
     if( ignoreDiacritics_ )
       searchString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
