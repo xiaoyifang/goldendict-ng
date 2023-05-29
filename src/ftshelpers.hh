@@ -24,30 +24,6 @@
 namespace FtsHelpers
 {
 
-enum
-{
-  FtsSignature = 0x58535446, // FTSX on little-endian, XSTF on big-endian
-  CurrentFtsFormatVersion = 2 + BtreeIndexing::FormatVersion,
-};
-
-#pragma pack(push,1)
-
-struct FtsIdxHeader
-{
-  uint32_t signature; // First comes the signature, FTSX
-  uint32_t formatVersion; // File format version
-  uint32_t chunksOffset; // The offset to chunks' storage
-  uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
-  uint32_t indexRootOffset;
-  uint32_t wordCount; // Number of unique words this dictionary has
-}
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
-;
-
-#pragma pack(pop)
-
 bool ftsIndexIsOldOrBad( std::string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict );
 
@@ -118,8 +94,8 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    if( foundHeadwords )
-      delete foundHeadwords;
+
+    delete foundHeadwords;
   }
 };
 
