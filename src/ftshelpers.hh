@@ -83,9 +83,14 @@ class FTSResultsRequest : public Dictionary::DataRequest
 
 public:
 
-  FTSResultsRequest( BtreeIndexing::BtreeDictionary & dict_, QString const & searchString_,
-                     int searchMode_, bool matchCase_, int distanceBetweenWords_, int maxResults_,
-                     bool ignoreWordsOrder_, bool ignoreDiacritics_ ):
+  FTSResultsRequest( BtreeIndexing::BtreeDictionary & dict_,
+                     QString const & searchString_,
+                     int searchMode_,
+                     bool matchCase_,
+                     int distanceBetweenWords_,
+                     int maxResults_,
+                     bool ignoreWordsOrder_,
+                     bool ignoreDiacritics_ ):
     dict( dict_ ),
     searchString( searchString_ ),
     searchMode( searchMode_ ),
