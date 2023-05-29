@@ -47,7 +47,7 @@ private:
   Dictionary::Class * _dict;
   int index;
   char * ptr;
-  Mutex lock;
+  QMutex lock;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
 };
 

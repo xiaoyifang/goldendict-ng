@@ -316,7 +316,7 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
 
       result += "</div>";
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( result.size() );
       memcpy( data.data(), result.data(), data.size() );
       hasAnyData = true;

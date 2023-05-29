@@ -6,6 +6,7 @@
 #include <string.h>
 #include <QDataStream>
 #include <QScopeGuard>
+#include <QMutexLocker>
 
 namespace ChunkedStorage {
 

@@ -60,7 +60,7 @@ void WebMultimediaDownload::replyFinished( QNetworkReply * r )
 
     // Handle reply data
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     data.resize( r->bytesAvailable() );
 

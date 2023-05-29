@@ -11,7 +11,7 @@
 #include <QWaitCondition>
 #include "sptr.hh"
 #include "ex.hh"
-#include "mutex.hh"
+
 #include "wstring.hh"
 #include "langcoder.hh"
 #include "config.hh"
@@ -114,7 +114,7 @@ private:
 
   QAtomicInt isFinishedFlag;
 
-  Mutex errorStringMutex;
+  QMutex errorStringMutex;
   QString errorString;
 };
 
@@ -168,7 +168,7 @@ protected:
 
   // Subclasses should be filling up the 'matches' array, locking the mutex when
   // whey work with it.
-  Mutex dataMutex;
+  QMutex dataMutex;
 
   vector< WordMatch > matches;
   bool uncertain;
@@ -206,7 +206,7 @@ protected:
 
   // Subclasses should be filling up the 'data' array, locking the mutex when
   // whey work with it.
-  Mutex dataMutex;
+  QMutex dataMutex;
 
   bool hasAnyData; // With this being false, dataSize() always returns -1
   vector< char > data;

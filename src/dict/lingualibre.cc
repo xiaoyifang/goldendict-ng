@@ -2,7 +2,6 @@
 #include "utf8.hh"
 #include "audiolink.hh"
 #include <string>
-#include <mutex.hh>
 #include <QJsonDocument>
 #include <utility>
 
@@ -483,7 +482,7 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 
     articleBody += "</p>";
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     size_t prevSize = data.size();
     data.resize( prevSize + articleBody.size() );

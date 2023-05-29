@@ -128,9 +128,9 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class SdictDictionary: public BtreeIndexing::BtreeDictionary
 {
-    Mutex idxMutex, sdictMutex;
-    File::Class idx;
-    IdxHeader idxHeader;
+  QMutex idxMutex, sdictMutex;
+  File::Class idx;
+  IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
     File::Class df;
 
@@ -383,7 +383,7 @@ void SdictDictionary::loadArticle( uint32_t address,
     vector< char > articleBody;
 
     {
-      Mutex::Lock _( sdictMutex );
+      QMutexLocker _( &sdictMutex );
       df.seek( articleOffset );
       df.read( &articleSize, sizeof(articleSize) );
       articleBody.resize( articleSize );
@@ -624,7 +624,7 @@ void SdictArticleRequest::run()
         result += "</span>";
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -655,7 +655,7 @@ QString const& SdictDictionary::getDescription()
 
   try
   {
-    Mutex::Lock _( sdictMutex );
+    QMutexLocker _( &sdictMutex );
 
     DCT_header dictHeader;
 

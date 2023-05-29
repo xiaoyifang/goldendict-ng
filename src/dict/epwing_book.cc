@@ -2031,7 +2031,7 @@ bool EpwingBook::getArticlePos( QString word, QVector< int > & pages, QVector< i
   return !pages.empty();
 }
 
-Mutex EpwingBook::libMutex;
+QMutex EpwingBook::libMutex;
 
 } // namespace Book
 

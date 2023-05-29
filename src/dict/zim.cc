@@ -160,8 +160,8 @@ quint32 readArticleByPath( ZimFile const & file, const string & path, string & r
 
 class ZimDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
-  Mutex zimMutex;
+  QMutex idxMutex;
+  QMutex zimMutex;
   File::Class idx;
   IdxHeader idxHeader;
   ZimFile df;
@@ -299,7 +299,7 @@ quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool 
 {
   quint32 ret = 0;
   {
-    Mutex::Lock _( zimMutex );
+    QMutexLocker _( &zimMutex );
     ret = readArticle( df, address, articleText);
   }
   if( !rawText )
@@ -516,7 +516,7 @@ void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets,
     if( Utils::AtomicInt::loadAcquire( isCancelled ) )
       return;
 
-    Mutex::Lock _( zimMutex );
+    QMutexLocker _( &zimMutex );
     offsetsWithClusters.append( QPair< uint32_t, quint32 >( getArticleCluster( df, *it ), *it ) );
   }
 
@@ -701,7 +701,7 @@ void ZimArticleRequest::run()
       result += cleaner + "</div>";
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -779,7 +779,7 @@ void ZimResourceRequest::run()
       dict.isolateCSS( css, ".zimdict" );
       QByteArray bytes = css.toUtf8();
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( bytes.size() );
       memcpy( &data.front(), bytes.constData(), bytes.size() );
     }
@@ -787,17 +787,17 @@ void ZimResourceRequest::run()
     if ( Filetype::isNameOfTiff( resourceName ) )
     {
       // Convert it
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
     else
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( resource.size() );
       memcpy( &data.front(), resource.data(), data.size() );
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
     hasAnyData = true;
   }
   catch( std::exception &ex )

@@ -287,7 +287,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
 
     articleBody.prepend( "<div class=\"website_padding\"></div>" );
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     size_t prevSize = data.size();
 
@@ -492,7 +492,7 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 
     QByteArray cssData = cssString.toUtf8();
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     size_t prevSize = data.size();
 

@@ -186,7 +186,7 @@ void MediaWikiWordSearchRequest::downloadFinished()
       {
         QDomNodeList nl = pages.toElement().elementsByTagName( "p" );
 
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
 
         for( int x = 0; x < nl.length(); ++x )
           matches.push_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
@@ -652,8 +652,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             articleBody.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" :
                                                               "<div class=\"mwiki\">" );
             articleBody.append( "</div>" );
-  
-            Mutex::Lock _( dataMutex );
+
+            QMutexLocker _( &dataMutex );
 
             size_t prevSize = data.size();
             

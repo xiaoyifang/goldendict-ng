@@ -154,7 +154,7 @@ Entry::Entry( File::Class & f )
 
 class LsaDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
 

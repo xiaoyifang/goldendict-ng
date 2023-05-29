@@ -103,15 +103,15 @@ __attribute__( ( packed ) )
 // A helper method to read resources from .mdd file
 class IndexedMdd: public BtreeIndexing::BtreeIndex
 {
-  Mutex & idxMutex;
-  Mutex fileMutex;
+  QMutex & idxMutex;
+  QMutex fileMutex;
   ChunkedStorage::Reader & chunks;
   QFile mddFile;
   bool isFileOpen;
 
 public:
 
-  IndexedMdd( Mutex & idxMutex, ChunkedStorage::Reader & chunks ):
+  IndexedMdd( QMutex & idxMutex, ChunkedStorage::Reader & chunks ):
     idxMutex( idxMutex ),
     chunks( chunks ),
     isFileOpen( false )
@@ -157,7 +157,7 @@ public:
 
     MdictParser::RecordInfo indexEntry;
     vector< char > chunk;
-    // Mutex::Lock _( idxMutex );
+    // QMutexLocker _( &idxMutex );
     const char * indexEntryPtr = chunks.getBlock( links[ 0 ].articleOffset, chunk );
     memcpy( &indexEntry, indexEntryPtr, sizeof( indexEntry ) );
 
@@ -170,7 +170,7 @@ public:
     QByteArray decompressed;
 
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
       ScopedMemMap compressed( mddFile, indexEntry.compressedBlockPos, indexEntry.compressedBlockSize );
       if( !compressed.startAddress() )
       {
@@ -195,7 +195,7 @@ public:
 
 class MdxDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   string idxFileName;
   IdxHeader idxHeader;
@@ -206,7 +206,7 @@ class MdxDictionary: public BtreeIndexing::BtreeDictionary
   MdictParser::StyleSheets styleSheets;
 
   QAtomicInt deferredInitDone;
-  Mutex deferredInitMutex;
+  QMutex deferredInitMutex;
   bool deferredInitRunnableStarted;
 
   string initError;
@@ -353,7 +353,7 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
 
 MdxDictionary::~MdxDictionary()
 {
-  Mutex::Lock _( deferredInitMutex );
+  QMutexLocker _( &deferredInitMutex );
 
   dictFile.close();
 
@@ -366,7 +366,7 @@ void MdxDictionary::deferredInit()
 {
   if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) )
   {
-    Mutex::Lock _( deferredInitMutex );
+    QMutexLocker _( &deferredInitMutex );
 
     if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) )
       return;
@@ -389,7 +389,7 @@ void MdxDictionary::doDeferredInit()
 {
   if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) )
   {
-    Mutex::Lock _( deferredInitMutex );
+    QMutexLocker _( &deferredInitMutex );
 
     if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) )
       return;
@@ -662,7 +662,7 @@ void MdxArticleRequest::run()
   {
     articleText+="</div></div></div></div></div></div></div></div></div>";
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
     data.insert( data.end(), articleText.begin(), articleText.end() );
     hasAnyData = true;
   }
@@ -738,7 +738,7 @@ void MddResourceRequest::run()
       return;
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
     data.clear();
 
     dict.loadResourceFile( resourceName, data );
@@ -839,7 +839,7 @@ const QString & MdxDictionary::getDescription()
   }
   else
   {
-    // Mutex::Lock _( idxMutex );
+    // QMutexLocker _( &idxMutex );
     vector< char > chunk;
     char * dictDescription = chunks.getBlock( idxHeader.descriptionAddress, chunk );
     string str( dictDescription );
@@ -872,7 +872,7 @@ void MdxDictionary::loadIcon() noexcept
 void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noFilter )
 {
   vector< char > chunk;
-  // Mutex::Lock _( idxMutex );
+  // QMutexLocker _( &idxMutex );
 
   // Load record info from index
   MdictParser::RecordInfo recordInfo;
@@ -882,7 +882,7 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
   QByteArray decompressed;
 
   {
-    Mutex::Lock _( idxMutex );
+    QMutexLocker _( &idxMutex );
     ScopedMemMap compressed( dictFile, recordInfo.compressedBlockPos, recordInfo.compressedBlockSize );
     if( !compressed.startAddress() )
       throw exCorruptDictionary();

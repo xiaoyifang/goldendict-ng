@@ -571,20 +571,19 @@ quint8 SlobFile::getItem( RefEntry const & entry, string * data )
 
 class SlobDictionary: public BtreeIndexing::BtreeDictionary
 {
-    Mutex idxMutex;
-    Mutex slobMutex, idxResourceMutex;
-    File::Class idx;
-    BtreeIndex resourceIndex;
-    IdxHeader idxHeader;
-    SlobFile sf;
-    QString texCgiPath, texCachePath;
+  QMutex idxMutex;
+  QMutex slobMutex, idxResourceMutex;
+  File::Class idx;
+  BtreeIndex resourceIndex;
+  IdxHeader idxHeader;
+  SlobFile sf;
+  QString texCgiPath, texCachePath;
 
-  public:
+public:
 
-    SlobDictionary( string const & id, string const & indexFile,
-                    vector< string > const & dictionaryFiles );
+  SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
-    ~SlobDictionary();
+  ~SlobDictionary();
 
     string getName() noexcept override
     { return dictionaryName; }
@@ -1050,7 +1049,7 @@ quint32 SlobDictionary::readArticle( quint32 articleNumber, std::string & result
   quint8 contentId;
 
   {
-    Mutex::Lock _( slobMutex );
+    QMutexLocker _( &slobMutex );
     if( entry.key.isEmpty() )
       sf.getRefEntry( articleNumber, entry );
     contentId = sf.getItem( entry, &data );
@@ -1081,7 +1080,7 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
 {
   RefEntry entry;
   {
-    Mutex::Lock _( slobMutex );
+    QMutexLocker _( &slobMutex );
     sf.getRefEntry( articleNumber, entry );
   }
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
@@ -1107,7 +1106,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
 
   try
   {
-    Mutex::Lock _( getFtsMutex() );
+    QMutexLocker _( &getFtsMutex() );
 
     File::Class ftsIdx( ftsIndexName(), "wb" );
 
@@ -1181,7 +1180,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
       quint32 articleNom = offsets.at( i );
 
       {
-        Mutex::Lock _( slobMutex );
+        QMutexLocker _( &slobMutex );
         sf.getRefEntry( articleNom, entry );
       }
 
@@ -1446,7 +1445,7 @@ void SlobArticleRequest::run()
       result += i->second.second;
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -1527,7 +1526,7 @@ void SlobResourceRequest::run()
       dict.isolateCSS( css, ".slobdict" );
       QByteArray bytes = css.toUtf8();
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( bytes.size() );
       memcpy( &data.front(), bytes.constData(), bytes.size() );
     }
@@ -1536,17 +1535,17 @@ void SlobResourceRequest::run()
     {
       // Convert it
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
     else
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( resource.size() );
       memcpy( &data.front(), resource.data(), data.size() );
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
     hasAnyData = true;
   }
   catch( std::exception &ex )

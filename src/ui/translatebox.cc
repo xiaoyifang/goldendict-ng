@@ -242,7 +242,7 @@ void TranslateBox::showPopup()
     translateBoxMutex.unlock();
   else
     return;
-  Mutex::Lock _( translateBoxMutex );
+  QMutexLocker _( &translateBoxMutex );
 
   if (translate_line->text().trimmed().isEmpty() || word_list->count() == 0)
   {
