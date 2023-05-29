@@ -65,7 +65,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
   string name;
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
@@ -196,7 +196,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     {
       try
       {
-        Mutex::Lock _( idxMutex );
+        QMutexLocker _( &idxMutex );
         nameBlock = chunks.getBlock( chain[ i->second ].articleOffset, chunk );
 
         if ( nameBlock >= &chunk.front() + chunk.size() )
@@ -240,7 +240,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     {
       try
       {
-        Mutex::Lock _( idxMutex );
+        QMutexLocker _( &idxMutex );
         nameBlock = chunks.getBlock( chain[ i->second ].articleOffset, chunk );
 
         if ( nameBlock >= &chunk.front() + chunk.size() )
@@ -319,7 +319,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
 
   try
   {
-    Mutex::Lock _( idxMutex );
+    QMutexLocker _( &idxMutex );
 
     articleData = chunks.getBlock( articleOffset, chunk );
 

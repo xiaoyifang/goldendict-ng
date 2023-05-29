@@ -14,7 +14,7 @@
 
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
-#include "mutex.hh"
+
 #include "config.hh"
 #include "instances.hh"
 #include "delegate.hh"
@@ -141,7 +141,7 @@ protected:
   std::vector< sptr< Dictionary::Class > > dictionaries;
   bool started;
   QString nowIndexing;
-  Mutex nameMutex;
+  QMutex nameMutex;
 
 private slots:
   void setNowIndexedName( const QString & name );

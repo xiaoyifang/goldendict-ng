@@ -5,12 +5,13 @@
 #define GOLDENDICT_FILE_HH
 
 #include "ex.hh"
-#include "mutex.hh"
+
 #include <QFile>
 #include <QFileInfo>
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <QMutex>
 
 /// A simple wrapper over QFile with some convenient GD specific functions
 /// Consider the wrapped QFile as private implementation in the `Pimpl Idiom`

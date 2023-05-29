@@ -9,7 +9,7 @@
 
 #include "dict/dictionary.hh"
 #include "ex.hh"
-#include "mutex.hh"
+
 
 #include <QString>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
@@ -82,7 +82,7 @@ class EpwingBook
   QMap< uint64_t, bool > allRefPositions;
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
-  static Mutex libMutex;
+  static QMutex libMutex;
 
   QString createCacheDir( QString const & dir);
 
@@ -122,8 +122,10 @@ public:
   EpwingBook();
   ~EpwingBook();
 
-  Mutex & getLibMutex()
-  { return libMutex; }
+  QMutex & getLibMutex()
+  {
+    return libMutex;
+  }
 
   QString const &errorString() const
   { return error_string; }

@@ -235,7 +235,7 @@ bool parseSearchString( QString const & str, QStringList & indexWords,
   return true;
 }
 //definition;
-Mutex lockMutex;
+QMutex lockMutex;
 
 void parseArticleForFts( uint32_t articleAddress, QString & articleText,
                          QMap< QString, QVector< uint32_t > > & words,
@@ -272,7 +272,7 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
         //if( !setOfWords.contains( hieroglyph ) )
         {
           setOfWords.push_back( hieroglyph );
-          /*Mutex::Lock _( _mapLock );
+          /*QMutexLocker _( &_mapLock );
           words[ hieroglyph ].push_back( articleAddress );*/
         }
 
@@ -321,7 +321,7 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
           //if( !setOfWords.contains( *it ) )
           {
             setOfWords.push_back( it );
-            /*Mutex::Lock _( _mapLock );
+            /*QMutexLocker _( &_mapLock );
             words[ *it ].push_back( articleAddress );*/
           }
         }
@@ -330,14 +330,14 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
       //if( !setOfWords.contains( word ) )
       {
         setOfWords.push_back( word );
-        /*Mutex::Lock _( _mapLock );
+        /*QMutexLocker _( &_mapLock );
         words[ word ].push_back( articleAddress );*/
       }
     }
   }
 
   {
-    Mutex::Lock _( lockMutex );
+    QMutexLocker _( &lockMutex );
 
     for( const QString & word : setOfWords )
     {
@@ -348,7 +348,7 @@ void parseArticleForFts( uint32_t articleAddress, QString & articleText,
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
-  Mutex::Lock _( dict->getFtsMutex() );
+  QMutexLocker _( &dict->getFtsMutex() );
 
   //check the index again.
   if ( dict->haveFTSIndex() )
@@ -535,7 +535,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
           offsetsForHeadwords.append( offset );
         else
         {
-          Mutex::Lock _( dataMutex );
+          QMutexLocker _( &dataMutex );
           foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
         }
 
@@ -637,7 +637,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
               offsetsForHeadwords.append( offset );
             else
             {
-              Mutex::Lock _( dataMutex );
+              QMutexLocker _( &dataMutex );
               foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
             }
 
@@ -655,7 +655,7 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
             offsetsForHeadwords.append( offset );
           else
           {
-            Mutex::Lock _( dataMutex );
+            QMutexLocker _( &dataMutex );
             foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
           }
 
@@ -667,10 +667,10 @@ void FTSResultsRequest::checkSingleArticle( uint32_t  offset,
   }
   if( !offsetsForHeadwords.isEmpty() )
   {
-    QVector< QString > headwords;
-    Mutex::Lock _( dataMutex );
+      QVector< QString > headwords;
+      QMutexLocker _( &dataMutex );
 
-    dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
+      dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
     for( int x = 0; x < headwords.size(); x++ )
     {
       foundHeadwords->append( FTS::FtsHeadword( headwords.at( x ),
@@ -717,7 +717,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
       vector< char > chunk;
       char * linksPtr;
       {
-        // Mutex::Lock _( dict.getFtsMutex() );
+        // QMutexLocker _( &dict.getFtsMutex() );
         linksPtr = chunks->getBlock( link.articleOffset, chunk );
       }
 
@@ -732,7 +732,7 @@ void FTSResultsRequest::indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
 
     links.clear();
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       addressLists << tmp;
     }
   };
@@ -829,7 +829,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
       vector< BtreeIndexing::WordArticleLink > links = ftsIndex.findArticles( gd::removeTrailingZero( word ) );
       for ( auto const & link : links ) {
         if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-          Mutex::Lock _( dataMutex );
+          QMutexLocker _( &dataMutex );
           sets << tmp;
           return;
         }
@@ -837,7 +837,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
         vector< char > chunk;
         char * linksPtr;
         {
-          // Mutex::Lock _( dict.getFtsMutex() );
+          // QMutexLocker _( &dict.getFtsMutex() );
           linksPtr = chunks->getBlock( link.articleOffset, chunk );
         }
 
@@ -858,7 +858,7 @@ void FTSResultsRequest::combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsInde
       links.clear();
 
       {
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
         sets << tmp;
       }
     };
@@ -953,7 +953,7 @@ void FTSResultsRequest::fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
         vector< char > chunk;
         char * linksPtr;
         {
-          // Mutex::Lock _( dict.getFtsMutex() );
+          // QMutexLocker _( &dict.getFtsMutex() );
           linksPtr = chunks->getBlock( link.articleOffset, chunk );
         }
 
@@ -1102,7 +1102,7 @@ void FTSResultsRequest::runXapian()
       if( !offsetsForHeadwords.isEmpty() )
       {
         QVector< QString > headwords;
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
         dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
         for(const auto & headword : headwords)
@@ -1126,7 +1126,7 @@ void FTSResultsRequest::runXapian()
 
     if( foundHeadwords && foundHeadwords->size() > 0 )
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       data.resize( sizeof( foundHeadwords ) );
       memcpy( &data.front(), &foundHeadwords, sizeof( foundHeadwords ) );
       foundHeadwords = nullptr;

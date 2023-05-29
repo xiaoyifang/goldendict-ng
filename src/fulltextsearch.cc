@@ -118,7 +118,7 @@ void FtsIndexing::stopIndexing()
 void FtsIndexing::setNowIndexedName( const QString & name )
 {
   {
-    Mutex::Lock _( nameMutex );
+    QMutexLocker _( &nameMutex );
     nowIndexing = name;
   }
   emit newIndexingName( name );
@@ -126,7 +126,7 @@ void FtsIndexing::setNowIndexedName( const QString & name )
 
 QString FtsIndexing::nowIndexingName()
 {
-  Mutex::Lock _( nameMutex );
+  QMutexLocker _( &nameMutex );
   return nowIndexing;
 }
 

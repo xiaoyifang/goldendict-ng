@@ -5,7 +5,7 @@
 #define TRANSLATEBOX_HH
 
 #include "wordlist.hh"
-#include "mutex.hh"
+
 
 #include <QLineEdit>
 #include <QWidget>
@@ -63,7 +63,7 @@ private:
   CompletionList * word_list;
   QLineEdit * translate_line;
   bool m_popupEnabled;
-  Mutex translateBoxMutex;
+  QMutex translateBoxMutex;
   // QCompleter * completer; // disabled for now
 };
 

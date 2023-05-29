@@ -308,7 +308,6 @@ HEADERS += \
     src/common/htmlescape.hh \
     src/common/iconv.hh \
     src/common/inc_case_folding.hh \
-    src/common/mutex.hh \
     src/common/sptr.hh \
     src/common/ufile.hh \
     src/common/utf8.hh \
@@ -434,7 +433,6 @@ SOURCES += \
     src/common/help.cc \
     src/common/htmlescape.cc \
     src/common/iconv.cc \
-    src/common/mutex.cc \
     src/common/ufile.cc \
     src/common/utf8.cc \
     src/common/utils.cc \

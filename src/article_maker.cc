@@ -568,7 +568,7 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req ,QString const
   {
     try
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       QString text = QString::fromUtf8( req.getFullData().data(), req.getFullData().size() );
 
       if( !needExpandOptionalParts )

@@ -77,7 +77,7 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( IndexInfo const &, File::Class &, Mutex & );
+  void openIndex( IndexInfo const &, File::Class &, QMutex & );
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
@@ -139,7 +139,7 @@ protected:
 
 protected:
 
-  Mutex * idxFileMutex;
+  QMutex * idxFileMutex;
   File::Class * idxFile;
 
 private:
@@ -186,8 +186,10 @@ public:
   string const & ftsIndexName() const
   { return ftsIdxName; }
 
-  Mutex & getFtsMutex()
-  { return ftsIdxMutex; }
+  QMutex & getFtsMutex()
+  {
+    return ftsIdxMutex;
+  }
 
   virtual uint32_t getFtsIndexVersion()
   { return 0; }
@@ -207,7 +209,7 @@ public:
   virtual string const & ensureInitDone();
 
 protected:
-  Mutex ftsIdxMutex;
+  QMutex ftsIdxMutex;
   string ftsIdxName;
 
   friend class BtreeWordSearchRequest;

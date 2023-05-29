@@ -186,7 +186,7 @@ namespace
 
   class BglDictionary: public BtreeIndexing::BtreeDictionary
   {
-    Mutex idxMutex;
+    QMutex idxMutex;
     File::Class idx;
     IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
@@ -316,7 +316,7 @@ namespace
 
         vector< char > chunk;
 
-        Mutex::Lock _( idxMutex );
+        QMutexLocker _( &idxMutex );
 
         char * iconData = chunks.getBlock( idxHeader.iconAddress, chunk );
 
@@ -360,7 +360,7 @@ namespace
   {
     vector< char > chunk;
 
-    Mutex::Lock _( idxMutex );
+    QMutexLocker _( &idxMutex );
 
     char * articleData = chunks.getBlock( offset, chunk );
 
@@ -382,7 +382,7 @@ namespace
       dictionaryDescription = "NONE";
     else
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
       vector< char > chunk;
       char * dictDescription = chunks.getBlock( idxHeader.descriptionAddress, chunk );
       string str( dictDescription );
@@ -556,7 +556,7 @@ void BglHeadwordsRequest::run()
     {
       // The headword seems to differ from the input word, which makes the
       // input word its synonym.
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       matches.push_back( headwordDecoded );
     }
@@ -846,7 +846,7 @@ void BglArticleRequest::run()
            .toUtf8().data();
 
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -872,7 +872,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
 class BglResourceRequest: public Dictionary::DataRequest
 {
 
-  Mutex & idxMutex;
+  QMutex & idxMutex;
   File::Class & idx;
   uint32_t resourceListOffset, resourcesCount;
   string name;
@@ -882,7 +882,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  BglResourceRequest( Mutex & idxMutex_,
+  BglResourceRequest( QMutex & idxMutex_,
                       File::Class & idx_,
                       uint32_t resourceListOffset_,
                       uint32_t resourcesCount_,
@@ -926,7 +926,7 @@ void BglResourceRequest::run()
        ++i )
     *i = tolower( *i );
 
-  Mutex::Lock _( idxMutex );
+  QMutexLocker _( &idxMutex );
 
   idx.seek( resourceListOffset );
 
@@ -949,7 +949,7 @@ void BglResourceRequest::run()
 
       idx.seek( offset );
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       data.resize( idx.read< uint32_t >() );
 

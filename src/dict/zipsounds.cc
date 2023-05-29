@@ -102,7 +102,7 @@ wstring stripExtension( string const & str )
 
 class ZipSoundsDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
@@ -240,7 +240,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
   {
     try
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
       nameBlock = chunks->getBlock( i->second, chunk );
 
       if ( nameBlock >= &chunk.front() + chunk.size() )
@@ -286,7 +286,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
   {
     try
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
       nameBlock = chunks->getBlock( i->second, chunk );
 
       if ( nameBlock >= &chunk.front() + chunk.size() )

@@ -51,8 +51,7 @@ string const & BtreeDictionary::ensureInitDone()
   return empty;
 }
 
-void BtreeIndex::openIndex( IndexInfo const & indexInfo,
-                            File::Class & file, Mutex & mutex )
+void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Class & file, QMutex & mutex )
 {
   indexNodeSize = indexInfo.btreeMaxElements;
   rootOffset = indexInfo.rootOffset;
@@ -302,7 +301,7 @@ void BtreeWordSearchRequest::findMatches()
         {
           // Exact or prefix match
 
-          Mutex::Lock _( dataMutex );
+          QMutexLocker _( &dataMutex );
 
           for( unsigned x = 0; x < chain.size(); ++x )
           {
@@ -354,7 +353,7 @@ void BtreeWordSearchRequest::findMatches()
 
           if ( nextLeaf )
           {
-            Mutex::Lock _( *dict.idxFileMutex );
+            QMutexLocker _( dict.idxFileMutex );
 
             dict.readNode( nextLeaf, leaf );
             leafEnd = &leaf.front() + leaf.size();
@@ -470,9 +469,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
 {
   if ( !idxFile )
     throw exIndexWasNotOpened();
-  
-  Mutex::Lock _( *idxFileMutex );
-  
+
+  QMutexLocker _( idxFileMutex );
+
   // Lookup the index by traversing the index btree
 
   // vector< wchar > wcharBuffer;
@@ -1140,7 +1139,7 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   uint32_t nextLeaf = 0;
   uint32_t leafEntries;
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if ( !rootNodeLoaded )
   {
@@ -1278,7 +1277,7 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 {
   uint32_t currentNodeOffset = offsets;
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   char const * leaf = 0;
   char const * leafEnd = 0;
@@ -1316,7 +1315,7 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 //find the next chain ptr ,which is large than this currentChainPtr
 QSet<uint32_t> BtreeIndex::findNodes()
 {
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if( !rootNodeLoaded )
   {
@@ -1358,7 +1357,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
 
   std::sort( offsets.begin(), offsets.end() );
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if ( !rootNodeLoaded )
   {

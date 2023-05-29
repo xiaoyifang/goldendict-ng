@@ -48,14 +48,14 @@ void Request::finish()
 
 void Request::setErrorString( QString const & str )
 {
-  Mutex::Lock _( errorStringMutex );
+  QMutexLocker _( &errorStringMutex );
 
   errorString = str;
 }
 
 QString Request::getErrorString()
 {
-  Mutex::Lock _( errorStringMutex );
+  QMutexLocker _( &errorStringMutex );
 
   return errorString;
 }
@@ -65,14 +65,14 @@ QString Request::getErrorString()
 
 size_t WordSearchRequest::matchesCount()
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   return matches.size();
 }
 
 WordMatch WordSearchRequest::operator [] ( size_t index )
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   if ( index >= matches.size() )
     throw exIndexOutOfRange();
@@ -103,13 +103,13 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 
 long DataRequest::dataSize()
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   return hasAnyData ? (long) data.size() : -1;
 }
 
 void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   size_t offset = data.size();
 
@@ -123,7 +123,7 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
   if ( size == 0 )
     return;
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   if( !hasAnyData )
     throw exSliceOutOfRange();
