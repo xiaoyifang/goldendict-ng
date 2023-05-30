@@ -442,12 +442,8 @@ public:
     ;
 
   /// Returns a results of full-text search of given string similar getArticle().
-  virtual sptr< DataRequest > getSearchResults( QString const & searchString,
-                                                int searchMode, bool matchCase,
-                                                int distanceBetweenWords,
-                                                int maxArticlesPerDictionary,
-                                                bool ignoreWordsOrder,
-                                                bool ignoreDiacritics );
+  virtual sptr< DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics );
 
   // Return dictionary description if presented
   virtual QString const& getDescription();

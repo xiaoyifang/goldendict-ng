@@ -139,12 +139,8 @@ public:
   sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                            int searchMode, bool matchCase,
-                                                            int distanceBetweenWords,
-                                                            int maxResults,
-                                                            bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -967,13 +963,15 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getResource( string const & na
 
 
 sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString const & searchString,
-                                                                    int searchMode, bool matchCase,
-                                                                    int distanceBetweenWords,
-                                                                    int maxResults,
-                                                                    bool ignoreWordsOrder,
+                                                                    int searchMode,
+                                                                    bool matchCase,
                                                                     bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 int EpwingDictionary::japaneseWriting( gd::wchar ch )

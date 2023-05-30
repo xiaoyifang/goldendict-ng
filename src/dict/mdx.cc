@@ -257,12 +257,8 @@ public:
   sptr< Dictionary::DataRequest > getResource( string const & name ) override ;
   QString const & getDescription() override;
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                            int searchMode, bool matchCase,
-                                                            int distanceBetweenWords,
-                                                            int maxResults,
-                                                            bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -515,13 +511,16 @@ void MdxDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 }
 
 sptr< Dictionary::DataRequest > MdxDictionary::getSearchResults( QString const & searchString,
-                                                                 int searchMode, bool matchCase,
-                                                                 int distanceBetweenWords,
-                                                                 int maxResults,
-                                                                 bool ignoreWordsOrder,
+                                                                 int searchMode,
+                                                                 bool matchCase,
+
                                                                  bool ignoreDiacritics )
 {
-  return  std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 /// MdxDictionary::getArticle

@@ -378,7 +378,7 @@ void FullTextSearchDialog::accept()
     }
     //max results=100
     sptr< Dictionary::DataRequest > req =
-      activeDicts[ x ]->getSearchResults( ui.searchLine->text(), mode, false, 0, 100, false, false );
+      activeDicts[ x ]->getSearchResults( ui.searchLine->text(), mode, false, false );
     connect( req.get(),
       &Dictionary::Request::finished,
       this,

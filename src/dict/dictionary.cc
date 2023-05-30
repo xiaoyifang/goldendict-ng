@@ -188,9 +188,9 @@ sptr< DataRequest > Class::getResource( string const & /*name*/ )
   return std::make_shared<DataRequestInstant>( false );
 }
 
-sptr< DataRequest > Class::getSearchResults(const QString &, int, bool, int, int, bool, bool )
+sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )
 {
-  return std::make_shared<DataRequestInstant>( false );
+  return std::make_shared< DataRequestInstant >( false );
 }
 
 QString const& Class::getDescription()

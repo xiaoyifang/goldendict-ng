@@ -214,12 +214,8 @@ public:
   sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                            int searchMode, bool matchCase,
-                                                            int distanceBetweenWords,
-                                                            int maxResults,
-                                                            bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   QString const& getDescription() override;
 
   QString getMainFilename() override;
@@ -1838,13 +1834,16 @@ sptr< Dictionary::DataRequest > DslDictionary::getResource( string const & name 
 
 
 sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const & searchString,
-                                                                 int searchMode, bool matchCase,
-                                                                 int distanceBetweenWords,
-                                                                 int maxResults,
-                                                                 bool ignoreWordsOrder,
+                                                                 int searchMode,
+                                                                 bool matchCase,
+
                                                                  bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 } // anonymous namespace
