@@ -2598,17 +2598,11 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
 void MainWindow::wordListItemActivated( QListWidgetItem * item )
 {
-  if( wordListSelChanged )
+  if ( wordListSelChanged ) {
     wordListSelChanged = false;
+  }
   else {
-    // TODO: code duplication with translateInputFinished!
-
-    Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-    if ( mods & (Qt::ControlModifier | Qt::ShiftModifier) )
-      addNewTab();
-
-    showTranslationFor( item->text() );
-    getCurrentArticleView()->focus();
+    respondToTranslationRequest( item->text(), true );
   }
 }
 
