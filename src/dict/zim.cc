@@ -213,13 +213,8 @@ public:
   /// Loads the resource.
   void loadResource( std::string & resourceName, string & data );
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                    int searchMode,
-                                                    bool matchCase,
-                                                    int distanceBetweenWords,
-                                                    int maxResults,
-                                                    bool ignoreWordsOrder,
-                                                    bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -542,14 +537,14 @@ void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getSearchResults( QString const & searchString,
-                                                                 int searchMode, bool matchCase,
-                                                                 int distanceBetweenWords,
-                                                                 int maxResults,
-                                                                 bool ignoreWordsOrder,
-                                                                 bool ignoreDiacritics )
+sptr< Dictionary::DataRequest >
+ZimDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 /// ZimDictionary::getArticle()

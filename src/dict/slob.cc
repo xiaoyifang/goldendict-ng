@@ -622,13 +622,8 @@ public:
     /// Loads the resource.
     void loadResource( std::string &resourceName, string & data );
 
-    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                      int searchMode,
-                                                      bool matchCase,
-                                                      int distanceBetweenWords,
-                                                      int maxResults,
-                                                      bool ignoreWordsOrder,
-                                                      bool ignoreDiacritics ) override;
+    sptr< Dictionary::DataRequest >
+    getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     quint64 getArticlePos( uint32_t articleNumber );
@@ -1177,14 +1172,14 @@ void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword
 }
 
 
-sptr< Dictionary::DataRequest > SlobDictionary::getSearchResults( QString const & searchString,
-                                                                  int searchMode, bool matchCase,
-                                                                  int distanceBetweenWords,
-                                                                  int maxResults,
-                                                                  bool ignoreWordsOrder,
-                                                                  bool ignoreDiacritics )
+sptr< Dictionary::DataRequest >
+SlobDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString, searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 
