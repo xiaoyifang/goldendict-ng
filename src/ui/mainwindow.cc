@@ -641,10 +641,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( translateBox->translateLine(), &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
-  connect( ui.translateLine, SIGNAL( returnPressed() ), this, SLOT( translateInputFinished() ) );
-
-  connect( translateBox->translateLine(), SIGNAL( returnPressed() ),
-           this, SLOT( translateInputFinished() ) );
+  connect( ui.translateLine, &QLineEdit::returnPressed, [ this ]() {
+    translateInputFinished( true );
+  } );
+  connect( translateBox->translateLine(), &QLineEdit::returnPressed, [ this ]() {
+    translateInputFinished( true );
+  } );
 
   connect( ui.wordList, &QListWidget::itemSelectionChanged, this, &MainWindow::wordListSelectionChanged );
 
