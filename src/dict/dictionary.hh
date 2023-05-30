@@ -4,20 +4,22 @@
 #ifndef __DICTIONARY_HH_INCLUDED__
 #define __DICTIONARY_HH_INCLUDED__
 
-#include <vector>
-#include <string>
 #include <map>
-#include <QObject>
-#include <QWaitCondition>
-#include "sptr.hh"
-#include "ex.hh"
+#include <string>
+#include <vector>
 
-#include "wstring.hh"
-#include "langcoder.hh"
-#include "config.hh"
-#include "utils.hh"
+#include <QMutex>
+#include <QObject>
 #include <QString>
+#include <QWaitCondition>
+
+#include "config.hh"
+#include "ex.hh"
 #include "globalbroadcaster.hh"
+#include "langcoder.hh"
+#include "sptr.hh"
+#include "utils.hh"
+#include "wstring.hh"
 
 /// Abstract dictionary-related stuff
 namespace Dictionary {

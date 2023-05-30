@@ -22,18 +22,20 @@
  * program. */
 
 #include "bgl_babylon.hh"
+#include "dictionary.hh"
+#include "gddebug.hh"
+#include "globalregex.hh"
+#include "htmlescape.hh"
+#include "iconv.hh"
+#include "ufile.hh"
+
 #include <algorithm>
-#include <cerrno>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-#include "gddebug.hh"
-#include "ufile.hh"
-#include "iconv.hh"
-#include "htmlescape.hh"
+
 #include <QString>
-#include "dictionary.hh"
-#include "globalregex.hh"
+#include <QtEndian>
 
 #ifdef _WIN32
 #include <io.h>

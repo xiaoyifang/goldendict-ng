@@ -10,6 +10,7 @@
 #include <QMouseEvent>
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QDesktopWidget>
+#include <QScreen>
 #include <QStringList>
 #endif
 #include "gddebug.hh"

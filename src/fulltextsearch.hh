@@ -1,16 +1,20 @@
 #ifndef __FULLTEXTSEARCH_HH_INCLUDED__
 #define __FULLTEXTSEARCH_HH_INCLUDED__
 
+#include <QAbstractListModel>
+#include <QAction>
+#include <QList>
+#include <QTimer>
+#include <QThread>
+#include <QRunnable>
 #include <QSemaphore>
 #include <QStringList>
+
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #else
 #include <QRegExp>
 #endif
-#include <QAbstractListModel>
-#include <QList>
-#include <QAction>
 
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"

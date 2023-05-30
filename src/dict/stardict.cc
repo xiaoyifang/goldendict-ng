@@ -36,7 +36,6 @@
 
 #include <QString>
 #include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
@@ -45,7 +44,6 @@
 #endif
 #include <QStringList>
 #include <QDomDocument>
-#include <QDomNode>
 #include "ufile.hh"
 #include "utils.hh"
 

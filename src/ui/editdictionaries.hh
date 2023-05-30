@@ -4,15 +4,16 @@
 #ifndef __EDITDICTIONARIES_HH_INCLUDED__
 #define __EDITDICTIONARIES_HH_INCLUDED__
 
-#include "dict/dictionary.hh"
 #include "config.hh"
-#include "ui_editdictionaries.h"
+#include "dict/dictionary.hh"
 #include "dict/sources.hh"
-#include "orderandprops.hh"
 #include "groups.hh"
 #include "instances.hh"
-#include <QNetworkAccessManager>
+#include "orderandprops.hh"
+#include "ui_editdictionaries.h"
 #include <QAction>
+#include <QNetworkAccessManager>
+#include <QPointer>
 
 class EditDictionaries: public QDialog
 {

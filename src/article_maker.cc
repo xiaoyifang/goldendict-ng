@@ -11,9 +11,11 @@
 #include "langcoder.hh"
 #include "utils.hh"
 #include "wstring_qt.hh"
+#include <QDir>
 #include <QFile>
 #include <QTextDocumentFragment>
 #include <QUrl>
+
 #include "fmt/core.h"
 #include "fmt/compile.h"
 

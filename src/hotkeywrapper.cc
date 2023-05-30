@@ -6,8 +6,9 @@
 #include "hotkeywrapper.hh"
 #include "gddebug.hh"
 
+#include <QSessionManager>
+#include <QTimer>
 #include <QWidget>
-#include <QMainWindow>
 
 #ifdef Q_OS_WIN
 #include "mainwindow.hh"

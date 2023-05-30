@@ -7,7 +7,6 @@
 // #ifdef Q_OS_MAC
 #include <opencc/opencc.h>
 // #endif
-#include <opencc/Export.hpp>
 // #include <opencc/SimpleConverter.hpp>
 #include "folding.hh"
 #include "gddebug.hh"

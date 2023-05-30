@@ -43,7 +43,6 @@
 #include "historypanewidget.hh"
 #include "utils.hh"
 #include "help.hh"
-#include <qscreen.h>
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
 
@@ -60,7 +59,6 @@
 #endif
 
 #include <QWebEngineSettings>
-#include <QWebEngineProfile>
 #include <QProxyStyle>
 
 #ifdef HAVE_X11

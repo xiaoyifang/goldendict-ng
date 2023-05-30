@@ -1,10 +1,8 @@
 #include "language.hh"
 #include "langcoder.hh"
 #include <map>
+#include <QMap>
 #include <QCoreApplication>
-
-#include <stdint.h>
-#include <QObject>
 
 namespace Language {
 

@@ -2,6 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "hotkeywrapper.hh"
+#include <QTimer>
 #include <ApplicationServices/ApplicationServices.h>
 
 namespace MacKeyMapping

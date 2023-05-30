@@ -2,15 +2,19 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "articleview.hh"
+#include "dict/programs.hh"
 #include "folding.hh"
 #include "fulltextsearch.hh"
 #include "gddebug.hh"
 #include "gestures.hh"
-#include "dict/programs.hh"
+#include "globalbroadcaster.hh"
+#include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "wildcard.hh"
 #include "wstring_qt.hh"
+#include <QBuffer>
+#include <QClipboard>
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
@@ -25,8 +29,8 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
-#include <assert.h>
 #include <map>
+
 #if (QT_VERSION >= QT_VERSION_CHECK(5,0,0) && QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QWebEngineContextMenuData>
 #endif
@@ -40,11 +44,6 @@
 #include <QPainter>
 #endif
 
-#include <QBuffer>
-
-#include "speechclient.hh"
-
-#include "globalbroadcaster.hh"
 using std::map;
 using std::list;
 
