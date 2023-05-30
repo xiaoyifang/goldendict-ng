@@ -1,9 +1,11 @@
-#include "globalbroadcaster.hh"
 #include "keyboardstate.hh"
-#include "langcoder.hh"
 #include "language.hh"
 #include "preferences.hh"
 #include "help.hh"
+
+#include <QDebug>
+#include <QDir>
+#include <QFontDatabase>
 #include <QMessageBox>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>

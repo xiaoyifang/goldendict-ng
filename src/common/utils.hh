@@ -3,14 +3,14 @@
 #ifndef UTILS_HH
 #define UTILS_HH
 
-#include <QString>
 #include <QAtomicInt>
-#include <QTextDocument>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QKeyEvent>
+#include <QString>
+#include <QTextDocument>
 #include <QUrl>
 #include <QUrlQuery>
-#include <QJsonObject>
-#include <QJsonDocument>
 #include <QWidget>
 #include "filetype.hh"
 

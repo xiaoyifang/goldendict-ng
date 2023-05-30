@@ -9,16 +9,16 @@
 #include "language.hh"
 #include "metadata.hh"
 
-//#include "initializing.hh"
-
-#include <QMenu>
 #include <QDir>
-#include <QIcon>
-#include <QMap>
-#include <QVector>
-#include <QFileInfo>
 #include <QFileDialog>
+#include <QFileInfo>
+#include <QIcon>
+#include <QImageReader>
+#include <QMap>
+#include <QMenu>
 #include <QMessageBox>
+#include <QTimer>
+#include <QVector>
 
 using std::vector;
 

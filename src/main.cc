@@ -16,7 +16,6 @@
 #endif
 
 #ifdef Q_OS_WIN32
-#include <QtCore/qt_windows.h>
   #include <windows.h>
 #endif
 
@@ -30,7 +29,6 @@
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 
 #include "gddebug.hh"
-#include <QMutexLocker>
 #include <QMutex>
 
 #if defined(USE_BREAKPAD)

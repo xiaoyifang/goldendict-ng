@@ -1,5 +1,6 @@
 #include "customtransliteration.hh"
 #include "dictionary.hh"
+#include <QCoreApplication>
 
 namespace CustomTranslit {
 

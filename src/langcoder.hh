@@ -1,7 +1,8 @@
 #ifndef LANGCODER_H
 #define LANGCODER_H
 
-#include <QtGui>
+#include <QString>
+#include <QIcon>
 #include "wstring.hh"
 
 struct GDLangCode

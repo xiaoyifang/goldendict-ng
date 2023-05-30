@@ -5,13 +5,15 @@
 #include "language.hh"
 #include "utf8.hh"
 
+#include <QFileInfo>
+#include <QLocale>
+
 #ifdef _MSC_VER
 #include <stub_msvc.h>
 #endif
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #endif
-#include <QLocale>
 
 // Language codes
 

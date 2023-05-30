@@ -1,15 +1,20 @@
 #ifndef __EPWING_BOOK_HH_INCLUDED__
 #define __EPWING_BOOK_HH_INCLUDED__
 
-#include <qglobal.h>
+#include "dict/dictionary.hh"
+#include "ex.hh"
+
+#include <QMap>
+#include <QStack>
+#include <QVector>
+#include <QtGlobal>
+
+#include <string>
+#include <vector>
 
 #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
 #define _FILE_OFFSET_BITS 64
 #endif
-
-#include "dict/dictionary.hh"
-#include "ex.hh"
-
 
 #include <QString>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
@@ -17,10 +22,7 @@
 #else
 #include <QTextCodec>
 #endif
-#include <QMap>
-#include <QVector>
-#include <vector>
-#include <string>
+
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>

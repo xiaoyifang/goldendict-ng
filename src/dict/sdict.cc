@@ -12,7 +12,6 @@
 #include "decompress.hh"
 #include "htmlescape.hh"
 #include "ftshelpers.hh"
-#include "wstring_qt.hh"
 
 #include <map>
 #include <set>
@@ -24,15 +23,12 @@
 
 #include <QString>
 #include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
-#include <QRegExp>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat>
 #endif
 #include <QRegularExpression>
 
-#include "ufile.hh"
 #include "utils.hh"
 
 namespace Sdict {

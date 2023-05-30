@@ -15,15 +15,11 @@
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "wstring_qt.hh"
-#include "zipfile.hh"
 #include "indexedzip.hh"
 #include "gddebug.hh"
 #include "tiff.hh"
-#include "fulltextsearch.hh"
 #include "ftshelpers.hh"
-#include "language.hh"
 
-#include <zlib.h>
 #include <map>
 #include <set>
 #include <string>
@@ -43,7 +39,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QPainter>
-#include <QMap>
 #include <QStringList>
 
 #include <QRegularExpression>

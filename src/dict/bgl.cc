@@ -2,43 +2,41 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "bgl.hh"
-#include "btreeidx.hh"
 #include "bgl_babylon.hh"
+#include "btreeidx.hh"
+#include "chunkedstorage.hh"
 #include "file.hh"
 #include "folding.hh"
-#include "utf8.hh"
-#include "chunkedstorage.hh"
+#include "ftshelpers.hh"
+#include "gddebug.hh"
+#include "htmlescape.hh"
 #include "langcoder.hh"
 #include "language.hh"
-#include "gddebug.hh"
+#include "utf8.hh"
+#include "utils.hh"
 
-#include "htmlescape.hh"
-#include "ftshelpers.hh"
-
+#include <ctype.h>
+#include <list>
 #include <map>
 #include <set>
-#include <list>
-#include <zlib.h>
-#include <ctype.h>
 #include <string.h>
+#include <zlib.h>
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>
 #endif
 
+#include <QAtomicInt>
+#include <QPainter>
+#include <QRegularExpression>
 #include <QSemaphore>
 #include <QThreadPool>
-#include <QAtomicInt>
 
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #else
 #include <QRegExp>
 #endif
-
-#include <QRegularExpression>
-
-#include "utils.hh"
 
 namespace Bgl {
 

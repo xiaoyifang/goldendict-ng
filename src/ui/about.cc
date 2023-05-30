@@ -2,11 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "about.hh"
-#include <QPushButton>
-#include <QtGui>
-#include <QSysInfo>
-
 #include "utils.hh"
+
+#include <QClipboard>
+#include <QFile>
+#include <QPushButton>
+#include <QSysInfo>
 
 About::About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries ): QDialog( parent )
 {

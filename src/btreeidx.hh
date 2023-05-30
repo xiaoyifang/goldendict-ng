@@ -7,15 +7,17 @@
 #include "dict/dictionary.hh"
 #include "file.hh"
 
+#include <algorithm>
+#include <map>
+#include <stdint.h>
 #include <string>
 #include <vector>
-#include <map>
-#include <algorithm>
-#include <QVector>
-#include <QSet>
-#include <QList>
 
-#include <stdint.h>
+#include <QFuture>
+#include <QList>
+#include <QSet>
+#include <QVector>
+
 
 /// A base for the dictionary which creates a btree index to look up
 /// the words.

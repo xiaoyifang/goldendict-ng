@@ -1,8 +1,11 @@
 #include "lingualibre.hh"
 #include "utf8.hh"
 #include "audiolink.hh"
-#include <string>
+
+#include <QJsonArray>
 #include <QJsonDocument>
+
+#include <string>
 #include <utility>
 
 namespace Lingua {

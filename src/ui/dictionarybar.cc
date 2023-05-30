@@ -4,7 +4,6 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QProcess>
-#include "gddebug.hh"
 
 
 using std::vector;
