@@ -197,6 +197,7 @@ On Mac, use homebrew to install xapian `brew install xapian`
 
 Goldendict-ng has used xapian as the default and the only one fulltext engine.
 
+#### use iconv (recommend to enable)
 use `CONFIG+=use_iconv` to enable this feature. when enabled ,iconv will be used to convert encoding other than the QTextCodec(which will be deprecated in future Qt version)
 
 ```
@@ -205,6 +206,7 @@ qmake "CONFIG+=use_iconv"
 
 when enabled ,iconv should be installed on the platform at the same time.
 
+#### use breakpad
 
 use `CONFIG+=use_breakpad` to enable this crash dump. when enabled [breakpad](https://chromium.googlesource.com/breakpad/breakpad/+/master/docs), goldendict will generate a crash dump alongside with Goldendict in the `crash` directory.
 
@@ -251,7 +253,7 @@ This project is licensed under the <b>GNU GPLv3+</b> license, a copy of which ca
 
 The original project was developed at <http://goldendict.org/> and <https://github.com/goldendict/goldendict>.
 
-## Thanks the help of JetBrains
+## Thank JetBrains for the help
 
 [![JetBrains Black Box Logo logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png)](https://jb.gg/OpenSourceSupport)
 
