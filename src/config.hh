@@ -277,8 +277,9 @@ struct Preferences
   bool searchInDock;
 
   bool enableMainWindowHotkey;
-  QKeySequence mainWindowHotkey;
   bool enableClipboardHotkey;
+
+  QKeySequence mainWindowHotkey;
   QKeySequence clipboardHotkey;
 
   bool startWithScanPopupOn;
