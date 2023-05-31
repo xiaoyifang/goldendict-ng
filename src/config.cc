@@ -222,12 +222,16 @@ Preferences::Preferences():
   darkReaderMode ( false ),
   alwaysOnTop ( false ),
   searchInDock ( false ),
-
+// on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
+#ifdef Q_OS_MACOS
+  enableMainWindowHotkey( false ),
+  enableClipboardHotkey( false ),
+#else
   enableMainWindowHotkey( true ),
-  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
   enableClipboardHotkey( true ),
+#endif
+  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
   clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
-
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
@@ -256,18 +260,18 @@ Preferences::Preferences():
   wordsZoomLevel( 0 ),
   maxStringsInHistory( 500 ),
   storeHistory( 1 ),
-  alwaysExpandOptionalParts( false )
-, historyStoreInterval( 0 )
-, favoritesStoreInterval( 0 )
-, confirmFavoritesDeletion( true )
-, collapseBigArticles( false )
-, articleSizeLimit( 2000 )
-, limitInputPhraseLength( false )
-, inputPhraseLengthLimit( 1000 )
-, maxDictionaryRefsInContextMenu ( 20 )
-, synonymSearchEnabled( true ),
+  alwaysExpandOptionalParts( true ),
+  historyStoreInterval( 0 ),
+  favoritesStoreInterval( 0 ),
+  confirmFavoritesDeletion( true ),
+  collapseBigArticles( false ),
+  articleSizeLimit( 2000 ),
+  limitInputPhraseLength( false ),
+  inputPhraseLengthLimit( 1000 ),
+  maxDictionaryRefsInContextMenu( 20 ),
+  synonymSearchEnabled( true ),
   stripClipboard( false ),
-  raiseWindowOnSearch(true)
+  raiseWindowOnSearch( true )
 {
 }
 
@@ -317,7 +321,7 @@ MediaWikis makeDefaultMediaWikis( bool enable )
   MediaWikis mw;
 
   mw.push_back( MediaWiki( "ae6f89aac7151829681b85f035d54e48", "English Wikipedia", "https://en.wikipedia.org/w", enable, "" ) );
-  mw.push_back( MediaWiki( "affcf9678e7bfe701c9b071f97eccba3", "English Wiktionary", "https://en.wiktionary.org/w", false, ""  ) );
+  mw.push_back( MediaWiki( "affcf9678e7bfe701c9b071f97eccba3", "English Wiktionary", "https://en.wiktionary.org/w", enable, ""  ) );
   mw.push_back( MediaWiki( "8e0c1c2b6821dab8bdba8eb869ca7176", "Russian Wikipedia", "https://ru.wikipedia.org/w", false, "" ) );
   mw.push_back( MediaWiki( "b09947600ae3902654f8ad4567ae8567", "Russian Wiktionary", "https://ru.wiktionary.org/w", false, "" ) );
   mw.push_back( MediaWiki( "a8a66331a1242ca2aeb0b4aed361c41d", "German Wikipedia", "https://de.wikipedia.org/w", false, "" ) );
@@ -336,9 +340,8 @@ WebSites makeDefaultWebSites()
 
   ws.push_back( WebSite( "b88cb2898e634c6638df618528284c2d", "Google En-En (Oxford)", "https://www.google.com/search?q=define:%GDWORD%&hl=en", false, "", true ) );
   ws.push_back( WebSite( "f376365a0de651fd7505e7e5e683aa45", "Urban Dictionary", "https://www.urbandictionary.com/define.php?term=%GDWORD%", false, "", true ) );
-  ws.push_back( WebSite( "324ca0306187df7511b26d3847f4b07c", "Multitran (En)", "https://multitran.ru/c/m.exe?CL=1&l1=1&s=%GD1251%", false, "", true ) );
-  ws.push_back( WebSite( "924db471b105299c82892067c0f10787", "Lingvo (En-Ru)", "http://lingvopro.abbyyonline.com/en/Search/en-ru/%GDWORD%", false, "", true ) );
-  ws.push_back( WebSite( "087a6d65615fb047f4c80eef0a9465db", "Michaelis (Pt-En)", "http://michaelis.uol.com.br/moderno/ingles/index.php?lingua=portugues-ingles&palavra=%GDISO1%", false, "", true ) );
+  ws.push_back( WebSite( "324ca0306187df7511b26d3847f4b07c", "Multitran (En-Ru)", "https://www.multitran.com/m.exe?s=%GDWORD%&l1=1&l2=2", false, "", true ) );
+  ws.push_back( WebSite( "379a0ce02a34747d642cb0d7de1b2882", "Merriam-Webster (En)", "https://www.merriam-webster.com/dictionary/%GDWORD%", false, "", true ) );
 
   return ws;
 }
@@ -346,7 +349,7 @@ WebSites makeDefaultWebSites()
 DictServers makeDefaultDictServers()
 {
   DictServers ds;
-
+  ds.push_back( DictServer( "6eb6f7a1df225e1cfdcd4cf8e9e4771b", "dict.org", "dict://dict.org", true, "wn", "", "" ) );
   return ds;
 }
 
