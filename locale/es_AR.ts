@@ -21,7 +21,7 @@
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>Copiar información de versión</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="142"/>
