@@ -494,7 +494,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
   if( cfg.preferences.scanToMainWindow && !forcePopup )
   {
     // Send translated word to main window istead of show popup
-    emit sendPhraseToMainWindow( definition->getWord() );
+    emit sendPhraseToMainWindow( pendingWord );
     return;
   }
 
