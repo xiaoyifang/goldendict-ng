@@ -60,9 +60,9 @@ a:hover
   font-size: 12px;
   font-weight: normal;
   float: right;
-  border: 0px;
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 6px;
+  border: 0;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   margin: -6px;
   margin-bottom: 5px;
   margin-left: 2px;
