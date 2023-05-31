@@ -30,9 +30,9 @@ jobs:
         qt_ver: [6.4.3]
         qt_arch: [gcc_64]
     env:
-      version: 23.06.01
-      version-suffix: ChildrenDay
-      prerelease: false
+      version: 23.06.02
+      version-suffix: alpha
+      prerelease: true
     steps:          
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
