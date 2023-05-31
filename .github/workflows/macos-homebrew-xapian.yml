@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.05.01
-      version-suffix: WuYi
+      version: 23.06.01
+      version-suffix: ChildrenDay
       prerelease: false
     steps:
       # macos 11.0 默认环境变了,要指定

@@ -12,7 +12,7 @@ option(WITH_ZIM "enable zim support" ON)
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 23.05.01
+        VERSION 23.06.01
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
