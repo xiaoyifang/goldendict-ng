@@ -378,7 +378,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>ملفات الصوت (*.wav *.ogg *.oga *.mp3 *.mp4 *.ac *.flac *.mid *.wv *.ape *.spx);;جميع الملفات (*.*.*)</translation>
+      <translation>ملفات الصوت (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;جميع الملفات (*.*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2072"/>
