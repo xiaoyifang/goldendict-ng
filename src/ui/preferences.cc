@@ -59,7 +59,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Load values into form
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-//  ui.fontFamilies->insertItem(0, tr( "System default" ), QString() );
+  //  ui.fontFamilies->insertItem(0, tr( "System default" ), QString() );
 
   // See which other translations do we have
 
@@ -103,8 +103,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   if(!p.webFontFamily.isEmpty())
     ui.fontFamilies->setCurrentText( p.webFontFamily );
-  else{
-    ui.fontFamilies->setCurrentFont(QApplication::font());
+  else {
+    ui.fontFamilies->setCurrentFont( QApplication::font() );
   }
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
