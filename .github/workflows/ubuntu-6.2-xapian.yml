@@ -30,13 +30,10 @@ jobs:
         qt_ver: [6.4.3]
         qt_arch: [gcc_64]
     env:
-      version: 23.04.03
+      version: 23.05.03
       version-suffix: alpha
       prerelease: true
-    steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'               
+    steps:          
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -45,14 +42,13 @@ jobs:
           cached: 'false'
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
-          setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies
         run: |
           sudo apt-get install git pkg-config build-essential 
           sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
           sudo apt-get install libxtst-dev liblzo2-dev libbz2-dev 
-          sudo apt-get install libao-dev libavutil-dev libavformat-dev libeb16-dev
+          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
           sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
           sudo apt-get install  libxkbcommon-x11-dev libspeechd-dev
           sudo apt install libfuse2
@@ -73,11 +69,13 @@ jobs:
           # sudo make install
           # cd ..
           sudo apt install libxapian-dev
+          sudo apt-get install libzim-dev
           # sudo ls -al /usr/lib/|grep xapian
 
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          submodules: true
 
       - name: version-file
         shell: bash
@@ -97,7 +95,7 @@ jobs:
           chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
           chmod a+x linuxdeploy-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.goldendict.GoldenDict.desktop 
+          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.xiaoyifang.GoldenDict_NG.desktop
 
       - name: changelog
         id: changelog
@@ -151,5 +149,14 @@ jobs:
             **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)  
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
+            `-xapian` is built with [xapian](https://xapian.org/) support which offers 10X~20X performance 
+            ------------------------------
+            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
+            `-xapian` 表示使用的是 [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
+            比如：
+            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
+            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+
+
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  

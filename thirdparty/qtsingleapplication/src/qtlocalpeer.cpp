@@ -43,12 +43,11 @@
 #include <QCoreApplication>
 #include <QDataStream>
 
-#if defined(Q_OS_WIN)
-#include <QLibrary>
-#include <qt_windows.h>
-typedef BOOL(WINAPI*PProcessIdToSessionId)(DWORD,DWORD*);
-static PProcessIdToSessionId pProcessIdToSessionId = 0;
+
+#if defined( Q_OS_WIN )
+  #include <qt_windows.h>
 #endif
+
 #if defined(Q_OS_UNIX)
 #include <ctime>
 #include <unistd.h>
@@ -62,35 +61,26 @@ const char* QtLocalPeer::ack = "ack";
 QtLocalPeer::QtLocalPeer(QObject* parent, const QString &appId)
     : QObject(parent), id(appId)
 {
-    QString prefix = id;
     if (id.isEmpty()) {
-        id = QCoreApplication::applicationFilePath();
-#if defined(Q_OS_WIN)
-        id = id.toLower();
-#endif
-        prefix = id.section(QLatin1Char('/'), -1);
+        id = QCoreApplication::applicationName();
     }
+    QString prefix = id;
+#if defined( Q_OS_WIN )
+    prefix = prefix.toLower();
+#endif
+
     prefix.remove(QRegularExpression("[^a-zA-Z]"));
     prefix.truncate(6);
 
-    QByteArray idc = id.toUtf8();
-    quint16 idNum = qChecksum(idc.constData(), idc.size());
-    socketName = QLatin1String("qtsingleapp-") + prefix
-                 + QLatin1Char('-') + QString::number(idNum, 16);
-
-#if defined(Q_OS_WIN)
-    if (!pProcessIdToSessionId) {
-        QLibrary lib("kernel32");
-        pProcessIdToSessionId = (PProcessIdToSessionId)lib.resolve("ProcessIdToSessionId");
-    }
-    if (pProcessIdToSessionId) {
-        DWORD sessionId = 0;
-        pProcessIdToSessionId(GetCurrentProcessId(), &sessionId);
-        socketName += QLatin1Char('-') + QString::number(sessionId, 16);
-    }
+    QByteArray idc = QDir::home().dirName().toUtf8();
+#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
+    quint16 idNum = qChecksum( idc.constData(), idc.size() );
 #else
-    socketName += QLatin1Char('-') + QString::number(::getuid(), 16);
+    quint16 idNum = qChecksum( idc );
 #endif
+
+    socketName = QLatin1String("single-") + prefix
+                 + QLatin1Char('-') + QString::number(idNum, 16);
 
     server = new QLocalServer(this);
     QString lockName = QDir(QDir::tempPath()).absolutePath()
@@ -194,5 +184,6 @@ void QtLocalPeer::receiveConnection()
 }
 
 QtLocalPeer::~QtLocalPeer() {
+    server->close();
     lockFile->unlock(); // Ensure file unlocked
 }

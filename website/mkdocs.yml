@@ -40,7 +40,18 @@ nav:
       - Command Lines: topic_commandline.md
       - Custom Stylesheets: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
+      - Custom transliteration: topic_transliteration.md
+      - Customize Dictionary Name: custom_dictionary_name.md
+      - OCR Integration: howto/How to use ocr together with GoldenDict.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Contributor Guides:
     - Developer: developer.md
+    - How to:
+       - Build and debug with VS2019: howto/how to build and debug with VS2019.md
+       - Compile with cmake: howto/how to compile with cmake.md
+       - Customize the opencc: howto/how to customize the opencc.md
+       - Qt version and github action: howto/how to find out the latest qt version and module in github qt action.md
+       - Use .clang-format: howto/how to use .clang-format to format the code.md
+       - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
+       - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
   - 中文文档: index_cn.md

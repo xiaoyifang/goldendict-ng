@@ -282,7 +282,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
             articleBody += "</table>";
 
-            Mutex::Lock _( dataMutex );
+            QMutexLocker _( &dataMutex );
 
             size_t prevSize = data.size();
             

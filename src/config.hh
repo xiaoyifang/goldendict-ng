@@ -15,10 +15,6 @@
 #include "ex.hh"
 #include <QLocale>
 
-#ifdef Q_OS_WIN
-#include <QRect>
-#endif
-
 /// GoldenDict's configuration
 namespace Config {
 
@@ -177,27 +173,15 @@ struct HotKey
 struct FullTextSearch
 {
   int searchMode;
-  bool matchCase;
-  int maxArticlesPerDictionary;
-  int maxDistanceBetweenWords;
-  bool useMaxDistanceBetweenWords;
-  bool useMaxArticlesPerDictionary;
   bool enabled;
-  bool ignoreWordsOrder;
-  bool ignoreDiacritics;
+
   quint32 maxDictionarySize;
   QByteArray dialogGeometry;
   QString disabledTypes;
 
-  FullTextSearch() :
-    searchMode( 0 ), matchCase( false ),
-    maxArticlesPerDictionary( 100 ),
-    maxDistanceBetweenWords( 2 ),
-    useMaxDistanceBetweenWords( true ),
-    useMaxArticlesPerDictionary( false ),
+  FullTextSearch():
+    searchMode( 0 ),
     enabled( true ),
-    ignoreWordsOrder( false ),
-    ignoreDiacritics( false ),
     maxDictionarySize( 0 )
   {}
 };
@@ -264,38 +248,6 @@ enum ScanPopupWindowFlags
   SPWF_Tool
 };
 ScanPopupWindowFlags spwfFromInt( int id );
-
-struct InputPhrase
-{
-  InputPhrase()
-  {}
-
-  InputPhrase( QString const & _phrase, QString const & _suffix ) :
-    phrase( _phrase ),
-    punctuationSuffix( _suffix )
-  {}
-
-  static InputPhrase fromPhrase( QString const & phrase )
-  {
-    return InputPhrase( phrase, QString() );
-  }
-
-  bool isValid() const { return !phrase.isEmpty(); }
-
-  QString phraseWithSuffix() const { return phrase + punctuationSuffix; }
-
-  QString phrase;
-  QString punctuationSuffix;
-};
-
-inline bool operator == ( InputPhrase const & a, InputPhrase const & b )
-{
-  return a.phrase == b.phrase && a.punctuationSuffix == b.punctuationSuffix;
-}
-inline bool operator != ( InputPhrase const & a, InputPhrase const & b )
-{
-  return !( a == b );
-}
 
 /// Various user preferences
 struct Preferences
@@ -377,7 +329,7 @@ struct Preferences
 
   bool limitInputPhraseLength;
   int inputPhraseLengthLimit;
-  InputPhrase sanitizeInputPhrase( QString const & inputPhrase ) const;
+  QString sanitizeInputPhrase( QString const & inputWord ) const;
 
   unsigned short maxDictionaryRefsInContextMenu;
 
@@ -508,6 +460,23 @@ struct Chinese
 };
 
 
+struct CustomTrans
+{
+  bool enable = false;
+
+  QString context;
+
+  bool operator==( CustomTrans const & other ) const
+  {
+    return enable == other.enable && context == other.context;
+  }
+
+  bool operator!=( CustomTrans const & other ) const
+  {
+    return !operator==( other );
+  }
+};
+
 /// Romaji transliteration configuration
 struct Romaji
 {
@@ -540,20 +509,24 @@ struct Transliteration
   bool enableGermanTransliteration;
   bool enableGreekTransliteration;
   bool enableBelarusianTransliteration;
+
+  CustomTrans customTrans;
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   Chinese chinese;
 #endif
   Romaji romaji;
 
-  bool operator == ( Transliteration const & other ) const
-  { return enableRussianTransliteration == other.enableRussianTransliteration &&
-           enableGermanTransliteration == other.enableGermanTransliteration &&
-           enableGreekTransliteration == other.enableGreekTransliteration &&
-           enableBelarusianTransliteration == other.enableBelarusianTransliteration &&
+  bool operator==( Transliteration const & other ) const
+  {
+    return enableRussianTransliteration == other.enableRussianTransliteration
+      && enableGermanTransliteration == other.enableGermanTransliteration
+      && enableGreekTransliteration == other.enableGreekTransliteration
+      && enableBelarusianTransliteration == other.enableBelarusianTransliteration
+      && customTrans == other.customTrans &&
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-           chinese == other.chinese &&
+      chinese == other.chinese &&
 #endif
-           romaji == other.romaji;
+      romaji == other.romaji;
   }
 
   bool operator != ( Transliteration const & other ) const
@@ -755,14 +728,21 @@ struct Class
 
   QString editDictionaryCommandLine; // Command line to call external editor for dictionary
 
-  Class(): lastMainGroupId( 0 ), lastPopupGroupId( 0 ),
-           pinPopupWindow( false ), showingDictBarNames( false ),
-           usingSmallIconsInToolbars( false ),
-           maxPictureWidth( 0 ), maxHeadwordSize ( 256U ),
-           maxHeadwordsToExpand( 0 )
-  {}
+  Class():
+    lastMainGroupId( 0 ),
+    lastPopupGroupId( 0 ),
+    pinPopupWindow( false ),
+    showingDictBarNames( false ),
+    usingSmallIconsInToolbars( false ),
+    maxPictureWidth( 0 ),
+    maxHeadwordSize( 256U ),
+    maxHeadwordsToExpand( 0 )
+  {
+  }
   Group * getGroup( unsigned id );
   Group const * getGroup( unsigned id ) const;
+  //disable tts dictionary. does not need to save to persistent file
+  bool notts = false;
 };
 
 #ifdef Q_OS_WIN
@@ -869,7 +849,5 @@ QString getStylesDir();
 QString getCacheDir() noexcept;
 
 }
-
-Q_DECLARE_METATYPE( Config::InputPhrase )
 
 #endif

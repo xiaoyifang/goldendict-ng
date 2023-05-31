@@ -507,7 +507,7 @@ void DictServerWordSearchRequest::run()
 
       if( count )
       {
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
         for( int x = 0; x < count; x++ )
           matches.push_back( gd::toWString( matchesList.at( x ) ) );
       }
@@ -532,7 +532,7 @@ void DictServerWordSearchRequest::cancel()
 {
   isCancelled.ref();
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
   finish();
 }
 
@@ -834,7 +834,7 @@ void DictServerArticleRequest::run()
     }
     if( !Utils::AtomicInt::loadAcquire( isCancelled ) && errorString.isEmpty() && !articleData.empty() )
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       data.resize( articleData.size() );
       memcpy( &data.front(), articleData.data(), articleData.size() );
@@ -861,7 +861,7 @@ void DictServerArticleRequest::cancel()
 {
   isCancelled.ref();
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
   finish();
 }
 

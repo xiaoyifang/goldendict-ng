@@ -5,12 +5,11 @@
 #include <QRegularExpression>
 
 #include "utf8.hh"
-#include "wstring_qt.hh"
+#include "globalregex.hh"
 
 namespace Folding {
 
 #include "inc_case_folding.hh"
-#include "inc_diacritic_folding.hh"
 
 /// Tests if the given char is one of the Unicode combining marks. Some are
 /// caught by the diacritics folding table, but they are only handled there
@@ -23,30 +22,26 @@ bool isCombiningMark( wchar ch )
 
 wstring apply( wstring const & in, bool preserveWildcards )
 {
+  //remove space and accent;
+  auto withPunc = QString::fromStdU32String( in )
+                    .normalized( QString::NormalizationForm_KD )
+                    .remove( RX::markSpace )
+                    .toStdU32String();
+
   //First, strip diacritics and apply ws/punctuation removal
   wstring withoutDiacritics;
 
-  withoutDiacritics.reserve( in.size() );
+  withoutDiacritics.reserve( withPunc.size() );
 
-  wchar const * nextChar = in.data();
 
-  size_t consumed;
+  for ( auto const & ch : withPunc ) {
 
-  for(int left=in.size() ; left; )
-  {
-    wchar ch = foldDiacritic( nextChar, left, consumed );
-
-    if ( !isCombiningMark( ch ) && !isWhitespace( ch )
-         && ( !isPunct( ch )
-              || ( preserveWildcards &&
-                   ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) )
-            )
-    )
+    if ( !isPunct( ch )
+         || ( preserveWildcards && ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) ) ) {
       withoutDiacritics.push_back( ch );
-
-    nextChar += consumed;
-    left -= consumed;
+    }
   }
+
 
   // Now, fold the case
 
@@ -54,12 +49,12 @@ wstring apply( wstring const & in, bool preserveWildcards )
 
   caseFolded.reserve( withoutDiacritics.size() * foldCaseMaxOut );
 
-  nextChar = withoutDiacritics.data();
+  wchar const * nextChar = withoutDiacritics.data();
 
   wchar buf[ foldCaseMaxOut ];
 
-  for( size_t left = withoutDiacritics.size(); left--; )
-    caseFolded.append( buf, foldCase(  *nextChar++, buf ) );
+  for ( size_t left = withoutDiacritics.size(); left--; )
+    caseFolded.append( buf, foldCase( *nextChar++, buf ) );
 
   return caseFolded;
 }
@@ -108,26 +103,8 @@ wstring applyFullCaseOnly( wstring const & in )
 
 wstring applyDiacriticsOnly( wstring const & in )
 {
-  wstring withoutDiacritics;
-
-  withoutDiacritics.reserve( in.size() );
-
-  wchar const * nextChar = in.data();
-
-  size_t consumed;
-
-  for( size_t left = in.size(); left; )
-  {
-    wchar ch = foldDiacritic( nextChar, left, consumed );
-
-    if ( !isCombiningMark( ch ) )
-      withoutDiacritics.push_back( ch );
-
-    nextChar += consumed;
-    left -= consumed;
-  }
-
-  return withoutDiacritics;
+  auto noAccent = QString::fromStdU32String( in ).normalized( QString::NormalizationForm_KD ).remove( RX::accentMark );
+  return noAccent.toStdU32String();
 }
 
 wstring applyPunctOnly( wstring const & in )
@@ -277,11 +254,4 @@ QString unescapeWildcardSymbols( const QString & str )
 
   return unescaped;
 }
-
-wchar foldedDiacritic( wchar const * in, size_t size, size_t & consumed )
-{
-  return foldDiacritic( in, size, consumed );
-}
-
-
 }

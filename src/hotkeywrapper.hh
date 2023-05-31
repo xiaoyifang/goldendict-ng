@@ -1,36 +1,39 @@
 #ifndef HOTKEYWRAPPER_H
 #define HOTKEYWRAPPER_H
 
-#include <QtGui>
+#include <QGuiApplication>
+#include <QThread>
+
+#include "config.hh"
+#include "ex.hh"
+#include "qtsingleapplication.h"
+#include "utils.hh"
 
 #ifdef HAVE_X11
 
-#include <set>
+  #include <set>
 
-#include <X11/Xlib.h>
-#include <X11/extensions/record.h>
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QGuiApplication>
-#else
-#include <QX11Info>
+  #include <X11/Xlib.h>
+  #include <X11/extensions/record.h>
+  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+    #include <QX11Info>
+  #endif
+  #include <X11/Xlibint.h>
+
+  #undef Bool
+  #undef min
+  #undef max
+
 #endif
-#include <X11/Xlibint.h>
 
-#undef Bool
-#undef min
-#undef max
-
+#ifdef Q_OS_WIN
+  #include <QAbstractNativeEventFilter>
 #endif
 
 #ifdef Q_OS_MAC
 #define __SECURITYHI__
 #include <Carbon/Carbon.h>
 #endif
-
-#include "ex.hh"
-#include "qtsingleapplication.h"
-#include "utils.hh"
-#include "config.hh"
 
 //////////////////////////////////////////////////////////////////////////
 

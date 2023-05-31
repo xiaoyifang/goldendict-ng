@@ -48,14 +48,14 @@ void Request::finish()
 
 void Request::setErrorString( QString const & str )
 {
-  Mutex::Lock _( errorStringMutex );
+  QMutexLocker _( &errorStringMutex );
 
   errorString = str;
 }
 
 QString Request::getErrorString()
 {
-  Mutex::Lock _( errorStringMutex );
+  QMutexLocker _( &errorStringMutex );
 
   return errorString;
 }
@@ -65,14 +65,14 @@ QString Request::getErrorString()
 
 size_t WordSearchRequest::matchesCount()
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   return matches.size();
 }
 
 WordMatch WordSearchRequest::operator [] ( size_t index )
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   if ( index >= matches.size() )
     throw exIndexOutOfRange();
@@ -103,13 +103,13 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 
 long DataRequest::dataSize()
 {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   return hasAnyData ? (long) data.size() : -1;
 }
 
 void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   size_t offset = data.size();
 
@@ -123,7 +123,7 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
   if ( size == 0 )
     return;
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   if( !hasAnyData )
     throw exSliceOutOfRange();
@@ -173,7 +173,10 @@ vector< wstring > Class::getAlternateWritings( wstring const & )
 QString Class::getContainingFolder() const
 {
   if ( !dictionaryFiles.empty() ) {
-    return QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).absolutePath();
+    auto fileInfo = QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) );
+    if ( fileInfo.isDir() )
+      return fileInfo.absoluteFilePath();
+    return fileInfo.absolutePath();
   }
 
   return QString();
@@ -185,9 +188,9 @@ sptr< DataRequest > Class::getResource( string const & /*name*/ )
   return std::make_shared<DataRequestInstant>( false );
 }
 
-sptr< DataRequest > Class::getSearchResults(const QString &, int, bool, int, int, bool, bool )
+sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )
 {
-  return std::make_shared<DataRequestInstant>( false );
+  return std::make_shared< DataRequestInstant >( false );
 }
 
 QString const& Class::getDescription()
@@ -584,12 +587,8 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
     if ( ts > lastModified )
       lastModified = ts;
   }
-#ifndef USE_XAPIAN
-  QDir d( indexFile.c_str() );
-  if(d.exists()){
-    d.removeRecursively();
-  }
-#endif
+
+
   QFileInfo fileInfo( indexFile.c_str() );
 
   if ( !fileInfo.exists() )
@@ -598,12 +597,9 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
   return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
 }
 
-string getFtsSuffix(){
-#ifdef USE_XAPIAN
+string getFtsSuffix()
+{
   return "_FTS_x";
-#else
-  return "_FTS";
-#endif
 }
 
 QString generateRandomDictionaryId()

@@ -33,7 +33,7 @@
      </property>
      <widget class="QWidget" name="filesTab">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/folders.svg</normaloff>:/icons/folders.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -96,7 +96,7 @@
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/folder-sound.svg</normaloff>:/icons/folder-sound.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -152,7 +152,7 @@
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/icon32_hunspell.png</normaloff>:/icons/icon32_hunspell.png</iconset>
       </attribute>
       <attribute name="title">
@@ -220,7 +220,7 @@ of the appropriate groups to use them.</string>
      </widget>
      <widget class="QWidget" name="mediaWikisTab">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/icon32_wiki.png</normaloff>:/icons/icon32_wiki.png</iconset>
       </attribute>
       <attribute name="title">
@@ -279,7 +279,7 @@ of the appropriate groups to use them.</string>
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/internet.svg</normaloff>:/icons/internet.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -343,7 +343,7 @@ of the appropriate groups to use them.</string>
      </widget>
      <widget class="QWidget" name="dictdTab">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/network.svg</normaloff>:/icons/network.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -399,7 +399,7 @@ of the appropriate groups to use them.</string>
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/programs.svg</normaloff>:/icons/programs.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -458,7 +458,7 @@ of the appropriate groups to use them.</string>
      </widget>
      <widget class="QWidget" name="tab_lingua">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/lingualibre.svg</normaloff>:/icons/lingualibre.svg</iconset>
       </attribute>
       <attribute name="title">
@@ -497,7 +497,7 @@ of the appropriate groups to use them.</string>
           <item row="1" column="1">
            <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>Examples:  &amp;quot;eng&amp;quot; for Enligh, &amp;quot;fra&amp;quot; for French) &lt;br&gt;
+             <string>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</string>
             </property>
@@ -526,7 +526,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
      </widget>
      <widget class="QWidget" name="tab_5">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/forvo.png</normaloff>:/icons/forvo.png</iconset>
       </attribute>
       <attribute name="title">
@@ -674,7 +674,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="icon">
-       <iconset>
+       <iconset resource="../../resources.qrc">
         <normaloff>:/icons/transliteration.png</normaloff>:/icons/transliteration.png</iconset>
       </attribute>
       <attribute name="title">
@@ -692,7 +692,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
             <string>Greek transliteration</string>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../../icons/flags.qrc">
              <normaloff>:/flags/gr.png</normaloff>:/flags/gr.png</iconset>
            </property>
           </widget>
@@ -703,7 +703,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
             <string>Russian transliteration</string>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../../icons/flags.qrc">
              <normaloff>:/flags/ru.png</normaloff>:/flags/ru.png</iconset>
            </property>
           </widget>
@@ -714,7 +714,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
             <string>German transliteration</string>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../../icons/flags.qrc">
              <normaloff>:/flags/de.png</normaloff>:/flags/de.png</iconset>
            </property>
           </widget>
@@ -725,7 +725,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
             <string>Belarusian transliteration</string>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../../icons/flags.qrc">
              <normaloff>:/flags/by.png</normaloff>:/flags/by.png</iconset>
            </property>
           </widget>
@@ -827,6 +827,39 @@ Not implemented yet in GoldenDict.</string>
          </layout>
         </widget>
        </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_18">
+         <item>
+          <widget class="QGroupBox" name="enableCustomTransliteration">
+           <property name="title">
+            <string>Custom transliteration</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_19">
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="customTransliteration">
+              <property name="placeholderText">
+               <string>ae;æ #this is an example</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -857,6 +890,9 @@ Not implemented yet in GoldenDict.</string>
   <tabstop>removeSoundDir</tabstop>
   <tabstop>paths</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+  <include location="../../icons/flags.qrc"/>
+ </resources>
  <connections/>
 </ui>

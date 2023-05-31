@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Categories=Office;Dictionary;Education;Qt;
+Name=GoldenDict-NG
+GenericName=Multiformat Dictionary
+GenericName[zh_CN]=多格式字典
+Comment=A feature-rich dictionary lookup program
+Comment[zh_CN]=多功能字典查询软件
+Keywords=dict;dictioanry;
+Keywords[zh_CN]=dict;dictioanry;字典;
+Icon=goldendict
+Exec=goldendict %u
+MimeType=x-scheme-handler/goldendict;x-scheme-handler/dict;

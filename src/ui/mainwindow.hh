@@ -60,11 +60,11 @@ public:
   /// Set group for main/popup window
   void setGroupByName( QString const & name, bool main_window );
 
+  enum class WildcardPolicy { EscapeWildcards, WildcardsAreAlreadyEscaped };
 public slots:
 
   void messageFromAnotherInstanceReceived( QString const & );
   void showStatusBarMessage ( QString const &, int, QPixmap const & );
-  void phraseReceived( Config::InputPhrase const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );
   void headwordFromFavorites( QString const &, QString const & );
@@ -130,7 +130,7 @@ private:
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;
-  QMap< std::string, sptr< Dictionary::Class > > dictMap;
+  QMap<std::string, sptr< Dictionary::Class > > dictMap;
   /// Here we store unmuted dictionaries when the dictionary bar is active
   vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups groupInstances;
@@ -139,14 +139,10 @@ private:
   QNetworkAccessManager dictNetMgr; // We give dictionaries a separate manager,
                                     // since their requests can be destroyed
                                     // in a separate thread
-
-  QScopedPointer< QWebEngineProfile > webEngineProfile;
-
   AudioPlayerFactory audioPlayerFactory;
 
   WordList * wordList;
   QLineEdit * translateLine;
-  QString translateBoxSuffix; ///< A punctuation suffix that corresponds to translateLine's text.
 
   WordFinder wordFinder;
 
@@ -246,18 +242,17 @@ private:
 
   QString unescapeTabHeader( QString const & header );
 
-  void respondToTranslationRequest( Config::InputPhrase const & phrase,
+  void respondToTranslationRequest( QString const & word,
                                     bool checkModifiers, QString const & scrollTo = QString() );
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 
-  enum WildcardPolicy { EscapeWildcards, WildcardsAreAlreadyEscaped };
   enum TranslateBoxPopup { NoPopupChange, EnablePopup, DisablePopup };
-  void setTranslateBoxTextAndKeepSuffix( QString text, WildcardPolicy wildcardPolicy,
-                                         TranslateBoxPopup popupAction );
-  void setTranslateBoxTextAndClearSuffix( QString const & text, WildcardPolicy wildcardPolicy,
-                                          TranslateBoxPopup popupAction );
+
+  /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
+  void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
+
   void changeWebEngineViewFont();
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
 private slots:
@@ -350,7 +345,7 @@ private slots:
 
   void currentGroupChanged( int );
   void translateInputChanged( QString const & );
-  void translateInputFinished( bool checkModifiers = true );
+  void translateInputFinished( bool checkModifiers );
 
   /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
   void handleEsc();
@@ -385,11 +380,10 @@ private slots:
 
   void mutedDictionariesChanged();
 
-  void showTranslationFor( Config::InputPhrase const &, unsigned inGroup = 0,
+  void showTranslationFor(QString const &, unsigned inGroup = 0,
                            QString const & scrollTo = QString() );
-  void showTranslationFor( QString const & );
 
-  void showTranslationFor( QString const &, QStringList const & dictIDs,
+  void showTranslationForDicts( QString const &, QStringList const & dictIDs,
                            QRegExp const & searchRegExp, bool ignoreDiacritics );
 
   void showHistoryItem( QString const & );

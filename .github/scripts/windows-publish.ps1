@@ -31,6 +31,10 @@ function Main() {
     # 拷贝exe
     Copy-Item release\$targetName $archiveName\
     Write-Host "copy item finished..."
+
+    # #拷贝pdb
+    # Copy-Item release\*.pdb $archiveName\
+    # Write-Host "copy pdb finished..."
     # 拷贝依赖
     windeployqt --qmldir . --plugindir $archiveName\plugins --compiler-runtime $archiveName\$targetName
     # 删除不必要的文件
@@ -53,6 +57,8 @@ function Main() {
     Write-Host "copy sdk dll$($sdkDll)"
     Copy-Item $sdkDll $archiveName\
     Copy-Item winlibs\lib\msvc\*.dll $archiveName\
+    Copy-Item winlibs\lib\xapian\rel\*.dll $archiveName\
+    Copy-Item winlibs\lib\*.dll $archiveName\
     Copy-Item locale\*.qm $archiveName\locale\
 
     $webengineqm="{0}\translations\qtwebengine_*.qm" -f $env:QTDIR.Trim()

@@ -15,15 +15,11 @@
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "wstring_qt.hh"
-#include "zipfile.hh"
 #include "indexedzip.hh"
 #include "gddebug.hh"
 #include "tiff.hh"
-#include "fulltextsearch.hh"
 #include "ftshelpers.hh"
-#include "language.hh"
 
-#include <zlib.h>
 #include <map>
 #include <set>
 #include <string>
@@ -43,7 +39,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QPainter>
-#include <QMap>
 #include <QStringList>
 
 #include <QRegularExpression>
@@ -130,7 +125,7 @@ struct InsidedCard
   InsidedCard( uint32_t _offset, uint32_t _size, QVector< wstring > const & words ) :
   offset( _offset ), size( _size ), headwords( words )
   {}
-  InsidedCard() {}
+  InsidedCard() = default;
 };
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
@@ -148,21 +143,20 @@ bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 
 class DslDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
-  string dictionaryName;
   string preferredSoundDictionary;
   map< string, string > abrv;
-  Mutex dzMutex;
+  QMutex dzMutex;
   dictData * dz;
-  Mutex resourceZipMutex;
+  QMutex resourceZipMutex;
   IndexedZip resourceZip;
   BtreeIndex resourceZipIndex;
 
   QAtomicInt deferredInitDone;
-  Mutex deferredInitMutex;
+  QMutex deferredInitMutex;
   bool deferredInitRunnableStarted;
   QSemaphore deferredInitRunnableExited;
 
@@ -220,12 +214,8 @@ public:
   sptr< Dictionary::DataRequest > getResource( string const & name ) override
     ;
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                            int searchMode, bool matchCase,
-                                                            int distanceBetweenWords,
-                                                            int maxResults,
-                                                            bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   QString const& getDescription() override;
 
   QString getMainFilename() override;
@@ -330,7 +320,7 @@ DslDictionary::DslDictionary( string const & id,
 
 DslDictionary::~DslDictionary()
 {
-  Mutex::Lock _( deferredInitMutex );
+  QMutexLocker _( &deferredInitMutex );
 
   // Wait for init runnable to complete if it was ever started
   // if ( deferredInitRunnableStarted )
@@ -346,7 +336,7 @@ void DslDictionary::deferredInit()
 {
   if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) )
   {
-    Mutex::Lock _( deferredInitMutex );
+    QMutexLocker _( &deferredInitMutex );
 
     if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) )
       return;
@@ -372,7 +362,7 @@ void DslDictionary::doDeferredInit()
 {
   if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) )
   {
-    Mutex::Lock _( deferredInitMutex );
+    QMutexLocker _( &deferredInitMutex );
 
     if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) )
       return;
@@ -383,7 +373,7 @@ void DslDictionary::doDeferredInit()
     {
       // Don't lock index file - no one should be working with it until
       // the init is complete.
-      //Mutex::Lock _( idxMutex );
+      //QMutexLocker _( &idxMutex );
 
       chunks = std::shared_ptr<ChunkedStorage::Reader>(new ChunkedStorage::Reader(idx, idxHeader.chunksOffset));
 
@@ -525,7 +515,7 @@ void DslDictionary::loadArticle( uint32_t address,
     char * articleProps;
 
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
 
       articleProps = chunks->getBlock( address, chunk );
     }
@@ -542,7 +532,7 @@ void DslDictionary::loadArticle( uint32_t address,
     char * articleBody;
 
     {
-      Mutex::Lock _( dzMutex );
+      QMutexLocker _( &dzMutex );
 
       articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
     }
@@ -896,7 +886,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
             // Try reading from zip file
             if ( resourceZip.isOpen() )
             {
-              Mutex::Lock _( resourceZipMutex );
+              QMutexLocker _( &resourceZipMutex );
               resourceZip.loadFile( Utf8::decode( filename ), imgdata );
             }
           }
@@ -1266,7 +1256,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   wstring articleData;
 
   {
-    Mutex::Lock _( idxMutex );
+    QMutexLocker _( &idxMutex );
     articleProps = chunks->getBlock( articleAddress, chunk );
   }
 
@@ -1279,7 +1269,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   char * articleBody;
 
   {
-    Mutex::Lock _( dzMutex );
+    QMutexLocker _( &dzMutex );
     articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
   }
 
@@ -1692,7 +1682,7 @@ void DslArticleRequest::run()
                     + "</span>";
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     data.resize( data.size() + articleText.size() );
 
@@ -1775,7 +1765,7 @@ void DslResourceRequest::run()
   {
     try
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       File::loadFromFile( n, data );
     }
@@ -1783,7 +1773,7 @@ void DslResourceRequest::run()
     {
       n = dict.getResourceDir1() + resourceName;
       try {
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
 
         File::loadFromFile( n, data );
       }
@@ -1793,7 +1783,7 @@ void DslResourceRequest::run()
 
         try
         {
-          Mutex::Lock _( dataMutex );
+          QMutexLocker _( &dataMutex );
 
           File::loadFromFile( n, data );
         }
@@ -1803,9 +1793,7 @@ void DslResourceRequest::run()
 
           if ( dict.resourceZip.isOpen() )
           {
-            Mutex::Lock _( dict.resourceZipMutex );
-
-            Mutex::Lock __( dataMutex );
+            QMutexLocker _( &dataMutex );
 
             if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) )
               throw; // Make it fail since we couldn't read the archive
@@ -1820,11 +1808,11 @@ void DslResourceRequest::run()
     {
       // Convert it
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     hasAnyData = true;
   }
@@ -1846,13 +1834,16 @@ sptr< Dictionary::DataRequest > DslDictionary::getResource( string const & name 
 
 
 sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const & searchString,
-                                                                 int searchMode, bool matchCase,
-                                                                 int distanceBetweenWords,
-                                                                 int maxResults,
-                                                                 bool ignoreWordsOrder,
+                                                                 int searchMode,
+                                                                 bool matchCase,
+
                                                                  bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 } // anonymous namespace

@@ -70,7 +70,7 @@ public:
     QtSingleApplication(const QString &id, int &argc, char **argv);
 
     bool isRunning();
-    QString id() const;
+    QString appId() const;
 
     void setActivationWindow(QWidget* aw, bool activateOnMessage = true);
     QWidget* activationWindow() const;

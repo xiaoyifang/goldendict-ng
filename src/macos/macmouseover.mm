@@ -133,7 +133,7 @@ void MacMouseOver::timerShot()
 
 void MacMouseOver::handlePosition()
 {
-  Mutex::Lock _( mouseMutex );
+  QMutexLocker _( &mouseMutex );
 
   QString strToTranslate;
 

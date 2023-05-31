@@ -12,6 +12,7 @@
 #include "dict/hunspell.hh"
 #include "dictdfiles.hh"
 #include "dict/romaji.hh"
+#include "dict/customtransliteration.hh"
 #include "dict/russiantranslit.hh"
 #include "dict/german.hh"
 #include "dict/greektranslit.hh"
@@ -31,6 +32,7 @@
 #include "dict/slob.hh"
 #include "dict/gls.hh"
 #include "dict/lingualibre.hh"
+#include "metadata.hh"
 
 #ifndef NO_EPWING_SUPPORT
 #include "dict/epwing.hh"
@@ -155,6 +157,20 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
+
+  //handle the custom dictionary name
+  for ( const auto & dict : dictionaries ) {
+    auto baseDir = dict->getContainingFolder();
+    if ( baseDir.isEmpty() )
+      continue;
+
+    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+
+    auto dictMetaData = Metadata::load( filePath.toStdString() );
+    if ( dictMetaData && dictMetaData->name ) {
+      dict->setName( dictMetaData->name.value() );
+    }
+  }
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
@@ -212,7 +228,7 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 #endif
 
   addDicts(Romaji::makeDictionaries( cfg.transliteration.romaji ));
-
+  addDicts(CustomTranslit::makeDictionaries( cfg.transliteration.customTrans));
 
   // Make Russian transliteration
   if ( cfg.transliteration.enableRussianTransliteration )

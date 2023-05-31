@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-latest]
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
@@ -45,19 +45,22 @@ jobs:
           sudo apt-get install git pkg-config build-essential qt5-qmake 
           sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
           sudo apt-get install qtdeclarative5-dev libxtst-dev liblzo2-dev libbz2-dev 
-          sudo apt-get install libao-dev libavutil-dev libavformat-dev libeb16-dev
+          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
           sudo apt-get install libqt5webkit5-dev libqt5svg5-dev libqt5x11extras5-dev qttools5-dev 
           sudo apt-get install qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins doxygen libzstd-dev libspeechd-dev #libopencc-dev
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
+          sudo apt install libxapian-dev
           git clone https://github.com/BYVoid/OpenCC
           pwd
           cd OpenCC/
           make PREFIX=/usr -j$(nproc)
           sudo make install
           cd ..
+          sudo apt-get install libzim-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 
+          submodules: true
 
       - name: version-file
         shell: bash
@@ -67,7 +70,7 @@ jobs:
           
       - name: build goldendict
         run: |
-          qmake CONFIG+=release PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv
+          qmake CONFIG+=release PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv CONFIG+=use_xapian
           make INSTALL_ROOT=appdir -j`nproc` install; find appdir/
 
           #copy missing shared dll to appdir.
@@ -81,7 +84,7 @@ jobs:
           chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
           chmod a+x linuxdeploy-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.goldendict.GoldenDict.desktop 
+          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.xiaoyifang.GoldenDict_NG.desktop 
 
       - name: changelog
         id: changelog
@@ -134,5 +137,14 @@ jobs:
             **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)  
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
+            `-xapian` is built with [xapian](https://xapian.org/) support which offers 10X~20X performance 
+            ------------------------------
+            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
+            `-xapian` 表示使用的是 [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
+            比如：
+            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
+            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+
+
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  

@@ -1,7 +1,6 @@
 #include "audiooutput.hh"
 
 #include <QAudioFormat>
-#include <QDebug>
 #include <QtConcurrent/qtconcurrentrun.h>
 #include <QFuture>
 #include <QWaitCondition>

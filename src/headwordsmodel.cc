@@ -149,7 +149,7 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
     return;
 
   QSet< QString > headword;
-  Mutex::Lock _( lock );
+  QMutexLocker _( &lock );
 
   _dict->findHeadWordsWithLenth( index, &headword, 1000 );
   if( headword.isEmpty() )
@@ -187,7 +187,7 @@ bool HeadwordListModel::containWord( const QString & word )
 QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
 {
   QSet< QString > headword;
-  Mutex::Lock _( lock );
+  QMutexLocker _( &lock );
   _dict->findHeadWordsWithLenth( nodeIndex, &headword, 10000 );
 
   QSet< QString > filtered;

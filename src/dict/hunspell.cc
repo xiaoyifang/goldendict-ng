@@ -109,12 +109,12 @@ private:
   // crashes were discovered later when using several Hunspell dictionaries
   // simultaneously, and we've switched to have a single mutex for all hunspell
   // calls - evidently it's not really reentrant.
-  static Mutex & getHunspellMutex()
+  static QMutex & getHunspellMutex()
   {
-    static Mutex mutex;
+    static QMutex mutex;
     return mutex;
   }
-//  Mutex hunspellMutex;
+  //  QMutex hunspellMutex;
 };
 
 /// Encodes the given string to be passed to the hunspell object. May throw
@@ -126,13 +126,12 @@ string encodeToHunspell( Hunspell &, wstring const & );
 wstring decodeFromHunspell( Hunspell &, char const * );
 
 /// Generates suggestions via hunspell
-QVector< wstring > suggest( wstring & word, Mutex & hunspellMutex,
-                            Hunspell & hunspell );
+QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
 void getSuggestionsForExpression( wstring const & expression,
                                   vector< wstring > & suggestions,
-                                  Mutex & hunspellMutex,
+                                  QMutex & hunspellMutex,
                                   Hunspell & hunspell );
 
 /// Returns true if the string contains whitespace, false otherwise
@@ -183,7 +182,7 @@ vector< wstring > HunspellDictionary::getAlternateWritings( wstring const & word
 class HunspellArticleRequest: public Dictionary::DataRequest
 {
 
-  Mutex & hunspellMutex;
+  QMutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
@@ -192,9 +191,7 @@ class HunspellArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  HunspellArticleRequest( wstring const & word_,
-                          Mutex & hunspellMutex_,
-                          Hunspell & hunspell_ ):
+  HunspellArticleRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -204,7 +201,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by HunspellArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -239,7 +236,7 @@ void HunspellArticleRequest::run()
       return;
     }
 
-    Mutex::Lock _( hunspellMutex );
+    QMutexLocker _( &hunspellMutex );
 
     string encodedWord = encodeToHunspell( hunspell, trimmedWord );
 
@@ -286,7 +283,7 @@ void HunspellArticleRequest::run()
 
       result += "</div>";
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       data.resize( result.size() );
 
@@ -320,7 +317,7 @@ sptr< DataRequest > HunspellDictionary::getArticle( wstring const & word,
 class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 {
 
-  Mutex & hunspellMutex;
+  QMutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
@@ -330,9 +327,7 @@ class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  HunspellHeadwordsRequest( wstring const & word_,
-                            Mutex & hunspellMutex_,
-                            Hunspell & hunspell_ ):
+  HunspellHeadwordsRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -343,7 +338,7 @@ public:
 
   }
 
-  void run(); // Run from another thread by HunspellHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -382,7 +377,7 @@ void HunspellHeadwordsRequest::run()
 
     getSuggestionsForExpression( trimmedWord, results, hunspellMutex, hunspell );
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
     for( unsigned i = 0; i < results.size(); i++ )
       matches.push_back( results[ i ] );
 
@@ -393,7 +388,7 @@ void HunspellHeadwordsRequest::run()
 
     if ( !suggestions.empty() )
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       for( int x = 0; x < suggestions.size(); ++x )
         matches.push_back( suggestions[ x ] );
@@ -403,15 +398,14 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
-QVector< wstring > suggest( wstring & word, Mutex & hunspellMutex, Hunspell & hunspell )
+QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
   QVector< wstring > result;
 
   vector< string > suggestions;
 
-  try
-  {
-    Mutex::Lock _( hunspellMutex );
+  try {
+    QMutexLocker _( &hunspellMutex );
 
     string encodedWord = encodeToHunspell( hunspell, word );
 
@@ -471,7 +465,7 @@ sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( wstring c
 class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
 {
 
-  Mutex & hunspellMutex;
+  QMutex & hunspellMutex;
   Hunspell & hunspell;
   wstring word;
 
@@ -480,9 +474,7 @@ class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  HunspellPrefixMatchRequest( wstring const & word_,
-                              Mutex & hunspellMutex_,
-                              Hunspell & hunspell_ ):
+  HunspellPrefixMatchRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -492,7 +484,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by HunspellPrefixMatchRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -526,7 +518,7 @@ void HunspellPrefixMatchRequest::run()
       return;
     }
 
-    Mutex::Lock _( hunspellMutex );
+    QMutexLocker _( &hunspellMutex );
 
     string encodedWord = encodeToHunspell( hunspell, trimmedWord );
 
@@ -534,7 +526,7 @@ void HunspellPrefixMatchRequest::run()
     {
       // Known word -- add it to the result
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       matches.push_back( WordMatch( trimmedWord, 1 ) );
     }
@@ -555,8 +547,8 @@ sptr< WordSearchRequest > HunspellDictionary::prefixMatch( wstring const & word,
 }
 
 void getSuggestionsForExpression( wstring const & expression,
-                                  vector<wstring> & suggestions,
-                                  Mutex & hunspellMutex,
+                                  vector< wstring > & suggestions,
+                                  QMutex & hunspellMutex,
                                   Hunspell & hunspell )
 {
   // Analyze each word separately and use the first two suggestions, if any.

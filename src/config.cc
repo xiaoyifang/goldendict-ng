@@ -3,20 +3,19 @@
 
 #include "config.hh"
 #include "folding.hh"
-#include "wstring_qt.hh"
 #include <QDir>
 #include <QFile>
 #include <QtXml>
 #include "gddebug.hh"
 
-#include <stdint.h>
-
 #ifdef Q_OS_WIN32
-#include "shlobj.h"
+  //this is a windows header file.
+  #include <Shlobj.h>
 #endif
 
+#include <stdint.h>
+
 #include "atomic_rename.hh"
-#include "utils.hh"
 
 #include <QStandardPaths>
 
@@ -184,41 +183,25 @@ ScanPopupWindowFlags spwfFromInt( int id )
   return SPWF_default;
 }
 
-InputPhrase Preferences::sanitizeInputPhrase( QString const & inputPhrase ) const
+QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
-  InputPhrase result;
-
-  QString _phase = inputPhrase;
-  if( stripClipboard )
-  {
-    auto parts = inputPhrase.split( QChar::LineFeed, Qt::SkipEmptyParts );
-    if( !parts.empty() )
-    {
-      _phase = parts[ 0 ];
+  QString result = inputWord;
+  if ( stripClipboard ) {
+    auto parts = inputWord.split( QChar::LineFeed, Qt::SkipEmptyParts );
+    if ( !parts.empty() ) {
+      result = parts[ 0 ];
     }
   }
 
-  if( limitInputPhraseLength && _phase.size() > inputPhraseLengthLimit )
-  {
-    gdDebug( "Ignoring an input phrase %d symbols long. The configured maximum input phrase length is %d symbols.",
-             _phase.size(), inputPhraseLengthLimit );
-    return result;
+  if ( limitInputPhraseLength && result.size() > inputPhraseLengthLimit ) {
+    gdDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
+             result.size(),
+             inputPhraseLengthLimit );
+    return {};
   }
 
-  const QString withPunct = _phase.simplified().remove( QChar( 0xAD ) ); // Simplify whitespaces and remove soft hyphens;
-  result.phrase = Folding::trimWhitespaceOrPunct(  withPunct );
-  if ( !result.isValid() )
-    return result; // The suffix of an invalid input phrase must be empty.
-
-  const int prefixSize = withPunct.indexOf( result.phrase.at(0) );
-  const int suffixSize = withPunct.size() - prefixSize - result.phrase.size();
-  Q_ASSERT( suffixSize >= 0 );
-  Q_ASSERT( withPunct.size() - suffixSize - 1
-            == withPunct.lastIndexOf( result.phrase.at( result.phrase.size() - 1 ) ) );
-  if ( suffixSize != 0 )
-    result.punctuationSuffix = withPunct.right( suffixSize );
-
-  return result;
+  // Simplify whitespaces and remove soft hyphens (0xAD);
+  return Folding::trimWhitespace(  result.simplified() );
 }
 
 Preferences::Preferences():
@@ -251,7 +234,7 @@ Preferences::Preferences():
   ignoreOwnClipboardChanges( false ),
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
-  ignorePunctuation( false ),
+  ignorePunctuation( true ),
 #ifdef HAVE_X11
   // Enable both Clipboard and Selection by default so that X users can enjoy full
   // power and disable optionally.
@@ -699,6 +682,14 @@ Class load()
       applyBoolOption( c.transliteration.romaji.enableHiragana, romaji.namedItem( "enableHiragana" ) );
       applyBoolOption( c.transliteration.romaji.enableKatakana, romaji.namedItem( "enableKatakana" ) );
     }
+
+    QDomNode customtrans = transliteration.namedItem( "customtrans" );
+
+    if ( !customtrans.isNull() )
+    {
+      applyBoolOption( c.transliteration.customTrans.enable, customtrans.namedItem( "enable" ) );
+      c.transliteration.customTrans.context = customtrans.namedItem( "context" ).toElement().text() ;
+    }
   }
 
   QDomNode lingua = root.namedItem("lingua");
@@ -1055,21 +1046,6 @@ Class load()
       if ( !fts.namedItem( "searchMode" ).isNull() )
         c.preferences.fts.searchMode = fts.namedItem( "searchMode" ).toElement().text().toInt();
 
-      if ( !fts.namedItem( "matchCase" ).isNull() )
-        c.preferences.fts.matchCase = ( fts.namedItem( "matchCase" ).toElement().text() == "1" );
-
-      if ( !fts.namedItem( "maxArticlesPerDictionary" ).isNull() )
-        c.preferences.fts.maxArticlesPerDictionary = fts.namedItem( "maxArticlesPerDictionary" ).toElement().text().toInt();
-
-      if ( !fts.namedItem( "maxDistanceBetweenWords" ).isNull() )
-        c.preferences.fts.maxDistanceBetweenWords = fts.namedItem( "maxDistanceBetweenWords" ).toElement().text().toInt();
-
-      if ( !fts.namedItem( "useMaxArticlesPerDictionary" ).isNull() )
-        c.preferences.fts.useMaxArticlesPerDictionary = ( fts.namedItem( "useMaxArticlesPerDictionary" ).toElement().text() == "1" );
-
-      if ( !fts.namedItem( "useMaxDistanceBetweenWords" ).isNull() )
-        c.preferences.fts.useMaxDistanceBetweenWords = ( fts.namedItem( "useMaxDistanceBetweenWords" ).toElement().text() == "1" );
-
       if ( !fts.namedItem( "dialogGeometry" ).isNull() )
         c.preferences.fts.dialogGeometry = QByteArray::fromBase64( fts.namedItem( "dialogGeometry" ).toElement().text().toLatin1() );
 
@@ -1078,12 +1054,6 @@ Class load()
 
       if ( !fts.namedItem( "enabled" ).isNull() )
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
-
-      if ( !fts.namedItem( "ignoreWordsOrder" ).isNull() )
-        c.preferences.fts.ignoreWordsOrder = ( fts.namedItem( "ignoreWordsOrder" ).toElement().text() == "1" );
-
-      if ( !fts.namedItem( "ignoreDiacritics" ).isNull() )
-        c.preferences.fts.ignoreDiacritics = ( fts.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
 
       if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
@@ -1478,6 +1448,18 @@ void save( Class const & c )
     opt = dd.createElement( "enableKatakana" );
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKatakana ? "1":"0" ) );
     romaji.appendChild( opt );
+
+    //custom transliteration
+    QDomElement customtrans = dd.createElement( "customtrans" );
+    transliteration.appendChild( customtrans );
+
+    opt = dd.createElement( "enable" );
+    opt.appendChild( dd.createTextNode( c.transliteration.customTrans.enable ? "1":"0" ) );
+    customtrans.appendChild( opt );
+
+    opt = dd.createElement( "context" );
+    opt.appendChild( dd.createTextNode( c.transliteration.customTrans.context ) );
+    customtrans.appendChild( opt );
   }
 
   {
@@ -2054,26 +2036,6 @@ void save( Class const & c )
       opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.searchMode ) ) );
       hd.appendChild( opt );
 
-      opt = dd.createElement( "matchCase" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.matchCase ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "maxArticlesPerDictionary" );
-      opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.maxArticlesPerDictionary ) ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "maxDistanceBetweenWords" );
-      opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.maxDistanceBetweenWords ) ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "useMaxArticlesPerDictionary" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.useMaxArticlesPerDictionary ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "useMaxDistanceBetweenWords" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.useMaxDistanceBetweenWords ? "1" : "0" ) );
-      hd.appendChild( opt );
-
       opt = dd.createElement( "dialogGeometry" );
       opt.appendChild( dd.createTextNode( QString::fromLatin1( c.preferences.fts.dialogGeometry.toBase64() ) ) );
       hd.appendChild( opt );
@@ -2084,14 +2046,6 @@ void save( Class const & c )
 
       opt = dd.createElement( "enabled" );
       opt.appendChild( dd.createTextNode( c.preferences.fts.enabled ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "ignoreWordsOrder" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.ignoreWordsOrder ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "ignoreDiacritics" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.ignoreDiacritics ? "1" : "0" ) );
       hd.appendChild( opt );
 
       opt = dd.createElement( "maxDictionarySize" );

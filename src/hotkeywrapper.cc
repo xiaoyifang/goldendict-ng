@@ -6,8 +6,9 @@
 #include "hotkeywrapper.hh"
 #include "gddebug.hh"
 
+#include <QSessionManager>
+#include <QTimer>
 #include <QWidget>
-#include <QMainWindow>
 
 #ifdef Q_OS_WIN
 #include "mainwindow.hh"
@@ -114,7 +115,7 @@ HotkeyWrapper::HotkeyWrapper(QObject *parent) : QThread( parent ),
 #ifdef Q_OS_WIN
   hwnd=(HWND)((static_cast<QMainWindow*>(parent))->winId());
 
-  gdWarning( "Handle global hotkeys via RegisterHotkey()" );
+  gdDebug( "Handle global hotkeys via RegisterHotkey()" );
 
 #else
   init();

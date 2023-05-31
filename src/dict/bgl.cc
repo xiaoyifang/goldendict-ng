@@ -2,43 +2,41 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "bgl.hh"
-#include "btreeidx.hh"
 #include "bgl_babylon.hh"
+#include "btreeidx.hh"
+#include "chunkedstorage.hh"
 #include "file.hh"
 #include "folding.hh"
-#include "utf8.hh"
-#include "chunkedstorage.hh"
+#include "ftshelpers.hh"
+#include "gddebug.hh"
+#include "htmlescape.hh"
 #include "langcoder.hh"
 #include "language.hh"
-#include "gddebug.hh"
+#include "utf8.hh"
+#include "utils.hh"
 
-#include "htmlescape.hh"
-#include "ftshelpers.hh"
-
+#include <ctype.h>
+#include <list>
 #include <map>
 #include <set>
-#include <list>
-#include <zlib.h>
-#include <ctype.h>
 #include <string.h>
+#include <zlib.h>
 
 #ifdef _MSC_VER
 #include <stub_msvc.h>
 #endif
 
+#include <QAtomicInt>
+#include <QPainter>
+#include <QRegularExpression>
 #include <QSemaphore>
 #include <QThreadPool>
-#include <QAtomicInt>
 
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #else
 #include <QRegExp>
 #endif
-
-#include <QRegularExpression>
-
-#include "utils.hh"
 
 namespace Bgl {
 
@@ -186,19 +184,15 @@ namespace
 
   class BglDictionary: public BtreeIndexing::BtreeDictionary
   {
-    Mutex idxMutex;
+    QMutex idxMutex;
     File::Class idx;
     IdxHeader idxHeader;
-    string dictionaryName;
     ChunkedStorage::Reader chunks;
 
   public:
 
     BglDictionary( string const & id, string const & indexFile,
                    string const & dictionaryFile );
-
-    string getName() noexcept override
-    { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
@@ -227,12 +221,8 @@ namespace
     sptr< Dictionary::DataRequest > getResource( string const & name ) override
       ;
 
-    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                              int searchMode, bool matchCase,
-                                                              int distanceBetweenWords,
-                                                              int maxResults,
-                                                              bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics ) override;
+    sptr< Dictionary::DataRequest >
+    getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     QString const& getDescription() override;
 
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
@@ -320,7 +310,7 @@ namespace
 
         vector< char > chunk;
 
-        Mutex::Lock _( idxMutex );
+        QMutexLocker _( &idxMutex );
 
         char * iconData = chunks.getBlock( idxHeader.iconAddress, chunk );
 
@@ -364,7 +354,7 @@ namespace
   {
     vector< char > chunk;
 
-    Mutex::Lock _( idxMutex );
+    QMutexLocker _( &idxMutex );
 
     char * articleData = chunks.getBlock( offset, chunk );
 
@@ -386,26 +376,26 @@ namespace
       dictionaryDescription = "NONE";
     else
     {
-      Mutex::Lock _( idxMutex );
+      QMutexLocker _( &idxMutex );
       vector< char > chunk;
       char * dictDescription = chunks.getBlock( idxHeader.descriptionAddress, chunk );
       string str( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+        dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                                  .arg( Html::unescape( QString::fromUtf8( str.data(), str.size() ) ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;
 
       str = string( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "Author: %1%2" ) )
+        dictionaryDescription += QObject::tr( "Author: %1%2" )
                                  .arg( QString::fromUtf8( str.data(), str.size() ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;
 
       str = string( dictDescription );
       if( !str.empty() )
-        dictionaryDescription += QString( QObject::tr( "E-mail: %1%2" ) )
+        dictionaryDescription += QObject::tr( "E-mail: %1%2" )
                                  .arg( QString::fromUtf8( str.data(), str.size() ) )
                                  .arg( "\n\n" );
       dictDescription += str.size() + 1;
@@ -508,7 +498,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglHeadwordsRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -560,7 +550,7 @@ void BglHeadwordsRequest::run()
     {
       // The headword seems to differ from the input word, which makes the
       // input word its synonym.
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       matches.push_back( headwordDecoded );
     }
@@ -631,7 +621,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -850,7 +840,7 @@ void BglArticleRequest::run()
            .toUtf8().data();
 
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -876,7 +866,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
 class BglResourceRequest: public Dictionary::DataRequest
 {
 
-  Mutex & idxMutex;
+  QMutex & idxMutex;
   File::Class & idx;
   uint32_t resourceListOffset, resourcesCount;
   string name;
@@ -886,7 +876,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  BglResourceRequest( Mutex & idxMutex_,
+  BglResourceRequest( QMutex & idxMutex_,
                       File::Class & idx_,
                       uint32_t resourceListOffset_,
                       uint32_t resourcesCount_,
@@ -902,7 +892,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by BglResourceRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -930,7 +920,7 @@ void BglResourceRequest::run()
        ++i )
     *i = tolower( *i );
 
-  Mutex::Lock _( idxMutex );
+  QMutexLocker _( &idxMutex );
 
   idx.seek( resourceListOffset );
 
@@ -953,7 +943,7 @@ void BglResourceRequest::run()
 
       idx.seek( offset );
 
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       data.resize( idx.read< uint32_t >() );
 
@@ -1069,13 +1059,16 @@ sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name 
 }
 
 sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( QString const & searchString,
-                                                                 int searchMode, bool matchCase,
-                                                                 int distanceBetweenWords,
-                                                                 int maxResults,
-                                                                 bool ignoreWordsOrder,
+                                                                 int searchMode,
+                                                                 bool matchCase,
+
                                                                  bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 

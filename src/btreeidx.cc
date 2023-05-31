@@ -51,8 +51,7 @@ string const & BtreeDictionary::ensureInitDone()
   return empty;
 }
 
-void BtreeIndex::openIndex( IndexInfo const & indexInfo,
-                            File::Class & file, Mutex & mutex )
+void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Class & file, QMutex & mutex )
 {
   indexNodeSize = indexInfo.btreeMaxElements;
   rootOffset = indexInfo.rootOffset;
@@ -302,7 +301,7 @@ void BtreeWordSearchRequest::findMatches()
         {
           // Exact or prefix match
 
-          Mutex::Lock _( dataMutex );
+          QMutexLocker _( &dataMutex );
 
           for( unsigned x = 0; x < chain.size(); ++x )
           {
@@ -354,7 +353,7 @@ void BtreeWordSearchRequest::findMatches()
 
           if ( nextLeaf )
           {
-            Mutex::Lock _( *dict.idxFileMutex );
+            QMutexLocker _( dict.idxFileMutex );
 
             dict.readNode( nextLeaf, leaf );
             leafEnd = &leaf.front() + leaf.size();
@@ -470,9 +469,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
 {
   if ( !idxFile )
     throw exIndexWasNotOpened();
-  
-  Mutex::Lock _( *idxFileMutex );
-  
+
+  QMutexLocker _( idxFileMutex );
+
   // Lookup the index by traversing the index btree
 
   // vector< wchar > wcharBuffer;
@@ -818,9 +817,8 @@ void BtreeIndex::antialias( wstring const & str,
 
     if ( entry != caseFolded )
       chain.erase( chain.begin() + x );
-    else
-    if ( chain[ x ].prefix.size() ) // If there's a prefix, merge it with the word,
-                                    // since it's what dictionaries expect
+    else if ( !chain[ x ].prefix.empty() ) // If there's a prefix, merge it with the word,
+                                           // since it's what dictionaries expect
     {
       chain[ x ].word.insert( 0, chain[ x ].prefix );
       chain[ x ].prefix.clear();
@@ -848,7 +846,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
     uint32_t totalChainsLength = 0;
 
-    IndexedWords::const_iterator nextWord = nextIndex;
+    auto nextWord = nextIndex;
 
     for( unsigned x = indexSize; x--; ++nextWord )
     {
@@ -856,8 +854,8 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
       vector< WordArticleLink > const & chain = nextWord->second;
 
-      for( unsigned y = 0; y < chain.size(); ++y )
-        totalChainsLength += chain[ y ].word.size() + 1 + chain[ y ].prefix.size() + 1 + sizeof( uint32_t );
+      for ( const auto & y : chain )
+        totalChainsLength += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
     }
 
     uncompressedData.resize( sizeof( uint32_t ) + totalChainsLength );
@@ -877,18 +875,17 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
       uint32_t size = 0;
 
-      for( unsigned y = 0; y < chain.size(); ++y )
-      {
-        memcpy( ptr, chain[ y ].word.c_str(), chain[ y ].word.size() + 1 );
-        ptr += chain[ y ].word.size() + 1;
+      for ( const auto & y : chain ) {
+        memcpy( ptr, y.word.c_str(), y.word.size() + 1 );
+        ptr += y.word.size() + 1;
 
-        memcpy( ptr, chain[ y ].prefix.c_str(), chain[ y ].prefix.size() + 1 );
-        ptr += chain[ y ].prefix.size() + 1;
+        memcpy( ptr, y.prefix.c_str(), y.prefix.size() + 1 );
+        ptr += y.prefix.size() + 1;
 
-        memcpy( ptr, &(chain[ y ].articleOffset), sizeof( uint32_t ) );
+        memcpy( ptr, &( y.articleOffset ), sizeof( uint32_t ) );
         ptr += sizeof( uint32_t );
 
-        size += chain[ y ].word.size() + 1 + chain[ y ].prefix.size() + 1 + sizeof( uint32_t );
+        size += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
       }
 
       memcpy( saveSizeHere, &size, sizeof( uint32_t ) );
@@ -1022,9 +1019,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
               wstring folded = Folding::applyWhitespaceOnly( wstring( wordBegin, wordSize ) );
               if( !folded.empty() )
               {
-                iterator i = insert( { Utf8::encode( folded ),
-                                       vector< WordArticleLink >() } )
-                               .first;
+                auto i = insert( { Utf8::encode( folded ), vector< WordArticleLink >() } ).first;
 
                 string utfWord=Utf8::encode( wstring(wordBegin, wordSize )) ;
                   string utfPrefix;
@@ -1042,7 +1037,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
     wstring folded = Folding::apply( nextChar );
     auto name      = Utf8::encode( folded );
 
-    iterator i = insert( { std::move(name), vector< WordArticleLink >() } ).first;
+    auto i = insert( { std::move( name ), vector< WordArticleLink >() } ).first;
 
     if( ( i->second.size() < 1024 ) || ( nextChar == wordBegin ) ) // Don't overpopulate chains with middle matches
     {
@@ -1083,7 +1078,7 @@ void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOf
 IndexInfo buildIndex( IndexedWords const & indexedWords, File::Class & file )
 {
   size_t indexSize = indexedWords.size();
-  IndexedWords::const_iterator nextIndex = indexedWords.begin();
+  auto nextIndex   = indexedWords.begin();
 
   // Skip any empty words. No point in indexing those, and some dictionaries
   // are known to have buggy empty-word entries (Stardict's jargon for instance).
@@ -1144,7 +1139,7 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   uint32_t nextLeaf = 0;
   uint32_t leafEntries;
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if ( !rootNodeLoaded )
   {
@@ -1282,7 +1277,7 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 {
   uint32_t currentNodeOffset = offsets;
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   char const * leaf = 0;
   char const * leafEnd = 0;
@@ -1320,7 +1315,7 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 //find the next chain ptr ,which is large than this currentChainPtr
 QSet<uint32_t> BtreeIndex::findNodes()
 {
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if( !rootNodeLoaded )
   {
@@ -1362,7 +1357,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
 
   std::sort( offsets.begin(), offsets.end() );
 
-  Mutex::Lock _( *idxFileMutex );
+  QMutexLocker _( idxFileMutex );
 
   if ( !rootNodeLoaded )
   {

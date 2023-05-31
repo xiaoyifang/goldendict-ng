@@ -72,7 +72,8 @@ quint32 getLanguageId( const QString & lang )
   switch( lstr.size() )
   {
     case 2: return LangCoder::code2toInt( lstr.toLatin1().data() );
-    case 3: return LangCoder::findIdForLanguageCode3( lstr.toLatin1().data() );
+    case 3:
+      return LangCoder::findIdForLanguageCode3( lstr.toStdString() );
   }
 
   return 0;
@@ -144,15 +145,14 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class XdxfDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Mutex idxMutex;
+  QMutex idxMutex;
   File::Class idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
-  Mutex dzMutex;
+  QMutex dzMutex;
   dictData * dz;
-  Mutex resourceZipMutex;
+  QMutex resourceZipMutex;
   IndexedZip resourceZip;
-  string dictionaryName;
   map< string, string > abrv;
 
 public:
@@ -193,12 +193,8 @@ public:
 
   QString getMainFilename() override;
 
-  sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                            int searchMode, bool matchCase,
-                                                            int distanceBetweenWords,
-                                                            int maxResults,
-                                                            bool ignoreWordsOrder,
-                                                            bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -372,8 +368,8 @@ QString const& XdxfDictionary::getDescription()
             vector< char > chunk;
             char * descr;
             {
-              Mutex::Lock _( idxMutex );
-              descr = chunks->getBlock( idxHeader.descriptionAddress, chunk );
+        QMutexLocker _( &idxMutex );
+        descr = chunks->getBlock( idxHeader.descriptionAddress, chunk );
             }
             dictionaryDescription = QString::fromUtf8( descr, idxHeader.descriptionSize );
         }
@@ -431,14 +427,14 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
   }
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getSearchResults( QString const & searchString,
-                                                                  int searchMode, bool matchCase,
-                                                                  int distanceBetweenWords,
-                                                                  int maxResults,
-                                                                  bool ignoreWordsOrder,
-                                                                  bool ignoreDiacritics )
+sptr< Dictionary::DataRequest >
+XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 /// XdxfDictionary::getArticle()
@@ -467,7 +463,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by XdxfArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -587,7 +583,7 @@ void XdxfArticleRequest::run()
       result += cleaner;
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -618,9 +614,9 @@ void XdxfDictionary::loadArticle( uint32_t address,
   char * propertiesData;
 
   {
-    Mutex::Lock _( idxMutex );
-  
-    propertiesData = chunks->getBlock( address, chunk );
+      QMutexLocker _( &idxMutex );
+
+      propertiesData = chunks->getBlock( address, chunk );
   }
 
   if ( &chunk.front() + chunk.size() - propertiesData < 9 )
@@ -641,7 +637,7 @@ void XdxfDictionary::loadArticle( uint32_t address,
   char * articleBody;
 
   {
-    Mutex::Lock _( dzMutex );
+    QMutexLocker _( &dzMutex );
 
     // Note that the function always zero-pads the result.
     articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
@@ -963,7 +959,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by XdxfResourceRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -1002,7 +998,7 @@ void XdxfResourceRequest::run()
   {
     try
     {
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
 
       File::loadFromFile( n, data );
     }
@@ -1012,7 +1008,7 @@ void XdxfResourceRequest::run()
 
       try
       {
-        Mutex::Lock _( dataMutex );
+        QMutexLocker _( &dataMutex );
 
         File::loadFromFile( n, data );
       }
@@ -1022,9 +1018,7 @@ void XdxfResourceRequest::run()
 
         if ( dict.resourceZip.isOpen() )
         {
-          Mutex::Lock _( dict.resourceZipMutex );
-
-          Mutex::Lock __( dataMutex );
+          QMutexLocker _( &dataMutex );
 
           if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) )
             throw; // Make it fail since we couldn't read the archive
@@ -1037,11 +1031,11 @@ void XdxfResourceRequest::run()
     if ( Filetype::isNameOfTiff( resourceName ) )
     {
       // Convert it
-      Mutex::Lock _( dataMutex );
+      QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     hasAnyData = true;
   }

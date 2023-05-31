@@ -12,7 +12,6 @@
 #include "decompress.hh"
 #include "htmlescape.hh"
 #include "ftshelpers.hh"
-#include "wstring_qt.hh"
 
 #include <map>
 #include <set>
@@ -24,15 +23,12 @@
 
 #include <QString>
 #include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
-#include <QRegExp>
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat>
 #endif
 #include <QRegularExpression>
 
-#include "ufile.hh"
 #include "utils.hh"
 
 namespace Sdict {
@@ -128,11 +124,10 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class SdictDictionary: public BtreeIndexing::BtreeDictionary
 {
-    Mutex idxMutex, sdictMutex;
-    File::Class idx;
-    IdxHeader idxHeader;
+  QMutex idxMutex, sdictMutex;
+  File::Class idx;
+  IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
-    string dictionaryName;
     File::Class df;
 
   public:
@@ -168,12 +163,8 @@ class SdictDictionary: public BtreeIndexing::BtreeDictionary
 
     QString const & getDescription() override;
 
-    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                              int searchMode, bool matchCase,
-                                                              int distanceBetweenWords,
-                                                              int maxResults,
-                                                              bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics ) override;
+    sptr< Dictionary::DataRequest >
+    getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -384,7 +375,7 @@ void SdictDictionary::loadArticle( uint32_t address,
     vector< char > articleBody;
 
     {
-      Mutex::Lock _( sdictMutex );
+      QMutexLocker _( &sdictMutex );
       df.seek( articleOffset );
       df.read( &articleSize, sizeof(articleSize) );
       articleBody.resize( articleSize );
@@ -466,14 +457,14 @@ void SdictDictionary::getArticleText( uint32_t articleAddress, QString & headwor
   }
 }
 
-sptr< Dictionary::DataRequest > SdictDictionary::getSearchResults( QString const & searchString,
-                                                                   int searchMode, bool matchCase,
-                                                                   int distanceBetweenWords,
-                                                                   int maxResults,
-                                                                   bool ignoreWordsOrder,
-                                                                   bool ignoreDiacritics )
+sptr< Dictionary::DataRequest >
+SdictDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
-  return  std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 /// SdictDictionary::getArticle()
@@ -504,7 +495,7 @@ public:
 
   }
 
-  void run(); // Run from another thread by DslArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -625,7 +616,7 @@ void SdictArticleRequest::run()
         result += "</span>";
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -650,13 +641,13 @@ QString const& SdictDictionary::getDescription()
   if( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  dictionaryDescription = QString( QObject::tr( "Title: %1%2" ) )
+  dictionaryDescription = QObject::tr( "Title: %1%2" )
                           .arg( QString::fromUtf8( getName().c_str() ) )
                           .arg( "\n\n" );
 
   try
   {
-    Mutex::Lock _( sdictMutex );
+    QMutexLocker _( &sdictMutex );
 
     DCT_header dictHeader;
 
@@ -682,7 +673,7 @@ QString const& SdictDictionary::getDescription()
     else
       str = string( data.data(), size );
 
-    dictionaryDescription += QString( QObject::tr( "Copyright: %1%2" ) )
+    dictionaryDescription += QObject::tr( "Copyright: %1%2" )
                              .arg( QString::fromUtf8( str.c_str(), str.size() ) )
                              .arg( "\n\n" );
 
@@ -698,7 +689,7 @@ QString const& SdictDictionary::getDescription()
     else
       str = string( data.data(), size );
 
-    dictionaryDescription += QString( QObject::tr( "Version: %1%2" ) )
+    dictionaryDescription += QObject::tr( "Version: %1%2" )
                              .arg( QString::fromUtf8( str.c_str(), str.size() ) )
                              .arg( "\n\n" );
   }

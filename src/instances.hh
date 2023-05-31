@@ -33,7 +33,9 @@ struct Group
          Config::Group const & inactiveGroup );
 
   /// Creates an empty group.
-  Group( QString const & name_ );
+  explicit Group( QString const & name_ );
+
+  Group(unsigned id, QString const & name_);
 
   /// Makes the configuration group from the current contents.
   Config::Group makeConfigGroup();

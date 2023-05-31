@@ -7,15 +7,12 @@
 #else
 #include <QRegExp>
 #endif
-#include <QRunnable>
-#include <QSemaphore>
 #include <QList>
 #include <QtConcurrent>
 
 #include "dict/dictionary.hh"
 #include "btreeidx.hh"
 #include "fulltextsearch.hh"
-#include "chunkedstorage.hh"
 #include "folding.hh"
 #include "wstring_qt.hh"
 
@@ -23,30 +20,6 @@
 
 namespace FtsHelpers
 {
-
-enum
-{
-  FtsSignature = 0x58535446, // FTSX on little-endian, XSTF on big-endian
-  CurrentFtsFormatVersion = 2 + BtreeIndexing::FormatVersion,
-};
-
-#pragma pack(push,1)
-
-struct FtsIdxHeader
-{
-  uint32_t signature; // First comes the signature, FTSX
-  uint32_t formatVersion; // File format version
-  uint32_t chunksOffset; // The offset to chunks' storage
-  uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
-  uint32_t indexRootOffset;
-  uint32_t wordCount; // Number of unique words this dictionary has
-}
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
-;
-
-#pragma pack(pop)
 
 bool ftsIndexIsOldOrBad( std::string const & indexFile,
                          BtreeIndexing::BtreeDictionary * dict );
@@ -59,14 +32,7 @@ bool parseSearchString( QString const & str, QStringList & IndexWords,
                         bool & hasCJK,
                         bool ignoreWordsOrder = false );
 
-void parseArticleForFts( uint32_t articleAddress, QString & articleText,
-                         QMap< QString, QVector< uint32_t > > & words,
-                         bool handleRoundBrackets = false );
-
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
-#ifdef USE_XAPIAN
-void makeFTSIndexXapian( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
-#endif
 bool isCJKChar( ushort ch );
 
 class FTSResultsRequest : public Dictionary::DataRequest
@@ -76,12 +42,6 @@ class FTSResultsRequest : public Dictionary::DataRequest
   QString searchString;
   int searchMode;
   bool matchCase;
-  int distanceBetweenWords;
-  int maxResults;
-  bool hasCJK;
-  bool ignoreWordsOrder;
-  bool ignoreDiacritics;
-  int wordsInIndex;
 
   QAtomicInt isCancelled;
 
@@ -90,49 +50,17 @@ class FTSResultsRequest : public Dictionary::DataRequest
 
   QList< FTS::FtsHeadword > * foundHeadwords;
 
-  void checkArticles( QVector< uint32_t > const & offsets,
-                      QStringList const & words,
-                      QRegExp const & searchRegexp = QRegExp() );
-  QRegularExpression createMatchRegex( QRegExp const & searchRegexp );
-
-  void checkSingleArticle( uint32_t offset,
-                           QStringList const & words,
-                           QRegularExpression const & searchRegexp = QRegularExpression() );
-
-  void indexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                    sptr< ChunkedStorage::Reader > chunks,
-                    QStringList & indexWords,
-                    QStringList & searchWords, QRegExp & regexp );
-
-  void combinedIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                            sptr< ChunkedStorage::Reader > chunks,
-                            QStringList & indexWords,
-                            QStringList & searchWords,
-                            QRegExp & regexp );
-
-  void fullIndexSearch( BtreeIndexing::BtreeIndex & ftsIndex,
-                        sptr< ChunkedStorage::Reader > chunks,
-                        QStringList & indexWords,
-                        QStringList & searchWords,
-                        QRegExp & regexp );
-
-  void fullSearch( QStringList & searchWords, QRegExp & regexp );
-
 public:
 
-  FTSResultsRequest( BtreeIndexing::BtreeDictionary & dict_, QString const & searchString_,
-                     int searchMode_, bool matchCase_, int distanceBetweenWords_, int maxResults_,
-                     bool ignoreWordsOrder_, bool ignoreDiacritics_ ):
+  FTSResultsRequest( BtreeIndexing::BtreeDictionary & dict_,
+                     QString const & searchString_,
+                     int searchMode_,
+                     bool matchCase_,
+                     bool ignoreDiacritics_ ):
     dict( dict_ ),
     searchString( searchString_ ),
     searchMode( searchMode_ ),
-    matchCase( matchCase_ ),
-    distanceBetweenWords( distanceBetweenWords_ ),
-    maxResults( maxResults_ ),
-    hasCJK( false ),
-    ignoreWordsOrder( ignoreWordsOrder_ ),
-    ignoreDiacritics( ignoreDiacritics_ ),
-    wordsInIndex( 0 )
+    matchCase( matchCase_ )
   {
     if( ignoreDiacritics_ )
       searchString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
@@ -143,9 +71,6 @@ public:
   }
 
   void run();
-  #ifdef USE_XAPIAN
-  void runXapian();
-  #endif
   virtual void cancel()
   {
     isCancelled.ref();
@@ -155,8 +80,8 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    if( foundHeadwords )
-      delete foundHeadwords;
+
+    delete foundHeadwords;
   }
 };
 

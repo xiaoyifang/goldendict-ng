@@ -1,9 +1,11 @@
-#include "globalbroadcaster.hh"
 #include "keyboardstate.hh"
-#include "langcoder.hh"
 #include "language.hh"
 #include "preferences.hh"
 #include "help.hh"
+
+#include <QDebug>
+#include <QDir>
+#include <QFontDatabase>
 #include <QMessageBox>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
@@ -627,11 +629,14 @@ void Preferences::on_buttonBox_accepted()
   if( prevWebFontFamily != currentFontFamily )
   {
     //reset to default font .
-    if( currentFontFamily.isEmpty() ) {
-      GlobalBroadcaster::instance()->profile->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    if( currentFontFamily.isEmpty() )
+    {
+      QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
     }
-    else {
-      GlobalBroadcaster::instance()->profile->settings()->setFontFamily( QWebEngineSettings::StandardFont, currentFontFamily );
+    else
+    {
+      QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
+                                                                      currentFontFamily );
     }
   }
 }

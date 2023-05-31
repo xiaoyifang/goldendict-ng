@@ -7,15 +7,17 @@
 #include "dict/dictionary.hh"
 #include "file.hh"
 
+#include <algorithm>
+#include <map>
+#include <stdint.h>
 #include <string>
 #include <vector>
-#include <map>
-#include <algorithm>
-#include <QVector>
-#include <QSet>
-#include <QList>
 
-#include <stdint.h>
+#include <QFuture>
+#include <QList>
+#include <QSet>
+#include <QVector>
+
 
 /// A base for the dictionary which creates a btree index to look up
 /// the words.
@@ -77,7 +79,7 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( IndexInfo const &, File::Class &, Mutex & );
+  void openIndex( IndexInfo const &, File::Class &, QMutex & );
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
@@ -139,7 +141,7 @@ protected:
 
 protected:
 
-  Mutex * idxFileMutex;
+  QMutex * idxFileMutex;
   File::Class * idxFile;
 
 private:
@@ -186,8 +188,10 @@ public:
   string const & ftsIndexName() const
   { return ftsIdxName; }
 
-  Mutex & getFtsMutex()
-  { return ftsIdxMutex; }
+  QMutex & getFtsMutex()
+  {
+    return ftsIdxMutex;
+  }
 
   virtual uint32_t getFtsIndexVersion()
   { return 0; }
@@ -207,7 +211,7 @@ public:
   virtual string const & ensureInitDone();
 
 protected:
-  Mutex ftsIdxMutex;
+  QMutex ftsIdxMutex;
   string ftsIdxName;
 
   friend class BtreeWordSearchRequest;
@@ -238,7 +242,7 @@ public:
 
   virtual void findMatches();
 
-  void run(); // Run from another thread by BtreeWordSearchRunnable
+  void run();
 
   virtual void cancel()
   {

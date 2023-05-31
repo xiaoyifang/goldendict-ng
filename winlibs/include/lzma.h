@@ -188,11 +188,11 @@
  * omitted on Cygwin but not on MinGW.
  */
 #ifndef LZMA_API_IMPORT
-#	if !defined(LZMA_API_STATIC) && defined(_WIN32) && !defined(__GNUC__)
-#		define LZMA_API_IMPORT __declspec(dllimport)
-#	else
-#		define LZMA_API_IMPORT
-#	endif
+  #if !0 && defined( _WIN32 ) && !defined( __GNUC__ )
+    #define LZMA_API_IMPORT __declspec( dllimport )
+  #else
+    #define LZMA_API_IMPORT
+  #endif
 #endif
 
 #ifndef LZMA_API_CALL
@@ -219,12 +219,16 @@
  */
 #ifndef lzma_nothrow
 #	if defined(__cplusplus)
-#		define lzma_nothrow throw()
-#	elif __GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3)
-#		define lzma_nothrow __attribute__((__nothrow__))
-#	else
-#		define lzma_nothrow
-#	endif
+    #if __cplusplus >= 201103L || ( defined( _MSVC_LANG ) && _MSVC_LANG >= 201103L )
+      #define lzma_nothrow noexcept
+    #else
+      #define lzma_nothrow throw()
+    #endif
+  #elif defined( __GNUC__ ) && ( __GNUC__ > 3 || ( __GNUC__ == 3 && __GNUC_MINOR__ >= 3 ) )
+    #define lzma_nothrow __attribute__( ( __nothrow__ ) )
+  #else
+    #define lzma_nothrow
+  #endif
 #endif
 
 
@@ -237,17 +241,17 @@
  * break anything if these are sometimes enabled and sometimes not, only
  * affects warnings and optimizations.
  */
-#if __GNUC__ >= 3
-#	ifndef lzma_attribute
-#		define lzma_attribute(attr) __attribute__(attr)
-#	endif
+#if defined( __GNUC__ ) && __GNUC__ >= 3
+  #ifndef lzma_attribute
+    #define lzma_attribute( attr ) __attribute__( attr )
+  #endif
 
-	/* warn_unused_result was added in GCC 3.4. */
-#	ifndef lzma_attr_warn_unused_result
-#		if __GNUC__ == 3 && __GNUC_MINOR__ < 4
-#			define lzma_attr_warn_unused_result
-#		endif
-#	endif
+                          /* warn_unused_result was added in GCC 3.4. */
+  #ifndef lzma_attr_warn_unused_result
+    #if __GNUC__ == 3 && __GNUC_MINOR__ < 4
+      #define lzma_attr_warn_unused_result
+    #endif
+  #endif
 
 #else
 #	ifndef lzma_attribute

@@ -53,6 +53,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          submodules: true
 
       - name: changelog
         id: changelog
@@ -92,7 +93,7 @@ jobs:
         shell: cmd
         run: |
           # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.msvc_arch }}
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv CONFIG+=use_xapian
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
@@ -140,6 +141,15 @@ jobs:
             **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
+            `-xapian` is built with [xapian](https://xapian.org/) support which offers 10X~20X performance 
+            ------------------------------
+            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
+            `-xapian` 表示使用的是 [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
+            比如：
+            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
+            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+
+
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  
       - name: upload goldendict.exe only
@@ -176,7 +186,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}/GoldenDict-ng-v23-Installer.exe
-          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}-Installer.exe
+          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-Installer.exe
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}

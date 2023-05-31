@@ -1,9 +1,14 @@
 #include "metadata.hh"
 #include "toml.hpp"
 #include <QDebug>
+#include <QFile>
 
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
 {
+  if ( !QFile::exists( QString::fromStdString( std::string{ filepath } ) ) ) {
+    return std::nullopt;
+  }
+
   // by default, the optional will be initialized as std::nullopt
   Metadata::result result{};
   toml::table tbl;

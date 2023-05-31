@@ -1,9 +1,11 @@
 #include "lingualibre.hh"
 #include "utf8.hh"
 #include "audiolink.hh"
-#include <string>
-#include <mutex.hh>
+
+#include <QJsonArray>
 #include <QJsonDocument>
+
+#include <string>
 #include <utility>
 
 namespace Lingua {
@@ -408,10 +410,12 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 
   sptr< QNetworkReply > netReply = netReplies.front().reply;
 
-  if( isFinished() || // Was cancelled
-      !netReply->isFinished() ||
-      netReply->error() != QNetworkReply::NoError  ){
+  if ( isFinished() ) {
+    return;
+  }
+  if ( !netReply->isFinished() || netReply->error() != QNetworkReply::NoError ) {
     qWarning()<< "Lingua query failed: " << netReply->error();
+    cancel();
     return;
   }
 
@@ -481,7 +485,7 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 
     articleBody += "</p>";
 
-    Mutex::Lock _( dataMutex );
+    QMutexLocker _( &dataMutex );
 
     size_t prevSize = data.size();
     data.resize( prevSize + articleBody.size() );

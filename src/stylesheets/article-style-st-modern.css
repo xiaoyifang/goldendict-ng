@@ -5,10 +5,7 @@ html
 
 body
 {
-  margin-top: 1px;
-  margin-right: 3px;
-  margin-left:  2px;
-  margin-bottom: 3px;
+  margin: 0;
   background: white;
 }
 
@@ -31,6 +28,8 @@ a:hover
   border: 1px solid #d0dde2;
   border-radius: 8px;
   background: white;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .gdactivearticle
@@ -150,6 +149,10 @@ a:hover
 
 .gdcollapseicon:hover {
   content:url('qrc:///icons/collapse_article_hovered.png');
+}
+
+.gdarticlebody{
+  position: relative;
 }
 
 /* The first headword in a (possibly) multi-headword DSL article */

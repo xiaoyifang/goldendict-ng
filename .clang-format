@@ -77,10 +77,10 @@ IndentCaseBlocks: false
 IndentGotoLabels: true
 IndentPPDirectives: BeforeHash
 IndentExternBlock: AfterExternBlock
-IndentRequiresClause: true
+# IndentRequiresClause: true
 IndentWidth: 2
 IndentWrappedFunctionNames: false
-InsertBraces: false
+# InsertBraces: false
 InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: true
 LambdaBodyIndentation: Signature
@@ -104,7 +104,7 @@ PPIndentWidth:   -1
 ReferenceAlignment: Pointer
 ReflowComments: false
 SortIncludes: Never
-RequiresClausePosition: OwnLine
+# RequiresClausePosition: OwnLine
 RemoveBracesLLVM: false
 SeparateDefinitionBlocks: Leave
 ShortNamespaceLines: 1

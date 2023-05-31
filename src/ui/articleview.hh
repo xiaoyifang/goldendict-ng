@@ -86,8 +86,9 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QStringList allMatches;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened, ftsSearchMatchCase;
-  int ftsPosition;
+  bool ftsSearchIsOpened = false;
+  bool ftsSearchMatchCase = false;
+  int ftsPosition=0;
 
   QString delayedHighlightText;
 
@@ -134,10 +135,6 @@ public:
   /// contexts is an optional map of context values to be passed for dictionaries.
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
-  void showDefinition( Config::InputPhrase const & phrase, unsigned group,
-                       QString const & scrollTo = QString(),
-                       Contexts const & contexts = Contexts() );
-
   void showDefinition( QString const & word, unsigned group,
                        QString const & scrollTo = QString(),
                        Contexts const & contexts = Contexts() );
@@ -192,7 +189,10 @@ public:
   void forward();
 
   /// Takes the focus to the view
-  void focus() { webview->setFocus( Qt::ShortcutFocusReason ); }
+  void focus()
+  {
+    webview->setFocus();
+  }
 
   /// Sends *word* to Anki.
   void handleAnkiAction();
@@ -228,7 +228,7 @@ public:
   QString getTitle();
 
   /// Returns the phrase translated by the current article.
-  Config::InputPhrase getPhrase() const;
+ QString getWord() const;
 
   /// Prints current article
   void print( QPrinter * ) const;
@@ -334,7 +334,6 @@ public slots:
 private slots:
   void inspectElement();
   void loadFinished( bool ok );
-  void loadProgress(int);
   void handleTitleChanged( QString const & title );
   void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
@@ -351,6 +350,8 @@ private slots:
 
   /// We handle pasting by attempting to define the word in clipboard.
   void pasteTriggered();
+
+  unsigned getCurrentGroup();
 
   /// Nagivates to the previous article relative to the active one.
   void moveOneArticleUp();

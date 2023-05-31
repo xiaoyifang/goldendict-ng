@@ -50,6 +50,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          submodules: true
 
       - name: changelog
         id: changelog
@@ -82,6 +83,19 @@ jobs:
           echo "$previousTag">version.txt
           cat version.txt
 
+      - name: vcpkg install
+        shell: powershell
+        run: |   
+          git clone --depth 1 https://github.com/microsoft/vcpkg.git
+          .\vcpkg\bootstrap-vcpkg.bat
+          # .\vcpkg\vcpkg.exe install  ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  --triplet=x64-windows-release
+          .\vcpkg\vcpkg.exe install breakpad --triplet=x64-windows-release
+      - name: copy vcpkg packages into winlibs
+        shell: bash
+        run: |   
+          cp -R vcpkg/packages/breakpad_x64-windows-release/*  thirdparty/breakpad
+          ls -al thirdparty/breakpad
+
       # # msvc编译
       - uses: ilammy/msvc-dev-cmd@v1
       #   with:
@@ -90,7 +104,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
@@ -111,10 +125,6 @@ jobs:
            $name = ${env:archiveName}
            echo "::set-output name=packageName::$name" 
     
-#       - uses: actions/upload-artifact@v2
-#         with:
-#           name: ${{ steps.package.outputs.packageName }}
-#           path: ${{ steps.package.outputs.packageName }}.zip
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -140,6 +150,15 @@ jobs:
             **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)
 
             Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
+            `-xapian` is built with [xapian](https://xapian.org/) support which offers 10X~20X performance 
+            ------------------------------
+            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
+            `-xapian` 表示使用的是 [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
+            比如：
+            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
+            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+
+
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  
 
@@ -153,6 +172,17 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
+
+      - name: upload pdb
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/GoldenDict.pdb
+          asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-xapian-GoldenDict.pdb
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true 
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}          
 
       - name: copy nsis 
         shell: bash
@@ -173,7 +203,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}/GoldenDict-ng-v23-Installer.exe
-          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}-xapian-Installer.exe
+          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-Installer.exe
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}

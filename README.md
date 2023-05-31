@@ -1,8 +1,10 @@
 # GoldenDict-ng
 
+[![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
-[![Windows](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/windows.yml) [![Ubuntu](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/ubuntu.yml)
-[![macos](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml/badge.svg)](https://github.com/xiaoyifang/goldendict/actions/workflows/macos.yml)
+[![Windows-6.x-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x-xapian.yml)
+[![Ubuntu-6.2-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2-xapian.yml)
+[![macos-homebrew-xapian](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew-xapian.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew-xapian.yml)
 
 The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
 supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
@@ -17,7 +19,7 @@ dictionaries.
 - webengine with latest html/css feature support
 - support >4GB dictionary
 - support highdpi screen resolution
-- built with xapian(optional) as fulltext engine
+- built with xapian as fulltext engine
 - support Qt5.15.2 and higher ,include latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
 - anki integration
@@ -154,8 +156,16 @@ sudo apt-get install libopencc-dev
 To add Zim and Slob formats support you need at first install lzma-dev and zstd-dev packages, then pass `"CONFIG+=zim_support"` to `qmake`
 
 ```
-sudo apt-get install liblzma-dev libzstd-dev
+sudo apt-get install liblzma-dev libzstd-dev libzim-dev
 ```
+
+**Note**: Some linux distros do not support latest zim version, so you need to compile from latest source.
+On Windows,  you can use vcpkg to compile the libzim
+```
+vcpkg install libzim:x64-windows
+```
+and copy the corresponding(debug/release) library to the `winlibs/lib` folder. the zim's `include` directory to the `winlibs/include` directory.
+
 
 #### Building without Epwing format support
 
@@ -182,13 +192,12 @@ make install
 
  On Windows,follow the instructions in the xapian-core/INSTALL Visual Studio parts.（**xapian does not support to use the  Debug lib in Windows. have to debug in release version mode using xapian's release lib**）.
 A precompiled version of xapian lib has provided in winlibs
+On Linux,  install libxapian-dev package using package manager.
+On Mac, use homebrew to install xapian `brew install xapian`
 
-use `CONFIG+=use_xapian` to enable this feature. when enabled ,xapian will be used to support as the the fulltext's backend engine.
+Goldendict-ng has used xapian as the default and the only one fulltext engine.
 
-```
-qmake "CONFIG+=use_xapian"
-```
-
+#### use iconv (recommend to enable)
 use `CONFIG+=use_iconv` to enable this feature. when enabled ,iconv will be used to convert encoding other than the QTextCodec(which will be deprecated in future Qt version)
 
 ```
@@ -196,6 +205,39 @@ qmake "CONFIG+=use_iconv"
 ```
 
 when enabled ,iconv should be installed on the platform at the same time.
+
+#### use breakpad
+
+use `CONFIG+=use_breakpad` to enable this crash dump. when enabled [breakpad](https://chromium.googlesource.com/breakpad/breakpad/+/master/docs), goldendict will generate a crash dump alongside with Goldendict in the `crash` directory.
+
+on Windows:
+`vcpkg install breakpad:x64-windows-release` and copy the installed packages into `thirdparty/breakpad` directory.
+with a structure like this:
+```
+├─breakpad
+│  ├─include
+│  │  ├─client
+│  │  │  └─windows
+│  │  │      ├─common
+│  │  │      ├─crash_generation
+│  │  │      ├─handler
+│  │  │      └─sender
+│  │  ├─common
+│  │  │  └─windows
+│  │  └─google_breakpad
+│  │      ├─common
+│  │      └─processor
+│  └─lib
+```
+
+on Mac/Linux:
+[vcpkg](https://techviewleo.com/install-vcpkg-c-library-manager-on-linux-macos-windows/) can also be used or you can just install breakpad from source or use precompiled packages. 
+
+Then enable google breakpad like this with qmake:
+
+```
+qmake "CONFIG+=use_breakpad"
+```
 
 ## Support
 
@@ -210,4 +252,8 @@ This project is licensed under the <b>GNU GPLv3+</b> license, a copy of which ca
 ## History
 
 The original project was developed at <http://goldendict.org/> and <https://github.com/goldendict/goldendict>.
+
+## Thank JetBrains for the help
+
+[![JetBrains Black Box Logo logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png)](https://jb.gg/OpenSourceSupport)
 

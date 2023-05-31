@@ -1,20 +1,24 @@
 #ifndef __FULLTEXTSEARCH_HH_INCLUDED__
 #define __FULLTEXTSEARCH_HH_INCLUDED__
 
+#include <QAbstractListModel>
+#include <QAction>
+#include <QList>
+#include <QTimer>
+#include <QThread>
+#include <QRunnable>
 #include <QSemaphore>
 #include <QStringList>
+
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #else
 #include <QRegExp>
 #endif
-#include <QAbstractListModel>
-#include <QList>
-#include <QAction>
 
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
-#include "mutex.hh"
+
 #include "config.hh"
 #include "instances.hh"
 #include "delegate.hh"
@@ -97,8 +101,6 @@ public:
 
   ~Indexing()
   {
-
-
     emit sendNowIndexingName( QString() );
     hasExited.release();
   }
@@ -143,10 +145,10 @@ protected:
   std::vector< sptr< Dictionary::Class > > dictionaries;
   bool started;
   QString nowIndexing;
-  Mutex nameMutex;
+  QMutex nameMutex;
 
 private slots:
-  void setNowIndexedName( QString name );
+  void setNowIndexedName( const QString & name );
 
 signals:
   void newIndexingName( QString name );
@@ -195,8 +197,6 @@ class FullTextSearchDialog : public QDialog
   std::vector< Instances::Group > const & groups;
   unsigned group;
   std::vector< sptr< Dictionary::Class > > activeDicts;
-  bool ignoreWordsOrder;
-  bool ignoreDiacritics;
 
   std::list< sptr< Dictionary::DataRequest > > searchReqs;
 
@@ -236,9 +236,6 @@ private slots:
   void setNewIndexingName( QString );
   void saveData();
   void accept();
-  void setLimitsUsing();
-  void ignoreWordsOrderClicked();
-  void ignoreDiacriticsClicked();
   void searchReqFinished();
   void matchCount(int);
   void reject();

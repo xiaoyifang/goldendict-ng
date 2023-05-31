@@ -3,13 +3,18 @@
 
 #include <QObject>
 #include <vector>
-#include <QWebEngineProfile>
 #include "config.hh"
 
 struct ActiveDictIds
 {
+  unsigned groupId;
   QString word;
   QStringList dictIds;
+
+  operator QString() const
+  {
+    return QString( "groupId:%1,word:%2,dictId:%3" ).arg( QString::number( groupId ), word, dictIds.join( "," ) );
+  }
 };
 
 class GlobalBroadcaster : public QObject
@@ -28,9 +33,8 @@ public:
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
-  QWebEngineProfile * profile;
   //hold the dictionary id;
-  QSet<QString> collapsedDicts;
+  QSet< QString > collapsedDicts;
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
 
@@ -38,6 +42,8 @@ public:
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );
+
+  void indexingDictionary( QString );
 };
 
 #endif // GLOBAL_GLOBALBROADCASTER_H

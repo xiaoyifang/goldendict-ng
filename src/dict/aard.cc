@@ -223,23 +223,18 @@ map< string, string > parseMetaData( string const & metaData )
 
 class AardDictionary: public BtreeIndexing::BtreeDictionary
 {
-    Mutex idxMutex;
-    Mutex aardMutex;
+    QMutex idxMutex;
+    QMutex aardMutex;
     File::Class idx;
     IdxHeader idxHeader;
     ChunkedStorage::Reader chunks;
-    string dictionaryName;
     File::Class df;
 
   public:
 
-    AardDictionary( string const & id, string const & indexFile,
-                     vector< string > const & dictionaryFiles );
+    AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
     ~AardDictionary();
-
-    string getName() noexcept override
-    { return dictionaryName; }
 
     map< Dictionary::Property, string > getProperties() noexcept override
     { return map< Dictionary::Property, string >(); }
@@ -264,12 +259,8 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
 
     QString const& getDescription() override;
 
-    sptr< Dictionary::DataRequest > getSearchResults( QString const & searchString,
-                                                              int searchMode, bool matchCase,
-                                                              int distanceBetweenWords,
-                                                              int maxResults,
-                                                              bool ignoreWordsOrder,
-                                                              bool ignoreDiacritics ) override;
+    sptr< Dictionary::DataRequest >
+    getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
     void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
@@ -430,8 +421,8 @@ void AardDictionary::loadArticle( quint32 address,
       articleText = QObject::tr( "Article loading error" ).toStdString();
       try
       {
-        Mutex::Lock _( aardMutex );
-        df.seek( articleOffset );
+            QMutexLocker _( &aardMutex );
+            df.seek( articleOffset );
         df.read( &size, sizeof(size) );
         articleSize = qFromBigEndian( size );
 
@@ -542,7 +533,7 @@ QString const& AardDictionary::getDescription()
     vector< char > data;
 
     {
-        Mutex::Lock _( aardMutex );
+        QMutexLocker _( &aardMutex );
         df.seek( 0 );
         df.read( &dictHeader, sizeof(dictHeader) );
         size = qFromBigEndian( dictHeader.metaLength );
@@ -560,11 +551,11 @@ QString const& AardDictionary::getDescription()
     {
         map< string, string >::const_iterator iter = meta.find( "copyright" );
         if( iter != meta.end() )
-          dictionaryDescription = QString( QObject::tr( "Copyright: %1%2" ) ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+          dictionaryDescription =  QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
 
         iter = meta.find( "version" );
         if( iter != meta.end() )
-          dictionaryDescription = QString( QObject::tr( "Version: %1%2" ) ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+          dictionaryDescription = QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
 
         iter = meta.find( "description" );
         if( iter != meta.end() )
@@ -629,14 +620,14 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
   }
 }
 
-sptr< Dictionary::DataRequest > AardDictionary::getSearchResults( QString const & searchString,
-                                                                  int searchMode, bool matchCase,
-                                                                  int distanceBetweenWords,
-                                                                  int maxResults,
-                                                                  bool ignoreWordsOrder,
-                                                                  bool ignoreDiacritics )
+sptr< Dictionary::DataRequest >
+AardDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
-  return std::make_shared<FtsHelpers::FTSResultsRequest>( *this, searchString,searchMode, matchCase, distanceBetweenWords, maxResults, ignoreWordsOrder, ignoreDiacritics );
+  return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
+                                                            searchString,
+                                                            searchMode,
+                                                            matchCase,
+                                                            ignoreDiacritics );
 }
 
 /// AardDictionary::getArticle()
@@ -663,7 +654,7 @@ public:
     } );
   }
 
-  void run(); // Run from another thread by DslArticleRequestRunnable
+  void run();
 
   void cancel() override
   {
@@ -778,7 +769,7 @@ void AardArticleRequest::run()
       result += i->second.second;
   }
 
-  Mutex::Lock _( dataMutex );
+  QMutexLocker _( &dataMutex );
 
   data.resize( result.size() );
 
@@ -1009,12 +1000,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           idxHeader.wordCount = wordCount;
 
           if( langFrom.size() == 3)
-              idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom.c_str() );
+            idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom );
           else if( langFrom.size() == 2 )
               idxHeader.langFrom = LangCoder::code2toInt( langFrom.c_str() );
 
           if( langTo.size() == 3)
-              idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo.c_str() );
+            idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo );
           else if( langTo.size() == 2 )
               idxHeader.langTo = LangCoder::code2toInt( langTo.c_str() );
 
