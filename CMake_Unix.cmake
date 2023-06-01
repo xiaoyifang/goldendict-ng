@@ -44,10 +44,9 @@ pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
         )
 
 target_link_libraries(${GOLDENDICT} PRIVATE
-        # pkg-config packages need manually link
         PkgConfig::PKGCONFIG_DEPS
         BZip2::BZip2
-        ZLIB::ZLIB #hidden requirement of dsl_details.cc and more?
+        ZLIB::ZLIB
         Iconv::Iconv
         )
 
@@ -67,13 +66,21 @@ if (WITH_XAPIAN)
 endif ()
 
 if (WITH_EPWING_SUPPORT)
-    add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
-    target_link_libraries(${GOLDENDICT} PRIVATE eb)
+    find_library(EB_LIBRARY eb REQUIRED)
+    target_link_libraries(${GOLDENDICT} PRIVATE ${EB_LIBRARY})
 endif ()
 
-if(WITH_ZIM)
-    pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET
-     libzim
-    )
+if (WITH_ZIM)
+    pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
-endif()
+endif ()
+
+if (USE_SYSTEM_FMT)
+    find_package(fmt)
+    target_link_libraries(${GOLDENDICT} PRIVATE fmt::fmt)
+endif ()
+
+if (USE_SYSTEM_TOML)
+    find_package(tomlplusplus)
+    target_link_libraries(${GOLDENDICT} PRIVATE tomlplusplus::tomlplusplus)
+endif ()
