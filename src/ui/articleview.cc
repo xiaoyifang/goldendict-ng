@@ -2321,30 +2321,34 @@ void ArticleView::highlightFTSResults()
 
   if ( cleaned.empty() )
     return;
+
+  firstAvailableText = cleaned.at( 0 );
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  webview->findText( cleaned.at( 0 ), QWebEnginePage::FindBackward, [ & ]( const QWebEngineFindTextResult & result ) {
-    qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
+  webview->findText( firstAvailableText,
+                     QWebEnginePage::FindBackward,
+                     [ & ]( const QWebEngineFindTextResult & result ) {
+                       qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
 
-    if ( result.numberOfMatches() == 0 ) {
-      ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-    }
-    else {
-      ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-    }
+                       if ( result.numberOfMatches() == 0 ) {
+                         ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
+                       }
+                       else {
+                         ftsSearchPanel->statusLabel->setText(
+                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
+                       }
 
-    ftsSearchPanel->show();
-    ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
-    ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
+                       ftsSearchPanel->show();
+                       ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
+                       ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
 
-    ftsSearchIsOpened = true;
-  } );
+                       ftsSearchIsOpened = true;
+                     } );
 #else
-    webview->findText( cleaned.at( 0 ), flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
-    webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
-      ftsSearchPanel->previous->setEnabled( res );
-      if ( !ftsSearchPanel->next->isEnabled() )
-        ftsSearchPanel->next->setEnabled( res );
-    } );
+  webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+    ftsSearchPanel->previous->setEnabled( res );
+    if ( !ftsSearchPanel->next->isEnabled() )
+      ftsSearchPanel->next->setEnabled( res );
+  } );
 #endif
 }
 
