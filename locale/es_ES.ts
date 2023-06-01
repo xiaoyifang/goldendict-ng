@@ -2679,7 +2679,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation>español de Bolivia</translation>
+      <translation>Español, Bolivia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
@@ -2699,7 +2699,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation>árabe de Arabia Saudí</translation>
+      <translation>Árabe, Arabia Saudita</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
