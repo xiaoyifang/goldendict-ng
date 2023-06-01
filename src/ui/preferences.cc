@@ -11,9 +11,9 @@
 #include <QWebEngineSettings>
 
 Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
-  QDialog( parent ), prevInterfaceLanguage( 0 )
-, cfg( cfg_ )
-, helpAction( this )
+  QDialog( parent ),
+  cfg( cfg_ ),
+  helpAction( this )
 {
   Config::Preferences const & p = cfg_.preferences;
   ui.setupUi( this );
@@ -342,6 +342,15 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.maxDictionarySize->setValue( p.fts.maxDictionarySize );
 }
 
+void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
+{
+  if ( !is_checked ) {
+    if ( !disabledTypes.isEmpty() )
+      disabledTypes += ',';
+    disabledTypes += name;
+  }
+}
+
 Config::Preferences Preferences::getPreferences()
 {
   Config::Preferences p;
@@ -463,89 +472,18 @@ Config::Preferences Preferences::getPreferences()
   p.fts.enabled = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();
 
-  if( !ui.allowAard->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "AARD";
-  }
-
-  if( !ui.allowBGL->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "BGL";
-  }
-
-  if( !ui.allowDictD->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "DICTD";
-  }
-
-  if( !ui.allowDSL->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "DSL";
-  }
-
-  if( !ui.allowMDict->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "MDICT";
-  }
-
-  if( !ui.allowSDict->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "SDICT";
-  }
-
-  if( !ui.allowSlob->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "SLOB";
-  }
-
-  if( !ui.allowStardict->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "STARDICT";
-  }
-
-  if( !ui.allowXDXF->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "XDXF";
-  }
-
-  if( !ui.allowZim->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "ZIM";
-  }
-
-  if( !ui.allowEpwing->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "EPWING";
-  }
-
-  if( !ui.allowGls->isChecked() )
-  {
-    if( !p.fts.disabledTypes.isEmpty() )
-      p.fts.disabledTypes += ',';
-    p.fts.disabledTypes += "GLS";
-  }
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowAard->isChecked(), "AARD" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowBGL->isChecked(), "BGL" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowDictD->isChecked(), "DICTD" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowDSL->isChecked(), "DSL" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowMDict->isChecked(), "MDICT" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowSDict->isChecked(), "SDICT" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowSlob->isChecked(), "SLOB" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowStardict->isChecked(), "STARDICT" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowXDXF->isChecked(), "XDXF" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowZim->isChecked(), "ZIM" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowEpwing->isChecked(), "EPWING" );
+  buildDisabledTypes( p.fts.disabledTypes, ui.allowGls->isChecked(), "GLS" );
 
   return p;
 }

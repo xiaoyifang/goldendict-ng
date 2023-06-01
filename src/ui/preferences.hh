@@ -11,7 +11,7 @@ class Preferences: public QDialog
 {
   Q_OBJECT
 
-  int prevInterfaceLanguage;
+  int prevInterfaceLanguage = 0;
 
   QString prevWebFontFamily;
 
@@ -21,7 +21,8 @@ class Preferences: public QDialog
 public:
 
   Preferences( QWidget * parent, Config::Class & cfg_ );
-  ~Preferences() = default;
+  void buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name );
+  ~Preferences() override = default;
 
   Config::Preferences getPreferences();
 
