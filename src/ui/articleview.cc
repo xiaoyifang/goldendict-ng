@@ -37,7 +37,8 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
 #include <QtCore5Compat/QRegExp>
 #include <QWebEngineContextMenuRequest>
-#include <QWebEngineFindTextResult>
+  #include <QWebEngineFindTextResult>
+  #include <utility>
 #endif
 #ifdef Q_OS_WIN32
 #include <windows.h>
@@ -2427,16 +2428,16 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
       ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
     } );
-  }
 #else
 
     webview->findText( firstAvailableText, flags, [ this ]( bool res ) {
       ftsSearchPanel->next->setEnabled( res );
-      if( !ftsSearchPanel->previous->isEnabled() )
+      if ( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( res );
     } );
 
 #endif
+  }
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
@@ -2449,18 +2450,17 @@ void ArticleView::on_ftsSearchNext_clicked()
   performFtsFindOperation( false );
 }
 
-ResourceToSaveHandler::ResourceToSaveHandler(ArticleView * view, QString const & fileName ) :
+ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
   QObject( view ),
-  fileName( fileName ),
+  fileName( std::move( fileName ) ),
   alreadyDone( false )
 {
   connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
 }
 
-void ResourceToSaveHandler::addRequest( sptr< Dictionary::DataRequest > req )
+void ResourceToSaveHandler::addRequest( const sptr< Dictionary::DataRequest > & req )
 {
-  if( !alreadyDone )
-  {
+  if ( !alreadyDone ) {
     downloadRequests.push_back( req );
 
     connect( req.get(), &Dictionary::Request::finished, this, &ResourceToSaveHandler::downloadFinished );
@@ -2473,16 +2473,12 @@ void ResourceToSaveHandler::downloadFinished()
     return; // Stray signal
 
   // Find any finished resources
-  for( list< sptr< Dictionary::DataRequest > >::iterator i =
-       downloadRequests.begin(); i != downloadRequests.end(); )
-  {
-    if ( (*i)->isFinished() )
-    {
-      if ( (*i)->dataSize() >= 0 && !alreadyDone )
-      {
+  for ( auto i = downloadRequests.begin(); i != downloadRequests.end(); ) {
+    if ( ( *i )->isFinished() ) {
+      if ( ( *i )->dataSize() >= 0 && !alreadyDone ) {
         QByteArray resourceData;
-        vector< char > const & data = (*i)->getFullData();
-        resourceData = QByteArray( data.data(), data.size() );
+        vector< char > const & data = ( *i )->getFullData();
+        resourceData                = QByteArray( data.data(), data.size() );
 
         // Write data to file
 
