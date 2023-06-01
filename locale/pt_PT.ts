@@ -2534,12 +2534,12 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation>búlgaro</translation>
+      <translation>Búlgaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation>tcheco</translation>
+      <translation>Checo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
@@ -2559,7 +2559,7 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation>italiano</translation>
+      <translation>Italiano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
