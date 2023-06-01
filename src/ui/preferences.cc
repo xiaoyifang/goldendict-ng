@@ -342,13 +342,12 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.maxDictionarySize->setValue( p.fts.maxDictionarySize );
 }
 
-void Preferences::buildDisabledTypes(QString & disabledTypes, bool is_checked, QString name )
+void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
 {
-  if( !is_checked )
-  {
+  if ( !is_checked ) {
     if ( !disabledTypes.isEmpty() )
       disabledTypes += ',';
-    disabledTypes += name ;
+    disabledTypes += name;
   }
 }
 
