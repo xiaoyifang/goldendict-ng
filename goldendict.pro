@@ -35,8 +35,6 @@ CONFIG( release, debug|release ) {
 INCLUDEPATH += ./src/
 INCLUDEPATH += ./src/ui    # for compiled .ui files to find headers
 INCLUDEPATH += ./src/common
-INCLUDEPATH += ./thirdparty/tomlplusplus
-INCLUDEPATH += ./thirdparty/fmt/include
 
 QT += core \
       gui \
@@ -411,8 +409,7 @@ HEADERS += \
     src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
     src/wordlist.hh \
-    src/zipfile.hh \
-    thirdparty/tomlplusplus/toml.hpp
+    src/zipfile.hh
 
 FORMS += $$files(src/ui/*.ui)
 
@@ -532,8 +529,7 @@ SOURCES += \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
     src/wordlist.cc \
-    src/zipfile.cc \
-    thirdparty/fmt/format.cc
+    src/zipfile.cc
 
 #speech to text
 SOURCES += src/speechclient.cc \
@@ -556,6 +552,24 @@ unix:!mac {
 HEADERS += src/common/wildcard.hh
 SOURCES += src/common/wildcard.cc
 
+
+CONFIG( use_system_toml ){
+    PKGCONFIG += tomlplusplus
+}
+
+!CONFIG( use_system_toml ){
+    INCLUDEPATH += ./thirdparty/tomlplusplus
+    HEADERS += thirdparty/tomlplusplus/toml++/toml.h
+}
+
+CONFIG( use_system_fmt ){
+    PKGCONFIG += fmt
+}
+
+!CONFIG( use_system_fmt ){
+    INCLUDEPATH += ./thirdparty/fmt/include
+    SOURCES += thirdparty/fmt/format.cc
+}
 
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
