@@ -4,12 +4,9 @@
 #include "articleview.hh"
 #include "dict/programs.hh"
 #include "folding.hh"
-#include "fulltextsearch.hh"
 #include "gddebug.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
-#include "qnamespace.h"
-#include "qregularexpression.h"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
@@ -32,6 +29,7 @@
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
 #include <map>
+#include <QApplication>
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5,0,0) && QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QWebEngineContextMenuData>
@@ -2296,6 +2294,11 @@ void ArticleView::highlightFTSResults()
   QString regString = Utils::Url::queryItemValue( webview->url(), "regexp" );
   if ( regString.isEmpty() )
     return;
+
+  //<div><i>watch</i>out</div>  to plainText will return "watchout".
+  //if application goes here,that means the article text must contains the search text.
+  //whole word match regString will contain \b . can not match the above senario.
+  //workaround ,remove \b from the regstring="(\bwatch\b)"
   regString.remove( QRegularExpression( "\\\\b" ) );
 
   //webengine support diacritic text searching.
@@ -2318,7 +2321,7 @@ void ArticleView::highlightFTSResults()
 
   if ( cleaned.empty() )
     return;
-
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   webview->findText( cleaned.at( 0 ), QWebEnginePage::FindBackward, [ & ]( const QWebEngineFindTextResult & result ) {
     qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
 
@@ -2335,6 +2338,14 @@ void ArticleView::highlightFTSResults()
 
     ftsSearchIsOpened = true;
   } );
+#else
+    webview->findText( cleaned.at( 0 ), flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+    webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+      ftsSearchPanel->previous->setEnabled( res );
+      if ( !ftsSearchPanel->next->isEnabled() )
+        ftsSearchPanel->next->setEnabled( res );
+    } );
+#endif
 }
 
 
@@ -2423,7 +2434,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
       if( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( res );
     } );
-  }
 
 #endif
 }
