@@ -1,5 +1,5 @@
 #include "metadata.hh"
-#include "toml.hpp"
+#include "toml++/toml.h"
 #include <QDebug>
 #include <QFile>
 

@@ -412,7 +412,7 @@ HEADERS += \
     src/wordfinder.hh \
     src/wordlist.hh \
     src/zipfile.hh \
-    thirdparty/tomlplusplus/toml.hpp
+    thirdparty/tomlplusplus/toml++/toml.h
 
 FORMS += $$files(src/ui/*.ui)
 

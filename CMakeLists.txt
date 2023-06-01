@@ -8,6 +8,9 @@ option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_XAPIAN "enable Xapian support" ON)
 option(WITH_ZIM "enable zim support" ON)
 
+# options for linux packaging
+option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
+option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
 include(FeatureSummary)
 
@@ -79,10 +82,13 @@ target_sources(${GOLDENDICT} PRIVATE
         resources.qrc
         src/scripts/scripts.qrc
         src/stylesheets/css.qrc
-        thirdparty/fmt/format.cc
         ${ALL_SOURCE_FILES}
         ${MACOS_SOURCE_FILES}
         ${QSINGLEAPP_SOURCE_FILES})
+
+if (NOT USE_SYSTEM_FMT)
+    target_sources(${GOLDENDICT} PRIVATE thirdparty/fmt/format.cc)
+endif ()
 
 ### Common parts amount all platforms
 
@@ -108,8 +114,15 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/dict
         ${PROJECT_SOURCE_DIR}/src/ui
         ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus
-        ${PROJECT_SOURCE_DIR}/thirdparty/fmt/include
         )
+
+if (NOT USE_SYSTEM_TOML)
+    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
+endif ()
+
+if (NOT USE_SYSTEM_FMT)
+    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/fmt/include)
+endif ()
 
 #### Compile definitions
 
@@ -134,11 +147,9 @@ if (WITH_XAPIAN)
     target_compile_definitions(${GOLDENDICT} PUBLIC USE_XAPIAN)
 endif ()
 
-if(WITH_ZIM)
-        target_compile_definitions(${GOLDENDICT} PUBLIC
-        MAKE_ZIM_SUPPORT
-        )
-endif()
+if (WITH_ZIM)
+    target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_ZIM_SUPPORT)
+endif ()
 
 #### libraries linking && includes for Win or Unix
 
