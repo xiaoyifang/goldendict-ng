@@ -414,7 +414,7 @@ private:
   /// Attempts removing last temporary file created.
   void cleanupTemp();
 
-  bool eventFilter( QObject * obj, QEvent * ev );
+  bool eventFilter( QObject * obj, QEvent * ev ) override;
 
   void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
 
@@ -425,9 +425,8 @@ private:
   QStringList getMutedDictionaries(unsigned group);
 
   protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * );
-
+    // We need this to hide the search bar when we're showed
+    void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject
@@ -459,7 +458,7 @@ class ArticleViewAgent : public QObject
   ArticleView * articleView;
 
 public:
-  ArticleViewAgent( ArticleView * articleView );
+  explicit ArticleViewAgent( ArticleView * articleView );
 
 
 public slots:
