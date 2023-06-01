@@ -43,7 +43,7 @@ jobs:
 
          
       - name: Bump version and push tag
-        if: ${{env.prerelease != true}}
+        if: ${{env.prerelease != 'true'}}
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
