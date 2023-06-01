@@ -431,24 +431,24 @@ private:
 
 class ResourceToSaveHandler: public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
-    void addRequest( const sptr< Dictionary::DataRequest > & req );
-    bool isEmpty()
-    {
+public:
+  explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
+  void addRequest( const sptr< Dictionary::DataRequest > & req );
+  bool isEmpty()
+  {
     return downloadRequests.empty();
-    }
+  }
 
-  signals:
-    void done();
-    void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap() );
+signals:
+  void done();
+  void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap() );
 
-  public slots:
-    void downloadFinished();
+public slots:
+  void downloadFinished();
 
-  private:
+private:
   std::list< sptr< Dictionary::DataRequest > > downloadRequests;
   QString fileName;
   bool alreadyDone;
