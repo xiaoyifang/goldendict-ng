@@ -2649,7 +2649,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation>포르투칼어, 브라질어</translation>
+      <translation>포르투갈어 (브라질)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
