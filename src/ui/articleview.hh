@@ -84,7 +84,7 @@ class ArticleView: public QWidget
   QString activeDictId;
 
   /// Search in results of full-text search
-  QStringList allMatches;
+  QString firstAvailableText;
   QStringList uniqueMatches;
   bool ftsSearchIsOpened = false;
   bool ftsSearchMatchCase = false;
@@ -93,7 +93,6 @@ class ArticleView: public QWidget
   QString delayedHighlightText;
 
   void highlightFTSResults();
-  void highlightAllFtsOccurences( QWebEnginePage::FindFlags flags );
   void performFtsFindOperation( bool backwards );
 
 public:

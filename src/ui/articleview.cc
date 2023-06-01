@@ -8,6 +8,8 @@
 #include "gddebug.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
+#include "qnamespace.h"
+#include "qregularexpression.h"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
@@ -2364,7 +2366,7 @@ bool ArticleView::closeSearch()
   else
   if( ftsSearchIsOpened )
   {
-    allMatches.clear();
+    firstAvailableText.clear();
     uniqueMatches.clear();
     ftsPosition = 0;
     ftsSearchIsOpened = false;
@@ -2405,134 +2407,62 @@ void ArticleView::copyAsText()
 void ArticleView::highlightFTSResults()
 {
   closeSearch();
-
   // Clear any current selection
-  if( webview->selectedText().size() ) {
-    webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
+  webview->findText("");
+  QString regString = Utils::Url::queryItemValue( webview->url(), "regexp" );
+  if( regString.isEmpty() )
+    return;
+  regString.remove( QRegularExpression( "\\\\b" ) );
+
+  //webengine support diacritic text searching.
+  auto parts = regString.split(" ",Qt::SkipEmptyParts);
+  //get first part of string.
+  for(auto & p:parts){
+    if(p.startsWith("-"))
+      continue;
+
+    firstAvailableText = p;
+    break;
   }
 
-  webview->page()->toPlainText(
-    [ & ]( const QString pageText ) {
-      const QUrl & url = webview->url();
-
-      QString regString = Utils::Url::queryItemValue( url, "regexp" );
-	  if( regString.isEmpty() )
-	    return;
-      
-      bool ignoreDiacritics = Utils::Url::hasQueryItem( url, "ignore_diacritics" );
-
-      if( ignoreDiacritics )
-        regString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( regString ) ) );
-      else
-        regString = regString.remove( AccentMarkHandler::accentMark() );
-
-      //<div><i>watch</i>out</div>  to plainText will return "watchout".
-      //if application goes here,that means the article text must contains the search text.
-      //whole word match regString will contain \b . can not match the above senario.
-      //workaround ,remove \b from the regstring="(\bwatch\b)"
-      regString.remove( QRegularExpression( "\\\\b" ) );
-
-      QRegularExpression regexp;
-      if( Utils::Url::hasQueryItem( url, "wildcards" ) )
-        regexp.setPattern( wildcardsToRegexp( regString ) );
-      else
-        regexp.setPattern( regString );
-
-      QRegularExpression::PatternOptions patternOptions =
-        QRegularExpression::DotMatchesEverythingOption | QRegularExpression::UseUnicodePropertiesOption |
-        QRegularExpression::MultilineOption | QRegularExpression::InvertedGreedinessOption;
-      if( !Utils::Url::hasQueryItem( url, "matchcase" ) )
-        patternOptions |= QRegularExpression::CaseInsensitiveOption;
-      regexp.setPatternOptions( patternOptions );
-
-      if( regexp.pattern().isEmpty() || !regexp.isValid() )
-        return;
-      sptr< AccentMarkHandler > marksHandler = ignoreDiacritics ? std::make_shared<DiacriticsHandler>() : std::make_shared<AccentMarkHandler>();
-
-      marksHandler->setText( pageText );
-
-      QRegularExpressionMatchIterator it = regexp.globalMatch( marksHandler->normalizedText() );
-      while( it.hasNext() )
-      {
-        QRegularExpressionMatch match = it.next();
-
-        // Mirror pos and matched length to original string
-        int pos     = match.capturedStart();
-        int spos    = marksHandler->mirrorPosition( pos );
-        int matched = marksHandler->mirrorPosition( pos + match.capturedLength() ) - spos;
-
-        // Add mark pos (if presented)
-        while( spos + matched < pageText.length() && pageText[ spos + matched ].category() == QChar::Mark_NonSpacing )
-          matched++;
-
-        if( matched > FTS::MaxMatchLengthForHighlightResults )
-        {
-          gdWarning( "ArticleView::highlightFTSResults(): Too long match - skipped (matched length %i, allowed %i)",
-                     match.capturedLength(),
-                     FTS::MaxMatchLengthForHighlightResults );
-        }
-        else
-          allMatches.append( pageText.mid( spos, matched ) );
-      }
-
-      ftsSearchMatchCase = Utils::Url::hasQueryItem( url, "matchcase" );
-
-      QWebEnginePage::FindFlags flags( QWebEnginePage::FindBackward );
-
-      if( ftsSearchMatchCase )
-        flags |= QWebEnginePage::FindCaseSensitively;
-
-      if( allMatches.isEmpty() )
-        ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-      else {
-        //        highlightAllFtsOccurences( flags );
-        webview->findText( allMatches.at( 0 ), flags );
-        // if( webview->findText( allMatches.at( 0 ), flags ) )
-        // {
-        //   webview->page()->runJavaScript(
-        //     QString( "%1=window.getSelection().getRangeAt(0);_=0;" ).arg( rangeVarName ) );
-        // }
-		Q_ASSERT( ftsPosition == 0 );
-                ftsSearchPanel->statusLabel->setText( searchStatusMessage( 1, allMatches.size() ) );
-      }
-
-
-      ftsSearchPanel->show();
-      ftsSearchPanel->previous->setEnabled( false );
-      ftsSearchPanel->next->setEnabled( allMatches.size() > 1 );
-
-      ftsSearchIsOpened = true;
-    } );
-}
-
-void ArticleView::highlightAllFtsOccurences( QWebEnginePage::FindFlags flags )
-{
-  // Usually allMatches contains mostly duplicates. Thus searching for each element of
-  // allMatches to highlight them takes a long time => collect unique elements into a
-  // set and search for them instead.
-  // Don't use QList::toSet() or QSet's range constructor because they reserve space
-  // for QList::size() elements, whereas the final QSet size is likely 1 or 2.
-  QSet< QString > uniqueMatches;
-  for( int x = 0; x < allMatches.size(); ++x )
-  {
-    QString const & match = allMatches.at( x );
-    // Consider words that differ only in case equal if the search is case-insensitive.
-    uniqueMatches.insert( ftsSearchMatchCase ? match : match.toLower() );
+  if(firstAvailableText.isEmpty()){
+    return;
   }
 
-  for( QSet< QString >::const_iterator it = uniqueMatches.constBegin(); it != uniqueMatches.constEnd(); ++it )
-    webview->findText( *it, flags );
-}
+  //remove possible wildcard character.
+  auto cleaned = firstAvailableText.split(QRegularExpression("\\p{P}"));
 
-void ArticleView::setActiveDictIds(ActiveDictIds ad) {
-  if ( ( ad.word == currentWord  &&  ad.groupId == getCurrentGroup() ) || historyMode)
-    {
-      // ignore all other signals.
-      qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
-      currentActiveDictIds << ad.dictIds;
-      currentActiveDictIds.removeDuplicates();
-      emit updateFoundInDictsList();
+  if(cleaned.empty())
+    return;
+
+  webview->findText(cleaned.at(0),QWebEnginePage::FindBackward, [&](const QWebEngineFindTextResult &result) {
+    qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
+
+    if(result.numberOfMatches()==0){
+      ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
     }
+    else{
+      ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
+    }
+
+    ftsSearchPanel->show();
+    ftsSearchPanel->previous->setEnabled( result.numberOfMatches()>1 );
+    ftsSearchPanel->next->setEnabled( result.numberOfMatches()>1 );
+
+    ftsSearchIsOpened = true;
+  });
+}
+
+
+void ArticleView::setActiveDictIds( ActiveDictIds ad )
+{
+  if ( ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) || historyMode ) {
+    // ignore all other signals.
+    qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
+    currentActiveDictIds << ad.dictIds;
+    currentActiveDictIds.removeDuplicates();
+    emit updateFoundInDictsList();
+  }
 }
 
 void ArticleView::dictionaryClear( ActiveDictIds ad )
@@ -2551,7 +2481,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
   if( !ftsSearchIsOpened )
     return;
 
-  if( allMatches.isEmpty() ) {
+  if( firstAvailableText.isEmpty() ) {
     ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
     ftsSearchPanel->next->setEnabled( false );
     ftsSearchPanel->previous->setEnabled( false );
@@ -2569,11 +2499,8 @@ void ArticleView::performFtsFindOperation( bool backwards )
     QString( "var sel=window.getSelection();sel.removeAllRanges();sel.addRange(%1);_=0;" ).arg( rangeVarName ) );
 
   if( backwards ) {
-    if( ftsPosition > 0 ) {
-      ftsPosition -= 1;
-    }
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    webview->findText( allMatches.at( ftsPosition ),
+    webview->findText( firstAvailableText,
                        flags | QWebEnginePage::FindBackward,
                        [ this ]( const QWebEngineFindTextResult & result ) {
                          if( result.numberOfMatches() == 0 )
@@ -2581,9 +2508,11 @@ void ArticleView::performFtsFindOperation( bool backwards )
                          ftsSearchPanel->previous->setEnabled( true );
                          if( !ftsSearchPanel->next->isEnabled() )
                            ftsSearchPanel->next->setEnabled( true );
+
+                         ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
                        } );
 #else
-    webview->findText( allMatches.at( ftsPosition ), flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+    webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
       ftsSearchPanel->previous->setEnabled( res );
       if( !ftsSearchPanel->next->isEnabled() )
         ftsSearchPanel->next->setEnabled( res );
@@ -2591,21 +2520,21 @@ void ArticleView::performFtsFindOperation( bool backwards )
 #endif
   }
   else {
-    if( ftsPosition < allMatches.size() - 1 ) {
-      ftsPosition += 1;
-    }
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( const QWebEngineFindTextResult & result ) {
+    webview->findText( firstAvailableText, flags, [ this ]( const QWebEngineFindTextResult & result ) {
       if( result.numberOfMatches() == 0 )
         return;
       ftsSearchPanel->next->setEnabled( true );
       if( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( true );
+
+      ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
+
     } );
   }
 #else
 
-    webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( bool res ) {
+    webview->findText( firstAvailableText, flags, [ this ]( bool res ) {
       ftsSearchPanel->next->setEnabled( res );
       if( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( res );
@@ -2614,7 +2543,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
 #endif
 
-  ftsSearchPanel->statusLabel->setText( searchStatusMessage( ftsPosition + 1, allMatches.size() ) );
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
