@@ -2304,7 +2304,7 @@ void ArticleView::highlightFTSResults()
   //webengine support diacritic text searching.
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
   //get first part of string.
-  for ( auto & p : parts ) {
+  for ( auto const & p : parts ) {
     if ( p.startsWith( "-" ) )
       continue;
 
