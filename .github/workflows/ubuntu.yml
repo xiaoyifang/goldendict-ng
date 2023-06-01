@@ -50,6 +50,7 @@ jobs:
           sudo apt-get install qttools5-dev-tools qtmultimedia5-dev libqt5multimedia5-plugins doxygen libzstd-dev libspeechd-dev #libopencc-dev
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
           sudo apt install libxapian-dev
+          sudo apt install libfuse2
           git clone https://github.com/BYVoid/OpenCC
           pwd
           cd OpenCC/
