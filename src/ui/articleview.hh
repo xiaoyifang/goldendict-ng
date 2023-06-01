@@ -377,9 +377,9 @@ private slots:
   /// Copy current selection as plain text
   void copyAsText();
 
-  void setActiveDictIds(ActiveDictIds);
+  void setActiveDictIds( const ActiveDictIds & ad );
 
-  void dictionaryClear( ActiveDictIds ad );
+  void dictionaryClear( const ActiveDictIds & ad );
 
 private:
 

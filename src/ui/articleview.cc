@@ -2352,8 +2352,7 @@ void ArticleView::highlightFTSResults()
 #endif
 }
 
-
-void ArticleView::setActiveDictIds( ActiveDictIds ad )
+void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 {
   if ( ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) || historyMode ) {
     // ignore all other signals.
@@ -2364,11 +2363,10 @@ void ArticleView::setActiveDictIds( ActiveDictIds ad )
   }
 }
 
-void ArticleView::dictionaryClear( ActiveDictIds ad )
+void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 {
   // ignore all other signals.
-  if( ad.word == currentWord && ad.groupId==getCurrentGroup() )
-  {
+  if ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();
   }
