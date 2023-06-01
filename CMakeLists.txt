@@ -113,7 +113,6 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/common
         ${PROJECT_SOURCE_DIR}/src/dict
         ${PROJECT_SOURCE_DIR}/src/ui
-        ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus
         )
 
 if (NOT USE_SYSTEM_TOML)
