@@ -2408,49 +2408,49 @@ void ArticleView::highlightFTSResults()
 {
   closeSearch();
   // Clear any current selection
-  webview->findText("");
+  webview->findText( "" );
   QString regString = Utils::Url::queryItemValue( webview->url(), "regexp" );
-  if( regString.isEmpty() )
+  if ( regString.isEmpty() )
     return;
   regString.remove( QRegularExpression( "\\\\b" ) );
 
   //webengine support diacritic text searching.
-  auto parts = regString.split(" ",Qt::SkipEmptyParts);
+  auto parts = regString.split( " ", Qt::SkipEmptyParts );
   //get first part of string.
-  for(auto & p:parts){
-    if(p.startsWith("-"))
+  for ( auto & p : parts ) {
+    if ( p.startsWith( "-" ) )
       continue;
 
     firstAvailableText = p;
     break;
   }
 
-  if(firstAvailableText.isEmpty()){
+  if ( firstAvailableText.isEmpty() ) {
     return;
   }
 
   //remove possible wildcard character.
-  auto cleaned = firstAvailableText.split(QRegularExpression("\\p{P}"));
+  auto cleaned = firstAvailableText.split( QRegularExpression( "\\p{P}" ) );
 
-  if(cleaned.empty())
+  if ( cleaned.empty() )
     return;
 
-  webview->findText(cleaned.at(0),QWebEnginePage::FindBackward, [&](const QWebEngineFindTextResult &result) {
+  webview->findText( cleaned.at( 0 ), QWebEnginePage::FindBackward, [ & ]( const QWebEngineFindTextResult & result ) {
     qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
 
-    if(result.numberOfMatches()==0){
+    if ( result.numberOfMatches() == 0 ) {
       ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
     }
-    else{
+    else {
       ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
     }
 
     ftsSearchPanel->show();
-    ftsSearchPanel->previous->setEnabled( result.numberOfMatches()>1 );
-    ftsSearchPanel->next->setEnabled( result.numberOfMatches()>1 );
+    ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
+    ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
 
     ftsSearchIsOpened = true;
-  });
+  } );
 }
 
 
@@ -2481,7 +2481,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
   if( !ftsSearchIsOpened )
     return;
 
-  if( firstAvailableText.isEmpty() ) {
+  if ( firstAvailableText.isEmpty() ) {
     ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
     ftsSearchPanel->next->setEnabled( false );
     ftsSearchPanel->previous->setEnabled( false );
@@ -2498,7 +2498,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
   webview->page()->runJavaScript(
     QString( "var sel=window.getSelection();sel.removeAllRanges();sel.addRange(%1);_=0;" ).arg( rangeVarName ) );
 
-  if( backwards ) {
+  if ( backwards ) {
 #if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
     webview->findText( firstAvailableText,
                        flags | QWebEnginePage::FindBackward,
@@ -2509,7 +2509,8 @@ void ArticleView::performFtsFindOperation( bool backwards )
                          if( !ftsSearchPanel->next->isEnabled() )
                            ftsSearchPanel->next->setEnabled( true );
 
-                         ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
+                         ftsSearchPanel->statusLabel->setText(
+                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
                        } );
 #else
     webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
@@ -2529,7 +2530,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
         ftsSearchPanel->previous->setEnabled( true );
 
       ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-
     } );
   }
 #else
@@ -2542,7 +2542,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
   }
 
 #endif
-
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
