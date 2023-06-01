@@ -33,7 +33,7 @@ jobs:
       version: 23.06.02
       version-suffix: alpha
       prerelease: true
-    steps:          
+    steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -120,7 +120,10 @@ jobs:
           echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
           echo "::set-output name=appname::$(ls *.AppImage*)"
-            
+
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@{latest-release}
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -129,7 +132,7 @@ jobs:
           file: ${{ steps.vars.outputs.appname }}
           asset_name: ${{ matrix.qt_ver }}-${{ steps.vars.outputs.appname }}
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
-          overwrite: true 
+          overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
@@ -160,3 +163,4 @@ jobs:
 
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  
+            ${{steps.build_changelog.outputs.changelog}}
