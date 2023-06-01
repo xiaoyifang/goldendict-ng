@@ -2344,7 +2344,7 @@ void ArticleView::highlightFTSResults()
                        ftsSearchIsOpened = true;
                      } );
 #else
-  webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+  webview->findText( firstAvailableText, QWebEnginePage::FindBackward, [ this ]( bool res ) {
     ftsSearchPanel->previous->setEnabled( res );
     if ( !ftsSearchPanel->next->isEnabled() )
       ftsSearchPanel->next->setEnabled( res );
@@ -2372,7 +2372,6 @@ void ArticleView::dictionaryClear( const ActiveDictIds & ad )
   }
 }
 
-//todo ,futher refinement?
 void ArticleView::performFtsFindOperation( bool backwards )
 {
   if( !ftsSearchIsOpened )
