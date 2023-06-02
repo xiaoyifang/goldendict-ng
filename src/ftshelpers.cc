@@ -31,18 +31,16 @@ namespace FtsHelpers
 // finished  reversed   dehsinif
 const static std::string finish_mark = std::string( "dehsinif" );
 
-bool ftsIndexIsOldOrBad( string const & indexFile,
-                         BtreeIndexing::BtreeDictionary * dict )
+bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 {
-  try
-  {
+  try {
     Xapian::WritableDatabase db( dict->ftsIndexName() );
-    auto docid = db.get_lastdocid();
-    auto document = db.get_document(docid);
+    auto docid    = db.get_lastdocid();
+    auto document = db.get_document( docid );
 
-    qDebug()<<document.get_data().c_str();
+    qDebug() << document.get_data().c_str();
     //use a special document to mark the end of the index.
-    return document.get_data()!=finish_mark;
+    return document.get_data() != finish_mark;
   }
   catch( Xapian::Error & e )
   {
@@ -55,7 +53,6 @@ bool ftsIndexIsOldOrBad( string const & indexFile,
   {
     return true;
   }
-  return false;
 }
 
 static QString makeHiliteRegExpString( QStringList const & words,

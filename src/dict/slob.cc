@@ -707,8 +707,7 @@ SlobDictionary::SlobDictionary( string const & id,
 
     ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-    if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-        && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
+    if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
       FTS_index_completed.ref();
 
     texCgiPath = Config::getProgramDataDir() + "/mimetex.cgi";
@@ -1112,7 +1111,7 @@ void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, Q
 void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
   if ( haveFTSIndex() )
