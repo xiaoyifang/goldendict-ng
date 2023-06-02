@@ -61,7 +61,7 @@ bool isScrollTo( QString const & id )
 QString dictionaryIdFromScrollTo( QString const & scrollTo )
 {
   Q_ASSERT( isScrollTo( scrollTo ) );
-  const int scrollToPrefixLength = 7;
+  constexpr int scrollToPrefixLength = 7;
   return scrollTo.mid( scrollToPrefixLength );
 }
 
@@ -246,8 +246,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  const bool fromMainWindow = parent && parent->objectName() == "MainWindow";
-  if ( fromMainWindow ) {
+  if ( const bool fromMainWindow = parent && parent->objectName() == "MainWindow" ) {
     connect( GlobalBroadcaster::instance(),
              &GlobalBroadcaster::dictionaryChanges,
              this,
@@ -322,9 +321,7 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
     delayedHighlightText.clear();
   }
 
-  Contexts::Iterator pos = contexts.find( "gdanchor" );
-  if( pos != contexts.end() )
-  {
+  if ( Contexts::Iterator pos = contexts.find( "gdanchor" ); pos != contexts.end() ) {
     Utils::Url::addQueryItem( req, "gdanchor", contexts[ "gdanchor" ] );
     contexts.erase( pos );
   }
@@ -476,10 +473,7 @@ void ArticleView::handleUrlChanged( QUrl const & url )
 {
   QIcon icon;
 
-  unsigned group = getGroup( url );
-
-  if ( group )
-  {
+  if ( unsigned group = getGroup( url ) ) {
     // Find the group's instance corresponding to the fragment value
     for ( auto const & g : groups ) {
       if ( g.id == group ) {
@@ -517,17 +511,15 @@ void ArticleView::setActiveArticleId(QString const & dictId){
 
 QString ArticleView::getCurrentArticle()
 {
-  QString dictId=getActiveArticleId();
+  const QString dictId = getActiveArticleId();
   return scrollToFromDictionaryId( dictId );
 }
 
 void ArticleView::jumpToDictionary( QString const & id, bool force )
 {
-  QString targetArticle = scrollToFromDictionaryId( id );
 
   // jump only if neceessary, or when forced
-  if ( force || targetArticle != getCurrentArticle() )
-  {
+  if ( const QString targetArticle = scrollToFromDictionaryId( id ); force || targetArticle != getCurrentArticle() ) {
     setCurrentArticle( targetArticle, true );
   }
 }
@@ -730,7 +722,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
   if( obj == webview ) {
     if( ev->type() == QEvent::MouseButtonPress ) {
-      QMouseEvent * event = static_cast< QMouseEvent * >( ev );
+      auto event = static_cast< QMouseEvent * >( ev );
       if ( event->button() == Qt::XButton1 ) {
         back();
         return true;
@@ -743,7 +735,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
     else
     if ( ev->type() == QEvent::KeyPress )
     {
-      QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
+      auto keyEvent = static_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->modifiers() &
            ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
@@ -805,17 +797,15 @@ QString ArticleView::getMutedForGroup( unsigned group )
 
     if ( groupInstance )
     {
-      for( unsigned x = 0; x < groupInstance->dictionaries.size(); ++x )
-      {
-        QString id = QString::fromStdString(
-                       groupInstance->dictionaries[ x ]->getId() );
+      for ( const auto & dictionarie : groupInstance->dictionaries ) {
+        QString id = QString::fromStdString( dictionarie->getId() );
 
         if ( mutedDictionaries->contains( id ) )
           mutedDicts.append( id );
       }
     }
 
-    if ( mutedDicts.size() )
+    if ( !mutedDicts.empty() )
       return mutedDicts.join( "," );
   }
 
@@ -840,8 +830,8 @@ QStringList ArticleView::getMutedDictionaries(unsigned group) {
     QStringList mutedDicts;
 
     if (groupInstance) {
-      for (unsigned x = 0; x < groupInstance->dictionaries.size(); ++x) {
-        QString id = QString::fromStdString(groupInstance->dictionaries[x]->getId());
+      for ( const auto & dictionarie : groupInstance->dictionaries ) {
+        QString id = QString::fromStdString( dictionarie->getId() );
 
         if (mutedDictionaries->contains(id))
           mutedDicts.append(id);
@@ -1046,11 +1036,9 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       {
         // Link to other dictionary
         QString dictName( Utils::Url::queryItemValue( url, "dict" ) );
-        for( unsigned i = 0; i < allDictionaries.size(); i++ )
-        {
-          if( dictName.compare( QString::fromUtf8( allDictionaries[ i ]->getName().c_str() ) ) == 0 )
-          {
-            newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( allDictionaries[ i ]->getId().c_str() ) );
+        for ( const auto & allDictionarie : allDictionaries ) {
+          if ( dictName.compare( QString::fromUtf8( allDictionarie->getName().c_str() ) ) == 0 ) {
+            newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( allDictionarie->getId().c_str() ) );
             break;
           }
         }
@@ -1093,14 +1081,13 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = 0;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
       if ( groups.size() )
       {
-        for( unsigned x = 0; x < groups.size(); ++x )
-          if ( groups[ x ].id == currentGroup )
-          {
-            activeDicts = &( groups[ x ].dictionaries );
+        for ( const auto & group : groups )
+          if ( group.id == currentGroup ) {
+            activeDicts = &( group.dictionaries );
             break;
           }
       }
@@ -1236,11 +1223,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     // Program. Run it.
     QString id( url.host() );
 
-    for( Config::Programs::const_iterator i = cfg.programs.begin();
-         i != cfg.programs.end(); ++i )
-    {
-      if ( i->id == id )
-      {
+    for ( const auto & program : cfg.programs ) {
+      if ( program.id == id ) {
         // Found the corresponding program.
         Programs::RunInstance * req = new Programs::RunInstance;
 
@@ -1249,8 +1233,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         QString error;
 
         // Delete the request if it fails to start
-        if ( !req->start( *i, url.path().mid( 1 ), error ) )
-        {
+        if ( !req->start( program, url.path().mid( 1 ), error ) ) {
           delete req;
 
           QMessageBox::critical( this, "GoldenDict",
@@ -1311,14 +1294,13 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = 0;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
       if ( groups.size() )
       {
-        for( unsigned x = 0; x < groups.size(); ++x )
-          if ( groups[ x ].id == currentGroup )
-          {
-            activeDicts = &( groups[ x ].dictionaries );
+        for ( const auto & group : groups )
+          if ( group.id == currentGroup ) {
+            activeDicts = &( group.dictionaries );
             break;
           }
       }
@@ -1339,14 +1321,12 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
               if( preferredName.compare( QString::fromUtf8( (*activeDicts)[ x ]->getName().c_str() ) ) == 0 )
               {
                 preferred = x;
-                sptr< Dictionary::DataRequest > req =
-                  (*activeDicts)[ x ]->getResource(
-                    url.path().mid( 1 ).toUtf8().data() );
+                sptr< Dictionary::DataRequest > data_request =
+                  ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
-                handler->addRequest( req );
+                handler->addRequest( data_request );
 
-                if( req->isFinished() && req->dataSize() > 0 )
-                {
+                if ( data_request->isFinished() && data_request->dataSize() > 0 ) {
                   handler->downloadFinished();
                   return handler;
                 }
@@ -1579,20 +1559,20 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QWebEnginePage * r = webview->page();
   QMenu menu( this );
 
-  QAction * followLink = 0;
-  QAction * followLinkExternal = 0;
-  QAction * followLinkNewTab = 0;
-  QAction * lookupSelection           = 0;
-  QAction * lookupSelectionGr = 0;
-  QAction * lookupSelectionNewTab = 0;
-  QAction * lookupSelectionNewTabGr = 0;
-  QAction * maxDictionaryRefsAction = 0;
-  QAction * addWordToHistoryAction = 0;
-  QAction * addHeaderToHistoryAction = 0;
-  QAction * sendWordToInputLineAction = 0;
-  QAction * saveImageAction = 0;
-  QAction * saveSoundAction           = 0;
-  QAction * saveBookmark = 0;
+  QAction * followLink                = nullptr;
+  QAction * followLinkExternal        = nullptr;
+  QAction * followLinkNewTab          = nullptr;
+  QAction * lookupSelection           = nullptr;
+  QAction * lookupSelectionGr         = nullptr;
+  QAction * lookupSelectionNewTab     = nullptr;
+  QAction * lookupSelectionNewTabGr   = nullptr;
+  QAction * maxDictionaryRefsAction   = nullptr;
+  QAction * addWordToHistoryAction    = nullptr;
+  QAction * addHeaderToHistoryAction  = nullptr;
+  QAction * sendWordToInputLineAction = nullptr;
+  QAction * saveImageAction           = nullptr;
+  QAction * saveSoundAction           = nullptr;
+  QAction * saveBookmark              = nullptr;
 
 #if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   const QWebEngineContextMenuData * menuData = &(r->contextMenuData());
@@ -1683,7 +1663,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     Instances::Group const * altGroup =
       ( groupComboBox && groupComboBox->getCurrentGroup() != getGroup( webview->url() ) ) ?
       groups.findGroup( groupComboBox->getCurrentGroup() ) :
-      0;
+      nullptr;
 
     if ( altGroup )
     {
@@ -1764,7 +1744,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     {
       if ( allDictionaries[ x ]->getId() == i->toUtf8().data() )
       {
-        QAction * action = 0;
+        QAction * action = nullptr;
         if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu )
         {
           // Enough! Or the menu would become too large.
@@ -2484,7 +2464,7 @@ void ResourceToSaveHandler::downloadFinished()
 
         if ( !fileName.isEmpty() )
         {
-          QFileInfo fileInfo( fileName );
+          const QFileInfo fileInfo( fileName );
           QDir().mkpath( fileInfo.absoluteDir().absolutePath() );
 
           QFile file( fileName );
