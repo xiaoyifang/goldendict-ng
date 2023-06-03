@@ -131,7 +131,7 @@ void Babylon::close()
 
 bool Babylon::readBlock( bgl_block &block )
 {
-  if( gzeof( file ) || file == NULL )
+  if ( file == NULL || gzeof( file ) )
     return false;
 
   block.length = bgl_readnum( 1 );
@@ -346,19 +346,19 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
   {
     switch( block.type )
     {
-      case 2:
-      {
-        pos = 0;
-        len = (unsigned char)block.data[pos++];
-        if( pos + len > block.length )
+      case 2: {
+        // the block data may have length==0
+        if ( block.length == 0 )
           break;
-        std::string filename( block.data+pos, len );
+        pos = 0;
+        len = (unsigned char)block.data[ pos++ ];
+        if ( pos + len > block.length )
+          break;
+        std::string filename( block.data + pos, len );
         //if (filename != "8EAF66FD.bmp" && filename != "C2EEF3F6.html") {
-            pos += len;
+        pos += len;
         if ( resourceHandler )
-          resourceHandler->handleBabylonResource( filename,
-                                                  block.data + pos,
-                                                  block.length - pos );
+          resourceHandler->handleBabylonResource( filename, block.data + pos, block.length - pos );
         break;
       }
       case 1:
