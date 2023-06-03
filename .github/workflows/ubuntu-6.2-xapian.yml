@@ -1,6 +1,5 @@
 name: Ubuntu-6.2-xapian
-# Qt官方没有linux平台的x86包
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: 
@@ -125,6 +124,8 @@ jobs:
       - name: "Build Changelog"
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: true
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2

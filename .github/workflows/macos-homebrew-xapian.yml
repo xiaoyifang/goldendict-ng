@@ -139,6 +139,8 @@ jobs:
       - name: "Build Changelog"
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: true
       - name: uploadRelease
         uses: svenstaro/upload-release-action@v2
         with:
