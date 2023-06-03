@@ -458,7 +458,7 @@ private slots:
   void showFullTextSearchDialog();
   void closeFullTextSearchDialog();
 
-  void clipboardChange(QClipboard::Mode m);
+  void clipboardChange( QClipboard::Mode m );
 
   void inspectElement( QWebEnginePage * );
 
@@ -468,6 +468,8 @@ signals:
 
   /// Set group for popup window
   void setPopupGroupByName( QString const & name );
+  void fileErrorStatus( const QFile & file );
+  void errorMessageOnStatusBar( const QString & errStr );
 };
 
 class ArticleSaveProgressDialog : public QProgressDialog
