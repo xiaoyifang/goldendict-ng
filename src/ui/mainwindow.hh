@@ -476,7 +476,7 @@ class ArticleSaveProgressDialog : public QProgressDialog
 Q_OBJECT
 
 public:
-  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr,  Qt::WindowFlags f = Qt::Widget ):
+  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
     QProgressDialog( parent, f )
   {
     setAutoReset( false );
