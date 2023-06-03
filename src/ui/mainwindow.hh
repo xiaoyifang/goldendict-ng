@@ -255,6 +255,7 @@ private:
 
   void changeWebEngineViewFont();
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
+  void errorMessageOnStatusBar( const QString & errStr );
 private slots:
 
   void hotKeyActivated( int );
@@ -458,7 +459,7 @@ private slots:
   void showFullTextSearchDialog();
   void closeFullTextSearchDialog();
 
-  void clipboardChange(QClipboard::Mode m);
+  void clipboardChange( QClipboard::Mode m );
 
   void inspectElement( QWebEnginePage * );
 
@@ -475,7 +476,7 @@ class ArticleSaveProgressDialog : public QProgressDialog
 Q_OBJECT
 
 public:
-  explicit ArticleSaveProgressDialog( QWidget * parent = 0,  Qt::WindowFlags f = Qt::Widget ):
+  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
     QProgressDialog( parent, f )
   {
     setAutoReset( false );
