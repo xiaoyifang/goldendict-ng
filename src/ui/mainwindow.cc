@@ -3663,15 +3663,15 @@ void MainWindow::on_importHistory_triggered()
     importPath = QDir::homePath();
   else {
     importPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-        if( !QDir( importPath ).exists() )
-            importPath = QDir::homePath();
-    }
+    if ( !QDir( importPath ).exists() )
+      importPath = QDir::homePath();
+  }
 
     QString fileName = QFileDialog::getOpenFileName( this, tr( "Import history from file" ),
                                                      importPath,
                                                      tr( "Text files (*.txt);;All files (*.*)" ) );
     if ( fileName.size() == 0 )
-        return;
+      return;
 
     QFileInfo fileInfo( fileName );
     cfg.historyExportPath = QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() );
@@ -3680,9 +3680,9 @@ void MainWindow::on_importHistory_triggered()
 
 
     if ( !file.open( QFile::ReadOnly | QIODevice::Text ) ) {
-        errStr = QString( tr( "Import error: " ) ) + file.errorString();
-        errorMessageOnStatusBar( errStr );
-        return;
+      errStr = QString( tr( "Import error: " ) ) + file.errorString();
+      errorMessageOnStatusBar( errStr );
+      return;
     }
 
     QTextStream fileStream( &file );
@@ -3692,36 +3692,36 @@ void MainWindow::on_importHistory_triggered()
     history.clear();
 
     do {
-        itemStr = fileStream.readLine();
-        if ( fileStream.status() >= QTextStream::ReadCorruptData )
-            break;
+      itemStr = fileStream.readLine();
+      if ( fileStream.status() >= QTextStream::ReadCorruptData )
+        break;
 
-        trimmedStr = itemStr.trimmed();
-        if ( trimmedStr.isEmpty() )
-            continue;
+      trimmedStr = itemStr.trimmed();
+      if ( trimmedStr.isEmpty() )
+        continue;
 
-        if ( (unsigned)trimmedStr.size() <= history.getMaxItemLength() )
-            itemList.prepend( trimmedStr );
+      if ( (unsigned)trimmedStr.size() <= history.getMaxItemLength() )
+        itemList.prepend( trimmedStr );
 
     } while ( !fileStream.atEnd() && itemList.size() < (int)history.getMaxSize() );
 
     history.enableAdd( true );
 
     for ( QList< QString >::const_iterator i = itemList.constBegin(); i != itemList.constEnd(); ++i )
-        history.addItem( History::Item( 1, *i ) );
+      history.addItem( History::Item( 1, *i ) );
 
     history.enableAdd( cfg.preferences.storeHistory );
 
     if ( file.error() != QFile::NoError ) {
-        errStr = QString( tr( "Import error: " ) ) + file.errorString();
-        errorMessageOnStatusBar( errStr );
-        return;
+      errStr = QString( tr( "Import error: " ) ) + file.errorString();
+      errorMessageOnStatusBar( errStr );
+      return;
     }
 
     if ( fileStream.status() >= QTextStream::ReadCorruptData ) {
-        errStr = QString( tr( "Import error: invalid data in file" ) );
-        errorMessageOnStatusBar( errStr );
-        return;
+      errStr = QString( tr( "Import error: invalid data in file" ) );
+      errorMessageOnStatusBar( errStr );
+      return;
     }
     //even without this line, the destructor of QFile will close the file as documented.
     file.close();
@@ -3729,42 +3729,42 @@ void MainWindow::on_importHistory_triggered()
 }
 void MainWindow::errorMessageOnStatusBar( const QString & errStr )
 {
-    this->mainStatusBar->showMessage( errStr, 10000, QPixmap( ":/icons/error.svg" ) );
+  this->mainStatusBar->showMessage( errStr, 10000, QPixmap( ":/icons/error.svg" ) );
 }
 
 void MainWindow::on_exportFavorites_triggered()
 {
-    QString exportPath;
-    if ( cfg.historyExportPath.isEmpty() )
-        exportPath = QDir::homePath();
-    else {
-        exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-        if( !QDir( exportPath ).exists() )
+  QString exportPath;
+  if ( cfg.historyExportPath.isEmpty() )
+    exportPath = QDir::homePath();
+  else {
+    exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
+    if ( !QDir( exportPath ).exists() )
       exportPath = QDir::homePath();
   }
 
-    QString fileName = QFileDialog::getSaveFileName( this,
-                                                     tr( "Export Favorites to file" ),
-                                                     exportPath,
-                                                     tr( "XML files (*.xml);;All files (*.*)" ) );
-    if ( fileName.size() == 0 )
-        return;
+  QString fileName = QFileDialog::getSaveFileName( this,
+                                                   tr( "Export Favorites to file" ),
+                                                   exportPath,
+                                                   tr( "XML files (*.xml);;All files (*.*)" ) );
+  if ( fileName.size() == 0 )
+    return;
 
-    cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
-    QFile file( fileName );
+  cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
+  QFile file( fileName );
 
 
-    if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
-        errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-        return;
-    }
+  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
+    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+    return;
+  }
 
     QByteArray data;
     ui.favoritesPaneWidget->getDataInXml( data );
 
     if ( file.write( data ) != data.size() ) {
-        errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-        return;
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
     }
 
     file.close();
@@ -3874,13 +3874,13 @@ void MainWindow::fillWordListFromHistory()
 
     QList< History::Item > const & items = history.getItems();
     for ( const auto & item : items ) {
-    History::Item const * i = &item;
-    auto s                  = new QListWidgetItem( i->word, ui.wordList );
-    if ( s->text().at( 0 ).direction() == QChar::DirR )
-      s->setTextAlignment( Qt::AlignRight );
-    if ( s->text().at( 0 ).direction() == QChar::DirL )
-      s->setTextAlignment( Qt::AlignLeft );
-    ui.wordList->addItem( s );
+      History::Item const * i = &item;
+      auto s                  = new QListWidgetItem( i->word, ui.wordList );
+      if ( s->text().at( 0 ).direction() == QChar::DirR )
+        s->setTextAlignment( Qt::AlignRight );
+      if ( s->text().at( 0 ).direction() == QChar::DirL )
+        s->setTextAlignment( Qt::AlignLeft );
+      ui.wordList->addItem( s );
     }
 
     ui.wordList->setUpdatesEnabled( true );
