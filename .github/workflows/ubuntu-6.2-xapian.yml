@@ -91,12 +91,23 @@ jobs:
           ls -al appdir
       - name: Build AppImage
         run: |
-          sudo apt install fcitx5-frontend-qt6
-          wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage"
-          chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
-          wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
-          chmod a+x linuxdeploy-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.xiaoyifang.GoldenDict_NG.desktop
+               sudo apt install git cmake fcitx-libs-dev
+               git clone https://github.com/fcitx/fcitx5-qt.git
+               cd fcitx5-qt
+               mkdir build
+               cmake -B build .
+               cd build
+               make -j4
+               sudo make install
+               cd ..
+               cd ..
+               sudo apt install extra-cmake-modules   libxkbcommon-dev qtbase5-private-dev
+          
+               wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage"
+               chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
+               wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
+               chmod a+x linuxdeploy-x86_64.AppImage
+               ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/org.xiaoyifang.GoldenDict_NG.desktop
 
       - name: changelog
         id: changelog
