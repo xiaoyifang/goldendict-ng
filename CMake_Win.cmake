@@ -32,9 +32,8 @@ foreach (A_DLL_FILE ${DLL_FILES})
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
 endforeach ()
 
-set(THIRD_PARTY_DLL PRIVATE "$<IF:$<CONFIG:Debug>,${CMAKE_SOURCE_DIR}/winlibs/lib/dbg,${CMAKE_SOURCE_DIR}/winlibs/lib")
-
-file(GLOB DLL_FILES LIST_DIRECTORIES false "${THIRD_PARTY_DLL}/*.dll")
+set(THIRD_PARTY_DLL "$<IF:$<CONFIG:Debug>,${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/*.dll,${CMAKE_SOURCE_DIR}/winlibs/lib/*.dll>")
+file(GLOB DLL_FILES LIST_DIRECTORIES false "${THIRD_PARTY_DLL}")
 foreach (A_DLL_FILE ${DLL_FILES})
     get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
