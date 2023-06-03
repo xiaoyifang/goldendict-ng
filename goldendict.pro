@@ -74,8 +74,8 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
 
 #xapian is the must option now.
 win32{
-  Debug: LIBS+= -L$$PWD/winlibs/lib/xapian/dbg/ -lxapian
-  Release: LIBS+= -L$$PWD/winlibs/lib/xapian/rel/ -lxapian
+  Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lxapian
+  Release: LIBS+= -L$$PWD/winlibs/lib -lxapian
 }else{
   LIBS += -lxapian
 }
@@ -150,9 +150,8 @@ win32 {
 
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
         LIBS += -lshell32 -luser32 -lsapi -lole32
-        Debug: LIBS+= -lhunspelld
-        Release: LIBS+= -lhunspell
-        HUNSPELL_LIB = hunspell
+        Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lhunspell-1.7
+        Release: LIBS+= -L$$PWD/winlibs/lib/ -lhunspell-1.7
     }
 
     LIBS += -lwsock32 \

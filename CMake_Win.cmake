@@ -15,16 +15,14 @@ foreach (A_WIN_LIB ${WINLIBS_FILES})
     target_link_libraries(${GOLDENDICT} PRIVATE ${A_WIN_LIB})
 endforeach ()
 
-file(GLOB WINLIBS_FILES "${CMAKE_SOURCE_DIR}/winlibs/lib/xapian/rel/*.lib")
-foreach (A_WIN_LIB ${WINLIBS_FILES})
-    target_link_libraries(${GOLDENDICT} PRIVATE ${A_WIN_LIB})
-endforeach ()
-
-# zim dependencies
-file(GLOB WINLIBS_FILES "${CMAKE_SOURCE_DIR}/winlibs/lib/*.lib")
-foreach (A_WIN_LIB ${WINLIBS_FILES})
-    target_link_libraries(${GOLDENDICT} PRIVATE ${A_WIN_LIB})
-endforeach ()
+set(THIRD_PARTY_LIBARY
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/lzma.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/lzma.lib
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/zstd.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/zstd.lib
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/xapian.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/xapian.lib
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/hunspell-1.7.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/hunspell-1.7.lib
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/zim.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/zim.lib
+        )
+target_link_libraries(${GOLDENDICT} PRIVATE ${THIRD_PARTY_LIBARY})
 
 # Copy .dlls to output dir
 
@@ -34,13 +32,11 @@ foreach (A_DLL_FILE ${DLL_FILES})
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
 endforeach ()
 
-file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/xapian/rel/*.dll")
-foreach (A_DLL_FILE ${DLL_FILES})
-    get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
-    configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
-endforeach ()
-
-file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/*.dll")
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/*.dll")
+else ()
+    file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/*.dll")
+endif ()
 foreach (A_DLL_FILE ${DLL_FILES})
     get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
@@ -49,7 +45,9 @@ endforeach ()
 if (WITH_EPWING_SUPPORT)
     add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
     target_include_directories(${GOLDENDICT} PRIVATE
-        thirdparty
-    )
+            thirdparty
+            )
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
+
+    set_target_properties(eb PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 endif ()
