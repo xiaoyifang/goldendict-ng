@@ -13,10 +13,11 @@ char const * const Iconv::Utf8 = "UTF-8";
 
 using gd::wchar;
 
-Iconv::Iconv( char const * to, char const * from )
+Iconv::Iconv( char const * from )
 #ifdef USE_ICONV
-// the to encoding must be UTF8
-    :state( iconv_open( Utf8, from ) )
+  // the to encoding must be UTF8
+  :
+  state( iconv_open( Utf8, from ) )
 #endif
 {
 #ifdef USE_ICONV
@@ -116,7 +117,7 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData,
   if ( !dataSize )
     return {};
 
-  Iconv ic( Utf8, fromEncoding );
+  Iconv ic( fromEncoding );
 
   QString outStr = ic.convert(fromData, dataSize);
   return gd::toWString(outStr);
@@ -131,7 +132,7 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData,
   if ( !dataSize )
     return {};
 
-  Iconv ic( Utf8, fromEncoding );
+  Iconv ic( fromEncoding );
 
   const QString outStr = ic.convert(fromData, dataSize);
   return outStr.toStdString();

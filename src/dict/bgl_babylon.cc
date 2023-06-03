@@ -760,7 +760,7 @@ void Babylon::convertToUtf8( std::string &s, unsigned int type )
   if( charset == "UTF-8" )
     return;
 
-  Iconv conv_("UTF-8", charset.c_str());
+  Iconv conv_( charset.c_str() );
 
   size_t inbufbytes = s.size();
 
