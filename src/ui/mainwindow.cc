@@ -3612,7 +3612,7 @@ void MainWindow::on_exportHistory_triggered()
 
 
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
-    fileErrorStatus( file );
+    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
     return;
   }
 
@@ -3625,7 +3625,7 @@ void MainWindow::on_exportHistory_triggered()
   QByteArray line;
   line.append( 0xEF ).append( 0xBB ).append( 0xBF );
   if ( file.write( line ) != line.size() ) {
-    fileErrorStatus( file );
+    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
     return;
   }
 
@@ -3642,17 +3642,12 @@ void MainWindow::on_exportHistory_triggered()
     line += "\n";
 
     if ( file.write( line ) != line.size() ) {
-      fileErrorStatus( file );
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
       return;
     }
   }
 
   mainStatusBar->showMessage( tr( "History export complete" ), 5000 );
-}
-void MainWindow::fileErrorStatus( const QFile & file )
-{
-  QString errStr = QString( tr( "Export error: " ) ) + file.errorString();
-  this->mainStatusBar->showMessage( errStr, 10000, QPixmap( ":/icons/error.svg" ) );
 }
 
 // TODO: consider moving parts of this method into History class.

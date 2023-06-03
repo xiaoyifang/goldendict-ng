@@ -255,6 +255,7 @@ private:
 
   void changeWebEngineViewFont();
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
+  void errorMessageOnStatusBar( const QString & errStr );
 private slots:
 
   void hotKeyActivated( int );
@@ -468,8 +469,6 @@ signals:
 
   /// Set group for popup window
   void setPopupGroupByName( QString const & name );
-  void fileErrorStatus( const QFile & file );
-  void errorMessageOnStatusBar( const QString & errStr );
 };
 
 class ArticleSaveProgressDialog : public QProgressDialog
