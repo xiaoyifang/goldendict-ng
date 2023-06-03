@@ -34,7 +34,7 @@ public:
   static char const * const Utf16Le;
   static char const * const Utf8;
 
-  Iconv( char const * to, char const * from );
+  Iconv( char const * from );
 
   ~Iconv();
 

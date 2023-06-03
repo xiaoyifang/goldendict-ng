@@ -645,7 +645,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
 string encodeToHunspell( Hunspell & hunspell, wstring const & str )
 {
-  Iconv conv( hunspell.get_dic_encoding(), Iconv::GdWchar );
+  Iconv conv( Iconv::GdWchar );
 
   void const * in = str.data();
   size_t inLeft = str.size() * sizeof( wchar );
@@ -663,7 +663,7 @@ string encodeToHunspell( Hunspell & hunspell, wstring const & str )
 
 wstring decodeFromHunspell( Hunspell & hunspell, char const * str )
 {
-  Iconv conv( Iconv::GdWchar, hunspell.get_dic_encoding() );
+  Iconv conv( hunspell.get_dic_encoding() );
 
   void const * in = str;
   size_t inLeft = strlen( str );
