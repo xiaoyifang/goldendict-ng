@@ -12,7 +12,7 @@ jobs:
       - uses: a631807682/issues-translator@v1.2.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          match-languages: cmn
+          match-languages: cmn,rus
           min-match-percent: 0.15
           modify-title: true
           modify-body: true
