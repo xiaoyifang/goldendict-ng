@@ -21,8 +21,7 @@
 namespace FtsHelpers
 {
 
-bool ftsIndexIsOldOrBad( std::string const & indexFile,
-                         BtreeIndexing::BtreeDictionary * dict );
+bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict );
 
 bool parseSearchString( QString const & str, QStringList & IndexWords,
                         QStringList & searchWords,

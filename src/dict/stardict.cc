@@ -275,8 +275,7 @@ StardictDictionary::StardictDictionary( string const & id,
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-      && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
+  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
     FTS_index_completed.ref();
 }
 
@@ -1155,11 +1154,11 @@ QString StardictDictionary::getMainFilename() { return getDictionaryFilenames()[
 
 void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
-  if( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-         || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+  if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
   if( ensureInitDone().size() )

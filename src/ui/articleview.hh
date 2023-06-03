@@ -84,7 +84,7 @@ class ArticleView: public QWidget
   QString activeDictId;
 
   /// Search in results of full-text search
-  QStringList allMatches;
+  QString firstAvailableText;
   QStringList uniqueMatches;
   bool ftsSearchIsOpened = false;
   bool ftsSearchMatchCase = false;
@@ -93,7 +93,6 @@ class ArticleView: public QWidget
   QString delayedHighlightText;
 
   void highlightFTSResults();
-  void highlightAllFtsOccurences( QWebEnginePage::FindFlags flags );
   void performFtsFindOperation( bool backwards );
 
 public:
@@ -126,8 +125,6 @@ public:
 
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( QString const & dictionaryId );
-
-  void emitJavascriptFinished();
 
   /// Shows the definition of the given word with the given group.
   /// scrollTo can be optionally set to a "gdfrom-xxxx" identifier to position
@@ -380,9 +377,9 @@ private slots:
   /// Copy current selection as plain text
   void copyAsText();
 
-  void setActiveDictIds(ActiveDictIds);
+  void setActiveDictIds( const ActiveDictIds & ad );
 
-  void dictionaryClear( ActiveDictIds ad );
+  void dictionaryClear( const ActiveDictIds & ad );
 
 private:
 
@@ -417,7 +414,7 @@ private:
   /// Attempts removing last temporary file created.
   void cleanupTemp();
 
-  bool eventFilter( QObject * obj, QEvent * ev );
+  bool eventFilter( QObject * obj, QEvent * ev ) override;
 
   void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
 
@@ -428,9 +425,8 @@ private:
   QStringList getMutedDictionaries(unsigned group);
 
   protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * );
-
+    // We need this to hide the search bar when we're showed
+    void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject
@@ -438,10 +434,12 @@ class ResourceToSaveHandler: public QObject
   Q_OBJECT
 
 public:
-  explicit ResourceToSaveHandler( ArticleView * view, QString const & fileName );
-  void addRequest( sptr< Dictionary::DataRequest > req );
+  explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
+  void addRequest( const sptr< Dictionary::DataRequest > & req );
   bool isEmpty()
-  { return downloadRequests.empty(); }
+  {
+    return downloadRequests.empty();
+  }
 
 signals:
   void done();
@@ -462,7 +460,7 @@ class ArticleViewAgent : public QObject
   ArticleView * articleView;
 
 public:
-  ArticleViewAgent( ArticleView * articleView );
+  explicit ArticleViewAgent( ArticleView * articleView );
 
 
 public slots:
