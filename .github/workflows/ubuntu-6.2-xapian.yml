@@ -91,7 +91,15 @@ jobs:
           ls -al appdir
       - name: Build AppImage
         run: |
-          sudo apt install fcitx5-frontend-qt6
+          # for /usr/lib/qt6/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
+          sudo apt-get install extra-cmake-modules libxkbcommon-dev libxcb1 libxcb-cursor0
+          git clone --single-branch --depth 1 https://github.com/fcitx/fcitx5-qt.git
+          cd fcitx5-qt
+          cmake -S . -B build  -DCMAKE_BUILD_TYPE=Release -DENABLE_QT4=OFF -DENABLE_QT5=OFF -DENABLE_QT6=ON -DBUILD_ONLY_PLUGIN=ON
+          cmake --build build
+          sudo cmake --install ./build
+          cd ..
+          
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage"
           chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
