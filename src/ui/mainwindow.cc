@@ -2965,7 +2965,7 @@ void MainWindow::latestReleaseReplyReady()
         }
         downloadUrl = matchParts.captured(1);
         if(downloadUrl.startsWith("/")){
-          downloadUrl = latestReleaseReply->request().url().host() + downloadUrl;
+          downloadUrl = latestReleaseReply->request().url().url( QUrl::RemovePath ) + downloadUrl;
         }
         success = true;
       }
