@@ -382,9 +382,10 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           len = qFromBigEndian( *reinterpret_cast< quint32 * >( block.data + pos ) );
           pos += 4;
         }
-        else
-        {
-          len = (unsigned char)block.data[pos++];
+        else {
+          if ( pos + 1 > block.length )
+            break;
+          len = (unsigned char)block.data[ pos++ ];
         }
 
         if( pos + len > block.length )
