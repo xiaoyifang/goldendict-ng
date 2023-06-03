@@ -32,7 +32,7 @@ foreach (A_DLL_FILE ${DLL_FILES})
     configure_file("${A_DLL_FILE}" "${CMAKE_BINARY_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)
 endforeach ()
 
-if (CMAKE_BUILD_TYPE MATCHES DEBUG)
+if (CMAKE_BUILD_TYPE MATCHES Debug)
     file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/*.dll")
 else ()
     file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/*.dll")
@@ -45,7 +45,9 @@ endforeach ()
 if (WITH_EPWING_SUPPORT)
     add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
     target_include_directories(${GOLDENDICT} PRIVATE
-        thirdparty
-    )
+            thirdparty
+            )
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
+
+    set_target_properties(eb PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 endif ()
