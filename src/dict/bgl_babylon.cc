@@ -52,10 +52,13 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 DEF_EX( exIconv, "Iconv library error", Dictionary::Ex )
 DEF_EX( exAllocation, "Error memory allocation", Dictionary::Ex )
 
-Babylon::Babylon( std::string filename ) :
-m_filename( filename )
+Babylon::Babylon( const std::string & filename ):
+  m_filename( filename ),
+  m_sourceLang( 0 ),
+  m_targetLang( 0 ),
+  m_numEntries( 0 )
 {
-  file = NULL;
+  file = nullptr;
 }
 
 
@@ -67,15 +70,13 @@ Babylon::~Babylon()
 
 bool Babylon::open()
 {
-  FILE *f;
-  unsigned char buf[6];
-  int i;
+  unsigned char buf[ 6 ];
 
-  f = gd_fopen( m_filename.c_str(), "rb" );
-  if( f == NULL )
+  FILE * f = gd_fopen( m_filename.c_str(), "rb" );
+  if ( f == nullptr )
     return false;
 
-  i = fread( buf, 1, 6, f );
+  int i = fread( buf, 1, 6, f );
 
   /* First four bytes: BGL signature 0x12340001 or 0x12340002 (big-endian) */
   if( i < 6 || memcmp( buf, "\x12\x34\x00", 3 ) || buf[3] == 0 || buf[3] > 2 )
@@ -112,7 +113,7 @@ bool Babylon::open()
 
   fclose( f );
 
-  if( file == NULL )
+  if ( file == nullptr )
     return false;
 
   return true;
@@ -124,14 +125,14 @@ void Babylon::close()
   if ( file )
   {
     gzclose( file );
-    file = 0;
+    file = nullptr;
   }
 }
 
 
 bool Babylon::readBlock( bgl_block &block )
 {
-  if ( file == NULL || gzeof( file ) )
+  if ( file == nullptr || gzeof( file ) )
     return false;
 
   block.length = bgl_readnum( 1 );
@@ -164,12 +165,10 @@ unsigned int Babylon::bgl_readnum( int bytes )
   unsigned char buf[4];
   unsigned val = 0;
 
-  if ( bytes < 1 || bytes > 4 ) return (0);
+  if ( bytes < 1 || bytes > 4 )
+    return 0;
 
-  int res = gzread( file, buf, bytes );
-
-  if( res != bytes )
-  {
+  if ( const int res = gzread( file, buf, bytes ); res != bytes ) {
     gzclearerr( file );
     return 4;  // Read error - return end of file marker
   }
@@ -179,9 +178,10 @@ unsigned int Babylon::bgl_readnum( int bytes )
 }
 
 
-bool Babylon::read(std::string &source_charset, std::string &target_charset)
+bool Babylon::read( const std::string & source_charset, const std::string & target_charset )
 {
-  if( file == NULL ) return false;
+  if ( file == nullptr )
+    return false;
 
   bgl_block block;
   unsigned int pos;
@@ -251,8 +251,7 @@ bool Babylon::read(std::string &source_charset, std::string &target_charset)
             //m_sourceLang = headword;
             break;
           case 8:
-            m_targetLang = bgl_language[(unsigned char)(block.data[5])];
-            //m_targetLang = headword;
+            m_targetLang = bgl_language[ (unsigned char)( block.data[ 5 ] ) ];
             break;
           case 9:
             headword.reserve( block.length - 2 );
@@ -302,9 +301,7 @@ bool Babylon::read(std::string &source_charset, std::string &target_charset)
   }
   gzseek( file, 0, SEEK_SET );
 
-  if ( isUtf8File )
-  {
-    //FDPRINTF( stderr, "%s: utf8 file.\n", m_title.c_str() );
+  if ( isUtf8File ) {
     m_defaultCharset = "UTF-8";
     m_sourceCharset = "UTF-8";
     m_targetCharset = "UTF-8";
@@ -324,8 +321,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
 {
   bgl_entry entry;
 
-  if( file == NULL )
-  {
+  if ( file == nullptr ) {
     entry.headword = "";
     return entry;
   }
@@ -355,7 +351,6 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
         if ( pos + len > block.length )
           break;
         std::string filename( block.data + pos, len );
-        //if (filename != "8EAF66FD.bmp" && filename != "C2EEF3F6.html") {
         pos += len;
         if ( resourceHandler )
           resourceHandler->handleBabylonResource( filename, block.data + pos, block.length - pos );
@@ -569,9 +564,8 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
               {
                 transcription = Iconv::toUtf8( "Windows-1252", block.data + pos + 4, length );
               }
-              catch( Iconv::Ex & e )
-              {
-                qWarning( "Bgl: charset conversion error, no trancription processing's done: %s\n", e.what() );
+              catch ( Iconv::Ex & e ) {
+                qWarning( "Bgl: charset conversion error, no transcription processing's done: %s\n", e.what() );
                 transcription = std::string( block.data + pos + 4, length );
               }
             }
@@ -622,29 +616,36 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
               //pos += len - a;
               //break;
             }
-            else
-            if (block.data[pos] == 0x14) {
-              defBodyEnded = true; // Presumably
-              pos++;
-            } else if ((unsigned char)block.data[pos] == 0x1A){
+            else {
+              if ( block.data[ pos ] == 0x14 ) {
+                defBodyEnded = true; // Presumably
+                pos++;
+              }
+              else if ( (unsigned char)block.data[ pos ] == 0x1A ) {
                 unsigned length = (unsigned char)block.data[ pos + 1 ];
-                if (length <= 10){// 0x1A identifies two different data types.
-                                  // data about the Hebrew root should be shorter then
-                                  // 10 bytes, and in the other data type the byte
-                          // after 0x1A is > 10 (at least it is in Bybylon's
-                          // Hebrew dictionaries).   
-                    root = std::string( block.data + pos + 2, length );
-                    std::reverse(root.begin(),root.end());
-                    definition += " (" + root + ")";
-                    pos += length + 2;
-                    a += length + 1;
-               }
-                else
-                    pos++;
-            } else {
-                definition += block.data[pos++];
+                if ( length <= 10 ) { // 0x1A identifies two different data types.
+                                      // data about the Hebrew root should be shorter then
+                                      // 10 bytes, and in the other data type the byte
+                                      // after 0x1A is > 10 (at least it is in Bybylon's
+                                      // Hebrew dictionaries).
+                  root = std::string( block.data + pos + 2, length );
+                  std::reverse( root.begin(), root.end() );
+                  definition += " (" + root + ")";
+                  pos += length + 2;
+                  a += length + 1;
+                }
+                else {
+                  pos++;
+                }
+              }
+              else {
+                definition += block.data[ pos++ ];
+              }
             }
-          }else definition += block.data[pos++];
+          }
+          else {
+            definition += block.data[ pos++ ];
+          }
         }
         convertToUtf8( definition, BGL_TARGET_CHARSET );
         if( !transcription.empty() )
