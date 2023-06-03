@@ -2276,7 +2276,7 @@ QString getProgramDataDir() noexcept
 {
   if ( isPortableVersion() )
     return QCoreApplication::applicationDirPath();
-
+// TODO: rewrite this in QStandardPaths::AppDataLocation
   #ifdef PROGRAM_DATA_DIR
   return PROGRAM_DATA_DIR;
   #else

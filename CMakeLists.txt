@@ -95,6 +95,11 @@ endif ()
 # Note: used as c++ string thus need surrounding " "
 add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
 
+if (LINUX)
+    # see: config.cc -> getProgramDataDir
+    add_compile_definitions(PROGRAM_DATA_DIR="${CMAKE_INSTALL_PREFIX}/share/goldendict")
+endif ()
+
 target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::Xml
         Qt6::Concurrent
