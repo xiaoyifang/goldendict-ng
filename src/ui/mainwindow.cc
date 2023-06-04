@@ -896,11 +896,11 @@ void MainWindow::updateMatchResults( bool finished )
     //clear all existed items
     ui.wordList->clear();
 
-    for ( unsigned x = 0; x < results.size(); ++x ) {
-      QListWidgetItem * i = new QListWidgetItem( results[ x ].first, ui.wordList );
-      i->setToolTip( results[ x ].first );
+    for ( const auto & result : results ) {
+      auto i = new QListWidgetItem( result.first, ui.wordList );
+      i->setToolTip( result.first );
 
-      if ( results[ x ].second ) {
+      if ( result.second ) {
         QFont f = i->font();
         f.setItalic( true );
         i->setFont( f );
@@ -911,7 +911,7 @@ void MainWindow::updateMatchResults( bool finished )
 
     if ( ui.wordList->count() ) {
       ui.wordList->scrollToItem( ui.wordList->item( 0 ), QAbstractItemView::PositionAtTop );
-      ui.wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
+      ui.wordList->setCurrentItem( nullptr, QItemSelectionModel::Clear );
     }
 
     ui.wordList->setUpdatesEnabled( true );
@@ -921,8 +921,8 @@ void MainWindow::updateMatchResults( bool finished )
     QStringList _results;
     _results.clear();
 
-    for ( unsigned x = 0; x < results.size(); ++x ) {
-      _results << results[ x ].first;
+    for ( const auto & result : results ) {
+      _results << result.first;
     }
     translateBox->setModel( _results );
   }
@@ -2452,16 +2452,11 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::MouseButtonPress ) {
     QMouseEvent * event = static_cast< QMouseEvent * >( ev );
 
-//    // clicks outside of the word list should hide it.
-//    if ( obj != translateBox->wordList() && obj != translateBox->wordList()->viewport() ) {
-//      translateBox->setPopupEnabled( false );
-//    }
-
     return handleBackForwardMouseButtons( event );
   }
 
   if ( ev->type() == QEvent::KeyPress ) {
-    QKeyEvent * keyevent = static_cast< QKeyEvent * >( ev );
+    auto keyevent = dynamic_cast< QKeyEvent * >( ev );
 
     bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
                            || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );

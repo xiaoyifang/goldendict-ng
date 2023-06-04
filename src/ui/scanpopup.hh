@@ -222,7 +222,6 @@ private slots:
 
   void translateInputChanged(QString const & text);
   void translateInputFinished();
-  void wordListItemActivated( QListWidgetItem * );
 
   void focusTranslateLine();
 

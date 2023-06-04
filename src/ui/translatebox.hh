@@ -16,17 +16,14 @@ class TranslateBox : public QWidget
   Q_OBJECT
 
 public:
-  explicit TranslateBox(QWidget * parent = 0);
+  explicit TranslateBox( QWidget * parent = nullptr );
   QLineEdit * translateLine();
   QWidget * completerWidget();
   void setText( const QString & text, bool showPopup = true );
   void setSizePolicy( QSizePolicy policy );
-  inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
-  { setSizePolicy(QSizePolicy(hor, ver)); }
+  void setSizePolicy( QSizePolicy::Policy hor, QSizePolicy::Policy ver );
 
   void setModel( QStringList & _words );
-
-signals:
 
 public slots:
   void setPopupEnabled(bool enable);

@@ -100,3 +100,7 @@ void TranslateBox::rightButtonClicked()
 {
   setPopupEnabled( !m_popupEnabled );
 }
+void TranslateBox::setSizePolicy( QSizePolicy::Policy hor, QSizePolicy::Policy ver )
+{
+  setSizePolicy( QSizePolicy( hor, ver ) );
+}
