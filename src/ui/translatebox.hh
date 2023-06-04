@@ -44,7 +44,7 @@ private:
   QLineEdit * translate_line;
   bool m_popupEnabled;
   QMutex translateBoxMutex;
-  QCompleter * completer;
+
 };
 
 #endif // TRANSLATEBOX_HH

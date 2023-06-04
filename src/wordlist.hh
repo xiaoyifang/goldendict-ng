@@ -9,6 +9,7 @@
 #include <QStringListModel>
 
 #include "wordfinder.hh"
+#include <QCompleter>
 
 class WordList : public QStringListModel
 {
@@ -17,12 +18,17 @@ public:
   explicit WordList(QObject * parent = 0);
   void attachFinder(WordFinder * finder);
   virtual void setTranslateLine(QLineEdit * line)
-  { translateLine = line; }
+  { translateLine = line;
+    translateLine->setCompleter(completer);
+
+  }
   void clear(){
     auto model = stringList();
     model.clear();
     setStringList(model);
   }
+
+  QWidget * completerWidget();
 
 protected:
 
@@ -42,7 +48,7 @@ private:
 
   WordFinder * wordFinder;
   QLineEdit * translateLine;
-
+  QCompleter * completer;
   QVector< QSize > resizedSizes;
 };
 

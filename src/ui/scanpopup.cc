@@ -111,7 +111,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
-  wordListDefaultFont      = ui.translateBox->completerWidget()->font();
+  wordListDefaultFont      =ui.translateBox->font();// ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();
   groupListDefaultFont = ui.groupList->font();
 
@@ -129,10 +129,10 @@ ScanPopup::ScanPopup( QWidget * parent,
   //todo
 //  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
 
-  connect( ui.translateBox->wordList(),
-    SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-    this,
-    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
+//  connect( ui.translateBox->wordList(),
+//    SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
+//    this,
+//    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
 
   connect( ui.translateBox->wordList(), &WordList::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
@@ -362,8 +362,8 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
-    ui.translateBox->completerWidget()->setFont( font );
+//  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+//    ui.translateBox->completerWidget()->setFont( font );
 
   font = translateLineDefaultFont;
   ps = font.pointSize();

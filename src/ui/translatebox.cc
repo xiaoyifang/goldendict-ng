@@ -35,12 +35,8 @@ TranslateBox::TranslateBox( QWidget * parent ):
   setFocusProxy(translate_line);
   translate_line->setObjectName("translateLine");
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
-  word_list->setTranslateLine(translate_line);
 
-  completer = new QCompleter(word_list->stringList(), this);
-  completer->setCaseSensitivity(Qt::CaseInsensitive);
-  completer->setCompletionMode(QCompleter::InlineCompletion);
-  translate_line->setCompleter(completer);
+
 
   QHBoxLayout *layout = new QHBoxLayout(this);
   setLayout(layout);
@@ -83,9 +79,10 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 void TranslateBox::showPopup()
 {
   //todo.
-  completer->setModel(word_list);
-  completer->setCompletionPrefix( translate_line->text() );
-  qDebug() << "COMPLETION:" << completer->currentCompletion();
+  qDebug()<<word_list->stringList();
+//  completer->setModel(word_list);
+//  completer->setCompletionPrefix( translate_line->text() );
+//  qDebug() << "COMPLETION:" << completer->currentCompletion();
 }
 
 QLineEdit * TranslateBox::translateLine()
@@ -95,7 +92,7 @@ QLineEdit * TranslateBox::translateLine()
 
 QWidget * TranslateBox::completerWidget()
 {
-  return completer->widget();
+  return word_list->completerWidget();
 }
 
 WordList * TranslateBox::wordList()
