@@ -11,29 +11,8 @@
 #include <QWidget>
 #include <QListWidget>
 #include <QFocusEvent>
+#include <QCompleter>
 
-class TranslateBox;
-
-class CompletionList : public WordList
-{
-  Q_OBJECT
-
-public:
-  CompletionList(TranslateBox * parent);
-  int preferredHeight() const;
-  virtual void setTranslateLine(QLineEdit * line)
-  {
-    WordList::setTranslateLine( line );
-    setFocusProxy( line );
-  }
-
-public slots:
-  bool acceptCurrentEntry();
-
-private:
-  virtual bool eventFilter( QObject *, QEvent * );
-  TranslateBox * translateBox;
-};
 
 class TranslateBox : public QWidget
 {
@@ -42,7 +21,9 @@ class TranslateBox : public QWidget
 public:
   explicit TranslateBox(QWidget * parent = 0);
   QLineEdit * translateLine();
+  QWidget * completerWidget();
   WordList * wordList();
+  void wordList(WordList * _word_list);
   void setText(QString text, bool showPopup=true);
   void setSizePolicy(QSizePolicy policy);
   inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
@@ -59,12 +40,11 @@ private slots:
   void onTextEdit();
 
 private:
-  bool eventFilter(QObject *obj, QEvent *event);
-  CompletionList * word_list;
+  WordList * word_list;
   QLineEdit * translate_line;
   bool m_popupEnabled;
   QMutex translateBoxMutex;
-  // QCompleter * completer; // disabled for now
+  QCompleter * completer;
 };
 
 #endif // TRANSLATEBOX_HH

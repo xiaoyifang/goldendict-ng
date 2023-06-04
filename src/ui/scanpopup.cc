@@ -111,14 +111,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
-  wordListDefaultFont      = ui.translateBox->wordList()->font();
+  wordListDefaultFont      = ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();
   groupListDefaultFont = ui.groupList->font();
 
   ui.mainLayout->addWidget( definition );
 
   ui.translateBox->wordList()->attachFinder( &wordFinder );
-  ui.translateBox->wordList()->setFocusPolicy(Qt::ClickFocus);
   ui.translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter(this);
   this->installEventFilter(this);
@@ -127,7 +126,8 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
 
-  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
+  //todo
+//  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
 
   connect( ui.translateBox->wordList(),
     SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
@@ -362,8 +362,8 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->wordList()->font().pointSize() != ps )
-    ui.translateBox->wordList()->setFont( font );
+  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+    ui.translateBox->completerWidget()->setFont( font );
 
   font = translateLineDefaultFont;
   ps = font.pointSize();
@@ -659,7 +659,6 @@ void ScanPopup::updateSuggestionList()
 void ScanPopup::updateSuggestionList( QString const & text )
 {
   mainStatusBar->clearMessage();
-  ui.translateBox->wordList()->setCurrentItem( 0, QItemSelectionModel::Clear );
 
   QString req = text.trimmed();
 
@@ -668,7 +667,6 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // An empty request always results in an empty result
     wordFinder.cancel();
     ui.translateBox->wordList()->clear();
-    ui.translateBox->wordList()->unsetCursor();
 
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
@@ -681,7 +679,6 @@ void ScanPopup::updateSuggestionList( QString const & text )
     return;
   }
 
-  ui.translateBox->wordList()->setCursor( Qt::WaitCursor );
 
   wordFinder.prefixMatch( req, getActiveDicts() );
 }

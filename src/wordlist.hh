@@ -6,18 +6,23 @@
 
 #include <QListWidget>
 #include <QLineEdit>
+#include <QStringListModel>
 
 #include "wordfinder.hh"
-#include "delegate.hh"
 
-class WordList : public QListWidget
+class WordList : public QStringListModel
 {
   Q_OBJECT
 public:
-  explicit WordList(QWidget * parent = 0);
+  explicit WordList(QObject * parent = 0);
   void attachFinder(WordFinder * finder);
   virtual void setTranslateLine(QLineEdit * line)
   { translateLine = line; }
+  void clear(){
+    auto model = stringList();
+    model.clear();
+    setStringList(model);
+  }
 
 protected:
 
@@ -37,7 +42,6 @@ private:
 
   WordFinder * wordFinder;
   QLineEdit * translateLine;
-  WordListItemDelegate listItemDelegate;
 
   QVector< QSize > resizedSizes;
 };

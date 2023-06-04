@@ -55,8 +55,6 @@
 
 #ifdef Q_OS_WIN32
   #include <windows.h>
-  #include "wstring.hh"
-  #include "wstring_qt.hh"
 #endif
 
 #include <QWebEngineSettings>
@@ -315,7 +313,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList      = ui.wordList;
   }
   else {
     groupList     = groupListInToolbar;
@@ -324,13 +321,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
   wordList->attachFinder( &wordFinder );
 
-  // for the old UI:
-  ui.wordList->setTranslateLine( ui.translateLine );
 
   groupList->setFocusPolicy( Qt::ClickFocus );
-  wordList->setFocusPolicy( Qt::ClickFocus );
+  ui.wordList->setFocusPolicy( Qt::ClickFocus );
 
-  wordListDefaultFont      = wordList->font();
+  wordListDefaultFont      = ui.wordList->font();
   translateLineDefaultFont = translateLine->font();
   groupListDefaultFont     = groupList->font();
 
@@ -645,7 +640,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
 
-  connect( ui.wordList, &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
+  connect( wordList, &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
   connect( translateBox->wordList(), &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
@@ -664,7 +659,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBox->wordList()->installEventFilter( this );
 
   ui.wordList->viewport()->installEventFilter( this );
-  translateBox->wordList()->viewport()->installEventFilter( this );
+//  translateBox->wordList()->viewport()->installEventFilter( this );
 
   ui.dictsList->installEventFilter( this );
   ui.dictsList->viewport()->installEventFilter( this );
@@ -963,7 +958,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList      = ui.wordList;
 
     translateBoxToolBarAction->setVisible( false );
   }
@@ -2231,8 +2225,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   // If some word is selected in the word list, unselect it. This prevents
   // triggering a set of spurious activation signals when the list changes.
 
-  if ( wordList->selectionModel()->hasSelection() )
-    wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
+  if ( ui.wordList->selectionModel()->hasSelection() )
+    ui.wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
 
   QString req = newValue.trimmed();
 
@@ -2240,8 +2234,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   {
     // An empty request always results in an empty result
     wordFinder.cancel();
-    wordList->clear();
-    wordList->unsetCursor();
+    ui.wordList->clear();
+    ui.wordList->unsetCursor();
 
     // Reset the noResults mark if it's on right now
     if ( translateLine->property( "noResults" ).toBool() )
@@ -2253,7 +2247,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     return;
   }
 
-  wordList->setCursor( Qt::WaitCursor );
+  ui.wordList->setCursor( Qt::WaitCursor );
 
   wordFinder.prefixMatch( req, getActiveDicts() );
 }
@@ -2393,10 +2387,10 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::MouseButtonPress ) {
     QMouseEvent * event = static_cast< QMouseEvent * >( ev );
 
-    // clicks outside of the word list should hide it.
-    if ( obj != translateBox->wordList() && obj != translateBox->wordList()->viewport() ) {
-      translateBox->setPopupEnabled( false );
-    }
+//    // clicks outside of the word list should hide it.
+//    if ( obj != translateBox->wordList() && obj != translateBox->wordList()->viewport() ) {
+//      translateBox->setPopupEnabled( false );
+//    }
 
     return handleBackForwardMouseButtons( event );
   }
@@ -2436,10 +2430,10 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
       if ( cfg.preferences.searchInDock )
       {
-        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && wordList->count() )
+        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.wordList->count() )
         {
-          wordList->setFocus( Qt::ShortcutFocusReason );
-          wordList->setCurrentRow( 0, QItemSelectionModel::ClearAndSelect );
+          ui.wordList->setFocus( Qt::ShortcutFocusReason );
+          ui.wordList->setCurrentRow( 0, QItemSelectionModel::ClearAndSelect );
           return true;
         }
       }
@@ -2451,18 +2445,18 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       return false;
     }
   }
-  else if ( obj == wordList ) {
+  else if ( obj == ui.wordList ) {
     if ( ev->type() == QEvent::KeyPress ) {
       QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
 
-      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !wordList->currentRow() ) {
-        wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
+      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !ui.wordList->currentRow() ) {
+        ui.wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
         translateLine->setFocus( Qt::ShortcutFocusReason );
         return true;
       }
 
       if ( keyEvent->matches( QKeySequence::InsertParagraphSeparator ) &&
-           wordList->selectedItems().size() )
+           ui.wordList->selectedItems().size() )
       {
         if ( cfg.preferences.searchInDock )
         {
@@ -2508,7 +2502,7 @@ void MainWindow::wordListItemActivated( QListWidgetItem * item )
 
 void MainWindow::wordListSelectionChanged()
 {
-  QList< QListWidgetItem * > selected = wordList->selectedItems();
+  QList< QListWidgetItem * > selected = ui.wordList->selectedItems();
 
   if ( selected.size() )
   {
@@ -3438,8 +3432,8 @@ void MainWindow::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( wordList->font().pointSize() != ps )
-    wordList->setFont( font );
+  if ( ui.wordList->font().pointSize() != ps )
+    ui.wordList->setFont( font );
 
   font = translateLineDefaultFont;
 
