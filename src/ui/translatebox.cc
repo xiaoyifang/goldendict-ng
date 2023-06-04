@@ -25,7 +25,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   m_popupEnabled( false )
 {
 
-  completer = new QCompleter(words,this);
+  completer = new QCompleter( words, this );
   resize(200, 90);
   QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
   sizePolicy.setHorizontalStretch(0);
@@ -36,7 +36,6 @@ TranslateBox::TranslateBox( QWidget * parent ):
   setFocusProxy(translate_line);
   translate_line->setObjectName("translateLine");
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
-
 
 
   QHBoxLayout *layout = new QHBoxLayout(this);
@@ -55,9 +54,9 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->installEventFilter( this );
   installEventFilter( this );
 
-  translate_line->setCompleter(completer);
-  completer->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
-//  connect( word_list, &Suggestion::contentChanged, this, &TranslateBox::showPopup );
+  translate_line->setCompleter( completer );
+  completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
+  //  connect( word_list, &Suggestion::contentChanged, this, &TranslateBox::showPopup );
 }
 
 void TranslateBox::setText( QString text, bool showPopup )
@@ -79,24 +78,25 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
     translate_line->setSizePolicy( policy );
 }
 
-void TranslateBox::setModel(QStringList & words){
-//  words.clear();
-//  words<<model;
-//  completer->complete();
+void TranslateBox::setModel( QStringList & words )
+{
+  //  words.clear();
+  //  words<<model;
+  //  completer->complete();
 
-  QStringListModel *model = (QStringListModel*)(completer->model());
-//  QStringList stringList;
-//  stringList << words;
-  model->setStringList(words);
+  QStringListModel * model = (QStringListModel *)( completer->model() );
+  //  QStringList stringList;
+  //  stringList << words;
+  model->setStringList( words );
 }
 
 void TranslateBox::showPopup()
 {
   //todo.
-  qDebug()<<word_list->stringList();
-//  completer->setModel(word_list);
-//  completer->setCompletionPrefix( translate_line->text() );
-//  qDebug() << "COMPLETION:" << completer->currentCompletion();
+  qDebug() << word_list->stringList();
+  //  completer->setModel(word_list);
+  //  completer->setCompletionPrefix( translate_line->text() );
+  //  qDebug() << "COMPLETION:" << completer->currentCompletion();
 }
 
 QLineEdit * TranslateBox::translateLine()

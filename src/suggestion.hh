@@ -20,7 +20,7 @@ public:
   virtual void setTranslateLine(QLineEdit * line)
   {
     translateLine = line;
-//    translateLine->setCompleter( completer );
+    //    translateLine->setCompleter( completer );
   }
   void clear(){
     auto model = stringList();
@@ -28,7 +28,7 @@ public:
     setStringList(model);
   }
 
-//  QWidget * completerWidget();
+  //  QWidget * completerWidget();
 
 protected:
 

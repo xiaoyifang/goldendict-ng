@@ -313,17 +313,17 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-//    wordList = new Suggestion(this);
-//    wordList->attachFinder( &wordFinder );
+    //    wordList = new Suggestion(this);
+    //    wordList->attachFinder( &wordFinder );
 
-//    wordList->setTranslateLine(translateLine);
+    //    wordList->setTranslateLine(translateLine);
   }
   else {
     groupList     = groupListInToolbar;
     translateLine = translateBox->translateLine();
     wordList      = translateBox->wordList();
-//    wordList->attachFinder( &wordFinder );
-    wordList->setTranslateLine(translateLine);
+    //    wordList->attachFinder( &wordFinder );
+    wordList->setTranslateLine( translateLine );
   }
   connect( &wordFinder, &WordFinder::updated, this, &MainWindow::prefixMatchUpdated );
   connect( &wordFinder, &WordFinder::finished, this, &MainWindow::prefixMatchFinished );
@@ -908,33 +908,29 @@ void MainWindow::updateMatchResults( bool finished )
   QStringList _results;
   _results.clear();
 
-  for( unsigned x = 0; x < results.size(); ++x )
-  {
-    _results << results[x].first;
-
+  for ( unsigned x = 0; x < results.size(); ++x ) {
+    _results << results[ x ].first;
   }
 
-  if ( cfg.preferences.searchInDock ){
+  if ( cfg.preferences.searchInDock ) {}
+  else {
 
-  }
-  else{
-
-  translateBox->setModel(_results);
+    translateBox->setModel( _results );
   }
 
-  if ( finished )
-  {
+  if ( finished ) {
 
     refreshTranslateLine();
 
     if ( !wordFinder.getErrorString().isEmpty() )
-      emit showStatusBarMessage(tr("WARNING: %1").arg(wordFinder.getErrorString()),
-                             20000, QPixmap(":/icons/error.svg"));
+      emit showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
+                                 20000,
+                                 QPixmap( ":/icons/error.svg" ) );
   }
 
 
   //  completer->complete();
-//  emit contentChanged();
+  //  emit contentChanged();
 }
 
 void MainWindow::refreshTranslateLine()
@@ -945,13 +941,11 @@ void MainWindow::refreshTranslateLine()
   // Visually mark the input line to mark if there's no results
   bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
 
-  if ( translateLine->property( "noResults" ).toBool() != setMark )
-  {
+  if ( translateLine->property( "noResults" ).toBool() != setMark ) {
     translateLine->setProperty( "noResults", setMark );
 
     Utils::Widget::setNoResultColor( translateLine, setMark );
   }
-
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m )
@@ -1067,7 +1061,7 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   // reset the flag when switching UI modes
   wordListSelChanged = false;
 
-//  wordList->attachFinder( &wordFinder );
+  //  wordList->attachFinder( &wordFinder );
 
   updateGroupList();
   applyWordsZoomLevel();

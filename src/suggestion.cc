@@ -8,10 +8,10 @@ Suggestion::Suggestion( QObject * parent ) : QStringListModel( parent )
 {
   wordFinder = 0;
   translateLine = 0;
-//  completer     = new QCompleter( this, this );
-//  completer->setCaseSensitivity( Qt::CaseInsensitive );
-//  completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
-////  completer->popup()->setFixedWidth(completer->popup()->sizeHintForColumn(0));
+  //  completer     = new QCompleter( this, this );
+  //  completer->setCaseSensitivity( Qt::CaseInsensitive );
+  //  completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
+  ////  completer->popup()->setFixedWidth(completer->popup()->sizeHintForColumn(0));
 }
 
 //QWidget * Suggestion::completerWidget()
@@ -53,7 +53,7 @@ void Suggestion::updateMatchResults( bool finished )
 {
   WordFinder::SearchResults const & results = wordFinder->getResults();
 
-  QStringList _results=stringList();
+  QStringList _results = stringList();
   _results.clear();
 
   for( unsigned x = 0; x < results.size(); ++x )
@@ -76,7 +76,7 @@ void Suggestion::updateMatchResults( bool finished )
   }
 
 
-//  completer->complete();
+  //  completer->complete();
   emit contentChanged();
 }
 

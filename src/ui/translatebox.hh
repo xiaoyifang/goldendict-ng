@@ -30,7 +30,7 @@ public:
   inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
   { setSizePolicy(QSizePolicy(hor, ver)); }
 
-  void setModel(QStringList & words);
+  void setModel( QStringList & words );
 
 signals:
 
@@ -47,7 +47,7 @@ private:
   QLineEdit * translate_line;
   bool m_popupEnabled;
   QMutex translateBoxMutex;
-QCompleter * completer;
+  QCompleter * completer;
   QStringList words;
 };
 
