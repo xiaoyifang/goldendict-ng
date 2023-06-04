@@ -126,15 +126,8 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
 
-  //todo
-//  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
-
-  //  connect( ui.translateBox->wordList(),
-  //    SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-  //    this,
-  //    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
-
-  connect( ui.translateBox->wordList(), &Suggestion::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
+//todo ,show the status on the popup status bar.
+  //connect( ui.translateBox->wordList(), &Suggestion::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   ui.pronounceButton->setDisabled( true );
 

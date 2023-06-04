@@ -11,6 +11,7 @@
 #include <QModelIndex>
 #include <QScrollBar>
 #include <QStyle>
+#include <QStringListModel>
 
 namespace
 {
@@ -20,7 +21,6 @@ namespace
 
 TranslateBox::TranslateBox( QWidget * parent ):
   QWidget( parent ),
-  word_list( new Suggestion( this ) ),
   translate_line( new QLineEdit( this ) ),
   m_popupEnabled( false )
 {
@@ -83,23 +83,15 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & words )
 {
-  //  words.clear();
-  //  words<<model;
-  //  completer->complete();
-
   QStringListModel * model = (QStringListModel *)( completer->model() );
-  //  QStringList stringList;
-  //  stringList << words;
+
   model->setStringList( words );
 }
 
 void TranslateBox::showPopup()
 {
-  //todo.
-  //qDebug() << word_list->stringList();
-  //  completer->setModel(word_list);
-  //  completer->setCompletionPrefix( translate_line->text() );
-  //  qDebug() << "COMPLETION:" << completer->currentCompletion();
+//todo,hide ,or show the popup.
+
 }
 
 QLineEdit * TranslateBox::translateLine()
@@ -110,16 +102,6 @@ QLineEdit * TranslateBox::translateLine()
 QWidget * TranslateBox::completerWidget()
 {
   return completer->widget();
-}
-
-Suggestion * TranslateBox::wordList()
-{
-  return word_list;
-}
-
-void TranslateBox::wordList(Suggestion * _word_list)
-{
-  word_list = _word_list;
 }
 
 void TranslateBox::rightButtonClicked()

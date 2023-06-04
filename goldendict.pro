@@ -377,7 +377,6 @@ HEADERS += \
     src/parsecmdline.hh \
     src/resourceschemehandler.hh \
     src/splitfile.hh \
-    src/suggestion.hh \
     src/termination.hh \
     src/tiff.hh \
     src/ui/about.hh \
@@ -500,7 +499,6 @@ SOURCES += \
     src/parsecmdline.cc \
     src/resourceschemehandler.cc \
     src/splitfile.cc \
-    src/suggestion.cc \
     src/termination.cc \
     src/tiff.cc \
     src/ui/about.cc \

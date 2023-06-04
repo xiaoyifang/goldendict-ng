@@ -35,6 +35,8 @@
 #include <QThreadPool>
 #include <QSslConfiguration>
 #include <QStyleFactory>
+#include "weburlrequestinterceptor.hh"
+#include "folding.hh"
 
 #include <set>
 #include <map>
@@ -314,17 +316,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    //    wordList = new Suggestion(this);
-    //    wordList->attachFinder( &wordFinder );
-
-    //    wordList->setTranslateLine(translateLine);
   }
   else {
     groupList     = groupListInToolbar;
     translateLine = translateBox->translateLine();
-    wordList      = translateBox->wordList();
-    //    wordList->attachFinder( &wordFinder );
-    wordList->setTranslateLine( translateLine );
   }
   connect( &wordFinder, &WordFinder::updated, this, &MainWindow::prefixMatchUpdated );
   connect( &wordFinder, &WordFinder::finished, this, &MainWindow::prefixMatchFinished );
@@ -641,16 +636,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemSelectionChanged, this, &MainWindow::wordListSelectionChanged );
 
-  connect( translateBox->wordList(),
-           SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-           this,
-           SLOT( wordListItemActivated( QListWidgetItem * ) ) );
-
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
-
-  connect( wordList, &Suggestion::statusBarMessage, this, &MainWindow::showStatusBarMessage );
-
-  connect( translateBox->wordList(), &Suggestion::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
   connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
 
@@ -664,10 +650,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBox->translateLine()->installEventFilter( this );
 
   ui.wordList->installEventFilter( this );
-  translateBox->wordList()->installEventFilter( this );
 
   ui.wordList->viewport()->installEventFilter( this );
-//  translateBox->wordList()->viewport()->installEventFilter( this );
 
   ui.dictsList->installEventFilter( this );
   ui.dictsList->viewport()->installEventFilter( this );
@@ -1071,7 +1055,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
     groupList     = groupListInToolbar;
     translateLine = translateBox->translateLine();
-    wordList      = translateBox->wordList();
 
     translateBoxToolBarAction->setVisible( true );
   }
@@ -2280,7 +2263,7 @@ void MainWindow::updateCurrentGroupProperty()
 
   if ( grp && translateLine->property( "currentGroup" ).toString() != grp->name ) {
     translateLine->setProperty( "currentGroup", grp->name );
-    wordList->setProperty( "currentGroup", grp->name );
+    ui.wordList->setProperty( "currentGroup", grp->name );
     QString ss = styleSheet();
 
     // Only update stylesheet if it mentions currentGroup, as updating the
@@ -2487,7 +2470,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::KeyPress ) {
     QKeyEvent * keyevent = static_cast< QKeyEvent * >( ev );
 
-    bool handleCtrlTab = ( obj == translateLine || obj == wordList || obj == ui.historyList || obj == ui.favoritesTree
+    bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList || obj == ui.favoritesTree
                            || obj == ui.dictsList || obj == groupList );
 
     if ( keyevent->modifiers() == Qt::ControlModifier && keyevent->key() == Qt::Key_Tab ) {

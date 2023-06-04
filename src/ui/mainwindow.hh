@@ -11,7 +11,6 @@
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
 #include "ui_mainwindow.h"
-#include "folding.hh"
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include "article_netmgr.hh"
@@ -26,13 +25,11 @@
 #include "mainstatusbar.hh"
 #include "mruqmenu.hh"
 #include "translatebox.hh"
-#include "suggestion.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
 
 #include "hotkeywrapper.hh"
-#include "weburlrequestinterceptor.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
 #ifdef HAVE_X11
@@ -141,7 +138,6 @@ private:
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
 
-  Suggestion * wordList;
   //current active translateLine;
   QLineEdit * translateLine;
 
