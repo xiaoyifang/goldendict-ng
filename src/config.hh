@@ -14,6 +14,7 @@
 #include <QMetaType>
 #include "ex.hh"
 #include <QLocale>
+#include <optional>
 
 /// GoldenDict's configuration
 namespace Config {
@@ -807,8 +808,11 @@ QString getHistoryFileName() ;
 /// Returns the filename of a favorities file.
 QString getFavoritiesFileName() ;
 
-/// Returns the user .css file name.
+/// Returns the user .css file name (article-style.css).
 QString getUserCssFileName() ;
+
+/// Returns the user .js file name (article-script.js).
+std::optional< std::string > getUserJsFileName();
 
 /// Returns the user .css file name used for printing only.
 QString getUserCssPrintFileName() ;

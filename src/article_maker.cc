@@ -201,6 +201,12 @@ body { background: #242525; }
 </script>
 )";
   }
+
+  // load the `article-style.js` in user's config folder
+  if ( auto userJsFile = Config::getUserJsFileName(); userJsFile.has_value() ) {
+    result += fmt::format( FMT_COMPILE( R"(<script src="file://{}"></script>)" ), userJsFile.value() );
+  }
+
   result += "</head><body>";
 
   return result;
