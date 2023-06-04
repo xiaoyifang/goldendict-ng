@@ -4,7 +4,6 @@
 #ifndef TRANSLATEBOX_HH
 #define TRANSLATEBOX_HH
 
-#include <QMutex>
 #include <QLineEdit>
 #include <QWidget>
 #include <QListWidget>
@@ -35,7 +34,6 @@ private slots:
 private:
   QLineEdit * translate_line;
   bool m_popupEnabled;
-  QMutex translateBoxMutex;
   QCompleter * completer;
   QStringList words;
 };
