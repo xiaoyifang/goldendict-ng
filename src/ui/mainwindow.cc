@@ -2470,8 +2470,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::KeyPress ) {
     QKeyEvent * keyevent = static_cast< QKeyEvent * >( ev );
 
-    bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList || obj == ui.favoritesTree
-                           || obj == ui.dictsList || obj == groupList );
+    bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
+                           || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
 
     if ( keyevent->modifiers() == Qt::ControlModifier && keyevent->key() == Qt::Key_Tab ) {
       if ( cfg.preferences.mruTabOrder ) {

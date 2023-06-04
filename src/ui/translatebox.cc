@@ -90,8 +90,7 @@ void TranslateBox::setModel( QStringList & words )
 
 void TranslateBox::showPopup()
 {
-//todo,hide ,or show the popup.
-
+  //todo,hide ,or show the popup.
 }
 
 QLineEdit * TranslateBox::translateLine()

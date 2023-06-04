@@ -126,7 +126,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
 
-//todo ,show the status on the popup status bar.
+  //todo ,show the status on the popup status bar.
   //connect( ui.translateBox->wordList(), &Suggestion::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   ui.pronounceButton->setDisabled( true );
