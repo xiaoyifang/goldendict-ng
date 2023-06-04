@@ -946,8 +946,9 @@ void ScanPopup::prefixMatchFinished()
     {
       ui.queryError->setToolTip( wordFinder.getErrorString() );
       ui.queryError->show();
-      showStatusBarMessage(tr("WARNING: %1").arg(wordFinder.getErrorString()),
-                            20000, QPixmap(":/icons/error.svg"));
+      showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
+                            20000,
+                            QPixmap( ":/icons/error.svg" ) );
     }
     else {
       ui.queryError->hide();
