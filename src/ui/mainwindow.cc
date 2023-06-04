@@ -46,6 +46,7 @@
 #include "help.hh"
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
+#include <QListWidgetItem>
 
 #include "globalregex.hh"
 
@@ -905,17 +906,46 @@ void MainWindow::updateMatchResults( bool finished )
 {
   WordFinder::SearchResults const & results = wordFinder.getResults();
 
-  QStringList _results;
-  _results.clear();
 
-  for ( unsigned x = 0; x < results.size(); ++x ) {
-    _results << results[ x ].first;
+  if ( cfg.preferences.searchInDock ){
+    ui.wordList->setUpdatesEnabled( false );
+    //clear all existed items
+    ui.wordList->clear();
+
+    for( unsigned x = 0; x < results.size(); ++x )
+    {
+      QListWidgetItem * i = new QListWidgetItem( results[ x ].first, ui.wordList );
+      i->setToolTip( results[ x ].first );
+
+      if( results[ x ].second )
+      {
+        QFont f = i->font();
+        f.setItalic( true );
+        i->setFont( f );
+      }
+
+      i->setTextAlignment( Qt::AlignLeft );
+    }
+
+    if ( ui.wordList->count() )
+    {
+      ui.wordList->scrollToItem( ui.wordList->item( 0 ), QAbstractItemView::PositionAtTop );
+      ui.wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
+    }
+
+    ui.wordList->setUpdatesEnabled( true );
+
   }
+  else{
 
-  if ( cfg.preferences.searchInDock ) {}
-  else {
+    QStringList _results;
+    _results.clear();
 
-    translateBox->setModel( _results );
+    for( unsigned x = 0; x < results.size(); ++x )
+    {
+      _results << results[x].first;
+    }
+  translateBox->setModel(_results);
   }
 
   if ( finished ) {
