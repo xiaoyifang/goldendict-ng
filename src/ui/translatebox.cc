@@ -93,7 +93,7 @@ void TranslateBox::setModel( QStringList & words )
 void TranslateBox::showPopup()
 {
   //todo.
-  qDebug() << word_list->stringList();
+  //qDebug() << word_list->stringList();
   //  completer->setModel(word_list);
   //  completer->setCompletionPrefix( translate_line->text() );
   //  qDebug() << "COMPLETION:" << completer->currentCompletion();
