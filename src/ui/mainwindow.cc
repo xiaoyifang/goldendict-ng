@@ -313,8 +313,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList = new WordList(this);
-    wordList->setTranslateLine(translateLine);
+    wordList      = new WordList( this );
+    wordList->setTranslateLine( translateLine );
   }
   else {
     groupList     = groupListInToolbar;

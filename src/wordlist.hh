@@ -18,9 +18,9 @@ public:
   explicit WordList(QObject * parent = 0);
   void attachFinder(WordFinder * finder);
   virtual void setTranslateLine(QLineEdit * line)
-  { translateLine = line;
-    translateLine->setCompleter(completer);
-
+  {
+    translateLine = line;
+    translateLine->setCompleter( completer );
   }
   void clear(){
     auto model = stringList();

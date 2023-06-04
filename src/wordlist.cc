@@ -8,9 +8,9 @@ WordList::WordList( QObject * parent ) : QStringListModel( parent )
 {
   wordFinder = 0;
   translateLine = 0;
-  completer = new QCompleter(this, this);
-  completer->setCaseSensitivity(Qt::CaseInsensitive);
-  completer->setCompletionMode(QCompleter::InlineCompletion);
+  completer     = new QCompleter( this, this );
+  completer->setCaseSensitivity( Qt::CaseInsensitive );
+  completer->setCompletionMode( QCompleter::InlineCompletion );
 }
 
 QWidget * WordList::completerWidget()
@@ -21,7 +21,7 @@ QWidget * WordList::completerWidget()
 
 void WordList::attachFinder( WordFinder * finder )
 {
-   qDebug() << "Attaching the word finder..." << finder;
+  qDebug() << "Attaching the word finder..." << finder;
 
   if ( wordFinder == finder )
     return;
