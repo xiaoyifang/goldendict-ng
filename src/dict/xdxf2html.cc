@@ -97,7 +97,7 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
         if ( afterEol )
         {
           if( !isLogicalFormat )
-            inConverted.append( "&nbsp;" ); 
+            inConverted.append( "&#160;" ); // xml don't have &nbsp;
           break;
         }
         // Fall-through
@@ -126,13 +126,27 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
       in_data = "<div class=\"sdct_x\">";
   in_data += inConverted + "</div>";
 
-  if( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn  ) )
-  {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n", errorStr.toLocal8Bit().constData(),  errorLine,  errorColumn );
-    gdWarning( "The input was: %s\n", in.c_str() );
 
-    return in;
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
+      qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+                errorStr.toLocal8Bit().constData(),
+                errorLine,
+                errorColumn );
+      gdWarning( "The input was: %s\n", in_data.c_str() );
+      return in;
   }
+#else
+  auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
+  if ( !setContentResult ) {
+      qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+                setContentResult.errorMessage.toStdString().c_str(),
+                setContentResult.errorLine,
+                setContentResult.errorColumn );
+      gdWarning( "The input was: %s\n", in_data.c_str() );
+      return in;
+  }
+#endif
 
   QDomNodeList nodes = dd.elementsByTagName( "ex" ); // Example
 
