@@ -24,7 +24,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
   sizePolicy.setHorizontalStretch(0);
   sizePolicy.setVerticalStretch(0);
-  setSizePolicy(sizePolicy);
+  setSizePolicy( sizePolicy );
 
   setFocusProxy(translate_line);
   translate_line->setObjectName("translateLine");
