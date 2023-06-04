@@ -45,12 +45,12 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->setFocusPolicy(Qt::ClickFocus);
 
   translate_line->installEventFilter( this );
-  installEventFilter( this );
 
   translate_line->setCompleter( completer );
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
+  completer->setMaxVisibleItems( 16 );
 
-  connect( completer, QOverload< const QString & >::of( &QCompleter::activated ), [ = ]( const QString & text ) {
+  connect( completer, QOverload< const QString & >::of( &QCompleter::activated ), this, [ = ]( const QString & text ) {
     emit translate_line->returnPressed();
   } );
 }
