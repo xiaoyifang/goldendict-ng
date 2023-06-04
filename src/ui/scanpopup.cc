@@ -126,9 +126,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
 
-  //todo ,show the status on the popup status bar.
-  //connect( ui.translateBox->wordList(), &Suggestion::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
-
   ui.pronounceButton->setDisabled( true );
 
   ui.groupList->fill( groups );
@@ -949,6 +946,8 @@ void ScanPopup::prefixMatchFinished()
     {
       ui.queryError->setToolTip( wordFinder.getErrorString() );
       ui.queryError->show();
+      showStatusBarMessage(tr("WARNING: %1").arg(wordFinder.getErrorString()),
+                            20000, QPixmap(":/icons/error.svg"));
     }
     else {
       ui.queryError->hide();

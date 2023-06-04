@@ -936,10 +936,6 @@ void MainWindow::updateMatchResults( bool finished )
                                  20000,
                                  QPixmap( ":/icons/error.svg" ) );
   }
-
-
-  //  completer->complete();
-  //  emit contentChanged();
 }
 
 void MainWindow::refreshTranslateLine()
