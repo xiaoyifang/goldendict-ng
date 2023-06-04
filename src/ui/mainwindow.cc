@@ -1065,8 +1065,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   // reset the flag when switching UI modes
   wordListSelChanged = false;
 
-  //  wordList->attachFinder( &wordFinder );
-
   updateGroupList();
   applyWordsZoomLevel();
 
@@ -1076,7 +1074,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
 void MainWindow::mousePressEvent( QMouseEvent * event )
 {
-
   if ( handleBackForwardMouseButtons( event ) ) {
     return;
   }
