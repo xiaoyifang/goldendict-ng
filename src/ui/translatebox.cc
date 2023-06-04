@@ -18,31 +18,31 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line( new QLineEdit( this ) ),
   m_popupEnabled( false )
 {
-
   completer = new QCompleter( words, this );
-  resize(200, 90);
-  QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-  sizePolicy.setHorizontalStretch(0);
-  sizePolicy.setVerticalStretch(0);
+  resize( 200, 90 );
+  QSizePolicy sizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
+  sizePolicy.setHorizontalStretch( 0 );
+  sizePolicy.setVerticalStretch( 0 );
   setSizePolicy( sizePolicy );
 
-  setFocusProxy(translate_line);
-  translate_line->setObjectName("translateLine");
+  setFocusProxy( translate_line );
+  translate_line->setObjectName( "translateLine" );
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
 
 
   auto layout = new QHBoxLayout( this );
-  setLayout(layout);
-  layout->setContentsMargins(0,0,0,0);
-  layout->addWidget(translate_line);
+  setLayout( layout );
+  layout->setContentsMargins( 0, 0, 0, 0 );
+  layout->addWidget( translate_line );
 
   auto dropdown = new QAction( QIcon( ":/icons/1downarrow.svg" ), tr( "Drop-down" ), this );
-  connect( dropdown,&QAction::triggered,this, &TranslateBox::rightButtonClicked );
+  connect( dropdown, &QAction::triggered, this, &TranslateBox::rightButtonClicked );
 
-  translate_line->addAction( dropdown,QLineEdit::TrailingPosition);
-  translate_line->addAction( new QAction(QIcon(":/icons/system-search.svg"),"",this),QLineEdit::LeadingPosition);
+  translate_line->addAction( dropdown, QLineEdit::TrailingPosition );
+  translate_line->addAction( new QAction( QIcon( ":/icons/system-search.svg" ), "", this ),
+                             QLineEdit::LeadingPosition );
 
-  translate_line->setFocusPolicy(Qt::ClickFocus);
+  translate_line->setFocusPolicy( Qt::ClickFocus );
 
   translate_line->installEventFilter( this );
 
