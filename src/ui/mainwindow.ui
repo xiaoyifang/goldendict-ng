@@ -608,11 +608,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>WordList</class>
-   <extends>QListWidget</extends>
-   <header>wordlist.hh</header>
-  </customwidget>
-  <customwidget>
    <class>FavoritesPaneWidget</class>
    <extends>QWidget</extends>
    <header>favoritespanewidget.hh</header>

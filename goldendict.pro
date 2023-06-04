@@ -377,6 +377,7 @@ HEADERS += \
     src/parsecmdline.hh \
     src/resourceschemehandler.hh \
     src/splitfile.hh \
+    src/suggestion.hh \
     src/termination.hh \
     src/tiff.hh \
     src/ui/about.hh \
@@ -409,7 +410,6 @@ HEADERS += \
     src/webmultimediadownload.hh \
     src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
-    src/wordlist.hh \
     src/zipfile.hh \
     thirdparty/tomlplusplus/toml++/toml.h
 
@@ -500,6 +500,7 @@ SOURCES += \
     src/parsecmdline.cc \
     src/resourceschemehandler.cc \
     src/splitfile.cc \
+    src/suggestion.cc \
     src/termination.cc \
     src/tiff.cc \
     src/ui/about.cc \
@@ -530,7 +531,6 @@ SOURCES += \
     src/webmultimediadownload.cc \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
-    src/wordlist.cc \
     src/zipfile.cc \
     thirdparty/fmt/format.cc
 

@@ -20,7 +20,7 @@ namespace
 
 TranslateBox::TranslateBox( QWidget * parent ):
     QWidget( parent ),
-    word_list( new WordList( this ) ),
+  word_list( new Suggestion( this ) ),
     translate_line( new QLineEdit( this ) ),
     m_popupEnabled( false )
 {
@@ -53,7 +53,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->installEventFilter( this );
   installEventFilter( this );
 
-  connect( word_list, &WordList::contentChanged, this, &TranslateBox::showPopup );
+  connect( word_list, &Suggestion::contentChanged, this, &TranslateBox::showPopup );
 }
 
 void TranslateBox::setText( QString text, bool showPopup )
@@ -94,12 +94,12 @@ QWidget * TranslateBox::completerWidget()
   return word_list->completerWidget();
 }
 
-WordList * TranslateBox::wordList()
+Suggestion * TranslateBox::wordList()
 {
   return word_list;
 }
 
-void TranslateBox::wordList(WordList * _word_list)
+void TranslateBox::wordList(Suggestion * _word_list)
 {
   word_list = _word_list;
 }

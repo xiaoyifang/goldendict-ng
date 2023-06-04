@@ -134,7 +134,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   //    this,
   //    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
 
-  connect( ui.translateBox->wordList(), &WordList::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
+  connect( ui.translateBox->wordList(), &Suggestion::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   ui.pronounceButton->setDisabled( true );
 

@@ -313,8 +313,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList      = new WordList( this );
-    wordList->setTranslateLine( translateLine );
+    wordList = new Suggestion(this);
+    wordList->setTranslateLine(translateLine);
   }
   else {
     groupList     = groupListInToolbar;
@@ -642,9 +642,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
 
-  connect( wordList, &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
+  connect( wordList, &Suggestion::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
-  connect( translateBox->wordList(), &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
+  connect( translateBox->wordList(), &Suggestion::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
   connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
 

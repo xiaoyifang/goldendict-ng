@@ -4,7 +4,7 @@
 #ifndef TRANSLATEBOX_HH
 #define TRANSLATEBOX_HH
 
-#include "wordlist.hh"
+#include "suggestion.hh"
 
 
 #include <QLineEdit>
@@ -22,8 +22,8 @@ public:
   explicit TranslateBox(QWidget * parent = 0);
   QLineEdit * translateLine();
   QWidget * completerWidget();
-  WordList * wordList();
-  void wordList(WordList * _word_list);
+  Suggestion * wordList();
+  void wordList(Suggestion * _word_list);
   void setText(QString text, bool showPopup=true);
   void setSizePolicy(QSizePolicy policy);
   inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
@@ -40,7 +40,7 @@ private slots:
   void onTextEdit();
 
 private:
-  WordList * word_list;
+  Suggestion * word_list;
   QLineEdit * translate_line;
   bool m_popupEnabled;
   QMutex translateBoxMutex;

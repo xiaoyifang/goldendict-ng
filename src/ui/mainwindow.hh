@@ -26,7 +26,7 @@
 #include "mainstatusbar.hh"
 #include "mruqmenu.hh"
 #include "translatebox.hh"
-#include "wordlist.hh"
+#include "suggestion.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
@@ -141,7 +141,7 @@ private:
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
 
-  WordList * wordList;
+  Suggestion * wordList;
   QLineEdit * translateLine;
 
   WordFinder wordFinder;

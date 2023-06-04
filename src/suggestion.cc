@@ -2,9 +2,9 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 
-#include "wordlist.hh"
+#include "suggestion.hh"
 
-WordList::WordList( QObject * parent ) : QStringListModel( parent )
+Suggestion::Suggestion( QObject * parent ) : QStringListModel( parent )
 {
   wordFinder = 0;
   translateLine = 0;
@@ -13,13 +13,13 @@ WordList::WordList( QObject * parent ) : QStringListModel( parent )
   completer->setCompletionMode( QCompleter::InlineCompletion );
 }
 
-QWidget * WordList::completerWidget()
+QWidget * Suggestion::completerWidget()
 {
   return completer->widget();
 }
 
 
-void WordList::attachFinder( WordFinder * finder )
+void Suggestion::attachFinder( WordFinder * finder )
 {
   qDebug() << "Attaching the word finder..." << finder;
 
@@ -28,27 +28,27 @@ void WordList::attachFinder( WordFinder * finder )
 
   if ( wordFinder )
   {
-    disconnect( wordFinder, &WordFinder::updated, this, &WordList::prefixMatchUpdated );
-    disconnect( wordFinder, &WordFinder::finished, this, &WordList::prefixMatchFinished );
+    disconnect( wordFinder, &WordFinder::updated, this, &Suggestion::prefixMatchUpdated );
+    disconnect( wordFinder, &WordFinder::finished, this, &Suggestion::prefixMatchFinished );
   }
 
   wordFinder = finder;
 
-  connect( wordFinder, &WordFinder::updated, this, &WordList::prefixMatchUpdated );
-  connect( wordFinder, &WordFinder::finished, this, &WordList::prefixMatchFinished );
+  connect( wordFinder, &WordFinder::updated, this, &Suggestion::prefixMatchUpdated );
+  connect( wordFinder, &WordFinder::finished, this, &Suggestion::prefixMatchFinished );
 }
 
-void WordList::prefixMatchUpdated()
+void Suggestion::prefixMatchUpdated()
 {
   updateMatchResults( false );
 }
 
-void WordList::prefixMatchFinished()
+void Suggestion::prefixMatchFinished()
 {
   updateMatchResults( true );
 }
 
-void WordList::updateMatchResults( bool finished )
+void Suggestion::updateMatchResults( bool finished )
 {
   WordFinder::SearchResults const & results = wordFinder->getResults();
 
@@ -78,7 +78,7 @@ void WordList::updateMatchResults( bool finished )
   emit contentChanged();
 }
 
-void WordList::refreshTranslateLine()
+void Suggestion::refreshTranslateLine()
 {
   if ( !translateLine )
     return;
