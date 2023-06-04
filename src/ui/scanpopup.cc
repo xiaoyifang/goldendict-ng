@@ -117,7 +117,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   ui.mainLayout->addWidget( definition );
 
-  //  ui.translateBox->wordList()->attachFinder( &wordFinder );
+//    ui.translateBox->wordList()->attachFinder( &wordFinder );
   ui.translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter(this);
   this->installEventFilter(this);
@@ -666,7 +666,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
   {
     // An empty request always results in an empty result
     wordFinder.cancel();
-    ui.translateBox->wordList()->clear();
+//    ui.translateBox->wordList()->clear();
 
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
@@ -958,7 +958,17 @@ void ScanPopup::prefixMatchFinished()
       ui.queryError->show();
     }
     else
+    {
       ui.queryError->hide();
+      auto results = wordFinder.getResults();
+      QStringList _results;
+      for( auto const& r:results){
+        _results<<r.first;
+
+      }
+
+      ui.translateBox->setModel(_results);
+    }
   }
 }
 
