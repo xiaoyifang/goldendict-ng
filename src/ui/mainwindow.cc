@@ -890,7 +890,6 @@ void MainWindow::updateMatchResults( bool finished )
 {
   WordFinder::SearchResults const & results = wordFinder.getResults();
 
-
   if ( cfg.preferences.searchInDock ) {
     ui.wordList->setUpdatesEnabled( false );
     //clear all existed items
@@ -915,6 +914,7 @@ void MainWindow::updateMatchResults( bool finished )
     }
 
     ui.wordList->setUpdatesEnabled( true );
+    ui.wordList->unsetCursor();
   }
   else {
 
