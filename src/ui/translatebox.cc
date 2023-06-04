@@ -56,7 +56,11 @@ TranslateBox::TranslateBox( QWidget * parent ):
 
   translate_line->setCompleter( completer );
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
-  //  connect( word_list, &Suggestion::contentChanged, this, &TranslateBox::showPopup );
+
+  connect(completer, QOverload<const QString &>::of(&QCompleter::activated),
+           [=](const QString &text){
+             emit translate_line->returnPressed();
+           });
 }
 
 void TranslateBox::setText( QString text, bool showPopup )
