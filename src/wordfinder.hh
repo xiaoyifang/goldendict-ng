@@ -22,15 +22,14 @@ class WordFinder: public QObject
 
 public:
 
-  typedef std::vector< std::pair< QString, bool > > SearchResults; // bool is a "was suggested" flag
+  using SearchResults = std::vector< std::pair< QString, bool > >; // bool is a "was suggested" flag
 
 private:
 
   SearchResults searchResults;
   QString searchErrorString;
   bool searchResultsUncertain;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests,
-                                                     finishedRequests;
+  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
   bool searchInProgress;
 
   QTimer updateResultsTimer;

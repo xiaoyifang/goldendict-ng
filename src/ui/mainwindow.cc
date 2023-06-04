@@ -2313,7 +2313,6 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   }
 
   ui.wordList->setCursor( Qt::WaitCursor );
-
   wordFinder.prefixMatch( req, getActiveDicts() );
 }
 

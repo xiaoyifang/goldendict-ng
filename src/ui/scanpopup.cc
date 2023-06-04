@@ -649,7 +649,6 @@ void ScanPopup::updateSuggestionList( QString const & text )
   {
     // An empty request always results in an empty result
     wordFinder.cancel();
-    //    ui.translateBox->wordList()->clear();
 
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
