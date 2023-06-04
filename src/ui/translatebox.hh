@@ -12,6 +12,7 @@
 #include <QListWidget>
 #include <QFocusEvent>
 #include <QCompleter>
+#include "wordfinder.hh"
 
 
 class TranslateBox : public QWidget
@@ -29,6 +30,8 @@ public:
   inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
   { setSizePolicy(QSizePolicy(hor, ver)); }
 
+  void setModel(QStringList & words);
+
 signals:
 
 public slots:
@@ -44,6 +47,8 @@ private:
   QLineEdit * translate_line;
   bool m_popupEnabled;
   QMutex translateBoxMutex;
+QCompleter * completer;
+  QStringList words;
 };
 
 #endif // TRANSLATEBOX_HH

@@ -142,6 +142,7 @@ private:
   AudioPlayerFactory audioPlayerFactory;
 
   Suggestion * wordList;
+  //current active translateLine;
   QLineEdit * translateLine;
 
   WordFinder wordFinder;
@@ -462,7 +463,10 @@ private slots:
   void clipboardChange( QClipboard::Mode m );
 
   void inspectElement( QWebEnginePage * );
-
+  void prefixMatchUpdated();
+  void prefixMatchFinished();
+  void updateMatchResults( bool finished );
+  void refreshTranslateLine();
 signals:
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( QString const & id );
