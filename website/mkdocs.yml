@@ -38,7 +38,7 @@ nav:
   - Special Usages:
       - Anki Integration: topic_anki.md
       - Command Lines: topic_commandline.md
-      - Custom Stylesheets: topic_userstyle.md
+      - Custom Stylesheet & JavaScript: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
       - Customize Dictionary Name: custom_dictionary_name.md
