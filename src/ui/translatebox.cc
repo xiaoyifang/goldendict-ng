@@ -83,7 +83,8 @@ void TranslateBox::setModel( QStringList & _words )
 
 void TranslateBox::showPopup()
 {
-  completer->complete();
+  if ( m_popupEnabled )
+    completer->complete();
 }
 
 QLineEdit * TranslateBox::translateLine()
