@@ -19,12 +19,12 @@ public:
   explicit TranslateBox(QWidget * parent = 0);
   QLineEdit * translateLine();
   QWidget * completerWidget();
-  void setText(QString text, bool showPopup=true);
-  void setSizePolicy(QSizePolicy policy);
+  void setText( const QString & text, bool showPopup = true );
+  void setSizePolicy( QSizePolicy policy );
   inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
   { setSizePolicy(QSizePolicy(hor, ver)); }
 
-  void setModel( QStringList & words );
+  void setModel( QStringList & _words );
 
 signals:
 
@@ -34,7 +34,6 @@ public slots:
 private slots:
   void showPopup();
   void rightButtonClicked();
-  void onTextEdit();
 
 private:
   QLineEdit * translate_line;

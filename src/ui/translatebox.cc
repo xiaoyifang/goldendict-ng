@@ -13,12 +13,6 @@
 #include <QStyle>
 #include <QStringListModel>
 
-namespace
-{
-#define MAX_POPUP_ROWS 17
-}
-
-
 TranslateBox::TranslateBox( QWidget * parent ):
   QWidget( parent ),
   translate_line( new QLineEdit( this ) ),
@@ -31,19 +25,18 @@ TranslateBox::TranslateBox( QWidget * parent ):
   sizePolicy.setHorizontalStretch(0);
   sizePolicy.setVerticalStretch(0);
   setSizePolicy(sizePolicy);
-  // setMinimumSize(QSize(800, 0));
 
   setFocusProxy(translate_line);
   translate_line->setObjectName("translateLine");
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
 
 
-  QHBoxLayout *layout = new QHBoxLayout(this);
+  auto layout = new QHBoxLayout( this );
   setLayout(layout);
   layout->setContentsMargins(0,0,0,0);
   layout->addWidget(translate_line);
 
-  QAction * dropdown = new QAction( QIcon(":/icons/1downarrow.svg"), tr("Drop-down"),this);
+  auto dropdown = new QAction( QIcon( ":/icons/1downarrow.svg" ), tr( "Drop-down" ), this );
   connect( dropdown,&QAction::triggered,this, &TranslateBox::rightButtonClicked );
 
   translate_line->addAction( dropdown,QLineEdit::TrailingPosition);
@@ -62,7 +55,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   } );
 }
 
-void TranslateBox::setText( QString text, bool showPopup )
+void TranslateBox::setText( const QString & text, bool showPopup )
 {
   setPopupEnabled( showPopup );
   translate_line->setText( text );
@@ -81,16 +74,16 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
     translate_line->setSizePolicy( policy );
 }
 
-void TranslateBox::setModel( QStringList & words )
+void TranslateBox::setModel( QStringList & _words )
 {
-  QStringListModel * model = (QStringListModel *)( completer->model() );
+  auto model = (QStringListModel *)( completer->model() );
 
-  model->setStringList( words );
+  model->setStringList( _words );
 }
 
 void TranslateBox::showPopup()
 {
-  //todo,hide ,or show the popup.
+  completer->complete();
 }
 
 QLineEdit * TranslateBox::translateLine()
@@ -106,10 +99,4 @@ QWidget * TranslateBox::completerWidget()
 void TranslateBox::rightButtonClicked()
 {
   setPopupEnabled( !m_popupEnabled );
-}
-
-void TranslateBox::onTextEdit()
-{
-  if ( translate_line->hasFocus() )
-    setPopupEnabled( true );
 }
