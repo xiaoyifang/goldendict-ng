@@ -418,7 +418,7 @@ void WordFinder::updateResults()
             i.second->rank = rank; // We store the best rank of any writing
         }
       }
-  
+
       resultsArray.sort( SortByRank() );
     }
     else
@@ -449,7 +449,7 @@ void WordFinder::updateResults()
             i.second->rank = rank; // We store the best rank of any writing
         }
       }
-      
+
       resultsArray.sort( SortByRankAndLength() );
 
       maxSearchResults = 15;
