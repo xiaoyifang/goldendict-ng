@@ -87,6 +87,10 @@ jobs:
           brew install create-dmg
           brew install xapian
           brew install libzim
+          # brew reinstall icu4c
+          brew install dylibbundler
+          find /opt -name libicudata.72.dylib 
+          find /usr/local -name libicudata.72.dylib 
       - name: version-file
         shell: bash
         run: |   
@@ -97,17 +101,18 @@ jobs:
           qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
           make -j8
           
-      # # 打包
-      # - name: package
-      #   run: |
-      #     macdeployqt ${targetName}.app -qmldir=. -verbose=1 -dmg
-      # 打包
       - name: package
         run: |
+          
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
-          codesign --force --deep -s - GoldenDict.app
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
-          # otool -L GoldenDict.app/Contents/Frameworks/lib*
+          ls -al GoldenDict.app/Contents/Frameworks
+          otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
+          cp /usr/local/Cellar/icu4c/72.1/lib/libicudata.72.dylib  GoldenDict.app/Contents/Frameworks/libicudata.72.dylib
+
+          codesign --force --deep -s - GoldenDict.app
+          
+          ls -al GoldenDict.app/Contents/Frameworks
           mkdir tmp
           mv ${targetName}.app ./tmp
           # --background "installer_background.png"
