@@ -39,7 +39,7 @@ jobs:
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
-          cached: 'false'
+          
           modules: qtwebengine          
       - name: Install Qt
         if: ${{ matrix.qt_ver != '5.15.2' }}      
@@ -48,7 +48,7 @@ jobs:
           version: ${{ matrix.qt_ver }}
           # target: ${{ matrix.qt_target }}
           arch: ${{ matrix.qt_arch }}
-          cached: 'false'
+          
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
           

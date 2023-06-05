@@ -41,7 +41,7 @@ jobs:
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
-          cached: 'false'
+          
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtspeech
       - uses: actions/checkout@v3
         with:
