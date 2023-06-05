@@ -1145,18 +1145,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //if( isHeadwordCorrect( fixed ) )
   //  headword = fixed;
 
-  //remove leading number and space.
-  QRegularExpression leadingNumAndSpace( R"(^[\d\s]+\b)" );
-  fixed.remove( leadingNumAndSpace );
-
-  auto parts = fixed.split( ' ', Qt::SkipEmptyParts );
-  if( parts.size() > 2 ) {
-    //only return the first parts to avoid duplication
-    headword = QString( "%1 %2" ).arg( parts[ 0 ], parts[ 1 ] );
-    return;
-  }
-
-  headword = fixed;
+  headword = fixed.simplified();
 }
 
 void EpwingBook::getArticle( QString & headword, QString & articleText,
