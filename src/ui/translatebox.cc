@@ -29,7 +29,6 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->setObjectName( "translateLine" );
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
 
-
   auto layout = new QHBoxLayout( this );
   setLayout( layout );
   layout->setContentsMargins( 0, 0, 0, 0 );
@@ -84,7 +83,9 @@ void TranslateBox::setModel( QStringList & _words )
 void TranslateBox::showPopup()
 {
   if ( m_popupEnabled )
+  {
     completer->complete();
+  }
 }
 
 QLineEdit * TranslateBox::translateLine()

@@ -623,7 +623,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( groupListInToolbar, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
 
-  connect( ui.translateLine, &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
+  connect( ui.translateLine, &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
   connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
 
