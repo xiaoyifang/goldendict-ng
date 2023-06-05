@@ -245,6 +245,7 @@ Preferences::Preferences():
   trackClipboardScan ( true ),
   trackSelectionScan ( true ),
   showScanFlag( false ),
+  selectionChangeDelayTimer( 500 ),
 #endif
   pronounceOnLoadMain( false ),
   pronounceOnLoadPopup( false ),
@@ -931,6 +932,8 @@ Class load()
     c.preferences.trackClipboardScan= ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
     c.preferences.trackSelectionScan= ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
     c.preferences.showScanFlag= ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
+    c.preferences.selectionChangeDelayTimer =
+      preferences.namedItem( "selectionChangeDelayTimer" ).toElement().text().toInt();
 #endif
 
     c.preferences.pronounceOnLoadMain = ( preferences.namedItem( "pronounceOnLoadMain" ).toElement().text() == "1" );
@@ -1842,6 +1845,11 @@ void save( Class const & c )
     opt = dd.createElement( "showScanFlag" );
     opt.appendChild( dd.createTextNode( c.preferences.showScanFlag? "1":"0" ) );
     preferences.appendChild( opt );
+
+    opt = dd.createElement( "selectionChangeDelayTimer" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.selectionChangeDelayTimer ) ) );
+    preferences.appendChild( opt );
+
 #endif
 
     opt = dd.createElement( "pronounceOnLoadMain" );

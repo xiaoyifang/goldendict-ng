@@ -296,6 +296,7 @@ struct Preferences
   bool trackClipboardScan;
   bool trackSelectionScan;
   bool showScanFlag;
+  int selectionChangeDelayTimer;
 #endif
 
   // Whether the word should be pronounced on page load, in main window/popup
