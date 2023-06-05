@@ -111,14 +111,12 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
-  wordListDefaultFont      = ui.translateBox->wordList()->font();
+  wordListDefaultFont      = ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();
   groupListDefaultFont = ui.groupList->font();
 
   ui.mainLayout->addWidget( definition );
 
-  ui.translateBox->wordList()->attachFinder( &wordFinder );
-  ui.translateBox->wordList()->setFocusPolicy(Qt::ClickFocus);
   ui.translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter(this);
   this->installEventFilter(this);
@@ -126,15 +124,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
 
   connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
-
-  connect( ui.translateBox->wordList(), &QListWidget::itemClicked, this, &ScanPopup::wordListItemActivated );
-
-  connect( ui.translateBox->wordList(),
-    SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-    this,
-    SLOT( wordListItemActivated( QListWidgetItem * ) ) );
-
-  connect( ui.translateBox->wordList(), &WordList::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   ui.pronounceButton->setDisabled( true );
 
@@ -155,7 +144,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     Config::Group * grp = cfg.getGroup( cfg.lastPopupGroupId );
     if( igrp && grp )
       igrp->checkMutedDictionaries( &grp->popupMutedDictionaries );
-    dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : 0 );
+    dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : nullptr );
   }
 
   addToolBar( Qt::RightToolBarArea, &dictionaryBar );
@@ -280,10 +269,9 @@ ScanPopup::ScanPopup( QWidget * parent,
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
 
-  connect( scanFlag, &ScanFlag::requestScanPopup,
-    this, [=]{
+  connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
     translateWordFromSelection();
-  });
+  } );
 
   // Use delay show to prevent multiple popups while selection in progress
   selectionDelayTimer.setSingleShot( true );
@@ -362,11 +350,11 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->wordList()->font().pointSize() != ps )
-    ui.translateBox->wordList()->setFont( font );
+  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+    ui.translateBox->completerWidget()->setFont( font );
 
   font = translateLineDefaultFont;
-  ps = font.pointSize();
+  ps   = font.pointSize();
 
   if ( cfg.preferences.wordsZoomLevel != 0 )
   {
@@ -413,12 +401,12 @@ Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
 
 void ScanPopup::translateWordFromClipboard()
 {
-	return translateWordFromClipboard(QClipboard::Clipboard);
+  return translateWordFromClipboard( QClipboard::Clipboard );
 }
 
 void ScanPopup::translateWordFromSelection()
 {
-	return translateWordFromClipboard(QClipboard::Selection);
+  return translateWordFromClipboard( QClipboard::Selection );
 }
 
 void ScanPopup::editGroupRequested()
@@ -627,7 +615,7 @@ void ScanPopup::currentGroupChanged( int )
         dictionaryBar.setMutedDictionaries( &grp->popupMutedDictionaries );
       }
       else
-        dictionaryBar.setMutedDictionaries( 0 );
+        dictionaryBar.setMutedDictionaries( nullptr );
     }
 
   updateDictionaryBar();
@@ -639,11 +627,6 @@ void ScanPopup::currentGroupChanged( int )
   }
 
   cfg.lastPopupGroupId = ui.groupList->getCurrentGroup();
-}
-
-void ScanPopup::wordListItemActivated( QListWidgetItem * item )
-{
-  showTranslationFor( item->text() );
 }
 
 void ScanPopup::translateInputChanged( QString const & text )
@@ -659,7 +642,6 @@ void ScanPopup::updateSuggestionList()
 void ScanPopup::updateSuggestionList( QString const & text )
 {
   mainStatusBar->clearMessage();
-  ui.translateBox->wordList()->setCurrentItem( 0, QItemSelectionModel::Clear );
 
   QString req = text.trimmed();
 
@@ -667,8 +649,6 @@ void ScanPopup::updateSuggestionList( QString const & text )
   {
     // An empty request always results in an empty result
     wordFinder.cancel();
-    ui.translateBox->wordList()->clear();
-    ui.translateBox->wordList()->unsetCursor();
 
     // Reset the noResults mark if it's on right now
     if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() )
@@ -680,8 +660,6 @@ void ScanPopup::updateSuggestionList( QString const & text )
     }
     return;
   }
-
-  ui.translateBox->wordList()->setCursor( Qt::WaitCursor );
 
   wordFinder.prefixMatch( req, getActiveDicts() );
 }
@@ -959,9 +937,20 @@ void ScanPopup::prefixMatchFinished()
     {
       ui.queryError->setToolTip( wordFinder.getErrorString() );
       ui.queryError->show();
+      showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
+                            20000,
+                            QPixmap( ":/icons/error.svg" ) );
     }
-    else
+    else {
       ui.queryError->hide();
+      auto results = wordFinder.getResults();
+      QStringList _results;
+      for ( auto const & [ fst, snd ] : results ) {
+        _results << fst;
+      }
+
+      ui.translateBox->setModel( _results );
+    }
   }
 }
 
@@ -1121,10 +1110,9 @@ void ScanPopup::updateDictionaryBar()
 
   if( currentId == Instances::Group::AllGroupId )
     dictionaryBar.setMutedDictionaries( &cfg.popupMutedDictionaries );
-  else
-  {
-    Config::Group * grp = cfg.getGroup( currentId );
-    dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : 0 );
+  else {
+    Config::Group * group = cfg.getGroup( currentId );
+    dictionaryBar.setMutedDictionaries( group ? &group->popupMutedDictionaries : nullptr );
   }
 
   setDictionaryIconSize();

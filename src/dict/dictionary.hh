@@ -220,16 +220,21 @@ class WordSearchRequestInstant: public WordSearchRequest
 public:
 
   WordSearchRequestInstant()
-  { finish(); }
+  {
+    finish();
+  }
 
-  virtual void cancel()
-  {}
+  void cancel() override {}
 
   vector< WordMatch > & getMatches()
-  { return matches; }
+  {
+    return matches;
+  }
 
   void setUncertain( bool value )
-  { uncertain = value; }
+  {
+    uncertain = value;
+  }
 };
 
 /// A helper class for synchronous data read implementations.

@@ -11,7 +11,6 @@
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
 #include "ui_mainwindow.h"
-#include "folding.hh"
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include "article_netmgr.hh"
@@ -26,13 +25,11 @@
 #include "mainstatusbar.hh"
 #include "mruqmenu.hh"
 #include "translatebox.hh"
-#include "wordlist.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
 
 #include "hotkeywrapper.hh"
-#include "weburlrequestinterceptor.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
 #ifdef HAVE_X11
@@ -141,7 +138,7 @@ private:
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
 
-  WordList * wordList;
+  //current active translateLine;
   QLineEdit * translateLine;
 
   WordFinder wordFinder;
@@ -462,7 +459,10 @@ private slots:
   void clipboardChange( QClipboard::Mode m );
 
   void inspectElement( QWebEnginePage * );
-
+  void prefixMatchUpdated();
+  void prefixMatchFinished();
+  void updateMatchResults( bool finished );
+  void refreshTranslateLine();
 signals:
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( QString const & id );

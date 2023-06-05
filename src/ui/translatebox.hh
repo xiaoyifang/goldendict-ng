@@ -4,51 +4,25 @@
 #ifndef TRANSLATEBOX_HH
 #define TRANSLATEBOX_HH
 
-#include "wordlist.hh"
-
-
 #include <QLineEdit>
 #include <QWidget>
 #include <QListWidget>
 #include <QFocusEvent>
-
-class TranslateBox;
-
-class CompletionList : public WordList
-{
-  Q_OBJECT
-
-public:
-  CompletionList(TranslateBox * parent);
-  int preferredHeight() const;
-  virtual void setTranslateLine(QLineEdit * line)
-  {
-    WordList::setTranslateLine( line );
-    setFocusProxy( line );
-  }
-
-public slots:
-  bool acceptCurrentEntry();
-
-private:
-  virtual bool eventFilter( QObject *, QEvent * );
-  TranslateBox * translateBox;
-};
+#include <QCompleter>
 
 class TranslateBox : public QWidget
 {
   Q_OBJECT
 
 public:
-  explicit TranslateBox(QWidget * parent = 0);
+  explicit TranslateBox( QWidget * parent = nullptr );
   QLineEdit * translateLine();
-  WordList * wordList();
-  void setText(QString text, bool showPopup=true);
-  void setSizePolicy(QSizePolicy policy);
-  inline void setSizePolicy(QSizePolicy::Policy hor, QSizePolicy::Policy ver)
-  { setSizePolicy(QSizePolicy(hor, ver)); }
+  QWidget * completerWidget();
+  void setText( const QString & text, bool showPopup = true );
+  void setSizePolicy( QSizePolicy policy );
+  void setSizePolicy( QSizePolicy::Policy hor, QSizePolicy::Policy ver );
 
-signals:
+  void setModel( QStringList & _words );
 
 public slots:
   void setPopupEnabled(bool enable);
@@ -56,15 +30,12 @@ public slots:
 private slots:
   void showPopup();
   void rightButtonClicked();
-  void onTextEdit();
 
 private:
-  bool eventFilter(QObject *obj, QEvent *event);
-  CompletionList * word_list;
   QLineEdit * translate_line;
   bool m_popupEnabled;
-  QMutex translateBoxMutex;
-  // QCompleter * completer; // disabled for now
+  QCompleter * completer;
+  QStringList words;
 };
 
 #endif // TRANSLATEBOX_HH

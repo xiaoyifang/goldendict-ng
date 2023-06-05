@@ -35,6 +35,8 @@
 #include <QThreadPool>
 #include <QSslConfiguration>
 #include <QStyleFactory>
+#include "weburlrequestinterceptor.hh"
+#include "folding.hh"
 
 #include <set>
 #include <map>
@@ -46,6 +48,7 @@
 #include "help.hh"
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
+#include <QListWidgetItem>
 
 #include "globalregex.hh"
 
@@ -55,8 +58,6 @@
 
 #ifdef Q_OS_WIN32
   #include <windows.h>
-  #include "wstring.hh"
-  #include "wstring_qt.hh"
 #endif
 
 #include <QWebEngineSettings>
@@ -315,22 +316,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   {
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList      = ui.wordList;
   }
   else {
     groupList     = groupListInToolbar;
     translateLine = translateBox->translateLine();
-    wordList      = translateBox->wordList();
   }
-  wordList->attachFinder( &wordFinder );
+  connect( &wordFinder, &WordFinder::updated, this, &MainWindow::prefixMatchUpdated );
+  connect( &wordFinder, &WordFinder::finished, this, &MainWindow::prefixMatchFinished );
 
-  // for the old UI:
-  ui.wordList->setTranslateLine( ui.translateLine );
 
   groupList->setFocusPolicy( Qt::ClickFocus );
-  wordList->setFocusPolicy( Qt::ClickFocus );
+  ui.wordList->setFocusPolicy( Qt::ClickFocus );
 
-  wordListDefaultFont      = wordList->font();
+  wordListDefaultFont      = ui.wordList->font();
   translateLineDefaultFont = translateLine->font();
   groupListDefaultFont     = groupList->font();
 
@@ -627,7 +625,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.translateLine, &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
-  connect( translateBox->translateLine(), &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
+  connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
 
   connect( ui.translateLine, &QLineEdit::returnPressed, [ this ]() {
     translateInputFinished( true );
@@ -638,16 +636,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemSelectionChanged, this, &MainWindow::wordListSelectionChanged );
 
-  connect( translateBox->wordList(),
-           SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-           this,
-           SLOT( wordListItemActivated( QListWidgetItem * ) ) );
-
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
-
-  connect( ui.wordList, &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
-
-  connect( translateBox->wordList(), &WordList::statusBarMessage, this, &MainWindow::showStatusBarMessage );
 
   connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
 
@@ -661,10 +650,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBox->translateLine()->installEventFilter( this );
 
   ui.wordList->installEventFilter( this );
-  translateBox->wordList()->installEventFilter( this );
 
   ui.wordList->viewport()->installEventFilter( this );
-  translateBox->wordList()->viewport()->installEventFilter( this );
 
   ui.dictsList->installEventFilter( this );
   ui.dictsList->viewport()->installEventFilter( this );
@@ -889,6 +876,83 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useSmallIconsInToolbarsTriggered();
 }
 
+void MainWindow::prefixMatchUpdated()
+{
+  updateMatchResults( false );
+}
+
+void MainWindow::prefixMatchFinished()
+{
+  updateMatchResults( true );
+}
+
+void MainWindow::updateMatchResults( bool finished )
+{
+  WordFinder::SearchResults const & results = wordFinder.getResults();
+
+  if ( cfg.preferences.searchInDock ) {
+    ui.wordList->setUpdatesEnabled( false );
+    //clear all existed items
+    ui.wordList->clear();
+
+    for ( const auto & result : results ) {
+      auto i = new QListWidgetItem( result.first, ui.wordList );
+      i->setToolTip( result.first );
+
+      if ( result.second ) {
+        QFont f = i->font();
+        f.setItalic( true );
+        i->setFont( f );
+      }
+
+      i->setTextAlignment( Qt::AlignLeft );
+    }
+
+    if ( ui.wordList->count() ) {
+      ui.wordList->scrollToItem( ui.wordList->item( 0 ), QAbstractItemView::PositionAtTop );
+      ui.wordList->setCurrentItem( nullptr, QItemSelectionModel::Clear );
+    }
+
+    ui.wordList->setUpdatesEnabled( true );
+    ui.wordList->unsetCursor();
+  }
+  else {
+
+    QStringList _results;
+    _results.clear();
+
+    for ( const auto & result : results ) {
+      _results << result.first;
+    }
+    translateBox->setModel( _results );
+  }
+
+  if ( finished ) {
+
+    refreshTranslateLine();
+
+    if ( !wordFinder.getErrorString().isEmpty() )
+      emit showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
+                                 20000,
+                                 QPixmap( ":/icons/error.svg" ) );
+  }
+}
+
+void MainWindow::refreshTranslateLine()
+{
+  if ( !translateLine )
+    return;
+
+  // Visually mark the input line to mark if there's no results
+  bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
+
+  if ( translateLine->property( "noResults" ).toBool() != setMark ) {
+    translateLine->setProperty( "noResults", setMark );
+
+    Utils::Widget::setNoResultColor( translateLine, setMark );
+  }
+}
+
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
   if ( !scanPopup ) {
@@ -963,9 +1027,10 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
     groupList     = groupListInDock;
     translateLine = ui.translateLine;
-    wordList      = ui.wordList;
 
     translateBoxToolBarAction->setVisible( false );
+
+    translateBox->setPopupEnabled( false );
   }
   else
   {
@@ -988,7 +1053,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
     groupList     = groupListInToolbar;
     translateLine = translateBox->translateLine();
-    wordList      = translateBox->wordList();
 
     translateBoxToolBarAction->setVisible( true );
   }
@@ -1003,8 +1067,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   // reset the flag when switching UI modes
   wordListSelChanged = false;
 
-  wordList->attachFinder( &wordFinder );
-
   updateGroupList();
   applyWordsZoomLevel();
 
@@ -1014,7 +1076,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 
 void MainWindow::mousePressEvent( QMouseEvent * event )
 {
-
   if ( handleBackForwardMouseButtons( event ) ) {
     return;
   }
@@ -2197,7 +2258,7 @@ void MainWindow::updateCurrentGroupProperty()
 
   if ( grp && translateLine->property( "currentGroup" ).toString() != grp->name ) {
     translateLine->setProperty( "currentGroup", grp->name );
-    wordList->setProperty( "currentGroup", grp->name );
+    ui.wordList->setProperty( "currentGroup", grp->name );
     QString ss = styleSheet();
 
     // Only update stylesheet if it mentions currentGroup, as updating the
@@ -2231,8 +2292,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   // If some word is selected in the word list, unselect it. This prevents
   // triggering a set of spurious activation signals when the list changes.
 
-  if ( wordList->selectionModel()->hasSelection() )
-    wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
+  if ( ui.wordList->selectionModel()->hasSelection() )
+    ui.wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
 
   QString req = newValue.trimmed();
 
@@ -2240,8 +2301,8 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   {
     // An empty request always results in an empty result
     wordFinder.cancel();
-    wordList->clear();
-    wordList->unsetCursor();
+    ui.wordList->clear();
+    ui.wordList->unsetCursor();
 
     // Reset the noResults mark if it's on right now
     if ( translateLine->property( "noResults" ).toBool() )
@@ -2253,8 +2314,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     return;
   }
 
-  wordList->setCursor( Qt::WaitCursor );
-
+  ui.wordList->setCursor( Qt::WaitCursor );
   wordFinder.prefixMatch( req, getActiveDicts() );
 }
 
@@ -2393,19 +2453,14 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::MouseButtonPress ) {
     QMouseEvent * event = static_cast< QMouseEvent * >( ev );
 
-    // clicks outside of the word list should hide it.
-    if ( obj != translateBox->wordList() && obj != translateBox->wordList()->viewport() ) {
-      translateBox->setPopupEnabled( false );
-    }
-
     return handleBackForwardMouseButtons( event );
   }
 
   if ( ev->type() == QEvent::KeyPress ) {
-    QKeyEvent * keyevent = static_cast< QKeyEvent * >( ev );
+    auto keyevent = dynamic_cast< QKeyEvent * >( ev );
 
-    bool handleCtrlTab = ( obj == translateLine || obj == wordList || obj == ui.historyList || obj == ui.favoritesTree
-                           || obj == ui.dictsList || obj == groupList );
+    bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
+                           || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
 
     if ( keyevent->modifiers() == Qt::ControlModifier && keyevent->key() == Qt::Key_Tab ) {
       if ( cfg.preferences.mruTabOrder ) {
@@ -2436,10 +2491,10 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
       if ( cfg.preferences.searchInDock )
       {
-        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && wordList->count() )
+        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.wordList->count() )
         {
-          wordList->setFocus( Qt::ShortcutFocusReason );
-          wordList->setCurrentRow( 0, QItemSelectionModel::ClearAndSelect );
+          ui.wordList->setFocus( Qt::ShortcutFocusReason );
+          ui.wordList->setCurrentRow( 0, QItemSelectionModel::ClearAndSelect );
           return true;
         }
       }
@@ -2451,18 +2506,18 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       return false;
     }
   }
-  else if ( obj == wordList ) {
+  else if ( obj == ui.wordList ) {
     if ( ev->type() == QEvent::KeyPress ) {
       QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
 
-      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !wordList->currentRow() ) {
-        wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
+      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !ui.wordList->currentRow() ) {
+        ui.wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
         translateLine->setFocus( Qt::ShortcutFocusReason );
         return true;
       }
 
       if ( keyEvent->matches( QKeySequence::InsertParagraphSeparator ) &&
-           wordList->selectedItems().size() )
+           ui.wordList->selectedItems().size() )
       {
         if ( cfg.preferences.searchInDock )
         {
@@ -2508,7 +2563,7 @@ void MainWindow::wordListItemActivated( QListWidgetItem * item )
 
 void MainWindow::wordListSelectionChanged()
 {
-  QList< QListWidgetItem * > selected = wordList->selectedItems();
+  QList< QListWidgetItem * > selected = ui.wordList->selectedItems();
 
   if ( selected.size() )
   {
@@ -3438,8 +3493,8 @@ void MainWindow::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( wordList->font().pointSize() != ps )
-    wordList->setFont( font );
+  if ( ui.wordList->font().pointSize() != ps )
+    ui.wordList->setFont( font );
 
   font = translateLineDefaultFont;
 

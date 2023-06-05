@@ -123,7 +123,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
                                                         QNetworkAccessManager & mgr ) :
   isCancelling( false )
 {
-  GD_DPRINTF( "request begin\n" );
+  GD_DPRINTF( "wiki request begin\n" );
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=xml" );
 
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
@@ -188,8 +188,9 @@ void MediaWikiWordSearchRequest::downloadFinished()
 
         QMutexLocker _( &dataMutex );
 
-        for( int x = 0; x < nl.length(); ++x )
-          matches.push_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
+        qDebug() << "matches" << matches.size();
+        for ( int x = 0; x < nl.length(); ++x )
+          matches.emplace_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
       }
     }
     GD_DPRINTF( "done.\n" );

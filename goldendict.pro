@@ -409,7 +409,6 @@ HEADERS += \
     src/webmultimediadownload.hh \
     src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
-    src/wordlist.hh \
     src/zipfile.hh \
     thirdparty/tomlplusplus/toml++/toml.h
 
@@ -530,7 +529,6 @@ SOURCES += \
     src/webmultimediadownload.cc \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
-    src/wordlist.cc \
     src/zipfile.cc \
     thirdparty/fmt/format.cc
 
