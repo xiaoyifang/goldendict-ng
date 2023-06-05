@@ -228,11 +228,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enableX11SelectionTrack->setChecked(p.trackSelectionScan);
   ui.enableClipboardTrack ->setChecked(p.trackClipboardScan);
   ui.showScanFlag->setChecked(p.showScanFlag);
+  ui.delayTimer->setValue( p.selectionChangeDelayTimer );
 #else
   ui.enableX11SelectionTrack->hide();
   ui.enableClipboardTrack->hide();
   ui.showScanFlag->hide();
   ui.ignoreOwnClipboardChanges->hide();
+  ui.delayTimer->hide();
 #endif
 
   // Sound
@@ -409,6 +411,7 @@ Config::Preferences Preferences::getPreferences()
   p.trackSelectionScan = ui.enableX11SelectionTrack ->isChecked();
   p.trackClipboardScan = ui.enableClipboardTrack ->isChecked();
   p.showScanFlag= ui.showScanFlag->isChecked();
+  p.selectionChangeDelayTimer = ui.delayTimer->value();
 #endif
 
   p.storeHistory = ui.storeHistory->isChecked();

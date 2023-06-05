@@ -273,9 +273,10 @@ ScanPopup::ScanPopup( QWidget * parent,
     translateWordFromSelection();
   } );
 
-  // Use delay show to prevent multiple popups while selection in progress
+  // Use delay show to prevent popup from showing up while selection is still in progress
+  // Only certain software has this problem (e.g. Chrome)
   selectionDelayTimer.setSingleShot( true );
-  selectionDelayTimer.setInterval( 800 );
+  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
 
   connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
 #endif
@@ -307,6 +308,9 @@ void ScanPopup::refresh() {
 
   connect( ui.groupList, &GroupComboBox::currentIndexChanged,
     this, &ScanPopup::currentGroupChanged );
+#ifdef HAVE_X11
+  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+#endif
 }
 
 

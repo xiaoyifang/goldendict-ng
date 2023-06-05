@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>787</width>
-    <height>629</height>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -618,6 +618,35 @@ in the pressed state when the word selection changes.</string>
             <property name="text">
              <string>Ignore GoldenDict's own selection and clipboard changes</string>
             </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLabel" name="delayTimerLabel">
+               <property name="text">
+                <string>Delay time</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="delayTimer">
+               <property name="suffix">
+                <string> ms</string>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>10000</number>
+               </property>
+               <property name="singleStep">
+                <number>50</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
