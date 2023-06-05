@@ -128,7 +128,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
 
-  Utils::Url::addQueryItem( reqUrl, "apfrom", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
+  Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
 
   netReply = std::shared_ptr<QNetworkReply>(mgr.get( QNetworkRequest( reqUrl ) ));
 
