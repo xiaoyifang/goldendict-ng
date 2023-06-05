@@ -191,8 +191,10 @@ make install
 ```
 
 On Windows, `vcpkg install xapian:x64-windows` and copy the libs/dlls into the `winlibs`
-A precompiled version of xapian lib has provided in winlibs
+A precompiled version of xapian lib has provided in winlibs.
+
 On Linux,  install libxapian-dev package using package manager.
+
 On Mac, use homebrew to install xapian `brew install xapian`
 
 Goldendict-ng has used xapian as the default and the only one fulltext engine.
