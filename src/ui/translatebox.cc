@@ -83,7 +83,11 @@ void TranslateBox::setModel( QStringList & _words )
 void TranslateBox::showPopup()
 {
   if ( m_popupEnabled ) {
+    completer->popup()->show();
     completer->complete();
+  }
+  else {
+    completer->popup()->hide();
   }
 }
 

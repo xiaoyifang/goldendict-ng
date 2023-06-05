@@ -1029,6 +1029,8 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
     translateLine = ui.translateLine;
 
     translateBoxToolBarAction->setVisible( false );
+
+    translateBox->setPopupEnabled( false );
   }
   else
   {
