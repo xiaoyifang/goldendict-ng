@@ -21,12 +21,12 @@
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>Copy thông tin phiên bản</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="142"/>
       <source>Copy dictionaries list</source>
-      <translation type="unfinished">Copy dictionaries list</translation>
+      <translation>Copy danh sách từ điển</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
@@ -54,24 +54,24 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>anki: không thể tạo thẻ mà không có từ nào</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>Anki search: AnkiConnect chưa được kích hoạt.</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="96"/>
       <location filename="../src/ankiconnector.cc" line="113"/>
       <source>anki: post to anki failed</source>
       <translatorcomment>anki:发布成功</translatorcomment>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: lỗi khi gửi tới anki</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki: gửi tới anki thành công</translation>
     </message>
   </context>
   <context>
@@ -79,7 +79,7 @@
     <message>
       <location filename="../src/ui/article_inspect.cc" line="8"/>
       <source>Inspect</source>
-      <translation type="unfinished">Inspect</translation>
+      <translation>Kiểm tra</translation>
     </message>
   </context>
   <context>
@@ -165,7 +165,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>Tạo ghi chú Anki mới</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="704"/>
@@ -234,7 +234,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="331"/>
       <source>Inspect</source>
-      <translation type="unfinished">Inspect</translation>
+      <translation>Kiểm tra</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1840"/>
@@ -275,12 +275,12 @@
       <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
-      <translation type="unfinished">Video</translation>
+      <translation>Video</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
-      <translation type="unfinished">Video: %1</translation>
+      <translation>Video: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1043"/>
@@ -300,7 +300,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>Mở liên kết</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1851"/>
