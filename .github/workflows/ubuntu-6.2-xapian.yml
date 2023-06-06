@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        qt_ver: [6.5.1]
+        qt_ver: [6.4.3]
         qt_arch: [gcc_64]
     env:
       version: 23.06.02
