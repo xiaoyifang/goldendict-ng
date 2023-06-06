@@ -127,7 +127,7 @@ string convert( string const & in, DICT_TYPE type, map < string, string > const 
   in_data += inConverted + "</div>";
 
 
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 ) )
   if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
       qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
                 errorStr.toLocal8Bit().constData(),
