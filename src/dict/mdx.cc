@@ -273,6 +273,8 @@ public:
               && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
+  QString getCachedFileName( QString name );
+
 protected:
 
   void loadIcon() noexcept override;
@@ -1000,11 +1002,24 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         }
         continue;
       }
-      else {
+      else
+      {
         match = RX::Mdx::srcRe.match( linkTxt );
-        if ( match.hasMatch() ) {
-          QString newText = match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 )
-            + match.captured( 2 );
+        if( match.hasMatch() )
+        {
+          QString newText;
+          if( linkType.at( 1 ) == 'o' ) // "source" tag
+          {
+            QString filename = match.captured( 3 );
+            QString newName  = getCachedFileName( filename );
+            newName.replace( '\\', '/' );
+            newText = match.captured( 1 ) + match.captured( 2 ) + "file:///" + newName + match.captured( 2 );
+          }
+          else
+          {
+            newText = match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 )
+                      + match.captured( 2 );
+          }
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else
@@ -1089,6 +1104,94 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
   }
 }
 
+
+QString MdxDictionary::getCachedFileName( QString filename )
+{
+  QDir dir;
+  QFileInfo info( cacheDirName );
+  if( !info.exists() || !info.isDir() )
+  {
+    if( !dir.mkdir( cacheDirName ) )
+    {
+      gdWarning( "Mdx: can't create cache directory \"%s\"", cacheDirName.toUtf8().data() );
+      return QString();
+    }
+  }
+
+  // Create subfolders if needed
+
+  QString name = filename;
+  name.replace( '/', '\\' );
+  QStringList list = name.split( '\\' );
+  int subFolders = list.size() - 1;
+  if( subFolders > 0 )
+  {
+    QString dirName = cacheDirName;
+    for( int i = 0; i < subFolders; i++ )
+    {
+      dirName += QDir::separator() + list.at( i );
+      QFileInfo dirInfo( dirName );
+      if( !dirInfo.exists() )
+      {
+        if( !dir.mkdir( dirName ) )
+        {
+          gdWarning( "Mdx: can't create cache directory \"%s\"", dirName.toUtf8().data() );
+          return QString();
+        }
+      }
+    }
+  }
+
+  QString fullName = cacheDirName + QDir::separator() + filename;
+
+  info.setFile( fullName );
+  if( info.exists() )
+    return fullName;
+  QFile f( fullName );
+  if( !f.open( QFile::WriteOnly ) ) {
+    gdWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
+    return QString();
+  }
+  gd::wstring resourceName = filename.toStdU32String();
+  vector< char > data;
+
+  // In order to prevent recursive internal redirection...
+  set< wstring, std::less<> > resourceIncluded;
+
+  for( ;; ) {
+    if( !resourceIncluded.insert( resourceName ).second )
+      continue;
+
+    loadResourceFile( resourceName, data );
+
+    // Check if this file has a redirection
+    // Always encoded in UTF16-LE
+    // L"@@@LINK="
+    if( static const char pattern[ 16 ] =
+          { '@', '\0', '@', '\0', '@', '\0', 'L', '\0', 'I', '\0', 'N', '\0', 'K', '\0', '=', '\0' };
+        data.size() > sizeof( pattern ) && memcmp( &data.front(), pattern, sizeof( pattern ) ) == 0 ) {
+      data.push_back( '\0' );
+      data.push_back( '\0' );
+      QString target =
+        MdictParser::toUtf16( "UTF-16LE", &data.front() + sizeof( pattern ), data.size() - sizeof( pattern ) );
+      resourceName = gd::toWString( target.trimmed() );
+      continue;
+    }
+    break;
+  }
+
+  qint64 n = 0;
+  if( !data.empty() )
+    n = f.write( data.data(), data.size() );
+
+  f.close();
+
+  if( n < (qint64) data.size() ) {
+    gdWarning( R"(Mdx: file "%s" writing error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
+    return QString();
+  }
+  return fullName;
+}
 
 void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char > & data )
 {
