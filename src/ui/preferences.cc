@@ -59,8 +59,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Load values into form
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-  //  ui.fontFamilies->insertItem(0, tr( "System default" ), QString() );
-
   // See which other translations do we have
 
   QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ),
