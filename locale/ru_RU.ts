@@ -479,7 +479,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>Другая транслитерация</translation>
     </message>
   </context>
   <context>
@@ -580,7 +580,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Вы уверены, что хотите создать набор групп на основе metadata.toml?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
@@ -600,7 +600,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>Не удаётся открыть родительский каталог %1.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
