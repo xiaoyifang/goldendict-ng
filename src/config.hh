@@ -695,8 +695,6 @@ struct Class
   QByteArray dictInfoGeometry; // Geometry of "Dictionary info" window
   QByteArray inspectorGeometry; // Geometry of WebKit inspector window
   QByteArray dictionariesDialogGeometry; // Geometry of Dictionaries dialog
-  QByteArray helpWindowGeometry; // Geometry of help window
-  QByteArray helpSplitterState; // Geometry of help splitter
 
   QString historyExportPath; // Path for export/import history
   QString resourceSavePath;  // Path to save images/audio
