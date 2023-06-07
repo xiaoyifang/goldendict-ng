@@ -54,11 +54,8 @@ QMutex logMutex;
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 file:%2,line:%3,function:%4 %5\r\n" )
+  QString message = QString( "%1 %2\r\n" )
                       .arg( strTime )
-                      .arg( context.file )
-                      .arg( context.line )
-                      .arg( context.function )
                       .arg( mess );
 
   if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
