@@ -1094,16 +1094,6 @@ Class load()
   if ( !mainWindowGeometry.isNull() )
     c.mainWindowGeometry = QByteArray::fromBase64( mainWindowGeometry.toElement().text().toLatin1() );
 
-  QDomNode helpWindowGeometry = root.namedItem( "helpWindowGeometry" );
-
-  if ( !helpWindowGeometry.isNull() )
-    c.helpWindowGeometry = QByteArray::fromBase64( helpWindowGeometry.toElement().text().toLatin1() );
-
-  QDomNode helpSplitterState = root.namedItem( "helpSplitterState" );
-
-  if ( !helpSplitterState.isNull() )
-    c.helpSplitterState = QByteArray::fromBase64( helpSplitterState.toElement().text().toLatin1() );
-
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
 
   if ( !dictInfoGeometry.isNull() )
@@ -2097,14 +2087,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "mainWindowGeometry" );
     opt.appendChild( dd.createTextNode( QString::fromLatin1( c.mainWindowGeometry.toBase64() ) ) );
-    root.appendChild( opt );
-
-    opt = dd.createElement( "helpWindowGeometry" );
-    opt.appendChild( dd.createTextNode( QString::fromLatin1( c.helpWindowGeometry.toBase64() ) ) );
-    root.appendChild( opt );
-
-    opt = dd.createElement( "helpSplitterState" );
-    opt.appendChild( dd.createTextNode( QString::fromLatin1( c.helpSplitterState.toBase64() ) ) );
     root.appendChild( opt );
 
     opt = dd.createElement( "dictInfoGeometry" );
