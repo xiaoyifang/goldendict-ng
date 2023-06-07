@@ -158,9 +158,9 @@ wstring ArticleDom::Node::renderAsText( bool stripTrsTag ) const
 
   wstring result;
 
-  for( list< Node >::const_iterator i = begin(); i != end(); ++i )
-    if( !stripTrsTag || i->tagName !=  U"!trs"  )
-      result += i->renderAsText( stripTrsTag );
+  for ( const auto & i : *this )
+    if( !stripTrsTag || i.tagName !=  U"!trs"  )
+      result += i.renderAsText( stripTrsTag );
 
   return result;
 }
@@ -249,7 +249,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
             processUnsortedParts( linkTo, true );
             expandOptionalParts( linkTo, &allLinkEntries );
 
-            for( list< wstring >::iterator entry = allLinkEntries.begin();
+            for( auto entry = allLinkEntries.begin();
                  entry != allLinkEntries.end(); )
             {
               if ( !textNode )
@@ -280,8 +280,8 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
               ArticleDom nodeDom( linkText, dictName, headword_ );
 
               Node link( Node::Tag(),  U"@" , wstring() );
-              for( Node::iterator n = nodeDom.root.begin(); n != nodeDom.root.end(); ++n )
-                link.push_back( *n );
+              for ( auto & n : nodeDom.root )
+                link.push_back( n );
 
               ++entry;
 
@@ -494,8 +494,8 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
           ArticleDom nodeDom( linkText, dictName, headword_ );
 
           Node link( Node::Tag(),  U"ref" , wstring() );
-          for( Node::iterator n = nodeDom.root.begin(); n != nodeDom.root.end(); ++n )
-            link.push_back( *n );
+          for ( auto & n : nodeDom.root )
+            link.push_back( n );
 
           if ( stack.empty() )
             root.push_back( link );
@@ -655,9 +655,9 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
   if ( textNode )
     stack.pop_back();
 
-  if ( stack.size() )
+  if ( !stack.empty() )
   {
-    list< Node * >::iterator it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
+    auto it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
     if( it == stack.end() )
       return; // no unclosed tags that must be closed => nothing to warn about
     QByteArray const firstTagName = QString::fromStdU32String( ( *it )->tagName ).toUtf8();
@@ -689,10 +689,10 @@ void ArticleDom::openTag( wstring const & name,
     // All tags above [m] tag will be closed and reopened after
     // to avoid break this tag by closing some other tag.
 
-    while( stack.size() )
+    while( !stack.empty() )
     {
-      nodesToReopen.push_back( Node( Node::Tag(), stack.back()->tagName,
-                                     stack.back()->tagAttrs ) );
+      nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName,
+                                  stack.back()->tagAttrs );
 
       if ( stack.back()->empty() )
       {
@@ -700,7 +700,7 @@ void ArticleDom::openTag( wstring const & name,
 
         stack.pop_back();
 
-        Node * parent = stack.size() ? stack.back() : &root;
+        Node * parent = !stack.empty() ? stack.back() : &root;
 
         parent->pop_back();
       }
@@ -726,7 +726,7 @@ void ArticleDom::openTag( wstring const & name,
 
   // Reopen tags if needed
 
-  while( nodesToReopen.size() )
+  while( !nodesToReopen.empty() )
   {
     if ( stack.empty() )
     {
@@ -769,14 +769,14 @@ void ArticleDom::closeTag( wstring const & name,
 
     list< Node > nodesToReopen;
 
-    while( stack.size() )
+    while( !stack.empty() )
     {
       bool found = stack.back()->tagName == name ||
                    checkM( stack.back()->tagName, name );
 
       if ( !found )
-        nodesToReopen.push_back( Node( Node::Tag(), stack.back()->tagName,
-                                       stack.back()->tagAttrs ) );
+        nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName,
+                                    stack.back()->tagAttrs );
 
       if( stack.back()->empty() && stack.back()->tagName !=  U"br"  )
       {
@@ -784,7 +784,7 @@ void ArticleDom::closeTag( wstring const & name,
 
         stack.pop_back();
 
-        Node * parent = stack.size() ? stack.back() : &root;
+        Node * parent = !stack.empty() ? stack.back() : &root;
 
         parent->pop_back();
       }
@@ -795,7 +795,7 @@ void ArticleDom::closeTag( wstring const & name,
         break;
     }
 
-    while( nodesToReopen.size() )
+    while( !nodesToReopen.empty() )
     {
       if ( stack.empty() )
       {
