@@ -2347,10 +2347,13 @@ void MainWindow::setInputLineText( QString text, WildcardPolicy wildcardPolicy, 
   if ( wildcardPolicy == WildcardPolicy::EscapeWildcards )
     text = Folding::escapeWildcardSymbols( text );
 
-  if ( popupAction == NoPopupChange || cfg.preferences.searchInDock )
+  if ( popupAction == NoPopupChange || cfg.preferences.searchInDock ) {
     translateLine->setText( text );
-  else
+  }
+  else {
     translateBox->setText( text, popupAction == EnablePopup );
+  }
+  GlobalBroadcaster::instance()->translateLineText = text;
 }
 
 void MainWindow::handleEsc()
