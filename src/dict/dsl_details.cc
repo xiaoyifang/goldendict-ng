@@ -159,7 +159,7 @@ wstring ArticleDom::Node::renderAsText( bool stripTrsTag ) const
   wstring result;
 
   for ( const auto & i : *this )
-    if( !stripTrsTag || i.tagName !=  U"!trs"  )
+    if ( !stripTrsTag || i.tagName != U"!trs" )
       result += i.renderAsText( stripTrsTag );
 
   return result;
@@ -249,9 +249,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
             processUnsortedParts( linkTo, true );
             expandOptionalParts( linkTo, &allLinkEntries );
 
-            for( auto entry = allLinkEntries.begin();
-                 entry != allLinkEntries.end(); )
-            {
+            for ( auto entry = allLinkEntries.begin(); entry != allLinkEntries.end(); ) {
               if ( !textNode )
               {
                 Node text = Node( Node::Text(), wstring() );
@@ -655,8 +653,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
   if ( textNode )
     stack.pop_back();
 
-  if ( !stack.empty() )
-  {
+  if ( !stack.empty() ) {
     auto it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
     if( it == stack.end() )
       return; // no unclosed tags that must be closed => nothing to warn about
@@ -689,10 +686,8 @@ void ArticleDom::openTag( wstring const & name,
     // All tags above [m] tag will be closed and reopened after
     // to avoid break this tag by closing some other tag.
 
-    while( !stack.empty() )
-    {
-      nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName,
-                                  stack.back()->tagAttrs );
+    while ( !stack.empty() ) {
+      nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName, stack.back()->tagAttrs );
 
       if ( stack.back()->empty() )
       {
@@ -726,8 +721,7 @@ void ArticleDom::openTag( wstring const & name,
 
   // Reopen tags if needed
 
-  while( !nodesToReopen.empty() )
-  {
+  while ( !nodesToReopen.empty() ) {
     if ( stack.empty() )
     {
       root.push_back( nodesToReopen.back() );
@@ -741,7 +735,6 @@ void ArticleDom::openTag( wstring const & name,
 
     nodesToReopen.pop_back();
   }
-
 }
 
 void ArticleDom::closeTag( wstring const & name,
@@ -769,14 +762,12 @@ void ArticleDom::closeTag( wstring const & name,
 
     list< Node > nodesToReopen;
 
-    while( !stack.empty() )
-    {
+    while ( !stack.empty() ) {
       bool found = stack.back()->tagName == name ||
                    checkM( stack.back()->tagName, name );
 
       if ( !found )
-        nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName,
-                                    stack.back()->tagAttrs );
+        nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName, stack.back()->tagAttrs );
 
       if( stack.back()->empty() && stack.back()->tagName !=  U"br"  )
       {
@@ -795,8 +786,7 @@ void ArticleDom::closeTag( wstring const & name,
         break;
     }
 
-    while( !nodesToReopen.empty() )
-    {
+    while ( !nodesToReopen.empty() ) {
       if ( stack.empty() )
       {
         root.push_back( nodesToReopen.back() );
