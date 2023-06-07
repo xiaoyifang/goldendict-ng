@@ -9,6 +9,7 @@
 #include "ufile.hh"
 #include "utf8.hh"
 
+#include <exception>
 #include <stdio.h>
 #include <wctype.h>
 
@@ -352,17 +353,19 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
             nextChar();
           }
         }
-        catch( eot )
-        {
-          if( !dictionaryName.empty() )
+        catch ( std::exception & ex ) {
+          if ( !dictionaryName.empty() )
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
-                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data(),
-                       dictionaryName.c_str(), QString::fromStdU32String( headword ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(),
+                       QString::fromStdU32String( attrs ).toUtf8().data(),
+                       dictionaryName.c_str(),
+                       QString::fromStdU32String( headword ).toUtf8().data() );
           else
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
-                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(),
+                       QString::fromStdU32String( attrs ).toUtf8().data() );
 
-          throw eot();
+          throw ex;
         }
 
         // Add the tag, or close it
@@ -646,8 +649,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
       textNode->text.push_back( ch );
     } // for( ; ; )
   }
-  catch( eot )
-  {
+  catch ( eot & ) {
   }
 
   if ( textNode )
