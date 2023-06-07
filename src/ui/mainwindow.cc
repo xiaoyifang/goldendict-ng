@@ -700,8 +700,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   if ( cfg.mainWindowGeometry.size() )
     restoreGeometry( cfg.mainWindowGeometry );
-  if ( cfg.mainWindowState.size() )
-    restoreState( cfg.mainWindowState, 1 );
+  if ( cfg.mainWindowState.size() && !cfg.resetState )
+    restoreState( cfg.mainWindowState );
 
   // Show the initial welcome text
 
@@ -1165,7 +1165,7 @@ void MainWindow::commitData()
 
   try {
     // Save MainWindow state and geometry
-    cfg.mainWindowState    = saveState( 1 );
+    cfg.mainWindowState    = saveState();
     cfg.mainWindowGeometry = saveGeometry();
 
     // Save popup window state and geometry

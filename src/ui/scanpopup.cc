@@ -160,7 +160,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     restoreGeometry( cfg.popupWindowGeometry );
 
   if ( cfg.popupWindowState.size() )
-    restoreState( cfg.popupWindowState, 1 );
+    restoreState( cfg.popupWindowState );
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
@@ -325,8 +325,8 @@ ScanPopup::~ScanPopup()
 void ScanPopup::saveConfigData()
 {
   // Save state, geometry and pin status
-  cfg.popupWindowState = saveState( 1 );
-  cfg.popupWindowGeometry = saveGeometry();
+  cfg.popupWindowState       = saveState();
+  cfg.popupWindowGeometry    = saveGeometry();
   cfg.pinPopupWindow = ui.pinButton->isChecked();
   cfg.popupWindowAlwaysOnTop = ui.onTopButton->isChecked();
 }
