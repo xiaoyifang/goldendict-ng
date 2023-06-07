@@ -880,10 +880,9 @@ DslScanner::DslScanner( string const & fileName ) :
 
   // Now try guessing the encoding by reading the first two bytes
 
-  unsigned char firstBytes[ 2 ];
+  unsigned char firstBytes[ 50 ];
 
-  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) )
-  {
+  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) ) {
     // Apparently the file's too short
     gzclose( f );
     throw exMalformedDslFile( fileName );
@@ -891,53 +890,20 @@ DslScanner::DslScanner( string const & fileName ) :
 
   bool needExactEncoding = false;
 
+  QByteArray ba = QByteArray::fromRawData( (const char *)firstBytes, 50 );
+  codec         = QTextCodec::codecForUtfText( ba, QTextCodec::codecForName( "UTF-8" ) );
 
-  // If the file begins with the dedicated Unicode marker, we just consume
-  // it. If, on the other hand, it's not, we return the bytes back
-  if ( firstBytes[ 0 ] == 0xFF && firstBytes[ 1 ] == 0xFE )
-    encoding = Utf8::Utf16LE;
-  else
-  if ( firstBytes[ 0 ] == 0xFE && firstBytes[ 1 ] == 0xFF )
-    encoding = Utf8::Utf16BE;
-  else
-  if ( firstBytes[ 0 ] == 0xEF && firstBytes[ 1 ] == 0xBB )
-  {
-    // Looks like Utf8, read one more byte
-    if ( gzread( f, firstBytes, 1 ) != 1 || firstBytes[ 0 ] != 0xBF )
-    {
-      // Either the file's too short, or the BOM is weird
-      gzclose( f );
-      throw exMalformedDslFile( fileName );
-    }
-    
-    encoding = Utf8::Utf8;
-  }
-  else
-  {
-    if ( firstBytes[ 0 ] && !firstBytes[ 1 ] )
-      encoding = Utf8::Utf16LE;
-    else
-    if ( !firstBytes[ 0 ] && firstBytes[ 1 ] )
-      encoding = Utf8::Utf16BE;
-    else
-    {
-      // Ok, this doesn't look like 16-bit Unicode. We will start with a
-      // 8-bit encoding with an intent to find out the exact one from
-      // the header.
-      needExactEncoding = true;
-      encoding = Utf8::Windows1251;
-    }
+  encoding = Utf8::getEncodingForName( codec->name() );
+  qDebug() << codec->name();
 
-    if ( gzrewind( f ) )
-    {
-      gzclose( f );
-      throw exCantOpen( fileName );
-    }
+  if ( gzrewind( f ) ) {
+    gzclose( f );
+    throw exCantOpen( fileName );
   }
 
   //iconv.reinit( encoding );
-  codec = QTextCodec::codecForName(getEncodingNameFor(encoding));
-  lineFeed=Utf8::initLineFeed(encoding);
+  // codec = QTextCodec::codecForName(getEncodingNameFor(encoding));
+  lineFeed = Utf8::initLineFeed( encoding );
   // We now can use our own readNextLine() function
 
   wstring str;
