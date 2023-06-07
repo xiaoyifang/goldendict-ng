@@ -59,8 +59,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Load values into form
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-  ui.fontFamilies->addItem( tr( "System default" ), QString() );
-
   // See which other translations do we have
 
   QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ),
@@ -99,20 +97,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     }
   }
 
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  const QStringList fontFamilies = QFontDatabase::families();
-#else
-  QFontDatabase fontDb;
-  const QStringList fontFamilies = fontDb.families();
-#endif
-  for( const QString & family : fontFamilies )
-  {
-    ui.fontFamilies->addItem( family );
-  }
   prevWebFontFamily = p.webFontFamily;
 
   if(!p.webFontFamily.isEmpty())
     ui.fontFamilies->setCurrentText( p.webFontFamily );
+  else {
+    ui.fontFamilies->setCurrentFont( QApplication::font() );
+  }
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Classic" ), QString( "classic" ) );
@@ -566,7 +557,7 @@ void Preferences::on_buttonBox_accepted()
     QMessageBox::information( this, tr( "Changing Language" ),
                               tr( "Restart the program to apply the language change." ) );
 
-  auto currentFontFamily = ui.fontFamilies->currentText();
+  auto currentFontFamily = ui.fontFamilies->currentFont().family();
   if( prevWebFontFamily != currentFontFamily )
   {
     //reset to default font .
