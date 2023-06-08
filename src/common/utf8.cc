@@ -219,10 +219,18 @@ Encoding getEncodingForName( const QByteArray & _name )
   return Utf8;
 }
 
-LineFeed initLineFeed( Encoding e )
+LineFeed initLineFeed( const Encoding e )
 {
   LineFeed lf{};
   switch ( e ) {
+    case Utf8::Utf32LE:
+      lf.lineFeed = new char[ 4 ]{ 0x0A, 0, 0, 0 };
+      lf.length   = 4;
+      break;
+    case Utf8::Utf32BE:
+      lf.lineFeed = new char[ 4 ]{ 0, 0, 0, 0x0A };
+      lf.length   = 4;
+      break;
     case Utf8::Utf16LE:
       lf.lineFeed = new char[ 2 ]{ 0x0A, 0 };
       lf.length   = 2;

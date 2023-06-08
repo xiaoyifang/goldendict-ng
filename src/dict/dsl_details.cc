@@ -894,7 +894,6 @@ DslScanner::DslScanner( string const & fileName ) :
   }
 
   //iconv.reinit( encoding );
-  // codec = QTextCodec::codecForName(getEncodingNameFor(encoding));
   lineFeed = Utf8::initLineFeed( encoding );
   // We now can use our own readNextLine() function
 
