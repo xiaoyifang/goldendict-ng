@@ -2704,19 +2704,15 @@ void MainWindow::showTranslationForDicts( QString const & inWord,
                         ignoreDiacritics );
 }
 
-#ifdef HAVE_X11
-void MainWindow::toggleMainWindow( bool onlyShow, bool byIconClick )
-#else
 void MainWindow::toggleMainWindow( bool onlyShow )
-#endif
 {
   bool shown = false;
 
   if ( !cfg.preferences.searchInDock )
     translateBox->setPopupEnabled( false );
 
-  if ( !isVisible() )
-  {
+  qDebug() << "Current state:" << isVisible() << isMinimized() << isActiveWindow() << onlyShow;
+  if ( !isVisible() ) {
     show();
 
     qApp->setActiveWindow( this );
@@ -2970,11 +2966,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   switch ( r ) {
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
-#ifdef HAVE_X11
-      toggleMainWindow( false, true );
-#else
       toggleMainWindow();
-#endif
       break;
 
     case QSystemTrayIcon::MiddleClick:

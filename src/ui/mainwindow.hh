@@ -212,11 +212,7 @@ private:
 
   /// Brings the main window to front if it's not currently, or hides it
   /// otherwise. The hiding part is omitted if onlyShow is true.
-#ifdef HAVE_X11
-  void toggleMainWindow( bool onlyShow = false, bool byIconClick = false );
-#else
   void toggleMainWindow( bool onlyShow = false );
-#endif
 
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();
