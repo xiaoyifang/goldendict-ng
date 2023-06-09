@@ -93,7 +93,7 @@ class InitSSLRunnable: public QRunnable
 #endif
 
 namespace {
-QString ApplicationName = "GoldenDict";
+QString ApplicationSettingName = "GoldenDict";
 }
 
 void MainWindow::changeWebEngineViewFont() const
@@ -3106,10 +3106,10 @@ void MainWindow::setAutostart( bool autostart )
   if ( autostart ) {
     QString app_fname = QString( "\"%1\"" ).arg( QCoreApplication::applicationFilePath() );
     app_fname.replace( "/", "\\" );
-    reg.setValue( ApplicationName, app_fname );
+    reg.setValue( ApplicationSettingName, app_fname );
   }
   else {
-    reg.remove( ApplicationName );
+    reg.remove( ApplicationSettingName );
   }
   reg.sync();
 #elif defined HAVE_X11
