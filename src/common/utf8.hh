@@ -4,6 +4,7 @@
 #define __UTF8_HH_INCLUDED__
 
 #include <cstdio>
+#include <QByteArray>
 #include <string>
 #include "ex.hh"
 #include "wstring.hh"
@@ -15,14 +16,15 @@
 namespace Utf8 {
 
 // Those are possible encodings for .dsl files
-enum Encoding
-{
+enum Encoding {
   Utf16LE,
   Utf16BE,
   Windows1252,
   Windows1251,
   Windows1250,
-  Utf8 // This is an extension. Detected solely by the UTF8 BOM.
+  Utf8, // This is an extension. Detected solely by the UTF8 BOM.
+  Utf32BE,
+  Utf32LE,
 };
 
 using std::string;
@@ -54,7 +56,8 @@ bool isspace( int c );
 
 //get the first line in string s1. -1 if not found
 int findFirstLinePosition( char* s1,int s1length, const char* s2,int s2length);
-char const* getEncodingNameFor(Encoding e);
+char const * getEncodingNameFor( Encoding e );
+Encoding getEncodingForName( const QByteArray & name );
 
 struct LineFeed
 {

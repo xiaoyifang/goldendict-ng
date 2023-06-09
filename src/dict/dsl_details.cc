@@ -9,6 +9,7 @@
 #include "ufile.hh"
 #include "utf8.hh"
 
+#include <exception>
 #include <stdio.h>
 #include <wctype.h>
 
@@ -157,9 +158,9 @@ wstring ArticleDom::Node::renderAsText( bool stripTrsTag ) const
 
   wstring result;
 
-  for( list< Node >::const_iterator i = begin(); i != end(); ++i )
-    if( !stripTrsTag || i->tagName !=  U"!trs"  )
-      result += i->renderAsText( stripTrsTag );
+  for ( const auto & i : *this )
+    if ( !stripTrsTag || i.tagName != U"!trs" )
+      result += i.renderAsText( stripTrsTag );
 
   return result;
 }
@@ -248,9 +249,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
             processUnsortedParts( linkTo, true );
             expandOptionalParts( linkTo, &allLinkEntries );
 
-            for( list< wstring >::iterator entry = allLinkEntries.begin();
-                 entry != allLinkEntries.end(); )
-            {
+            for ( auto entry = allLinkEntries.begin(); entry != allLinkEntries.end(); ) {
               if ( !textNode )
               {
                 Node text = Node( Node::Text(), wstring() );
@@ -279,8 +278,8 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
               ArticleDom nodeDom( linkText, dictName, headword_ );
 
               Node link( Node::Tag(),  U"@" , wstring() );
-              for( Node::iterator n = nodeDom.root.begin(); n != nodeDom.root.end(); ++n )
-                link.push_back( *n );
+              for ( auto & n : nodeDom.root )
+                link.push_back( n );
 
               ++entry;
 
@@ -352,17 +351,19 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
             nextChar();
           }
         }
-        catch( eot )
-        {
-          if( !dictionaryName.empty() )
+        catch ( std::exception & ex ) {
+          if ( !dictionaryName.empty() )
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
-                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data(),
-                       dictionaryName.c_str(), QString::fromStdU32String( headword ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(),
+                       QString::fromStdU32String( attrs ).toUtf8().data(),
+                       dictionaryName.c_str(),
+                       QString::fromStdU32String( headword ).toUtf8().data() );
           else
             gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
-                       QString::fromStdU32String( name ).toUtf8().data(), QString::fromStdU32String( attrs ).toUtf8().data() );
+                       QString::fromStdU32String( name ).toUtf8().data(),
+                       QString::fromStdU32String( attrs ).toUtf8().data() );
 
-          throw eot();
+          throw ex;
         }
 
         // Add the tag, or close it
@@ -491,8 +492,8 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
           ArticleDom nodeDom( linkText, dictName, headword_ );
 
           Node link( Node::Tag(),  U"ref" , wstring() );
-          for( Node::iterator n = nodeDom.root.begin(); n != nodeDom.root.end(); ++n )
-            link.push_back( *n );
+          for ( auto & n : nodeDom.root )
+            link.push_back( n );
 
           if ( stack.empty() )
             root.push_back( link );
@@ -646,16 +647,14 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName,
       textNode->text.push_back( ch );
     } // for( ; ; )
   }
-  catch( eot )
-  {
+  catch ( eot & ) {
   }
 
   if ( textNode )
     stack.pop_back();
 
-  if ( stack.size() )
-  {
-    list< Node * >::iterator it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
+  if ( !stack.empty() ) {
+    auto it = std::find_if( stack.begin(), stack.end(), MustTagBeClosed() );
     if( it == stack.end() )
       return; // no unclosed tags that must be closed => nothing to warn about
     QByteArray const firstTagName = QString::fromStdU32String( ( *it )->tagName ).toUtf8();
@@ -687,10 +686,8 @@ void ArticleDom::openTag( wstring const & name,
     // All tags above [m] tag will be closed and reopened after
     // to avoid break this tag by closing some other tag.
 
-    while( stack.size() )
-    {
-      nodesToReopen.push_back( Node( Node::Tag(), stack.back()->tagName,
-                                     stack.back()->tagAttrs ) );
+    while ( !stack.empty() ) {
+      nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName, stack.back()->tagAttrs );
 
       if ( stack.back()->empty() )
       {
@@ -698,7 +695,7 @@ void ArticleDom::openTag( wstring const & name,
 
         stack.pop_back();
 
-        Node * parent = stack.size() ? stack.back() : &root;
+        Node * parent = !stack.empty() ? stack.back() : &root;
 
         parent->pop_back();
       }
@@ -724,8 +721,7 @@ void ArticleDom::openTag( wstring const & name,
 
   // Reopen tags if needed
 
-  while( nodesToReopen.size() )
-  {
+  while ( !nodesToReopen.empty() ) {
     if ( stack.empty() )
     {
       root.push_back( nodesToReopen.back() );
@@ -739,7 +735,6 @@ void ArticleDom::openTag( wstring const & name,
 
     nodesToReopen.pop_back();
   }
-
 }
 
 void ArticleDom::closeTag( wstring const & name,
@@ -767,14 +762,12 @@ void ArticleDom::closeTag( wstring const & name,
 
     list< Node > nodesToReopen;
 
-    while( stack.size() )
-    {
+    while ( !stack.empty() ) {
       bool found = stack.back()->tagName == name ||
                    checkM( stack.back()->tagName, name );
 
       if ( !found )
-        nodesToReopen.push_back( Node( Node::Tag(), stack.back()->tagName,
-                                       stack.back()->tagAttrs ) );
+        nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName, stack.back()->tagAttrs );
 
       if( stack.back()->empty() && stack.back()->tagName !=  U"br"  )
       {
@@ -782,7 +775,7 @@ void ArticleDom::closeTag( wstring const & name,
 
         stack.pop_back();
 
-        Node * parent = stack.size() ? stack.back() : &root;
+        Node * parent = !stack.empty() ? stack.back() : &root;
 
         parent->pop_back();
       }
@@ -793,8 +786,7 @@ void ArticleDom::closeTag( wstring const & name,
         break;
     }
 
-    while( nodesToReopen.size() )
-    {
+    while ( !nodesToReopen.empty() ) {
       if ( stack.empty() )
       {
         root.push_back( nodesToReopen.back() );
@@ -880,10 +872,9 @@ DslScanner::DslScanner( string const & fileName ) :
 
   // Now try guessing the encoding by reading the first two bytes
 
-  unsigned char firstBytes[ 2 ];
+  unsigned char firstBytes[ 50 ];
 
-  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) )
-  {
+  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) ) {
     // Apparently the file's too short
     gzclose( f );
     throw exMalformedDslFile( fileName );
@@ -891,53 +882,19 @@ DslScanner::DslScanner( string const & fileName ) :
 
   bool needExactEncoding = false;
 
+  QByteArray ba = QByteArray::fromRawData( (const char *)firstBytes, 50 );
+  codec         = QTextCodec::codecForUtfText( ba, QTextCodec::codecForName( "UTF-8" ) );
 
-  // If the file begins with the dedicated Unicode marker, we just consume
-  // it. If, on the other hand, it's not, we return the bytes back
-  if ( firstBytes[ 0 ] == 0xFF && firstBytes[ 1 ] == 0xFE )
-    encoding = Utf8::Utf16LE;
-  else
-  if ( firstBytes[ 0 ] == 0xFE && firstBytes[ 1 ] == 0xFF )
-    encoding = Utf8::Utf16BE;
-  else
-  if ( firstBytes[ 0 ] == 0xEF && firstBytes[ 1 ] == 0xBB )
-  {
-    // Looks like Utf8, read one more byte
-    if ( gzread( f, firstBytes, 1 ) != 1 || firstBytes[ 0 ] != 0xBF )
-    {
-      // Either the file's too short, or the BOM is weird
-      gzclose( f );
-      throw exMalformedDslFile( fileName );
-    }
-    
-    encoding = Utf8::Utf8;
-  }
-  else
-  {
-    if ( firstBytes[ 0 ] && !firstBytes[ 1 ] )
-      encoding = Utf8::Utf16LE;
-    else
-    if ( !firstBytes[ 0 ] && firstBytes[ 1 ] )
-      encoding = Utf8::Utf16BE;
-    else
-    {
-      // Ok, this doesn't look like 16-bit Unicode. We will start with a
-      // 8-bit encoding with an intent to find out the exact one from
-      // the header.
-      needExactEncoding = true;
-      encoding = Utf8::Windows1251;
-    }
+  encoding = Utf8::getEncodingForName( codec->name() );
+  qDebug() << codec->name();
 
-    if ( gzrewind( f ) )
-    {
-      gzclose( f );
-      throw exCantOpen( fileName );
-    }
+  if ( gzrewind( f ) ) {
+    gzclose( f );
+    throw exCantOpen( fileName );
   }
 
   //iconv.reinit( encoding );
-  codec = QTextCodec::codecForName(getEncodingNameFor(encoding));
-  lineFeed=Utf8::initLineFeed(encoding);
+  lineFeed = Utf8::initLineFeed( encoding );
   // We now can use our own readNextLine() function
 
   wstring str;
