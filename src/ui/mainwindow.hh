@@ -246,7 +246,7 @@ private:
   /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
   void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
 
-  void changeWebEngineViewFont();
+  void changeWebEngineViewFont() const;
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
 private slots:
