@@ -989,59 +989,51 @@ DslScanner::~DslScanner() noexcept
 
 bool DslScanner::readNextLine( wstring & out, size_t & offset, bool only_head_word )
 {
-  offset = (size_t)( gztell( f ) - readBufferLeft/*+pos*/ );
+  offset = gztell( f ) - readBufferLeft/*+pos*/;
 
-  for(;;)
-  {
+  for ( ;; ) {
     // Check that we have bytes to read
-    if ( readBufferLeft < 5000 )
-    {
-      if ( !gzeof( f ) )
-      {
+    if ( readBufferLeft < 5000 ) {
+      if ( !gzeof( f ) ) {
         // To avoid having to deal with ring logic, we move the remaining bytes
         // to the beginning
         memmove( readBuffer, readBufferPtr, readBufferLeft );
 
         // Read some more bytes to readBuffer
-        int result = gzread( f, readBuffer + readBufferLeft,
-                             sizeof( readBuffer ) - readBufferLeft );
+        const int result = gzread( f,
+                                   readBuffer + readBufferLeft,
+                                   sizeof( readBuffer ) - readBufferLeft );
 
         if ( result == -1 )
           throw exCantReadDslFile();
 
         readBufferPtr = readBuffer;
-        readBufferLeft += (size_t) result;
+        readBufferLeft += (size_t)result;
       }
     }
-    if(readBufferLeft<=0)
-        return false;
-
-    int pos = Utf8::findFirstLinePosition(readBufferPtr, readBufferLeft, lineFeed.lineFeed, lineFeed.length);
-    if (pos == -1)
+    if ( readBufferLeft <= 0 )
       return false;
-    QString line = codec->toUnicode(readBufferPtr, pos);
-    line = Utils::rstrip(line);
 
-    if (pos > readBufferLeft) {
+    int pos = Utf8::findFirstLinePosition( readBufferPtr, readBufferLeft, lineFeed.lineFeed, lineFeed.length );
+    if ( pos == -1 )
+      return false;
+    QString line = codec->toUnicode( readBufferPtr, pos );
+    line         = Utils::rstrip( line );
+
+    if ( pos > readBufferLeft ) {
       pos = readBufferLeft;
     }
     readBufferLeft -= pos;
     readBufferPtr += pos;
     linesRead++;
-    if(only_head_word &&( line.isEmpty()||line.at(0).isSpace()))
-        continue;
-#ifdef __WIN32
-    out=line.toStdU32String();
-#else
-    out=line.toStdU32String();
-#endif
+    if ( only_head_word && ( line.isEmpty() || line.at( 0 ).isSpace() ) )
+      continue;
+    out = line.toStdU32String();
     return true;
-
   }
 }
 
-bool DslScanner::readNextLineWithoutComments( wstring & out, size_t & offset , bool only_headword)
-                 
+bool DslScanner::readNextLineWithoutComments( wstring & out, size_t & offset, bool only_headword )
 {
   wstring str;
   bool commentToNextLine = false;
@@ -1294,8 +1286,8 @@ void expandTildes( wstring & str, wstring const & tildeReplacement )
       if( x > 0 && str[ x - 1 ] == '^' && ( x < 2 || str[ x - 2 ] != '\\' ) )
       {
         str.replace( x - 1, 2, tildeValue );
-        str[ x - 1 ] = QChar( str[ x - 1 ] ).isUpper() ? QChar::toLower( (uint)str[ x - 1 ] )
-                                                       : QChar::toUpper( (uint)str[ x - 1 ] );
+        str[ x - 1 ] = QChar( str[ x - 1 ] ).isUpper() ? QChar::toLower( str[ x - 1 ] )
+                                                       : QChar::toUpper( str[ x - 1 ] );
         x = x - 1 + tildeValue.size();
       }
       else
