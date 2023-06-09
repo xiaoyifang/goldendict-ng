@@ -155,8 +155,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
                                     QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
 
   QCommandLineOption resetState( QStringList() << "r"
-                                               << "reset-windows-state",
-                                 QObject::tr( "Workaround: restoreState cause crash" ) );
+                                               << "reset-window-state",
+                                 QObject::tr( "Reset window state." ) );
 
   QCommandLineOption notts( "no-tts", QObject::tr( "Disable tts." ) );
 
