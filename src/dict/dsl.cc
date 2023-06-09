@@ -993,39 +993,11 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 
     // If we have such a key, display a title
 
-    map< string, string >::const_iterator i = abrv.find( val );
+    auto i = abrv.find( val );
 
     if ( i != abrv.end() )
     {
-      string title;
-
-      if ( Utf8::decode( i->second ).size() < 70 )
-      {
-        // Replace all spaces with non-breakable ones, since that's how
-        // Lingvo shows tooltips
-        title.reserve( i->second.size() );
-
-        for( char const * c = i->second.c_str(); *c; ++c )
-        {
-          if ( *c == ' ' || *c == '\t' )
-          {
-            // u00A0 in utf8
-            title.push_back( 0xC2 );
-            title.push_back( 0xA0 );
-          }
-          else
-          if( *c == '-' ) // Change minus to non-breaking hyphen (uE28091 in utf8)
-          {
-            title.push_back( 0xE2 );
-            title.push_back( 0x80 );
-            title.push_back( 0x91 );
-          }
-          else
-            title.push_back( *c );
-        }
-      }
-      else
-        title = i->second;
+      string title = i->second;
 
       result += " title=\"" + Html::escape( title ) + "\"";
     }
