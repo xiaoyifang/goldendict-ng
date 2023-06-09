@@ -5,10 +5,8 @@ concurrency:
 on: 
   workflow_dispatch:
   push:
-    branches:
-      - dev
-      - master
-      # - staged
+    tags:
+      - .*
     paths-ignore:
       - 'docs/**'
       - ".github/**"
@@ -152,7 +150,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ env.targetName }}.dmg
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}

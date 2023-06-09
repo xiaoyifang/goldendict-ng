@@ -11,7 +11,8 @@ on:
 
     paths-ignore:
       - 'docs/**'
-      - ".github/**"
+      - 'website/**'
+      # - ".github/**"
       - "howto/**"
       - "*.md"
       - ".clang-format"      

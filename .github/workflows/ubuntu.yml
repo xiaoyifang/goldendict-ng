@@ -9,10 +9,8 @@ on:
   #   types: [completed]
   workflow_dispatch:
   push:
-    branches:
-      - dev
-      - master
-      # - staged
+    tags:
+      - .*
     paths-ignore:
       - 'docs/**'
       - ".github/**"

@@ -8,10 +8,8 @@ on:
   #   types: [completed]
   workflow_dispatch:
   push:
-    branches:
-      - dev
-      - master
-      # - staged
+    tags:
+      - .*
     paths-ignore:
       - 'docs/**'
       - ".github/**"
@@ -136,7 +134,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}.zip
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.zip
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
@@ -173,7 +170,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/${{ env.targetName }}
           asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-${{ env.targetName }}
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
@@ -184,7 +180,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/GoldenDict.pdb
           asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-GoldenDict.pdb
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}          
@@ -209,7 +204,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.package.outputs.packageName }}/GoldenDict-ng-v23-Installer.exe
           asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-Installer.exe
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
