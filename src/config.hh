@@ -744,6 +744,7 @@ struct Class
   Group const * getGroup( unsigned id ) const;
   //disable tts dictionary. does not need to save to persistent file
   bool notts = false;
+  bool resetState;
 };
 
 #ifdef Q_OS_WIN

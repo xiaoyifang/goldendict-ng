@@ -138,6 +138,7 @@ struct GDOptions
   inline bool needTogglePopup() const
   { return togglePopup; }
   bool notts;
+  bool resetState = false;
 };
 
 void processCommandLine( QCoreApplication * app, GDOptions * result)
@@ -152,6 +153,10 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
                                     QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+
+  QCommandLineOption resetState( QStringList() << "r"
+                                               << "reset-window-state",
+                                 QObject::tr( "Reset window state." ) );
 
   QCommandLineOption notts( "no-tts", QObject::tr( "Disable tts." ) );
 
@@ -173,6 +178,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   qcmd.addOption( popupGroupNameOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
+  qcmd.addOption( resetState );
 
   QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
   doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
@@ -198,6 +204,10 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
   if ( qcmd.isSet( notts ) ) {
     result->notts = true;
+  }
+
+  if ( qcmd.isSet( resetState ) ) {
+    result->resetState = true;
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
@@ -393,6 +403,8 @@ int main( int argc, char ** argv )
   if ( gdcl.notts ) {
     cfg.notts = true;
   }
+
+  cfg.resetState = gdcl.resetState;
 
   if ( gdcl.needLogFile() ) {
     // Open log file
