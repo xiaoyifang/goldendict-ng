@@ -276,7 +276,7 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication app( "GoldenDict-ng", newArgc, newArgv );
 
-  QHotkeyApplication::setApplicationName( "GoldenDict" );
+  QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
 #ifndef Q_OS_MAC
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
