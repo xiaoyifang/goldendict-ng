@@ -115,8 +115,7 @@ void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStri
     bool parsed = false;
     QString hieroglyph;
     for( int x = 0; x < word.size(); x++ )
-      if ( Utils::isCJKChar( word.at( x ).unicode() ) )
-      {
+      if ( Utils::isCJKChar( word.at( x ).unicode() ) ) {
         parsed = true;
         hieroglyph.append( word[ x ] );
 
@@ -144,8 +143,7 @@ bool containCJK( QString const & str)
 {
   bool hasCJK = false;
   for(auto x : str)
-    if ( Utils::isCJKChar( x.unicode() ) )
-    {
+    if ( Utils::isCJKChar( x.unicode() ) ) {
       hasCJK = true;
       break;
     }
