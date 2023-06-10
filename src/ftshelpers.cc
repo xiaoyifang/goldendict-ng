@@ -115,8 +115,7 @@ void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStri
     bool parsed = false;
     QString hieroglyph;
     for( int x = 0; x < word.size(); x++ )
-      if( isCJKChar( word.at( x ).unicode() ) )
-      {
+      if ( Utils::isCJKChar( word.at( x ).unicode() ) ) {
         parsed = true;
         hieroglyph.append( word[ x ] );
 
@@ -144,92 +143,11 @@ bool containCJK( QString const & str)
 {
   bool hasCJK = false;
   for(auto x : str)
-    if( isCJKChar( x.unicode() ) )
-    {
+    if ( Utils::isCJKChar( x.unicode() ) ) {
       hasCJK = true;
       break;
     }
   return hasCJK;
-}
-
-bool parseSearchString( QString const & str, QStringList & indexWords,
-                        QStringList & searchWords,
-                        QRegExp & searchRegExp, int searchMode,
-                        bool matchCase,
-                        int distanceBetweenWords,
-                        bool & hasCJK,
-                        bool ignoreWordsOrder )
-{
-  searchWords.clear();
-  indexWords.clear();
-  // QRegularExpression spacesRegExp( "\\W+", QRegularExpression::UseUnicodePropertiesOption );
-  // QRegularExpression wordRegExp( QString( "\\w{" ) + QString::number( FTS::MinimumWordSize ) + ",}", QRegularExpression::UseUnicodePropertiesOption );
-  // QRegularExpression setsRegExp( "\\[[^\\]]+\\]", QRegularExpression::CaseInsensitiveOption );
-  // QRegularExpression regexRegExp( "\\\\[afnrtvdDwWsSbB]|\\\\x([0-9A-Fa-f]{4})|\\\\0([0-7]{3})", QRegularExpression::CaseInsensitiveOption);
-
-  hasCJK = containCJK( str );
-
-  if( searchMode == FTS::WholeWords || searchMode == FTS::PlainText )
-  {
-    // Make words list for search in article text
-    searchWords = str.normalized( QString::NormalizationForm_C ).split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
-    // Make words list for index search
-    QStringList list =
-      str.normalized( QString::NormalizationForm_C ).toLower().split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
-
-    QString searchString;
-    if( hasCJK )
-    {
-      tokenizeCJK( indexWords, RX::Ftx::wordRegExp, list );
-      // QStringList allWords = str.split( spacesRegExp, Qt::SkipEmptyParts );
-      searchString         = makeHiliteRegExpString( list, searchMode, distanceBetweenWords, hasCJK , ignoreWordsOrder);
-    }
-    else
-    {
-      indexWords = list.filter( RX::Ftx::wordRegExp );
-      indexWords.removeDuplicates();
-
-      // Make regexp for results hilite
-
-      QStringList allWords = str.split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
-      searchString = makeHiliteRegExpString( allWords, searchMode, distanceBetweenWords,false, ignoreWordsOrder );
-    }
-    searchRegExp = QRegExp( searchString, matchCase ? Qt::CaseSensitive : Qt::CaseInsensitive, QRegExp::RegExp2 );
-    searchRegExp.setMinimal( true );
-    return !indexWords.isEmpty();
-  }
-  else
-  {
-    // Make words list for index search
-
-    QString tmp = str;
-
-    // Remove RegExp commands
-    if( searchMode == FTS::RegExp )
-      tmp.replace( RX::Ftx::regexRegExp, " " );
-
-    // Remove all symbol sets
-    tmp.replace( RX::Ftx::setsRegExp, " " );
-
-    QStringList const list =
-      tmp.normalized( QString::NormalizationForm_C ).toLower().split( RX::Ftx::spacesRegExp, Qt::SkipEmptyParts );
-
-    if( hasCJK )
-    {
-      tokenizeCJK( indexWords, RX::Ftx::wordRegExp, list );
-    }
-    else
-    {
-      indexWords = list.filter( RX::Ftx::wordRegExp );
-      indexWords.removeDuplicates();
-    }
-
-    searchRegExp = QRegExp( str, matchCase ? Qt::CaseSensitive : Qt::CaseInsensitive,
-                            searchMode == FTS::Wildcards ? QRegExp::WildcardUnix : QRegExp::RegExp2 );
-    searchRegExp.setMinimal( true );
-  }
-
-  return true;
 }
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
@@ -343,11 +261,6 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   catch ( Xapian::Error & e ) {
     qWarning() << "create xapian index:" << QString::fromStdString( e.get_description() );
   }
-}
-
-bool isCJKChar( ushort ch )
-{
-  return Utils::isCJKChar(ch);
 }
 
 void FTSResultsRequest::run()
