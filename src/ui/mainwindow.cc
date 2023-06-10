@@ -2508,10 +2508,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
     }
 
     if ( ev->type() == QEvent::FocusIn ) {
-      QFocusEvent * focusEvent = static_cast< QFocusEvent * >( ev );
 
       // select all on mouse click
-      if ( focusEvent->reason() == Qt::MouseFocusReason ) {
+      if ( const auto focusEvent = dynamic_cast< QFocusEvent * >( ev ); focusEvent->reason() == Qt::MouseFocusReason ) {
         QTimer::singleShot( 0, this, SLOT( focusTranslateLine() ) );
       }
       return false;
