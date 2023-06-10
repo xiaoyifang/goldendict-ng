@@ -84,8 +84,8 @@ jobs:
       - name: version-file
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
-          echo "$previousTag">version.txt
+          current_tag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
+          echo "$current_tag">version.txt
 
       - uses: ilammy/msvc-dev-cmd@v1
       # msvc编译
