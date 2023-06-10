@@ -16,23 +16,12 @@
 #include "folding.hh"
 #include "wstring_qt.hh"
 
-#include <string>
-
 namespace FtsHelpers
 {
 
 bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict );
 
-bool parseSearchString( QString const & str, QStringList & IndexWords,
-                        QStringList & searchWords,
-                        QRegExp & searchRegExp, int searchMode,
-                        bool matchCase,
-                        int distanceBetweenWords,
-                        bool & hasCJK,
-                        bool ignoreWordsOrder = false );
-
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
-bool isCJKChar( ushort ch );
 
 class FTSResultsRequest : public Dictionary::DataRequest
 {
