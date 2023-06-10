@@ -8,6 +8,7 @@
 Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( parent )
 {
   ui.setupUi( this );
+
   setWindowFlags( Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint |
                   Qt::WindowMinimizeButtonHint );
 
@@ -28,7 +29,7 @@ Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( par
 
 void Initializing::indexing( QString const & dictionaryName )
 {
-  ui.operation->setText( tr( "Please wait while indexing dictionary" ) );
+  ui.operation->setText( tr( "Indexing..." ) );
   ui.dictionary->setText( dictionaryName );
   ui.dictionary->show();
   ui.progressBar->show();
