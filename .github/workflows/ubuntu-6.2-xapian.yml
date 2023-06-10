@@ -118,6 +118,7 @@ jobs:
           CHANGELOG="${CHANGELOG//'\"'/'%22'}"
           CHANGELOG="${CHANGELOG//"'"/ }"
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
+          echo "::set-output name=prev_tag::$previousTag"
 
       - name: Set outputs
         id: vars
@@ -134,6 +135,7 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           commitMode: true
+          fromTag: ${{ steps.changelog.outputs.prev_tag }}  
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
@@ -173,4 +175,7 @@ jobs:
 
             CHANGES:
             ${{ steps.changelog.outputs.changelog }}  
+
+            ----------------
+
             ${{steps.build_changelog.outputs.changelog}}
