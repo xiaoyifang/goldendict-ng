@@ -50,7 +50,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
 
-  connect( completer, QOverload< const QString & >::of( &QCompleter::activated ), this, [ = ]( const QString &  ) {
+  connect( completer, QOverload< const QString & >::of( &QCompleter::activated ), this, [ = ]( const QString & ) {
     emit translate_line->returnPressed();
   } );
 }
