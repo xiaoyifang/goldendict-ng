@@ -131,7 +131,9 @@ jobs:
         with:
           commitMode: true
           fromTag: ${{ steps.changelog.outputs.prev_tag }}     
-          toTag:  ${{ github.ref }}       
+          toTag:  ${{ github.ref }}     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}            
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
