@@ -1,7 +1,7 @@
 /*
  * Open Chinese Convert
  *
- * Copyright 2013 BYVoid <byvoid@byvoid.com>
+ * Copyright 2013 Carbo Kuo <byvoid@byvoid.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,24 +24,27 @@
 #undef NOMINMAX
 #endif // _MSC_VER
 
+#include <cstring>
+
 #include "Common.hpp"
+#include "Exception.hpp"
 
 namespace opencc {
 /**
-* UTF8 string utilities
-* @ingroup opencc_cpp_api
-*/
+ * UTF8 std::string utilities
+ * @ingroup opencc_cpp_api
+ */
 class OPENCC_EXPORT UTF8Util {
 public:
   /**
-  * Detect UTF8 BOM and skip it.
-  */
+   * Detect UTF8 BOM and skip it.
+   */
   static void SkipUtf8Bom(FILE* fp);
 
   /**
-  * Returns the length in byte for the next UTF8 character.
-  * On error returns 0.
-  */
+   * Returns the length in byte for the next UTF8 character.
+   * On error returns 0.
+   */
   static size_t NextCharLengthNoException(const char* str) {
     char ch = *str;
     if ((ch & 0xF0) == 0xE0) {
@@ -72,8 +75,8 @@ public:
   }
 
   /**
-  * Returns the length in byte for the previous UTF8 character.
-  */
+   * Returns the length in byte for the previous UTF8 character.
+   */
   static size_t PrevCharLength(const char* str) {
     {
       const size_t length = NextCharLengthNoException(str - 3);
@@ -103,21 +106,21 @@ public:
   }
 
   /**
-  * Returns the char* pointer over the next UTF8 character.
-  */
+   * Returns the char* pointer over the next UTF8 character.
+   */
   static const char* NextChar(const char* str) {
     return str + NextCharLength(str);
   }
 
   /**
-  * Move the char* pointer before the previous UTF8 character.
-  */
+   * Move the char* pointer before the previous UTF8 character.
+   */
   static const char* PrevChar(const char* str) {
     return str - PrevCharLength(str);
   }
 
   /**
-   * Returns the UTF8 length of a valid UTF8 string.
+   * Returns the UTF8 length of a valid UTF8 std::string.
    */
   static size_t Length(const char* str) {
     size_t length = 0;
@@ -129,11 +132,11 @@ public:
   }
 
   /**
-  * Finds a character in the same line.
-  * @param str The text to be searched in.
-  * @param ch  The character to find.
-  * @return    The pointer that points to the found chacter in str or EOL/EOF.
-  */
+   * Finds a character in the same line.
+   * @param str The text to be searched in.
+   * @param ch  The character to find.
+   * @return    The pointer that points to the found chacter in str or EOL/EOF.
+   */
   static const char* FindNextInline(const char* str, const char ch) {
     while (!IsLineEndingOrFileEnding(*str) && *str != ch) {
       str = NextChar(str);
@@ -142,25 +145,26 @@ public:
   }
 
   /**
-  * Returns ture if the character is a line ending or end of file.
-  */
+   * Returns true if the character is a line ending or end of file.
+   */
   static bool IsLineEndingOrFileEnding(const char ch) {
     return ch == '\0' || ch == '\n' || ch == '\r';
   }
 
   /**
-  * Copies a substring with given length to a new std::string.
-  */
-  static string FromSubstr(const char* str, size_t length) {
-    string newStr;
+   * Copies a substring with given length to a new string.
+   */
+  static std::string FromSubstr(const char* str, size_t length) {
+    std::string newStr;
     newStr.resize(length);
     strncpy(const_cast<char*>(newStr.c_str()), str, length);
     return newStr;
   }
 
   /**
-  * Returns true if the given string is longer or as long as the given length.
-  */
+   * Returns true if the given std::string is longer or as long as the given
+   * length.
+   */
   static bool NotShorterThan(const char* str, size_t byteLength) {
     while (byteLength > 0) {
       if (*str == '\0') {
@@ -173,11 +177,11 @@ public:
   }
 
   /**
-  * Truncates a string with a maximal length in byte.
-  * No UTF8 character will be broken.
-  */
-  static string TruncateUTF8(const char* str, size_t maxByteLength) {
-    string wordTrunc;
+   * Truncates a std::string with a maximal length in byte.
+   * No UTF8 character will be broken.
+   */
+  static std::string TruncateUTF8(const char* str, size_t maxByteLength) {
+    std::string wordTrunc;
     if (NotShorterThan(str, maxByteLength)) {
       size_t len = 0;
       const char* pStr = str;
@@ -197,22 +201,23 @@ public:
   }
 
   /**
-  * Replaces all patterns in a string in place.
-  */
-  static void ReplaceAll(string& str, const char* from, const char* to) {
-    string::size_type pos = 0;
-    string::size_type fromLen = strlen(from);
-    string::size_type toLen = strlen(to);
-    while ((pos = str.find(from, pos)) != string::npos) {
+   * Replaces all patterns in a std::string in place.
+   */
+  static void ReplaceAll(std::string& str, const char* from, const char* to) {
+    std::string::size_type pos = 0;
+    std::string::size_type fromLen = strlen(from);
+    std::string::size_type toLen = strlen(to);
+    while ((pos = str.find(from, pos)) != std::string::npos) {
       str.replace(pos, fromLen, to);
       pos += toLen;
     }
   }
 
   /**
-  * Joins a string vector in to a string with a separator.
-  */
-  static string Join(const vector<string>& strings, const string& separator) {
+   * Joins a std::string vector in to a std::string with a separator.
+   */
+  static std::string Join(const std::vector<std::string>& strings,
+                          const std::string& separator) {
     std::ostringstream buffer;
     bool first = true;
     for (const auto& str : strings) {
@@ -226,9 +231,9 @@ public:
   }
 
   /**
-  * Joins a string vector in to a string.
-  */
-  static string Join(const vector<string>& strings) {
+   * Joins a std::string vector in to a std::string.
+   */
+  static std::string Join(const std::vector<std::string>& strings) {
     std::ostringstream buffer;
     for (const auto& str : strings) {
       buffer << str;
@@ -237,7 +242,7 @@ public:
   }
 
   static void GetByteMap(const char* str, const size_t utf8Length,
-                         vector<size_t>* byteMap) {
+                         std::vector<size_t>* byteMap) {
     if (byteMap->size() < utf8Length) {
       byteMap->resize(utf8Length);
     }
@@ -253,20 +258,19 @@ public:
     return U8ToU16(str);
   }
 #else
-  static std::string GetPlatformString(const std::string& str) {
-    return str;
-  }
+  static std::string GetPlatformString(const std::string& str) { return str; }
 #endif // _MSC_VER
-
 
 #ifdef _MSC_VER
   static std::string U16ToU8(const std::wstring& wstr) {
     std::string ret;
     int length = static_cast<int>(wstr.length());
-    int convcnt = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), length, NULL, 0, NULL, NULL);
+    int convcnt = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), length, NULL, 0,
+                                      NULL, NULL);
     if (convcnt > 0) {
       ret.resize(convcnt);
-      WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), length, &ret[0], convcnt, NULL, NULL);
+      WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), length, &ret[0], convcnt,
+                          NULL, NULL);
     }
     return ret;
   }
@@ -283,4 +287,4 @@ public:
   }
 #endif // _MSC_VER
 };
-}
+} // namespace opencc

@@ -592,7 +592,14 @@ CONFIG( chinese_conversion_support ) {
              src/ui/chineseconversion.hh
   SOURCES += src/dict/chinese.cc \
              src/ui/chineseconversion.cc
+
+win32{
+  Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lopencc
+  Release: LIBS+= -L$$PWD/winlibs/lib -lopencc
+}else{
   LIBS += -lopencc
+}
+
 }
 
 RESOURCES += resources.qrc \
