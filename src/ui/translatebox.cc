@@ -12,6 +12,7 @@
 #include <QScrollBar>
 #include <QStyle>
 #include <QStringListModel>
+#include <QTimer>
 
 TranslateBox::TranslateBox( QWidget * parent ):
   QWidget( parent ),
@@ -49,9 +50,12 @@ TranslateBox::TranslateBox( QWidget * parent ):
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
 
-  connect( completer, QOverload< const QString & >::of( &QCompleter::activated ), this, [ = ]( const QString & text ) {
-    emit translate_line->returnPressed();
-  } );
+  connect( completer,
+           QOverload< const QString & >::of( &QCompleter::activated ),
+           translate_line,
+           [ & ]( const QString & ) {
+             emit translate_line->returnPressed();
+           } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
