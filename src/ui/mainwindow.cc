@@ -306,7 +306,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   //  groupLabel.setText( tr( "Look up in:" ) );
   groupListInDock = new GroupComboBox( &searchPaneTitleBar );
 
-  searchPaneTitleBarLayout.setContentsMargins( 8, 5, 8, 4 );
+  searchPaneTitleBarLayout.setContentsMargins( 3, 5, 3, 5 );
   //  searchPaneTitleBarLayout.addWidget( &groupLabel );
   searchPaneTitleBarLayout.addWidget( groupListInDock );
   searchPaneTitleBarLayout.addStretch();
