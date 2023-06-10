@@ -85,9 +85,11 @@ void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap 
   {
     timer->start( timeout );
   }
-  raise();
-  show();
-  move( QPoint( 0, parentWidget()->height() - height() ) );
+  if ( parentWidget() && parentWidget()->isVisible() ) {
+    raise();
+    show();
+    move( QPoint( 0, parentWidget()->height() - height() ) );
+  }
 }
 
 void MainStatusBar::mousePressEvent ( QMouseEvent * )
