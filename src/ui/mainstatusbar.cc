@@ -87,7 +87,6 @@ void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap 
   }
   if ( parentWidget() && parentWidget()->isVisible() ) {
     raise();
-
     show();
     move( QPoint( 0, parentWidget()->height() - height() ) );
   }
