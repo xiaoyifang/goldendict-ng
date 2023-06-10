@@ -327,27 +327,16 @@ void FullTextSearchDialog::setNewIndexingName( QString name )
 
 void FullTextSearchDialog::accept()
 {
-  QStringList list1, list2;
-  int mode = ui.searchMode->itemData( ui.searchMode->currentIndex() ).toInt();
+  const int mode = ui.searchMode->itemData( ui.searchMode->currentIndex() ).toInt();
 
   model->clear();
   matchedCount=0;
   ui.articlesFoundLabel->setText( tr( "Articles found: " ) + QString::number( results.size() ) );
 
-  bool hasCJK;
-  if ( !FtsHelpers::parseSearchString( ui.searchLine->text(),
-                                       list1,
-                                       list2,
-                                       searchRegExp,
-                                       mode,
-                                       false,
-                                       0,
-                                       hasCJK,
-                                       false ) ) {
+  if ( ui.searchLine->text().isEmpty() ) {
     QMessageBox message( QMessageBox::Warning,
                          "GoldenDict",
-                         tr( "The search line must contains at least one word containing " )
-                           + QString::number( MinimumWordSize ) + tr( " or more symbols" ),
+                         tr( "The querying word can not be empty." ),
                          QMessageBox::Ok,
                          this );
     message.exec();
@@ -369,11 +358,8 @@ void FullTextSearchDialog::accept()
   ui.searchProgressBar->show();
 
   // Make search requests
-
-  for( unsigned x = 0; x < activeDicts.size(); ++x )
-  {
-    if( !activeDicts[ x ] ->haveFTSIndex())
-    {
+  for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
+    if ( !activeDicts[ x ]->haveFTSIndex() ) {
       continue;
     }
     //max results=100
