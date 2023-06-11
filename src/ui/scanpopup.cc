@@ -149,8 +149,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   addToolBar( Qt::RightToolBarArea, &dictionaryBar );
 
-  connect( &dictionaryBar, SIGNAL(editGroupRequested()),
-           this, SLOT(editGroupRequested()) );
+  connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
@@ -415,7 +414,7 @@ void ScanPopup::translateWordFromSelection()
 
 void ScanPopup::editGroupRequested()
 {
-  emit editGroupRequested( ui.groupList->getCurrentGroup() );
+  emit editGroupRequest( ui.groupList->getCurrentGroup() );
 }
 
 void ScanPopup::translateWordFromClipboard(QClipboard::Mode m)

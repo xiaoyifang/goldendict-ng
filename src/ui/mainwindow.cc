@@ -741,11 +741,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  connect( scanPopup,
-           SIGNAL( editGroupRequested( unsigned ) ),
-           this,
-           SLOT( editDictionaries( unsigned ) ),
-           Qt::QueuedConnection );
+  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
 
   connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( QString const & word ) {
     wordReceived( word );
