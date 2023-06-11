@@ -88,8 +88,18 @@ jobs:
                     "title": "## 🐛 Fixes",
                     "labels": ["fix","bug"]
                 }
-              ]
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
             }
+          
+          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}               
       - name: Set outputs
