@@ -382,21 +382,31 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
 
-  addGlobalAction( &escAction, SLOT( handleEsc() ) );
+  addGlobalAction( &escAction, [ this ]() {
+    handleEsc();
+  } );
   escAction.setShortcut( QKeySequence( "Esc" ) );
 
-  addGlobalAction( &focusTranslateLineAction, SLOT( focusTranslateLine() ) );
+  addGlobalAction( &focusTranslateLineAction, [ this ]() {
+    focusTranslateLine();
+  } );
   focusTranslateLineAction.setShortcuts( QList< QKeySequence >() <<
                                          QKeySequence( "Alt+D" ) <<
                                          QKeySequence( "Ctrl+L" ) );
 
-  addGlobalAction( &focusHeadwordsDlgAction, SLOT( focusHeadwordsDialog() ) );
+  addGlobalAction( &focusHeadwordsDlgAction, [ this ]() {
+    focusHeadwordsDialog();
+  } );
   focusHeadwordsDlgAction.setShortcut( QKeySequence( "Ctrl+D" ) );
 
-  addGlobalAction( &focusArticleViewAction, SLOT( focusArticleView() ) );
+  addGlobalAction( &focusArticleViewAction, [ this ]() {
+    focusArticleView();
+  } );
   focusArticleViewAction.setShortcut( QKeySequence( "Ctrl+N" ) );
 
-  addGlobalAction( ui.fullTextSearchAction, SLOT( showFullTextSearchDialog() ) );
+  addGlobalAction( ui.fullTextSearchAction, [ this ]() {
+    showFullTextSearchDialog();
+  } );
 
   addTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addTabAction.setShortcut( QKeySequence( "Ctrl+T" ) );
@@ -1122,10 +1132,10 @@ MainWindow::~MainWindow()
 #endif
 }
 
-void MainWindow::addGlobalAction( QAction * action, const char * slot )
+void MainWindow::addGlobalAction( QAction * action, const std::function< void() > & slotFunc )
 {
   action->setShortcutContext( Qt::WidgetWithChildrenShortcut );
-  connect( action, SIGNAL( triggered() ), this, slot );
+  connect( action, &QAction::triggered, this, slotFunc );
 
   ui.centralWidget->addAction( action );
   ui.dictsPane->addAction( action );

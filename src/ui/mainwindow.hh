@@ -10,6 +10,7 @@
 #include <QSystemTrayIcon>
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
+#include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
 #include "dict/dictionary.hh"
@@ -68,7 +69,7 @@ public slots:
   void quitApp();
 
 private:
-  void addGlobalAction( QAction * action, const char * slot );
+  void addGlobalAction( QAction * action, const std::function< void() > & slotFunc );
   void addGlobalActionsToDialog( QDialog * dialog );
   void addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
   void removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
