@@ -82,11 +82,21 @@ jobs:
               "categories": [
                 {
                     "title": "## 🚀 Features",
-                    "labels": ["feature"]
+                    "labels": ["feature","feat","opt"]
                 },
                 {
                     "title": "## 🐛 Fixes",
                     "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "## 🐛 Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "## Other",
+                    "labels": ["*"]
                 }
               ],
               "label_extractor": [
