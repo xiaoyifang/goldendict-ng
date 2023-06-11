@@ -134,7 +134,7 @@ jobs:
                 }
                 ,
                 {
-                    "title": "## 🐛 Github action",
+                    "title": "##  :github:  Github action",
                     "labels": ["action"]
                 }
                 ,
