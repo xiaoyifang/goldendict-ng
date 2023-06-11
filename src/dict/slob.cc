@@ -1098,6 +1098,8 @@ void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, Q
 
     qint32 entries = sf.getRefsCount();
     for ( qint32 i = 0; i < entries; i++ ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+        throw exUserAbort();
       if ( offsets.contains( sortedOffsets[ i ].second ) )
         newOffsets.append( sortedOffsets[ i ].second );
     }
