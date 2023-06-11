@@ -140,11 +140,7 @@ jobs:
                     "title": "##  :github:  Github action",
                     "labels": ["action"]
                 }
-                ,
-                {
-                    "title": "## Other",
-                    "labels": ["*"]
-                }
+
               ],
               "label_extractor": [
               {
