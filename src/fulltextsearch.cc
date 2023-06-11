@@ -246,8 +246,8 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
 
   connect( this, &QDialog::finished, this, &FullTextSearchDialog::saveData );
 
-  connect( ui.OKButton, SIGNAL( clicked() ), this, SLOT( accept() ) );
-  connect( ui.cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
+  connect( ui.OKButton, &QPushButton::clicked, this, &QDialog::accept );
+  connect( ui.cancelButton, &QPushButton::clicked, this, &QDialog::reject );
 
 
   helpAction.setShortcut( QKeySequence( "F1" ) );

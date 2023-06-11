@@ -40,7 +40,7 @@ public slots:
 
 private slots:
   void emitHistoryItemRequested(QModelIndex const &);
-  void onSelectionChanged(QItemSelection const & selection);
+  void onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected );
   void onItemClicked(QModelIndex const & idx);
   void showCustomMenu(QPoint const & pos);
   void deleteSelectedItems();

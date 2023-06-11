@@ -68,7 +68,7 @@ protected:
 
 private slots:
   void emitFavoritesItemRequested(QModelIndex const &);
-  void onSelectionChanged(QItemSelection const & selection);
+  void onSelectionChanged( const QItemSelection & selected, const QItemSelection & deselected );
   void onItemClicked(QModelIndex const & idx);
   void showCustomMenu(QPoint const & pos);
   void deleteSelectedItems();

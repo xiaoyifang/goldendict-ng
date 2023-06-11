@@ -78,8 +78,10 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   // list selection and keyboard navigation
   connect( m_historyList, &QAbstractItemView::clicked, this, &HistoryPaneWidget::onItemClicked );
   connect( m_history, &History::itemsChanged, this, &HistoryPaneWidget::updateHistoryCounts );
-  connect ( m_historyList->selectionModel(), SIGNAL( selectionChanged ( QItemSelection const & , QItemSelection const & ) ),
-      this, SLOT( onSelectionChanged( QItemSelection const & ) ) );
+  connect( m_historyList->selectionModel(),
+           &QItemSelectionModel::selectionChanged,
+           this,
+           &HistoryPaneWidget::onSelectionChanged );
 
   connect( m_historyList, &QWidget::customContextMenuRequested, this, &HistoryPaneWidget::showCustomMenu );
 
@@ -188,9 +190,9 @@ void HistoryPaneWidget::emitHistoryItemRequested( QModelIndex const & idx )
   }
 }
 
-void HistoryPaneWidget::onSelectionChanged( QItemSelection const & selection )
+void HistoryPaneWidget::onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected )
 {
-  // qDebug() << "selectionChanged";
+  Q_UNUSED( deselected );
 
   if ( selection.empty() )
     return;
