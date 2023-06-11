@@ -67,6 +67,7 @@ jobs:
           CHANGELOG="${CHANGELOG//"'"/ }"
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
           echo "::set-output name=prev_tag::$previousTag"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "v.*" | sed -n 1p)"
       - name: Set outputs
         id: vars
         shell: bash
@@ -131,7 +132,7 @@ jobs:
         with:
           commitMode: true
           fromTag: "${{ steps.changelog.outputs.prev_tag }}"
-          toTag:  ${{ github.ref }}     
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}            
       - name: uploadRelease
