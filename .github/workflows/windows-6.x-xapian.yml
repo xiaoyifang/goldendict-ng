@@ -56,7 +56,7 @@ jobs:
         id: changelog
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "v.*" | sed -n 2p)
           echo "previousTag : $previousTag"
           
           CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
@@ -80,8 +80,8 @@ jobs:
       - name: version-file
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
-          echo "$previousTag">version.txt
+          current_tag=$(git tag --sort=-creatordate |  grep "v.*" | sed -n 1p |cut -c 2-)
+          echo "$current_tag">version.txt
           cat version.txt
 
       - name: vcpkg install
