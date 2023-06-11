@@ -152,8 +152,7 @@ jobs:
           toTag:  "${{ steps.changelog.outputs.curr_tag }}"  
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-              pr_template: '- ${{TITLE}}\n   - PR: #${{NUMBER}}',
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n## 🔴{{UNCATEGORIZED}}\n</details>",
               "categories": [
                 {
                     "title": "## 🚀 Features",
@@ -165,7 +164,7 @@ jobs:
                 }
                 ,
                 {
-                    "title": "##  :github:  Github action",
+                    "title": "##  🤖  Github action",
                     "labels": ["action"]
                 }
 
