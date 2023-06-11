@@ -130,7 +130,7 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           commitMode: true
-          fromTag: ${{ steps.changelog.outputs.prev_tag }}     
+          fromTag: "${{ steps.changelog.outputs.prev_tag }}"
           toTag:  ${{ github.ref }}     
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}            
