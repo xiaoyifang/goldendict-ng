@@ -68,6 +68,16 @@ jobs:
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
           echo "::set-output name=prev_tag::$previousTag"
           echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "v.*" | sed -n 1p)"
+
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: "${{ steps.changelog.outputs.prev_tag }}"
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}               
       - name: Set outputs
         id: vars
         shell: bash
@@ -77,6 +87,8 @@ jobs:
           echo "::set-output name=release_time::$(date +'%H%M%S')"  
           echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"     
+
+          echo "changlog : ${{steps.build_changelog.outputs.changelog}}"
 
       - name: version-file
         shell: bash
@@ -126,15 +138,7 @@ jobs:
           & .github\scripts\windows-publish.ps1 ${env:archiveName} ${env:targetName}
            $name = ${env:archiveName}
            echo "::set-output name=packageName::$name" 
-      - name: "Build Changelog"
-        id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v3
-        with:
-          commitMode: false
-          fromTag: "${{ steps.changelog.outputs.prev_tag }}"
-          toTag:  "${{ steps.changelog.outputs.curr_tag }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}            
+       
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
