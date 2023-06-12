@@ -73,12 +73,12 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          commitMode: true
+          commitMode: false
           fromTag: "${{ steps.changelog.outputs.prev_tag }}"
           toTag:  "${{ steps.changelog.outputs.curr_tag }}"
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n##  🔴 #{{UNCATEGORIZED}}\n</details>",
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
               "categories": [
                 {
                     "title": "## 🚀 Features",
