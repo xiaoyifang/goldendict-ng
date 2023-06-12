@@ -108,8 +108,10 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   connect( ui.dictionaryOrder, &DictListWidget::gotFocus, this, &OrderAndProps::dictListFocused );
   connect( ui.inactiveDictionaries, &DictListWidget::gotFocus, this, &OrderAndProps::inactiveDictListFocused );
 
-  connect ( ui.dictionaryOrder->selectionModel(), SIGNAL( selectionChanged ( const QItemSelection & , const QItemSelection & ) ),
-      this, SLOT( dictionarySelectionChanged( const QItemSelection & ) ) );
+  connect( ui.dictionaryOrder->selectionModel(),
+           &QItemSelectionModel::selectionChanged,
+           this,
+           &OrderAndProps::dictionarySelectionChanged );
   connect( ui.inactiveDictionaries->selectionModel(),
     &QItemSelectionModel::selectionChanged,
     this,
@@ -158,8 +160,10 @@ void OrderAndProps::inactiveDictListFocused()
   describeDictionary( ui.inactiveDictionaries, ui.inactiveDictionaries->currentIndex() );
 }
 
-void OrderAndProps::dictionarySelectionChanged( const QItemSelection & current )
+void OrderAndProps::dictionarySelectionChanged( const QItemSelection & current, const QItemSelection & deselected )
 {
+  Q_UNUSED( deselected )
+
   if ( current.empty() )
     return;
 

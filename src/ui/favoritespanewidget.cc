@@ -113,9 +113,9 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   connect( m_favoritesTree, &QAbstractItemView::clicked, this, &FavoritesPaneWidget::onItemClicked );
 
   connect( m_favoritesTree->selectionModel(),
-    SIGNAL( selectionChanged( QItemSelection const &, QItemSelection const & ) ),
-    this,
-    SLOT( onSelectionChanged( QItemSelection const & ) ) );
+           &QItemSelectionModel::selectionChanged,
+           this,
+           &FavoritesPaneWidget::onSelectionChanged );
 
   connect( m_favoritesTree, &QWidget::customContextMenuRequested, this, &FavoritesPaneWidget::showCustomMenu );
 }
@@ -196,8 +196,10 @@ void FavoritesPaneWidget::showCustomMenu(QPoint const & pos)
   m_favoritesMenu->exec( m_favoritesTree->mapToGlobal( pos ) );
 }
 
-void FavoritesPaneWidget::onSelectionChanged( QItemSelection const & selection )
+void FavoritesPaneWidget::onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected )
 {
+  Q_UNUSED( deselected )
+
   if ( m_favoritesTree->selectionModel()->selectedIndexes().size() != 1
        || selection.indexes().isEmpty() )
     return;

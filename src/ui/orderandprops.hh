@@ -22,8 +22,7 @@ public:
   Config::Group getCurrentInactiveDictionaries() const;
 
 private slots:
-
-  void dictionarySelectionChanged( const QItemSelection &current );
+  void dictionarySelectionChanged( const QItemSelection & current, const QItemSelection & deselected );
   void inactiveDictionarySelectionChanged( const QItemSelection &current );
   void contextMenuRequested( const QPoint & pos );
   void filterChanged( QString const & filterText );

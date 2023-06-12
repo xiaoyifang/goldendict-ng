@@ -176,7 +176,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   connect( webview, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
 
-  connect( webview->page(), SIGNAL( linkHovered( const QString & ) ), this, SLOT( linkHovered( const QString & ) ) );
+  connect( webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
 
   connect( webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
 
