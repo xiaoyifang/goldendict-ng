@@ -8,7 +8,8 @@
 
 using std::vector;
 
-EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
+EditDictionaries::EditDictionaries( QWidget * parent,
+                                    Config::Class & cfg_,
                                     vector< sptr< Dictionary::Class > > & dictionaries_,
                                     Instances::Groups & groupInstances_,
                                     QNetworkAccessManager & dictNetMgr_ ):
@@ -19,12 +20,10 @@ EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
   dictNetMgr( dictNetMgr_ ),
   origCfg( cfg ),
   sources( this, cfg ),
-  orderAndProps( new OrderAndProps( this, cfg.dictionaryOrder, cfg.inactiveDictionaries,
-                                    dictionaries ) ),
+  orderAndProps( new OrderAndProps( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
   groups( new Groups( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
   dictionariesChanged( false ),
   groupsChanged( false ),
-  lastCurrentTab( 0 ),
   helpAction( this )
 {
   // Some groups may have contained links to non-existnent dictionaries. We
@@ -42,7 +41,7 @@ EditDictionaries::EditDictionaries( QWidget * parent, Config::Class & cfg_,
   ui.tabs->clear();
 
   ui.tabs->addTab( &sources, QIcon(":/icons/sources.png"), tr( "&Sources" ) );
-  ui.tabs->addTab( orderAndProps, QIcon(":/icons/book.svg"), tr( "&Dictionaries" ) );
+  ui.tabs->addTab( orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
   ui.tabs->addTab( groups.get(), QIcon(":/icons/bookcase.svg"), tr( "&Groups" ) );
 
   connect( ui.buttons, &QDialogButtonBox::clicked, this, &EditDictionaries::buttonBoxClicked );
@@ -117,19 +116,19 @@ void EditDictionaries::on_tabs_currentChanged( int index )
 {
   if ( index == -1 || !isVisible() )
     return; // Sent upon the construction/destruction
-
-  if ( !lastCurrentTab && index )
-  {
+  qDebug() << ui.tabs->currentWidget()->objectName();
+  if ( ui.tabs->currentWidget()->objectName() == "Sources" ) {
     // We're switching away from the Sources tab -- if its contents were
     // changed, we need to either apply or reject now.
 
-    if ( isSourcesChanged() )
-    {
+    if ( isSourcesChanged() ) {
       ui.tabs->setCurrentIndex( 0 );
 
-      QMessageBox question( QMessageBox::Question, tr( "Sources changed" ),
+      QMessageBox question( QMessageBox::Question,
+                            tr( "Sources changed" ),
                             tr( "Some sources were changed. Would you like to accept the changes?" ),
-                            QMessageBox::NoButton, this );
+                            QMessageBox::NoButton,
+                            this );
 
       QPushButton * accept = question.addButton( tr( "Accept" ), QMessageBox::AcceptRole );
 
@@ -140,27 +139,22 @@ void EditDictionaries::on_tabs_currentChanged( int index )
       if ( question.clickedButton() == accept )
       {
         acceptChangedSources( true );
-        
-        lastCurrentTab = index;
+
         ui.tabs->setCurrentIndex( index );
       }
-      else
-      {
+      else {
         // Prevent tab from switching
-        lastCurrentTab = 0;
         return;
       }
     }
   }
-  else
-  if ( lastCurrentTab == 1 && index != 1 )
-  {
+  else if ( lastDictionaryOrderTab ) {
     // When switching from the dictionary order, we need to propagate any
     // changes to the groups.
     groups->updateDictionaryOrder( orderAndProps->getCurrentDictionaryOrder() );
   }
 
-  lastCurrentTab = index;
+  lastDictionaryOrderTab = ui.tabs->currentWidget()->objectName() == "OrderAndProps";
 }
 
 void EditDictionaries::rescanSources()
@@ -215,7 +209,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   ui.tabs->setUpdatesEnabled( false );
 
   groups.reset();
-  orderAndProps.clear();
+  orderAndProps.reset();
 
   loadDictionaries( this, true, cfg, dictionaries, dictNetMgr );
 
@@ -241,14 +235,15 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 
   Instances::updateNames( savedInactive, dictionaries );
 
-  if ( rebuildGroups )
-  {
-    orderAndProps = new OrderAndProps( this, savedOrder, savedInactive, dictionaries );
-    groups =  std::make_shared<Groups>( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+  if ( rebuildGroups ) {
+    ui.tabs->removeTab( 1 );
+    ui.tabs->removeTab( 1 );
+    orderAndProps.reset( new OrderAndProps( this, savedOrder, savedInactive, dictionaries ) );
+    std::shared_ptr< Groups > other =
+      std::make_shared< Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    groups.swap( other );
 
-    ui.tabs->removeTab( 1 );
-    ui.tabs->removeTab( 1 );
-    ui.tabs->insertTab( 1, orderAndProps, QIcon(":/icons/book.svg"), tr( "&Dictionaries" ) );
+    ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
 
     ui.tabs->insertTab( 2, groups.get(), QIcon(":/icons/bookcase.svg"), tr( "&Groups" ) );
 

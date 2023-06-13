@@ -156,7 +156,7 @@ public:
                  std::vector< sptr< Dictionary::Class > > const & activeDicts );
 
   /// Creates new empty group with the given name
-  void addNewGroup( QString const & );
+  int addNewGroup( QString const & );
 
   /// Creates new empty group with the given name if no such group
   /// and return it index
@@ -186,6 +186,8 @@ public:
   Config::Groups makeGroups() const;
 
   DictListModel * getCurrentModel() const;
+
+  DictListModel * getModelAt( int current ) const;
 
   QItemSelectionModel * getCurrentSelectionModel() const;
 

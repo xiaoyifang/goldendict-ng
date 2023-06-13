@@ -84,7 +84,7 @@ void Groups::updateDictionaryOrder( Config::Group const & order )
   if( ui.dictionaries->getCurrentDictionaries() != newOrder.dictionaries )
   {
     // Repopulate
-    ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
+    ui.dictionaries->populate( newOrder.dictionaries, dicts );
   }
 }
 

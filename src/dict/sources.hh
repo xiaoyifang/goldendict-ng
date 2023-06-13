@@ -145,7 +145,7 @@ Q_OBJECT
 Q_PROPERTY(int type READ getType WRITE setType USER true)
 
 public:
-  ProgramTypeEditor( QWidget * widget = 0 );
+  explicit ProgramTypeEditor( QWidget * widget = nullptr );
 
   // Returns localized name for the given program type
   static QString getNameForType( int );

@@ -147,6 +147,7 @@ Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
 
 void Class::deferredInit()
 {
+  //base method.
 }
 
 sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
@@ -605,8 +606,9 @@ QMap< std::string, sptr< Dictionary::Class > >
 dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts )
 {
   QMap< std::string, sptr< Dictionary::Class > > dictMap;
-  for( auto dict : dicts )
-  {
+  for ( auto & dict : dicts ) {
+    if ( !dict )
+      continue;
     dictMap.insert( dict.get()->getId(), dict );
   }
   return dictMap;
