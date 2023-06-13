@@ -583,14 +583,13 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
 
   for( int x = 0; x < groups.size(); ++x )
   {
-    DictGroupWidget *gr = new DictGroupWidget( this, *allDicts, groups[ x ] );
+    auto gr = new DictGroupWidget( this, *allDicts, groups[ x ] );
     addTab( gr, escapeAmps( groups[ x ].name ) );
     connect( gr, &DictGroupWidget::showDictionaryInfo,this, &DictGroupsWidget::showDictionaryInfo );
     connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-    setCurrentIndex( x );
     QString toolTipStr = "\"" + tabText( x ) + "\"\n" + tr( "Dictionaries: " )
-                         + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
+      + QString::number( getModelAt( x )->getCurrentDictionaries().size() );
     setTabToolTip( x, toolTipStr );
   }
 
@@ -623,11 +622,21 @@ DictListModel * DictGroupsWidget::getCurrentModel() const
 
   if ( current >= 0 )
   {
-    DictGroupWidget * w = ( DictGroupWidget * ) widget( current );
+    auto w = (DictGroupWidget *)widget( current );
     return w->getModel();
   }
 
-  return 0;
+  return nullptr;
+}
+
+DictListModel * DictGroupsWidget::getModelAt( int current ) const
+{
+  if ( current >= 0 && current < count() ) {
+    auto w = (DictGroupWidget *)widget( current );
+    return w->getModel();
+  }
+
+  return nullptr;
 }
 
 QItemSelectionModel * DictGroupsWidget::getCurrentSelectionModel() const
@@ -636,38 +645,35 @@ QItemSelectionModel * DictGroupsWidget::getCurrentSelectionModel() const
 
   if ( current >= 0 )
   {
-    DictGroupWidget * w = ( DictGroupWidget * ) widget( current );
+    auto w = (DictGroupWidget *)widget( current );
     return w->getSelectionModel();
   }
 
-  return 0;
+  return nullptr;
 }
 
 
-void DictGroupsWidget::addNewGroup( QString const & name )
+int DictGroupsWidget::addNewGroup( QString const & name )
 {
   if ( !allDicts )
-    return;
-
-  int idx = currentIndex() + 1;
+    return 0;
 
   Config::Group newGroup;
 
   newGroup.id = nextId++;
 
-  DictGroupWidget *gr = new DictGroupWidget( this, *allDicts, newGroup );
-  insertTab( idx, gr, escapeAmps( name ) );
+  auto gr = new DictGroupWidget( this, *allDicts, newGroup );
+  int idx = insertTab( currentIndex() + 1, gr, escapeAmps( name ) );
   connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
-
-  setCurrentIndex( idx );
 
   connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
   QString toolTipStr = "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " )
-                       + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
+    + QString::number( getModelAt( idx )->getCurrentDictionaries().size() );
   setTabToolTip( idx, toolTipStr );
 
   setUsesScrollButtons( count() > 3 );
+  return idx;
 }
 
 int DictGroupsWidget::addUniqueGroup( const QString & name )
@@ -675,12 +681,11 @@ int DictGroupsWidget::addUniqueGroup( const QString & name )
   for( int n = 0; n < count(); n++ )
     if( tabText( n ) == name )
     {
-      setCurrentIndex( n );
+      //      setCurrentIndex( n );
       return n;
     }
 
-  addNewGroup( name );
-  return currentIndex();
+  return addNewGroup( name );
 }
 
 void DictGroupsWidget::addAutoGroups()
@@ -699,10 +704,7 @@ void DictGroupsWidget::addAutoGroups()
 
   // Put active dictionaries into lists
 
-  for ( unsigned i = 0; i < activeDicts->size(); i++ )
-  {
-    sptr<Dictionary::Class> dict = activeDicts->at( i );
-
+  for ( const auto & dict : *activeDicts ) {
     int idFrom = dict->getLangFrom();
     int idTo = dict->getLangTo();
     if( idFrom == 0)
@@ -757,16 +759,12 @@ void DictGroupsWidget::addAutoGroups()
 
   // Make groups
 
-  for( QStringList::ConstIterator gr = groupList.begin(); gr != groupList.end(); ++gr )
-  {
-    if( count() )
-      setCurrentIndex( count() - 1 );
-
-    addUniqueGroup( *gr );
+  for ( const auto & gr : groupList ) {
+    auto idx = addUniqueGroup( gr );
 
     // add dictionaries into the current group
-    QVector< sptr<Dictionary::Class> > vd = dictMap[ *gr ];
-    DictListModel *model = getCurrentModel();
+    QVector< sptr< Dictionary::Class > > vd = dictMap[ gr ];
+    DictListModel * model                 = getModelAt( idx );
     for( int i = 0; i < vd.count(); i++ )
       model->addRow(QModelIndex(), vd.at( i ) );
   }
@@ -868,12 +866,8 @@ void DictGroupsWidget::addAutoGroupsByFolders()
 void DictGroupsWidget::addGroupBasedOnMap( const QMultiMap<QString, sptr<Dictionary::Class>> & groupToDicts )
 {
   for ( const auto & group : groupToDicts.uniqueKeys() ) {
-    if ( count() != 0 ) {
-      setCurrentIndex( count() - 1 );
-    }
-
-    addUniqueGroup( group );
-    DictListModel * model = getCurrentModel();
+    auto idx              = addUniqueGroup( group );
+    DictListModel * model = getModelAt( idx );
 
     for ( const auto & dict : groupToDicts.values( group ) ) {
       model->addRow( QModelIndex(), dict );
@@ -944,11 +938,8 @@ void DictGroupsWidget::removeCurrentGroup()
 {
   int current = currentIndex();
 
-  if ( current >= 0 )
-  {
-    QWidget * w = widget( current );
+  if ( current >= 0 ) {
     removeTab( current );
-    delete w;
   }
 
   setUsesScrollButtons( count() > 3 );
@@ -969,16 +960,15 @@ void DictGroupsWidget::combineGroups( int source, int target )
   if( source < 0 || source >= count() || target < 0 || target >= count() )
     return;
 
-  setCurrentIndex( source );
-  vector< sptr< Dictionary::Class > > const & dicts = getCurrentModel()->getCurrentDictionaries();
+  vector< sptr< Dictionary::Class > > const & dicts = getModelAt( source )->getCurrentDictionaries();
 
-  setCurrentIndex( target );
-  DictListModel *model = getCurrentModel();
+  auto model = getModelAt( target );
 
   disconnect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-  for( unsigned i = 0; i < dicts.size(); i++ )
-    model->addRow( QModelIndex(), dicts[ i ] );
+  for ( const auto & dict : dicts ) {
+    model->addRow( QModelIndex(), dict );
+  }
 
   connect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
@@ -998,8 +988,8 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
 
   QMenu menu( this );
 
-  QAction *combineSourceAction = new QAction( QString( tr( "Combine groups by source language to \"%1->\"" ) )
-                                              .arg( name.left( 2 ) ), &menu );
+  auto combineSourceAction =
+    new QAction( QString( tr( "Combine groups by source language to \"%1->\"" ) ).arg( name.left( 2 ) ), &menu );
   combineSourceAction->setEnabled( false );
 
   QString grLeft = name.left( 2 );
@@ -1015,8 +1005,8 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   }
   menu.addAction( combineSourceAction );
 
-  QAction *combineTargetAction = new QAction( QString( tr( "Combine groups by target language to \"->%1\"" ) )
-                                              .arg( name.right( 2 ) ), &menu );
+  auto combineTargetAction =
+    new QAction( QString( tr( "Combine groups by target language to \"->%1\"" ) ).arg( name.right( 2 ) ), &menu );
   combineTargetAction->setEnabled( false );
 
   for( int i = 0; i < count(); i++ )
@@ -1030,11 +1020,11 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   }
   menu.addAction( combineTargetAction );
 
-  QAction *combineTwoSidedAction = NULL;
+  QAction * combineTwoSidedAction = nullptr;
   if( grLeft != grRight )
   {
-    combineTwoSidedAction = new QAction( QString( tr( "Make two-side translate group \"%1-%2-%1\"" ) )
-                                         .arg( grLeft ).arg( grRight ), &menu );
+    combineTwoSidedAction =
+      new QAction( QString( tr( "Make two-side translate group \"%1-%2-%1\"" ) ).arg( grLeft, grRight ), &menu );
 
     combineTwoSidedAction->setEnabled( false );
 
@@ -1051,8 +1041,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
     menu.addAction( combineTwoSidedAction );
   }
 
-  QAction *combineFirstAction = new QAction( QString( tr( "Combine groups with \"%1\"" ) )
-                                             .arg( grLeft ), &menu );
+  auto combineFirstAction = new QAction( QString( tr( "Combine groups with \"%1\"" ) ).arg( grLeft ), &menu );
   combineFirstAction->setEnabled( false );
   for( int i = 0; i < count(); i++ )
   {
@@ -1066,7 +1055,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   }
   menu.addAction( combineFirstAction );
 
-  QAction *combineSecondAction = NULL;
+  QAction * combineSecondAction = nullptr;
 
   if( grLeft != grRight )
   {
@@ -1094,7 +1083,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
 
   if( result && result == combineSourceAction )
   {
-    setCurrentIndex( clickedGroup );
+    //    setCurrentIndex( clickedGroup );
     targetGroup = addUniqueGroup( grLeft + "->" );
 
     for( int i = 0; i < count(); i++ )
@@ -1109,7 +1098,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   else
   if( result && result == combineTargetAction )
   {
-    setCurrentIndex( clickedGroup );
+    //    setCurrentIndex( clickedGroup );
     targetGroup = addUniqueGroup( "->" + grRight );
 
     for( int i = 0; i < count(); i++ )
@@ -1124,7 +1113,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   else
   if( result && result == combineTwoSidedAction )
   {
-    setCurrentIndex( clickedGroup );
+    //    setCurrentIndex( clickedGroup );
     targetGroup = addUniqueGroup( name + " - " + grLeft );
     QString str = grRight + " - " + grLeft;
 
@@ -1138,7 +1127,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   if( result && ( result == combineFirstAction || result == combineSecondAction ) )
   {
     QString const & grBase = result == combineFirstAction ? grLeft : grRight;
-    setCurrentIndex( clickedGroup );
+    //    setCurrentIndex( clickedGroup );
     targetGroup = addUniqueGroup( grBase );
 
     for( int i = 0; i < count(); i++ )

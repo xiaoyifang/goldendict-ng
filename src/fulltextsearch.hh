@@ -130,7 +130,9 @@ public:
   }
 
   void clearDictionaries()
-  { dictionaries.clear(); }
+  {
+    dictionaries.clear();
+  }
 
   /// Start dictionaries indexing for full-text search
   void doIndexing();
@@ -140,7 +142,7 @@ public:
 
   QString nowIndexingName();
 
-protected:
+private:
   QAtomicInt isCancelled;
   QSemaphore indexingExited;
   std::vector< sptr< Dictionary::Class > > dictionaries;

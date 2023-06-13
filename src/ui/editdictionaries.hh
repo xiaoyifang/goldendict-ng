@@ -72,19 +72,19 @@ private:
   std::vector< sptr< Dictionary::Class > > & dictionaries;
   Instances::Groups & groupInstances;
   QNetworkAccessManager & dictNetMgr;
-  
+
   // Backed up to decide later if something was changed or not
   Config::Class origCfg;
 
   Ui::EditDictionaries ui;
   Sources sources;
-  QPointer<OrderAndProps> orderAndProps;
+  QScopedPointer< OrderAndProps > orderAndProps;
   sptr< Groups > groups;
 
   bool dictionariesChanged;
   bool groupsChanged;
-  
-  int lastCurrentTab;
+
+  bool lastDictionaryOrderTab = false;
 
   QAction helpAction;
 };
