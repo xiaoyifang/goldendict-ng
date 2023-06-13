@@ -15,7 +15,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>@SHORT_VERSION@</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.goldendict</string>	
+	<string>org.xiaoyifang</string>	
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
