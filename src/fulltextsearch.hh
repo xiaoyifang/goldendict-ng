@@ -96,7 +96,9 @@ public:
     timer->moveToThread(timerThread);
     connect(timerThread, &QThread::started, timer, [this](){timer->start(2000);});
     connect(timerThread, &QThread::finished, timer, &QTimer::stop);
-
+    connect( timerThread, &QThread::destroyed, timer, [ this ]() {
+      timer->deleteLater();
+    } );
   }
 
   ~Indexing()

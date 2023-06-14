@@ -296,7 +296,7 @@ private:
   TextToSpeechSource *textToSpeechSource;
 
   QItemDelegate * itemDelegate;
-  QItemEditorFactory * itemEditorFactory;
+  QScopedPointer< QItemEditorFactory > itemEditorFactory;
 
   MediaWikisModel mediawikisModel;
   WebSitesModel webSitesModel;
