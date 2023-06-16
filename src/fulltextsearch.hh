@@ -84,21 +84,20 @@ Q_OBJECT
   QThread * timerThread;
 
 public:
-  Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts,
-            QSemaphore & hasExited_):
+  Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts, QSemaphore & hasExited_ ):
     isCancelled( cancelled ),
     dictionaries( dicts ),
     hasExited( hasExited_ ),
-    timer(new QTimer(nullptr)), // must be null since it will live in separate thread
-    timerThread(new QThread(this))
+    timer( new QTimer( nullptr ) ), // must be null since it will live in separate thread
+    timerThread( new QThread( this ) )
   {
-    connect(timer, &QTimer::timeout, this, &Indexing::timeout);
-    timer->moveToThread(timerThread);
-    connect(timerThread, &QThread::started, timer, [this](){timer->start(2000);});
-    connect(timerThread, &QThread::finished, timer, &QTimer::stop);
-    connect( timerThread, &QThread::destroyed, timer, [ this ]() {
-      timer->deleteLater();
+    connect( timer, &QTimer::timeout, this, &Indexing::timeout );
+    timer->moveToThread( timerThread );
+    connect( timerThread, &QThread::started, timer, [ this ]() {
+      timer->start( 2000 );
     } );
+    connect( timerThread, &QThread::finished, timer, &QTimer::stop );
+    connect( timerThread, &QThread::finished, timer, &QObject::deleteLater );
   }
 
   ~Indexing()
