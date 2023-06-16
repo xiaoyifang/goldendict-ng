@@ -83,8 +83,8 @@ win32{
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
 
-  win32: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
-  else:unix: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpa
+  LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
+
 
   INCLUDEPATH += $$PWD/thirdparty/breakpad/include
   DEPENDPATH += $$PWD/thirdparty/breakpad/include
