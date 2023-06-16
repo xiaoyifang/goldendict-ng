@@ -33,10 +33,17 @@
 #include <QMutex>
 
 #if defined(USE_BREAKPAD)
-  #include "client/windows/handler/exception_handler.h"
+  #if defined( Q_OS_MAC )
+    #include "client/mac/handler/exception_handler.h"
+  #elif defined( Q_OS_LINUX )
+    #include "client/linux/handler/exception_handler.h"
+  #elif defined( Q_OS_WIN32 )
+    #include "client/windows/handler/exception_handler.h"
+  #endif
 #endif
 
 #if defined(USE_BREAKPAD)
+  #ifdef Q_OS_WIN32
 bool callback(const wchar_t* dump_path, const wchar_t* id,
                void* context, EXCEPTION_POINTERS* exinfo,
                MDRawAssertionInfo* assertion,
@@ -49,15 +56,38 @@ bool callback(const wchar_t* dump_path, const wchar_t* id,
   return succeeded;
 }
 #endif
+  #ifdef Q_OS_LINUX
+bool callback( const google_breakpad::MinidumpDescriptor & descriptor, void * context, bool succeeded )
+{
+  if ( succeeded ) {
+    qDebug() << "Create dump file success";
+  }
+  else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+  #endif
+  #ifdef Q_OS_MAC
+bool callback( const char * dump_dir, const char * minidump_id, void * context, bool succeeded )
+{
+  if ( succeeded ) {
+    qDebug() << "Create dump file success";
+  }
+  else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+  #endif
+#endif
 
 QMutex logMutex;
 
 void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
 {
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 %2\r\n" )
-                      .arg( strTime )
-                      .arg( mess );
+  QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
 
   if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
     //without the lock ,on multithread,there would be assert error.
@@ -292,17 +322,31 @@ int main( int argc, char ** argv )
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
 #if defined(USE_BREAKPAD)
-  QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";
+  QString appDirPath = Config::getConfigDir() + "crash";
 
   QDir dir;
   if ( !dir.exists( appDirPath ) ) {
     dir.mkpath( appDirPath );
   }
+  #ifdef Q_OS_WIN32
 
   google_breakpad::ExceptionHandler eh(
     appDirPath.toStdWString(), NULL, callback, NULL,
     google_breakpad::ExceptionHandler::HANDLER_ALL);
+  #elif defined( Q_OS_MAC )
 
+
+  google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
+
+  #else
+
+  google_breakpad::ExceptionHandler eh( google_breakpad::MinidumpDescriptor( appDirPath.toStdString() ),
+                                        /*FilterCallback*/ 0,
+                                        callback,
+                                        /*context*/ 0,
+                                        true,
+                                        -1 );
+  #endif
 
   #endif
 
