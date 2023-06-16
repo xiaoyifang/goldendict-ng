@@ -42,7 +42,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
 
   itemEditorFactory->registerEditor( QVariant::Int, programTypeEditorCreator );
 
-  itemDelegate->setItemEditorFactory( itemEditorFactory );
+  itemDelegate->setItemEditorFactory( itemEditorFactory.get() );
 
   ui.mediaWikis->setTabKeyNavigation( true );
   ui.mediaWikis->setModel( &mediawikisModel );

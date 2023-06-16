@@ -2084,13 +2084,13 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
       ftsIndexing.stopIndexing();
       ftsIndexing.clearDictionaries();
       // Set muted dictionaries from old groups
-      for ( int x = 0; x < newCfg.groups.size(); x++ ) {
-        unsigned id = newCfg.groups[ x ].id;
+      for ( auto & group : newCfg.groups ) {
+        unsigned id = group.id;
         if ( id != Instances::Group::NoGroupId ) {
           Config::Group const * grp = cfg.getGroup( id );
           if ( grp ) {
-            newCfg.groups[ x ].mutedDictionaries      = grp->mutedDictionaries;
-            newCfg.groups[ x ].popupMutedDictionaries = grp->popupMutedDictionaries;
+            group.mutedDictionaries      = grp->mutedDictionaries;
+            group.popupMutedDictionaries = grp->popupMutedDictionaries;
           }
         }
       }
@@ -2103,9 +2103,9 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
       updateSuggestionList();
 
-      for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
-        dictionaries[ x ]->setFTSParameters( cfg.preferences.fts );
-        dictionaries[ x ]->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
+      for ( auto & dictionary : dictionaries ) {
+        dictionary->setFTSParameters( cfg.preferences.fts );
+        dictionary->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
       }
 
       ftsIndexing.setDictionaries( dictionaries );
