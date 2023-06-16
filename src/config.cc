@@ -418,7 +418,7 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-MutedDictionaries loadMutedDictionaries( QDomNode mutedDictionaries )
+MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
 {
   MutedDictionaries result;
 
@@ -482,37 +482,6 @@ Class load()
 
     #endif
 
-    #ifdef Q_OS_WIN32
-
-    // get path to Program Files
-    wchar_t buf[ MAX_PATH ];
-    SHGetFolderPathW( NULL, CSIDL_PROGRAM_FILES, NULL, 0, buf );
-    QString pathToProgramFiles = QString::fromWCharArray( buf );
-    if ( pathToProgramFiles.isEmpty() )
-      pathToProgramFiles = "C:\\Program Files";
-
-    if ( QDir( pathToProgramFiles + "\\StarDict\\dic" ).exists() )
-      c.paths.push_back( Path( pathToProgramFiles + "\\StarDict\\dic", true ) );
-
-    if ( QDir( pathToProgramFiles + "\\StarDict\\WyabdcRealPeopleTTS" ).exists() )
-      c.soundDirs.push_back( SoundDir( pathToProgramFiles + "\\StarDict\\WyabdcRealPeopleTTS", "WyabdcRealPeopleTTS" ) );
-    else
-    if ( QDir( pathToProgramFiles + "\\WyabdcRealPeopleTTS" ).exists() )
-      c.soundDirs.push_back( SoundDir( pathToProgramFiles + "\\WyabdcRealPeopleTTS", "WyabdcRealPeopleTTS" ) );
-
-    // #### "C:/Program Files" is bad! will not work for German Windows etc.
-    // #### should be replaced to system path
-
-//    if ( QDir( "C:/Program Files/StarDict/dic" ).exists() )
-//      c.paths.push_back( Path( "C:/Program Files/StarDict/dic", true ) );
-//
-//    if ( QDir( "C:/Program Files/StarDict/WyabdcRealPeopleTTS" ).exists() )
-//      c.soundDirs.push_back( SoundDir( "C:/Program Files/StarDict/WyabdcRealPeopleTTS", "WyabdcRealPeopleTTS" ) );
-//    else
-//    if ( QDir( "C:/Program Files/WyabdcRealPeopleTTS" ).exists() )
-//      c.soundDirs.push_back( SoundDir( "C:/Program Files/WyabdcRealPeopleTTS", "WyabdcRealPeopleTTS" ) );
-
-    #endif
 
     #ifndef Q_OS_WIN32
     c.preferences.audioPlaybackProgram = "mplayer";
