@@ -167,6 +167,11 @@ jobs:
                     "title": "##  🤖  Github action",
                     "labels": ["action"]
                 }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
 
               ],
               "label_extractor": [
