@@ -21,7 +21,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   origCfg( cfg ),
   sources( this, cfg ),
   orderAndProps( new OrderAndProps( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
-  groups( new Groups( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
+  groups( std::make_shared< Groups >( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
   dictionariesChanged( false ),
   groupsChanged( false ),
   helpAction( this )
