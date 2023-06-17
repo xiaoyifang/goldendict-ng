@@ -7,6 +7,7 @@
 #include "config.hh"
 #include <QWebEngineProfile>
 #include "hotkeywrapper.hh"
+#include "version.hh"
 #ifdef HAVE_X11
 #include <fixx11h.h>
 #endif
@@ -173,12 +174,17 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
                                                       << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
 
+  QCommandLineOption printVersion( QStringList() << "v"
+                                                 << "version",
+                                   QObject::tr( "Print version and diagnosis info." ) );
+
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
+  qcmd.addOption( printVersion );
 
   QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
   doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
@@ -208,6 +214,11 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
   if ( qcmd.isSet( resetState ) ) {
     result->resetState = true;
+  }
+
+  if ( qcmd.isSet( printVersion ) ) {
+    qInfo() << qPrintable( Version::everything() );
+    std::exit( 0 );
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
