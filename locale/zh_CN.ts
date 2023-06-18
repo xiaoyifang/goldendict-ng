@@ -3225,7 +3225,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML文件(*.xml);;文本文件(*.txt);;所有文件(*.*)</translation>
+      <translation>XML 文件(*.xml);;文本文件(*.txt);;所有文件(*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
