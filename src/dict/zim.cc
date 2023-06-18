@@ -41,6 +41,8 @@
   #include <zim/archive.h>
   #include <zim/entry.h>
   #include <zim/item.h>
+  #include <zim/error.h>
+
 namespace Zim {
 
 using std::string;
@@ -275,16 +277,30 @@ void ZimDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
+  // Try to load Original GD's user provided icon
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
-
   // Remove the extension
   fileName.chop( 3 );
-
-  if( !loadIconFromFile( fileName ) )
-  {
-    // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_zim.png");
+  if ( loadIconFromFile( fileName ) ) {
+    dictionaryIconLoaded = true;
+    return;
   }
+
+  // Try to load zim's illustration, which is usually 48x48 png
+  try {
+    auto illustration = df.getIllustrationItem( 48 ).getData();
+    QImage img = QImage::fromData( reinterpret_cast< const uchar * >( illustration.data() ), illustration.size() );
+    dictionaryNativeIcon = dictionaryIcon = QIcon( QPixmap::fromImage( img ) );
+
+    dictionaryIconLoaded = true;
+    return;
+  }
+  catch ( zim::EntryNotFound & e ) {
+    gdDebug( "ZIM icon not loaded for: %s", dictionaryName.c_str() );
+  }
+
+  // Fallback to default icon
+  dictionaryNativeIcon = dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
 
   dictionaryIconLoaded = true;
 }
