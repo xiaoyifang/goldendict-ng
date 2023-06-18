@@ -4286,7 +4286,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation>Свернуть сеанс</translation>
+      <translation>Держать свёрнутым в сеансе</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
