@@ -472,7 +472,6 @@ void DslDictionary::loadIcon() noexcept
   {
     // Load failed -- use default icons
     dictionaryIcon = QIcon(":/icons/icon32_dsl.png");
-    dictionaryNativeIcon = QIcon(":/icons/icon_dsl_native.png");
   }
 
   dictionaryIconLoaded = true;

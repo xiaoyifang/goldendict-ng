@@ -340,7 +340,7 @@ void AardDictionary::loadIcon() noexcept
   if( !loadIconFromFile( fileName ) )
   {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_aard.png");
+    dictionaryIcon = QIcon(":/icons/icon32_aard.png");
   }
 
   dictionaryIconLoaded = true;

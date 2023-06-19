@@ -210,13 +210,6 @@ QIcon const & Class::getIcon() noexcept
   return dictionaryIcon;
 }
 
-QIcon const & Class::getNativeIcon() noexcept
-{
-  if( !dictionaryIconLoaded )
-    loadIcon();
-  return dictionaryNativeIcon;
-}
-
 void Class::loadIcon() noexcept
 {
   dictionaryIconLoaded = true;
@@ -268,8 +261,6 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(),
                                                     Qt::MaskOutColor ) );
 #endif
-
-      dictionaryNativeIcon = QIcon( QPixmap::fromImage( img ));
 
       // Transform it to be square
       int max = img.width() > img.height() ? img.width() : img.height();
@@ -330,7 +321,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 
     painter.end();
 
-    dictionaryNativeIcon = dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
+    dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
     return !dictionaryIcon.isNull();
   }

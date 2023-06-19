@@ -52,7 +52,7 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > >
 
   for( unsigned x = 0; x < dictionaries.size(); ++x )
   {
-    QIcon icon = dictionaries[ x ]->getNativeIcon();
+    QIcon icon = dictionaries[ x ]->getIcon();
 
     QString dictName = QString::fromUtf8( dictionaries[ x ]->
                                             getName().c_str() );

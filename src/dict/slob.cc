@@ -757,7 +757,7 @@ void SlobDictionary::loadIcon() noexcept
   if( !loadIconFromFile( fileName ) )
   {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_slob.png");
+    dictionaryIcon = QIcon(":/icons/icon32_slob.png");
   }
 
   dictionaryIconLoaded = true;

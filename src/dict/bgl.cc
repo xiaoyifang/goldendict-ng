@@ -318,9 +318,6 @@ namespace
 
         if (img.loadFromData( ( unsigned char *) iconData, idxHeader.iconSize  ) )
         {
-          // Load successful
-
-          dictionaryNativeIcon = QIcon( QPixmap::fromImage( img ) );
 
           // Transform it to be square
           int max = img.width() > img.height() ? img.width() : img.height();
@@ -342,7 +339,7 @@ namespace
       }
 
       if ( dictionaryIcon.isNull() )
-        dictionaryIcon = dictionaryNativeIcon = QIcon(":/icons/icon32_bgl.png");
+        dictionaryIcon = QIcon(":/icons/icon32_bgl.png");
     }
 
     dictionaryIconLoaded = true;

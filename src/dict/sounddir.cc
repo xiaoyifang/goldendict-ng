@@ -300,7 +300,7 @@ void SoundDirDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
   }
   if( dictionaryIcon.isNull() )
-    dictionaryIcon = dictionaryNativeIcon = QIcon(":/icons/playsound_full.png");
+    dictionaryIcon = QIcon(":/icons/playsound_full.png");
   dictionaryIconLoaded = true;
 }
 

@@ -242,7 +242,7 @@ void SdictDictionary::loadIcon() noexcept
   if( !loadIconFromFile( fileName ) )
   {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_sdict.png");
+    dictionaryIcon = QIcon(":/icons/icon32_sdict.png");
   }
 
   dictionaryIconLoaded = true;
