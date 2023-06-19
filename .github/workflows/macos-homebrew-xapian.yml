@@ -116,7 +116,7 @@ jobs:
       - name: package
         run: |
           
-          macdeployqt ${targetName}.app --no-strip -qmldir=. -verbose=1
+          macdeployqt ${targetName}.app -no-strip -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib

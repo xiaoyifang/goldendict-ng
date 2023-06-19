@@ -455,6 +455,7 @@ int main( int argc, char ** argv )
 
   if ( gdcl.notts ) {
     cfg.notts = true;
+    cfg.voiceEngines.clear();
   }
 
   cfg.resetState = gdcl.resetState;
