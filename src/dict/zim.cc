@@ -290,7 +290,14 @@ void ZimDictionary::loadIcon() noexcept
   try {
     auto illustration = df.getIllustrationItem( 48 ).getData();
     QImage img = QImage::fromData( reinterpret_cast< const uchar * >( illustration.data() ), illustration.size() );
-    dictionaryIcon = QIcon( QPixmap::fromImage( img ) );
+
+    if ( img.isNull() ) {
+      // Fallback to default icon
+      dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
+    }
+    else {
+      dictionaryIcon = QIcon( QPixmap::fromImage( img ) );
+    }
 
     dictionaryIconLoaded = true;
     return;
@@ -298,11 +305,6 @@ void ZimDictionary::loadIcon() noexcept
   catch ( zim::EntryNotFound & e ) {
     gdDebug( "ZIM icon not loaded for: %s", dictionaryName.c_str() );
   }
-
-  // Fallback to default icon
-  dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
-
-  dictionaryIconLoaded = true;
 }
 
 quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool rawText )
