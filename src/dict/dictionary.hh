@@ -42,6 +42,8 @@ DEF_EX( exIndexOutOfRange, "The supplied index is out of range", Ex )
 DEF_EX( exSliceOutOfRange, "The requested data slice is out of range", Ex )
 DEF_EX( exRequestUnfinished, "The request hasn't yet finished", Ex )
 
+DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+
 /// When you request a search to be performed in a dictionary, you get
 /// this structure in return. It accumulates search results over time.
 /// The finished() signal is emitted when the search has finished and there's

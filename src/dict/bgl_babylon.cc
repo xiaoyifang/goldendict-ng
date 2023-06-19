@@ -47,7 +47,6 @@
 
 using std::string;
 
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 DEF_EX( exIconv, "Iconv library error", Dictionary::Ex )
 DEF_EX( exAllocation, "Error memory allocation", Dictionary::Ex )

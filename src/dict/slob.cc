@@ -61,7 +61,7 @@ using BtreeIndexing::IndexedWords;
 using BtreeIndexing::IndexInfo;
 
 DEF_EX_STR( exNotSlobFile, "Not an Slob file", Dictionary::Ex )
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+using Dictionary::exCantReadFile;
 DEF_EX_STR( exCantDecodeFile, "Can't decode file", Dictionary::Ex )
 DEF_EX_STR( exNoCodecFound, "No text codec found", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
