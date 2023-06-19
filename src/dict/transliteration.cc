@@ -18,7 +18,7 @@ BaseTransliterationDictionary::BaseTransliterationDictionary( string const & id,
   name( name_ ),
   caseSensitive( caseSensitive_ )
 {
-  dictionaryIcon = dictionaryNativeIcon = icon_;
+  dictionaryIcon = icon_;
   dictionaryIconLoaded = true;
 }
 

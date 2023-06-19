@@ -91,7 +91,7 @@ void ForvoDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/forvo.png" );
+  dictionaryIcon = QIcon( ":/icons/forvo.png" );
   dictionaryIconLoaded = true;
 }
 

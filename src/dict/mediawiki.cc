@@ -92,9 +92,9 @@ void MediaWikiDictionary::loadIcon() noexcept
   if( dictionaryIcon.isNull() )
   {
     if( url.contains( "tionary" ) )
-      dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/wiktionary.png" );
+      dictionaryIcon = QIcon( ":/icons/wiktionary.png" );
     else
-      dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/icon32_wiki.png" );
+      dictionaryIcon = QIcon( ":/icons/icon32_wiki.png" );
   }
   dictionaryIconLoaded = true;
 }

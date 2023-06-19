@@ -159,7 +159,7 @@ void HunspellDictionary::loadIcon() noexcept
   if( !loadIconFromFile( fileName ) )
   {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_hunspell.png");
+    dictionaryIcon = QIcon(":/icons/icon32_hunspell.png");
   }
 
   dictionaryIconLoaded = true;

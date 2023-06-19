@@ -122,7 +122,7 @@ void VoiceEnginesDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
   }
   if ( dictionaryIcon.isNull() )
-    dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/text2speech.svg" );
+    dictionaryIcon = QIcon( ":/icons/text2speech.svg" );
   dictionaryIconLoaded = true;
 }
 

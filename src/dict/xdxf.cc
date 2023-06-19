@@ -347,7 +347,6 @@ void XdxfDictionary::loadIcon() noexcept
     // Load failed -- use default icons
 
     dictionaryIcon = QIcon(":/icons/icon32_xdxf.png");
-    dictionaryNativeIcon = QIcon(":/icons/icon32_xdxf.png");
   }
 
   dictionaryIconLoaded = true;

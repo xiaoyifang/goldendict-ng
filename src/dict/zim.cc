@@ -290,7 +290,7 @@ void ZimDictionary::loadIcon() noexcept
   try {
     auto illustration = df.getIllustrationItem( 48 ).getData();
     QImage img = QImage::fromData( reinterpret_cast< const uchar * >( illustration.data() ), illustration.size() );
-    dictionaryNativeIcon = dictionaryIcon = QIcon( QPixmap::fromImage( img ) );
+    dictionaryIcon = QIcon( QPixmap::fromImage( img ) );
 
     dictionaryIconLoaded = true;
     return;
@@ -300,7 +300,7 @@ void ZimDictionary::loadIcon() noexcept
   }
 
   // Fallback to default icon
-  dictionaryNativeIcon = dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
+  dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
 
   dictionaryIconLoaded = true;
 }

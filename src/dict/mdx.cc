@@ -861,7 +861,7 @@ void MdxDictionary::loadIcon() noexcept
   if( !loadIconFromFile( fileName ) && !loadIconFromText(":/icons/mdict-bg.png", text ) )
   {
     // Use default icons
-    dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/mdict.png" );
+    dictionaryIcon = QIcon( ":/icons/mdict.png" );
   }
 
   dictionaryIconLoaded = true;

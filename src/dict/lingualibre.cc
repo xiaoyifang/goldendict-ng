@@ -327,7 +327,7 @@ WHERE {
       if( dictionaryIconLoaded )
         return;
 
-      dictionaryIcon = dictionaryNativeIcon = QIcon( ":/icons/lingualibre.svg" );
+      dictionaryIcon = QIcon( ":/icons/lingualibre.svg" );
       dictionaryIconLoaded                  = true;
     }
   };

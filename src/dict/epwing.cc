@@ -281,7 +281,7 @@ void EpwingDictionary::loadIcon() noexcept
   if( dictionaryIcon.isNull() )
   {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_epwing.png");
+    dictionaryIcon = QIcon(":/icons/icon32_epwing.png");
   }
 
   dictionaryIconLoaded = true;

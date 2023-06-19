@@ -281,7 +281,7 @@ class Class: public QObject
 
 protected:
   QString dictionaryDescription;
-  QIcon dictionaryIcon, dictionaryNativeIcon;
+  QIcon dictionaryIcon;
   bool dictionaryIconLoaded;
   bool can_FTS;
   QAtomicInt FTS_index_completed;
@@ -376,11 +376,6 @@ public:
 
   /// Returns the dictionary's icon.
   virtual QIcon const & getIcon() noexcept;
-
-  /// Returns the dictionary's native icon. Dsl icons are usually rectangular,
-  /// and are adapted by getIcon() to be square. This function allows getting
-  /// the original icon with no geometry transformations applied.
-  virtual QIcon const & getNativeIcon() noexcept;
 
   /// Returns the dictionary's source language.
   virtual quint32 getLangFrom() const
