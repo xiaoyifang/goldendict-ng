@@ -47,7 +47,6 @@ using BtreeIndexing::IndexInfo;
 namespace {
 
 DEF_EX_STR( exNotAardFile, "Not an AARD file", Dictionary::Ex )
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 DEF_EX_STR( exWordIsTooLarge, "Enountered a word that is too large:", Dictionary::Ex )
 DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 

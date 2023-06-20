@@ -58,7 +58,7 @@ using BtreeIndexing::IndexedWords;
 using BtreeIndexing::IndexInfo;
 
 DEF_EX_STR( exNotZimFile, "Not an Zim file", Dictionary::Ex )
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+using Dictionary::exCantReadFile;
 DEF_EX_STR( exInvalidZimHeader, "Invalid Zim header", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 

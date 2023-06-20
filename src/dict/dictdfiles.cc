@@ -44,7 +44,7 @@ using BtreeIndexing::IndexInfo;
 
 namespace {
 
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+using Dictionary::exCantReadFile;
 DEF_EX( exFailedToReadLineFromIndex, "Failed to read line from index file", Dictionary::Ex )
 DEF_EX( exMalformedIndexFileLine, "Malformed index file line encountered", Dictionary::Ex )
 DEF_EX( exInvalidBase64, "Invalid base64 sequence encountered", Dictionary::Ex )

@@ -76,7 +76,6 @@ using BtreeIndexing::IndexInfo;
 
 namespace {
 
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
