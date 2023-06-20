@@ -160,7 +160,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.vars.outputs.appname }}
           asset_name: ${{ matrix.qt_ver }}-${{ steps.vars.outputs.appname }}
-          
+          tag: latest-${{env.version-suffix}}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
