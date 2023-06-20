@@ -289,9 +289,7 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
-#ifndef Q_OS_MAC
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
-#endif
 
 #if defined(USE_BREAKPAD)
   QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";

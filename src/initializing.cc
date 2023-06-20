@@ -12,11 +12,7 @@ Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( par
   setWindowFlags( Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint |
                   Qt::WindowMinimizeButtonHint );
 
-  #ifndef Q_OS_MAC
-    setWindowIcon( QIcon( ":/icons/programicon.png" ) );
-  #else
-    setWindowIcon( QIcon( ":/icons/macicon.png" ) );
-  #endif
+  setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
   if ( showOnStartup )
   {
