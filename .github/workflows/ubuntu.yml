@@ -66,7 +66,7 @@ jobs:
       - name: version-file
         shell: bash
         run: |   
-          current_tag=$(git tag --sort=-creatordate |  grep "v.*" | sed -n 1p |cut -c 2-)
+          current_tag=$(git tag --sort=-creatordate |  grep "^v" | sed -n 1p |cut -c 2-)
           echo "$current_tag">version.txt
           
       - name: build goldendict
@@ -91,7 +91,7 @@ jobs:
       - name: changelog
         id: changelog
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "v.*" | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
           CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
@@ -102,7 +102,7 @@ jobs:
           CHANGELOG="${CHANGELOG//"'"/ }"
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
           echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "v.*" | sed -n 1p)"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
       - name: Set outputs
         id: vars
         run: |
@@ -160,7 +160,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.vars.outputs.appname }}
           asset_name: ${{ matrix.qt_ver }}-${{ steps.vars.outputs.appname }}
-          
+          tag: latest-tag-ignore
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
