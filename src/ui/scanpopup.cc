@@ -243,9 +243,9 @@ ScanPopup::ScanPopup( QWidget * parent,
 
 #ifdef Q_OS_MAC
   connect( &MouseOver::instance(),
-    SIGNAL( hovered( QString const &, bool ) ),
+    &MouseOver::hovered,
     this,
-    SLOT( handleInputWord( QString const &, bool ) ) );
+    &ScanPopup::handleInputWord);
 #endif
 
   hideTimer.setSingleShot( true );
