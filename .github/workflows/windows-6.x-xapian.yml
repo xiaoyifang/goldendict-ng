@@ -56,7 +56,7 @@ jobs:
         id: changelog
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "v.*" | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
           CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
@@ -67,7 +67,7 @@ jobs:
           CHANGELOG="${CHANGELOG//"'"/ }"
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
           echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "v.*" | sed -n 1p)"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
 
       - name: "Build Changelog"
         id: build_changelog
@@ -129,7 +129,7 @@ jobs:
       - name: version-file
         shell: bash
         run: |   
-          current_tag=$(git tag --sort=-creatordate |  grep "v.*" | sed -n 1p |cut -c 2-)
+          current_tag=$(git tag --sort=-creatordate |  grep "^v" | sed -n 1p |cut -c 2-)
           echo "$current_tag">version.txt
           cat version.txt
 
