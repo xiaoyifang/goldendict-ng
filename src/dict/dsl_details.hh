@@ -30,14 +30,6 @@ using std::vector;
 using Utf8::Encoding;
 using Utf8::LineFeed;
 
-
-
-struct DSLLangCode
-{
-  int code_id;
-  char code[ 3 ]; // ISO 639-1
-};
-
 string findCodeForDslId( int id );
 
 bool isAtSignFirst( wstring const & str );

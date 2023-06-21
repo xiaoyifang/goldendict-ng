@@ -22,7 +22,7 @@ using gd::wstring;
 using std::list;
 using Utf8::Encoding;
 
-static QMap< int, string > LangCodes = {
+static QMap< int, string > lang_codes = {
   { 1, "en" },    { 1033, "en" }, { 2, "ru" },    { 1049, "ru" }, { 1068, "az" }, { 1025, "ar" }, { 1067, "am" },
   { 15, "af" },   { 1078, "af" }, { 9, "eu" },    { 1069, "eu" }, { 1133, "ba" }, { 21, "be" },   { 1059, "be" },
   { 22, "bg" },   { 1026, "bg" }, { 19, "hu" },   { 1038, "hu" }, { 10, "nl" },   { 1043, "nl" }, { 1032, "el" },
@@ -38,7 +38,7 @@ static QMap< int, string > LangCodes = {
 
 string findCodeForDslId( int id )
 {
-  return LangCodes[ id ];
+  return lang_codes[ id ];
 }
 
 bool isAtSignFirst( wstring const & str )
