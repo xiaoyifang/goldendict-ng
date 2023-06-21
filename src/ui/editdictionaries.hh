@@ -26,7 +26,7 @@ public:
                     Instances::Groups & groupInstances, // We only clear those on rescan
                     QNetworkAccessManager & dictNetMgr );
 
-  ~EditDictionaries() = default;
+  ~EditDictionaries();
 
   /// Instructs the dialog to position itself on editing the given group.
   void editGroup( unsigned id );
@@ -45,7 +45,7 @@ protected:
   
 private slots:
 
-  void on_tabs_currentChanged( int index );
+  void currentChanged( int index );
 
   void buttonBoxClicked( QAbstractButton * button );
 
@@ -84,7 +84,7 @@ private:
   bool dictionariesChanged;
   bool groupsChanged;
 
-  bool lastDictionaryOrderTab = false;
+  QString lastTabName;
 
   QAction helpAction;
 };
