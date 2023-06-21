@@ -22,28 +22,7 @@ using gd::wstring;
 using std::list;
 using Utf8::Encoding;
 
-#ifndef __linux__
-
-// wcscasecmp() function is a GNU extension, we need to reimplement it
-// for non-GNU systems.
-
-int wcscasecmp( const wchar *s1, const wchar *s2 )
-{
-  for( ; ; ++s1, ++s2 )
-  {
-    if ( towlower( *s1 ) != towlower( *s2 ) )
-      return towlower( *s1 ) > towlower( *s2 ) ? 1 : -1;
-
-    if ( !*s1 )
-      break;
-  }
-
-  return 0;
-}
-
-#endif
-
-static DSLLangCode LangCodes[] =
+static QMap<int,string> LangCodes =
 {
   { 1, "en" },
   { 1033, "en" },
@@ -125,21 +104,12 @@ static DSLLangCode LangCodes[] =
   { 1029, "cs" },
   { 12, "sv" },
   { 1053, "sv" },
-  { 1061, "et" },
-  { 0, "" },
+  { 1061, "et" }
 };
 
 string findCodeForDslId( int id )
 {
-  for( DSLLangCode const * lc = LangCodes; lc->code_id; ++lc )
-  {
-    if ( id == lc->code_id )
-    {
-      // We've got a match
-      return string( lc->code );
-    }
-  }
-  return string();
+  return LangCodes[ id ];
 }
 
 bool isAtSignFirst( wstring const & str )
