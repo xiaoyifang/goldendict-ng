@@ -1,4 +1,4 @@
-name: macos-homebrew-xapian
+name: macos-homebrew-breakpad
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -201,7 +201,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ env.targetName }}.dmg
-          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
+          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_breakpad_${{steps.vars.outputs.release_date}}.dmg
           
           tag: latest-tag-ignore
           overwrite: true

@@ -120,7 +120,7 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
-          cp /usr/local/Cellar/icu4c/72.1/lib/libicudata.72.dylib  GoldenDict.app/Contents/Frameworks/libicudata.72.dylib
+          cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
 
           codesign --force --deep -s - GoldenDict.app
           
