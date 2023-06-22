@@ -551,6 +551,9 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setMovable( true );
   setContextMenuPolicy( Qt::CustomContextMenu );
   connect( this, &QWidget::customContextMenuRequested, this, &DictGroupsWidget::contextMenu );
+
+  setElideMode( Qt::ElideNone );
+  setUsesScrollButtons( true );
 }
 
 namespace {
@@ -575,9 +578,7 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
                                  vector< sptr< Dictionary::Class > > const & allDicts_,
                                  vector< sptr< Dictionary::Class > > const & activeDicts_ )
 {
-  while ( count() ) {
-    removeTab( 0 );
-  }
+  removeAllGroups();
 
   allDicts = &allDicts_;
   activeDicts = &activeDicts_;
@@ -599,7 +600,6 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
 
   setCurrentIndex( 0 );
 
-  setUsesScrollButtons( count() > 3 );
 }
 
 /// Creates groups from what is currently set up
@@ -668,7 +668,6 @@ void DictGroupsWidget::addNewGroup( QString const & name )
                        + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
   setTabToolTip( idx, toolTipStr );
 
-  setUsesScrollButtons( count() > 3 );
 }
 
 int DictGroupsWidget::addUniqueGroup( const QString & name )
@@ -952,7 +951,6 @@ void DictGroupsWidget::removeCurrentGroup()
     delete w;
   }
 
-  setUsesScrollButtons( count() > 3 );
 }
 
 void DictGroupsWidget::removeAllGroups()
