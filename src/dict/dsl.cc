@@ -204,16 +204,16 @@ public:
 
 
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   QString const& getDescription() override;
 
@@ -1503,7 +1503,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
 /// DslDictionary::getArticle()
 
-class DslArticleRequest: public Dictionary::DataRequest
+class DslArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -1653,18 +1653,13 @@ void DslArticleRequest::run()
 
     QMutexLocker _( &dataMutex );
 
-    data.resize( data.size() + articleText.size() );
-
-    memcpy( &data.front() + data.size() - articleText.size(),
-            articleText.data(), articleText.size() );
-
-    hasAnyData = true;
+    appendStrToData(articleText);
   }
 
   finish();
 }
 
-sptr< Dictionary::DataRequest > DslDictionary::getArticle( wstring const & word,
+sptr< Request::Article > DslDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
@@ -1675,7 +1670,7 @@ sptr< Dictionary::DataRequest > DslDictionary::getArticle( wstring const & word,
 
 //// DslDictionary::getResource()
 
-class DslResourceRequest: public Dictionary::DataRequest
+class DslResourceRequest: public Request::Blob
 {
   DslDictionary & dict;
 
@@ -1795,14 +1790,14 @@ void DslResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > DslDictionary::getResource( string const & name )
+sptr< Request::Blob > DslDictionary::getResource( string const & name )
   
 {
   return std::make_shared<DslResourceRequest>( *this, name );
 }
 
 
-sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > DslDictionary::getSearchResults( QString const & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 

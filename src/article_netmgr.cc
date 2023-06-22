@@ -182,7 +182,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
         }
     }
 
-    sptr< Dictionary::DataRequest > dr = getResource( url, contentType );
+    auto dr = getResource( url, contentType );
 
     if ( dr.get() )
       return new ArticleResourceReply( this, req, dr, contentType );
@@ -256,7 +256,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   return  new AllowFrameReply( reply );
 }
 
-sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
+sptr< Request::Dict > ArticleNetworkAccessManager::getResource(
   QUrl const & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
@@ -268,7 +268,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     if( !url.host().isEmpty() && url.host() != "localhost" )
     {
       // Strange request - ignore it
-      return std::make_shared<Dictionary::DataRequestInstant>( false );
+      return std::make_shared<Request::BlobInstant >( false );
     }
 
     contentType = "text/html";
@@ -343,7 +343,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
                 buffer.open(QIODevice::WriteOnly);
                 dictionaries[ x ]->getIcon().pixmap( 64 ).save(&buffer, "PNG");
                 buffer.close();
-                sptr< Dictionary::DataRequestInstant > ico = std::make_shared<Dictionary::DataRequestInstant>( true );
+                sptr< Request::BlobInstant > ico = std::make_shared<Request::BlobInstant >( true );
                 ico->getData().resize( bytes.size() );
                 memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
                 return ico;
@@ -356,7 +356,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
             {
               gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(),
                          dictionaries[ x ]->getName().c_str() );
-              return sptr< Dictionary::DataRequest >();
+              return sptr< Request::Blob >();
             }
         }
     }
@@ -371,12 +371,12 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource(
     return articleMaker.makePicturePage( imgUrl.toEncoded().data() );
   }
 
-  return sptr< Dictionary::DataRequest >();
+  return sptr< Request::Blob >();
 }
 
 ArticleResourceReply::ArticleResourceReply( QObject * parent,
   QNetworkRequest const & netReq,
-  sptr< Dictionary::DataRequest > const & req_,
+  sptr< Request::Dict > const & req_,
   QString const & contentType ):
   QNetworkReply( parent ), req( req_ ), alreadyRead( 0 )
 {
@@ -387,9 +387,9 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   if ( contentType.size() )
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
 
-  connect( req.get(), &Dictionary::Request::updated, this, &ArticleResourceReply::reqUpdated );
+  connect( req.get(), &Request::Base::updated, this, &ArticleResourceReply::reqUpdated );
 
-  connect( req.get(), &Dictionary::Request::finished, this, &ArticleResourceReply::reqFinished );
+  connect( req.get(), &Request::Base::finished, this, &ArticleResourceReply::reqFinished );
 
   if ( req->isFinished() || req->dataSize() > 0 )
   {

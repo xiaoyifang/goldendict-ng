@@ -124,13 +124,13 @@ public:
   unsigned long getWordCount() noexcept override
   { return getArticleCount(); }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
 protected:
@@ -172,7 +172,7 @@ string ZipSoundsDictionary::getName() noexcept
   return result;
 }
 
-sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const & word,
+sptr< Request::Article > ZipSoundsDictionary::getArticle( wstring const & word,
                                                                  vector< wstring > const & alts,
                                                                  wstring const &,
                                                                  bool ignoreDiacritics )
@@ -225,7 +225,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
+    return std::make_shared<Request::ArticleInstant >( false ); // No such word
 
   string result;
 
@@ -330,17 +330,17 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret =
-    new Dictionary::DataRequestInstant( true );
+  auto * ret =
+    new Request::ArticleInstant( true );
 
   ret->getData().resize( result.size() );
 
   memcpy( &(ret->getData().front()), result.data(), result.size() );
 
-  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
+  return std::shared_ptr<Request::ArticleInstant >(ret);
 }
 
-sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const & name )
+sptr< Request::Blob > ZipSoundsDictionary::getResource( string const & name )
   
 {
   // Remove extension for sound files (like in sound dirs)
@@ -350,7 +350,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
   vector< WordArticleLink > chain = findArticles( strippedName );
 
   if ( chain.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
+    return std::make_shared<Request::BlobInstant >( false ); // No such resource
 
   // Find sound
 
@@ -373,13 +373,13 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
       break;
   }
 
-  sptr< Dictionary::DataRequestInstant > dr =
-    std::make_shared<Dictionary::DataRequestInstant>( true );
+  sptr< Request::BlobInstant > dr =
+    std::make_shared<Request::BlobInstant >( true );
 
   if ( zipsFile.loadFile( dataOffset, dr->getData() ) )
     return dr;
 
-  return std::make_shared<Dictionary::DataRequestInstant>( false );
+  return std::make_shared<Request::BlobInstant >( false );
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept

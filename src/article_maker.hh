@@ -34,14 +34,14 @@ public:
 
   /// Looks up the given phrase within the given group, and creates a full html
   /// page text containing its definition.
-  /// The result is returned as Dictionary::DataRequest just like dictionaries
+  /// The result is returned as Request::Data just like dictionaries
   /// themselves do. The difference is that the result is a complete html page
   /// with all definitions from all the relevant dictionaries.
   /// Contexts is a map of context values to be passed to each dictionary, where
   /// the keys are dictionary ids.
   /// If mutedDicts is not empty, the search would be limited only to those
   /// dictionaries in group which aren't listed there.
-  sptr< Dictionary::DataRequest > makeDefinitionFor( QString const & word, unsigned groupId,
+  sptr< Request::Dict > makeDefinitionFor( QString const & word, unsigned groupId,
                                                      QMap< QString, QString > const & contexts,
                                                      QSet< QString > const & mutedDicts =
                                                        QSet< QString >(),
@@ -51,13 +51,13 @@ public:
   /// Makes up a text which states that no translation for the given word
   /// was found. Sometimes it's better to call this directly when it's already
   /// known that there's no translation.
-  sptr< Dictionary::DataRequest > makeNotFoundTextFor( QString const & word, QString const & group ) const;
+  sptr< Request::Dict > makeNotFoundTextFor( QString const & word, QString const & group ) const;
 
   /// Creates an 'untitled' page. The result is guaranteed to be instant.
-  sptr< Dictionary::DataRequest > makeEmptyPage() const;
+  sptr< Request::Dict > makeEmptyPage() const;
 
   /// Create page with one picture
-  sptr< Dictionary::DataRequest > makePicturePage( std::string const & url ) const;
+  sptr< Request::Dict > makePicturePage( std::string const & url ) const;
 
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
@@ -77,7 +77,7 @@ private:
 
 /// The request specific to article maker. This should really be private,
 /// but we need it to be handled by moc.
-class ArticleRequest: public Dictionary::DataRequest
+class ArticleRequest: public Request::Article
 {
   Q_OBJECT
 
@@ -87,8 +87,8 @@ class ArticleRequest: public Dictionary::DataRequest
   std::vector< sptr< Dictionary::Class > > activeDicts;
   
   std::set< gd::wstring, std::less<> > alts; // Accumulated main forms
-  std::list< sptr< Dictionary::WordSearchRequest > > altSearches;
-  std::list< sptr< Dictionary::DataRequest > > bodyRequests;
+  std::list< sptr< Request::WordSearch > > altSearches;
+  std::list< sptr< Request::Article > > bodyRequests;
   bool altsDone{ false };
   bool bodyDone{ false };
   bool foundAnyDefinitions{ false };
@@ -135,8 +135,6 @@ private slots:
 
 private:
   int htmlTextSize( QString html );
-  /// Appends the given string to 'data', with locking its mutex.
-  void appendToData( std::string const & );
 
   /// Uses stemmedWordFinder to perform the next step of looking up word
   /// combinations.
@@ -153,7 +151,7 @@ private:
 
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( QString const &, int pos );
-  bool isCollapsable( Dictionary::DataRequest & req,QString const & dictId );
+  bool isCollapsable( Request::Article & req,QString const & dictId );
 };
 
 

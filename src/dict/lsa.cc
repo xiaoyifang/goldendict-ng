@@ -174,13 +174,13 @@ public:
   unsigned long getWordCount() noexcept override
   { return getArticleCount(); }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
 protected:
@@ -212,7 +212,7 @@ LsaDictionary::LsaDictionary( string const & id,
              idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
+sptr< Request::Article > LsaDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
@@ -265,7 +265,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
+    return std::make_shared<Request::ArticleInstant >( false ); // No such word
 
   string result;
 
@@ -310,14 +310,14 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret =
-    new Dictionary::DataRequestInstant( true );
+  auto * ret =
+    new Request::ArticleInstant( true );
 
   ret->getData().resize( result.size() );
 
   memcpy( &(ret->getData().front()), result.data(), result.size() );
 
-  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
+  return std::shared_ptr<Request::ArticleInstant >(ret);
 }
 
 /// This wraps around file operations
@@ -397,7 +397,7 @@ __attribute__((packed))
 #endif
 ;
 
-sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name )
+sptr< Request::Blob > LsaDictionary::getResource( string const & name )
   
 {
   // See if the name ends in .wav. Remove that extension then
@@ -409,7 +409,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
   vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
 
   if ( chain.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
+    return std::make_shared<Request::BlobInstant >( false ); // No such resource
 
   File::Class f( getDictionaryFilenames()[ 0 ], "rb" );
 
@@ -439,8 +439,8 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
     throw exFailedToRetrieveVorbisInfo();
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = std::make_shared<
-    Dictionary::DataRequestInstant>( true );
+  sptr< Request::BlobInstant > dr = std::make_shared<
+    Request::BlobInstant >( true );
 
   vector< char > & data = dr->getData();
 

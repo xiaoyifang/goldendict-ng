@@ -118,7 +118,7 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
@@ -126,7 +126,7 @@ public:
 
   QString const& getDescription() override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -246,7 +246,7 @@ uint32_t decodeBase64( string const & str )
   return number;
 }
 
-sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & word,
+sptr< Request::Article > DictdDictionary::getArticle( wstring const & word,
                                                              vector< wstring > const & alts,
                                                              wstring const &,
                                                              bool ignoreDiacritics )
@@ -410,7 +410,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
     }
 
     if ( mainArticles.empty() && alternateArticles.empty() )
-      return std::make_shared<Dictionary::DataRequestInstant>( false );
+      return std::make_shared<Request::ArticleInstant >( false );
 
     string result;
 
@@ -422,8 +422,8 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
     for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
       result += i->second;
 
-    sptr< Dictionary::DataRequestInstant > ret =
-      std::make_shared<Dictionary::DataRequestInstant>( true );
+    auto ret =
+      std::make_shared<Request::ArticleInstant >( true );
 
     ret->getData().resize( result.size() );
 
@@ -433,7 +433,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
   }
   catch( std::exception & e )
   {
-    return std::make_shared<Dictionary::DataRequestInstant>( QString( e.what() ) );
+    return std::make_shared<Request::ArticleInstant >( QString( e.what() ) );
   }
 }
 
@@ -442,7 +442,7 @@ QString const& DictdDictionary::getDescription()
     if( !dictionaryDescription.isEmpty() )
         return dictionaryDescription;
 
-    sptr< Dictionary::DataRequest > req =
+   auto req =
       getArticle(  U"00databaseinfo" , vector< wstring >(), wstring(), false );
 
     if ( req->dataSize() > 0 ) {
@@ -563,7 +563,7 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
   }
 }
 
-sptr< Dictionary::DataRequest >
+sptr< Request::Blob >
 DictdDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,

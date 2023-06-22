@@ -45,7 +45,7 @@ private slots:
   void handleProcessFinished();
 };
 
-class ProgramDataRequest: public Dictionary::DataRequest
+class ProgramDataRequest: public Request::Article
 {
   Q_OBJECT
   Config::Program prg;
@@ -62,7 +62,7 @@ private slots:
   void instanceFinished( QByteArray output, QString error );
 };
 
-class ProgramWordSearchRequest: public Dictionary::WordSearchRequest
+class ProgramWordSearchRequest: public Request::WordSearch
 {
   Q_OBJECT
   Config::Program prg;

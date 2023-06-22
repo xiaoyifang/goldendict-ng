@@ -120,7 +120,7 @@ public:
   /// If it succeeds, the result is a dictionary request object. Otherwise, an
   /// empty pointer is returned.
   /// The function can optionally set the Content-Type header correspondingly.
-  sptr< Dictionary::DataRequest > getResource( QUrl const & url,
+  sptr< Request::Dict > getResource( QUrl const & url,
                                                QString & contentType );
 
   virtual QNetworkReply * getArticleReply( QNetworkRequest const & req );
@@ -131,7 +131,7 @@ class ArticleResourceReply: public QNetworkReply
 {
   Q_OBJECT
 
-  sptr< Dictionary::DataRequest > req;
+  sptr< Request::Dict > req;
   qint64 alreadyRead;
 
   QAtomicInt finishSignalSent;
@@ -140,7 +140,7 @@ public:
 
   ArticleResourceReply( QObject * parent,
                         QNetworkRequest const &,
-                        sptr< Dictionary::DataRequest > const &,
+                        sptr< Request::Dict > const &,
                         QString const & contentType );
 
   ~ArticleResourceReply();

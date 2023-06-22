@@ -29,7 +29,7 @@ private:
   SearchResults searchResults;
   QString searchErrorString;
   bool searchResultsUncertain;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
+  std::list< sptr< Request::WordSearch > > queuedRequests, finishedRequests;
   bool searchInProgress;
 
   QTimer updateResultsTimer;

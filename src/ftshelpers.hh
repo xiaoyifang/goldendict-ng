@@ -23,7 +23,7 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict );
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
 
-class FTSResultsRequest : public Dictionary::DataRequest
+class FTSResultsRequest : public Request::Blob
 {
   BtreeIndexing::BtreeDictionary & dict;
 

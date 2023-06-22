@@ -250,7 +250,7 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
     inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Request::Article > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
                                                         bool ignoreDiacritics ) override
@@ -258,7 +258,7 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
 
     QString const& getDescription() override;
 
-    sptr< Dictionary::DataRequest >
+    sptr< Request::Blob >
     getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -618,7 +618,7 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
   }
 }
 
-sptr< Dictionary::DataRequest >
+sptr< Request::Blob >
 AardDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
@@ -630,7 +630,7 @@ AardDictionary::getSearchResults( QString const & searchString, int searchMode, 
 
 /// AardDictionary::getArticle()
 
-class AardArticleRequest: public Dictionary::DataRequest
+class AardArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -778,7 +778,7 @@ void AardArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > AardDictionary::getArticle( wstring const & word,
+sptr< Request::Article > AardDictionary::getArticle( wstring const & word,
                                                             vector< wstring > const & alts,
                                                             wstring const &,
                                                             bool ignoreDiacritics )

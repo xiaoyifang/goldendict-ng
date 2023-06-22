@@ -1065,12 +1065,12 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
     if ( Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
     {
-      sptr< Dictionary::DataRequest > req =
+      sptr< Request::Blob > req =
         std::make_shared<Dictionary::WebMultimediaDownload>( url, articleNetMgr );
 
       resourceDownloadRequests.push_back( req );
 
-      connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+      connect( req.get(), &Request::Base::finished, this, &ArticleView::resourceDownloadFinished );
     }
     else
     if ( url.scheme() == "gdau" && url.host() == "search" )
@@ -1108,7 +1108,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
               if( preferredName.compare( QString::fromUtf8( (*activeDicts)[ x ]->getName().c_str() ) ) == 0 )
               {
                 preferred = x;
-                sptr< Dictionary::DataRequest > req =
+                sptr< Request::Blob > req =
                   (*activeDicts)[ x ]->getResource(
                     url.path().mid( 1 ).toUtf8().data() );
 
@@ -1117,7 +1117,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
                 if ( !req->isFinished() )
                 {
                   // Queued loading
-                  connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+                  connect( req.get(), &Request::Base::finished, this, &ArticleView::resourceDownloadFinished );
                 }
                 else
                 {
@@ -1147,7 +1147,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
             if( x == preferred )
               continue;
 
-            sptr< Dictionary::DataRequest > req =
+            sptr< Request::Blob > req =
               (*activeDicts)[ x ]->getResource(
                 url.path().mid( 1 ).toUtf8().data() );
 
@@ -1156,7 +1156,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
             if ( !req->isFinished() )
             {
               // Queued loading
-              connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+              connect( req.get(), &Request::Base::finished, this, &ArticleView::resourceDownloadFinished );
             }
             else
             {
@@ -1182,7 +1182,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       // Normal resource download
       QString contentType;
 
-      sptr< Dictionary::DataRequest > req =
+      sptr< Request::Dict > req =
         articleNetMgr.getResource( url, contentType );
 
       if ( !req.get() )
@@ -1205,7 +1205,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
         resourceDownloadRequests.push_back( req );
 
-        connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+        connect( req.get(), &Request::Base::finished, this, &ArticleView::resourceDownloadFinished );
       }
     }
 
@@ -1282,7 +1282,7 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QStri
 ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl & ref, const QString & fileName )
 {
   ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName );
-  sptr< Dictionary::DataRequest > req;
+  sptr< Request::Dict > req;
 
   if( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" )
   {
@@ -1321,7 +1321,7 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
               if( preferredName.compare( QString::fromUtf8( (*activeDicts)[ x ]->getName().c_str() ) ) == 0 )
               {
                 preferred = x;
-                sptr< Dictionary::DataRequest > data_request =
+                sptr< Request::Blob > data_request =
                   ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
                 handler->addRequest( data_request );
@@ -1888,7 +1888,7 @@ void ArticleView::resourceDownloadFinished()
     return; // Stray signal
 
   // Find any finished resources
-  for( list< sptr< Dictionary::DataRequest > >::iterator i =
+  for( auto i =
        resourceDownloadRequests.begin(); i != resourceDownloadRequests.end(); )
   {
     if ( (*i)->isFinished() )
@@ -2438,12 +2438,12 @@ ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileNa
   connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
 }
 
-void ResourceToSaveHandler::addRequest( const sptr< Dictionary::DataRequest > & req )
+void ResourceToSaveHandler::addRequest( const sptr< Request::Dict > & req )
 {
   if ( !alreadyDone ) {
     downloadRequests.push_back( req );
 
-    connect( req.get(), &Dictionary::Request::finished, this, &ResourceToSaveHandler::downloadFinished );
+    connect( req.get(), &Request::Base::finished, this, &ResourceToSaveHandler::downloadFinished );
   }
 }
 

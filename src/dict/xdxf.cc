@@ -180,20 +180,20 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
   QString const& getDescription() override;
 
   QString getMainFilename() override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -425,7 +425,7 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
   }
 }
 
-sptr< Dictionary::DataRequest >
+sptr< Request::Blob >
 XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
@@ -438,7 +438,7 @@ XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, 
 /// XdxfDictionary::getArticle()
 
 
-class XdxfArticleRequest: public Dictionary::DataRequest
+class XdxfArticleRequest: public Request::Article
 {
 
   wstring word;
@@ -592,7 +592,7 @@ void XdxfArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( wstring const & word,
+sptr< Request::Article > XdxfDictionary::getArticle( wstring const & word,
                                                             vector< wstring > const & alts,
                                                             wstring const &,
                                                             bool ignoreDiacritics )
@@ -935,7 +935,7 @@ void indexArticle( GzippedFile & gzFile,
 
 //// XdxfDictionary::getResource()
 
-class XdxfResourceRequest: public Dictionary::DataRequest
+class XdxfResourceRequest: public Request::Blob
 {
 
   XdxfDictionary & dict;
@@ -1047,7 +1047,7 @@ void XdxfResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getResource( string const & name )
+sptr< Request::Blob > XdxfDictionary::getResource( string const & name )
   
 {
   return std::make_shared<XdxfResourceRequest>( *this, name );

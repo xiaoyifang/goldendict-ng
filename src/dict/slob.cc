@@ -608,13 +608,13 @@ public:
     inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Request::Article > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
                                                         bool ignoreDiacritics ) override
       ;
 
-    sptr< Dictionary::DataRequest > getResource( string const & name ) override
+    sptr< Request::Blob > getResource( string const & name ) override
       ;
 
     QString const& getDescription() override;
@@ -622,7 +622,7 @@ public:
     /// Loads the resource.
     void loadResource( std::string &resourceName, string & data );
 
-    sptr< Dictionary::DataRequest >
+    sptr< Request::Blob >
     getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -1173,7 +1173,7 @@ void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword
 }
 
 
-sptr< Dictionary::DataRequest >
+sptr< Request::Blob >
 SlobDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
@@ -1187,7 +1187,7 @@ SlobDictionary::getSearchResults( QString const & searchString, int searchMode, 
 /// SlobDictionary::getArticle()
 
 
-class SlobArticleRequest: public Dictionary::DataRequest
+class SlobArticleRequest: public Request::Article
 {
 
   wstring word;
@@ -1339,7 +1339,7 @@ void SlobArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word,
+sptr< Request::Article > SlobDictionary::getArticle( wstring const & word,
                                                             vector< wstring > const & alts,
                                                             wstring const &,
                                                             bool ignoreDiacritics )
@@ -1350,7 +1350,7 @@ sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word
 
 //// SlobDictionary::getResource()
 
-class SlobResourceRequest: public Dictionary::DataRequest
+class SlobResourceRequest: public Request::Blob
 {
 
   SlobDictionary & dict;
@@ -1441,7 +1441,7 @@ void SlobResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getResource( string const & name )
+sptr< Request::Blob > SlobDictionary::getResource( string const & name )
   
 {
   return std::make_shared<SlobResourceRequest>( *this, name );

@@ -6,6 +6,7 @@
 
 #include "dictionary.hh"
 #include "config.hh"
+#include <QTextCodec>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
@@ -18,18 +19,6 @@ using std::string;
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const &,
                                                       QNetworkAccessManager & )
     ;
-
-/// Exposed here for moc
-class WebSiteDataRequestSlots: public Dictionary::DataRequest
-{
-  Q_OBJECT
-
-protected slots:
-
-  virtual void requestFinished( QNetworkReply * )
-  {}
-};
-
 }
 
 #endif

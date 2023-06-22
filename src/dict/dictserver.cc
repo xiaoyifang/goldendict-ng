@@ -222,10 +222,10 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &,
+  sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                  unsigned long maxResults ) override ;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+  sptr< Request::Article > getArticle( wstring const &, vector< wstring > const & alts,
                                           wstring const &, bool ) override
     ;
 
@@ -348,7 +348,7 @@ void DictServerDictionary::getServerDatabases()
   delete socket;
 }
 
-class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
+class DictServerWordSearchRequest: public Request::WordSearch
 {
   QAtomicInt isCancelled;
   wstring word;
@@ -536,7 +536,7 @@ void DictServerWordSearchRequest::cancel()
   finish();
 }
 
-class DictServerArticleRequest: public Dictionary::DataRequest
+class DictServerArticleRequest: public Request::Article
 {
   QAtomicInt isCancelled;
   wstring word;
@@ -865,7 +865,7 @@ void DictServerArticleRequest::cancel()
   finish();
 }
 
-sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & word,
+sptr< Request::WordSearch > DictServerDictionary::prefixMatch( wstring const & word,
                                                              unsigned long maxResults )
   
 {
@@ -874,13 +874,13 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & wor
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return std::make_shared<WordSearchRequestInstant>();
+    return std::make_shared<Request::WordSearchInstant>();
   }
   else
     return std::make_shared<DictServerWordSearchRequest>( word, *this );
 }
 
-sptr< DataRequest > DictServerDictionary::getArticle( wstring const & word,
+sptr< Request::Article > DictServerDictionary::getArticle( wstring const & word,
                                                       vector< wstring > const &,
                                                       wstring const &, bool )
   
@@ -889,7 +889,7 @@ sptr< DataRequest > DictServerDictionary::getArticle( wstring const & word,
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return std::make_shared<DataRequestInstant>( false );
+    return std::make_shared<Request::ArticleInstant >( false );
   }
   else
     return std::make_shared<DictServerArticleRequest>( word, *this );

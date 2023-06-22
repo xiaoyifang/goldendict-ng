@@ -80,14 +80,14 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &,
+  sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                  unsigned long maxResults ) override
     ;
 
-  sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
+  sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & ) override
     ;
 
-  sptr< DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                           vector< wstring > const & alts,
                                           wstring const &,
                                           bool ) override
@@ -179,7 +179,7 @@ vector< wstring > HunspellDictionary::getAlternateWritings( wstring const & word
 
 /// HunspellDictionary::getArticle()
 
-class HunspellArticleRequest: public Dictionary::DataRequest
+class HunspellArticleRequest: public Request::Article
 {
 
   QMutex & hunspellMutex;
@@ -304,7 +304,7 @@ void HunspellArticleRequest::run()
   finish();
 }
 
-sptr< DataRequest > HunspellDictionary::getArticle( wstring const & word,
+sptr< Request::Article > HunspellDictionary::getArticle( wstring const & word,
                                                     vector< wstring > const &,
                                                     wstring const &, bool )
   
@@ -314,7 +314,7 @@ sptr< DataRequest > HunspellDictionary::getArticle( wstring const & word,
 
 /// HunspellDictionary::findHeadwordsForSynonym()
 
-class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
+class HunspellHeadwordsRequest: public Request::WordSearch
 {
 
   QMutex & hunspellMutex;
@@ -453,7 +453,7 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 }
 
 
-sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< Request::WordSearch > HunspellDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
   return std::make_shared<HunspellHeadwordsRequest>( word, getHunspellMutex(), hunspell );
@@ -462,7 +462,7 @@ sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( wstring c
 
 /// HunspellDictionary::prefixMatch()
 
-class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
+class HunspellPrefixMatchRequest: public Request::WordSearch
 {
 
   QMutex & hunspellMutex;
@@ -528,7 +528,7 @@ void HunspellPrefixMatchRequest::run()
 
       QMutexLocker _( &dataMutex );
 
-      matches.push_back( WordMatch( trimmedWord, 1 ) );
+      matches.push_back( Request::WordMatch( trimmedWord, 1 ) );
     }
   }
   catch( Iconv::Ex & e )
@@ -539,7 +539,7 @@ void HunspellPrefixMatchRequest::run()
   finish();
 }
 
-sptr< WordSearchRequest > HunspellDictionary::prefixMatch( wstring const & word,
+sptr< Request::WordSearch > HunspellDictionary::prefixMatch( wstring const & word,
                                                            unsigned long /*maxResults*/ )
   
 {

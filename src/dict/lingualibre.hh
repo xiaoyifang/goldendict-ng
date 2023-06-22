@@ -21,7 +21,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
 
 /// Exposed here for moc
-class LinguaArticleRequest: public Dictionary::DataRequest
+class LinguaArticleRequest: public Request::Article
 {
   Q_OBJECT
 

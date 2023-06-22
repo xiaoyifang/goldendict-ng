@@ -130,16 +130,16 @@ public:
 
   void getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off );
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -161,11 +161,11 @@ public:
 
   static bool isJapanesePunctiation( gd::wchar ch );
 
-  sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
+  sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                              unsigned long ) override
     ;
 
-  sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
+  sptr< Request::WordSearch > stemmedMatch( wstring const &,
                                                               unsigned minLength,
                                                               unsigned maxSuffixVariation,
                                                               unsigned long maxResults ) override
@@ -185,7 +185,7 @@ private:
                     int & articleOffset );
 
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & word ) override;
+  sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & word ) override;
 
   void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
   void loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
@@ -520,7 +520,7 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 
 
 
-class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
+class EpwingHeadwordsRequest: public Request::WordSearch
 {
   wstring str;
   EpwingDictionary & dict;
@@ -604,14 +604,14 @@ void EpwingHeadwordsRequest::run()
 
   finish();
 }
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< Request::WordSearch > EpwingDictionary::findHeadwordsForSynonym( wstring const & word )
 {
   return synonymSearchEnabled ? std::make_shared< EpwingHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
 }
 /// EpwingDictionary::getArticle()
 
-class EpwingArticleRequest: public Dictionary::DataRequest
+class EpwingArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -856,7 +856,7 @@ void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & p
   }
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & word,
+sptr< Request::Article > EpwingDictionary::getArticle( wstring const & word,
                                                               vector< wstring > const & alts,
                                                               wstring const &,
                                                               bool ignoreDiacritics )
@@ -867,7 +867,7 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & wo
 
 //// EpwingDictionary::getResource()
 
-class EpwingResourceRequest: public Dictionary::DataRequest
+class EpwingResourceRequest: public Request::Blob
 {
   EpwingDictionary & dict;
 
@@ -954,14 +954,14 @@ void EpwingResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getResource( string const & name )
+sptr< Request::Blob > EpwingDictionary::getResource( string const & name )
   
 {
   return std::make_shared<EpwingResourceRequest>( *this, name );
 }
 
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > EpwingDictionary::getSearchResults( QString const & searchString,
                                                                     int searchMode,
                                                                     bool matchCase,
                                                                     bool ignoreDiacritics )
@@ -1077,14 +1077,14 @@ void EpwingWordSearchRequest::findMatches()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch(
+sptr< Request::WordSearch > EpwingDictionary::prefixMatch(
   wstring const & str, unsigned long maxResults )
   
 {
   return std::make_shared<EpwingWordSearchRequest>( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
+sptr< Request::WordSearch > EpwingDictionary::stemmedMatch(
   wstring const & str, unsigned minLength, unsigned maxSuffixVariation,
   unsigned long maxResults )
   

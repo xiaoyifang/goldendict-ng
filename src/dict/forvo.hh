@@ -24,7 +24,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
     ;
 
 /// Exposed here for moc
-class ForvoArticleRequest: public Dictionary::DataRequest
+class ForvoArticleRequest: public Request::Article
 {
   Q_OBJECT
 

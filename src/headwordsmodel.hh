@@ -48,7 +48,7 @@ private:
   int index;
   char * ptr;
   QMutex lock;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
+  std::list< sptr< Request::WordSearch > > queuedRequests;
 };
 
 #endif // HEADWORDSMODEL_H

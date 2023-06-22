@@ -21,7 +21,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
     ;
 
 /// Exposed here for moc
-class MediaWikiWordSearchRequestSlots: public Dictionary::WordSearchRequest
+class MediaWikiWordSearchRequestSlots: public Request::WordSearch
 {
   Q_OBJECT
 
@@ -32,7 +32,7 @@ protected slots:
 };
 
 /// Exposed here for moc
-class MediaWikiDataRequestSlots: public Dictionary::DataRequest
+class MediaWikiDataRequestSlots: public Request::Article
 {
   Q_OBJECT
 

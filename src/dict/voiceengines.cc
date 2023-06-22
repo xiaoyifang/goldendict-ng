@@ -56,11 +56,11 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word,
+  sptr< Request::WordSearch > prefixMatch( wstring const & word,
                                                  unsigned long maxResults ) override
     ;
 
-  sptr< DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                           vector< wstring > const & alts,
                                           wstring const &, bool ) override
     ;
@@ -70,16 +70,16 @@ protected:
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( wstring const & /*word*/,
+sptr< Request::WordSearch > VoiceEnginesDictionary::prefixMatch( wstring const & /*word*/,
                                                                unsigned long /*maxResults*/ )
   
 {
-  WordSearchRequestInstant * sr = new WordSearchRequestInstant();
+  Request::WordSearchInstant * sr = new Request::WordSearchInstant();
   sr->setUncertain( true );
-  return std::shared_ptr<WordSearchRequestInstant>(sr);
+  return std::shared_ptr< Request::WordSearchInstant >(sr);
 }
 
-sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
+sptr< Request::Article > VoiceEnginesDictionary::getArticle(
   wstring const & word, vector< wstring > const &, wstring const &, bool )
   
 {
@@ -104,7 +104,7 @@ sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
   result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
   result += "</tr></table>";
 
-  sptr< DataRequestInstant > ret = std::make_shared<DataRequestInstant>( true );
+  auto ret = std::make_shared<Request::ArticleInstant >( true );
   ret->getData().resize( result.size() );
   memcpy( &( ret->getData().front() ), result.data(), result.size() );
   return ret;

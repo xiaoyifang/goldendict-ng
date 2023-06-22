@@ -249,7 +249,7 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word,
   return result;
 }
 
-sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
+sptr< Request::Dict > ArticleMaker::makeDefinitionFor(
   QString const & word, unsigned groupId,
   QMap< QString, QString > const & contexts,
   QSet< QString > const & mutedDicts,
@@ -332,7 +332,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     result += "</body></html>";
 
-    sptr< Dictionary::DataRequestInstant > r =  std::make_shared<Dictionary::DataRequestInstant>( true );
+    sptr< Request::BlobInstant > r =  std::make_shared<Request::BlobInstant >( true );
 
     r->appendDataSlice( result.data(), result.size() );
     return r;
@@ -382,41 +382,41 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
                                cfg.alwaysExpandOptionalParts, ignoreDiacritics );
 }
 
-sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
+sptr< Request::Dict > ArticleMaker::makeNotFoundTextFor(
   QString const & word, QString const & group ) const
 {
   string result = makeHtmlHeader( word, QString(), true ) + makeNotFoundBody( word, group ) +
     "</body></html>";
 
-  sptr< Dictionary::DataRequestInstant > r = std::make_shared<Dictionary::DataRequestInstant>( true );
+  sptr< Request::ArticleInstant > r = std::make_shared<Request::ArticleInstant >( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendStrToData(result);
   return r;
 }
 
-sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
+sptr< Request::Dict > ArticleMaker::makeEmptyPage() const
 {
   string result = makeHtmlHeader( tr( "(untitled)" ), QString(), true ) +
     "</body></html>";
 
-  sptr< Dictionary::DataRequestInstant > r =
-    std::make_shared<Dictionary::DataRequestInstant>( true );
+  auto r =
+    std::make_shared<Request::ArticleInstant >( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendStrToData( result );
   return r;
 }
 
-sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & url ) const
+sptr< Request::Dict > ArticleMaker::makePicturePage( string const & url ) const
 {
   string result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
                   + "<a href=\"javascript: if(history.length>2) history.go(-1)\">"
                   + "<img src=\"" + url + "\" /></a>"
                   + "</body></html>";
 
-  sptr< Dictionary::DataRequestInstant > r =
-      std::make_shared<Dictionary::DataRequestInstant>( true );
+  sptr< Request::ArticleInstant > r =
+      std::make_shared<Request::ArticleInstant >( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendStrToData( result );
   return r;
 }
 
@@ -460,7 +460,7 @@ ArticleRequest::ArticleRequest( QString const & word,
 
   hasAnyData = true;
 
-  appendDataSlice( (void *) header.data(), header.size() );
+  appendStrToData( header );
 
   //clear founded dicts.
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{group.id, word} );
@@ -468,9 +468,9 @@ ArticleRequest::ArticleRequest( QString const & word,
   // Accumulate main forms
   for( unsigned x = 0; x < activeDicts.size(); ++x )
   {
-    sptr< Dictionary::WordSearchRequest > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
+    sptr< Request::WordSearch > s = activeDicts[ x ]->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
 
-    connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
+    connect( s.get(), &Request::Base::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
     altSearches.push_back( s );
   }
@@ -484,7 +484,7 @@ void ArticleRequest::altSearchFinished()
     return;
 
   // Check every request for finishing
-  for( list< sptr< Dictionary::WordSearchRequest > >::iterator i =
+  for( list< sptr< Request::WordSearch > >::iterator i =
          altSearches.begin(); i != altSearches.end(); )
   {
     if ( (*i)->isFinished() )
@@ -527,12 +527,13 @@ void ArticleRequest::altSearchFinished()
     {
       try
       {
-        sptr< Dictionary::DataRequest > r =
-          activeDicts[ x ]->getArticle( wordStd, altsVector,
-                                        gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
-                                        ignoreDiacritics );
+        auto r = activeDicts[ x ]->getArticle(
+          wordStd,
+          altsVector,
+          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
+          ignoreDiacritics );
 
-        connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
+        connect( r.get(), &Request::Base::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
 
         bodyRequests.push_back( r );
       }
@@ -566,7 +567,7 @@ int ArticleRequest::findEndOfCloseDiv( const QString &str, int pos )
   }
 }
 
-bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req ,QString const & dictId) {
+bool ArticleRequest::isCollapsable( Request::Article & req ,QString const & dictId) {
   if ( GlobalBroadcaster::instance()->collapsedDicts.contains( dictId ) )
     return true;
 
@@ -628,7 +629,7 @@ void ArticleRequest::bodyFinished()
 
       GD_DPRINTF( "one finished." );
 
-      Dictionary::DataRequest & req = *bodyRequests.front();
+      auto & req = *bodyRequests.front();
 
       QString errorString = req.getErrorString();
 
@@ -708,12 +709,12 @@ void ArticleRequest::bodyFinished()
             + Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() ) + "</div>";
         }
 
-        appendDataSlice( head.data(), head.size() );
+        appendStrToData( head);
 
         try {
           if( req.dataSize() > 0 ) {
             auto d = bodyRequests.front()->getFullData();
-            appendDataSlice( &d.front(), d.size() );
+            appendStrToData( d.data() );
           }
         }
         catch( std::exception & e ) {
@@ -777,7 +778,7 @@ void ArticleRequest::bodyFinished()
         footer += "</body></html>";
       }
 
-      appendDataSlice( footer.data(), footer.size() );
+      appendStrToData( footer );
     }
 
 
@@ -875,7 +876,7 @@ void ArticleRequest::stemmedSearchFinished()
     footer += "</body></html>";
 
   {
-    appendDataSlice( footer.data(), footer.size() );
+    appendStrToData( footer );
   }
 
   if( continueMatching )
@@ -946,7 +947,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
       footer += "</body></html>";
 
-      appendToData( footer );
+      appendStrToData( footer );
 
       finish();
 
@@ -955,7 +956,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     if ( footer.size() )
     {
-      appendToData( footer );
+      appendStrToData( footer );
       update();
     }
 
@@ -1066,11 +1067,6 @@ void ArticleRequest::individualWordFinished()
   compoundSearchNextStep( false );
 }
 
-void ArticleRequest::appendToData( std::string const & str )
-{
-  appendDataSlice( str.data(), str.size() );
-}
-
 QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
 {
   QPair< Words, Spacings > result;
@@ -1127,7 +1123,7 @@ void ArticleRequest::cancel()
         return;
     if( !altSearches.empty() )
     {
-        for( list< sptr< Dictionary::WordSearchRequest > >::iterator i =
+        for( list< sptr< Request::WordSearch > >::iterator i =
                altSearches.begin(); i != altSearches.end(); ++i )
         {
             (*i)->cancel();
@@ -1135,10 +1131,9 @@ void ArticleRequest::cancel()
     }
     if( !bodyRequests.empty() )
     {
-        for( list< sptr< Dictionary::DataRequest > >::iterator i =
-               bodyRequests.begin(); i != bodyRequests.end(); ++i )
+        for(auto & bodyRequest : bodyRequests)
         {
-            (*i)->cancel();
+            bodyRequest->cancel();
         }
     }
     if( stemmedWordFinder.get() ) stemmedWordFinder->cancel();

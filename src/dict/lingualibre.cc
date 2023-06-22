@@ -300,16 +300,16 @@ WHERE {
 
     unsigned long getWordCount() noexcept override { return 0; }
 
-    sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
+    sptr< Request::WordSearch > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
     {
-      sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
+      auto sr = std::make_shared< Request::WordSearchInstant >();
 
       sr->setUncertain( true );
 
       return sr;
     }
 
-    sptr< DataRequest > getArticle(
+    sptr< Request::Article > getArticle(
       wstring const & word, vector< wstring > const & alts, wstring const &, bool ) override
     {
       if( word.size() < 50 )
@@ -317,7 +317,7 @@ WHERE {
         return std::make_shared< LinguaArticleRequest >( word, alts, languageCode,langWikipediaID, getId(), netMgr );
 
       } else {
-        return std::make_shared< DataRequestInstant >( false );
+        return std::make_shared< Request::ArticleInstant >( false );
       }
     }
 

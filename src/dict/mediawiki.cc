@@ -60,10 +60,10 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &,
+  sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                  unsigned long maxResults ) override ;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts,
+  sptr< Request::Article > getArticle( wstring const &, vector< wstring > const & alts,
                                           wstring const &, bool ) override;
 
   quint32 getLangFrom() const override
@@ -684,7 +684,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     update();
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word,
+sptr< Request::WordSearch > MediaWikiDictionary::prefixMatch( wstring const & word,
                                                             unsigned long maxResults )
   
 {
@@ -693,13 +693,13 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return std::make_shared<WordSearchRequestInstant>();
+    return std::make_shared< Request::WordSearchInstant >();
   }
   else
     return std::make_shared< MediaWikiWordSearchRequest>( word, url, netMgr );
 }
 
-sptr< DataRequest > MediaWikiDictionary::getArticle( wstring const & word,
+sptr< Request::Article > MediaWikiDictionary::getArticle( wstring const & word,
                                                      vector< wstring > const & alts,
                                                      wstring const &, bool )
   
@@ -708,7 +708,7 @@ sptr< DataRequest > MediaWikiDictionary::getArticle( wstring const & word,
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return  std::make_shared<DataRequestInstant>( false );
+    return  std::make_shared<Request::ArticleInstant >( false );
   }
   else
     return  std::make_shared<MediaWikiArticleRequest>( word, alts, url, netMgr, this );

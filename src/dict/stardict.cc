@@ -177,18 +177,18 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
+  sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & ) override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Article >
   getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Request::Blob > getResource( string const & name ) override;
 
   QString const& getDescription() override;
 
   QString getMainFilename() override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -1199,7 +1199,7 @@ void StardictDictionary::getArticleText( uint32_t articleAddress, QString & head
   }
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > StardictDictionary::getSearchResults( QString const & searchString,
                                                                       int searchMode,
                                                                       bool matchCase,
                                                                       bool ignoreDiacritics )
@@ -1213,7 +1213,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString co
 
 /// StardictDictionary::findHeadwordsForSynonym()
 
-class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
+class StardictHeadwordsRequest: public Request::WordSearch
 {
 
   wstring word;
@@ -1295,7 +1295,7 @@ void StardictHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest >
+sptr< Request::WordSearch >
   StardictDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
@@ -1307,7 +1307,7 @@ sptr< Dictionary::WordSearchRequest >
 /// StardictDictionary::getArticle()
 
 
-class StardictArticleRequest: public Dictionary::DataRequest
+class StardictArticleRequest: public Request::Article
 {
 
   wstring word;
@@ -1470,7 +1470,7 @@ void StardictArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getArticle( wstring const & word,
+sptr< Request::Article > StardictDictionary::getArticle( wstring const & word,
                                                                 vector< wstring > const & alts,
                                                                 wstring const &,
                                                                 bool ignoreDiacritics )
@@ -1573,7 +1573,7 @@ Ifo::Ifo( File::Class & f ):
 //// StardictDictionary::getResource()
 
 
-class StardictResourceRequest: public Dictionary::DataRequest
+class StardictResourceRequest: public Request::Blob
 {
 
   StardictDictionary & dict;
@@ -1722,7 +1722,7 @@ void StardictResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getResource( string const & name )
+sptr< Request::Blob > StardictDictionary::getResource( string const & name )
   
 {
   return std::make_shared<StardictResourceRequest>( *this, name );

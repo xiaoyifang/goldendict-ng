@@ -25,120 +25,6 @@
 
 namespace Dictionary {
 
-bool Request::isFinished()
-{
-  return Utils::AtomicInt::loadAcquire( isFinishedFlag );
-}
-
-void Request::update()
-{
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) )
-    emit updated();
-}
-
-void Request::finish()
-{
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) )
-  {
-    isFinishedFlag.ref();
-
-    emit finished();
-  }
-}
-
-void Request::setErrorString( QString const & str )
-{
-  QMutexLocker _( &errorStringMutex );
-
-  errorString = str;
-}
-
-QString Request::getErrorString()
-{
-  QMutexLocker _( &errorStringMutex );
-
-  return errorString;
-}
-
-
-///////// WordSearchRequest
-
-size_t WordSearchRequest::matchesCount()
-{
-  QMutexLocker _( &dataMutex );
-
-  return matches.size();
-}
-
-WordMatch WordSearchRequest::operator [] ( size_t index )
-{
-  QMutexLocker _( &dataMutex );
-
-  if ( index >= matches.size() )
-    throw exIndexOutOfRange();
-
-  return matches[ index ];
-}
-
-vector< WordMatch > & WordSearchRequest::getAllMatches()
-{
-  if ( !isFinished() )
-    throw exRequestUnfinished();
-
-  return matches;
-}
-
-void WordSearchRequest::addMatch( WordMatch const & match )
-{
-  unsigned n;
-  for( n = 0; n < matches.size(); n++ )
-    if( matches[ n ].word.compare( match.word ) == 0 )
-      break;
-
-  if( n >= matches.size() )
-    matches.push_back( match );
-}
-
-////////////// DataRequest
-
-long DataRequest::dataSize()
-{
-  QMutexLocker _( &dataMutex );
-
-  return hasAnyData ? (long) data.size() : -1;
-}
-
-void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
-  QMutexLocker _( &dataMutex );
-
-  size_t offset = data.size();
-
-  data.resize( data.size() + size );
-
-  memcpy( &data.front() + offset, buffer, size );
-}
-
-void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
-{
-  if ( size == 0 )
-    return;
-
-  QMutexLocker _( &dataMutex );
-
-  if( !hasAnyData )
-    throw exSliceOutOfRange();
-
-  memcpy( buffer, &data[ offset ], size );
-}
-
-vector< char > & DataRequest::getFullData()
-{
-  if ( !isFinished() )
-    throw exRequestUnfinished();
-
-  return data;
-}
-
 Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
   id( id_ ), dictionaryFiles( dictionaryFiles_ ), indexedFtsDoc(0)
   , dictionaryIconLoaded( false ), can_FTS( false),FTS_index_completed( false )
@@ -149,19 +35,19 @@ void Class::deferredInit()
 {
 }
 
-sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
+sptr< Request::WordSearch > Class::stemmedMatch( wstring const & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
 
 {
-  return std::make_shared<WordSearchRequestInstant>();
+  return std::make_shared< Request::WordSearchInstant >();
 }
 
-sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
+sptr< Request::WordSearch > Class::findHeadwordsForSynonym( wstring const & )
 
 {
-  return std::make_shared<WordSearchRequestInstant>();
+  return std::make_shared< Request::WordSearchInstant >();
 }
 
 vector< wstring > Class::getAlternateWritings( wstring const & )
@@ -182,15 +68,15 @@ QString Class::getContainingFolder() const
   return QString();
 }
 
-sptr< DataRequest > Class::getResource( string const & /*name*/ )
+sptr< Request::Blob > Class::getResource( string const & /*name*/ )
 
 {
-  return std::make_shared<DataRequestInstant>( false );
+  return std::make_shared< Request::BlobInstant >( false );
 }
 
-sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )
+sptr< Request::Blob > Class::getSearchResults( const QString &, int, bool, bool )
 {
-  return std::make_shared< DataRequestInstant >( false );
+  return std::make_shared< Request::BlobInstant >( false );
 }
 
 QString const& Class::getDescription()

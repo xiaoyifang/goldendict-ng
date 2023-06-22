@@ -250,14 +250,14 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const & word,
+  sptr< Request::Article > getArticle( wstring const & word,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override ;
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override ;
+  sptr< Request::Blob > getResource( string const & name ) override ;
   QString const & getDescription() override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -509,7 +509,7 @@ void MdxDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-sptr< Dictionary::DataRequest > MdxDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > MdxDictionary::getSearchResults( QString const & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 
@@ -524,7 +524,7 @@ sptr< Dictionary::DataRequest > MdxDictionary::getSearchResults( QString const &
 
 /// MdxDictionary::getArticle
 
-class MdxArticleRequest: public Dictionary::DataRequest
+class MdxArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -668,14 +668,14 @@ void MdxArticleRequest::run()
   finish();
 }
 
-sptr<Dictionary::DataRequest> MdxDictionary::getArticle( const wstring & word, const vector<wstring> & alts,
+sptr<Request::Article > MdxDictionary::getArticle( const wstring & word, const vector<wstring> & alts,
                                                          const wstring &, bool ignoreDiacritics ) 
 {
   return  std::make_shared<MdxArticleRequest>( word, alts, *this, ignoreDiacritics );
 }
 
 /// MdxDictionary::getResource
-class MddResourceRequest: public Dictionary::DataRequest
+class MddResourceRequest: public Request::Blob
 {
   MdxDictionary & dict;
   wstring resourceName;
@@ -685,7 +685,7 @@ class MddResourceRequest: public Dictionary::DataRequest
 public:
 
   MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ) :
-    Dictionary::DataRequest( &dict_ ), dict( dict_ ), resourceName( Utf8::decode( resourceName_ ) )
+    Request::Blob( &dict_ ), dict( dict_ ), resourceName( Utf8::decode( resourceName_ ) )
   {
     f = QtConcurrent::run( [ this ]() { this->run(); } );
   }
@@ -821,7 +821,7 @@ void MddResourceRequest::run()
   finish();
 }
 
-sptr<Dictionary::DataRequest> MdxDictionary::getResource( const string & name ) 
+sptr<Request::Blob > MdxDictionary::getResource( const string & name )
 {
   return std::make_shared<MddResourceRequest>( *this, name );
 }

@@ -50,17 +50,17 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/,
+  sptr< Request::WordSearch > prefixMatch( wstring const & /*word*/,
                                                  unsigned long /*maxResults*/ ) override 
   {
-    sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
+    sptr< Request::WordSearchInstant > sr =  std::make_shared<Request::WordSearchInstant>();
 
     sr->setUncertain( true );
 
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< Request::Article > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
 
 protected:
 
@@ -68,7 +68,7 @@ protected:
 
 };
 
-sptr< DataRequest > ForvoDictionary::getArticle( wstring const & word,
+sptr< Request::Article > ForvoDictionary::getArticle( wstring const & word,
                                                  vector< wstring > const & alts,
                                                  wstring const &, bool )
   
@@ -77,7 +77,7 @@ sptr< DataRequest > ForvoDictionary::getArticle( wstring const & word,
   {
     // Don't make excessively large queries -- they're fruitless anyway
 
-    return std::make_shared<DataRequestInstant>( false );
+    return std::make_shared<Request::ArticleInstant >( false );
   }
   else
   {

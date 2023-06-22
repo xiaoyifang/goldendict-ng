@@ -145,11 +145,11 @@ void WordFinder::startSearch()
 
     for ( const auto & allWordWriting : allWordWritings ) {
       try {
-        sptr< Dictionary::WordSearchRequest > sr = ( searchType == PrefixMatch || searchType == ExpressionMatch ) ?
+        sptr< Request::WordSearch > sr = ( searchType == PrefixMatch || searchType == ExpressionMatch ) ?
           inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
           inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), &Dictionary::Request::finished, this, &WordFinder::requestFinished, Qt::QueuedConnection );
+        connect( sr.get(), &Request::Base::finished, this, &WordFinder::requestFinished, Qt::QueuedConnection );
 
         queuedRequests.push_back( sr );
       }

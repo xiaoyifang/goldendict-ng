@@ -199,7 +199,7 @@ class FullTextSearchDialog : public QDialog
   unsigned group;
   std::vector< sptr< Dictionary::Class > > activeDicts;
 
-  std::list< sptr< Dictionary::DataRequest > > searchReqs;
+  std::list< sptr< Request::Blob > > searchReqs;
 
   FtsIndexing & ftsIdx;
 

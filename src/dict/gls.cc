@@ -388,23 +388,23 @@ public:
   inline quint32 getLangTo() const override
   { return idxHeader.langTo; }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
+  sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & ) override
     ;
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const & alts,
                                                       wstring const &,
                                                       bool ignoreDiacritics ) override
     ;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
+  sptr< Request::Blob > getResource( string const & name ) override
     ;
 
   QString const& getDescription() override;
 
   QString getMainFilename() override;
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
@@ -853,7 +853,7 @@ void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
 /// GlsDictionary::findHeadwordsForSynonym()
 
-class GlsHeadwordsRequest: public Dictionary::WordSearchRequest
+class GlsHeadwordsRequest: public Request::WordSearch
 {
   wstring word;
   GlsDictionary & dict;
@@ -933,7 +933,7 @@ void GlsHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest >
+sptr< Request::WordSearch >
   GlsDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
@@ -944,7 +944,7 @@ sptr< Dictionary::WordSearchRequest >
 
 /// GlsDictionary::getArticle()
 
-class GlsArticleRequest: public Dictionary::DataRequest
+class GlsArticleRequest: public Request::Article
 {
 
   wstring word;
@@ -1086,7 +1086,7 @@ void GlsArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getArticle( wstring const & word,
+sptr< Request::Article > GlsDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
@@ -1097,7 +1097,7 @@ sptr< Dictionary::DataRequest > GlsDictionary::getArticle( wstring const & word,
 
 //////////////// GlsDictionary::getResource()
 
-class GlsResourceRequest: public Dictionary::DataRequest
+class GlsResourceRequest: public Request::Blob
 {
 
   GlsDictionary & dict;
@@ -1249,13 +1249,13 @@ void GlsResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getResource( string const & name )
+sptr< Request::Blob > GlsDictionary::getResource( string const & name )
   
 {
   return std::make_shared<GlsResourceRequest>( *this, name );
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > GlsDictionary::getSearchResults( QString const & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 

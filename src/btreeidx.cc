@@ -420,14 +420,14 @@ BtreeWordSearchRequest::~BtreeWordSearchRequest()
   f.waitForFinished();
 }
 
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch(
+sptr< Request::WordSearch > BtreeDictionary::prefixMatch(
   wstring const & str, unsigned long maxResults )
   
 {
   return std::make_shared<BtreeWordSearchRequest>( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch(
+sptr< Request::WordSearch > BtreeDictionary::stemmedMatch(
   wstring const & str, unsigned minLength, unsigned maxSuffixVariation,
   unsigned long maxResults )
   

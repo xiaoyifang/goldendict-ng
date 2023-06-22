@@ -205,17 +205,17 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Article >
   getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Request::Blob > getResource( string const & name ) override;
 
   QString const & getDescription() override;
 
   /// Loads the resource.
   void loadResource( std::string & resourceName, string & data );
 
-  sptr< Dictionary::DataRequest >
+  sptr< Request::Blob >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
@@ -554,7 +554,7 @@ void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-sptr< Dictionary::DataRequest >
+sptr< Request::Blob >
 ZimDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
@@ -566,7 +566,7 @@ ZimDictionary::getSearchResults( QString const & searchString, int searchMode, b
 
 /// ZimDictionary::getArticle()
 
-class ZimArticleRequest: public Dictionary::DataRequest
+class ZimArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -724,7 +724,7 @@ void ZimArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
+sptr< Request::Article > ZimDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
@@ -735,7 +735,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
 
 //// ZimDictionary::getResource()
 
-class ZimResourceRequest: public Dictionary::DataRequest
+class ZimResourceRequest: public Request::Blob
 {
   //the dict will outlive this object, so the reference & used here is proper.
   ZimDictionary & dict;
@@ -822,7 +822,7 @@ void ZimResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
+sptr< Request::Blob > ZimDictionary::getResource( string const & name )
 {
   auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
   return std::make_shared<ZimResourceRequest>( *this, noLeadingDot.toStdString() );

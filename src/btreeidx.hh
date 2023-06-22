@@ -167,11 +167,11 @@ public:
 
   /// This function does the search using the btree index. Derivatives usually
   /// need not to implement this function.
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
+  virtual sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                              unsigned long )
     ;
 
-  virtual sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
+  virtual sptr< Request::WordSearch > stemmedMatch( wstring const &,
                                                               unsigned minLength,
                                                               unsigned maxSuffixVariation,
                                                               unsigned long maxResults )
@@ -218,7 +218,7 @@ protected:
   friend class FTSResultsRequest;
 };
 
-class BtreeWordSearchRequest: public Dictionary::WordSearchRequest
+class BtreeWordSearchRequest: public Request::WordSearch
 {
 protected:
   BtreeDictionary & dict;

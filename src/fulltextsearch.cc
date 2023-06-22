@@ -284,7 +284,7 @@ void FullTextSearchDialog::stopSearch()
 {
   if( !searchReqs.empty() )
   {
-    for( std::list< sptr< Dictionary::DataRequest > >::iterator it = searchReqs.begin();
+    for( std::list< sptr< Request::Blob > >::iterator it = searchReqs.begin();
          it != searchReqs.end(); ++it )
       if( !(*it)->isFinished() )
         (*it)->cancel();
@@ -363,16 +363,16 @@ void FullTextSearchDialog::accept()
       continue;
     }
     //max results=100
-    sptr< Dictionary::DataRequest > req =
+    sptr< Request::Blob > req =
       activeDicts[ x ]->getSearchResults( ui.searchLine->text(), mode, false, false );
     connect( req.get(),
-      &Dictionary::Request::finished,
+      &Request::Base::finished,
       this,
       &FullTextSearchDialog::searchReqFinished,
       Qt::QueuedConnection );
 
     connect( req.get(),
-      &Dictionary::Request::matchCount,
+      &Request::Base::matchCount,
       this,
       &FullTextSearchDialog::matchCount,
       Qt::QueuedConnection );
@@ -388,7 +388,7 @@ void FullTextSearchDialog::searchReqFinished()
   QList< FtsHeadword > allHeadwords;
   while ( searchReqs.size() )
   {
-    std::list< sptr< Dictionary::DataRequest > >::iterator it;
+    std::list< sptr< Request::Blob > >::iterator it;
     for( it = searchReqs.begin(); it != searchReqs.end(); ++it )
     {
       if ( (*it)->isFinished() )

@@ -61,7 +61,7 @@ class ArticleView: public QWidget
   /// Any resource we've decided to download off the dictionary gets stored here.
   /// Full vector capacity is used for search requests, where we have to make
   /// a multitude of requests.
-  std::list< sptr< Dictionary::DataRequest > > resourceDownloadRequests;
+  std::list< sptr< Request::Dict > > resourceDownloadRequests;
   /// Url of the resourceDownloadRequests
   QUrl resourceDownloadUrl;
 
@@ -435,7 +435,7 @@ class ResourceToSaveHandler: public QObject
 
 public:
   explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
-  void addRequest( const sptr< Dictionary::DataRequest > & req );
+  void addRequest( const sptr< Request::Dict > & req );
   bool isEmpty()
   {
     return downloadRequests.empty();
@@ -449,7 +449,7 @@ public slots:
   void downloadFinished();
 
 private:
-  std::list< sptr< Dictionary::DataRequest > > downloadRequests;
+  std::list< sptr< Request::Dict > > downloadRequests;
   QString fileName;
   bool alreadyDone;
 };

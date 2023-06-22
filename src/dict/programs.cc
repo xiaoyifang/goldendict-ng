@@ -43,11 +43,11 @@ public:
   unsigned long getWordCount() noexcept override
   { return 0; }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word,
+  sptr< Request::WordSearch > prefixMatch( wstring const & word,
                                                  unsigned long maxResults ) override
     ;
 
-  sptr< DataRequest > getArticle( wstring const &,
+  sptr< Request::Article > getArticle( wstring const &,
                                           vector< wstring > const & alts,
                                           wstring const &, bool ) override
     ;
@@ -57,7 +57,7 @@ protected:
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
+sptr< Request::WordSearch > ProgramsDictionary::prefixMatch( wstring const & word,
                                                            unsigned long /*maxResults*/ )
   
 {
@@ -65,7 +65,7 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
     return  std::make_shared<ProgramWordSearchRequest>( QString::fromStdU32String( word ), prg );
   else
   {
-    sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
+    sptr< Request::WordSearchInstant > sr =  std::make_shared<Request::WordSearchInstant>();
 
     sr->setUncertain( true );
 
@@ -73,7 +73,7 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
   }
 }
 
-sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
+sptr< Request::Article > ProgramsDictionary::getArticle(
   wstring const & word, vector< wstring > const &, wstring const &, bool )
   
 {
@@ -102,7 +102,7 @@ sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
                 Html::escape( wordUtf8 ) + "</a></td>";
       result += "</tr></table>";
 
-      sptr< DataRequestInstant > ret =  std::make_shared<DataRequestInstant>( true );
+      auto ret =  std::make_shared<Request::ArticleInstant >( true );
 
       ret->getData().resize( result.size() );
 
@@ -115,7 +115,7 @@ sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
       return  std::make_shared<ProgramDataRequest>( QString::fromStdU32String( word ), prg );
 
     default:
-      return  std::make_shared<DataRequestInstant>( false );
+      return  std::make_shared<Request::ArticleInstant >( false );
   }
 }
 
@@ -358,7 +358,7 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
       QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
     for( int x = 0; x < result.size(); ++x )
-      matches.push_back( Dictionary::WordMatch( gd::toWString( result[ x ] ) ) );
+      matches.push_back( Request::WordMatch( gd::toWString( result[ x ] ) ) );
 
     if ( !error.isEmpty() )
       setErrorString( error );

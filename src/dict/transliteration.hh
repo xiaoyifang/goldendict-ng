@@ -39,13 +39,13 @@ public:
   virtual vector< wstring > getAlternateWritings( wstring const & )
     noexcept = 0;
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & )
+  virtual sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & )
     ;
 
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
+  virtual sptr< Request::WordSearch > prefixMatch( wstring const &,
                                                              unsigned long ) ;
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
+  virtual sptr< Request::Article > getArticle( wstring const &,
                                                       vector< wstring > const &,
                                                       wstring const &, bool )
     ;

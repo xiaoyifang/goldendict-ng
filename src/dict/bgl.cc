@@ -209,19 +209,19 @@ namespace
     inline quint32 getLangTo() const override
     { return idxHeader.langTo; }
 
-    sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
+    sptr< Request::WordSearch > findHeadwordsForSynonym( wstring const & ) override
       ;
 
-    sptr< Dictionary::DataRequest > getArticle( wstring const &,
+    sptr< Request::Article > getArticle( wstring const &,
                                                         vector< wstring > const & alts,
                                                         wstring const &,
                                                         bool ignoreDiacritics ) override
       ;
 
-    sptr< Dictionary::DataRequest > getResource( string const & name ) override
+    sptr< Request::Blob > getResource( string const & name ) override
       ;
 
-    sptr< Dictionary::DataRequest >
+    sptr< Request::Blob >
     getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
     QString const& getDescription() override;
 
@@ -475,7 +475,7 @@ namespace
 
 /// BglDictionary::findHeadwordsForSynonym()
 
-class BglHeadwordsRequest: public Dictionary::WordSearchRequest
+class BglHeadwordsRequest: public Request::WordSearch
 {
   wstring str;
   BglDictionary & dict;
@@ -556,7 +556,7 @@ void BglHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest >
+sptr< Request::WordSearch >
   BglDictionary::findHeadwordsForSynonym( wstring const & word )
   
 {
@@ -596,7 +596,7 @@ string postfixToSuperscript( string const & in )
 /// BglDictionary::getArticle()
 
 
-class BglArticleRequest: public Dictionary::DataRequest
+class BglArticleRequest: public Request::Article
 {
   wstring word;
   vector< wstring > alts;
@@ -848,7 +848,7 @@ void BglArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
+sptr< Request::Article > BglDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
@@ -860,7 +860,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
 
 //// BglDictionary::getResource()
 
-class BglResourceRequest: public Dictionary::DataRequest
+class BglResourceRequest: public Request::Blob
 {
 
   QMutex & idxMutex;
@@ -968,7 +968,7 @@ void BglResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name )
+sptr< Request::Blob > BglDictionary::getResource( string const & name )
   
 {
   return std::shared_ptr<BglResourceRequest>(new BglResourceRequest(idxMutex, idx, idxHeader.resourceListOffset,
@@ -1055,7 +1055,7 @@ sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name 
   }
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( QString const & searchString,
+sptr< Request::Blob > BglDictionary::getSearchResults( QString const & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 
