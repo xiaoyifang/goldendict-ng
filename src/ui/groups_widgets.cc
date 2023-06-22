@@ -599,7 +599,6 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
   nextId = groups.nextId;
 
   setCurrentIndex( 0 );
-
 }
 
 /// Creates groups from what is currently set up
@@ -667,7 +666,6 @@ void DictGroupsWidget::addNewGroup( QString const & name )
   QString toolTipStr = "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " )
                        + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
   setTabToolTip( idx, toolTipStr );
-
 }
 
 int DictGroupsWidget::addUniqueGroup( const QString & name )
@@ -950,7 +948,6 @@ void DictGroupsWidget::removeCurrentGroup()
     removeTab( current );
     delete w;
   }
-
 }
 
 void DictGroupsWidget::removeAllGroups()
