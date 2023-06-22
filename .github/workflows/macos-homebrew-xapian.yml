@@ -93,9 +93,15 @@ jobs:
           find /usr/local -name libicudata.72.dylib 
       - name: version-file
         shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
         run: |   
-          current_tag=$(git tag --sort=-creatordate |  grep "^v" | sed -n 1p |cut -c 2-)
-          echo "$current_tag">version.txt          
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"        
       - name: compile
         run: |          
           qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
@@ -108,7 +114,8 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
-          cp /usr/local/Cellar/icu4c/72.1/lib/libicudata.72.dylib  GoldenDict.app/Contents/Frameworks/libicudata.72.dylib
+          ls -al /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib
+          cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
 
           codesign --force --deep -s - GoldenDict.app
           
@@ -190,7 +197,7 @@ jobs:
           file: ${{ env.targetName }}.dmg
           asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
           
-          tag: latest-tag-ignore
+          tag: tag-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
