@@ -126,7 +126,7 @@
         <enum>QTabWidget::North</enum>
        </property>
        <property name="elideMode">
-        <enum>Qt::ElideRight</enum>
+        <enum>Qt::ElideNone</enum>
        </property>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
