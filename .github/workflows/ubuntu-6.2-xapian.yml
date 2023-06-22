@@ -78,9 +78,15 @@ jobs:
 
       - name: version-file
         shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
         run: |   
-          current_tag=$(git tag --sort=-creatordate |  grep "^v" | sed -n 1p |cut -c 2-)
-          echo "$current_tag">version.txt
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"   
           
       - name: build goldendict
         run: |
@@ -179,7 +185,7 @@ jobs:
           file: ${{ steps.vars.outputs.appname }}
           asset_name: ${{ matrix.qt_ver }}-${{ steps.vars.outputs.appname }}
           
-          tag: latest-tag-ignore
+          tag: tag-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
