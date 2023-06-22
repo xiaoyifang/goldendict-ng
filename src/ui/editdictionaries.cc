@@ -32,18 +32,18 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   // the initial group readings so that if no edits were really done, we won't
   // be changing groups.
   origCfg.groups = groups->getGroups();
-  origCfg.dictionaryOrder = orderAndProps->getCurrentDictionaryOrder();
+  origCfg.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
   origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
 
   ui.setupUi( this );
 
-  setWindowIcon( QIcon(":/icons/dictionary.svg") );
+  setWindowIcon( QIcon( ":/icons/dictionary.svg" ) );
 
   ui.tabs->clear();
 
-  ui.tabs->addTab( &sources, QIcon(":/icons/sources.png"), tr( "&Sources" ) );
-  ui.tabs->addTab( orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
-  ui.tabs->addTab( groups.get(), QIcon(":/icons/bookcase.svg"), tr( "&Groups" ) );
+  ui.tabs->addTab( &sources, QIcon( ":/icons/sources.png" ), tr( "&Sources" ) );
+  ui.tabs->addTab( orderAndProps, QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
+  ui.tabs->addTab( groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
 
   connect( ui.buttons, &QDialogButtonBox::clicked, this, &EditDictionaries::buttonBoxClicked );
 
@@ -57,7 +57,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
   connect( &helpAction, &QAction::triggered, [ this ]() {
-    if ( ui.tabs->currentWidget() == this->groups.get() ) {
+    if ( ui.tabs->currentWidget() == this->groups ) {
       Help::openHelpWebpage( Help::section::manage_groups );
     }
     else {
@@ -240,8 +240,8 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     orderAndProps = new OrderAndProps( this, savedOrder, savedInactive, dictionaries );
     groups        = new Groups( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
-    ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
-    ui.tabs->insertTab( 2, groups.get(), QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
+    ui.tabs->insertTab( 1, orderAndProps, QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
+    ui.tabs->insertTab( 2, groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
     connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
 

@@ -575,8 +575,8 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
     connect( gr, &DictGroupWidget::showDictionaryInfo,this, &DictGroupsWidget::showDictionaryInfo );
     connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-    QString toolTipStr = "\"" + tabText( x ) + "\"\n" + tr( "Dictionaries: " )
-      + QString::number( getModelAt( x )->getCurrentDictionaries().size() );
+    QString toolTipStr =
+      "\"" + tabText( x ) + "\"\n" + tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( x ) );
     setTabToolTip( x, toolTipStr );
   }
 
@@ -617,11 +617,29 @@ DictListModel * DictGroupsWidget::getCurrentModel() const
 DictListModel * DictGroupsWidget::getModelAt( int current ) const
 {
   if ( current >= 0 && current < count() ) {
-    const auto w = (DictGroupWidget *)widget( current );
+    const auto w = static_cast< DictGroupWidget * >( widget( current ) );
+    if ( !w )
+      return nullptr;
     return w->getModel();
   }
 
   return nullptr;
+}
+
+int DictGroupsWidget::getDictionaryCountAt( int current ) const
+{
+  const auto model = getModelAt( current );
+  if ( !model )
+    return 0;
+  return model->getCurrentDictionaries().size();
+}
+
+std::vector< sptr< Dictionary::Class > > DictGroupsWidget::getDictionaryAt( int current ) const
+{
+  const auto model = getModelAt( current );
+  if ( !model )
+    return {};
+  return model->getCurrentDictionaries();
 }
 
 QItemSelectionModel * DictGroupsWidget::getCurrentSelectionModel() const
@@ -653,8 +671,8 @@ int DictGroupsWidget::addNewGroup( QString const & name )
 
   connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-  const QString toolTipStr = "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " )
-    + QString::number( getModelAt( idx )->getCurrentDictionaries().size() );
+  const QString toolTipStr =
+    "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( idx ) );
   setTabToolTip( idx, toolTipStr );
   return idx;
 }
@@ -746,6 +764,8 @@ void DictGroupsWidget::addAutoGroups()
     // add dictionaries into the current group
     QVector< sptr< Dictionary::Class > > vd = dictMap[ gr ];
     DictListModel * model                 = getModelAt( idx );
+    if ( !model )
+      continue;
     for( int i = 0; i < vd.count(); i++ )
       model->addRow(QModelIndex(), vd.at( i ) );
   }
@@ -850,6 +870,9 @@ void DictGroupsWidget::addGroupBasedOnMap( const QMultiMap<QString, sptr<Diction
     const auto idx        = addUniqueGroup( group );
     DictListModel * model = getModelAt( idx );
 
+    if ( !model ) {
+      continue;
+    }
     for ( const auto & dict : groupToDicts.values( group ) ) {
       model->addRow( QModelIndex(), dict );
     }
@@ -939,9 +962,12 @@ void DictGroupsWidget::combineGroups( int source, int target )
   if( source < 0 || source >= count() || target < 0 || target >= count() )
     return;
 
-  vector< sptr< Dictionary::Class > > const & dicts = getModelAt( source )->getCurrentDictionaries();
+  vector< sptr< Dictionary::Class > > const & dicts = getDictionaryAt( source );
 
   const auto model = getModelAt( target );
+
+  if ( !model )
+    return;
 
   disconnect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 

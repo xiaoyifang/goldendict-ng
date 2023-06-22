@@ -193,6 +193,8 @@ public:
   DictListModel * getCurrentModel() const;
 
   DictListModel * getModelAt( int current ) const;
+  int getDictionaryCountAt( int current ) const;
+  std::vector< sptr< Dictionary::Class > > getDictionaryAt( int current ) const;
 
   QItemSelectionModel * getCurrentSelectionModel() const;
 
