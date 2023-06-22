@@ -575,8 +575,9 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
                                  vector< sptr< Dictionary::Class > > const & allDicts_,
                                  vector< sptr< Dictionary::Class > > const & activeDicts_ )
 {
-  while( count() )
-    removeCurrentGroup();
+  while( count() ) {
+    removeTab( 0 );
+  }
 
   allDicts = &allDicts_;
   activeDicts = &activeDicts_;
