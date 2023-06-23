@@ -1,4 +1,4 @@
-name: Windows-6.x-xapian
+name: Windows-6.x
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
