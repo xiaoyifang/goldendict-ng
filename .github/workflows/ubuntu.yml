@@ -15,7 +15,7 @@ on:
       # - staged
     paths-ignore:
       - 'docs/**'
-      - ".github/**"
+      # - ".github/**"
       - "howto/**"
       - "*.md"
       - ".clang-format"
