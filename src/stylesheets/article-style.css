@@ -306,6 +306,10 @@ div.xdxf
     content:"]"
 }
 
+.xdxf_ex_orig{
+  color: #8761d9;
+}
+
 .xdxf_ex_tran:before
 {
     content:"— "
@@ -357,8 +361,11 @@ div.xdxf
 /* The words in examples that are meaked out; they are marked out only when placed into <ex> tag */
 .xdxf_ex .xdxf_ex_markd, .xdxf_ex_old .xdxf_ex_markd
 {
-  color:black;
   background-color:lightgray;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
 }
 
 .xdxf_opt
