@@ -511,18 +511,14 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
     // For portable version, we use relative paths
     sortedList.reserve( dictionaryFiles.size() );
 
-    QDir dictionariesDir( Config::getPortableVersionDictionaryDir() );
+    const QDir dictionariesDir( Config::getPortableVersionDictionaryDir() );
 
-    for( unsigned x = 0; x < dictionaryFiles.size(); ++x )
-    {
-      string const & full( dictionaryFiles[ x ] );
-
+    for ( const auto & full : dictionaryFiles ) {
       QFileInfo fileInfo( QString::fromStdString( full ) );
 
       if ( fileInfo.isAbsolute() )
         sortedList.push_back( dictionariesDir.relativeFilePath( fileInfo.filePath() ).toStdString() );
-      else
-      {
+      else {
         // Well, it's relative. We don't technically support those, but
         // what the heck
         sortedList.push_back( full );
@@ -536,9 +532,9 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 
   QCryptographicHash hash( QCryptographicHash::Md5 );
 
-  for( std::vector< string >::const_iterator i = sortedList.begin();
-       i != sortedList.end(); ++i )
-    hash.addData( i->c_str(), i->size() + 1 );
+  for ( const auto & i : sortedList ) {
+    hash.addData( i.c_str(), i.size() + 1 );
+  }
 
   return hash.result().toHex().data();
 }
@@ -552,20 +548,17 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles,
 {
   unsigned long lastModified = 0;
 
-  for( std::vector< string >::const_iterator i = dictionaryFiles.begin();
-       i != dictionaryFiles.end(); ++i )
-  {
-    QString name = QString::fromUtf8( i->c_str() );
+  for ( const auto & dictionaryFile : dictionaryFiles ) {
+    QString name = QString::fromUtf8( dictionaryFile.c_str() );
     QFileInfo fileInfo( name );
     unsigned long ts;
 
-    if( fileInfo.isDir() )
+    if ( fileInfo.isDir() )
       continue;
 
-    if( name.toLower().endsWith( ".zip" ) )
-    {
+    if ( name.toLower().endsWith( ".zip" ) ) {
       ZipFile::SplitZipFile zf( name );
-      if( !zf.exists() )
+      if ( !zf.exists() )
         return true;
       ts = zf.lastModified().toSecsSinceEpoch();
     }

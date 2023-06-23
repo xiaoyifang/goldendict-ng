@@ -35,7 +35,10 @@ public:
 
   /// Marks that this model is used as an immutable dictionary source
   void setAsSource();
-  bool sourceModel() const { return isSource; }
+  bool sourceModel() const
+  {
+    return isSource;
+  }
 
   /// Returns the dictionaries the model currently has listed
   std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
@@ -43,16 +46,16 @@ public:
   void removeSelectedRows( QItemSelectionModel * source );
   void addSelectedUniqueFromModel( QItemSelectionModel * source );
 
-  Qt::ItemFlags flags( QModelIndex const &index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool insertRows( int row, int count, const QModelIndex & parent );
-  bool removeRows( int row, int count, const QModelIndex & parent );
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool insertRows( int row, int count, const QModelIndex & parent ) override;
+  bool removeRows( int row, int count, const QModelIndex & parent ) override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
-  void addRow(const QModelIndex & parent, sptr< Dictionary::Class > dict);
+  void addRow( const QModelIndex & parent, sptr< Dictionary::Class > dict );
 
-  Qt::DropActions supportedDropActions() const;
+  Qt::DropActions supportedDropActions() const override;
 
   void filterDuplicates();
 
@@ -73,7 +76,7 @@ class DictListWidget: public QListView
   Q_OBJECT
 public:
   DictListWidget( QWidget * parent );
-  ~DictListWidget();
+  ~DictListWidget() override = default;
 
   /// Populates the current list with the given dictionaries.
   void populate( std::vector< sptr< Dictionary::Class > > const & active,
@@ -87,18 +90,20 @@ public:
   std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
 
   DictListModel * getModel()
-  { return & model; }
+  {
+    return &model;
+  }
 
 signals:
   void gotFocus();
 
 protected:
-  virtual void dropEvent( QDropEvent * event );
-  virtual void focusInEvent(QFocusEvent *);
+  void dropEvent( QDropEvent * event ) override;
+  void focusInEvent( QFocusEvent * ) override;
 
   // We need these to to handle drag-and-drop focus issues
-  virtual void rowsInserted( QModelIndex const & parent, int start, int end );
-  virtual void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end );
+  void rowsInserted( QModelIndex const & parent, int start, int end ) override;
+  void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end ) override;
 
 private:
   DictListModel model;
@@ -215,7 +220,7 @@ class QuickFilterLine: public QLineEdit
 public:
 
   QuickFilterLine( QWidget * parent );
-  ~QuickFilterLine();
+  ~QuickFilterLine() override;
 
   /// Sets the source view to filter
   void applyTo( QAbstractItemView * source );
@@ -225,7 +230,7 @@ public:
   QModelIndex mapToSource( QModelIndex const & idx );
 
 protected:
-  virtual void keyPressEvent( QKeyEvent * event );
+  void keyPressEvent( QKeyEvent * event ) override;
 
 private:
   QSortFilterProxyModel m_proxyModel;
