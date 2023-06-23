@@ -68,8 +68,8 @@ jobs:
           # sudo make install
           # cd ..
           sudo apt install libxapian-dev
-          sudo apt-get install libzim-dev
-          # sudo ls -al /usr/lib/|grep xapian
+          sudo add-apt-repository --yes --update ppa:kiwixteam/release
+          sudo apt install libzim-dev
 
       - uses: actions/checkout@v3
         with:
