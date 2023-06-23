@@ -49,7 +49,7 @@ SpeechClient::Engines SpeechClient::availableEngines()
 
 bool SpeechClient::tell( QString const & text, int volume, int rate ) const
 {
-  if( internalData->sp->state() != QTextToSpeech::Ready )
+  if ( !internalData || !internalData->sp || internalData->sp->state() != QTextToSpeech::Ready )
     return false;
 
   internalData->sp->setVolume( volume / 100.0 );

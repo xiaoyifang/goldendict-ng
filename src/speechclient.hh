@@ -5,6 +5,7 @@
 #include "config.hh"
 #include <QTextToSpeech>
 #include <memory>
+#include <QDebug>
 
 class SpeechClient: public QObject
 {
@@ -40,10 +41,18 @@ public:
       sp( std::make_unique< QTextToSpeech >( e.engine_name ) ),
       engine( e )
     {
+      qDebug() << QStringLiteral( "initialize tts" ) << e.engine_name;
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+      if ( !sp || sp->state() == QTextToSpeech::Error )
+        return;
+#else
+      if ( !sp || sp->state() == QTextToSpeech::BackendError )
+        return;
+#endif
       sp->setLocale( e.locale );
       auto voices = sp->availableVoices();
-      for( const auto & voice : voices ) {
-        if( voice.name() == e.voice_name ) {
+      for ( const auto & voice : voices ) {
+        if ( voice.name() == e.voice_name ) {
           sp->setVoice( voice );
 
           break;
@@ -66,10 +75,6 @@ public:
 
   bool tell( QString const & text, int volume, int rate ) const;
   bool tell( QString const & text ) const;
-
- signals:
-  void started( bool ok );
-  void finished();
 
  private:
   std::unique_ptr< InternalData > internalData;

@@ -1,28 +1,28 @@
-name: macos-homebrew-breakpad
+name: macos-homebrew-nobreakpad
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: 
   workflow_dispatch:
-  #push:
-  #  branches:
-  #    - dev
-  #    - master
-  #    # - staged
-  #  paths-ignore:
-  #    - 'docs/**'
-  #    - ".github/**"
-  #    - "howto/**"
-  #    - "*.md"
-  #    - ".clang-format"
+  push:
+    branches:
+      - dev
+      - master
+      # - staged
+    paths-ignore:
+      - 'docs/**'
+      - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - ".clang-format"
 jobs:
   build:
     name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13]
-        qt_ver: [ 6.4.3,6.5.1 ]
+        os: [macos-12,macos-13]
+        qt_ver: [ 6.5.1 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -82,15 +82,9 @@ jobs:
           find /usr/local -name libicudata.72.dylib 
       - name: version-file
         shell: bash
-        env:
-          VAR_SUFFIX: ${{env.version-suffix}}
-          VAR_VERSION: ${{env.version}}
         run: |   
-          current_tag=$(git rev-parse --short=8 HEAD)
-          release_date=$(date +'%Y%m%d')
-          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
-          cat version.txt
-          echo "$version"        
+          current_tag=$(git tag --sort=-creatordate |  grep "v.*" | sed -n 1p |cut -c 2-)
+          echo "$current_tag">version.txt     
           
       - name: vcpkg install
         shell: bash
@@ -116,17 +110,16 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=use_breakpad
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
           make -j8
           
       - name: package
         run: |
           
-          macdeployqt ${targetName}.app -no-strip -qmldir=. -verbose=1
+          macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
-          ls -al /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib
           cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
 
           codesign --force --deep -s - GoldenDict.app
@@ -139,7 +132,7 @@ jobs:
       - name: changelog
         id: changelog
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "v.*" | sed -n 2p)
           echo "previousTag : $previousTag"
           
           CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
@@ -150,7 +143,7 @@ jobs:
           CHANGELOG="${CHANGELOG//"'"/ }"
           echo "::set-output name=changelog::$(echo "$CHANGELOG")"
           echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "v.*" | sed -n 1p)"
 
       - name: Set outputs
         id: vars
@@ -207,9 +200,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ env.targetName }}.dmg
-          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_breakpad_${{steps.vars.outputs.release_date}}.dmg
+          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
           
-          tag: tag-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}

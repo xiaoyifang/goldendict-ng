@@ -26,7 +26,7 @@ public:
                     Instances::Groups & groupInstances, // We only clear those on rescan
                     QNetworkAccessManager & dictNetMgr );
 
-  ~EditDictionaries() = default;
+  ~EditDictionaries();
 
   /// Instructs the dialog to position itself on editing the given group.
   void editGroup( unsigned id );
@@ -45,7 +45,7 @@ protected:
   
 private slots:
 
-  void on_tabs_currentChanged( int index );
+  void currentChanged( int index );
 
   void buttonBoxClicked( QAbstractButton * button );
 
@@ -72,19 +72,19 @@ private:
   std::vector< sptr< Dictionary::Class > > & dictionaries;
   Instances::Groups & groupInstances;
   QNetworkAccessManager & dictNetMgr;
-  
+
   // Backed up to decide later if something was changed or not
   Config::Class origCfg;
 
   Ui::EditDictionaries ui;
   Sources sources;
-  QPointer<OrderAndProps> orderAndProps;
-  sptr< Groups > groups;
+  QPointer< OrderAndProps > orderAndProps;
+  QPointer< Groups > groups;
 
   bool dictionariesChanged;
   bool groupsChanged;
-  
-  int lastCurrentTab;
+
+  QString lastTabName;
 
   QAction helpAction;
 };
