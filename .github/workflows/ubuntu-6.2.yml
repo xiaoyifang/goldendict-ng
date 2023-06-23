@@ -1,4 +1,4 @@
-name: Ubuntu-6.2-xapian
+name: Ubuntu-6.2
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
