@@ -118,6 +118,13 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size ) {
   memcpy( &data.front() + offset, buffer, size );
 }
 
+void DataRequest::appendString( std::string_view str )
+{
+  QMutexLocker _( &dataMutex );
+  data.reserve( data.size() + str.size() );
+  data.insert( data.end(), str.begin(), str.end() );
+}
+
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
   if ( size == 0 )

@@ -1651,12 +1651,7 @@ void DslArticleRequest::run()
                     + "</span>";
     }
 
-    QMutexLocker _( &dataMutex );
-
-    data.resize( data.size() + articleText.size() );
-
-    memcpy( &data.front() + data.size() - articleText.size(),
-            articleText.data(), articleText.size() );
+    appendString(articleText);
 
     hasAnyData = true;
   }

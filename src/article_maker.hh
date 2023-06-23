@@ -135,8 +135,6 @@ private slots:
 
 private:
   int htmlTextSize( QString html );
-  /// Appends the given string to 'data', with locking its mutex.
-  void appendToData( std::string const & );
 
   /// Uses stemmedWordFinder to perform the next step of looking up word
   /// combinations.

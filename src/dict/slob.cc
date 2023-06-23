@@ -1328,11 +1328,7 @@ void SlobArticleRequest::run()
       result += i->second.second;
   }
 
-  QMutexLocker _( &dataMutex );
-
-  data.resize( result.size() );
-
-  memcpy( &data.front(), result.data(), result.size() );
+  appendString(result);
 
   hasAnyData = true;
 

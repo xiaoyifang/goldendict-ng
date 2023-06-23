@@ -283,11 +283,7 @@ void HunspellArticleRequest::run()
 
       result += "</div>";
 
-      QMutexLocker _( &dataMutex );
-
-      data.resize( result.size() );
-
-      memcpy( &data.front(), result.data(), result.size() );
+      appendString(result);
 
       hasAnyData = true;
     }

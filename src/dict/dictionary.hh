@@ -193,10 +193,12 @@ public:
   /// the resource wasn't found.
   long dataSize();
 
+  void appendDataSlice( const void * buffer, size_t size );
+  void appendString( std::string_view str );
+
   /// Writes "size" bytes starting from "offset" of the data read to the given
   /// buffer. "size + offset" must be <= than dataSize().
   void getDataSlice( size_t offset, size_t size, void * buffer );
-  void appendDataSlice( const void * buffer, size_t size );
 
   /// Returns all the data read. Since no further locking can or would be
   /// done, this can only be called after the request has finished.

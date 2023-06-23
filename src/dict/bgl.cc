@@ -837,11 +837,7 @@ void BglArticleRequest::run()
            .toUtf8().data();
 
 
-  QMutexLocker _( &dataMutex );
-
-  data.resize( result.size() );
-
-  memcpy( &data.front(), result.data(), result.size() );
+  appendString(result);
 
   hasAnyData = true;
 
