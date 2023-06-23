@@ -57,7 +57,8 @@ jobs:
           make PREFIX=/usr -j$(nproc)
           sudo make install
           cd ..
-          sudo apt-get install libzim-dev
+          sudo add-apt-repository --yes --update ppa:kiwixteam/release
+          sudo apt install libzim-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 
