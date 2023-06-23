@@ -40,10 +40,18 @@ public:
       sp( std::make_unique< QTextToSpeech >( e.engine_name ) ),
       engine( e )
     {
+      qDebug() << "initialize tts" << e.engine_name;
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+      if ( !sp || sp->state() == QTextToSpeech::Error )
+        return;
+#else
+      if ( !sp || sp->state() == QTextToSpeech::BackendError )
+        return;
+#endif
       sp->setLocale( e.locale );
       auto voices = sp->availableVoices();
-      for( const auto & voice : voices ) {
-        if( voice.name() == e.voice_name ) {
+      for ( const auto & voice : voices ) {
+        if ( voice.name() == e.voice_name ) {
           sp->setVoice( voice );
 
           break;
