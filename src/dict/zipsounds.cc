@@ -330,14 +330,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret =
-    new Dictionary::DataRequestInstant( true );
-
-  ret->getData().resize( result.size() );
-
-  memcpy( &(ret->getData().front()), result.data(), result.size() );
-
-  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
+  auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
+  ret->appendString( result );
+  return ret;
 }
 
 sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const & name )

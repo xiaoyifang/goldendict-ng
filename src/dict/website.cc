@@ -365,8 +365,6 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
   {
     // Just insert link in <iframe> tag
 
-    sptr< DataRequestInstant > dr = std::make_shared<DataRequestInstant>( true );
-
     string result = "<div class=\"website_padding\"></div>";
 
     //heuristic add url to global whitelist.
@@ -390,10 +388,8 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
                       "style=\"overflow:visible; width:100%; display:block; border:none;\" sandbox=\"allow-same-origin allow-scripts allow-popups\">"
                       "</iframe>";
 
-    dr->getData().resize( result.size() );
-
-    memcpy( &( dr->getData().front() ), result.data(), result.size() );
-
+    auto dr = std::make_shared< DataRequestInstant >( true );
+    dr->appendString( result );
     return dr;
   }
 

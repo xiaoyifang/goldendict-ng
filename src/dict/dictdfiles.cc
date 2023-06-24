@@ -422,12 +422,8 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
     for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
       result += i->second;
 
-    sptr< Dictionary::DataRequestInstant > ret =
-      std::make_shared<Dictionary::DataRequestInstant>( true );
-
-    ret->getData().resize( result.size() );
-
-    memcpy( &(ret->getData().front()), result.data(), result.size() );
+    auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
+    ret->appendString( result );
 
     return ret;
   }

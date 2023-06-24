@@ -104,9 +104,8 @@ sptr< Dictionary::DataRequest > VoiceEnginesDictionary::getArticle(
   result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
   result += "</tr></table>";
 
-  sptr< DataRequestInstant > ret = std::make_shared<DataRequestInstant>( true );
-  ret->getData().resize( result.size() );
-  memcpy( &( ret->getData().front() ), result.data(), result.size() );
+  auto ret = std::make_shared<DataRequestInstant>( true );
+  ret->appendString(result);
   return ret;
 }
 
