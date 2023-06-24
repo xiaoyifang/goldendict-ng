@@ -282,13 +282,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
             articleBody += "</table>";
 
-            QMutexLocker _( &dataMutex );
-
-            size_t prevSize = data.size();
-            
-            data.resize( prevSize + articleBody.size() );
-  
-            memcpy( &data.front() + prevSize, articleBody.data(), articleBody.size() );
+            appendString(articleBody);
   
             hasAnyData = true;
 

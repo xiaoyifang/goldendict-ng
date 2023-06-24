@@ -713,11 +713,7 @@ void ZimArticleRequest::run()
       result += cleaner + "</div>";
   }
 
-  QMutexLocker _( &dataMutex );
-
-  data.resize( result.size() );
-
-  memcpy( &data.front(), result.data(), result.size() );
+  appendString(result);
 
   hasAnyData = true;
 

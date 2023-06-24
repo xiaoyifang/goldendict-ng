@@ -277,23 +277,16 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     // See Issue #271: A mechanism to clean-up invalid HTML cards.
     articleString += QString::fromStdString(Utils::Html::getHtmlCleaner());
 
-    QByteArray articleBody = articleString.toUtf8();
 
     QString divStr = QString( "<div class=\"website\"" );
     divStr += dictPtr->isToLanguageRTL() ? " dir=\"rtl\">" : ">";
 
-    articleBody.prepend( divStr.toUtf8() );
-    articleBody.append( "</div>" );
+    articleString.prepend( divStr.toUtf8() );
+    articleString.append( "</div>" );
 
-    articleBody.prepend( "<div class=\"website_padding\"></div>" );
+    articleString.prepend( "<div class=\"website_padding\"></div>" );
 
-    QMutexLocker _( &dataMutex );
-
-    size_t prevSize = data.size();
-
-    data.resize( prevSize + articleBody.size() );
-
-    memcpy( &data.front() + prevSize, articleBody.data(), articleBody.size() );
+    appendString( articleString.toStdString() );
 
     hasAnyData = true;
 
@@ -490,15 +483,7 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 
     dictPtr->isolateWebCSS( cssString );
 
-    QByteArray cssData = cssString.toUtf8();
-
-    QMutexLocker _( &dataMutex );
-
-    size_t prevSize = data.size();
-
-    data.resize( prevSize + cssData.size() );
-
-    memcpy( &data.front() + prevSize, cssData.data(), cssData.size() );
+    appendString(cssString.toStdString());
 
     hasAnyData = true;
   }

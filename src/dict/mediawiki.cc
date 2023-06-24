@@ -648,20 +648,12 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             // Insert the ToC in the end to improve performance because no replacements are needed in the generated ToC.
             MediaWikiSectionsParser::generateTableOfContentsIfEmpty( parseNode, articleString );
 
-            QByteArray articleBody = articleString.toUtf8();
-
-            articleBody.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" :
+            articleString.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" :
                                                               "<div class=\"mwiki\">" );
-            articleBody.append( "</div>" );
+            articleString.append( "</div>" );
 
-            QMutexLocker _( &dataMutex );
+            appendString( articleString.toStdString() );
 
-            size_t prevSize = data.size();
-            
-            data.resize( prevSize + articleBody.size() );
-  
-            memcpy( &data.front() + prevSize, articleBody.data(), articleBody.size() );
-  
             hasAnyData = true;
 
             updated = true;

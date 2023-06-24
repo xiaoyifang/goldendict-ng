@@ -334,7 +334,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor(
 
     sptr< Dictionary::DataRequestInstant > r =  std::make_shared<Dictionary::DataRequestInstant>( true );
 
-    r->appendDataSlice( result.data(), result.size() );
+    r->appendString( result );
     return r;
   }
 
@@ -390,7 +390,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor(
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendString(result);
   return r;
 }
 
@@ -402,7 +402,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
   sptr< Dictionary::DataRequestInstant > r =
     std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendString( result );
   return r;
 }
 
@@ -416,7 +416,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & ur
   sptr< Dictionary::DataRequestInstant > r =
       std::make_shared<Dictionary::DataRequestInstant>( true );
 
-  r->appendDataSlice( result.data(), result.size() );
+  r->appendString( result );
   return r;
 }
 
@@ -460,7 +460,7 @@ ArticleRequest::ArticleRequest( QString const & word,
 
   hasAnyData = true;
 
-  appendDataSlice( (void *) header.data(), header.size() );
+  appendString( header );
 
   //clear founded dicts.
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{group.id, word} );
@@ -708,7 +708,7 @@ void ArticleRequest::bodyFinished()
             + Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() ) + "</div>";
         }
 
-        appendDataSlice( head.data(), head.size() );
+        appendString( head );
 
         try {
           if( req.dataSize() > 0 ) {
@@ -777,7 +777,7 @@ void ArticleRequest::bodyFinished()
         footer += "</body></html>";
       }
 
-      appendDataSlice( footer.data(), footer.size() );
+      appendString( footer );
     }
 
 
@@ -875,7 +875,7 @@ void ArticleRequest::stemmedSearchFinished()
     footer += "</body></html>";
 
   {
-    appendDataSlice( footer.data(), footer.size() );
+    appendString( footer );
   }
 
   if( continueMatching )
@@ -946,7 +946,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
       footer += "</body></html>";
 
-      appendToData( footer );
+      appendString( footer );
 
       finish();
 
@@ -955,7 +955,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     if ( footer.size() )
     {
-      appendToData( footer );
+      appendString( footer );
       update();
     }
 
@@ -1064,11 +1064,6 @@ void ArticleRequest::individualWordFinished()
   }
 
   compoundSearchNextStep( false );
-}
-
-void ArticleRequest::appendToData( std::string const & str )
-{
-  appendDataSlice( str.data(), str.size() );
 }
 
 QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
