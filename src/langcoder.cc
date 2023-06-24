@@ -245,7 +245,7 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
   const auto langFolded = Utf8::encode( lang );
 
   for ( auto const & lc : LANG_CODE_MAP ) {
-    if ( langFolded == lc.lang ) {
+    if ( strcasecmp( langFolded.c_str(), lc.lang.c_str() ) == 0 ) {
       return code2toInt( lc.code.toStdString().c_str() );
     }
   }
