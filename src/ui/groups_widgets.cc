@@ -680,9 +680,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
 int DictGroupsWidget::addUniqueGroup( const QString & name )
 {
   for( int n = 0; n < count(); n++ )
-    if( tabText( n ) == name )
-    {
-      //      setCurrentIndex( n );
+    if ( tabText( n ) == name ) {
       return n;
     }
 
@@ -708,8 +706,7 @@ void DictGroupsWidget::addAutoGroups()
   for ( const auto & dict : *activeDicts ) {
     int idFrom = dict->getLangFrom();
     int idTo = dict->getLangTo();
-    if( idFrom == 0)
-    {
+    if ( idFrom == 0 ) {
       // Attempt to find language pair in dictionary name
 
       const QPair< quint32, quint32 > ids = LangCoder::findIdsForName( QString::fromUtf8( dict->getName().c_str() ) );
@@ -742,20 +739,16 @@ void DictGroupsWidget::addAutoGroups()
     dictMap[ name ].push_back( dict );
   }
 
-  QStringList groupList  = dictMap.keys();
-  QStringList morphoList = morphoMap.keys();
+  QStringList groupList = dictMap.keys();
 
   // Insert morphology dictionaries into corresponding lists
-
-  for ( const auto & ln : morphoList ) {
-    for ( const auto & gr : groupList )
-      if ( ln.compare( gr.left( 2 ), Qt::CaseInsensitive ) == 0 ) {
-        QVector< sptr< Dictionary::Class > > vdg = dictMap[ gr ];
-        vdg += morphoMap[ ln ];
-        dictMap[ gr ] = vdg;
-      }
+  for ( const auto & gr : groupList ) {
+    if ( auto morpho_key = gr.left( 2 ).toLower(); morphoMap.contains( morpho_key ) ) {
+      QVector< sptr< Dictionary::Class > > vdg = dictMap[ gr ];
+      vdg += morphoMap[ morpho_key ];
+      dictMap[ gr ] = vdg;
+    }
   }
-
   // Make groups
 
   for ( const auto & gr : groupList ) {
