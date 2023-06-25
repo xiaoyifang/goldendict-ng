@@ -278,14 +278,11 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret =
-    new Dictionary::DataRequestInstant( true );
+  auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-  ret->getData().resize( result.size() );
+  ret->appendString( result );
 
-  memcpy( &(ret->getData().front()), result.data(), result.size() );
-
-  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
+  return ret;
 }
 
 void SoundDirDictionary::loadIcon() noexcept
