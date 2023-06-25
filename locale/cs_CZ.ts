@@ -1349,22 +1349,22 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Seskupit podle jazyků</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Vytvořte skupiny založené na složkách.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Seskupit podle složek</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Seskupit podle metadat</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -2519,27 +2519,27 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Francouzština</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Španělština</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Běloruština</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Bulharština</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Čeština</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
