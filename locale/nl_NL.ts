@@ -3951,7 +3951,7 @@ Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Negeer GoldenDict&apos;eigen selectie en wijzigingen aan klembord</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4228,9 +4228,9 @@ en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translatio
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximale schijfruimte bezet door GoldenDict&apos;s netwerk cache in
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-Indien ingesteld op 0 zal de netwerk schijfcache uitgeschakeld worden.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4262,7 +4262,7 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Don&apos;t zoeken in woordenboeken die meer dan</translation>
+      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4292,7 +4292,7 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>focus op het hoofd- of popup-venster bij een nieuwe zoekopdracht, zelfs als het zichtbaar is&apos;</translation>
+      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
