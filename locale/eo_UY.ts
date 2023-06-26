@@ -3948,12 +3948,12 @@ la programo ĉiam komenciĝus kun la skana ŝprucfenestro aktiva.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Ne montru ŝprucfenestron kiam elekto aŭ tondujo en unu el la propraj fenestroj de GoldenDict&apos;ŝanĝiĝas</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignoru la propran elekton kaj tondujoŝanĝojn de GoldenDict&apos;s</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4029,7 +4029,7 @@ Kun ĉi tio ŝaltita tamen, ĝi kaŝos la ĉefan fenestron.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Elektu ĉi tiun opcion se vi&apos;volas vidi la ĉefan langeton kiam nur unu sola langeto estas malfermita.</translation>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
@@ -4229,9 +4229,9 @@ Ebligu ĉi tiun opcion por solvi la problemon.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maksimuma diskospaco okupita de GoldenDict&apos;s retkaŝmemoro en
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-Se agordita al 0 la retdiska kaŝmemoro estos malŝaltita.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4263,7 +4263,7 @@ forigas sian retan kaŝmemoron el disko dum eliro.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Ne&apos;t serĉu en vortaroj enhavantaj pli ol</translation>
+      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4293,7 +4293,7 @@ forigas sian retan kaŝmemoron el disko dum eliro.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Dum nova serĉo, enfokusigu la ĉefan aŭ ŝprucfenestron eĉ se ĝi estas&apos;</translation>
+      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
