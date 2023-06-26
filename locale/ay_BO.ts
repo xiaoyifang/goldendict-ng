@@ -3810,7 +3810,7 @@ jichha phicchun qhiparasi.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
-      <translation>Kupiki JACH&apos;A QILLQA</translation>
+      <translation type="unfinished">Right Shift only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="92"/>
@@ -4069,7 +4069,7 @@ Akasti marcado, thaqhawi ist&apos;araskaniwa.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>GoldenDict-ng ukan ajllit qillqataxa, ukhamaraki mayjt&apos;ayat portapapeles, janiw yäqañakiti</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4100,13 +4100,9 @@ Reproducir archivos de audio con el audio por defecto del sistema.</translation>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>No permitir la descarga de contenido desde otros sitios (oculta la 
-mayoría de los anuncios).
-
-Aka naktatampixa GoldenDict ukaxa kunayman yityawikanaka 
-jarkt&apos;aniwa utjirinaka jiwt&apos;ayasa (jamuqa, marcos, etc.) yaqha 
-web laphi jutirinaka. Janiti mayninak web laphi lurkan ukjax, 
-aka jiwt&apos;ayañ yant&apos;am.</translation>
+      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1124"/>
@@ -4155,9 +4151,7 @@ Janitix naktayatanixa, ESC tiklaxa jaquqipayiri ukaruw ixtayi.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Ocultar pestaña cuando sólo hay una.
-
-Ak ajlliña wak&apos;a phichhunak jan uñjañataki, utjkis mä phichhuki ukja.</translation>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
@@ -4366,9 +4360,9 @@ mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translati
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>taqi disco ukaxa cache de red de GoldenDict ukampiwa phuqasiski ukana
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-0 ukaninixa, cache de red ukaxa jiwt&apos;ayataniwa.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4692,7 +4686,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <location filename="../src/dict/programs.cc" line="201"/>
       <source>The program has returned exit code %1.</source>
-      <translation>Mistur chimpu %1 programa uka kutt&apos;ayiwa.</translation>
+      <translation type="unfinished">The program has returned exit code %1.</translation>
     </message>
   </context>
   <context>
@@ -5491,7 +5485,7 @@ También puede usar %GD1251% para CP1251, %GDISO1%...%GDISO16% para ISO 8859-1..
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
       <source>Id</source>
-      <translation>Chimpu uñt&apos;añataki</translation>
+      <translation type="unfinished">Id</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
