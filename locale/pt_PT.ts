@@ -2824,7 +2824,7 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
-      <translation>&apos;Pode salvar artigo: %1</translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="244"/>
@@ -3726,8 +3726,8 @@ a aplicação.</translation>
       <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>Ative se você deseja usar um servidor proxy
-para todas as solicitações de rede do programa&apos;s.</translation>
+      <translation type="unfinished">Enable if you wish to use a proxy server
+for all program&apos;s network requests.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="201"/>
