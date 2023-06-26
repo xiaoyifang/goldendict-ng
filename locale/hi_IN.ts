@@ -54,24 +54,24 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>अंकी: क्या बिना किसी शब्द के कार्ड&apos;बनाया जा सकता</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>Anki खोज: AnkiConnect सक्षम नहीं है.</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="96"/>
       <location filename="../src/ankiconnector.cc" line="113"/>
       <source>anki: post to anki failed</source>
       <translatorcomment>anki:发布成功</translatorcomment>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>अंकी: अंकी को पोस्ट करना विफल रहा</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>अंकी: अंकी की सफलता के लिए पोस्ट करें</translation>
     </message>
   </context>
   <context>
@@ -170,7 +170,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>एक नया अंकी नोट बनाएं</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="704"/>
@@ -305,12 +305,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>खुला लिंक</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
+      <translation>सहेजें और बुकमार्क करें &quot;%1...&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
@@ -347,7 +347,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
-      <translation type="unfinished">Phrase not found</translation>
+      <translation>वाक्यांश नहीं मिला</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="200"/>
@@ -373,12 +373,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
-      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
+      <translation>अंकी को वर्तमान लेख भेजें</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;चयनित पाठ को अंकी को भेजें</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2002"/>
@@ -393,7 +393,7 @@
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;अंकी नोट बनाएं</translation>
     </message>
   </context>
   <context>
@@ -483,7 +483,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>कस्टम लिप्यंतरण</translation>
     </message>
   </context>
   <context>
@@ -599,7 +599,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>फ़ोल्डर के अनुसार स्वतः समूह बनाना विफल रहा.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
@@ -746,7 +746,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>निर्यातित फ़ाइल नहीं खोली जा सकती</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="357"/>
@@ -762,12 +762,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>निर्यात प्रक्रिया बाधित है</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>निर्यात समाप्त</translation>
     </message>
   </context>
   <context>
@@ -1167,12 +1167,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="19"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;पहले का</translation>
     </message>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="20"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;अगला</translation>
     </message>
   </context>
   <context>
@@ -1273,12 +1273,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="92"/>
       <source>&lt;</source>
-      <translation type="unfinished">&lt;</translation>
+      <translation>&lt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="67"/>
       <source>&gt;</source>
-      <translation type="unfinished">&gt;</translation>
+      <translation>&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
@@ -1353,22 +1353,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>भाषाओं द्वारा समूह</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>फ़ोल्डर-आधारित समूह बनाएं.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>फ़ोल्डरों द्वारा समूह</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>मेटाडेटा द्वारा समूह</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -1452,7 +1452,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1%2</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="219"/>
@@ -1515,17 +1515,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
-      <translation type="unfinished">Ewe</translation>
+      <translation>एवै</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
-      <translation type="unfinished">Ido</translation>
+      <translation>मैं करता हूं</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
-      <translation type="unfinished">Lao</translation>
+      <translation>लाओ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="286"/>
@@ -1535,12 +1535,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
-      <translation type="unfinished">Afar</translation>
+      <translation>दूर</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
-      <translation type="unfinished">Akan</translation>
+      <translation>अकान</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="144"/>
@@ -1550,12 +1550,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
-      <translation type="unfinished">Igbo</translation>
+      <translation>ईग्बो</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
-      <translation type="unfinished">Komi</translation>
+      <translation>कोमी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="172"/>
@@ -1615,7 +1615,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>हिंदी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="167"/>
@@ -1660,17 +1660,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
-      <translation type="unfinished">Oromo</translation>
+      <translation>ओरोमो</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
-      <translation type="unfinished">Sango</translation>
+      <translation>सांगो</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
-      <translation type="unfinished">Shona</translation>
+      <translation>सोणा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="276"/>
@@ -1685,12 +1685,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
-      <translation type="unfinished">Tatar</translation>
+      <translation>टाटर</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
-      <translation type="unfinished">Swati</translation>
+      <translation>स्वाति</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="282"/>
@@ -1705,7 +1705,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>वेन्दा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="291"/>
@@ -1720,12 +1720,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
-      <translation type="unfinished">Wolof</translation>
+      <translation>वोलोफ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
-      <translation type="unfinished">Xhosa</translation>
+      <translation>षोसा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="190"/>
@@ -1740,7 +1740,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>जोंगखा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="201"/>
@@ -1765,7 +1765,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
-      <translation type="unfinished">Kirundi</translation>
+      <translation>किरुंदी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="168"/>
@@ -1800,7 +1800,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
-      <translation type="unfinished">Lingala</translation>
+      <translation>लिंगाला</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="226"/>
@@ -1820,7 +1820,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
-      <translation type="unfinished">Basque</translation>
+      <translation>बस्क</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="127"/>
@@ -1835,12 +1835,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>आइमारा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
-      <translation type="unfinished">Breton</translation>
+      <translation>ब्रेटन</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="271"/>
@@ -1855,12 +1855,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
-      <translation type="unfinished">Divehi</translation>
+      <translation>दिवेही</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
-      <translation type="unfinished">Luba-Katanga</translation>
+      <translation>लूबा-कटांगा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
@@ -1905,7 +1905,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
-      <translation type="unfinished">Kanuri</translation>
+      <translation>कनूरी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="198"/>
@@ -2633,97 +2633,97 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>यूक्रेनी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>सरलीकृत चीनी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>चीनी पारंपरिक</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>वियतनामी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>पुर्तगाली, ब्राज़ीलियाई</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>फ़ारसी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>स्पैनिश, अर्जेंटीना</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>हिंदी</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>एस्पेरांतो</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>जर्मन, स्विट्जरलैंड</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>स्पैनिश, बोलीविया</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>ताजिक</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>केचुआ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>आइमारा</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>अरबी, सऊदी अरब</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>तुक्रमेन</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>इंटरलिंगुई</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>लोज्बान</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>अंग्रेज़ी</translation>
     </message>
   </context>
   <context>
@@ -2747,22 +2747,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="553"/>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>एफ1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="388"/>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="143"/>
       <source>Favo&amp;rites</source>
-      <translation type="unfinished">Favo&amp;rites</translation>
+      <translation>पसंदीदा&amp;संस्कार</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="299"/>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="314"/>
@@ -2848,7 +2848,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="355"/>
       <source>&amp;Forum</source>
-      <translation type="unfinished">&amp;Forum</translation>
+      <translation>&amp;मंच</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="400"/>
@@ -2868,12 +2868,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="347"/>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
@@ -2949,12 +2949,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="369"/>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="430"/>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
@@ -3025,7 +3025,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="119"/>
       <source>&amp;Zoom</source>
-      <translation type="unfinished">&amp;Zoom</translation>
+      <translation>&amp;ज़ूम करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="368"/>
@@ -3070,7 +3070,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="464"/>
@@ -3090,7 +3090,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
-      <translation type="unfinished">Add all tabs to Favorites</translation>
+      <translation>सभी टैब को पसंदीदा में जोड़ें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
@@ -3111,12 +3111,12 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <location filename="../src/ui/mainwindow.cc" line="4485"/>
       <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
-      <translation type="unfinished">Remove current tab from Favorites</translation>
+      <translation>पसंदीदा से वर्तमान टैब हटाएँ</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3150"/>
@@ -3126,7 +3126,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
@@ -3173,7 +3173,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="475"/>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="491"/>
@@ -3204,43 +3204,43 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
-      <translation type="unfinished">Export Favorites to file</translation>
+      <translation>फ़ाइल में पसंदीदा निर्यात करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;All files (*.*)</translation>
+      <translation>XML फ़ाइलें (*.xml);;सभी फ़ाइलें (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3954"/>
       <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
-      <translation type="unfinished">Favorites export complete</translation>
+      <translation>पसंदीदा निर्यात पूर्ण</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
-      <translation type="unfinished">Export Favorites to file as plain list</translation>
+      <translation>पसंदीदा को सादी सूची के रूप में फ़ाइल करने के लिए निर्यात करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
-      <translation type="unfinished">Import Favorites from file</translation>
+      <translation>फ़ाइल से पसंदीदा आयात करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <translation>XML फ़ाइलें (*.xml);;Txt फ़ाइलें (*.txt);;सभी फ़ाइलें (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
-      <translation type="unfinished">Favorites import complete</translation>
+      <translation>पसंदीदा आयात पूर्ण</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
-      <translation type="unfinished">Data parsing error</translation>
+      <translation>डेटा पार्सिंग त्रुटि</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4270"/>
@@ -3265,12 +3265,12 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
-      <translation type="unfinished">Now indexing for full-text search: </translation>
+      <translation>अब पूर्ण-पाठ खोज के लिए अनुक्रमण: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
+      <translation>पसंदीदा से हेडवर्ड &quot;%1&quot; हटाएं?</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
@@ -3285,7 +3285,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="235"/>
       <source>Favor&amp;ites Pane</source>
-      <translation type="unfinished">Favor&amp;ites Pane</translation>
+      <translation>पसंदीदा फलक</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="419"/>
@@ -3315,7 +3315,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="508"/>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
@@ -3332,7 +3332,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="536"/>
@@ -3342,7 +3342,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="539"/>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="550"/>
@@ -3352,7 +3352,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="558"/>
       <source>Show</source>
-      <translation type="unfinished">Show</translation>
+      <translation>दिखाना</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
@@ -3381,12 +3381,12 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="587"/>
       <source>Export to list</source>
-      <translation type="unfinished">Export to list</translation>
+      <translation>सूची में निर्यात करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="119"/>
@@ -3401,12 +3401,12 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.cc" line="195"/>
       <source>&amp;Navigation</source>
-      <translation type="unfinished">&amp;Navigation</translation>
+      <translation>&amp;मार्गदर्शन</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
-      <translation type="unfinished">Enable Scanning</translation>
+      <translation>स्कैनिंग सक्षम करें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3348"/>
@@ -3426,7 +3426,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>आलेख पूर्ण सहेजें</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -3606,7 +3606,7 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
-      <translation type="unfinished">Alt</translation>
+      <translation>Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="85"/>
@@ -3705,7 +3705,7 @@ switching to them.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
-      <translation type="unfinished">Tabbed browsing</translation>
+      <translation>टैब्ड ब्राउज़िंग</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="482"/>
@@ -4085,47 +4085,47 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>यूआई को अंधेरे में बदलें।</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>डार्क मोड</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>आलेख प्रदर्शन शैली को गहरे रंग में बदलें.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>डार्क रीडर मोड</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>एमआरयू ऑर्डर: सबसे हाल ही में इस्तेमाल किया गया ऑर्डर।</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>स्कैनिंग सक्षम होने पर ट्रैक क्लिपबोर्ड बदल जाता है। सूचना! जब तक आप लिनक्स पर न हों, आपको इसे हमेशा सक्षम करना चाहिए।</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>ट्रैक क्लिपबोर्ड परिवर्तन</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>ट्रैक चयन परिवर्तन</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>केवल तभी चयन करें जब सभी चयनित कुंजियाँ दबाई जाएं:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="609"/>
@@ -4150,52 +4150,52 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>अंकी कनेक्ट</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>एचटीटीपी://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>जहाज़ की छत:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>नमूना:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>शब्द</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>शब्दावली क्षेत्र...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>मूलपाठ</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>परिभाषा फ़ील्ड...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>वाक्य</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>वाक्य फ़ील्ड (खाली हो सकता है)...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1131"/>
@@ -4273,7 +4273,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>सत्र पतन</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
@@ -4454,7 +4454,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
+      <translation>क्लासिक</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="117"/>
@@ -4474,7 +4474,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
-      <translation type="unfinished"> MB</translation>
+      <translation> एमबी</translation>
     </message>
   </context>
   <context>
@@ -4615,27 +4615,27 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>प्रश्न करने के लिए शब्द या वाक्य.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
+      <translation>डिबग संदेशों को कॉन्फ़िगरेशन फ़ोल्डर में gd_log.txt में सहेजें।</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>मुख्य विंडो का समूह बदलें.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>पॉपअप का समूह बदलें.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>स्कैन पॉपअप टॉगल करें.</translation>
     </message>
   </context>
   <context>
@@ -4648,7 +4648,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
-      <translation type="unfinished">Clear Search</translation>
+      <translation>स्पष्ट खोज</translation>
     </message>
   </context>
   <context>
@@ -4700,7 +4700,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>ऑल्ट+एस</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
@@ -4742,7 +4742,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
@@ -4758,7 +4758,7 @@ could be resized or managed in other ways.</source>
       <location filename="../src/ui/scanpopup.cc" line="604"/>
       <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
   </context>
   <context>
@@ -4766,37 +4766,37 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="14"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;पहले का</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;अगला</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
+      <translation>&amp;सभी को हाइलाइट करें</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;अक्षर संवेदनशील</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>पाना:</translation>
     </message>
   </context>
   <context>
@@ -4896,27 +4896,27 @@ Not implemented yet in GoldenDict.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>कोई बाहरी प्रोग्राम. एक स्ट्रिंग %GDWORD% को क्वेरी शब्द से बदल दिया जाएगा। खोज बार में एक स्ट्रिंग %GDSEARCH% टेक्स्ट से बदल दिया जाएगा। यदि दोनों पैरामीटर प्रदान नहीं किए गए हैं, तो हेडवर्ड को मानक इनपुट में फीड किया जाएगा।</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
       <source>Lingua Libre</source>
-      <translation type="unfinished">Lingua Libre</translation>
+      <translation>लिंगुआ लिब्रे</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="471"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;उच्चारण &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;लिंगुआ लिबरे&lt;/span&gt;&lt;/a&gt;द्वारा प्रमाणित, विकिमीडिया फ़्रांस की एक सहयोगी भाषाई मीडिया लाइब्रेरी। &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>लिंगुआ लिब्रे सक्षम करें</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>आईएसओ 639-3 भाषा कोड</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
