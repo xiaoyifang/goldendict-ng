@@ -3941,7 +3941,7 @@ Kur e zgjedh, programi nis gjithmonë me skanimin e jashtëm aktiv.</translation
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Mos shfaq dritare kërcyese kur ndryshon përzgjedhja ose kujtesa në një nga dritaret e veta të GoldenDict&apos;</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
@@ -4221,9 +4221,9 @@ Ky opsion e anashkalon problemin.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Hapësira maksimale e diskut e zënë nga cache e rrjetit GoldenDict&apos;s në
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-Nëse vendoset në 0, cache e diskut të rrjetit do të çaktivizohet.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4255,7 +4255,7 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>&apos;kërkoni në fjalorë që përmbajnë më shumë se</translation>
+      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4285,7 +4285,7 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Në një kërkim të ri, fokusoni dritaren kryesore ose kërcyese edhe nëse është e&apos;</translation>
+      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
