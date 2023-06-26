@@ -479,7 +479,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>спеціальна транслітерація</translation>
     </message>
   </context>
   <context>
@@ -580,7 +580,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Ви впевнені, що хочете створити набір груп на основі metadata.toml?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
@@ -595,17 +595,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Помилка автоматичного групування за папками.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>Батьківський каталог %1 недоступний.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>Ви впевнені, що хочете створити набір груп на основі папок?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -722,7 +722,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>Завантаження заголовків...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -1349,22 +1349,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Групування за мовами</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Створення груп на основі папок.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Групування за папками</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Групування за метаданими</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -2520,207 +2520,207 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>французька</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Іспанська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>білоруська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Болгарська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>чеська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Німецький</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="47"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>грецька</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="48"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>фінська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>італійська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Японський</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="51"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>корейська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>литовський</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>македонська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>голландська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>польський</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>португальська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>російський</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>словацький</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>албанець</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>сербська (кирилиця)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>шведська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>турецька</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>українська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>Китайська спрощена</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Китайський традиційний</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>в'єтнамська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>португальська, бразильська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>перська</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Іспанська, Аргентина</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Хінді</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Есперанто</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>Німецька, Швейцарія</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>Іспанська, Болівія</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>таджицька</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Кечуа</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>аймара</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>арабська, Саудівська Аравія</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>туркменський</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>Інтерлінгва</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Ложбан</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>англійська</translation>
     </message>
   </context>
   <context>
@@ -3093,8 +3093,8 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
+      <translation>Рядок для пошуку в словниках. Символи підстановки &apos;*&apos;, &apos;?&apos; та набори символів &apos;[...]&apos; допускаються.
+Щоб знайти &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; символи використовують &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; відповідно</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1609"/>
@@ -3423,7 +3423,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Зберегти статтю завершено</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -3499,7 +3499,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>&apos;вдалося відкрити аудіобуфер для читання.</translation>
     </message>
   </context>
   <context>
@@ -4067,10 +4067,10 @@ With this on however, it will hide the main window.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Зазвичай клацання посиланням, подвійним клацанням слова або пошуком
+вибраного фрагмента в статті завантажує переклад і майже відразу
+прокручує статтю з того самого словника. Якщо цю опцію вимкнено,
+буде показано статтю з самого верхнього словника.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="123"/>
@@ -4782,7 +4782,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
@@ -4792,7 +4792,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
@@ -4917,7 +4917,7 @@ Not implemented yet in GoldenDict.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="471"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вимова надано &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, спільною лінгвістичною медіа-бібліотекою Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
@@ -4954,17 +4954,17 @@ based on English phonology</source>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Спеціальна транслітерація</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>Це стосується лише пошукової фрази, де кожен рядок представляє транслітерацію, розділену крапкою з комою. Наприклад, ae;æ, користувачі можуть ввести ae, щоб представити æ у цільовому слові.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #це приклад</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -5002,9 +5002,9 @@ Not implemented yet in GoldenDict.</source>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Приклади:  &amp;quot;eng&amp;quot; для англійської, &amp;quot;fra&amp;quot; для французької &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+Повний список доступних мов можна знайти &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; тут &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>

@@ -21,12 +21,12 @@
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>کپی اطلاعات نسخه</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="142"/>
       <source>Copy dictionaries list</source>
-      <translation type="unfinished">Copy dictionaries list</translation>
+      <translation>فهرست لغت نامه ها را کپی کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
@@ -54,24 +54,24 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>anki:&apos;توان یک کارت بدون کلمه ایجاد کرد</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>جستجوی Anki: AnkiConnect فعال نیست.</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="96"/>
       <location filename="../src/ankiconnector.cc" line="113"/>
       <source>anki: post to anki failed</source>
       <translatorcomment>anki:发布成功</translatorcomment>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: ارسال به anki ناموفق بود</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki: ارسال به موفقیت anki</translation>
     </message>
   </context>
   <context>
@@ -79,7 +79,7 @@
     <message>
       <location filename="../src/ui/article_inspect.cc" line="8"/>
       <source>Inspect</source>
-      <translation type="unfinished">Inspect</translation>
+      <translation>بازرسی کنید</translation>
     </message>
   </context>
   <context>
@@ -165,7 +165,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>یک یادداشت جدید Anki ایجاد کنید</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="704"/>
@@ -300,17 +300,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>لینک باز</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
+      <translation>ذخیره &amp;نشانک &quot;%1...&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
-      <translation type="unfinished">WARNING: Audio Player: %1</translation>
+      <translation>هشدار: پخش کننده صوتی: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1283"/>
@@ -342,12 +342,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
-      <translation type="unfinished">Phrase not found</translation>
+      <translation>عبارت پیدا نشد</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
+      <translation>%1 از %2 مسابقه</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1780"/>
@@ -368,27 +368,27 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
-      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
+      <translation>&amp;ارسال مقاله فعلی به Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;ارسال متن انتخابی به Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation type="unfinished">Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
+      <translation>فایل های صوتی (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;همه فایل ها (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
-      <translation type="unfinished">Failed to play sound file: %1</translation>
+      <translation>فایل صوتی پخش نشد: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;ایجاد یادداشت Anki</translation>
     </message>
   </context>
   <context>
@@ -416,62 +416,62 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="20"/>
       <source>Chinese Conversion</source>
-      <translation type="unfinished">Chinese Conversion</translation>
+      <translation>تبدیل چینی</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="23"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
+      <translation>تبدیل بین نویسه های چینی ساده و سنتی را فعال کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="26"/>
       <source>Chinese Con&amp;version</source>
-      <translation type="unfinished">Chinese Con&amp;version</translation>
+      <translation>تبدیل چینی</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="35"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
+      <translation>تبدیل از نویسه های ساده شده به نویسه های سنتی (نوع تایوان) را فعال کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="38"/>
       <source>SC to TC (Taiwan variant)</source>
-      <translation type="unfinished">SC to TC (Taiwan variant)</translation>
+      <translation>SC به TC (نوع تایوان)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="45"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
+      <translation>تبدیل نویسه های ساده شده به نویسه های سنتی (نوع هنگ کنگ) را فعال کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="48"/>
       <source>SC to TC (Hong Kong variant)</source>
-      <translation type="unfinished">SC to TC (Hong Kong variant)</translation>
+      <translation>SC به TC (نوع هنگ کنگ)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="55"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
+      <translation>تبدیل از نویسه های سنتی به نویسه های ساده شده را فعال کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="58"/>
       <source>TC to SC</source>
-      <translation type="unfinished">TC to SC</translation>
+      <translation>TC به SC</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="129"/>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
+      <translation>تبدیل به چینی سنتی (نوع تایوان) ساده شده است</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="136"/>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
+      <translation>تبدیل ساده شده به چینی سنتی (نوع هنگ کنگ)</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="143"/>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
+      <translation>تبدیل سنتی به چینی ساده شده</translation>
     </message>
   </context>
   <context>
@@ -479,7 +479,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>نویسه‌گردانی سفارشی</translation>
     </message>
   </context>
   <context>
@@ -487,17 +487,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/authentication.ui" line="14"/>
       <source>Proxy authentication required</source>
-      <translation type="unfinished">Proxy authentication required</translation>
+      <translation>احراز هویت پروکسی مورد نیاز است</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="20"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation type="unfinished">You need to supply a Username and a Password to access via proxy</translation>
+      <translation>برای دسترسی از طریق پروکسی باید یک نام کاربری و یک رمز عبور وارد کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="30"/>
       <source>Username:</source>
-      <translation type="unfinished">Username:</translation>
+      <translation>نام کاربری:</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="40"/>
@@ -580,7 +580,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>آیا مطمئن هستید که می خواهید مجموعه ای از گروه ها را بر اساس metadata.toml ایجاد کنید؟</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
@@ -595,17 +595,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>گروه‌بندی خودکار براساس پوشه انجام نشد.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>دایرکتوری والد %1 قابل دسترسی نیست.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>آیا مطمئن هستید که می خواهید مجموعه ای از گروه ها را بر اساس پوشه های حاوی آن ایجاد کنید؟</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -667,7 +667,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="119"/>
       <source>Help</source>
-      <translation type="unfinished">Help</translation>
+      <translation>کمک</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="129"/>
@@ -717,12 +717,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
-      <translation type="unfinished">RegExp</translation>
+      <translation>RegExp</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>در حال بارگیری کلمات اصلی...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -742,7 +742,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>نمی توان فایل صادر شده را باز کرد</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="357"/>
@@ -758,12 +758,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>فرآیند صادرات قطع شده است</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>صادرات به پایان رسید</translation>
     </message>
   </context>
   <context>
@@ -838,22 +838,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/dictserver.cc" line="275"/>
       <source>Url: </source>
-      <translation type="unfinished">Url: </translation>
+      <translation>آدرس اینترنتی: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="276"/>
       <source>Databases: </source>
-      <translation type="unfinished">Databases: </translation>
+      <translation>پایگاه های داده: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
-      <translation type="unfinished">Search strategies: </translation>
+      <translation>استراتژی های جستجو: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
-      <translation type="unfinished">Server databases</translation>
+      <translation>پایگاه های داده سرور</translation>
     </message>
   </context>
   <context>
@@ -876,12 +876,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/sources.cc" line="829"/>
       <source>Databases</source>
-      <translation type="unfinished">Databases</translation>
+      <translation>پایگاه های داده</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="831"/>
       <source>Strategies</source>
-      <translation type="unfinished">Strategies</translation>
+      <translation>استراتژی ها</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="833"/>
@@ -892,15 +892,15 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/dict/sources.cc" line="866"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation type="unfinished">Comma-delimited list of databases
-(empty string or &quot;*&quot; matches all databases)</translation>
+      <translation>فهرست پایگاه‌های داده با کاما
+(رشته خالی یا &quot;*&quot; با همه پایگاه‌های داده مطابقت دارد)</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="869"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation type="unfinished">Comma-delimited list of search strategies
-(empty string mean &quot;prefix&quot; strategy)</translation>
+      <translation>فهرست راهبردهای جستجو با کاما محدود شده
+(رشته خالی به معنای استراتژی &quot;پیشوند&quot;)</translation>
     </message>
   </context>
   <context>
@@ -991,12 +991,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/epwing.cc" line="348"/>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>صفحه قبلی</translation>
     </message>
     <message>
       <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
-      <translation type="unfinished">Next Page</translation>
+      <translation>صفحه بعد</translation>
     </message>
   </context>
   <context>
@@ -1012,17 +1012,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Full-text search</source>
-      <translation type="unfinished">Full-text search</translation>
+      <translation>جستجوی متن کامل</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
-      <translation type="unfinished">Whole words</translation>
+      <translation>کل کلمات</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="242"/>
       <source>Plain text</source>
-      <translation type="unfinished">Plain text</translation>
+      <translation>متن ساده</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1032,22 +1032,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
-      <translation type="unfinished">RegExp</translation>
+      <translation>RegExp</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
+      <translation>از نحو جستجوی xapian مانند AND OR +/- و غیره پشتیبانی کنید</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
-      <translation type="unfinished">Max distance between words (%1-%2):</translation>
+      <translation>حداکثر فاصله بین کلمات (%1-%2):</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
-      <translation type="unfinished">Max articles per dictionary (%1-%2):</translation>
+      <translation>حداکثر مقاله در هر فرهنگ لغت (%1-%2):</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="309"/>
@@ -1055,32 +1055,32 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/fulltextsearch.cc" line="564"/>
       <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
-      <translation type="unfinished">Articles found: </translation>
+      <translation>مقالات یافت شده: </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
-      <translation type="unfinished">Now indexing: </translation>
+      <translation>اکنون در حال نمایه سازی: </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="397"/>
       <source>None</source>
-      <translation type="unfinished">None</translation>
+      <translation>هیچ یک</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
-      <translation type="unfinished">The search line must contains at least one word containing </translation>
+      <translation>خط جستجو باید حاوی حداقل یک کلمه باشد </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
-      <translation type="unfinished"> or more symbols</translation>
+      <translation> یا نمادهای بیشتر</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
-      <translation type="unfinished">No dictionaries for full-text search</translation>
+      <translation>دیکشنری برای جستجوی تمام متن وجود ندارد</translation>
     </message>
   </context>
   <context>
@@ -1162,12 +1162,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="19"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;قبلی</translation>
     </message>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="20"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;بعد</translation>
     </message>
   </context>
   <context>
@@ -1186,52 +1186,52 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="37"/>
       <source>Mode:</source>
-      <translation type="unfinished">Mode:</translation>
+      <translation>حالت:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="81"/>
       <source>Ignore words order</source>
-      <translation type="unfinished">Ignore words order</translation>
+      <translation>ترتیب کلمات را نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="88"/>
       <source>Ignore diacritics</source>
-      <translation type="unfinished">Ignore diacritics</translation>
+      <translation>نادیده گرفتن نشانه ها</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="111"/>
       <source>Articles found:</source>
-      <translation type="unfinished">Articles found:</translation>
+      <translation>مقالات یافت شده:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="133"/>
       <source>Available dictionaries in group:</source>
-      <translation type="unfinished">Available dictionaries in group:</translation>
+      <translation>لغت نامه های موجود در گروه:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="139"/>
       <source>Wait for indexing:</source>
-      <translation type="unfinished">Wait for indexing:</translation>
+      <translation>منتظر نمایه سازی باشید:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="252"/>
       <source>Help</source>
-      <translation type="unfinished">Help</translation>
+      <translation>کمک</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="160"/>
       <source>Total:</source>
-      <translation type="unfinished">Total:</translation>
+      <translation>جمع:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="167"/>
       <source>Indexed:</source>
-      <translation type="unfinished">Indexed:</translation>
+      <translation>نمایه شده:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="184"/>
       <source>Now indexing: None</source>
-      <translation type="unfinished">Now indexing: None</translation>
+      <translation>در حال نمایه سازی: هیچ کدام</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
@@ -1268,12 +1268,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="92"/>
       <source>&lt;</source>
-      <translation type="unfinished">&lt;</translation>
+      <translation>&lt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="67"/>
       <source>&gt;</source>
-      <translation type="unfinished">&gt;</translation>
+      <translation>&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
@@ -1348,22 +1348,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>گروه بندی بر اساس زبان</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>ایجاد گروه های مبتنی بر پوشه</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>گروه بندی بر اساس پوشه ها</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>گروه بر اساس فراداده</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -1447,7 +1447,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1%2</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="219"/>
@@ -2518,207 +2518,207 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>فرانسوی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>اسپانیایی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>بلاروسی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>بلغاری</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>کشور چک</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>آلمانی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="47"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>یونانی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="48"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>فنلاندی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>ایتالیایی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>ژاپنی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="51"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>کره ای</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>لیتوانیایی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>مقدونی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>هلندی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>لهستانی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>پرتغالی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>روسی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>اسلواکی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>آلبانیایی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>صربی (سیریلیک)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>سوئدی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>ترکی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>اوکراینی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>زبان چینی ساده شده</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>سنتی چینی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>ویتنامی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>پرتغالی، برزیلی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>فارسی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>اسپانیایی، آرژانتین</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>هندی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>اسپرانتو</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>آلمان، سوئیس</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>اسپانیایی، بولیوی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>تاجیک</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>کچوا</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>آیمارا</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>عربی، عربستان سعودی</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>ترکمن</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>بین زبان</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>لوژبان</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>انگلیسی</translation>
     </message>
   </context>
   <context>
@@ -2742,27 +2742,27 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="553"/>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="388"/>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="143"/>
       <source>Favo&amp;rites</source>
-      <translation type="unfinished">Favo&amp;rites</translation>
+      <translation>آداب و رسوم مورد علاقه</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="299"/>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="314"/>
       <source>F4</source>
-      <translation type="unfinished">F4</translation>
+      <translation>F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1495"/>
@@ -2863,12 +2863,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="347"/>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
@@ -2944,12 +2944,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="369"/>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="430"/>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
@@ -3065,7 +3065,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="464"/>
@@ -3111,7 +3111,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3150"/>
@@ -3121,7 +3121,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
@@ -3168,7 +3168,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="475"/>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="491"/>
@@ -3204,7 +3204,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;All files (*.*)</translation>
+      <translation>فایل های XML (*.xml)؛؛ همه فایل ها (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3954"/>
@@ -3225,7 +3225,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <translation>فایل های XML (*.xml)؛؛ فایل های Txt (*.txt)؛؛ همه فایل ها (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
@@ -3235,7 +3235,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
-      <translation type="unfinished">Data parsing error</translation>
+      <translation>خطای تجزیه داده ها</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4270"/>
@@ -3260,12 +3260,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
-      <translation type="unfinished">Now indexing for full-text search: </translation>
+      <translation>اکنون در حال نمایه سازی برای جستجوی متن کامل: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
+      <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
@@ -3280,7 +3280,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="235"/>
       <source>Favor&amp;ites Pane</source>
-      <translation type="unfinished">Favor&amp;ites Pane</translation>
+      <translation>صفحه موارد دلخواه</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="419"/>
@@ -3310,7 +3310,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="508"/>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
@@ -3322,32 +3322,32 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="525"/>
       <source>Search in page</source>
-      <translation type="unfinished">Search in page</translation>
+      <translation>جستجو در صفحه</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="536"/>
       <source>Full-text search</source>
-      <translation type="unfinished">Full-text search</translation>
+      <translation>جستجوی متن کامل</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="539"/>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="550"/>
       <source>GoldenDict reference</source>
-      <translation type="unfinished">GoldenDict reference</translation>
+      <translation>مرجع GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="558"/>
       <source>Show</source>
-      <translation type="unfinished">Show</translation>
+      <translation>نمایش دهید</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
@@ -3357,12 +3357,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="571"/>
       <source>Import</source>
-      <translation type="unfinished">Import</translation>
+      <translation>وارد كردن</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="576"/>
       <source>Add</source>
-      <translation type="unfinished">Add</translation>
+      <translation>اضافه کردن</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
@@ -3376,12 +3376,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="587"/>
       <source>Export to list</source>
-      <translation type="unfinished">Export to list</translation>
+      <translation>صادرات به لیست</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="119"/>
@@ -3421,7 +3421,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>ذخیره مقاله کامل</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -3497,7 +3497,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>نمی توان بافر صوتی را برای خواندن&apos;t باز کرد.</translation>
     </message>
   </context>
   <context>
@@ -3580,7 +3580,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.cc" line="288"/>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation type="unfinished">Dictionaries active: %1, inactive: %2</translation>
+      <translation>دیکشنری های فعال: %1, غیر فعال: %2</translation>
     </message>
   </context>
   <context>
@@ -3945,32 +3945,32 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>هنگام تغییر انتخاب یا کلیپ بورد در یکی از پنجره های خود GoldenDict&apos;، پنجره بازشو نشان داده نشود</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>انتخاب و تغییرات کلیپ بورد خود GoldenDict&apos;نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
-      <translation type="unfinished">Play audio files via built-in audio support</translation>
+      <translation>پخش فایل های صوتی از طریق پشتیبانی صوتی داخلی</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
-      <translation type="unfinished">Use internal player:</translation>
+      <translation>از پخش کننده داخلی استفاده کنید:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
-      <translation type="unfinished">Choose audio back end</translation>
+      <translation>پایان صوتی را انتخاب کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
-      <translation type="unfinished">Enter audio player command line</translation>
+      <translation>وارد خط فرمان پخش کننده صوتی شوید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1119"/>
@@ -4056,7 +4056,7 @@ With this on however, it will hide the main window.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation type="unfinished">Show a flag window before showing popup window, click the flag to show popup window. </translation>
+      <translation>نمایش یک پنجره پرچم قبل از نمایش پنجره بازشو، روی پرچم کلیک کنید تا پنجره بازشو نشان داده شود. </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="117"/>
@@ -4064,145 +4064,145 @@ With this on however, it will hide the main window.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>به طور معمول، با کلیک بر روی یک پیوند، دوبار کلیک کردن روی یک کلمه یا جستجوی
+انتخاب در یک مقاله، ترجمه بارگیری می شود و تقریباً بلافاصله
+به مقاله از همان فرهنگ لغت می رود. اما با خاموش بودن این گزینه
+، مقاله از بالاترین فرهنگ لغت نشان داده می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>به طور خودکار به مقاله هدف بروید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
-      <translation type="unfinished">Dictionary Font: </translation>
+      <translation>فونت دیکشنری: </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
-      <translation type="unfinished">set the fallback font family for dictionary</translation>
+      <translation>خانواده فونت بازگشتی را برای فرهنگ لغت تنظیم کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
-      <translation type="unfinished">Article Display style:</translation>
+      <translation>سبک نمایش مقاله:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>رابط کاربری را تاریک کنید.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>حالت تاریک</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>سبک نمایش مقاله را به تیره تبدیل کنید.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>حالت خواننده تاریک</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>سفارش MRU: سفارش اخیر استفاده شده.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>وقتی اسکن فعال است، بریده‌دان ردیابی تغییر می‌کند. اطلاع! همیشه باید این را فعال کنید مگر اینکه در لینوکس باشید.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>ردیابی تغییر کلیپ بورد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>تغییر انتخاب آهنگ</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>فقط زمانی که همه کلیدهای انتخاب شده فشار داده شده باشند، انتخاب تکه‌ها:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
-      <translation type="unfinished">Show scan flag when word is selected</translation>
+      <translation>هنگام انتخاب کلمه، پرچم اسکن را نشان دهید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
-      <translation type="unfinished">System proxy</translation>
+      <translation>پروکسی سیستم</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
-      <translation type="unfinished">Custom proxy</translation>
+      <translation>پروکسی سفارشی</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
-      <translation type="unfinished">Custom settings</translation>
+      <translation>تنظیمات سفارشی</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>Anki Connect</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>عرشه:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>مدل:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>کلمه</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>رشته واژگان ...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>متن</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>فیلد تعریف ...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>جمله</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>قسمت جمله (می تواند خالی باشد)...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1131"/>
@@ -4219,53 +4219,53 @@ Enable this option to workaround the problem.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
-      <translation type="unfinished">Maximum network cache size:</translation>
+      <translation>حداکثر اندازه کش شبکه:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict&apos;s در
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+اگر روی 0 تنظیم شود، حافظه پنهان دیسک شبکه غیرفعال می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
-      <translation type="unfinished"> MiB</translation>
+      <translation> MiB</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation type="unfinished">When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</translation>
+      <translation>هنگامی که این گزینه فعال است، GoldenDict
+حافظه پنهان شبکه خود را در هنگام خروج از دیسک پاک می کند.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
-      <translation type="unfinished">Clear network cache on exit</translation>
+      <translation>کش شبکه را در هنگام خروج پاک کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1227"/>
       <source>Full-text search</source>
-      <translation type="unfinished">Full-text search</translation>
+      <translation>جستجوی متن کامل</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
-      <translation type="unfinished">Allow full-text search for:</translation>
+      <translation>اجازه جستجوی متن کامل برای:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>در لغت نامه های حاوی بیش از&apos;جستجو نکنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
-      <translation type="unfinished">articles (0 - unlimited)</translation>
+      <translation>مقالات (0 - نامحدود)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1391"/>
@@ -4275,22 +4275,22 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>در طول جستجوهای متوالی، اگر یک فرهنگ لغت به صورت دستی جمع شود، در جستجوی بعدی جمع می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>فروپاشی جلسه</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر&apos;s قابل مشاهده باشد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
@@ -4300,44 +4300,44 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+      <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>برای تأیید هر عملیات حذف موارد، این گزینه را روشن کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1563"/>
       <source>Confirmation for items deletion</source>
-      <translation type="unfinished">Confirmation for items deletion</translation>
+      <translation>تایید برای حذف موارد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</translation>
+      <translation>این گزینه را روشن کنید تا متن ورودی طولانی و غیرمنطقی
+را از روی ماوس، انتخاب، کلیپ بورد یا خط فرمان نادیده بگیرید.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1638"/>
       <source>Ignore input phrases longer than</source>
-      <translation type="unfinished">Ignore input phrases longer than</translation>
+      <translation>عبارات ورودی طولانی تر از آن را نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
+      <translation>عبارات ورودی طولانی تر از این اندازه نادیده گرفته می شود</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1694"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation type="unfinished">Turn this option on to ignore diacritics while searching articles</translation>
+      <translation>این گزینه را روشن کنید تا در حین جستجوی مقاله‌ها، نشانه‌ها نادیده گرفته شوند</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1697"/>
       <source>Ignore diacritics while searching</source>
-      <translation type="unfinished">Ignore diacritics while searching</translation>
+      <translation>در حین جست و جو از نشانه ها چشم پوشی کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1684"/>
@@ -4367,19 +4367,19 @@ from mouse-over, selection, clipboard or command line</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1594"/>
       <source>Ignore punctuation while searching</source>
-      <translation type="unfinished">Ignore punctuation while searching</translation>
+      <translation>هنگام جستجو، علائم نگارشی را نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1730"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation type="unfinished">Turn this option on to enable extra articles search via synonym lists
-from Stardict, Babylon and GLS dictionaries</translation>
+      <translation>این گزینه را روشن کنید تا جستجوی مقالات اضافی از طریق فهرست‌های مترادف
+از دیکشنری‌های Stardict، Babylon و GLS فعال شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1734"/>
       <source>Extra search via synonyms</source>
-      <translation type="unfinished">Extra search via synonyms</translation>
+      <translation>جستجوی اضافی از طریق مترادف ها</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1617"/>
@@ -4462,7 +4462,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
+      <translation>کلاسیک</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="117"/>
@@ -4482,7 +4482,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
-      <translation type="unfinished"> MB</translation>
+      <translation> MB</translation>
     </message>
   </context>
   <context>
@@ -4500,7 +4500,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1095"/>
       <source>Html</source>
-      <translation type="unfinished">Html</translation>
+      <translation>Html</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1097"/>
@@ -4579,71 +4579,71 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/dict/sdict.cc" line="685"/>
       <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
-      <translation type="unfinished">Copyright: %1%2</translation>
+      <translation>حق چاپ: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
       <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
-      <translation type="unfinished">Version: %1%2</translation>
+      <translation>نسخه: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
       <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
-      <translation type="unfinished">Author: %1%2</translation>
+      <translation>نویسنده: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
       <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
-      <translation type="unfinished">E-mail: %1%2</translation>
+      <translation>ایمیل: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
-      <translation type="unfinished">Title: %1%2</translation>
+      <translation>عنوان: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
-      <translation type="unfinished">Website: %1%2</translation>
+      <translation>وب سایت: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
-      <translation type="unfinished">Date: %1%2</translation>
+      <translation>تاریخ: %1%2</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="150"/>
       <source>A dictionary lookup program.</source>
-      <translation type="unfinished">A dictionary lookup program.</translation>
+      <translation>یک برنامه جستجوی فرهنگ لغت.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>کلمه یا جمله به پرس و جو.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
+      <translation>پیام های اشکال زدایی را در gd_log.txt در پوشه پیکربندی ذخیره کنید.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>گروه پنجره اصلی را تغییر دهید.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>گروه پاپ آپ را تغییر دهید.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>جابجایی پنجره اسکن</translation>
     </message>
   </context>
   <context>
@@ -4708,7 +4708,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
@@ -4733,7 +4733,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
-      <translation type="unfinished">Always stay on top of all other windows</translation>
+      <translation>همیشه بالای تمام پنجره های دیگر بمانید</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="230"/>
@@ -4750,7 +4750,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
@@ -4766,7 +4766,7 @@ could be resized or managed in other ways.</source>
       <location filename="../src/ui/scanpopup.cc" line="604"/>
       <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
   </context>
   <context>
@@ -4774,37 +4774,37 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="14"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;قبلی</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;بعد</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
+      <translation>برجسته کردن &amp;همه</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;حساس به حروف کوچک و بزرگ</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>پیدا کردن:</translation>
     </message>
   </context>
   <context>
@@ -4904,37 +4904,37 @@ Not implemented yet in GoldenDict.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>هر برنامه خارجی رشته %GDWORD% با کلمه پرس و جو جایگزین می شود. رشته %GDSEARCH% با متن در نوار جستجو جایگزین می شود. اگر هر دو پارامتر ارائه نشده باشند، عنوان اصلی به ورودی استاندارد وارد می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
       <source>Lingua Libre</source>
-      <translation type="unfinished">Lingua Libre</translation>
+      <translation>Lingua Libre</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="471"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تلفظ های ارائه شده توسط &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;، یک کتابخانه رسانه زبانی مشترک ویکی مدیا فرانسه. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>Lingua Libre را فعال کنید</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>کد زبان ISO 639-3</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;استفاده از Forvo در حال حاضر به یک کلید API نیاز دارد، برای دریافت کلید خود در سایت ثبت نام کنید.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="605"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;کلید خود را دریافت کنید &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;اینجا&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="760"/>
@@ -4951,17 +4951,17 @@ based on English phonology</source>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>نویسه‌گردانی سفارشی</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>این فقط در عبارت جستجو اعمال می شود، با هر خط نشان دهنده نویسه نویسی، نقطه ویرگول از هم جدا شده است. به عنوان مثال، ae;æ، کاربران می توانند ae را برای نشان دادن æ در کلمه هدف وارد کنند.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #این یک مثال است</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -4999,9 +4999,9 @@ Not implemented yet in GoldenDict.</source>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>مثال‌ها:  &amp;quot;eng&amp;quot; برای انگلیسی، &amp;quot;fra&amp;quot; برای فرانسوی &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+فهرست کامل زبان‌های موجود را می‌توانید پیدا کنید &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; اینجا &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
@@ -5123,12 +5123,12 @@ of the appropriate groups to use them.</source>
     <message>
       <location filename="../src/ui/sources.ui" line="350"/>
       <source>DICT servers</source>
-      <translation type="unfinished">DICT servers</translation>
+      <translation>سرورهای DICT</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="356"/>
       <source>DICT servers:</source>
-      <translation type="unfinished">DICT servers:</translation>
+      <translation>سرورهای DICT:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="545"/>
@@ -5341,12 +5341,12 @@ of the appropriate groups to use them.</source>
       <location filename="../src/dict/sources.cc" line="637"/>
       <location filename="../src/dict/sources.cc" line="670"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation type="unfinished">Insert article as link inside &lt;iframe&gt; tag</translation>
+      <translation>مقاله را به عنوان پیوند داخل تگ &lt;iframe&gt; درج کنید</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="648"/>
       <source>As link</source>
-      <translation type="unfinished">As link</translation>
+      <translation>به عنوان پیوند</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="654"/>

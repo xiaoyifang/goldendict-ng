@@ -21,12 +21,12 @@
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>Copiar información de la versión</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="142"/>
       <source>Copy dictionaries list</source>
-      <translation type="unfinished">Copy dictionaries list</translation>
+      <translation>Copiar lista de diccionarios</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
@@ -41,12 +41,12 @@
     <message>
       <location filename="../src/ui/about.cc" line="35"/>
       <source>Based on Qt %1 (%2, %3 bit)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3 bit)</translation>
+      <translation>Basado en Qt %1 (%2, %3 bits)</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="91"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation type="unfinished">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
+      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
   </context>
   <context>
@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>anki:&apos;puedo crear una carta sin una palabra</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>

@@ -479,7 +479,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>カスタム音訳</translation>
     </message>
   </context>
   <context>
@@ -595,7 +595,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>フォルダーごとの自動グループ化に失敗しました。</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
@@ -722,7 +722,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>見出し語を読み込んでいます...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -1349,22 +1349,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>言語ごとにグループ化</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>フォルダーベースのグループを作成します。</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>フォルダーごとにグループ化</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>メタデータによるグループ化</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -2719,7 +2719,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>英語</translation>
     </message>
   </context>
   <context>
@@ -3092,8 +3092,8 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
+      <translation>辞書で検索する文字列。ワイルドカード &apos;*&apos;, &apos;?&apos; とシンボル&apos; セット &apos;[...]許可されます。
+ &apos;*&apos;, &apos;を求めるには?&apos;, &apos;[&apos;, &apos;]&apos; シンボルは &apos;\*&apos;, &apos;\? を使用します。それぞれ&apos;、 &apos;\[&apos;、 &apos;\]&apos;</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1609"/>
@@ -3422,7 +3422,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>記事の保存が完了しました</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -4028,7 +4028,7 @@ With this on however, it will hide the main window.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
+      <translation>タブを 1 つだけ開いているときにメイン タブ バーを表示したく&apos;場合は、このオプションを選択します。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
@@ -4066,10 +4066,10 @@ With this on however, it will hide the main window.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>通常、リンクをクリックするか、単語を
+クリックするか、記事内の選択項目を検索すると、翻訳が読み込まれ、ほぼ
+に同じ辞書から記事までスクロールします。ただし、このオプションをオフ
+にすると、最上位の辞書の記事が表示されます。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="123"/>
@@ -4781,7 +4781,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
@@ -4791,7 +4791,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
@@ -4906,7 +4906,7 @@ GoldenDict にはまだ実装されていません。</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>外部プログラム。文字列 %GDWORD% はクエリ単語に置き換えられます。文字列 %GDSEARCH% は検索バー内のテキストに置き換えられます。両方のパラメータが指定されていない場合、見出し語は標準入力に入力されます。</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
@@ -4952,17 +4952,17 @@ based on English phonology</source>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>カスタム音訳</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>これは検索フレーズにのみ適用され、各行はセミコロンで区切られた音訳を表します。たとえば、ae;æ,ユーザーは、ターゲット単語の æ を表すために ae を入力できます。</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #これは一例です</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -5000,9 +5000,9 @@ GoldenDict にはまだ実装されていません。</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>例: 英語の場合は  &amp;quot;eng&amp;quot; 、フランス語の場合は &amp;quot;fra&amp;quot; &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+利用可能な言語の完全なリストはここにあります &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
@@ -5185,8 +5185,8 @@ of the appropriate groups to use them.</source>
       <location filename="../src/ui/sources.ui" line="337"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation type="unfinished">Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</translation>
+      <translation>あるいは、CP1251 には %GD1251% 、ISO 8859-1...ISO 8859-16 にはそれぞれ %GDISO1%...%GDISO16% 、Big-5 には
+%GDBIG5% 、Big5-HKSCS には %GDBIG5HKSCS% 、GBK および GB18030 には %GDGBK% 、Shift-JIS には %GDSHIFTJIS% を使用します。 。</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="128"/>

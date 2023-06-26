@@ -21,12 +21,12 @@
     <message>
       <location filename="../src/ui/about.ui" line="129"/>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>Kopiu informoj pri versio</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="142"/>
       <source>Copy dictionaries list</source>
-      <translation type="unfinished">Copy dictionaries list</translation>
+      <translation>Kopii liston de vortaroj</translation>
     </message>
     <message>
       <location filename="../src/ui/about.ui" line="168"/>
@@ -46,7 +46,7 @@
     <message>
       <location filename="../src/ui/about.ui" line="91"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation type="unfinished">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
+      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
   </context>
   <context>
@@ -54,24 +54,24 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>anki: ne povas fari karton sen vorto</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>Anki-serĉo: AnkiConnect ne estas ebligita.</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="96"/>
       <location filename="../src/ankiconnector.cc" line="113"/>
       <source>anki: post to anki failed</source>
       <translatorcomment>anki:发布成功</translatorcomment>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: post al anki malsukcesis</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="110"/>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki: post al anki sukceso</translation>
     </message>
   </context>
   <context>
@@ -87,12 +87,12 @@
     <message>
       <location filename="../src/article_maker.cc" line="311"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation type="unfinished">Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</translation>
+      <translation>Tiam simple haltigu la kursoron super la vorto, kiun vi volas serĉi en alia aplikaĵo, kaj aperos fenestro, kiu priskribus ĝin al vi.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Laborante kun la ŝprucfenestro&lt;/h3&gt;Por serĉi vortojn de aliaj aktivaj aplikoj, vi devus unue aktivigi la &lt;i&gt;&quot;Skani ŝprucfenestron funkciecon&quot;&lt;/i&gt; en &lt;b&gt;Preferoj&lt;/b&gt;, kaj poste ebligi ĝin iam ajn aŭ per ekfunkciigo de la &apos;Popup&apos; supre. , aŭ alklakante la pletikonon sube per via dekstra musbutono kaj elektante tion en la menuo, kiun vi&apos;. </translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -112,7 +112,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="302"/>
       <source>Working with popup</source>
-      <translation type="unfinished">Working with popup</translation>
+      <translation>Laborante kun ŝprucfenestro</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="392"/>
@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="314"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation type="unfinished">Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</translation>
+      <translation>Tiam simple elektu iun ajn vorton, kiun vi volas serĉi en alia aplikaĵo per via muso (duoble alklaku ĝin aŭ glitu ĝin per muso kun la butono premita), kaj aperos fenestro, kiu priskribus la vorton al vi.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
@@ -137,7 +137,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Bonvenon al &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Por eklabori kun la programo, unue vizitu &lt;b&gt;Redaktu|Vortarojn&lt;/b&gt; por aldoni kelkajn dosierujojn kie serĉi la vortarajn dosierojn, agordi diversajn Vikipediajn retejojn aŭ aliajn fontojn, ĝustigi vortaran ordon aŭ krei vortarajn grupojn.&lt;p&gt;Kaj tiam vi&apos;pretas serĉi viajn vortojn! Vi povas fari tion en ĉi tiu fenestro uzante panelon maldekstre, aŭ vi povas &lt;a href=&quot;Working with popup&quot;&gt;serĉi vortojn de aliaj aktivaj aplikaĵoj&lt;/a&gt;. &lt;p&gt;Por personecigi programon, kontrolu la disponeblajn preferojn ĉe &lt;b&gt;Redaktu|Preferoj&lt;/b&gt;. Ĉiuj agordoj tie havas konsiletojn, nepre legu ilin se vi dubas pri io ajn.&lt;p&gt;Se vi bezonas plian helpon, havas demandojn, sugestojn aŭ simple scivolas, kion pensas la aliaj, vi bonvenas ĉe la programo&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumo&lt;/a&gt;.&lt;p&gt;Kontrolu programon&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;retejon&lt;/a&gt; por la ĝisdatigoj. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencite laŭ GPLv3 aŭ poste.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="404"/>
@@ -165,7 +165,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="691"/>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>Faru novan Anki-noton</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="704"/>
@@ -193,17 +193,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2087"/>
       <source>Failed to create temporary file.</source>
-      <translation type="unfinished">Failed to create temporary file.</translation>
+      <translation>Malsukcesis krei provizoran dosieron.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1798"/>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation type="unfinished">&amp;Look up &quot;%1&quot;</translation>
+      <translation>&amp;Serĉu &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1806"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in &amp;New Tab</translation>
+      <translation>Kontrolu &quot;%1&quot; en &amp;Nova Tab</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1358"/>
@@ -214,12 +214,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2098"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation type="unfinished">Failed to auto-open resource file, try opening manually: %1.</translation>
+      <translation>Malsukcesis aŭtomate malfermi rimedan dosieron, provu malfermi permane: %1.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1832"/>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in %2</translation>
+      <translation>Kontrolu &quot;%1&quot; en %2</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="321"/>
@@ -239,7 +239,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1840"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation type="unfinished">Look up &quot;%1&quot; in %2 in &amp;New Tab</translation>
+      <translation>Kontrolu &quot;%1&quot; en %2 en &amp;Nova langeto</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1750"/>
@@ -259,7 +259,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1000"/>
       <source>Audio</source>
-      <translation type="unfinished">Audio</translation>
+      <translation>Aŭdio</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1005"/>
@@ -275,12 +275,12 @@
       <location filename="../src/ui/articleview.cc" line="1017"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
-      <translation type="unfinished">Video</translation>
+      <translation>Video</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1026"/>
       <source>Video: %1</source>
-      <translation type="unfinished">Video: %1</translation>
+      <translation>Video: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1043"/>
@@ -300,17 +300,17 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>Malfermu&amp;en Ligon</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
+      <translation>Konservi &amp;Legosignon &quot;%1...&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
-      <translation type="unfinished">WARNING: Audio Player: %1</translation>
+      <translation>AVERTO: Aŭdludilo: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1283"/>
@@ -322,7 +322,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="2000"/>
       <source>Save sound</source>
-      <translation type="unfinished">Save sound</translation>
+      <translation>Konservu sonon</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2015"/>
@@ -342,12 +342,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
-      <translation type="unfinished">Phrase not found</translation>
+      <translation>Frazo ne trovita</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
+      <translation>%1 el %2 matĉoj</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1780"/>
@@ -357,38 +357,38 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1811"/>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation type="unfinished">Send &quot;%1&quot; to input line</translation>
+      <translation>Sendu &quot;%1&quot; al eniga linio</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1817"/>
       <location filename="../src/ui/articleview.cc" line="1869"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation type="unfinished">&amp;Add &quot;%1&quot; to history</translation>
+      <translation>&amp;Aldonu &quot;%1&quot; al historio</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
-      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
+      <translation>&amp;Sendu Nunan Artikolon al Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;Sendu elektitan tekston al Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation type="unfinished">Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
+      <translation>Sondosieroj (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Ĉiuj dosieroj (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
-      <translation type="unfinished">Failed to play sound file: %1</translation>
+      <translation>Malsukcesis ludi sondosieron: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;Krei Anki-noton</translation>
     </message>
   </context>
   <context>
@@ -396,19 +396,19 @@
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="417"/>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (classic orthography)</translation>
+      <translation>Belarusian transliterumo de la latina ĝis cirila (klasika ortografio)</translation>
     </message>
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="420"/>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (school orthography)</translation>
+      <translation>Belarusian transliterumo de la latina ĝis cirila (lerneja ortografio)</translation>
     </message>
     <message>
       <location filename="../src/dict/belarusiantranslit.cc" line="423"/>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation type="unfinished">Belarusian transliteration (smoothes out the difference
-between classic and school orthography in cyrillic)</translation>
+      <translation>Belarusian transliterumo (glatigas la diferencon
+inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
   </context>
   <context>
@@ -416,62 +416,62 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="20"/>
       <source>Chinese Conversion</source>
-      <translation type="unfinished">Chinese Conversion</translation>
+      <translation>Ĉina Konvertiĝo</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="23"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
+      <translation>Ebligu konvertiĝon inter simpligitaj kaj tradiciaj ĉinaj signoj</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="26"/>
       <source>Chinese Con&amp;version</source>
-      <translation type="unfinished">Chinese Con&amp;version</translation>
+      <translation>Ĉina Konvertiĝo</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="35"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (tajvana varianto) signoj</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="38"/>
       <source>SC to TC (Taiwan variant)</source>
-      <translation type="unfinished">SC to TC (Taiwan variant)</translation>
+      <translation>SC al TC (Tajvana variaĵo)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="45"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="48"/>
       <source>SC to TC (Hong Kong variant)</source>
-      <translation type="unfinished">SC to TC (Hong Kong variant)</translation>
+      <translation>SC al TC (Honkonga variaĵo)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="55"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
+      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="58"/>
       <source>TC to SC</source>
-      <translation type="unfinished">TC to SC</translation>
+      <translation>TC al SC</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="129"/>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
+      <translation>Simpligita al tradicia ĉina (tajvana varianto) konvertiĝo</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="136"/>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
+      <translation>Simpligita al tradicia ĉina (Honkonga varianto) konvertiĝo</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="143"/>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
+      <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
     </message>
   </context>
   <context>
@@ -479,7 +479,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>kutima transliterumo</translation>
     </message>
   </context>
   <context>
@@ -487,12 +487,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/authentication.ui" line="14"/>
       <source>Proxy authentication required</source>
-      <translation type="unfinished">Proxy authentication required</translation>
+      <translation>Prokura aŭtentikigo bezonata</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="20"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation type="unfinished">You need to supply a Username and a Password to access via proxy</translation>
+      <translation>Vi devas provizi Uzantnomon kaj Pasvorton por aliri per prokurilo</translation>
     </message>
     <message>
       <location filename="../src/ui/authentication.ui" line="30"/>
@@ -525,7 +525,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
       <source>Favorites folder:</source>
-      <translation type="unfinished">Favorites folder:</translation>
+      <translation>Dosierujo de ŝatataj:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
@@ -540,7 +540,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="96"/>
       <source>Choose a file to use as group icon</source>
-      <translation type="unfinished">Choose a file to use as group icon</translation>
+      <translation>Elektu dosieron por uzi kiel grupikono</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="98"/>
@@ -575,48 +575,48 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="692"/>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on language pairs?</translation>
+      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur lingvoparoj?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur metadata.toml?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation type="unfinished">Combine groups by source language to &quot;%1-&gt;&quot;</translation>
+      <translation>Kombinu grupojn laŭ fontlingvo al &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1018"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation type="unfinished">Combine groups by target language to &quot;-&gt;%1&quot;</translation>
+      <translation>Kombinu grupojn laŭ cellingvo al &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Aŭtomata grupo laŭ dosierujo malsukcesis.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>La gepatra dosierujo de %1 ne povas esti atingita.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur enhavado de dosierujoj?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation type="unfinished">Make two-side translate group &quot;%1-%2-%1&quot;</translation>
+      <translation>Faru duflankan tradukgrupon &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1054"/>
       <location filename="../src/ui/groups_widgets.cc" line="1073"/>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation type="unfinished">Combine groups with &quot;%1&quot;</translation>
+      <translation>Kombinu grupojn kun &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="592"/>
@@ -642,12 +642,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="73"/>
       <source>This element determines how filter string will be interpreted</source>
-      <translation type="unfinished">This element determines how filter string will be interpreted</translation>
+      <translation>Ĉi tiu elemento determinas kiel filtrila ĉeno estos interpretita</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="80"/>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation type="unfinished">If checked on the symbols case will be take in account when filtering</translation>
+      <translation>Se markita sur la simboloj kazo estos konsiderata kiam filtrado</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="83"/>
@@ -657,7 +657,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="93"/>
       <source>Exports headwords to file</source>
-      <translation type="unfinished">Exports headwords to file</translation>
+      <translation>Eksportas kapvortojn al dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="96"/>
@@ -672,12 +672,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="129"/>
       <source>OK</source>
-      <translation type="unfinished">OK</translation>
+      <translation>bone</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="35"/>
       <source>Press this button to apply filter to headwords list</source>
-      <translation type="unfinished">Press this button to apply filter to headwords list</translation>
+      <translation>Premu ĉi tiun butonon por apliki filtrilon al kapvortoj listo</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="38"/>
@@ -687,12 +687,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="22"/>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation type="unfinished">If checked any filter changes will we immediately applied to headwords list</translation>
+      <translation>Se markite iujn ajn filtrilŝanĝojn, ni tuj aplikiĝos al kapvortoj listo</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="25"/>
       <source>Auto apply</source>
-      <translation type="unfinished">Auto apply</translation>
+      <translation>Aŭtomate apliki</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="58"/>
@@ -702,7 +702,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="51"/>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation type="unfinished">Filter string (fixed string, wildcards or regular expression)</translation>
+      <translation>Filtrila ĉeno (fiksa ĉeno, ĵokeroj aŭ regula esprimo)</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="42"/>
@@ -722,17 +722,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>Ŝarĝante kapvortojn...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
       <source>Unique headwords total: %1, filtered: %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered: %2</translation>
+      <translation>Unika kapvortoj entute: %1, filtritaj: %2</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="338"/>
       <source>Save headwords to file</source>
-      <translation type="unfinished">Save headwords to file</translation>
+      <translation>Konservu kapvortojn al dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="340"/>
@@ -742,12 +742,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>Ne povas malfermi eksportitan dosieron</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="357"/>
       <source>Export headwords...</source>
-      <translation type="unfinished">Export headwords...</translation>
+      <translation>Eksportu kapvortojn...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
@@ -758,12 +758,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>Eksporta procezo estas interrompita</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>Eksporto finiĝis</translation>
     </message>
   </context>
   <context>
@@ -801,7 +801,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="130"/>
       <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
+      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="174"/>
@@ -811,18 +811,18 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="196"/>
       <source>Show all unique dictionary headwords</source>
-      <translation type="unfinished">Show all unique dictionary headwords</translation>
+      <translation>Montru ĉiujn unikajn vortarajn kapvortojn</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui" line="199"/>
       <source>Headwords</source>
-      <translation type="unfinished">Headwords</translation>
+      <translation>Kapvortoj</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.cc" line="30"/>
       <source>Edit the dictionary via command:
 %1</source>
-      <translation type="unfinished">Edit the dictionary via command:
+      <translation>Redaktu la vortaron per komando:
 %1</translation>
     </message>
   </context>
@@ -849,12 +849,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/dictserver.cc" line="277"/>
       <source>Search strategies: </source>
-      <translation type="unfinished">Search strategies: </translation>
+      <translation>Serĉaj strategioj: </translation>
     </message>
     <message>
       <location filename="../src/dict/dictserver.cc" line="281"/>
       <source>Server databases</source>
-      <translation type="unfinished">Server databases</translation>
+      <translation>Servilaj datumbazoj</translation>
     </message>
   </context>
   <context>
@@ -893,15 +893,15 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/dict/sources.cc" line="866"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation type="unfinished">Comma-delimited list of databases
-(empty string or &quot;*&quot; matches all databases)</translation>
+      <translation>Listo de komoj limigitaj de datumbazoj
+(malplena ĉeno aŭ &quot;*&quot; kongruas kun ĉiuj datumbazoj)</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="869"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation type="unfinished">Comma-delimited list of search strategies
-(empty string mean &quot;prefix&quot; strategy)</translation>
+      <translation>Kom-limigita listo de serĉstrategioj
+(malplena ĉeno signifas &quot;prefikso&quot; strategio)</translation>
     </message>
   </context>
   <context>
@@ -909,27 +909,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="22"/>
       <source>Extended menu with all dictionaries...</source>
-      <translation type="unfinished">Extended menu with all dictionaries...</translation>
+      <translation>Plilongigita menuo kun ĉiuj vortaroj...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="96"/>
       <source>Edit this group</source>
-      <translation type="unfinished">Edit this group</translation>
+      <translation>Redaktu ĉi tiun grupon</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="120"/>
       <source>Dictionary info</source>
-      <translation type="unfinished">Dictionary info</translation>
+      <translation>Vortaraj informoj</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="125"/>
       <source>Dictionary headwords</source>
-      <translation type="unfinished">Dictionary headwords</translation>
+      <translation>Vortaraj kapvortoj</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="127"/>
       <source>Open dictionary folder</source>
-      <translation type="unfinished">Open dictionary folder</translation>
+      <translation>Malfermu vortaran dosierujon</translation>
     </message>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="134"/>
@@ -939,7 +939,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/dictionarybar.cc" line="14"/>
       <source>&amp;Dictionary Bar</source>
-      <translation type="unfinished">&amp;Dictionary Bar</translation>
+      <translation>&amp;Vortaro Bar</translation>
     </message>
   </context>
   <context>
@@ -968,12 +968,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="130"/>
       <source>Sources changed</source>
-      <translation type="unfinished">Sources changed</translation>
+      <translation>Fontoj ŝanĝiĝis</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="44"/>
       <source>&amp;Sources</source>
-      <translation type="unfinished">&amp;Sources</translation>
+      <translation>&amp;Fontoj</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="46"/>
@@ -984,7 +984,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation type="unfinished">Some sources were changed. Would you like to accept the changes?</translation>
+      <translation>Kelkaj fontoj estis ŝanĝitaj. Ĉu vi ŝatus akcepti la ŝanĝojn?</translation>
     </message>
   </context>
   <context>
@@ -992,12 +992,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/epwing.cc" line="348"/>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>Antaŭa Paĝo</translation>
     </message>
     <message>
       <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
-      <translation type="unfinished">Next Page</translation>
+      <translation>Sekva Paĝo</translation>
     </message>
   </context>
   <context>
@@ -1005,7 +1005,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/externalviewer.cc" line="51"/>
       <source>the viewer program name is empty</source>
-      <translation type="unfinished">the viewer program name is empty</translation>
+      <translation>la nomo de la programo de spektanto estas malplena</translation>
     </message>
   </context>
   <context>
@@ -1018,7 +1018,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="241"/>
       <source>Whole words</source>
-      <translation type="unfinished">Whole words</translation>
+      <translation>Tutaj vortoj</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="242"/>
@@ -1038,17 +1038,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
+      <translation>subtenas xapian serĉsintakso, kiel KAJ AŬ +/- ktp</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="261"/>
       <source>Max distance between words (%1-%2):</source>
-      <translation type="unfinished">Max distance between words (%1-%2):</translation>
+      <translation>Maksimuma distanco inter vortoj (%1-%2):</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="270"/>
       <source>Max articles per dictionary (%1-%2):</source>
-      <translation type="unfinished">Max articles per dictionary (%1-%2):</translation>
+      <translation>Maksimumaj artikoloj per vortaro (%1-%2):</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="309"/>
@@ -1056,12 +1056,12 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/fulltextsearch.cc" line="564"/>
       <location filename="../src/fulltextsearch.cc" line="577"/>
       <source>Articles found: </source>
-      <translation type="unfinished">Articles found: </translation>
+      <translation>Trovitaj artikoloj: </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="396"/>
       <source>Now indexing: </source>
-      <translation type="unfinished">Now indexing: </translation>
+      <translation>Nun indeksante: </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="397"/>
@@ -1071,17 +1071,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="454"/>
       <source>The search line must contains at least one word containing </source>
-      <translation type="unfinished">The search line must contains at least one word containing </translation>
+      <translation>La serĉlinio devas enhavi almenaŭ unu vorton enhavantan </translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="455"/>
       <source> or more symbols</source>
-      <translation type="unfinished"> or more symbols</translation>
+      <translation> aŭ pli da simboloj</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="466"/>
       <source>No dictionaries for full-text search</source>
-      <translation type="unfinished">No dictionaries for full-text search</translation>
+      <translation>Neniuj vortaroj por plenteksta serĉo</translation>
     </message>
   </context>
   <context>
@@ -1089,7 +1089,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
-      <translation type="unfinished">Error in favorities file</translation>
+      <translation>Eraro en favorataj dosiero</translation>
     </message>
   </context>
   <context>
@@ -1097,27 +1097,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="31"/>
       <source>&amp;Delete Selected</source>
-      <translation type="unfinished">&amp;Delete Selected</translation>
+      <translation>&amp;Forigi Elektitajn</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="39"/>
       <source>Copy Selected</source>
-      <translation type="unfinished">Copy Selected</translation>
+      <translation>Kopiu Elektita</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
-      <translation type="unfinished">Add folder</translation>
+      <translation>Aldonu dosierujon</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
-      <translation type="unfinished">Favorites:</translation>
+      <translation>Plej ŝatataj:</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
-      <translation type="unfinished">All selected items will be deleted. Continue?</translation>
+      <translation>Ĉiuj elektitaj eroj estos forigitaj. Ĉu daŭrigi?</translation>
     </message>
   </context>
   <context>
@@ -1135,7 +1135,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/forvo.cc" line="267"/>
       <source>by</source>
-      <translation type="unfinished">by</translation>
+      <translation>de</translation>
     </message>
     <message>
       <location filename="../src/dict/forvo.cc" line="271"/>
@@ -1155,7 +1155,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/forvo.cc" line="309"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation type="unfinished">Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</translation>
+      <translation>Iru al Redaktu|Vortaroj|Fontoj|Forvo kaj petu nian propran API-ŝlosilon por malaperi ĉi tiun eraron.</translation>
     </message>
   </context>
   <context>
@@ -1163,12 +1163,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="19"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Antaŭa</translation>
     </message>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="20"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Sekva</translation>
     </message>
   </context>
   <context>
@@ -1192,27 +1192,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="81"/>
       <source>Ignore words order</source>
-      <translation type="unfinished">Ignore words order</translation>
+      <translation>Ignoru vortojn ordon</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="88"/>
       <source>Ignore diacritics</source>
-      <translation type="unfinished">Ignore diacritics</translation>
+      <translation>Ignoru diakritajn signojn</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="111"/>
       <source>Articles found:</source>
-      <translation type="unfinished">Articles found:</translation>
+      <translation>Trovitaj artikoloj:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="133"/>
       <source>Available dictionaries in group:</source>
-      <translation type="unfinished">Available dictionaries in group:</translation>
+      <translation>Disponeblaj vortaroj en grupo:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="139"/>
       <source>Wait for indexing:</source>
-      <translation type="unfinished">Wait for indexing:</translation>
+      <translation>Atendu indekson:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="252"/>
@@ -1222,7 +1222,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="160"/>
       <source>Total:</source>
-      <translation type="unfinished">Total:</translation>
+      <translation>Totalo:</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="167"/>
@@ -1232,7 +1232,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="184"/>
       <source>Now indexing: None</source>
-      <translation type="unfinished">Now indexing: None</translation>
+      <translation>Nun indeksado: Neniu</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="232"/>
@@ -1269,47 +1269,47 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="92"/>
       <source>&lt;</source>
-      <translation type="unfinished">&lt;</translation>
+      <translation>&lt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="67"/>
       <source>&gt;</source>
-      <translation type="unfinished">&gt;</translation>
+      <translation>&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
       <source>Del</source>
-      <translation type="unfinished">Del</translation>
+      <translation>Del</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="70"/>
       <source>Ins</source>
-      <translation type="unfinished">Ins</translation>
+      <translation>Ins</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="133"/>
       <source>Tab 2</source>
-      <translation type="unfinished">Tab 2</translation>
+      <translation>Langeto 2</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="174"/>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
+      <translation>Ĉu vi certas, ke vi volas forigi ĉiujn grupojn?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="161"/>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation>Ĉu vi certas, ke vi volas forigi la grupon &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="29"/>
       <source>Group tabs</source>
-      <translation type="unfinished">Group tabs</translation>
+      <translation>Grupo langetoj</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="35"/>
       <source>Open groups list</source>
-      <translation type="unfinished">Open groups list</translation>
+      <translation>Malfermu liston de grupoj</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="160"/>
@@ -1324,12 +1324,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.cc" line="149"/>
       <source>Give a new name for the group:</source>
-      <translation type="unfinished">Give a new name for the group:</translation>
+      <translation>Donu novan nomon por la grupo:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="22"/>
       <source>Dictionaries available:</source>
-      <translation type="unfinished">Dictionaries available:</translation>
+      <translation>Disponeblaj vortaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="146"/>
@@ -1344,47 +1344,47 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="143"/>
       <source>Create new dictionary group</source>
-      <translation type="unfinished">Create new dictionary group</translation>
+      <translation>Krei novan vortaran grupon</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Grupo laŭ Lingvoj</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Krei dosierujo-bazitajn grupojn.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Grupo per Dosierujoj</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Grupo per Metadatumoj</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation type="unfinished">Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</translation>
+      <translation>Trenu kaj faligi vortarojn al kaj de la grupoj, movu ilin enen de la grupoj, reordigu la grupojn per via muso.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="153"/>
       <source>Rename current dictionary group</source>
-      <translation type="unfinished">Rename current dictionary group</translation>
+      <translation>Alinomi nunan vortargrupon</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="163"/>
       <source>Remove current dictionary group</source>
-      <translation type="unfinished">Remove current dictionary group</translation>
+      <translation>Forigi nunan vortaran grupon</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.cc" line="114"/>
       <source>Give a name for the new group:</source>
-      <translation type="unfinished">Give a name for the new group:</translation>
+      <translation>Donu nomon por la nova grupo:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="176"/>
@@ -1395,12 +1395,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="89"/>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation type="unfinished">Remove selected dictionaries from group (Del)</translation>
+      <translation>Forigi elektitajn vortarojn el grupo (Del)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="64"/>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation type="unfinished">Add selected dictionaries to group (Ins)</translation>
+      <translation>Aldonu elektitajn vortarojn al grupo (Ins)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="166"/>
@@ -1420,12 +1420,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="173"/>
       <source>Remove all dictionary groups</source>
-      <translation type="unfinished">Remove all dictionary groups</translation>
+      <translation>Forigu ĉiujn vortarajn grupojn</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="200"/>
       <source>Create language-based groups</source>
-      <translation type="unfinished">Create language-based groups</translation>
+      <translation>Kreu lingvajn grupojn</translation>
     </message>
   </context>
   <context>
@@ -1433,12 +1433,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="22"/>
       <source>&amp;Delete Selected</source>
-      <translation type="unfinished">&amp;Delete Selected</translation>
+      <translation>&amp;Forigi Elektitajn</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="30"/>
       <source>Copy Selected</source>
-      <translation type="unfinished">Copy Selected</translation>
+      <translation>Kopiu Elektita</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="46"/>
@@ -1448,12 +1448,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1%2</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="219"/>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation type="unfinished">History size: %1 entries out of maximum %2</translation>
+      <translation>Historia grandeco: %1 enskriboj el maksimumo %2</translation>
     </message>
   </context>
   <context>
@@ -1461,7 +1461,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/hunspell.cc" line="259"/>
       <source>Spelling suggestions: </source>
-      <translation type="unfinished">Spelling suggestions: </translation>
+      <translation>Literumaj sugestoj: </translation>
     </message>
     <message>
       <location filename="../src/dict/hunspell.cc" line="780"/>
@@ -1492,13 +1492,13 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/initializing.ui" line="22"/>
       <source>GoldenDict-ng - Initializing</source>
-      <translation type="unfinished">GoldenDict-ng - Initializing</translation>
+      <translation>GoldenDict-ng - Inicialigo</translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="28"/>
       <location filename="../src/initializing.cc" line="31"/>
       <source>Please wait while indexing dictionary</source>
-      <translation type="unfinished">Please wait while indexing dictionary</translation>
+      <translation>Bonvolu atendi dum indeksado de vortaro</translation>
     </message>
     <message>
       <location filename="../src/initializing.cc" line="22"/>
@@ -1516,7 +1516,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
-      <translation type="unfinished">Ido</translation>
+      <translation>Mi faras</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
@@ -1591,7 +1591,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
-      <translation type="unfinished">Ganda</translation>
+      <translation>Ganda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="161"/>
@@ -1701,7 +1701,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>Venda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="291"/>
@@ -1741,12 +1741,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
-      <translation type="unfinished">Kannada</translation>
+      <translation>Kannada</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
-      <translation type="unfinished">North Ndebele</translation>
+      <translation>Norda Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="119"/>
@@ -1796,7 +1796,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
-      <translation type="unfinished">Lingala</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="226"/>
@@ -1856,7 +1856,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
-      <translation type="unfinished">Luba-Katanga</translation>
+      <translation>Luba-Katanga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
@@ -1926,7 +1926,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
-      <translation type="unfinished">Ndonga</translation>
+      <translation>Ndonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="231"/>
@@ -2036,7 +2036,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="160"/>
@@ -2101,7 +2101,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="199"/>
@@ -2166,7 +2166,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
-      <translation type="unfinished">Bislama</translation>
+      <translation>Bislama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="180"/>
@@ -2246,7 +2246,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
-      <translation type="unfinished">Sinhala</translation>
+      <translation>Sinhala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="157"/>
@@ -2451,62 +2451,62 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
-      <translation type="unfinished">Other Simplified Chinese dialects</translation>
+      <translation>Aliaj simpligitaj ĉinaj dialektoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
-      <translation type="unfinished">Other Traditional Chinese dialects</translation>
+      <translation>Aliaj tradiciaj ĉinaj dialektoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
-      <translation type="unfinished">Other Eastern-European languages</translation>
+      <translation>Aliaj orienteŭropaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
-      <translation type="unfinished">Other Western-European languages</translation>
+      <translation>Aliaj okcidenteŭropaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
-      <translation type="unfinished">Other Russian languages</translation>
+      <translation>Aliaj rusaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
-      <translation type="unfinished">Other Japanese languages</translation>
+      <translation>Aliaj japanaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
-      <translation type="unfinished">Other Baltic languages</translation>
+      <translation>Aliaj baltaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
-      <translation type="unfinished">Other Greek languages</translation>
+      <translation>Aliaj grekaj lingvoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
-      <translation type="unfinished">Other Korean dialects</translation>
+      <translation>Aliaj koreaj dialektoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
-      <translation type="unfinished">Other Turkish dialects</translation>
+      <translation>Aliaj turkaj dialektoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
-      <translation type="unfinished">Other Thai dialects</translation>
+      <translation>Aliaj tajlandaj dialektoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
-      <translation type="unfinished">Tamazight</translation>
+      <translation>Tamazight</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="303"/>
@@ -2519,207 +2519,207 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>franca</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>hispana</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Belarusian</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>bulgaro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>ĉeĥa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>germana</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="47"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>greka</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="48"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>finna</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>itala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Japanoj</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="51"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>korea</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>litova</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>makedona</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>nederlanda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>pola</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Portugala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Rusa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>la slovaka</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albana</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>la serba (cirilskribe)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Sveda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Turka</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Ukraina</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>Ĉina (simpligita)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Ĉina (tradicia)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Vjetnama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>Portugala, Brazila</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Persa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Hispana, Argentino</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>Germana, Svislando</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>Hispana, Bolivio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Taĝika</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>la keĉua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>Araba, Saud-Arabio</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Turkmena</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>Interlingvo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Loĵbano</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>la angla</translation>
     </message>
   </context>
   <context>
@@ -2727,7 +2727,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/dict/loaddictionaries.cc" line="195"/>
       <source>Error loading dictionaries</source>
-      <translation type="unfinished">Error loading dictionaries</translation>
+      <translation>Eraro dum ŝarĝo de vortaroj</translation>
     </message>
   </context>
   <context>
@@ -2735,7 +2735,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/main.cc" line="368"/>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation type="unfinished">Error in configuration file. Continue with default settings?</translation>
+      <translation>Eraro en agorda dosiero. Ĉu daŭrigi kun defaŭltaj agordoj?</translation>
     </message>
   </context>
   <context>
@@ -2743,27 +2743,27 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="553"/>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="388"/>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="143"/>
       <source>Favo&amp;rites</source>
-      <translation type="unfinished">Favo&amp;rites</translation>
+      <translation>Favo&amp;ritoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="299"/>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="314"/>
       <source>F4</source>
-      <translation type="unfinished">F4</translation>
+      <translation>F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1495"/>
@@ -2814,12 +2814,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="344"/>
       <source>Quit from application</source>
-      <translation type="unfinished">Quit from application</translation>
+      <translation>Forlasu de la aplikaĵo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="363"/>
       <source>&amp;Close To Tray</source>
-      <translation type="unfinished">&amp;Close To Tray</translation>
+      <translation>&amp;Proksime Al Pleto</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
@@ -2864,17 +2864,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="347"/>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
       <source>Minimizes the window to tray</source>
-      <translation type="unfinished">Minimizes the window to tray</translation>
+      <translation>Minimumigas la fenestron al pleto</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="411"/>
@@ -2889,12 +2889,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3039"/>
       <source>New Release Available</source>
-      <translation type="unfinished">New Release Available</translation>
+      <translation>Nova Eldono Disponebla</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up:</source>
-      <translation type="unfinished">Look up:</translation>
+      <translation>Rigardu:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="250"/>
@@ -2904,7 +2904,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="382"/>
       <source>Show &amp;Main Window</source>
-      <translation type="unfinished">Show &amp;Main Window</translation>
+      <translation>Montri &amp;Ĉeffenestron</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="333"/>
@@ -2925,7 +2925,7 @@ between classic and school orthography in cyrillic)</translation>
       <location filename="../src/ui/mainwindow.cc" line="306"/>
       <location filename="../src/ui/mainwindow.cc" line="1477"/>
       <source>Look up in:</source>
-      <translation type="unfinished">Look up in:</translation>
+      <translation>Kontrolu en:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="254"/>
@@ -2935,22 +2935,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="2888"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation type="unfinished">Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</translation>
+      <translation>Malsukcesis pravalorigi la mekanismon de monitorado de klavoj.&lt;br&gt;Certiĝu, ke via XServer havas RECORD-etendon ŝaltita.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3040"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation type="unfinished">Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</translation>
+      <translation>Versio &lt;b&gt;%1&lt;/b&gt; de GoldenDict nun estas elŝutebla.&lt;br&gt;Klaku &lt;b&gt;Elŝutu&lt;/b&gt; por atingi la elŝutan paĝon.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="369"/>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="430"/>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
@@ -2976,7 +2976,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="231"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
+      <translation>Prononcu Vorton (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="385"/>
@@ -2986,7 +2986,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3046"/>
       <source>Skip This Release</source>
-      <translation type="unfinished">Skip This Release</translation>
+      <translation>Preterpasi Ĉi tiun Eldonon</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="200"/>
@@ -3001,7 +3001,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3251"/>
       <source>No printer is available. Please install one first.</source>
-      <translation type="unfinished">No printer is available. Please install one first.</translation>
+      <translation>Neniu presilo disponeblas. Bonvolu unue instali unu.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="115"/>
@@ -3026,17 +3026,17 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Zoom In</source>
-      <translation type="unfinished">Words Zoom In</translation>
+      <translation>Vortoj Zomi</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="372"/>
       <source>Words Zoom Out</source>
-      <translation type="unfinished">Words Zoom Out</translation>
+      <translation>Vortoj Zoom Out</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="374"/>
       <source>Words Normal Size</source>
-      <translation type="unfinished">Words Normal Size</translation>
+      <translation>Vortoj Normala Grandeco</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="421"/>
@@ -3056,7 +3056,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="411"/>
       <source>Opened tabs</source>
-      <translation type="unfinished">Opened tabs</translation>
+      <translation>Malfermitaj langetoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="590"/>
@@ -3066,12 +3066,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="464"/>
       <source>&amp;Configuration Folder</source>
-      <translation type="unfinished">&amp;Configuration Folder</translation>
+      <translation>&amp;Agorda Dosierujo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="121"/>
@@ -3081,24 +3081,24 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="344"/>
       <source>Found in Dictionaries:</source>
-      <translation type="unfinished">Found in Dictionaries:</translation>
+      <translation>Trovita en Vortaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
-      <translation type="unfinished">Add all tabs to Favorites</translation>
+      <translation>Aldonu ĉiujn langetojn al Favoritoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
+      <translation>Ŝnuro por serĉi en vortaroj. La ĵokeroj &apos;*&apos;, &apos;?&apos; kaj aroj de simboloj &apos;[...]&apos; estas permesitaj.
+Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uzas &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respektive</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1609"/>
       <source>Open Tabs List</source>
-      <translation type="unfinished">Open Tabs List</translation>
+      <translation>Malfermu Listo de Tabs</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1866"/>
@@ -3107,22 +3107,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="4485"/>
       <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
-      <translation type="unfinished">Remove current tab from Favorites</translation>
+      <translation>Forigu la nunan langeton el Favoritoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3150"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation type="unfinished">You have chosen to hide a menubar. Use %1 to show it back.</translation>
+      <translation>Vi elektis kaŝi menubreton. Uzu %1 por montri ĝin reen.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
@@ -3145,7 +3145,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3798"/>
       <source>Export history to file</source>
-      <translation type="unfinished">Export history to file</translation>
+      <translation>Eksportu historion al dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3800"/>
@@ -3157,19 +3157,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3839"/>
       <source>History export complete</source>
-      <translation type="unfinished">History export complete</translation>
+      <translation>Historio eksportado finiĝis</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3842"/>
       <location filename="../src/ui/mainwindow.cc" line="3957"/>
       <location filename="../src/ui/mainwindow.cc" line="4006"/>
       <source>Export error: </source>
-      <translation type="unfinished">Export error: </translation>
+      <translation>Eraro de eksporto: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="475"/>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="491"/>
@@ -3179,79 +3179,79 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3860"/>
       <source>Import history from file</source>
-      <translation type="unfinished">Import history from file</translation>
+      <translation>Importi historion el dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: invalid data in file</source>
-      <translation type="unfinished">Import error: invalid data in file</translation>
+      <translation>Importa eraro: nevalidaj datumoj en dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3913"/>
       <source>History import complete</source>
-      <translation type="unfinished">History import complete</translation>
+      <translation>Historio importo finiĝis</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3916"/>
       <location filename="../src/ui/mainwindow.cc" line="4058"/>
       <source>Import error: </source>
-      <translation type="unfinished">Import error: </translation>
+      <translation>Importa eraro: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
-      <translation type="unfinished">Export Favorites to file</translation>
+      <translation>Eksportu Favoritojn al dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;All files (*.*)</translation>
+      <translation>XML-dosieroj (*.xml);;Ĉiuj dosieroj (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3954"/>
       <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
-      <translation type="unfinished">Favorites export complete</translation>
+      <translation>Plej ŝatataj eksportado</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
-      <translation type="unfinished">Export Favorites to file as plain list</translation>
+      <translation>Eksportu Favoritojn al dosiero kiel simpla listo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
-      <translation type="unfinished">Import Favorites from file</translation>
+      <translation>Importu Favoritojn el dosiero</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <translation>XML-dosieroj (*.xml);;Txt-dosieroj (*.txt);;Ĉiuj dosieroj (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
-      <translation type="unfinished">Favorites import complete</translation>
+      <translation>Plej ŝatataj importado kompleta</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
-      <translation type="unfinished">Data parsing error</translation>
+      <translation>Eraro de analizado de datumoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4270"/>
       <source>Dictionary info</source>
-      <translation type="unfinished">Dictionary info</translation>
+      <translation>Vortaraj informoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4274"/>
       <source>Dictionary headwords</source>
-      <translation type="unfinished">Dictionary headwords</translation>
+      <translation>Vortaraj kapvortoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4276"/>
       <source>Open dictionary folder</source>
-      <translation type="unfinished">Open dictionary folder</translation>
+      <translation>Malfermu vortaran dosierujon</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4282"/>
@@ -3261,12 +3261,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
-      <translation type="unfinished">Now indexing for full-text search: </translation>
+      <translation>Nun indeksante por plenteksta serĉo: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
+      <translation>Ĉu forigi kapvorton &quot;%1&quot; el Favoritoj?</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
@@ -3276,17 +3276,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="208"/>
       <source>&amp;Results Navigation Pane</source>
-      <translation type="unfinished">&amp;Results Navigation Pane</translation>
+      <translation>&amp;Rezulta Navigado-Panelo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="235"/>
       <source>Favor&amp;ites Pane</source>
-      <translation type="unfinished">Favor&amp;ites Pane</translation>
+      <translation>Favora&amp;itoj Paneo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="419"/>
       <source>Print Pre&amp;view</source>
-      <translation type="unfinished">Print Pre&amp;view</translation>
+      <translation>Presita antaŭvido</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="427"/>
@@ -3301,17 +3301,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="502"/>
       <source>&amp;Always on Top</source>
-      <translation type="unfinished">&amp;Always on Top</translation>
+      <translation>&amp;Ĉiam supre</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="505"/>
       <source>Always on Top</source>
-      <translation type="unfinished">Always on Top</translation>
+      <translation>Ĉiam supre</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="508"/>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
@@ -3328,7 +3328,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="536"/>
@@ -3338,17 +3338,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="539"/>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="550"/>
       <source>GoldenDict reference</source>
-      <translation type="unfinished">GoldenDict reference</translation>
+      <translation>GoldenDict referenco</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="558"/>
       <source>Show</source>
-      <translation type="unfinished">Show</translation>
+      <translation>Montru</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
@@ -3358,12 +3358,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="571"/>
       <source>Import</source>
-      <translation type="unfinished">Import</translation>
+      <translation>Importi</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="576"/>
       <source>Add</source>
-      <translation type="unfinished">Add</translation>
+      <translation>Aldoni</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
@@ -3372,27 +3372,27 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="1949"/>
       <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
-      <translation type="unfinished">Add current tab to Favorites</translation>
+      <translation>Aldonu nunan langeton al Favoritoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="587"/>
       <source>Export to list</source>
-      <translation type="unfinished">Export to list</translation>
+      <translation>Eksportu al listo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="119"/>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation type="unfinished">Show Names in Dictionary &amp;Bar</translation>
+      <translation>Montri Nomojn en Vortaro &amp; Trinkejo</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="120"/>
       <source>Show Small Icons in &amp;Toolbars</source>
-      <translation type="unfinished">Show Small Icons in &amp;Toolbars</translation>
+      <translation>Montru Malgrandajn Piktogramojn en &amp;Ilbretoj</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="195"/>
@@ -3402,32 +3402,32 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
-      <translation type="unfinished">Enable Scanning</translation>
+      <translation>Ebligu Skanadon</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3348"/>
       <source>Article, Complete (*.html)</source>
-      <translation type="unfinished">Article, Complete (*.html)</translation>
+      <translation>Artikolo, Kompleta (*.html)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3349"/>
       <source>Article, HTML Only (*.html)</source>
-      <translation type="unfinished">Article, HTML Only (*.html)</translation>
+      <translation>Artikolo, HTML Nur (*.html)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3435"/>
       <source>Saving article...</source>
-      <translation type="unfinished">Saving article...</translation>
+      <translation>Konservante artikolon...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Konservu artikolon kompleta</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
       <source>The main window is set to be always on top.</source>
-      <translation type="unfinished">The main window is set to be always on top.</translation>
+      <translation>La ĉefa fenestro estas agordita por esti ĉiam supre.</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="262"/>
@@ -3438,7 +3438,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="780"/>
       <location filename="../src/ui/mainwindow.cc" line="863"/>
       <source>Accessibility API is not enabled</source>
-      <translation type="unfinished">Accessibility API is not enabled</translation>
+      <translation>Alirebleco API ne estas ebligita</translation>
     </message>
   </context>
   <context>
@@ -3446,12 +3446,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/mdx.cc" line="625"/>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation type="unfinished">Dictionary file was tampered or corrupted</translation>
+      <translation>Vortardosiero estis mistraktita aŭ koruptita</translation>
     </message>
     <message>
       <location filename="../src/dict/mdx.cc" line="636"/>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation type="unfinished">Failed loading article from %1, reason: %2</translation>
+      <translation>Malsukcesis ŝargi artikolon de %1, kialo: %2</translation>
     </message>
   </context>
   <context>
@@ -3511,7 +3511,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="53"/>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation type="unfinished">Inactive (disabled) dictionaries:</translation>
+      <translation>Neaktivaj (malfunkciigitaj) vortaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="75"/>
@@ -3541,22 +3541,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.ui" line="251"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation type="unfinished">Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
+      <translation>Alĝustigu la ordon trenante kaj faligante erojn en ĝi. Faligi vortarojn al la neaktiva grupo por malebligi ilian uzon.</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="37"/>
       <source>Dictionary order:</source>
-      <translation type="unfinished">Dictionary order:</translation>
+      <translation>Ordo de vortaro:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="208"/>
       <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
+      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="67"/>
       <source>Dictionary information</source>
-      <translation type="unfinished">Dictionary information</translation>
+      <translation>Vortaraj informoj</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.ui" line="165"/>
@@ -3576,12 +3576,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/orderandprops.cc" line="259"/>
       <source>Dictionary headwords</source>
-      <translation type="unfinished">Dictionary headwords</translation>
+      <translation>Vortaraj kapvortoj</translation>
     </message>
     <message>
       <location filename="../src/ui/orderandprops.cc" line="288"/>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation type="unfinished">Dictionaries active: %1, inactive: %2</translation>
+      <translation>Aktivaj vortaroj: %1, neaktivaj: %2</translation>
     </message>
   </context>
   <context>
@@ -3602,49 +3602,49 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
-      <translation type="unfinished">Alt</translation>
+      <translation>Alt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="85"/>
       <source>Start to system tray</source>
-      <translation type="unfinished">Start to system tray</translation>
+      <translation>Komencu al sistema pleto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="552"/>
       <source>Left Shift only</source>
-      <translation type="unfinished">Left Shift only</translation>
+      <translation>Maldekstra Shift nur</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
-      <translation type="unfinished">Ctrl</translation>
+      <translation>Ctrl</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
-      <translation type="unfinished">Win/Meta</translation>
+      <translation>Venko/Meta</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="63"/>
       <source>Enable system tray icon</source>
-      <translation type="unfinished">Enable system tray icon</translation>
+      <translation>Ebligu la sistempleto-ikonon</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="904"/>
       <location filename="../src/ui/preferences.ui" line="984"/>
       <source>Host:</source>
-      <translation type="unfinished">Host:</translation>
+      <translation>Gastiganto:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="914"/>
       <location filename="../src/ui/preferences.ui" line="1001"/>
       <source>Port:</source>
-      <translation type="unfinished">Port:</translation>
+      <translation>Haveno:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
-      <translation type="unfinished">Shift</translation>
+      <translation>Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="891"/>
@@ -3654,73 +3654,73 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="935"/>
       <source>User:</source>
-      <translation type="unfinished">User:</translation>
+      <translation>Uzanto:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="371"/>
       <source>&amp;Scan Popup</source>
-      <translation type="unfinished">&amp;Scan Popup</translation>
+      <translation>&amp;Skani Ŝprucfenestron</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="295"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation type="unfinished">Normally, opening a new tab switches to it immediately.
-With this on however, new tabs will be opened without
-switching to them.</translation>
+      <translation>Normale, malfermi novan langeton tuj ŝanĝas al ĝi.
+Kun ĉi tio ŝaltita tamen, novaj langetoj estos malfermitaj sen
+ŝanĝi al ili.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
-      <translation type="unfinished">Use proxy server</translation>
+      <translation>Uzu prokuran servilon</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="680"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation type="unfinished">Use the following hotkey to translate a word from clipboard:</translation>
+      <translation>Uzu la sekvan klavon por traduki vorton el tondujo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="562"/>
       <source>Windows key or Meta key</source>
-      <translation type="unfinished">Windows key or Meta key</translation>
+      <translation>Vindoza klavo aŭ Meta ŝlosilo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="763"/>
       <source>Auto-pronounce words in main window</source>
-      <translation type="unfinished">Auto-pronounce words in main window</translation>
+      <translation>Aŭtomate prononcu vortojn en ĉefa fenestro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="191"/>
       <source>Start with system</source>
-      <translation type="unfinished">Start with system</translation>
+      <translation>Komencu per sistemo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
-      <translation type="unfinished">Left Alt only</translation>
+      <translation>Maldekstra Alt nur</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
-      <translation type="unfinished">Tabbed browsing</translation>
+      <translation>Retumado kun langeto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="482"/>
       <source>Right Shift only</source>
-      <translation type="unfinished">Right Shift only</translation>
+      <translation>Nur Dekstra Shift</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="92"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation type="unfinished">With this on, an attempt to close main window would hide it instead of closing
-the application.</translation>
+      <translation>Kun ĉi tio aktiva, provo fermi ĉefan fenestron kaŝus ĝin anstataŭ
+la aplikaĵon.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="751"/>
       <source>&amp;Audio</source>
-      <translation type="unfinished">&amp;Audio</translation>
+      <translation>&amp;Audio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="850"/>
@@ -3732,32 +3732,32 @@ for all program&apos;s network requests.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="201"/>
       <source>Interface language:</source>
-      <translation type="unfinished">Interface language:</translation>
+      <translation>Interfaco-lingvo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
-      <translation type="unfinished">Left Ctrl only</translation>
+      <translation>Maldekstra Ctrl nur</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="300"/>
       <source>Open new tabs in background</source>
-      <translation type="unfinished">Open new tabs in background</translation>
+      <translation>Malfermu novajn langetojn en la fono</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="844"/>
       <source>&amp;Network</source>
-      <translation type="unfinished">&amp;Network</translation>
+      <translation>&amp;Reto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="542"/>
       <source>Right Ctrl only</source>
-      <translation type="unfinished">Right Ctrl only</translation>
+      <translation>Dekstra Ctrl nur</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
-      <translation type="unfinished">Lingvo</translation>
+      <translation>Lingvo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="485"/>
@@ -3773,23 +3773,23 @@ for all program&apos;s network requests.</translation>
       <location filename="../src/ui/preferences.ui" line="420"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation type="unfinished">With this enabled, the popup would only show up if all chosen keys are
-in the pressed state when the word selection changes.</translation>
+      <translation>Kun ĉi tio ebligita, la ŝprucfenestro nur aperus se ĉiuj elektitaj klavoj estas
+en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="770"/>
       <source>Auto-pronounce words in scan popup</source>
-      <translation type="unfinished">Auto-pronounce words in scan popup</translation>
+      <translation>Aŭtomate prononcu vortojn en skana ŝprucfenestro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="312"/>
       <source>Open new tabs after the current one</source>
-      <translation type="unfinished">Open new tabs after the current one</translation>
+      <translation>Malfermu novajn langetojn post la nuna</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="624"/>
       <source>Restart the program to apply the language change.</source>
-      <translation type="unfinished">Restart the program to apply the language change.</translation>
+      <translation>Rekomencu la programon por apliki la lingvoŝanĝon.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="492"/>
@@ -3799,34 +3799,34 @@ in the pressed state when the word selection changes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Check for new program releases periodically</source>
-      <translation type="unfinished">Check for new program releases periodically</translation>
+      <translation>Kontrolu novajn programeldonojn periode</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="307"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</translation>
+      <translation>Kun ĉi tio aktiva, novaj langetoj estas malfermitaj tuj post la
+nuna, aktiva. Alie ili aldoniĝas al
+esti la lastaj.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="96"/>
       <source>Close to system tray</source>
-      <translation type="unfinished">Close to system tray</translation>
+      <translation>Proksime al sistema pleto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="59"/>
       <location filename="../src/ui/preferences.cc" line="60"/>
       <source>System default</source>
-      <translation type="unfinished">System default</translation>
+      <translation>Sistemo defaŭlta</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="59"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation type="unfinished">When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</translation>
+      <translation>Kiam ĝi estas ebligita, ikono aperas en la sistempleta areo, kiu povas esti uzata
+por malfermi ĉefan fenestron kaj plenumi aliajn taskojn.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1195"/>
@@ -3835,11 +3835,11 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation type="unfinished">When this is enabled, the program periodically
-checks if a new, updated version of GoldenDict
-is available for download. If it is so, the program
-informs the user about it and prompts to open a
-download page.</translation>
+      <translation>Kiam ĉi tio estas ebligita, la programo periode
+kontrolas ĉu nova, ĝisdatigita versio de GoldenDict
+estas disponebla por elŝuto. Se estas tiel, la programo
+informas la uzanton pri ĝi kaj instigas malfermi
+elŝutan paĝon.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="182"/>
@@ -3864,7 +3864,7 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="623"/>
       <source>Changing Language</source>
-      <translation type="unfinished">Changing Language</translation>
+      <translation>Ŝanĝanta Lingvo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="502"/>
@@ -3874,7 +3874,7 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="653"/>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation type="unfinished">Use the following hotkey to show or hide the main window:</translation>
+      <translation>Uzu la sekvan klavon por montri aŭ kaŝi la ĉefan fenestron:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="515"/>
@@ -3884,7 +3884,7 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="532"/>
       <source>Right Alt only</source>
-      <translation type="unfinished">Right Alt only</translation>
+      <translation>Dekstra Alt nur</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="14"/>
@@ -3904,7 +3904,7 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="723"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation type="unfinished">The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</translation>
+      <translation>La klavoj estas tutmondaj kaj funkcias de iu ajn programo kaj ene de ajna kunteksto kondiĉe ke GoldenDict funkcias fone.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="545"/>
@@ -3914,19 +3914,19 @@ download page.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="647"/>
       <source>Hotkeys</source>
-      <translation type="unfinished">Hotkeys</translation>
+      <translation>Hotkeys</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
-      <translation type="unfinished">Start with scan popup turned on</translation>
+      <translation>Komencu kun skanado ŝprucfenestron ŝaltita</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="81"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation type="unfinished">With this on, the application starts directly to system tray without showing
-its main window.</translation>
+      <translation>Kun ĉi tio enŝaltita, la aplikaĵo komenciĝas rekte al sistempleto sen montri
+sian ĉefan fenestron.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="522"/>
@@ -3936,14 +3936,14 @@ its main window.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="188"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation type="unfinished">Automatically starts GoldenDict after operation system bootup.</translation>
+      <translation>Aŭtomate lanĉas GoldenDict post ekfunkciigo de la operacia sistemo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="377"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
-      <translation type="unfinished">Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</translation>
+      <translation>Elektas ĉu la skana ŝprucfenestra reĝimo estas ŝaltita defaŭlte aŭ ne. Se markite,
+la programo ĉiam komenciĝus kun la skana ŝprucfenestro aktiva.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
@@ -3958,36 +3958,36 @@ the program would always start with the scan popup active.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
-      <translation type="unfinished">Play audio files via built-in audio support</translation>
+      <translation>Ludu sondosierojn per enkonstruita sonsubteno</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
-      <translation type="unfinished">Use internal player:</translation>
+      <translation>Uzu internan ludilon:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
-      <translation type="unfinished">Choose audio back end</translation>
+      <translation>Elektu sonan malantaŭan finon</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
-      <translation type="unfinished">Enter audio player command line</translation>
+      <translation>Enigu komandlinion de aŭdludilo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1119"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</translation>
+      <translation>Ebligi ĉi tion igus GoldenDict bloki plej multajn reklamojn
+malpermesante enhavon (bildoj, kadroj) ne devenantaj de la retejo
+, kiun vi foliumas. Se iu retejo rompas pro tio, provu malŝalti ĉi tion.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1124"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
+      <translation>Malpermesu ŝarĝi enhavon de aliaj retejoj (kaŝas plej multajn reklamojn)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="757"/>
@@ -3997,34 +3997,34 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
     <message>
       <location filename="../src/ui/preferences.ui" line="780"/>
       <source>Playback</source>
-      <translation type="unfinished">Playback</translation>
+      <translation>Reproduktado</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="806"/>
       <source>Use external program:</source>
-      <translation type="unfinished">Use external program:</translation>
+      <translation>Uzu eksteran programon:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="282"/>
       <source>Double-click translates the word clicked</source>
-      <translation type="unfinished">Double-click translates the word clicked</translation>
+      <translation>Duobla klako tradukas la vorton klakita</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="803"/>
       <source>Use any external program to play audio files</source>
-      <translation type="unfinished">Use any external program to play audio files</translation>
+      <translation>Uzu ajnan eksteran programon por ludi sondosierojn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="106"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation type="unfinished">Normally, pressing ESC key moves focus to the translation line.
-With this on however, it will hide the main window.</translation>
+      <translation>Kutime, premante ESC-klavon movas fokuson al la traduklinio.
+Kun ĉi tio ŝaltita tamen, ĝi kaŝos la ĉefan fenestron.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="110"/>
       <source>ESC key hides main window</source>
-      <translation type="unfinished">ESC key hides main window</translation>
+      <translation>ESC-klavo kaŝas la ĉefan fenestron</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
@@ -4034,32 +4034,32 @@ With this on however, it will hide the main window.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
       <source>Hide single tab</source>
-      <translation type="unfinished">Hide single tab</translation>
+      <translation>Kaŝi ununuran langeton</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="141"/>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation type="unfinished">Adjust this value to avoid huge context menus.</translation>
+      <translation>Alĝustigu ĉi tiun valoron por eviti grandegajn kuntekstajn menuojn.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="144"/>
       <source>Context menu dictionaries limit:</source>
-      <translation type="unfinished">Context menu dictionaries limit:</translation>
+      <translation>Kuntekstmenuaj vortaroj limigas:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="388"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation type="unfinished">Send translated word to main window instead of to show it in popup window</translation>
+      <translation>Sendu tradukitan vorton al ĉefa fenestro anstataŭ montri ĝin en ŝprucfenestro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="391"/>
       <source>Send translated word to main window</source>
-      <translation type="unfinished">Send translated word to main window</translation>
+      <translation>Sendu tradukitan vorton al ĉefa fenestro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation type="unfinished">Show a flag window before showing popup window, click the flag to show popup window. </translation>
+      <translation>Montru flagan fenestron antaŭ ol montri ŝprucfenestron, alklaku la flagon por montri ŝprucfenestron. </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="117"/>
@@ -4067,162 +4067,162 @@ With this on however, it will hide the main window.</translation>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Normale, alklaki ligilon, duoble alklaki vorton aŭ serĉi
+elekton en artikolo ŝarĝas la tradukon kaj preskaŭ tuj
+rulumas al la artikolo el la sama vortaro. Kun ĉi tiu opcio malŝaltita,
+tamen, la artikolo el la plej supra vortaro estas montrata.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>Aŭtomate rulumu al cela artikolo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
-      <translation type="unfinished">Dictionary Font: </translation>
+      <translation>Tiparo de vortaro: </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
-      <translation type="unfinished">set the fallback font family for dictionary</translation>
+      <translation>starigu la rezervan tiparon por vortaro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
-      <translation type="unfinished">Article Display style:</translation>
+      <translation>Artikola Montra stilo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>Turnu la UI al mallumo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>Malhela Reĝimo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>Turnu la artikolon montrostilon al malhela.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>Malhela Leganto-Reĝimo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>MRU-ordo: Plej lastatempe uzata mendo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>Spuri al tondujo ŝanĝojn kiam Skanado estas ebligita. Rimarku! Vi ĉiam devus ebligi ĉi tion krom se vi estas en Linukso.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>Ŝanĝo de Tondujo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>Ŝanĝo de Elekto de Trako</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>Selektado de klavoj nur kiam ĉiuj elektitaj klavoj estas tenitaj premitaj:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
-      <translation type="unfinished">Show scan flag when word is selected</translation>
+      <translation>Montru skanan flagon kiam vorto estas elektita</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="866"/>
       <source>System proxy</source>
-      <translation type="unfinished">System proxy</translation>
+      <translation>Sistema prokurilo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="873"/>
       <source>Custom proxy</source>
-      <translation type="unfinished">Custom proxy</translation>
+      <translation>Propra prokurilo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Custom settings</source>
-      <translation type="unfinished">Custom settings</translation>
+      <translation>Propraj agordoj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>Anki Konekti</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>Ferdeko:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>Modelo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>Vorto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>Vortfara kampo...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>Teksto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>Difina kampo...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>Frazo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>Frazkampo (povas esti malplena)...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1131"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</translation>
+      <translation>Iuj retejoj detektas GoldenDict per HTTP-titoloj kaj blokas la petojn.
+Ebligu ĉi tiun opcion por solvi la problemon.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1135"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
+      <translation>Ne identigu GoldenDict en HTTP-kapoj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
-      <translation type="unfinished">Maximum network cache size:</translation>
+      <translation>Maksimuma reta kaŝmemorgrandeco:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1151"/>
@@ -4236,19 +4236,19 @@ If set to 0 the network disk cache will be disabled.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
-      <translation type="unfinished"> MiB</translation>
+      <translation> MiB</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation type="unfinished">When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</translation>
+      <translation>Kiam ĉi tiu opcio estas ebligita, GoldenDict
+forigas sian retan kaŝmemoron el disko dum eliro.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
-      <translation type="unfinished">Clear network cache on exit</translation>
+      <translation>Malplenigi retan kaŝmemoron ĉe eliro</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1227"/>
@@ -4258,7 +4258,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1233"/>
       <source>Allow full-text search for:</source>
-      <translation type="unfinished">Allow full-text search for:</translation>
+      <translation>Permesu plentekstan serĉon por:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
@@ -4268,27 +4268,27 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
-      <translation type="unfinished">articles (0 - unlimited)</translation>
+      <translation>artikoloj (0 - senlima)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1391"/>
       <source>Ad&amp;vanced</source>
-      <translation type="unfinished">Ad&amp;vanced</translation>
+      <translation>Al&amp;avantis</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>Dum sinsekvaj serĉoj, se unu vortaro estas kolapsita per manlibro, ĝi restos kolapsita en la sekva serĉo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>Sesiokolapso</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>Kiam vi uzas tondujo, forigu ĉion post novlinio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
@@ -4298,91 +4298,91 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
       <source>Favorites</source>
-      <translation type="unfinished">Favorites</translation>
+      <translation>Plej ŝatataj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+      <translation>Intervalo de konservado de ŝatatoj. Se agordita al 0 Favoritoj estos konservitaj nur dum eliro.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>Ŝaltu ĉi tiun opcion por konfirmi ĉiun operacion de forigo de eroj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1563"/>
       <source>Confirmation for items deletion</source>
-      <translation type="unfinished">Confirmation for items deletion</translation>
+      <translation>Konfirmo por forigo de eroj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</translation>
+      <translation>Enŝaltu ĉi tiun opcion por ignori neracie longan enigtekston
+de mus-supera, elekto, tondujo aŭ komandlinio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1638"/>
       <source>Ignore input phrases longer than</source>
-      <translation type="unfinished">Ignore input phrases longer than</translation>
+      <translation>Ignoru enigajn frazojn pli longajn ol</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
+      <translation>Enigofrazoj pli longaj ol ĉi tiu grandeco estos ignoritaj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1694"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation type="unfinished">Turn this option on to ignore diacritics while searching articles</translation>
+      <translation>Enŝaltu ĉi tiun opcion por ignori diakritajn signojn dum serĉado de artikoloj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1697"/>
       <source>Ignore diacritics while searching</source>
-      <translation type="unfinished">Ignore diacritics while searching</translation>
+      <translation>Ignoru diakritajn signojn dum serĉado</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1684"/>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation type="unfinished">Turn this option on to always expand optional parts of articles</translation>
+      <translation>Ŝaltu ĉi tiun opcion por ĉiam pligrandigi laŭvolajn partojn de artikoloj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1687"/>
       <source>Expand optional &amp;parts</source>
-      <translation type="unfinished">Expand optional &amp;parts</translation>
+      <translation>Vastigu laŭvolajn &amp;partojn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1624"/>
       <source>Select this option to automatic collapse big articles</source>
-      <translation type="unfinished">Select this option to automatic collapse big articles</translation>
+      <translation>Elektu ĉi tiun opcion por aŭtomata kolapsigi grandajn artikolojn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1627"/>
       <source>Collapse articles more than</source>
-      <translation type="unfinished">Collapse articles more than</translation>
+      <translation>Kolapsi artikolojn pli ol</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1668"/>
       <source>Articles longer than this size will be collapsed</source>
-      <translation type="unfinished">Articles longer than this size will be collapsed</translation>
+      <translation>Artikoloj pli longaj ol ĉi tiu grandeco estos kolapsitaj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1594"/>
       <source>Ignore punctuation while searching</source>
-      <translation type="unfinished">Ignore punctuation while searching</translation>
+      <translation>Ignoru interpunkcion dum serĉado</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1730"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation type="unfinished">Turn this option on to enable extra articles search via synonym lists
-from Stardict, Babylon and GLS dictionaries</translation>
+      <translation>Enŝaltu ĉi tiun opcion por ebligi kromajn artikolojn serĉadon per sinonimaj listoj
+el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1734"/>
       <source>Extra search via synonyms</source>
-      <translation type="unfinished">Extra search via synonyms</translation>
+      <translation>Ekstra serĉo per sinonimoj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1617"/>
@@ -4393,27 +4393,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="332"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation type="unfinished">Ctrl-Tab navigates tabs in MRU order</translation>
+      <translation>Ctrl-Tab navigas klapetojn en MRU-ordo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
-      <translation type="unfinished">Babylon</translation>
+      <translation>Babilono</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1399"/>
       <source>History</source>
-      <translation type="unfinished">History</translation>
+      <translation>Historio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1405"/>
       <source>Turn this option on to store history of the translated words</source>
-      <translation type="unfinished">Turn this option on to store history of the translated words</translation>
+      <translation>Enŝaltu ĉi tiun opcion por konservi historion de la tradukitaj vortoj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1408"/>
       <source>Store &amp;history</source>
-      <translation type="unfinished">Store &amp;history</translation>
+      <translation>Stoki &amp;historion</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1588"/>
@@ -4423,38 +4423,38 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="252"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation type="unfinished">Turn this option on if you want to select words by single mouse click</translation>
+      <translation>Enŝaltu ĉi tiun opcion se vi volas elekti vortojn per unu musklako</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="255"/>
       <source>Select word by single click</source>
-      <translation type="unfinished">Select word by single click</translation>
+      <translation>Elektu vorton per unu klako</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="354"/>
       <source>Add-on style:</source>
-      <translation type="unfinished">Add-on style:</translation>
+      <translation>Aldonaĵa stilo:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1423"/>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation type="unfinished">Specify the maximum number of entries to keep in history.</translation>
+      <translation>Indiku la maksimuman nombron da enskriboj konservitaj en la historio.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1426"/>
       <source>Maximum history size:</source>
-      <translation type="unfinished">Maximum history size:</translation>
+      <translation>Maksimuma historia grandeco:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1463"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation type="unfinished">History saving interval. If set to 0 history will be saved only during exit.</translation>
+      <translation>Intervalo de konservado de historio. Se agordita al 0, la historio estos konservita nur dum eliro.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1469"/>
       <location filename="../src/ui/preferences.ui" line="1531"/>
       <source>Save every</source>
-      <translation type="unfinished">Save every</translation>
+      <translation>Konservu ĉiun</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1486"/>
@@ -4465,27 +4465,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
+      <translation>Klasika</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
-      <translation type="unfinished">Modern</translation>
+      <translation>Modernaj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
-      <translation type="unfinished">Lingoes</translation>
+      <translation>Lingvestoj</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
-      <translation type="unfinished">Lingoes-Blue</translation>
+      <translation>Lingvoes-Blua</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
-      <translation type="unfinished"> MB</translation>
+      <translation> MB</translation>
     </message>
   </context>
   <context>
@@ -4493,7 +4493,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1091"/>
       <source>Audio</source>
-      <translation type="unfinished">Audio</translation>
+      <translation>Aŭdio</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1093"/>
@@ -4503,12 +4503,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1095"/>
       <source>Html</source>
-      <translation type="unfinished">Html</translation>
+      <translation>Html</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1097"/>
       <source>Prefix Match</source>
-      <translation type="unfinished">Prefix Match</translation>
+      <translation>Prefiksa Matĉo</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1099"/>
@@ -4521,17 +4521,17 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/programs.cc" line="182"/>
       <source>No program name was given.</source>
-      <translation type="unfinished">No program name was given.</translation>
+      <translation>Neniu programnomo estis donita.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="198"/>
       <source>The program has crashed.</source>
-      <translation type="unfinished">The program has crashed.</translation>
+      <translation>La programo kraŝis.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="201"/>
       <source>The program has returned exit code %1.</source>
-      <translation type="unfinished">The program has returned exit code %1.</translation>
+      <translation>La programo resendis elirkodon %1.</translation>
     </message>
   </context>
   <context>
@@ -4568,13 +4568,13 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/dict/aard.cc" line="430"/>
       <location filename="../src/dict/dsl.cc" line="1691"/>
       <source>Article loading error</source>
-      <translation type="unfinished">Article loading error</translation>
+      <translation>Eraro de ŝarĝo de artikolo</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="522"/>
       <location filename="../src/dict/slob.cc" line="801"/>
       <source>Article decoding error</source>
-      <translation type="unfinished">Article decoding error</translation>
+      <translation>Eraro pri malkodado de artikoloj</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="563"/>
@@ -4582,71 +4582,71 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/dict/sdict.cc" line="685"/>
       <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
-      <translation type="unfinished">Copyright: %1%2</translation>
+      <translation>Kopirajto: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
       <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
-      <translation type="unfinished">Version: %1%2</translation>
+      <translation>Versio: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
       <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
-      <translation type="unfinished">Author: %1%2</translation>
+      <translation>%2: %1</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
       <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
-      <translation type="unfinished">E-mail: %1%2</translation>
+      <translation>Retpoŝto: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
-      <translation type="unfinished">Title: %1%2</translation>
+      <translation>%2: %1</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
-      <translation type="unfinished">Website: %1%2</translation>
+      <translation>%2: %1</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
-      <translation type="unfinished">Date: %1%2</translation>
+      <translation>Dato%2%1</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="150"/>
       <source>A dictionary lookup program.</source>
-      <translation type="unfinished">A dictionary lookup program.</translation>
+      <translation>Vortara serĉprogramo.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>Vorto aŭ frazo por pridemandi.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
+      <translation>Konservu sencimigajn mesaĝojn al gd_log.txt en la agorda dosierujo.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>Ŝanĝu la grupon de ĉefa fenestro.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>Ŝanĝu la grupon de ŝprucfenestroj.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>Baskuligi skanadon ŝprucfenestron.</translation>
     </message>
   </context>
   <context>
@@ -4654,12 +4654,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1169"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation type="unfinished">Dictionary search/filter (Ctrl+F)</translation>
+      <translation>Vortara serĉo/filtrilo (Ctrl+F)</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1174"/>
       <source>Clear Search</source>
-      <translation type="unfinished">Clear Search</translation>
+      <translation>Klara Serĉo</translation>
     </message>
   </context>
   <context>
@@ -4672,12 +4672,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/articleview.cc" line="2706"/>
       <source>Resource saving error: </source>
-      <translation type="unfinished">Resource saving error: </translation>
+      <translation>Eraro pri konservado de rimedoj: </translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2732"/>
       <source>The referenced resource failed to download.</source>
-      <translation type="unfinished">The referenced resource failed to download.</translation>
+      <translation>La referencita rimedo malsukcesis elŝuti.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2732"/>
@@ -4690,12 +4690,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/romaji.cc" line="117"/>
       <source>Hepburn Romaji for Katakana</source>
-      <translation type="unfinished">Hepburn Romaji for Katakana</translation>
+      <translation>Hepburn Romaji por Katakana</translation>
     </message>
     <message>
       <location filename="../src/dict/romaji.cc" line="108"/>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation type="unfinished">Hepburn Romaji for Hiragana</translation>
+      <translation>Hepburn Romaji por Hiragana</translation>
     </message>
   </context>
   <context>
@@ -4711,7 +4711,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
@@ -4721,39 +4721,39 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="135"/>
       <source>Pronounce Word (Alt+S)</source>
-      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
+      <translation>Prononcu Vorton (Alt+S)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
+      <translation>Aldonu vorton al Favoritaj (Ctrl+E)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="193"/>
       <source>Shows or hides the dictionary bar</source>
-      <translation type="unfinished">Shows or hides the dictionary bar</translation>
+      <translation>Montras aŭ kaŝas la vortarstangon</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
-      <translation type="unfinished">Always stay on top of all other windows</translation>
+      <translation>Ĉiam restu super ĉiuj aliaj fenestroj</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="230"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
-could be resized or managed in other ways.</translation>
+      <translation>Uzu ĉi tion por fiksi la fenestron por ke ĝi restu sur ekrano,
+povus esti regrandigita aŭ administrita alimaniere.</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="152"/>
       <source>Send word to main window (Alt+W)</source>
-      <translation type="unfinished">Send word to main window (Alt+W)</translation>
+      <translation>Sendu vorton al ĉefa fenestro (Alt+W)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="159"/>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="113"/>
@@ -4769,7 +4769,7 @@ could be resized or managed in other ways.</translation>
       <location filename="../src/ui/scanpopup.cc" line="604"/>
       <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
   </context>
   <context>
@@ -4777,37 +4777,37 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="14"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Antaŭa</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Sekva</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
+      <translation>Elstarigi &amp;ĉion</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;Usklecodistinga</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Trovu:</translation>
     </message>
   </context>
   <context>
@@ -4843,19 +4843,19 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="753"/>
       <source>Systems:</source>
-      <translation type="unfinished">Systems:</translation>
+      <translation>Sistemoj:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="780"/>
       <source>Nihon-shiki</source>
-      <translation type="unfinished">Nihon-shiki</translation>
+      <translation>Nihon-shiki</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="262"/>
       <location filename="../src/dict/sources.cc" line="286"/>
       <location filename="../src/dict/sources.cc" line="310"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>Ĉu forigi retejon &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="227"/>
@@ -4865,23 +4865,23 @@ could be resized or managed in other ways.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="820"/>
       <source>Katakana Japanese syllabary</source>
-      <translation type="unfinished">Katakana Japanese syllabary</translation>
+      <translation>Katakana japana silabaro</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="109"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation type="unfinished">Make dictionaries from bunches of audiofiles by adding paths here:</translation>
+      <translation>Faru vortarojn el amasoj da sondosieroj aldonante vojojn ĉi tie:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="195"/>
       <location filename="../src/dict/sources.cc" line="222"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>Ĉu forigi dosierujon &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="741"/>
       <source>Japanese Romaji</source>
-      <translation type="unfinished">Japanese Romaji</translation>
+      <translation>Japana Romaji</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="790"/>
@@ -4889,82 +4889,82 @@ could be resized or managed in other ways.</translation>
 Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
+      <translation>Surbaze de Nihon-shiki-sistemo, sed modifita por moderna norma japano.
+Normigita kiel ISO 3602
 
-Not implemented yet in GoldenDict.</translation>
+Ankoraŭ ne efektivigita en GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="233"/>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation type="unfinished">Wikipedia (MediaWiki) sites:</translation>
+      <translation>Vikipedio (MediaWiki) retejoj:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="103"/>
       <source>Sound Dirs</source>
-      <translation type="unfinished">Sound Dirs</translation>
+      <translation>Sound Dirs</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>Ajnaj eksteraj programoj. Ŝnuro %GDWORD% estos anstataŭigita per la demandvorto. Ŝnuro %GDSEARCH% estos anstataŭigita per la teksto en la serĉbreto. Se ambaŭ parametroj ne estas provizitaj, la kapvorto estos enigita en norman enigaĵon.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
       <source>Lingua Libre</source>
-      <translation type="unfinished">Lingua Libre</translation>
+      <translation>Lingvo Libre</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="471"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provid by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, kunlabora lingva amaskomunikilaro de Vikimedia Francio. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>Ebligu Lingvon Libren</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>ISO 639-3 lingvokodo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uzo de Forvo nuntempe postulas API-ŝlosilon, registriĝu ĉe la retejo por akiri vian propran ŝlosilon.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="605"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Akiru vian propran ŝlosilon &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;ĉi tie&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="760"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,
-based on English phonology</translation>
+      <translation>La plej uzata metodo de transskribo de la japana,
+bazita sur angla fonologio</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="810"/>
       <source>Hiragana Japanese syllabary</source>
-      <translation type="unfinished">Hiragana Japanese syllabary</translation>
+      <translation>Hiragana japana silabaro</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Propra transliterumo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>Ĉi tio aplikita nur en serĉfrazo, kun ĉiu linio reprezentas transliterumon, punktokomo apartigita. Ekzemple, ae;æ,uzantoj povas enigi ae por reprezenti æ en la celvorto.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #tio estas ekzemplo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -4977,10 +4977,10 @@ based on English phonology</translation>
 kana writing systems. Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
+      <translation>La plej regula sistemo, havanta unu-al-unu rilaton al la
+kana skribsistemoj. Normigita kiel ISO 3602
 
-Not implemented yet in GoldenDict.</translation>
+Ankoraŭ ne efektivigita en GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="703"/>
@@ -5002,9 +5002,9 @@ Not implemented yet in GoldenDict.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Ekzemploj:  &amp;quot;epo&amp;quot; por la angla, &amp;quot;fra&amp;quot; por la franca &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+Plena listo de disponeblaj lingvoj troveblas &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; ĉi tie &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
@@ -5014,12 +5014,12 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <location filename="../src/ui/sources.ui" line="165"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation type="unfinished">Path to a directory with Hunspell/Myspell dictionaries:</translation>
+      <translation>Vojo al dosierujo kun Hunspell/Myspell vortaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="87"/>
       <source>Re&amp;scan now</source>
-      <translation type="unfinished">Re&amp;scan now</translation>
+      <translation>Re&amp;skanu nun</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="714"/>
@@ -5029,7 +5029,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <location filename="../src/ui/sources.ui" line="292"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation type="unfinished">Any websites. A string %GDWORD% will be replaced with the query word:</translation>
+      <translation>Ajna retejoj. Ŝnuro %GDWORD% estos anstataŭigita per la demandvorto:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="60"/>
@@ -5061,12 +5061,12 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <location filename="../src/ui/sources.ui" line="286"/>
       <source>Websites</source>
-      <translation type="unfinished">Websites</translation>
+      <translation>Retejoj</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="46"/>
       <source>Paths to search for the dictionary files:</source>
-      <translation type="unfinished">Paths to search for the dictionary files:</translation>
+      <translation>Vojetoj por serĉi la vortarajn dosierojn:</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="194"/>
@@ -5076,22 +5076,22 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <location filename="../src/dict/sources.cc" line="309"/>
       <location filename="../src/dict/sources.cc" line="333"/>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Konfirmu forigon</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="803"/>
       <source>Syllabaries:</source>
-      <translation type="unfinished">Syllabaries:</translation>
+      <translation>Silabaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="190"/>
       <source>Available morphology dictionaries:</source>
-      <translation type="unfinished">Available morphology dictionaries:</translation>
+      <translation>Disponeblaj morfologiaj vortaroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="738"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation type="unfinished">Enables to use the Latin alphabet to write the Japanese language</translation>
+      <translation>Ebligas uzi la latinan alfabeton por skribi la japanan lingvon</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="202"/>
@@ -5101,27 +5101,27 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation type="unfinished">Each morphology dictionary appears as a
-separate auxiliary dictionary which
-provides stem words for searches and
-spelling suggestions for mistyped words.
-Add appropriate dictionaries to the bottoms
-of the appropriate groups to use them.</translation>
+      <translation>Ĉiu morfologia vortaro aperas kiel
+aparta helpvortaro, kiu
+provizas radikvortojn por serĉoj kaj
+literumajn sugestojn por mistajpitaj vortoj.
+Aldonu taŭgajn vortarojn al la fundoj
+de la taŭgaj grupoj por uzi ilin.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="764"/>
       <source>Hepburn</source>
-      <translation type="unfinished">Hepburn</translation>
+      <translation>Hepburn</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="796"/>
       <source>Kunrei-shiki</source>
-      <translation type="unfinished">Kunrei-shiki</translation>
+      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="533"/>
       <source>Forvo</source>
-      <translation type="unfinished">Forvo</translation>
+      <translation>Forvo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="350"/>
@@ -5136,12 +5136,12 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="545"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation type="unfinished">Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
+      <translation>Vivaj elparoloj de &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. La retejo permesas al homoj registri kaj dividi vortprononcojn. Vi povas aŭskulti ilin de GoldenDict.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="558"/>
       <source>Enable pronunciations from Forvo</source>
-      <translation type="unfinished">Enable pronunciations from Forvo</translation>
+      <translation>Ebligu prononcojn de Forvo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="575"/>
@@ -5151,17 +5151,17 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
       <source>Language codes (comma-separated):</source>
-      <translation type="unfinished">Language codes (comma-separated):</translation>
+      <translation>Lingvaj kodoj (komoj disigitaj):</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="625"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation type="unfinished">List of language codes you would like to have. Example: &quot;en, ru&quot;.</translation>
+      <translation>Listo de lingvokodoj, kiujn vi ŝatus havi. Ekzemplo: &quot;en, ru&quot;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="648"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation type="unfinished">Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</translation>
+      <translation>Plena listo de lingvokodoj haveblas &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;ĉi tie&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="692"/>
@@ -5171,7 +5171,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="143"/>
       <source>(not available in portable version)</source>
-      <translation type="unfinished">(not available in portable version)</translation>
+      <translation>(ne havebla en portebla versio)</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="406"/>
@@ -5181,7 +5181,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="334"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>Ĉu forigi programon &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="725"/>
@@ -5192,8 +5192,8 @@ of the appropriate groups to use them.</translation>
       <location filename="../src/ui/sources.ui" line="337"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation type="unfinished">Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</translation>
+      <translation>Alternative, uzu %GD1251% por CP1251, %GDISO1%...%GDISO16% por ISO 8859-1...ISO 8859-16 respektive,
+%GDBIG5% por Big-5, %GDBIG5HKSCS% por Big5-HKSCS, %GDGBK% por GBK kaj GB18030, %GDSHIFTJIS% por Shift-JIS .</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="128"/>
@@ -5214,7 +5214,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="20"/>
       <source>Selected voice engines:</source>
-      <translation type="unfinished">Selected voice engines:</translation>
+      <translation>Elektitaj voĉmotoroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="40"/>
@@ -5229,47 +5229,47 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="147"/>
       <source>Preview</source>
-      <translation type="unfinished">Preview</translation>
+      <translation>Antaŭrigardo</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="161"/>
       <source>Available voice engines:</source>
-      <translation type="unfinished">Available voice engines:</translation>
+      <translation>Disponeblaj voĉmotoroj:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="179"/>
       <source>Text to be previewed:</source>
-      <translation type="unfinished">Text to be previewed:</translation>
+      <translation>Teksto antaŭrigardenda:</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="186"/>
       <source>Type text to be previewed here.</source>
-      <translation type="unfinished">Type text to be previewed here.</translation>
+      <translation>Tajpu tekston por antaŭrigardi ĉi tie.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="220"/>
       <source>&amp;Preview</source>
-      <translation type="unfinished">&amp;Preview</translation>
+      <translation>&amp;Antaŭrigardo</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="79"/>
       <source>No TTS voice available</source>
-      <translation type="unfinished">No TTS voice available</translation>
+      <translation>Neniu TTS-voĉo havebla</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="110"/>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Konfirmu forigon</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="111"/>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>Ĉu forigi voĉmotoron &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="80"/>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation type="unfinished">Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
+      <translation>Ne povas trovi disponeblan TTS-voĉon.&lt;br&gt;Bonvolu certigi, ke almenaŭ unu TTS-motoro jam estas instalita en via komputilo.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="71"/>
@@ -5284,7 +5284,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="106"/>
       <source>Rate:</source>
-      <translation type="unfinished">Rate:</translation>
+      <translation>Prezo:</translation>
     </message>
   </context>
   <context>
@@ -5292,7 +5292,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/ui/translatebox.cc" line="108"/>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation type="unfinished">Type a word or phrase to search dictionaries</translation>
+      <translation>Tajpu vorton aŭ frazon por serĉi vortarojn</translation>
     </message>
     <message>
       <location filename="../src/ui/translatebox.cc" line="120"/>
@@ -5315,7 +5315,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
@@ -5344,7 +5344,7 @@ of the appropriate groups to use them.</translation>
       <location filename="../src/dict/sources.cc" line="637"/>
       <location filename="../src/dict/sources.cc" line="670"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation type="unfinished">Insert article as link inside &lt;iframe&gt; tag</translation>
+      <translation>Enigu artikolon kiel ligilon ene de &lt;iframe&gt; -etikedo</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="648"/>
@@ -5362,7 +5362,7 @@ of the appropriate groups to use them.</translation>
     <message>
       <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
-      <translation type="unfinished">Failed to query some dictionaries.</translation>
+      <translation>Malsukcesis pridemandi kelkajn vortarojn.</translation>
     </message>
   </context>
   <context>
