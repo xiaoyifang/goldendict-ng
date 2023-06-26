@@ -3950,7 +3950,7 @@ zaškrtnuto, program bude automaticky startovat s aktivovaným vyskakovacím okn
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignorovat změny vlastního výběru a schránky GoldenDict&apos;</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4226,9 +4226,9 @@ Povolením této volby problém obejdete.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximální místo na disku obsazené síťovou mezipamětí GoldenDict&apos;v
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-Pokud je nastaveno na 0 síťová mezipaměť bude vypnuta.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4260,7 +4260,7 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Don&apos;t vyhledávání ve slovnících obsahujících více než</translation>
+      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4290,7 +4290,7 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Při novém vyhledávání zaostřit hlavní okno nebo vyskakovací okno, i když je viditelné&apos;s</translation>
+      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
