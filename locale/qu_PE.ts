@@ -560,7 +560,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Mana rikch&apos;aywan archiwuta kichayta atinchu</translation>
+      <translation type="unfinished">Can&apos;t read the specified image file.</translation>
     </message>
   </context>
   <context>
@@ -2824,7 +2824,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
-      <translation>&quot;%1&quot; articulota mana jallch&apos;ayta atinchu </translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="244"/>
@@ -3046,12 +3046,12 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="429"/>
       <source>Close all tabs</source>
-      <translation>Tukuy pestañakunata wisq&apos;ay</translation>
+      <translation>Cierra todas las pestañas</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="436"/>
       <source>Close all tabs except current</source>
-      <translation>Tukuy pestañakunata wisq&apos;ay, mana kunan pestañachu </translation>
+      <translation type="unfinished">Close all tabs except current</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="411"/>
@@ -3485,7 +3485,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/dict/sources.cc" line="479"/>
       <source>Enabled</source>
-      <translation>Llank&apos;achkanña</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="485"/>
@@ -3673,7 +3673,7 @@ abiertas sin trasladar a ellas.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="854"/>
       <source>Use proxy server</source>
-      <translation>Servidor proxy nisqawan t&apos;inkichiy</translation>
+      <translation type="unfinished">Use proxy server</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="680"/>
@@ -3698,12 +3698,12 @@ abiertas sin trasladar a ellas.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="512"/>
       <source>Left Alt only</source>
-      <translation>Sapalla lluq&apos;i ALT</translation>
+      <translation type="unfinished">Left Alt only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="289"/>
       <source>Tabbed browsing</source>
-      <translation>Pestaña nisqawan wamp&apos;una</translation>
+      <translation type="unfinished">Tabbed browsing</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="482"/>
@@ -3737,7 +3737,7 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="472"/>
       <source>Left Ctrl only</source>
-      <translation>Sapalla lluq&apos;i CTRL </translation>
+      <translation type="unfinished">Left Ctrl only</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="300"/>
@@ -3918,7 +3918,7 @@ la página web para descargarla.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="381"/>
       <source>Start with scan popup turned on</source>
-      <translation>Programaqa qallariqtin juch&apos;uy qhawanapi maskay</translation>
+      <translation type="unfinished">Start with scan popup turned on</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="81"/>
