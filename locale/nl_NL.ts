@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan&apos;t een kaart zonder woord maken</translation>
+      <translation>anki: kan geen kaart maken zonder een woord</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -482,7 +482,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>aangepaste transliteratie</translation>
     </message>
   </context>
   <context>
@@ -583,7 +583,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van metadata.toml?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
@@ -598,17 +598,17 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Automatisch groeperen op map is mislukt.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>De bovenliggende map van %1 kan niet worden bereikt.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van mappen?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -725,7 +725,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>Trefwoorden laden...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -1352,22 +1352,22 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Groeperen op talen</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Maak op mappen gebaseerde groepen.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Groeperen op mappen</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Groeperen op metagegevens</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -2522,177 +2522,177 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Frans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Spaans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Wit-Russisch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Bulgaars</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Tsjechisch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Duits</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="47"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>Grieks</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="48"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Fins</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Italiaans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Japans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="51"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Koreaans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Litouws</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>Macedonisch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>Nederlands</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Pools</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Portugees</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Russisch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>Slowaaks</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albanees</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>Servisch (Cyrillisch)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Zweeds</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Turks</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Oekraïens</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>Versimpeld Chinees</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Chinese traditionele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Vietnamees</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>Portugees, Braziliaans</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Perzisch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Spaans, Argentinië</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>Duits, Zwitserland</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>Spaans, Bolivia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tadzjieks</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Quechua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
@@ -2722,7 +2722,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Engels</translation>
     </message>
   </context>
   <context>
@@ -3425,7 +3425,7 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Bewaar artikel voltooid</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -3501,7 +3501,7 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Kan&apos;geen audiobuffer openen om te lezen.</translation>
+      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
     </message>
   </context>
   <context>
@@ -3946,7 +3946,7 @@ Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Pop-up niet tonen wanneer selectie of klembord in een GoldenDict&apos;van eigen vensters verandert</translation>
+      <translation>Toon geen pop-up wanneer selectie of klembord verandert in de eigen vensters van een GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
@@ -4781,7 +4781,7 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
@@ -4791,7 +4791,7 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
@@ -4953,17 +4953,17 @@ gebaseerd op Engelse klankleer</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Aangepaste transliteratie</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>Dit was alleen van toepassing op zoektermen, waarbij elke regel een transliteratie vertegenwoordigt, gescheiden door een puntkomma. Bijvoorbeeld, ae;æ,gebruikers kunnen ae invoeren om æ weer te geven in het doelwoord.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #dit is een voorbeeld</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -5001,9 +5001,9 @@ Nog niet geïmplementeerd in GoldenDict.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Voorbeelden:  &amp;quot;eng&amp;quot; voor Engels, &amp;quot;fra&amp;quot; voor Frans &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
