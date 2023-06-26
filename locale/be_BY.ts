@@ -5297,7 +5297,7 @@ of the appropriate groups to use them.</source>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
       <source>Id</source>
-      <translation>Ідэнтыфікатар</translation>
+      <translation type="unfinished">Id</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
