@@ -5024,7 +5024,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <location filename="../src/ui/sources.ui" line="292"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Web raphikuna: (Mask&apos;asqa simiwan &quot;%GDWORD%&quot;ta rantinqa)</translation>
+      <translation type="unfinished">Any websites. A string %GDWORD% will be replaced with the query word:</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="60"/>
@@ -5146,7 +5146,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="618"/>
       <source>Language codes (comma-separated):</source>
-      <translation>Simikunaqpa chimpunku (coma nisqakunawan t&apos;aqasqa):</translation>
+      <translation type="unfinished">Language codes (comma-separated):</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="625"/>
@@ -5161,7 +5161,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="692"/>
       <source>Greek transliteration</source>
-      <translation>Griego qillqaman t&apos;ikray</translation>
+      <translation type="unfinished">Greek transliteration</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="143"/>
@@ -5300,7 +5300,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="280"/>
       <source>Enabled</source>
-      <translation>Llank&apos;achkanña</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="282"/>
@@ -5333,7 +5333,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="646"/>
       <source>Enabled</source>
-      <translation>Llank&apos;achkanña</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="637"/>
@@ -5357,7 +5357,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/wordfinder.cc" line="200"/>
       <source>Failed to query some dictionaries.</source>
-      <translation>Simi-pirwakunapi mask&apos;aspa pantay</translation>
+      <translation type="unfinished">Failed to query some dictionaries.</translation>
     </message>
   </context>
   <context>
