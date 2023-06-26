@@ -3945,12 +3945,12 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>لا تظهر نافذة منبثقة عند التحديد أو الحافظة في واحدة من GoldenDict&apos;s تتغير النوافذ الخاصة</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>تجاهل التغييرات الخاصة بالاختيار والحافظة الخاصة بـ GoldenDict&apos;</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4226,9 +4226,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>الحد الأقصى لمساحة القرص التي تشغلها ذاكرة التخزين المؤقت للشبكة GoldenDict&apos;s في
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
-إذا تم تعيينها على 0 ، فسيتم تعطيل ذاكرة التخزين المؤقت لقرص الشبكة.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -5267,7 +5267,7 @@ of the appropriate groups to use them.</source>
     <message>
       <location filename="../src/texttospeechsource.cc" line="80"/>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>تعذّر العثور على صوت TTS.&lt;br&gt;فضلًا تأكد من وجود محرك TTS بالإصدار الأخير مثبّت على حاسوبك.</translation>
+      <translation type="unfinished">Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
     </message>
     <message>
       <location filename="../src/ui/texttospeechsource.ui" line="71"/>
