@@ -305,12 +305,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1851"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
+      <translation>Lưu &amp;Đánh dấu &quot;%1...&quot;</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2128"/>
       <source>WARNING: Audio Player: %1</source>
-      <translation type="unfinished">WARNING: Audio Player: %1</translation>
+      <translation>CẢNH BÁO: Trình phát âm thanh: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1283"/>
@@ -342,12 +342,12 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="192"/>
       <source>Phrase not found</source>
-      <translation type="unfinished">Phrase not found</translation>
+      <translation>không tìm thấy cụm từ</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="200"/>
       <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
+      <translation>%1 trên %2 trận đấu</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1780"/>
@@ -368,27 +368,27 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>&amp;Send Current Article to Anki</source>
-      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
+      <translation>&amp;Gửi bài báo hiện tại tới Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1860"/>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;Gửi văn bản đã chọn tới Anki</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2002"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation type="unfinished">Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
+      <translation>Tệp âm thanh (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Tất cả tệp (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2072"/>
       <source>Failed to play sound file: %1</source>
-      <translation type="unfinished">Failed to play sound file: %1</translation>
+      <translation>Không thể phát tệp âm thanh: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.hh" line="59"/>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;Tạo ghi chú Anki</translation>
     </message>
   </context>
   <context>
@@ -415,62 +415,62 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="20"/>
       <source>Chinese Conversion</source>
-      <translation type="unfinished">Chinese Conversion</translation>
+      <translation>Chuyển đổi tiếng Trung</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="23"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
+      <translation>Cho phép chuyển đổi giữa các ký tự tiếng Trung giản thể và phồn thể</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="26"/>
       <source>Chinese Con&amp;version</source>
-      <translation type="unfinished">Chinese Con&amp;version</translation>
+      <translation>Phiên bản&amp;Chuyển đổi tiếng Trung</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="35"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
+      <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Đài Loan)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="38"/>
       <source>SC to TC (Taiwan variant)</source>
-      <translation type="unfinished">SC to TC (Taiwan variant)</translation>
+      <translation>SC đến TC (biến thể Đài Loan)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="45"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
+      <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="48"/>
       <source>SC to TC (Hong Kong variant)</source>
-      <translation type="unfinished">SC to TC (Hong Kong variant)</translation>
+      <translation>SC đến TC (biến thể Hồng Kông)</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="55"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
+      <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
     </message>
     <message>
       <location filename="../src/ui/chineseconversion.ui" line="58"/>
       <source>TC to SC</source>
-      <translation type="unfinished">TC to SC</translation>
+      <translation>TC sang SC</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="129"/>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
+      <translation>Chuyển đổi tiếng Trung giản thể sang tiếng Trung phồn thể (biến thể Đài Loan)</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="136"/>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
+      <translation>Chuyển đổi tiếng Trung giản thể sang tiếng Trung phồn thể (biến thể Hồng Kông)</translation>
     </message>
     <message>
       <location filename="../src/dict/chinese.cc" line="143"/>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
+      <translation>Chuyển đổi tiếng Trung phồn thể sang giản thể</translation>
     </message>
   </context>
   <context>
@@ -478,7 +478,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/customtransliteration.cpp" line="51"/>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>phiên âm tùy chỉnh</translation>
     </message>
   </context>
   <context>
@@ -524,7 +524,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
       <source>Favorites folder:</source>
-      <translation type="unfinished">Favorites folder:</translation>
+      <translation>Thư mục yêu thích:</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="45"/>
@@ -579,7 +579,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="891"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên metadata.toml không?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1001"/>
@@ -594,17 +594,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="784"/>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Tự động nhóm theo thư mục không thành công.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="785"/>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>Không thể truy cập thư mục mẹ của %1.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="790"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên các thư mục chứa không?</translation>
     </message>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="1036"/>
@@ -671,7 +671,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="129"/>
       <source>OK</source>
-      <translation type="unfinished">OK</translation>
+      <translation>ĐƯỢC RỒI</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.ui" line="35"/>
@@ -716,12 +716,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>RegExp</source>
-      <translation type="unfinished">RegExp</translation>
+      <translation>RegExp</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="246"/>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>Đang tải tiêu đề...</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="281"/>
@@ -741,7 +741,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="348"/>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>Không thể mở tệp đã xuất</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="357"/>
@@ -757,12 +757,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="400"/>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>Quá trình xuất bị gián đoạn</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="408"/>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>Xuất xong</translation>
     </message>
   </context>
   <context>
@@ -991,12 +991,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/dict/epwing.cc" line="348"/>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>Trang trước</translation>
     </message>
     <message>
       <location filename="../src/dict/epwing.cc" line="384"/>
       <source>Next Page</source>
-      <translation type="unfinished">Next Page</translation>
+      <translation>Trang tiếp theo</translation>
     </message>
   </context>
   <context>
@@ -1032,12 +1032,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="245"/>
       <source>RegExp</source>
-      <translation type="unfinished">RegExp</translation>
+      <translation>RegExp</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="255"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
+      <translation>hỗ trợ cú pháp tìm kiếm xapian, chẳng hạn như AND OR +/-, v.v.</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="261"/>
@@ -1088,7 +1088,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
       <source>Error in favorities file</source>
-      <translation type="unfinished">Error in favorities file</translation>
+      <translation>Lỗi trong tệp yêu thích</translation>
     </message>
   </context>
   <context>
@@ -1106,17 +1106,17 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="47"/>
       <source>Add folder</source>
-      <translation type="unfinished">Add folder</translation>
+      <translation>Thêm thư mục</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="61"/>
       <source>Favorites:</source>
-      <translation type="unfinished">Favorites:</translation>
+      <translation>yêu thích:</translation>
     </message>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
-      <translation type="unfinished">All selected items will be deleted. Continue?</translation>
+      <translation>Tất cả các mục đã chọn sẽ bị xóa. Tiếp tục?</translation>
     </message>
   </context>
   <context>
@@ -1162,12 +1162,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="19"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Trước</translation>
     </message>
     <message>
       <location filename="../src/ui/ftssearchpanel.cc" line="20"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Kế tiếp</translation>
     </message>
   </context>
   <context>
@@ -1191,12 +1191,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="81"/>
       <source>Ignore words order</source>
-      <translation type="unfinished">Ignore words order</translation>
+      <translation>Bỏ qua trật tự từ</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="88"/>
       <source>Ignore diacritics</source>
-      <translation type="unfinished">Ignore diacritics</translation>
+      <translation>Bỏ qua dấu phụ</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="111"/>
@@ -1268,22 +1268,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="92"/>
       <source>&lt;</source>
-      <translation type="unfinished">&lt;</translation>
+      <translation>&lt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="67"/>
       <source>&gt;</source>
-      <translation type="unfinished">&gt;</translation>
+      <translation>&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="95"/>
       <source>Del</source>
-      <translation type="unfinished">Del</translation>
+      <translation>Del</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="70"/>
       <source>Ins</source>
-      <translation type="unfinished">Ins</translation>
+      <translation>trong</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="133"/>
@@ -1348,22 +1348,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui" line="203"/>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Nhóm theo ngôn ngữ</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="210"/>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Tạo các nhóm dựa trên thư mục.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="213"/>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Nhóm theo thư mục</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="220"/>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Nhóm theo siêu dữ liệu</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui" line="244"/>
@@ -1447,7 +1447,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="215"/>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1/%2</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="219"/>
@@ -1510,787 +1510,787 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="153"/>
       <source>Ewe</source>
-      <translation type="unfinished">Ewe</translation>
+      <translation>Cừu cái</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="188"/>
       <source>Ido</source>
-      <translation type="unfinished">Ido</translation>
+      <translation>Tôi làm</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="214"/>
       <source>Lao</source>
-      <translation type="unfinished">Lao</translation>
+      <translation>Lào</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="286"/>
       <source>Twi</source>
-      <translation type="unfinished">Twi</translation>
+      <translation>Twi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="118"/>
       <source>Afar</source>
-      <translation type="unfinished">Afar</translation>
+      <translation>Xa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="122"/>
       <source>Akan</source>
-      <translation type="unfinished">Akan</translation>
+      <translation>tiếng Akan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="144"/>
       <source>Cree</source>
-      <translation type="unfinished">Cree</translation>
+      <translation>Cree</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="185"/>
       <source>Igbo</source>
-      <translation type="unfinished">Igbo</translation>
+      <translation>tiếng Igbo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="206"/>
       <source>Komi</source>
-      <translation type="unfinished">Komi</translation>
+      <translation>komi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="172"/>
       <source>Manx</source>
-      <translation type="unfinished">Manx</translation>
+      <translation>Manx</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="245"/>
       <source>Pali</source>
-      <translation type="unfinished">Pali</translation>
+      <translation>tiếng Pali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="277"/>
       <source>Thai</source>
-      <translation type="unfinished">Thai</translation>
+      <translation>tiếng Thái</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="290"/>
       <source>Urdu</source>
-      <translation type="unfinished">Urdu</translation>
+      <translation>tiếng Urdu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="302"/>
       <source>Zulu</source>
-      <translation type="unfinished">Zulu</translation>
+      <translation>Zulu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="145"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>tiếng séc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="233"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>tiếng Hà Lan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="211"/>
       <source>Ganda</source>
-      <translation type="unfinished">Ganda</translation>
+      <translation>Ganda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="161"/>
       <source>Fulah</source>
-      <translation type="unfinished">Fulah</translation>
+      <translation>Phúc âm</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="154"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>người Hy Lạp</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="173"/>
       <source>Hausa</source>
-      <translation type="unfinished">Hausa</translation>
+      <translation>Hausa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="175"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>tiếng Hin-ddi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="167"/>
       <source>Irish</source>
-      <translation type="unfinished">Irish</translation>
+      <translation>người Ireland</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="200"/>
       <source>Khmer</source>
-      <translation type="unfinished">Khmer</translation>
+      <translation>khmer</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="195"/>
       <source>Kongo</source>
-      <translation type="unfinished">Kongo</translation>
+      <translation>Kongo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="209"/>
       <source>Latin</source>
-      <translation type="unfinished">Latin</translation>
+      <translation>Latin</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="225"/>
       <source>Malay</source>
-      <translation type="unfinished">Malay</translation>
+      <translation>tiếng Mã Lai</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="220"/>
       <source>Maori</source>
-      <translation type="unfinished">Maori</translation>
+      <translation>người Maori</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="228"/>
       <source>Nauru</source>
-      <translation type="unfinished">Nauru</translation>
+      <translation>Nauru</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="242"/>
       <source>Oriya</source>
-      <translation type="unfinished">Oriya</translation>
+      <translation>Oriya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="241"/>
       <source>Oromo</source>
-      <translation type="unfinished">Oromo</translation>
+      <translation>tiếng Oromo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="259"/>
       <source>Sango</source>
-      <translation type="unfinished">Sango</translation>
+      <translation>sango</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="265"/>
       <source>Shona</source>
-      <translation type="unfinished">Shona</translation>
+      <translation>Shona</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="276"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>tajik</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="274"/>
       <source>Tamil</source>
-      <translation type="unfinished">Tamil</translation>
+      <translation>tiếng Tamil</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="285"/>
       <source>Tatar</source>
-      <translation type="unfinished">Tatar</translation>
+      <translation>tatar</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="269"/>
       <source>Swati</source>
-      <translation type="unfinished">Swati</translation>
+      <translation>chữ Swati</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="282"/>
       <source>Tonga</source>
-      <translation type="unfinished">Tonga</translation>
+      <translation>tonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="187"/>
       <source>Inupiaq</source>
-      <translation type="unfinished">Inupiaq</translation>
+      <translation>Inupiaq</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="292"/>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>Venda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="291"/>
       <source>Uzbek</source>
-      <translation type="unfinished">Uzbek</translation>
+      <translation>tiếng Uzbek</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="148"/>
       <source>Welsh</source>
-      <translation type="unfinished">Welsh</translation>
+      <translation>người xứ Wales</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="296"/>
       <source>Wolof</source>
-      <translation type="unfinished">Wolof</translation>
+      <translation>chó sói</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="297"/>
       <source>Xhosa</source>
-      <translation type="unfinished">Xhosa</translation>
+      <translation>Xhosa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="190"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>người Ý</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="250"/>
       <source>Raeto-Romance</source>
-      <translation type="unfinished">Raeto-Romance</translation>
+      <translation>Raeto-Lãng Mạn</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="152"/>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>Dzongkha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="201"/>
       <source>Kannada</source>
-      <translation type="unfinished">Kannada</translation>
+      <translation>tiếng Kannada</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="230"/>
       <source>North Ndebele</source>
-      <translation type="unfinished">North Ndebele</translation>
+      <translation>Bắc Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="119"/>
       <source>Abkhazian</source>
-      <translation type="unfinished">Abkhazian</translation>
+      <translation>tiếng Abkhazia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="208"/>
       <source>Kirghiz</source>
-      <translation type="unfinished">Kirghiz</translation>
+      <translation>Ki-ri-gít</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="251"/>
       <source>Kirundi</source>
-      <translation type="unfinished">Kirundi</translation>
+      <translation>Kirundi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="168"/>
       <source>Scottish Gaelic</source>
-      <translation type="unfinished">Scottish Gaelic</translation>
+      <translation>Tiếng Gaelic Scotland</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="267"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>tiếng Albania</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="217"/>
       <source>Latvian</source>
-      <translation type="unfinished">Latvian</translation>
+      <translation>tiếng Latvia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="222"/>
       <source>Malayalam</source>
-      <translation type="unfinished">Malayalam</translation>
+      <translation>tiếng Malayalam</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="205"/>
       <source>Kurdish</source>
-      <translation type="unfinished">Kurdish</translation>
+      <translation>người Kurd</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="132"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>tiếng Bungari</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="213"/>
       <source>Lingala</source>
-      <translation type="unfinished">Lingala</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="226"/>
       <source>Maltese</source>
-      <translation type="unfinished">Maltese</translation>
+      <translation>cây nho</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="224"/>
       <source>Marathi</source>
-      <translation type="unfinished">Marathi</translation>
+      <translation>tiếng Marathi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="125"/>
       <source>Arabic</source>
-      <translation type="unfinished">Arabic</translation>
+      <translation>tiếng Ả Rập</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="159"/>
       <source>Basque</source>
-      <translation type="unfinished">Basque</translation>
+      <translation>xứ Basque</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="127"/>
       <source>Avaric</source>
-      <translation type="unfinished">Avaric</translation>
+      <translation>Avaric</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="133"/>
       <source>Bihari</source>
-      <translation type="unfinished">Bihari</translation>
+      <translation>Bihari</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="128"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="138"/>
       <source>Breton</source>
-      <translation type="unfinished">Breton</translation>
+      <translation>Breton</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="271"/>
       <source>Sundanese</source>
-      <translation type="unfinished">Sundanese</translation>
+      <translation>tiếng Sundan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="149"/>
       <source>Danish</source>
-      <translation type="unfinished">Danish</translation>
+      <translation>người Đan Mạch</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="151"/>
       <source>Divehi</source>
-      <translation type="unfinished">Divehi</translation>
+      <translation>lặn</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="216"/>
       <source>Luba-Katanga</source>
-      <translation type="unfinished">Luba-Katanga</translation>
+      <translation>Luba-Katanga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="163"/>
       <source>Fijian</source>
-      <translation type="unfinished">Fijian</translation>
+      <translation>người Fiji</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="179"/>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>người Hungary</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="165"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>người Pháp</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="150"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>tiếng Đức</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="223"/>
       <source>Mongolian</source>
-      <translation type="unfinished">Mongolian</translation>
+      <translation>Mông Cổ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="174"/>
       <source>Hebrew</source>
-      <translation type="unfinished">Hebrew</translation>
+      <translation>tiếng Do Thái</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="181"/>
       <source>Herero</source>
-      <translation type="unfinished">Herero</translation>
+      <translation>Herero</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="210"/>
       <source>Luxembourgish</source>
-      <translation type="unfinished">Luxembourgish</translation>
+      <translation>tiếng Luxembourg</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="203"/>
       <source>Kanuri</source>
-      <translation type="unfinished">Kanuri</translation>
+      <translation>Kanuri</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="198"/>
       <source>Kazakh</source>
-      <translation type="unfinished">Kazakh</translation>
+      <translation>tiếng Kazakh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="196"/>
       <source>Kikuyu</source>
-      <translation type="unfinished">Kikuyu</translation>
+      <translation>Kikuyu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="202"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Hàn Quốc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="237"/>
       <source>Navajo</source>
-      <translation type="unfinished">Navajo</translation>
+      <translation>Navajo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="232"/>
       <source>Ndonga</source>
-      <translation type="unfinished">Ndonga</translation>
+      <translation>Ndonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="231"/>
       <source>Nepali</source>
-      <translation type="unfinished">Nepali</translation>
+      <translation>tiếng Nepal</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="240"/>
       <source>Ojibwa</source>
-      <translation type="unfinished">Ojibwa</translation>
+      <translation>Ojibwa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="247"/>
       <source>Pashto</source>
-      <translation type="unfinished">Pashto</translation>
+      <translation>pashto</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="246"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Đánh bóng</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="264"/>
       <source>Samoan</source>
-      <translation type="unfinished">Samoan</translation>
+      <translation>tiếng Samoa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="239"/>
       <source>Occitan</source>
-      <translation type="unfinished">Occitan</translation>
+      <translation>tiếng Occitan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="257"/>
       <source>Sindhi</source>
-      <translation type="unfinished">Sindhi</translation>
+      <translation>Sindhi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="262"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>tiếng Slovak</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="266"/>
       <source>Somali</source>
-      <translation type="unfinished">Somali</translation>
+      <translation>người Somali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="275"/>
       <source>Telugu</source>
-      <translation type="unfinished">Telugu</translation>
+      <translation>tiếng Telugu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="284"/>
       <source>Tsonga</source>
-      <translation type="unfinished">Tsonga</translation>
+      <translation>Tsonga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="281"/>
       <source>Tswana</source>
-      <translation type="unfinished">Tswana</translation>
+      <translation>Tswana</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="288"/>
       <source>Uighur</source>
-      <translation type="unfinished">Uighur</translation>
+      <translation>người Duy Ngô Nhĩ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="260"/>
       <source>Serbo-Croatian</source>
-      <translation type="unfinished">Serbo-Croatian</translation>
+      <translation>Tiếng Serbo-Croatia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="299"/>
       <source>Yoruba</source>
-      <translation type="unfinished">Yoruba</translation>
+      <translation>Yoruba</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="300"/>
       <source>Zhuang</source>
-      <translation type="unfinished">Zhuang</translation>
+      <translation>Choang</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="252"/>
       <source>Romanian</source>
-      <translation type="unfinished">Romanian</translation>
+      <translation>Rumani</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="183"/>
       <source>Indonesian</source>
-      <translation type="unfinished">Indonesian</translation>
+      <translation>tiếng Indonesia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="244"/>
       <source>Panjabi</source>
-      <translation type="unfinished">Panjabi</translation>
+      <translation>Panjabi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="270"/>
       <source>Southern Sotho</source>
-      <translation type="unfinished">Southern Sotho</translation>
+      <translation>Nam Sotho</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="143"/>
       <source>Corsican</source>
-      <translation type="unfinished">Corsican</translation>
+      <translation>Corsican</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="156"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>quốc tế ngữ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="160"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Ba Tư</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="263"/>
       <source>Slovenian</source>
-      <translation type="unfinished">Slovenian</translation>
+      <translation>tiếng Slovenia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="166"/>
       <source>Western Frisian</source>
-      <translation type="unfinished">Western Frisian</translation>
+      <translation>Tây Frisia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="124"/>
       <source>Aragonese</source>
-      <translation type="unfinished">Aragonese</translation>
+      <translation>tiếng Aragon</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="287"/>
       <source>Tahitian</source>
-      <translation type="unfinished">Tahitian</translation>
+      <translation>Tahiti</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="218"/>
       <source>Malagasy</source>
-      <translation type="unfinished">Malagasy</translation>
+      <translation>Malagasy</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="169"/>
       <source>Galician</source>
-      <translation type="unfinished">Galician</translation>
+      <translation>tiếng Galicia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="129"/>
       <source>Azerbaijani</source>
-      <translation type="unfinished">Azerbaijani</translation>
+      <translation>tiếng azerbaijan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="123"/>
       <source>Amharic</source>
-      <translation type="unfinished">Amharic</translation>
+      <translation>tiếng Amharic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="255"/>
       <source>Sanskrit</source>
-      <translation type="unfinished">Sanskrit</translation>
+      <translation>tiếng Phạn</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="192"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>tiếng Nhật</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="289"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>tiếng Ukraina</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="135"/>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="199"/>
       <source>Kalaallisut</source>
-      <translation type="unfinished">Kalaallisut</translation>
+      <translation>kalaallisut</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="130"/>
       <source>Bashkir</source>
-      <translation type="unfinished">Bashkir</translation>
+      <translation>Bashkir</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="131"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Người Belarus</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="204"/>
       <source>Kashmiri</source>
-      <translation type="unfinished">Kashmiri</translation>
+      <translation>người Kashmir</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="256"/>
       <source>Sardinian</source>
-      <translation type="unfinished">Sardinian</translation>
+      <translation>Sardinia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="176"/>
       <source>Hiri Motu</source>
-      <translation type="unfinished">Hiri Motu</translation>
+      <translation>Hiri Motu</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="249"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>quechua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="136"/>
       <source>Bengali</source>
-      <translation type="unfinished">Bengali</translation>
+      <translation>tiếng Bengali</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="193"/>
       <source>Javanese</source>
-      <translation type="unfinished">Javanese</translation>
+      <translation>người Java</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="120"/>
       <source>Avestan</source>
-      <translation type="unfinished">Avestan</translation>
+      <translation>Avestan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="254"/>
       <source>Kinyarwanda</source>
-      <translation type="unfinished">Kinyarwanda</translation>
+      <translation>Kinyarwanda</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="121"/>
       <source>Afrikaans</source>
-      <translation type="unfinished">Afrikaans</translation>
+      <translation>tiếng Nam Phi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="134"/>
       <source>Bislama</source>
-      <translation type="unfinished">Bislama</translation>
+      <translation>Hồi giáo</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="180"/>
       <source>Armenian</source>
-      <translation type="unfinished">Armenian</translation>
+      <translation>người Armenia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="229"/>
       <source>Norwegian Bokmal</source>
-      <translation type="unfinished">Norwegian Bokmal</translation>
+      <translation>Na Uy Bokmal</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="177"/>
       <source>Croatian</source>
-      <translation type="unfinished">Croatian</translation>
+      <translation>tiếng Croatia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="139"/>
       <source>Bosnian</source>
-      <translation type="unfinished">Bosnian</translation>
+      <translation>người Bosnia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="182"/>
       <source>Interlingua</source>
-      <translation type="unfinished">Interlingua</translation>
+      <translation>liên ngôn ngữ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="184"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>xen kẽ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="140"/>
       <source>Catalan</source>
-      <translation type="unfinished">Catalan</translation>
+      <translation>tiếng Catalunya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="268"/>
       <source>Serbian</source>
-      <translation type="unfinished">Serbian</translation>
+      <translation>tiếng Serbia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="227"/>
       <source>Burmese</source>
-      <translation type="unfinished">Burmese</translation>
+      <translation>người Miến Điện</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="253"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>tiếng Nga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="212"/>
       <source>Limburgish</source>
-      <translation type="unfinished">Limburgish</translation>
+      <translation>Limburgish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="235"/>
       <source>Norwegian</source>
-      <translation type="unfinished">Norwegian</translation>
+      <translation>tiếng na uy</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="141"/>
       <source>Chechen</source>
-      <translation type="unfinished">Chechen</translation>
+      <translation>Chechnya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="301"/>
       <source>Chinese</source>
-      <translation type="unfinished">Chinese</translation>
+      <translation>người Trung Quốc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="147"/>
       <source>Chuvash</source>
-      <translation type="unfinished">Chuvash</translation>
+      <translation>Chuvash</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="261"/>
       <source>Sinhala</source>
-      <translation type="unfinished">Sinhala</translation>
+      <translation>Sinhala</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="157"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>người Tây Ban Nha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="207"/>
       <source>Cornish</source>
-      <translation type="unfinished">Cornish</translation>
+      <translation>tiếng Cornwall</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="280"/>
       <source>Tagalog</source>
-      <translation type="unfinished">Tagalog</translation>
+      <translation>Tagalog</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="126"/>
       <source>Assamese</source>
-      <translation type="unfinished">Assamese</translation>
+      <translation>tiếng Assam</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="243"/>
       <source>Ossetian</source>
-      <translation type="unfinished">Ossetian</translation>
+      <translation>Ossetia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="158"/>
       <source>Estonian</source>
-      <translation type="unfinished">Estonian</translation>
+      <translation>tiếng Estonia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="273"/>
       <source>Swahili</source>
-      <translation type="unfinished">Swahili</translation>
+      <translation>tiếng Swahili</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="272"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Thụy Điển</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="137"/>
       <source>Tibetan</source>
-      <translation type="unfinished">Tibetan</translation>
+      <translation>Tây Tạng</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="293"/>
@@ -2300,147 +2300,147 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="221"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>tiếng Macedonia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="248"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>tiếng Bồ Đào Nha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="283"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Thổ Nhĩ Kỳ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="279"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>người Turkmenistan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="171"/>
       <source>Gujarati</source>
-      <translation type="unfinished">Gujarati</translation>
+      <translation>Gujarati</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="189"/>
       <source>Icelandic</source>
-      <translation type="unfinished">Icelandic</translation>
+      <translation>tiếng Iceland</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="191"/>
       <source>Inuktitut</source>
-      <translation type="unfinished">Inuktitut</translation>
+      <translation>Inuktitut</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="155"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Tiếng Anh</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="194"/>
       <source>Georgian</source>
-      <translation type="unfinished">Georgian</translation>
+      <translation>Gruzia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="146"/>
       <source>Church Slavic</source>
-      <translation type="unfinished">Church Slavic</translation>
+      <translation>nhà thờ Slavic</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="164"/>
       <source>Faroese</source>
-      <translation type="unfinished">Faroese</translation>
+      <translation>tiếng Faroe</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="162"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Phần Lan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="294"/>
       <source>Volapuk</source>
-      <translation type="unfinished">Volapuk</translation>
+      <translation>Volapuk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="295"/>
       <source>Walloon</source>
-      <translation type="unfinished">Walloon</translation>
+      <translation>Wallonie</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="197"/>
       <source>Kwanyama</source>
-      <translation type="unfinished">Kwanyama</translation>
+      <translation>Kwanyama</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="219"/>
       <source>Marshallese</source>
-      <translation type="unfinished">Marshallese</translation>
+      <translation>người Marshall</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="258"/>
       <source>Northern Sami</source>
-      <translation type="unfinished">Northern Sami</translation>
+      <translation>Bắc Sami</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="178"/>
       <source>Haitian</source>
-      <translation type="unfinished">Haitian</translation>
+      <translation>Haiti</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="142"/>
       <source>Chamorro</source>
-      <translation type="unfinished">Chamorro</translation>
+      <translation>Chamorro</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="234"/>
       <source>Norwegian Nynorsk</source>
-      <translation type="unfinished">Norwegian Nynorsk</translation>
+      <translation>Na Uy Nynorsk</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="170"/>
       <source>Guarani</source>
-      <translation type="unfinished">Guarani</translation>
+      <translation>Guarani</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="236"/>
       <source>South Ndebele</source>
-      <translation type="unfinished">South Ndebele</translation>
+      <translation>Nam Ndebele</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="238"/>
       <source>Chichewa</source>
-      <translation type="unfinished">Chichewa</translation>
+      <translation>Chichewa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="215"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Litva</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="186"/>
       <source>Sichuan Yi</source>
-      <translation type="unfinished">Sichuan Yi</translation>
+      <translation>Tứ Xuyên Yi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="278"/>
       <source>Tigrinya</source>
-      <translation type="unfinished">Tigrinya</translation>
+      <translation>tigrinya</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="298"/>
       <source>Yiddish</source>
-      <translation type="unfinished">Yiddish</translation>
+      <translation>tiếng Yiddish</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="439"/>
       <source>Traditional Chinese</source>
-      <translation type="unfinished">Traditional Chinese</translation>
+      <translation>Truyền thống Trung Quốc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="440"/>
       <source>Simplified Chinese</source>
-      <translation type="unfinished">Simplified Chinese</translation>
+      <translation>Tiếng Trung giản thể</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="441"/>
@@ -2450,67 +2450,67 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="442"/>
       <source>Other Simplified Chinese dialects</source>
-      <translation type="unfinished">Other Simplified Chinese dialects</translation>
+      <translation>Các phương ngữ tiếng Trung giản thể khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="443"/>
       <source>Other Traditional Chinese dialects</source>
-      <translation type="unfinished">Other Traditional Chinese dialects</translation>
+      <translation>Các phương ngữ Trung Quốc truyền thống khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="444"/>
       <source>Other Eastern-European languages</source>
-      <translation type="unfinished">Other Eastern-European languages</translation>
+      <translation>Các ngôn ngữ Đông Âu khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="445"/>
       <source>Other Western-European languages</source>
-      <translation type="unfinished">Other Western-European languages</translation>
+      <translation>Các ngôn ngữ Tây-Âu khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="446"/>
       <source>Other Russian languages</source>
-      <translation type="unfinished">Other Russian languages</translation>
+      <translation>Các ngôn ngữ Nga khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="447"/>
       <source>Other Japanese languages</source>
-      <translation type="unfinished">Other Japanese languages</translation>
+      <translation>Các ngôn ngữ Nhật Bản khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="448"/>
       <source>Other Baltic languages</source>
-      <translation type="unfinished">Other Baltic languages</translation>
+      <translation>Các ngôn ngữ Baltic khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="449"/>
       <source>Other Greek languages</source>
-      <translation type="unfinished">Other Greek languages</translation>
+      <translation>Các ngôn ngữ Hy Lạp khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="450"/>
       <source>Other Korean dialects</source>
-      <translation type="unfinished">Other Korean dialects</translation>
+      <translation>Các phương ngữ tiếng Hàn khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="451"/>
       <source>Other Turkish dialects</source>
-      <translation type="unfinished">Other Turkish dialects</translation>
+      <translation>Các phương ngữ Thổ Nhĩ Kỳ khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="452"/>
       <source>Other Thai dialects</source>
-      <translation type="unfinished">Other Thai dialects</translation>
+      <translation>Các phương ngữ tiếng Thái khác</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="453"/>
       <source>Tamazight</source>
-      <translation type="unfinished">Tamazight</translation>
+      <translation>tamazight</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="303"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Lojban</translation>
     </message>
   </context>
   <context>
@@ -2518,207 +2518,207 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/language.cc" line="41"/>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>người Pháp</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="42"/>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>người Tây Ban Nha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="43"/>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Người Belarus</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="44"/>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>tiếng Bungari</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="45"/>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>tiếng séc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="46"/>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>tiếng Đức</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="47"/>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>người Hy Lạp</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="48"/>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Phần Lan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="49"/>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>người Ý</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="50"/>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>tiếng Nhật</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="51"/>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Hàn Quốc</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="52"/>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Litva</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="53"/>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>tiếng Macedonia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="54"/>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>tiếng Hà Lan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="55"/>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Đánh bóng</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="56"/>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>tiếng Bồ Đào Nha</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="57"/>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>tiếng Nga</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="58"/>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>tiếng Slovak</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="59"/>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>tiếng Albania</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="60"/>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>Tiếng Serbia (Cyrillic)</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="61"/>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Thụy Điển</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="62"/>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Thổ Nhĩ Kỳ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="63"/>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>tiếng Ukraina</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="64"/>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>tiếng trung giản thể</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="65"/>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Truyền thống Trung Hoa</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="66"/>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Tiếng Việt</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="67"/>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>Bồ Đào Nha, Brazil</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="68"/>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Ba Tư</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="69"/>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Tây Ban Nha, Argentina</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="70"/>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>tiếng Hin-ddi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="71"/>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>quốc tế ngữ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="72"/>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>Đức, Thụy Sĩ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="73"/>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>Tây Ban Nha, Bôlivia</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="74"/>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>tajik</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="75"/>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>quechua</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="76"/>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="77"/>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>Ả Rập, Ả Rập Saudi</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="78"/>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>người Turkmenistan</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="79"/>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>xen kẽ</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="80"/>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Lojban</translation>
     </message>
     <message>
       <location filename="../src/language.cc" line="81"/>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Tiếng Anh</translation>
     </message>
   </context>
   <context>
@@ -2742,27 +2742,27 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="553"/>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="388"/>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="143"/>
       <source>Favo&amp;rites</source>
-      <translation type="unfinished">Favo&amp;rites</translation>
+      <translation>&amp;yêu thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="299"/>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="314"/>
       <source>F4</source>
-      <translation type="unfinished">F4</translation>
+      <translation>F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1495"/>
@@ -2863,12 +2863,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="403"/>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="347"/>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="366"/>
@@ -2944,12 +2944,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="369"/>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="430"/>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="581"/>
@@ -3065,7 +3065,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="453"/>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="464"/>
@@ -3085,7 +3085,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="456"/>
       <source>Add all tabs to Favorites</source>
-      <translation type="unfinished">Add all tabs to Favorites</translation>
+      <translation>Thêm tất cả các tab vào Mục ưa thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1011"/>
@@ -3106,12 +3106,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="4485"/>
       <location filename="../src/ui/mainwindow.cc" line="4524"/>
       <source>Remove current tab from Favorites</source>
-      <translation type="unfinished">Remove current tab from Favorites</translation>
+      <translation>Xóa tab hiện tại khỏi Mục ưa thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1897"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3150"/>
@@ -3121,7 +3121,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3151"/>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="472"/>
@@ -3168,7 +3168,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="475"/>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="491"/>
@@ -3199,43 +3199,43 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3933"/>
       <source>Export Favorites to file</source>
-      <translation type="unfinished">Export Favorites to file</translation>
+      <translation>Xuất yêu thích sang tệp</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>XML files (*.xml);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;All files (*.*)</translation>
+      <translation>Tệp XML (*.xml);;Tất cả tệp (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3954"/>
       <location filename="../src/ui/mainwindow.cc" line="4003"/>
       <source>Favorites export complete</source>
-      <translation type="unfinished">Favorites export complete</translation>
+      <translation>Hoàn tất xuất yêu thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3974"/>
       <source>Export Favorites to file as plain list</source>
-      <translation type="unfinished">Export Favorites to file as plain list</translation>
+      <translation>Xuất Mục ưa thích sang tệp dưới dạng danh sách thuần túy</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4023"/>
       <source>Import Favorites from file</source>
-      <translation type="unfinished">Import Favorites from file</translation>
+      <translation>Nhập Mục ưa thích từ tệp</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4025"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <translation>Tệp XML (*.xml);;Tệp Txt (*.txt);;Tất cả tệp (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4054"/>
       <source>Favorites import complete</source>
-      <translation type="unfinished">Favorites import complete</translation>
+      <translation>Yêu thích nhập khẩu hoàn tất</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4060"/>
       <source>Data parsing error</source>
-      <translation type="unfinished">Data parsing error</translation>
+      <translation>Lỗi phân tích dữ liệu</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4270"/>
@@ -3260,12 +3260,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4428"/>
       <source>Now indexing for full-text search: </source>
-      <translation type="unfinished">Now indexing for full-text search: </translation>
+      <translation>Hiện đang lập chỉ mục cho tìm kiếm toàn văn: </translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="4470"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
+      <translation>Xóa tiêu đề &quot;%1&quot; khỏi Mục ưa thích?</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="162"/>
@@ -3280,7 +3280,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="235"/>
       <source>Favor&amp;ites Pane</source>
-      <translation type="unfinished">Favor&amp;ites Pane</translation>
+      <translation>Ngăn&amp;Ưa thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="419"/>
@@ -3310,7 +3310,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="508"/>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="517"/>
@@ -3327,7 +3327,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="528"/>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="536"/>
@@ -3337,7 +3337,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="539"/>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="550"/>
@@ -3347,7 +3347,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="558"/>
       <source>Show</source>
-      <translation type="unfinished">Show</translation>
+      <translation>Trình diễn</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="566"/>
@@ -3357,12 +3357,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.ui" line="571"/>
       <source>Import</source>
-      <translation type="unfinished">Import</translation>
+      <translation>Nhập khẩu</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="576"/>
       <source>Add</source>
-      <translation type="unfinished">Add</translation>
+      <translation>Thêm vào</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="579"/>
@@ -3371,17 +3371,17 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <location filename="../src/ui/mainwindow.cc" line="1949"/>
       <location filename="../src/ui/mainwindow.cc" line="4477"/>
       <source>Add current tab to Favorites</source>
-      <translation type="unfinished">Add current tab to Favorites</translation>
+      <translation>Thêm tab hiện tại vào Mục ưa thích</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="582"/>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="587"/>
       <source>Export to list</source>
-      <translation type="unfinished">Export to list</translation>
+      <translation>Xuất sang danh sách</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="119"/>
@@ -3401,7 +3401,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="223"/>
       <source>Enable Scanning</source>
-      <translation type="unfinished">Enable Scanning</translation>
+      <translation>Bật tính năng quét</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3348"/>
@@ -3421,7 +3421,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3448"/>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Lưu bài viết hoàn tất</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3499"/>
@@ -3497,7 +3497,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>&apos;thể mở bộ đệm âm thanh để đọc.</translation>
     </message>
   </context>
   <context>
@@ -3601,7 +3601,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="495"/>
       <source>Alt</source>
-      <translation type="unfinished">Alt</translation>
+      <translation>thay thế</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="85"/>
@@ -3616,12 +3616,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="505"/>
       <source>Ctrl</source>
-      <translation type="unfinished">Ctrl</translation>
+      <translation>Điều khiển</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="565"/>
       <source>Win/Meta</source>
-      <translation type="unfinished">Win/Meta</translation>
+      <translation>Thắng/Meta</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="63"/>
@@ -3643,7 +3643,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/ui/preferences.ui" line="525"/>
       <source>Shift</source>
-      <translation type="unfinished">Shift</translation>
+      <translation>Sự thay đổi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="891"/>
@@ -3755,7 +3755,7 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="118"/>
       <source>Lingvo</source>
-      <translation type="unfinished">Lingvo</translation>
+      <translation>linh vo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="485"/>
@@ -3941,32 +3941,32 @@ với tính năng quét popup được bật.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict&apos;thay đổi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>Bỏ qua lựa chọn riêng của GoldenDict&apos;và các thay đổi trong khay nhớ tạm</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Play audio files via built-in audio support</source>
-      <translation type="unfinished">Play audio files via built-in audio support</translation>
+      <translation>Phát các tệp âm thanh thông qua hỗ trợ âm thanh tích hợp</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="789"/>
       <source>Use internal player:</source>
-      <translation type="unfinished">Use internal player:</translation>
+      <translation>Sử dụng trình phát nội bộ:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="796"/>
       <source>Choose audio back end</source>
-      <translation type="unfinished">Choose audio back end</translation>
+      <translation>Chọn đầu cuối âm thanh</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="816"/>
       <source>Enter audio player command line</source>
-      <translation type="unfinished">Enter audio player command line</translation>
+      <translation>Nhập dòng lệnh trình phát âm thanh</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1119"/>
@@ -4052,7 +4052,7 @@ Tuỳ chọn này sẽ ẩn cửa sổ chính khi nhấn phím ESC.</translation
     <message>
       <location filename="../src/ui/preferences.ui" line="606"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation type="unfinished">Show a flag window before showing popup window, click the flag to show popup window. </translation>
+      <translation>Hiển thị cửa sổ cờ trước khi hiển thị cửa sổ bật lên, nhấp vào cờ để hiển thị cửa sổ bật lên. </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="117"/>
@@ -4060,80 +4060,80 @@ Tuỳ chọn này sẽ ẩn cửa sổ chính khi nhấn phím ESC.</translation
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Thông thường, nhấp vào một liên kết, nhấp đúp vào một từ hoặc tra cứu
+lựa chọn trong một bài viết sẽ tải bản dịch và gần như ngay lập tức
+cuộn đến bài viết từ cùng một từ điển. Tuy nhiên, khi tắt tùy chọn này,
+bài viết từ từ điển trên cùng sẽ được hiển thị.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="123"/>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>Tự động cuộn đến bài viết mục tiêu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="208"/>
       <source>Dictionary Font: </source>
-      <translation type="unfinished">Dictionary Font: </translation>
+      <translation>Phông chữ từ điển: </translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="275"/>
       <source>set the fallback font family for dictionary</source>
-      <translation type="unfinished">set the fallback font family for dictionary</translation>
+      <translation>đặt họ phông chữ dự phòng cho từ điển</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="344"/>
       <source>Article Display style:</source>
-      <translation type="unfinished">Article Display style:</translation>
+      <translation>Kiểu hiển thị bài viết:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="230"/>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>Chuyển giao diện người dùng sang màu tối.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="233"/>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>Chế độ tối</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="240"/>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>Chuyển kiểu hiển thị bài viết thành tối.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="243"/>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>Chế độ đầu đọc tối</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="329"/>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>Thứ tự MRU: Thứ tự được sử dụng gần đây nhất.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="398"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>Theo dõi các thay đổi trong khay nhớ tạm khi tính năng Quét được bật. Để ý! Bạn phải luôn kích hoạt tính năng này trừ khi bạn đang sử dụng Linux.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="401"/>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>Theo dõi thay đổi Clipboard</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="408"/>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>Theo dõi thay đổi lựa chọn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="424"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>Chỉ giải quyết lựa chọn khi tất cả các phím đã chọn được nhấn:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="609"/>
       <source>Show scan flag when word is selected</source>
-      <translation type="unfinished">Show scan flag when word is selected</translation>
+      <translation>Hiển thị cờ quét khi từ được chọn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="866"/>
@@ -4153,52 +4153,52 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="970"/>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>Kết nối anki</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="991"/>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1035"/>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>Bộ bài:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1045"/>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>Người mẫu:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1072"/>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>Từ</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1079"/>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>Trường từ vựng...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1086"/>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>Chữ</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1093"/>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>Trường định nghĩa...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1100"/>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>Câu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1107"/>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>Trường câu (có thể để trống)...</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1131"/>
@@ -4215,33 +4215,33 @@ và chặn truy vấn. Bật tính năng này để không chèn định danh v�
     <message>
       <location filename="../src/ui/preferences.ui" line="1144"/>
       <source>Maximum network cache size:</source>
-      <translation type="unfinished">Maximum network cache size:</translation>
+      <translation>Kích thước bộ đệm mạng tối đa:</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1151"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Dung lượng ổ đĩa tối đa mà bộ đệm mạng GoldenDict chiếm dụng là&apos;trong
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Nếu được đặt thành 0, bộ đệm ổ đĩa mạng sẽ bị tắt.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
       <source> MiB</source>
-      <translation type="unfinished"> MiB</translation>
+      <translation> MiB</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1169"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation type="unfinished">When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</translation>
+      <translation>Khi tùy chọn này được bật, GoldenDict
+sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
-      <translation type="unfinished">Clear network cache on exit</translation>
+      <translation>Xóa bộ đệm mạng khi thoát</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1227"/>
@@ -4271,69 +4271,69 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>Trong các lần tìm kiếm liên tiếp, nếu một từ điển được thu gọn bằng cách thủ công, nó sẽ vẫn được thu gọn trong lần tìm kiếm tiếp theo</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>Thu gọn phiên</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó&apos;hiển thị</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
       <source>Favorites</source>
-      <translation type="unfinished">Favorites</translation>
+      <translation>yêu thích</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+      <translation>Khoảng thời gian lưu yêu thích. Nếu được đặt thành 0 Mục ưa thích sẽ chỉ được lưu trong khi thoát.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>Bật tùy chọn này để xác nhận mọi thao tác xóa mục</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1563"/>
       <source>Confirmation for items deletion</source>
-      <translation type="unfinished">Confirmation for items deletion</translation>
+      <translation>Xác nhận xóa mục</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</translation>
+      <translation>Bật tùy chọn này để bỏ qua văn bản đầu vào dài bất hợp lý
+khi di chuột qua, lựa chọn, khay nhớ tạm hoặc dòng lệnh</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1638"/>
       <source>Ignore input phrases longer than</source>
-      <translation type="unfinished">Ignore input phrases longer than</translation>
+      <translation>Bỏ qua các cụm từ đầu vào dài hơn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
+      <translation>Các cụm từ nhập dài hơn kích thước này sẽ bị bỏ qua</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1694"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation type="unfinished">Turn this option on to ignore diacritics while searching articles</translation>
+      <translation>Bật tùy chọn này để bỏ qua dấu phụ khi tìm kiếm bài viết</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1697"/>
       <source>Ignore diacritics while searching</source>
-      <translation type="unfinished">Ignore diacritics while searching</translation>
+      <translation>Bỏ qua dấu phụ khi tìm kiếm</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1684"/>
@@ -4363,19 +4363,19 @@ from mouse-over, selection, clipboard or command line</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1594"/>
       <source>Ignore punctuation while searching</source>
-      <translation type="unfinished">Ignore punctuation while searching</translation>
+      <translation>Bỏ qua dấu câu khi tìm kiếm</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1730"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation type="unfinished">Turn this option on to enable extra articles search via synonym lists
-from Stardict, Babylon and GLS dictionaries</translation>
+      <translation>Bật tùy chọn này để cho phép tìm kiếm bài viết bổ sung thông qua danh sách từ đồng nghĩa
+từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1734"/>
       <source>Extra search via synonyms</source>
-      <translation type="unfinished">Extra search via synonyms</translation>
+      <translation>Tìm kiếm bổ sung thông qua các từ đồng nghĩa</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1617"/>
@@ -4391,7 +4391,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="119"/>
       <source>Babylon</source>
-      <translation type="unfinished">Babylon</translation>
+      <translation>Ba-by-lôn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1399"/>
@@ -4458,27 +4458,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.cc" line="116"/>
       <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
+      <translation>Cổ điển</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="117"/>
       <source>Modern</source>
-      <translation type="unfinished">Modern</translation>
+      <translation>Hiện đại</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="120"/>
       <source>Lingoes</source>
-      <translation type="unfinished">Lingoes</translation>
+      <translation>tiếng lóng</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="121"/>
       <source>Lingoes-Blue</source>
-      <translation type="unfinished">Lingoes-Blue</translation>
+      <translation>Lingoes-Xanh</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.cc" line="132"/>
       <source> MB</source>
-      <translation type="unfinished"> MB</translation>
+      <translation> MB</translation>
     </message>
   </context>
   <context>
@@ -4496,7 +4496,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1095"/>
       <source>Html</source>
-      <translation type="unfinished">Html</translation>
+      <translation>Html</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1097"/>
@@ -4575,71 +4575,71 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <location filename="../src/dict/sdict.cc" line="685"/>
       <location filename="../src/dict/stardict.cc" line="1102"/>
       <source>Copyright: %1%2</source>
-      <translation type="unfinished">Copyright: %1%2</translation>
+      <translation>Bản quyền: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="567"/>
       <location filename="../src/dict/sdict.cc" line="701"/>
       <source>Version: %1%2</source>
-      <translation type="unfinished">Version: %1%2</translation>
+      <translation>Phiên bản: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="401"/>
       <location filename="../src/dict/gls.cc" line="550"/>
       <location filename="../src/dict/stardict.cc" line="1110"/>
       <source>Author: %1%2</source>
-      <translation type="unfinished">Author: %1%2</translation>
+      <translation>Tác giả: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/bgl.cc" line="408"/>
       <location filename="../src/dict/stardict.cc" line="1118"/>
       <source>E-mail: %1%2</source>
-      <translation type="unfinished">E-mail: %1%2</translation>
+      <translation>E-mail: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/sdict.cc" line="653"/>
       <source>Title: %1%2</source>
-      <translation type="unfinished">Title: %1%2</translation>
+      <translation>Tiêu đề: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1126"/>
       <source>Website: %1%2</source>
-      <translation type="unfinished">Website: %1%2</translation>
+      <translation>Trang web: %1%2</translation>
     </message>
     <message>
       <location filename="../src/dict/stardict.cc" line="1134"/>
       <source>Date: %1%2</source>
-      <translation type="unfinished">Date: %1%2</translation>
+      <translation>Ngày: %1%2</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="150"/>
       <source>A dictionary lookup program.</source>
-      <translation type="unfinished">A dictionary lookup program.</translation>
+      <translation>Một chương trình tra cứu từ điển.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="153"/>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>Từ hoặc câu để truy vấn.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="157"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
+      <translation>Lưu thông báo gỡ lỗi vào gd_log.txt trong thư mục cấu hình.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>Thay đổi nhóm cửa sổ chính.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>Thay đổi nhóm cửa sổ bật lên.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>Chuyển đổi cửa sổ bật lên quét.</translation>
     </message>
   </context>
   <context>
@@ -4704,7 +4704,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="142"/>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="14"/>
@@ -4719,7 +4719,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="166"/>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
+      <translation>Thêm từ vào Mục ưa thích (Ctrl+E)</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="193"/>
@@ -4729,7 +4729,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="213"/>
       <source>Always stay on top of all other windows</source>
-      <translation type="unfinished">Always stay on top of all other windows</translation>
+      <translation>Luôn ở trên cùng của tất cả các cửa sổ khác</translation>
     </message>
     <message>
       <location filename="../src/ui/scanpopup.ui" line="230"/>
@@ -4762,7 +4762,7 @@ quản lý theo nhiều cách khác.</translation>
       <location filename="../src/ui/scanpopup.cc" line="604"/>
       <location filename="../src/ui/scanpopup.cc" line="1000"/>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
   </context>
   <context>
@@ -4770,37 +4770,37 @@ quản lý theo nhiều cách khác.</translation>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="14"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Trước</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Kế tiếp</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="20"/>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="24"/>
       <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
+      <translation>Đánh dấu &amp;tất cả</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="28"/>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;Trường hợp nhạy cảm</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="30"/>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Tìm thấy:</translation>
     </message>
   </context>
   <context>
@@ -4831,7 +4831,7 @@ quản lý theo nhiều cách khác.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="813"/>
       <source>Hiragana</source>
-      <translation type="unfinished">Hiragana</translation>
+      <translation>Hiragana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="753"/>
@@ -4841,7 +4841,7 @@ quản lý theo nhiều cách khác.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="780"/>
       <source>Nihon-shiki</source>
-      <translation type="unfinished">Nihon-shiki</translation>
+      <translation>Nihon-shiki</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="262"/>
@@ -4853,7 +4853,7 @@ quản lý theo nhiều cách khác.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="227"/>
       <source>Wikipedia</source>
-      <translation type="unfinished">Wikipedia</translation>
+      <translation>Wikipedia</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="820"/>
@@ -4900,37 +4900,37 @@ Chưa được bổ sung trong Từ điển Vàng.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="412"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>Bất kỳ chương trình bên ngoài. Một chuỗi %GDWORD% sẽ được thay thế bằng từ truy vấn. Chuỗi %GDSEARCH% sẽ được thay thế bằng văn bản trong thanh tìm kiếm. Nếu cả hai tham số không được cung cấp, thì từ tiêu đề sẽ được đưa vào đầu vào tiêu chuẩn.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="465"/>
       <source>Lingua Libre</source>
-      <translation type="unfinished">Lingua Libre</translation>
+      <translation>ngôn ngữ tự do</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="471"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations được cung cấp bởi &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, một thư viện phương tiện ngôn ngữ cộng tác của Wikimedia Pháp. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="481"/>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>Kích hoạt Lingua Libre</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="490"/>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>Mã ngôn ngữ ISO 639-3</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="582"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Việc sử dụng Forvo hiện yêu cầu khóa API, hãy đăng ký trên trang web để nhận khóa của riêng bạn.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="605"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nhận chìa khóa của riêng bạn &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;tại đây&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="760"/>
@@ -4947,17 +4947,17 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="835"/>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Chuyển ngữ tùy chỉnh</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="844"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>Điều này chỉ áp dụng trong cụm từ tìm kiếm, với mỗi dòng đại diện cho một phiên âm, được phân tách bằng dấu chấm phẩy. Ví dụ: ae;æ,người dùng có thể nhập ae để biểu thị æ trong từ mục tiêu.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="854"/>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #đây là một ví dụ</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="681"/>
@@ -4994,14 +4994,14 @@ Chưa được bổ sung trong Từ điển Vàng.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Ví dụ:  &amp;quot;eng&amp;quot; cho tiếng Anh, &amp;quot;fra&amp;quot; cho tiếng Pháp &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; tại đây &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="823"/>
       <source>Katakana</source>
-      <translation type="unfinished">Katakana</translation>
+      <translation>chữ katakana</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="165"/>
@@ -5102,17 +5102,17 @@ phù hợp để sử dụng chúng.</translation>
     <message>
       <location filename="../src/ui/sources.ui" line="764"/>
       <source>Hepburn</source>
-      <translation type="unfinished">Hepburn</translation>
+      <translation>Hepburn</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="796"/>
       <source>Kunrei-shiki</source>
-      <translation type="unfinished">Kunrei-shiki</translation>
+      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="533"/>
       <source>Forvo</source>
-      <translation type="unfinished">Forvo</translation>
+      <translation>Forvo</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui" line="350"/>
@@ -5189,7 +5189,7 @@ phù hợp để sử dụng chúng.</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="128"/>
       <source>Text to Speech</source>
-      <translation type="unfinished">Text to Speech</translation>
+      <translation>chuyển văn bản thành giọng nói</translation>
     </message>
   </context>
   <context>
@@ -5306,7 +5306,7 @@ phù hợp để sử dụng chúng.</translation>
     <message>
       <location filename="../src/texttospeechsource.cc" line="284"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Nhận dạng</translation>
     </message>
     <message>
       <location filename="../src/texttospeechsource.cc" line="286"/>
@@ -5335,12 +5335,12 @@ phù hợp để sử dụng chúng.</translation>
       <location filename="../src/dict/sources.cc" line="637"/>
       <location filename="../src/dict/sources.cc" line="670"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation type="unfinished">Insert article as link inside &lt;iframe&gt; tag</translation>
+      <translation>Chèn bài viết dưới dạng liên kết bên trong thẻ &lt;iframe&gt;</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="648"/>
       <source>As link</source>
-      <translation type="unfinished">As link</translation>
+      <translation>dưới dạng liên kết</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="654"/>
