@@ -329,7 +329,7 @@ programa para estar al corriente de las actualizaciones.
     <message>
       <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>Ist&apos;añataki uka programax janiw utjkiti.</translation>
+      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
@@ -3598,7 +3598,7 @@ Añadir la pestaña actual a favoritos</translation>
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Arunak arsũnatakixa búfer de audio janiw jist&apos;aran atkiti.</translation>
+      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
     </message>
   </context>
   <context>
@@ -4064,7 +4064,7 @@ Akasti marcado, thaqhawi ist&apos;araskaniwa.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Ajllit qillqata mayjt&apos;yasi GoldenDict uka wintana ukjax, janiw uñstir wintana uñachaykiti</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
