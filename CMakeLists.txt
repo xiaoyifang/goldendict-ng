@@ -90,6 +90,11 @@ if (NOT USE_SYSTEM_FMT)
     target_sources(${GOLDENDICT} PRIVATE thirdparty/fmt/format.cc)
 endif ()
 
+if (LINUX)
+    # related: rpmlint warning unused-direct-shlib-dependency
+    target_link_options(${GOLDENDICT} PRIVATE "LINKER:-as-needed")
+endif ()
+
 ### Common parts amount all platforms
 
 # Note: used as c++ string thus need surrounding " "
