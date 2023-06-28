@@ -3951,7 +3951,7 @@ tej opcji powoduje, że program uruchamia się z włączonym skanowaniem automat
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignoruj GoldenDict&apos;sam zaznaczenie i zmiany schowka</translation>
+      <translation>Ignoruj własne zaznaczenie i zmiany schowka wprowadzone przez GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
