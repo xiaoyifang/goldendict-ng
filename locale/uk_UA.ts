@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>анкі: можна&apos;t створити картку без слова</translation>
+      <translation>anki: неможливо створити картку без слова</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3499,7 +3499,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;вдалося відкрити аудіобуфер для читання.</translation>
+      <translation>Не вдалося відкрити аудіобуфер для читання.</translation>
     </message>
   </context>
   <context>
