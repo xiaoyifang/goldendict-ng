@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: można&apos;t utworzyć kartę bez słowa</translation>
+      <translation>anki: nie można utworzyć karty bez słowa</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3498,7 +3498,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Nie można&apos;t otworzyć bufora audio do odczytu.</translation>
+      <translation>Nie można otworzyć bufora audio do odczytu.</translation>
     </message>
   </context>
   <context>
@@ -3946,7 +3946,7 @@ tej opcji powoduje, że program uruchamia się z włączonym skanowaniem automat
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Nie pokazuj wyskakujących okienek podczas wyboru lub schowka w jednym z GoldenDict&apos;zmienia się własne okna</translation>
+      <translation>Nie pokazuj wyskakującego okienka, gdy zmienia się zaznaczenie lub schowek w jednym z własnych okien GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
