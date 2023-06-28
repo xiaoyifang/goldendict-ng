@@ -4222,9 +4222,9 @@ và chặn truy vấn. Bật tính năng này để không chèn định danh v�
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Dung lượng ổ đĩa tối đa mà bộ đệm mạng GoldenDict chiếm dụng là&apos;trong
+      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của GoldenDict chiếm trong
 %1
-Nếu được đặt thành 0, bộ đệm ổ đĩa mạng sẽ bị tắt.</translation>
+Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4286,7 +4286,7 @@ sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translati
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó&apos;hiển thị</translation>
+      <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó hiển thị</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
