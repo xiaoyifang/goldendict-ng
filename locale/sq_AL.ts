@@ -3497,7 +3497,7 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Nuk mund të hapte tamponin audio për lexim.</translation>
     </message>
   </context>
   <context>
@@ -3941,7 +3941,7 @@ Kur e zgjedh, programi nis gjithmonë me skanimin e jashtëm aktiv.</translation
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Mos shfaq popup kur përzgjedhja ose tabela në një nga dritaret e GoldenDict ndryshon</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
@@ -4221,9 +4221,9 @@ Ky opsion e anashkalon problemin.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Hapësira maksimale e diskut të zënë nga cache-i i rrjetit të GoldenDict në
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Nëse vendoset në 0 cache-i i diskut të rrjetit do të çaktivizohet.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4255,7 +4255,7 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Mos kërkoni në fjalorë që përmbajnë më shumë se</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4285,7 +4285,7 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Në një kërkim të ri, fokusoni dritaren kryesore ose kërcyese edhe nëse është e dukshme</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
