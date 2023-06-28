@@ -2824,7 +2824,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
-      <translation>.i nabmi fi pa nu co&apos;a vreji fi pa notci kei fa la&apos;o zoi. %1 .zoi</translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="244"/>
