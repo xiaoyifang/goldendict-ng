@@ -3497,7 +3497,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;thể mở bộ đệm âm thanh để đọc.</translation>
+      <translation>Không thể mở bộ đệm âm thanh để đọc.</translation>
     </message>
   </context>
   <context>
