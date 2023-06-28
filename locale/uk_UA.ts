@@ -3948,7 +3948,7 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не показувати спливаюче вікно під час вибору або буфера обміну в одному з GoldenDict&apos;змінює власні вікна</translation>
+      <translation>Не показувати спливаюче вікно, коли змінюється вибір або буфер обміну в одному з власних вікон GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
