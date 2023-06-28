@@ -3501,7 +3501,7 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Kan de audiobuffer niet openen om te lezen.</translation>
     </message>
   </context>
   <context>
@@ -3951,7 +3951,7 @@ Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>Negeer de eigen selectie en klembordwijzigingen van GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4228,9 +4228,9 @@ en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translatio
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Maximale schijfruimte ingenomen door de netwerkcache van GoldenDict in
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Indien ingesteld op 0, wordt de cache van de netwerkschijf uitgeschakeld.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4262,7 +4262,7 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Zoek niet in woordenboeken met meer dan</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4292,7 +4292,7 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Focus bij een nieuwe zoekopdracht op het hoofd- of pop-upvenster, zelfs als het zichtbaar is</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
