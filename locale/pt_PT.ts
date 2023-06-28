@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: pode&apos;t criar um cartão sem palavra</translation>
+      <translation>anki: não pode criar um cartão sem uma palavra</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -92,7 +92,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Trabalhando com o pop-up&lt;/h3&gt;Para procurar palavras de outros aplicativos ativos, você precisa primeiro ativar a funcionalidade de &lt;i&gt;&quot;Verificar pop-up&quot;&lt;/i&gt; em &lt;b&gt;Preferências&lt;/b&gt;, e então habilite a qualquer momento disparando o &apos;Popup&apos; ícone acima, ou clicando no ícone da bandeja abaixo, com o botão direito do mouse e escolhendo no menu você&apos;compartilhou. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Trabalhando com o pop-up&lt;/h3&gt;Para procurar palavras de outros aplicativos ativos, você precisa primeiro ativar a &lt;i&gt;"Funcionalidade pop-up de digitalização"&lt;/i&gt; em &lt;b&gt;Preferências&lt;/b&gt; e em seguida, habilite-o a qualquer momento ativando o ícone 'Popup' acima ou clicando no ícone da bandeja abaixo com o botão direito do mouse e escolhendo-o no menu exibido.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -209,7 +209,7 @@
       <location filename="../src/ui/articleview.cc" line="1358"/>
       <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>O recurso referenciado não existe&apos;.</translation>
+      <translation>O recurso referenciado não existe.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2098"/>
@@ -295,7 +295,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>O programa de áudio referenciado não existe&apos;t.</translation>
+      <translation>O programa de áudio referenciado não existe.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
@@ -560,7 +560,7 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Pode&apos;t ler o arquivo de imagem especificado.</translation>
+      <translation>Não é possível ler o arquivo de imagem especificado.</translation>
     </message>
   </context>
   <context>
@@ -3498,7 +3498,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Não foi possível&apos;abrir o buffer de áudio para leitura.</translation>
+      <translation>Não foi possível abrir o buffer de áudio para leitura.</translation>
     </message>
   </context>
   <context>
@@ -3948,7 +3948,7 @@ o programa sempre iniciará com o popup de verificação ativo.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Não mostrar pop-up quando a seleção ou a área de transferência em uma das janelas GoldenDict&apos;s mudar</translation>
+      <translation>Não mostrar pop-up quando a seleção ou a área de transferência em uma das próprias janelas do GoldenDict mudar</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
