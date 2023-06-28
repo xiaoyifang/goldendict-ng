@@ -3725,8 +3725,8 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>Programhli programma&apos;s ulgam islegleri üçin proksi serwer
-ulanmak isleseňiz açyň.</translation>
+      <translation>Proksi serwerini ulanmak isleseňiz açyň
+ähli programma we ulgam islegleri üçin.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="201"/>
@@ -4028,7 +4028,7 @@ With this on however, it will hide the main window.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Diňe bir tab açylanda esasy tab setirini görmek&apos;, bu opsiýany saýlaň.</translation>
+      <translation>Diňe bir tab açylanda esasy goýma setirini görmek islemeýän bolsaňyz, bu opsiýany saýlaň.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
@@ -4228,9 +4228,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict&apos;s tor keşi
-%1
--de eýeleýän iň ýokary disk boşlugy 0-a gabat gelse, tor disk keşi ýapylar.</translation>
+      <translation>GoldenDict-iň tor keşi tarapyndan iň köp disk ýeri
+% 1
+0-a gabat gelse, tor diski keşi ýapylar.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4262,7 +4262,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Has köp zady öz içine alýan sözlüklerde&apos;</translation>
+      <translation>Has köp zady öz içine alýan sözlüklerde gözlemäň</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4292,7 +4292,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Täze gözlegde,&apos;görünse-de esasy ýa-da açylan penjire üns beriň</translation>
+      <translation>Täze gözlegde, görünýän hem bolsa esasy ýa-da açylan penjire üns beriň</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
