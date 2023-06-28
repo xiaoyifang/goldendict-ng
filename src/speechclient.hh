@@ -6,6 +6,7 @@
 #include <QTextToSpeech>
 #include <memory>
 #include <QDebug>
+#include <QSharedPointer>
 
 class SpeechClient: public QObject
 {
@@ -38,7 +39,7 @@ public:
   struct InternalData
   {
     explicit InternalData( Config::VoiceEngine const & e ):
-      sp( std::make_unique< QTextToSpeech >( e.engine_name ) ),
+      sp( new QTextToSpeech( e.engine_name ) ),
       engine( e )
     {
       qDebug() << QStringLiteral( "initialize tts" ) << e.engine_name;
@@ -63,7 +64,7 @@ public:
       sp->setRate( e.rate / 10.0 );
     }
 
-    std::unique_ptr< QTextToSpeech > sp;
+    QSharedPointer< QTextToSpeech > sp;
     Engine engine;
   };
 
@@ -77,7 +78,7 @@ public:
   bool tell( QString const & text ) const;
 
  private:
-  std::unique_ptr< InternalData > internalData;
+   QSharedPointer< InternalData > internalData;
 };
 
 #endif // __SPEECHCLIENT_HH_INCLUDED__
