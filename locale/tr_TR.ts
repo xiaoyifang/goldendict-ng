@@ -3957,7 +3957,7 @@ Etkinse, program her zaman aktif kip ile başlar.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>GoldenDict&apos;kendi pencerelerinden birinde seçim veya pano değiştiğinde açılır pencere gösterme</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
