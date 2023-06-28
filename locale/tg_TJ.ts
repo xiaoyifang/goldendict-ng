@@ -4229,8 +4229,8 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Фазои максималии диск, ки аз ҷониби GoldenDict&apos;s кэши шабакавӣ ишғол шудааст, дар
-%1
+      <translation>Фазои максималии дискро кэши шабакаи GoldenDict ишғол мекунад
+% 1
 Агар ба 0 муқаррар карда шавад, кэши диски шабакавӣ ғайрифаъол мешавад.</translation>
     </message>
     <message>
@@ -4293,7 +4293,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро равона кунед, ҳатто агар он&apos;намоён бошад</translation>
+      <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро нигоҳ доред, ҳатто агар он намоён бошад</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
