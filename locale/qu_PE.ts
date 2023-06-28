@@ -3951,7 +3951,7 @@ marcado, el programa siempre iniciará con el modo de escaneo habilitado.</trans
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>GoldenDictpa kikin akllasqanta chaymanta portapapeles tikrakuyninta mana qhawaychu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
