@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan&apos;inte skapa ett kort utan ett ord</translation>
+      <translation>anki: kan inte skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
