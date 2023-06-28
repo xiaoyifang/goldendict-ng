@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: puede&apos;t crear una tarjeta sin una palabra</translation>
+      <translation>anki: no se puede crear una carta sin una palabra</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3498,7 +3498,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>No se pudo&apos;abrir el buffer de audio para leer.</translation>
+      <translation>No se pudo abrir el búfer de audio para leer.</translation>
     </message>
   </context>
   <context>
