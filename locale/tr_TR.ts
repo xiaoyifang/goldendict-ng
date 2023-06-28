@@ -4238,9 +4238,9 @@ Sorunu çözmek için bu seçeneği etkinleştirin.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>
+      <translation>Goldendict'in ağ önbelleğinin kapladığı maksimum disk alanı
 %1
-GoldenDict&apos;s ağ önbelleği tarafından kullanılan maksimum disk alanı 0 olarak ayarlanırsa, ağ disk önbelleği devre dışı bırakılır.</translation>
+0 olarak ayarlanırsa, ağ disk önbelleği devre dışı bırakılır.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4302,7 +4302,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Yeni bir aramada,&apos;görünür olsa bile ana veya açılır pencereye odaklanın</translation>
+      <translation>Yeni bir aramada, görünür olsa bile ana veya açılır pencereye odaklanın</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
