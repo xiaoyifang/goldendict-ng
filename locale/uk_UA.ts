@@ -3953,7 +3953,8 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ігнорувати золотий словник&apos;вибір і зміни буфера обміну</translation>
+      <translation>Увімкніть, якщо ви бажаєте використовувати проксі-сервер
+для всіх мережевих запитів програми.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4229,9 +4230,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимальний дисковий простір, зайнятий GoldenDict&apos;s файл кеша мережі
+      <translation>Максимальний дисковий простір, який займає мережевий кеш GoldenDict
 %1
-Якщо встановлено 0 мережевого кешу на диску буде вимкнено.</translation>
+Якщо встановлено значення 0, кеш мережевого диска буде вимкнено.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4263,7 +4264,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Дон&apos;t пошук в словниках, що містить більше ніж</translation>
+      <translation>Не шукайте в словниках, які містять більше ніж</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4293,7 +4294,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Під час нового пошуку сфокусуватися на головному або спливаючому вікні, навіть якщо воно&apos;видиме</translation>
+      <translation>Під час нового пошуку сфокусуйте головне або спливаюче вікно, навіть якщо воно видиме</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
