@@ -3953,7 +3953,7 @@ o programa sempre iniciará com o popup de verificação ativo.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignorar Diagnóstico de Ouro&apos;s própria seleção e alterações na área de transferência</translation>
+      <translation>Ignorar a própria seleção do GoldenDict e as alterações da área de transferência</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
