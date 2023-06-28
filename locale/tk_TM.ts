@@ -3947,12 +3947,12 @@ programma elmydama skananyň açylmagy bilen işjeň başlar.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>“GoldenDict&apos;-iň öz penjireleriniň birinde saýlama ýa-da gysga paneli üýtgedilende açylan penjäni görkezmäň</translation>
+      <translation>“GoldenDict” -iň öz penjireleriniň birinde saýlama ýa-da gysga paneli açylanda açylma</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>GoldenDict&apos;-yň öz saýlamasyna we bufer çalşygyna ähmiýet bermäň</translation>
+      <translation>GoldenDict &amp; apos-yň öz saýlamalaryna we bufer çalşygyna ähmiýet bermäň</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
