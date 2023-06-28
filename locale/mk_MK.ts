@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: дали&apos;да се создаде картичка без збор</translation>
+      <translation>anki: не може да се создаде картичка без збор</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3505,7 +3505,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;можеше да се отвори аудио бафер за читање.</translation>
+      <translation>Не можеше да се отвори аудио баферот за читање.</translation>
     </message>
   </context>
   <context>
@@ -3954,7 +3954,7 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не прикажувај скокачки прозорец кога се менува изборот или таблата со исечоци во еден од сопствените прозорци на GoldenDict&apos;</translation>
+      <translation>Не прикажувај скокачки прозорец кога се менува изборот или таблата со исечоци во еден од сопствените прозорци на GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
