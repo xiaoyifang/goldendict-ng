@@ -4245,7 +4245,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Clear network cache on exit</source>
-      <translation type="unfinished">Clear network cache on exit</translation>
+      <translation>امسح ذاكرة التخزين المؤقت للشبكة عند الخروج</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1227"/>
@@ -4260,12 +4260,12 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>لا تبحث في قواميس تحتوي على أكثر من</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
       <source>articles (0 - unlimited)</source>
-      <translation type="unfinished">articles (0 - unlimited)</translation>
+      <translation>المقالات (0 - غير محدود)</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1391"/>
@@ -4275,22 +4275,22 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1717"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>أثناء عمليات البحث المتتالية ، إذا تم طي أحد القواميس يدويًا ، فسيظل مطويًا في البحث التالي</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1720"/>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>انهيار الجلسة</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1741"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>عند استخدام الحافظة ، اخلع كل شيء بعد سطر جديد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>في بحث جديد ، ركز على النافذة الرئيسية أو النافذة المنبثقة حتى لو كانت مرئية</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
@@ -4300,12 +4300,12 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1528"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+      <translation>الفاصل الزمني لحفظ المفضلة. إذا تم التعيين على 0 المفضلة ، فسيتم حفظها أثناء الخروج فقط.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1560"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>قم بتشغيل هذا الخيار لتأكيد كل عملية حذف للعناصر</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1563"/>
@@ -4316,8 +4316,8 @@ clears its network cache from disk during exit.</source>
       <location filename="../src/ui/preferences.ui" line="1634"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</translation>
+      <translation>قم بتشغيل هذا الخيار لتجاهل إدخال النص
+الطويل بشكل غير معقول من تمرير الماوس أو التحديد أو الحافظة أو سطر الأوامر</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1638"/>
@@ -4327,7 +4327,7 @@ from mouse-over, selection, clipboard or command line</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1601"/>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
+      <translation>سيتم تجاهل عبارات الإدخال الأطول من هذا الحجم</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1694"/>
@@ -4633,17 +4633,17 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/main.cc" line="161"/>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>تغيير مجموعة النافذة الرئيسية.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="165"/>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>تغيير مجموعة النوافذ المنبثقة.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="170"/>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>قم بتبديل قائمة الفحص المنبثقة.</translation>
     </message>
   </context>
   <context>
@@ -4774,7 +4774,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="14"/>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;سابق</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
