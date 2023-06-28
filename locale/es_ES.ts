@@ -3945,7 +3945,7 @@ el programa empezará siempre con la ventana emergente de búsqueda activada.</t
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>No mostrar ventana emergente cuando la selección o portapapeles en una de las ventanas de GoldenDict&apos;s cambie</translation>
+      <translation>No mostrar ventana emergente cuando cambia la selección o el portapapeles en una de las ventanas propias de GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
