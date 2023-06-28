@@ -3962,7 +3962,7 @@ Etkinse, program her zaman aktif kip ile başlar.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>GoldenDict&apos;kendi seçimini ve pano değişikliklerini yoksay</translation>
+      <translation>GoldenDict'in kendi seçimini ve pano değişikliklerini yoksay</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
