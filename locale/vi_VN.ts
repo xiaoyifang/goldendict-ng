@@ -3941,12 +3941,12 @@ với tính năng quét popup được bật.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict&apos;thay đổi</translation>
+      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict thay đổi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Bỏ qua lựa chọn riêng của GoldenDict&apos;và các thay đổi trong khay nhớ tạm</translation>
+      <translation>Bỏ qua lựa chọn riêng của GoldenDict và thay đổi khay nhớ tạm</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
