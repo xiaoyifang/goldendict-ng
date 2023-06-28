@@ -3950,7 +3950,7 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>انتخاب و تغییرات کلیپ بورد خود GoldenDict&apos;نادیده بگیرید</translation>
+      <translation>انتخاب و تغییرات کلیپ‌بورد خود GoldenDict را نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
