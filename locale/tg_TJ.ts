@@ -3947,12 +3947,12 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Ҳангоми тағирёбии тирезаҳои худи GoldenDict&apos;, тирезаи поп-аппаратро нишон надиҳед</translation>
+      <translation>Ҳангоми тағир додани равзанаҳои худи GoldenDict, тирезаи поп-попаро нишон надиҳед</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Интихоби худ ва тағиротҳои буферии GoldenDict&apos;нодида гиред</translation>
+      <translation>Интихоби худи GoldenDict ва тағиротҳои буфериро нодида гиред</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
