@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki:&apos;t kelime olmadan bir kart oluşturabilir</translation>
+      <translation>anki: kelime olmadan kart oluşturulamaz</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
