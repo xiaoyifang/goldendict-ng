@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: метавонад&apos;т корти бе калима эҷод</translation>
+      <translation>анки: бе калима корт эчод карда наметавонад</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3498,7 +3498,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Буфери аудиоиро барои хондан кушодан муяссар&apos;.</translation>
+      <translation>Буфери аудио барои хондан кушода нашуд.</translation>
     </message>
   </context>
   <context>
