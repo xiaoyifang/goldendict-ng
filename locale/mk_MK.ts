@@ -4237,9 +4237,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимален простор на дискот окупиран од мрежниот кеш GoldenDict&apos;s во
+      <translation>Максимален простор на дискот окупиран од мрежната кеш меморија на GoldenDict
 %1
-Ако е поставен на 0, кешот на мрежниот диск ќе се оневозможи.</translation>
+Ако е поставено на 0, кешот на мрежниот диск ќе биде оневозможен.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4271,7 +4271,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Не барајте&apos;т во речници кои содржат повеќе од</translation>
+      <translation>Не барајте во речници што содржат повеќе од</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4301,7 +4301,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>При ново пребарување, фокусирајте го главниот или скокачкиот прозорец дури и ако е&apos;</translation>
+      <translation>При ново пребарување, фокусирајте го главниот или скокачкиот прозорец дури и ако е видлив</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
