@@ -4228,9 +4228,9 @@ Włącz tę opcję, aby obejść ten problem.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maksymalna ilość miejsca na dysku zajęta przez GoldenDict&apos;s pamięć podręczna w
+      <translation>Maksymalne miejsce na dysku zajmowane przez pamięć podręczną sieci GoldenDict w
 %1
-Jeśli ustawiona na 0 pamięć podręczna dysku sieciowego zostanie wyłączona.</translation>
+Jeśli ustawione na 0, pamięć podręczna dysku sieciowego zostanie wyłączona.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4292,7 +4292,7 @@ czyści swoją pamięć podręczną z dysku podczas wyjścia.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Na nowym wyszukiwaniu wyskakuj główne lub wyskakujące okno nawet jeśli&apos;widoczny</translation>
+      <translation>Podczas nowego wyszukiwania zaznacz okno główne lub wyskakujące, nawet jeśli jest widoczne</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
