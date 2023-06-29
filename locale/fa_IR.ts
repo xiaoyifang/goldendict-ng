@@ -4226,9 +4226,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict&apos;s در
+      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict در
 %1
-اگر روی 0 تنظیم شود، حافظه پنهان دیسک شبکه غیرفعال می شود.</translation>
+اگر روی 0 تنظیم شود، کش دیسک شبکه غیرفعال می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4260,7 +4260,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>در لغت نامه های حاوی بیش از&apos;جستجو نکنید</translation>
+      <translation>در فرهنگ لغت های حاوی بیش از</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4290,7 +4290,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر&apos;s قابل مشاهده باشد</translation>
+      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
