@@ -4229,9 +4229,9 @@ Ative esta opção para contornar o problema.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Máximo de espaço em disco ocupado pelo cache de rede GoldenDict&apos;s em
+      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
 %1
-Se definido para 0 o cache de disco da rede será desativado.</translation>
+Se definido como 0, o cache do disco de rede será desabilitado.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4263,7 +4263,7 @@ apaga seu cache de rede do disco durante a saída.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Pesquisar&apos;t em dicionários contendo mais de</translation>
+      <translation>Não procure em dicionários que contenham mais de</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4293,7 +4293,7 @@ apaga seu cache de rede do disco durante a saída.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Em uma nova pesquisa, focar a janela principal ou pop-up, mesmo que&apos;seja visível</translation>
+      <translation>Em uma nova pesquisa, coloque o foco na janela principal ou pop-up, mesmo que esteja visível</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
