@@ -4225,9 +4225,9 @@ Enable this option to workaround the problem.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Aswan hatun disk espacio GoldenDict llika waqaychasqa kaqwan hap'isqa
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+0 kaqman churasqa kaptinqa llika disk waqaychasqa mana llamk'achisqa kanqa.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4259,7 +4259,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Ama maskaychu aswan achkayuq diccionariokunapi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4289,7 +4289,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Musuq maskaypi, hatun utaq lluqsiq ventanata enfocay, rikukuqña kaptinpas</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
