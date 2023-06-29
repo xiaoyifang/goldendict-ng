@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>анкі: можна&apos;t створити картку без слова</translation>
+      <translation>anki: неможливо створити картку без слова</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3499,7 +3499,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;вдалося відкрити аудіобуфер для читання.</translation>
+      <translation>Не вдалося відкрити аудіобуфер для читання.</translation>
     </message>
   </context>
   <context>
@@ -3948,12 +3948,13 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не показувати спливаюче вікно під час вибору або буфера обміну в одному з GoldenDict&apos;змінює власні вікна</translation>
+      <translation>Не показувати спливаюче вікно, коли змінюється вибір або буфер обміну в одному з власних вікон GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ігнорувати золотий словник&apos;вибір і зміни буфера обміну</translation>
+      <translation>Увімкніть, якщо ви бажаєте використовувати проксі-сервер
+для всіх мережевих запитів програми.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4229,9 +4230,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимальний дисковий простір, зайнятий GoldenDict&apos;s файл кеша мережі
+      <translation>Максимальний дисковий простір, який займає мережевий кеш GoldenDict
 %1
-Якщо встановлено 0 мережевого кешу на диску буде вимкнено.</translation>
+Якщо встановлено значення 0, кеш мережевого диска буде вимкнено.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4263,7 +4264,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Дон&apos;t пошук в словниках, що містить більше ніж</translation>
+      <translation>Не шукайте в словниках, які містять більше ніж</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4293,7 +4294,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Під час нового пошуку сфокусуватися на головному або спливаючому вікні, навіть якщо воно&apos;видиме</translation>
+      <translation>Під час нового пошуку сфокусуйте головне або спливаюче вікно, навіть якщо воно видиме</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

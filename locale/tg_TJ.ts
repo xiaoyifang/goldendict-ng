@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: метавонад&apos;т корти бе калима эҷод</translation>
+      <translation>анки: бе калима корт эчод карда наметавонад</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3498,7 +3498,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Буфери аудиоиро барои хондан кушодан муяссар&apos;.</translation>
+      <translation>Буфери аудио барои хондан кушода нашуд.</translation>
     </message>
   </context>
   <context>
@@ -3947,12 +3947,12 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Ҳангоми тағирёбии тирезаҳои худи GoldenDict&apos;, тирезаи поп-аппаратро нишон надиҳед</translation>
+      <translation>Ҳангоми тағир додани равзанаҳои худи GoldenDict, тирезаи поп-попаро нишон надиҳед</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Интихоби худ ва тағиротҳои буферии GoldenDict&apos;нодида гиред</translation>
+      <translation>Интихоби худи GoldenDict ва тағиротҳои буфериро нодида гиред</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4229,8 +4229,8 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Фазои максималии диск, ки аз ҷониби GoldenDict&apos;s кэши шабакавӣ ишғол шудааст, дар
-%1
+      <translation>Фазои максималии дискро кэши шабакаи GoldenDict ишғол мекунад
+% 1
 Агар ба 0 муқаррар карда шавад, кэши диски шабакавӣ ғайрифаъол мешавад.</translation>
     </message>
     <message>
@@ -4293,7 +4293,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро равона кунед, ҳатто агар он&apos;намоён бошад</translation>
+      <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро нигоҳ доред, ҳатто агар он намоён бошад</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

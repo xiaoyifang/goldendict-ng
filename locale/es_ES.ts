@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: puede&apos;t crear una tarjeta sin una palabra</translation>
+      <translation>anki: no se puede crear una carta sin una palabra</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3498,7 +3498,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>No se pudo&apos;abrir el buffer de audio para leer.</translation>
+      <translation>No se pudo abrir el búfer de audio para leer.</translation>
     </message>
   </context>
   <context>
@@ -3945,12 +3945,12 @@ el programa empezará siempre con la ventana emergente de búsqueda activada.</t
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>No mostrar ventana emergente cuando la selección o portapapeles en una de las ventanas de GoldenDict&apos;s cambie</translation>
+      <translation>No mostrar ventana emergente cuando cambia la selección o el portapapeles en una de las ventanas propias de GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignorar GoldenDict&apos;s propia selección y cambios del portapapeles</translation>
+      <translation>Ignorar la selección propia de GoldenDict y los cambios en el portapapeles</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4226,9 +4226,9 @@ Active esta opción para evitar el problema.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espacio máximo de disco ocupado por GoldenDict&apos;s caché de red en
+      <translation>Espacio máximo en disco ocupado por la caché de red de GoldenDict en
 %1
-Si se establece en 0 se desactivará la caché de disco de red.</translation>
+Si se establece en 0, la memoria caché del disco de red se desactivará.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4260,7 +4260,7 @@ borra su caché de red del disco durante la salida.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Don&apos;t búsqueda en diccionarios que contienen más de</translation>
+      <translation>No busque en diccionarios que contengan más de</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4290,7 +4290,7 @@ borra su caché de red del disco durante la salida.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>En una nueva búsqueda, enfoca la ventana principal o emergente incluso si&apos;s visible</translation>
+      <translation>En una nueva búsqueda, enfoca la ventana principal o emergente incluso si está visible</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

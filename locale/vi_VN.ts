@@ -3497,7 +3497,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;thể mở bộ đệm âm thanh để đọc.</translation>
+      <translation>Không thể mở bộ đệm âm thanh để đọc.</translation>
     </message>
   </context>
   <context>
@@ -3941,12 +3941,12 @@ với tính năng quét popup được bật.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict&apos;thay đổi</translation>
+      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict thay đổi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Bỏ qua lựa chọn riêng của GoldenDict&apos;và các thay đổi trong khay nhớ tạm</translation>
+      <translation>Bỏ qua lựa chọn riêng của GoldenDict và thay đổi khay nhớ tạm</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4222,9 +4222,9 @@ và chặn truy vấn. Bật tính năng này để không chèn định danh v�
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Dung lượng ổ đĩa tối đa mà bộ đệm mạng GoldenDict chiếm dụng là&apos;trong
+      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của GoldenDict chiếm trong
 %1
-Nếu được đặt thành 0, bộ đệm ổ đĩa mạng sẽ bị tắt.</translation>
+Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4286,7 +4286,7 @@ sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translati
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó&apos;hiển thị</translation>
+      <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó hiển thị</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

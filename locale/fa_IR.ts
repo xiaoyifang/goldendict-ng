@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki:&apos;توان یک کارت بدون کلمه ایجاد کرد</translation>
+      <translation>anki: نمی توان بدون کلمه کارت ایجاد کرد</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -92,7 +92,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 dir=&quot;RTL&quot; align=&quot;center&quot;&gt;کار کردن با واشو&lt;/h3&gt;&lt;p dir=&quot;RTL&quot;&gt;برای یافتن واژه‌ها از دیگر پنجره‌های فعال، شما نخست باید به‌کار اندازید &lt;i&gt;«قابلیت پویش واشو»&lt;/i&gt; در &lt;b&gt;ترجیحات&lt;/b&gt;، و سپس آن را در هر زمان با کلیک نماد بالای «واشو»، یا کلیک نماد سینی سیستم با کلیک راست موش و برگزیدن در منویی که بالا آمده است به‌کار اندازید. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;کار با پنجره بازشو&lt;/h3&gt;برای جستجوی کلمات از سایر برنامه‌های فعال، ابتدا باید &lt;i&gt;"عملکرد بازشو اسکن"&lt;/i&gt; را در &lt;b&gt;تنظیمات برگزیده&lt;/b&gt; فعال کنید، و سپس آن را در هر زمان با فعال کردن نماد "بازشو" در بالا یا با کلیک کردن روی نماد سینی در پایین با دکمه سمت راست ماوس و انتخاب این گزینه در منوی باز شده فعال کنید.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -3497,7 +3497,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>نمی توان بافر صوتی را برای خواندن&apos;t باز کرد.</translation>
+      <translation>بافر صدا برای خواندن باز نشد.</translation>
     </message>
   </context>
   <context>
@@ -3945,12 +3945,12 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>هنگام تغییر انتخاب یا کلیپ بورد در یکی از پنجره های خود GoldenDict&apos;، پنجره بازشو نشان داده نشود</translation>
+      <translation>هنگام تغییر انتخاب یا کلیپ بورد در یکی از پنجره های خود GoldenDict، پنجره بازشو نشان داده نشود</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>انتخاب و تغییرات کلیپ بورد خود GoldenDict&apos;نادیده بگیرید</translation>
+      <translation>انتخاب و تغییرات کلیپ‌بورد خود GoldenDict را نادیده بگیرید</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4226,9 +4226,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict&apos;s در
+      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict در
 %1
-اگر روی 0 تنظیم شود، حافظه پنهان دیسک شبکه غیرفعال می شود.</translation>
+اگر روی 0 تنظیم شود، کش دیسک شبکه غیرفعال می شود.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4260,7 +4260,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>در لغت نامه های حاوی بیش از&apos;جستجو نکنید</translation>
+      <translation>در فرهنگ لغت های حاوی بیش از</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4290,7 +4290,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر&apos;s قابل مشاهده باشد</translation>
+      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

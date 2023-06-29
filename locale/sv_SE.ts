@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan&apos;inte skapa ett kort utan ett ord</translation>
+      <translation>anki: kan inte skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -4231,9 +4231,9 @@ det problemet.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximalt diskutrymme upptaget av GoldenDict&apos;s nätverkscache i
+      <translation>Maximalt diskutrymme som upptas av GoldenDicts nätverkscache
 %1
-Om satt till 0 kommer nätverksdisken att inaktiveras.</translation>
+Om inställt på 0 kommer nätverksdiskcachen att inaktiveras.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4295,7 +4295,7 @@ sin nätverkscache från disken under avslutning.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>På en ny sökning, fokusera huvudfönstret eller popup-fönstret även om det&apos;s synliga</translation>
+      <translation>På en ny sökning fokuserar du huvud- eller popup-fönstret även om det är synligt</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: pode&apos;t criar um cartão sem palavra</translation>
+      <translation>anki: não pode criar um cartão sem uma palavra</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -92,8 +92,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Trabalhando com janelas de definições/tradução semiautomáticas&lt;/h3&gt;Para fazer consultas/tradução de palavras da janela de outros aplicativos abertos, primeiramente é necessário habilitar a função de janelas secundárias seguindo estes passos a partir da janela principal:&lt;p&gt;&lt;OL&gt;&lt;LI&gt;Clique em &lt;b&gt;Editar|Configurar&lt;/b&gt;;
-&lt;LI&gt;Clique na guia &lt;b&gt;&lt;i&gt;&quot;Janela de Definições Semiautomáticas&quot;&lt;/b&gt;&lt;/i&gt;;&lt;LI&gt;Marque a opção &lt;i&gt;&quot;Ativar funcionalidades de janelas secundárias de definições semiautomáticas&quot;&lt;/i&gt;;&lt;LI&gt;Em seguida, clique em &quot;OK&quot; para salvar as configurações.&lt;/OL&gt;&lt;p&gt;Com esta opção ativada, você pode marcar ou desmarcar a exibição das janelas secundárias quando quiser. Para fazê-lo, há duas formas:&lt;UL&gt;&lt;LI&gt;Na janela principal, clique no botão de &lt;b&gt;Definições Semiautomáticas&lt;/b&gt;, cujo botão assemelha-se a uma varinha;&lt;LI&gt;No ícone do programa exibido na Área de Notificação (perto do relógio), clique com o botão direito do mouse e marque a opção &lt;b&gt;&lt;i&gt;Definições Semiautomáticas&lt;/b&gt;&lt;/i&gt;.&lt;/UL&gt;&lt;p&gt;Uma vez habilitada esta função, qualquer palavra ou expressão selecionada terá suas definições exibidas (se a palavra/expressão da consulta existir em algum dos dicionários especificados na configuração) imediatamente nos resultados da consulta. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Trabalhando com o pop-up&lt;/h3&gt;Para procurar palavras de outros aplicativos ativos, você precisa primeiro ativar a &lt;i&gt;"Funcionalidade pop-up de digitalização"&lt;/i&gt; em &lt;b&gt;Preferências&lt;/b&gt; e em seguida, habilite-o a qualquer momento ativando o ícone 'Popup' acima ou clicando no ícone da bandeja abaixo com o botão direito do mouse e escolhendo-o no menu exibido.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -4235,9 +4234,9 @@ Ative essa opção para solucionar o problema.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Máximo de espaço em disco ocupado pelo cache de rede GoldenDict&apos;s em
+      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
 %1
-Se definido para 0 o cache de disco da rede será desativado.</translation>
+Se definido como 0, o cache do disco de rede será desabilitado.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4299,7 +4298,7 @@ apaga seu cache de rede do disco durante a saída.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Em uma nova pesquisa, focar a janela principal ou pop-up, mesmo que&apos;seja visível</translation>
+      <translation>Em uma nova pesquisa, coloque o foco na janela principal ou pop-up, mesmo que esteja visível</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

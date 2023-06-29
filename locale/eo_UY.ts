@@ -92,7 +92,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Laborante kun la ŝprucfenestro&lt;/h3&gt;Por serĉi vortojn de aliaj aktivaj aplikoj, vi devus unue aktivigi la &lt;i&gt;&quot;Skani ŝprucfenestron funkciecon&quot;&lt;/i&gt; en &lt;b&gt;Preferoj&lt;/b&gt;, kaj poste ebligi ĝin iam ajn aŭ per ekfunkciigo de la &apos;Popup&apos; supre. , aŭ alklakante la pletikonon sube per via dekstra musbutono kaj elektante tion en la menuo, kiun vi&apos;. </translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Laborante kun la ŝprucfenestro&lt;/h3&gt;Por serĉi vortojn de aliaj aktivaj aplikaĵoj, vi devus unue aktivigi la &lt;i&gt;&quot;Skani ŝprucfenestron&quot;&lt;/i&gt; en &lt;b&gt;Preferoj&lt;/b&gt;, kaj tiam ebligu ĝin iam ajn aŭ per ekfunkciigo de la &apos;Popup&apos; piktogramo supre, aŭ alklakante la pletikonon sube per via dekstra musbutono kaj elektante tion en la menuo, kiun vi aperis.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -137,7 +137,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="286"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Bonvenon al &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Por eklabori kun la programo, unue vizitu &lt;b&gt;Redaktu|Vortarojn&lt;/b&gt; por aldoni kelkajn dosierujojn kie serĉi la vortarajn dosierojn, agordi diversajn Vikipediajn retejojn aŭ aliajn fontojn, ĝustigi vortaran ordon aŭ krei vortarajn grupojn.&lt;p&gt;Kaj tiam vi&apos;pretas serĉi viajn vortojn! Vi povas fari tion en ĉi tiu fenestro uzante panelon maldekstre, aŭ vi povas &lt;a href=&quot;Working with popup&quot;&gt;serĉi vortojn de aliaj aktivaj aplikaĵoj&lt;/a&gt;. &lt;p&gt;Por personecigi programon, kontrolu la disponeblajn preferojn ĉe &lt;b&gt;Redaktu|Preferoj&lt;/b&gt;. Ĉiuj agordoj tie havas konsiletojn, nepre legu ilin se vi dubas pri io ajn.&lt;p&gt;Se vi bezonas plian helpon, havas demandojn, sugestojn aŭ simple scivolas, kion pensas la aliaj, vi bonvenas ĉe la programo&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumo&lt;/a&gt;.&lt;p&gt;Kontrolu programon&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;retejon&lt;/a&gt; por la ĝisdatigoj. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencite laŭ GPLv3 aŭ poste.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Bonvenon al &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Por komenci labori kun la programo, unue vizitu &lt;b&gt;Redaktu|Vortarojn&lt;/ b&gt; aldoni kelkajn dosierujojn kie serĉi la vortarajn dosierojn, agordi diversajn Vikipediajn retejojn aŭ aliajn fontojn, ĝustigi vortaran ordon aŭ krei vortarajn grupojn.&lt;p&gt;Kaj poste vi pretas serĉi viajn vortojn! Vi povas fari tion en ĉi tiu fenestro uzante panelon maldekstre, aŭ vi povas &lt;a href=&quot;Laborante kun ŝprucfenestro&quot;&gt;serĉi vortojn de aliaj aktivaj aplikaĵoj&lt;/a&gt;. &lt;p&gt;Por personecigi programon, kontrolu la disponeblajn preferojn ĉe &lt;b&gt;Redaktu|Preferoj&lt;/b&gt;. Ĉiuj agordoj tie havas konsiletojn, nepre legu ilin se vi dubas pri io ajn.&lt;p&gt;Se vi bezonas plian helpon, havas demandojn, sugestojn aŭ simple scivolas, kion pensas la aliaj, vi estas bonvena ĉe la programo &lt; a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumo&lt;/a&gt;.&lt;p&gt;Kontrolu la &lt;a href=&quot; de programo https://github.com/xiaoyifang/ goldendict&quot;&gt;retejo&lt;/a&gt; por la ĝisdatigoj. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencite laŭ GPLv3 aŭ poste.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="404"/>
@@ -209,7 +209,7 @@
       <location filename="../src/ui/articleview.cc" line="1358"/>
       <location filename="../src/ui/articleview.cc" line="1542"/>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
+      <translation>La referencita rimedo ne ekzistas.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="2098"/>
@@ -295,7 +295,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+      <translation>La referencita sonprogramo ne ekzistas.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
@@ -560,7 +560,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <location filename="../src/ui/groups_widgets.cc" line="106"/>
       <source>Can&apos;t read the specified image file.</source>
-      <translation type="unfinished">Can&apos;t read the specified image file.</translation>
+      <translation>Ne povas legi la specifitan bilddosieron.</translation>
     </message>
   </context>
   <context>
@@ -3498,7 +3498,7 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Ne eblis malfermi sonbufferon por legado.</translation>
     </message>
   </context>
   <context>
@@ -3726,8 +3726,8 @@ la aplikaĵon.</translation>
       <location filename="../src/ui/preferences.ui" line="850"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation type="unfinished">Enable if you wish to use a proxy server
-for all program&apos;s network requests.</translation>
+      <translation>Ebligu se vi volas uzi prokuran servilon
+por ĉiuj retaj petoj de la programo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="201"/>
@@ -3948,12 +3948,12 @@ la programo ĉiam komenciĝus kun la skana ŝprucfenestro aktiva.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Ne montru ŝprucfenestron kiam elekto aŭ tondujo en unu el la propraj fenestroj de GoldenDict ŝanĝiĝas</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>Ignoru la propran elekton kaj tondujoŝanĝojn de GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4029,7 +4029,7 @@ Kun ĉi tio ŝaltita tamen, ĝi kaŝos la ĉefan fenestron.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="319"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
+      <translation>Elektu ĉi tiun opcion se vi ne volas vidi la ĉefan langeton kiam nur unu sola langeto estas malfermita.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="322"/>
@@ -4229,9 +4229,9 @@ Ebligu ĉi tiun opcion por solvi la problemon.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Maksimuma diskospaco okupita de la retkaŝmemoro de GoldenDict
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Se agordita al 0, la retdiska kaŝmemoro estos malŝaltita.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4263,7 +4263,7 @@ forigas sian retan kaŝmemoron el disko dum eliro.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Ne serĉu en vortaroj enhavantaj pli ol</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4293,7 +4293,7 @@ forigas sian retan kaŝmemoron el disko dum eliro.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Dum nova serĉo, enfokusigu la ĉefan aŭ ŝprucfenestron eĉ se ĝi estas videbla</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

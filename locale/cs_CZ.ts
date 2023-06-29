@@ -3498,7 +3498,7 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Nelze otevřít vyrovnávací paměť zvuku pro čtení.</translation>
     </message>
   </context>
   <context>
@@ -3945,12 +3945,12 @@ zaškrtnuto, program bude automaticky startovat s aktivovaným vyskakovacím okn
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Nezobrazovat vyskakovací okno, když se změní výběr nebo schránka v jednom z vlastních oken GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>Ignorujte vlastní výběr a změny schránky GoldenDict</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4226,9 +4226,9 @@ Povolením této volby problém obejdete.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Maximální místo na disku obsazené mezipamětí sítě GoldenDict
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Pokud je nastaveno na 0, mezipaměť síťového disku bude zakázána.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4260,7 +4260,7 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Nehledejte ve slovnících obsahujících více než</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4290,7 +4290,7 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Při novém hledání zaměřte hlavní nebo vyskakovací okno, i když je viditelné</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

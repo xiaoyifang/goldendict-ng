@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki:&apos;vytvoriť kartu bez slova</translation>
+      <translation>anki: Nemôžem vytvoriť kartu bez slova</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -4286,7 +4286,7 @@ vyčistí vyrovnávaciu pamäť siete pri ukončení aplikácie.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Pri novom vyhľadávaní zamerajte hlavné alebo kontextové okno, aj keď je viditeľné&apos;s</translation>
+      <translation>Pri novom vyhľadávaní zamerajte hlavné alebo kontextové okno, aj keď je viditeľné</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

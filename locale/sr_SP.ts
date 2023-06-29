@@ -54,7 +54,7 @@
     <message>
       <location filename="../src/ankiconnector.cc" line="23"/>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>анки:&apos;могу да креирам картицу без речи</translation>
+      <translation>анки: не могу да креирам картицу без речи</translation>
     </message>
     <message>
       <location filename="../src/ankiconnector.cc" line="65"/>
@@ -3499,7 +3499,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>&apos;могуће отворити аудио бафер за читање.</translation>
+      <translation>Није могуће отворити аудио бафер за читање.</translation>
     </message>
   </context>
   <context>
@@ -3948,12 +3948,12 @@ the program would always start with the scan popup active.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не приказуј искачући прозор када се промени избор или клипборд у једном од сопствених прозора ГолденДицт&apos;</translation>
+      <translation>Не приказуј искачући прозор када се промени избор или клипборд у неком од прозора ГолденДицт-а</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Игноришите ГолденДицт&apos;сопствени избор и измене међуспремника</translation>
+      <translation>Игноришите ГолденДицт-ов сопствени избор и измене међумеморије</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4231,9 +4231,9 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимални простор на диску који заузима ГолденДицт&apos;с мрежна кеш меморија у
+      <translation>Максимални простор на диску који заузима ГолденДицт мрежна кеш меморија
 %1
-Ако је постављена на 0, кеш мрежног диска ће бити онемогућен.</translation>
+Ако је постављено на 0, кеш мрежног диска ће бити онемогућен.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4265,7 +4265,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>&apos;претражујте речнике који садрже више од</translation>
+      <translation>Не претражујте речнике који садрже више од</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4295,7 +4295,7 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Приликом нове претраге, фокусирајте главни или искачући прозор чак и ако је&apos;с видљив</translation>
+      <translation>Приликом нове претраге фокусирајте главни или искачући прозор чак и ако је видљив</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>

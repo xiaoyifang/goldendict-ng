@@ -92,7 +92,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="304"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Cómo Utilizar la ventana emergente&lt;/h3&gt;Para buscar palabras desde otras aplicaciones activas, primero hay que habilitar la opción &lt;i&gt;&quot;Escaneo en una ventana emergente&quot;&lt;/i&gt; en &lt;b&gt;Editar|Preferencias&lt;/b&gt;. Luego puede utilizarla en cualquier momento, activando el icono arriba de la &apos;Ventana Emergente&apos;. Alternativamente, haga clic a derecha abajo en la bandeja del sistema y seleccione la opción &lt;b&gt;Escanear con Ventana Emergente&lt;/b&gt; en el menú.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Popup kaqwan llamk'ay&lt;/h3&gt;Huk ruwaq ruwanakunamanta simikunata maskanapaq, ñawpaqta &lt;i&gt;"Popup ruwayta qhaway"&lt;/i&gt; &lt;b&gt;Munasqakuna&lt;/b&gt; kaqpi llamk'achinayki kanman, chaymanta chaymanta mayk'aqllapas atichiy icha 'Popup' icono patamanta llamk'achispa, utaq uraypi bandeja icono ñit'ispa paña ñit'inaykiwan chaymanta chayta akllaspa menú pop-pi.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="138"/>
@@ -295,7 +295,7 @@
     <message>
       <location filename="../src/ui/articleview.cc" line="1397"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+      <translation>Chay referenciasqa uyarina programaqa manan kanchu.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1744"/>
@@ -2824,7 +2824,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3371"/>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Mana qillqasqata waqaychayta atinchu: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="244"/>
@@ -3498,7 +3498,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <location filename="../src/multimediaaudioplayer.cc" line="35"/>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Mana ñawirinapaq uyarinapaq bufferta kichayta atirqachu.</translation>
     </message>
   </context>
   <context>
@@ -3946,12 +3946,12 @@ marcado, el programa siempre iniciará con el modo de escaneo habilitado.</trans
     <message>
       <location filename="../src/ui/preferences.ui" line="616"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Ama popup rikuchiychu mayk'aq akllay utaq portapapeles huknin GoldenDict kaqpa kikin ventanasninpi tikrakun</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="619"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>GoldenDictpa kikin akllasqanta chaymanta portapapeles tikrakuyninta mana qhawaychu</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="786"/>
@@ -4225,9 +4225,9 @@ Enable this option to workaround the problem.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Aswan hatun disk espacio GoldenDict llika waqaychasqa kaqwan hap'isqa
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+0 kaqman churasqa kaptinqa llika disk waqaychasqa mana llamk'achisqa kanqa.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1156"/>
@@ -4259,7 +4259,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1331"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
+      <translation>Ama maskaychu aswan achkayuq diccionariokunapi</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1348"/>
@@ -4289,7 +4289,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1748"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Musuq maskaypi, hatun utaq lluqsiq ventanata enfocay, rikukuqña kaptinpas</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1511"/>
