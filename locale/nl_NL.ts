@@ -41,7 +41,7 @@
     <message>
       <location filename="../src/ui/about.cc" line="19"/>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>In groep &lt;b&gt;%2&lt;/b&gt;is geen vertaling voor &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gevonden.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -1031,7 +1031,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="339"/>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Het bevragende woord mag niet leeg zijn.</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="234"/>
@@ -1450,7 +1450,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/initializing.ui" line="99"/>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Indexering: </translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="121"/>
@@ -1470,7 +1470,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/initializing.cc" line="28"/>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Indexeren...</translation>
     </message>
   </context>
   <context>
@@ -3047,7 +3047,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="945"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1075"/>
@@ -4108,12 +4108,12 @@ het artikel uit het bovenste woordenboek weergegeven.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="629"/>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Vertragingstijd</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="636"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> Mevr</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="895"/>
@@ -4236,12 +4236,12 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1302"/>
       <source>Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Applies only to new incoming dictionaries.</translation>
+      <translation>Geldt alleen voor nieuwe inkomende woordenboeken.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1305"/>
       <source>Enable positional information in the fulltext</source>
-      <translation type="unfinished">Enable positional information in the fulltext</translation>
+      <translation>Schakel positionele informatie in de volledige tekst in</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1370"/>
@@ -4619,12 +4619,12 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <location filename="../src/main.cc" line="190"/>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Vensterstatus resetten.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="192"/>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Schakel tts uit.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="196"/>
@@ -4644,7 +4644,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <location filename="../src/main.cc" line="209"/>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Printversie en diagnose-info.</translation>
     </message>
   </context>
   <context>
@@ -4772,7 +4772,7 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="943"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
   </context>
   <context>
