@@ -1299,10 +1299,10 @@ download page.</string>
           <item row="7" column="0">
            <widget class="QCheckBox" name="enablePosition">
             <property name="toolTip">
-             <string>Applies only to new incoming dictionaries.</string>
+             <string>Positional information is required to use Xapian's phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</string>
             </property>
             <property name="text">
-             <string>Enable positional information in the fulltext</string>
+             <string>Enable index with positional information</string>
             </property>
            </widget>
           </item>

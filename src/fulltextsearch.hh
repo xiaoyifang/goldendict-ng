@@ -40,7 +40,7 @@ enum {
 
 enum SearchMode
 {
-  WholeWords = 0,
+  WholeWords = 0, // aka Default search using Xapian query syntax
   PlainText,
   Wildcards,
   RegExp
