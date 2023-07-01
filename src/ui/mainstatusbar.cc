@@ -40,6 +40,9 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
   setAutoFillBackground( true );
+
+  if ( parent )
+    move( 0, parent->height() - height() );
 }
 
 void MainStatusBar::clearMessage()
@@ -67,29 +70,23 @@ void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
   }
 }
 
-void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap & pixmap)
+void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
-  if ( !picWidget->pixmap().isNull() )
-  {
+  if ( !picWidget->pixmap().isNull() ) {
     picWidget->setFixedSize( textWidget->height(), textWidget->height() );
   }
-  else
-  {
+  else {
     picWidget->setFixedSize( 0, 0 );
   }
 
-  if ( timeout > 0 )
-  {
+  if ( timeout > 0 ) {
     timer->start( timeout );
   }
-  if ( parentWidget() && parentWidget()->isVisible() ) {
-    raise();
-    show();
-    move( QPoint( 0, parentWidget()->height() - height() ) );
-  }
+  raise();
+  show();
 }
 
 void MainStatusBar::mousePressEvent ( QMouseEvent * )
