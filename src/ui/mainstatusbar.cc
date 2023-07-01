@@ -26,7 +26,7 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   timer->setSingleShot( true );
 
   // layout
-  QHBoxLayout * layout = new QHBoxLayout;
+  const auto layout = new QHBoxLayout;
   layout->setSpacing( 0 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
@@ -40,9 +40,6 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
   setAutoFillBackground( true );
-
-  if ( parent )
-    move( 0, parent->height() - height() );
 }
 
 void MainStatusBar::clearMessage()
@@ -51,7 +48,6 @@ void MainStatusBar::clearMessage()
   textWidget->setText( backgroungMessage );
   picWidget->setPixmap( QPixmap() );
   timer->stop();
-  hide();
 }
 
 QString MainStatusBar::currentMessage() const
@@ -65,8 +61,6 @@ void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
   if( message.isEmpty() )
   {
     textWidget->setText( backgroungMessage );
-    raise();
-    show();
   }
 }
 
@@ -85,8 +79,10 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
   if ( timeout > 0 ) {
     timer->start( timeout );
   }
-  raise();
-  show();
+
+  if ( parentWidget() ) {
+    move( 0, parentWidget()->height() - height() );
+  }
 }
 
 void MainStatusBar::mousePressEvent ( QMouseEvent * )
