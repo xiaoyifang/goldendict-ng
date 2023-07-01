@@ -176,7 +176,7 @@ struct FullTextSearch
   int searchMode;
   bool enabled;
 
-  bool enablePosition;
+  bool enablePosition = false;
 
   quint32 maxDictionarySize;
   QByteArray dialogGeometry;
