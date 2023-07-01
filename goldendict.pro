@@ -19,13 +19,7 @@ system(git describe --tags --always --dirty): hasGit=1
 }
 
 
-!CONFIG( verbose_build_output ) {
-  !win32|*-msvc* {
-    # Reduce build log verbosity except for MinGW builds (mingw-make cannot
-    # execute "@echo ..." commands inserted by qmake).
-    CONFIG += silent
-  }
-}
+# users can suppress verbose console compile output by add `CONFIG += silent` to qmake.
 
 CONFIG( release, debug|release ) {
   DEFINES += NDEBUG
