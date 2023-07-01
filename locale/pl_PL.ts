@@ -41,7 +41,7 @@
     <message>
       <location filename="../src/ui/about.cc" line="19"/>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Na podstawie Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>W grupie &lt;b&gt;%2&lt;/b&gt;nie znaleziono tłumaczenia dla &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -1028,7 +1028,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="339"/>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Słowo zapytania nie może być puste.</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="234"/>
@@ -1447,7 +1447,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <location filename="../src/ui/initializing.ui" line="99"/>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Indeksowanie: </translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="121"/>
@@ -1467,7 +1467,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <location filename="../src/initializing.cc" line="28"/>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Indeksowanie...</translation>
     </message>
   </context>
   <context>
@@ -3044,7 +3044,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="945"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>UWAGA: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1075"/>
@@ -4108,12 +4108,12 @@ wyświetlany jest artykuł z najwyższego słownika.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="629"/>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Czas zwłoki</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="636"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> SM</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="895"/>
@@ -4236,12 +4236,12 @@ czyści swoją pamięć podręczną z dysku podczas wyjścia.</translation>
     <message>
       <location filename="../src/ui/preferences.ui" line="1302"/>
       <source>Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Applies only to new incoming dictionaries.</translation>
+      <translation>Dotyczy tylko nowych przychodzących słowników.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1305"/>
       <source>Enable positional information in the fulltext</source>
-      <translation type="unfinished">Enable positional information in the fulltext</translation>
+      <translation>Włącz informacje o położeniu w pełnym tekście</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1370"/>
@@ -4619,12 +4619,12 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <location filename="../src/main.cc" line="190"/>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Zresetuj stan okna.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="192"/>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Wyłącz tt.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="196"/>
@@ -4644,7 +4644,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <location filename="../src/main.cc" line="209"/>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Wersja do druku i informacje diagnostyczne.</translation>
     </message>
   </context>
   <context>
@@ -4772,7 +4772,7 @@ temu można zmieniać jego wielkość i zarządzać nim w inny sposób.</transla
     <message>
       <location filename="../src/ui/scanpopup.cc" line="943"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>UWAGA: %1</translation>
     </message>
   </context>
   <context>
