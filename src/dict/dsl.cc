@@ -260,6 +260,7 @@ private:
   // Parts of dslToHtml()
   string nodeToHtml( ArticleDom::Node const & );
   string processNodeChildren( ArticleDom::Node const & node );
+  string getNodeLink( ArticleDom::Node const & node );
 
   bool hasHiddenZones()           /// Return true if article has hidden zones
   { return optionalPartNom != 0; }
@@ -752,6 +753,25 @@ string DslDictionary::processNodeChildren( ArticleDom::Node const & node )
 
   return result;
 }
+
+string DslDictionary::getNodeLink( ArticleDom::Node const & node )
+{
+  string link;
+  if ( !node.tagAttrs.empty() ) {
+    QString attrs = QString::fromStdU32String( node.tagAttrs );
+    int n         = attrs.indexOf( "target=\"" );
+    if ( n >= 0 ) {
+      int n_end      = attrs.indexOf( '\"', n + 8 );
+      QString target = attrs.mid( n + 8, n_end > n + 8 ? n_end - ( n + 8 ) : -1 );
+      link           = Html::escape( Filetype::simplifyString( string( target.toUtf8().data() ), false ) );
+    }
+  }
+  if ( link.empty() )
+    link = Html::escape( Filetype::simplifyString( Utf8::encode( node.renderAsText() ), false ) );
+
+  return link;
+}
+
 string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 {
   string result;
@@ -958,8 +978,8 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   }
   else if( node.tagName ==  U"url"  )
   {
-    string link = Html::escape( Filetype::simplifyString( Utf8::encode( node.renderAsText() ), false ) );
-    if( QUrl::fromEncoded( link.c_str() ).scheme().isEmpty() )
+    string link = getNodeLink( node );
+    if ( QUrl::fromEncoded( link.c_str() ).scheme().isEmpty() )
       link = "http://" + link;
 
     QUrl url( QString::fromUtf8( link.c_str() ) );
@@ -1051,7 +1071,8 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 
     url.setScheme( "gdlookup" );
     url.setHost( "localhost" );
-    wstring nodeStr = node.renderAsText();
+    auto nodeStr = Utf8::decode( getNodeLink( node ) );
+
     normalizeHeadword( nodeStr );
     url.setPath( Utils::Url::ensureLeadingSlash( QString::fromStdU32String( nodeStr ) ) );
     if( !node.tagAttrs.empty() )
