@@ -41,7 +41,7 @@
     <message>
       <location filename="../src/ui/about.cc" line="19"/>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>На основу Кт %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>Није пронађен превод за &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групи &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -1028,7 +1028,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="339"/>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Реч за упит не може бити празна.</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="234"/>
@@ -1447,7 +1447,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/initializing.ui" line="99"/>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Индексирање: </translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="121"/>
@@ -1467,7 +1467,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/initializing.cc" line="28"/>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Индексирање...</translation>
     </message>
   </context>
   <context>
@@ -3045,7 +3045,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="945"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>УПОЗОРЕЊЕ: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1075"/>
@@ -4111,12 +4111,12 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="629"/>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Кашњење</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="636"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> Госпођа</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="895"/>
@@ -4239,12 +4239,12 @@ clears its network cache from disk during exit.</source>
     <message>
       <location filename="../src/ui/preferences.ui" line="1302"/>
       <source>Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Applies only to new incoming dictionaries.</translation>
+      <translation>Односи се само на нове долазне речнике.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1305"/>
       <source>Enable positional information in the fulltext</source>
-      <translation type="unfinished">Enable positional information in the fulltext</translation>
+      <translation>Омогућите информације о позицији у пуном тексту</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1370"/>
@@ -4622,12 +4622,12 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/main.cc" line="190"/>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Ресетујте стање прозора.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="192"/>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Онемогући ттс.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="196"/>
@@ -4647,7 +4647,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/main.cc" line="209"/>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Верзија за штампање и информације о дијагнози.</translation>
     </message>
   </context>
   <context>
@@ -4775,7 +4775,7 @@ could be resized or managed in other ways.</source>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="943"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>УПОЗОРЕЊЕ: %1</translation>
     </message>
   </context>
   <context>
