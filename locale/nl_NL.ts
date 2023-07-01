@@ -34,19 +34,14 @@
       <translation>Dankbetuigingen:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.cc" line="20"/>
-      <source>[Unknown]</source>
-      <translation>[Onbekend]</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/about.cc" line="35"/>
-      <source>Based on Qt %1 (%2, %3 bit)</source>
-      <translation>Gebaseerd op Qt %1 (%2, %3 bit)</translation>
-    </message>
-    <message>
       <location filename="../src/ui/about.ui" line="91"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/about.cc" line="19"/>
+      <source>Based on Qt %1 (%2, %3)</source>
+      <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -85,57 +80,57 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="311"/>
+      <location filename="../src/article_maker.cc" line="318"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>Als u vervolgens in een ander programma met de muisaanwijzer stopt boven een woord dat u wilt opzoeken, dan verschijnt er een venster met een beschrijving van het betreffende woord.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Met popups werken&lt;/h3&gt;Om woorden op te zoeken vanuit andere actieve programma&apos;s moet u eerst de &lt;i&gt;&apos;Scan Popup modus&apos;&lt;/i&gt; inschakelen onder &lt;b&gt;Instellingen&lt;/b&gt;. Daarna kunt u deze functionaliteit op elk moment activeren door middel van het popup pictogram in de werkbalk hierboven of door rechts te klikken op het systeemvakpictogram en in het menu de betreffende optie te kiezen. </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="138"/>
+      <location filename="../src/article_maker.cc" line="143"/>
       <source>Expand article</source>
       <translation>Artikel uitvouwen</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="138"/>
+      <location filename="../src/article_maker.cc" line="143"/>
       <source>Collapse article</source>
       <translation>Artikel samenvouwen</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="232"/>
-      <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Geen vertaling voor &lt;b&gt;%2&lt;/b&gt; gevonden in de groep &lt;b&gt;%1&lt;/b&gt;.</translation>
-    </message>
-    <message>
-      <location filename="../src/article_maker.cc" line="302"/>
+      <location filename="../src/article_maker.cc" line="309"/>
       <source>Working with popup</source>
       <translation>Met popups werken</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="392"/>
+      <location filename="../src/article_maker.cc" line="399"/>
       <source>(untitled)</source>
       <translation>(naamloos)</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="284"/>
+      <location filename="../src/article_maker.cc" line="291"/>
       <source>Welcome!</source>
       <translation>Welkom!</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="314"/>
+      <location filename="../src/article_maker.cc" line="321"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>Daarna kunt elk woord dat u wilt opzoeken in een ander programma met de muis selecteren (dubbelklikken of slepend selecteren), waarna een venster verschijnt met de beschrijving van het betreffende woord.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="236"/>
+      <location filename="../src/article_maker.cc" line="243"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Geen vertaling gevonden in de groep &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="236"/>
+      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
+      <translation>In groep &lt;b&gt;%2&lt;/b&gt;is geen vertaling voor &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gevonden.</translation>
+    </message>
+    <message>
+      <location filename="../src/article_maker.cc" line="293"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Welkom bij &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Om met het programma te kunnen werken kiest u eerst &lt;b&gt;Bewerken &gt; Woordenboeken&lt;/b&gt;. U kunt vervolgens enkele mappen toevoegen waarin naar woordenboekbestanden wordt gezocht, Wikipedia sites of andere bronnen opgeven, of de woordenboekvolgorde aanpassen en woordenboekgroepen aanmaken.&lt;/p&gt;
 &lt;p&gt;Hierna bent u klaar om woorden op te zoeken met behulp van het deelvenster aan de linkerkant. Bovendien kunt u &lt;a href=&quot;Met popups werken&quot;&gt;woorden opzoeken vanuit andere programma&apos;s&lt;/a&gt;. &lt;/p&gt;
@@ -143,7 +138,7 @@
 &lt;p&gt;Hebt u meer hulp nodig, wilt u iets vragen, hebt u suggesties of bent u benieuwd naar de mening van andere gebruikers, bezoek dan het &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;. Programma updates kunt u vinden op de &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt;.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Gebruiksrecht verleend onder GPLv3 of nieuwer.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="404"/>
+      <location filename="../src/article_maker.cc" line="411"/>
       <source>(picture)</source>
       <translation>(afbeelding)</translation>
     </message>
@@ -151,42 +146,42 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="672"/>
+      <location filename="../src/article_maker.cc" line="678"/>
       <source>Expand article</source>
       <translation>Artikel uitvouwen</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="673"/>
+      <location filename="../src/article_maker.cc" line="679"/>
       <source>From </source>
       <translation>Uit </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="676"/>
+      <location filename="../src/article_maker.cc" line="682"/>
       <source>Collapse article</source>
       <translation>Artikel samenvouwen</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="691"/>
+      <location filename="../src/article_maker.cc" line="694"/>
       <source>Make a new Anki note</source>
       <translation>Maak een nieuwe Anki-notitie</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="704"/>
+      <location filename="../src/article_maker.cc" line="708"/>
       <source>Query error: %1</source>
       <translation>Fout in zoekopdracht: %1</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="832"/>
+      <location filename="../src/article_maker.cc" line="836"/>
       <source>Close words: </source>
       <translation>Soortgelijke woorden: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="899"/>
+      <location filename="../src/article_maker.cc" line="903"/>
       <source>Compound expressions: </source>
       <translation>Samengestelde treffers: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="927"/>
+      <location filename="../src/article_maker.cc" line="931"/>
       <source>Individual words: </source>
       <translation>Individuele woorden: </translation>
     </message>
@@ -194,197 +189,197 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2087"/>
+      <location filename="../src/ui/articleview.cc" line="1928"/>
       <source>Failed to create temporary file.</source>
       <translation>Tijdelijk bestand kan niet worden aangemaakt.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1798"/>
+      <location filename="../src/ui/articleview.cc" line="1639"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&amp;Zoeken naar &quot;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1806"/>
+      <location filename="../src/ui/articleview.cc" line="1647"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>Zoeken naar &quot;%1&quot; in een &amp;nieuw tabblad</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1358"/>
-      <location filename="../src/ui/articleview.cc" line="1542"/>
+      <location filename="../src/ui/articleview.cc" line="1214"/>
+      <location filename="../src/ui/articleview.cc" line="1391"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>De bron waarnaar wordt verwezen bestaat niet.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2098"/>
+      <location filename="../src/ui/articleview.cc" line="1939"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>Kan bronbestand niet automatisch openen, probeer het handmatig te openen: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1832"/>
+      <location filename="../src/ui/articleview.cc" line="1673"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>Zoeken naar &quot;%1&quot; in %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="321"/>
+      <location filename="../src/ui/articleview.cc" line="199"/>
       <source>Select Current Article</source>
       <translation>Huidig artikel selecteren</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="326"/>
+      <location filename="../src/ui/articleview.cc" line="204"/>
       <source>Copy as text</source>
       <translation>Kopiëren als tekst</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="331"/>
+      <location filename="../src/ui/articleview.cc" line="209"/>
       <source>Inspect</source>
       <translation>Inspecteren</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1840"/>
+      <location filename="../src/ui/articleview.cc" line="1681"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>Zoeken naar &quot;%1&quot; in %2 in een &amp;nieuw tabblad</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1750"/>
+      <location filename="../src/ui/articleview.cc" line="1597"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>Koppeling openen in nieuw&amp;tabblad</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1757"/>
+      <location filename="../src/ui/articleview.cc" line="1604"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Koppeling openen in &amp;externe browser</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="995"/>
+      <location filename="../src/ui/articleview.cc" line="854"/>
       <source>Resource</source>
       <translation>Bron</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1000"/>
+      <location filename="../src/ui/articleview.cc" line="859"/>
       <source>Audio</source>
       <translation>Geluid</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1005"/>
+      <location filename="../src/ui/articleview.cc" line="864"/>
       <source>TTS Voice</source>
       <translation>TTS Stem</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1010"/>
+      <location filename="../src/ui/articleview.cc" line="869"/>
       <source>Picture</source>
       <translation>Afbeelding</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1017"/>
+      <location filename="../src/ui/articleview.cc" line="876"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="885"/>
       <source>Video: %1</source>
       <translation>Video: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1043"/>
+      <location filename="../src/ui/articleview.cc" line="902"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>Definitie uit woordenboek &quot;%1&quot;: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1051"/>
+      <location filename="../src/ui/articleview.cc" line="910"/>
       <source>Definition: %1</source>
       <translation>Definitie: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1397"/>
+      <location filename="../src/ui/articleview.cc" line="1249"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Dit programma voor afspelen van geluiden bestaat niet.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1744"/>
+      <location filename="../src/ui/articleview.cc" line="1591"/>
       <source>Op&amp;en Link</source>
       <translation>&amp;Link openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1851"/>
+      <location filename="../src/ui/articleview.cc" line="1692"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Bladwijzer &amp;opslaan &quot;%1...&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2128"/>
+      <location filename="../src/ui/articleview.cc" line="1969"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>WAARSCHUWING: Audio Player: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1283"/>
-      <location filename="../src/ui/articleview.cc" line="1318"/>
-      <location filename="../src/ui/articleview.cc" line="1542"/>
+      <location filename="../src/ui/articleview.cc" line="1139"/>
+      <location filename="../src/ui/articleview.cc" line="1174"/>
+      <location filename="../src/ui/articleview.cc" line="1391"/>
       <source>ERROR: %1</source>
       <translation>FOUT: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2000"/>
+      <location filename="../src/ui/articleview.cc" line="1841"/>
       <source>Save sound</source>
       <translation>Geluid opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2015"/>
+      <location filename="../src/ui/articleview.cc" line="1856"/>
       <source>Save image</source>
       <translation>Afbeelding opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2017"/>
+      <location filename="../src/ui/articleview.cc" line="1858"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>Afbeeldingsbestanden (*.bmp *.jpg *.png *.tif);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1773"/>
+      <location filename="../src/ui/articleview.cc" line="1620"/>
       <source>Save &amp;image...</source>
       <translation>&amp;Afbeelding opslaan...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="192"/>
+      <location filename="../src/ui/articleview.cc" line="70"/>
       <source>Phrase not found</source>
       <translation>Zin niet gevonden</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="200"/>
+      <location filename="../src/ui/articleview.cc" line="78"/>
       <source>%1 of %2 matches</source>
       <translation>%1 van %2 wedstrijden</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1780"/>
+      <location filename="../src/ui/articleview.cc" line="1627"/>
       <source>Save s&amp;ound...</source>
       <translation>&amp;Geluid opslaan...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1811"/>
+      <location filename="../src/ui/articleview.cc" line="1652"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>Verzend &quot;%1&quot; naar zoekveld</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1817"/>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1658"/>
+      <location filename="../src/ui/articleview.cc" line="1710"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>Voeg &quot;%1&quot; &amp;toe aan geschiedenis</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1859"/>
+      <location filename="../src/ui/articleview.cc" line="1700"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;Stuur Huidig artikel naar Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1701"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>&amp;Stuur geselecteerde tekst naar Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2002"/>
+      <location filename="../src/ui/articleview.cc" line="1843"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Geluidsbestanden (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2072"/>
+      <location filename="../src/ui/articleview.cc" line="1913"/>
       <source>Failed to play sound file: %1</source>
       <translation>Kon geluidsbestand niet afspelen: %1</translation>
     </message>
@@ -462,17 +457,17 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>TC naar SC</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="129"/>
+      <location filename="../src/dict/chinese.cc" line="128"/>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
       <translation>Vereenvoudigd naar de traditionele Chinese conversie (Taiwan-variant)</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="136"/>
+      <location filename="../src/dict/chinese.cc" line="135"/>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
       <translation>Vereenvoudigd naar de traditionele Chinese (Hong Kong variant) conversie</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="143"/>
+      <location filename="../src/dict/chinese.cc" line="142"/>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
     </message>
@@ -480,7 +475,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>CustomTranslit</name>
     <message>
-      <location filename="../src/dict/customtransliteration.cpp" line="51"/>
+      <location filename="../src/dict/customtransliteration.cc" line="52"/>
       <source>custom transliteration</source>
       <translation>aangepaste transliteratie</translation>
     </message>
@@ -551,17 +546,17 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Afbeeldingen</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="99"/>
+      <location filename="../src/ui/groups_widgets.cc" line="98"/>
       <source>All files</source>
       <translation>Alle bestanden</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="106"/>
+      <location filename="../src/ui/groups_widgets.cc" line="104"/>
       <source>Error</source>
       <translation>Fout</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="106"/>
+      <location filename="../src/ui/groups_widgets.cc" line="104"/>
       <source>Can&apos;t read the specified image file.</source>
       <translation>Kan opgegeven afbeeldingsbestand niet lezen.</translation>
     </message>
@@ -569,63 +564,63 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictGroupsWidget</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="691"/>
-      <location filename="../src/ui/groups_widgets.cc" line="789"/>
-      <location filename="../src/ui/groups_widgets.cc" line="890"/>
+      <location filename="../src/ui/groups_widgets.cc" line="695"/>
+      <location filename="../src/ui/groups_widgets.cc" line="781"/>
+      <location filename="../src/ui/groups_widgets.cc" line="881"/>
       <source>Confirmation</source>
       <translation>Bevestiging</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="692"/>
+      <location filename="../src/ui/groups_widgets.cc" line="696"/>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
       <translation>Willt u werkelijk een set van groepen aanmaken gebaseerd op talenkoppels?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <location filename="../src/ui/groups_widgets.cc" line="882"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
       <translation>Weet u zeker dat u een set groepen wilt genereren op basis van metadata.toml?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
+      <location filename="../src/ui/groups_widgets.cc" line="990"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Groepen met dezelfde brontaal combineren tot &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1007"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>Groepen met dezelfde doeltaal combineren tot &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="784"/>
+      <location filename="../src/ui/groups_widgets.cc" line="776"/>
       <source>Auto group by folder failed.</source>
       <translation>Automatisch groeperen op map is mislukt.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="777"/>
       <source>The parent directory of %1 can not be reached.</source>
       <translation>De bovenliggende map van %1 kan niet worden bereikt.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="790"/>
+      <location filename="../src/ui/groups_widgets.cc" line="782"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation>Weet u zeker dat u een set groepen wilt genereren op basis van mappen?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1025"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Groep voor tweezijdig vertalen maken als &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1042"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1060"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Groepen met &quot;%1&quot; combineren</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="592"/>
-      <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="985"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
+      <location filename="../src/ui/groups_widgets.cc" line="579"/>
+      <location filename="../src/ui/groups_widgets.cc" line="675"/>
+      <location filename="../src/ui/groups_widgets.cc" line="973"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1134"/>
       <source>Dictionaries: </source>
       <translation>Woordenboeken: </translation>
     </message>
@@ -708,63 +703,63 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Filter tekenreeks (vaste tekenreeks, wildcards of reguliere expressie)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="42"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>Text</source>
       <translation>Tekstveld</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="45"/>
       <source>Wildcards</source>
       <translation>Jokertekens</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="46"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="250"/>
       <source>Loading headwords...</source>
       <translation>Trefwoorden laden...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="281"/>
+      <location filename="../src/ui/dictheadwords.cc" line="285"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>Unieke kopwoorden totaal: %1, gefilterd: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="338"/>
+      <location filename="../src/ui/dictheadwords.cc" line="342"/>
       <source>Save headwords to file</source>
       <translation>Hoofdwoorden in bestand opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="340"/>
+      <location filename="../src/ui/dictheadwords.cc" line="344"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Tekst bestanden (*.txt);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="348"/>
+      <location filename="../src/ui/dictheadwords.cc" line="352"/>
       <source>Can not open exported file</source>
       <translation>Kan het geëxporteerde bestand niet openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="357"/>
+      <location filename="../src/ui/dictheadwords.cc" line="361"/>
       <source>Export headwords...</source>
       <translation>Exporteer hoofdwoorden...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="246"/>
-      <location filename="../src/ui/dictheadwords.cc" line="357"/>
+      <location filename="../src/ui/dictheadwords.cc" line="250"/>
+      <location filename="../src/ui/dictheadwords.cc" line="361"/>
       <source>Cancel</source>
       <translation>Annuleren</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="400"/>
+      <location filename="../src/ui/dictheadwords.cc" line="404"/>
       <source>Export process is interrupted</source>
       <translation>Exportproces is onderbroken</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="408"/>
+      <location filename="../src/ui/dictheadwords.cc" line="412"/>
       <source>Export finished</source>
       <translation>Exporteren voltooid</translation>
     </message>
@@ -832,7 +827,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictListModel</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="243"/>
+      <location filename="../src/ui/groups_widgets.cc" line="238"/>
       <source>%1 entries</source>
       <translation>%1 Vermeldingen</translation>
     </message>
@@ -863,44 +858,44 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictServersModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="823"/>
+      <location filename="../src/dict/sources.cc" line="824"/>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="825"/>
+      <location filename="../src/dict/sources.cc" line="826"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="827"/>
+      <location filename="../src/dict/sources.cc" line="828"/>
       <source>Address</source>
       <translation>Adres</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="829"/>
+      <location filename="../src/dict/sources.cc" line="830"/>
       <source>Databases</source>
       <translation>Databases</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="831"/>
+      <location filename="../src/dict/sources.cc" line="832"/>
       <source>Strategies</source>
       <translation>Strategieën</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="833"/>
+      <location filename="../src/dict/sources.cc" line="834"/>
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="866"/>
+      <location filename="../src/dict/sources.cc" line="867"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
       <translation>Komma-gescheiden lijst van databases
 (lege tekenreeks of &quot;*&quot; komt overeen met alle databases)</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="869"/>
+      <location filename="../src/dict/sources.cc" line="870"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
       <translation>Kommagescheiden lijst van zoekstrategieën
@@ -910,37 +905,37 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictionaryBar</name>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="22"/>
+      <location filename="../src/ui/dictionarybar.cc" line="21"/>
       <source>Extended menu with all dictionaries...</source>
       <translation>Menu uitbreiden met alle woordenboeken...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="96"/>
+      <location filename="../src/ui/dictionarybar.cc" line="95"/>
       <source>Edit this group</source>
       <translation>Deze groep bewerken</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="120"/>
+      <location filename="../src/ui/dictionarybar.cc" line="119"/>
       <source>Dictionary info</source>
       <translation>Woordenboek informatie</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="125"/>
+      <location filename="../src/ui/dictionarybar.cc" line="124"/>
       <source>Dictionary headwords</source>
       <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="127"/>
+      <location filename="../src/ui/dictionarybar.cc" line="126"/>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="134"/>
+      <location filename="../src/ui/dictionarybar.cc" line="133"/>
       <source>Edit dictionary</source>
       <translation>Woordenboek bewerken</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="14"/>
+      <location filename="../src/ui/dictionarybar.cc" line="13"/>
       <source>&amp;Dictionary Bar</source>
       <translation>&amp;Woordenboekwerkbalk</translation>
     </message>
@@ -949,7 +944,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <name>EditDictionaries</name>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="45"/>
-      <location filename="../src/ui/editdictionaries.cc" line="251"/>
+      <location filename="../src/ui/editdictionaries.cc" line="243"/>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Woordenboeken</translation>
     </message>
@@ -959,17 +954,17 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Woordenboeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="134"/>
+      <location filename="../src/ui/editdictionaries.cc" line="129"/>
       <source>Accept</source>
       <translation>Accepteren</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="136"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Cancel</source>
       <translation>Annuleren</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="130"/>
+      <location filename="../src/ui/editdictionaries.cc" line="124"/>
       <source>Sources changed</source>
       <translation>Bronnen gewijzigd</translation>
     </message>
@@ -980,12 +975,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="46"/>
-      <location filename="../src/ui/editdictionaries.cc" line="253"/>
+      <location filename="../src/ui/editdictionaries.cc" line="244"/>
       <source>&amp;Groups</source>
       <translation>&amp;Groepen</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="125"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>Enkele bronnen zijn gewijzigd. Wilt u de wijzigingen accepteren?</translation>
     </message>
@@ -1014,75 +1009,55 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="232"/>
+      <location filename="../src/fulltextsearch.cc" line="217"/>
       <source>Full-text search</source>
       <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="241"/>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Whole words</source>
       <translation>Hele woorden</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="242"/>
+      <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Onopgemaakte tekst</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Wildcards</source>
       <translation>Jokertekens</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
+      <location filename="../src/fulltextsearch.cc" line="339"/>
+      <source>The querying word can not be empty.</source>
+      <translation>Het bevragende woord mag niet leeg zijn.</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="255"/>
+      <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>ondersteunt xapiaanse zoeksyntax,zoals AND OF +/- etc</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="261"/>
-      <source>Max distance between words (%1-%2):</source>
-      <translation>Max afstand tussen woorden (%1-%2):</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="270"/>
-      <source>Max articles per dictionary (%1-%2):</source>
-      <translation>Max. aantal artikelen per woordenboek (%1-%2):</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="309"/>
-      <location filename="../src/fulltextsearch.cc" line="443"/>
-      <location filename="../src/fulltextsearch.cc" line="564"/>
-      <location filename="../src/fulltextsearch.cc" line="577"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="334"/>
+      <location filename="../src/fulltextsearch.cc" line="439"/>
+      <location filename="../src/fulltextsearch.cc" line="452"/>
       <source>Articles found: </source>
       <translation>Gevonden artikelen: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="396"/>
+      <location filename="../src/fulltextsearch.cc" line="323"/>
       <source>Now indexing: </source>
       <translation>Nu indexeren: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="397"/>
+      <location filename="../src/fulltextsearch.cc" line="324"/>
       <source>None</source>
       <translation>Geen</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="454"/>
-      <source>The search line must contains at least one word containing </source>
-      <translation>De zoekregel moet ten minste één woord bevatten </translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="455"/>
-      <source> or more symbols</source>
-      <translation> of meer symbolen</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="466"/>
+      <location filename="../src/fulltextsearch.cc" line="350"/>
       <source>No dictionaries for full-text search</source>
       <translation>Geen woordenboeken voor full-text zoeken</translation>
     </message>
@@ -1090,7 +1065,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="650"/>
       <source>Error in favorities file</source>
       <translation>Fout in favorietenbestand</translation>
     </message>
@@ -1156,7 +1131,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>uit</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="309"/>
+      <location filename="../src/dict/forvo.cc" line="303"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>Om deze fout te herstellen kiest u Bewerken &gt; Woordenboeken &gt; Forvo en geeft u de standaard API-sleutel op.</translation>
     </message>
@@ -1178,14 +1153,9 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <name>FullTextSearchDialog</name>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="206"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
       <source>Search</source>
       <translation>Zoeken</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="60"/>
-      <source>Match case</source>
-      <translation>Hoofdletter van overeenkomst</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="37"/>
@@ -1193,52 +1163,42 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Modus:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="81"/>
-      <source>Ignore words order</source>
-      <translation>Negeer woorden volgorde</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="88"/>
-      <source>Ignore diacritics</source>
-      <translation>Negeren van diacritica</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="111"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
       <source>Articles found:</source>
       <translation>Gevonden artikelen:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="133"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
       <source>Available dictionaries in group:</source>
       <translation>Beschikbare woordenboeken in groep:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="139"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
       <source>Wait for indexing:</source>
       <translation>Wachten op indexeren:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="252"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
       <source>Help</source>
       <translation>Hulp</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="160"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
       <source>Total:</source>
       <translation>Totaal:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="167"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
       <source>Indexed:</source>
       <translation>Geindexeerd:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
       <source>Now indexing: None</source>
       <translation>Nu indexeren: geen</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="232"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
       <source>Cancel</source>
       <translation>Annuleren</translation>
     </message>
@@ -1449,12 +1409,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Geschiedenis:</translation>
     </message>
     <message>
-      <location filename="../src/ui/historypanewidget.cc" line="215"/>
+      <location filename="../src/ui/historypanewidget.cc" line="217"/>
       <source>%1/%2</source>
       <translation>%1/%2</translation>
     </message>
     <message>
-      <location filename="../src/ui/historypanewidget.cc" line="219"/>
+      <location filename="../src/ui/historypanewidget.cc" line="221"/>
       <source>History size: %1 entries out of maximum %2</source>
       <translation>Geschiedenisgrootte: %1 items uit maximum van %2</translation>
     </message>
@@ -1462,12 +1422,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="259"/>
+      <location filename="../src/dict/hunspell.cc" line="256"/>
       <source>Spelling suggestions: </source>
       <translation>Spellingsuggesties:</translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="780"/>
+      <location filename="../src/dict/hunspell.cc" line="768"/>
       <source>%1 Morphology</source>
       <translation>Morfologie %1</translation>
     </message>
@@ -1475,12 +1435,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1404"/>
+      <location filename="../src/dict/sources.cc" line="1405"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1402"/>
+      <location filename="../src/dict/sources.cc" line="1403"/>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
     </message>
@@ -1488,1031 +1448,1035 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="44"/>
+      <location filename="../src/ui/initializing.ui" line="99"/>
+      <source>Indexing: </source>
+      <translation>Indexering: </translation>
+    </message>
+    <message>
+      <location filename="../src/ui/initializing.ui" line="121"/>
       <source>Dictionary Name</source>
       <translation>Naam woordenboek</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="22"/>
+      <location filename="../src/ui/initializing.ui" line="23"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>GoldenDict-ng - Initialiseren</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="28"/>
-      <location filename="../src/initializing.cc" line="31"/>
-      <source>Please wait while indexing dictionary</source>
-      <translation>Woordenboek indexeren - een ogenblik geduld</translation>
-    </message>
-    <message>
-      <location filename="../src/initializing.cc" line="22"/>
+      <location filename="../src/initializing.cc" line="19"/>
       <source>Please wait...</source>
       <translation>Een ogenblik geduld...</translation>
+    </message>
+    <message>
+      <location filename="../src/initializing.cc" line="28"/>
+      <source>Indexing...</source>
+      <translation>Indexeren...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Ewe</source>
       <translation>Ewe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Ido</source>
       <translation>Ido</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Lao</source>
       <translation>Laotiaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="286"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Twi</source>
       <translation>Twi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="116"/>
       <source>Afar</source>
       <translation>Afar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Akan</source>
       <translation>Akan</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Cree</source>
       <translation>Cree</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Igbo</source>
       <translation>Igbo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Komi</source>
       <translation>Zurjeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Manx</source>
       <translation>Manx-Gaelisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="245"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Pali</source>
       <translation>Pali</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="277"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Thai</source>
       <translation>Thaise</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="290"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Urdu</source>
       <translation>Urdu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="302"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zulu</source>
       <translation>Zoeloe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Czech</source>
       <translation>Tsjechisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Dutch</source>
       <translation>Nederlands</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Ganda</source>
       <translation>Luganda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Fulah</source>
       <translation>Fula</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Greek</source>
       <translation>Grieks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Hausa</source>
       <translation>Hausa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hindi</source>
       <translation>Hindoestani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>Irish</source>
       <translation>Iers</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Khmer</source>
       <translation>Khmer</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Kongo</source>
       <translation>Kongo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Latin</source>
       <translation>Latijn</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Malay</source>
       <translation>Maleis</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Maori</source>
       <translation>Maori</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Nauru</source>
       <translation>Nauruaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="242"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Oriya</source>
       <translation>Odia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="241"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Oromo</source>
       <translation>Afaan Oromo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="259"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sango</source>
       <translation>Sango</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="265"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Shona</source>
       <translation>Telefoon</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="276"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tajik</source>
       <translation>Tadzjieks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="274"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Tamil</source>
       <translation>Tamil</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="285"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Tatar</source>
       <translation>Tataars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="269"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Swati</source>
       <translation>Swazi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="282"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tonga</source>
       <translation>Tongaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Inupiaq</source>
       <translation>Inupiak</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="292"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Venda</source>
       <translation>Winkel</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="291"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Uzbek</source>
       <translation>Oezbeeks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Welsh</source>
       <translation>Welsh</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="296"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Wolof</source>
       <translation>Wolof</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="297"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Xhosa</source>
       <translation>Xhosa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Italian</source>
       <translation>Italiaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="250"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Raeto-Romance</source>
       <translation>Retro-Romaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>Dzongkha</source>
       <translation>Dzongkha</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kannada</source>
       <translation>Kannada</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>North Ndebele</source>
       <translation>Noord-Ndebele</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="117"/>
       <source>Abkhazian</source>
       <translation>Abchazisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Kirghiz</source>
       <translation>Kirgizisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="251"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Kirundi</source>
       <translation>Kirundi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Scottish Gaelic</source>
       <translation>Schots-Gaelisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="267"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Albanian</source>
       <translation>Albanees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Latvian</source>
       <translation>Litouws</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Malayalam</source>
       <translation>Malajalam</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kurdish</source>
       <translation>Koerdisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bulgarian</source>
       <translation>Bulgaars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Lingala</source>
       <translation>Lingala</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Maltese</source>
       <translation>Malthees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Marathi</source>
       <translation>Marathi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Arabic</source>
       <translation>Arabisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Basque</source>
       <translation>Baskisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Avaric</source>
       <translation>Avaars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Bihari</source>
       <translation>Bihari</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Aymara</source>
       <translation>Aymara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Breton</source>
       <translation>Bretons</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="271"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Sundanese</source>
       <translation>Sudanees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Danish</source>
       <translation>Deens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Divehi</source>
       <translation>Divehi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Luba-Katanga</source>
       <translation>Luba-Katanga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fijian</source>
       <translation>Fijisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Hungarian</source>
       <translation>Hongaars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>French</source>
       <translation>Frans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>German</source>
       <translation>Duits</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Mongolian</source>
       <translation>Mongools</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Hebrew</source>
       <translation>Hebreeuws</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Herero</source>
       <translation>Herero</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Luxembourgish</source>
       <translation>Luxemburgs</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kanuri</source>
       <translation>Kanuri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kazakh</source>
       <translation>Kazachs</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Kikuyu</source>
       <translation>Gikuyu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Korean</source>
       <translation>Koreaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Navajo</source>
       <translation>Navajo</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>Ndonga</source>
       <translation>Ndonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Nepali</source>
       <translation>Nepalees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="240"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Ojibwa</source>
       <translation>Ojibwe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="247"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pashto</source>
       <translation>Pasjtoe</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="246"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Polish</source>
       <translation>Pools</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="264"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Samoan</source>
       <translation>Samoaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="239"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Occitan</source>
       <translation>Occitaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="257"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sindhi</source>
       <translation>Sindhi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="262"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Slovak</source>
       <translation>Slowaaks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="266"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Somali</source>
       <translation>Somalisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="275"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Telugu</source>
       <translation>Telugu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="284"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tsonga</source>
       <translation>Tsonga</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="281"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Tswana</source>
       <translation>Setswana</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="288"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Uighur</source>
       <translation>Oeigoers</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="260"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Serbo-Croatian</source>
       <translation>Servo-Kroatisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="299"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Yoruba</source>
       <translation>Yoruba</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="300"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Zhuang</source>
       <translation>Zhuang</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="252"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Romanian</source>
       <translation>Roemeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Indonesian</source>
       <translation>Indonesisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="244"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Panjabi</source>
       <translation>Punjabi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="270"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Southern Sotho</source>
       <translation>Zuid-Sotho</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Corsican</source>
       <translation>Corsicaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Esperanto</source>
       <translation>Esperanto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Persian</source>
       <translation>Persisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="263"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Slovenian</source>
       <translation>Sloveens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Western Frisian</source>
       <translation>Westlauwers Fries</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Aragonese</source>
       <translation>Aragonees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="287"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tahitian</source>
       <translation>Tahitiaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Malagasy</source>
       <translation>Plateaumalagasi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Galician</source>
       <translation>Galicisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Azerbaijani</source>
       <translation>Azerbeidzjaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Amharic</source>
       <translation>Amhaars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="255"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Sanskrit</source>
       <translation>Sanskriet</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Japanese</source>
       <translation>Japans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="289"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Ukrainian</source>
       <translation>Oekraiens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bambara</source>
       <translation>Bambara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kalaallisut</source>
       <translation>Groenlands</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Bashkir</source>
       <translation>Basjkiers</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Belarusian</source>
       <translation>Wit-Russisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Kashmiri</source>
       <translation>Kasjmiri</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="256"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Sardinian</source>
       <translation>Sardijns</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hiri Motu</source>
       <translation>Hiri Motu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="249"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Quechua</source>
       <translation>Quechua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bengali</source>
       <translation>Bengaals</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Javanese</source>
       <translation>Javaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Avestan</source>
       <translation>Avestisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="254"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Kinyarwanda</source>
       <translation>Kinyarwanda</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Afrikaans</source>
       <translation>Afrikaanse</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bislama</source>
       <translation>Bislama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Armenian</source>
       <translation>Armeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Norwegian Bokmal</source>
       <translation>Bokmål</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Croatian</source>
       <translation>Kroatisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Bosnian</source>
       <translation>Bosnisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Interlingua</source>
       <translation>Interlingua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingue</source>
       <translation>Interlingue</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Catalan</source>
       <translation>Catalaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="268"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Serbian</source>
       <translation>Servisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Burmese</source>
       <translation>Birmees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="253"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Russian</source>
       <translation>Russisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Limburgish</source>
       <translation>Limburgs</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Norwegian</source>
       <translation>Noors</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Chechen</source>
       <translation>Tsjetsjeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="301"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Chinese</source>
       <translation>Chinees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Chuvash</source>
       <translation>Tsjoevasjisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="261"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sinhala</source>
       <translation>Singalees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>Spanish</source>
       <translation>Spaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Cornish</source>
       <translation>Cornisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="280"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tagalog</source>
       <translation>Tagalog</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Assamese</source>
       <translation>Assamees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="243"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Ossetian</source>
       <translation>Ossetisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Estonian</source>
       <translation>Estisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="273"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Swahili</source>
       <translation>Moeilijk</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="272"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Swedish</source>
       <translation>Zweeds</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Tibetan</source>
       <translation>Tibetaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="293"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Vietnamese</source>
       <translation>Vietnamees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Macedonian</source>
       <translation>Macedonisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="248"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Portuguese</source>
       <translation>Portugees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="283"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Turkish</source>
       <translation>Turks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="279"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Turkmen</source>
       <translation>Turkmeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Gujarati</source>
       <translation>Gujarati</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Icelandic</source>
       <translation>IJslands</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Inuktitut</source>
       <translation>Inuktitut</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>English</source>
       <translation>Engels</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Georgian</source>
       <translation>Georgisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Church Slavic</source>
       <translation>Kerkslavisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Faroese</source>
       <translation>Faeröers</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Finnish</source>
       <translation>Fins</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="294"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Volapuk</source>
       <translation>Volapük</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="295"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Walloon</source>
       <translation>Waals</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kwanyama</source>
       <translation>Oshikwanyama</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Marshallese</source>
       <translation>Marshallees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="258"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Northern Sami</source>
       <translation>Noord-Samisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Haitian</source>
       <translation>Haitiaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Chamorro</source>
       <translation>Chamorro</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Norwegian Nynorsk</source>
       <translation>Nieuwnoors</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Guarani</source>
       <translation>Guarani</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>South Ndebele</source>
       <translation>Zuid-Ndebele</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="238"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>Chichewa</source>
       <translation>Chichewa</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lithuanian</source>
       <translation>Litouws</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Sichuan Yi</source>
       <translation>Sichuan Yi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="278"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tigrinya</source>
       <translation>Tigrinya</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="298"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Yiddish</source>
       <translation>Jiddisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="439"/>
+      <location filename="../src/language.cc" line="437"/>
       <source>Traditional Chinese</source>
       <translation>Traditioneel Chinees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="440"/>
+      <location filename="../src/language.cc" line="438"/>
       <source>Simplified Chinese</source>
       <translation>Vereenvoudigd Chinees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="441"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Other</source>
       <translation>Andere</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="442"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>Andere vereenvoudigd Chinese dialecten</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="443"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>Andere traditioneel Chinese dialecten</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="444"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Eastern-European languages</source>
       <translation>Andere Oost-Europese talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="445"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Western-European languages</source>
       <translation>Andere West-Europese talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="446"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Russian languages</source>
       <translation>Andere Russische talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="447"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Japanese languages</source>
       <translation>Andere Japanse talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="448"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Baltic languages</source>
       <translation>Andere Baltische talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="449"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Greek languages</source>
       <translation>Andere Griekse talen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="450"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Korean dialects</source>
       <translation>Andere Koreaanse dialecten</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="451"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Turkish dialects</source>
       <translation>Andere Turkse dialecten</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="452"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Thai dialects</source>
       <translation>Andere Thaise dialecten</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="453"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Tamazight</source>
       <translation>Berbers</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="303"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Lojban</source>
       <translation>Lojban</translation>
     </message>
@@ -2520,207 +2484,207 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>Language::Db</name>
     <message>
-      <location filename="../src/language.cc" line="41"/>
+      <location filename="../src/language.cc" line="39"/>
       <source>French</source>
       <translation>Frans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="42"/>
+      <location filename="../src/language.cc" line="40"/>
       <source>Spanish</source>
       <translation>Spaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="43"/>
+      <location filename="../src/language.cc" line="41"/>
       <source>Belarusian</source>
       <translation>Wit-Russisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="44"/>
+      <location filename="../src/language.cc" line="42"/>
       <source>Bulgarian</source>
       <translation>Bulgaars</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="45"/>
+      <location filename="../src/language.cc" line="43"/>
       <source>Czech</source>
       <translation>Tsjechisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="46"/>
+      <location filename="../src/language.cc" line="44"/>
       <source>German</source>
       <translation>Duits</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="47"/>
+      <location filename="../src/language.cc" line="45"/>
       <source>Greek</source>
       <translation>Grieks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="48"/>
+      <location filename="../src/language.cc" line="46"/>
       <source>Finnish</source>
       <translation>Fins</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="49"/>
+      <location filename="../src/language.cc" line="47"/>
       <source>Italian</source>
       <translation>Italiaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="50"/>
+      <location filename="../src/language.cc" line="48"/>
       <source>Japanese</source>
       <translation>Japans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="51"/>
+      <location filename="../src/language.cc" line="49"/>
       <source>Korean</source>
       <translation>Koreaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="50"/>
       <source>Lithuanian</source>
       <translation>Litouws</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="51"/>
       <source>Macedonian</source>
       <translation>Macedonisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="52"/>
       <source>Dutch</source>
       <translation>Nederlands</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="53"/>
       <source>Polish</source>
       <translation>Pools</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="54"/>
       <source>Portuguese</source>
       <translation>Portugees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="55"/>
       <source>Russian</source>
       <translation>Russisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="56"/>
       <source>Slovak</source>
       <translation>Slowaaks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="57"/>
       <source>Albanian</source>
       <translation>Albanees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="58"/>
       <source>Serbian (Cyrillic)</source>
       <translation>Servisch (Cyrillisch)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="59"/>
       <source>Swedish</source>
       <translation>Zweeds</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="60"/>
       <source>Turkish</source>
       <translation>Turks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="61"/>
       <source>Ukrainian</source>
       <translation>Oekraïens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="62"/>
       <source>Chinese Simplified</source>
       <translation>Versimpeld Chinees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="63"/>
       <source>Chinese Traditional</source>
       <translation>Chinese traditionele</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="64"/>
       <source>Vietnamese</source>
       <translation>Vietnamees</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="65"/>
       <source>Portuguese, Brazilian</source>
       <translation>Portugees, Braziliaans</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="66"/>
       <source>Persian</source>
       <translation>Perzisch</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="67"/>
       <source>Spanish, Argentina</source>
       <translation>Spaans, Argentinië</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="68"/>
       <source>Hindi</source>
       <translation>Hindi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="69"/>
       <source>Esperanto</source>
       <translation>Esperanto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="70"/>
       <source>German, Switzerland</source>
       <translation>Duits, Zwitserland</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="71"/>
       <source>Spanish, Bolivia</source>
       <translation>Spaans, Bolivia</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="72"/>
       <source>Tajik</source>
       <translation>Tadzjieks</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="73"/>
       <source>Quechua</source>
       <translation>Quechua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="74"/>
       <source>Aymara</source>
       <translation>Aymara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="75"/>
       <source>Arabic, Saudi Arabia</source>
       <translation>Arabisch (Saudi-Arabië)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="76"/>
       <source>Turkmen</source>
       <translation>Turkmeens</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="77"/>
       <source>Interlingue</source>
       <translation>Interlingue</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="78"/>
       <source>Lojban</source>
       <translation>Lojban</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="79"/>
       <source>English</source>
       <translation>Engels</translation>
     </message>
@@ -2728,7 +2692,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>LoadDictionaries</name>
     <message>
-      <location filename="../src/dict/loaddictionaries.cc" line="195"/>
+      <location filename="../src/dict/loaddictionaries.cc" line="210"/>
       <source>Error loading dictionaries</source>
       <translation>Fout bij laden woordenboeken</translation>
     </message>
@@ -2736,7 +2700,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="368"/>
+      <location filename="../src/main.cc" line="443"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Fout in configuratiebestand. Doorgaan met standaardinstellingen?</translation>
     </message>
@@ -2744,12 +2708,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="553"/>
+      <location filename="../src/ui/mainwindow.ui" line="547"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="388"/>
+      <location filename="../src/ui/mainwindow.ui" line="382"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
@@ -2759,27 +2723,27 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>&amp;Randen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="299"/>
+      <location filename="../src/ui/mainwindow.ui" line="293"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="314"/>
+      <location filename="../src/ui/mainwindow.ui" line="308"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1495"/>
+      <location filename="../src/ui/mainwindow.cc" line="1529"/>
       <source>All</source>
       <translation>Alle groepen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="198"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Back</source>
       <translation>Terug</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1466"/>
+      <location filename="../src/ui/mainwindow.cc" line="1502"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>%1 Woordenboeken, %2 Artikelen, %3 Woorden</translation>
     </message>
@@ -2804,100 +2768,95 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="389"/>
+      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>&amp;Afsluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3371"/>
+      <location filename="../src/ui/mainwindow.cc" line="3279"/>
       <source>Error</source>
       <translation>Fout</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="344"/>
+      <location filename="../src/ui/mainwindow.ui" line="338"/>
       <source>Quit from application</source>
       <translation>Programma afsluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui" line="357"/>
       <source>&amp;Close To Tray</source>
       <translation>&amp;Sluiten naar systeemvak</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3371"/>
+      <location filename="../src/ui/mainwindow.cc" line="3279"/>
       <source>Can&apos;t save article: %1</source>
       <translation>Kan artikel niet opslaan: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="244"/>
+      <location filename="../src/ui/mainwindow.cc" line="246"/>
       <source>Zoom In</source>
       <translation>Vergroten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="296"/>
+      <location filename="../src/ui/mainwindow.ui" line="290"/>
       <source>&amp;Dictionaries...</source>
       <translation>Woorden&amp;boeken...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="330"/>
+      <location filename="../src/ui/mainwindow.ui" line="324"/>
       <source>&amp;About</source>
       <translation>&amp;Over</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="355"/>
+      <location filename="../src/ui/mainwindow.ui" line="349"/>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="400"/>
+      <location filename="../src/ui/mainwindow.ui" line="394"/>
       <source>&amp;Print</source>
       <translation>Af&amp;drukken</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui" line="376"/>
       <source>&amp;Save Article</source>
       <translation>Artikel &amp;opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3353"/>
+      <location filename="../src/ui/mainwindow.cc" line="3262"/>
       <source>Save Article As</source>
       <translation>Artikel opslaan als</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="403"/>
+      <location filename="../src/ui/mainwindow.ui" line="397"/>
       <source>Ctrl+P</source>
       <translation>Ctrl+P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="347"/>
+      <location filename="../src/ui/mainwindow.ui" line="341"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="366"/>
+      <location filename="../src/ui/mainwindow.ui" line="360"/>
       <source>Minimizes the window to tray</source>
       <translation>Minimaliseren naar systeemvak</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="411"/>
+      <location filename="../src/ui/mainwindow.ui" line="405"/>
       <source>Page Set&amp;up</source>
       <translation>&amp;Pagina-instelling</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="322"/>
+      <location filename="../src/ui/mainwindow.ui" line="316"/>
       <source>&amp;Homepage</source>
       <translation>&amp;Website</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3039"/>
+      <location filename="../src/ui/mainwindow.cc" line="2961"/>
       <source>New Release Available</source>
       <translation>Nieuwe versie beschikbaar</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/mainwindow.cc" line="1477"/>
-      <source>Look up:</source>
-      <translation>Opzoeken:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="250"/>
@@ -2905,30 +2864,24 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Verkleinen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="382"/>
+      <location filename="../src/ui/mainwindow.cc" line="376"/>
       <source>Show &amp;Main Window</source>
       <translation>&amp;Hoofdvenster weergeven</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="333"/>
+      <location filename="../src/ui/mainwindow.ui" line="327"/>
       <source>About GoldenDict-ng</source>
       <translation>Over GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3045"/>
+      <location filename="../src/ui/mainwindow.cc" line="2968"/>
       <source>Download</source>
       <translation>Downloaden</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3250"/>
+      <location filename="../src/ui/mainwindow.cc" line="3157"/>
       <source>Page Setup</source>
       <translation>Pagina-instelling</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/mainwindow.cc" line="306"/>
-      <location filename="../src/ui/mainwindow.cc" line="1477"/>
-      <source>Look up in:</source>
-      <translation>Opzoeken in:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="254"/>
@@ -2936,73 +2889,73 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Normale grootte</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2888"/>
+      <location filename="../src/ui/mainwindow.cc" line="2811"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>Bewakingsmechanisme voor sneltoetsen kan niet worden geïnitialiseerd.&lt;br&gt;Zorg ervoor dat de RECORD-extensie van uw XServer is ingeschakeld.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3040"/>
+      <location filename="../src/ui/mainwindow.cc" line="2962"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>Versie &lt;b&gt;%1&lt;/b&gt; van GoldenDict kan nu gedownload worden.&lt;br&gt;Klik op &lt;b&gt;downloaden&lt;/b&gt; om naar de downloadpagina te gaan.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="369"/>
+      <location filename="../src/ui/mainwindow.ui" line="363"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl+F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="430"/>
+      <location filename="../src/ui/mainwindow.ui" line="424"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="581"/>
+      <location filename="../src/ui/mainwindow.cc" line="583"/>
       <source>Loading...</source>
       <translation>Laden...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1666"/>
+      <location filename="../src/ui/mainwindow.cc" line="1688"/>
       <source>(untitled)</source>
       <translation>(naamloos)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="311"/>
+      <location filename="../src/ui/mainwindow.ui" line="305"/>
       <source>&amp;Preferences...</source>
       <translation>&amp;Instellingen...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="46"/>
-      <location filename="../src/ui/mainwindow.cc" line="732"/>
+      <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Welkom!</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="231"/>
+      <location filename="../src/ui/mainwindow.cc" line="233"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Woord uitspreken (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="385"/>
+      <location filename="../src/ui/mainwindow.ui" line="379"/>
       <source>Save Article</source>
       <translation>Artikel opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3046"/>
+      <location filename="../src/ui/mainwindow.cc" line="2969"/>
       <source>Skip This Release</source>
       <translation>Deze versie overslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="200"/>
+      <location filename="../src/ui/mainwindow.cc" line="202"/>
       <source>Forward</source>
       <translation>Vooruit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3272"/>
+      <location filename="../src/ui/mainwindow.cc" line="3179"/>
       <source>Print Article</source>
       <translation>Artikel afdrukken</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3251"/>
+      <location filename="../src/ui/mainwindow.cc" line="3158"/>
       <source>No printer is available. Please install one first.</source>
       <translation>Geen printer beschikbaar. U moet er eerst één installeren.</translation>
     </message>
@@ -3017,7 +2970,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>&amp;Geschiedenis</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="438"/>
+      <location filename="../src/ui/mainwindow.ui" line="432"/>
       <source>&amp;Clear</source>
       <translation>&amp;Wissen</translation>
     </message>
@@ -3027,247 +2980,259 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Z&amp;oomen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="368"/>
+      <location filename="../src/ui/mainwindow.cc" line="364"/>
       <source>Words Zoom In</source>
       <translation>Zoekwoorden vergroten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="372"/>
+      <location filename="../src/ui/mainwindow.cc" line="366"/>
       <source>Words Zoom Out</source>
       <translation>Zoekwoorden verkleinen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="374"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Normal Size</source>
       <translation>Zoekwoorden normale grootte</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="421"/>
+      <location filename="../src/ui/mainwindow.cc" line="425"/>
       <source>Close current tab</source>
       <translation>Huidig tabblad sluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="429"/>
+      <location filename="../src/ui/mainwindow.cc" line="433"/>
       <source>Close all tabs</source>
       <translation>Alle tabbladen sluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="436"/>
+      <location filename="../src/ui/mainwindow.cc" line="440"/>
       <source>Close all tabs except current</source>
       <translation>Alle andere tabbladen sluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="411"/>
+      <location filename="../src/ui/mainwindow.cc" line="415"/>
       <source>Opened tabs</source>
       <translation>Geopende tabbladen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="590"/>
+      <location filename="../src/ui/mainwindow.cc" line="592"/>
       <source>New Tab</source>
       <translation>Nieuw tabblad</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="453"/>
+      <location filename="../src/ui/mainwindow.ui" line="447"/>
       <source>Ctrl+T</source>
       <translation>CTRL</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="464"/>
+      <location filename="../src/ui/mainwindow.ui" line="458"/>
       <source>&amp;Configuration Folder</source>
       <translation>&amp;Configuratiemap</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="121"/>
+      <location filename="../src/ui/mainwindow.cc" line="123"/>
       <source>&amp;Menubar</source>
       <translation>&amp;Menubalk</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="344"/>
+      <location filename="../src/ui/mainwindow.cc" line="340"/>
       <source>Found in Dictionaries:</source>
       <translation>Gevonden in woordenboeken:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="456"/>
+      <location filename="../src/ui/mainwindow.cc" line="460"/>
       <source>Add all tabs to Favorites</source>
       <translation>Alle tabbladen aan favorieten toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1011"/>
+      <location filename="../src/ui/mainwindow.cc" line="945"/>
+      <source>WARNING: %1</source>
+      <translation>WAARSCHUWING: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="1075"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>Te zoeken string in woordenboeken. De jokertekens &apos;*&apos;, &apos;?&apos; en sets van symbolen &apos;[...]&apos; zijn toegestaan.
 Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen gebruiken &apos;\*&apos;, &apos;\?&apos; &apos;\[&apos;, &apos;\]&apos; respectievelijk</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1609"/>
+      <location filename="../src/ui/mainwindow.cc" line="1637"/>
       <source>Open Tabs List</source>
       <translation>Tabbladlijst openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1866"/>
-      <location filename="../src/ui/mainwindow.cc" line="1944"/>
-      <location filename="../src/ui/mainwindow.cc" line="4457"/>
-      <location filename="../src/ui/mainwindow.cc" line="4485"/>
-      <location filename="../src/ui/mainwindow.cc" line="4524"/>
+      <location filename="../src/ui/mainwindow.cc" line="1884"/>
+      <location filename="../src/ui/mainwindow.cc" line="1953"/>
+      <location filename="../src/ui/mainwindow.cc" line="4318"/>
+      <location filename="../src/ui/mainwindow.cc" line="4346"/>
+      <location filename="../src/ui/mainwindow.cc" line="4385"/>
       <source>Remove current tab from Favorites</source>
       <translation>Huidige tab uit favorieten verwijderen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1897"/>
+      <location filename="../src/ui/mainwindow.cc" line="1908"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3150"/>
+      <location filename="../src/ui/mainwindow.cc" line="3063"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>U hebt ervoor gekozen om de menubalk te verbergen. Druk op %1 om deze weer zichtbaar te maken.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3151"/>
+      <location filename="../src/ui/mainwindow.cc" line="3065"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3744"/>
-      <location filename="../src/ui/mainwindow.cc" line="3756"/>
+      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.cc" line="3625"/>
+      <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>&amp;Weergeven</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="483"/>
+      <location filename="../src/ui/mainwindow.ui" line="477"/>
       <source>&amp;Export</source>
       <translation>&amp;Exporteren</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3740"/>
-      <location filename="../src/ui/mainwindow.cc" line="3752"/>
+      <location filename="../src/ui/mainwindow.cc" line="3621"/>
+      <location filename="../src/ui/mainwindow.cc" line="3632"/>
       <source>&amp;Hide</source>
       <translation>&amp;Verbergen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3798"/>
+      <location filename="../src/ui/mainwindow.cc" line="3673"/>
       <source>Export history to file</source>
       <translation>Geschiedenis opslaan als bestand</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3800"/>
-      <location filename="../src/ui/mainwindow.cc" line="3862"/>
-      <location filename="../src/ui/mainwindow.cc" line="3976"/>
+      <location filename="../src/ui/mainwindow.cc" line="3675"/>
+      <location filename="../src/ui/mainwindow.cc" line="3736"/>
+      <location filename="../src/ui/mainwindow.cc" line="3851"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Tekst bestanden (*.txt);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3839"/>
+      <location filename="../src/ui/mainwindow.cc" line="3719"/>
       <source>History export complete</source>
       <translation>Geschiedenis exporteren voltooid</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3842"/>
-      <location filename="../src/ui/mainwindow.cc" line="3957"/>
-      <location filename="../src/ui/mainwindow.cc" line="4006"/>
+      <location filename="../src/ui/mainwindow.cc" line="3684"/>
+      <location filename="../src/ui/mainwindow.cc" line="3697"/>
+      <location filename="../src/ui/mainwindow.cc" line="3714"/>
+      <location filename="../src/ui/mainwindow.cc" line="3820"/>
+      <location filename="../src/ui/mainwindow.cc" line="3828"/>
+      <location filename="../src/ui/mainwindow.cc" line="3859"/>
+      <location filename="../src/ui/mainwindow.cc" line="3867"/>
+      <location filename="../src/ui/mainwindow.cc" line="3877"/>
       <source>Export error: </source>
       <translation>Fout bij exporteren:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="475"/>
+      <location filename="../src/ui/mainwindow.ui" line="469"/>
       <source>Ctrl+H</source>
       <translation>Ctrl+H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="491"/>
+      <location filename="../src/ui/mainwindow.ui" line="485"/>
       <source>&amp;Import</source>
       <translation>&amp;Importeren</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
+      <location filename="../src/ui/mainwindow.cc" line="3734"/>
       <source>Import history from file</source>
       <translation>Geschiedenis importeren uit bestand</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3909"/>
+      <location filename="../src/ui/mainwindow.cc" line="3783"/>
       <source>Import error: invalid data in file</source>
       <translation>Fout bij importeren: bestand bevat onjuiste gegevens</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3913"/>
+      <location filename="../src/ui/mainwindow.cc" line="3789"/>
       <source>History import complete</source>
       <translation>Geschiedenis importeren voltooid</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3916"/>
-      <location filename="../src/ui/mainwindow.cc" line="4058"/>
+      <location filename="../src/ui/mainwindow.cc" line="3746"/>
+      <location filename="../src/ui/mainwindow.cc" line="3777"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: </source>
       <translation>Fout bij importeren:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3933"/>
+      <location filename="../src/ui/mainwindow.cc" line="3809"/>
       <source>Export Favorites to file</source>
       <translation>Favorieten exporteren naar bestand</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3935"/>
+      <location filename="../src/ui/mainwindow.cc" line="3811"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML-bestanden (*.xml);;Alle bestanden (*. *)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3954"/>
-      <location filename="../src/ui/mainwindow.cc" line="4003"/>
+      <location filename="../src/ui/mainwindow.cc" line="3833"/>
+      <location filename="../src/ui/mainwindow.cc" line="3882"/>
       <source>Favorites export complete</source>
       <translation>Favorieten exporteren voltooid</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3974"/>
+      <location filename="../src/ui/mainwindow.cc" line="3849"/>
       <source>Export Favorites to file as plain list</source>
       <translation>Favorieten exporteren naar bestand als platte lijst</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4023"/>
+      <location filename="../src/ui/mainwindow.cc" line="3897"/>
       <source>Import Favorites from file</source>
       <translation>Favorieten importeren uit bestand</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4025"/>
+      <location filename="../src/ui/mainwindow.cc" line="3899"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>XML-bestanden (*.xml);;Txt bestanden (*.txt);;Alle bestanden (*. *)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4054"/>
+      <location filename="../src/ui/mainwindow.cc" line="3929"/>
       <source>Favorites import complete</source>
       <translation>Favorieten importeren voltooid</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3917"/>
+      <location filename="../src/ui/mainwindow.cc" line="3923"/>
       <source>Data parsing error</source>
       <translation>Fout bij verwerken gegevens</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4270"/>
+      <location filename="../src/ui/mainwindow.cc" line="4136"/>
       <source>Dictionary info</source>
       <translation>Woordenboekinformatie</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4274"/>
+      <location filename="../src/ui/mainwindow.cc" line="4140"/>
       <source>Dictionary headwords</source>
       <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4276"/>
+      <location filename="../src/ui/mainwindow.cc" line="4142"/>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4282"/>
+      <location filename="../src/ui/mainwindow.cc" line="4148"/>
       <source>Edit dictionary</source>
       <translation>Woordenboek bewerken</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4428"/>
+      <location filename="../src/ui/mainwindow.cc" line="4293"/>
       <source>Now indexing for full-text search: </source>
       <translation>Nu indexeren voor full-text zoeken: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4470"/>
+      <location filename="../src/ui/mainwindow.cc" line="4331"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Hoofdwoord &quot;%1&quot; uit favorieten verwijderen?</translation>
     </message>
@@ -3277,169 +3242,169 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>&amp;Zoekvenster</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="208"/>
+      <location filename="../src/ui/mainwindow.ui" line="202"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Navigatievenster zoek&amp;resultaten</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="235"/>
+      <location filename="../src/ui/mainwindow.ui" line="229"/>
       <source>Favor&amp;ites Pane</source>
       <translation>Favor&amp;ieten Schot</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="419"/>
+      <location filename="../src/ui/mainwindow.ui" line="413"/>
       <source>Print Pre&amp;view</source>
       <translation>Afdruk&amp;voorbeeld</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="427"/>
+      <location filename="../src/ui/mainwindow.ui" line="421"/>
       <source>&amp;Rescan Files</source>
       <translation>Bestanden opnieuw &amp;inlezen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="450"/>
+      <location filename="../src/ui/mainwindow.ui" line="444"/>
       <source>&amp;New Tab</source>
       <translation>&amp;Nieuw tabblad</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui" line="496"/>
       <source>&amp;Always on Top</source>
       <translation>&amp;Altijd op de voorgrond</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="505"/>
+      <location filename="../src/ui/mainwindow.ui" line="499"/>
       <source>Always on Top</source>
       <translation>Altijd op de voorgrond</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="508"/>
+      <location filename="../src/ui/mainwindow.ui" line="502"/>
       <source>Ctrl+O</source>
       <translation>Ctrl+O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="517"/>
-      <location filename="../src/ui/mainwindow.ui" line="520"/>
+      <location filename="../src/ui/mainwindow.ui" line="511"/>
+      <location filename="../src/ui/mainwindow.ui" line="514"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Menuknop</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="525"/>
+      <location filename="../src/ui/mainwindow.ui" line="519"/>
       <source>Search in page</source>
       <translation>Zoeken op pagina</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="528"/>
+      <location filename="../src/ui/mainwindow.ui" line="522"/>
       <source>Ctrl+F</source>
       <translation>Ctrl+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="536"/>
+      <location filename="../src/ui/mainwindow.ui" line="530"/>
       <source>Full-text search</source>
       <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="539"/>
+      <location filename="../src/ui/mainwindow.ui" line="533"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="550"/>
+      <location filename="../src/ui/mainwindow.ui" line="544"/>
       <source>GoldenDict reference</source>
       <translation>Referentie GoldenDict</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="558"/>
+      <location filename="../src/ui/mainwindow.ui" line="552"/>
       <source>Show</source>
       <translation>Weergeven</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="566"/>
+      <location filename="../src/ui/mainwindow.ui" line="560"/>
       <source>Export</source>
       <translation>Exporteren</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="571"/>
+      <location filename="../src/ui/mainwindow.ui" line="565"/>
       <source>Import</source>
       <translation>Importeren</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui" line="570"/>
       <source>Add</source>
       <translation>Toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="579"/>
+      <location filename="../src/ui/mainwindow.ui" line="573"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
-      <location filename="../src/ui/mainwindow.cc" line="1871"/>
-      <location filename="../src/ui/mainwindow.cc" line="1949"/>
-      <location filename="../src/ui/mainwindow.cc" line="4477"/>
+      <location filename="../src/ui/mainwindow.cc" line="1888"/>
+      <location filename="../src/ui/mainwindow.cc" line="1957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4338"/>
       <source>Add current tab to Favorites</source>
       <translation>Huidige tabblad aan favorieten toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="582"/>
+      <location filename="../src/ui/mainwindow.ui" line="576"/>
       <source>Ctrl+E</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="587"/>
+      <location filename="../src/ui/mainwindow.ui" line="581"/>
       <source>Export to list</source>
       <translation>Exporteren naar lijst</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Woordenboekwerkbalk met &amp;tekst</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="122"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>Werkbalken met &amp;kleine pictogrammen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="195"/>
+      <location filename="../src/ui/mainwindow.cc" line="197"/>
       <source>&amp;Navigation</source>
       <translation>&amp;Navigatiewerkbalk</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="223"/>
+      <location filename="../src/ui/mainwindow.cc" line="225"/>
       <source>Enable Scanning</source>
       <translation>Scannen inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3348"/>
+      <location filename="../src/ui/mainwindow.cc" line="3257"/>
       <source>Article, Complete (*.html)</source>
       <translation>Artikel, compleet (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3349"/>
+      <location filename="../src/ui/mainwindow.cc" line="3258"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>Artikel, alleen HTML (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3435"/>
+      <location filename="../src/ui/mainwindow.cc" line="3337"/>
       <source>Saving article...</source>
       <translation>Artikel opslaan...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <location filename="../src/ui/mainwindow.cc" line="3350"/>
       <source>Save article complete</source>
       <translation>Bewaar artikel voltooid</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3499"/>
+      <location filename="../src/ui/mainwindow.cc" line="3398"/>
       <source>The main window is set to be always on top.</source>
       <translation>Het hoofdvenster wordt nu altijd op de voorgrond weergegeven.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="262"/>
+      <location filename="../src/ui/mainwindow.ui" line="256"/>
       <source>&amp;History Pane</source>
       <translation>&amp;Geschiedenisvenster</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="780"/>
-      <location filename="../src/ui/mainwindow.cc" line="863"/>
+      <location filename="../src/ui/mainwindow.cc" line="773"/>
+      <location filename="../src/ui/mainwindow.cc" line="852"/>
       <source>Accessibility API is not enabled</source>
       <translation>Toegankelijkheid API is niet ingeschakeld</translation>
     </message>
@@ -3447,12 +3412,12 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="625"/>
+      <location filename="../src/dict/mdx.cc" line="618"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>Woordenboekbestand is gemanipuleerd of beschadigd</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="636"/>
+      <location filename="../src/dict/mdx.cc" line="629"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>Kan artikel niet laden van %1, reden: %2</translation>
     </message>
@@ -3460,7 +3425,7 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <location filename="../src/dict/mediawiki.cc" line="485"/>
+      <location filename="../src/dict/mediawiki.cc" line="486"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>XML parseerfout: %1 op %2,%3</translation>
     </message>
@@ -3476,22 +3441,22 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>MediaWikisModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="481"/>
+      <location filename="../src/dict/sources.cc" line="482"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="483"/>
+      <location filename="../src/dict/sources.cc" line="484"/>
       <source>Address</source>
       <translation>Adres</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="479"/>
+      <location filename="../src/dict/sources.cc" line="480"/>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="485"/>
+      <location filename="../src/dict/sources.cc" line="486"/>
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
@@ -3567,22 +3532,22 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Beschrijving:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="263"/>
+      <location filename="../src/ui/orderandprops.cc" line="267"/>
       <source>Sort by name</source>
       <translation>Sorteren op naam</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="265"/>
+      <location filename="../src/ui/orderandprops.cc" line="269"/>
       <source>Sort by languages</source>
       <translation>Sorteren op taal</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="259"/>
+      <location filename="../src/ui/orderandprops.cc" line="263"/>
       <source>Dictionary headwords</source>
       <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="288"/>
+      <location filename="../src/ui/orderandprops.cc" line="292"/>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Actieve woordenboeken: %1, inactief: %2</translation>
     </message>
@@ -3590,12 +3555,12 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>PathsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1183"/>
+      <location filename="../src/dict/sources.cc" line="1184"/>
       <source>Path</source>
       <translation>Pad</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1185"/>
+      <location filename="../src/dict/sources.cc" line="1186"/>
       <source>Recursive</source>
       <translation>Recursief</translation>
     </message>
@@ -3633,14 +3598,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Systeemvakpictogram inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="904"/>
-      <location filename="../src/ui/preferences.ui" line="984"/>
+      <location filename="../src/ui/preferences.ui" line="933"/>
+      <location filename="../src/ui/preferences.ui" line="1013"/>
       <source>Host:</source>
       <translation>Host:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="914"/>
-      <location filename="../src/ui/preferences.ui" line="1001"/>
+      <location filename="../src/ui/preferences.ui" line="943"/>
+      <location filename="../src/ui/preferences.ui" line="1030"/>
       <source>Port:</source>
       <translation>Poort:</translation>
     </message>
@@ -3650,12 +3615,12 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Verschuiving</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="891"/>
+      <location filename="../src/ui/preferences.ui" line="920"/>
       <source>Type:</source>
       <translation>Type</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="935"/>
+      <location filename="../src/ui/preferences.ui" line="964"/>
       <source>User:</source>
       <translation>Gebruiker:</translation>
     </message>
@@ -3674,12 +3639,12 @@ Als u deze optie inschakelt worden nieuwe tabbladen
 geopend zonder ze te selecteren.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="854"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Use proxy server</source>
       <translation>Proxyserver gebruiken</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="680"/>
+      <location filename="../src/ui/preferences.ui" line="709"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>De volgende sneltoets gebruiken om woorden van het klembord te vertalen:</translation>
     </message>
@@ -3689,7 +3654,7 @@ geopend zonder ze te selecteren.</translation>
       <translation>Windowstoets of Metatoets</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="763"/>
+      <location filename="../src/ui/preferences.ui" line="792"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Woorden in hoofdvenster automatisch uitspreken</translation>
     </message>
@@ -3720,12 +3685,12 @@ the application.</source>
       <translation>Als dit ingeschakeld is wordt het hoofdvenster alleen verborgen in plaats van gesloten.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="751"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>&amp;Audio</source>
       <translation>&amp;Geluid</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="850"/>
+      <location filename="../src/ui/preferences.ui" line="879"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Schakel dit in om een proxyserver te gebruiken voor alle netwerkaanvragen.</translation>
@@ -3746,7 +3711,7 @@ for all program&apos;s network requests.</source>
       <translation>Nieuwe tabbladen op de achtergrond openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="844"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>&amp;Network</source>
       <translation>&amp;Netwerk</translation>
     </message>
@@ -3756,7 +3721,7 @@ for all program&apos;s network requests.</source>
       <translation>Alleen Ctrl-rechts</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="118"/>
+      <location filename="../src/ui/preferences.cc" line="111"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
@@ -3778,7 +3743,7 @@ in the pressed state when the word selection changes.</source>
 toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="770"/>
+      <location filename="../src/ui/preferences.ui" line="799"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Woorden in Scan Popup automatisch uitspreken</translation>
     </message>
@@ -3788,7 +3753,7 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Nieuwe tabbladen na de huidige openen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="624"/>
+      <location filename="../src/ui/preferences.cc" line="560"/>
       <source>Restart the program to apply the language change.</source>
       <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
@@ -3798,7 +3763,7 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Alt-toets</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui" line="1231"/>
       <source>Check for new program releases periodically</source>
       <translation>Periodiek controleren op nieuwe versies</translation>
     </message>
@@ -3816,8 +3781,7 @@ Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
       <translation>Sluiten naar systeemvak</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="60"/>
+      <location filename="../src/ui/preferences.cc" line="61"/>
       <source>System default</source>
       <translation>Systeemstandaard</translation>
     </message>
@@ -3829,7 +3793,7 @@ to open main window and perform other tasks.</source>
 waarmee u het hoofdvenster kunt openen en andere taken uit kunt voeren.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1224"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3845,12 +3809,12 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Het programma starten</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="945"/>
+      <location filename="../src/ui/preferences.ui" line="974"/>
       <source>Password:</source>
       <translation>Wachtwoord:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="108"/>
       <source>Default</source>
       <translation>Standaard</translation>
     </message>
@@ -3860,7 +3824,7 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>&amp;Weergave</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="623"/>
+      <location filename="../src/ui/preferences.cc" line="559"/>
       <source>Changing Language</source>
       <translation>Toepassingstaal wijzigen</translation>
     </message>
@@ -3870,7 +3834,7 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Ctrl-toets</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="653"/>
+      <location filename="../src/ui/preferences.ui" line="682"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>De volgende sneltoets gebruiken om het hoofdvenster te tonen of te verbergen:</translation>
     </message>
@@ -3900,7 +3864,7 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Alt-rechts</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="723"/>
+      <location filename="../src/ui/preferences.ui" line="752"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>De sneltoetsen werken systeembreed en vanuit elk programma zolang GoldenDict op de achtergrond actief is.</translation>
     </message>
@@ -3910,7 +3874,7 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Ctrl-rechts</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="647"/>
+      <location filename="../src/ui/preferences.ui" line="676"/>
       <source>Hotkeys</source>
       <translation>Sneltoetsen</translation>
     </message>
@@ -3954,27 +3918,27 @@ Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is
       <translation>Negeer de eigen selectie en klembordwijzigingen van GoldenDict</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui" line="815"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Audiobestanden afspelen via ingebouwde audioondersteuning</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="818"/>
       <source>Use internal player:</source>
       <translation>Gebruik interne speler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="825"/>
       <source>Choose audio back end</source>
       <translation>Kies audio terug einde</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="816"/>
+      <location filename="../src/ui/preferences.ui" line="845"/>
       <source>Enter audio player command line</source>
       <translation>Geef audio speler opdrachtregel</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1148"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3983,22 +3947,22 @@ andere dan de door u bezochte site niet toe te staan. Als een site
 onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1124"/>
+      <location filename="../src/ui/preferences.ui" line="1153"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="757"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Pronunciation</source>
       <translation>Uitspraak</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui" line="809"/>
       <source>Playback</source>
       <translation>Afspelen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="835"/>
       <source>Use external program:</source>
       <translation>Extern programma gebruiken:</translation>
     </message>
@@ -4008,7 +3972,7 @@ onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
       <translation>Dubbelklikken vertaalt het aangeklikte woord</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="803"/>
+      <location filename="../src/ui/preferences.ui" line="832"/>
       <source>Use any external program to play audio files</source>
       <translation>Een extern programma gebruiken voor het afspelen van geluidsbestanden</translation>
     </message>
@@ -4142,89 +4106,99 @@ het artikel uit het bovenste woordenboek weergegeven.</translation>
       <translation>Toon scan-vlag wanneer een woord is geselecteerd</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="866"/>
+      <location filename="../src/ui/preferences.ui" line="629"/>
+      <source>Delay time</source>
+      <translation>Vertragingstijd</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="636"/>
+      <source> ms</source>
+      <translation> Mevr</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="895"/>
       <source>System proxy</source>
       <translation>Systeem proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui" line="902"/>
       <source>Custom proxy</source>
       <translation>Aangepaste proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui" line="912"/>
       <source>Custom settings</source>
       <translation>Aangepaste instellingen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="970"/>
+      <location filename="../src/ui/preferences.ui" line="999"/>
       <source>Anki Connect</source>
       <translation>Anki verbinding</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="991"/>
+      <location filename="../src/ui/preferences.ui" line="1020"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1035"/>
+      <location filename="../src/ui/preferences.ui" line="1064"/>
       <source>Deck:</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1045"/>
+      <location filename="../src/ui/preferences.ui" line="1074"/>
       <source>Model:</source>
       <translation>Model</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1072"/>
+      <location filename="../src/ui/preferences.ui" line="1101"/>
       <source>Word</source>
       <translation>Woord</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1079"/>
+      <location filename="../src/ui/preferences.ui" line="1108"/>
       <source>Vocabulary field...</source>
       <translation>Woordenboek velden...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1086"/>
+      <location filename="../src/ui/preferences.ui" line="1115"/>
       <source>Text</source>
       <translation>Tekstveld</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1093"/>
+      <location filename="../src/ui/preferences.ui" line="1122"/>
       <source>Definition field...</source>
       <translation>Definitie velden...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1100"/>
+      <location filename="../src/ui/preferences.ui" line="1129"/>
       <source>Sentence</source>
       <translation>Zin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1107"/>
+      <location filename="../src/ui/preferences.ui" line="1136"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Zin veld (kan leeg zijn)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1131"/>
+      <location filename="../src/ui/preferences.ui" line="1160"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Sommige websites detecteren GoldenDict met behulp van HTTP-headers
 en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1135"/>
+      <location filename="../src/ui/preferences.ui" line="1164"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1144"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Maximum network cache size:</source>
       <translation>Maximale netwerkcache grootte:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1151"/>
+      <location filename="../src/ui/preferences.ui" line="1180"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4233,159 +4207,169 @@ If set to 0 the network disk cache will be disabled.</source>
 Indien ingesteld op 0, wordt de cache van de netwerkschijf uitgeschakeld.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1156"/>
+      <location filename="../src/ui/preferences.ui" line="1185"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1169"/>
+      <location filename="../src/ui/preferences.ui" line="1198"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Als deze optie is ingeschakeld, verwijdert GoldenDict
 zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Clear network cache on exit</source>
       <translation>Wis netwerkcache bij afsluiten</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1227"/>
+      <location filename="../src/ui/preferences.ui" line="1256"/>
       <source>Full-text search</source>
       <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1233"/>
+      <location filename="../src/ui/preferences.ui" line="1262"/>
       <source>Allow full-text search for:</source>
       <translation>Volledige tekst zoeken toestaan:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1331"/>
+      <location filename="../src/ui/preferences.ui" line="1302"/>
+      <source>Applies only to new incoming dictionaries.</source>
+      <translation>Geldt alleen voor nieuwe inkomende woordenboeken.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="1305"/>
+      <source>Enable positional information in the fulltext</source>
+      <translation>Schakel positionele informatie in de volledige tekst in</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="1370"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Zoek niet in woordenboeken met meer dan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1348"/>
+      <location filename="../src/ui/preferences.ui" line="1387"/>
       <source>articles (0 - unlimited)</source>
       <translation>artikelen (0 - ongelimiteerd)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1391"/>
+      <location filename="../src/ui/preferences.ui" line="1430"/>
       <source>Ad&amp;vanced</source>
       <translation>Gea&amp;vanceerd</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1717"/>
+      <location filename="../src/ui/preferences.ui" line="1756"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Bij opeenvolgende zoekopdrachten, als één woordenboek bij een handboek is ingeklapt, blijft het ingeklapt in de volgende zoekopdracht</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1720"/>
+      <location filename="../src/ui/preferences.ui" line="1759"/>
       <source>Session collapse</source>
       <translation>Sessie inklappen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1780"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Als je klembord gebruikt, strip je alles na de nieuwe regel</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1748"/>
+      <location filename="../src/ui/preferences.ui" line="1787"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Focus bij een nieuwe zoekopdracht op het hoofd- of pop-upvenster, zelfs als het zichtbaar is</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1511"/>
+      <location filename="../src/ui/preferences.ui" line="1550"/>
       <source>Favorites</source>
       <translation>Favorieten</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1528"/>
+      <location filename="../src/ui/preferences.ui" line="1567"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Favorieten opslaan interval. Indien ingesteld op 0 favorieten zal alleen worden opgeslagen tijdens het afsluiten.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1560"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Schakel deze optie in om elke verwijdering van items te bevestigen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1563"/>
+      <location filename="../src/ui/preferences.ui" line="1602"/>
       <source>Confirmation for items deletion</source>
       <translation>Bevestiging voor verwijdering van items</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1634"/>
+      <location filename="../src/ui/preferences.ui" line="1673"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Schakel deze optie in om onredelijk lange invoertekst
 van muisaanwijzing, selectie, klembord of opdrachtregel te negeren</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1638"/>
+      <location filename="../src/ui/preferences.ui" line="1677"/>
       <source>Ignore input phrases longer than</source>
       <translation>Negeer input zinnen langer dan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1601"/>
+      <location filename="../src/ui/preferences.ui" line="1640"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Invoer zinnen langer dan deze grootte zullen worden genegeerd</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1694"/>
+      <location filename="../src/ui/preferences.ui" line="1733"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Schakel deze optie in om diakritiek te negeren tijdens het zoeken van artikelen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1697"/>
+      <location filename="../src/ui/preferences.ui" line="1736"/>
       <source>Ignore diacritics while searching</source>
       <translation>Negeren van diacritica tijdens zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1684"/>
+      <location filename="../src/ui/preferences.ui" line="1723"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Schakel deze optie in om optionele onderdelen van artikelen altijd uit te vouwen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1687"/>
+      <location filename="../src/ui/preferences.ui" line="1726"/>
       <source>Expand optional &amp;parts</source>
       <translation>Optionele onderdelen &amp;uitvouwen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1624"/>
+      <location filename="../src/ui/preferences.ui" line="1663"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Selecteer deze optie om lange artikelen automatisch samen te vouwen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Collapse articles more than</source>
       <translation>Artikelen samenvouwen met meer dan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1668"/>
+      <location filename="../src/ui/preferences.ui" line="1707"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Langere artikelen automatisch samenvouwen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1594"/>
+      <location filename="../src/ui/preferences.ui" line="1633"/>
       <source>Ignore punctuation while searching</source>
       <translation>Leestekens negeren tijdens zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1730"/>
+      <location filename="../src/ui/preferences.ui" line="1769"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Schakel deze optie in om extra artikelen te zoeken via synoniemlijsten
 van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1734"/>
+      <location filename="../src/ui/preferences.ui" line="1773"/>
       <source>Extra search via synonyms</source>
       <translation>Extra zoeken via synoniemen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1617"/>
-      <location filename="../src/ui/preferences.ui" line="1661"/>
+      <location filename="../src/ui/preferences.ui" line="1656"/>
+      <location filename="../src/ui/preferences.ui" line="1700"/>
       <source>symbols</source>
       <translation>tekens</translation>
     </message>
@@ -4395,27 +4379,27 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Met Ctrl-Tab navigeren door recent gebruikte tabbladen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="119"/>
+      <location filename="../src/ui/preferences.cc" line="112"/>
       <source>Babylon</source>
       <translation>Babylon</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1399"/>
+      <location filename="../src/ui/preferences.ui" line="1438"/>
       <source>History</source>
       <translation>Geschiedenis</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1405"/>
+      <location filename="../src/ui/preferences.ui" line="1444"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Schakel deze optie in om de geschiedenis van vertaalde woorden op te slaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1408"/>
+      <location filename="../src/ui/preferences.ui" line="1447"/>
       <source>Store &amp;history</source>
       <translation>&amp;Geschiedenis opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1588"/>
+      <location filename="../src/ui/preferences.ui" line="1627"/>
       <source>Articles</source>
       <translation>Artikelen</translation>
     </message>
@@ -4435,54 +4419,54 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Add-on stijl:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1423"/>
+      <location filename="../src/ui/preferences.ui" line="1462"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Geef het maximum aantal items op dat bewaard wordt als geschiedenis.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1426"/>
+      <location filename="../src/ui/preferences.ui" line="1465"/>
       <source>Maximum history size:</source>
       <translation>Maximale grootte geschiedenis:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1463"/>
+      <location filename="../src/ui/preferences.ui" line="1502"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Opslag-interval voor geschiedenis (instellen op 0 om alleen op te slaan bij afsluiten).</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1469"/>
-      <location filename="../src/ui/preferences.ui" line="1531"/>
+      <location filename="../src/ui/preferences.ui" line="1508"/>
+      <location filename="../src/ui/preferences.ui" line="1570"/>
       <source>Save every</source>
       <translation>Elke</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1486"/>
-      <location filename="../src/ui/preferences.ui" line="1551"/>
+      <location filename="../src/ui/preferences.ui" line="1525"/>
+      <location filename="../src/ui/preferences.ui" line="1590"/>
       <source>minutes</source>
       <translation>minuten opslaan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="109"/>
       <source>Classic</source>
       <translation>Klassiek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="110"/>
       <source>Modern</source>
       <translation>Vernieuwend</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="120"/>
+      <location filename="../src/ui/preferences.cc" line="113"/>
       <source>Lingoes</source>
       <translation>Bellen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="121"/>
+      <location filename="../src/ui/preferences.cc" line="114"/>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Blauw</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="132"/>
+      <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> Mb</translation>
     </message>
@@ -4490,27 +4474,27 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1091"/>
+      <location filename="../src/dict/sources.cc" line="1092"/>
       <source>Audio</source>
       <translation>Geluid</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1093"/>
+      <location filename="../src/dict/sources.cc" line="1094"/>
       <source>Plain Text</source>
       <translation>Tekst zonder opmaak</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1095"/>
+      <location filename="../src/dict/sources.cc" line="1096"/>
       <source>Html</source>
       <translation>HTML</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1097"/>
+      <location filename="../src/dict/sources.cc" line="1098"/>
       <source>Prefix Match</source>
       <translation>Overeenkomst op voorvoegsel</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1099"/>
+      <location filename="../src/dict/sources.cc" line="1100"/>
       <source>Unknown</source>
       <translation>Onbekend</translation>
     </message>
@@ -4518,17 +4502,17 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>Programs::RunInstance</name>
     <message>
-      <location filename="../src/dict/programs.cc" line="182"/>
+      <location filename="../src/dict/programs.cc" line="179"/>
       <source>No program name was given.</source>
       <translation>Geen programmanaam opgegeven.</translation>
     </message>
     <message>
-      <location filename="../src/dict/programs.cc" line="198"/>
+      <location filename="../src/dict/programs.cc" line="195"/>
       <source>The program has crashed.</source>
       <translation>Het programma is vastgelopen.</translation>
     </message>
     <message>
-      <location filename="../src/dict/programs.cc" line="201"/>
+      <location filename="../src/dict/programs.cc" line="198"/>
       <source>The program has returned exit code %1.</source>
       <translation>Het programma heeft afsluitcode %1 geretourneerd.</translation>
     </message>
@@ -4536,27 +4520,27 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>ProgramsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="999"/>
+      <location filename="../src/dict/sources.cc" line="1000"/>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1001"/>
+      <location filename="../src/dict/sources.cc" line="1002"/>
       <source>Type</source>
       <translation>Type</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1003"/>
+      <location filename="../src/dict/sources.cc" line="1004"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1005"/>
+      <location filename="../src/dict/sources.cc" line="1006"/>
       <source>Command Line</source>
       <translation>Opdrachtregel</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1007"/>
+      <location filename="../src/dict/sources.cc" line="1008"/>
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
@@ -4564,99 +4548,114 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>QObject</name>
     <message>
-      <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1691"/>
+      <location filename="../src/dict/aard.cc" line="419"/>
+      <location filename="../src/dict/dsl.cc" line="1650"/>
       <source>Article loading error</source>
       <translation>Fout bij laden artikel</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="522"/>
-      <location filename="../src/dict/slob.cc" line="801"/>
+      <location filename="../src/dict/aard.cc" line="511"/>
+      <location filename="../src/dict/slob.cc" line="799"/>
       <source>Article decoding error</source>
       <translation>Fout bij decoderen artikel</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="563"/>
-      <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="685"/>
-      <location filename="../src/dict/stardict.cc" line="1102"/>
+      <location filename="../src/dict/aard.cc" line="552"/>
+      <location filename="../src/dict/bgl.cc" line="381"/>
+      <location filename="../src/dict/sdict.cc" line="671"/>
+      <location filename="../src/dict/stardict.cc" line="1101"/>
       <source>Copyright: %1%2</source>
       <translation>Auteursrecht: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="701"/>
+      <location filename="../src/dict/aard.cc" line="556"/>
+      <location filename="../src/dict/sdict.cc" line="687"/>
       <source>Version: %1%2</source>
       <translation>Versie: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/bgl.cc" line="401"/>
-      <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1110"/>
+      <location filename="../src/dict/bgl.cc" line="388"/>
+      <location filename="../src/dict/gls.cc" line="543"/>
+      <location filename="../src/dict/stardict.cc" line="1109"/>
       <source>Author: %1%2</source>
       <translation>Auteur: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1118"/>
+      <location filename="../src/dict/bgl.cc" line="395"/>
+      <location filename="../src/dict/stardict.cc" line="1117"/>
       <source>E-mail: %1%2</source>
       <translation>E-mail: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="653"/>
+      <location filename="../src/dict/sdict.cc" line="639"/>
       <source>Title: %1%2</source>
       <translation>Titel: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1126"/>
+      <location filename="../src/dict/stardict.cc" line="1125"/>
       <source>Website: %1%2</source>
       <translation>Website: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1134"/>
+      <location filename="../src/dict/stardict.cc" line="1133"/>
       <source>Date: %1%2</source>
       <translation>Datum: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="150"/>
+      <location filename="../src/main.cc" line="179"/>
       <source>A dictionary lookup program.</source>
       <translation>Een woordenboek opzoeken programma.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="153"/>
+      <location filename="../src/main.cc" line="182"/>
       <source>Word or sentence to query.</source>
       <translation>Woord of zin om te vragen.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="157"/>
+      <location filename="../src/main.cc" line="186"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Foutopsporingsberichten opslaan in gd_log.txt in de configuratiemap.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="161"/>
+      <location filename="../src/main.cc" line="190"/>
+      <source>Reset window state.</source>
+      <translation>Vensterstatus resetten.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="192"/>
+      <source>Disable tts.</source>
+      <translation>Schakel tts uit.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="196"/>
       <source>Change the group of main window.</source>
       <translation>Wijzig de groep van het hoofdvenster.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="165"/>
+      <location filename="../src/main.cc" line="200"/>
       <source>Change the group of popup.</source>
       <translation>Wijzig de pop-upgroep.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="170"/>
+      <location filename="../src/main.cc" line="205"/>
       <source>Toggle scan popup.</source>
       <translation>Toggle scan popup.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="209"/>
+      <source>Print version and diagnosis info.</source>
+      <translation>Printversie en diagnose-info.</translation>
     </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1143"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Woordenboeken zoeken/filteren (Ctrl+F)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1148"/>
       <source>Clear Search</source>
       <translation>Zoekresultaat wissen</translation>
     </message>
@@ -4664,22 +4663,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2706"/>
+      <location filename="../src/ui/articleview.cc" line="2480"/>
       <source>ERROR: %1</source>
       <translation>FOUT: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2706"/>
+      <location filename="../src/ui/articleview.cc" line="2480"/>
       <source>Resource saving error: </source>
       <translation>Fout bij opslaan bron:</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2732"/>
+      <location filename="../src/ui/articleview.cc" line="2506"/>
       <source>The referenced resource failed to download.</source>
       <translation>Kan de bron waarnaar wordt verwezen niet downloaden.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2732"/>
+      <location filename="../src/ui/articleview.cc" line="2506"/>
       <source>WARNING: %1</source>
       <translation>WAARSCHUWING: %1</translation>
     </message>
@@ -4765,10 +4764,15 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
       <translation>Vooruit</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="604"/>
-      <location filename="../src/ui/scanpopup.cc" line="1000"/>
+      <location filename="../src/ui/scanpopup.cc" line="587"/>
+      <location filename="../src/ui/scanpopup.cc" line="981"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/scanpopup.cc" line="943"/>
+      <source>WARNING: %1</source>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
   </context>
   <context>
@@ -4812,17 +4816,17 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1291"/>
+      <location filename="../src/dict/sources.cc" line="1292"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1289"/>
+      <location filename="../src/dict/sources.cc" line="1290"/>
       <source>Path</source>
       <translation>Pad</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1293"/>
+      <location filename="../src/dict/sources.cc" line="1294"/>
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
@@ -4850,9 +4854,9 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
       <translation>Nihon-shiki</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="262"/>
-      <location filename="../src/dict/sources.cc" line="286"/>
-      <location filename="../src/dict/sources.cc" line="310"/>
+      <location filename="../src/dict/sources.cc" line="263"/>
+      <location filename="../src/dict/sources.cc" line="287"/>
+      <location filename="../src/dict/sources.cc" line="311"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>De site &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
@@ -4872,8 +4876,8 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
       <translation>Woordenboeken uit geluidsbestanden samenstellen door hier paden toe te voegen:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="195"/>
-      <location filename="../src/dict/sources.cc" line="222"/>
+      <location filename="../src/dict/sources.cc" line="196"/>
+      <location filename="../src/dict/sources.cc" line="223"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>De map &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
@@ -5041,9 +5045,9 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>&amp;Toevoegen...</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="180"/>
-      <location filename="../src/dict/sources.cc" line="207"/>
-      <location filename="../src/dict/sources.cc" line="234"/>
+      <location filename="../src/dict/sources.cc" line="181"/>
+      <location filename="../src/dict/sources.cc" line="208"/>
+      <location filename="../src/dict/sources.cc" line="235"/>
       <source>Choose a directory</source>
       <translation>Kies een map</translation>
     </message>
@@ -5068,12 +5072,12 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Mappen waarin naar woordenboeken wordt gezocht:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="194"/>
-      <location filename="../src/dict/sources.cc" line="221"/>
-      <location filename="../src/dict/sources.cc" line="261"/>
-      <location filename="../src/dict/sources.cc" line="285"/>
-      <location filename="../src/dict/sources.cc" line="309"/>
-      <location filename="../src/dict/sources.cc" line="333"/>
+      <location filename="../src/dict/sources.cc" line="195"/>
+      <location filename="../src/dict/sources.cc" line="222"/>
+      <location filename="../src/dict/sources.cc" line="262"/>
+      <location filename="../src/dict/sources.cc" line="286"/>
+      <location filename="../src/dict/sources.cc" line="310"/>
+      <location filename="../src/dict/sources.cc" line="334"/>
       <source>Confirm removal</source>
       <translation>Verwijderen bevestigen</translation>
     </message>
@@ -5168,7 +5172,7 @@ groep om ze te gebruiken.</translation>
       <translation>Griekse transliteratie</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="143"/>
+      <location filename="../src/dict/sources.cc" line="144"/>
       <source>(not available in portable version)</source>
       <translation>(niet beschikbaar in de draagbare versie)</translation>
     </message>
@@ -5178,7 +5182,7 @@ groep om ze te gebruiken.</translation>
       <translation>Programma&apos;s</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="334"/>
+      <location filename="../src/dict/sources.cc" line="335"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
@@ -5195,7 +5199,7 @@ groep om ze te gebruiken.</translation>
 %GDBIG5% voor Big-5, %GDBIG5HKSCS% voor Big5-HKSCS, %GDGBK% voor GBK en GB18030, %GDSHIFTJIS% voor Shift-JIS.</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="128"/>
+      <location filename="../src/dict/sources.cc" line="129"/>
       <source>Text to Speech</source>
       <translation>Tekst naar spraak</translation>
     </message>
@@ -5289,12 +5293,12 @@ groep om ze te gebruiken.</translation>
   <context>
     <name>TranslateBox</name>
     <message>
-      <location filename="../src/ui/translatebox.cc" line="108"/>
+      <location filename="../src/ui/translatebox.cc" line="31"/>
       <source>Type a word or phrase to search dictionaries</source>
       <translation>Typ een woord of zin waarnaar u wilt zoeken</translation>
     </message>
     <message>
-      <location filename="../src/ui/translatebox.cc" line="120"/>
+      <location filename="../src/ui/translatebox.cc" line="38"/>
       <source>Drop-down</source>
       <translation>Vervolgkeuzelijst</translation>
     </message>
@@ -5325,33 +5329,33 @@ groep om ze te gebruiken.</translation>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="650"/>
+      <location filename="../src/dict/sources.cc" line="651"/>
       <source>Name</source>
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="652"/>
+      <location filename="../src/dict/sources.cc" line="653"/>
       <source>Address</source>
       <translation>Adres</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="646"/>
+      <location filename="../src/dict/sources.cc" line="647"/>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="637"/>
-      <location filename="../src/dict/sources.cc" line="670"/>
+      <location filename="../src/dict/sources.cc" line="638"/>
+      <location filename="../src/dict/sources.cc" line="671"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
       <translation>Artikel invoegen als link binnen &lt;iframe&gt; tag</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="648"/>
+      <location filename="../src/dict/sources.cc" line="649"/>
       <source>As link</source>
       <translation>Als koppeling</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="654"/>
+      <location filename="../src/dict/sources.cc" line="655"/>
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
@@ -5359,17 +5363,9 @@ groep om ze te gebruiken.</translation>
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="200"/>
+      <location filename="../src/wordfinder.cc" line="194"/>
       <source>Failed to query some dictionaries.</source>
       <translation>Enkele woordenboeken konden niet doorzocht worden.</translation>
-    </message>
-  </context>
-  <context>
-    <name>WordList</name>
-    <message>
-      <location filename="../src/wordlist.cc" line="82"/>
-      <source>WARNING: %1</source>
-      <translation>WAARSCHUWING: %1</translation>
     </message>
   </context>
 </TS>

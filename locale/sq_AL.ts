@@ -34,19 +34,14 @@
       <translation>Meritat:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.cc" line="20"/>
-      <source>[Unknown]</source>
-      <translation>[E panjohur]</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/about.cc" line="35"/>
-      <source>Based on Qt %1 (%2, %3 bit)</source>
-      <translation>Bazuar në Qt %1 (%2, %3 bit)</translation>
-    </message>
-    <message>
       <location filename="../src/ui/about.ui" line="91"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/about.cc" line="19"/>
+      <source>Based on Qt %1 (%2, %3)</source>
+      <translation>Bazuar në Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -85,62 +80,62 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <location filename="../src/article_maker.cc" line="311"/>
+      <location filename="../src/article_maker.cc" line="318"/>
       <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
       <translation>Thjesht ndaleni kursorin te fjala që doni të shikoni nga aplikacioni tjetër, dhe do ju shfaqet një dritare me fjalën e treguar.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="304"/>
+      <location filename="../src/article_maker.cc" line="311"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Skanimi i jashtëm&lt;/h3&gt;Për të parë fjalët nga aplikacionet aktive, së pari aktivizoni &lt;i&gt;&quot;funksionin Skanimi i jashtëm&quot;&lt;/i&gt; te &lt;b&gt;Preferencat&lt;/b&gt;. Më tej e aktivizoni kurdoherë duke ndezur ikonën e &apos;Skanimit&apos;, ose duke klikuar me të djathtën ikonën te shiriti i sistemit. </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="138"/>
+      <location filename="../src/article_maker.cc" line="143"/>
       <source>Expand article</source>
       <translation>Zgjeroj artikullin</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="138"/>
+      <location filename="../src/article_maker.cc" line="143"/>
       <source>Collapse article</source>
       <translation>Mbledh artikullin</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="232"/>
-      <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Nuk gjen përkthimin për &lt;b&gt;%1&lt;/b&gt; te grupi &lt;b&gt;%2&lt;/b&gt;.</translation>
-    </message>
-    <message>
-      <location filename="../src/article_maker.cc" line="302"/>
+      <location filename="../src/article_maker.cc" line="309"/>
       <source>Working with popup</source>
       <translation>Duke punuar me popup</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="392"/>
+      <location filename="../src/article_maker.cc" line="399"/>
       <source>(untitled)</source>
       <translation>(pa titull)</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="284"/>
+      <location filename="../src/article_maker.cc" line="291"/>
       <source>Welcome!</source>
       <translation>Mirë se erdhët!</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="314"/>
+      <location filename="../src/article_maker.cc" line="321"/>
       <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
       <translation>Thjesht seleksiononi me maus fjalën që doni të shikoni nga aplikacioni tjetër (klikojeni dy herë ose visheni me butonin e shtypur të miut), dhe do ju shfaqet një dritare me fjalën e treguar.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="236"/>
+      <location filename="../src/article_maker.cc" line="243"/>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Nuk gjen përkthimin te grupi &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="286"/>
+      <location filename="../src/article_maker.cc" line="236"/>
+      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
+      <translation>Asnjë përkthim për &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; nuk u gjet në grupin &lt;b&gt;%2&lt;/b&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/article_maker.cc" line="293"/>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Mirë se erdhët te &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Për të përdorur programin, së pari vizitoni &lt;b&gt;Editoj|Fjalorët&lt;/b&gt; dhe përcaktoni vendndodhjen e direktorisë ku janë skedat e fjalorit, sistemoni faqet për Wikipedia-n ose burimet e tjera, radhitni fjalorët e krijoni grupe me ta.&lt;p&gt;Pastaj jeni gati të studioni fjalët! Kryeni këtë duke përdorur panelin në të majtë, ose duke &lt;a href=&quot;Working with popup&quot;&gt;parë nga aplikacionet e tjera aktive&lt;/a&gt;. &lt;p&gt;Për të porositur programin, kontrolloni parametrat e mundshëm te &lt;b&gt;Editoj|Preferencat&lt;/b&gt;. Parametrat kanë këshilla ndihmëse: sigurohuni që t&apos;i lexoni nëse keni dyshime për diçka.&lt;p&gt;Nëse kërkoni ndihmë, keni pyetje, sugjerime ose doni të dini se ç&apos;mendojnë të tjerët për programin, jeni të mirëpritur te &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumi&lt;/a&gt;.&lt;p&gt;Kontrolloni edhe &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;faqen në internet&lt;/a&gt; për t&apos;u azhurnuar. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencuar sipas GPLv3 a më i vonë.</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="404"/>
+      <location filename="../src/article_maker.cc" line="411"/>
       <source>(picture)</source>
       <translation>(figurë)</translation>
     </message>
@@ -148,42 +143,42 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <location filename="../src/article_maker.cc" line="672"/>
+      <location filename="../src/article_maker.cc" line="678"/>
       <source>Expand article</source>
       <translation>Zgjeroj artikullin</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="673"/>
+      <location filename="../src/article_maker.cc" line="679"/>
       <source>From </source>
       <translation>Nga </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="676"/>
+      <location filename="../src/article_maker.cc" line="682"/>
       <source>Collapse article</source>
       <translation>Mbledh artikullin</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="691"/>
+      <location filename="../src/article_maker.cc" line="694"/>
       <source>Make a new Anki note</source>
       <translation>Bëni një shënim të ri Anki</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="704"/>
+      <location filename="../src/article_maker.cc" line="708"/>
       <source>Query error: %1</source>
       <translation>Gabimi i kërkimit: %1</translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="832"/>
+      <location filename="../src/article_maker.cc" line="836"/>
       <source>Close words: </source>
       <translation>Fjalët e përafërta: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="899"/>
+      <location filename="../src/article_maker.cc" line="903"/>
       <source>Compound expressions: </source>
       <translation>Shprehjet e përbëra: </translation>
     </message>
     <message>
-      <location filename="../src/article_maker.cc" line="927"/>
+      <location filename="../src/article_maker.cc" line="931"/>
       <source>Individual words: </source>
       <translation>Fjalët e ndara: </translation>
     </message>
@@ -191,197 +186,197 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2087"/>
+      <location filename="../src/ui/articleview.cc" line="1928"/>
       <source>Failed to create temporary file.</source>
       <translation>Dështoi krijimi i skedës kohëshkurtër.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1798"/>
+      <location filename="../src/ui/articleview.cc" line="1639"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>&amp;Shikoj &quot;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1806"/>
+      <location filename="../src/ui/articleview.cc" line="1647"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>Shikoj &quot;%1&quot; në fushën e &amp;re</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1358"/>
-      <location filename="../src/ui/articleview.cc" line="1542"/>
+      <location filename="../src/ui/articleview.cc" line="1214"/>
+      <location filename="../src/ui/articleview.cc" line="1391"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>Nuk ekziston resursi i referuar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2098"/>
+      <location filename="../src/ui/articleview.cc" line="1939"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>Dështoi vetëhapja e skedës burimore, provojeni vetë: %1.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1832"/>
+      <location filename="../src/ui/articleview.cc" line="1673"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>Shikoj &quot;%1&quot; në %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="321"/>
+      <location filename="../src/ui/articleview.cc" line="199"/>
       <source>Select Current Article</source>
       <translation>Seleksionoj këtë artikullin</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="326"/>
+      <location filename="../src/ui/articleview.cc" line="204"/>
       <source>Copy as text</source>
       <translation>Kopjoj tekstin</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="331"/>
+      <location filename="../src/ui/articleview.cc" line="209"/>
       <source>Inspect</source>
       <translation>Inspektoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1840"/>
+      <location filename="../src/ui/articleview.cc" line="1681"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>Shikoj &quot;%1&quot; në %2 në fushën e &amp;re</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1750"/>
+      <location filename="../src/ui/articleview.cc" line="1597"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>Hap lidhësin në fushën e &amp;re</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1757"/>
+      <location filename="../src/ui/articleview.cc" line="1604"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>Hap lidhësin në &amp;shfletuesin e jashtëm</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="995"/>
+      <location filename="../src/ui/articleview.cc" line="854"/>
       <source>Resource</source>
       <translation>Resursi</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1000"/>
+      <location filename="../src/ui/articleview.cc" line="859"/>
       <source>Audio</source>
       <translation>Audio</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1005"/>
+      <location filename="../src/ui/articleview.cc" line="864"/>
       <source>TTS Voice</source>
       <translation>TTS Voice</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1010"/>
+      <location filename="../src/ui/articleview.cc" line="869"/>
       <source>Picture</source>
       <translation>Figura</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1017"/>
+      <location filename="../src/ui/articleview.cc" line="876"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1026"/>
+      <location filename="../src/ui/articleview.cc" line="885"/>
       <source>Video: %1</source>
       <translation>Video: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1043"/>
+      <location filename="../src/ui/articleview.cc" line="902"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>Përkufizimi nga fjalori &quot;%1&quot;: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1051"/>
+      <location filename="../src/ui/articleview.cc" line="910"/>
       <source>Definition: %1</source>
       <translation>Përkufizimi: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1397"/>
+      <location filename="../src/ui/articleview.cc" line="1249"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Programi audio i referuar nuk ekziston.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1744"/>
+      <location filename="../src/ui/articleview.cc" line="1591"/>
       <source>Op&amp;en Link</source>
       <translation>Link i hapur</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1851"/>
+      <location filename="../src/ui/articleview.cc" line="1692"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>Ruani &amp;shënjoni &quot;%1...&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2128"/>
+      <location filename="../src/ui/articleview.cc" line="1969"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>PARALAJMËRIM: Luajtësi audio: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1283"/>
-      <location filename="../src/ui/articleview.cc" line="1318"/>
-      <location filename="../src/ui/articleview.cc" line="1542"/>
+      <location filename="../src/ui/articleview.cc" line="1139"/>
+      <location filename="../src/ui/articleview.cc" line="1174"/>
+      <location filename="../src/ui/articleview.cc" line="1391"/>
       <source>ERROR: %1</source>
       <translation>GABIM: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2000"/>
+      <location filename="../src/ui/articleview.cc" line="1841"/>
       <source>Save sound</source>
       <translation>Ruaj tingullin</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2015"/>
+      <location filename="../src/ui/articleview.cc" line="1856"/>
       <source>Save image</source>
       <translation>Ruaj imazhin</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2017"/>
+      <location filename="../src/ui/articleview.cc" line="1858"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>Skeda imazhe (*.bmp *.jpg *.png *.tif);;Të gjitha skedat (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1773"/>
+      <location filename="../src/ui/articleview.cc" line="1620"/>
       <source>Save &amp;image...</source>
       <translation>Ruaj &amp;imazhin...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="192"/>
+      <location filename="../src/ui/articleview.cc" line="70"/>
       <source>Phrase not found</source>
       <translation>Fraza nuk u gjet</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="200"/>
+      <location filename="../src/ui/articleview.cc" line="78"/>
       <source>%1 of %2 matches</source>
       <translation>%1 nga %2 ndeshje</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1780"/>
+      <location filename="../src/ui/articleview.cc" line="1627"/>
       <source>Save s&amp;ound...</source>
       <translation>Ruaj t&amp;ingullin...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1811"/>
+      <location filename="../src/ui/articleview.cc" line="1652"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>Dërgoj &quot;%1&quot;te radha e inputit</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1817"/>
-      <location filename="../src/ui/articleview.cc" line="1869"/>
+      <location filename="../src/ui/articleview.cc" line="1658"/>
+      <location filename="../src/ui/articleview.cc" line="1710"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>&amp;Shtoj &quot;%1&quot; te historiku</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1859"/>
+      <location filename="../src/ui/articleview.cc" line="1700"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;Dërgo artikullin aktual te Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1860"/>
+      <location filename="../src/ui/articleview.cc" line="1701"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>&amp;Dërgo tekstin e përzgjedhur te Anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2002"/>
+      <location filename="../src/ui/articleview.cc" line="1843"/>
       <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Skedarët e zërit (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Të gjithë skedarët (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2072"/>
+      <location filename="../src/ui/articleview.cc" line="1913"/>
       <source>Failed to play sound file: %1</source>
       <translation>Dështoi në luajtjen e skedarit zanor: %1</translation>
     </message>
@@ -458,17 +453,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>TC në SC</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="129"/>
+      <location filename="../src/dict/chinese.cc" line="128"/>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
       <translation>Konvertimi i thjeshtuar në tradicional kinez (varianti i Tajvanit).</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="136"/>
+      <location filename="../src/dict/chinese.cc" line="135"/>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
       <translation>Konvertimi i thjeshtuar në kinezisht tradicional (varianti i Hong Kongut).</translation>
     </message>
     <message>
-      <location filename="../src/dict/chinese.cc" line="143"/>
+      <location filename="../src/dict/chinese.cc" line="142"/>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
     </message>
@@ -476,7 +471,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>CustomTranslit</name>
     <message>
-      <location filename="../src/dict/customtransliteration.cpp" line="51"/>
+      <location filename="../src/dict/customtransliteration.cc" line="52"/>
       <source>custom transliteration</source>
       <translation>transliterim i personalizuar</translation>
     </message>
@@ -547,17 +542,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>Imazhe</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="99"/>
+      <location filename="../src/ui/groups_widgets.cc" line="98"/>
       <source>All files</source>
       <translation>Tërë skedat</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="106"/>
+      <location filename="../src/ui/groups_widgets.cc" line="104"/>
       <source>Error</source>
       <translation>Gabim</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="106"/>
+      <location filename="../src/ui/groups_widgets.cc" line="104"/>
       <source>Can&apos;t read the specified image file.</source>
       <translation>Nuk lexon skedën e imazhit të përcaktuar.</translation>
     </message>
@@ -565,63 +560,63 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictGroupsWidget</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="691"/>
-      <location filename="../src/ui/groups_widgets.cc" line="789"/>
-      <location filename="../src/ui/groups_widgets.cc" line="890"/>
+      <location filename="../src/ui/groups_widgets.cc" line="695"/>
+      <location filename="../src/ui/groups_widgets.cc" line="781"/>
+      <location filename="../src/ui/groups_widgets.cc" line="881"/>
       <source>Confirmation</source>
       <translation>Miratimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="692"/>
+      <location filename="../src/ui/groups_widgets.cc" line="696"/>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
       <translation>Jeni i sigurt për prodhimin e disa grupeve sipas gjuhëve të çiftuara?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="891"/>
+      <location filename="../src/ui/groups_widgets.cc" line="882"/>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
       <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në metadata.toml?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1001"/>
+      <location filename="../src/ui/groups_widgets.cc" line="990"/>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinoj grupet sipas gjuhës së burimit në &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1018"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1007"/>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
       <translation>Kombinoj grupet sipas gjuhës së synuar në &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="784"/>
+      <location filename="../src/ui/groups_widgets.cc" line="776"/>
       <source>Auto group by folder failed.</source>
       <translation>Grupimi automatik sipas dosjes dështoi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="785"/>
+      <location filename="../src/ui/groups_widgets.cc" line="777"/>
       <source>The parent directory of %1 can not be reached.</source>
       <translation>Drejtoria mëmë e %1 nuk mund të arrihet.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="790"/>
+      <location filename="../src/ui/groups_widgets.cc" line="782"/>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
       <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në dosjet që përmbajnë?</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1036"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1025"/>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Krijoj grup përkthimi dyanësh &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1054"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1073"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1042"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1060"/>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Kombinoj grupet me &quot;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="592"/>
-      <location filename="../src/ui/groups_widgets.cc" line="666"/>
-      <location filename="../src/ui/groups_widgets.cc" line="985"/>
-      <location filename="../src/ui/groups_widgets.cc" line="1160"/>
+      <location filename="../src/ui/groups_widgets.cc" line="579"/>
+      <location filename="../src/ui/groups_widgets.cc" line="675"/>
+      <location filename="../src/ui/groups_widgets.cc" line="973"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1134"/>
       <source>Dictionaries: </source>
       <translation>Fjalorët:</translation>
     </message>
@@ -704,63 +699,63 @@ between classic and school orthography in cyrillic)</source>
       <translation>Vargu i filtrit (varg i fiksuar, shkronja të ngurta ose shprehje e rregullt)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="42"/>
+      <location filename="../src/ui/dictheadwords.cc" line="44"/>
       <source>Text</source>
       <translation>Teksti</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="43"/>
+      <location filename="../src/ui/dictheadwords.cc" line="45"/>
       <source>Wildcards</source>
       <translation>Shenjat e egra</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="44"/>
+      <location filename="../src/ui/dictheadwords.cc" line="46"/>
       <source>RegExp</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="246"/>
+      <location filename="../src/ui/dictheadwords.cc" line="250"/>
       <source>Loading headwords...</source>
       <translation>Fjalët kryesore po ngarkohen...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="281"/>
+      <location filename="../src/ui/dictheadwords.cc" line="285"/>
       <source>Unique headwords total: %1, filtered: %2</source>
       <translation>Gjithsej kryefjalë unike: %1, e filtruar: %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="338"/>
+      <location filename="../src/ui/dictheadwords.cc" line="342"/>
       <source>Save headwords to file</source>
       <translation>Ruani kryefjalët në skedar</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="340"/>
+      <location filename="../src/ui/dictheadwords.cc" line="344"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Skeda tekst (*.txt);;Të gjitha skedat (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="348"/>
+      <location filename="../src/ui/dictheadwords.cc" line="352"/>
       <source>Can not open exported file</source>
       <translation>Nuk mund të hapet skedari i eksportuar</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="357"/>
+      <location filename="../src/ui/dictheadwords.cc" line="361"/>
       <source>Export headwords...</source>
       <translation>Eksporto fjalët kryesore...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="246"/>
-      <location filename="../src/ui/dictheadwords.cc" line="357"/>
+      <location filename="../src/ui/dictheadwords.cc" line="250"/>
+      <location filename="../src/ui/dictheadwords.cc" line="361"/>
       <source>Cancel</source>
       <translation>Anuloj</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="400"/>
+      <location filename="../src/ui/dictheadwords.cc" line="404"/>
       <source>Export process is interrupted</source>
       <translation>Procesi i eksportit është ndërprerë</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.cc" line="408"/>
+      <location filename="../src/ui/dictheadwords.cc" line="412"/>
       <source>Export finished</source>
       <translation>Eksporti përfundoi</translation>
     </message>
@@ -828,7 +823,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictListModel</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="243"/>
+      <location filename="../src/ui/groups_widgets.cc" line="238"/>
       <source>%1 entries</source>
       <translation>%1 artikuj</translation>
     </message>
@@ -859,44 +854,44 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictServersModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="823"/>
+      <location filename="../src/dict/sources.cc" line="824"/>
       <source>Enabled</source>
       <translation>Aktiv</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="825"/>
+      <location filename="../src/dict/sources.cc" line="826"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="827"/>
+      <location filename="../src/dict/sources.cc" line="828"/>
       <source>Address</source>
       <translation>Adresë</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="829"/>
+      <location filename="../src/dict/sources.cc" line="830"/>
       <source>Databases</source>
       <translation>Bazat e të dhënave</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="831"/>
+      <location filename="../src/dict/sources.cc" line="832"/>
       <source>Strategies</source>
       <translation>Strategjitë</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="833"/>
+      <location filename="../src/dict/sources.cc" line="834"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="866"/>
+      <location filename="../src/dict/sources.cc" line="867"/>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
       <translation>Lista e bazave të të dhënave të kufizuara me presje
 (vargu bosh ose &quot;*&quot; përputhet me të gjitha bazat e të dhënave)</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="869"/>
+      <location filename="../src/dict/sources.cc" line="870"/>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
       <translation>Lista e strategjive të kërkimit e kufizuar me presje
@@ -906,37 +901,37 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictionaryBar</name>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="22"/>
+      <location filename="../src/ui/dictionarybar.cc" line="21"/>
       <source>Extended menu with all dictionaries...</source>
       <translation>Meny e zgjeruar me të gjithë fjalorët...</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="96"/>
+      <location filename="../src/ui/dictionarybar.cc" line="95"/>
       <source>Edit this group</source>
       <translation>Editoj grupin</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="120"/>
+      <location filename="../src/ui/dictionarybar.cc" line="119"/>
       <source>Dictionary info</source>
       <translation>Info për fjalorin</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="125"/>
+      <location filename="../src/ui/dictionarybar.cc" line="124"/>
       <source>Dictionary headwords</source>
       <translation>Kryefjalët e fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="127"/>
+      <location filename="../src/ui/dictionarybar.cc" line="126"/>
       <source>Open dictionary folder</source>
       <translation>Hap dosjen e fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="134"/>
+      <location filename="../src/ui/dictionarybar.cc" line="133"/>
       <source>Edit dictionary</source>
       <translation>Editoj fjalorin</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictionarybar.cc" line="14"/>
+      <location filename="../src/ui/dictionarybar.cc" line="13"/>
       <source>&amp;Dictionary Bar</source>
       <translation>&amp;Brezi i fjalorëve</translation>
     </message>
@@ -945,7 +940,7 @@ between classic and school orthography in cyrillic)</source>
     <name>EditDictionaries</name>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="45"/>
-      <location filename="../src/ui/editdictionaries.cc" line="251"/>
+      <location filename="../src/ui/editdictionaries.cc" line="243"/>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Fjalorët</translation>
     </message>
@@ -955,17 +950,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>Fjalorët</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="134"/>
+      <location filename="../src/ui/editdictionaries.cc" line="129"/>
       <source>Accept</source>
       <translation>Pranoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="136"/>
+      <location filename="../src/ui/editdictionaries.cc" line="131"/>
       <source>Cancel</source>
       <translation>Anuloj</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="130"/>
+      <location filename="../src/ui/editdictionaries.cc" line="124"/>
       <source>Sources changed</source>
       <translation>Burimet e ndryshuara</translation>
     </message>
@@ -976,12 +971,12 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/editdictionaries.cc" line="46"/>
-      <location filename="../src/ui/editdictionaries.cc" line="253"/>
+      <location filename="../src/ui/editdictionaries.cc" line="244"/>
       <source>&amp;Groups</source>
       <translation>&amp;Grupet</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.cc" line="131"/>
+      <location filename="../src/ui/editdictionaries.cc" line="125"/>
       <source>Some sources were changed. Would you like to accept the changes?</source>
       <translation>Disa burime u ndryshuan. Do i pranoni ndryshimet?</translation>
     </message>
@@ -1010,75 +1005,55 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="232"/>
+      <location filename="../src/fulltextsearch.cc" line="217"/>
       <source>Full-text search</source>
       <translation>Kërkim me tekst të plotë</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="241"/>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Whole words</source>
       <translation>Fjalë të tëra</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="242"/>
+      <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Teksti i thjeshtë</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="232"/>
       <source>Wildcards</source>
       <translation>Shenjat e egra</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="245"/>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
+      <location filename="../src/fulltextsearch.cc" line="339"/>
+      <source>The querying word can not be empty.</source>
+      <translation>Fjala pyetëse nuk mund të jetë bosh.</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="255"/>
+      <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>mbështet sintaksën e kërkimit xapian, të tilla si AND OSE +/- etj</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="261"/>
-      <source>Max distance between words (%1-%2):</source>
-      <translation>Distanca maksimale midis fjalëve (%1-%2):</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="270"/>
-      <source>Max articles per dictionary (%1-%2):</source>
-      <translation>Maksimumi i artikujve për fjalor (%1-%2):</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="309"/>
-      <location filename="../src/fulltextsearch.cc" line="443"/>
-      <location filename="../src/fulltextsearch.cc" line="564"/>
-      <location filename="../src/fulltextsearch.cc" line="577"/>
+      <location filename="../src/fulltextsearch.cc" line="243"/>
+      <location filename="../src/fulltextsearch.cc" line="334"/>
+      <location filename="../src/fulltextsearch.cc" line="439"/>
+      <location filename="../src/fulltextsearch.cc" line="452"/>
       <source>Articles found: </source>
       <translation>Artikujt e gjetur: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="396"/>
+      <location filename="../src/fulltextsearch.cc" line="323"/>
       <source>Now indexing: </source>
       <translation>Tani duke indeksuar: </translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="397"/>
+      <location filename="../src/fulltextsearch.cc" line="324"/>
       <source>None</source>
       <translation>Asnjë</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="454"/>
-      <source>The search line must contains at least one word containing </source>
-      <translation>Rreshti i kërkimit duhet të përmbajë të paktën një fjalë që përmban </translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="455"/>
-      <source> or more symbols</source>
-      <translation> ose më shumë simbole</translation>
-    </message>
-    <message>
-      <location filename="../src/fulltextsearch.cc" line="466"/>
+      <location filename="../src/fulltextsearch.cc" line="350"/>
       <source>No dictionaries for full-text search</source>
       <translation>Nuk ka fjalorë për kërkim të tekstit të plotë</translation>
     </message>
@@ -1086,7 +1061,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FavoritesModel</name>
     <message>
-      <location filename="../src/ui/favoritespanewidget.cc" line="648"/>
+      <location filename="../src/ui/favoritespanewidget.cc" line="650"/>
       <source>Error in favorities file</source>
       <translation>Gabim në skedarin e preferencave</translation>
     </message>
@@ -1152,7 +1127,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>nga</translation>
     </message>
     <message>
-      <location filename="../src/dict/forvo.cc" line="309"/>
+      <location filename="../src/dict/forvo.cc" line="303"/>
       <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
       <translation>Shkon te Editoj|Fjalorët|Burime|Forvo dhe zbaton kodin tonë API për ta zhdukur këtë gabimin.</translation>
     </message>
@@ -1174,14 +1149,9 @@ between classic and school orthography in cyrillic)</source>
     <name>FullTextSearchDialog</name>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="206"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
       <source>Search</source>
       <translation>Kërko</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="60"/>
-      <source>Match case</source>
-      <translation>Rasti i ndeshjes</translation>
     </message>
     <message>
       <location filename="../src/ui/fulltextsearch.ui" line="37"/>
@@ -1189,52 +1159,42 @@ between classic and school orthography in cyrillic)</source>
       <translation>Modaliteti:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="81"/>
-      <source>Ignore words order</source>
-      <translation>Injoroni rendin e fjalëve</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="88"/>
-      <source>Ignore diacritics</source>
-      <translation>Injoroni diakritikët</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="111"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
       <source>Articles found:</source>
       <translation>Artikujt e gjetur:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="133"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
       <source>Available dictionaries in group:</source>
       <translation>Fjalorët e disponueshëm në grup:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="139"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
       <source>Wait for indexing:</source>
       <translation>Prisni për indeksimin:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="252"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
       <source>Help</source>
       <translation>Ndihmë</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="160"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
       <source>Total:</source>
       <translation>Total:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="167"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
       <source>Indexed:</source>
       <translation>Indeksuar:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
       <source>Now indexing: None</source>
       <translation>Tani duke indeksuar: Asnjë</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="232"/>
+      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
       <source>Cancel</source>
       <translation>Anuloj</translation>
     </message>
@@ -1445,12 +1405,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Historiku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/historypanewidget.cc" line="215"/>
+      <location filename="../src/ui/historypanewidget.cc" line="217"/>
       <source>%1/%2</source>
       <translation>%1%2</translation>
     </message>
     <message>
-      <location filename="../src/ui/historypanewidget.cc" line="219"/>
+      <location filename="../src/ui/historypanewidget.cc" line="221"/>
       <source>History size: %1 entries out of maximum %2</source>
       <translation>Masa e historikut: %1 njësi jashtë maksimumit %2</translation>
     </message>
@@ -1458,12 +1418,12 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Hunspell</name>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="259"/>
+      <location filename="../src/dict/hunspell.cc" line="256"/>
       <source>Spelling suggestions: </source>
       <translation>Sugjerimet e rrokjezimit: </translation>
     </message>
     <message>
-      <location filename="../src/dict/hunspell.cc" line="780"/>
+      <location filename="../src/dict/hunspell.cc" line="768"/>
       <source>%1 Morphology</source>
       <translation>%1 Morfologjia</translation>
     </message>
@@ -1471,12 +1431,12 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1404"/>
+      <location filename="../src/dict/sources.cc" line="1405"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1402"/>
+      <location filename="../src/dict/sources.cc" line="1403"/>
       <source>Enabled</source>
       <translation>Aktiv</translation>
     </message>
@@ -1484,1031 +1444,1035 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="44"/>
+      <location filename="../src/ui/initializing.ui" line="99"/>
+      <source>Indexing: </source>
+      <translation>Indeksimi: </translation>
+    </message>
+    <message>
+      <location filename="../src/ui/initializing.ui" line="121"/>
       <source>Dictionary Name</source>
       <translation>Emri i fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="22"/>
+      <location filename="../src/ui/initializing.ui" line="23"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>GoldenDict-ng - Nis</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="28"/>
-      <location filename="../src/initializing.cc" line="31"/>
-      <source>Please wait while indexing dictionary</source>
-      <translation>Prisni, fjalori po indeksohet</translation>
-    </message>
-    <message>
-      <location filename="../src/initializing.cc" line="22"/>
+      <location filename="../src/initializing.cc" line="19"/>
       <source>Please wait...</source>
       <translation>Lutemi të prisni...</translation>
+    </message>
+    <message>
+      <location filename="../src/initializing.cc" line="28"/>
+      <source>Indexing...</source>
+      <translation>Po indekson...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
-      <location filename="../src/language.cc" line="153"/>
+      <location filename="../src/language.cc" line="151"/>
       <source>Ewe</source>
       <translation>Эве</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="188"/>
+      <location filename="../src/language.cc" line="186"/>
       <source>Ido</source>
       <translation>Идо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="214"/>
+      <location filename="../src/language.cc" line="212"/>
       <source>Lao</source>
       <translation>Лао</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="286"/>
+      <location filename="../src/language.cc" line="284"/>
       <source>Twi</source>
       <translation>Тви</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="118"/>
+      <location filename="../src/language.cc" line="116"/>
       <source>Afar</source>
       <translation>Afar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="122"/>
+      <location filename="../src/language.cc" line="120"/>
       <source>Akan</source>
       <translation>Аkan</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="144"/>
+      <location filename="../src/language.cc" line="142"/>
       <source>Cree</source>
       <translation>Кри</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="185"/>
+      <location filename="../src/language.cc" line="183"/>
       <source>Igbo</source>
       <translation>Ибо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="206"/>
+      <location filename="../src/language.cc" line="204"/>
       <source>Komi</source>
       <translation>Коми</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="172"/>
+      <location filename="../src/language.cc" line="170"/>
       <source>Manx</source>
       <translation>Манкс</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="245"/>
+      <location filename="../src/language.cc" line="243"/>
       <source>Pali</source>
       <translation>Пали</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="277"/>
+      <location filename="../src/language.cc" line="275"/>
       <source>Thai</source>
       <translation>Tailandisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="290"/>
+      <location filename="../src/language.cc" line="288"/>
       <source>Urdu</source>
       <translation>Урду</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="302"/>
+      <location filename="../src/language.cc" line="300"/>
       <source>Zulu</source>
       <translation>Zulu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="145"/>
+      <location filename="../src/language.cc" line="143"/>
       <source>Czech</source>
       <translation>Çekisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="233"/>
+      <location filename="../src/language.cc" line="231"/>
       <source>Dutch</source>
       <translation>Holandisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="211"/>
+      <location filename="../src/language.cc" line="209"/>
       <source>Ganda</source>
       <translation>Ганда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="161"/>
+      <location filename="../src/language.cc" line="159"/>
       <source>Fulah</source>
       <translation>Фула</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="154"/>
+      <location filename="../src/language.cc" line="152"/>
       <source>Greek</source>
       <translation>Greqisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="173"/>
+      <location filename="../src/language.cc" line="171"/>
       <source>Hausa</source>
       <translation>Хауса</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="175"/>
+      <location filename="../src/language.cc" line="173"/>
       <source>Hindi</source>
       <translation>Хинди</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="167"/>
+      <location filename="../src/language.cc" line="165"/>
       <source>Irish</source>
       <translation>Irlandisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="200"/>
+      <location filename="../src/language.cc" line="198"/>
       <source>Khmer</source>
       <translation>Кхмерский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="195"/>
+      <location filename="../src/language.cc" line="193"/>
       <source>Kongo</source>
       <translation>Конго</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="209"/>
+      <location filename="../src/language.cc" line="207"/>
       <source>Latin</source>
       <translation>Latinisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="225"/>
+      <location filename="../src/language.cc" line="223"/>
       <source>Malay</source>
       <translation>Малайский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="220"/>
+      <location filename="../src/language.cc" line="218"/>
       <source>Maori</source>
       <translation>Маори</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="228"/>
+      <location filename="../src/language.cc" line="226"/>
       <source>Nauru</source>
       <translation>Науру</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="242"/>
+      <location filename="../src/language.cc" line="240"/>
       <source>Oriya</source>
       <translation>Ория</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="241"/>
+      <location filename="../src/language.cc" line="239"/>
       <source>Oromo</source>
       <translation>Оромо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="259"/>
+      <location filename="../src/language.cc" line="257"/>
       <source>Sango</source>
       <translation>Санго</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="265"/>
+      <location filename="../src/language.cc" line="263"/>
       <source>Shona</source>
       <translation>Схона</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="276"/>
+      <location filename="../src/language.cc" line="274"/>
       <source>Tajik</source>
       <translation>Taxhikisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="274"/>
+      <location filename="../src/language.cc" line="272"/>
       <source>Tamil</source>
       <translation>Tamile</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="285"/>
+      <location filename="../src/language.cc" line="283"/>
       <source>Tatar</source>
       <translation>Татарский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="269"/>
+      <location filename="../src/language.cc" line="267"/>
       <source>Swati</source>
       <translation>Swati</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="282"/>
+      <location filename="../src/language.cc" line="280"/>
       <source>Tonga</source>
       <translation>Тонга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="187"/>
+      <location filename="../src/language.cc" line="185"/>
       <source>Inupiaq</source>
       <translation>Инупиак</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="292"/>
+      <location filename="../src/language.cc" line="290"/>
       <source>Venda</source>
       <translation>Венда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="291"/>
+      <location filename="../src/language.cc" line="289"/>
       <source>Uzbek</source>
       <translation>Узбекский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="148"/>
+      <location filename="../src/language.cc" line="146"/>
       <source>Welsh</source>
       <translation>Уэльский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="296"/>
+      <location filename="../src/language.cc" line="294"/>
       <source>Wolof</source>
       <translation>Уолоф</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="297"/>
+      <location filename="../src/language.cc" line="295"/>
       <source>Xhosa</source>
       <translation>Кшоса</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="190"/>
+      <location filename="../src/language.cc" line="188"/>
       <source>Italian</source>
       <translation>Italisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="250"/>
+      <location filename="../src/language.cc" line="248"/>
       <source>Raeto-Romance</source>
       <translation>Романшский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="152"/>
+      <location filename="../src/language.cc" line="150"/>
       <source>Dzongkha</source>
       <translation>Дзонгка (Бутан)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="201"/>
+      <location filename="../src/language.cc" line="199"/>
       <source>Kannada</source>
       <translation>Каннада</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="230"/>
+      <location filename="../src/language.cc" line="228"/>
       <source>North Ndebele</source>
       <translation>Сев. Ндебеле</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="119"/>
+      <location filename="../src/language.cc" line="117"/>
       <source>Abkhazian</source>
       <translation>Abhaziane</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="208"/>
+      <location filename="../src/language.cc" line="206"/>
       <source>Kirghiz</source>
       <translation>Киргизский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="251"/>
+      <location filename="../src/language.cc" line="249"/>
       <source>Kirundi</source>
       <translation>Рунди</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="168"/>
+      <location filename="../src/language.cc" line="166"/>
       <source>Scottish Gaelic</source>
       <translation>Галльский (Шотландия)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="267"/>
+      <location filename="../src/language.cc" line="265"/>
       <source>Albanian</source>
       <translation>Shqip</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="217"/>
+      <location filename="../src/language.cc" line="215"/>
       <source>Latvian</source>
       <translation>Латышский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="222"/>
+      <location filename="../src/language.cc" line="220"/>
       <source>Malayalam</source>
       <translation>Малайялам</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="205"/>
+      <location filename="../src/language.cc" line="203"/>
       <source>Kurdish</source>
       <translation>Курдский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="132"/>
+      <location filename="../src/language.cc" line="130"/>
       <source>Bulgarian</source>
       <translation>Bullgarisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="213"/>
+      <location filename="../src/language.cc" line="211"/>
       <source>Lingala</source>
       <translation>Лингала</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="226"/>
+      <location filename="../src/language.cc" line="224"/>
       <source>Maltese</source>
       <translation>Мальтийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="224"/>
+      <location filename="../src/language.cc" line="222"/>
       <source>Marathi</source>
       <translation>Марати</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="125"/>
+      <location filename="../src/language.cc" line="123"/>
       <source>Arabic</source>
       <translation>Arabisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="159"/>
+      <location filename="../src/language.cc" line="157"/>
       <source>Basque</source>
       <translation>Баскский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="127"/>
+      <location filename="../src/language.cc" line="125"/>
       <source>Avaric</source>
       <translation>Аварский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="133"/>
+      <location filename="../src/language.cc" line="131"/>
       <source>Bihari</source>
       <translation>Бихарский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="128"/>
+      <location filename="../src/language.cc" line="126"/>
       <source>Aymara</source>
       <translation>Аймарский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="138"/>
+      <location filename="../src/language.cc" line="136"/>
       <source>Breton</source>
       <translation>Бретонский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="271"/>
+      <location filename="../src/language.cc" line="269"/>
       <source>Sundanese</source>
       <translation>Sundanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="149"/>
+      <location filename="../src/language.cc" line="147"/>
       <source>Danish</source>
       <translation>Danisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="151"/>
+      <location filename="../src/language.cc" line="149"/>
       <source>Divehi</source>
       <translation>Мальдивский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="216"/>
+      <location filename="../src/language.cc" line="214"/>
       <source>Luba-Katanga</source>
       <translation>Луба-Катанга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="163"/>
+      <location filename="../src/language.cc" line="161"/>
       <source>Fijian</source>
       <translation>Фиджи</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="179"/>
+      <location filename="../src/language.cc" line="177"/>
       <source>Hungarian</source>
       <translation>Hungarisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="165"/>
+      <location filename="../src/language.cc" line="163"/>
       <source>French</source>
       <translation>Frëngjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="150"/>
+      <location filename="../src/language.cc" line="148"/>
       <source>German</source>
       <translation>Gjermanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="223"/>
+      <location filename="../src/language.cc" line="221"/>
       <source>Mongolian</source>
       <translation>Mongolisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="174"/>
+      <location filename="../src/language.cc" line="172"/>
       <source>Hebrew</source>
       <translation>Hebraisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="181"/>
+      <location filename="../src/language.cc" line="179"/>
       <source>Herero</source>
       <translation>Эреро</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="210"/>
+      <location filename="../src/language.cc" line="208"/>
       <source>Luxembourgish</source>
       <translation>Люксембургский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="203"/>
+      <location filename="../src/language.cc" line="201"/>
       <source>Kanuri</source>
       <translation>Канури</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="198"/>
+      <location filename="../src/language.cc" line="196"/>
       <source>Kazakh</source>
       <translation>Казахский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="196"/>
+      <location filename="../src/language.cc" line="194"/>
       <source>Kikuyu</source>
       <translation>Кикую</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="202"/>
+      <location filename="../src/language.cc" line="200"/>
       <source>Korean</source>
       <translation>Koreane</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="237"/>
+      <location filename="../src/language.cc" line="235"/>
       <source>Navajo</source>
       <translation>Навахо</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="232"/>
+      <location filename="../src/language.cc" line="230"/>
       <source>Ndonga</source>
       <translation>Ндонга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="231"/>
+      <location filename="../src/language.cc" line="229"/>
       <source>Nepali</source>
       <translation>Непальский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="240"/>
+      <location filename="../src/language.cc" line="238"/>
       <source>Ojibwa</source>
       <translation>Оджибва</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="247"/>
+      <location filename="../src/language.cc" line="245"/>
       <source>Pashto</source>
       <translation>Пуштунский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="246"/>
+      <location filename="../src/language.cc" line="244"/>
       <source>Polish</source>
       <translation>Polonisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="264"/>
+      <location filename="../src/language.cc" line="262"/>
       <source>Samoan</source>
       <translation>Самоа</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="239"/>
+      <location filename="../src/language.cc" line="237"/>
       <source>Occitan</source>
       <translation>Французский (диалект Occitan)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="257"/>
+      <location filename="../src/language.cc" line="255"/>
       <source>Sindhi</source>
       <translation>Синдхи</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="262"/>
+      <location filename="../src/language.cc" line="260"/>
       <source>Slovak</source>
       <translation>Sllovakisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="266"/>
+      <location filename="../src/language.cc" line="264"/>
       <source>Somali</source>
       <translation>Сомалийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="275"/>
+      <location filename="../src/language.cc" line="273"/>
       <source>Telugu</source>
       <translation>Telugu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="284"/>
+      <location filename="../src/language.cc" line="282"/>
       <source>Tsonga</source>
       <translation>Тсонга</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="281"/>
+      <location filename="../src/language.cc" line="279"/>
       <source>Tswana</source>
       <translation>Тсвана</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="288"/>
+      <location filename="../src/language.cc" line="286"/>
       <source>Uighur</source>
       <translation>Уйгурский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="260"/>
+      <location filename="../src/language.cc" line="258"/>
       <source>Serbo-Croatian</source>
       <translation>Serbokroatisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="299"/>
+      <location filename="../src/language.cc" line="297"/>
       <source>Yoruba</source>
       <translation>Йоруба</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="300"/>
+      <location filename="../src/language.cc" line="298"/>
       <source>Zhuang</source>
       <translation>Чжуанг</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="252"/>
+      <location filename="../src/language.cc" line="250"/>
       <source>Romanian</source>
       <translation>Rumanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="183"/>
+      <location filename="../src/language.cc" line="181"/>
       <source>Indonesian</source>
       <translation>Indonezisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="244"/>
+      <location filename="../src/language.cc" line="242"/>
       <source>Panjabi</source>
       <translation>Панджаби</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="270"/>
+      <location filename="../src/language.cc" line="268"/>
       <source>Southern Sotho</source>
       <translation>Souther Sotho</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="143"/>
+      <location filename="../src/language.cc" line="141"/>
       <source>Corsican</source>
       <translation>Корсиканский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="156"/>
+      <location filename="../src/language.cc" line="154"/>
       <source>Esperanto</source>
       <translation>Эсперанто</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="160"/>
+      <location filename="../src/language.cc" line="158"/>
       <source>Persian</source>
       <translation>Persisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="263"/>
+      <location filename="../src/language.cc" line="261"/>
       <source>Slovenian</source>
       <translation>Sllovenisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="166"/>
+      <location filename="../src/language.cc" line="164"/>
       <source>Western Frisian</source>
       <translation>Фризийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="124"/>
+      <location filename="../src/language.cc" line="122"/>
       <source>Aragonese</source>
       <translation>Aragoneze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="287"/>
+      <location filename="../src/language.cc" line="285"/>
       <source>Tahitian</source>
       <translation>Таитянский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="218"/>
+      <location filename="../src/language.cc" line="216"/>
       <source>Malagasy</source>
       <translation>Мальгашский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="169"/>
+      <location filename="../src/language.cc" line="167"/>
       <source>Galician</source>
       <translation>Галицийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="129"/>
+      <location filename="../src/language.cc" line="127"/>
       <source>Azerbaijani</source>
       <translation>Азербайджанский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="123"/>
+      <location filename="../src/language.cc" line="121"/>
       <source>Amharic</source>
       <translation>Amharike</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="255"/>
+      <location filename="../src/language.cc" line="253"/>
       <source>Sanskrit</source>
       <translation>Sanskritisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="192"/>
+      <location filename="../src/language.cc" line="190"/>
       <source>Japanese</source>
       <translation>Japonisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="289"/>
+      <location filename="../src/language.cc" line="287"/>
       <source>Ukrainian</source>
       <translation>Ukrainisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="135"/>
+      <location filename="../src/language.cc" line="133"/>
       <source>Bambara</source>
       <translation>Бамана</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="199"/>
+      <location filename="../src/language.cc" line="197"/>
       <source>Kalaallisut</source>
       <translation>Калаалисут</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="130"/>
+      <location filename="../src/language.cc" line="128"/>
       <source>Bashkir</source>
       <translation>Башкирский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="131"/>
+      <location filename="../src/language.cc" line="129"/>
       <source>Belarusian</source>
       <translation>Bjellorusisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="204"/>
+      <location filename="../src/language.cc" line="202"/>
       <source>Kashmiri</source>
       <translation>Кашмирский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="256"/>
+      <location filename="../src/language.cc" line="254"/>
       <source>Sardinian</source>
       <translation>Сардинийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="176"/>
+      <location filename="../src/language.cc" line="174"/>
       <source>Hiri Motu</source>
       <translation>Хири-моту</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="249"/>
+      <location filename="../src/language.cc" line="247"/>
       <source>Quechua</source>
       <translation>Кечуа</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="136"/>
+      <location filename="../src/language.cc" line="134"/>
       <source>Bengali</source>
       <translation>Бенгали</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="193"/>
+      <location filename="../src/language.cc" line="191"/>
       <source>Javanese</source>
       <translation>Яванский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="120"/>
+      <location filename="../src/language.cc" line="118"/>
       <source>Avestan</source>
       <translation>Avestan</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="254"/>
+      <location filename="../src/language.cc" line="252"/>
       <source>Kinyarwanda</source>
       <translation>Киньяруанда</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="121"/>
+      <location filename="../src/language.cc" line="119"/>
       <source>Afrikaans</source>
       <translation>Afrikanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="134"/>
+      <location filename="../src/language.cc" line="132"/>
       <source>Bislama</source>
       <translation>Бислама</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="180"/>
+      <location filename="../src/language.cc" line="178"/>
       <source>Armenian</source>
       <translation>Armenisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="229"/>
+      <location filename="../src/language.cc" line="227"/>
       <source>Norwegian Bokmal</source>
       <translation>Норвежский букмол</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="177"/>
+      <location filename="../src/language.cc" line="175"/>
       <source>Croatian</source>
       <translation>Kroatisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="139"/>
+      <location filename="../src/language.cc" line="137"/>
       <source>Bosnian</source>
       <translation>Боснийский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="182"/>
+      <location filename="../src/language.cc" line="180"/>
       <source>Interlingua</source>
       <translation>Интерлингва</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="184"/>
+      <location filename="../src/language.cc" line="182"/>
       <source>Interlingue</source>
       <translation>Окциденталь</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="140"/>
+      <location filename="../src/language.cc" line="138"/>
       <source>Catalan</source>
       <translation>Каталонский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="268"/>
+      <location filename="../src/language.cc" line="266"/>
       <source>Serbian</source>
       <translation>Serbisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="227"/>
+      <location filename="../src/language.cc" line="225"/>
       <source>Burmese</source>
       <translation>Бирманский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="253"/>
+      <location filename="../src/language.cc" line="251"/>
       <source>Russian</source>
       <translation>Rusisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="212"/>
+      <location filename="../src/language.cc" line="210"/>
       <source>Limburgish</source>
       <translation>Лимбуржский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="235"/>
+      <location filename="../src/language.cc" line="233"/>
       <source>Norwegian</source>
       <translation>Norvegjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="141"/>
+      <location filename="../src/language.cc" line="139"/>
       <source>Chechen</source>
       <translation>Чеченский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="301"/>
+      <location filename="../src/language.cc" line="299"/>
       <source>Chinese</source>
       <translation>Kinezisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="147"/>
+      <location filename="../src/language.cc" line="145"/>
       <source>Chuvash</source>
       <translation>Чувашский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="261"/>
+      <location filename="../src/language.cc" line="259"/>
       <source>Sinhala</source>
       <translation>Сингальский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="157"/>
+      <location filename="../src/language.cc" line="155"/>
       <source>Spanish</source>
       <translation>Spanjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="207"/>
+      <location filename="../src/language.cc" line="205"/>
       <source>Cornish</source>
       <translation>Корнуольский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="280"/>
+      <location filename="../src/language.cc" line="278"/>
       <source>Tagalog</source>
       <translation>Тагалог</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="126"/>
+      <location filename="../src/language.cc" line="124"/>
       <source>Assamese</source>
       <translation>Ассамский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="243"/>
+      <location filename="../src/language.cc" line="241"/>
       <source>Ossetian</source>
       <translation>Осетинский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="158"/>
+      <location filename="../src/language.cc" line="156"/>
       <source>Estonian</source>
       <translation>Estonisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="273"/>
+      <location filename="../src/language.cc" line="271"/>
       <source>Swahili</source>
       <translation>Suahili</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="272"/>
+      <location filename="../src/language.cc" line="270"/>
       <source>Swedish</source>
       <translation>Suedisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="137"/>
+      <location filename="../src/language.cc" line="135"/>
       <source>Tibetan</source>
       <translation>Тибетский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="293"/>
+      <location filename="../src/language.cc" line="291"/>
       <source>Vietnamese</source>
       <translation>Vietnamisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="221"/>
+      <location filename="../src/language.cc" line="219"/>
       <source>Macedonian</source>
       <translation>Maqedonisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="248"/>
+      <location filename="../src/language.cc" line="246"/>
       <source>Portuguese</source>
       <translation>Portugalisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="283"/>
+      <location filename="../src/language.cc" line="281"/>
       <source>Turkish</source>
       <translation>Turqisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="279"/>
+      <location filename="../src/language.cc" line="277"/>
       <source>Turkmen</source>
       <translation>Turkmen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="171"/>
+      <location filename="../src/language.cc" line="169"/>
       <source>Gujarati</source>
       <translation>Гуджарати</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="189"/>
+      <location filename="../src/language.cc" line="187"/>
       <source>Icelandic</source>
       <translation>Islandisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="191"/>
+      <location filename="../src/language.cc" line="189"/>
       <source>Inuktitut</source>
       <translation>Инуктитут</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="155"/>
+      <location filename="../src/language.cc" line="153"/>
       <source>English</source>
       <translation>Anglisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="194"/>
+      <location filename="../src/language.cc" line="192"/>
       <source>Georgian</source>
       <translation>Gjeorgjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="146"/>
+      <location filename="../src/language.cc" line="144"/>
       <source>Church Slavic</source>
       <translation>Церковно-славянский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="164"/>
+      <location filename="../src/language.cc" line="162"/>
       <source>Faroese</source>
       <translation>Фарерский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="162"/>
+      <location filename="../src/language.cc" line="160"/>
       <source>Finnish</source>
       <translation>Finlandisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="294"/>
+      <location filename="../src/language.cc" line="292"/>
       <source>Volapuk</source>
       <translation>Волапюк</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="295"/>
+      <location filename="../src/language.cc" line="293"/>
       <source>Walloon</source>
       <translation>Валлонский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="197"/>
+      <location filename="../src/language.cc" line="195"/>
       <source>Kwanyama</source>
       <translation>Кваньяма</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="219"/>
+      <location filename="../src/language.cc" line="217"/>
       <source>Marshallese</source>
       <translation>Маршалльский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="258"/>
+      <location filename="../src/language.cc" line="256"/>
       <source>Northern Sami</source>
       <translation>Северное Саами</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="178"/>
+      <location filename="../src/language.cc" line="176"/>
       <source>Haitian</source>
       <translation>Гаитянский</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="142"/>
+      <location filename="../src/language.cc" line="140"/>
       <source>Chamorro</source>
       <translation>Чаморро</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="234"/>
+      <location filename="../src/language.cc" line="232"/>
       <source>Norwegian Nynorsk</source>
       <translation>Новонорвежский (нюнорск)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="170"/>
+      <location filename="../src/language.cc" line="168"/>
       <source>Guarani</source>
       <translation>Гуарани</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="236"/>
+      <location filename="../src/language.cc" line="234"/>
       <source>South Ndebele</source>
       <translation>Юж. Ндебеле</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="238"/>
+      <location filename="../src/language.cc" line="236"/>
       <source>Chichewa</source>
       <translation>Чичева</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="215"/>
+      <location filename="../src/language.cc" line="213"/>
       <source>Lithuanian</source>
       <translation>Lituanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="186"/>
+      <location filename="../src/language.cc" line="184"/>
       <source>Sichuan Yi</source>
       <translation>Сычуаньский И</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="278"/>
+      <location filename="../src/language.cc" line="276"/>
       <source>Tigrinya</source>
       <translation>Tigrinja</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="298"/>
+      <location filename="../src/language.cc" line="296"/>
       <source>Yiddish</source>
       <translation>Идиш</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="439"/>
+      <location filename="../src/language.cc" line="437"/>
       <source>Traditional Chinese</source>
       <translation>Kinezisht tradicionale</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="440"/>
+      <location filename="../src/language.cc" line="438"/>
       <source>Simplified Chinese</source>
       <translation>Kinezisht e thjeshtuar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="441"/>
+      <location filename="../src/language.cc" line="439"/>
       <source>Other</source>
       <translation>Tjetër</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="442"/>
+      <location filename="../src/language.cc" line="440"/>
       <source>Other Simplified Chinese dialects</source>
       <translation>Dialekte të tjera të kinezishtes së thjeshtuar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="443"/>
+      <location filename="../src/language.cc" line="441"/>
       <source>Other Traditional Chinese dialects</source>
       <translation>Dialekte të tjera të kinezishtes tradicionale</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="444"/>
+      <location filename="../src/language.cc" line="442"/>
       <source>Other Eastern-European languages</source>
       <translation>Gjuhë të tjera evropiano-lindore</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="445"/>
+      <location filename="../src/language.cc" line="443"/>
       <source>Other Western-European languages</source>
       <translation>Gjuhë të tjera evropiano-perëndimore</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="446"/>
+      <location filename="../src/language.cc" line="444"/>
       <source>Other Russian languages</source>
       <translation>Gjuhë të tjera ruse</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="447"/>
+      <location filename="../src/language.cc" line="445"/>
       <source>Other Japanese languages</source>
       <translation>Gjuhë të tjera japoneze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="448"/>
+      <location filename="../src/language.cc" line="446"/>
       <source>Other Baltic languages</source>
       <translation>Gjuhë të tjera baltike</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="449"/>
+      <location filename="../src/language.cc" line="447"/>
       <source>Other Greek languages</source>
       <translation>Gjuhë të tjera greke</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="450"/>
+      <location filename="../src/language.cc" line="448"/>
       <source>Other Korean dialects</source>
       <translation>Dialekte të tjera koreane</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="451"/>
+      <location filename="../src/language.cc" line="449"/>
       <source>Other Turkish dialects</source>
       <translation>Dialekte të tjera turke</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="452"/>
+      <location filename="../src/language.cc" line="450"/>
       <source>Other Thai dialects</source>
       <translation>Dialekte të tjera tajlandeze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="453"/>
+      <location filename="../src/language.cc" line="451"/>
       <source>Tamazight</source>
       <translation>Tamazight</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="303"/>
+      <location filename="../src/language.cc" line="301"/>
       <source>Lojban</source>
       <translation>Lojban</translation>
     </message>
@@ -2516,207 +2480,207 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Language::Db</name>
     <message>
-      <location filename="../src/language.cc" line="41"/>
+      <location filename="../src/language.cc" line="39"/>
       <source>French</source>
       <translation>Frëngjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="42"/>
+      <location filename="../src/language.cc" line="40"/>
       <source>Spanish</source>
       <translation>Spanjisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="43"/>
+      <location filename="../src/language.cc" line="41"/>
       <source>Belarusian</source>
       <translation>Bjellorusisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="44"/>
+      <location filename="../src/language.cc" line="42"/>
       <source>Bulgarian</source>
       <translation>Bullgare</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="45"/>
+      <location filename="../src/language.cc" line="43"/>
       <source>Czech</source>
       <translation>Çeke</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="46"/>
+      <location filename="../src/language.cc" line="44"/>
       <source>German</source>
       <translation>Gjermanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="47"/>
+      <location filename="../src/language.cc" line="45"/>
       <source>Greek</source>
       <translation>Greke</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="48"/>
+      <location filename="../src/language.cc" line="46"/>
       <source>Finnish</source>
       <translation>finlandez</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="49"/>
+      <location filename="../src/language.cc" line="47"/>
       <source>Italian</source>
       <translation>italisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="50"/>
+      <location filename="../src/language.cc" line="48"/>
       <source>Japanese</source>
       <translation>japoneze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="51"/>
+      <location filename="../src/language.cc" line="49"/>
       <source>Korean</source>
       <translation>koreane</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="52"/>
+      <location filename="../src/language.cc" line="50"/>
       <source>Lithuanian</source>
       <translation>Lituanisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="53"/>
+      <location filename="../src/language.cc" line="51"/>
       <source>Macedonian</source>
       <translation>maqedonase</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="54"/>
+      <location filename="../src/language.cc" line="52"/>
       <source>Dutch</source>
       <translation>holandeze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="55"/>
+      <location filename="../src/language.cc" line="53"/>
       <source>Polish</source>
       <translation>polonisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="56"/>
+      <location filename="../src/language.cc" line="54"/>
       <source>Portuguese</source>
       <translation>portugeze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="57"/>
+      <location filename="../src/language.cc" line="55"/>
       <source>Russian</source>
       <translation>rusisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="58"/>
+      <location filename="../src/language.cc" line="56"/>
       <source>Slovak</source>
       <translation>sllovake</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="59"/>
+      <location filename="../src/language.cc" line="57"/>
       <source>Albanian</source>
       <translation>shqiptare</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="60"/>
+      <location filename="../src/language.cc" line="58"/>
       <source>Serbian (Cyrillic)</source>
       <translation>serbisht (cirilike)</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="61"/>
+      <location filename="../src/language.cc" line="59"/>
       <source>Swedish</source>
       <translation>suedeze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="62"/>
+      <location filename="../src/language.cc" line="60"/>
       <source>Turkish</source>
       <translation>turk</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="63"/>
+      <location filename="../src/language.cc" line="61"/>
       <source>Ukrainian</source>
       <translation>ukrainase</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="64"/>
+      <location filename="../src/language.cc" line="62"/>
       <source>Chinese Simplified</source>
       <translation>Kineze e thjeshtuar</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="65"/>
+      <location filename="../src/language.cc" line="63"/>
       <source>Chinese Traditional</source>
       <translation>Tradita kineze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="66"/>
+      <location filename="../src/language.cc" line="64"/>
       <source>Vietnamese</source>
       <translation>vietnameze</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="67"/>
+      <location filename="../src/language.cc" line="65"/>
       <source>Portuguese, Brazilian</source>
       <translation>portugeze, braziliane</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="68"/>
+      <location filename="../src/language.cc" line="66"/>
       <source>Persian</source>
       <translation>persisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="69"/>
+      <location filename="../src/language.cc" line="67"/>
       <source>Spanish, Argentina</source>
       <translation>Spanjisht, Argjentinë</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="70"/>
+      <location filename="../src/language.cc" line="68"/>
       <source>Hindi</source>
       <translation>Hindi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="71"/>
+      <location filename="../src/language.cc" line="69"/>
       <source>Esperanto</source>
       <translation>Esperanto</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="72"/>
+      <location filename="../src/language.cc" line="70"/>
       <source>German, Switzerland</source>
       <translation>gjermanisht, Zvicër</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="73"/>
+      <location filename="../src/language.cc" line="71"/>
       <source>Spanish, Bolivia</source>
       <translation>Spanjisht, Bolivi</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="74"/>
+      <location filename="../src/language.cc" line="72"/>
       <source>Tajik</source>
       <translation>Taxhikisht</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="75"/>
+      <location filename="../src/language.cc" line="73"/>
       <source>Quechua</source>
       <translation>Keçua</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="76"/>
+      <location filename="../src/language.cc" line="74"/>
       <source>Aymara</source>
       <translation>Aymara</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="77"/>
+      <location filename="../src/language.cc" line="75"/>
       <source>Arabic, Saudi Arabia</source>
       <translation>Arabisht, Arabia Saudite</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="78"/>
+      <location filename="../src/language.cc" line="76"/>
       <source>Turkmen</source>
       <translation>turkmen</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="79"/>
+      <location filename="../src/language.cc" line="77"/>
       <source>Interlingue</source>
       <translation>Interlingu</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="80"/>
+      <location filename="../src/language.cc" line="78"/>
       <source>Lojban</source>
       <translation>Lojban</translation>
     </message>
     <message>
-      <location filename="../src/language.cc" line="81"/>
+      <location filename="../src/language.cc" line="79"/>
       <source>English</source>
       <translation>anglisht</translation>
     </message>
@@ -2724,7 +2688,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>LoadDictionaries</name>
     <message>
-      <location filename="../src/dict/loaddictionaries.cc" line="195"/>
+      <location filename="../src/dict/loaddictionaries.cc" line="210"/>
       <source>Error loading dictionaries</source>
       <translation>Gabim në ngarkimin e fjalorëve</translation>
     </message>
@@ -2732,7 +2696,7 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Main</name>
     <message>
-      <location filename="../src/main.cc" line="368"/>
+      <location filename="../src/main.cc" line="443"/>
       <source>Error in configuration file. Continue with default settings?</source>
       <translation>Gabim në skedën e konfiguracionit.Do vijoni me parametrat standardë?</translation>
     </message>
@@ -2740,12 +2704,12 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="553"/>
+      <location filename="../src/ui/mainwindow.ui" line="547"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="388"/>
+      <location filename="../src/ui/mainwindow.ui" line="382"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
@@ -2755,27 +2719,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>Të preferuarat dhe ritet</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="299"/>
+      <location filename="../src/ui/mainwindow.ui" line="293"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="314"/>
+      <location filename="../src/ui/mainwindow.ui" line="308"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1495"/>
+      <location filename="../src/ui/mainwindow.cc" line="1529"/>
       <source>All</source>
       <translation>Të gjithë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="198"/>
+      <location filename="../src/ui/mainwindow.cc" line="200"/>
       <source>Back</source>
       <translation>Pas</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1466"/>
+      <location filename="../src/ui/mainwindow.cc" line="1502"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>%1 fjalorë, %2 artikuj, %3 fjalë</translation>
     </message>
@@ -2800,100 +2764,95 @@ between classic and school orthography in cyrillic)</source>
       <translation>Kërko</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
-      <location filename="../src/ui/mainwindow.cc" line="389"/>
+      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>&amp;Dal</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3371"/>
+      <location filename="../src/ui/mainwindow.cc" line="3279"/>
       <source>Error</source>
       <translation>Gabim</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="344"/>
+      <location filename="../src/ui/mainwindow.ui" line="338"/>
       <source>Quit from application</source>
       <translation>Mbyll aplikacionin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui" line="357"/>
       <source>&amp;Close To Tray</source>
       <translation>&amp;Mbyll në shirit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3371"/>
+      <location filename="../src/ui/mainwindow.cc" line="3279"/>
       <source>Can&apos;t save article: %1</source>
       <translation>Nuk ruan artikullin: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="244"/>
+      <location filename="../src/ui/mainwindow.cc" line="246"/>
       <source>Zoom In</source>
       <translation>Zmadhoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="296"/>
+      <location filename="../src/ui/mainwindow.ui" line="290"/>
       <source>&amp;Dictionaries...</source>
       <translation>&amp;Fjalorët...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="330"/>
+      <location filename="../src/ui/mainwindow.ui" line="324"/>
       <source>&amp;About</source>
       <translation>&amp;Për</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="355"/>
+      <location filename="../src/ui/mainwindow.ui" line="349"/>
       <source>&amp;Forum</source>
       <translation>&amp;Forumi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="400"/>
+      <location filename="../src/ui/mainwindow.ui" line="394"/>
       <source>&amp;Print</source>
       <translation>&amp;Printoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui" line="376"/>
       <source>&amp;Save Article</source>
       <translation>&amp;Ruaj artikullin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3353"/>
+      <location filename="../src/ui/mainwindow.cc" line="3262"/>
       <source>Save Article As</source>
       <translation>Ruaj artikullin si</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="403"/>
+      <location filename="../src/ui/mainwindow.ui" line="397"/>
       <source>Ctrl+P</source>
       <translation>Ctrl+P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="347"/>
+      <location filename="../src/ui/mainwindow.ui" line="341"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="366"/>
+      <location filename="../src/ui/mainwindow.ui" line="360"/>
       <source>Minimizes the window to tray</source>
       <translation>Minimizon dritaren në shiritin e sistemit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="411"/>
+      <location filename="../src/ui/mainwindow.ui" line="405"/>
       <source>Page Set&amp;up</source>
       <translation>Sistem&amp;oj faqen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="322"/>
+      <location filename="../src/ui/mainwindow.ui" line="316"/>
       <source>&amp;Homepage</source>
       <translation>&amp;Faqja zyrtare</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3039"/>
+      <location filename="../src/ui/mainwindow.cc" line="2961"/>
       <source>New Release Available</source>
       <translation>Ka dalë version i ri</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/mainwindow.cc" line="1477"/>
-      <source>Look up:</source>
-      <translation>Shikoj:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="250"/>
@@ -2901,30 +2860,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Zvogëloj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="382"/>
+      <location filename="../src/ui/mainwindow.cc" line="376"/>
       <source>Show &amp;Main Window</source>
       <translation>Shfaq dritaren &amp;kryesore</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="333"/>
+      <location filename="../src/ui/mainwindow.ui" line="327"/>
       <source>About GoldenDict-ng</source>
       <translation>Për GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3045"/>
+      <location filename="../src/ui/mainwindow.cc" line="2968"/>
       <source>Download</source>
       <translation>Shkarkoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3250"/>
+      <location filename="../src/ui/mainwindow.cc" line="3157"/>
       <source>Page Setup</source>
       <translation>Sistemimi i faqes</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/mainwindow.cc" line="306"/>
-      <location filename="../src/ui/mainwindow.cc" line="1477"/>
-      <source>Look up in:</source>
-      <translation>Shikoj në:</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="254"/>
@@ -2932,73 +2885,73 @@ between classic and school orthography in cyrillic)</source>
       <translation>Përmasat normale</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2888"/>
+      <location filename="../src/ui/mainwindow.cc" line="2811"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>Dështoi nisja e mekanizmit monitorues të tasteve kryesore.&lt;br&gt;Sigurohuni që XServer e ka të ndezur zgjatimin RECORD.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3040"/>
+      <location filename="../src/ui/mainwindow.cc" line="2962"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>Versioni &lt;b&gt;%1&lt;/b&gt; për GoldenDict është gati për t&apos;u shkarkuar.&lt;br&gt;Klikoni &lt;b&gt;Shkarkoj&lt;/b&gt;, që të hapni faqen e shkarkimit.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="369"/>
+      <location filename="../src/ui/mainwindow.ui" line="363"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl+F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="430"/>
+      <location filename="../src/ui/mainwindow.ui" line="424"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="581"/>
+      <location filename="../src/ui/mainwindow.cc" line="583"/>
       <source>Loading...</source>
       <translation>Hap...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1666"/>
+      <location filename="../src/ui/mainwindow.cc" line="1688"/>
       <source>(untitled)</source>
       <translation>(pa titull)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="311"/>
+      <location filename="../src/ui/mainwindow.ui" line="305"/>
       <source>&amp;Preferences...</source>
       <translation>&amp;Preferencat...</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui" line="46"/>
-      <location filename="../src/ui/mainwindow.cc" line="732"/>
+      <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Mirë se erdhët!</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="231"/>
+      <location filename="../src/ui/mainwindow.cc" line="233"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Shqiptoj fjalën (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="385"/>
+      <location filename="../src/ui/mainwindow.ui" line="379"/>
       <source>Save Article</source>
       <translation>Ruaj artikullin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3046"/>
+      <location filename="../src/ui/mainwindow.cc" line="2969"/>
       <source>Skip This Release</source>
       <translation>Kaloj këtë versionin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="200"/>
+      <location filename="../src/ui/mainwindow.cc" line="202"/>
       <source>Forward</source>
       <translation>Para</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3272"/>
+      <location filename="../src/ui/mainwindow.cc" line="3179"/>
       <source>Print Article</source>
       <translation>Printoj artikullin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3251"/>
+      <location filename="../src/ui/mainwindow.cc" line="3158"/>
       <source>No printer is available. Please install one first.</source>
       <translation>Nuk ka asnjë printer. Lutemi e instaloni më parë.</translation>
     </message>
@@ -3013,7 +2966,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>H&amp;istorik</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="438"/>
+      <location filename="../src/ui/mainwindow.ui" line="432"/>
       <source>&amp;Clear</source>
       <translation>&amp;Pastroj</translation>
     </message>
@@ -3023,247 +2976,259 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Zmadhimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="368"/>
+      <location filename="../src/ui/mainwindow.cc" line="364"/>
       <source>Words Zoom In</source>
       <translation>Zmadhoj fjalët</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="372"/>
+      <location filename="../src/ui/mainwindow.cc" line="366"/>
       <source>Words Zoom Out</source>
       <translation>Zvogëloj fjalët</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="374"/>
+      <location filename="../src/ui/mainwindow.cc" line="368"/>
       <source>Words Normal Size</source>
       <translation>Fjalët në përmasat normale</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="421"/>
+      <location filename="../src/ui/mainwindow.cc" line="425"/>
       <source>Close current tab</source>
       <translation>Mbyll fushën</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="429"/>
+      <location filename="../src/ui/mainwindow.cc" line="433"/>
       <source>Close all tabs</source>
       <translation>Mbyll të gjitha fushat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="436"/>
+      <location filename="../src/ui/mainwindow.cc" line="440"/>
       <source>Close all tabs except current</source>
       <translation>Mbyll të gjitha fushat veç kësaj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="411"/>
+      <location filename="../src/ui/mainwindow.cc" line="415"/>
       <source>Opened tabs</source>
       <translation>Fushat e hapura</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="590"/>
+      <location filename="../src/ui/mainwindow.cc" line="592"/>
       <source>New Tab</source>
       <translation>Fushë e re</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="453"/>
+      <location filename="../src/ui/mainwindow.ui" line="447"/>
       <source>Ctrl+T</source>
       <translation>Ctrl+T</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="464"/>
+      <location filename="../src/ui/mainwindow.ui" line="458"/>
       <source>&amp;Configuration Folder</source>
       <translation>Dosja e &amp;konfiguracionit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="121"/>
+      <location filename="../src/ui/mainwindow.cc" line="123"/>
       <source>&amp;Menubar</source>
       <translation>Brezi i &amp;menysë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="344"/>
+      <location filename="../src/ui/mainwindow.cc" line="340"/>
       <source>Found in Dictionaries:</source>
       <translation>Gjetjet në fjalorë:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="456"/>
+      <location filename="../src/ui/mainwindow.cc" line="460"/>
       <source>Add all tabs to Favorites</source>
       <translation>Shtoni të gjitha skedat te të preferuarat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1011"/>
+      <location filename="../src/ui/mainwindow.cc" line="945"/>
+      <source>WARNING: %1</source>
+      <translation>PARALAJMËRIM: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/mainwindow.cc" line="1075"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>Vargu për të kërkuar në fjalorë. Shenjat &apos;*&apos;, &apos;?&apos; dhe grupe simbolesh &apos;[...]&apos; lejohen.
 Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbole përdorin &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respektivisht</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1609"/>
+      <location filename="../src/ui/mainwindow.cc" line="1637"/>
       <source>Open Tabs List</source>
       <translation>Hap listën e fushave</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1866"/>
-      <location filename="../src/ui/mainwindow.cc" line="1944"/>
-      <location filename="../src/ui/mainwindow.cc" line="4457"/>
-      <location filename="../src/ui/mainwindow.cc" line="4485"/>
-      <location filename="../src/ui/mainwindow.cc" line="4524"/>
+      <location filename="../src/ui/mainwindow.cc" line="1884"/>
+      <location filename="../src/ui/mainwindow.cc" line="1953"/>
+      <location filename="../src/ui/mainwindow.cc" line="4318"/>
+      <location filename="../src/ui/mainwindow.cc" line="4346"/>
+      <location filename="../src/ui/mainwindow.cc" line="4385"/>
       <source>Remove current tab from Favorites</source>
       <translation>Hiq skedën aktuale nga Të preferuarat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1897"/>
+      <location filename="../src/ui/mainwindow.cc" line="1908"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3150"/>
+      <location filename="../src/ui/mainwindow.cc" line="3063"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>Zgjodhët të fshehni menynë.Përdorni %1 për ta rishfaqur.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3151"/>
+      <location filename="../src/ui/mainwindow.cc" line="3065"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="472"/>
-      <location filename="../src/ui/mainwindow.cc" line="3744"/>
-      <location filename="../src/ui/mainwindow.cc" line="3756"/>
+      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.cc" line="3625"/>
+      <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>&amp;Shfaq</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="483"/>
+      <location filename="../src/ui/mainwindow.ui" line="477"/>
       <source>&amp;Export</source>
       <translation>&amp;Eksportoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3740"/>
-      <location filename="../src/ui/mainwindow.cc" line="3752"/>
+      <location filename="../src/ui/mainwindow.cc" line="3621"/>
+      <location filename="../src/ui/mainwindow.cc" line="3632"/>
       <source>&amp;Hide</source>
       <translation>&amp;Fsheh</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3798"/>
+      <location filename="../src/ui/mainwindow.cc" line="3673"/>
       <source>Export history to file</source>
       <translation>Eksportoj historikun në skedë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3800"/>
-      <location filename="../src/ui/mainwindow.cc" line="3862"/>
-      <location filename="../src/ui/mainwindow.cc" line="3976"/>
+      <location filename="../src/ui/mainwindow.cc" line="3675"/>
+      <location filename="../src/ui/mainwindow.cc" line="3736"/>
+      <location filename="../src/ui/mainwindow.cc" line="3851"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>Skeda tekst (*.txt);;Të gjitha skedat (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3839"/>
+      <location filename="../src/ui/mainwindow.cc" line="3719"/>
       <source>History export complete</source>
       <translation>Përfundoi eksporti i historikut</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3842"/>
-      <location filename="../src/ui/mainwindow.cc" line="3957"/>
-      <location filename="../src/ui/mainwindow.cc" line="4006"/>
+      <location filename="../src/ui/mainwindow.cc" line="3684"/>
+      <location filename="../src/ui/mainwindow.cc" line="3697"/>
+      <location filename="../src/ui/mainwindow.cc" line="3714"/>
+      <location filename="../src/ui/mainwindow.cc" line="3820"/>
+      <location filename="../src/ui/mainwindow.cc" line="3828"/>
+      <location filename="../src/ui/mainwindow.cc" line="3859"/>
+      <location filename="../src/ui/mainwindow.cc" line="3867"/>
+      <location filename="../src/ui/mainwindow.cc" line="3877"/>
       <source>Export error: </source>
       <translation>Gabim eksporti:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="475"/>
+      <location filename="../src/ui/mainwindow.ui" line="469"/>
       <source>Ctrl+H</source>
       <translation>Ctrl+H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="491"/>
+      <location filename="../src/ui/mainwindow.ui" line="485"/>
       <source>&amp;Import</source>
       <translation>&amp;Importoj</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3860"/>
+      <location filename="../src/ui/mainwindow.cc" line="3734"/>
       <source>Import history from file</source>
       <translation>Importoj historikun nga skeda</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3909"/>
+      <location filename="../src/ui/mainwindow.cc" line="3783"/>
       <source>Import error: invalid data in file</source>
       <translation>Gabim importi: skedë me të dhëna të pasakta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3913"/>
+      <location filename="../src/ui/mainwindow.cc" line="3789"/>
       <source>History import complete</source>
       <translation>Përfundoi importi i historikut</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3916"/>
-      <location filename="../src/ui/mainwindow.cc" line="4058"/>
+      <location filename="../src/ui/mainwindow.cc" line="3746"/>
+      <location filename="../src/ui/mainwindow.cc" line="3777"/>
+      <location filename="../src/ui/mainwindow.cc" line="3909"/>
       <source>Import error: </source>
       <translation>Gabim importi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3933"/>
+      <location filename="../src/ui/mainwindow.cc" line="3809"/>
       <source>Export Favorites to file</source>
       <translation>Eksporto të preferuarat në skedar</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3935"/>
+      <location filename="../src/ui/mainwindow.cc" line="3811"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>Skedarët XML (*.xml);;Të gjithë skedarët (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3954"/>
-      <location filename="../src/ui/mainwindow.cc" line="4003"/>
+      <location filename="../src/ui/mainwindow.cc" line="3833"/>
+      <location filename="../src/ui/mainwindow.cc" line="3882"/>
       <source>Favorites export complete</source>
       <translation>Eksporti i të preferuarave përfundoi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3974"/>
+      <location filename="../src/ui/mainwindow.cc" line="3849"/>
       <source>Export Favorites to file as plain list</source>
       <translation>Eksporto të preferuarat për të paraqitur si listë të thjeshtë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4023"/>
+      <location filename="../src/ui/mainwindow.cc" line="3897"/>
       <source>Import Favorites from file</source>
       <translation>Importoni të preferuarat nga skedari</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4025"/>
+      <location filename="../src/ui/mainwindow.cc" line="3899"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>Skedarët XML (*.xml);;Skedarët Txt (*.txt);;Të gjithë skedarët (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4054"/>
+      <location filename="../src/ui/mainwindow.cc" line="3929"/>
       <source>Favorites import complete</source>
       <translation>Eksporti i të preferuarave përfundoi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4060"/>
+      <location filename="../src/ui/mainwindow.cc" line="3917"/>
+      <location filename="../src/ui/mainwindow.cc" line="3923"/>
       <source>Data parsing error</source>
       <translation>Gabim në analizimin e të dhënave</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4270"/>
+      <location filename="../src/ui/mainwindow.cc" line="4136"/>
       <source>Dictionary info</source>
       <translation>Info për fjalorin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4274"/>
+      <location filename="../src/ui/mainwindow.cc" line="4140"/>
       <source>Dictionary headwords</source>
       <translation>Kryefjalët e fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4276"/>
+      <location filename="../src/ui/mainwindow.cc" line="4142"/>
       <source>Open dictionary folder</source>
       <translation>Hap dosjen e fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4282"/>
+      <location filename="../src/ui/mainwindow.cc" line="4148"/>
       <source>Edit dictionary</source>
       <translation>Editoj fjalorin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4428"/>
+      <location filename="../src/ui/mainwindow.cc" line="4293"/>
       <source>Now indexing for full-text search: </source>
       <translation>Tani indeksoni për kërkimin e tekstit të plotë: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4470"/>
+      <location filename="../src/ui/mainwindow.cc" line="4331"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Të hiqet kryefjala &quot;%1&quot; nga Të preferuarat?</translation>
     </message>
@@ -3273,169 +3238,169 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Paneli i &amp;kërkimit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="208"/>
+      <location filename="../src/ui/mainwindow.ui" line="202"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Paneli i &amp;rezultateve</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="235"/>
+      <location filename="../src/ui/mainwindow.ui" line="229"/>
       <source>Favor&amp;ites Pane</source>
       <translation>Paneli i të preferuarave</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="419"/>
+      <location filename="../src/ui/mainwindow.ui" line="413"/>
       <source>Print Pre&amp;view</source>
       <translation>Parashikoj &amp;shtypjen</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="427"/>
+      <location filename="../src/ui/mainwindow.ui" line="421"/>
       <source>&amp;Rescan Files</source>
       <translation>&amp;Riskanoj skedat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="450"/>
+      <location filename="../src/ui/mainwindow.ui" line="444"/>
       <source>&amp;New Tab</source>
       <translation>&amp;Fushë e re</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui" line="496"/>
       <source>&amp;Always on Top</source>
       <translation>&amp;Gjithmonë në krye</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="505"/>
+      <location filename="../src/ui/mainwindow.ui" line="499"/>
       <source>Always on Top</source>
       <translation>Gjithmonë në krye</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="508"/>
+      <location filename="../src/ui/mainwindow.ui" line="502"/>
       <source>Ctrl+O</source>
       <translation>Ctrl+O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="517"/>
-      <location filename="../src/ui/mainwindow.ui" line="520"/>
+      <location filename="../src/ui/mainwindow.ui" line="511"/>
+      <location filename="../src/ui/mainwindow.ui" line="514"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Butoni i menysë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="525"/>
+      <location filename="../src/ui/mainwindow.ui" line="519"/>
       <source>Search in page</source>
       <translation>Kërko në faqe</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="528"/>
+      <location filename="../src/ui/mainwindow.ui" line="522"/>
       <source>Ctrl+F</source>
       <translation>Ctrl+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="536"/>
+      <location filename="../src/ui/mainwindow.ui" line="530"/>
       <source>Full-text search</source>
       <translation>Kërkim me tekst të plotë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="539"/>
+      <location filename="../src/ui/mainwindow.ui" line="533"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="550"/>
+      <location filename="../src/ui/mainwindow.ui" line="544"/>
       <source>GoldenDict reference</source>
       <translation>Referenca GoldenDict</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="558"/>
+      <location filename="../src/ui/mainwindow.ui" line="552"/>
       <source>Show</source>
       <translation>Shfaqje</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="566"/>
+      <location filename="../src/ui/mainwindow.ui" line="560"/>
       <source>Export</source>
       <translation>Eksporto</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="571"/>
+      <location filename="../src/ui/mainwindow.ui" line="565"/>
       <source>Import</source>
       <translation>Importi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui" line="570"/>
       <source>Add</source>
       <translation>Shtoni</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="579"/>
+      <location filename="../src/ui/mainwindow.ui" line="573"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
-      <location filename="../src/ui/mainwindow.cc" line="1871"/>
-      <location filename="../src/ui/mainwindow.cc" line="1949"/>
-      <location filename="../src/ui/mainwindow.cc" line="4477"/>
+      <location filename="../src/ui/mainwindow.cc" line="1888"/>
+      <location filename="../src/ui/mainwindow.cc" line="1957"/>
+      <location filename="../src/ui/mainwindow.cc" line="4338"/>
       <source>Add current tab to Favorites</source>
       <translation>Shto skedën aktuale te Të preferuarat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="582"/>
+      <location filename="../src/ui/mainwindow.ui" line="576"/>
       <source>Ctrl+E</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="587"/>
+      <location filename="../src/ui/mainwindow.ui" line="581"/>
       <source>Export to list</source>
       <translation>Eksporto në listë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="119"/>
+      <location filename="../src/ui/mainwindow.cc" line="121"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Tregoj emrat e &amp;fjalorëve</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="120"/>
+      <location filename="../src/ui/mainwindow.cc" line="122"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>Tregoj ikonat e &amp;vogla</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="195"/>
+      <location filename="../src/ui/mainwindow.cc" line="197"/>
       <source>&amp;Navigation</source>
       <translation>&amp;Lundrimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="223"/>
+      <location filename="../src/ui/mainwindow.cc" line="225"/>
       <source>Enable Scanning</source>
       <translation>Aktivizo Skanimin</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3348"/>
+      <location filename="../src/ui/mainwindow.cc" line="3257"/>
       <source>Article, Complete (*.html)</source>
       <translation>Artikull, i plotë (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3349"/>
+      <location filename="../src/ui/mainwindow.cc" line="3258"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>Artikull, vetëm HTML (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3435"/>
+      <location filename="../src/ui/mainwindow.cc" line="3337"/>
       <source>Saving article...</source>
       <translation>Ruan artikullin...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3448"/>
+      <location filename="../src/ui/mainwindow.cc" line="3350"/>
       <source>Save article complete</source>
       <translation>Ruaj artikullin i plotë</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3499"/>
+      <location filename="../src/ui/mainwindow.cc" line="3398"/>
       <source>The main window is set to be always on top.</source>
       <translation>Dritarja kryesore qëndron gjithmonë në krye.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="262"/>
+      <location filename="../src/ui/mainwindow.ui" line="256"/>
       <source>&amp;History Pane</source>
       <translation>Paneli i &amp;historikut</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="780"/>
-      <location filename="../src/ui/mainwindow.cc" line="863"/>
+      <location filename="../src/ui/mainwindow.cc" line="773"/>
+      <location filename="../src/ui/mainwindow.cc" line="852"/>
       <source>Accessibility API is not enabled</source>
       <translation>Accessibility API është joaktiv</translation>
     </message>
@@ -3443,12 +3408,12 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
-      <location filename="../src/dict/mdx.cc" line="625"/>
+      <location filename="../src/dict/mdx.cc" line="618"/>
       <source>Dictionary file was tampered or corrupted</source>
       <translation>Skeda e fjalorit u manipulua ose u dëmtua</translation>
     </message>
     <message>
-      <location filename="../src/dict/mdx.cc" line="636"/>
+      <location filename="../src/dict/mdx.cc" line="629"/>
       <source>Failed loading article from %1, reason: %2</source>
       <translation>Dështoi hapja e artikullit nga %1, arsyeja: %2</translation>
     </message>
@@ -3456,7 +3421,7 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <location filename="../src/dict/mediawiki.cc" line="485"/>
+      <location filename="../src/dict/mediawiki.cc" line="486"/>
       <source>XML parse error: %1 at %2,%3</source>
       <translation>Gabim në analizimin e XML: %1 në %2,%3</translation>
     </message>
@@ -3472,22 +3437,22 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
   <context>
     <name>MediaWikisModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="481"/>
+      <location filename="../src/dict/sources.cc" line="482"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="483"/>
+      <location filename="../src/dict/sources.cc" line="484"/>
       <source>Address</source>
       <translation>Аdresa</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="479"/>
+      <location filename="../src/dict/sources.cc" line="480"/>
       <source>Enabled</source>
       <translation>Aktiv</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="485"/>
+      <location filename="../src/dict/sources.cc" line="486"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -3563,22 +3528,22 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Përshkrimi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="263"/>
+      <location filename="../src/ui/orderandprops.cc" line="267"/>
       <source>Sort by name</source>
       <translation>Radhit sipas emrit</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="265"/>
+      <location filename="../src/ui/orderandprops.cc" line="269"/>
       <source>Sort by languages</source>
       <translation>Radhit sipas gjuhëve</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="259"/>
+      <location filename="../src/ui/orderandprops.cc" line="263"/>
       <source>Dictionary headwords</source>
       <translation>Kryefjalët e fjalorit</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.cc" line="288"/>
+      <location filename="../src/ui/orderandprops.cc" line="292"/>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Fjalorë aktivë: %1, joaktiv: %2</translation>
     </message>
@@ -3586,12 +3551,12 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
   <context>
     <name>PathsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1183"/>
+      <location filename="../src/dict/sources.cc" line="1184"/>
       <source>Path</source>
       <translation>Shtegu</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1185"/>
+      <location filename="../src/dict/sources.cc" line="1186"/>
       <source>Recursive</source>
       <translation>Brendësia</translation>
     </message>
@@ -3629,14 +3594,14 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Aktivizoj ikonën në shiritin e sistemit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="904"/>
-      <location filename="../src/ui/preferences.ui" line="984"/>
+      <location filename="../src/ui/preferences.ui" line="933"/>
+      <location filename="../src/ui/preferences.ui" line="1013"/>
       <source>Host:</source>
       <translation>Hosti:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="914"/>
-      <location filename="../src/ui/preferences.ui" line="1001"/>
+      <location filename="../src/ui/preferences.ui" line="943"/>
+      <location filename="../src/ui/preferences.ui" line="1030"/>
       <source>Port:</source>
       <translation>Porti:</translation>
     </message>
@@ -3646,12 +3611,12 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Ndërrimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="891"/>
+      <location filename="../src/ui/preferences.ui" line="920"/>
       <source>Type:</source>
       <translation>Lloji:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="935"/>
+      <location filename="../src/ui/preferences.ui" line="964"/>
       <source>User:</source>
       <translation>Përdoruesi:</translation>
     </message>
@@ -3669,12 +3634,12 @@ switching to them.</source>
 Por, kur e ndez këtë, fushat e reja hapen pa kaluar te to.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="854"/>
+      <location filename="../src/ui/preferences.ui" line="883"/>
       <source>Use proxy server</source>
       <translation>Përdor server proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="680"/>
+      <location filename="../src/ui/preferences.ui" line="709"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Përdor një tast për të përkthyer fjalën në kujtesën e kompjuterit:</translation>
     </message>
@@ -3684,7 +3649,7 @@ Por, kur e ndez këtë, fushat e reja hapen pa kaluar te to.</translation>
       <translation>Tasti Windows ose Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="763"/>
+      <location filename="../src/ui/preferences.ui" line="792"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Autoshqiptoj fjalët në dritaren kryesore</translation>
     </message>
@@ -3715,12 +3680,12 @@ the application.</source>
       <translation>Kur e ndez, dritarja kryesore e aplikacionit nuk mbyllet por do të fshehet.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="751"/>
+      <location filename="../src/ui/preferences.ui" line="780"/>
       <source>&amp;Audio</source>
       <translation>&amp;Audio</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="850"/>
+      <location filename="../src/ui/preferences.ui" line="879"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Aktivizojeni kur dëshironi të përdorni një server proxy
@@ -3742,7 +3707,7 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Hap fushat e reja në sfond</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="844"/>
+      <location filename="../src/ui/preferences.ui" line="873"/>
       <source>&amp;Network</source>
       <translation>&amp;Rrjeti</translation>
     </message>
@@ -3752,7 +3717,7 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Vetëm Ctrl djathtas</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="118"/>
+      <location filename="../src/ui/preferences.cc" line="111"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
@@ -3774,7 +3739,7 @@ in the pressed state when the word selection changes.</source>
 janë në gjendjen e shtypur.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="770"/>
+      <location filename="../src/ui/preferences.ui" line="799"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Autoshqiptoj fjalët e skanuara</translation>
     </message>
@@ -3784,7 +3749,7 @@ janë në gjendjen e shtypur.</translation>
       <translation>Hap fushat e reja pas aktuales</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="624"/>
+      <location filename="../src/ui/preferences.cc" line="560"/>
       <source>Restart the program to apply the language change.</source>
       <translation>Riniseni programin për të zbatuar ndryshimin e gjuhës.</translation>
     </message>
@@ -3794,7 +3759,7 @@ janë në gjendjen e shtypur.</translation>
       <translation>Tasti Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui" line="1231"/>
       <source>Check for new program releases periodically</source>
       <translation>Verifikoj periodikisht versionet e reja të programit</translation>
     </message>
@@ -3812,8 +3777,7 @@ asaj aktive. Përndryshe ato i shtohen më të fundit.</translation>
       <translation>Mbyll në shiritin e sistemit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="59"/>
-      <location filename="../src/ui/preferences.cc" line="60"/>
+      <location filename="../src/ui/preferences.cc" line="61"/>
       <source>System default</source>
       <translation>Standardi i sistemit</translation>
     </message>
@@ -3825,7 +3789,7 @@ to open main window and perform other tasks.</source>
 për të hapur dritaren kryesore dhe për të kryer detyra të tjera.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1195"/>
+      <location filename="../src/ui/preferences.ui" line="1224"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3841,12 +3805,12 @@ kërkon ta shkarkojë.</translation>
       <translation>Nisja</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="945"/>
+      <location filename="../src/ui/preferences.ui" line="974"/>
       <source>Password:</source>
       <translation>Fjalëkalimi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="115"/>
+      <location filename="../src/ui/preferences.cc" line="108"/>
       <source>Default</source>
       <translation>Standard</translation>
     </message>
@@ -3856,7 +3820,7 @@ kërkon ta shkarkojë.</translation>
       <translation>&amp;Grafika</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="623"/>
+      <location filename="../src/ui/preferences.cc" line="559"/>
       <source>Changing Language</source>
       <translation>Ndryshimi i Gjuhës</translation>
     </message>
@@ -3866,7 +3830,7 @@ kërkon ta shkarkojë.</translation>
       <translation>Tasti Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="653"/>
+      <location filename="../src/ui/preferences.ui" line="682"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Përdor një tast për të shfaqur a fshehur dritaren kryesore:</translation>
     </message>
@@ -3896,7 +3860,7 @@ kërkon ta shkarkojë.</translation>
       <translation>Alt djathtas</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="723"/>
+      <location filename="../src/ui/preferences.ui" line="752"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Tastet kryesore punojnë përgjithësisht në çdo program, për aq kohë sa GoldenDict vepron në sfond.</translation>
     </message>
@@ -3906,7 +3870,7 @@ kërkon ta shkarkojë.</translation>
       <translation>Ctrl djathtas</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="647"/>
+      <location filename="../src/ui/preferences.ui" line="676"/>
       <source>Hotkeys</source>
       <translation>Tastet kryesore</translation>
     </message>
@@ -3949,27 +3913,27 @@ Kur e zgjedh, programi nis gjithmonë me skanimin e jashtëm aktiv.</translation
       <translation>Injoroni zgjedhjen e vetë GoldenDict dhe ndryshimet e kujtesës</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui" line="815"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Luaj skedarë audio përmes mbështetjes së integruar audio</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="789"/>
+      <location filename="../src/ui/preferences.ui" line="818"/>
       <source>Use internal player:</source>
       <translation>Përdorni luajtësin e brendshëm:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="796"/>
+      <location filename="../src/ui/preferences.ui" line="825"/>
       <source>Choose audio back end</source>
       <translation>Zgjidhni fundin e pasëm audio</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="816"/>
+      <location filename="../src/ui/preferences.ui" line="845"/>
       <source>Enter audio player command line</source>
       <translation>Futni linjën e komandës së riprodhuesit audio</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1119"/>
+      <location filename="../src/ui/preferences.ui" line="1148"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3978,22 +3942,22 @@ përmbajtjen (imazhe, korniza) jashtë faqes që shfleton. Nëse ndonjë
 faqe shfaq probleme prej kësaj, çaktivizojeni.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1124"/>
+      <location filename="../src/ui/preferences.ui" line="1153"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Mohoj përmbajtjen nga faqet e tjera (fsheh shumicën e reklamave)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="757"/>
+      <location filename="../src/ui/preferences.ui" line="786"/>
       <source>Pronunciation</source>
       <translation>Shqiptimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui" line="809"/>
       <source>Playback</source>
       <translation>Riprodhimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="806"/>
+      <location filename="../src/ui/preferences.ui" line="835"/>
       <source>Use external program:</source>
       <translation>Përdor programin e jashtëm:</translation>
     </message>
@@ -4003,7 +3967,7 @@ faqe shfaq probleme prej kësaj, çaktivizojeni.</translation>
       <translation>Përkthej fjalën me dy klikime</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="803"/>
+      <location filename="../src/ui/preferences.ui" line="832"/>
       <source>Use any external program to play audio files</source>
       <translation>Riprodhon skedat zanore me një program tjetër</translation>
     </message>
@@ -4135,89 +4099,99 @@ megjithatë, shfaqet artikulli nga fjalori më i lartë.</translation>
       <translation>Shfaq flamurin e skanimit kur zgjidhet fjala</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="866"/>
+      <location filename="../src/ui/preferences.ui" line="629"/>
+      <source>Delay time</source>
+      <translation>Koha e vonesës</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="636"/>
+      <source> ms</source>
+      <translation> Znj</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="895"/>
       <source>System proxy</source>
       <translation>Përfaqësuesi i sistemit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui" line="902"/>
       <source>Custom proxy</source>
       <translation>Prokurë e personalizuar</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui" line="912"/>
       <source>Custom settings</source>
       <translation>Cilësimet e personalizuara</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="970"/>
+      <location filename="../src/ui/preferences.ui" line="999"/>
       <source>Anki Connect</source>
       <translation>Anki Connect</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="991"/>
+      <location filename="../src/ui/preferences.ui" line="1020"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1035"/>
+      <location filename="../src/ui/preferences.ui" line="1064"/>
       <source>Deck:</source>
       <translation>Kuvertë:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1045"/>
+      <location filename="../src/ui/preferences.ui" line="1074"/>
       <source>Model:</source>
       <translation>Modeli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1072"/>
+      <location filename="../src/ui/preferences.ui" line="1101"/>
       <source>Word</source>
       <translation>fjalë</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1079"/>
+      <location filename="../src/ui/preferences.ui" line="1108"/>
       <source>Vocabulary field...</source>
       <translation>Fusha e fjalorit...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1086"/>
+      <location filename="../src/ui/preferences.ui" line="1115"/>
       <source>Text</source>
       <translation>Teksti</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1093"/>
+      <location filename="../src/ui/preferences.ui" line="1122"/>
       <source>Definition field...</source>
       <translation>Fusha e përkufizimit...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1100"/>
+      <location filename="../src/ui/preferences.ui" line="1129"/>
       <source>Sentence</source>
       <translation>Fjali</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1107"/>
+      <location filename="../src/ui/preferences.ui" line="1136"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Fusha e fjalisë (mund të jetë bosh)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1131"/>
+      <location filename="../src/ui/preferences.ui" line="1160"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Disa faqe e njohin GoldenDict me anë të kokëve HTTP, dhe i bllokojnë kërkesat.
 Ky opsion e anashkalon problemin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1135"/>
+      <location filename="../src/ui/preferences.ui" line="1164"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Nuk identifikoj GoldenDict në kokët HTTP</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1144"/>
+      <location filename="../src/ui/preferences.ui" line="1173"/>
       <source>Maximum network cache size:</source>
       <translation>Madhësia maksimale e memories së rrjetit:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1151"/>
+      <location filename="../src/ui/preferences.ui" line="1180"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4226,159 +4200,169 @@ If set to 0 the network disk cache will be disabled.</source>
 Nëse vendoset në 0 cache-i i diskut të rrjetit do të çaktivizohet.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1156"/>
+      <location filename="../src/ui/preferences.ui" line="1185"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1169"/>
+      <location filename="../src/ui/preferences.ui" line="1198"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Kur ky opsion aktivizohet, GoldenDict
 fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui" line="1202"/>
       <source>Clear network cache on exit</source>
       <translation>Pastro memorien e rrjetit në dalje</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1227"/>
+      <location filename="../src/ui/preferences.ui" line="1256"/>
       <source>Full-text search</source>
       <translation>Kërkim me tekst të plotë</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1233"/>
+      <location filename="../src/ui/preferences.ui" line="1262"/>
       <source>Allow full-text search for:</source>
       <translation>Lejo kërkimin me tekst të plotë për:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1331"/>
+      <location filename="../src/ui/preferences.ui" line="1302"/>
+      <source>Applies only to new incoming dictionaries.</source>
+      <translation>Zbatohet vetëm për fjalorët e rinj të ardhur.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="1305"/>
+      <source>Enable positional information in the fulltext</source>
+      <translation>Aktivizo informacionin pozicional në tekstin e plotë</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui" line="1370"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Mos kërkoni në fjalorë që përmbajnë më shumë se</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1348"/>
+      <location filename="../src/ui/preferences.ui" line="1387"/>
       <source>articles (0 - unlimited)</source>
       <translation>artikuj (0 - i pakufizuar)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1391"/>
+      <location filename="../src/ui/preferences.ui" line="1430"/>
       <source>Ad&amp;vanced</source>
       <translation>Av&amp;ancuar</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1717"/>
+      <location filename="../src/ui/preferences.ui" line="1756"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Gjatë kërkimeve të njëpasnjëshme, nëse një fjalor paloset manualisht, ai do të mbetet i palosur në kërkimin tjetër</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1720"/>
+      <location filename="../src/ui/preferences.ui" line="1759"/>
       <source>Session collapse</source>
       <translation>Kolapsi i seancës</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1741"/>
+      <location filename="../src/ui/preferences.ui" line="1780"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1748"/>
+      <location filename="../src/ui/preferences.ui" line="1787"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Në një kërkim të ri, fokusoni dritaren kryesore ose kërcyese edhe nëse është e dukshme</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1511"/>
+      <location filename="../src/ui/preferences.ui" line="1550"/>
       <source>Favorites</source>
       <translation>Të preferuarat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1528"/>
+      <location filename="../src/ui/preferences.ui" line="1567"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Intervali i ruajtjes së të preferuarave. Nëse vendoset në 0 Të preferuarat do të ruhen vetëm gjatë daljes.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1560"/>
+      <location filename="../src/ui/preferences.ui" line="1599"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Aktivizoni këtë opsion për të konfirmuar çdo operacion të fshirjes së artikujve</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1563"/>
+      <location filename="../src/ui/preferences.ui" line="1602"/>
       <source>Confirmation for items deletion</source>
       <translation>Konfirmim për fshirjen e artikujve</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1634"/>
+      <location filename="../src/ui/preferences.ui" line="1673"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Aktivizo këtë opsion për të injoruar tekstin e futur në mënyrë të paarsyeshme të gjatë
 nga vendosja e mausit, përzgjedhja, clipboard ose linja e komandës</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1638"/>
+      <location filename="../src/ui/preferences.ui" line="1677"/>
       <source>Ignore input phrases longer than</source>
       <translation>Injoroni frazat hyrëse më të gjata se</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1601"/>
+      <location filename="../src/ui/preferences.ui" line="1640"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Frazat e dhëna më të gjata se kjo madhësi do të shpërfillen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1694"/>
+      <location filename="../src/ui/preferences.ui" line="1733"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Aktivizoni këtë opsion për të injoruar diakritikët gjatë kërkimit të artikujve</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1697"/>
+      <location filename="../src/ui/preferences.ui" line="1736"/>
       <source>Ignore diacritics while searching</source>
       <translation>Injoroni diakritikët gjatë kërkimit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1684"/>
+      <location filename="../src/ui/preferences.ui" line="1723"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Kur e ndez, pjesët fakultative të artikujve zgjerohen gjithmonë.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1687"/>
+      <location filename="../src/ui/preferences.ui" line="1726"/>
       <source>Expand optional &amp;parts</source>
       <translation>Zgjeroj &amp;pjesët fakultative</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1624"/>
+      <location filename="../src/ui/preferences.ui" line="1663"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Kur e ndez, artikujt e mëdhenj do të mblidhen automatikisht.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui" line="1666"/>
       <source>Collapse articles more than</source>
       <translation>Mbledh artikujt me më shumë se</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1668"/>
+      <location filename="../src/ui/preferences.ui" line="1707"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Artikujt mbi këtë përmasë do të mblidhen</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1594"/>
+      <location filename="../src/ui/preferences.ui" line="1633"/>
       <source>Ignore punctuation while searching</source>
       <translation>Injoroni shenjat e pikësimit gjatë kërkimit</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1730"/>
+      <location filename="../src/ui/preferences.ui" line="1769"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Aktivizo këtë opsion për të aktivizuar kërkimin e artikujve shtesë nëpërmjet listave sinonimike
 nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1734"/>
+      <location filename="../src/ui/preferences.ui" line="1773"/>
       <source>Extra search via synonyms</source>
       <translation>Kërkim shtesë nëpërmjet sinonimeve</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1617"/>
-      <location filename="../src/ui/preferences.ui" line="1661"/>
+      <location filename="../src/ui/preferences.ui" line="1656"/>
+      <location filename="../src/ui/preferences.ui" line="1700"/>
       <source>symbols</source>
       <translation>simbole</translation>
     </message>
@@ -4388,27 +4372,27 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Kaloj fushat me Ctrl+Tab sipas rendit MRU</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="119"/>
+      <location filename="../src/ui/preferences.cc" line="112"/>
       <source>Babylon</source>
       <translation>Babilonia</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1399"/>
+      <location filename="../src/ui/preferences.ui" line="1438"/>
       <source>History</source>
       <translation>Historiku</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1405"/>
+      <location filename="../src/ui/preferences.ui" line="1444"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Kur e ndez, depozitohet historiku i fjalëve të përkthyera.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1408"/>
+      <location filename="../src/ui/preferences.ui" line="1447"/>
       <source>Store &amp;history</source>
       <translation>Depozitoj &amp;historikun</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1588"/>
+      <location filename="../src/ui/preferences.ui" line="1627"/>
       <source>Articles</source>
       <translation>Artikujt</translation>
     </message>
@@ -4428,54 +4412,54 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Stili i shtesave:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1423"/>
+      <location filename="../src/ui/preferences.ui" line="1462"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Specifikoni numrin maksimal të njësive që ruhen në historik.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1426"/>
+      <location filename="../src/ui/preferences.ui" line="1465"/>
       <source>Maximum history size:</source>
       <translation>Masa maksimale e historikut:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1463"/>
+      <location filename="../src/ui/preferences.ui" line="1502"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Intervali i ruajtjes së historikut. Kur vendoset 0, historiku ruhet vetëm gjatë mbylljes së programit.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1469"/>
-      <location filename="../src/ui/preferences.ui" line="1531"/>
+      <location filename="../src/ui/preferences.ui" line="1508"/>
+      <location filename="../src/ui/preferences.ui" line="1570"/>
       <source>Save every</source>
       <translation>Ruaj çdo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1486"/>
-      <location filename="../src/ui/preferences.ui" line="1551"/>
+      <location filename="../src/ui/preferences.ui" line="1525"/>
+      <location filename="../src/ui/preferences.ui" line="1590"/>
       <source>minutes</source>
       <translation>minuta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="116"/>
+      <location filename="../src/ui/preferences.cc" line="109"/>
       <source>Classic</source>
       <translation>Klasike</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="117"/>
+      <location filename="../src/ui/preferences.cc" line="110"/>
       <source>Modern</source>
       <translation>Moderne</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="120"/>
+      <location filename="../src/ui/preferences.cc" line="113"/>
       <source>Lingoes</source>
       <translation>Lingoes</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="121"/>
+      <location filename="../src/ui/preferences.cc" line="114"/>
       <source>Lingoes-Blue</source>
       <translation>Lingoes Blu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="132"/>
+      <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> MB</translation>
     </message>
@@ -4483,27 +4467,27 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1091"/>
+      <location filename="../src/dict/sources.cc" line="1092"/>
       <source>Audio</source>
       <translation>Audio</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1093"/>
+      <location filename="../src/dict/sources.cc" line="1094"/>
       <source>Plain Text</source>
       <translation>Tekst i thjeshtë</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1095"/>
+      <location filename="../src/dict/sources.cc" line="1096"/>
       <source>Html</source>
       <translation>Html</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1097"/>
+      <location filename="../src/dict/sources.cc" line="1098"/>
       <source>Prefix Match</source>
       <translation>Krahasoj parashtesën</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1099"/>
+      <location filename="../src/dict/sources.cc" line="1100"/>
       <source>Unknown</source>
       <translation>E panjohur</translation>
     </message>
@@ -4511,17 +4495,17 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
   <context>
     <name>Programs::RunInstance</name>
     <message>
-      <location filename="../src/dict/programs.cc" line="182"/>
+      <location filename="../src/dict/programs.cc" line="179"/>
       <source>No program name was given.</source>
       <translation>Nuk u dha emri i programit.</translation>
     </message>
     <message>
-      <location filename="../src/dict/programs.cc" line="198"/>
+      <location filename="../src/dict/programs.cc" line="195"/>
       <source>The program has crashed.</source>
       <translation>Programi u prish.</translation>
     </message>
     <message>
-      <location filename="../src/dict/programs.cc" line="201"/>
+      <location filename="../src/dict/programs.cc" line="198"/>
       <source>The program has returned exit code %1.</source>
       <translation>Programi ktheu kodin e daljes %1.</translation>
     </message>
@@ -4529,27 +4513,27 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
   <context>
     <name>ProgramsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="999"/>
+      <location filename="../src/dict/sources.cc" line="1000"/>
       <source>Enabled</source>
       <translation>Aktiv</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1001"/>
+      <location filename="../src/dict/sources.cc" line="1002"/>
       <source>Type</source>
       <translation>Lloji</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1003"/>
+      <location filename="../src/dict/sources.cc" line="1004"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1005"/>
+      <location filename="../src/dict/sources.cc" line="1006"/>
       <source>Command Line</source>
       <translation>Vija e komandës</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1007"/>
+      <location filename="../src/dict/sources.cc" line="1008"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -4557,99 +4541,114 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
   <context>
     <name>QObject</name>
     <message>
-      <location filename="../src/dict/aard.cc" line="430"/>
-      <location filename="../src/dict/dsl.cc" line="1691"/>
+      <location filename="../src/dict/aard.cc" line="419"/>
+      <location filename="../src/dict/dsl.cc" line="1650"/>
       <source>Article loading error</source>
       <translation>Gabim në hapjen e artikullit</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="522"/>
-      <location filename="../src/dict/slob.cc" line="801"/>
+      <location filename="../src/dict/aard.cc" line="511"/>
+      <location filename="../src/dict/slob.cc" line="799"/>
       <source>Article decoding error</source>
       <translation>Gabim në deshifrimin e artikullit</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="563"/>
-      <location filename="../src/dict/bgl.cc" line="394"/>
-      <location filename="../src/dict/sdict.cc" line="685"/>
-      <location filename="../src/dict/stardict.cc" line="1102"/>
+      <location filename="../src/dict/aard.cc" line="552"/>
+      <location filename="../src/dict/bgl.cc" line="381"/>
+      <location filename="../src/dict/sdict.cc" line="671"/>
+      <location filename="../src/dict/stardict.cc" line="1101"/>
       <source>Copyright: %1%2</source>
       <translation>E drejta e autorit: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/aard.cc" line="567"/>
-      <location filename="../src/dict/sdict.cc" line="701"/>
+      <location filename="../src/dict/aard.cc" line="556"/>
+      <location filename="../src/dict/sdict.cc" line="687"/>
       <source>Version: %1%2</source>
       <translation>Versioni: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/bgl.cc" line="401"/>
-      <location filename="../src/dict/gls.cc" line="550"/>
-      <location filename="../src/dict/stardict.cc" line="1110"/>
+      <location filename="../src/dict/bgl.cc" line="388"/>
+      <location filename="../src/dict/gls.cc" line="543"/>
+      <location filename="../src/dict/stardict.cc" line="1109"/>
       <source>Author: %1%2</source>
       <translation>Autori: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/bgl.cc" line="408"/>
-      <location filename="../src/dict/stardict.cc" line="1118"/>
+      <location filename="../src/dict/bgl.cc" line="395"/>
+      <location filename="../src/dict/stardict.cc" line="1117"/>
       <source>E-mail: %1%2</source>
       <translation>E-mail: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/sdict.cc" line="653"/>
+      <location filename="../src/dict/sdict.cc" line="639"/>
       <source>Title: %1%2</source>
       <translation>Titulli: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1126"/>
+      <location filename="../src/dict/stardict.cc" line="1125"/>
       <source>Website: %1%2</source>
       <translation>Faqja e internetit: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/dict/stardict.cc" line="1134"/>
+      <location filename="../src/dict/stardict.cc" line="1133"/>
       <source>Date: %1%2</source>
       <translation>Data: %1%2</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="150"/>
+      <location filename="../src/main.cc" line="179"/>
       <source>A dictionary lookup program.</source>
       <translation>Një program kërkimi fjalori.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="153"/>
+      <location filename="../src/main.cc" line="182"/>
       <source>Word or sentence to query.</source>
       <translation>Fjalë ose fjali për të pyetur.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="157"/>
+      <location filename="../src/main.cc" line="186"/>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
       <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="161"/>
+      <location filename="../src/main.cc" line="190"/>
+      <source>Reset window state.</source>
+      <translation>Rivendos gjendjen e dritares.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="192"/>
+      <source>Disable tts.</source>
+      <translation>Çaktivizo tts.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="196"/>
       <source>Change the group of main window.</source>
       <translation>Ndryshoni grupin e dritares kryesore.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="165"/>
+      <location filename="../src/main.cc" line="200"/>
       <source>Change the group of popup.</source>
       <translation>Ndryshoni grupin e dritareve kërcyese.</translation>
     </message>
     <message>
-      <location filename="../src/main.cc" line="170"/>
+      <location filename="../src/main.cc" line="205"/>
       <source>Toggle scan popup.</source>
       <translation>Ndrysho dritaren kërcyese të skanimit.</translation>
+    </message>
+    <message>
+      <location filename="../src/main.cc" line="209"/>
+      <source>Print version and diagnosis info.</source>
+      <translation>Versioni i printuar dhe informacioni i diagnozës.</translation>
     </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1169"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1143"/>
       <source>Dictionary search/filter (Ctrl+F)</source>
       <translation>Kërkoj/filtroj fjalorët (Ctrl+F)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups_widgets.cc" line="1174"/>
+      <location filename="../src/ui/groups_widgets.cc" line="1148"/>
       <source>Clear Search</source>
       <translation>Pastroj kërkimin</translation>
     </message>
@@ -4657,22 +4656,22 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2706"/>
+      <location filename="../src/ui/articleview.cc" line="2480"/>
       <source>ERROR: %1</source>
       <translation>GABIM: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2706"/>
+      <location filename="../src/ui/articleview.cc" line="2480"/>
       <source>Resource saving error: </source>
       <translation>Gabim në ruajtjen e resursit: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2732"/>
+      <location filename="../src/ui/articleview.cc" line="2506"/>
       <source>The referenced resource failed to download.</source>
       <translation>Dështoi shkarkimi i resursit të referuar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2732"/>
+      <location filename="../src/ui/articleview.cc" line="2506"/>
       <source>WARNING: %1</source>
       <translation>KUJDES: %1</translation>
     </message>
@@ -4758,10 +4757,15 @@ që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
       <translation>Para</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.cc" line="604"/>
-      <location filename="../src/ui/scanpopup.cc" line="1000"/>
+      <location filename="../src/ui/scanpopup.cc" line="587"/>
+      <location filename="../src/ui/scanpopup.cc" line="981"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/scanpopup.cc" line="943"/>
+      <source>WARNING: %1</source>
+      <translation>PARALAJMËRIM: %1</translation>
     </message>
   </context>
   <context>
@@ -4805,17 +4809,17 @@ që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="1291"/>
+      <location filename="../src/dict/sources.cc" line="1292"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1289"/>
+      <location filename="../src/dict/sources.cc" line="1290"/>
       <source>Path</source>
       <translation>Shtegu</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="1293"/>
+      <location filename="../src/dict/sources.cc" line="1294"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -4843,9 +4847,9 @@ që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
       <translation>Nihon-shiki</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="262"/>
-      <location filename="../src/dict/sources.cc" line="286"/>
-      <location filename="../src/dict/sources.cc" line="310"/>
+      <location filename="../src/dict/sources.cc" line="263"/>
+      <location filename="../src/dict/sources.cc" line="287"/>
+      <location filename="../src/dict/sources.cc" line="311"/>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Do e hiqni faqen &lt;b&gt;%1&lt;/b&gt; nga lista?</translation>
     </message>
@@ -4865,8 +4869,8 @@ që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
       <translation>Krijoni fjalorë me disa skeda zanore duke e shtuar shtegun këtu:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="195"/>
-      <location filename="../src/dict/sources.cc" line="222"/>
+      <location filename="../src/dict/sources.cc" line="196"/>
+      <location filename="../src/dict/sources.cc" line="223"/>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Do e hiqni direktorinë &lt;b&gt;%1&lt;/b&gt; nga lista?</translation>
     </message>
@@ -5034,9 +5038,9 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
       <translation>&amp;Shtoj...</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="180"/>
-      <location filename="../src/dict/sources.cc" line="207"/>
-      <location filename="../src/dict/sources.cc" line="234"/>
+      <location filename="../src/dict/sources.cc" line="181"/>
+      <location filename="../src/dict/sources.cc" line="208"/>
+      <location filename="../src/dict/sources.cc" line="235"/>
       <source>Choose a directory</source>
       <translation>Zgjedh direktorinë</translation>
     </message>
@@ -5061,12 +5065,12 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
       <translation>Shtigjet ku do të kërkohen skedat e fjalorëve:</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="194"/>
-      <location filename="../src/dict/sources.cc" line="221"/>
-      <location filename="../src/dict/sources.cc" line="261"/>
-      <location filename="../src/dict/sources.cc" line="285"/>
-      <location filename="../src/dict/sources.cc" line="309"/>
-      <location filename="../src/dict/sources.cc" line="333"/>
+      <location filename="../src/dict/sources.cc" line="195"/>
+      <location filename="../src/dict/sources.cc" line="222"/>
+      <location filename="../src/dict/sources.cc" line="262"/>
+      <location filename="../src/dict/sources.cc" line="286"/>
+      <location filename="../src/dict/sources.cc" line="310"/>
+      <location filename="../src/dict/sources.cc" line="334"/>
       <source>Confirm removal</source>
       <translation>Miratoj heqjen</translation>
     </message>
@@ -5160,7 +5164,7 @@ të caktuara për t&apos;i përdorur.</translation>
       <translation>Përkthimi Greqisht</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="143"/>
+      <location filename="../src/dict/sources.cc" line="144"/>
       <source>(not available in portable version)</source>
       <translation>(nuk mundësohet në versionin portabël)</translation>
     </message>
@@ -5170,7 +5174,7 @@ të caktuara për t&apos;i përdorur.</translation>
       <translation>Programet</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="334"/>
+      <location filename="../src/dict/sources.cc" line="335"/>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Do e hiqni programin &lt;b&gt;%1&lt;/b&gt; nga lista?</translation>
     </message>
@@ -5187,7 +5191,7 @@ të caktuara për t&apos;i përdorur.</translation>
 %GDBIG5% për Big-5, %GDBIG5HKSCS% për Big5-HKSCS, %GDGBK% për GBK and GB18030, %GDSHIFTJIS% për Shift-JIS.</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="128"/>
+      <location filename="../src/dict/sources.cc" line="129"/>
       <source>Text to Speech</source>
       <translation>Tekst në tinguj</translation>
     </message>
@@ -5281,12 +5285,12 @@ të caktuara për t&apos;i përdorur.</translation>
   <context>
     <name>TranslateBox</name>
     <message>
-      <location filename="../src/ui/translatebox.cc" line="108"/>
+      <location filename="../src/ui/translatebox.cc" line="31"/>
       <source>Type a word or phrase to search dictionaries</source>
       <translation>Kërkoni një fjalë a frazë në fjalor</translation>
     </message>
     <message>
-      <location filename="../src/ui/translatebox.cc" line="120"/>
+      <location filename="../src/ui/translatebox.cc" line="38"/>
       <source>Drop-down</source>
       <translation>Ul poshtë</translation>
     </message>
@@ -5317,33 +5321,33 @@ të caktuara për t&apos;i përdorur.</translation>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <location filename="../src/dict/sources.cc" line="650"/>
+      <location filename="../src/dict/sources.cc" line="651"/>
       <source>Name</source>
       <translation>Emri</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="652"/>
+      <location filename="../src/dict/sources.cc" line="653"/>
       <source>Address</source>
       <translation>Adresa</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="646"/>
+      <location filename="../src/dict/sources.cc" line="647"/>
       <source>Enabled</source>
       <translation>Aktiv</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="637"/>
-      <location filename="../src/dict/sources.cc" line="670"/>
+      <location filename="../src/dict/sources.cc" line="638"/>
+      <location filename="../src/dict/sources.cc" line="671"/>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
       <translation>Fut artikullin si lidhje brenda etiketës &lt;iframe&gt;</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="648"/>
+      <location filename="../src/dict/sources.cc" line="649"/>
       <source>As link</source>
       <translation>Si lidhje</translation>
     </message>
     <message>
-      <location filename="../src/dict/sources.cc" line="654"/>
+      <location filename="../src/dict/sources.cc" line="655"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
@@ -5351,17 +5355,9 @@ të caktuara për t&apos;i përdorur.</translation>
   <context>
     <name>WordFinder</name>
     <message>
-      <location filename="../src/wordfinder.cc" line="200"/>
+      <location filename="../src/wordfinder.cc" line="194"/>
       <source>Failed to query some dictionaries.</source>
       <translation>Dështoi kërkimi në disa fjalorë.</translation>
-    </message>
-  </context>
-  <context>
-    <name>WordList</name>
-    <message>
-      <location filename="../src/wordlist.cc" line="82"/>
-      <source>WARNING: %1</source>
-      <translation>KUJDES: %1</translation>
     </message>
   </context>
 </TS>
