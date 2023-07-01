@@ -325,6 +325,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.allowZim->setChecked( !p.fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive ) );
   ui.allowEpwing->setChecked( !p.fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive ) );
   ui.allowGls->setChecked( !p.fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive ) );
+
+  ui.enablePosition->setChecked(p.fts.enablePosition);
 #ifndef MAKE_ZIM_SUPPORT
   ui.allowZim->hide();
   ui.allowSlob->hide();

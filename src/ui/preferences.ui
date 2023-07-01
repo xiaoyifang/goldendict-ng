@@ -1268,59 +1268,10 @@ download page.</string>
           <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="allowAard">
-            <property name="text">
-             <string notr="true">Aard</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="allowBGL">
-            <property name="text">
-             <string notr="true">BGL</string>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="0">
            <widget class="QCheckBox" name="allowDictD">
             <property name="text">
              <string notr="true">DictD</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="allowDSL">
-            <property name="text">
-             <string notr="true">DSL</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="allowMDict">
-            <property name="text">
-             <string notr="true">MDict</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="allowSDict">
-            <property name="text">
-             <string notr="true">SDict</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="allowSlob">
-            <property name="text">
-             <string notr="true">Slob</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="allowStardict">
-            <property name="text">
-             <string notr="true">Stardict</string>
             </property>
            </widget>
           </item>
@@ -1331,17 +1282,10 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="allowZim">
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="allowSlob">
             <property name="text">
-             <string notr="true">Zim</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="allowEpwing">
-            <property name="text">
-             <string notr="true">Epwing</string>
+             <string notr="true">Slob</string>
             </property>
            </widget>
           </item>
@@ -1352,7 +1296,73 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0" colspan="2">
+          <item row="7" column="0">
+           <widget class="QCheckBox" name="enablePosition">
+            <property name="toolTip">
+             <string>Applies only to new incoming dictionaries.</string>
+            </property>
+            <property name="text">
+             <string>Enable positional information in the fulltext</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="allowAard">
+            <property name="text">
+             <string notr="true">Aard</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="allowEpwing">
+            <property name="text">
+             <string notr="true">Epwing</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="allowMDict">
+            <property name="text">
+             <string notr="true">MDict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="allowZim">
+            <property name="text">
+             <string notr="true">Zim</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="allowStardict">
+            <property name="text">
+             <string notr="true">Stardict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="allowDSL">
+            <property name="text">
+             <string notr="true">DSL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="allowBGL">
+            <property name="text">
+             <string notr="true">BGL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="allowSDict">
+            <property name="text">
+             <string notr="true">SDict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_14">
             <item>
              <widget class="QLabel" name="label_14">

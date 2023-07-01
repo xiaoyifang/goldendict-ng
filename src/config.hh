@@ -176,6 +176,8 @@ struct FullTextSearch
   int searchMode;
   bool enabled;
 
+  bool enablePosition;
+
   quint32 maxDictionarySize;
   QByteArray dialogGeometry;
   QString disabledTypes;
