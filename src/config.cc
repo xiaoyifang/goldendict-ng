@@ -1030,8 +1030,7 @@ Class load()
       if ( !fts.namedItem( "enabled" ).isNull() )
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
 
-      if ( !fts.namedItem( "enablePosition" ).isNull() )
-      {
+      if ( !fts.namedItem( "enablePosition" ).isNull() ) {
         c.preferences.fts.enablePosition = ( fts.namedItem( "enablePosition" ).toElement().text() == "1" );
       }
 
