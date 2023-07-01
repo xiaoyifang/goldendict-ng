@@ -41,7 +41,7 @@
     <message>
       <location filename="../src/ui/about.cc" line="19"/>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Dựa trên Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>Không tìm thấy bản dịch nào cho &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; trong nhóm &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -1027,7 +1027,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="339"/>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Từ truy vấn không được để trống.</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="234"/>
@@ -1446,7 +1446,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/initializing.ui" line="99"/>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Lập chỉ mục: </translation>
     </message>
     <message>
       <location filename="../src/ui/initializing.ui" line="121"/>
@@ -1466,7 +1466,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/initializing.cc" line="28"/>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Lập chỉ mục...</translation>
     </message>
   </context>
   <context>
@@ -3043,7 +3043,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="945"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>CẢNH BÁO: %1</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="1075"/>
@@ -4102,12 +4102,12 @@ bài viết từ từ điển trên cùng sẽ được hiển thị.</translati
     <message>
       <location filename="../src/ui/preferences.ui" line="629"/>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Thời gian trì hoãn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="636"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> bệnh đa xơ cứng</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="895"/>
@@ -4230,12 +4230,12 @@ sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translati
     <message>
       <location filename="../src/ui/preferences.ui" line="1302"/>
       <source>Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Applies only to new incoming dictionaries.</translation>
+      <translation>Chỉ áp dụng cho các từ điển mới đến.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1305"/>
       <source>Enable positional information in the fulltext</source>
-      <translation type="unfinished">Enable positional information in the fulltext</translation>
+      <translation>Kích hoạt thông tin vị trí trong toàn văn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui" line="1370"/>
@@ -4613,12 +4613,12 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <location filename="../src/main.cc" line="190"/>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Đặt lại trạng thái cửa sổ.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="192"/>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Vô hiệu hóa tts.</translation>
     </message>
     <message>
       <location filename="../src/main.cc" line="196"/>
@@ -4638,7 +4638,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <location filename="../src/main.cc" line="209"/>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Phiên bản in và thông tin chẩn đoán.</translation>
     </message>
   </context>
   <context>
@@ -4766,7 +4766,7 @@ quản lý theo nhiều cách khác.</translation>
     <message>
       <location filename="../src/ui/scanpopup.cc" line="943"/>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>CẢNH BÁO: %1</translation>
     </message>
   </context>
   <context>
