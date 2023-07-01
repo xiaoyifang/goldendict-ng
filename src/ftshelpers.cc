@@ -240,7 +240,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       Xapian::Document doc;
 
       indexer.set_document( doc );
-      indexer.index_text_without_positions( articleStr.toStdString() );
+      indexer.index_text( articleStr.toStdString() );
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
       db.add_document( doc );
