@@ -2280,18 +2280,10 @@ void ArticleView::highlightFTSResults()
   //if application goes here,that means the article text must contains the search text.
   //whole word match regString will contain \b . can not match the above senario.
   //workaround ,remove \b from the regstring="(\bwatch\b)"
-  regString.remove( QRegularExpression( "\\\\b" ) );
+  regString.remove( QRegularExpression( R"(\b)" ) );
 
-  //webengine support diacritic text searching.
-  auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  //get first part of string.
-  for ( auto const & p : parts ) {
-    if ( p.startsWith( "-" ) )
-      continue;
-
-    firstAvailableText = p;
-    break;
-  }
+  //make it simple ,and do not support too much complex cases. such as wildcard etc.
+  firstAvailableText = regString;
 
   if ( firstAvailableText.isEmpty() ) {
     return;
