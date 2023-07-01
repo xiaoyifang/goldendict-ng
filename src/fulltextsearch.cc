@@ -227,7 +227,7 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
            this,
            &FullTextSearchDialog::setNewIndexingName );
 
-  ui.searchMode->addItem( tr( "Whole words" ), WholeWords );
+  ui.searchMode->addItem( tr( "Default" ), WholeWords );
   ui.searchMode->addItem( tr( "Plain text"), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
 
