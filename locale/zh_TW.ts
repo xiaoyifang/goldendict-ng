@@ -41,7 +41,7 @@
     <message>
       <location filename="../src/ui/about.cc" line="19"/>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation>基於Qt %1 (%2 %3</translation>
+      <translation>基於Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
