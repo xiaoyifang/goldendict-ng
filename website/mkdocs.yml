@@ -54,4 +54,5 @@ nav:
        - Use .clang-format: howto/how to use .clang-format to format the code.md
        - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
        - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
+       - How to update the crowdin.ts file: howto/how to update crowdin.ts file.md
   - 中文文档: index_cn.md
