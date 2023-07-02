@@ -214,34 +214,33 @@ jobs:
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
-            release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  
-            branch:               ${{ github.ref_name }}
-            commit:               ${{ steps.vars.outputs.sha_short }} 
-            Qt version:           Qt5.15.2, Qt6.X  
-            Windows built with:   msvc64,  Visual studio 2019
-            ## goldendict.exe can not be used alone 
-            if you have a previous version. replace this maybe ok. if not ,download the whole bundle.
+            #### Install instructions for Windows, macOS and Linux 
 
-            AppImage built with:  Ubuntu-20.04 ,latest gcc
-            macos built with:     macos-10.15,macos-11.0,clang_64 x86_64
-                                  Qt6.X(homebrew build)
-                                  Qt5.15.2(Intel Kind)
-            auto built by github action. use on your on risk:-)
-            **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)   
+            <https://xiaoyifang.github.io/goldendict-ng/install/>.
 
-            Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
-            [xapian](https://xapian.org/)  is enabled by default which offers 10X~20X performance 
-            ------------------------------
-            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
-            [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
-            比如：
-            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
-            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
+            #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
 
+            Qt6.X is recommended for various enhancements.
 
-            CHANGES:
+            Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
+            The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
+
+            Linux users can use AppImages.
+
+            macOs users can use `.dmg` installer.
+
+            `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
+
+            #### Build Details
+
+            AppImage: Ubuntu-20.04
+            macOS: macOS-12 and macOS-13
+            Windows: Visual studio 2019
+
+            #### Commits
+
             ${{ steps.changelog.outputs.changelog }}  
 
-            ----------------
-
+            #### Changes
+            
             ${{steps.build_changelog.outputs.changelog}}
