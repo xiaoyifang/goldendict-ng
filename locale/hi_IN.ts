@@ -4446,7 +4446,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Xapian&apos;s वाक्यांश खोज और NEAR ऑपरेटर का उपयोग करने के लिए स्थिति संबंधी जानकारी की आवश्यकता होती है, लेकिन डेटाबेस का आकार बहुत बड़ा होगा। केवल नए आने वाले शब्दकोशों पर लागू होता है।</translation>
+      <translation>Xapian की वाक्यांश खोज और NEAR ऑपरेटर का उपयोग करने के लिए स्थिति संबंधी जानकारी की आवश्यकता होती है, लेकिन डेटाबेस का आकार बहुत बड़ा होगा। केवल नए आने वाले शब्दकोशों पर लागू होता है।</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
