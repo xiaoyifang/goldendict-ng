@@ -4452,7 +4452,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Für die Verwendung der Xapian&apos;-Phrasensuche und des NEAR-Operators sind Positionsinformationen erforderlich, die Datenbankgröße ist jedoch viel größer. Gilt nur für neu eingehende Wörterbücher.</translation>
+      <translation>Für die Verwendung der Phrasensuche und des NEAR-Operators von Xapian sind Positionsinformationen erforderlich, aber die Datenbankgröße wird viel größer sein. Gilt nur für neu eingehende Wörterbücher.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
