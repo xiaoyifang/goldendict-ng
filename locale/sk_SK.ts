@@ -1033,7 +1033,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Predvolené</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4450,12 +4450,12 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Informácie o polohe sú potrebné pre vyhľadávanie fráz Xapian&apos;s a operátor NEAR, ale veľkosť databázy bude oveľa väčšia. Vzťahuje sa len na nové prichádzajúce slovníky.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Povoliť index s informáciami o polohe</translation>
     </message>
   </context>
   <context>
