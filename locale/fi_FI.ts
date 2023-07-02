@@ -1033,7 +1033,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Oletus</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4457,12 +4457,12 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Xapian&apos;s -lausehaun ja NEAR-operaattorin käyttöön tarvitaan sijaintitietoja, mutta tietokannan koko tulee olemaan paljon suurempi. Koskee vain uusia saapuvia sanakirjoja.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Ota indeksi käyttöön sijaintitiedoilla</translation>
     </message>
   </context>
   <context>
