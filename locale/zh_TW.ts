@@ -4448,7 +4448,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>使用 Xapian&apos;的短語搜索和 NEAR 運算符需要位置信息，但數據庫大小會更大。僅適用於新傳入的詞典。</translation>
+      <translation>使用Xapian的短語搜索和NEAR運算符需要位置信息，但數據庫大小會更大。 僅適用於新傳入的詞典。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
