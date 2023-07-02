@@ -4453,7 +4453,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Xapianpa frase maskananta chaymanta NEAR operadorta llamk'achinapaq posición willayta mañasqa, ichaqa willaypa tiyapuyninpa sayayninqa aswan hatun kanqa. Musuq yaykuq simi pirwakunallapaqmi.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
