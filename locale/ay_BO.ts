@@ -4611,7 +4611,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Xapian ukan frase thaqhañamp NEAR operador ukamp apnaqañatakix posición ukan yatiyawipax wakisiwa, ukampis base de datos ukan tamapax juk’amp jach’äniwa. Machaq mantanir aru pirwanakatakikiwa.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
