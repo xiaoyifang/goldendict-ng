@@ -4466,7 +4466,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Konum bilgisi Xapian&apos;s tümcecik arama ve NEAR operatörünü kullanmak için gereklidir, ancak veritabanı boyutu çok daha büyük olacaktır. Yalnızca yeni gelen sözlükler için geçerlidir.</translation>
+      <translation>Xapian'ın ifade arama ve NEAR operatörünü kullanmak için konum bilgisi gereklidir, ancak veritabanı boyutu çok daha büyük olacaktır. Yalnızca yeni gelen sözlükler için geçerlidir.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
