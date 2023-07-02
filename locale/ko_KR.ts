@@ -1033,7 +1033,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>기본</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4453,12 +4453,12 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Xapian&apos;의 구문 검색 및 NEAR 연산자를 사용하려면 위치 정보가 필요하지만 데이터베이스 크기가 훨씬 커집니다. 새로 들어오는 사전에만 적용됩니다.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>위치 정보로 인덱스 사용</translation>
     </message>
   </context>
   <context>
