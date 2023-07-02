@@ -4,37 +4,37 @@
   <context>
     <name>About</name>
     <message>
-      <location filename="../src/ui/about.ui" line="17"/>
+      <location filename="../src/ui/about.ui"/>
       <source>About</source>
       <translation>Giới thiệu</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="66"/>
+      <location filename="../src/ui/about.ui"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
       <translation>Chương trình tra từ điển Từ điển Vàng, phiên bản </translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="101"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Cấp phép theo GNU GPLv3 hoặc mới hơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="129"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy version info</source>
       <translation>Copy thông tin phiên bản</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="142"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy dictionaries list</source>
       <translation>Copy danh sách từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="168"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Credits:</source>
       <translation>Công trạng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="91"/>
+      <location filename="../src/ui/about.ui"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>Bản quyền 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
@@ -408,47 +408,47 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="20"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Conversion</source>
       <translation>Chuyển đổi tiếng Trung</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="23"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
       <translation>Cho phép chuyển đổi giữa các ký tự tiếng Trung giản thể và phồn thể</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="26"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Con&amp;version</source>
       <translation>Phiên bản&amp;Chuyển đổi tiếng Trung</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="35"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Đài Loan)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="38"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Taiwan variant)</source>
       <translation>SC đến TC (biến thể Đài Loan)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="45"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="48"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Hong Kong variant)</source>
       <translation>SC đến TC (biến thể Hồng Kông)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="55"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="58"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>TC to SC</source>
       <translation>TC sang SC</translation>
     </message>
@@ -479,22 +479,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Dialog</name>
     <message>
-      <location filename="../src/ui/authentication.ui" line="14"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Proxy authentication required</source>
       <translation>Yêu cầu xác thực proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="20"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
       <translation>Cung cấp Tài khoản và Mật khẩu truy cập proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="30"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Username:</source>
       <translation>Tài khoản:</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="40"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Password:</source>
       <translation>Mật khẩu:</translation>
     </message>
@@ -502,22 +502,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictGroupWidget</name>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Form</source>
       <translation>Mẫu</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Group icon:</source>
       <translation>Biểu tượng nhóm:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Shortcut:</source>
       <translation>Lối tắt:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Favorites folder:</source>
       <translation>Thư mục yêu thích:</translation>
     </message>
@@ -629,72 +629,72 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictHeadwords</name>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="67"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Search mode</source>
       <translation>Kiểu tìm kiếm</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="73"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Xác định cách thức chuỗi bộ lọc sẽ được thể hiện</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="80"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked on the symbols case will be take in account when filtering</source>
       <translation>Phân biệt hoa thường khi lọc</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="83"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Match case</source>
       <translation>Khớp hoa thường</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="93"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Exports headwords to file</source>
       <translation>Trích xuất danh sách từ ra tệp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="96"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Export</source>
       <translation>Trích xuất</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="119"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Help</source>
       <translation>Trợ giúp</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="129"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>OK</source>
       <translation>ĐƯỢC RỒI</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="35"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Press this button to apply filter to headwords list</source>
       <translation>Áp dụng kiểu lọc danh sách từ</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="38"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Apply</source>
       <translation>Áp dụng</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="22"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
       <translation>Bộ lọc sẽ được áp dụng ngay vào danh sách từ</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="25"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Auto apply</source>
       <translation>Tự động áp dụng</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="58"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter:</source>
       <translation>Bộ lọc:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="51"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
       <translation>Chuỗi bộ lọc (chuỗi cố định, ký tự đại diện hoặc biểu thức chính quy)</translation>
     </message>
@@ -763,52 +763,52 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="83"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total articles:</source>
       <translation>Tổng số bài viết:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="52"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates from:</source>
       <translation>Dịch từ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="59"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total words:</source>
       <translation>Tổng số từ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="66"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates to:</source>
       <translation>Dịch sang:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="36"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Open folder</source>
       <translation>Mở thư mục</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="76"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Edit dictionary</source>
       <translation>Chỉnh sửa từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="130"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Tệp chứa từ điển này:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="174"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Description:</source>
       <translation>Mô tả:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="196"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Show all unique dictionary headwords</source>
       <translation>Hiện tất cả danh sách từ của từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="199"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Headwords</source>
       <translation>Danh sách từ</translation>
     </message>
@@ -945,7 +945,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Từ đ&amp;iển</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.ui" line="14"/>
+      <location filename="../src/ui/editdictionaries.ui"/>
       <source>Dictionaries</source>
       <translation>Từ điển</translation>
     </message>
@@ -1010,11 +1010,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tìm toàn văn</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="230"/>
-      <source>Whole words</source>
-      <translation>Toàn bộ từ</translation>
-    </message>
-    <message>
       <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Văn bản thuần</translation>
@@ -1033,6 +1028,11 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>hỗ trợ cú pháp tìm kiếm xapian, chẳng hạn như AND OR +/-, v.v.</translation>
+    </message>
+    <message>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
+      <source>Default</source>
+      <translation>Mặc định</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1148,53 +1148,52 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Search</source>
       <translation>Tìm</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="37"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Mode:</source>
       <translation>Kiểu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Articles found:</source>
       <translation>Số bài viết tìm thấy:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Available dictionaries in group:</source>
       <translation>Từ điển có trong nhóm:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Wait for indexing:</source>
       <translation>Chờ chỉ mục:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Help</source>
       <translation>Trợ giúp</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Total:</source>
       <translation>Tổng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Indexed:</source>
       <translation>Đã chỉ mục:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Now indexing: None</source>
       <translation>Đang chỉ mục: Không</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Cancel</source>
       <translation>Hủy bỏ</translation>
     </message>
@@ -1226,27 +1225,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Groups</name>
     <message>
-      <location filename="../src/ui/groups.ui" line="92"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&lt;</source>
       <translation>&lt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="67"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="95"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Del</source>
       <translation>Del</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="70"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Ins</source>
       <translation>trong</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="133"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Tab 2</source>
       <translation>Thẻ 2</translation>
     </message>
@@ -1286,12 +1285,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Đặt một tên mới cho nhóm:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="22"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Dictionaries available:</source>
       <translation>Các từ điển đã có:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="146"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Add group</source>
       <translation>Thê&amp;m nhóm</translation>
     </message>
@@ -1301,42 +1300,42 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thêm nhóm</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="143"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create new dictionary group</source>
       <translation>Tạo một nhóm từ điển mới</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="203"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Languages</source>
       <translation>Nhóm theo ngôn ngữ</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="210"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
       <translation>Tạo các nhóm dựa trên thư mục.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="213"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Folders</source>
       <translation>Nhóm theo thư mục</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="220"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Metadata</source>
       <translation>Nhóm theo siêu dữ liệu</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="244"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Sử dụng chuột kéo &amp; thả các từ điển vào nhóm, khỏi nhóm và sắp sếp thứ tự trong nhóm.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Rename current dictionary group</source>
       <translation>Đổi tên nhóm từ điển hiện tại</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove current dictionary group</source>
       <translation>Xóa nhóm hiện tại</translation>
     </message>
@@ -1346,43 +1345,43 @@ between classic and school orthography in cyrillic)</source>
       <translation>Đặt tên cho nhóm mới:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui"/>
       <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Xóa hết nhóm</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="89"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Xóa những từ điển đã chọn ra khỏi nhóm (Del)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="64"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Add selected dictionaries to group (Ins)</source>
       <translation>Thêm những từ điển đã chọn vào nhóm (Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Remove group</source>
       <translation>&amp;Xóa nhóm</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="119"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Groups:</source>
       <translation>Nhóm:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Re&amp;name group</source>
       <translation>Đổi tên &amp;nhóm</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove all dictionary groups</source>
       <translation>Xóa hết các nhóm từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="200"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create language-based groups</source>
       <translation>Tạo các nhóm dựa-trên-ngôn-ngữ</translation>
     </message>
@@ -1444,17 +1443,17 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="99"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Indexing: </source>
       <translation>Lập chỉ mục: </translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="121"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Dictionary Name</source>
       <translation>Tên Từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="23"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>Từ điển Vàng - Đang khởi chạy</translation>
     </message>
@@ -2704,27 +2703,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="547"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="143"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favo&amp;rites</source>
       <translation>&amp;yêu thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="293"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="308"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
@@ -2744,27 +2743,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>%1 từ điển, %2 bài viết, %3 từ</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="95"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Edit</source>
       <translation>&amp;Biên tập</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="78"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;File</source>
       <translation>&amp;Tệp</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="102"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Help</source>
       <translation>&amp;Giúp đỡ</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="136"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search</source>
       <translation>Tìm kiếm</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>Th&amp;oát</translation>
@@ -2775,12 +2774,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Lỗi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="338"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Quit from application</source>
       <translation>Thoát khỏi ứng dụng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="357"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Close To Tray</source>
       <translation>Đóng &amp;xuống khay hệ thống</translation>
     </message>
@@ -2795,27 +2794,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>Phóng to</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="290"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Dictionaries...</source>
       <translation>&amp;Từ điển...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="324"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;About</source>
       <translation>&amp;Giới thiệu</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="349"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Forum</source>
       <translation>&amp;Diễn đàn</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="394"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Print</source>
       <translation>&amp;In</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="376"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Save Article</source>
       <translation>&amp;Lưu Bài viết</translation>
     </message>
@@ -2825,27 +2824,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>Lưu Bài viết như</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="397"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+P</source>
       <translation>Ctrl+P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="360"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Minimizes the window to tray</source>
       <translation>Thu gọn cửa sổ xuống khay hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="405"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Page Set&amp;up</source>
       <translation>&amp;Thiết lập Trang</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="316"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Homepage</source>
       <translation>T&amp;rang chủ</translation>
     </message>
@@ -2865,7 +2864,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Hiện cử&amp;a sổ chính</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="327"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>About GoldenDict-ng</source>
       <translation>Về Từ điển Vàng</translation>
     </message>
@@ -2895,12 +2894,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Phiên bản &lt;b&gt;%1&lt;/b&gt; của Từ điển Vàng đã sẵn sàng để tải về.&lt;br&gt;Nhấn &lt;b&gt;Tải về&lt;/b&gt; để tới trang tải.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl+F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="424"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl+F5</translation>
     </message>
@@ -2915,12 +2914,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>(chưa đặt tên)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="305"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Preferences...</source>
       <translation>Tùy thí&amp;ch...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="46"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Chào mừng!</translation>
@@ -2931,7 +2930,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Phát âm (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="379"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Save Article</source>
       <translation>Lưu Bài viết</translation>
     </message>
@@ -2956,22 +2955,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>Không có máy in. Hãy cài máy in trước.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="115"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;View</source>
       <translation>&amp;Hiển thị</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="126"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>H&amp;istory</source>
       <translation>&amp;Lược sử</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="432"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Clear</source>
       <translation>Xóa sạ&amp;ch</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="119"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Zoom</source>
       <translation>Thu &amp;Phóng</translation>
     </message>
@@ -3016,12 +3015,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thẻ mới</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="447"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+T</source>
       <translation>Ctrl+T</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="458"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Configuration Folder</source>
       <translation>Thư mục &amp;cấu hình</translation>
     </message>
@@ -3082,14 +3081,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Ctrl+M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="3625"/>
       <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>&amp;Hiện</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="477"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Export</source>
       <translation>&amp;Xuất</translation>
     </message>
@@ -3129,12 +3128,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Lỗi trích xuất: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="469"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+H</source>
       <translation>Ctrl+H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="485"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Import</source>
       <translation>Nhậ&amp;p</translation>
     </message>
@@ -3233,104 +3232,103 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Xóa tiêu đề &quot;%1&quot; khỏi Mục ưa thích?</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="162"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Search Pane</source>
       <translation>Ô Tìm &amp;kiếm</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="202"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Ô Điều hướng Kết &amp;quả</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="229"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favor&amp;ites Pane</source>
       <translation>Ngăn&amp;Ưa thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="413"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Print Pre&amp;view</source>
       <translation>X&amp;em trước khi In</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="421"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Rescan Files</source>
       <translation>Q&amp;uét lại các tệp</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="444"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;New Tab</source>
       <translation>Thẻ &amp;mới</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="496"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Always on Top</source>
       <translation>&amp;Luôn hiện</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="499"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Always on Top</source>
       <translation>Luôn hiện</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+O</source>
       <translation>Ctrl+O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="511"/>
-      <location filename="../src/ui/mainwindow.ui" line="514"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Nút Trình đơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="519"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search in page</source>
       <translation>Tìm trong trang</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="522"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F</source>
       <translation>Ctrl+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="530"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Full-text search</source>
       <translation>Tìm toàn văn</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="533"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="544"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>GoldenDict reference</source>
       <translation>Trợ giúp Từ điển Vàng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="552"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Show</source>
       <translation>Trình diễn</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="560"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export</source>
       <translation>Trích xuất</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="565"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Import</source>
       <translation>Nhập khẩu</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="570"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Add</source>
       <translation>Thêm vào</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="573"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
       <location filename="../src/ui/mainwindow.cc" line="1888"/>
       <location filename="../src/ui/mainwindow.cc" line="1957"/>
@@ -3339,12 +3337,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Thêm tab hiện tại vào Mục ưa thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+E</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="581"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export to list</source>
       <translation>Xuất sang danh sách</translation>
     </message>
@@ -3394,7 +3392,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Cửa sổ chính luôn hiện trên các trình khác.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="256"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;History Pane</source>
       <translation>Thanh Lược &amp;sử</translation>
     </message>
@@ -3468,62 +3466,62 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>OrderAndProps</name>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="14"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Form</source>
       <translation>Mẫu</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="53"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>Các từ điển không hoạt động (đã vô hiệu hoá):</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="75"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Name:</source>
       <translation>Tên:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="105"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total articles:</source>
       <translation>Tổng số bài viết:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="129"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates from:</source>
       <translation>Dịch từ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="136"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates to:</source>
       <translation>Dịch sang:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="112"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total words:</source>
       <translation>Tổng số từ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="251"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Điều chỉnh thứ tự bằng cách kéo và thả các từ điển để di chuyển vị trí. Thả vào ô không hoạt động để vô hiệu hoá từ điển.</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="37"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary order:</source>
       <translation>Sắp xếp Từ điển:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="208"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Tệp chứa từ điển này:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="67"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary information</source>
       <translation>Thông tin từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="165"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Description:</source>
       <translation>Mô tả:</translation>
     </message>
@@ -3564,69 +3562,67 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="495"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt</source>
       <translation>thay thế</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="85"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start to system tray</source>
       <translation>Khởi động xuống khay hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="552"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift only</source>
       <translation>Phím Shift trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="505"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl</source>
       <translation>Điều khiển</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="565"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Win/Meta</source>
       <translation>Thắng/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable system tray icon</source>
       <translation>Bật biểu tượng trên khay hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="933"/>
-      <location filename="../src/ui/preferences.ui" line="1013"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Host:</source>
       <translation>Máy chủ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="943"/>
-      <location filename="../src/ui/preferences.ui" line="1030"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Port:</source>
       <translation>Cổng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="525"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift</source>
       <translation>Sự thay đổi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="920"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Type:</source>
       <translation>Kiểu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="964"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>User:</source>
       <translation>Người dùng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="371"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Quét Popup</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="295"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3635,85 +3631,85 @@ switching to them.</source>
 không cần chuyển ngay sang chúng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use proxy server</source>
       <translation>Sử dụng máy chủ proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="709"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Sử dụng phím tắt sau đây để dịch từ clipboard:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="562"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Windows key or Meta key</source>
       <translation>Phím Windows hoặc phím Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="792"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Tự động phát âm trong cửa sổ chính</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="191"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with system</source>
       <translation>Khởi động cùng hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="512"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt only</source>
       <translation>Phím Alt trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="289"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Tabbed browsing</source>
       <translation>Duyệt theo thẻ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="482"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift only</source>
       <translation>Phím Shift phải</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="92"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Ứng dụng sẽ thu gọn xuống khay hệ thống khi đóng cửa sổ chính.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Audio</source>
       <translation>Âm th&amp;anh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="879"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Bật nếu bạn muốn sử dụng một máy chủ proxy
 cho tất cả các yêu cầu mạng của chương trình.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="201"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Interface language:</source>
       <translation>Ngôn ngữ giao diện:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="472"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl only</source>
       <translation>Phím Ctrl trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="300"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs in background</source>
       <translation>Mở thẻ mới dưới nền</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Network</source>
       <translation>Mạ&amp;ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="542"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl only</source>
       <translation>Phím Ctrl phải</translation>
     </message>
@@ -3723,28 +3719,28 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
       <translation>linh vo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="485"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift</source>
       <translation>Shift phải</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="555"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift</source>
       <translation>Shift trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="420"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Khi chọn từ cần tra nghĩa, nhấn phím tắt đã chọn để hiện popup.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="799"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Tự động phát âm trong quét popup</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="312"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs after the current one</source>
       <translation>Mở thẻ mới ngay sau thẻ hiện tại</translation>
     </message>
@@ -3754,17 +3750,17 @@ in the pressed state when the word selection changes.</source>
       <translation>Khởi động lại chương trình để áp dụng thay đổi ngôn ngữ.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="492"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt key</source>
       <translation>Phím Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1231"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Check for new program releases periodically</source>
       <translation>Kiểm tra định kỳ phiên bản mới</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3773,7 +3769,7 @@ thẻ hiện tại (thẻ đang mở). Nếu không chúng sẽ được
 thêm vào sau cùng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="96"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Close to system tray</source>
       <translation>Đóng xuống khay hệ thống</translation>
     </message>
@@ -3783,14 +3779,14 @@ thêm vào sau cùng.</translation>
       <translation>Mặc định hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="59"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Biểu tượng Từ điển Vàng sẽ hiện trên khay hệ thống dùng để mở cửa sổ chính
 và thực hiện một số tác vụ khác.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1224"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3800,12 +3796,12 @@ download page.</source>
  Nếu có, chương trình sẽ thông báo và gợi ý mở trang tải về.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="182"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Startup</source>
       <translation>Khởi động</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="974"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Password:</source>
       <translation>Mật khẩu:</translation>
     </message>
@@ -3815,7 +3811,7 @@ download page.</source>
       <translation>Mặc định</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="50"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Interface</source>
       <translation>G&amp;iao diện</translation>
     </message>
@@ -3825,115 +3821,115 @@ download page.</source>
       <translation>Thay đổi ngôn ngữ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl key</source>
       <translation>Phím Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="682"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Sử dụng phím tắt sau đây để ẩn hiện cửa sổ chính:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="515"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt</source>
       <translation>Alt trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="532"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt only</source>
       <translation>Phím Alt phải</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="14"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Preferences</source>
       <translation>Tùy thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="475"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl</source>
       <translation>Ctrl trái</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="535"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt</source>
       <translation>Alt phải</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="752"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Phím tắt hoạt động toàn cục từ bất kỳ chương trình nào hay trong ngữ cảnh nào khi Từ điển Vàng đang chạy nền.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="545"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl</source>
       <translation>Ctrl phải</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="676"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hotkeys</source>
       <translation>Phím tắt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="381"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with scan popup turned on</source>
       <translation>Khởi động với quét popup được bật</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="81"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Khi khởi chạy, ứng dụng sẽ thu gọn xuống khay hệ thống mà không hiện cửa sổ chính.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="522"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift key</source>
       <translation>Phím Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="188"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>Tự động khởi chạy Từ điển Vàng sau khi hệ điều hành khởi động.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="377"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Chọn bật chế độ quét popup mặc định. Nếu chọn, chương trình sẽ khởi động
 với tính năng quét popup được bật.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="616"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict thay đổi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="619"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Bỏ qua lựa chọn riêng của GoldenDict và thay đổi khay nhớ tạm</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Phát các tệp âm thanh thông qua hỗ trợ âm thanh tích hợp</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="818"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use internal player:</source>
       <translation>Sử dụng trình phát nội bộ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="825"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Choose audio back end</source>
       <translation>Chọn đầu cuối âm thanh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="845"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enter audio player command line</source>
       <translation>Nhập dòng lệnh trình phát âm thanh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1148"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3942,84 +3938,84 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
 đang xem. Nếu một vài trang bị lỗi bởi tùy chọn này, hãy thử tắt đi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1153"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Không cho phép tải nội dung từ các trang khác (tắt các quảng cáo)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Pronunciation</source>
       <translation>Phát âm</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="809"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Playback</source>
       <translation>Phát lại</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="835"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use external program:</source>
       <translation>Sử dụng chương trình ngoài:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="282"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Double-click translates the word clicked</source>
       <translation>Nhấp đúp chuột sẽ dịch từ được chọn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use any external program to play audio files</source>
       <translation>Sử dụng bất cứ chương trình ngoài nào để phát tệp âm thanh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="106"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Mặc định, nhấn phím ESC dùng để chuyển vào ô tìm kiếm.
 Tuỳ chọn này sẽ ẩn cửa sổ chính khi nhấn phím ESC.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>ESC key hides main window</source>
       <translation>Nhấn phím ESC để ẩn cửa sổ chính</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="319"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Ẩn thẻ trên thanh thẻ chính nếu chỉ duy nhất một thẻ được mở.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="322"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hide single tab</source>
       <translation>Ẩn thẻ đơn nhất</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="141"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Điều chỉnh giá trị này để tránh các trình đơn ngữ cảnh dài.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="144"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Trình đơn ngữ cảnh các từ điển giới hạn:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="388"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Hiện từ đã dịch trên cửa sổ chính thay vì cửa sổ popup</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="391"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window</source>
       <translation>Hiện từ đã dịch trên cửa sổ chính</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="606"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Hiển thị cửa sổ cờ trước khi hiển thị cửa sổ bật lên, nhấp vào cờ để hiển thị cửa sổ bật lên. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="117"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4030,169 +4026,169 @@ cuộn đến bài viết từ cùng một từ điển. Tuy nhiên, khi tắt t
 bài viết từ từ điển trên cùng sẽ được hiển thị.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="123"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically scroll to target article</source>
       <translation>Tự động cuộn đến bài viết mục tiêu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="208"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dictionary Font: </source>
       <translation>Phông chữ từ điển: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="275"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>set the fallback font family for dictionary</source>
       <translation>đặt họ phông chữ dự phòng cho từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="344"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Article Display style:</source>
       <translation>Kiểu hiển thị bài viết:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="230"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the UI to dark.</source>
       <translation>Chuyển giao diện người dùng sang màu tối.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="233"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Mode</source>
       <translation>Chế độ tối</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="240"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the article display style to dark.</source>
       <translation>Chuyển kiểu hiển thị bài viết thành tối.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="243"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Reader Mode</source>
       <translation>Chế độ đầu đọc tối</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="329"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>MRU order: Most recently used order.</source>
       <translation>Thứ tự MRU: Thứ tự được sử dụng gần đây nhất.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="398"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Theo dõi các thay đổi trong khay nhớ tạm khi tính năng Quét được bật. Để ý! Bạn phải luôn kích hoạt tính năng này trừ khi bạn đang sử dụng Linux.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="401"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Clipboard change</source>
       <translation>Theo dõi thay đổi Clipboard</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="408"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Selection change</source>
       <translation>Theo dõi thay đổi lựa chọn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Chỉ giải quyết lựa chọn khi tất cả các phím đã chọn được nhấn:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="609"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show scan flag when word is selected</source>
       <translation>Hiển thị cờ quét khi từ được chọn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="629"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Delay time</source>
       <translation>Thời gian trì hoãn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="636"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
       <translation> bệnh đa xơ cứng</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="895"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>System proxy</source>
       <translation>Proxy của hệ thống</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="902"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom proxy</source>
       <translation>Proxy tuỳ chỉnh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="912"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom settings</source>
       <translation>Thiết lập tuỳ chỉnh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="999"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Anki Connect</source>
       <translation>Kết nối anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1020"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1064"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Deck:</source>
       <translation>Bộ bài:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1074"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Model:</source>
       <translation>Người mẫu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1101"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Word</source>
       <translation>Từ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1108"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Vocabulary field...</source>
       <translation>Trường từ vựng...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1115"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Text</source>
       <translation>Chữ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1122"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Definition field...</source>
       <translation>Trường định nghĩa...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1129"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence</source>
       <translation>Câu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1136"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Trường câu (có thể để trống)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1160"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Một vài trang mạng nhận ra Từ điển Vàng thông qua phần đầu giao thức HTTP
 và chặn truy vấn. Bật tính năng này để không chèn định danh vào truy vấn HTTP.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1164"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Không định danh Từ điển Vàng trong phần đầu giao thức HTTP</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum network cache size:</source>
       <translation>Kích thước bộ đệm mạng tối đa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1180"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4201,174 +4197,163 @@ If set to 0 the network disk cache will be disabled.</source>
 Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1185"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1198"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Khi tùy chọn này được bật, GoldenDict
 sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Clear network cache on exit</source>
       <translation>Xóa bộ đệm mạng khi thoát</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1256"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Full-text search</source>
       <translation>Tìm toàn văn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1262"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Allow full-text search for:</source>
       <translation>Các dạng cho phép tìm toàn văn:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1302"/>
-      <source>Applies only to new incoming dictionaries.</source>
-      <translation>Chỉ áp dụng cho các từ điển mới đến.</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1305"/>
-      <source>Enable positional information in the fulltext</source>
-      <translation>Kích hoạt thông tin vị trí trong toàn văn</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1370"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Không tìm trong từ điển chứa nhiều hơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1387"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>articles (0 - unlimited)</source>
       <translation>bài viết (0 - không giới hạn)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1430"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ad&amp;vanced</source>
       <translation>&amp;Nâng cao</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1756"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Trong các lần tìm kiếm liên tiếp, nếu một từ điển được thu gọn bằng cách thủ công, nó sẽ vẫn được thu gọn trong lần tìm kiếm tiếp theo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1759"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Session collapse</source>
       <translation>Thu gọn phiên</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1787"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó hiển thị</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites</source>
       <translation>yêu thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1567"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Khoảng thời gian lưu yêu thích. Nếu được đặt thành 0 Mục ưa thích sẽ chỉ được lưu trong khi thoát.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Bật tùy chọn này để xác nhận mọi thao tác xóa mục</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1602"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Confirmation for items deletion</source>
       <translation>Xác nhận xóa mục</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1673"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Bật tùy chọn này để bỏ qua văn bản đầu vào dài bất hợp lý
 khi di chuột qua, lựa chọn, khay nhớ tạm hoặc dòng lệnh</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1677"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore input phrases longer than</source>
       <translation>Bỏ qua các cụm từ đầu vào dài hơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1640"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Các cụm từ nhập dài hơn kích thước này sẽ bị bỏ qua</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1733"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Bật tùy chọn này để bỏ qua dấu phụ khi tìm kiếm bài viết</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1736"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore diacritics while searching</source>
       <translation>Bỏ qua dấu phụ khi tìm kiếm</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1723"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Luôn mở rộng phần tuỳ chọn của bài viết</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1726"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Expand optional &amp;parts</source>
       <translation>Mở rộng phần tuỳ &amp;chọn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1663"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Tự động thu gọn các bài viết dài</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Collapse articles more than</source>
       <translation>Thu gọn bài viết dài hơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1707"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Bài viết dài hơn cỡ này sẽ được thu gọn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1633"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore punctuation while searching</source>
       <translation>Bỏ qua dấu câu khi tìm kiếm</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1769"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Bật tùy chọn này để cho phép tìm kiếm bài viết bổ sung thông qua danh sách từ đồng nghĩa
 từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1773"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Extra search via synonyms</source>
       <translation>Tìm kiếm bổ sung thông qua các từ đồng nghĩa</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1656"/>
-      <location filename="../src/ui/preferences.ui" line="1700"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>symbols</source>
       <translation>ký tự</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="332"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab điều hướng các thẻ theo trình tự MRU</translation>
     </message>
@@ -4378,64 +4363,62 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Ba-by-lôn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1438"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History</source>
       <translation>Lược sử</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1444"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Lưu lược sử các từ đã tra</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1447"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Store &amp;history</source>
       <translation>Lưu &amp;Lược sử</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles</source>
       <translation>Bài viết</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="252"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Chọn từ bằng cách nhấp chuột đơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="255"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select word by single click</source>
       <translation>Chọn từ với nhấp chuột đơn</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="354"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Add-on style:</source>
       <translation>Kiểu bổ sung:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1462"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Xác định tối đa số mục lưu trong lược sử.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1465"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum history size:</source>
       <translation>Số lược sử tối đa:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Tần suất lưu lược sử. Nếu đặt giá trị 0, lược sử sẽ được lưu khi thoát chương trình.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1508"/>
-      <location filename="../src/ui/preferences.ui" line="1570"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Save every</source>
       <translation>Lưu mỗi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1525"/>
-      <location filename="../src/ui/preferences.ui" line="1590"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>minutes</source>
       <translation>phút</translation>
     </message>
@@ -4463,6 +4446,16 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> MB</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
+      <translation>Cần có thông tin vị trí để sử dụng tìm kiếm theo cụm từ của Xapian và toán tử NEAR, nhưng kích thước cơ sở dữ liệu sẽ lớn hơn nhiều. Chỉ áp dụng cho các từ điển mới đến.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Enable index with positional information</source>
+      <translation>Bật chỉ mục với thông tin vị trí</translation>
     </message>
   </context>
   <context>
@@ -4543,7 +4536,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="419"/>
-      <location filename="../src/dict/dsl.cc" line="1650"/>
+      <location filename="../src/dict/dsl.cc" line="1671"/>
       <source>Article loading error</source>
       <translation>Lỗi nạp bài viết</translation>
     </message>
@@ -4657,22 +4650,22 @@ từ các từ điển Stardict, Babylon và GLS</translation>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>ERROR: %1</source>
       <translation>LỖI: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>Resource saving error: </source>
       <translation>Nguồn lưu lỗi: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>The referenced resource failed to download.</source>
       <translation>Nguồn tham chiếu lỗi tải xuống.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>WARNING: %1</source>
       <translation>CẢNH BÁO: %1</translation>
     </message>
@@ -4701,59 +4694,59 @@ từ các từ điển Stardict, Babylon và GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="142"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+S</source>
       <translation>Alt+S</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="14"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Dialog</source>
       <translation>Hộp thoại</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="135"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Phát âm (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="166"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Thêm từ vào Mục ưa thích (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="193"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Ẩn/Hiện thanh Từ điển</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="213"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Always stay on top of all other windows</source>
       <translation>Luôn ở trên cùng của tất cả các cửa sổ khác</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="230"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Đính cửa sổ trên màn hình, có thể thay đổi kích thước hay
 quản lý theo nhiều cách khác.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="152"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Hiện từ đã tra trên cửa sổ chính (Atl+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="159"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+W</source>
       <translation>Atl+W</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="113"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Back</source>
       <translation>Trở lại</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="124"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Forward</source>
       <translation>Tiếp tục</translation>
     </message>
@@ -4828,22 +4821,22 @@ quản lý theo nhiều cách khác.</translation>
   <context>
     <name>Sources</name>
     <message>
-      <location filename="../src/ui/sources.ui" line="40"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Files</source>
       <translation>Tệp</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="813"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana</source>
       <translation>Hiragana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="753"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Systems:</source>
       <translation>Hệ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="780"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Nihon-shiki</source>
       <translation>Nihon-shiki</translation>
     </message>
@@ -4855,17 +4848,17 @@ quản lý theo nhiều cách khác.</translation>
       <translation>Xóa bỏ trang &lt;b&gt;%1&lt;/b&gt; khỏi danh sách?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="227"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia</source>
       <translation>Wikipedia</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="820"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana Japanese syllabary</source>
       <translation>Bảng chữ cái tiếng Nhật Katakana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="109"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
       <translation>Thêm đường dẫn chứa các tệp âm thanh để tạo từ điển âm thanh:</translation>
     </message>
@@ -4876,12 +4869,12 @@ quản lý theo nhiều cách khác.</translation>
       <translation>Xóa bỏ thư mục &lt;b&gt;%1&lt;/b&gt; khỏi danh sách?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="741"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Japanese Romaji</source>
       <translation>Phiên âm Latinh tiếng Nhật</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="790"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
 Standardized as ISO 3602
 
@@ -4892,84 +4885,84 @@ Tiêu chuẩn ISO 3602
 Chưa được bổ sung trong Từ điển Vàng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="233"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia (MediaWiki) sites:</source>
       <translation>Trang Wikipedia (MediaWiki):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="103"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Sound Dirs</source>
       <translation>Thư mục âm thanh</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="412"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
       <translation>Bất kỳ chương trình bên ngoài. Một chuỗi %GDWORD% sẽ được thay thế bằng từ truy vấn. Chuỗi %GDSEARCH% sẽ được thay thế bằng văn bản trong thanh tìm kiếm. Nếu cả hai tham số không được cung cấp, thì từ tiêu đề sẽ được đưa vào đầu vào tiêu chuẩn.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="465"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Lingua Libre</source>
       <translation>ngôn ngữ tự do</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="471"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations được cung cấp bởi &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, một thư viện phương tiện ngôn ngữ cộng tác của Wikimedia Pháp. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="481"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable Lingua Libre</source>
       <translation>Kích hoạt Lingua Libre</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="490"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ISO 639-3 language code</source>
       <translation>Mã ngôn ngữ ISO 639-3</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="582"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Việc sử dụng Forvo hiện yêu cầu khóa API, hãy đăng ký trên trang web để nhận khóa của riêng bạn.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="605"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nhận chìa khóa của riêng bạn &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;tại đây&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="760"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
       <translation>Phương pháp được sử dụng rộng rãi nhất để phiên âm tiếng
 Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="810"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>Bảng chữ cái tiếng Nhật Hiragana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="835"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Custom transliteration</source>
       <translation>Chuyển ngữ tùy chỉnh</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="844"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
       <translation>Điều này chỉ áp dụng trong cụm từ tìm kiếm, với mỗi dòng đại diện cho một phiên âm, được phân tách bằng dấu chấm phẩy. Ví dụ: ae;æ,người dùng có thể nhập ae để biểu thị æ trong từ mục tiêu.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="854"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ae;æ #this is an example</source>
       <translation>ae;æ #đây là một ví dụ</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="681"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Transliteration</source>
       <translation>Chuyển tự</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="774"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most regular system, having a one-to-one relation to the
 kana writing systems. Standardized as ISO 3602
 
@@ -4979,22 +4972,22 @@ Not implemented yet in GoldenDict.</source>
 Chưa được bổ sung trong Từ điển Vàng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="703"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Russian transliteration</source>
       <translation>Chuyển tự sang chữ Nga</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="159"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Morphology</source>
       <translation>Hình thái học</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="181"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Change...</source>
       <translation>&amp;Thay đổi...</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
@@ -5003,37 +4996,32 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
 Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; tại đây &lt;/a&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="823"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana</source>
       <translation>chữ katakana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="165"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
       <translation>Đường dẫn đến thư mục chứa từ điển Hunspell/Myspell:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="87"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Re&amp;scan now</source>
       <translation>&amp;Quét lại</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="714"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>German transliteration</source>
       <translation>Chuyển tự sang chữ Đức</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="292"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Có thể dùng bất kỳ trang nào. Chuỗi %GDWORD% sẽ được thay thế bởi từ truy vấn:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="60"/>
-      <location filename="../src/ui/sources.ui" line="123"/>
-      <location filename="../src/ui/sources.ui" line="247"/>
-      <location filename="../src/ui/sources.ui" line="306"/>
-      <location filename="../src/ui/sources.ui" line="370"/>
-      <location filename="../src/ui/sources.ui" line="429"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Add...</source>
       <translation>T&amp;hêm...</translation>
     </message>
@@ -5045,22 +5033,17 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
       <translation>Chọn một thư mục</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="67"/>
-      <location filename="../src/ui/sources.ui" line="130"/>
-      <location filename="../src/ui/sources.ui" line="254"/>
-      <location filename="../src/ui/sources.ui" line="313"/>
-      <location filename="../src/ui/sources.ui" line="377"/>
-      <location filename="../src/ui/sources.ui" line="436"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Remove</source>
       <translation>Xóa &amp;bỏ</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="286"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Websites</source>
       <translation>Trang mạng</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="46"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Paths to search for the dictionary files:</source>
       <translation>Đường dẫn chứa tệp từ điển:</translation>
     </message>
@@ -5075,22 +5058,22 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
       <translation>Xác nhận xóa bỏ</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="803"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Syllabaries:</source>
       <translation>Bảng chữ cái:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="190"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Available morphology dictionaries:</source>
       <translation>Các từ điển hình thái học sẵn sàng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="738"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
       <translation>Bật để sử dụng bảng chữ cái La-Tinh để viết tiếng Nhật</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="202"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Each morphology dictionary appears as a
 separate auxiliary dictionary which
 provides stem words for searches and
@@ -5104,62 +5087,62 @@ Thêm các từ điển phù hợp vào cuối những nhóm
 phù hợp để sử dụng chúng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="764"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="796"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Kunrei-shiki</source>
       <translation>Kunrei-shiki</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="533"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Forvo</source>
       <translation>Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="350"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers</source>
       <translation>Máy chủ DICT</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="356"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers:</source>
       <translation>Máy chủ DICT:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="545"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>Phát âm trực tuyến qua &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Trang này cho phép mọi người ghi lại và chia sẻ phát âm của các từ. Bạn có thể nghe chúng qua Từ điển Vàng.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="558"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable pronunciations from Forvo</source>
       <translation>Bật phát âm từ Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="575"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>API Key:</source>
       <translation>Khóa API:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="618"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Language codes (comma-separated):</source>
       <translation>Mã ngôn ngữ (phân cách bởi dấu phẩy):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="625"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
       <translation>Danh sách mã ngôn ngữ mà bạn muốn có. Ví dụ: &quot;en, ru&quot;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="648"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
       <translation>Danh sách toàn bộ mã ngôn ngữ có tại &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;đây&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="692"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Greek transliteration</source>
       <translation>Chuyển tự sang chữ Hy Lạp</translation>
     </message>
@@ -5169,7 +5152,7 @@ phù hợp để sử dụng chúng.</translation>
       <translation>(không có trong phiên bản di động - portable)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="406"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Programs</source>
       <translation>Chương trình</translation>
     </message>
@@ -5179,12 +5162,12 @@ phù hợp để sử dụng chúng.</translation>
       <translation>Xoá chương trình &lt;b&gt;%1&lt;/b&gt; khỏi danh sách?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="725"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Belarusian transliteration</source>
       <translation>Chuyển tự sang tiếng Belarus</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="337"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
       <translation>Lựa chọn dùng %GD1251% for CP1251, %GDISO1%...%GDISO16% với ISO 8859-1...ISO 8859-16 tương ứng,
@@ -5207,42 +5190,42 @@ phù hợp để sử dụng chúng.</translation>
   <context>
     <name>TextToSpeechSource</name>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="20"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Selected voice engines:</source>
       <translation>Thêm vào phương tiện giọng nói đã chọn:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="40"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Add</source>
       <translation>&amp;Thêm</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="47"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Remove</source>
       <translation>Xóa &amp;bỏ</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="147"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preview</source>
       <translation>Xem trước</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="161"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Available voice engines:</source>
       <translation>Các phương tiện giọng nói có thể:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="179"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Text to be previewed:</source>
       <translation>Xem trước văn bản:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="186"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Type text to be previewed here.</source>
       <translation>Nhập văn bản ở đây.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="220"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Preview</source>
       <translation>&amp;Xem trước</translation>
     </message>
@@ -5267,17 +5250,17 @@ phù hợp để sử dụng chúng.</translation>
       <translation>Không tìm thấy giọng nói TTS. &lt;br&gt;Hãy kiểm tra tối thiểu một phương tiện TTS được cài đặt.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="71"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preferences</source>
       <translation>Tùy thích</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="77"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Volume:</source>
       <translation>Âm lượng:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="106"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Rate:</source>
       <translation>Tốc độ:</translation>
     </message>

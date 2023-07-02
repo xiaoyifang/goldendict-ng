@@ -4,37 +4,37 @@
   <context>
     <name>About</name>
     <message>
-      <location filename="../src/ui/about.ui" line="17"/>
+      <location filename="../src/ui/about.ui"/>
       <source>About</source>
       <translation>Относно</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="66"/>
+      <location filename="../src/ui/about.ui"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
       <translation>Речник GoldenDict, версия </translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="101"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Лицензирана за GNU GPLv3 или следващи</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="129"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy version info</source>
       <translation>Копирайте информацията за версията</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="142"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy dictionaries list</source>
       <translation>Копиране на списък с речници</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="168"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Credits:</source>
       <translation>Заслуги:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="91"/>
+      <location filename="../src/ui/about.ui"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>© 2008-2019 Константин Исаков (ikm@goldendict.org)</translation>
     </message>
@@ -409,47 +409,47 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="20"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Conversion</source>
       <translation>Преобразуване на китайски иероглифи</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="23"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
       <translation>Преобразуване между опростени и класически китайски иероглифи</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="26"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Con&amp;version</source>
       <translation>Прео&amp;бразуване на китайски иероглифи</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="35"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
       <translation>Преобразуване на опростени иероглифи в класически (Тайвански вариант)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="38"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Taiwan variant)</source>
       <translation>Опростени в класически (Тайвански вариант)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="45"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Преобразуване на опростени иероглифи в класически (Хонконгски вариант)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="48"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Hong Kong variant)</source>
       <translation>Опростени в класически (Хонконгски вариант)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="55"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Преобразуване на класически иероглифи в опростени</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="58"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>TC to SC</source>
       <translation>Класически в опростени</translation>
     </message>
@@ -480,22 +480,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Dialog</name>
     <message>
-      <location filename="../src/ui/authentication.ui" line="14"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Proxy authentication required</source>
       <translation>Прокси-Сървъра изисква авторизация</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="20"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
       <translation>За достъп към прокси-Сървъра се въвежда име и парола</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="30"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Username:</source>
       <translation>Имя:</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="40"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Password:</source>
       <translation>Парола:</translation>
     </message>
@@ -503,22 +503,22 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictGroupWidget</name>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Form</source>
       <translation>Форма</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Group icon:</source>
       <translation>Икона на групата:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Shortcut:</source>
       <translation>Бърз клавиш:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Favorites folder:</source>
       <translation>Папка в Любими:</translation>
     </message>
@@ -630,72 +630,72 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictHeadwords</name>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="67"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Search mode</source>
       <translation>Режим търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="73"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Този елемент определя, как ще интерпретира реда от филтъра</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="80"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked on the symbols case will be take in account when filtering</source>
       <translation>Ако този флаг е поставен, филтрацията ще се осъществява според регистър символи</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="83"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Match case</source>
       <translation>Регистър символи</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="93"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Exports headwords to file</source>
       <translation>Експортирай заглавията във файл</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="96"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Export</source>
       <translation>Експортирай</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="119"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Help</source>
       <translation>Помощ</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="129"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>OK</source>
       <translation>ОК</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="35"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Press this button to apply filter to headwords list</source>
       <translation>Натисни този бутон да приложи филтъра  към списък заглавия</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="38"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Apply</source>
       <translation>Приложи</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="22"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
       <translation>Ако този флаг е поставен , всякакви промени на филтъра ще се приложат към списък заглавия веднага</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="25"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Auto apply</source>
       <translation>Автоприлагане</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="58"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter:</source>
       <translation>Филтър:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="51"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
       <translation>Ред на филтъра (обикн. текст, шаблон или регулярни изрази)</translation>
     </message>
@@ -764,52 +764,52 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="83"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total articles:</source>
       <translation>Брой статии:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="52"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates from:</source>
       <translation>Превод от:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="59"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total words:</source>
       <translation>Брой думи:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="66"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates to:</source>
       <translation>Превод на:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="36"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Open folder</source>
       <translation>Отвори папката</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="76"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Edit dictionary</source>
       <translation>Редактирай речника</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="130"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Файлове, включени в речника:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="174"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Description:</source>
       <translation>Описание:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="196"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Show all unique dictionary headwords</source>
       <translation>Покажи всички неповтарящи се заглавия на речника</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="199"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Headwords</source>
       <translation>Заглавия</translation>
     </message>
@@ -946,7 +946,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Речници</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.ui" line="14"/>
+      <location filename="../src/ui/editdictionaries.ui"/>
       <source>Dictionaries</source>
       <translation>Речници</translation>
     </message>
@@ -1011,11 +1011,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Цялотекстово търсене</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="230"/>
-      <source>Whole words</source>
-      <translation>Цели думи</translation>
-    </message>
-    <message>
       <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Обикновен текст</translation>
@@ -1034,6 +1029,11 @@ between classic and school orthography in cyrillic)</source>
       <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>поддържа синтаксис за търсене на xapian, като И ИЛИ +/- и т.н</translation>
+    </message>
+    <message>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
+      <source>Default</source>
+      <translation>По подразбиране</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1149,53 +1149,52 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Search</source>
       <translation>Намери</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="37"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Mode:</source>
       <translation>Режим:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Articles found:</source>
       <translation>Статии намерени:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Available dictionaries in group:</source>
       <translation>Налични речници в групата:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Wait for indexing:</source>
       <translation>Изчакващи индексация:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Help</source>
       <translation>Помощ</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Total:</source>
       <translation>Всичко:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Indexed:</source>
       <translation>Индексирани:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Now indexing: None</source>
       <translation>Индексиращи се: Без</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Cancel</source>
       <translation>Отмяна</translation>
     </message>
@@ -1227,27 +1226,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Groups</name>
     <message>
-      <location filename="../src/ui/groups.ui" line="92"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&lt;</source>
       <translation>&lt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="67"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="95"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Del</source>
       <translation>Дел</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="70"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Ins</source>
       <translation>Инс</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="133"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Tab 2</source>
       <translation>Раздел 2</translation>
     </message>
@@ -1287,12 +1286,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Дайте ново име за групата:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="22"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Dictionaries available:</source>
       <translation>Налични речници:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="146"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Add group</source>
       <translation>&amp;Добавяне на група</translation>
     </message>
@@ -1302,42 +1301,42 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добавяне на група</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="143"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create new dictionary group</source>
       <translation>Създаване на нова речникова група</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="203"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Languages</source>
       <translation>Групиране по езици</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="210"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
       <translation>Създавайте групи, базирани на папки.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="213"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Folders</source>
       <translation>Групиране по папки</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="220"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Metadata</source>
       <translation>Групиране по метаданни</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="244"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Плъзгайте&amp;пускайте речниците в и от групите, местете ги вътре в групите, пренареждайте групите, като използвате мишката.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Rename current dictionary group</source>
       <translation>Преименуване на текущата речникова група</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove current dictionary group</source>
       <translation>Премахване на текущата речникова група</translation>
     </message>
@@ -1347,43 +1346,43 @@ between classic and school orthography in cyrillic)</source>
       <translation>Дайте име на новата група:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui"/>
       <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Премахване на всички групи</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="89"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Премахване на избраните речници от групата (Del)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="64"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Add selected dictionaries to group (Ins)</source>
       <translation>Добавяне на избраните речници към групата (Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Remove group</source>
       <translation>&amp;Премахване на групата</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="119"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Groups:</source>
       <translation>Групи:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Re&amp;name group</source>
       <translation>&amp;Преименуване</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove all dictionary groups</source>
       <translation>Премахване на всички речникови групи</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="200"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create language-based groups</source>
       <translation>Създаване на групи на база езика</translation>
     </message>
@@ -1445,17 +1444,17 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="99"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Indexing: </source>
       <translation>Индексиране: </translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="121"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Dictionary Name</source>
       <translation>Име на речника</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="23"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>GoldenDict-ng - инициализиране</translation>
     </message>
@@ -2705,27 +2704,27 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="547"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="143"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favo&amp;rites</source>
       <translation>Люб&amp;ими</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="293"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="308"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
@@ -2745,27 +2744,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>%1 речници, %2 статии, %3 думи</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="95"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Edit</source>
       <translation>&amp;Редактиране</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="78"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;File</source>
       <translation>&amp;Файл</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="102"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Help</source>
       <translation>&amp;Помощ</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="136"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search</source>
       <translation>Търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>&amp;Изход</translation>
@@ -2776,12 +2775,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Грешка</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="338"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Quit from application</source>
       <translation>Излизане от приложението</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="357"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Close To Tray</source>
       <translation>&amp;Затваряне в системната област за известяване</translation>
     </message>
@@ -2796,27 +2795,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>Увеличаване</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="290"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Dictionaries...</source>
       <translation>&amp;Речници...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="324"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;About</source>
       <translation>&amp;Относно</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="349"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Forum</source>
       <translation>&amp;Форум</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="394"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Print</source>
       <translation>&amp;Печат</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="376"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Save Article</source>
       <translation>&amp;Запазване на статията</translation>
     </message>
@@ -2826,27 +2825,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>Запазване на статията като</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="397"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+P</source>
       <translation>Ctrl+P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="360"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Minimizes the window to tray</source>
       <translation>Минимизира прозореца в системната област за известяване</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="405"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Page Set&amp;up</source>
       <translation>&amp;Настройки на страницата</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="316"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Homepage</source>
       <translation>&amp;Домашна страница</translation>
     </message>
@@ -2866,7 +2865,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Показване на &amp;главния прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="327"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>About GoldenDict-ng</source>
       <translation>Относно GoldenDict-ng</translation>
     </message>
@@ -2896,12 +2895,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Версия &lt;b&gt;%1&lt;/b&gt; на GoldenDict е налична за изтегляне.&lt;br&gt;Цъкнете на &lt;b&gt;Изтегляне&lt;/b&gt; за да отидете до страницата за изтегляне.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl+F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="424"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl+F5</translation>
     </message>
@@ -2916,12 +2915,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>(без име)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="305"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Preferences...</source>
       <translation>&amp;Настройки...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="46"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Добре дошли!</translation>
@@ -2932,7 +2931,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Произнасяне на думата (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="379"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Save Article</source>
       <translation>Запазване на статията</translation>
     </message>
@@ -2957,22 +2956,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>Няма инсталиран принтер.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="115"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;View</source>
       <translation>И&amp;зглед</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="126"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>H&amp;istory</source>
       <translation>&amp;История</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="432"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Clear</source>
       <translation>Из&amp;чисти</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="119"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Zoom</source>
       <translation>&amp;Мащаб</translation>
     </message>
@@ -3017,12 +3016,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Нов подпрозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="447"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+T</source>
       <translation>Ctrl+T</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="458"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Configuration Folder</source>
       <translation>&amp;Папка конфигурации</translation>
     </message>
@@ -3083,14 +3082,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Ctrl+M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="3625"/>
       <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>&amp;Покажи</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="477"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Export</source>
       <translation>&amp;Експортирай</translation>
     </message>
@@ -3130,12 +3129,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Грешка при експорт: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="469"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+H</source>
       <translation>Ctrl+H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="485"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Import</source>
       <translation>&amp;Импортирай</translation>
     </message>
@@ -3234,104 +3233,103 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Да изтрие заглавието &quot;%1&quot; от Любими?</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="162"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Search Pane</source>
       <translation>&amp;Панел търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="202"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Панел на&amp;вигация по превода</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="229"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favor&amp;ites Pane</source>
       <translation>Панел &amp;Любими</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="413"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Print Pre&amp;view</source>
       <translation>Пр&amp;едварителен преглед</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="421"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Rescan Files</source>
       <translation>Пр&amp;есканирай файлове</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="444"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;New Tab</source>
       <translation>&amp;Нов подпрозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="496"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Always on Top</source>
       <translation>&amp;Винаги отгоре</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="499"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Always on Top</source>
       <translation>Винаги отгоре</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+O</source>
       <translation>Ctrl+O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="511"/>
-      <location filename="../src/ui/mainwindow.ui" line="514"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Бутон Меню</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="519"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search in page</source>
       <translation>Търси в страница</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="522"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F</source>
       <translation>Ctrl+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="530"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Full-text search</source>
       <translation>Цялотекстово търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="533"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="544"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>GoldenDict reference</source>
       <translation>Помощ за GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="552"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Show</source>
       <translation>Покажи</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="560"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export</source>
       <translation>Експортирай</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="565"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Import</source>
       <translation>Импортирай</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="570"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Add</source>
       <translation>Добави</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="573"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
       <location filename="../src/ui/mainwindow.cc" line="1888"/>
       <location filename="../src/ui/mainwindow.cc" line="1957"/>
@@ -3340,12 +3338,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Добави текущия подпрозорец към Любими</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+E</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="581"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export to list</source>
       <translation>Експортирай в обикнов. списък</translation>
     </message>
@@ -3395,7 +3393,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Главен прозорец винаги отгоре.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="256"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;History Pane</source>
       <translation>&amp;Панел История</translation>
     </message>
@@ -3469,62 +3467,62 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>OrderAndProps</name>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="14"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Form</source>
       <translation>Форма</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="53"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>Неактивни (изключени) речници:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="75"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Name:</source>
       <translation>Име:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="105"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total articles:</source>
       <translation>Брой статии:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="129"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates from:</source>
       <translation>Превод от:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="136"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates to:</source>
       <translation>Превод на:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="112"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total words:</source>
       <translation>Брой думи:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="251"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Подредете последователността чрез влачене и пускане на елементи. Пускайте речници в неактивната група за да изключите от използване.</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="37"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary order:</source>
       <translation>Подредба на речниците:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="208"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Файлове, включващи се в речника:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="67"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary information</source>
       <translation>Информация за речника</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="165"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Description:</source>
       <translation>Описание:</translation>
     </message>
@@ -3565,69 +3563,67 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="495"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt</source>
       <translation>Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="85"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start to system tray</source>
       <translation>Пускане в системната област за уведомяване</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="552"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift only</source>
       <translation>При натискане на ляв Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="505"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="565"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Win/Meta</source>
       <translation>Win/Мета</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable system tray icon</source>
       <translation>Икона в системната област за уведомяване</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="933"/>
-      <location filename="../src/ui/preferences.ui" line="1013"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Host:</source>
       <translation>Име:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="943"/>
-      <location filename="../src/ui/preferences.ui" line="1030"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Port:</source>
       <translation>Порт:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="525"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift</source>
       <translation>Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="920"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Type:</source>
       <translation>Тип:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="964"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>User:</source>
       <translation>Потребител:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="371"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Изскачащ прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="295"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3636,86 +3632,86 @@ switching to them.</source>
 ще се отварят без да се превключва към тях.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use proxy server</source>
       <translation>Използване на сървър-посредник</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="709"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Използване на следните бързи клавиши за превод на дума от системния буфер:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="562"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Windows key or Meta key</source>
       <translation>Клавиш Windows или Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="792"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматично произнасяне на думите в главния прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="191"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with system</source>
       <translation>Автоматично стартиране</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="512"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt only</source>
       <translation>При натискане на ляв Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="289"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Tabbed browsing</source>
       <translation>Преглеждане в подпрозорци</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="482"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift only</source>
       <translation>При натискане на десен Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="92"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Затварянето на главния прозорец ще го скрие, вместо да затвори
 приложението.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Audio</source>
       <translation>&amp;Звук</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="879"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Включете, ако желаете да използвате сървър-посредник
 при всички обръщания на програмата към мрежата.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="201"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Interface language:</source>
       <translation>Език на интерфейса:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="472"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl only</source>
       <translation>При натискане на ляв Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="300"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs in background</source>
       <translation>Отваряне на нови подпрозорци на заден план</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Network</source>
       <translation>&amp;Мрежа</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="542"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl only</source>
       <translation>При натискане на десен Ctrl</translation>
     </message>
@@ -3725,29 +3721,29 @@ for all program&apos;s network requests.</source>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="485"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift</source>
       <translation>Десен Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="555"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift</source>
       <translation>Ляв Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="420"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Когато това е включено, изскачащият прозорец ще се показва само ако
 избраните клавиши са натиснати, когато се промени избирането на дума.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="799"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Автоматично произнасяне на думите в изскачащия прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="312"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs after the current one</source>
       <translation>Отваряне на новите подпрозорци след текущия</translation>
     </message>
@@ -3757,17 +3753,17 @@ in the pressed state when the word selection changes.</source>
       <translation>Рестартирайте програмата, за да се приложи смяната на езика.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="492"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt key</source>
       <translation>Клавиш Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1231"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Check for new program releases periodically</source>
       <translation>Периодична проверка за нови издания</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3776,7 +3772,7 @@ be the last ones.</source>
 на последно място.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="96"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Close to system tray</source>
       <translation>Затваряне в системната област за уведомяване</translation>
     </message>
@@ -3786,14 +3782,14 @@ be the last ones.</source>
       <translation>Системен</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="59"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Когато това е включено, в системната област за уведомяване се показва икона, чрез
 която може да се отваря главния прозорец или да се извършнат други дейности.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1224"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3805,12 +3801,12 @@ download page.</source>
 и предлага да отвори страница за изтегляне.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="182"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Startup</source>
       <translation>Пускане</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="974"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Password:</source>
       <translation>Парола:</translation>
     </message>
@@ -3820,7 +3816,7 @@ download page.</source>
       <translation>По подразбиране</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="50"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Interface</source>
       <translation>&amp;Интерфейс</translation>
     </message>
@@ -3830,116 +3826,116 @@ download page.</source>
       <translation>Промяна на езика</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl key</source>
       <translation>Клавиш Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="682"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Използване на следните бързи клавиши за показване/скриване на главния прозорец:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="515"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt</source>
       <translation>Ляв Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="532"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt only</source>
       <translation>При натискане на десен Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="14"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Preferences</source>
       <translation>Настройки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="475"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl</source>
       <translation>Ляв Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="535"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt</source>
       <translation>Десен Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="752"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Бързите клавиши са глобални и работят от всяка програма и контекст, стига GoldenDict да е пусната на заден фон.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="545"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl</source>
       <translation>Десен Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="676"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hotkeys</source>
       <translation>Бързи клавиши</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="381"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with scan popup turned on</source>
       <translation>Пускане с включен изскачащ прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="81"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Приложението се пуска директно в системната област за уведомяване,
 без да се показва главния прозорец.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="522"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift key</source>
       <translation>Клавиш Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="188"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>Пуска GoldenDict автоматично след зареждане на системата.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="377"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Избран ли е, Изкачащ прозорец по подразб. или не. Ако е проверено,
 програмата винаги ще стартира с активен Изкачащ прозорец.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="616"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Не показвай изскачащ прозорецо при избиране/копиране на текст в някой от подпрозорците на GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="619"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Игнорирайте собствения избор и промени в клипборда на GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Воспроизводить аудио-файлы через встроенный плеер</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="818"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use internal player:</source>
       <translation>Използвай встроен  плеер:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="825"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Choose audio back end</source>
       <translation>Избор на плеер</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="845"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enter audio player command line</source>
       <translation>Команден ред за старт на аудио-плеера</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1148"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3948,84 +3944,84 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
 който разглеждате. Ако някой сайтове се повреждат от това изключете го.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1153"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Забрани зареждане на съдържание от други сайтове (скрива повечето реклами)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Pronunciation</source>
       <translation>Произнасяне</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="809"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Playback</source>
       <translation>Възпроизвеждане</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="835"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use external program:</source>
       <translation>Използване на външна програма:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="282"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Double-click translates the word clicked</source>
       <translation>Двойното натискане превежда думата</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use any external program to play audio files</source>
       <translation>Използване на външна програма за възпроизвеждане на аудио файловете</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="106"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Обикновено натискайки ESC премества фокуса от преведения ред.
 С това даже,ще скрие главния прозорец.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>ESC key hides main window</source>
       <translation>Скрий главния прозорец с ESC</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="319"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Включи тази опция,, ако не желаете панел подпрозорци при само един отворен подпрозорец.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="322"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hide single tab</source>
       <translation>Скрий подпрозорците</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="141"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Установете стойност,за избягване на голямо контекстно меню.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="144"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Максимален брой речници в контекстно меню:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="388"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Изпрати превежданата дума в главния окно прозорец вместо превод в изскачащ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="391"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window</source>
       <translation>Изпращай превежданата дума към главния прозорец</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="606"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Показвай флаг  вместо изскачащ прозорец. Ако само изскачащ прозорец, кликнете по флага. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="117"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4036,169 +4032,169 @@ however, the article from the topmost dictionary is shown.</source>
 обаче се показва статията от най-горния речник.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="123"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically scroll to target article</source>
       <translation>Автоматично превъртане до целевата статия</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="208"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dictionary Font: </source>
       <translation>Шрифт на речника: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="275"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>set the fallback font family for dictionary</source>
       <translation>задайте резервното семейство шрифтове за речника</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="344"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Article Display style:</source>
       <translation>Стил на показване на статията:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="230"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the UI to dark.</source>
       <translation>Завъртете потребителския интерфейс на тъмен.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="233"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Mode</source>
       <translation>Тъмен режим</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="240"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the article display style to dark.</source>
       <translation>Превърнете стила на показване на статията на тъмен.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="243"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Reader Mode</source>
       <translation>Тъмен режим на четене</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="329"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>MRU order: Most recently used order.</source>
       <translation>MRU поръчка: Най-скоро използваната поръчка.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="398"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Проследяване на промените в клипборда, когато сканирането е активирано. Забележете! Винаги трябва да активирате това, освен ако не сте на Linux.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="401"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Clipboard change</source>
       <translation>Проследяване на промените в клипборда</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="408"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Selection change</source>
       <translation>Промяна на избора на песен</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Избиране на халки само когато всички избрани клавиши са натиснати:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="609"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show scan flag when word is selected</source>
       <translation>Показвай флаг, когато е избрана дума</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="629"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Delay time</source>
       <translation>Закъснение</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="636"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
       <translation> Госпожица</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="895"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>System proxy</source>
       <translation>Използвай системните настройки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="902"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom proxy</source>
       <translation>Използвай свои настройки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="912"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom settings</source>
       <translation>Потребителски настройки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="999"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Anki Connect</source>
       <translation>Anki Connect</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1020"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1064"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Deck:</source>
       <translation>Палуба:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1074"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Model:</source>
       <translation>Модел:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1101"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Word</source>
       <translation>Слово</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1108"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Vocabulary field...</source>
       <translation>Речниково поле...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1115"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Text</source>
       <translation>Текст</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1122"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Definition field...</source>
       <translation>Дефиниционно поле...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1129"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence</source>
       <translation>Изречение</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1136"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Полето за изречение (може да е празно)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1160"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Някой сайтове идентифицират GoldenDict чрез HTTP хедери и блокират заявките.
 Включването на опцията може да реши проблема.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1164"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Не посочвай GoldenDict в заглавия HTTP</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum network cache size:</source>
       <translation>Максимален размер на мрежовия кеш:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1180"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4207,174 +4203,163 @@ If set to 0 the network disk cache will be disabled.</source>
 Ако е зададено на 0, кешът на мрежовия диск ще бъде деактивиран.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1185"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1198"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Когато тази опция е активирана, GoldenDict
 изчиства своя мрежов кеш от диска по време на излизане.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Clear network cache on exit</source>
       <translation>Изчистване на мрежовия кеш при излизане</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1256"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Full-text search</source>
       <translation>Цялотекстово търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1262"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Allow full-text search for:</source>
       <translation>Разреши цялотекстово търсене за:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1302"/>
-      <source>Applies only to new incoming dictionaries.</source>
-      <translation>Прилага се само за нови входящи речници.</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1305"/>
-      <source>Enable positional information in the fulltext</source>
-      <translation>Разрешаване на позиционна информация в пълния текст</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1370"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Не търси в речници, съдържащи повече от</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1387"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>articles (0 - unlimited)</source>
       <translation>статии (0 - неограничено)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1430"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ad&amp;vanced</source>
       <translation>Доп&amp;ълнително</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1756"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>По време на последователни търсения, ако един речник бъде свит ръчно, той ще остане свит при следващото търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1759"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Session collapse</source>
       <translation>Срив на сесията</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Когато използвате клипборда, премахнете всичко след нов ред</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1787"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>При ново търсене фокусирайте главния или изскачащия прозорец, дори ако е видим</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites</source>
       <translation>Любими</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1567"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Интервал сзапазване в Любими. Ако е 0, Историята ще се запише само при Излизане.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Включете тази опция, за потвърждаване на всяка операция за изтриване на елементи</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1602"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Confirmation for items deletion</source>
       <translation>Потвърждавай изтриване на елементи</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1673"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Включете тази опция, за да игнорирате неоправдано дълъг въведен текст
 от курсора на мишката, избора, клипборда или командния ред</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1677"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore input phrases longer than</source>
       <translation>Игнориране на входни фрази, по-дълги от</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1640"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Въвеждането на фрази, по-дълги от този размер, ще бъде игнорирано</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1733"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Включете тази опция, да се игнорира диакритика при търсене на статии</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1736"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore diacritics while searching</source>
       <translation>Игнорирай диакритика при търсене</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1723"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Включи тази опция, ако искате да отваря допълнителни области от статии</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1726"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Expand optional &amp;parts</source>
       <translation>Раскривай допълнителни &amp;области</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1663"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Включи тази опция,автоматически да свива повече статии</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Collapse articles more than</source>
       <translation>Свивай статии по-големи от</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1707"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Статии над този размер ще са свити</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1633"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore punctuation while searching</source>
       <translation>Игнорирайте препинателните знаци, докато търсите</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1769"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Включването на опцията разрешава търсене през списък синоними
 от Stardict, Babylon и GLS речници</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1773"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Extra search via synonyms</source>
       <translation>Допълнително търсене за синоними</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1656"/>
-      <location filename="../src/ui/preferences.ui" line="1700"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>symbols</source>
       <translation>символи</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="332"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab превключва подпрозорци в реда на използване</translation>
     </message>
@@ -4384,64 +4369,62 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Вавилон</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1438"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History</source>
       <translation>История</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1444"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Включите эту опцию, чтобы вести журнал переведённых слов</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1447"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Store &amp;history</source>
       <translation>Записвай  &amp;История</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles</source>
       <translation>Статии</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="252"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Включете тази опция, ако искате да изберете думи с едно кликване на мишката</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="255"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select word by single click</source>
       <translation>Избирай думата с еднократен клик</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="354"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Add-on style:</source>
       <translation>Допълнителен стил:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1462"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Определя максимално количество записи в История.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1465"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum history size:</source>
       <translation>Максимален размер История:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Интервал запазване на История. Ако не е 0, Историята ще се запазва само при Излизане.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1508"/>
-      <location filename="../src/ui/preferences.ui" line="1570"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Save every</source>
       <translation>Запазвай на всеки</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1525"/>
-      <location filename="../src/ui/preferences.ui" line="1590"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>minutes</source>
       <translation>минути</translation>
     </message>
@@ -4469,6 +4452,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> MB</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
+      <translation>Необходима е информация за позицията, за да се използва търсенето по фраза на Xapian и оператора NEAR, но размерът на базата данни ще бъде много по-голям. Прилага се само за нови входящи речници.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Enable index with positional information</source>
+      <translation>Активиране на индекс с информация за позицията</translation>
     </message>
   </context>
   <context>
@@ -4549,7 +4542,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="419"/>
-      <location filename="../src/dict/dsl.cc" line="1650"/>
+      <location filename="../src/dict/dsl.cc" line="1671"/>
       <source>Article loading error</source>
       <translation>Грешка при зареждане на статия</translation>
     </message>
@@ -4663,22 +4656,22 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>ERROR: %1</source>
       <translation>ГРЕШКА: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>Resource saving error: </source>
       <translation>Грешка запис данни: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>The referenced resource failed to download.</source>
       <translation>Указаният ресурс не успя да се свали.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>WARNING: %1</source>
       <translation>Внимание: %1</translation>
     </message>
@@ -4707,59 +4700,59 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="142"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+S</source>
       <translation>Alt+S</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="14"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Dialog</source>
       <translation>Диалог</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="135"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Произнасяне на думата (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="166"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Добави думата към Любими</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="193"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Показва или скрива лентата Речник</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="213"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Always stay on top of all other windows</source>
       <translation>Над всички прозорци</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="230"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Използвайте да закрепи отдолу прозореца, да бъде на екрана,
 като променен или аранжиран по друг начин.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="152"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Изпрати думата в главния прозорец (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="159"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+W</source>
       <translation>Alt+W</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="113"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Back</source>
       <translation>Назад</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="124"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Forward</source>
       <translation>Напред</translation>
     </message>
@@ -4834,22 +4827,22 @@ could be resized or managed in other ways.</source>
   <context>
     <name>Sources</name>
     <message>
-      <location filename="../src/ui/sources.ui" line="40"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Files</source>
       <translation>Файлове</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="813"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana</source>
       <translation>Хирагана</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="753"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Systems:</source>
       <translation>Системи:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="780"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Nihon-shiki</source>
       <translation>Нихон-шики</translation>
     </message>
@@ -4861,17 +4854,17 @@ could be resized or managed in other ways.</source>
       <translation>Да се премахне ли от списъка уеб страницата &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="227"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia</source>
       <translation>Уикипедия</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="820"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana Japanese syllabary</source>
       <translation>Японска сричкова буква катакана</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="109"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
       <translation>Създаване на речници от различни звукови файлове, чрез добавяне
  на пътищата им за достъп тук:</translation>
@@ -4883,12 +4876,12 @@ could be resized or managed in other ways.</source>
       <translation>Да се премахне ли от списъка папката &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="741"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Japanese Romaji</source>
       <translation>японски Ромаджи</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="790"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
 Standardized as ISO 3602
 
@@ -4899,84 +4892,84 @@ Not implemented yet in GoldenDict.</source>
 В GoldenDict засега не реализирано.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="233"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia (MediaWiki) sites:</source>
       <translation>Страници Уикипедия (MediaWiki):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="103"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Sound Dirs</source>
       <translation>Папки със звуци</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="412"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
       <translation>Всякакви външни програми. Низ %GDWORD% ще бъде заменен с думата за заявка. Низ %GDSEARCH% ще бъде заменен с текста в лентата за търсене. Ако и двата параметъра не са предоставени, заглавната дума ще бъде въведена в стандартния вход.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="465"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Lingua Libre</source>
       <translation>Лингва Либре</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="471"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Произношенията са предоставени от &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, съвместна лингвистична медийна библиотека на Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="481"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable Lingua Libre</source>
       <translation>Активирайте Lingua Libre</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="490"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ISO 639-3 language code</source>
       <translation>ISO 639-3 езиков код</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="582"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Използването на Forvo в момента изисква API ключ, регистрирайте се на сайта, за да получите свой собствен ключ.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="605"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вземете свой собствен ключ &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;тук&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="760"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
       <translation>Най-широко използваният метод за транскрипция на Японски,
 на основата на  Английската фонология</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="810"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>Японска сричкова буква хирагана</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="835"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Custom transliteration</source>
       <translation>Персонализирана транслитерация</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="844"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
       <translation>Това се прилага само във фраза за търсене, като всеки ред представлява транслитерация, разделена с точка и запетая. Например ae;æ, потребителите могат да въведат ae, за да представят æ в целевата дума.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="854"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ae;æ #this is an example</source>
       <translation>ae;æ #това е пример</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="681"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Transliteration</source>
       <translation>Транслитерация</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="774"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most regular system, having a one-to-one relation to the
 kana writing systems. Standardized as ISO 3602
 
@@ -4987,22 +4980,22 @@ Not implemented yet in GoldenDict.</source>
 В GoldenDict засега не реализирано.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="703"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Russian transliteration</source>
       <translation>Транслитерация (Руски)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="159"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Morphology</source>
       <translation>Морфология</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="181"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Change...</source>
       <translation>&amp;Промяна...</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
@@ -5011,37 +5004,32 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
 Пълният списък с налични езици може да бъде намерен &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; тук &lt;/a&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="823"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana</source>
       <translation>Катакана</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="165"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
       <translation>Път към речниците Hunspell/Myspell:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="87"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Re&amp;scan now</source>
       <translation>Повторно &amp;сканиране</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="714"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>German transliteration</source>
       <translation>Транслитерация (Германски)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="292"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Произволни уеб страници. Низът %GDWORD% ще бъде заменен с думата за търсене:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="60"/>
-      <location filename="../src/ui/sources.ui" line="123"/>
-      <location filename="../src/ui/sources.ui" line="247"/>
-      <location filename="../src/ui/sources.ui" line="306"/>
-      <location filename="../src/ui/sources.ui" line="370"/>
-      <location filename="../src/ui/sources.ui" line="429"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Add...</source>
       <translation>&amp;Добавяне...</translation>
     </message>
@@ -5053,22 +5041,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Избор на папка</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="67"/>
-      <location filename="../src/ui/sources.ui" line="130"/>
-      <location filename="../src/ui/sources.ui" line="254"/>
-      <location filename="../src/ui/sources.ui" line="313"/>
-      <location filename="../src/ui/sources.ui" line="377"/>
-      <location filename="../src/ui/sources.ui" line="436"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Remove</source>
       <translation>&amp;Премахване</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="286"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Websites</source>
       <translation>Уеб страници</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="46"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Paths to search for the dictionary files:</source>
       <translation>Пътища за търсене на файлове в речници:</translation>
     </message>
@@ -5083,22 +5066,22 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Потвърждаване на премахването</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="803"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Syllabaries:</source>
       <translation>Сричкови азбуки:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="190"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Available morphology dictionaries:</source>
       <translation>Достъпни морфологични речници:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="738"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
       <translation>Позволява да се използва Латинската азбука, за да се пише на Японски</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="202"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Each morphology dictionary appears as a
 separate auxiliary dictionary which
 provides stem words for searches and
@@ -5116,62 +5099,62 @@ of the appropriate groups to use them.</source>
 в края на съответните групи.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="764"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hepburn</source>
       <translation>Хепбърн</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="796"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Kunrei-shiki</source>
       <translation>Кунрей-шики</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="533"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Forvo</source>
       <translation>Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="350"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers</source>
       <translation>Сървъри DICT</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="356"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers:</source>
       <translation>Сървъри DICT:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="545"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>Онлайн произнасяне от сайта &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Сайта позволява да се записва и обменя произнасянето на думи. Може да ги прослушате в GoldenDict.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="558"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable pronunciations from Forvo</source>
       <translation>Включване на произношенията от Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="575"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>API Key:</source>
       <translation>Ключ API:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="618"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Language codes (comma-separated):</source>
       <translation>Езикови кодове (разделени със запетая):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="625"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
       <translation>Списък с желани езикови кодове. Пример: &quot;en, bg&quot;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="648"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
       <translation>Пълен списък с езикови кодове е наличен &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;тук&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="692"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Greek transliteration</source>
       <translation>Гръцка транслитерация</translation>
     </message>
@@ -5181,7 +5164,7 @@ of the appropriate groups to use them.</source>
       <translation>(не е налично в преносимата версия)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="406"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Programs</source>
       <translation>Програми</translation>
     </message>
@@ -5191,12 +5174,12 @@ of the appropriate groups to use them.</source>
       <translation>Да изтрие програмата &lt;b&gt;%1&lt;/b&gt; от списъка?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="725"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Belarusian transliteration</source>
       <translation>Транслитерация (Белоруски)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="337"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
       <translation>Алтернативно използва %GD1251% за CP1251, %GDISO1%...%GDISO16% за ISO 8859-1...ISO 8859-16 съответно,
@@ -5219,42 +5202,42 @@ of the appropriate groups to use them.</source>
   <context>
     <name>TextToSpeechSource</name>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="20"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Selected voice engines:</source>
       <translation>Избор на глас:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="40"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Add</source>
       <translation>&amp;Добави</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="47"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Remove</source>
       <translation>&amp;Премахване</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="147"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preview</source>
       <translation>Прослушване</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="161"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Available voice engines:</source>
       <translation>Налични гласове:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="179"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Text to be previewed:</source>
       <translation>Текст за прослушване:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="186"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Type text to be previewed here.</source>
       <translation>Въведете текст за прослушване.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="220"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Preview</source>
       <translation>&amp;Прослушай</translation>
     </message>
@@ -5279,17 +5262,17 @@ of the appropriate groups to use them.</source>
       <translation>Не може да намери наличния TTS глас.&lt;br&gt; Моля, уверете се, че поне един TTS вече е инсталиран на вашия компютър.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="71"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preferences</source>
       <translation>Настройки</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="77"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Volume:</source>
       <translation>Сила звук:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="106"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Rate:</source>
       <translation>Темп:</translation>
     </message>

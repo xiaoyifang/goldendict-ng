@@ -4,37 +4,37 @@
   <context>
     <name>About</name>
     <message>
-      <location filename="../src/ui/about.ui" line="17"/>
+      <location filename="../src/ui/about.ui"/>
       <source>About</source>
       <translation>Hakkında</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="66"/>
+      <location filename="../src/ui/about.ui"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
       <translation>GoldenDict, sözlük arama programı, sürüm </translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="101"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 veya daha üst lisanslıdır</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="129"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy version info</source>
       <translation>Sürüm bilgisini kopyala</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="142"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy dictionaries list</source>
       <translation>Sözlük listesini kopyala</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="168"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Credits:</source>
       <translation>Teşekkürler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="91"/>
+      <location filename="../src/ui/about.ui"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
@@ -423,47 +423,47 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="20"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Conversion</source>
       <translation>Çince Dönüşüm</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="23"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
       <translation>Basitleştirilmiş ve geleneksel Çince karakterler arasında dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="26"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Con&amp;version</source>
       <translation>Çince &amp;Dönüşüm</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="35"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
       <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan değişkeni) karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="38"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Taiwan variant)</source>
       <translation>TC&apos;den SC&apos;ye (Tayvan varyantı)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="45"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Basitleştirilmiş karakterlerden geleneksel (Hong Kong değişken) karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="48"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Hong Kong variant)</source>
       <translation>TC&apos;den SC&apos;ye (Hong Kong değişkeni)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="55"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Geleneksel karakterlerden basitleştirilmiş karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="58"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>TC to SC</source>
       <translation>TC&apos;den SC&apos;ye</translation>
     </message>
@@ -494,22 +494,22 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>Dialog</name>
     <message>
-      <location filename="../src/ui/authentication.ui" line="14"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Proxy authentication required</source>
       <translation>Proxy kimlik doğrulaması gerekli</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="20"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
       <translation>Proxy üzerinden erişmek için bir Kullanıcı Adı ve Parola girmeniz gerekir</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="30"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Username:</source>
       <translation>Kullanıcı adı:</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="40"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Password:</source>
       <translation>Parola:</translation>
     </message>
@@ -517,22 +517,22 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>DictGroupWidget</name>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Form</source>
       <translation>Biçim</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Group icon:</source>
       <translation>Grup simgesi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Shortcut:</source>
       <translation>Kısayol:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Favorites folder:</source>
       <translation>Sık kullanılan klasörü:</translation>
     </message>
@@ -644,72 +644,72 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>DictHeadwords</name>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="67"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Search mode</source>
       <translation>Arama kipi</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="73"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Bu eleman süzgeç dizesinin nasıl yorumlanacağını belirler</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="80"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked on the symbols case will be take in account when filtering</source>
       <translation>Semboller işaretliyse süzgeçlemede durum dikkate alınacaktır</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="83"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Match case</source>
       <translation>Büyük/küçük harfleri eşleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="93"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Exports headwords to file</source>
       <translation>Madde başlarını dosyaya aktarır</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="96"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Export</source>
       <translation>Dışarı aktar</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="119"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Help</source>
       <translation>Yardım</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="129"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>OK</source>
       <translation>Tamam</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="35"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Press this button to apply filter to headwords list</source>
       <translation>Madde başları listesine süzgeç uygulamak için bu düğmeye bas</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="38"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Apply</source>
       <translation>Uygula</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="22"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
       <translation>Herhangi bir süzgeç değişikliğinin işaretlenmesi durumunda madde başı listesine başvur</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="25"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Auto apply</source>
       <translation>Otomatik onayla</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="58"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter:</source>
       <translation>Süzgeç:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="51"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
       <translation>Süzgeç dizesi (sabit dize, joker karakterler veya düzenli ifade)</translation>
     </message>
@@ -778,52 +778,52 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="83"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total articles:</source>
       <translation>Toplam madde:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="52"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates from:</source>
       <translation>Bu dilden:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="59"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total words:</source>
       <translation>Toplam sözcük:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="66"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates to:</source>
       <translation>Bu dile:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="36"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Open folder</source>
       <translation>Klasörü aç</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="76"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Edit dictionary</source>
       <translation>Sözlüğü düzenle</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="130"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Bu sözlüğü oluşturan dosyalar:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="174"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Description:</source>
       <translation>Açıklama:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="196"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Show all unique dictionary headwords</source>
       <translation>Bütün ayrı madde başlarını göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="199"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Headwords</source>
       <translation>Madde başları</translation>
     </message>
@@ -960,7 +960,7 @@ arasındaki farkı giderir)</translation>
       <translation>&amp;Sözlükler</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.ui" line="14"/>
+      <location filename="../src/ui/editdictionaries.ui"/>
       <source>Dictionaries</source>
       <translation>Sözlükler</translation>
     </message>
@@ -1025,11 +1025,6 @@ arasındaki farkı giderir)</translation>
       <translation>Tam metin araması</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="230"/>
-      <source>Whole words</source>
-      <translation>Bütün kelimeler</translation>
-    </message>
-    <message>
       <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Düz metin</translation>
@@ -1048,6 +1043,11 @@ arasındaki farkı giderir)</translation>
       <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>AND OR +/- vb. gibi xapian arama sözdizimini destekler</translation>
+    </message>
+    <message>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
+      <source>Default</source>
+      <translation>Varsayılan</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1163,53 +1163,52 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Search</source>
       <translation>Ara</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="37"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Mode:</source>
       <translation>Kip:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Articles found:</source>
       <translation>Bulunan maddeler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Available dictionaries in group:</source>
       <translation>Gruptaki kullanılabilir sözlükler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Wait for indexing:</source>
       <translation>Dizinleme için bekleyin:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Help</source>
       <translation>Yardım</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Total:</source>
       <translation>Toplam:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Indexed:</source>
       <translation>Dizinlenen:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Now indexing: None</source>
       <translation>Şimdi dizinlenen: Yok</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Cancel</source>
       <translation>İptal</translation>
     </message>
@@ -1241,27 +1240,27 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>Groups</name>
     <message>
-      <location filename="../src/ui/groups.ui" line="92"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&lt;</source>
       <translation>&lt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="67"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="95"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Del</source>
       <translation>Sil (Delete)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="70"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Ins</source>
       <translation>Ekle (Insert)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="133"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Tab 2</source>
       <translation>2. Sekme</translation>
     </message>
@@ -1301,12 +1300,12 @@ arasındaki farkı giderir)</translation>
       <translation>Gruba yeni bir ad verin:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="22"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Dictionaries available:</source>
       <translation>Kullanılabilir sözlükler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="146"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Add group</source>
       <translation>Grup &amp;ekle</translation>
     </message>
@@ -1316,42 +1315,42 @@ arasındaki farkı giderir)</translation>
       <translation>Grup ekle</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="143"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create new dictionary group</source>
       <translation>Yeni sözlük grubu oluştur</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="203"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Languages</source>
       <translation>Dillere Göre Gruplandır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="210"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
       <translation>Klasör tabanlı gruplar oluşturun.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="213"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Folders</source>
       <translation>Klasörlere Göre Gruplandır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="220"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Metadata</source>
       <translation>Meta verilere göre gruplandır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="244"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Sözlükleri, grupların içine sürükleyin ve &amp;bırakın, yeniden sıralayın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Rename current dictionary group</source>
       <translation>Geçerli grubu yeniden adlandır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove current dictionary group</source>
       <translation>Geçerli grubu sil</translation>
     </message>
@@ -1361,43 +1360,43 @@ arasındaki farkı giderir)</translation>
       <translation>Yeni gruba bir ad koyun:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui"/>
       <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Bütün grupları kaldır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="89"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Seçili sözlükleri gruptan kaldır (Delete)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="64"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Add selected dictionaries to group (Ins)</source>
       <translation>Seçili sözlükleri gruba ekle (Insert)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Remove group</source>
       <translation>Grubu &amp;kaldır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="119"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Groups:</source>
       <translation>Gruplar:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Re&amp;name group</source>
       <translation>Grubu &amp; yeniden adlandır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove all dictionary groups</source>
       <translation>Bütün sözlük gruplarını kaldır</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="200"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create language-based groups</source>
       <translation>Dil tabanlı gruplar oluştur</translation>
     </message>
@@ -1459,17 +1458,17 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="99"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Indexing: </source>
       <translation>indeksleme: </translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="121"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Dictionary Name</source>
       <translation>Sözlük Adı</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="23"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>GoldenDict-ng - Başlatılıyor</translation>
     </message>
@@ -2719,27 +2718,27 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="547"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="143"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favo&amp;rites</source>
       <translation>&amp;Favoriler</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="293"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="308"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
@@ -2759,27 +2758,27 @@ arasındaki farkı giderir)</translation>
       <translation>%1 sözlük, %2 madde, %3 sözcük</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="95"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Edit</source>
       <translation>&amp;Düzenle</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="78"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;File</source>
       <translation>&amp;Dosya</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="102"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Help</source>
       <translation>&amp;Yardım</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="136"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search</source>
       <translation>Ara</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>Ç&amp;ıkış</translation>
@@ -2790,12 +2789,12 @@ arasındaki farkı giderir)</translation>
       <translation>Hata</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="338"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Quit from application</source>
       <translation>Uygulamadan çık</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="357"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Close To Tray</source>
       <translation>&amp;Sistem Tepsisine Küçült</translation>
     </message>
@@ -2810,27 +2809,27 @@ arasındaki farkı giderir)</translation>
       <translation>Yaklaştır</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="290"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Dictionaries...</source>
       <translation>&amp;Sözlükler...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="324"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;About</source>
       <translation>&amp;Hakkında</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="349"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="394"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Print</source>
       <translation>&amp;Yazdır</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="376"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Save Article</source>
       <translation>Maddeyi Ka&amp;ydet</translation>
     </message>
@@ -2840,27 +2839,27 @@ arasındaki farkı giderir)</translation>
       <translation>Maddeyi Farklı Kaydet</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="397"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+P</source>
       <translation>Ctrl+P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="360"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Minimizes the window to tray</source>
       <translation>Pencereyi sistem tepsisine küçültür</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="405"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Page Set&amp;up</source>
       <translation>Sayfa Ya&amp;pısı</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="316"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Homepage</source>
       <translation>&amp;Anasayfa</translation>
     </message>
@@ -2880,7 +2879,7 @@ arasındaki farkı giderir)</translation>
       <translation>&amp;Ana Pencereyi Göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="327"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>About GoldenDict-ng</source>
       <translation>GoldenDict-ng Hakkında</translation>
     </message>
@@ -2910,12 +2909,12 @@ arasındaki farkı giderir)</translation>
       <translation>GoldenDict, Sürüm &lt;b&gt;%1&lt;/b&gt; indirilmeye hazır.&lt;br&gt; &lt;b&gt;İndirme&lt;/b&gt; sayfasına ulaşmak için tıklayın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl+F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="424"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl+F5</translation>
     </message>
@@ -2930,12 +2929,12 @@ arasındaki farkı giderir)</translation>
       <translation>(başlıksız)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="305"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Preferences...</source>
       <translation>&amp;Tercihler...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="46"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Hoşgeldiniz!</translation>
@@ -2946,7 +2945,7 @@ arasındaki farkı giderir)</translation>
       <translation>Sözcüğü Seslendir (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="379"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Save Article</source>
       <translation>Maddeyi Kaydet</translation>
     </message>
@@ -2971,22 +2970,22 @@ arasındaki farkı giderir)</translation>
       <translation>Kullanılabilir yazıcı yok. Lütfen önce bir yazıcı yükleyin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="115"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;View</source>
       <translation>&amp;Görünüm</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="126"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>H&amp;istory</source>
       <translation>&amp;Geçmiş</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="432"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Clear</source>
       <translation>&amp;Temizle</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="119"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Zoom</source>
       <translation>&amp;Yaklaştır</translation>
     </message>
@@ -3031,12 +3030,12 @@ arasındaki farkı giderir)</translation>
       <translation>Yeni Sekme</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="447"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+T</source>
       <translation>Ctrl+T</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="458"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Configuration Folder</source>
       <translation>&amp;Yapılandırma Klasörü</translation>
     </message>
@@ -3097,14 +3096,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Ctrl+M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="3625"/>
       <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>&amp;Göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="477"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Export</source>
       <translation>&amp;Dışa Aktar</translation>
     </message>
@@ -3144,12 +3143,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Aktarma hatası: </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="469"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+H</source>
       <translation>Ctrl+H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="485"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Import</source>
       <translation>İçe aktar</translation>
     </message>
@@ -3248,104 +3247,103 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>&quot;%1&quot; madde başı favorilerden çıkarılsın mı?</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="162"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Search Pane</source>
       <translation>&amp;Arama Bölmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="202"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Sonuçlar Gezme Bölmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="229"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favor&amp;ites Pane</source>
       <translation>Favoriler Bölmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="413"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Print Pre&amp;view</source>
       <translation>Yazdırma Önizlemesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="421"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Rescan Files</source>
       <translation>Dosyaları Yeniden Tara</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="444"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;New Tab</source>
       <translation>&amp;Yeni Sekme</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="496"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Always on Top</source>
       <translation>&amp;Her zaman üstte</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="499"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Always on Top</source>
       <translation>Her zaman üstte</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+O</source>
       <translation>Ctrl+O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="511"/>
-      <location filename="../src/ui/mainwindow.ui" line="514"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Menü Düğmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="519"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search in page</source>
       <translation>Sayfada ara</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="522"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F</source>
       <translation>Ctrl+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="530"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Full-text search</source>
       <translation>Tam metin araması</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="533"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="544"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>GoldenDict reference</source>
       <translation>GoldenDict referansı</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="552"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Show</source>
       <translation>Göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="560"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export</source>
       <translation>Dışa aktar</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="565"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Import</source>
       <translation>İçe aktar</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="570"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Add</source>
       <translation>Ekle</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="573"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
       <location filename="../src/ui/mainwindow.cc" line="1888"/>
       <location filename="../src/ui/mainwindow.cc" line="1957"/>
@@ -3354,12 +3352,12 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Geçerli sekmeyi favorilere ekle</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+E</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="581"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export to list</source>
       <translation>Listeye aktar</translation>
     </message>
@@ -3409,7 +3407,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Ana pencere her zaman üstte olacak şekilde ayarlanmıştır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="256"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;History Pane</source>
       <translation>&amp;Geçmiş Bölmesi</translation>
     </message>
@@ -3483,62 +3481,62 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>OrderAndProps</name>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="14"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Form</source>
       <translation>Biçim</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="53"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>Etkin olmayan (kapatılmış) sözlükler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="75"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Name:</source>
       <translation>Ad:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="105"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total articles:</source>
       <translation>Toplam madde:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="129"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates from:</source>
       <translation>Bu dilden:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="136"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates to:</source>
       <translation>Bu dile:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="112"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total words:</source>
       <translation>Toplam sözcük:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="251"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>İçindeki öğeleri sürükleyip bırakarak sırayı ayarlayın. Kullanımlarını devre dışı bırakmak için sözlükleri aktif olmayan gruba bırakın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="37"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary order:</source>
       <translation>Sözlük sırası:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="208"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Bu sözlüğü içeren dosyalar:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="67"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary information</source>
       <translation>Sözlük bilgisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="165"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Description:</source>
       <translation>Açıklama:</translation>
     </message>
@@ -3579,69 +3577,67 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="495"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt</source>
       <translation>Alternatif</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="85"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start to system tray</source>
       <translation>Görev çubuğunda başlat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="552"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift only</source>
       <translation>Yalnızca Sol Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="505"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="565"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Win/Meta</source>
       <translation>Kazan/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable system tray icon</source>
       <translation>Görev Çubuğu simgesini etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="933"/>
-      <location filename="../src/ui/preferences.ui" line="1013"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Host:</source>
       <translation>Ev sahibi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="943"/>
-      <location filename="../src/ui/preferences.ui" line="1030"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Port:</source>
       <translation>Liman:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="525"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift</source>
       <translation>Vardiya</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="920"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Type:</source>
       <translation>Tür:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="964"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>User:</source>
       <translation>Kullanıcı:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="371"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Scan Popup</source>
       <translation>&amp;Ekranda Kelime Yakala</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="295"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3649,86 +3645,86 @@ switching to them.</source>
 Bu seçenekleyse, yeni sekmeler açıldığında hemen o sekmeye geçilmeyecek.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use proxy server</source>
       <translation>Proxy sunucusu kullan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="709"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Aşağıdaki kısayolu panodan bir kelime çevirmek için kullanın:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="562"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Windows key or Meta key</source>
       <translation>Windows tuşu yada Veri tuşu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="792"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Ana penceredeki kelimeleri otomatik telaffuz et</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="191"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with system</source>
       <translation>Sistem ile başlat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="512"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt only</source>
       <translation>Yalnızca Sol Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="289"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Tabbed browsing</source>
       <translation>Sekmeli dolaşma</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="482"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift only</source>
       <translation>Yalnızca Sağ Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="92"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>Bu açık durumdayken, ana pencereyi kapatma denemesi, uygulamayı kapatmak
 yerine onu gizler.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Audio</source>
       <translation>&amp;Ses</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="879"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Eğer tüm programın ağ istekleri için bir
 proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="201"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Interface language:</source>
       <translation>Arayüz dili:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="472"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl only</source>
       <translation>Yalnızca Sol Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="300"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs in background</source>
       <translation>Yeni sekmeleri arkaplanda aç</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Network</source>
       <translation>&amp;Ağ</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="542"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl only</source>
       <translation>Yalnızca Sağ Ctrl</translation>
     </message>
@@ -3738,29 +3734,29 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="485"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift</source>
       <translation>Sağ Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="555"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift</source>
       <translation>Sol Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="420"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Bu seçenek açıkken, yalnızca seçilen bütün düğmeler basılı durumdayken Açılır Pencere&apos;de gösterecektir. 
 Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="799"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Ekranda Kelime Yakalarken kelimeleri otomatik seslendir</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="312"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs after the current one</source>
       <translation>Geçerli sekmeden sonra yeni sekme aç</translation>
     </message>
@@ -3770,17 +3766,17 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="492"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt key</source>
       <translation>Alt düğmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1231"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Check for new program releases periodically</source>
       <translation>Düzenli olarak yeni sürümleri kontrol et</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3788,7 +3784,7 @@ be the last ones.</source>
 Aksi takdirde sekmelerin sonuna eklenecektir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="96"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Close to system tray</source>
       <translation>Kapat ve görev çubuğuna yerleş</translation>
     </message>
@@ -3798,14 +3794,14 @@ Aksi takdirde sekmelerin sonuna eklenecektir.</translation>
       <translation>Sistem varsayılanı</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="59"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Etkinleştirildiğinde, ana pencereyi açın, diğer görevleri gerçekleştirmek
 ve kullanabilmek için sistem tepsisinde bir simge belirir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1224"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3816,12 +3812,12 @@ Yeni sürüm varsa GoldenDict kullanıcıyı bilgilendirir,
 ve muhtemelen indirme sayfasını açar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="182"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Startup</source>
       <translation>Başlangıç</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="974"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Password:</source>
       <translation>Şifre:</translation>
     </message>
@@ -3831,7 +3827,7 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>Varsayılan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="50"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Interface</source>
       <translation>&amp;Arayüz</translation>
     </message>
@@ -3841,115 +3837,115 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>Dili Değiştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl key</source>
       <translation>Ctrl düğmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="682"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Aşağıdaki kısayolu ana pencereyi göstermek ya da gizlemek için kullanın:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="515"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt</source>
       <translation>Sol Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="532"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt only</source>
       <translation>Yalnızca Sağ Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="14"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Preferences</source>
       <translation>Tercihler</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="475"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl</source>
       <translation>Sol Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="535"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt</source>
       <translation>Sağ Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="752"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Klavye kısayolları geneldir ve GoldenDict arka planda çalışıyorsa tüm işletim sistemi kapsamında çalışmaktadır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="545"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl</source>
       <translation>Sağ Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="676"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hotkeys</source>
       <translation>Kısayol tuşu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="381"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with scan popup turned on</source>
       <translation>Ekranda Kelime Yakala&apos;mayı açık olarak başlat</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="81"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>Bu seçenekle, uygulama ana penceresini göstermeden, doğrudan sistem çubuğu&apos;nda başlar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="522"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift key</source>
       <translation>Shift düğmesi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="188"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>GoldenDict-ng bilgisayarın her açılışında kendiliğinden başlar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="377"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Ekranda kelime yakala kipinin öntanımlı olarak etkin olup olmadığını gösterir.
 Etkinse, program her zaman aktif kip ile başlar.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="616"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>GoldenDict&apos;kendi pencerelerinden birinde seçim veya pano değiştiğinde açılır pencere gösterme</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="619"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>GoldenDict'in kendi seçimini ve pano değişikliklerini yoksay</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Yerleşik ses desteği aracılığıyla ses dosyalarını oynatın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="818"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use internal player:</source>
       <translation>Dahili oynatıcı kullan:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="825"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Choose audio back end</source>
       <translation>Ses arka ucunu seçin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="845"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enter audio player command line</source>
       <translation>Ses çalar komut satırına girin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1148"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3958,84 +3954,84 @@ kaynaklanmayan içeriğe (resimler, çerçeveler) izin vermeyerek çoğu reklam�
 engellemesini sağlar. Bazı siteler bu nedenle bozulursa, bunu devre dışı bırakmayı deneyin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1153"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>İçeriğin diğer sitelerden yüklenmesine izin verme (çoğu reklamı gizler)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Pronunciation</source>
       <translation>Söyleniş</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="809"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Playback</source>
       <translation>Oynatma</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="835"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use external program:</source>
       <translation>Harici program kullanın:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="282"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Double-click translates the word clicked</source>
       <translation>Çift tıklandığında sözcüğü çevirir</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use any external program to play audio files</source>
       <translation>Ses dosyalarını oynatmak için harici bir program kullan</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="106"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Normalde, ESC tuşuna basarak odak çeviri satırına geçer.
 Bununla birlikte ilgili ana pencere gizlenmiş olacaktır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>ESC key hides main window</source>
       <translation>ESC düğmesi ana pencereyi gizler</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="319"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Yalnızca tek bir sekme açtığınızda ana sekme çubuğunun görmek istemiyorsanız bu seçeneği seçin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="322"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hide single tab</source>
       <translation>Tek sekmeyi gizle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="141"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Büyük bağlam menülerinden kaçınmak için bu değeri ayarlayın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="144"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Bağlam menüsü sözlükleri sınırı:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="388"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Ana pencereye çevrilmiş kelime göndermek yerine açılır pencerede göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="391"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window</source>
       <translation>Ana pencereye çevrilmiş kelime gönder</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="606"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Açılır pencereyi göstermeden önce bir bayrak penceresi gösterin, açılır pencereyi göstermek için bayrağa tıklayın. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="117"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4046,169 +4042,169 @@ makaleye kaydırır. Ancak bu seçenek kapalıyken
 , en üstteki sözlükteki makale gösterilir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="123"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically scroll to target article</source>
       <translation>Hedef makaleye otomatik olarak kaydır</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="208"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dictionary Font: </source>
       <translation>Sözlük Yazı Tipi: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="275"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>set the fallback font family for dictionary</source>
       <translation>sözlük için yedek yazı tipi ailesini ayarla</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="344"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Article Display style:</source>
       <translation>Makale Görüntüleme stili:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="230"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the UI to dark.</source>
       <translation>Kullanıcı arayüzünü karanlığa çevirin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="233"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Mode</source>
       <translation>Karanlık Mod</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="240"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the article display style to dark.</source>
       <translation>Makale görüntüleme stilini karartın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="243"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Reader Mode</source>
       <translation>Karanlık Okuyucu Modu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="329"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>MRU order: Most recently used order.</source>
       <translation>MRU sırası: En son kullanılan sıra.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="398"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Tarama etkinleştirildiğinde pano değişikliklerini izleyin. Fark etme! Linux'ta olmadığınız sürece bunu her zaman etkinleştirmelisiniz.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="401"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Clipboard change</source>
       <translation>Pano değişikliğini izle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="408"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Selection change</source>
       <translation>Seçim değişikliğini izle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Yalnızca tüm seçili tuşlar basılı tutulduğunda teyel seçimi:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="609"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show scan flag when word is selected</source>
       <translation>Kelime seçildiğinde tarama bayrağını göster</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="629"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Delay time</source>
       <translation>Gecikme süresi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="636"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
       <translation> Hanım</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="895"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>System proxy</source>
       <translation>Sistem vekil sunucusu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="902"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom proxy</source>
       <translation>Özel vekil sunucusu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="912"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom settings</source>
       <translation>Özel ayarlar</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="999"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Anki Connect</source>
       <translation>Anki Bağlantı</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1020"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1064"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Deck:</source>
       <translation>Güverte:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1074"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Model:</source>
       <translation>modeli:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1101"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Word</source>
       <translation>Kelime</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1108"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Vocabulary field...</source>
       <translation>Kelime alanı...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1115"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Text</source>
       <translation>Metin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1122"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Definition field...</source>
       <translation>tanım alanı...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1129"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence</source>
       <translation>Cümle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1136"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Cümle alanı (boş olabilir)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1160"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Bazı siteler GoldenDict'i HTTP başlıkları aracılığıyla algılar ve istekleri engeller.
 Sorunu çözmek için bu seçeneği etkinleştirin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1164"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>GoldenDict'i HTTP başlıklarında tanımlamayın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum network cache size:</source>
       <translation>Maksimum ağ önbelleği boyutu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1180"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4217,174 +4213,163 @@ If set to 0 the network disk cache will be disabled.</source>
 0 olarak ayarlanırsa, ağ disk önbelleği devre dışı bırakılır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1185"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1198"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Bu seçenek etkinleştirildiğinde, GoldenDict
 çıkış sırasında ağ önbelleğini diskten temizler.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Clear network cache on exit</source>
       <translation>Çıkışta ağ önbelleğini temizle</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1256"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Full-text search</source>
       <translation>Tam metin araması</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1262"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Allow full-text search for:</source>
       <translation>Tam metin aramaya izin ver:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1302"/>
-      <source>Applies only to new incoming dictionaries.</source>
-      <translation>Yalnızca yeni gelen sözlükler için geçerlidir.</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1305"/>
-      <source>Enable positional information in the fulltext</source>
-      <translation>Tam metinde konum bilgilerini etkinleştir</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1370"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Daha fazlasını içeren sözlüklerde arama yapılmasın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1387"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>articles (0 - unlimited)</source>
       <translation>makaleler (0 - sınırsız)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1430"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ad&amp;vanced</source>
       <translation>Geli&amp;şmiş</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1756"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Art arda yapılan aramalarda, bir sözlük manuel olarak daraltılırsa, bir sonraki aramada da daraltılmış olarak kalır.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1759"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Session collapse</source>
       <translation>oturum çöküşü</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Pano kullanırken, yeni satırdan sonraki her şeyi soyun</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1787"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Yeni bir aramada, görünür olsa bile ana veya açılır pencereye odaklanın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites</source>
       <translation>Favoriler</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1567"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Favori kaydetme aralığı. 0 olarak ayarlanırsa Favoriler yalnızca çıkış sırasında kaydedilecektir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Her öğe silme işlemini onaylamak için bu seçeneği açın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1602"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Confirmation for items deletion</source>
       <translation>Öğelerin silinmesi için onay</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1673"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Fareyle üzerine gelindiğinde, seçimde, panoda veya komut satırında yapılan makul olmayan uzun giriş metni
 yoksaymak için bu seçeneği açın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1677"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore input phrases longer than</source>
       <translation>Şundan daha uzun giriş cümlelerini yoksay</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1640"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Bu boyuttan daha uzun giriş cümleleri göz ardı edilecek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1733"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Makaleleri ararken aksanları yoksaymak için bu seçeneği etkinleştirin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1736"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore diacritics while searching</source>
       <translation>Arama yaparken aksanları yoksay</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1723"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Makalelerin isteğe bağlı bölümlerini her zaman genişletmek için bu seçeneği etkinleştirin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1726"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Expand optional &amp;parts</source>
       <translation>İsteğe bağlı &amp;parçaları genişletin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1663"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Büyük makaleleri otomatik olarak daraltmak için bu seçeneği belirleyin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Collapse articles more than</source>
       <translation>Şundan fazla makaleyi daralt:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1707"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Bu ölçüden daha uzun maddeler daraltılacak</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1633"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore punctuation while searching</source>
       <translation>Arama yaparken noktalama işaretlerini dikkate almayın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1769"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Stardict, Babylon ve GLS sözlüklerinden
 eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek için bu seçeneği açın</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1773"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Extra search via synonyms</source>
       <translation>Eş anlamlı sözcüklerle ek arama</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1656"/>
-      <location filename="../src/ui/preferences.ui" line="1700"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>symbols</source>
       <translation>semboller</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="332"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab sekmelerde MRU sırasına göre gezinir</translation>
     </message>
@@ -4394,64 +4379,62 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Babil</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1438"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History</source>
       <translation>Geçmiş</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1444"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Tercüme edilen kelimelerin geçmişini saklamak için bu seçeneği aç</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1447"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Store &amp;history</source>
       <translation>Geçmişi depola</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles</source>
       <translation>Maddeler</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="252"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Tek fare tıklamasıyla kelimeleri seçmek istiyorsanız bu seçeneği açın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="255"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select word by single click</source>
       <translation>Sözcüğü tek tıkla seç</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="354"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Add-on style:</source>
       <translation>Eklenti biçimi</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1462"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Geçmişte tutulacak en fazla girdi sayısını girin</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1465"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum history size:</source>
       <translation>Azami geçmiş boyutu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Tarih kaydetme aralığı. 0 olarak ayarlanırsa, geçmiş yalnızca çıkış sırasında kaydedilir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1508"/>
-      <location filename="../src/ui/preferences.ui" line="1570"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Save every</source>
       <translation>Hepsini kaydet</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1525"/>
-      <location filename="../src/ui/preferences.ui" line="1590"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>minutes</source>
       <translation>dakika</translation>
     </message>
@@ -4479,6 +4462,16 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> MB</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
+      <translation>Xapian'ın ifade arama ve NEAR operatörünü kullanmak için konum bilgisi gereklidir, ancak veritabanı boyutu çok daha büyük olacaktır. Yalnızca yeni gelen sözlükler için geçerlidir.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Enable index with positional information</source>
+      <translation>Konum bilgisi içeren dizini etkinleştir</translation>
     </message>
   </context>
   <context>
@@ -4559,7 +4552,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="419"/>
-      <location filename="../src/dict/dsl.cc" line="1650"/>
+      <location filename="../src/dict/dsl.cc" line="1671"/>
       <source>Article loading error</source>
       <translation>Madde yüklenme hatası</translation>
     </message>
@@ -4673,22 +4666,22 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>ERROR: %1</source>
       <translation>HATA: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>Resource saving error: </source>
       <translation>Kaynak kaydetme hatası: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>The referenced resource failed to download.</source>
       <translation>Başvurulan kaynak indirilemedi.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>WARNING: %1</source>
       <translation>UYARI: %1</translation>
     </message>
@@ -4717,59 +4710,59 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="142"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+S</source>
       <translation>alt+S</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="14"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Dialog</source>
       <translation>İletişim</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="135"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Sözcüğü Seslendir (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="166"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Favorilere kelime ekle (Ctrl+E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="193"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Sözlükler Çubuğu&apos;nu Göster/Gizle</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="213"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Always stay on top of all other windows</source>
       <translation>Her zaman bütün diğer pencerelerin üstünde dur</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="230"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Bu ekranda kalır ve böylece bu pencere, sabitlenebilir.
 Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="152"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Sözcüğü ana pencereye gönder (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="159"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+W</source>
       <translation>alt+W</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="113"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Back</source>
       <translation>Önceki</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="124"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Forward</source>
       <translation>Sonraki</translation>
     </message>
@@ -4844,22 +4837,22 @@ Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
   <context>
     <name>Sources</name>
     <message>
-      <location filename="../src/ui/sources.ui" line="40"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Files</source>
       <translation>Dosyalar</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="813"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana</source>
       <translation>Hiragana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="753"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Systems:</source>
       <translation>Sistemler:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="780"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Nihon-shiki</source>
       <translation>Nihon-shiki</translation>
     </message>
@@ -4871,17 +4864,17 @@ Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
       <translation>Listeden &lt;b&gt;%1 &lt;/b&gt; sitesi kaldırılsın mı?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="227"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia</source>
       <translation>Vikipedi</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="820"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana Japanese syllabary</source>
       <translation>Japon Katakana hece yazısı</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="109"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
       <translation>Ses dosyalarının dizinlerini buraya ekleyin:</translation>
     </message>
@@ -4892,12 +4885,12 @@ Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
       <translation>Listeden &lt;b&gt;%1 &lt;/b&gt; dizini kaldırılsın mı?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="741"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Japanese Romaji</source>
       <translation>Japonca Romaji</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="790"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
 Standardized as ISO 3602
 
@@ -4908,83 +4901,83 @@ ISO 3602 gibi standart
 Henüz GoldenDict uygulanmadı.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="233"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia (MediaWiki) sites:</source>
       <translation>Vikipedia (MediaWiki) Siteleri:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="103"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Sound Dirs</source>
       <translation>Ses Dizinleri</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="412"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
       <translation>Herhangi bir harici program. %GDWORD% dizesi, sorgu sözcüğüyle değiştirilecektir. Bir dize %GDSEARCH% arama çubuğundaki metinle değiştirilecektir. Her iki parametre de sağlanmazsa, ana sözcük standart girdiye beslenir.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="465"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Lingua Libre</source>
       <translation>Serbest Dil</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="471"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Telaffuz &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;tarafından sağlanmıştır, Wikimedia Fransa'nın işbirliğine dayalı bir dilbilimsel ortam kitaplığı. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="481"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable Lingua Libre</source>
       <translation>Lingua Libre'yi Etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="490"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ISO 639-3 language code</source>
       <translation>ISO 639-3 dil kodu</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="582"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Forvo kullanımı şu anda bir API anahtarı gerektiriyor, kendi anahtarınızı almak için siteye kaydolun.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="605"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kendi anahtarınızı alın &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;buradan&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="760"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
       <translation>Japon harf çevirisinde en çok kullanılan, İngilizce fonolojisi üzerine kurulmuş yöntem</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="810"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>Japon Hiragana hece yazısı</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="835"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Custom transliteration</source>
       <translation>Özel harf çevirisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="844"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
       <translation>Bu yalnızca arama ifadesinde uygulanır, her satır noktalı virgülle ayrılmış bir harf çevirisini temsil eder. Örneğin, ae;æ,kullanıcılar hedef kelimede æ'yi temsil etmek için ae girebilirler.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="854"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ae;æ #this is an example</source>
       <translation>ae;æ #bu bir örnektir</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="681"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Transliteration</source>
       <translation>Harf Çevirisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="774"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most regular system, having a one-to-one relation to the
 kana writing systems. Standardized as ISO 3602
 
@@ -4995,22 +4988,22 @@ ISO 3602 gibi standart.
 GoldenDict için henüz uygulanmadı.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="703"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Russian transliteration</source>
       <translation>Rusça Harf Çevisiri</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="159"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Morphology</source>
       <translation>Morfoloji</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="181"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Change...</source>
       <translation>D&amp;eğiştir...</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
@@ -5019,37 +5012,32 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
 Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="823"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana</source>
       <translation>Katakana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="165"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
       <translation>Hunspell / Myspell sözlükleri bulunan dizinin yolu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="87"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Re&amp;scan now</source>
       <translation>Yenide&amp;n Tara</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="714"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>German transliteration</source>
       <translation>Almanca Harf Çevirisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="292"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Herhangi bir web sitesi. Metin, %GDWORD% arama kelimesi ile değiştirilecektir:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="60"/>
-      <location filename="../src/ui/sources.ui" line="123"/>
-      <location filename="../src/ui/sources.ui" line="247"/>
-      <location filename="../src/ui/sources.ui" line="306"/>
-      <location filename="../src/ui/sources.ui" line="370"/>
-      <location filename="../src/ui/sources.ui" line="429"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Add...</source>
       <translation>&amp;Ekle...</translation>
     </message>
@@ -5061,22 +5049,17 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
       <translation>Bir dizin seç</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="67"/>
-      <location filename="../src/ui/sources.ui" line="130"/>
-      <location filename="../src/ui/sources.ui" line="254"/>
-      <location filename="../src/ui/sources.ui" line="313"/>
-      <location filename="../src/ui/sources.ui" line="377"/>
-      <location filename="../src/ui/sources.ui" line="436"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Remove</source>
       <translation>&amp;Kaldır</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="286"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Websites</source>
       <translation>Ağ Siteleri</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="46"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Paths to search for the dictionary files:</source>
       <translation>Sözlük dosyalarının aranacağı yer:</translation>
     </message>
@@ -5091,22 +5074,22 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
       <translation>Kaldırmayı Onayla</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="803"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Syllabaries:</source>
       <translation>Hece yazıları:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="190"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Available morphology dictionaries:</source>
       <translation>Kullanılabilir Morfoloji Sözlükleri:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="738"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
       <translation>Japonca yazmak için Latin alfabesinin kullanılmasını sağlar</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="202"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Each morphology dictionary appears as a
 separate auxiliary dictionary which
 provides stem words for searches and
@@ -5120,62 +5103,62 @@ görünür.Bunları kullanmak için uygun sözlükleri
 uygun grupların altlarına ekleyin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="764"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="796"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Kunrei-shiki</source>
       <translation>Kunrei-shiki</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="533"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Forvo</source>
       <translation>Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="350"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers</source>
       <translation>DICT sunucuları</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="356"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers:</source>
       <translation>DICT sunucuları:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="545"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>&lt;a href=&quot;http://www.forvo.com/&quot;&gt;Forvo.com&lt;/a&gt; dan canlı telafuzlar. Bu site, insanların kelime telaffuzlarını kaydetmeye ve paylaşmaya izin verir. GoldenDict ile onları dinleyebilirsiniz.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="558"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable pronunciations from Forvo</source>
       <translation>Forvo ile telaffuzu etkinleştir</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="575"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>API Key:</source>
       <translation>API Anahtarı:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="618"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Language codes (comma-separated):</source>
       <translation>Dil kodları (virgülle ayrılmış):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="625"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
       <translation>Kullanmak istediğiniz dil kodlarının listesi. Örneğin, &apos;tr, en &quot;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="648"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
       <translation>Dil kodlarının tam listesi için &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;buraya tıklayın&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="692"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Greek transliteration</source>
       <translation>Yunanca harf çevirisi</translation>
     </message>
@@ -5185,7 +5168,7 @@ uygun grupların altlarına ekleyin.</translation>
       <translation>(taşınabilir sürümü yok)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="406"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Programs</source>
       <translation>Programlar</translation>
     </message>
@@ -5195,12 +5178,12 @@ uygun grupların altlarına ekleyin.</translation>
       <translation>Programı &lt;b&gt;%1&lt;/b&gt; listeden çıkar?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="725"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Belarusian transliteration</source>
       <translation>Belarusça harf çevirisi</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="337"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
       <translation>Alternatif olarak, sırasıyla CP1251 için %GD1251% , ISO 8859-1...ISO 8859-16 için %GDISO1%...%GDISO16% , Big-5 için
@@ -5223,42 +5206,42 @@ uygun grupların altlarına ekleyin.</translation>
   <context>
     <name>TextToSpeechSource</name>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="20"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Selected voice engines:</source>
       <translation>Seçili ses motorları:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="40"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Add</source>
       <translation>&amp;Ekle</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="47"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Remove</source>
       <translation>&amp;Kaldır</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="147"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preview</source>
       <translation>Önizle</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="161"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Available voice engines:</source>
       <translation>Mevcut ses motorları:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="179"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Text to be previewed:</source>
       <translation>Önizlenecek metin:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="186"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Type text to be previewed here.</source>
       <translation>Önizlenecek metni buraya yazın.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="220"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Preview</source>
       <translation>&amp;Önizle</translation>
     </message>
@@ -5283,17 +5266,17 @@ uygun grupların altlarına ekleyin.</translation>
       <translation>Kullanılabilir TTS sesi bulunamıyor.&lt;br&gt;Lütfen bilgisayarınızda en az bir tane TTS motoru yüklü olduğundan emin olun.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="71"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preferences</source>
       <translation>Tercihler</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="77"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Volume:</source>
       <translation>Ses:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="106"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Rate:</source>
       <translation>Oran:</translation>
     </message>

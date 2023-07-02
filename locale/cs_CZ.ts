@@ -4,37 +4,37 @@
   <context>
     <name>About</name>
     <message>
-      <location filename="../src/ui/about.ui" line="17"/>
+      <location filename="../src/ui/about.ui"/>
       <source>About</source>
       <translation>О programu</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="66"/>
+      <location filename="../src/ui/about.ui"/>
       <source>GoldenDict-ng dictionary lookup program, version </source>
       <translation>Prohledávač slovníků GoldenDict, verze </translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="101"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencováno pod GNU GPLv3 nebo novější</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="129"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy version info</source>
       <translation>Kopírovat informace o verzi</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="142"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Copy dictionaries list</source>
       <translation>Kopírovat seznam slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="168"/>
+      <location filename="../src/ui/about.ui"/>
       <source>Credits:</source>
       <translation>Zásluhy:</translation>
     </message>
     <message>
-      <location filename="../src/ui/about.ui" line="91"/>
+      <location filename="../src/ui/about.ui"/>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
       <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
@@ -409,47 +409,47 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="20"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Conversion</source>
       <translation>Čínský konverze</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="23"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
       <translation>Povolit převod mezi zjednodušenými a tradičními čínskými znaky</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="26"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Chinese Con&amp;version</source>
       <translation>Čínská konverze</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="35"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (varianta) znaky</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="38"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Taiwan variant)</source>
       <translation>SC až TC (Taiwan varianta)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="45"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (Hong Kong varianta) znaky</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="48"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>SC to TC (Hong Kong variant)</source>
       <translation>SC až TC (Hong Kong varianta)</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="55"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Povolit převod z tradičních znaků na zjednodušené znaky</translation>
     </message>
     <message>
-      <location filename="../src/ui/chineseconversion.ui" line="58"/>
+      <location filename="../src/ui/chineseconversion.ui"/>
       <source>TC to SC</source>
       <translation>TC až SC</translation>
     </message>
@@ -480,22 +480,22 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>Dialog</name>
     <message>
-      <location filename="../src/ui/authentication.ui" line="14"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Proxy authentication required</source>
       <translation>Je vyžadováno ověření proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="20"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>You need to supply a Username and a Password to access via proxy</source>
       <translation>Musíte zadat uživatelské jméno a heslo pro přístup přes proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="30"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Username:</source>
       <translation>Uživatelské jméno:</translation>
     </message>
     <message>
-      <location filename="../src/ui/authentication.ui" line="40"/>
+      <location filename="../src/ui/authentication.ui"/>
       <source>Password:</source>
       <translation>Heslo:</translation>
     </message>
@@ -503,22 +503,22 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>DictGroupWidget</name>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="14"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="28"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Group icon:</source>
       <translation>Ikona skupiny:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="76"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Shortcut:</source>
       <translation>Zkratka:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictgroupwidget.ui" line="120"/>
+      <location filename="../src/ui/dictgroupwidget.ui"/>
       <source>Favorites folder:</source>
       <translation>Složka Oblíbených položek:</translation>
     </message>
@@ -630,72 +630,72 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>DictHeadwords</name>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="67"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Search mode</source>
       <translation>Režim vyhledávání</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="73"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Tento prvek určuje, jak bude filtr interpretován</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="80"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked on the symbols case will be take in account when filtering</source>
       <translation>Je-li zaškrtnuto v případě symbolů, bude brán v úvahu při filtrování</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="83"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Match case</source>
       <translation>Porovnat velikost písmen</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="93"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Exports headwords to file</source>
       <translation>Exportuje headwords do souboru</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="96"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Export</source>
       <translation>Exportovat</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="119"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Help</source>
       <translation>Nápověda</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="129"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>OK</source>
       <translation>OK</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="35"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Press this button to apply filter to headwords list</source>
       <translation>Stiskněte toto tlačítko pro použití filtru v seznamu sluchátek</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="38"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Apply</source>
       <translation>Použít</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="22"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
       <translation>Je-li zaškrtnuto, jakákoli změna filtru bude okamžitě použita na seznam hlavních slov</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="25"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Auto apply</source>
       <translation>Automaticky použít</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="58"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter:</source>
       <translation>Filtr:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictheadwords.ui" line="51"/>
+      <location filename="../src/ui/dictheadwords.ui"/>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
       <translation>Filtrovat řetězec (fixní řetězec, zástupné znaky nebo regulární výraz)</translation>
     </message>
@@ -764,52 +764,52 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="83"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total articles:</source>
       <translation>Celkem článků:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="52"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates from:</source>
       <translation>Překládá z:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="59"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Total words:</source>
       <translation>Celkem slov:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="66"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Translates to:</source>
       <translation>Překládá do:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="36"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Open folder</source>
       <translation>Otevřít složku</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="76"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Edit dictionary</source>
       <translation>Upravit slovník</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="130"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Soubory obsažené v tomto slovníku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="174"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="196"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Show all unique dictionary headwords</source>
       <translation>Zobrazit všechna unikátní slova slovníku</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.ui" line="199"/>
+      <location filename="../src/ui/dictinfo.ui"/>
       <source>Headwords</source>
       <translation>Záhlaví</translation>
     </message>
@@ -946,7 +946,7 @@ a školní ortografií v cyrilici)</translation>
       <translation>&amp;Slovníky</translation>
     </message>
     <message>
-      <location filename="../src/ui/editdictionaries.ui" line="14"/>
+      <location filename="../src/ui/editdictionaries.ui"/>
       <source>Dictionaries</source>
       <translation>Slovníky</translation>
     </message>
@@ -1011,11 +1011,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Celotextové vyhledávání</translation>
     </message>
     <message>
-      <location filename="../src/fulltextsearch.cc" line="230"/>
-      <source>Whole words</source>
-      <translation>Celá slova</translation>
-    </message>
-    <message>
       <location filename="../src/fulltextsearch.cc" line="231"/>
       <source>Plain text</source>
       <translation>Prostý text</translation>
@@ -1034,6 +1029,11 @@ a školní ortografií v cyrilici)</translation>
       <location filename="../src/fulltextsearch.cc" line="234"/>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
       <translation>podporovat xapian syntaxe, jako A NEBO +/- atd.</translation>
+    </message>
+    <message>
+      <location filename="../src/fulltextsearch.cc" line="230"/>
+      <source>Default</source>
+      <translation>Výchozí</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -1149,53 +1149,52 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="26"/>
-      <location filename="../src/ui/fulltextsearch.ui" line="158"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Search</source>
       <translation>Hledat</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="37"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Mode:</source>
       <translation>Režim:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="63"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Articles found:</source>
       <translation>Nalezené články:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="85"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Available dictionaries in group:</source>
       <translation>Dostupné slovníky ve skupině:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="91"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Wait for indexing:</source>
       <translation>Čekat na indexování:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="204"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Help</source>
       <translation>Nápověda</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="112"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Total:</source>
       <translation>Celkem:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="119"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Indexed:</source>
       <translation>Indexováno:</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="136"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Now indexing: None</source>
       <translation>Nyní indexováno: žádný</translation>
     </message>
     <message>
-      <location filename="../src/ui/fulltextsearch.ui" line="184"/>
+      <location filename="../src/ui/fulltextsearch.ui"/>
       <source>Cancel</source>
       <translation>Zrušit</translation>
     </message>
@@ -1227,27 +1226,27 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>Groups</name>
     <message>
-      <location filename="../src/ui/groups.ui" line="92"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&lt;</source>
       <translation>&lt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="67"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="95"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Del</source>
       <translation>Del</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="70"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Ins</source>
       <translation>Ins</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="133"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Tab 2</source>
       <translation>Tab 2</translation>
     </message>
@@ -1287,12 +1286,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Dejte skupině nové jméno:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="22"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Dictionaries available:</source>
       <translation>Dostupné slovníky:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="146"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Add group</source>
       <translation>Přid&amp;at skupinu</translation>
     </message>
@@ -1302,42 +1301,42 @@ a školní ortografií v cyrilici)</translation>
       <translation>Přidat skupinu</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="143"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create new dictionary group</source>
       <translation>Vytvořit novou skupinu slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="203"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Languages</source>
       <translation>Seskupit podle jazyků</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="210"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
       <translation>Vytvořte skupiny založené na složkách.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="213"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Folders</source>
       <translation>Seskupit podle složek</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="220"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Group by Metadata</source>
       <translation>Seskupit podle metadat</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="244"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
       <translation>Chytněte a přetáhnete slovníky do a ze skupin, posunujte je uvnitř skupin, měňte pořa&amp;dí skupin pomocí myši.</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="153"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Rename current dictionary group</source>
       <translation>Přejmenovat tuto skupinu slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="163"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove current dictionary group</source>
       <translation>Odstranit tuto skupinu slovníků</translation>
     </message>
@@ -1347,43 +1346,43 @@ a školní ortografií v cyrilici)</translation>
       <translation>Pojmenujte novou skupinu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="176"/>
+      <location filename="../src/ui/groups.ui"/>
       <location filename="../src/ui/groups.cc" line="173"/>
       <source>Remove all groups</source>
       <translation>Odstranit všechny skupiny</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="89"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Odstranit ze skupiny vybrané slovníky (Del)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="64"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Add selected dictionaries to group (Ins)</source>
       <translation>Přidejte vybrané slovníky do skupinty (Ins)</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="166"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>&amp;Remove group</source>
       <translation>Odst&amp;ranit skupinu</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="119"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Groups:</source>
       <translation>Skupiny:</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="156"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Re&amp;name group</source>
       <translation>Přejme&amp;novat skupinu</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="173"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Remove all dictionary groups</source>
       <translation>Odstranit všechny skupiny slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/groups.ui" line="200"/>
+      <location filename="../src/ui/groups.ui"/>
       <source>Create language-based groups</source>
       <translation>Vytvořit skupiny založené na jazycích</translation>
     </message>
@@ -1445,17 +1444,17 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>Initializing</name>
     <message>
-      <location filename="../src/ui/initializing.ui" line="99"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Indexing: </source>
       <translation>Indexování: </translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="121"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>Dictionary Name</source>
       <translation>Název slovníku</translation>
     </message>
     <message>
-      <location filename="../src/ui/initializing.ui" line="23"/>
+      <location filename="../src/ui/initializing.ui"/>
       <source>GoldenDict-ng - Initializing</source>
       <translation>Načítám GoldenDict-ng</translation>
     </message>
@@ -2705,27 +2704,27 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="547"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F1</source>
       <translation>F1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="382"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F2</source>
       <translation>F2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="143"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favo&amp;rites</source>
       <translation>&amp;Zabraň se</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="293"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F3</source>
       <translation>F3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="308"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>F4</source>
       <translation>F4</translation>
     </message>
@@ -2745,27 +2744,27 @@ a školní ortografií v cyrilici)</translation>
       <translation>Slovníků: %1, článků: %2, slov: %3</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="95"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Edit</source>
       <translation>&amp;Upravit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="78"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;File</source>
       <translation>&amp;Soubor</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="102"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Help</source>
       <translation>&amp;Nápověda</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="136"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search</source>
       <translation>Hledat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="335"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="383"/>
       <source>&amp;Quit</source>
       <translation>U&amp;končit</translation>
@@ -2776,12 +2775,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Chyba</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="338"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Quit from application</source>
       <translation>Ukončit aplikaci</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="357"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Close To Tray</source>
       <translation>Minimalizovat do systémového &amp;panelu</translation>
     </message>
@@ -2796,27 +2795,27 @@ a školní ortografií v cyrilici)</translation>
       <translation>Přiblížit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="290"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Dictionaries...</source>
       <translation>A&amp;dresáře...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="324"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;About</source>
       <translation>&amp;O programu</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="349"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Forum</source>
       <translation>&amp;Fórum</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="394"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Print</source>
       <translation>Vy&amp;tisknout</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="376"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Save Article</source>
       <translation>Uložit článe&amp;k</translation>
     </message>
@@ -2826,27 +2825,27 @@ a školní ortografií v cyrilici)</translation>
       <translation>Uložit článek jako</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="397"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+P</source>
       <translation>Ctrl + P</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="341"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Q</source>
       <translation>Ctrl + Q</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="360"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Minimizes the window to tray</source>
       <translation>Minimalizuje do systémové lišty</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="405"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Page Set&amp;up</source>
       <translation>Nastavení st&amp;ránky</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="316"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Homepage</source>
       <translation>&amp;Domovská stránka</translation>
     </message>
@@ -2866,7 +2865,7 @@ a školní ortografií v cyrilici)</translation>
       <translation>Zobrazit hlav&amp;ní okno</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="327"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>About GoldenDict-ng</source>
       <translation>О programu GoldenDict-ng</translation>
     </message>
@@ -2896,12 +2895,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Verze&lt;b&gt;%1&lt;/b&gt; programuGoldenDict je dostupná ke stažení.&lt;br&gt;Kliknutím na&lt;b&gt;Stáhnout&lt;/b&gt; se přesunete na stránku souborů ke stažení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="363"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F4</source>
       <translation>Ctrl + F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="424"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F5</source>
       <translation>Ctrl + F5</translation>
     </message>
@@ -2916,12 +2915,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>(nepojmenovaný)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="305"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Preferences...</source>
       <translation>&amp;Předvolby...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="46"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="729"/>
       <source>Welcome!</source>
       <translation>Vítejte!</translation>
@@ -2932,7 +2931,7 @@ a školní ortografií v cyrilici)</translation>
       <translation>Vyslovit slovo (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="379"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Save Article</source>
       <translation>Uložit článek</translation>
     </message>
@@ -2957,22 +2956,22 @@ a školní ortografií v cyrilici)</translation>
       <translation>Není dostupná tiskárna. Prosím, přidejte nějakou.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="115"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;View</source>
       <translation>&amp;Pohled</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="126"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>H&amp;istory</source>
       <translation>H&amp;istorie</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="432"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Clear</source>
       <translation>Vypráz&amp;dnit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="119"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Zoom</source>
       <translation>Přib&amp;lížení</translation>
     </message>
@@ -3017,12 +3016,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Nová karta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="447"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+T</source>
       <translation>Ctrl + T</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="458"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Configuration Folder</source>
       <translation>Složka s nas&amp;tavením</translation>
     </message>
@@ -3083,14 +3082,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Ctrl + M</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="466"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="3625"/>
       <location filename="../src/ui/mainwindow.cc" line="3635"/>
       <source>&amp;Show</source>
       <translation>Zo&amp;brazit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="477"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Export</source>
       <translation>&amp;Exportovat</translation>
     </message>
@@ -3130,12 +3129,12 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Chyba exportu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="469"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+H</source>
       <translation>Ctrl + H</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="485"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Import</source>
       <translation>&amp;Importovat</translation>
     </message>
@@ -3234,104 +3233,103 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Odstranit headword &quot;%1&quot; z oblíbených položek?</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="162"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Search Pane</source>
       <translation>Vyhledávací pan&amp;el</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="202"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Results Navigation Pane</source>
       <translation>Panel p&amp;ro procházení výsledků</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="229"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Favor&amp;ites Pane</source>
       <translation>&amp;Oblíbený panel</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="413"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Print Pre&amp;view</source>
       <translation>&amp;Vytisknout náhled</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="421"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Rescan Files</source>
       <translation>Znovu p&amp;rojít soubory</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="444"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;New Tab</source>
       <translation>&amp;Nová karta</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="496"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;Always on Top</source>
       <translation>Vždy n&amp;ahoře</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="499"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Always on Top</source>
       <translation>Vždy nahoře</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="502"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+O</source>
       <translation>Ctrl + O</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="511"/>
-      <location filename="../src/ui/mainwindow.ui" line="514"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="298"/>
       <source>Menu Button</source>
       <translation>Tlačítko nabídky</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="519"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Search in page</source>
       <translation>Hledat na stránce</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="522"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+F</source>
       <translation>Ctrl + F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="530"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Full-text search</source>
       <translation>Celotextové vyhledávání</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="533"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+Shift+F</source>
       <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="544"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>GoldenDict reference</source>
       <translation>GoldenDict reference</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="552"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Show</source>
       <translation>Zobrazit</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="560"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export</source>
       <translation>Exportovat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="565"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Import</source>
       <translation>Importovat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="570"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Add</source>
       <translation>Přidat</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="573"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <location filename="../src/ui/mainwindow.cc" line="269"/>
       <location filename="../src/ui/mainwindow.cc" line="1888"/>
       <location filename="../src/ui/mainwindow.cc" line="1957"/>
@@ -3340,12 +3338,12 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Přidat aktuální kartu do oblíbených</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="576"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Ctrl+E</source>
       <translation>Ctrl + E</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="581"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>Export to list</source>
       <translation>Exportovat do seznamu</translation>
     </message>
@@ -3395,7 +3393,7 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Hlavní okno je nastaveno vždy nahoře.</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.ui" line="256"/>
+      <location filename="../src/ui/mainwindow.ui"/>
       <source>&amp;History Pane</source>
       <translation>&amp;Panel historie</translation>
     </message>
@@ -3469,62 +3467,62 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>OrderAndProps</name>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="14"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="53"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>Neaktivní (vypnuté) slovníky:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="75"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Name:</source>
       <translation>Jméno:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="105"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total articles:</source>
       <translation>Celkem článků:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="129"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates from:</source>
       <translation>Překládá z:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="136"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Translates to:</source>
       <translation>Překládá do:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="112"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Total words:</source>
       <translation>Celkem slov:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="251"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Upravte pořadí uchopením a přesunutím na požadované místo. Pšesuňte slovníky do neaktivní skupiny pro zakázání jejich použití.</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="37"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary order:</source>
       <translation>Pořadí slovníků:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="208"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Files comprising this dictionary:</source>
       <translation>Soubory obsažené v tomto slovníku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="67"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Dictionary information</source>
       <translation>Informace o slovníku</translation>
     </message>
     <message>
-      <location filename="../src/ui/orderandprops.ui" line="165"/>
+      <location filename="../src/ui/orderandprops.ui"/>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -3565,69 +3563,67 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>Preferences</name>
     <message>
-      <location filename="../src/ui/preferences.ui" line="495"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt</source>
       <translation>Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="85"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start to system tray</source>
       <translation>Spustit se v systémovém panelu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="552"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift only</source>
       <translation>Pouze levý Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="505"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="565"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Win/Meta</source>
       <translation>Win/Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="63"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable system tray icon</source>
       <translation>Povolit ikonu v systémovém panelu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="933"/>
-      <location filename="../src/ui/preferences.ui" line="1013"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Host:</source>
       <translation>Hostitel:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="943"/>
-      <location filename="../src/ui/preferences.ui" line="1030"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Port:</source>
       <translation>Přístav:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="525"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift</source>
       <translation>Přesunout</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="920"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Type:</source>
       <translation>Typ:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="964"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>User:</source>
       <translation>Uživatel:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="371"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Scan Popup</source>
       <translation>Vy&amp;skakovací okno</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="295"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
@@ -3635,86 +3631,86 @@ switching to them.</source>
 Takto se budou nové karty otevírat bez přepnutí.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="883"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use proxy server</source>
       <translation>Použít proxy server</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="709"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to translate a word from clipboard:</source>
       <translation>Použijte následující klávesu pro přeložení slova ze schránky:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="562"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Windows key or Meta key</source>
       <translation>Klávesa Windows nebo Meta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="792"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in main window</source>
       <translation>Automaticky vyslovovat slova v hlavním okně</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="191"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with system</source>
       <translation>Spustit se systémem</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="512"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt only</source>
       <translation>Pouze levý Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="289"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Tabbed browsing</source>
       <translation>Prohlížení v kartách</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="482"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift only</source>
       <translation>Pouze pravý Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="92"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
       <translation>S touto volbou pokus o zavření hlavního okna jej pouze skryje namísto 
 ukončení aplikace.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Audio</source>
       <translation>&amp;Zvuk</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="879"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
       <translation>Povolit pokud chcete použít proxy server
 pro všechny síťové požadavky programu.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="201"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Interface language:</source>
       <translation>Jazyk rozhraní:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="472"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl only</source>
       <translation>Pouze levý Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="300"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs in background</source>
       <translation>Otevřít nové karty na pozadí</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="873"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Network</source>
       <translation>&amp;Síť</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="542"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl only</source>
       <translation>Pouze pravý Ctrl</translation>
     </message>
@@ -3724,29 +3720,29 @@ pro všechny síťové požadavky programu.</translation>
       <translation>Lingvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="485"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Shift</source>
       <translation>Pravý Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="555"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Shift</source>
       <translation>Levý Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="420"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
       <translation>Pokud toto zapnete, vyskakovací okno se zobrazí pouze pokud jsou
 zvolené klávesy stisknuty při změně výběru.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="799"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Auto-pronounce words in scan popup</source>
       <translation>Automaticky vyslovovat slova ve vyskakovacím okně</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="312"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Open new tabs after the current one</source>
       <translation>Otevírat nové karty za současnou</translation>
     </message>
@@ -3756,17 +3752,17 @@ zvolené klávesy stisknuty při změně výběru.</translation>
       <translation>Restartujte program aby se provedla změna jazyka.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="492"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Alt key</source>
       <translation>Klávesa Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1231"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Check for new program releases periodically</source>
       <translation>Periodicky kontrolovat dostupnost nových verzí</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="307"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
@@ -3774,7 +3770,7 @@ be the last ones.</source>
 kartou. Jinak jsou otevřeny jako poslední.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="96"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Close to system tray</source>
       <translation>Minimalizovat do systémové lišty</translation>
     </message>
@@ -3784,14 +3780,14 @@ kartou. Jinak jsou otevřeny jako poslední.</translation>
       <translation>Výchozí systému</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="59"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
       <translation>Pokud zapnuto, zobrazí se v systémovém panelu ikona, která pak může 
 být použita pro otevření hlavního okna a k provádění jiných úloh.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1224"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3803,12 +3799,12 @@ Pokud se tak stalo, program informuje uživatele
 a nabídne otevření stránky s aktualizací ke stažení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="182"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Startup</source>
       <translation>Spuštění</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="974"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Password:</source>
       <translation>Heslo:</translation>
     </message>
@@ -3818,7 +3814,7 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>Výchozí</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="50"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>&amp;Interface</source>
       <translation>&amp;Rozhraní</translation>
     </message>
@@ -3828,116 +3824,116 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>Měním jazyk</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl key</source>
       <translation>Klávesa Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="682"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use the following hotkey to show or hide the main window:</source>
       <translation>Použijte následující klávesovou zkratku pro zobrazení nebo zkrytí hlavního okna:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="515"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Alt</source>
       <translation>Levý Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="532"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt only</source>
       <translation>Pouze pravý Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="14"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Preferences</source>
       <translation>Předvolby</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="475"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Left Ctrl</source>
       <translation>Levý Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="535"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Alt</source>
       <translation>Pravý Alt</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="752"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Klávesové zkratky jsou globální a fungují z jakéhokoliv programu a v jakémkoliv kontextu dokud GoldenDict běží na pozadí.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="545"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Right Ctrl</source>
       <translation>Pravý Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="676"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hotkeys</source>
       <translation>Klávesové zkratky</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="381"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Start with scan popup turned on</source>
       <translation>Spouštět s povoleným vyskakovacím oknem</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="81"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
       <translation>S touto volbou se aplikace spustí rovnou do systémové lišty bez zobrazení 
 hlavního okna.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="522"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Shift key</source>
       <translation>Klávesa Shift</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="188"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
       <translation>Automaticky spustí GoldenDict po spuštění systému.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="377"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Chooses whether the scan popup mode is on by default or not. If checked,
 the program would always start with the scan popup active.</source>
       <translation>Určuje, zda je vyskakovací okno automaticky povoleno nebo zakázáno. Pokud
 zaškrtnuto, program bude automaticky startovat s aktivovaným vyskakovacím oknem.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="616"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
       <translation>Nezobrazovat vyskakovací okno, když se změní výběr nebo schránka v jednom z vlastních oken GoldenDict</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="619"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
       <translation>Ignorujte vlastní výběr a změny schránky GoldenDict</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="815"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Play audio files via built-in audio support</source>
       <translation>Přehrávat zvukové soubory pomocí podpory vestavěného zvuku</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="818"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use internal player:</source>
       <translation>Použít interní přehrávač:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="825"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Choose audio back end</source>
       <translation>Vybrat konec zvuku</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="845"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enter audio player command line</source>
       <translation>Zadejte příkazový řádek pro audio přehrávač</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1148"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
@@ -3946,84 +3942,84 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
 Pokud se kvůli tomuto některé stránky rozbijí, zkuste toto vypnout.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1153"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
       <translation>Zakázat načítání obsahu z jiných stránek (skryje většinu reklam)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="786"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Pronunciation</source>
       <translation>Výslovnost</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="809"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Playback</source>
       <translation>Přehrání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="835"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use external program:</source>
       <translation>Použít externí program:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="282"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Double-click translates the word clicked</source>
       <translation>Dvojklik přeloží označené slovo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="832"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Use any external program to play audio files</source>
       <translation>Pro přehrání audio souborů použít externí program</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="106"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
       <translation>Stisk ESC obvykle přepne na hlavní řádek překladu.
 S touto volbou ale sryje hlavní okno.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="110"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>ESC key hides main window</source>
       <translation>Klávesa ESC skryje hlavní okno</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="319"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
       <translation>Vyberte tuto volbu pokud chcete aby se zobrazoval pruh s kartami ikdyž je otevřena jenom jedna karta.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="322"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Hide single tab</source>
       <translation>Skrýt jednu kartu</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="141"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Adjust this value to avoid huge context menus.</source>
       <translation>Upravte tuto hodnotu abyste se vyhnuli velkým kontextovm nabídkám.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="144"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Context menu dictionaries limit:</source>
       <translation>Limit slovníků kontextové nabídky:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="388"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Poslat přeložené slovo do hlavního okna namísto zobrazení ve vyskakovacím okně</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="391"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Send translated word to main window</source>
       <translation>Poslat přeložené slovo do hlavního okna</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="606"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
       <translation>Zobrazit vlajkové okno před zobrazením vyskakovacího okna, klikněte na vlajku pro zobrazení vyskakovacího okna. </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="117"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
@@ -4034,169 +4030,169 @@ posouvá článek ze stejného slovníku. S touto možností vypnuto,
 ale článek z nejhornějšího slovníku je zobrazen.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="123"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Automatically scroll to target article</source>
       <translation>Automaticky přejít na cílový článek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="208"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dictionary Font: </source>
       <translation>Písmo slovníku: </translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="275"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>set the fallback font family for dictionary</source>
       <translation>nastaví záložní rodinu fontů pro slovník</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="344"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Article Display style:</source>
       <translation>Styl zobrazení článku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="230"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the UI to dark.</source>
       <translation>Otočit UI a ztmavit.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="233"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Mode</source>
       <translation>Tmavý režim</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="240"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn the article display style to dark.</source>
       <translation>Otočit styl zobrazení článku na tmavou.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="243"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Dark Reader Mode</source>
       <translation>Tmavý čtecí režim</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="329"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>MRU order: Most recently used order.</source>
       <translation>MRU objednávky: Naposledy použité objednávky.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="398"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
       <translation>Pokud je povoleno skenování, schránka se změní. Upozornění! Toto byste měli vždy povolit, pokud nejste v Linuxu.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="401"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Clipboard change</source>
       <translation>Změna schránky trasy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="408"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Track Selection change</source>
       <translation>Změna výběru trasy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="424"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Výběr sady pouze, když jsou stisknuty všechny vybrané klávesy:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="609"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Show scan flag when word is selected</source>
       <translation>Zobrazit znak skenování, když je zvoleno slovo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="629"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Delay time</source>
       <translation>Zpoždění</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="636"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
       <translation> slečna</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="895"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>System proxy</source>
       <translation>Systémové proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="902"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom proxy</source>
       <translation>Vlastní proxy</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="912"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Custom settings</source>
       <translation>Vlastní nastavení</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="999"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Anki Connect</source>
       <translation>Anki připojení</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1020"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>http://</source>
       <translation>http://</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1064"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Deck:</source>
       <translation>Balíček:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1074"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Model:</source>
       <translation>Vzor:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1101"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Word</source>
       <translation>Slovo</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1108"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Vocabulary field...</source>
       <translation>Pole slovníku...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1115"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Text</source>
       <translation>Text</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1122"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Definition field...</source>
       <translation>Pole definice...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1129"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence</source>
       <translation>Věta</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1136"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Sentence field (can be empty)...</source>
       <translation>Pole věty (může být prázdné)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1160"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Některé stránky detekují GoldenDict přes hlavičky HTTP a blokují jeho požadavky.
 Povolením této volby problém obejdete.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1164"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Do not identify GoldenDict in HTTP headers</source>
       <translation>Neidentifikovat GoldenDict v lavičkách HTTP</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1173"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum network cache size:</source>
       <translation>Maximální velikost síťové mezipaměti:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1180"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
@@ -4205,174 +4201,163 @@ If set to 0 the network disk cache will be disabled.</source>
 Pokud je nastaveno na 0, mezipaměť síťového disku bude zakázána.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1185"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source> MiB</source>
       <translation> MiB</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1198"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
       <translation>Pokud je tato volba povolena, GoldenDict
 vymaže její síťovou mezipaměť při ukončení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1202"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Clear network cache on exit</source>
       <translation>Vymazat síťovou mezipaměť při ukončení</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1256"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Full-text search</source>
       <translation>Celotextové vyhledávání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1262"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Allow full-text search for:</source>
       <translation>Povolit fulltextové vyhledávání:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1302"/>
-      <source>Applies only to new incoming dictionaries.</source>
-      <translation>Platí pouze pro nové příchozí slovníky.</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1305"/>
-      <source>Enable positional information in the fulltext</source>
-      <translation>Povolit poziční informace ve fulltextu</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui" line="1370"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Don&apos;t search in dictionaries containing more than</source>
       <translation>Nehledejte ve slovnících obsahujících více než</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1387"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>articles (0 - unlimited)</source>
       <translation>články (0 - neomezeně)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1430"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ad&amp;vanced</source>
       <translation>Pok&amp;ročilé</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1756"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
       <translation>Při postupném vyhledávání,pokud je jeden slovník zřícený manuálně, zůstane zkrachován při příštím hledání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1759"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Session collapse</source>
       <translation>Sbalování relace</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1780"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>When using clipboard,strip everything after newline</source>
       <translation>Při používání schránky odstraňte vše po nové lince</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1787"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Při novém hledání zaměřte hlavní nebo vyskakovací okno, i když je viditelné</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1550"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites</source>
       <translation>Oblíbené</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1567"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Interval ukládání Oblíbených položek. Je-li nastaveno na 0 Oblíbených bude uloženo pouze při ukončení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1599"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
       <translation>Zapněte tuto možnost pro potvrzení každé operace odstranění položek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1602"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Confirmation for items deletion</source>
       <translation>Potvrzení pro odstranění položek</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1673"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Zapněte tuto možnost pro ignorování nepřiměřeně dlouhého textu
 od přejetí myší, výběru, schránky nebo příkazové řádky</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1677"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore input phrases longer than</source>
       <translation>Ignorovat vstupní fráze delší než</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1640"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Input phrases longer than this size will be ignored</source>
       <translation>Vstupní fráze delší než tato velikost bude ignorována</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1733"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to ignore diacritics while searching articles</source>
       <translation>Zapněte tuto možnost pro ignorování diakritiky při hledání článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1736"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore diacritics while searching</source>
       <translation>Ignorovat diakritiku při hledání</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1723"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to always expand optional parts of articles</source>
       <translation>Zapněte tuto volbu aby byly vždy rozbalovány volitelné části článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1726"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Expand optional &amp;parts</source>
       <translation>&amp;Rozbalovat volitelné části</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1663"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select this option to automatic collapse big articles</source>
       <translation>Vyberte tuto volbu pro automatické sbalení článků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1666"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Collapse articles more than</source>
       <translation>Sbalit čláky delší než</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1707"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles longer than this size will be collapsed</source>
       <translation>Články delší než tato velikost budou sbaleny</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1633"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ignore punctuation while searching</source>
       <translation>Při hledání ignorovat interpunkci</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1769"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
       <translation>Zapněte tuto možnost pro povolení hledání dalších článků přes seznamy synonym
 ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1773"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Extra search via synonyms</source>
       <translation>Další hledání pomocí synonym</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1656"/>
-      <location filename="../src/ui/preferences.ui" line="1700"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>symbols</source>
       <translation>symboly</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="332"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab přepíná na naposled použité karty</translation>
     </message>
@@ -4382,64 +4367,62 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Babylon</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1438"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History</source>
       <translation>Historie</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1444"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to store history of the translated words</source>
       <translation>Zapněte tuto volbu pro ukládání historie překládaných slov</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1447"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Store &amp;history</source>
       <translation>Ukládat &amp;historii</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1627"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Articles</source>
       <translation>Články</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="252"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on if you want to select words by single mouse click</source>
       <translation>Zapněte tuto volbu pokud chcete vybírat slova jedním kliknutím myši</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="255"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Select word by single click</source>
       <translation>Vybírat slovo jedním kliknutím</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="354"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Add-on style:</source>
       <translation>Styl doplňku:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1462"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Specify the maximum number of entries to keep in history.</source>
       <translation>Určete maximální počet záznamů, jenž se má uchovávat v historii.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1465"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Maximum history size:</source>
       <translation>Maximální velikost historie:</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1502"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
       <translation>Interval ukládání historie. Pokud nastaven na 0, historie bude uložena při ukončení.</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1508"/>
-      <location filename="../src/ui/preferences.ui" line="1570"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>Save every</source>
       <translation>Uložit každých</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.ui" line="1525"/>
-      <location filename="../src/ui/preferences.ui" line="1590"/>
+      <location filename="../src/ui/preferences.ui"/>
       <source>minutes</source>
       <translation>minut</translation>
     </message>
@@ -4467,6 +4450,16 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <location filename="../src/ui/preferences.cc" line="125"/>
       <source> MB</source>
       <translation> MB</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
+      <translation>Informace o poloze jsou vyžadovány pro použití frázového vyhledávání Xapian a operátoru NEAR, ale velikost databáze bude mnohem větší. Platí pouze pro nové příchozí slovníky.</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Enable index with positional information</source>
+      <translation>Povolit index s informacemi o poloze</translation>
     </message>
   </context>
   <context>
@@ -4547,7 +4540,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <name>QObject</name>
     <message>
       <location filename="../src/dict/aard.cc" line="419"/>
-      <location filename="../src/dict/dsl.cc" line="1650"/>
+      <location filename="../src/dict/dsl.cc" line="1671"/>
       <source>Article loading error</source>
       <translation>Chyba při načítání článku</translation>
     </message>
@@ -4661,22 +4654,22 @@ ze Stardict, Babylon a GLS slovníků</translation>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>ERROR: %1</source>
       <translation>CHYBA: %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2480"/>
+      <location filename="../src/ui/articleview.cc" line="2472"/>
       <source>Resource saving error: </source>
       <translation>Chyba při upkládání zdroje: </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>The referenced resource failed to download.</source>
       <translation>Odkázaný zdroj se nepovedlo stáhnout.</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2506"/>
+      <location filename="../src/ui/articleview.cc" line="2498"/>
       <source>WARNING: %1</source>
       <translation>VAROVÁNÍ: %1</translation>
     </message>
@@ -4705,59 +4698,59 @@ ze Stardict, Babylon a GLS slovníků</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="142"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+S</source>
       <translation>Alt + S</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="14"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Dialog</source>
       <translation>Dialog</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="135"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Vyslovit slovo (Alt+S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="166"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Přidat slovo do oblíbených (Ctrl + E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="193"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Shows or hides the dictionary bar</source>
       <translation>Zobrazí nebo zkryje pruh slovníků</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="213"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Always stay on top of all other windows</source>
       <translation>Vždy zůstat nad všemi ostatními okny</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="230"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Toto použijte pro připíchnutí okna, aby zůstalo na obrazovce.
 Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="152"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Send word to main window (Alt+W)</source>
       <translation>Poslat slovo do hlavního okna (Alt+W)</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="159"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Alt+W</source>
       <translation>Alt + W</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="113"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Back</source>
       <translation>Zpět</translation>
     </message>
     <message>
-      <location filename="../src/ui/scanpopup.ui" line="124"/>
+      <location filename="../src/ui/scanpopup.ui"/>
       <source>Forward</source>
       <translation>Vpřed</translation>
     </message>
@@ -4832,22 +4825,22 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
   <context>
     <name>Sources</name>
     <message>
-      <location filename="../src/ui/sources.ui" line="40"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Files</source>
       <translation>Soubory</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="813"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana</source>
       <translation>Hiragana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="753"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Systems:</source>
       <translation>Systémy:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="780"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Nihon-shiki</source>
       <translation>Nihon-shiki</translation>
     </message>
@@ -4859,17 +4852,17 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
       <translation>Odstranit stránky &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="227"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia</source>
       <translation>Wikipedie</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="820"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana Japanese syllabary</source>
       <translation>Japonský slabikář Katakana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="109"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
       <translation>Vytvořit ze skupin audio souborů slovníky tak, že zde vložíte jejich cesty:</translation>
     </message>
@@ -4880,12 +4873,12 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
       <translation>Odstranit adresář &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="741"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Japanese Romaji</source>
       <translation>Japonština (Romaji)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="790"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
 Standardized as ISO 3602
 
@@ -4896,84 +4889,84 @@ standardizovanou jako ISO 3602.
 V GoldenDictu ještě není implementován.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="233"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Wikipedia (MediaWiki) sites:</source>
       <translation>Stránky Wikipedia (MediaWiki):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="103"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Sound Dirs</source>
       <translation>Adresáře se zvukem</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="412"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
       <translation>Všechny externí programy. Řetězec %GDWORD% bude nahrazen slovem dotazu. Řetězec %GDSEARCH% bude nahrazen textem v panelu vyhledávání. Pokud nejsou uvedeny oba parametry, bude záhlaví vloženo do standardního vstupu.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="465"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Lingua Libre</source>
       <translation>Lingua Libre</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="471"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prokázané &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, kooperativní jazyková mediální knihovna Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="481"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable Lingua Libre</source>
       <translation>Povolit Lingua Libre</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="490"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ISO 639-3 language code</source>
       <translation>Kód jazyka podle ISO 639-3</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="582"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Použití Forvo v současné době vyžaduje API klíč, zaregistrujte se na stránkách, abyste získali svůj vlastní klíč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="605"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Získejte vlastní klíč &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;zde&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="760"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
       <translation>Nejčastěji používaná metoda přepisu Japonštiny,
 založená na Anglické fonologii</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="810"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hiragana Japanese syllabary</source>
       <translation>Japonský slabokář Hiragana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="835"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Custom transliteration</source>
       <translation>Vlastní přepis</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="844"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
       <translation>To platí pouze ve vyhledávací frázi, přičemž každý řádek představuje přepis, oddělený středníkem. Například ae;æ, uživatelé mohou vložit ae reprezentovat æ v cílovém slově.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="854"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>ae;æ #this is an example</source>
       <translation>ae;æ #toto je příklad</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="681"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Transliteration</source>
       <translation>Přepis</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="774"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>The most regular system, having a one-to-one relation to the
 kana writing systems. Standardized as ISO 3602
 
@@ -4984,22 +4977,22 @@ systémem kana. Standardizován jako ISO 3602.
 V GoldenDictu ještě není implementován.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="703"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Russian transliteration</source>
       <translation>Ruský přepis</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="159"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Morphology</source>
       <translation>Morfologie</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="181"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Change...</source>
       <translation>Z&amp;měnit...</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="500"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
@@ -5008,37 +5001,32 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
 Úplný seznam dostupných jazyků naleznete &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; zde &lt;/a&gt;</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="823"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Katakana</source>
       <translation>Katakana</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="165"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
       <translation>Cesta k adresáři se slovníky Hunspell/Myspell:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="87"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Re&amp;scan now</source>
       <translation>Znovu &amp;projít</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="714"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>German transliteration</source>
       <translation>Německý přepis</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="292"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Kteroukoliv stránku. Řetězec %GDWORD% bude nahrazen hledaným slovem:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="60"/>
-      <location filename="../src/ui/sources.ui" line="123"/>
-      <location filename="../src/ui/sources.ui" line="247"/>
-      <location filename="../src/ui/sources.ui" line="306"/>
-      <location filename="../src/ui/sources.ui" line="370"/>
-      <location filename="../src/ui/sources.ui" line="429"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Add...</source>
       <translation>Přid&amp;at...</translation>
     </message>
@@ -5050,22 +5038,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Vyberte adresář</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="67"/>
-      <location filename="../src/ui/sources.ui" line="130"/>
-      <location filename="../src/ui/sources.ui" line="254"/>
-      <location filename="../src/ui/sources.ui" line="313"/>
-      <location filename="../src/ui/sources.ui" line="377"/>
-      <location filename="../src/ui/sources.ui" line="436"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>&amp;Remove</source>
       <translation>Odeb&amp;rat</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="286"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Websites</source>
       <translation>Webové stránky</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="46"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Paths to search for the dictionary files:</source>
       <translation>Cesty k vyhledávání souborů slovníků:</translation>
     </message>
@@ -5080,22 +5063,22 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Potvrdit odebrání</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="803"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Syllabaries:</source>
       <translation>Slabikáře:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="190"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Available morphology dictionaries:</source>
       <translation>Dostupné slovníky morfologie:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="738"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
       <translation>Zapne psaní japonského jazyka Latinkou</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="202"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Each morphology dictionary appears as a
 separate auxiliary dictionary which
 provides stem words for searches and
@@ -5110,62 +5093,62 @@ Přidejte si pro jejich použitií vhodné adresáře
 na spodek vhodných skupin.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="764"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="796"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Kunrei-shiki</source>
       <translation>Kunrei-shiki</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="533"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Forvo</source>
       <translation>Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="350"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers</source>
       <translation>DICT servery</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="356"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>DICT servers:</source>
       <translation>DICT servery:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="545"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
       <translation>Živá výslovnost z &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Stránky umožňují lidem nahrávat a sdílet výslovnosti slov. V GoldenDictu si je můžete poslechnout.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="558"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Enable pronunciations from Forvo</source>
       <translation>Povolit výslovnost z Forvo</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="575"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>API Key:</source>
       <translation>Klíč API:</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="618"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Language codes (comma-separated):</source>
       <translation>Kódy jazyků (oddělené čárkou):</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="625"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
       <translation>Seznam kódů jazyků, které byste chtěli. Např.: &quot;en, ru&quot;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="648"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
       <translation>Plný seznam jazyků je dostupný &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;zde&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="692"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Greek transliteration</source>
       <translation>Řecký přepis</translation>
     </message>
@@ -5175,7 +5158,7 @@ na spodek vhodných skupin.</translation>
       <translation>(nedostupné v portabilní verzi)</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="406"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Programs</source>
       <translation>Programy</translation>
     </message>
@@ -5185,12 +5168,12 @@ na spodek vhodných skupin.</translation>
       <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="725"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Belarusian transliteration</source>
       <translation>Běloruský přepis</translation>
     </message>
     <message>
-      <location filename="../src/ui/sources.ui" line="337"/>
+      <location filename="../src/ui/sources.ui"/>
       <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
 %GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
       <translation>Případně použijte %GD1251% pro CP1251, %GDISO1%...%GDISO16% pro ISO 8859-1...ISO 8859-16, nebo
@@ -5213,42 +5196,42 @@ na spodek vhodných skupin.</translation>
   <context>
     <name>TextToSpeechSource</name>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="20"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Selected voice engines:</source>
       <translation>Zvolené syntetizátory hlasu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="40"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Add</source>
       <translation>Přid&amp;at</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="47"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Remove</source>
       <translation>Odeb&amp;rat</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="147"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preview</source>
       <translation>Náhled</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="161"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Available voice engines:</source>
       <translation>Nedostupné syntetizátory hlasu:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="179"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Text to be previewed:</source>
       <translation>Text pro náhled:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="186"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Type text to be previewed here.</source>
       <translation>Zde napište text, jenž poslouží jako náhled.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="220"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>&amp;Preview</source>
       <translation>Náhle&amp;d</translation>
     </message>
@@ -5273,17 +5256,17 @@ na spodek vhodných skupin.</translation>
       <translation>Nelze najít dostupný hlas TTS.&lt;br&gt;Prosím, ujistěte se, že aspoň jeden hlas TTS je již na vašem počítači nainstalován.</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="71"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Preferences</source>
       <translation>Předvolby</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="77"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Volume:</source>
       <translation>Hlasitost:</translation>
     </message>
     <message>
-      <location filename="../src/ui/texttospeechsource.ui" line="106"/>
+      <location filename="../src/ui/texttospeechsource.ui"/>
       <source>Rate:</source>
       <translation>Vzorkovací frekvence:</translation>
     </message>
