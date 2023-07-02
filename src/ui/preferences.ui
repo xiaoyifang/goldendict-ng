@@ -1296,16 +1296,6 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="7" column="0">
-           <widget class="QCheckBox" name="enablePosition">
-            <property name="toolTip">
-             <string>Positional information is required to use Xapian's phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</string>
-            </property>
-            <property name="text">
-             <string>Enable index with positional information</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
            <widget class="QCheckBox" name="allowAard">
             <property name="text">
@@ -1362,7 +1352,7 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="6" column="0" colspan="2">
            <layout class="QHBoxLayout" name="horizontalLayout_14">
             <item>
              <widget class="QLabel" name="label_14">
@@ -1402,6 +1392,16 @@ download page.</string>
              </spacer>
             </item>
            </layout>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="QCheckBox" name="enablePosition">
+            <property name="toolTip">
+             <string>Positional information is required to use Xapian's phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</string>
+            </property>
+            <property name="text">
+             <string>Enable index with positional information</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
