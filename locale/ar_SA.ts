@@ -4454,7 +4454,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>المعلومات الموضعية مطلوبة لاستخدام البحث عن عبارة Xapian وعامل NEAR ، لكن حجم قاعدة البيانات سيكون أكبر بكثير. ينطبق فقط على القواميس الواردة الجديدة.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
