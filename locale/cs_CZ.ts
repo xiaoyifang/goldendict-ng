@@ -1033,7 +1033,7 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Výchozí</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4454,12 +4454,12 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Informace o poloze jsou vyžadovány pro vyhledávání frází Xapian&apos;s a operátor NEAR, ale velikost databáze bude mnohem větší. Platí pouze pro nové příchozí slovníky.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Povolit index s informacemi o poloze</translation>
     </message>
   </context>
   <context>
