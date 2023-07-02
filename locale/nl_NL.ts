@@ -4456,7 +4456,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Positionele informatie is vereist om Xapian&apos;s zinzoeken en NEAR-operator te gebruiken, maar de database zal veel groter zijn. Geldt alleen voor nieuwe inkomende woordenboeken.</translation>
+      <translation>Er is positionele informatie nodig om Xapian's frase-zoekfunctie en NEAR-operator te gebruiken, maar de database zal veel groter zijn. Geldt alleen voor nieuwe inkomende woordenboeken.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
