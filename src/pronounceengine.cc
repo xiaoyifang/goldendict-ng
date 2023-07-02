@@ -1,9 +1,8 @@
 #include "pronounceengine.hh"
 
-PronounceEngine::PronounceEngine(QObject *parent)
-  : QObject{parent}
+PronounceEngine::PronounceEngine( QObject * parent ):
+  QObject{ parent }
 {
-
 }
 
 

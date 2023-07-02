@@ -12,9 +12,7 @@ std::string addAudioLink( std::string const & url,
   GlobalBroadcaster::instance()->pronounce_engine.sendAudio(
     QString::fromStdString( url.substr( 1, url.length() - 2 ) ) );
 
-  return std::string( "<script type=\"text/javascript\">" +
-    makeAudioLinkScript( url, dictionaryId ) +
-    "</script>" );
+  return std::string( "<script type=\"text/javascript\">" + makeAudioLinkScript( url, dictionaryId ) + "</script>" );
 }
 
 std::string makeAudioLinkScript( std::string const & url,
