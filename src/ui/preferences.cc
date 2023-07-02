@@ -465,8 +465,9 @@ Config::Preferences Preferences::getPreferences()
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
-  p.fts.enabled = ui.ftsGroupBox->isChecked();
+  p.fts.enabled           = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();
+  p.fts.enablePosition    = ui.enablePosition->isChecked();
 
   buildDisabledTypes( p.fts.disabledTypes, ui.allowAard->isChecked(), "AARD" );
   buildDisabledTypes( p.fts.disabledTypes, ui.allowBGL->isChecked(), "BGL" );
