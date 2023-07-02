@@ -4457,7 +4457,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Барои истифодаи ҷустуҷӯи ибораи Xapian&apos;ва оператори NEAR маълумоти мавқеъ лозим аст, аммо андозаи пойгоҳи додаҳо хеле калонтар хоҳад буд. Танҳо ба луғатҳои нави воридшаванда дахл дорад.</translation>
+      <translation>Маълумоти мавқеъ барои ҷустуҷӯи ибораи Xapian ва оператори NEAR лозим аст, аммо андозаи пойгоҳи додаҳо хеле калонтар хоҳад буд. Танҳо ба луғатҳои нави воридшаванда дахл дорад.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
