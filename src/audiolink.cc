@@ -22,9 +22,7 @@ std::string makeAudioLinkScript( std::string const & url,
 
   std::string ref;
   bool escaped = false;
-  for( unsigned x = 0; x < url.size(); x++ )
-  {
-    char ch = url[ x ];
+  for ( const char ch : url ) {
     if( escaped )
     {
       ref += ch;
@@ -37,7 +35,13 @@ std::string makeAudioLinkScript( std::string const & url,
     escaped = ( ch == '\\' );
   }
 
-  std::string audioLinkForDict = "gdAudioLinks['" + dictionaryId + "']";
+  const std::string audioLinkForDict = QString::fromStdString( R"(
+if(!gdAudioMap.has('%1')){
+    gdAudioMap.set('%1',%2);
+}
+)" ).arg(
+    QString::fromStdString( dictionaryId ),
+    QString::fromStdString( url ) ).toStdString();
   return "gdAudioLinks.first = gdAudioLinks.first || " + ref + ";" +
-         audioLinkForDict + " = " + audioLinkForDict + " || " + ref + ";";
+         audioLinkForDict ;
 }
