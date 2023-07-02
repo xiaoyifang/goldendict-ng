@@ -1036,7 +1036,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Standaard</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4456,12 +4456,12 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Positionele informatie is vereist om Xapian&apos;s zinzoeken en NEAR-operator te gebruiken, maar de database zal veel groter zijn. Geldt alleen voor nieuwe inkomende woordenboeken.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Activeer index met positionele informatie</translation>
     </message>
   </context>
   <context>
