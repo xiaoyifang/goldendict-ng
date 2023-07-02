@@ -4450,7 +4450,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Cần có thông tin vị trí để sử dụng tìm kiếm theo cụm từ của Xapian&apos;và toán tử NEAR, nhưng kích thước cơ sở dữ liệu sẽ lớn hơn nhiều. Chỉ áp dụng cho các từ điển mới đến.</translation>
+      <translation>Cần có thông tin vị trí để sử dụng tìm kiếm theo cụm từ của Xapian và toán tử NEAR, nhưng kích thước cơ sở dữ liệu sẽ lớn hơn nhiều. Chỉ áp dụng cho các từ điển mới đến.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
