@@ -1033,7 +1033,7 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Standard</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4459,12 +4459,12 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Positionsinformation krävs för att använda Xapian&apos;s frassökning och NEAR-operator, men databasstorleken blir mycket större. Gäller endast nya inkommande ordböcker.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Aktivera index med positionsinformation</translation>
     </message>
   </context>
   <context>
