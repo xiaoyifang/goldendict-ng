@@ -4457,7 +4457,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Xapian&apos;s -lausehaun ja NEAR-operaattorin käyttöön tarvitaan sijaintitietoja, mutta tietokannan koko tulee olemaan paljon suurempi. Koskee vain uusia saapuvia sanakirjoja.</translation>
+      <translation>Xapianin lausehaun ja NEAR-operaattorin käyttämiseen tarvitaan sijaintitietoja, mutta tietokannan koko tulee olemaan paljon suurempi. Koskee vain uusia saapuvia sanakirjoja.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
