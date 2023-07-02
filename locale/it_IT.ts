@@ -1033,7 +1033,7 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Predefinito</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4455,12 +4455,12 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Le informazioni sulla posizione sono necessarie per utilizzare la ricerca di frasi di Xapian&apos;e l'operatore NEAR, ma la dimensione del database sarà molto maggiore. Si applica solo ai nuovi dizionari in arrivo.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Abilita l'indice con le informazioni sulla posizione</translation>
     </message>
   </context>
   <context>
