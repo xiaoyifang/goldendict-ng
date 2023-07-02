@@ -1032,7 +1032,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/fulltextsearch.cc" line="230"/>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>默認</translation>
     </message>
     <message>
       <location filename="../src/fulltextsearch.cc" line="243"/>
@@ -4448,12 +4448,12 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>使用 Xapian&apos;的短語搜索和 NEAR 運算符需要位置信息，但數據庫大小會更大。僅適用於新傳入的詞典。</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>啟用帶有位置信息的索引</translation>
     </message>
   </context>
   <context>
