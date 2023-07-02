@@ -4449,7 +4449,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Informacioni i pozicionit kërkohet për të përdorur kërkimin e frazave Xapian&apos;s dhe operatorin NEAR, por madhësia e bazës së të dhënave do të jetë shumë më e madhe. Zbatohet vetëm për fjalorët e rinj të ardhur.</translation>
+      <translation>Kërkohet informacion i pozicionit për të përdorur kërkimin e frazës së Xapian dhe operatorin NEAR, por madhësia e bazës së të dhënave do të jetë shumë më e madhe. Zbatohet vetëm për fjalorët e rinj të ardhur.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
