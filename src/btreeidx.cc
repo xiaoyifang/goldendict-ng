@@ -72,7 +72,7 @@ vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word,
   try
   {
     wstring folded = Folding::apply( word );
-    if( folded.empty() )
+    if ( folded.empty() )
       folded = Folding::applyWhitespaceOnly( word );
 
     bool exactMatch;
@@ -1430,8 +1430,10 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
 
         auto word = QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() );
 
-        headwords.append(  word );
-        offsets.erase( it);
+        if ( headwords.indexOf( word ) == -1 ) {
+          headwords.append( word );
+        }
+        offsets.erase( it );
         begOffsets = offsets.begin();
         endOffsets = offsets.end();
       }

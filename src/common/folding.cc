@@ -166,6 +166,11 @@ bool isWhitespace( wchar ch )
   return QChar::isSpace( ch );
 }
 
+bool isWhitespaceOrPunct( wchar ch )
+{
+  return QChar::isSpace( ch ) || QChar::isPunct( ch );
+}
+
 bool isPunct( wchar ch )
 {
   return QChar::isPunct( ch );
