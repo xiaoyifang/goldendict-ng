@@ -34,7 +34,8 @@ enum
 };
 
 BtreeIndex::BtreeIndex():
-  idxFile( 0 ), rootNodeLoaded( false )
+  idxFile( nullptr ),
+  rootNodeLoaded( false )
 {
 }
 
@@ -175,10 +176,7 @@ void BtreeWordSearchRequest::findMatches()
 
     bool insideSet = false;
     bool escaped = false;
-    for( wstring::size_type x = 0; x < foldedWithWildcards.size(); x++ )
-    {
-      wchar ch = foldedWithWildcards[ x ];
-
+    for ( char32_t ch : foldedWithWildcards ) {
       if( ch == L'\\' && !escaped )
       {
         escaped = true;
@@ -216,10 +214,7 @@ void BtreeWordSearchRequest::findMatches()
     folded.clear();
     folded.reserve( foldedWithWildcards.size() );
     escaped = false;
-    for( wstring::size_type x = 0; x < foldedWithWildcards.size(); x++ )
-    {
-      wchar ch = foldedWithWildcards[ x ];
-
+    for ( char32_t ch : foldedWithWildcards ) {
       if( escaped )
       {
         if( bNoLetters || ( ch != L'*' && ch != L'?' && ch != L'[' && ch != L']' ) )
@@ -303,11 +298,10 @@ void BtreeWordSearchRequest::findMatches()
 
           QMutexLocker _( &dataMutex );
 
-          for( unsigned x = 0; x < chain.size(); ++x )
-          {
+          for ( auto & x : chain ) {
             if( useWildcards )
             {
-              wstring word = Utf8::decode( chain[ x ].prefix + chain[ x ].word );
+              wstring word   = Utf8::decode( x.prefix + x.word );
               wstring result = Folding::applyDiacriticsOnly( word );
               if( result.size() >= (wstring::size_type)minMatchLength )
               {
@@ -322,9 +316,9 @@ void BtreeWordSearchRequest::findMatches()
             {
               // Skip middle matches, if requested. If suffix variation is specified,
               // make sure the string isn't larger than requested.
-              if ( ( allowMiddleMatches || Folding::apply( Utf8::decode( chain[ x ].prefix ) ).empty() ) &&
-                   ( maxSuffixVariation < 0 || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
-                  addMatch( Utf8::decode( chain[ x ].prefix + chain[ x ].word ) );
+              if ( ( allowMiddleMatches || Folding::apply( Utf8::decode( x.prefix ) ).empty() )
+                   && ( maxSuffixVariation < 0 || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
+                addMatch( Utf8::decode( x.prefix + x.word ) );
             }
           }
 
@@ -517,7 +511,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
           nextLeaf = 0;
         }
         if( !leafEntries )
-          return 0;
+          return nullptr;
 
         return leaf + sizeof( uint32_t );
       }
@@ -645,7 +639,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
         if ( currentNodeOffset != rootOffset )
           throw exCorruptedChainData();
         else
-          return 0; // No match
+          return nullptr; // No match
       }
 
       // Build an array containing all chain pointers
@@ -745,7 +739,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
                 return &extLeaf.front() + sizeof( uint32_t );
               }
               else
-                return 0; // This was the last leaf
+                return nullptr; // This was the last leaf
             }
             else
               return chainToCheck[ 1 ];
@@ -1117,7 +1111,7 @@ void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
   if ( !idxFile )
     throw exIndexWasNotOpened();
 
-  findArticleLinks( NULL, NULL, &headwords );
+  findArticleLinks( nullptr, nullptr, &headwords );
 }
 
 void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks )
@@ -1127,7 +1121,7 @@ void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks 
 
   QSet< uint32_t > offsets;
 
-  findArticleLinks( &articleLinks, &offsets, NULL );
+  findArticleLinks( &articleLinks, &offsets, nullptr );
 }
 
 void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
@@ -1150,7 +1144,7 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
 
   char const * leaf = &rootNode.front();
   char const * leafEnd = leaf + rootNode.size();
-  char const * chainPtr = 0;
+  char const * chainPtr = nullptr;
 
   vector< char > extLeaf;
 
@@ -1213,22 +1207,21 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
       articleLinks->reserve( n + n / 10 );
     }
 
-    for( unsigned i = 0; i < result.size(); i++ )
-    {
+    for ( auto & i : result ) {
       if( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
         return;
 
       if( headwords )
-        headwords->insert( QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() ) );
+        headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
 
-      if( offsets && offsets->contains( result[ i ].articleOffset ) )
+      if ( offsets && offsets->contains( i.articleOffset ) )
         continue;
 
       if( offsets )
-        offsets->insert( result[ i ].articleOffset );
+        offsets->insert( i.articleOffset );
 
       if( articleLinks )
-        articleLinks->push_back( WordArticleLink( result[ i ].prefix + result[ i ].word, result[ i ].articleOffset ) );
+        articleLinks->push_back( WordArticleLink( i.prefix + i.word, i.articleOffset ) );
     }
 
     if ( chainPtr >= leafEnd )
@@ -1279,9 +1272,9 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 
   QMutexLocker _( idxFileMutex );
 
-  char const * leaf = 0;
-  char const * leafEnd = 0;
-  char const * chainPtr = 0;
+  char const * leaf     = nullptr;
+  char const * leafEnd  = nullptr;
+  char const * chainPtr = nullptr;
 
   vector< char > extLeaf;
 
@@ -1299,9 +1292,8 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets,
 
     if( headwords )
     {
-      for( unsigned i = 0; i < result.size(); i++ )
-      {
-        headwords->insert( QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() ) );
+      for ( auto & i : result ) {
+        headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
       }
     }
 
@@ -1368,7 +1360,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
 
   char const * leaf = &rootNode.front();
   char const * leafEnd = leaf + rootNode.size();
-  char const * chainPtr = 0;
+  char const * chainPtr = nullptr;
 
   vector< char > extLeaf;
 
@@ -1416,9 +1408,8 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
   {
     vector< WordArticleLink > result = readChain( chainPtr );
 
-    for( unsigned i = 0; i < result.size(); i++ )
-    {
-      uint32_t articleOffset =   result.at(i).articleOffset;
+    for ( auto & i : result ) {
+      uint32_t articleOffset = i.articleOffset;
 
       QList<uint32_t>::Iterator  it = std::lower_bound( begOffsets, endOffsets,
                                                     articleOffset );
@@ -1428,7 +1419,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList<uint32_t> & offsets,
         if( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
           return;
 
-        auto word = QString::fromUtf8( ( result[ i ].prefix + result[ i ].word ).c_str() );
+        auto word = QString::fromUtf8( ( i.prefix + i.word ).c_str() );
 
         if ( headwords.indexOf( word ) == -1 ) {
           headwords.append( word );

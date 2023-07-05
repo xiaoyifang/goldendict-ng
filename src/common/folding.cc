@@ -9,7 +9,6 @@
 
 namespace Folding {
 
-
 /// Tests if the given char is one of the Unicode combining marks. Some are
 /// caught by the diacritics folding table, but they are only handled there
 /// when they come with their main characters, not by themselves. The rest
@@ -154,9 +153,10 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for( size_t left = in.size(); left--; ++nextChar )
+  for ( size_t left = in.size(); left--; ++nextChar ) {
     if ( !isWhitespace( *nextChar ) && !isPunct( *nextChar ) )
       out.push_back( *nextChar );
+  }
 
   return out;
 }
@@ -246,7 +246,7 @@ QString trimWhitespace( QString const & in )
 QString escapeWildcardSymbols( const QString & str )
 {
   QString escaped( str );
-  escaped.replace( QRegularExpression( R"(([\[\]\?\*]))" ), "\\\\1" );
+  escaped.replace( QRegularExpression( R"(([\[\]\?\*]))" ), R"(\\1)" );
 
   return escaped;
 }
@@ -254,8 +254,8 @@ QString escapeWildcardSymbols( const QString & str )
 QString unescapeWildcardSymbols( const QString & str )
 {
   QString unescaped( str );
-  unescaped.replace( QRegularExpression( R"(\\([\[\]\?\*]))" ), "\\1" );
+  unescaped.replace( QRegularExpression( R"(\\([\[\]\?\*]))" ), R"(\1)" );
 
   return unescaped;
 }
-}
+} // namespace Folding
