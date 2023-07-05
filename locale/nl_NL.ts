@@ -4109,7 +4109,7 @@ het artikel uit het bovenste woordenboek weergegeven.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> Mevr</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
