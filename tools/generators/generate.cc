@@ -164,8 +164,9 @@ int main()
 
     fprintf( outf, "// This file was generated automatically. Do not edit directly.\n\n" );
 
+    fprintf( outf, "#pragma once\n\n" );
     fprintf( outf, "enum { foldCaseMaxOut = 3 };\n\n" );
-    fprintf( outf, "size_t foldCase( wchar in, wchar * out )\n{\n  switch( in )\n  {\n" );
+    fprintf( outf, "inline size_t foldCase( char32_t in, char32_t * out )\n{\n  switch( in )\n  {\n" );
 
     for ( map< char32_t, u32string >::const_iterator i = foldTable.begin(); i != foldTable.end(); ++i ) {
       if ( i->second.size() == 1 )
@@ -183,7 +184,7 @@ int main()
     fprintf( outf, "    default: *out = in; return 1;\n" );
     fprintf( outf, "  }\n}\n\n" );
 
-    fprintf( outf, "wchar foldCaseSimple( wchar in )\n{\n  switch( in )\n  {\n" );
+    fprintf( outf, "char32_t foldCaseSimple( char32_t in )\n{\n  switch( in )\n  {\n" );
 
     for ( map< char32_t, char32_t >::const_iterator i = simpleFoldTable.begin(); i != simpleFoldTable.end(); ++i )
       fprintf( outf, "    case 0x%x: return 0x%x;\n", i->first, i->second );
