@@ -4107,7 +4107,7 @@ sin embargo, el artículo del diccionario superior se muestra.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> EM</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
