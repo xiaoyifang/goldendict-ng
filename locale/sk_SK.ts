@@ -4103,7 +4103,7 @@ sa však zobrazí článok z najvyššieho slovníka.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> pani</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>

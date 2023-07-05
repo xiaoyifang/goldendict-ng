@@ -1406,7 +1406,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="217"/>
       <source>%1/%2</source>
-      <translation>第%1/%2輪</translation>
+      <translation>%1/%2</translation>
     </message>
     <message>
       <location filename="../src/ui/historypanewidget.cc" line="221"/>
@@ -4102,7 +4102,7 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> 多發性硬化症</translation>
+      <translation>毫秒</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>

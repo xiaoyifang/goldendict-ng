@@ -4111,7 +4111,7 @@ rulla till artikeln från samma ordbok. Med det här alternativet av,, visas art
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> Fröken</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>

@@ -4097,7 +4097,7 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> 多发性硬化症</translation>
+      <translation>毫秒</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4122,7 +4122,7 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>http://</source>
-      <translation>http:///</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>

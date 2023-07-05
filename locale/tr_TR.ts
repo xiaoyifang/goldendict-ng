@@ -4119,7 +4119,7 @@ makaleye kaydırır. Ancak bu seçenek kapalıyken
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> Hanım</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
