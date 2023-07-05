@@ -4106,7 +4106,7 @@ wird jedoch der Artikel aus dem obersten Wörterbuch angezeigt.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> MS</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
