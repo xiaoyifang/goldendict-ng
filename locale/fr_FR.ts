@@ -4111,7 +4111,7 @@ cependant, l'article du dictionnaire le plus haut est affiché.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> SP</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
