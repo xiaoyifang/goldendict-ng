@@ -4102,7 +4102,7 @@ megjithatë, shfaqet artikulli nga fjalori më i lartë.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> Znj</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
