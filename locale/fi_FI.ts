@@ -4110,7 +4110,7 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation> neiti</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
