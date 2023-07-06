@@ -1,5 +1,6 @@
 site_name: GoldenDict-NG
-site_description: Goldendict-ng is a dictionary 是一个可以用在 Windows Linux 和 mac 上的字典程序
+site_description: GoldenDict-ng is a open source, cross platform, multi formats, feature rich dictionary 是一个开源跨平台支持各种格式的字典程序
+site_url: https://xiaoyifang.github.io/goldendict-ng/
 
 theme:
   name: material
@@ -42,17 +43,15 @@ nav:
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
       - Customize Dictionary Name: custom_dictionary_name.md
-      - OCR Integration: howto/How to use ocr together with GoldenDict.md
+      - OCR Integration: howto/ocr.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Contributor Guides:
     - Developer: developer.md
     - How to:
-       - Build and debug with VS2019: howto/how to build and debug with VS2019.md
-       - Compile with cmake: howto/how to compile with cmake.md
+       - Build from source: howto/build_from_source.md
        - Customize the opencc: howto/how to customize the opencc.md
        - Qt version and github action: howto/how to find out the latest qt version and module in github qt action.md
        - Use .clang-format: howto/how to use .clang-format to format the code.md
        - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
        - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
        - How to update the crowdin.ts file: howto/how to update crowdin.ts file.md
-  - 中文文档: index_cn.md

@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 
-# Experimental Cmake build only supposed to be used by dev
 # Qt6.4+ only
 
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
