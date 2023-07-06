@@ -1358,18 +1358,23 @@ void StardictArticleRequest::run()
   {
     vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-    for( unsigned x = 0; x < alts.size(); ++x )
-    {
-      /// Make an additional query for each alt
+    //if alts has more than 100 , great probability that the dictionary is wrong produced or parsed.
+    if ( alts.size() < 100 ) {
+      for ( unsigned x = 0; x < alts.size(); ++x ) {
+        /// Make an additional query for each alt
 
-      vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
-
-      chain.insert( chain.end(), altChain.begin(), altChain.end() );
+        vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+        if ( altChain.size() > 100 ) {
+          continue;
+        }
+        chain.insert( chain.end(), altChain.begin(), altChain.end() );
+      }
     }
+
 
     multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
-    set< uint32_t > articlesIncluded; // Some synonims make it that the articles
+    set< uint32_t > articlesIncluded; // Some synonms make it that the articles
                                       // appear several times. We combat this
                                       // by only allowing them to appear once.
 
@@ -1377,8 +1382,8 @@ void StardictArticleRequest::run()
     if( ignoreDiacritics )
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-    for( unsigned x = 0; x < chain.size(); ++x )
-    {
+    //if the chain is too large, it is more likely has some dictionary making or parsing issue.
+    for ( unsigned x = 0; x < qMin( 10, (int)chain.size() ); ++x ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       {
         finish();
@@ -1882,6 +1887,11 @@ static void handleIdxSynFile( string const & fileName,
       {
         if ( strchr( word, '/' ) )
           continue; // Skip this entry
+      }
+
+      // if the entry is hypen, skip
+      if ( wordLen == 1 && *word == '-' ) {
+        continue; // Skip this entry
       }
     }
 

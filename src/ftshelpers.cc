@@ -311,7 +311,7 @@ void FTSResultsRequest::run()
       emit matchCount(matches.get_matches_estimated());
       // Display the results.
       qDebug() << matches.get_matches_estimated() << " results found.\n";
-      qDebug() << "Matches 1-" << matches.size() << ":\n\n";
+      qDebug() << "Matches " << matches.size() << ":\n\n";
       QList< uint32_t > offsetsForHeadwords;
       for( Xapian::MSetIterator i = matches.begin(); i != matches.end(); ++i )
       {

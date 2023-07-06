@@ -57,6 +57,7 @@ wstring applyWhitespaceAndPunctOnly( wstring const & );
 /// otherwise. Whitespace corresponds to Zl/Zp/Zs Unicode classes, and also
 /// includes \n, \r and \t.
 bool isWhitespace( wchar ch );
+bool isWhitespaceOrPunct( wchar ch );
 
 /// Returns true if the given character is any form of punctuation, false
 /// otherwise. Punctuation corresponds to Pc/Pd/Pe/Pf/Pi/Po/Ps classes.
