@@ -2,21 +2,22 @@ Popular dictionary formats are all supported.
 
 ## Local Dictionaries Sources
 
-* MDict dictionaries (.mdx/.mdd)
-* StarDict dictionaries (.ifo/.dict./.idx/.syn)
-* DSL dictionaries (ABBYY Lingvo source files .dsl(.dz))
+* [MDict](https://www.mdict.cn/) dictionaries (.mdx/.mdd)
+* [StarDict](http://www.huzheng.org/stardict/) dictionaries (.ifo/.dict./.idx/.syn)
+* [DSL](https://lingvoboard.ru/store/html/DSLReference_HTML/index.html) dictionaries (ABBYY Lingvo source files .dsl(.dz))
 * [Xdxf](https://github.com/soshial/xdxf_makedict) dictionaries (.xdxf(.dz))
 * [Zim](https://wiki.openzim.org/wiki/OpenZIM) dictionaries (.zim)
 * [Slob (Aard 2)](https://aarddict.org/) dictionaries (.slob)
-* DictD dictionaries (.index/.dict(.dz))
-* Epwing dictionaries
-* Babylon dictionaries (.BGL), complete with images and resources
-* Aard Dictionary dictionaries (.aar)
+* [DictD](https://en.wikipedia.org/wiki/DICT#Dict_file_format) dictionaries (.index/.dict(.dz))
+* [Epwing](<https://ja.wikipedia.org/wiki/EPWING>) dictionaries
+* Aard Dictionary dictionaries, outdated predecessor of Slob (.aar)
 * [SDictionary](http://swaj.net/sdict/index.html) dictionaries (.dct)
-* Babylon source files (.gls(.dz))
+* [Babylon glossary builder](https://www.babylon-software.com/glossary-builder/) source files (.gls(.dz))
+* Babylon dictionaries, complete support with images and resources (.BGL)
 * ABBYY Lingvo sound archives (.lsa/.dat)
-* Sound files in separate folders
-* Zips sound packs (.zips)
+
+* Sound files in separate folders. File names are used as word
+* Zipped sound pack. Sound files zipped, but with extension changed from .zip to (.zips)
 
 ## Network Sources
 
@@ -27,8 +28,24 @@ Popular dictionary formats are all supported.
 
 ## Other Sources
 
-* Programs: Any External programs that can output text
-* System Text-to-speech engines
+**Programs**
+
+Any external apps can be added by setting a launch command. The `%GDWORD%` will be replaced by word from search line. If command line don't contains such template the word will be fed into standard input stream in 8-bit current locale encoding.
+
+| Type | Notes |
+|--|--|
+| Audio| Application play sound. A sound icon will be provided as article, click it will trigger the program. |
+| Text | Application output some plain text in 8-bit current locale encoding into standard output stream. This text will be shown as separate article. |
+| Html | Application output some html code into standard output stream. This code will be shown as separate article. |
+| Prefix | Application output some word list into standard output stream. This list will be added in common matches list.|
+
+**System Text-to-speech engines**
+
+Its capability is provided via Qt Speech.
+
+On Windows & macOS, the system provides sounds.
+
+On Linux, speech-dispatcher and flite are the backends.
 
 ## Additional info
 

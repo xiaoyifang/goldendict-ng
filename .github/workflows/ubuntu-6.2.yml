@@ -203,7 +203,7 @@ jobs:
 
             Linux users can use AppImages.
 
-            macOs users can use `.dmg` installer.
+            macOS users can use `.dmg` installer.
 
             `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
 
