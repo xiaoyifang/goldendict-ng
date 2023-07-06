@@ -2,14 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "folding.hh"
-#include <QRegularExpression>
 
 #include "utf8.hh"
 #include "globalregex.hh"
+#include "inc_case_folding.hh"
 
 namespace Folding {
 
-#include "inc_case_folding.hh"
 
 /// Tests if the given char is one of the Unicode combining marks. Some are
 /// caught by the diacritics folding table, but they are only handled there

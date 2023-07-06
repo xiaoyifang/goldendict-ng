@@ -1,8 +1,8 @@
 // This file was generated automatically. Do not edit directly.
-
+#pragma once
 enum { foldCaseMaxOut = 3 };
 
-size_t foldCase( wchar in, wchar * out )
+inline size_t foldCase( char32_t in, char32_t * out )
 {
   switch( in )
   {
@@ -1540,7 +1540,7 @@ size_t foldCase( wchar in, wchar * out )
   }
 }
 
-wchar foldCaseSimple( wchar in )
+char32_t foldCaseSimple( char32_t in )
 {
   switch( in )
   {
