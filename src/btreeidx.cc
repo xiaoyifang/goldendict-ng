@@ -64,7 +64,8 @@ void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Class & file, QMu
   rootNode.clear();
 }
 
-vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics )
+vector< WordArticleLink >
+BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics, uint32_t maxMatchCount )
 {
   //First trim ending zero
   wstring word = gd::removeTrailingZero( search_word );
@@ -89,7 +90,7 @@ vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word,
 
     if ( chainOffset && exactMatch )
     {
-      result = readChain( chainOffset );
+      result = readChain( chainOffset, maxMatchCount );
 
       antialias( word, result, ignoreDiacritics );
     }
@@ -107,6 +108,7 @@ vector< WordArticleLink > BtreeIndex::findArticles( wstring const & search_word,
 
   return result;
 }
+
 
 BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
                                                 wstring const & str_,
@@ -752,7 +754,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( wstring const & target,
   }
 }
 
-vector< WordArticleLink > BtreeIndex::readChain( char const * & ptr )
+vector< WordArticleLink > BtreeIndex::readChain( char const *& ptr, uint32_t maxMatchCount )
 {
   uint32_t chainSize;
 
@@ -762,8 +764,7 @@ vector< WordArticleLink > BtreeIndex::readChain( char const * & ptr )
 
   vector< WordArticleLink > result;
 
-  while( chainSize )
-  {
+  while ( chainSize && ( maxMatchCount < 0 || result.size() < maxMatchCount ) ) {
     string str = ptr;
     ptr += str.size() + 1;
 
