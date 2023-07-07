@@ -372,8 +372,8 @@
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1843"/>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Zvukové súbory (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Všetky súbory (*.*)</translation>
+      <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+      <translation>Zvukové súbory (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Všetky súbory (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1913"/>

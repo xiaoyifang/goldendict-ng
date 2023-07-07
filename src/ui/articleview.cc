@@ -1840,7 +1840,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
         fileName = savePath + "/" + name;
         fileName = QFileDialog::getSaveFileName( parentWidget(), tr( "Save sound" ),
                                                  fileName,
-                                                 tr( "Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)" ) );
+                                                 tr( "Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)" ) );
       }
       else
       {

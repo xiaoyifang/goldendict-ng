@@ -372,8 +372,8 @@
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1843"/>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>사운드 파일(*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;모든 파일(*.*)</translation>
+      <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+      <translation>사운드 파일(*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;모든 파일(*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1913"/>

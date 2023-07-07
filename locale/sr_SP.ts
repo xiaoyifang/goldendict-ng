@@ -372,7 +372,7 @@
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1843"/>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+      <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Звучне датотеке (*.вав *.огг *.ога *.мп3 *.мп4 *.аац *.флац *.мид *.вв *.апе *.спк);;Све датотеке (*.*)</translation>
     </message>
     <message>

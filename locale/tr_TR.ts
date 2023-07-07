@@ -386,8 +386,8 @@ GPLv3 veya daha üst lisanslıdır.</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1843"/>
-      <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Ses dosyaları (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Tüm dosyalar (*.*)</translation>
+      <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+      <translation>Ses dosyaları (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
       <location filename="../src/ui/articleview.cc" line="1913"/>
