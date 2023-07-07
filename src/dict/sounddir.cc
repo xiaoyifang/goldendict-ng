@@ -90,18 +90,15 @@ public:
   unsigned long getWordCount() noexcept override
   { return getArticleCount(); }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
 protected:
 
   void loadIcon() noexcept override;
+  bool get_file_name( uint32_t articleOffset, QString & file_name );
 };
 
 SoundDirDictionary::SoundDirDictionary( string const & id,
@@ -127,7 +124,6 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
                                                                 vector< wstring > const & alts,
                                                                 wstring const &,
                                                                 bool ignoreDiacritics )
-  
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
@@ -188,8 +184,11 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   char * nameBlock;
 
   result += "<table class=\"lsa_play\">";
+
   for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
   {
+    uint32_t address = chain[ i->second ].articleOffset;
+
     if( mainArticles.size() + alternateArticles.size() <= 1 )
       displayedName = chain[ i->second ].word;
     else
@@ -197,7 +196,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
       try
       {
         QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( chain[ i->second ].articleOffset, chunk );
+        nameBlock = chunks.getBlock( address, chunk );
 
         if ( nameBlock >= &chunk.front() + chunk.size() )
         {
@@ -217,31 +216,36 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     }
 
     result += "<tr>";
-
+    auto _displayName = Html::escape( displayedName );
+    QString file_name;
+    if ( !get_file_name( address, file_name ) ) {
+      // Bad address
+      file_name = QString::fromStdString( _displayName );
+    }
     QUrl url;
     url.setScheme( "gdau" );
     url.setHost( QString::fromUtf8( getId().c_str() ) );
-    url.setPath( Utils::Url::ensureLeadingSlash( QString::number( chain[ i->second ].articleOffset ) ) );
+    auto path = Utils::Url::ensureLeadingSlash( QString( "%1/%2" ).arg( QString::number( address ), file_name ) );
+    url.setPath( path );
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
     result += addAudioLink( ref, getId() );
 
     result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
+    result += "<td><a href=" + ref + ">" + _displayName + "</a></td>";
     result += "</tr>";
   }
 
-  for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-  {
-    if( mainArticles.size() + alternateArticles.size() <= 1 )
+  for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
+    uint32_t address = chain[ i->second ].articleOffset;
+
+    if ( mainArticles.size() + alternateArticles.size() <= 1 )
       displayedName = chain[ i->second ].word;
-    else
-    {
-      try
-      {
+    else {
+      try {
         QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( chain[ i->second ].articleOffset, chunk );
+        nameBlock = chunks.getBlock( address, chunk );
 
         if ( nameBlock >= &chunk.front() + chunk.size() )
         {
@@ -261,18 +265,24 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     }
 
     result += "<tr>";
-
+    auto _displayName = Html::escape( displayedName );
+    QString file_name;
+    if ( !get_file_name( address, file_name ) ) {
+      // Bad address
+      file_name = QString::fromStdString( _displayName );
+    }
     QUrl url;
     url.setScheme( "gdau" );
     url.setHost( QString::fromUtf8( getId().c_str() ) );
-    url.setPath( Utils::Url::ensureLeadingSlash( QString::number( chain[ i->second ].articleOffset ) ) );
+    auto path = Utils::Url::ensureLeadingSlash( QString( "%1/%2" ).arg( QString::number( address ), file_name ) );
+    url.setPath( path );
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
     result += addAudioLink( ref, getId() );
 
     result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
+    result += "<td><a href=" + ref + ">" + _displayName + "</a></td>";
     result += "</tr>";
   }
 
@@ -292,7 +302,7 @@ void SoundDirDictionary::loadIcon() noexcept
 
   if( !iconFilename.isEmpty() )
   {
-    QFileInfo fInfo(  QDir( Config::getConfigDir() ), iconFilename );
+    const QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
     if( fInfo.isFile() )
       loadIconFromFile( fInfo.absoluteFilePath(), true );
   }
@@ -301,16 +311,8 @@ void SoundDirDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & name )
-  
+bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_name )
 {
-  bool isNumber = false;
-
-  uint32_t articleOffset = QString::fromUtf8( name.c_str() ).toULong( &isNumber );
-
-  if ( !isNumber )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
-
   vector< char > chunk;
   char * articleData;
 
@@ -329,15 +331,43 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   }
   catch(  ChunkedStorage::exAddressOutOfRange & )
   {
-    // Bad address
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
+    return false; // No such resource
   }
 
   chunk.back() = 0; // It must end with 0 anyway, but just in case
+  file_name    = QString::fromUtf8( articleData );
+  return true;
+}
 
-  QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
+sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & name )
 
-  QString fileName = QDir::toNativeSeparators( dir.filePath( QString::fromUtf8( articleData ) ) );
+{
+  bool isNumber = false;
+  uint32_t articleOffset;
+
+  const auto _name       = QString::fromStdString( name );
+  const qint64 sep_index = _name.indexOf( '/' );
+  if ( sep_index > 0 ) {
+    const auto number = _name.left( sep_index );
+    articleOffset     = number.toULong( &isNumber );
+  }
+  else {
+    articleOffset = QString::fromUtf8( name.c_str() ).toULong( &isNumber );
+  }
+
+
+  if ( !isNumber )
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+
+  QString file_name;
+  if ( !get_file_name( articleOffset, file_name ) ) {
+    // Bad address
+    return std::make_shared< Dictionary::DataRequestInstant >( false );
+  }
+
+  const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
+
+  const QString fileName = QDir::toNativeSeparators( dir.filePath( file_name ) );
 
   // Now try loading that file
 
@@ -368,7 +398,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
 void addDir( QDir const & baseDir, QDir const & dir, IndexedWords & indexedWords,
              uint32_t & soundsCount, ChunkedStorage::Writer & chunks )
 {
-  QFileInfoList entries = dir.entryInfoList( QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot );
+  const QFileInfoList entries = dir.entryInfoList( QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot );
 
   for( QFileInfoList::const_iterator i = entries.constBegin();
        i != entries.constEnd(); ++i )
@@ -379,15 +409,14 @@ void addDir( QDir const & baseDir, QDir const & dir, IndexedWords & indexedWords
     if ( Filetype::isNameOfSound( i->fileName().toUtf8().data() ) )
     {
       // Add this sound to index
-
       string fileName = baseDir.relativeFilePath( i->filePath() ).toUtf8().data();
 
-      uint32_t articleOffset = chunks.startNewBlock();
+      const uint32_t articleOffset = chunks.startNewBlock();
       chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
 
       wstring name = gd::toWString( i->fileName() );
 
-      wstring::size_type pos = name.rfind( L'.' );
+      const wstring::size_type pos = name.rfind( L'.' );
 
       if ( pos != wstring::npos )
         name.erase( pos );

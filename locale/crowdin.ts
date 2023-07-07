@@ -372,8 +372,8 @@
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1843"/>
-        <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-        <translation>声音文件 (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
+        <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
+        <translation>声音文件 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1913"/>
