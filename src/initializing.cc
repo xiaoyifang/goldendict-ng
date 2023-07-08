@@ -9,8 +9,7 @@ Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( par
 {
   ui.setupUi( this );
 
-  setWindowFlags( Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint |
-                  Qt::WindowMinimizeButtonHint );
+  setWindowFlags( Qt::Dialog | Qt::FramelessWindowHint );
 
   setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
