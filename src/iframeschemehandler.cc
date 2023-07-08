@@ -92,12 +92,7 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 
     buffer->setData(articleString.toUtf8());
 
-    //"text/html;charset=utf-8" will be treated as text/plain in Linux .
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
-    requestJob->reply( contentType, buffer );
-#else
-    requestJob->reply( "text/html", buffer );
-#endif
+    requestJob->reply( "text/html; charset=utf-8", buffer );
   };
   connect( reply, &QNetworkReply::finished, requestJob, finishAction );
 
