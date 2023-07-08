@@ -6,7 +6,7 @@ Goldendict-ng has provide an option to build the application with [breakpad](htt
 `CONFIG+=use_breakpad` to enable this feature.
 
 
-Currently only Windows xapian has built with breakpad support.
+Currently only Windows release has built with breakpad support,for other platforms , you can enable the feature manually.
 
 How to analyze the dump created by breakpad.
 ------------
