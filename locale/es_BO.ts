@@ -1092,7 +1092,7 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <location filename="../src/ui/favoritespanewidget.cc" line="164"/>
       <source>All selected items will be deleted. Continue?</source>
-      <translation type="unfinished">All selected items will be deleted. Continue?</translation>
+      <translation>Se eliminarán todos los elementos seleccionados. ¿Continuar?</translation>
     </message>
   </context>
   <context>
@@ -4105,7 +4105,7 @@ however, the article from the topmost dictionary is shown.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4253,7 +4253,7 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
+      <translation>Cuando se usa el portapapeles, clip todo después de la nueva línea</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4273,12 +4273,12 @@ clears its network cache from disk during exit.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>Active esta opción para confirmar cada operación en que se eliminen elementos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Confirmation for items deletion</source>
-      <translation type="unfinished">Confirmation for items deletion</translation>
+      <translation>Confirmación para la eliminación de elementos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4347,7 +4347,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Extra search via synonyms</source>
-      <translation type="unfinished">Extra search via synonyms</translation>
+      <translation>Búsqueda extra vía sinónimos</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4493,17 +4493,17 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/programs.cc" line="179"/>
       <source>No program name was given.</source>
-      <translation type="unfinished">No program name was given.</translation>
+      <translation>No se proporcionó el nombre del programa.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="195"/>
       <source>The program has crashed.</source>
-      <translation type="unfinished">The program has crashed.</translation>
+      <translation>El programa ha fallado.</translation>
     </message>
     <message>
       <location filename="../src/dict/programs.cc" line="198"/>
       <source>The program has returned exit code %1.</source>
-      <translation type="unfinished">The program has returned exit code %1.</translation>
+      <translation>El programa ha devuelto el código de error %1.</translation>
     </message>
   </context>
   <context>
@@ -4516,7 +4516,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1002"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Tipo</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1004"/>
@@ -4526,12 +4526,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <location filename="../src/dict/sources.cc" line="1006"/>
       <source>Command Line</source>
-      <translation type="unfinished">Command Line</translation>
+      <translation>Línea de comandos</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="1008"/>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Icono</translation>
     </message>
   </context>
   <context>
@@ -4898,7 +4898,7 @@ Todavía no implementado en GoldenDict.</translation>
     <message>
       <location filename="../src/ui/sources.ui"/>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>Cualquier programa externo. Una cadena %GDWORD% será reemplazada por la palabra consulta. Una cadena %GDSEARCH% será reemplazada por el texto en la barra de búsqueda. Si no se proporcionan ambos parámetros, la palabra cabecera será introducida en la entrada estándar.</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui"/>
@@ -4908,7 +4908,7 @@ Todavía no implementado en GoldenDict.</translation>
     <message>
       <location filename="../src/ui/sources.ui"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciones promocionadas por &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, una biblioteca colaborativa de medios de comunicación lingüísticos de Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/ui/sources.ui"/>
@@ -5157,7 +5157,7 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <location filename="../src/ui/sources.ui"/>
       <source>Programs</source>
-      <translation type="unfinished">Programs</translation>
+      <translation>Programas</translation>
     </message>
     <message>
       <location filename="../src/dict/sources.cc" line="335"/>
