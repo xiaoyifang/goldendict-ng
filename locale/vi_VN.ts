@@ -4103,7 +4103,7 @@ bài viết từ từ điển trên cùng sẽ được hiển thị.</translati
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
