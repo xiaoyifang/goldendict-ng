@@ -4780,7 +4780,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     <message>
       <location filename="../src/ui/searchpanel.cc" line="15"/>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Strg+Umschalt+G</translation>
     </message>
     <message>
       <location filename="../src/ui/searchpanel.cc" line="19"/>
