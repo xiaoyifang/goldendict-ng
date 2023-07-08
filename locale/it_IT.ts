@@ -4108,7 +4108,7 @@ tuttavia, viene mostrato l'articolo dal dizionario più alto.</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
