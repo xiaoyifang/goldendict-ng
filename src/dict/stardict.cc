@@ -1258,7 +1258,8 @@ void StardictHeadwordsRequest::run()
 
   try
   {
-    vector< WordArticleLink > chain = dict.findArticles( word );
+    //limited the synomys to at most 10 entries
+    vector< WordArticleLink > chain = dict.findArticles( word, false, 10 );
 
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
@@ -1295,11 +1296,9 @@ void StardictHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest >
-  StardictDictionary::findHeadwordsForSynonym( wstring const & word )
-  
+sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynonym( wstring const & word )
 {
-  return synonymSearchEnabled ? std::make_shared<StardictHeadwordsRequest>( word, *this ) :
+  return synonymSearchEnabled ? std::make_shared< StardictHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
 }
 
@@ -1371,10 +1370,9 @@ void StardictArticleRequest::run()
       }
     }
 
-
     multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
-    set< uint32_t > articlesIncluded; // Some synonms make it that the articles
+    set< uint32_t > articlesIncluded; // Some synonyms make it that the articles
                                       // appear several times. We combat this
                                       // by only allowing them to appear once.
 

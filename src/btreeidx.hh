@@ -83,7 +83,7 @@ public:
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
-  vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false );
+  vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
   void findAllArticleLinks( QVector< WordArticleLink > & articleLinks );
@@ -133,7 +133,7 @@ protected:
 
   /// Reads the word-article links' chain at the given offset. The pointer
   /// is updated to point to the next chain, if there's any.
-  vector< WordArticleLink > readChain( char const * & );
+  vector< WordArticleLink > readChain( char const *&, uint32_t maxMatchCount = -1 );
 
   /// Drops any aliases which arose due to folding. Only case-folded aliases
   /// are left.
