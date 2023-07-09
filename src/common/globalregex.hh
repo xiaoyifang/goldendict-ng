@@ -66,11 +66,11 @@ const static QRegularExpression emptyXmlTag(R"(<(?!(br|hr)\b)([^/ >]*)\s*/>)");
 bool containHtmlEntity( std::string const & text );
 }
 
-const static QRegularExpression accentMark( R"(\p{M})" );
+const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseUnicodePropertiesOption );
 //contain unicode space mark and punctuation
-const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{P}])" );
+const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{P}])", QRegularExpression::UseUnicodePropertiesOption );
 //contain unicode space and mark.
-const static QRegularExpression markSpace( R"([\p{M}\p{Z}])" );
+const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression::UseUnicodePropertiesOption );
 
 } // namespace RX
 

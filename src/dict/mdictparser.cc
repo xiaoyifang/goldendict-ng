@@ -354,7 +354,7 @@ bool MdictParser::readHeader( QDataStream & in )
   }
 
   //with this control character ,qt6.x can not parse attribute value.
-  headerText.remove(QRegularExpression("\\p{C}"));
+  headerText.remove( QRegularExpression( "\\p{C}", QRegularExpression::UseUnicodePropertiesOption ) );
 
   QDomNamedNodeMap headerAttributes = parseHeaderAttributes( headerText );
 
