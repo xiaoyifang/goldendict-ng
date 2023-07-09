@@ -92,7 +92,15 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 
     buffer->setData(articleString.toUtf8());
 
+#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
     requestJob->reply( "text/html; charset=utf-8", buffer );
+#else
+  #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+    requestJob->reply( contentType, buffer );
+  #else
+    requestJob->reply( "text/html", buffer );
+  #endif
+#endif
   };
   connect( reply, &QNetworkReply::finished, requestJob, finishAction );
 
