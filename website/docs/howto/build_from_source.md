@@ -29,11 +29,11 @@ In other words, those libraries
 * x11 (linux only)
 
 And a few compression libraries:
+
 * xz (lzma)
 * bzip2
 * lzo2
 * zlib
-* zstd
 
 ## CMake Build
 
