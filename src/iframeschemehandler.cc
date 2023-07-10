@@ -30,7 +30,7 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
         codecName = ct.mid( index + 8 );
       }
     }
-    QBuffer * buffer = new QBuffer( requestJob );
+    auto buffer = new QBuffer( requestJob );
 
     QByteArray replyData = reply->readAll();
     QString articleString;
@@ -61,24 +61,25 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
     QString root = reply->url().scheme() + "://" + reply->url().host();
     QString base = root + reply->url().path();
 
-    QRegularExpression baseTag( "<base\\s+.*?>",
-                             QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption );
-    
-    QString baseTagHtml = "<base href=\"" + base + "\">";
+    QRegularExpression baseTag( R"(<base\s+.*?>)",
+                                QRegularExpression::CaseInsensitiveOption
+                                  | QRegularExpression::DotMatchesEverythingOption );
 
-    QString depressionFocus ="<script type=\"application/javascript\"> HTMLElement.prototype.focus=function(){console.log(\"focus() has been disabled.\");}</script>"
-                      "<script type=\"text/javascript\" src=\"qrc:///scripts/iframeResizer.contentWindow.min.js\"></script>"
-                      "<script type=\"text/javascript\" src=\"qrc:///scripts/iframe-defer.js\"></script>";
-    
+    QString baseTagHtml = QString( R"(<base href="%1">)" ).arg( base );
+
+    QString depressionFocus =
+      R"(<script type="application/javascript"> HTMLElement.prototype.focus=function(){console.log("focus() has been disabled.");}</script>
+<script type="text/javascript" src="qrc:///scripts/iframeResizer.contentWindow.min.js">
+</script><script type="text/javascript" src="qrc:///scripts/iframe-defer.js"></script>)";
+
     // remove existed base tag
-    articleString.remove( baseTag ) ;
+    articleString.remove( baseTag );
 
-    QRegularExpression headTag( "<head\\b.*?>",
+    QRegularExpression headTag( R"(<head\b.*?>)",
                                 QRegularExpression::CaseInsensitiveOption
                                   | QRegularExpression::DotMatchesEverythingOption );
     auto match = headTag.match( articleString, 0 );
-    if( match.hasMatch() )
-    {
+    if ( match.hasMatch() ) {
       articleString.insert( match.capturedEnd(), baseTagHtml );
       articleString.insert( match.capturedEnd(), depressionFocus );
     }

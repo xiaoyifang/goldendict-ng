@@ -15,10 +15,8 @@ QRegularExpression Ftx::setsRegExp( R"(\[[^\]]+\])", QRegularExpression::CaseIns
 QRegularExpression Ftx::regexRegExp( R"(\\[afnrtvdDwWsSbB]|\\x([0-9A-Fa-f]{4})|\\0([0-7]{3}))",
                                      QRegularExpression::CaseInsensitiveOption );
 
-QRegularExpression Ftx::handleRoundBracket( R"([^\w\(\)\p{M}]+)" ,
-                                            QRegularExpression::UseUnicodePropertiesOption );
-QRegularExpression Ftx::noRoundBracket( "[^\\w\\p{M}]+",
-                                        QRegularExpression::UseUnicodePropertiesOption );
+QRegularExpression Ftx::handleRoundBracket( R"([^\w\(\)\p{M}]+)", QRegularExpression::UseUnicodePropertiesOption );
+QRegularExpression Ftx::noRoundBracket( R"([^\w\p{M}]+)", QRegularExpression::UseUnicodePropertiesOption );
 
 QRegularExpression Ftx::tokenBoundary( R"([\*\?\+]|\bAnd\b|\bOR\b)", QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Ftx::token(R"((".*?")|([\w\W\+\-]+))",QRegularExpression::DotMatchesEverythingOption|QRegularExpression::CaseInsensitiveOption);
@@ -47,7 +45,7 @@ QRegularExpression Mdx::stylesRe2(
   QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::inlineScriptRe( R"(<\s*script(?:(?=\s)(?:(?![\s"']src\s*=)[^>])+|\s*)>)",
                                         QRegularExpression::CaseInsensitiveOption );
-QRegularExpression Mdx::closeScriptTagRe( "<\\s*/script\\s*>", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::closeScriptTagRe( R"(<\s*/script\s*>)", QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::srcRe(
   R"(([\s"'](?:src|srcset)\s*=)\s*(["'])(?!\s*\b(?:(?:bres|https?|ftp)://|(?:data|javascript):))(?:file://)?[\x00-\x1f\x7f]*\.*/?([^">]+)\2)",
   QRegularExpression::CaseInsensitiveOption );

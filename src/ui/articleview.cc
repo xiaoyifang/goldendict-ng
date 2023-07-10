@@ -2290,7 +2290,8 @@ void ArticleView::highlightFTSResults()
   }
 
   //remove possible wildcard character.
-  auto cleaned = firstAvailableText.split( QRegularExpression( "\\p{P}" ) );
+  auto cleaned =
+    firstAvailableText.split( QRegularExpression( "\\p{P}", QRegularExpression::UseUnicodePropertiesOption ) );
 
   if ( cleaned.empty() )
     return;

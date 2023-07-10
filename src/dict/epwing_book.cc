@@ -1106,7 +1106,8 @@ void EpwingBook::fixHeadword( QString & headword )
   headword.remove( QChar( 0x30FB ) ); // Used in Japan transcription
 
   //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
-  headword.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])" ), " " );
+  headword.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])", QRegularExpression::UseUnicodePropertiesOption ),
+                    " " );
 
   //if( isHeadwordCorrect( headword) )
   //  return;
