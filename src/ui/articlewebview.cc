@@ -23,17 +23,17 @@ ArticleWebView::ArticleWebView( QWidget * parent ):
   this->setPage( page );
 }
 
-void ArticleWebView::setUp( Config::Class * cfg )
+void ArticleWebView::setUp( Config::Class * _cfg )
 {
-  this->cfg = cfg;
-  setZoomFactor( cfg->preferences.zoomFactor );
+  this->cfg = _cfg;
+  setZoomFactor( _cfg->preferences.zoomFactor );
 }
 
 QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType type )
 {
   if ( type == QWebEnginePage::WebWindowType::WebDialog ) {
-    QMainWindow * dlg     = new QMainWindow( this );
-    QWebEngineView * view = new QWebEngineView( dlg );
+    auto dlg  = new QMainWindow( this );
+    auto view = new QWebEngineView( dlg );
     dlg->setCentralWidget( view );
     dlg->resize( 400, 400 );
     dlg->show();
@@ -46,7 +46,7 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
 bool ArticleWebView::event( QEvent * event )
 {
   if ( event->type() == QEvent::ChildAdded ) {
-    QChildEvent * child_ev = static_cast< QChildEvent * >( event );
+    auto child_ev = dynamic_cast< QChildEvent * >( event );
     child_ev->child()->installEventFilter( this );
   }
 
@@ -62,7 +62,7 @@ void ArticleWebView::linkClickedInHtml( QUrl const & )
 bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
 {
   if ( ev->type() == QEvent::MouseButtonDblClick ) {
-    QMouseEvent * pe = static_cast< QMouseEvent * >( ev );
+    auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( Qt::MouseEventSynthesizedByApplication != pe->source() ) {
       singleClickToDbClick = false;
       dbClicked            = true;
@@ -72,7 +72,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
     singleClickToDbClick = false;
   }
   if ( ev->type() == QEvent::MouseButtonPress ) {
-    QMouseEvent * pe = static_cast< QMouseEvent * >( ev );
+    auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( pe->button() == Qt::LeftButton ) {
       singleClickToDbClick = true;
       dbClicked            = false;
@@ -83,7 +83,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
     mousePressEvent( pe );
   }
   if ( ev->type() == QEvent::MouseButtonRelease ) {
-    QMouseEvent * pe = static_cast< QMouseEvent * >( ev );
+    auto pe = dynamic_cast< QMouseEvent * >( ev );
     mouseReleaseEvent( pe );
     if ( dbClicked ) {
       //emit the signal after button release.emit earlier(in MouseButtonDblClick event) can not get selected text;
@@ -91,7 +91,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
     }
   }
   if ( ev->type() == QEvent::Wheel ) {
-    QWheelEvent * pe = static_cast< QWheelEvent * >( ev );
+    auto pe = dynamic_cast< QWheelEvent * >( ev );
     wheelEvent( pe );
 
     if ( pe->modifiers().testFlag( Qt::ControlModifier ) ) {
