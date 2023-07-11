@@ -1116,6 +1116,11 @@ MainWindow::~MainWindow()
     delete w;
   }
 
+  if ( scanPopup ) {
+    delete scanPopup;
+    scanPopup = nullptr;
+  }
+
 #ifndef NO_EPWING_SUPPORT
   Epwing::finalize();
 #endif
