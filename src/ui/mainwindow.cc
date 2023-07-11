@@ -1924,12 +1924,7 @@ void MainWindow::pageLoaded( ArticleView * view )
     return; // It was background action
 
   updateBackForwardButtons();
-
   updatePronounceAvailability();
-
-  // if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
-  //   view->playSound();
-  // }
 }
 
 void MainWindow::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
