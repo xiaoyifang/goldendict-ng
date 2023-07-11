@@ -712,24 +712,17 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-  if ( cfg.mainWindowGeometry.size() )
-    restoreGeometry( cfg.mainWindowGeometry );
   if ( cfg.mainWindowState.size() && !cfg.resetState )
     restoreState( cfg.mainWindowState );
+  if ( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
 
   // Show the initial welcome text
-
-  {
-    ArticleView * view = getCurrentArticleView();
-
-    history.enableAdd( false );
-
-    blockUpdateWindowTitle = true;
-
-    view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
-
-    history.enableAdd( cfg.preferences.storeHistory );
-  }
+  ArticleView * view = getCurrentArticleView();
+  history.enableAdd( false );
+  blockUpdateWindowTitle = true;
+  view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
+  history.enableAdd( cfg.preferences.storeHistory );
 
   translateLine->setFocus();
 
