@@ -1088,26 +1088,7 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
 
 void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
 {
-  QVector< uint32_t > newOffsets;
-  newOffsets.reserve( offsets.size() );
-
-  {
-    QMutexLocker _( &slobMutex );
-
-    SlobFile::RefOffsetsVector const & sortedOffsets = sf.getSortedRefOffsets();
-
-    qint32 entries = sf.getRefsCount();
-    for ( qint32 i = 0; i < entries; i++ ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        throw exUserAbort();
-      if ( offsets.contains( sortedOffsets[ i ].second ) )
-        newOffsets.append( sortedOffsets[ i ].second );
-    }
-  }
-
-  offsets.reserve( newOffsets.size() );
-  for ( int i = 0; i < newOffsets.size(); i++ )
-    offsets[ i ] = newOffsets.at( i );
+  //Currently , we use xapian to create the fulltext index. The order of offsets is no important.
 }
 
 void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
