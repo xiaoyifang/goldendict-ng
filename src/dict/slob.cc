@@ -584,6 +584,8 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
   SlobFile sf;
   QString texCgiPath, texCachePath;
 
+  string idxFileName;
+
 public:
 
   SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
@@ -662,12 +664,11 @@ private:
     friend class SlobResourceRequest;
 };
 
-SlobDictionary::SlobDictionary( string const & id,
-                                string const & indexFile,
-                                vector< string > const & dictionaryFiles ):
-    BtreeDictionary( id, dictionaryFiles ),
-    idx( indexFile, "rb" ),
-    idxHeader( idx.read< IdxHeader >() )
+SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+  BtreeDictionary( id, dictionaryFiles ),
+  idxFileName( indexFile ),
+  idx( indexFile, "rb" ),
+  idxHeader( idx.read< IdxHeader >() )
 {
     // Open data file
 
@@ -1111,7 +1112,8 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
 
   try
   {
-    FtsHelpers::makeFTSIndex( this, isCancelled );
+    const auto slob_dic = std::make_unique< SlobDictionary >( getId(), idxFileName, getDictionaryFilenames() );
+    FtsHelpers::makeFTSIndex( slob_dic.get(), isCancelled );
     FTS_index_completed.ref();
   }
   catch( std::exception &ex )
