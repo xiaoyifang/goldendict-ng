@@ -1,11 +1,15 @@
 # use vcpkg to build the ffmpeg.
 
 Steps:
+
 1. folow the instructions https://trac.ffmpeg.org/wiki/CompilationGuide/vcpkg
-2. run command 
+
+   
+3. run command 
 ```
 vcpkg.exe install ffmpeg[core,avcodec,avdevice,avfilter,avformat,speex,avresample,mp3lame,opus,sdl2,swresample,vorbis]:x64-windows-rel 
 ```
+
 3. copy dll and libs in vcpkg\installed\x64-windows-rel to goldendict's winlibs\lib\msvc
 
 **pros**: can be compiled with speex.
