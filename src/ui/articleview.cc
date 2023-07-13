@@ -294,6 +294,7 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
                                   QString const & scrollTo,
                                   Contexts const & contexts_ )
 {
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   currentWord = word.trimmed();
   if( currentWord.isEmpty() )
     return;
@@ -1479,7 +1480,7 @@ void ArticleView::reload() { webview->reload(); }
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  webview->page()->runJavaScript( "if(typeof(gdAudioLinks)!=\"undefined\") gdAudioLinks.first",
+  webview->page()->runJavaScript( R"(if(typeof(gdAudioLinks)!="undefined") gdAudioLinks.first)",
                                   [ callback ]( const QVariant & v ) {
                                     bool has = false;
                                     if( v.type() == QVariant::String )
@@ -1491,11 +1492,11 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 //use webengine javascript to playsound
 void ArticleView::playSound()
 {
-  QString variable = " (function(){  var link=gdAudioLinks[gdAudioLinks.current];           "
-    "   if(link==undefined){           "
-    "       link=gdAudioLinks.first;           "
-    "   }          "
-    "    return link;})();         ";
+  QString variable = R"( (function(){  var link=gdAudioMap.get(gdAudioLinks.current);           
+       if(link==undefined){           
+           link=gdAudioLinks.first;           
+       }          
+        return link;})();         )";
 
   webview->page()->runJavaScript( variable, [ this ]( const QVariant & result ) {
     if( result.type() == QVariant::String ) {

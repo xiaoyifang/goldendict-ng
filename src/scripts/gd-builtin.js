@@ -4,6 +4,9 @@ var gdAudioLinks = {
     "current": null
 };
 
+//store dictionary audio link.
+var gdAudioMap= new Map();
+
 function gdMakeArticleActive(newId,noEvent) {
     var gdCurrentArticle = $_$(".gdactivearticle").attr("id")
     if (gdCurrentArticle !== 'gdfrom-' + newId) {
