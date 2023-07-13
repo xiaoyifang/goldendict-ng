@@ -74,7 +74,7 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
 
     // remove existed base tag
     articleString.remove( baseTag );
-    articleString.replace( "window.location", "window.location1" );
+    articleString.replace( "window.location", "window.location;_window_location" );
 
     QRegularExpression headTag( R"(<head\b.*?>)",
                                 QRegularExpression::CaseInsensitiveOption
