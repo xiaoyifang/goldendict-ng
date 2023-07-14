@@ -705,38 +705,35 @@ public:
   }
 };
 
-QByteArray MddResourceRequest::isolate_css() {
+QByteArray MddResourceRequest::isolate_css()
+{
 
   const QString id = QString::fromUtf8( dict.getId().c_str() );
 
   QString css = QString::fromUtf8( data.data(), data.size() );
 
-  int pos    = 0;
+  int pos = 0;
 
   QString newCSS;
   QRegularExpressionMatchIterator it = RX::Mdx::links.globalMatch( css );
-  while ( it.hasNext() )
-  {
+  while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
     newCSS += css.mid( pos, match.capturedStart() - pos );
     pos         = match.capturedEnd();
     QString url = match.captured( 2 );
 
 
-    if( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0)
-    {
+    if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 ) {
       // External link or base64-encoded data
       newCSS += match.captured();
 
       continue;
     }
 
-    QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://"
-      + id + "/" + url + match.captured( 3 ) + ")";
+    QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
     newCSS += newUrl;
   }
-  if( pos )
-  {
+  if ( pos ) {
     newCSS += css.mid( pos );
     css = newCSS;
     newCSS.clear();
@@ -834,7 +831,7 @@ void MddResourceRequest::run()
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
         //cache the processed css result to avoid process again.
-        GlobalBroadcaster::instance()->cache.insert( unique_key, new QByteArray(bytes) );
+        GlobalBroadcaster::instance()->cache.insert( unique_key, new QByteArray( bytes ) );
       }
       if( Filetype::isNameOfTiff( u8ResourceName ) )
       {
