@@ -1,6 +1,7 @@
 #include "dictinfo.hh"
-#include "langcoder.hh"
 #include "language.hh"
+#include <QDesktopServices>
+#include "config.hh"
 
 #include <QString>
 
@@ -82,4 +83,9 @@ void DictInfo::on_OKButton_clicked()
 void DictInfo::on_headwordsButton_clicked()
 {
   done( SHOW_HEADWORDS );
+}
+
+void DictInfo::on_openIndexFolder_clicked()
+{
+  QDesktopServices::openUrl( QUrl::fromLocalFile( Config::getIndexDir() ) );
 }

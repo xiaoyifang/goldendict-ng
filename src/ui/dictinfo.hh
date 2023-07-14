@@ -32,6 +32,7 @@ private slots:
   void on_openFolder_clicked();
   void on_OKButton_clicked();
   void on_headwordsButton_clicked();
+  void on_openIndexFolder_clicked();
 };
 
 #endif // DICTINFO_HH
