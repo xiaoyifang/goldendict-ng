@@ -531,6 +531,10 @@ div.xdxf
   color: gray;
 }
 
+.dsl_unknown{
+	border-bottom: 3px double red;
+}
+
 /* Style for expand optional parts button */
 .hidden_expand_opt
 {

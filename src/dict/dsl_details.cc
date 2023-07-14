@@ -656,17 +656,11 @@ void ArticleDom::closeTag( wstring const & name,
   if ( n != stack.rend() )
   {
     // If there is a corresponding tag, close all tags above it,
-    // then close the tag itself, then reopen all the tags which got
-    // closed.
-
-    list< Node > nodesToReopen;
+    // then close the tag itself
 
     while ( !stack.empty() ) {
       bool found = stack.back()->tagName == name ||
                    checkM( stack.back()->tagName, name );
-
-      if ( !found )
-        nodesToReopen.emplace_back( Node::Tag(), stack.back()->tagName, stack.back()->tagAttrs );
 
       if( stack.back()->empty() && stack.back()->tagName !=  U"br"  )
       {
@@ -683,21 +677,6 @@ void ArticleDom::closeTag( wstring const & name,
 
       if ( found )
         break;
-    }
-
-    while ( !nodesToReopen.empty() ) {
-      if ( stack.empty() )
-      {
-        root.push_back( nodesToReopen.back() );
-        stack.push_back( &root.back() );
-      }
-      else
-      {
-        stack.back()->push_back( nodesToReopen.back() );
-        stack.push_back( &stack.back()->back() );
-      }
-
-      nodesToReopen.pop_back();
     }
   }
   else
