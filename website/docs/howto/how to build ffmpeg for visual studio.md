@@ -42,7 +42,3 @@ did not know how to link with libspeex.
 # links worth checking
 https://stackoverflow.com/a/44556505/968188
 
-# notes(deprecated)
-
-winlib/scripts/ffmpeg-configure-mingw32.sh is the script provided by goldendict .
-though I have compiled it wiht mingw32 ,I do not know how to compile it for visual studio .
