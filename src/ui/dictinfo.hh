@@ -20,7 +20,7 @@ public:
     SHOW_HEADWORDS
   };
 
-  DictInfo( Config::Class &cfg_, QWidget * parent = 0 );
+  DictInfo( Config::Class & cfg_, QWidget * parent = nullptr );
   void showInfo( sptr< Dictionary::Class > dict );
 
 private:
