@@ -1101,7 +1101,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
+  if ( !ensureInitDone().empty() )
     return;
 
   if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
