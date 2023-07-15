@@ -53,77 +53,13 @@
        <property name="topMargin">
         <number>9</number>
        </property>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="enableTrayIcon">
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="selectBySingleClick">
          <property name="toolTip">
-          <string>When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</string>
-         </property>
-         <property name="title">
-          <string>Enable system tray icon</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QCheckBox" name="startToTray">
-            <property name="toolTip">
-             <string>With this on, the application starts directly to system tray without showing
-its main window.</string>
-            </property>
-            <property name="text">
-             <string>Start to system tray</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="closeToTray">
-            <property name="toolTip">
-             <string>With this on, an attempt to close main window would hide it instead of closing
-the application.</string>
-            </property>
-            <property name="text">
-             <string>Close to system tray</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QCheckBox" name="escKeyHidesMainWindow">
-         <property name="toolTip">
-          <string>Normally, pressing ESC key moves focus to the translation line.
-With this on however, it will hide the main window.</string>
+          <string>Turn this option on if you want to select words by single mouse click</string>
          </property>
          <property name="text">
-          <string>ESC key hides main window</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QCheckBox" name="autoScrollToTargetArticle">
-         <property name="toolTip">
-          <string>Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</string>
-         </property>
-         <property name="text">
-          <string>Automatically scroll to target article</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+          <string>Select word by single click</string>
          </property>
         </widget>
        </item>
@@ -176,6 +112,30 @@ however, the article from the topmost dictionary is shown.</string>
          </item>
         </layout>
        </item>
+       <item row="7" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Article Display style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="displayStyle"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="addonStylesLabel">
+           <property name="text">
+            <string>Add-on style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StylesComboBox" name="addonStyles"/>
+         </item>
+        </layout>
+       </item>
        <item row="1" column="1">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
@@ -202,14 +162,21 @@ however, the article from the topmost dictionary is shown.</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_21">
-         <property name="text">
-          <string>Dictionary Font: </string>
+       <item row="6" column="0">
+        <widget class="QComboBox" name="interfaceLanguage">
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
          </property>
         </widget>
        </item>
-       <item row="20" column="0" colspan="2">
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="doubleClickTranslates">
+         <property name="text">
+          <string>Double-click translates the word clicked</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -222,7 +189,18 @@ however, the article from the topmost dictionary is shown.</string>
          </property>
         </spacer>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="escKeyHidesMainWindow">
+         <property name="toolTip">
+          <string>Normally, pressing ESC key moves focus to the translation line.
+With this on however, it will hide the main window.</string>
+         </property>
+         <property name="text">
+          <string>ESC key hides main window</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
         <layout class="QVBoxLayout" name="verticalLayout_16">
          <item>
           <widget class="QCheckBox" name="darkMode">
@@ -245,43 +223,6 @@ however, the article from the topmost dictionary is shown.</string>
           </widget>
          </item>
         </layout>
-       </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="selectBySingleClick">
-         <property name="toolTip">
-          <string>Turn this option on if you want to select words by single mouse click</string>
-         </property>
-         <property name="text">
-          <string>Select word by single click</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QComboBox" name="interfaceLanguage">
-         <property name="sizeAdjustPolicy">
-          <enum>QComboBox::AdjustToContents</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QFontComboBox" name="fontFamilies">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip">
-          <string>set the fallback font family for dictionary</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="doubleClickTranslates">
-         <property name="text">
-          <string>Double-click translates the word clicked</string>
-         </property>
-        </widget>
        </item>
        <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox">
@@ -336,31 +277,264 @@ be the last ones.</string>
          </layout>
         </widget>
        </item>
-       <item row="9" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>Article Display style:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="displayStyle"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="addonStylesLabel">
-           <property name="text">
-            <string>Add-on style:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="StylesComboBox" name="addonStyles"/>
-         </item>
-        </layout>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="autoScrollToTargetArticle">
+         <property name="toolTip">
+          <string>Normally, clicking on a link, double-clicking on a word or looking up
+selection in an article loads the translation and almost immediately
+scrolls to the article from the same dictionary. With this option off,
+however, the article from the topmost dictionary is shown.</string>
+         </property>
+         <property name="text">
+          <string>Automatically scroll to target article</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="enableTrayIcon">
+         <property name="toolTip">
+          <string>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</string>
+         </property>
+         <property name="title">
+          <string>Enable system tray icon</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="startToTray">
+            <property name="toolTip">
+             <string>With this on, the application starts directly to system tray without showing
+its main window.</string>
+            </property>
+            <property name="text">
+             <string>Start to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="closeToTray">
+            <property name="toolTip">
+             <string>With this on, an attempt to close main window would hide it instead of closing
+the application.</string>
+            </property>
+            <property name="text">
+             <string>Close to system tray</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="tab_font">
+      <property name="maximumSize">
+       <size>
+        <width>763</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/font.svg</normaloff>:/icons/font.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Font</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_5">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>1</y>
+         <width>415</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Standard Font</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_24">
+        <item>
+         <widget class="QFontComboBox" name="font_standard">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="text_standard">
+          <property name="text">
+           <string>GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_9">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>319</y>
+         <width>415</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Monospace Font</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_20">
+        <item>
+         <widget class="QFontComboBox" name="font_monospace">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="fontFilters">
+           <set>QFontComboBox::MonospacedFonts</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="text_monospace">
+          <property name="text">
+           <string>GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_7">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>107</y>
+         <width>415</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Serif Font</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_23">
+        <item>
+         <widget class="QFontComboBox" name="font_serif">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="text_serif">
+          <property name="text">
+           <string>GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_8">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>213</y>
+         <width>415</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Sans-serif Font</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_22">
+        <item>
+         <widget class="QFontComboBox" name="font_sans">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="text_sans">
+          <property name="text">
+           <string>GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_popup">
       <attribute name="icon">
