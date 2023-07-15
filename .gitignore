@@ -56,3 +56,5 @@ GoldenDict_resource.rc
 
 *.TMP
 *.orig
+
+node_modules
