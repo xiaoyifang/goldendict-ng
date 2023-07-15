@@ -1,5 +1,5 @@
 MainWindow {
-    background-color: #CFDDF0;
+  background-color: #cfddf0;
 }
 
 #wordList,
@@ -9,71 +9,81 @@ MainWindow {
 #historyList,
 #favoritesPane,
 #favoritesTree {
-    background: #EAF0F8;
-    color: darkblue;
+  background: #eaf0f8;
+  color: darkblue;
 }
 
 MainWindow #menubar {
-    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                      stop:0 #F0F6FF, stop:0.5 #D2E0F5, stop:0.9 #DCEBFF, stop:1 #F0F6FF);
+  background-color: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 1,
+    stop: 0 #f0f6ff,
+    stop: 0.5 #d2e0f5,
+    stop: 0.9 #dcebff,
+    stop: 1 #f0f6ff
+  );
 }
 
 MainWindow #menubar::item {
-    padding: 2px 8px;
-    background: transparent;
+  padding: 2px 8px;
+  background: transparent;
 }
 
-MainWindow #menubar::item:selected { /* when selected using mouse or keyboard */
-    background: #839EC7;
+MainWindow #menubar::item:selected {
+  /* when selected using mouse or keyboard */
+  background: #839ec7;
 }
 
 MainWindow #menubar::item:pressed {
-    background: #728AAD;
+  background: #728aad;
 }
 
 MainWindow #centralWidget QTabBar::tab {
-    border: 1px solid #667B9B;
-    border-bottom-color: #667B9B;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    padding: 1px 3px;
-    margin-left: 1px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    background-color: #CFDDF0;
-    color: darkslategray;
+  border: 1px solid #667b9b;
+  border-bottom-color: #667b9b;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 1px 3px;
+  margin-left: 1px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  background-color: #cfddf0;
+  color: darkslategray;
 }
 
 MainWindow #centralWidget QTabBar::tab:selected {
-    background-color: #839EC7;
-    color: #fff;
-    border-bottom-style: none;
+  background-color: #839ec7;
+  color: #fff;
+  border-bottom-style: none;
 }
 
-
-ArticleView #searchFrame QMenu {background-color: none}
-ArticleView QMenu {background-color: none} 
+ArticleView #searchFrame QMenu {
+  background-color: none;
+}
+ArticleView QMenu {
+  background-color: none;
+}
 
 QMainWindow::separator {
-     width:  1px; /* when vertical */
-     height: 1px; /* when horizontal */
-} 
+  width: 1px; /* when vertical */
+  height: 1px; /* when horizontal */
+}
 
 #dictsPaneTitleBar {
   margin: 2px;
-} 
+}
 
 /* Colored header for the History Pane */
 #historyPaneTitleBar {
   margin: 2px;
-} 
-
-ScanPopup #outerFrame
-{
-   background-color: #CEDDEF;
 }
 
-ScanPopup #dictionaryBar
-{
-   background: #CEDDEF;
+ScanPopup #outerFrame {
+  background-color: #ceddef;
+}
+
+ScanPopup #dictionaryBar {
+  background: #ceddef;
 }
