@@ -1,4 +1,4 @@
-name: "auto clang-format code"
+name: autofix.ci
 
 on:
   pull_request:
@@ -12,7 +12,8 @@ on:
       - "howto/**"
       - "*.md"
       - "locale/**"
-
+permissions:
+  contents: read
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -42,3 +43,27 @@ jobs:
         with:
           default_author: github_actor
           message: 🎨 apply clang-format changes
+
+      - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0    
+
+
+  css-js-html-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: |
+          npm ci
+      - run: npx prettier  --write src/stylesheets src/scripts/gd-*.js
+      # Optimize all PNGs with https://pngquant.org/
+      # - run: sudo apt-get update && sudo apt-get install -y pngquant
+      # - name: Run pngquant
+      #   run: |
+      #     shopt -s globstar
+      #     pngquant -f --ext .png --skip-if-larger -- **/*.png
+      - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0
