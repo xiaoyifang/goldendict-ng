@@ -14,14 +14,13 @@
 }
 
 QTabBar::close-button {
-  image: url(:/icons/closetab.svg)
+  image: url(:/icons/closetab.svg);
 }
 QTabBar::close-button:hover {
-  image: url(:/icons/closetab-hover.png)
+  image: url(:/icons/closetab-hover.png);
 }
 
-MainStatusBar #text
-{
+MainStatusBar #text {
   border-top-right-radius: 3px;
   border-top: 1px solid palette(dark);
   border-right: 1px solid palette(dark);
@@ -29,8 +28,7 @@ MainStatusBar #text
   padding: 2px;
 }
 
-MainStatusBar #icon
-{
+MainStatusBar #icon {
   border-top: 1px solid palette(dark);
   background: palette(window);
   padding: 2px;
@@ -38,8 +36,7 @@ MainStatusBar #icon
   padding-right: 0px;
 }
 
-ScanPopup #translateLine
-{
+ScanPopup #translateLine {
   margin: 0px;
   padding: 1px 3px 1px 3px;
   border: 1px solid gray;
@@ -48,8 +45,7 @@ ScanPopup #translateLine
   border-bottom-left-radius: 0px;
 }
 
-ScanPopup GroupComboBox
-{
+ScanPopup GroupComboBox {
   margin: 0px 0px 0px 1px;
   padding: 1px 4px 1px 4px;
   border: 1px solid gray;
@@ -64,35 +60,31 @@ ScanPopup GroupComboBox:on {
 }
 
 ScanPopup GroupComboBox::drop-down {
-   subcontrol-origin: padding;
-   subcontrol-position: top right;
-   width: 15px;
-   border-left: 1px solid darkgray;
-   border-right: 1px transparent;
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  width: 15px;
+  border-left: 1px solid darkgray;
+  border-right: 1px transparent;
 }
 
 ScanPopup GroupComboBox::down-arrow {
-   image: url(:/icons/1downarrow.svg);
+  image: url(:/icons/1downarrow.svg);
   max-height: 100%;
 }
 
-.ScanPopup #outerFrame
-{
+.ScanPopup #outerFrame {
   border: 1px solid palette(dark);
 }
 
-.ScanPopup MainStatusBar #text
-{
+.ScanPopup MainStatusBar #text {
   border-bottom: 1px solid palette(dark);
 }
 
-.ScanPopup MainStatusBar[hasImage="false"] #text
-{
+.ScanPopup MainStatusBar[hasImage="false"] #text {
   border-left: 1px solid palette(dark);
 }
 
-.ScanPopup MainStatusBar #icon
-{
+.ScanPopup MainStatusBar #icon {
   border-left: 1px solid palette(dark);
   border-bottom: 1px solid palette(dark);
 }
