@@ -186,33 +186,33 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1928"/>
+      <location filename="../src/ui/articleview.cc" line="1929"/>
       <source>Failed to create temporary file.</source>
       <translation>建立暫存檔失敗。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1639"/>
+      <location filename="../src/ui/articleview.cc" line="1640"/>
       <source>&amp;Look up &quot;%1&quot;</source>
       <translation>查詢 &quot;%1&quot;(&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1647"/>
+      <location filename="../src/ui/articleview.cc" line="1648"/>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
       <translation>在新分頁中查詢 &quot;%1&quot;(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1214"/>
-      <location filename="../src/ui/articleview.cc" line="1391"/>
+      <location filename="../src/ui/articleview.cc" line="1215"/>
+      <location filename="../src/ui/articleview.cc" line="1392"/>
       <source>The referenced resource doesn&apos;t exist.</source>
       <translation>所引用的資源不存在。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1939"/>
+      <location filename="../src/ui/articleview.cc" line="1940"/>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
       <translation>自動開啟資源檔時失敗，請嘗試手動開啟：%1。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1673"/>
+      <location filename="../src/ui/articleview.cc" line="1674"/>
       <source>Look up &quot;%1&quot; in %2</source>
       <translation>在 %2 中查詢 &quot;%1&quot;</translation>
     </message>
@@ -232,105 +232,105 @@
       <translation>檢查原始碼</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1681"/>
+      <location filename="../src/ui/articleview.cc" line="1682"/>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
       <translation>在 %2 中查詢 &quot;%1&quot; 並使用新分頁(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1597"/>
+      <location filename="../src/ui/articleview.cc" line="1598"/>
       <source>Open Link in New &amp;Tab</source>
       <translation>在新分頁中開啟連結(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1604"/>
+      <location filename="../src/ui/articleview.cc" line="1605"/>
       <source>Open Link in &amp;External Browser</source>
       <translation>在外部瀏覽器中開啟連結(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="854"/>
+      <location filename="../src/ui/articleview.cc" line="855"/>
       <source>Resource</source>
       <translation>資源</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="859"/>
+      <location filename="../src/ui/articleview.cc" line="860"/>
       <source>Audio</source>
       <translation>音訊</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="864"/>
+      <location filename="../src/ui/articleview.cc" line="865"/>
       <source>TTS Voice</source>
       <translation>文字轉語音聲音</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="869"/>
+      <location filename="../src/ui/articleview.cc" line="870"/>
       <source>Picture</source>
       <translation>圖片</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="876"/>
+      <location filename="../src/ui/articleview.cc" line="877"/>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>影像</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="885"/>
+      <location filename="../src/ui/articleview.cc" line="886"/>
       <source>Video: %1</source>
       <translation>影像： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="902"/>
+      <location filename="../src/ui/articleview.cc" line="903"/>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
       <translation>字典 &quot;%1&quot; 的定義： %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="910"/>
+      <location filename="../src/ui/articleview.cc" line="911"/>
       <source>Definition: %1</source>
       <translation>查詢釋義：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1249"/>
+      <location filename="../src/ui/articleview.cc" line="1250"/>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>引用的音訊程式不存在。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1591"/>
+      <location filename="../src/ui/articleview.cc" line="1592"/>
       <source>Op&amp;en Link</source>
       <translation>開啟連結(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1692"/>
+      <location filename="../src/ui/articleview.cc" line="1693"/>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
       <translation>儲存書籤(&amp;B)&quot;%1...&quot;</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1969"/>
+      <location filename="../src/ui/articleview.cc" line="1970"/>
       <source>WARNING: Audio Player: %1</source>
       <translation>警告： 音訊播放程式： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1139"/>
-      <location filename="../src/ui/articleview.cc" line="1174"/>
-      <location filename="../src/ui/articleview.cc" line="1391"/>
+      <location filename="../src/ui/articleview.cc" line="1140"/>
+      <location filename="../src/ui/articleview.cc" line="1175"/>
+      <location filename="../src/ui/articleview.cc" line="1392"/>
       <source>ERROR: %1</source>
       <translation>錯誤：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1841"/>
+      <location filename="../src/ui/articleview.cc" line="1842"/>
       <source>Save sound</source>
       <translation>儲存音訊</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1856"/>
+      <location filename="../src/ui/articleview.cc" line="1857"/>
       <source>Save image</source>
       <translation>儲存圖片</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1858"/>
+      <location filename="../src/ui/articleview.cc" line="1859"/>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
       <translation>圖片檔(*.bmp *.jpg *.png *.tif);;所有檔案 (*.*) </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1620"/>
+      <location filename="../src/ui/articleview.cc" line="1621"/>
       <source>Save &amp;image...</source>
       <translation>儲存圖片(&amp;I)...</translation>
     </message>
@@ -345,38 +345,38 @@
       <translation>%1/%2 個匹配</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1627"/>
+      <location filename="../src/ui/articleview.cc" line="1628"/>
       <source>Save s&amp;ound...</source>
       <translation>儲存音訊(&amp;O)...</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1652"/>
+      <location filename="../src/ui/articleview.cc" line="1653"/>
       <source>Send &quot;%1&quot; to input line</source>
       <translation>把 &quot;%1&quot; 傳送到輸入列</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1658"/>
-      <location filename="../src/ui/articleview.cc" line="1710"/>
+      <location filename="../src/ui/articleview.cc" line="1659"/>
+      <location filename="../src/ui/articleview.cc" line="1711"/>
       <source>&amp;Add &quot;%1&quot; to history</source>
       <translation>將 &quot;%1&quot; 新增至歷史記錄(&amp;A) </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1700"/>
+      <location filename="../src/ui/articleview.cc" line="1701"/>
       <source>&amp;Send Current Article to Anki</source>
       <translation>將當前內容傳送到anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1701"/>
+      <location filename="../src/ui/articleview.cc" line="1702"/>
       <source>&amp;Send selected text to Anki</source>
       <translation>將選擇的文字傳送到anki</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1843"/>
+      <location filename="../src/ui/articleview.cc" line="1844"/>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>聲音檔案 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="1913"/>
+      <location filename="../src/ui/articleview.cc" line="1914"/>
       <source>Failed to play sound file: %1</source>
       <translation>播放音訊檔案失敗：%1</translation>
     </message>
@@ -813,11 +813,21 @@ between classic and school orthography in cyrillic)</source>
       <translation>詞條清單</translation>
     </message>
     <message>
-      <location filename="../src/ui/dictinfo.cc" line="30"/>
+      <location filename="../src/ui/dictinfo.cc" line="31"/>
       <source>Edit the dictionary via command:
 %1</source>
       <translation>以指令編輯字典：
 %1</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictinfo.ui"/>
+      <source>Index filename:</source>
+      <translation>索引文件名：</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/dictinfo.ui"/>
+      <source>Open index folder</source>
+      <translation>打開索引文件夾</translation>
     </message>
   </context>
   <context>
@@ -1458,12 +1468,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>初始化 GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/initializing.cc" line="19"/>
+      <location filename="../src/initializing.cc" line="18"/>
       <source>Please wait...</source>
       <translation>請稍候...</translation>
     </message>
     <message>
-      <location filename="../src/initializing.cc" line="28"/>
+      <location filename="../src/initializing.cc" line="27"/>
       <source>Indexing...</source>
       <translation>索引...</translation>
     </message>
@@ -2728,17 +2738,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>F4</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1529"/>
+      <location filename="../src/ui/mainwindow.cc" line="1560"/>
       <source>All</source>
       <translation>全部</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="200"/>
+      <location filename="../src/ui/mainwindow.cc" line="224"/>
       <source>Back</source>
       <translation>上一頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1502"/>
+      <location filename="../src/ui/mainwindow.cc" line="1533"/>
       <source>%1 dictionaries, %2 articles, %3 words</source>
       <translation>字典數：%1，條目數：%2，單字數：%3</translation>
     </message>
@@ -2764,12 +2774,12 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui"/>
-      <location filename="../src/ui/mainwindow.cc" line="383"/>
+      <location filename="../src/ui/mainwindow.cc" line="407"/>
       <source>&amp;Quit</source>
       <translation>結束(&amp;Q)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3279"/>
+      <location filename="../src/ui/mainwindow.cc" line="3305"/>
       <source>Error</source>
       <translation>錯誤</translation>
     </message>
@@ -2784,12 +2794,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>關閉至系統匣(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3279"/>
+      <location filename="../src/ui/mainwindow.cc" line="3305"/>
       <source>Can&apos;t save article: %1</source>
       <translation>無法儲存條目：%1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="246"/>
+      <location filename="../src/ui/mainwindow.cc" line="270"/>
       <source>Zoom In</source>
       <translation>放大</translation>
     </message>
@@ -2819,7 +2829,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>儲存條目(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3262"/>
+      <location filename="../src/ui/mainwindow.cc" line="3288"/>
       <source>Save Article As</source>
       <translation>條目另存新檔</translation>
     </message>
@@ -2849,17 +2859,17 @@ between classic and school orthography in cyrillic)</source>
       <translation>首頁(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2961"/>
+      <location filename="../src/ui/mainwindow.cc" line="2987"/>
       <source>New Release Available</source>
       <translation>有新版本可用</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="250"/>
+      <location filename="../src/ui/mainwindow.cc" line="274"/>
       <source>Zoom Out</source>
       <translation>縮小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="376"/>
+      <location filename="../src/ui/mainwindow.cc" line="400"/>
       <source>Show &amp;Main Window</source>
       <translation>顯示主視窗(&amp;M)</translation>
     </message>
@@ -2869,27 +2879,27 @@ between classic and school orthography in cyrillic)</source>
       <translation>關於 GoldenDict-ng</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2968"/>
+      <location filename="../src/ui/mainwindow.cc" line="2994"/>
       <source>Download</source>
       <translation>下載</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3157"/>
+      <location filename="../src/ui/mainwindow.cc" line="3183"/>
       <source>Page Setup</source>
       <translation>頁面設定</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="254"/>
+      <location filename="../src/ui/mainwindow.cc" line="278"/>
       <source>Normal Size</source>
       <translation>正常大小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2811"/>
+      <location filename="../src/ui/mainwindow.cc" line="2837"/>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
       <translation>快速鍵監視機制初始化失敗。&lt;br&gt;請確保您的 XServer 已啟用 RECORD 延伸。</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2962"/>
+      <location filename="../src/ui/mainwindow.cc" line="2988"/>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
       <translation>有新版的 GoldenDict 可以下載，版本為 &lt;b&gt;%1&lt;/b&gt;。&lt;br&gt;
 按 &lt;b&gt;下載&lt;/b&gt; 以開啟下載頁面。</translation>
@@ -2905,14 +2915,14 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="583"/>
+      <location filename="../src/ui/mainwindow.cc" line="607"/>
       <source>Loading...</source>
       <translation>載入中
 
 </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1688"/>
+      <location filename="../src/ui/mainwindow.cc" line="1719"/>
       <source>(untitled)</source>
       <translation>(未命名)</translation>
     </message>
@@ -2923,12 +2933,12 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui"/>
-      <location filename="../src/ui/mainwindow.cc" line="729"/>
+      <location filename="../src/ui/mainwindow.cc" line="757"/>
       <source>Welcome!</source>
       <translation>歡迎使用！</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="233"/>
+      <location filename="../src/ui/mainwindow.cc" line="257"/>
       <source>Pronounce Word (Alt+S)</source>
       <translation>朗讀詞條(Alt+S)</translation>
     </message>
@@ -2938,22 +2948,22 @@ between classic and school orthography in cyrillic)</source>
       <translation>儲存條目</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="2969"/>
+      <location filename="../src/ui/mainwindow.cc" line="2995"/>
       <source>Skip This Release</source>
       <translation>略過此次升級</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="202"/>
+      <location filename="../src/ui/mainwindow.cc" line="226"/>
       <source>Forward</source>
       <translation>下一頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3179"/>
+      <location filename="../src/ui/mainwindow.cc" line="3205"/>
       <source>Print Article</source>
       <translation>列印條目</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3158"/>
+      <location filename="../src/ui/mainwindow.cc" line="3184"/>
       <source>No printer is available. Please install one first.</source>
       <translation>找不到可用的印表機，請先安裝一個印表機。</translation>
     </message>
@@ -2978,42 +2988,42 @@ between classic and school orthography in cyrillic)</source>
       <translation>縮放(&amp;Z)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="364"/>
+      <location filename="../src/ui/mainwindow.cc" line="388"/>
       <source>Words Zoom In</source>
       <translation>單字清單 - 放大</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="366"/>
+      <location filename="../src/ui/mainwindow.cc" line="390"/>
       <source>Words Zoom Out</source>
       <translation>單字清單 - 縮小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="368"/>
+      <location filename="../src/ui/mainwindow.cc" line="392"/>
       <source>Words Normal Size</source>
       <translation>單字清單 - 正常大小</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="425"/>
+      <location filename="../src/ui/mainwindow.cc" line="449"/>
       <source>Close current tab</source>
       <translation>關閉目前分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="433"/>
+      <location filename="../src/ui/mainwindow.cc" line="457"/>
       <source>Close all tabs</source>
       <translation>關閉所有分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="440"/>
+      <location filename="../src/ui/mainwindow.cc" line="464"/>
       <source>Close all tabs except current</source>
       <translation>關閉其它分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="415"/>
+      <location filename="../src/ui/mainwindow.cc" line="439"/>
       <source>Opened tabs</source>
       <translation>已開啟的分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="592"/>
+      <location filename="../src/ui/mainwindow.cc" line="616"/>
       <source>New Tab</source>
       <translation>新增分頁</translation>
     </message>
@@ -3028,65 +3038,65 @@ between classic and school orthography in cyrillic)</source>
       <translation>設定檔資料夾(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="123"/>
+      <location filename="../src/ui/mainwindow.cc" line="147"/>
       <source>&amp;Menubar</source>
       <translation>選單列(&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="340"/>
+      <location filename="../src/ui/mainwindow.cc" line="364"/>
       <source>Found in Dictionaries:</source>
       <translation>在下列字典中找到：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="460"/>
+      <location filename="../src/ui/mainwindow.cc" line="484"/>
       <source>Add all tabs to Favorites</source>
       <translation>將所有分頁新增到我的最愛</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="945"/>
+      <location filename="../src/ui/mainwindow.cc" line="971"/>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1075"/>
+      <location filename="../src/ui/mainwindow.cc" line="1101"/>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
       <translation>輸入想要在字典中搜尋的字串。可以使用萬用字元  &apos;*&apos;，&apos;?&apos; 和字元集合&apos;[...]&apos;。
 如果想尋找&apos;*&apos;、&apos;?&apos;、&apos;[&apos;、&apos;]&apos;等符號，請分別使用 &apos;*&apos;、&apos;?&apos;、&apos;[&apos;、&apos;]&apos;</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1637"/>
+      <location filename="../src/ui/mainwindow.cc" line="1668"/>
       <source>Open Tabs List</source>
       <translation>開啟分頁清單</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1884"/>
-      <location filename="../src/ui/mainwindow.cc" line="1953"/>
-      <location filename="../src/ui/mainwindow.cc" line="4318"/>
-      <location filename="../src/ui/mainwindow.cc" line="4346"/>
-      <location filename="../src/ui/mainwindow.cc" line="4385"/>
+      <location filename="../src/ui/mainwindow.cc" line="1915"/>
+      <location filename="../src/ui/mainwindow.cc" line="1979"/>
+      <location filename="../src/ui/mainwindow.cc" line="4344"/>
+      <location filename="../src/ui/mainwindow.cc" line="4372"/>
+      <location filename="../src/ui/mainwindow.cc" line="4411"/>
       <source>Remove current tab from Favorites</source>
       <translation>將目前分頁從我的最愛中移除</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="1908"/>
+      <location filename="../src/ui/mainwindow.cc" line="1939"/>
       <source>%1 - %2</source>
       <translation>%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3063"/>
+      <location filename="../src/ui/mainwindow.cc" line="3089"/>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
       <translation>您已隱藏選單列，可使用 %1 來顯示選單列。</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3065"/>
+      <location filename="../src/ui/mainwindow.cc" line="3091"/>
       <source>Ctrl+M</source>
       <translation>Ctrl+M</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui"/>
-      <location filename="../src/ui/mainwindow.cc" line="3625"/>
-      <location filename="../src/ui/mainwindow.cc" line="3635"/>
+      <location filename="../src/ui/mainwindow.cc" line="3651"/>
+      <location filename="../src/ui/mainwindow.cc" line="3661"/>
       <source>&amp;Show</source>
       <translation>顯示(&amp;S)</translation>
     </message>
@@ -3096,37 +3106,37 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>匯出(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3621"/>
-      <location filename="../src/ui/mainwindow.cc" line="3632"/>
+      <location filename="../src/ui/mainwindow.cc" line="3647"/>
+      <location filename="../src/ui/mainwindow.cc" line="3658"/>
       <source>&amp;Hide</source>
       <translation>隱藏(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3673"/>
+      <location filename="../src/ui/mainwindow.cc" line="3699"/>
       <source>Export history to file</source>
       <translation>匯出歷史記錄</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3675"/>
-      <location filename="../src/ui/mainwindow.cc" line="3736"/>
-      <location filename="../src/ui/mainwindow.cc" line="3851"/>
+      <location filename="../src/ui/mainwindow.cc" line="3701"/>
+      <location filename="../src/ui/mainwindow.cc" line="3762"/>
+      <location filename="../src/ui/mainwindow.cc" line="3877"/>
       <source>Text files (*.txt);;All files (*.*)</source>
       <translation>文字檔 (*.txt);;所有檔案 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3719"/>
+      <location filename="../src/ui/mainwindow.cc" line="3745"/>
       <source>History export complete</source>
       <translation>成功匯出歷史記錄</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3684"/>
-      <location filename="../src/ui/mainwindow.cc" line="3697"/>
-      <location filename="../src/ui/mainwindow.cc" line="3714"/>
-      <location filename="../src/ui/mainwindow.cc" line="3820"/>
-      <location filename="../src/ui/mainwindow.cc" line="3828"/>
-      <location filename="../src/ui/mainwindow.cc" line="3859"/>
-      <location filename="../src/ui/mainwindow.cc" line="3867"/>
-      <location filename="../src/ui/mainwindow.cc" line="3877"/>
+      <location filename="../src/ui/mainwindow.cc" line="3710"/>
+      <location filename="../src/ui/mainwindow.cc" line="3723"/>
+      <location filename="../src/ui/mainwindow.cc" line="3740"/>
+      <location filename="../src/ui/mainwindow.cc" line="3846"/>
+      <location filename="../src/ui/mainwindow.cc" line="3854"/>
+      <location filename="../src/ui/mainwindow.cc" line="3885"/>
+      <location filename="../src/ui/mainwindow.cc" line="3893"/>
+      <location filename="../src/ui/mainwindow.cc" line="3903"/>
       <source>Export error: </source>
       <translation>匯出失敗： </translation>
     </message>
@@ -3141,96 +3151,96 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>匯入(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3734"/>
+      <location filename="../src/ui/mainwindow.cc" line="3760"/>
       <source>Import history from file</source>
       <translation>匯入歷史記錄</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3783"/>
+      <location filename="../src/ui/mainwindow.cc" line="3809"/>
       <source>Import error: invalid data in file</source>
       <translation>匯入失敗： 檔案中無效的日期</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3789"/>
+      <location filename="../src/ui/mainwindow.cc" line="3815"/>
       <source>History import complete</source>
       <translation>成功匯入歷史記錄</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3746"/>
-      <location filename="../src/ui/mainwindow.cc" line="3777"/>
-      <location filename="../src/ui/mainwindow.cc" line="3909"/>
+      <location filename="../src/ui/mainwindow.cc" line="3772"/>
+      <location filename="../src/ui/mainwindow.cc" line="3803"/>
+      <location filename="../src/ui/mainwindow.cc" line="3935"/>
       <source>Import error: </source>
       <translation>匯入失敗： </translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3809"/>
+      <location filename="../src/ui/mainwindow.cc" line="3835"/>
       <source>Export Favorites to file</source>
       <translation>匯出我的最愛</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3811"/>
+      <location filename="../src/ui/mainwindow.cc" line="3837"/>
       <source>XML files (*.xml);;All files (*.*)</source>
       <translation>XML 檔案 (*.xml);;所有檔案 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3833"/>
-      <location filename="../src/ui/mainwindow.cc" line="3882"/>
+      <location filename="../src/ui/mainwindow.cc" line="3859"/>
+      <location filename="../src/ui/mainwindow.cc" line="3908"/>
       <source>Favorites export complete</source>
       <translation>我的最愛匯出完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3849"/>
+      <location filename="../src/ui/mainwindow.cc" line="3875"/>
       <source>Export Favorites to file as plain list</source>
       <translation>以純文字清單方式匯出我的最愛</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3897"/>
+      <location filename="../src/ui/mainwindow.cc" line="3923"/>
       <source>Import Favorites from file</source>
       <translation>從檔案匯入我的最愛</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3899"/>
+      <location filename="../src/ui/mainwindow.cc" line="3925"/>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
       <translation>XML 檔案 (*.csv);;文字檔案 (*.txt);;所有檔案 (*)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3929"/>
+      <location filename="../src/ui/mainwindow.cc" line="3955"/>
       <source>Favorites import complete</source>
       <translation>我的最愛匯入完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3917"/>
-      <location filename="../src/ui/mainwindow.cc" line="3923"/>
+      <location filename="../src/ui/mainwindow.cc" line="3943"/>
+      <location filename="../src/ui/mainwindow.cc" line="3949"/>
       <source>Data parsing error</source>
       <translation>資料解析錯誤</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4136"/>
+      <location filename="../src/ui/mainwindow.cc" line="4162"/>
       <source>Dictionary info</source>
       <translation>字典資訊</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4140"/>
+      <location filename="../src/ui/mainwindow.cc" line="4166"/>
       <source>Dictionary headwords</source>
       <translation>詞條清單</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4142"/>
+      <location filename="../src/ui/mainwindow.cc" line="4168"/>
       <source>Open dictionary folder</source>
       <translation>開啟字典資料夾</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4148"/>
+      <location filename="../src/ui/mainwindow.cc" line="4174"/>
       <source>Edit dictionary</source>
       <translation>編輯字典</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4293"/>
+      <location filename="../src/ui/mainwindow.cc" line="4319"/>
       <source>Now indexing for full-text search: </source>
       <translation>正在建立全文搜尋用的索引：</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="4331"/>
+      <location filename="../src/ui/mainwindow.cc" line="4357"/>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>確定要將詞條 &quot;%1&quot; 從我的最愛中移除嗎？</translation>
     </message>
@@ -3281,7 +3291,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui"/>
-      <location filename="../src/ui/mainwindow.cc" line="298"/>
+      <location filename="../src/ui/mainwindow.cc" line="322"/>
       <source>Menu Button</source>
       <translation>選單按鈕</translation>
     </message>
@@ -3332,10 +3342,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <location filename="../src/ui/mainwindow.ui"/>
-      <location filename="../src/ui/mainwindow.cc" line="269"/>
-      <location filename="../src/ui/mainwindow.cc" line="1888"/>
-      <location filename="../src/ui/mainwindow.cc" line="1957"/>
-      <location filename="../src/ui/mainwindow.cc" line="4338"/>
+      <location filename="../src/ui/mainwindow.cc" line="293"/>
+      <location filename="../src/ui/mainwindow.cc" line="1919"/>
+      <location filename="../src/ui/mainwindow.cc" line="1983"/>
+      <location filename="../src/ui/mainwindow.cc" line="4364"/>
       <source>Add current tab to Favorites</source>
       <translation>將目前分頁新增到我的最愛</translation>
     </message>
@@ -3350,47 +3360,47 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>匯出到清單</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="121"/>
+      <location filename="../src/ui/mainwindow.cc" line="145"/>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>在字典列中顯示字典名稱(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="122"/>
+      <location filename="../src/ui/mainwindow.cc" line="146"/>
       <source>Show Small Icons in &amp;Toolbars</source>
       <translation>在工具列中顯示小型圖示(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="197"/>
+      <location filename="../src/ui/mainwindow.cc" line="221"/>
       <source>&amp;Navigation</source>
       <translation>導航列(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="225"/>
+      <location filename="../src/ui/mainwindow.cc" line="249"/>
       <source>Enable Scanning</source>
       <translation>啟用掃描</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3257"/>
+      <location filename="../src/ui/mainwindow.cc" line="3283"/>
       <source>Article, Complete (*.html)</source>
       <translation>條目，完整 (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3258"/>
+      <location filename="../src/ui/mainwindow.cc" line="3284"/>
       <source>Article, HTML Only (*.html)</source>
       <translation>條目，僅HTML部分 (*.html)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3337"/>
+      <location filename="../src/ui/mainwindow.cc" line="3363"/>
       <source>Saving article...</source>
       <translation>儲存條目...</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3350"/>
+      <location filename="../src/ui/mainwindow.cc" line="3376"/>
       <source>Save article complete</source>
       <translation>保存文章完成</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="3398"/>
+      <location filename="../src/ui/mainwindow.cc" line="3424"/>
       <source>The main window is set to be always on top.</source>
       <translation>主視窗設定為最上層顯示。</translation>
     </message>
@@ -3400,8 +3410,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>歷史記錄窗格(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/ui/mainwindow.cc" line="773"/>
-      <location filename="../src/ui/mainwindow.cc" line="852"/>
+      <location filename="../src/ui/mainwindow.cc" line="799"/>
+      <location filename="../src/ui/mainwindow.cc" line="878"/>
       <source>Accessibility API is not enabled</source>
       <translation>未啟用協助存取 API</translation>
     </message>
@@ -3717,7 +3727,7 @@ for all program&apos;s network requests.</source>
       <translation>僅限右 Ctrl</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="111"/>
+      <location filename="../src/ui/preferences.cc" line="133"/>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
     </message>
@@ -3748,7 +3758,7 @@ in the pressed state when the word selection changes.</source>
       <translation>在目前分頁之後開啟新分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="560"/>
+      <location filename="../src/ui/preferences.cc" line="585"/>
       <source>Restart the program to apply the language change.</source>
       <translation>變更介面語言需要重新啟動程式才能生效。</translation>
     </message>
@@ -3809,7 +3819,7 @@ download page.</source>
       <translation>密碼：</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="108"/>
+      <location filename="../src/ui/preferences.cc" line="130"/>
       <source>Default</source>
       <translation>預設</translation>
     </message>
@@ -3819,7 +3829,7 @@ download page.</source>
       <translation>介面(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="559"/>
+      <location filename="../src/ui/preferences.cc" line="584"/>
       <source>Changing Language</source>
       <translation>變更介面語言</translation>
     </message>
@@ -4028,16 +4038,6 @@ however, the article from the topmost dictionary is shown.</source>
       <location filename="../src/ui/preferences.ui"/>
       <source>Automatically scroll to target article</source>
       <translation>自動滾動到目標文章</translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui"/>
-      <source>Dictionary Font: </source>
-      <translation>字典名稱: </translation>
-    </message>
-    <message>
-      <location filename="../src/ui/preferences.ui"/>
-      <source>set the fallback font family for dictionary</source>
-      <translation>為字典設置後備字體系列</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
@@ -4356,7 +4356,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Ctrl-Tab 依照 MRU 順序瀏覽分頁</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="112"/>
+      <location filename="../src/ui/preferences.cc" line="134"/>
       <source>Babylon</source>
       <translation>巴比倫</translation>
     </message>
@@ -4421,27 +4421,27 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>分鐘儲存一次</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="109"/>
+      <location filename="../src/ui/preferences.cc" line="131"/>
       <source>Classic</source>
       <translation>經典式樣</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="110"/>
+      <location filename="../src/ui/preferences.cc" line="132"/>
       <source>Modern</source>
       <translation>現代</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="113"/>
+      <location filename="../src/ui/preferences.cc" line="135"/>
       <source>Lingoes</source>
       <translation>靈格斯</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="114"/>
+      <location filename="../src/ui/preferences.cc" line="136"/>
       <source>Lingoes-Blue</source>
       <translation>靈格斯-藍</translation>
     </message>
     <message>
-      <location filename="../src/ui/preferences.cc" line="125"/>
+      <location filename="../src/ui/preferences.cc" line="147"/>
       <source> MB</source>
       <translation> MB</translation>
     </message>
@@ -4454,6 +4454,41 @@ from Stardict, Babylon and GLS dictionaries</source>
       <location filename="../src/ui/preferences.ui"/>
       <source>Enable index with positional information</source>
       <translation>啟用帶有位置信息的索引</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Standard Font</source>
+      <translation>標準字體</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Monospace Font</source>
+      <translation>等寬字體</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Serif Font</source>
+      <translation>襯線字體</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Sans-serif Font</source>
+      <translation>無襯線字體</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Appearance</source>
+      <translation>外貌</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
+      <translation>當未找到字典指定的字體時，將應用這些字體。</translation>
+    </message>
+    <message>
+      <location filename="../src/ui/preferences.ui"/>
+      <source>Fallback Fonts</source>
+      <translation>後備字體</translation>
     </message>
   </context>
   <context>
@@ -4540,7 +4575,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <location filename="../src/dict/aard.cc" line="511"/>
-      <location filename="../src/dict/slob.cc" line="799"/>
+      <location filename="../src/dict/slob.cc" line="800"/>
       <source>Article decoding error</source>
       <translation>條目解碼失敗</translation>
     </message>
@@ -4648,22 +4683,22 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2472"/>
+      <location filename="../src/ui/articleview.cc" line="2474"/>
       <source>ERROR: %1</source>
       <translation>錯誤： %1</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2472"/>
+      <location filename="../src/ui/articleview.cc" line="2474"/>
       <source>Resource saving error: </source>
       <translation>資源儲存錯誤： </translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2498"/>
+      <location filename="../src/ui/articleview.cc" line="2500"/>
       <source>The referenced resource failed to download.</source>
       <translation>所引用的資源下載失敗。</translation>
     </message>
     <message>
-      <location filename="../src/ui/articleview.cc" line="2498"/>
+      <location filename="../src/ui/articleview.cc" line="2500"/>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
     </message>
