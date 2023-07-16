@@ -546,7 +546,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     Config::Group * grp = cfg.getGroup( cfg.lastMainGroupId );
     if ( igrp && grp )
       igrp->checkMutedDictionaries( &grp->mutedDictionaries );
-    dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : 0 );
+    dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : nullptr );
   }
   GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
 
@@ -1343,7 +1343,7 @@ void MainWindow::updateTrayIcon()
     // Need to hide it
     delete trayIcon;
 
-    trayIcon = 0;
+    trayIcon = nullptr;
   }
   if ( trayIcon ) {
     // Update the icon to reflect the scanning mode
@@ -1600,13 +1600,13 @@ void MainWindow::updateDictionaryBar()
   unsigned currentId     = groupList->getCurrentGroup();
   Instances::Group * grp = groupInstances.findGroup( currentId );
 
-  dictionaryBar.setMutedDictionaries( 0 );
+  dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
     if ( currentId == Instances::Group::AllGroupId )
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
     else {
       Config::Group * grp = cfg.getGroup( currentId );
-      dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : 0 );
+      dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : nullptr );
     }
 
     dictionaryBar.setDictionaries( grp->dictionaries );
@@ -1632,7 +1632,7 @@ vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
   }
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
-  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == 0 )
+  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr )
     return groupInstances[ current ].dictionaries;
   else
   {
@@ -1980,6 +1980,11 @@ void MainWindow::tabSwitched( int )
     addToFavorites->setIcon( starIcon );
     addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
   }
+
+  auto view = getCurrentArticleView();
+  if(view) {
+    groupList->setCurrentGroup( view->getCurrentGroupId() );
+  }
 }
 
 void MainWindow::tabMenuRequested( QPoint pos )
@@ -2247,26 +2252,27 @@ void MainWindow::editPreferences()
 
 void MainWindow::currentGroupChanged( int )
 {
-  cfg.lastMainGroupId           = groupList->getCurrentGroup();
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( cfg.lastMainGroupId == Instances::Group::AllGroupId ) {
+  unsigned grg_id = groupList->getCurrentGroup();
+  cfg.lastMainGroupId           = grg_id;
+  Instances::Group const * igrp = groupInstances.findGroup( grg_id );
+  if ( grg_id == Instances::Group::AllGroupId ) {
     if ( igrp )
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
     dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
   }
   else {
-    Config::Group * grp = cfg.getGroup( cfg.lastMainGroupId );
+    Config::Group * grp = cfg.getGroup( grg_id );
     if ( grp ) {
       if ( igrp )
         igrp->checkMutedDictionaries( &grp->mutedDictionaries );
       dictionaryBar.setMutedDictionaries( &grp->mutedDictionaries );
     }
     else
-      dictionaryBar.setMutedDictionaries( 0 );
+      dictionaryBar.setMutedDictionaries( nullptr );
   }
 
   if ( igrp ) {
-    GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
+    GlobalBroadcaster::instance()->currentGroupId = grg_id;
   }
 
   updateDictionaryBar();
@@ -2274,12 +2280,17 @@ void MainWindow::currentGroupChanged( int )
   // Update word search results
   translateBox->setPopupEnabled( false );
   updateSuggestionList();
-  translateInputFinished( false );
+
+  if ( auto view = getCurrentArticleView() ) {
+    view->setCurrentGroupId( grg_id );
+    QString word = Folding::unescapeWildcardSymbols( view->getWord() );
+    respondToTranslationRequest( word, false );
+  }
 
   updateCurrentGroupProperty();
 
   if ( ftsDlg )
-    ftsDlg->setCurrentGroup( cfg.lastMainGroupId );
+    ftsDlg->setCurrentGroup( grg_id );
 }
 
 void MainWindow::updateCurrentGroupProperty()
@@ -2325,7 +2336,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   // triggering a set of spurious activation signals when the list changes.
 
   if ( ui.wordList->selectionModel()->hasSelection() )
-    ui.wordList->setCurrentItem( 0, QItemSelectionModel::Clear );
+    ui.wordList->setCurrentItem( nullptr, QItemSelectionModel::Clear );
 
   QString req = newValue.trimmed();
 
@@ -3550,7 +3561,7 @@ ArticleView * MainWindow::getCurrentArticleView()
   {
     return dynamic_cast< ArticleView * >( cw );
   }
-  return 0;
+  return nullptr;
 }
 
 void MainWindow::wordReceived( const QString & word )
@@ -3999,7 +4010,7 @@ void MainWindow::closeHeadwordsDialog()
   if( headwordsDlg )
   {
     delete headwordsDlg;
-    headwordsDlg = NULL;
+    headwordsDlg = nullptr;
   }
 }
 
@@ -4061,7 +4072,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
   if( item )
   {
     QString id = item->data( Qt::UserRole ).toString();
-    Dictionary::Class *pDict = NULL;
+    Dictionary::Class *pDict = nullptr;
 
     for( unsigned i = 0; i < dictionaries.size(); i++ )
     {
@@ -4072,7 +4083,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
       }
     }
 
-    if( pDict == NULL )
+    if( pDict == nullptr )
       return;
 
     if( !pDict->isLocalDictionary() )
@@ -4088,13 +4099,13 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
       QMenu menu( ui.dictsList );
       QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      QAction * headwordsAction = NULL;
+      QAction * headwordsAction = nullptr;
       if( pDict->getWordCount() > 0 )
         headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
 
       QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-      QAction * editAction = NULL;
+      QAction * editAction = nullptr;
 
       QString dictFilename = pDict->getMainFilename();
       if( !cfg.editDictionaryCommandLine.isEmpty() && !dictFilename.isEmpty() )
@@ -4234,7 +4245,7 @@ void MainWindow::closeFullTextSearchDialog()
   {
     ftsDlg->stopSearch();
     delete ftsDlg;
-    ftsDlg = 0;
+    ftsDlg = nullptr;
   }
 }
 

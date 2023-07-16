@@ -70,6 +70,7 @@ class ArticleView: public QWidget
 
   QAction * dictionaryBarToggled;
   GroupComboBox const *groupComboBox;
+  unsigned currentGroupId;
   QLineEdit const * translateLine;
 
   /// current searching word.
@@ -112,15 +113,13 @@ public:
                GroupComboBox const * groupComboBox = nullptr
               );
 
-  /// Sets the currently active group combo box. When looking up selections,
-  /// this allows presenting a choice of looking up in the currently chosen
-  /// group. Setting this to 0 disables this. It is 0 by default.
-  void setGroupComboBox( GroupComboBox const * );
+
+  void setCurrentGroupId( unsigned currengGrgId );
+  unsigned getCurrentGroupId();
 
   virtual QSize minimumSizeHint() const;
 
   ~ArticleView();
-
 
 
   /// Returns "gdfrom-" + dictionaryId.
