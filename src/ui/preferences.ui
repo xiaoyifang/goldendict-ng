@@ -406,20 +406,13 @@ the application.</string>
        </item>
        <item row="9" column="1">
         <widget class="QGroupBox" name="groupBox_10">
+         <property name="toolTip">
+          <string>These fonts will be applied when the fonts specified by a dictionary are not found.</string>
+         </property>
          <property name="title">
-          <string>Customize Fonts</string>
+          <string>Fallback Fonts</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_17">
-          <item>
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>These fonts will be applied if the dictionary's specified fonts have not been found.</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLabel" name="label_16">
             <property name="text">
