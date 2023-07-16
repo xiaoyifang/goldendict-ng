@@ -3724,7 +3724,7 @@ for all program&apos;s network requests.</source>
         <translation>仅限右 Ctrl</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="133"/>
+        <location filename="../src/ui/preferences.cc" line="137"/>
         <source>Lingvo</source>
         <translation>Lingvo</translation>
     </message>
@@ -3755,7 +3755,7 @@ in the pressed state when the word selection changes.</source>
         <translation>在当前页之后打开新标签页</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="584"/>
+        <location filename="../src/ui/preferences.cc" line="589"/>
         <source>Restart the program to apply the language change.</source>
         <translation>变更界面语言需要重新启动程序才能生效。</translation>
     </message>
@@ -3815,7 +3815,7 @@ download page.</source>
         <translation>密码：</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="130"/>
+        <location filename="../src/ui/preferences.cc" line="134"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
@@ -3825,7 +3825,7 @@ download page.</source>
         <translation>界面(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="583"/>
+        <location filename="../src/ui/preferences.cc" line="588"/>
         <source>Changing Language</source>
         <translation>变更界面语言</translation>
     </message>
@@ -4348,7 +4348,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation>用 Ctrl-tab 浏览标签页时，以“最近使用”为序</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="134"/>
+        <location filename="../src/ui/preferences.cc" line="138"/>
         <source>Babylon</source>
         <translation>巴比伦文</translation>
     </message>
@@ -4413,27 +4413,27 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="131"/>
+        <location filename="../src/ui/preferences.cc" line="135"/>
         <source>Classic</source>
         <translation>经典</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="132"/>
+        <location filename="../src/ui/preferences.cc" line="136"/>
         <source>Modern</source>
         <translation>现代</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="135"/>
+        <location filename="../src/ui/preferences.cc" line="139"/>
         <source>Lingoes</source>
         <translation>灵格斯</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="136"/>
+        <location filename="../src/ui/preferences.cc" line="140"/>
         <source>Lingoes-Blue</source>
         <translation>灵格斯-蓝色调</translation>
     </message>
     <message>
-        <location filename="../src/ui/preferences.cc" line="147"/>
+        <location filename="../src/ui/preferences.cc" line="151"/>
         <source> MB</source>
         <translation> MB</translation>
     </message>
@@ -4459,11 +4459,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui"/>
-        <source>GoldenDict  next generation dictionary,複数のフォーマットのサポート</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/preferences.ui"/>
         <source>Monospace Font</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4475,6 +4470,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
         <location filename="../src/ui/preferences.ui"/>
         <source>Sans-serif Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/preferences.ui"/>
+        <source>These fonts will be used when the specified fonts for the dictionary have not been found.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
