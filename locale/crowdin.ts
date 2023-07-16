@@ -4477,6 +4477,11 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>These fonts will be applied if the dictionary&apos;s specified fonts have not been found.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/ui/preferences.ui"/>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
