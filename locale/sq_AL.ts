@@ -822,12 +822,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Emri i skedarit të indeksit:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Hapni dosjen e indeksit</translation>
     </message>
   </context>
   <context>
@@ -4459,37 +4459,37 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Fonti standard</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Fonti Monospace</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Fonti Serif</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Fonti Sans-serif</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Pamja e jashtme</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Këto fonte do të aplikohen kur fontet e specifikuara nga një fjalor nuk gjenden.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Fontet e kthimit</translation>
     </message>
   </context>
   <context>
