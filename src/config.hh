@@ -762,8 +762,8 @@ struct Class
   MutedDictionaries mutedDictionaries; // Disabled via dictionary bar
   MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
 
-  QDateTime timeForNewReleaseCheck; // Only effective if
-                                    // preferences.checkForNewReleases is set
+  QDateTime timeForNewReleaseCheck;         // Last time when the release was checked.
+
   QString skippedRelease; // Empty by default
 
   bool showingDictBarNames;
