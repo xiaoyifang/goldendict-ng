@@ -93,7 +93,7 @@ class InitSSLRunnable: public QRunnable
 #endif
 
 namespace {
-static QString ApplicationSettingName = "GoldenDict";
+QString ApplicationSettingName = "GoldenDict";
 }
 
 void MainWindow::changeWebEngineViewFont() const

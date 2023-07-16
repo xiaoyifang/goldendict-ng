@@ -197,15 +197,6 @@ struct CustomFonts
   QString sansSerif;
   QString monospace;
 
-  CustomFonts() = default;
-  CustomFonts( CustomFonts & f ):
-    standard( f.standard ),
-    serif( f.serif ),
-    sansSerif( f.sansSerif ),
-    monospace( f.monospace )
-  {
-  }
-
   bool operator==( CustomFonts const & other ) const
   {
     return standard == other.standard && serif == other.serif && sansSerif == other.sansSerif
