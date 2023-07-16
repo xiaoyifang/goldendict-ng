@@ -197,34 +197,40 @@ struct CustomFonts
   QString sansSerif;
   QString monospace;
 
-  CustomFonts()=default;
-  CustomFonts(CustomFonts & f):standard(f.standard),serif(f.serif),sansSerif(f.sansSerif),monospace( f.monospace ){
-
+  CustomFonts() = default;
+  CustomFonts( CustomFonts & f ):
+    standard( f.standard ),
+    serif( f.serif ),
+    sansSerif( f.sansSerif ),
+    monospace( f.monospace )
+  {
   }
 
-  bool operator == ( CustomFonts const & other ) const
-  { return standard == other.standard &&
-      serif == other.serif &&
-      sansSerif == other.sansSerif&&monospace==other.monospace;
+  bool operator==( CustomFonts const & other ) const
+  {
+    return standard == other.standard && serif == other.serif && sansSerif == other.sansSerif
+      && monospace == other.monospace;
   }
 
-  bool operator != ( CustomFonts const & other ) const
-  { return ! operator == ( other ); }
+  bool operator!=( CustomFonts const & other ) const
+  {
+    return !operator==( other );
+  }
 
   QDomElement toElement( QDomDocument dd ) const
   {
     QDomElement proxy = dd.createElement( "customFonts" );
 
     QDomAttr standard_attr = dd.createAttribute( "standard" );
-    standard_attr.setValue( this->standard);
+    standard_attr.setValue( this->standard );
     proxy.setAttributeNode( standard_attr );
 
     QDomAttr serif_attr = dd.createAttribute( "serif" );
-    serif_attr.setValue( this->serif);
+    serif_attr.setValue( this->serif );
     proxy.setAttributeNode( serif_attr );
 
     QDomAttr sans_attr = dd.createAttribute( "sans-serif" );
-    sans_attr.setValue( this->sansSerif);
+    sans_attr.setValue( this->sansSerif );
     proxy.setAttributeNode( sans_attr );
     QDomAttr mono_attr = dd.createAttribute( "monospace" );
     mono_attr.setValue( this->monospace );
@@ -232,12 +238,13 @@ struct CustomFonts
     return proxy;
   }
 
-  static CustomFonts fromElement(QDomElement proxy){
+  static CustomFonts fromElement( QDomElement proxy )
+  {
     CustomFonts c;
-    c.standard=proxy.attribute("standard");
-    c.serif=proxy.attribute("serif");
-    c.sansSerif=proxy.attribute("sans-serif");
-    c.monospace=proxy.attribute("monospace");
+    c.standard  = proxy.attribute( "standard" );
+    c.serif     = proxy.attribute( "serif" );
+    c.sansSerif = proxy.attribute( "sans-serif" );
+    c.monospace = proxy.attribute( "monospace" );
     return c;
   }
 };

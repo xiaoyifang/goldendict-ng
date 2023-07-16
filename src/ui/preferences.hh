@@ -57,10 +57,10 @@ private slots:
   void on_limitInputPhraseLength_toggled( bool checked );
 
 
-  void on_font_standard_currentFontChanged(const QFont &f);
-  void on_font_serif_currentFontChanged(const QFont &f);
-  void on_font_sans_currentFontChanged(const QFont &f);
-  void on_font_monospace_currentFontChanged(const QFont &f);
+  void on_font_standard_currentFontChanged( const QFont & f );
+  void on_font_serif_currentFontChanged( const QFont & f );
+  void on_font_sans_currentFontChanged( const QFont & f );
+  void on_font_monospace_currentFontChanged( const QFont & f );
 };
 
 #endif

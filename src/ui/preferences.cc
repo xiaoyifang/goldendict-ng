@@ -99,33 +99,37 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   prevWebFontFamily = p.customFonts;
 
-  if(!p.customFonts.standard.isEmpty())
+  if ( !p.customFonts.standard.isEmpty() )
     ui.font_standard->setCurrentText( p.customFonts.standard );
   else {
-    ui.font_standard->setCurrentFont( QWebEngineProfile::defaultProfile()->settings()->fontFamily(QWebEngineSettings::StandardFont) );
+    ui.font_standard->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::StandardFont ) );
   }
-  ui.text_standard->setFont(ui.font_standard->currentFont());
+  ui.text_standard->setFont( ui.font_standard->currentFont() );
 
-  if(!p.customFonts.serif.isEmpty())
+  if ( !p.customFonts.serif.isEmpty() )
     ui.font_serif->setCurrentText( p.customFonts.serif );
   else {
-    ui.font_serif->setCurrentFont( QWebEngineProfile::defaultProfile()->settings()->fontFamily(QWebEngineSettings::SerifFont) );
+    ui.font_serif->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SerifFont ) );
   }
-  ui.text_serif->setFont(ui.font_serif->currentFont());
+  ui.text_serif->setFont( ui.font_serif->currentFont() );
 
-  if(!p.customFonts.sansSerif.isEmpty())
+  if ( !p.customFonts.sansSerif.isEmpty() )
     ui.font_sans->setCurrentText( p.customFonts.sansSerif );
   else {
-    ui.font_sans->setCurrentFont( QWebEngineProfile::defaultProfile()->settings()->fontFamily(QWebEngineSettings::SansSerifFont) );
+    ui.font_sans->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SansSerifFont ) );
   }
-  ui.text_sans->setFont(ui.font_sans->currentFont());
+  ui.text_sans->setFont( ui.font_sans->currentFont() );
 
-  if(!p.customFonts.monospace.isEmpty())
+  if ( !p.customFonts.monospace.isEmpty() )
     ui.font_monospace->setCurrentText( p.customFonts.monospace );
   else {
-    ui.font_monospace->setCurrentFont( QWebEngineProfile::defaultProfile()->settings()->fontFamily(QWebEngineSettings::FixedFont) );
+    ui.font_monospace->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::FixedFont ) );
   }
-  ui.text_monospace->setFont(ui.font_sans->currentFont());
+  ui.text_monospace->setFont( ui.font_sans->currentFont() );
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Classic" ), QString( "classic" ) );
@@ -377,10 +381,10 @@ Config::Preferences Preferences::getPreferences()
       ui.interfaceLanguage->currentIndex() ).toString();
 
   Config::CustomFonts c;
-  c.standard = ui.font_standard->currentText();
-  c.serif = ui.font_serif->currentText();
-  c.sansSerif = ui.font_sans->currentText();
-  c.monospace = ui.font_monospace->currentText();
+  c.standard    = ui.font_standard->currentText();
+  c.serif       = ui.font_serif->currentText();
+  c.sansSerif   = ui.font_sans->currentText();
+  c.monospace   = ui.font_monospace->currentText();
   p.customFonts = c;
 
 
@@ -624,26 +628,25 @@ void Preferences::on_limitInputPhraseLength_toggled( bool checked )
   ui.inputPhraseLengthLimit->setEnabled( checked );
 }
 
-void Preferences::on_font_standard_currentFontChanged(const QFont &f)
+void Preferences::on_font_standard_currentFontChanged( const QFont & f )
 {
-  ui.text_standard->setFont(f);
+  ui.text_standard->setFont( f );
 }
 
 
-void Preferences::on_font_serif_currentFontChanged(const QFont &f)
+void Preferences::on_font_serif_currentFontChanged( const QFont & f )
 {
-  ui.text_serif->setFont(f);
+  ui.text_serif->setFont( f );
 }
 
 
-void Preferences::on_font_sans_currentFontChanged(const QFont &f)
+void Preferences::on_font_sans_currentFontChanged( const QFont & f )
 {
-  ui.text_sans->setFont(f);
+  ui.text_sans->setFont( f );
 }
 
 
-void Preferences::on_font_monospace_currentFontChanged(const QFont &f)
+void Preferences::on_font_monospace_currentFontChanged( const QFont & f )
 {
-  ui.text_monospace->setFont(f);
+  ui.text_monospace->setFont( f );
 }
-

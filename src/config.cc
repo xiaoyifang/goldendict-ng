@@ -297,7 +297,7 @@ Romaji::Romaji():
 Group * Class::getGroup( unsigned id )
 {
   for ( auto & group : groups )
-    if( group.id == id )
+    if ( group.id == id )
       return &group;
   return 0;
 }
@@ -305,7 +305,7 @@ Group * Class::getGroup( unsigned id )
 Group const * Class::getGroup( unsigned id ) const
 {
   for ( const auto & group : groups )
-    if( group.id == id )
+    if ( group.id == id )
       return &group;
   return 0;
 }
@@ -845,9 +845,8 @@ Class load()
     c.preferences.alwaysOnTop = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
 
-    if ( !preferences.namedItem( "customFonts" ).isNull() )
-    {
-      CustomFonts fonts = CustomFonts::fromElement(preferences.namedItem("customFonts").toElement());
+    if ( !preferences.namedItem( "customFonts" ).isNull() ) {
+      CustomFonts fonts         = CustomFonts::fromElement( preferences.namedItem( "customFonts" ).toElement() );
       c.preferences.customFonts = fonts;
     }
 
@@ -1656,7 +1655,7 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceLanguage ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "customFonts" );
+    opt             = dd.createElement( "customFonts" );
     auto customFont = c.preferences.customFonts.toElement( dd );
     preferences.appendChild( customFont );
 
