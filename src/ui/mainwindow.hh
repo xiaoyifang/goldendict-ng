@@ -148,10 +148,6 @@ private:
 
   sptr< HotkeyWrapper > hotkeyWrapper;
 
-  QTimer newReleaseCheckTimer; // Countdown to a check for the new program
-                               // release, if enabled
-  QNetworkReply *latestReleaseReply;
-
   sptr< QPrinter > printer; // The printer we use for all printing operations
 
   bool wordListSelChanged;
@@ -250,21 +246,15 @@ private:
   void changeWebEngineViewFont() const;
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
+
 private slots:
+
+  /// Try check new release, popup a dialog, and update the check time & skippedRelease version
+  void checkNewRelease();
 
   void hotKeyActivated( int );
 
-  /// If new release checks are on, santizies the next check time and starts
-  /// the timer. Does nothing otherwise.
-  void prepareNewReleaseChecks();
-
   void updateFoundInDictsList();
-
-  /// Does the new release check.
-  void checkForNewRelease();
-
-  /// Signalled when the lastestReleaseReply is finished()
-  void latestReleaseReplyReady();
 
   /// Receive click on "Found in:" pane
   void foundDictsPaneClicked( QListWidgetItem * item );

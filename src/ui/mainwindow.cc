@@ -138,8 +138,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   dictNetMgr( this ),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
-  newReleaseCheckTimer( this ),
-  latestReleaseReply( nullptr ),
   wordListSelChanged( false ),
   wasMaximized( false ),
   blockUpdateWindowTitle( false ),
@@ -835,14 +833,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     focusTranslateLine();
   }
 
-  connect( &newReleaseCheckTimer, &QTimer::timeout, this, &MainWindow::checkForNewRelease );
-
   if ( cfg.preferences.hideMenubar )
   {
     toggleMenuBarTriggered( false );
   }
-
-  prepareNewReleaseChecks();
 
   // makeDictionaries() didn't do deferred init - we do it here, at the end.
   doDeferredInit( dictionaries );
@@ -886,6 +880,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   useSmallIconsInToolbarsTriggered();
+
+  if ( cfg.preferences.checkForNewReleases ) {
+    QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
+  }
 }
 
 void MainWindow::prefixMatchUpdated()
@@ -2202,8 +2200,6 @@ void MainWindow::editPreferences()
 
     setAutostart( cfg.preferences.autoStart );
 
-    prepareNewReleaseChecks();
-
     history.enableAdd( cfg.preferences.storeHistory );
     history.setMaxSize( cfg.preferences.maxStringsInHistory );
     ui.historyPaneWidget->updateHistoryCounts();
@@ -2851,135 +2847,66 @@ void MainWindow::hotKeyActivated( int hk )
   }
 }
 
-void MainWindow::prepareNewReleaseChecks()
+void MainWindow::checkNewRelease()
 {
-  if ( cfg.preferences.checkForNewReleases )
-  {
-    QDateTime now = QDateTime::currentDateTime();
+  // Limit release check to 1 per day.
+  if ( cfg.timeForNewReleaseCheck < QDateTime::currentDateTime().addDays( 1 ) ) {
+    return;
+  }
 
-    if ( !cfg.timeForNewReleaseCheck.isValid() ||
-         now.daysTo( cfg.timeForNewReleaseCheck ) > 2 )
-    {
-      // The date is invalid, or the check is set to happen more than 2 days
-      // in the future -- fix that.
-      cfg.timeForNewReleaseCheck = now.addDays( 2 );
+  QNetworkRequest github_release_api;
+  github_release_api.setUrl( QUrl( "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest" ) );
+  github_release_api.setRawHeader( QByteArray( "Accept" ), QByteArray( "application/vnd.github+json" ) );
+  // github_release_api.setRawHeader( QByteArray( "Authorization" ), QByteArray( "" ) );
+  github_release_api.setRawHeader( QByteArray( "X-GitHub-Api-Version" ), QByteArray( "2022-11-28" ) );
+
+  auto * github_reply = dictNetMgr.get( github_release_api ); // will be marked as deleteLater when reply finished.
+
+  QObject::connect( github_reply, &QNetworkReply::finished, [ github_reply, this ]() {
+    if ( github_reply->error() != QNetworkReply::NoError ) {
+      qWarning() << "Version check failed: " << github_reply->errorString();
     }
+    else {
+      auto latest_release = QJsonDocument::fromJson( github_reply->readAll() );
+      if ( !latest_release.isNull() ) {
+        const QJsonValue tag_name = latest_release[ "tag_name" ];
+        const QJsonValue html_url = latest_release[ "html_url" ];
 
-    int secsToCheck = now.secsTo( cfg.timeForNewReleaseCheck );
+        if ( tag_name.isString() && html_url.isString() ) {
+          QString latestVersion = tag_name.toString().mid( 1, 8 );
+          QString downloadUrl   = html_url.toString();
 
-    if ( secsToCheck < 1 )
-      secsToCheck = 1;
+          if ( latestVersion > PROGRAM_VERSION && latestVersion != cfg.skippedRelease ) {
+            QMessageBox msg( QMessageBox::Information,
+                             tr( "New Release Available" ),
+                             tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
+                                 "Click <b>Download</b> to get to the download page." )
+                               .arg( latestVersion ),
+                             QMessageBox::NoButton,
+                             this );
 
-    newReleaseCheckTimer.setSingleShot( true );
-    newReleaseCheckTimer.start( secsToCheck * 1000 );
-  }
-  else
-    newReleaseCheckTimer.stop(); // In case it was started before
-}
+            QPushButton * dload = msg.addButton( tr( "Download" ), QMessageBox::AcceptRole );
+            QPushButton * skip  = msg.addButton( tr( "Skip This Release" ), QMessageBox::DestructiveRole );
+            msg.addButton( QMessageBox::Cancel );
 
-void MainWindow::checkForNewRelease()
-{
-  if ( latestReleaseReply ) {
-    disconnect( latestReleaseReply, 0, 0, 0 );
-    latestReleaseReply->deleteLater();
-  }
-  latestReleaseReply = 0;
+            msg.exec();
 
-  QNetworkRequest req( QUrl( "https://github.com/xiaoyifang/goldendict/releases" ) );
-
-  latestReleaseReply = articleNetMgr.get( req );
-
-  connect( latestReleaseReply,
-           &QNetworkReply::finished,
-           this,
-           &MainWindow::latestReleaseReplyReady,
-           Qt::QueuedConnection );
-}
-
-void MainWindow::latestReleaseReplyReady()
-{
-  if ( !latestReleaseReply )
-    return; // Some stray signal
-
-  bool success = false;
-  QString latestVersion, downloadUrl;
-
-  // See if we succeeded
-
-  if ( latestReleaseReply->error() == QNetworkReply::NoError ) {
-    QString latestReleaseInfo = QString::fromUtf8( latestReleaseReply->readAll() );
-    QRegularExpression firstReleaseAnchor( R"(<a\s+[^>]*?class=\"Link--primary\"[^>]*?>[^<]*?<\/a>)",
-                                           QRegularExpression::DotMatchesEverythingOption
-                                             | QRegularExpression::CaseInsensitiveOption );
-    auto match = firstReleaseAnchor.match( latestReleaseInfo );
-    if ( match.hasMatch() ) {
-      auto releaseAnchor = match.captured();
-      QRegularExpression extractReleaseRx( R"(<a\s+.*?href=\"([^\"]*)\".*?>(.*?)<\/a>)",
-                                           QRegularExpression::DotMatchesEverythingOption
-                                             | QRegularExpression::CaseInsensitiveOption );
-      auto matchParts = extractReleaseRx.match( releaseAnchor );
-      if ( matchParts.hasMatch() ) {
-        latestVersion = matchParts.captured( 2 );
-        QString prefix( "GoldenDict-ng-v" );
-        if ( latestVersion.startsWith( prefix ) ) {
-          latestVersion = latestVersion.mid( prefix.length() );
+            if ( msg.clickedButton() == dload )
+              QDesktopServices::openUrl( QUrl( downloadUrl ) );
+            else if ( msg.clickedButton() == skip ) {
+              cfg.skippedRelease = latestVersion;
+            }
+          }
         }
-        downloadUrl = matchParts.captured( 1 );
-        if ( downloadUrl.startsWith( "/" ) ) {
-          downloadUrl = latestReleaseReply->request().url().url( QUrl::RemovePath ) + downloadUrl;
-        }
-        success = true;
       }
     }
-  }
 
-  disconnect( latestReleaseReply, 0, 0, 0 );
-  latestReleaseReply->deleteLater();
-  latestReleaseReply = nullptr;
-
-  if ( !success )
-  {
-    // Failed -- reschedule to check in two hours
-    newReleaseCheckTimer.start( 2 * 60 * 60 * 1000 );
-
-    GD_DPRINTF( "Failed to check program version, retry in two hours\n" );
-  }
-  else
-  {
-    // Success -- reschedule for a normal check and save config
-    cfg.timeForNewReleaseCheck = QDateTime();
-
-    prepareNewReleaseChecks();
+    cfg.timeForNewReleaseCheck = QDateTime::currentDateTime();
 
     Config::save( cfg );
 
-    GD_DPRINTF( "Program version's check successful, current version is %ls\n",
-                latestVersion.toStdWString().c_str() );
-  }
-
-  if ( success && latestVersion > PROGRAM_VERSION && latestVersion != cfg.skippedRelease )
-  {
-    QMessageBox msg( QMessageBox::Information,
-                     tr( "New Release Available" ),
-                     tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
-                         "Click <b>Download</b> to get to the download page." )
-                       .arg( latestVersion ),
-                     QMessageBox::NoButton,
-                     this );
-
-    QPushButton * dload = msg.addButton( tr( "Download" ), QMessageBox::AcceptRole );
-    QPushButton * skip  = msg.addButton( tr( "Skip This Release" ), QMessageBox::DestructiveRole );
-    msg.addButton( QMessageBox::Cancel );
-
-    msg.exec();
-
-    if ( msg.clickedButton() == dload )
-      QDesktopServices::openUrl( QUrl( downloadUrl ) );
-    else if ( msg.clickedButton() == skip ) {
-      cfg.skippedRelease = latestVersion;
-      Config::save( cfg );
-    }
-  }
+    github_reply->deleteLater();
+  } );
 }
 
 void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
