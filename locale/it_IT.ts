@@ -823,12 +823,12 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Nome file indice:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Apri cartella indice</translation>
     </message>
   </context>
   <context>
@@ -4465,37 +4465,37 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Tipo di carattere standard</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Carattere monospazio</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Carattere Serif</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Carattere sans serif</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Aspetto</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Questi caratteri verranno applicati quando non vengono trovati i caratteri specificati da un dizionario.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Font di riserva</translation>
     </message>
   </context>
   <context>
