@@ -98,12 +98,36 @@ QString ApplicationSettingName = "GoldenDict";
 
 void MainWindow::changeWebEngineViewFont() const
 {
-  if ( cfg.preferences.webFontFamily.isEmpty() ) {
+  if ( cfg.preferences.customFonts.standard.isEmpty() ) {
     QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
   }
   else {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
-                                                                    cfg.preferences.webFontFamily );
+                                                                    cfg.preferences.customFonts.standard );
+  }
+
+  if ( cfg.preferences.customFonts.serif.isEmpty() ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SerifFont );
+  }
+  else {
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SerifFont,
+                                                                    cfg.preferences.customFonts.serif );
+  }
+
+  if ( cfg.preferences.customFonts.sansSerif.isEmpty() ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SansSerifFont );
+  }
+  else {
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SansSerifFont,
+                                                                    cfg.preferences.customFonts.sansSerif );
+  }
+
+  if ( cfg.preferences.customFonts.monospace.isEmpty() ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::FixedFont );
+  }
+  else {
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
+                                                                    cfg.preferences.customFonts.monospace );
   }
 }
 

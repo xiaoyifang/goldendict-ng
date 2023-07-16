@@ -296,17 +296,17 @@ Romaji::Romaji():
 
 Group * Class::getGroup( unsigned id )
 {
-  for( int x = 0; x < groups.size(); x++ )
-    if( groups.at( x ).id == id )
-      return &groups[ x ];
+  for ( auto & group : groups )
+    if ( group.id == id )
+      return &group;
   return 0;
 }
 
 Group const * Class::getGroup( unsigned id ) const
 {
-  for( int x = 0; x < groups.size(); x++ )
-    if( groups.at( x ).id == id )
-      return &groups.at( x );
+  for ( const auto & group : groups )
+    if ( group.id == id )
+      return &group;
   return 0;
 }
 
@@ -437,13 +437,11 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
 void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted,
                             MutedDictionaries const & mutedDictionaries )
 {
-  for( MutedDictionaries::const_iterator i = mutedDictionaries.begin();
-       i != mutedDictionaries.end(); ++i )
-  {
+  for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( "mutedDictionary" );
     muted.appendChild( dict );
 
-    QDomText value = dd.createTextNode( *i );
+    QDomText value = dd.createTextNode( mutedDictionarie );
     dict.appendChild( value );
   }
 }
@@ -847,8 +845,10 @@ Class load()
     c.preferences.alwaysOnTop = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
 
-    if ( !preferences.namedItem( "webFontFamily" ).isNull() )
-      c.preferences.webFontFamily = preferences.namedItem( "webFontFamily" ).toElement().text();
+    if ( !preferences.namedItem( "customFonts" ).isNull() ) {
+      CustomFonts fonts         = CustomFonts::fromElement( preferences.namedItem( "customFonts" ).toElement() );
+      c.preferences.customFonts = fonts;
+    }
 
     if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() )
       c.preferences.doubleClickTranslates = ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
@@ -1195,19 +1195,18 @@ void saveGroup( Group const & data, QDomElement & group )
     group.setAttributeNode( shortcut );
   }
 
-  for( QVector< DictionaryRef >::const_iterator j = data.dictionaries.begin(); j != data.dictionaries.end(); ++j )
-  {
+  for ( const auto & dictionarie : data.dictionaries ) {
     QDomElement dictionary = dd.createElement( "dictionary" );
 
     group.appendChild( dictionary );
 
-    QDomText value = dd.createTextNode( j->id );
+    QDomText value = dd.createTextNode( dictionarie.id );
 
     dictionary.appendChild( value );
 
     QDomAttr name = dd.createAttribute( "name" );
 
-    name.setValue( j->name );
+    name.setValue( dictionarie.name );
 
     dictionary.setAttributeNode( name );
   }
@@ -1215,23 +1214,19 @@ void saveGroup( Group const & data, QDomElement & group )
   QDomElement muted = dd.createElement( "mutedDictionaries" );
   group.appendChild( muted );
 
-  for( MutedDictionaries::const_iterator i = data.mutedDictionaries.begin();
-       i != data.mutedDictionaries.end(); ++i )
-  {
+  for ( const auto & mutedDictionarie : data.mutedDictionaries ) {
     QDomElement dict = dd.createElement( "mutedDictionary" );
     muted.appendChild( dict );
 
-    QDomText value = dd.createTextNode( *i );
+    QDomText value = dd.createTextNode( mutedDictionarie );
     dict.appendChild( value );
   }
 
-  for( MutedDictionaries::const_iterator i = data.popupMutedDictionaries.begin();
-       i != data.popupMutedDictionaries.end(); ++i )
-  {
+  for ( const auto & popupMutedDictionarie : data.popupMutedDictionaries ) {
     QDomElement dict = dd.createElement( "popupMutedDictionary" );
     muted.appendChild( dict );
 
-    QDomText value = dd.createTextNode( *i );
+    QDomText value = dd.createTextNode( popupMutedDictionarie );
     dict.appendChild( value );
   }
 }
@@ -1254,16 +1249,15 @@ void save( Class const & c )
     QDomElement paths = dd.createElement( "paths" );
     root.appendChild( paths );
 
-    for( Paths::const_iterator i = c.paths.begin(); i != c.paths.end(); ++i )
-    {
+    for ( const auto & i : c.paths ) {
       QDomElement path = dd.createElement( "path" );
       paths.appendChild( path );
 
       QDomAttr recursive = dd.createAttribute( "recursive" );
-      recursive.setValue( i->recursive ? "1" : "0" );
+      recursive.setValue( i.recursive ? "1" : "0" );
       path.setAttributeNode( recursive );
 
-      QDomText value = dd.createTextNode( i->path );
+      QDomText value = dd.createTextNode( i.path );
 
       path.appendChild( value );
     }
@@ -1273,20 +1267,19 @@ void save( Class const & c )
     QDomElement soundDirs = dd.createElement( "sounddirs" );
     root.appendChild( soundDirs );
 
-    for( SoundDirs::const_iterator i = c.soundDirs.begin(); i != c.soundDirs.end(); ++i )
-    {
+    for ( const auto & i : c.soundDirs ) {
       QDomElement soundDir = dd.createElement( "sounddir" );
       soundDirs.appendChild( soundDir );
 
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( i.name );
       soundDir.setAttributeNode( name );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( i.iconFilename );
       soundDir.setAttributeNode( icon );
 
-      QDomText value = dd.createTextNode( i->path );
+      QDomText value = dd.createTextNode( i.path );
 
       soundDir.appendChild( value );
     }
@@ -1312,12 +1305,11 @@ void save( Class const & c )
     nextId.setValue( QString::number( c.groups.nextId ) );
     groups.setAttributeNode( nextId );
 
-    for( Groups::const_iterator i = c.groups.begin(); i != c.groups.end(); ++i )
-    {
+    for ( const auto & i : c.groups ) {
       QDomElement group = dd.createElement( "group" );
       groups.appendChild( group );
 
-      saveGroup( *i, group );
+      saveGroup( i, group );
     }
   }
 
@@ -1328,10 +1320,9 @@ void save( Class const & c )
     hunspell.setAttributeNode( path );
     root.appendChild( hunspell );
 
-    for( int x = 0; x < c.hunspell.enabledDictionaries.size(); ++x )
-    {
+    for ( const auto & enabledDictionarie : c.hunspell.enabledDictionaries ) {
       QDomElement en = dd.createElement( "enabled" );
-      QDomText value = dd.createTextNode( c.hunspell.enabledDictionaries.at( x ) );
+      QDomText value = dd.createTextNode( enabledDictionarie );
 
       en.appendChild( value );
       hunspell.appendChild( en );
@@ -1470,29 +1461,28 @@ void save( Class const & c )
     QDomElement mws = dd.createElement( "mediawikis" );
     root.appendChild( mws );
 
-    for( MediaWikis::const_iterator i = c.mediawikis.begin(); i != c.mediawikis.end(); ++i )
-    {
+    for ( const auto & mediawiki : c.mediawikis ) {
       QDomElement mw = dd.createElement( "mediawiki" );
       mws.appendChild( mw );
 
       QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      id.setValue( mediawiki.id );
       mw.setAttributeNode( id );
 
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( mediawiki.name );
       mw.setAttributeNode( name );
 
       QDomAttr url = dd.createAttribute( "url" );
-      url.setValue( i->url );
+      url.setValue( mediawiki.url );
       mw.setAttributeNode( url );
 
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( mediawiki.enabled ? "1" : "0" );
       mw.setAttributeNode( enabled );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->icon );
+      icon.setValue( mediawiki.icon );
       mw.setAttributeNode( icon );
     }
   }
@@ -1501,33 +1491,32 @@ void save( Class const & c )
     QDomElement wss = dd.createElement( "websites" );
     root.appendChild( wss );
 
-    for( WebSites::const_iterator i = c.webSites.begin(); i != c.webSites.end(); ++i )
-    {
+    for ( const auto & webSite : c.webSites ) {
       QDomElement ws = dd.createElement( "website" );
       wss.appendChild( ws );
 
       QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      id.setValue( webSite.id );
       ws.setAttributeNode( id );
 
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( webSite.name );
       ws.setAttributeNode( name );
 
       QDomAttr url = dd.createAttribute( "url" );
-      url.setValue( i->url );
+      url.setValue( webSite.url );
       ws.setAttributeNode( url );
 
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( webSite.enabled ? "1" : "0" );
       ws.setAttributeNode( enabled );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( webSite.iconFilename );
       ws.setAttributeNode( icon );
 
       QDomAttr inside_iframe = dd.createAttribute( "inside_iframe" );
-      inside_iframe.setValue( i->inside_iframe ? "1" : "0" );
+      inside_iframe.setValue( webSite.inside_iframe ? "1" : "0" );
       ws.setAttributeNode( inside_iframe );
     }
   }
@@ -1536,37 +1525,36 @@ void save( Class const & c )
     QDomElement dss = dd.createElement( "dictservers" );
     root.appendChild( dss );
 
-    for( DictServers::const_iterator i = c.dictServers.begin(); i != c.dictServers.end(); ++i )
-    {
+    for ( const auto & dictServer : c.dictServers ) {
       QDomElement ds = dd.createElement( "server" );
       dss.appendChild( ds );
 
       QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      id.setValue( dictServer.id );
       ds.setAttributeNode( id );
 
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( dictServer.name );
       ds.setAttributeNode( name );
 
       QDomAttr url = dd.createAttribute( "url" );
-      url.setValue( i->url );
+      url.setValue( dictServer.url );
       ds.setAttributeNode( url );
 
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( dictServer.enabled ? "1" : "0" );
       ds.setAttributeNode( enabled );
 
       QDomAttr databases = dd.createAttribute( "databases" );
-      databases.setValue( i->databases );
+      databases.setValue( dictServer.databases );
       ds.setAttributeNode( databases );
 
       QDomAttr strategies = dd.createAttribute( "strategies" );
-      strategies.setValue( i->strategies );
+      strategies.setValue( dictServer.strategies );
       ds.setAttributeNode( strategies );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( dictServer.iconFilename );
       ds.setAttributeNode( icon );
     }
   }
@@ -1575,33 +1563,32 @@ void save( Class const & c )
     QDomElement programs = dd.createElement( "programs" );
     root.appendChild( programs );
 
-    for( Programs::const_iterator i = c.programs.begin(); i != c.programs.end(); ++i )
-    {
+    for ( const auto & program : c.programs ) {
       QDomElement p = dd.createElement( "program" );
       programs.appendChild( p );
 
       QDomAttr id = dd.createAttribute( "id" );
-      id.setValue( i->id );
+      id.setValue( program.id );
       p.setAttributeNode( id );
 
       QDomAttr name = dd.createAttribute( "name" );
-      name.setValue( i->name );
+      name.setValue( program.name );
       p.setAttributeNode( name );
 
       QDomAttr commandLine = dd.createAttribute( "commandLine" );
-      commandLine.setValue( i->commandLine );
+      commandLine.setValue( program.commandLine );
       p.setAttributeNode( commandLine );
 
       QDomAttr enabled = dd.createAttribute( "enabled" );
-      enabled.setValue( i->enabled ? "1" : "0" );
+      enabled.setValue( program.enabled ? "1" : "0" );
       p.setAttributeNode( enabled );
 
       QDomAttr type = dd.createAttribute( "type" );
-      type.setValue( QString::number( i->type ) );
+      type.setValue( QString::number( program.type ) );
       p.setAttributeNode( type );
 
       QDomAttr icon = dd.createAttribute( "icon" );
-      icon.setValue( i->iconFilename );
+      icon.setValue( program.iconFilename );
       p.setAttributeNode( icon );
     }
   }
@@ -1668,9 +1655,9 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceLanguage ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "webFontFamily" );
-    opt.appendChild( dd.createTextNode( c.preferences.webFontFamily ) );
-    preferences.appendChild( opt );
+    opt             = dd.createElement( "customFonts" );
+    auto customFont = c.preferences.customFonts.toElement( dd );
+    preferences.appendChild( customFont );
 
     opt = dd.createElement( "displayStyle" );
     opt.appendChild( dd.createTextNode( c.preferences.displayStyle ) );

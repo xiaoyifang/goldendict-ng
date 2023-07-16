@@ -13,6 +13,7 @@
 #include <QSet>
 #include <QMetaType>
 #include "ex.hh"
+#include <QDomDocument>
 #include <QLocale>
 #include <optional>
 
@@ -189,6 +190,56 @@ struct FullTextSearch
   {}
 };
 
+struct CustomFonts
+{
+  QString standard;
+  QString serif;
+  QString sansSerif;
+  QString monospace;
+
+  bool operator==( CustomFonts const & other ) const
+  {
+    return standard == other.standard && serif == other.serif && sansSerif == other.sansSerif
+      && monospace == other.monospace;
+  }
+
+  bool operator!=( CustomFonts const & other ) const
+  {
+    return !operator==( other );
+  }
+
+  QDomElement toElement( QDomDocument dd ) const
+  {
+    QDomElement proxy = dd.createElement( "customFonts" );
+
+    QDomAttr standard_attr = dd.createAttribute( "standard" );
+    standard_attr.setValue( this->standard );
+    proxy.setAttributeNode( standard_attr );
+
+    QDomAttr serif_attr = dd.createAttribute( "serif" );
+    serif_attr.setValue( this->serif );
+    proxy.setAttributeNode( serif_attr );
+
+    QDomAttr sans_attr = dd.createAttribute( "sans-serif" );
+    sans_attr.setValue( this->sansSerif );
+    proxy.setAttributeNode( sans_attr );
+    QDomAttr mono_attr = dd.createAttribute( "monospace" );
+    mono_attr.setValue( this->monospace );
+    proxy.setAttributeNode( mono_attr );
+    return proxy;
+  }
+
+  static CustomFonts fromElement( QDomElement proxy )
+  {
+    CustomFonts c;
+    c.standard  = proxy.attribute( "standard" );
+    c.serif     = proxy.attribute( "serif" );
+    c.sansSerif = proxy.attribute( "sans-serif" );
+    c.monospace = proxy.attribute( "monospace" );
+    return c;
+  }
+};
+
 /// This class encapsulates supported backend preprocessor logic,
 /// discourages duplicating backend names in code, which is error-prone.
 class InternalPlayerBackend
@@ -257,7 +308,7 @@ struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
   QString displayStyle; // Empty value corresponds to the default one
-  QString webFontFamily; // Empty value corresponds to the default one
+  CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
   bool newTabsOpenInBackground;
   bool hideSingleTab;

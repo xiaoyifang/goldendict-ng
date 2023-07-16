@@ -97,12 +97,34 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     }
   }
 
-  prevWebFontFamily = p.webFontFamily;
+  prevWebFontFamily = p.customFonts;
 
-  if(!p.webFontFamily.isEmpty())
-    ui.fontFamilies->setCurrentText( p.webFontFamily );
+  if ( !p.customFonts.standard.isEmpty() )
+    ui.font_standard->setCurrentText( p.customFonts.standard );
   else {
-    ui.fontFamilies->setCurrentFont( QApplication::font() );
+    ui.font_standard->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::StandardFont ) );
+  }
+
+  if ( !p.customFonts.serif.isEmpty() )
+    ui.font_serif->setCurrentText( p.customFonts.serif );
+  else {
+    ui.font_serif->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SerifFont ) );
+  }
+
+  if ( !p.customFonts.sansSerif.isEmpty() )
+    ui.font_sans->setCurrentText( p.customFonts.sansSerif );
+  else {
+    ui.font_sans->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SansSerifFont ) );
+  }
+
+  if ( !p.customFonts.monospace.isEmpty() )
+    ui.font_monospace->setCurrentText( p.customFonts.monospace );
+  else {
+    ui.font_monospace->setCurrentFont(
+      QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::FixedFont ) );
   }
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
@@ -354,11 +376,13 @@ Config::Preferences Preferences::getPreferences()
     ui.interfaceLanguage->itemData(
       ui.interfaceLanguage->currentIndex() ).toString();
 
-  //bypass the first default
-  if(ui.fontFamilies->currentIndex()>0)
-    p.webFontFamily = ui.fontFamilies->currentText();
-  else
-    p.webFontFamily = "";
+  Config::CustomFonts c;
+  c.standard    = ui.font_standard->currentText();
+  c.serif       = ui.font_serif->currentText();
+  c.sansSerif   = ui.font_sans->currentText();
+  c.monospace   = ui.font_monospace->currentText();
+  p.customFonts = c;
+
 
   p.displayStyle =
     ui.displayStyle->itemData(
@@ -560,19 +584,16 @@ void Preferences::on_buttonBox_accepted()
     QMessageBox::information( this, tr( "Changing Language" ),
                               tr( "Restart the program to apply the language change." ) );
 
-  auto currentFontFamily = ui.fontFamilies->currentFont().family();
-  if( prevWebFontFamily != currentFontFamily )
-  {
-    //reset to default font .
-    if( currentFontFamily.isEmpty() )
-    {
-      QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
-    }
-    else
-    {
-      QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
-                                                                      currentFontFamily );
-    }
+  auto c = getPreferences();
+  if ( c.customFonts != prevWebFontFamily ) {
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
+                                                                    c.customFonts.standard );
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SerifFont,
+                                                                    c.customFonts.serif );
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SansSerifFont,
+                                                                    c.customFonts.sansSerif );
+    QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
+                                                                    c.customFonts.monospace );
   }
 }
 
@@ -602,3 +623,4 @@ void Preferences::on_limitInputPhraseLength_toggled( bool checked )
 {
   ui.inputPhraseLengthLimit->setEnabled( checked );
 }
+
