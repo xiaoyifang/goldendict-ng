@@ -822,12 +822,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Tên tệp chỉ mục:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Mở thư mục chỉ mục</translation>
     </message>
   </context>
   <context>
@@ -4460,37 +4460,37 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Phông chữ chuẩn</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Phông chữ đơn cách</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Phông chữ có chân</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Phông chữ Sans-serif</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Vẻ bề ngoài</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Các phông chữ này sẽ được áp dụng khi không tìm thấy phông chữ được chỉ định bởi từ điển.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Phông chữ dự phòng</translation>
     </message>
   </context>
   <context>
