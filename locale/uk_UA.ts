@@ -823,12 +823,12 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Ім'я файлу індексу:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Відкрити індексну папку</translation>
     </message>
   </context>
   <context>
@@ -4468,37 +4468,37 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Стандартний шрифт</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Моноширинний шрифт</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Шрифт із засічками</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Шрифт без засічок</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Зовнішній вигляд</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Ці шрифти будуть застосовані, якщо шрифти, визначені словником, не знайдені.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Резервні шрифти</translation>
     </message>
   </context>
   <context>
