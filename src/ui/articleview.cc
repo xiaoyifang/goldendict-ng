@@ -283,7 +283,7 @@ void ArticleView::setCurrentGroupId( unsigned currentGrgId )
 {
   currentGroupId = currentGrgId;
 }
-unsigned ArticleView::getCurrentGroupId( )
+unsigned ArticleView::getCurrentGroupId()
 {
   return currentGroupId;
 }
@@ -1669,8 +1669,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( addWordToHistoryAction );
 
     Instances::Group const * altGroup =
-      ( currentGroupId != getGroup( webview->url() ) ) ? groups.findGroup( currentGroupId ) :
-      nullptr;
+      ( currentGroupId != getGroup( webview->url() ) ) ? groups.findGroup( currentGroupId ) : nullptr;
 
     if ( altGroup )
     {
@@ -1806,8 +1805,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       // This action is handled by a slot.
       return;
     }
-    else
-    if ( result == lookupSelectionGr && currentGroupId )
+    else if ( result == lookupSelectionGr && currentGroupId )
       showDefinition( selectedText, currentGroupId, QString() );
     else
     if ( result == addWordToHistoryAction )
@@ -1820,7 +1818,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       emit openLinkInNewTab( targetUrl, webview->url(), getCurrentArticle(), contexts );
     else if( !popupView && result == lookupSelectionNewTab )
       emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
-    else if( !popupView && result == lookupSelectionNewTabGr && currentGroupId )
+    else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId )
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
     else if( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;

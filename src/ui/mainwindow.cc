@@ -1982,7 +1982,7 @@ void MainWindow::tabSwitched( int )
   }
 
   auto view = getCurrentArticleView();
-  if(view) {
+  if ( view ) {
     groupList->setCurrentGroup( view->getCurrentGroupId() );
   }
 }
@@ -2252,7 +2252,7 @@ void MainWindow::editPreferences()
 
 void MainWindow::currentGroupChanged( int )
 {
-  unsigned grg_id = groupList->getCurrentGroup();
+  unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
   Instances::Group const * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == Instances::Group::AllGroupId ) {
@@ -4072,7 +4072,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
   if( item )
   {
     QString id = item->data( Qt::UserRole ).toString();
-    Dictionary::Class *pDict = nullptr;
+    Dictionary::Class * pDict = nullptr;
 
     for( unsigned i = 0; i < dictionaries.size(); i++ )
     {
@@ -4083,7 +4083,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint &pos )
       }
     }
 
-    if( pDict == nullptr )
+    if ( pDict == nullptr )
       return;
 
     if( !pDict->isLocalDictionary() )
