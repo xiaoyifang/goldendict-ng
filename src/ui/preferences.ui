@@ -53,6 +53,30 @@
        <property name="topMargin">
         <number>9</number>
        </property>
+       <item row="5" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Article Display style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="displayStyle"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="addonStylesLabel">
+           <property name="text">
+            <string>Add-on style:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StylesComboBox" name="addonStyles"/>
+         </item>
+        </layout>
+       </item>
        <item row="2" column="0">
         <widget class="QCheckBox" name="doubleClickTranslates">
          <property name="text">
@@ -259,7 +283,7 @@ the application.</string>
          </layout>
         </widget>
        </item>
-       <item row="19" column="0" colspan="2">
+       <item row="18" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -274,6 +298,96 @@ the application.</string>
        </item>
        <item row="9" column="0" colspan="2">
         <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QGroupBox" name="groupBox_10">
+           <property name="title">
+            <string>Customize Fonts</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_17">
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>These fonts will be applied if the dictionary's specified fonts have not been found.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>Standard Font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFontComboBox" name="font_standard">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>Serif Font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFontComboBox" name="font_serif">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_26">
+              <property name="text">
+               <string>Sans-serif Font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFontComboBox" name="font_sans">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_27">
+              <property name="text">
+               <string>Monospace Font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFontComboBox" name="font_monospace">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="fontFilters">
+               <set>QFontComboBox::MonospacedFonts</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
          <item>
           <widget class="QCheckBox" name="darkMode">
            <property name="toolTip">
@@ -345,250 +459,7 @@ the application.</string>
          </item>
         </layout>
        </item>
-       <item row="5" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>Article Display style:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="displayStyle"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="addonStylesLabel">
-           <property name="text">
-            <string>Add-on style:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="StylesComboBox" name="addonStyles"/>
-         </item>
-        </layout>
-       </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab_font">
-      <property name="maximumSize">
-       <size>
-        <width>763</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <attribute name="icon">
-       <iconset resource="../../resources.qrc">
-        <normaloff>:/icons/font.svg</normaloff>:/icons/font.svg</iconset>
-      </attribute>
-      <attribute name="title">
-       <string>Font</string>
-      </attribute>
-      <widget class="QGroupBox" name="groupBox_5">
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>1</y>
-         <width>415</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Standard Font</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_24">
-        <item>
-         <widget class="QFontComboBox" name="font_standard">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="text_standard">
-          <property name="text">
-           <string notr="true">GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_9">
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>319</y>
-         <width>415</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Monospace Font</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_20">
-        <item>
-         <widget class="QFontComboBox" name="font_monospace">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="fontFilters">
-           <set>QFontComboBox::MonospacedFonts</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="text_monospace">
-          <property name="text">
-           <string notr="true">GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_7">
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>107</y>
-         <width>415</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Serif Font</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_23">
-        <item>
-         <widget class="QFontComboBox" name="font_serif">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="text_serif">
-          <property name="text">
-           <string notr="true">GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_8">
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>213</y>
-         <width>415</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Sans-serif Font</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_22">
-        <item>
-         <widget class="QFontComboBox" name="font_sans">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="text_sans">
-          <property name="text">
-           <string notr="true">GoldenDict  next generation dictionary,複数のフォーマットのサポート</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QLabel" name="label_7">
-       <property name="geometry">
-        <rect>
-         <x>470</x>
-         <y>20</y>
-         <width>261</width>
-         <height>201</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>These fonts will be used when the specified fonts for the dictionary have not been found.</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::MarkdownText</enum>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
      </widget>
      <widget class="QWidget" name="tab_popup">
       <attribute name="icon">

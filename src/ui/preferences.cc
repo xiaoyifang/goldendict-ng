@@ -105,7 +105,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.font_standard->setCurrentFont(
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::StandardFont ) );
   }
-  ui.text_standard->setFont( ui.font_standard->currentFont() );
 
   if ( !p.customFonts.serif.isEmpty() )
     ui.font_serif->setCurrentText( p.customFonts.serif );
@@ -113,7 +112,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.font_serif->setCurrentFont(
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SerifFont ) );
   }
-  ui.text_serif->setFont( ui.font_serif->currentFont() );
 
   if ( !p.customFonts.sansSerif.isEmpty() )
     ui.font_sans->setCurrentText( p.customFonts.sansSerif );
@@ -121,7 +119,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.font_sans->setCurrentFont(
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::SansSerifFont ) );
   }
-  ui.text_sans->setFont( ui.font_sans->currentFont() );
 
   if ( !p.customFonts.monospace.isEmpty() )
     ui.font_monospace->setCurrentText( p.customFonts.monospace );
@@ -129,7 +126,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.font_monospace->setCurrentFont(
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::FixedFont ) );
   }
-  ui.text_monospace->setFont( ui.font_sans->currentFont() );
 
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Classic" ), QString( "classic" ) );
@@ -628,25 +624,3 @@ void Preferences::on_limitInputPhraseLength_toggled( bool checked )
   ui.inputPhraseLengthLimit->setEnabled( checked );
 }
 
-void Preferences::on_font_standard_currentFontChanged( const QFont & f )
-{
-  ui.text_standard->setFont( f );
-}
-
-
-void Preferences::on_font_serif_currentFontChanged( const QFont & f )
-{
-  ui.text_serif->setFont( f );
-}
-
-
-void Preferences::on_font_sans_currentFontChanged( const QFont & f )
-{
-  ui.text_sans->setFont( f );
-}
-
-
-void Preferences::on_font_monospace_currentFontChanged( const QFont & f )
-{
-  ui.text_monospace->setFont( f );
-}
