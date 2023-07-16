@@ -826,12 +826,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Index bestandsnaam:</translation>
     </message>
     <message>
       <location filename="../src/ui/dictinfo.ui"/>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Indexmap openen</translation>
     </message>
   </context>
   <context>
@@ -4466,37 +4466,37 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Standaard lettertype</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Monospace-lettertype</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Serif-lettertype</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Sans-serif-lettertype</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Verschijning</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Deze lettertypen worden toegepast wanneer de lettertypen die door een woordenboek zijn opgegeven, niet worden gevonden.</translation>
     </message>
     <message>
       <location filename="../src/ui/preferences.ui"/>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Fallback-lettertypen</translation>
     </message>
   </context>
   <context>
