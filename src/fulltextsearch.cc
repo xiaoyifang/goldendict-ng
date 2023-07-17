@@ -38,8 +38,8 @@ void Indexing::run()
 
       if ( dictionary->canFTS() && !dictionary->haveFTSIndex() ) {
         sem.acquire();
-        QFuture< void > f = QtConcurrent::run( [ =, &sem ]() {
-          QSemaphoreReleaser _( sem );
+        QFuture< void > const f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
+          QSemaphoreReleaser const _( sem );
           emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
           dictionary->makeFTSIndex( isCancelled, false );
         } );
