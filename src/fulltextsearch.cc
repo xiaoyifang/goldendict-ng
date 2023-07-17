@@ -29,7 +29,7 @@ void Indexing::run()
     QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
 
     QFutureSynchronizer< void > synchronizer;
-    qDebug() << "starting create the fts with thread:"<<parallel_count;
+    qDebug() << "starting create the fts with thread:" << parallel_count;
     for ( const auto & dictionary : dictionaries ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         // synchronizer.setCancelOnWait( true );
@@ -44,7 +44,6 @@ void Indexing::run()
           dictionary->makeFTSIndex( isCancelled, false );
         } );
         synchronizer.addFuture( f );
-        
       }
     }
     qDebug() << "waiting for all the fts creation to finish.";
