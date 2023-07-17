@@ -1,4 +1,5 @@
 #include "pronounceengine.hh"
+#include <QMutexLocker>
 
 PronounceEngine::PronounceEngine( QObject * parent ):
   QObject{ parent }
@@ -10,13 +11,34 @@ void PronounceEngine::reset()
 {
   QMutexLocker _( &mutex );
   state = PronounceState::AVAILABLE;
+
+  dictAudioMap.clear();
 }
 
-void PronounceEngine::sendAudio( QString audioLink )
+
+void PronounceEngine::sendAudio( std::string dictId,QString audioLink )
 {
-  QMutexLocker _( &mutex );
   if ( state == PronounceState::OCCUPIED )
     return;
-  state = PronounceState::OCCUPIED;
-  emit emitAudio( audioLink );
+
+  QMutexLocker _( &mutex );
+
+  dictAudioMap.operator[]( dictId ).push_back( audioLink );
+}
+
+void PronounceEngine::finishDictionary( std::string dictId )
+{
+  if ( state == PronounceState::OCCUPIED )
+    return;
+
+  if ( dictAudioMap.contains( dictId ) ) {
+    {
+      //limit the mutex scope.
+      QMutexLocker _( &mutex );
+      if ( state == PronounceState::OCCUPIED )
+        return;
+      state = PronounceState::OCCUPIED;
+    }
+    emit emitAudio( dictAudioMap[dictId].first() );
+  }
 }
