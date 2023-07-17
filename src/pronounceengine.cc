@@ -16,7 +16,7 @@ void PronounceEngine::reset()
 }
 
 
-void PronounceEngine::sendAudio( std::string dictId,QString audioLink )
+void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
 {
   if ( state == PronounceState::OCCUPIED )
     return;
@@ -39,6 +39,6 @@ void PronounceEngine::finishDictionary( std::string dictId )
         return;
       state = PronounceState::OCCUPIED;
     }
-    emit emitAudio( dictAudioMap[dictId].first() );
+    emit emitAudio( dictAudioMap[ dictId ].first() );
   }
 }
