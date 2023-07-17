@@ -25,28 +25,31 @@ void Indexing::run()
 {
   try {
     timerThread->start();
-    // First iteration - dictionaries with no more MaxDictionarySizeForFastSearch articles
+    const int parallel_count = QThread::idealThreadCount() / 2;
+    QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
+
+    QFutureSynchronizer< void > synchronizer;
+    qDebug() << "starting create the fts with thread:"<<parallel_count;
     for ( const auto & dictionary : dictionaries ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+        // synchronizer.setCancelOnWait( true );
         break;
+      }
 
       if ( dictionary->canFTS() && !dictionary->haveFTSIndex() ) {
-        emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
-        dictionary->makeFTSIndex( isCancelled, true );
+        sem.acquire();
+        QFuture< void > f = QtConcurrent::run( [ =, &sem ]() {
+          QSemaphoreReleaser _( sem );
+          emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
+          dictionary->makeFTSIndex( isCancelled, false );
+        } );
+        synchronizer.addFuture( f );
+        
       }
     }
-
-    // Second iteration - all remaining dictionaries
-    for ( const auto & dictionary : dictionaries ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-        break;
-
-      if ( dictionary->canFTS() && !dictionary->haveFTSIndex() ) {
-        emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
-        dictionary->makeFTSIndex( isCancelled, false );
-      }
-    }
-
+    qDebug() << "waiting for all the fts creation to finish.";
+    synchronizer.waitForFinished();
+    qDebug() << "finished/cancel all the fts creation";
     timerThread->quit();
     timerThread->wait();
   }

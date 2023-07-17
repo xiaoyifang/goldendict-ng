@@ -1,5 +1,6 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+//xapian.h must at the first in the  include header files to avoid collision with other macro definition.
 #include "xapian.h"
 #include <cstdlib>
 #include "fulltextsearch.hh"
@@ -13,13 +14,9 @@
 #include <vector>
 #include <string>
 
-#include <QVector>
 
 #include <QRegularExpression>
 
-#include "wildcard.hh"
-#include "globalregex.hh"
-#include <QSemaphoreReleaser>
 
 using std::vector;
 using std::string;
@@ -52,52 +49,6 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
   }
 }
 
-static QString makeHiliteRegExpString( QStringList const & words,
-                                       int searchMode,
-                                       int distanceBetweenWords,
-                                       bool hasCJK           = false,
-                                       bool ignoreWordsOrder = false )
-{
-  QString searchString( "(" );
-
-  QString stripWords( "(?:\\W+\\w+){0," );
-
-  if ( hasCJK ) {
-    stripWords = "(?:[\\W\\w]){0,";
-  }
-
-  if ( distanceBetweenWords >= 0 )
-    stripWords += QString::number( distanceBetweenWords );
-  stripWords += "}";
-
-  if ( !hasCJK ) {
-    stripWords += "\\W+";
-  }
-
-  QString boundWord( searchMode == FTS::WholeWords ? "\\b" : "(?:\\w*)" );
-  if ( hasCJK ) {
-    //no boundary for CJK
-    boundWord.clear();
-  }
-
-  for ( int x = 0; x < words.size(); x++ ) {
-    if ( x ) {
-      searchString += stripWords;
-      if ( ignoreWordsOrder )
-        searchString += "(";
-    }
-
-    searchString += boundWord + words[ x ] + boundWord;
-
-    if ( x ) {
-      if ( ignoreWordsOrder )
-        searchString += ")?";
-    }
-  }
-
-  searchString += ")";
-  return searchString;
-}
 
 void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStringList list )
 {
