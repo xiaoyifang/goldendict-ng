@@ -690,6 +690,7 @@ public:
     f = QtConcurrent::run( [ this ]() { this->run(); } );
   }
 
+  QByteArray isolate_css();
   void run();
 
   void cancel() override
@@ -703,6 +704,45 @@ public:
     f.waitForFinished();
   }
 };
+
+QByteArray MddResourceRequest::isolate_css()
+{
+
+  const QString id = QString::fromUtf8( dict.getId().c_str() );
+
+  QString css = QString::fromUtf8( data.data(), data.size() );
+
+  int pos = 0;
+
+  QString newCSS;
+  QRegularExpressionMatchIterator it = RX::Mdx::links.globalMatch( css );
+  while ( it.hasNext() ) {
+    QRegularExpressionMatch match = it.next();
+    newCSS += css.mid( pos, match.capturedStart() - pos );
+    pos         = match.capturedEnd();
+    QString url = match.captured( 2 );
+
+
+    if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 ) {
+      // External link or base64-encoded data
+      newCSS += match.captured();
+
+      continue;
+    }
+
+    QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
+    newCSS += newUrl;
+  }
+  if ( pos ) {
+    newCSS += css.mid( pos );
+    css = newCSS;
+    newCSS.clear();
+  }
+  dict.isolateCSS( css, ".mdict" );
+  auto bytes = css.toUtf8();
+
+  return bytes;
+}
 
 void MddResourceRequest::run()
 {
@@ -739,6 +779,24 @@ void MddResourceRequest::run()
     QMutexLocker _( &dataMutex );
     data.clear();
 
+    //check the global cache
+    //generate resource unique key
+    const QString id = QString::fromUtf8( dict.getId().c_str() );
+
+    const QString unique_key = id + QString::fromStdString( u8ResourceName );
+    if ( GlobalBroadcaster::instance()->cache.contains( unique_key ) ) {
+      //take first ,then insert again . the object() method may become null anytime.
+      auto bytes = GlobalBroadcaster::instance()->cache.take( unique_key );
+      if ( bytes ) {
+        hasAnyData = true;
+        data.resize( bytes->size() );
+        memcpy( &data.front(), bytes->constData(), bytes->size() );
+        GlobalBroadcaster::instance()->cache.insert( unique_key, bytes );
+        break;
+      }
+    }
+
+
     dict.loadResourceFile( resourceName, data );
 
     // Check if this file has a redirection
@@ -768,46 +826,12 @@ void MddResourceRequest::run()
 
       if ( Filetype::isNameOfCSS( u8ResourceName ) )
       {
-        QString css = QString::fromUtf8( data.data(), data.size() );
+        QByteArray bytes = isolate_css();
 
-        // QRegularExpression links( "url\\(\\s*(['\"]?)([^'\"]*)(['\"]?)\\s*\\)",
-        //                           QRegularExpression::CaseInsensitiveOption );
-
-        QString id = QString::fromUtf8( dict.getId().c_str() );
-        int pos = 0;
-
-        QString newCSS;
-        QRegularExpressionMatchIterator it = RX::Mdx::links.globalMatch( css );
-        while ( it.hasNext() )
-        {
-          QRegularExpressionMatch match = it.next();
-          newCSS += css.mid( pos, match.capturedStart() - pos );
-          pos = match.capturedEnd();
-          QString url = match.captured( 2 );
-
-
-          if( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0)
-          {
-            // External link or base64-encoded data
-            newCSS += match.captured();
-
-            continue;
-          }
-
-          QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://"
-                                             + id + "/" + url + match.captured( 3 ) + ")";
-          newCSS += newUrl;
-        }
-        if( pos )
-        {
-          newCSS += css.mid( pos );
-          css = newCSS;
-          newCSS.clear();
-        }
-        dict.isolateCSS( css, ".mdict" );
-        QByteArray bytes = css.toUtf8();
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
+        //cache the processed css result to avoid process again.
+        GlobalBroadcaster::instance()->cache.insert( unique_key, new QByteArray( bytes ) );
       }
       if( Filetype::isNameOfTiff( u8ResourceName ) )
       {

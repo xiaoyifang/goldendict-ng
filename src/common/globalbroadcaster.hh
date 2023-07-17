@@ -5,6 +5,7 @@
 #include <vector>
 #include "config.hh"
 #include "pronounceengine.hh"
+#include <QCache>
 
 struct ActiveDictIds
 {
@@ -40,6 +41,7 @@ public:
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;
+  QCache< QString, QByteArray > cache;
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
