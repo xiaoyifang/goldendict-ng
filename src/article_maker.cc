@@ -638,6 +638,10 @@ void ArticleRequest::bodyFinished()
             activeDicts[ activeDicts.size() - bodyRequests.size() ];
 
         string dictId = activeDict->getId();
+
+        //signal finished dictionray for pronounciation
+        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
+
         dictIds << QString::fromStdString(dictId);
         string head;
 

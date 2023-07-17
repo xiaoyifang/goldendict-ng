@@ -2,7 +2,7 @@
 #define PRONOUNCEENGINE_HH
 
 #include <QObject>
-#include <QMutexLocker>
+#include <QMap>
 #include <QMutex>
 
 
@@ -17,11 +17,13 @@ class PronounceEngine: public QObject
   PronounceState state = PronounceState::AVAILABLE;
   QMutex mutex;
 
+  QMap< std::string, QList< QString > > dictAudioMap;
+
 public:
   explicit PronounceEngine( QObject * parent = nullptr );
   void reset();
-  void sendAudio( QString audioLink );
-
+  void sendAudio( std::string dictId, QString audioLink );
+  void finishDictionary( std::string dictId );
 signals:
   void emitAudio( QString audioLink );
 };
