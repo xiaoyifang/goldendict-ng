@@ -115,6 +115,9 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   groupComboBox( groupComboBox_ ),
   translateLine( translateLine_ )
 {
+  if ( groupComboBox_ )
+    currentGroupId = groupComboBox_->getCurrentGroup();
+
   // setup GUI
   webview        = new ArticleWebView( this );
   ftsSearchPanel = new FtsSearchPanel( this );
@@ -276,9 +279,13 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 // sidebar widgets' improper resize during restore
 QSize ArticleView::minimumSizeHint() const { return searchPanel->minimumSizeHint(); }
 
-void ArticleView::setGroupComboBox( GroupComboBox const * g )
+void ArticleView::setCurrentGroupId( unsigned currentGrgId )
 {
-  groupComboBox = g;
+  currentGroupId = currentGrgId;
+}
+unsigned ArticleView::getCurrentGroupId()
+{
+  return currentGroupId;
 }
 
 ArticleView::~ArticleView()
@@ -1662,9 +1669,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( addWordToHistoryAction );
 
     Instances::Group const * altGroup =
-      ( groupComboBox && groupComboBox->getCurrentGroup() != getGroup( webview->url() ) ) ?
-      groups.findGroup( groupComboBox->getCurrentGroup() ) :
-      nullptr;
+      ( currentGroupId != getGroup( webview->url() ) ) ? groups.findGroup( currentGroupId ) : nullptr;
 
     if ( altGroup )
     {
@@ -1800,9 +1805,8 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       // This action is handled by a slot.
       return;
     }
-    else
-    if ( result == lookupSelectionGr && groupComboBox )
-      showDefinition( selectedText, groupComboBox->getCurrentGroup(), QString() );
+    else if ( result == lookupSelectionGr && currentGroupId )
+      showDefinition( selectedText, currentGroupId, QString() );
     else
     if ( result == addWordToHistoryAction )
       emit forceAddWordToHistory( selectedText );
@@ -1814,8 +1818,8 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       emit openLinkInNewTab( targetUrl, webview->url(), getCurrentArticle(), contexts );
     else if( !popupView && result == lookupSelectionNewTab )
       emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
-    else if( !popupView && result == lookupSelectionNewTabGr && groupComboBox )
-      emit showDefinitionInNewTab( selectedText, groupComboBox->getCurrentGroup(), QString(), Contexts() );
+    else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId )
+      emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
     else if( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
       QString savePath;
@@ -1980,7 +1984,7 @@ void ArticleView::pasteTriggered()
     if( groupId == 0 ) {
       // We couldn't figure out the group out of the URL,
       // so let's try the currently selected group.
-      groupId = groupComboBox->getCurrentGroup();
+      groupId = currentGroupId;
     }
     showDefinition( word, groupId, getCurrentArticle() );
   }
