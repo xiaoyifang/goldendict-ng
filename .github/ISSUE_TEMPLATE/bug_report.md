@@ -39,4 +39,15 @@ Copy & paste `help` -> `about` -> `Copy version info` to here
 **Additional context**
 Add any other context about the problem here.  
 
+Windows:
+
 Upload the dmp file in the crash folder located in the configuration folder (can be opened through the menu help->configuration folder) to here
+
+Macos:
+
+upload the crashpad crash log
+
+Linux:
+
+gdb backtrace info.
+
