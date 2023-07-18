@@ -791,7 +791,14 @@ void DictGroupsWidget::addAutoGroupsByFolders()
   QMap< sptr< Dictionary::Class >, QString > dictToContainerFolder;
 
   for ( const auto & dict : *activeDicts ) {
-    QDir c = dict->getContainingFolder();
+    auto containingFolder = dict->getContainingFolder();
+
+    // website/program dicts will return empty string, ignore them
+    if ( containingFolder.isEmpty() ) {
+      continue;
+    }
+
+    QDir c = containingFolder;
 
     if ( !c.cdUp() ) {
       cdUpWentWrong( c.absolutePath() );
