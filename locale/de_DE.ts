@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>In Gruppe &lt;b&gt;%2&lt;/b&gt;wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
+      <translation>In der Gruppe &lt;b&gt;%2&lt;/b&gt; wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -719,7 +719,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="250"/>
       <source>Loading headwords...</source>
-      <translation>Stichwörter werden geladen...</translation>
+      <translation>Stichwörter werden geladen …</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="285"/>
