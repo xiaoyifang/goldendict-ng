@@ -1325,7 +1325,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
-      <translation>Erstellen Sie ordnerbasierte Gruppen.</translation>
+      <translation>Ordner basierte Gruppen erstellen.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui"/>
@@ -1478,7 +1478,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/initializing.cc" line="27"/>
       <source>Indexing...</source>
-      <translation>Indizierung...</translation>
+      <translation>Indizierung …</translation>
     </message>
   </context>
   <context>
@@ -3397,7 +3397,7 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3376"/>
       <source>Save article complete</source>
-      <translation>Artikel speichern abgeschlossen</translation>
+      <translation>Abspeichern des Artikels abgeschlossen</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3424"/>
