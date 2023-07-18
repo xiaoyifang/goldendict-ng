@@ -329,7 +329,8 @@ public:
   vector< string > const & getDictionaryFilenames() noexcept
   { return dictionaryFiles; }
 
-  /// Get the main folder that contains the dictionary, without the ending separator .
+  /// Get the main folder that contains the dictionary, without the ending separator.
+  /// If the dict don't have folder like website/program, an empty string will be returned.
   QString getContainingFolder() const;
 
   /// Returns the dictionary's full name, utf8.
