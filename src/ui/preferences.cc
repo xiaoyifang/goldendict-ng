@@ -510,7 +510,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();
-  p.fts.parallelThreads = ui.parallelThreads->value();
+  p.fts.parallelThreads   = ui.parallelThreads->value();
   p.fts.enablePosition    = ui.enablePosition->isChecked();
 
   buildDisabledTypes( p.fts.disabledTypes, ui.allowAard->isChecked(), "AARD" );
