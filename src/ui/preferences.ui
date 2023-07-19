@@ -1409,6 +1409,37 @@ download page.</string>
           <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="allowZim">
+            <property name="text">
+             <string notr="true">Zim</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="allowMDict">
+            <property name="text">
+             <string notr="true">MDict</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="QCheckBox" name="enablePosition">
+            <property name="toolTip">
+             <string>Positional information is required to use Xapian's phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</string>
+            </property>
+            <property name="text">
+             <string>Enable index with positional information</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="allowBGL">
+            <property name="text">
+             <string notr="true">BGL</string>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="0">
            <widget class="QCheckBox" name="allowDictD">
             <property name="text">
@@ -1423,24 +1454,10 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="allowSlob">
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="allowSDict">
             <property name="text">
-             <string notr="true">Slob</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="allowGls">
-            <property name="text">
-             <string notr="true">GLS</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="allowAard">
-            <property name="text">
-             <string notr="true">Aard</string>
+             <string notr="true">SDict</string>
             </property>
            </widget>
           </item>
@@ -1451,27 +1468,6 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="allowMDict">
-            <property name="text">
-             <string notr="true">MDict</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="allowZim">
-            <property name="text">
-             <string notr="true">Zim</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="allowStardict">
-            <property name="text">
-             <string notr="true">Stardict</string>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="0">
            <widget class="QCheckBox" name="allowDSL">
             <property name="text">
@@ -1479,17 +1475,24 @@ download page.</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="allowBGL">
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="allowGls">
             <property name="text">
-             <string notr="true">BGL</string>
+             <string notr="true">GLS</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="allowSDict">
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="allowSlob">
             <property name="text">
-             <string notr="true">SDict</string>
+             <string notr="true">Slob</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="allowStardict">
+            <property name="text">
+             <string notr="true">Stardict</string>
             </property>
            </widget>
           </item>
@@ -1534,15 +1537,30 @@ download page.</string>
             </item>
            </layout>
           </item>
-          <item row="7" column="0" colspan="2">
-           <widget class="QCheckBox" name="enablePosition">
-            <property name="toolTip">
-             <string>Positional information is required to use Xapian's phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</string>
-            </property>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="allowAard">
             <property name="text">
-             <string>Enable index with positional information</string>
+             <string notr="true">Aard</string>
             </property>
            </widget>
+          </item>
+          <item row="8" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_18">
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Create fulltext index with parallel threads </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="parallelThreads">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

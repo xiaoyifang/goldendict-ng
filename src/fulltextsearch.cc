@@ -25,7 +25,7 @@ void Indexing::run()
 {
   try {
     timerThread->start();
-    const int parallel_count = QThread::idealThreadCount() / 2;
+    const int parallel_count = GlobalBroadcaster::instance()->getPreference()->fts.parallelThreads;
     QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
 
     QFutureSynchronizer< void > synchronizer;

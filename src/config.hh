@@ -202,6 +202,7 @@ struct FullTextSearch
   bool enablePosition = false;
 
   quint32 maxDictionarySize;
+  quint32 parallelThreads = 1;
   QByteArray dialogGeometry;
   QString disabledTypes;
 
