@@ -1037,9 +1037,6 @@ void ScanPopup::pageLoaded( ArticleView * )
     } );
 
   updateBackForwardButtons();
-
-  if ( cfg.preferences.pronounceOnLoadPopup )
-    definition->playSound();
 }
 
 void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )

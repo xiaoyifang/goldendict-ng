@@ -712,7 +712,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
-             if ( cfg.preferences.pronounceOnLoadMain && view != nullptr ) {
+             if ( ( cfg.preferences.pronounceOnLoadMain || cfg.preferences.pronounceOnLoadPopup ) && view != nullptr ) {
                view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
              }
            } );
