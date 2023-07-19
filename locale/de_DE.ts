@@ -127,7 +127,7 @@
     <message>
       <location filename="../src/article_maker.cc" line="236"/>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>In Gruppe &lt;b&gt;%2&lt;/b&gt;wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
+      <translation>In der Gruppe &lt;b&gt;%2&lt;/b&gt; wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
     </message>
     <message>
       <location filename="../src/article_maker.cc" line="293"/>
@@ -719,7 +719,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="250"/>
       <source>Loading headwords...</source>
-      <translation>Stichwörter werden geladen...</translation>
+      <translation>Stichwörter werden geladen …</translation>
     </message>
     <message>
       <location filename="../src/ui/dictheadwords.cc" line="285"/>
@@ -1325,7 +1325,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/ui/groups.ui"/>
       <source>Create folder-based groups.</source>
-      <translation>Erstellen Sie ordnerbasierte Gruppen.</translation>
+      <translation>Ordner basierte Gruppen erstellen.</translation>
     </message>
     <message>
       <location filename="../src/ui/groups.ui"/>
@@ -1478,7 +1478,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <location filename="../src/initializing.cc" line="27"/>
       <source>Indexing...</source>
-      <translation>Indizierung...</translation>
+      <translation>Indizierung …</translation>
     </message>
   </context>
   <context>
@@ -3397,7 +3397,7 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3376"/>
       <source>Save article complete</source>
-      <translation>Artikel speichern abgeschlossen</translation>
+      <translation>Abspeichern des Artikels abgeschlossen</translation>
     </message>
     <message>
       <location filename="../src/ui/mainwindow.cc" line="3424"/>
