@@ -16,6 +16,7 @@
 #include <QDomDocument>
 #include <QLocale>
 #include <optional>
+#include <QThread>
 
 /// GoldenDict's configuration
 namespace Config {
@@ -202,7 +203,7 @@ struct FullTextSearch
   bool enablePosition = false;
 
   quint32 maxDictionarySize;
-  quint32 parallelThreads = 1;
+  quint32 parallelThreads = QThread::idealThreadCount() / 2 + 1;
   QByteArray dialogGeometry;
   QString disabledTypes;
 
