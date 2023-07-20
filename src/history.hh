@@ -25,25 +25,34 @@ public:
     /// The word that was searched
     QString word;
 
-    Item(): groupId( 0 )
-    {}
+    Item():
+      groupId( 0 )
+    {
+    }
 
     Item( unsigned groupId_, QString const & word_ ):
-      groupId( groupId_ ), word( word_ )
-    {}
+      groupId( groupId_ ),
+      word( word_ )
+    {
+    }
 
-    bool operator == ( Item const & other ) const
-    { return QString::compare( word, other.word, Qt::CaseInsensitive) == 0 && groupId == other.groupId; }
+    bool operator==( Item const & other ) const
+    {
+      return QString::compare( word, other.word, Qt::CaseInsensitive ) == 0 && groupId == other.groupId;
+    }
 
-    bool operator != ( Item const & other ) const
-    { return ! operator == ( other ); }
+    bool operator!=( Item const & other ) const
+    {
+      return !operator==( other );
+    }
   };
 
   /// Indicates an intention to load -- see the relevant History constructor.
-  struct Load {};
+  struct Load
+  {};
 
   /// Constructs an empty history which can hold at most "size" items.
-  History( unsigned size = 20 , unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
+  History( unsigned size = 20, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
 
   /// Loads history from its file. If load fails, the result would be an empty
   /// history. The size parameter is same as in other constructor.
@@ -59,7 +68,11 @@ public:
 
   /// Remove item with given index from list
   void removeItem( int index )
-  { items.removeAt( index ); dirty = true; emit itemsChanged(); }
+  {
+    items.removeAt( index );
+    dirty = true;
+    emit itemsChanged();
+  }
 
   /// Attempts saving history. Returns true if succeeded - false otherwise.
   /// Since history isn't really that valuable, failures can be ignored.
@@ -73,23 +86,33 @@ public:
 
   /// Gets the current items. The first one is the newest one on the list.
   QList< Item > const & getItems() const
-  { return items; }
+  {
+    return items;
+  }
 
   /// Enable/disable add words to hystory
   void enableAdd( bool enable )
-  { addingEnabled = enable; }
+  {
+    addingEnabled = enable;
+  }
   bool enabled()
-  { return addingEnabled; }
+  {
+    return addingEnabled;
+  }
 
   void setMaxSize( unsigned maxSize_ );
 
   void setSaveInterval( unsigned interval );
 
   unsigned getMaxSize()
-  { return maxSize; }
+  {
+    return maxSize;
+  }
 
   unsigned getMaxItemLength() const
-  { return maxItemLength; }
+  {
+    return maxItemLength;
+  }
 
 signals:
 

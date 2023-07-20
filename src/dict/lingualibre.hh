@@ -8,16 +8,14 @@
 #include <QNetworkReply>
 
 
-namespace Lingua{
+namespace Lingua {
 
 using std::vector;
 using std::string;
 using gd::wstring;
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-  Dictionary::Initializing &,
-  Config::Lingua const &,
-  QNetworkAccessManager & );
+vector< sptr< Dictionary::Class > >
+makeDictionaries( Dictionary::Initializing &, Config::Lingua const &, QNetworkAccessManager & );
 
 
 /// Exposed here for moc
@@ -32,16 +30,19 @@ class LinguaArticleRequest: public Dictionary::DataRequest
     bool finished;
 
     NetReply( sptr< QNetworkReply > const & reply_, string const & word_ ):
-        reply( reply_ ), word( word_ ), finished( false )
-    {}
+      reply( reply_ ),
+      word( word_ ),
+      finished( false )
+    {
+    }
   };
 
   typedef std::list< NetReply > NetReplies;
   NetReplies netReplies;
-  QString languageCode,langWikipediaID;
+  QString languageCode, langWikipediaID;
   string dictionaryId;
 
- public:
+public:
 
   LinguaArticleRequest( wstring const & word,
                         vector< wstring > const & alts,
@@ -52,14 +53,14 @@ class LinguaArticleRequest: public Dictionary::DataRequest
 
   virtual void cancel();
 
- private:
+private:
 
   void addQuery( QNetworkAccessManager & mgr, wstring const & word );
 
- private slots:
+private slots:
   virtual void requestFinished( QNetworkReply * );
 };
 
-}
+} // namespace Lingua
 
 #endif //GOLDENDICT_LINGUALIBRE_H

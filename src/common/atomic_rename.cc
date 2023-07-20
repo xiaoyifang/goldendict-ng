@@ -9,7 +9,7 @@
 #include <QDir>
 
 #ifdef Q_OS_WIN32
-#include <windows.h>
+  #include <windows.h>
 #endif
 
 #include <stdio.h>
@@ -27,7 +27,7 @@ bool renameAtomically( QString const & oldName, QString const & newName )
   QVector< wchar_t > destFileW( destFile.size() + 1 );
   destFileW[ destFile.toWCharArray( destFileW.data() ) ] = 0;
 
-  if ( !MoveFileExW( srcFileW.data(), destFileW.data(),  MOVEFILE_REPLACE_EXISTING ) )
+  if ( !MoveFileExW( srcFileW.data(), destFileW.data(), MOVEFILE_REPLACE_EXISTING ) )
     return false;
 
 #else

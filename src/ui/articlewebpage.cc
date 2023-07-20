@@ -1,15 +1,14 @@
 #include "articlewebpage.hh"
 #include "utils.hh"
 
-ArticleWebPage::ArticleWebPage(QObject *parent)
-  : QWebEnginePage{parent}
+ArticleWebPage::ArticleWebPage( QObject * parent ):
+  QWebEnginePage{ parent }
 {
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {
   QUrl url = resUrl;
-  if( url.scheme() == "bword" || url.scheme() == "entry" )
-  {
+  if ( url.scheme() == "bword" || url.scheme() == "entry" ) {
     url.setScheme( "gdlookup" );
     url.setHost( "localhost" );
     url.setPath( "" );
@@ -22,14 +21,12 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   //save current gdlookup's values.
-  if( url.scheme() == "gdlookup" )
-  {
+  if ( url.scheme() == "gdlookup" ) {
     lastReq.group      = Utils::Url::queryItemValue( url, "group" );
     lastReq.mutedDicts = Utils::Url::queryItemValue( url, "muted" );
   }
 
-  if( type == QWebEnginePage::NavigationTypeLinkClicked )
-  {
+  if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
     emit linkClicked( url );
     return false;
   }

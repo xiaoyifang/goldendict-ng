@@ -20,85 +20,90 @@
 #include <QStandardPaths>
 
 #if defined( HAVE_X11 )
-// Whether XDG Base Directory specification might be followed.
-// Only Qt5 builds are supported, as Qt4 doesn't provide all functions needed
-// to get XDG Base Directory compliant locations.
-#define XDG_BASE_DIRECTORY_COMPLIANCE
+  // Whether XDG Base Directory specification might be followed.
+  // Only Qt5 builds are supported, as Qt4 doesn't provide all functions needed
+  // to get XDG Base Directory compliant locations.
+  #define XDG_BASE_DIRECTORY_COMPLIANCE
 #endif
 
 namespace Config {
 
-namespace
-{
+namespace {
 #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
-  const char xdgSubdirName[] = "goldendict";
+const char xdgSubdirName[] = "goldendict";
 
-  QDir getDataDir()
-  {
-    QDir dir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation );
-    dir.mkpath( xdgSubdirName );
-    if ( !dir.cd( xdgSubdirName ) )
-      throw exCantUseDataDir();
+QDir getDataDir()
+{
+  QDir dir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation );
+  dir.mkpath( xdgSubdirName );
+  if ( !dir.cd( xdgSubdirName ) )
+    throw exCantUseDataDir();
 
-    return dir;
-  }
+  return dir;
+}
 #endif
 
-  QString portableHomeDirPath()
-  {
-    return QCoreApplication::applicationDirPath() + "/portable";
-  }
-
-  QDir getHomeDir()
-  {
-    if ( isPortableVersion() )
-      return QDir( portableHomeDirPath() );
-
-    QDir result;
-
-    result = QDir::home();
-    #ifdef Q_OS_WIN32
-      if ( result.cd( "Application Data/GoldenDict" ) )
-        return result;
-      char const * pathInHome = "GoldenDict";
-      result = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
-    #else
-      char const * pathInHome = ".goldendict";
-      #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
-        // check if an old config dir is present, otherwise use standards-compliant location
-        if ( !result.exists( pathInHome ) )
-        {
-          result.setPath( QStandardPaths::writableLocation( QStandardPaths::ConfigLocation ) );
-          pathInHome = xdgSubdirName;
-        }
-      #endif
-    #endif
-
-    result.mkpath( pathInHome );
-
-    if ( !result.cd( pathInHome ) )
-      throw exCantUseHomeDir();
-
-    return result;
-  }
-
+QString portableHomeDirPath()
+{
+  return QCoreApplication::applicationDirPath() + "/portable";
 }
 
-ProxyServer::ProxyServer(): enabled( false ), useSystemProxy( false ), type( Socks5 ), port( 3128 )
+QDir getHomeDir()
+{
+  if ( isPortableVersion() )
+    return QDir( portableHomeDirPath() );
+
+  QDir result;
+
+  result = QDir::home();
+#ifdef Q_OS_WIN32
+  if ( result.cd( "Application Data/GoldenDict" ) )
+    return result;
+  char const * pathInHome = "GoldenDict";
+  result                  = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
+#else
+  char const * pathInHome = ".goldendict";
+  #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
+  // check if an old config dir is present, otherwise use standards-compliant location
+  if ( !result.exists( pathInHome ) ) {
+    result.setPath( QStandardPaths::writableLocation( QStandardPaths::ConfigLocation ) );
+    pathInHome = xdgSubdirName;
+  }
+  #endif
+#endif
+
+  result.mkpath( pathInHome );
+
+  if ( !result.cd( pathInHome ) )
+    throw exCantUseHomeDir();
+
+  return result;
+}
+
+} // namespace
+
+ProxyServer::ProxyServer():
+  enabled( false ),
+  useSystemProxy( false ),
+  type( Socks5 ),
+  port( 3128 )
 {
 }
 
 AnkiConnectServer::AnkiConnectServer():
-    enabled( false ),
-    host("127.0.0.1"),
-    port( 8765 ),
-    word("word"),
-    text("selected_text"),
-    sentence("marked_sentence")
+  enabled( false ),
+  host( "127.0.0.1" ),
+  port( 8765 ),
+  word( "word" ),
+  text( "selected_text" ),
+  sentence( "marked_sentence" )
 {
 }
 
-HotKey::HotKey(): modifiers( 0 ), key1( 0 ), key2( 0 )
+HotKey::HotKey():
+  modifiers( 0 ),
+  key1( 0 ),
+  key2( 0 )
 {
 }
 
@@ -116,7 +121,7 @@ HotKey::HotKey( QKeySequence const & seq ):
 
 QKeySequence HotKey::toKeySequence() const
 {
-  int v2 = key2 ? ( key2 | modifiers ): 0;
+  int v2 = key2 ? ( key2 | modifiers ) : 0;
 
   return QKeySequence( key1 | modifiers, v2 );
 }
@@ -173,12 +178,12 @@ bool InternalPlayerBackend::isQtmultimedia() const
 
 ScanPopupWindowFlags spwfFromInt( int id )
 {
-  if( id == SPWF_Popup )
+  if ( id == SPWF_Popup )
     return SPWF_Popup;
-  if( id == SPWF_Tool )
+  if ( id == SPWF_Tool )
     return SPWF_Tool;
 
-  if( id != SPWF_default )
+  if ( id != SPWF_default )
     gdWarning( "Invalid ScanPopup unpinned window flags: %d\n", id );
   return SPWF_default;
 }
@@ -201,14 +206,14 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   // Simplify whitespaces and remove soft hyphens (0xAD);
-  return Folding::trimWhitespace(  result.simplified() );
+  return Folding::trimWhitespace( result.simplified() );
 }
 
 Preferences::Preferences():
   newTabsOpenAfterCurrentOne( false ),
   newTabsOpenInBackground( true ),
   hideSingleTab( false ),
-  mruTabOrder ( false ),
+  mruTabOrder( false ),
   hideMenubar( false ),
   enableTrayIcon( true ),
   startToTray( false ),
@@ -219,9 +224,9 @@ Preferences::Preferences():
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
-  darkReaderMode ( false ),
-  alwaysOnTop ( false ),
-  searchInDock ( false ),
+  darkReaderMode( false ),
+  alwaysOnTop( false ),
+  searchInDock( false ),
 // on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
 #ifdef Q_OS_MACOS
   enableMainWindowHotkey( false ),
@@ -242,8 +247,8 @@ Preferences::Preferences():
 #ifdef HAVE_X11
   // Enable both Clipboard and Selection by default so that X users can enjoy full
   // power and disable optionally.
-  trackClipboardScan ( true ),
-  trackSelectionScan ( true ),
+  trackClipboardScan( true ),
+  trackSelectionScan( true ),
   showScanFlag( false ),
   selectionChangeDelayTimer( 500 ),
 #endif
@@ -321,16 +326,29 @@ MediaWikis makeDefaultMediaWikis( bool enable )
 {
   MediaWikis mw;
 
-  mw.push_back( MediaWiki( "ae6f89aac7151829681b85f035d54e48", "English Wikipedia", "https://en.wikipedia.org/w", enable, "" ) );
-  mw.push_back( MediaWiki( "affcf9678e7bfe701c9b071f97eccba3", "English Wiktionary", "https://en.wiktionary.org/w", enable, ""  ) );
-  mw.push_back( MediaWiki( "8e0c1c2b6821dab8bdba8eb869ca7176", "Russian Wikipedia", "https://ru.wikipedia.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "b09947600ae3902654f8ad4567ae8567", "Russian Wiktionary", "https://ru.wiktionary.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "a8a66331a1242ca2aeb0b4aed361c41d", "German Wikipedia", "https://de.wikipedia.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "21c64bca5ec10ba17ff19f3066bc962a", "German Wiktionary", "https://de.wiktionary.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "96957cb2ad73a20c7a1d561fc83c253a", "Portuguese Wikipedia", "https://pt.wikipedia.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "ed4c3929196afdd93cc08b9a903aad6a", "Portuguese Wiktionary", "https://pt.wiktionary.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "f3b4ec8531e52ddf5b10d21e4577a7a2", "Greek Wikipedia", "https://el.wikipedia.org/w", false, "" ) );
-  mw.push_back( MediaWiki( "5d45232075d06e002dea72fe3e137da1", "Greek Wiktionary", "https://el.wiktionary.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "ae6f89aac7151829681b85f035d54e48", "English Wikipedia", "https://en.wikipedia.org/w", enable, "" ) );
+  mw.push_back(
+    MediaWiki( "affcf9678e7bfe701c9b071f97eccba3", "English Wiktionary", "https://en.wiktionary.org/w", enable, "" ) );
+  mw.push_back(
+    MediaWiki( "8e0c1c2b6821dab8bdba8eb869ca7176", "Russian Wikipedia", "https://ru.wikipedia.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "b09947600ae3902654f8ad4567ae8567", "Russian Wiktionary", "https://ru.wiktionary.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "a8a66331a1242ca2aeb0b4aed361c41d", "German Wikipedia", "https://de.wikipedia.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "21c64bca5ec10ba17ff19f3066bc962a", "German Wiktionary", "https://de.wiktionary.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "96957cb2ad73a20c7a1d561fc83c253a", "Portuguese Wikipedia", "https://pt.wikipedia.org/w", false, "" ) );
+  mw.push_back( MediaWiki( "ed4c3929196afdd93cc08b9a903aad6a",
+                           "Portuguese Wiktionary",
+                           "https://pt.wiktionary.org/w",
+                           false,
+                           "" ) );
+  mw.push_back(
+    MediaWiki( "f3b4ec8531e52ddf5b10d21e4577a7a2", "Greek Wikipedia", "https://el.wikipedia.org/w", false, "" ) );
+  mw.push_back(
+    MediaWiki( "5d45232075d06e002dea72fe3e137da1", "Greek Wiktionary", "https://el.wiktionary.org/w", false, "" ) );
 
   return mw;
 }
@@ -339,10 +357,30 @@ WebSites makeDefaultWebSites()
 {
   WebSites ws;
 
-  ws.push_back( WebSite( "b88cb2898e634c6638df618528284c2d", "Google En-En (Oxford)", "https://www.google.com/search?q=define:%GDWORD%&hl=en", false, "", true ) );
-  ws.push_back( WebSite( "f376365a0de651fd7505e7e5e683aa45", "Urban Dictionary", "https://www.urbandictionary.com/define.php?term=%GDWORD%", false, "", true ) );
-  ws.push_back( WebSite( "324ca0306187df7511b26d3847f4b07c", "Multitran (En-Ru)", "https://www.multitran.com/m.exe?s=%GDWORD%&l1=1&l2=2", false, "", true ) );
-  ws.push_back( WebSite( "379a0ce02a34747d642cb0d7de1b2882", "Merriam-Webster (En)", "https://www.merriam-webster.com/dictionary/%GDWORD%", false, "", true ) );
+  ws.push_back( WebSite( "b88cb2898e634c6638df618528284c2d",
+                         "Google En-En (Oxford)",
+                         "https://www.google.com/search?q=define:%GDWORD%&hl=en",
+                         false,
+                         "",
+                         true ) );
+  ws.push_back( WebSite( "f376365a0de651fd7505e7e5e683aa45",
+                         "Urban Dictionary",
+                         "https://www.urbandictionary.com/define.php?term=%GDWORD%",
+                         false,
+                         "",
+                         true ) );
+  ws.push_back( WebSite( "324ca0306187df7511b26d3847f4b07c",
+                         "Multitran (En-Ru)",
+                         "https://www.multitran.com/m.exe?s=%GDWORD%&l1=1&l2=2",
+                         false,
+                         "",
+                         true ) );
+  ws.push_back( WebSite( "379a0ce02a34747d642cb0d7de1b2882",
+                         "Merriam-Webster (En)",
+                         "https://www.merriam-webster.com/dictionary/%GDWORD%",
+                         false,
+                         "",
+                         true ) );
 
   return ws;
 }
@@ -360,9 +398,16 @@ Programs makeDefaultPrograms()
 
   // The following list doesn't make a lot of sense under Windows
 #ifndef Q_OS_WIN
-  programs.push_back( Program( false, Program::Audio, "428b4c2b905ef568a43d9a16f59559b0", "Festival", "festival --tts", "" ) );
-  programs.push_back( Program( false, Program::Audio, "2cf8b3a60f27e1ac812de0b57c148340", "Espeak", "espeak %GDWORD%", "" ) );
-  programs.push_back( Program( false, Program::Html, "4f898f7582596cea518c6b0bfdceb8b3", "Manpages", "man -a --html=/bin/cat %GDWORD%", "" ) );
+  programs.push_back(
+    Program( false, Program::Audio, "428b4c2b905ef568a43d9a16f59559b0", "Festival", "festival --tts", "" ) );
+  programs.push_back(
+    Program( false, Program::Audio, "2cf8b3a60f27e1ac812de0b57c148340", "Espeak", "espeak %GDWORD%", "" ) );
+  programs.push_back( Program( false,
+                               Program::Html,
+                               "4f898f7582596cea518c6b0bfdceb8b3",
+                               "Manpages",
+                               "man -a --html=/bin/cat %GDWORD%",
+                               "" ) );
 #endif
 
   return programs;
@@ -376,8 +421,7 @@ void applyBoolOption( bool & option, QDomNode const & node )
 
   if ( value == "1" )
     option = true;
-  else
-  if ( value == "0" )
+  else if ( value == "0" )
     option = false;
 }
 
@@ -388,10 +432,10 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   if ( grp.hasAttribute( "id" ) )
     g.id = grp.attribute( "id" ).toUInt();
   else
-    g.id = nextId ? (*nextId)++ : 0;
+    g.id = nextId ? ( *nextId )++ : 0;
 
-  g.name = grp.attribute( "name" );
-  g.icon = grp.attribute( "icon" );
+  g.name            = grp.attribute( "name" );
+  g.icon            = grp.attribute( "icon" );
   g.favoritesFolder = grp.attribute( "favoritesFolder" );
 
   if ( !grp.attribute( "iconData" ).isEmpty() )
@@ -402,17 +446,17 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
 
   QDomNodeList dicts = grp.elementsByTagName( "dictionary" );
 
-  for( int y = 0; y < dicts.length(); ++y )
-    g.dictionaries.push_back( DictionaryRef( dicts.item( y ).toElement().text(),
-                                             dicts.item( y ).toElement().attribute( "name" ) ) );
+  for ( int y = 0; y < dicts.length(); ++y )
+    g.dictionaries.push_back(
+      DictionaryRef( dicts.item( y ).toElement().text(), dicts.item( y ).toElement().attribute( "name" ) ) );
 
   QDomNode muted = grp.namedItem( "mutedDictionaries" );
-  dicts = muted.toElement().elementsByTagName( "mutedDictionary" );
-  for( int x = 0; x < dicts.length(); ++x )
+  dicts          = muted.toElement().elementsByTagName( "mutedDictionary" );
+  for ( int x = 0; x < dicts.length(); ++x )
     g.mutedDictionaries.insert( dicts.item( x ).toElement().text() );
 
   dicts = muted.toElement().elementsByTagName( "popupMutedDictionary" );
-  for( int x = 0; x < dicts.length(); ++x )
+  for ( int x = 0; x < dicts.length(); ++x )
     g.popupMutedDictionaries.insert( dicts.item( x ).toElement().text() );
 
   return g;
@@ -422,20 +466,17 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
 {
   MutedDictionaries result;
 
-  if ( !mutedDictionaries.isNull() )
-  {
-    QDomNodeList nl = mutedDictionaries.toElement().
-                        elementsByTagName( "mutedDictionary" );
+  if ( !mutedDictionaries.isNull() ) {
+    QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( "mutedDictionary" );
 
-    for( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x )
       result.insert( nl.item( x ).toElement().text() );
   }
 
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted,
-                            MutedDictionaries const & mutedDictionaries )
+void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDictionaries const & mutedDictionaries )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( "mutedDictionary" );
@@ -446,20 +487,19 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted,
   }
 }
 
-}
+} // namespace
 
-Class load() 
+Class load()
 {
-  QString configName  = getConfigFileName();
+  QString configName = getConfigFileName();
 
   bool loadFromTemplate = false;
 
-  if ( !QFile::exists( configName ) )
-  {
+  if ( !QFile::exists( configName ) ) {
     // Make the default config, save it and return it
     Class c;
 
-    #ifdef Q_OS_LINUX
+#ifdef Q_OS_LINUX
     if ( QDir( "/usr/share/stardict/dic" ).exists() )
       c.paths.push_back( Path( "/usr/share/stardict/dic", true ) );
 
@@ -478,30 +518,29 @@ Class load()
     if ( QDir( "/usr/share/myspell/dicts" ).exists() )
       c.hunspell.dictionariesPath = "/usr/share/myspell/dicts";
 
-    #endif
+#endif
 
 
-    #ifndef Q_OS_WIN32
+#ifndef Q_OS_WIN32
     c.preferences.audioPlaybackProgram = "mplayer";
-    #endif
+#endif
 
     QString possibleMorphologyPath = getProgramDataDir() + "/content/morphology";
 
     if ( QDir( possibleMorphologyPath ).exists() )
       c.hunspell.dictionariesPath = possibleMorphologyPath;
 
-    c.mediawikis = makeDefaultMediaWikis( true );
-    c.webSites = makeDefaultWebSites();
+    c.mediawikis  = makeDefaultMediaWikis( true );
+    c.webSites    = makeDefaultWebSites();
     c.dictServers = makeDefaultDictServers();
-    c.programs = makeDefaultPrograms();
+    c.programs    = makeDefaultPrograms();
 
     // Check if we have a template config file. If we do, load it instead
 
-    configName = getProgramDataDir() + "/content/defconfig";
+    configName       = getProgramDataDir() + "/content/defconfig";
     loadFromTemplate = QFile( configName ).exists();
 
-    if ( !loadFromTemplate )
-    {
+    if ( !loadFromTemplate ) {
       save( c );
 
       return c;
@@ -520,17 +559,14 @@ Class load()
   QString errorStr;
   int errorLine, errorColumn;
 
-  if ( !loadFromTemplate )
-  {
+  if ( !loadFromTemplate ) {
     // Load the config as usual
-    if ( !dd.setContent( &configFile, false, &errorStr, &errorLine, &errorColumn  ) )
-    {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(),  errorLine,  errorColumn );
-        throw exMalformedConfigFile();
+    if ( !dd.setContent( &configFile, false, &errorStr, &errorLine, &errorColumn ) ) {
+      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      throw exMalformedConfigFile();
     }
   }
-  else
-  {
+  else {
     // We need to replace all %PROGRAMDIR% with the program data dir
     QByteArray data = configFile.readAll();
 
@@ -538,10 +574,9 @@ Class load()
 
     QBuffer bufferedData( &data );
 
-    if ( !dd.setContent( &bufferedData, false, &errorStr, &errorLine, &errorColumn  ) )
-    {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(),  errorLine,  errorColumn );
-        throw exMalformedConfigFile();
+    if ( !dd.setContent( &bufferedData, false, &errorStr, &errorLine, &errorColumn ) ) {
+      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      throw exMalformedConfigFile();
     }
   }
 
@@ -553,27 +588,23 @@ Class load()
 
   QDomNode paths = root.namedItem( "paths" );
 
-  if ( !paths.isNull() )
-  {
+  if ( !paths.isNull() ) {
     QDomNodeList nl = paths.toElement().elementsByTagName( "path" );
 
-    for( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x )
       c.paths.push_back(
-        Path( nl.item( x ).toElement().text(),
-              nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
+        Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
   }
 
   QDomNode soundDirs = root.namedItem( "sounddirs" );
 
-  if ( !soundDirs.isNull() )
-  {
+  if ( !soundDirs.isNull() ) {
     QDomNodeList nl = soundDirs.toElement().elementsByTagName( "sounddir" );
 
-    for( int x = 0; x < nl.length(); ++x )
-      c.soundDirs.push_back(
-        SoundDir( nl.item( x ).toElement().text(),
-                  nl.item( x ).toElement().attribute( "name" ),
-                  nl.item( x ).toElement().attribute( "icon" ) ) );
+    for ( int x = 0; x < nl.length(); ++x )
+      c.soundDirs.push_back( SoundDir( nl.item( x ).toElement().text(),
+                                       nl.item( x ).toElement().attribute( "name" ),
+                                       nl.item( x ).toElement().attribute( "icon" ) ) );
   }
 
   QDomNode dictionaryOrder = root.namedItem( "dictionaryOrder" );
@@ -588,14 +619,12 @@ Class load()
 
   QDomNode groups = root.namedItem( "groups" );
 
-  if ( !groups.isNull() )
-  {
+  if ( !groups.isNull() ) {
     c.groups.nextId = groups.toElement().attribute( "nextId", "1" ).toUInt();
 
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
 
-    for( int x = 0; x < nl.length(); ++x )
-    {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
 
       c.groups.push_back( loadGroup( grp, &c.groups.nextId ) );
@@ -604,20 +633,18 @@ Class load()
 
   QDomNode hunspell = root.namedItem( "hunspell" );
 
-  if ( !hunspell.isNull() )
-  {
+  if ( !hunspell.isNull() ) {
     c.hunspell.dictionariesPath = hunspell.toElement().attribute( "dictionariesPath" );
 
     QDomNodeList nl = hunspell.toElement().elementsByTagName( "enabled" );
 
-    for( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x )
       c.hunspell.enabledDictionaries.push_back( nl.item( x ).toElement().text() );
   }
 
   QDomNode transliteration = root.namedItem( "transliteration" );
 
-  if ( !transliteration.isNull() )
-  {
+  if ( !transliteration.isNull() ) {
     applyBoolOption( c.transliteration.enableRussianTransliteration,
                      transliteration.namedItem( "enableRussianTransliteration" ) );
 
@@ -633,19 +660,20 @@ Class load()
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
     QDomNode chinese = transliteration.namedItem( "chinese" );
 
-    if ( !chinese.isNull() )
-    {
+    if ( !chinese.isNull() ) {
       applyBoolOption( c.transliteration.chinese.enable, chinese.namedItem( "enable" ) );
-      applyBoolOption( c.transliteration.chinese.enableSCToTWConversion, chinese.namedItem( "enableSCToTWConversion" ) );
-      applyBoolOption( c.transliteration.chinese.enableSCToHKConversion, chinese.namedItem( "enableSCToHKConversion" ) );
-      applyBoolOption( c.transliteration.chinese.enableTCToSCConversion, chinese.namedItem( "enableTCToSCConversion" ) );
+      applyBoolOption( c.transliteration.chinese.enableSCToTWConversion,
+                       chinese.namedItem( "enableSCToTWConversion" ) );
+      applyBoolOption( c.transliteration.chinese.enableSCToHKConversion,
+                       chinese.namedItem( "enableSCToHKConversion" ) );
+      applyBoolOption( c.transliteration.chinese.enableTCToSCConversion,
+                       chinese.namedItem( "enableTCToSCConversion" ) );
     }
 #endif
 
     QDomNode romaji = transliteration.namedItem( "romaji" );
 
-    if ( !romaji.isNull() )
-    {
+    if ( !romaji.isNull() ) {
       applyBoolOption( c.transliteration.romaji.enable, romaji.namedItem( "enable" ) );
       applyBoolOption( c.transliteration.romaji.enableHepburn, romaji.namedItem( "enableHepburn" ) );
       applyBoolOption( c.transliteration.romaji.enableNihonShiki, romaji.namedItem( "enableNihonShiki" ) );
@@ -656,29 +684,26 @@ Class load()
 
     QDomNode customtrans = transliteration.namedItem( "customtrans" );
 
-    if ( !customtrans.isNull() )
-    {
+    if ( !customtrans.isNull() ) {
       applyBoolOption( c.transliteration.customTrans.enable, customtrans.namedItem( "enable" ) );
-      c.transliteration.customTrans.context = customtrans.namedItem( "context" ).toElement().text() ;
+      c.transliteration.customTrans.context = customtrans.namedItem( "context" ).toElement().text();
     }
   }
 
-  QDomNode lingua = root.namedItem("lingua");
+  QDomNode lingua = root.namedItem( "lingua" );
 
-  if(!lingua.isNull()){
-    applyBoolOption(c.lingua.enable,lingua.namedItem("enable"));
-    c.lingua.languageCodes = lingua.namedItem("languageCodes").toElement().text();
+  if ( !lingua.isNull() ) {
+    applyBoolOption( c.lingua.enable, lingua.namedItem( "enable" ) );
+    c.lingua.languageCodes = lingua.namedItem( "languageCodes" ).toElement().text();
   }
 
 
   QDomNode forvo = root.namedItem( "forvo" );
 
-  if ( !forvo.isNull() )
-  {
-    applyBoolOption( c.forvo.enable,
-                     forvo.namedItem( "enable" ) );
+  if ( !forvo.isNull() ) {
+    applyBoolOption( c.forvo.enable, forvo.namedItem( "enable" ) );
 
-    c.forvo.apiKey = forvo.namedItem( "apiKey" ).toElement().text();
+    c.forvo.apiKey        = forvo.namedItem( "apiKey" ).toElement().text();
     c.forvo.languageCodes = forvo.namedItem( "languageCodes" ).toElement().text();
   }
   else
@@ -686,54 +711,48 @@ Class load()
 
   QDomNode programs = root.namedItem( "programs" );
 
-  if ( !programs.isNull() )
-  {
+  if ( !programs.isNull() ) {
     QDomNodeList nl = programs.toElement().elementsByTagName( "program" );
 
-    for( int x = 0; x < nl.length(); ++x )
-    {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement pr = nl.item( x ).toElement();
 
       Program p;
 
-      p.id = pr.attribute( "id" );
-      p.name = pr.attribute( "name" );
-      p.commandLine = pr.attribute( "commandLine" );
-      p.enabled = ( pr.attribute( "enabled" ) == "1" );
-      p.type = (Program::Type)( pr.attribute( "type" ).toInt() );
+      p.id           = pr.attribute( "id" );
+      p.name         = pr.attribute( "name" );
+      p.commandLine  = pr.attribute( "commandLine" );
+      p.enabled      = ( pr.attribute( "enabled" ) == "1" );
+      p.type         = ( Program::Type )( pr.attribute( "type" ).toInt() );
       p.iconFilename = pr.attribute( "icon" );
 
       c.programs.push_back( p );
     }
   }
-  else
-  {
+  else {
     c.programs = makeDefaultPrograms();
   }
 
   QDomNode mws = root.namedItem( "mediawikis" );
 
-  if ( !mws.isNull() )
-  {
+  if ( !mws.isNull() ) {
     QDomNodeList nl = mws.toElement().elementsByTagName( "mediawiki" );
 
-    for( int x = 0; x < nl.length(); ++x )
-    {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement mw = nl.item( x ).toElement();
 
       MediaWiki w;
 
-      w.id = mw.attribute( "id" );
-      w.name = mw.attribute( "name" );
-      w.url = mw.attribute( "url" );
+      w.id      = mw.attribute( "id" );
+      w.name    = mw.attribute( "name" );
+      w.url     = mw.attribute( "url" );
       w.enabled = ( mw.attribute( "enabled" ) == "1" );
-      w.icon = mw.attribute( "icon" );
+      w.icon    = mw.attribute( "icon" );
 
       c.mediawikis.push_back( w );
     }
   }
-  else
-  {
+  else {
     // When upgrading, populate the list with some choices, but don't enable
     // anything.
     c.mediawikis = makeDefaultMediaWikis( false );
@@ -741,68 +760,61 @@ Class load()
 
   QDomNode wss = root.namedItem( "websites" );
 
-  if ( !wss.isNull() )
-  {
+  if ( !wss.isNull() ) {
     QDomNodeList nl = wss.toElement().elementsByTagName( "website" );
 
-    for( int x = 0; x < nl.length(); ++x )
-    {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement ws = nl.item( x ).toElement();
 
       WebSite w;
 
-      w.id = ws.attribute( "id" );
-      w.name = ws.attribute( "name" );
-      w.url = ws.attribute( "url" );
-      w.enabled = ( ws.attribute( "enabled" ) == "1" );
-      w.iconFilename = ws.attribute( "icon" );
+      w.id            = ws.attribute( "id" );
+      w.name          = ws.attribute( "name" );
+      w.url           = ws.attribute( "url" );
+      w.enabled       = ( ws.attribute( "enabled" ) == "1" );
+      w.iconFilename  = ws.attribute( "icon" );
       w.inside_iframe = ( ws.attribute( "inside_iframe", "1" ) == "1" );
 
       c.webSites.push_back( w );
     }
   }
-  else
-  {
+  else {
     // Upgrading
     c.webSites = makeDefaultWebSites();
   }
 
   QDomNode dss = root.namedItem( "dictservers" );
 
-  if ( !dss.isNull() )
-  {
+  if ( !dss.isNull() ) {
     QDomNodeList nl = dss.toElement().elementsByTagName( "server" );
 
-    for( int x = 0; x < nl.length(); ++x )
-    {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement ds = nl.item( x ).toElement();
 
       DictServer d;
 
-      d.id = ds.attribute( "id" );
-      d.name = ds.attribute( "name" );
-      d.url = ds.attribute( "url" );
-      d.enabled = ( ds.attribute( "enabled" ) == "1" );
-      d.databases = ds.attribute( "databases" );
-      d.strategies = ds.attribute( "strategies" );
+      d.id           = ds.attribute( "id" );
+      d.name         = ds.attribute( "name" );
+      d.url          = ds.attribute( "url" );
+      d.enabled      = ( ds.attribute( "enabled" ) == "1" );
+      d.databases    = ds.attribute( "databases" );
+      d.strategies   = ds.attribute( "strategies" );
       d.iconFilename = ds.attribute( "icon" );
 
       c.dictServers.push_back( d );
     }
   }
-  else
-  {
+  else {
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
 
   QDomNode ves = root.namedItem( "voiceEngines" );
 
-  if ( !ves.isNull() )
-  {
+  if ( !ves.isNull() ) {
     QDomNodeList nl = ves.toElement().elementsByTagName( "voiceEngine" );
 
-    for( int x = 0; x < nl.length(); ++x ) {
+    for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement ve = nl.item( x ).toElement();
       VoiceEngine v;
 
@@ -824,26 +836,27 @@ Class load()
     }
   }
 
-  c.mutedDictionaries = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
+  c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
-  if ( !preferences.isNull() )
-  {
+  if ( !preferences.isNull() ) {
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
-    c.preferences.displayStyle = preferences.namedItem( "displayStyle" ).toElement().text();
-    c.preferences.newTabsOpenAfterCurrentOne = ( preferences.namedItem( "newTabsOpenAfterCurrentOne" ).toElement().text() == "1" );
-    c.preferences.newTabsOpenInBackground = ( preferences.namedItem( "newTabsOpenInBackground" ).toElement().text() == "1" );
-    c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
-    c.preferences.mruTabOrder = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
-    c.preferences.hideMenubar = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
+    c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
+    c.preferences.newTabsOpenAfterCurrentOne =
+      ( preferences.namedItem( "newTabsOpenAfterCurrentOne" ).toElement().text() == "1" );
+    c.preferences.newTabsOpenInBackground =
+      ( preferences.namedItem( "newTabsOpenInBackground" ).toElement().text() == "1" );
+    c.preferences.hideSingleTab  = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
+    c.preferences.mruTabOrder    = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
+    c.preferences.hideMenubar    = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
-    c.preferences.startToTray = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
-    c.preferences.closeToTray = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
-    c.preferences.autoStart = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
-    c.preferences.alwaysOnTop = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
-    c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
+    c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
+    c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+    c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
+    c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
+    c.preferences.searchInDock   = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "customFonts" ).isNull() ) {
       CustomFonts fonts         = CustomFonts::fromElement( preferences.namedItem( "customFonts" ).toElement() );
@@ -851,22 +864,26 @@ Class load()
     }
 
     if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() )
-      c.preferences.doubleClickTranslates = ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
+      c.preferences.doubleClickTranslates =
+        ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "selectWordBySingleClick" ).isNull() )
-      c.preferences.selectWordBySingleClick = ( preferences.namedItem( "selectWordBySingleClick" ).toElement().text() == "1" );
+      c.preferences.selectWordBySingleClick =
+        ( preferences.namedItem( "selectWordBySingleClick" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() )
-      c.preferences.autoScrollToTargetArticle = ( preferences.namedItem( "autoScrollToTargetArticle" ).toElement().text() == "1" );
+      c.preferences.autoScrollToTargetArticle =
+        ( preferences.namedItem( "autoScrollToTargetArticle" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() )
-      c.preferences.escKeyHidesMainWindow = ( preferences.namedItem( "escKeyHidesMainWindow" ).toElement().text() == "1" );
+      c.preferences.escKeyHidesMainWindow =
+        ( preferences.namedItem( "escKeyHidesMainWindow" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "darkMode" ).isNull() )
       c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
 
-    if ( !preferences.namedItem("darkReaderMode").isNull())
-      c.preferences.darkReaderMode = (preferences.namedItem("darkReaderMode").toElement().text() == "1");
+    if ( !preferences.namedItem( "darkReaderMode" ).isNull() )
+      c.preferences.darkReaderMode = ( preferences.namedItem( "darkReaderMode" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "zoomFactor" ).isNull() )
       c.preferences.zoomFactor = preferences.namedItem( "zoomFactor" ).toElement().text().toDouble();
@@ -879,18 +896,22 @@ Class load()
 
     applyBoolOption( c.preferences.enableMainWindowHotkey, preferences.namedItem( "enableMainWindowHotkey" ) );
     if ( !preferences.namedItem( "mainWindowHotkey" ).isNull() )
-      c.preferences.mainWindowHotkey = QKeySequence::fromString( preferences.namedItem( "mainWindowHotkey" ).toElement().text() );
+      c.preferences.mainWindowHotkey =
+        QKeySequence::fromString( preferences.namedItem( "mainWindowHotkey" ).toElement().text() );
     applyBoolOption( c.preferences.enableClipboardHotkey, preferences.namedItem( "enableClipboardHotkey" ) );
     if ( !preferences.namedItem( "clipboardHotkey" ).isNull() )
-      c.preferences.clipboardHotkey = QKeySequence::fromString( preferences.namedItem( "clipboardHotkey" ).toElement().text() );
+      c.preferences.clipboardHotkey =
+        QKeySequence::fromString( preferences.namedItem( "clipboardHotkey" ).toElement().text() );
 
     c.preferences.startWithScanPopupOn = ( preferences.namedItem( "startWithScanPopupOn" ).toElement().text() == "1" );
-    c.preferences.enableScanPopupModifiers = ( preferences.namedItem( "enableScanPopupModifiers" ).toElement().text() == "1" );
+    c.preferences.enableScanPopupModifiers =
+      ( preferences.namedItem( "enableScanPopupModifiers" ).toElement().text() == "1" );
     c.preferences.scanPopupModifiers = ( preferences.namedItem( "scanPopupModifiers" ).toElement().text().toULong() );
-    c.preferences.ignoreOwnClipboardChanges = ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
+    c.preferences.ignoreOwnClipboardChanges =
+      ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
-    if( !preferences.namedItem( "ignorePunctuation" ).isNull() )
+    if ( !preferences.namedItem( "ignorePunctuation" ).isNull() )
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "sessionCollapse" ).isNull() ) {
@@ -898,18 +919,17 @@ Class load()
     }
 
 #ifdef HAVE_X11
-    c.preferences.trackClipboardScan= ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
-    c.preferences.trackSelectionScan= ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
-    c.preferences.showScanFlag= ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
+    c.preferences.trackClipboardScan = ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
+    c.preferences.trackSelectionScan = ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
+    c.preferences.showScanFlag       = ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
     c.preferences.selectionChangeDelayTimer =
       preferences.namedItem( "selectionChangeDelayTimer" ).toElement().text().toInt();
 #endif
 
-    c.preferences.pronounceOnLoadMain = ( preferences.namedItem( "pronounceOnLoadMain" ).toElement().text() == "1" );
+    c.preferences.pronounceOnLoadMain  = ( preferences.namedItem( "pronounceOnLoadMain" ).toElement().text() == "1" );
     c.preferences.pronounceOnLoadPopup = ( preferences.namedItem( "pronounceOnLoadPopup" ).toElement().text() == "1" );
 
-    if ( InternalPlayerBackend::anyAvailable() )
-    {
+    if ( InternalPlayerBackend::anyAvailable() ) {
       if ( !preferences.namedItem( "useInternalPlayer" ).isNull() )
         c.preferences.useInternalPlayer = ( preferences.namedItem( "useInternalPlayer" ).toElement().text() == "1" );
     }
@@ -917,7 +937,8 @@ Class load()
       c.preferences.useInternalPlayer = false;
 
     if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() )
-      c.preferences.internalPlayerBackend.setUiName( preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
+      c.preferences.internalPlayerBackend.setUiName(
+        preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
 
     if ( !preferences.namedItem( "audioPlaybackProgram" ).isNull() )
       c.preferences.audioPlaybackProgram = preferences.namedItem( "audioPlaybackProgram" ).toElement().text();
@@ -926,31 +947,29 @@ Class load()
 
     QDomNode proxy = preferences.namedItem( "proxyserver" );
 
-    if ( !proxy.isNull() )
-    {
-      c.preferences.proxyServer.enabled = ( proxy.toElement().attribute( "enabled" ) == "1" );
+    if ( !proxy.isNull() ) {
+      c.preferences.proxyServer.enabled        = ( proxy.toElement().attribute( "enabled" ) == "1" );
       c.preferences.proxyServer.useSystemProxy = ( proxy.toElement().attribute( "useSystemProxy" ) == "1" );
-      c.preferences.proxyServer.type = ( ProxyServer::Type ) proxy.namedItem( "type" ).toElement().text().toULong();
-      c.preferences.proxyServer.host = proxy.namedItem( "host" ).toElement().text();
-      c.preferences.proxyServer.port = proxy.namedItem( "port" ).toElement().text().toULong();
-      c.preferences.proxyServer.user = proxy.namedItem( "user" ).toElement().text();
+      c.preferences.proxyServer.type     = (ProxyServer::Type)proxy.namedItem( "type" ).toElement().text().toULong();
+      c.preferences.proxyServer.host     = proxy.namedItem( "host" ).toElement().text();
+      c.preferences.proxyServer.port     = proxy.namedItem( "port" ).toElement().text().toULong();
+      c.preferences.proxyServer.user     = proxy.namedItem( "user" ).toElement().text();
       c.preferences.proxyServer.password = proxy.namedItem( "password" ).toElement().text();
-      c.preferences.proxyServer.systemProxyUser = proxy.namedItem( "systemProxyUser" ).toElement().text();
+      c.preferences.proxyServer.systemProxyUser     = proxy.namedItem( "systemProxyUser" ).toElement().text();
       c.preferences.proxyServer.systemProxyPassword = proxy.namedItem( "systemProxyPassword" ).toElement().text();
     }
 
     QDomNode ankiConnectServer = preferences.namedItem( "ankiConnectServer" );
 
-    if ( !ankiConnectServer.isNull() )
-    {
+    if ( !ankiConnectServer.isNull() ) {
       c.preferences.ankiConnectServer.enabled = ( ankiConnectServer.toElement().attribute( "enabled" ) == "1" );
-      c.preferences.ankiConnectServer.host = ankiConnectServer.namedItem( "host" ).toElement().text();
+      c.preferences.ankiConnectServer.host    = ankiConnectServer.namedItem( "host" ).toElement().text();
       c.preferences.ankiConnectServer.port    = ankiConnectServer.namedItem( "port" ).toElement().text().toInt();
-      c.preferences.ankiConnectServer.deck = ankiConnectServer.namedItem( "deck" ).toElement().text();
-      c.preferences.ankiConnectServer.model = ankiConnectServer.namedItem( "model" ).toElement().text();
+      c.preferences.ankiConnectServer.deck    = ankiConnectServer.namedItem( "deck" ).toElement().text();
+      c.preferences.ankiConnectServer.model   = ankiConnectServer.namedItem( "model" ).toElement().text();
 
-      c.preferences.ankiConnectServer.word = ankiConnectServer.namedItem( "word" ).toElement().text();
-      c.preferences.ankiConnectServer.text = ankiConnectServer.namedItem( "text" ).toElement().text();
+      c.preferences.ankiConnectServer.word     = ankiConnectServer.namedItem( "word" ).toElement().text();
+      c.preferences.ankiConnectServer.text     = ankiConnectServer.namedItem( "text" ).toElement().text();
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
     }
 
@@ -958,37 +977,43 @@ Class load()
       c.preferences.checkForNewReleases = ( preferences.namedItem( "checkForNewReleases" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() )
-      c.preferences.disallowContentFromOtherSites = ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
+      c.preferences.disallowContentFromOtherSites =
+        ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() )
-      c.preferences.hideGoldenDictHeader = ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
+      c.preferences.hideGoldenDictHeader =
+        ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() )
       c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
 
     if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() )
-      c.preferences.clearNetworkCacheOnExit = ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
+      c.preferences.clearNetworkCacheOnExit =
+        ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
-      c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt() ;
+      c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
 
     if ( !preferences.namedItem( "storeHistory" ).isNull() )
-      c.preferences.storeHistory = preferences.namedItem( "storeHistory" ).toElement().text().toUInt() ;
+      c.preferences.storeHistory = preferences.namedItem( "storeHistory" ).toElement().text().toUInt();
 
     if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() )
-      c.preferences.alwaysExpandOptionalParts = preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt() ;
+      c.preferences.alwaysExpandOptionalParts =
+        preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt();
 
     if ( !preferences.namedItem( "addonStyle" ).isNull() )
       c.preferences.addonStyle = preferences.namedItem( "addonStyle" ).toElement().text();
 
     if ( !preferences.namedItem( "historyStoreInterval" ).isNull() )
-      c.preferences.historyStoreInterval = preferences.namedItem( "historyStoreInterval" ).toElement().text().toUInt() ;
+      c.preferences.historyStoreInterval = preferences.namedItem( "historyStoreInterval" ).toElement().text().toUInt();
 
     if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() )
-      c.preferences.favoritesStoreInterval = preferences.namedItem( "favoritesStoreInterval" ).toElement().text().toUInt() ;
+      c.preferences.favoritesStoreInterval =
+        preferences.namedItem( "favoritesStoreInterval" ).toElement().text().toUInt();
 
     if ( !preferences.namedItem( "confirmFavoritesDeletion" ).isNull() )
-      c.preferences.confirmFavoritesDeletion = ( preferences.namedItem( "confirmFavoritesDeletion" ).toElement().text() == "1" );
+      c.preferences.confirmFavoritesDeletion =
+        ( preferences.namedItem( "confirmFavoritesDeletion" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "collapseBigArticles" ).isNull() )
       c.preferences.collapseBigArticles = ( preferences.namedItem( "collapseBigArticles" ).toElement().text() == "1" );
@@ -997,35 +1022,39 @@ Class load()
       c.preferences.articleSizeLimit = preferences.namedItem( "articleSizeLimit" ).toElement().text().toInt();
 
     if ( !preferences.namedItem( "limitInputPhraseLength" ).isNull() )
-      c.preferences.limitInputPhraseLength = ( preferences.namedItem( "limitInputPhraseLength" ).toElement().text() == "1" );
+      c.preferences.limitInputPhraseLength =
+        ( preferences.namedItem( "limitInputPhraseLength" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "inputPhraseLengthLimit" ).isNull() )
-      c.preferences.inputPhraseLengthLimit = preferences.namedItem( "inputPhraseLengthLimit" ).toElement().text().toInt();
+      c.preferences.inputPhraseLengthLimit =
+        preferences.namedItem( "inputPhraseLengthLimit" ).toElement().text().toInt();
 
     if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() )
-      c.preferences.maxDictionaryRefsInContextMenu = preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
+      c.preferences.maxDictionaryRefsInContextMenu =
+        preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
 
     if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
-      c.preferences.synonymSearchEnabled = ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
+      c.preferences.synonymSearchEnabled =
+        ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "stripClipboard" ).isNull() )
       c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
 
-    if( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
+    if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
       c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
-    if ( !fts.isNull() )
-    {
+    if ( !fts.isNull() ) {
       if ( !fts.namedItem( "searchMode" ).isNull() )
         c.preferences.fts.searchMode = fts.namedItem( "searchMode" ).toElement().text().toInt();
 
       if ( !fts.namedItem( "dialogGeometry" ).isNull() )
-        c.preferences.fts.dialogGeometry = QByteArray::fromBase64( fts.namedItem( "dialogGeometry" ).toElement().text().toLatin1() );
+        c.preferences.fts.dialogGeometry =
+          QByteArray::fromBase64( fts.namedItem( "dialogGeometry" ).toElement().text().toLatin1() );
 
-      if( !fts.namedItem( "disabledTypes" ).isNull() )
-      c.preferences.fts.disabledTypes = fts.namedItem( "disabledTypes" ).toElement().text();
+      if ( !fts.namedItem( "disabledTypes" ).isNull() )
+        c.preferences.fts.disabledTypes = fts.namedItem( "disabledTypes" ).toElement().text();
 
       if ( !fts.namedItem( "enabled" ).isNull() )
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
@@ -1037,10 +1066,9 @@ Class load()
       if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
     }
-
   }
 
-  c.lastMainGroupId = root.namedItem( "lastMainGroupId" ).toElement().text().toUInt();
+  c.lastMainGroupId  = root.namedItem( "lastMainGroupId" ).toElement().text().toUInt();
   c.lastPopupGroupId = root.namedItem( "lastPopupGroupId" ).toElement().text().toUInt();
 
   QDomNode popupWindowState = root.namedItem( "popupWindowState" );
@@ -1085,8 +1113,7 @@ Class load()
   QDomNode timeForNewReleaseCheck = root.namedItem( "timeForNewReleaseCheck" );
 
   if ( !timeForNewReleaseCheck.isNull() )
-    c.timeForNewReleaseCheck = QDateTime::fromString( timeForNewReleaseCheck.toElement().text(),
-                                                      Qt::ISODate );
+    c.timeForNewReleaseCheck = QDateTime::fromString( timeForNewReleaseCheck.toElement().text(), Qt::ISODate );
 
   c.skippedRelease = root.namedItem( "skippedRelease" ).toElement().text();
 
@@ -1109,8 +1136,7 @@ Class load()
   if ( !root.namedItem( "maxPictureWidth" ).isNull() )
     c.maxPictureWidth = root.namedItem( "maxPictureWidth" ).toElement().text().toInt();
 
-  if ( !root.namedItem( "maxHeadwordSize" ).isNull() )
-  {
+  if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
     if ( value != 0 ) // 0 is invalid value for our purposes
     {
@@ -1123,8 +1149,7 @@ Class load()
 
   QDomNode headwordsDialog = root.namedItem( "headwordsDialog" );
 
-  if ( !headwordsDialog.isNull() )
-  {
+  if ( !headwordsDialog.isNull() ) {
     if ( !headwordsDialog.namedItem( "searchMode" ).isNull() )
       c.headwordsDialog.searchMode = headwordsDialog.namedItem( "searchMode" ).toElement().text().toInt();
 
@@ -1138,7 +1163,8 @@ Class load()
       c.headwordsDialog.headwordsExportPath = headwordsDialog.namedItem( "headwordsExportPath" ).toElement().text();
 
     if ( !headwordsDialog.namedItem( "headwordsDialogGeometry" ).isNull() )
-      c.headwordsDialog.headwordsDialogGeometry = QByteArray::fromBase64( headwordsDialog.namedItem( "headwordsDialogGeometry" ).toElement().text().toLatin1() );
+      c.headwordsDialog.headwordsDialogGeometry =
+        QByteArray::fromBase64( headwordsDialog.namedItem( "headwordsDialogGeometry" ).toElement().text().toLatin1() );
   }
 
   return c;
@@ -1161,15 +1187,13 @@ void saveGroup( Group const & data, QDomElement & group )
 
   group.setAttributeNode( name );
 
-  if( data.favoritesFolder.size() )
-  {
+  if ( data.favoritesFolder.size() ) {
     QDomAttr folder = dd.createAttribute( "favoritesFolder" );
     folder.setValue( data.favoritesFolder );
     group.setAttributeNode( folder );
   }
 
-  if ( data.icon.size() )
-  {
+  if ( data.icon.size() ) {
     QDomAttr icon = dd.createAttribute( "icon" );
 
     icon.setValue( data.icon );
@@ -1177,8 +1201,7 @@ void saveGroup( Group const & data, QDomElement & group )
     group.setAttributeNode( icon );
   }
 
-  if ( data.iconData.size() )
-  {
+  if ( data.iconData.size() ) {
     QDomAttr iconData = dd.createAttribute( "iconData" );
 
     iconData.setValue( QString::fromLatin1( data.iconData.toBase64() ) );
@@ -1186,11 +1209,10 @@ void saveGroup( Group const & data, QDomElement & group )
     group.setAttributeNode( iconData );
   }
 
-  if ( !data.shortcut.isEmpty() )
-  {
+  if ( !data.shortcut.isEmpty() ) {
     QDomAttr shortcut = dd.createAttribute( "shortcut" );
 
-    shortcut.setValue(  data.shortcut.toString() );
+    shortcut.setValue( data.shortcut.toString() );
 
     group.setAttributeNode( shortcut );
   }
@@ -1231,9 +1253,9 @@ void saveGroup( Group const & data, QDomElement & group )
   }
 }
 
-}
+} // namespace
 
-void save( Class const & c ) 
+void save( Class const & c )
 {
   QFile configFile( getConfigFileName() + ".tmp" );
 
@@ -1315,7 +1337,7 @@ void save( Class const & c )
 
   {
     QDomElement hunspell = dd.createElement( "hunspell" );
-    QDomAttr path = dd.createAttribute( "dictionariesPath" );
+    QDomAttr path        = dd.createAttribute( "dictionariesPath" );
     path.setValue( c.hunspell.dictionariesPath );
     hunspell.setAttributeNode( path );
     root.appendChild( hunspell );
@@ -1336,25 +1358,25 @@ void save( Class const & c )
     root.appendChild( transliteration );
 
     QDomElement opt = dd.createElement( "enableRussianTransliteration" );
-    opt.appendChild( dd.createTextNode( c.transliteration.enableRussianTransliteration ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.enableRussianTransliteration ? "1" : "0" ) );
     transliteration.appendChild( opt );
 
     // German translit
 
     opt = dd.createElement( "enableGermanTransliteration" );
-    opt.appendChild( dd.createTextNode( c.transliteration.enableGermanTransliteration ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.enableGermanTransliteration ? "1" : "0" ) );
     transliteration.appendChild( opt );
 
     // Greek translit
 
     opt = dd.createElement( "enableGreekTransliteration" );
-    opt.appendChild( dd.createTextNode( c.transliteration.enableGreekTransliteration ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.enableGreekTransliteration ? "1" : "0" ) );
     transliteration.appendChild( opt );
 
     // Belarusian translit
 
     opt = dd.createElement( "enableBelarusianTransliteration" );
-    opt.appendChild( dd.createTextNode( c.transliteration.enableBelarusianTransliteration ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.enableBelarusianTransliteration ? "1" : "0" ) );
     transliteration.appendChild( opt );
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
@@ -1364,19 +1386,19 @@ void save( Class const & c )
     transliteration.appendChild( chinese );
 
     opt = dd.createElement( "enable" );
-    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enable ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enable ? "1" : "0" ) );
     chinese.appendChild( opt );
 
     opt = dd.createElement( "enableSCToTWConversion" );
-    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableSCToTWConversion ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableSCToTWConversion ? "1" : "0" ) );
     chinese.appendChild( opt );
 
     opt = dd.createElement( "enableSCToHKConversion" );
-    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableSCToHKConversion ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableSCToHKConversion ? "1" : "0" ) );
     chinese.appendChild( opt );
 
     opt = dd.createElement( "enableTCToSCConversion" );
-    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableTCToSCConversion ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableTCToSCConversion ? "1" : "0" ) );
     chinese.appendChild( opt );
 #endif
 
@@ -1386,27 +1408,27 @@ void save( Class const & c )
     transliteration.appendChild( romaji );
 
     opt = dd.createElement( "enable" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enable ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enable ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableHepburn" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHepburn ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHepburn ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableNihonShiki" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableNihonShiki ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableNihonShiki ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableKunreiShiki" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKunreiShiki ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKunreiShiki ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableHiragana" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHiragana ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHiragana ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableKatakana" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKatakana ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKatakana ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     //custom transliteration
@@ -1414,7 +1436,7 @@ void save( Class const & c )
     transliteration.appendChild( customtrans );
 
     opt = dd.createElement( "enable" );
-    opt.appendChild( dd.createTextNode( c.transliteration.customTrans.enable ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.transliteration.customTrans.enable ? "1" : "0" ) );
     customtrans.appendChild( opt );
 
     opt = dd.createElement( "context" );
@@ -1425,17 +1447,16 @@ void save( Class const & c )
   {
     // Lingua
 
-    QDomElement lingua = dd.createElement("lingua");
-    root.appendChild(lingua);
+    QDomElement lingua = dd.createElement( "lingua" );
+    root.appendChild( lingua );
 
-    QDomElement opt = dd.createElement("enable");
-    opt.appendChild(dd.createTextNode(c.lingua.enable?"1":"0"));
-    lingua.appendChild(opt);
+    QDomElement opt = dd.createElement( "enable" );
+    opt.appendChild( dd.createTextNode( c.lingua.enable ? "1" : "0" ) );
+    lingua.appendChild( opt );
 
     opt = dd.createElement( "languageCodes" );
     opt.appendChild( dd.createTextNode( c.lingua.languageCodes ) );
     lingua.appendChild( opt );
-
   }
 
   {
@@ -1445,7 +1466,7 @@ void save( Class const & c )
     root.appendChild( forvo );
 
     QDomElement opt = dd.createElement( "enable" );
-    opt.appendChild( dd.createTextNode( c.forvo.enable ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.forvo.enable ? "1" : "0" ) );
     forvo.appendChild( opt );
 
     opt = dd.createElement( "apiKey" );
@@ -1597,7 +1618,7 @@ void save( Class const & c )
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
 
-    for( const auto & voiceEngine : c.voiceEngines ) {
+    for ( const auto & voiceEngine : c.voiceEngines ) {
       QDomElement v = dd.createElement( "voiceEngine" );
       ves.appendChild( v );
 
@@ -1664,63 +1685,63 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "newTabsOpenAfterCurrentOne" );
-    opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenAfterCurrentOne ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenAfterCurrentOne ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "newTabsOpenInBackground" );
-    opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenInBackground ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenInBackground ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "hideSingleTab" );
-    opt.appendChild( dd.createTextNode( c.preferences.hideSingleTab ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.hideSingleTab ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "mruTabOrder" );
-    opt.appendChild( dd.createTextNode( c.preferences.mruTabOrder ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.mruTabOrder ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "hideMenubar" );
-    opt.appendChild( dd.createTextNode( c.preferences.hideMenubar ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.hideMenubar ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableTrayIcon" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableTrayIcon ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.enableTrayIcon ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "startToTray" );
-    opt.appendChild( dd.createTextNode( c.preferences.startToTray ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.startToTray ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "closeToTray" );
-    opt.appendChild( dd.createTextNode( c.preferences.closeToTray ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.closeToTray ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "autoStart" );
-    opt.appendChild( dd.createTextNode( c.preferences.autoStart ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.autoStart ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "doubleClickTranslates" );
-    opt.appendChild( dd.createTextNode( c.preferences.doubleClickTranslates ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.doubleClickTranslates ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "selectWordBySingleClick" );
-    opt.appendChild( dd.createTextNode( c.preferences.selectWordBySingleClick ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.selectWordBySingleClick ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "autoScrollToTargetArticle" );
-    opt.appendChild( dd.createTextNode( c.preferences.autoScrollToTargetArticle ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.autoScrollToTargetArticle ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "escKeyHidesMainWindow" );
-    opt.appendChild( dd.createTextNode( c.preferences.escKeyHidesMainWindow ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.escKeyHidesMainWindow ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkReaderMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "zoomFactor" );
@@ -1736,7 +1757,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableMainWindowHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableMainWindowHotkey ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.enableMainWindowHotkey ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "mainWindowHotkey" );
@@ -1744,7 +1765,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableClipboardHotkey" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableClipboardHotkey ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.enableClipboardHotkey ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "clipboardHotkey" );
@@ -1752,11 +1773,11 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "startWithScanPopupOn" );
-    opt.appendChild( dd.createTextNode( c.preferences.startWithScanPopupOn ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.startWithScanPopupOn ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableScanPopupModifiers" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableScanPopupModifiers ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.enableScanPopupModifiers ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "scanPopupModifiers" );
@@ -1764,19 +1785,19 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "ignoreOwnClipboardChanges" );
-    opt.appendChild( dd.createTextNode( c.preferences.ignoreOwnClipboardChanges ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.ignoreOwnClipboardChanges ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "scanToMainWindow" );
-    opt.appendChild( dd.createTextNode( c.preferences.scanToMainWindow ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.scanToMainWindow ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "ignoreDiacritics" );
-    opt.appendChild( dd.createTextNode( c.preferences.ignoreDiacritics ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.ignoreDiacritics ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "ignorePunctuation" );
-    opt.appendChild( dd.createTextNode( c.preferences.ignorePunctuation ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.ignorePunctuation ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "sessionCollapse" );
@@ -1785,15 +1806,15 @@ void save( Class const & c )
 
 #ifdef HAVE_X11
     opt = dd.createElement( "trackClipboardScan" );
-    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardScan ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.trackClipboardScan ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "trackSelectionScan" );
-    opt.appendChild( dd.createTextNode( c.preferences.trackSelectionScan ? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.trackSelectionScan ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "showScanFlag" );
-    opt.appendChild( dd.createTextNode( c.preferences.showScanFlag? "1":"0" ) );
+    opt.appendChild( dd.createTextNode( c.preferences.showScanFlag ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "selectionChangeDelayTimer" );
@@ -2017,7 +2038,6 @@ void save( Class const & c )
       opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.maxDictionarySize ) ) );
       hd.appendChild( opt );
     }
-
   }
 
   {
@@ -2081,25 +2101,22 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.usingSmallIconsInToolbars ? "1" : "0" ) );
     root.appendChild( opt );
 
-    if( !c.historyExportPath.isEmpty() )
-    {
-        opt = dd.createElement( "historyExportPath" );
-        opt.appendChild( dd.createTextNode( c.historyExportPath ) );
-        root.appendChild( opt );
+    if ( !c.historyExportPath.isEmpty() ) {
+      opt = dd.createElement( "historyExportPath" );
+      opt.appendChild( dd.createTextNode( c.historyExportPath ) );
+      root.appendChild( opt );
     }
 
-    if( !c.resourceSavePath.isEmpty() )
-    {
-        opt = dd.createElement( "resourceSavePath" );
-        opt.appendChild( dd.createTextNode( c.resourceSavePath ) );
-        root.appendChild( opt );
+    if ( !c.resourceSavePath.isEmpty() ) {
+      opt = dd.createElement( "resourceSavePath" );
+      opt.appendChild( dd.createTextNode( c.resourceSavePath ) );
+      root.appendChild( opt );
     }
 
-    if( !c.articleSavePath.isEmpty() )
-    {
-        opt = dd.createElement( "articleSavePath" );
-        opt.appendChild( dd.createTextNode( c.articleSavePath ) );
-        root.appendChild( opt );
+    if ( !c.articleSavePath.isEmpty() ) {
+      opt = dd.createElement( "articleSavePath" );
+      opt.appendChild( dd.createTextNode( c.articleSavePath ) );
+      root.appendChild( opt );
     }
 
     opt = dd.createElement( "editDictionaryCommandLine" );
@@ -2159,20 +2176,19 @@ QString getConfigFileName()
   return getHomeDir().absoluteFilePath( "config" );
 }
 
-QString getConfigDir() 
+QString getConfigDir()
 {
   return getHomeDir().path() + QDir::separator();
 }
 
-QString getIndexDir() 
+QString getIndexDir()
 {
   QDir result = getHomeDir();
 
 #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
   // store index in XDG_CACHE_HOME in non-portable version
   // *and* when an old index directory in GoldenDict home doesn't exist
-  if ( !isPortableVersion() && !result.exists( "index" ) )
-  {
+  if ( !isPortableVersion() && !result.exists( "index" ) ) {
     result.setPath( getCacheDir() );
   }
 #endif
@@ -2185,20 +2201,19 @@ QString getIndexDir()
   return result.path() + QDir::separator();
 }
 
-QString getPidFileName() 
+QString getPidFileName()
 {
   return getHomeDir().filePath( "pid" );
 }
 
-QString getHistoryFileName() 
+QString getHistoryFileName()
 {
   QString homeHistoryPath = getHomeDir().filePath( "history" );
 
 #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
   // use separate data dir for history, if it is not already stored alongside
   // configuration in non-portable mode
-  if ( !isPortableVersion() && !QFile::exists( homeHistoryPath ) )
-  {
+  if ( !isPortableVersion() && !QFile::exists( homeHistoryPath ) ) {
     return getDataDir().filePath( "history" );
   }
 #endif
@@ -2206,12 +2221,12 @@ QString getHistoryFileName()
   return homeHistoryPath;
 }
 
-QString getFavoritiesFileName() 
+QString getFavoritiesFileName()
 {
   return getHomeDir().filePath( "favorites" );
 }
 
-QString getUserCssFileName() 
+QString getUserCssFileName()
 {
   return getHomeDir().filePath( "article-style.css" );
 }
@@ -2227,12 +2242,12 @@ std::optional< std::string > getUserJsFileName()
   }
 }
 
-QString getUserCssPrintFileName() 
+QString getUserCssPrintFileName()
 {
   return getHomeDir().filePath( "article-style-print.css" );
 }
 
-QString getUserQtCssFileName() 
+QString getUserQtCssFileName()
 {
   return getHomeDir().filePath( "qt-style.css" );
 }
@@ -2241,12 +2256,12 @@ QString getProgramDataDir() noexcept
 {
   if ( isPortableVersion() )
     return QCoreApplication::applicationDirPath();
-// TODO: rewrite this in QStandardPaths::AppDataLocation
-  #ifdef PROGRAM_DATA_DIR
+    // TODO: rewrite this in QStandardPaths::AppDataLocation
+#ifdef PROGRAM_DATA_DIR
   return PROGRAM_DATA_DIR;
-  #else
+#else
   return QCoreApplication::applicationDirPath();
-  #endif
+#endif
 }
 
 QString getLocDir() noexcept
@@ -2268,20 +2283,20 @@ QString getHelpDir() noexcept
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
 QString getOpenCCDir() noexcept
 {
-#if defined( Q_OS_WIN )
+  #if defined( Q_OS_WIN )
   if ( QDir( "opencc" ).exists() )
     return "opencc";
   else
     return QCoreApplication::applicationDirPath() + "/opencc";
-#elif defined( Q_OS_MAC )
+  #elif defined( Q_OS_MAC )
   QString path = QCoreApplication::applicationDirPath() + "/opencc";
   if ( QDir( path ).exists() )
     return path;
 
   return QString();
-#else
+  #else
   return QString();
-#endif
+  #endif
 }
 #endif
 
@@ -2291,8 +2306,10 @@ bool isPortableVersion() noexcept
   {
     bool isPortable;
 
-    IsPortable(): isPortable( QFileInfo( portableHomeDirPath() ).isDir() )
-    {}
+    IsPortable():
+      isPortable( QFileInfo( portableHomeDirPath() ).isDir() )
+    {
+    }
   };
 
   static IsPortable p;
@@ -2331,10 +2348,12 @@ QString getStylesDir()
 QString getCacheDir() noexcept
 {
   return isPortableVersion() ? portableHomeDirPath() + "/cache"
-  #ifdef HAVE_X11
-                             : QStandardPaths::writableLocation( QStandardPaths::GenericCacheLocation ) + "/goldendict";
-  #else
-                             : QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-  #endif
+#ifdef HAVE_X11
+                               :
+                               QStandardPaths::writableLocation( QStandardPaths::GenericCacheLocation ) + "/goldendict";
+#else
+                               :
+                               QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
+#endif
 }
-}
+} // namespace Config

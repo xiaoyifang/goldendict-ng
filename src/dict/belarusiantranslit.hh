@@ -10,8 +10,7 @@
 // Support for Belarusian transliteration
 namespace BelarusianTranslit {
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries() ;
-
+std::vector< sptr< Dictionary::Class > > makeDictionaries();
 }
 
 #endif

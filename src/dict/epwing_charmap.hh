@@ -14,12 +14,13 @@ public:
 
   /// Map Epwing extra char to Utf-8
   QByteArray mapToUtf8( QString const & code );
+
 private:
   void addEntry( QString const & code, int ch );
 
   QMap< QString, QChar > charMap;
 };
 
-}
+} // namespace Epwing
 
 #endif // __EPWING_CHARMAP_HH_INCLUDED_

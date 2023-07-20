@@ -37,10 +37,10 @@ public:
 
 private:
   quint64 count;       // number of bytes in buffer
-  uchar  buffer[64];  // 512-bit buffer of input values used in hash updating
-  quint32 state[10];   // current hash value
+  uchar buffer[ 64 ];  // 512-bit buffer of input values used in hash updating
+  quint32 state[ 10 ]; // current hash value
 
-  void transform( const uchar buffer[64] );
+  void transform( const uchar buffer[ 64 ] );
 };
 
 #endif // __RIPEMD_HH_INCLUDED__

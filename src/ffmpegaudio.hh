@@ -3,16 +3,15 @@
 
 #ifdef MAKE_FFMPEG_PLAYER
 
-#include <QObject>
-#include <QMutex>
-#include <QAtomicInt>
-#include <QByteArray>
-#include <QThread>
+  #include <QObject>
+  #include <QMutex>
+  #include <QAtomicInt>
+  #include <QByteArray>
+  #include <QThread>
 
-namespace Ffmpeg
-{
+namespace Ffmpeg {
 
-class AudioService : public QObject
+class AudioService: public QObject
 {
   Q_OBJECT
 
@@ -50,7 +49,7 @@ signals:
   void error( QString const & message );
 };
 
-}
+} // namespace Ffmpeg
 
 #endif // MAKE_FFMPEG_PLAYER
 

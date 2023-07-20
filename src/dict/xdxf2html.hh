@@ -13,17 +13,25 @@
 /// to convert articles with such a markup to an html.
 namespace Xdxf2Html {
 
-enum DICT_TYPE { STARDICT, XDXF };
+enum DICT_TYPE {
+  STARDICT,
+  XDXF
+};
 
 using std::string;
 using std::map;
 
 /// Converts the given xdxf markup to an html one. This is currently used
 /// for Stardict's 'x' records.
-string convert( string const &, DICT_TYPE type, map < string, string > const * pAbrv,
-                Dictionary::Class *dictPtr, IndexedZip * resourceZip, bool isLogicalFormat = false,
-                unsigned revisionNumber = 0, QString * headword = 0 );
+string convert( string const &,
+                DICT_TYPE type,
+                map< string, string > const * pAbrv,
+                Dictionary::Class * dictPtr,
+                IndexedZip * resourceZip,
+                bool isLogicalFormat    = false,
+                unsigned revisionNumber = 0,
+                QString * headword      = 0 );
 
-}
+} // namespace Xdxf2Html
 
 #endif

@@ -35,55 +35,51 @@ private:
 
   QMap< QString, LangData > iso2LangData;
 
-  QMap< QString, QString > localeLanguage = {
-    {"fr_FR", QT_TR_NOOP( "French" )},
-    {"es_ES", QT_TR_NOOP( "Spanish" )},
-    {"be_BY", QT_TR_NOOP( "Belarusian" )},
-    {"bg_BG", QT_TR_NOOP( "Bulgarian" )},
-    {"cs_CZ", QT_TR_NOOP( "Czech" )},
-    {"de_DE", QT_TR_NOOP( "German" )},
-    {"el_GR", QT_TR_NOOP( "Greek" )},
-    {"fi_FI", QT_TR_NOOP( "Finnish" )},
-    {"it_IT", QT_TR_NOOP( "Italian" )},
-    {"ja_JP", QT_TR_NOOP( "Japanese" )},
-    {"ko_KR", QT_TR_NOOP( "Korean" )},
-    {"lt_LT", QT_TR_NOOP( "Lithuanian" )},
-    {"mk_MK", QT_TR_NOOP( "Macedonian" )},
-    {"nl_NL", QT_TR_NOOP( "Dutch" )},
-    {"pl_PL", QT_TR_NOOP( "Polish" )},
-    {"pt_PT", QT_TR_NOOP( "Portuguese" )},
-    {"ru_RU", QT_TR_NOOP( "Russian" )},
-    {"sk_SK", QT_TR_NOOP( "Slovak" )},
-    {"sq_AL", QT_TR_NOOP( "Albanian" )},
-    {"sr_SP", QT_TR_NOOP( "Serbian (Cyrillic)" )},
-    {"sv_SE", QT_TR_NOOP( "Swedish" )},
-    {"tr_TR", QT_TR_NOOP( "Turkish" )},
-    {"uk_UA", QT_TR_NOOP( "Ukrainian" )},
-    {"zh_CN", QT_TR_NOOP( "Chinese Simplified" )},
-    {"zh_TW", QT_TR_NOOP( "Chinese Traditional" )},
-    {"vi_VN", QT_TR_NOOP( "Vietnamese" )},
-    {"pt_BR", QT_TR_NOOP( "Portuguese, Brazilian" )},
-    {"fa_IR", QT_TR_NOOP( "Persian" )},
-    {"es_AR", QT_TR_NOOP( "Spanish, Argentina" )},
-    {"hi_IN", QT_TR_NOOP( "Hindi" )},
-    {"eo_UY", QT_TR_NOOP( "Esperanto" )},
-    {"de_CH", QT_TR_NOOP( "German, Switzerland" )},
-    {"es_BO", QT_TR_NOOP( "Spanish, Bolivia" )},
-    {"tg_TJ", QT_TR_NOOP( "Tajik" )},
-    {"qu_PE", QT_TR_NOOP( "Quechua" )},
-    {"ay_BO", QT_TR_NOOP( "Aymara" )},
-    {"ar_SA", QT_TR_NOOP( "Arabic, Saudi Arabia" )},
-    {"tk_TM", QT_TR_NOOP( "Turkmen" )},
-    {"ie_001", QT_TR_NOOP( "Interlingue" )},
-    {"jbo_EN", QT_TR_NOOP( "Lojban" )},
-    {"en_US", QT_TR_NOOP( "English" )}
-  };
+  QMap< QString, QString > localeLanguage = { { "fr_FR", QT_TR_NOOP( "French" ) },
+                                              { "es_ES", QT_TR_NOOP( "Spanish" ) },
+                                              { "be_BY", QT_TR_NOOP( "Belarusian" ) },
+                                              { "bg_BG", QT_TR_NOOP( "Bulgarian" ) },
+                                              { "cs_CZ", QT_TR_NOOP( "Czech" ) },
+                                              { "de_DE", QT_TR_NOOP( "German" ) },
+                                              { "el_GR", QT_TR_NOOP( "Greek" ) },
+                                              { "fi_FI", QT_TR_NOOP( "Finnish" ) },
+                                              { "it_IT", QT_TR_NOOP( "Italian" ) },
+                                              { "ja_JP", QT_TR_NOOP( "Japanese" ) },
+                                              { "ko_KR", QT_TR_NOOP( "Korean" ) },
+                                              { "lt_LT", QT_TR_NOOP( "Lithuanian" ) },
+                                              { "mk_MK", QT_TR_NOOP( "Macedonian" ) },
+                                              { "nl_NL", QT_TR_NOOP( "Dutch" ) },
+                                              { "pl_PL", QT_TR_NOOP( "Polish" ) },
+                                              { "pt_PT", QT_TR_NOOP( "Portuguese" ) },
+                                              { "ru_RU", QT_TR_NOOP( "Russian" ) },
+                                              { "sk_SK", QT_TR_NOOP( "Slovak" ) },
+                                              { "sq_AL", QT_TR_NOOP( "Albanian" ) },
+                                              { "sr_SP", QT_TR_NOOP( "Serbian (Cyrillic)" ) },
+                                              { "sv_SE", QT_TR_NOOP( "Swedish" ) },
+                                              { "tr_TR", QT_TR_NOOP( "Turkish" ) },
+                                              { "uk_UA", QT_TR_NOOP( "Ukrainian" ) },
+                                              { "zh_CN", QT_TR_NOOP( "Chinese Simplified" ) },
+                                              { "zh_TW", QT_TR_NOOP( "Chinese Traditional" ) },
+                                              { "vi_VN", QT_TR_NOOP( "Vietnamese" ) },
+                                              { "pt_BR", QT_TR_NOOP( "Portuguese, Brazilian" ) },
+                                              { "fa_IR", QT_TR_NOOP( "Persian" ) },
+                                              { "es_AR", QT_TR_NOOP( "Spanish, Argentina" ) },
+                                              { "hi_IN", QT_TR_NOOP( "Hindi" ) },
+                                              { "eo_UY", QT_TR_NOOP( "Esperanto" ) },
+                                              { "de_CH", QT_TR_NOOP( "German, Switzerland" ) },
+                                              { "es_BO", QT_TR_NOOP( "Spanish, Bolivia" ) },
+                                              { "tg_TJ", QT_TR_NOOP( "Tajik" ) },
+                                              { "qu_PE", QT_TR_NOOP( "Quechua" ) },
+                                              { "ay_BO", QT_TR_NOOP( "Aymara" ) },
+                                              { "ar_SA", QT_TR_NOOP( "Arabic, Saudi Arabia" ) },
+                                              { "tk_TM", QT_TR_NOOP( "Turkmen" ) },
+                                              { "ie_001", QT_TR_NOOP( "Interlingue" ) },
+                                              { "jbo_EN", QT_TR_NOOP( "Lojban" ) },
+                                              { "en_US", QT_TR_NOOP( "English" ) } };
 
   Db();
 
-  void addEntry( QString const & iso2,
-                 QString const & english,
-                 QString const & localized );
+  void addEntry( QString const & iso2, QString const & english, QString const & localized );
 
   void addExtraCountry( QString const & iso2, QString const & country );
 };
@@ -95,17 +91,17 @@ Db const & Db::instance()
   return v;
 }
 
-void Db::addEntry( QString const & iso2, QString const & english,
-                   QString const & localized )
+void Db::addEntry( QString const & iso2, QString const & english, QString const & localized )
 {
   LangData lang_data;
-  lang_data.english = english;
+  lang_data.english   = english;
   lang_data.localized = localized;
   iso2LangData.insert( iso2, lang_data );
 }
 
-void Db::addExtraCountry( QString const & iso2, QString const & country ) {
-  if(!iso2LangData.contains( iso2 )) {
+void Db::addExtraCountry( QString const & iso2, QString const & country )
+{
+  if ( !iso2LangData.contains( iso2 ) ) {
     return;
   }
   iso2LangData[ iso2 ].country = country;
@@ -427,29 +423,41 @@ Db::Db()
   addExtraCountry( "zu", "za" );
 }
 
-}
+} // namespace
 
 /// babylon languages
 #ifndef blgCode2Int
-#define blgCode2Int( index, code0, code1 ) (((uint32_t)index) << 16 ) + (((uint32_t)code1) << 8 ) + (uint32_t)code0
+  #define blgCode2Int( index, code0, code1 ) \
+    ( ( (uint32_t)index ) << 16 ) + ( ( (uint32_t)code1 ) << 8 ) + (uint32_t)code0
 #endif
-const BabylonLang BabylonDb[] ={
-    { blgCode2Int( 1, 'z', 'h' ), "tw", "Traditional Chinese", QT_TR_NOOP( "Traditional Chinese" ) },
-    { blgCode2Int( 2, 'z', 'h' ), "cn", "Simplified Chinese", QT_TR_NOOP( "Simplified Chinese" ) },
-    { blgCode2Int( 3, 0, 0 ), "other", "Other", QT_TR_NOOP( "Other" ) },
-    { blgCode2Int( 4, 'z', 'h' ), "cn", "Other Simplified Chinese dialects", QT_TR_NOOP( "Other Simplified Chinese dialects" ) },
-    { blgCode2Int( 5, 'z', 'h' ), "tw", "Other Traditional Chinese dialects", QT_TR_NOOP( "Other Traditional Chinese dialects" ) },
-    { blgCode2Int( 6, 0, 0 ), "other", "Other Eastern-European languages", QT_TR_NOOP( "Other Eastern-European languages" ) },
-    { blgCode2Int( 7, 0, 0 ), "other", "Other Western-European languages", QT_TR_NOOP( "Other Western-European languages" )},
-    { blgCode2Int( 8, 'r', 'u' ), "ru", "Other Russian languages", QT_TR_NOOP( "Other Russian languages" ) },
-    { blgCode2Int( 9, 'j', 'a' ), "jp", "Other Japanese languages", QT_TR_NOOP( "Other Japanese languages" ) },
-    { blgCode2Int( 10, 0, 0 ), "other", "Other Baltic languages", QT_TR_NOOP( "Other Baltic languages" )},
-    { blgCode2Int( 11, 'e', 'l' ), "gr", "Other Greek languages", QT_TR_NOOP( "Other Greek languages" ) },
-    { blgCode2Int( 12, 'k', 'o' ), "kr", "Other Korean dialects", QT_TR_NOOP( "Other Korean dialects" ) },
-    { blgCode2Int( 13, 't', 'r' ), "tr", "Other Turkish dialects", QT_TR_NOOP( "Other Turkish dialects" ) },
-    { blgCode2Int( 14, 't', 'h' ), "th", "Other Thai dialects", QT_TR_NOOP( "Other Thai dialects" ) },
-    { blgCode2Int( 15, 0, 0 ), "dz", "Tamazight", QT_TR_NOOP( "Tamazight" ) }
-};
+const BabylonLang BabylonDb[] = {
+  { blgCode2Int( 1, 'z', 'h' ), "tw", "Traditional Chinese", QT_TR_NOOP( "Traditional Chinese" ) },
+  { blgCode2Int( 2, 'z', 'h' ), "cn", "Simplified Chinese", QT_TR_NOOP( "Simplified Chinese" ) },
+  { blgCode2Int( 3, 0, 0 ), "other", "Other", QT_TR_NOOP( "Other" ) },
+  { blgCode2Int( 4, 'z', 'h' ),
+    "cn",
+    "Other Simplified Chinese dialects",
+    QT_TR_NOOP( "Other Simplified Chinese dialects" ) },
+  { blgCode2Int( 5, 'z', 'h' ),
+    "tw",
+    "Other Traditional Chinese dialects",
+    QT_TR_NOOP( "Other Traditional Chinese dialects" ) },
+  { blgCode2Int( 6, 0, 0 ),
+    "other",
+    "Other Eastern-European languages",
+    QT_TR_NOOP( "Other Eastern-European languages" ) },
+  { blgCode2Int( 7, 0, 0 ),
+    "other",
+    "Other Western-European languages",
+    QT_TR_NOOP( "Other Western-European languages" ) },
+  { blgCode2Int( 8, 'r', 'u' ), "ru", "Other Russian languages", QT_TR_NOOP( "Other Russian languages" ) },
+  { blgCode2Int( 9, 'j', 'a' ), "jp", "Other Japanese languages", QT_TR_NOOP( "Other Japanese languages" ) },
+  { blgCode2Int( 10, 0, 0 ), "other", "Other Baltic languages", QT_TR_NOOP( "Other Baltic languages" ) },
+  { blgCode2Int( 11, 'e', 'l' ), "gr", "Other Greek languages", QT_TR_NOOP( "Other Greek languages" ) },
+  { blgCode2Int( 12, 'k', 'o' ), "kr", "Other Korean dialects", QT_TR_NOOP( "Other Korean dialects" ) },
+  { blgCode2Int( 13, 't', 'r' ), "tr", "Other Turkish dialects", QT_TR_NOOP( "Other Turkish dialects" ) },
+  { blgCode2Int( 14, 't', 'h' ), "th", "Other Thai dialects", QT_TR_NOOP( "Other Thai dialects" ) },
+  { blgCode2Int( 15, 0, 0 ), "dz", "Tamazight", QT_TR_NOOP( "Tamazight" ) } };
 
 BabylonLang getBabylonLangByIndex( int index )
 {
@@ -472,8 +480,7 @@ QString englishNameForId( Id id )
   {
     return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].englishName;
   }
-  const auto i =
-    Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
+  const auto i = Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
 
   if ( i == Db::instance().getIso2ToLangData().end() )
     return {};
@@ -501,8 +508,7 @@ QString countryCodeForId( Id id )
   {
     return BabylonDb[ ( ( id >> 16 ) & 0x0f ) - 1 ].contryCode;
   }
-  const auto i =
-    Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
+  const auto i = Db::instance().getIso2ToLangData().find( LangCoder::intToCode2( id ) );
 
   if ( i == Db::instance().getIso2ToLangData().end() )
     return {};
@@ -526,6 +532,7 @@ QString localizedStringForId( Id langId )
 
 QString languageForLocale( const QString & locale )
 {
-  return QCoreApplication::translate( "Language::Db", Db::instance().locale2LanguageMap()[ locale ].toStdString().c_str() );
+  return QCoreApplication::translate( "Language::Db",
+                                      Db::instance().locale2LanguageMap()[ locale ].toStdString().c_str() );
 }
-}
+} // namespace Language

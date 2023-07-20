@@ -24,8 +24,11 @@ class DictListModel: public QAbstractListModel
 public:
 
   DictListModel( QWidget * parent ):
-    QAbstractListModel( parent ), isSource( false ), allDicts( 0 )
-  {}
+    QAbstractListModel( parent ),
+    isSource( false ),
+    allDicts( 0 )
+  {
+  }
 
   /// Populates the current model with the given dictionaries. This is
   /// ought to be part of construction process.
@@ -74,6 +77,7 @@ signals:
 class DictListWidget: public QListView
 {
   Q_OBJECT
+
 public:
   DictListWidget( QWidget * parent );
   ~DictListWidget() override = default;
@@ -117,9 +121,7 @@ class DictGroupWidget: public QWidget
   Q_OBJECT
 
 public:
-  DictGroupWidget( QWidget * parent,
-                   std::vector< sptr< Dictionary::Class > > const &,
-                   Config::Group const & );
+  DictGroupWidget( QWidget * parent, std::vector< sptr< Dictionary::Class > > const &, Config::Group const & );
 
   /// Makes the group's configuration out of the data currently held.
   /// Since the group's name is not part of the widget by design right now
@@ -127,10 +129,14 @@ public:
   Config::Group makeGroup() const;
 
   DictListModel * getModel() const
-  { return ui.dictionaries->getModel(); }
+  {
+    return ui.dictionaries->getModel();
+  }
 
   QItemSelectionModel * getSelectionModel() const
-  { return ui.dictionaries->selectionModel(); }
+  {
+    return ui.dictionaries->selectionModel();
+  }
 
 private slots:
 
@@ -171,7 +177,7 @@ public:
 
   /// auto grouping by containning folder
   void addAutoGroupsByFolders();
-  void addGroupBasedOnMap( const QMultiMap<QString, sptr<Dictionary::Class>> & groupToDicts );
+  void addGroupBasedOnMap( const QMultiMap< QString, sptr< Dictionary::Class > > & groupToDicts );
 
   void groupsByMetadata();
 
@@ -202,7 +208,7 @@ private:
 
   /// Add source group to target group
   void combineGroups( int source, int target );
-  
+
   unsigned nextId;
   std::vector< sptr< Dictionary::Class > > const * allDicts;
   std::vector< sptr< Dictionary::Class > > const * activeDicts;
@@ -227,7 +233,10 @@ public:
   /// Sets the source view to filter
   void applyTo( QAbstractItemView * source );
 
-  QAction * getFocusAction() { return & m_focusAction; }
+  QAction * getFocusAction()
+  {
+    return &m_focusAction;
+  }
 
   QModelIndex mapToSource( QModelIndex const & idx );
 
@@ -245,9 +254,7 @@ private slots:
   void focusFilterLine();
 
 signals:
-  void filterChanged(QString const & filter);
-
-
+  void filterChanged( QString const & filter );
 };
 
 #endif

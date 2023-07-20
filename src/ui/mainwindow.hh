@@ -34,11 +34,11 @@
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
 #ifdef HAVE_X11
-#include <fixx11h.h>
+  #include <fixx11h.h>
 #endif
 
-#if defined(Q_OS_MAC)
-#include "macos/gd_clipboard.hh"
+#if defined( Q_OS_MAC )
+  #include "macos/gd_clipboard.hh"
 #endif
 
 using std::string;
@@ -58,11 +58,14 @@ public:
   /// Set group for main/popup window
   void setGroupByName( QString const & name, bool main_window );
 
-  enum class WildcardPolicy { EscapeWildcards, WildcardsAreAlreadyEscaped };
+  enum class WildcardPolicy {
+    EscapeWildcards,
+    WildcardsAreAlreadyEscaped
+  };
 public slots:
 
   void messageFromAnotherInstanceReceived( QString const & );
-  void showStatusBarMessage ( QString const &, int, QPixmap const & );
+  void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );
   void headwordFromFavorites( QString const &, QString const & );
@@ -87,7 +90,7 @@ private:
   QWidget searchPaneTitleBar;
   QHBoxLayout searchPaneTitleBarLayout;
   QLabel groupLabel;
-  GroupComboBox * groupList, * groupListInToolbar, * groupListInDock;
+  GroupComboBox *groupList, *groupListInToolbar, *groupListInDock;
 
   // Needed to be able to show/hide the translate box in the toolbar, since hiding
   // the list expilictily doesn't work, see docs for QToolBar::addWidget().
@@ -102,33 +105,31 @@ private:
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
-  QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction,
-          closeAllTabAction, closeRestTabAction,
-          switchToNextTabAction, switchToPrevTabAction,
-          showDictBarNamesAction, useSmallIconsInToolbarsAction, toggleMenuBarAction,
-          focusHeadwordsDlgAction, focusArticleViewAction,
-          addAllTabToFavoritesAction;
+  QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
+    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
+    useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
+    addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
-  QAction * navBack, * navForward, * navPronounce, * enableScanningAction;
+  QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
   QAction * beforeOptionsSeparator;
-  QAction * zoomIn, * zoomOut, * zoomBase;
-  QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;
-  QAction * addToFavorites, * beforeAddToFavoritesSeparator;
+  QAction *zoomIn, *zoomOut, *zoomBase;
+  QAction *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
+  QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
   QMenu * tabMenu;
   QAction * menuButtonAction;
   QToolButton * menuButton;
-  MRUQMenu *tabListMenu;
+  MRUQMenu * tabListMenu;
   //List that contains indexes of tabs arranged in a most-recently-used order
-  QList<QWidget*> mruList;
+  QList< QWidget * > mruList;
   QToolButton addTab, *tabListButton;
   Config::Class & cfg;
   Config::Events configEvents;
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;
-  QMap<std::string, sptr< Dictionary::Class > > dictMap;
+  QMap< std::string, sptr< Dictionary::Class > > dictMap;
   /// Here we store unmuted dictionaries when the dictionary bar is active
   vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups groupInstances;
@@ -171,11 +172,11 @@ private:
   ResourceSchemeHandler * resourceSchemeHandler;
 
 #ifdef Q_OS_MAC
-    gd_clipboard * macClipboard;
+  gd_clipboard * macClipboard;
 #endif
 
   /// Applies the custom Qt stylesheet
-  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle ,bool const & darkMode );
+  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle, bool const & darkMode );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
@@ -217,13 +218,13 @@ private:
   void applyZoomFactor();
   void adjustCurrentZoomFactor();
 
-  void mousePressEvent ( QMouseEvent * event );
+  void mousePressEvent( QMouseEvent * event );
 
   void updateCurrentGroupProperty();
 
   /// Handles backward and forward mouse buttons and
   /// returns true if the event is handled.
-  bool handleBackForwardMouseButtons(QMouseEvent *ev);
+  bool handleBackForwardMouseButtons( QMouseEvent * ev );
 
   ArticleView * getCurrentArticleView();
   void ctrlTabPressed();
@@ -232,13 +233,16 @@ private:
 
   QString unescapeTabHeader( QString const & header );
 
-  void respondToTranslationRequest( QString const & word,
-                                    bool checkModifiers, QString const & scrollTo = QString() );
+  void respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo = QString() );
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 
-  enum TranslateBoxPopup { NoPopupChange, EnablePopup, DisablePopup };
+  enum TranslateBoxPopup {
+    NoPopupChange,
+    EnablePopup,
+    DisablePopup
+  };
 
   /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
   void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
@@ -268,7 +272,7 @@ private slots:
 
   void openDictionaryFolder( QString const & id );
 
-  void editDictionary ( Dictionary::Class * dict );
+  void editDictionary( Dictionary::Class * dict );
 
   void showFTSIndexingName( QString const & name );
 
@@ -292,7 +296,7 @@ private slots:
   // Handling of active tab list
   void createTabList();
   void fillWindowsMenu();
-  void switchToWindow(QAction *act);
+  void switchToWindow( QAction * act );
 
   /// Triggered by the actions in the nav toolbar
   void backClicked();
@@ -305,7 +309,7 @@ private slots:
 
   void pageLoaded( ArticleView * );
   void tabSwitched( int );
-  void tabMenuRequested(QPoint pos);
+  void tabMenuRequested( QPoint pos );
 
   void dictionaryBarToggled( bool checked );
 
@@ -347,16 +351,15 @@ private slots:
 
   void jumpToDictionary( QListWidgetItem *, bool force = false );
 
-  void showDictsPane( );
-  void dictsPaneVisibilityChanged ( bool );
+  void showDictsPane();
+  void dictsPaneVisibilityChanged( bool );
 
   /// Creates a new tab, which is to be populated then with some content.
-  ArticleView * createNewTab( bool switchToIt,
-                              QString const & name );
+  ArticleView * createNewTab( bool switchToIt, QString const & name );
 
-  void openLinkInNewTab( QUrl const &, QUrl const &, QString const &,
-                         Contexts const & contexts );
-  void showDefinitionInNewTab( QString const & word, unsigned group,
+  void openLinkInNewTab( QUrl const &, QUrl const &, QString const &, Contexts const & contexts );
+  void showDefinitionInNewTab( QString const & word,
+                               unsigned group,
                                QString const & fromArticle,
                                Contexts const & contexts );
   void typingEvent( QString const & );
@@ -365,11 +368,12 @@ private slots:
 
   void mutedDictionariesChanged();
 
-  void showTranslationFor(QString const &, unsigned inGroup = 0,
-                           QString const & scrollTo = QString() );
+  void showTranslationFor( QString const &, unsigned inGroup = 0, QString const & scrollTo = QString() );
 
-  void showTranslationForDicts( QString const &, QStringList const & dictIDs,
-                           QRegExp const & searchRegExp, bool ignoreDiacritics );
+  void showTranslationForDicts( QString const &,
+                                QStringList const & dictIDs,
+                                QRegExp const & searchRegExp,
+                                bool ignoreDiacritics );
 
   void showHistoryItem( QString const & );
 
@@ -422,7 +426,7 @@ private slots:
   /// Add word to history
   void addWordToHistory( const QString & word );
   /// Add word to history even if history is disabled in options
-  void forceAddWordToHistory( const QString & word);
+  void forceAddWordToHistory( const QString & word );
 
   void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
@@ -458,9 +462,9 @@ signals:
   void setPopupGroupByName( QString const & name );
 };
 
-class ArticleSaveProgressDialog : public QProgressDialog
+class ArticleSaveProgressDialog: public QProgressDialog
 {
-Q_OBJECT
+  Q_OBJECT
 
 public:
   explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
@@ -474,8 +478,7 @@ public slots:
   void perform()
   {
     int progress = value() + 1;
-    if ( progress == maximum() )
-    {
+    if ( progress == maximum() ) {
       emit close();
       deleteLater();
     }

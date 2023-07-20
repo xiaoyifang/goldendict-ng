@@ -31,7 +31,6 @@ bool isNameOfCSS( string const & );
 /// Returns true if the name resembles the one of a .svg file
 bool isNameOfSvg( string const & name );
 
-}
+} // namespace Filetype
 
 #endif
-

@@ -10,9 +10,10 @@
 
 class ExternalViewer;
 
-class ExternalAudioPlayer : public AudioPlayerInterface
+class ExternalAudioPlayer: public AudioPlayerInterface
 {
   Q_OBJECT
+
 public:
   ExternalAudioPlayer();
   ~ExternalAudioPlayer();
@@ -35,7 +36,11 @@ private:
 
   struct ScopedPointerDeleteLater
   {
-    static void cleanup( QObject * p ) { if( p ) p->deleteLater(); }
+    static void cleanup( QObject * p )
+    {
+      if ( p )
+        p->deleteLater();
+    }
   };
   // deleteLater() is safer because viewer actively participates in the QEventLoop.
   QScopedPointer< ExternalViewer, ScopedPointerDeleteLater > viewer;

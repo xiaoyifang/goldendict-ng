@@ -5,7 +5,8 @@
 #include <QEvent>
 #include <QShortcutEvent>
 
-GroupComboBox::GroupComboBox( QWidget * parent ): QComboBox( parent ),
+GroupComboBox::GroupComboBox( QWidget * parent ):
+  QComboBox( parent ),
   popupAction( this ),
   selectNextAction( this ),
   selectPreviousAction( this )
@@ -38,23 +39,20 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 
   clear();
 
-  for( QMap< int, int >::iterator i = shortcuts.begin(); i != shortcuts.end(); ++i )
+  for ( QMap< int, int >::iterator i = shortcuts.begin(); i != shortcuts.end(); ++i )
     releaseShortcut( i.key() );
 
   shortcuts.clear();
 
-  for( unsigned x  = 0; x < groups.size(); ++x )
-  {
-    addItem( groups[ x ].makeIcon(),
-             groups[ x ].name, groups[ x ].id );
+  for ( unsigned x = 0; x < groups.size(); ++x ) {
+    addItem( groups[ x ].makeIcon(), groups[ x ].name, groups[ x ].id );
 
     if ( prevId == groups[ x ].id )
       setCurrentIndex( x );
 
     // Create a shortcut
 
-    if ( !groups[ x ].shortcut.isEmpty() )
-    {
+    if ( !groups[ x ].shortcut.isEmpty() ) {
       int id = grabShortcut( groups[ x ].shortcut );
       setShortcutEnabled( id );
 
@@ -65,14 +63,12 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 
 bool GroupComboBox::event( QEvent * event )
 {
-  if ( event->type() == QEvent::Shortcut )
-  {
-    QShortcutEvent * ev = ( QShortcutEvent * ) event;
+  if ( event->type() == QEvent::Shortcut ) {
+    QShortcutEvent * ev = (QShortcutEvent *)event;
 
     QMap< int, int >::const_iterator i = shortcuts.find( ev->shortcutId() );
 
-    if ( i != shortcuts.end() )
-    {
+    if ( i != shortcuts.end() ) {
       ev->accept();
       setCurrentIndex( i.value() );
       return true;
@@ -93,10 +89,8 @@ QList< QAction * > GroupComboBox::getExternActions()
 
 void GroupComboBox::setCurrentGroup( unsigned id )
 {
-  for( int x  = 0; x < count(); ++x )
-  {
-    if ( itemData( x ).toUInt() == id )
-    {
+  for ( int x = 0; x < count(); ++x ) {
+    if ( itemData( x ).toUInt() == id ) {
       setCurrentIndex( x );
       break;
     }
@@ -118,20 +112,20 @@ void GroupComboBox::popupGroups()
 
 void GroupComboBox::selectNextGroup()
 {
-  if( count() <= 1 )
+  if ( count() <= 1 )
     return;
   int n = currentIndex() + 1;
-  if( n >= count() )
+  if ( n >= count() )
     n = 0;
   setCurrentIndex( n );
 }
 
 void GroupComboBox::selectPreviousGroup()
 {
-  if( count() <= 1 )
+  if ( count() <= 1 )
     return;
   int n = currentIndex() - 1;
-  if( n < 0 )
+  if ( n < 0 )
     n = count() - 1;
   setCurrentIndex( n );
 }

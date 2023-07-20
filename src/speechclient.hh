@@ -10,7 +10,7 @@
 
 class SpeechClient: public QObject
 {
-Q_OBJECT
+  Q_OBJECT
 
 public:
 
@@ -77,8 +77,8 @@ public:
   bool tell( QString const & text, int volume, int rate ) const;
   bool tell( QString const & text ) const;
 
- private:
-   QSharedPointer< InternalData > internalData;
+private:
+  QSharedPointer< InternalData > internalData;
 };
 
 #endif // __SPEECHCLIENT_HH_INCLUDED__

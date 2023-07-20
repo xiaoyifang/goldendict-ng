@@ -29,8 +29,7 @@
 #include <QPointer>
 #include <QFile>
 
-namespace Mdict
-{
+namespace Mdict {
 
 using std::string;
 using std::vector;
@@ -44,7 +43,7 @@ class ScopedMemMap
   uchar * address;
 
 public:
-  ScopedMemMap( QFile & file, qint64 offset, qint64 size ) :
+  ScopedMemMap( QFile & file, qint64 offset, qint64 size ):
     file( file ),
     address( file.map( offset, size ) )
   {
@@ -66,8 +65,7 @@ class MdictParser
 {
 public:
 
-  enum
-  {
+  enum {
     kParserVersion = 0x000000d
   };
 
@@ -95,7 +93,7 @@ public:
       return shadowStartPos > rhs;
     }
 
-    static size_t bsearch( vector<RecordIndex> const & offsets, qint64 val );
+    static size_t bsearch( vector< RecordIndex > const & offsets, qint64 val );
   };
 
   struct RecordInfo
@@ -114,9 +112,9 @@ public:
     virtual void handleRecord( QString const & name, RecordInfo const & recordInfo ) = 0;
   };
 
-  typedef vector< pair<qint64, qint64> > BlockInfoVector;
-  typedef vector< pair<qint64, QString> > HeadWordIndex;
-  typedef map<qint32, pair<QString, QString> > StyleSheets;
+  typedef vector< pair< qint64, qint64 > > BlockInfoVector;
+  typedef vector< pair< qint64, QString > > HeadWordIndex;
+  typedef map< qint32, pair< QString, QString > > StyleSheets;
 
   inline QString const & title() const
   {
@@ -166,8 +164,10 @@ public:
   {
     return toUtf16( fromCode.toLatin1().constData(), from, fromSize );
   }
-  static bool parseCompressedBlock( qint64 compressedBlockSize, const char * compressedBlockPtr,
-                                    qint64 decompressedBlockSize, QByteArray & decompressedBlock);
+  static bool parseCompressedBlock( qint64 compressedBlockSize,
+                                    const char * compressedBlockPtr,
+                                    qint64 decompressedBlockSize,
+                                    QByteArray & decompressedBlock );
   static QString & substituteStylesheet( QString & article, StyleSheets const & styleSheets );
   static inline string substituteStylesheet( string const & article, StyleSheets const & styleSheets )
   {
@@ -179,8 +179,8 @@ public:
 protected:
   qint64 readNumber( QDataStream & in );
   static quint32 readU8OrU16( QDataStream & in, bool isU16 );
-  static bool checkAdler32(const char * buffer, unsigned int len, quint32 checksum);
-  static bool decryptHeadWordIndex(char * buffer, qint64 len);
+  static bool checkAdler32( const char * buffer, unsigned int len, quint32 checksum );
+  static bool decryptHeadWordIndex( char * buffer, qint64 len );
   bool readHeader( QDataStream & in );
   bool readHeadWordBlockInfos( QDataStream & in );
   bool readRecordBlockInfos();
@@ -189,11 +189,11 @@ protected:
 
 protected:
   QString filename_;
-  QPointer<QFile> file_;
+  QPointer< QFile > file_;
   StyleSheets styleSheets_;
   BlockInfoVector headWordBlockInfos_;
   BlockInfoVector::iterator headWordBlockInfosIter_;
-  vector<RecordIndex> recordBlockInfos_;
+  vector< RecordIndex > recordBlockInfos_;
 
   QString encoding_;
   QString title_;
@@ -214,6 +214,6 @@ protected:
   bool rtl_;
 };
 
-}
+} // namespace Mdict
 
 #endif // __MDICTPARSER_HH_INCLUDED__

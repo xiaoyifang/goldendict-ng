@@ -2,10 +2,10 @@
 #define __FTSHELPERS_HH_INCLUDED__
 
 #include <QString>
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QRegExp>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QRegExp>
 #else
-#include <QRegExp>
+  #include <QRegExp>
 #endif
 #include <QList>
 #include <QtConcurrent>
@@ -16,14 +16,13 @@
 #include "folding.hh"
 #include "wstring_qt.hh"
 
-namespace FtsHelpers
-{
+namespace FtsHelpers {
 
 bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict );
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled );
 
-class FTSResultsRequest : public Dictionary::DataRequest
+class FTSResultsRequest: public Dictionary::DataRequest
 {
   BtreeIndexing::BtreeDictionary & dict;
 
@@ -50,12 +49,15 @@ public:
     searchMode( searchMode_ ),
     matchCase( matchCase_ )
   {
-    if( ignoreDiacritics_ )
-      searchString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
+    if ( ignoreDiacritics_ )
+      searchString =
+        QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
 
     foundHeadwords = new QList< FTS::FtsHeadword >;
-    results         = 0;
-    f              = QtConcurrent::run( [ this ]() { this->run(); } );
+    results        = 0;
+    f              = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
@@ -73,6 +75,6 @@ public:
   }
 };
 
-} // namespace
+} // namespace FtsHelpers
 
 #endif // __FTSHELPERS_HH_INCLUDED__

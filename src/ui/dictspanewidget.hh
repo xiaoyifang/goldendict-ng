@@ -11,14 +11,18 @@
 class DictsPaneWidget: public QWidget
 {
   Q_OBJECT
+
 public:
 
-  DictsPaneWidget( QWidget * parent = 0 ): QWidget( parent )
-  {}
+  DictsPaneWidget( QWidget * parent = 0 ):
+    QWidget( parent )
+  {
+  }
 
   virtual QSize sizeHint() const
-  { return QSize( 204, 204 ); }
-
+  {
+    return QSize( 204, 204 );
+  }
 };
 
 #endif

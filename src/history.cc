@@ -6,25 +6,28 @@
 #include "atomic_rename.hh"
 #include <QFile>
 
-History::History( unsigned size, unsigned maxItemLength_ ): maxSize( size ),
-  maxItemLength( maxItemLength_ ), addingEnabled( true )
-, dirty( false )
-, timerId ( 0 )
+History::History( unsigned size, unsigned maxItemLength_ ):
+  maxSize( size ),
+  maxItemLength( maxItemLength_ ),
+  addingEnabled( true ),
+  dirty( false ),
+  timerId( 0 )
 {
 }
 
-History::History( Load, unsigned size, unsigned maxItemLength_ ): maxSize( size ),
-   maxItemLength( maxItemLength_ ), addingEnabled( true )
- , dirty( false )
- , timerId ( 0 )
+History::History( Load, unsigned size, unsigned maxItemLength_ ):
+  maxSize( size ),
+  maxItemLength( maxItemLength_ ),
+  addingEnabled( true ),
+  dirty( false ),
+  timerId( 0 )
 {
   QFile file( Config::getHistoryFileName() );
 
   if ( !file.open( QFile::ReadOnly | QIODevice::Text ) )
     return; // No file -- no history
 
-  for( unsigned count = 0 ; count < maxSize; ++count )
-  {
+  for ( unsigned count = 0; count < maxSize; ++count ) {
     QByteArray lineUtf8 = file.readLine( 4096 );
 
     if ( lineUtf8.endsWith( '\n' ) )
@@ -54,8 +57,7 @@ History::History( Load, unsigned size, unsigned maxItemLength_ ): maxSize( size 
 
 History::Item History::getItem( int index )
 {
-  if ( index < 0 || index >= items.size() )
-  {
+  if ( index < 0 || index >= items.size() ) {
     return Item();
   }
   return items.at( index );
@@ -64,11 +66,10 @@ History::Item History::getItem( int index )
 void History::addItem( Item const & item )
 {
   // qDebug() << "adding item " << item.word << ", enabled=" << enabled();
-  if( !enabled() )
+  if ( !enabled() )
     return;
 
-  if ( (unsigned)item.word.size() > getMaxItemLength() || item.word.isEmpty() )
-  {
+  if ( (unsigned)item.word.size() > getMaxItemLength() || item.word.isEmpty() ) {
     // The search looks bogus. Don't save it.
     return;
   }
@@ -94,11 +95,10 @@ void History::addItem( Item const & item )
 bool History::ensureSizeConstraints()
 {
   bool changed = false;
-  while( items.size() > (int)maxSize )
-  {
+  while ( items.size() > (int)maxSize ) {
     items.pop_back();
     changed = true;
-    dirty = true;
+    dirty   = true;
   }
 
   return changed;
@@ -107,8 +107,7 @@ bool History::ensureSizeConstraints()
 void History::setMaxSize( unsigned maxSize_ )
 {
   maxSize = maxSize_;
-  if ( ensureSizeConstraints() )
-  {
+  if ( ensureSizeConstraints() ) {
     emit itemsChanged();
   }
 }
@@ -120,7 +119,7 @@ int History::size() const
 
 bool History::save()
 {
-  if( !dirty )
+  if ( !dirty )
     return true;
 
   QFile file( Config::getHistoryFileName() + ".tmp" );
@@ -128,9 +127,7 @@ bool History::save()
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
     return false;
 
-  for( QList< Item >::const_iterator i = items.constBegin();
-       i != items.constEnd(); ++i )
-  {
+  for ( QList< Item >::const_iterator i = items.constBegin(); i != items.constEnd(); ++i ) {
     QByteArray line = i->word.toUtf8();
 
     // Those could ruin our format, so we replace them by spaces. They shouldn't
@@ -161,14 +158,12 @@ void History::clear()
 
 void History::setSaveInterval( unsigned interval )
 {
-  if( timerId )
-  {
+  if ( timerId ) {
     killTimer( timerId );
     timerId = 0;
   }
-  if( interval )
-  {
-    if( dirty )
+  if ( interval ) {
+    if ( dirty )
       save();
     timerId = startTimer( interval * 60000 );
   }

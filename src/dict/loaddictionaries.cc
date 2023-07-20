@@ -35,11 +35,11 @@
 #include "metadata.hh"
 
 #ifndef NO_EPWING_SUPPORT
-#include "dict/epwing.hh"
+  #include "dict/epwing.hh"
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-#include "dict/chinese.hh"
+  #include "dict/chinese.hh"
 #endif
 
 #include <QMessageBox>
@@ -53,7 +53,9 @@ using std::string;
 using std::vector;
 
 LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
-  paths( cfg.paths ), soundDirs( cfg.soundDirs ), hunspell( cfg.hunspell ),
+  paths( cfg.paths ),
+  soundDirs( cfg.soundDirs ),
+  hunspell( cfg.hunspell ),
   transliteration( cfg.transliteration ),
   exceptionText( "Load did not finish" ), // Will be cleared upon success
   maxPictureWidth( cfg.maxPictureWidth ),
@@ -62,24 +64,36 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
 {
   // Populate name filters
 
-  nameFilters << "*.bgl" << "*.ifo" << "*.lsa" << "*.dat"
-              << "*.dsl" << "*.dsl.dz"  << "*.index" << "*.xdxf"
-              << "*.xdxf.dz" << "*.dct" << "*.aar" << "*.zips"
-              << "*.mdx" << "*.gls" << "*.gls.dz"
+  nameFilters << "*.bgl"
+              << "*.ifo"
+              << "*.lsa"
+              << "*.dat"
+              << "*.dsl"
+              << "*.dsl.dz"
+              << "*.index"
+              << "*.xdxf"
+              << "*.xdxf.dz"
+              << "*.dct"
+              << "*.aar"
+              << "*.zips"
+              << "*.mdx"
+              << "*.gls"
+              << "*.gls.dz"
 #ifdef MAKE_ZIM_SUPPORT
-              << "*.zim" << "*.zimaa" << "*.slob"
+              << "*.zim"
+              << "*.zimaa"
+              << "*.slob"
 #endif
 #ifndef NO_EPWING_SUPPORT
               << "*catalogs"
 #endif
-;
+    ;
 }
 
 void LoadDictionaries::run()
 {
-  try
-  {
-    for(const auto & path : paths)
+  try {
+    for ( const auto & path : paths )
       handlePath( path );
 
     // Make soundDirs
@@ -87,29 +101,26 @@ void LoadDictionaries::run()
       vector< sptr< Dictionary::Class > > soundDirDictionaries =
         SoundDir::makeDictionaries( soundDirs, Config::getIndexDir().toStdString(), *this );
 
-      dictionaries.insert( dictionaries.end(), soundDirDictionaries.begin(),
-                           soundDirDictionaries.end() );
+      dictionaries.insert( dictionaries.end(), soundDirDictionaries.begin(), soundDirDictionaries.end() );
     }
 
     // Make hunspells
     {
-      vector< sptr< Dictionary::Class > > hunspellDictionaries =
-        HunspellMorpho::makeDictionaries( hunspell );
+      vector< sptr< Dictionary::Class > > hunspellDictionaries = HunspellMorpho::makeDictionaries( hunspell );
 
-      dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(),
-                           hunspellDictionaries.end() );
+      dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
     }
 
     exceptionText.clear();
   }
-  catch( std::exception & e )
-  {
+  catch ( std::exception & e ) {
     exceptionText = e.what();
   }
 }
 
-void LoadDictionaries::addDicts( const std::vector< sptr< Dictionary::Class > >& dicts ) {
-  std::move(dicts.begin(), dicts.end(), std::back_inserter(dictionaries));
+void LoadDictionaries::addDicts( const std::vector< sptr< Dictionary::Class > > & dicts )
+{
+  std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
 }
 
 void LoadDictionaries::handlePath( Config::Path const & path )
@@ -120,16 +131,13 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 
   QFileInfoList entries = dir.entryInfoList( nameFilters, QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot );
 
-  for( QFileInfoList::const_iterator i = entries.constBegin();
-       i != entries.constEnd(); ++i )
-  {
+  for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
     QString fullName = i->absoluteFilePath();
 
-    if ( path.recursive && i->isDir() )
-    {
+    if ( path.recursive && i->isDir() ) {
       // Make sure the path doesn't look like with dsl resources
-      if ( !fullName.endsWith( ".dsl.files", Qt::CaseInsensitive ) &&
-           !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) )
+      if ( !fullName.endsWith( ".dsl.files", Qt::CaseInsensitive )
+           && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) )
         handlePath( Config::Path( fullName, true ) );
     }
 
@@ -179,7 +187,8 @@ void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexc
 }
 
 
-void loadDictionaries( QWidget * parent, bool showInitially,
+void loadDictionaries( QWidget * parent,
+                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > & dictionaries,
                        QNetworkAccessManager & dictNetMgr,
@@ -205,9 +214,9 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   loadDicts.wait();
 
-  if ( loadDicts.getExceptionText().size() )
-  {
-    QMessageBox::critical( parent, QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
+  if ( loadDicts.getExceptionText().size() ) {
+    QMessageBox::critical( parent,
+                           QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
                            QString::fromUtf8( loadDicts.getExceptionText().c_str() ) );
 
     return;
@@ -217,18 +226,18 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   // Helper function that will add a vector of dictionary::Class to the dictionary list
   // Implemented as lambda to access method's `dictionaries` variable
-  auto  static addDicts = [&dictionaries](const vector< sptr< Dictionary::Class >> &dicts) {
-    std::move(dicts.begin(), dicts.end(), std::back_inserter(dictionaries));
+  auto static addDicts = [ &dictionaries ]( const vector< sptr< Dictionary::Class > > & dicts ) {
+    std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
   };
 
   ///// We create transliterations synchronously since they are very simple
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  addDicts(Chinese::makeDictionaries( cfg.transliteration.chinese ));
+  addDicts( Chinese::makeDictionaries( cfg.transliteration.chinese ) );
 #endif
 
-  addDicts(Romaji::makeDictionaries( cfg.transliteration.romaji ));
-  addDicts(CustomTranslit::makeDictionaries( cfg.transliteration.customTrans));
+  addDicts( Romaji::makeDictionaries( cfg.transliteration.romaji ) );
+  addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
 
   // Make Russian transliteration
   if ( cfg.transliteration.enableRussianTransliteration )
@@ -243,18 +252,17 @@ void loadDictionaries( QWidget * parent, bool showInitially,
     dictionaries.push_back( GreekTranslit::makeDictionary() );
 
   // Make Belarusian transliteration
-  if ( cfg.transliteration.enableBelarusianTransliteration )
-  {
-    addDicts(BelarusianTranslit::makeDictionaries());
+  if ( cfg.transliteration.enableBelarusianTransliteration ) {
+    addDicts( BelarusianTranslit::makeDictionaries() );
   }
 
-  addDicts(MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ));
-  addDicts(WebSite::makeDictionaries( cfg.webSites, dictNetMgr ));
-  addDicts(Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ));
-  addDicts(Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ));
-  addDicts(Programs::makeDictionaries( cfg.programs ));
-  addDicts(VoiceEngines::makeDictionaries( cfg.voiceEngines ));
-  addDicts(DictServer::makeDictionaries( cfg.dictServers ));
+  addDicts( MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ) );
+  addDicts( WebSite::makeDictionaries( cfg.webSites, dictNetMgr ) );
+  addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
+  addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
+  addDicts( Programs::makeDictionaries( cfg.programs ) );
+  addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
+  addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
 
 
   GD_DPRINTF( "Load done\n" );
@@ -264,17 +272,15 @@ void loadDictionaries( QWidget * parent, bool showInitially,
   set< string > ids;
   std::pair< std::set< string >::iterator, bool > ret;
 
-  for( unsigned x = dictionaries.size(); x--; )
-  {
+  for ( unsigned x = dictionaries.size(); x--; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
-    if( !ret.second )
-    {
+    if ( !ret.second ) {
       gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
                  dictionaries[ x ]->getId().c_str(),
                  dictionaries[ x ]->getName().c_str(),
                  dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                   "" : dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str()
-                );
+                   "" :
+                   dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
     }
   }
 
@@ -282,15 +288,12 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
   QStringList allIdxFiles = indexDir.entryList( QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
 
-  for( const auto & file : allIdxFiles)
-  {
+  for ( const auto & file : allIdxFiles ) {
     if ( file.size() >= 32 && ids.find( file.left( 32 ).toStdString() ) == ids.end() ) {
-      if( QFile::exists( file ) )
-      {
+      if ( QFile::exists( file ) ) {
         indexDir.remove( file );
       }
-      else
-      {
+      else {
         // must be folder .
         auto dirPath = Utils::Path::combine( Config::getIndexDir(), file );
         QDir t( dirPath );
@@ -307,6 +310,6 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for( unsigned x = 0; x < dictionaries.size(); ++x )
+  for ( unsigned x = 0; x < dictionaries.size(); ++x )
     dictionaries[ x ]->deferredInit();
 }

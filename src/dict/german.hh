@@ -9,8 +9,7 @@
 // Support for German transliteration
 namespace GermanTranslit {
 
-sptr< Dictionary::Class > makeDictionary() ;
-
+sptr< Dictionary::Class > makeDictionary();
 }
 
 #endif // GERMAN_HH

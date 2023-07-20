@@ -3,12 +3,12 @@
 #include "utils.hh"
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
-GlobalBroadcaster::GlobalBroadcaster( QObject * parent ) : QObject( parent )
+GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
+  QObject( parent )
 {
   QStringList whiteUrlHosts = { "ajax.googleapis.com" };
- 
-  for( auto host : whiteUrlHosts )
-  {
+
+  for ( auto host : whiteUrlHosts ) {
     addWhitelist( host );
   }
 }
@@ -35,6 +35,6 @@ void GlobalBroadcaster::addWhitelist( QString url )
 
 bool GlobalBroadcaster::existedInWhitelist( QString url )
 {
-  return whitelist.contains(url);
+  return whitelist.contains( url );
 }
 // namespace global

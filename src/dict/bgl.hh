@@ -19,12 +19,9 @@ using std::string;
 /// there be need for them. The index file name would be the same as the
 /// dictionary's id, made by makeDictionaryId() from the list of file names.
 /// Any exception thrown would terminate the program with an error.
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                    vector< string > const & fileNames,
-                                    string const & indicesDir,
-                                    Dictionary::Initializing & )
-  ;
+vector< sptr< Dictionary::Class > >
+makeDictionaries( vector< string > const & fileNames, string const & indicesDir, Dictionary::Initializing & );
 
-}
+} // namespace Bgl
 
 #endif

@@ -30,6 +30,6 @@ private slots:
   void replyFinished( QNetworkReply * );
 };
 
-}
+} // namespace Dictionary
 
 #endif // WEBMULTIMEDIADOWNLOAD_HH

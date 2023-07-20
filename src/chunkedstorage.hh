@@ -85,6 +85,6 @@ public:
   char * getBlock( uint32_t address, vector< char > & );
 };
 
-}
+} // namespace ChunkedStorage
 
 #endif

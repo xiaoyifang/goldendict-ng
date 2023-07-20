@@ -9,9 +9,7 @@
 // Support for Russian transliteration
 namespace RussianTranslit {
 
-sptr< Dictionary::Class > makeDictionary() ;
-
+sptr< Dictionary::Class > makeDictionary();
 }
 
 #endif
-

@@ -10,10 +10,8 @@ namespace DictServer {
 using std::vector;
 using std::string;
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      Config::DictServers const & servers )
-    ;
+vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const & servers );
 
-}
+} // namespace DictServer
 
 #endif // __DICTSERVER_HH__INCLUDED__

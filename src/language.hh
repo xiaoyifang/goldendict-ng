@@ -13,12 +13,11 @@ namespace Language {
 /// two special meanings - Unknown and Any.
 typedef quint32 Id;
 
-enum
-{
+enum {
   /// Value for Id which signifies that the language is unknown or unspecified.
   Unknown = 0,
   /// Value for Id which signifies that the language can be any, or all of them.
-  Any =  0xFFffFFff
+  Any = 0xFFffFFff
 };
 
 /// Returns name in English for the given Id. If the Id is incorrect, or has
@@ -38,17 +37,18 @@ QString countryCodeForId( Id );
 /// If the Id is incorrect, or has Unknown/Any values, returns empty string.
 QString localizedStringForId( Id );
 QString languageForLocale( const QString & locale );
-  // All other functions are to be used from LangCoder, which is supposed to
+// All other functions are to be used from LangCoder, which is supposed to
 // be migrated here over time.
 
-struct BabylonLang{
-    Id id;
-    const QString contryCode;
-    const QString englishName;
-    const char * localizedName;
+struct BabylonLang
+{
+  Id id;
+  const QString contryCode;
+  const QString englishName;
+  const char * localizedName;
 };
 BabylonLang getBabylonLangByIndex( int index );
 quint32 findBlgLangIDByEnglishName( gd::wstring const & lang );
-}
+} // namespace Language
 
 #endif

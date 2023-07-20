@@ -7,11 +7,11 @@
 #include <QStandardItemModel>
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-#include "chineseconversion.hh"
+  #include "chineseconversion.hh"
 #endif
 
 
-Sources::Sources( QWidget * parent, Config::Class const & cfg):
+Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   QWidget( parent ),
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
@@ -29,16 +29,15 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
 {
   ui.setupUi( this );
 
-  Config::Hunspell const & hunspell = cfg.hunspell;
+  Config::Hunspell const & hunspell   = cfg.hunspell;
   Config::Transliteration const & trs = cfg.transliteration;
 
   Config::Lingua const & lingua = cfg.lingua;
-  Config::Forvo const & forvo = cfg.forvo;
+  Config::Forvo const & forvo   = cfg.forvo;
 
   // TODO: will programTypeEditorCreator and itemEditorFactory be destroyed by
   // anyone?
-  QItemEditorCreatorBase * programTypeEditorCreator =
-         new QStandardItemEditorCreator< ProgramTypeEditor >();
+  QItemEditorCreatorBase * programTypeEditorCreator = new QStandardItemEditorCreator< ProgramTypeEditor >();
 
   itemEditorFactory->registerEditor( QVariant::Int, programTypeEditorCreator );
 
@@ -72,9 +71,10 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
   ui.programs->setModel( &programsModel );
   ui.programs->resizeColumnToContents( 0 );
   // Make sure this thing will be large enough
-  ui.programs->setColumnWidth( 1,
-    QFontMetrics( QFont() ).horizontalAdvance(
-      ProgramTypeEditor::getNameForType( Config::Program::PrefixMatch ) ) + 16 );
+  ui.programs->setColumnWidth(
+    1,
+    QFontMetrics( QFont() ).horizontalAdvance( ProgramTypeEditor::getNameForType( Config::Program::PrefixMatch ) )
+      + 16 );
   ui.programs->resizeColumnToContents( 2 );
   ui.programs->resizeColumnToContents( 3 );
   ui.programs->resizeColumnToContents( 4 );
@@ -102,8 +102,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
   ui.enableBelarusianTransliteration->setChecked( trs.enableBelarusianTransliteration );
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  ui.transliterationLayout->addWidget(chineseConversion);
-  ui.transliterationLayout->addItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
+  ui.transliterationLayout->addWidget( chineseConversion );
+  ui.transliterationLayout->addItem( new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
 #endif
 
   ui.enableRomaji->setChecked( trs.romaji.enable );
@@ -139,7 +139,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg):
     // Sound dirs
 
     {
-      QStandardItemModel * model =  new QStandardItemModel( this );
+      QStandardItemModel * model = new QStandardItemModel( this );
       model->setHorizontalHeaderLabels( QStringList() << " " );
       model->invisibleRootItem()->appendRow( new QStandardItem( tr( "(not available in portable version)" ) ) );
       ui.soundDirs->setModel( model );
@@ -177,11 +177,9 @@ void Sources::fitHunspellDictsColumns()
 
 void Sources::on_addPath_clicked()
 {
-  QString dir =
-    QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
 
-  if ( !dir.isEmpty() )
-  {
+  if ( !dir.isEmpty() ) {
     pathsModel.addNewPath( dir );
     fitPathsColumns();
   }
@@ -191,12 +189,14 @@ void Sources::on_removePath_clicked()
 {
   QModelIndex current = ui.paths->currentIndex();
 
-  if ( current.isValid() &&
-      QMessageBox::question( this, tr( "Confirm removal" ),
-                             tr( "Remove directory <b>%1</b> from the list?" ).arg( pathsModel.getCurrentPaths()[ current.row() ].path ),
-                             QMessageBox::Ok,
-                             QMessageBox::Cancel ) == QMessageBox::Ok )
-  {
+  if ( current.isValid()
+       && QMessageBox::question(
+            this,
+            tr( "Confirm removal" ),
+            tr( "Remove directory <b>%1</b> from the list?" ).arg( pathsModel.getCurrentPaths()[ current.row() ].path ),
+            QMessageBox::Ok,
+            QMessageBox::Cancel )
+         == QMessageBox::Ok ) {
     pathsModel.removePath( current.row() );
     fitPathsColumns();
   }
@@ -204,11 +204,9 @@ void Sources::on_removePath_clicked()
 
 void Sources::on_addSoundDir_clicked()
 {
-  QString dir =
-    QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
 
-  if ( !dir.isEmpty() )
-  {
+  if ( !dir.isEmpty() ) {
     soundDirsModel.addNewSoundDir( dir, QDir( dir ).dirName() );
     fitSoundDirsColumns();
   }
@@ -218,12 +216,14 @@ void Sources::on_removeSoundDir_clicked()
 {
   QModelIndex current = ui.soundDirs->currentIndex();
 
-  if ( current.isValid() &&
-      QMessageBox::question( this, tr( "Confirm removal" ),
-                             tr( "Remove directory <b>%1</b> from the list?" ).arg( soundDirsModel.getCurrentSoundDirs()[ current.row() ].path ),
-                             QMessageBox::Ok,
-                             QMessageBox::Cancel ) == QMessageBox::Ok )
-  {
+  if ( current.isValid()
+       && QMessageBox::question( this,
+                                 tr( "Confirm removal" ),
+                                 tr( "Remove directory <b>%1</b> from the list?" )
+                                   .arg( soundDirsModel.getCurrentSoundDirs()[ current.row() ].path ),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Ok ) {
     soundDirsModel.removeSoundDir( current.row() );
     fitSoundDirsColumns();
   }
@@ -231,11 +231,9 @@ void Sources::on_removeSoundDir_clicked()
 
 void Sources::on_changeHunspellPath_clicked()
 {
-  QString dir =
-    QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
 
-  if ( !dir.isEmpty() )
-  {
+  if ( !dir.isEmpty() ) {
     ui.hunspellPath->setText( dir );
     hunspellDictsModel.changePath( dir );
     fitHunspellDictsColumns();
@@ -245,9 +243,7 @@ void Sources::on_changeHunspellPath_clicked()
 void Sources::on_addMediaWiki_clicked()
 {
   mediawikisModel.addNewWiki();
-  QModelIndex result =
-    mediawikisModel.index( mediawikisModel.rowCount( QModelIndex() ) - 1,
-                           1, QModelIndex() );
+  QModelIndex result = mediawikisModel.index( mediawikisModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
 
   ui.mediaWikis->scrollTo( result );
   //ui.mediaWikis->setCurrentIndex( result );
@@ -258,11 +254,14 @@ void Sources::on_removeMediaWiki_clicked()
 {
   QModelIndex current = ui.mediaWikis->currentIndex();
 
-  if ( current.isValid() &&
-       QMessageBox::question( this, tr( "Confirm removal" ),
-                              tr( "Remove site <b>%1</b> from the list?" ).arg( mediawikisModel.getCurrentWikis()[ current.row() ].name ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel ) == QMessageBox::Ok )
+  if ( current.isValid()
+       && QMessageBox::question(
+            this,
+            tr( "Confirm removal" ),
+            tr( "Remove site <b>%1</b> from the list?" ).arg( mediawikisModel.getCurrentWikis()[ current.row() ].name ),
+            QMessageBox::Ok,
+            QMessageBox::Cancel )
+         == QMessageBox::Ok )
     mediawikisModel.removeWiki( current.row() );
 }
 
@@ -270,9 +269,7 @@ void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
 
-  QModelIndex result =
-    webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1,
-                         1, QModelIndex() );
+  QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
 
   ui.webSites->scrollTo( result );
   ui.webSites->edit( result );
@@ -282,11 +279,14 @@ void Sources::on_removeWebSite_clicked()
 {
   QModelIndex current = ui.webSites->currentIndex();
 
-  if ( current.isValid() &&
-       QMessageBox::question( this, tr( "Confirm removal" ),
-                              tr( "Remove site <b>%1</b> from the list?" ).arg( webSitesModel.getCurrentWebSites()[ current.row() ].name ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel ) == QMessageBox::Ok )
+  if ( current.isValid()
+       && QMessageBox::question( this,
+                                 tr( "Confirm removal" ),
+                                 tr( "Remove site <b>%1</b> from the list?" )
+                                   .arg( webSitesModel.getCurrentWebSites()[ current.row() ].name ),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Ok )
     webSitesModel.removeSite( current.row() );
 }
 
@@ -294,9 +294,7 @@ void Sources::on_addDictServer_clicked()
 {
   dictServersModel.addNewServer();
 
-  QModelIndex result =
-    dictServersModel.index( dictServersModel.rowCount( QModelIndex() ) - 1,
-                            1, QModelIndex() );
+  QModelIndex result = dictServersModel.index( dictServersModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
 
   ui.dictServers->scrollTo( result );
   ui.dictServers->edit( result );
@@ -306,11 +304,14 @@ void Sources::on_removeDictServer_clicked()
 {
   QModelIndex current = ui.dictServers->currentIndex();
 
-  if ( current.isValid() &&
-       QMessageBox::question( this, tr( "Confirm removal" ),
-                              tr( "Remove site <b>%1</b> from the list?" ).arg( dictServersModel.getCurrentDictServers()[ current.row() ].name ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel ) == QMessageBox::Ok )
+  if ( current.isValid()
+       && QMessageBox::question( this,
+                                 tr( "Confirm removal" ),
+                                 tr( "Remove site <b>%1</b> from the list?" )
+                                   .arg( dictServersModel.getCurrentDictServers()[ current.row() ].name ),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Ok )
     dictServersModel.removeServer( current.row() );
 }
 
@@ -318,9 +319,7 @@ void Sources::on_addProgram_clicked()
 {
   programsModel.addNewProgram();
 
-  QModelIndex result =
-    programsModel.index( programsModel.rowCount( QModelIndex() ) - 1,
-                         1, QModelIndex() );
+  QModelIndex result = programsModel.index( programsModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
 
   ui.programs->scrollTo( result );
   ui.programs->edit( result );
@@ -330,11 +329,14 @@ void Sources::on_removeProgram_clicked()
 {
   QModelIndex current = ui.programs->currentIndex();
 
-  if ( current.isValid() &&
-       QMessageBox::question( this, tr( "Confirm removal" ),
-                              tr( "Remove program <b>%1</b> from the list?" ).arg( programsModel.getCurrentPrograms()[ current.row() ].name ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel ) == QMessageBox::Ok )
+  if ( current.isValid()
+       && QMessageBox::question( this,
+                                 tr( "Confirm removal" ),
+                                 tr( "Remove program <b>%1</b> from the list?" )
+                                   .arg( programsModel.getCurrentPrograms()[ current.row() ].name ),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Ok )
     programsModel.removeProgram( current.row() );
 }
 
@@ -349,7 +351,7 @@ Config::Hunspell Sources::getHunspell() const
 {
   Config::Hunspell h;
 
-  h.dictionariesPath = ui.hunspellPath->text();
+  h.dictionariesPath    = ui.hunspellPath->text();
   h.enabledDictionaries = hunspellDictsModel.getEnabledDictionaries();
 
   return h;
@@ -359,21 +361,21 @@ Config::Transliteration Sources::getTransliteration() const
 {
   Config::Transliteration tr;
 
-  tr.enableRussianTransliteration = ui.enableRussianTransliteration->isChecked();
-  tr.enableGermanTransliteration = ui.enableGermanTransliteration->isChecked();
-  tr.enableGreekTransliteration = ui.enableGreekTransliteration->isChecked();
+  tr.enableRussianTransliteration    = ui.enableRussianTransliteration->isChecked();
+  tr.enableGermanTransliteration     = ui.enableGermanTransliteration->isChecked();
+  tr.enableGreekTransliteration      = ui.enableGreekTransliteration->isChecked();
   tr.enableBelarusianTransliteration = ui.enableBelarusianTransliteration->isChecked();
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion->getConfig( tr.chinese );
 #endif
-  tr.romaji.enable = ui.enableRomaji->isChecked();
-  tr.romaji.enableHepburn = ui.enableHepburn->isChecked();
-  tr.romaji.enableNihonShiki = ui.enableNihonShiki->isChecked();
+  tr.romaji.enable            = ui.enableRomaji->isChecked();
+  tr.romaji.enableHepburn     = ui.enableHepburn->isChecked();
+  tr.romaji.enableNihonShiki  = ui.enableNihonShiki->isChecked();
   tr.romaji.enableKunreiShiki = ui.enableKunreiShiki->isChecked();
-  tr.romaji.enableHiragana = ui.enableHiragana->isChecked();
-  tr.romaji.enableKatakana = ui.enableKatakana->isChecked();
+  tr.romaji.enableHiragana    = ui.enableHiragana->isChecked();
+  tr.romaji.enableKatakana    = ui.enableKatakana->isChecked();
 
-  tr.customTrans.enable = ui.enableCustomTransliteration->isChecked();
+  tr.customTrans.enable  = ui.enableCustomTransliteration->isChecked();
   tr.customTrans.context = ui.customTransliteration->toPlainText();
 
   return tr;
@@ -383,8 +385,8 @@ Config::Lingua Sources::getLingua() const
 {
   Config::Lingua lingua;
 
-  lingua.enable = ui.linguaEnabled->isChecked();
-  lingua.languageCodes = ui.linguaLangCode -> text();
+  lingua.enable        = ui.linguaEnabled->isChecked();
+  lingua.languageCodes = ui.linguaLangCode->text();
 
   return lingua;
 }
@@ -394,8 +396,8 @@ Config::Forvo Sources::getForvo() const
 {
   Config::Forvo forvo;
 
-  forvo.enable = ui.forvoEnabled->isChecked();
-  forvo.apiKey = ui.forvoApiKey->text();
+  forvo.enable        = ui.forvoEnabled->isChecked();
+  forvo.apiKey        = ui.forvoApiKey->text();
   forvo.languageCodes = ui.forvoLanguageCodes->text();
 
   return forvo;
@@ -403,9 +405,9 @@ Config::Forvo Sources::getForvo() const
 
 ////////// MediaWikisModel
 
-MediaWikisModel::MediaWikisModel( QWidget * parent,
-                                  Config::MediaWikis const & mediawikis_ ):
-  QAbstractItemModel( parent ), mediawikis( mediawikis_ )
+MediaWikisModel::MediaWikisModel( QWidget * parent, Config::MediaWikis const & mediawikis_ ):
+  QAbstractItemModel( parent ),
+  mediawikis( mediawikis_ )
 {
 }
 void MediaWikisModel::removeWiki( int index )
@@ -444,8 +446,7 @@ Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
+  if ( index.isValid() ) {
     if ( !index.column() )
       result |= Qt::ItemIsUserCheckable;
     else
@@ -474,8 +475,7 @@ int MediaWikisModel::columnCount( QModelIndex const & parent ) const
 QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Enabled" );
       case 1:
@@ -496,10 +496,8 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
   if ( index.row() >= mediawikis.size() )
     return QVariant();
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
-    switch( index.column() )
-    {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
+    switch ( index.column() ) {
       case 1:
         return mediawikis[ index.row() ].name;
       case 2:
@@ -517,14 +515,12 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value,
-                               int role )
+bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= mediawikis.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
     //GD_DPRINTF( "value = %d\n", (int)value.toInt() );
 
@@ -536,18 +532,17 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole )
-    switch( index.column() )
-    {
+    switch ( index.column() ) {
       case 1:
-        mediawikis[ index.row() ].name =  value.toString();
+        mediawikis[ index.row() ].name = value.toString();
         dataChanged( index, index );
         return true;
       case 2:
-        mediawikis[ index.row() ].url =  value.toString();
+        mediawikis[ index.row() ].url = value.toString();
         dataChanged( index, index );
         return true;
       case 3:
-        mediawikis[ index.row() ].icon =  value.toString();
+        mediawikis[ index.row() ].icon = value.toString();
         dataChanged( index, index );
         return true;
       default:
@@ -560,9 +555,9 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
 
 ////////// WebSitesModel
 
-WebSitesModel::WebSitesModel( QWidget * parent,
-                              Config::WebSites const & webSites_ ):
-  QAbstractItemModel( parent ), webSites( webSites_ )
+WebSitesModel::WebSitesModel( QWidget * parent, Config::WebSites const & webSites_ ):
+  QAbstractItemModel( parent ),
+  webSites( webSites_ )
 {
 }
 void WebSitesModel::removeSite( int index )
@@ -603,8 +598,7 @@ Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
+  if ( index.isValid() ) {
     if ( index.column() <= 1 )
       result |= Qt::ItemIsUserCheckable;
     else
@@ -632,17 +626,15 @@ int WebSitesModel::columnCount( QModelIndex const & parent ) const
 
 QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if( role == Qt::ToolTipRole )
-  {
-    if( section == 1 )
+  if ( role == Qt::ToolTipRole ) {
+    if ( section == 1 )
       return tr( "Insert article as link inside <iframe> tag" );
 
     return QVariant();
   }
 
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Enabled" );
       case 1:
@@ -665,18 +657,15 @@ QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
   if ( index.row() >= webSites.size() )
     return QVariant();
 
-  if( role == Qt::ToolTipRole )
-  {
-    if( index.column() == 1 )
+  if ( role == Qt::ToolTipRole ) {
+    if ( index.column() == 1 )
       return tr( "Insert article as link inside <iframe> tag" );
 
     return QVariant();
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
-    switch( index.column() )
-    {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
+    switch ( index.column() ) {
       case 2:
         return webSites[ index.row() ].name;
       case 3:
@@ -697,14 +686,12 @@ QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value,
-                               int role )
+bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= webSites.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
     //GD_DPRINTF( "value = %d\n", (int)value.toInt() );
 
@@ -715,8 +702,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value,
     return true;
   }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 )
-  {
+  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
     webSites[ index.row() ].inside_iframe = !webSites[ index.row() ].inside_iframe;
 
     dataChanged( index, index );
@@ -724,18 +710,17 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value,
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole )
-    switch( index.column() )
-    {
+    switch ( index.column() ) {
       case 2:
-        webSites[ index.row() ].name =  value.toString();
+        webSites[ index.row() ].name = value.toString();
         dataChanged( index, index );
         return true;
       case 3:
-        webSites[ index.row() ].url =  value.toString();
+        webSites[ index.row() ].url = value.toString();
         dataChanged( index, index );
         return true;
       case 4:
-        webSites[ index.row() ].iconFilename =  value.toString();
+        webSites[ index.row() ].iconFilename = value.toString();
         dataChanged( index, index );
         return true;
       default:
@@ -747,9 +732,9 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value,
 
 ////////// DictServersModel
 
-DictServersModel::DictServersModel( QWidget * parent,
-                              Config::DictServers const & dictServers_ ):
-  QAbstractItemModel( parent ), dictServers( dictServers_ )
+DictServersModel::DictServersModel( QWidget * parent, Config::DictServers const & dictServers_ ):
+  QAbstractItemModel( parent ),
+  dictServers( dictServers_ )
 {
 }
 void DictServersModel::removeServer( int index )
@@ -788,8 +773,7 @@ Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
+  if ( index.isValid() ) {
     if ( !index.column() )
       result |= Qt::ItemIsUserCheckable;
     else
@@ -818,8 +802,7 @@ int DictServersModel::columnCount( QModelIndex const & parent ) const
 QVariant DictServersModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Enabled" );
       case 1:
@@ -844,10 +827,8 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
   if ( index.row() >= dictServers.size() )
     return QVariant();
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
-    switch( index.column() )
-    {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
+    switch ( index.column() ) {
       case 1:
         return dictServers[ index.row() ].name;
       case 2:
@@ -863,10 +844,10 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if( role == Qt::ToolTipRole && index.column() == 3 )
+  if ( role == Qt::ToolTipRole && index.column() == 3 )
     return tr( "Comma-delimited list of databases\n(empty string or \"*\" matches all databases)" );
 
-  if( role == Qt::ToolTipRole && index.column() == 4 )
+  if ( role == Qt::ToolTipRole && index.column() == 4 )
     return tr( "Comma-delimited list of search strategies\n(empty string mean \"prefix\" strategy)" );
 
   if ( role == Qt::CheckStateRole && !index.column() )
@@ -875,14 +856,12 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool DictServersModel::setData( QModelIndex const & index, const QVariant & value,
-                               int role )
+bool DictServersModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= dictServers.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     // XXX it seems to be always passing Int( 2 ) as a value, so we just toggle
     dictServers[ index.row() ].enabled = !dictServers[ index.row() ].enabled;
 
@@ -891,26 +870,25 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole )
-    switch( index.column() )
-    {
+    switch ( index.column() ) {
       case 1:
-        dictServers[ index.row() ].name =  value.toString();
+        dictServers[ index.row() ].name = value.toString();
         dataChanged( index, index );
         return true;
       case 2:
-        dictServers[ index.row() ].url =  value.toString();
+        dictServers[ index.row() ].url = value.toString();
         dataChanged( index, index );
         return true;
       case 3:
-        dictServers[ index.row() ].databases =  value.toString();
+        dictServers[ index.row() ].databases = value.toString();
         dataChanged( index, index );
         return true;
       case 4:
-        dictServers[ index.row() ].strategies =  value.toString();
+        dictServers[ index.row() ].strategies = value.toString();
         dataChanged( index, index );
         return true;
       case 5:
-        dictServers[ index.row() ].iconFilename =  value.toString();
+        dictServers[ index.row() ].iconFilename = value.toString();
         dataChanged( index, index );
         return true;
       default:
@@ -923,9 +901,9 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
 
 ////////// ProgramsModel
 
-ProgramsModel::ProgramsModel( QWidget * parent,
-                              Config::Programs const & programs_ ):
-  QAbstractItemModel( parent ), programs( programs_ )
+ProgramsModel::ProgramsModel( QWidget * parent, Config::Programs const & programs_ ):
+  QAbstractItemModel( parent ),
+  programs( programs_ )
 {
 }
 
@@ -941,7 +919,7 @@ void ProgramsModel::addNewProgram()
   Config::Program p;
 
   p.enabled = false;
-  p.type = Config::Program::Audio;
+  p.type    = Config::Program::Audio;
 
   p.id = Dictionary::generateRandomDictionaryId();
 
@@ -964,8 +942,7 @@ Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
+  if ( index.isValid() ) {
     if ( !index.column() )
       result |= Qt::ItemIsUserCheckable;
     else
@@ -994,8 +971,7 @@ int ProgramsModel::columnCount( QModelIndex const & parent ) const
 QVariant ProgramsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Enabled" );
       case 1:
@@ -1018,15 +994,13 @@ QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
   if ( index.row() >= programs.size() )
     return QVariant();
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
-    switch( index.column() )
-    {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
+    switch ( index.column() ) {
       case 1:
         if ( role == Qt::DisplayRole )
           return ProgramTypeEditor::getNameForType( programs[ index.row() ].type );
         else
-          return QVariant( ( int ) programs[ index.row() ].type );
+          return QVariant( (int)programs[ index.row() ].type );
       case 2:
         return programs[ index.row() ].name;
       case 3:
@@ -1044,14 +1018,12 @@ QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value,
-                             int role )
+bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= programs.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     programs[ index.row() ].enabled = !programs[ index.row() ].enabled;
 
     dataChanged( index, index );
@@ -1059,8 +1031,7 @@ bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value,
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole )
-    switch( index.column() )
-    {
+    switch ( index.column() ) {
       case 1:
         programs[ index.row() ].type = Config::Program::Type( value.toInt() );
         dataChanged( index, index );
@@ -1086,8 +1057,7 @@ bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value,
 
 QString ProgramTypeEditor::getNameForType( int v )
 {
-  switch( v )
-  {
+  switch ( v ) {
     case Config::Program::Audio:
       return tr( "Audio" );
     case Config::Program::PlainText:
@@ -1101,9 +1071,10 @@ QString ProgramTypeEditor::getNameForType( int v )
   }
 }
 
-ProgramTypeEditor::ProgramTypeEditor( QWidget * widget ): QComboBox( widget )
+ProgramTypeEditor::ProgramTypeEditor( QWidget * widget ):
+  QComboBox( widget )
 {
-  for( int x = 0; x < Config::Program::MaxTypeValue; ++x )
+  for ( int x = 0; x < Config::Program::MaxTypeValue; ++x )
     addItem( getNameForType( x ) );
 }
 
@@ -1119,9 +1090,9 @@ void ProgramTypeEditor::setType( int t )
 
 ////////// PathsModel
 
-PathsModel::PathsModel( QWidget * parent,
-                        Config::Paths const & paths_ ):
-  QAbstractItemModel( parent ), paths( paths_ )
+PathsModel::PathsModel( QWidget * parent, Config::Paths const & paths_ ):
+  QAbstractItemModel( parent ),
+  paths( paths_ )
 {
 }
 
@@ -1178,8 +1149,7 @@ int PathsModel::columnCount( QModelIndex const & parent ) const
 QVariant PathsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Path" );
       case 1:
@@ -1205,14 +1175,12 @@ QVariant PathsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/,
-                          int role )
+bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
 {
   if ( index.row() >= paths.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 )
-  {
+  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
     paths[ index.row() ].recursive = !paths[ index.row() ].recursive;
 
     dataChanged( index, index );
@@ -1225,9 +1193,9 @@ bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/,
 
 ////////// SoundDirsModel
 
-SoundDirsModel::SoundDirsModel( QWidget * parent,
-                                Config::SoundDirs const & soundDirs_ ):
-  QAbstractItemModel( parent ), soundDirs( soundDirs_ )
+SoundDirsModel::SoundDirsModel( QWidget * parent, Config::SoundDirs const & soundDirs_ ):
+  QAbstractItemModel( parent ),
+  soundDirs( soundDirs_ )
 {
 }
 
@@ -1284,8 +1252,7 @@ int SoundDirsModel::columnCount( QModelIndex const & parent ) const
 QVariant SoundDirsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Path" );
       case 1:
@@ -1316,14 +1283,12 @@ QVariant SoundDirsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value,
-                              int role )
+bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= soundDirs.size() )
     return false;
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() < 3 )
-  {
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() < 3 ) {
     if ( !index.column() )
       soundDirs[ index.row() ].path = value.toString();
     else if ( index.column() == 1 )
@@ -1341,9 +1306,9 @@ bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value,
 
 ////////// HunspellDictsModel
 
-HunspellDictsModel::HunspellDictsModel( QWidget * parent,
-                                        Config::Hunspell const & hunspell ):
-  QAbstractItemModel( parent ), enabledDictionaries( hunspell.enabledDictionaries )
+HunspellDictsModel::HunspellDictsModel( QWidget * parent, Config::Hunspell const & hunspell ):
+  QAbstractItemModel( parent ),
+  enabledDictionaries( hunspell.enabledDictionaries )
 {
   changePath( hunspell.dictionariesPath );
 }
@@ -1369,8 +1334,7 @@ Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
+  if ( index.isValid() ) {
     if ( !index.column() )
       result |= Qt::ItemIsUserCheckable;
   }
@@ -1397,8 +1361,7 @@ int HunspellDictsModel::columnCount( QModelIndex const & parent ) const
 QVariant HunspellDictsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::DisplayRole )
-    switch( section )
-    {
+    switch ( section ) {
       case 0:
         return tr( "Enabled" );
       case 1:
@@ -1418,10 +1381,8 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
   if ( role == Qt::DisplayRole && index.column() == 1 )
     return dataFiles[ index.row() ].dictName;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
-    for( unsigned x = enabledDictionaries.size(); x--; )
-    {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
+    for ( unsigned x = enabledDictionaries.size(); x--; ) {
       if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId )
         return Qt::Checked;
     }
@@ -1432,18 +1393,14 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*value*/,
-                               int role )
+bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
 {
   if ( (unsigned)index.row() >= dataFiles.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && !index.column() )
-  {
-    for( unsigned x = enabledDictionaries.size(); x--; )
-    {
-      if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId )
-      {
+  if ( role == Qt::CheckStateRole && !index.column() ) {
+    for ( unsigned x = enabledDictionaries.size(); x--; ) {
+      if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         // Remove it now
         enabledDictionaries.erase( enabledDictionaries.begin() + x );
         dataChanged( index, index );

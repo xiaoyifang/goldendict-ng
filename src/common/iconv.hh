@@ -10,7 +10,7 @@
 #include "ex.hh"
 
 #ifdef USE_ICONV
-#include <iconv.h>
+  #include <iconv.h>
 #endif
 
 /// A wrapper for the iconv() character set conversion functions
@@ -19,7 +19,7 @@ class Iconv
 #ifdef USE_ICONV
   iconv_t state;
 #else
-  QTextCodec* codec;
+  QTextCodec * codec;
 
 #endif
 
@@ -38,22 +38,20 @@ public:
 
   ~Iconv();
 
-  QString convert(void const* & inBuf, size_t& inBytesLeft);
+  QString convert( void const *& inBuf, size_t & inBytesLeft );
 
   // Converts a given block of data from the given encoding to a wide string.
-  static gd::wstring toWstring( char const * fromEncoding, void const * fromData,
-                                 size_t dataSize );
+  static gd::wstring toWstring( char const * fromEncoding, void const * fromData, size_t dataSize );
 
   // Converts a given block of data from the given encoding to an utf8-encoded
   // string.
-  static std::string toUtf8( char const * fromEncoding, void const * fromData,
-                             size_t dataSize );
+  static std::string toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize );
+
 private:
 
   // Copying/assigning not supported
   Iconv( Iconv const & );
-  Iconv & operator = ( Iconv const & );
+  Iconv & operator=( Iconv const & );
 };
 
 #endif
-

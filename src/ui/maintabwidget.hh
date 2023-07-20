@@ -12,23 +12,26 @@
 class MainTabWidget: public QTabWidget
 {
   Q_OBJECT
-  Q_PROPERTY(bool hideSingleTab READ isHideSingleTab WRITE setHideSingleTab)
+  Q_PROPERTY( bool hideSingleTab READ isHideSingleTab WRITE setHideSingleTab )
 
 public:
   MainTabWidget( QWidget * parent = 0 );
 
-  bool isHideSingleTab() const { return hideSingleTab; }
-  void setHideSingleTab(bool hide);
+  bool isHideSingleTab() const
+  {
+    return hideSingleTab;
+  }
+  void setHideSingleTab( bool hide );
 
 signals:
   void doubleClicked();
 
 protected:
-//  virtual void mouseDoubleClickEvent ( QMouseEvent * event );
+  //  virtual void mouseDoubleClickEvent ( QMouseEvent * event );
 
 private:
-  virtual void tabInserted(int index);
-  virtual void tabRemoved(int index);
+  virtual void tabInserted( int index );
+  virtual void tabRemoved( int index );
   void updateTabBarVisibility();
   virtual bool eventFilter( QObject * obj, QEvent * ev );
 
