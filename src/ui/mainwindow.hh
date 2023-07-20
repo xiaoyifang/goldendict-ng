@@ -175,8 +175,10 @@ private:
   gd_clipboard * macClipboard;
 #endif
 
-#if defined( Q_OS_LINUX )
-  QString defaultInterfaceStyle; // default style before getting overriden by custom styles
+#if !defined( Q_OS_WIN )
+  // On Linux, this will be the style before getting overriden by custom styles
+  // On macOS, this will be just Fusion.
+  QString defaultInterfaceStyle;
 #endif
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,

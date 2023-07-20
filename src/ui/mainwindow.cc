@@ -751,6 +751,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   #else
   defaultInterfaceStyle = QApplication::style()->objectName();
   #endif
+#elif defined( Q_OS_MAC )
+  defaultInterfaceStyle = "Fusion";
 #endif
 
   updateAppearances( cfg.preferences.addonStyle,
@@ -1293,11 +1295,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 
 #if !defined( Q_OS_WIN )
   if ( interfaceStyle == "Default" ) {
-  #if defined( Q_OS_LINUX )
     QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-  #else
-    QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
-  #endif
   }
   else {
     if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
