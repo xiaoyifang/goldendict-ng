@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QFontDatabase>
 #include <QMessageBox>
+#include <QThread>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 #include <QStyleFactory>
@@ -373,6 +374,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.allowEpwing->hide();
 #endif
   ui.maxDictionarySize->setValue( p.fts.maxDictionarySize );
+
+  ui.parallelThreads->setMaximum( QThread::idealThreadCount() );
+  ui.parallelThreads->setValue( p.fts.parallelThreads );
 }
 
 void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
@@ -506,6 +510,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();
+  p.fts.parallelThreads   = ui.parallelThreads->value();
   p.fts.enablePosition    = ui.enablePosition->isChecked();
 
   buildDisabledTypes( p.fts.disabledTypes, ui.allowAard->isChecked(), "AARD" );

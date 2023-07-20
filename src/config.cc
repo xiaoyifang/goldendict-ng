@@ -1074,6 +1074,9 @@ Class load()
 
       if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
+
+      if ( !fts.namedItem( "parallelThreads" ).isNull() )
+        c.preferences.fts.parallelThreads = fts.namedItem( "parallelThreads" ).toElement().text().toUInt();
     }
   }
 
@@ -2051,6 +2054,10 @@ void save( Class const & c )
 
       opt = dd.createElement( "maxDictionarySize" );
       opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.maxDictionarySize ) ) );
+      hd.appendChild( opt );
+
+      opt = dd.createElement( "parallelThreads" );
+      opt.appendChild( dd.createTextNode( QString::number( c.preferences.fts.parallelThreads ) ) );
       hd.appendChild( opt );
     }
   }
