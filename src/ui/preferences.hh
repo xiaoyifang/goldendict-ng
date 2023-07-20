@@ -13,6 +13,11 @@ class Preferences: public QDialog
 
   int prevInterfaceLanguage = 0;
 
+#if !defined( Q_OS_WIN )
+  int prevInterfaceStyle = 0;
+#endif
+
+
   Config::CustomFonts prevWebFontFamily;
 
   Config::Class & cfg;

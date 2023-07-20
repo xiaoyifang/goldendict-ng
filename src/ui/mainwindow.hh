@@ -175,8 +175,20 @@ private:
   gd_clipboard * macClipboard;
 #endif
 
-  /// Applies the custom Qt stylesheet
-  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle, bool const & darkMode );
+#if !defined( Q_OS_WIN )
+  // On Linux, this will be the style before getting overriden by custom styles
+  // On macOS, this will be just Fusion.
+  QString defaultInterfaceStyle;
+#endif
+  /// Applies Qt stylesheets, use Windows dark palette etc....
+  void updateAppearances( const QString & addonStyle,
+                          const QString & displayStyle,
+                          const bool & darkMode
+#if !defined( Q_OS_WIN )
+                          ,
+                          const QString & interfaceStyle
+#endif
+  );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
@@ -222,6 +234,7 @@ private:
 
   void updateCurrentGroupProperty();
 
+
   /// Handles backward and forward mouse buttons and
   /// returns true if the event is handled.
   bool handleBackForwardMouseButtons( QMouseEvent * ev );
@@ -243,6 +256,7 @@ private:
     EnablePopup,
     DisablePopup
   };
+
 
   /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
   void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
@@ -427,6 +441,7 @@ private slots:
   void addWordToHistory( const QString & word );
   /// Add word to history even if history is disabled in options
   void forceAddWordToHistory( const QString & word );
+
 
   void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
