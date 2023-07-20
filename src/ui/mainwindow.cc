@@ -738,7 +738,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   setWindowTitle( "GoldenDict-ng" );
 
   blockUpdateWindowTitle = true;
-  addNewTab();
 
   // Create tab list menu
   createTabList();
@@ -748,7 +747,25 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.mainWindowGeometry.size() )
     restoreGeometry( cfg.mainWindowGeometry );
 
+#if defined( Q_OS_LINUX )
+  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  defaultInterfaceStyle = QApplication::style()->name();
+  #else
+  defaultInterfaceStyle = QApplication::style()->objectName();
+  #endif
+#endif
+
+  updateAppearances( cfg.preferences.addonStyle,
+                     cfg.preferences.displayStyle,
+                     cfg.preferences.darkMode
+#if !defined( Q_OS_WIN )
+                     ,
+                     cfg.preferences.interfaceStyle
+#endif
+  );
+
   // Show the initial welcome text
+  addNewTab();
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
   blockUpdateWindowTitle = true;
@@ -756,8 +773,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   history.enableAdd( cfg.preferences.storeHistory );
 
   translateLine->setFocus();
-
-  applyQtStyleSheet( cfg.preferences.addonStyle, cfg.preferences.displayStyle, cfg.preferences.darkMode );
 
   // Scanpopup related
   scanPopup =
@@ -1241,7 +1256,14 @@ QPrinter & MainWindow::getPrinter()
   return *printer;
 }
 
-void MainWindow::applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle, bool const & darkMode )
+void MainWindow::updateAppearances( QString const & addonStyle,
+                                    QString const & displayStyle,
+                                    bool const & darkMode
+#if !defined( Q_OS_WIN )
+                                    ,
+                                    const QString & interfaceStyle
+#endif
+)
 {
 #ifdef Q_OS_WIN32
   if ( darkMode ) {
@@ -1280,15 +1302,24 @@ void MainWindow::applyQtStyleSheet( QString const & addonStyle, QString const & 
   }
 #endif
 
+#if !defined( Q_OS_WIN )
+  if ( interfaceStyle == "Default" ) {
+  #if defined( Q_OS_LINUX )
+    QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
+  #else
+    QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+  #endif
+  }
+  else {
+    if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
+      QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
+    }
+  }
+#endif
+
   QFile builtInCssFile( ":qt-style.css" );
   builtInCssFile.open( QFile::ReadOnly );
   QByteArray css = builtInCssFile.readAll();
-
-#if defined( Q_OS_MAC )
-  QFile macCssFile( ":qt-style-macos.css" );
-  macCssFile.open( QFile::ReadOnly );
-  css += macCssFile.readAll();
-#endif
 
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
@@ -1325,7 +1356,9 @@ void MainWindow::applyQtStyleSheet( QString const & addonStyle, QString const & 
   }
 #endif
 
-  setStyleSheet( css );
+  if ( !css.isEmpty() ) {
+    setStyleSheet( css );
+  }
 }
 
 void MainWindow::updateTrayIcon()
@@ -2182,10 +2215,22 @@ void MainWindow::editPreferences()
 
     p.fts.searchMode = cfg.preferences.fts.searchMode;
 
-    // See if we need to reapply Qt stylesheets
-    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.darkMode != p.darkMode ) {
-      applyQtStyleSheet( p.addonStyle, p.displayStyle, p.darkMode );
+    // See if we need to update Appearances
+    if ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.darkMode != p.darkMode
+#if !defined( Q_OS_WIN )
+         || cfg.preferences.interfaceStyle != p.interfaceStyle
+#endif
+    ) {
+      updateAppearances( p.addonStyle,
+                         p.displayStyle,
+                         p.darkMode
+#if !defined( Q_OS_WIN )
+                         ,
+                         p.interfaceStyle
+#endif
+      );
     }
+
 
     if ( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
       history.setSaveInterval( p.historyStoreInterval );

@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
+#include <QStyleFactory>
 
 Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   QDialog( parent ),
@@ -135,12 +136,33 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_lingoes.png" ), tr( "Lingoes" ), QString( "lingoes" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_lingoes.png" ), tr( "Lingoes-Blue" ), QString( "lingoes-blue" ) );
 
-  for( int x = 0; x < ui.displayStyle->count(); ++x )
-    if ( ui.displayStyle->itemData( x ).toString() == p.displayStyle )
-    {
+  for ( int x = 0; x < ui.displayStyle->count(); ++x ) {
+    if ( ui.displayStyle->itemData( x ).toString() == p.displayStyle ) {
       ui.displayStyle->setCurrentIndex( x );
       break;
     }
+  }
+
+#if !defined( Q_OS_WIN )
+  ui.InterfaceStyle->addItem( "Default", "Default" );
+
+  for ( const auto & style : QStyleFactory::keys() ) {
+    ui.InterfaceStyle->addItem( style, style );
+  }
+
+  for ( int i = 0; i < ui.InterfaceStyle->count(); ++i ) {
+    if ( ui.InterfaceStyle->itemData( i ).toString() == p.interfaceStyle ) {
+      ui.InterfaceStyle->setCurrentIndex( i );
+      prevInterfaceStyle = i;
+      break;
+    }
+  }
+#endif
+
+#if defined( Q_OS_WIN )
+  ui.interfaceStyleLabel->hide();
+  ui.InterfaceStyle->hide();
+#endif
 
 #ifdef Q_OS_WIN32
   // 1 MB stands for 2^20 bytes on Windows. "MiB" is never used by this OS.
@@ -387,7 +409,9 @@ Config::Preferences Preferences::getPreferences()
   p.displayStyle =
     ui.displayStyle->itemData(
       ui.displayStyle->currentIndex() ).toString();
-
+#if !defined( Q_OS_WIN )
+  p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
+#endif
   p.newTabsOpenAfterCurrentOne = ui.newTabsOpenAfterCurrentOne->isChecked();
   p.newTabsOpenInBackground = ui.newTabsOpenInBackground->isChecked();
   p.hideSingleTab = ui.hideSingleTab->isChecked();
@@ -583,6 +607,13 @@ void Preferences::on_buttonBox_accepted()
   if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
     QMessageBox::information( this, tr( "Changing Language" ),
                               tr( "Restart the program to apply the language change." ) );
+
+#if !defined( Q_OS_WIN )
+  if ( prevInterfaceStyle != ui.InterfaceStyle->currentIndex() ) {
+    QMessageBox::information( this, tr( "Restart needed" ), tr( "Restart to apply the interface style change." ) );
+  }
+#endif
+
 
   auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {

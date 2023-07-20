@@ -174,8 +174,18 @@ private:
     gd_clipboard * macClipboard;
 #endif
 
-  /// Applies the custom Qt stylesheet
-  void applyQtStyleSheet( QString const & addonStyle, QString const & displayStyle ,bool const & darkMode );
+#if defined( Q_OS_LINUX )
+    QString defaultInterfaceStyle; // default style before getting overriden by custom styles
+#endif
+    /// Applies Qt stylesheets, use Windows dark palette etc....
+    void updateAppearances( const QString & addonStyle,
+                            const QString & displayStyle,
+                            const bool & darkMode
+#if !defined( Q_OS_WIN )
+                            ,
+                            const QString & interfaceStyle
+#endif
+    );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.

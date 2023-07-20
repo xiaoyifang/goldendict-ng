@@ -369,6 +369,20 @@ the application.</string>
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="interfaceStyleLayout">
+            <item>
+             <widget class="QLabel" name="interfaceStyleLabel">
+              <property name="text">
+               <string>Interface Style:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="InterfaceStyle"/>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QCheckBox" name="darkMode">
             <property name="toolTip">
              <string>Turn the UI to dark.</string>

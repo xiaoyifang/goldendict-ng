@@ -6,6 +6,8 @@
 #include <QDir>
 #include <QFile>
 #include <QtXml>
+#include <QApplication>
+#include <QStyle>
 #include "gddebug.hh"
 
 #ifdef Q_OS_WIN32
@@ -272,6 +274,9 @@ Preferences::Preferences():
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
   stripClipboard( false ),
+#if !defined( Q_OS_WIN )
+  interfaceStyle( "Default" ),
+#endif
   raiseWindowOnSearch( true )
 {
 }
@@ -832,7 +837,11 @@ Class load()
   if ( !preferences.isNull() )
   {
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
-    c.preferences.displayStyle = preferences.namedItem( "displayStyle" ).toElement().text();
+    c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
+#if !defined( Q_OS_WIN )
+    c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
+#endif
+
     c.preferences.newTabsOpenAfterCurrentOne = ( preferences.namedItem( "newTabsOpenAfterCurrentOne" ).toElement().text() == "1" );
     c.preferences.newTabsOpenInBackground = ( preferences.namedItem( "newTabsOpenInBackground" ).toElement().text() == "1" );
     c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
@@ -1662,6 +1671,12 @@ void save( Class const & c )
     opt = dd.createElement( "displayStyle" );
     opt.appendChild( dd.createTextNode( c.preferences.displayStyle ) );
     preferences.appendChild( opt );
+
+#if !defined( Q_OS_WIN )
+    opt = dd.createElement( "interfaceStyle" );
+    opt.appendChild( dd.createTextNode( c.preferences.interfaceStyle ) );
+    preferences.appendChild( opt );
+#endif
 
     opt = dd.createElement( "newTabsOpenAfterCurrentOne" );
     opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenAfterCurrentOne ? "1":"0" ) );

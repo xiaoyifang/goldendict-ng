@@ -307,7 +307,6 @@ ScanPopupWindowFlags spwfFromInt( int id );
 struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
-  QString displayStyle; // Empty value corresponds to the default one
   CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
   bool newTabsOpenInBackground;
@@ -322,8 +321,6 @@ struct Preferences
   bool selectWordBySingleClick;
   bool autoScrollToTargetArticle;
   bool escKeyHidesMainWindow;
-  bool darkMode;
-  bool darkReaderMode;
   bool alwaysOnTop;
 
   /// An old UI mode when tranlateLine and wordList
@@ -393,9 +390,20 @@ struct Preferences
   bool stripClipboard;
   bool raiseWindowOnSearch;
 
-  QString addonStyle;
-
   FullTextSearch fts;
+
+  // Appearances
+
+  bool darkMode;
+  bool darkReaderMode;
+  QString addonStyle;
+  QString displayStyle; // Article Display style (Which also affect interface style on windows)
+
+#if !defined( Q_OS_WIN )
+  // QApplication style https://doc.qt.io/qt-6/qapplication.html#setStyle
+  // In addition to Qt's styles, "Default" is added as default.
+  QString interfaceStyle;
+#endif
 
   Preferences();
 };
