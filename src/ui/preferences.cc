@@ -398,9 +398,7 @@ Config::Preferences Preferences::getPreferences()
   p.customFonts = c;
 
 
-  p.displayStyle =
-    ui.displayStyle->itemData(
-      ui.displayStyle->currentIndex() ).toString();
+  p.displayStyle = ui.displayStyle->itemData( ui.displayStyle->currentIndex() ).toString();
 #if !defined( Q_OS_WIN )
   p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
 #endif

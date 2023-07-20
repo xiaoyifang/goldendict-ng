@@ -343,7 +343,7 @@ ScanPopupWindowFlags spwfFromInt( int id );
 struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
-  
+
   CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
   bool newTabsOpenInBackground;
