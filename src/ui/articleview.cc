@@ -252,14 +252,11 @@ ArticleView::ArticleView( QWidget * parent,
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  if ( const bool fromMainWindow = parent && parent->objectName() == "MainWindow" ) {
-    connect( GlobalBroadcaster::instance(),
-             &GlobalBroadcaster::dictionaryChanges,
-             this,
-             &ArticleView::setActiveDictIds );
 
-    connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
-  }
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
+
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+
 
   channel = new QWebChannel( webview->page() );
   agent   = new ArticleViewAgent( this );
@@ -1862,6 +1859,8 @@ void ArticleView::pasteTriggered()
 
 unsigned ArticleView::getCurrentGroup()
 {
+  if(!groupComboBox)
+    return currentGroupId;
   return groupComboBox->getCurrentGroup();
 }
 
