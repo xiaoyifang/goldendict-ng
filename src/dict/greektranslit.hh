@@ -10,7 +10,6 @@
 namespace GreekTranslit {
 
 sptr< Dictionary::Class > makeDictionary();
-
 }
 
 #endif // GREEKTRANSLIT_HH

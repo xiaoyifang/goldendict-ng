@@ -11,7 +11,6 @@
 namespace BelarusianTranslit {
 
 std::vector< sptr< Dictionary::Class > > makeDictionaries();
-
 }
 
 #endif

@@ -10,7 +10,6 @@
 namespace GermanTranslit {
 
 sptr< Dictionary::Class > makeDictionary();
-
 }
 
 #endif // GERMAN_HH

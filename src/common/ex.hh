@@ -19,9 +19,7 @@
     {                                             \
       return ( exDescription );                   \
     }                                             \
-    virtual ~exName() noexcept                    \
-    {                                             \
-    }                                             \
+    virtual ~exName() noexcept {}                 \
   };
 
 /// Same as DEF_EX, but takes a runtime string argument, which gets concatenated
@@ -47,9 +45,7 @@
     {                                                      \
       return value.c_str();                                \
     }                                                      \
-    virtual ~exName() noexcept                             \
-    {                                                      \
-    }                                                      \
+    virtual ~exName() noexcept {}                          \
   };
 
 #endif
