@@ -1859,7 +1859,7 @@ void ArticleView::pasteTriggered()
 
 unsigned ArticleView::getCurrentGroup()
 {
-  if(!groupComboBox)
+  if ( !groupComboBox )
     return currentGroupId;
   return groupComboBox->getCurrentGroup();
 }

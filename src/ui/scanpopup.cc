@@ -132,7 +132,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.groupList->fill( groups );
   ui.groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
-  definition->setCurrentGroupId(ui.groupList->getCurrentGroup());
+  definition->setCurrentGroupId( ui.groupList->getCurrentGroup() );
   dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
@@ -599,7 +599,7 @@ void ScanPopup::currentGroupChanged( int )
 
   updateDictionaryBar();
 
-  definition->setCurrentGroupId(cfg.lastPopupGroupId);
+  definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
   if ( isVisible() ) {
     updateSuggestionList();
