@@ -7,7 +7,7 @@
 #include <QString>
 
 /// This is a combo box which is for choosing the add-on styles
-class StylesComboBox : public QComboBox
+class StylesComboBox: public QComboBox
 {
   Q_OBJECT
 
@@ -24,7 +24,6 @@ public:
 
   /// Returns current style.
   QString getCurrentStyle() const;
-
 };
 
 #endif // __STYLESCOMBOBOX_HH_INCLUDED__

@@ -24,9 +24,10 @@ using std::vector;
 // Proxy class for QNetworkReply to remove X-Frame-Options header
 // It allow to show websites in <iframe> tag like Qt 4.x
 
-class AllowFrameReply : public QNetworkReply
+class AllowFrameReply: public QNetworkReply
 {
   Q_OBJECT
+
 private:
   QNetworkReply * baseReply;
   QByteArray buffer;
@@ -37,65 +38,97 @@ private:
 public:
   explicit AllowFrameReply( QNetworkReply * _reply );
   ~AllowFrameReply()
-  { delete baseReply; }
+  {
+    delete baseReply;
+  }
 
   // QNetworkReply virtual functions
   void setReadBufferSize( qint64 size );
   void close()
-  { baseReply->close(); }
+  {
+    baseReply->close();
+  }
 
   // QIODevice virtual functions
   qint64 bytesAvailable() const;
   bool atEnd() const
-  { return baseReply->atEnd(); }
+  {
+    return baseReply->atEnd();
+  }
   qint64 bytesToWrite() const
-  { return baseReply->bytesToWrite(); }
+  {
+    return baseReply->bytesToWrite();
+  }
   bool canReadLine() const
-  { return baseReply->canReadLine(); }
+  {
+    return baseReply->canReadLine();
+  }
   bool isSequential() const
-  { return baseReply->isSequential(); }
+  {
+    return baseReply->isSequential();
+  }
   bool waitForReadyRead( int msecs )
-  { return baseReply->waitForReadyRead( msecs ); }
+  {
+    return baseReply->waitForReadyRead( msecs );
+  }
   bool waitForBytesWritten( int msecs )
-  { return baseReply->waitForBytesWritten( msecs ); }
+  {
+    return baseReply->waitForBytesWritten( msecs );
+  }
   bool reset()
-  { return baseReply->reset(); }
+  {
+    return baseReply->reset();
+  }
 
 public slots:
 
   // Own AllowFrameReply slots
   void applyMetaData();
   void applyError( QNetworkReply::NetworkError code );
-//  void readDataFromBase();
+  //  void readDataFromBase();
 
   // Redirect QNetworkReply slots
   virtual void abort()
-  { baseReply->abort(); }
+  {
+    baseReply->abort();
+  }
   virtual void ignoreSslErrors()
-  { baseReply->ignoreSslErrors(); }
+  {
+    baseReply->ignoreSslErrors();
+  }
   void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions
   void ignoreSslErrorsImplementation( const QList< QSslError > & errors )
-  { baseReply->ignoreSslErrors( errors ); }
+  {
+    baseReply->ignoreSslErrors( errors );
+  }
   void setSslConfigurationImplementation( const QSslConfiguration & configuration )
-  { baseReply->setSslConfiguration( configuration ); }
+  {
+    baseReply->setSslConfiguration( configuration );
+  }
   void sslConfigurationImplementation( QSslConfiguration & configuration ) const
-  { configuration = baseReply->sslConfiguration(); }
+  {
+    configuration = baseReply->sslConfiguration();
+  }
 
   // QIODevice virtual functions
   qint64 readData( char * data, qint64 maxSize );
   qint64 readLineData( char * data, qint64 maxSize )
-  { return baseReply->readLine( data, maxSize ); }
+  {
+    return baseReply->readLine( data, maxSize );
+  }
   qint64 writeData( const char * data, qint64 maxSize )
-  { return baseReply->write( data, maxSize ); }
+  {
+    return baseReply->write( data, maxSize );
+  }
 };
 
 
 class ArticleNetworkAccessManager: public QNetworkAccessManager
 {
-    Q_OBJECT
+  Q_OBJECT
   vector< sptr< Dictionary::Class > > const & dictionaries;
   ArticleMaker const & articleMaker;
   bool const & disallowContentFromOtherSites;
@@ -105,26 +138,25 @@ class ArticleNetworkAccessManager: public QNetworkAccessManager
 public:
 
   ArticleNetworkAccessManager( QObject * parent,
-                               vector< sptr< Dictionary::Class > > const &
-                               dictionaries_,
+                               vector< sptr< Dictionary::Class > > const & dictionaries_,
                                ArticleMaker const & articleMaker_,
                                bool const & disallowContentFromOtherSites_,
                                bool const & hideGoldenDictHeader_ ):
-    QNetworkAccessManager( parent ), dictionaries( dictionaries_ ),
+    QNetworkAccessManager( parent ),
+    dictionaries( dictionaries_ ),
     articleMaker( articleMaker_ ),
     disallowContentFromOtherSites( disallowContentFromOtherSites_ ),
     hideGoldenDictHeader( hideGoldenDictHeader_ )
-  {}
+  {
+  }
 
   /// Tries handling any kind of internal resources referenced by dictionaries.
   /// If it succeeds, the result is a dictionary request object. Otherwise, an
   /// empty pointer is returned.
   /// The function can optionally set the Content-Type header correspondingly.
-  sptr< Dictionary::DataRequest > getResource( QUrl const & url,
-                                               QString & contentType );
+  sptr< Dictionary::DataRequest > getResource( QUrl const & url, QString & contentType );
 
   virtual QNetworkReply * getArticleReply( QNetworkRequest const & req );
-
 };
 
 class ArticleResourceReply: public QNetworkReply
@@ -149,8 +181,7 @@ protected:
 
   virtual qint64 bytesAvailable() const;
   bool atEnd() const override;
-  virtual void abort()
-  {}
+  virtual void abort() {}
   virtual qint64 readData( char * data, qint64 maxSize );
 
   // We use the hackery below to work around the fact that we need to emit
@@ -164,7 +195,7 @@ private slots:
 
   void reqUpdated();
   void reqFinished();
-  
+
   void readyReadSlot();
   void finishedSlot();
 };
@@ -182,8 +213,7 @@ public:
     return -1;
   }
 
-  virtual void abort()
-  {}
+  virtual void abort() {}
 
 protected:
 
@@ -199,14 +229,16 @@ private slots:
   void finishedSlot();
 };
 
-class LocalSchemeHandler : public QWebEngineUrlSchemeHandler
+class LocalSchemeHandler: public QWebEngineUrlSchemeHandler
 {
   Q_OBJECT
+
 public:
-  LocalSchemeHandler( ArticleNetworkAccessManager & articleNetMgr, QObject *parent = nullptr);
+  LocalSchemeHandler( ArticleNetworkAccessManager & articleNetMgr, QObject * parent = nullptr );
   void requestStarted( QWebEngineUrlRequestJob * requestJob );
 
 protected:
+
 private:
   ArticleNetworkAccessManager & mManager;
   QNetworkAccessManager mgr;

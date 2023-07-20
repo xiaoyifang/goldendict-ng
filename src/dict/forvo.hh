@@ -17,11 +17,8 @@ using std::vector;
 using std::string;
 using gd::wstring;
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      Dictionary::Initializing &,
-                                      Config::Forvo const &,
-                                      QNetworkAccessManager & )
-    ;
+vector< sptr< Dictionary::Class > >
+makeDictionaries( Dictionary::Initializing &, Config::Forvo const &, QNetworkAccessManager & );
 
 /// Exposed here for moc
 class ForvoArticleRequest: public Dictionary::DataRequest
@@ -35,8 +32,11 @@ class ForvoArticleRequest: public Dictionary::DataRequest
     bool finished;
 
     NetReply( sptr< QNetworkReply > const & reply_, string const & word_ ):
-      reply( reply_ ), word( word_ ), finished( false )
-    {}
+      reply( reply_ ),
+      word( word_ ),
+      finished( false )
+    {
+    }
   };
 
   typedef std::list< NetReply > NetReplies;
@@ -46,7 +46,8 @@ class ForvoArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ForvoArticleRequest( wstring const & word, vector< wstring > const & alts,
+  ForvoArticleRequest( wstring const & word,
+                       vector< wstring > const & alts,
                        QString const & apiKey_,
                        QString const & languageCode_,
                        string const & dictionaryId_,
@@ -62,6 +63,6 @@ private slots:
   virtual void requestFinished( QNetworkReply * );
 };
 
-}
+} // namespace Forvo
 
 #endif

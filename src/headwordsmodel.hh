@@ -6,7 +6,7 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
-class HeadwordListModel : public QAbstractListModel
+class HeadwordListModel: public QAbstractListModel
 {
   Q_OBJECT
 

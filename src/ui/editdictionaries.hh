@@ -21,7 +21,8 @@ class EditDictionaries: public QDialog
 
 public:
 
-  EditDictionaries( QWidget * parent, Config::Class & cfg,
+  EditDictionaries( QWidget * parent,
+                    Config::Class & cfg,
                     std::vector< sptr< Dictionary::Class > > & dictionaries,
                     Instances::Groups & groupInstances, // We only clear those on rescan
                     QNetworkAccessManager & dictNetMgr );
@@ -33,16 +34,20 @@ public:
 
   /// Returns true if any changes to the 'dictionaries' vector passed were done.
   bool areDictionariesChanged() const
-  { return dictionariesChanged; }
+  {
+    return dictionariesChanged;
+  }
 
   /// Returns true if groups were changed.
   bool areGroupsChanged() const
-  { return groupsChanged; }
+  {
+    return groupsChanged;
+  }
 
 protected:
 
   virtual void accept();
-  
+
 private slots:
 
   void currentChanged( int index );
@@ -67,7 +72,7 @@ private:
   void save( bool rebuildGroups = false );
 
 private:
-   
+
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > & dictionaries;
   Instances::Groups & groupInstances;

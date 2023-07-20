@@ -12,16 +12,17 @@ using std::vector;
 Groups::Groups( QWidget * parent,
                 vector< sptr< Dictionary::Class > > const & dicts_,
                 Config::Groups const & groups_,
-                Config::Group const & order ): QWidget( parent ),
-  dicts( dicts_ ), groups( groups_ )
+                Config::Group const & order ):
+  QWidget( parent ),
+  dicts( dicts_ ),
+  groups( groups_ )
 {
   ui.setupUi( this );
 
   // Populate the dictionaries' list
 
   ui.dictionaries->setAsSource();
-  ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries,
-                             dicts );
+  ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
 
   ui.searchLine->applyTo( ui.dictionaries );
   addAction( ui.searchLine->getFocusAction() );
@@ -65,10 +66,8 @@ Groups::Groups( QWidget * parent,
 
 void Groups::editGroup( unsigned id )
 {
-  for( int x = 0; x < groups.size(); ++x )
-  {
-    if ( groups[ x ].id == id )
-    {
+  for ( int x = 0; x < groups.size(); ++x ) {
+    if ( groups[ x ].id == id ) {
       ui.groups->setCurrentIndex( x );
       ui.groups->currentWidget()->setFocus();
       break;
@@ -81,8 +80,7 @@ void Groups::updateDictionaryOrder( Config::Group const & order )
   // Make sure it differs from what we have
   Instances::Group newOrder( order, dicts, Config::Group() );
 
-  if( ui.dictionaries->getCurrentDictionaries() != newOrder.dictionaries )
-  {
+  if ( ui.dictionaries->getCurrentDictionaries() != newOrder.dictionaries ) {
     // Repopulate
     ui.dictionaries->populate( newOrder.dictionaries, dicts );
   }
@@ -102,7 +100,8 @@ void Groups::countChanged()
   ui.removeAllGroups->setEnabled( en );
 
   int stretch = ui.groups->count() / 5;
-  if( stretch > 3 ) stretch = 3;
+  if ( stretch > 3 )
+    stretch = 3;
   ui.gridLayout->setColumnStretch( 2, stretch );
 }
 
@@ -110,12 +109,14 @@ void Groups::addNew()
 {
   bool ok;
 
-  QString name = QInputDialog::getText( this, tr( "Add group" ),
-                                  tr("Give a name for the new group:"), QLineEdit::Normal,
-                                  "", &ok );
+  QString name = QInputDialog::getText( this,
+                                        tr( "Add group" ),
+                                        tr( "Give a name for the new group:" ),
+                                        QLineEdit::Normal,
+                                        "",
+                                        &ok );
 
-  if ( ok )
-  {
+  if ( ok ) {
     ui.groups->addNewGroup( name );
     countChanged();
   }
@@ -127,12 +128,14 @@ void Groups::addAutoGroups()
   countChanged();
 }
 
-void Groups::addAutoGroupsByFolders() {
+void Groups::addAutoGroupsByFolders()
+{
   ui.groups->addAutoGroupsByFolders();
   countChanged();
 }
 
-void Groups::groupsByMetadata() {
+void Groups::groupsByMetadata()
+{
   ui.groups->groupsByMetadata();
   countChanged();
 }
@@ -145,9 +148,12 @@ void Groups::renameCurrent()
 
   bool ok;
 
-  QString name = QInputDialog::getText( this, tr("Rename group"),
-                                  tr("Give a new name for the group:"), QLineEdit::Normal,
-                                  ui.groups->getCurrentGroupName(), &ok );
+  QString name = QInputDialog::getText( this,
+                                        tr( "Rename group" ),
+                                        tr( "Give a new name for the group:" ),
+                                        QLineEdit::Normal,
+                                        ui.groups->getCurrentGroupName(),
+                                        &ok );
 
   if ( ok )
     ui.groups->renameCurrentGroup( name );
@@ -157,10 +163,14 @@ void Groups::removeCurrent()
 {
   int current = ui.groups->currentIndex();
 
-  if ( current >= 0 && QMessageBox::question( this, tr( "Remove group" ),
-         tr( "Are you sure you want to remove the group <b>%1</b>?" ).arg( ui.groups->getCurrentGroupName() ),
-         QMessageBox::Yes, QMessageBox::Cancel ) == QMessageBox::Yes )
-  {
+  if ( current >= 0
+       && QMessageBox::question(
+            this,
+            tr( "Remove group" ),
+            tr( "Are you sure you want to remove the group <b>%1</b>?" ).arg( ui.groups->getCurrentGroupName() ),
+            QMessageBox::Yes,
+            QMessageBox::Cancel )
+         == QMessageBox::Yes ) {
     ui.groups->removeCurrentGroup();
     countChanged();
   }
@@ -170,10 +180,13 @@ void Groups::removeAll()
 {
   int current = ui.groups->currentIndex();
 
-  if ( current >= 0 && QMessageBox::question( this, tr( "Remove all groups" ),
-         tr( "Are you sure you want to remove all the groups?" ),
-         QMessageBox::Yes, QMessageBox::Cancel ) == QMessageBox::Yes )
-  {
+  if ( current >= 0
+       && QMessageBox::question( this,
+                                 tr( "Remove all groups" ),
+                                 tr( "Are you sure you want to remove all the groups?" ),
+                                 QMessageBox::Yes,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Yes ) {
     ui.groups->removeAllGroups();
     countChanged();
   }
@@ -183,8 +196,7 @@ void Groups::addToGroup()
 {
   int current = ui.groups->currentIndex();
 
-  if ( current >= 0 )
-  {
+  if ( current >= 0 ) {
     ui.groups->getCurrentModel()->addSelectedUniqueFromModel( ui.dictionaries->selectionModel() );
   }
 }
@@ -193,28 +205,26 @@ void Groups::removeFromGroup()
 {
   int current = ui.groups->currentIndex();
 
-  if ( current >= 0 )
-  {
+  if ( current >= 0 ) {
     ui.groups->getCurrentModel()->removeSelectedRows( ui.groups->getCurrentSelectionModel() );
   }
 }
 
 void Groups::showDictInfo( QPoint const & pos )
 {
-  QVariant data = ui.dictionaries->getModel()->data(
-        ui.searchLine->mapToSource(ui.dictionaries->indexAt( pos ) ), Qt::EditRole );
+  QVariant data =
+    ui.dictionaries->getModel()->data( ui.searchLine->mapToSource( ui.dictionaries->indexAt( pos ) ), Qt::EditRole );
   QString id;
-  if( data.canConvert< QString >() )
+  if ( data.canConvert< QString >() )
     id = data.toString();
 
-  if( !id.isEmpty() )
-  {
+  if ( !id.isEmpty() ) {
     vector< sptr< Dictionary::Class > > const & dicts = ui.dictionaries->getCurrentDictionaries();
     unsigned n;
-    for( n = 0; n < dicts.size(); n++ )
-      if( id.compare( QString::fromUtf8( dicts.at( n )->getId().c_str() ) ) == 0 )
+    for ( n = 0; n < dicts.size(); n++ )
+      if ( id.compare( QString::fromUtf8( dicts.at( n )->getId().c_str() ) ) == 0 )
         break;
-    if( n < dicts.size() )
+    if ( n < dicts.size() )
       emit showDictionaryInfo( id );
   }
 }
@@ -222,24 +232,22 @@ void Groups::showDictInfo( QPoint const & pos )
 void Groups::fillGroupsMenu()
 {
   groupsListMenu->clear();
-  for( int i = 0; i < ui.groups->count(); i++ )
-  {
+  for ( int i = 0; i < ui.groups->count(); i++ ) {
     QAction * act = groupsListMenu->addAction( ui.groups->tabText( i ) );
     act->setData( i );
-    if (ui.groups->currentIndex() == i)
-    {
+    if ( ui.groups->currentIndex() == i ) {
       QFont f( act->font() );
       f.setBold( true );
       act->setFont( f );
     }
   }
 
-  if( groupsListMenu->actions().size() > 1 )
+  if ( groupsListMenu->actions().size() > 1 )
     groupsListMenu->setActiveAction( groupsListMenu->actions().at( ui.groups->currentIndex() ) );
 }
 
 void Groups::switchToGroup( QAction * act )
 {
   int idx = act->data().toInt();
-  ui.groups->setCurrentIndex(idx);
+  ui.groups->setCurrentIndex( idx );
 }

@@ -13,6 +13,6 @@ namespace Romaji {
 using std::vector;
 
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & );
-}
+} // namespace Romaji
 
 #endif

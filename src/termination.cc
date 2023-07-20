@@ -11,7 +11,7 @@ static void termHandler()
 {
   qDebug() << "GoldenDict has crashed unexpectedly.\n\n";
 
-  if( logFilePtr && logFilePtr->isOpen() )
+  if ( logFilePtr && logFilePtr->isOpen() )
     logFilePtr->close();
 
   abort();

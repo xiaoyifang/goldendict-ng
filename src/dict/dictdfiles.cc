@@ -24,7 +24,7 @@
 #include <QRegularExpression>
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 namespace DictdFiles {
@@ -50,25 +50,24 @@ DEF_EX( exMalformedIndexFileLine, "Malformed index file line encountered", Dicti
 DEF_EX( exInvalidBase64, "Invalid base64 sequence encountered", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
-enum
-{
-  Signature = 0x58444344, // DCDX on little-endian, XDCD on big-endian
+enum {
+  Signature            = 0x58444344, // DCDX on little-endian, XDCD on big-endian
   CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
 {
-  uint32_t signature; // First comes the signature, DCDX
-  uint32_t formatVersion; // File format version (CurrentFormatVersion)
-  uint32_t wordCount; // Total number of words
-  uint32_t articleCount; // Total number of articles
+  uint32_t signature;             // First comes the signature, DCDX
+  uint32_t formatVersion;         // File format version (CurrentFormatVersion)
+  uint32_t wordCount;             // Total number of words
+  uint32_t articleCount;          // Total number of articles
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
-  uint32_t langFrom;  // Source language
-  uint32_t langTo;    // Target language
+  uint32_t langFrom; // Source language
+  uint32_t langTo;   // Target language
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -78,9 +77,8 @@ bool indexIsOldOrBad( string const & indexFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion;
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion;
 }
 
 class DictdDictionary: public BtreeIndexing::BtreeDictionary
@@ -93,50 +91,57 @@ class DictdDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  DictdDictionary( string const & id, string const & indexFile,
-                   vector< string > const & dictionaryFiles );
+  DictdDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   ~DictdDictionary();
 
   string getName() noexcept override
-  { return dictionaryName; }
+  {
+    return dictionaryName;
+  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
-  { return map< Dictionary::Property, string >(); }
+  {
+    return map< Dictionary::Property, string >();
+  }
 
   unsigned long getArticleCount() noexcept override
-  { return idxHeader.articleCount; }
+  {
+    return idxHeader.articleCount;
+  }
 
   unsigned long getWordCount() noexcept override
-  { return idxHeader.wordCount; }
+  {
+    return idxHeader.wordCount;
+  }
 
   void loadIcon() noexcept override;
 
   inline quint32 getLangFrom() const override
-  { return idxHeader.langFrom; }
+  {
+    return idxHeader.langFrom;
+  }
 
   inline quint32 getLangTo() const override
-  { return idxHeader.langTo; }
+  {
+    return idxHeader.langTo;
+  }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  QString const& getDescription() override;
+  QString const & getDescription() override;
 
   sptr< Dictionary::DataRequest >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled
-              && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
-              && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    can_FTS = fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
+      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 };
 
@@ -153,8 +158,7 @@ DictdDictionary::DictdDictionary( string const & id,
   idx.seek( sizeof( idxHeader ) );
 
   vector< char > dName( idx.read< uint32_t >() );
-  if( dName.size() > 0 )
-  {
+  if ( dName.size() > 0 ) {
     idx.read( &dName.front(), dName.size() );
     dictionaryName = string( &dName.front(), dName.size() );
   }
@@ -165,14 +169,11 @@ DictdDictionary::DictdDictionary( string const & id,
   dz = dict_data_open( dictionaryFiles[ 1 ].c_str(), &error, 0 );
 
   if ( !dz )
-    throw exDictzipError( string( dz_error_str( error ) )
-                          + "(" + getDictionaryFilenames()[ 1 ] + ")" );
+    throw exDictzipError( string( dz_error_str( error ) ) + "(" + getDictionaryFilenames()[ 1 ] + ")" );
 
   // Initialize the index
 
-  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                        idxHeader.indexRootOffset ),
-             idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
   // Full-text search parameters
 
@@ -205,7 +206,7 @@ string nameFromFileName( string const & indexFileName )
   if ( !dot )
     dot = indexFileName.c_str() + indexFileName.size();
 
-  return  string( sep + 1, dot - sep - 1 );
+  return string( sep + 1, dot - sep - 1 );
 }
 
 void DictdDictionary::loadIcon() noexcept
@@ -218,10 +219,9 @@ void DictdDictionary::loadIcon() noexcept
   // Remove the extension
   fileName.chop( 5 );
 
-  if( !loadIconFromFile( fileName ) )
-  {
+  if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons
-    dictionaryIcon = QIcon(":/icons/icon32_dictd.png");
+    dictionaryIcon = QIcon( ":/icons/icon32_dictd.png" );
   }
 
   dictionaryIconLoaded = true;
@@ -233,8 +233,7 @@ uint32_t decodeBase64( string const & str )
 
   uint32_t number = 0;
 
-  for( char const * next = str.c_str(); *next; ++next )
-  {
+  for ( char const * next = str.c_str(); *next; ++next ) {
     char const * d = strchr( digits, *next );
 
     if ( !d )
@@ -250,14 +249,12 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
                                                              vector< wstring > const & alts,
                                                              wstring const &,
                                                              bool ignoreDiacritics )
-  
+
 {
-  try
-  {
+  try {
     vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-    for( unsigned x = 0; x < alts.size(); ++x )
-    {
+    for ( unsigned x = 0; x < alts.size(); ++x ) {
       /// Make an additional query for each alt
 
       vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
@@ -272,13 +269,12 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
                                       // by only allowing them to appear once.
 
     wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-    if( ignoreDiacritics )
+    if ( ignoreDiacritics )
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
     char buf[ 16384 ];
 
-    for( unsigned x = 0; x < chain.size(); ++x )
-    {
+    for ( unsigned x = 0; x < chain.size(); ++x ) {
       if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
         continue; // We already have this article in the body.
 
@@ -306,15 +302,13 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       uint32_t articleOffset = decodeBase64( string( tab1 + 1, tab2 - tab1 - 1 ) );
 
-      char * tab3 = strchr( tab2 + 1, '\t');
+      char * tab3 = strchr( tab2 + 1, '\t' );
 
       uint32_t articleSize;
-      if ( tab3 )
-      {
-         articleSize = decodeBase64( string( tab2 + 1, tab3 - tab2 - 1 ) );
+      if ( tab3 ) {
+        articleSize = decodeBase64( string( tab2 + 1, tab3 - tab2 - 1 ) );
       }
-      else
-      {
+      else {
         articleSize = decodeBase64( tab2 + 1 );
       }
 
@@ -326,25 +320,21 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
       }
 
-      if ( !articleBody )
-      {
-        articleText = string( "<div class=\"dictd_article\">DICTZIP error: " )
-                      + dict_error_str( dz ) + "</div>";
+      if ( !articleBody ) {
+        articleText = string( "<div class=\"dictd_article\">DICTZIP error: " ) + dict_error_str( dz ) + "</div>";
       }
-      else
-      {
+      else {
         static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                             QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
         static QRegularExpression refs( R"(\{([^\{\}]+)\})",
-                                        QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
+                                        QRegularExpression::CaseInsensitiveOption ); // links: {stuff}
         static QRegularExpression links( "<a href=\"gdlookup://localhost/([^\"]*)\">",
                                          QRegularExpression::CaseInsensitiveOption );
-        static QRegularExpression tags( "<[^>]*>",
-                                        QRegularExpression::CaseInsensitiveOption );
+        static QRegularExpression tags( "<[^>]*>", QRegularExpression::CaseInsensitiveOption );
 
 
         articleText = string( "<div class=\"dictd_article\"" );
-        if( isToLanguageRTL() )
+        if ( isToLanguageRTL() )
           articleText += " dir=\"rtl\"";
         articleText += ">";
 
@@ -352,16 +342,15 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         free( articleBody );
 
         QString articleString = QString::fromUtf8( convertedText.c_str() )
-                                .replace(phonetic, R"(<span class="dictd_phonetic">\1</span>)")
-                                .replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)");
+                                  .replace( phonetic, R"(<span class="dictd_phonetic">\1</span>)" )
+                                  .replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
         convertedText.erase();
 
         int pos = 0;
 
         QString articleNewString;
         QRegularExpressionMatchIterator it = links.globalMatch( articleString );
-        while( it.hasNext() )
-        {
+        while ( it.hasNext() ) {
           QRegularExpressionMatch match = it.next();
           articleNewString += articleString.mid( pos, match.capturedStart() - pos );
           pos = match.capturedEnd();
@@ -371,12 +360,12 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
           link.replace( "&nbsp;", " " );
 
           QString newLink = match.captured();
-          newLink.replace( 30, match.capturedLength( 1 ),
+          newLink.replace( 30,
+                           match.capturedLength( 1 ),
                            QString::fromUtf8( QUrl::toPercentEncoding( link.simplified() ) ) );
           articleNewString += newLink;
         }
-        if( pos )
-        {
+        if ( pos ) {
           articleNewString += articleString.mid( pos );
           articleString = articleNewString;
           articleNewString.clear();
@@ -393,33 +382,29 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped =
-        Folding::applySimpleCaseOnly( chain[ x ].word );
-      if( ignoreDiacritics )
+      wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+      if ( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
       multimap< wstring, string > & mapToUse =
-        ( wordCaseFolded == headwordStripped ) ?
-          mainArticles : alternateArticles;
+        ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-      mapToUse.insert( pair(
-        Folding::applySimpleCaseOnly(  chain[ x ].word  ),
-        articleText ) );
+      mapToUse.insert( pair( Folding::applySimpleCaseOnly( chain[ x ].word ), articleText ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );
     }
 
     if ( mainArticles.empty() && alternateArticles.empty() )
-      return std::make_shared<Dictionary::DataRequestInstant>( false );
+      return std::make_shared< Dictionary::DataRequestInstant >( false );
 
     string result;
 
     multimap< wstring, string >::const_iterator i;
 
-    for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
+    for ( i = mainArticles.begin(); i != mainArticles.end(); ++i )
       result += i->second;
 
-    for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
+    for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
       result += i->second;
 
     auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
@@ -427,30 +412,27 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
     return ret;
   }
-  catch( std::exception & e )
-  {
-    return std::make_shared<Dictionary::DataRequestInstant>( QString( e.what() ) );
+  catch ( std::exception & e ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( QString( e.what() ) );
   }
 }
 
-QString const& DictdDictionary::getDescription()
+QString const & DictdDictionary::getDescription()
 {
-    if( !dictionaryDescription.isEmpty() )
-        return dictionaryDescription;
-
-    sptr< Dictionary::DataRequest > req =
-      getArticle(  U"00databaseinfo" , vector< wstring >(), wstring(), false );
-
-    if ( req->dataSize() > 0 ) {
-      dictionaryDescription =
-        Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
-                        Html::HtmlOption::Keep );
-    }
-    else {
-      dictionaryDescription = "NONE";
-    }
-
+  if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
+
+  sptr< Dictionary::DataRequest > req = getArticle( U"00databaseinfo", vector< wstring >(), wstring(), false );
+
+  if ( req->dataSize() > 0 ) {
+    dictionaryDescription = Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
+                                            Html::HtmlOption::Keep );
+  }
+  else {
+    dictionaryDescription = "NONE";
+  }
+
+  return dictionaryDescription;
 }
 
 void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
@@ -462,22 +444,19 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteratio
   if ( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
+  if ( ensureInitDone().size() )
     return;
 
-  if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
+  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
     return;
 
-  gdDebug( "DictD: Building the full-text index for dictionary: %s\n",
-           getName().c_str() );
+  gdDebug( "DictD: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
-  try
-  {
+  try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
@@ -485,8 +464,7 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteratio
 
 void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )
 {
-  try
-  {
+  try {
     char buf[ 16384 ];
     {
       QMutexLocker _( &indexFileMutex );
@@ -512,15 +490,13 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
 
     uint32_t articleOffset = decodeBase64( string( tab1 + 1, tab2 - tab1 - 1 ) );
 
-    char * tab3 = strchr( tab2 + 1, '\t');
+    char * tab3 = strchr( tab2 + 1, '\t' );
 
     uint32_t articleSize;
-    if ( tab3 )
-    {
+    if ( tab3 ) {
       articleSize = decodeBase64( string( tab2 + 1, tab3 - tab2 - 1 ) );
     }
-    else
-    {
+    else {
       articleSize = decodeBase64( tab2 + 1 );
     }
 
@@ -532,29 +508,26 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
       articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
     }
 
-    if ( !articleBody )
-    {
+    if ( !articleBody ) {
       articleText = dict_error_str( dz );
     }
-    else
-    {
+    else {
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                           QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
       static QRegularExpression refs( R"(\{([^\{\}]+)\})",
-                                      QRegularExpression::CaseInsensitiveOption );     // links: {stuff}
+                                      QRegularExpression::CaseInsensitiveOption ); // links: {stuff}
 
       string convertedText = Html::preformat( articleBody, isToLanguageRTL() );
       free( articleBody );
 
       text = QString::fromUtf8( convertedText.data(), convertedText.size() )
-            .replace(phonetic, R"(<span class="dictd_phonetic">\1</span>)")
-            .replace(refs, R"(<a href="gdlookup://localhost/\1">\1</a>)");
+               .replace( phonetic, R"(<span class="dictd_phonetic">\1</span>)" )
+               .replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
       text = Html::unescape( text );
     }
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "DictD: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
   }
 }
@@ -571,25 +544,20 @@ DictdDictionary::getSearchResults( QString const & searchString, int searchMode,
 
 } // anonymous namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
     // Only allow .index suffixes
 
-    if ( i->size() < 6 ||
-         strcasecmp( i->c_str() + ( i->size() - 6 ), ".index" ) != 0 )
+    if ( i->size() < 6 || strcasecmp( i->c_str() + ( i->size() - 6 ), ".index" ) != 0 )
       continue;
 
-    try
-    {
+    try {
       vector< string > dictFiles( 1, *i );
 
       // Check if there is an 'abrv' file present
@@ -597,9 +565,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       dictFiles.push_back( string() );
 
-      if ( !File::tryPossibleName( baseName + "dict", dictFiles[ 1 ] ) &&
-           !File::tryPossibleName( baseName + "dict.dz", dictFiles[ 1 ] ) )
-      {
+      if ( !File::tryPossibleName( baseName + "dict", dictFiles[ 1 ] )
+           && !File::tryPossibleName( baseName + "dict.dz", dictFiles[ 1 ] ) ) {
         // No corresponding .dict file, skipping
         continue;
       }
@@ -608,9 +575,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-           indexIsOldOrBad( indexFile ) )
-      {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
         string dictionaryName = nameFromFileName( dictFiles[ 0 ] );
 
@@ -637,8 +602,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         char buf[ 16384 ];
 
-        do
-        {
+        do {
           uint32_t curOffset = indexFile.tell();
 
           if ( !indexFile.gets( buf, sizeof( buf ), true ) )
@@ -646,17 +610,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           // Check that there are exactly two or three tabs in the record.
           char * tab1 = strchr( buf, '\t' );
-          if ( tab1 )
-          {
+          if ( tab1 ) {
             char * tab2 = strchr( tab1 + 1, '\t' );
-            if ( tab2 )
-            {
-              char * tab3 = strchr( tab2 + 1, '\t');
-              if ( tab3 )
-              {
-                char * tab4 = strchr( tab3 + 1, '\t');
-                if ( tab4 )
-                {
+            if ( tab2 ) {
+              char * tab3 = strchr( tab2 + 1, '\t' );
+              if ( tab3 ) {
+                char * tab4 = strchr( tab3 + 1, '\t' );
+                if ( tab4 ) {
                   GD_DPRINTF( "Warning: too many tabs present, skipping: %s\n", buf );
                   continue;
                 }
@@ -664,7 +624,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                 // Handle the forth entry, if it exists. From dictfmt man:
                 // When --index-keep-orig option is used fourth column is created
                 // (if necessary) in .index file.
-                indexedWords.addWord( Utf8::decode( string( tab3 + 1, strlen ( tab3 + 1 ) ) ), curOffset );
+                indexedWords.addWord( Utf8::decode( string( tab3 + 1, strlen( tab3 + 1 ) ) ), curOffset );
                 ++idxHeader.wordCount;
               }
               indexedWords.addWord( Utf8::decode( string( buf, strchr( buf, '\t' ) - buf ) ), curOffset );
@@ -672,28 +632,26 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
               ++idxHeader.articleCount;
 
               // Check for proper dictionary name
-              if ( !strncmp( buf, "00databaseshort", 15 ) || !strncmp( buf, "00-database-short", 17 ) )
-              {
+              if ( !strncmp( buf, "00databaseshort", 15 ) || !strncmp( buf, "00-database-short", 17 ) ) {
                 // After tab1 should be article offset, after tab2 -- article size
                 uint32_t articleOffset = decodeBase64( string( tab1 + 1, tab2 - tab1 - 1 ) );
-                uint32_t articleSize = decodeBase64( tab2 + 1 );
+                uint32_t articleSize   = decodeBase64( tab2 + 1 );
 
                 DZ_ERRORS error;
                 dictData * dz = dict_data_open( dictFiles[ 1 ].c_str(), &error, 0 );
 
-                if ( dz )
-                {
+                if ( dz ) {
                   char * articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
-                  if ( articleBody )
-                  {
+                  if ( articleBody ) {
                     char * eol;
-                    if ( !strncmp( articleBody, "00databaseshort", 15 ) || !strncmp( articleBody, "00-database-short", 17 ) )
-                      eol = strchr( articleBody, '\n'  ); // skip the first line (headword itself)
+                    if ( !strncmp( articleBody, "00databaseshort", 15 )
+                         || !strncmp( articleBody, "00-database-short", 17 ) )
+                      eol = strchr( articleBody, '\n' ); // skip the first line (headword itself)
                     else
                       eol = articleBody; // No headword itself
-                    if ( eol )
-                    {
-                      while( *eol && Utf8::isspace( *eol ) ) ++eol; // skip spaces
+                    if ( eol ) {
+                      while ( *eol && Utf8::isspace( *eol ) )
+                        ++eol; // skip spaces
 
                       // use only the single line for the dictionary title
                       char * endEol = strchr( eol, '\n' );
@@ -707,29 +665,26 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
                   dict_data_close( dz );
                 }
                 else
-                  throw exDictzipError( string( dz_error_str( error ) )
-                                        + "(" + dictFiles[ 1 ] + ")" );
+                  throw exDictzipError( string( dz_error_str( error ) ) + "(" + dictFiles[ 1 ] + ")" );
               }
             }
-            else
-            {
+            else {
               GD_DPRINTF( "Warning: only a single tab present, skipping: %s\n", buf );
               continue;
             }
           }
-          else
-          {
+          else {
             GD_DPRINTF( "Warning: no tabs present, skipping: %s\n", buf );
             continue;
           }
 
 
-        } while( !indexFile.eof() );
+        } while ( !indexFile.eof() );
 
 
         // Write dictionary name
 
-        idx.write( (uint32_t) dictionaryName.size() );
+        idx.write( (uint32_t)dictionaryName.size() );
         idx.write( dictionaryName.data(), dictionaryName.size() );
 
         // Build index
@@ -737,44 +692,37 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
 
         idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-        idxHeader.indexRootOffset = idxInfo.rootOffset;
+        idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
         // That concludes it. Update the header.
 
-        idxHeader.signature = Signature;
+        idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
         // read languages
-        QPair<quint32,quint32> langs =
-            LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
 
         // if no languages found, try dictionary's name
-        if ( langs.first == 0 || langs.second == 0 )
-        {
-          langs =
-            LangCoder::findIdsForFilename( QString::fromStdString( nameFromFileName( dictFiles[ 0 ] ) ) );
+        if ( langs.first == 0 || langs.second == 0 ) {
+          langs = LangCoder::findIdsForFilename( QString::fromStdString( nameFromFileName( dictFiles[ 0 ] ) ) );
         }
 
         idxHeader.langFrom = langs.first;
-        idxHeader.langTo = langs.second;
+        idxHeader.langTo   = langs.second;
 
         idx.rewind();
 
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
 
-      dictionaries.push_back( std::make_shared<DictdDictionary>( dictId,
-                                                   indexFile,
-                                                   dictFiles ) );
+      dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
-    catch( std::exception & e )
-    {
-      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n",
-                 i->c_str(), e.what() );
+    catch ( std::exception & e ) {
+      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", i->c_str(), e.what() );
     }
   }
 
   return dictionaries;
 }
 
-}
+} // namespace DictdFiles

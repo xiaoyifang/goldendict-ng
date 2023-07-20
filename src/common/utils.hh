@@ -14,13 +14,10 @@
 #include <QWidget>
 #include "filetype.hh"
 
-namespace Utils
-{
+namespace Utils {
 inline bool isCJKChar( ushort ch )
 {
-  if( ( ch >= 0x3400 && ch <= 0x9FFF )
-      || ( ch >= 0xF900 && ch <= 0xFAFF )
-      || ( ch >= 0xD800 && ch <= 0xDFFF ) )
+  if ( ( ch >= 0x3400 && ch <= 0x9FFF ) || ( ch >= 0xF900 && ch <= 0xFAFF ) || ( ch >= 0xD800 && ch <= 0xDFFF ) )
     return true;
 
   return false;
@@ -28,11 +25,12 @@ inline bool isCJKChar( ushort ch )
 /**
  * remove right end space
  */
-inline QString rstrip(const QString &str) {
+inline QString rstrip( const QString & str )
+{
   int n = str.size() - 1;
-  for (; n >= 0; --n) {
-    if (!str.at(n).isSpace()) {
-      return str.left(n + 1);
+  for ( ; n >= 0; --n ) {
+    if ( !str.at( n ).isSpace() ) {
+      return str.left( n + 1 );
     }
   }
   return {};
@@ -50,22 +48,18 @@ inline QString trimNonChar( const QString & str )
 {
   QString remain;
   int n = str.size() - 1;
-  for( ; n >= 0; --n )
-  {
+  for ( ; n >= 0; --n ) {
     auto c = str.at( n );
-    if( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct()&& !c.isNull() )
-    {
+    if ( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct() && !c.isNull() ) {
       remain = str.left( n + 1 );
       break;
     }
   }
 
   n = 0;
-  for( ; n < remain.size(); n++ )
-  {
+  for ( ; n < remain.size(); n++ ) {
     auto c = remain.at( n );
-    if( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct() )
-    {
+    if ( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct() ) {
       return remain.mid( n );
     }
   }
@@ -79,38 +73,39 @@ inline QString trimNonChar( const QString & str )
  * @param str
  * @return
  */
-inline QString rstripnull(const QString &str) {
+inline QString rstripnull( const QString & str )
+{
   int n = str.size() - 1;
-  for (; n >= 0; --n) {
-    auto c = str.at(n);
-    if (!c.isSpace()&&!c.isNull()) {
-      return str.left(n + 1);
+  for ( ; n >= 0; --n ) {
+    auto c = str.at( n );
+    if ( !c.isSpace() && !c.isNull() ) {
+      return str.left( n + 1 );
     }
   }
   return "";
 }
 
-inline bool isExternalLink(QUrl const &url) {
-  return url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp" || url.scheme() == "mailto" ||
-         url.scheme() == "file" || url.toString().startsWith( "//" );
+inline bool isExternalLink( QUrl const & url )
+{
+  return url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp" || url.scheme() == "mailto"
+    || url.scheme() == "file" || url.toString().startsWith( "//" );
 }
 
-inline bool isHtmlResources(QUrl const &url) {
-  auto fileName = url.fileName();
+inline bool isHtmlResources( QUrl const & url )
+{
+  auto fileName   = url.fileName();
   qsizetype index = fileName.lastIndexOf( "." );
   QStringList extensions{ ".css", ".woff", ".woff2", ".ttf", ".otf", ".bmp", ".jpg",  ".png", ".gif", ".tif",
                           ".wav", ".ogg",  ".oga",   ".mp3", ".mp4", ".aac", ".flac", ".mid", ".wv",  ".ape" };
 
-  if( index > -1 )
-  {
+  if ( index > -1 ) {
     auto ext = fileName.mid( index );
-    if( extensions.contains( ext, Qt::CaseInsensitive ) )
+    if ( extensions.contains( ext, Qt::CaseInsensitive ) )
       return true;
   }
   // some url has the form like  https://xxxx/audio?file=***.mp3&a=1 etc links.
-  for( QString extension : extensions )
-  {
-    if( url.url().contains( extension, Qt::CaseInsensitive ) )
+  for ( QString extension : extensions ) {
+    if ( url.url().contains( extension, Qt::CaseInsensitive ) )
       return true;
   }
   return false;
@@ -122,12 +117,10 @@ inline QString escape( QString const & plain )
 }
 
 // should ignore key event.
-inline bool ignoreKeyEvent(QKeyEvent *keyEvent) {
-  if ( keyEvent->key() == Qt::Key_Space ||
-      keyEvent->key() == Qt::Key_Backspace ||
-      keyEvent->key() == Qt::Key_Tab ||
-      keyEvent->key() == Qt::Key_Backtab ||
-      keyEvent->key() == Qt::Key_Escape)
+inline bool ignoreKeyEvent( QKeyEvent * keyEvent )
+{
+  if ( keyEvent->key() == Qt::Key_Space || keyEvent->key() == Qt::Key_Backspace || keyEvent->key() == Qt::Key_Tab
+       || keyEvent->key() == Qt::Key_Backtab || keyEvent->key() == Qt::Key_Escape )
     return true;
   return false;
 }
@@ -140,25 +133,22 @@ inline QString json2String( const QJsonObject & json )
 inline QStringList repeat( const QString str, const int times )
 {
   QStringList list;
-  for( int i = 0; i < times; i++ )
-  {
+  for ( int i = 0; i < times; i++ ) {
     list << str;
   }
   return list;
 }
 
-namespace AtomicInt
-{
+namespace AtomicInt {
 
 inline int loadAcquire( QAtomicInt const & ref )
 {
   return ref.loadAcquire();
 }
 
-}
+} // namespace AtomicInt
 
-namespace Url
-{
+namespace Url {
 
 // This wrapper is created due to behavior change of the setPath() method
 // See: https://bugreports.qt-project.org/browse/QTBUG-27728
@@ -228,38 +218,31 @@ inline std::pair< bool, QString > getQueryWord( QUrl const & url )
 {
   QString word;
   bool validScheme = false;
-  if( url.scheme().compare( "gdlookup" ) == 0 )
-  {
+  if ( url.scheme().compare( "gdlookup" ) == 0 ) {
     validScheme = true;
-    if( hasQueryItem( url, "word" ) )
-    {
+    if ( hasQueryItem( url, "word" ) ) {
       word = queryItemValue( url, "word" );
     }
-    else
-    {
+    else {
       word = url.path().mid( 1 );
     }
   }
-  if( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 )
-  {
+  if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     validScheme = true;
 
     auto path = url.path();
     // url like this , bword:word  or bword://localhost/word
-    if( !path.isEmpty() )
-    {
+    if ( !path.isEmpty() ) {
       //url,bword://localhost/word
-      if( path.startsWith( "/" ) )
+      if ( path.startsWith( "/" ) )
         word = path.mid( 1 );
       else
         word = path;
     }
-    else
-    {
+    else {
       // url looks like this, bword://word,or bword://localhost
       auto host = url.host();
-      if( host != "localhost" )
-      {
+      if ( host != "localhost" ) {
         word = host;
       }
     }
@@ -272,7 +255,7 @@ inline bool isAudioUrl( QUrl const & url )
   // Note: we check for forvo sound links explicitly, as they don't have extensions
 
   return ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "gdau" )
-         && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
+    && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
 /// Uses some heuristics to chop off the first domain name from the host name,
@@ -283,16 +266,15 @@ inline QString getHostBase( QString const & host )
 
   int left = domains.size();
 
-       // Skip last <=3-letter domain name
+  // Skip last <=3-letter domain name
   if ( left && domains[ left - 1 ].size() <= 3 )
     --left;
 
-       // Skip another <=3-letter domain name
+  // Skip another <=3-letter domain name
   if ( left && domains[ left - 1 ].size() <= 3 )
     --left;
 
-  if ( left > 1 )
-  {
+  if ( left > 1 ) {
     // We've got something like www.foobar.co.uk -- we can chop off the first
     // domain
 
@@ -311,20 +293,20 @@ inline QString getHostBaseFromUrl( QUrl const & url )
 
 QString getSchemeAndHost( QUrl const & url );
 
+} // namespace Url
+
+namespace Path {
+QString combine( const QString & path1, const QString & path2 );
 }
 
-namespace Path{
-QString combine(const QString& path1, const QString& path2);
-}
-
-namespace Widget{
-void setNoResultColor(QWidget * widget, bool noResult);
+namespace Widget {
+void setNoResultColor( QWidget * widget, bool noResult );
 }
 
 namespace Html {
 // See Issue #271: A mechanism to clean-up invalid HTML cards.
 std::string getHtmlCleaner();
-}
+} // namespace Html
 
 /// Utilities to convert a wide string or an utf8 string to the local 8bit
 /// encoding of the file system, and to do other manipulations on the file
@@ -339,7 +321,7 @@ char separator();
 /// Returns the name part of the given filename.
 string basename( string const & );
 
-}
+} // namespace Fs
 
 } // namespace Utils
 

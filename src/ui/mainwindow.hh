@@ -34,11 +34,11 @@
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
 #ifdef HAVE_X11
-#include <fixx11h.h>
+  #include <fixx11h.h>
 #endif
 
-#if defined(Q_OS_MAC)
-#include "macos/gd_clipboard.hh"
+#if defined( Q_OS_MAC )
+  #include "macos/gd_clipboard.hh"
 #endif
 
 using std::string;
@@ -58,11 +58,14 @@ public:
   /// Set group for main/popup window
   void setGroupByName( QString const & name, bool main_window );
 
-  enum class WildcardPolicy { EscapeWildcards, WildcardsAreAlreadyEscaped };
+  enum class WildcardPolicy {
+    EscapeWildcards,
+    WildcardsAreAlreadyEscaped
+  };
 public slots:
 
   void messageFromAnotherInstanceReceived( QString const & );
-  void showStatusBarMessage ( QString const &, int, QPixmap const & );
+  void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );
   void headwordFromFavorites( QString const &, QString const & );
@@ -87,7 +90,7 @@ private:
   QWidget searchPaneTitleBar;
   QHBoxLayout searchPaneTitleBarLayout;
   QLabel groupLabel;
-  GroupComboBox * groupList, * groupListInToolbar, * groupListInDock;
+  GroupComboBox *groupList, *groupListInToolbar, *groupListInDock;
 
   // Needed to be able to show/hide the translate box in the toolbar, since hiding
   // the list expilictily doesn't work, see docs for QToolBar::addWidget().
@@ -102,33 +105,31 @@ private:
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
-  QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction,
-          closeAllTabAction, closeRestTabAction,
-          switchToNextTabAction, switchToPrevTabAction,
-          showDictBarNamesAction, useSmallIconsInToolbarsAction, toggleMenuBarAction,
-          focusHeadwordsDlgAction, focusArticleViewAction,
-          addAllTabToFavoritesAction;
+  QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
+    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
+    useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
+    addAllTabToFavoritesAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
-  QAction * navBack, * navForward, * navPronounce, * enableScanningAction;
+  QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
   QAction * beforeOptionsSeparator;
-  QAction * zoomIn, * zoomOut, * zoomBase;
-  QAction * wordsZoomIn, * wordsZoomOut, * wordsZoomBase;
-  QAction * addToFavorites, * beforeAddToFavoritesSeparator;
+  QAction *zoomIn, *zoomOut, *zoomBase;
+  QAction *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
+  QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
   QMenu * tabMenu;
   QAction * menuButtonAction;
   QToolButton * menuButton;
-  MRUQMenu *tabListMenu;
+  MRUQMenu * tabListMenu;
   //List that contains indexes of tabs arranged in a most-recently-used order
-  QList<QWidget*> mruList;
+  QList< QWidget * > mruList;
   QToolButton addTab, *tabListButton;
   Config::Class & cfg;
   Config::Events configEvents;
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;
-  QMap<std::string, sptr< Dictionary::Class > > dictMap;
+  QMap< std::string, sptr< Dictionary::Class > > dictMap;
   /// Here we store unmuted dictionaries when the dictionary bar is active
   vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups groupInstances;
@@ -171,7 +172,7 @@ private:
   ResourceSchemeHandler * resourceSchemeHandler;
 
 #ifdef Q_OS_MAC
-    gd_clipboard * macClipboard;
+  gd_clipboard * macClipboard;
 #endif
 
 #if defined( Q_OS_LINUX )
@@ -231,6 +232,7 @@ private:
 
     void updateCurrentGroupProperty();
 
+
     /// Handles backward and forward mouse buttons and
     /// returns true if the event is handled.
     bool handleBackForwardMouseButtons( QMouseEvent * ev );
@@ -252,6 +254,7 @@ private:
       EnablePopup,
       DisablePopup
     };
+
 
     /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
     void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
@@ -437,6 +440,7 @@ private:
     /// Add word to history even if history is disabled in options
     void forceAddWordToHistory( const QString & word );
 
+
     void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
     void addBookmarkToFavorite( QString const & text );
@@ -471,9 +475,9 @@ private:
     void setPopupGroupByName( QString const & name );
 };
 
-class ArticleSaveProgressDialog : public QProgressDialog
+class ArticleSaveProgressDialog: public QProgressDialog
 {
-Q_OBJECT
+  Q_OBJECT
 
 public:
   explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
@@ -487,8 +491,7 @@ public slots:
   void perform()
   {
     int progress = value() + 1;
-    if ( progress == maximum() )
-    {
+    if ( progress == maximum() ) {
       emit close();
       deleteLater();
     }

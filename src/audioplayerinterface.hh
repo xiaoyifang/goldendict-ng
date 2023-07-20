@@ -8,9 +8,10 @@
 #include <QString>
 #include <QObject>
 
-class AudioPlayerInterface : public QObject
+class AudioPlayerInterface: public QObject
 {
   Q_OBJECT
+
 public:
   /// Stops current playback if any, copies the audio buffer at [data, data + size),
   /// then plays this buffer. It is safe to invalidate \p data after this function call.

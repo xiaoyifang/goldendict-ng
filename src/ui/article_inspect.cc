@@ -1,11 +1,12 @@
 #include "article_inspect.hh"
 #include <QCloseEvent>
-#if (QT_VERSION > QT_VERSION_CHECK(6,0,0))
-#include <QWebEngineContextMenuRequest>
+#if ( QT_VERSION > QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QWebEngineContextMenuRequest>
 #endif
-ArticleInspector::ArticleInspector( QWidget * parent ) : QWidget( parent, Qt::WindowType::Window )
+ArticleInspector::ArticleInspector( QWidget * parent ):
+  QWidget( parent, Qt::WindowType::Window )
 {
-  setWindowTitle(tr("Inspect"));
+  setWindowTitle( tr( "Inspect" ) );
   setAttribute( Qt::WidgetAttribute::WA_DeleteOnClose, false );
   QVBoxLayout * v = new QVBoxLayout( this );
   v->setSpacing( 0 );
@@ -14,7 +15,7 @@ ArticleInspector::ArticleInspector( QWidget * parent ) : QWidget( parent, Qt::Wi
   v->addWidget( viewContainer );
 
   setInspectPage( nullptr );
-  resize(800,600);
+  resize( 800, 600 );
 }
 
 void ArticleInspector::setInspectPage( QWebEnginePage * page )
@@ -38,13 +39,12 @@ void ArticleInspector::triggerAction( QWebEnginePage * page )
     return;
   }
 
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK(6,3,0) )
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK( 6, 3, 0 ) )
   page->triggerAction( QWebEnginePage::InspectElement );
 #endif
-
 }
 
 void ArticleInspector::closeEvent( QCloseEvent * )
 {
-  viewContainer->page()->setInspectedPage(nullptr);
+  viewContainer->page()->setInspectedPage( nullptr );
 }

@@ -19,7 +19,7 @@ struct EndOfCdirRecord
   quint16 commentLength;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -28,12 +28,11 @@ struct CentralFileHeaderRecord
   quint32 signature;
   quint16 verMadeBy, verNeeded, gpBits, compressionMethod, fileTime, fileDate;
   quint32 crc32, compressedSize, uncompressedSize;
-  quint16 fileNameLength, extraFieldLength, fileCommentLength, diskNumberStart,
-          intFileAttrs;
+  quint16 fileNameLength, extraFieldLength, fileCommentLength, diskNumberStart, intFileAttrs;
   quint32 externalFileAttrs, offsetOfLocalHeader;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -45,26 +44,25 @@ struct LocalFileHeaderRecord
   quint16 fileNameLength, extraFieldLength;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
 #pragma pack( pop )
 
 static quint32 const endOfCdirRecordSignatureValue = qToLittleEndian( 0x06054b50 );
-static quint32 const centralFileHeaderSignature = qToLittleEndian( 0x02014b50 );
-static quint32 const localFileHeaderSignature = qToLittleEndian( 0x04034b50 );
+static quint32 const centralFileHeaderSignature    = qToLittleEndian( 0x02014b50 );
+static quint32 const localFileHeaderSignature      = qToLittleEndian( 0x04034b50 );
 
 static CompressionMethod getCompressionMethod( quint16 compressionMethod )
 {
-  switch( qFromLittleEndian( compressionMethod ) )
-  {
-  case 0:
-    return Uncompressed;
-  case 8:
-    return Deflated;
-  default:
-    return Unsupported;
+  switch ( qFromLittleEndian( compressionMethod ) ) {
+    case 0:
+      return Uncompressed;
+    case 8:
+      return Deflated;
+    default:
+      return Unsupported;
   }
 }
 
@@ -76,8 +74,7 @@ bool positionAtCentralDir( SplitZipFile & zip )
 
   if ( zip.size() > maxEofBufferSize )
     zip.seek( zip.size() - maxEofBufferSize );
-  else
-  if ( (size_t) zip.size() < sizeof( EndOfCdirRecord ) )
+  else if ( (size_t)zip.size() < sizeof( EndOfCdirRecord ) )
     return false;
   else
     zip.seek( 0 );
@@ -96,16 +93,14 @@ bool positionAtCentralDir( SplitZipFile & zip )
 
   quint32 cdir_offset;
 
-  for( ; ; --lastIndex )
-  {
+  for ( ;; --lastIndex ) {
     lastIndex = eocBuffer.lastIndexOf( endOfCdirRecordSignature, lastIndex );
 
     if ( lastIndex == -1 )
       return false;
 
     /// We need to copy it due to possible alignment issues on ARM etc
-    memcpy( &endOfCdirRecord, eocBuffer.data() + lastIndex,
-            sizeof( endOfCdirRecord ) );
+    memcpy( &endOfCdirRecord, eocBuffer.data() + lastIndex, sizeof( endOfCdirRecord ) );
 
     /// Sanitize the record by checking the offset
 
@@ -142,23 +137,23 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
   // Read file name
 
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
-  entry.fileName = zip.read( fileNameLength );
+  entry.fileName     = zip.read( fileNameLength );
 
   if ( entry.fileName.size() != fileNameLength )
     return false;
 
   // Skip extra fields
 
-  if ( !zip.seek( ( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) +
-                  qFromLittleEndian( record.fileCommentLength ) ) )
+  if ( !zip.seek( ( zip.pos() + qFromLittleEndian( record.extraFieldLength ) )
+                  + qFromLittleEndian( record.fileCommentLength ) ) )
     return false;
 
   entry.localHeaderOffset = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
                                                     qFromLittleEndian( record.diskNumberStart ) );
-  entry.compressedSize = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize = qFromLittleEndian( record.uncompressedSize );
+  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
+  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
-  entry.fileNameInUTF8 = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
+  entry.fileNameInUTF8    = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
 
   return true;
 }
@@ -176,7 +171,7 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
   // Read file name
 
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
-  entry.fileName = zip.read( fileNameLength );
+  entry.fileName     = zip.read( fileNameLength );
 
   if ( entry.fileName.size() != fileNameLength )
     return false;
@@ -186,8 +181,8 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
   if ( !zip.seek( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) )
     return false;
 
-  entry.compressedSize = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize = qFromLittleEndian( record.uncompressedSize );
+  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
+  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
 
   return true;
@@ -202,34 +197,29 @@ void SplitZipFile::setFileName( const QString & name )
 {
   {
     QString lname = name.toLower();
-    if( lname.endsWith( ".zips" ) )
-    {
+    if ( lname.endsWith( ".zips" ) ) {
       appendFile( name );
       return;
     }
 
-    if( !lname.endsWith( ".zip" ) )
+    if ( !lname.endsWith( ".zip" ) )
       return;
   }
 
-  if( QFileInfo( name ).isFile() )
-  {
-    for( int i = 1; i < 100; i++ )
-    {
+  if ( QFileInfo( name ).isFile() ) {
+    for ( int i = 1; i < 100; i++ ) {
       QString name2 = name.left( name.size() - 2 ) + QString( "%1" ).arg( i, 2, 10, QChar( '0' ) );
-      if( QFileInfo( name2 ).isFile() )
+      if ( QFileInfo( name2 ).isFile() )
         appendFile( name2 );
       else
         break;
     }
     appendFile( name );
   }
-  else
-  {
-    for( int i = 1; i < 1000; i++ )
-    {
+  else {
+    for ( int i = 1; i < 1000; i++ ) {
       QString name2 = name + QString( ".%1" ).arg( i, 3, 10, QChar( '0' ) );
-      if( QFileInfo( name2 ).isFile() )
+      if ( QFileInfo( name2 ).isFile() )
         appendFile( name2 );
       else
         break;
@@ -240,10 +230,9 @@ void SplitZipFile::setFileName( const QString & name )
 QDateTime SplitZipFile::lastModified() const
 {
   unsigned long ts = 0;
-  for( QVector< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i )
-  {
-    unsigned long t = QFileInfo( (*i)->fileName() ).lastModified().toSecsSinceEpoch();
-    if( t > ts )
+  for ( QVector< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i ) {
+    unsigned long t = QFileInfo( ( *i )->fileName() ).lastModified().toSecsSinceEpoch();
+    if ( t > ts )
       ts = t;
   }
   return QDateTime::fromSecsSinceEpoch( ts );
@@ -251,10 +240,10 @@ QDateTime SplitZipFile::lastModified() const
 
 qint64 SplitZipFile::calcAbsoluteOffset( qint64 offset, quint16 partNo )
 {
-  if( partNo >= offsets.size() )
+  if ( partNo >= offsets.size() )
     return 0;
 
   return offsets.at( partNo ) + offset;
 }
 
-}
+} // namespace ZipFile

@@ -1,19 +1,20 @@
 #ifndef IFRAMESCHEMEHANDLER_H
 #define IFRAMESCHEMEHANDLER_H
 
-#include"article_netmgr.hh"
+#include "article_netmgr.hh"
 
-class IframeSchemeHandler : public QWebEngineUrlSchemeHandler
+class IframeSchemeHandler: public QWebEngineUrlSchemeHandler
 {
-    Q_OBJECT
+  Q_OBJECT
+
 public:
-    IframeSchemeHandler(QObject * parent=nullptr);
-    void requestStarted(QWebEngineUrlRequestJob *requestJob);
+  IframeSchemeHandler( QObject * parent = nullptr );
+  void requestStarted( QWebEngineUrlRequestJob * requestJob );
 
 protected:
 
 private:
-      QNetworkAccessManager mgr;
+  QNetworkAccessManager mgr;
 };
 
 #endif // IFRAMESCHEMEHANDLER_H

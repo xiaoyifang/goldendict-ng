@@ -6,8 +6,7 @@
 #include <QMessageBox>
 #include <memory>
 
-TextToSpeechSource::TextToSpeechSource( QWidget * parent,
-                                        Config::VoiceEngines voiceEngines ):
+TextToSpeechSource::TextToSpeechSource( QWidget * parent, Config::VoiceEngines voiceEngines ):
   QWidget( parent ),
   voiceEnginesModel( this, voiceEngines )
 {
@@ -22,15 +21,18 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent,
   ui.selectedVoiceEngines->setItemDelegateForColumn( VoiceEnginesModel::kColumnEngineDName,
                                                      new VoiceEngineItemDelegate( engines, this ) );
 
-  foreach( Config::VoiceEngine ve, voiceEngines ) { occupiedEngines.insert( ve.name ); }
-
-  foreach ( SpeechClient::Engine engine, engines )
+  foreach( Config::VoiceEngine ve, voiceEngines )
   {
-    QMap<QString,QVariant> map;
+    occupiedEngines.insert( ve.name );
+  }
+
+  foreach( SpeechClient::Engine engine, engines )
+  {
+    QMap< QString, QVariant > map;
     map[ "engine_name" ] = engine.engine_name;
     map[ "locale" ]      = engine.locale;
-    map["voice_name"] = engine.voice_name;
-    ui.availableVoiceEngines->addItem( engine.name, QVariant(map) );
+    map[ "voice_name" ]  = engine.voice_name;
+    ui.availableVoiceEngines->addItem( engine.name, QVariant( map ) );
   }
 
   //disable the already added engines.
@@ -45,52 +47,56 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent,
     }
   }
 
-  if( voiceEngines.count() > 0 )
-  {
-    QModelIndex const &idx = ui.selectedVoiceEngines->model()->index( 0, 0 );
-    if( idx.isValid() )
+  if ( voiceEngines.count() > 0 ) {
+    QModelIndex const & idx = ui.selectedVoiceEngines->model()->index( 0, 0 );
+    if ( idx.isValid() )
       ui.selectedVoiceEngines->setCurrentIndex( idx );
   }
 
   adjustSliders();
 
-  connect( ui.volumeSlider, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slidersChanged() ) );
-  connect( ui.rateSlider, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slidersChanged() ) );
-  connect( ui.selectedVoiceEngines->selectionModel(), SIGNAL( selectionChanged( QItemSelection, QItemSelection ) ),
-           this, SLOT( selectionChanged() ) );
+  connect( ui.volumeSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
+  connect( ui.rateSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
+  connect( ui.selectedVoiceEngines->selectionModel(),
+           SIGNAL( selectionChanged( QItemSelection, QItemSelection ) ),
+           this,
+           SLOT( selectionChanged() ) );
 
   ui.availableVoiceEngines->view()->setVerticalScrollBarPolicy( Qt::ScrollBarAsNeeded );
 }
 
 void TextToSpeechSource::slidersChanged()
 {
-  if( ui.selectedVoiceEngines->selectionModel()->hasSelection() )
+  if ( ui.selectedVoiceEngines->selectionModel()->hasSelection() )
     voiceEnginesModel.setEngineParams( ui.selectedVoiceEngines->currentIndex(),
                                        ui.volumeSlider->value(),
-                                       ui.rateSlider->value()) ;
+                                       ui.rateSlider->value() );
 }
 
 void TextToSpeechSource::on_addVoiceEngine_clicked()
 {
-  if ( ui.availableVoiceEngines->count() == 0 )
-  {
-    QMessageBox::information( this, tr( "No TTS voice available" ),
-                              tr( "Cannot find available TTS voice.<br>"
-                                  "Please make sure that at least one TTS engine installed on your computer already." ) );
+  if ( ui.availableVoiceEngines->count() == 0 ) {
+    QMessageBox::information(
+      this,
+      tr( "No TTS voice available" ),
+      tr( "Cannot find available TTS voice.<br>"
+          "Please make sure that at least one TTS engine installed on your computer already." ) );
     return;
   }
 
   int idx = ui.availableVoiceEngines->currentIndex();
-  if( idx >= 0 )
-  {
-    QString name = ui.availableVoiceEngines->itemText( idx );
-    auto map = ui.availableVoiceEngines->itemData( idx ).toMap();
-    QString engine_name = map["engine_name"].toString();
-    QString locale = map["locale"].toString();
-    QString voice_name = map["voice_name"].toString();
-    voiceEnginesModel.addNewVoiceEngine( engine_name, QLocale(locale), name, voice_name, ui.volumeSlider->value(), ui.rateSlider->value() );
+  if ( idx >= 0 ) {
+    QString name        = ui.availableVoiceEngines->itemText( idx );
+    auto map            = ui.availableVoiceEngines->itemData( idx ).toMap();
+    QString engine_name = map[ "engine_name" ].toString();
+    QString locale      = map[ "locale" ].toString();
+    QString voice_name  = map[ "voice_name" ].toString();
+    voiceEnginesModel.addNewVoiceEngine( engine_name,
+                                         QLocale( locale ),
+                                         name,
+                                         voice_name,
+                                         ui.volumeSlider->value(),
+                                         ui.rateSlider->value() );
     fitSelectedVoiceEnginesColumns();
 
     occupiedEngines.insert( name );
@@ -104,15 +110,15 @@ void TextToSpeechSource::on_addVoiceEngine_clicked()
 void TextToSpeechSource::on_removeVoiceEngine_clicked()
 {
   QModelIndex current = ui.selectedVoiceEngines->currentIndex();
-  auto selected_name = voiceEnginesModel.getCurrentVoiceEngines()[ current.row() ].name;
+  auto selected_name  = voiceEnginesModel.getCurrentVoiceEngines()[ current.row() ].name;
 
-  if ( current.isValid() &&
-       QMessageBox::question( this, tr( "Confirm removal" ),
-                              tr( "Remove voice engine <b>%1</b> from the list?" ).arg(
-                              selected_name ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel ) == QMessageBox::Ok )
-  {
+  if ( current.isValid()
+       && QMessageBox::question( this,
+                                 tr( "Confirm removal" ),
+                                 tr( "Remove voice engine <b>%1</b> from the list?" ).arg( selected_name ),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel )
+         == QMessageBox::Ok ) {
     voiceEnginesModel.removeVoiceEngine( current.row() );
 
     occupiedEngines.remove( selected_name );
@@ -137,13 +143,13 @@ void TextToSpeechSource::on_previewVoice_clicked()
   if ( idx < 0 )
     return;
 
-  auto map = ui.availableVoiceEngines->itemData( idx ).toMap();
-  QString engineId = map["engine_name"].toString();
-  QString locale = map["locale"].toString();
-  QString name = ui.availableVoiceEngines->itemText( idx );
-  QString text = ui.previewText->text();
-  int volume = ui.volumeSlider->value();
-  int rate = ui.rateSlider->value();
+  auto map         = ui.availableVoiceEngines->itemData( idx ).toMap();
+  QString engineId = map[ "engine_name" ].toString();
+  QString locale   = map[ "locale" ].toString();
+  QString name     = ui.availableVoiceEngines->itemText( idx );
+  QString text     = ui.previewText->text();
+  int volume       = ui.volumeSlider->value();
+  int rate         = ui.rateSlider->value();
 
   speechClient = std::make_unique< SpeechClient >(
     Config::VoiceEngine( engineId, name, map[ "voice_name" ].toString(), QLocale( locale ), volume, rate ),
@@ -166,9 +172,8 @@ void TextToSpeechSource::fitSelectedVoiceEnginesColumns()
 void TextToSpeechSource::adjustSliders()
 {
   QModelIndex const & index = ui.selectedVoiceEngines->currentIndex();
-  if ( index.isValid() )
-  {
-    Config::VoiceEngines const &engines = voiceEnginesModel.getCurrentVoiceEngines();
+  if ( index.isValid() ) {
+    Config::VoiceEngines const & engines = voiceEnginesModel.getCurrentVoiceEngines();
     ui.volumeSlider->setValue( engines[ index.row() ].volume );
     ui.rateSlider->setValue( engines[ index.row() ].rate );
     return;
@@ -179,22 +184,18 @@ void TextToSpeechSource::adjustSliders()
 
 void TextToSpeechSource::selectionChanged()
 {
-  disconnect( ui.volumeSlider, SIGNAL( valueChanged( int ) ),
-              this, SLOT( slidersChanged() ) );
-  disconnect( ui.rateSlider, SIGNAL( valueChanged( int ) ),
-              this, SLOT( slidersChanged() ) );
+  disconnect( ui.volumeSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
+  disconnect( ui.rateSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
 
   adjustSliders();
 
-  connect( ui.volumeSlider, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slidersChanged() ) );
-  connect( ui.rateSlider, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slidersChanged() ) );
+  connect( ui.volumeSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
+  connect( ui.rateSlider, SIGNAL( valueChanged( int ) ), this, SLOT( slidersChanged() ) );
 }
 
-VoiceEnginesModel::VoiceEnginesModel( QWidget * parent,
-                                      Config::VoiceEngines const & voiceEngines ):
-  QAbstractItemModel( parent ), voiceEngines( voiceEngines )
+VoiceEnginesModel::VoiceEnginesModel( QWidget * parent, Config::VoiceEngines const & voiceEngines ):
+  QAbstractItemModel( parent ),
+  voiceEngines( voiceEngines )
 {
 }
 
@@ -208,7 +209,7 @@ void VoiceEnginesModel::removeVoiceEngine( int index )
 void VoiceEnginesModel::addNewVoiceEngine(
   QString const & engine_name, QLocale locale, QString const & name, QString const & voice_name, int volume, int rate )
 {
-  if( engine_name.isEmpty() || name.isEmpty() )
+  if ( engine_name.isEmpty() || name.isEmpty() )
     return;
 
   Config::VoiceEngine v;
@@ -216,9 +217,9 @@ void VoiceEnginesModel::addNewVoiceEngine(
   v.engine_name = engine_name;
   v.locale      = locale;
   v.name        = name;
-  v.volume = volume;
-  v.rate = rate;
-  v.voice_name = voice_name;
+  v.volume      = volume;
+  v.rate        = rate;
+  v.voice_name  = voice_name;
 
   beginInsertRows( QModelIndex(), voiceEngines.size(), voiceEngines.size() );
   voiceEngines.push_back( v );
@@ -239,10 +240,8 @@ Qt::ItemFlags VoiceEnginesModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() )
-  {
-    switch ( index.column() )
-    {
+  if ( index.isValid() ) {
+    switch ( index.column() ) {
       case kColumnEnabled:
         result |= Qt::ItemIsUserCheckable;
         break;
@@ -272,10 +271,8 @@ int VoiceEnginesModel::columnCount( QModelIndex const & parent ) const
 
 QVariant VoiceEnginesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
-  {
-    switch ( section )
-    {
+  if ( role == Qt::DisplayRole ) {
+    switch ( section ) {
       case kColumnEnabled:
         return tr( "Enabled" );
       case kColumnEngineDName:
@@ -295,8 +292,7 @@ QVariant VoiceEnginesModel::data( QModelIndex const & index, int role ) const
   if ( index.row() >= voiceEngines.size() )
     return QVariant();
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case kColumnEngineName:
         return voiceEngines[ index.row() ].engine_name;
@@ -315,21 +311,18 @@ QVariant VoiceEnginesModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool VoiceEnginesModel::setData( QModelIndex const & index, const QVariant & value,
-                                 int role )
+bool VoiceEnginesModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
   if ( index.row() >= voiceEngines.size() )
     return false;
 
-  if ( role == Qt::CheckStateRole && index.column() == kColumnEnabled )
-  {
+  if ( role == Qt::CheckStateRole && index.column() == kColumnEnabled ) {
     voiceEngines[ index.row() ].enabled = !voiceEngines[ index.row() ].enabled;
     dataChanged( index, index );
     return true;
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
-  {
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case kColumnEngineName:
         voiceEngines[ index.row() ].engine_name = value.toString();
@@ -353,17 +346,16 @@ bool VoiceEnginesModel::setData( QModelIndex const & index, const QVariant & val
 
 void VoiceEnginesModel::setEngineParams( QModelIndex idx, int volume, int rate )
 {
-  if ( idx.isValid() )
-  {
+  if ( idx.isValid() ) {
     voiceEngines[ idx.row() ].volume = volume;
-    voiceEngines[ idx.row() ].rate = rate;
+    voiceEngines[ idx.row() ].rate   = rate;
   }
 }
 
 VoiceEngineEditor::VoiceEngineEditor( SpeechClient::Engines const & engines, QWidget * parent ):
   QComboBox( parent )
 {
-  foreach ( SpeechClient::Engine engine, engines )
+  foreach( SpeechClient::Engine engine, engines )
   {
     addItem( engine.name, engine.engine_name );
   }
@@ -389,10 +381,8 @@ void VoiceEngineEditor::setEngineId( QString const & engineId )
 {
   // Find index for the id
   int idx = -1;
-  for ( int i = 0; i < count(); ++i )
-  {
-    if ( engineId == itemData( i ).toString() )
-    {
+  for ( int i = 0; i < count(); ++i ) {
+    if ( engineId == itemData( i ).toString() ) {
       idx = i;
       break;
     }
@@ -400,7 +390,7 @@ void VoiceEngineEditor::setEngineId( QString const & engineId )
   setCurrentIndex( idx );
 }
 
-VoiceEngineItemDelegate::VoiceEngineItemDelegate( SpeechClient::Engines const & engines, QObject * parent ) :
+VoiceEngineItemDelegate::VoiceEngineItemDelegate( SpeechClient::Engines const & engines, QObject * parent ):
   QStyledItemDelegate( parent ),
   engines( engines )
 {
@@ -410,7 +400,7 @@ QWidget * VoiceEngineItemDelegate::createEditor( QWidget * parent,
                                                  QStyleOptionViewItem const & option,
                                                  QModelIndex const & index ) const
 {
-  if( index.column() != VoiceEnginesModel::kColumnEngineDName )
+  if ( index.column() != VoiceEnginesModel::kColumnEngineDName )
     return QStyledItemDelegate::createEditor( parent, option, index );
   return new VoiceEngineEditor( engines, parent );
 }
@@ -427,11 +417,12 @@ void VoiceEngineItemDelegate::setEditorData( QWidget * uncastedEditor, const QMo
   editor->setEngineId( engineId );
 }
 
-void VoiceEngineItemDelegate::setModelData( QWidget * uncastedEditor, QAbstractItemModel * model,
+void VoiceEngineItemDelegate::setModelData( QWidget * uncastedEditor,
+                                            QAbstractItemModel * model,
                                             const QModelIndex & index ) const
 {
   VoiceEngineEditor * editor = qobject_cast< VoiceEngineEditor * >( uncastedEditor );
-  if( !editor )
+  if ( !editor )
     return;
 
   int currentRow              = index.row();

@@ -9,7 +9,8 @@
 #include <QEvent>
 #include <QApplication>
 
-MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
+MainStatusBar::MainStatusBar( QWidget * parent ):
+  QWidget( parent )
 {
   textWidget = new QLabel( QString(), this );
   textWidget->setObjectName( "text" );
@@ -55,11 +56,10 @@ QString MainStatusBar::currentMessage() const
   return message;
 }
 
-void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
+void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 {
   backgroungMessage = bkg_message;
-  if( message.isEmpty() )
-  {
+  if ( message.isEmpty() ) {
     textWidget->setText( backgroungMessage );
   }
 }
@@ -85,7 +85,7 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
   }
 }
 
-void MainStatusBar::mousePressEvent ( QMouseEvent * )
+void MainStatusBar::mousePressEvent( QMouseEvent * )
 {
   clearMessage();
 }

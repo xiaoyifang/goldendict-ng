@@ -1,10 +1,10 @@
 #ifdef __APPLE__
-#pragma once
+  #pragma once
 
-#include <QClipboard>
-#include <QObject>
-#include <QString>
-#include <QTimer>
+  #include <QClipboard>
+  #include <QObject>
+  #include <QString>
+  #include <QTimer>
 
 /**
 A custom clipboard monitor that read keep reading clipboard in background.
@@ -13,28 +13,30 @@ Code was inspired by
 https://github.com/KDE/kdeconnect-kde/blob/v22.12.2/plugins/clipboard/clipboardlistener.cpp
 */
 
-class gd_clipboard : public QObject {
-Q_OBJECT
+class gd_clipboard: public QObject
+{
+  Q_OBJECT
+
 public:
-    explicit gd_clipboard(QObject * parent = nullptr);
+  explicit gd_clipboard( QObject * parent = nullptr );
 
-    [[nodiscard]] QString text() const;
+  [[nodiscard]] QString text() const;
 
-    void stop();
+  void stop();
 
-    void start();
+  void start();
 
 private:
 
-    QClipboard * sysClipboard;
-    QString curClipboardContent;
+  QClipboard * sysClipboard;
+  QString curClipboardContent;
 
-    QTimer m_monitoringTimer;
-    QString m_currentContent;
-    void updateClipboard();
+  QTimer m_monitoringTimer;
+  QString m_currentContent;
+  void updateClipboard();
 
 signals:
-    void changed(QClipboard::Mode mode);
+  void changed( QClipboard::Mode mode );
 };
 
 #endif

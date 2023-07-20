@@ -44,10 +44,9 @@
 ///
 /// Now we have a better built-in type as char32_t and std::u32string
 
-namespace gd
-{
-   typedef char32_t wchar;
-   typedef std::u32string wstring;
-}
+namespace gd {
+typedef char32_t wchar;
+typedef std::u32string wstring;
+} // namespace gd
 
 #endif

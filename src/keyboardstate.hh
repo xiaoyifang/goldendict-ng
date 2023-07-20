@@ -11,17 +11,16 @@ class KeyboardState
 {
 public:
 
-  enum Modifier
-  {
-    Alt = 1,
-    Ctrl = 2,
-    Shift = 4,
-    Win = 8, // Ironically, Linux only, since it's no use under Windows
-    LeftAlt = 16, // Those Left-Right are Windows-only, at least for now
-    RightAlt = 32,
-    LeftCtrl = 64,
-    RightCtrl = 128,
-    LeftShift = 256,
+  enum Modifier {
+    Alt        = 1,
+    Ctrl       = 2,
+    Shift      = 4,
+    Win        = 8,  // Ironically, Linux only, since it's no use under Windows
+    LeftAlt    = 16, // Those Left-Right are Windows-only, at least for now
+    RightAlt   = 32,
+    LeftCtrl   = 64,
+    RightCtrl  = 128,
+    LeftShift  = 256,
     RightShift = 512
   };
 

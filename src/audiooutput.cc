@@ -41,7 +41,7 @@ static QAudioFormat format( int sampleRate, int channelCount )
 
 class AudioOutputPrivate: public QIODevice
 {
- public:
+public:
   AudioOutputPrivate()
   {
     open( QIODevice::ReadOnly );
@@ -73,25 +73,23 @@ class AudioOutputPrivate: public QIODevice
 
   qint64 readData( char * data, qint64 len ) override
   {
-    if( !len )
+    if ( !len )
       return 0;
 
     QMutexLocker locker( &mutex );
     qint64 bytesWritten = 0;
-    while( len && !quit )
-    {
-      if( buffer.isEmpty() )
-      {
+    while ( len && !quit ) {
+      if ( buffer.isEmpty() ) {
         // Wait for more frames
-        if( bytesWritten == 0 )
+        if ( bytesWritten == 0 )
           cond.wait( &mutex );
-        if( buffer.isEmpty() )
+        if ( buffer.isEmpty() )
           break;
       }
 
       auto sampleData   = buffer.data();
-      const int toWrite = qMin( (qint64) buffer.size(), len );
-      memcpy( &data[bytesWritten], sampleData, toWrite );
+      const int toWrite = qMin( (qint64)buffer.size(), len );
+      memcpy( &data[ bytesWritten ], sampleData, toWrite );
       buffer.remove( 0, toWrite );
       bytesWritten += toWrite;
       //      data += toWrite;
@@ -101,26 +99,38 @@ class AudioOutputPrivate: public QIODevice
     return bytesWritten;
   }
 
-  qint64 writeData( const char *, qint64 ) override { return 0; }
-  qint64 size() const override { return buffer.size(); }
-  qint64 bytesAvailable() const override { return buffer.size(); }
-  bool isSequential() const override { return true; }
-  bool atEnd() const override { return buffer.isEmpty(); }
+  qint64 writeData( const char *, qint64 ) override
+  {
+    return 0;
+  }
+  qint64 size() const override
+  {
+    return buffer.size();
+  }
+  qint64 bytesAvailable() const override
+  {
+    return buffer.size();
+  }
+  bool isSequential() const override
+  {
+    return true;
+  }
+  bool atEnd() const override
+  {
+    return buffer.isEmpty();
+  }
 
   void init( const QAudioFormat & fmt )
   {
-    if( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
-      || audioOutput->state() == QAudio::StoppedState )
-    {
-      if( audioOutput )
+    if ( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
+         || audioOutput->state() == QAudio::StoppedState ) {
+      if ( audioOutput )
         audioOutput->deleteLater();
       audioOutput = new AudioOutput( fmt );
       QObject::connect( audioOutput, &AudioOutput::stateChanged, audioOutput, [ & ]( QAudio::State state ) {
-        switch( state )
-        {
+        switch ( state ) {
           case QAudio::StoppedState:
-            if( audioOutput->error() != QAudio::NoError )
-            {
+            if ( audioOutput->error() != QAudio::NoError ) {
               qWarning() << "QAudioOutput stopped:" << audioOutput->error();
               quit = true;
             }
@@ -131,7 +141,7 @@ class AudioOutputPrivate: public QIODevice
       } );
 
       audioOutput->start( this );
-      if( audioOutput && audioOutput->state() == QAudio::StoppedState )
+      if ( audioOutput && audioOutput->state() == QAudio::StoppedState )
         quit = true;
     }
 
@@ -140,18 +150,16 @@ class AudioOutputPrivate: public QIODevice
 
   void doPlayAudio()
   {
-    while( !quit )
-    {
+    while ( !quit ) {
       QMutexLocker locker( &mutex );
       cond.wait( &mutex, 10 );
       auto fmt = sampleRate == 0 ? QAudioFormat() : format( sampleRate, channels );
       locker.unlock();
-      if( fmt.isValid() )
+      if ( fmt.isValid() )
         init( fmt );
       QCoreApplication::processEvents();
     }
-    if( audioOutput )
-    {
+    if ( audioOutput ) {
       audioOutput->stop();
       audioOutput->deleteLater();
     }
@@ -159,7 +167,9 @@ class AudioOutputPrivate: public QIODevice
   }
 };
 
-AudioOutput::AudioOutput( QObject * parent ): QObject( parent ), d_ptr( new AudioOutputPrivate )
+AudioOutput::AudioOutput( QObject * parent ):
+  QObject( parent ),
+  d_ptr( new AudioOutputPrivate )
 {
 #if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
   d_ptr->audioPlayFuture = QtConcurrent::run( &d_ptr->threadPool, d_ptr.data(), &AudioOutputPrivate::doPlayAudio );
@@ -168,7 +178,10 @@ AudioOutput::AudioOutput( QObject * parent ): QObject( parent ), d_ptr( new Audi
 #endif
 }
 
-void AudioOutput::setAudioFormat( int sampleRate, int channels ) { d_ptr->setAudioFormat( sampleRate, channels ); }
+void AudioOutput::setAudioFormat( int sampleRate, int channels )
+{
+  d_ptr->setAudioFormat( sampleRate, channels );
+}
 
 AudioOutput::~AudioOutput()
 {
@@ -181,7 +194,7 @@ AudioOutput::~AudioOutput()
 bool AudioOutput::play( const uint8_t * data, qint64 len )
 {
   Q_D( AudioOutput );
-  if( d->quit )
+  if ( d->quit )
     return false;
 
   QMutexLocker locker( &d->mutex );

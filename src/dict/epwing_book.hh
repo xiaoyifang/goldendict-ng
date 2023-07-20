@@ -13,19 +13,19 @@
 #include <vector>
 
 #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
-#define _FILE_OFFSET_BITS 64
+  #define _FILE_OFFSET_BITS 64
 #endif
 
 #include <QString>
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QTextCodec>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QTextCodec>
 #else
-#include <QTextCodec>
+  #include <QTextCodec>
 #endif
 
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 #include <eb/eb.h>
@@ -44,9 +44,9 @@ using std::vector;
 using std::string;
 
 enum {
-  TextBufferSize = 4095,
+  TextBufferSize   = 4095,
   BinaryBufferSize = 50000,
-  TextSizeLimit = 2800000
+  TextSizeLimit    = 2800000
 };
 
 struct EpwingHeadword
@@ -74,19 +74,19 @@ class EpwingBook
   QString mainCacheDir, rootDir;
   QString cacheImagesDir, cacheSoundsDir, cacheMoviesDir, cacheFontsDir;
   QString dictID;
-  QTextCodec * codec_ISO, * codec_GB, * codec_Euc;
+  QTextCodec *codec_ISO, *codec_GB, *codec_Euc;
   QStack< unsigned int > decorationStack;
   int monoWidth, monoHeight;
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
   QMap< QString, QString > baseFontsMap, customFontsMap;
   QVector< int > refPages, refOffsets;
-  QMap< uint64_t,bool > allHeadwordPositions;
+  QMap< uint64_t, bool > allHeadwordPositions;
   QMap< uint64_t, bool > allRefPositions;
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static QMutex libMutex;
 
-  QString createCacheDir( QString const & dir);
+  QString createCacheDir( QString const & dir );
 
   // Close unslosed tags
   void finalizeText( QString & text );
@@ -101,7 +101,7 @@ class EpwingBook
   EB_Error_Code forwardText( EB_Position & startPos );
 
   // Retrieve article text from dictionary
-  QString getText( int page, int offset, bool text_only);
+  QString getText( int page, int offset, bool text_only );
   void seekBookThrow( int page, int offset );
   QString getTextWithLength( int page, int offset, int total, EB_Position & pos );
   QString getPreviousTextWithLength( int page, int offset, int total, EB_Position & pos );
@@ -113,11 +113,11 @@ class EpwingBook
 public:
 
   enum DecorationCodes {
-    UNKNOWN = 0,
-    ITALIC = 1,
-    BOLD = 3,
-    EMPHASIS = 4,
-    SUBSCRIPT = 5,
+    UNKNOWN     = 0,
+    ITALIC      = 1,
+    BOLD        = 3,
+    EMPHASIS    = 4,
+    SUBSCRIPT   = 5,
     SUPERSCRIPT = 6
   };
 
@@ -129,32 +129,50 @@ public:
     return libMutex;
   }
 
-  QString const &errorString() const
-  { return error_string; }
+  QString const & errorString() const
+  {
+    return error_string;
+  }
 
   QTextCodec * codecISO()
-  { return codec_ISO; }
+  {
+    return codec_ISO;
+  }
 
   QTextCodec * codecGB()
-  { return codec_GB; }
+  {
+    return codec_GB;
+  }
 
-  QTextCodec *codecEuc()
-  { return codec_Euc; }
+  QTextCodec * codecEuc()
+  {
+    return codec_Euc;
+  }
 
   int getSubBookCount()
-  { return subBookCount; }
+  {
+    return subBookCount;
+  }
 
   void setDictID( const string & id )
-  { dictID = QString::fromUtf8( id.c_str() ); }
+  {
+    dictID = QString::fromUtf8( id.c_str() );
+  }
 
   QString const & getImagesCacheDir()
-  { return cacheImagesDir; }
+  {
+    return cacheImagesDir;
+  }
 
   QString const & getSoundsCacheDir()
-  { return cacheSoundsDir; }
+  {
+    return cacheSoundsDir;
+  }
 
   QString const & getMoviesCacheDir()
-  { return cacheMoviesDir; }
+  {
+    return cacheMoviesDir;
+  }
 
   void clearBuffers()
   {
@@ -168,8 +186,7 @@ public:
   QString makeFName( QString const & ext, int page, int offset ) const;
 
   // Store all files in Epwing folder
-  static void collectFilenames( QString const & directory,
-                                vector< string > & files );
+  static void collectFilenames( QString const & directory, vector< string > & files );
 
   // Initialize dictionary book
   int setBook( string const & directory );
@@ -190,45 +207,34 @@ public:
   // Find next headword and article position
   bool getNextHeadword( EpwingHeadword & head );
 
-  bool readHeadword( EB_Position const & pos,
-                     QString & headword,
-                     bool text_only );
+  bool readHeadword( EB_Position const & pos, QString & headword, bool text_only );
 
   bool isHeadwordCorrect( QString const & headword );
 
   void fixHeadword( QString & headword );
 
   // Retrieve article from dictionary
-  void getArticle( QString & headword, QString & articleText,
-                   int page, int offset, bool text_only );
-  void readHeadword( QString & headword, bool text_only);
+  void getArticle( QString & headword, QString & articleText, int page, int offset, bool text_only );
+  void readHeadword( QString & headword, bool text_only );
 
-  EB_Position getArticleNextPage( QString & headword, QString & articleText,
-    int page, int offset, bool text_only );
+  EB_Position getArticleNextPage( QString & headword, QString & articleText, int page, int offset, bool text_only );
   EB_Position getArticlePreviousPage( QString & headword, QString & articleText, int page, int offset, bool text_only );
   const char * beginDecoration( unsigned int code );
   const char * endDecoration( unsigned int code );
 
-  QByteArray handleColorImage( EB_Hook_Code code,
-                               const unsigned int * argv );
+  QByteArray handleColorImage( EB_Hook_Code code, const unsigned int * argv );
 
-  QByteArray handleMonoImage( EB_Hook_Code code,
-                              const unsigned int * argv );
+  QByteArray handleMonoImage( EB_Hook_Code code, const unsigned int * argv );
 
-  QByteArray handleWave( EB_Hook_Code code,
-                         const unsigned int * argv );
+  QByteArray handleWave( EB_Hook_Code code, const unsigned int * argv );
 
-  QByteArray handleMpeg( EB_Hook_Code code,
-                         const unsigned int * argv );
+  QByteArray handleMpeg( EB_Hook_Code code, const unsigned int * argv );
 
-  QByteArray handleNarrowFont( const unsigned int * argv,
-                               bool text_only );
+  QByteArray handleNarrowFont( const unsigned int * argv, bool text_only );
 
-  QByteArray handleWideFont( const unsigned int * argv,
-                             bool text_only );
+  QByteArray handleWideFont( const unsigned int * argv, bool text_only );
 
-  QByteArray handleReference( EB_Hook_Code code,
-                              const unsigned int * argv );
+  QByteArray handleReference( EB_Hook_Code code, const unsigned int * argv );
 
   bool getMatches( QString word, QVector< QString > & matches );
 
@@ -240,21 +246,23 @@ struct EContainer
   EpwingBook * book;
   bool textOnly;
 
-  EContainer( EpwingBook * book_ ) :
+  EContainer( EpwingBook * book_ ):
     book( book_ ),
     textOnly( false )
-  {}
+  {
+  }
 
-  EContainer( EpwingBook * book_, bool text_only ) :
+  EContainer( EpwingBook * book_, bool text_only ):
     book( book_ ),
     textOnly( text_only )
-  {}
+  {
+  }
 };
 
 
-}
+} // namespace Book
 
-}
+} // namespace Epwing
 
 
 #endif // __EPWING_BOOK_HH_INCLUDED__

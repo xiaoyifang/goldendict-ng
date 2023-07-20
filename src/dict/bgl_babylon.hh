@@ -31,7 +31,8 @@
 #include <array>
 
 #ifndef blgCode2Int
-#define blgCode2Int( index, code0, code1 ) (((uint32_t)index) << 16 ) + (((uint32_t)code1) << 8 ) + (uint32_t)code0
+  #define blgCode2Int( index, code0, code1 ) \
+    ( ( (uint32_t)index ) << 16 ) + ( ( (uint32_t)code1 ) << 8 ) + (uint32_t)code0
 #endif
 const std::array< quint32, 60 > bgl_language = {
   blgCode2Int( 0, 'e', 'n' ),  // "English",
@@ -114,17 +115,19 @@ const std::vector< std::string > bgl_charset = { "WINDOWS-1252", /*Default*/
 const std::array< std::string, 11 > partOfSpeech = {
   "n.", "adj.", "v.", "adv.", "interj.", "pron.", "prep.", "conj.", "suff.", "pref.", "art." };
 
-typedef struct {
-	unsigned type;
-	unsigned length;
-	char * data;
+typedef struct
+{
+  unsigned type;
+  unsigned length;
+  char * data;
 } bgl_block;
 
-typedef struct {
-        std::string headword;
-        std::string definition;
-        std::string displayedHeadword;
-        std::vector<std::string> alternates;
+typedef struct
+{
+  std::string headword;
+  std::string definition;
+  std::string displayedHeadword;
+  std::vector< std::string > alternates;
 } bgl_entry;
 
 class Babylon
@@ -143,87 +146,88 @@ public:
     virtual ~ResourceHandler() {}
   };
 
-    /// Sets a prefix string to append to each resource reference in hyperlinks.
-    void setResourcePrefix( std::string const & prefix )
-    { m_resourcePrefix = prefix; }
+  /// Sets a prefix string to append to each resource reference in hyperlinks.
+  void setResourcePrefix( std::string const & prefix )
+  {
+    m_resourcePrefix = prefix;
+  }
 
-    bool open();
-    void close();
-    bool readBlock( bgl_block & );
-    bool read( const std::string & source_charset, const std::string & target_charset );
-    bgl_entry readEntry( ResourceHandler * = 0 );
+  bool open();
+  void close();
+  bool readBlock( bgl_block & );
+  bool read( const std::string & source_charset, const std::string & target_charset );
+  bgl_entry readEntry( ResourceHandler * = 0 );
 
-    inline std::string title() const
-    {
-      return m_title;
-    }
-    inline std::string author() const
-    {
-      return m_author;
-    }
-    inline std::string email() const
-    {
-      return m_email;
-    }
-    inline std::string description() const
-    {
-      return m_description;
-    }
-    inline std::string copyright() const
-    {
-      return m_copyright;
-    }
-    inline quint32 sourceLang() const
-    {
-      return m_sourceLang;
-    }
-    inline quint32 targetLang() const
-    {
-      return m_targetLang;
-    }
+  inline std::string title() const
+  {
+    return m_title;
+  }
+  inline std::string author() const
+  {
+    return m_author;
+  }
+  inline std::string email() const
+  {
+    return m_email;
+  }
+  inline std::string description() const
+  {
+    return m_description;
+  }
+  inline std::string copyright() const
+  {
+    return m_copyright;
+  }
+  inline quint32 sourceLang() const
+  {
+    return m_sourceLang;
+  }
+  inline quint32 targetLang() const
+  {
+    return m_targetLang;
+  }
 
-    inline std::string filename() const
-    {
-      return m_filename;
-    }
+  inline std::string filename() const
+  {
+    return m_filename;
+  }
 
-    std::vector< char > const & getIcon() const
-    {
-      return icon;
-    }
+  std::vector< char > const & getIcon() const
+  {
+    return icon;
+  }
 
-    enum
-    {
-      ParserVersion = 17
-    };
+  enum {
+    ParserVersion = 17
+  };
 
-  private:
-    unsigned int bgl_readnum( int );
-    void convertToUtf8( std::string &, unsigned int = 0 );
+private:
+  unsigned int bgl_readnum( int );
+  void convertToUtf8( std::string &, unsigned int = 0 );
 
-    std::string m_filename;
-    gzFile file;
+  std::string m_filename;
+  gzFile file;
 
-    std::string m_title;
-    std::string m_author;
-    std::string m_email;
-    std::string m_description;
-    std::string m_copyright;
-    quint32 m_sourceLang;
-    quint32 m_targetLang;
-    unsigned int m_numEntries;
-    std::string m_defaultCharset;
-    std::string m_sourceCharset;
-    std::string m_targetCharset;
-    std::vector< char > icon;
+  std::string m_title;
+  std::string m_author;
+  std::string m_email;
+  std::string m_description;
+  std::string m_copyright;
+  quint32 m_sourceLang;
+  quint32 m_targetLang;
+  unsigned int m_numEntries;
+  std::string m_defaultCharset;
+  std::string m_sourceCharset;
+  std::string m_targetCharset;
+  std::vector< char > icon;
 
-    std::string m_resourcePrefix;
+  std::string m_resourcePrefix;
 
-    enum CHARSET {
-      BGL_DEFAULT_CHARSET,
-      BGL_SOURCE_CHARSET,
-      BGL_TARGET_CHARSET
-    };
+  enum CHARSET {
+    BGL_DEFAULT_CHARSET,
+    BGL_SOURCE_CHARSET,
+    BGL_TARGET_CHARSET
+  };
 };
 
 #endif // BABYLON_H

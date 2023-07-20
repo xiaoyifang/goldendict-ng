@@ -65,5 +65,5 @@ bool SpeechClient::tell( QString const & text, int volume, int rate ) const
 
 bool SpeechClient::tell( QString const & text ) const
 {
-  return tell(text, internalData->engine.volume, internalData->engine.rate);
+  return tell( text, internalData->engine.volume, internalData->engine.rate );
 }

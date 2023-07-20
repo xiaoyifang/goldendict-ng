@@ -34,12 +34,15 @@ public:
   virtual void run();
 
   std::vector< sptr< Dictionary::Class > > const & getDictionaries() const
-  { return dictionaries; }
+  {
+    return dictionaries;
+  }
 
   /// Empty string means to exception occurred
   std::string const & getExceptionText() const
-  { return exceptionText; }
-
+  {
+    return exceptionText;
+  }
 
 
 public:
@@ -51,7 +54,7 @@ private:
   void handlePath( Config::Path const & );
 
   // Helper function that will add a vector of dictionary::Class to the dictionary list
-  void addDicts(const std::vector< sptr< Dictionary::Class > >& dicts);
+  void addDicts( const std::vector< sptr< Dictionary::Class > > & dicts );
 
 signals:
   void indexingDictionarySignal( QString const & dictionaryName );
@@ -62,7 +65,8 @@ signals:
 /// If showInitially is passed as true, the window will always popup.
 /// If doDeferredInit is true (default), doDeferredInit() is done on all
 /// dictionaries at the end.
-void loadDictionaries( QWidget * parent, bool showInitially,
+void loadDictionaries( QWidget * parent,
+                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > &,
                        QNetworkAccessManager & dictNetMgr,
@@ -72,4 +76,3 @@ void loadDictionaries( QWidget * parent, bool showInitially,
 /// loadDictionaries() was previously called with doDeferredInit = false.
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & );
 #endif
-

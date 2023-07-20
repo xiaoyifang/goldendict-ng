@@ -20,19 +20,19 @@ struct ActiveDictIds
 };
 
 
-class GlobalBroadcaster : public QObject
+class GlobalBroadcaster: public QObject
 {
   Q_OBJECT
 
   Config::Preferences * preference;
-  QSet<QString> whitelist;
+  QSet< QString > whitelist;
 
 public:
   void setPreference( Config::Preferences * _pre );
   Config::Preferences * getPreference();
   GlobalBroadcaster( QObject * parent = nullptr );
-  void addWhitelist(QString host);
-  bool existedInWhitelist(QString host);
+  void addWhitelist( QString host );
+  bool existedInWhitelist( QString host );
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
