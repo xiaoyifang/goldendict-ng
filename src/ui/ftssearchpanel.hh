@@ -8,7 +8,8 @@
 class FtsSearchPanel: public QWidget
 {
   Q_OBJECT
- public:
+
+public:
   explicit FtsSearchPanel( QWidget * parent = nullptr );
   QLabel * statusLabel;
   QPushButton * previous;

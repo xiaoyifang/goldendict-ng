@@ -6,17 +6,18 @@
 
 #ifdef MAKE_QTMULTIMEDIA_PLAYER
 
-#include <QBuffer>
-#include <QMediaPlayer>
-#include "audioplayerinterface.hh"
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QAudioOutput>
-#endif
-#include <QPointer>
+  #include <QBuffer>
+  #include <QMediaPlayer>
+  #include "audioplayerinterface.hh"
+  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+    #include <QAudioOutput>
+  #endif
+  #include <QPointer>
 
-class MultimediaAudioPlayer : public AudioPlayerInterface
+class MultimediaAudioPlayer: public AudioPlayerInterface
 {
   Q_OBJECT
+
 public:
   MultimediaAudioPlayer();
 
@@ -27,11 +28,11 @@ private slots:
   void onMediaPlayerError();
 
 private:
-  QPointer<QBuffer> audioBuffer;
+  QPointer< QBuffer > audioBuffer;
   QMediaPlayer player; ///< Depends on audioBuffer.
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   QAudioOutput audioOutput;
-#endif
+  #endif
 };
 
 #endif // MAKE_QTMULTIMEDIA_PLAYER

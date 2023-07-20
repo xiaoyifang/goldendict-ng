@@ -5,7 +5,8 @@
 #include "initializing.hh"
 #include <QCloseEvent>
 
-Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( parent )
+Initializing::Initializing( QWidget * parent, bool showOnStartup ):
+  QDialog( parent )
 {
   ui.setupUi( this );
 
@@ -13,8 +14,7 @@ Initializing::Initializing( QWidget * parent, bool showOnStartup ): QDialog( par
 
   setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
-  if ( showOnStartup )
-  {
+  if ( showOnStartup ) {
     ui.operation->setText( tr( "Please wait..." ) );
     ui.dictionary->hide();
     ui.progressBar->hide();
@@ -37,7 +37,4 @@ void Initializing::closeEvent( QCloseEvent * ev )
   ev->ignore();
 }
 
-void Initializing::reject()
-{
-}
-
+void Initializing::reject() {}

@@ -16,5 +16,4 @@ QString wildcardsToRegexp( const QString & wc_str )
 #else
   return QRegularExpression::wildcardToRegularExpression( wc_str, QRegularExpression::UnanchoredWildcardConversion );
 #endif
-  
 }

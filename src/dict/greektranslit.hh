@@ -9,7 +9,7 @@
 // Support for Greek transliteration
 namespace GreekTranslit {
 
-sptr< Dictionary::Class > makeDictionary() ;
+sptr< Dictionary::Class > makeDictionary();
 
 }
 

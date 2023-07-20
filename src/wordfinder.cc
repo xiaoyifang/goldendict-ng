@@ -15,7 +15,8 @@ using std::map;
 using std::pair;
 
 WordFinder::WordFinder( QObject * parent ):
-  QObject( parent ), searchInProgress( false ),
+  QObject( parent ),
+  searchInProgress( false ),
   updateResultsTimer( this ),
   searchQueued( false )
 {
@@ -37,19 +38,18 @@ void WordFinder::prefixMatch( QString const & str,
 {
   cancel();
 
-  searchQueued = true;
-  searchType = PrefixMatch;
-  inputWord = str;
-  inputDicts = &dicts;
+  searchQueued        = true;
+  searchType          = PrefixMatch;
+  inputWord           = str;
+  inputDicts          = &dicts;
   requestedMaxResults = maxResults;
-  requestedFeatures = features;
+  requestedFeatures   = features;
 
   resultsArray.clear();
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() )
-  {
+  if ( queuedRequests.empty() ) {
     // No requests are queued, no need to wait for them to finish.
     startSearch();
   }
@@ -67,13 +67,13 @@ void WordFinder::stemmedMatch( QString const & str,
 {
   cancel();
 
-  searchQueued = true;
-  searchType = StemmedMatch;
-  inputWord = str;
-  inputDicts = &dicts;
-  requestedMaxResults = maxResults;
-  requestedFeatures = features;
-  stemmedMinLength = minLength;
+  searchQueued              = true;
+  searchType                = StemmedMatch;
+  inputWord                 = str;
+  inputDicts                = &dicts;
+  requestedMaxResults       = maxResults;
+  requestedFeatures         = features;
+  stemmedMinLength          = minLength;
   stemmedMaxSuffixVariation = maxSuffixVariation;
 
   resultsArray.clear();
@@ -91,19 +91,18 @@ void WordFinder::expressionMatch( QString const & str,
 {
   cancel();
 
-  searchQueued = true;
-  searchType = ExpressionMatch;
-  inputWord = str;
-  inputDicts = &dicts;
+  searchQueued        = true;
+  searchType          = ExpressionMatch;
+  inputWord           = str;
+  inputDicts          = &dicts;
   requestedMaxResults = maxResults;
-  requestedFeatures = features;
+  requestedFeatures   = features;
 
   resultsArray.clear();
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() )
-  {
+  if ( queuedRequests.empty() ) {
     // No requests are queued, no need to wait for them to finish.
     startSearch();
   }
@@ -121,14 +120,14 @@ void WordFinder::startSearch()
   searchErrorString.clear();
   searchResultsUncertain = false;
 
-  searchQueued = false;
+  searchQueued     = false;
   searchInProgress = true;
 
   // Gather all writings of the word
 
   if ( allWordWritings.size() != 1 )
     allWordWritings.resize( 1 );
-  
+
   allWordWritings[ 0 ] = gd::toWString( inputWord );
 
   for ( const auto & inputDict : *inputDicts ) {
@@ -153,8 +152,7 @@ void WordFinder::startSearch()
 
         queuedRequests.push_back( sr );
       }
-      catch( std::exception & e )
-      {
+      catch ( std::exception & e ) {
         gdWarning( "Word \"%s\" search error (%s) in \"%s\"\n",
                    inputWord.toUtf8().data(),
                    e.what(),
@@ -170,9 +168,9 @@ void WordFinder::startSearch()
 
 void WordFinder::cancel()
 {
-  searchQueued = false;
+  searchQueued     = false;
   searchInProgress = false;
-  
+
   cancelSearches();
 }
 
@@ -196,8 +194,7 @@ void WordFinder::requestFinished()
       if ( ( *i )->isUncertain() )
         searchResultsUncertain = true;
 
-      if ( (*i)->matchesCount() )
-      {
+      if ( ( *i )->matchesCount() ) {
         newResults = true;
 
         // This list is handled by updateResults()
@@ -210,16 +207,14 @@ void WordFinder::requestFinished()
       ++i;
   }
 
-  if ( !searchInProgress )
-  {
+  if ( !searchInProgress ) {
     // There is no search in progress, so we just wait until there's
     // no requests left
-    
-    if ( queuedRequests.empty() )
-    {
+
+    if ( queuedRequests.empty() ) {
       // We got rid of all queries, queued search can now start
       finishedRequests.clear();
-  
+
       if ( searchQueued )
         startSearch();
     }
@@ -233,8 +228,7 @@ void WordFinder::requestFinished()
     updateResultsTimer.start();
   }
 
-  if ( queuedRequests.empty() )
-  {
+  if ( queuedRequests.empty() ) {
     // Search is finished.
     updateResults();
   }
@@ -252,25 +246,20 @@ unsigned saturated( unsigned x )
 /// both sides by either whitespace, punctuation or begin/end of string.
 /// If true is returned, pos holds the offset in the haystack. If the offset
 /// is larger than 255, it is set to 255.
-bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle,
-                          wstring::size_type & pos )
+bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstring::size_type & pos )
 {
   if ( haystack.size() < needle.size() )
     return false; // Needle won't even fit into a haystack
 
-  for( pos = 0; ; ++pos )
-  {
+  for ( pos = 0;; ++pos ) {
     pos = haystack.find( needle, pos );
-  
+
     if ( pos == wstring::npos )
       return false; // Not found
-  
-    if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) ||
-           Folding::isPunct( haystack[ pos - 1 ] ) ) &&
-         ( ( pos + needle.size() == haystack.size() ) ||
-           Folding::isWhitespace( haystack[ pos + needle.size() ] ) ||
-           Folding::isPunct( haystack[ pos + needle.size() ] ) ) )
-    {
+
+    if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
+         && ( ( pos + needle.size() == haystack.size() ) || Folding::isWhitespace( haystack[ pos + needle.size() ] )
+              || Folding::isPunct( haystack[ pos + needle.size() ] ) ) ) {
       pos = saturated( pos );
 
       return true;
@@ -278,7 +267,7 @@ bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle,
   }
 }
 
-}
+} // namespace
 
 void WordFinder::updateResults()
 {
@@ -299,21 +288,17 @@ void WordFinder::updateResults()
       if ( searchType == ExpressionMatch ) {
         unsigned ws;
 
-        for( ws = 0; ws < allWordWritings.size(); ws++ )
-        {
-          if( ws == 0 )
-          {
+        for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
+          if ( ws == 0 ) {
             // Check for prefix match with original expression
-            if( lowerCased.compare( 0, original.size(), original ) == 0 )
+            if ( lowerCased.compare( 0, original.size(), original ) == 0 )
               break;
           }
-          else
-          if( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) )
+          else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) )
             break;
         }
 
-        if( ws >= allWordWritings.size() )
-        {
+        if ( ws >= allWordWritings.size() ) {
           // No exact matches found
           continue;
         }
@@ -322,23 +307,20 @@ void WordFinder::updateResults()
       auto insertResult =
         resultsIndex.insert( pair< wstring, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
 
-      if ( !insertResult.second )
-      {
+      if ( !insertResult.second ) {
         // Wasn't inserted since there was already an item -- check the case
-        if ( insertResult.first->second->word != match )
-        {
+        if ( insertResult.first->second->word != match ) {
           // The case is different -- agree on a lowercase version
           insertResult.first->second->word = lowerCased;
         }
         if ( !weight && insertResult.first->second->wasSuggested )
           insertResult.first->second->wasSuggested = false;
       }
-      else
-      {
+      else {
         resultsArray.emplace_back();
 
-        resultsArray.back().word = match;
-        resultsArray.back().rank = INT_MAX;
+        resultsArray.back().word         = match;
+        resultsArray.back().rank         = INT_MAX;
         resultsArray.back().wasSuggested = ( weight != 0 );
 
         insertResult.first->second = --resultsArray.end();
@@ -421,9 +403,7 @@ void WordFinder::updateResults()
 
       resultsArray.sort( SortByRank() );
     }
-    else
-    if( searchType == StemmedMatch )
-    {
+    else if ( searchType == StemmedMatch ) {
       // Handling stemmed matches
 
       // We use two factors -- first is the number of characters strings share

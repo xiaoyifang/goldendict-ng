@@ -15,9 +15,7 @@ namespace WebSite {
 using std::vector;
 using std::string;
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const &,
-                                                      QNetworkAccessManager & )
-    ;
+vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const &, QNetworkAccessManager & );
 
 /// Exposed here for moc
 class WebSiteDataRequestSlots: public Dictionary::DataRequest
@@ -26,10 +24,9 @@ class WebSiteDataRequestSlots: public Dictionary::DataRequest
 
 protected slots:
 
-  virtual void requestFinished( QNetworkReply * )
-  {}
+  virtual void requestFinished( QNetworkReply * ) {}
 };
 
-}
+} // namespace WebSite
 
 #endif

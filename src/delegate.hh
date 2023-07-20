@@ -4,7 +4,7 @@
 #include <QAbstractItemDelegate>
 #include <QStyledItemDelegate>
 
-class WordListItemDelegate : public QStyledItemDelegate
+class WordListItemDelegate: public QStyledItemDelegate
 {
 public:
   explicit WordListItemDelegate( QAbstractItemDelegate * delegate );
@@ -15,4 +15,3 @@ private:
 };
 
 #endif
-

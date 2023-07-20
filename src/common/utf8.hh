@@ -47,7 +47,7 @@ long decode( char const * in, size_t inSize, wchar * out );
 
 /// Versions for non time-critical code.
 string encode( wstring const & ) noexcept;
-wstring decode( string const & ) ;
+wstring decode( string const & );
 
 /// Since the standard isspace() is locale-specific, we need something
 /// that would never mess up our utf8 input. The stock one worked fine under
@@ -55,18 +55,17 @@ wstring decode( string const & ) ;
 bool isspace( int c );
 
 //get the first line in string s1. -1 if not found
-int findFirstLinePosition( char* s1,int s1length, const char* s2,int s2length);
+int findFirstLinePosition( char * s1, int s1length, const char * s2, int s2length );
 char const * getEncodingNameFor( Encoding e );
 Encoding getEncodingForName( const QByteArray & name );
 
 struct LineFeed
 {
-	int length;
-	char* lineFeed;
-
+  int length;
+  char * lineFeed;
 };
 
-LineFeed initLineFeed(Encoding e);
-}
+LineFeed initLineFeed( Encoding e );
+} // namespace Utf8
 
 #endif

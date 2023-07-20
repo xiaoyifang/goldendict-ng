@@ -10,10 +10,10 @@
 #include <QSemaphore>
 #include <QStringList>
 
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QRegExp>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QRegExp>
 #else
-#include <QRegExp>
+  #include <QRegExp>
 #endif
 
 #include "dict/dictionary.hh"
@@ -23,8 +23,7 @@
 #include "instances.hh"
 #include "delegate.hh"
 
-namespace FTS
-{
+namespace FTS {
 
 enum {
   // Minimum word length for indexing
@@ -38,8 +37,7 @@ enum {
   MaxMatchLengthForHighlightResults = 500
 };
 
-enum SearchMode
-{
+enum SearchMode {
   WholeWords = 0, // aka Default search using Xapian query syntax
   PlainText,
   Wildcards,
@@ -53,8 +51,7 @@ struct FtsHeadword
   QStringList foundHiliteRegExps;
   bool matchCase;
 
-  FtsHeadword( QString const & headword_, QString const & dictid_,
-               QStringList hilites, bool match_case ) :
+  FtsHeadword( QString const & headword_, QString const & dictid_, QStringList hilites, bool match_case ):
     headword( headword_ ),
     foundHiliteRegExps( hilites ),
     matchCase( match_case )
@@ -64,18 +61,22 @@ struct FtsHeadword
 
   QString trimQuotes( QString const & ) const;
 
-  bool operator <( FtsHeadword const & other ) const;
+  bool operator<( FtsHeadword const & other ) const;
 
-  bool operator ==( FtsHeadword const & other ) const
-  { return headword.compare( other.headword, Qt::CaseInsensitive ) == 0; }
+  bool operator==( FtsHeadword const & other ) const
+  {
+    return headword.compare( other.headword, Qt::CaseInsensitive ) == 0;
+  }
 
-  bool operator !=( FtsHeadword const & other ) const
-  { return headword.compare( other.headword, Qt::CaseInsensitive ) != 0; }
+  bool operator!=( FtsHeadword const & other ) const
+  {
+    return headword.compare( other.headword, Qt::CaseInsensitive ) != 0;
+  }
 };
 
-class Indexing : public QObject, public QRunnable
+class Indexing: public QObject, public QRunnable
 {
-Q_OBJECT
+  Q_OBJECT
 
   QAtomicInt & isCancelled;
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
@@ -115,13 +116,16 @@ private slots:
   void timeout();
 };
 
-class FtsIndexing : public QObject
+class FtsIndexing: public QObject
 {
-Q_OBJECT
+  Q_OBJECT
+
 public:
   FtsIndexing( std::vector< sptr< Dictionary::Class > > const & dicts );
   virtual ~FtsIndexing()
-  { stopIndexing(); }
+  {
+    stopIndexing();
+  }
 
   void setDictionaries( std::vector< sptr< Dictionary::Class > > const & dicts )
   {
@@ -164,20 +168,23 @@ class HeadwordsListModel: public QAbstractListModel
 
 public:
 
-  HeadwordsListModel( QWidget * parent, QList< FtsHeadword > & headwords_,
+  HeadwordsListModel( QWidget * parent,
+                      QList< FtsHeadword > & headwords_,
                       std::vector< sptr< Dictionary::Class > > const & dicts ):
-    QAbstractListModel( parent ), headwords( headwords_ ),
+    QAbstractListModel( parent ),
+    headwords( headwords_ ),
     dictionaries( dicts )
-  {}
+  {
+  }
 
   int rowCount( QModelIndex const & parent ) const;
   QVariant data( QModelIndex const & index, int role ) const;
 
-//  bool insertRows( int row, int count, const QModelIndex & parent );
-//  bool removeRows( int row, int count, const QModelIndex & parent );
-//  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  //  bool insertRows( int row, int count, const QModelIndex & parent );
+  //  bool removeRows( int row, int count, const QModelIndex & parent );
+  //  bool setData( QModelIndex const & index, const QVariant & value, int role );
 
-  void addResults(const QModelIndex & parent, QList< FtsHeadword > const & headwords );
+  void addResults( const QModelIndex & parent, QList< FtsHeadword > const & headwords );
   bool clear();
 
 private:
@@ -191,7 +198,7 @@ signals:
   void contentChanged();
 };
 
-class FullTextSearchDialog : public QDialog
+class FullTextSearchDialog: public QDialog
 {
   Q_OBJECT
 
@@ -219,7 +226,10 @@ public:
   void setSearchText( const QString & text );
 
   void setCurrentGroup( unsigned group_ )
-  { group = group_; updateDictionaries(); }
+  {
+    group = group_;
+    updateDictionaries();
+  }
 
   void stopSearch();
 
@@ -240,14 +250,16 @@ private slots:
   void saveData();
   void accept();
   void searchReqFinished();
-  void matchCount(int);
+  void matchCount( int );
   void reject();
   void itemClicked( QModelIndex const & idx );
   void updateDictionaries();
 
 signals:
-  void showTranslationFor( QString const &, QStringList const & dictIDs,
-                           QRegExp const & searchRegExp, bool ignoreDiacritics );
+  void showTranslationFor( QString const &,
+                           QStringList const & dictIDs,
+                           QRegExp const & searchRegExp,
+                           bool ignoreDiacritics );
   void closeDialog();
 };
 

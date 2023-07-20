@@ -7,10 +7,8 @@
 #include "parsecmdline.hh"
 #include "gddebug.hh"
 
-ExternalViewer::ExternalViewer( const char * data, int size,
-                                QString const & extension, QString const & viewerCmdLine_,
-                                QObject * parent)
-    :
+ExternalViewer::ExternalViewer(
+  const char * data, int size, QString const & extension, QString const & viewerCmdLine_, QObject * parent ):
   QObject( parent ),
   tempFile( QDir::temp().filePath( QString( "gd-XXXXXXXX." ) + extension ) ),
   viewer( this ),
@@ -23,7 +21,7 @@ ExternalViewer::ExternalViewer( const char * data, int size,
 
 #ifdef Q_OS_WIN32
   // Issue #239
-  tempFileName = QDir::toNativeSeparators(tempFileName);
+  tempFileName = QDir::toNativeSeparators( tempFileName );
 #endif
 
   tempFile.close();
@@ -31,15 +29,14 @@ ExternalViewer::ExternalViewer( const char * data, int size,
   GD_DPRINTF( "%s\n", tempFile.fileName().toLocal8Bit().data() );
 }
 
-void ExternalViewer::start() 
+void ExternalViewer::start()
 {
   connect( &viewer, &QProcess::finished, this, &QObject::deleteLater );
   connect( &viewer, &QProcess::errorOccurred, this, &QObject::deleteLater );
 
   QStringList args = parseCommandLine( viewerCmdLine );
 
-  if ( !args.isEmpty() )
-  {
+  if ( !args.isEmpty() ) {
     QString program = args.first();
     args.pop_front();
     args.push_back( tempFileName );
@@ -53,7 +50,7 @@ void ExternalViewer::start()
 
 bool ExternalViewer::stop()
 {
-  if( viewer.state() == QProcess::NotRunning )
+  if ( viewer.state() == QProcess::NotRunning )
     return true;
   viewer.terminate();
   QTimer::singleShot( 1000, &viewer, &QProcess::kill ); // In case terminate() fails.
@@ -63,7 +60,7 @@ bool ExternalViewer::stop()
 void ExternalViewer::stopSynchronously()
 {
   // This implementation comes straight from QProcess::~QProcess().
-  if( viewer.state() == QProcess::NotRunning )
+  if ( viewer.state() == QProcess::NotRunning )
     return;
   viewer.kill();
   viewer.waitForFinished();
@@ -71,7 +68,7 @@ void ExternalViewer::stopSynchronously()
 
 void stopAndDestroySynchronously( ExternalViewer * viewer )
 {
-  if( !viewer )
+  if ( !viewer )
     return;
   viewer->stopSynchronously();
   delete viewer;

@@ -9,21 +9,27 @@
 
 #ifdef MAKE_FFMPEG_PLAYER
 
-namespace Ffmpeg
-{
+namespace Ffmpeg {
 
-class AudioPlayer : public AudioPlayerInterface
+class AudioPlayer: public AudioPlayerInterface
 {
   Q_OBJECT
+
 public:
- AudioPlayer() { connect( &AudioService::instance(), &AudioService::error, this, &AudioPlayerInterface::error ); }
+  AudioPlayer()
+  {
+    connect( &AudioService::instance(), &AudioService::error, this, &AudioPlayerInterface::error );
+  }
 
- ~AudioPlayer() { stop(); }
+  ~AudioPlayer()
+  {
+    stop();
+  }
 
- virtual QString play( const char * data, int size )
- {
-   AudioService::instance().playMemory( data, size );
-   return QString();
+  virtual QString play( const char * data, int size )
+  {
+    AudioService::instance().playMemory( data, size );
+    return QString();
   }
 
   virtual void stop()
@@ -32,7 +38,7 @@ public:
   }
 };
 
-}
+} // namespace Ffmpeg
 
 #endif // MAKE_FFMPEG_PLAYER
 

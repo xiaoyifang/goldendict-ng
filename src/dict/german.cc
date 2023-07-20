@@ -33,22 +33,22 @@ GermanTable::GermanTable()
   ins( "Oe", "Ö" );
   ins( "Ss", "ß" );
 
-//  ins( "ü", "ue" );
-//  ins( "ä", "ae" );
-//  ins( "ö", "oe" );
-//  ins( "ß", "ss" );
-
+  //  ins( "ü", "ue" );
+  //  ins( "ä", "ae" );
+  //  ins( "ö", "oe" );
+  //  ins( "ß", "ss" );
 }
 
-sptr< Dictionary::Class > makeDictionary() 
+sptr< Dictionary::Class > makeDictionary()
 {
   static GermanTable t;
 
-  return std::make_shared<Transliteration::TransliterationDictionary>( "cf1b74acd98adea9b2bba16af38f1081",
-                      QCoreApplication::translate( "GermanTranslit", "German Transliteration" ).toUtf8().data(),
-                      QIcon( ":/flags/de.png" ), t );
+  return std::make_shared< Transliteration::TransliterationDictionary >(
+    "cf1b74acd98adea9b2bba16af38f1081",
+    QCoreApplication::translate( "GermanTranslit", "German Transliteration" ).toUtf8().data(),
+    QIcon( ":/flags/de.png" ),
+    t );
 }
 
 
-}
-
+} // namespace GermanTranslit

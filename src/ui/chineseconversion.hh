@@ -11,7 +11,7 @@ namespace Ui {
 class ChineseConversion;
 }
 
-class ChineseConversion : public QGroupBox
+class ChineseConversion: public QGroupBox
 {
   Q_OBJECT
 
@@ -22,7 +22,7 @@ public:
   void getConfig( Config::Chinese & ) const;
 
 private:
-  Ui::ChineseConversion *ui;
+  Ui::ChineseConversion * ui;
 };
 
 #endif // __CHINESE_CONVERSION_HH_INCLUDED__

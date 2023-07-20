@@ -25,8 +25,7 @@ protected:
 
 public:
 
-  BaseTransliterationDictionary( string const & id, string const & name,
-                                 QIcon icon, bool caseSensitive = true );
+  BaseTransliterationDictionary( string const & id, string const & name, QIcon icon, bool caseSensitive = true );
 
   virtual string getName() noexcept;
 
@@ -36,19 +35,14 @@ public:
 
   virtual unsigned long getWordCount() noexcept;
 
-  virtual vector< wstring > getAlternateWritings( wstring const & )
-    noexcept = 0;
+  virtual vector< wstring > getAlternateWritings( wstring const & ) noexcept = 0;
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & )
-    ;
+  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & );
 
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
-                                                             unsigned long ) ;
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &, unsigned long );
 
-  virtual sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const &,
-                                                      wstring const &, bool )
-    ;
+  virtual sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const &, wstring const &, bool );
 };
 
 
@@ -58,11 +52,15 @@ class Table: public map< wstring, wstring >
 
 public:
 
-  Table(): maxEntrySize( 0 )
-  {}
+  Table():
+    maxEntrySize( 0 )
+  {
+  }
 
   unsigned getMaxEntrySize() const
-  { return maxEntrySize; }
+  {
+    return maxEntrySize;
+  }
 
 protected:
 
@@ -79,15 +77,12 @@ class TransliterationDictionary: public BaseTransliterationDictionary
 
 public:
 
-  TransliterationDictionary( string const & id, string const & name,
-                             QIcon icon,
-                             Table const & table,
-                             bool caseSensitive = true );
+  TransliterationDictionary(
+    string const & id, string const & name, QIcon icon, Table const & table, bool caseSensitive = true );
 
-  virtual vector< wstring > getAlternateWritings( wstring const & )
-    noexcept;
+  virtual vector< wstring > getAlternateWritings( wstring const & ) noexcept;
 };
 
-}
+} // namespace Transliteration
 
 #endif

@@ -35,7 +35,7 @@ struct Group
   /// Creates an empty group.
   explicit Group( QString const & name_ );
 
-  Group(unsigned id, QString const & name_);
+  Group( unsigned id, QString const & name_ );
 
   /// Makes the configuration group from the current contents.
   Config::Group makeConfigGroup();
@@ -71,28 +71,24 @@ struct Groups: public vector< Group >
 /// special group.
 void complementDictionaryOrder( Group & dictionaryOrder,
                                 Group const & inactiveDictionaries,
-                                vector< sptr< Dictionary::Class > > const &
-                                allDictionaries );
+                                vector< sptr< Dictionary::Class > > const & allDictionaries );
 
 /// For any dictionaries present in the group, updates their names to match
 /// the dictionaries they refer to in their current form, if they exist.
 /// If the dictionary instance can't be located, the name is left untouched.
-void updateNames( Config::Group &,
-                  vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Group &, vector< sptr< Dictionary::Class > > const & allDictionaries );
 
 /// Does updateNames() for a set of given groups.
-void updateNames( Config::Groups &,
-                  vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Groups &, vector< sptr< Dictionary::Class > > const & allDictionaries );
 
 /// Does updateNames() for any relevant dictionary groups present in the
 /// configuration.
-void updateNames( Config::Class &,
-                  vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Class &, vector< sptr< Dictionary::Class > > const & allDictionaries );
 
 /// Creates icon from icon data. Used by Group, but also by others who work
 /// with icon data directly.
 QIcon iconFromData( QByteArray const & );
 
-}
+} // namespace Instances
 
 #endif

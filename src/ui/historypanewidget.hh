@@ -17,20 +17,25 @@
 #include "delegate.hh"
 
 /// A widget holding the contents of the 'History' docklet.
-class HistoryPaneWidget : public QWidget
+class HistoryPaneWidget: public QWidget
 {
   Q_OBJECT
+
 public:
-  explicit HistoryPaneWidget( QWidget * parent = 0 ): QWidget( parent ),
-    itemSelectionChanged( false )
-  , listItemDelegate( 0 )
-  {}
+  explicit HistoryPaneWidget( QWidget * parent = 0 ):
+    QWidget( parent ),
+    itemSelectionChanged( false ),
+    listItemDelegate( 0 )
+  {
+  }
   virtual ~HistoryPaneWidget();
 
   virtual QSize sizeHint() const
-  { return QSize( 204, 204 ); }
+  {
+    return QSize( 204, 204 );
+  }
 
-  void setUp( Config::Class * cfg,  History * history, QMenu * menu );
+  void setUp( Config::Class * cfg, History * history, QMenu * menu );
 
 signals:
   void historyItemRequested( QString const & word );
@@ -39,17 +44,17 @@ public slots:
   void updateHistoryCounts();
 
 private slots:
-  void emitHistoryItemRequested(QModelIndex const &);
+  void emitHistoryItemRequested( QModelIndex const & );
   void onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected );
-  void onItemClicked(QModelIndex const & idx);
-  void showCustomMenu(QPoint const & pos);
+  void onItemClicked( QModelIndex const & idx );
+  void showCustomMenu( QPoint const & pos );
   void deleteSelectedItems();
   void copySelectedItems();
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
 
-  Config::Class * m_cfg ;
+  Config::Class * m_cfg;
   History * m_history;
   QListView * m_historyList;
   QMenu * m_historyMenu;
@@ -69,11 +74,12 @@ private:
   WordListItemDelegate * listItemDelegate;
 };
 
-class HistoryModel : public QAbstractListModel
+class HistoryModel: public QAbstractListModel
 {
   Q_OBJECT
+
 public:
-  explicit HistoryModel( History * history , QObject * parent = 0 );
+  explicit HistoryModel( History * history, QObject * parent = 0 );
 
   int rowCount( QModelIndex const & parent = QModelIndex() ) const;
 

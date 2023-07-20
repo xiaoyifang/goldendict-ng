@@ -3,14 +3,15 @@
 
 #include <QWebEngineUrlRequestInterceptor>
 
-class WebUrlRequestInterceptor : public QWebEngineUrlRequestInterceptor
+class WebUrlRequestInterceptor: public QWebEngineUrlRequestInterceptor
 {
-    Q_OBJECT
+  Q_OBJECT
+
 public:
-    WebUrlRequestInterceptor(QObject *p);
-    void interceptRequest(QWebEngineUrlRequestInfo &info);
-  signals:
-    void linkClicked( const QUrl & url );
+  WebUrlRequestInterceptor( QObject * p );
+  void interceptRequest( QWebEngineUrlRequestInfo & info );
+signals:
+  void linkClicked( const QUrl & url );
 };
 
 #endif // WEBURLREQUESTINTERCEPTOR_H

@@ -13,11 +13,10 @@
 namespace ZipFile {
 
 // Support for split zip files
-class SplitZipFile : public SplitFile::SplitFile
+class SplitZipFile: public SplitFile::SplitFile
 {
 public:
-  SplitZipFile()
-  {}
+  SplitZipFile() {}
   SplitZipFile( const QString & name );
 
   virtual void setFileName( const QString & name );
@@ -29,8 +28,7 @@ public:
   qint64 calcAbsoluteOffset( qint64 offset, quint16 partNo );
 };
 
-enum CompressionMethod
-{
+enum CompressionMethod {
   Uncompressed,
   Deflated,
   Unsupported
@@ -73,6 +71,6 @@ bool readNextEntry( SplitZipFile &, CentralDirEntry & );
 /// Returns true on success, false otherwise.
 bool readLocalHeader( SplitZipFile &, LocalFileHeader & );
 
-}
+} // namespace ZipFile
 
 #endif

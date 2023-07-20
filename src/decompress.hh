@@ -14,8 +14,7 @@ string decompressBzip2( const char * bufptr, unsigned length );
 
 #ifdef MAKE_ZIM_SUPPORT
 
-string decompressLzma2( const char * bufptr, unsigned length,
-                        bool raw_decoder = false );
+string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder = false );
 
 #endif
 

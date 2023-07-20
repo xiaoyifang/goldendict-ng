@@ -15,7 +15,7 @@ namespace Folding {
 /// are caught here.
 bool isCombiningMark( wchar ch )
 {
-  return QChar::isMark(ch);
+  return QChar::isMark( ch );
 }
 
 wstring apply( wstring const & in, bool preserveWildcards )
@@ -65,7 +65,7 @@ wstring applySimpleCaseOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for( size_t left = in.size(); left--; )
+  for ( size_t left = in.size(); left--; )
     out.push_back( foldCaseSimple( *nextChar++ ) );
 
   return out;
@@ -93,8 +93,8 @@ wstring applyFullCaseOnly( wstring const & in )
 
   wchar buf[ foldCaseMaxOut ];
 
-  for( size_t left = in.size(); left--; )
-    caseFolded.append( buf, foldCase(  *nextChar++, buf ) );
+  for ( size_t left = in.size(); left--; )
+    caseFolded.append( buf, foldCase( *nextChar++, buf ) );
 
   return caseFolded;
 }
@@ -113,7 +113,7 @@ wstring applyPunctOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for( size_t left = in.size(); left--; ++nextChar )
+  for ( size_t left = in.size(); left--; ++nextChar )
     if ( !isPunct( *nextChar ) )
       out.push_back( *nextChar );
 
@@ -138,7 +138,7 @@ wstring applyWhitespaceOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for( size_t left = in.size(); left--; ++nextChar )
+  for ( size_t left = in.size(); left--; ++nextChar )
     if ( !isWhitespace( *nextChar ) )
       out.push_back( *nextChar );
 
@@ -178,19 +178,18 @@ bool isPunct( wchar ch )
 
 wstring trimWhitespaceOrPunct( wstring const & in )
 {
-  wchar const * wordBegin = in.c_str();
+  wchar const * wordBegin     = in.c_str();
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while( *wordBegin && ( Folding::isWhitespace( *wordBegin ) || Folding::isPunct( *wordBegin ) ) )
-  {
+  while ( *wordBegin && ( Folding::isWhitespace( *wordBegin ) || Folding::isPunct( *wordBegin ) ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while( wordSize && ( Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ||
-                       Folding::isPunct( wordBegin[ wordSize - 1 ] ) ) )
+  while ( wordSize
+          && ( Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) || Folding::isPunct( wordBegin[ wordSize - 1 ] ) ) )
     --wordSize;
 
   return wstring( wordBegin, wordSize );
@@ -201,7 +200,7 @@ QString trimWhitespaceOrPunct( QString const & in )
   auto wordSize = in.size();
 
   int wordBegin = 0;
-  int wordEnd   = wordSize ;
+  int wordEnd   = wordSize;
   // Skip any leading whitespace
   while ( wordBegin < wordSize && ( in[ wordBegin ].isSpace() || in[ wordBegin ].isPunct() ) ) {
     ++wordBegin;
@@ -214,25 +213,24 @@ QString trimWhitespaceOrPunct( QString const & in )
     wordSize--;
   }
 
-  return in.mid( wordBegin,wordSize );
+  return in.mid( wordBegin, wordSize );
 }
 
 wstring trimWhitespace( wstring const & in )
 {
-  if( in.empty() )
+  if ( in.empty() )
     return in;
-  wchar const * wordBegin = in.c_str();
+  wchar const * wordBegin     = in.c_str();
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while( *wordBegin && Folding::isWhitespace( *wordBegin ) )
-  {
+  while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) )
+  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) )
     --wordSize;
 
   return wstring( wordBegin, wordSize );

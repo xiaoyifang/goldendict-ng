@@ -18,7 +18,7 @@ class ArticleMaker: public QObject
 {
   Q_OBJECT // We make it QObject to use tr() conveniently
 
-  std::vector< sptr< Dictionary::Class > > const & dictionaries;
+    std::vector< sptr< Dictionary::Class > > const & dictionaries;
   std::vector< Instances::Group > const & groups;
   const Config::Preferences & cfg;
 
@@ -28,9 +28,9 @@ public:
   /// groups' instances are to be passed. Those references are kept stored as
   /// references, and as such, any changes to them would reflect on the results
   /// of the inquiries, although those changes are perfectly legal.
- ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
-               std::vector< Instances::Group > const & groups,
-               const Config::Preferences & cfg );
+  ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
+                std::vector< Instances::Group > const & groups,
+                const Config::Preferences & cfg );
 
   /// Looks up the given phrase within the given group, and creates a full html
   /// page text containing its definition.
@@ -41,12 +41,12 @@ public:
   /// the keys are dictionary ids.
   /// If mutedDicts is not empty, the search would be limited only to those
   /// dictionaries in group which aren't listed there.
-  sptr< Dictionary::DataRequest > makeDefinitionFor( QString const & word, unsigned groupId,
+  sptr< Dictionary::DataRequest > makeDefinitionFor( QString const & word,
+                                                     unsigned groupId,
                                                      QMap< QString, QString > const & contexts,
-                                                     QSet< QString > const & mutedDicts =
-                                                       QSet< QString >(),
-                                                     QStringList const & dictIDs = QStringList(),
-                                                     bool ignoreDiacritics = false ) const;
+                                                     QSet< QString > const & mutedDicts = QSet< QString >(),
+                                                     QStringList const & dictIDs        = QStringList(),
+                                                     bool ignoreDiacritics              = false ) const;
 
   /// Makes up a text which states that no translation for the given word
   /// was found. Sometimes it's better to call this directly when it's already
@@ -64,10 +64,9 @@ public:
   static bool adjustFilePath( QString & fileName );
 
 private:
-  std::string readCssFile(QString const& fileName, std::string type) const;
+  std::string readCssFile( QString const & fileName, std::string type ) const;
   /// Makes everything up to and including the opening body tag.
-  std::string makeHtmlHeader( QString const & word, QString const & icon,
-                              bool expandOptionalParts ) const;
+  std::string makeHtmlHeader( QString const & word, QString const & icon, bool expandOptionalParts ) const;
 
   /// Makes the html body for makeNotFoundTextFor()
   static std::string makeNotFoundBody( QString const & word, QString const & group );
@@ -85,7 +84,7 @@ class ArticleRequest: public Dictionary::DataRequest
   Instances::Group group;
   QMap< QString, QString > contexts;
   std::vector< sptr< Dictionary::Class > > activeDicts;
-  
+
   std::set< gd::wstring, std::less<> > alts; // Accumulated main forms
   std::list< sptr< Dictionary::WordSearchRequest > > altSearches;
   std::list< sptr< Dictionary::DataRequest > > bodyRequests;
@@ -116,15 +115,17 @@ class ArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ArticleRequest( QString const & phrase, Instances::Group const & group,
+  ArticleRequest( QString const & phrase,
+                  Instances::Group const & group,
                   QMap< QString, QString > const & contexts,
                   std::vector< sptr< Dictionary::Class > > const & activeDicts,
                   std::string const & header,
-                  int sizeLimit, bool needExpandOptionalParts_,
+                  int sizeLimit,
+                  bool needExpandOptionalParts_,
                   bool ignoreDiacritics = false );
 
   virtual void cancel();
-//  { finish(); } // Add our own requests cancellation here
+  //  { finish(); } // Add our own requests cancellation here
 
 private slots:
 
@@ -151,7 +152,7 @@ private:
 
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( QString const &, int pos );
-  bool isCollapsable( Dictionary::DataRequest & req,QString const & dictId );
+  bool isCollapsable( Dictionary::DataRequest & req, QString const & dictId );
 };
 
 

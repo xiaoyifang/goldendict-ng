@@ -10,7 +10,7 @@
 #include <QFocusEvent>
 #include <QCompleter>
 
-class TranslateBox : public QWidget
+class TranslateBox: public QWidget
 {
   Q_OBJECT
 
@@ -25,7 +25,7 @@ public:
   void setModel( QStringList & _words );
 
 public slots:
-  void setPopupEnabled(bool enable);
+  void setPopupEnabled( bool enable );
 
 private slots:
   void showPopup();

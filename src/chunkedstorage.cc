@@ -10,13 +10,14 @@
 
 namespace ChunkedStorage {
 
-enum
-{
+enum {
   ChunkMaxSize = 65536 // Can't be more since it would overflow the address
 };
 
 Writer::Writer( File::Class & f ):
-  file( f ), chunkStarted( false ), bufferUsed( 0 )
+  file( f ),
+  chunkStarted( false ),
+  bufferUsed( 0 )
 {
   // Create a sratchpad at the beginning of file. We use it to write chunk
   // table if it would fit, in order to save some seek times.
@@ -26,15 +27,14 @@ Writer::Writer( File::Class & f ):
   memset( zero, 0, sizeof( zero ) );
 
   scratchPadOffset = file.tell();
-  scratchPadSize = sizeof( zero );
+  scratchPadSize   = sizeof( zero );
 
   file.write( zero, sizeof( zero ) );
 }
 
 uint32_t Writer::startNewBlock()
 {
-  if ( bufferUsed >= ChunkMaxSize )
-  {
+  if ( bufferUsed >= ChunkMaxSize ) {
     // Need to flush first.
     saveCurrentChunk();
   }
@@ -71,14 +71,13 @@ void Writer::saveCurrentChunk()
 
   unsigned long compressedSize = bufferCompressed.size();
 
-  if ( compress( &bufferCompressed.front(), &compressedSize,
-                 &buffer.front(), bufferUsed ) != Z_OK )
+  if ( compress( &bufferCompressed.front(), &compressedSize, &buffer.front(), bufferUsed ) != Z_OK )
     throw exFailedToCompressChunk();
 
   offsets.push_back( file.tell() );
 
-  file.write( (uint32_t) bufferUsed );
-  file.write( (uint32_t) compressedSize );
+  file.write( (uint32_t)bufferUsed );
+  file.write( (uint32_t)compressedSize );
   file.write( &bufferCompressed.front(), compressedSize );
 
   bufferUsed = 0;
@@ -91,19 +90,18 @@ uint32_t Writer::finish()
   if ( bufferUsed || chunkStarted )
     saveCurrentChunk();
 
-  bool useScratchPad = false;
+  bool useScratchPad   = false;
   uint32_t savedOffset = 0;
 
-  if ( scratchPadSize >= offsets.size() * sizeof( uint32_t ) + sizeof( uint32_t ) )
-  {
+  if ( scratchPadSize >= offsets.size() * sizeof( uint32_t ) + sizeof( uint32_t ) ) {
     useScratchPad = true;
-    savedOffset = file.tell();
+    savedOffset   = file.tell();
     file.seek( scratchPadOffset );
   }
 
   uint32_t offset = file.tell();
 
-  file.write( (uint32_t) offsets.size() );
+  file.write( (uint32_t)offsets.size() );
 
   if ( offsets.size() )
     file.write( &offsets.front(), offsets.size() * sizeof( uint32_t ) );
@@ -117,11 +115,12 @@ uint32_t Writer::finish()
   return offset;
 }
 
-Reader::Reader( File::Class & f, uint32_t offset ): file( f )
+Reader::Reader( File::Class & f, uint32_t offset ):
+  file( f )
 {
   file.seek( offset );
 
-  uint32_t size =  file.read< uint32_t >();
+  uint32_t size = file.read< uint32_t >();
   if ( size == 0 )
     return;
   offsets.resize( size );
@@ -140,9 +139,9 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
     // file.seek( offsets[ chunkIdx ] );
     QMutexLocker _( &file.lock );
     auto bytes = file.map( offsets[ chunkIdx ], 8 );
-    if( bytes == nullptr )
+    if ( bytes == nullptr )
       throw mapFailed();
-    auto qBytes = QByteArray::fromRawData( reinterpret_cast< char * >(bytes), 8 );
+    auto qBytes = QByteArray::fromRawData( reinterpret_cast< char * >( bytes ), 8 );
     QDataStream in( qBytes );
     in.setByteOrder( QDataStream::LittleEndian );
 
@@ -156,23 +155,20 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
 
     // vector< unsigned char > compressedData( compressedSize );
     auto chunkDataBytes = file.map( offsets[ chunkIdx ] + 8, compressedSize );
-    if( chunkDataBytes == nullptr )
+    if ( chunkDataBytes == nullptr )
       throw mapFailed();
     // file.read( &compressedData.front(), compressedData.size() );
-    auto autoUnmap = qScopeGuard(
-      [ & ] {
-        file.unmap( chunkDataBytes );
-      } );
+    auto autoUnmap = qScopeGuard( [ & ] {
+      file.unmap( chunkDataBytes );
+    } );
     Q_UNUSED( autoUnmap )
 
     unsigned long decompressedLength = chunk.size();
 
-    if( uncompress( (unsigned char *)&chunk.front(), &decompressedLength, chunkDataBytes, compressedSize ) != Z_OK
-        || decompressedLength != chunk.size() )
-    {
+    if ( uncompress( (unsigned char *)&chunk.front(), &decompressedLength, chunkDataBytes, compressedSize ) != Z_OK
+         || decompressedLength != chunk.size() ) {
       throw exFailedToDecompressChunk();
     }
-
   }
 
   size_t offsetInChunk = address & 0xffFF;
@@ -183,4 +179,4 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
   return &chunk.front() + offsetInChunk;
 }
 
-}
+} // namespace ChunkedStorage

@@ -12,26 +12,44 @@
 /// DEF_EX( exFooNotFound, "Foo was not found", exErrorInFoo )
 
 #define DEF_EX( exName, exDescription, exParent ) \
-class exName: public exParent { \
-public: \
-virtual const char * what() const noexcept { return (exDescription); } \
-virtual ~exName() noexcept {} };
+  class exName: public exParent                   \
+  {                                               \
+  public:                                         \
+    virtual const char * what() const noexcept    \
+    {                                             \
+      return ( exDescription );                   \
+    }                                             \
+    virtual ~exName() noexcept                    \
+    {                                             \
+    }                                             \
+  };
 
 /// Same as DEF_EX, but takes a runtime string argument, which gets concatenated
 /// with the description.
-/// 
+///
 ///   DEF_EX_STR( exCantOpen, "can't open file", std::exception )
 ///   ...
 ///   throw exCantOpen( "example.txt" );
 ///
 ///   what() would return "can't open file example.txt"
 
-#define DEF_EX_STR( exName, exDescription, exParent ) \
-class exName: public exParent { \
-std::string value; \
-public: \
-  explicit exName( std::string const & value_ ): value( std::string( exDescription ) + " " + value_ ) {} \
-virtual const char * what() const noexcept { return value.c_str(); } \
-virtual ~exName() noexcept {} };
+#define DEF_EX_STR( exName, exDescription, exParent )      \
+  class exName: public exParent                            \
+  {                                                        \
+    std::string value;                                     \
+                                                           \
+  public:                                                  \
+    explicit exName( std::string const & value_ ):         \
+      value( std::string( exDescription ) + " " + value_ ) \
+    {                                                      \
+    }                                                      \
+    virtual const char * what() const noexcept             \
+    {                                                      \
+      return value.c_str();                                \
+    }                                                      \
+    virtual ~exName() noexcept                             \
+    {                                                      \
+    }                                                      \
+  };
 
 #endif

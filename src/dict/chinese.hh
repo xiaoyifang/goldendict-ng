@@ -11,8 +11,7 @@
 /// Chinese character conversion support.
 namespace Chinese {
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & )
-  ;
+std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & );
 
 }
 

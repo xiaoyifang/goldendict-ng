@@ -2,10 +2,11 @@
 
 #include <QTextCodec>
 
-IframeSchemeHandler::IframeSchemeHandler(QObject * parent):QWebEngineUrlSchemeHandler(parent){
-
+IframeSchemeHandler::IframeSchemeHandler( QObject * parent ):
+  QWebEngineUrlSchemeHandler( parent )
+{
 }
-void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
+void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 {
   QUrl url = requestJob->requestUrl();
 
@@ -13,19 +14,19 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
   url = QUrl( Utils::Url::queryItemValue( url, "url" ) );
   QNetworkRequest request;
   request.setUrl( url );
-  request.setAttribute(QNetworkRequest::RedirectPolicyAttribute,QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy);
+  request.setAttribute( QNetworkRequest::RedirectPolicyAttribute,
+                        QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy );
 
   QNetworkReply * reply = mgr.get( request );
 
   auto finishAction = [ = ]() {
-
     QByteArray contentType = "text/html";
     QString codecName;
     const auto ctHeader = reply->header( QNetworkRequest::ContentTypeHeader );
-    if (  ctHeader.isValid() ) {
-      contentType = ctHeader.toByteArray();
-      const auto ct     = ctHeader.toString();
-      const auto index  = ct.indexOf( "charset=" );
+    if ( ctHeader.isValid() ) {
+      contentType      = ctHeader.toByteArray();
+      const auto ct    = ctHeader.toString();
+      const auto index = ct.indexOf( "charset=" );
       if ( index > -1 ) {
         codecName = ct.mid( index + 8 );
       }
@@ -36,18 +37,17 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
     QString articleString;
 
     QTextCodec * codec = QTextCodec::codecForUtfText( replyData, QTextCodec::codecForName( codecName.toUtf8() ) );
-    if(codec)
-      articleString      = codec->toUnicode( replyData );
+    if ( codec )
+      articleString = codec->toUnicode( replyData );
     else
-      articleString = QString::fromUtf8(replyData);
+      articleString = QString::fromUtf8( replyData );
     // Handle reply data
     // 404 response may have response body.
-    if( reply->error() != QNetworkReply::NoError && articleString.isEmpty())
-    {
-      if(reply->error()==QNetworkReply::ContentNotFoundError){
+    if ( reply->error() != QNetworkReply::NoError && articleString.isEmpty() ) {
+      if ( reply->error() == QNetworkReply::ContentNotFoundError ) {
         buffer->deleteLater();
         //work around to fix QTBUG-106573
-        requestJob->redirect(url);
+        requestJob->redirect( url );
         return;
       }
       QString emptyHtml = QString( "<html><body>%1</body></html>" ).arg( reply->errorString() );
@@ -84,17 +84,16 @@ void IframeSchemeHandler::requestStarted(QWebEngineUrlRequestJob *requestJob)
       articleString.insert( match.capturedEnd(), baseTagHtml );
       articleString.insert( match.capturedEnd(), depressionFocus );
     }
-    else
-    {
+    else {
       // the html contain no head element
       // just insert at the beginning of the html ,and leave it at the mercy of browser(chrome webengine)
       articleString.insert( 0, baseTagHtml );
       articleString.insert( 0, depressionFocus );
     }
 
-    buffer->setData(articleString.toUtf8());
+    buffer->setData( articleString.toUtf8() );
 
-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 )
     requestJob->reply( "text/html; charset=utf-8", buffer );
 #else
   #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )

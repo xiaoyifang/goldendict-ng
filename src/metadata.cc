@@ -17,8 +17,8 @@ std::optional< Metadata::result > Metadata::load( std::string_view filepath )
     tbl = toml::parse_file( filepath );
   }
   catch ( toml::parse_error & e ) {
-    qWarning()<< "Failed to load metadata: " << QString::fromUtf8(filepath.data(),filepath.size())
-              << "Reason:" << e.what();
+    qWarning() << "Failed to load metadata: " << QString::fromUtf8( filepath.data(), filepath.size() )
+               << "Reason:" << e.what();
 
     return std::nullopt;
   }

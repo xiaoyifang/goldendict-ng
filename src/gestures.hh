@@ -7,11 +7,9 @@
 #include <QEvent>
 #include <QAction>
 
-namespace Gestures
-{
+namespace Gestures {
 
-enum GestureResult
-{
+enum GestureResult {
   NOT_HANLDED,
   SWIPE_LEFT,
   SWIPE_RIGHT,
@@ -31,17 +29,23 @@ void unregisterRecognizers();
 bool isFewTouchPointsPresented();
 
 class GDPinchGestureRecognizer;
-class GDPinchGesture : public QGesture
+class GDPinchGesture: public QGesture
 {
 public:
   GDPinchGesture( QObject * parent );
 
   bool isScaleChanged() const
-  { return scaleChanged; }
+  {
+    return scaleChanged;
+  }
   QPointF const & getCenterPoint() const
-  { return centerPoint; }
+  {
+    return centerPoint;
+  }
   qreal getTotalScaleFactor() const
-  { return totalScaleFactor; }
+  {
+    return totalScaleFactor;
+  }
 
 protected:
   QPointF startCenterPoint;
@@ -60,14 +64,18 @@ protected:
 };
 
 class GDSwipeGestureRecognizer;
-class GDSwipeGesture : public QGesture
+class GDSwipeGesture: public QGesture
 {
 public:
   GDSwipeGesture( QObject * parent );
   QSwipeGesture::SwipeDirection getHorizDirection() const
-  { return horizDirection; }
+  {
+    return horizDirection;
+  }
   QSwipeGesture::SwipeDirection getVertDirection() const
-  { return vertDirection; }
+  {
+    return vertDirection;
+  }
 
 protected:
   QSwipeGesture::SwipeDirection vertDirection;
@@ -78,36 +86,38 @@ protected:
   friend class GDSwipeGestureRecognizer;
 };
 
-class GDPinchGestureRecognizer : public QGestureRecognizer
+class GDPinchGestureRecognizer: public QGestureRecognizer
 {
 public:
   static const qreal OUT_SCALE_LIMIT;
   static const qreal IN_SCALE_LIMIT;
 
   GDPinchGestureRecognizer() {}
+
 private:
 
-  virtual QGesture* create( QObject* pTarget );
-  virtual QGestureRecognizer::Result recognize( QGesture* pGesture, QObject *pWatched, QEvent * pEvent );
-  void reset( QGesture *pGesture );
+  virtual QGesture * create( QObject * pTarget );
+  virtual QGestureRecognizer::Result recognize( QGesture * pGesture, QObject * pWatched, QEvent * pEvent );
+  void reset( QGesture * pGesture );
 };
 
-class GDSwipeGestureRecognizer : public QGestureRecognizer
+class GDSwipeGestureRecognizer: public QGestureRecognizer
 {
 public:
-  GDSwipeGestureRecognizer(){}
+  GDSwipeGestureRecognizer() {}
+
 private:
   static const int MOVE_X_TRESHOLD = 100;
   static const int MOVE_Y_TRESHOLD = 50;
 
-  virtual QGesture * create( QObject* pTarget );
-  virtual QGestureRecognizer::Result recognize( QGesture* pGesture, QObject * pWatched, QEvent * pEvent );
-  void reset ( QGesture * pGesture );
+  virtual QGesture * create( QObject * pTarget );
+  virtual QGestureRecognizer::Result recognize( QGesture * pGesture, QObject * pWatched, QEvent * pEvent );
+  void reset( QGesture * pGesture );
   qreal computeAngle( int dx, int dy );
 };
 
 bool handleGestureEvent( QObject * obj, QEvent * event, GestureResult & result, QPoint & point );
 
-} // namespace
+} // namespace Gestures
 
 #endif // __GESTURES_HH_INCLUDED__

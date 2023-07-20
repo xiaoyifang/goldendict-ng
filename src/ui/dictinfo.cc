@@ -5,32 +5,32 @@
 
 #include <QString>
 
-DictInfo::DictInfo( Config::Class &cfg_, QWidget *parent ) :
-  QDialog( parent),
-  cfg( cfg_)
+DictInfo::DictInfo( Config::Class & cfg_, QWidget * parent ):
+  QDialog( parent ),
+  cfg( cfg_ )
 {
   ui.setupUi( this );
-  if( cfg.dictInfoGeometry.size() > 0 )
+  if ( cfg.dictInfoGeometry.size() > 0 )
     restoreGeometry( cfg.dictInfoGeometry );
   connect( this, &QDialog::finished, this, &DictInfo::savePos );
 }
 
-void DictInfo::showInfo( sptr<Dictionary::Class> dict )
+void DictInfo::showInfo( sptr< Dictionary::Class > dict )
 {
   setWindowTitle( QString::fromUtf8( dict->getName().data(), dict->getName().size() ) );
 
-  ui.dictionaryId->setText( QString::fromStdString( dict->getId() ));
+  ui.dictionaryId->setText( QString::fromStdString( dict->getId() ) );
   ui.dictionaryTotalArticles->setText( QString::number( dict->getArticleCount() ) );
   ui.dictionaryTotalWords->setText( QString::number( dict->getWordCount() ) );
   ui.dictionaryTranslatesFrom->setText( Language::localizedStringForId( dict->getLangFrom() ) );
   ui.dictionaryTranslatesTo->setText( Language::localizedStringForId( dict->getLangTo() ) );
 
   ui.openFolder->setVisible( dict->isLocalDictionary() );
-  ui.editDictionary->setVisible( dict->isLocalDictionary() && !dict->getMainFilename().isEmpty() && !cfg.editDictionaryCommandLine.isEmpty());
-  ui.editDictionary->setToolTip(
-        tr( "Edit the dictionary via command:\n%1" ).arg( cfg.editDictionaryCommandLine ) );
+  ui.editDictionary->setVisible( dict->isLocalDictionary() && !dict->getMainFilename().isEmpty()
+                                 && !cfg.editDictionaryCommandLine.isEmpty() );
+  ui.editDictionary->setToolTip( tr( "Edit the dictionary via command:\n%1" ).arg( cfg.editDictionaryCommandLine ) );
 
-  if( dict->getWordCount() == 0 )
+  if ( dict->getWordCount() == 0 )
     ui.headwordsButton->setVisible( false );
   else
     ui.buttonsLayout->insertSpacerItem( 0, new QSpacerItem( 40, 20, QSizePolicy::Expanding ) );

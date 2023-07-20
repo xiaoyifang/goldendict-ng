@@ -2,7 +2,8 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-SearchPanel::SearchPanel( QWidget * parent ): QWidget( parent )
+SearchPanel::SearchPanel( QWidget * parent ):
+  QWidget( parent )
 {
   lineEdit = new QLineEdit( this );
 

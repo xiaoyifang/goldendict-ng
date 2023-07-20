@@ -19,9 +19,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.setupUi( this );
 
   connect( ui.enableScanPopupModifiers,
-    &QAbstractButton::toggled,
-    this,
-    &Preferences::enableScanPopupModifiersToggled );
+           &QAbstractButton::toggled,
+           this,
+           &Preferences::enableScanPopupModifiersToggled );
 
   connect( ui.showScanFlag, &QAbstractButton::toggled, this, &Preferences::showScanFlagToggled );
 
@@ -61,12 +61,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
   // See which other translations do we have
 
-  QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ),
-                                                                 QDir::Files );
+  QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ), QDir::Files );
 
   // We need to sort by language name -- otherwise list looks really weird
   QMultiMap< QString, QString > sortedLocs;
-  sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US");
+  sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US" );
   for ( const auto & availLoc : availLocs ) {
     // Here we assume the xx_YY naming, where xx is language and YY is region.
     //remove .qm suffix.
@@ -85,12 +84,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
   for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
-    ui.interfaceLanguage->addItem(  i.key(), i.value() );
+    ui.interfaceLanguage->addItem( i.key(), i.value() );
   }
 
-  for( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {
-    if ( ui.interfaceLanguage->itemData( x ).toString() == p.interfaceLanguage )
-    {
+  for ( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {
+    if ( ui.interfaceLanguage->itemData( x ).toString() == p.interfaceLanguage ) {
       ui.interfaceLanguage->setCurrentIndex( x );
       prevInterfaceLanguage = x;
       break;
@@ -135,9 +133,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_lingoes.png" ), tr( "Lingoes" ), QString( "lingoes" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_lingoes.png" ), tr( "Lingoes-Blue" ), QString( "lingoes-blue" ) );
 
-  for( int x = 0; x < ui.displayStyle->count(); ++x )
-    if ( ui.displayStyle->itemData( x ).toString() == p.displayStyle )
-    {
+  for ( int x = 0; x < ui.displayStyle->count(); ++x )
+    if ( ui.displayStyle->itemData( x ).toString() == p.displayStyle ) {
       ui.displayStyle->setCurrentIndex( x );
       break;
     }
@@ -157,11 +154,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.closeToTray->setChecked( p.closeToTray );
   ui.cbAutostart->setChecked( p.autoStart );
   ui.doubleClickTranslates->setChecked( p.doubleClickTranslates );
-  ui.selectBySingleClick->setChecked( p.selectWordBySingleClick);
+  ui.selectBySingleClick->setChecked( p.selectWordBySingleClick );
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
-  ui.darkMode->setChecked(p.darkMode);
-  ui.darkReaderMode -> setChecked(p.darkReaderMode);
+  ui.darkMode->setChecked( p.darkMode );
+  ui.darkReaderMode->setChecked( p.darkReaderMode );
 #ifndef Q_OS_WIN32
   ui.darkMode->hide();
 #endif
@@ -228,19 +225,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.rightCtrl->hide();
   ui.leftShift->hide();
   ui.rightShift->hide();
-#ifdef Q_OS_MAC
+  #ifdef Q_OS_MAC
   ui.altKey->setText( "Opt" );
   ui.winKey->setText( "Ctrl" );
   ui.ctrlKey->setText( "Cmd" );
-#endif
+  #endif
 #endif
 
-//Platform-specific options
+  //Platform-specific options
 
 #ifdef HAVE_X11
-  ui.enableX11SelectionTrack->setChecked(p.trackSelectionScan);
-  ui.enableClipboardTrack ->setChecked(p.trackClipboardScan);
-  ui.showScanFlag->setChecked(p.showScanFlag);
+  ui.enableX11SelectionTrack->setChecked( p.trackSelectionScan );
+  ui.enableClipboardTrack->setChecked( p.trackClipboardScan );
+  ui.showScanFlag->setChecked( p.showScanFlag );
   ui.delayTimer->setValue( p.selectionChangeDelayTimer );
 #else
   ui.enableX11SelectionTrack->hide();
@@ -261,19 +258,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // on_useExternalPlayer_toggled() is called.
   ui.useExternalPlayer->setChecked( true );
 
-  if( ui.internalPlayerBackend->count() > 0 )
-  {
+  if ( ui.internalPlayerBackend->count() > 0 ) {
     // Checking ui.useInternalPlayer automatically unchecks ui.useExternalPlayer.
     ui.useInternalPlayer->setChecked( p.useInternalPlayer );
 
     int index = ui.internalPlayerBackend->findText( p.internalPlayerBackend.uiName() );
-    if( index < 0 ) // The specified backend is unavailable.
+    if ( index < 0 ) // The specified backend is unavailable.
       index = ui.internalPlayerBackend->findText( Config::InternalPlayerBackend::defaultBackend().uiName() );
     Q_ASSERT( index >= 0 && "Logic error: the default backend must be present in the backend name list." );
     ui.internalPlayerBackend->setCurrentIndex( index );
   }
-  else
-  {
+  else {
     ui.useInternalPlayer->hide();
     ui.internalPlayerBackend->hide();
   }
@@ -296,13 +291,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.proxyUser->setText( p.proxyServer.user );
   ui.proxyPassword->setText( p.proxyServer.password );
 
-  if( p.proxyServer.useSystemProxy )
-  {
+  if ( p.proxyServer.useSystemProxy ) {
     ui.systemProxy->setChecked( true );
     ui.customSettingsGroup->setEnabled( false );
   }
-  else
-  {
+  else {
     ui.customProxy->setChecked( true );
     ui.customSettingsGroup->setEnabled( p.proxyServer.enabled );
   }
@@ -312,11 +305,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ankiHost->setText( p.ankiConnectServer.host );
   ui.ankiPort->setValue( p.ankiConnectServer.port );
   ui.ankiModel->setText( p.ankiConnectServer.model );
-  ui.ankiDeck->setText(p.ankiConnectServer.deck);
+  ui.ankiDeck->setText( p.ankiConnectServer.deck );
   //anki connect fields
-  ui.ankiText->setText(p.ankiConnectServer.text);
-  ui.ankiWord->setText(p.ankiConnectServer.word);
-  ui.ankiSentence->setText(p.ankiConnectServer.sentence);
+  ui.ankiText->setText( p.ankiConnectServer.text );
+  ui.ankiWord->setText( p.ankiConnectServer.word );
+  ui.ankiSentence->setText( p.ankiConnectServer.sentence );
 
   connect( ui.customProxy, &QAbstractButton::toggled, this, &Preferences::customProxyToggled );
 
@@ -372,9 +365,7 @@ Config::Preferences Preferences::getPreferences()
 {
   Config::Preferences p;
 
-  p.interfaceLanguage =
-    ui.interfaceLanguage->itemData(
-      ui.interfaceLanguage->currentIndex() ).toString();
+  p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -384,108 +375,106 @@ Config::Preferences Preferences::getPreferences()
   p.customFonts = c;
 
 
-  p.displayStyle =
-    ui.displayStyle->itemData(
-      ui.displayStyle->currentIndex() ).toString();
+  p.displayStyle = ui.displayStyle->itemData( ui.displayStyle->currentIndex() ).toString();
 
   p.newTabsOpenAfterCurrentOne = ui.newTabsOpenAfterCurrentOne->isChecked();
-  p.newTabsOpenInBackground = ui.newTabsOpenInBackground->isChecked();
-  p.hideSingleTab = ui.hideSingleTab->isChecked();
-  p.mruTabOrder = ui.mruTabOrder->isChecked();
-  p.enableTrayIcon = ui.enableTrayIcon->isChecked();
-  p.startToTray = ui.startToTray->isChecked();
-  p.closeToTray = ui.closeToTray->isChecked();
-  p.autoStart = ui.cbAutostart->isChecked();
-  p.doubleClickTranslates = ui.doubleClickTranslates->isChecked();
-  p.selectWordBySingleClick = ui.selectBySingleClick->isChecked();
-  p.autoScrollToTargetArticle = ui.autoScrollToTargetArticle->isChecked();
-  p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
+  p.newTabsOpenInBackground    = ui.newTabsOpenInBackground->isChecked();
+  p.hideSingleTab              = ui.hideSingleTab->isChecked();
+  p.mruTabOrder                = ui.mruTabOrder->isChecked();
+  p.enableTrayIcon             = ui.enableTrayIcon->isChecked();
+  p.startToTray                = ui.startToTray->isChecked();
+  p.closeToTray                = ui.closeToTray->isChecked();
+  p.autoStart                  = ui.cbAutostart->isChecked();
+  p.doubleClickTranslates      = ui.doubleClickTranslates->isChecked();
+  p.selectWordBySingleClick    = ui.selectBySingleClick->isChecked();
+  p.autoScrollToTargetArticle  = ui.autoScrollToTargetArticle->isChecked();
+  p.escKeyHidesMainWindow      = ui.escKeyHidesMainWindow->isChecked();
 
-  p.darkMode = ui.darkMode->isChecked();
-  p.darkReaderMode = ui.darkReaderMode->isChecked();
+  p.darkMode               = ui.darkMode->isChecked();
+  p.darkReaderMode         = ui.darkReaderMode->isChecked();
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
-  p.mainWindowHotkey = ui.mainWindowHotkey->keySequence();
-  p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
-  p.clipboardHotkey = ui.clipboardHotkey->keySequence();
+  p.mainWindowHotkey       = ui.mainWindowHotkey->keySequence();
+  p.enableClipboardHotkey  = ui.enableClipboardHotkey->isChecked();
+  p.clipboardHotkey        = ui.clipboardHotkey->keySequence();
 
-  p.startWithScanPopupOn = ui.startWithScanPopupOn->isChecked();
+  p.startWithScanPopupOn     = ui.startWithScanPopupOn->isChecked();
   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();
 
   p.scanPopupModifiers += ui.altKey->isChecked() ? KeyboardState::Alt : 0;
-  p.scanPopupModifiers += ui.ctrlKey->isChecked() ? KeyboardState::Ctrl: 0;
-  p.scanPopupModifiers += ui.shiftKey->isChecked() ? KeyboardState::Shift: 0;
-  p.scanPopupModifiers += ui.winKey->isChecked() ? KeyboardState::Win: 0;
-  p.scanPopupModifiers += ui.leftAlt->isChecked() ? KeyboardState::LeftAlt: 0;
-  p.scanPopupModifiers += ui.rightAlt->isChecked() ? KeyboardState::RightAlt: 0;
-  p.scanPopupModifiers += ui.leftCtrl->isChecked() ? KeyboardState::LeftCtrl: 0;
-  p.scanPopupModifiers += ui.rightCtrl->isChecked() ? KeyboardState::RightCtrl: 0;
-  p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift: 0;
-  p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift: 0;
+  p.scanPopupModifiers += ui.ctrlKey->isChecked() ? KeyboardState::Ctrl : 0;
+  p.scanPopupModifiers += ui.shiftKey->isChecked() ? KeyboardState::Shift : 0;
+  p.scanPopupModifiers += ui.winKey->isChecked() ? KeyboardState::Win : 0;
+  p.scanPopupModifiers += ui.leftAlt->isChecked() ? KeyboardState::LeftAlt : 0;
+  p.scanPopupModifiers += ui.rightAlt->isChecked() ? KeyboardState::RightAlt : 0;
+  p.scanPopupModifiers += ui.leftCtrl->isChecked() ? KeyboardState::LeftCtrl : 0;
+  p.scanPopupModifiers += ui.rightCtrl->isChecked() ? KeyboardState::RightCtrl : 0;
+  p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift : 0;
+  p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift : 0;
 
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
-  p.scanToMainWindow = ui.scanToMainWindow->isChecked();
+  p.scanToMainWindow          = ui.scanToMainWindow->isChecked();
 #ifdef HAVE_X11
-  p.trackSelectionScan = ui.enableX11SelectionTrack ->isChecked();
-  p.trackClipboardScan = ui.enableClipboardTrack ->isChecked();
-  p.showScanFlag= ui.showScanFlag->isChecked();
+  p.trackSelectionScan        = ui.enableX11SelectionTrack->isChecked();
+  p.trackClipboardScan        = ui.enableClipboardTrack->isChecked();
+  p.showScanFlag              = ui.showScanFlag->isChecked();
   p.selectionChangeDelayTimer = ui.delayTimer->value();
 #endif
 
-  p.storeHistory = ui.storeHistory->isChecked();
-  p.maxStringsInHistory = ui.historyMaxSizeField->text().toUInt();
-  p.historyStoreInterval = ui.historySaveIntervalField->text().toUInt();
+  p.storeHistory              = ui.storeHistory->isChecked();
+  p.maxStringsInHistory       = ui.historyMaxSizeField->text().toUInt();
+  p.historyStoreInterval      = ui.historySaveIntervalField->text().toUInt();
   p.alwaysExpandOptionalParts = ui.alwaysExpandOptionalParts->isChecked();
 
-  p.favoritesStoreInterval = ui.favoritesSaveIntervalField->text().toUInt();
+  p.favoritesStoreInterval   = ui.favoritesSaveIntervalField->text().toUInt();
   p.confirmFavoritesDeletion = ui.confirmFavoritesDeletion->isChecked();
 
-  p.collapseBigArticles = ui.collapseBigArticles->isChecked();
-  p.articleSizeLimit = ui.articleSizeLimit->value();
+  p.collapseBigArticles    = ui.collapseBigArticles->isChecked();
+  p.articleSizeLimit       = ui.articleSizeLimit->value();
   p.limitInputPhraseLength = ui.limitInputPhraseLength->isChecked();
   p.inputPhraseLengthLimit = ui.inputPhraseLengthLimit->value();
-  p.ignoreDiacritics = ui.ignoreDiacritics->isChecked();
-  p.ignorePunctuation = ui.ignorePunctuation->isChecked();
+  p.ignoreDiacritics       = ui.ignoreDiacritics->isChecked();
+  p.ignorePunctuation      = ui.ignorePunctuation->isChecked();
   p.sessionCollapse        = ui.sessionCollapse->isChecked();
-  p.stripClipboard = ui.stripClipboard->isChecked();
-  p.raiseWindowOnSearch = ui.raiseWindowOnSearch->isChecked();
+  p.stripClipboard         = ui.stripClipboard->isChecked();
+  p.raiseWindowOnSearch    = ui.raiseWindowOnSearch->isChecked();
 
   p.synonymSearchEnabled = ui.synonymSearchEnabled->isChecked();
 
   p.maxDictionaryRefsInContextMenu = ui.maxDictsInContextMenu->text().toInt();
 
-  p.pronounceOnLoadMain = ui.pronounceOnLoadMain->isChecked();
+  p.pronounceOnLoadMain  = ui.pronounceOnLoadMain->isChecked();
   p.pronounceOnLoadPopup = ui.pronounceOnLoadPopup->isChecked();
-  p.useInternalPlayer = ui.useInternalPlayer->isChecked();
+  p.useInternalPlayer    = ui.useInternalPlayer->isChecked();
   p.internalPlayerBackend.setUiName( ui.internalPlayerBackend->currentText() );
   p.audioPlaybackProgram = ui.audioPlaybackProgram->text();
 
-  p.proxyServer.enabled = ui.useProxyServer->isChecked();
+  p.proxyServer.enabled        = ui.useProxyServer->isChecked();
   p.proxyServer.useSystemProxy = ui.systemProxy->isChecked();
 
-  p.proxyServer.type = ( Config::ProxyServer::Type ) ui.proxyType->currentIndex();
+  p.proxyServer.type = (Config::ProxyServer::Type)ui.proxyType->currentIndex();
 
   p.proxyServer.host = ui.proxyHost->text();
-  p.proxyServer.port = ( unsigned ) ui.proxyPort->value();
+  p.proxyServer.port = (unsigned)ui.proxyPort->value();
 
-  p.proxyServer.user = ui.proxyUser->text();
+  p.proxyServer.user     = ui.proxyUser->text();
   p.proxyServer.password = ui.proxyPassword->text();
 
   //anki connect
   p.ankiConnectServer.enabled = ui.useAnkiConnect->isChecked();
   p.ankiConnectServer.host    = ui.ankiHost->text();
   p.ankiConnectServer.port    = (unsigned)ui.ankiPort->value();
-  p.ankiConnectServer.deck = ui.ankiDeck->text();
-  p.ankiConnectServer.model = ui.ankiModel->text();
+  p.ankiConnectServer.deck    = ui.ankiDeck->text();
+  p.ankiConnectServer.model   = ui.ankiModel->text();
   //anki connect fields
-  p.ankiConnectServer.text = ui.ankiText->text();
-  p.ankiConnectServer.word = ui.ankiWord->text();
+  p.ankiConnectServer.text     = ui.ankiText->text();
+  p.ankiConnectServer.word     = ui.ankiWord->text();
   p.ankiConnectServer.sentence = ui.ankiSentence->text();
 
-  p.checkForNewReleases = ui.checkForNewReleases->isChecked();
+  p.checkForNewReleases           = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
-  p.hideGoldenDictHeader = ui.hideGoldenDictHeader->isChecked();
-  p.maxNetworkCacheSize = ui.maxNetworkCacheSize->value();
-  p.clearNetworkCacheOnExit = ui.clearNetworkCacheOnExit->isChecked();
+  p.hideGoldenDictHeader          = ui.hideGoldenDictHeader->isChecked();
+  p.maxNetworkCacheSize           = ui.maxNetworkCacheSize->value();
+  p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
@@ -512,22 +501,20 @@ Config::Preferences Preferences::getPreferences()
 void Preferences::enableScanPopupModifiersToggled( bool b )
 {
   ui.scanPopupModifiers->setEnabled( b );
-  if( b )
+  if ( b )
     ui.showScanFlag->setChecked( false );
 }
 
 void Preferences::showScanFlagToggled( bool b )
 {
-  if( b )
+  if ( b )
     ui.enableScanPopupModifiers->setChecked( false );
 }
 
 
-
 void Preferences::wholeAltClicked( bool b )
 {
-  if ( b )
-  {
+  if ( b ) {
     ui.leftAlt->setChecked( false );
     ui.rightAlt->setChecked( false );
   }
@@ -535,8 +522,7 @@ void Preferences::wholeAltClicked( bool b )
 
 void Preferences::wholeCtrlClicked( bool b )
 {
-  if ( b )
-  {
+  if ( b ) {
     ui.leftCtrl->setChecked( false );
     ui.rightCtrl->setChecked( false );
   }
@@ -544,8 +530,7 @@ void Preferences::wholeCtrlClicked( bool b )
 
 void Preferences::wholeShiftClicked( bool b )
 {
-  if ( b )
-  {
+  if ( b ) {
     ui.leftShift->setChecked( false );
     ui.rightShift->setChecked( false );
   }
@@ -581,7 +566,8 @@ void Preferences::on_enableClipboardHotkey_toggled( bool checked )
 void Preferences::on_buttonBox_accepted()
 {
   if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
-    QMessageBox::information( this, tr( "Changing Language" ),
+    QMessageBox::information( this,
+                              tr( "Changing Language" ),
                               tr( "Restart the program to apply the language change." ) );
 
   auto c = getPreferences();
@@ -605,8 +591,7 @@ void Preferences::on_useExternalPlayer_toggled( bool enabled )
 
 void Preferences::customProxyToggled( bool )
 {
-  ui.customSettingsGroup->setEnabled( ui.customProxy->isChecked()
-                                      && ui.useProxyServer->isChecked() );
+  ui.customSettingsGroup->setEnabled( ui.customProxy->isChecked() && ui.useProxyServer->isChecked() );
 }
 
 void Preferences::on_maxNetworkCacheSize_valueChanged( int value )
@@ -623,4 +608,3 @@ void Preferences::on_limitInputPhraseLength_toggled( bool checked )
 {
   ui.inputPhraseLengthLimit->setEnabled( checked );
 }
-

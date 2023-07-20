@@ -31,7 +31,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   // would like to preserve them if no edits were done. To that end, we save
   // the initial group readings so that if no edits were really done, we won't
   // be changing groups.
-  origCfg.groups = groups->getGroups();
+  origCfg.groups               = groups->getGroups();
   origCfg.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
   origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
 
@@ -75,12 +75,10 @@ void EditDictionaries::editGroup( unsigned id )
 {
   ui.tabs->setTabVisible( 0, false );
 
-  if ( id == Instances::Group::AllGroupId )
-  {
+  if ( id == Instances::Group::AllGroupId ) {
     ui.tabs->setCurrentIndex( 1 );
   }
-  else
-  {
+  else {
     ui.tabs->setCurrentIndex( 2 );
     groups->editGroup( id );
   }
@@ -162,24 +160,18 @@ void EditDictionaries::rescanSources()
 
 void EditDictionaries::buttonBoxClicked( QAbstractButton * button )
 {
-  if (ui.buttons->buttonRole(button) == QDialogButtonBox::ApplyRole) {
+  if ( ui.buttons->buttonRole( button ) == QDialogButtonBox::ApplyRole ) {
     save( true );
   }
 }
 
 bool EditDictionaries::isSourcesChanged() const
 {
-  return sources.getPaths() != cfg.paths ||
-         sources.getSoundDirs() != cfg.soundDirs ||
-         sources.getHunspell() != cfg.hunspell ||
-         sources.getTransliteration() != cfg.transliteration ||
-         sources.getLingua() != cfg.lingua ||
-         sources.getForvo() != cfg.forvo ||
-         sources.getMediaWikis() != cfg.mediawikis ||
-         sources.getWebSites() != cfg.webSites ||
-         sources.getDictServers() != cfg.dictServers ||
-         sources.getPrograms() != cfg.programs ||
-         sources.getVoiceEngines() != cfg.voiceEngines;
+  return sources.getPaths() != cfg.paths || sources.getSoundDirs() != cfg.soundDirs
+    || sources.getHunspell() != cfg.hunspell || sources.getTransliteration() != cfg.transliteration
+    || sources.getLingua() != cfg.lingua || sources.getForvo() != cfg.forvo || sources.getMediaWikis() != cfg.mediawikis
+    || sources.getWebSites() != cfg.webSites || sources.getDictServers() != cfg.dictServers
+    || sources.getPrograms() != cfg.programs || sources.getVoiceEngines() != cfg.voiceEngines;
 }
 
 void EditDictionaries::acceptChangedSources( bool rebuildGroups )
@@ -229,7 +221,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   const bool noInactiveEdits = ( origCfg.inactiveDictionaries == savedInactive );
 
   if ( noInactiveEdits )
-    savedInactive  = cfg.inactiveDictionaries;
+    savedInactive = cfg.inactiveDictionaries;
 
   Instances::updateNames( savedInactive, dictionaries );
 

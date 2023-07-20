@@ -9,10 +9,10 @@
 #include <QLocale>
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QRegExp>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QRegExp>
 #endif
 
 // Language codes
@@ -222,7 +222,7 @@ QIcon LangCoder::icon( quint32 _code )
 {
   if ( auto code = intToCode2( _code ); exists( code ) ) {
     const GDLangCode & lc = LANG_CODE_MAP[ code ];
-    return QIcon( ":/flags/" + QString(lc.code) + ".png" );
+    return QIcon( ":/flags/" + QString( lc.code ) + ".png" );
   }
 
   return {};
@@ -269,12 +269,11 @@ quint32 LangCoder::guessId( const QString & lang )
   QString lstr = lang.simplified().toLower();
 
   // too small to guess
-  if (lstr.size() < 2)
+  if ( lstr.size() < 2 )
     return 0;
 
   // check if it could be the whole language name
-  if (lstr.size() >= 3)
-  {
+  if ( lstr.size() >= 3 ) {
     for ( auto const & lc : LANG_CODE_MAP ) {
       if ( lstr == ( lstr.size() == 3 ? QString::fromStdString( lc.code3 ) : QString::fromStdString( lc.lang ) ) ) {
         return code2toInt( lc.code );
@@ -283,29 +282,29 @@ quint32 LangCoder::guessId( const QString & lang )
   }
 
   // still not found - try to match by 2-symbol code
-  return code2toInt( lstr.left(2).toLatin1().data() );
+  return code2toInt( lstr.left( 2 ).toLatin1().data() );
 }
 
-QPair<quint32,quint32> LangCoder::findIdsForName( QString const & name )
+QPair< quint32, quint32 > LangCoder::findIdsForName( QString const & name )
 {
   QString nameFolded = "|" + name.toCaseFolded() + "|";
-  QRegExp reg( "[^a-z]([a-z]{2,3})-([a-z]{2,3})[^a-z]" ); reg.setMinimal(true);
+  QRegExp reg( "[^a-z]([a-z]{2,3})-([a-z]{2,3})[^a-z]" );
+  reg.setMinimal( true );
   int off = 0;
 
-  while ( reg.indexIn( nameFolded, off ) >= 0 )
-  {
-    quint32 from = guessId( reg.cap(1) );
-    quint32 to = guessId( reg.cap(2) );
-    if (from && to)
-      return QPair<quint32,quint32>(from, to);
+  while ( reg.indexIn( nameFolded, off ) >= 0 ) {
+    quint32 from = guessId( reg.cap( 1 ) );
+    quint32 to   = guessId( reg.cap( 2 ) );
+    if ( from && to )
+      return QPair< quint32, quint32 >( from, to );
 
     off += reg.matchedLength();
   }
 
-  return QPair<quint32,quint32>(0, 0);
+  return QPair< quint32, quint32 >( 0, 0 );
 }
 
-QPair<quint32,quint32> LangCoder::findIdsForFilename( QString const & name )
+QPair< quint32, quint32 > LangCoder::findIdsForFilename( QString const & name )
 {
   return findIdsForName( QFileInfo( name ).fileName() );
 }

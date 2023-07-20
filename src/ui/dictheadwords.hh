@@ -16,13 +16,12 @@
 #include "delegate.hh"
 #include "headwordsmodel.hh"
 
-class DictHeadwords : public QDialog
+class DictHeadwords: public QDialog
 {
   Q_OBJECT
 
 public:
-  explicit DictHeadwords( QWidget * parent, Config::Class & cfg_,
-                          Dictionary::Class * dict_ );
+  explicit DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary::Class * dict_ );
   virtual ~DictHeadwords();
 
   void setup( Dictionary::Class * dict_ );

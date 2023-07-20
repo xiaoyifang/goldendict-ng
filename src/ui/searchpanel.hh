@@ -9,7 +9,8 @@
 class SearchPanel: public QWidget
 {
   Q_OBJECT
- public:
+
+public:
   explicit SearchPanel( QWidget * parent = nullptr );
   QLineEdit * lineEdit;
   QPushButton * close;

@@ -3,11 +3,11 @@
 
 #ifdef MAKE_ZIM_SUPPORT
 
-#include "zim.hh"
-#include "btreeidx.hh"
+  #include "zim.hh"
+  #include "btreeidx.hh"
 
-#include "folding.hh"
-#include "gddebug.hh"
+  #include "folding.hh"
+  #include "gddebug.hh"
   #include "utf8.hh"
   #include "langcoder.hh"
   #include "filetype.hh"
@@ -68,16 +68,15 @@ using ZimFile = zim::Archive;
 
   #pragma pack( push, 1 )
 
-enum
-{
-  Signature = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
+enum {
+  Signature            = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
   CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
 {
-  quint32 signature; // First comes the signature, ZIMX
-  quint32 formatVersion; // File format version (CurrentFormatVersion)
+  quint32 signature;             // First comes the signature, ZIMX
+  quint32 formatVersion;         // File format version (CurrentFormatVersion)
   quint32 indexBtreeMaxElements; // Two fields from IndexInfo
   quint32 indexRootOffset;
   quint32 resourceIndexBtreeMaxElements; // Two fields from IndexInfo
@@ -86,15 +85,15 @@ struct IdxHeader
   quint32 articleCount;
   quint32 namePtr;
   quint32 descriptionPtr;
-  quint32 langFrom;  // Source language
-  quint32 langTo;    // Target language
+  quint32 langFrom; // Source language
+  quint32 langTo;   // Target language
 }
-#ifndef _MSC_VER
-__attribute__((packed))
-#endif
+  #ifndef _MSC_VER
+__attribute__( ( packed ) )
+  #endif
 ;
 
-#pragma pack( pop )
+  #pragma pack( pop )
 
 // Some supporting functions
 bool indexIsOldOrBad( string const & indexFile )
@@ -103,9 +102,8 @@ bool indexIsOldOrBad( string const & indexFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion;
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion;
 }
 
 quint32 getArticleCluster( ZimFile const & file, quint32 articleNumber )
@@ -231,11 +229,11 @@ public:
 
 protected:
 
-    void loadIcon() noexcept override;
+  void loadIcon() noexcept override;
 
 private:
 
-    /// Loads the article.
+  /// Loads the article.
   quint32 loadArticle( quint32 address, string & articleText, bool rawText = false );
 
   string convert( string const & in_data );
@@ -312,9 +310,9 @@ quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool 
   quint32 ret = 0;
   {
     QMutexLocker _( &zimMutex );
-    ret = readArticle( df, address, articleText);
+    ret = readArticle( df, address, articleText );
   }
-  if( !rawText )
+  if ( !rawText )
     articleText = convert( articleText );
 
   return ret;
@@ -334,10 +332,9 @@ string ZimDictionary::convert( const string & in )
 
   QRegularExpression rxImgScript( R"(<\s*(img|script|source)\s+([^>]*)src=(")([^"]*)\3)" );
   QRegularExpressionMatchIterator it = rxImgScript.globalMatch( text );
-  int pos = 0;
+  int pos                            = 0;
   QString newText;
-  while( it.hasNext() )
-  {
+  while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
 
     newText += text.mid( pos, match.capturedStart() - pos );
@@ -350,8 +347,7 @@ string ZimDictionary::convert( const string & in )
     QString urlLink = match.captured();
 
     QString replacedLink = urlLink;
-    if( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) )
-    {
+    if ( !url.isEmpty() && !url.startsWith( "//" ) && !url.startsWith( "http://" ) && !url.startsWith( "https://" ) ) {
       //the pattern like : <\\1 \\2src=\\3bres://%1/
 
       //remove leading dot and slash
@@ -362,8 +358,7 @@ string ZimDictionary::convert( const string & in )
 
     newText += replacedLink;
   }
-  if( pos )
-  {
+  if ( pos ) {
     newText += text.mid( pos );
     text = newText;
   }
@@ -371,27 +366,27 @@ string ZimDictionary::convert( const string & in )
 
 
   // Fix links without '"'
-  text.replace( QRegularExpression( R"(href=(\.\.|)/([^\s>]+))" ),
-                QString( R"(href="\1/\2")" ) );
+  text.replace( QRegularExpression( R"(href=(\.\.|)/([^\s>]+))" ), QString( R"(href="\1/\2")" ) );
 
   // pattern <link... href="..." ...>
   text.replace( QRegularExpression( R"(<\s*link\s+([^>]*)href="(\.\.|)/)" ),
-                QString( "<link \\1href=\"bres://%1/").arg( getId().c_str() ) );
+                QString( "<link \\1href=\"bres://%1/" ).arg( getId().c_str() ) );
 
   // localize the http://en.wiki***.com|org/wiki/<key> series links
   // excluding those keywords that have ":" in it
-  QString urlWiki = "\"http(s|)://en\\.(wiki(pedia|books|news|quote|source|voyage|versity)|wiktionary)\\.(org|com)/wiki/([^:\"]*)\"";
+  QString urlWiki =
+    "\"http(s|)://en\\.(wiki(pedia|books|news|quote|source|voyage|versity)|wiktionary)\\.(org|com)/wiki/([^:\"]*)\"";
   text.replace( QRegularExpression( R"(<\s*a\s+(class="external"\s+|)href=)" + urlWiki ),
                 QString( R"(<a href="gdlookup://localhost/\6")" ) );
 
   // pattern <a href="..." ...>, excluding any known protocols such as http://, mailto:, #(comment)
   // these links will be translated into local definitions
   // <meta http-equiv="Refresh" content="0;url=../dsalsrv02.uchicago.edu/cgi-bin/0994.html">
-  QRegularExpression rxLink( R"lit(<\s*(?:a|meta)\s+([^>]*)(?:href|url)="?(?!(?:\w+://|#|mailto:|tel:))()([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
-  it = rxLink.globalMatch( text );
+  QRegularExpression rxLink(
+    R"lit(<\s*(?:a|meta)\s+([^>]*)(?:href|url)="?(?!(?:\w+://|#|mailto:|tel:))()([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
+  it  = rxLink.globalMatch( text );
   pos = 0;
-  while( it.hasNext() )
-  {
+  while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
 
     newText += text.mid( pos, match.capturedStart() - pos );
@@ -399,19 +394,18 @@ string ZimDictionary::convert( const string & in )
 
     QStringList list = match.capturedTexts();
     // Add empty strings for compatibility with QRegExp behaviour
-    for( int i = list.size(); i < 5; i++ )
+    for ( int i = list.size(); i < 5; i++ )
       list.append( QString() );
 
     QString formatTag;
     QString tag = list[ 3 ]; // a url, ex: Precambrian_Chaotian.html
     QString url = tag;
-    if( !list[ 4 ].isEmpty() ) // a title, ex: title="Precambrian/Chaotian"
+    if ( !list[ 4 ].isEmpty() ) // a title, ex: title="Precambrian/Chaotian"
     {
       tag       = list[ 4 ];
       formatTag = tag.split( "\"" )[ 1 ];
     }
-    else
-    {
+    else {
       //tag from list[3]
       formatTag = tag;
       formatTag.remove( RX::Zim::leadingDotSlash );
@@ -420,8 +414,7 @@ string ZimDictionary::convert( const string & in )
     QString urlLink = match.captured();
 
     QString replacedLink = urlLink;
-    if( !url.isEmpty() && !url.startsWith( "//" ) )
-    {
+    if ( !url.isEmpty() && !url.startsWith( "//" ) ) {
       replacedLink = urlLink.replace( url, "gdlookup://localhost/" + formatTag );
     }
 
@@ -435,12 +428,12 @@ string ZimDictionary::convert( const string & in )
 
   // Occasionally words needs to be displayed in vertical, but <br/> were changed to <br\> somewhere
   // proper style: <a href="gdlookup://localhost/Neoptera" ... >N<br/>e<br/>o<br/>p<br/>t<br/>e<br/>r<br/>a</a>
-  QRegularExpression rxBR( R"((<a href="gdlookup://localhost/[^"]*"\s*[^>]*>)\s*((\w\s*&lt;br(\\|/|)&gt;\s*)+\w)\s*</a>)",
-                           QRegularExpression::UseUnicodePropertiesOption );
-  pos = 0;
+  QRegularExpression rxBR(
+    R"((<a href="gdlookup://localhost/[^"]*"\s*[^>]*>)\s*((\w\s*&lt;br(\\|/|)&gt;\s*)+\w)\s*</a>)",
+    QRegularExpression::UseUnicodePropertiesOption );
+  pos                                 = 0;
   QRegularExpressionMatchIterator it2 = rxBR.globalMatch( text );
-  while( it2.hasNext() )
-  {
+  while ( it2.hasNext() ) {
     QRegularExpressionMatch match = it2.next();
 
     newText += text.mid( pos, match.capturedStart() - pos );
@@ -448,18 +441,20 @@ string ZimDictionary::convert( const string & in )
 
     QStringList list = match.capturedTexts();
     // Add empty strings for compatibility with QRegExp behaviour
-    for( int i = match.lastCapturedIndex() + 1; i < 3; i++ )
+    for ( int i = match.lastCapturedIndex() + 1; i < 3; i++ )
       list.append( QString() );
 
-    QString tag = list[2];
-    tag.replace( QRegularExpression( "&lt;br( |)(\\\\|/|)&gt;", QRegularExpression::PatternOption::CaseInsensitiveOption ) , "<br/>" ).
-        prepend( list[1] ).
-        append( "</a>" );
+    QString tag = list[ 2 ];
+    tag
+      .replace(
+        QRegularExpression( "&lt;br( |)(\\\\|/|)&gt;", QRegularExpression::PatternOption::CaseInsensitiveOption ),
+        "<br/>" )
+      .prepend( list[ 1 ] )
+      .append( "</a>" );
 
     newText += tag;
   }
-  if( pos )
-  {
+  if ( pos ) {
     newText += text.mid( pos );
     text = newText;
   }
@@ -479,7 +474,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
   readArticleByPath( df, resourceName, data );
 }
 
-QString const& ZimDictionary::getDescription()
+QString const & ZimDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
@@ -494,38 +489,33 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
   if ( !ensureInitDone().empty() )
     return;
 
-  if( firstIteration )
+  if ( firstIteration )
     return;
 
-  gdDebug( "Zim: Building the full-text index for dictionary: %s\n",
-           getName().c_str() );
+  gdDebug( "Zim: Building the full-text index for dictionary: %s\n", getName().c_str() );
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Zim: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
 
-void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets,
-                                               QAtomicInt & isCancelled )
+void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
 {
   QVector< QPair< quint32, uint32_t > > offsetsWithClusters;
   offsetsWithClusters.reserve( offsets.size() );
 
-  for( QVector< uint32_t >::ConstIterator it = offsets.constBegin();
-       it != offsets.constEnd(); ++it )
-  {
-    if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+  for ( QVector< uint32_t >::ConstIterator it = offsets.constBegin(); it != offsets.constEnd(); ++it ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       return;
 
     QMutexLocker _( &zimMutex );
@@ -534,22 +524,20 @@ void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets,
 
   std::sort( offsetsWithClusters.begin(), offsetsWithClusters.end() );
 
-  for( int i = 0; i < offsetsWithClusters.size(); i++ )
+  for ( int i = 0; i < offsetsWithClusters.size(); i++ )
     offsets[ i ] = offsetsWithClusters.at( i ).second;
 }
 
 void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )
 {
-  try
-  {
+  try {
     headword.clear();
     string articleText;
 
     loadArticle( articleAddress, articleText, true );
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Zim: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
   }
 }
@@ -584,7 +572,9 @@ public:
     dict( dict_ ),
     ignoreDiacritics( ignoreDiacritics_ )
   {
-    f = QtConcurrent::run( [ this ]() { this->run(); } );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
@@ -603,8 +593,7 @@ public:
 
 void ZimArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
@@ -626,12 +615,11 @@ void ZimArticleRequest::run()
                                    // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if( ignoreDiacritics )
+  if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
@@ -643,15 +631,13 @@ void ZimArticleRequest::run()
     headword = x.word;
 
     quint32 articleNumber = 0xFFFFFFFF;
-    try
-    {
+    try {
       articleNumber = dict.loadArticle( x.articleOffset, articleText );
     }
-    catch(...)
-    {
+    catch ( ... ) {
     }
 
-    if( articleNumber == 0xFFFFFFFF )
+    if ( articleNumber == 0xFFFFFFFF )
       continue; // No article loaded
 
     if ( articlesIncluded.find( articleNumber ) != articlesIncluded.end() )
@@ -662,24 +648,19 @@ void ZimArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped =
-      Folding::applySimpleCaseOnly( headword );
-    if( ignoreDiacritics )
+    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
     multimap< wstring, pair< string, string > > & mapToUse =
-      ( wordCaseFolded == headwordStripped ) ?
-        mainArticles : alternateArticles;
+      ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( pair(
-      Folding::applySimpleCaseOnly( headword ),
-      pair( headword, articleText ) ) );
+    mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
     articlesIncluded.insert( articleNumber );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
-  {
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     // No such word
     finish();
     return;
@@ -693,27 +674,25 @@ void ZimArticleRequest::run()
   multimap< wstring, pair< string, string > >::const_iterator i;
 
 
-  for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
-  {
-      result += "<div class=\"zimdict\">";
-      result += "<h2 class=\"zimdict_headword\">";
-      result += i->second.first;
-      result += "</h2>";
-      result += i->second.second;
-      result += cleaner + "</div>";
+  for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
+    result += "<div class=\"zimdict\">";
+    result += "<h2 class=\"zimdict_headword\">";
+    result += i->second.first;
+    result += "</h2>";
+    result += i->second.second;
+    result += cleaner + "</div>";
   }
 
-  for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-  {
-      result += "<div class=\"zimdict\">";
-      result += "<h2 class=\"zimdict_headword\">";
-      result += i->second.first;
-      result += "</h2>";
-      result += i->second.second;
-      result += cleaner + "</div>";
+  for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
+    result += "<div class=\"zimdict\">";
+    result += "<h2 class=\"zimdict_headword\">";
+    result += i->second.first;
+    result += "</h2>";
+    result += i->second.second;
+    result += cleaner + "</div>";
   }
 
-  appendString(result);
+  appendString( result );
 
   hasAnyData = true;
 
@@ -724,9 +703,9 @@ sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
-  
+
 {
-  return std::make_shared<ZimArticleRequest>( word, alts, *this, ignoreDiacritics );
+  return std::make_shared< ZimArticleRequest >( word, alts, *this, ignoreDiacritics );
 }
 
 //// ZimDictionary::getResource()
@@ -768,21 +747,18 @@ public:
 void ZimResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
 
-  try
-  {
+  try {
     string resource;
     dict.loadResource( resourceName, resource );
-    if( resource.empty() )
+    if ( resource.empty() )
       throw File::Ex();
 
-    if( Filetype::isNameOfCSS( resourceName ) )
-    {
+    if ( Filetype::isNameOfCSS( resourceName ) ) {
       QString css = QString::fromUtf8( resource.data(), resource.size() );
       dict.isolateCSS( css, ".zimdict" );
       QByteArray bytes = css.toUtf8();
@@ -791,15 +767,12 @@ void ZimResourceRequest::run()
       data.resize( bytes.size() );
       memcpy( &data.front(), bytes.constData(), bytes.size() );
     }
-    else
-    if ( Filetype::isNameOfTiff( resourceName ) )
-    {
+    else if ( Filetype::isNameOfTiff( resourceName ) ) {
       // Convert it
       QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
-    else
-    {
+    else {
       QMutexLocker _( &dataMutex );
       data.resize( resource.size() );
       memcpy( &data.front(), resource.data(), data.size() );
@@ -808,10 +781,11 @@ void ZimResourceRequest::run()
     QMutexLocker _( &dataMutex );
     hasAnyData = true;
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "ZIM: Failed loading resource \"%s\" from \"%s\", reason: %s\n",
-               resourceName.c_str(), dict.getName().c_str(), ex.what() );
+               resourceName.c_str(),
+               dict.getName().c_str(),
+               ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -821,23 +795,21 @@ void ZimResourceRequest::run()
 sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
 {
   auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
-  return std::make_shared<ZimResourceRequest>( *this, noLeadingDot.toStdString() );
+  return std::make_shared< ZimResourceRequest >( *this, noLeadingDot.toStdString() );
 }
 
 wstring normalizeWord( const std::string & url );
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing,
-                                      unsigned maxHeadwordsToExpand )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing,
+                                                      unsigned maxHeadwordsToExpand )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for(const auto & fileName : fileNames)
-  {
-      // Skip files with the extensions different to .zim to speed up the
-      // scanning
+  for ( const auto & fileName : fileNames ) {
+    // Skip files with the extensions different to .zim to speed up the
+    // scanning
 
     QString firstName = QDir::fromNativeSeparators( fileName.c_str() );
     if ( !firstName.endsWith( ".zim" ) && !firstName.endsWith( ".zimaa" ) ) {
@@ -949,18 +921,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
       }
 
       dictionaries.push_back( std::make_shared< ZimDictionary >( dictId, indexFile, dictFiles ) );
-      }
-      catch( std::exception & e )
-      {
-        gdWarning( "Zim dictionary initializing failed: %s, error: %s\n",
-                   fileName.c_str(), e.what() );
-        continue;
-      }
-      catch( ... )
-      {
-        qWarning( "Zim dictionary initializing failed\n" );
-        continue;
-      }
+    }
+    catch ( std::exception & e ) {
+      gdWarning( "Zim dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      continue;
+    }
+    catch ( ... ) {
+      qWarning( "Zim dictionary initializing failed\n" );
+      continue;
+    }
   }
   return dictionaries;
 }
