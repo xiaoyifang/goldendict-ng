@@ -187,285 +187,288 @@ private:
 #endif
     );
 
-  /// Creates, destroys or otherwise updates tray icon, according to the
-  /// current configuration and situation.
-  void updateTrayIcon();
+    /// Creates, destroys or otherwise updates tray icon, according to the
+    /// current configuration and situation.
+    void updateTrayIcon();
 
-  void wheelEvent( QWheelEvent * );
-  void closeEvent( QCloseEvent * );
+    void wheelEvent( QWheelEvent * );
+    void closeEvent( QCloseEvent * );
 
-  void applyProxySettings();
-  void setupNetworkCache( int maxSize );
-  void makeDictionaries();
-  void updateStatusLine();
-  void updateGroupList();
-  void updateDictionaryBar();
+    void applyProxySettings();
+    void setupNetworkCache( int maxSize );
+    void makeDictionaries();
+    void updateStatusLine();
+    void updateGroupList();
+    void updateDictionaryBar();
 
-  void updatePronounceAvailability();
+    void updatePronounceAvailability();
 
-  void updateBackForwardButtons();
+    void updateBackForwardButtons();
 
-  void updateWindowTitle();
+    void updateWindowTitle();
 
-  /// Updates word search request and active article view in response to
-  /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
-  void applyMutedDictionariesState();
+    /// Updates word search request and active article view in response to
+    /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
+    void applyMutedDictionariesState();
 
-  virtual bool eventFilter( QObject *, QEvent * );
+    virtual bool eventFilter( QObject *, QEvent * );
 
-  /// Returns the reference to dictionaries stored in the currently active
-  /// group, or to all dictionaries if there are no groups.
-  vector< sptr< Dictionary::Class > > const & getActiveDicts();
+    /// Returns the reference to dictionaries stored in the currently active
+    /// group, or to all dictionaries if there are no groups.
+    vector< sptr< Dictionary::Class > > const & getActiveDicts();
 
-  /// Brings the main window to front if it's not currently, or hides it
-  /// otherwise. The hiding part is omitted if onlyShow is true.
-  void toggleMainWindow( bool onlyShow = false );
+    /// Brings the main window to front if it's not currently, or hides it
+    /// otherwise. The hiding part is omitted if onlyShow is true.
+    void toggleMainWindow( bool onlyShow = false );
 
-  /// Creates hotkeyWrapper and hooks the currently set keys for it
-  void installHotKeys();
+    /// Creates hotkeyWrapper and hooks the currently set keys for it
+    void installHotKeys();
 
-  void applyZoomFactor();
-  void adjustCurrentZoomFactor();
+    void applyZoomFactor();
+    void adjustCurrentZoomFactor();
 
-  void mousePressEvent ( QMouseEvent * event );
+    void mousePressEvent( QMouseEvent * event );
 
-  void updateCurrentGroupProperty();
+    void updateCurrentGroupProperty();
 
-  /// Handles backward and forward mouse buttons and
-  /// returns true if the event is handled.
-  bool handleBackForwardMouseButtons(QMouseEvent *ev);
+    /// Handles backward and forward mouse buttons and
+    /// returns true if the event is handled.
+    bool handleBackForwardMouseButtons( QMouseEvent * ev );
 
-  ArticleView * getCurrentArticleView();
-  void ctrlTabPressed();
+    ArticleView * getCurrentArticleView();
+    void ctrlTabPressed();
 
-  void fillWordListFromHistory();
+    void fillWordListFromHistory();
 
-  QString unescapeTabHeader( QString const & header );
+    QString unescapeTabHeader( QString const & header );
 
-  void respondToTranslationRequest( QString const & word,
-                                    bool checkModifiers, QString const & scrollTo = QString() );
+    void respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo = QString() );
 
-  void updateSuggestionList();
-  void updateSuggestionList( QString const & text );
+    void updateSuggestionList();
+    void updateSuggestionList( QString const & text );
 
-  enum TranslateBoxPopup { NoPopupChange, EnablePopup, DisablePopup };
+    enum TranslateBoxPopup {
+      NoPopupChange,
+      EnablePopup,
+      DisablePopup
+    };
 
-  /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
-  void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
+    /// Change the text of translateLine (Input line in the dock) or TranslateBox (Input line in toolbar)
+    void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
 
-  void changeWebEngineViewFont() const;
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
-  void errorMessageOnStatusBar( const QString & errStr );
+    void changeWebEngineViewFont() const;
+    bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
+    void errorMessageOnStatusBar( const QString & errStr );
 
-private slots:
+  private slots:
 
-  /// Try check new release, popup a dialog, and update the check time & skippedRelease version
-  void checkNewRelease();
+    /// Try check new release, popup a dialog, and update the check time & skippedRelease version
+    void checkNewRelease();
 
-  void hotKeyActivated( int );
+    void hotKeyActivated( int );
 
-  void updateFoundInDictsList();
+    void updateFoundInDictsList();
 
-  /// Receive click on "Found in:" pane
-  void foundDictsPaneClicked( QListWidgetItem * item );
+    /// Receive click on "Found in:" pane
+    void foundDictsPaneClicked( QListWidgetItem * item );
 
-  /// Receive right click on "Found in:" pane
-  void foundDictsContextMenuRequested( const QPoint & pos );
+    /// Receive right click on "Found in:" pane
+    void foundDictsContextMenuRequested( const QPoint & pos );
 
-  void showDictionaryInfo( QString const & id );
+    void showDictionaryInfo( QString const & id );
 
-  void showDictionaryHeadwords( Dictionary::Class * dict );
+    void showDictionaryHeadwords( Dictionary::Class * dict );
 
-  void openDictionaryFolder( QString const & id );
+    void openDictionaryFolder( QString const & id );
 
-  void editDictionary ( Dictionary::Class * dict );
+    void editDictionary( Dictionary::Class * dict );
 
-  void showFTSIndexingName( QString const & name );
+    void showFTSIndexingName( QString const & name );
 
-  void handleAddToFavoritesButton();
+    void handleAddToFavoritesButton();
 
-  void addCurrentTabToFavorites();
+    void addCurrentTabToFavorites();
 
-  void addAllTabsToFavorites();
+    void addAllTabsToFavorites();
 
-  // Executed in response to a user click on an 'add tab' tool button
-  void addNewTab();
-  // Executed in response to a user click on an 'close' button on a tab
-  void tabCloseRequested( int );
-  // Closes current tab.
-  void closeCurrentTab();
-  void closeAllTabs();
-  void closeRestTabs();
-  void switchToNextTab();
-  void switchToPrevTab();
+    // Executed in response to a user click on an 'add tab' tool button
+    void addNewTab();
+    // Executed in response to a user click on an 'close' button on a tab
+    void tabCloseRequested( int );
+    // Closes current tab.
+    void closeCurrentTab();
+    void closeAllTabs();
+    void closeRestTabs();
+    void switchToNextTab();
+    void switchToPrevTab();
 
-  // Handling of active tab list
-  void createTabList();
-  void fillWindowsMenu();
-  void switchToWindow(QAction *act);
+    // Handling of active tab list
+    void createTabList();
+    void fillWindowsMenu();
+    void switchToWindow( QAction * act );
 
-  /// Triggered by the actions in the nav toolbar
-  void backClicked();
-  void forwardClicked();
+    /// Triggered by the actions in the nav toolbar
+    void backClicked();
+    void forwardClicked();
 
-  /// ArticleView's title has changed
-  void titleChanged( ArticleView *, QString const & );
-  /// ArticleView's icon has changed
-  void iconChanged( ArticleView *, QIcon const & );
+    /// ArticleView's title has changed
+    void titleChanged( ArticleView *, QString const & );
+    /// ArticleView's icon has changed
+    void iconChanged( ArticleView *, QIcon const & );
 
-  void pageLoaded( ArticleView * );
-  void tabSwitched( int );
-  void tabMenuRequested(QPoint pos);
+    void pageLoaded( ArticleView * );
+    void tabSwitched( int );
+    void tabMenuRequested( QPoint pos );
 
-  void dictionaryBarToggled( bool checked );
+    void dictionaryBarToggled( bool checked );
 
-  void zoomin();
-  void zoomout();
-  void unzoom();
+    void zoomin();
+    void zoomout();
+    void unzoom();
 
-  void scaleArticlesByCurrentZoomFactor();
+    void scaleArticlesByCurrentZoomFactor();
 
-  void doWordsZoomIn();
-  void doWordsZoomOut();
-  void doWordsZoomBase();
+    void doWordsZoomIn();
+    void doWordsZoomOut();
+    void doWordsZoomBase();
 
-  void applyWordsZoomLevel();
+    void applyWordsZoomLevel();
 
-  /// If editDictionaryGroup is specified, the dialog positions on that group
-  /// initially.
-  void editDictionaries( unsigned editDictionaryGroup = Instances::Group::NoGroupId );
-  /// Edits current group when triggered from the dictionary bar.
-  void editCurrentGroup();
-  void editPreferences();
+    /// If editDictionaryGroup is specified, the dialog positions on that group
+    /// initially.
+    void editDictionaries( unsigned editDictionaryGroup = Instances::Group::NoGroupId );
+    /// Edits current group when triggered from the dictionary bar.
+    void editCurrentGroup();
+    void editPreferences();
 
-  void currentGroupChanged( int );
-  void translateInputChanged( QString const & );
-  void translateInputFinished( bool checkModifiers );
+    void currentGroupChanged( int );
+    void translateInputChanged( QString const & );
+    void translateInputFinished( bool checkModifiers );
 
-  /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
-  void handleEsc();
+    /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
+    void handleEsc();
 
-  /// Gives the keyboard focus to the translateLine and selects all the text
-  /// it has.
-  void focusTranslateLine();
+    /// Gives the keyboard focus to the translateLine and selects all the text
+    /// it has.
+    void focusTranslateLine();
 
-  void wordListItemActivated( QListWidgetItem * );
-  void wordListSelectionChanged();
+    void wordListItemActivated( QListWidgetItem * );
+    void wordListSelectionChanged();
 
-  void dictsListItemActivated( QListWidgetItem * );
-  void dictsListSelectionChanged();
+    void dictsListItemActivated( QListWidgetItem * );
+    void dictsListSelectionChanged();
 
-  void jumpToDictionary( QListWidgetItem *, bool force = false );
+    void jumpToDictionary( QListWidgetItem *, bool force = false );
 
-  void showDictsPane( );
-  void dictsPaneVisibilityChanged ( bool );
+    void showDictsPane();
+    void dictsPaneVisibilityChanged( bool );
 
-  /// Creates a new tab, which is to be populated then with some content.
-  ArticleView * createNewTab( bool switchToIt,
-                              QString const & name );
+    /// Creates a new tab, which is to be populated then with some content.
+    ArticleView * createNewTab( bool switchToIt, QString const & name );
 
-  void openLinkInNewTab( QUrl const &, QUrl const &, QString const &,
-                         Contexts const & contexts );
-  void showDefinitionInNewTab( QString const & word, unsigned group,
-                               QString const & fromArticle,
-                               Contexts const & contexts );
-  void typingEvent( QString const & );
+    void openLinkInNewTab( QUrl const &, QUrl const &, QString const &, Contexts const & contexts );
+    void showDefinitionInNewTab( QString const & word,
+                                 unsigned group,
+                                 QString const & fromArticle,
+                                 Contexts const & contexts );
+    void typingEvent( QString const & );
 
-  void activeArticleChanged( ArticleView const *, QString const & id );
+    void activeArticleChanged( ArticleView const *, QString const & id );
 
-  void mutedDictionariesChanged();
+    void mutedDictionariesChanged();
 
-  void showTranslationFor(QString const &, unsigned inGroup = 0,
-                           QString const & scrollTo = QString() );
+    void showTranslationFor( QString const &, unsigned inGroup = 0, QString const & scrollTo = QString() );
 
-  void showTranslationForDicts( QString const &, QStringList const & dictIDs,
-                           QRegExp const & searchRegExp, bool ignoreDiacritics );
+    void showTranslationForDicts( QString const &,
+                                  QStringList const & dictIDs,
+                                  QRegExp const & searchRegExp,
+                                  bool ignoreDiacritics );
 
-  void showHistoryItem( QString const & );
+    void showHistoryItem( QString const & );
 
-  void trayIconActivated( QSystemTrayIcon::ActivationReason );
+    void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
-  void setAutostart( bool );
+    void setAutostart( bool );
 
-  void showMainWindow();
+    void showMainWindow();
 
-  void visitHomepage();
-  void visitForum();
-  void openConfigFolder();
-  void showAbout();
+    void visitHomepage();
+    void visitForum();
+    void openConfigFolder();
+    void showAbout();
 
-  void showDictBarNamesTriggered();
-  void useSmallIconsInToolbarsTriggered();
-  void toggleMenuBarTriggered( bool announce = true );
+    void showDictBarNamesTriggered();
+    void useSmallIconsInToolbarsTriggered();
+    void toggleMenuBarTriggered( bool announce = true );
 
-  void on_clearHistory_triggered();
+    void on_clearHistory_triggered();
 
-  void on_newTab_triggered();
+    void on_newTab_triggered();
 
-  void on_actionCloseToTray_triggered();
+    void on_actionCloseToTray_triggered();
 
-  void on_pageSetup_triggered();
-  void on_printPreview_triggered();
-  void on_print_triggered();
-  void printPreviewPaintRequested( QPrinter * );
+    void on_pageSetup_triggered();
+    void on_printPreview_triggered();
+    void on_print_triggered();
+    void printPreviewPaintRequested( QPrinter * );
 
-  void on_saveArticle_triggered();
+    void on_saveArticle_triggered();
 
-  void on_rescanFiles_triggered();
+    void on_rescanFiles_triggered();
 
-  void toggle_favoritesPane();
-  void toggle_historyPane(); // Toggling visibility
-  void on_exportHistory_triggered();
-  void on_importHistory_triggered();
-  void on_alwaysOnTop_triggered( bool checked );
-  void focusWordList();
+    void toggle_favoritesPane();
+    void toggle_historyPane(); // Toggling visibility
+    void on_exportHistory_triggered();
+    void on_importHistory_triggered();
+    void on_alwaysOnTop_triggered( bool checked );
+    void focusWordList();
 
-  void on_exportFavorites_triggered();
-  void on_importFavorites_triggered();
-  void on_ExportFavoritesToList_triggered();
+    void on_exportFavorites_triggered();
+    void on_importFavorites_triggered();
+    void on_ExportFavoritesToList_triggered();
 
-  void updateSearchPaneAndBar( bool searchInDock );
+    void updateSearchPaneAndBar( bool searchInDock );
 
-  void updateFavoritesMenu();
-  void updateHistoryMenu();
+    void updateFavoritesMenu();
+    void updateHistoryMenu();
 
-  /// Add word to history
-  void addWordToHistory( const QString & word );
-  /// Add word to history even if history is disabled in options
-  void forceAddWordToHistory( const QString & word);
+    /// Add word to history
+    void addWordToHistory( const QString & word );
+    /// Add word to history even if history is disabled in options
+    void forceAddWordToHistory( const QString & word );
 
-  void addWordToFavorites( QString const & word, unsigned groupId, bool );
+    void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
-  void addBookmarkToFavorite( QString const & text );
+    void addBookmarkToFavorite( QString const & text );
 
-  void sendWordToInputLine( QString const & word );
+    void sendWordToInputLine( QString const & word );
 
-  void storeResourceSavePath( QString const & );
+    void storeResourceSavePath( QString const & );
 
-  void closeHeadwordsDialog();
+    void closeHeadwordsDialog();
 
-  void focusHeadwordsDialog();
+    void focusHeadwordsDialog();
 
-  void focusArticleView();
+    void focusArticleView();
 
-  void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
+    void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
 
-  void showFullTextSearchDialog();
-  void closeFullTextSearchDialog();
+    void showFullTextSearchDialog();
+    void closeFullTextSearchDialog();
 
-  void clipboardChange( QClipboard::Mode m );
+    void clipboardChange( QClipboard::Mode m );
 
-  void inspectElement( QWebEnginePage * );
-  void prefixMatchUpdated();
-  void prefixMatchFinished();
-  void updateMatchResults( bool finished );
-  void refreshTranslateLine();
-signals:
-  /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
-  void clickOnDictPane( QString const & id );
+    void inspectElement( QWebEnginePage * );
+    void prefixMatchUpdated();
+    void prefixMatchFinished();
+    void updateMatchResults( bool finished );
+    void refreshTranslateLine();
+  signals:
+    /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
+    void clickOnDictPane( QString const & id );
 
-  /// Set group for popup window
-  void setPopupGroupByName( QString const & name );
+    /// Set group for popup window
+    void setPopupGroupByName( QString const & name );
 };
 
 class ArticleSaveProgressDialog : public QProgressDialog

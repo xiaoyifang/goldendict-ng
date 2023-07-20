@@ -210,7 +210,7 @@ Preferences::Preferences():
   newTabsOpenAfterCurrentOne( false ),
   newTabsOpenInBackground( true ),
   hideSingleTab( false ),
-  mruTabOrder ( false ),
+  mruTabOrder( false ),
   hideMenubar( false ),
   enableTrayIcon( true ),
   startToTray( false ),
@@ -221,9 +221,9 @@ Preferences::Preferences():
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
-  darkReaderMode ( false ),
-  alwaysOnTop ( false ),
-  searchInDock ( false ),
+  darkReaderMode( false ),
+  alwaysOnTop( false ),
+  searchInDock( false ),
 // on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
 #ifdef Q_OS_MACOS
   enableMainWindowHotkey( false ),
@@ -244,8 +244,8 @@ Preferences::Preferences():
 #ifdef HAVE_X11
   // Enable both Clipboard and Selection by default so that X users can enjoy full
   // power and disable optionally.
-  trackClipboardScan ( true ),
-  trackSelectionScan ( true ),
+  trackClipboardScan( true ),
+  trackSelectionScan( true ),
   showScanFlag( false ),
   selectionChangeDelayTimer( 500 ),
 #endif
