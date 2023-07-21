@@ -56,11 +56,11 @@ jobs:
         id: changelog
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
           echo "previousTag : $previousTag"
           
           echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 1p)"
 
       - name: "Build Changelog"
         id: build_changelog
