@@ -126,7 +126,7 @@ void ProgramsDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
   }
   if ( dictionaryIcon.isNull() )
-    dictionaryIcon = QIcon( ":/icons/programs.svg" );
+    dictionaryIcon = QIcon( ":/icons/programdict.svg" );
   dictionaryIconLoaded = true;
 }
 
