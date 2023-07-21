@@ -64,6 +64,9 @@
         <file>icons/network.svg</file>
         <file>icons/next.svg</file>
         <file>icons/playsound_color.svg</file>
+        <file>icons/sounddir.svg</file>
+        <file>icons/zipsound.svg</file>
+        <file>icons/lsasound.svg</file>
         <file>icons/previous.svg</file>
         <file>icons/print.svg</file>
         <file>icons/programs.svg</file>
