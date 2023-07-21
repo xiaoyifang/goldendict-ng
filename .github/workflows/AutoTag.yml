@@ -35,6 +35,7 @@ jobs:
           echo "::set-output name=sha_short::$(git rev-parse --short=8 HEAD)"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"             
       - name: Bump version and push tag
+        if: ${{env.prerelease == 'true'}}
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
