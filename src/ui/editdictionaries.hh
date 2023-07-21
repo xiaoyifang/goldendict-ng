@@ -21,31 +21,36 @@ class EditDictionaries: public QDialog
 
 public:
 
-  EditDictionaries( QWidget * parent, Config::Class & cfg,
+  EditDictionaries( QWidget * parent,
+                    Config::Class & cfg,
                     std::vector< sptr< Dictionary::Class > > & dictionaries,
                     Instances::Groups & groupInstances, // We only clear those on rescan
                     QNetworkAccessManager & dictNetMgr );
 
-  ~EditDictionaries() = default;
+  ~EditDictionaries();
 
   /// Instructs the dialog to position itself on editing the given group.
   void editGroup( unsigned id );
 
   /// Returns true if any changes to the 'dictionaries' vector passed were done.
   bool areDictionariesChanged() const
-  { return dictionariesChanged; }
+  {
+    return dictionariesChanged;
+  }
 
   /// Returns true if groups were changed.
   bool areGroupsChanged() const
-  { return groupsChanged; }
+  {
+    return groupsChanged;
+  }
 
 protected:
 
   virtual void accept();
-  
+
 private slots:
 
-  void on_tabs_currentChanged( int index );
+  void currentChanged( int index );
 
   void buttonBoxClicked( QAbstractButton * button );
 
@@ -67,24 +72,24 @@ private:
   void save( bool rebuildGroups = false );
 
 private:
-   
+
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > & dictionaries;
   Instances::Groups & groupInstances;
   QNetworkAccessManager & dictNetMgr;
-  
+
   // Backed up to decide later if something was changed or not
   Config::Class origCfg;
 
   Ui::EditDictionaries ui;
   Sources sources;
-  QPointer<OrderAndProps> orderAndProps;
-  sptr< Groups > groups;
+  QPointer< OrderAndProps > orderAndProps;
+  QPointer< Groups > groups;
 
   bool dictionariesChanged;
   bool groupsChanged;
-  
-  int lastCurrentTab;
+
+  QString lastTabName;
 
   QAction helpAction;
 };

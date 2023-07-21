@@ -18,42 +18,52 @@ BaseTransliterationDictionary::BaseTransliterationDictionary( string const & id,
   name( name_ ),
   caseSensitive( caseSensitive_ )
 {
-  dictionaryIcon = dictionaryNativeIcon = icon_;
+  dictionaryIcon       = icon_;
   dictionaryIconLoaded = true;
 }
 
 string BaseTransliterationDictionary::getName() noexcept
-{ return name; }
+{
+  return name;
+}
 
 map< Dictionary::Property, string > BaseTransliterationDictionary::getProperties() noexcept
-{ return map< Dictionary::Property, string >(); }
+{
+  return map< Dictionary::Property, string >();
+}
 
 unsigned long BaseTransliterationDictionary::getArticleCount() noexcept
-{ return 0; }
+{
+  return 0;
+}
 
 unsigned long BaseTransliterationDictionary::getWordCount() noexcept
-{ return 0; }
+{
+  return 0;
+}
 
-sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( wstring const &,
-                                                                                  unsigned long ) 
-{ return std::make_shared<Dictionary::WordSearchRequestInstant>(); }
+sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( wstring const &, unsigned long )
+{
+  return std::make_shared< Dictionary::WordSearchRequestInstant >();
+}
 
-sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( wstring const &,
-                                                                           vector< wstring > const &,
-                                                                           wstring const &, bool )
-  
-{ return std::make_shared<Dictionary::DataRequestInstant>( false ); }
+sptr< Dictionary::DataRequest >
+BaseTransliterationDictionary::getArticle( wstring const &, vector< wstring > const &, wstring const &, bool )
+
+{
+  return std::make_shared< Dictionary::DataRequestInstant >( false );
+}
 
 sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwordsForSynonym( wstring const & str )
-  
+
 {
-  sptr< Dictionary::WordSearchRequestInstant > result = std::make_shared<Dictionary::WordSearchRequestInstant>();
+  sptr< Dictionary::WordSearchRequestInstant > result = std::make_shared< Dictionary::WordSearchRequestInstant >();
 
   vector< wstring > alts = getAlternateWritings( str );
 
-  GD_DPRINTF( "alts = %u\n", (unsigned) alts.size() );
+  GD_DPRINTF( "alts = %u\n", (unsigned)alts.size() );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
+  for ( unsigned x = 0; x < alts.size(); ++x )
     result->getMatches().push_back( alts[ x ] );
 
   return result;
@@ -67,57 +77,46 @@ void Table::ins( char const * from, char const * to )
   if ( fr.size() > maxEntrySize )
     maxEntrySize = fr.size();
 
-  insert( std::pair< wstring, wstring >( fr,
-                                         Utf8::decode( std::string( to ) ) ) );
+  insert( std::pair< wstring, wstring >( fr, Utf8::decode( std::string( to ) ) ) );
 }
 
 
-TransliterationDictionary::TransliterationDictionary( string const & id,
-                                                      string const & name_,
-                                                      QIcon icon_,
-                                                      Table const & table_,
-                                                      bool caseSensitive_ ):
-  BaseTransliterationDictionary(id, name_, icon_, caseSensitive_),
+TransliterationDictionary::TransliterationDictionary(
+  string const & id, string const & name_, QIcon icon_, Table const & table_, bool caseSensitive_ ):
+  BaseTransliterationDictionary( id, name_, icon_, caseSensitive_ ),
   table( table_ )
 {
 }
 
-vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const & str )
-  noexcept
+vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const & str ) noexcept
 {
   vector< wstring > results;
 
   wstring result, folded;
   wstring const * target;
 
-  if ( caseSensitive )
-  {
+  if ( caseSensitive ) {
     // Don't do any transform -- the transliteration is case-sensitive
     target = &str;
   }
-  else
-  {
+  else {
     folded = Folding::applySimpleCaseOnly( str );
     target = &folded;
   }
 
   wchar const * ptr = target->c_str();
-  size_t left = target->size();
+  size_t left       = target->size();
 
   Table::const_iterator i;
 
-  while( left )
-  {
+  while ( left ) {
     unsigned x;
 
-    for( x = table.getMaxEntrySize(); x >= 1; --x )
-    {
-      if ( left >= x )
-      {
+    for ( x = table.getMaxEntrySize(); x >= 1; --x ) {
+      if ( left >= x ) {
         i = table.find( wstring( ptr, x ) );
 
-        if ( i != table.end() )
-        {
+        if ( i != table.end() ) {
           result.append( i->second );
           ptr += x;
           left -= x;
@@ -126,8 +125,7 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
       }
     }
 
-    if ( !x )
-    {
+    if ( !x ) {
       // No matches -- add this char as it is
       result.push_back( *ptr++ );
       --left;
@@ -140,4 +138,4 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
   return results;
 }
 
-}
+} // namespace Transliteration

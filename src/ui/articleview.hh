@@ -16,7 +16,7 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   #include <QtCore5Compat/QRegExp>
 
 #endif
@@ -28,7 +28,7 @@
 #include "ui/ftssearchpanel.hh"
 
 class ResourceToSaveHandler;
-class ArticleViewAgent ;
+class ArticleViewAgent;
 
 /// A widget with the web view tailored to view and handle articles -- it
 /// uses the appropriate netmgr, handles link clicks, rmb clicks etc
@@ -45,11 +45,10 @@ class ArticleView: public QWidget
   QWebChannel * channel;
   ArticleViewAgent * agent;
 
-  AnkiConnector  * ankiConnector;
+  AnkiConnector * ankiConnector;
 
-  QAction pasteAction, articleUpAction, articleDownAction,
-          goBackAction, goForwardAction, selectCurrentArticleAction,
-          copyAsTextAction, inspectAction;
+  QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
+    copyAsTextAction, inspectAction;
   QAction & openSearchAction;
   bool searchIsOpened;
   bool expandOptionalParts;
@@ -69,7 +68,8 @@ class ArticleView: public QWidget
   QSet< QString > desktopOpenedTempFiles;
 
   QAction * dictionaryBarToggled;
-  GroupComboBox const *groupComboBox;
+  GroupComboBox const * groupComboBox;
+  unsigned currentGroupId;
   QLineEdit const * translateLine;
 
   /// current searching word.
@@ -78,22 +78,21 @@ class ArticleView: public QWidget
   /// current active dict id list;
   QStringList currentActiveDictIds;
 
-  bool historyMode=false;
+  bool historyMode = false;
 
   //current active dictionary id;
   QString activeDictId;
 
   /// Search in results of full-text search
-  QStringList allMatches;
+  QString firstAvailableText;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened = false;
+  bool ftsSearchIsOpened  = false;
   bool ftsSearchMatchCase = false;
-  int ftsPosition=0;
+  int ftsPosition         = 0;
 
   QString delayedHighlightText;
 
   void highlightFTSResults();
-  void highlightAllFtsOccurences( QWebEnginePage::FindFlags flags );
   void performFtsFindOperation( bool backwards );
 
 public:
@@ -109,25 +108,20 @@ public:
                Config::Class const & cfg,
                QAction & openSearchAction_,
                QLineEdit const * translateLine,
-               QAction * dictionaryBarToggled = nullptr,
-               GroupComboBox const * groupComboBox = nullptr
-              );
+               QAction * dictionaryBarToggled      = nullptr,
+               GroupComboBox const * groupComboBox = nullptr );
 
-  /// Sets the currently active group combo box. When looking up selections,
-  /// this allows presenting a choice of looking up in the currently chosen
-  /// group. Setting this to 0 disables this. It is 0 by default.
-  void setGroupComboBox( GroupComboBox const * );
+
+  void setCurrentGroupId( unsigned currengGrgId );
+  unsigned getCurrentGroupId();
 
   virtual QSize minimumSizeHint() const;
 
   ~ArticleView();
 
 
-
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( QString const & dictionaryId );
-
-  void emitJavascriptFinished();
 
   /// Shows the definition of the given word with the given group.
   /// scrollTo can be optionally set to a "gdfrom-xxxx" identifier to position
@@ -135,15 +129,18 @@ public:
   /// contexts is an optional map of context values to be passed for dictionaries.
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
-  void showDefinition( QString const & word, unsigned group,
-                       QString const & scrollTo = QString(),
+  void showDefinition( QString const & word,
+                       unsigned group,
+                       QString const & scrollTo  = QString(),
                        Contexts const & contexts = Contexts() );
 
-  void showDefinition( QString const & word, QStringList const & dictIDs,
-                       QRegExp const & searchRegExp, unsigned group,
+  void showDefinition( QString const & word,
+                       QStringList const & dictIDs,
+                       QRegExp const & searchRegExp,
+                       unsigned group,
                        bool ignoreDiacritics );
 
-  void sendToAnki(QString const & word, QString const & text, QString const & sentence );
+  void sendToAnki( QString const & word, QString const & text, QString const & sentence );
   /// Clears the view and sets the application-global waiting cursor,
   /// which will be restored when some article loads eventually.
   void showAnticipation();
@@ -158,8 +155,9 @@ public:
   /// contexts is an optional map of context values to be passed for dictionaries.
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
-  void openLink( QUrl const & url, QUrl const & referrer,
-                 QString const & scrollTo = QString(),
+  void openLink( QUrl const & url,
+                 QUrl const & referrer,
+                 QString const & scrollTo  = QString(),
                  Contexts const & contexts = Contexts() );
 
   /// Called when the state of dictionary bar changes and the view is active.
@@ -172,15 +170,15 @@ public:
   /// Called when preference changes
   void setSelectionBySingleClick( bool set );
 
-  void setDelayedHighlightText(QString const & text);
+  void setDelayedHighlightText( QString const & text );
 
- private:
+private:
   // widgets
   ArticleWebView * webview;
   SearchPanel * searchPanel;
   FtsSearchPanel * ftsSearchPanel;
 
- public slots:
+public slots:
 
   /// Goes back in history
   void back();
@@ -211,7 +209,7 @@ public:
   void setZoomFactor( qreal factor )
   {
     qreal existedFactor = webview->zoomFactor();
-    if( !qFuzzyCompare( existedFactor, factor ) ) {
+    if ( !qFuzzyCompare( existedFactor, factor ) ) {
       qDebug() << "zoom factor ,existed:" << existedFactor << "set:" << factor;
       webview->setZoomFactor( factor );
       //webview->page()->setZoomFactor(factor);
@@ -221,14 +219,14 @@ public:
   /// Returns current article's text in .html format
   void toHtml( const std::function< void( QString & ) > & callback );
 
-  void setHtml(const QString& content, const QUrl& baseUrl);
-  void setContent(const QByteArray &data, const QString &mimeType = QString(), const QUrl &baseUrl = QUrl());
+  void setHtml( const QString & content, const QUrl & baseUrl );
+  void setContent( const QByteArray & data, const QString & mimeType = QString(), const QUrl & baseUrl = QUrl() );
 
   /// Returns current article's title
   QString getTitle();
 
   /// Returns the phrase translated by the current article.
- QString getWord() const;
+  QString getWord() const;
 
   /// Prints current article
   void print( QPrinter * ) const;
@@ -249,7 +247,7 @@ public:
 
   /// Returns the dictionary id of the currently active article in the view.
   QString getActiveArticleId();
-   void setActiveArticleId(QString const&);
+  void setActiveArticleId( QString const & );
 
   ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName );
   ResourceToSaveHandler * saveResource( const QUrl & url, const QUrl & ref, const QString & fileName );
@@ -267,11 +265,10 @@ signals:
   void pageLoaded( ArticleView * );
 
   /// Signals that the following link was requested to be opened in new tab
-  void openLinkInNewTab( QUrl const &, QUrl const & referrer,
-                         QString const & fromArticle,
-                         Contexts const & contexts );
+  void openLinkInNewTab( QUrl const &, QUrl const & referrer, QString const & fromArticle, Contexts const & contexts );
   /// Signals that the following definition was requested to be showed in new tab
-  void showDefinitionInNewTab( QString const & word, unsigned group,
+  void showDefinitionInNewTab( QString const & word,
+                               unsigned group,
                                QString const & fromArticle,
                                Contexts const & contexts );
 
@@ -282,12 +279,12 @@ signals:
   /// switch focus to word input.
   void typingEvent( QString const & text );
 
-  void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap());
+  void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap() );
 
   /// Signals that the dictionaries pane was requested to be showed
-  void showDictsPane( );
+  void showDictsPane();
   /// Signals that the founded dictionaries ready to be showed
-  void updateFoundInDictsList( );
+  void updateFoundInDictsList();
 
   /// Emitted when an article becomes active,
   /// typically in response to user actions
@@ -296,14 +293,14 @@ signals:
   void activeArticleChanged( ArticleView const *, QString const & id );
 
   /// Signal to add word to history even if history is disabled
-  void forceAddWordToHistory( const QString & word);
+  void forceAddWordToHistory( const QString & word );
 
   /// Signal to close popup menu
   void closePopupMenu();
 
   void sendWordToInputLine( QString const & word );
 
-  void storeResourceSavePath(QString const & );
+  void storeResourceSavePath( QString const & );
 
   void zoomIn();
   void zoomOut();
@@ -311,7 +308,7 @@ signals:
   ///  signal finished javascript;
   void notifyJavascriptFinished();
 
-  void inspectSignal(QWebEnginePage * page);
+  void inspectSignal( QWebEnginePage * page );
 
   void saveBookmarkSignal( const QString & bookmark );
 
@@ -320,7 +317,7 @@ public slots:
   void on_searchPrevious_clicked();
   void on_searchNext_clicked();
 
-  void onJsActiveArticleChanged(QString const & id);
+  void onJsActiveArticleChanged( QString const & id );
 
   /// Handles F3 and Shift+F3 for search navigation
   bool handleF3( QObject * obj, QEvent * ev );
@@ -338,7 +335,7 @@ private slots:
   void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
 
-  void linkHovered( const QString & link);
+  void linkHovered( const QString & link );
   void contextMenuRequested( QPoint const & );
 
   bool isAudioLink( QUrl & targetUrl )
@@ -380,9 +377,9 @@ private slots:
   /// Copy current selection as plain text
   void copyAsText();
 
-  void setActiveDictIds(ActiveDictIds);
+  void setActiveDictIds( const ActiveDictIds & ad );
 
-  void dictionaryClear( ActiveDictIds ad );
+  void dictionaryClear( const ActiveDictIds & ad );
 
 private:
 
@@ -417,7 +414,7 @@ private:
   /// Attempts removing last temporary file created.
   void cleanupTemp();
 
-  bool eventFilter( QObject * obj, QEvent * ev );
+  bool eventFilter( QObject * obj, QEvent * ev ) override;
 
   void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
 
@@ -425,12 +422,11 @@ private:
   /// for the given group. If there are none, returns empty string.
   QString getMutedForGroup( unsigned group );
 
-  QStringList getMutedDictionaries(unsigned group);
+  QStringList getMutedDictionaries( unsigned group );
 
-  protected:
+protected:
   // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * );
-
+  void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject
@@ -438,10 +434,12 @@ class ResourceToSaveHandler: public QObject
   Q_OBJECT
 
 public:
-  explicit ResourceToSaveHandler( ArticleView * view, QString const & fileName );
-  void addRequest( sptr< Dictionary::DataRequest > req );
+  explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
+  void addRequest( const sptr< Dictionary::DataRequest > & req );
   bool isEmpty()
-  { return downloadRequests.empty(); }
+  {
+    return downloadRequests.empty();
+  }
 
 signals:
   void done();
@@ -456,13 +454,13 @@ private:
   bool alreadyDone;
 };
 
-class ArticleViewAgent : public QObject
+class ArticleViewAgent: public QObject
 {
   Q_OBJECT
   ArticleView * articleView;
 
 public:
-  ArticleViewAgent( ArticleView * articleView );
+  explicit ArticleViewAgent( ArticleView * articleView );
 
 
 public slots:

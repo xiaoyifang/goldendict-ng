@@ -22,8 +22,7 @@ using gd::wstring;
 using gd::wchar;
 
 /// The algorithm's version.
-enum
-{
+enum {
   Version = 5
 };
 
@@ -47,7 +46,7 @@ wstring applyDiacriticsOnly( wstring const & );
 /// Applies only punctuation folding algorithm.
 wstring applyPunctOnly( wstring const & );
 QString applyPunctOnly( QString const & in );
-  /// Applies only whitespace folding algorithm.
+/// Applies only whitespace folding algorithm.
 wstring applyWhitespaceOnly( wstring const & );
 
 /// Applies only whitespace&punctuation folding algorithm.
@@ -57,6 +56,7 @@ wstring applyWhitespaceAndPunctOnly( wstring const & );
 /// otherwise. Whitespace corresponds to Zl/Zp/Zs Unicode classes, and also
 /// includes \n, \r and \t.
 bool isWhitespace( wchar ch );
+bool isWhitespaceOrPunct( wchar ch );
 
 /// Returns true if the given character is any form of punctuation, false
 /// otherwise. Punctuation corresponds to Pc/Pd/Pe/Pf/Pi/Po/Ps classes.
@@ -89,7 +89,6 @@ QString escapeWildcardSymbols( QString const & );
 /// Tests if the given char is one of the Unicode combining marks.
 bool isCombiningMark( wchar ch );
 
-}
+} // namespace Folding
 
 #endif
-

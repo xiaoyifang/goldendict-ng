@@ -28,8 +28,7 @@ using gd::wstring;
 using std::vector;
 using std::map;
 
-enum
-{
+enum {
   /// This is to be bumped up each time the internal format changes.
   /// The value isn't used here by itself, it is supposed to be added
   /// to each dictionary's internal format version.
@@ -49,12 +48,14 @@ struct WordArticleLink
   string word, prefix; // in utf8
   uint32_t articleOffset;
 
-  WordArticleLink()
-  {}
+  WordArticleLink() {}
 
   WordArticleLink( string const & word_, uint32_t articleOffset_, string const & prefix_ = string() ):
-    word( word_ ), prefix( prefix_ ), articleOffset( articleOffset_ )
-  {}
+    word( word_ ),
+    prefix( prefix_ ),
+    articleOffset( articleOffset_ )
+  {
+  }
 };
 
 /// Information needed to open the index
@@ -63,8 +64,10 @@ struct IndexInfo
   uint32_t btreeMaxElements, rootOffset;
 
   IndexInfo( uint32_t btreeMaxElements_, uint32_t rootOffset_ ):
-    btreeMaxElements( btreeMaxElements_ ), rootOffset( rootOffset_ )
-  {}
+    btreeMaxElements( btreeMaxElements_ ),
+    rootOffset( rootOffset_ )
+  {
+  }
 };
 
 /// Base btree indexing class which allows using what buildIndex() function
@@ -83,7 +86,7 @@ public:
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
-  vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false );
+  vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
   void findAllArticleLinks( QVector< WordArticleLink > & articleLinks );
@@ -97,15 +100,13 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QSet<uint32_t> offsets,int& index, QSet< QString > * headwords, uint32_t length );
-  void findSingleNodeHeadwords( uint32_t offsets,
-                                            QSet< QString > * headwords);
-  QSet<uint32_t> findNodes( );
+  void findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
+  void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
+  QSet< uint32_t > findNodes();
 
   /// Retrieve headwords for presented article addresses
-  void getHeadwordsFromOffsets( QList< uint32_t > & offsets,
-                                QVector< QString > & headwords,
-                                QAtomicInt * isCancelled = 0 );
+  void
+  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QVector< QString > & headwords, QAtomicInt * isCancelled = 0 );
 
 protected:
 
@@ -121,11 +122,8 @@ protected:
   /// case, the returned pointer wouldn't belong to 'leaf' at all. To that end,
   /// the leafEnd pointer always holds the pointer to the first byte outside
   /// the node data.
-  char const * findChainOffsetExactOrPrefix( wstring const & target,
-                                             bool & exactMatch,
-                                             vector< char > & leaf,
-                                             uint32_t & nextLeaf,
-                                             char const * & leafEnd );
+  char const * findChainOffsetExactOrPrefix(
+    wstring const & target, bool & exactMatch, vector< char > & leaf, uint32_t & nextLeaf, char const *& leafEnd );
 
   /// Reads a node or leaf at the given offset. Just uncompresses its data
   /// to the given vector and does nothing more.
@@ -133,7 +131,7 @@ protected:
 
   /// Reads the word-article links' chain at the given offset. The pointer
   /// is updated to point to the next chain, if there's any.
-  vector< WordArticleLink > readChain( char const * & );
+  vector< WordArticleLink > readChain( char const *&, uint32_t maxMatchCount = -1 );
 
   /// Drops any aliases which arose due to folding. Only case-folded aliases
   /// are left.
@@ -163,30 +161,31 @@ public:
 
   /// Btree-indexed dictionaries are usually a good source for compound searches.
   virtual Dictionary::Features getFeatures() const noexcept
-  { return Dictionary::SuitableForCompoundSearching; }
+  {
+    return Dictionary::SuitableForCompoundSearching;
+  }
 
   /// This function does the search using the btree index. Derivatives usually
   /// need not to implement this function.
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
-                                                             unsigned long )
-    ;
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &, unsigned long );
 
-  virtual sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
-                                                              unsigned minLength,
-                                                              unsigned maxSuffixVariation,
-                                                              unsigned long maxResults )
-    ;
+  virtual sptr< Dictionary::WordSearchRequest >
+  stemmedMatch( wstring const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults );
 
   virtual bool isLocalDictionary()
-  { return true; }
+  {
+    return true;
+  }
 
-  virtual bool getHeadwords( QStringList &headwords );
-  virtual  void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
+  virtual bool getHeadwords( QStringList & headwords );
+  virtual void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
 
   virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
 
   string const & ftsIndexName() const
-  { return ftsIdxName; }
+  {
+    return ftsIdxName;
+  }
 
   QMutex & getFtsMutex()
   {
@@ -194,14 +193,18 @@ public:
   }
 
   virtual uint32_t getFtsIndexVersion()
-  { return 0; }
+  {
+    return 0;
+  }
 
   // Sort articles offsets for full-text search in dictionary-specific order
   // to increase of articles retrieving speed
   // Default - simple sorting in increase order
-  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets,
-                                          QAtomicInt & isCancelled )
-  { Q_UNUSED( isCancelled ); std::sort( offsets.begin(), offsets.end() ); }
+  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
+  {
+    Q_UNUSED( isCancelled );
+    std::sort( offsets.begin(), offsets.end() );
+  }
 
   /// Called before each matching operation to ensure that any child init
   /// has completed. Mainly used for deferred init. The default implementation
@@ -275,7 +278,6 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 /// position.
 IndexInfo buildIndex( IndexedWords const &, File::Class & file );
 
-}
+} // namespace BtreeIndexing
 
 #endif
-

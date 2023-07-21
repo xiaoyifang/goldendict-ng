@@ -4,32 +4,28 @@
 #include <QScreen>
 
 
-ScanFlag::ScanFlag(QWidget *parent) :
-    QMainWindow(parent),
-    pushButton(new QPushButton(this))
+ScanFlag::ScanFlag( QWidget * parent ):
+  QMainWindow( parent ),
+  pushButton( new QPushButton( this ) )
 {
 
-  pushButton->setIcon(QIcon(":/icons/programicon.png"));
+  pushButton->setIcon( QIcon( ":/icons/programicon.png" ) );
 
-  setCentralWidget(pushButton);
+  setCentralWidget( pushButton );
 
-  setFixedSize(30,30);
+  setFixedSize( 30, 30 );
 
-  setWindowFlags( Qt::ToolTip
-                | Qt::FramelessWindowHint
-                | Qt::WindowStaysOnTopHint
-                | Qt::WindowDoesNotAcceptFocus);
+  setWindowFlags( Qt::ToolTip | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowDoesNotAcceptFocus );
 
 
-  setAttribute(Qt::WA_TranslucentBackground);
-  setAttribute(Qt::WA_X11DoNotAcceptFocus);
+  setAttribute( Qt::WA_TranslucentBackground );
+  setAttribute( Qt::WA_X11DoNotAcceptFocus );
 
   hideTimer.setSingleShot( true );
   hideTimer.setInterval( 1000 );
 
-  connect( &hideTimer, &QTimer::timeout,this,&ScanFlag::hideWindow);
-  connect( pushButton, &QPushButton::clicked,
-           this, &ScanFlag::pushButtonClicked );
+  connect( &hideTimer, &QTimer::timeout, this, &ScanFlag::hideWindow );
+  connect( pushButton, &QPushButton::clicked, this, &ScanFlag::pushButtonClicked );
 }
 
 void ScanFlag::pushButtonClicked()

@@ -17,9 +17,8 @@ using std::vector;
 using std::string;
 using gd::wstring;
 
-vector< sptr< Dictionary::Class > > makeDictionaries(Config::VoiceEngines const & voiceEngines)
-  ;
+vector< sptr< Dictionary::Class > > makeDictionaries( Config::VoiceEngines const & voiceEngines );
 
-}
+} // namespace VoiceEngines
 
 #endif

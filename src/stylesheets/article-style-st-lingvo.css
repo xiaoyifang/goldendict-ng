@@ -1,40 +1,34 @@
-html
-{
+html {
   background-color: white;
 }
 
-body
-{
+body {
   background: white;
 }
 
-a
-{
+a {
   text-decoration: none;
   color: darkblue;
 }
 
-a:hover
-{
+a:hover {
   text-decoration: underline;
 }
 
-.gdarticle
-{
+.gdarticle {
   background: white;
 }
 
 /* The 'From ' string which preceeds dictionary name in the heading */
-.gdfromprefix
-{
+.gdfromprefix {
   display: none;
 }
 
 /* Dictionary's name heading */
-.gddictname
-{
-  padding: 0.2em; padding-left: 0.5em;
-  margin-bottom: 0.1em; 
+.gddictname {
+  padding: 0.2em;
+  padding-left: 0.5em;
+  margin-bottom: 0.1em;
   font-size: 14px;
   font-weight: normal;
   float: right;
@@ -44,16 +38,14 @@ a:hover
   background: white;
 }
 
-.gdarticleseparator + script + .gdarticle .gddictname
-{
+.gdarticleseparator + script + .gdarticle .gddictname {
   border-top: 1px solid #ccc;
-/*  margin-top: 11px;*/
+  /*  margin-top: 11px;*/
 }
 
-.gdactivearticle .gddictname
-{
+.gdactivearticle .gddictname {
   font-weight: normal;
-  
+
   float: right;
   border: 1px solid #b3d7f7;
   margin-top: 7px;
@@ -61,14 +53,12 @@ a:hover
   background: #deecf8;
 }
 
-.gdarticleseparator + script + .gdactivearticle .gddictname
-{
+.gdarticleseparator + script + .gdactivearticle .gddictname {
   border-top: 1px solid #b3d7f7;
-/*  margin-top: 11px;*/
+  /*  margin-top: 11px;*/
 }
 
-.gdarticleseparator
-{
+.gdarticleseparator {
   margin-top: 10px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 0px;
@@ -77,17 +67,16 @@ a:hover
   clear: both;
 }
 
-.gddictname + h3, .gddictname + .dsl_article > .dsl_headwords
-{
+.gddictname + h3,
+.gddictname + .dsl_article > .dsl_headwords {
   margin-top: 10px;
 }
 
-.dsl_ex, .dsl_ex .dsl_opt
-{
+.dsl_ex,
+.dsl_ex .dsl_opt {
   color: inherit;
 }
 
-.dsl_com
-{
+.dsl_com {
   color: black;
 }

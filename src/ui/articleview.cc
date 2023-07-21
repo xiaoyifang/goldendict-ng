@@ -4,7 +4,6 @@
 #include "articleview.hh"
 #include "dict/programs.hh"
 #include "folding.hh"
-#include "fulltextsearch.hh"
 #include "gddebug.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
@@ -30,139 +29,25 @@
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
 #include <map>
+#include <QApplication>
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0) && QT_VERSION < QT_VERSION_CHECK(6,0,0))
-#include <QWebEngineContextMenuData>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 ) && QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QWebEngineContextMenuData>
 #endif
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QRegExp>
-#include <QWebEngineContextMenuRequest>
-#include <QWebEngineFindTextResult>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QRegExp>
+  #include <QWebEngineContextMenuRequest>
+  #include <QWebEngineFindTextResult>
+  #include <utility>
 #endif
 #ifdef Q_OS_WIN32
-#include <windows.h>
-#include <QPainter>
+  #include <windows.h>
+  #include <QPainter>
 #endif
 
 using std::map;
 using std::list;
 
-/// AccentMarkHandler class
-///
-/// Remove accent marks from text
-/// and mirror position in normalized text to original text
-
-class AccentMarkHandler
-{
-protected:
-  QString normalizedString;
-  QVector< int > accentMarkPos;
-public:
-  AccentMarkHandler()          = default;
-  virtual ~AccentMarkHandler() = default;
-  static QChar accentMark()
-  { return QChar( 0x301 ); }
-
-  /// Create text without accent marks
-  /// and store mark positions
-  virtual void setText( QString const & baseString )
-  {
-    accentMarkPos.clear();
-    normalizedString.clear();
-    int pos = 0;
-    QChar mark = accentMark();
-
-    for ( auto const & str : baseString ) {
-      if ( str == mark ) {
-        accentMarkPos.append( pos );
-        continue;
-      }
-      normalizedString.append( str );
-      pos++;
-    }
-  }
-
-  /// Return text without accent marks
-  QString const & normalizedText() const
-  { return normalizedString; }
-
-  /// Convert position into position in original text
-  int mirrorPosition( int const & pos ) const
-  {
-    int newPos = pos;
-    for( auto const accentPos: accentMarkPos)
-    {
-      if ( accentPos < pos )
-        newPos++;
-      else
-        break;
-    }
-    return newPos;
-  }
-};
-
-/// End of DslAccentMark class
-
-/// DiacriticsHandler class
-///
-/// Remove diacritics from text
-/// and mirror position in normalized text to original text
-
-class DiacriticsHandler : public AccentMarkHandler
-{
-public:
-  DiacriticsHandler() = default;
-  ~DiacriticsHandler() = default;
-
-  /// Create text without diacriticss
-  /// and store diacritic marks positions
-  void setText( QString const & baseString ) override
-  {
-    accentMarkPos.clear();
-    normalizedString.clear();
-
-    gd::wstring baseText = gd::toWString( baseString );
-    gd::wstring normText;
-
-    int pos = 0;
-    normText.reserve( baseText.size() );
-
-    gd::wchar const * nextChar = baseText.data();
-    size_t consumed;
-
-    for( size_t left = baseText.size(); left; )
-    {
-      if( *nextChar >= 0x10000U )
-      {
-        // Will be translated into surrogate pair
-        normText.push_back( *nextChar );
-        pos += 2;
-        nextChar++; left--;
-        continue;
-      }
-
-      gd::wchar ch = *nextChar;
-
-      if( Folding::isCombiningMark( ch ) )
-      {
-        accentMarkPos.append( pos );
-        nextChar++; left--;
-        continue;
-      }
-
-      normText.push_back( ch );
-      pos += 1;
-      nextChar += 1;
-      left -= 1;
-    }
-    normalizedString = QString::fromStdU32String( normText );
-  }
-};
-/// End of DiacriticsHandler class
-
-void ArticleView::emitJavascriptFinished(){
-    emit notifyJavascriptFinished();
-}
 
 namespace {
 
@@ -176,7 +61,7 @@ bool isScrollTo( QString const & id )
 QString dictionaryIdFromScrollTo( QString const & scrollTo )
 {
   Q_ASSERT( isScrollTo( scrollTo ) );
-  const int scrollToPrefixLength = 7;
+  constexpr int scrollToPrefixLength = 7;
   return scrollTo.mid( scrollToPrefixLength );
 }
 
@@ -201,14 +86,17 @@ QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
   return scrollToPrefix + dictionaryId;
 }
 
-ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, AudioPlayerPtr const & audioPlayer_,
+ArticleView::ArticleView( QWidget * parent,
+                          ArticleNetworkAccessManager & nm,
+                          AudioPlayerPtr const & audioPlayer_,
                           std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                          Instances::Groups const & groups_, bool popupView_, Config::Class const & cfg_,
+                          Instances::Groups const & groups_,
+                          bool popupView_,
+                          Config::Class const & cfg_,
                           QAction & openSearchAction_,
                           QLineEdit const * translateLine_,
                           QAction * dictionaryBarToggled_,
-                          GroupComboBox const * groupComboBox_
-                        ):
+                          GroupComboBox const * groupComboBox_ ):
   QWidget( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
@@ -230,6 +118,9 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   groupComboBox( groupComboBox_ ),
   translateLine( translateLine_ )
 {
+  if ( groupComboBox_ )
+    currentGroupId = groupComboBox_->getCurrentGroup();
+
   // setup GUI
   webview        = new ArticleWebView( this );
   ftsSearchPanel = new FtsSearchPanel( this );
@@ -291,7 +182,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   connect( webview, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
 
-  connect( webview->page(), SIGNAL( linkHovered( const QString & ) ), this, SLOT( linkHovered( const QString & ) ) );
+  connect( webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
 
   connect( webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
 
@@ -333,7 +224,7 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
   QWebEngineSettings * settings = webview->settings();
   settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
@@ -361,24 +252,19 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
-  const bool fromMainWindow = parent && parent->objectName() == "MainWindow";
-  if ( fromMainWindow ) {
-    connect( GlobalBroadcaster::instance(),
-             &GlobalBroadcaster::dictionaryChanges,
-             this,
-             &ArticleView::setActiveDictIds );
 
-    connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
-  }
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
+
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
+
 
   channel = new QWebChannel( webview->page() );
-  agent = new ArticleViewAgent(this);
+  agent   = new ArticleViewAgent( this );
   attachWebChannelToHtml();
   ankiConnector = new AnkiConnector( this, cfg );
-  connect( ankiConnector,
-           &AnkiConnector::errorText,
-           this,
-           [ this ]( QString const & errorText ) { emit statusBarMessage( errorText ); } );
+  connect( ankiConnector, &AnkiConnector::errorText, this, [ this ]( QString const & errorText ) {
+    emit statusBarMessage( errorText );
+  } );
 
   // Set up an Anki action if Anki integration is enabled in settings.
   if ( cfg.preferences.ankiConnectServer.enabled ) {
@@ -390,11 +276,18 @@ ArticleView::ArticleView( QWidget * parent, ArticleNetworkAccessManager & nm, Au
 
 // explicitly report the minimum size, to avoid
 // sidebar widgets' improper resize during restore
-QSize ArticleView::minimumSizeHint() const { return searchPanel->minimumSizeHint(); }
-
-void ArticleView::setGroupComboBox( GroupComboBox const * g )
+QSize ArticleView::minimumSizeHint() const
 {
-  groupComboBox = g;
+  return searchPanel->minimumSizeHint();
+}
+
+void ArticleView::setCurrentGroupId( unsigned currentGrgId )
+{
+  currentGroupId = currentGrgId;
+}
+unsigned ArticleView::getCurrentGroupId()
+{
+  return currentGroupId;
 }
 
 ArticleView::~ArticleView()
@@ -406,12 +299,14 @@ ArticleView::~ArticleView()
   webview->ungrabGesture( Gestures::GDSwipeGestureType );
 }
 
-void ArticleView::showDefinition( QString const & word, unsigned group,
+void ArticleView::showDefinition( QString const & word,
+                                  unsigned group,
                                   QString const & scrollTo,
                                   Contexts const & contexts_ )
 {
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   currentWord = word.trimmed();
-  if( currentWord.isEmpty() )
+  if ( currentWord.isEmpty() )
     return;
   historyMode = false;
   currentActiveDictIds.clear();
@@ -425,27 +320,23 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
   req.setHost( "localhost" );
   Utils::Url::addQueryItem( req, "word", word );
   Utils::Url::addQueryItem( req, "group", QString::number( group ) );
-  if( cfg.preferences.ignoreDiacritics )
+  if ( cfg.preferences.ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
 
   if ( scrollTo.size() )
     Utils::Url::addQueryItem( req, "scrollto", scrollTo );
 
-  if( delayedHighlightText.size() )
-  {
+  if ( delayedHighlightText.size() ) {
     Utils::Url::addQueryItem( req, "regexp", delayedHighlightText );
     delayedHighlightText.clear();
   }
 
-  Contexts::Iterator pos = contexts.find( "gdanchor" );
-  if( pos != contexts.end() )
-  {
+  if ( Contexts::Iterator pos = contexts.find( "gdanchor" ); pos != contexts.end() ) {
     Utils::Url::addQueryItem( req, "gdanchor", contexts[ "gdanchor" ] );
     contexts.erase( pos );
   }
 
-  if ( contexts.size() )
-  {
+  if ( contexts.size() ) {
     QBuffer buf;
 
     buf.open( QIODevice::WriteOnly );
@@ -456,13 +347,13 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
 
     buf.close();
 
-    Utils::Url::addQueryItem( req,  "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
+    Utils::Url::addQueryItem( req, "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
   }
 
   QString mutedDicts = getMutedForGroup( group );
 
   if ( mutedDicts.size() )
-    Utils::Url::addQueryItem( req,  "muted", mutedDicts );
+    Utils::Url::addQueryItem( req, "muted", mutedDicts );
 
   // Update headwords history
   emit sendWordToHistory( word );
@@ -476,14 +367,16 @@ void ArticleView::showDefinition( QString const & word, unsigned group,
   webview->setCursor( Qt::WaitCursor );
 }
 
-void ArticleView::showDefinition( QString const & word, QStringList const & dictIDs,
-                                  QRegExp const & searchRegExp, unsigned group,
+void ArticleView::showDefinition( QString const & word,
+                                  QStringList const & dictIDs,
+                                  QRegExp const & searchRegExp,
+                                  unsigned group,
                                   bool ignoreDiacritics )
 {
-  if( dictIDs.isEmpty() )
+  if ( dictIDs.isEmpty() )
     return;
   currentWord = word.trimmed();
-  if( currentWord.isEmpty() )
+  if ( currentWord.isEmpty() )
     return;
   historyMode = false;
   // first, let's stop the player
@@ -494,14 +387,14 @@ void ArticleView::showDefinition( QString const & word, QStringList const & dict
   req.setScheme( "gdlookup" );
   req.setHost( "localhost" );
   Utils::Url::addQueryItem( req, "word", word );
-  Utils::Url::addQueryItem( req, "dictionaries", dictIDs.join( ",") );
+  Utils::Url::addQueryItem( req, "dictionaries", dictIDs.join( "," ) );
   Utils::Url::addQueryItem( req, "regexp", searchRegExp.pattern() );
-  if( searchRegExp.caseSensitivity() == Qt::CaseSensitive )
+  if ( searchRegExp.caseSensitivity() == Qt::CaseSensitive )
     Utils::Url::addQueryItem( req, "matchcase", "1" );
-  if( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
+  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
     Utils::Url::addQueryItem( req, "wildcards", "1" );
   Utils::Url::addQueryItem( req, "group", QString::number( group ) );
-  if( ignoreDiacritics )
+  if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
 
   // Update headwords history
@@ -529,30 +422,29 @@ void ArticleView::showAnticipation()
   webview->setCursor( Qt::WaitCursor );
 }
 
-void ArticleView::inspectElement() { emit inspectSignal( webview->page() ); }
+void ArticleView::inspectElement()
+{
+  emit inspectSignal( webview->page() );
+}
 
 void ArticleView::loadFinished( bool result )
 {
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = webview->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
-  
-  if( url.url() == "about:blank" )
-  {
+
+  if ( url.url() == "about:blank" ) {
     return;
   }
 
-  if( !result )
-  {
-    qWarning() << "article loaded unsuccessful"; 
+  if ( !result ) {
+    qWarning() << "article loaded unsuccessful";
     return;
   }
 
-  if( cfg.preferences.autoScrollToTargetArticle )
-  {
+  if ( cfg.preferences.autoScrollToTargetArticle ) {
     QString const scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
-    if( isScrollTo( scrollTo ) )
-    {
+    if ( isScrollTo( scrollTo ) ) {
       setCurrentArticle( scrollTo, true );
     }
   }
@@ -562,7 +454,7 @@ void ArticleView::loadFinished( bool result )
   // Expand collapsed article if only one loaded
   webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
 
-  if( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
+  if ( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
     const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
 
     // Find GD anchor on page
@@ -574,16 +466,16 @@ void ArticleView::loadFinished( bool result )
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
   //the audio link click ,no need to emit pageLoaded signal
-  if(result){
+  if ( result ) {
     emit pageLoaded( this );
   }
-  if( Utils::Url::hasQueryItem( webview->url(), "regexp" ) )
+  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) )
     highlightFTSResults();
 }
 
 void ArticleView::handleTitleChanged( QString const & title )
 {
-  if( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
+  if ( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
     emit titleChanged( this, title );
 }
 
@@ -591,10 +483,7 @@ void ArticleView::handleUrlChanged( QUrl const & url )
 {
   QIcon icon;
 
-  unsigned group = getGroup( url );
-
-  if ( group )
-  {
+  if ( unsigned group = getGroup( url ) ) {
     // Find the group's instance corresponding to the fragment value
     for ( auto const & g : groups ) {
       if ( g.id == group ) {
@@ -623,26 +512,25 @@ QStringList ArticleView::getArticlesList()
 
 QString ArticleView::getActiveArticleId()
 {
-    return activeDictId;
+  return activeDictId;
 }
 
-void ArticleView::setActiveArticleId(QString const & dictId){
-    this->activeDictId=dictId;
+void ArticleView::setActiveArticleId( QString const & dictId )
+{
+  this->activeDictId = dictId;
 }
 
 QString ArticleView::getCurrentArticle()
 {
-  QString dictId=getActiveArticleId();
+  const QString dictId = getActiveArticleId();
   return scrollToFromDictionaryId( dictId );
 }
 
 void ArticleView::jumpToDictionary( QString const & id, bool force )
 {
-  QString targetArticle = scrollToFromDictionaryId( id );
 
   // jump only if neceessary, or when forced
-  if ( force || targetArticle != getCurrentArticle() )
-  {
+  if ( const QString targetArticle = scrollToFromDictionaryId( id ); force || targetArticle != getCurrentArticle() ) {
     setCurrentArticle( targetArticle, true );
   }
 }
@@ -652,15 +540,16 @@ bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
   if ( !isScrollTo( id ) )
     return false; // Incorrect id
 
-  if( !webview->isVisible() )
+  if ( !webview->isVisible() )
     return false; // No action on background page, scrollIntoView there don't work
 
-  if(moveToIt){
+  if ( moveToIt ) {
     QString dictId = id.mid( 7 );
-    if( dictId.isEmpty() )
+    if ( dictId.isEmpty() )
       return false;
-    QString script = QString( "var elem=document.getElementById('%1'); "
-                              "if(elem!=undefined){elem.scrollIntoView(true);} gdMakeArticleActive('%2',true);" )
+    QString script = QString(
+                       "var elem=document.getElementById('%1'); "
+                       "if(elem!=undefined){elem.scrollIntoView(true);} gdMakeArticleActive('%2',true);" )
                        .arg( id, dictId );
     onJsActiveArticleChanged( id );
     webview->page()->runJavaScript( script );
@@ -679,7 +568,7 @@ void ArticleView::selectCurrentArticle()
 
 void ArticleView::isFramedArticle( QString const & ca, const std::function< void( bool ) > & callback )
 {
-  if( ca.isEmpty() )
+  if ( ca.isEmpty() )
     callback( false );
 
   webview->page()->runJavaScript( QString( "!!document.getElementById('gdexpandframe-%1');" ).arg( ca.mid( 7 ) ),
@@ -690,30 +579,32 @@ void ArticleView::isFramedArticle( QString const & ca, const std::function< void
 
 bool ArticleView::isExternalLink( QUrl const & url )
 {
-  return Utils::isExternalLink(url);
+  return Utils::isExternalLink( url );
 }
 
 void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 {
   // Don't try mangling audio urls, even if they are from the framed websites
 
-  if( ( url.scheme() == "http" || url.scheme() == "https" ) && !Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
-  {
+  if ( ( url.scheme() == "http" || url.scheme() == "https" )
+       && !Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
     // Maybe a link inside a website was clicked?
 
     QString ca = getCurrentArticle();
-    isFramedArticle( ca, []( bool framed ){} );
+    isFramedArticle( ca, []( bool framed ) {} );
   }
 }
 
-void ArticleView::load( QUrl const & url ) { webview->load( url ); }
+void ArticleView::load( QUrl const & url )
+{
+  webview->load( url );
+}
 
 void ArticleView::cleanupTemp()
 {
   auto it = desktopOpenedTempFiles.begin();
-  while( it != desktopOpenedTempFiles.end() )
-  {
-    if( QFile::remove( *it ) )
+  while ( it != desktopOpenedTempFiles.end() ) {
+    if ( QFile::remove( *it ) )
       it = desktopOpenedTempFiles.erase( it );
     else
       ++it;
@@ -722,43 +613,36 @@ void ArticleView::cleanupTemp()
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
 {
-  if ( ev->type() == QEvent::ShortcutOverride
-       || ev->type() == QEvent::KeyPress )
-  {
-    QKeyEvent * ke = static_cast<QKeyEvent *>( ev );
+  if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
+    QKeyEvent * ke = static_cast< QKeyEvent * >( ev );
     if ( ke->key() == Qt::Key_F3 && isSearchOpened() ) {
-      if ( !ke->modifiers() )
-      {
-        if( ev->type() == QEvent::KeyPress )
+      if ( !ke->modifiers() ) {
+        if ( ev->type() == QEvent::KeyPress )
           on_searchNext_clicked();
 
         ev->accept();
         return true;
       }
 
-      if ( ke->modifiers() == Qt::ShiftModifier )
-      {
-        if( ev->type() == QEvent::KeyPress )
+      if ( ke->modifiers() == Qt::ShiftModifier ) {
+        if ( ev->type() == QEvent::KeyPress )
           on_searchPrevious_clicked();
 
         ev->accept();
         return true;
       }
     }
-    if ( ke->key() == Qt::Key_F3 && ftsSearchIsOpened )
-    {
-      if ( !ke->modifiers() )
-      {
-        if( ev->type() == QEvent::KeyPress )
+    if ( ke->key() == Qt::Key_F3 && ftsSearchIsOpened ) {
+      if ( !ke->modifiers() ) {
+        if ( ev->type() == QEvent::KeyPress )
           on_ftsSearchNext_clicked();
 
         ev->accept();
         return true;
       }
 
-      if ( ke->modifiers() == Qt::ShiftModifier )
-      {
-        if( ev->type() == QEvent::KeyPress )
+      if ( ke->modifiers() == Qt::ShiftModifier ) {
+        if ( ev->type() == QEvent::KeyPress )
           on_ftsSearchPrevious_clicked();
 
         ev->accept();
@@ -774,8 +658,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 {
 #ifdef Q_OS_MAC
 
-  if( ev->type() == QEvent::NativeGesture )
-  {
+  if ( ev->type() == QEvent::NativeGesture ) {
     qDebug() << "it's a Native Gesture!";
     // handle Qt::ZoomNativeGesture Qt::SmartZoomNativeGesture here
     // ignore swipe left/right.
@@ -783,43 +666,48 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 
 #else
-  if( ev->type() == QEvent::Gesture )
-  {
+  if ( ev->type() == QEvent::Gesture ) {
     Gestures::GestureResult result;
     QPoint pt;
 
     bool handled = Gestures::handleGestureEvent( obj, ev, result, pt );
 
-    if( handled )
-    {
-      if( result == Gestures::ZOOM_IN )
+    if ( handled ) {
+      if ( result == Gestures::ZOOM_IN )
         emit zoomIn();
-      else
-      if( result == Gestures::ZOOM_OUT )
+      else if ( result == Gestures::ZOOM_OUT )
         emit zoomOut();
-      else
-      if( result == Gestures::SWIPE_LEFT )
+      else if ( result == Gestures::SWIPE_LEFT )
         back();
-      else
-      if( result == Gestures::SWIPE_RIGHT )
+      else if ( result == Gestures::SWIPE_RIGHT )
         forward();
-      else
-      if( result == Gestures::SWIPE_UP || result == Gestures::SWIPE_DOWN )
-      {
-        int delta = result == Gestures::SWIPE_UP ? -120 : 120;
-        QWidget *widget = static_cast< QWidget * >( obj );
+      else if ( result == Gestures::SWIPE_UP || result == Gestures::SWIPE_DOWN ) {
+        int delta        = result == Gestures::SWIPE_UP ? -120 : 120;
+        QWidget * widget = static_cast< QWidget * >( obj );
 
-        QPoint angleDelta(0, delta);
+        QPoint angleDelta( 0, delta );
         QPoint pixelDetal;
-        QWidget *child = widget->childAt( widget->mapFromGlobal( pt ) );
-        if( child )
-        {
-          QWheelEvent whev( child->mapFromGlobal( pt ), pt,  pixelDetal,angleDelta, Qt::NoButton, Qt::NoModifier,Qt::NoScrollPhase,false);
+        QWidget * child = widget->childAt( widget->mapFromGlobal( pt ) );
+        if ( child ) {
+          QWheelEvent whev( child->mapFromGlobal( pt ),
+                            pt,
+                            pixelDetal,
+                            angleDelta,
+                            Qt::NoButton,
+                            Qt::NoModifier,
+                            Qt::NoScrollPhase,
+                            false );
           qApp->sendEvent( child, &whev );
         }
-        else
-        {
-          QWheelEvent whev( widget->mapFromGlobal( pt ), pt,pixelDetal, angleDelta,Qt::NoButton, Qt::NoModifier,Qt::NoScrollPhase,false );
+        else {
+          QWheelEvent whev( widget->mapFromGlobal( pt ),
+                            pt,
+                            pixelDetal,
+                            angleDelta,
+                            Qt::NoButton,
+                            Qt::NoModifier,
+                            Qt::NoScrollPhase,
+                            false );
           qApp->sendEvent( widget, &whev );
         }
       }
@@ -829,23 +717,20 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 #endif
 
-  if( ev->type() == QEvent::MouseMove )
-  {
-    if( Gestures::isFewTouchPointsPresented() )
-    {
+  if ( ev->type() == QEvent::MouseMove ) {
+    if ( Gestures::isFewTouchPointsPresented() ) {
       ev->accept();
       return true;
     }
   }
 
-  if ( handleF3( obj, ev ) )
-  {
+  if ( handleF3( obj, ev ) ) {
     return true;
   }
 
-  if( obj == webview ) {
-    if( ev->type() == QEvent::MouseButtonPress ) {
-      QMouseEvent * event = static_cast< QMouseEvent * >( ev );
+  if ( obj == webview ) {
+    if ( ev->type() == QEvent::MouseButtonPress ) {
+      auto event = static_cast< QMouseEvent * >( ev );
       if ( event->button() == Qt::XButton1 ) {
         back();
         return true;
@@ -855,39 +740,29 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
         return true;
       }
     }
-    else
-    if ( ev->type() == QEvent::KeyPress )
-    {
-      QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
+    else if ( ev->type() == QEvent::KeyPress ) {
+      auto keyEvent = static_cast< QKeyEvent * >( ev );
 
-      if ( keyEvent->modifiers() &
-           ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
+      if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
         return false; // A non-typing modifier is pressed
 
-      if ( Utils::ignoreKeyEvent(keyEvent)||
-           keyEvent->key() == Qt::Key_Return ||
-           keyEvent->key() == Qt::Key_Enter )
+      if ( Utils::ignoreKeyEvent( keyEvent ) || keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter )
         return false; // Those key have other uses than to start typing
 
       QString text = keyEvent->text();
 
-      if ( text.size() )
-      {
+      if ( text.size() ) {
         emit typingEvent( text );
         return true;
       }
     }
-    else if( ev->type() == QEvent::Wheel )
-    {
+    else if ( ev->type() == QEvent::Wheel ) {
       QWheelEvent * pe = static_cast< QWheelEvent * >( ev );
-      if( pe->modifiers().testFlag( Qt::ControlModifier ) )
-      {
-        if( pe->angleDelta().y() > 0 )
-        {
+      if ( pe->modifiers().testFlag( Qt::ControlModifier ) ) {
+        if ( pe->angleDelta().y() > 0 ) {
           zoomIn();
         }
-        else
-        {
+        else {
           zoomOut();
         }
       }
@@ -901,65 +776,62 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
 QString ArticleView::getMutedForGroup( unsigned group )
 {
-  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() )
-  {
+  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
     Instances::Group const * groupInstance = groups.findGroup( group );
 
     // Find muted dictionaries for current group
     Config::Group const * grp = cfg.getGroup( group );
     Config::MutedDictionaries const * mutedDictionaries;
-    if( group == Instances::Group::AllGroupId )
+    if ( group == Instances::Group::AllGroupId )
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     else
-        mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
-    if( !mutedDictionaries )
+      mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
+    if ( !mutedDictionaries )
       return QString();
 
     QStringList mutedDicts;
 
-    if ( groupInstance )
-    {
-      for( unsigned x = 0; x < groupInstance->dictionaries.size(); ++x )
-      {
-        QString id = QString::fromStdString(
-                       groupInstance->dictionaries[ x ]->getId() );
+    if ( groupInstance ) {
+      for ( const auto & dictionarie : groupInstance->dictionaries ) {
+        QString id = QString::fromStdString( dictionarie->getId() );
 
         if ( mutedDictionaries->contains( id ) )
           mutedDicts.append( id );
       }
     }
 
-    if ( mutedDicts.size() )
+    if ( !mutedDicts.empty() )
       return mutedDicts.join( "," );
   }
 
   return QString();
 }
 
-QStringList ArticleView::getMutedDictionaries(unsigned group) {
-  if (dictionaryBarToggled && dictionaryBarToggled->isChecked()) {
+QStringList ArticleView::getMutedDictionaries( unsigned group )
+{
+  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const *groupInstance = groups.findGroup(group);
+    Instances::Group const * groupInstance = groups.findGroup( group );
 
     // Find muted dictionaries for current group
-    Config::Group const *grp = cfg.getGroup(group);
-    Config::MutedDictionaries const *mutedDictionaries;
-    if (group == Instances::Group::AllGroupId)
+    Config::Group const * grp = cfg.getGroup( group );
+    Config::MutedDictionaries const * mutedDictionaries;
+    if ( group == Instances::Group::AllGroupId )
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     else
-      mutedDictionaries = grp ? (popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries) : nullptr;
-    if (!mutedDictionaries)
+      mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
+    if ( !mutedDictionaries )
       return QStringList();
 
     QStringList mutedDicts;
 
-    if (groupInstance) {
-      for (unsigned x = 0; x < groupInstance->dictionaries.size(); ++x) {
-        QString id = QString::fromStdString(groupInstance->dictionaries[x]->getId());
+    if ( groupInstance ) {
+      for ( const auto & dictionarie : groupInstance->dictionaries ) {
+        QString id = QString::fromStdString( dictionarie->getId() );
 
-        if (mutedDictionaries->contains(id))
-          mutedDicts.append(id);
+        if ( mutedDictionaries->contains( id ) )
+          mutedDicts.append( id );
       }
     }
 
@@ -969,87 +841,70 @@ QStringList ArticleView::getMutedDictionaries(unsigned group) {
   return QStringList();
 }
 
-void ArticleView::linkHovered ( const QString & link )
+void ArticleView::linkHovered( const QString & link )
 {
   QString msg;
-  QUrl url(link);
+  QUrl url( link );
 
-  if ( url.scheme() == "bres" )
-  {
+  if ( url.scheme() == "bres" ) {
     msg = tr( "Resource" );
   }
-  else
-  if ( url.scheme() == "gdau" || Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
-  {
+  else if ( url.scheme() == "gdau" || Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
     msg = tr( "Audio" );
   }
-  else
-  if ( url.scheme() == "gdtts" )
-  {
+  else if ( url.scheme() == "gdtts" ) {
     msg = tr( "TTS Voice" );
   }
-  else
-  if ( url.scheme() == "gdpicture" )
-  {
+  else if ( url.scheme() == "gdpicture" ) {
     msg = tr( "Picture" );
   }
-  else
-  if ( url.scheme() == "gdvideo" )
-  {
-    if ( url.path().isEmpty() )
-    {
+  else if ( url.scheme() == "gdvideo" ) {
+    if ( url.path().isEmpty() ) {
       msg = tr( "Video" );
     }
-    else
-    {
+    else {
       QString path = url.path();
-      if ( path.startsWith( '/' ) )
-      {
+      if ( path.startsWith( '/' ) ) {
         path = path.mid( 1 );
       }
       msg = tr( "Video: %1" ).arg( path );
     }
   }
-  else
-  if (url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0)
-  {
+  else if ( url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0 ) {
     QString def = url.path();
-    if (def.startsWith("/"))
-    {
+    if ( def.startsWith( "/" ) ) {
       def = def.mid( 1 );
     }
 
-    if( Utils::Url::hasQueryItem( url, "dict" ) )
-    {
+    if ( Utils::Url::hasQueryItem( url, "dict" ) ) {
       // Link to other dictionary
       QString dictName( Utils::Url::queryItemValue( url, "dict" ) );
-      if( !dictName.isEmpty() )
-        msg = tr( "Definition from dictionary \"%1\": %2" ).arg( dictName , def );
+      if ( !dictName.isEmpty() )
+        msg = tr( "Definition from dictionary \"%1\": %2" ).arg( dictName, def );
     }
 
-    if( msg.isEmpty() )
-    {
-      if( def.isEmpty() && url.hasFragment() )
+    if ( msg.isEmpty() ) {
+      if ( def.isEmpty() && url.hasFragment() )
         msg = '#' + url.fragment(); // this must be a citation, footnote or backlink
       else
-        msg = tr( "Definition: %1").arg( def );
+        msg = tr( "Definition: %1" ).arg( def );
     }
   }
-  else
-  {
+  else {
     msg = link;
   }
 
   emit statusBarMessage( msg );
 }
 
-void ArticleView::attachWebChannelToHtml() {
+void ArticleView::attachWebChannelToHtml()
+{
   // set the web channel to be used by the page
   // see http://doc.qt.io/qt-5/qwebenginepage.html#setWebChannel
-  webview->page()->setWebChannel(channel, QWebEngineScript::MainWorld);
+  webview->page()->setWebChannel( channel, QWebEngineScript::MainWorld );
 
   // register QObjects to be exposed to JavaScript
-  channel->registerObject(QStringLiteral("articleview"), agent);
+  channel->registerObject( QStringLiteral( "articleview" ), agent );
 }
 
 void ArticleView::linkClicked( QUrl const & url_ )
@@ -1057,7 +912,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
 
   // Lock jump on links while Alt key is pressed
-  if( kmod & Qt::AltModifier )
+  if ( kmod & Qt::AltModifier )
     return;
 
   QUrl url( url_ );
@@ -1065,8 +920,8 @@ void ArticleView::linkClicked( QUrl const & url_ )
 
   tryMangleWebsiteClickedUrl( url, contexts );
 
-  if( !popupView && ( webview->isMidButtonPressed() || ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
-      && !isAudioLink( url ) ) {
+  if ( !popupView && ( webview->isMidButtonPressed() || ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
+       && !isAudioLink( url ) ) {
     // Mid button or Control/Shift is currently pressed - open the link in new tab
     webview->resetMidButtonPressed();
     emit openLinkInNewTab( url, webview->url(), getCurrentArticle(), contexts );
@@ -1078,7 +933,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
 void ArticleView::linkClickedInHtml( QUrl const & url_ )
 {
   emit webview->linkClickedInHtml( url_ );
-  if( !url_.isEmpty() ) {
+  if ( !url_.isEmpty() ) {
     linkClicked( url_ );
   }
 }
@@ -1096,9 +951,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   audioPlayer->stop();
   qDebug() << "open link url:" << url;
 
-  auto [valid, word] = Utils::Url::getQueryWord( url );
-  if( valid && word.isEmpty() )
-  {
+  auto [ valid, word ] = Utils::Url::getQueryWord( url );
+  if ( valid && word.isEmpty() ) {
     //if valid=true and word is empty,the url must be a invalid gdlookup url.
     //else if valid=false,the url should be external urls.
     return;
@@ -1106,9 +960,9 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   Contexts contexts( contexts_ );
 
-  if( url.scheme().compare( "gdpicture" ) == 0 )
+  if ( url.scheme().compare( "gdpicture" ) == 0 )
     load( url );
-  else if( url.scheme().compare( "ankisearch" ) == 0 ) {
+  else if ( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
     return;
   }
@@ -1124,64 +978,50 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     qDebug() << "requested to make Anki card.";
     return;
   }
-  else if( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
-    if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )
-    {
-      QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" )
-                                          .split( ",", Qt::SkipEmptyParts );
+  else if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
+    if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
+      QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
       showDefinition( word, dictsList, QRegExp(), getGroup( ref ), false );
     }
     else
-      showDefinition( word,
-                      getGroup( ref ), scrollTo, contexts );
+      showDefinition( word, getGroup( ref ), scrollTo, contexts );
   }
-  else
-  if ( url.scheme() == "gdlookup" ) // Plain html links inherit gdlookup scheme
+  else if ( url.scheme() == "gdlookup" ) // Plain html links inherit gdlookup scheme
   {
-    if ( url.hasFragment() )
-    {
+    if ( url.hasFragment() ) {
       webview->page()->runJavaScript(
         QString( "window.location = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
     }
-    else
-    {
-      if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )
-      {
+    else {
+      if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
         // Specific dictionary group from full-text search
-        QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" )
-                                            .split( ",", Qt::SkipEmptyParts );
+        QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
         showDefinition( url.path().mid( 1 ), dictsList, QRegExp(), getGroup( ref ), false );
         return;
       }
 
       QString newScrollTo( scrollTo );
-      if( Utils::Url::hasQueryItem( url, "dict" ) )
-      {
+      if ( Utils::Url::hasQueryItem( url, "dict" ) ) {
         // Link to other dictionary
         QString dictName( Utils::Url::queryItemValue( url, "dict" ) );
-        for( unsigned i = 0; i < allDictionaries.size(); i++ )
-        {
-          if( dictName.compare( QString::fromUtf8( allDictionaries[ i ]->getName().c_str() ) ) == 0 )
-          {
-            newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( allDictionaries[ i ]->getId().c_str() ) );
+        for ( const auto & allDictionarie : allDictionaries ) {
+          if ( dictName.compare( QString::fromUtf8( allDictionarie->getName().c_str() ) ) == 0 ) {
+            newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( allDictionarie->getId().c_str() ) );
             break;
           }
         }
       }
 
-      if( Utils::Url::hasQueryItem( url, "gdanchor" ) )
+      if ( Utils::Url::hasQueryItem( url, "gdanchor" ) )
         contexts[ "gdanchor" ] = Utils::Url::queryItemValue( url, "gdanchor" );
 
-      showDefinition( word,
-                      getGroup( ref ), newScrollTo, contexts );
+      showDefinition( word, getGroup( ref ), newScrollTo, contexts );
     }
   }
-  else
-  if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" ||
-       Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
-  {
+  else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
+            || Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
     // Download it
 
     // Clear any pending ones
@@ -1190,68 +1030,53 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
     resourceDownloadUrl = url;
 
-    if ( Dictionary::WebMultimediaDownload::isAudioUrl( url ) )
-    {
-      sptr< Dictionary::DataRequest > req =
-        std::make_shared<Dictionary::WebMultimediaDownload>( url, articleNetMgr );
+    if ( Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
+      sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
       resourceDownloadRequests.push_back( req );
 
       connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
     }
-    else
-    if ( url.scheme() == "gdau" && url.host() == "search" )
-    {
+    else if ( url.scheme() == "gdau" && url.host() == "search" ) {
       // Since searches should be limited to current group, we just do them
       // here ourselves since otherwise we'd need to pass group id to netmgr
       // and it should've been having knowledge of the current groups, too.
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = 0;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
-      if ( groups.size() )
-      {
-        for( unsigned x = 0; x < groups.size(); ++x )
-          if ( groups[ x ].id == currentGroup )
-          {
-            activeDicts = &( groups[ x ].dictionaries );
+      if ( groups.size() ) {
+        for ( const auto & group : groups )
+          if ( group.id == currentGroup ) {
+            activeDicts = &( group.dictionaries );
             break;
           }
       }
       else
         activeDicts = &allDictionaries;
 
-      if ( activeDicts )
-      {
+      if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
-        if( url.hasFragment() )
-        {
+        if ( url.hasFragment() ) {
           // Find sound in the preferred dictionary
           QString preferredName = Utils::Url::fragment( url );
-          try
-          {
-            for( unsigned x = 0; x < activeDicts->size(); ++x )
-            {
-              if( preferredName.compare( QString::fromUtf8( (*activeDicts)[ x ]->getName().c_str() ) ) == 0 )
-              {
+          try {
+            for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
+              if ( preferredName.compare( QString::fromUtf8( ( *activeDicts )[ x ]->getName().c_str() ) ) == 0 ) {
                 preferred = x;
                 sptr< Dictionary::DataRequest > req =
-                  (*activeDicts)[ x ]->getResource(
-                    url.path().mid( 1 ).toUtf8().data() );
+                  ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
                 resourceDownloadRequests.push_back( req );
 
-                if ( !req->isFinished() )
-                {
+                if ( !req->isFinished() ) {
                   // Queued loading
                   connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
                 }
-                else
-                {
+                else {
                   // Immediate loading
-                  if( req->dataSize() > 0 )
-                  {
+                  if ( req->dataSize() > 0 ) {
                     // Resource already found, stop next search
                     resourceDownloadFinished();
                     return;
@@ -1261,74 +1086,55 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
               }
             }
           }
-          catch( std::exception & e )
-          {
-            emit statusBarMessage(
-                tr("ERROR: %1").arg(e.what()),
-                10000, QPixmap(":/icons/error.svg"));
+          catch ( std::exception & e ) {
+            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
           }
         }
-        for( unsigned x = 0; x < activeDicts->size(); ++x )
-        {
-          try
-          {
-            if( x == preferred )
+        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
+          try {
+            if ( x == preferred )
               continue;
 
             sptr< Dictionary::DataRequest > req =
-              (*activeDicts)[ x ]->getResource(
-                url.path().mid( 1 ).toUtf8().data() );
+              ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
             resourceDownloadRequests.push_back( req );
 
-            if ( !req->isFinished() )
-            {
+            if ( !req->isFinished() ) {
               // Queued loading
               connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
             }
-            else
-            {
+            else {
               // Immediate loading
-              if( req->dataSize() > 0 )
-              {
+              if ( req->dataSize() > 0 ) {
                 // Resource already found, stop next search
                 break;
               }
             }
           }
-          catch( std::exception & e )
-          {
-            emit statusBarMessage(
-                tr("ERROR: %1").arg(e.what()),
-                10000, QPixmap(":/icons/error.svg"));
+          catch ( std::exception & e ) {
+            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
           }
         }
       }
     }
-    else
-    {
+    else {
       // Normal resource download
       QString contentType;
 
-      sptr< Dictionary::DataRequest > req =
-        articleNetMgr.getResource( url, contentType );
+      sptr< Dictionary::DataRequest > req = articleNetMgr.getResource( url, contentType );
 
-      if ( !req.get() )
-      {
+      if ( !req.get() ) {
         // Request failed, fail
       }
-      else
-      if ( req->isFinished() && req->dataSize() >= 0 )
-      {
+      else if ( req->isFinished() && req->dataSize() >= 0 ) {
         // Have data ready, handle it
         resourceDownloadRequests.push_back( req );
         resourceDownloadFinished();
 
         return;
       }
-      else
-      if ( !req->isFinished() )
-      {
+      else if ( !req->isFinished() ) {
         // Queue to be handled when done
 
         resourceDownloadRequests.push_back( req );
@@ -1345,17 +1151,12 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     else
       resourceDownloadFinished(); // Check any requests finished already
   }
-  else
-  if ( url.scheme() == "gdprg" )
-  {
+  else if ( url.scheme() == "gdprg" ) {
     // Program. Run it.
     QString id( url.host() );
 
-    for( Config::Programs::const_iterator i = cfg.programs.begin();
-         i != cfg.programs.end(); ++i )
-    {
-      if ( i->id == id )
-      {
+    for ( const auto & program : cfg.programs ) {
+      if ( program.id == id ) {
         // Found the corresponding program.
         Programs::RunInstance * req = new Programs::RunInstance;
 
@@ -1364,12 +1165,10 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         QString error;
 
         // Delete the request if it fails to start
-        if ( !req->start( *i, url.path().mid( 1 ), error ) )
-        {
+        if ( !req->start( program, url.path().mid( 1 ), error ) ) {
           delete req;
 
-          QMessageBox::critical( this, "GoldenDict",
-                                 error );
+          QMessageBox::critical( this, "GoldenDict", error );
         }
 
         return;
@@ -1377,20 +1176,18 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     }
 
     // Still here? No such program exists.
-    QMessageBox::critical( this, "GoldenDict",
-                           tr( "The referenced audio program doesn't exist." ) );
+    QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
   }
-  else
-  if ( url.scheme() == "gdtts" ) {
+  else if ( url.scheme() == "gdtts" ) {
     // Text to speech
     QString md5Id = Utils::Url::queryItemValue( url, "engine" );
     QString text( url.path().mid( 1 ) );
 
-    for( const auto & voiceEngine : cfg.voiceEngines ) {
+    for ( const auto & voiceEngine : cfg.voiceEngines ) {
       QString itemMd5Id =
         QString( QCryptographicHash::hash( voiceEngine.name.toUtf8(), QCryptographicHash::Md5 ).toHex() );
 
-      if( itemMd5Id == md5Id ) {
+      if ( itemMd5Id == md5Id ) {
         SpeechClient * speechClient = new SpeechClient( voiceEngine, this );
         connect( speechClient, SIGNAL( finished() ), speechClient, SLOT( deleteLater() ) );
         speechClient->tell( text );
@@ -1398,9 +1195,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       }
     }
   }
-  else
-  if ( isExternalLink( url ) )
-  {
+  else if ( isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );
   }
@@ -1416,115 +1211,97 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
   ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName );
   sptr< Dictionary::DataRequest > req;
 
-  if( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" )
-  {
-    if ( url.host() == "search" )
-    {
+  if ( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" ) {
+    if ( url.host() == "search" ) {
       // Since searches should be limited to current group, we just do them
       // here ourselves since otherwise we'd need to pass group id to netmgr
       // and it should've been having knowledge of the current groups, too.
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = 0;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
-      if ( groups.size() )
-      {
-        for( unsigned x = 0; x < groups.size(); ++x )
-          if ( groups[ x ].id == currentGroup )
-          {
-            activeDicts = &( groups[ x ].dictionaries );
+      if ( groups.size() ) {
+        for ( const auto & group : groups )
+          if ( group.id == currentGroup ) {
+            activeDicts = &( group.dictionaries );
             break;
           }
       }
       else
         activeDicts = &allDictionaries;
 
-      if ( activeDicts )
-      {
+      if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
-        if( url.hasFragment() && url.scheme() == "gdau" )
-        {
+        if ( url.hasFragment() && url.scheme() == "gdau" ) {
           // Find sound in the preferred dictionary
           QString preferredName = Utils::Url::fragment( url );
-          for( unsigned x = 0; x < activeDicts->size(); ++x )
-          {
-            try
-            {
-              if( preferredName.compare( QString::fromUtf8( (*activeDicts)[ x ]->getName().c_str() ) ) == 0 )
-              {
+          for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
+            try {
+              if ( preferredName.compare( QString::fromUtf8( ( *activeDicts )[ x ]->getName().c_str() ) ) == 0 ) {
                 preferred = x;
-                sptr< Dictionary::DataRequest > req =
-                  (*activeDicts)[ x ]->getResource(
-                    url.path().mid( 1 ).toUtf8().data() );
+                sptr< Dictionary::DataRequest > data_request =
+                  ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
-                handler->addRequest( req );
+                handler->addRequest( data_request );
 
-                if( req->isFinished() && req->dataSize() > 0 )
-                {
+                if ( data_request->isFinished() && data_request->dataSize() > 0 ) {
                   handler->downloadFinished();
                   return handler;
                 }
                 break;
               }
             }
-            catch( std::exception & e )
-            {
-              gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(),
-                         (*activeDicts)[ x ]->getName().c_str() );
+            catch ( std::exception & e ) {
+              gdWarning( "getResource request error (%s) in \"%s\"\n",
+                         e.what(),
+                         ( *activeDicts )[ x ]->getName().c_str() );
             }
           }
         }
-        for( unsigned x = 0; x < activeDicts->size(); ++x )
-        {
-          try
-          {
-            if( x == preferred )
+        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
+          try {
+            if ( x == preferred )
               continue;
 
-            req = (*activeDicts)[ x ]->getResource(
-                    Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+            req = ( *activeDicts )[ x ]->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
 
             handler->addRequest( req );
 
-            if( req->isFinished() && req->dataSize() > 0 )
-            {
+            if ( req->isFinished() && req->dataSize() > 0 ) {
               // Resource already found, stop next search
               break;
             }
           }
-          catch( std::exception & e )
-          {
-            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(),
-                       (*activeDicts)[ x ]->getName().c_str() );
+          catch ( std::exception & e ) {
+            gdWarning( "getResource request error (%s) in \"%s\"\n",
+                       e.what(),
+                       ( *activeDicts )[ x ]->getName().c_str() );
           }
         }
       }
     }
-    else
-    {
+    else {
       // Normal resource download
       QString contentType;
       req = articleNetMgr.getResource( url, contentType );
 
-      if( req.get() )
-      {
+      if ( req.get() ) {
         handler->addRequest( req );
       }
     }
   }
-  else
-  {
-    req = std::make_shared<Dictionary::WebMultimediaDownload>( url, articleNetMgr );
+  else {
+    req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
     handler->addRequest( req );
   }
 
   if ( handler->isEmpty() ) // No requests were queued
   {
-    emit statusBarMessage(
-        tr("ERROR: %1").arg(tr("The referenced resource doesn't exist.")),
-        10000, QPixmap(":/icons/error.svg"));
+    emit statusBarMessage( tr( "ERROR: %1" ).arg( tr( "The referenced resource doesn't exist." ) ),
+                           10000,
+                           QPixmap( ":/icons/error.svg" ) );
   }
 
   // Check already finished downloads
@@ -1547,14 +1324,13 @@ void ArticleView::updateMutedContents()
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( Utils::Url::queryItemValue( currentUrl, "muted" ) != mutedDicts )
-  {
+  if ( Utils::Url::queryItemValue( currentUrl, "muted" ) != mutedDicts ) {
     // The list has changed -- update the url
 
     Utils::Url::removeQueryItem( currentUrl, "muted" );
 
     if ( mutedDicts.size() )
-    Utils::Url::addQueryItem( currentUrl, "muted", mutedDicts );
+      Utils::Url::addQueryItem( currentUrl, "muted", mutedDicts );
 
     load( currentUrl );
 
@@ -1570,11 +1346,17 @@ bool ArticleView::canGoBack()
   return webview->history()->currentItemIndex() > 1;
 }
 
-bool ArticleView::canGoForward() { return webview->history()->canGoForward(); }
+bool ArticleView::canGoForward()
+{
+  return webview->history()->canGoForward();
+}
 
-void ArticleView::setSelectionBySingleClick( bool set ) { webview->setSelectionBySingleClick( set ); }
+void ArticleView::setSelectionBySingleClick( bool set )
+{
+  webview->setSelectionBySingleClick( set );
+}
 
-void ArticleView::setDelayedHighlightText(QString const & text)
+void ArticleView::setDelayedHighlightText( QString const & text )
 {
   delayedHighlightText = text;
 }
@@ -1583,8 +1365,7 @@ void ArticleView::back()
 {
   // Don't allow navigating back to page 0, which is usually the initial
   // empty page
-  if ( canGoBack() )
-  {
+  if ( canGoBack() ) {
     currentActiveDictIds.clear();
     historyMode = true;
     webview->back();
@@ -1610,14 +1391,17 @@ void ArticleView::handleAnkiAction()
   }
 }
 
-void ArticleView::reload() { webview->reload(); }
+void ArticleView::reload()
+{
+  webview->reload();
+}
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  webview->page()->runJavaScript( "if(typeof(gdAudioLinks)!=\"undefined\") gdAudioLinks.first",
+  webview->page()->runJavaScript( R"(if(typeof(gdAudioLinks)!="undefined") gdAudioLinks.first)",
                                   [ callback ]( const QVariant & v ) {
                                     bool has = false;
-                                    if( v.type() == QVariant::String )
+                                    if ( v.type() == QVariant::String )
                                       has = !v.toString().isEmpty();
                                     callback( has );
                                   } );
@@ -1626,16 +1410,16 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 //use webengine javascript to playsound
 void ArticleView::playSound()
 {
-  QString variable = " (function(){  var link=gdAudioLinks[gdAudioLinks.current];           "
-    "   if(link==undefined){           "
-    "       link=gdAudioLinks.first;           "
-    "   }          "
-    "    return link;})();         ";
+  QString variable = R"( (function(){  var link=gdAudioMap.get(gdAudioLinks.current);           
+       if(link==undefined){           
+           link=gdAudioLinks.first;           
+       }          
+        return link;})();         )";
 
   webview->page()->runJavaScript( variable, [ this ]( const QVariant & result ) {
-    if( result.type() == QVariant::String ) {
+    if ( result.type() == QVariant::String ) {
       QString soundScript = result.toString();
-      if( !soundScript.isEmpty() )
+      if ( !soundScript.isEmpty() )
         openLink( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
     }
   } );
@@ -1659,7 +1443,10 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
   webview->page()->setContent( data, mimeType, baseUrl );
 }
 
-QString ArticleView::getTitle() { return webview->page()->title(); }
+QString ArticleView::getTitle()
+{
+  return webview->page()->title();
+}
 
 QString ArticleView::getWord() const
 {
@@ -1670,20 +1457,18 @@ void ArticleView::print( QPrinter * printer ) const
 {
   QEventLoop loop;
   bool result;
-  auto printPreview = [ & ]( bool success )
-  {
+  auto printPreview = [ & ]( bool success ) {
     result = success;
     loop.quit();
   };
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   webview->page()->print( printer, std::move( printPreview ) );
 #else
   connect( webview, &QWebEngineView::printFinished, &loop, std::move( printPreview ) );
   webview->print( printer );
 #endif
   loop.exec();
-  if( !result )
-  {
+  if ( !result ) {
     qDebug() << "print failed";
   }
 }
@@ -1694,48 +1479,43 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QWebEnginePage * r = webview->page();
   QMenu menu( this );
 
-  QAction * followLink = 0;
-  QAction * followLinkExternal = 0;
-  QAction * followLinkNewTab = 0;
-  QAction * lookupSelection           = 0;
-  QAction * lookupSelectionGr = 0;
-  QAction * lookupSelectionNewTab = 0;
-  QAction * lookupSelectionNewTabGr = 0;
-  QAction * maxDictionaryRefsAction = 0;
-  QAction * addWordToHistoryAction = 0;
-  QAction * addHeaderToHistoryAction = 0;
-  QAction * sendWordToInputLineAction = 0;
-  QAction * saveImageAction = 0;
-  QAction * saveSoundAction           = 0;
-  QAction * saveBookmark = 0;
+  QAction * followLink                = nullptr;
+  QAction * followLinkExternal        = nullptr;
+  QAction * followLinkNewTab          = nullptr;
+  QAction * lookupSelection           = nullptr;
+  QAction * lookupSelectionGr         = nullptr;
+  QAction * lookupSelectionNewTab     = nullptr;
+  QAction * lookupSelectionNewTabGr   = nullptr;
+  QAction * maxDictionaryRefsAction   = nullptr;
+  QAction * addWordToHistoryAction    = nullptr;
+  QAction * addHeaderToHistoryAction  = nullptr;
+  QAction * sendWordToInputLineAction = nullptr;
+  QAction * saveImageAction           = nullptr;
+  QAction * saveSoundAction           = nullptr;
+  QAction * saveBookmark              = nullptr;
 
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  const QWebEngineContextMenuData * menuData = &(r->contextMenuData());
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  const QWebEngineContextMenuData * menuData = &( r->contextMenuData() );
 #else
   QWebEngineContextMenuRequest * menuData = webview->lastContextMenuRequest();
 #endif
-  QUrl targetUrl(menuData->linkUrl());
+  QUrl targetUrl( menuData->linkUrl() );
   Contexts contexts;
 
   tryMangleWebsiteClickedUrl( targetUrl, contexts );
 
-  if ( !targetUrl.isEmpty() )
-  {
-    if ( !isExternalLink( targetUrl ) )
-    {
+  if ( !targetUrl.isEmpty() ) {
+    if ( !isExternalLink( targetUrl ) ) {
       followLink = new QAction( tr( "Op&en Link" ), &menu );
       menu.addAction( followLink );
 
-      if( !popupView && !isAudioLink( targetUrl ) )
-      {
-        followLinkNewTab = new QAction( QIcon( ":/icons/addtab.svg" ),
-                                        tr( "Open Link in New &Tab" ), &menu );
+      if ( !popupView && !isAudioLink( targetUrl ) ) {
+        followLinkNewTab = new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Open Link in New &Tab" ), &menu );
         menu.addAction( followLinkNewTab );
       }
     }
 
-    if ( isExternalLink( targetUrl ) )
-    {
+    if ( isExternalLink( targetUrl ) ) {
       followLinkExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
       menu.addAction( followLinkExternal );
       menu.addAction( webview->pageAction( QWebEnginePage::CopyLinkToClipboard ) );
@@ -1743,86 +1523,67 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   }
 
   QUrl imageUrl;
-#if( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  if( !popupView && menuData->mediaType ()==QWebEngineContextMenuData::MediaTypeImage)
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  if ( !popupView && menuData->mediaType() == QWebEngineContextMenuData::MediaTypeImage )
 #else
-  if( !popupView && menuData->mediaType ()==QWebEngineContextMenuRequest::MediaType::MediaTypeImage)
+  if ( !popupView && menuData->mediaType() == QWebEngineContextMenuRequest::MediaType::MediaTypeImage )
 #endif
   {
     imageUrl = menuData->mediaUrl();
-    if( !imageUrl.isEmpty() ) {
+    if ( !imageUrl.isEmpty() ) {
       menu.addAction( webview->pageAction( QWebEnginePage::CopyImageToClipboard ) );
       saveImageAction = new QAction( tr( "Save &image..." ), &menu );
       menu.addAction( saveImageAction );
     }
   }
 
-  if( !popupView && isAudioLink( targetUrl ) )
-  {
-      saveSoundAction = new QAction( tr( "Save s&ound..." ), &menu );
-      menu.addAction( saveSoundAction );
+  if ( !popupView && isAudioLink( targetUrl ) ) {
+    saveSoundAction = new QAction( tr( "Save s&ound..." ), &menu );
+    menu.addAction( saveSoundAction );
   }
 
   QString const selectedText = webview->selectedText();
-  QString text         = Utils::trimNonChar( selectedText );
+  QString text               = Utils::trimNonChar( selectedText );
 
-  if ( text.size() && text.size() < 60 )
-  {
+  if ( text.size() && text.size() < 60 ) {
     // We don't prompt for selections larger or equal to 60 chars, since
     // it ruins the menu and it's hardly a single word anyway.
 
-    lookupSelection = new QAction( tr( "&Look up \"%1\"" ).
-                                   arg( text ),
-                                   &menu );
+    lookupSelection = new QAction( tr( "&Look up \"%1\"" ).arg( text ), &menu );
     menu.addAction( lookupSelection );
 
-    if ( !popupView )
-    {
-      lookupSelectionNewTab = new QAction( QIcon( ":/icons/addtab.svg" ),
-                                           tr( "Look up \"%1\" in &New Tab" ).
-                                           arg( text ),
-                                           &menu );
+    if ( !popupView ) {
+      lookupSelectionNewTab =
+        new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Look up \"%1\" in &New Tab" ).arg( text ), &menu );
       menu.addAction( lookupSelectionNewTab );
 
-      sendWordToInputLineAction = new QAction( tr( "Send \"%1\" to input line" ).
-                                               arg( text ),
-                                               &menu );
+      sendWordToInputLineAction = new QAction( tr( "Send \"%1\" to input line" ).arg( text ), &menu );
       menu.addAction( sendWordToInputLineAction );
     }
 
-    addWordToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).
-                                          arg( text ),
-                                          &menu );
+    addWordToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( text ), &menu );
     menu.addAction( addWordToHistoryAction );
 
     Instances::Group const * altGroup =
-      ( groupComboBox && groupComboBox->getCurrentGroup() != getGroup( webview->url() ) ) ?
-      groups.findGroup( groupComboBox->getCurrentGroup() ) :
-      0;
+      ( currentGroupId != getGroup( webview->url() ) ) ? groups.findGroup( currentGroupId ) : nullptr;
 
-    if ( altGroup )
-    {
-      QIcon icon = altGroup->icon.size() ? QIcon( ":/flags/" + altGroup->icon ) :
-                   QIcon();
+    if ( altGroup ) {
+      QIcon icon = altGroup->icon.size() ? QIcon( ":/flags/" + altGroup->icon ) : QIcon();
 
-      lookupSelectionGr = new QAction( icon, tr( "Look up \"%1\" in %2" ).
-                                       arg( text ).
-                                       arg( altGroup->name ), &menu );
+      lookupSelectionGr = new QAction( icon, tr( "Look up \"%1\" in %2" ).arg( text ).arg( altGroup->name ), &menu );
       menu.addAction( lookupSelectionGr );
 
-      if ( !popupView )
-      {
-        lookupSelectionNewTabGr = new QAction( QIcon( ":/icons/addtab.svg" ),
-                                               tr( "Look up \"%1\" in %2 in &New Tab" ).
-                                               arg( text ).
-                                               arg( altGroup->name ), &menu );
+      if ( !popupView ) {
+        lookupSelectionNewTabGr =
+          new QAction( QIcon( ":/icons/addtab.svg" ),
+                       tr( "Look up \"%1\" in %2 in &New Tab" ).arg( text ).arg( altGroup->name ),
+                       &menu );
         menu.addAction( lookupSelectionNewTabGr );
       }
     }
   }
 
-  if(text.size())
-  {
+  if ( text.size() ) {
     // avoid too long in the menu ,use left 30 characters.
     saveBookmark = new QAction( tr( "Save &Bookmark \"%1...\"" ).arg( text.left( 30 ) ), &menu );
     menu.addAction( saveBookmark );
@@ -1836,25 +1597,20 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
                                                                   tr( "&Send selected text to Anki" ) );
   }
 
-  if( text.isEmpty() && !cfg.preferences.storeHistory)
-  {
+  if ( text.isEmpty() && !cfg.preferences.storeHistory ) {
     QString txt = webview->title();
-    if( txt.size() > 60 )
+    if ( txt.size() > 60 )
       txt = txt.left( 60 ) + "...";
 
-    addHeaderToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).
-                                            arg( txt ),
-                                            &menu );
+    addHeaderToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( txt ), &menu );
     menu.addAction( addHeaderToHistoryAction );
   }
 
-  if ( selectedText.size() )
-  {
+  if ( selectedText.size() ) {
     menu.addAction( webview->pageAction( QWebEnginePage::Copy ) );
     menu.addAction( &copyAsTextAction );
   }
-  else
-  {
+  else {
     menu.addAction( &selectCurrentArticleAction );
     menu.addAction( webview->pageAction( QWebEnginePage::SelectAll ) );
   }
@@ -1867,32 +1623,25 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   if ( !menu.isEmpty() && ids.size() )
     menu.addSeparator();
 
-  unsigned refsAdded = 0;
+  unsigned refsAdded            = 0;
   bool maxDictionaryRefsReached = false;
 
-  for( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd();
-       ++i, ++refsAdded )
-  {
+  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i, ++refsAdded ) {
     // Find this dictionary
 
-    for( unsigned x = allDictionaries.size(); x--; )
-    {
-      if ( allDictionaries[ x ]->getId() == i->toUtf8().data() )
-      {
-        QAction * action = 0;
-        if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu )
-        {
+    for ( unsigned x = allDictionaries.size(); x--; ) {
+      if ( allDictionaries[ x ]->getId() == i->toUtf8().data() ) {
+        QAction * action = nullptr;
+        if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
           // Enough! Or the menu would become too large.
-          maxDictionaryRefsAction = new QAction( ".........", &menu );
-          action = maxDictionaryRefsAction;
+          maxDictionaryRefsAction  = new QAction( ".........", &menu );
+          action                   = maxDictionaryRefsAction;
           maxDictionaryRefsReached = true;
         }
-        else
-        {
-          action = new QAction(
-                  allDictionaries[ x ]->getIcon(),
-                  QString::fromUtf8( allDictionaries[ x ]->getName().c_str() ),
-                  &menu );
+        else {
+          action = new QAction( allDictionaries[ x ]->getIcon(),
+                                QString::fromUtf8( allDictionaries[ x ]->getName().c_str() ),
+                                &menu );
           // Force icons in menu on all platforms,
           // since without them it will be much harder
           // to find things.
@@ -1905,60 +1654,56 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
         break;
       }
     }
-    if( maxDictionaryRefsReached )
+    if ( maxDictionaryRefsReached )
       break;
   }
 
   menu.addSeparator();
-  if(!popupView||cfg.pinPopupWindow)
+  if ( !popupView || cfg.pinPopupWindow )
     menu.addAction( &inspectAction );
 
-  if ( !menu.isEmpty() )
-  {
+  if ( !menu.isEmpty() ) {
     connect( this, &ArticleView::closePopupMenu, &menu, &QWidget::close );
     QAction * result = menu.exec( webview->mapToGlobal( pos ) );
 
     if ( !result )
       return;
 
-    if( result == followLink )
+    if ( result == followLink )
       openLink( targetUrl, webview->url(), getCurrentArticle(), contexts );
-    else if( result == followLinkExternal )
+    else if ( result == followLinkExternal )
       QDesktopServices::openUrl( targetUrl );
-    else if( result == lookupSelection )
+    else if ( result == lookupSelection )
       showDefinition( text, getGroup( webview->url() ), getCurrentArticle() );
-    else if( result == saveBookmark ) {
+    else if ( result == saveBookmark ) {
       emit saveBookmarkSignal( text.left( 60 ) );
     }
-    else if( result == &sendToAnkiAction ) {
+    else if ( result == &sendToAnkiAction ) {
       // This action is handled by a slot.
       return;
     }
-    else
-    if ( result == lookupSelectionGr && groupComboBox )
-      showDefinition( selectedText, groupComboBox->getCurrentGroup(), QString() );
-    else
-    if ( result == addWordToHistoryAction )
+    else if ( result == lookupSelectionGr && currentGroupId )
+      showDefinition( selectedText, currentGroupId, QString() );
+    else if ( result == addWordToHistoryAction )
       emit forceAddWordToHistory( selectedText );
-    if( result == addHeaderToHistoryAction )
+    if ( result == addHeaderToHistoryAction )
       emit forceAddWordToHistory( webview->title() );
-    else if( result == sendWordToInputLineAction )
+    else if ( result == sendWordToInputLineAction )
       emit sendWordToInputLine( selectedText );
-    else if( !popupView && result == followLinkNewTab )
+    else if ( !popupView && result == followLinkNewTab )
       emit openLinkInNewTab( targetUrl, webview->url(), getCurrentArticle(), contexts );
-    else if( !popupView && result == lookupSelectionNewTab )
+    else if ( !popupView && result == lookupSelectionNewTab )
       emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
-    else if( !popupView && result == lookupSelectionNewTabGr && groupComboBox )
-      emit showDefinitionInNewTab( selectedText, groupComboBox->getCurrentGroup(), QString(), Contexts() );
-    else if( result == saveImageAction || result == saveSoundAction ) {
+    else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId )
+      emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
+    else if ( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
       QString savePath;
       QString fileName;
 
       if ( cfg.resourceSavePath.isEmpty() )
         savePath = QDir::homePath();
-      else
-      {
+      else {
         savePath = QDir::fromNativeSeparators( cfg.resourceSavePath );
         if ( !QDir( savePath ).exists() )
           savePath = QDir::homePath();
@@ -1966,19 +1711,20 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
       QString name = Utils::Url::path( url ).section( '/', -1 );
 
-      if ( result == saveSoundAction )
-      {
+      if ( result == saveSoundAction ) {
         // Audio data
-//        if ( name.indexOf( '.' ) < 0 )
-//          name += ".wav";
+        //        if ( name.indexOf( '.' ) < 0 )
+        //          name += ".wav";
 
         fileName = savePath + "/" + name;
-        fileName = QFileDialog::getSaveFileName( parentWidget(), tr( "Save sound" ),
-                                                 fileName,
-                                                 tr( "Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)" ) );
+        fileName = QFileDialog::getSaveFileName(
+          parentWidget(),
+          tr( "Save sound" ),
+          fileName,
+          tr(
+            "Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)" ) );
       }
-      else
-      {
+      else {
         // Image data
 
         // Check for babylon image name
@@ -1988,20 +1734,19 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
           name.chop( 1 );
 
         fileName = savePath + "/" + name;
-        fileName = QFileDialog::getSaveFileName( parentWidget(), tr( "Save image" ),
+        fileName = QFileDialog::getSaveFileName( parentWidget(),
+                                                 tr( "Save image" ),
                                                  fileName,
                                                  tr( "Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)" ) );
       }
 
-      if ( !fileName.isEmpty() )
-      {
+      if ( !fileName.isEmpty() ) {
         QFileInfo fileInfo( fileName );
         emit storeResourceSavePath( QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() ) );
         saveResource( url, webview->url(), fileName );
       }
     }
-    else
-    {
+    else {
       if ( !popupView && result == maxDictionaryRefsAction )
         emit showDictsPane();
 
@@ -2013,8 +1758,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     }
   }
 
-  qDebug()<< "title = "<< r->title();
-
+  qDebug() << "title = " << r->title();
 }
 
 void ArticleView::resourceDownloadFinished()
@@ -2023,43 +1767,37 @@ void ArticleView::resourceDownloadFinished()
     return; // Stray signal
 
   // Find any finished resources
-  for( list< sptr< Dictionary::DataRequest > >::iterator i =
-       resourceDownloadRequests.begin(); i != resourceDownloadRequests.end(); )
-  {
-    if ( (*i)->isFinished() )
-    {
-      if ( (*i)->dataSize() >= 0 )
-      {
+  for ( list< sptr< Dictionary::DataRequest > >::iterator i = resourceDownloadRequests.begin();
+        i != resourceDownloadRequests.end(); ) {
+    if ( ( *i )->isFinished() ) {
+      if ( ( *i )->dataSize() >= 0 ) {
         // Ok, got one finished, all others are irrelevant now
 
-        vector< char > const & data = (*i)->getFullData();
+        vector< char > const & data = ( *i )->getFullData();
 
-        if ( resourceDownloadUrl.scheme() == "gdau" ||
-             Dictionary::WebMultimediaDownload::isAudioUrl( resourceDownloadUrl ) )
-        {
+        if ( resourceDownloadUrl.scheme() == "gdau"
+             || Dictionary::WebMultimediaDownload::isAudioUrl( resourceDownloadUrl ) ) {
           // Audio data
           connect( audioPlayer.data(),
-            &AudioPlayerInterface::error,
-            this,
-            &ArticleView::audioPlayerError,
-            Qt::UniqueConnection );
+                   &AudioPlayerInterface::error,
+                   this,
+                   &ArticleView::audioPlayerError,
+                   Qt::UniqueConnection );
           QString errorMessage = audioPlayer->play( data.data(), data.size() );
-          if( !errorMessage.isEmpty() )
+          if ( !errorMessage.isEmpty() )
             QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
         }
-        else
-        {
+        else {
           // Create a temporary file
           // Remove the ones previously used, if any
           cleanupTemp();
           QString fileName;
 
           {
-            QTemporaryFile tmp(
-              QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ), this );
+            QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ),
+                                this );
 
-            if ( !tmp.open() || (size_t) tmp.write( &data.front(), data.size() ) != data.size() )
-            {
+            if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
               QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
               return;
             }
@@ -2070,8 +1808,10 @@ void ArticleView::resourceDownloadFinished()
           }
 
           if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) )
-            QMessageBox::critical( this, "GoldenDict",
-                                   tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
+            QMessageBox::critical(
+              this,
+              "GoldenDict",
+              tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
         }
 
         // Ok, whatever it was, it's finished. Remove this and any other
@@ -2081,8 +1821,7 @@ void ArticleView::resourceDownloadFinished()
 
         return;
       }
-      else
-      {
+      else {
         // This one had no data. Erase it.
         resourceDownloadRequests.erase( i++ );
       }
@@ -2091,8 +1830,7 @@ void ArticleView::resourceDownloadFinished()
       break;
   }
 
-  if ( resourceDownloadRequests.empty() )
-  {
+  if ( resourceDownloadRequests.empty() ) {
     // emit statusBarMessage(
     //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
     //     10000, QPixmap(":/icons/error.svg"));
@@ -2101,20 +1839,19 @@ void ArticleView::resourceDownloadFinished()
 
 void ArticleView::audioPlayerError( QString const & message )
 {
-  emit statusBarMessage(tr("WARNING: Audio Player: %1").arg(message),
-                        10000, QPixmap(":/icons/error.svg"));
+  emit statusBarMessage( tr( "WARNING: Audio Player: %1" ).arg( message ), 10000, QPixmap( ":/icons/error.svg" ) );
 }
 
 void ArticleView::pasteTriggered()
 {
   QString word = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
 
-  if( !word.isEmpty() ) {
+  if ( !word.isEmpty() ) {
     unsigned groupId = getGroup( webview->url() );
-    if( groupId == 0 ) {
+    if ( groupId == 0 ) {
       // We couldn't figure out the group out of the URL,
       // so let's try the currently selected group.
-      groupId = groupComboBox->getCurrentGroup();
+      groupId = currentGroupId;
     }
     showDefinition( word, groupId, getCurrentArticle() );
   }
@@ -2122,6 +1859,8 @@ void ArticleView::pasteTriggered()
 
 unsigned ArticleView::getCurrentGroup()
 {
+  if ( !groupComboBox )
+    return currentGroupId;
   return groupComboBox->getCurrentGroup();
 }
 
@@ -2129,14 +1868,12 @@ void ArticleView::moveOneArticleUp()
 {
   QString current = getCurrentArticle();
 
-  if ( current.size() )
-  {
+  if ( current.size() ) {
     QStringList lst = getArticlesList();
 
     int idx = lst.indexOf( dictionaryIdFromScrollTo( current ) );
 
-    if ( idx != -1 )
-    {
+    if ( idx != -1 ) {
       --idx;
 
       if ( idx < 0 )
@@ -2149,19 +1886,17 @@ void ArticleView::moveOneArticleUp()
 
 void ArticleView::moveOneArticleDown()
 {
-  QString current = getCurrentArticle();
+  QString current       = getCurrentArticle();
   QString currentDictId = dictionaryIdFromScrollTo( current );
   QStringList lst       = getArticlesList();
   // if current article is empty .use the first as default.
-  if( currentDictId.isEmpty() && !lst.isEmpty() )
-  {
+  if ( currentDictId.isEmpty() && !lst.isEmpty() ) {
     currentDictId = lst[ 0 ];
   }
 
   int idx = lst.indexOf( currentDictId );
 
-  if( idx != -1 )
-  {
+  if ( idx != -1 ) {
     idx = ( idx + 1 ) % lst.size();
 
     setCurrentArticle( scrollToFromDictionaryId( lst[ idx ] ), true );
@@ -2170,14 +1905,13 @@ void ArticleView::moveOneArticleDown()
 
 void ArticleView::openSearch()
 {
-  if( !isVisible() )
+  if ( !isVisible() )
     return;
 
-  if( ftsSearchIsOpened )
+  if ( ftsSearchIsOpened )
     closeSearch();
 
-  if ( !searchIsOpened )
-  {
+  if ( !searchIsOpened ) {
     searchPanel->show();
     searchPanel->lineEdit->setText( getTitle() );
     searchIsOpened = true;
@@ -2187,11 +1921,11 @@ void ArticleView::openSearch()
   searchPanel->lineEdit->selectAll();
 
   // Clear any current selection
-  if( webview->selectedText().size() ) {
+  if ( webview->selectedText().size() ) {
     webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
   }
 
-  if( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
+  if ( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
     searchPanel->lineEdit->setProperty( "noResults", false );
 
     Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
@@ -2200,13 +1934,13 @@ void ArticleView::openSearch()
 
 void ArticleView::on_searchPrevious_clicked()
 {
-  if( searchIsOpened )
+  if ( searchIsOpened )
     performFindOperation( false, true );
 }
 
 void ArticleView::on_searchNext_clicked()
 {
-  if( searchIsOpened )
+  if ( searchIsOpened )
     performFindOperation( false, false );
 }
 
@@ -2236,7 +1970,7 @@ void ArticleView::on_highlightAllButton_clicked()
 }
 
 //the id start with "gdform-"
-void ArticleView::onJsActiveArticleChanged(QString const & id)
+void ArticleView::onJsActiveArticleChanged( QString const & id )
 {
   if ( !isScrollTo( id ) )
     return; // Incorrect id
@@ -2250,30 +1984,26 @@ void ArticleView::doubleClicked( QPoint pos )
 {
   // We might want to initiate translation of the selected word
   audioPlayer->stop();
-  if( cfg.preferences.doubleClickTranslates ) {
+  if ( cfg.preferences.doubleClickTranslates ) {
     QString selectedText = webview->selectedText();
 
     // ignore empty word;
-    if( selectedText.isEmpty() )
+    if ( selectedText.isEmpty() )
       return;
 
     emit sendWordToInputLine( selectedText );
     // Do some checks to make sure there's a sensible selection indeed
-    if ( Folding::applyWhitespaceOnly( gd::toWString( selectedText ) ).size() &&
-         selectedText.size() < 60 )
-    {
+    if ( Folding::applyWhitespaceOnly( gd::toWString( selectedText ) ).size() && selectedText.size() < 60 ) {
       // Initiate translation
       Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
-      if( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
+      if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
         emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
       }
       else {
         QUrl const & ref = webview->url();
 
-        if( Utils::Url::hasQueryItem( ref, "dictionaries" ) )
-        {
-          QStringList dictsList = Utils::Url::queryItemValue(ref, "dictionaries" )
-                                              .split( ",", Qt::SkipEmptyParts );
+        if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
+          QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
           showDefinition( selectedText, dictsList, QRegExp(), getGroup( ref ), false );
         }
         else
@@ -2288,65 +2018,61 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
 {
   QString text = searchPanel->lineEdit->text();
 
-  if ( restart || checkHighlight )
-  {
-    if( restart ) {
+  if ( restart || checkHighlight ) {
+    if ( restart ) {
       // Anyone knows how we reset the search position?
       // For now we resort to this hack:
-      if( webview->selectedText().size() ) {
+      if ( webview->selectedText().size() ) {
         webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
       }
     }
 
     QWebEnginePage::FindFlags f( 0 );
 
-    if( searchPanel->caseSensitive->isChecked() )
+    if ( searchPanel->caseSensitive->isChecked() )
       f |= QWebEnginePage::FindCaseSensitively;
 
     webview->findText( "", f );
 
-    if( searchPanel->highlightAll->isChecked() )
+    if ( searchPanel->highlightAll->isChecked() )
       webview->findText( text, f );
 
-    if( checkHighlight )
+    if ( checkHighlight )
       return;
   }
 
   QWebEnginePage::FindFlags f( 0 );
 
-  if( searchPanel->caseSensitive->isChecked() )
+  if ( searchPanel->caseSensitive->isChecked() )
     f |= QWebEnginePage::FindCaseSensitively;
 
-  if( backwards )
+  if ( backwards )
     f |= QWebEnginePage::FindBackward;
 
-  findText( text,
-            f,
-            [ text, this ]( bool match )
-            {
-              bool setMark = !text.isEmpty() && !match;
+  findText( text, f, [ text, this ]( bool match ) {
+    bool setMark = !text.isEmpty() && !match;
 
-              if( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
-                searchPanel->lineEdit->setProperty( "noResults", setMark );
+    if ( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
+      searchPanel->lineEdit->setProperty( "noResults", setMark );
 
-                Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
-              }
-            } );
+      Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
+    }
+  } );
 }
 
 void ArticleView::findText( QString & text,
                             const QWebEnginePage::FindFlags & f,
                             const std::function< void( bool match ) > & callback )
 {
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   webview->findText( text, f, [ callback ]( const QWebEngineFindTextResult & result ) {
     auto r = result.numberOfMatches() > 0;
-    if( callback )
+    if ( callback )
       callback( r );
   } );
 #else
   webview->findText( text, f, [ callback ]( bool result ) {
-    if( callback )
+    if ( callback )
       callback( result );
   } );
 #endif
@@ -2354,25 +2080,23 @@ void ArticleView::findText( QString & text,
 
 bool ArticleView::closeSearch()
 {
-  if( searchIsOpened ) {
+  if ( searchIsOpened ) {
     searchPanel->hide();
     webview->setFocus();
     searchIsOpened = false;
 
     return true;
   }
-  else
-  if( ftsSearchIsOpened )
-  {
-    allMatches.clear();
+  else if ( ftsSearchIsOpened ) {
+    firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsPosition = 0;
+    ftsPosition       = 0;
     ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
     webview->setFocus();
 
-    QWebEnginePage::FindFlags flags ( 0 );
+    QWebEnginePage::FindFlags flags( 0 );
 
     webview->findText( "", flags );
 
@@ -2382,176 +2106,114 @@ bool ArticleView::closeSearch()
     return false;
 }
 
-bool ArticleView::isSearchOpened() { return searchIsOpened; }
+bool ArticleView::isSearchOpened()
+{
+  return searchIsOpened;
+}
 
 void ArticleView::showEvent( QShowEvent * ev )
 {
   QWidget::showEvent( ev );
 
-  if( !searchIsOpened )
+  if ( !searchIsOpened )
     searchPanel->hide();
 
-  if( !ftsSearchIsOpened )
+  if ( !ftsSearchIsOpened )
     ftsSearchPanel->hide();
 }
 
 void ArticleView::copyAsText()
 {
   QString text = webview->selectedText();
-  if( !text.isEmpty() )
+  if ( !text.isEmpty() )
     QApplication::clipboard()->setText( text );
 }
 
 void ArticleView::highlightFTSResults()
 {
   closeSearch();
-
   // Clear any current selection
-  if( webview->selectedText().size() ) {
-    webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
+  webview->findText( "" );
+  QString regString = Utils::Url::queryItemValue( webview->url(), "regexp" );
+  if ( regString.isEmpty() )
+    return;
+
+  //<div><i>watch</i>out</div>  to plainText will return "watchout".
+  //if application goes here,that means the article text must contains the search text.
+  //whole word match regString will contain \b . can not match the above senario.
+  //workaround ,remove \b from the regstring="(\bwatch\b)"
+  regString.remove( QRegularExpression( R"(\b)" ) );
+
+  //make it simple ,and do not support too much complex cases. such as wildcard etc.
+  firstAvailableText = regString;
+
+  if ( firstAvailableText.isEmpty() ) {
+    return;
   }
 
-  webview->page()->toPlainText(
-    [ & ]( const QString pageText ) {
-      const QUrl & url = webview->url();
+  //remove possible wildcard character.
+  auto cleaned =
+    firstAvailableText.split( QRegularExpression( "\\p{P}", QRegularExpression::UseUnicodePropertiesOption ) );
 
-      QString regString = Utils::Url::queryItemValue( url, "regexp" );
-	  if( regString.isEmpty() )
-	    return;
-      
-      bool ignoreDiacritics = Utils::Url::hasQueryItem( url, "ignore_diacritics" );
+  if ( cleaned.empty() )
+    return;
 
-      if( ignoreDiacritics )
-        regString = QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::toWString( regString ) ) );
-      else
-        regString = regString.remove( AccentMarkHandler::accentMark() );
+  firstAvailableText = cleaned.at( 0 );
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  webview->findText( firstAvailableText,
+                     QWebEnginePage::FindBackward,
+                     [ & ]( const QWebEngineFindTextResult & result ) {
+                       qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
 
-      //<div><i>watch</i>out</div>  to plainText will return "watchout".
-      //if application goes here,that means the article text must contains the search text.
-      //whole word match regString will contain \b . can not match the above senario.
-      //workaround ,remove \b from the regstring="(\bwatch\b)"
-      regString.remove( QRegularExpression( "\\\\b" ) );
+                       if ( result.numberOfMatches() == 0 ) {
+                         ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
+                       }
+                       else {
+                         ftsSearchPanel->statusLabel->setText(
+                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
+                       }
 
-      QRegularExpression regexp;
-      if( Utils::Url::hasQueryItem( url, "wildcards" ) )
-        regexp.setPattern( wildcardsToRegexp( regString ) );
-      else
-        regexp.setPattern( regString );
+                       ftsSearchPanel->show();
+                       ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
+                       ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
 
-      QRegularExpression::PatternOptions patternOptions =
-        QRegularExpression::DotMatchesEverythingOption | QRegularExpression::UseUnicodePropertiesOption |
-        QRegularExpression::MultilineOption | QRegularExpression::InvertedGreedinessOption;
-      if( !Utils::Url::hasQueryItem( url, "matchcase" ) )
-        patternOptions |= QRegularExpression::CaseInsensitiveOption;
-      regexp.setPatternOptions( patternOptions );
-
-      if( regexp.pattern().isEmpty() || !regexp.isValid() )
-        return;
-      sptr< AccentMarkHandler > marksHandler = ignoreDiacritics ? std::make_shared<DiacriticsHandler>() : std::make_shared<AccentMarkHandler>();
-
-      marksHandler->setText( pageText );
-
-      QRegularExpressionMatchIterator it = regexp.globalMatch( marksHandler->normalizedText() );
-      while( it.hasNext() )
-      {
-        QRegularExpressionMatch match = it.next();
-
-        // Mirror pos and matched length to original string
-        int pos     = match.capturedStart();
-        int spos    = marksHandler->mirrorPosition( pos );
-        int matched = marksHandler->mirrorPosition( pos + match.capturedLength() ) - spos;
-
-        // Add mark pos (if presented)
-        while( spos + matched < pageText.length() && pageText[ spos + matched ].category() == QChar::Mark_NonSpacing )
-          matched++;
-
-        if( matched > FTS::MaxMatchLengthForHighlightResults )
-        {
-          gdWarning( "ArticleView::highlightFTSResults(): Too long match - skipped (matched length %i, allowed %i)",
-                     match.capturedLength(),
-                     FTS::MaxMatchLengthForHighlightResults );
-        }
-        else
-          allMatches.append( pageText.mid( spos, matched ) );
-      }
-
-      ftsSearchMatchCase = Utils::Url::hasQueryItem( url, "matchcase" );
-
-      QWebEnginePage::FindFlags flags( QWebEnginePage::FindBackward );
-
-      if( ftsSearchMatchCase )
-        flags |= QWebEnginePage::FindCaseSensitively;
-
-      if( allMatches.isEmpty() )
-        ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-      else {
-        //        highlightAllFtsOccurences( flags );
-        webview->findText( allMatches.at( 0 ), flags );
-        // if( webview->findText( allMatches.at( 0 ), flags ) )
-        // {
-        //   webview->page()->runJavaScript(
-        //     QString( "%1=window.getSelection().getRangeAt(0);_=0;" ).arg( rangeVarName ) );
-        // }
-		Q_ASSERT( ftsPosition == 0 );
-                ftsSearchPanel->statusLabel->setText( searchStatusMessage( 1, allMatches.size() ) );
-      }
-
-
-      ftsSearchPanel->show();
-      ftsSearchPanel->previous->setEnabled( false );
-      ftsSearchPanel->next->setEnabled( allMatches.size() > 1 );
-
-      ftsSearchIsOpened = true;
-    } );
+                       ftsSearchIsOpened = true;
+                     } );
+#else
+  webview->findText( firstAvailableText, QWebEnginePage::FindBackward, [ this ]( bool res ) {
+    ftsSearchPanel->previous->setEnabled( res );
+    if ( !ftsSearchPanel->next->isEnabled() )
+      ftsSearchPanel->next->setEnabled( res );
+  } );
+#endif
 }
 
-void ArticleView::highlightAllFtsOccurences( QWebEnginePage::FindFlags flags )
+void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 {
-  // Usually allMatches contains mostly duplicates. Thus searching for each element of
-  // allMatches to highlight them takes a long time => collect unique elements into a
-  // set and search for them instead.
-  // Don't use QList::toSet() or QSet's range constructor because they reserve space
-  // for QList::size() elements, whereas the final QSet size is likely 1 or 2.
-  QSet< QString > uniqueMatches;
-  for( int x = 0; x < allMatches.size(); ++x )
-  {
-    QString const & match = allMatches.at( x );
-    // Consider words that differ only in case equal if the search is case-insensitive.
-    uniqueMatches.insert( ftsSearchMatchCase ? match : match.toLower() );
+  if ( ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) || historyMode ) {
+    // ignore all other signals.
+    qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
+    currentActiveDictIds << ad.dictIds;
+    currentActiveDictIds.removeDuplicates();
+    emit updateFoundInDictsList();
   }
-
-  for( QSet< QString >::const_iterator it = uniqueMatches.constBegin(); it != uniqueMatches.constEnd(); ++it )
-    webview->findText( *it, flags );
 }
 
-void ArticleView::setActiveDictIds(ActiveDictIds ad) {
-  if ( ( ad.word == currentWord  &&  ad.groupId == getCurrentGroup() ) || historyMode)
-    {
-      // ignore all other signals.
-      qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
-      currentActiveDictIds << ad.dictIds;
-      currentActiveDictIds.removeDuplicates();
-      emit updateFoundInDictsList();
-    }
-}
-
-void ArticleView::dictionaryClear( ActiveDictIds ad )
+void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 {
   // ignore all other signals.
-  if( ad.word == currentWord && ad.groupId==getCurrentGroup() )
-  {
+  if ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();
   }
 }
 
-//todo ,futher refinement?
 void ArticleView::performFtsFindOperation( bool backwards )
 {
-  if( !ftsSearchIsOpened )
+  if ( !ftsSearchIsOpened )
     return;
 
-  if( allMatches.isEmpty() ) {
+  if ( firstAvailableText.isEmpty() ) {
     ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
     ftsSearchPanel->next->setEnabled( false );
     ftsSearchPanel->previous->setEnabled( false );
@@ -2560,7 +2222,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
   QWebEnginePage::FindFlags flags( 0 );
 
-  if( ftsSearchMatchCase )
+  if ( ftsSearchMatchCase )
     flags |= QWebEnginePage::FindCaseSensitively;
 
 
@@ -2568,53 +2230,49 @@ void ArticleView::performFtsFindOperation( bool backwards )
   webview->page()->runJavaScript(
     QString( "var sel=window.getSelection();sel.removeAllRanges();sel.addRange(%1);_=0;" ).arg( rangeVarName ) );
 
-  if( backwards ) {
-    if( ftsPosition > 0 ) {
-      ftsPosition -= 1;
-    }
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    webview->findText( allMatches.at( ftsPosition ),
+  if ( backwards ) {
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+    webview->findText( firstAvailableText,
                        flags | QWebEnginePage::FindBackward,
                        [ this ]( const QWebEngineFindTextResult & result ) {
-                         if( result.numberOfMatches() == 0 )
+                         if ( result.numberOfMatches() == 0 )
                            return;
                          ftsSearchPanel->previous->setEnabled( true );
-                         if( !ftsSearchPanel->next->isEnabled() )
+                         if ( !ftsSearchPanel->next->isEnabled() )
                            ftsSearchPanel->next->setEnabled( true );
+
+                         ftsSearchPanel->statusLabel->setText(
+                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
                        } );
 #else
-    webview->findText( allMatches.at( ftsPosition ), flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
+    webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
       ftsSearchPanel->previous->setEnabled( res );
-      if( !ftsSearchPanel->next->isEnabled() )
+      if ( !ftsSearchPanel->next->isEnabled() )
         ftsSearchPanel->next->setEnabled( res );
     } );
 #endif
   }
   else {
-    if( ftsPosition < allMatches.size() - 1 ) {
-      ftsPosition += 1;
-    }
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( const QWebEngineFindTextResult & result ) {
-      if( result.numberOfMatches() == 0 )
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+    webview->findText( firstAvailableText, flags, [ this ]( const QWebEngineFindTextResult & result ) {
+      if ( result.numberOfMatches() == 0 )
         return;
       ftsSearchPanel->next->setEnabled( true );
-      if( !ftsSearchPanel->previous->isEnabled() )
+      if ( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( true );
+
+      ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
     } );
-  }
 #else
 
-    webview->findText( allMatches.at( ftsPosition ), flags, [ this ]( bool res ) {
+    webview->findText( firstAvailableText, flags, [ this ]( bool res ) {
       ftsSearchPanel->next->setEnabled( res );
-      if( !ftsSearchPanel->previous->isEnabled() )
+      if ( !ftsSearchPanel->previous->isEnabled() )
         ftsSearchPanel->previous->setEnabled( res );
     } );
-  }
 
 #endif
-
-  ftsSearchPanel->statusLabel->setText( searchStatusMessage( ftsPosition + 1, allMatches.size() ) );
+  }
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
@@ -2627,18 +2285,17 @@ void ArticleView::on_ftsSearchNext_clicked()
   performFtsFindOperation( false );
 }
 
-ResourceToSaveHandler::ResourceToSaveHandler(ArticleView * view, QString const & fileName ) :
+ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
   QObject( view ),
-  fileName( fileName ),
+  fileName( std::move( fileName ) ),
   alreadyDone( false )
 {
   connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
 }
 
-void ResourceToSaveHandler::addRequest( sptr< Dictionary::DataRequest > req )
+void ResourceToSaveHandler::addRequest( const sptr< Dictionary::DataRequest > & req )
 {
-  if( !alreadyDone )
-  {
+  if ( !alreadyDone ) {
     downloadRequests.push_back( req );
 
     connect( req.get(), &Dictionary::Request::finished, this, &ResourceToSaveHandler::downloadFinished );
@@ -2651,36 +2308,29 @@ void ResourceToSaveHandler::downloadFinished()
     return; // Stray signal
 
   // Find any finished resources
-  for( list< sptr< Dictionary::DataRequest > >::iterator i =
-       downloadRequests.begin(); i != downloadRequests.end(); )
-  {
-    if ( (*i)->isFinished() )
-    {
-      if ( (*i)->dataSize() >= 0 && !alreadyDone )
-      {
+  for ( auto i = downloadRequests.begin(); i != downloadRequests.end(); ) {
+    if ( ( *i )->isFinished() ) {
+      if ( ( *i )->dataSize() >= 0 && !alreadyDone ) {
         QByteArray resourceData;
-        vector< char > const & data = (*i)->getFullData();
-        resourceData = QByteArray( data.data(), data.size() );
+        vector< char > const & data = ( *i )->getFullData();
+        resourceData                = QByteArray( data.data(), data.size() );
 
         // Write data to file
 
-        if ( !fileName.isEmpty() )
-        {
-          QFileInfo fileInfo( fileName );
+        if ( !fileName.isEmpty() ) {
+          const QFileInfo fileInfo( fileName );
           QDir().mkpath( fileInfo.absoluteDir().absolutePath() );
 
           QFile file( fileName );
-          if ( file.open( QFile::WriteOnly ) )
-          {
+          if ( file.open( QFile::WriteOnly ) ) {
             file.write( resourceData.data(), resourceData.size() );
             file.close();
           }
 
-          if ( file.error() )
-          {
-            emit statusBarMessage(
-                tr("ERROR: %1").arg(tr("Resource saving error: ") + file.errorString()),
-                10000, QPixmap(":/icons/error.svg"));
+          if ( file.error() ) {
+            emit statusBarMessage( tr( "ERROR: %1" ).arg( tr( "Resource saving error: " ) + file.errorString() ),
+                                   10000,
+                                   QPixmap( ":/icons/error.svg" ) );
           }
         }
         alreadyDone = true;
@@ -2690,8 +2340,7 @@ void ResourceToSaveHandler::downloadFinished()
         downloadRequests.clear();
         break;
       }
-      else
-      {
+      else {
         // This one had no data. Erase it.
         downloadRequests.erase( i++ );
       }
@@ -2700,20 +2349,20 @@ void ResourceToSaveHandler::downloadFinished()
       break;
   }
 
-  if ( downloadRequests.empty() )
-  {
-    if( !alreadyDone )
-    {
-      emit statusBarMessage(
-          tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
-          10000, QPixmap(":/icons/error.svg"));
+  if ( downloadRequests.empty() ) {
+    if ( !alreadyDone ) {
+      emit statusBarMessage( tr( "WARNING: %1" ).arg( tr( "The referenced resource failed to download." ) ),
+                             10000,
+                             QPixmap( ":/icons/error.svg" ) );
     }
     emit done();
     deleteLater();
   }
 }
 
-ArticleViewAgent::ArticleViewAgent( ArticleView * articleView ) : QObject( articleView ), articleView( articleView )
+ArticleViewAgent::ArticleViewAgent( ArticleView * articleView ):
+  QObject( articleView ),
+  articleView( articleView )
 {
 }
 
@@ -2738,4 +2387,3 @@ void ArticleViewAgent::collapseInHtml( QString const & dictId, bool on ) const
     }
   }
 }
-

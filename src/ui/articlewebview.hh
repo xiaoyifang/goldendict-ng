@@ -22,21 +22,25 @@ class ArticleWebView: public QWebEngineView
 
 public:
 
-  ArticleWebView( QWidget * parent );
-  void setUp( Config::Class * cfg );
+  explicit ArticleWebView( QWidget * parent );
+  void setUp( Config::Class * _cfg );
 
   bool isMidButtonPressed() const
-  { return midButtonPressed; }
+  {
+    return midButtonPressed;
+  }
   void resetMidButtonPressed()
   {
     midButtonPressed = false;
   }
   void setSelectionBySingleClick( bool set )
-  { selectionBySingleClick = set; }
+  {
+    selectionBySingleClick = set;
+  }
 
-  bool eventFilter(QObject *obj, QEvent *ev);
+  bool eventFilter( QObject * obj, QEvent * ev ) override;
 
-  signals:
+signals:
 
   /// Signals that the user has just double-clicked. The signal is delivered
   /// after the event was processed by the view -- that's the difference from
@@ -47,18 +51,16 @@ public:
   void linkClicked( const QUrl & url );
 
 protected:
-  QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
-  bool event( QEvent * event );
-  void singleClickAction(QMouseEvent *event);
-  void sendCustomMouseEvent(QEvent::Type type);
-  void mousePressEvent(QMouseEvent *event);
-  void mouseReleaseEvent( QMouseEvent * event );
+  QWebEngineView * createWindow( QWebEnginePage::WebWindowType type ) override;
+  bool event( QEvent * event ) override;
+  void singleClickAction( QMouseEvent * event );
+  void sendCustomMouseEvent( QEvent::Type type );
+  void mousePressEvent( QMouseEvent * event ) override;
+  void mouseReleaseEvent( QMouseEvent * event ) override;
   void doubleClickAction( QMouseEvent * event );
-  void wheelEvent( QWheelEvent * event );
-
+  void wheelEvent( QWheelEvent * event ) override;
 
 private:
-
   Config::Class * cfg;
   //QPointer<QOpenGLWidget> child_;
 

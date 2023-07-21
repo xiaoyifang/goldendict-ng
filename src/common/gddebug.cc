@@ -4,10 +4,10 @@
 #include <QString>
 #include "gddebug.hh"
 #include <QDebug>
-#if( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-#include <QtCore5Compat/QTextCodec>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QTextCodec>
 #else
-#include <QTextCodec>
+  #include <QTextCodec>
 #endif
 
 QFile * logFilePtr;

@@ -9,10 +9,10 @@
 class DictInfo: public QDialog
 {
   Q_OBJECT
+
 public:
 
-  enum Actions
-  {
+  enum Actions {
     REJECTED,
     ACCEPTED,
     OPEN_FOLDER,
@@ -20,18 +20,19 @@ public:
     SHOW_HEADWORDS
   };
 
-  DictInfo( Config::Class &cfg_, QWidget * parent = 0 );
+  DictInfo( Config::Class & cfg_, QWidget * parent = nullptr );
   void showInfo( sptr< Dictionary::Class > dict );
 
 private:
   Ui::DictInfo ui;
-  Config::Class &cfg;
+  Config::Class & cfg;
 private slots:
   void savePos( int );
   void on_editDictionary_clicked();
   void on_openFolder_clicked();
   void on_OKButton_clicked();
   void on_headwordsButton_clicked();
+  void on_openIndexFolder_clicked();
 };
 
 #endif // DICTINFO_HH

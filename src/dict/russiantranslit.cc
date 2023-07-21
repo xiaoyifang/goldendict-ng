@@ -98,15 +98,16 @@ RussianTable::RussianTable()
   ins( "YA", "Я" );
   ins( "Ya", "Я" );
 }
-  
-sptr< Dictionary::Class > makeDictionary() 
+
+sptr< Dictionary::Class > makeDictionary()
 {
   static RussianTable t;
 
-  return std::make_shared<Transliteration::TransliterationDictionary>( "cf1b74acd98adea9b2bba16af38f1086",
-                      QCoreApplication::translate( "RussianTranslit", "Russian Transliteration" ).toUtf8().data(),
-                      QIcon( ":/flags/ru.png" ), t );
+  return std::make_shared< Transliteration::TransliterationDictionary >(
+    "cf1b74acd98adea9b2bba16af38f1086",
+    QCoreApplication::translate( "RussianTranslit", "Russian Transliteration" ).toUtf8().data(),
+    QIcon( ":/flags/ru.png" ),
+    t );
 }
 
-}
-
+} // namespace RussianTranslit

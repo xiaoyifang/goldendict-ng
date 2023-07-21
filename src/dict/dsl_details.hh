@@ -10,10 +10,10 @@
 #include <zlib.h>
 #include "dictionary.hh"
 #include "iconv.hh"
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QTextCodec>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QTextCodec>
 #else
-#include <QTextCodec>
+  #include <QTextCodec>
 #endif
 #include <QByteArray>
 #include "utf8.hh"
@@ -29,14 +29,6 @@ using std::list;
 using std::vector;
 using Utf8::Encoding;
 using Utf8::LineFeed;
-
-
-
-struct DSLLangCode
-{
-  int code_id;
-  char code[ 3 ]; // ISO 639-1
-};
 
 string findCodeForDslId( int id );
 
@@ -54,15 +46,23 @@ struct ArticleDom
     wstring tagAttrs;
     wstring text; // This is only used if isTag is false
 
-    class Text {};
-    class Tag {};
+    class Text
+    {};
+    class Tag
+    {};
 
-    Node( Tag, wstring const & name, wstring const & attrs ): isTag( true ),
-      tagName( name ), tagAttrs( attrs )
-    {}
+    Node( Tag, wstring const & name, wstring const & attrs ):
+      isTag( true ),
+      tagName( name ),
+      tagAttrs( attrs )
+    {
+    }
 
-    Node( Text, wstring const & text_ ): isTag( false ), text( text_ )
-    {}
+    Node( Text, wstring const & text_ ):
+      isTag( false ),
+      text( text_ )
+    {
+    }
 
     /// Concatenates all childen text nodes recursively to form all text
     /// the node contains stripped of any markup.
@@ -71,8 +71,7 @@ struct ArticleDom
 
   /// Does the parse at construction. Refer to the 'root' member variable
   /// afterwards.
-  explicit ArticleDom( wstring const &, string const & dictName = string(),
-              wstring const & headword_ = wstring() );
+  explicit ArticleDom( wstring const &, string const & dictName = string(), wstring const & headword_ = wstring() );
 
   /// Root of DOM's tree
   Node root;
@@ -81,21 +80,21 @@ private:
 
   void openTag( wstring const & name, wstring const & attr, list< Node * > & stack );
 
-  void closeTag( wstring const & name, list< Node * > & stack,
-                 bool warn = true );
+  void closeTag( wstring const & name, list< Node * > & stack, bool warn = true );
 
   bool atSignFirstInLine();
 
-  wchar const * stringPos, * lineStartPos;
+  wchar const *stringPos, *lineStartPos;
 
-  class eot: std::exception {};
+  class eot: std::exception
+  {};
 
   wchar ch;
   bool escaped;
   unsigned transcriptionCount; // >0 = inside a [t] tag
-  unsigned mediaCount; // >0 = inside a [s] tag
+  unsigned mediaCount;         // >0 = inside a [s] tag
 
-  void nextChar() ;
+  void nextChar();
 
   /// Information for diagnostic purposes
   string dictionaryName;
@@ -108,7 +107,7 @@ class DslScanner
 {
   gzFile f;
   Encoding encoding;
-  QTextCodec* codec;
+  QTextCodec * codec;
   wstring dictionaryName;
   wstring langFrom, langTo;
   wstring soundDictionary;
@@ -128,28 +127,38 @@ public:
   DEF_EX( exUnknownCodePage, "The .dsl file specified an unknown code page", Ex )
   DEF_EX( exEncodingError, "Encoding error", Ex ) // Should never happen really
 
-  explicit DslScanner( string const & fileName ) ;
+  explicit DslScanner( string const & fileName );
   ~DslScanner() noexcept;
 
   /// Returns the detected encoding of this file.
   Encoding getEncoding() const
-  { return encoding; }
+  {
+    return encoding;
+  }
 
   /// Returns the dictionary's name, as was read from file's headers.
   wstring const & getDictionaryName() const
-  { return dictionaryName; }
+  {
+    return dictionaryName;
+  }
 
   /// Returns the dictionary's source language, as was read from file's headers.
   wstring const & getLangFrom() const
-  { return langFrom; }
+  {
+    return langFrom;
+  }
 
   /// Returns the dictionary's target language, as was read from file's headers.
   wstring const & getLangTo() const
-  { return langTo; }
+  {
+    return langTo;
+  }
 
   /// Returns the preferred external dictionary with sounds, as was read from file's headers.
   wstring const & getSoundDictionaryName() const
-  { return soundDictionary; }
+  {
+    return soundDictionary;
+  }
 
   /// Reads next line from the file. Returns true if reading succeeded --
   /// the string gets stored in the one passed, along with its physical
@@ -157,14 +166,16 @@ public:
   /// If end of file is reached, false is returned.
   /// Reading begins from the first line after the headers (ones which start
   /// with #).
-  bool readNextLine( wstring &, size_t & offset, bool only_head_word = false ) ;
+  bool readNextLine( wstring &, size_t & offset, bool only_head_word = false );
 
   /// Similar readNextLine but strip all DSL comments {{...}}
-  bool readNextLineWithoutComments( wstring &, size_t & offset, bool only_headword = false ) ;
+  bool readNextLineWithoutComments( wstring &, size_t & offset, bool only_headword = false );
 
   /// Returns the number of lines read so far from the file.
   unsigned getLinesRead() const
-  { return linesRead; }
+  {
+    return linesRead;
+  }
 
   /// Converts the given number of characters to the number of bytes they
   /// would occupy in the file, knowing its encoding. It's possible to know
@@ -178,8 +189,7 @@ void processUnsortedParts( wstring & str, bool strip );
 
 /// Expands optional parts of a headword (ones marked with parentheses),
 /// producing all possible combinations where they are present or absent.
-void expandOptionalParts( wstring & str, list< wstring > * result,
-                          size_t x = 0, bool inside_recurse = false );
+void expandOptionalParts( wstring & str, list< wstring > * result, size_t x = 0, bool inside_recurse = false );
 
 /// Expands all unescaped tildes, inserting tildeReplacement text instead of
 /// them.
@@ -198,11 +208,10 @@ void stripComments( wstring &, bool & );
 
 inline size_t DslScanner::distanceToBytes( size_t x ) const
 {
-  switch( encoding )
-  {
+  switch ( encoding ) {
     case Utf8::Utf16LE:
     case Utf8::Utf16BE:
-      return x*2;
+      return x * 2;
     default:
       return x;
   }
@@ -212,7 +221,7 @@ inline size_t DslScanner::distanceToBytes( size_t x ) const
 /// getLangTo()) to its proper language id.
 quint32 dslLanguageToId( wstring const & name );
 
-}
-}
+} // namespace Details
+} // namespace Dsl
 
 #endif

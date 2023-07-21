@@ -24,8 +24,11 @@ class DictListModel: public QAbstractListModel
 public:
 
   DictListModel( QWidget * parent ):
-    QAbstractListModel( parent ), isSource( false ), allDicts( 0 )
-  {}
+    QAbstractListModel( parent ),
+    isSource( false ),
+    allDicts( 0 )
+  {
+  }
 
   /// Populates the current model with the given dictionaries. This is
   /// ought to be part of construction process.
@@ -35,7 +38,10 @@ public:
 
   /// Marks that this model is used as an immutable dictionary source
   void setAsSource();
-  bool sourceModel() const { return isSource; }
+  bool sourceModel() const
+  {
+    return isSource;
+  }
 
   /// Returns the dictionaries the model currently has listed
   std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
@@ -43,16 +49,16 @@ public:
   void removeSelectedRows( QItemSelectionModel * source );
   void addSelectedUniqueFromModel( QItemSelectionModel * source );
 
-  Qt::ItemFlags flags( QModelIndex const &index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool insertRows( int row, int count, const QModelIndex & parent );
-  bool removeRows( int row, int count, const QModelIndex & parent );
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool insertRows( int row, int count, const QModelIndex & parent ) override;
+  bool removeRows( int row, int count, const QModelIndex & parent ) override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
-  void addRow(const QModelIndex & parent, sptr< Dictionary::Class > dict);
+  void addRow( const QModelIndex & parent, sptr< Dictionary::Class > dict );
 
-  Qt::DropActions supportedDropActions() const;
+  Qt::DropActions supportedDropActions() const override;
 
   void filterDuplicates();
 
@@ -71,9 +77,10 @@ signals:
 class DictListWidget: public QListView
 {
   Q_OBJECT
+
 public:
   DictListWidget( QWidget * parent );
-  ~DictListWidget();
+  ~DictListWidget() override = default;
 
   /// Populates the current list with the given dictionaries.
   void populate( std::vector< sptr< Dictionary::Class > > const & active,
@@ -87,18 +94,20 @@ public:
   std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
 
   DictListModel * getModel()
-  { return & model; }
+  {
+    return &model;
+  }
 
 signals:
   void gotFocus();
 
 protected:
-  virtual void dropEvent( QDropEvent * event );
-  virtual void focusInEvent(QFocusEvent *);
+  void dropEvent( QDropEvent * event ) override;
+  void focusInEvent( QFocusEvent * ) override;
 
   // We need these to to handle drag-and-drop focus issues
-  virtual void rowsInserted( QModelIndex const & parent, int start, int end );
-  virtual void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end );
+  void rowsInserted( QModelIndex const & parent, int start, int end ) override;
+  void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end ) override;
 
 private:
   DictListModel model;
@@ -112,9 +121,7 @@ class DictGroupWidget: public QWidget
   Q_OBJECT
 
 public:
-  DictGroupWidget( QWidget * parent,
-                   std::vector< sptr< Dictionary::Class > > const &,
-                   Config::Group const & );
+  DictGroupWidget( QWidget * parent, std::vector< sptr< Dictionary::Class > > const &, Config::Group const & );
 
   /// Makes the group's configuration out of the data currently held.
   /// Since the group's name is not part of the widget by design right now
@@ -122,10 +129,14 @@ public:
   Config::Group makeGroup() const;
 
   DictListModel * getModel() const
-  { return ui.dictionaries->getModel(); }
+  {
+    return ui.dictionaries->getModel();
+  }
 
   QItemSelectionModel * getSelectionModel() const
-  { return ui.dictionaries->selectionModel(); }
+  {
+    return ui.dictionaries->selectionModel();
+  }
 
 private slots:
 
@@ -156,7 +167,7 @@ public:
                  std::vector< sptr< Dictionary::Class > > const & activeDicts );
 
   /// Creates new empty group with the given name
-  void addNewGroup( QString const & );
+  int addNewGroup( QString const & );
 
   /// Creates new empty group with the given name if no such group
   /// and return it index
@@ -166,7 +177,7 @@ public:
 
   /// auto grouping by containning folder
   void addAutoGroupsByFolders();
-  void addGroupBasedOnMap( const QMultiMap<QString, sptr<Dictionary::Class>> & groupToDicts );
+  void addGroupBasedOnMap( const QMultiMap< QString, sptr< Dictionary::Class > > & groupToDicts );
 
   void groupsByMetadata();
 
@@ -187,13 +198,17 @@ public:
 
   DictListModel * getCurrentModel() const;
 
+  DictListModel * getModelAt( int current ) const;
+  int getDictionaryCountAt( int current ) const;
+  std::vector< sptr< Dictionary::Class > > getDictionaryAt( int current ) const;
+
   QItemSelectionModel * getCurrentSelectionModel() const;
 
 private:
 
   /// Add source group to target group
   void combineGroups( int source, int target );
-  
+
   unsigned nextId;
   std::vector< sptr< Dictionary::Class > > const * allDicts;
   std::vector< sptr< Dictionary::Class > > const * activeDicts;
@@ -213,17 +228,20 @@ class QuickFilterLine: public QLineEdit
 public:
 
   QuickFilterLine( QWidget * parent );
-  ~QuickFilterLine();
+  ~QuickFilterLine() override;
 
   /// Sets the source view to filter
   void applyTo( QAbstractItemView * source );
 
-  QAction * getFocusAction() { return & m_focusAction; }
+  QAction * getFocusAction()
+  {
+    return &m_focusAction;
+  }
 
   QModelIndex mapToSource( QModelIndex const & idx );
 
 protected:
-  virtual void keyPressEvent( QKeyEvent * event );
+  void keyPressEvent( QKeyEvent * event ) override;
 
 private:
   QSortFilterProxyModel m_proxyModel;
@@ -236,9 +254,7 @@ private slots:
   void focusFilterLine();
 
 signals:
-  void filterChanged(QString const & filter);
-
-
+  void filterChanged( QString const & filter );
 };
 
 #endif

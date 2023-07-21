@@ -36,7 +36,7 @@ void CustomTransTable::parse( const QString & content )
       continue;
     }
 
-    ins(parts[0].toUtf8(),parts[1].toUtf8());
+    ins( parts[ 0 ].toUtf8(), parts[ 1 ].toUtf8() );
   }
 }
 
@@ -45,15 +45,17 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::CustomTrans c
 
   std::vector< sptr< Dictionary::Class > > result;
 
-  if(cusTran.enable){
-    static CustomTranslit::CustomTransTable t0(cusTran.context);
+  if ( cusTran.enable ) {
+    static CustomTranslit::CustomTransTable t0( cusTran.context );
 
-    result.push_back(  std::make_shared<Transliteration::TransliterationDictionary>( "custom-transliteration-dict",
-                                                                                      QCoreApplication::translate( "CustomTranslit", "custom transliteration" ).toUtf8().data(),
-                                                                                      QIcon( ":/icons/custom_trans.svg" ), t0, false ) );
+    result.push_back( std::make_shared< Transliteration::TransliterationDictionary >(
+      "custom-transliteration-dict",
+      QCoreApplication::translate( "CustomTranslit", "custom transliteration" ).toUtf8().data(),
+      QIcon( ":/icons/custom_trans.svg" ),
+      t0,
+      false ) );
   }
   return result;
-
 }
 
-}
+} // namespace CustomTranslit

@@ -4,11 +4,9 @@ If you know some C++ and optionally some Qt, you can start to modify GoldenDict 
 
 * Install Qt and QtCreator
 * (On Linux, install dependencies)
-* Load `goldendict.pro`
+* Load `goldendict.pro` or `CMakeLists.txt`
 * Modify some code
 * Hit the `Run`.
-
-A CMake build script is also provided `CMakeLists.txt` is provided which can be used directly in other IDEs like CLion or Visual Studio 2022.
 
 ## Coding Standards
 

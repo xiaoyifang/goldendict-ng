@@ -4,7 +4,8 @@
 #include "externalaudioplayer.hh"
 #include "externalviewer.hh"
 
-ExternalAudioPlayer::ExternalAudioPlayer() : exitingViewer( 0 )
+ExternalAudioPlayer::ExternalAudioPlayer():
+  exitingViewer( 0 )
 {
 }
 
@@ -30,27 +31,24 @@ QString ExternalAudioPlayer::play( const char * data, int size )
   stop();
 
   Q_ASSERT( !viewer && "viewer must be null at this point for exception safety." );
-  try
-  {
+  try {
     // Our destructor properly destroys viewers we remember about.
     // In the unlikely case that we call viewer.reset() during the application
     // exit, ~QObject() prevents leaks as this class is a parent of all viewers.
     viewer.reset( new ExternalViewer( data, size, "wav", playerCommandLine, this ) );
   }
-  catch( const ExternalViewer::Ex & e )
-  {
+  catch ( const ExternalViewer::Ex & e ) {
     return e.what();
   }
 
-  if( exitingViewer )
+  if ( exitingViewer )
     return QString(); // Will start later.
   return startViewer();
 }
 
 void ExternalAudioPlayer::stop()
 {
-  if( !exitingViewer && viewer && !viewer->stop() )
-  {
+  if ( !exitingViewer && viewer && !viewer->stop() ) {
     // Give the previous viewer a chance to stop before starting a new one.
     // This prevents overlapping audio and possible conflicts between
     // external program instances.
@@ -66,18 +64,15 @@ void ExternalAudioPlayer::stop()
 
 void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
 {
-  if( exitingViewer == destroyedViewer )
-  {
+  if ( exitingViewer == destroyedViewer ) {
     exitingViewer = 0;
-    if( viewer )
-    {
+    if ( viewer ) {
       QString errorMessage = startViewer();
-      if( !errorMessage.isEmpty() )
+      if ( !errorMessage.isEmpty() )
         emit error( errorMessage );
     }
   }
-  else
-  if( viewer.data() == destroyedViewer )
+  else if ( viewer.data() == destroyedViewer )
     viewer.take(); // viewer finished and died -> release ownership.
 }
 
@@ -85,12 +80,10 @@ QString ExternalAudioPlayer::startViewer()
 {
   Q_ASSERT( !exitingViewer && viewer );
   connect( viewer.data(), &QObject::destroyed, this, &ExternalAudioPlayer::onViewerDestroyed );
-  try
-  {
+  try {
     viewer->start();
   }
-  catch( const ExternalViewer::Ex & e )
-  {
+  catch ( const ExternalViewer::Ex & e ) {
     viewer.reset();
     return e.what();
   }

@@ -15,7 +15,7 @@ on:
       # - staged
     paths-ignore:
       - 'docs/**'
-      - ".github/**"
+      # - ".github/**"
       - "howto/**"
       - "*.md"
       - ".clang-format"
@@ -26,19 +26,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-20.04]
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.06.01
-      version-suffix: ChildrenDay
-      prerelease: false
+      version: 23.06.02
+      version-suffix: alpha
+      prerelease: true
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
-          cached: 'false'
+          
           modules: qtwebengine
       - name: ubuntu install thirdparty dependencies
         run: |
@@ -57,7 +57,8 @@ jobs:
           make PREFIX=/usr -j$(nproc)
           sudo make install
           cd ..
-          sudo apt-get install libzim-dev
+          sudo add-apt-repository --yes --update ppa:kiwixteam/release
+          sudo apt install libzim-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 
@@ -65,9 +66,15 @@ jobs:
 
       - name: version-file
         shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
         run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 1p |cut -c 2-)
-          echo "$previousTag">version.txt
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"  
           
       - name: build goldendict
         run: |
@@ -81,6 +88,7 @@ jobs:
 
       - name: Build AppImage
         run: |
+          sudo apt install fcitx5-frontend-qt5
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage"
           chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
@@ -90,16 +98,11 @@ jobs:
       - name: changelog
         id: changelog
         run: |   
-          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
-          CHANGELOG="$(git log --oneline --no-decorate $previousTag..HEAD)"
-          CHANGELOG="${CHANGELOG//'%'/'%25'}"
-          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-          CHANGELOG="${CHANGELOG//'\"'/'%22'}"
-          CHANGELOG="${CHANGELOG//"'"/ }"
-          echo "::set-output name=changelog::$(echo "$CHANGELOG")"
+          echo "::set-output name=prev_tag::$previousTag"
+          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
       - name: Set outputs
         id: vars
         run: |
@@ -109,43 +112,83 @@ jobs:
           echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
           echo "::set-output name=release_hm::$(date +'%y%m%d')"  
           echo "::set-output name=appname::$(ls *.AppImage*)"
-          
+
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: ${{ steps.changelog.outputs.prev_tag }}
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}" 
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }           
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.vars.outputs.appname }}
-          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.AppImage
-          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
-          overwrite: true 
+          asset_name: ${{ matrix.qt_ver }}-${{ steps.vars.outputs.appname }}
+          tag: tag-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
-            release on date:      ${{steps.vars.outputs.release_date}} time: ${{steps.vars.outputs.release_time_clock}}  
-            branch:               ${{ github.ref_name }}
-            commit:               ${{ steps.vars.outputs.sha_short }} 
-            Qt version:           Qt5.15.2, Qt6.X  
-            Windows built with:   msvc64,  Visual studio 2019
-            ## goldendict.exe can not be used alone 
-            if you have a previous version. replace this maybe ok. if not ,download the whole bundle.
+            #### Install instructions for Windows, macOS and Linux 
+
+            <https://xiaoyifang.github.io/goldendict-ng/install/>.
+
+            #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
+
+            Qt6.X is recommended for various enhancements.
+
+            Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
+            The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
+
+            Linux users can use AppImages.
+
+            macOS users can use `.dmg` installer.
+
+            `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
+
+            #### Build Details
+
+            AppImage: Ubuntu-20.04
+            macOS: macOS-12 and macOS-13
+            Windows: Visual studio 2019
+
+
+            #### Changes
             
-            AppImage built with:  Ubuntu-20.04 ,latest gcc
-            macos built with:     macos-10.15,macos-11.0,clang_64 x86_64
-                                  Qt6.X(Universal Build)
-                                  Qt5.15.2(Intel Kind)
-            auto built by github action. use on your on risk:-)
-            **recommend version**:Qt6.X   (with the latest bug fixes and performance enhancements)  
-
-            Filename pattern: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]**
-            [xapian](https://xapian.org/)  is enabled by default which offers 10X~20X performance 
-            ------------------------------
-            文件名的模式: **[Qt version]-GoldenDict-[OS]-[release-date].[ext]** 
-            [xapian](https://xapian.org/) 用于全文索引的创建，提供更快的全文索引创建、搜索支持
-            比如：
-            6.4.3-GoldenDict.exe_windows-2022_20230502.zip
-            表示基于qt6.4.3，windows-2022,  于20230502日创建的版本。
-
-
-            CHANGES:
-            ${{ steps.changelog.outputs.changelog }}  
+            ${{steps.build_changelog.outputs.changelog}}

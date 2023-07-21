@@ -16,7 +16,7 @@
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
 #ifdef HAVE_X11
-#include "scanflag.hh"
+  #include "scanflag.hh"
 #endif
 
 /// This is a popup dialog to show translations when clipboard scanning mode
@@ -62,17 +62,17 @@ public:
 signals:
 
   /// Forwarded from the dictionary bar, so that main window could act on this.
-  void editGroupRequested( unsigned id );
+  void editGroupRequest( unsigned id );
   /// Send word to main window
   void sendPhraseToMainWindow( QString const & word );
   /// Close opened menus when window hide
   void closeMenu();
 
-  void inspectSignal(QWebEnginePage * page);
+  void inspectSignal( QWebEnginePage * page );
   /// Signal to switch expand optional parts mode
   void switchExpandMode();
   /// Signal to add word to history even if history is disabled
-  void forceAddWordToHistory( const QString & word);
+  void forceAddWordToHistory( const QString & word );
   /// Retranslate signal from dictionary bar
   void showDictionaryInfo( QString const & id );
   void openDictionaryFolder( QString const & id );
@@ -109,7 +109,7 @@ private:
   Qt::WindowFlags unpinnedWindowFlags() const;
 
   // Translates the word from the clipboard or the clipboard selection
-  void translateWordFromClipboard(QClipboard::Mode m);
+  void translateWordFromClipboard( QClipboard::Mode m );
 
   // Hides the popup window, effectively closing it.
   void hideWindow();
@@ -159,7 +159,7 @@ private:
   QIcon starIcon     = QIcon( ":/icons/star.svg" );
   QIcon blueStarIcon = QIcon( ":/icons/star_blue.svg" );
 
-  void handleInputWord( QString const & , bool forcePopup = false );
+  void handleInputWord( QString const &, bool forcePopup = false );
   void engagePopup( bool forcePopup, bool giveFocus = false );
 
   vector< sptr< Dictionary::Class > > const & getActiveDicts();
@@ -174,7 +174,7 @@ private:
   virtual void mouseMoveEvent( QMouseEvent * );
   virtual void mouseReleaseEvent( QMouseEvent * );
   virtual void leaveEvent( QEvent * event );
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   virtual void enterEvent( QEnterEvent * event );
 #else
   virtual void enterEvent( QEvent * event );
@@ -198,7 +198,7 @@ private slots:
   void on_pronounceButton_clicked();
   void pinButtonClicked( bool checked );
   void on_showDictionaryBar_clicked( bool checked );
-  void showStatusBarMessage ( QString const &, int, QPixmap const & );
+  void showStatusBarMessage( QString const &, int, QPixmap const & );
   void on_sendWordButton_clicked();
   void on_sendWordToFavoritesButton_clicked();
   void on_goBackButton_clicked();
@@ -220,9 +220,8 @@ private slots:
 
   void switchExpandOptionalPartsMode();
 
-  void translateInputChanged(QString const & text);
+  void translateInputChanged( QString const & text );
   void translateInputFinished();
-  void wordListItemActivated( QListWidgetItem * );
 
   void focusTranslateLine();
 
@@ -231,7 +230,6 @@ private slots:
   void alwaysOnTopClicked( bool checked );
 
   void titleChanged( ArticleView *, QString const & title );
-
 };
 
 #endif

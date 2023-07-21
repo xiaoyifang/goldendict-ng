@@ -19,15 +19,21 @@ public:
 
   /// Constructs an empty dictionary bar
   DictionaryBar( QWidget * parent,
-                 Config::Events &, QString const & _editDictionaryCommand, unsigned short const & maxDictionaryRefsInContextMenu_ );
+                 Config::Events &,
+                 QString const & _editDictionaryCommand,
+                 unsigned short const & maxDictionaryRefsInContextMenu_ );
 
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.
   void setDictionaries( std::vector< sptr< Dictionary::Class > > const & );
   void setMutedDictionaries( Config::MutedDictionaries * mutedDictionaries_ )
-  { mutedDictionaries = mutedDictionaries_; }
+  {
+    mutedDictionaries = mutedDictionaries_;
+  }
   Config::MutedDictionaries const * getMutedDictionaries() const
-  { return mutedDictionaries; }
+  {
+    return mutedDictionaries;
+  }
   void setDictionaryIconSize( int extent );
 
 signals:

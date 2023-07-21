@@ -5,21 +5,21 @@
 #include <QPushButton>
 #include <QTimer>
 
-class ScanFlag : public QMainWindow
+class ScanFlag: public QMainWindow
 {
   Q_OBJECT
 
 public:
-  ScanFlag( QWidget *parent );
+  ScanFlag( QWidget * parent );
 
-  ~ScanFlag()=default;
+  ~ScanFlag() = default;
 
   void showScanFlag();
   void pushButtonClicked();
   void hideWindow();
 
 signals:
-  void requestScanPopup ();
+  void requestScanPopup();
 
 private:
   QTimer hideTimer;

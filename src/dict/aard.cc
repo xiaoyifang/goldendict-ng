@@ -17,7 +17,7 @@
 #include <string>
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 #include <QString>
@@ -47,7 +47,6 @@ using BtreeIndexing::IndexInfo;
 namespace {
 
 DEF_EX_STR( exNotAardFile, "Not an AARD file", Dictionary::Ex )
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 DEF_EX_STR( exWordIsTooLarge, "Enountered a word that is too large:", Dictionary::Ex )
 DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 
@@ -56,64 +55,63 @@ DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 /// AAR file header
 struct AAR_header
 {
-    char signature[4];
-    char checksum[40];
-    quint16 version;
-    char uuid[16];
-    quint16 volume;
-    quint16 totalVolumes;
-    quint32 metaLength;
-    quint32 wordsCount;
-    quint32 articleOffset;
-    char indexItemFormat[4];
-    char keyLengthFormat[2];
-    char articleLengthFormat[2];
+  char signature[ 4 ];
+  char checksum[ 40 ];
+  quint16 version;
+  char uuid[ 16 ];
+  quint16 volume;
+  quint16 totalVolumes;
+  quint32 metaLength;
+  quint32 wordsCount;
+  quint32 articleOffset;
+  char indexItemFormat[ 4 ];
+  char keyLengthFormat[ 2 ];
+  char articleLengthFormat[ 2 ];
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
 struct IndexElement
 {
-    quint32 wordOffset;
-    quint32 articleOffset;
+  quint32 wordOffset;
+  quint32 articleOffset;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
 struct IndexElement64
 {
-    quint32 wordOffset;
-    quint64 articleOffset;
+  quint32 wordOffset;
+  quint64 articleOffset;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
-enum
-{
-  Signature = 0x58524141, // AARX on little-endian, XRAA on big-endian
+enum {
+  Signature            = 0x58524141, // AARX on little-endian, XRAA on big-endian
   CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
 {
-  quint32 signature; // First comes the signature, AARX
-  quint32 formatVersion; // File format version (CurrentFormatVersion)
-  quint32 chunksOffset; // The offset to chunks' storage
+  quint32 signature;             // First comes the signature, AARX
+  quint32 formatVersion;         // File format version (CurrentFormatVersion)
+  quint32 chunksOffset;          // The offset to chunks' storage
   quint32 indexBtreeMaxElements; // Two fields from IndexInfo
   quint32 indexRootOffset;
   quint32 wordCount;
   quint32 articleCount;
-  quint32 langFrom;  // Source language
-  quint32 langTo;    // Target language
+  quint32 langFrom; // Source language
+  quint32 langTo;   // Target language
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -125,207 +123,196 @@ bool indexIsOldOrBad( string const & indexFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion;
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion;
 }
 
-void readJSONValue( string const & source, string & str, string::size_type & pos)
+void readJSONValue( string const & source, string & str, string::size_type & pos )
 {
-    int level = 1;
-    char endChar;
-    str.push_back( source[pos] );
-    if( source[pos] == '{')
-        endChar = '}';
-    else if( source[pos] == '[' )
-        endChar = ']';
-    else if( source[pos] == '\"' )
-    {
-        str.clear();
-        endChar = '\"';
-    }
-    else
-        endChar = ',';
+  int level = 1;
+  char endChar;
+  str.push_back( source[ pos ] );
+  if ( source[ pos ] == '{' )
+    endChar = '}';
+  else if ( source[ pos ] == '[' )
+    endChar = ']';
+  else if ( source[ pos ] == '\"' ) {
+    str.clear();
+    endChar = '\"';
+  }
+  else
+    endChar = ',';
 
-    pos++;
-    char ch = 0;
-    char lastCh = 0;
-    while( !( ch == endChar && lastCh != '\\' && level == 0 )
-           && pos < source.size() )
-    {
-        lastCh = ch;
-        ch = source[ pos++ ];
-        if( ( ch == '{' || ch == '[' ) && lastCh != '\\' )
-          level++;
-        if( ( ch == '}' || ch == ']' ) && lastCh != '\\' )
-          level--;
+  pos++;
+  char ch     = 0;
+  char lastCh = 0;
+  while ( !( ch == endChar && lastCh != '\\' && level == 0 ) && pos < source.size() ) {
+    lastCh = ch;
+    ch     = source[ pos++ ];
+    if ( ( ch == '{' || ch == '[' ) && lastCh != '\\' )
+      level++;
+    if ( ( ch == '}' || ch == ']' ) && lastCh != '\\' )
+      level--;
 
-        if( ch == endChar &&
-            ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' )
-            && level == 1)
-          break;
-        str.push_back( ch );
-    }
+    if ( ch == endChar && ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' ) && level == 1 )
+      break;
+    str.push_back( ch );
+  }
 }
 
 map< string, string > parseMetaData( string const & metaData )
 {
-// Parsing JSON string
-    map< string, string > data;
-    string name, value;
-    string::size_type n = 0;
+  // Parsing JSON string
+  map< string, string > data;
+  string name, value;
+  string::size_type n = 0;
 
-    while( n < metaData.length() && metaData[n] != '{' )
-        n++;
-    while( n < metaData.length() )
-    {
-        // Skip to '"'
-        while( n < metaData.length() && metaData[n] != '\"' )
-            n++;
-        if( ++n >= metaData.length() )
-            break;
+  while ( n < metaData.length() && metaData[ n ] != '{' )
+    n++;
+  while ( n < metaData.length() ) {
+    // Skip to '"'
+    while ( n < metaData.length() && metaData[ n ] != '\"' )
+      n++;
+    if ( ++n >= metaData.length() )
+      break;
 
-        // Read name
-        while(  n < metaData.length() &&
-                !( ( metaData[n] == '\"' || metaData[n] == '{' ) && metaData[n-1] != '\\' ) )
-            name.push_back( metaData[n++]);
+    // Read name
+    while ( n < metaData.length()
+            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' ) && metaData[ n - 1 ] != '\\' ) )
+      name.push_back( metaData[ n++ ] );
 
-        // Skip to ':'
-        if( ++n >= metaData.length() )
-            break;
-        while( n < metaData.length() && metaData[n] != ':' )
-            n++;
-        if( ++n >= metaData.length() )
-            break;
+    // Skip to ':'
+    if ( ++n >= metaData.length() )
+      break;
+    while ( n < metaData.length() && metaData[ n ] != ':' )
+      n++;
+    if ( ++n >= metaData.length() )
+      break;
 
-        // Find value start after ':'
-        while( n < metaData.length()
-               && !( ( metaData[n] == '\"'
-                       || metaData[n] == '{'
-                       || metaData[n] == '['
-                       || ( metaData[n] >= '0' && metaData[n] <= '9' ) )
-               && metaData[n-1] != '\\' ) )
-            n++;
-        if( n >= metaData.length() )
-            break;
+    // Find value start after ':'
+    while ( n < metaData.length()
+            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' || metaData[ n ] == '['
+                    || ( metaData[ n ] >= '0' && metaData[ n ] <= '9' ) )
+                  && metaData[ n - 1 ] != '\\' ) )
+      n++;
+    if ( n >= metaData.length() )
+      break;
 
-        readJSONValue( metaData, value, n);
+    readJSONValue( metaData, value, n );
 
-        data[name] = value;
+    data[ name ] = value;
 
-        name.clear();
-        value.clear();
-        if( ++n >= metaData.length() )
-            break;
-    }
-    return data;
+    name.clear();
+    value.clear();
+    if ( ++n >= metaData.length() )
+      break;
+  }
+  return data;
 }
 
 class AardDictionary: public BtreeIndexing::BtreeDictionary
 {
-    QMutex idxMutex;
-    QMutex aardMutex;
-    File::Class idx;
-    IdxHeader idxHeader;
-    ChunkedStorage::Reader chunks;
-    File::Class df;
+  QMutex idxMutex;
+  QMutex aardMutex;
+  File::Class idx;
+  IdxHeader idxHeader;
+  ChunkedStorage::Reader chunks;
+  File::Class df;
 
-  public:
+public:
 
-    AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
-    ~AardDictionary();
+  ~AardDictionary();
 
-    map< Dictionary::Property, string > getProperties() noexcept override
-    { return map< Dictionary::Property, string >(); }
+  map< Dictionary::Property, string > getProperties() noexcept override
+  {
+    return map< Dictionary::Property, string >();
+  }
 
-    unsigned long getArticleCount() noexcept override
-    { return idxHeader.articleCount; }
+  unsigned long getArticleCount() noexcept override
+  {
+    return idxHeader.articleCount;
+  }
 
-    unsigned long getWordCount() noexcept override
-    { return idxHeader.wordCount; }
+  unsigned long getWordCount() noexcept override
+  {
+    return idxHeader.wordCount;
+  }
 
-    inline quint32 getLangFrom() const override
-    { return idxHeader.langFrom; }
+  inline quint32 getLangFrom() const override
+  {
+    return idxHeader.langFrom;
+  }
 
-    inline quint32 getLangTo() const override
-    { return idxHeader.langTo; }
+  inline quint32 getLangTo() const override
+  {
+    return idxHeader.langTo;
+  }
 
-    sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                        vector< wstring > const & alts,
-                                                        wstring const &,
-                                                        bool ignoreDiacritics ) override
-      ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-    QString const& getDescription() override;
+  QString const & getDescription() override;
 
-    sptr< Dictionary::DataRequest >
-    getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
-    void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
+  sptr< Dictionary::DataRequest >
+  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-    void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
-    void setFTSParameters( Config::FullTextSearch const & fts ) override
-    {
-      can_FTS = fts.enabled
-                && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
-                && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
-    }
+  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  {
+    can_FTS = fts.enabled && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
+      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+  }
 
 protected:
 
-    void loadIcon() noexcept override;
+  void loadIcon() noexcept override;
 
 private:
 
-    /// Loads the article.
-    void loadArticle( quint32 address,
-                      string & articleText,
-                      bool rawText = false );
-    string convert( string const & in_data );
+  /// Loads the article.
+  void loadArticle( quint32 address, string & articleText, bool rawText = false );
+  string convert( string const & in_data );
 
-    friend class AardArticleRequest;
+  friend class AardArticleRequest;
 };
 
-AardDictionary::AardDictionary( string const & id,
-                                string const & indexFile,
-                                vector< string > const & dictionaryFiles ):
-    BtreeDictionary( id, dictionaryFiles ),
-    idx( indexFile, "rb" ),
-    idxHeader( idx.read< IdxHeader >() ),
-    chunks( idx, idxHeader.chunksOffset ),
-    df( dictionaryFiles[ 0 ], "rb" )
+AardDictionary::AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+  BtreeDictionary( id, dictionaryFiles ),
+  idx( indexFile, "rb" ),
+  idxHeader( idx.read< IdxHeader >() ),
+  chunks( idx, idxHeader.chunksOffset ),
+  df( dictionaryFiles[ 0 ], "rb" )
 {
-    // Read dictionary name
+  // Read dictionary name
 
-    idx.seek( sizeof( idxHeader ) );
-    vector< char > dName( idx.read< quint32 >() );
-    if( dName.size() )
-    {
-        idx.read( &dName.front(), dName.size() );
-        dictionaryName = string( &dName.front(), dName.size() );
-    }
+  idx.seek( sizeof( idxHeader ) );
+  vector< char > dName( idx.read< quint32 >() );
+  if ( dName.size() ) {
+    idx.read( &dName.front(), dName.size() );
+    dictionaryName = string( &dName.front(), dName.size() );
+  }
 
-    // Initialize the index
+  // Initialize the index
 
-    openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                          idxHeader.indexRootOffset ),
-               idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
-    // Full-text search parameters
+  // Full-text search parameters
 
-    can_FTS = true;
+  can_FTS = true;
 
-    ftsIdxName = indexFile + Dictionary::getFtsSuffix();
+  ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-    if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-        && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
-      FTS_index_completed.ref();
+  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
+    FTS_index_completed.ref();
 }
 
 AardDictionary::~AardDictionary()
 {
-    df.close();
+  df.close();
 }
 
 void AardDictionary::loadIcon() noexcept
@@ -338,10 +325,9 @@ void AardDictionary::loadIcon() noexcept
   // Remove the extension
   fileName.chop( 3 );
 
-  if( !loadIconFromFile( fileName ) )
-  {
+  if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_aard.png");
+    dictionaryIcon = QIcon( ":/icons/icon32_aard.png" );
   }
 
   dictionaryIconLoaded = true;
@@ -349,255 +335,237 @@ void AardDictionary::loadIcon() noexcept
 
 string AardDictionary::convert( const string & in )
 {
-    string inConverted;
-    char inCh, lastCh = 0;
-    bool afterEol = false;
+  string inConverted;
+  char inCh, lastCh = 0;
+  bool afterEol = false;
 
-    for( string::const_iterator i = in.begin(), j = in.end(); i != j; ++i )
-    {
-        inCh = *i;
-        if( lastCh == '\\' )
-        {
-            inConverted.erase( inConverted.size() - 1 );
-            lastCh = 0;
-            if( inCh == 'n' )
-            {
-                inConverted.append( "<br/>");
-                afterEol = true;
-                continue;
-            }
-            else if( inCh == 'r')
-                continue;
-        }
-        else if( inCh == ' ' && afterEol )
-        {
-            inConverted.append( "&nbsp;" );
-            continue;
-        } else
-            lastCh = inCh;
-        afterEol = false;
-        inConverted.push_back( inCh );
+  for ( string::const_iterator i = in.begin(), j = in.end(); i != j; ++i ) {
+    inCh = *i;
+    if ( lastCh == '\\' ) {
+      inConverted.erase( inConverted.size() - 1 );
+      lastCh = 0;
+      if ( inCh == 'n' ) {
+        inConverted.append( "<br/>" );
+        afterEol = true;
+        continue;
+      }
+      else if ( inCh == 'r' )
+        continue;
     }
+    else if ( inCh == ' ' && afterEol ) {
+      inConverted.append( "&nbsp;" );
+      continue;
+    }
+    else
+      lastCh = inCh;
+    afterEol = false;
+    inConverted.push_back( inCh );
+  }
 
-    QString text = QString::fromUtf8( inConverted.c_str() );
+  QString text = QString::fromUtf8( inConverted.c_str() );
 
-    text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*\"(w:|s:){0,1}([^#](?!ttp://)[^\"]*)(.))",
-                                      QRegularExpression::DotMatchesEverythingOption ),
-                  R"(<a href="bword:\2")");
-    text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*'(w:|s:){0,1}([^#](?!ttp://)[^']*)(.))",
-                                      QRegularExpression::DotMatchesEverythingOption ),
-                  R"(<a href="bword:\2")");
+  text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*\"(w:|s:){0,1}([^#](?!ttp://)[^\"]*)(.))",
+                                    QRegularExpression::DotMatchesEverythingOption ),
+                R"(<a href="bword:\2")" );
+  text.replace( QRegularExpression( R"(<\s*a\s+href\s*=\s*'(w:|s:){0,1}([^#](?!ttp://)[^']*)(.))",
+                                    QRegularExpression::DotMatchesEverythingOption ),
+                R"(<a href="bword:\2")" );
 
-    // Anchors
-    text.replace( QRegularExpression( R"(<a\s+href="bword:([^#"]+)#([^"]+))" ),
-                  R"(<a href="gdlookup://localhost/\1?gdanchor=\2)" );
+  // Anchors
+  text.replace( QRegularExpression( R"(<a\s+href="bword:([^#"]+)#([^"]+))" ),
+                R"(<a href="gdlookup://localhost/\1?gdanchor=\2)" );
 
-    static QRegularExpression self_closing_divs( "(<div\\s+[^>]*)/>",
-                                                 QRegularExpression::CaseInsensitiveOption );  // <div ... />
-    text.replace( self_closing_divs, "\\1></div>" );
+  static QRegularExpression self_closing_divs( "(<div\\s+[^>]*)/>",
+                                               QRegularExpression::CaseInsensitiveOption ); // <div ... />
+  text.replace( self_closing_divs, "\\1></div>" );
 
 
-    // Fix outstanding elements
-    text += "<br style=\"clear:both;\" />";
+  // Fix outstanding elements
+  text += "<br style=\"clear:both;\" />";
 
-    return text.toUtf8().data();
+  return text.toUtf8().data();
 }
 
-void AardDictionary::loadArticle( quint32 address,
-                                  string & articleText,
-                                  bool rawText )
+void AardDictionary::loadArticle( quint32 address, string & articleText, bool rawText )
 {
-    quint32 articleOffset = address;
-    quint32 articleSize;
-    quint32 size;
+  quint32 articleOffset = address;
+  quint32 articleSize;
+  quint32 size;
 
-    vector< char > articleBody;
+  vector< char > articleBody;
 
-    articleText.clear();
+  articleText.clear();
 
 
-    while( 1 )
-    {
-      articleText = QObject::tr( "Article loading error" ).toStdString();
-      try
-      {
-            QMutexLocker _( &aardMutex );
-            df.seek( articleOffset );
-        df.read( &size, sizeof(size) );
-        articleSize = qFromBigEndian( size );
+  while ( 1 ) {
+    articleText = QObject::tr( "Article loading error" ).toStdString();
+    try {
+      QMutexLocker _( &aardMutex );
+      df.seek( articleOffset );
+      df.read( &size, sizeof( size ) );
+      articleSize = qFromBigEndian( size );
 
-        // Don't try to read and decode too big articles,
-        // it is most likely error in dictionary
-        if( articleSize > 1048576 )
-          break;
-
-        articleBody.resize( articleSize );
-        df.read( &articleBody.front(), articleSize );
-      }
-      catch( std::exception &ex )
-      {
-        gdWarning( "AARD: Failed loading article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
-        break;
-      }
-      catch(...)
-      {
-        break;
-      }
-
-      if ( articleBody.empty() )
+      // Don't try to read and decode too big articles,
+      // it is most likely error in dictionary
+      if ( articleSize > 1048576 )
         break;
 
-      articleText.clear();
-
-      string text = decompressBzip2( articleBody.data(), articleSize );
-      if( text.empty() )
-        text = decompressZlib( articleBody.data(), articleSize );
-      if( text.empty() )
-        text = string( articleBody.data(), articleSize );
-
-      if( text.empty() || text[ 0 ] != '[' )
-        break;
-
-      string::size_type n = text.find( '\"' );
-      if( n == string::npos )
-        break;
-
-      readJSONValue( text, articleText, n );
-
-      if( articleText.empty() )
-      {
-        n = text.find( "\"r\"" );
-        if( n != string::npos && n + 3 < text.size() )
-        {
-          n = text.find( '\"', n + 3 );
-          if( n == string::npos )
-            break;
-
-          string link;
-          readJSONValue( text, link, n );
-          if( !link.empty() )
-          {
-            string encodedLink;
-            encodedLink.reserve( link.size() );
-            bool prev = false;
-            for( string::const_iterator i = link.begin(); i != link.end(); ++i )
-            {
-              if( *i == '\\' )
-              {
-                if( !prev )
-                {
-                  prev = true;
-                  continue;
-                }
-              }
-              encodedLink.push_back( *i );
-              prev = false;
-            }
-            encodedLink = string( QUrl( QString::fromUtf8( encodedLink.data(), encodedLink.size() ) ).toEncoded().data() );
-            articleText = "<a href=\"" + encodedLink + "\">" + link + "</a>";
-          }
-        }
-      }
-
+      articleBody.resize( articleSize );
+      df.read( &articleBody.front(), articleSize );
+    }
+    catch ( std::exception & ex ) {
+      gdWarning( "AARD: Failed loading article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+      break;
+    }
+    catch ( ... ) {
       break;
     }
 
-    if( !articleText.empty() )
-    {
-      if( rawText )
-        return;
+    if ( articleBody.empty() )
+      break;
 
-      articleText = convert( articleText );
+    articleText.clear();
+
+    string text = decompressBzip2( articleBody.data(), articleSize );
+    if ( text.empty() )
+      text = decompressZlib( articleBody.data(), articleSize );
+    if ( text.empty() )
+      text = string( articleBody.data(), articleSize );
+
+    if ( text.empty() || text[ 0 ] != '[' )
+      break;
+
+    string::size_type n = text.find( '\"' );
+    if ( n == string::npos )
+      break;
+
+    readJSONValue( text, articleText, n );
+
+    if ( articleText.empty() ) {
+      n = text.find( "\"r\"" );
+      if ( n != string::npos && n + 3 < text.size() ) {
+        n = text.find( '\"', n + 3 );
+        if ( n == string::npos )
+          break;
+
+        string link;
+        readJSONValue( text, link, n );
+        if ( !link.empty() ) {
+          string encodedLink;
+          encodedLink.reserve( link.size() );
+          bool prev = false;
+          for ( string::const_iterator i = link.begin(); i != link.end(); ++i ) {
+            if ( *i == '\\' ) {
+              if ( !prev ) {
+                prev = true;
+                continue;
+              }
+            }
+            encodedLink.push_back( *i );
+            prev = false;
+          }
+          encodedLink =
+            string( QUrl( QString::fromUtf8( encodedLink.data(), encodedLink.size() ) ).toEncoded().data() );
+          articleText = "<a href=\"" + encodedLink + "\">" + link + "</a>";
+        }
+      }
     }
-    else
-      articleText = QObject::tr( "Article decoding error" ).toStdString();
 
-    // See Issue #271: A mechanism to clean-up invalid HTML cards.
-    const string cleaner = Utils::Html::getHtmlCleaner();
+    break;
+  }
 
-    string prefix( "<div class=\"aard\"" );
-    if( isToLanguageRTL() )
-      prefix += " dir=\"rtl\"";
-    prefix += ">";
+  if ( !articleText.empty() ) {
+    if ( rawText )
+      return;
 
-    articleText = prefix + articleText + cleaner + "</div>";
+    articleText = convert( articleText );
+  }
+  else
+    articleText = QObject::tr( "Article decoding error" ).toStdString();
+
+  // See Issue #271: A mechanism to clean-up invalid HTML cards.
+  const string cleaner = Utils::Html::getHtmlCleaner();
+
+  string prefix( "<div class=\"aard\"" );
+  if ( isToLanguageRTL() )
+    prefix += " dir=\"rtl\"";
+  prefix += ">";
+
+  articleText = prefix + articleText + cleaner + "</div>";
 }
 
-QString const& AardDictionary::getDescription()
+QString const & AardDictionary::getDescription()
 {
-    if( !dictionaryDescription.isEmpty() )
-        return dictionaryDescription;
-
-    AAR_header dictHeader;
-    quint32 size;
-    vector< char > data;
-
-    {
-        QMutexLocker _( &aardMutex );
-        df.seek( 0 );
-        df.read( &dictHeader, sizeof(dictHeader) );
-        size = qFromBigEndian( dictHeader.metaLength );
-        data.resize( size );
-        df.read( &data.front(), size );
-    }
-
-    string metaStr = decompressBzip2( data.data(), size );
-    if( metaStr.empty() )
-        metaStr = decompressZlib( data.data(), size );
-
-    map< string, string > meta = parseMetaData( metaStr );
-
-    if( !meta.empty() )
-    {
-        map< string, string >::const_iterator iter = meta.find( "copyright" );
-        if( iter != meta.end() )
-          dictionaryDescription =  QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
-
-        iter = meta.find( "version" );
-        if( iter != meta.end() )
-          dictionaryDescription = QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
-
-        iter = meta.find( "description" );
-        if( iter != meta.end() )
-        {
-          QString desc = QString::fromUtf8( iter->second.c_str() );
-          desc.replace( "\\n", "\n" );
-          desc.replace( "\\t", "\t" );
-          dictionaryDescription += desc;
-        }
-    }
-
-    if( dictionaryDescription.isEmpty() )
-      dictionaryDescription = "NONE";
-
+  if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
+
+  AAR_header dictHeader;
+  quint32 size;
+  vector< char > data;
+
+  {
+    QMutexLocker _( &aardMutex );
+    df.seek( 0 );
+    df.read( &dictHeader, sizeof( dictHeader ) );
+    size = qFromBigEndian( dictHeader.metaLength );
+    data.resize( size );
+    df.read( &data.front(), size );
+  }
+
+  string metaStr = decompressBzip2( data.data(), size );
+  if ( metaStr.empty() )
+    metaStr = decompressZlib( data.data(), size );
+
+  map< string, string > meta = parseMetaData( metaStr );
+
+  if ( !meta.empty() ) {
+    map< string, string >::const_iterator iter = meta.find( "copyright" );
+    if ( iter != meta.end() )
+      dictionaryDescription =
+        QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+
+    iter = meta.find( "version" );
+    if ( iter != meta.end() )
+      dictionaryDescription =
+        QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+
+    iter = meta.find( "description" );
+    if ( iter != meta.end() ) {
+      QString desc = QString::fromUtf8( iter->second.c_str() );
+      desc.replace( "\\n", "\n" );
+      desc.replace( "\\t", "\t" );
+      dictionaryDescription += desc;
+    }
+  }
+
+  if ( dictionaryDescription.isEmpty() )
+    dictionaryDescription = "NONE";
+
+  return dictionaryDescription;
 }
 
 void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
-  if( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-         || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+  if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
+  if ( ensureInitDone().size() )
     return;
 
-  if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
+  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
     return;
 
-  gdDebug( "Aard: Building the full-text index for dictionary: %s\n",
-           getName().c_str() );
+  gdDebug( "Aard: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
-  try
-  {
+  try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Aard: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
@@ -605,8 +573,7 @@ void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
 
 void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )
 {
-  try
-  {
+  try {
     headword.clear();
     string articleText;
 
@@ -614,8 +581,7 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
 
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Aard: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
   }
 }
@@ -646,8 +612,12 @@ public:
 
   AardArticleRequest( wstring const & word_,
                       vector< wstring > const & alts_,
-                      AardDictionary & dict_, bool ignoreDiacritics_ ):
-    word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
+                      AardDictionary & dict_,
+                      bool ignoreDiacritics_ ):
+    word( word_ ),
+    alts( alts_ ),
+    dict( dict_ ),
+    ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -670,16 +640,14 @@ public:
 
 void AardArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( unsigned x = 0; x < alts.size(); ++x ) {
     /// Make an additional query for each alt
 
     vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
@@ -690,17 +658,15 @@ void AardArticleRequest::run()
   multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonims make it that the articles
-                                    // appear several times. We combat this
-                                    // by only allowing them to appear once.
+                                   // appear several times. We combat this
+                                   // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if( ignoreDiacritics )
+  if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for( unsigned x = 0; x < chain.size(); ++x )
-  {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
+  for ( unsigned x = 0; x < chain.size(); ++x ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
@@ -713,12 +679,10 @@ void AardArticleRequest::run()
     string headword, articleText;
 
     headword = chain[ x ].word;
-    try
-    {
+    try {
       dict.loadArticle( chain[ x ].articleOffset, articleText );
     }
-    catch(...)
-    {
+    catch ( ... ) {
     }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
@@ -726,24 +690,19 @@ void AardArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped =
-      Folding::applySimpleCaseOnly( headword );
-    if( ignoreDiacritics )
+    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
     multimap< wstring, pair< string, string > > & mapToUse =
-      ( wordCaseFolded == headwordStripped ) ?
-        mainArticles : alternateArticles;
+      ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( pair(
-      Folding::applySimpleCaseOnly( headword ),
-      pair( headword, articleText ) ) );
+    mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
-  {
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     // No such word
     finish();
     return;
@@ -753,27 +712,21 @@ void AardArticleRequest::run()
 
   multimap< wstring, pair< string, string > >::const_iterator i;
 
-  for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
-  {
-      result += "<h3>";
-      result += i->second.first;
-      result += "</h3>";
-      result += i->second.second;
+  for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
+    result += "<h3>";
+    result += i->second.first;
+    result += "</h3>";
+    result += i->second.second;
   }
 
-  for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-  {
-      result += "<h3>";
-      result += i->second.first;
-      result += "</h3>";
-      result += i->second.second;
+  for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
+    result += "<h3>";
+    result += i->second.first;
+    result += "</h3>";
+    result += i->second.second;
   }
 
-  QMutexLocker _( &dataMutex );
-
-  data.resize( result.size() );
-
-  memcpy( &data.front(), result.data(), result.size() );
+  appendString( result );
 
   hasAnyData = true;
 
@@ -784,261 +737,237 @@ sptr< Dictionary::DataRequest > AardDictionary::getArticle( wstring const & word
                                                             vector< wstring > const & alts,
                                                             wstring const &,
                                                             bool ignoreDiacritics )
-  
+
 {
-  return std::make_shared<AardArticleRequest>( word, alts, *this, ignoreDiacritics );
+  return std::make_shared< AardArticleRequest >( word, alts, *this, ignoreDiacritics );
 }
 
 } // anonymous namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing,
-                                      unsigned maxHeadwordsToExpand )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing,
+                                                      unsigned maxHeadwordsToExpand )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
-      // Skip files with the extensions different to .aar to speed up the
-      // scanning
-      if ( i->size() < 4 ||
-          strcasecmp( i->c_str() + ( i->size() - 4 ), ".aar" ) != 0 )
-        continue;
+  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+    // Skip files with the extensions different to .aar to speed up the
+    // scanning
+    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".aar" ) != 0 )
+      continue;
 
-      // Got the file -- check if we need to rebuid the index
+    // Got the file -- check if we need to rebuid the index
 
-      vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, *i );
 
-      string dictId = Dictionary::makeDictionaryId( dictFiles );
+    string dictId = Dictionary::makeDictionaryId( dictFiles );
 
-      string indexFile = indicesDir + dictId;
+    string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-           indexIsOldOrBad( indexFile ) )
-      {
-        try
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      try {
+
+        gdDebug( "Aard: Building the index for dictionary: %s\n", i->c_str() );
+
         {
-
-          gdDebug( "Aard: Building the index for dictionary: %s\n", i->c_str() );
-
-          {
-            QFileInfo info( QString::fromUtf8( i->c_str() ) );
-            if( static_cast< quint64 >( info.size() ) > ULONG_MAX )
-            {
-              gdWarning( "File %s is too large\n", i->c_str() );
-              continue;
-            }
+          QFileInfo info( QString::fromUtf8( i->c_str() ) );
+          if ( static_cast< quint64 >( info.size() ) > ULONG_MAX ) {
+            gdWarning( "File %s is too large\n", i->c_str() );
+            continue;
           }
-
-          File::Class df( *i, "rb" );
-
-          AAR_header dictHeader;
-
-          df.read( &dictHeader, sizeof(dictHeader) );
-          bool has64bitIndex = !strncmp( dictHeader.indexItemFormat, ">LQ", 4 );
-          if( strncmp( dictHeader.signature, "aard", 4 )
-              || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
-              || strncmp( dictHeader.keyLengthFormat, ">H", 2 )
-              || strncmp( dictHeader.articleLengthFormat, ">L", 2) )
-          {
-              gdWarning( "File %s is not in supported aard format\n", i->c_str() );
-              continue;
-          }
-
-          vector< char > data;
-          quint32 size = qFromBigEndian( dictHeader.metaLength );
-
-          if( size == 0 )
-          {
-              gdWarning( "File %s has invalid metadata", i->c_str() );
-              continue;
-          }
-
-          data.resize( size );
-          df.read( &data.front(), size );
-          string metaStr = decompressBzip2( data.data(), size );
-          if( metaStr.empty() )
-              metaStr = decompressZlib( data.data(), size );
-
-          map< string, string > meta = parseMetaData( metaStr );
-
-          if( meta.empty() )
-          {
-              gdWarning( "File %s has invalid metadata", i->c_str() );
-              continue;
-          }
-
-          string dictName;
-          map< string, string >::const_iterator iter = meta.find( "title" );
-          if( iter != meta.end() )
-              dictName = iter->second;
-
-          string langFrom;
-          iter = meta.find( "index_language" );
-          if( iter != meta.end() )
-              langFrom = iter->second;
-
-          string langTo;
-          iter = meta.find( "article_language" );
-          if( iter != meta.end() )
-              langTo = iter->second;
-
-          if( ( dictName.compare( "Wikipedia") == 0 || dictName.compare( "Wikiquote" ) == 0 || dictName.compare( "Wiktionary" ) == 0 )
-              && !langTo.empty() )
-          {
-            string capitalized = langTo.c_str();
-            capitalized[0] = toupper( capitalized[0] );
-            dictName = dictName + " (" + capitalized + ")";
-          }
-
-          quint16 volumes = qFromBigEndian( dictHeader.totalVolumes );
-          if( volumes > 1 )
-          {
-            QString ss=QString( " (%1/%2)").arg( qFromBigEndian( dictHeader.volume ), volumes );
-            dictName += ss.toLocal8Bit().data();
-          }
-
-          initializing.indexingDictionary( dictName );
-
-          File::Class idx( indexFile, "wb" );
-          IdxHeader idxHeader;
-          memset( &idxHeader, 0, sizeof( idxHeader ) );
-
-          // We write a dummy header first. At the end of the process the header
-          // will be rewritten with the right values.
-
-          idx.write( idxHeader );
-
-          idx.write( (quint32) dictName.size() );
-          if( !dictName.empty() )
-              idx.write( dictName.data(), dictName.size() );
-
-          IndexedWords indexedWords;
-
-          ChunkedStorage::Writer chunks( idx );
-
-          quint32 wordCount = qFromBigEndian( dictHeader.wordsCount );
-          set< quint32 > articleOffsets;
-
-          quint32 pos = df.tell();
-          quint32 wordsBase = pos + wordCount * ( has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement ) );
-          quint32 articlesBase = qFromBigEndian( dictHeader.articleOffset );
-
-          data.clear();
-          for( quint32 j = 0; j < wordCount; j++ )
-          {
-            quint32 articleOffset;
-            quint32 wordOffset;
-
-            if( has64bitIndex )
-            {
-              IndexElement64 el64;
-
-              df.seek( pos );
-              df.read( &el64, sizeof(el64) );
-              articleOffset = articlesBase + qFromBigEndian( el64.articleOffset );
-              wordOffset = wordsBase + qFromBigEndian( el64.wordOffset );
-            }
-            else
-            {
-              IndexElement el;
-
-              df.seek( pos );
-              df.read( &el, sizeof(el) );
-              articleOffset = articlesBase + qFromBigEndian( el.articleOffset );
-              wordOffset = wordsBase + qFromBigEndian( el.wordOffset );
-            }
-
-            df.seek( wordOffset );
-
-            quint16 sizeBE;
-            df.read( &sizeBE, sizeof(sizeBE) );
-            quint16 wordSize = qFromBigEndian( sizeBE );
-            if( data.size() < wordSize )
-              data.resize( wordSize );
-            df.read( &data.front(), wordSize );
-
-            if( articleOffsets.find( articleOffset ) == articleOffsets.end() )
-                articleOffsets.insert( articleOffset );
-
-            // Insert new entry
-            wstring word = Utf8::decode( string( data.data(), wordSize ) );
-            if( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand )
-              indexedWords.addSingleWord( word, articleOffset);
-            else
-              indexedWords.addWord( word, articleOffset);
-
-            pos += has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement );
-          }
-          data.clear();
-
-          idxHeader.articleCount = articleOffsets.size();
-          articleOffsets.clear();
-
-          // Finish with the chunks
-
-          idxHeader.chunksOffset = chunks.finish();
-
-          // Build index
-
-          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
-
-          idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-          idxHeader.indexRootOffset = idxInfo.rootOffset;
-
-          indexedWords.clear(); // Release memory -- no need for this data
-
-          // That concludes it. Update the header.
-
-          idxHeader.signature = Signature;
-          idxHeader.formatVersion = CurrentFormatVersion;
-
-          idxHeader.wordCount = wordCount;
-
-          if( langFrom.size() == 3)
-            idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom );
-          else if( langFrom.size() == 2 )
-              idxHeader.langFrom = LangCoder::code2toInt( langFrom.c_str() );
-
-          if( langTo.size() == 3)
-            idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo );
-          else if( langTo.size() == 2 )
-              idxHeader.langTo = LangCoder::code2toInt( langTo.c_str() );
-
-          idx.rewind();
-
-          idx.write( &idxHeader, sizeof( idxHeader ) );
         }
-        catch( std::exception & e )
-        {
-          gdWarning( "Aard dictionary indexing failed: %s, error: %s\n",
-                    i->c_str(), e.what() );
+
+        File::Class df( *i, "rb" );
+
+        AAR_header dictHeader;
+
+        df.read( &dictHeader, sizeof( dictHeader ) );
+        bool has64bitIndex = !strncmp( dictHeader.indexItemFormat, ">LQ", 4 );
+        if ( strncmp( dictHeader.signature, "aard", 4 )
+             || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
+             || strncmp( dictHeader.keyLengthFormat, ">H", 2 ) || strncmp( dictHeader.articleLengthFormat, ">L", 2 ) ) {
+          gdWarning( "File %s is not in supported aard format\n", i->c_str() );
           continue;
         }
-        catch( ... )
-        {
-          gdWarning( "Aard dictionary indexing failed\n" );
+
+        vector< char > data;
+        quint32 size = qFromBigEndian( dictHeader.metaLength );
+
+        if ( size == 0 ) {
+          gdWarning( "File %s has invalid metadata", i->c_str() );
           continue;
         }
-      } // if need to rebuild
-      try
-      {
-        dictionaries.push_back( std::make_shared<AardDictionary>( dictId,
-                                                    indexFile,
-                                                    dictFiles ) );
+
+        data.resize( size );
+        df.read( &data.front(), size );
+        string metaStr = decompressBzip2( data.data(), size );
+        if ( metaStr.empty() )
+          metaStr = decompressZlib( data.data(), size );
+
+        map< string, string > meta = parseMetaData( metaStr );
+
+        if ( meta.empty() ) {
+          gdWarning( "File %s has invalid metadata", i->c_str() );
+          continue;
+        }
+
+        string dictName;
+        map< string, string >::const_iterator iter = meta.find( "title" );
+        if ( iter != meta.end() )
+          dictName = iter->second;
+
+        string langFrom;
+        iter = meta.find( "index_language" );
+        if ( iter != meta.end() )
+          langFrom = iter->second;
+
+        string langTo;
+        iter = meta.find( "article_language" );
+        if ( iter != meta.end() )
+          langTo = iter->second;
+
+        if ( ( dictName.compare( "Wikipedia" ) == 0 || dictName.compare( "Wikiquote" ) == 0
+               || dictName.compare( "Wiktionary" ) == 0 )
+             && !langTo.empty() ) {
+          string capitalized = langTo.c_str();
+          capitalized[ 0 ]   = toupper( capitalized[ 0 ] );
+          dictName           = dictName + " (" + capitalized + ")";
+        }
+
+        quint16 volumes = qFromBigEndian( dictHeader.totalVolumes );
+        if ( volumes > 1 ) {
+          QString ss = QString( " (%1/%2)" ).arg( qFromBigEndian( dictHeader.volume ), volumes );
+          dictName += ss.toLocal8Bit().data();
+        }
+
+        initializing.indexingDictionary( dictName );
+
+        File::Class idx( indexFile, "wb" );
+        IdxHeader idxHeader;
+        memset( &idxHeader, 0, sizeof( idxHeader ) );
+
+        // We write a dummy header first. At the end of the process the header
+        // will be rewritten with the right values.
+
+        idx.write( idxHeader );
+
+        idx.write( (quint32)dictName.size() );
+        if ( !dictName.empty() )
+          idx.write( dictName.data(), dictName.size() );
+
+        IndexedWords indexedWords;
+
+        ChunkedStorage::Writer chunks( idx );
+
+        quint32 wordCount = qFromBigEndian( dictHeader.wordsCount );
+        set< quint32 > articleOffsets;
+
+        quint32 pos          = df.tell();
+        quint32 wordsBase    = pos + wordCount * ( has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement ) );
+        quint32 articlesBase = qFromBigEndian( dictHeader.articleOffset );
+
+        data.clear();
+        for ( quint32 j = 0; j < wordCount; j++ ) {
+          quint32 articleOffset;
+          quint32 wordOffset;
+
+          if ( has64bitIndex ) {
+            IndexElement64 el64;
+
+            df.seek( pos );
+            df.read( &el64, sizeof( el64 ) );
+            articleOffset = articlesBase + qFromBigEndian( el64.articleOffset );
+            wordOffset    = wordsBase + qFromBigEndian( el64.wordOffset );
+          }
+          else {
+            IndexElement el;
+
+            df.seek( pos );
+            df.read( &el, sizeof( el ) );
+            articleOffset = articlesBase + qFromBigEndian( el.articleOffset );
+            wordOffset    = wordsBase + qFromBigEndian( el.wordOffset );
+          }
+
+          df.seek( wordOffset );
+
+          quint16 sizeBE;
+          df.read( &sizeBE, sizeof( sizeBE ) );
+          quint16 wordSize = qFromBigEndian( sizeBE );
+          if ( data.size() < wordSize )
+            data.resize( wordSize );
+          df.read( &data.front(), wordSize );
+
+          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() )
+            articleOffsets.insert( articleOffset );
+
+          // Insert new entry
+          wstring word = Utf8::decode( string( data.data(), wordSize ) );
+          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand )
+            indexedWords.addSingleWord( word, articleOffset );
+          else
+            indexedWords.addWord( word, articleOffset );
+
+          pos += has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement );
+        }
+        data.clear();
+
+        idxHeader.articleCount = articleOffsets.size();
+        articleOffsets.clear();
+
+        // Finish with the chunks
+
+        idxHeader.chunksOffset = chunks.finish();
+
+        // Build index
+
+        IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
+
+        idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
+        idxHeader.indexRootOffset       = idxInfo.rootOffset;
+
+        indexedWords.clear(); // Release memory -- no need for this data
+
+        // That concludes it. Update the header.
+
+        idxHeader.signature     = Signature;
+        idxHeader.formatVersion = CurrentFormatVersion;
+
+        idxHeader.wordCount = wordCount;
+
+        if ( langFrom.size() == 3 )
+          idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom );
+        else if ( langFrom.size() == 2 )
+          idxHeader.langFrom = LangCoder::code2toInt( langFrom.c_str() );
+
+        if ( langTo.size() == 3 )
+          idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo );
+        else if ( langTo.size() == 2 )
+          idxHeader.langTo = LangCoder::code2toInt( langTo.c_str() );
+
+        idx.rewind();
+
+        idx.write( &idxHeader, sizeof( idxHeader ) );
       }
-      catch( std::exception & e )
-      {
-        gdWarning( "Aard dictionary initializing failed: %s, error: %s\n",
-                  i->c_str(), e.what() );
+      catch ( std::exception & e ) {
+        gdWarning( "Aard dictionary indexing failed: %s, error: %s\n", i->c_str(), e.what() );
         continue;
       }
+      catch ( ... ) {
+        gdWarning( "Aard dictionary indexing failed\n" );
+        continue;
+      }
+    } // if need to rebuild
+    try {
+      dictionaries.push_back( std::make_shared< AardDictionary >( dictId, indexFile, dictFiles ) );
+    }
+    catch ( std::exception & e ) {
+      gdWarning( "Aard dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      continue;
+    }
   }
   return dictionaries;
 }
 
-}
+} // namespace Aard

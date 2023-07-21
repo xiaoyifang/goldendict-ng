@@ -15,6 +15,6 @@ wstring toWString( QString const & );
 wstring removeTrailingZero( wstring const & v );
 wstring removeTrailingZero( QString const & in );
 wstring normalize( wstring const & );
-}
+} // namespace gd
 
 #endif

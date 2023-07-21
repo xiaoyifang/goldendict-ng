@@ -8,10 +8,10 @@
 #include "utf8.hh"
 #include "iconv.hh"
 #include "wstring_qt.hh"
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QTextCodec>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QTextCodec>
 #else
-#include <QTextCodec>
+  #include <QTextCodec>
 #endif
 
 using namespace BtreeIndexing;
@@ -61,23 +61,20 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
   ZipFile::LocalFileHeader header;
 
-  if ( !ZipFile::readLocalHeader( zip, header ) )
-  {
+  if ( !ZipFile::readLocalHeader( zip, header ) ) {
     GD_DPRINTF( "Failed to load header" );
     return false;
   }
 
   // Which algorithm was used?
 
-  switch( header.compressionMethod )
-  {
+  switch ( header.compressionMethod ) {
     case ZipFile::Uncompressed:
       GD_DPRINTF( "Uncompressed" );
       data.resize( header.uncompressedSize );
-      return (size_t) zip.read( &data.front(), data.size() ) == data.size();
+      return (size_t)zip.read( &data.front(), data.size() ) == data.size();
 
-    case ZipFile::Deflated:
-    {
+    case ZipFile::Deflated: {
       // Now do the deflation
 
       QByteArray compressedData = zip.read( header.compressedSize );
@@ -91,19 +88,17 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
       memset( &stream, 0, sizeof( stream ) );
 
-      stream.next_in = ( Bytef * ) compressedData.data();
-      stream.avail_in = compressedData.size();
-      stream.next_out = ( Bytef * ) &data.front();
+      stream.next_in   = (Bytef *)compressedData.data();
+      stream.avail_in  = compressedData.size();
+      stream.next_out  = (Bytef *)&data.front();
       stream.avail_out = data.size();
 
-      if ( inflateInit2( &stream, -MAX_WBITS ) != Z_OK )
-      {
-        data.clear();        
+      if ( inflateInit2( &stream, -MAX_WBITS ) != Z_OK ) {
+        data.clear();
         return false;
       }
 
-      if ( inflate( &stream, Z_FINISH ) != Z_STREAM_END )
-      {
+      if ( inflate( &stream, Z_FINISH ) != Z_STREAM_END ) {
         GD_DPRINTF( "Not zstream end!" );
 
         data.clear();
@@ -124,158 +119,126 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
   }
 }
 
-bool IndexedZip::indexFile( BtreeIndexing::IndexedWords &zipFileNames, quint32 * filesCount )
+bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 * filesCount )
 {
-    if ( !zipIsOpen )
-        return false;
-    if ( !ZipFile::positionAtCentralDir( zip ) )
-        return false;
+  if ( !zipIsOpen )
+    return false;
+  if ( !ZipFile::positionAtCentralDir( zip ) )
+    return false;
 
-    // File seems to be a valid zip file
+  // File seems to be a valid zip file
 
 
-    QTextCodec * localeCodec = QTextCodec::codecForLocale();
+  QTextCodec * localeCodec = QTextCodec::codecForLocale();
 
-    ZipFile::CentralDirEntry entry;
+  ZipFile::CentralDirEntry entry;
 
-    bool alreadyCounted;
-    if( filesCount )
-      *filesCount = 0;
+  bool alreadyCounted;
+  if ( filesCount )
+    *filesCount = 0;
 
-    while( ZipFile::readNextEntry( zip, entry ) )
-    {
-      if ( entry.compressionMethod == ZipFile::Unsupported )
-      {
-        qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"\n",
-                  entry.fileName.data() );
-        continue;
+  while ( ZipFile::readNextEntry( zip, entry ) ) {
+    if ( entry.compressionMethod == ZipFile::Unsupported ) {
+      qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"\n", entry.fileName.data() );
+      continue;
+    }
+
+    // Check if the file name has some non-ascii letters.
+
+    unsigned char const * ptr = (unsigned char const *)entry.fileName.constData();
+
+    bool hasNonAscii = false;
+
+    for ( ;; ) {
+      if ( *ptr & 0x80 ) {
+        hasNonAscii = true;
+        break;
       }
+      else if ( !*ptr++ )
+        break;
+    }
 
-      // Check if the file name has some non-ascii letters.
+    alreadyCounted = false;
 
-      unsigned char const * ptr = ( unsigned char const * )
-                                    entry.fileName.constData();
+    if ( !hasNonAscii ) {
+      // Add entry as is
 
-      bool hasNonAscii = false;
+      zipFileNames.addSingleWord( Utf8::decode( entry.fileName.data() ), entry.localHeaderOffset );
+      if ( filesCount )
+        *filesCount += 1;
+    }
+    else {
+      // Try assuming different encodings. Those are UTF8, system locale and two
+      // Russian ones (Windows and Windows OEM). Unfortunately, zip
+      // files do not say which encoding they utilize.
 
-      for( ; ; )
-      {
-        if ( *ptr & 0x80 )
-        {
-          hasNonAscii = true;
-          break;
-        }
-        else
-        if ( !*ptr++ )
-          break;
-      }
+      // Utf8
+      try {
+        wstring decoded = Utf8::decode( entry.fileName.constData() );
 
-      alreadyCounted = false;
-
-      if ( !hasNonAscii )
-      {
-        // Add entry as is
-
-        zipFileNames.addSingleWord( Utf8::decode( entry.fileName.data() ),
-                                    entry.localHeaderOffset );
-        if( filesCount )
+        zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
+        if ( filesCount != 0 && !alreadyCounted ) {
           *filesCount += 1;
+          alreadyCounted = true;
+        }
       }
-      else
-      {
-        // Try assuming different encodings. Those are UTF8, system locale and two
-        // Russian ones (Windows and Windows OEM). Unfortunately, zip
-        // files do not say which encoding they utilize.
+      catch ( Utf8::exCantDecode & ) {
+        // Failed to decode
+      }
 
-        // Utf8
-        try
-        {
-          wstring decoded = Utf8::decode( entry.fileName.constData() );
+      if ( !entry.fileNameInUTF8 ) {
+        wstring nameInSystemLocale;
 
-          zipFileNames.addSingleWord( decoded,
-                                      entry.localHeaderOffset );
-          if( filesCount != 0 && !alreadyCounted )
-          {
-            *filesCount += 1;
-            alreadyCounted = true;
+        // System locale
+        if ( localeCodec ) {
+          QString name       = localeCodec->toUnicode( entry.fileName.constData(), entry.fileName.size() );
+          nameInSystemLocale = gd::toWString( name );
+          if ( !nameInSystemLocale.empty() ) {
+            zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
+
+            if ( filesCount != 0 && !alreadyCounted ) {
+              *filesCount += 1;
+              alreadyCounted = true;
+            }
           }
         }
-        catch( Utf8::exCantDecode & )
-        {
+
+
+        // CP866
+        try {
+          wstring decoded = Iconv::toWstring( "CP866", entry.fileName.constData(), entry.fileName.size() );
+
+          if ( nameInSystemLocale != decoded ) {
+            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
+
+            if ( filesCount != 0 && !alreadyCounted ) {
+              *filesCount += 1;
+              alreadyCounted = true;
+            }
+          }
+        }
+        catch ( Iconv::Ex & ) {
           // Failed to decode
         }
 
-        if( !entry.fileNameInUTF8 )
-        {
-          wstring nameInSystemLocale;
+        // CP1251
+        try {
+          wstring decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(), entry.fileName.size() );
 
-          // System locale
-          if( localeCodec )
-          {
-            QString name = localeCodec->toUnicode( entry.fileName.constData(),
-                                                   entry.fileName.size() );
-            nameInSystemLocale = gd::toWString( name );
-            if( !nameInSystemLocale.empty() )
-            {
-              zipFileNames.addSingleWord( nameInSystemLocale,
-                                          entry.localHeaderOffset );
+          if ( nameInSystemLocale != decoded ) {
+            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
 
-              if( filesCount != 0 && !alreadyCounted )
-              {
-                *filesCount += 1;
-                alreadyCounted = true;
-              }
+            if ( filesCount != 0 && !alreadyCounted ) {
+              *filesCount += 1;
+              alreadyCounted = true;
             }
           }
-
-
-          // CP866
-          try
-          {
-            wstring decoded = Iconv::toWstring( "CP866", entry.fileName.constData(),
-                                                entry.fileName.size() );
-
-            if( nameInSystemLocale != decoded )
-            {
-              zipFileNames.addSingleWord( decoded,
-                                          entry.localHeaderOffset );
-
-              if( filesCount != 0 && !alreadyCounted )
-              {
-                *filesCount += 1;
-                alreadyCounted = true;
-              }
-            }
-          }
-          catch( Iconv::Ex & )
-          {
-              // Failed to decode
-          }
-
-          // CP1251
-          try
-          {
-            wstring decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(),
-                                                entry.fileName.size() );
-
-            if( nameInSystemLocale != decoded )
-            {
-              zipFileNames.addSingleWord( decoded,
-                                          entry.localHeaderOffset );
-
-              if( filesCount != 0 && !alreadyCounted )
-              {
-                *filesCount += 1;
-                alreadyCounted = true;
-              }
-            }
-          }
-          catch( Iconv::Ex & )
-          {
-            // Failed to decode
-          }
+        }
+        catch ( Iconv::Ex & ) {
+          // Failed to decode
         }
       }
     }
-    return true;
+  }
+  return true;
 }

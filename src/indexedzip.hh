@@ -17,8 +17,10 @@ class IndexedZip: public BtreeIndexing::BtreeIndex
 
 public:
 
-  IndexedZip(): zipIsOpen( false )
-  {}
+  IndexedZip():
+    zipIsOpen( false )
+  {
+  }
 
   /// Opens the index. The values are those previously returned by buildIndex().
   using BtreeIndexing::BtreeIndex::openIndex;
@@ -28,7 +30,9 @@ public:
 
   /// Returns true if the zip is open, false otherwise.
   bool isOpen() const
-  { return zipIsOpen; }
+  {
+    return zipIsOpen;
+  }
 
   /// Checks whether the given file exists in the zip file or not.
   /// Note that this function is thread-safe, since it does not access zip file.
@@ -40,7 +44,7 @@ public:
   bool loadFile( uint32_t offset, std::vector< char > & );
 
   /// Index compressed files in zip file
-  bool indexFile( BtreeIndexing::IndexedWords &zipFileNames, quint32 * filesCount = 0 );
+  bool indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 * filesCount = 0 );
 };
 
 #endif

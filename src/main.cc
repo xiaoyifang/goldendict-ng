@@ -7,12 +7,13 @@
 #include "config.hh"
 #include <QWebEngineProfile>
 #include "hotkeywrapper.hh"
+#include "version.hh"
 #ifdef HAVE_X11
-#include <fixx11h.h>
+  #include <fixx11h.h>
 #endif
 
 #if defined( Q_OS_UNIX )
-#include <clocale>
+  #include <clocale>
 #endif
 
 #ifdef Q_OS_WIN32
@@ -31,35 +32,66 @@
 #include "gddebug.hh"
 #include <QMutex>
 
-#if defined(USE_BREAKPAD)
-  #include "client/windows/handler/exception_handler.h"
+#if defined( USE_BREAKPAD )
+  #if defined( Q_OS_MAC )
+    #include "client/mac/handler/exception_handler.h"
+  #elif defined( Q_OS_LINUX )
+    #include "client/linux/handler/exception_handler.h"
+  #elif defined( Q_OS_WIN32 )
+    #include "client/windows/handler/exception_handler.h"
+  #endif
 #endif
 
-#if defined(USE_BREAKPAD)
-bool callback(const wchar_t* dump_path, const wchar_t* id,
-               void* context, EXCEPTION_POINTERS* exinfo,
-               MDRawAssertionInfo* assertion,
-               bool succeeded) {
-  if (succeeded) {
+#if defined( USE_BREAKPAD )
+  #ifdef Q_OS_WIN32
+bool callback( const wchar_t * dump_path,
+               const wchar_t * id,
+               void * context,
+               EXCEPTION_POINTERS * exinfo,
+               MDRawAssertionInfo * assertion,
+               bool succeeded )
+{
+  if ( succeeded ) {
     qDebug() << "Create dump file success";
-  } else {
+  }
+  else {
     qDebug() << "Create dump file failed";
   }
   return succeeded;
 }
+  #endif
+  #ifdef Q_OS_LINUX
+bool callback( const google_breakpad::MinidumpDescriptor & descriptor, void * context, bool succeeded )
+{
+  if ( succeeded ) {
+    qDebug() << "Create dump file success";
+  }
+  else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+  #endif
+  #ifdef Q_OS_MAC
+bool callback( const char * dump_dir, const char * minidump_id, void * context, bool succeeded )
+{
+  if ( succeeded ) {
+    qDebug() << "Create dump file success";
+  }
+  else {
+    qDebug() << "Create dump file failed";
+  }
+  return succeeded;
+}
+  #endif
 #endif
 
 QMutex logMutex;
 
-void gdMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &mess )
+void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 file:%2,line:%3,function:%4 %5\r\n" )
-                      .arg( strTime )
-                      .arg( context.file )
-                      .arg( context.line )
-                      .arg( context.function )
-                      .arg( mess );
+  QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
 
   if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
     //without the lock ,on multithread,there would be assert error.
@@ -118,32 +150,49 @@ struct GDOptions
   QString word, groupName, popupGroupName;
 
   inline bool needSetGroup() const
-  { return !groupName.isEmpty(); }
+  {
+    return !groupName.isEmpty();
+  }
 
   inline QString getGroupName() const
-  { return groupName; }
+  {
+    return groupName;
+  }
 
   inline bool needSetPopupGroup() const
-  { return !popupGroupName.isEmpty(); }
+  {
+    return !popupGroupName.isEmpty();
+  }
 
   inline QString getPopupGroupName() const
-  { return popupGroupName; }
+  {
+    return popupGroupName;
+  }
 
   inline bool needLogFile() const
-  { return logFile; }
+  {
+    return logFile;
+  }
 
   inline bool needTranslateWord() const
-  { return !word.isEmpty(); }
+  {
+    return !word.isEmpty();
+  }
 
   inline QString wordToTranslate() const
-  { return word; }
+  {
+    return word;
+  }
 
   inline bool needTogglePopup() const
-  { return togglePopup; }
+  {
+    return togglePopup;
+  }
   bool notts;
+  bool resetState = false;
 };
 
-void processCommandLine( QCoreApplication * app, GDOptions * result)
+void processCommandLine( QCoreApplication * app, GDOptions * result )
 {
   QCommandLineParser qcmd;
 
@@ -155,6 +204,10 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
                                     QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+
+  QCommandLineOption resetState( QStringList() << "r"
+                                               << "reset-window-state",
+                                 QObject::tr( "Reset window state." ) );
 
   QCommandLineOption notts( "no-tts", QObject::tr( "Disable tts." ) );
 
@@ -171,11 +224,17 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
                                                       << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
 
+  QCommandLineOption printVersion( QStringList() << "v"
+                                                 << "version",
+                                   QObject::tr( "Print version and diagnosis info." ) );
+
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
+  qcmd.addOption( resetState );
+  qcmd.addOption( printVersion );
 
   QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
   doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
@@ -201,6 +260,15 @@ void processCommandLine( QCoreApplication * app, GDOptions * result)
 
   if ( qcmd.isSet( notts ) ) {
     result->notts = true;
+  }
+
+  if ( qcmd.isSet( resetState ) ) {
+    result->resetState = true;
+  }
+
+  if ( qcmd.isSet( printVersion ) ) {
+    qInfo() << qPrintable( Version::everything() );
+    std::exit( 0 );
   }
 
   const QStringList posArgs = qcmd.positionalArguments();
@@ -271,29 +339,43 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
-#ifndef Q_OS_MAC
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
-#endif
 
-#if defined(USE_BREAKPAD)
-  QString appDirPath = QCoreApplication::applicationDirPath() + "/crash";
+#if defined( USE_BREAKPAD )
+  QString appDirPath = Config::getConfigDir() + "crash";
 
   QDir dir;
   if ( !dir.exists( appDirPath ) ) {
     dir.mkpath( appDirPath );
   }
+  #ifdef Q_OS_WIN32
 
-  google_breakpad::ExceptionHandler eh(
-    appDirPath.toStdWString(), NULL, callback, NULL,
-    google_breakpad::ExceptionHandler::HANDLER_ALL);
+  google_breakpad::ExceptionHandler eh( appDirPath.toStdWString(),
+                                        NULL,
+                                        callback,
+                                        NULL,
+                                        google_breakpad::ExceptionHandler::HANDLER_ALL );
+  #elif defined( Q_OS_MAC )
 
 
+  google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
+
+  #else
+
+  google_breakpad::ExceptionHandler eh( google_breakpad::MinidumpDescriptor( appDirPath.toStdString() ),
+                                        /*FilterCallback*/ 0,
+                                        callback,
+                                        /*context*/ 0,
+                                        true,
+                                        -1 );
   #endif
+
+#endif
 
   GDOptions gdcl{};
 
   if ( argc > 1 ) {
-        processCommandLine( &app, &gdcl );
+    processCommandLine( &app, &gdcl );
   }
 
   installTerminationHandler();
@@ -310,10 +392,10 @@ int main( int argc, char ** argv )
     { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdpicture", "gdtts", "ifr", "entry" };
 
   for ( const auto & localScheme : localSchemes ) {
-        QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
-        webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
-                              | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
-        QWebEngineUrlScheme::registerScheme( webUiScheme );
+    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+    webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
+                          | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
   QFile file;
@@ -329,24 +411,20 @@ int main( int argc, char ** argv )
   f.setStyleStrategy( QFont::PreferAntialias );
   QApplication::setFont( f );
 
-  if ( app.isRunning() )
-  {
+  if ( app.isRunning() ) {
     bool wasMessage = false;
 
-    if( gdcl.needSetGroup() )
-    {
+    if ( gdcl.needSetGroup() ) {
       app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
       wasMessage = true;
     }
 
-    if( gdcl.needSetPopupGroup() )
-    {
+    if ( gdcl.needSetPopupGroup() ) {
       app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
       wasMessage = true;
     }
 
-    if( gdcl.needTranslateWord() )
-    {
+    if ( gdcl.needTranslateWord() ) {
       app.sendMessage( QString( "translateWord: " ) + gdcl.wordToTranslate() );
       wasMessage = true;
     }
@@ -356,8 +434,8 @@ int main( int argc, char ** argv )
       wasMessage = true;
     }
 
-    if( !wasMessage )
-      app.sendMessage("bringToFront");
+    if ( !wasMessage )
+      app.sendMessage( "bringToFront" );
 
     return 0; // Another instance is running
   }
@@ -371,17 +449,16 @@ int main( int argc, char ** argv )
   QString localeName = QLocale::system().name();
 
   Config::Class cfg;
-  for( ; ; )
-  {
-    try
-    {
+  for ( ;; ) {
+    try {
       cfg = Config::load();
     }
-    catch( Config::exError & )
-    {
-      QMessageBox mb( QMessageBox::Warning, QHotkeyApplication::applicationName(),
-                      QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
-                      QMessageBox::Yes | QMessageBox::No );
+    catch ( Config::exError & ) {
+      QMessageBox mb(
+        QMessageBox::Warning,
+        QHotkeyApplication::applicationName(),
+        QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
+        QMessageBox::Yes | QMessageBox::No );
       mb.exec();
       if ( mb.result() != QMessageBox::Yes )
         return -1;
@@ -395,7 +472,10 @@ int main( int argc, char ** argv )
 
   if ( gdcl.notts ) {
     cfg.notts = true;
+    cfg.voiceEngines.clear();
   }
+
+  cfg.resetState = gdcl.resetState;
 
   if ( gdcl.needLogFile() ) {
     // Open log file
@@ -412,8 +492,7 @@ int main( int argc, char ** argv )
     qInstallMessageHandler( gdMessageHandler );
   }
 
-  if ( Config::isPortableVersion() )
-  {
+  if ( Config::isPortableVersion() ) {
     // For portable version, hardcode some settings
 
     cfg.paths.clear();
@@ -425,15 +504,13 @@ int main( int argc, char ** argv )
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;
   QTranslator translator;
-  if( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage )
-  {
+  if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
     localeName = cfg.preferences.interfaceLanguage;
   }
 
   QLocale locale( localeName );
   QLocale::setDefault( locale );
-  if( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) )
-  {
+  if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
     qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( &qtTranslator );
   }
@@ -442,8 +519,7 @@ int main( int argc, char ** argv )
   app.installTranslator( &translator );
 
   QTranslator webengineTs;
-  if( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) )
-  {
+  if ( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) ) {
     app.installTranslator( &webengineTs );
   }
 
@@ -457,20 +533,20 @@ int main( int argc, char ** argv )
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
-  if( gdcl.needSetGroup() )
+  if ( gdcl.needSetGroup() )
     m.setGroupByName( gdcl.getGroupName(), true );
 
-  if( gdcl.needSetPopupGroup() )
+  if ( gdcl.needSetPopupGroup() )
     m.setGroupByName( gdcl.getPopupGroupName(), false );
 
-  if( gdcl.needTranslateWord() )
+  if ( gdcl.needTranslateWord() )
     m.wordReceived( gdcl.wordToTranslate() );
 
   int r = app.exec();
 
   app.removeDataCommiter( m );
 
-  if( logFilePtr->isOpen() )
+  if ( logFilePtr->isOpen() )
     logFilePtr->close();
 
   return r;

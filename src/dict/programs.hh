@@ -16,8 +16,7 @@ using std::vector;
 using std::string;
 using gd::wstring;
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & )
-  ;
+vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & );
 
 class RunInstance: public QObject
 {
@@ -79,6 +78,6 @@ private slots:
   void instanceFinished( QByteArray output, QString error );
 };
 
-}
+} // namespace Programs
 
 #endif

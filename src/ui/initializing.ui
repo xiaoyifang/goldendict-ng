@@ -1,74 +1,144 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Initializing</class>
- <widget class="QDialog" name="Initializing" >
-  <property name="windowModality" >
+ <widget class="QDialog" name="Initializing">
+  <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>326</width>
-    <height>84</height>
+    <width>680</width>
+    <height>383</height>
    </rect>
   </property>
-  <property name="minimumSize">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
    <size>
-    <width>326</width>
-    <height>0</height>
+    <width>680</width>
+    <height>383</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>GoldenDict-ng - Initializing</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" >
-   <item>
-    <widget class="QLabel" name="operation" >
-     <property name="text" >
-      <string>Please wait while indexing dictionary</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="dictionary" >
-     <property name="font" >
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text" >
-      <string>Dictionary Name</string>
-     </property>
-     <property name="scaledContents" >
-      <bool>false</bool>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QProgressBar" name="progressBar" >
-     <property name="maximum" >
-      <number>0</number>
-     </property>
-     <property name="value" >
-      <number>-1</number>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QLabel" name="splashImage">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>680</width>
+     <height>382</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../../resources.qrc">:/icons/splash.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="progressBar">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>280</y>
+     <width>441</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximum">
+    <number>0</number>
+   </property>
+   <property name="value">
+    <number>-1</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>310</y>
+     <width>411</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="operation">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Indexing: </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="dictionary">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Dictionary Name</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

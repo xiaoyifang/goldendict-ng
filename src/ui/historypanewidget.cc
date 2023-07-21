@@ -10,12 +10,12 @@
 
 #include "historypanewidget.hh"
 
-void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * menu )
+void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * menu )
 {
-  m_cfg = cfg;
-  m_history = history;
-  m_historyList = findChild<QListView*>( "historyList" );
-  QDockWidget * historyPane = qobject_cast<QDockWidget*>( parentWidget() );
+  m_cfg                     = cfg;
+  m_history                 = history;
+  m_historyList             = findChild< QListView * >( "historyList" );
+  QDockWidget * historyPane = qobject_cast< QDockWidget * >( parentWidget() );
 
   // Delete selected items action
   m_deleteSelectedAction = new QAction( this );
@@ -36,8 +36,8 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
 
   // Handle context menu, reusing some of the top-level window's History menu
   m_historyMenu = new QMenu( this );
-  m_separator = m_historyMenu->addSeparator();
-  QListIterator<QAction *> actionsIter( menu->actions() );
+  m_separator   = m_historyMenu->addSeparator();
+  QListIterator< QAction * > actionsIter( menu->actions() );
   while ( actionsIter.hasNext() )
     m_historyMenu->addAction( actionsIter.next() );
 
@@ -46,13 +46,11 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   historyLabel.setText( tr( "History:" ) );
   historyLabel.setObjectName( "historyLabel" );
   historyCountLabel.setObjectName( "historyCountLabel" );
-  if ( layoutDirection() == Qt::LeftToRight )
-  {
+  if ( layoutDirection() == Qt::LeftToRight ) {
     historyLabel.setAlignment( Qt::AlignLeft );
     historyCountLabel.setAlignment( Qt::AlignRight );
   }
-  else
-  {
+  else {
     historyLabel.setAlignment( Qt::AlignRight );
     historyCountLabel.setAlignment( Qt::AlignLeft );
   }
@@ -60,9 +58,9 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
 
   historyPaneTitleBarLayout.addWidget( &historyLabel );
   historyPaneTitleBarLayout.addWidget( &historyCountLabel );
-  historyPaneTitleBarLayout.setContentsMargins(5, 5, 5, 5);
+  historyPaneTitleBarLayout.setContentsMargins( 5, 5, 5, 5 );
   historyPaneTitleBar.setLayout( &historyPaneTitleBarLayout );
-  historyPaneTitleBar.setObjectName("historyPaneTitleBar");
+  historyPaneTitleBar.setObjectName( "historyPaneTitleBar" );
   historyPane->setTitleBarWidget( &historyPaneTitleBar );
 
   // History list
@@ -78,8 +76,10 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
   // list selection and keyboard navigation
   connect( m_historyList, &QAbstractItemView::clicked, this, &HistoryPaneWidget::onItemClicked );
   connect( m_history, &History::itemsChanged, this, &HistoryPaneWidget::updateHistoryCounts );
-  connect ( m_historyList->selectionModel(), SIGNAL( selectionChanged ( QItemSelection const & , QItemSelection const & ) ),
-      this, SLOT( onSelectionChanged( QItemSelection const & ) ) );
+  connect( m_historyList->selectionModel(),
+           &QItemSelectionModel::selectionChanged,
+           this,
+           &HistoryPaneWidget::onSelectionChanged );
 
   connect( m_historyList, &QWidget::customContextMenuRequested, this, &HistoryPaneWidget::showCustomMenu );
 
@@ -89,7 +89,7 @@ void HistoryPaneWidget::setUp( Config::Class * cfg,  History * history, QMenu * 
 
 HistoryPaneWidget::~HistoryPaneWidget()
 {
-  if( listItemDelegate )
+  if ( listItemDelegate )
     delete listItemDelegate;
 }
 
@@ -97,16 +97,14 @@ void HistoryPaneWidget::copySelectedItems()
 {
   QModelIndexList selectedIdxs = m_historyList->selectionModel()->selectedIndexes();
 
-  if ( selectedIdxs.isEmpty() )
-  {
+  if ( selectedIdxs.isEmpty() ) {
     // nothing to do
     return;
   }
 
   QStringList selectedStrings;
-  QListIterator<QModelIndex> i( selectedIdxs );
-  while ( i.hasNext() )
-  {
+  QListIterator< QModelIndex > i( selectedIdxs );
+  while ( i.hasNext() ) {
     selectedStrings << m_historyList->model()->data( i.next() ).toString();
   }
 
@@ -117,38 +115,33 @@ void HistoryPaneWidget::deleteSelectedItems()
 {
   QModelIndexList selectedIdxs = m_historyList->selectionModel()->selectedIndexes();
 
-  if ( selectedIdxs.isEmpty() )
-  {
+  if ( selectedIdxs.isEmpty() ) {
     // nothing to do
     return;
   }
 
-  QList<int> idxsToDelete;
+  QList< int > idxsToDelete;
 
-  QListIterator<QModelIndex> i( selectedIdxs );
-  while ( i.hasNext() )
-  {
+  QListIterator< QModelIndex > i( selectedIdxs );
+  while ( i.hasNext() ) {
     idxsToDelete << i.next().row();
   }
 
   // Need to sort indexes in the decreasing order so that
   // the first deletions won't affect the indexes for subsequent deletions.
-  std::sort( idxsToDelete.begin(), idxsToDelete.end(), std::greater<int>() );
+  std::sort( idxsToDelete.begin(), idxsToDelete.end(), std::greater< int >() );
 
-  QListIterator<int> idxs( idxsToDelete );
+  QListIterator< int > idxs( idxsToDelete );
   while ( idxs.hasNext() )
     m_history->removeItem( idxs.next() );
 
-  if ( idxsToDelete.size() == 1 )
-  {
+  if ( idxsToDelete.size() == 1 ) {
     // We've just removed a single entry,
     // keep the selection at the same index.
-    m_historyList->setCurrentIndex(selectedIdxs.front());
-    m_historyList->selectionModel()->select(
-          selectedIdxs.front(), QItemSelectionModel::SelectCurrent );
+    m_historyList->setCurrentIndex( selectedIdxs.front() );
+    m_historyList->selectionModel()->select( selectedIdxs.front(), QItemSelectionModel::SelectCurrent );
   }
-  else
-  {
+  else {
     // Too many deletions, better to reset the selection.
     m_historyList->selectionModel()->reset();
   }
@@ -161,7 +154,7 @@ bool HistoryPaneWidget::eventFilter( QObject * obj, QEvent * ev )
   return QWidget::eventFilter( obj, ev );
 }
 
-void HistoryPaneWidget::showCustomMenu(QPoint const & pos)
+void HistoryPaneWidget::showCustomMenu( QPoint const & pos )
 {
   bool selectionEmpty = m_historyList->selectionModel()->selection().empty();
 
@@ -170,8 +163,7 @@ void HistoryPaneWidget::showCustomMenu(QPoint const & pos)
 
   m_separator->setVisible( !selectionEmpty );
 
-  if ( !selectionEmpty )
-  {
+  if ( !selectionEmpty ) {
     m_historyMenu->insertAction( m_separator, m_copySelectedToClipboard );
     m_historyMenu->insertAction( m_separator, m_deleteSelectedAction );
   }
@@ -182,15 +174,14 @@ void HistoryPaneWidget::showCustomMenu(QPoint const & pos)
 void HistoryPaneWidget::emitHistoryItemRequested( QModelIndex const & idx )
 {
   QVariant value = m_historyList->model()->data( idx );
-  if ( !value.isNull() )
-  {
+  if ( !value.isNull() ) {
     emit historyItemRequested( value.toString() );
   }
 }
 
-void HistoryPaneWidget::onSelectionChanged( QItemSelection const & selection )
+void HistoryPaneWidget::onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected )
 {
-  // qDebug() << "selectionChanged";
+  Q_UNUSED( deselected );
 
   if ( selection.empty() )
     return;
@@ -203,8 +194,7 @@ void HistoryPaneWidget::onItemClicked( QModelIndex const & idx )
 {
   // qDebug() << "clicked";
 
-  if ( !itemSelectionChanged )
-  {
+  if ( !itemSelectionChanged ) {
     emitHistoryItemRequested( idx );
   }
   itemSelectionChanged = false;
@@ -212,17 +202,15 @@ void HistoryPaneWidget::onItemClicked( QModelIndex const & idx )
 
 void HistoryPaneWidget::updateHistoryCounts()
 {
-  historyCountLabel.setText( tr( "%1/%2" ).
-                             arg( m_history->size() ).
-                             arg( m_cfg->preferences.maxStringsInHistory ) );
-  historyCountLabel.setToolTip(
-        tr( "History size: %1 entries out of maximum %2" ).
-        arg( m_history->size() ).
-        arg( m_cfg->preferences.maxStringsInHistory ));
+  historyCountLabel.setText( tr( "%1/%2" ).arg( m_history->size() ).arg( m_cfg->preferences.maxStringsInHistory ) );
+  historyCountLabel.setToolTip( tr( "History size: %1 entries out of maximum %2" )
+                                  .arg( m_history->size() )
+                                  .arg( m_cfg->preferences.maxStringsInHistory ) );
 }
 
-HistoryModel::HistoryModel( History * history, QObject * parent )
-  : QAbstractListModel( parent ), m_history(history)
+HistoryModel::HistoryModel( History * history, QObject * parent ):
+  QAbstractListModel( parent ),
+  m_history( history )
 {
 
   connect( m_history, &History::itemsChanged, this, &HistoryModel::historyChanged );
@@ -237,24 +225,21 @@ QVariant HistoryModel::data( QModelIndex const & index, int role ) const
 {
   // qDebug() << "data: " << index;
 
-  if ( !index.isValid() || index.row() >= m_history->size() )
-  {
+  if ( !index.isValid() || index.row() >= m_history->size() ) {
     return QVariant();
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::ToolTipRole )
-  {
+  if ( role == Qt::DisplayRole || role == Qt::ToolTipRole ) {
     return m_history->getItem( index.row() ).word;
   }
-  else
-  {
+  else {
     return QVariant();
   }
 }
 
 void HistoryModel::historyChanged()
 {
-//  qDebug() << "History Changed!!";
+  //  qDebug() << "History Changed!!";
 
   beginResetModel();
   endResetModel();

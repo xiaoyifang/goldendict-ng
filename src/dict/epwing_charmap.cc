@@ -13,7 +13,7 @@ EpwingCharmap & EpwingCharmap::instance()
 
 QByteArray EpwingCharmap::mapToUtf8( QString const & code )
 {
-  if( charMap.contains( code ) )
+  if ( charMap.contains( code ) )
     return QString( charMap[ code ] ).toUtf8();
 
   return QByteArray();
@@ -21,7 +21,7 @@ QByteArray EpwingCharmap::mapToUtf8( QString const & code )
 
 void EpwingCharmap::addEntry( QString const & code, int ch )
 {
-    charMap[ code ] = QChar(ch);
+  charMap[ code ] = QChar( ch );
 }
 
 } // namespace Epwing

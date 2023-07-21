@@ -33,7 +33,9 @@ public:
 
   /// Returns the wikis the model currently has listed
   Config::MediaWikis const & getCurrentWikis() const
-  { return mediawikis; }
+  {
+    return mediawikis;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -63,7 +65,9 @@ public:
 
   /// Returns the sites the model currently has listed
   Config::WebSites const & getCurrentWebSites() const
-  { return webSites; }
+  {
+    return webSites;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -93,7 +97,9 @@ public:
 
   /// Returns the sites the model currently has listed
   Config::DictServers const & getCurrentDictServers() const
-  { return dictServers; }
+  {
+    return dictServers;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -123,7 +129,9 @@ public:
 
   /// Returns the sites the model currently has listed
   Config::Programs const & getCurrentPrograms() const
-  { return programs; }
+  {
+    return programs;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -141,11 +149,11 @@ private:
 
 class ProgramTypeEditor: public QComboBox
 {
-Q_OBJECT
-Q_PROPERTY(int type READ getType WRITE setType USER true)
+  Q_OBJECT
+  Q_PROPERTY( int type READ getType WRITE setType USER true )
 
 public:
-  ProgramTypeEditor( QWidget * widget = 0 );
+  explicit ProgramTypeEditor( QWidget * widget = nullptr );
 
   // Returns localized name for the given program type
   static QString getNameForType( int );
@@ -169,7 +177,9 @@ public:
 
   /// Returns the paths the model currently has listed
   Config::Paths const & getCurrentPaths() const
-  { return paths; }
+  {
+    return paths;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -199,7 +209,9 @@ public:
 
   /// Returns the soundDirs the model currently has listed
   Config::SoundDirs const & getCurrentSoundDirs() const
-  { return soundDirs; }
+  {
+    return soundDirs;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -228,7 +240,9 @@ public:
 
   /// Returns the dictionaries currently enabled
   Config::Hunspell::Dictionaries const & getEnabledDictionaries() const
-  { return enabledDictionaries; }
+  {
+    return enabledDictionaries;
+  }
 
   QModelIndex index( int row, int column, QModelIndex const & parent ) const;
   QModelIndex parent( QModelIndex const & parent ) const;
@@ -251,25 +265,37 @@ class Sources: public QWidget
   Q_OBJECT
 
 public:
-  Sources( QWidget * parent, Config::Class const &);
+  Sources( QWidget * parent, Config::Class const & );
 
   Config::Paths const & getPaths() const
-  { return pathsModel.getCurrentPaths(); }
+  {
+    return pathsModel.getCurrentPaths();
+  }
 
   Config::SoundDirs const & getSoundDirs() const
-  { return soundDirsModel.getCurrentSoundDirs(); }
+  {
+    return soundDirsModel.getCurrentSoundDirs();
+  }
 
   Config::MediaWikis const & getMediaWikis() const
-  { return mediawikisModel.getCurrentWikis(); }
+  {
+    return mediawikisModel.getCurrentWikis();
+  }
 
   Config::WebSites const & getWebSites() const
-  { return webSitesModel.getCurrentWebSites(); }
+  {
+    return webSitesModel.getCurrentWebSites();
+  }
 
   Config::DictServers const & getDictServers() const
-  { return dictServersModel.getCurrentDictServers(); }
+  {
+    return dictServersModel.getCurrentDictServers();
+  }
 
   Config::Programs const & getPrograms() const
-  { return programsModel.getCurrentPrograms(); }
+  {
+    return programsModel.getCurrentPrograms();
+  }
 
   Config::VoiceEngines getVoiceEngines() const;
 
@@ -290,13 +316,13 @@ private:
   Ui::Sources ui;
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  ChineseConversion *chineseConversion;
+  ChineseConversion * chineseConversion;
 #endif
 
-  TextToSpeechSource *textToSpeechSource;
+  TextToSpeechSource * textToSpeechSource;
 
   QItemDelegate * itemDelegate;
-  QItemEditorFactory * itemEditorFactory;
+  QScopedPointer< QItemEditorFactory > itemEditorFactory;
 
   MediaWikisModel mediawikisModel;
   WebSitesModel webSitesModel;

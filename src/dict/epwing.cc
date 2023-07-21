@@ -45,27 +45,26 @@ namespace {
 
 #pragma pack( push, 1 )
 
-enum
-{
-  Signature = 0x58575045, // EPWX on little-endian, XWPE on big-endian
+enum {
+  Signature            = 0x58575045, // EPWX on little-endian, XWPE on big-endian
   CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
 {
-  quint32 signature; // First comes the signature, EPWX
-  quint32 formatVersion; // File format version (CurrentFormatVersion)
-  quint32 chunksOffset; // The offset to chunks' storage
+  quint32 signature;             // First comes the signature, EPWX
+  quint32 formatVersion;         // File format version (CurrentFormatVersion)
+  quint32 chunksOffset;          // The offset to chunks' storage
   quint32 indexBtreeMaxElements; // Two fields from IndexInfo
   quint32 indexRootOffset;
   quint32 wordCount;
   quint32 articleCount;
   quint32 nameSize;
-  quint32 langFrom;  // Source language
-  quint32 langTo;    // Target language
+  quint32 langFrom; // Source language
+  quint32 langTo;   // Target language
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -77,15 +76,14 @@ bool indexIsOldOrBad( string const & indexFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion;
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion;
 }
 class EpwingHeadwordsRequest;
 
 class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 {
-  Q_DECLARE_TR_FUNCTIONS(Epwing::EpwingDictionary)
+  Q_DECLARE_TR_FUNCTIONS( Epwing::EpwingDictionary )
 
   QMutex idxMutex;
   File::Class idx;
@@ -97,14 +95,17 @@ class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  EpwingDictionary( string const & id, string const & indexFile,
+  EpwingDictionary( string const & id,
+                    string const & indexFile,
                     vector< string > const & dictionaryFiles,
                     int subBook );
 
   ~EpwingDictionary();
 
   string getName() noexcept override
-  { return bookName; }
+  {
+    return bookName;
+  }
 
   void setName( string _name ) noexcept override
   {
@@ -112,47 +113,52 @@ public:
   }
 
   map< Dictionary::Property, string > getProperties() noexcept override
-  { return map< Dictionary::Property, string >(); }
+  {
+    return map< Dictionary::Property, string >();
+  }
 
   unsigned long getArticleCount() noexcept override
-  { return idxHeader.articleCount; }
+  {
+    return idxHeader.articleCount;
+  }
 
   unsigned long getWordCount() noexcept override
-  { return idxHeader.wordCount; }
+  {
+    return idxHeader.wordCount;
+  }
 
   inline quint32 getLangFrom() const override
-  { return idxHeader.langFrom; }
+  {
+    return idxHeader.langFrom;
+  }
 
   inline quint32 getLangTo() const override
-  { return idxHeader.langTo; }
+  {
+    return idxHeader.langTo;
+  }
 
-  QString const& getDescription() override;
+  QString const & getDescription() override;
 
   void getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off );
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
   sptr< Dictionary::DataRequest >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    if( ensureInitDone().size() )
+    if ( ensureInitDone().size() )
       return;
 
-    can_FTS = fts.enabled
-              && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
-              && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    can_FTS = fts.enabled && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
+      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
   static int japaneseWriting( gd::wchar ch );
@@ -161,15 +167,10 @@ public:
 
   static bool isJapanesePunctiation( gd::wchar ch );
 
-  sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &,
-                                                             unsigned long ) override
-    ;
+  sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &, unsigned long ) override;
 
-  sptr< Dictionary::WordSearchRequest > stemmedMatch( wstring const &,
-                                                              unsigned minLength,
-                                                              unsigned maxSuffixVariation,
-                                                              unsigned long maxResults ) override
-    ;
+  sptr< Dictionary::WordSearchRequest >
+  stemmedMatch( wstring const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
 
 protected:
 
@@ -178,41 +179,44 @@ protected:
 private:
 
   /// Loads the article.
-  void loadArticle( quint32 address,
-                    string & articleHeadword,
-                    string & articleText,
-                    int & articlePage,
-                    int & articleOffset );
+  void loadArticle(
+    quint32 address, string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
 
 
   sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & word ) override;
 
   void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
-  void loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
-  
-  void loadArticle( int articlePage, int articleOffset, string & articleHeadword,
-                    string & articleText );
+  void
+  loadArticlePreviousPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
+
+  void loadArticle( int articlePage, int articleOffset, string & articleHeadword, string & articleText );
 
   void createCacheDirectory();
 
   void removeDirectory( QString const & directory );
 
   QString const & getImagesCacheDir()
-  { return eBook.getImagesCacheDir(); }
+  {
+    return eBook.getImagesCacheDir();
+  }
 
   QString const & getSoundsCacheDir()
-  { return eBook.getSoundsCacheDir(); }
+  {
+    return eBook.getSoundsCacheDir();
+  }
 
   QString const & getMoviesCacheDir()
-  { return eBook.getMoviesCacheDir(); }
+  {
+    return eBook.getMoviesCacheDir();
+  }
 
   friend class EpwingArticleRequest;
   friend class EpwingResourceRequest;
   friend class EpwingWordSearchRequest;
 
   friend class EpwingHeadwordsRequest;
-  string epwing_previous_button( const int& articleOffset, const int& articlePage);
-  string epwing_next_button( const int& articleOffset, const int& articlePage);
+  string epwing_previous_button( const int & articleOffset, const int & articlePage );
+  string epwing_next_button( const int & articleOffset, const int & articlePage );
   bool readHeadword( const EB_Position & pos, QString & headword );
 };
 
@@ -228,8 +232,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
 {
   vector< char > data( idxHeader.nameSize );
   idx.seek( sizeof( idxHeader ) );
-  if( data.size() > 0 )
-  {
+  if ( data.size() > 0 ) {
     idx.read( &data.front(), idxHeader.nameSize );
     bookName = string( &data.front(), idxHeader.nameSize );
   }
@@ -241,15 +244,11 @@ EpwingDictionary::EpwingDictionary( string const & id,
 
   // Initialize the index
 
-  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                        idxHeader.indexRootOffset ),
-             idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
   eBook.setDictID( getId() );
 
-  cacheDirectory = QDir::tempPath() + QDir::separator()
-                   + QString::fromUtf8( getId().c_str() )
-                   + ".cache";
+  cacheDirectory = QDir::tempPath() + QDir::separator() + QString::fromUtf8( getId().c_str() ) + ".cache";
   eBook.setCacheDirectory( cacheDirectory );
 
   // Full-text search parameters
@@ -258,8 +257,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-      && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
+  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
     FTS_index_completed.ref();
 }
 
@@ -276,13 +274,12 @@ void EpwingDictionary::loadIcon() noexcept
   QString fileName = QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator()
     + eBook.getCurrentSubBookDirectory() + ".";
 
-  if( !fileName.isEmpty() )
+  if ( !fileName.isEmpty() )
     loadIconFromFile( fileName );
 
-  if( dictionaryIcon.isNull() )
-  {
+  if ( dictionaryIcon.isNull() ) {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_epwing.png");
+    dictionaryIcon = QIcon( ":/icons/icon32_epwing.png" );
   }
 
   dictionaryIconLoaded = true;
@@ -291,12 +288,9 @@ void EpwingDictionary::loadIcon() noexcept
 void EpwingDictionary::removeDirectory( QString const & directory )
 {
   QDir dir( directory );
-  Q_FOREACH( QFileInfo info, dir.entryInfoList( QDir::NoDotAndDotDot
-                                                | QDir::AllDirs
-                                                | QDir::Files,
-                                                QDir::DirsFirst))
-  {
-    if( info.isDir() )
+  Q_FOREACH ( QFileInfo info,
+              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
+    if ( info.isDir() )
       removeDirectory( info.absoluteFilePath() );
     else
       QFile::remove( info.absoluteFilePath() );
@@ -318,86 +312,84 @@ void EpwingDictionary::loadArticle(
   }
 
   memcpy( &articlePage, articleProps, sizeof( articlePage ) );
-  memcpy( &articleOffset, articleProps + sizeof( articlePage ),
-          sizeof( articleOffset ) );
+  memcpy( &articleOffset, articleProps + sizeof( articlePage ), sizeof( articleOffset ) );
 
   QString headword, text;
 
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
-    eBook.getArticle( headword, text, articlePage, articleOffset, false);
+    eBook.getArticle( headword, text, articlePage, articleOffset, false );
   }
-  catch( std::exception & e )
-  {
-    text = QString( "Article reading error: %1")
-           .arg( QString::fromUtf8( e.what() ) );
+  catch ( std::exception & e ) {
+    text = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
   }
 
   articleHeadword = string( headword.toUtf8().data() );
-  articleText = string( text.toUtf8().data() );
+  articleText     = string( text.toUtf8().data() );
 
   string prefix( "<div class=\"epwing_text\">" );
 
   articleText = prefix + articleText + "</div>";
 }
 
-string Epwing::EpwingDictionary::epwing_previous_button( const int& articlePage, const int& articleOffset)
+string Epwing::EpwingDictionary::epwing_previous_button( const int & articlePage, const int & articleOffset )
 {
-    QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
-    string previousLink    = R"(<p><a class="epwing_previous_page" href="gdlookup://localhost/)"
-      + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
+  QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
+  string previousLink    = R"(<p><a class="epwing_previous_page" href="gdlookup://localhost/)"
+    + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
 
-    return previousLink;
+  return previousLink;
 }
 
-void EpwingDictionary::loadArticleNextPage(string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
+void EpwingDictionary::loadArticleNextPage( string & articleHeadword,
+                                            string & articleText,
+                                            int & articlePage,
+                                            int & articleOffset )
 {
   QString headword, text;
   EB_Position pos;
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
     pos = eBook.getArticleNextPage( headword, text, articlePage, articleOffset, false );
   }
-  catch( std::exception & e )
-  {
+  catch ( std::exception & e ) {
     qWarning() << QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
     return;
   }
 
   articleHeadword = string( headword.toUtf8().data() );
-  articleText = string( text.toUtf8().data() );
+  articleText     = string( text.toUtf8().data() );
 
   string prefix( "<div class=\"epwing_text\">" );
-  string previousLink = epwing_previous_button(articlePage, articleOffset);
+  string previousLink = epwing_previous_button( articlePage, articleOffset );
 
   articleText     = prefix + previousLink + articleText;
-  string nextLink = epwing_next_button(pos.page, pos.offset);
-  articleText = articleText + nextLink;
-  articleText = articleText + "</div>";
+  string nextLink = epwing_next_button( pos.page, pos.offset );
+  articleText     = articleText + nextLink;
+  articleText     = articleText + "</div>";
 }
 
-string Epwing::EpwingDictionary::epwing_next_button( const int& articlePage, const int& articleOffset )
+string Epwing::EpwingDictionary::epwing_next_button( const int & articlePage, const int & articleOffset )
 {
-    QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
-    string nextLink = R"(<p><a class="epwing_next_page" href="gdlookup://localhost/)" + refLink.toStdString() + "\">"
-      + tr( "Next Page" ).toStdString() + "</a></p>";
+  QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
+  string nextLink = R"(<p><a class="epwing_next_page" href="gdlookup://localhost/)" + refLink.toStdString() + "\">"
+    + tr( "Next Page" ).toStdString() + "</a></p>";
 
-    return nextLink;
+  return nextLink;
 }
 
-void EpwingDictionary::loadArticlePreviousPage(
-  string & articleHeadword, string & articleText, int & articlePage, int & articleOffset )
+void EpwingDictionary::loadArticlePreviousPage( string & articleHeadword,
+                                                string & articleText,
+                                                int & articlePage,
+                                                int & articleOffset )
 {
   QString headword, text;
   EB_Position pos;
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
     pos = eBook.getArticlePreviousPage( headword, text, articlePage, articleOffset, false );
   }
-  catch( std::exception & e ) {
+  catch ( std::exception & e ) {
     qDebug() << QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
     return;
   }
@@ -407,42 +399,36 @@ void EpwingDictionary::loadArticlePreviousPage(
 
   string prefix( "<div class=\"epwing_text\">" );
 
-  string previousLink = epwing_previous_button(pos.page, pos.offset );
-  articleText     = prefix + previousLink + articleText;
-  string nextLink = epwing_next_button( articlePage, articleOffset );
-  articleText = articleText + nextLink;
-  articleText = articleText + "</div>";
+  string previousLink = epwing_previous_button( pos.page, pos.offset );
+  articleText         = prefix + previousLink + articleText;
+  string nextLink     = epwing_next_button( articlePage, articleOffset );
+  articleText         = articleText + nextLink;
+  articleText         = articleText + "</div>";
 }
 
-void EpwingDictionary::loadArticle( int articlePage,
-                                    int articleOffset,
-                                    string & articleHeadword,
-                                    string & articleText )
+void EpwingDictionary::loadArticle( int articlePage, int articleOffset, string & articleHeadword, string & articleText )
 {
   QString headword, text;
 
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
     eBook.getArticle( headword, text, articlePage, articleOffset, false );
   }
-  catch( std::exception & e )
-  {
-    text = QString( "Article reading error: %1")
-           .arg( QString::fromUtf8( e.what() ) );
+  catch ( std::exception & e ) {
+    text = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
   }
 
   articleHeadword = string( headword.toUtf8().data() );
-  articleText = string( text.toUtf8().data() );
+  articleText     = string( text.toUtf8().data() );
 
   string prefix( "<div class=\"epwing_text\">" );
 
   articleText = prefix + articleText + "</div>";
 }
 
-QString const& EpwingDictionary::getDescription()
+QString const & EpwingDictionary::getDescription()
 {
-  if( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
   dictionaryDescription = "NONE";
@@ -453,7 +439,7 @@ QString const& EpwingDictionary::getDescription()
     str = eBook.copyright();
   }
 
-  if( !str.isEmpty() )
+  if ( !str.isEmpty() )
     dictionaryDescription = str;
 
   return dictionaryDescription;
@@ -461,28 +447,27 @@ QString const& EpwingDictionary::getDescription()
 
 void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
-  if( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-         || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+  if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
-  if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
+  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
     return;
 
-  gdDebug( "Epwing: Building the full-text index for dictionary: %s\n",
-           getName().c_str() );
+  gdDebug( "Epwing: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
-  try
-  {
+  try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
-  catch( std::exception &ex )
-  {
-    gdWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+  catch ( std::exception & ex ) {
+    gdWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s\n",
+               getName().c_str(),
+               ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -503,22 +488,16 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
   uint32_t articlePage, articleOffset;
 
   memcpy( &articlePage, articleProps, sizeof( articlePage ) );
-  memcpy( &articleOffset, articleProps + sizeof( articlePage ),
-          sizeof( articleOffset ) );
+  memcpy( &articleOffset, articleProps + sizeof( articlePage ), sizeof( articleOffset ) );
 
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
     eBook.getArticle( headword, text, articlePage, articleOffset, true );
   }
-  catch( std::exception & e )
-  {
-    text = QString( "Article reading error: %1")
-           .arg( QString::fromUtf8( e.what() ) );
+  catch ( std::exception & e ) {
+    text = QString( "Article reading error: %1" ).arg( QString::fromUtf8( e.what() ) );
   }
 }
-
-
 
 
 class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
@@ -542,7 +521,10 @@ public:
 
   void run();
 
-  void cancel() override { isCancelled.ref(); }
+  void cancel() override
+  {
+    isCancelled.ref();
+  }
 
   ~EpwingHeadwordsRequest()
   {
@@ -576,9 +558,8 @@ void EpwingHeadwordsRequest::run()
     return;
   }
 
-  auto parts = headword.split(' ',Qt::SkipEmptyParts);
-  if(parts.empty())
-  {
+  auto parts = headword.split( ' ', Qt::SkipEmptyParts );
+  if ( parts.empty() ) {
     finish();
     return;
   }
@@ -586,7 +567,7 @@ void EpwingHeadwordsRequest::run()
 
   QVector< int > pg;
   QVector< int > off;
-  dict.getHeadwordPos( parts[0].toStdU32String(), pg, off );
+  dict.getHeadwordPos( parts[ 0 ].toStdU32String(), pg, off );
 
   for ( unsigned i = 0; i < pg.size(); ++i ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -598,7 +579,7 @@ void EpwingHeadwordsRequest::run()
 
       QMutexLocker _( &dataMutex );
 
-      matches.emplace_back( parts[0].toStdU32String() );
+      matches.emplace_back( parts[ 0 ].toStdU32String() );
       break;
     }
   }
@@ -626,15 +607,22 @@ public:
 
   EpwingArticleRequest( wstring const & word_,
                         vector< wstring > const & alts_,
-                        EpwingDictionary & dict_, bool ignoreDiacritics_ ):
-    word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
+                        EpwingDictionary & dict_,
+                        bool ignoreDiacritics_ ):
+    word( word_ ),
+    alts( alts_ ),
+    dict( dict_ ),
+    ignoreDiacritics( ignoreDiacritics_ )
   {
-    f = QtConcurrent::run( [ this ]() { this->run(); } );
+    f = QtConcurrent::run( [ this ]() {
+      this->run();
+    } );
   }
 
   void run();
 
-  void getBuiltInArticle(wstring const & word_, QVector< int > & pages,
+  void getBuiltInArticle( wstring const & word_,
+                          QVector< int > & pages,
                           QVector< int > & offsets,
                           multimap< wstring, pair< string, string > > & mainArticles );
 
@@ -652,8 +640,7 @@ public:
 
 void EpwingArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
@@ -674,14 +661,13 @@ void EpwingArticleRequest::run()
                                    // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if( ignoreDiacritics )
+  if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
   QVector< int > pages, offsets;
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
@@ -694,12 +680,10 @@ void EpwingArticleRequest::run()
     string headword, articleText;
     int articlePage, articleOffset;
 
-    try
-    {
+    try {
       dict.loadArticle( x.articleOffset, headword, articleText, articlePage, articleOffset );
     }
-    catch(...)
-    {
+    catch ( ... ) {
     }
 
     pages.append( articlePage );
@@ -710,18 +694,14 @@ void EpwingArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped =
-      Folding::applySimpleCaseOnly( headword );
-    if( ignoreDiacritics )
+    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
     multimap< wstring, pair< string, string > > & mapToUse =
-      ( wordCaseFolded == headwordStripped ) ?
-        mainArticles : alternateArticles;
+      ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( pair(
-      Folding::applySimpleCaseOnly( headword ),
-      pair( headword, articleText ) ) );
+    mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
     articlesIncluded.insert( x.articleOffset );
   }
@@ -735,8 +715,7 @@ void EpwingArticleRequest::run()
     getBuiltInArticle( alt, pages, offsets, alternateArticles );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() && !ref)
-  {
+  if ( mainArticles.empty() && alternateArticles.empty() && !ref ) {
     // No such word
     finish();
     return;
@@ -746,32 +725,28 @@ void EpwingArticleRequest::run()
 
   multimap< wstring, pair< string, string > >::const_iterator i;
 
-  for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
-  {
-      result += "<h3>";
-      result += i->second.first;
-      result += "</h3>";
-      result += i->second.second;
+  for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
+    result += "<h3>";
+    result += i->second.first;
+    result += "</h3>";
+    result += i->second.second;
   }
 
-  for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-  {
-      result += "<h3>";
-      result += i->second.first;
-      result += "</h3>";
-      result += i->second.second;
+  for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
+    result += "<h3>";
+    result += i->second.first;
+    result += "</h3>";
+    result += i->second.second;
   }
 
   //only load the next/previous page when not hitted.
-  if( mainArticles.empty() && alternateArticles.empty() && ref )
-  {
+  if ( mainArticles.empty() && alternateArticles.empty() && ref ) {
     string headword, articleText;
     int articlePage   = m.captured( 1 ).toInt();
     int articleOffset = m.captured( 2 ).toInt();
-    if( word[ 0 ] =='r' )
+    if ( word[ 0 ] == 'r' )
       dict.loadArticleNextPage( headword, articleText, articlePage, articleOffset );
-    else
-    {
+    else {
       //starts with p
       dict.loadArticlePreviousPage( headword, articleText, articlePage, articleOffset );
     }
@@ -790,11 +765,7 @@ void EpwingArticleRequest::run()
 
   result += "</div>";
 
-  QMutexLocker _( &dataMutex );
-
-  data.resize( result.size() );
-
-  memcpy( &data.front(), result.data(), result.size() );
+  appendString( result );
 
   hasAnyData = true;
 
@@ -806,8 +777,7 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
                                               QVector< int > & offsets,
                                               multimap< wstring, pair< string, string > > & mainArticles )
 {
-  try
-  {
+  try {
     string headword, articleText;
 
     QVector< int > pg, off;
@@ -816,33 +786,26 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
       dict.eBook.getArticlePos( QString::fromStdU32String( word_ ), pg, off );
     }
 
-    for( int i = 0; i < pg.size(); i++ )
-    {
+    for ( int i = 0; i < pg.size(); i++ ) {
       bool already = false;
-      for( int n = 0; n < pages.size(); n++ )
-      {
-        if( pages.at( n ) == pg.at( i ) && abs( offsets.at( n ) - off.at( i ) ) <= 4 )
-        {
+      for ( int n = 0; n < pages.size(); n++ ) {
+        if ( pages.at( n ) == pg.at( i ) && abs( offsets.at( n ) - off.at( i ) ) <= 4 ) {
           already = true;
           break;
         }
       }
 
-      if( !already )
-      {
+      if ( !already ) {
         dict.loadArticle( pg.at( i ), off.at( i ), headword, articleText );
 
-        mainArticles.insert(
-          pair( Folding::applySimpleCaseOnly( headword ),
-                                                   pair( headword, articleText ) ) );
+        mainArticles.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
         pages.append( pg.at( i ) );
         offsets.append( off.at( i ) );
       }
     }
   }
-  catch( ... )
-  {
+  catch ( ... ) {
   }
 }
 
@@ -861,9 +824,9 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & wo
                                                               vector< wstring > const & alts,
                                                               wstring const &,
                                                               bool ignoreDiacritics )
-  
+
 {
-  return std::make_shared<EpwingArticleRequest>( word, alts, *this, ignoreDiacritics );
+  return std::make_shared< EpwingArticleRequest >( word, alts, *this, ignoreDiacritics );
 }
 
 //// EpwingDictionary::getResource()
@@ -890,7 +853,10 @@ public:
 
   void run();
 
-  void cancel() override { isCancelled.ref(); }
+  void cancel() override
+  {
+    isCancelled.ref();
+  }
 
   ~EpwingResourceRequest()
   {
@@ -902,8 +868,7 @@ public:
 void EpwingResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
@@ -911,20 +876,16 @@ void EpwingResourceRequest::run()
   QString cacheDir;
   {
     QMutexLocker _( &dict.eBook.getLibMutex() );
-    if( Filetype::isNameOfPicture( resourceName ) )
+    if ( Filetype::isNameOfPicture( resourceName ) )
       cacheDir = dict.getImagesCacheDir();
-    else
-    if( Filetype::isNameOfSound( resourceName ) )
+    else if ( Filetype::isNameOfSound( resourceName ) )
       cacheDir = dict.getSoundsCacheDir();
-    else
-    if( Filetype::isNameOfVideo( resourceName ) )
+    else if ( Filetype::isNameOfVideo( resourceName ) )
       cacheDir = dict.getMoviesCacheDir();
   }
 
-  try
-  {
-    if( cacheDir.isEmpty() )
-    {
+  try {
+    if ( cacheDir.isEmpty() ) {
       finish();
       return;
     }
@@ -932,8 +893,7 @@ void EpwingResourceRequest::run()
     QString fullName = cacheDir + QDir::separator() + QString::fromStdString( resourceName );
 
     QFile f( fullName );
-    if( f.open( QFile::ReadOnly ) )
-    {
+    if ( f.open( QFile::ReadOnly ) ) {
       QByteArray buffer = f.readAll();
 
       QMutexLocker _( &dataMutex );
@@ -945,10 +905,11 @@ void EpwingResourceRequest::run()
       hasAnyData = true;
     }
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Epwing: Failed loading resource \"%s\" for \"%s\", reason: %s\n",
-               resourceName.c_str(), dict.getName().c_str(), ex.what() );
+               resourceName.c_str(),
+               dict.getName().c_str(),
+               ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -956,9 +917,9 @@ void EpwingResourceRequest::run()
 }
 
 sptr< Dictionary::DataRequest > EpwingDictionary::getResource( string const & name )
-  
+
 {
-  return std::make_shared<EpwingResourceRequest>( *this, name );
+  return std::make_shared< EpwingResourceRequest >( *this, name );
 }
 
 
@@ -976,19 +937,12 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString cons
 
 int EpwingDictionary::japaneseWriting( gd::wchar ch )
 {
-  if( ( ch >= 0x30A0 && ch <= 0x30FF )
-      || ( ch >= 0x31F0 && ch <= 0x31FF )
-      || ( ch >= 0x3200 && ch <= 0x32FF )
-      || ( ch >= 0xFF00 && ch <= 0xFFEF )
-      || ( ch == 0x1B000 ) )
+  if ( ( ch >= 0x30A0 && ch <= 0x30FF ) || ( ch >= 0x31F0 && ch <= 0x31FF ) || ( ch >= 0x3200 && ch <= 0x32FF )
+       || ( ch >= 0xFF00 && ch <= 0xFFEF ) || ( ch == 0x1B000 ) )
     return 1; // Katakana
-  else
-  if( ( ch >= 0x3040 && ch <= 0x309F )
-      || ( ch == 0x1B001 ) )
+  else if ( ( ch >= 0x3040 && ch <= 0x309F ) || ( ch == 0x1B001 ) )
     return 2; // Hiragana
-  else
-  if( ( ch >= 0x4E00 && ch <= 0x9FAF )
-      || ( ch >= 0x3400 && ch <= 0x4DBF ) )
+  else if ( ( ch >= 0x4E00 && ch <= 0x9FAF ) || ( ch >= 0x3400 && ch <= 0x4DBF ) )
     return 3; // Kanji
 
   return 0;
@@ -996,8 +950,7 @@ int EpwingDictionary::japaneseWriting( gd::wchar ch )
 
 bool EpwingDictionary::isSign( gd::wchar ch )
 {
-  switch( ch )
-  {
+  switch ( ch ) {
     case 0x002B: // PLUS SIGN
     case 0x003C: // LESS-THAN SIGN
     case 0x003D: // EQUALS SIGN
@@ -1049,21 +1002,19 @@ public:
 void EpwingWordSearchRequest::findMatches()
 {
   BtreeWordSearchRequest::findMatches();
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
 
-  while( matches.size() < maxResults )
-  {
+  while ( matches.size() < maxResults ) {
     QVector< QString > headwords;
     {
       QMutexLocker _( &edict.eBook.getLibMutex() );
-      if( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
         break;
 
-      if( !edict.eBook.getMatches( QString::fromStdU32String( str ), headwords ) )
+      if ( !edict.eBook.getMatches( QString::fromStdU32String( str ), headwords ) )
         break;
     }
 
@@ -1078,32 +1029,34 @@ void EpwingWordSearchRequest::findMatches()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch(
-  wstring const & str, unsigned long maxResults )
-  
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch( wstring const & str, unsigned long maxResults )
+
 {
-  return std::make_shared<EpwingWordSearchRequest>( *this, str, 0, -1, true, maxResults );
+  return std::make_shared< EpwingWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch(
-  wstring const & str, unsigned minLength, unsigned maxSuffixVariation,
-  unsigned long maxResults )
-  
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch( wstring const & str,
+                                                                      unsigned minLength,
+                                                                      unsigned maxSuffixVariation,
+                                                                      unsigned long maxResults )
+
 {
-  return std::make_shared<EpwingWordSearchRequest>( *this, str, minLength, (int)maxSuffixVariation,
-                                      false, maxResults );
+  return std::make_shared< EpwingWordSearchRequest >( *this,
+                                                      str,
+                                                      minLength,
+                                                      (int)maxSuffixVariation,
+                                                      false,
+                                                      maxResults );
 }
 bool Epwing::EpwingDictionary::readHeadword( const EB_Position & pos, QString & headword )
 {
-  try
-  {
+  try {
     QMutexLocker _( &eBook.getLibMutex() );
-    eBook.readHeadword( pos,headword, true);
+    eBook.readHeadword( pos, headword, true );
     eBook.fixHeadword( headword );
-    return eBook.isHeadwordCorrect( headword ) ;
+    return eBook.isHeadwordCorrect( headword );
   }
-  catch( std::exception &  )
-  {
+  catch ( std::exception & ) {
     return false;
   }
 }
@@ -1116,8 +1069,7 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
                       int & wordCount,
                       int & articleCount )
 {
-  if( !head.headword.isEmpty() )
-  {
+  if ( !head.headword.isEmpty() ) {
     uint32_t offset = chunks.startNewBlock();
     chunks.addToBlock( &head.page, sizeof( head.page ) );
     chunks.addToBlock( &head.offset, sizeof( head.offset ) );
@@ -1134,21 +1086,19 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
 
     int w_prev = 0;
     wstring word;
-    for( wstring::size_type n = 0; n < hw.size(); n++ )
-    {
+    for ( wstring::size_type n = 0; n < hw.size(); n++ ) {
       gd::wchar ch = hw[ n ];
 
-      if( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isSign( ch )
-          || EpwingDictionary::isJapanesePunctiation( ch ) )
+      if ( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isSign( ch )
+           || EpwingDictionary::isJapanesePunctiation( ch ) )
         continue;
 
       int w = EpwingDictionary::japaneseWriting( ch );
 
-      if( w > 0 )
-      {
+      if ( w > 0 ) {
         // Store only separated words
         gd::wchar ch_prev = 0;
-        if( n )
+        if ( n )
           ch_prev = hw[ n - 1 ];
         bool needStore = ( n == 0 || Folding::isPunct( ch_prev ) || Folding::isWhitespace( ch_prev )
                            || EpwingDictionary::isJapanesePunctiation( ch ) );
@@ -1156,53 +1106,47 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
         word.push_back( ch );
         w_prev = w;
         wstring::size_type i;
-        for( i = n + 1; i < hw.size(); i++ )
-        {
+        for ( i = n + 1; i < hw.size(); i++ ) {
           ch = hw[ i ];
-          if( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isJapanesePunctiation( ch ) )
+          if ( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isJapanesePunctiation( ch ) )
             break;
           w = EpwingDictionary::japaneseWriting( ch );
-          if( w != w_prev )
+          if ( w != w_prev )
             break;
           word.push_back( ch );
         }
 
-        if( needStore )
-        {
-          if( i >= hw.size() || Folding::isPunct( ch ) || Folding::isWhitespace( ch )
-              || EpwingDictionary::isJapanesePunctiation( ch ) )
+        if ( needStore ) {
+          if ( i >= hw.size() || Folding::isPunct( ch ) || Folding::isWhitespace( ch )
+               || EpwingDictionary::isJapanesePunctiation( ch ) )
             words.push_back( word );
         }
         word.clear();
 
-        if( i < hw.size() )
+        if ( i < hw.size() )
           n = i;
         else
           break;
       }
     }
 
-    if( words.size() > 1 )
-    {
+    if ( words.size() > 1 ) {
       // Allow only one word in every charset
 
       size_t n;
       int writings[ 4 ];
       memset( writings, 0, sizeof( writings ) );
 
-      for( n = 0; n < words.size(); n++ )
-      {
+      for ( n = 0; n < words.size(); n++ ) {
         int w = EpwingDictionary::japaneseWriting( words[ n ][ 0 ] );
-        if( writings[ w ] )
+        if ( writings[ w ] )
           break;
         else
           writings[ w ] = 1;
       }
 
-      if( n >= words.size() )
-      {
-        for( n = 0; n < words.size(); n++ )
-        {
+      if ( n >= words.size() ) {
+        for ( n = 0; n < words.size(); n++ ) {
           indexedWords.addWord( words[ n ], offset );
           wordCount++;
         }
@@ -1211,155 +1155,140 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
   }
 }
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
   vector< string > dictFiles;
-  QByteArray catName = QString("%1catalogs").arg(QDir::separator()).toUtf8();
+  QByteArray catName = QString( "%1catalogs" ).arg( QDir::separator() ).toUtf8();
 
   for ( const auto & fileName : fileNames ) {
-      // Skip files other than "catalogs" to speed up the scanning
+    // Skip files other than "catalogs" to speed up the scanning
 
-      if ( fileName.size() < (unsigned)catName.size() ||
-          strcasecmp( fileName.c_str() + ( fileName.size() - catName.size() ), catName.data() ) != 0 )
-        continue;
+    if ( fileName.size() < (unsigned)catName.size()
+         || strcasecmp( fileName.c_str() + ( fileName.size() - catName.size() ), catName.data() ) != 0 )
+      continue;
 
-      int ndir = fileName.size() - catName.size();
-      if( ndir < 1 )
-        ndir = 1;
+    int ndir = fileName.size() - catName.size();
+    if ( ndir < 1 )
+      ndir = 1;
 
-      string mainDirectory = fileName.substr( 0, ndir );
+    string mainDirectory = fileName.substr( 0, ndir );
 
-      Epwing::Book::EpwingBook dict;
-      int subBooksNumber = 0;
-      try
-      {
-        subBooksNumber = dict.setBook( mainDirectory );
-      }
-      catch( std::exception & e )
-      {
-        gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n",
-                   mainDirectory.c_str(), e.what() );
-        continue;
-      }
+    Epwing::Book::EpwingBook dict;
+    int subBooksNumber = 0;
+    try {
+      subBooksNumber = dict.setBook( mainDirectory );
+    }
+    catch ( std::exception & e ) {
+      gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n", mainDirectory.c_str(), e.what() );
+      continue;
+    }
 
-      for( int sb = 0; sb < subBooksNumber; sb++ )
-      {
-        QString dir;
+    for ( int sb = 0; sb < subBooksNumber; sb++ ) {
+      QString dir;
 
-        try
-        {
-          dictFiles.clear();
-          dictFiles.push_back( mainDirectory );
-          dictFiles.push_back( fileName );
+      try {
+        dictFiles.clear();
+        dictFiles.push_back( mainDirectory );
+        dictFiles.push_back( fileName );
 
-          dict.setSubBook( sb );
+        dict.setSubBook( sb );
 
-          dir = QString::fromStdString( mainDirectory ) + Utils::Fs::separator() + dict.getCurrentSubBookDirectory();
+        dir = QString::fromStdString( mainDirectory ) + Utils::Fs::separator() + dict.getCurrentSubBookDirectory();
 
-          Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
+        Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
 
-          QString fontSubName =
-            QString::fromStdString( mainDirectory ) + QDir::separator() + "afonts_" + QString::number( sb );
-          QFileInfo info( fontSubName );
-          if( info.exists() && info.isFile() )
+        QString fontSubName =
+          QString::fromStdString( mainDirectory ) + QDir::separator() + "afonts_" + QString::number( sb );
+        QFileInfo info( fontSubName );
+        if ( info.exists() && info.isFile() )
           dictFiles.push_back( fontSubName.toStdString() );
 
-          // Check if we need to rebuid the index
+        // Check if we need to rebuid the index
 
-          string dictId = Dictionary::makeDictionaryId( dictFiles );
+        string dictId = Dictionary::makeDictionaryId( dictFiles );
 
-          string indexFile = indicesDir + dictId;
+        string indexFile = indicesDir + dictId;
 
-          if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-                 indexIsOldOrBad( indexFile ) )
-          {
-            gdDebug( "Epwing: Building the index for dictionary in directory %s\n", dir.toUtf8().data() );
+        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+          gdDebug( "Epwing: Building the index for dictionary in directory %s\n", dir.toUtf8().data() );
 
-            QString str = dict.title();
-            QByteArray nameData = str.toUtf8();
-            initializing.indexingDictionary( nameData.data() );
+          QString str         = dict.title();
+          QByteArray nameData = str.toUtf8();
+          initializing.indexingDictionary( nameData.data() );
 
-            File::Class idx( indexFile, "wb" );
+          File::Class idx( indexFile, "wb" );
 
-            IdxHeader idxHeader;
+          IdxHeader idxHeader;
 
-            memset( &idxHeader, 0, sizeof( idxHeader ) );
+          memset( &idxHeader, 0, sizeof( idxHeader ) );
 
-            // We write a dummy header first. At the end of the process the header
-            // will be rewritten with the right values.
+          // We write a dummy header first. At the end of the process the header
+          // will be rewritten with the right values.
 
-            idx.write( idxHeader );
+          idx.write( idxHeader );
 
-            idx.write( nameData.data(), nameData.size() );
-            idxHeader.nameSize = nameData.size();
+          idx.write( nameData.data(), nameData.size() );
+          idxHeader.nameSize = nameData.size();
 
-            IndexedWords indexedWords;
+          IndexedWords indexedWords;
 
-            ChunkedStorage::Writer chunks( idx );
+          ChunkedStorage::Writer chunks( idx );
 
-            Epwing::Book::EpwingHeadword head;
+          Epwing::Book::EpwingHeadword head;
 
-            dict.getFirstHeadword( head );
+          dict.getFirstHeadword( head );
 
-            int wordCount = 0;
-            int articleCount = 0;
+          int wordCount    = 0;
+          int articleCount = 0;
 
-            for( ; ; )
-            {
-              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
-              if( !dict.getNextHeadword( head ) )
-                break;
-            }
+          for ( ;; ) {
+            addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
+            if ( !dict.getNextHeadword( head ) )
+              break;
+          }
 
-            dict.clearBuffers();
+          dict.clearBuffers();
 
-            // Finish with the chunks
+          // Finish with the chunks
 
-            idxHeader.chunksOffset = chunks.finish();
+          idxHeader.chunksOffset = chunks.finish();
 
-            // Build index
+          // Build index
 
-            IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
+          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
 
-            idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-            idxHeader.indexRootOffset = idxInfo.rootOffset;
+          idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
+          idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
-            indexedWords.clear(); // Release memory -- no need for this data
+          indexedWords.clear(); // Release memory -- no need for this data
 
-            // That concludes it. Update the header.
+          // That concludes it. Update the header.
 
-            idxHeader.signature = Signature;
-            idxHeader.formatVersion = CurrentFormatVersion;
+          idxHeader.signature     = Signature;
+          idxHeader.formatVersion = CurrentFormatVersion;
 
-            idxHeader.wordCount = wordCount;
-            idxHeader.articleCount = articleCount;
+          idxHeader.wordCount    = wordCount;
+          idxHeader.articleCount = articleCount;
 
-            idx.rewind();
+          idx.rewind();
 
-            idx.write( &idxHeader, sizeof( idxHeader ) );
+          idx.write( &idxHeader, sizeof( idxHeader ) );
 
 
-          } // If need to rebuild
+        } // If need to rebuild
 
-          dictionaries.push_back( std::make_shared<EpwingDictionary>( dictId,
-                                                        indexFile,
-                                                        dictFiles,
-                                                        sb ) );
-        }
-        catch( std::exception & e )
-        {
-          gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n",
-                     dir.toUtf8().data(), e.what() );
-          continue;
-        }
+        dictionaries.push_back( std::make_shared< EpwingDictionary >( dictId, indexFile, dictFiles, sb ) );
       }
-
+      catch ( std::exception & e ) {
+        gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n", dir.toUtf8().data(), e.what() );
+        continue;
+      }
+    }
   }
   return dictionaries;
 }

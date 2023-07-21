@@ -8,8 +8,7 @@
 #include <vector>
 #include <string>
 
-namespace SplitFile
-{
+namespace SplitFile {
 
 using std::vector;
 using std::string;
@@ -36,13 +35,17 @@ public:
   bool open( QFile::OpenMode mode );
   void close();
   bool seek( quint64 pos );
-  qint64 read(  char * data, qint64 maxSize );
+  qint64 read( char * data, qint64 maxSize );
   QByteArray read( qint64 maxSize );
   bool getChar( char * c );
   qint64 size() const
-  { return files.isEmpty() ? 0 : offsets.last() + files.last()->size(); }
+  {
+    return files.isEmpty() ? 0 : offsets.last() + files.last()->size();
+  }
   bool exists() const
-  { return !files.isEmpty(); }
+  {
+    return !files.isEmpty();
+  }
   qint64 pos() const;
 };
 

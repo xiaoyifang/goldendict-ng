@@ -53,3 +53,8 @@ CMakeSettings.json
 goldendict.vcxproj
 goldendict.vcxproj.filters
 GoldenDict_resource.rc
+
+*.TMP
+*.orig
+
+node_modules

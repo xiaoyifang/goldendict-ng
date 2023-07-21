@@ -39,19 +39,19 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     }
   }
 
-  if (QWebEngineUrlRequestInfo::NavigationTypeLink == info.navigationType() && info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
+  if ( QWebEngineUrlRequestInfo::NavigationTypeLink == info.navigationType()
+       && info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame ) {
     //workaround to fix devtool "Switch devtool to chinese" interface was blocked.
-    if( info.requestUrl().scheme() == "devtools" )
-    {
+    if ( info.requestUrl().scheme() == "devtools" ) {
       return;
     }
     emit linkClicked( info.requestUrl() );
-    info.block(true);
+    info.block( true );
   }
 
   //window.location=audio link
-  if( Utils::Url::isAudioUrl(info.requestUrl()) && info.navigationType()==QWebEngineUrlRequestInfo::NavigationTypeRedirect )
-  {
+  if ( Utils::Url::isAudioUrl( info.requestUrl() )
+       && info.navigationType() == QWebEngineUrlRequestInfo::NavigationTypeRedirect ) {
     qDebug() << "blocked audio url from page redirect" << info.requestUrl().url();
     info.block( true );
   }

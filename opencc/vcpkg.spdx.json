@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/opencc-x64-windows-1.1.6#1-77e9ab4c-a73d-4494-a5a7-8c16f4c63181",
+  "name": "opencc:x64-windows@1.1.6#1 c2ced06b2a1f9dafc206a7e56d003ca36dc5b07462881e03cdfe6b0b9bec8ecb",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-bedcba5172f5e4b91caac660ab7afe92c27a9895"
+    ],
+    "created": "2023-06-09T15:52:16Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "DEPENDENCY_MANIFEST_OF",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "opencc",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "1.1.6#1",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/opencc",
+      "homepage": "https://github.com/BYVoid/OpenCC",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "A project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai)",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "opencc:x64-windows",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "c2ced06b2a1f9dafc206a7e56d003ca36dc5b07462881e03cdfe6b0b9bec8ecb",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "BYVoid/OpenCC",
+      "downloadLocation": "git+https://github.com/BYVoid/OpenCC@ver.${VERSION}",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "bfc40bdf1348e6a265b3304ab1e8acee2f4b6ac9c377ff3d8c996435a92dee98c3758503186b4fd424653faf44db339f8a90300e3290c59942ccf04b1bbb2a30"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./fix-dependencies.patch",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "495ac3be36e9d2a350d909e120ceb92dc7f5fc7edf10ffb274be803e8a8b79e5"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./portfile.cmake",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b2292bfc8abd9ef70e09513a207a6351f9c887035206359ba89ee94fe0c5457c"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./vcpkg.json",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4a3967777ea499bc78ee425ab5a513b94e4cad3add9c9358cc08dd44e355a69b"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

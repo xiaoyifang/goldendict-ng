@@ -29,8 +29,7 @@ using std::string;
 using gd::wstring;
 using std::map;
 
-enum Property
-{
+enum Property {
   Author,
   Copyright,
   Description,
@@ -41,6 +40,8 @@ DEF_EX( Ex, "Dictionary error", std::exception )
 DEF_EX( exIndexOutOfRange, "The supplied index is out of range", Ex )
 DEF_EX( exSliceOutOfRange, "The requested data slice is out of range", Ex )
 DEF_EX( exRequestUnfinished, "The request hasn't yet finished", Ex )
+
+DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
 
 /// When you request a search to be performed in a dictionary, you get
 /// this structure in return. It accumulates search results over time.
@@ -59,7 +60,8 @@ class Request: public QObject
   Q_OBJECT
 
 public:
-  Request( QObject * parent = nullptr ) : QObject( parent )
+  Request( QObject * parent = nullptr ):
+    QObject( parent )
   {
   }
   /// Returns whether the request has been processed in full and finished.
@@ -82,10 +84,9 @@ public:
   /// request result may be empty or incomplete). That is, finish() must be
   /// called by a derivative at least once if cancel() was called, either after
   /// or before it was called.
-  virtual void cancel()=0;
+  virtual void cancel() = 0;
 
-  virtual ~Request()
-  {}
+  virtual ~Request() {}
 
 signals:
 
@@ -99,7 +100,7 @@ signals:
   /// finished. That is, it's emitted when isFinished() turns true.
   void finished();
 
-  void matchCount(int);
+  void matchCount( int );
 
 protected:
 
@@ -129,10 +130,20 @@ struct WordMatch
   wstring word;
   int weight;
 
-  WordMatch(): weight( 0 ) {}
-  WordMatch( wstring const & word_ ): word( word_ ), weight( 0 ){}
-  WordMatch( wstring const & word_, int weight_ ): word( word_ ),
-    weight( weight_ ) {}
+  WordMatch():
+    weight( 0 )
+  {
+  }
+  WordMatch( wstring const & word_ ):
+    word( word_ ),
+    weight( 0 )
+  {
+  }
+  WordMatch( wstring const & word_, int weight_ ):
+    word( word_ ),
+    weight( weight_ )
+  {
+  }
 };
 
 /// This request type corresponds to all types of word searching operations.
@@ -142,8 +153,10 @@ class WordSearchRequest: public Request
 
 public:
 
-  WordSearchRequest(): uncertain( false )
-  {}
+  WordSearchRequest():
+    uncertain( false )
+  {
+  }
 
   /// Returns the number of matches found. The value can grow over time
   /// unless isFinished() is true.
@@ -151,17 +164,19 @@ public:
 
   /// Returns the match with the given zero-based index, which should be less
   /// than matchesCount().
-  WordMatch operator [] ( size_t index ) ;
+  WordMatch operator[]( size_t index );
 
   /// Returns all the matches found. Since no further locking can or would be
   /// done, this can only be called after the request has finished.
-  vector< WordMatch > & getAllMatches() ;
+  vector< WordMatch > & getAllMatches();
 
   /// Returns true if the match was uncertain -- that is, there may be more
   /// results in the dictionary itself, the dictionary index isn't good enough
   /// to tell that.
   bool isUncertain() const
-  { return uncertain; }
+  {
+    return uncertain;
+  }
 
   /// Add match if one is not presented in matches list
   void addMatch( WordMatch const & match );
@@ -191,16 +206,20 @@ public:
   /// the resource wasn't found.
   long dataSize();
 
+  void appendDataSlice( const void * buffer, size_t size );
+  void appendString( std::string_view str );
+
   /// Writes "size" bytes starting from "offset" of the data read to the given
   /// buffer. "size + offset" must be <= than dataSize().
   void getDataSlice( size_t offset, size_t size, void * buffer );
-  void appendDataSlice( const void * buffer, size_t size );
 
   /// Returns all the data read. Since no further locking can or would be
   /// done, this can only be called after the request has finished.
-  vector< char > & getFullData() ;
+  vector< char > & getFullData();
 
-  DataRequest( QObject * parent = 0 ) : Request( parent ), hasAnyData( false )
+  DataRequest( QObject * parent = 0 ):
+    Request( parent ),
+    hasAnyData( false )
   {
   }
 
@@ -220,16 +239,21 @@ class WordSearchRequestInstant: public WordSearchRequest
 public:
 
   WordSearchRequestInstant()
-  { finish(); }
+  {
+    finish();
+  }
 
-  virtual void cancel()
-  {}
+  void cancel() override {}
 
   vector< WordMatch > & getMatches()
-  { return matches; }
+  {
+    return matches;
+  }
 
   void setUncertain( bool value )
-  { uncertain = value; }
+  {
+    uncertain = value;
+  }
 };
 
 /// A helper class for synchronous data read implementations.
@@ -238,22 +262,28 @@ class DataRequestInstant: public DataRequest
 public:
 
   DataRequestInstant( bool succeeded )
-  { hasAnyData = succeeded; finish(); }
+  {
+    hasAnyData = succeeded;
+    finish();
+  }
 
   DataRequestInstant( QString const & errorString )
-  { setErrorString( errorString ); finish(); }
+  {
+    setErrorString( errorString );
+    finish();
+  }
 
-  virtual void cancel()
-  {}
+  virtual void cancel() {}
 
   vector< char > & getData()
-  { return data; }
+  {
+    return data;
+  }
 };
 
 /// Dictionary features. Different dictionaries can possess different features,
 /// which hint at some of their aspects.
-enum Feature
-{
+enum Feature {
   /// No features
   NoFeatures = 0,
   /// The dictionary is suitable to query when searching for compound expressions.
@@ -276,7 +306,7 @@ class Class: public QObject
 
 protected:
   QString dictionaryDescription;
-  QIcon dictionaryIcon, dictionaryNativeIcon;
+  QIcon dictionaryIcon;
   bool dictionaryIconLoaded;
   bool can_FTS;
   QAtomicInt FTS_index_completed;
@@ -314,13 +344,18 @@ public:
 
   /// Returns the dictionary's id.
   string getId() noexcept
-  { return id; }
+  {
+    return id;
+  }
 
   /// Returns the list of file names the dictionary consists of.
   vector< string > const & getDictionaryFilenames() noexcept
-  { return dictionaryFiles; }
+  {
+    return dictionaryFiles;
+  }
 
-  /// Get the main folder that contains the dictionary, without the ending separator .
+  /// Get the main folder that contains the dictionary, without the ending separator.
+  /// If the dict don't have folder like website/program, an empty string will be returned.
   QString getContainingFolder() const;
 
   /// Returns the dictionary's full name, utf8.
@@ -336,17 +371,19 @@ public:
 
   /// Returns all the available properties, like the author's name, copyright,
   /// description etc. All strings are in utf8.
-  virtual map< Property, string > getProperties() noexcept=0;
+  virtual map< Property, string > getProperties() noexcept = 0;
 
   /// Returns the features the dictionary possess. See the Feature enum for
   /// their list.
   virtual Features getFeatures() const noexcept
-  { return NoFeatures; }
+  {
+    return NoFeatures;
+  }
 
   /// Returns the number of articles in the dictionary.
-  virtual unsigned long getArticleCount() noexcept=0;
+  virtual unsigned long getArticleCount() noexcept = 0;
 
-  void setIndexedFtsDoc(long _indexedFtsDoc)
+  void setIndexedFtsDoc( long _indexedFtsDoc )
   {
     indexedFtsDoc = _indexedFtsDoc;
 
@@ -358,40 +395,39 @@ public:
     }
   }
 
-  int getIndexingFtsProgress(){
+  int getIndexingFtsProgress()
+  {
     auto total = getArticleCount();
-    if(total==0)
-      return 0 ;
-    return indexedFtsDoc*100/total;
+    if ( total == 0 )
+      return 0;
+    return indexedFtsDoc * 100 / total;
   }
 
   /// Returns the number of words in the dictionary. This can be equal to
   /// the number of articles, or can be larger if some synonyms are present.
-  virtual unsigned long getWordCount() noexcept=0;
+  virtual unsigned long getWordCount() noexcept = 0;
 
   /// Returns the dictionary's icon.
   virtual QIcon const & getIcon() noexcept;
 
-  /// Returns the dictionary's native icon. Dsl icons are usually rectangular,
-  /// and are adapted by getIcon() to be square. This function allows getting
-  /// the original icon with no geometry transformations applied.
-  virtual QIcon const & getNativeIcon() noexcept;
-
   /// Returns the dictionary's source language.
   virtual quint32 getLangFrom() const
-  { return 0; }
+  {
+    return 0;
+  }
 
   /// Returns the dictionary's target language.
   virtual quint32 getLangTo() const
-  { return 0; }
+  {
+    return 0;
+  }
 
   /// Looks up a given word in the dictionary, aiming for exact matches and
   /// prefix matches. If it's not possible to locate any prefix matches, no
   /// prefix results should be added. Not more than maxResults results should
   /// be stored. The whole operation is supposed to be fast, though some
   /// dictionaries, the network ones particularly, may of course be slow.
-  virtual sptr< WordSearchRequest > prefixMatch( wstring const &,
-                                                 unsigned long maxResults ) =0;
+  virtual sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) = 0;
 
   /// Looks up a given word in the dictionary, aiming to find different forms
   /// of the given word by allowing suffix variations. This means allowing words
@@ -401,26 +437,22 @@ public:
   /// Since the goal is to find forms of the words, no matches where a word
   /// in the middle of a phrase got matched should be returned.
   /// The default implementation does nothing, returning an empty result.
-  virtual sptr< WordSearchRequest > stemmedMatch( wstring const &,
-                                                  unsigned minLength,
-                                                  unsigned maxSuffixVariation,
-                                                  unsigned long maxResults ) ;
+  virtual sptr< WordSearchRequest >
+  stemmedMatch( wstring const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults );
 
   /// Finds known headwords for the given word, that is, the words for which
   /// the given word is a synonym. If a dictionary can't perform this operation,
   /// it should leave the default implementation which always returns an empty
   /// result.
-  virtual sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & )
-    ;
+  virtual sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & );
 
   /// For a given word, provides alternate writings of it which are to be looked
   /// up alongside with it. Transliteration dictionaries implement this. The
   /// default implementation returns an empty list. Note that this function is
   /// supposed to be very fast and simple, and the results are thus returned
   /// synchronously.
-  virtual vector< wstring > getAlternateWritings( wstring const & )
-    noexcept;
-  
+  virtual vector< wstring > getAlternateWritings( wstring const & ) noexcept;
+
   /// Returns a definition for the given word. The definition should
   /// be an html fragment (without html/head/body tags) in an utf8 encoding.
   /// The 'alts' vector could contain a list of words the definitions of which
@@ -431,60 +463,70 @@ public:
   virtual sptr< DataRequest > getArticle( wstring const &,
                                           vector< wstring > const & alts,
                                           wstring const & context = wstring(),
-                                          bool ignoreDiacritics = false )
-    =0;
+                                          bool ignoreDiacritics   = false ) = 0;
 
   /// Loads contents of a resource named 'name' into the 'data' vector. This is
   /// usually a picture file referenced in the article or something like that.
   /// The default implementation always returns the non-existing resource
   /// response.
-  virtual sptr< DataRequest > getResource( string const & /*name*/ )
-    ;
+  virtual sptr< DataRequest > getResource( string const & /*name*/ );
 
   /// Returns a results of full-text search of given string similar getArticle().
   virtual sptr< DataRequest >
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics );
 
   // Return dictionary description if presented
-  virtual QString const& getDescription();
+  virtual QString const & getDescription();
 
   // Return dictionary main file name
   virtual QString getMainFilename();
 
   /// Check text direction
   bool isFromLanguageRTL()
-  { return LangCoder::isLanguageRTL( getLangFrom() ); }
+  {
+    return LangCoder::isLanguageRTL( getLangFrom() );
+  }
   bool isToLanguageRTL()
-  { return LangCoder::isLanguageRTL( getLangTo() ); }
+  {
+    return LangCoder::isLanguageRTL( getLangTo() );
+  }
 
   /// Return true if dictionary is local dictionary
   virtual bool isLocalDictionary()
-  { return false; }
+  {
+    return false;
+  }
 
   /// Dictionary can full-text search
   bool canFTS()
-  { return can_FTS; }
+  {
+    return can_FTS;
+  }
 
   /// Dictionary have index for full-text search
   bool haveFTSIndex()
-  { return Utils::AtomicInt::loadAcquire( FTS_index_completed ) != 0; }
+  {
+    return Utils::AtomicInt::loadAcquire( FTS_index_completed ) != 0;
+  }
 
   /// Make index for full-text search
-  virtual void makeFTSIndex( QAtomicInt &, bool )
-  {}
+  virtual void makeFTSIndex( QAtomicInt &, bool ) {}
 
   /// Set full-text search parameters
-  virtual void setFTSParameters( Config::FullTextSearch const & )
-  {}
+  virtual void setFTSParameters( Config::FullTextSearch const & ) {}
 
   /// Retrieve all dictionary headwords
   virtual bool getHeadwords( QStringList & )
-  { return false; }
-  virtual  void findHeadWordsWithLenth( int &, QSet< QString > * /*headwords*/, uint32_t ){}
+  {
+    return false;
+  }
+  virtual void findHeadWordsWithLenth( int &, QSet< QString > * /*headwords*/, uint32_t ) {}
 
   /// Enable/disable search via synonyms
   void setSynonymSearchEnabled( bool enabled )
-  { synonymSearchEnabled = enabled; }
+  {
+    synonymSearchEnabled = enabled;
+  }
 
   virtual ~Class() = default;
 };
@@ -498,7 +540,7 @@ public:
   /// dictionary is being indexed. Since indexing can take some time, this
   /// is useful to show in some kind of a splash screen.
   /// The dictionaryName is in utf8.
-  virtual void indexingDictionary( string const & dictionaryName ) noexcept=0;
+  virtual void indexingDictionary( string const & dictionaryName ) noexcept = 0;
 
   virtual ~Initializing() = default;
 };
@@ -515,18 +557,15 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept;
 /// the index file, or the index file doesn't exist, returns true. If some
 /// dictionary files don't exist, returns true, too.
 /// This function is supposed to be used by dictionary implementations.
-bool needToRebuildIndex( vector< string > const & dictionaryFiles,
-                         string const & indexFile ) noexcept;
+bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const & indexFile ) noexcept;
 
 string getFtsSuffix();
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();
 
-QMap< std::string, sptr< Dictionary::Class > >
-dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts );
+QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts );
 
-}
+} // namespace Dictionary
 
 #endif
-

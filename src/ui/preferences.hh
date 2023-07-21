@@ -11,9 +11,14 @@ class Preferences: public QDialog
 {
   Q_OBJECT
 
-  int prevInterfaceLanguage;
+  int prevInterfaceLanguage = 0;
 
-  QString prevWebFontFamily;
+#if !defined( Q_OS_WIN )
+  int prevInterfaceStyle = 0;
+#endif
+
+
+  Config::CustomFonts prevWebFontFamily;
 
   Config::Class & cfg;
   QAction helpAction;
@@ -21,7 +26,8 @@ class Preferences: public QDialog
 public:
 
   Preferences( QWidget * parent, Config::Class & cfg_ );
-  ~Preferences() = default;
+  void buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name );
+  ~Preferences() override = default;
 
   Config::Preferences getPreferences();
 
@@ -54,9 +60,6 @@ private slots:
 
   void on_collapseBigArticles_toggled( bool checked );
   void on_limitInputPhraseLength_toggled( bool checked );
-
-
 };
 
 #endif
-

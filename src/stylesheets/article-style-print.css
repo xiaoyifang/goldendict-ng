@@ -1,13 +1,13 @@
 /* This stylesheet is used for printing only, overriding article-style.css */
 
-html, body, .gdarticle
-{
+html,
+body,
+.gdarticle {
   background: white;
 }
 
 /* Hide audio icons */
 
-.dsl_s_wav
-{
+.dsl_s_wav {
   display: none;
 }

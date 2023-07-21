@@ -23,6 +23,7 @@ namespace {
 class ProgramsDictionary: public Dictionary::Class
 {
   Config::Program prg;
+
 public:
 
   ProgramsDictionary( Config::Program const & prg_ ):
@@ -32,40 +33,41 @@ public:
   }
 
   string getName() noexcept override
-  { return prg.name.toUtf8().data(); }
+  {
+    return prg.name.toUtf8().data();
+  }
 
   map< Property, string > getProperties() noexcept override
-  { return map< Property, string >(); }
+  {
+    return map< Property, string >();
+  }
 
   unsigned long getArticleCount() noexcept override
-  { return 0; }
+  {
+    return 0;
+  }
 
   unsigned long getWordCount() noexcept override
-  { return 0; }
+  {
+    return 0;
+  }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word,
-                                                 unsigned long maxResults ) override
-    ;
+  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &,
-                                          vector< wstring > const & alts,
-                                          wstring const &, bool ) override
-    ;
+  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
 
 protected:
 
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
-                                                           unsigned long /*maxResults*/ )
-  
+sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word, unsigned long /*maxResults*/ )
+
 {
   if ( prg.type == Config::Program::PrefixMatch )
-    return  std::make_shared<ProgramWordSearchRequest>( QString::fromStdU32String( word ), prg );
-  else
-  {
-    sptr< WordSearchRequestInstant > sr =  std::make_shared<WordSearchRequestInstant>();
+    return std::make_shared< ProgramWordSearchRequest >( QString::fromStdU32String( word ), prg );
+  else {
+    sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
     sr->setUncertain( true );
 
@@ -73,14 +75,12 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
   }
 }
 
-sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
-  wstring const & word, vector< wstring > const &, wstring const &, bool )
-  
+sptr< Dictionary::DataRequest >
+ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+
 {
-  switch( prg.type )
-  {
-    case Config::Program::Audio:
-    {
+  switch ( prg.type ) {
+    case Config::Program::Audio: {
       // Audio results are instantaneous
       string result;
 
@@ -98,24 +98,20 @@ sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle(
       result += addAudioLink( ref, getId() );
 
       result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-      result += "<td><a href=" + ref + ">" +
-                Html::escape( wordUtf8 ) + "</a></td>";
+      result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
       result += "</tr></table>";
 
-      sptr< DataRequestInstant > ret =  std::make_shared<DataRequestInstant>( true );
-
-      ret->getData().resize( result.size() );
-
-      memcpy( &(ret->getData().front()), result.data(), result.size() );
+      auto ret = std::make_shared< DataRequestInstant >( true );
+      ret->appendString( result );
       return ret;
     }
 
     case Config::Program::Html:
     case Config::Program::PlainText:
-      return  std::make_shared<ProgramDataRequest>( QString::fromStdU32String( word ), prg );
+      return std::make_shared< ProgramDataRequest >( QString::fromStdU32String( word ), prg );
 
     default:
-      return  std::make_shared<DataRequestInstant>( false );
+      return std::make_shared< DataRequestInstant >( false );
   }
 }
 
@@ -124,61 +120,57 @@ void ProgramsDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  if( !prg.iconFilename.isEmpty() )
-  {
-    QFileInfo fInfo(  QDir( Config::getConfigDir() ), prg.iconFilename );
-    if( fInfo.isFile() )
+  if ( !prg.iconFilename.isEmpty() ) {
+    QFileInfo fInfo( QDir( Config::getConfigDir() ), prg.iconFilename );
+    if ( fInfo.isFile() )
       loadIconFromFile( fInfo.absoluteFilePath(), true );
   }
-  if( dictionaryIcon.isNull() )
-    dictionaryIcon = dictionaryNativeIcon = QIcon(":/icons/programs.svg");
+  if ( dictionaryIcon.isNull() )
+    dictionaryIcon = QIcon( ":/icons/programdict.svg" );
   dictionaryIconLoaded = true;
 }
 
-}
+} // namespace
 
-RunInstance::RunInstance(): process( this )
+RunInstance::RunInstance():
+  process( this )
 {
   connect( this, &RunInstance::processFinished, this, &RunInstance::handleProcessFinished, Qt::QueuedConnection );
   connect( &process, &QProcess::finished, this, &RunInstance::processFinished );
   connect( &process, &QProcess::errorOccurred, this, &RunInstance::processFinished );
 }
 
-bool RunInstance::start( Config::Program const & prg, QString const & word,
-                         QString & error )
+bool RunInstance::start( Config::Program const & prg, QString const & word, QString & error )
 {
   QStringList args = parseCommandLine( prg.commandLine );
 
-  if ( !args.empty() )
-  {
+  if ( !args.empty() ) {
     QString programName = args.first();
     args.pop_front();
 
-    bool writeToStdInput = true;
+    bool writeToStdInput       = true;
     auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
 
-    for( auto & arg : args ) {
-      if( arg.indexOf( "%GDWORD%" ) >= 0 ) {
+    for ( auto & arg : args ) {
+      if ( arg.indexOf( "%GDWORD%" ) >= 0 ) {
         writeToStdInput = false;
         arg.replace( "%GDWORD%", word );
       }
-      if( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
+      if ( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
         writeToStdInput = false;
         arg.replace( "%GDSEARCH%", search_string );
       }
     }
 
     process.start( programName, args );
-    if( writeToStdInput )
-    {
+    if ( writeToStdInput ) {
       process.write( word.toLocal8Bit() );
       process.closeWriteChannel();
     }
 
     return true;
   }
-  else
-  {
+  else {
     error = tr( "No program name was given." );
     return false;
   }
@@ -196,12 +188,10 @@ void RunInstance::handleProcessFinished()
   QString error;
   if ( process.exitStatus() != QProcess::NormalExit )
     error = tr( "The program has crashed." );
-  else
-  if ( int code = process.exitCode() )
+  else if ( int code = process.exitCode() )
     error = tr( "The program has returned exit code %1." ).arg( code );
 
-  if ( !error.isEmpty() )
-  {
+  if ( !error.isEmpty() ) {
     QByteArray err = process.readAllStandardError();
 
     if ( !err.isEmpty() )
@@ -211,15 +201,13 @@ void RunInstance::handleProcessFinished()
   emit finished( output, error );
 }
 
-ProgramDataRequest::ProgramDataRequest( QString const & word,
-                                        Config::Program const & prg_ ):
+ProgramDataRequest::ProgramDataRequest( QString const & word, Config::Program const & prg_ ):
   prg( prg_ )
 {
   connect( &instance, &RunInstance::finished, this, &ProgramDataRequest::instanceFinished );
 
   QString error;
-  if ( !instance.start( prg, word, error ) )
-  {
+  if ( !instance.start( prg, word, error ) ) {
     setErrorString( error );
     finish();
   }
@@ -228,90 +216,71 @@ ProgramDataRequest::ProgramDataRequest( QString const & word,
 void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
 {
   QString prog_output;
-  if ( !isFinished() )
-  {
-    if ( !output.isEmpty() )
-    {
+  if ( !isFinished() ) {
+    if ( !output.isEmpty() ) {
       string result = "<div class='programs_";
 
-      switch( prg.type )
-      {
-      case Config::Program::PlainText:
-        result += "plaintext'>";
-        try
-        {
-          // Check BOM if present
-          unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
-          if( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE )
-          {
-            int size = output.length() - 2;
-            if( size & 1 )
-              size -= 1;
-            string res= Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
-            prog_output = QString::fromUtf8( res.c_str(), res.size() );
+      switch ( prg.type ) {
+        case Config::Program::PlainText:
+          result += "plaintext'>";
+          try {
+            // Check BOM if present
+            unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
+            if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
+              int size = output.length() - 2;
+              if ( size & 1 )
+                size -= 1;
+              string res  = Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
+              prog_output = QString::fromUtf8( res.c_str(), res.size() );
+            }
+            else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
+              int size = output.length() - 2;
+              if ( size & 1 )
+                size -= 1;
+              string res  = Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
+              prog_output = QString::fromUtf8( res.c_str(), res.size() );
+            }
+            else if ( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF ) {
+              prog_output = QString::fromUtf8( output.data() + 3, output.length() - 3 );
+            }
+            else {
+              // No BOM, assume local 8-bit encoding
+              prog_output = QString::fromLocal8Bit( output );
+            }
           }
-          else
-          if( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF )
-          {
-            int size = output.length() - 2;
-            if( size & 1 )
-              size -= 1;
-            string res = Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
-            prog_output = QString::fromUtf8( res.c_str(), res.size() );
+          catch ( std::exception & e ) {
+            error = e.what();
           }
-          else
-          if( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF )
-          {
-            prog_output = QString::fromUtf8( output.data() + 3, output.length() - 3 );
+          result += Html::preformat( prog_output.toUtf8().data() );
+          break;
+        default:
+          result += "html'>";
+          try {
+            // Check BOM if present
+            unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
+            if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
+              int size = output.length() - 2;
+              if ( size & 1 )
+                size -= 1;
+              result += Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
+            }
+            else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
+              int size = output.length() - 2;
+              if ( size & 1 )
+                size -= 1;
+              result += Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
+            }
+            else if ( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF ) {
+              result += output.data() + 3;
+            }
+            else {
+              // We assume html data is in utf8 encoding already.
+              result += output.data();
+            }
           }
-          else
-          {
-            // No BOM, assume local 8-bit encoding
-            prog_output = QString::fromLocal8Bit( output );
+          catch ( std::exception & e ) {
+            error = e.what();
           }
-        }
-        catch( std::exception & e )
-        {
-          error = e.what();
-        }
-        result += Html::preformat( prog_output.toUtf8().data() );
-        break;
-      default:
-        result += "html'>";
-        try
-        {
-          // Check BOM if present
-          unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
-          if( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE )
-          {
-            int size = output.length() - 2;
-            if( size & 1 )
-              size -= 1;
-            result += Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
-          }
-          else
-          if( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF )
-          {
-            int size = output.length() - 2;
-            if( size & 1 )
-              size -= 1;
-            result += Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
-          }
-          else
-          if( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF )
-          {
-            result += output.data() + 3;
-          }
-          else
-          {
-            // We assume html data is in utf8 encoding already.
-            result += output.data();
-          }
-        }
-        catch( std::exception & e )
-        {
-          error = e.what();
-        }
       }
 
       result += "</div>";
@@ -334,15 +303,13 @@ void ProgramDataRequest::cancel()
   finish();
 }
 
-ProgramWordSearchRequest::ProgramWordSearchRequest( QString const & word,
-                                                    Config::Program const & prg_ ):
+ProgramWordSearchRequest::ProgramWordSearchRequest( QString const & word, Config::Program const & prg_ ):
   prg( prg_ )
 {
   connect( &instance, &RunInstance::finished, this, &ProgramWordSearchRequest::instanceFinished );
 
   QString error;
-  if ( !instance.start( prg, word, error ) )
-  {
+  if ( !instance.start( prg, word, error ) ) {
     setErrorString( error );
     finish();
   }
@@ -350,14 +317,12 @@ ProgramWordSearchRequest::ProgramWordSearchRequest( QString const & word,
 
 void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString error )
 {
-  if ( !isFinished() )
-  {
+  if ( !isFinished() ) {
     // Handle any Windows artifacts
     output.replace( "\r\n", "\n" );
-    QStringList result =
-      QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
+    QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for( int x = 0; x < result.size(); ++x )
+    for ( int x = 0; x < result.size(); ++x )
       matches.push_back( Dictionary::WordMatch( gd::toWString( result[ x ] ) ) );
 
     if ( !error.isEmpty() )
@@ -372,18 +337,16 @@ void ProgramWordSearchRequest::cancel()
   finish();
 }
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-  Config::Programs const & programs )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & programs )
+
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for( Config::Programs::const_iterator i = programs.begin();
-       i != programs.end(); ++i )
+  for ( Config::Programs::const_iterator i = programs.begin(); i != programs.end(); ++i )
     if ( i->enabled )
-      result.push_back( std::make_shared<ProgramsDictionary>( *i ) );
+      result.push_back( std::make_shared< ProgramsDictionary >( *i ) );
 
   return result;
 }
 
-}
+} // namespace Programs

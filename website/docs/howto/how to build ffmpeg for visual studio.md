@@ -1,44 +1,43 @@
-# use vcpkg to build the ffmpeg.
+# Use vcpkg to build ffmpeg.
 
 Steps:
-1. folow the instructions https://trac.ffmpeg.org/wiki/CompilationGuide/vcpkg
-2. run command 
+
+1. follow the instructions at https://trac.ffmpeg.org/wiki/CompilationGuide/vcpkg
+
+   
+2. run the command 
 ```
 vcpkg.exe install ffmpeg[core,avcodec,avdevice,avfilter,avformat,speex,avresample,mp3lame,opus,sdl2,swresample,vorbis]:x64-windows-rel 
 ```
+
 3. copy dll and libs in vcpkg\installed\x64-windows-rel to goldendict's winlibs\lib\msvc
 
-**pros**: can be compiled with speex.
+**Pros**: Can be compiled with speex.
 
-# alternative Method 
-just download the ffmpeg from official website: https://github.com/BtbN/FFmpeg-Builds/releases
-then replace the dlls and libs in the winlibs\lib\msvc
+# Alternative method 
+simply download ffmpeg from the official website: https://github.com/BtbN/FFmpeg-Builds/releases
+Then replace the dlls and libs in the winlibs\lib\msvc.
 
-**cons**: seems lack libspeex or I just download the wrong package.
+**Cons**: Seems to be missing libspeex or I just downloaded the wrong package.
 
-**pros**: easy to manage.
+**Pros**: Easy to manage.
 
 
-# I have tried the following methods with no luck
+# I have tried the following methods without success
 
-##  use the scripts provided by the following url
+## Use the scripts provided by the following url
 
 https://github.com/Microsoft/FFmpegInterop/issues/67
 
 https://github.com/Microsoft/FFmpegInterop   
 
 
-did not know how to link with libspeex. 
+did not know how to link to libspeex. 
 
-##  conan
+## conan
   
-  conan seems has not included libspeex option up to now.
+  conan does not seem to have the libspeex option yet.
 
 
-# links worth checking
+## Links worth checking
 https://stackoverflow.com/a/44556505/968188
-
-# notes(deprecated)
-
-winlib/scripts/ffmpeg-configure-mingw32.sh is the script provided by goldendict .
-though I have compiled it wiht mingw32 ,I do not know how to compile it for visual studio .

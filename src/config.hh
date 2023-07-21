@@ -13,7 +13,10 @@
 #include <QSet>
 #include <QMetaType>
 #include "ex.hh"
+#include <QDomDocument>
 #include <QLocale>
+#include <optional>
+#include <QThread>
 
 /// GoldenDict's configuration
 namespace Config {
@@ -22,7 +25,7 @@ namespace Config {
 typedef QSet< QString > MutedDictionaries;
 
 #ifdef Q_OS_WIN
-#pragma pack(push,4)
+  #pragma pack( push, 4 )
 #endif
 
 /// A path where to search for the dictionaries
@@ -31,12 +34,20 @@ struct Path
   QString path;
   bool recursive;
 
-  Path(): recursive( false ) {}
+  Path():
+    recursive( false )
+  {
+  }
   Path( QString const & path_, bool recursive_ ):
-    path( path_ ), recursive( recursive_ ) {}
+    path( path_ ),
+    recursive( recursive_ )
+  {
+  }
 
-  bool operator == ( Path const & other ) const
-  { return path == other.path && recursive == other.recursive; }
+  bool operator==( Path const & other ) const
+  {
+    return path == other.path && recursive == other.recursive;
+  }
 };
 
 /// A list of paths where to search for the dictionaries
@@ -49,15 +60,19 @@ struct SoundDir
   QString path, name;
   QString iconFilename;
 
-  SoundDir()
-  {}
+  SoundDir() {}
 
   SoundDir( QString const & path_, QString const & name_, QString iconFilename_ = "" ):
-    path( path_ ), name( name_ ), iconFilename( iconFilename_ )
-  {}
+    path( path_ ),
+    name( name_ ),
+    iconFilename( iconFilename_ )
+  {
+  }
 
-  bool operator == ( SoundDir const & other ) const
-  { return path == other.path && name == other.name && iconFilename == other.iconFilename; }
+  bool operator==( SoundDir const & other ) const
+  {
+    return path == other.path && name == other.name && iconFilename == other.iconFilename;
+  }
 };
 
 /// A list of SoundDirs
@@ -65,17 +80,21 @@ typedef QVector< SoundDir > SoundDirs;
 
 struct DictionaryRef
 {
-  QString id; // Dictionrary id, which is usually an md5 hash
+  QString id;   // Dictionrary id, which is usually an md5 hash
   QString name; // Dictionary name, used to recover when its id changes
 
-  DictionaryRef()
-  {}
+  DictionaryRef() {}
 
   DictionaryRef( QString const & id_, QString const & name_ ):
-    id( id_ ), name( name_ ) {}
+    id( id_ ),
+    name( name_ )
+  {
+  }
 
-  bool operator == ( DictionaryRef const & other ) const
-  { return id == other.id && name == other.name; }
+  bool operator==( DictionaryRef const & other ) const
+  {
+    return id == other.id && name == other.name;
+  }
 };
 
 /// A dictionary group
@@ -87,21 +106,26 @@ struct Group
   QKeySequence shortcut;
   QString favoritesFolder;
   QVector< DictionaryRef > dictionaries;
-  Config::MutedDictionaries mutedDictionaries; // Disabled via dictionary bar
+  Config::MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   Config::MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
 
-  Group(): id( 0 ) {}
+  Group():
+    id( 0 )
+  {
+  }
 
-  bool operator == ( Group const & other ) const
-  { return id == other.id && name == other.name && icon == other.icon &&
-           favoritesFolder == other.favoritesFolder &&
-           dictionaries == other.dictionaries && shortcut == other.shortcut &&
-           mutedDictionaries == other.mutedDictionaries &&
-           popupMutedDictionaries == other.popupMutedDictionaries &&
-           iconData == other.iconData; }
+  bool operator==( Group const & other ) const
+  {
+    return id == other.id && name == other.name && icon == other.icon && favoritesFolder == other.favoritesFolder
+      && dictionaries == other.dictionaries && shortcut == other.shortcut
+      && mutedDictionaries == other.mutedDictionaries && popupMutedDictionaries == other.popupMutedDictionaries
+      && iconData == other.iconData;
+  }
 
-  bool operator != ( Group const & other ) const
-  { return ! operator == ( other ); }
+  bool operator!=( Group const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 /// All the groups
@@ -109,8 +133,10 @@ struct Groups: public QVector< Group >
 {
   unsigned nextId; // Id to use to create the group next time
 
-  Groups(): nextId( 1 )
-  {}
+  Groups():
+    nextId( 1 )
+  {
+  }
 };
 
 /// Proxy server configuration
@@ -119,8 +145,7 @@ struct ProxyServer
   bool enabled;
   bool useSystemProxy;
 
-  enum Type
-  {
+  enum Type {
     Socks5 = 0,
     HttpConnect,
     HttpGet
@@ -175,7 +200,10 @@ struct FullTextSearch
   int searchMode;
   bool enabled;
 
+  bool enablePosition = false;
+
   quint32 maxDictionarySize;
+  quint32 parallelThreads = QThread::idealThreadCount() / 3 + 1;
   QByteArray dialogGeometry;
   QString disabledTypes;
 
@@ -183,7 +211,58 @@ struct FullTextSearch
     searchMode( 0 ),
     enabled( true ),
     maxDictionarySize( 0 )
-  {}
+  {
+  }
+};
+
+struct CustomFonts
+{
+  QString standard;
+  QString serif;
+  QString sansSerif;
+  QString monospace;
+
+  bool operator==( CustomFonts const & other ) const
+  {
+    return standard == other.standard && serif == other.serif && sansSerif == other.sansSerif
+      && monospace == other.monospace;
+  }
+
+  bool operator!=( CustomFonts const & other ) const
+  {
+    return !operator==( other );
+  }
+
+  QDomElement toElement( QDomDocument dd ) const
+  {
+    QDomElement proxy = dd.createElement( "customFonts" );
+
+    QDomAttr standard_attr = dd.createAttribute( "standard" );
+    standard_attr.setValue( this->standard );
+    proxy.setAttributeNode( standard_attr );
+
+    QDomAttr serif_attr = dd.createAttribute( "serif" );
+    serif_attr.setValue( this->serif );
+    proxy.setAttributeNode( serif_attr );
+
+    QDomAttr sans_attr = dd.createAttribute( "sans-serif" );
+    sans_attr.setValue( this->sansSerif );
+    proxy.setAttributeNode( sans_attr );
+    QDomAttr mono_attr = dd.createAttribute( "monospace" );
+    mono_attr.setValue( this->monospace );
+    proxy.setAttributeNode( mono_attr );
+    return proxy;
+  }
+
+  static CustomFonts fromElement( QDomElement proxy )
+  {
+    CustomFonts c;
+    c.standard  = proxy.attribute( "standard" );
+    c.serif     = proxy.attribute( "serif" );
+    c.sansSerif = proxy.attribute( "sans-serif" );
+    c.monospace = proxy.attribute( "monospace" );
+    return c;
+  }
 };
 
 /// This class encapsulates supported backend preprocessor logic,
@@ -204,30 +283,44 @@ public:
   bool isQtmultimedia() const;
 
   QString const & uiName() const
-  { return name; }
+  {
+    return name;
+  }
 
   void setUiName( QString const & name_ )
-  { name = name_; }
+  {
+    name = name_;
+  }
 
-  bool operator == ( InternalPlayerBackend const & other ) const
-  { return name == other.name; }
+  bool operator==( InternalPlayerBackend const & other ) const
+  {
+    return name == other.name;
+  }
 
-  bool operator != ( InternalPlayerBackend const & other ) const
-  { return ! operator == ( other ); }
+  bool operator!=( InternalPlayerBackend const & other ) const
+  {
+    return !operator==( other );
+  }
 
 private:
 #ifdef MAKE_FFMPEG_PLAYER
   static InternalPlayerBackend ffmpeg()
-  { return InternalPlayerBackend( "FFmpeg" ); }
+  {
+    return InternalPlayerBackend( "FFmpeg" );
+  }
 #endif
 
 #ifdef MAKE_QTMULTIMEDIA_PLAYER
   static InternalPlayerBackend qtmultimedia()
-  { return InternalPlayerBackend( "Qt Multimedia" ); }
+  {
+    return InternalPlayerBackend( "Qt Multimedia" );
+  }
 #endif
 
-  explicit InternalPlayerBackend( QString const & name_ ) : name( name_ )
-  {}
+  explicit InternalPlayerBackend( QString const & name_ ):
+    name( name_ )
+  {
+  }
 
   QString name;
 };
@@ -241,8 +334,7 @@ private:
   #define ENABLE_SPWF_CUSTOMIZATION
 #endif
 
-enum ScanPopupWindowFlags
-{
+enum ScanPopupWindowFlags {
   SPWF_default = 0,
   SPWF_Popup,
   SPWF_Tool
@@ -253,8 +345,8 @@ ScanPopupWindowFlags spwfFromInt( int id );
 struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
-  QString displayStyle; // Empty value corresponds to the default one
-  QString webFontFamily; // Empty value corresponds to the default one
+
+  CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
   bool newTabsOpenInBackground;
   bool hideSingleTab;
@@ -268,8 +360,6 @@ struct Preferences
   bool selectWordBySingleClick;
   bool autoScrollToTargetArticle;
   bool escKeyHidesMainWindow;
-  bool darkMode;
-  bool darkReaderMode;
   bool alwaysOnTop;
 
   /// An old UI mode when tranlateLine and wordList
@@ -295,6 +385,7 @@ struct Preferences
   bool trackClipboardScan;
   bool trackSelectionScan;
   bool showScanFlag;
+  int selectionChangeDelayTimer;
 #endif
 
   // Whether the word should be pronounced on page load, in main window/popup
@@ -338,9 +429,20 @@ struct Preferences
   bool stripClipboard;
   bool raiseWindowOnSearch;
 
-  QString addonStyle;
-
   FullTextSearch fts;
+
+  // Appearances
+
+  bool darkMode;
+  bool darkReaderMode;
+  QString addonStyle;
+  QString displayStyle; // Article Display style (Which also affect interface style on windows)
+
+#if !defined( Q_OS_WIN )
+  // QApplication style https://doc.qt.io/qt-6/qapplication.html#setStyle
+  // In addition to Qt's styles, "Default" is added as default.
+  QString interfaceStyle;
+#endif
 
   Preferences();
 };
@@ -352,16 +454,24 @@ struct MediaWiki
   bool enabled;
   QString icon;
 
-  MediaWiki(): enabled( false )
-  {}
+  MediaWiki():
+    enabled( false )
+  {
+  }
 
-  MediaWiki( QString const & id_, QString const & name_, QString const & url_,
-             bool enabled_, QString const & icon_ ):
-    id( id_ ), name( name_ ), url( url_ ), enabled( enabled_ ), icon( icon_ ) {}
+  MediaWiki( QString const & id_, QString const & name_, QString const & url_, bool enabled_, QString const & icon_ ):
+    id( id_ ),
+    name( name_ ),
+    url( url_ ),
+    enabled( enabled_ ),
+    icon( icon_ )
+  {
+  }
 
-  bool operator == ( MediaWiki const & other ) const
-  { return id == other.id && name == other.name && url == other.url &&
-           enabled == other.enabled && icon == other.icon ; }
+  bool operator==( MediaWiki const & other ) const
+  {
+    return id == other.id && name == other.name && url == other.url && enabled == other.enabled && icon == other.icon;
+  }
 };
 
 /// Any website which can be queried though a simple template substitution
@@ -372,18 +482,31 @@ struct WebSite
   QString iconFilename;
   bool inside_iframe;
 
-  WebSite(): enabled( false )
-  {}
+  WebSite():
+    enabled( false )
+  {
+  }
 
-  WebSite( QString const & id_, QString const & name_, QString const & url_,
-           bool enabled_, QString const & iconFilename_, bool inside_iframe_ ):
-    id( id_ ), name( name_ ), url( url_ ), enabled( enabled_ ), iconFilename( iconFilename_ ),
-    inside_iframe( inside_iframe_ ) {}
+  WebSite( QString const & id_,
+           QString const & name_,
+           QString const & url_,
+           bool enabled_,
+           QString const & iconFilename_,
+           bool inside_iframe_ ):
+    id( id_ ),
+    name( name_ ),
+    url( url_ ),
+    enabled( enabled_ ),
+    iconFilename( iconFilename_ ),
+    inside_iframe( inside_iframe_ )
+  {
+  }
 
-  bool operator == ( WebSite const & other ) const
-  { return id == other.id && name == other.name && url == other.url &&
-           enabled == other.enabled && iconFilename == other.iconFilename &&
-           inside_iframe == other.inside_iframe; }
+  bool operator==( WebSite const & other ) const
+  {
+    return id == other.id && name == other.name && url == other.url && enabled == other.enabled
+      && iconFilename == other.iconFilename && inside_iframe == other.inside_iframe;
+  }
 };
 
 /// All the WebSites
@@ -398,20 +521,33 @@ struct DictServer
   QString strategies;
   QString iconFilename;
 
-  DictServer(): enabled( false )
-  {}
+  DictServer():
+    enabled( false )
+  {
+  }
 
-  DictServer( QString const & id_, QString const & name_, QString const & url_,
-              bool enabled_, QString const & databases_, QString const & strategies_,
+  DictServer( QString const & id_,
+              QString const & name_,
+              QString const & url_,
+              bool enabled_,
+              QString const & databases_,
+              QString const & strategies_,
               QString const & iconFilename_ ):
-    id( id_ ), name( name_ ), url( url_ ), enabled( enabled_ ), databases( databases_ ),
-    strategies( strategies_ ), iconFilename( iconFilename_ )  {}
+    id( id_ ),
+    name( name_ ),
+    url( url_ ),
+    enabled( enabled_ ),
+    databases( databases_ ),
+    strategies( strategies_ ),
+    iconFilename( iconFilename_ )
+  {
+  }
 
-  bool operator == ( DictServer const & other ) const
-  { return id == other.id && name == other.name && url == other.url
-           && enabled == other.enabled && databases == other.databases
-           && strategies == other.strategies
-           && iconFilename == other.iconFilename; }
+  bool operator==( DictServer const & other ) const
+  {
+    return id == other.id && name == other.name && url == other.url && enabled == other.enabled
+      && databases == other.databases && strategies == other.strategies && iconFilename == other.iconFilename;
+  }
 };
 
 /// All the DictServers
@@ -426,12 +562,15 @@ struct Hunspell
 
   Dictionaries enabledDictionaries;
 
-  bool operator == ( Hunspell const & other ) const
-  { return dictionariesPath == other.dictionariesPath &&
-    enabledDictionaries == other.enabledDictionaries; }
+  bool operator==( Hunspell const & other ) const
+  {
+    return dictionariesPath == other.dictionariesPath && enabledDictionaries == other.enabledDictionaries;
+  }
 
-  bool operator != ( Hunspell const & other ) const
-  { return ! operator == ( other ); }
+  bool operator!=( Hunspell const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 /// All the MediaWikis
@@ -449,15 +588,17 @@ struct Chinese
 
   Chinese();
 
-  bool operator == ( Chinese const & other ) const
-  { return enable == other.enable &&
-           enableSCToTWConversion == other.enableSCToTWConversion &&
-           enableSCToHKConversion == other.enableSCToHKConversion &&
-           enableTCToSCConversion == other.enableTCToSCConversion; }
+  bool operator==( Chinese const & other ) const
+  {
+    return enable == other.enable && enableSCToTWConversion == other.enableSCToTWConversion
+      && enableSCToHKConversion == other.enableSCToHKConversion
+      && enableTCToSCConversion == other.enableTCToSCConversion;
+  }
 
-  bool operator != ( Chinese const & other ) const
-  { return ! operator == ( other ); }
-
+  bool operator!=( Chinese const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 
@@ -491,17 +632,17 @@ struct Romaji
 
   Romaji();
 
-  bool operator == ( Romaji const & other ) const
-  { return enable == other.enable &&
-           enableHepburn == other.enableHepburn &&
-           enableNihonShiki == other.enableNihonShiki &&
-           enableKunreiShiki == other.enableKunreiShiki &&
-           enableHiragana == other.enableHiragana &&
-           enableKatakana == other.enableKatakana; }
+  bool operator==( Romaji const & other ) const
+  {
+    return enable == other.enable && enableHepburn == other.enableHepburn && enableNihonShiki == other.enableNihonShiki
+      && enableKunreiShiki == other.enableKunreiShiki && enableHiragana == other.enableHiragana
+      && enableKatakana == other.enableKatakana;
+  }
 
-  bool operator != ( Romaji const & other ) const
-  { return ! operator == ( other ); }
-
+  bool operator!=( Romaji const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 struct Transliteration
@@ -522,23 +663,25 @@ struct Transliteration
     return enableRussianTransliteration == other.enableRussianTransliteration
       && enableGermanTransliteration == other.enableGermanTransliteration
       && enableGreekTransliteration == other.enableGreekTransliteration
-      && enableBelarusianTransliteration == other.enableBelarusianTransliteration
-      && customTrans == other.customTrans &&
+      && enableBelarusianTransliteration == other.enableBelarusianTransliteration && customTrans == other.customTrans &&
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
       chinese == other.chinese &&
 #endif
       romaji == other.romaji;
   }
 
-  bool operator != ( Transliteration const & other ) const
-  { return ! operator == ( other ); }
+  bool operator!=( Transliteration const & other ) const
+  {
+    return !operator==( other );
+  }
 
   Transliteration():
-      enableRussianTransliteration( false ),
-      enableGermanTransliteration( false ),
-      enableGreekTransliteration( false ),
-      enableBelarusianTransliteration( false )
-  {}
+    enableRussianTransliteration( false ),
+    enableGermanTransliteration( false ),
+    enableGreekTransliteration( false ),
+    enableBelarusianTransliteration( false )
+  {
+  }
 };
 
 struct Lingua
@@ -546,14 +689,15 @@ struct Lingua
   bool enable;
   QString languageCodes;
 
-  bool operator == ( Lingua const & other ) const
-  { return enable == other.enable &&
-      languageCodes == other.languageCodes;
+  bool operator==( Lingua const & other ) const
+  {
+    return enable == other.enable && languageCodes == other.languageCodes;
   }
 
-  bool operator != ( Lingua const & other ) const
-  { return ! operator == ( other ); }
-
+  bool operator!=( Lingua const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 struct Forvo
@@ -562,24 +706,26 @@ struct Forvo
   QString apiKey;
   QString languageCodes;
 
-  Forvo(): enable( false )
-  {}
-
-  bool operator == ( Forvo const & other ) const
-  { return enable == other.enable &&
-           apiKey == other.apiKey &&
-           languageCodes == other.languageCodes;
+  Forvo():
+    enable( false )
+  {
   }
 
-  bool operator != ( Forvo const & other ) const
-  { return ! operator == ( other ); }
+  bool operator==( Forvo const & other ) const
+  {
+    return enable == other.enable && apiKey == other.apiKey && languageCodes == other.languageCodes;
+  }
+
+  bool operator!=( Forvo const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 struct Program
 {
   bool enabled;
-  enum Type
-  {
+  enum Type {
     Audio,
     PlainText,
     Html,
@@ -589,24 +735,36 @@ struct Program
   QString id, name, commandLine;
   QString iconFilename;
 
-  Program(): enabled( false )
-  {}
-
-  Program( bool enabled_, Type type_, QString const & id_,
-          QString const & name_, QString const & commandLine_, QString const & iconFilename_ ):
-    enabled( enabled_ ), type( type_ ), id( id_ ), name( name_ ),
-    commandLine( commandLine_ ), iconFilename( iconFilename_ ) {}
-
-  bool operator == ( Program const & other ) const
-  { return enabled == other.enabled &&
-           type == other.type &&
-           name == other.name &&
-           commandLine == other.commandLine &&
-           iconFilename == other.iconFilename;
+  Program():
+    enabled( false )
+  {
   }
 
-  bool operator != ( Program const & other ) const
-  { return ! operator == ( other ); }
+  Program( bool enabled_,
+           Type type_,
+           QString const & id_,
+           QString const & name_,
+           QString const & commandLine_,
+           QString const & iconFilename_ ):
+    enabled( enabled_ ),
+    type( type_ ),
+    id( id_ ),
+    name( name_ ),
+    commandLine( commandLine_ ),
+    iconFilename( iconFilename_ )
+  {
+  }
+
+  bool operator==( Program const & other ) const
+  {
+    return enabled == other.enabled && type == other.type && name == other.name && commandLine == other.commandLine
+      && iconFilename == other.iconFilename;
+  }
+
+  bool operator!=( Program const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
 typedef QVector< Program > Programs;
@@ -638,20 +796,23 @@ struct VoiceEngine
     locale( locale_ ),
     volume( volume_ ),
     rate( rate_ )
-  {}
+  {
+  }
 
-  bool operator == ( VoiceEngine const & other ) const
+  bool operator==( VoiceEngine const & other ) const
   {
     return enabled == other.enabled && engine_name == other.engine_name && name == other.name
       && voice_name == other.voice_name && locale == other.locale && iconFilename == other.iconFilename
       && volume == other.volume && rate == other.rate;
   }
 
-  bool operator != ( VoiceEngine const & other ) const
-    { return ! operator == ( other ); }
+  bool operator!=( VoiceEngine const & other ) const
+  {
+    return !operator==( other );
+  }
 };
 
-typedef QVector< VoiceEngine> VoiceEngines;
+typedef QVector< VoiceEngine > VoiceEngines;
 
 struct HeadwordsDialog
 {
@@ -661,10 +822,12 @@ struct HeadwordsDialog
   QString headwordsExportPath;
   QByteArray headwordsDialogGeometry;
 
-  HeadwordsDialog() :
-    searchMode( 0 ), matchCase( false )
-    , autoApply( false )
-  {}
+  HeadwordsDialog():
+    searchMode( 0 ),
+    matchCase( false ),
+    autoApply( false )
+  {
+  }
 };
 
 struct Class
@@ -685,32 +848,30 @@ struct Class
   Programs programs;
   VoiceEngines voiceEngines;
 
-  unsigned lastMainGroupId; // Last used group in main window
+  unsigned lastMainGroupId;  // Last used group in main window
   unsigned lastPopupGroupId; // Last used group in popup window
 
-  QByteArray popupWindowState; // Binary state saved by QMainWindow
-  QByteArray popupWindowGeometry; // Geometry saved by QMainWindow
-  QByteArray dictInfoGeometry; // Geometry of "Dictionary info" window
-  QByteArray inspectorGeometry; // Geometry of WebKit inspector window
+  QByteArray popupWindowState;           // Binary state saved by QMainWindow
+  QByteArray popupWindowGeometry;        // Geometry saved by QMainWindow
+  QByteArray dictInfoGeometry;           // Geometry of "Dictionary info" window
+  QByteArray inspectorGeometry;          // Geometry of WebKit inspector window
   QByteArray dictionariesDialogGeometry; // Geometry of Dictionaries dialog
-  QByteArray helpWindowGeometry; // Geometry of help window
-  QByteArray helpSplitterState; // Geometry of help splitter
 
   QString historyExportPath; // Path for export/import history
   QString resourceSavePath;  // Path to save images/audio
   QString articleSavePath;   // Path to save articles
 
-  bool pinPopupWindow; // Last pin status
+  bool pinPopupWindow;         // Last pin status
   bool popupWindowAlwaysOnTop; // Last status of pinned popup window
 
-  QByteArray mainWindowState; // Binary state saved by QMainWindow
+  QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
 
-  MutedDictionaries mutedDictionaries; // Disabled via dictionary bar
+  MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
 
-  QDateTime timeForNewReleaseCheck; // Only effective if
-                                    // preferences.checkForNewReleases is set
+  QDateTime timeForNewReleaseCheck; // Last time when the release was checked.
+
   QString skippedRelease; // Empty by default
 
   bool showingDictBarNames;
@@ -744,10 +905,11 @@ struct Class
   Group const * getGroup( unsigned id ) const;
   //disable tts dictionary. does not need to save to persistent file
   bool notts = false;
+  bool resetState;
 };
 
 #ifdef Q_OS_WIN
-#pragma pack(pop)
+  #pragma pack( pop )
 #endif
 
 /// Configuration-specific events. Some parts of the program need to react
@@ -783,38 +945,41 @@ DEF_EX( exCantWriteConfigFile, "Can't write the configuration file", exError )
 DEF_EX( exMalformedConfigFile, "The configuration file is malformed", exError )
 
 /// Loads the configuration, or creates the default one if none is present
-Class load() ;
+Class load();
 
 /// Saves the configuration
-void save( Class const & ) ;
+void save( Class const & );
 
 /// Returns the configuration file name.
 QString getConfigFileName();
 
 /// Returns the main configuration directory.
-QString getConfigDir() ;
+QString getConfigDir();
 
 /// Returns the index directory, where the indices are to be stored.
-QString getIndexDir() ;
+QString getIndexDir();
 
 /// Returns the filename of a .pid file which should store current pid of
 /// the process.
-QString getPidFileName() ;
+QString getPidFileName();
 
 /// Returns the filename of a history file which stores search history.
-QString getHistoryFileName() ;
+QString getHistoryFileName();
 
 /// Returns the filename of a favorities file.
-QString getFavoritiesFileName() ;
+QString getFavoritiesFileName();
 
-/// Returns the user .css file name.
-QString getUserCssFileName() ;
+/// Returns the user .css file name (article-style.css).
+QString getUserCssFileName();
+
+/// Returns the user .js file name (article-script.js).
+std::optional< std::string > getUserJsFileName();
 
 /// Returns the user .css file name used for printing only.
-QString getUserCssPrintFileName() ;
+QString getUserCssPrintFileName();
 
 /// Returns the user .css file name for the Qt interface customization.
-QString getUserQtCssFileName() ;
+QString getUserQtCssFileName();
 
 /// Returns the program's data dir. Under Linux that would be something like
 /// /usr/share/apps/goldendict, under Windows C:/Program Files/GoldenDict.
@@ -849,6 +1014,6 @@ QString getStylesDir();
 /// Returns the directory where user-specific non-essential (cached) data should be written.
 QString getCacheDir() noexcept;
 
-}
+} // namespace Config
 
 #endif

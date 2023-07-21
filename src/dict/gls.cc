@@ -32,10 +32,10 @@
 #include <QBuffer>
 
 #include <QRegularExpression>
-#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-#include <QtCore5Compat/QTextCodec>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat/QTextCodec>
 #else
-#include <QTextCodec>
+  #include <QTextCodec>
 #endif
 #include <string>
 #include <list>
@@ -43,7 +43,7 @@
 #include <set>
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 namespace Gls {
@@ -69,7 +69,7 @@ class GlsScanner
 {
   gzFile f;
   Encoding encoding;
-  QTextCodec* codec;
+  QTextCodec * codec;
   wstring dictionaryName;
   wstring dictionaryDecription, dictionaryAuthor;
   wstring langFrom, langTo;
@@ -87,32 +87,44 @@ public:
   DEF_EX_STR( exMalformedGlsFile, "The .gls file is malformed:", Ex )
   DEF_EX( exEncodingError, "Encoding error", Ex ) // Should never happen really
 
-  GlsScanner( string const & fileName ) ;
+  GlsScanner( string const & fileName );
   ~GlsScanner() noexcept;
 
   /// Returns the detected encoding of this file.
   Encoding getEncoding() const
-  { return encoding; }
+  {
+    return encoding;
+  }
 
   /// Returns the dictionary's name, as was read from file's headers.
   wstring const & getDictionaryName() const
-  { return dictionaryName; }
+  {
+    return dictionaryName;
+  }
 
   /// Returns the dictionary's author, as was read from file's headers.
   wstring const & getDictionaryAuthor() const
-  { return dictionaryAuthor; }
+  {
+    return dictionaryAuthor;
+  }
 
   /// Returns the dictionary's description, as was read from file's headers.
   wstring const & getDictionaryDescription() const
-  { return dictionaryDecription; }
+  {
+    return dictionaryDecription;
+  }
 
   /// Returns the dictionary's source language, as was read from file's headers.
   wstring const & getLangFrom() const
-  { return langFrom; }
+  {
+    return langFrom;
+  }
 
   /// Returns the dictionary's target language, as was read from file's headers.
   wstring const & getLangTo() const
-  { return langTo; }
+  {
+    return langTo;
+  }
 
   /// Reads next line from the file. Returns true if reading succeeded --
   /// the string gets stored in the one passed, along with its physical
@@ -120,15 +132,19 @@ public:
   /// If end of file is reached, false is returned.
   /// Reading begins from the first line after the headers (ones which end
   /// by the "### Glossary section:" line).
-  bool readNextLine( wstring &, size_t & offset ) ;
+  bool readNextLine( wstring &, size_t & offset );
   /// Returns the number of lines read so far from the file.
   unsigned getLinesRead() const
-  { return linesRead; }
+  {
+    return linesRead;
+  }
 };
 
-GlsScanner::GlsScanner( string const & fileName ) :
-  encoding( Utf8::Utf8 ), readBufferPtr( readBuffer ),
-  readBufferLeft( 0 ), linesRead( 0 )
+GlsScanner::GlsScanner( string const & fileName ):
+  encoding( Utf8::Utf8 ),
+  readBufferPtr( readBuffer ),
+  readBufferLeft( 0 ),
+  linesRead( 0 )
 {
   // Since .dz is backwards-compatible with .gz, we use gz- functions to
   // read it -- they are much nicer than the dict_data- ones.
@@ -141,8 +157,7 @@ GlsScanner::GlsScanner( string const & fileName ) :
 
   unsigned char firstBytes[ 2 ];
 
-  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) )
-  {
+  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) ) {
     // Apparently the file's too short
     gzclose( f );
     throw exMalformedGlsFile( fileName );
@@ -152,95 +167,74 @@ GlsScanner::GlsScanner( string const & fileName ) :
   // it. If, on the other hand, it's not, we return the bytes back
   if ( firstBytes[ 0 ] == 0xFF && firstBytes[ 1 ] == 0xFE )
     encoding = Utf8::Utf16LE;
-  else
-  if ( firstBytes[ 0 ] == 0xFE && firstBytes[ 1 ] == 0xFF )
+  else if ( firstBytes[ 0 ] == 0xFE && firstBytes[ 1 ] == 0xFF )
     encoding = Utf8::Utf16BE;
-  else
-  if ( firstBytes[ 0 ] == 0xEF && firstBytes[ 1 ] == 0xBB )
-  {
+  else if ( firstBytes[ 0 ] == 0xEF && firstBytes[ 1 ] == 0xBB ) {
     // Looks like Utf8, read one more byte
-    if ( gzread( f, firstBytes, 1 ) != 1 || firstBytes[ 0 ] != 0xBF )
-    {
+    if ( gzread( f, firstBytes, 1 ) != 1 || firstBytes[ 0 ] != 0xBF ) {
       // Either the file's too short, or the BOM is weird
       gzclose( f );
       throw exMalformedGlsFile( fileName );
     }
     encoding = Utf8::Utf8;
   }
-  else
-  {
-    if ( gzrewind( f ) )
-    {
+  else {
+    if ( gzrewind( f ) ) {
       gzclose( f );
       throw exCantOpen( fileName );
     }
     encoding = Utf8::Utf8;
   }
 
-  codec = QTextCodec::codecForName(Utf8::getEncodingNameFor(encoding));
+  codec = QTextCodec::codecForName( Utf8::getEncodingNameFor( encoding ) );
   // We now can use our own readNextLine() function
-  lineFeed = Utf8::initLineFeed(encoding);
+  lineFeed = Utf8::initLineFeed( encoding );
 
   wstring str;
-  wstring *currentField = 0;
-  wstring mark            =  U"###" ;
-  wstring titleMark       =  U"### Glossary title:" ;
-  wstring authorMark      =  U"### Author:" ;
-  wstring descriptionMark =  U"### Description:" ;
-  wstring langFromMark    =  U"### Source language:" ;
-  wstring langToMark      =  U"### Target language:" ;
-  wstring endOfHeaderMark =  U"### Glossary section:" ;
+  wstring * currentField  = 0;
+  wstring mark            = U"###";
+  wstring titleMark       = U"### Glossary title:";
+  wstring authorMark      = U"### Author:";
+  wstring descriptionMark = U"### Description:";
+  wstring langFromMark    = U"### Source language:";
+  wstring langToMark      = U"### Target language:";
+  wstring endOfHeaderMark = U"### Glossary section:";
   size_t offset;
 
-  for( ; ; )
-  {
-    if ( !readNextLine( str, offset ) )
-    {
+  for ( ;; ) {
+    if ( !readNextLine( str, offset ) ) {
       gzclose( f );
       throw exMalformedGlsFile( fileName );
     }
 
-    if( str.compare( 0, 3, mark.c_str(), 3 ) == 0 )
-    {
+    if ( str.compare( 0, 3, mark.c_str(), 3 ) == 0 ) {
       currentField = 0;
 
-      if( str.compare( 0, titleMark.size(), titleMark ) == 0 )
-      {
+      if ( str.compare( 0, titleMark.size(), titleMark ) == 0 ) {
         dictionaryName = wstring( str, titleMark.size(), str.size() - titleMark.size() );
-        currentField = &dictionaryName;
+        currentField   = &dictionaryName;
       }
-      else
-      if( str.compare( 0, authorMark.size(), authorMark ) == 0 )
-      {
+      else if ( str.compare( 0, authorMark.size(), authorMark ) == 0 ) {
         dictionaryAuthor = wstring( str, authorMark.size(), str.size() - authorMark.size() );
-        currentField = &dictionaryAuthor;
+        currentField     = &dictionaryAuthor;
       }
-      else
-      if( str.compare( 0, descriptionMark.size(), descriptionMark ) == 0 )
-      {
+      else if ( str.compare( 0, descriptionMark.size(), descriptionMark ) == 0 ) {
         dictionaryDecription = wstring( str, descriptionMark.size(), str.size() - descriptionMark.size() );
-        currentField = &dictionaryDecription;
+        currentField         = &dictionaryDecription;
       }
-      else
-      if( str.compare( 0, langFromMark.size(), langFromMark ) == 0 )
-      {
+      else if ( str.compare( 0, langFromMark.size(), langFromMark ) == 0 ) {
         langFrom = wstring( str, langFromMark.size(), str.size() - langFromMark.size() );
       }
-      else
-      if( str.compare( 0, langToMark.size(), langToMark ) == 0 )
-      {
+      else if ( str.compare( 0, langToMark.size(), langToMark ) == 0 ) {
         langTo = wstring( str, langToMark.size(), str.size() - langToMark.size() );
       }
-      else
-      if( str.compare( 0, endOfHeaderMark.size(), endOfHeaderMark ) == 0 )
-      {
+      else if ( str.compare( 0, endOfHeaderMark.size(), endOfHeaderMark ) == 0 ) {
         break;
       }
     }
-    else
-    {
+    else {
       /// Handle multiline headers
-      if( currentField )
+      if ( currentField )
         *currentField += str;
     }
   }
@@ -248,49 +242,46 @@ GlsScanner::GlsScanner( string const & fileName ) :
 
 bool GlsScanner::readNextLine( wstring & out, size_t & offset )
 {
-    offset = (size_t)(gztell(f) - readBufferLeft);
+  offset = (size_t)( gztell( f ) - readBufferLeft );
 
-    {
-      // Check that we have bytes to read
-      if ( readBufferLeft < 5000 )
-      {
-        if ( !gzeof( f ) )
-        {
-          // To avoid having to deal with ring logic, we move the remaining bytes
-          // to the beginning
-          memmove( readBuffer, readBufferPtr, readBufferLeft );
+  {
+    // Check that we have bytes to read
+    if ( readBufferLeft < 5000 ) {
+      if ( !gzeof( f ) ) {
+        // To avoid having to deal with ring logic, we move the remaining bytes
+        // to the beginning
+        memmove( readBuffer, readBufferPtr, readBufferLeft );
 
-          // Read some more bytes to readBuffer
-          int result = gzread( f, readBuffer + readBufferLeft,
-                               sizeof( readBuffer ) - readBufferLeft );
+        // Read some more bytes to readBuffer
+        int result = gzread( f, readBuffer + readBufferLeft, sizeof( readBuffer ) - readBufferLeft );
 
-          if (result == -1)
-            throw exCantReadGlsFile();
+        if ( result == -1 )
+          throw exCantReadGlsFile();
 
-          readBufferPtr = readBuffer;
-          readBufferLeft += (size_t) result;
-        }
+        readBufferPtr = readBuffer;
+        readBufferLeft += (size_t)result;
       }
-      if(readBufferLeft<=0)
-          return false;
-
-      int pos = Utf8::findFirstLinePosition(readBufferPtr,readBufferLeft, lineFeed.lineFeed,lineFeed.length);
-      if(pos==-1)
-          return false;
-      QString line = codec->toUnicode(readBufferPtr, pos);
-
-      line = Utils::rstrip(line);
-
-      if(pos>readBufferLeft){
-          pos=readBufferLeft;
-      }
-      readBufferLeft -= pos;
-      readBufferPtr += pos;
-      linesRead++;
-
-      out = line.toStdU32String();
-      return true;
     }
+    if ( readBufferLeft <= 0 )
+      return false;
+
+    int pos = Utf8::findFirstLinePosition( readBufferPtr, readBufferLeft, lineFeed.lineFeed, lineFeed.length );
+    if ( pos == -1 )
+      return false;
+    QString line = codec->toUnicode( readBufferPtr, pos );
+
+    line = Utils::rstrip( line );
+
+    if ( pos > readBufferLeft ) {
+      pos = readBufferLeft;
+    }
+    readBufferLeft -= pos;
+    readBufferPtr += pos;
+    linesRead++;
+
+    out = line.toStdU32String();
+    return true;
+  }
 }
 
 GlsScanner::~GlsScanner() noexcept
@@ -302,41 +293,40 @@ namespace {
 
 ////////////////// GLS Dictionary
 
-DEF_EX_STR( exCantReadFile, "Can't read file", Dictionary::Ex )
+using Dictionary::exCantReadFile;
 DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
-enum
-{
-  Signature = 0x58534c47, // GLSX on little-endian, XSLG on big-endian
-  CurrentFormatVersion = 1 + BtreeIndexing::FormatVersion + Folding::Version,
+enum {
+  Signature                = 0x58534c47, // GLSX on little-endian, XSLG on big-endian
+  CurrentFormatVersion     = 1 + BtreeIndexing::FormatVersion + Folding::Version,
   CurrentZipSupportVersion = 2,
-  CurrentFtsIndexVersion = 1
+  CurrentFtsIndexVersion   = 1
 };
 
 struct IdxHeader
 {
-  uint32_t signature; // First comes the signature, GLSX
-  uint32_t formatVersion; // File format version (CurrentFormatVersion)
-  uint32_t zipSupportVersion; // Zip support version -- narrows down reindexing
-                              // when it changes only for dictionaries with the
-                              // zip files
-  int glsEncoding; // Which encoding is used for the file indexed
-  uint32_t chunksOffset; // The offset to chunks' storage
+  uint32_t signature;             // First comes the signature, GLSX
+  uint32_t formatVersion;         // File format version (CurrentFormatVersion)
+  uint32_t zipSupportVersion;     // Zip support version -- narrows down reindexing
+                                  // when it changes only for dictionaries with the
+                                  // zip files
+  int glsEncoding;                // Which encoding is used for the file indexed
+  uint32_t chunksOffset;          // The offset to chunks' storage
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
-  uint32_t articleCount; // Number of articles this dictionary has
-  uint32_t wordCount; // Number of headwords this dictionary has
-  uint32_t langFrom;  // Source language
-  uint32_t langTo;    // Target language
-  uint32_t hasZipFile; // Non-zero means there's a zip file with resources
-                       // present
+  uint32_t articleCount;             // Number of articles this dictionary has
+  uint32_t wordCount;                // Number of headwords this dictionary has
+  uint32_t langFrom;                 // Source language
+  uint32_t langTo;                   // Target language
+  uint32_t hasZipFile;               // Non-zero means there's a zip file with resources
+                                     // present
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
 }
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -346,11 +336,9 @@ bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion ||
-         (bool) header.hasZipFile != hasZipFile ||
-         ( hasZipFile && header.zipSupportVersion != CurrentZipSupportVersion );
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion || (bool)header.hasZipFile != hasZipFile
+    || ( hasZipFile && header.zipSupportVersion != CurrentZipSupportVersion );
 }
 
 class GlsDictionary: public BtreeIndexing::BtreeDictionary
@@ -371,36 +359,43 @@ public:
   ~GlsDictionary();
 
   string getName() noexcept override
-  { return dictionaryName; }
+  {
+    return dictionaryName;
+  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
-  { return map< Dictionary::Property, string >(); }
+  {
+    return map< Dictionary::Property, string >();
+  }
 
   unsigned long getArticleCount() noexcept override
-  { return idxHeader.articleCount; }
+  {
+    return idxHeader.articleCount;
+  }
 
   unsigned long getWordCount() noexcept override
-  { return idxHeader.wordCount; }
+  {
+    return idxHeader.wordCount;
+  }
 
   inline quint32 getLangFrom() const override
-  { return idxHeader.langFrom; }
+  {
+    return idxHeader.langFrom;
+  }
 
   inline quint32 getLangTo() const override
-  { return idxHeader.langTo; }
+  {
+    return idxHeader.langTo;
+  }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override
-    ;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
-  QString const& getDescription() override;
+  QString const & getDescription() override;
 
   QString getMainFilename() override;
 
@@ -409,14 +404,14 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex(QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled
-              && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
-              && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    can_FTS = fts.enabled && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
+      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
+
 protected:
 
   void loadIcon() noexcept override;
@@ -425,14 +420,10 @@ private:
 
   /// Loads the article, storing its headword and formatting the data it has
   /// into an html.
-  void loadArticle(  uint32_t address,
-                     string & headword,
-                     string & articleText );
+  void loadArticle( uint32_t address, string & headword, string & articleText );
 
   /// Loads the article
-  void loadArticleText(  uint32_t address,
-                         vector< string > & headwords,
-                         string & articleText );
+  void loadArticleText( uint32_t address, vector< string > & headwords, string & articleText );
 
   /// Process resource links (images, audios, etc)
   QString & filterResource( QString & article );
@@ -442,9 +433,7 @@ private:
   friend class GlsHeadwordsRequest;
 };
 
-GlsDictionary::GlsDictionary( string const & id,
-                              string const & indexFile,
-                              vector< string > const & dictionaryFiles ):
+GlsDictionary::GlsDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -457,35 +446,28 @@ GlsDictionary::GlsDictionary( string const & id,
   dz = dict_data_open( getDictionaryFilenames()[ 0 ].c_str(), &error, 0 );
 
   if ( !dz )
-    throw exDictzipError( string( dz_error_str( error ) )
-                          + "(" + getDictionaryFilenames()[ 0 ] + ")" );
+    throw exDictzipError( string( dz_error_str( error ) ) + "(" + getDictionaryFilenames()[ 0 ] + ")" );
 
   // Read the dictionary name
 
   idx.seek( sizeof( idxHeader ) );
 
   vector< char > dName( idx.read< uint32_t >() );
-  if( dName.size() > 0 )
-  {
+  if ( dName.size() > 0 ) {
     idx.read( &dName.front(), dName.size() );
     dictionaryName = string( &dName.front(), dName.size() );
   }
 
   // Initialize the index
 
-  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                        idxHeader.indexRootOffset ),
-             idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
   // Open a resource zip file, if there's one
 
-  if ( idxHeader.hasZipFile &&
-       ( idxHeader.zipIndexBtreeMaxElements ||
-         idxHeader.zipIndexRootOffset ) )
-  {
-    resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements,
-                                      idxHeader.zipIndexRootOffset ),
-                           idx, idxMutex );
+  if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
+    resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
+                           idx,
+                           idxMutex );
 
     QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
@@ -499,8 +481,7 @@ GlsDictionary::GlsDictionary( string const & id,
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName )
-      && !FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) )
+  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
     FTS_index_completed.ref();
 }
 
@@ -523,30 +504,26 @@ void GlsDictionary::loadIcon() noexcept
   else
     fileName.chop( 3 );
 
-  if ( !loadIconFromFile( fileName ) )
-  {
+  if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icon
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/icon32_gls.png");
+    dictionaryIcon = QIcon( ":/icons/icon32_gls.png" );
   }
 
   dictionaryIconLoaded = true;
 }
 
-QString const& GlsDictionary::getDescription()
+QString const & GlsDictionary::getDescription()
 {
-  if( !dictionaryDescription.isEmpty() )
-      return dictionaryDescription;
+  if ( !dictionaryDescription.isEmpty() )
+    return dictionaryDescription;
 
   try {
     GlsScanner scanner( getDictionaryFilenames()[ 0 ] );
     string str = Utf8::encode( scanner.getDictionaryAuthor() );
-    if( !str.empty() )
-      dictionaryDescription = QObject::tr( "Author: %1%2" )
-                              .arg( QString::fromUtf8( str.c_str() ) )
-                              .arg( "\n\n" );
+    if ( !str.empty() )
+      dictionaryDescription = QObject::tr( "Author: %1%2" ).arg( QString::fromUtf8( str.c_str() ) ).arg( "\n\n" );
     str = Utf8::encode( scanner.getDictionaryDescription() );
-    if( !str.empty() )
-    {
+    if ( !str.empty() ) {
       QString desc = QString::fromUtf8( str.c_str() );
       desc.replace( "\t", "<br/>" );
       desc.replace( "\\n", "<br/>" );
@@ -554,53 +531,49 @@ QString const& GlsDictionary::getDescription()
       dictionaryDescription += Html::unescape( desc, Html::HtmlOption::Keep );
     }
   }
-  catch( std::exception & e )
-  {
-    gdWarning( "GLS dictionary description reading failed: %s, error: %s\n",
-               getName().c_str(), e.what() );
+  catch ( std::exception & e ) {
+    gdWarning( "GLS dictionary description reading failed: %s, error: %s\n", getName().c_str(), e.what() );
   }
 
-  if( dictionaryDescription.isEmpty() )
+  if ( dictionaryDescription.isEmpty() )
     dictionaryDescription = "NONE";
 
   return dictionaryDescription;
 }
 
-QString GlsDictionary::getMainFilename() { return getDictionaryFilenames()[ 0 ].c_str(); }
+QString GlsDictionary::getMainFilename()
+{
+  return getDictionaryFilenames()[ 0 ].c_str();
+}
 
 void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
-  if( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-         || FtsHelpers::ftsIndexIsOldOrBad( ftsIdxName, this ) ) )
+  if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
     FTS_index_completed.ref();
 
-  if( haveFTSIndex() )
+  if ( haveFTSIndex() )
     return;
 
-  if( ensureInitDone().size() )
+  if ( ensureInitDone().size() )
     return;
 
-  if( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
+  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
     return;
 
-  gdDebug( "Gls: Building the full-text index for dictionary: %s\n",
-           getName().c_str() );
+  gdDebug( "Gls: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
-  try
-  {
+  try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Gls: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
 
-void GlsDictionary::loadArticleText( uint32_t address,
-                                     vector< string > & headwords,
-                                     string & articleText )
+void GlsDictionary::loadArticleText( uint32_t address, vector< string > & headwords, string & articleText )
 {
   vector< char > chunk;
   char * articleProps;
@@ -613,8 +586,7 @@ void GlsDictionary::loadArticleText( uint32_t address,
   uint32_t articleOffset, articleSize;
 
   memcpy( &articleOffset, articleProps, sizeof( articleOffset ) );
-  memcpy( &articleSize, articleProps + sizeof( articleOffset ),
-          sizeof( articleSize ) );
+  memcpy( &articleSize, articleProps + sizeof( articleOffset ), sizeof( articleSize ) );
 
   char * articleBody;
 
@@ -628,26 +600,22 @@ void GlsDictionary::loadArticleText( uint32_t address,
   articleText.clear();
   string headword;
 
-  if ( !articleBody )
-  {
+  if ( !articleBody ) {
     articleText = string( "\n\tDICTZIP error: " ) + dict_error_str( dz );
   }
-  else
-  {
-    string articleData = Iconv::toUtf8( Utf8::getEncodingNameFor( Encoding( idxHeader.glsEncoding ) ), articleBody, articleSize );
+  else {
+    string articleData =
+      Iconv::toUtf8( Utf8::getEncodingNameFor( Encoding( idxHeader.glsEncoding ) ), articleBody, articleSize );
     string::size_type start_pos = 0, end_pos = 0;
 
-    for( ; ; )
-    {
+    for ( ;; ) {
       // Replace all "\r\n" by "\n"
       end_pos = articleData.find( "\r\n", start_pos );
-      if( end_pos == string::npos )
-      {
+      if ( end_pos == string::npos ) {
         articleText += articleData.substr( start_pos, end_pos );
         break;
       }
-      else
-      {
+      else {
         articleText += articleData.substr( start_pos, end_pos - start_pos ) + "\n";
         start_pos = end_pos + 2;
       }
@@ -655,23 +623,20 @@ void GlsDictionary::loadArticleText( uint32_t address,
 
     // Find headword
     start_pos = articleText.find( '\n' );
-    if( start_pos != string::npos )
-    {
-      headword = articleText.substr( 0, start_pos );
+    if ( start_pos != string::npos ) {
+      headword    = articleText.substr( 0, start_pos );
       articleText = articleText.substr( start_pos + 1, string::npos );
     }
 
     // Parse headwords
 
     start_pos = 0;
-    end_pos = 0;
-    for( ; ; )
-    {
+    end_pos   = 0;
+    for ( ;; ) {
       end_pos = headword.find( '|', start_pos );
-      if( end_pos == wstring::npos )
-      {
+      if ( end_pos == wstring::npos ) {
         string hw = headword.substr( start_pos );
-        if( !hw.empty() )
+        if ( !hw.empty() )
           headwords.push_back( hw );
         break;
       }
@@ -681,27 +646,22 @@ void GlsDictionary::loadArticleText( uint32_t address,
   }
 }
 
-void GlsDictionary::loadArticle( uint32_t address,
-                                 string & headword,
-                                 string & articleText )
+void GlsDictionary::loadArticle( uint32_t address, string & headword, string & articleText )
 {
   string articleBody;
   vector< string > headwords;
   loadArticleText( address, headwords, articleBody );
 
   QString article = QString::fromLatin1( "<div class=\"glsdict\">" );
-  if( headwords.size() )
-  {
+  if ( headwords.size() ) {
     // Headwords
     article += "<div class=\"glsdict_headwords\"";
-    if( isFromLanguageRTL() )
+    if ( isFromLanguageRTL() )
       article += " dir=\"rtl\"";
-    if( headwords.size() > 1 )
-    {
+    if ( headwords.size() > 1 ) {
       QString altHeadwords;
-      for( vector< string >::size_type i = 1; i < headwords.size(); i++ )
-      {
-        if( i > 1 )
+      for ( vector< string >::size_type i = 1; i < headwords.size(); i++ ) {
+        if ( i > 1 )
           altHeadwords += ", ";
         altHeadwords += QString::fromUtf8( headwords[ i ].c_str(), headwords[ i ].size() );
       }
@@ -715,17 +675,17 @@ void GlsDictionary::loadArticle( uint32_t address,
     article += "</div>";
   }
 
-  if( isToLanguageRTL() )
+  if ( isToLanguageRTL() )
     article += R"(<div style="display:inline;" dir="rtl">)";
 
   QString text = QString::fromUtf8( articleBody.c_str(), articleBody.size() );
 
   article += filterResource( text );
 
-  if( isToLanguageRTL() )
+  if ( isToLanguageRTL() )
     article += "</div>";
 
-  article +="</div>";
+  article += "</div>";
 
   articleText = string( article.toUtf8().data() );
 }
@@ -733,14 +693,12 @@ void GlsDictionary::loadArticle( uint32_t address,
 QString & GlsDictionary::filterResource( QString & article )
 {
   QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp|qrcx):))",
-                            QRegularExpression::CaseInsensitiveOption
-                            | QRegularExpression::InvertedGreedinessOption );
+                            QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
   QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
-                             QRegularExpression::CaseInsensitiveOption
-                             | QRegularExpression::InvertedGreedinessOption );
+                             QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
 
-  article.replace( imgRe , "\\1bres://" + QString::fromStdString( getId() ) + "/" )
-         .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
+  article.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
+    .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
 
   // Handle links to articles
 
@@ -750,31 +708,27 @@ QString & GlsDictionary::filterResource( QString & article )
   int pos = 0;
   QString articleNewText;
   QRegularExpressionMatchIterator it = linksReg.globalMatch( article );
-  while( it.hasNext() )
-  {
+  while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
     articleNewText += article.mid( pos, match.capturedStart() - pos );
     pos = match.capturedEnd();
 
     QString link = match.captured( 3 );
 
-    if( link.indexOf( ':' ) < 0 )
-    {
+    if ( link.indexOf( ':' ) < 0 ) {
       QString newLink;
-      if( link.indexOf( '#' ) < 0 )
+      if ( link.indexOf( '#' ) < 0 )
         newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"bword:" + link + "\"";
 
       // Anchors
 
-      if( link.indexOf( '#' ) > 0 )
-      {
+      if ( link.indexOf( '#' ) > 0 ) {
         newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"gdlookup://localhost/" + link + "\"";
 
         newLink.replace( "#", "?gdanchor=" );
       }
 
-      if( !newLink.isEmpty() )
-      {
+      if ( !newLink.isEmpty() ) {
         articleNewText += newLink;
       }
       else
@@ -783,8 +737,7 @@ QString & GlsDictionary::filterResource( QString & article )
     else
       articleNewText += match.captured();
   }
-  if( pos )
-  {
+  if ( pos ) {
     articleNewText += article.mid( pos );
     article = articleNewText;
     articleNewText.clear();
@@ -793,38 +746,35 @@ QString & GlsDictionary::filterResource( QString & article )
   // Handle "audio" tags
 
   QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                              QRegularExpression::CaseInsensitiveOption
-                              | QRegularExpression::DotMatchesEverythingOption
-                              | QRegularExpression::InvertedGreedinessOption );
+                              QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption
+                                | QRegularExpression::InvertedGreedinessOption );
 
 
   pos = 0;
 
   it = audioRe.globalMatch( article );
-  while( it.hasNext() )
-  {
+  while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
     articleNewText += article.mid( pos, match.capturedStart() - pos );
     pos = match.capturedEnd();
 
     QString src = match.captured( 2 );
 
-    if( src.indexOf( "://" ) >= 0 )
+    if ( src.indexOf( "://" ) >= 0 )
       articleNewText += match.captured();
-    else
-    {
+    else {
       std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-      QString newTag = QString::fromUtf8( ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
+      QString newTag   = QString::fromUtf8(
+        ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
       newTag += match.captured( 4 );
-      if( match.captured( 4 ).indexOf( "<img " ) < 0 )
+      if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
         newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
       newTag += "</a></span>";
 
       articleNewText += newTag;
     }
   }
-  if( pos )
-  {
+  if ( pos ) {
     articleNewText += article.mid( pos );
     article = articleNewText;
     articleNewText.clear();
@@ -835,19 +785,17 @@ QString & GlsDictionary::filterResource( QString & article )
 
 void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )
 {
-  try
-  {
+  try {
     vector< string > headwords;
     string articleStr;
     loadArticleText( articleAddress, headwords, articleStr );
 
-    if( !headwords.empty() )
+    if ( !headwords.empty() )
       headword = QString::fromUtf8( headwords.front().data(), headwords.front().size() );
 
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "Gls: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
   }
 }
@@ -865,7 +813,8 @@ class GlsHeadwordsRequest: public Dictionary::WordSearchRequest
 public:
 
   GlsHeadwordsRequest( wstring const & word_, GlsDictionary & dict_ ):
-    word( word_ ), dict( dict_ )
+    word( word_ ),
+    dict( dict_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -888,22 +837,18 @@ public:
 
 void GlsHeadwordsRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
 
-  try
-  {
+  try {
     vector< WordArticleLink > chain = dict.findArticles( word );
 
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
-    for( unsigned x = 0; x < chain.size(); ++x )
-    {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      {
+    for ( unsigned x = 0; x < chain.size(); ++x ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;
       }
@@ -911,13 +856,11 @@ void GlsHeadwordsRequest::run()
       string articleText;
       vector< string > headwords;
 
-      dict.loadArticleText( chain[ x ].articleOffset,
-                            headwords, articleText );
+      dict.loadArticleText( chain[ x ].articleOffset, headwords, articleText );
 
       wstring headwordDecoded = Utf8::decode( headwords.front() );
 
-      if ( caseFolded != Folding::applySimpleCaseOnly( headwordDecoded ) )
-      {
+      if ( caseFolded != Folding::applySimpleCaseOnly( headwordDecoded ) ) {
         // The headword seems to differ from the input word, which makes the
         // input word its synonym.
         QMutexLocker _( &dataMutex );
@@ -926,20 +869,18 @@ void GlsHeadwordsRequest::run()
       }
     }
   }
-  catch( std::exception & e )
-  {
+  catch ( std::exception & e ) {
     setErrorString( QString::fromUtf8( e.what() ) );
   }
 
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest >
-  GlsDictionary::findHeadwordsForSynonym( wstring const & word )
-  
+sptr< Dictionary::WordSearchRequest > GlsDictionary::findHeadwordsForSynonym( wstring const & word )
+
 {
-  return synonymSearchEnabled ?  std::make_shared<GlsHeadwordsRequest>( word, *this ) :
-                                 Class::findHeadwordsForSynonym( word );
+  return synonymSearchEnabled ? std::make_shared< GlsHeadwordsRequest >( word, *this ) :
+                                Class::findHeadwordsForSynonym( word );
 }
 
 
@@ -960,8 +901,12 @@ public:
 
   GlsArticleRequest( wstring const & word_,
                      vector< wstring > const & alts_,
-                     GlsDictionary & dict_, bool ignoreDiacritics_ ):
-    word( word_ ), alts( alts_ ), dict( dict_ ), ignoreDiacritics( ignoreDiacritics_ )
+                     GlsDictionary & dict_,
+                     bool ignoreDiacritics_ ):
+    word( word_ ),
+    alts( alts_ ),
+    dict( dict_ ),
+    ignoreDiacritics( ignoreDiacritics_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -984,17 +929,14 @@ public:
 
 void GlsArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
-  try
-  {
+  try {
     vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-    for( unsigned x = 0; x < alts.size(); ++x )
-    {
+    for ( unsigned x = 0; x < alts.size(); ++x ) {
       /// Make an additional query for each alt
 
       vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
@@ -1009,13 +951,11 @@ void GlsArticleRequest::run()
                                       // by only allowing them to appear once.
 
     wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-    if( ignoreDiacritics )
+    if ( ignoreDiacritics )
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-    for( unsigned x = 0; x < chain.size(); ++x )
-    {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      {
+    for ( unsigned x = 0; x < chain.size(); ++x ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;
       }
@@ -1034,24 +974,20 @@ void GlsArticleRequest::run()
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped =
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
-      if( ignoreDiacritics )
+      wstring headwordStripped = Folding::applySimpleCaseOnly( Utf8::decode( headword ) );
+      if ( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
       multimap< wstring, pair< string, string > > & mapToUse =
-        ( wordCaseFolded == headwordStripped ) ?
-          mainArticles : alternateArticles;
+        ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-      mapToUse.insert( pair(
-        Folding::applySimpleCaseOnly( Utf8::decode( headword ) ),
-        pair( headword, articleText ) ) );
+      mapToUse.insert(
+        pair( Folding::applySimpleCaseOnly( Utf8::decode( headword ) ), pair( headword, articleText ) ) );
 
       articlesIncluded.insert( chain[ x ].articleOffset );
     }
 
-    if ( mainArticles.empty() && alternateArticles.empty() )
-    {
+    if ( mainArticles.empty() && alternateArticles.empty() ) {
       // No such word
       finish();
       return;
@@ -1061,26 +997,19 @@ void GlsArticleRequest::run()
 
     multimap< wstring, pair< string, string > >::const_iterator i;
 
-    for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
-    {
-        result += i->second.second;
+    for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
+      result += i->second.second;
     }
 
-    for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-    {
-        result += i->second.second;
+    for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
+      result += i->second.second;
     }
 
-    QMutexLocker _( &dataMutex );
-
-    data.resize( result.size() );
-
-    memcpy( &data.front(), result.data(), result.size() );
+    appendString( result );
 
     hasAnyData = true;
   }
-  catch( std::exception & e )
-  {
+  catch ( std::exception & e ) {
     setErrorString( QString::fromUtf8( e.what() ) );
   }
 
@@ -1091,9 +1020,9 @@ sptr< Dictionary::DataRequest > GlsDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
-  
+
 {
-  return std::make_shared<GlsArticleRequest>( word, alts, *this, ignoreDiacritics );
+  return std::make_shared< GlsArticleRequest >( word, alts, *this, ignoreDiacritics );
 }
 
 //////////////// GlsDictionary::getResource()
@@ -1110,8 +1039,7 @@ class GlsResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  GlsResourceRequest( GlsDictionary & dict_,
-                      string const & resourceName_ ):
+  GlsResourceRequest( GlsDictionary & dict_, string const & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -1137,40 +1065,33 @@ public:
 void GlsResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-  {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
     finish();
     return;
   }
 
-  try
-  {
+  try {
     string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
     GD_DPRINTF( "n is %s\n", n.c_str() );
 
-    try
-    {
-        QMutexLocker _( &dataMutex );
+    try {
+      QMutexLocker _( &dataMutex );
 
-        File::loadFromFile( n, data );
+      File::loadFromFile( n, data );
     }
-    catch( File::exCantOpen & )
-    {
+    catch ( File::exCantOpen & ) {
       n = dict.getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + resourceName;
 
-      try
-      {
+      try {
         QMutexLocker _( &dataMutex );
 
         File::loadFromFile( n, data );
       }
-      catch( File::exCantOpen & )
-      {
+      catch ( File::exCantOpen & ) {
         // Try reading from zip file
 
-        if ( dict.resourceZip.isOpen() )
-        {
+        if ( dict.resourceZip.isOpen() ) {
           QMutexLocker _( &dataMutex );
 
           if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) )
@@ -1181,16 +1102,14 @@ void GlsResourceRequest::run()
       }
     }
 
-    if ( Filetype::isNameOfTiff( resourceName ) )
-    {
+    if ( Filetype::isNameOfTiff( resourceName ) ) {
       // Convert it
 
       QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
 
-    if( Filetype::isNameOfCSS( resourceName ) )
-    {
+    if ( Filetype::isNameOfCSS( resourceName ) ) {
       QMutexLocker _( &dataMutex );
 
       QString css = QString::fromUtf8( data.data(), data.size() );
@@ -1198,34 +1117,30 @@ void GlsResourceRequest::run()
       // Correct some url's
 
       QString id = QString::fromUtf8( dict.getId().c_str() );
-      int pos = 0;
+      int pos    = 0;
 
-      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
-                                QRegularExpression::CaseInsensitiveOption );
+      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 
       QString newCSS;
       QRegularExpressionMatchIterator it = links.globalMatch( css );
-      while( it.hasNext() )
-      {
+      while ( it.hasNext() ) {
         QRegularExpressionMatch match = it.next();
         newCSS += css.mid( pos, match.capturedStart() - pos );
         pos = match.capturedEnd();
 
         QString url = match.captured( 2 );
 
-        if( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0)
-        {
+        if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 ) {
           // External link
           newCSS += match.captured();
           continue;
         }
 
-        QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://"
-                                           + id + "/" + url + match.captured( 3 ) + ")";
+        QString newUrl =
+          QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
         newCSS += newUrl;
       }
-      if( pos )
-      {
+      if ( pos ) {
         newCSS += css.mid( pos );
         css = newCSS;
         newCSS.clear();
@@ -1240,10 +1155,11 @@ void GlsResourceRequest::run()
     QMutexLocker _( &dataMutex );
     hasAnyData = true;
   }
-  catch( std::exception &ex )
-  {
+  catch ( std::exception & ex ) {
     gdWarning( "GLS: Failed loading resource \"%s\" for \"%s\", reason: %s\n",
-               resourceName.c_str(), dict.getName().c_str(), ex.what() );
+               resourceName.c_str(),
+               dict.getName().c_str(),
+               ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -1251,9 +1167,9 @@ void GlsResourceRequest::run()
 }
 
 sptr< Dictionary::DataRequest > GlsDictionary::getResource( string const & name )
-  
+
 {
-  return std::make_shared<GlsResourceRequest>( *this, name );
+  return std::make_shared< GlsResourceRequest >( *this, name );
 }
 
 sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const & searchString,
@@ -1273,49 +1189,44 @@ sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const &
 
 /// makeDictionaries
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
     // Try .gls and .gls.dz suffixes
 
-    if( !( i->size() >= 4 && strcasecmp( i->c_str() + ( i->size() - 4 ), ".gls" ) == 0 )
-        && !( i->size() >= 7 && strcasecmp( i->c_str() + ( i->size() - 7 ), ".gls.dz" ) == 0 ) )
+    if ( !( i->size() >= 4 && strcasecmp( i->c_str() + ( i->size() - 4 ), ".gls" ) == 0 )
+         && !( i->size() >= 7 && strcasecmp( i->c_str() + ( i->size() - 7 ), ".gls.dz" ) == 0 ) )
       continue;
 
     unsigned atLine = 0; // Indicates current line in .gls, for debug purposes
 
-    try
-    {
+    try {
       vector< string > dictFiles( 1, *i );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
       // See if there's a zip file with resources present. If so, include it.
 
-      string baseName = ( (*i)[ i->size() - 4 ] == '.' ) ?
-               string( *i, 0, i->size() - 4 ) : string( *i, 0, i->size() - 7 );
+      string baseName =
+        ( ( *i )[ i->size() - 4 ] == '.' ) ? string( *i, 0, i->size() - 4 ) : string( *i, 0, i->size() - 7 );
 
       string zipFileName;
 
-      if ( File::tryPossibleZipName( baseName + ".gls.files.zip", zipFileName ) ||
-           File::tryPossibleZipName( baseName + ".gls.dz.files.zip", zipFileName ) ||
-           File::tryPossibleZipName( baseName + ".GLS.FILES.ZIP", zipFileName ) ||
-           File::tryPossibleZipName( baseName + ".GLS.DZ.FILES.ZIP", zipFileName ) )
+      if ( File::tryPossibleZipName( baseName + ".gls.files.zip", zipFileName )
+           || File::tryPossibleZipName( baseName + ".gls.dz.files.zip", zipFileName )
+           || File::tryPossibleZipName( baseName + ".GLS.FILES.ZIP", zipFileName )
+           || File::tryPossibleZipName( baseName + ".GLS.DZ.FILES.ZIP", zipFileName ) )
         dictFiles.push_back( zipFileName );
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) ||
-           indexIsOldOrBad( indexFile, zipFileName.size() ) )
-      {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile )
+           || indexIsOldOrBad( indexFile, zipFileName.size() ) ) {
         GlsScanner scanner( *i );
 
         try { // Here we intercept any errors during the read to save line at
@@ -1340,7 +1251,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           string dictionaryName = Utf8::encode( scanner.getDictionaryName() );
 
-          idx.write( (uint32_t) dictionaryName.size() );
+          idx.write( (uint32_t)dictionaryName.size() );
           idx.write( dictionaryName.data(), dictionaryName.size() );
 
           idxHeader.glsEncoding = scanner.getEncoding();
@@ -1354,14 +1265,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           uint32_t articleCount = 0, wordCount = 0;
 
-          for( ; ; )
-          {
+          for ( ;; ) {
             // Find the headwords
 
             if ( !scanner.readNextLine( curString, curOffset ) )
               break; // Clean end of file
 
-            if( curString.empty() )
+            if ( curString.empty() )
               continue;
 
             uint32_t articleOffset = curOffset;
@@ -1370,13 +1280,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
             list< wstring > allEntryWords;
             wstring::size_type start_pos = 0, end_pos = 0;
-            for( ; ; )
-            {
+            for ( ;; ) {
               end_pos = curString.find( '|', start_pos );
-              if( end_pos == wstring::npos )
-              {
+              if ( end_pos == wstring::npos ) {
                 wstring headword = curString.substr( start_pos );
-                if( !headword.empty() )
+                if ( !headword.empty() )
                   allEntryWords.push_back( headword );
                 break;
               }
@@ -1386,11 +1294,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
             // Skip article body
 
-            for( ; ; )
-            {
-              if( !scanner.readNextLine( curString, curOffset ) )
+            for ( ;; ) {
+              if ( !scanner.readNextLine( curString, curOffset ) )
                 break;
-              if( curString.empty() )
+              if ( curString.empty() )
                 break;
             }
 
@@ -1402,8 +1309,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             uint32_t articleSize = curOffset - articleOffset;
             chunks.addToBlock( &articleSize, sizeof( articleSize ) );
 
-            for( list< wstring >::iterator j = allEntryWords.begin();
-                 j != allEntryWords.end(); ++j )
+            for ( list< wstring >::iterator j = allEntryWords.begin(); j != allEntryWords.end(); ++j )
               indexedWords.addWord( *j, descOffset );
 
             ++articleCount;
@@ -1419,14 +1325,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
           IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
 
           idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-          idxHeader.indexRootOffset = idxInfo.rootOffset;
+          idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
           indexedWords.clear(); // Release memory -- no need for this data
 
           // If there was a zip file, index it too
 
-          if ( zipFileName.size() )
-          {
+          if ( zipFileName.size() ) {
             GD_DPRINTF( "Indexing zip file\n" );
 
             idxHeader.hasZipFile = 1;
@@ -1436,21 +1341,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
             if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
               zipFile.indexFile( zipFileNames );
 
-            if( !zipFileNames.empty() )
-            {
+            if ( !zipFileNames.empty() ) {
               // Build the resulting zip file index
 
               IndexInfo idxInfo = BtreeIndexing::buildIndex( zipFileNames, idx );
 
               idxHeader.zipIndexBtreeMaxElements = idxInfo.btreeMaxElements;
-              idxHeader.zipIndexRootOffset = idxInfo.rootOffset;
+              idxHeader.zipIndexRootOffset       = idxInfo.rootOffset;
             }
-            else
-            {
+            else {
               // Bad zip file -- no index (though the mark that we have one
               // remains)
               idxHeader.zipIndexBtreeMaxElements = 0;
-              idxHeader.zipIndexRootOffset = 0;
+              idxHeader.zipIndexRootOffset       = 0;
             }
           }
           else
@@ -1458,50 +1361,41 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
           // That concludes it. Update the header.
 
-          idxHeader.signature = Signature;
-          idxHeader.formatVersion = CurrentFormatVersion;
+          idxHeader.signature         = Signature;
+          idxHeader.formatVersion     = CurrentFormatVersion;
           idxHeader.zipSupportVersion = CurrentZipSupportVersion;
 
           idxHeader.articleCount = articleCount;
-          idxHeader.wordCount = wordCount;
+          idxHeader.wordCount    = wordCount;
 
           idxHeader.langFrom = LangCoder::findIdForLanguage( scanner.getLangFrom() );
-          idxHeader.langTo = LangCoder::findIdForLanguage( scanner.getLangTo() );
-          if( idxHeader.langFrom == 0 && idxHeader.langTo == 0 )
-          {
+          idxHeader.langTo   = LangCoder::findIdForLanguage( scanner.getLangTo() );
+          if ( idxHeader.langFrom == 0 && idxHeader.langTo == 0 ) {
             // if no languages found, try dictionary's file name
-            QPair<quint32,quint32> langs =
-                LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+            QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
 
             // if no languages found, try dictionary's name
-            if ( langs.first == 0 || langs.second == 0 )
-            {
-              langs =
-                LangCoder::findIdsForFilename( QString::fromStdString( dictionaryName ) );
+            if ( langs.first == 0 || langs.second == 0 ) {
+              langs = LangCoder::findIdsForFilename( QString::fromStdString( dictionaryName ) );
             }
             idxHeader.langFrom = langs.first;
-            idxHeader.langTo = langs.second;
+            idxHeader.langTo   = langs.second;
           }
 
           idx.rewind();
 
           idx.write( &idxHeader, sizeof( idxHeader ) );
         } // In-place try for saving line count
-        catch( ... )
-        {
+        catch ( ... ) {
           atLine = scanner.getLinesRead();
           throw;
         }
 
       } // if need to rebuild
-      dictionaries.push_back( std::make_shared<GlsDictionary>( dictId,
-                                                 indexFile,
-                                                 dictFiles ) );
+      dictionaries.push_back( std::make_shared< GlsDictionary >( dictId, indexFile, dictFiles ) );
     }
-    catch( std::exception & e )
-    {
-      gdWarning( "GLS dictionary reading failed: %s:%u, error: %s\n",
-                 i->c_str(), atLine, e.what() );
+    catch ( std::exception & e ) {
+      gdWarning( "GLS dictionary reading failed: %s:%u, error: %s\n", i->c_str(), atLine, e.what() );
     }
   }
 

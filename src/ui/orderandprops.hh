@@ -14,17 +14,17 @@ class OrderAndProps: public QWidget
 
 public:
 
-  OrderAndProps( QWidget * parent, Config::Group const & dictionaryOrder,
+  OrderAndProps( QWidget * parent,
+                 Config::Group const & dictionaryOrder,
                  Config::Group const & inactiveDictionaries,
-                 std::vector< sptr< Dictionary::Class > > const & allDictionaries);
+                 std::vector< sptr< Dictionary::Class > > const & allDictionaries );
 
   Config::Group getCurrentDictionaryOrder() const;
   Config::Group getCurrentInactiveDictionaries() const;
 
 private slots:
-
-  void dictionarySelectionChanged( const QItemSelection &current );
-  void inactiveDictionarySelectionChanged( const QItemSelection &current );
+  void dictionarySelectionChanged( const QItemSelection & current, const QItemSelection & deselected );
+  void inactiveDictionarySelectionChanged( const QItemSelection & current );
   void contextMenuRequested( const QPoint & pos );
   void filterChanged( QString const & filterText );
   void dictListFocused();

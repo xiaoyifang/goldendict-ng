@@ -15,7 +15,7 @@
 #include <string>
 
 #ifdef _MSC_VER
-#include <stub_msvc.h>
+  #include <stub_msvc.h>
 #endif
 
 #define OV_EXCLUDE_STATIC_CALLBACKS
@@ -44,23 +44,22 @@ DEF_EX( exFailedToOpenVorbisData, "Failed to open Vorbis data", Dictionary::Ex )
 DEF_EX( exFailedToSeekInVorbisData, "Failed to seek in Vorbis data", Dictionary::Ex )
 DEF_EX( exFailedToRetrieveVorbisInfo, "Failed to retrieve Vorbis info", Dictionary::Ex )
 
-enum
-{
-  Signature = 0x5841534c, // LSAX on little-endian, XASL on big-endian
+enum {
+  Signature            = 0x5841534c, // LSAX on little-endian, XASL on big-endian
   CurrentFormatVersion = 5
 };
 
 struct IdxHeader
 {
-  uint32_t signature; // First comes the signature, BGLX
-  uint32_t formatVersion; // File format version, currently 1.
-  uint32_t soundsCount; // Total number of sounds, for informative purposes only
-  uint32_t vorbisOffset; // Offset of the vorbis file which contains all snds
+  uint32_t signature;             // First comes the signature, BGLX
+  uint32_t formatVersion;         // File format version, currently 1.
+  uint32_t soundsCount;           // Total number of sounds, for informative purposes only
+  uint32_t vorbisOffset;          // Offset of the vorbis file which contains all snds
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
-} 
+}
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
@@ -70,15 +69,13 @@ bool indexIsOldOrBad( string const & indexFile )
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 ||
-         header.signature != Signature ||
-         header.formatVersion != CurrentFormatVersion;
+  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+    || header.formatVersion != CurrentFormatVersion;
 }
 
 string stripExtension( string const & str )
 {
-  if ( str.size() > 3 &&
-      ( strcasecmp( str.c_str() + ( str.size() - 4 ), ".wav" ) == 0 ) )
+  if ( str.size() > 3 && ( strcasecmp( str.c_str() + ( str.size() - 4 ), ".wav" ) == 0 ) )
     return string( str, 0, str.size() - 4 );
   else
     return str;
@@ -90,6 +87,7 @@ struct Entry
 
   uint32_t samplesLength;
   uint32_t samplesOffset;
+
 public:
 
   // Reads an entry from the file's current position
@@ -104,15 +102,13 @@ Entry::Entry( File::Class & f )
 
   vector< uint16_t > filenameBuffer( 64 );
 
-  for( ; ; ++read )
-  {
+  for ( ;; ++read ) {
     if ( filenameBuffer.size() <= read )
       filenameBuffer.resize( read + 64 );
 
     f.read( &filenameBuffer[ read ], 2 );
 
-    if ( filenameBuffer[ read ] == 0xD )
-    {
+    if ( filenameBuffer[ read ] == 0xD ) {
       if ( f.read< uint16_t >() != 0xA )
         throw exInvalidData();
 
@@ -123,21 +119,18 @@ Entry::Entry( File::Class & f )
 
   // Skip zero or ff, or just ff.
 
-  if ( uint8_t x = f.read< uint8_t >() )
-  {
+  if ( uint8_t x = f.read< uint8_t >() ) {
     if ( x != 0xFF )
       throw exInvalidData();
   }
-  else
-  if ( f.read< uint8_t >() != 0xFF )
+  else if ( f.read< uint8_t >() != 0xFF )
     throw exInvalidData();
 
 
-  if ( !firstEntry )
-  {
+  if ( !firstEntry ) {
     // For all entries but the first one, read its offset in
     // samples.
-    samplesOffset  = f.read< uint32_t >();
+    samplesOffset = f.read< uint32_t >();
 
     if ( f.read< uint8_t >() != 0xFF )
       throw exInvalidData();
@@ -148,8 +141,7 @@ Entry::Entry( File::Class & f )
   // Read the size of the recording, in samples
   samplesLength = f.read< uint32_t >();
 
-  name = Iconv::toUtf8( Iconv::Utf16Le, &filenameBuffer.front(),
-                        read * sizeof( uint16_t ) );
+  name = Iconv::toUtf8( Iconv::Utf16Le, &filenameBuffer.front(), read * sizeof( uint16_t ) );
 }
 
 class LsaDictionary: public BtreeIndexing::BtreeDictionary
@@ -160,28 +152,29 @@ class LsaDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  LsaDictionary( string const & id, string const & indexFile,
-                 vector< string > const & dictionaryFiles );
+  LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   string getName() noexcept override;
 
   map< Dictionary::Property, string > getProperties() noexcept override
-  { return map< Dictionary::Property, string >(); }
+  {
+    return map< Dictionary::Property, string >();
+  }
 
   unsigned long getArticleCount() noexcept override
-  { return idxHeader.soundsCount; }
+  {
+    return idxHeader.soundsCount;
+  }
 
   unsigned long getWordCount() noexcept override
-  { return getArticleCount(); }
+  {
+    return getArticleCount();
+  }
 
-  sptr< Dictionary::DataRequest > getArticle( wstring const &,
-                                                      vector< wstring > const & alts,
-                                                      wstring const &,
-                                                      bool ignoreDiacritics ) override
-    ;
+  sptr< Dictionary::DataRequest >
+  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override
-    ;
+  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
 protected:
 
@@ -198,30 +191,25 @@ string LsaDictionary::getName() noexcept
   return result;
 }
 
-LsaDictionary::LsaDictionary( string const & id,
-                              string const & indexFile,
-                              vector< string > const & dictionaryFiles ):
+LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() )
 {
   // Initialize the index
 
-  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements,
-                        idxHeader.indexRootOffset ),
-             idx, idxMutex );
+  openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
 sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
                                                            vector< wstring > const & alts,
                                                            wstring const &,
                                                            bool ignoreDiacritics )
-  
+
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-  for( unsigned x = 0; x < alts.size(); ++x )
-  {
+  for ( unsigned x = 0; x < alts.size(); ++x ) {
     /// Make an additional query for each alt
 
     vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
@@ -236,11 +224,10 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
                                     // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if( ignoreDiacritics )
+  if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for( unsigned x = 0; x < chain.size(); ++x )
-  {
+  for ( unsigned x = 0; x < chain.size(); ++x ) {
     if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
@@ -249,31 +236,26 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped =
-      Folding::applySimpleCaseOnly( chain[ x ].word );
-    if( ignoreDiacritics )
+    wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+    if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
-    multimap< wstring, string > & mapToUse =
-      ( wordCaseFolded == headwordStripped ) ?
-        mainArticles : alternateArticles;
+    multimap< wstring, string > & mapToUse = ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair(
-      Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].word ) );
+    mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].word ) );
 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such word
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such word
 
   string result;
 
   multimap< wstring, string >::const_iterator i;
 
   result += "<table class=\"lsa_play\">";
-  for( i = mainArticles.begin(); i != mainArticles.end(); ++i )
-  {
+  for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += "<tr>";
 
     QUrl url;
@@ -290,8 +272,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     result += "</tr>";
   }
 
-  for( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
-  {
+  for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
     result += "<tr>";
 
     QUrl url;
@@ -310,14 +291,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret =
-    new Dictionary::DataRequestInstant( true );
+  Dictionary::DataRequestInstant * ret = new Dictionary::DataRequestInstant( true );
 
   ret->getData().resize( result.size() );
 
-  memcpy( &(ret->getData().front()), result.data(), result.size() );
+  memcpy( &( ret->getData().front() ), result.data(), result.size() );
 
-  return std::shared_ptr<Dictionary::DataRequestInstant>(ret);
+  return std::shared_ptr< Dictionary::DataRequestInstant >( ret );
 }
 
 /// This wraps around file operations
@@ -326,8 +306,11 @@ struct ShiftedVorbis
   QFile & f;
   size_t shift;
 
-  ShiftedVorbis( QFile & f_, size_t shift_ ): f( f_ ), shift( shift_ )
-  {}
+  ShiftedVorbis( QFile & f_, size_t shift_ ):
+    f( f_ ),
+    shift( shift_ )
+  {
+  }
 
   static size_t read( void * ptr, size_t size, size_t nmemb, void * datasource );
   static int seek( void * datasource, ogg_int64_t offset, int whence );
@@ -336,25 +319,24 @@ struct ShiftedVorbis
   static ov_callbacks callbacks;
 };
 
-size_t ShiftedVorbis::read( void * ptr, size_t size, size_t nmemb,
-                            void * datasource )
+size_t ShiftedVorbis::read( void * ptr, size_t size, size_t nmemb, void * datasource )
 {
-  ShiftedVorbis * sv = ( ShiftedVorbis * ) datasource;
+  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
 
-  return sv->f.read( reinterpret_cast<char *>( ptr ), size * nmemb );
+  return sv->f.read( reinterpret_cast< char * >( ptr ), size * nmemb );
 }
 
 int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
 {
-  ShiftedVorbis * sv = ( ShiftedVorbis * ) datasource;
+  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
 
   if ( whence == SEEK_SET )
     offset += sv->shift;
 
-  if( whence == SEEK_CUR )
+  if ( whence == SEEK_CUR )
     offset += sv->f.pos();
 
-  if( whence == SEEK_END )
+  if ( whence == SEEK_END )
     offset += sv->f.size();
 
   return sv->f.seek( offset );
@@ -362,8 +344,8 @@ int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
 
 long ShiftedVorbis::tell( void * datasource )
 {
-  ShiftedVorbis * sv = ( ShiftedVorbis * ) datasource;
-  long result = sv->f.pos();
+  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
+  long result        = sv->f.pos();
 
   if ( result != -1 )
     result -= sv->shift;
@@ -371,10 +353,7 @@ long ShiftedVorbis::tell( void * datasource )
   return result;
 }
 
-ov_callbacks ShiftedVorbis::callbacks = { ShiftedVorbis::read,
-                                          ShiftedVorbis::seek,
-                                          NULL,
-                                          ShiftedVorbis::tell };
+ov_callbacks ShiftedVorbis::callbacks = { ShiftedVorbis::read, ShiftedVorbis::seek, NULL, ShiftedVorbis::tell };
 
 // A crude .wav header which is sufficient for our needs
 struct WavHeader
@@ -382,34 +361,34 @@ struct WavHeader
   char riff[ 4 ]; // RIFF
   uint32_t riffLength;
   char waveAndFmt[ 8 ]; // WAVEfmt%20
-  uint32_t fmtLength; // 16
-  uint16_t formatTag; // 1
-  uint16_t channels; // 1 or 2
+  uint32_t fmtLength;   // 16
+  uint16_t formatTag;   // 1
+  uint16_t channels;    // 1 or 2
   uint32_t samplesPerSec;
   uint32_t bytesPerSec;
   uint16_t blockAlign;
   uint16_t bitsPerSample; // 16
-  char data[ 4 ]; // data
+  char data[ 4 ];         // data
   uint32_t dataLength;
-} 
+}
 #ifndef _MSC_VER
-__attribute__((packed))
+__attribute__( ( packed ) )
 #endif
 ;
 
 sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name )
-  
+
 {
   // See if the name ends in .wav. Remove that extension then
 
-  string strippedName =
-    ( name.size() > 3 && ( name.compare( name.size() - 4, 4, ".wav" ) == 0 ) ) ?
-      string( name, 0, name.size() - 4 ) : name;
+  string strippedName = ( name.size() > 3 && ( name.compare( name.size() - 4, 4, ".wav" ) == 0 ) ) ?
+    string( name, 0, name.size() - 4 ) :
+    name;
 
   vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
 
   if ( chain.empty() )
-    return std::make_shared<Dictionary::DataRequestInstant>( false ); // No such resource
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
 
   File::Class f( getDictionaryFilenames()[ 0 ], "rb" );
 
@@ -432,15 +411,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   vorbis_info * vi = ov_info( &vf, -1 );
 
-  if ( !vi )
-  {
+  if ( !vi ) {
     ov_clear( &vf );
 
     throw exFailedToRetrieveVorbisInfo();
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = std::make_shared<
-    Dictionary::DataRequestInstant>( true );
+  sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
   vector< char > & data = dr->getData();
 
@@ -454,35 +431,32 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
   wh->riffLength = data.size() - 8;
 
   memcpy( wh->waveAndFmt, "WAVEfmt ", 8 );
-  wh->fmtLength = 16;
-  wh->formatTag = 1;
-  wh->channels = vi->channels;
+  wh->fmtLength     = 16;
+  wh->formatTag     = 1;
+  wh->channels      = vi->channels;
   wh->samplesPerSec = vi->rate;
-  wh->bytesPerSec = vi->channels * vi->rate * 2;
-  wh->blockAlign = vi->channels * 2;
+  wh->bytesPerSec   = vi->channels * vi->rate * 2;
+  wh->blockAlign    = vi->channels * 2;
   wh->bitsPerSample = 16;
   memcpy( wh->data, "data", 4 );
   wh->dataLength = data.size() - sizeof( *wh );
 
   // Now decode vorbis to the rest of the block
 
-  char * ptr = &data.front() + sizeof( *wh );
-  int left = data.size() - sizeof( *wh );
+  char * ptr    = &data.front() + sizeof( *wh );
+  int left      = data.size() - sizeof( *wh );
   int bitstream = 0;
 
-  while( left )
-  {
+  while ( left ) {
     long result = ov_read( &vf, ptr, left, 0, 2, 1, &bitstream );
 
-    if ( result <= 0 )
-    {
+    if ( result <= 0 ) {
       gdWarning( "Failed to read Vorbis data (code = %ld)\n", result );
       memset( ptr, 0, left );
       break;
     }
 
-    if ( result > left )
-    {
+    if ( result > left ) {
       GD_FDPRINTF( stderr, "Warning: Vorbis decode returned more data than requested.\n" );
 
       result = left;
@@ -507,44 +481,38 @@ void LsaDictionary::loadIcon() noexcept
   // Remove the extension
   fileName.chop( 3 );
 
-  if( !loadIconFromFile( fileName ) )
-  {
+  if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons
-    dictionaryNativeIcon = dictionaryIcon = QIcon(":/icons/playsound_full.png");
+    dictionaryIcon = QIcon( ":/icons/lsasound.svg" );
   }
 
   dictionaryIconLoaded = true;
 }
 
-}
+} // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries(
-                                      vector< string > const & fileNames,
-                                      string const & indicesDir,
-                                      Dictionary::Initializing & initializing )
-  
+vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
+                                                      string const & indicesDir,
+                                                      Dictionary::Initializing & initializing )
+
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end();
-       ++i )
-  {
+  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
     /// Only allow .dat and .lsa extensions to save scanning time
-    if ( i->size() < 4 ||
-        ( strcasecmp( i->c_str() + ( i->size() - 4 ), ".dat" ) != 0 &&
-          strcasecmp( i->c_str() + ( i->size() - 4 ), ".lsa" ) != 0 ) )
+    if ( i->size() < 4
+         || ( strcasecmp( i->c_str() + ( i->size() - 4 ), ".dat" ) != 0
+              && strcasecmp( i->c_str() + ( i->size() - 4 ), ".lsa" ) != 0 ) )
       continue;
 
-    try
-    {
+    try {
       File::Class f( *i, "rb" );
 
       /// Check the signature
 
       char buf[ 9 ];
 
-      if ( f.readRecords( buf, 9, 1 ) != 1 || memcmp( buf, "L\09\0S\0A\0\xff", 9 ) != 0 )
-      {
+      if ( f.readRecords( buf, 9, 1 ) != 1 || memcmp( buf, "L\09\0S\0A\0\xff", 9 ) != 0 ) {
         // The file is too short or the signature doesn't match -- skip this
         // file
         continue;
@@ -556,8 +524,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) )
-      {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
         gdDebug( "Lsa: Building the index for dictionary: %s\n", i->c_str() );
@@ -586,8 +553,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 
         vector< uint16_t > filenameBuffer;
 
-        while( entriesCount-- )
-        {
+        while ( entriesCount-- ) {
           uint32_t offset = f.tell();
 
           Entry e( f );
@@ -619,11 +585,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );
 
         idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-        idxHeader.indexRootOffset = idxInfo.rootOffset;
+        idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
-         // That concludes it. Update the header.
+        // That concludes it. Update the header.
 
-        idxHeader.signature = Signature;
+        idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
         idx.rewind();
@@ -631,14 +597,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
 
-      dictionaries.push_back( std::make_shared<LsaDictionary>( dictId,
-                                                 indexFile,
-                                                 dictFiles ) );
+      dictionaries.push_back( std::make_shared< LsaDictionary >( dictId, indexFile, dictFiles ) );
     }
-    catch( std::exception & e )
-    {
-      gdWarning( "Lingvo's LSA reading failed: %s, error: %s\n",
-                 i->c_str(), e.what() );
+    catch ( std::exception & e ) {
+      gdWarning( "Lingvo's LSA reading failed: %s, error: %s\n", i->c_str(), e.what() );
     }
   }
 
@@ -646,4 +608,4 @@ vector< sptr< Dictionary::Class > > makeDictionaries(
 }
 
 
-}
+} // namespace Lsa

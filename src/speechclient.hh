@@ -5,10 +5,12 @@
 #include "config.hh"
 #include <QTextToSpeech>
 #include <memory>
+#include <QDebug>
+#include <QSharedPointer>
 
 class SpeechClient: public QObject
 {
-Q_OBJECT
+  Q_OBJECT
 
 public:
 
@@ -37,13 +39,21 @@ public:
   struct InternalData
   {
     explicit InternalData( Config::VoiceEngine const & e ):
-      sp( std::make_unique< QTextToSpeech >( e.engine_name ) ),
+      sp( new QTextToSpeech( e.engine_name ) ),
       engine( e )
     {
+      qDebug() << QStringLiteral( "initialize tts" ) << e.engine_name;
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+      if ( !sp || sp->state() == QTextToSpeech::Error )
+        return;
+#else
+      if ( !sp || sp->state() == QTextToSpeech::BackendError )
+        return;
+#endif
       sp->setLocale( e.locale );
       auto voices = sp->availableVoices();
-      for( const auto & voice : voices ) {
-        if( voice.name() == e.voice_name ) {
+      for ( const auto & voice : voices ) {
+        if ( voice.name() == e.voice_name ) {
           sp->setVoice( voice );
 
           break;
@@ -54,7 +64,7 @@ public:
       sp->setRate( e.rate / 10.0 );
     }
 
-    std::unique_ptr< QTextToSpeech > sp;
+    QSharedPointer< QTextToSpeech > sp;
     Engine engine;
   };
 
@@ -67,12 +77,8 @@ public:
   bool tell( QString const & text, int volume, int rate ) const;
   bool tell( QString const & text ) const;
 
- signals:
-  void started( bool ok );
-  void finished();
-
- private:
-  std::unique_ptr< InternalData > internalData;
+private:
+  QSharedPointer< InternalData > internalData;
 };
 
 #endif // __SPEECHCLIENT_HH_INCLUDED__

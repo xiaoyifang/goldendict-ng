@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 23.06.01-ChildrenDay
+VERSION = 23.06.02-alpha
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -19,13 +19,7 @@ system(git describe --tags --always --dirty): hasGit=1
 }
 
 
-!CONFIG( verbose_build_output ) {
-  !win32|*-msvc* {
-    # Reduce build log verbosity except for MinGW builds (mingw-make cannot
-    # execute "@echo ..." commands inserted by qmake).
-    CONFIG += silent
-  }
-}
+# users can suppress verbose console compile output by add `CONFIG += silent` to qmake.
 
 CONFIG( release, debug|release ) {
   DEFINES += NDEBUG
@@ -74,8 +68,8 @@ contains(DEFINES, MAKE_QTMULTIMEDIA_PLAYER|MAKE_FFMPEG_PLAYER) {
 
 #xapian is the must option now.
 win32{
-  Debug: LIBS+= -L$$PWD/winlibs/lib/xapian/dbg/ -lxapian
-  Release: LIBS+= -L$$PWD/winlibs/lib/xapian/rel/ -lxapian
+  Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lxapian
+  Release: LIBS+= -L$$PWD/winlibs/lib -lxapian
 }else{
   LIBS += -lxapian
 }
@@ -83,8 +77,8 @@ win32{
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
 
-  win32: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
-  else:unix: LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpa
+  LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
+
 
   INCLUDEPATH += $$PWD/thirdparty/breakpad/include
   DEPENDPATH += $$PWD/thirdparty/breakpad/include
@@ -138,7 +132,7 @@ win32 {
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
-        VERSION = 23.06.01 
+        VERSION = 23.06.02 
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
@@ -150,9 +144,8 @@ win32 {
 
         # QMAKE_CXXFLAGS_RELEASE += /GL # slows down the linking significantly
         LIBS += -lshell32 -luser32 -lsapi -lole32
-        Debug: LIBS+= -lhunspelld
-        Release: LIBS+= -lhunspell
-        HUNSPELL_LIB = hunspell
+        Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lhunspell-1.7
+        Release: LIBS+= -L$$PWD/winlibs/lib/ -lhunspell-1.7
     }
 
     LIBS += -lwsock32 \
@@ -291,16 +284,17 @@ HEADERS += \
     src/ankiconnector.hh \
     src/article_maker.hh \
     src/article_netmgr.hh \
-    src/common/atomic_rename.hh \
     src/audiolink.hh \
     src/audioplayerfactory.hh \
     src/audioplayerinterface.hh \
     src/btreeidx.hh \
     src/chunkedstorage.hh \
+    src/common/atomic_rename.hh \
     src/common/base_type.hh \
     src/common/ex.hh \
     src/common/file.hh \
     src/common/filetype.hh \
+    src/common/folding.hh \
     src/common/gddebug.hh \
     src/common/globalbroadcaster.hh \
     src/common/globalregex.hh \
@@ -359,7 +353,6 @@ HEADERS += \
     src/externalviewer.hh \
     src/ffmpegaudio.hh \
     src/ffmpegaudioplayer.hh \
-    src/common/folding.hh \
     src/ftshelpers.hh \
     src/fulltextsearch.hh \
     src/gestures.hh \
@@ -376,6 +369,7 @@ HEADERS += \
     src/metadata.hh \
     src/multimediaaudioplayer.hh \
     src/parsecmdline.hh \
+    src/pronounceengine.hh \
     src/resourceschemehandler.hh \
     src/splitfile.hh \
     src/termination.hh \
@@ -407,10 +401,10 @@ HEADERS += \
     src/ui/searchpanewidget.hh \
     src/ui/stylescombobox.hh \
     src/ui/translatebox.hh \
+    src/version.hh \
     src/webmultimediadownload.hh \
     src/weburlrequestinterceptor.hh \
     src/wordfinder.hh \
-    src/wordlist.hh \
     src/zipfile.hh \
     thirdparty/tomlplusplus/toml++/toml.h
 
@@ -420,13 +414,14 @@ SOURCES += \
     src/ankiconnector.cc \
     src/article_maker.cc \
     src/article_netmgr.cc \
-    src/common/atomic_rename.cc \
     src/audiolink.cc \
     src/audioplayerfactory.cc \
     src/btreeidx.cc \
     src/chunkedstorage.cc \
+    src/common/atomic_rename.cc \
     src/common/file.cc \
     src/common/filetype.cc \
+    src/common/folding.cc \
     src/common/gddebug.cc \
     src/common/globalbroadcaster.cc \
     src/common/globalregex.cc \
@@ -481,7 +476,6 @@ SOURCES += \
     src/externalaudioplayer.cc \
     src/externalviewer.cc \
     src/ffmpegaudio.cc \
-    src/common/folding.cc \
     src/ftshelpers.cc \
     src/fulltextsearch.cc \
     src/gestures.cc \
@@ -499,6 +493,7 @@ SOURCES += \
     src/metadata.cc \
     src/multimediaaudioplayer.cc \
     src/parsecmdline.cc \
+    src/pronounceengine.cc \
     src/resourceschemehandler.cc \
     src/splitfile.cc \
     src/termination.cc \
@@ -528,10 +523,10 @@ SOURCES += \
     src/ui/searchpanel.cc \
     src/ui/stylescombobox.cc \
     src/ui/translatebox.cc \
+    src/version.cc \
     src/webmultimediadownload.cc \
     src/weburlrequestinterceptor.cc \
     src/wordfinder.cc \
-    src/wordlist.cc \
     src/zipfile.cc \
     thirdparty/fmt/format.cc
 
@@ -559,7 +554,7 @@ SOURCES += src/common/wildcard.cc
 
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
-  LIBS += -llzma -lzstd -lzim
+  LIBS += -llzma -lzim
 
     win32{
       Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/
@@ -595,7 +590,14 @@ CONFIG( chinese_conversion_support ) {
              src/ui/chineseconversion.hh
   SOURCES += src/dict/chinese.cc \
              src/ui/chineseconversion.cc
+
+win32{
+  Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lopencc
+  Release: LIBS+= -L$$PWD/winlibs/lib -lopencc
+}else{
   LIBS += -lopencc
+}
+
 }
 
 RESOURCES += resources.qrc \

@@ -6,7 +6,6 @@
 
 #include <memory>
 // A shorthand for std::shared_ptr
-template <class T>
-using sptr = std::shared_ptr<T>;
+template< class T >
+using sptr = std::shared_ptr< T >;
 #endif
-

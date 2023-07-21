@@ -24,9 +24,9 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: 6.4.3
+          version: 6.5.1
           arch: gcc_64
-          cached: 'false'
+          
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
           setup-python: 'false'

@@ -1,13 +1,14 @@
 #include "ftssearchpanel.hh"
 #include <QHBoxLayout>
 
-FtsSearchPanel::FtsSearchPanel( QWidget * parent ): QWidget( parent )
+FtsSearchPanel::FtsSearchPanel( QWidget * parent ):
+  QWidget( parent )
 {
 
-  auto * layout    = new QHBoxLayout( this );
-  previous         = new QPushButton( this );
-  next             = new QPushButton( this );
-  statusLabel      = new QLabel( this );
+  auto * layout = new QHBoxLayout( this );
+  previous      = new QPushButton( this );
+  next          = new QPushButton( this );
+  statusLabel   = new QLabel( this );
 
   layout->addWidget( previous );
   layout->addWidget( next );

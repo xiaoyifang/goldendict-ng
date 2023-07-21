@@ -33,3 +33,15 @@ assignees: ''
 - Version [e.g. 22]
 
 **额外的信息**
+
+Windows:
+
+ _将位于配置文件夹中（可以通过菜单  **help->配置文件夹** 打开）crash文件夹里面的dmp文件上传到此处_
+
+Macos:
+
+将macos自带的crashpad的log粘贴到此处
+
+Linux:
+
+gdb crash 堆栈信息

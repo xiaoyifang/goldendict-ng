@@ -4,21 +4,34 @@
 }
 
 /* Another way to hide specific separators */
-#navToolbar #beforeOptionsSeparator, #navToolbar #beforeScanPopupSeparator, #navToolbar #afterScanPopupSeparator, #navToolbar #separatorBeforeZoom, #navToolbar #separatorBeforeSave {
-  background: rgba(0,0,0,0%);
+#navToolbar #beforeOptionsSeparator,
+#navToolbar #beforeScanPopupSeparator,
+#navToolbar #afterScanPopupSeparator,
+#navToolbar #separatorBeforeZoom,
+#navToolbar #separatorBeforeSave {
+  background: rgba(0, 0, 0, 0%);
   width: 0px;
   margin: -3px;
 }
 
 /* Hide various buttons in the toolbar: */
-#navToolbar #menuButtonXX, #navToolbar #soundButtonXX, #navToolbar #backButtonXX, #navToolbar #forwardButtonXX, #navToolbar #zoomInButtonXX, #navToolbar #zoomOutButtonXX, #navToolbar #zoomBaseButtonXX, #navToolbar #saveArticleButton, #navToolbar #printButton {
-  width:   0px;
-  height:  0px;
-  margin:  -3px;
+#navToolbar #menuButtonXX,
+#navToolbar #soundButtonXX,
+#navToolbar #backButtonXX,
+#navToolbar #forwardButtonXX,
+#navToolbar #zoomInButtonXX,
+#navToolbar #zoomOutButtonXX,
+#navToolbar #zoomBaseButtonXX,
+#navToolbar #saveArticleButton,
+#navToolbar #printButton {
+  width: 0px;
+  height: 0px;
+  margin: -3px;
 }
 
 /* remove the main toolbar handle */
-#navToolbar::handle, #dictionaryBar::handle {
+#navToolbar::handle,
+#dictionaryBar::handle {
   image: none;
 }
 
@@ -38,8 +51,8 @@
 
 /* Thin separators between the main UI and sidebars */
 QMainWindow::separator {
-     width:  1px; /* when vertical */
-     height: 1px; /* when horizontal */
+  width: 1px; /* when vertical */
+  height: 1px; /* when horizontal */
 }
 
 ScanPopup #goBackButtonAA,
@@ -49,8 +62,7 @@ ScanPopup #wordListButtonXX,
 ScanPopup #pronounceButtonAA,
 ScanPopup #sendWordButtonXX
 /* ScanPopup #showDictionaryBar, */
-/* ScanPopup #pinButton */
-{
+/* ScanPopup #pinButton */ {
   width: 0px;
   height: 0px;
   margin: -4px;

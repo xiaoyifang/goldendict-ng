@@ -1,7 +1,7 @@
 /*
  * Open Chinese Convert
  *
- * Copyright 2010-2014 BYVoid <byvoid@byvoid.com>
+ * Copyright 2010-2014 Carbo Kuo <byvoid@byvoid.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,20 +24,20 @@
 
 namespace opencc {
 /**
-* Implementation of maximal match segmentation
-* @ingroup opencc_cpp_api
-*/
+ * Implementation of maximal match segmentation
+ * @ingroup opencc_cpp_api
+ */
 class OPENCC_EXPORT MaxMatchSegmentation : public Segmentation {
 public:
   MaxMatchSegmentation(const DictPtr _dict) : dict(_dict) {}
 
   virtual ~MaxMatchSegmentation() {}
 
-  virtual SegmentsPtr Segment(const string& text) const;
+  virtual SegmentsPtr Segment(const std::string& text) const;
 
   const DictPtr GetDict() const { return dict; }
 
 private:
   const DictPtr dict;
 };
-}
+} // namespace opencc

@@ -22,15 +22,14 @@ class WordFinder: public QObject
 
 public:
 
-  typedef std::vector< std::pair< QString, bool > > SearchResults; // bool is a "was suggested" flag
+  using SearchResults = std::vector< std::pair< QString, bool > >; // bool is a "was suggested" flag
 
 private:
 
   SearchResults searchResults;
   QString searchErrorString;
   bool searchResultsUncertain;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests,
-                                                     finishedRequests;
+  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
   bool searchInProgress;
 
   QTimer updateResultsTimer;
@@ -38,8 +37,7 @@ private:
   // Saved search params
   bool searchQueued;
   QString inputWord;
-  enum SearchType
-  {
+  enum SearchType {
     PrefixMatch,
     StemmedMatch,
     ExpressionMatch
@@ -52,7 +50,7 @@ private:
   std::vector< sptr< Dictionary::Class > > const * inputDicts;
 
   std::vector< gd::wstring > allWordWritings; // All writings of the inputWord
-  
+
   struct OneResult
   {
     gd::wstring word;
@@ -66,7 +64,7 @@ private:
   typedef std::map< gd::wstring, ResultsArray::iterator > ResultsIndex;
   ResultsArray resultsArray;
   ResultsIndex resultsIndex;
-    
+
 public:
 
   WordFinder( QObject * parent );
@@ -84,39 +82,45 @@ public:
   void prefixMatch( QString const &,
                     std::vector< sptr< Dictionary::Class > > const &,
                     unsigned long maxResults = 40,
-                    Dictionary::Features = Dictionary::NoFeatures );
+                    Dictionary::Features     = Dictionary::NoFeatures );
 
   /// Do a stemmed-match search in the given list of dictionaries. All comments
   /// from prefixMatch() generally apply as well.
   void stemmedMatch( QString const &,
                      std::vector< sptr< Dictionary::Class > > const &,
-                     unsigned minLength = 3,
+                     unsigned minLength          = 3,
                      unsigned maxSuffixVariation = 3,
-                     unsigned long maxResults = 30,
-                     Dictionary::Features = Dictionary::NoFeatures );
-  
+                     unsigned long maxResults    = 30,
+                     Dictionary::Features        = Dictionary::NoFeatures );
+
   /// Do the expression-match search in the given list of dictionaries.
   /// Function find exact matches for one of spelling suggestions.
   void expressionMatch( QString const &,
                         std::vector< sptr< Dictionary::Class > > const &,
                         unsigned long maxResults = 40,
-                        Dictionary::Features = Dictionary::NoFeatures );
+                        Dictionary::Features     = Dictionary::NoFeatures );
 
   /// Returns the vector containing search results from the last operation.
   /// If it didn't finish yet, the result is not final and may be changing
   /// over time.
   SearchResults const & getResults() const
-  { return searchResults; }
+  {
+    return searchResults;
+  }
 
   /// Returns a human-readable error string for the last finished request. Empty
   /// string means it finished without any error.
   QString const & getErrorString()
-  { return searchErrorString; }
+  {
+    return searchErrorString;
+  }
 
   /// Returns true if the search was inconclusive -- that is, there may be more
   /// results than the ones returned.
   bool wasSearchUncertain() const
-  { return searchResultsUncertain; }
+  {
+    return searchResultsUncertain;
+  }
 
   /// Cancels any pending search operation, if any.
   void cancel();
@@ -155,14 +159,14 @@ private:
   /// Compares results based on their ranks
   struct SortByRank
   {
-    bool operator () ( OneResult const & first, OneResult const & second )
+    bool operator()( OneResult const & first, OneResult const & second )
     {
       if ( first.rank < second.rank )
         return true;
-  
+
       if ( first.rank > second.rank )
         return false;
-  
+
       // Do any sort of collation here in the future. For now we just put the
       // strings sorted lexicographically.
       return first.word < second.word;
@@ -172,7 +176,7 @@ private:
   /// Compares results based on their ranks and lengths
   struct SortByRankAndLength
   {
-    bool operator () ( OneResult const & first, OneResult const & second )
+    bool operator()( OneResult const & first, OneResult const & second )
     {
       if ( first.rank < second.rank )
         return true;
@@ -194,4 +198,3 @@ private:
 };
 
 #endif
-

@@ -9,7 +9,8 @@
 #include <QEvent>
 #include <QApplication>
 
-MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
+MainStatusBar::MainStatusBar( QWidget * parent ):
+  QWidget( parent )
 {
   textWidget = new QLabel( QString(), this );
   textWidget->setObjectName( "text" );
@@ -26,7 +27,7 @@ MainStatusBar::MainStatusBar( QWidget *parent ) : QWidget( parent )
   timer->setSingleShot( true );
 
   // layout
-  QHBoxLayout * layout = new QHBoxLayout;
+  const auto layout = new QHBoxLayout;
   layout->setSpacing( 0 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
@@ -48,7 +49,6 @@ void MainStatusBar::clearMessage()
   textWidget->setText( backgroungMessage );
   picWidget->setPixmap( QPixmap() );
   timer->stop();
-  hide();
 }
 
 QString MainStatusBar::currentMessage() const
@@ -56,41 +56,36 @@ QString MainStatusBar::currentMessage() const
   return message;
 }
 
-void MainStatusBar::setBackgroundMessage(const QString & bkg_message )
+void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 {
   backgroungMessage = bkg_message;
-  if( message.isEmpty() )
-  {
+  if ( message.isEmpty() ) {
     textWidget->setText( backgroungMessage );
-    raise();
-    show();
   }
 }
 
-void MainStatusBar::showMessage(const QString & str, int timeout, const QPixmap & pixmap)
+void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
-  if ( !picWidget->pixmap().isNull() )
-  {
+  if ( !picWidget->pixmap().isNull() ) {
     picWidget->setFixedSize( textWidget->height(), textWidget->height() );
   }
-  else
-  {
+  else {
     picWidget->setFixedSize( 0, 0 );
   }
 
-  if ( timeout > 0 )
-  {
+  if ( timeout > 0 ) {
     timer->start( timeout );
   }
-  raise();
-  show();
-  move( QPoint( 0, parentWidget()->height() - height() ) );
+
+  if ( parentWidget() ) {
+    move( 0, parentWidget()->height() - height() );
+  }
 }
 
-void MainStatusBar::mousePressEvent ( QMouseEvent * )
+void MainStatusBar::mousePressEvent( QMouseEvent * )
 {
   clearMessage();
 }
