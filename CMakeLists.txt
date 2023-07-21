@@ -14,7 +14,7 @@ option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 23.06.02
+        VERSION 23.07.23
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name

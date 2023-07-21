@@ -29,9 +29,9 @@ jobs:
         qt_ver: [ 6.5.1 ]
         qt_arch: [gcc_64]
     env:
-      version: 23.06.02
-      version-suffix: alpha
-      prerelease: true
+      version: 23.07.23
+      version-suffix: GreatHeat
+      prerelease: false
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3

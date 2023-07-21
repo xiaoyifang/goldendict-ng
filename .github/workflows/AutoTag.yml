@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 23.06.01
-      version-suffix: ChildrenDay
+      version: 23.07.23
+      version-suffix: GreatHeat
       prerelease: false
 
     steps:
