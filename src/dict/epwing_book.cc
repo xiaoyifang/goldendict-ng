@@ -13,21 +13,21 @@
 
   #include "audiolink.hh"
   #include "wstring.hh"
-#include "wstring_qt.hh"
-#include "folding.hh"
-#include "epwing_charmap.hh"
-#include "htmlescape.hh"
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
-  #define _FILE_OFFSET_BITS 64
-#endif
+  #include "wstring_qt.hh"
+  #include "folding.hh"
+  #include "epwing_charmap.hh"
+  #include "htmlescape.hh"
+  #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+    #define _FILE_OFFSET_BITS 64
+  #endif
 
-#include <eb/text.h>
-#include <eb/appendix.h>
-#include <eb/error.h>
-#include <eb/binary.h>
-#include <eb/font.h>
+  #include <eb/text.h>
+  #include <eb/appendix.h>
+  #include <eb/error.h>
+  #include <eb/binary.h>
+  #include <eb/font.h>
 
-#define HitsBufferSize 512
+  #define HitsBufferSize 512
 
 namespace Epwing {
 
