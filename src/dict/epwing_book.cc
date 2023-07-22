@@ -1,16 +1,18 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "epwing_book.hh"
+#ifndef NO_EPWING_SUPPORT
 
-#include <QDir>
-#include <QTextStream>
-#include <QTextDocumentFragment>
-#include <QHash>
-#include "gddebug.hh"
+  #include "epwing_book.hh"
 
-#include "audiolink.hh"
-#include "wstring.hh"
+  #include <QDir>
+  #include <QTextStream>
+  #include <QTextDocumentFragment>
+  #include <QHash>
+  #include "gddebug.hh"
+
+  #include "audiolink.hh"
+  #include "wstring.hh"
 #include "wstring_qt.hh"
 #include "folding.hh"
 #include "epwing_charmap.hh"
@@ -1875,3 +1877,5 @@ QMutex EpwingBook::libMutex;
 } // namespace Book
 
 } // namespace Epwing
+
+#endif

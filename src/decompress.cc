@@ -1,10 +1,7 @@
 #include "decompress.hh"
-#include "zlib.h"
-#include "bzlib.h"
-
-#ifdef MAKE_ZIM_SUPPORT
-  #include "lzma.h"
-#endif
+#include <zlib.h>
+#include <bzlib.h>
+#include <lzma.h>
 
 #define CHUNK_SIZE 2048
 
@@ -74,8 +71,6 @@ string decompressBzip2( const char * bufptr, unsigned length )
   return str;
 }
 
-#ifdef MAKE_ZIM_SUPPORT
-
 string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
 {
   string str;
@@ -122,5 +117,3 @@ string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
   }
   return str;
 }
-
-#endif

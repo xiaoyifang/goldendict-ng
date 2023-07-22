@@ -1,7 +1,9 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "epwing_charmap.hh"
+#ifndef NO_EPWING_SUPPORT
+
+  #include "epwing_charmap.hh"
 
 namespace Epwing {
 
@@ -25,3 +27,5 @@ void EpwingCharmap::addEntry( QString const & code, int ch )
 }
 
 } // namespace Epwing
+
+#endif
