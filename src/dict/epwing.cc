@@ -1,32 +1,30 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+#ifndef NO_EPWING_SUPPORT
 
-#include "epwing_book.hh"
-#include "epwing.hh"
+  #include "epwing_book.hh"
+  #include "epwing.hh"
 
-#include <QByteArray>
-#include <QDir>
-#include <QRunnable>
-#include <QSemaphore>
+  #include <QByteArray>
+  #include <QDir>
+  #include <QRunnable>
+  #include <QSemaphore>
 
-#include <map>
-#include <QtConcurrent>
-#include <set>
-#include <string>
-#include <QObject>
+  #include <map>
+  #include <QtConcurrent>
+  #include <set>
+  #include <string>
 
-#include "btreeidx.hh"
-#include "folding.hh"
-#include "gddebug.hh"
+  #include "btreeidx.hh"
+  #include "folding.hh"
+  #include "gddebug.hh"
 
-#include "chunkedstorage.hh"
-#include "wstring.hh"
-#include "wstring_qt.hh"
-#include "utf8.hh"
-#include "filetype.hh"
-#include "ftshelpers.hh"
-#include "globalregex.hh"
-#include "sptr.hh"
+  #include "chunkedstorage.hh"
+  #include "wstring_qt.hh"
+  #include "filetype.hh"
+  #include "ftshelpers.hh"
+  #include "globalregex.hh"
+  #include "sptr.hh"
 
 namespace Epwing {
 
@@ -1294,3 +1292,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 }
 
 } // namespace Epwing
+
+#endif

@@ -106,11 +106,7 @@ sudo apt-get install libopencc-dev
 
 #### Building with Zim dictionaries support
 
-To add Zim and Slob formats support you need at first install lzma-dev and zstd-dev packages, then pass `"CONFIG+=zim_support"` to `qmake`
-
-```
-sudo apt-get install liblzma-dev libzstd-dev libzim-dev
-```
+To add Zim formats support you need `libzim`, then pass `"CONFIG+=zim_support"` to `qmake`
 
 **Note**: Some linux distros do not support latest zim version, so you need to compile from latest source.
 On Windows,  you can use vcpkg to compile the libzim

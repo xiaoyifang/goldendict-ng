@@ -1,31 +1,33 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "epwing_book.hh"
+#ifndef NO_EPWING_SUPPORT
 
-#include <QDir>
-#include <QTextStream>
-#include <QTextDocumentFragment>
-#include <QHash>
-#include "gddebug.hh"
+  #include "epwing_book.hh"
 
-#include "audiolink.hh"
-#include "wstring.hh"
-#include "wstring_qt.hh"
-#include "folding.hh"
-#include "epwing_charmap.hh"
-#include "htmlescape.hh"
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
-  #define _FILE_OFFSET_BITS 64
-#endif
+  #include <QDir>
+  #include <QTextStream>
+  #include <QTextDocumentFragment>
+  #include <QHash>
+  #include "gddebug.hh"
 
-#include <eb/text.h>
-#include <eb/appendix.h>
-#include <eb/error.h>
-#include <eb/binary.h>
-#include <eb/font.h>
+  #include "audiolink.hh"
+  #include "wstring.hh"
+  #include "wstring_qt.hh"
+  #include "folding.hh"
+  #include "epwing_charmap.hh"
+  #include "htmlescape.hh"
+  #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+    #define _FILE_OFFSET_BITS 64
+  #endif
 
-#define HitsBufferSize 512
+  #include <eb/text.h>
+  #include <eb/appendix.h>
+  #include <eb/error.h>
+  #include <eb/binary.h>
+  #include <eb/font.h>
+
+  #define HitsBufferSize 512
 
 namespace Epwing {
 
@@ -1875,3 +1877,5 @@ QMutex EpwingBook::libMutex;
 } // namespace Book
 
 } // namespace Epwing
+
+#endif

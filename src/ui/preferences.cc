@@ -368,7 +368,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enablePosition->setChecked( p.fts.enablePosition );
 #ifndef MAKE_ZIM_SUPPORT
   ui.allowZim->hide();
-  ui.allowSlob->hide();
 #endif
 #ifdef NO_EPWING_SUPPORT
   ui.allowEpwing->hide();

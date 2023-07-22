@@ -79,10 +79,10 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
               << "*.mdx"
               << "*.gls"
               << "*.gls.dz"
+              << "*.slob"
 #ifdef MAKE_ZIM_SUPPORT
               << "*.zim"
               << "*.zimaa"
-              << "*.slob"
 #endif
 #ifndef NO_EPWING_SUPPORT
               << "*catalogs"
@@ -157,10 +157,9 @@ void LoadDictionaries::handlePath( Config::Path const & path )
   addDicts( ZipSounds::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Mdx::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Gls::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-
+  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #ifdef MAKE_ZIM_SUPPORT
   addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );

@@ -1,50 +1,47 @@
 /* This file is (c) 2015 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifdef MAKE_ZIM_SUPPORT
 
-  #include "slob.hh"
-  #include "btreeidx.hh"
+#include "slob.hh"
+#include "btreeidx.hh"
 
-  #include "folding.hh"
-  #include "gddebug.hh"
-  #include "utf8.hh"
-  #include "decompress.hh"
-  #include "langcoder.hh"
-  #include "wstring.hh"
-  #include "wstring_qt.hh"
-  #include "ftshelpers.hh"
-  #include "htmlescape.hh"
-  #include "filetype.hh"
-  #include "tiff.hh"
-  #include "utils.hh"
+#include "folding.hh"
+#include "gddebug.hh"
+#include "utf8.hh"
+#include "decompress.hh"
+#include "langcoder.hh"
+#include "wstring_qt.hh"
+#include "ftshelpers.hh"
+#include "htmlescape.hh"
+#include "filetype.hh"
+#include "tiff.hh"
+#include "utils.hh"
 
-  #ifdef _MSC_VER
-    #include <stub_msvc.h>
-  #endif
+#ifdef _MSC_VER
+  #include <stub_msvc.h>
+#endif
 
-  #include <QString>
-  #include <QFile>
-  #include <QFileInfo>
-  #include <QDir>
-  #include <QTextCodec>
-  #include <QMap>
-  #include <QPair>
-  #include <QRegExp>
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    #include <QtCore5Compat>
-  #endif
-  #include <QProcess>
-  #include <QVector>
-  #include <QtAlgorithms>
+#include <QString>
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QTextCodec>
+#include <QMap>
+#include <QPair>
+#include <QRegExp>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat>
+#endif
+#include <QProcess>
+#include <QVector>
 
-  #include <QRegularExpression>
+#include <QRegularExpression>
 
-  #include <string>
-  #include <vector>
-  #include <map>
-  #include <set>
-  #include <algorithm>
+#include <string>
+#include <vector>
+#include <map>
+#include <set>
+#include <algorithm>
 
 namespace Slob {
 
@@ -1510,5 +1507,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 }
 
 } // namespace Slob
-
-#endif
