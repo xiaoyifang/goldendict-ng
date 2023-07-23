@@ -82,7 +82,7 @@ The metadata file uses [TOML](https://toml.io) format.
 ```toml
 categories = [ "English", "Russian", "Chinese" ]
 
-# the following fields have not supported yet.
+# the following `langfrom` , `langto` fields have not been supported yet.
 [metadata]
 name = "New Name"
 langfrom = "English"
