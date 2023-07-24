@@ -2,7 +2,7 @@
 Type=Application
 Terminal=false
 Categories=Office;Dictionary;Education;Qt;
-Name=GoldenDict-NG
+Name=GoldenDict-ng
 GenericName=Multiformat Dictionary
 GenericName[zh_CN]=多格式字典
 Comment=A feature-rich dictionary lookup program
