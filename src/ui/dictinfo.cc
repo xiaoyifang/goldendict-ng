@@ -20,7 +20,7 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
   setWindowTitle( QString::fromUtf8( dict->getName().data(), dict->getName().size() ) );
 
   ui.dictionaryId->setText( QString::fromStdString( dict->getId() ) );
-  ui.enableFullindex->setChecked(dict->canFTS());
+  ui.enableFullindex->setChecked( dict->canFTS() );
   ui.dictionaryTotalArticles->setText( QString::number( dict->getArticleCount() ) );
   ui.dictionaryTotalWords->setText( QString::number( dict->getWordCount() ) );
   ui.dictionaryTranslatesFrom->setText( Language::localizedStringForId( dict->getLangFrom() ) );
