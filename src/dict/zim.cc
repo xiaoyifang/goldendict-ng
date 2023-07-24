@@ -221,7 +221,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 

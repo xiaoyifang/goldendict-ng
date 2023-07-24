@@ -240,7 +240,7 @@ public:
     if ( ensureInitDone().size() )
       return;
 
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
