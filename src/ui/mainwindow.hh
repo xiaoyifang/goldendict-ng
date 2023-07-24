@@ -64,7 +64,7 @@ public:
   };
 public slots:
 
-  void messageFromAnotherInstanceReceived( QString const & );
+  void messageFromAnotherInstanceReceived( QByteArray const & );
   void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
   void headwordReceived( QString const &, QString const & );

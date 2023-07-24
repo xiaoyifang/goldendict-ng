@@ -67,12 +67,6 @@ if (APPLE)
     file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
 endif ()
 
-set(QSINGLEAPP_SOURCE_FILES
-        thirdparty/qtsingleapplication/src/qtlocalpeer.cpp
-        thirdparty/qtsingleapplication/src/qtlocalpeer.h
-        thirdparty/qtsingleapplication/src/qtsingleapplication.cpp
-        thirdparty/qtsingleapplication/src/qtsingleapplication.h
-        )
 
 qt_add_executable(${GOLDENDICT} MANUAL_FINALIZATION)
 
@@ -83,7 +77,7 @@ target_sources(${GOLDENDICT} PRIVATE
         src/stylesheets/css.qrc
         ${ALL_SOURCE_FILES}
         ${MACOS_SOURCE_FILES}
-        ${QSINGLEAPP_SOURCE_FILES})
+        )
 
 if (NOT USE_SYSTEM_FMT)
     target_sources(${GOLDENDICT} PRIVATE thirdparty/fmt/format.cc)
@@ -110,9 +104,14 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::TextToSpeech
         )
 
+# SingleApplication
+set(KDSingleApplication_QT6 ON CACHE BOOL "Force Qt6 KDSingleApplication" FORCE)
+set(KDSingleApplication_STATIC ON CACHE BOOL "Force Static KDSingleApplication" FORCE)
+add_subdirectory(thirdparty/KDSingleApplication EXCLUDE_FROM_ALL)
+target_link_libraries(${GOLDENDICT} PRIVATE kdsingleapplication)
 
 target_include_directories(${GOLDENDICT} PRIVATE
-        ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
+        ${CMAKE_SOURCE_DIR}/thirdparty/KDSingleApplication/src
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/src/common
         ${PROJECT_SOURCE_DIR}/src/dict

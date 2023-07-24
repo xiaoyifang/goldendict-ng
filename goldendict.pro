@@ -643,5 +643,5 @@ PRE_TARGETDEPS += $$TS_OUT
 #QTBUG-105984
 # avoid qt6.4.0-6.4.2 .  the qtmultimedia module is buggy in all these versions
 
-include( thirdparty/qtsingleapplication/src/qtsingleapplication.pri )
+include(thirdparty/KDSingleApplication/src/kdsingleapplication.pri)
 

@@ -20,6 +20,7 @@
   #include <windows.h>
 #endif
 
+#include <kdsingleapplication.h>
 #include "termination.hh"
 #include "atomic_rename.hh"
 #include <QByteArray>
@@ -335,7 +336,7 @@ int main( int argc, char ** argv )
   newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
   newArgv[ argc + 1 ] = nullptr;
 
-  QHotkeyApplication app( "GoldenDict-ng", newArgc, newArgv );
+  QHotkeyApplication app( newArgc, newArgv );
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
@@ -411,31 +412,33 @@ int main( int argc, char ** argv )
   f.setStyleStrategy( QFont::PreferAntialias );
   QApplication::setFont( f );
 
-  if ( app.isRunning() ) {
+  KDSingleApplication singleApp( QCoreApplication::applicationName() );
+
+  if ( !singleApp.isPrimaryInstance() ) {
     bool wasMessage = false;
 
     if ( gdcl.needSetGroup() ) {
-      app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
+      singleApp.sendMessage( "setGroup: " + gdcl.getGroupName().toUtf8() );
       wasMessage = true;
     }
 
     if ( gdcl.needSetPopupGroup() ) {
-      app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
+      singleApp.sendMessage( "setPopupGroup: " + gdcl.getPopupGroupName().toUtf8() );
       wasMessage = true;
     }
 
     if ( gdcl.needTranslateWord() ) {
-      app.sendMessage( QString( "translateWord: " ) + gdcl.wordToTranslate() );
+      singleApp.sendMessage( "translateWord: " + gdcl.wordToTranslate().toUtf8() );
       wasMessage = true;
     }
 
     if ( gdcl.needTogglePopup() ) {
-      app.sendMessage( QStringLiteral( "toggleScanPopup" ) );
+      singleApp.sendMessage( "toggleScanPopup" );
       wasMessage = true;
     }
 
     if ( !wasMessage )
-      app.sendMessage( "bringToFront" );
+      singleApp.sendMessage( "bringToFront" );
 
     return 0; // Another instance is running
   }
@@ -531,7 +534,10 @@ int main( int argc, char ** argv )
 
   app.addDataCommiter( m );
 
-  QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
+  QObject::connect( &singleApp,
+                    &KDSingleApplication::messageReceived,
+                    &m,
+                    &MainWindow::messageFromAnotherInstanceReceived );
 
   if ( gdcl.needSetGroup() )
     m.setGroupByName( gdcl.getGroupName(), true );

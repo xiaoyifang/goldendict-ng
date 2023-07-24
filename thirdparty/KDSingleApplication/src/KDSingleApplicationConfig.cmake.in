@@ -1,0 +1,15 @@
+# This file is part of KDSingleApplication.
+#
+# SPDX-FileCopyrightText: 2020-2023 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.com>
+#
+# SPDX-License-Identifier: MIT
+#
+# Contact KDAB at <info@kdab.com> for commercial licensing options.
+#
+include(CMakeFindDependencyMacro)
+
+find_dependency(Qt@QT_VERSION_MAJOR@Widgets REQUIRED)
+find_dependency(Qt@QT_VERSION_MAJOR@Network REQUIRED)
+
+# Add the targets file
+include("${CMAKE_CURRENT_LIST_DIR}/KDSingleApplication@KDSingleApplication_LIBRARY_QTID@Targets.cmake")

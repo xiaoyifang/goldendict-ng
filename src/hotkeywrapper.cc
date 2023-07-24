@@ -17,27 +17,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
-  QtSingleApplication( argc, argv )
-{
-  connect( this,
-           &QGuiApplication::commitDataRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppCommitData,
-           Qt::DirectConnection );
-
-  connect( this,
-           &QGuiApplication::saveStateRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppSaveState,
-           Qt::DirectConnection );
-
-#if defined( Q_OS_WIN )
-  installNativeEventFilter( this );
-#endif
-}
-
-QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
-  QtSingleApplication( id, argc, argv )
+  QApplication( argc, argv )
 {
   connect( this,
            &QGuiApplication::commitDataRequest,

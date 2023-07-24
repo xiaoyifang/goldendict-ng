@@ -1,12 +1,11 @@
 #ifndef HOTKEYWRAPPER_H
 #define HOTKEYWRAPPER_H
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QThread>
 
 #include "config.hh"
 #include "ex.hh"
-#include "qtsingleapplication.h"
 #include "utils.hh"
 
 #ifdef HAVE_X11
@@ -213,7 +212,7 @@ public:
   virtual ~DataCommitter() {}
 };
 
-class QHotkeyApplication: public QtSingleApplication
+class QHotkeyApplication: public QApplication
 #if defined( Q_OS_WIN )
   ,
                           public QAbstractNativeEventFilter
@@ -227,7 +226,6 @@ class QHotkeyApplication: public QtSingleApplication
 
 public:
   QHotkeyApplication( int & argc, char ** argv );
-  QHotkeyApplication( QString const & id, int & argc, char ** argv );
 
   void addDataCommiter( DataCommitter & );
   void removeDataCommiter( DataCommitter & );

@@ -3507,7 +3507,7 @@ void MainWindow::applyWordsZoomLevel()
   scanPopup->applyWordsZoomLevel();
 }
 
-void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
+void MainWindow::messageFromAnotherInstanceReceived( QByteArray const & message )
 {
   if ( message == "bringToFront" ) {
     toggleMainWindow( true );
@@ -3531,8 +3531,9 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
   else if ( message.left( 15 ) == "setPopupGroup: " ) {
     setGroupByName( message.mid( 15 ), false );
   }
-  else
+  else {
     qWarning() << "Unknown message received from another instance: " << message;
+  }
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
