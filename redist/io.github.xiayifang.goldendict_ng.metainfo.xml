@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019 Vitaly Zaitsev <vitaly@easycoding.org> -->
 <component type="desktop">
-  <id>org.xiaoyifang.GoldenDict_NG</id>
+  <id>io.github.xiayifang.goldendict_ng</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>GoldenDict-NG</name>
   <summary>Dictionary lookup program</summary>
   <description>
     <p>
-        GoldenDict-NG is a feature-rich dictionary lookup program, supporting multiple
-        dictionary formats, featuring perfect article rendering with the complete
-        markup, illustrations and other content retained, and allowing you to type
-        in words without any accents or correct case.
+      GoldenDict-ng is a feature-rich dictionary lookup program, supporting multiple
+      dictionary formats, featuring perfect article rendering with the complete
+      markup, illustrations and other content retained, and allowing you to type
+      in words without any accents or correct case.
     </p>
   </description>
   <screenshots>
@@ -25,11 +25,15 @@
       <image>https://user-images.githubusercontent.com/20123683/239691144-5145f844-ed88-4a24-ac86-4904ede13a32.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/xiaoyifang/goldendict-ng</url>
+  <url type="homepage">https://xiaoyifang.github.io/goldendict-ng/</url>
   <update_contact>https://github.com/xiaoyifang/goldendict-ng</update_contact>
   <launchable type="desktop-id">org.xiaoyifang.GoldenDict_NG.desktop</launchable>
-  <content_rating type="oars-1.0" />
+  <content_rating type="oars-1.0"/>
   <provides>
     <id>org.goldendict_ng.desktop</id>
   </provides>
+  <releases>
+    <release version="23.07.23" date="2023-07-23"/>
+    <release version="23.06.01" date="2023-06-01"/>
+  </releases>
 </component>
