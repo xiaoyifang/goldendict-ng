@@ -3088,7 +3088,8 @@ void MainWindow::setAutostart( bool autostart )
   if ( autostart == QFile::exists( destinationPath ) )
     return; // Nothing to do.
   if ( autostart ) {
-    const QString sourcePath = Config::getProgramDataDir() + "../applications/org.xiaoyifang.GoldenDict_NG.desktop";
+    const QString sourcePath =
+      Config::getProgramDataDir() + "../applications/io.github.xiayifang.goldendict_ng.desktop";
     QFile::copy( sourcePath, destinationPath );
   }
   else
