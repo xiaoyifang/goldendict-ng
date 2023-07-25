@@ -41,7 +41,7 @@ For example,
 ## Disable the fullindex of the dictionary
 
 ```toml
-fullindex=false
+fts=false
 
 [metadata]
 name="New Name"
