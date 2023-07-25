@@ -53,7 +53,7 @@ this `fts` field's value can be on/off, 1/0 ,true/false etc.
 ```
 fts=false
 ```
-will disable the current dictionary's fullindex feature.
+will disable the current dictionary's full-text search.
 
 
 you can check the fullindex feature on each dictionary info dialog.
