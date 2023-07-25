@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019 Vitaly Zaitsev <vitaly@easycoding.org> -->
 <component type="desktop">
-  <id>io.github.xiayifang.goldendict_ng</id>
+  <id>io.github.xiaoyifang.goldendict_ng</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>GoldenDict-ng</name>
@@ -36,7 +36,7 @@
   <url type="contact">https://github.com/xiaoyifang/goldendict-ng/discussions</url>
   <url type="vcs-browser">https://github.com/xiaoyifang/goldendict-ng</url>
   <update_contact>https://github.com/xiaoyifang/goldendict-ng</update_contact>
-  <launchable type="desktop-id">io.github.xiayifang.goldendict_ng.desktop</launchable>
+  <launchable type="desktop-id">io.github.xiaoyifang.goldendict_ng.desktop</launchable>
   <content_rating type="oars-1.0"/>
   <provides>
     <id>org.goldendict_ng.desktop</id>

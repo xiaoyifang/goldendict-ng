@@ -3089,7 +3089,7 @@ void MainWindow::setAutostart( bool autostart )
     return; // Nothing to do.
   if ( autostart ) {
     const QString sourcePath =
-      Config::getProgramDataDir() + "../applications/io.github.xiayifang.goldendict_ng.desktop";
+      Config::getProgramDataDir() + "../applications/io.github.xiaoyifang.goldendict_ng.desktop";
     QFile::copy( sourcePath, destinationPath );
   }
   else
