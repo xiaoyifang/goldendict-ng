@@ -38,7 +38,7 @@ For example,
 
 ```
 
-## Disable the fullindex of the dictionary
+## Disable full-text search for certain dictionary
 
 ```toml
 fts=false
