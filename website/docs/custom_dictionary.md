@@ -56,6 +56,6 @@ fts=false
 will disable the current dictionary's full-text search.
 
 
-you can check the fullindex feature on each dictionary info dialog.
+you can check the full-text search on each dictionary's info dialog.
 
 ![](img/dictionary-info-fullindex.png)
