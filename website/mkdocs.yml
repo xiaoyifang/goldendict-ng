@@ -42,7 +42,7 @@ nav:
       - Custom Stylesheet & JavaScript: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
-      - Customize Dictionary Name: custom_dictionary.md
+      - Customize Dictionary: custom_dictionary.md
       - OCR Integration: howto/ocr.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Contributor Guides:
