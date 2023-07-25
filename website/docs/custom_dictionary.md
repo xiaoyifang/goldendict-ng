@@ -51,7 +51,7 @@ name="New Name"
 this `fts` field's value can be on/off, 1/0 ,true/false etc.
 
 ```
-fullindex=false
+fts=false
 ```
 will disable the current dictionary's fullindex feature.
 
