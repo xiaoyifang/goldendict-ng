@@ -252,9 +252,21 @@ inline std::pair< bool, QString > getQueryWord( QUrl const & url )
 
 inline bool isAudioUrl( QUrl const & url )
 {
+  if(!url.isValid())
+    return false;
   // Note: we check for forvo sound links explicitly, as they don't have extensions
 
   return ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "gdau" )
+    && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
+}
+
+inline bool isWebAudioUrl( QUrl const & url )
+{
+  if(!url.isValid())
+    return false;
+  // Note: we check for forvo sound links explicitly, as they don't have extensions
+
+  return ( url.scheme() == "http" || url.scheme() == "https" )
     && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
