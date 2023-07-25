@@ -48,7 +48,7 @@ name="New Name"
 
 ```
 
-this `fullindex` field's value can be on/off, 1/0 ,true/false etc.
+this `fts` field's value can be on/off, 1/0 ,true/false etc.
 
 ```
 fullindex=false
