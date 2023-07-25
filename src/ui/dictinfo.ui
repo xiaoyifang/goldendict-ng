@@ -112,7 +112,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Fullindex enabled</string>
+         <string>Full text search enabled</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
