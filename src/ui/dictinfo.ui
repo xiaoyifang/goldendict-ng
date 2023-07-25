@@ -23,10 +23,27 @@
       <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="2">
-       <widget class="QLabel" name="label_4">
+      <item row="1" column="4">
+       <widget class="QPushButton" name="editDictionary">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="text">
-         <string>Translates from:</string>
+         <string>Edit dictionary</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="dictionaryTranslatesTo">
+        <property name="text">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Full text search enabled</string>
         </property>
        </widget>
       </item>
@@ -34,23 +51,6 @@
        <widget class="QPushButton" name="openIndexFolder">
         <property name="text">
          <string>Open index folder</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Translates to:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="dictionaryTotalWords">
-        <property name="text">
-         <string notr="true"/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -64,17 +64,32 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="dictionaryTranslatesFrom">
+      <item row="1" column="1">
+       <widget class="QLabel" name="dictionaryTotalWords">
         <property name="text">
          <string notr="true"/>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="0" column="4">
-       <widget class="QPushButton" name="openFolder">
+      <item row="3" column="1">
+       <widget class="QLabel" name="enableFullindex">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Open folder</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -85,20 +100,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Total words:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLabel" name="dictionaryTranslatesTo">
-        <property name="text">
-         <string notr="true"/>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
@@ -106,16 +107,17 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QRadioButton" name="enableFullindex">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>Full text search enabled</string>
+         <string>Total words:</string>
         </property>
-        <property name="checkable">
-         <bool>true</bool>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="openFolder">
+        <property name="text">
+         <string>Open folder</string>
         </property>
        </widget>
       </item>
@@ -129,13 +131,24 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
-       <widget class="QPushButton" name="editDictionary">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Edit dictionary</string>
+         <string>Translates from:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="dictionaryTranslatesFrom">
+        <property name="text">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Translates to:</string>
         </property>
        </widget>
       </item>
