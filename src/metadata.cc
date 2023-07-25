@@ -35,7 +35,7 @@ std::optional< Metadata::result > Metadata::load( std::string_view filepath )
 
   result.name = tbl[ "metadata" ][ "name" ].value_exact< std::string >();
 
-  const auto fullindex = tbl[ "fullindex" ];
+  const auto fullindex = tbl[ "fts" ];
   if ( fullindex.as_string() ) {
     const auto value = fullindex.as_string()->get();
     result.fullindex = value == "1" || value == "on" || value == "true";
