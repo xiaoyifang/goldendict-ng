@@ -130,9 +130,10 @@ public:
       QObject::connect( audioOutput, &AudioOutput::stateChanged, audioOutput, [ & ]( QAudio::State state ) {
         switch ( state ) {
           case QAudio::StoppedState:
+            quit = true;
+
             if ( audioOutput->error() != QAudio::NoError ) {
               qWarning() << "QAudioOutput stopped:" << audioOutput->error();
-              quit = true;
             }
             break;
           default:
@@ -166,6 +167,14 @@ public:
     audioOutput = nullptr;
   }
 };
+
+void AudioOutput::stop()
+{
+  Q_D( AudioOutput );
+  d->quit = true;
+  d->cond.wakeAll();
+  d->audioPlayFuture.waitForFinished();
+}
 
 AudioOutput::AudioOutput( QObject * parent ):
   QObject( parent ),

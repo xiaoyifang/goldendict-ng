@@ -1785,6 +1785,7 @@ void ArticleView::resourceDownloadFinished()
 
         if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
           // Audio data
+          audioPlayer->stop();
           connect( audioPlayer.data(),
                    &AudioPlayerInterface::error,
                    this,

@@ -3,7 +3,6 @@
   #include "audiooutput.hh"
   #include "ffmpegaudio.hh"
 
-  #include <math.h>
   #include <errno.h>
 
 extern "C" {
@@ -44,26 +43,18 @@ AudioService & AudioService::instance()
   return a;
 }
 
-AudioService::AudioService()
-{
-  //  ao_initialize();
-}
+AudioService::AudioService() {}
 
 AudioService::~AudioService()
 {
   emit cancelPlaying( true );
-  //  ao_shutdown();
 }
 
 void AudioService::playMemory( const char * ptr, int size )
 {
   emit cancelPlaying( false );
   QByteArray audioData( ptr, size );
-  DecoderThread * thread = new DecoderThread( audioData, this );
-
-  connect( thread, &DecoderThread::error, this, &AudioService::error );
-  connect( this, &AudioService::cancelPlaying, thread, &DecoderThread::cancel, Qt::DirectConnection );
-  connect( thread, &QThread::finished, thread, &QObject::deleteLater );
+  thread = std::make_shared< DecoderThread >( audioData, this );
 
   thread->start();
 }
@@ -73,42 +64,6 @@ void AudioService::stop()
   emit cancelPlaying( false );
 }
 
-struct DecoderContext
-{
-  enum {
-    kBufferSize = 32768
-  };
-
-  static QMutex deviceMutex_;
-  QAtomicInt & isCancelled_;
-  QByteArray audioData_;
-  QDataStream audioDataStream_;
-  AVFormatContext * formatContext_;
-  #if LIBAVCODEC_VERSION_MAJOR < 59
-  AVCodec * codec_;
-  #else
-  const AVCodec * codec_;
-  #endif
-  AVCodecContext * codecContext_;
-  AVIOContext * avioContext_;
-  AVStream * audioStream_;
-  //  ao_device * aoDevice_;
-  AudioOutput * audioOutput;
-  bool avformatOpened_;
-
-  SwrContext * swr_;
-
-  DecoderContext( QByteArray const & audioData, QAtomicInt & isCancelled );
-  ~DecoderContext();
-
-  bool openCodec( QString & errorString );
-  void closeCodec();
-  bool openOutputDevice( QString & errorString );
-  void closeOutputDevice();
-  bool play( QString & errorString );
-  bool normalizeAudio( AVFrame * frame, vector< uint8_t > & samples );
-  void playFrame( AVFrame * frame );
-};
 
 DecoderContext::DecoderContext( QByteArray const & audioData, QAtomicInt & isCancelled ):
   isCancelled_( isCancelled ),
@@ -355,6 +310,15 @@ bool DecoderContext::play( QString & errorString )
   return true;
 }
 
+void DecoderContext::stop()
+{
+  if ( audioOutput ) {
+    audioOutput->stop();
+    audioOutput->deleteLater();
+    audioOutput = nullptr;
+  }
+}
+
 bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & samples )
 {
   auto dst_freq     = 44100;
@@ -394,19 +358,20 @@ void DecoderContext::playFrame( AVFrame * frame )
 DecoderThread::DecoderThread( QByteArray const & audioData, QObject * parent ):
   QThread( parent ),
   isCancelled_( 0 ),
-  audioData_( audioData )
+  audioData_( audioData ),
+  d( audioData_, isCancelled_ )
 {
 }
 
 DecoderThread::~DecoderThread()
 {
   isCancelled_.ref();
+  d.stop();
 }
 
 void DecoderThread::run()
 {
   QString errorString;
-  DecoderContext d( audioData_, isCancelled_ );
 
   if ( !d.openCodec( errorString ) ) {
     emit error( errorString );
@@ -430,6 +395,7 @@ void DecoderThread::run()
 void DecoderThread::cancel( bool waitUntilFinished )
 {
   isCancelled_.ref();
+  d.stop();
   if ( waitUntilFinished )
     this->wait();
 }
