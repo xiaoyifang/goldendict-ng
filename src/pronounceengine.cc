@@ -1,5 +1,7 @@
 #include "pronounceengine.hh"
 #include <QMutexLocker>
+#include "common/utils.hh"
+#include <QUrl>
 
 PronounceEngine::PronounceEngine( QObject * parent ):
   QObject{ parent }
@@ -19,6 +21,9 @@ void PronounceEngine::reset()
 void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
 {
   if ( state == PronounceState::OCCUPIED )
+    return;
+
+  if ( !Utils::Url::isAudioUrl( QUrl( audioLink ) ) )
     return;
 
   QMutexLocker _( &mutex );

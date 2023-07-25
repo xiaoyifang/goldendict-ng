@@ -571,7 +571,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               articleNewString.clear();
             }
 
-            // audio url
+            // audio url like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
             articleString.replace(
               QRegularExpression(
                 "<a\\s+href=\"(//upload\\.wikimedia\\.org/wikipedia/[^\"'&]*\\.og[ga](?:\\.mp3|))\"" ),

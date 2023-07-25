@@ -340,7 +340,7 @@ private slots:
 
   bool isAudioLink( QUrl & targetUrl )
   {
-    return ( targetUrl.scheme() == "gdau" || Dictionary::WebMultimediaDownload::isAudioUrl( targetUrl ) );
+    return ( targetUrl.scheme() == "gdau" || Utils::Url::isAudioUrl( targetUrl ) );
   }
 
   void resourceDownloadFinished();
