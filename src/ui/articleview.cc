@@ -586,10 +586,9 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 {
   // Don't try mangling audio urls, even if they are from the framed websites
 
-  if(!url.isValid())
+  if ( !url.isValid() )
     return;
-  if ( ( url.scheme() == "http" || url.scheme() == "https" )
-       && !Utils::Url::isWebAudioUrl( url ) ) {
+  if ( ( url.scheme() == "http" || url.scheme() == "https" ) && !Utils::Url::isWebAudioUrl( url ) ) {
     // Maybe a link inside a website was clicked?
 
     QString ca = getCurrentArticle();
@@ -1777,8 +1776,7 @@ void ArticleView::resourceDownloadFinished()
 
         vector< char > const & data = ( *i )->getFullData();
 
-        if ( resourceDownloadUrl.scheme() == "gdau"
-             || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
+        if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
           // Audio data
           connect( audioPlayer.data(),
                    &AudioPlayerInterface::error,

@@ -23,7 +23,7 @@ void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
   if ( state == PronounceState::OCCUPIED )
     return;
 
-  if(!Utils::Url::isAudioUrl(QUrl(audioLink)))
+  if ( !Utils::Url::isAudioUrl( QUrl( audioLink ) ) )
     return;
 
   QMutexLocker _( &mutex );
