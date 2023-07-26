@@ -3,7 +3,7 @@ This project uses crowdin to organize all the transactions.When some new transac
 # how to update the crowdin.ts file
 
 ```
-lupdate-pro.exe -no-obsolete -no-ui-lines  goldendict.pro -ts locale\crowdin.ts
+lupdate-pro.exe -no-obsolete -no-ui-lines -locations none goldendict.pro -ts locale\crowdin.ts
 ```
 
 the option `-no-obsolete`  will remove obsolete items from crowdin.ts file.
