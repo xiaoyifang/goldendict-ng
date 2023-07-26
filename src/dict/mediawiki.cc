@@ -558,7 +558,13 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QRegularExpressionMatch match2 = reg2.match( tag );
               if ( match2.hasMatch() ) {
                 QString ref       = match2.captured( 1 );
-                QString audio_url = "<a href=\"" + ref
+                // audio url may like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
+                if ( ref.startsWith( "//" ) ) {
+                  ref = wikiUrl.scheme() + ":" + ref;
+                }
+                auto script =
+                  addAudioLink(  "\""  + ref + "\"", this->dictPtr->getId() );
+                QString audio_url = QString::fromStdString(  script )+ "<a href=\"" + ref
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
@@ -571,14 +577,6 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               articleNewString.clear();
             }
 
-            // audio url like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
-            articleString.replace(
-              QRegularExpression(
-                "<a\\s+href=\"(//upload\\.wikimedia\\.org/wikipedia/[^\"'&]*\\.og[ga](?:\\.mp3|))\"" ),
-
-              QString::fromStdString(
-                addAudioLink( string( "\"" ) + wikiUrl.scheme().toStdString() + ":\\1\"", this->dictPtr->getId() )
-                + "<a href=\"" + wikiUrl.scheme().toStdString() + ":\\1\"" ) );
 
             // Add url scheme to image source urls
             articleString.replace( " src=\"//", " src=\"" + wikiUrl.scheme() + "://" );

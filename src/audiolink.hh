@@ -5,6 +5,7 @@
 #define __AUDIOLINK_HH_INCLUDED__
 
 
+#include <QString>
 #include <string>
 
 /// Adds a piece of javascript to save the given audiolink to a special
@@ -13,7 +14,7 @@
 /// The url should be escaped and surrounded by quotes.
 /// The dictionary id is used to make active dictionary feature work.
 std::string addAudioLink( std::string const & url, std::string const & dictionaryId );
-
+std::string addAudioLink( QString const & url, std::string const & dictionaryId );
 std::string makeAudioLinkScript( std::string const & url, std::string const & dictionaryId );
 
 #endif
