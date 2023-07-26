@@ -177,6 +177,9 @@ void LoadDictionaries::handlePath( Config::Path const & path )
     if ( dictMetaData && dictMetaData->name ) {
       dict->setName( dictMetaData->name.value() );
     }
+    if ( dictMetaData && dictMetaData->fullindex ) {
+      dict->setFtsEnable( dictMetaData->fullindex.value() );
+    }
   }
 }
 

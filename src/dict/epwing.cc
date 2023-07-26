@@ -155,7 +155,7 @@ public:
     if ( ensureInitDone().size() )
       return;
 
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 

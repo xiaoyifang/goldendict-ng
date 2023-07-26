@@ -1,6 +1,12 @@
-You can customize the dictionary name by the metadata.toml which is also used in [metadata grouping](manage_groups.md)
+You can customize the dictionary by the metadata.toml which is also used in [metadata grouping](manage_groups.md)
 
 ## About the configuration of metadata.toml
+
+
+
+the metadata.toml use toml format for configuration.
+
+## Customize the name of the dictionary
 
 ```toml
 [metadata]
@@ -32,3 +38,24 @@ For example,
 
 ```
 
+## Disable full-text search for certain dictionary
+
+```toml
+fts=false
+
+[metadata]
+name="New Name"
+
+```
+
+this `fts` field's value can be on/off, 1/0 ,true/false etc.
+
+```
+fts=false
+```
+will disable the current dictionary's full-text search.
+
+
+you can check the full-text search on each dictionary's info dialog.
+
+![](img/dictionary-info-fullindex.png)
