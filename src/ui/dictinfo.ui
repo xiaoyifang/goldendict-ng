@@ -41,9 +41,9 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="enableFullindex">
         <property name="text">
-         <string>Full text search enabled</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -71,25 +71,6 @@
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="enableFullindex">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
         </property>
        </widget>
       </item>
