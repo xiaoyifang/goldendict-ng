@@ -41,7 +41,7 @@ signals:
   void error( QString const & message );
 
 private:
-  AudioService();
+  AudioService() = default;
   ~AudioService();
 };
 

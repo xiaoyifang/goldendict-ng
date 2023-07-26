@@ -43,7 +43,6 @@ AudioService & AudioService::instance()
   return a;
 }
 
-AudioService::AudioService() {}
 
 AudioService::~AudioService()
 {
@@ -69,14 +68,14 @@ DecoderContext::DecoderContext( QByteArray const & audioData, QAtomicInt & isCan
   isCancelled_( isCancelled ),
   audioData_( audioData ),
   audioDataStream_( audioData_ ),
-  formatContext_( NULL ),
-  codec_( NULL ),
-  codecContext_( NULL ),
-  avioContext_( NULL ),
-  audioStream_( NULL ),
+  formatContext_( nullptr ),
+  codec_( nullptr ),
+  codecContext_( nullptr ),
+  avioContext_( nullptr ),
+  audioStream_( nullptr ),
   audioOutput( new AudioOutput ),
   avformatOpened_( false ),
-  swr_( NULL )
+  swr_( nullptr )
 {
 }
 
@@ -118,7 +117,7 @@ bool DecoderContext::openCodec( QString & errorString )
   }
 
   // Don't free buffer allocated here (if succeeded), it will be cleaned up automatically.
-  avioContext_ = avio_alloc_context( avioBuffer, kBufferSize, 0, &audioDataStream_, readAudioData, NULL, NULL );
+  avioContext_ = avio_alloc_context( avioBuffer, kBufferSize, 0, &audioDataStream_, readAudioData, nullptr, nullptr );
   if ( !avioContext_ ) {
     av_free( avioBuffer );
     errorString = "avio_alloc_context() failed.";
@@ -135,13 +134,13 @@ bool DecoderContext::openCodec( QString & errorString )
   int ret         = 0;
   avformatOpened_ = true;
 
-  ret = avformat_open_input( &formatContext_, NULL, NULL, NULL );
+  ret = avformat_open_input( &formatContext_, nullptr, nullptr, nullptr );
   if ( ret < 0 ) {
     errorString = QString( "avformat_open_input() failed: %1." ).arg( avErrorString( ret ) );
     return false;
   }
 
-  ret = avformat_find_stream_info( formatContext_, NULL );
+  ret = avformat_find_stream_info( formatContext_, nullptr );
   if ( ret < 0 ) {
     errorString = QString( "avformat_find_stream_info() failed: %1." ).arg( avErrorString( ret ) );
     return false;
@@ -171,7 +170,7 @@ bool DecoderContext::openCodec( QString & errorString )
   }
   avcodec_parameters_to_context( codecContext_, audioStream_->codecpar );
 
-  ret = avcodec_open2( codecContext_, codec_, NULL );
+  ret = avcodec_open2( codecContext_, codec_, nullptr );
   if ( ret < 0 ) {
     errorString = QString( "avcodec_open2() failed: %1." ).arg( avErrorString( ret ) );
     return false;
@@ -189,7 +188,7 @@ bool DecoderContext::openCodec( QString & errorString )
     codecContext_->channel_layout = layout;
   }
 
-  swr_ = swr_alloc_set_opts( NULL,
+  swr_ = swr_alloc_set_opts( nullptr,
                              layout,
                              AV_SAMPLE_FMT_S16,
                              44100,
@@ -197,10 +196,10 @@ bool DecoderContext::openCodec( QString & errorString )
                              codecContext_->sample_fmt,
                              codecContext_->sample_rate,
                              0,
-                             NULL );
+                             nullptr );
 
   if ( !swr_ || swr_init( swr_ ) < 0 ) {
-    av_log( NULL, AV_LOG_ERROR, "Cannot create sample rate converter \n" );
+    av_log( nullptr, AV_LOG_ERROR, "Cannot create sample rate converter \n" );
     swr_free( &swr_ );
     return false;
   }
@@ -217,7 +216,7 @@ void DecoderContext::closeCodec()
   if ( !formatContext_ ) {
     if ( avioContext_ ) {
       av_free( avioContext_->buffer );
-      avioContext_ = NULL;
+      avioContext_ = nullptr;
     }
     return;
   }
@@ -227,12 +226,12 @@ void DecoderContext::closeCodec()
   if ( !avformatOpened_ ) {
     if ( formatContext_ ) {
       avformat_free_context( formatContext_ );
-      formatContext_ = NULL;
+      formatContext_ = nullptr;
     }
 
     if ( avioContext_ ) {
       av_free( avioContext_->buffer );
-      avioContext_ = NULL;
+      avioContext_ = nullptr;
     }
     return;
   }
@@ -296,7 +295,7 @@ bool DecoderContext::play( QString & errorString )
   }
 
   /* flush the decoder */
-  packet->data = NULL;
+  packet->data = nullptr;
   packet->size = 0;
   int ret      = avcodec_send_packet( codecContext_, packet );
   while ( ret >= 0 ) {
@@ -324,22 +323,22 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & sample
   auto dst_freq     = 44100;
   auto dst_channels = codecContext_->channels;
   int out_count     = (int64_t)frame->nb_samples * dst_freq / frame->sample_rate + 256;
-  int out_size      = av_samples_get_buffer_size( NULL, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
+  int out_size      = av_samples_get_buffer_size( nullptr, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
   samples.resize( out_size );
-  uint8_t * data[ 2 ] = { 0 };
+  uint8_t * data[ 2 ] = { nullptr };
   data[ 0 ]           = &samples.front();
 
   auto out_nb_samples = swr_convert( swr_, data, out_count, (const uint8_t **)frame->extended_data, frame->nb_samples );
 
   if ( out_nb_samples < 0 ) {
-    av_log( NULL, AV_LOG_ERROR, "converte fail \n" );
+    av_log( nullptr, AV_LOG_ERROR, "converte fail \n" );
     return false;
   }
   else {
     //    qDebug( "out_count:%d, out_nb_samples:%d, frame->nb_samples:%d \n", out_count, out_nb_samples, frame->nb_samples );
   }
 
-  int actual_size = av_samples_get_buffer_size( NULL, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 1 );
+  int actual_size = av_samples_get_buffer_size( nullptr, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 1 );
   samples.resize( actual_size );
   return true;
 }

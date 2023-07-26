@@ -58,7 +58,7 @@ public:
   AudioOutput * audioOutput = nullptr;
   QByteArray buffer;
   qint64 offset = 0;
-  bool quit     = 0;
+  bool quit     = false;
   QMutex mutex;
   QWaitCondition cond;
   QThreadPool threadPool;
@@ -92,7 +92,6 @@ public:
       memcpy( &data[ bytesWritten ], sampleData, toWrite );
       buffer.remove( 0, toWrite );
       bytesWritten += toWrite;
-      //      data += toWrite;
       len -= toWrite;
     }
 
