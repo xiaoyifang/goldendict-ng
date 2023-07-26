@@ -562,9 +562,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 if ( ref.startsWith( "//" ) ) {
                   ref = wikiUrl.scheme() + ":" + ref;
                 }
-                auto script =
-                  addAudioLink(  "\""  + ref + "\"", this->dictPtr->getId() );
-                QString audio_url = QString::fromStdString(  script )+ "<a href=\"" + ref
+                auto script       = addAudioLink( "\"" + ref + "\"", this->dictPtr->getId() );
+                QString audio_url = QString::fromStdString( script ) + "<a href=\"" + ref
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
