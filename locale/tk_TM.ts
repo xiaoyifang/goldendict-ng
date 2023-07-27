@@ -651,11 +651,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Doly tekst gözlegi açyk</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Doly tekst gözlegi ýapyldy</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3577,11 +3577,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Gaýtadan açmaly</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Interfeýs stiliniň üýtgemegini ulanmak üçin täzeden başlaň.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3621,11 +3621,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Interfeýs stili:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Paralel sapaklar bilen doly tekst indeksini dörediň </translation>
     </message>
   </context>
   <context>
