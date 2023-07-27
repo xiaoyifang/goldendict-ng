@@ -652,11 +652,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>전체 텍스트 검색 가능</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>전체 텍스트 검색이 비활성화됨</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3574,11 +3574,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>재시작 필요</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>인터페이스 스타일 변경 사항을 적용하려면 다시 시작하십시오.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3618,11 +3618,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>인터페이스 스타일:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>병렬 스레드로 전체 텍스트 인덱스 생성 </translation>
     </message>
   </context>
   <context>
