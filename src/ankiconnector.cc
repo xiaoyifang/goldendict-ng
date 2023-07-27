@@ -1,10 +1,10 @@
-      #include "ankiconnector.hh"
+#include "ankiconnector.hh"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
 #include "utils.hh"
 
-   QString markTargetWord( QString const & sentence, QString const & word )
+QString markTargetWord( QString const & sentence, QString const & word )
 {
   // TODO properly handle inflected words.
   QString result = sentence;
