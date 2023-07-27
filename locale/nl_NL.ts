@@ -655,11 +655,11 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Zoeken in volledige tekst ingeschakeld</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Zoeken in volledige tekst uitgeschakeld</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3577,11 +3577,11 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Opnieuw opstarten nodig</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3621,11 +3621,11 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Interfacestijl:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Maak een volledige tekstindex met parallelle threads </translation>
     </message>
   </context>
   <context>
