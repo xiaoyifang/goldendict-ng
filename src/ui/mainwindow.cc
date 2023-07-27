@@ -746,6 +746,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.mainWindowGeometry.size() )
     restoreGeometry( cfg.mainWindowGeometry );
 
+  if ( cfg.mainWindowMaximized ) {
+    showMaximized();
+  }
+
 #if defined( Q_OS_LINUX )
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   defaultInterfaceStyle = QApplication::style()->name();
@@ -1214,6 +1218,7 @@ void MainWindow::commitData()
     // Save MainWindow state and geometry
     cfg.mainWindowState    = saveState();
     cfg.mainWindowGeometry = saveGeometry();
+    cfg.mainWindowMaximized = isMaximized();
 
     // Save popup window state and geometry
     if ( scanPopup )
