@@ -866,7 +866,6 @@ struct Class
 
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
-  bool mainWindowMaximized = false;
 
   MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
