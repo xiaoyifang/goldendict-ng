@@ -127,6 +127,13 @@ void DataRequest::appendString( std::string_view str )
   cond.wakeAll();
 }
 
+unsigned DataRequest::alreadyRead()
+{
+  QMutexLocker _( &dataMutex );
+  return _alreadyRead;
+}
+
+
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
   QMutexLocker _( &dataMutex );
@@ -143,6 +150,8 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 
   if(quit)
     return;
+
+  _alreadyRead = offset + size;
 
   memcpy( buffer, &data[ offset ], size );
 }

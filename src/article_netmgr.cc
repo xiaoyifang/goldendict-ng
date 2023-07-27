@@ -406,6 +406,10 @@ qint64 ArticleResourceReply::bytesAvailable() const
   if ( avail < 0 )
     return 0;
 
+  if (!req->isFinished()) {
+    return 65536;
+  }
+
   return avail - alreadyRead + QNetworkReply::bytesAvailable();
 }
 

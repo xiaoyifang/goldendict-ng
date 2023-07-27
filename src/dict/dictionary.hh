@@ -207,6 +207,8 @@ public:
   /// the resource wasn't found.
   long dataSize();
 
+  unsigned alreadyRead();
+
   void appendDataSlice( const void * buffer, size_t size );
   void appendString( std::string_view str );
 
@@ -237,6 +239,8 @@ protected:
   bool hasAnyData; // With this being false, dataSize() always returns -1
   bool quit = false;
   vector< char > data;
+
+  unsigned _alreadyRead = 0;
 };
 
 /// A helper class for synchronous word search implementations.
