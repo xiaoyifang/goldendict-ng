@@ -447,6 +447,13 @@ void ArticleView::loadFinished( bool result )
     if ( isScrollTo( scrollTo ) ) {
       setCurrentArticle( scrollTo, true );
     }
+    else {
+      setActiveArticleId( "" );
+    }
+  }
+  else {
+    //clear current active dictionary id;
+    setActiveArticleId( "" );
   }
 
   webview->unsetCursor();
@@ -1886,8 +1893,7 @@ void ArticleView::moveOneArticleUp()
 
 void ArticleView::moveOneArticleDown()
 {
-  QString current       = getCurrentArticle();
-  QString currentDictId = dictionaryIdFromScrollTo( current );
+  QString currentDictId = getActiveArticleId();
   QStringList lst       = getArticlesList();
   // if current article is empty .use the first as default.
   if ( currentDictId.isEmpty() && !lst.isEmpty() ) {
