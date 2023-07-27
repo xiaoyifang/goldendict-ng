@@ -666,11 +666,11 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Tam metin araması etkinleştirildi</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Tam metin arama devre dışı</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3587,11 +3587,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Yeniden başlatma gerekli</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Arayüz stili değişikliğini uygulamak için yeniden başlatın.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3631,11 +3631,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Arayüz Stili:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Paralel iş parçacığı ile tam metin dizini oluşturun </translation>
     </message>
   </context>
   <context>
