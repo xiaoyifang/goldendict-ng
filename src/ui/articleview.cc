@@ -447,13 +447,13 @@ void ArticleView::loadFinished( bool result )
     if ( isScrollTo( scrollTo ) ) {
       setCurrentArticle( scrollTo, true );
     }
-    else{
-      setActiveArticleId("");
+    else {
+      setActiveArticleId( "" );
     }
   }
-  else{
+  else {
     //clear current active dictionary id;
-    setActiveArticleId("");
+    setActiveArticleId( "" );
   }
 
   webview->unsetCursor();

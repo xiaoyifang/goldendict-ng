@@ -2508,7 +2508,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
-    auto stev = dynamic_cast< QWindowStateChangeEvent * >( ev );
+    auto stev                      = dynamic_cast< QWindowStateChangeEvent * >( ev );
     wasMaximized                   = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
   }
 
@@ -2522,7 +2522,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
     auto keyevent = dynamic_cast< QKeyEvent * >( ev );
 
     bool const handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
-                           || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
+                                 || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
 
     if ( keyevent->modifiers() == Qt::ControlModifier && keyevent->key() == Qt::Key_Tab ) {
       if ( cfg.preferences.mruTabOrder ) {
