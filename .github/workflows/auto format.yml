@@ -27,7 +27,7 @@ jobs:
         run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install clang-format
-          (git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
+          (git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
 
       - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0    
 
