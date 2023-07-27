@@ -1110,7 +1110,7 @@ Class load()
   QDomNode mainWindowMaximized = root.namedItem( "mainWindowMaximized" );
 
   if ( !mainWindowMaximized.isNull() )
-    c.mainWindowMaximized = ( mainWindowMaximized.toElement().text()=="1");
+    c.mainWindowMaximized = ( mainWindowMaximized.toElement().text() == "1" );
 
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
 
@@ -2101,7 +2101,7 @@ void save( Class const & c )
     root.appendChild( opt );
 
     opt = dd.createElement( "mainWindowMaximized" );
-    opt.appendChild( dd.createTextNode( c.mainWindowMaximized ? "1" : "0"  ));
+    opt.appendChild( dd.createTextNode( c.mainWindowMaximized ? "1" : "0" ) );
     root.appendChild( opt );
 
     opt = dd.createElement( "dictInfoGeometry" );
