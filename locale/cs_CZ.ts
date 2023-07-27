@@ -652,11 +652,11 @@ a školní ortografií v cyrilici)</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Fulltextové vyhledávání povoleno</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Fulltextové vyhledávání zakázáno</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3575,11 +3575,11 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Je potřeba restart</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Chcete-li použít změnu stylu rozhraní, restartujte.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3619,11 +3619,11 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Styl rozhraní:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Vytvořte fulltextový index s paralelními vlákny </translation>
     </message>
   </context>
   <context>
