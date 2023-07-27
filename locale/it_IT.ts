@@ -652,11 +652,11 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Ricerca full-text abilitata</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Ricerca full-text disattivata</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3576,11 +3576,11 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Riavvio necessario</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Riavvia per applicare la modifica dello stile dell'interfaccia.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3620,11 +3620,11 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Stile interfaccia:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Crea un indice full-text con thread paralleli </translation>
     </message>
   </context>
   <context>
