@@ -651,11 +651,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Đã bật tìm kiếm toàn văn</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Tìm kiếm toàn văn bị vô hiệu hóa</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -3571,11 +3571,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>khởi động lại cần thiết</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Khởi động lại để áp dụng thay đổi kiểu giao diện.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3615,11 +3615,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Phong cách giao diện:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Tạo chỉ mục toàn văn với các luồng song song </translation>
     </message>
   </context>
   <context>
