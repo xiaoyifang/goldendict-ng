@@ -297,12 +297,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 XdxfDictionary::~XdxfDictionary()

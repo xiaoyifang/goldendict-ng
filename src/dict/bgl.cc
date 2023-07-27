@@ -270,13 +270,7 @@ BglDictionary::BglDictionary( string const & id, string const & indexFile, strin
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-       && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 void BglDictionary::loadIcon() noexcept

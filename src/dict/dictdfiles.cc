@@ -177,12 +177,8 @@ DictdDictionary::DictdDictionary( string const & id,
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 DictdDictionary::~DictdDictionary()

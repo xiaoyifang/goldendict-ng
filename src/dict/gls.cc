@@ -477,12 +477,8 @@ GlsDictionary::GlsDictionary( string const & id, string const & indexFile, vecto
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 GlsDictionary::~GlsDictionary()
