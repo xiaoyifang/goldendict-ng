@@ -116,6 +116,7 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size )
   data.resize( data.size() + size );
 
   memcpy( &data.front() + offset, buffer, size );
+  cond.wakeAll();
 }
 
 void DataRequest::appendString( std::string_view str )
@@ -123,19 +124,34 @@ void DataRequest::appendString( std::string_view str )
   QMutexLocker _( &dataMutex );
   data.reserve( data.size() + str.size() );
   data.insert( data.end(), str.begin(), str.end() );
+  cond.wakeAll();
 }
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  if ( size == 0 )
-    return;
-
   QMutexLocker _( &dataMutex );
+
+  if ( size == 0 )
+  {
+    cond.wait( &dataMutex,10 );
+    return;
+  }
+
 
   if ( !hasAnyData )
     throw exSliceOutOfRange();
 
+  if(quit)
+    return;
+
   memcpy( buffer, &data[ offset ], size );
+}
+
+DataRequest::~DataRequest()
+{
+  quit = true;
+  cond.wakeAll();
+  finish();
 }
 
 vector< char > & DataRequest::getFullData()
