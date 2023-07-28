@@ -180,6 +180,7 @@ public:
 protected:
 
   virtual qint64 bytesAvailable() const;
+  bool atEnd() const;
   virtual void abort() {}
   virtual qint64 readData( char * data, qint64 maxSize );
 

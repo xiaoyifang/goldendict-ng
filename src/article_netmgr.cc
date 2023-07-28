@@ -413,6 +413,12 @@ qint64 ArticleResourceReply::bytesAvailable() const
   return avail - alreadyRead + QNetworkReply::bytesAvailable();
 }
 
+
+bool ArticleResourceReply::atEnd() const
+{
+  return req->isFinished() && bytesAvailable()==0;
+}
+
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 {
   // From the doc: "This function might be called with a maxSize of 0,
@@ -427,9 +433,12 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   if ( avail < 0 )
     return finished ? -1 : 0;
 
+
   qint64 left = avail - alreadyRead;
 
   qint64 toRead = maxSize < left ? maxSize : left;
+  if ( !toRead && finished )
+    return -1;
   GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try {

@@ -32,15 +32,15 @@ bool Request::isFinished()
 
 void Request::update()
 {
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) )
+  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     emit updated();
+  }
 }
 
 void Request::finish()
 {
   if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     isFinishedFlag.ref();
-
     emit finished();
   }
 }
@@ -127,22 +127,14 @@ void DataRequest::appendString( std::string_view str )
   cond.wakeAll();
 }
 
-unsigned DataRequest::alreadyRead()
-{
-  QMutexLocker _( &dataMutex );
-  return _alreadyRead;
-}
-
-
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
   QMutexLocker _( &dataMutex );
 
   if ( size == 0 ) {
-    cond.wait( &dataMutex, 10 );
+    cond.wait( &dataMutex,10 );
     return;
   }
-
 
   if ( !hasAnyData )
     throw exSliceOutOfRange();
@@ -150,16 +142,7 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
   if ( quit )
     return;
 
-  _alreadyRead = offset + size;
-
   memcpy( buffer, &data[ offset ], size );
-}
-
-DataRequest::~DataRequest()
-{
-  quit = true;
-  cond.wakeAll();
-  finish();
 }
 
 vector< char > & DataRequest::getFullData()

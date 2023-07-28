@@ -104,7 +104,6 @@ signals:
   void matchCount( int );
 
 protected:
-
   /// Called by derivatives to signal update().
   void update();
 
@@ -207,8 +206,6 @@ public:
   /// the resource wasn't found.
   long dataSize();
 
-  unsigned alreadyRead();
-
   void appendDataSlice( const void * buffer, size_t size );
   void appendString( std::string_view str );
 
@@ -226,21 +223,16 @@ public:
   {
   }
 
-  ~DataRequest();
-
 protected:
 
   // Subclasses should be filling up the 'data' array, locking the mutex when
   // whey work with it.
   QMutex dataMutex;
-
   QWaitCondition cond;
 
   bool hasAnyData; // With this being false, dataSize() always returns -1
   bool quit = false;
   vector< char > data;
-
-  unsigned _alreadyRead = 0;
 };
 
 /// A helper class for synchronous word search implementations.
