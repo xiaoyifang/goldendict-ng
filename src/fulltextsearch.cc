@@ -440,29 +440,13 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
   if ( idx.isValid() && idx.row() < results.size() ) {
     QString headword = results[ idx.row() ].headword;
     QRegExp reg;
-    auto searchText = ui.searchLine->text();
-    searchText.replace( RX::Ftx::tokenBoundary, " " );
 
-    auto it = RX::Ftx::token.globalMatch( searchText );
-    QString firstAvailbeItem;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      auto p = match.captured();
-      if ( p.startsWith( '-' ) )
-        continue;
-
-      //the searched text should be like "term".remove enclosed double quotation marks.
-      if ( p.startsWith( "\"" ) ) {
-        p.remove( "\"" );
-      }
-
-      firstAvailbeItem = p;
-      break;
-    }
+    auto terms             = results[ idx.row() ].foundHiliteRegExps;
+    QString firstAvailbeItem = terms.isEmpty()?ui.searchLine->text():terms.first();
+    
 
     if ( !firstAvailbeItem.isEmpty() ) {
-      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
+      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::FixedString );
       reg.setMinimal( true );
     }
 

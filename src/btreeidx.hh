@@ -108,6 +108,9 @@ public:
   void
   getHeadwordsFromOffsets( QList< uint32_t > & offsets, QVector< QString > & headwords, QAtomicInt * isCancelled = 0 );
 
+  void
+  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QVector< QString > & headwords,QMap<QString,uint32_t> & headwordOffset, QAtomicInt * isCancelled = 0 );
+
 protected:
 
   /// Finds the offset in the btree leaf for the given word, either matching

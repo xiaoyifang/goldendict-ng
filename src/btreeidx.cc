@@ -1239,6 +1239,16 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
                                           QVector< QString > & headwords,
                                           QAtomicInt * isCancelled )
 {
+  //ignored the map.
+  auto headword_offset = QMap< QString, uint32_t >();
+  getHeadwordsFromOffsets( offsets, headwords, headword_offset, isCancelled );
+}
+
+void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
+                                          QVector< QString > & headwords,
+                                          QMap< QString, uint32_t > & headwordOffset,
+                                          QAtomicInt * isCancelled )
+{
   uint32_t currentNodeOffset = rootOffset;
   uint32_t nextLeaf          = 0;
   uint32_t leafEntries;
@@ -1311,10 +1321,13 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
 
         if ( headwords.indexOf( word ) == -1 ) {
           headwords.append( word );
+          headwordOffset.insert( word, articleOffset );
+
         }
         offsets.erase( it );
         begOffsets = offsets.begin();
         endOffsets = offsets.end();
+
       }
 
       if ( offsets.isEmpty() )

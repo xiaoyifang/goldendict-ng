@@ -197,10 +197,11 @@ void FTSResultsRequest::run()
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
-      Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
+      
+      int flags           = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_CJK_NGRAM;
       if ( searchMode == FTS::Wildcards )
-        flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag | Xapian::QueryParser::FLAG_CJK_NGRAM );
+        flags = flags | Xapian::QueryParser::FLAG_WILDCARD;
+      Xapian::Query query = qp.parse_query( query_string, flags );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.
@@ -212,21 +213,38 @@ void FTSResultsRequest::run()
       qDebug() << matches.get_matches_estimated() << " results found.\n";
       qDebug() << "Matches " << matches.size() << ":\n\n";
       QList< uint32_t > offsetsForHeadwords;
+
+      QMap< uint32_t, unsigned > offsetDocMap;
+      QMap< QString, uint32_t> headwordOffsetMap;
+
       for ( Xapian::MSetIterator i = matches.begin(); i != matches.end(); ++i ) {
         qDebug() << i.get_rank() + 1 << ": " << i.get_weight() << " docid=" << *i << " ["
                  << i.get_document().get_data().c_str() << "]";
+
         if ( i.get_document().get_data() == finish_mark )
           continue;
-        offsetsForHeadwords.append( atoi( i.get_document().get_data().c_str() ) );
+        int offset = atoi( i.get_document().get_data().c_str() );
+        offsetDocMap.insert( offset, *i );
+        offsetsForHeadwords.append( offset );
       }
 
       if ( !offsetsForHeadwords.isEmpty() ) {
         QVector< QString > headwords;
         QMutexLocker _( &dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
-        dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
+        dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, headwordOffsetMap, & isCancelled );
         for ( const auto & headword : headwords ) {
-          foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
+          auto highlights = QStringList();
+          if ( headwordOffsetMap.contains( headword ) ) {
+            auto offset        = headwordOffsetMap[ headword ];
+            if (offsetDocMap.contains( offset )) {
+              //get the first matched term.
+              auto termsIterator = enquire.get_matching_terms_begin( offsetDocMap[offset] );
+              highlights << QString::fromStdString( *termsIterator );
+            }
+           
+          }
+          foundHeadwords->append( FTS::FtsHeadword( headword, id, highlights, matchCase ) );
         }
       }
     }
