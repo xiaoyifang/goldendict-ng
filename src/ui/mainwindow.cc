@@ -741,10 +741,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-  if ( cfg.mainWindowState.size() && !cfg.resetState )
-    restoreState( cfg.mainWindowState );
-  if ( cfg.mainWindowGeometry.size() )
-    restoreGeometry( cfg.mainWindowGeometry );
 
 #if defined( Q_OS_LINUX )
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
@@ -914,6 +910,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                           + " \"%1\"" );
   urlRegistry.endGroup();
 #endif
+
+  // restore should be called after all UI initialized.
+  if ( cfg.mainWindowState.size() && !cfg.resetState )
+    restoreState( cfg.mainWindowState );
+  if ( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
 
   useSmallIconsInToolbarsTriggered();
 
