@@ -312,7 +312,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     QFont font = painter.font();
     //the text should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.6 );
-    font.setWeight( QFont::Black );
+    font.setWeight( QFont::Normal );
     painter.setFont( font );
 
     const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
@@ -320,6 +320,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
+    painter.setPen(QColor(4, 57, 108));
     painter.drawText( rectangle, Qt::AlignCenter, abbrName );
 
     painter.end();
