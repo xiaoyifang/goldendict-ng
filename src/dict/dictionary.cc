@@ -312,7 +312,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     QFont font = painter.font();
     //the text should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.6 );
-    font.setWeight( QFont::Normal );
+    font.setWeight( QFont::Bold );
     painter.setFont( font );
 
     const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
@@ -320,7 +320,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
-    painter.setPen(QColor(4, 57, 108));
+    painter.setPen( QColor( 4, 57, 108, 200 ) );
     painter.drawText( rectangle, Qt::AlignCenter, abbrName );
 
     painter.end();
@@ -336,15 +336,19 @@ QString Class::getAbbrName( QString const & text )
 {
   if ( text.isEmpty() )
     return QString();
-  //remove whitespace
+  //remove whitespace,number,mark,puncuation,symbol
   QString simplified = text;
-  simplified.remove( QRegularExpression( "\\s" ) );
+  simplified.remove( QRegularExpression( "[\\p{Z}\\p{N}\\p{M}\\p{P}\\p{S}]" , QRegularExpression::UseUnicodePropertiesOption ) );
   int index = qHash( simplified ) % simplified.size();
 
   QString abbrName;
   if ( !Utils::isCJKChar( simplified.at( index ).unicode() ) ) {
     // take two chars.
     abbrName = simplified.mid( index, 2 );
+    if ( abbrName.size() == 1 ) {
+      //make up two characters.
+      abbrName = abbrName + simplified.at( 0 );
+    }
   }
   else {
     abbrName = simplified.mid( index, 1 );
