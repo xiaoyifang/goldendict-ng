@@ -441,9 +441,9 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     QString headword = results[ idx.row() ].headword;
     QRegExp reg;
 
-    auto terms             = results[ idx.row() ].foundHiliteRegExps;
-    QString firstAvailbeItem = terms.isEmpty()?ui.searchLine->text():terms.first();
-    
+    auto terms               = results[ idx.row() ].foundHiliteRegExps;
+    QString firstAvailbeItem = terms.isEmpty() ? ui.searchLine->text() : terms.first();
+
 
     if ( !firstAvailbeItem.isEmpty() ) {
       reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::FixedString );

@@ -197,8 +197,8 @@ void FTSResultsRequest::run()
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
-      
-      int flags           = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+
+      int flags = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_CJK_NGRAM;
       if ( searchMode == FTS::Wildcards )
         flags = flags | Xapian::QueryParser::FLAG_WILDCARD;
       Xapian::Query query = qp.parse_query( query_string, flags );
@@ -215,7 +215,7 @@ void FTSResultsRequest::run()
       QList< uint32_t > offsetsForHeadwords;
 
       QMap< uint32_t, unsigned > offsetDocMap;
-      QMap< QString, uint32_t> headwordOffsetMap;
+      QMap< QString, uint32_t > headwordOffsetMap;
 
       for ( Xapian::MSetIterator i = matches.begin(); i != matches.end(); ++i ) {
         qDebug() << i.get_rank() + 1 << ": " << i.get_weight() << " docid=" << *i << " ["
@@ -232,17 +232,16 @@ void FTSResultsRequest::run()
         QVector< QString > headwords;
         QMutexLocker _( &dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
-        dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, headwordOffsetMap, & isCancelled );
+        dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, headwordOffsetMap, &isCancelled );
         for ( const auto & headword : headwords ) {
           auto highlights = QStringList();
           if ( headwordOffsetMap.contains( headword ) ) {
-            auto offset        = headwordOffsetMap[ headword ];
-            if (offsetDocMap.contains( offset )) {
+            auto offset = headwordOffsetMap[ headword ];
+            if ( offsetDocMap.contains( offset ) ) {
               //get the first matched term.
-              auto termsIterator = enquire.get_matching_terms_begin( offsetDocMap[offset] );
+              auto termsIterator = enquire.get_matching_terms_begin( offsetDocMap[ offset ] );
               highlights << QString::fromStdString( *termsIterator );
             }
-           
           }
           foundHeadwords->append( FTS::FtsHeadword( headword, id, highlights, matchCase ) );
         }

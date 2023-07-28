@@ -1322,12 +1322,10 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
         if ( headwords.indexOf( word ) == -1 ) {
           headwords.append( word );
           headwordOffset.insert( word, articleOffset );
-
         }
         offsets.erase( it );
         begOffsets = offsets.begin();
         endOffsets = offsets.end();
-
       }
 
       if ( offsets.isEmpty() )
