@@ -132,7 +132,7 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
   QMutexLocker _( &dataMutex );
 
   if ( size == 0 ) {
-    cond.wait( &dataMutex,10 );
+    cond.wait( &dataMutex, 10 );
     return;
   }
 

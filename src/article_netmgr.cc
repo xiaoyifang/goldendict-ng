@@ -416,7 +416,7 @@ qint64 ArticleResourceReply::bytesAvailable() const
 
 bool ArticleResourceReply::atEnd() const
 {
-  return req->isFinished() && bytesAvailable()==0;
+  return req->isFinished() && bytesAvailable() == 0;
 }
 
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
