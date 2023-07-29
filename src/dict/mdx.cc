@@ -1294,6 +1294,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     vector< string > dictFiles( 1, fileName );
     findResourceFiles( fileName, dictFiles );
 
+    initializing.loadingDictionary( fileName );
+
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
 

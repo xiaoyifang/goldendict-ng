@@ -747,7 +747,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( auto i = fileNames.begin(); i != fileNames.end(); ++i ) {
     // Skip files with the extensions different to .aar to speed up the
     // scanning
     if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".aar" ) != 0 )
@@ -756,7 +756,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     // Got the file -- check if we need to rebuid the index
 
     vector< string > dictFiles( 1, *i );
-
+    initializing.loadingDictionary( *i );
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
     string indexFile = indicesDir + dictId;

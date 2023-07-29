@@ -32,6 +32,16 @@ void Initializing::indexing( QString const & dictionaryName )
   show();
 }
 
+void Initializing::loading( QString const & dictionaryName )
+{
+  ui.operation->setText( tr( "Loading..." ) );
+  ui.dictionary->setText( dictionaryName );
+  ui.dictionary->show();
+  ui.progressBar->show();
+  adjustSize();
+  show();
+}
+
 void Initializing::closeEvent( QCloseEvent * ev )
 {
   ev->ignore();
