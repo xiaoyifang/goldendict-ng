@@ -1202,8 +1202,7 @@ void SlobArticleRequest::run()
       return;
     }
 
-    quint64 pos =
-      dict.getArticlePos( x.articleOffset ); // Several "articleOffset" values may refer to one article
+    quint64 pos = dict.getArticlePos( x.articleOffset ); // Several "articleOffset" values may refer to one article
 
     if ( articlesIncluded.find( pos ) != articlesIncluded.end() )
       continue; // We already have this article in the body.

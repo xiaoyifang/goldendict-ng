@@ -404,7 +404,7 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
           ( i >= 224 && i <= 250 )
           || ( i >= 192
                && i
-               <= 210 ) ) // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
+                 <= 210 ) ) // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
           i += 1488 - 224; // Convert to Hebrew unicode
       }
     }
@@ -609,8 +609,8 @@ void BglArticleRequest::fixHebString( string & hebStr ) // Hebrew support - conv
       ( i >= 224 && i <= 250 )
       || ( i >= 192
            && i
-           <= 210 ) )  // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
-      i += 1488 - 224; // Convert to Hebrew unicode
+             <= 210 ) ) // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
+      i += 1488 - 224;  // Convert to Hebrew unicode
   }
   hebStr = Utf8::encode( hebWStr );
 }

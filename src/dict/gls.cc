@@ -1208,9 +1208,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       // See if there's a zip file with resources present. If so, include it.
 
-      string baseName =
-        ( fileName[ fileName.size() - 4 ] == '.' ) ? string( fileName, 0, fileName.size() - 4 ) : string( fileName, 0,
-          fileName.size() - 7 );
+      string baseName = ( fileName[ fileName.size() - 4 ] == '.' ) ? string( fileName, 0, fileName.size() - 4 ) :
+                                                                     string( fileName, 0, fileName.size() - 7 );
 
       string zipFileName;
 
