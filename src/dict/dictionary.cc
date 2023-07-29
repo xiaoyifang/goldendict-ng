@@ -338,7 +338,8 @@ QString Class::getAbbrName( QString const & text )
     return QString();
   //remove whitespace,number,mark,puncuation,symbol
   QString simplified = text;
-  simplified.remove( QRegularExpression( "[\\p{Z}\\p{N}\\p{M}\\p{P}\\p{S}]" , QRegularExpression::UseUnicodePropertiesOption ) );
+  simplified.remove(
+    QRegularExpression( "[\\p{Z}\\p{N}\\p{M}\\p{P}\\p{S}]", QRegularExpression::UseUnicodePropertiesOption ) );
   int index = qHash( simplified ) % simplified.size();
 
   QString abbrName;
