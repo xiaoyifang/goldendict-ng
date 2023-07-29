@@ -276,8 +276,8 @@ QString const & DictServerDictionary::getDescription()
       dictionaryDescription += "\n\n";
       dictionaryDescription += QCoreApplication::translate( "DictServer", "Server databases" ) + " ("
         + QString::number( serverDatabases.size() ) + "):";
-      for ( QStringList::const_iterator i = serverDatabases.begin(); i != serverDatabases.end(); ++i )
-        dictionaryDescription += "\n" + *i;
+      for ( const auto & serverDatabase : serverDatabases )
+        dictionaryDescription += "\n" + serverDatabase;
     }
   }
   return dictionaryDescription;
@@ -838,14 +838,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < servers.size(); ++x ) {
-    if ( servers[ x ].enabled )
-      result.push_back( std::make_shared< DictServerDictionary >( servers[ x ].id.toStdString(),
-                                                                  servers[ x ].name.toUtf8().data(),
-                                                                  servers[ x ].url,
-                                                                  servers[ x ].databases,
-                                                                  servers[ x ].strategies,
-                                                                  servers[ x ].iconFilename ) );
+  for ( const auto & server : servers ) {
+    if ( server.enabled )
+      result.push_back( std::make_shared< DictServerDictionary >( server.id.toStdString(),
+                                                                  server.name.toUtf8().data(),
+                                                                  server.url,
+                                                                  server.databases,
+                                                                  server.strategies,
+                                                                  server.iconFilename ) );
   }
 
   return result;

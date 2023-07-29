@@ -209,10 +209,10 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -227,8 +227,8 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+  for ( auto & x : chain ) {
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
@@ -236,15 +236,15 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
     if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
     multimap< wstring, string > & mapToUse = ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].word ) );
+    mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.word ) );
 
-    articlesIncluded.insert( chain[ x ].articleOffset );
+    articlesIncluded.insert( x.articleOffset );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )

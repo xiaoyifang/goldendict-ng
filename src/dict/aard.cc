@@ -334,8 +334,8 @@ string AardDictionary::convert( const string & in )
   char inCh, lastCh = 0;
   bool afterEol = false;
 
-  for ( string::const_iterator i = in.begin(), j = in.end(); i != j; ++i ) {
-    inCh = *i;
+  for ( char i : in ) {
+    inCh = i;
     if ( lastCh == '\\' ) {
       inConverted.erase( inConverted.size() - 1 );
       lastCh = 0;
@@ -449,14 +449,14 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
           string encodedLink;
           encodedLink.reserve( link.size() );
           bool prev = false;
-          for ( string::const_iterator i = link.begin(); i != link.end(); ++i ) {
-            if ( *i == '\\' ) {
+          for ( char i : link ) {
+            if ( i == '\\' ) {
               if ( !prev ) {
                 prev = true;
                 continue;
               }
             }
-            encodedLink.push_back( *i );
+            encodedLink.push_back( i );
             prev = false;
           }
           encodedLink =
@@ -642,10 +642,10 @@ void AardArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -660,22 +660,22 @@ void AardArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Now grab that article
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
     try {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
     }
     catch ( ... ) {
     }
@@ -694,7 +694,7 @@ void AardArticleRequest::run()
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
-    articlesIncluded.insert( chain[ x ].articleOffset );
+    articlesIncluded.insert( x.articleOffset );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() ) {
@@ -747,16 +747,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( auto i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .aar to speed up the
     // scanning
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".aar" ) != 0 )
+    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".aar" ) != 0 )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
-    initializing.loadingDictionary( *i );
+    vector< string > dictFiles( 1, fileName );
+    initializing.loadingDictionary( fileName );
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
     string indexFile = indicesDir + dictId;
@@ -764,17 +764,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       try {
 
-        gdDebug( "Aard: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Aard: Building the index for dictionary: %s\n", fileName.c_str() );
 
         {
-          QFileInfo info( QString::fromUtf8( i->c_str() ) );
+          QFileInfo info( QString::fromUtf8( fileName.c_str() ) );
           if ( static_cast< quint64 >( info.size() ) > ULONG_MAX ) {
-            gdWarning( "File %s is too large\n", i->c_str() );
+            gdWarning( "File %s is too large\n", fileName.c_str() );
             continue;
           }
         }
 
-        File::Class df( *i, "rb" );
+        File::Class df( fileName, "rb" );
 
         AAR_header dictHeader;
 
@@ -783,7 +783,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         if ( strncmp( dictHeader.signature, "aard", 4 )
              || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
              || strncmp( dictHeader.keyLengthFormat, ">H", 2 ) || strncmp( dictHeader.articleLengthFormat, ">L", 2 ) ) {
-          gdWarning( "File %s is not in supported aard format\n", i->c_str() );
+          gdWarning( "File %s is not in supported aard format\n", fileName.c_str() );
           continue;
         }
 
@@ -791,7 +791,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         quint32 size = qFromBigEndian( dictHeader.metaLength );
 
         if ( size == 0 ) {
-          gdWarning( "File %s has invalid metadata", i->c_str() );
+          gdWarning( "File %s has invalid metadata", fileName.c_str() );
           continue;
         }
 
@@ -804,7 +804,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         map< string, string > meta = parseMetaData( metaStr );
 
         if ( meta.empty() ) {
-          gdWarning( "File %s has invalid metadata", i->c_str() );
+          gdWarning( "File %s has invalid metadata", fileName.c_str() );
           continue;
         }
 
@@ -946,7 +946,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        gdWarning( "Aard dictionary indexing failed: %s, error: %s\n", i->c_str(), e.what() );
+        gdWarning( "Aard dictionary indexing failed: %s, error: %s\n", fileName.c_str(), e.what() );
         continue;
       }
       catch ( ... ) {
@@ -958,7 +958,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< AardDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Aard dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Aard dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
       continue;
     }
   }

@@ -746,9 +746,9 @@ QString readXhtmlData( QXmlStreamReader & stream )
 
       QXmlStreamAttributes attrs = stream.attributes();
 
-      for ( int x = 0; x < attrs.size(); ++x ) {
-        result += Utils::escape( attrs[ x ].name().toString() );
-        result += "=\"" + Utils::escape( attrs[ x ].value().toString() ) + "\"";
+      for ( const auto & attr : attrs ) {
+        result += Utils::escape( attr.name().toString() );
+        result += "=\"" + Utils::escape( attr.value().toString() ) + "\"";
       }
 
       result += ">";

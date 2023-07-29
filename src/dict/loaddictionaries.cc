@@ -320,6 +320,6 @@ void loadDictionaries( QWidget * parent,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( unsigned x = 0; x < dictionaries.size(); ++x )
-    dictionaries[ x ]->deferredInit();
+  for ( const auto & dictionarie : dictionaries )
+    dictionarie->deferredInit();
 }

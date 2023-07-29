@@ -417,8 +417,8 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-    addQuery( mgr, alts[ x ] );
+  for ( const auto & alt : alts )
+    addQuery( mgr, alt );
 }
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -455,9 +455,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
   bool found = false;
 
-  for ( NetReplies::iterator i = netReplies.begin(); i != netReplies.end(); ++i ) {
-    if ( i->first == r ) {
-      i->second = true; // Mark as finished
+  for ( auto & netReplie : netReplies ) {
+    if ( netReplie.first == r ) {
+      netReplie.second = true; // Mark as finished
       found     = true;
       break;
     }
@@ -693,12 +693,12 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < wikis.size(); ++x ) {
-    if ( wikis[ x ].enabled )
-      result.push_back( std::make_shared< MediaWikiDictionary >( wikis[ x ].id.toStdString(),
-                                                                 wikis[ x ].name.toUtf8().data(),
-                                                                 wikis[ x ].url,
-                                                                 wikis[ x ].icon,
+  for ( const auto & wiki : wikis ) {
+    if ( wiki.enabled )
+      result.push_back( std::make_shared< MediaWikiDictionary >( wiki.id.toStdString(),
+                                                                 wiki.name.toUtf8().data(),
+                                                                 wiki.url,
+                                                                 wiki.icon,
                                                                  mgr ) );
   }
 
