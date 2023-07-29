@@ -93,8 +93,10 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
 void LoadDictionaries::run()
 {
   try {
-    for ( const auto & path : paths )
+    for ( const auto & path : paths ) {
+      qDebug() << "handle path:" << path.path;
       handlePath( path );
+    }
 
     // Make soundDirs
     {
