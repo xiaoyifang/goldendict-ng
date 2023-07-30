@@ -406,7 +406,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords names, zipFileNames;
         ChunkedStorage::Writer chunks( idx );
-        quint32 namesCount;
+        quint32 namesCount = 0;
 
         IndexedZip zipFile;
         if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) )
