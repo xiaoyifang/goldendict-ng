@@ -85,7 +85,7 @@ jobs:
           cmake -S . -B build_dir -G Ninja \
             -DCMAKE_BUILD_TYPE=Release
           cmake --build build_dir
-          cmake --install ./build_dir --prefix=appdir
+          cmake --install ./build_dir --prefix=appdir/usr
 
           find appdir/
           
