@@ -44,20 +44,27 @@ jobs:
           
       - name: ubuntu install thirdparty dependencies
         run: |
-          sudo apt-get install git pkg-config build-essential 
-          sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
-          sudo apt-get install libxtst-dev liblzo2-dev libbz2-dev 
-          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
-          sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
-          sudo apt-get install  libxkbcommon-x11-dev libspeechd-dev
-          sudo apt install libfuse2
+          sudo add-apt-repository --yes --update ppa:kiwixteam/release
+          sudo apt-get install build-essential \
+            libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev  \
+            libxtst-dev liblzo2-dev libbz2-dev \
+            libavutil-dev libavformat-dev libeb16-dev \
+            libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0 \
+            libxkbcommon-x11-dev libspeechd-dev \
+            libfuse2 libxapian-dev libzim-dev ninja-build
+
+          pip3 install cmake
+
           sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
           
-          #build opencc
+          # build opencc
           git clone https://github.com/BYVoid/OpenCC
           cd OpenCC/
-          make PREFIX=/usr -j$(nproc)
-          sudo make install
+          cmake -S . -B build_dir -G Ninja\
+            -DCMAKE_INSTALL_PREFIX=/usr/ \
+            -DCMAKE_BUILD_TYPE=Release
+          cmake --build build_dir
+          sudo cmake --install ./build_dir/
           cd ..
 
           # wget https://oligarchy.co.uk/xapian/1.4.22/xapian-core-1.4.22.tar.xz
@@ -67,33 +74,21 @@ jobs:
           # make PREFIX=/usr
           # sudo make install
           # cd ..
-          sudo apt install libxapian-dev
-          sudo add-apt-repository --yes --update ppa:kiwixteam/release
-          sudo apt install libzim-dev
 
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: true
 
-      - name: version-file
-        shell: bash
-        env:
-          VAR_SUFFIX: ${{env.version-suffix}}
-          VAR_VERSION: ${{env.version}}
-        run: |   
-          current_tag=$(git rev-parse --short=8 HEAD)
-          release_date=$(date +'%Y%m%d')
-          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
-          cat version.txt
-          echo "$version"   
-          
       - name: build goldendict
         run: |
-          qmake CONFIG+=release CONFIG+=use_xapian PREFIX=/usr CONFIG+=zim_support CONFIG+=chinese_conversion_support CONFIG+=use_iconv
-          make INSTALL_ROOT=appdir -j`nproc` install; find appdir/
+          cmake -S . -B build_dir -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release
+          cmake --build build_dir
+          cmake --install ./build_dir --prefix=appdir
+
+          find appdir/
           
-          ls -al appdir
       - name: Build AppImage
         run: |
           # for /usr/lib/qt6/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
@@ -109,7 +104,7 @@ jobs:
           chmod a+x linuxdeploy-plugin-qt-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
           chmod a+x linuxdeploy-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt  -i redist/icons/goldendict.png -d redist/io.github.xiaoyifang.goldendict_ng.desktop
+          ./linuxdeploy-x86_64.AppImage --appdir appdir --output appimage --plugin qt -i redist/icons/goldendict.png -d redist/io.github.xiaoyifang.goldendict_ng.desktop
 
       - name: changelog
         id: changelog
