@@ -113,6 +113,23 @@ void LoadDictionaries::run()
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
     }
 
+    //handle the custom dictionary name
+    for ( const auto & dict : dictionaries ) {
+      auto baseDir = dict->getContainingFolder();
+      if ( baseDir.isEmpty() )
+        continue;
+
+      auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+
+      auto dictMetaData = Metadata::load( filePath.toStdString() );
+      if ( dictMetaData && dictMetaData->name ) {
+        dict->setName( dictMetaData->name.value() );
+      }
+      if ( dictMetaData && dictMetaData->fullindex ) {
+        dict->setFtsEnable( dictMetaData->fullindex.value() );
+      }
+    }
+
     exceptionText.clear();
   }
   catch ( std::exception & e ) {
@@ -167,22 +184,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
 
-  //handle the custom dictionary name
-  for ( const auto & dict : dictionaries ) {
-    auto baseDir = dict->getContainingFolder();
-    if ( baseDir.isEmpty() )
-      continue;
-
-    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-
-    auto dictMetaData = Metadata::load( filePath.toStdString() );
-    if ( dictMetaData && dictMetaData->name ) {
-      dict->setName( dictMetaData->name.value() );
-    }
-    if ( dictMetaData && dictMetaData->fullindex ) {
-      dict->setFtsEnable( dictMetaData->fullindex.value() );
-    }
-  }
+  
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
