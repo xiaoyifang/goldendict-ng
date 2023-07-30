@@ -113,7 +113,7 @@ void LoadDictionaries::run()
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
     }
 
-    //handle the custom dictionary name
+    //handle the custom dictionary name&fts option
     for ( const auto & dict : dictionaries ) {
       auto baseDir = dict->getContainingFolder();
       if ( baseDir.isEmpty() )
@@ -183,8 +183,6 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
-
-  
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
