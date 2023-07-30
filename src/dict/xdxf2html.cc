@@ -137,7 +137,7 @@ string convert( string const & in,
 #else
   auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
   if ( !setContentResult ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld\n",
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );
