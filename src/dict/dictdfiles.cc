@@ -250,10 +250,10 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
   try {
     vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-    for ( unsigned x = 0; x < alts.size(); ++x ) {
+    for ( const auto & alt : alts ) {
       /// Make an additional query for each alt
 
-      vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+      vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
       chain.insert( chain.end(), altChain.begin(), altChain.end() );
     }
@@ -270,15 +270,15 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
     char buf[ 16384 ];
 
-    for ( unsigned x = 0; x < chain.size(); ++x ) {
-      if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    for ( auto & x : chain ) {
+      if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
         continue; // We already have this article in the body.
 
       // Now load that article
 
       {
         QMutexLocker _( &indexFileMutex );
-        indexFile.seek( chain[ x ].articleOffset );
+        indexFile.seek( x.articleOffset );
 
         if ( !indexFile.gets( buf, sizeof( buf ), true ) )
           throw exFailedToReadLineFromIndex();
@@ -378,16 +378,16 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+      wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
       if ( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
       multimap< wstring, string > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-      mapToUse.insert( pair( Folding::applySimpleCaseOnly( chain[ x ].word ), articleText ) );
+      mapToUse.insert( pair( Folding::applySimpleCaseOnly( x.word ), articleText ) );
 
-      articlesIncluded.insert( chain[ x ].articleOffset );
+      articlesIncluded.insert( x.articleOffset );
     }
 
     if ( mainArticles.empty() && alternateArticles.empty() )
@@ -547,17 +547,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Only allow .index suffixes
 
-    if ( i->size() < 6 || strcasecmp( i->c_str() + ( i->size() - 6 ), ".index" ) != 0 )
+    if ( fileName.size() < 6 || strcasecmp( fileName.c_str() + ( fileName.size() - 6 ), ".index" ) != 0 )
       continue;
 
     try {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
       // Check if there is an 'abrv' file present
-      string baseName( *i, 0, i->size() - 5 );
+      string baseName( fileName, 0, fileName.size() - 5 );
 
       dictFiles.push_back( string() );
 
@@ -714,7 +714,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

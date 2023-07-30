@@ -48,6 +48,7 @@ public:
 public:
 
   virtual void indexingDictionary( std::string const & dictionaryName ) noexcept;
+  virtual void loadingDictionary( std::string const & dictionaryName ) noexcept;
 
 private:
 
@@ -58,6 +59,7 @@ private:
 
 signals:
   void indexingDictionarySignal( QString const & dictionaryName );
+  void loadingDictionarySignal( QString const & dictionaryName );
 };
 
 /// Loads all dictionaries mentioned in the configuration passed, into the

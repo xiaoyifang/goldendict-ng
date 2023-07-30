@@ -1178,10 +1178,10 @@ void SlobArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -1196,14 +1196,13 @@ void SlobArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
 
-    quint64 pos =
-      dict.getArticlePos( chain[ x ].articleOffset ); // Several "articleOffset" values may refer to one article
+    quint64 pos = dict.getArticlePos( x.articleOffset ); // Several "articleOffset" values may refer to one article
 
     if ( articlesIncluded.find( pos ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
@@ -1212,9 +1211,9 @@ void SlobArticleRequest::run()
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
     try {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
     }
     catch ( ... ) {
     }
@@ -1378,17 +1377,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .slob to speed up the
     // scanning
 
-    QString firstName = QDir::fromNativeSeparators( i->c_str() );
+    QString firstName = QDir::fromNativeSeparators( fileName.c_str() );
     if ( !firstName.endsWith( ".slob" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, fileName );
 
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1398,7 +1397,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         SlobFile sf;
 
-        gdDebug( "Slob: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Slob: Building the index for dictionary: %s\n", fileName.c_str() );
 
         sf.open( firstName );
 
@@ -1490,7 +1489,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SlobDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
       continue;
     }
     catch ( ... ) {

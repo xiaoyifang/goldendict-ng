@@ -1746,6 +1746,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
            || File::tryPossibleName( baseName + "_ABRV.DSL.dz", abrvFileName ) )
         dictFiles.push_back( abrvFileName );
 
+      initializing.loadingDictionary( fileName );
+
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
       // See if there's a zip file with resources present. If so, include it.

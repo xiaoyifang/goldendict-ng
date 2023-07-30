@@ -548,6 +548,7 @@ public:
   /// is useful to show in some kind of a splash screen.
   /// The dictionaryName is in utf8.
   virtual void indexingDictionary( string const & dictionaryName ) noexcept = 0;
+  virtual void loadingDictionary( string const & dictionaryName ) noexcept  = 0;
 
   virtual ~Initializing() = default;
 };

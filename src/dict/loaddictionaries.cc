@@ -190,6 +190,11 @@ void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexc
   emit indexingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
 }
 
+void LoadDictionaries::loadingDictionary( string const & dictionaryName ) noexcept
+{
+  emit loadingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
+}
+
 
 void loadDictionaries( QWidget * parent,
                        bool showInitially,
@@ -207,6 +212,7 @@ void loadDictionaries( QWidget * parent,
   LoadDictionaries loadDicts( cfg );
 
   QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
+  QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
 
   QEventLoop localLoop;
 
@@ -314,6 +320,6 @@ void loadDictionaries( QWidget * parent,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( unsigned x = 0; x < dictionaries.size(); ++x )
-    dictionaries[ x ]->deferredInit();
+  for ( const auto & dictionarie : dictionaries )
+    dictionarie->deferredInit();
 }
