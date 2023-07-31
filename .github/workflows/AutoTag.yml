@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 23.07.23
+      version: 23.07.23.1
       version-suffix: GreatHeat
       prerelease: false
 

@@ -30,7 +30,7 @@ jobs:
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.07.23
+      version: 23.07.23.1
       version-suffix: GreatHeat
       prerelease: false
     steps:

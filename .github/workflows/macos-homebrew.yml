@@ -26,7 +26,7 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.07.23
+      version: 23.07.23.1
       version-suffix: GreatHeat
       prerelease: false
     steps:
