@@ -132,10 +132,10 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -422,8 +422,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( Config::SoundDirs::const_iterator i = soundDirs.begin(); i != soundDirs.end(); ++i ) {
-    QDir dir( i->path );
+  for ( const auto & soundDir : soundDirs ) {
+    QDir dir( soundDir.path );
 
     if ( !dir.exists() )
       continue; // No such dir, no dictionary then
@@ -441,9 +441,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       // Building the index
 
-      qDebug() << "Sounds: Building the index for directory: " << i->path;
+      qDebug() << "Sounds: Building the index for directory: " << soundDir.path;
 
-      initializing.indexingDictionary( i->name.toUtf8().data() );
+      initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
       File::Class idx( indexFile, "wb" );
 
@@ -488,10 +488,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
     }
 
     dictionaries.push_back( std::make_shared< SoundDirDictionary >( dictId,
-                                                                    i->name.toUtf8().data(),
+                                                                    soundDir.name.toUtf8().data(),
                                                                     indexFile,
                                                                     dictFiles,
-                                                                    i->iconFilename ) );
+                                                                    soundDir.iconFilename ) );
   }
 
   return dictionaries;

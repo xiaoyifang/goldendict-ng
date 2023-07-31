@@ -261,7 +261,7 @@ public:
     if ( !ensureInitDone().empty() )
       return;
 
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -324,12 +324,7 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 
   cacheDirName = QDir::tempPath() + QDir::separator() + QString::fromUtf8( getId().c_str() ) + ".cache";
 }
@@ -1298,6 +1293,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     vector< string > dictFiles( 1, fileName );
     findResourceFiles( fileName, dictFiles );
+
+    initializing.loadingDictionary( fileName );
 
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;

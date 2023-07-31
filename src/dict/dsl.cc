@@ -240,7 +240,7 @@ public:
     if ( ensureInitDone().size() )
       return;
 
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -298,12 +298,8 @@ DslDictionary::DslDictionary( string const & id,
   articleNom( 0 ),
   maxPictureWidth( maxPictureWidth_ )
 {
-  can_FTS = true;
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 
   // Read the dictionary name
 
@@ -1749,6 +1745,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
            || File::tryPossibleName( baseName + "_ABRV.DSL.DZ", abrvFileName )
            || File::tryPossibleName( baseName + "_ABRV.DSL.dz", abrvFileName ) )
         dictFiles.push_back( abrvFileName );
+
+      initializing.loadingDictionary( fileName );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 

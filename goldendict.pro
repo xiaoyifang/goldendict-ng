@@ -77,6 +77,7 @@ win32{
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
 
+#the lib ,include files are copied from vcpkg install package.
   LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
 
 
@@ -119,8 +120,8 @@ LIBS += -lbz2 \
         -llzo2
 
 win32{
-    Debug: LIBS+= -lzlibd
-    Release: LIBS+= -lzlib
+    Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lzlibd
+    Release: LIBS+= -L$$PWD/winlibs/lib/ -lzlib
 }else{
   LIBS += -lz 
 }

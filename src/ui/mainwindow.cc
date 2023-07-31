@@ -1,6 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
+#include <Qt>
 #include <QScopeGuard>
 #ifndef NO_EPWING_SUPPORT
   #include "dict/epwing_book.hh"
@@ -740,10 +741,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-  if ( cfg.mainWindowState.size() && !cfg.resetState )
-    restoreState( cfg.mainWindowState );
-  if ( cfg.mainWindowGeometry.size() )
-    restoreGeometry( cfg.mainWindowGeometry );
 
 #if defined( Q_OS_LINUX )
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
@@ -913,6 +910,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                           + " \"%1\"" );
   urlRegistry.endGroup();
 #endif
+
+  // restore should be called after all UI initialized.
+  if ( cfg.mainWindowState.size() && !cfg.resetState )
+    restoreState( cfg.mainWindowState );
+  if ( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
 
   useSmallIconsInToolbarsTriggered();
 
@@ -2477,16 +2480,19 @@ bool MainWindow::handleBackForwardMouseButtons( QMouseEvent * event )
 bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 {
   if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
-    QKeyEvent * ke = static_cast< QKeyEvent * >( ev );
+    QKeyEvent * ke = dynamic_cast< QKeyEvent * >( ev );
     // Handle F3/Shift+F3 shortcuts
-    if ( ke->key() == Qt::Key_F3 ) {
+    int const key = ke->key();
+    if ( key == Qt::Key_F3 ) {
       ArticleView * view = getCurrentArticleView();
       if ( view && view->handleF3( obj, ev ) )
         return true;
     }
 
     //workaround to fix #660
-    if ( obj == this && ev->type() == QEvent::KeyPress && ( ke->key() == Qt::Key_Up || ke->key() == Qt::Key_Down ) ) {
+    if ( obj == this && ev->type() == QEvent::KeyPress
+         && ( key == Qt::Key_Up || key == Qt::Key_Down || key == Qt::Key_Space || key == Qt::Key_PageUp
+              || key == Qt::Key_PageDown ) ) {
       ArticleView * view = getCurrentArticleView();
       if ( view ) {
         view->focus();
@@ -2504,12 +2510,12 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
-    QWindowStateChangeEvent * stev = static_cast< QWindowStateChangeEvent * >( ev );
+    auto stev                      = dynamic_cast< QWindowStateChangeEvent * >( ev );
     wasMaximized                   = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
   }
 
   if ( ev->type() == QEvent::MouseButtonPress ) {
-    QMouseEvent * event = static_cast< QMouseEvent * >( ev );
+    auto event = static_cast< QMouseEvent * >( ev );
 
     return handleBackForwardMouseButtons( event );
   }
@@ -2517,8 +2523,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::KeyPress ) {
     auto keyevent = dynamic_cast< QKeyEvent * >( ev );
 
-    bool handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
-                           || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
+    bool const handleCtrlTab = ( obj == translateLine || obj == ui.wordList || obj == ui.historyList
+                                 || obj == ui.favoritesTree || obj == ui.dictsList || obj == groupList );
 
     if ( keyevent->modifiers() == Qt::ControlModifier && keyevent->key() == Qt::Key_Tab ) {
       if ( cfg.preferences.mruTabOrder ) {
@@ -2531,11 +2537,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
       return false;
     }
-    if ( handleCtrlTab
-         && keyevent->matches(
-           QKeySequence::
-             PreviousChild ) ) // Handle only Ctrl+Shist+Tab here because Ctrl+Tab was already handled before
-    {
+
+    // Handle only Ctrl+Shift+Tab here because Ctrl+Tab was already handled before
+    if ( handleCtrlTab && keyevent->matches( QKeySequence::PreviousChild ) ) {
       QApplication::sendEvent( ui.tabWidget, ev );
       return true;
     }
@@ -3088,7 +3092,8 @@ void MainWindow::setAutostart( bool autostart )
   if ( autostart == QFile::exists( destinationPath ) )
     return; // Nothing to do.
   if ( autostart ) {
-    const QString sourcePath = Config::getProgramDataDir() + "../applications/org.xiaoyifang.GoldenDict_NG.desktop";
+    const QString sourcePath =
+      Config::getProgramDataDir() + "../applications/io.github.xiaoyifang.goldendict_ng.desktop";
     QFile::copy( sourcePath, destinationPath );
   }
   else

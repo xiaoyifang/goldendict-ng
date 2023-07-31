@@ -504,13 +504,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < ws.size(); ++x ) {
-    if ( ws[ x ].enabled )
-      result.push_back( std::make_shared< WebSiteDictionary >( ws[ x ].id.toUtf8().data(),
-                                                               ws[ x ].name.toUtf8().data(),
-                                                               ws[ x ].url,
-                                                               ws[ x ].iconFilename,
-                                                               ws[ x ].inside_iframe,
+  for ( const auto & w : ws ) {
+    if ( w.enabled )
+      result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
+                                                               w.name.toUtf8().data(),
+                                                               w.url,
+                                                               w.iconFilename,
+                                                               w.inside_iframe,
                                                                mgr ) );
   }
 

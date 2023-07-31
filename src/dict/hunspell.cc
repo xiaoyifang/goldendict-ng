@@ -360,8 +360,8 @@ void HunspellHeadwordsRequest::run()
     getSuggestionsForExpression( trimmedWord, results, hunspellMutex, hunspell );
 
     QMutexLocker _( &dataMutex );
-    for ( unsigned i = 0; i < results.size(); i++ )
-      matches.push_back( results[ i ] );
+    for ( const auto & result : results )
+      matches.push_back( result );
   }
   else {
     QVector< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
@@ -369,8 +369,8 @@ void HunspellHeadwordsRequest::run()
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
 
-      for ( int x = 0; x < suggestions.size(); ++x )
-        matches.push_back( suggestions[ x ] );
+      for ( const auto & suggestion : suggestions )
+        matches.push_back( suggestion );
     }
   }
 
@@ -396,8 +396,8 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
       static QRegExp cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
-      for ( vector< string >::size_type x = 0; x < suggestions.size(); ++x ) {
-        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, suggestions[ x ].c_str() ) );
+      for ( const auto & x : suggestions ) {
+        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
 
         // Strip comments
         int n = suggestion.indexOf( '#' );
@@ -562,11 +562,11 @@ void getSuggestionsForExpression( wstring const & expression,
 
   QVector< wstring > results;
 
-  for ( int i = 0; i < words.size(); i++ ) {
-    word = words.at( i );
+  for ( const auto & i : words ) {
+    word = i;
     if ( Folding::isPunct( word[ 0 ] ) || Folding::isWhitespace( word[ 0 ] ) ) {
-      for ( int j = 0; j < results.size(); j++ )
-        results[ j ].append( word );
+      for ( auto & result : results )
+        result.append( word );
     }
     else {
       QVector< wstring > sugg = suggest( word, hunspellMutex, hunspell );
@@ -594,9 +594,9 @@ void getSuggestionsForExpression( wstring const & expression,
     }
   }
 
-  for ( int i = 0; i < results.size(); i++ )
-    if ( results.at( i ) != trimmedWord )
-      suggestions.push_back( results.at( i ) );
+  for ( const auto & result : results )
+    if ( result != trimmedWord )
+      suggestions.push_back( result );
 }
 
 string encodeToHunspell( Hunspell & hunspell, wstring const & str )
@@ -642,9 +642,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
   vector< DataFiles > dataFiles = findDataFiles( cfg.dictionariesPath );
 
 
-  for ( int x = 0; x < cfg.enabledDictionaries.size(); ++x ) {
+  for ( const auto & enabledDictionarie : cfg.enabledDictionaries ) {
     for ( unsigned d = dataFiles.size(); d--; ) {
-      if ( dataFiles[ d ].dictId == cfg.enabledDictionaries[ x ] ) {
+      if ( dataFiles[ d ].dictId == enabledDictionarie ) {
         // Found it
 
         vector< string > dictFiles;

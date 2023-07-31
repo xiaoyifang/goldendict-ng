@@ -445,7 +445,7 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   }
 
   qint64 toRead = maxSize < left ? maxSize : left;
-  GD_DPRINTF( "====reading  %d of (%d) bytes . Finished: %d", (int)toRead, avail, finished );
+  GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try {
     req->getDataSlice( alreadyRead, toRead, out );

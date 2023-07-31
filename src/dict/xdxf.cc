@@ -203,7 +203,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -297,12 +297,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 XdxfDictionary::~XdxfDictionary()
@@ -751,9 +746,9 @@ QString readXhtmlData( QXmlStreamReader & stream )
 
       QXmlStreamAttributes attrs = stream.attributes();
 
-      for ( int x = 0; x < attrs.size(); ++x ) {
-        result += Utils::escape( attrs[ x ].name().toString() );
-        result += "=\"" + Utils::escape( attrs[ x ].value().toString() ) + "\"";
+      for ( const auto & attr : attrs ) {
+        result += Utils::escape( attr.name().toString() );
+        result += "=\"" + Utils::escape( attr.value().toString() ) + "\"";
       }
 
       result += ">";

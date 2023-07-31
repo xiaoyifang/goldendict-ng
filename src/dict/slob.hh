@@ -1,9 +1,7 @@
 #ifndef __SLOB_HH_INCLUDED__
 #define __SLOB_HH_INCLUDED__
 
-#ifdef MAKE_ZIM_SUPPORT
-
-  #include "dictionary.hh"
+#include "dictionary.hh"
 
 /// Support for the Slob dictionaries.
 namespace Slob {
@@ -17,7 +15,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                                                       unsigned maxHeadwordsToExpand );
 
 } // namespace Slob
-
-#endif
 
 #endif // __SLOB_HH_INCLUDED__

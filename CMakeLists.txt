@@ -42,16 +42,19 @@ find_package(Qt6 REQUIRED COMPONENTS
 
 #### Compile time files and preprocessor flags
 
-# Obtain git commit hash
-execute_process(
-        COMMAND git rev-parse --short=8 HEAD
-        WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
-        OUTPUT_VARIABLE GIT_HASH
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-
-string(TIMESTAMP date_for_version_file) # note: this variable is cached for every run, but for user installation, this doesn't matter much
-configure_file(version.txt.in ${CMAKE_SOURCE_DIR}/version.txt)
+block() # generate version.txt
+    string(TIMESTAMP build_time)
+    find_package(Git)
+    if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND GIT_FOUND)
+        execute_process(
+                COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --short HEAD
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+                OUTPUT_VARIABLE GIT_HASH)
+        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION}.${GIT_HASH} at ${build_time}")
+    else () # not built in a git repo
+        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION} at ${build_time}")
+    endif ()
+endblock()
 
 #### Sources Files
 
@@ -191,8 +194,8 @@ if (APPLE)
 endif ()
 
 if (LINUX OR BSD)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.xiaoyifang.GoldenDict_NG.desktop DESTINATION share/applications)
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/org.xiaoyifang.GoldenDict_NG.metainfo.xml DESTINATION share/metainfo)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.desktop DESTINATION share/applications)
+    install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml DESTINATION share/metainfo)
 
     install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
 

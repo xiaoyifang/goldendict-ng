@@ -119,8 +119,8 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-    addQuery( mgr, alts[ x ] );
+  for ( const auto & alt : alts )
+    addQuery( mgr, alt );
 }
 
 void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -158,9 +158,9 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
   bool found = false;
 
-  for ( NetReplies::iterator i = netReplies.begin(); i != netReplies.end(); ++i ) {
-    if ( i->reply.get() == r ) {
-      i->finished = true; // Mark as finished
+  for ( auto & netReplie : netReplies ) {
+    if ( netReplie.reply.get() == r ) {
+      netReplie.finished = true; // Mark as finished
       found       = true;
       break;
     }
@@ -312,8 +312,8 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
 
     QSet< QString > usedCodes;
 
-    for ( int x = 0; x < codes.size(); ++x ) {
-      QString code = codes[ x ].simplified();
+    for ( const auto & x : codes ) {
+      QString code = x.simplified();
 
       if ( code.size() && !usedCodes.contains( code ) ) {
         // Generate id

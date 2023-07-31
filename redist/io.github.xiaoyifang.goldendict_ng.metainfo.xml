@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Vitaly Zaitsev <vitaly@easycoding.org> -->
+<component type="desktop">
+  <id>io.github.xiaoyifang.goldendict_ng</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>GoldenDict-ng</name>
+  <summary>Advanced dictionary lookup program</summary>
+  <categories>
+    <category>Education</category>
+    <category>Dictionary</category>
+    <category>Languages</category>
+  </categories>
+  <description>
+    <p>
+      GoldenDict-ng is a feature-rich dictionary lookup program, supporting multiple
+      dictionary formats, featuring perfect article rendering with the complete
+      markup, illustrations and other content retained, and allowing you to type
+      in words without any accents or correct case.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://user-images.githubusercontent.com/20123683/255323975-4f12d2aa-c8c9-4dc6-b3d4-cfbc46d70889.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://user-images.githubusercontent.com/20123683/255323667-e76a55bc-4c81-487c-9f2b-14ece7e25f7c.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://user-images.githubusercontent.com/20123683/239691144-5145f844-ed88-4a24-ac86-4904ede13a32.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://xiaoyifang.github.io/goldendict-ng/</url>
+  <url type="help">https://xiaoyifang.github.io/goldendict-ng/</url>
+  <url type="bugtracker">https://github.com/xiaoyifang/goldendict-ng/issues</url>
+  <url type="contact">https://github.com/xiaoyifang/goldendict-ng/discussions</url>
+  <url type="vcs-browser">https://github.com/xiaoyifang/goldendict-ng</url>
+  <update_contact>https://github.com/xiaoyifang/goldendict-ng</update_contact>
+  <launchable type="desktop-id">io.github.xiaoyifang.goldendict_ng.desktop</launchable>
+  <content_rating type="oars-1.0"/>
+  <provides>
+    <id>org.goldendict_ng.desktop</id>
+  </provides>
+  <releases>
+    <release version="23.07.23" date="2023-07-23"/>
+    <release version="23.06.01" date="2023-06-01"/>
+  </releases>
+</component>

@@ -312,6 +312,8 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
+  //default to true;
+  bool enable_FTS = true;
 
   // Load user icon if it exist
   // By default set icon to empty
@@ -367,6 +369,11 @@ public:
   virtual void setName( string _dictionaryName )
   {
     dictionaryName = _dictionaryName;
+  }
+
+  void setFtsEnable( bool _enable_FTS )
+  {
+    enable_FTS = _enable_FTS;
   }
 
   /// Returns all the available properties, like the author's name, copyright,
@@ -541,6 +548,7 @@ public:
   /// is useful to show in some kind of a splash screen.
   /// The dictionaryName is in utf8.
   virtual void indexingDictionary( string const & dictionaryName ) noexcept = 0;
+  virtual void loadingDictionary( string const & dictionaryName ) noexcept  = 0;
 
   virtual ~Initializing() = default;
 };

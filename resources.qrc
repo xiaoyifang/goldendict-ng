@@ -92,5 +92,7 @@
         <file>icons/old-downarrow.png</file>
         <file>icons/custom_trans.svg</file>
         <file>icons/splash.png</file>
+        <file>icons/fts_disabled.svg</file>
+        <file>icons/fts_enabled.svg</file>
     </qresource>
 </RCC>

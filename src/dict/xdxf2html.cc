@@ -82,8 +82,8 @@ string convert( string const & in,
 
   bool afterEol = false;
 
-  for ( string::const_iterator i = in.begin(), j = in.end(); i != j; ++i ) {
-    switch ( *i ) {
+  for ( char i : in ) {
+    switch ( i ) {
       case '\n':
         afterEol = true;
         if ( !isLogicalFormat )
@@ -102,7 +102,7 @@ string convert( string const & in,
         // Fall-through
 
       default:
-        inConverted.push_back( *i );
+        inConverted.push_back( i );
         afterEol = false;
     }
   }
@@ -137,7 +137,7 @@ string convert( string const & in,
 #else
   auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
   if ( !setContentResult ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld\n",
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );

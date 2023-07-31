@@ -417,8 +417,8 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-    addQuery( mgr, alts[ x ] );
+  for ( const auto & alt : alts )
+    addQuery( mgr, alt );
 }
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -455,9 +455,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
   bool found = false;
 
-  for ( NetReplies::iterator i = netReplies.begin(); i != netReplies.end(); ++i ) {
-    if ( i->first == r ) {
-      i->second = true; // Mark as finished
+  for ( auto & netReplie : netReplies ) {
+    if ( netReplie.first == r ) {
+      netReplie.second = true; // Mark as finished
       found     = true;
       break;
     }
@@ -558,7 +558,12 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QRegularExpressionMatch match2 = reg2.match( tag );
               if ( match2.hasMatch() ) {
                 QString ref       = match2.captured( 1 );
-                QString audio_url = "<a href=\"" + ref
+                // audio url may like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
+                if ( ref.startsWith( "//" ) ) {
+                  ref = wikiUrl.scheme() + ":" + ref;
+                }
+                auto script       = addAudioLink( "\"" + ref + "\"", this->dictPtr->getId() );
+                QString audio_url = QString::fromStdString( script ) + "<a href=\"" + ref
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
@@ -571,14 +576,6 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               articleNewString.clear();
             }
 
-            // audio url
-            articleString.replace(
-              QRegularExpression(
-                "<a\\s+href=\"(//upload\\.wikimedia\\.org/wikipedia/[^\"'&]*\\.og[ga](?:\\.mp3|))\"" ),
-
-              QString::fromStdString(
-                addAudioLink( string( "\"" ) + wikiUrl.scheme().toStdString() + ":\\1\"", this->dictPtr->getId() )
-                + "<a href=\"" + wikiUrl.scheme().toStdString() + ":\\1\"" ) );
 
             // Add url scheme to image source urls
             articleString.replace( " src=\"//", " src=\"" + wikiUrl.scheme() + "://" );
@@ -696,12 +693,12 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < wikis.size(); ++x ) {
-    if ( wikis[ x ].enabled )
-      result.push_back( std::make_shared< MediaWikiDictionary >( wikis[ x ].id.toStdString(),
-                                                                 wikis[ x ].name.toUtf8().data(),
-                                                                 wikis[ x ].url,
-                                                                 wikis[ x ].icon,
+  for ( const auto & wiki : wikis ) {
+    if ( wiki.enabled )
+      result.push_back( std::make_shared< MediaWikiDictionary >( wiki.id.toStdString(),
+                                                                 wiki.name.toUtf8().data(),
+                                                                 wiki.url,
+                                                                 wiki.icon,
                                                                  mgr ) );
   }
 

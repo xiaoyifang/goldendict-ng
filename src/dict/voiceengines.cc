@@ -128,9 +128,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::VoiceEngines const
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( Config::VoiceEngines::const_iterator i = voiceEngines.begin(); i != voiceEngines.end(); ++i ) {
-    if ( i->enabled )
-      result.push_back( std::make_shared< VoiceEnginesDictionary >( *i ) );
+  for ( const auto & voiceEngine : voiceEngines ) {
+    if ( voiceEngine.enabled )
+      result.push_back( std::make_shared< VoiceEnginesDictionary >( voiceEngine ) );
   }
 
   return result;

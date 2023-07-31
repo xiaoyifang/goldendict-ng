@@ -447,6 +447,13 @@ void ArticleView::loadFinished( bool result )
     if ( isScrollTo( scrollTo ) ) {
       setCurrentArticle( scrollTo, true );
     }
+    else {
+      setActiveArticleId( "" );
+    }
+  }
+  else {
+    //clear current active dictionary id;
+    setActiveArticleId( "" );
   }
 
   webview->unsetCursor();
@@ -586,8 +593,9 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 {
   // Don't try mangling audio urls, even if they are from the framed websites
 
-  if ( ( url.scheme() == "http" || url.scheme() == "https" )
-       && !Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
+  if ( !url.isValid() )
+    return;
+  if ( ( url.scheme() == "http" || url.scheme() == "https" ) && !Utils::Url::isWebAudioUrl( url ) ) {
     // Maybe a link inside a website was clicked?
 
     QString ca = getCurrentArticle();
@@ -849,7 +857,7 @@ void ArticleView::linkHovered( const QString & link )
   if ( url.scheme() == "bres" ) {
     msg = tr( "Resource" );
   }
-  else if ( url.scheme() == "gdau" || Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
+  else if ( url.scheme() == "gdau" || Utils::Url::isAudioUrl( url ) ) {
     msg = tr( "Audio" );
   }
   else if ( url.scheme() == "gdtts" ) {
@@ -932,7 +940,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
 
 void ArticleView::linkClickedInHtml( QUrl const & url_ )
 {
-  emit webview->linkClickedInHtml( url_ );
+  webview->linkClickedInHtml( url_ );
   if ( !url_.isEmpty() ) {
     linkClicked( url_ );
   }
@@ -1021,7 +1029,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     }
   }
   else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
-            || Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
+            || Utils::Url::isAudioUrl( url ) ) {
     // Download it
 
     // Clear any pending ones
@@ -1030,7 +1038,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
     resourceDownloadUrl = url;
 
-    if ( Dictionary::WebMultimediaDownload::isAudioUrl( url ) ) {
+    if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
       resourceDownloadRequests.push_back( req );
@@ -1775,9 +1783,9 @@ void ArticleView::resourceDownloadFinished()
 
         vector< char > const & data = ( *i )->getFullData();
 
-        if ( resourceDownloadUrl.scheme() == "gdau"
-             || Dictionary::WebMultimediaDownload::isAudioUrl( resourceDownloadUrl ) ) {
+        if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
           // Audio data
+          audioPlayer->stop();
           connect( audioPlayer.data(),
                    &AudioPlayerInterface::error,
                    this,
@@ -1886,8 +1894,7 @@ void ArticleView::moveOneArticleUp()
 
 void ArticleView::moveOneArticleDown()
 {
-  QString current       = getCurrentArticle();
-  QString currentDictId = dictionaryIdFromScrollTo( current );
+  QString currentDictId = getActiveArticleId();
   QStringList lst       = getArticlesList();
   // if current article is empty .use the first as default.
   if ( currentDictId.isEmpty() && !lst.isEmpty() ) {

@@ -205,7 +205,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -270,12 +270,7 @@ StardictDictionary::StardictDictionary( string const & id,
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 StardictDictionary::~StardictDictionary()
@@ -427,8 +422,7 @@ private:
 
     QString old;
     while ( s.compare( old ) != 0 ) {
-      for ( int i = 0; i < TRANSLATE_TBL_SIZE; ++i ) {
-        PWSyntaxTranslate & a = t[ i ];
+      for ( auto & a : t ) {
         s.replace( a.re(), a.replacement() );
       }
       old = s;
@@ -1198,7 +1192,7 @@ void StardictHeadwordsRequest::run()
 
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
-    for ( unsigned x = 0; x < chain.size(); ++x ) {
+    for ( auto & x : chain ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;
@@ -1206,7 +1200,7 @@ void StardictHeadwordsRequest::run()
 
       string headword, articleText;
 
-      dict.loadArticle( chain[ x ].articleOffset, headword, articleText );
+      dict.loadArticle( x.articleOffset, headword, articleText );
 
       wstring headwordDecoded = Utf8::decode( headword );
 
@@ -1290,10 +1284,10 @@ void StardictArticleRequest::run()
 
     //if alts has more than 100 , great probability that the dictionary is wrong produced or parsed.
     if ( alts.size() < 100 ) {
-      for ( unsigned x = 0; x < alts.size(); ++x ) {
+      for ( const auto & alt : alts ) {
         /// Make an additional query for each alt
 
-        vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+        vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
         if ( altChain.size() > 100 ) {
           continue;
         }
@@ -1780,16 +1774,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".ifo" ) != 0 )
+  for ( const auto & fileName : fileNames ) {
+    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".ifo" ) != 0 )
       continue;
 
     try {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
       string idxFileName, dictFileName, synFileName;
 
-      findCorrespondingFiles( *i, idxFileName, dictFileName, synFileName );
+      findCorrespondingFiles( fileName, idxFileName, dictFileName, synFileName );
 
       dictFiles.push_back( idxFileName );
       dictFiles.push_back( dictFileName );
@@ -1815,7 +1809,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        File::Class ifoFile( *i, "r" );
+        File::Class ifoFile( fileName, "r" );
 
         Ifo ifo( ifoFile );
 
@@ -1964,7 +1958,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< StardictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Stardict dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Stardict dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

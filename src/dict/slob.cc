@@ -1,50 +1,47 @@
 /* This file is (c) 2015 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifdef MAKE_ZIM_SUPPORT
 
-  #include "slob.hh"
-  #include "btreeidx.hh"
+#include "slob.hh"
+#include "btreeidx.hh"
 
-  #include "folding.hh"
-  #include "gddebug.hh"
-  #include "utf8.hh"
-  #include "decompress.hh"
-  #include "langcoder.hh"
-  #include "wstring.hh"
-  #include "wstring_qt.hh"
-  #include "ftshelpers.hh"
-  #include "htmlescape.hh"
-  #include "filetype.hh"
-  #include "tiff.hh"
-  #include "utils.hh"
+#include "folding.hh"
+#include "gddebug.hh"
+#include "utf8.hh"
+#include "decompress.hh"
+#include "langcoder.hh"
+#include "wstring_qt.hh"
+#include "ftshelpers.hh"
+#include "htmlescape.hh"
+#include "filetype.hh"
+#include "tiff.hh"
+#include "utils.hh"
 
-  #ifdef _MSC_VER
-    #include <stub_msvc.h>
-  #endif
+#ifdef _MSC_VER
+  #include <stub_msvc.h>
+#endif
 
-  #include <QString>
-  #include <QFile>
-  #include <QFileInfo>
-  #include <QDir>
-  #include <QTextCodec>
-  #include <QMap>
-  #include <QPair>
-  #include <QRegExp>
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    #include <QtCore5Compat>
-  #endif
-  #include <QProcess>
-  #include <QVector>
-  #include <QtAlgorithms>
+#include <QString>
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QTextCodec>
+#include <QMap>
+#include <QPair>
+#include <QRegExp>
+#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #include <QtCore5Compat>
+#endif
+#include <QProcess>
+#include <QVector>
 
-  #include <QRegularExpression>
+#include <QRegularExpression>
 
-  #include <string>
-  #include <vector>
-  #include <map>
-  #include <set>
-  #include <algorithm>
+#include <string>
+#include <vector>
+#include <map>
+#include <set>
+#include <algorithm>
 
 namespace Slob {
 
@@ -643,7 +640,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -705,12 +702,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 
   texCgiPath = Config::getProgramDataDir() + "/mimetex.cgi";
   if ( QFileInfo( texCgiPath ).exists() ) {
@@ -1186,10 +1178,10 @@ void SlobArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -1204,14 +1196,13 @@ void SlobArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
 
-    quint64 pos =
-      dict.getArticlePos( chain[ x ].articleOffset ); // Several "articleOffset" values may refer to one article
+    quint64 pos = dict.getArticlePos( x.articleOffset ); // Several "articleOffset" values may refer to one article
 
     if ( articlesIncluded.find( pos ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
@@ -1220,9 +1211,9 @@ void SlobArticleRequest::run()
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
     try {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
     }
     catch ( ... ) {
     }
@@ -1386,17 +1377,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .slob to speed up the
     // scanning
 
-    QString firstName = QDir::fromNativeSeparators( i->c_str() );
+    QString firstName = QDir::fromNativeSeparators( fileName.c_str() );
     if ( !firstName.endsWith( ".slob" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, fileName );
 
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1406,7 +1397,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         SlobFile sf;
 
-        gdDebug( "Slob: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Slob: Building the index for dictionary: %s\n", fileName.c_str() );
 
         sf.open( firstName );
 
@@ -1498,7 +1489,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SlobDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
       continue;
     }
     catch ( ... ) {
@@ -1510,5 +1501,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 }
 
 } // namespace Slob
-
-#endif

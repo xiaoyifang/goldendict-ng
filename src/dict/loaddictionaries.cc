@@ -79,10 +79,10 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
               << "*.mdx"
               << "*.gls"
               << "*.gls.dz"
+              << "*.slob"
 #ifdef MAKE_ZIM_SUPPORT
               << "*.zim"
               << "*.zimaa"
-              << "*.slob"
 #endif
 #ifndef NO_EPWING_SUPPORT
               << "*catalogs"
@@ -93,8 +93,10 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
 void LoadDictionaries::run()
 {
   try {
-    for ( const auto & path : paths )
+    for ( const auto & path : paths ) {
+      qDebug() << "handle path:" << path.path;
       handlePath( path );
+    }
 
     // Make soundDirs
     {
@@ -109,6 +111,23 @@ void LoadDictionaries::run()
       vector< sptr< Dictionary::Class > > hunspellDictionaries = HunspellMorpho::makeDictionaries( hunspell );
 
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
+    }
+
+    //handle the custom dictionary name&fts option
+    for ( const auto & dict : dictionaries ) {
+      auto baseDir = dict->getContainingFolder();
+      if ( baseDir.isEmpty() )
+        continue;
+
+      auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+
+      auto dictMetaData = Metadata::load( filePath.toStdString() );
+      if ( dictMetaData && dictMetaData->name ) {
+        dict->setName( dictMetaData->name.value() );
+      }
+      if ( dictMetaData && dictMetaData->fullindex ) {
+        dict->setFtsEnable( dictMetaData->fullindex.value() );
+      }
     }
 
     exceptionText.clear();
@@ -157,33 +176,23 @@ void LoadDictionaries::handlePath( Config::Path const & path )
   addDicts( ZipSounds::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Mdx::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Gls::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-
+  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #ifdef MAKE_ZIM_SUPPORT
   addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
-
-  //handle the custom dictionary name
-  for ( const auto & dict : dictionaries ) {
-    auto baseDir = dict->getContainingFolder();
-    if ( baseDir.isEmpty() )
-      continue;
-
-    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-
-    auto dictMetaData = Metadata::load( filePath.toStdString() );
-    if ( dictMetaData && dictMetaData->name ) {
-      dict->setName( dictMetaData->name.value() );
-    }
-  }
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
 {
   emit indexingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
+}
+
+void LoadDictionaries::loadingDictionary( string const & dictionaryName ) noexcept
+{
+  emit loadingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
 }
 
 
@@ -203,6 +212,7 @@ void loadDictionaries( QWidget * parent,
   LoadDictionaries loadDicts( cfg );
 
   QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
+  QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
 
   QEventLoop localLoop;
 
@@ -310,6 +320,6 @@ void loadDictionaries( QWidget * parent,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( unsigned x = 0; x < dictionaries.size(); ++x )
-    dictionaries[ x ]->deferredInit();
+  for ( const auto & dictionarie : dictionaries )
+    dictionarie->deferredInit();
 }

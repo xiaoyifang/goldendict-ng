@@ -22,6 +22,7 @@ set(THIRD_PARTY_LIBARY
         debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/hunspell-1.7.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/hunspell-1.7.lib
         debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/zim.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/zim.lib
         debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/opencc.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/opencc.lib
+        debug ${CMAKE_SOURCE_DIR}/winlibs/lib/dbg/zlibd.lib optimized ${CMAKE_SOURCE_DIR}/winlibs/lib/zlib.lib
         )
 target_link_libraries(${GOLDENDICT} PRIVATE ${THIRD_PARTY_LIBARY})
 

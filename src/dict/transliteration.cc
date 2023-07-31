@@ -63,8 +63,8 @@ sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwor
 
   GD_DPRINTF( "alts = %u\n", (unsigned)alts.size() );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-    result->getMatches().push_back( alts[ x ] );
+  for ( const auto & alt : alts )
+    result->getMatches().push_back( alt );
 
   return result;
 }
