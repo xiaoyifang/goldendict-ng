@@ -184,6 +184,7 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
+          target_commit: ${{github.ref}}
 
       - name: upload pdb
         uses: svenstaro/upload-release-action@v2
@@ -195,7 +196,8 @@ jobs:
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
-          prerelease: ${{env.prerelease}}          
+          prerelease: ${{env.prerelease}}
+          target_commit: ${{github.ref}}          
 
       - name: copy nsis 
         shell: bash
@@ -221,6 +223,7 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
+          target_commit: ${{github.ref}}
 
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
@@ -234,6 +237,7 @@ jobs:
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
+          target_commit: ${{github.ref}}
           body: |
             #### Install instructions for Windows, macOS and Linux 
 
