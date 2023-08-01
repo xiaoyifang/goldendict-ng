@@ -1201,7 +1201,7 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Caricamento...</translation>
     </message>
   </context>
   <context>
@@ -3628,7 +3628,7 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Quando usi gli appunti, rimuovi tutto dopo la nuova riga</translation>
     </message>
   </context>
   <context>
