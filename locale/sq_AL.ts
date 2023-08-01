@@ -1198,6 +1198,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Po indekson...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3409,10 +3413,6 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
       <translation>Kolapsi i seancës</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Në një kërkim të ri, fokusoni dritaren kryesore ose kërcyese edhe nëse është e dukshme</translation>
     </message>
@@ -3619,6 +3619,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Krijo indeksin e tekstit të plotë me fije paralele </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
