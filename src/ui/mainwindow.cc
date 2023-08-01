@@ -2402,7 +2402,10 @@ void MainWindow::respondToTranslationRequest( QString const & word, bool checkMo
         activateWindow();
     }
 
-    getCurrentArticleView()->focus();
+    auto view = getCurrentArticleView();
+
+    view->activateWindow();
+    view->focus();
   }
 }
 
@@ -2703,6 +2706,9 @@ void MainWindow::typingEvent( QString const & t )
       ui.searchPane->activateWindow();
 
     if ( translateLine->isEnabled() ) {
+      if ( navToolbar->isFloating() )
+        navToolbar->activateWindow();
+
       translateLine->clear();
       translateLine->setFocus();
       // Escaping the typed-in characters is the user's responsibility.
