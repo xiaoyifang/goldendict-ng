@@ -1201,7 +1201,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>読み込み中...</translation>
     </message>
   </context>
   <context>
@@ -3629,7 +3629,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>クリップボードを使用する場合は、改行以降をすべて削除します</translation>
     </message>
   </context>
   <context>
