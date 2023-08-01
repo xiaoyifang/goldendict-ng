@@ -1201,7 +1201,7 @@ a školní ortografií v cyrilici)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Načítání...</translation>
     </message>
   </context>
   <context>
@@ -3627,7 +3627,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Při použití schránky odstraňte vše po novém řádku</translation>
     </message>
   </context>
   <context>
