@@ -1215,7 +1215,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Yükleniyor...</translation>
     </message>
   </context>
   <context>
@@ -3639,7 +3639,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Pano kullanırken, yeni satırdan sonraki her şeyi soyun</translation>
     </message>
   </context>
   <context>
