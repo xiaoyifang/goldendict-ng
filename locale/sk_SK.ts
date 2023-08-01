@@ -1199,6 +1199,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <source>Indexing...</source>
       <translation>Indexovanie...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3410,10 +3414,6 @@ vyčistí vyrovnávaciu pamäť siete pri ukončení aplikácie.</translation>
       <translation>Zrútenie relácie</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Keď používate schránku, odstráňte všetko po novom riadku</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Pri novom vyhľadávaní zamerajte hlavné alebo kontextové okno, aj keď je viditeľné</translation>
     </message>
@@ -3620,6 +3620,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Vytvorte fulltextový index s paralelnými vláknami </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
