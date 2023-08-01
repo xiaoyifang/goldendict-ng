@@ -1201,7 +1201,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>로드 중...</translation>
     </message>
   </context>
   <context>
@@ -3626,7 +3626,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>클립보드를 사용할 때 개행 이후의 모든 항목을 제거합니다.</translation>
     </message>
   </context>
   <context>
