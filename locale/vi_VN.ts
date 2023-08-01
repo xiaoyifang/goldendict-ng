@@ -1200,7 +1200,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Đang tải...</translation>
     </message>
   </context>
   <context>
@@ -3623,7 +3623,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
     </message>
   </context>
   <context>
