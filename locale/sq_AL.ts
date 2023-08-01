@@ -1200,7 +1200,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Po ngarkohet...</translation>
     </message>
   </context>
   <context>
@@ -3622,7 +3622,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
     </message>
   </context>
   <context>
