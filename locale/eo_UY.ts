@@ -1199,6 +1199,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Indexing...</source>
       <translation>Indeksante...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Ŝargante...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3417,10 +3421,6 @@ forigas sian retan kaŝmemoron el disko dum eliro.</translation>
       <translation>Sesiokolapso</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kiam vi uzas tondujo, forigu ĉion post novlinio</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Dum nova serĉo, enfokusigu la ĉefan aŭ ŝprucfenestron eĉ se ĝi estas videbla</translation>
     </message>
@@ -3627,6 +3627,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Kreu plentekstan indekson kun paralelaj fadenoj </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Kiam vi uzas tondujo, forigu ĉion post novlinio</translation>
     </message>
   </context>
   <context>

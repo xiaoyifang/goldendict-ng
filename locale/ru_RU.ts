@@ -1200,6 +1200,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Индексирование...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Загрузка...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3420,10 +3424,6 @@ clears its network cache from disk during exit.</source>
       <translation>Держать свёрнутым в сеансе</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>При использовании буфера обмена игнорировать весь текст после символа перевода строки</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>При каждом поиске переводить фокус на окно программы даже если оно уже открыто</translation>
     </message>
@@ -3632,6 +3632,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Создать полнотекстовый индекс с параллельными потоками </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>При использовании буфера обмена удалите все после новой строки</translation>
     </message>
   </context>
   <context>

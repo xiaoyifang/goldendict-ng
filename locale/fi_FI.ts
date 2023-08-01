@@ -1199,6 +1199,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Indexing...</source>
       <translation>Indeksoidaan...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Ladataan...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3417,10 +3421,6 @@ tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
       <translation>Istunto romahtaa</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kun käytät leikepöydällä, nauhat kaiken jälkeen uudemman</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Tarkenna uudessa haussa pää- tai ponnahdusikkuna, vaikka se olisi&apos;s näkyvissä</translation>
     </message>
@@ -3627,6 +3627,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Luo kokotekstihakemisto rinnakkaisilla säikeillä </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Kun käytät leikepöytää, poista kaikki rivinvaihdon jälkeen</translation>
     </message>
   </context>
   <context>

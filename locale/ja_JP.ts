@@ -1199,6 +1199,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>インデックス作成中...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>読み込み中...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3416,10 +3420,6 @@ clears its network cache from disk during exit.</source>
       <translation>セッションを閉じる</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>クリップボードを使用する場合は、改行後にすべてを取り除きます</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>新しい検索では、たとえそれが表示されていてもメインまたはポップアップウィンドウにフォーカスします&apos;</translation>
     </message>
@@ -3626,6 +3626,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>並列スレッドで全文インデックスを作成する </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>クリップボードを使用する場合は、改行以降をすべて削除します</translation>
     </message>
   </context>
   <context>

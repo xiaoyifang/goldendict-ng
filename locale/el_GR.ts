@@ -1200,6 +1200,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Ευρετηρίαση...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Φόρτωση...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3418,10 +3422,6 @@ clears its network cache from disk during exit.</source>
       <translation>Σύμπτυξη συνεδρίας</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Όταν χρησιμοποιείτε το πρόχειρο, λουρίδα τα πάντα μετά από newline</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Σε μια νέα αναζήτηση, εστιάστε το κύριο ή αναδυόμενο παράθυρο ακόμα κι αν είναι ορατό&apos;s</translation>
     </message>
@@ -3629,6 +3629,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Δημιουργήστε ευρετήριο πλήρους κειμένου με παράλληλα νήματα </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Όταν χρησιμοποιείτε το πρόχειρο, αφαιρέστε τα πάντα μετά τη νέα γραμμή</translation>
     </message>
   </context>
   <context>

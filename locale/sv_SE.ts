@@ -1199,6 +1199,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Indexing...</source>
       <translation>Indexerar...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Läser in...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3419,10 +3423,6 @@ sin nätverkscache från disken under avslutning.</translation>
       <translation>Sessionen kollapsar</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>När du använder urklipp, remsa allt efter ny linje</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>På en ny sökning fokuserar du huvud- eller popup-fönstret även om det är synligt</translation>
     </message>
@@ -3629,6 +3629,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Skapa fulltextindex med parallella trådar </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>När du använder urklipp, ta bort allt efter nyrad</translation>
     </message>
   </context>
   <context>

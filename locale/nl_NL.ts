@@ -1202,6 +1202,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Indexing...</source>
       <translation>Indexeren...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Bezig met laden...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3416,10 +3420,6 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
       <translation>Sessie inklappen</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Als je klembord gebruikt, strip je alles na de nieuwe regel</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Focus bij een nieuwe zoekopdracht op het hoofd- of pop-upvenster, zelfs als het zichtbaar is</translation>
     </message>
@@ -3626,6 +3626,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Maak een volledige tekstindex met parallelle threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Als u het klembord gebruikt, stript u alles na de nieuwe regel</translation>
     </message>
   </context>
   <context>

@@ -1197,6 +1197,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>索引...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>正在加载...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3401,10 +3405,6 @@ clears its network cache from disk during exit.</source>
       <translation>搜索期间保持折叠</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>查询时，窗口获取焦点</translation>
     </message>
@@ -3610,6 +3610,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>使用并行线程创建全文索引 </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>使用剪贴板时，删除换行符后的所有内容</translation>
     </message>
   </context>
   <context>

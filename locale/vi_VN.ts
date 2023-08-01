@@ -1198,6 +1198,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Lập chỉ mục...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Đang tải...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3410,10 +3414,6 @@ sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translati
       <translation>Thu gọn phiên</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó hiển thị</translation>
     </message>
@@ -3620,6 +3620,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Tạo chỉ mục toàn văn với các luồng song song </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
     </message>
   </context>
   <context>
