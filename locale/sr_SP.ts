@@ -1199,6 +1199,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Индексирање...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3419,10 +3423,6 @@ clears its network cache from disk during exit.</source>
       <translation>Колапс сесије</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Када користите међуспремник, скините све после новог реда</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Приликом нове претраге фокусирајте главни или искачући прозор чак и ако је видљив</translation>
     </message>
@@ -3629,6 +3629,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Креирајте индекс пуног текста са паралелним нитима </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
