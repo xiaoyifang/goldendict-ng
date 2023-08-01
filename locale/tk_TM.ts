@@ -1200,7 +1200,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Adingüklenýär ...</translation>
     </message>
   </context>
   <context>
@@ -3629,7 +3629,7 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Paneli ulananyňyzda, täze setirden soň hemme zady aýyryň</translation>
     </message>
   </context>
   <context>
