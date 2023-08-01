@@ -1204,7 +1204,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Bezig met laden...</translation>
     </message>
   </context>
   <context>
@@ -3629,7 +3629,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Als u het klembord gebruikt, stript u alles na de nieuwe regel</translation>
     </message>
   </context>
   <context>
