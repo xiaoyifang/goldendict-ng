@@ -1198,6 +1198,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Indeksirlemek ...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3416,10 +3420,6 @@ clears its network cache from disk during exit.</source>
       <translation>Sessiýa ýykyldy</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Paneli ulananyňyzda, täze setirden soň hemme zady aýyryň</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Täze gözlegde, görünýän hem bolsa esasy ýa-da açylan penjire üns beriň</translation>
     </message>
@@ -3626,6 +3626,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Paralel sapaklar bilen doly tekst indeksini dörediň </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
