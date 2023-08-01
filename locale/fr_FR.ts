@@ -1205,7 +1205,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Chargement...</translation>
     </message>
   </context>
   <context>
@@ -3631,7 +3631,7 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Lorsque vous utilisez le presse-papiers, supprimez tout après la nouvelle ligne</translation>
     </message>
   </context>
   <context>
