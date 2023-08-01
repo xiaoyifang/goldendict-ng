@@ -1203,6 +1203,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>अनुक्रमणिका...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3407,10 +3411,6 @@ clears its network cache from disk during exit.</source>
       <translation>सत्र पतन</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>क्लिपबोर्ड का उपयोग करते समय, न्यूलाइन के बाद सब कुछ हटा दें</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>नई खोज पर, मुख्य या पॉपअप विंडो पर ध्यान केंद्रित करें, भले ही वह&apos;दिखाई दे</translation>
     </message>
@@ -3616,6 +3616,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>समानांतर धागों के साथ फुलटेक्स्ट इंडेक्स बनाएं </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
