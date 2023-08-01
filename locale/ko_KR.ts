@@ -1199,6 +1199,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>인덱싱 중...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3413,10 +3417,6 @@ clears its network cache from disk during exit.</source>
       <translation>세션 축소</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>클립보드를 사용할 때 개행 이후의 모든 항목 제거</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>새 검색에서 기본 또는 팝업 창은&apos;초가 보이더라도 초점을 맞춥니다.</translation>
     </message>
@@ -3623,6 +3623,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>병렬 스레드로 전체 텍스트 인덱스 생성 </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
