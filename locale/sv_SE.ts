@@ -1201,7 +1201,7 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Läser in...</translation>
     </message>
   </context>
   <context>
@@ -3632,7 +3632,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>När du använder urklipp, ta bort allt efter nyrad</translation>
     </message>
   </context>
   <context>
