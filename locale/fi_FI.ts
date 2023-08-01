@@ -1201,7 +1201,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Ladataan...</translation>
     </message>
   </context>
   <context>
@@ -3630,7 +3630,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Kun käytät leikepöytää, poista kaikki rivinvaihdon jälkeen</translation>
     </message>
   </context>
   <context>
