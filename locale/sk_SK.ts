@@ -1201,7 +1201,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Načítava...</translation>
     </message>
   </context>
   <context>
@@ -3623,7 +3623,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Pri použití schránky odstráňte všetko po novom riadku</translation>
     </message>
   </context>
   <context>
