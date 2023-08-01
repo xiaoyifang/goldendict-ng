@@ -1936,7 +1936,7 @@ from Stardict, Babylon and GLS dictionaries</string>
        <item>
         <widget class="QCheckBox" name="stripClipboard">
          <property name="text">
-          <string>When using clipboard,strip everything after newline</string>
+          <string>When using clipboard, strip everything after newline</string>
          </property>
         </widget>
        </item>
