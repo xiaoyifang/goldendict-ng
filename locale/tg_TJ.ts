@@ -1199,6 +1199,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Индексгузорӣ...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3417,10 +3421,6 @@ clears its network cache from disk during exit.</source>
       <translation>Барбод рафтани сессия</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Ҳангоми истифодаи буфер ҳама чизро пас аз сатри нав кашед</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро нигоҳ доред, ҳатто агар он намоён бошад</translation>
     </message>
@@ -3627,6 +3627,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Бо риштаҳои мувозӣ индекси пурраи матн эҷод кунед </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
