@@ -1201,6 +1201,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Indizierung …</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3413,10 +3417,6 @@ den Netzwerk-Cache beim Beenden von der Festplatte.</translation>
       <translation>Sitzungsabbruch</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Bei Verwendung der Zwischenablage alles nach Zeilenumbruch entfernen</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Fokussieren Sie bei einer neuen Suche das Haupt- oder Popup-Fenster, auch wenn es&apos;s sichtbar ist</translation>
     </message>
@@ -3622,6 +3622,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Erstellen Sie einen Volltextindex mit parallelen Threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
