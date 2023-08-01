@@ -1198,6 +1198,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Indeksuojama...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3415,10 +3419,6 @@ išvalo savo tinklo talpyklą iš disko.</translation>
       <translation>Sesijos žlugimas</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kai naudojate iškarpinę, ištrinkite viską po naujos eilutės</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Atlikdami naują paiešką, sufokusuokite pagrindinį arba iššokantįjį langą, net jei jis matomas&apos;</translation>
     </message>
@@ -3624,6 +3624,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Sukurkite viso teksto rodyklę su lygiagrečiomis gijomis </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
