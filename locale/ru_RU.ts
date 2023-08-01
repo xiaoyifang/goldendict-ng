@@ -1202,7 +1202,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Загрузка...</translation>
     </message>
   </context>
   <context>
@@ -3635,7 +3635,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>При использовании буфера обмена удалите все после новой строки</translation>
     </message>
   </context>
   <context>
