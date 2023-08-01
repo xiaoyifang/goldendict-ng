@@ -1199,6 +1199,10 @@ Reordene los grupos usando el mouse sobre las pestañas con los nombres de los m
       <source>Indexing...</source>
       <translation type="unfinished">Indexing...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3416,10 +3420,6 @@ clears its network cache from disk during exit.</translation>
       <translation type="unfinished">Session collapse</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Cuando se usa el portapapeles, clip todo después de la nueva línea</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>En una nueva búsqueda, enfoca la ventana principal o emergente incluso si está visible</translation>
     </message>
@@ -3626,6 +3626,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation type="unfinished">Create fulltext index with parallel threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
