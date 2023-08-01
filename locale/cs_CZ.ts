@@ -1199,6 +1199,10 @@ a školní ortografií v cyrilici)</translation>
       <source>Indexing...</source>
       <translation>Indexování...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3414,10 +3418,6 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
       <translation>Sbalování relace</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Při používání schránky odstraňte vše po nové lince</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Při novém hledání zaměřte hlavní nebo vyskakovací okno, i když je viditelné</translation>
     </message>
@@ -3624,6 +3624,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Vytvořte fulltextový index s paralelními vlákny </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
