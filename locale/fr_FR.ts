@@ -1203,6 +1203,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>Indexage...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3418,10 +3422,6 @@ efface le cache réseau du disque pendant la sortie.</translation>
       <translation>Réduire la session</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Lorsque vous utilisez le presse-papiers, supprimer tout après le retour à la ligne</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Lors d'une nouvelle recherche, focalisez la fenêtre principale ou popup même si elle&apos;s est visible</translation>
     </message>
@@ -3628,6 +3628,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Créer un index de texte intégral avec des threads parallèles </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
