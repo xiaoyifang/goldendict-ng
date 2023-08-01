@@ -1198,6 +1198,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Indexing...</source>
       <translation>نمایه سازی...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3414,10 +3418,6 @@ clears its network cache from disk during exit.</source>
       <translation>فروپاشی جلسه</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
     </message>
@@ -3624,6 +3624,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>نمایه تمام متن را با رشته های موازی ایجاد کنید </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
