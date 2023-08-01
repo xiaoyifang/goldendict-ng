@@ -1201,7 +1201,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Carregando...</translation>
     </message>
   </context>
   <context>
@@ -3635,7 +3635,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Ao usar a área de transferência, retire tudo após a nova linha</translation>
     </message>
   </context>
   <context>
