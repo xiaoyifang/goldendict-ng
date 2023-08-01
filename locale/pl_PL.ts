@@ -1199,6 +1199,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <source>Indexing...</source>
       <translation>Indeksowanie...</translation>
     </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
   </context>
   <context>
     <name>Language</name>
@@ -3416,10 +3420,6 @@ czyści swoją pamięć podręczną z dysku podczas wyjścia.</translation>
       <translation>Zwinięcie sesji</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Gdy używasz schowka,usuń wszystko po nowej linii</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Podczas nowego wyszukiwania zaznacz okno główne lub wyskakujące, nawet jeśli jest widoczne</translation>
     </message>
@@ -3626,6 +3626,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Utwórz indeks pełnotekstowy z równoległymi wątkami </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
   </context>
   <context>
