@@ -61,7 +61,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     QString root = reply->url().scheme() + "://" + reply->url().host();
     QString base = root + reply->url().path();
 
-    QRegularExpression baseTag( R"EOF(<base\s+href="(.*?)".*?>)EOF",
+    QRegularExpression baseTag( R"EOF(<base\s+href=["'](.*?)["'].*?>)EOF",
                                 QRegularExpression::CaseInsensitiveOption
                                   | QRegularExpression::DotMatchesEverythingOption );
 
@@ -83,7 +83,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 
     QRegularExpression headTag( R"(<head\b.*?>)",
                                 QRegularExpression::CaseInsensitiveOption
-                                | QRegularExpression::DotMatchesEverythingOption );
+                                  | QRegularExpression::DotMatchesEverythingOption );
     auto match = headTag.match( articleString );
     if ( match.hasMatch() ) {
       articleString.insert( match.capturedEnd(), baseTagHtml );
@@ -92,7 +92,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     else {
       // the html contain no head element
       // just insert at the beginning of the html ,and leave it at the mercy of browser(chrome webengine)
-      articleString.insert( match.capturedEnd(), baseTagHtml );
+      articleString.insert( 0, baseTagHtml );
       articleString.insert( 0, depressionFocus );
     }
 
