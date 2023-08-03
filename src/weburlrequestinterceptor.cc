@@ -9,8 +9,7 @@ WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
 }
 void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
-
-  info.setHttpHeader( "origin", "*" );
+  info.setHttpHeader( "origin", info.requestUrl().url().toUtf8() );
   info.setHttpHeader( "referer", info.requestUrl().url().toUtf8() );
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites
        && Utils::isExternalLink( info.requestUrl() ) ) {
