@@ -52,7 +52,7 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true
       - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@v1
+        uses: SonarSource/sonarcloud-github-c-cpp@v2
       - name: Run build-wrapper
         run: |
           qmake CONFIG+=release CONFIG+=zim_support   CONFIG+=chinese_conversion_support
