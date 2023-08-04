@@ -50,7 +50,9 @@ jobs:
 
           sudo apt install nodejs
           node -v
-          sudo apt install -y openjdk-17-jdk
+          sudo add-apt-repository ppa:linuxuprising/java
+          sudo apt update
+          sudo apt install oracle-java17-installer --install-recommends
           java -version
       - uses: actions/checkout@v3
         with:
