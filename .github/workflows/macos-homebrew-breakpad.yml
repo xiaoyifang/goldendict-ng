@@ -121,9 +121,9 @@ jobs:
           macdeployqt ${targetName}.app -no-strip -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
-          otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
+          # otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
           ls -al /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib
-          cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
+          # cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
 
           codesign --force --deep -s - GoldenDict.app
           
