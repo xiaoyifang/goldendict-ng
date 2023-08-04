@@ -17,10 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
-    steps:
-      - uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'              
+    steps:            
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -29,7 +26,6 @@ jobs:
           
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
-          setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies
         run: |
@@ -67,4 +63,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
+          sudo sonar-scanner --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
