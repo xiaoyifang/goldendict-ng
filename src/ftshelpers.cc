@@ -162,6 +162,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     db.compact( dict->ftsIndexName() );
 
+    db.close();
+
     Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
   }
   catch ( Xapian::Error & e ) {
