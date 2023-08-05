@@ -662,8 +662,6 @@ private:
 
   string convert( string const & in_data, RefEntry const & entry );
 
-  void removeDirectory( QString const & directory );
-
   friend class SlobArticleRequest;
   friend class SlobResourceRequest;
 };
@@ -717,21 +715,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
 SlobDictionary::~SlobDictionary()
 {
   if ( !texCachePath.isEmpty() )
-    removeDirectory( texCachePath );
-}
-
-void SlobDictionary::removeDirectory( QString const & directory )
-{
-  QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
+    Utils::Fs::removeDirectory( texCachePath );
 }
 
 void SlobDictionary::loadIcon() noexcept

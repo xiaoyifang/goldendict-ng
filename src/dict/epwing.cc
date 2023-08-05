@@ -191,8 +191,6 @@ private:
 
   void createCacheDirectory();
 
-  void removeDirectory( QString const & directory );
-
   QString const & getImagesCacheDir()
   {
     return eBook.getImagesCacheDir();
@@ -257,7 +255,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
 
 EpwingDictionary::~EpwingDictionary()
 {
-  removeDirectory( cacheDirectory );
+  Utils::Fs::removeDirectory( cacheDirectory );
 }
 
 void EpwingDictionary::loadIcon() noexcept
@@ -277,20 +275,6 @@ void EpwingDictionary::loadIcon() noexcept
   }
 
   dictionaryIconLoaded = true;
-}
-
-void EpwingDictionary::removeDirectory( QString const & directory )
-{
-  QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
 }
 
 void EpwingDictionary::loadArticle(
