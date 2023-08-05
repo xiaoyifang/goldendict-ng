@@ -189,8 +189,6 @@ private:
 
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword, string & articleText );
 
-  void createCacheDirectory();
-
   QString const & getImagesCacheDir()
   {
     return eBook.getImagesCacheDir();
