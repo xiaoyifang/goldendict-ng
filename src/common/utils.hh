@@ -332,7 +332,9 @@ char separator();
 
 /// Returns the name part of the given filename.
 string basename( string const & );
+void removeDirectory( QString const & directory );
 
+void removeDirectory( string const & directory );
 } // namespace Fs
 
 } // namespace Utils
