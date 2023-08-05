@@ -11,13 +11,24 @@ option(WITH_ZIM "enable zim support" ON)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
+## Change binary & resources folder to parallel install with original GD.
+## This flag should be avoided because it leads to small regressions:
+## 1. There are personal scripts assuming the binary name to be "goldendict" -> require everyone to change the name in their script
+## 2. There are icon themes that assuming the icon name to be "goldendict" -> invalidate the GD icon when using a icon theme
+## 3. There are dictionary packages that install files to "/usr/share/goldendict/content" -> nullify the auto dict discovery
+option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
+
 include(FeatureSummary)
 
 project(goldendict-ng
         VERSION 23.07.25
         LANGUAGES CXX C)
 
-set(GOLDENDICT "goldendict") # binary/executable name
+if (NOT USE_ALTERNATIVE_NAME)
+    set(GOLDENDICT "goldendict") # binary/executable name
+else ()
+    set(GOLDENDICT "goldendict-ng")
+endif ()
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -96,11 +107,6 @@ endif ()
 
 # Note: used as c++ string thus need surrounding " "
 add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
-
-if (LINUX)
-    # see: config.cc -> getProgramDataDir
-    add_compile_definitions(PROGRAM_DATA_DIR="${CMAKE_INSTALL_PREFIX}/share/goldendict")
-endif ()
 
 target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::Xml
@@ -197,9 +203,24 @@ if (LINUX OR BSD)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.desktop DESTINATION share/applications)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml DESTINATION share/metainfo)
 
-    install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
+    if (NOT USE_ALTERNATIVE_NAME)
+        # see: config.cc -> getProgramDataDir
+        add_compile_definitions(PROGRAM_DATA_DIR="${CMAKE_INSTALL_PREFIX}/share/goldendict")
+        install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps)
+        install(FILES ${qm_files} DESTINATION share/goldendict/locale)
+    else ()
+        add_compile_definitions(PROGRAM_DATA_DIR="${CMAKE_INSTALL_PREFIX}/share/goldendict-ng")
+        install(FILES ${CMAKE_SOURCE_DIR}/redist/icons/goldendict.png DESTINATION share/pixmaps
+                RENAME goldendict-ng.png)
+        install(FILES ${qm_files} DESTINATION share/goldendict-ng/locale)
 
-    install(FILES ${qm_files} DESTINATION share/goldendict/locale)
+        block() # patch the desktop file to adapt the binary & icon file's name change
+            file(READ "${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.desktop" DESKTOP_FILE_CONTENT)
+            string(REGEX REPLACE "\nIcon=goldendict\n" "\nIcon=goldendict-ng\n" DESKTOP_FILE_CONTENT "${DESKTOP_FILE_CONTENT}")
+            string(REGEX REPLACE "\nExec=goldendict %u\n" "\nExec=goldendict-ng %u\n" DESKTOP_FILE_CONTENT "${DESKTOP_FILE_CONTENT}")
+            file(WRITE "${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.desktop" "${DESKTOP_FILE_CONTENT}")
+        endblock()
+    endif ()
 endif ()
 
 qt_finalize_target(${GOLDENDICT})
