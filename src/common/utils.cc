@@ -68,4 +68,23 @@ std::string basename( std::string const & str )
   return std::string( str, x + 1 );
 }
 
+void removeDirectory( QString const & directory )
+{
+  QDir dir( directory );
+  Q_FOREACH ( QFileInfo info,
+              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
+    if ( info.isDir() )
+      removeDirectory( info.absoluteFilePath() );
+    else
+      QFile::remove( info.absoluteFilePath() );
+  }
+
+  dir.rmdir( directory );
+}
+
+void removeDirectory( string const & directory )
+{
+  removeDirectory( QString::fromStdString( directory ) );
+}
+
 } // namespace Utils::Fs
