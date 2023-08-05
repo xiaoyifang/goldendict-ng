@@ -287,8 +287,6 @@ private:
   void replaceStyleInHtml( QString & id, QString & article );
   void replaceFontLinks( QString & id, QString & article );
 
-  void removeDirectory( QString const & directory );
-
   friend class MdxArticleRequest;
   friend class MddResourceRequest;
   void loadResourceFile( const wstring & resourceName, vector< char > & data );
@@ -335,7 +333,7 @@ MdxDictionary::~MdxDictionary()
 
   dictFile.close();
 
-  removeDirectory( cacheDirName );
+  Utils::Fs::removeDirectory( cacheDirName );
 }
 
 //////// MdxDictionary::deferredInit()
@@ -1170,20 +1168,6 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     if ( mddResource->loadFile( newResourceName, data ) )
       break;
   }
-}
-
-void MdxDictionary::removeDirectory( QString const & directory )
-{
-  QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
 }
 
 static void addEntryToIndex( QString const & word, uint32_t offset, IndexedWords & indexedWords )

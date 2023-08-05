@@ -71,15 +71,7 @@ std::string basename( std::string const & str )
 void removeDirectory( QString const & directory )
 {
   QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
+  dir.removeRecursively();
 }
 
 void removeDirectory( string const & directory )
