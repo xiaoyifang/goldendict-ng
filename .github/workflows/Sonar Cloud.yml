@@ -17,10 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
-    steps:
-      - uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'              
+    steps:            
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -29,7 +26,6 @@ jobs:
           
           #serialport linuxdeploy need serialport to work.
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
-          setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies
         run: |
@@ -47,10 +43,16 @@ jobs:
           sudo make install
           cd ..
           sudo apt-get install libzim-dev
+          
+          sudo apt install openjdk-17-jdk openjdk-17-jre
+          java -version
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18          
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
       - name: Run build-wrapper
