@@ -30,14 +30,10 @@ else ()
     set(GOLDENDICT "goldendict-ng")
 endif ()
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#### Importing Libraries
+#### Qt
 
 find_package(Qt6 REQUIRED COMPONENTS
         Concurrent
@@ -51,7 +47,10 @@ find_package(Qt6 REQUIRED COMPONENTS
         TextToSpeech
         )
 
-#### Compile time files and preprocessor flags
+qt_standard_project_setup() # availiable after find_package(Qt6 .... Core
+set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
+
+#### Things required during configuration
 
 block() # generate version.txt
     string(TIMESTAMP build_time)
@@ -67,6 +66,12 @@ block() # generate version.txt
     endif ()
 endblock()
 
+if (WIN32)
+    # Binaries output dir for windows. The default ${CMAKE_BINARY_DIR} is too messy, use subfolder instead
+    # So that we can directly use windeployqt inside the output folder and obtain a redistributable GD
+    set(GD_WIN_OUTPUT_DIR ${CMAKE_BINARY_DIR}/${GOLDENDICT})
+endif ()
+
 #### Sources Files
 
 # auto discovery of ui files https://cmake.org/cmake/help/v3.26/prop_tgt/AUTOUIC_SEARCH_PATHS.html
@@ -81,18 +86,18 @@ if (APPLE)
     file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
 endif ()
 
+if (WIN32)
+    set(WINDOWS_ICON_RC icons/programicon.rc)
+endif ()
+
 set(QSINGLEAPP_SOURCE_FILES
         thirdparty/qtsingleapplication/src/qtlocalpeer.cpp
         thirdparty/qtsingleapplication/src/qtlocalpeer.h
         thirdparty/qtsingleapplication/src/qtsingleapplication.cpp
         thirdparty/qtsingleapplication/src/qtsingleapplication.h
-        )
+)
 
-if(WIN32)
-    qt_add_executable(${GOLDENDICT} WIN32 MANUAL_FINALIZATION icons/programicon.rc)
-else()
-    qt_add_executable(${GOLDENDICT} MANUAL_FINALIZATION)
-endif()
+qt_add_executable(${GOLDENDICT})
 
 target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
@@ -101,7 +106,9 @@ target_sources(${GOLDENDICT} PRIVATE
         src/stylesheets/css.qrc
         ${ALL_SOURCE_FILES}
         ${MACOS_SOURCE_FILES}
-        ${QSINGLEAPP_SOURCE_FILES})
+        ${QSINGLEAPP_SOURCE_FILES}
+        ${WINDOWS_ICON_RC}
+)
 
 if (NOT USE_SYSTEM_FMT)
     target_sources(${GOLDENDICT} PRIVATE thirdparty/fmt/format.cc)
@@ -177,22 +184,20 @@ endif ()
 
 #### add translations
 
-install(TARGETS ${GOLDENDICT}
-        BUNDLE DESTINATION .
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${GOLDENDICT})
-
 # include all *ts files under locale
 file(GLOB TRANS_FILES "locale/*.ts")
 
-# Put generated files to output dir's locale
-set_source_files_properties(${TRANS_FILES}
-        PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
-
+if (WIN32)
+    # Put generated files to output dir's locale
+    set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${GD_WIN_OUTPUT_DIR}/locale")
+else ()
+    set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
+endif ()
 # a wrapper over qt_add_lupdate and  qt_add_lrelease
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
         QM_FILES_OUTPUT_VARIABLE qm_files)
 
-#### installation
+#### installation or assemble redistribution
 
 if (APPLE)
     set_target_properties(${GOLDENDICT} PROPERTIES
@@ -204,6 +209,7 @@ if (APPLE)
 endif ()
 
 if (LINUX OR BSD)
+    install(TARGETS ${GOLDENDICT})
     install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.desktop DESTINATION share/applications)
     install(FILES ${CMAKE_SOURCE_DIR}/redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml DESTINATION share/metainfo)
 
@@ -227,6 +233,25 @@ if (LINUX OR BSD)
     endif ()
 endif ()
 
-qt_finalize_target(${GOLDENDICT})
+if (WIN32)
+    set_target_properties(${GOLDENDICT}
+            PROPERTIES
+            WIN32_EXECUTABLE TRUE
+            RUNTIME_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
+    )
+
+    add_custom_target(windeploy
+            COMMENT "Deploy everything to the output dir"
+            DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
+            COMMAND windeployqt --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
+            COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
+            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
+            COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
+            WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
+    )
+
+    #TODO: use CPack to make the output folder as NSIS installer
+endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
