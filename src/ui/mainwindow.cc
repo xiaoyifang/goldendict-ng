@@ -769,7 +769,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
   history.enableAdd( cfg.preferences.storeHistory );
 
-  translateLine->setFocus();
+  // restore should be called after all UI initialized but not necessarily after show()
+  // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
+  // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
+  if ( cfg.mainWindowState.size() && !cfg.resetState )
+    restoreState( cfg.mainWindowState );
+  if ( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
+
+  // Show window unless it is configured not to
+  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
+    show();
+    focusTranslateLine();
+  }
 
   // Scanpopup related
   scanPopup =
@@ -860,12 +872,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     on_alwaysOnTop_triggered( true );
   }
 
-  // Only show window initially if it wasn't configured differently
-  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
-    show();
-    focusTranslateLine();
-  }
-
   if ( cfg.preferences.hideMenubar ) {
     toggleMenuBarTriggered( false );
   }
@@ -910,12 +916,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                           + " \"%1\"" );
   urlRegistry.endGroup();
 #endif
-
-  // restore should be called after all UI initialized.
-  if ( cfg.mainWindowState.size() && !cfg.resetState )
-    restoreState( cfg.mainWindowState );
-  if ( cfg.mainWindowGeometry.size() )
-    restoreGeometry( cfg.mainWindowGeometry );
 
   useSmallIconsInToolbarsTriggered();
 
