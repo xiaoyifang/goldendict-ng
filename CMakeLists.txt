@@ -88,7 +88,11 @@ set(QSINGLEAPP_SOURCE_FILES
         thirdparty/qtsingleapplication/src/qtsingleapplication.h
         )
 
-qt_add_executable(${GOLDENDICT} MANUAL_FINALIZATION)
+if(WIN32)
+    qt_add_executable(${GOLDENDICT} WIN32 MANUAL_FINALIZATION icons/programicon.rc)
+else()
+    qt_add_executable(${GOLDENDICT} MANUAL_FINALIZATION)
+endif()
 
 target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
