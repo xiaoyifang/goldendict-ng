@@ -2,11 +2,7 @@
 
 GoldenDict offered a functionality to translate the word under cursor on Windows in the past, but the technique used there is old and does not work crossplatformly.
 
-However, any OCR program that allow you to set "after capturing action" can be easily used in conjunction with GoldenDict.
-
-## Capture2Text release
-
-[Capture2Text Download](https://github.com/xiaoyifang/Capture2Text/releases/tag/prerelease-20220806)
+However, any OCR program that allows you to set "after capturing action" can be easily used in conjunction with GoldenDict.
 
 A few examples are provided below, but there are many options:
 
@@ -15,6 +11,8 @@ A few examples are provided below, but there are many options:
 Capture2Text can call executable after capturing, and you can set the executable to GoldenDict.
 
 Detailed usage document: [Capture2Text](https://capture2text.sourceforge.net/)
+
+[Capture2Text Download](https://github.com/xiaoyifang/Capture2Text/releases/tag/prerelease-20220806)
 
 For example, change the Output action `Call Executable` to `path_to_the_GD_executable\GoldenDict.exe "${capture}"`
 
