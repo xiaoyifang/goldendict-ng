@@ -20,6 +20,7 @@
 #include "sptr.hh"
 #include "utils.hh"
 #include "wstring.hh"
+#include <QtGlobal>
 
 /// Abstract dictionary-related stuff
 namespace Dictionary {
@@ -407,7 +408,8 @@ public:
     auto total = getArticleCount();
     if ( total == 0 )
       return 0;
-    return indexedFtsDoc * 100 / total;
+    int progress = (int)indexedFtsDoc * 100 / total;
+    return qMin( progress, 100 );
   }
 
   /// Returns the number of words in the dictionary. This can be equal to
