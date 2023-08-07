@@ -4,6 +4,10 @@ GoldenDict offered a functionality to translate the word under cursor on Windows
 
 However, any OCR program that allow you to set "after capturing action" can be easily used in conjunction with GoldenDict.
 
+## Capture2Text release
+
+[Capture2Text Download](https://github.com/xiaoyifang/Capture2Text/releases/tag/prerelease-20220806)
+
 A few examples are provided below, but there are many options:
 
 ## Capture2Text
