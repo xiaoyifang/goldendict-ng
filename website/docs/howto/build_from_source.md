@@ -53,28 +53,30 @@ cmake --install ./build_dir/
 
 Append `-D{flag_names}=ON/OFF` to cmake's config step
 
-Available flags:
-
-* `WITH_FFMPEG_PLAYER` "Enable support for FFMPEG player"
-* `WITH_EPWING_SUPPORT` "Enable epwing support"
-* `WITH_XAPIAN` "enable Xapian support"
-* `WITH_ZIM` "enable zim support"
-
-* `USE_SYSTEM_FMT` "use system fmt instead of bundled one"
-* `USE_SYSTEM_TOML` "use system toml++ instead of bundled one"
+Available flags can be found on the top of `CMakeLists.txt`
 
 ### Windows
 
-Install Qt6(msvc) through the standard installer
+Install Qt6(msvc) through the standard installer and pass Qt's path to CMake
 
-Pass those parameters to cmake, the path should be changed to your actual installation paths
 ```
 -DCMAKE_PREFIX_PATH=F:\Qt\6.4.1\msvc2019_64
 ```
 
+The built artifacts will end up in `build_dir/goldendict`
+
+To run the built `goldendict.exe` directly, you have to add `F:\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable
+
+To have a redistributable goldendict (runable on someone else's computer by just copying the folder), you can build the deployment target which will copy necessary files to the folder
+
+```
+cmake --build . --target windeploy
+```
+
+The `build_dir/goldendict` will be ready to share with others.
+
 Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related `.dll` and other necessary files automatically.
 
-Due to the `winlibs` are built on Release mode, there are troubles to build GoldenDict on Debug mode.
 
 ### macOS
 
