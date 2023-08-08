@@ -234,6 +234,7 @@ if (LINUX OR BSD)
 endif ()
 
 if (WIN32)
+    find_program(TOOL_WINDEPLOYQT NAMES windeployqt PATHS "${Qt6_ROOT}/tools/qt6")
     set_target_properties(${GOLDENDICT}
             PROPERTIES
             WIN32_EXECUTABLE TRUE
@@ -244,7 +245,7 @@ if (WIN32)
     add_custom_target(windeploy
             COMMENT "Deploy everything to the output dir"
             DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
-            COMMAND windeployqt --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
+            COMMAND ${TOOL_WINDEPLOYQT} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
             COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
             COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
             COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
