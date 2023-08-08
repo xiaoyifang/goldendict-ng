@@ -234,7 +234,7 @@ if (LINUX OR BSD)
 endif ()
 
 if (WIN32)
-    find_program(TOOL_WINDEPLOYQT NAMES windeployqt PATHS "${Qt6_ROOT}/tools/qt6")
+    find_program(TOOL_WINDEPLOYQT NAMES windeployqt PATHS "${Qt6_ROOT}/bin")
     set_target_properties(${GOLDENDICT}
             PROPERTIES
             WIN32_EXECUTABLE TRUE
