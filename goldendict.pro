@@ -553,14 +553,11 @@ HEADERS += src/common/wildcard.hh
 SOURCES += src/common/wildcard.cc
 
 
+LIBS += -llzma
+
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
-  LIBS += -llzma -lzim
-
-    win32{
-      Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/
-      Release: LIBS+= -L$$PWD/winlibs/lib/
-    }
+  LIBS += -lzim
 }
 
 CONFIG( no_epwing_support ) {
