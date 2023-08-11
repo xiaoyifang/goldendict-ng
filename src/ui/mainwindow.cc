@@ -165,7 +165,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
-  blockUpdateWindowTitle( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsDlg( nullptr ),
@@ -734,8 +733,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setWindowTitle( "GoldenDict-ng" );
 
-  blockUpdateWindowTitle = true;
-
   // Create tab list menu
   createTabList();
 
@@ -763,7 +760,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addNewTab();
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
-  blockUpdateWindowTitle = true;
   view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
   history.enableAdd( cfg.preferences.storeHistory );
 
@@ -1945,9 +1941,7 @@ void MainWindow::updateWindowTitle()
   if ( view ) {
     QString str = view->getTitle();
     if ( !str.isEmpty() ) {
-      if ( !blockUpdateWindowTitle )
-        setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
-      blockUpdateWindowTitle = false;
+      setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
     }
   }
 }
