@@ -335,11 +335,14 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 QString Class::getAbbrName( QString const & text )
 {
   if ( text.isEmpty() )
-    return QString();
+    return {};
   //remove whitespace,number,mark,puncuation,symbol
   QString simplified = text;
   simplified.remove(
-    QRegularExpression( "[\\p{Z}\\p{N}\\p{M}\\p{P}\\p{S}]", QRegularExpression::UseUnicodePropertiesOption ) );
+    QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
+
+  if ( simplified.isEmpty() )
+    return {};
   int index = qHash( simplified ) % simplified.size();
 
   QString abbrName;
