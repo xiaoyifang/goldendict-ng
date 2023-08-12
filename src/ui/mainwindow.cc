@@ -678,6 +678,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
 
+  this->installEventFilter( this );
+
   ui.translateLine->installEventFilter( this );
   translateBox->translateLine()->installEventFilter( this );
 
