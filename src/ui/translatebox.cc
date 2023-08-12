@@ -79,9 +79,7 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & _words )
 {
-  disconnect( completer,
-           0,
-           translate_line,0 );
+  disconnect( completer, 0, translate_line, 0 );
   auto model = (QStringListModel *)( completer->model() );
 
   model->setStringList( _words );
