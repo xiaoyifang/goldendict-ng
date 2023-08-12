@@ -87,7 +87,8 @@ void TranslateBox::setModel( QStringList & _words )
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::activated ),
            translate_line,
-           [ & ]( const QString & ) {
+           [ & ]( const QString & text) {
+             translate_line->setText(text);
              emit translate_line->returnPressed();
            } );
 }
