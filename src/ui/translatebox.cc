@@ -79,9 +79,19 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & _words )
 {
+  disconnect( completer,
+           0,
+           translate_line,0 );
   auto model = (QStringListModel *)( completer->model() );
 
   model->setStringList( _words );
+
+  connect( completer,
+           QOverload< const QString & >::of( &QCompleter::activated ),
+           translate_line,
+           [ & ]( const QString & ) {
+             emit translate_line->returnPressed();
+           } );
 }
 
 void TranslateBox::showPopup()

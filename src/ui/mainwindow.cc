@@ -2396,10 +2396,7 @@ void MainWindow::respondToTranslationRequest( QString const & word, bool checkMo
         activateWindow();
     }
 
-    auto view = getCurrentArticleView();
-
-    view->activateWindow();
-    view->focus();
+    focusArticleView();
   }
 }
 
@@ -2586,7 +2583,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
             activateWindow();
         }
 
-        getCurrentArticleView()->focus();
+        focusArticleView();
 
         return cfg.preferences.searchInDock;
       }
