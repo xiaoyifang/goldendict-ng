@@ -82,6 +82,9 @@ jobs:
           find /usr/local -name libicudata.72.dylib 
           find /opt -name libzstd.1.dylib 
           find /usr/local -name libzstd.1.dylib 
+          brew install dylibbundler
+          find /opt -name liblzma.5.dylib
+          find /usr/local -name liblzma.5.dylib
       - name: version-file
         shell: bash
         env:
@@ -123,14 +126,22 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
-          otool -L GoldenDict.app/Contents/Frameworks/libzstd.1.dylib
-          cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
-          cp -r /usr/local/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
+          cp -r /usr/local/Cellar/icu4c/7*/lib/libicu*.dylib  GoldenDict.app/Contents/Frameworks
+          cp -r /usr/local/Cellar/zstd/1.5.5/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
+          # dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libzim.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
           install_name_tool -change "@loader_path/../../../../opt/zstd/lib/libzstd.1.dylib" "@executable_path/../Frameworks/libzstd.1.dylib" GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           install_name_tool -change "@loader_path/../../../../opt/xz/lib/liblzma.5.dylib" "@executable_path/../Frameworks/liblzma.5.dylib" GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           install_name_tool -change "@loader_path/../../../../opt/xapian/lib/libxapian.30.dylib" "@executable_path/../Frameworks/libxapian.30.dylib" GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           install_name_tool -change "@loader_path/../../../../opt/icu4c/lib/libicui18n.73.dylib" "@executable_path/../Frameworks/libicui18n.73.dylib" GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           install_name_tool -change "@loader_path/../../../../opt/icu4c/lib/libicuuc.73.dylib" "@executable_path/../Frameworks/libicuuc.73.dylib" GoldenDict.app/Contents/Frameworks/libzim.8.dylib
+          
+
+          dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libicui18n.73.dylib -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -x GoldenDict.app/Contents/Frameworks/libicuuc.73.dylib  -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
+
+          otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
+          otool -L GoldenDict.app/Contents/Frameworks/libxapian.30.dylib
+          otool -L GoldenDict.app/Contents/Frameworks/liblzma.5.dylib
+
           codesign --force --deep -s - GoldenDict.app
           
           ls -al GoldenDict.app/Contents/Frameworks
