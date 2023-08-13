@@ -205,7 +205,7 @@ jobs:
         run: |
           cp tools/nsis/GoldenDict.nsi ${{ steps.package.outputs.packageName }}/
       - name: Create installer
-        uses: joncloud/makensis-action@v3.6
+        uses: joncloud/makensis-action@v4
         with:
           arguments: "/V3"
           script-file: ${{ steps.package.outputs.packageName }}/GoldenDict.nsi
