@@ -112,18 +112,18 @@ jobs:
           previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
-          echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)"
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: Set outputs
         id: vars
         run: |
-          echo "::set-output name=sha_short::$(git rev-parse --short=8 HEAD)"    
-          echo "::set-output name=release_date::$(date +'%Y%m%d')"    
-          echo "::set-output name=release_time::$(date +'%H%M%S')"  
-          echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
-          echo "::set-output name=release_hm::$(date +'%y%m%d')"  
-          echo "::set-output name=appname::$(ls *.AppImage*)"
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"   >> $GITHUB_OUTPUT
+          echo "appname=$(ls *.AppImage*)" >> $GITHUB_OUTPUT
 
       - name: "Build Changelog"
         id: build_changelog
