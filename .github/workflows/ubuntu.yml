@@ -111,7 +111,8 @@ jobs:
           echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
           echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
           echo "release_hm=$(date +'%y%m%d')"   >> $GITHUB_OUTPUT
-          echo "appname=$(ls *.AppImage*)" >> $GITHUB_OUTPUT
+          appname=$(ls *.AppImage* -1|head -n1)
+          echo "appname=$appname" >> $GITHUB_OUTPUT
 
       - name: "Build Changelog"
         id: build_changelog
