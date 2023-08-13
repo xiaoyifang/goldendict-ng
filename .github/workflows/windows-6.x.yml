@@ -173,7 +173,8 @@ jobs:
         env:
           archiveName: GoldenDict-Windows.${{ steps.vars.outputs.sha_short }}-${{ steps.vars.outputs.release_time }}
         run: |
-          echo "packageName=${env:archiveName}"  >> $GITHUB_OUTPUT
+          packageName=${env:archiveName}
+          echo "packageName=$packageName"  >> $GITHUB_OUTPUT
 
       - name: upload goldendict.exe only
         uses: svenstaro/upload-release-action@v2
