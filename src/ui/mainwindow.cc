@@ -1208,17 +1208,19 @@ void MainWindow::commitData()
     if ( QAbstractNetworkCache * cache = articleNetMgr.cache() )
       cache->clear();
   }
-  if ( cfg.preferences.removeInvalidIndexOnExit ) {
+
+  //if the dictionaries is empty ,large chance that the config has corrupt.
+  if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     QDir const dir( Config::getIndexDir() );
 
     QFileInfoList const entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
 
-    for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
-      QString const fullName = i->fileName();
+    for ( auto & file : entries ) {
+      QString const fileName = file.fileName();
 
       //remove both normal index and fts index.
-      if ( !dictMap.contains( fullName.toStdString() ) ) {
-        auto filePath = i->absoluteFilePath();
+      if ( !dictMap.contains( fileName.toStdString() ) ) {
+        auto filePath = file.absoluteFilePath();
         qDebug() << "remove invalid index files & fts dirs";
 
         QFile::remove( filePath );
