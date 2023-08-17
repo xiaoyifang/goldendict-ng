@@ -1209,12 +1209,12 @@ void MainWindow::commitData()
       cache->clear();
   }
   if ( cfg.preferences.removeInvalidIndexOnExit ) {
-    QDir dir( Config::getIndexDir() );
+    QDir const dir( Config::getIndexDir() );
 
-    QFileInfoList entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
+    QFileInfoList const entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
 
     for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
-      QString fullName = i->fileName();
+      QString const fullName = i->fileName();
 
       //remove both normal index and fts index.
       if ( !dictMap.contains( fullName.toStdString() ) ) {
