@@ -402,6 +402,7 @@ struct Preferences
   bool hideGoldenDictHeader;
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
+  bool removeInvalidIndexOnExit = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

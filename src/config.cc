@@ -1000,6 +1000,11 @@ Class load()
       c.preferences.clearNetworkCacheOnExit =
         ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
 
+
+    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() )
+      c.preferences.removeInvalidIndexOnExit =
+        ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
+
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
 
@@ -1978,6 +1983,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "clearNetworkCacheOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.clearNetworkCacheOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "removeInvalidIndexOnExit" );
+    opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );
