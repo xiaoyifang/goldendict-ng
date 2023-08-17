@@ -346,7 +346,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
 
   //Misc
-  ui.removeInvalidIndexOnExit->setChecked(p.removeInvalidIndexOnExit);
+  ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
 
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
