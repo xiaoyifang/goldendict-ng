@@ -1204,9 +1204,32 @@ void MainWindow::commitData( QSessionManager & )
 
 void MainWindow::commitData()
 {
-  if ( cfg.preferences.clearNetworkCacheOnExit )
+  if ( cfg.preferences.clearNetworkCacheOnExit ) {
     if ( QAbstractNetworkCache * cache = articleNetMgr.cache() )
       cache->clear();
+  }
+  if ( cfg.preferences.removeInvalidIndexOnExit ) {
+    QDir dir( Config::getIndexDir() );
+
+    QFileInfoList entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
+
+    for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
+      QString fullName = i->fileName();
+
+      //remove both normal index and fts index.
+      if ( !dictMap.contains( fullName.toStdString() ) ) {
+        auto filePath = i->absoluteFilePath();
+        qDebug() << "remove invalid index files & fts dirs";
+
+        QFile::remove( filePath );
+        QDir d( filePath + "_FTS_x" );
+        if ( d.exists() ) {
+          d.removeRecursively();
+        }
+      }
+    }
+  }
+
 
   try {
     // Save MainWindow state and geometry

@@ -345,6 +345,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.maxNetworkCacheSize->setValue( p.maxNetworkCacheSize );
   ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
 
+  //Misc
+  ui.removeInvalidIndexOnExit->setChecked(p.removeInvalidIndexOnExit);
+
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
   ui.addonStyles->setCurrentStyle( p.addonStyle );
@@ -504,6 +507,8 @@ Config::Preferences Preferences::getPreferences()
   p.hideGoldenDictHeader          = ui.hideGoldenDictHeader->isChecked();
   p.maxNetworkCacheSize           = ui.maxNetworkCacheSize->value();
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
+
+  p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
