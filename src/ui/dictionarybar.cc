@@ -233,32 +233,15 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return; // Some weird action, not our button
 
   if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
-    // Solo mode -- either use the dictionary exclusively, or toggle
-    // back all dictionaries if we do that already.
+    // Ctrl ,select single dictionary
+    // Shift,toggle back all dictionaries
 
-    // Are we solo already?
-
-    bool isSolo = true;
-
-    // For solo, all dictionaries must be unchecked, since we're handling
-    // the result of the dictionary being (un)checked, and in case we were
-    // in solo, now we would end up with no dictionaries being checked at all.
-    for ( QList< QAction * >::iterator i = dictActions.begin(); i != dictActions.end(); ++i ) {
-      if ( ( *i )->isChecked() ) {
-        isSolo = false;
-        break;
-      }
-    }
-
-    if ( isSolo ) {
-      // Restore or clear all the dictionaries
-      if ( QApplication::keyboardModifiers() & Qt::ShiftModifier )
+    if ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) {
+      if ( !storedMutedSet.isEmpty() ) {
         *mutedDictionaries = storedMutedSet;
-      else {
-        for ( QList< QAction * >::iterator i = dictActions.begin(); i != dictActions.end(); ++i )
-          mutedDictionaries->remove( ( *i )->data().toString() );
+
+        storedMutedSet.clear();
       }
-      storedMutedSet.clear();
     }
     else {
       // Save dictionaries state
