@@ -1948,6 +1948,22 @@ from Stardict, Babylon and GLS dictionaries</string>
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="title">
+          <string>Misc</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_20">
+          <item>
+           <widget class="QCheckBox" name="removeInvalidIndexOnExit">
+            <property name="text">
+             <string>Remove invalid index on exit</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_17">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
