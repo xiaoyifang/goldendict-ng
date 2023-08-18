@@ -102,8 +102,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
     Dictionary::Class * pDict = nullptr;
-    QString const id                = dictAction->data().toString();
-    for (auto & allDictionarie : allDictionaries) {
+    QString const id          = dictAction->data().toString();
+    for ( auto & allDictionarie : allDictionaries ) {
       if ( id.compare( allDictionarie->getId().c_str() ) == 0 ) {
         pDict = allDictionarie.get();
         break;
@@ -134,7 +134,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   unsigned refsAdded = 0;
 
-  for (auto & dictAction : dictActions) {
+  for ( auto & dictAction : dictActions ) {
 
     // Enough! Or the menu would become too large.
     if ( refsAdded++ >= maxDictionaryRefsInContextMenu && !extended ) {
@@ -183,7 +183,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   if ( result && result == editDictAction ) {
     QString command( editDictionaryCommand );
-    command.replace( "%GDDICT%", QString( R"("%1")").arg(  dictFilename) );
+    command.replace( "%GDDICT%", QString( R"("%1")" ).arg( dictFilename ) );
     if ( !QProcess::startDetached( command, QStringList() ) )
       QApplication::beep();
   }
@@ -211,7 +211,7 @@ void DictionaryBar::mutedDictionariesChanged()
 
   setUpdatesEnabled( false );
 
-  for (auto & dictAction : dictActions) {
+  for ( auto & dictAction : dictActions ) {
     bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
     if ( isUnmuted != dictAction->isChecked() )
@@ -249,7 +249,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       }
 
       // Make dictionary solo
-      for (auto & dictAction : dictActions) {
+      for ( auto & dictAction : dictActions ) {
         QString const dictId = dictAction->data().toString();
 
         if ( dictId == id )
@@ -289,7 +289,7 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
   if ( !isVisible() )
     return;
 
-  for (auto & dictAction : dictActions) {
+  for ( auto & dictAction : dictActions ) {
     QString const dictId = dictAction->data().toString();
     if ( dictId == id ) {
       dictAction->activate( QAction::Trigger );
