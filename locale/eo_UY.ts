@@ -3634,11 +3634,11 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Forigi nevalidan indekson ĉe eliro</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Diversaj</translation>
     </message>
   </context>
   <context>
