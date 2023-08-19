@@ -3633,11 +3633,11 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Usuń nieprawidłowy indeks przy wyjściu</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Różnorodny</translation>
     </message>
   </context>
   <context>
