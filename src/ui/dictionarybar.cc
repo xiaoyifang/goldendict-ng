@@ -13,7 +13,7 @@ DictionaryBar::DictionaryBar( QWidget * parent,
                               QString const & _editDictionaryCommand,
                               unsigned short const & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
-  mutedDictionaries( 0 ),
+  mutedDictionaries( nullptr ),
   configEvents( events ),
   editDictionaryCommand( _editDictionaryCommand ),
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
@@ -52,16 +52,16 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
   clear();
   dictActions.clear();
 
-  for ( unsigned x = 0; x < dictionaries.size(); ++x ) {
-    QIcon icon = dictionaries[ x ]->getIcon();
+  for ( const auto & dictionary : dictionaries ) {
+    QIcon icon = dictionary->getIcon();
 
-    QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
+    QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
 
     QAction * action = addAction( icon, elideDictName( dictName ) );
 
     action->setToolTip( dictName ); // Tooltip need not be shortened
 
-    QString id = QString::fromStdString( dictionaries[ x ]->getId() );
+    QString id = QString::fromStdString( dictionary->getId() );
 
     action->setData( id );
 
@@ -91,21 +91,21 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 {
   QMenu menu( this );
 
-  QAction * editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
+  const QAction * editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
 
-  QAction * infoAction           = NULL;
-  QAction * headwordsAction      = NULL;
-  QAction * editDictAction       = NULL;
-  QAction * openDictFolderAction = NULL;
+  const QAction * infoAction           = nullptr;
+  const QAction * headwordsAction      = nullptr;
+  const QAction * editDictAction       = nullptr;
+  const QAction * openDictFolderAction = nullptr;
   QString dictFilename;
 
-  QAction * dictAction = actionAt( event->x(), event->y() );
+  const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
     Dictionary::Class * pDict = nullptr;
     QString const id          = dictAction->data().toString();
-    for ( auto & allDictionarie : allDictionaries ) {
-      if ( id.compare( allDictionarie->getId().c_str() ) == 0 ) {
-        pDict = allDictionarie.get();
+    for ( const auto & dictionary : allDictionaries ) {
+      if ( id.compare( dictionary->getId().c_str() ) == 0 ) {
+        pDict = dictionary.get();
         break;
       }
     }
@@ -134,7 +134,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   unsigned refsAdded = 0;
 
-  for ( auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : dictActions ) {
 
     // Enough! Or the menu would become too large.
     if ( refsAdded++ >= maxDictionaryRefsInContextMenu && !extended ) {
@@ -156,7 +156,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   connect( this, &DictionaryBar::closePopupMenu, &menu, &QWidget::close );
 
-  QAction * result = menu.exec( event->globalPos() );
+  const QAction * result = menu.exec( event->globalPos() );
 
   if ( result && result == infoAction ) {
     QString const id = dictAction->data().toString();
@@ -211,7 +211,7 @@ void DictionaryBar::mutedDictionariesChanged()
 
   setUpdatesEnabled( false );
 
-  for ( auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : dictActions ) {
     bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
     if ( isUnmuted != dictAction->isChecked() )
@@ -234,28 +234,48 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
     // Ctrl ,solo mode with single dictionary
     // Shift,toggle back the previous dictionaries
+    // Are we solo already?
 
+    bool isSolo = true;
+
+    // For solo, all dictionaries must be unchecked, since we're handling
+    // the result of the dictionary being (un)checked, and in case we were
+    // in solo, now we would end up with no dictionaries being checked at all.
+    for ( const auto & dictAction : dictActions ) {
+      if ( dictAction->isChecked() ) {
+        isSolo = false;
+        break;
+      }
+    }
     if ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) {
-      if ( !storedMutedSet.isEmpty() ) {
+      if ( enterSoloMode ) {
         *mutedDictionaries = storedMutedSet;
 
         storedMutedSet.clear();
+        enterSoloMode = false;
       }
     }
     else {
       // Save dictionaries state
-      if ( storedMutedSet.isEmpty() ) {
+      if ( !enterSoloMode ) {
         storedMutedSet = *mutedDictionaries;
+        enterSoloMode  = true;
       }
 
-      // Make dictionary solo
-      for ( auto & dictAction : dictActions ) {
-        QString const dictId = dictAction->data().toString();
+      if ( isSolo ) {
+        for ( const auto & dictAction : dictActions )
+          mutedDictionaries->remove( dictAction->data().toString() );
+      }
+      else {
+        // Make dictionary solo
+        for ( const auto & dictAction : dictActions ) {
+          QString const dictId = dictAction->data().toString();
 
-        if ( dictId == id )
-          mutedDictionaries->remove( dictId );
-        else
-          mutedDictionaries->insert( dictId );
+          if ( dictId == id )
+            mutedDictionaries->remove( dictId );
+          else
+            mutedDictionaries->insert( dictId );
+        }
       }
     }
     configEvents.signalMutedDictionariesChanged();
@@ -289,7 +309,7 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
   if ( !isVisible() )
     return;
 
-  for ( auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : dictActions ) {
     QString const dictId = dictAction->data().toString();
     if ( dictId == id ) {
       dictAction->activate( QAction::Trigger );
