@@ -3629,6 +3629,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Al usar el portapapeles, elimine todo después de la nueva línea</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Eliminar índice no válido al salir</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Misceláneas</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

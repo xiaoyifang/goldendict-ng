@@ -3637,6 +3637,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Ao usar a área de transferência, retire tudo após a nova linha</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Remover índice inválido ao sair</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Diversos</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

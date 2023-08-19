@@ -3627,6 +3627,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Wenn Sie die Zwischenablage verwenden, entfernen Sie alles nach dem Zeilenumbruch</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Entfernen Sie den ungültigen Index beim Beenden</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Verschiedenes</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

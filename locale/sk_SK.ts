@@ -3625,6 +3625,14 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Pri použití schránky odstráňte všetko po novom riadku</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Odstráňte neplatný index pri ukončení</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Zmiešaný</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

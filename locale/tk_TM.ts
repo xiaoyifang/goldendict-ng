@@ -3631,6 +3631,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Paneli ulananyňyzda, täze setirden soň hemme zady aýyryň</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Çykyşda nädogry görkezijini aýyryň</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Dürli</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3619,6 +3619,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Пры выкарыстанні буфера абмену выдаляйце ўсё пасля новага радка</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Выдаліць няправільны індэкс пры выхадзе</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Рознае</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

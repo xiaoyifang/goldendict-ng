@@ -3632,6 +3632,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Kun käytät leikepöytää, poista kaikki rivinvaihdon jälkeen</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Poista virheellinen indeksi poistuessasi</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Sekalaista</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

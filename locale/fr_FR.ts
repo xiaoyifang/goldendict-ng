@@ -3633,6 +3633,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Lorsque vous utilisez le presse-papiers, supprimez tout après la nouvelle ligne</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Supprimer l'index invalide à la sortie</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Divers</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

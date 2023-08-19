@@ -3629,6 +3629,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Kai naudojate mainų sritį, pašalinkite viską po naujos eilutės</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Išeidami pašalinkite netinkamą indeksą</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Įvairūs</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3631,6 +3631,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>クリップボードを使用する場合は、改行以降をすべて削除します</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>終了時に無効なインデックスを削除する</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>その他</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

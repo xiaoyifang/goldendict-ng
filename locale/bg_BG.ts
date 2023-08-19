@@ -3631,6 +3631,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Когато използвате клипборда, премахнете всичко след нов ред</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Премахване на невалиден индекс при излизане</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Разни</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

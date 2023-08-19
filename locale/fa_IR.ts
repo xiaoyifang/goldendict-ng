@@ -3629,6 +3629,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>متفرقه</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

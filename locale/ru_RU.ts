@@ -3637,6 +3637,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>При использовании буфера обмена удалите все после новой строки</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Удалить неверный индекс при выходе</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Разнообразный</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
