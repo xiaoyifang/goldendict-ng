@@ -3632,6 +3632,14 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Ao usar a área de transferência, retire tudo após a nova linha</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
