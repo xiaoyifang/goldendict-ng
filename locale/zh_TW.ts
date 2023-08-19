@@ -3629,7 +3629,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>各種各樣的</translation>
+      <translation>雜項</translation>
     </message>
   </context>
   <context>
