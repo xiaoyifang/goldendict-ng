@@ -3641,6 +3641,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>When using clipboard, strip everything after newline</source>
       <translation>Pano kullanırken, yeni satırdan sonraki her şeyi soyun</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
