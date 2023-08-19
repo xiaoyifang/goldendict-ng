@@ -3623,11 +3623,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>बाहर निकलने पर अमान्य अनुक्रमणिका हटाएँ</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>मिश्रित</translation>
     </message>
   </context>
   <context>
