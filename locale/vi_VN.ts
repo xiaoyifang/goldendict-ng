@@ -3625,6 +3625,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
