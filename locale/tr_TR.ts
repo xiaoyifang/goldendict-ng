@@ -3643,11 +3643,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Çıkışta geçersiz dizini kaldır</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Çeşitli</translation>
     </message>
   </context>
   <context>
