@@ -3627,11 +3627,11 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Odstráňte neplatný index pri ukončení</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Zmiešaný</translation>
     </message>
   </context>
   <context>
