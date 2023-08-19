@@ -3642,11 +3642,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Отстранете го неважечкиот индекс при излезот</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Разно</translation>
     </message>
   </context>
   <context>
