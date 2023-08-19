@@ -3634,11 +3634,11 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Remover índice inválido ao sair</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Diversos</translation>
     </message>
   </context>
   <context>
