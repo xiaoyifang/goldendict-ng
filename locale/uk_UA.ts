@@ -3635,11 +3635,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Видалити недійсний індекс під час виходу</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Різне</translation>
     </message>
   </context>
   <context>
