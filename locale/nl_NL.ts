@@ -3633,11 +3633,11 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Verwijder ongeldige index bij afsluiten</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Gemengd</translation>
     </message>
   </context>
   <context>
