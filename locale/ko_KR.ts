@@ -3628,6 +3628,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>클립보드를 사용할 때 개행 이후의 모든 항목을 제거합니다.</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
