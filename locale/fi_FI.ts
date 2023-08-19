@@ -3634,11 +3634,11 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Poista virheellinen indeksi poistuessasi</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Sekalaista</translation>
     </message>
   </context>
   <context>
