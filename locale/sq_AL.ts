@@ -3626,11 +3626,11 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Hiq indeksin e pavlefshëm në dalje</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Të ndryshme</translation>
     </message>
   </context>
   <context>
