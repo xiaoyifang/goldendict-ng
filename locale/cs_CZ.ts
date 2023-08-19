@@ -3631,11 +3631,11 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Při ukončení odstraňte neplatný index</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Smíšený</translation>
     </message>
   </context>
   <context>
