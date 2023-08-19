@@ -3632,11 +3632,11 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Rimuovi l'indice non valido all'uscita</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Varie</translation>
     </message>
   </context>
   <context>
