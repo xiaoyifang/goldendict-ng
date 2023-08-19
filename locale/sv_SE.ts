@@ -3636,11 +3636,11 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Ta bort ogiltigt index vid utgång</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Diverse</translation>
     </message>
   </context>
   <context>
