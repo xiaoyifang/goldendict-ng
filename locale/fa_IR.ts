@@ -3631,11 +3631,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>متفرقه</translation>
     </message>
   </context>
   <context>
