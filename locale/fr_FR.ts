@@ -3635,11 +3635,11 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Supprimer l'index invalide à la sortie</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Divers</translation>
     </message>
   </context>
   <context>
