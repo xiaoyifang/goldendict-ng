@@ -3621,7 +3621,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>各种各样的</translation>
+      <translation>杂项</translation>
     </message>
   </context>
   <context>
