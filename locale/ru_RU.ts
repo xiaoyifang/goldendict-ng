@@ -3639,11 +3639,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Удалить неверный индекс при выходе</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Разнообразный</translation>
     </message>
   </context>
   <context>
