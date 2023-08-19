@@ -3636,11 +3636,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Καταργήστε το μη έγκυρο ευρετήριο κατά την έξοδο</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Διάφορα</translation>
     </message>
   </context>
   <context>
