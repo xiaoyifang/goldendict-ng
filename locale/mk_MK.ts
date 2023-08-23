@@ -3640,6 +3640,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Кога користите таблата со исечоци, одземете сè по нова линија</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Отстранете го неважечкиот индекс при излезот</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Разно</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

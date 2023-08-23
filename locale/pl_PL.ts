@@ -3631,6 +3631,14 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Podczas korzystania ze schowka usuń wszystko po nowej linii</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Usuń nieprawidłowy indeks przy wyjściu</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Różnorodny</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

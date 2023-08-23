@@ -612,6 +612,7 @@ void ScanPopup::currentGroupChanged( int )
 void ScanPopup::translateInputChanged( QString const & text )
 {
   updateSuggestionList( text );
+  GlobalBroadcaster::instance()->translateLineText = text;
 }
 
 void ScanPopup::updateSuggestionList()

@@ -3621,6 +3621,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>क्लिपबोर्ड का उपयोग करते समय, न्यूलाइन के बाद सब कुछ हटा दें</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>बाहर निकलने पर अमान्य अनुक्रमणिका हटाएँ</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>मिश्रित</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3631,6 +3631,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Als u het klembord gebruikt, stript u alles na de nieuwe regel</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Verwijder ongeldige index bij afsluiten</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Gemengd</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

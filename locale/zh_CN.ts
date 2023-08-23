@@ -3615,6 +3615,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>使用剪贴板时，删除换行符后的所有内容</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>退出时删除无效索引</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>杂项</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

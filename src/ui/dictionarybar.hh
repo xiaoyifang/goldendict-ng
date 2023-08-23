@@ -59,6 +59,8 @@ private:
   Config::MutedDictionaries * mutedDictionaries;
   Config::Events & configEvents;
   Config::MutedDictionaries storedMutedSet;
+
+  bool enterSoloMode = false;
   QString editDictionaryCommand;
   // how many dictionaries should be shown in the context menu:
   unsigned short const & maxDictionaryRefsInContextMenu;

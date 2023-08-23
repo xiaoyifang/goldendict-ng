@@ -3632,6 +3632,14 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Kiam vi uzas tondujo, forigu ĉion post novlinio</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Forigi nevalidan indekson ĉe eliro</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Diversaj</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3634,6 +3634,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>När du använder urklipp, ta bort allt efter nyrad</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Ta bort ogiltigt index vid utgång</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Diverse</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

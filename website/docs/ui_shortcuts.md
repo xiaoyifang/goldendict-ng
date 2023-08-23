@@ -53,3 +53,16 @@
 | F3                    | Dictionaries dialog                                                                                                              |
 | F4                    | GoldenDict preferences                                                                                                           |
 | F12                   | Inspector                                                                                                                        |
+
+
+# Solo mode in the dictionary bar
+Ctrl+Click, Enter solo mode, toggle between single & all dictionaries
+Shift+Click, Exit solo mode, restore the previous dictionaries.
+
+For example, there are 4 dictionaries A,B,C,D with ABC selected.
+| Cases|   Note|
+|--------|--------|
+| Ctrl+Click A|select A only|
+| Ctrl+Click A, Ctrl+Click B | select B only|
+| Ctrl+Click A, Ctrl+Click A | A,B,C,D selected(all dictionaries selected)|
+| Ctrl+Click A, Shift+Click any dictionary| A,B,C selected |

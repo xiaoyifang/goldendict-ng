@@ -3630,6 +3630,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Quando usi gli appunti, rimuovi tutto dopo la nuova riga</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Rimuovi l'indice non valido all'uscita</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Varie</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

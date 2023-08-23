@@ -3632,6 +3632,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Ҳангоми истифодаи буфер, ҳама чизро пас аз сатри нав кашед</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Индекси беэътиборро ҳангоми баромадан хориҷ кунед</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Гуногун</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

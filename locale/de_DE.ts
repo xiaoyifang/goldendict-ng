@@ -1075,7 +1075,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Ordner basierte Gruppen erstellen.</translation>
+      <translation>Ordner-basierte Gruppen erstellen.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
@@ -1199,11 +1199,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Indizierung …</translation>
+      <translation>Indizieren …</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation>Wird geladen...</translation>
+      <translation>Laden …</translation>
     </message>
   </context>
   <context>
@@ -3577,7 +3577,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Starten Sie neu, um die Änderung des Schnittstellenstils zu übernehmen.</translation>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3597,7 +3597,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>Serifenschrift</translation>
+      <translation>Serifen-Schriftart</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
@@ -3605,7 +3605,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Aussehen</translation>
+      <translation>Erscheinungsbild</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3617,15 +3617,23 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation>Schnittstellenstil:</translation>
+      <translation>Interface-Stil:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Erstellen Sie einen Volltextindex mit parallelen Threads </translation>
+      <translation>Volltextindex mit parallelen Threads erstellen </translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>Wenn Sie die Zwischenablage verwenden, entfernen Sie alles nach dem Zeilenumbruch</translation>
+      <translation>Bei der Verwendung der Zwischenablage alles nach dem Zeilenumbruch entfernen</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Ungültigen Index beim Beenden entfernen</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Sonstiges</translation>
     </message>
   </context>
   <context>
@@ -3741,7 +3749,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>Fensterstatus zurücksetzen.</translation>
+      <translation>Fensterzustand zurücksetzen.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
@@ -3761,7 +3769,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Druckversion und Diagnoseinformationen.</translation>
+      <translation>Version und Diagnoseinformationen drucken.</translation>
     </message>
   </context>
   <context>
@@ -3866,7 +3874,7 @@ es in der Größe verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>ACHTUNG: %1</translation>
+      <translation>WARNUNG: %1</translation>
     </message>
   </context>
   <context>
@@ -4019,7 +4027,7 @@ basierend auf der Englischen Aussprache</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Dies gilt nur für Suchphrasen, wobei jede Zeile eine durch Semikolon getrennte Transliteration darstellt. Beispielsweise können Benutzer ae;æ,ae eingeben, um æ im Zielwort darzustellen.</translation>
+      <translation>Dies gilt nur für Suchphrasen, wobei jede Zeile eine Transliteration darstellt, die durch Semikolon getrennt ist. Zum Beispiel, ae;æ, können Benutzer ae eingeben, um æ im Zielwort darzustellen.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
@@ -4055,9 +4063,9 @@ Noch nicht in GoldenDict implementiert.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Beispiele:  &amp;quot;eng&amp;quot; für Englisch, &amp;quot;fra&amp;quot; für Französisch &lt;br&gt;
+      <translation>Beispiele: &amp;quot;eng&amp;quot; für Englisch, &amp;quot;fra&amp;quot; für Französisch &lt;br&gt;
 
-Eine vollständige Liste der verfügbaren Sprachen finden Sie &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt;</translation>
+Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt; zu finden</translation>
     </message>
     <message>
       <source>Katakana</source>

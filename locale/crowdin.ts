@@ -3615,6 +3615,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>When using clipboard, strip everything after newline</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Remove invalid index on exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>

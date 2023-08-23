@@ -3634,6 +3634,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Όταν χρησιμοποιείτε το πρόχειρο, αφαιρέστε τα πάντα μετά τη νέα γραμμή</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Καταργήστε το μη έγκυρο ευρετήριο κατά την έξοδο</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Διάφορα</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -1950,7 +1950,7 @@ from Stardict, Babylon and GLS dictionaries</string>
        <item>
         <widget class="QGroupBox" name="groupBox_7">
          <property name="title">
-          <string>Misc</string>
+          <string>Miscellaneous</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_20">
           <item>

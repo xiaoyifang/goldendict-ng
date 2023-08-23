@@ -3624,6 +3624,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>When using clipboard, strip everything after newline</source>
       <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
     </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Hiq indeksin e pavlefshëm në dalje</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Të ndryshme</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
