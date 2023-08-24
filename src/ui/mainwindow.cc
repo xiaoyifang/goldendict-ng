@@ -149,6 +149,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
+  stopAudioAction( this ),
   trayIconMenu( this ),
   addTab( this ),
   cfg( cfg_ ),
@@ -427,6 +428,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addGlobalAction( ui.fullTextSearchAction, [ this ]() {
     showFullTextSearchDialog();
   } );
+
+  addGlobalAction( &stopAudioAction, [ this ]() {
+    stopAudio();
+  } );
+  stopAudioAction.setShortcut( QKeySequence( "Ctrl+Shift+S" ) );
 
   addTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addTabAction.setShortcut( QKeySequence( "Ctrl+T" ) );
@@ -4023,11 +4029,17 @@ void MainWindow::focusHeadwordsDialog()
 
 void MainWindow::focusArticleView()
 {
-  ArticleView * view = getCurrentArticleView();
-  if ( view ) {
+  if ( ArticleView * view = getCurrentArticleView() ) {
     if ( !isActiveWindow() )
       activateWindow();
     view->focus();
+  }
+}
+
+void MainWindow::stopAudio()
+{
+  if ( ArticleView * view = getCurrentArticleView() ) {
+    view->stopSound();
   }
 }
 

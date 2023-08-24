@@ -42,14 +42,14 @@ public:
 
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
-  void applyZoomFactor();
+  void applyZoomFactor() const;
   void applyWordsZoomLevel();
   /// Translate the word
   void translateWord( QString const & word );
 
   void setDictionaryIconSize();
 
-  void saveConfigData();
+  void saveConfigData() const;
 
 #ifdef HAVE_X11
   /// Interaction with scan flag window
@@ -98,7 +98,7 @@ public slots:
   /// From the dictionary bar.
   void editGroupRequested();
 
-  void setGroupByName( QString const & name );
+  void setGroupByName( QString const & name ) const;
 
 #ifdef HAVE_X11
   void showEngagePopup();
@@ -131,6 +131,7 @@ private:
   Ui::ScanPopup ui;
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
+  QAction stopAudioAction;
   QAction openSearchAction;
   QString pendingWord; // Word that is going to be translated
   WordFinder wordFinder;
@@ -186,23 +187,23 @@ private:
   /// Returns inputWord, chopped with appended ... if it's too long/
   QString elideInputWord();
 
-  void updateBackForwardButtons();
+  void updateBackForwardButtons() const;
 
-  void showTranslationFor( QString const & inputPhrase );
+  void showTranslationFor( QString const & inputPhrase ) const;
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
 private slots:
   void currentGroupChanged( int );
   void prefixMatchFinished();
-  void on_pronounceButton_clicked();
+  void on_pronounceButton_clicked() const;
   void pinButtonClicked( bool checked );
   void on_showDictionaryBar_clicked( bool checked );
-  void showStatusBarMessage( QString const &, int, QPixmap const & );
+  void showStatusBarMessage( QString const &, int, QPixmap const & ) const;
   void on_sendWordButton_clicked();
   void on_sendWordToFavoritesButton_clicked();
-  void on_goBackButton_clicked();
-  void on_goForwardButton_clicked();
+  void on_goBackButton_clicked() const;
+  void on_goForwardButton_clicked() const;
 
   void hideTimerExpired();
 
@@ -212,7 +213,7 @@ private slots:
   /// polling stops.
   void mouseGrabPoll();
 
-  void pageLoaded( ArticleView * );
+  void pageLoaded( ArticleView * ) const;
 
   void escapePressed();
 
@@ -224,12 +225,13 @@ private slots:
   void translateInputFinished();
 
   void focusTranslateLine();
+  void stopAudio() const;
 
   void typingEvent( QString const & );
 
   void alwaysOnTopClicked( bool checked );
 
-  void titleChanged( ArticleView *, QString const & title );
+  void titleChanged( ArticleView *, QString const & title ) const;
 };
 
 #endif
