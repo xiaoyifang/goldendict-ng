@@ -310,7 +310,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
           .toUtf8()
           .data();
 
-      result += "<div id=\"popup\" style=\"display:none;\">";
+      result += R"(<div id="popup" style="display:none;">)";
       result +=
         ( tr(
             "<h3 align=\"center\">Working with the popup</h3>"
