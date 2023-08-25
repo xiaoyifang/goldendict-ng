@@ -289,6 +289,8 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     //tooltip
     result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
     result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
+    result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
+
 
       result +=
         tr(
@@ -331,17 +333,21 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
           .data();
 
       result += "</div>";
+      QString theme = "";
+      if ( !GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
+        theme = "light";
+      }
 
-      result += R"(
-    <script>
+      result +=         QString(
+                  R"(<script>
       const template = document.getElementById('popup');
 
       tippy('#lookup-popup', {
         content: template.innerHTML,
         allowHTML: true,
+        theme: '%1'
       });
-      </script>
-      )";
+      </script>)").arg(theme).toStdString();
     }
     else {
       // Not found
