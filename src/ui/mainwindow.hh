@@ -109,6 +109,8 @@ private:
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
     useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
     addAllTabToFavoritesAction;
+
+  QAction stopAudioAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
@@ -454,6 +456,7 @@ private slots:
   void focusHeadwordsDialog();
 
   void focusArticleView();
+  void stopAudio();
 
   void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
 
