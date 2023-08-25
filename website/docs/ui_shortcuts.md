@@ -45,6 +45,7 @@
 | Ctrl+Shift+C          | Copy selected as text                                                                                                            |
 | Ctrl+Shift+F          | Open/switch to full-text search dialog                                                                                           |
 | Ctrl+Shift+W          | Close all tabs                                                                                                                   |
+| Ctrl+Shift+S          | Stop current playing sound                                                                                                       |
 | Del                   | (History) delete select line                                                                                                     |
 | Enter                 | (In main window) go to search line                                                                                               |
 | Esc                   | (In main window) go to search line (the action for Esc key can be changed in preferences) / (in popup window) close popup window |
