@@ -286,10 +286,10 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     string result = makeHtmlHeader( word, QString(), cfg.alwaysExpandOptionalParts );
 
     if ( word == tr( "Welcome!" ) ) {
-    //tooltip
-    result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
-    result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
-    result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
+      //tooltip
+      result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
+      result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
+      result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
 
 
       result +=
@@ -338,7 +338,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
         theme = "light";
       }
 
-      result +=         QString(
+      result += QString(
                   R"(<script>
       const template = document.getElementById('popup');
 
@@ -347,7 +347,9 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
         allowHTML: true,
         theme: '%1'
       });
-      </script>)").arg(theme).toStdString();
+      </script>)" )
+                  .arg( theme )
+                  .toStdString();
     }
     else {
       // Not found
