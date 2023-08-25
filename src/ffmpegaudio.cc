@@ -54,7 +54,9 @@ void AudioService::playMemory( const char * ptr, int size )
   emit cancelPlaying( false );
   QByteArray audioData( ptr, size );
   thread = std::make_shared< DecoderThread >( audioData, this );
-
+  connect( this, &AudioService::cancelPlaying, thread.get(), [ this ]( bool waitFinished ) {
+    thread->cancel( waitFinished );
+  } );
   thread->start();
 }
 

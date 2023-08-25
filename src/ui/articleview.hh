@@ -200,6 +200,8 @@ public:
   /// Reloads the view
   void reload();
 
+  void stopSound();
+
   /// Returns true if there's an audio reference on the page, false otherwise.
   void hasSound( const std::function< void( bool has ) > & callback );
 

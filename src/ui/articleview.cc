@@ -1433,6 +1433,11 @@ void ArticleView::playSound()
   } );
 }
 
+void ArticleView::stopSound()
+{
+  audioPlayer->stop();
+}
+
 void ArticleView::toHtml( const std::function< void( QString & ) > & callback )
 {
   webview->page()->toHtml( [ = ]( const QString & content ) {
