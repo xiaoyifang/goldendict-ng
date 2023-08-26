@@ -83,10 +83,6 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
       <translation>Artikel einklappen</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Mit Popups arbeiten</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(unbenannt)</translation>
     </message>
@@ -107,26 +103,12 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
       <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 &lt;h3 align=&quot;center&quot;&gt;Willkommen zu &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Das sind die ersten Schritte um mit dem Programm arbeiten zu können. &lt;p&gt; Gehen Sie zunächst auf &lt;b&gt;Bearbeiten » Wörterbücher...&lt;/b&gt; um die Pfade zu abgespeicherten Wörterbüchern hinzuzufügen sowie um Wikipedia und andere Seiten einzurichten oder die Wörterbücher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p&gt;
-&lt;p&gt;Nun sind Sie bereit das erste Wort nachzuschlagen. Dies können Sie im Eingabe-Fenster machen oder &lt;a href=&quot;Mit Popups arbeiten&quot;&gt;mittels der Popup-Funktion in anderen Applikationen.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Um das Programm anzupassen öffnen Sie &lt;b&gt;Bearbeiten » Einstellungen...&lt;/b&gt;&lt;br /&gt;Viele Einstellungen sind auch mit Tipps versehen.&lt;/p&gt;
-&lt;p&gt;Hilfe, Fragen und Antworten dazu finden Sie im archvierten &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;.&lt;br /&gt;Programm Updates finden sind auf der Webseite &lt;a href=&quot;https://sourceforge.net/projects/goldendict/&quot;&gt;GoldenDict&lt;/a&gt; und den weiterhin gepflegten Source auf &lt;a href=&quot;https://github.com/goldendict/goldendict/&quot;&gt;GoldenDict Source&lt;/a&gt;.
-&lt;br /&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;p&gt;&lt;/p&gt;
-&lt;BODY&gt;
-&lt;DIV&gt;&lt;B&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;
-&lt;HR&gt;
-&lt;/SPAN&gt;&lt;/B&gt;&lt;/DIV&gt;
-&lt;DIV&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;Seit 2021: &lt;br /&gt;Ein neuer Fork von XIAO, mit z.B. einer OCR Erkennung mittels dem externen Hilfsprogramm &lt;a href=&quot;https://sourceforge.net/projects/capture2text/&quot;&gt;Capture2Text&lt;/a&gt; und 
-vielen anderen Optimierungen, finden Sie auf der &lt;/SPAN&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;&lt;A 
-href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.&lt;/A&gt;&lt;FONT color=#000000&gt;
-
-&lt;HR&gt;
-</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(Bild)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
