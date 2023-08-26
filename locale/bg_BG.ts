@@ -28,10 +28,6 @@
       <translation>Заслуги:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© 2008-2019 Константин Исаков (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Въз основа на Qt %1 (%2, %3)</translation>
     </message>
@@ -3634,6 +3630,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>Разни</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Когато отстранявате грешки с речник css/js, деактивирайте определен кеш, за да го улесните.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Отстраняване на грешки в речника</translation>
     </message>
   </context>
   <context>

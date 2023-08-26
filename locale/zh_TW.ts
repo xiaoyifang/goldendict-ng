@@ -28,10 +28,6 @@
       <translation>致謝名單：</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>基於Qt %1 (%2, %3)</translation>
     </message>
@@ -107,7 +103,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;歡迎使用&lt;b&gt;GoldenDict&lt;/b&gt;！&lt;/h3&gt;&lt;p&gt;要開始使用該程序，請首先訪問&lt;b&gt;編輯|詞典&lt;/b&gt;添加一些目錄路徑來搜索字典文件、設置各種維基百科網站或其他來源、調整字典順序或創建字典組。&lt;p&gt;然後您就可以查找單詞了！您可以通過使用左側的窗格在此窗口中執行此操作，也可以&lt;button id=&quot;lookup-popup&quot;&gt;從其他活動應用程序查找單詞&lt;/button&gt;。 &lt;p&gt;要自定義程序，請查看&lt;b&gt;編輯|首選項&lt;/b&gt;中的可用首選項。那裡的所有設置都有工具提示，如果您有任何疑問，請務必閱讀它們。&lt;p&gt;如果您需要進一步幫助、有任何問題、建議或只是想知道其他人的想法，歡迎您訪問該程序的&lt; 4>論壇&lt;/a&gt;。&lt;p&gt;檢查&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;網站&lt;/a&gt;是否有更新。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。根據 GPLv3 或更高版本獲得許可。</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;歡迎使用&lt;b&gt;GoldenDict&lt;/b&gt;！&lt;/h3&gt;&lt;p&gt;要開始使用該程序，請首先訪問&lt;b&gt;編輯|詞典&lt;/b&gt;添加一些目錄路徑來搜索字典文件、設置各種維基百科網站或其他來源、調整字典順序或創建字典組。&lt;p&gt;然後您就可以查找單詞了！您可以通過使用左側的窗格在此窗口中執行此操作，也可以&lt;button id=&quot;lookup-popup&quot;&gt;從其他活動應用程序查找單詞&lt;/button&gt;。 &lt;p&gt;要自定義程序，請查看&lt;b&gt;編輯|首選項&lt;/b&gt;中的可用首選項。那裡的所有設置都有工具提示，如果您有任何疑問，請務必閱讀它們。&lt;p&gt;如果您需要進一步幫助、有任何問題、建議或只是想知道其他人的想法，歡迎您訪問該程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;論壇&lt;/a&gt;。&lt;p&gt;檢查&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;網站&lt;/a&gt;是否有更新。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。根據 GPLv3 或更高版本獲得許可。</translation>
     </message>
   </context>
   <context>
@@ -3626,6 +3622,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>雜項</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>當使用字典 css/js 進行調試時，禁用某些緩存以使其更容易。</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>字典調試</translation>
     </message>
   </context>
   <context>

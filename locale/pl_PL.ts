@@ -28,10 +28,6 @@
       <translation>Podziękowania:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>c) w latach 2008–2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Na podstawie Qt %1 (%2, %3)</translation>
     </message>
@@ -3634,6 +3630,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Różnorodny</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Podczas debugowania przy użyciu słownika css/js, wyłącz pamięć podręczną, aby ją ułatwić.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Debugowanie słownika</translation>
     </message>
   </context>
   <context>
