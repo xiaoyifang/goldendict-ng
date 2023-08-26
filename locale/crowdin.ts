@@ -28,10 +28,6 @@
         <translation>致谢名单：</translation>
     </message>
     <message>
-        <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-        <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
         <source>Based on Qt %1 (%2, %3)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3617,6 +3613,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dictionary debug</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
