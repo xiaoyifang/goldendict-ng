@@ -553,7 +553,7 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const 
     }
     else {
       if ( !fileInfo.exists() )
-        return true;
+        continue;
       ts = fileInfo.lastModified().toSecsSinceEpoch();
     }
 
