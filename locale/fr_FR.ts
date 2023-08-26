@@ -3630,11 +3630,11 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Lors du débogage avec le dictionnaire css/js, désactivez un certain cache pour le rendre plus facile.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Débogage du dictionnaire</translation>
     </message>
   </context>
   <context>
