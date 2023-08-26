@@ -3630,11 +3630,11 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Bij het debuggen met woordenboek/js, schakel bepaalde cache uit om het makkelijker te maken.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Woordenboek debug</translation>
     </message>
   </context>
   <context>
