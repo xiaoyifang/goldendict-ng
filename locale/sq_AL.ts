@@ -3626,11 +3626,11 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Kur korrigjoni gabimet me fjalorin css/js, çaktivizoni cache të caktuar për ta bërë më të lehtë.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Korrigjimi i fjalorit</translation>
     </message>
   </context>
   <context>
