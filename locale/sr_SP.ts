@@ -3636,11 +3636,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Када отклањате грешке помоћу речника цсс/јс, онемогућите одређени кеш да бисте то олакшали.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Отклањање грешака у речнику</translation>
     </message>
   </context>
   <context>
