@@ -3632,11 +3632,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Sözlük css/js ile hata ayıklama yaparken, bunu kolaylaştırmak için belirli önbelleği devre dışı bırakın.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Sözlük hata ayıklaması</translation>
     </message>
   </context>
   <context>
