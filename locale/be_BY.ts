@@ -3621,11 +3621,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Пры адладцы са слоўнікам css/js адключыце пэўны кэш, каб зрабіць гэта прасцей.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Адладка слоўніка</translation>
     </message>
   </context>
   <context>
