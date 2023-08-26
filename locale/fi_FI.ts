@@ -3634,11 +3634,11 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Kun vianetsintä sanakirjalla css/js, poista tietty välimuisti käytöstä helpottaaksesi sitä.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Sanakirjan virheenkorjaus</translation>
     </message>
   </context>
   <context>
