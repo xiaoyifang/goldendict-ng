@@ -28,10 +28,6 @@
       <translation>Zásluhy:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Na základě Qt %1 (%2, %3)</translation>
     </message>
@@ -3632,6 +3628,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Smíšený</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation type="unfinished">Dictionary debug</translation>
     </message>
   </context>
   <context>
