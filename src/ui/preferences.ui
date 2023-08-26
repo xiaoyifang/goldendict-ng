@@ -1963,7 +1963,7 @@ from Stardict, Babylon and GLS dictionaries</string>
           <item>
            <widget class="QCheckBox" name="dictionaryDebug">
             <property name="toolTip">
-             <string>When debug with dictionary css/js, disable certain cache to make it easier.</string>
+             <string>When debugging with dictionary css/js, disable certain cache to make it easier.</string>
             </property>
             <property name="text">
              <string>Dictionary debug</string>

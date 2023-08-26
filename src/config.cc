@@ -494,7 +494,7 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDiction
 
 } // namespace
 
-bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue,bool defaultValue=false )
+bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
 {
   if ( !node.isNull() )
     return ( node.toElement().text() == expectedValue );

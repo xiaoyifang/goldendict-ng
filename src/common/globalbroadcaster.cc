@@ -18,7 +18,7 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
   return bdcaster;
 }
 
-void GlobalBroadcaster::insertCache( const QString & key, QByteArray * object)
+void GlobalBroadcaster::insertCache( const QString & key, QByteArray * object )
 {
   //do not cache the item when debug dictionary.
   if ( preference->dictionaryDebug )

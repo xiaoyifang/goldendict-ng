@@ -510,7 +510,7 @@ Config::Preferences Preferences::getPreferences()
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
-  p.dictionaryDebug = ui.dictionaryDebug->isChecked();
+  p.dictionaryDebug          = ui.dictionaryDebug->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 

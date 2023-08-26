@@ -43,7 +43,7 @@ public:
   PronounceEngine pronounce_engine;
   QCache< QString, QByteArray > cache;
 
-  void insertCache( const QString & , QByteArray * );
+  void insertCache( const QString &, QByteArray * );
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
