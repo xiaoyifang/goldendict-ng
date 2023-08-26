@@ -3627,11 +3627,11 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Pri ladení pomocou slovníka css/js deaktivujte určitú vyrovnávaciu pamäť, aby ste to uľahčili.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Ladenie slovníka</translation>
     </message>
   </context>
   <context>
