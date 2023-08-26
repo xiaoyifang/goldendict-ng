@@ -3617,11 +3617,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>当使用字典css/js进行调试时，禁用某些缓存使其更加容易。</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>词典调试</translation>
     </message>
   </context>
   <context>
