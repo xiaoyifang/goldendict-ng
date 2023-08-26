@@ -82,10 +82,6 @@
       <translation>記事を折りたたむ</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>ポップアップ作業</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(無題)</translation>
     </message>
@@ -106,12 +102,12 @@
       <translation>グループ &lt;b&gt;%2&lt;/b&gt;では &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; の翻訳が見つかりませんでした。</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;&lt;b&gt;GoldenDict&lt;/b&gt; へようこそ!&lt;/h3&gt;&lt;p&gt;このプログラムでの作業を開始するには、まず &lt;b&gt;[編集|辞書]&lt;/b&gt; を開いて辞書ファイルを検索するディレクトリのパスを追加したり、さまざまな Wikipedia のサイトやその他のソースを設定したり、辞書の順序を調整したり辞書グループを作成したりします。&lt;p&gt;次にはもう単語を検索する準備ができています! このウィンドウの左のペインを使用するか、&lt;a href=&quot;Working with popup&quot;&gt;他のアクティブなアプリケーションから単語を検索します&lt;/a&gt;。&lt;p&gt;プログラムをカスタマイズするには、&lt;b&gt;[編集|環境設定]&lt;/b&gt; で利用可能なオプションをチェックしてください。そこにある設定にはすべてツールチップがあります、何か疑問に思った場合はそれらを読むようにしてください。&lt;p&gt;さらなるヘルプを必要とする場合、質問、提案やその他気になることがある場合は、プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;フォーラム&lt;/a&gt;で歓迎されます。&lt;p&gt;更新はプログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;Web サイト&lt;/a&gt;をチェックしてください。&lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 以降の下でライセンスされています。</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(画像)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
