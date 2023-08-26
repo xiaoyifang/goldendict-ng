@@ -1183,9 +1183,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         QFileInfo info( fontSubName );
         if ( info.exists() && info.isFile() )
           dictFiles.push_back( fontSubName.toStdString() );
-        else{
+        else {
           //to make the subbook in different index.
-          dictFiles.push_back(QString::number( sb ).toStdString());
+          dictFiles.push_back( QString::number( sb ).toStdString() );
         }
 
         // Check if we need to rebuid the index
