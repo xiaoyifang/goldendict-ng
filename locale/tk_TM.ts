@@ -3633,11 +3633,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Css / js sözlügi bilen düzediş girizilende, aňsatlaşdyrmak üçin belli bir keşi öçüriň.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Sözlük düzediş</translation>
     </message>
   </context>
   <context>
