@@ -3639,11 +3639,11 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Ao depurar com css/js de dicionário, desabilite certos cache para facilitar.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Depuração do dicionário</translation>
     </message>
   </context>
   <context>
