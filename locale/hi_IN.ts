@@ -3618,11 +3618,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>डिक्शनरी सीएसएस/जेएस के साथ डिबगिंग करते समय, इसे आसान बनाने के लिए कुछ कैश को अक्षम करें।</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>शब्दकोश डीबग</translation>
     </message>
   </context>
   <context>
