@@ -29,10 +29,10 @@ class GlobalBroadcaster: public QObject
 
 public:
   void setPreference( Config::Preferences * _pre );
-  Config::Preferences * getPreference();
+  Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );
   void addWhitelist( QString host );
-  bool existedInWhitelist( QString host );
+  bool existedInWhitelist( QString host ) const;
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
@@ -42,6 +42,8 @@ public:
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;
   QCache< QString, QByteArray > cache;
+
+  void insertCache( const QString &, QByteArray * );
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );

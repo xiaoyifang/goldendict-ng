@@ -29,7 +29,7 @@
     </message>
     <message>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 콘스탄틴 이사코프(ikm@goldendict.org)</translation>
+      <translation>(c) 2008-2013 Konstantin Isakov(ikm@goldendict.org)</translation>
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
@@ -82,10 +82,6 @@
       <translation>사전 감추기</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>팝업창 사용</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(제목없음)</translation>
     </message>
@@ -106,12 +102,12 @@
       <translation>그룹 &lt;b&gt;%2&lt;/b&gt;에서 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 에 대한 번역을 찾을 수 없습니다.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;&lt;b&gt;GoldenDict&lt;/b&gt;사용을 환영합니다!&lt;/h3&gt;&lt;p&gt;프로그램 사용을 위해서 먼저 &lt;b&gt;편집|사전&lt;/b&gt; 에서 사용할 사전의 경로, Wikipedia와 다른 온라인 검색사이트 등록를 등록하고 사전의 표시순서와 그룹을 지정하십시오. &lt;p&gt;그러면 사용을 위한 준비가 끝났습니다! 지금 창의 왼쪽에서 검색어를 입력하거나  실행중인 &lt;a href=&quot;팝업창 사용&quot;&gt;다른 프로그램에서 단어검색&lt;/a&gt;을 할 수 있습니다. &lt;p&gt;프로그램을 자신에 맞게 설정하려면 &lt;b&gt;편집|설정&lt;/b&gt;메뉴를 사용하십시오. 모든 설정항목은 말풍선 도움말이 있으니 기능을 잘 모르는 경우 꼭 확인하시기 바랍니다. &lt;p&gt;더 많은 도움이 필요하거나 질문, 제안사항이 있는 경우 또는 다른 사용자들의 생각이 궁금하면 프로그램의 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;포럼&lt;/a&gt;을 방문하십시오.&lt;p&gt;프로그램 업데이트는 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;웹사이트&lt;/a&gt;를 방문하십시오.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(그림)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;에 오신 것을 환영합니다!&lt;/h3&gt;&lt;p&gt;프로그램 작업을 시작하려면 먼저 &lt;b&gt;Edit|Dictionaries&lt;/b&gt; 방문하여 사전 파일을 검색할 디렉터리 경로를 추가하고, 다양한 Wikipedia 사이트 또는 기타 소스를 설정하고, 사전 순서를 조정하거나 사전 그룹을 생성하세요.&lt;p&gt;그러면 당신&apos;당신의 말을 찾아볼 준비가 된 것입니다! 이 창에서 왼쪽 창을 사용하여 검색하거나 다른 활성 애플리케이션에서 단어를 &lt;button id=&quot;lookup-popup&quot;&gt;할 수 있습니다&lt;/button&gt;. &lt;p&gt;프로그램을 사용자 정의하려면 &lt;b&gt;Edit|Preferences&lt;/b&gt;에서 사용 가능한 기본 설정을 확인하십시오. 모든 설정에는 툴팁이 있으므로 의심스러운 점이 있으면 꼭 읽어보세요.&lt;p&gt;추가 도움이 필요하거나 질문, 제안이 있거나 다른 사람들의 생각이 궁금하다면 프로그램&apos; &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;포럼&lt;/a&gt;에 참여하세요.&lt;p&gt;업데이트는 프로그램&apos; &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;웹사이트&lt;/a&gt; 에서 확인하세요. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 이상에 따라 라이센스가 부여되었습니다.</translation>
     </message>
   </context>
   <context>
