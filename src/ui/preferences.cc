@@ -347,6 +347,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
+  ui.dictionaryDebug->setChecked( p.dictionaryDebug );
 
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
@@ -509,6 +510,7 @@ Config::Preferences Preferences::getPreferences()
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
+  p.dictionaryDebug = ui.dictionaryDebug->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 

@@ -756,7 +756,7 @@ void MddResourceRequest::run()
         hasAnyData = true;
         data.resize( bytes->size() );
         memcpy( &data.front(), bytes->constData(), bytes->size() );
-        GlobalBroadcaster::instance()->cache.insert( unique_key, bytes );
+        GlobalBroadcaster::instance()->insertCache( unique_key, bytes );
         break;
       }
     }
@@ -790,7 +790,7 @@ void MddResourceRequest::run()
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
         //cache the processed css result to avoid process again.
-        GlobalBroadcaster::instance()->cache.insert( unique_key, new QByteArray( bytes ) );
+        GlobalBroadcaster::instance()->insertCache( unique_key, new QByteArray( bytes ) );
       }
       if ( Filetype::isNameOfTiff( u8ResourceName ) ) {
         // Convert it
