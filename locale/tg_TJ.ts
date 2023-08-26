@@ -29,7 +29,7 @@
     </message>
     <message>
       <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
+      <translation>(c) 2008-2013 Константин Исаков (ikm@goldendict.org)</translation>
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
