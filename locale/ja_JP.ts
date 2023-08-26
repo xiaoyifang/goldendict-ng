@@ -3633,11 +3633,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>dictionary css/jsでデバッグする場合は、キャッシュを無効にすると簡単になります。</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>辞書デバッグ</translation>
     </message>
   </context>
   <context>
