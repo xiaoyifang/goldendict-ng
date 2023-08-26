@@ -82,10 +82,6 @@
       <translation>摺疊條目</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>使用螢幕取詞功能</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(未命名)</translation>
     </message>
@@ -106,12 +102,12 @@
       <translation>在組 &lt;b&gt;%2&lt;/b&gt;中未找到 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 的翻譯。</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;歡迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 字典查詢程式！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用時請先開啟 &lt;b&gt;編輯 | 字典&lt;/b&gt; 功能表以新增並掃描含有字典檔案的資料夾，然後新增維基百科網站查詢或其它資源，再調整字典排序或建立新的字典群組。&lt;p style=&quot;text-indent:2em&quot;&gt;這些設定都完成以後，就可以開始使用了。您可以使用左側的查詢窗格，或是&lt;a href=&quot;使用螢幕取詞功能&quot;&gt;直接從其它程式中抓詞查詢&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需自訂本程式，可以在 &lt;b&gt;編輯 | 偏好設定&lt;/b&gt; 功能表中檢視可用的設定。所有的設定都有工具提示，如果有不明之處，請先看一下工具提示。&lt;p style=&quot;text-indent:2em&quot;&gt;如果您需要更多說明、有任何疑問、建議，或是想了解其他人的想法，歡迎拜訪此程式的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;官方論壇&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要取得程式更新，歡迎拜訪此程式的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;官方網站&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授權基於 GPLv3 或更高版本。</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(圖片)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
