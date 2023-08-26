@@ -494,6 +494,13 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDiction
 
 } // namespace
 
+bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
+{
+  if ( !node.isNull() )
+    return ( node.toElement().text() == expectedValue );
+  return defaultValue;
+}
+
 Class load()
 {
   QString configName = getConfigFileName();
@@ -1004,6 +1011,8 @@ Class load()
     if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() )
       c.preferences.removeInvalidIndexOnExit =
         ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
+
+    c.preferences.dictionaryDebug = fromConfig2Preference( preferences.namedItem( "dictionaryDebug" ), "1" );
 
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
@@ -1987,6 +1996,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "dictionaryDebug" );
+    opt.appendChild( dd.createTextNode( c.preferences.dictionaryDebug ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );
