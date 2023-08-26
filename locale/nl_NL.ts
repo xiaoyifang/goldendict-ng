@@ -28,10 +28,6 @@
       <translation>Dankbetuigingen:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
@@ -3631,6 +3627,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Gemengd</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Bij het debuggen met woordenboek/js, schakel bepaalde cache uit om het makkelijker te maken.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Woordenboek debug</translation>
     </message>
   </context>
   <context>

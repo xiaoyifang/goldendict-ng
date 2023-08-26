@@ -601,7 +601,8 @@ win32{
 RESOURCES += resources.qrc \
     src/scripts/scripts.qrc \
     icons/flags.qrc \
-    src/stylesheets/css.qrc
+    src/stylesheets/css.qrc \
+    src/ui/resources.qrc
 #EXTRA_TRANSLATIONS += thirdparty/qwebengine_ts/qtwebengine_zh_CN.ts
 TRANSLATIONS += $$files(locale/*.ts)
 

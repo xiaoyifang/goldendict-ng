@@ -28,10 +28,6 @@
       <translation>Avustajat:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Perustuu Qt %1 (%2, %3)</translation>
     </message>
@@ -3635,6 +3631,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Sekalaista</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Kun vianetsintä sanakirjalla css/js, poista tietty välimuisti käytöstä helpottaaksesi sitä.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Sanakirjan virheenkorjaus</translation>
     </message>
   </context>
   <context>

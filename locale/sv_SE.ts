@@ -28,10 +28,6 @@
       <translation>Tack till:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Baserat på Qt %1 (%2, %3)</translation>
     </message>
@@ -3637,6 +3633,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Diverse</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Vid felsökning med ordboken css/js, inaktivera vissa cache för att underlätta det.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Ordbok debug</translation>
     </message>
   </context>
   <context>

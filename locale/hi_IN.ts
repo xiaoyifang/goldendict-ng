@@ -28,10 +28,6 @@
       <translation>आभार :</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© २००८-२०१३ कोंस्टेंटिन इसाकोव (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Qt %1 (%2, %3) पर आधारित</translation>
     </message>
@@ -3619,6 +3615,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>मिश्रित</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>डिक्शनरी सीएसएस/जेएस के साथ डिबगिंग करते समय, इसे आसान बनाने के लिए कुछ कैश को अक्षम करें।</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>शब्दकोश डीबग</translation>
     </message>
   </context>
   <context>
