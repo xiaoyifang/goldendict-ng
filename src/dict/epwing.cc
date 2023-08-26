@@ -1175,6 +1175,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         dict.setSubBook( sb );
 
         dir = QString::fromStdString( mainDirectory ) + Utils::Fs::separator() + dict.getCurrentSubBookDirectory();
+        QDir _dir(dir);
+        if(!_dir.exists()){
+          continue;
+        }
 
         Epwing::Book::EpwingBook::collectFilenames( dir, dictFiles );
 
@@ -1185,7 +1189,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           dictFiles.push_back( fontSubName.toStdString() );
         else {
           //to make the subbook in different index.
-          dictFiles.push_back( QString::number( sb ).toStdString() );
+          auto virtual_file= QString::fromStdString( mainDirectory ) + QDir::separator()+QString::number( sb );
+          dictFiles.push_back(virtual_file.toStdString() );
         }
 
         // Check if we need to rebuid the index
