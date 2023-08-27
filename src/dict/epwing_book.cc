@@ -598,29 +598,29 @@ QString EpwingBook::getCurrentSubBookDirectory()
 
   QString subDir = QString::fromLocal8Bit( buffer );
 
-  return repairSubBookDirectory(subDir);
+  return repairSubBookDirectory( subDir );
 }
 
-QString EpwingBook::repairSubBookDirectory(QString subBookDir)
+QString EpwingBook::repairSubBookDirectory( QString subBookDir )
 {
   char path[ EB_MAX_PATH_LENGTH + 1 ];
-  EB_Error_Code error_code = eb_path(&book,path);
-  if(error_code!=EB_SUCCESS)
+  EB_Error_Code error_code = eb_path( &book, path );
+  if ( error_code != EB_SUCCESS )
     return subBookDir;
 
   const QString & mainDirectory = QString::fromLocal8Bit( path );
   QDir mainDir( mainDirectory );
   QStringList allIdxFiles = mainDir.entryList( QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
 
-  if(allIdxFiles.contains(subBookDir)){
+  if ( allIdxFiles.contains( subBookDir ) ) {
     return subBookDir;
   }
 
-  qDebug()<<"Epwing: can not found subbook directory,try to fix automatically, dir=>"<<subBookDir;
+  qDebug() << "Epwing: can not found subbook directory,try to fix automatically, dir=>" << subBookDir;
 
   for ( const auto & file : allIdxFiles ) {
-    if ( file.compare( subBookDir,Qt::CaseInsensitive)==0 ) {
-      qDebug()<<"Epwing: found "<<file;
+    if ( file.compare( subBookDir, Qt::CaseInsensitive ) == 0 ) {
+      qDebug() << "Epwing: found " << file;
       return file;
     }
   }
