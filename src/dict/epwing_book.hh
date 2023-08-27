@@ -239,6 +239,7 @@ public:
   bool getMatches( QString word, QVector< QString > & matches );
 
   bool getArticlePos( QString word, QVector< int > & pages, QVector< int > & offsets );
+  QString repairSubBookDirectory( QString subBookDir );
 };
 
 struct EContainer

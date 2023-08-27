@@ -1208,7 +1208,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           File::Class idx( indexFile, "wb" );
 
-          IdxHeader idxHeader;
+          IdxHeader idxHeader{};
 
           memset( &idxHeader, 0, sizeof( idxHeader ) );
 
