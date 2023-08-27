@@ -1187,13 +1187,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         QFileInfo info( fontSubName );
         if ( info.exists() && info.isFile() )
           dictFiles.push_back( fontSubName.toStdString() );
-        else {
-          //to make the subbook in different index.
-          auto virtual_file = QString::fromStdString( mainDirectory ) + QDir::separator() + QString::number( sb );
-          dictFiles.push_back( virtual_file.toStdString() );
-        }
 
-        // Check if we need to rebuid the index
+        // Check if we need to rebuild the index
 
         string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1208,7 +1203,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           File::Class idx( indexFile, "wb" );
 
-          IdxHeader idxHeader;
+          IdxHeader idxHeader{};
 
           memset( &idxHeader, 0, sizeof( idxHeader ) );
 
