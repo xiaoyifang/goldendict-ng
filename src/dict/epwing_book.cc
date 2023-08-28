@@ -872,12 +872,10 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
   }
 
   ret = eb_forward_text( &book, &appendix );
-  while ( ret == EB_ERR_END_OF_CONTENT ) {
-    ret = eb_tell_text( &book, &startPos );
-    if ( ret != EB_SUCCESS )
-      break;
+  while ( ret != EB_SUCCESS ) {
+    
 
-    if ( startPos.page >= book.subbook_current->text.end_page )
+    if ( startPos.page+startPos.offset/EB_SIZE_PAGE >= book.subbook_current->text.end_page )
       return EB_ERR_END_OF_CONTENT;
 
     startPos.offset += 2;
@@ -965,8 +963,11 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     head.page   = pos.page;
     head.offset = pos.offset;
 
-    if ( !readHeadword( pos, head.headword, true ) )
-      throw exEbLibrary( error_string.toUtf8().data() );
+    if ( !readHeadword( pos, head.headword, true ) ) {
+      qDebug() << error_string;
+      continue;
+      // throw exEbLibrary( error_string.toUtf8().data() );
+    }
 
     if ( head.headword.isEmpty() )
       continue;
