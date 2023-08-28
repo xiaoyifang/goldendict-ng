@@ -194,22 +194,12 @@ qmake "CONFIG+=use_breakpad"
 
 ### Build with VS2019
 
-Install `QT tool for VS` from VS extension
+VS2019 support CMake project, open the source directory directly then you go.
 
-#### steps: 
-
-- configure qt path
-toolbar Extensions=>Qt VS Tools=>Options=>versions.
-add qt installation folder
-
-- Open pro project file directly throughttoolbar Extensions=>Qt VS Tools=>Open Qt Project file(.pro)
-
-ref: 
-[1](https://blog.csdn.net/qq_43493715/article/details/109839046)
 
 #### build
 
-after successfully build,in the target folder(where goldendict.exe resides) ,run windeployqt which copy all the necessary files to this folder.
-and copy other missing dlls to this folder. you can click the exe to verify the application can run .
+After successful build, run WinDeployQT in the target folder (where GoldenDict.exe is located), which will copy all necessary files to this folder.
+You can click on the exe to verify that the application can be run.
 
-after alll this ,you can debug the application normally.
+After all this, you can debug the application normally.
