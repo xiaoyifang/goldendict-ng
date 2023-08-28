@@ -199,7 +199,7 @@ VS2019 support CMake project, open the source directory directly then you go.
 
 #### build
 
-After successful build, run WinDeployQT in the target folder (where GoldenDict.exe is located), which will copy all necessary files to this folder.
+After successful build, run windeployqt.exe(bundled with Qt installation) in the target folder (where GoldenDict.exe is located), which will copy all necessary files to this folder.
 You can click on the exe to verify that the application can be run.
 
 After all this, you can debug the application normally.
