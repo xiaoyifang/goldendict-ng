@@ -902,19 +902,19 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
     throw exEbLibrary( error_string.toUtf8().data() );
   }
 
-  ret = forwardText( pos );
-  if ( ret != EB_SUCCESS ) {
-    setErrorString( "forwardText", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
-  }
-
-  eb_backward_text( &book, &appendix );
-
-  ret = eb_tell_text( &book, &pos );
-  if ( ret != EB_SUCCESS ) {
-    setErrorString( "eb_tell_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
-  }
+  // ret = forwardText( pos );
+  // if ( ret != EB_SUCCESS ) {
+  //   setErrorString( "forwardText", ret );
+  //   throw exEbLibrary( error_string.toUtf8().data() );
+  // }
+  //
+  // eb_backward_text( &book, &appendix );
+  //
+  // ret = eb_tell_text( &book, &pos );
+  // if ( ret != EB_SUCCESS ) {
+  //   setErrorString( "eb_tell_text", ret );
+  //   throw exEbLibrary( error_string.toUtf8().data() );
+  // }
 
   currentPosition        = pos;
   indexHeadwordsPosition = pos;
