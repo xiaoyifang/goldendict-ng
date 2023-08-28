@@ -873,12 +873,13 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
 
   ret = eb_forward_text( &book, &appendix );
   while ( ret != EB_SUCCESS ) {
-
-
-    if ( startPos.page + startPos.offset / EB_SIZE_PAGE >= book.subbook_current->text.end_page )
+    
+    if ( startPos.page  >= book.subbook_current->text.end_page )
       return EB_ERR_END_OF_CONTENT;
 
-    startPos.offset += 2;
+    const auto offset = startPos.offset + 2;
+    startPos.offset = offset%EB_SIZE_PAGE;
+    startPos.page += offset / EB_SIZE_PAGE;
     currentPosition = startPos;
 
     ret = eb_seek_text( &book, &startPos );
@@ -964,7 +965,7 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     head.offset = pos.offset;
 
     if ( !readHeadword( pos, head.headword, true ) ) {
-      qDebug() << error_string;
+      qDebug() << "Epwing: ignore the following error=> " <<error_string;
       continue;
       // throw exEbLibrary( error_string.toUtf8().data() );
     }
