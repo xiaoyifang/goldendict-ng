@@ -85,6 +85,7 @@ class EpwingBook
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static QMutex libMutex;
+  QVector< EpwingHeadword > candidateItems;
 
   QString createCacheDir( QString const & dir );
 
@@ -184,6 +185,8 @@ public:
 
   // Make name for resource
   QString makeFName( QString const & ext, int page, int offset ) const;
+  QByteArray handleCandidate( EB_Hook_Code code, const unsigned * argv );
+  QString currentCandidate();
 
   // Store all files in Epwing folder
   static void collectFilenames( QString const & directory, vector< string > & files );
@@ -199,10 +202,12 @@ public:
   QString getCurrentSubBookDirectory();
 
   QString copyright();
+  QList<EpwingHeadword> candidate( int page, int offset );
   QString title();
 
   // Seek to first article
-  void getFirstHeadword( EpwingHeadword & head );
+  bool getFirstHeadword( EpwingHeadword & head );
+  bool haveMenu();
   bool getMenu( EpwingHeadword & head );
 
   // Find next headword and article position

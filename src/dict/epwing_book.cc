@@ -61,6 +61,7 @@ HookFunc( hook_mpeg );
 HookFunc( hook_narrow_font );
 HookFunc( hook_wide_font );
 HookFunc( hook_reference );
+HookFunc( hook_candidate );
 
 const EB_Hook hooks[] = { { EB_HOOK_NEWLINE, hook_newline },
                           { EB_HOOK_ISO8859_1, hook_iso8859_1 },
@@ -89,6 +90,7 @@ const EB_Hook hooks[] = { { EB_HOOK_NEWLINE, hook_newline },
                           { EB_HOOK_WIDE_FONT, hook_wide_font },
                           { EB_HOOK_BEGIN_REFERENCE, hook_reference },
                           { EB_HOOK_END_REFERENCE, hook_reference },
+                          { EB_HOOK_END_CANDIDATE_GROUP, hook_candidate },
                           { EB_HOOK_NULL, NULL } };
 
 const EB_Hook refHooks[] = {
@@ -371,6 +373,21 @@ hook_reference( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code co
     return EB_SUCCESS;
 
   QByteArray str = cn->book->handleReference( code, argv );
+  if ( !str.isEmpty() )
+    eb_write_text( book, str.data(), str.size() );
+
+  return EB_SUCCESS;
+}
+
+EB_Error_Code
+hook_candidate( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code code, int, const unsigned int * argv )
+{
+  EContainer * cn = static_cast< EContainer * >( container );
+
+  if ( cn->textOnly )
+    return EB_SUCCESS;
+
+  QByteArray str = cn->book->handleCandidate( code, argv );
   if ( !str.isEmpty() )
     eb_write_text( book, str.data(), str.size() );
 
@@ -671,9 +688,17 @@ QString EpwingBook::copyright()
   return getText( position.page, position.offset, true );
 }
 
+QList< EpwingHeadword > EpwingBook::candidate( int page, int offset) {
+  //clear candidateItems in getText;
+  candidateItems.clear();
+  getText( page, offset, false );
+  return candidateItems;
+}
+
 QString EpwingBook::getText( int page, int offset, bool text_only )
 {
   error_string.clear();
+  candidateItems.clear();
 
   seekBookThrow( page, offset );
 
@@ -890,7 +915,7 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
   return ret;
 }
 
-void EpwingBook::getFirstHeadword( EpwingHeadword & head )
+bool EpwingBook::getFirstHeadword( EpwingHeadword & head )
 {
   error_string.clear();
 
@@ -899,18 +924,15 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   EB_Error_Code ret = eb_text( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
+    qWarning() << error_string;
+    return false;
   }
 
   ret = forwardText( pos );
-  //the book does not contain text,use menu instead if any.
   if ( ret != EB_SUCCESS ) {
-    //if can not get menu , throw as before.
-    if ( !getMenu( head ) ) {
-      setErrorString( "getFirstHeadword", ret );
-      throw exEbLibrary( error_string.toUtf8().data() );
-    }
-    return;
+    setErrorString( "getFirstHeadword", ret );
+    qWarning() << error_string;
+    return false;
   }
 
   eb_backward_text( &book, &appendix );
@@ -918,7 +940,8 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   ret = eb_tell_text( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_tell_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
+    qWarning() << error_string;
+    return false;
   }
 
   currentPosition        = pos;
@@ -927,27 +950,39 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   head.page   = pos.page;
   head.offset = pos.offset;
 
-  if ( !readHeadword( pos, head.headword, true ) )
-    throw exEbLibrary( error_string.toUtf8().data() );
+  if ( !readHeadword( pos, head.headword, true ) ) {
+    qWarning() << error_string;
+    return false;
+  }
 
   fixHeadword( head.headword );
 
   allHeadwordPositions[ ( (uint64_t)pos.page ) << 32 | ( pos.offset ) ] = true;
+  return true;
+}
+
+bool EpwingBook::haveMenu( )
+{
+  error_string.clear();
+
+  int ret = eb_have_menu( &book );
+  return ret == 1;
+  
 }
 
 bool EpwingBook::getMenu( EpwingHeadword & head )
 {
   error_string.clear();
 
-  EB_Position pos;
-
-  int ret = eb_have_menu( &book );
-  if ( ret != 1 ) {
+  if ( !haveMenu() ) {
     return false;
   }
 
-  ret = eb_menu( &book, &pos );
+  EB_Position pos;
+
+  EB_Error_Code ret = eb_menu( &book, &pos );
   if ( ret != EB_SUCCESS ) {
+    setErrorString( "getMenu", ret );
     return false;
   }
 
@@ -1801,6 +1836,27 @@ QByteArray EpwingBook::handleReference( EB_Hook_Code code, const unsigned int * 
   refCloseCount += 1;
 
   return str.toUtf8();
+}
+
+QByteArray EpwingBook::handleCandidate( EB_Hook_Code code, const unsigned int * argv )
+{
+  EpwingHeadword w_headword;
+  w_headword.headword = currentCandidate();
+  w_headword.page = argv[ 1 ];
+  w_headword.offset = argv[ 2 ];
+
+  candidateItems << w_headword;
+  return QByteArray{};
+}
+
+QString EpwingBook::currentCandidate()
+{
+  const char * s = eb_current_candidate( &book );
+  if ( book.character_code == EB_CHARCODE_ISO8859_1 )
+    return QString::fromLatin1( s );
+  if ( codec_Euc )
+    return codec_Euc->toUnicode( s );
+  return QString{};
 }
 
 bool EpwingBook::getMatches( QString word, QVector< QString > & matches )

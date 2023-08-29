@@ -1220,16 +1220,26 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           ChunkedStorage::Writer chunks( idx );
 
           Epwing::Book::EpwingHeadword head;
-
-          dict.getFirstHeadword( head );
-
           int wordCount    = 0;
           int articleCount = 0;
-
-          for ( ;; ) {
-            addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
-            if ( !dict.getNextHeadword( head ) )
-              break;
+          if ( dict.getFirstHeadword( head ) ) {
+            for ( ;; ) {
+              addWordToChunks( head, chunks, indexedWords, wordCount, articleCount );
+              if ( !dict.getNextHeadword( head ) )
+                break;
+            }
+          }
+          else {
+            //the book does not contain text,use menu instead if any.
+            if(dict.getMenu( head )) {
+              auto candidateItems = dict.candidate( head.page, head.offset );
+              for ( Epwing::Book::EpwingHeadword word: candidateItems ) {
+                addWordToChunks( word, chunks, indexedWords, wordCount, articleCount );
+              }
+            }
+            else {
+              throw exEbLibrary( dict.errorString().toUtf8().data() );
+            }
           }
 
           dict.clearBuffers();
