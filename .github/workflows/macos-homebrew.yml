@@ -76,10 +76,8 @@ jobs:
           brew install create-dmg
           brew install xapian
           brew install libzim
-          # brew reinstall icu4c
+
           brew install dylibbundler
-          find /opt -name libicudata.72.dylib 
-          find /usr/local -name libicudata.72.dylib 
           find /opt -name libzstd.1.dylib 
           find /usr/local -name libzstd.1.dylib 
           brew install dylibbundler
