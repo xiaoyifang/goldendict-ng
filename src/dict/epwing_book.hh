@@ -85,7 +85,7 @@ class EpwingBook
   QVector< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static QMutex libMutex;
-  QVector< EpwingHeadword > candidateItems;
+  QList< EpwingHeadword > candidateItems;
 
   QString createCacheDir( QString const & dir );
 
@@ -202,7 +202,7 @@ public:
   QString getCurrentSubBookDirectory();
 
   QString copyright();
-  QList<EpwingHeadword> candidate( int page, int offset );
+  QList< EpwingHeadword > candidate( int page, int offset );
   QString title();
 
   // Seek to first article

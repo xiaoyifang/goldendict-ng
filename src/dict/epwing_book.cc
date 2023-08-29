@@ -688,7 +688,8 @@ QString EpwingBook::copyright()
   return getText( position.page, position.offset, true );
 }
 
-QList< EpwingHeadword > EpwingBook::candidate( int page, int offset) {
+QList< EpwingHeadword > EpwingBook::candidate( int page, int offset )
+{
   //clear candidateItems in getText;
   candidateItems.clear();
   getText( page, offset, false );
@@ -961,13 +962,12 @@ bool EpwingBook::getFirstHeadword( EpwingHeadword & head )
   return true;
 }
 
-bool EpwingBook::haveMenu( )
+bool EpwingBook::haveMenu()
 {
   error_string.clear();
 
   int ret = eb_have_menu( &book );
   return ret == 1;
-  
 }
 
 bool EpwingBook::getMenu( EpwingHeadword & head )
@@ -1037,7 +1037,6 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     if ( !readHeadword( pos, head.headword, true ) ) {
       qDebug() << "Epwing: ignore the following error=> " << error_string;
       continue;
-      // throw exEbLibrary( error_string.toUtf8().data() );
     }
 
     if ( head.headword.isEmpty() )
@@ -1842,8 +1841,8 @@ QByteArray EpwingBook::handleCandidate( EB_Hook_Code code, const unsigned int * 
 {
   EpwingHeadword w_headword;
   w_headword.headword = currentCandidate();
-  w_headword.page = argv[ 1 ];
-  w_headword.offset = argv[ 2 ];
+  w_headword.page     = argv[ 1 ];
+  w_headword.offset   = argv[ 2 ];
 
   candidateItems << w_headword;
   return QByteArray{};

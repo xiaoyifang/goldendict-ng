@@ -1231,9 +1231,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           }
           else {
             //the book does not contain text,use menu instead if any.
-            if(dict.getMenu( head )) {
+            if ( dict.getMenu( head ) ) {
               auto candidateItems = dict.candidate( head.page, head.offset );
-              for ( Epwing::Book::EpwingHeadword word: candidateItems ) {
+              for ( Epwing::Book::EpwingHeadword word : candidateItems ) {
                 addWordToChunks( word, chunks, indexedWords, wordCount, articleCount );
               }
             }
