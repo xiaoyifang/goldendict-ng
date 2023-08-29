@@ -902,19 +902,24 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
     throw exEbLibrary( error_string.toUtf8().data() );
   }
 
-  // ret = forwardText( pos );
-  // if ( ret != EB_SUCCESS ) {
-  //   setErrorString( "forwardText", ret );
-  //   throw exEbLibrary( error_string.toUtf8().data() );
-  // }
-  //
-  // eb_backward_text( &book, &appendix );
-  //
-  // ret = eb_tell_text( &book, &pos );
-  // if ( ret != EB_SUCCESS ) {
-  //   setErrorString( "eb_tell_text", ret );
-  //   throw exEbLibrary( error_string.toUtf8().data() );
-  // }
+  ret = forwardText( pos );
+  //the book does not contain text,use menu instead if any.
+  if ( ret != EB_SUCCESS ) {
+    //if can not get menu , throw as before.
+    if ( !getMenu( head ) ) {
+      setErrorString( "getFirstHeadword", ret );
+      throw exEbLibrary( error_string.toUtf8().data() );
+    }
+    return;
+  }
+  
+  eb_backward_text( &book, &appendix );
+  
+  ret = eb_tell_text( &book, &pos );
+  if ( ret != EB_SUCCESS ) {
+    setErrorString( "eb_tell_text", ret );
+    throw exEbLibrary( error_string.toUtf8().data() );
+  }
 
   currentPosition        = pos;
   indexHeadwordsPosition = pos;
@@ -927,8 +932,38 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
 
   fixHeadword( head.headword );
 
-  EWPos epos( pos.page, pos.offset );
   allHeadwordPositions[ ( (uint64_t)pos.page ) << 32 | ( pos.offset ) ] = true;
+}
+
+bool EpwingBook::getMenu( EpwingHeadword & head )
+{
+  error_string.clear();
+
+  EB_Position pos;
+
+  int ret = eb_have_menu( &book);
+  if ( ret != 1 ) {
+    return false;
+  }
+
+  ret = eb_menu(&book, &pos );
+  if ( ret != EB_SUCCESS ) {
+    return false;
+  }
+
+  currentPosition        = pos;
+  indexHeadwordsPosition = pos;
+
+  head.page   = pos.page;
+  head.offset = pos.offset;
+
+  if ( !readHeadword( pos, head.headword, true ) )
+    return false;
+
+  fixHeadword( head.headword );
+
+  allHeadwordPositions[ ( (uint64_t)pos.page ) << 32 | ( pos.offset ) ] = true;
+  return true;
 }
 
 bool EpwingBook::getNextHeadword( EpwingHeadword & head )

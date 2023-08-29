@@ -203,6 +203,7 @@ public:
 
   // Seek to first article
   void getFirstHeadword( EpwingHeadword & head );
+  bool getMenu( EpwingHeadword & head );
 
   // Find next headword and article position
   bool getNextHeadword( EpwingHeadword & head );
