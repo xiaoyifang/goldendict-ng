@@ -912,9 +912,9 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
     }
     return;
   }
-  
+
   eb_backward_text( &book, &appendix );
-  
+
   ret = eb_tell_text( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_tell_text", ret );
@@ -941,12 +941,12 @@ bool EpwingBook::getMenu( EpwingHeadword & head )
 
   EB_Position pos;
 
-  int ret = eb_have_menu( &book);
+  int ret = eb_have_menu( &book );
   if ( ret != 1 ) {
     return false;
   }
 
-  ret = eb_menu(&book, &pos );
+  ret = eb_menu( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     return false;
   }
