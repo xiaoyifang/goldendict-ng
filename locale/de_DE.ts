@@ -49,7 +49,7 @@
     </message>
     <message>
       <source>anki: post to anki success</source>
-      <translation>anki: Beitrag zu anki Erfolg</translation>
+      <translation>Anki: Beitrag zu Anki erfolgreich</translation>
     </message>
   </context>
   <context>
