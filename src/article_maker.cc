@@ -437,7 +437,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & url ) const
 {
   string result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
-    + "<a href=\"javascript: if(history.length>2) history.go(-1)\">" + "<img src=\"" + url + "\" /></a>"
+    + R"lit(<a href="javascript: if(history.length>2) history.go(-1)">)lit" + R"(<img src=")" + url + R"(" /></a>)"
     + "</body></html>";
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
@@ -490,9 +490,8 @@ ArticleRequest::ArticleRequest( QString const & word,
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group.id, word } );
 
   // Accumulate main forms
-  for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
-    sptr< Dictionary::WordSearchRequest > s =
-      activeDicts[ x ]->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
+  for ( const auto & activeDict : activeDicts ) {
+    auto const s = activeDict->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
 
     connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
@@ -508,7 +507,7 @@ void ArticleRequest::altSearchFinished()
     return;
 
   // Check every request for finishing
-  for ( list< sptr< Dictionary::WordSearchRequest > >::iterator i = altSearches.begin(); i != altSearches.end(); ) {
+  for ( auto i = altSearches.begin(); i != altSearches.end(); ) {
     if ( ( *i )->isFinished() ) {
       // This one's finished
       for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x )
@@ -532,8 +531,8 @@ void ArticleRequest::altSearchFinished()
     vector< wstring > altsVector( alts.begin(), alts.end() );
 
 #ifdef QT_DEBUG
-    for ( unsigned x = 0; x < altsVector.size(); ++x ) {
-      qDebug() << "Alt:" << QString::fromStdU32String( altsVector[ x ] );
+    for ( const auto & x : altsVector ) {
+      qDebug() << "Alt:" << QString::fromStdU32String( x );
     }
 #endif
 
@@ -542,12 +541,12 @@ void ArticleRequest::altSearchFinished()
     if ( activeDicts.size() <= 1 )
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
 
-    for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
+    for ( const auto & activeDict : activeDicts ) {
       try {
-        sptr< Dictionary::DataRequest > r = activeDicts[ x ]->getArticle(
+        sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,
-          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
+          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
           ignoreDiacritics );
 
         connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
@@ -555,7 +554,7 @@ void ArticleRequest::altSearchFinished()
         bodyRequests.push_back( r );
       }
       catch ( std::exception & e ) {
-        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDicts[ x ]->getName().c_str() );
+        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDict->getName().c_str() );
       }
     }
 
