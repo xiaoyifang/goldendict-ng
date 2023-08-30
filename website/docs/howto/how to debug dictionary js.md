@@ -1,5 +1,14 @@
 # How to debug dictionary javascript
 
+- [How to debug dictionary javascript](#how-to-debug-dictionary-javascript)
+  - [background](#background)
+  - [goldendict-ng inspector](#goldendict-ng-inspector)
+  - [How to navigate to the specified element](#how-to-navigate-to-the-specified-element)
+  - [Modify the css style](#modify-the-css-style)
+  - [check javascript events](#check-javascript-events)
+  - [reproduce the issue in the goldendit](#reproduce-the-issue-in-the-goldendit)
+
+
 ## background
 When some js functions do not work as expected, this article tries to give a debug solution to pinpoint the problem.
 
