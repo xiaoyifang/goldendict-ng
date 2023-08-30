@@ -387,9 +387,10 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
     unmutedDicts.reserve( activeDicts.size() );
 
-    for ( unsigned x = 0; x < activeDicts.size(); ++x )
+    for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
       if ( !mutedDicts.contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) )
         unmutedDicts.push_back( activeDicts[ x ] );
+    }
 
     return std::make_shared< ArticleRequest >(
       word,

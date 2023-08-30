@@ -312,7 +312,8 @@ string Epwing::EpwingDictionary::epwing_previous_button( const int & articlePage
 {
   QString previousButton = QString( "p%1At%2" ).arg( articlePage ).arg( articleOffset );
   string previousLink    = R"(<p><a class="epwing_previous_page" href="gdlookup://localhost/)"
-    + previousButton.toStdString() + "\">" + tr( "Previous Page" ).toStdString() + "</a></p>";
+    + previousButton.toStdString() + "?dictionaries=" + getId() + "\">" + tr( "Previous Page" ).toStdString()
+    + "</a></p>";
 
   return previousLink;
 }
@@ -348,7 +349,7 @@ void EpwingDictionary::loadArticleNextPage( string & articleHeadword,
 string Epwing::EpwingDictionary::epwing_next_button( const int & articlePage, const int & articleOffset )
 {
   QString refLink = QString( "r%1At%2" ).arg( articlePage ).arg( articleOffset );
-  string nextLink = R"(<p><a class="epwing_next_page" href="gdlookup://localhost/)" + refLink.toStdString() + "\">"
+  string nextLink = R"(<p><a class="epwing_next_page" href="gdlookup://localhost/)" + refLink.toStdString() + "?dictionaries="+getId()+"\">"
     + tr( "Next Page" ).toStdString() + "</a></p>";
 
   return nextLink;
