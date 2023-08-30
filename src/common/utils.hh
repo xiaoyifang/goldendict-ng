@@ -39,7 +39,7 @@ inline QString rstrip( const QString & str )
 }
 
 std::string c_string( const QString & str );
-bool endsWithIgnoreCase(string str1, string str2 );
+bool endsWithIgnoreCase( const string& str1, string str2 );
 /**
  * remove punctuation , space, symbol
  *
