@@ -15,7 +15,7 @@ std::string c_string( const QString & str )
   return std::string( str.toUtf8().constData() );
 }
 
-bool endsWithIgnoreCase( const string& str1, string str2 )
+bool endsWithIgnoreCase( const string & str1, string str2 )
 {
   return ( str1.size() >= (unsigned)str2.size() )
     && ( strcasecmp( str1.c_str() + ( str1.size() - str2.size() ), str2.data() ) == 0 );
