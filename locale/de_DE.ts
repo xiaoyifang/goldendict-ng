@@ -5,7 +5,7 @@
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>Über</translation>
+      <translation>Info</translation>
     </message>
     <message>
       <source>GoldenDict-ng dictionary lookup program, version </source>
@@ -13,7 +13,7 @@
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Lizensiert unter der GNU GPLv3 oder neuer</translation>
+      <translation>Lizenziert unter der GNU GPLv3 oder neuer</translation>
     </message>
     <message>
       <source>Copy version info</source>
@@ -21,7 +21,7 @@
     </message>
     <message>
       <source>Copy dictionaries list</source>
-      <translation>Wörterbücher kopieren</translation>
+      <translation>Wörterbuchliste kopieren</translation>
     </message>
     <message>
       <source>Credits:</source>
@@ -36,7 +36,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
+      <translation>Anki: eine Karte ohne Wort kann nicht erstellt werden</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
       <source>anki: post to anki success</source>
-      <translation>anki: Beitrag zu anki Erfolg</translation>
+      <translation>Anki: Beitrag zu Anki erfolgreich</translation>
     </message>
   </context>
   <context>

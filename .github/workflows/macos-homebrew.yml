@@ -76,10 +76,8 @@ jobs:
           brew install create-dmg
           brew install xapian
           brew install libzim
-          # brew reinstall icu4c
+
           brew install dylibbundler
-          find /opt -name libicudata.72.dylib 
-          find /usr/local -name libicudata.72.dylib 
           find /opt -name libzstd.1.dylib 
           find /usr/local -name libzstd.1.dylib 
           brew install dylibbundler
@@ -232,7 +230,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages.
+            Linux users can use AppImages or Flatpak.
+            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 
