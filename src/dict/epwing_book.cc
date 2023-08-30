@@ -581,7 +581,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( mainCacheDir ) ) {
       gdWarning( "Epwing: can't create cache directory \"%s\"", mainCacheDir.toUtf8().data() );
-      return QString();
+      return {};
     }
   }
 
@@ -590,7 +590,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( cacheDir ) ) {
       gdWarning( "Epwing: can't create cache directory \"%s\"", cacheDir.toUtf8().data() );
-      return QString();
+      return {};
     }
   }
   return cacheDir;
@@ -666,7 +666,7 @@ QString EpwingBook::title()
   if ( codec_Euc )
     return codec_Euc->toUnicode( buf );
 
-  return QString();
+  return {};
 }
 
 QString EpwingBook::copyright()
@@ -674,7 +674,7 @@ QString EpwingBook::copyright()
   error_string.clear();
 
   if ( !eb_have_copyright( &book ) )
-    return QString();
+    return {};
 
   EB_Position position;
   EB_Error_Code ret = eb_copyright( &book, &position );
@@ -727,7 +727,7 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
     if ( buf.length() > TextSizeLimit ) {
       error_string         = "Data too large";
       currentPosition.page = 0;
-      return QString();
+      return {};
     }
   }
 
@@ -847,7 +847,6 @@ QString EpwingBook::getPreviousTextWithLength( int page, int offset, int total, 
   finalizeText( text );
   return text;
 }
-
 
 void EpwingBook::getReferencesFromText( int page, int offset )
 {
@@ -1004,7 +1003,6 @@ bool EpwingBook::getMenu( EpwingHeadword & head )
 bool EpwingBook::getNextHeadword( EpwingHeadword & head )
 {
   EB_Position pos;
-
 
   // No queued positions - forward to next article
 
