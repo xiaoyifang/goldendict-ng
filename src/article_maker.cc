@@ -777,13 +777,11 @@ void ArticleRequest::bodyFinished()
       }
       else {
         footer += R"(<div class="empty-space"></div>)";
-
         footer += "</body></html>";
       }
 
       appendString( footer );
     }
-
 
     if ( stemmedWordFinder.get() ) {
       update();

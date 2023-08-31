@@ -1145,8 +1145,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files other than "catalogs" to speed up the scanning
 
-    if ( fileName.size() < (unsigned)catName.size()
-         || strcasecmp( fileName.c_str() + ( fileName.size() - catName.size() ), catName.data() ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, catName.data() ) )
       continue;
 
     int ndir = fileName.size() - catName.size();

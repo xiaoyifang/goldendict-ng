@@ -1,5 +1,5 @@
 #include <string>
-
+#ifdef _MSC_VER
 #if !defined(strcasecmp)
 #  define strcasecmp  _strcmpi
 #endif
@@ -10,5 +10,6 @@
 #ifndef _SSIZE_T
 #define _SSIZE_T
 #define ssize_t long
+#endif
 #endif
 
