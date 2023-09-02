@@ -119,7 +119,7 @@ Entry::Entry( File::Class & f )
 
   // Skip zero or ff, or just ff.
 
-  if ( uint8_t x = f.read< uint8_t >() ) {
+  if ( auto x = f.read< uint8_t >() ) {
     if ( x != 0xFF )
       throw exInvalidData();
   }
@@ -291,7 +291,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   result += "</table>";
 
-  Dictionary::DataRequestInstant * ret = new Dictionary::DataRequestInstant( true );
+  auto * ret = new Dictionary::DataRequestInstant( true );
 
   ret->getData().resize( result.size() );
 
@@ -321,14 +321,14 @@ struct ShiftedVorbis
 
 size_t ShiftedVorbis::read( void * ptr, size_t size, size_t nmemb, void * datasource )
 {
-  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
+  auto * sv = (ShiftedVorbis *)datasource;
 
   return sv->f.read( reinterpret_cast< char * >( ptr ), size * nmemb );
 }
 
 int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
 {
-  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
+  auto * sv = (ShiftedVorbis *)datasource;
 
   if ( whence == SEEK_SET )
     offset += sv->shift;
@@ -344,7 +344,7 @@ int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
 
 long ShiftedVorbis::tell( void * datasource )
 {
-  ShiftedVorbis * sv = (ShiftedVorbis *)datasource;
+  auto * sv = (ShiftedVorbis *)datasource;
   long result        = sv->f.pos();
 
   if ( result != -1 )
@@ -381,7 +381,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 {
   // See if the name ends in .wav. Remove that extension then
 
-  string strippedName = ( name.size() > 3 && ( name.compare( name.size() - 4, 4, ".wav" ) == 0 ) ) ?
+  string strippedName = Utils::endsWithIgnoreCase( name,  ".wav" )  ?
     string( name, 0, name.size() - 4 ) :
     name;
 
@@ -423,7 +423,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   data.resize( sizeof( WavHeader ) + e.samplesLength * 2 );
 
-  WavHeader * wh = (WavHeader *)&data.front();
+  auto * wh = (WavHeader *)&data.front();
 
   memset( wh, 0, sizeof( *wh ) );
 
@@ -497,9 +497,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( auto i = fileNames.begin(); i != fileNames.end(); ++i ) {
     /// Only allow .dat and .lsa extensions to save scanning time
-    if ( !Utils::endsWithIgnoreCase( i->c_str(), ".dat" ) && !Utils::endsWithIgnoreCase( i->c_str(), ".lsa" ) )
+    if ( !Utils::endsWithIgnoreCase( *i, ".dat" ) && !Utils::endsWithIgnoreCase( *i, ".lsa" ) )
       continue;
 
     try {
@@ -542,7 +542,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         IndexedWords indexedWords;
 
         /// XXX handle big-endian machines here!
-        uint32_t entriesCount = f.read< uint32_t >();
+        auto entriesCount = f.read< uint32_t >();
 
         GD_DPRINTF( "%s: %u entries\n", i->c_str(), entriesCount );
 
