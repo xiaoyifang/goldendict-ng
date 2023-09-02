@@ -75,7 +75,7 @@ bool indexIsOldOrBad( string const & indexFile )
 
 string stripExtension( string const & str )
 {
-  if ( str.size() > 3 && ( strcasecmp( str.c_str() + ( str.size() - 4 ), ".wav" ) == 0 ) )
+  if ( Utils::endsWithIgnoreCase(str, ".wav" ) )
     return string( str, 0, str.size() - 4 );
   else
     return str;
@@ -494,15 +494,12 @@ void LsaDictionary::loadIcon() noexcept
 vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
                                                       string const & indicesDir,
                                                       Dictionary::Initializing & initializing )
-
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
   for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
     /// Only allow .dat and .lsa extensions to save scanning time
-    if ( i->size() < 4
-         || ( strcasecmp( i->c_str() + ( i->size() - 4 ), ".dat" ) != 0
-              && strcasecmp( i->c_str() + ( i->size() - 4 ), ".lsa" ) != 0 ) )
+    if ( !Utils::endsWithIgnoreCase(i->c_str(),".dat") &&!Utils::endsWithIgnoreCase(i->c_str(),".lsa") )
       continue;
 
     try {

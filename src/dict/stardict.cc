@@ -1775,7 +1775,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   vector< sptr< Dictionary::Class > > dictionaries;
 
   for ( const auto & fileName : fileNames ) {
-    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".ifo" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".ifo" ) )
       continue;
 
     try {
