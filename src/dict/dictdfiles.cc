@@ -550,7 +550,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Only allow .index suffixes
 
-    if ( fileName.size() < 6 || strcasecmp( fileName.c_str() + ( fileName.size() - 6 ), ".index" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".index" ) )
       continue;
 
     try {

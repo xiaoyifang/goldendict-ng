@@ -839,7 +839,7 @@ QString EpwingBook::getPreviousTextWithLength( int page, int offset, int total, 
     if ( buf.length() > TextSizeLimit ) {
       error_string         = "Data too large";
       currentPosition.page = 0;
-      return QString();
+      return {};
     }
   }
 
@@ -1373,6 +1373,7 @@ void EpwingBook::finalizeText( QString & text )
     url.setHost( "localhost" );
 
     url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg( ebpos.offset ) ) );
+    url.setQuery( "dictionaries=" + dictID );
 
     QString link = "<a href=\"" + url.toEncoded() + "\">";
 

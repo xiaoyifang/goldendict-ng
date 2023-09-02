@@ -383,7 +383,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
   for ( const auto & fileName : fileNames ) {
     /// Only allow .zips extension
-    if ( fileName.size() < 5 || strcasecmp( fileName.c_str() + ( fileName.size() - 5 ), ".zips" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) )
       continue;
 
     try {

@@ -1713,10 +1713,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Try .dsl and .dsl.dz suffixes
 
-    bool uncompressedDsl =
-      ( fileName.size() >= 4 && strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".dsl" ) == 0 );
-    if ( !uncompressedDsl
-         && ( fileName.size() < 7 || strcasecmp( fileName.c_str() + ( fileName.size() - 7 ), ".dsl.dz" ) != 0 ) )
+    bool uncompressedDsl = Utils::endsWithIgnoreCase( fileName, ".dsl" );
+    if ( !uncompressedDsl && !Utils::endsWithIgnoreCase( fileName, ".dsl.dz" ) )
       continue;
 
     // Make sure it's not an abbreviation file
