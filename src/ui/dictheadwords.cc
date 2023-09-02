@@ -123,6 +123,7 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   QApplication::setOverrideCursor( Qt::WaitCursor );
 
   dict = dict_;
+  sortedWords.clear();
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
