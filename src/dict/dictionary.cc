@@ -103,8 +103,13 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 long DataRequest::dataSize()
 {
   QMutexLocker _( &dataMutex );
+  long size = hasAnyData ? (long)data.size() : -1;
 
-  return hasAnyData ? (long)data.size() : -1;
+  if ( size == 0 && !quit ) {
+    cond.wait( &dataMutex);
+    size = hasAnyData ? (long)data.size() : -1;
+  }
+  return size;
 }
 
 void DataRequest::appendDataSlice( const void * buffer, size_t size )
@@ -129,12 +134,10 @@ void DataRequest::appendString( std::string_view str )
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  QMutexLocker _( &dataMutex );
-
   if ( size == 0 ) {
-    cond.wait( &dataMutex, 10 );
     return;
   }
+  QMutexLocker _( &dataMutex );
 
   if ( !hasAnyData )
     throw exSliceOutOfRange();
