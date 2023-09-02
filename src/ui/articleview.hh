@@ -401,10 +401,6 @@ private:
   /// frame.
   void isFramedArticle( QString const & article, const std::function< void( bool framed ) > & callback );
 
-  /// Checks if the given link is to be opened externally, as opposed to opening
-  /// it in-place.
-  bool isExternalLink( QUrl const & url );
-
   /// Sees if the last clicked link is from a website frame. If so, changes url
   /// to point to url text translation instead, and saves the original
   /// url to the appropriate "contexts" entry.

@@ -584,11 +584,6 @@ void ArticleView::isFramedArticle( QString const & ca, const std::function< void
                                   } );
 }
 
-bool ArticleView::isExternalLink( QUrl const & url )
-{
-  return Utils::isExternalLink( url );
-}
-
 void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 {
   // Don't try mangling audio urls, even if they are from the framed websites
@@ -796,7 +791,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
     else
       mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
     if ( !mutedDictionaries )
-      return QString();
+      return {};
 
     QStringList mutedDicts;
 
@@ -813,7 +808,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
       return mutedDicts.join( "," );
   }
 
-  return QString();
+  return {};
 }
 
 QStringList ArticleView::getMutedDictionaries( unsigned group )
@@ -830,7 +825,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
     else
       mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
     if ( !mutedDictionaries )
-      return QStringList();
+      return {};
 
     QStringList mutedDicts;
 
@@ -846,7 +841,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
     return mutedDicts;
   }
 
-  return QStringList();
+  return {};
 }
 
 void ArticleView::linkHovered( const QString & link )
@@ -1062,7 +1057,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
-      if ( groups.size() ) {
+      if ( !groups.empty() ) {
         for ( const auto & group : groups )
           if ( group.id == currentGroup ) {
             activeDicts = &( group.dictionaries );
@@ -1211,7 +1206,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       }
     }
   }
-  else if ( isExternalLink( url ) ) {
+  else if ( Utils::isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );
   }
@@ -1526,7 +1521,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   tryMangleWebsiteClickedUrl( targetUrl, contexts );
 
   if ( !targetUrl.isEmpty() ) {
-    if ( !isExternalLink( targetUrl ) ) {
+    if ( !Utils::isExternalLink( targetUrl ) ) {
       followLink = new QAction( tr( "Op&en Link" ), &menu );
       menu.addAction( followLink );
 
@@ -1536,7 +1531,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       }
     }
 
-    if ( isExternalLink( targetUrl ) ) {
+    if ( Utils::isExternalLink( targetUrl ) ) {
       followLinkExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
       menu.addAction( followLinkExternal );
       menu.addAction( webview->pageAction( QWebEnginePage::CopyLinkToClipboard ) );
