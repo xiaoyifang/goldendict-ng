@@ -42,6 +42,9 @@ void Request::finish()
   if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     isFinishedFlag.ref();
     emit finished();
+
+    QMutexLocker _( &dataMutex );
+    cond.wakeAll();
   }
 }
 
@@ -105,8 +108,8 @@ long DataRequest::dataSize()
   QMutexLocker _( &dataMutex );
   long size = hasAnyData ? (long)data.size() : -1;
 
-  if ( size == 0 && !quit ) {
-    cond.wait( &dataMutex);
+  if ( size == 0 && !isFinished() ) {
+    cond.wait( &dataMutex );
     size = hasAnyData ? (long)data.size() : -1;
   }
   return size;
@@ -141,9 +144,6 @@ void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 
   if ( !hasAnyData )
     throw exSliceOutOfRange();
-
-  if ( quit )
-    return;
 
   memcpy( buffer, &data[ offset ], size );
 }
@@ -188,7 +188,7 @@ sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
 
 vector< wstring > Class::getAlternateWritings( wstring const & ) noexcept
 {
-  return vector< wstring >();
+  return {};
 }
 
 QString Class::getContainingFolder() const
@@ -200,7 +200,7 @@ QString Class::getContainingFolder() const
     return fileInfo.absolutePath();
   }
 
-  return QString();
+  return {};
 }
 
 sptr< DataRequest > Class::getResource( string const & /*name*/ )
@@ -221,7 +221,7 @@ QString const & Class::getDescription()
 
 QString Class::getMainFilename()
 {
-  return QString();
+  return {};
 }
 
 QIcon const & Class::getIcon() noexcept
