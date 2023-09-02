@@ -750,7 +750,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .aar to speed up the
     // scanning
-    if ( !Utils::endsWithIgnoreCase(fileName, ".aar" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".aar" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index

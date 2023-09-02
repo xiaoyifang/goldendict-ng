@@ -75,7 +75,7 @@ bool indexIsOldOrBad( string const & indexFile )
 
 string stripExtension( string const & str )
 {
-  if ( Utils::endsWithIgnoreCase(str, ".wav" ) )
+  if ( Utils::endsWithIgnoreCase( str, ".wav" ) )
     return string( str, 0, str.size() - 4 );
   else
     return str;
@@ -499,7 +499,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
   for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
     /// Only allow .dat and .lsa extensions to save scanning time
-    if ( !Utils::endsWithIgnoreCase(i->c_str(),".dat") &&!Utils::endsWithIgnoreCase(i->c_str(),".lsa") )
+    if ( !Utils::endsWithIgnoreCase( i->c_str(), ".dat" ) && !Utils::endsWithIgnoreCase( i->c_str(), ".lsa" ) )
       continue;
 
     try {

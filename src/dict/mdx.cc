@@ -1272,7 +1272,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .mdx to speed up the
     // scanning
-    if ( !Utils::endsWithIgnoreCase(fileName,".mdx"))
+    if ( !Utils::endsWithIgnoreCase( fileName, ".mdx" ) )
       continue;
 
     vector< string > dictFiles( 1, fileName );
