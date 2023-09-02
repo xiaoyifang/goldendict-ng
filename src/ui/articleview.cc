@@ -1010,6 +1010,14 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         return;
       }
 
+      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+        // Specific dictionary group from full-text search
+        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+
+        showDefinition( word, dictsList, QRegExp(), getGroup( url ), false );
+        return;
+      }
+
       QString newScrollTo( scrollTo );
       if ( Utils::Url::hasQueryItem( url, "dict" ) ) {
         // Link to other dictionary
