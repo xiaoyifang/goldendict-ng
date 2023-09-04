@@ -313,9 +313,6 @@ void ArticleView::showDefinition( QString const & word,
   // first, let's stop the player
   audioPlayer->stop();
 
-  //clear founded dicts.
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group, currentWord } );
-
   QUrl req;
   Contexts contexts( contexts_ );
 
@@ -382,11 +379,10 @@ void ArticleView::showDefinition( QString const & word,
   if ( currentWord.isEmpty() )
     return;
   historyMode = false;
+  //clear founded dicts.
+  currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
-
-    //clear founded dicts.
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group, currentWord } );
 
   QUrl req;
 
@@ -2211,7 +2207,11 @@ void ArticleView::highlightFTSResults()
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 {
-  if ( ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) || historyMode ) {
+  auto groupId = ad.groupId;
+  if ( groupId == 0 ) {
+    groupId = Instances::Group::AllGroupId;
+  }
+  if ( ( ad.word == currentWord && groupId == getCurrentGroup() ) || historyMode ) {
     // ignore all other signals.
     qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
     currentActiveDictIds << ad.dictIds;
@@ -2222,8 +2222,12 @@ void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 
 void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 {
+  auto groupId = ad.groupId;
+  if ( groupId == 0 ) {
+    groupId = Instances::Group::AllGroupId;
+  }
   // ignore all other signals.
-  if ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) {
+  if ( ad.word == currentWord && groupId == getCurrentGroup() ) {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();
   }
