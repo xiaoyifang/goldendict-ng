@@ -313,6 +313,9 @@ void ArticleView::showDefinition( QString const & word,
   // first, let's stop the player
   audioPlayer->stop();
 
+  //clear founded dicts.
+  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group, currentWord } );
+
   QUrl req;
   Contexts contexts( contexts_ );
 
@@ -381,6 +384,9 @@ void ArticleView::showDefinition( QString const & word,
   historyMode = false;
   // first, let's stop the player
   audioPlayer->stop();
+
+    //clear founded dicts.
+  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group, currentWord } );
 
   QUrl req;
 
