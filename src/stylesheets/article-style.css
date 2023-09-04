@@ -604,25 +604,25 @@ div.xdxf {
   display: inline;
 }
 
-.epwing_article h3{
+.epwing_article h3 {
   color: #0f2fa0;
 }
 
-.epwing_text b{
+.epwing_text b {
   color: #0089a2;
 }
 
-.epwing_text i{
+.epwing_text i {
   color: #ae4500;
 }
 
-.epwing_text a{
+.epwing_text a {
   text-decoration: none;
   cursor: pointer;
   color: #859aad;
 }
 
-.epwing_text{
+.epwing_text {
   line-height: 1.5em;
 }
 /************* Websites *****************/
