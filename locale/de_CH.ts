@@ -3326,7 +3326,7 @@ Wenn diese Option deaktiviert ist, dann wird das zuoberst erscheinende Wörterbu
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>Definitionsfeld...</translation>
+      <translation>Definitions Feld...</translation>
     </message>
     <message>
       <source>Sentence</source>
@@ -3334,7 +3334,7 @@ Wenn diese Option deaktiviert ist, dann wird das zuoberst erscheinende Wörterbu
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>Satzfeld (kann leer sein)...</translation>
+      <translation>Satz Feld (kann auch leer bleiben)...</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
@@ -3393,15 +3393,15 @@ clears its network cache from disk during exit.</source>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Wenn bei aufeinanderfolgenden Suchvorgängen ein Wörterbuch manuell reduziert wird, bleibt es auch bei der nächsten Suche reduziert</translation>
+      <translation>Wenn ein Wörterbuch bei aufeinanderfolgenden Suchvorgängen manuell eingeklappt wird, bleibt es auch bei der nächsten Suche eingeklappt.</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>Zusammenbruch der Sitzung</translation>
+      <translation>Suchvorgang einklappen</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Fokussieren Sie bei einer neuen Suche das Haupt- oder Popup-Fenster, auch wenn es&apos;sichtbar ist</translation>
+      <translation>Bei neuer Suche immer den Fokus auf Haupt- oder PopUp-Fenster setzen, unabhängig ob schon gesetzt ist</translation>
     </message>
     <message>
       <source>Favorites</source>
@@ -3729,7 +3729,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>Ein Wörterbuch-Suchprogramm.</translation>
+      <translation>Ein Wörterbuch-Nachschlag-Programm.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
@@ -3737,7 +3737,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Speichern Sie Debug-Meldungen in gd_log.txt im Konfigurationsordner.</translation>
+      <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
@@ -3749,15 +3749,15 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>Ändern Sie die Gruppe des Hauptfensters.</translation>
+      <translation>Wechsle Gruppen im Hauptfenster.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Ändern Sie die Popup-Gruppe.</translation>
+      <translation>Wechsle Gruppen im Popup.</translation>
     </message>
     <message>
       <source>Toggle scan popup.</source>
-      <translation>Scan-Popup umschalten.</translation>
+      <translation>Wechsle Scan Popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
@@ -3873,7 +3873,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Vorherige</translation>
+      <translation>&amp;Vorheriger</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
@@ -3881,7 +3881,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Nächste</translation>
+      <translation>&amp;Nächster</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -3897,7 +3897,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>Find:</source>
-      <translation>Finden:</translation>
+      <translation>Suche:</translation>
     </message>
   </context>
   <context>
@@ -3977,7 +3977,7 @@ Standardisiert als ISO 3602.
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Alle externen Programme. Eine Zeichenfolge %GDWORD% wird durch das Abfragewort ersetzt. In der Suchleiste wird die Zeichenfolge %GDSEARCH% durch den Text ersetzt. Wenn beide Parameter nicht angegeben werden, wird das Stichwort in die Standardeingabe eingegeben.</translation>
+      <translation>Für externe Programme. Der String %GDWORD% wird mit dem Suchwort ersetzt. Falls eine solche Zeichenkette nicht vorhanden ist, wird das Wort an die Standardeingabe geschickt..</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -4001,7 +4001,7 @@ Standardisiert als ISO 3602.
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Holen Sie sich Ihren eigenen Schlüssel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bekomme deinen eigenen Schlüssel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;unter&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,
