@@ -508,6 +508,12 @@ int main( int argc, char ** argv )
     localeName = cfg.preferences.interfaceLanguage;
   }
 
+  //System Font
+  auto font = QApplication::font();
+  if ( !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
+    app.setFont(QFont(cfg.preferences.interfaceFont));
+  }
+
   QLocale locale( localeName );
   QLocale::setDefault( locale );
   if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {

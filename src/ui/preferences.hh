@@ -19,6 +19,7 @@ class Preferences: public QDialog
 
 
   Config::CustomFonts prevWebFontFamily;
+  QString prevSysFont;
 
   Config::Class & cfg;
   QAction helpAction;

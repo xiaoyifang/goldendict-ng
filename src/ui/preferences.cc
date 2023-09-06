@@ -97,7 +97,14 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     }
   }
 
+  //System Font
+  if(!p.interfaceFont.isEmpty()){
+    ui.systemFont->setCurrentText(p.interfaceFont);
+  }
+
+
   prevWebFontFamily = p.customFonts;
+  prevSysFont = p.interfaceFont;
 
   if ( !p.customFonts.standard.isEmpty() )
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -397,6 +404,8 @@ Config::Preferences Preferences::getPreferences()
 
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
+  p.interfaceFont = ui.systemFont->currentText();
+
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
   c.serif       = ui.font_serif->currentText();
@@ -624,6 +633,11 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.sansSerif );
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
                                                                     c.customFonts.monospace );
+  }
+
+  //change interface font.
+  if(c.interfaceFont!=prevSysFont){
+    QApplication::setFont(QFont(c.interfaceFont));
   }
 }
 
