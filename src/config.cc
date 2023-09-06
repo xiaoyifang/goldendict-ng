@@ -856,7 +856,7 @@ Class load()
   if ( !preferences.isNull() ) {
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
-c.preferences.interfaceFont=preferences.namedItem( "interfaceFont" ).toElement().text();
+    c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif

@@ -98,13 +98,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
   //System Font
-  if(!p.interfaceFont.isEmpty()){
-    ui.systemFont->setCurrentText(p.interfaceFont);
+  if ( !p.interfaceFont.isEmpty() ) {
+    ui.systemFont->setCurrentText( p.interfaceFont );
   }
 
 
   prevWebFontFamily = p.customFonts;
-  prevSysFont = p.interfaceFont;
+  prevSysFont       = p.interfaceFont;
 
   if ( !p.customFonts.standard.isEmpty() )
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -636,8 +636,8 @@ void Preferences::on_buttonBox_accepted()
   }
 
   //change interface font.
-  if(c.interfaceFont!=prevSysFont){
-    QApplication::setFont(QFont(c.interfaceFont));
+  if ( c.interfaceFont != prevSysFont ) {
+    QApplication::setFont( QFont( c.interfaceFont ) );
   }
 }
 
