@@ -129,13 +129,13 @@ jobs:
           cat version.txt
           echo "$version"  
 
-      - name: vcpkg install
-        shell: powershell
-        run: |   
-          git clone --depth 1 https://github.com/microsoft/vcpkg.git
-          .\vcpkg\bootstrap-vcpkg.bat
-          # .\vcpkg\vcpkg.exe install  ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  --triplet=x64-windows-release
-          .\vcpkg\vcpkg.exe install breakpad --triplet=x64-windows-release
+      - name: vcpkg build
+        uses: johnwason/vcpkg-action@v5
+        id: vcpkg
+        with:
+          pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
+          triplet: x64-windows-release
+          token: ${{ github.token }}
       - name: copy vcpkg packages into winlibs
         shell: bash
         run: |   
