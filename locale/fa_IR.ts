@@ -28,10 +28,6 @@
       <translation>دست اندرکاران:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© ۲۰۰۸-۲۰۱۳ کنستانتین ایساکوف (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>بر اساس Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>جمع‌کردن بند</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>کار با پنجره واشو</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(بی‌عنوان)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>هیچ ترجمه ای برای &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; در گروه &lt;b&gt;%2&lt;/b&gt;یافت نشد.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 dir=&quot;RTL&quot; align=&quot;center&quot;&gt;به گلدن‌دیکت &lt;b&gt;خوش آمدید&lt;/b&gt;!&lt;/h3&gt;&lt;p dir=&quot;RTL&quot;&gt;برای آغاز به کار با برنامه، نخست&lt;b&gt; ویرایش|واژه‌نامه‌ها&lt;/b&gt; را ببینید. برای افزودن مسیرهای شاخه برای یافتن پرونده‌های واژه‌نامه، راه‌اندازی پایگاه‌های گوناگون ویکی‌پدیا یا دیگر منابع، ترتیب واژه‌نامه را تنظیم کنید یا گروه‌های واژه‌نامه بسازید&lt;p dir=&quot;RTL&quot;&gt;اکنون شما آماده‌اید تا واژه‌هایتان را بیابید! شما می‌توانید در قاب سمت چپ در این پنجره یا &lt;a href=&quot;Working with popup&quot;&gt;واژه‌هایتان را از دیگر پنجره‌های فعال بیابید&lt;/a&gt;. &lt;p dir=&quot;RTL&quot;&gt;برای شخصی‌سازی برنامه، ترجیحات موجود در &lt;b&gt;ویرایش|ترجیحات&lt;/b&gt; را بررسی کنید. همه تنظیمات راهنمای ابزار دارند، اگر از چیزی مطمئن نیستید آن‌ها را بخوانید.&lt;p dir=&quot;RTL&quot;&gt;اگر به راهنمایی بیش‌تری نیاز دارید یا به نظرهای دیگران علاقه‌مند هستید، بفرمایید به &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;انجمن برنامه&lt;/a&gt;.&lt;p dir=&quot;RTL&quot;&gt; برای به‌روزرسانی‌ها &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;وب‌سایت برنامه&lt;/a&gt; را بررسی کنید.&lt;p dir=&quot;RTL&quot;&gt;© ۲۰۰۸-۲۰۱۳ کنستانتین ایساکوف. تحت لیسانس GPLv3 یا بالاتر.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(عکس)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;به &lt;b&gt;GoldenDict&lt;/b&gt;خوش آمدید!&lt;/h3&gt;&lt;p&gt;برای شروع کار با برنامه، ابتدا از &lt;b&gt;Edit|Dictionaries&lt;/b&gt; دیدن کنید تا مسیرهای دایرکتوری را برای جستجوی فایل های فرهنگ لغت، راه اندازی سایت های مختلف ویکی پدیا یا سایر منابع، تنظیم ترتیب فرهنگ لغت یا ایجاد گروه های فرهنگ لغت اضافه کنید.&lt;p&gt;و سپس شما&apos;آماده هستید تا کلمات خود را جستجو کنید! شما می توانید این کار را در این پنجره با استفاده از یک صفحه در سمت چپ انجام دهید، یا می توانید &lt;button id=&quot;lookup-popup&quot;&gt;کلمات را از سایر برنامه های فعال جستجو کنید&lt;/button&gt;. &lt;p&gt;برای سفارشی کردن برنامه، تنظیمات برگزیده موجود را در &lt;b&gt;Edit|Preferences&lt;/b&gt;بررسی کنید. همه تنظیمات در آنجا دارای نکات ابزار هستند، اگر در مورد چیزی شک دارید، حتما آنها را بخوانید.&lt;p&gt;اگر به کمک بیشتری نیاز دارید، سؤال، پیشنهادی دارید یا فقط می‌پرسید دیگران چه فکری می‌کنند، در انجمن برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;خوش آمدید&lt;/a&gt;.&lt;p&gt;برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;وب سایت&lt;/a&gt; برای به روز رسانی بررسی کنید. &lt;p&gt;(ج) 2008-2013 Konstantin Isakov. تحت مجوز GPLv3 یا بالاتر.</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>نمایه سازی...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>بارگذاری...</translation>
     </message>
   </context>
   <context>
@@ -3414,10 +3410,6 @@ clears its network cache from disk during exit.</source>
       <translation>فروپاشی جلسه</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
     </message>
@@ -3624,6 +3616,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>نمایه تمام متن را با رشته های موازی ایجاد کنید </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>متفرقه</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>هنگام اشکال زدایی با دیکشنری css/js، کش خاصی را غیرفعال کنید تا کار آسان تر شود.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>دیکشنری اشکال زدایی</translation>
     </message>
   </context>
   <context>

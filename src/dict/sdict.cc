@@ -661,7 +661,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .dct to speed up the
     // scanning
-    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".dct" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".dct" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index

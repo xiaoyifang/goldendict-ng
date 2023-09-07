@@ -28,10 +28,6 @@
       <translation>Yanapirinaka:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@users.berlios.de)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
     </message>
@@ -87,10 +83,6 @@ antes la &lt;i&gt;&quot;función de ventana emergente de búsqueda&quot;&lt;/i&g
       <translation>Qillqa suk&apos;aña</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Uñstir wintanampi apnaqkasa</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(jan sutini)</translation>
     </message>
@@ -116,35 +108,12 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Suma puriwi &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;
-&lt;p&gt;Aka programampi apnaqañatakixa nayraqataxa, &lt;b&gt;Askichaña &gt; Aru-pirwanaka&lt;/b&gt; ukar saram, kawkinkisa uka aru-pirwanak q’ipinakaxa churañataki. Wikipedia ukhamaraki yaqha jalsunaka uskusmawa, kunjams thaqhaña aru-pirwanakana, jan ukjax qutu aru-pirwanaka uñstayañ, ukanak lurasma.
-&lt;p&gt;Ukanakampixa aka wintananxa arunak thaqsnawa, jan ukjax &lt;a href=&quot;Uñstir wintanampi apnaqkasa&quot;&gt;yaqha programanakanxa thaqharakismawa&lt;/a&gt;.
-&lt;p&gt;Programa askichañatakixa, &lt;b&gt;Askichaña &gt; Ajlliñanaka&lt;/b&gt; ukar saram. Sapa ajllitaxa qillqata yanapaniwa.&lt;p&gt;Juk’ampi yanapa munta ukjaxa, jan ukjax yaqha amuyunitaxa, jan ukjaxa yaqhanakampi aruskipt’añ musntaxa, &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;GoldenDict Foro&lt;/a&gt; ukar saram.
-&lt;p&gt;Machaq jakhu uñjawi jikiñatakixa &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;Laphi Web&lt;/a&gt; ukar saram.
-&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencia GNU GPLv3 jan ukjax jutirinaka.&lt;p&gt;
-&lt;h3 align=&quot;center&quot;&gt;¡Bienvenido a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;
-&lt;p&gt;Para empezar a trabajar con este programa, vaya primero a 
-&lt;b&gt;Askichaña&gt;Aru-pirwanaka&lt;/b&gt; para especificar los directorios 
-para los archivos de diccionarios, configurar varios sitios de Wikipedia 
-o de otras fuentes, definir el orden de búsqueda en los diccionarios o
-crear grupos de diccionarios.
-&lt;p&gt;Y con eso, ¡ya está listo para buscar! Puede hacerlo en esta ventana 
-en el panel a la izquierda o puede &lt;a href=&quot;Uñstir wintanampi apnaqkasa&quot;&gt;buscar palabras desde otros programas&lt;/a&gt;.
-&lt;p&gt;Para personalizar el programa, eche un vistazo 
-a las opciones disponibles en &lt;b&gt;Askichaña &gt; Ajlliñanaka&lt;/b&gt;. 
-Cada opción tiene su propia descripción, léalas si tiene cualquier 
-duda.
-&lt;p&gt;Si necesita más ayuda, tiene cualquier duda o sugerencia, o 
-simplemente le interesa la opinión de los demás, es bienvenido al 
-&lt;a href=&quot;http://goldendict.berlios.de/forum/&quot;&gt;foro&lt;/a&gt; del programa.
-&lt;p&gt;Consulte el &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; del 
-programa para estar al corriente de las actualizaciones.
-&lt;p&gt;© 2008-2013 Konstantin Isakov. Licencia GNU GPLv3 o posterior.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(jamuqa)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
@@ -1264,6 +1233,10 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     <message>
       <source>Indexing...</source>
       <translation type="unfinished">Indexing...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
     </message>
   </context>
   <context>
@@ -3547,10 +3520,6 @@ ukax llikat cachep chhaqtayi.</translation>
       <translation type="unfinished">Session collapse</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
@@ -3781,6 +3750,26 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation type="unfinished">Create fulltext index with parallel threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation type="unfinished">Dictionary debug</translation>
     </message>
   </context>
   <context>

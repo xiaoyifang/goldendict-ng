@@ -379,6 +379,8 @@ void ArticleView::showDefinition( QString const & word,
   if ( currentWord.isEmpty() )
     return;
   historyMode = false;
+  //clear founded dicts.
+  currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
 
@@ -582,11 +584,6 @@ void ArticleView::isFramedArticle( QString const & ca, const std::function< void
                                   [ callback ]( const QVariant & res ) {
                                     callback( res.toBool() );
                                   } );
-}
-
-bool ArticleView::isExternalLink( QUrl const & url )
-{
-  return Utils::isExternalLink( url );
 }
 
 void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
@@ -796,7 +793,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
     else
       mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
     if ( !mutedDictionaries )
-      return QString();
+      return {};
 
     QStringList mutedDicts;
 
@@ -813,7 +810,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
       return mutedDicts.join( "," );
   }
 
-  return QString();
+  return {};
 }
 
 QStringList ArticleView::getMutedDictionaries( unsigned group )
@@ -830,7 +827,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
     else
       mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
     if ( !mutedDictionaries )
-      return QStringList();
+      return {};
 
     QStringList mutedDicts;
 
@@ -846,7 +843,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
     return mutedDicts;
   }
 
-  return QStringList();
+  return {};
 }
 
 void ArticleView::linkHovered( const QString & link )
@@ -1010,6 +1007,14 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         return;
       }
 
+      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+        // Specific dictionary group from full-text search
+        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+
+        showDefinition( word, dictsList, QRegExp(), getGroup( url ), false );
+        return;
+      }
+
       QString newScrollTo( scrollTo );
       if ( Utils::Url::hasQueryItem( url, "dict" ) ) {
         // Link to other dictionary
@@ -1054,7 +1059,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
-      if ( groups.size() ) {
+      if ( !groups.empty() ) {
         for ( const auto & group : groups )
           if ( group.id == currentGroup ) {
             activeDicts = &( group.dictionaries );
@@ -1203,7 +1208,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       }
     }
   }
-  else if ( isExternalLink( url ) ) {
+  else if ( Utils::isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );
   }
@@ -1433,6 +1438,11 @@ void ArticleView::playSound()
   } );
 }
 
+void ArticleView::stopSound()
+{
+  audioPlayer->stop();
+}
+
 void ArticleView::toHtml( const std::function< void( QString & ) > & callback )
 {
   webview->page()->toHtml( [ = ]( const QString & content ) {
@@ -1513,7 +1523,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   tryMangleWebsiteClickedUrl( targetUrl, contexts );
 
   if ( !targetUrl.isEmpty() ) {
-    if ( !isExternalLink( targetUrl ) ) {
+    if ( !Utils::isExternalLink( targetUrl ) ) {
       followLink = new QAction( tr( "Op&en Link" ), &menu );
       menu.addAction( followLink );
 
@@ -1523,7 +1533,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       }
     }
 
-    if ( isExternalLink( targetUrl ) ) {
+    if ( Utils::isExternalLink( targetUrl ) ) {
       followLinkExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
       menu.addAction( followLinkExternal );
       menu.addAction( webview->pageAction( QWebEnginePage::CopyLinkToClipboard ) );
@@ -2197,7 +2207,11 @@ void ArticleView::highlightFTSResults()
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 {
-  if ( ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) || historyMode ) {
+  auto groupId = ad.groupId;
+  if ( groupId == 0 ) {
+    groupId = Instances::Group::AllGroupId;
+  }
+  if ( ( ad.word == currentWord && groupId == getCurrentGroup() ) || historyMode ) {
     // ignore all other signals.
     qDebug() << "receive dicts, current word:" << currentWord << ad.word << ":" << ad.dictIds;
     currentActiveDictIds << ad.dictIds;
@@ -2208,8 +2222,12 @@ void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
 
 void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 {
+  auto groupId = ad.groupId;
+  if ( groupId == 0 ) {
+    groupId = Instances::Group::AllGroupId;
+  }
   // ignore all other signals.
-  if ( ad.word == currentWord && ad.groupId == getCurrentGroup() ) {
+  if ( ad.word == currentWord && groupId == getCurrentGroup() ) {
     qDebug() << "clear current dictionaries:" << currentWord;
     currentActiveDictIds.clear();
   }

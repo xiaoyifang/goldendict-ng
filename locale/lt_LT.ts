@@ -28,10 +28,6 @@
       <translation>Padėkos:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Remiantis Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Suskleisti</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Iškylantys langai</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(bevardis)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>&lt;b&gt;%2&lt;/b&gt;grupėje nerastas &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; vertimas.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Jus sveikina &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Dirbti žodynu pradėkite spausdami &lt;b&gt;Taisa &gt; Žodynai&lt;/b&gt; – nurodysite kelius, kur ieškoti žodynų failų, nurodysite įvairias Vikipedijos svetaines ar kitus šaltinius, pasirinksite žodynų tvarką arba kursite žodynų grupes.&lt;p&gt;Po to jau galėsite ieškoti žodžių! Versti žodžius galite tiek GoldenDict programos pagrindiniame lange, tiek &lt;a href=&quot;Iškylantys langai&quot;&gt;kitose veikiančiose programose&lt;/a&gt;. &lt;p&gt;Programą galite derinti per meniu &lt;b&gt;Taisa &gt; Nuostatos&lt;/b&gt;. Visos nuostatos turi paaiškinimus - jie pravers, jei abejosite, ar nežinosite.&lt;p&gt;Jei reikia daugiau pagalbos, turite klausimų, pasiūlymų ar tiesiog norite sužinoti kitų nuomonę, apsilankykite programos &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;diskusijų puslapyje&lt;/a&gt;.&lt;p&gt;Programos atnaujinimų ieškokite &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;GoldenDict svetainėje&lt;/a&gt;. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 arba vėlesnė licencija.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(paveikslėlis)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Sveiki atvykę į &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Norėdami pradėti dirbti su programa, pirmiausia apsilankykite &lt;b&gt;Redaguoti|Žodynai&lt;/b&gt; ir įtraukite kelis katalogo kelius, kur ieškoti žodyno failų, nustatykite įvairias Vikipedijos svetaines ar kitus šaltinius, pakoreguokite žodynų tvarką arba sukurkite žodynų grupes.&lt;p&gt;Ir tada jūs&apos;esate pasiruošę ieškoti savo žodžių! Tai galite padaryti šiame lange naudodami sritį kairėje arba &lt;button id=&quot;lookup-popup&quot;&gt;ieškoti žodžių iš kitų aktyvių programų&lt;/button&gt;. &lt;p&gt;Norėdami tinkinti programą, peržiūrėkite galimas nuostatas &lt;b&gt;Redaguoti|Nuostatos&lt;/b&gt;. Visuose nustatymuose yra patarimai, būtinai perskaitykite juos, jei dėl ko nors abejojate.&lt;p&gt;Jei jums reikia papildomos pagalbos, turite klausimų, pasiūlymų ar tiesiog įdomu, ką galvoja kiti, kviečiame apsilankyti programos&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forume&lt;/a&gt;.&lt;p&gt;Patikrinkite programos&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;svetainę&lt;/a&gt; , ar nėra atnaujinimų. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencijuota pagal GPLv3 arba naujesnę versiją.</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Indeksuojama...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Įkeliama...</translation>
     </message>
   </context>
   <context>
@@ -3415,10 +3411,6 @@ išvalo savo tinklo talpyklą iš disko.</translation>
       <translation>Sesijos žlugimas</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kai naudojate iškarpinę, ištrinkite viską po naujos eilutės</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Atlikdami naują paiešką, sufokusuokite pagrindinį arba iššokantįjį langą, net jei jis matomas&apos;</translation>
     </message>
@@ -3624,6 +3616,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Sukurkite viso teksto rodyklę su lygiagrečiomis gijomis </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Kai naudojate mainų sritį, pašalinkite viską po naujos eilutės</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Išeidami pašalinkite netinkamą indeksą</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Įvairūs</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Derindami naudodami žodyną css/js, išjunkite tam tikrą talpyklą, kad būtų lengviau.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Žodyno derinimas</translation>
     </message>
   </context>
   <context>

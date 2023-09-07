@@ -28,10 +28,6 @@
       <translation>Tack till:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Baserat på Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Dölj artikel</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Arbeta med popuprutor</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(namnlös)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Ingen översättning för &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; hittades i grupp &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Välkommen till &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;För att komma igång med programmet måste du först gå till &lt;b&gt;Redigera|Ordlistor&lt;/b&gt; för att lägga till mappsökvägar där programmet skall söka efter dina ordlistefiler. Där kan du även konfigurera olika Wikipedia-webbplatser eller andra källor, ändra ordning på ordlistor och skapa ordlistegrupper.&lt;p&gt;När det är avklarat kan du börja slå upp ord! Du kan göra detta i det här fönstret genom att använda sökpanelen till vänster, eller genom att &lt;a href=&quot;Arbeta med popuprutor&quot;&gt;slå upp ord inifrån andra öppna program&lt;/a&gt;. &lt;p&gt;Vill du anpassa programmet hittar du alla tillgängliga inställningsalternativ i &lt;b&gt;Redigera|Inställningar&lt;/b&gt;. Alla inställningar där har verktygstips, läs dem om det är något du undrar över.&lt;p&gt;Om du behöver ytterligare hjälp, behöver ställa en fråga, har förslag eller bara undrar vad andra tycker, så är du välkommen till programmets &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Gå till programmets &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;webbplats&lt;/a&gt; för att hitta uppdateringar. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensierat under GNU GPLv3 eller senare.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(bild)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Välkommen till &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;För att börja arbeta med programmet, besök först &lt;b&gt;Redigera|Ordböcker&lt;/b&gt; för att lägga till några katalogsökvägar där du kan söka efter ordboksfilerna, skapa olika Wikipedia-webbplatser eller andra källor, justera ordboksordningen eller skapa ordboksgrupper.&lt;p&gt;Och då är du&apos;att slå upp dina ord! Du kan göra det i det här fönstret genom att använda en ruta till vänster, eller så kan du &lt;button id=&quot;lookup-popup&quot;&gt;upp ord från andra aktiva applikationer&lt;/button&gt;. &lt;p&gt;För att anpassa programmet, kolla in de tillgängliga inställningarna på &lt;b&gt;Redigera|Inställningar&lt;/b&gt;. Alla inställningar där har verktygstips, se till att läsa dem om du är osäker på något.&lt;p&gt;Behöver du ytterligare hjälp, har några frågor, förslag eller bara undrar vad de andra tycker är du välkommen till programmet&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kolla program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;hemsida&lt;/a&gt; för uppdateringarna. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensierad under GPLv3 eller senare.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Indexing...</source>
       <translation>Indexerar...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Läser in...</translation>
     </message>
   </context>
   <context>
@@ -3419,10 +3415,6 @@ sin nätverkscache från disken under avslutning.</translation>
       <translation>Sessionen kollapsar</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>När du använder urklipp, remsa allt efter ny linje</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>På en ny sökning fokuserar du huvud- eller popup-fönstret även om det är synligt</translation>
     </message>
@@ -3629,6 +3621,26 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Skapa fulltextindex med parallella trådar </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>När du använder urklipp, ta bort allt efter nyrad</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Ta bort ogiltigt index vid utgång</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Diverse</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Vid felsökning med ordboken css/js, inaktivera vissa cache för att underlätta det.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Ordbok debug</translation>
     </message>
   </context>
   <context>

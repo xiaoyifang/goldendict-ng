@@ -28,10 +28,6 @@
       <translation>zanfu&apos;e</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation type="unfinished">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>mipri pa notci</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation type="unfinished">Working with popup</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>to no da cmene toi</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;.i fi&apos;i do do pilno &lt;b&gt;la .goldendikt.&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;.i sarcu pa nu do kakne lo ka pilno lo samtci kei kei fa pa se tadji be pa nu do cuxna &lt;b&gt;la vlacku&lt;/b&gt; pe &lt;b&gt;la binxo&lt;/b&gt; be&apos;o poi nu do jmina pa judri be pa vlacku datnyveimei be&apos;o ja pa samtcise&apos;u be fi la .midiiauikis. be&apos;o ja pa drata lo&apos;i vreji ja cu basygau fo lo ka se porsi fi lo&apos;i vlacku ja cu cupra pa vlacku selcmi&lt;p&gt;.i ba da do co&apos;a kakne lo ka sisku fi lo&apos;i valsi .i pa nu sisku cu se tadji pa nu do pilno lo cankyuidje poi zunle dei kei je pa nu &lt;a href=&quot;Working with popup&quot;&gt;do sisku tu&apos;a pa valsi pe pa samtci poi drata&lt;/a&gt;&lt;p&gt;.i pa nu do cuxna &lt;b&gt;la te tcimi&apos;e&lt;/b&gt; pe &lt;b&gt;la binxo&lt;/b&gt; cu tadji pa nu tcimi&apos;e .i ro da poi kakne lo ka binxo cu ckini pa djunoi poi ga ja nai do bilga lo ka tcidu ke&apos;a gi cfipu do&lt;p&gt;.i ga na ja do nitcu lo ka se sidju kei ja cu djica lo ka cusku pa preti ja cu stidi da kei ja cu kucli pa se jinvi be pa prenu poi na du do gi ko vitke &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;lo snustu&lt;/a&gt; be fi lo samtci&lt;p&gt;.i nuzba ro cnino &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;lo kibystu&lt;/a&gt; pe lo samtci&lt;p&gt;(c) 2008-2013 Konstantin Isakov .i la&apos;o zoi. GPL3 .zoi ja ro bavla&apos;i be ri cu javni</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>to pixra toi</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Indexing...</source>
       <translation type="unfinished">Indexing...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
     </message>
   </context>
   <context>
@@ -3417,10 +3413,6 @@ clears its network cache from disk during exit.</translation>
       <translation type="unfinished">Session collapse</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation type="unfinished">When using clipboard,strip everything after newline</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
@@ -3627,6 +3619,26 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation type="unfinished">Create fulltext index with parallel threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation type="unfinished">Dictionary debug</translation>
     </message>
   </context>
   <context>

@@ -28,10 +28,6 @@
       <translation>Zásluhy:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Na základě Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Sbalit článek</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Práce s vyskakovacím oknem</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nepojmenovaný)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Ve skupině &lt;b&gt;%2&lt;/b&gt;nebyl nalezen žádný překlad pro &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Vítejte v programu  &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Práci s programem začněte v &lt;b&gt;Upravit|Slovníky&lt;/b&gt;, kde můžete přidat cesty ke složkám, kde budou vyhledávány soubory slovníků, nastavíte různé stránky Wikipedie a jiné zdroje, upravíte pořadí adresářů nebo vytvoříte skupiny slovníků.&lt;p&gt;Pak budete moci vyhledávat slovíčka! To můžete provádět v tomto okně použitím pasnelu vlevo, nebo můžete &lt;a href=&quot;Working with popup&quot;&gt;vyhledávat slova z jiných aktivních aplikací&lt;/a&gt;. &lt;p&gt;Upravení vlastností programu provedete v &lt;b&gt;Upravit|Předvolby&lt;/b&gt;. Všechna nastavení mají nápovědu, která vám pomůže v případě, že máte o něčem pochybnosti.&lt;p&gt;Budete-li potřebovat další pomoc, budete mít nějaké návrhy nebo jenom budete chtít vědět co si myslí jiní, budete vítání na stránkách &lt;a href=&quot;http://goldendict.berlios.de/forum/&quot;&gt;diskuse&lt;/a&gt; o programu.&lt;p&gt;Aktualizace programu hledejte na &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;jeho stránkách&lt;/a&gt;.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencováno pod GPLv3 nebo novější.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(obrázek)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Vítejte v &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Chcete-li začít pracovat s programem, nejprve navštivte &lt;b&gt;Úpravy|Slovníky&lt;/b&gt; a přidejte některé cesty k adresářům, kde hledat soubory slovníku, nastavit různé stránky Wikipedie nebo jiné zdroje, upravit pořadí slovníků nebo vytvořit skupiny slovníků.&lt;p&gt;A pak jste&apos;vyhledat svá slova! Můžete to udělat v tomto okně pomocí podokna vlevo nebo můžete &lt;button id=&quot;lookup-popup&quot;&gt;vyhledat slova z jiných aktivních aplikací&lt;/button&gt;. &lt;p&gt;Chcete-li přizpůsobit program, podívejte se na dostupné předvolby na &lt;b&gt;Upravit|Předvolby&lt;/b&gt;. Všechna nastavení tam mají popisky, určitě si je přečtěte, pokud máte o něčem pochybnosti.&lt;p&gt;Pokud potřebujete další pomoc, máte nějaké dotazy, návrhy nebo se jen zajímáte, co si myslí ostatní, jste vítáni na fóru programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Zkontrolujte aktualizace programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;na webu&lt;/a&gt; . &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencováno pod licencí GPLv3 nebo novější.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Indexing...</source>
       <translation>Indexování...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Načítání...</translation>
     </message>
   </context>
   <context>
@@ -3414,10 +3410,6 @@ vymaže její síťovou mezipaměť při ukončení.</translation>
       <translation>Sbalování relace</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Při používání schránky odstraňte vše po nové lince</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Při novém hledání zaměřte hlavní nebo vyskakovací okno, i když je viditelné</translation>
     </message>
@@ -3624,6 +3616,26 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Vytvořte fulltextový index s paralelními vlákny </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Při použití schránky odstraňte vše po novém řádku</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Při ukončení odstraňte neplatný index</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Smíšený</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Při ladění pomocí slovníku css/js vypněte danou keš a usnadněte ji.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Ladění slovníku</translation>
     </message>
   </context>
   <context>

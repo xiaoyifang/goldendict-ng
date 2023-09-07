@@ -28,10 +28,6 @@
       <translation>Hormatlar:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2011 Konstantin Isakow (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Qt %1 (%2, %3) esasynda</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Makalany kiçelt</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Ýüzüne çykýan penjire (popup) bilen işlemek</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(atsyz)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>&lt;b&gt;%2&lt;/b&gt;toparda &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; üçin terjime tapylmady.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Hoş geldiňiz! &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Programany ulanyp başlamak üçin, ilki bilen &lt;b&gt;Redaktrile|Dictionaries menýusyna baryň&lt;/b&gt; we şol ýerden sözlük faýllaryň ýerleşýän bukjalaryny görkeziň, Wikipedia ýa-da başga çeşmeleri saýlaň, sözlükleriň görkeziş tertibini goýuň ýa-da sözlükleriň toparyny dörediň.&lt;p&gt;Şondan soň sözleriň terjimesini gözlemäge başlap bolýar! Ony şu penjiräniň sag tarapynda ýerleşýän meýdançasyndan edip bolýar ýa-da &lt;a href=&quot;Ýüzüne çykýan penjire (popup) bilen işlemek&quot;&gt;göni başga programmalaryň içinden hem edip bolýar&lt;/a&gt;. &lt;p&gt;Programmany sazlamak üçin, serediň &lt;b&gt;Redaktirle|Saýlamalar menýusyna&lt;/b&gt;. Şol ýerde ýerleşen ähli sazlamalaryň gysga düşündirişi bar, bir zat düşünmeseňiz olary okamagy unutmaň.&lt;p&gt;Eger goşmaça soragyňyz bar bolsa,maslahat gerek bolsa, pikiriňizi paýlaşmak isleseňiz ýa-da beýleki ulanyjylaryň pikirlerini bilmek isleseňiz &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foruma giriň&lt;/a&gt;.&lt;p&gt;Programmanyň &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;websaýtyndan&lt;/a&gt; täzelikleri bilip bilersiňiz. &lt;p&gt;(c) 2008-2013 Konstantin Isakow.  GPLv3 ýa-da soňky çykan lisenziýasy boýunça.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(surat)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;e hoş geldiňiz!&lt;/h3&gt;&lt;p&gt;Programma bilen işe başlamak üçin ilki bilen &lt;b&gt;Edit | Sözlük&lt;/b&gt; a baryp görüň, sözlük faýllaryny gözlemeli, dürli Wikipediýa sahypalaryny ýa-da başga çeşmeleri gurup, sözlük tertibini sazlaň ýa-da söz toparlaryny dörediň.&lt;p&gt;Soň bolsa, sözleriňizi gözlemäge&apos;! Bu penjirede çep tarapdaky paneli ulanyp bilersiňiz ýa-da beýleki işjeň programmalardan &lt;button id=&quot;lookup-popup&quot;&gt;&lt;/button&gt;gözläp bilersiňiz. &lt;p&gt;Programmany sazlamak üçin, &lt;b&gt;Edit | Saýlamalar&lt;/b&gt;de bar bolan ileri tutmalary gözden geçiriň. Therehli sazlamalarda gurallar bar, haýsydyr bir zada şübhelenýän bolsaňyz, hökman okaň.&lt;p&gt;Goşmaça kömek gerek bolsa, soraglaryňyz, teklipleriňiz bar bolsa ýa-da beýlekileriň pikirleri bilen gyzyklanýan bolsaňyz,&apos;-nji &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;programmada hoş geldiňiz.&lt;p&gt;Täzelenmeler üçin 19 programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web sahypasyny barlaň&lt;/a&gt; &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 ýa-da has soňraky ygtyýarnama.</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Indeksirlemek ...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Adingüklenýär ...</translation>
     </message>
   </context>
   <context>
@@ -3416,10 +3412,6 @@ clears its network cache from disk during exit.</source>
       <translation>Sessiýa ýykyldy</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Paneli ulananyňyzda, täze setirden soň hemme zady aýyryň</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Täze gözlegde, görünýän hem bolsa esasy ýa-da açylan penjire üns beriň</translation>
     </message>
@@ -3626,6 +3618,26 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Paralel sapaklar bilen doly tekst indeksini dörediň </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Paneli ulananyňyzda, täze setirden soň hemme zady aýyryň</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Çykyşda nädogry görkezijini aýyryň</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Dürli</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Css / js sözlügi bilen düzediş girizilende, aňsatlaşdyrmak üçin belli bir keşi öçüriň.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Sözlük düzediş</translation>
     </message>
   </context>
   <context>

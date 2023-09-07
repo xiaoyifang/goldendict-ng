@@ -97,7 +97,14 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     }
   }
 
+  //System Font
+  if ( !p.interfaceFont.isEmpty() ) {
+    ui.systemFont->setCurrentText( p.interfaceFont );
+  }
+
+
   prevWebFontFamily = p.customFonts;
+  prevSysFont       = p.interfaceFont;
 
   if ( !p.customFonts.standard.isEmpty() )
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -345,6 +352,10 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.maxNetworkCacheSize->setValue( p.maxNetworkCacheSize );
   ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
 
+  //Misc
+  ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
+  ui.dictionaryDebug->setChecked( p.dictionaryDebug );
+
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
   ui.addonStyles->setCurrentStyle( p.addonStyle );
@@ -392,6 +403,8 @@ Config::Preferences Preferences::getPreferences()
   Config::Preferences p;
 
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
+
+  p.interfaceFont = ui.systemFont->currentText();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -505,6 +518,9 @@ Config::Preferences Preferences::getPreferences()
   p.maxNetworkCacheSize           = ui.maxNetworkCacheSize->value();
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
+  p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
+  p.dictionaryDebug          = ui.dictionaryDebug->isChecked();
+
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
@@ -595,17 +611,27 @@ void Preferences::on_enableClipboardHotkey_toggled( bool checked )
 
 void Preferences::on_buttonBox_accepted()
 {
-  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
-    QMessageBox::information( this,
-                              tr( "Changing Language" ),
-                              tr( "Restart the program to apply the language change." ) );
+  QString promptText;
+
+  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() ) {
+    promptText = tr( "Restart the program to apply the language change." );
+    promptText += "\n";
+  }
 
 #if !defined( Q_OS_WIN )
   if ( prevInterfaceStyle != ui.InterfaceStyle->currentIndex() ) {
-    QMessageBox::information( this, tr( "Restart needed" ), tr( "Restart to apply the interface style change." ) );
+    promptText += tr( "Restart to apply the interface style change." );
+    promptText += "\n";
   }
 #endif
 
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    promptText += tr( "Restart to apply the interface font change." );
+  }
+
+  if ( !promptText.isEmpty() ) {
+    QMessageBox::information( this, tr( "Restart needed" ), promptText );
+  }
 
   auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
@@ -617,6 +643,11 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.sansSerif );
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
                                                                     c.customFonts.monospace );
+  }
+
+  //change interface font.
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    QApplication::setFont( QFont( ui.systemFont->currentText() ) );
   }
 }
 

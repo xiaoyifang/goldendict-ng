@@ -17,5 +17,6 @@
         <file>qt-style-win.css</file>
         <file>qt-style.css</file>
         <file>article-style-darkmode.css</file>
+        <file>tippy-light.css</file>
     </qresource>
 </RCC>

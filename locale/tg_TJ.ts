@@ -28,10 +28,6 @@
       <translation>Рӯйхати тарҷумонҳо:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Константин Исаков (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Дар асоси Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Печондани мақола</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Тарҷума бо равзанаи пайдошаванда</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(беном)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Дар гурӯҳи &lt;b&gt;%2&lt;/b&gt;тарҷумаи &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; ёфт нашуд.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Хуш омадед ба луғати &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Барои оғози кор бо луғат, пеш аз ҳама ба &lt;b&gt;Танзимот|Луғатҳо&lt;/b&gt; гузаред ва файлҳои луғатҳои лозимиро илова кунед, сайтҳои Wikipedia ё сайтҳои дигарро насб кунед, тартиби луғатҳоро таъин кунед ё гурӯҳҳои луғатро эҷод кунед.&lt;p&gt;Баъд аз ин шумо метавонед калимаҳоро тарҷума кунед! Шумо метавонед калимаҳоро бо истифодаи лавҳаи чапи ин равзана тарҷума кунед, ё шумо метавонед &lt;a href=&quot;Тарҷума бо равзанаи пайдошаванда&quot;&gt;калимаҳоро дар барномаҳои дигар тарҷума кунед&lt;/a&gt;. &lt;p&gt;Барои насб кардани танзимоти шахсӣ, хусусиятҳои дастрасиро дар &lt;b&gt;Танзимот|Хусусиятҳо&lt;/b&gt; истифода баред. Ҳамаи танзимоти ин барнома дорои маслиҳат мебошанд. Агар ягон мушкилӣ дошта бошед, мутмаин шавед, ки он маслиҳатҳоро хонед.&lt;p&gt;Барои маълумоти муфассал, гирифтани кумак, ҷавобу саволҳо, маслиҳатҳо ё ҳалли масъалаҳои дигар, шумо метавонед &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форуми луғатро&lt;/a&gt; истифода баред.&lt;p&gt;Барои гирифтани навсозиҳои барнома &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;вебсайти луғатро&lt;/a&gt; истифода баред. &lt;p&gt;(c) 2008-2013 Константин Исаков. Иҷозатномаи GPLv3 ё навтар.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(тасвир)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Хуш омадед ба &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Барои оғоз кардани кор бо барнома, аввал ба &lt;b&gt;Таҳрир|Луғатҳо&lt;/b&gt; ворид шавед, то баъзе роҳҳои феҳристро илова кунед, ки дар он ҷо ҷустуҷӯи файлҳои луғат, насб кардани сайтҳои гуногуни Википедиа ё дигар манбаъҳо, танзим кардани тартиби луғат ё сохтани гурӯҳҳои луғат.&lt;p&gt;Ва он гоҳ шумо&apos;омодаед, ки суханони худро ҷустуҷӯ кунед! Шумо метавонед ин корро дар ин равзана бо истифода аз панели тарафи чап анҷом диҳед ё шумо метавонед &lt;button id=&quot;lookup-popup&quot;&gt;аз дигар замимаҳои фаъол калимаҳоро ҷустуҷӯ кунед&lt;/button&gt;. &lt;p&gt;Барои танзими барнома, афзалиятҳои мавҷударо дар &lt;b&gt;Таҳрир|Парзишҳо&lt;/b&gt;санҷед. Ҳама танзимотҳо маслиҳатҳои асбобҳо доранд, агар шумо ба чизе шубҳа дошта бошед, ҳатман онҳоро хонед.&lt;p&gt;Агар ба шумо кӯмаки иловагӣ ниёз дошта бошед, ягон савол, пешниҳод дошта бошед ё танҳо дар ҳайрат бошед, ки дигарон чӣ фикр доранд, шумо ба барномаи&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;хуш омадед.&lt;p&gt;Барномаи&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;вебсайти&lt;/a&gt; барои навсозиҳо санҷед. &lt;p&gt;(в) 2008-2013 Konstantin Isakov. Иҷозатнома дар доираи GPLv3 ё дертар.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Индексгузорӣ...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Loading...</translation>
     </message>
   </context>
   <context>
@@ -3417,10 +3413,6 @@ clears its network cache from disk during exit.</source>
       <translation>Барбод рафтани сессия</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Ҳангоми истифодаи буфер ҳама чизро пас аз сатри нав кашед</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Ҳангоми ҷустуҷӯи нав, диққати равзанаи асосӣ ё поп-апро нигоҳ доред, ҳатто агар он намоён бошад</translation>
     </message>
@@ -3627,6 +3619,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Бо риштаҳои мувозӣ индекси пурраи матн эҷод кунед </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Ҳангоми истифодаи буфер, ҳама чизро пас аз сатри нав кашед</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Индекси беэътиборро ҳангоми баромадан хориҷ кунед</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Гуногун</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Ҳангоми ислоҳ кардани луғати css/js, кэши муайянро ғайрифаъол кунед, то ин корро осон кунад.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>ислоҳи луғат</translation>
     </message>
   </context>
   <context>

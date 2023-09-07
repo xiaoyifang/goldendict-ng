@@ -28,10 +28,6 @@
       <translation>Список участников:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© Константин Исаков (ikm@goldendict.org), 2008-2013</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>На основе Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Свернуть статью</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Работа с всплывающим окном</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без имени)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>В группе &lt;b&gt;%2&lt;/b&gt;не было найдено перевода для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Добро пожаловать в &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Если вы запустили программу в первый раз, укажите пути к словарям в &lt;b&gt;Правка|Словари&lt;/b&gt;. Там же Вы можете указать различные сайты Википедии или другие источники данных, настроить порядок просмотра словарей или создать словарные группы.&lt;p&gt;После этого Вы можете приступать к поиску слов. Слова можно искать в левой области данного окна. При работе в других приложениях можно искать слова, используя &lt;a href=&quot;Работа с всплывающим окном&quot;&gt;всплывающее окно&lt;/a&gt;. &lt;p&gt;В меню &lt;b&gt;Правка|Параметры&lt;/b&gt; Вы можете настроить приложение по своему вкусу. Все параметры имеют подсказки, показываемые при наведении курсора на них. Обращайте, пожалуйста, на них внимание, когда у Вас возникают затруднения с настройкой.&lt;p&gt;Если Вам требуется дополнительная помощь, возникли какие-то вопросы, пожелания и т.п., обращайтесь на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форум программы&lt;/a&gt;.&lt;p&gt;Обновления программы доступны на её &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;вебсайте&lt;/a&gt;.&lt;p&gt;© Константин Исаков (ikm@goldendict.org), 2008-2013. Лицензия: GNU GPLv3 или более поздняя версия.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(картинка)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Добро пожаловать в &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Чтобы начать работу с программой, сначала посетите &lt;b&gt;Редактировать | Словари&lt;/b&gt; , чтобы добавить несколько путей к каталогам для поиска файлов словарей, настроить различные сайты Википедии или другие источники, настроить порядок словарей или создать группы словарей.&lt;p&gt;И тогда вы&apos;готовы искать свои слова! Вы можете сделать это в этом окне, используя панель слева, или вы можете &lt;button id=&quot;lookup-popup&quot;&gt;искать слова из других активных приложений&lt;/button&gt;. &lt;p&gt;Чтобы настроить программу, проверьте доступные настройки в разделе &lt;b&gt;«Правка|Настройки»&lt;/b&gt;. Все настройки там имеют подсказки, обязательно прочтите их, если у вас есть в чем-то сомнения.&lt;p&gt;Если вам нужна дополнительная помощь, у вас есть какие-либо вопросы, предложения или просто интересно, что думают другие, добро пожаловать на форум программы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Проверьте наличие обновлений на веб-сайте программы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;&lt;/a&gt; . &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Лицензия GPLv3 или более поздняя.</translation>
     </message>
   </context>
   <context>
@@ -1199,6 +1191,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Индексирование...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Загрузка...</translation>
     </message>
   </context>
   <context>
@@ -3420,10 +3416,6 @@ clears its network cache from disk during exit.</source>
       <translation>Держать свёрнутым в сеансе</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>При использовании буфера обмена игнорировать весь текст после символа перевода строки</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>При каждом поиске переводить фокус на окно программы даже если оно уже открыто</translation>
     </message>
@@ -3632,6 +3624,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Создать полнотекстовый индекс с параллельными потоками </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>При использовании буфера обмена удалите все после новой строки</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Удалить неверный индекс при выходе</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Разнообразный</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>При отладке с css/js словаря отключите определенный кэш, чтобы сделать его проще.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Отладка словаря</translation>
     </message>
   </context>
   <context>

@@ -28,10 +28,6 @@
       <translation>Teşekkürler:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Qt %1 göre (%2, %3)</translation>
     </message>
@@ -85,10 +81,6 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
       <translation>Maddeyi daralt</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Ekranda Kelime Yakala ile Çalışma</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(başlıksız)</translation>
     </message>
@@ -109,23 +101,12 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
       <translation>Grup &lt;b&gt;%2&lt;/b&gt;&lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; için çeviri bulunamadı .</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;GoldenDict&apos;e &lt;b&gt;Hoşgeldiniz&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Program ile çalışmaya başlamak için, 
-&lt;b&gt;Düzen|Sözlükler&lt;/b&gt; menüsünden, çeşitli Wikipedia siteleri ya da diğer kaynaklardan sözlük dosyaları 
-aramak için bazı dizin yollarını seçerek, sözlük sırasını ayarlayıp sözlük grupları 
-oluşturabilirsiniz.&lt;p&gt;Ve sonra kelimelere bakmak için hazırsınız! Bu pencerenin sol bölmesini kullanarak 
-burada &lt;a href=&quot;Working with popup&quot;&gt;ya da diğer aktif uygulamalarda kelime arayabilirsiniz&lt;/a&gt;. &lt;p&gt; Programı 
-özelleştirmek için, &lt;b&gt;Düzen|Tercihler&lt;/b&gt; menüsünden mevcut tercihleri kontrol edin. Oradaki tüm ayarların 
-araç ipuçları var, eğer herhangi bir şey hakkında kararsızsanız (imleci üzerinde bekletip) ipuçlarını okuyarak 
-fikir sahibi olabilirsiniz.&lt;p&gt;Eğer herhangi bir soru, öneri ya da sadece başkalarının ne düşündüğünü merak 
-ediyorsanız veya daha fazla yardıma ihtiyacınız varsa, programın &lt;a
-href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumu&lt;/a&gt; açıktır.&lt;p&gt;Güncellemeler için programın &lt;a
-href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web sitesinden&lt;/a&gt; güncellemelere bakın. &lt;p&gt;(c) 2008-2013 Konstantin İsakov. 
-GPLv3 veya daha üst lisanslıdır.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(resim)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;hoş geldiniz!&lt;/h3&gt;&lt;p&gt;Programla çalışmaya başlamak için, önce sözlük dosyalarının aranacağı, çeşitli Vikipedi sitelerinin veya diğer kaynakların kurulacağı, sözlük sırasının ayarlanacağı veya sözlük grupları oluşturulacağı bazı dizin yolları eklemek için &lt;b&gt;Edit|Dictionaries&lt;/b&gt; ziyaret edin.&lt;p&gt;Ve sonra kelimelerinize bakmaya&apos;! Bunu soldaki bölmeyi kullanarak bu pencerede yapabilir veya diğer etkin uygulamalardaki &lt;button id=&quot;lookup-popup&quot;&gt;sözcükleri arayabilirsiniz&lt;/button&gt; &lt;p&gt;Programı özelleştirmek için &lt;b&gt;Düzenle|Tercihler&lt;/b&gt;adresindeki mevcut tercihlere göz atın. Oradaki tüm ayarların araç ipuçları var, herhangi bir konuda şüpheniz varsa bunları okuduğunuzdan emin olun.&lt;p&gt;Daha fazla yardıma ihtiyacınız varsa, herhangi bir sorunuz veya öneriniz varsa ya da sadece diğerlerinin ne düşündüğünü merak ediyorsanız program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;hoş geldiniz.&lt;p&gt;Güncellemeler için program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web sitesi&lt;/a&gt; kontrol edin. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 veya üzeri lisanslıdır.</translation>
     </message>
   </context>
   <context>
@@ -1212,6 +1193,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Indexing...</source>
       <translation>indeksleniyor...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Yükleniyor...</translation>
     </message>
   </context>
   <context>
@@ -3426,10 +3411,6 @@ clears its network cache from disk during exit.</source>
       <translation>oturum çöküşü</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Pano kullanırken, yeni satırdan sonraki her şeyi soyun</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Yeni bir aramada, görünür olsa bile ana veya açılır pencereye odaklanın</translation>
     </message>
@@ -3636,6 +3617,26 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Paralel iş parçacığı ile tam metin dizini oluşturun </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Pano kullanırken, yeni satırdan sonraki her şeyi soyun</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Çıkışta geçersiz dizini kaldır</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Çeşitli</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Sözlük css/js ile hata ayıklama yaparken, bunu kolaylaştırmak için belirli önbelleği devre dışı bırakın.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Sözlük hata ayıklaması</translation>
     </message>
   </context>
   <context>

@@ -77,6 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   escapeAction( this ),
   switchExpandModeAction( this ),
   focusTranslateLineAction( this ),
+  stopAudioAction( this ),
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
@@ -212,6 +213,12 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( &focusTranslateLineAction, &QAction::triggered, this, &ScanPopup::focusTranslateLine );
 
+  stopAudioAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &stopAudioAction );
+  stopAudioAction.setShortcut( QKeySequence( "Ctrl+Shift+S" ) );
+
+  connect( &stopAudioAction, &QAction::triggered, this, &ScanPopup::stopAudio );
+
   QAction * const focusArticleViewAction = new QAction( this );
   focusArticleViewAction->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   focusArticleViewAction->setShortcut( QKeySequence( "Ctrl+N" ) );
@@ -313,7 +320,7 @@ ScanPopup::~ScanPopup()
   ungrabGesture( Gestures::GDSwipeGestureType );
 }
 
-void ScanPopup::saveConfigData()
+void ScanPopup::saveConfigData() const
 {
   // Save state, geometry and pin status
   cfg.popupWindowState       = saveState();
@@ -328,7 +335,7 @@ void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page )
     emit inspectSignal( page );
 }
 
-void ScanPopup::applyZoomFactor()
+void ScanPopup::applyZoomFactor() const
 {
   definition->setZoomFactor( cfg.preferences.zoomFactor );
 }
@@ -612,6 +619,7 @@ void ScanPopup::currentGroupChanged( int )
 void ScanPopup::translateInputChanged( QString const & text )
 {
   updateSuggestionList( text );
+  GlobalBroadcaster::instance()->translateLineText = text;
 }
 
 void ScanPopup::updateSuggestionList()
@@ -648,7 +656,7 @@ void ScanPopup::translateInputFinished()
   showTranslationFor( pendingWord );
 }
 
-void ScanPopup::showTranslationFor( QString const & word )
+void ScanPopup::showTranslationFor( QString const & word ) const
 {
   ui.pronounceButton->setDisabled( true );
 
@@ -913,7 +921,7 @@ void ScanPopup::prefixMatchFinished()
   }
 }
 
-void ScanPopup::on_pronounceButton_clicked()
+void ScanPopup::on_pronounceButton_clicked() const
 {
   definition->playSound();
 }
@@ -965,6 +973,11 @@ void ScanPopup::focusTranslateLine()
   ui.translateBox->translateLine()->selectAll();
 }
 
+void ScanPopup::stopAudio() const
+{
+  definition->stopSound();
+}
+
 void ScanPopup::on_showDictionaryBar_clicked( bool checked )
 {
   dictionaryBar.setVisible( checked );
@@ -978,7 +991,7 @@ void ScanPopup::hideTimerExpired()
     hideWindow();
 }
 
-void ScanPopup::pageLoaded( ArticleView * )
+void ScanPopup::pageLoaded( ArticleView * ) const
 {
   if ( !isVisible() )
     return;
@@ -991,7 +1004,7 @@ void ScanPopup::pageLoaded( ArticleView * )
   updateBackForwardButtons();
 }
 
-void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
+void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon ) const
 {
   mainStatusBar->showMessage( message, timeout, icon );
 }
@@ -1103,18 +1116,18 @@ void ScanPopup::switchExpandOptionalPartsMode()
     emit switchExpandMode();
 }
 
-void ScanPopup::updateBackForwardButtons()
+void ScanPopup::updateBackForwardButtons() const
 {
   ui.goBackButton->setEnabled( definition->canGoBack() );
   ui.goForwardButton->setEnabled( definition->canGoForward() );
 }
 
-void ScanPopup::on_goBackButton_clicked()
+void ScanPopup::on_goBackButton_clicked() const
 {
   definition->back();
 }
 
-void ScanPopup::on_goForwardButton_clicked()
+void ScanPopup::on_goForwardButton_clicked() const
 {
   definition->forward();
 }
@@ -1126,7 +1139,7 @@ void ScanPopup::setDictionaryIconSize()
   dictionaryBar.setDictionaryIconSize( extent );
 }
 
-void ScanPopup::setGroupByName( QString const & name )
+void ScanPopup::setGroupByName( QString const & name ) const
 {
   int i;
   for ( i = 0; i < ui.groupList->count(); i++ ) {
@@ -1153,7 +1166,7 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
   }
 }
 
-void ScanPopup::titleChanged( ArticleView *, QString const & title )
+void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
 {
   unsigned groupId = ui.groupList->getCurrentGroup();
 

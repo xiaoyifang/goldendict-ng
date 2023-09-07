@@ -28,10 +28,6 @@
         <translation>致谢名单：</translation>
     </message>
     <message>
-        <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-        <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
         <source>Based on Qt %1 (%2, %3)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -82,10 +78,6 @@
         <translation>收起文章</translation>
     </message>
     <message>
-        <source>Working with popup</source>
-        <translation>使用屏幕取词功能</translation>
-    </message>
-    <message>
         <source>(untitled)</source>
         <translation>（未命名）</translation>
     </message>
@@ -106,12 +98,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-        <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 词典程序！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用时请首先打开&lt;b&gt;编辑 | 词典&lt;/b&gt;菜单以添加并扫描含有词典文件的目录，添加维基百科网站查询或其它资源，调整词典排序或创建新的词典群组。这些设置都完成以后，就可以开始使用了。你可以使用左侧的查询面板，或者&lt;a href=&quot;使用屏幕取词功能&quot;&gt;直接从其它程序中抓词查询&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要改变设置，可以在&lt;b&gt;编辑 | 首选项&lt;/b&gt;菜单中查看一下可用的系统设置。所有的设置都有鼠标指针提示信息，如果有不明之处，请仔细阅读提示信息。如果你需要更多帮助，有任何疑问、建议，或者仅仅想了解其他人的想法，欢迎访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;官方论坛&lt;/a&gt;。访问此程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;官方网站&lt;/a&gt;以获取更新。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授权基于 GPLv3 或更高版本。</translation>
-    </message>
-    <message>
         <source>(picture)</source>
         <translation>（图片）</translation>
+    </message>
+    <message>
+        <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1196,6 +1188,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <source>Indexing...</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished">加载中……</translation>
     </message>
 </context>
 <context>
@@ -3401,10 +3397,6 @@ clears its network cache from disk during exit.</source>
         <translation>搜索期间保持折叠</translation>
     </message>
     <message>
-        <source>When using clipboard,strip everything after newline</source>
-        <translation>当使用剪贴板时，忽略剪贴板中换行之后的内容</translation>
-    </message>
-    <message>
         <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
         <translation>查询时，窗口获取焦点</translation>
     </message>
@@ -3609,6 +3601,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Create fulltext index with parallel threads </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When using clipboard, strip everything after newline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove invalid index on exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dictionary debug</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -3,12 +3,22 @@
 #include <QPalette>
 #include <QStyle>
 #include <QMessageBox>
-
+#include <string>
+#ifdef _MSC_VER
+  #include <stub_msvc.h>
+#endif
+using std::string;
 namespace Utils {
 //some str has \0 in the middle of the string. return the string before the \0
 std::string c_string( const QString & str )
 {
   return std::string( str.toUtf8().constData() );
+}
+
+bool endsWithIgnoreCase( const string & str1, string str2 )
+{
+  return ( str1.size() >= (unsigned)str2.size() )
+    && ( strcasecmp( str1.c_str() + ( str1.size() - str2.size() ), str2.data() ) == 0 );
 }
 } // namespace Utils
 
@@ -66,6 +76,17 @@ std::string basename( std::string const & str )
     return str;
 
   return std::string( str, x + 1 );
+}
+
+void removeDirectory( QString const & directory )
+{
+  QDir dir( directory );
+  dir.removeRecursively();
+}
+
+void removeDirectory( string const & directory )
+{
+  removeDirectory( QString::fromStdString( directory ) );
 }
 
 } // namespace Utils::Fs

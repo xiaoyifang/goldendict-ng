@@ -28,10 +28,6 @@
       <translation>आभार :</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© २००८-२०१३ कोंस्टेंटिन इसाकोव (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Qt %1 (%2, %3) पर आधारित</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>लेख को संक्षिप्त करें</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Utilisation avec pop-up</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(शीर्षकहीन)</translation>
     </message>
@@ -106,17 +98,12 @@
       <translation>समूह &lt;b&gt;%2&lt;/b&gt;में &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; का कोई अनुवाद नहीं मिला।</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Bienvenue dans &lt;b&gt;GoldenDict&lt;/b&gt; !&lt;/h3&gt;
-&lt;p&gt;Pour commencer à utiliser GoldenDict, visitez d&apos;abord &lt;b&gt;Édition|Dictionnaires&lt;/b&gt; pour ajouter des emplacements où trouver les fichiers de dictionnaires, configurer des sites Wikipédia ou d&apos;autres sources, ajuster l&apos;ordre des dictionnaires ou créer des groupes de dictionnaires.&lt;p&gt;Vous êtes paré pour lancer de nouvelles recherches ! Vous pouvez faire cela en utilisant le panneau à gauche de cette fenêtre, ou vous pouvez &lt;a href=&quot;Working with popup&quot;&gt;chercher les mots à partir d&apos;autres applications actives&lt;/a&gt;.
-&lt;p&gt;Pour personnaliser GoldenDict, vérifiez les options disponibles dans &lt;b&gt;Édition|Préférences&lt;/b&gt;. Tous les paramètres y disposent d&apos;une aide, lisez-la bien en cas de doute !
-&lt;p&gt;Si vous avez besoin d&apos;aide, avez des questions ou des suggestions, vous serez les bienvenus sur le &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.
-&lt;p&gt;Consultez le &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;site&lt;/a&gt; du logiciel pour les mises à jour.
-&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Sous licence GPLv3 ou ultérieure.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(छवि)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;गोल्डनडिक्ट&lt;/b&gt;में आपका स्वागत है!&lt;/h3&gt;&lt;p&gt;कार्यक्रम के साथ काम करना शुरू करने के लिए, सबसे पहले &lt;b&gt;संपादन|शब्दकोश&lt;/b&gt; पर जाएं और कुछ निर्देशिका पथ जोड़ें जहां शब्दकोश फ़ाइलों की खोज करें, विभिन्न विकिपीडिया साइटों या अन्य स्रोतों को सेट करें, शब्दकोश क्रम को समायोजित करें या शब्दकोश समूह बनाएं।&lt;p&gt;और फिर आप&apos;अपने शब्दों पर गौर करने के लिए तैयार हैं! आप इस विंडो में बाईं ओर एक फलक का उपयोग करके ऐसा कर सकते हैं, या आप &lt;button id=&quot;lookup-popup&quot;&gt;अन्य सक्रिय अनुप्रयोगों&lt;/button&gt;से शब्दों को देख सकते हैं। &lt;p&gt;प्रोग्राम को अनुकूलित करने के लिए, &lt;b&gt;संपादन|वरीयताएँ&lt;/b&gt;पर उपलब्ध प्राथमिकताएँ देखें। वहां सभी सेटिंग्स में टूलटिप्स हैं, यदि आप किसी भी चीज़ के बारे में संदेह में हैं तो उन्हें पढ़ना सुनिश्चित करें।&lt;p&gt;यदि आपको और सहायता की आवश्यकता हो, कोई प्रश्न, सुझाव हो या आप आश्चर्य करें कि दूसरे क्या सोचते हैं, तो कार्यक्रम&apos;एस &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;फोरम&lt;/a&gt;में आपका स्वागत है।&lt;p&gt;अपडेट के लिए प्रोग्राम&apos;एस &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;वेबसाइट&lt;/a&gt; जाँच करें। &lt;p&gt;(सी) 2008-2013 Konstantin Isakov GPLv3 या बाद के संस्करण के अंतर्गत लाइसेंस प्राप्त।</translation>
     </message>
   </context>
   <context>
@@ -1202,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>अनुक्रमणिका...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>लोड हो रहा है...</translation>
     </message>
   </context>
   <context>
@@ -3407,10 +3398,6 @@ clears its network cache from disk during exit.</source>
       <translation>सत्र पतन</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>क्लिपबोर्ड का उपयोग करते समय, न्यूलाइन के बाद सब कुछ हटा दें</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>नई खोज पर, मुख्य या पॉपअप विंडो पर ध्यान केंद्रित करें, भले ही वह&apos;दिखाई दे</translation>
     </message>
@@ -3616,6 +3603,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>समानांतर धागों के साथ फुलटेक्स्ट इंडेक्स बनाएं </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>क्लिपबोर्ड का उपयोग करते समय, न्यूलाइन के बाद सब कुछ हटा दें</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>बाहर निकलने पर अमान्य अनुक्रमणिका हटाएँ</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>मिश्रित</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>डिक्शनरी सीएसएस/जेएस के साथ डिबगिंग करते समय, इसे आसान बनाने के लिए कुछ कैश को अक्षम करें।</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>शब्दकोश डीबग</translation>
     </message>
   </context>
   <context>

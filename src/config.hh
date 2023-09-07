@@ -345,6 +345,7 @@ ScanPopupWindowFlags spwfFromInt( int id );
 struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
+  QString interfaceFont;     //Empty as default value.
 
   CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
@@ -402,6 +403,8 @@ struct Preferences
   bool hideGoldenDictHeader;
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
+  bool removeInvalidIndexOnExit = false;
+  bool dictionaryDebug          = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

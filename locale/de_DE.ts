@@ -5,7 +5,7 @@
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>Über</translation>
+      <translation>Info</translation>
     </message>
     <message>
       <source>GoldenDict-ng dictionary lookup program, version </source>
@@ -13,7 +13,7 @@
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Lizensiert unter der GNU GPLv3 oder neuer</translation>
+      <translation>Lizenziert unter der GNU GPLv3 oder neuer</translation>
     </message>
     <message>
       <source>Copy version info</source>
@@ -21,15 +21,11 @@
     </message>
     <message>
       <source>Copy dictionaries list</source>
-      <translation>Wörterbücher kopieren</translation>
+      <translation>Wörterbuchliste kopieren</translation>
     </message>
     <message>
       <source>Credits:</source>
       <translation>Danksagungen:</translation>
-    </message>
-    <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
@@ -40,7 +36,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
+      <translation>Anki: eine Karte ohne Wort kann nicht erstellt werden</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -53,7 +49,7 @@
     </message>
     <message>
       <source>anki: post to anki success</source>
-      <translation>anki: Beitrag zu anki Erfolg</translation>
+      <translation>Anki: Beitrag zu Anki erfolgreich</translation>
     </message>
   </context>
   <context>
@@ -82,10 +78,6 @@
       <translation>Artikel einklappen</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Mit Popups arbeiten</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(unbenannt)</translation>
     </message>
@@ -106,15 +98,12 @@
       <translation>In der Gruppe &lt;b&gt;%2&lt;/b&gt; wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Willkommen bei &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Damit Sie mit dem Programm beginnen können, besuchen Sie zunächst &lt;b&gt;Bearbeiten » Wörterbücher&lt;/b&gt;, um Pfade zu gespeicherten Wörterbüchern hinzuzufügen, Wikipedia oder andere Seiten einzurichten, oder um die Wörterbücher zu ordnen bzw. um Sie in Gruppen zu unterteilen.&lt;/p&gt;
-&lt;p&gt;Dann sind Sie bereit, um das erste Wort nachzuschlagen! Dies können Sie im Fenster auf der linken Seite, oder &lt;a href=&quot;Mit Popups arbeiten&quot;&gt;mittels der Popup-Funktion in anderen Applikationen.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Um das Programm anzupassen, öffnen Sie &lt;b&gt;Bearbeiten » Einstellungen&lt;/b&gt;. Alle Einstellungen haben Tooltips, die Ihnen helfen, die letzten Zweifel zu nehmen.&lt;/p&gt;
-&lt;p&gt;Sollten Sie trotzdem noch Hilfe brauchen, oder wenn Sie sonstige Fragen und Verbesserungsvorschlage haben, oder wenn Sie nur wissen wollen, was andere denken, dann finden Sie uns im &lt;a href=&quot;hhttps://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;. &lt;p&gt;Programmupdates sind auf der &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;Website&lt;/a&gt; zu finden.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(Bild)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Willkommen bei &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Um mit der Arbeit mit dem Programm zu beginnen, besuchen Sie zunächst &lt;b&gt;Bearbeiten|Wörterbücher&lt;/b&gt; , um einige Verzeichnispfade hinzuzufügen, in denen Sie nach Wörterbuchdateien suchen, verschiedene Wikipedia-Sites oder andere Quellen einrichten, die Wörterbuchreihenfolge anpassen oder Wörterbuchgruppen erstellen können.&lt;p&gt;Und dann bist du&apos;, deine Worte nachzuschlagen! Sie können dies in diesem Fenster tun, indem Sie einen Bereich auf der linken Seite verwenden, oder Sie können &lt;button id=&quot;lookup-popup&quot;&gt;aus anderen aktiven Anwendungen nachschlagen&lt;/button&gt;. &lt;p&gt;Um das Programm anzupassen, sehen Sie sich die verfügbaren Einstellungen unter &lt;b&gt;Bearbeiten|Einstellungen&lt;/b&gt;an. Alle dortigen Einstellungen verfügen über Tooltips. Lesen Sie diese unbedingt durch, wenn Sie Zweifel haben.&lt;p&gt;Sollten Sie weitere Hilfe benötigen, Fragen oder Anregungen haben oder sich einfach nur fragen, was die anderen denken, sind Sie im Programm&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;herzlich willkommen.&lt;p&gt;Überprüfen Sie die Website&lt;/a&gt; des Programms&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;auf Aktualisierungen. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lizenziert unter GPLv3 oder höher.</translation>
     </message>
   </context>
   <context>
@@ -1075,7 +1064,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Ordner basierte Gruppen erstellen.</translation>
+      <translation>Ordner-basierte Gruppen erstellen.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
@@ -1199,7 +1188,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Indizierung …</translation>
+      <translation>Indizieren …</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Laden …</translation>
     </message>
   </context>
   <context>
@@ -3413,10 +3406,6 @@ den Netzwerk-Cache beim Beenden von der Festplatte.</translation>
       <translation>Sitzungsabbruch</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Bei Verwendung der Zwischenablage alles nach Zeilenumbruch entfernen</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Fokussieren Sie bei einer neuen Suche das Haupt- oder Popup-Fenster, auch wenn es&apos;s sichtbar ist</translation>
     </message>
@@ -3577,7 +3566,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Starten Sie neu, um die Änderung des Schnittstellenstils zu übernehmen.</translation>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3597,7 +3586,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>Serifenschrift</translation>
+      <translation>Serifen-Schriftart</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
@@ -3605,7 +3594,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Aussehen</translation>
+      <translation>Erscheinungsbild</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3617,11 +3606,31 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation>Schnittstellenstil:</translation>
+      <translation>Interface-Stil:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Erstellen Sie einen Volltextindex mit parallelen Threads </translation>
+      <translation>Volltextindex mit parallelen Threads erstellen </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Bei der Verwendung der Zwischenablage alles nach dem Zeilenumbruch entfernen</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Ungültigen Index beim Beenden entfernen</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Sonstiges</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Deaktivieren Sie beim Debuggen mit dem Wörterbuch css/js, um es einfacher zu machen.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Wörterbuch-Debug</translation>
     </message>
   </context>
   <context>
@@ -3737,7 +3746,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>Fensterstatus zurücksetzen.</translation>
+      <translation>Fensterzustand zurücksetzen.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
@@ -3757,7 +3766,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Druckversion und Diagnoseinformationen.</translation>
+      <translation>Version und Diagnoseinformationen drucken.</translation>
     </message>
   </context>
   <context>
@@ -3862,7 +3871,7 @@ es in der Größe verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>ACHTUNG: %1</translation>
+      <translation>WARNUNG: %1</translation>
     </message>
   </context>
   <context>
@@ -4015,7 +4024,7 @@ basierend auf der Englischen Aussprache</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Dies gilt nur für Suchphrasen, wobei jede Zeile eine durch Semikolon getrennte Transliteration darstellt. Beispielsweise können Benutzer ae;æ,ae eingeben, um æ im Zielwort darzustellen.</translation>
+      <translation>Dies gilt nur für Suchphrasen, wobei jede Zeile eine Transliteration darstellt, die durch Semikolon getrennt ist. Zum Beispiel, ae;æ, können Benutzer ae eingeben, um æ im Zielwort darzustellen.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
@@ -4051,9 +4060,9 @@ Noch nicht in GoldenDict implementiert.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Beispiele:  &amp;quot;eng&amp;quot; für Englisch, &amp;quot;fra&amp;quot; für Französisch &lt;br&gt;
+      <translation>Beispiele: &amp;quot;eng&amp;quot; für Englisch, &amp;quot;fra&amp;quot; für Französisch &lt;br&gt;
 
-Eine vollständige Liste der verfügbaren Sprachen finden Sie &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt;</translation>
+Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt; zu finden</translation>
     </message>
     <message>
       <source>Katakana</source>

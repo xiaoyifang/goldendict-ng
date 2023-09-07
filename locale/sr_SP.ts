@@ -28,10 +28,6 @@
       <translation>Заслуге:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© Константин Исаков (ikm@goldendict.org), 2008-2011 {2008-2013 ?}</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>На основу Кт %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Скупи чланак</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Рад са искачућим прозором</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без имена)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Није пронађен превод за &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групи &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Добро дошли у &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Ако покренете програм по први пут, одредите путању до речника у &lt;b&gt;Уреди|Речник&lt;/b&gt;. Ту можете да наведете разне сајтове Википедије или другe изворe података, подесите редослед у коме су речници или направите речник.&lt;p&gt;Након тога, можете да почнете да тражите речи. Речи се могу наћи у левом окну прозора. Када радите у другим апликацијама, можете да тражите речи, користећи &lt;a href=&quot;Рад са искачућим прозором&quot;&gt;искачући прозор&lt;/a&gt;. &lt;p&gt;У изборнику &lt;b&gt;Уреди|Поставке&lt;/b&gt;.Можете да подесите апликацију по свом укусу. Сви параметри су наговештаји који се приказују када пређете преко њих. Обратите пажњу на њих, када имате проблема са конфигурацијом.&lt;p&gt;Ако вам је потребна помоћ,било каква питања, захтеве, итд, погледајте&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt; Форум програма&lt;/a&gt;.&lt;p&gt;Ажурирање софтвера доступно на  &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб сајту&lt;/a&gt;.&lt;p&gt;© Константин Исаков (ikm@goldendict.org), 2008-2011. Лиценца: GNU GPLv3 или новија. {3 ?} {3&gt;?} {2008-2013 ?} {3 ?}</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(слика)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Добродошли у &lt;b&gt;ГолденДицт&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Да бисте почели да радите са програмом, прво посетите &lt;b&gt;Уреди|Речници&lt;/b&gt; да бисте додали неке путање директоријума у којима ћете претраживати датотеке речника, подесити различите сајтове Википедије или друге изворе, прилагодити редослед речника или креирати групе речника.&lt;p&gt;А онда сте&apos;да потражите своје речи! То можете да урадите у овом прозору користећи окно са леве стране или можете &lt;button id=&quot;lookup-popup&quot;&gt;потражити речи из других активних апликација&lt;/button&gt;. &lt;p&gt;Да бисте прилагодили програм, погледајте доступне поставке на &lt;b&gt;Едит|Преференцес&lt;/b&gt;. Сва подешавања тамо имају описе алата, обавезно их прочитајте ако сте у недоумици.&lt;p&gt;Уколико вам је потребна додатна помоћ, имате питања, сугестије или се само питате шта други мисле, добродошли сте на програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форум&lt;/a&gt;.&lt;p&gt;Проверите програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб локацију&lt;/a&gt; за ажурирања. &lt;p&gt;(в) 2008-2013 Konstantin Isakov. Лиценцирано под ГПЛв3 или новијим.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Индексирање...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Учитавање...</translation>
     </message>
   </context>
   <context>
@@ -3419,10 +3415,6 @@ clears its network cache from disk during exit.</source>
       <translation>Колапс сесије</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Када користите међуспремник, скините све после новог реда</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Приликом нове претраге фокусирајте главни или искачући прозор чак и ако је видљив</translation>
     </message>
@@ -3629,6 +3621,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Креирајте индекс пуног текста са паралелним нитима </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Када користите међуспремник, скините све после новог реда</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Уклоните неважећи индекс на излазу</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Остало</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Када отклањате грешке помоћу речника цсс/јс, онемогућите одређени кеш да бисте то олакшали.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Отклањање грешака у речнику</translation>
     </message>
   </context>
   <context>

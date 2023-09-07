@@ -59,8 +59,8 @@ jobs:
           previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
           echo "previousTag : $previousTag"
           
-          echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 1p)"
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: "Build Changelog"
         id: build_changelog
@@ -111,11 +111,11 @@ jobs:
         id: vars
         shell: bash
         run: |
-          echo "::set-output name=sha_short::$(git rev-parse --short=8 HEAD)"    
-          echo "::set-output name=release_date::$(date +'%Y%m%d')"    
-          echo "::set-output name=release_time::$(date +'%H%M%S')"  
-          echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
-          echo "::set-output name=release_hm::$(date +'%y%m%d')"          
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"           >> $GITHUB_OUTPUT
 
       - name: version-file
         shell: bash
@@ -160,18 +160,21 @@ jobs:
           echo QTDIR=%Qt6_DIR% >> %GITHUB_ENV%
 
       # 打包 
-      - name: package
-        id: package
+      - name: windows ps package
+        id: package-windows
         env:
           archiveName: GoldenDict-Windows.${{ steps.vars.outputs.sha_short }}-${{ steps.vars.outputs.release_time }}
-          msvcArch: ${{ matrix.msvc_arch }}
         shell: pwsh
         run: |
           & .github\scripts\windows-publish.ps1 ${env:archiveName} ${env:targetName}
-           $name = ${env:archiveName}
-           echo "::set-output name=packageName::$name" 
        
-
+      - name: package
+        id: package
+        shell: bash
+        run: |
+          packageName=GoldenDict-Windows.${{ steps.vars.outputs.sha_short }}-${{ steps.vars.outputs.release_time }}
+          echo $packageName
+          echo "packageName=$packageName"  >> $GITHUB_OUTPUT
 
       - name: upload goldendict.exe only
         uses: svenstaro/upload-release-action@v2
@@ -204,7 +207,7 @@ jobs:
         run: |
           cp tools/nsis/GoldenDict.nsi ${{ steps.package.outputs.packageName }}/
       - name: Create installer
-        uses: joncloud/makensis-action@v3.6
+        uses: joncloud/makensis-action@v4
         with:
           arguments: "/V3"
           script-file: ${{ steps.package.outputs.packageName }}/GoldenDict.nsi
@@ -250,7 +253,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages.
+            Linux users can use AppImages or Flatpak.
+            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 
@@ -261,7 +265,7 @@ jobs:
             AppImage: Ubuntu-20.04
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
-
+            based on: ${{github.ref}}
 
             #### Changes
             

@@ -287,8 +287,6 @@ private:
   void replaceStyleInHtml( QString & id, QString & article );
   void replaceFontLinks( QString & id, QString & article );
 
-  void removeDirectory( QString const & directory );
-
   friend class MdxArticleRequest;
   friend class MddResourceRequest;
   void loadResourceFile( const wstring & resourceName, vector< char > & data );
@@ -335,7 +333,7 @@ MdxDictionary::~MdxDictionary()
 
   dictFile.close();
 
-  removeDirectory( cacheDirName );
+  Utils::Fs::removeDirectory( cacheDirName );
 }
 
 //////// MdxDictionary::deferredInit()
@@ -758,7 +756,7 @@ void MddResourceRequest::run()
         hasAnyData = true;
         data.resize( bytes->size() );
         memcpy( &data.front(), bytes->constData(), bytes->size() );
-        GlobalBroadcaster::instance()->cache.insert( unique_key, bytes );
+        GlobalBroadcaster::instance()->insertCache( unique_key, bytes );
         break;
       }
     }
@@ -792,7 +790,7 @@ void MddResourceRequest::run()
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
         //cache the processed css result to avoid process again.
-        GlobalBroadcaster::instance()->cache.insert( unique_key, new QByteArray( bytes ) );
+        GlobalBroadcaster::instance()->insertCache( unique_key, new QByteArray( bytes ) );
       }
       if ( Filetype::isNameOfTiff( u8ResourceName ) ) {
         // Convert it
@@ -1172,20 +1170,6 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
   }
 }
 
-void MdxDictionary::removeDirectory( QString const & directory )
-{
-  QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
-}
-
 static void addEntryToIndex( QString const & word, uint32_t offset, IndexedWords & indexedWords )
 {
   // Strip any leading or trailing whitespaces
@@ -1288,7 +1272,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .mdx to speed up the
     // scanning
-    if ( fileName.size() < 4 || strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".mdx" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".mdx" ) )
       continue;
 
     vector< string > dictFiles( 1, fileName );

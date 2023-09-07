@@ -149,6 +149,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
+  stopAudioAction( this ),
   trayIconMenu( this ),
   addTab( this ),
   cfg( cfg_ ),
@@ -165,7 +166,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
-  blockUpdateWindowTitle( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsDlg( nullptr ),
@@ -428,6 +428,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addGlobalAction( ui.fullTextSearchAction, [ this ]() {
     showFullTextSearchDialog();
   } );
+
+  addGlobalAction( &stopAudioAction, [ this ]() {
+    stopAudio();
+  } );
+  stopAudioAction.setShortcut( QKeySequence( "Ctrl+Shift+S" ) );
 
   addTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addTabAction.setShortcut( QKeySequence( "Ctrl+T" ) );
@@ -736,8 +741,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setWindowTitle( "GoldenDict-ng" );
 
-  blockUpdateWindowTitle = true;
-
   // Create tab list menu
   createTabList();
 
@@ -765,11 +768,22 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addNewTab();
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
-  blockUpdateWindowTitle = true;
   view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
   history.enableAdd( cfg.preferences.storeHistory );
 
-  translateLine->setFocus();
+  // restore should be called after all UI initialized but not necessarily after show()
+  // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
+  // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
+  if ( cfg.mainWindowState.size() && !cfg.resetState )
+    restoreState( cfg.mainWindowState );
+  if ( cfg.mainWindowGeometry.size() )
+    restoreGeometry( cfg.mainWindowGeometry );
+
+  // Show window unless it is configured not to
+  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
+    show();
+    focusTranslateLine();
+  }
 
   // Scanpopup related
   scanPopup =
@@ -860,12 +874,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     on_alwaysOnTop_triggered( true );
   }
 
-  // Only show window initially if it wasn't configured differently
-  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
-    show();
-    focusTranslateLine();
-  }
-
   if ( cfg.preferences.hideMenubar ) {
     toggleMenuBarTriggered( false );
   }
@@ -910,12 +918,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                           + " \"%1\"" );
   urlRegistry.endGroup();
 #endif
-
-  // restore should be called after all UI initialized.
-  if ( cfg.mainWindowState.size() && !cfg.resetState )
-    restoreState( cfg.mainWindowState );
-  if ( cfg.mainWindowGeometry.size() )
-    restoreGeometry( cfg.mainWindowGeometry );
 
   useSmallIconsInToolbarsTriggered();
 
@@ -1208,9 +1210,34 @@ void MainWindow::commitData( QSessionManager & )
 
 void MainWindow::commitData()
 {
-  if ( cfg.preferences.clearNetworkCacheOnExit )
+  if ( cfg.preferences.clearNetworkCacheOnExit ) {
     if ( QAbstractNetworkCache * cache = articleNetMgr.cache() )
       cache->clear();
+  }
+
+  //if the dictionaries is empty ,large chance that the config has corrupt.
+  if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
+    QDir const dir( Config::getIndexDir() );
+
+    QFileInfoList const entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
+
+    for ( auto & file : entries ) {
+      QString const fileName = file.fileName();
+
+      //remove both normal index and fts index.
+      if ( !dictMap.contains( fileName.toStdString() ) ) {
+        auto filePath = file.absoluteFilePath();
+        qDebug() << "remove invalid index files & fts dirs";
+
+        QFile::remove( filePath );
+        QDir d( filePath + "_FTS_x" );
+        if ( d.exists() ) {
+          d.removeRecursively();
+        }
+      }
+    }
+  }
+
 
   try {
     // Save MainWindow state and geometry
@@ -1947,9 +1974,7 @@ void MainWindow::updateWindowTitle()
   if ( view ) {
     QString str = view->getTitle();
     if ( !str.isEmpty() ) {
-      if ( !blockUpdateWindowTitle )
-        setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
-      blockUpdateWindowTitle = false;
+      setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
     }
   }
 }
@@ -2402,7 +2427,7 @@ void MainWindow::respondToTranslationRequest( QString const & word, bool checkMo
         activateWindow();
     }
 
-    getCurrentArticleView()->focus();
+    focusArticleView();
   }
 }
 
@@ -2589,7 +2614,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
             activateWindow();
         }
 
-        getCurrentArticleView()->focus();
+        focusArticleView();
 
         return cfg.preferences.searchInDock;
       }
@@ -2703,6 +2728,9 @@ void MainWindow::typingEvent( QString const & t )
       ui.searchPane->activateWindow();
 
     if ( translateLine->isEnabled() ) {
+      if ( navToolbar->isFloating() )
+        navToolbar->activateWindow();
+
       translateLine->clear();
       translateLine->setFocus();
       // Escaping the typed-in characters is the user's responsibility.
@@ -4001,11 +4029,17 @@ void MainWindow::focusHeadwordsDialog()
 
 void MainWindow::focusArticleView()
 {
-  ArticleView * view = getCurrentArticleView();
-  if ( view ) {
+  if ( ArticleView * view = getCurrentArticleView() ) {
     if ( !isActiveWindow() )
       activateWindow();
     view->focus();
+  }
+}
+
+void MainWindow::stopAudio()
+{
+  if ( ArticleView * view = getCurrentArticleView() ) {
+    view->stopSound();
   }
 }
 

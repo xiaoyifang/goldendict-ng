@@ -45,7 +45,7 @@ jobs:
       - name: Set outputs
         id: githash
         run: |
-          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"   
+          echo "sha_short=$(git rev-parse --short HEAD)"    >> $GITHUB_OUTPUT
        
       - name: install deps on macos
         run: |
@@ -102,17 +102,13 @@ jobs:
           ls -al /usr/local/share/vcpkg/packages/breakpad*
           cp -R /usr/local/share/vcpkg/packages/breakpad*/*  thirdparty/breakpad
           ls -al thirdparty/breakpad/lib
-      - uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'              
+        
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
-          
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          setup-python: 'false'
           
       - name: compile
         run: |          
@@ -125,9 +121,9 @@ jobs:
           macdeployqt ${targetName}.app -no-strip -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
-          otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
+          # otool -L GoldenDict.app/Contents/Frameworks/libicu*.dylib
           ls -al /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib
-          cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
+          # cp -r /usr/local/Cellar/icu4c/7*/lib/libicudata.*.dylib  GoldenDict.app/Contents/Frameworks
 
           codesign --force --deep -s - GoldenDict.app
           
@@ -143,17 +139,17 @@ jobs:
           echo "previousTag : $previousTag"
           
 
-          echo "::set-output name=prev_tag::$previousTag"
-          echo "::set-output name=curr_tag::$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 1p)"
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: Set outputs
         id: vars
         run: |
-          echo "::set-output name=sha_short::$(git rev-parse --short=8 HEAD)"    
-          echo "::set-output name=release_date::$(date +'%Y%m%d')"    
-          echo "::set-output name=release_time::$(date +'%H%M%S')"  
-          echo "::set-output name=release_time_clock::$(date +'%H:%M:%S')"   
-          echo "::set-output name=release_hm::$(date +'%y%m%d')"  
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"   >> $GITHUB_OUTPUT
 
       # tag 上传Release
       - name: "Build Changelog"
@@ -220,7 +216,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages.
+            Linux users can use AppImages or Flatpak.
+            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 
@@ -231,6 +228,7 @@ jobs:
             AppImage: Ubuntu-20.04
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
+            based on: ${{github.ref}}
 
 
 

@@ -28,10 +28,6 @@
       <translation>Подяки:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>© 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>На основі Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Згорнути статтю</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Контекстні вікна</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без назви)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Немає перекладу для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групі &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спочатку відвідайте &lt;b&gt;Зміни|Словники&lt;/b&gt;, та додайте деякі шляхи до словників, де їх можна знайти, вкажіть варіанти сайтів Wikipedia або інших джерел, встановити порядок словників або згрупувати словники.&lt;p&gt;І тоді ви зможете шукати самі слова! Ви можете це здійснити в цьому вікні, використовуючи панель зліва, або можете через &lt;a href=&quot;Контекстні вікна&quot;&gt;шукати слова з інших запущених програм&lt;/a&gt;. &lt;p&gt;Щоб налаштувати програму, перевірте доступність налаштувань в &lt;b&gt;Зміни|Налаштування&lt;/b&gt;. Всі параметри мають підказки, переконайтесь, що прочитали їх, якщо в чомусь не впевнені.&lt;p&gt;Якщо потрібна допомога, маєте якісь запитання, поради або просто бажаєте поділитись враженнями, ми будемо раді кожному на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форумі&lt;/a&gt; програми.&lt;p&gt;Відвідайте &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайт&lt;/a&gt; програми щодо оновлень. &lt;p&gt;© 2008–2013 Konstantin Isakov. Ліцензовано за GPLv3 або пізнішої версії.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(зображення)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спершу відвідайте &lt;b&gt;Редагувати|Словники&lt;/b&gt; , щоб додати деякі шляхи до каталогу, де шукати файли словників, налаштувати різні сайти Вікіпедії чи інші джерела, налаштувати порядок словників або створити групи словників.&lt;p&gt;І тоді ви&apos;готові переглянути свої слова! Ви можете зробити це в цьому вікні, використовуючи панель ліворуч, або ви можете &lt;button id=&quot;lookup-popup&quot;&gt;шукати слова з інших активних програм&lt;/button&gt;. &lt;p&gt;Щоб налаштувати програму, перегляньте доступні параметри в &lt;b&gt;Редагувати|Параметри&lt;/b&gt;. До всіх налаштувань є підказки, обов’язково прочитайте їх, якщо у вас є сумніви.&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання, пропозиції чи просто цікаво, що думають інші, ласкаво просимо на форум програми&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Перевірте програму&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб-сайт&lt;/a&gt; на наявність оновлень. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Ліцензовано під GPLv3 або новішої версії.</translation>
     </message>
   </context>
   <context>
@@ -1198,6 +1190,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Індексація...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Завантаження...</translation>
     </message>
   </context>
   <context>
@@ -3418,10 +3414,6 @@ clears its network cache from disk during exit.</source>
       <translation>Згорнути сесію</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>При використанні буфера обміну, відрізати все після нової лінії</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Під час нового пошуку сфокусуйте головне або спливаюче вікно, навіть якщо воно видиме</translation>
     </message>
@@ -3628,6 +3620,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Створіть повнотекстовий індекс із паралельними потоками </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Під час використання буфера обміну видаляйте все після нового рядка</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Видалити недійсний індекс під час виходу</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Різне</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>При налагодженні з словником css/js, вимкніть певний кеш, щоб зробити його простішим.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Налагодження словника</translation>
     </message>
   </context>
   <context>

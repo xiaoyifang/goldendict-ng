@@ -14,10 +14,6 @@
 #include <vector>
 #include <string>
 
-
-#include <QRegularExpression>
-
-
 using std::vector;
 using std::string;
 
@@ -49,49 +45,6 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
   }
 }
 
-
-void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStringList list )
-{
-  QStringList wordList, hieroglyphList;
-  for ( auto word : list ) {
-    // Check for CJK symbols in word
-    bool parsed = false;
-    QString hieroglyph;
-    for ( int x = 0; x < word.size(); x++ )
-      if ( Utils::isCJKChar( word.at( x ).unicode() ) ) {
-        parsed = true;
-        hieroglyph.append( word[ x ] );
-
-        if ( QChar( word.at( x ) ).isHighSurrogate() && QChar( word[ x + 1 ] ).isLowSurrogate() )
-          hieroglyph.append( word[ ++x ] );
-
-        hieroglyphList.append( hieroglyph );
-        hieroglyph.clear();
-      }
-
-    // If word don't contains CJK symbols put it in list as is
-    if ( !parsed )
-      wordList.append( word );
-  }
-
-  indexWords = wordList.filter( wordRegExp );
-  indexWords.removeDuplicates();
-
-  hieroglyphList.removeDuplicates();
-  indexWords += hieroglyphList;
-}
-
-bool containCJK( QString const & str )
-{
-  bool hasCJK = false;
-  for ( auto x : str )
-    if ( Utils::isCJKChar( x.unicode() ) ) {
-      hasCJK = true;
-      break;
-    }
-  return hasCJK;
-}
-
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
   QMutexLocker _( &dict->getFtsMutex() );
@@ -105,7 +58,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       throw exUserAbort();
 
     // Open the database for update, creating a new database if necessary.
-    Xapian::WritableDatabase db( dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN );
+    Xapian::WritableDatabase db( dict->ftsIndexName() + "_temp", Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;
     //  Xapian::Stem stemmer("english");
@@ -206,6 +159,12 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     offsets.clear();
 
     db.commit();
+
+    db.compact( dict->ftsIndexName() );
+
+    db.close();
+
+    Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
   }
   catch ( Xapian::Error & e ) {
     qWarning() << "create xapian index:" << QString::fromStdString( e.get_description() );

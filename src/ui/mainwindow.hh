@@ -109,6 +109,8 @@ private:
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
     useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
     addAllTabToFavoritesAction;
+
+  QAction stopAudioAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
@@ -154,8 +156,6 @@ private:
   bool wordListSelChanged;
 
   bool wasMaximized; // Window state before minimization
-
-  bool blockUpdateWindowTitle;
 
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
@@ -456,6 +456,7 @@ private slots:
   void focusHeadwordsDialog();
 
   void focusArticleView();
+  void stopAudio();
 
   void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
 

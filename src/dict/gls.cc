@@ -1195,8 +1195,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Try .gls and .gls.dz suffixes
 
-    if ( !( fileName.size() >= 4 && strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".gls" ) == 0 )
-         && !( fileName.size() >= 7 && strcasecmp( fileName.c_str() + ( fileName.size() - 7 ), ".gls.dz" ) == 0 ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".gls" ) && !Utils::endsWithIgnoreCase( fileName, ".gls.dz" ) )
       continue;
 
     unsigned atLine = 0; // Indicates current line in .gls, for debug purposes

@@ -494,6 +494,13 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDiction
 
 } // namespace
 
+bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
+{
+  if ( !node.isNull() )
+    return ( node.toElement().text() == expectedValue );
+  return defaultValue;
+}
+
 Class load()
 {
   QString configName = getConfigFileName();
@@ -849,6 +856,7 @@ Class load()
   if ( !preferences.isNull() ) {
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
+    c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -999,6 +1007,13 @@ Class load()
     if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() )
       c.preferences.clearNetworkCacheOnExit =
         ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
+
+
+    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() )
+      c.preferences.removeInvalidIndexOnExit =
+        ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
+
+    c.preferences.dictionaryDebug = fromConfig2Preference( preferences.namedItem( "dictionaryDebug" ), "1" );
 
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
@@ -1688,6 +1703,10 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceLanguage ) );
     preferences.appendChild( opt );
 
+    opt = dd.createElement( "interfaceFont" );
+    opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
+    preferences.appendChild( opt );
+
     opt             = dd.createElement( "customFonts" );
     auto customFont = c.preferences.customFonts.toElement( dd );
     preferences.appendChild( customFont );
@@ -1978,6 +1997,14 @@ void save( Class const & c )
 
     opt = dd.createElement( "clearNetworkCacheOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.clearNetworkCacheOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "removeInvalidIndexOnExit" );
+    opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "dictionaryDebug" );
+    opt.appendChild( dd.createTextNode( c.preferences.dictionaryDebug ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );

@@ -1,0 +1,67 @@
+name: SonarCloud
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - staged
+
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+    env:
+      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
+    steps:            
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.5.1
+          arch: gcc_64
+          
+          #serialport linuxdeploy need serialport to work.
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
+          
+      - name: ubuntu install thirdparty dependencies
+        run: |
+          sudo apt-get install git pkg-config build-essential 
+          sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
+          sudo apt-get install libxtst-dev liblzo2-dev libbz2-dev 
+          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
+          sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
+          sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
+          sudo apt install libxapian-dev
+          #build opencc
+          git clone https://github.com/BYVoid/OpenCC
+          cd OpenCC/
+          make PREFIX=/usr -j$(nproc)
+          sudo make install
+          cd ..
+          sudo apt-get install libzim-dev
+          
+          sudo apt install openjdk-17-jdk openjdk-17-jre
+          java -version
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18          
+      - name: Install sonar-scanner and build-wrapper
+        uses: SonarSource/sonarcloud-github-c-cpp@v2
+      - name: Run build-wrapper
+        run: |
+          qmake CONFIG+=release CONFIG+=zim_support   CONFIG+=chinese_conversion_support
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make  -j8 
+      - name: Run sonar-scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"

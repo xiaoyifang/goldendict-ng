@@ -13,6 +13,8 @@
 #include <QUrlQuery>
 #include <QWidget>
 #include "filetype.hh"
+#include <string>
+using std::string;
 
 namespace Utils {
 inline bool isCJKChar( ushort ch )
@@ -37,7 +39,7 @@ inline QString rstrip( const QString & str )
 }
 
 std::string c_string( const QString & str );
-
+bool endsWithIgnoreCase( const string & str1, string str2 );
 /**
  * remove punctuation , space, symbol
  *
@@ -332,7 +334,9 @@ char separator();
 
 /// Returns the name part of the given filename.
 string basename( string const & );
+void removeDirectory( QString const & directory );
 
+void removeDirectory( string const & directory );
 } // namespace Fs
 
 } // namespace Utils

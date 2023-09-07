@@ -28,10 +28,6 @@
       <translation>Công trạng:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>Bản quyền 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Dựa trên Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Thu gọn bài viết</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Làm việc với popup</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(chưa đặt tên)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Không tìm thấy bản dịch nào cho &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; trong nhóm &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Chào mừng đến với &lt;b&gt;Từ điển Vàng&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Để bắt đầu làm việc với chương trình, hãy mở &lt;b&gt;Biên tập|Từ điển&lt;/b&gt; để thêm đường dẫn chứa các tệp từ điển, thiết lập các trang Wikipedia và các nguồn khác, sắp xếp hay tạo các nhóm từ điển.&lt;p&gt;Bạn đã sẵn sàng tra nghĩa của từ rồi đấy! Bạn có thể tra trong cửa sổ này bằng cách sử dụng ô bên trái, hoặc bạn có thể &lt;a href=&quot;Working with popup&quot;&gt;tra từ trong các ứng dụng khác&lt;/a&gt;. &lt;p&gt;Để tùy chỉnh chương trình, hãy thử các tùy chọn khác nhau trong &lt;b&gt;Biên tập|Tùy thích&lt;/b&gt;. Tất cả các cài đặt đều có các mẹo hiện lên, hãy đọc chúng nếu bạn đang phân vân về một chức năng nào đó.&lt;p&gt;Nếu như bạn cần thêm giúp đỡ, có một vài câu hỏi, gợi ý hay chỉ là thắc mắc xem những người khác đang nghĩ gì, bạn đều được chào mừng đến với &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;diễn đàn&lt;/a&gt; của chương trình.&lt;p&gt;Hãy kiểm tra &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;trang chủ&lt;/a&gt; của chương trình để cập nhật nếu muốn. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Cấp phép theo GPLv3 hoặc mới hơn.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(hình ảnh)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Chào mừng đến với &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Để bắt đầu làm việc với chương trình, trước tiên hãy truy cập &lt;b&gt;Edit|Dictionaries&lt;/b&gt; để thêm một số đường dẫn thư mục để tìm kiếm các tệp từ điển, thiết lập các trang Wikipedia khác nhau hoặc các nguồn khác, điều chỉnh thứ tự từ điển hoặc tạo các nhóm từ điển.&lt;p&gt;Và sau đó bạn&apos;sẵn sàng tra cứu từ ngữ của mình! Bạn có thể làm điều đó trong cửa sổ này bằng cách sử dụng khung bên trái hoặc bạn có thể &lt;button id=&quot;lookup-popup&quot;&gt;cứu các từ từ các ứng dụng đang hoạt động khác&lt;/button&gt;. &lt;p&gt;Để tùy chỉnh chương trình, hãy xem các tùy chọn có sẵn tại &lt;b&gt;Edit|Preferences&lt;/b&gt;. Tất cả các cài đặt ở đó đều có chú giải công cụ, hãy nhớ đọc chúng nếu bạn nghi ngờ về bất kỳ điều gì.&lt;p&gt;Nếu bạn cần trợ giúp thêm, có bất kỳ câu hỏi, đề xuất nào hoặc chỉ thắc mắc người khác nghĩ gì, bạn đều được chào đón tại diễn đàn chương trình&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kiểm tra chương trình&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;trang web&lt;/a&gt; để biết thông tin cập nhật. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Được cấp phép theo GPLv3 trở lên.</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Lập chỉ mục...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Đang tải...</translation>
     </message>
   </context>
   <context>
@@ -3410,10 +3406,6 @@ sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translati
       <translation>Thu gọn phiên</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Trên một tìm kiếm mới, tập trung vào cửa sổ chính hoặc cửa sổ bật lên ngay cả khi nó hiển thị</translation>
     </message>
@@ -3620,6 +3612,26 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Tạo chỉ mục toàn văn với các luồng song song </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Khi sử dụng khay nhớ tạm, hãy loại bỏ mọi thứ sau dòng mới</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Xóa chỉ mục không hợp lệ khi thoát</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Điều khoản khác</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Khi gỡ lỗi với từ điển css/js, hãy tắt bộ đệm nhất định để dễ dàng hơn.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Gỡ lỗi từ điển</translation>
     </message>
   </context>
   <context>

@@ -28,10 +28,6 @@
       <translation>致謝名單：</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>基於Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>摺疊條目</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>使用螢幕取詞功能</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(未命名)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>在組 &lt;b&gt;%2&lt;/b&gt;中未找到 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 的翻譯。</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;歡迎使用 &lt;b&gt;GoldenDict&lt;/b&gt; 字典查詢程式！&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;使用時請先開啟 &lt;b&gt;編輯 | 字典&lt;/b&gt; 功能表以新增並掃描含有字典檔案的資料夾，然後新增維基百科網站查詢或其它資源，再調整字典排序或建立新的字典群組。&lt;p style=&quot;text-indent:2em&quot;&gt;這些設定都完成以後，就可以開始使用了。您可以使用左側的查詢窗格，或是&lt;a href=&quot;使用螢幕取詞功能&quot;&gt;直接從其它程式中抓詞查詢&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需自訂本程式，可以在 &lt;b&gt;編輯 | 偏好設定&lt;/b&gt; 功能表中檢視可用的設定。所有的設定都有工具提示，如果有不明之處，請先看一下工具提示。&lt;p style=&quot;text-indent:2em&quot;&gt;如果您需要更多說明、有任何疑問、建議，或是想了解其他人的想法，歡迎拜訪此程式的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;官方論壇&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;如需要取得程式更新，歡迎拜訪此程式的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;官方網站&lt;/a&gt;。&lt;p style=&quot;text-indent:2em&quot;&gt;(c) 2008-2013 Konstantin Isakov. 授權基於 GPLv3 或更高版本。</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(圖片)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;歡迎使用&lt;b&gt;GoldenDict&lt;/b&gt;！&lt;/h3&gt;&lt;p&gt;要開始使用該程序，請首先訪問&lt;b&gt;編輯|詞典&lt;/b&gt;添加一些目錄路徑來搜索字典文件、設置各種維基百科網站或其他來源、調整字典順序或創建字典組。&lt;p&gt;然後您就可以查找單詞了！您可以通過使用左側的窗格在此窗口中執行此操作，也可以&lt;button id=&quot;lookup-popup&quot;&gt;從其他活動應用程序查找單詞&lt;/button&gt;。 &lt;p&gt;要自定義程序，請查看&lt;b&gt;編輯|首選項&lt;/b&gt;中的可用首選項。那裡的所有設置都有工具提示，如果您有任何疑問，請務必閱讀它們。&lt;p&gt;如果您需要進一步幫助、有任何問題、建議或只是想知道其他人的想法，歡迎您訪問該程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;論壇&lt;/a&gt;。&lt;p&gt;檢查&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;網站&lt;/a&gt;是否有更新。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。根據 GPLv3 或更高版本獲得許可。</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>索引...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>正在加載...</translation>
     </message>
   </context>
   <context>
@@ -3408,10 +3404,6 @@ clears its network cache from disk during exit.</source>
       <translation>會話期間，詞典保持摺疊</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>使用剪貼板時，刪除換行符後的所有內容</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>在新搜索中，聚焦主窗口或彈出窗口，即使它是可見的</translation>
     </message>
@@ -3618,6 +3610,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>使用並行線程創建全文索引 </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>使用剪貼板時，刪除換行符後的所有內容</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>退出時刪除無效索引</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>雜項</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>當使用字典 css/js 進行調試時，禁用某些緩存以使其更容易。</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>字典調試</translation>
     </message>
   </context>
   <context>

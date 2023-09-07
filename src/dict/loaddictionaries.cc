@@ -294,24 +294,6 @@ void loadDictionaries( QWidget * parent,
     }
   }
 
-  QDir indexDir( Config::getIndexDir() );
-
-  QStringList allIdxFiles = indexDir.entryList( QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
-
-  for ( const auto & file : allIdxFiles ) {
-    if ( file.size() >= 32 && ids.find( file.left( 32 ).toStdString() ) == ids.end() ) {
-      if ( QFile::exists( file ) ) {
-        indexDir.remove( file );
-      }
-      else {
-        // must be folder .
-        auto dirPath = Utils::Path::combine( Config::getIndexDir(), file );
-        QDir t( dirPath );
-        t.removeRecursively();
-      }
-    }
-  }
-
   // Run deferred inits
 
   if ( doDeferredInit_ )

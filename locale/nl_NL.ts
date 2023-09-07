@@ -28,10 +28,6 @@
       <translation>Dankbetuigingen:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Artikel samenvouwen</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Met popups werken</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(naamloos)</translation>
     </message>
@@ -106,15 +98,12 @@
       <translation>In groep &lt;b&gt;%2&lt;/b&gt;is geen vertaling voor &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gevonden.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Welkom bij &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Om met het programma te kunnen werken kiest u eerst &lt;b&gt;Bewerken &gt; Woordenboeken&lt;/b&gt;. U kunt vervolgens enkele mappen toevoegen waarin naar woordenboekbestanden wordt gezocht, Wikipedia sites of andere bronnen opgeven, of de woordenboekvolgorde aanpassen en woordenboekgroepen aanmaken.&lt;/p&gt;
-&lt;p&gt;Hierna bent u klaar om woorden op te zoeken met behulp van het deelvenster aan de linkerkant. Bovendien kunt u &lt;a href=&quot;Met popups werken&quot;&gt;woorden opzoeken vanuit andere programma&apos;s&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Om het programma aan te passen kiest u &lt;b&gt;Bewerken &gt; Instellingen&lt;/b&gt;. Bij alle instellingen worden tooltips weergegeven die u kunt raadplegen als u ergens niet zeker van bent.&lt;/p&gt;
-&lt;p&gt;Hebt u meer hulp nodig, wilt u iets vragen, hebt u suggesties of bent u benieuwd naar de mening van andere gebruikers, bezoek dan het &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;. Programma updates kunt u vinden op de &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt;.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Gebruiksrecht verleend onder GPLv3 of nieuwer.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(afbeelding)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Welkom bij &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Om met het programma te gaan werken, gaat u eerst naar &lt;b&gt;Bewerken|Woordenboeken&lt;/b&gt; om enkele mappaden toe te voegen waar u naar de woordenboekbestanden kunt zoeken, verschillende Wikipedia-sites of andere bronnen kunt instellen, de volgorde van het woordenboek kunt aanpassen of woordenboekgroepen kunt maken.&lt;p&gt;En dan ben je&apos;om je woorden op te zoeken! Dat kun je in dit venster doen door een venster aan de linkerkant te gebruiken, of je kunt &lt;button id=&quot;lookup-popup&quot;&gt;woorden opzoeken uit andere actieve applicaties&lt;/button&gt;. &lt;p&gt;Om het programma aan te passen, bekijk de beschikbare voorkeuren op &lt;b&gt;Bewerken|Voorkeuren&lt;/b&gt;. Alle instellingen daar hebben tooltips, lees deze zeker als u ergens over twijfelt.&lt;p&gt;Heeft u verdere hulp nodig, heeft u vragen, suggesties of vraagt u zich gewoon af wat anderen ervan vinden, dan bent u van harte welkom op het programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kijk programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; voor de updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Gelicentieerd onder GPLv3 of hoger.</translation>
     </message>
   </context>
   <context>
@@ -1201,6 +1190,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Indexing...</source>
       <translation>Indexeren...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Bezig met laden...</translation>
     </message>
   </context>
   <context>
@@ -3416,10 +3409,6 @@ zijn netwerkcache van schijf tijdens het afsluiten.</translation>
       <translation>Sessie inklappen</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Als je klembord gebruikt, strip je alles na de nieuwe regel</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Focus bij een nieuwe zoekopdracht op het hoofd- of pop-upvenster, zelfs als het zichtbaar is</translation>
     </message>
@@ -3626,6 +3615,26 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Maak een volledige tekstindex met parallelle threads </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Als u het klembord gebruikt, stript u alles na de nieuwe regel</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Verwijder ongeldige index bij afsluiten</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Gemengd</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Bij het debuggen met woordenboek/js, schakel bepaalde cache uit om het makkelijker te maken.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Woordenboek debug</translation>
     </message>
   </context>
   <context>

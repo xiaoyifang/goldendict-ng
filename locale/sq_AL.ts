@@ -28,10 +28,6 @@
       <translation>Meritat:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Bazuar në Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Mbledh artikullin</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Duke punuar me popup</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(pa titull)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Asnjë përkthim për &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; nuk u gjet në grupin &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Mirë se erdhët te &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Për të përdorur programin, së pari vizitoni &lt;b&gt;Editoj|Fjalorët&lt;/b&gt; dhe përcaktoni vendndodhjen e direktorisë ku janë skedat e fjalorit, sistemoni faqet për Wikipedia-n ose burimet e tjera, radhitni fjalorët e krijoni grupe me ta.&lt;p&gt;Pastaj jeni gati të studioni fjalët! Kryeni këtë duke përdorur panelin në të majtë, ose duke &lt;a href=&quot;Working with popup&quot;&gt;parë nga aplikacionet e tjera aktive&lt;/a&gt;. &lt;p&gt;Për të porositur programin, kontrolloni parametrat e mundshëm te &lt;b&gt;Editoj|Preferencat&lt;/b&gt;. Parametrat kanë këshilla ndihmëse: sigurohuni që t&apos;i lexoni nëse keni dyshime për diçka.&lt;p&gt;Nëse kërkoni ndihmë, keni pyetje, sugjerime ose doni të dini se ç&apos;mendojnë të tjerët për programin, jeni të mirëpritur te &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumi&lt;/a&gt;.&lt;p&gt;Kontrolloni edhe &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;faqen në internet&lt;/a&gt; për t&apos;u azhurnuar. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencuar sipas GPLv3 a më i vonë.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(figurë)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Mirë se vini në &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Për të filluar punën me programin, vizitoni fillimisht &lt;b&gt;Edit|Fjalorët&lt;/b&gt; për të shtuar disa shtigje direktorie ku të kërkoni për skedarët e fjalorit, të konfiguroni sajte të ndryshme të Wikipedia-s ose burime të tjera, të rregulloni rendin e fjalorëve ose të krijoni grupe fjalorësh.&lt;p&gt;Dhe pastaj ju&apos;jeni gati të kërkoni fjalët tuaja! Ju mund ta bëni këtë në këtë dritare duke përdorur një panel në të majtë, ose mund &lt;button id=&quot;lookup-popup&quot;&gt;kërkoni fjalë nga aplikacione të tjera aktive&lt;/button&gt;. &lt;p&gt;Për të personalizuar programin, shikoni preferencat e disponueshme në &lt;b&gt;Edit|Preferences&lt;/b&gt;. Të gjitha cilësimet atje kanë këshilla veglash, sigurohuni t'i lexoni nëse keni dyshime për ndonjë gjë.&lt;p&gt;Nëse keni nevojë për ndihmë të mëtejshme, keni ndonjë pyetje, sugjerim ose thjesht pyesni veten se çfarë mendojnë të tjerët, jeni të mirëpritur në forumin e programit&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kontrolloni programin&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;faqen e internetit&lt;/a&gt; për përditësimet. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencuar sipas GPLv3 ose më vonë.</translation>
     </message>
   </context>
   <context>
@@ -1197,6 +1189,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Po indekson...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Po ngarkohet...</translation>
     </message>
   </context>
   <context>
@@ -3409,10 +3405,6 @@ fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
       <translation>Kolapsi i seancës</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Në një kërkim të ri, fokusoni dritaren kryesore ose kërcyese edhe nëse është e dukshme</translation>
     </message>
@@ -3619,6 +3611,26 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Krijo indeksin e tekstit të plotë me fije paralele </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Kur përdorni clipboard, hiqni gjithçka pas rreshtit të ri</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Hiq indeksin e pavlefshëm në dalje</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Të ndryshme</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Kur korrigjoni gabimet me fjalorin css/js, çaktivizoni cache të caktuar për ta bërë më të lehtë.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Korrigjimi i fjalorit</translation>
     </message>
   </context>
   <context>

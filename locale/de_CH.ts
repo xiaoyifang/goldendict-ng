@@ -28,10 +28,6 @@
       <translation>Danksagungen:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
     </message>
@@ -83,10 +79,6 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
       <translation>Artikel einklappen</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Mit Popups arbeiten</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(unbenannt)</translation>
     </message>
@@ -107,26 +99,12 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
       <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 &lt;h3 align=&quot;center&quot;&gt;Willkommen zu &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Das sind die ersten Schritte um mit dem Programm arbeiten zu können. &lt;p&gt; Gehen Sie zunächst auf &lt;b&gt;Bearbeiten » Wörterbücher...&lt;/b&gt; um die Pfade zu abgespeicherten Wörterbüchern hinzuzufügen sowie um Wikipedia und andere Seiten einzurichten oder die Wörterbücher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p&gt;
-&lt;p&gt;Nun sind Sie bereit das erste Wort nachzuschlagen. Dies können Sie im Eingabe-Fenster machen oder &lt;a href=&quot;Mit Popups arbeiten&quot;&gt;mittels der Popup-Funktion in anderen Applikationen.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Um das Programm anzupassen öffnen Sie &lt;b&gt;Bearbeiten » Einstellungen...&lt;/b&gt;&lt;br /&gt;Viele Einstellungen sind auch mit Tipps versehen.&lt;/p&gt;
-&lt;p&gt;Hilfe, Fragen und Antworten dazu finden Sie im archvierten &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;.&lt;br /&gt;Programm Updates finden sind auf der Webseite &lt;a href=&quot;https://sourceforge.net/projects/goldendict/&quot;&gt;GoldenDict&lt;/a&gt; und den weiterhin gepflegten Source auf &lt;a href=&quot;https://github.com/goldendict/goldendict/&quot;&gt;GoldenDict Source&lt;/a&gt;.
-&lt;br /&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;p&gt;&lt;/p&gt;
-&lt;BODY&gt;
-&lt;DIV&gt;&lt;B&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;
-&lt;HR&gt;
-&lt;/SPAN&gt;&lt;/B&gt;&lt;/DIV&gt;
-&lt;DIV&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;Seit 2021: &lt;br /&gt;Ein neuer Fork von XIAO, mit z.B. einer OCR Erkennung mittels dem externen Hilfsprogramm &lt;a href=&quot;https://sourceforge.net/projects/capture2text/&quot;&gt;Capture2Text&lt;/a&gt; und 
-vielen anderen Optimierungen, finden Sie auf der &lt;/SPAN&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;&lt;A 
-href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.&lt;/A&gt;&lt;FONT color=#000000&gt;
-
-&lt;HR&gt;
-</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(Bild)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
@@ -1210,6 +1188,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation type="unfinished">Indexing...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
     </message>
   </context>
   <context>
@@ -3344,7 +3326,7 @@ Wenn diese Option deaktiviert ist, dann wird das zuoberst erscheinende Wörterbu
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>Definitionsfeld...</translation>
+      <translation>Definitions Feld...</translation>
     </message>
     <message>
       <source>Sentence</source>
@@ -3352,7 +3334,7 @@ Wenn diese Option deaktiviert ist, dann wird das zuoberst erscheinende Wörterbu
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>Satzfeld (kann leer sein)...</translation>
+      <translation>Satz Feld (kann auch leer bleiben)...</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
@@ -3411,19 +3393,15 @@ clears its network cache from disk during exit.</source>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Wenn bei aufeinanderfolgenden Suchvorgängen ein Wörterbuch manuell reduziert wird, bleibt es auch bei der nächsten Suche reduziert</translation>
+      <translation>Wenn ein Wörterbuch bei aufeinanderfolgenden Suchvorgängen manuell eingeklappt wird, bleibt es auch bei der nächsten Suche eingeklappt.</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>Zusammenbruch der Sitzung</translation>
-    </message>
-    <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Wenn Sie die Zwischenablage verwenden, entfernen Sie alles nach dem Zeilenumbruch</translation>
+      <translation>Suchvorgang einklappen</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Fokussieren Sie bei einer neuen Suche das Haupt- oder Popup-Fenster, auch wenn es&apos;sichtbar ist</translation>
+      <translation>Bei neuer Suche immer den Fokus auf Haupt- oder PopUp-Fenster setzen, unabhängig ob schon gesetzt ist</translation>
     </message>
     <message>
       <source>Favorites</source>
@@ -3629,6 +3607,26 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <source>Create fulltext index with parallel threads </source>
       <translation type="unfinished">Create fulltext index with parallel threads </translation>
     </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation type="unfinished">Remove invalid index on exit</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation type="unfinished">Miscellaneous</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation type="unfinished">Dictionary debug</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3731,7 +3729,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>Ein Wörterbuch-Suchprogramm.</translation>
+      <translation>Ein Wörterbuch-Nachschlag-Programm.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
@@ -3739,7 +3737,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Speichern Sie Debug-Meldungen in gd_log.txt im Konfigurationsordner.</translation>
+      <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
@@ -3751,15 +3749,15 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>Ändern Sie die Gruppe des Hauptfensters.</translation>
+      <translation>Wechsle Gruppen im Hauptfenster.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Ändern Sie die Popup-Gruppe.</translation>
+      <translation>Wechsle Gruppen im Popup.</translation>
     </message>
     <message>
       <source>Toggle scan popup.</source>
-      <translation>Scan-Popup umschalten.</translation>
+      <translation>Wechsle Scan Popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
@@ -3875,7 +3873,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Vorherige</translation>
+      <translation>&amp;Vorheriger</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
@@ -3883,7 +3881,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Nächste</translation>
+      <translation>&amp;Nächster</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -3899,7 +3897,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>Find:</source>
-      <translation>Finden:</translation>
+      <translation>Suche:</translation>
     </message>
   </context>
   <context>
@@ -3979,7 +3977,7 @@ Standardisiert als ISO 3602.
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Alle externen Programme. Eine Zeichenfolge %GDWORD% wird durch das Abfragewort ersetzt. In der Suchleiste wird die Zeichenfolge %GDSEARCH% durch den Text ersetzt. Wenn beide Parameter nicht angegeben werden, wird das Stichwort in die Standardeingabe eingegeben.</translation>
+      <translation>Für externe Programme. Der String %GDWORD% wird mit dem Suchwort ersetzt. Falls eine solche Zeichenkette nicht vorhanden ist, wird das Wort an die Standardeingabe geschickt..</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -4003,7 +4001,7 @@ Standardisiert als ISO 3602.
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Holen Sie sich Ihren eigenen Schlüssel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bekomme deinen eigenen Schlüssel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;unter&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,

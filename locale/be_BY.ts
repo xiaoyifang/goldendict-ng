@@ -28,10 +28,6 @@
       <translation>Падзякі:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>На аснове Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Згарнуць артыкул</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Апрацоўванне ў выплыўных вокнах</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без назвы)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>У групе &lt;b&gt;%2&lt;/b&gt;не знойдзены пераклад для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Вітаем у &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Каб пачаць працу, перайдзіце ў &lt;b&gt;Рэдагаванне|Слоўнікі&lt;/b&gt; і пазначце шляхі да каталогаў з файламі слоўнікаў, дадайце сайты Вікіпедый і іншыя крыніцы, вызначце парадак слоўнікаў і стварыце групы слоўнікаў.&lt;p&gt;Пасля гэтага можна будзе працаваць. Вы можаце шукаць словы ў гэтым акне з дапамогай панэлі або ў іншых праграмах з дапамогай &lt;a href=&quot;выплыўных акон пры актыўным параметры &quot;&gt;Апрацоўванне слоў у іншых актыўных праграмах&lt;/a&gt;. &lt;p&gt; &lt;p&gt;Каб наладзіць праграму, перайдзіце ў &lt;b&gt;Рэдагаванне|Налады&lt;/b&gt;. Для ўсіх налад ёсць апісанне. Абавязкова прачытайце апісанне, перш чым нешта змяняць.&lt;p&gt;Калі ўзніклі пытанні, прапановы, або проста захацелася пачытаць меркаванні іншых людзей, то наведайце &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форум&lt;/a&gt;.&lt;p&gt;Новыя версіі праграмы можна знайсці на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайце&lt;/a&gt;.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Ліцэнзія GPLv3 або пазнейшая.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(выява)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Вітаем у &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Каб пачаць працаваць з праграмай, спачатку наведайце &lt;b&gt;Рэдагаваць|Слоўнікі&lt;/b&gt; , каб дадаць некаторыя шляхі да каталогаў для пошуку файлаў слоўнікаў, наладзіць розныя сайты Вікіпедыі ці іншыя крыніцы, наладзіць парадак слоўнікаў або стварыць групы слоўнікаў.&lt;p&gt;І тады вы&apos;гатовыя шукаць свае словы! Вы можаце зрабіць гэта ў гэтым акне, выкарыстоўваючы панэль злева, або вы можаце &lt;button id=&quot;lookup-popup&quot;&gt;шукаць словы з іншых актыўных праграм&lt;/button&gt;. &lt;p&gt;Каб наладзіць праграму, праверце даступныя налады ў &lt;b&gt;Edit|Preferences&lt;/b&gt;. Усе налады там маюць падказкі, абавязкова прачытайце іх, калі ў чымсьці сумняваецеся.&lt;p&gt;Калі вам патрэбна дадатковая дапамога, ёсць якія-небудзь пытанні, прапановы або проста цікава, што думаюць іншыя, запрашаем вас на форум праграмы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Праверце праграмы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайт&lt;/a&gt; на наяўнасць абнаўленняў. &lt;p&gt;(с) 2008-2013 Konstantin Isakov. Ліцэнзія GPLv3 або больш позняя.</translation>
     </message>
   </context>
   <context>
@@ -381,7 +373,7 @@ between classic and school orthography in cyrillic)</source>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation>карыстацкая транслітарацыя</translation>
+      <translation>адвольная транслітарацыя</translation>
     </message>
   </context>
   <context>
@@ -652,11 +644,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>Поўнатэкставы пошук уключаны</translation>
+      <translation>Паўнатэкставы пошук уключаны</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation>Поўнатэкставы пошук адключаны</translation>
+      <translation>Паўнатэкставы пошук адключаны</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -665,11 +657,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation>Імя індэкснага файла:</translation>
+      <translation>Назва індэкснага файла:</translation>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation>Адкрыць індэксную тэчку</translation>
+      <translation>Адкрыць індэксны каталог</translation>
     </message>
   </context>
   <context>
@@ -845,7 +837,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Default</source>
-      <translation>Па змаўчанні</translation>
+      <translation>Прадвызначана</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -1072,15 +1064,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Стварэнне груп на аснове тэчак.</translation>
+      <translation>Стварыыць групы на аснове каталогаў.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>Група па тэчках</translation>
+      <translation>Групаванне па каталогах</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation>Групаванне па метададзеных</translation>
+      <translation>Групаванне па метаданых</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
@@ -1180,7 +1172,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
       <source>Indexing: </source>
-      <translation>Індэксацыя: </translation>
+      <translation>Індэксаванне: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
@@ -1196,7 +1188,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Ідзе індэксацыя...</translation>
+      <translation>Індэксаванне...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Загрузка...</translation>
     </message>
   </context>
   <context>
@@ -2459,7 +2455,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>ПАПЯРЭДЖАННЕ: %1</translation>
+      <translation>УВАГА: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
@@ -3283,11 +3279,11 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Delay time</source>
-      <translation>Час затрымкі</translation>
+      <translation>Час затрымлівання</translation>
     </message>
     <message>
       <source> ms</source>
-      <translation> ms</translation>
+      <translation> мс</translation>
     </message>
     <message>
       <source>System proxy</source>
@@ -3403,10 +3399,6 @@ clears its network cache from disk during exit.</source>
     <message>
       <source>Session collapse</source>
       <translation>Згарнуць сеанс</translation>
-    </message>
-    <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Пры выкарыстанні буфера абмену не зважаць на тэкст пасля пераносу радка</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
@@ -3565,15 +3557,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation>Неабходны перазапуск</translation>
+      <translation>Патрабуецца перазапуск</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Перазапусціце, каб прымяніць змяненне стылю інтэрфейсу.</translation>
+      <translation>Перазапусціце, каб ужыць змену стылю інтэрфейсу.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Для выкарыстання фразавага пошуку Xapian і аператара NEAR патрабуецца пазіцыйная інфармацыя, але памер базы дадзеных будзе значна большым. Прымяняецца толькі да новых уваходных слоўнікаў.</translation>
+      <translation>Для выкарыстання фразавага пошуку Xapian і аператара NEAR патрабуецца пазіцыйная інфармацыя, але памер базы даных будзе значна большым. Ужыааецца толькі да новых уваходных слоўнікаў.</translation>
     </message>
     <message>
       <source>Enable index with positional information</source>
@@ -3597,11 +3589,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Знешні выгляд</translation>
+      <translation>Выгляд</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>Гэтыя шрыфты будуць прымяняцца, калі шрыфты, указаныя ў слоўніку, не знойдзены.</translation>
+      <translation>Гэтыя шрыфты будуць ужывацца, калі не ўдасца знайсці шрыфты, пазначаныя ў слоўніку.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
@@ -3613,7 +3605,27 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Стварыць паўнатэкставы індэкс з паралельнымі патокамі </translation>
+      <translation>Стварыць паўнатэкставы індэкс з паралельнымі плынямі </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Пры выкарыстанні буфера абмену выдаляць усё пасля новага радка</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Выдаляць хібны індэкс пры выхадзе</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Рознае</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Пры адладжванні css/js слоўніка з адключаць кэш, каб зрабіць гэта прасцей.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Адладжванне слоўніка</translation>
     </message>
   </context>
   <context>
@@ -3749,7 +3761,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Версія для друку і інфармацыя пра дыягназ.</translation>
+      <translation>Вывад версіі і звестак дыягностыкі.</translation>
     </message>
   </context>
   <context>
@@ -3853,7 +3865,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>ПАПЯРЭДЖАННЕ: %1</translation>
+      <translation>УВАГА: %1</translation>
     </message>
   </context>
   <context>
@@ -4002,11 +4014,11 @@ based on English phonology</source>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation>Карыстальніцкая транслітарацыя</translation>
+      <translation>Адвольная транслітарацыя</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Гэта прымяняецца толькі ў пошукавай фразе, дзе кожны радок уяўляе сабой транслітарацыю, падзеленую кропкай з коскай. Напрыклад, ae;æ, карыстальнікі могуць увесці ae, каб прадставіць æ у мэтавым слове.</translation>
+      <translation>Гэта ўжываецца толькі ў фразе пошуку, дзе кожны радок уяўляе сабой транслітарацыю, падзеленую кропкай з коскай. Напрыклад, ae;æ, карыстальнікі могуць увесці ae, каб паказаць æ у мэтавым слове.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>

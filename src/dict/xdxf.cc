@@ -1010,8 +1010,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Only allow .xdxf and .xdxf.dz suffixes
 
-    if ( ( fileName.size() < 5 || strcasecmp( fileName.c_str() + ( fileName.size() - 5 ), ".xdxf" ) != 0 )
-         && ( fileName.size() < 8 || strcasecmp( fileName.c_str() + ( fileName.size() - 8 ), ".xdxf.dz" ) != 0 ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".xdxf" ) && !Utils::endsWithIgnoreCase( fileName, ".xdxf.dz" ) )
       continue;
 
     try {

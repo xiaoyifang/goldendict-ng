@@ -55,3 +55,5 @@ nav:
        - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
        - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
        - How to update the crowdin.ts file: howto/how to update crowdin.ts file.md
+       - How to debug dictionary js: howto/how to debug dictionary js.md
+

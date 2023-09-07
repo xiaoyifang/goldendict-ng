@@ -28,10 +28,6 @@
       <translation>Μνεία:</translation>
     </message>
     <message>
-      <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-      <translation>(c) 2008- 2013 Konstantin Isakov (ikm@ goldendict. org)</translation>
-    </message>
-    <message>
       <source>Based on Qt %1 (%2, %3)</source>
       <translation>Βασισμένο στο Qt %1 (%2, %3)</translation>
     </message>
@@ -82,10 +78,6 @@
       <translation>Απόκρυψη άρθρου</translation>
     </message>
     <message>
-      <source>Working with popup</source>
-      <translation>Χρήση αναδυόμενου παραθύρου</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(ανώνυμο)</translation>
     </message>
@@ -106,12 +98,12 @@
       <translation>Δεν βρέθηκε μετάφραση για &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; στην ομάδα &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Καλώς ήλθατε στο &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Για να ξεκινήσετε, επιλέξτε &lt;b&gt;Επεξεργασία|Λεξικά&lt;/b&gt;. Από εδώ μπορείτε να προσθέσετε φακέλους που περιέχουν λεξικά, να ενεργοποιήσετε την αναζήτηση στη Βικιπαίδεια ή άλλες πηγές, να αλλάξετε τη σειρά των λεξικών ή να δημιουργήσετε ομάδες λεξικών.&lt;p&gt;Μετά θα είστε έτοιμοι να ξεκινήσετε την αναζήτηση! Μπορείτε να αναζητάτε λέξεις από την αριστερή στήλη αυτού του παραθύρου, ή από &lt;a href=&quot;Χρήση αναδυόμενου παραθύρου&quot;&gt;οποιαδήποτε άλλη ανοιχτή εφαρμογή&lt;/a&gt;.&lt;p&gt;Για να προσαρμόσετε το πρόγραμμα στις απαιτήσεις σας, δείτε τις διαθέσιμες ρυθμίσεις στο μενού &lt;b&gt;Επεξεργασία|Προτιμήσεις&lt;/b&gt;. Όλες οι προτιμήσεις διαθέτουν χρήσιμες συμβουλές οθόνης, που μπορείτε να διαβάσετε τοποθετώντας το ποντίκι σας πάνω στην αντίστοιχη προτίμηση.&lt;p&gt;Για περαιτέρω βοήθεια, ερωτήματα, υποδείξεις, ή απλά για να διαβάσετε τις γνώμες άλλων χρηστών, μπορείτε να εγγραφείτε στο &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;φόρουμ&lt;/a&gt; του προγράμματος. &lt;p&gt;Ενημερώσεις μπορείτε να βρείτε στον &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;ιστότοπο&lt;/a&gt; του προγράμματος.&lt;p&gt;(c) 2008-2013 Konstantin Isakov. Διανέμεται υπό τους όρους της GNU GPLv3 ή νεότερης έκδοσής της.</translation>
-    </message>
-    <message>
       <source>(picture)</source>
       <translation>(εικόνα)</translation>
+    </message>
+    <message>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Καλώς ορίσατε στο &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Για να ξεκινήσετε να εργάζεστε με το πρόγραμμα, επισκεφθείτε πρώτα &lt;b&gt;Επεξεργασία|Λεξικά&lt;/b&gt; για να προσθέσετε μερικές διαδρομές καταλόγου όπου μπορείτε να αναζητήσετε τα αρχεία του λεξικού, να ρυθμίσετε διάφορους ιστότοπους της Wikipedia ή άλλες πηγές, να προσαρμόσετε τη σειρά λεξικών ή να δημιουργήσετε ομάδες λεξικών.&lt;p&gt;Και τότε είστε&apos;να αναζητήσετε τα λόγια σας! Μπορείτε να το κάνετε αυτό σε αυτό το παράθυρο χρησιμοποιώντας ένα παράθυρο στα αριστερά ή μπορείτε &lt;button id=&quot;lookup-popup&quot;&gt;να αναζητήσετε λέξεις από άλλες ενεργές εφαρμογές&lt;/button&gt;. &lt;p&gt;Για να προσαρμόσετε το πρόγραμμα, ελέγξτε τις διαθέσιμες προτιμήσεις στο &lt;b&gt;Επεξεργασία|Προτιμήσεις&lt;/b&gt;. Όλες οι ρυθμίσεις εκεί έχουν συμβουλές εργαλείων, φροντίστε να τις διαβάσετε εάν έχετε αμφιβολίες για οτιδήποτε.&lt;p&gt;Εάν χρειάζεστε περαιτέρω βοήθεια, έχετε ερωτήσεις, προτάσεις ή απλώς αναρωτιέστε τι πιστεύουν οι άλλοι, είστε ευπρόσδεκτοι στο φόρουμ του προγράμματος&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Ελέγξτε το πρόγραμμα&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;ιστότοπο&lt;/a&gt; για τις ενημερώσεις. &lt;p&gt;(γ) 2008-2013 Konstantin Isakov. Άδεια χρήσης σύμφωνα με το GPLv3 ή νεότερη έκδοση.</translation>
     </message>
   </context>
   <context>
@@ -1199,6 +1191,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Indexing...</source>
       <translation>Ευρετηρίαση...</translation>
+    </message>
+    <message>
+      <source>Loading...</source>
+      <translation>Φόρτωση...</translation>
     </message>
   </context>
   <context>
@@ -3418,10 +3414,6 @@ clears its network cache from disk during exit.</source>
       <translation>Σύμπτυξη συνεδρίας</translation>
     </message>
     <message>
-      <source>When using clipboard,strip everything after newline</source>
-      <translation>Όταν χρησιμοποιείτε το πρόχειρο, λουρίδα τα πάντα μετά από newline</translation>
-    </message>
-    <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
       <translation>Σε μια νέα αναζήτηση, εστιάστε το κύριο ή αναδυόμενο παράθυρο ακόμα κι αν είναι ορατό&apos;s</translation>
     </message>
@@ -3629,6 +3621,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Create fulltext index with parallel threads </source>
       <translation>Δημιουργήστε ευρετήριο πλήρους κειμένου με παράλληλα νήματα </translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Όταν χρησιμοποιείτε το πρόχειρο, αφαιρέστε τα πάντα μετά τη νέα γραμμή</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Καταργήστε το μη έγκυρο ευρετήριο κατά την έξοδο</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Διάφορα</translation>
+    </message>
+    <message>
+      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
+      <translation>Κατά την αποσφαλμάτωση με το λεξικό css/js, απενεργοποιήστε ορισμένες cache για να το κάνετε ευκολότερο.</translation>
+    </message>
+    <message>
+      <source>Dictionary debug</source>
+      <translation>Αποσφαλμάτωση λεξικού</translation>
     </message>
   </context>
   <context>

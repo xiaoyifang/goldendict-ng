@@ -200,6 +200,8 @@ public:
   /// Reloads the view
   void reload();
 
+  void stopSound();
+
   /// Returns true if there's an audio reference on the page, false otherwise.
   void hasSound( const std::function< void( bool has ) > & callback );
 
@@ -398,10 +400,6 @@ private:
   /// Checks if the given article in form of "gdfrom-xxx" is inside a "website"
   /// frame.
   void isFramedArticle( QString const & article, const std::function< void( bool framed ) > & callback );
-
-  /// Checks if the given link is to be opened externally, as opposed to opening
-  /// it in-place.
-  bool isExternalLink( QUrl const & url );
 
   /// Sees if the last clicked link is from a website frame. If so, changes url
   /// to point to url text translation instead, and saves the original

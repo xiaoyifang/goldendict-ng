@@ -61,9 +61,14 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     QString root = reply->url().scheme() + "://" + reply->url().host();
     QString base = root + reply->url().path();
 
-    QRegularExpression baseTag( R"(<base\s+.*?>)",
+    QRegularExpression baseTag( R"EOF(<base\s+href=["'](.*?)["'].*?>)EOF",
                                 QRegularExpression::CaseInsensitiveOption
                                   | QRegularExpression::DotMatchesEverythingOption );
+
+
+    if ( const auto match = baseTag.match( articleString ); match.hasMatch() ) {
+      base = reply->url().resolved( match.captured( 1 ) ).url();
+    }
 
     QString baseTagHtml = QString( R"(<base href="%1">)" ).arg( base );
 
@@ -72,14 +77,14 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 <script type="text/javascript" src="qrc:///scripts/iframeResizer.contentWindow.min.js">
 </script><script type="text/javascript" src="qrc:///scripts/iframe-defer.js"></script>)";
 
-    // remove existed base tag
     articleString.remove( baseTag );
+
     articleString.replace( "window.location", "window.location;_window_location" );
 
     QRegularExpression headTag( R"(<head\b.*?>)",
                                 QRegularExpression::CaseInsensitiveOption
                                   | QRegularExpression::DotMatchesEverythingOption );
-    auto match = headTag.match( articleString, 0 );
+    auto match = headTag.match( articleString );
     if ( match.hasMatch() ) {
       articleString.insert( match.capturedEnd(), baseTagHtml );
       articleString.insert( match.capturedEnd(), depressionFocus );
