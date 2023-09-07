@@ -856,6 +856,7 @@ Class load()
   if ( !preferences.isNull() ) {
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
+    c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -1700,6 +1701,10 @@ void save( Class const & c )
 
     QDomElement opt = dd.createElement( "interfaceLanguage" );
     opt.appendChild( dd.createTextNode( c.preferences.interfaceLanguage ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "interfaceFont" );
+    opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
     preferences.appendChild( opt );
 
     opt             = dd.createElement( "customFonts" );
