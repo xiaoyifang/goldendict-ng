@@ -133,7 +133,8 @@ jobs:
         uses: johnwason/vcpkg-action@v5
         id: vcpkg
         with:
-          pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
+          # pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
+          pkgs: breakpad
           triplet: x64-windows-release
           token: ${{ github.token }}
       - name: copy vcpkg packages into winlibs
