@@ -30,8 +30,8 @@ jobs:
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.07.23.1
-      version-suffix: GreatHeat
+      version: 23.09.08
+      version-suffix: WhiteDew
       prerelease: false
     steps:
       - name: Install Qt

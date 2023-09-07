@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.07.23.1
-      version-suffix: GreatHeat
+      version: 23.09.08
+      version-suffix: WhiteDew
       prerelease: false
     steps:
       # macos 11.0 默认环境变了,要指定
