@@ -611,17 +611,27 @@ void Preferences::on_enableClipboardHotkey_toggled( bool checked )
 
 void Preferences::on_buttonBox_accepted()
 {
-  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
-    QMessageBox::information( this,
-                              tr( "Changing Language" ),
-                              tr( "Restart the program to apply the language change." ) );
+  QString promptText;
+
+  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() ) {
+    promptText = tr( "Restart the program to apply the language change." );
+    promptText += "\n";
+  }
 
 #if !defined( Q_OS_WIN )
   if ( prevInterfaceStyle != ui.InterfaceStyle->currentIndex() ) {
-    QMessageBox::information( this, tr( "Restart needed" ), tr( "Restart to apply the interface style change." ) );
+    promptText += tr( "Restart to apply the interface style change." );
+    promptText += "\n";
   }
 #endif
 
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    promptText += tr( "Restart to apply the interface font change." );
+  }
+
+  if ( !promptText.isEmpty() ) {
+    QMessageBox::information( this, tr( "Restart needed" ), promptText );
+  }
 
   auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
@@ -636,8 +646,8 @@ void Preferences::on_buttonBox_accepted()
   }
 
   //change interface font.
-  if ( c.interfaceFont != prevSysFont ) {
-    QApplication::setFont( QFont( c.interfaceFont ) );
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    QApplication::setFont( QFont( ui.systemFont->currentText() ) );
   }
 }
 
