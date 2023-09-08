@@ -3070,10 +3070,6 @@ GoldenDict. Ако се појавила нова верзија, програм
       <translation>&amp;Сучеље</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Промена језика</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Тастер Ctrl</translation>
     </message>
@@ -3641,6 +3637,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Отклањање грешака у речнику</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
