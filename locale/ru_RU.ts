@@ -3643,11 +3643,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Шрифт интерфейса</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
     </message>
   </context>
   <context>
