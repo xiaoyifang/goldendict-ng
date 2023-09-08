@@ -3070,10 +3070,6 @@ saken och ber denna att öppna en hämtningssida.</translation>
       <translation>&amp;Gränssnitt</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Språkbyte</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-tangenten</translation>
     </message>
@@ -3641,6 +3637,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Ordbok debug</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
