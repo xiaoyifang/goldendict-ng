@@ -3640,11 +3640,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Γραμματοσειρά Διεπαφής</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Επανεκκινήστε για να εφαρμόσετε την αλλαγή γραμματοσειράς της διασύνδεσης.</translation>
     </message>
   </context>
   <context>
