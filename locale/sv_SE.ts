@@ -3640,11 +3640,11 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Gränssnittets teckensnitt</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Starta om för att tillämpa gränssnittets teckensnittsändring.</translation>
     </message>
   </context>
   <context>
