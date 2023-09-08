@@ -3068,10 +3068,6 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>&amp;Arayüz</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Dili Değiştir</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl düğmesi</translation>
     </message>
@@ -3637,6 +3633,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Dictionary debug</source>
       <translation>Sözlük hata ayıklaması</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
