@@ -3631,11 +3631,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Phông chữ giao diện</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Khởi động lại để áp dụng thay đổi phông chữ giao diện.</translation>
     </message>
   </context>
   <context>
