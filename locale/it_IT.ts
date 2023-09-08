@@ -3067,10 +3067,6 @@ e si collega al sito del programma.</translation>
       <translation>&amp;Interfaccia</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Modifica della lingua</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tasto Ctrl</translation>
     </message>
@@ -3637,6 +3633,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Debug del dizionario</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
