@@ -3638,11 +3638,11 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Fonte da Interface</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
     </message>
   </context>
   <context>
