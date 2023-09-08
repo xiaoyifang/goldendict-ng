@@ -36,7 +36,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki：无法创建一个没有单词的卡片</translation>
+      <translation>Anki: 无法创建一个没有单词的卡片</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3293,7 +3293,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Anki连接</translation>
+      <translation>Anki 连接</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3313,7 +3313,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>对应anki里面的变量名，如设置word，则用{{Word}}引用</translation>
+      <translation>对应 Anki 里面的变量名，如设置 word，则用{{Word}}引用</translation>
     </message>
     <message>
       <source>Text</source>
