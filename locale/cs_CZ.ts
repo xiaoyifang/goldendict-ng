@@ -3066,10 +3066,6 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>&amp;Rozhraní</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Měním jazyk</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Klávesa Ctrl</translation>
     </message>
@@ -3636,6 +3632,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Ladění slovníku</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
