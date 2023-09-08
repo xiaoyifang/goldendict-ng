@@ -3067,10 +3067,6 @@ otwarcia strony pobierania.</translation>
       <translation>&amp;Interfejs</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Zmiana języka</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Klawisz Ctrl</translation>
     </message>
@@ -3638,6 +3634,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Debugowanie słownika</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
