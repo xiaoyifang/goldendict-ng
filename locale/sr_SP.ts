@@ -3640,11 +3640,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Интерфејс Фонт</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Поново покрените да бисте применили промену фонта интерфејса.</translation>
     </message>
   </context>
   <context>
