@@ -3637,11 +3637,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Interfeýs şrifti</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Interfeýs şriftini üýtgetmek üçin täzeden başlaň.</translation>
     </message>
   </context>
   <context>
