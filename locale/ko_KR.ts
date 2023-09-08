@@ -3634,11 +3634,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>인터페이스 글꼴</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>인터페이스 글꼴 변경 사항을 적용하려면 다시 시작하세요.</translation>
     </message>
   </context>
   <context>
