@@ -3063,10 +3063,6 @@ download page.</source>
       <translation>G&amp;iao diện</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Thay đổi ngôn ngữ</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Phím Ctrl</translation>
     </message>
@@ -3632,6 +3628,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Gỡ lỗi từ điển</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
