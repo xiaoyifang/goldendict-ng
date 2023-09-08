@@ -3635,11 +3635,11 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Písmo rozhraní</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Restartujte pro aplikaci změny písma rozhraní.</translation>
     </message>
   </context>
   <context>
