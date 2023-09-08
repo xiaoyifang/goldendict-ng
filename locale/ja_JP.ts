@@ -3637,11 +3637,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>インターフェースフォント</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
     </message>
   </context>
   <context>
