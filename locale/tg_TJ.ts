@@ -3068,10 +3068,6 @@ download page.</source>
       <translation>&amp;Интерфейс</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Забонро иваз кунед</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Тугмаи Ctrl</translation>
     </message>
@@ -3639,6 +3635,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>ислоҳи луғат</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
