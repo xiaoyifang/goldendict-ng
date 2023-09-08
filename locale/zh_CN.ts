@@ -3553,11 +3553,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>重新启动以应用界面风格更改。</translation>
+      <translation>重启以应用界面风格更改。</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>使用Xapian的短语搜索和NEAR运算符需要位置信息，但数据库大小会更大。 仅适用于新传入的词典。</translation>
+      <translation>使用 Xapian 的短语搜索和 NEAR 运算符需要位置信息，但数据库大小会更大。 仅适用于新传入的词典。</translation>
     </message>
     <message>
       <source>Enable index with positional information</source>
@@ -3613,7 +3613,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>当使用字典css/js进行调试时，禁用某些缓存使其更加容易。</translation>
+      <translation>当使用字典 css/js 进行调试时，禁用某些缓存使其更加容易。</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
@@ -3621,11 +3621,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>界面字体</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>重启以应用界面字体更改。</translation>
     </message>
   </context>
   <context>
