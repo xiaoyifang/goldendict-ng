@@ -3625,11 +3625,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Шрыфт інтэрфейсу</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Перазапусціце, каб прымяніць змяненне шрыфта інтэрфейсу.</translation>
     </message>
   </context>
   <context>
