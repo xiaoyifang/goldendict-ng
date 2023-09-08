@@ -3634,11 +3634,11 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Lettertype interface</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
     </message>
   </context>
   <context>
