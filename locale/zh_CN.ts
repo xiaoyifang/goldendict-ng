@@ -242,7 +242,7 @@
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>错误： %1</translation>
+      <translation>错误：%1</translation>
     </message>
     <message>
       <source>Save sound</source>
@@ -453,7 +453,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>您确定需要基于metadata.toml生成分组吗？</translation>
+      <translation>您确定需要基于 metadata.toml 生成分组吗？</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
@@ -3063,7 +3063,7 @@ download page.</source>
     </message>
     <message>
       <source>Ctrl key</source>
-      <translation>Ctr l键</translation>
+      <translation>Ctrl 键</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
@@ -3253,7 +3253,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>剪贴板取词。注意！非Linux系统，这个选项必须打开</translation>
+      <translation>剪贴板取词。注意！非 Linux 系统，这个选项必须打开。</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
@@ -3348,7 +3348,7 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict使用的最大磁盘容量位于%1
+      <translation>GoldenDict 使用的最大磁盘容量位于%1
 如果设置为0，磁盘缓存会被禁用。</translation>
     </message>
     <message>
@@ -3358,7 +3358,7 @@ If set to 0 the network disk cache will be disabled.</source>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>GoldenDict退出时清空网络缓存。</translation>
+      <translation>GoldenDict 退出时清空网络缓存。</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
@@ -3473,7 +3473,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>用 Ctrl-tab 浏览标签页时，以“最近使用”为序</translation>
+      <translation>用 Ctrl-Tab 浏览标签页时，以“最近使用”为序</translation>
     </message>
     <message>
       <source>Babylon</source>
@@ -3791,7 +3791,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>警告： %1</translation>
+      <translation>警告：%1</translation>
     </message>
   </context>
   <context>
@@ -3888,7 +3888,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>Highlight &amp;all</source>
-      <translation>高亮所有结果(&amp;a)</translation>
+      <translation>高亮所有结果(&amp;A)</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
@@ -4033,7 +4033,7 @@ kana writing systems. Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
       <translation>最常用的方案，跟假名系统一一对应。
-标准化 为ISO 3602。
+标准化为 ISO 3602。
 
 GoldenDict 尚不支持此方案。</translation>
     </message>
