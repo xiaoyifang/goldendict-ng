@@ -3064,10 +3064,6 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>&amp;Weergave</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Toepassingstaal wijzigen</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-toets</translation>
     </message>
@@ -3635,6 +3631,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Woordenboek debug</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Lettertype interface</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
     </message>
   </context>
   <context>

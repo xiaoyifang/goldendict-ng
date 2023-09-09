@@ -3065,10 +3065,6 @@ téléchargement.</translation>
       <translation>&amp;Interface</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Changement de langue</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Touche Ctrl</translation>
     </message>
@@ -3635,6 +3631,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Débogage du dictionnaire</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Police de l'interface</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Redémarrez pour appliquer le changement de police de l'interface.</translation>
     </message>
   </context>
   <context>

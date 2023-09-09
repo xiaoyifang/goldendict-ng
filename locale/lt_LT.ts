@@ -3069,10 +3069,6 @@ ir pasiūlys atverti parsisiuntimo puslapį.
       <translation>&amp;Sąsaja</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Kalbos keitimas</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Vald klavišas</translation>
     </message>
@@ -3636,6 +3632,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Žodyno derinimas</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Sąsajos šriftas</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Paleiskite iš naujo, kad pritaikytumėte sąsajos šrifto pakeitimą.</translation>
     </message>
   </context>
   <context>

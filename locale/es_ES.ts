@@ -3066,10 +3066,6 @@ para su descarga.</translation>
       <translation>&amp;Interfaz</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Cambiando Idioma</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tecla Ctrl</translation>
     </message>
@@ -3636,6 +3632,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Depuración del diccionario</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fuente de interfaz</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Reinicie para aplicar el cambio de fuente de la interfaz.</translation>
     </message>
   </context>
   <context>

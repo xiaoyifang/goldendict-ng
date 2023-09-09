@@ -3063,10 +3063,6 @@ Download-Seite.</translation>
       <translation>&amp;Oberfläche</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Sprache ändern</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Strg-Taste</translation>
     </message>
@@ -3631,6 +3627,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Wörterbuch-Debug</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Schnittstellenschriftart</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Neustarten, um die Änderung der Schnittstellenschriftart anzuwenden.</translation>
     </message>
   </context>
   <context>

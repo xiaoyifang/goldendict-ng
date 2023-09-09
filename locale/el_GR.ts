@@ -3068,10 +3068,6 @@ GoldenDict. Αν ναι, το πρόγραμμα θα ειδοποιεί το
       <translation>&amp;Εφαρμογή</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Αλλαγή γλώσσας</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Πλήκτρο Ctrl</translation>
     </message>
@@ -3641,6 +3637,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Αποσφαλμάτωση λεξικού</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Γραμματοσειρά Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Επανεκκινήστε για να εφαρμόσετε την αλλαγή γραμματοσειράς της διασύνδεσης.</translation>
     </message>
   </context>
   <context>

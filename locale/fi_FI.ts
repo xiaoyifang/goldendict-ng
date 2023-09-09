@@ -3069,10 +3069,6 @@ lataussivun.</translation>
       <translation>&amp;Käyttöliittymä</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Vaihdetaan Kieltä</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-näppäin</translation>
     </message>
@@ -3639,6 +3635,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Sanakirjan virheenkorjaus</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Käynnistä uudelleen ottaaksesi käyttöön käyttöliittymän kirjasimen muutokset.</translation>
     </message>
   </context>
   <context>

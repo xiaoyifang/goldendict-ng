@@ -3157,10 +3157,6 @@ Apnaqañatakispa apaqanataki yatiyatam.</translation>
       <translation>&amp;Programa ajanu</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Aru turkawi</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>CTRL tecla</translation>
     </message>
@@ -3770,6 +3766,14 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <source>Dictionary debug</source>
       <translation type="unfinished">Dictionary debug</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
   </context>
   <context>
