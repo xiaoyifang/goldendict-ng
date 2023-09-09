@@ -4017,7 +4017,7 @@ based on English phonology</source>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入ae代替实际要输入的æ。</translation>
+      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
