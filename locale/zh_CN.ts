@@ -3745,7 +3745,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>禁用 tts。</translation>
+      <translation>禁用 TTS。</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
@@ -4053,9 +4053,9 @@ GoldenDict 尚不支持此方案。</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>示例：  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; 对于法语 &lt;br&gt;
+      <translation>示例：&amp;quot;eng&amp;quot; 对应英语, &amp;quot;fra&amp;quot; 对应法语 &lt;br&gt;
 
-可用语言的完整列表可在这里查找 &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
+可用语言的完整列表可在&lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt;这里&lt;/a&gt;获取。</translation>
     </message>
     <message>
       <source>Katakana</source>
