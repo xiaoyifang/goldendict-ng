@@ -42,7 +42,7 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
-    <release version="23.09.08" date="2023-07-31"/>
+    <release version="23.09.08" date="2023-09-08"/>
     <release version="23.07.23" date="2023-07-23"/>
     <release version="23.06.01" date="2023-06-01"/>
   </releases>

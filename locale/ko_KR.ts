@@ -3065,10 +3065,6 @@ download page.</source>
       <translation>화면(&amp;I)</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>언어 변경</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl 키</translation>
     </message>
@@ -3635,6 +3631,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>사전 디버그</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>인터페이스 글꼴</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>인터페이스 글꼴 변경 사항을 적용하려면 다시 시작하세요.</translation>
     </message>
   </context>
   <context>

@@ -3072,10 +3072,6 @@ GoldenDict. Если новая версия появилась, програм�
       <translation>&amp;Интерфейс</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Смена языка</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>При зажатии любой клавиши Ctrl</translation>
     </message>
@@ -3644,6 +3640,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Отладка словаря</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифт интерфейса</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
     </message>
   </context>
   <context>

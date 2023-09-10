@@ -3072,10 +3072,6 @@ e pergunta se ele deseja visitar a página de download.</translation>
       <translation>&amp;Interface</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Modificando Idioma</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tecla Ctrl</translation>
     </message>
@@ -3644,6 +3640,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Depuração do dicionário</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fonte da Interface</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
     </message>
   </context>
   <context>

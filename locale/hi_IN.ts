@@ -3056,10 +3056,6 @@ download page.</source>
       <translation>&amp;अंतराफलक</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>भाषा परिवर्तन</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>कन्ट्रोल कुंजी</translation>
     </message>
@@ -3623,6 +3619,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>शब्दकोश डीबग</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
     </message>
   </context>
   <context>

@@ -3068,10 +3068,6 @@ download page.</source>
       <translation>インターフェイス(&amp;I)</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>言語の変更</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl キー</translation>
     </message>
@@ -3638,6 +3634,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>辞書デバッグ</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>インターフェースフォント</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
     </message>
   </context>
   <context>
