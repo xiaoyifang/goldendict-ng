@@ -26,7 +26,7 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.09.08
+      version: 23.09.10
       version-suffix: WhiteDew
       prerelease: false
     steps:

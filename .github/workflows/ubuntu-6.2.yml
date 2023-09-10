@@ -29,7 +29,7 @@ jobs:
         qt_ver: [ 6.5.2 ]
         qt_arch: [gcc_64]
     env:
-      version: 23.09.08
+      version: 23.09.10
       version-suffix: WhiteDew
       prerelease: false
     steps:

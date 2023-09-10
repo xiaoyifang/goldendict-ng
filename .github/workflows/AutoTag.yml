@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 23.09.08
+      version: 23.09.10
       version-suffix: WhiteDew
       prerelease: false
 
