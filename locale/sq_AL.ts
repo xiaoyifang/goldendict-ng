@@ -3063,10 +3063,6 @@ kërkon ta shkarkojë.</translation>
       <translation>&amp;Grafika</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Ndryshimi i Gjuhës</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tasti Ctrl</translation>
     </message>
@@ -3631,6 +3627,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Korrigjimi i fjalorit</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fonti i ndërfaqes</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Rinisni për të aplikuar ndryshimin e fontit të ndërfaqes.</translation>
     </message>
   </context>
   <context>

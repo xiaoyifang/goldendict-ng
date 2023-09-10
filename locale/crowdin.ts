@@ -3062,10 +3062,6 @@ download page.</source>
         <translation>界面(&amp;I)</translation>
     </message>
     <message>
-        <source>Changing Language</source>
-        <translation>变更界面语言</translation>
-    </message>
-    <message>
         <source>Ctrl key</source>
         <translation>Ctr l键</translation>
     </message>
@@ -3621,6 +3617,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Dictionary debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart to apply the interface font change.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

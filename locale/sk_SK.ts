@@ -3066,10 +3066,6 @@ na stiahnutie.</translation>
       <translation>&amp;Rozhranie</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Zmena jazyka</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Kláves Ctrl</translation>
     </message>
@@ -3632,6 +3628,14 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Ladenie slovníka</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Písmo rozhrania</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Ak chcete použiť zmenu písma rozhrania, reštartujte.</translation>
     </message>
   </context>
   <context>

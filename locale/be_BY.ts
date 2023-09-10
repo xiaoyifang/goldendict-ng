@@ -3061,10 +3061,6 @@ download page.</source>
       <translation>&amp;Інтэрфейс</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Змена мовы</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Клавіша Ctrl</translation>
     </message>
@@ -3626,6 +3622,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>Адладжванне слоўніка</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрыфт інтэрфейсу</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Перазапусціце, каб прымяніць змяненне шрыфта інтэрфейсу.</translation>
     </message>
   </context>
   <context>

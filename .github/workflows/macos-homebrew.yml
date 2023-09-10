@@ -94,17 +94,7 @@ jobs:
           echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
           cat version.txt
           echo "$version"     
-          
-      - name: vcpkg install
-        shell: bash
-        run: |   
-          vcpkg install breakpad
-      - name: copy vcpkg packages into winlibs
-        shell: bash
-        run: |   
-          ls -al /usr/local/share/vcpkg/packages/breakpad*
-          cp -R /usr/local/share/vcpkg/packages/breakpad*/*  thirdparty/breakpad
-          ls -al thirdparty/breakpad/lib          
+                
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:

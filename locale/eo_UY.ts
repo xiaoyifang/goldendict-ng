@@ -3069,10 +3069,6 @@ elŝutan paĝon.</translation>
       <translation>&amp;Interfaco</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>Ŝanĝanta Lingvo</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-klavo</translation>
     </message>
@@ -3639,6 +3635,14 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Dictionary debug</source>
       <translation>Vortaro elpurigi</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaco Tiparo</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Rekomencu por apliki la interfacan tiparo-ŝanĝon.</translation>
     </message>
   </context>
   <context>

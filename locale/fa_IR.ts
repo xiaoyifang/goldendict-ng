@@ -3066,10 +3066,6 @@ download page.</source>
       <translation>&amp;رابط</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>تغییر دادن زبان</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>کلید مهار</translation>
     </message>
@@ -3636,6 +3632,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Dictionary debug</source>
       <translation>دیکشنری اشکال زدایی</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>فونت رابط</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
     </message>
   </context>
   <context>

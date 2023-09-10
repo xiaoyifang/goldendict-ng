@@ -36,7 +36,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki：无法创建一个没有单词的卡片</translation>
+      <translation>Anki: 无法创建一个没有单词的卡片</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -242,7 +242,7 @@
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>错误： %1</translation>
+      <translation>错误：%1</translation>
     </message>
     <message>
       <source>Save sound</source>
@@ -453,7 +453,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>您确定需要基于metadata.toml生成分组吗？</translation>
+      <translation>您确定需要基于 metadata.toml 生成分组吗？</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
@@ -3062,12 +3062,8 @@ download page.</source>
       <translation>界面(&amp;I)</translation>
     </message>
     <message>
-      <source>Changing Language</source>
-      <translation>变更界面语言</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
-      <translation>Ctr l键</translation>
+      <translation>Ctrl 键</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
@@ -3257,7 +3253,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>剪贴板取词。注意！非Linux系统，这个选项必须打开</translation>
+      <translation>剪贴板取词。注意！非 Linux 系统，这个选项必须打开。</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
@@ -3297,7 +3293,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Anki连接</translation>
+      <translation>Anki 连接</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3317,7 +3313,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>对应anki里面的变量名，如设置word，则用{{Word}}引用</translation>
+      <translation>对应 Anki 里面的变量名，如设置 word，则用{{Word}}引用</translation>
     </message>
     <message>
       <source>Text</source>
@@ -3352,7 +3348,7 @@ Enable this option to workaround the problem.</source>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict使用的最大磁盘容量位于%1
+      <translation>GoldenDict 使用的最大磁盘容量位于%1
 如果设置为0，磁盘缓存会被禁用。</translation>
     </message>
     <message>
@@ -3362,7 +3358,7 @@ If set to 0 the network disk cache will be disabled.</source>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>GoldenDict退出时清空网络缓存。</translation>
+      <translation>GoldenDict 退出时清空网络缓存。</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
@@ -3477,7 +3473,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>用 Ctrl-tab 浏览标签页时，以“最近使用”为序</translation>
+      <translation>用 Ctrl-Tab 浏览标签页时，以“最近使用”为序</translation>
     </message>
     <message>
       <source>Babylon</source>
@@ -3557,11 +3553,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>重新启动以应用界面风格更改。</translation>
+      <translation>重启以应用界面风格更改。</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>使用Xapian的短语搜索和NEAR运算符需要位置信息，但数据库大小会更大。 仅适用于新传入的词典。</translation>
+      <translation>使用 Xapian 的短语搜索和 NEAR 运算符需要位置信息，但数据库大小会更大。 仅适用于新传入的词典。</translation>
     </message>
     <message>
       <source>Enable index with positional information</source>
@@ -3617,11 +3613,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>当使用字典css/js进行调试时，禁用某些缓存使其更加容易。</translation>
+      <translation>当使用字典 css/js 进行调试时，禁用某些缓存使其更加容易。</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
       <translation>词典调试</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>界面字体</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>重启以应用界面字体更改。</translation>
     </message>
   </context>
   <context>
@@ -3741,7 +3745,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>禁用 tts。</translation>
+      <translation>禁用 TTS。</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
@@ -3787,7 +3791,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>警告： %1</translation>
+      <translation>警告：%1</translation>
     </message>
   </context>
   <context>
@@ -3884,7 +3888,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>Highlight &amp;all</source>
-      <translation>高亮所有结果(&amp;a)</translation>
+      <translation>高亮所有结果(&amp;A)</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
@@ -3996,7 +4000,7 @@ GoldenDict 尚不支持此方案。</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>从&lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;这里&lt;/a&gt;获取自己的API Key。</translation>
+      <translation>从&lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;这里&lt;/a&gt;获取自己的 API Key。</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,
@@ -4013,7 +4017,7 @@ based on English phonology</source>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入ae代替实际要输入的æ。</translation>
+      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
@@ -4029,7 +4033,7 @@ kana writing systems. Standardized as ISO 3602
 
 Not implemented yet in GoldenDict.</source>
       <translation>最常用的方案，跟假名系统一一对应。
-标准化 为ISO 3602。
+标准化为 ISO 3602。
 
 GoldenDict 尚不支持此方案。</translation>
     </message>
@@ -4049,9 +4053,9 @@ GoldenDict 尚不支持此方案。</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>示例：  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; 对于法语 &lt;br&gt;
+      <translation>示例：&amp;quot;eng&amp;quot; 对应英语, &amp;quot;fra&amp;quot; 对应法语 &lt;br&gt;
 
-可用语言的完整列表可在这里查找 &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; &lt;/a&gt;</translation>
+可用语言的完整列表可在&lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt;这里&lt;/a&gt;获取。</translation>
     </message>
     <message>
       <source>Katakana</source>
