@@ -36,6 +36,7 @@ private slots:
 
 private:
   QLineEdit * translate_line;
+  bool selectedItem = false;
   bool m_popupEnabled;
   QCompleter * completer;
   QStringList words;
