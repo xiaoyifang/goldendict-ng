@@ -57,6 +57,22 @@ TranslateBox::TranslateBox( QWidget * parent ):
              translate_line->setText( text );
              emit returnPressed();
            } );
+
+
+  connect( completer,
+           QOverload< const QString & >::of( &QCompleter::highlighted ),
+           translate_line,
+           [ & ]( const QString & text ) {
+             selectedItem = true;
+           } );
+
+  connect( translate_line,
+           &QLineEdit::returnPressed,
+           [ this ]() {
+             if ( selectedItem )
+               return;
+             emit returnPressed();
+           } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
@@ -88,14 +104,21 @@ void TranslateBox::setModel( QStringList & _words )
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::activated ),
            translate_line,
-           [ & ]( const QString & text) {
-             translate_line->setText(text);
+           [ & ]( const QString & text ) {
+             translate_line->setText( text );
              emit returnPressed();
+           } );
+  connect( completer,
+           QOverload< const QString & >::of( &QCompleter::highlighted ),
+           translate_line,
+           [ & ]( const QString & text ) {
+             selectedItem = true;
            } );
 }
 
 void TranslateBox::showPopup()
 {
+  selectedItem = false;
   if ( m_popupEnabled ) {
     completer->popup()->show();
     completer->complete();
