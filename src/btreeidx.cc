@@ -886,7 +886,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
 void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
-  wstring word       = gd::removeTrailingZero( index_word );
+  wstring word               = gd::removeTrailingZero( index_word );
   wchar const * wordBegin    = word.c_str();
   string::size_type wordSize = word.size();
 
@@ -897,12 +897,11 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
                << "size:" << wordSize;
 
     //find the closest string to the maxHeadwordSize;
-    auto nonSpacePos = word.find_last_not_of( ' ',maxHeadwordSize );
+    auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
     if ( nonSpacePos > 0 )
       word = word.substr( 0, nonSpacePos );
     else
       word = word.substr( 0, maxHeadwordSize );
-
   }
 
   // Skip any leading whitespace
