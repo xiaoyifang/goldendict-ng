@@ -53,8 +53,8 @@ TranslateBox::TranslateBox( QWidget * parent ):
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::activated ),
            translate_line,
-           [ & ]( const QString & text) {
-             translate_line->setText(text);
+           [ & ]( const QString & text ) {
+             translate_line->setText( text );
              emit returnPressed();
            } );
 }

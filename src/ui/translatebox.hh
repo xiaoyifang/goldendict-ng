@@ -28,7 +28,7 @@ public slots:
   void setPopupEnabled( bool enable );
 
 signals:
-    void returnPressed();
+  void returnPressed();
 
 private slots:
   void showPopup();
