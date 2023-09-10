@@ -32,16 +32,19 @@ bool Request::isFinished()
 
 void Request::update()
 {
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) )
+  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     emit updated();
+  }
 }
 
 void Request::finish()
 {
   if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     isFinishedFlag.ref();
-
     emit finished();
+
+    QMutexLocker _( &dataMutex );
+    cond.wakeAll();
   }
 }
 
@@ -103,8 +106,13 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 long DataRequest::dataSize()
 {
   QMutexLocker _( &dataMutex );
+  long size = hasAnyData ? (long)data.size() : -1;
 
-  return hasAnyData ? (long)data.size() : -1;
+  if ( size == 0 && !isFinished() ) {
+    cond.wait( &dataMutex );
+    size = hasAnyData ? (long)data.size() : -1;
+  }
+  return size;
 }
 
 void DataRequest::appendDataSlice( const void * buffer, size_t size )
@@ -116,6 +124,7 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size )
   data.resize( data.size() + size );
 
   memcpy( &data.front() + offset, buffer, size );
+  cond.wakeAll();
 }
 
 void DataRequest::appendString( std::string_view str )
@@ -123,13 +132,14 @@ void DataRequest::appendString( std::string_view str )
   QMutexLocker _( &dataMutex );
   data.reserve( data.size() + str.size() );
   data.insert( data.end(), str.begin(), str.end() );
+  cond.wakeAll();
 }
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  if ( size == 0 )
+  if ( size == 0 ) {
     return;
-
+  }
   QMutexLocker _( &dataMutex );
 
   if ( !hasAnyData )
@@ -178,7 +188,7 @@ sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
 
 vector< wstring > Class::getAlternateWritings( wstring const & ) noexcept
 {
-  return vector< wstring >();
+  return {};
 }
 
 QString Class::getContainingFolder() const
@@ -190,7 +200,7 @@ QString Class::getContainingFolder() const
     return fileInfo.absolutePath();
   }
 
-  return QString();
+  return {};
 }
 
 sptr< DataRequest > Class::getResource( string const & /*name*/ )
@@ -211,7 +221,7 @@ QString const & Class::getDescription()
 
 QString Class::getMainFilename()
 {
-  return QString();
+  return {};
 }
 
 QIcon const & Class::getIcon() noexcept

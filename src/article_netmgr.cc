@@ -406,15 +406,17 @@ qint64 ArticleResourceReply::bytesAvailable() const
   if ( avail < 0 )
     return 0;
 
+  if ( !req->isFinished() ) {
+    return 65536;
+  }
+
   return avail - alreadyRead + QNetworkReply::bytesAvailable();
 }
 
+
 bool ArticleResourceReply::atEnd() const
 {
-  // QWebEngineUrlRequestJob finishes and is destroyed as soon as QIODevice::atEnd() returns true.
-  // QNetworkReply::atEnd() returns true while bytesAvailable() returns 0.
-  // Return false if the data request is not finished to work around always-blank web page.
-  return req->isFinished() && QNetworkReply::atEnd();
+  return req->isFinished() && bytesAvailable() == 0;
 }
 
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
@@ -431,20 +433,12 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   if ( avail < 0 )
     return finished ? -1 : 0;
 
+
   qint64 left = avail - alreadyRead;
 
-  if ( left == 0 && !finished ) {
-    // Work around endlessly repeated useless calls to readData(). The sleep duration is a tradeoff.
-    // On the one hand, lowering the duration reduces CPU usage. On the other hand, overly long
-    // sleep duration reduces page content update frequency in the web view.
-    // Waiting on a condition variable is more complex and actually works worse than
-    // simple fixed-duration sleeping, because the web view is not updated until
-    // the data request is finished if readData() returns only when new data arrives.
-    QThread::msleep( 30 );
-    return 0;
-  }
-
   qint64 toRead = maxSize < left ? maxSize : left;
+  if ( !toRead && finished )
+    return -1;
   GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try {
