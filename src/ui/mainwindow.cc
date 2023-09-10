@@ -670,7 +670,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.translateLine, &QLineEdit::returnPressed, [ this ]() {
     translateInputFinished( true );
   } );
-  connect( translateBox->translateLine(), &QLineEdit::returnPressed, [ this ]() {
+  connect( translateBox, &TranslateBox::returnPressed, [ this ]() {
     translateInputFinished( true );
   } );
 
