@@ -104,7 +104,6 @@ signals:
   void matchCount( int );
 
 protected:
-
   /// Called by derivatives to signal update().
   void update();
 
@@ -113,6 +112,10 @@ protected:
 
   /// Sets the error string to be returned by getErrorString().
   void setErrorString( QString const & );
+  QWaitCondition cond;
+  // Subclasses should be filling up the 'data' array, locking the mutex when
+  // whey work with it.
+  QMutex dataMutex;
 
 private:
 
@@ -225,11 +228,6 @@ public:
   }
 
 protected:
-
-  // Subclasses should be filling up the 'data' array, locking the mutex when
-  // whey work with it.
-  QMutex dataMutex;
-
   bool hasAnyData; // With this being false, dataSize() always returns -1
   vector< char > data;
 };
