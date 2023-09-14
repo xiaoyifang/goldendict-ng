@@ -233,12 +233,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::MinimumExpanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Fixed );
+  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
@@ -2589,12 +2589,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       if ( const auto focusEvent = dynamic_cast< QFocusEvent * >( ev ); focusEvent->reason() == Qt::MouseFocusReason ) {
         QTimer::singleShot( 0, this, SLOT( focusTranslateLine() ) );
       }
-      return false;
-    }
-
-    if ( ev->type() == QEvent::Resize ) {
-      QResizeEvent * resizeEvent = static_cast< QResizeEvent * >( ev );
-      groupList->setFixedHeight( resizeEvent->size().height() );
       return false;
     }
   }
