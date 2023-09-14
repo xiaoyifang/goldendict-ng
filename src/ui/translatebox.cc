@@ -101,6 +101,8 @@ void TranslateBox::setModel( QStringList & _words )
 
   model->setStringList( _words );
 
+  completer->popup()->scrollToTop();
+
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::activated ),
            translate_line,
