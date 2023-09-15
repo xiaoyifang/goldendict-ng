@@ -76,6 +76,7 @@ jobs:
           brew install dylibbundler
           find /opt -name liblzma.5.dylib
           find /usr/local -name liblzma.5.dylib
+          brew install jpeg-xl
       - name: version-file
         shell: bash
         env:
@@ -107,6 +108,7 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
+          otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
           cp -r /usr/local/Cellar/icu4c/7*/lib/libicu*.dylib  GoldenDict.app/Contents/Frameworks
           cp -r /usr/local/Cellar/zstd/1.5.5/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
           # dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libzim.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
@@ -118,7 +120,9 @@ jobs:
           
 
           dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libicui18n.73.dylib -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -x GoldenDict.app/Contents/Frameworks/libicuuc.73.dylib  -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
+          dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
 
+          
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           otool -L GoldenDict.app/Contents/Frameworks/libxapian.30.dylib
           otool -L GoldenDict.app/Contents/Frameworks/liblzma.5.dylib
