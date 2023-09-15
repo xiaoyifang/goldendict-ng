@@ -75,7 +75,7 @@ jobs:
           cd macdylibbundler
           cmake -B build -DCMAKE_BUILD_TYPE=release
           cmake --build build --config release
-          cmake --install build --prefix=/usr/local
+          sudo make install
           find /opt -name libzstd.1.dylib 
           find /usr/local -name libzstd.1.dylib 
           find /opt -name liblzma.5.dylib
