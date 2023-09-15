@@ -79,9 +79,7 @@ jobs:
           cmake -B build -DCMAKE_BUILD_TYPE=release
           cmake --build build --config release
           sudo make install
-          find /opt -name libzstd.1.dylib 
           find /usr/local -name libzstd.1.dylib 
-          find /opt -name liblzma.5.dylib
           find /usr/local -name liblzma.5.dylib
           brew install jpeg-xl
       - name: version-file
@@ -127,7 +125,7 @@ jobs:
           
 
           dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libicui18n.73.dylib -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -x GoldenDict.app/Contents/Frameworks/libicuuc.73.dylib  -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local
-          dylibbundler -of -b -x GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
+          dylibbundler -of -b -x GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local
 
           
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
