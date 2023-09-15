@@ -30,10 +30,6 @@ jobs:
       version-suffix: alpha
       prerelease: true
     steps:
-      - name: test
-        run: |
-          find /usr/local -name libhwy.1.dylib
-        
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
