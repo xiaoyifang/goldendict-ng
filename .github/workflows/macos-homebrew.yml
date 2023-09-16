@@ -54,6 +54,7 @@ jobs:
           
           # brew tap xiaoyifang/ffmpeg
           # brew install xiaoyifang/ffmpeg/ffmpeg --with-speex
+          brew install icu4c
           vcpkg install libzim[core]
 
           vcpkg install ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]
