@@ -3,11 +3,10 @@ cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 # Qt6.4+ only
 
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
-option(WITH_FFMPEG_VCPKG "Enable support for FFMPEG player" OFF)
+option(WITH_VCPKG "Enable support for FFMPEG player" OFF)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_XAPIAN "enable Xapian support" ON)
 option(WITH_ZIM "enable zim support" ON)
-option(WITH_ZIM_VCPKG "enable zim support" OFF)
 
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)

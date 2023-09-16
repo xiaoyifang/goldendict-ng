@@ -54,6 +54,8 @@ jobs:
           
           # brew tap xiaoyifang/ffmpeg
           # brew install xiaoyifang/ffmpeg/ffmpeg --with-speex
+          vcpkg install libzim[core]
+
           vcpkg install ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]
 
           brew install libiconv
@@ -69,9 +71,7 @@ jobs:
           brew install create-dmg
           brew install xapian
           # brew install libzim
-          vcpkg install libzim
-          brew install icu4c
-
+          
           # brew install dylibbundler
           git clone https://github.com/xiaoyifang/macdylibbundler.git
           cd macdylibbundler
@@ -105,7 +105,7 @@ jobs:
           cmake -B . -S . -G Ninja \
           -DCMAKE_INSTALL_PREFIX='/usr' \
           -DWITH_FFMPEG_PLAYER=OFF \
-          -DWITH_FFMPEG_VCPKG=ON -DWITH_ZIM_VCPKG=ON -DWITH_ZIM=OFF \
+          -DWITH_VCPKG=ON -DWITH_ZIM=OFF \
           -Wno-dev
           cmake --build .
       - name: package
