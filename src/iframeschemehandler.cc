@@ -59,7 +59,12 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     // Change links from relative to absolute
 
     QString root = reply->url().scheme() + "://" + reply->url().host();
+
+    if ( reply->url().port() != 80 && reply->url().port() != 443 ) {
+      root = root+ ":" + QString::number(reply->url().port());
+    }
     QString base = root + reply->url().path();
+
 
     QRegularExpression baseTag( R"EOF(<base\s+href=["'](.*?)["'].*?>)EOF",
                                 QRegularExpression::CaseInsensitiveOption
