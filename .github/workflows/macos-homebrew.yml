@@ -68,7 +68,8 @@ jobs:
           brew install pkg-config
           brew install create-dmg
           brew install xapian
-          brew install libzim
+          # brew install libzim
+          vcpkg install libzim
           brew install icu4c
 
           # brew install dylibbundler
@@ -104,7 +105,7 @@ jobs:
           cmake -B . -S . -G Ninja \
           -DCMAKE_INSTALL_PREFIX='/usr' \
           -DWITH_FFMPEG_PLAYER=OFF \
-          -DWITH_FFMPEG_VCPKG=ON \
+          -DWITH_FFMPEG_VCPKG=ON -DWITH_ZIM_VCPKG=ON -DWITH_ZIM=OFF \
           -Wno-dev
           cmake --build .
       - name: package
