@@ -100,9 +100,12 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
-          make -j8
-          
+          cmake -B . -S . -G Ninja \
+          -DCMAKE_INSTALL_PREFIX='/usr' \
+          -DWITH_FFMPEG_PLAYER=OFF \
+          -DWITH_FFMPEG_VCPKG=ON \
+          -Wno-dev
+          cmake --build .
       - name: package
         run: |
           
