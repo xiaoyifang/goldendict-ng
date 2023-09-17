@@ -61,7 +61,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     QString root = reply->url().scheme() + "://" + reply->url().host();
 
     if ( reply->url().port() != 80 && reply->url().port() != 443 ) {
-      root = root+ ":" + QString::number(reply->url().port());
+      root = root + ":" + QString::number( reply->url().port() );
     }
     QString base = root + reply->url().path();
 
