@@ -97,7 +97,7 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 void TranslateBox::setModel( QStringList & _words )
 {
   disconnect( completer, 0, translate_line, 0 );
-  const auto model = static_cast< QStringListModel * >(completer->model());
+  const auto model = static_cast< QStringListModel * >( completer->model() );
 
   model->setStringList( _words );
 
