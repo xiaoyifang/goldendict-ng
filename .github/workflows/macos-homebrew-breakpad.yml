@@ -30,13 +30,6 @@ jobs:
       version-suffix: alpha
       prerelease: true
     steps:
-      # macos 11.0 默认环境变了,要指定
-      - name: prepare env
-        if: ${{ matrix.os == 'macos-11' }}
-        run: |
-          softwareupdate --all --install --force
-          sudo xcode-select --print-path
-          sudo xcode-select --switch /Library/Developer/CommandLineTools    
                
       - uses: actions/checkout@v3
         with:
@@ -227,7 +220,7 @@ jobs:
             AppImage: Ubuntu-20.04
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
-            based on: ${{github.ref}}
+            based on: ${{github.ref_name}}
 
 
 
