@@ -97,7 +97,7 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 void TranslateBox::setModel( QStringList & _words )
 {
   disconnect( completer, 0, translate_line, 0 );
-  auto model = (QStringListModel *)( completer->model() );
+  const auto model = static_cast< QStringListModel * >( completer->model() );
 
   model->setStringList( _words );
 
@@ -109,6 +109,7 @@ void TranslateBox::setModel( QStringList & _words )
            [ & ]( const QString & text ) {
              translate_line->setText( text );
              emit returnPressed();
+             selectedItem = false;
            } );
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::highlighted ),
@@ -120,7 +121,6 @@ void TranslateBox::setModel( QStringList & _words )
 
 void TranslateBox::showPopup()
 {
-  selectedItem = false;
   if ( m_popupEnabled ) {
     completer->popup()->show();
     completer->complete();
