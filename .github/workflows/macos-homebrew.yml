@@ -51,8 +51,11 @@ jobs:
           brew install wavpack
           brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
           brew install speex
+
+          brew uninstall ffmpeg
           
           brew tap homebrew-ffmpeg/ffmpeg
+          brew options homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
 
           brew install libiconv
