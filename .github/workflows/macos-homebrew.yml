@@ -54,8 +54,8 @@ jobs:
 
           
           brew tap homebrew-ffmpeg/ffmpeg
-          brew options homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg
+          brew options homebrew-ffmpeg/ffmpeg/ffmpeg 
+          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
 
           brew install libiconv
           brew install lzo bzip2
