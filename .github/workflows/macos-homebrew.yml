@@ -113,7 +113,6 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
-          otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
           cp -r /usr/local/Cellar/icu4c/7*/lib/libicu*.dylib  GoldenDict.app/Contents/Frameworks
           cp -r /usr/local/Cellar/zstd/1.5.5/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
           # dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libzim.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
