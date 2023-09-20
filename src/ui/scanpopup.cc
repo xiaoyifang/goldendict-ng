@@ -124,7 +124,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   definition->installEventFilter( this );
   this->installEventFilter( this );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
+  connect( ui.translateBox->translateLine(), &QLineEdit::textEdited, this, &ScanPopup::translateInputChanged );
 
   connect( ui.translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
@@ -694,6 +694,8 @@ void ScanPopup::typingEvent( QString const & t )
     ui.translateBox->setText( t, true );
     ui.translateBox->translateLine()->setCursorPosition( t.size() );
   }
+
+  updateSuggestionList();
 }
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )

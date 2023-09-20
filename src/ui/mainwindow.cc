@@ -2442,6 +2442,8 @@ void MainWindow::setInputLineText( QString text, WildcardPolicy wildcardPolicy, 
   else {
     translateBox->setText( text, popupAction == EnablePopup );
   }
+
+  updateSuggestionList();
   GlobalBroadcaster::instance()->translateLineText = text;
 }
 
