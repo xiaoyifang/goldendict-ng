@@ -50,11 +50,9 @@ TranslateBox::TranslateBox( QWidget * parent ):
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
 
-  connect( translate_line,
-           &QLineEdit::returnPressed,
-           [ this ]() {
-             emit returnPressed();
-           } );
+  connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
+    emit returnPressed();
+  } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
@@ -92,8 +90,6 @@ void TranslateBox::setModel( QStringList & _words )
              translate_line->setText( text );
              emit returnPressed();
            } );
-
-
 }
 
 void TranslateBox::showPopup()
