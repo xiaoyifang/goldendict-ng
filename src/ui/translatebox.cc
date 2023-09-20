@@ -50,29 +50,9 @@ TranslateBox::TranslateBox( QWidget * parent ):
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
 
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::activated ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             translate_line->setText( text );
-             emit returnPressed();
-           } );
-
-
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::highlighted ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             selectedItem = true;
-           } );
-
-  connect( translate_line,
-           &QLineEdit::returnPressed,
-           [ this ]() {
-             if ( selectedItem )
-               return;
-             emit returnPressed();
-           } );
+  connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
+    emit returnPressed();
+  } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
@@ -96,7 +76,7 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & _words )
 {
-  disconnect( completer, 0, translate_line, 0 );
+  disconnect( completer, QOverload< const QString & >::of( &QCompleter::activated ), translate_line, nullptr );
   const auto model = static_cast< QStringListModel * >( completer->model() );
 
   model->setStringList( _words );
@@ -109,13 +89,6 @@ void TranslateBox::setModel( QStringList & _words )
            [ & ]( const QString & text ) {
              translate_line->setText( text );
              emit returnPressed();
-             selectedItem = false;
-           } );
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::highlighted ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             selectedItem = true;
            } );
 }
 
