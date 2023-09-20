@@ -81,7 +81,6 @@ jobs:
           sudo make install
           find /usr/local -name libzstd.1.dylib 
           find /usr/local -name liblzma.5.dylib
-          brew install jpeg-xl
       - name: version-file
         shell: bash
         env:
@@ -103,7 +102,7 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=no_ffmpeg_player
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
           make -j8
           
       - name: package
@@ -142,7 +141,6 @@ jobs:
           previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
-
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
           echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
 
