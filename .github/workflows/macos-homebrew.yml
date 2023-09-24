@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12,macos-13]
-        qt_ver: [ 6.4.3,6.6.0 ]
+        qt_ver: [ 6.6.0 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -47,15 +47,14 @@ jobs:
           brew install autoconf
           brew install libtool
           brew install opencc
-          brew install speex
+          # brew install speex
           brew install wavpack
-          brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
-          brew install speex
-
+          brew install automake git lame libass libtool sdl shtool texi2html theora wget xvid nasm
+          # brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
           
-          brew tap homebrew-ffmpeg/ffmpeg
-          brew options homebrew-ffmpeg/ffmpeg/ffmpeg 
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
+          # brew tap homebrew-ffmpeg/ffmpeg
+          # brew options homebrew-ffmpeg/ffmpeg/ffmpeg 
+          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
 
           brew install libiconv
           brew install lzo bzip2
@@ -102,7 +101,7 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=no_ffmpeg_player
           make -j8
           
       - name: package
@@ -112,8 +111,8 @@ jobs:
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
-          otool -L GoldenDict.app/Contents/Frameworks/libav*
-          otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
+          # otool -L GoldenDict.app/Contents/Frameworks/libav*
+          # otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
           cp -r /usr/local/Cellar/icu4c/7*/lib/libicu*.dylib  GoldenDict.app/Contents/Frameworks
           cp -r /usr/local/Cellar/zstd/1.5.5/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
           # dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libzim.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks
@@ -126,11 +125,11 @@ jobs:
 
           dylibbundler -of -x GoldenDict.app/Contents/Frameworks/libicui18n.73.dylib -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -x GoldenDict.app/Contents/Frameworks/libicuuc.73.dylib  -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local
           
-          dylibbundler -of   -x  GoldenDict.app/Contents/Frameworks/libavformat.60.dylib -x  GoldenDict.app/Contents/Frameworks/libavcodec.60.dylib   -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
-          dylibbundler -of -b -x   GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib     -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
+          # dylibbundler -of   -x  GoldenDict.app/Contents/Frameworks/libavformat.60.dylib -x  GoldenDict.app/Contents/Frameworks/libavcodec.60.dylib   -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
+          # dylibbundler -of -b -x   GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib     -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
           
-          otool -L GoldenDict.app/Contents/Frameworks/libav*
-          otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
+          # otool -L GoldenDict.app/Contents/Frameworks/libav*
+          # otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
           otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
           otool -L GoldenDict.app/Contents/Frameworks/libxapian.30.dylib
           otool -L GoldenDict.app/Contents/Frameworks/liblzma.5.dylib

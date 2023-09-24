@@ -83,7 +83,7 @@ jobs:
       - name: build goldendict
         run: |
           cmake -S . -B build_dir -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_BUILD_TYPE=Release  -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build build_dir
           cmake --install ./build_dir --prefix=appdir/usr
 
