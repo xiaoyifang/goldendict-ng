@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [6.5.2]
+        qt_ver: [6.5.2,6.6.0]
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
@@ -151,7 +151,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad CONFIG+=no_ffmpeg_player
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%

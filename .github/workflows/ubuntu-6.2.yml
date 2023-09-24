@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        qt_ver: [ 6.5.2 ]
+        qt_ver: [ 6.5.2, 6.6.0 ]
         qt_arch: [gcc_64]
     env:
       version: 23.09.11
@@ -83,7 +83,7 @@ jobs:
       - name: build goldendict
         run: |
           cmake -S . -B build_dir -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_BUILD_TYPE=Release  -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build build_dir
           cmake --install ./build_dir --prefix=appdir/usr
 

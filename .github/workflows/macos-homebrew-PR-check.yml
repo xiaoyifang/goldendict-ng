@@ -56,9 +56,9 @@ jobs:
           brew install libtool
           brew install opencc
           
-          brew install speex
-          brew tap homebrew-ffmpeg/ffmpeg
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
+          # brew install speex
+          # brew tap homebrew-ffmpeg/ffmpeg
+          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
           brew install libiconv
           brew install lzo bzip2
@@ -78,6 +78,6 @@ jobs:
 
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv CONFIG+=use_xapian
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv CONFIG+=use_xapian  CONFIG+=no_ffmpeg_player
           make 
      
