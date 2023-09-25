@@ -532,13 +532,12 @@ SOURCES += \
     thirdparty/fmt/format.cc
 
 #speech to text
-CONFIG( !no_tts_support ) {
-  SOURCES += src/speechclient.cc \
-           src/texttospeechsource.cc
-  HEADERS += src/texttospeechsource.hh \
-            src/speechclient.hh
-}
-else{
+SOURCES += src/speechclient.cc \
+          src/texttospeechsource.cc
+HEADERS += src/texttospeechsource.hh \
+          src/speechclient.hh
+          
+CONFIG( no_tts_support ) {
   DEFINES += NO_TTS_SUPPORT
 }
 
