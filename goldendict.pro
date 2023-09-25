@@ -532,10 +532,16 @@ SOURCES += \
     thirdparty/fmt/format.cc
 
 #speech to text
-SOURCES += src/speechclient.cc \
+CONFIG( !no_tts_support ) {
+  SOURCES += src/speechclient.cc \
            src/texttospeechsource.cc
-HEADERS += src/texttospeechsource.hh \
-           src/speechclient.hh
+  HEADERS += src/texttospeechsource.hh \
+            src/speechclient.hh
+}
+else{
+  DEFINES += NO_TTS_SUPPORT
+}
+
 
 mac {
     HEADERS += src/macos/macmouseover.hh \

@@ -124,10 +124,12 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.forvoLanguageCodes->setText( forvo.languageCodes );
 
   // Text to speech
+  #ifndef NO_TTS_SUPPORT
   if ( !cfg.notts ) {
     textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
     ui.tabWidget->addTab( textToSpeechSource, QIcon( ":/icons/text2speech.svg" ), tr( "Text to Speech" ) );
   }
+  #endif
 
   if ( Config::isPortableVersion() ) {
     // Paths
