@@ -18,6 +18,12 @@ const QLatin1String flags = QLatin1String(
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   " MAKE_CHINESE_CONVERSION_SUPPORT"
 #endif
+#ifdef NO_TTS_SUPPORT
+  " NO_TTS_SUPPORT"
+#endif
+#ifndef MAKE_FFMPEG_PLAYER
+  " no_ffmpeg_player"
+#endif
 );
 
 const QLatin1String compiler = QLatin1String(

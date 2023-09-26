@@ -151,7 +151,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad CONFIG+=no_ffmpeg_player
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%

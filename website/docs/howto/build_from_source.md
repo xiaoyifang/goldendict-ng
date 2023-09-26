@@ -192,6 +192,11 @@ Then enable google breakpad like this with qmake:
 qmake "CONFIG+=use_breakpad"
 ```
 
+#### build with tts disabled
+
+`CONFIG+=no_tts_support` will disable the QTextToSpeech feature.
+
+
 ### Build with VS2019
 
 VS2019 support CMake project, open the source directory directly then you go.

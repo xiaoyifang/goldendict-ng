@@ -101,7 +101,7 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=no_ffmpeg_player
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
           make -j8
           
       - name: package
