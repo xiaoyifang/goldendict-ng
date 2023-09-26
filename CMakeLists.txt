@@ -6,6 +6,7 @@ option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_XAPIAN "enable Xapian support" ON)
 option(WITH_ZIM "enable zim support" ON)
+option(WITH_TTS "enable QTexttoSpeech support" ON)
 
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
@@ -159,6 +160,10 @@ target_compile_definitions(${GOLDENDICT} PUBLIC
 if (WITH_FFMPEG_PLAYER)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
 endif ()
+
+if(NOT WITH_TTS)
+    target_compile_definitions(${GOLDENDICT} PUBLIC NO_TTS_SUPPORT)
+endif()
 
 
 if (NOT WITH_EPWING_SUPPORT)

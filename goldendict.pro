@@ -533,9 +533,14 @@ SOURCES += \
 
 #speech to text
 SOURCES += src/speechclient.cc \
-           src/texttospeechsource.cc
+          src/texttospeechsource.cc
 HEADERS += src/texttospeechsource.hh \
-           src/speechclient.hh
+          src/speechclient.hh
+          
+CONFIG( no_tts_support ) {
+  DEFINES += NO_TTS_SUPPORT
+}
+
 
 mac {
     HEADERS += src/macos/macmouseover.hh \
