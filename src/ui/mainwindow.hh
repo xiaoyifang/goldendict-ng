@@ -149,6 +149,9 @@ private:
 
   ScanPopup * scanPopup = nullptr;
 
+  //only used once, when used ,reset to empty.
+  QString consoleWindowOnce;
+
   sptr< HotkeyWrapper > hotkeyWrapper;
 
   sptr< QPrinter > printer; // The printer we use for all printing operations

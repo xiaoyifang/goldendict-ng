@@ -148,6 +148,7 @@ struct GDOptions
   bool logFile     = false;
   bool togglePopup = false;
   QString word, groupName, popupGroupName;
+  QString window;
 
   inline bool needSetGroup() const
   {
@@ -220,6 +221,11 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            QObject::tr( "Change the group of popup." ),
                                            "popupGroupName" );
 
+  QCommandLineOption windowOption( QStringList() << "w"
+                                                         << "window",
+                                           QObject::tr( "Translate the word in popup or main window" ),
+                                           "window","main|popup" );
+
   QCommandLineOption togglePopupOption( QStringList() << "t"
                                                       << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
@@ -231,6 +237,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
+  qcmd.addOption( windowOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
@@ -253,7 +260,9 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   if ( qcmd.isSet( popupGroupNameOption ) ) {
     result->popupGroupName = qcmd.value( popupGroupNameOption );
   }
-
+  if ( qcmd.isSet( windowOption ) ) {
+    result->window = qcmd.value( windowOption );
+  }
   if ( qcmd.isSet( togglePopupOption ) ) {
     result->togglePopup = true;
   }
@@ -414,6 +423,7 @@ int main( int argc, char ** argv )
   if ( app.isRunning() ) {
     bool wasMessage = false;
 
+    //TODO .all the following messages can be combined into one.
     if ( gdcl.needSetGroup() ) {
       app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
       wasMessage = true;
@@ -421,6 +431,11 @@ int main( int argc, char ** argv )
 
     if ( gdcl.needSetPopupGroup() ) {
       app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
+      wasMessage = true;
+    }
+
+    if ( !gdcl.window.isEmpty() ) {
+      app.sendMessage( QString( "window:" ) + gdcl.window );
       wasMessage = true;
     }
 

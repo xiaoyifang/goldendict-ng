@@ -3548,11 +3548,18 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     return;
   }
 
+  QString prefix = "window:";
+  if ( message.left( prefix.size() ) == prefix ) {
+    consoleWindowOnce = message.mid( prefix.size() );
+  }
+
   if ( message.left( 15 ) == "translateWord: " ) {
-    if ( scanPopup )
+    if ( (consoleWindowOnce == "popup") && scanPopup )
       scanPopup->translateWord( message.mid( 15 ) );
     else
       wordReceived( message.mid( 15 ) );
+
+    consoleWindowOnce.clear();
   }
   else if ( message.left( 10 ) == "setGroup: " ) {
     setGroupByName( message.mid( 10 ), true );
