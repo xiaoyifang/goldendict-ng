@@ -3554,10 +3554,20 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
   }
 
   if ( message.left( 15 ) == "translateWord: " ) {
-    if ( (consoleWindowOnce == "popup") && scanPopup )
-      scanPopup->translateWord( message.mid( 15 ) );
-    else
-      wordReceived( message.mid( 15 ) );
+    auto word = message.mid( 15 );
+    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+      scanPopup->translateWord( word );
+    }
+    else if ( consoleWindowOnce == "main" ) {
+      wordReceived( word );
+    }
+    else {
+      //default logic
+      if ( scanPopup && enableScanningAction->isChecked() )
+        scanPopup->translateWord( word );
+      else
+        wordReceived( word );
+    }
 
     consoleWindowOnce.clear();
   }

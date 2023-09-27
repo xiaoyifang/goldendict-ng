@@ -221,13 +221,16 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            QObject::tr( "Change the group of popup." ),
                                            "popupGroupName" );
 
-  QCommandLineOption windowOption( QStringList() << "w"
-                                                         << "window",
-                                           QObject::tr( "Translate the word in popup or main window" ),
-                                           "window","main|popup" );
+  QCommandLineOption window_popupOption( QStringList() << "s"
+                                         << "scanpopup",
+                                         QObject::tr( "Force the word to be translated in scanpopup" ) );
+
+  QCommandLineOption window_mainWindowOption( QStringList() << "m"
+                                              << "main-window",
+                                              QObject::tr( "Force the word to be translated in the mainwindow" ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
-                                                      << "toggle-scan-popup",
+                                        << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
 
   QCommandLineOption printVersion( QStringList() << "v"
@@ -237,7 +240,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
-  qcmd.addOption( windowOption );
+  qcmd.addOption( window_popupOption );
+  qcmd.addOption( window_mainWindowOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
@@ -260,8 +264,11 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   if ( qcmd.isSet( popupGroupNameOption ) ) {
     result->popupGroupName = qcmd.value( popupGroupNameOption );
   }
-  if ( qcmd.isSet( windowOption ) ) {
-    result->window = qcmd.value( windowOption );
+  if ( qcmd.isSet( window_popupOption ) ) {
+    result->window = "popup";
+  }
+  if ( qcmd.isSet( window_mainWindowOption ) ) {
+    result->window = "main";
   }
   if ( qcmd.isSet( togglePopupOption ) ) {
     result->togglePopup = true;
