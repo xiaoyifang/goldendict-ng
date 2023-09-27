@@ -156,13 +156,14 @@ win32 {
         -ladvapi32 \
         -lcomdlg32
     LIBS += -lvorbisfile \
-        -lvorbis \
-        -logg
+        -lvorbis 
     !CONFIG( no_ffmpeg_player ) {
         LIBS += -lswresample \
             -lavutil \
             -lavformat \
-            -lavcodec
+            -lavcodec \
+            -logg
+
     }
 
     RC_ICONS += icons/programicon.ico icons/programicon_old.ico
@@ -193,13 +194,13 @@ unix:!mac {
 
     PKGCONFIG += vorbisfile \
         vorbis \
-        ogg \
         hunspell
     !CONFIG( no_ffmpeg_player ) {
         PKGCONFIG += libavutil \
             libavformat \
             libavcodec \
             libswresample \
+            ogg 
     }
     !arm {
         LIBS += -lX11 -lXtst
@@ -243,13 +244,13 @@ mac {
         -lbz2 \
         -lvorbisfile \
         -lvorbis \
-        -logg \
         -llzo2
 
     !CONFIG( no_ffmpeg_player ) {
         LIBS += -lswresample \
             -lavutil \
             -lavformat \
+            -logg \
             -lavcodec
     }
     QT_CONFIG -= no-pkg-config
