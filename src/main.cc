@@ -222,15 +222,15 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            "popupGroupName" );
 
   QCommandLineOption window_popupOption( QStringList() << "s"
-                                         << "scanpopup",
+                                                       << "scanpopup",
                                          QObject::tr( "Force the word to be translated in scanpopup" ) );
 
   QCommandLineOption window_mainWindowOption( QStringList() << "m"
-                                              << "main-window",
+                                                            << "main-window",
                                               QObject::tr( "Force the word to be translated in the mainwindow" ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
-                                        << "toggle-scan-popup",
+                                                      << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
 
   QCommandLineOption printVersion( QStringList() << "v"
