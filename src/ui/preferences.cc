@@ -647,7 +647,9 @@ void Preferences::on_buttonBox_accepted()
 
   //change interface font.
   if ( ui.systemFont->currentText() != prevSysFont ) {
-    QApplication::setFont( QFont( ui.systemFont->currentText() ) );
+    auto font = QApplication::font();
+    font.setFamily( ui.systemFont->currentText() );
+    QApplication::setFont( font );
   }
 }
 

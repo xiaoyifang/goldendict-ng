@@ -511,7 +511,8 @@ int main( int argc, char ** argv )
   //System Font
   auto font = QApplication::font();
   if ( !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
-    app.setFont( QFont( cfg.preferences.interfaceFont ) );
+    font.setFamily( cfg.preferences.interfaceFont );
+    app.setFont( font );
   }
 
   QLocale locale( localeName );
