@@ -49,7 +49,7 @@ jobs:
           brew install opencc
           # brew install speex
           brew install wavpack
-          brew install automake git lame libass libtool sdl shtool texi2html theora wget xvid nasm
+          brew install automake git lame libass libtool shtool texi2html theora wget xvid nasm
           # brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
           
           # brew tap homebrew-ffmpeg/ffmpeg
