@@ -29,7 +29,7 @@
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Basierend auf Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -96,7 +96,7 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
     </message>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>In der Gruppe &lt;b&gt;%2&lt;/b&gt; wurde keine Übersetzung für &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gefunden.</translation>
     </message>
     <message>
       <source>(picture)</source>
@@ -104,7 +104,21 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 &lt;h3 align=&quot;center&quot;&gt;Willkommen zu &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Das sind die ersten Schritte um mit dem Programm arbeiten zu können. &lt;p&gt; Gehen Sie zunächst auf &lt;b&gt;Bearbeiten » Wörterbücher...&lt;/b&gt; um die Pfade zu abgespeicherten Wörterbüchern hinzuzufügen sowie um Wikipedia und andere Seiten einzurichten oder die Wörterbücher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p&gt;
+&lt;p&gt;Nun sind Sie bereit das erste Wort nachzuschlagen. Dies können Sie im Eingabe-Fenster machen oder &lt;a href=&quot;Mit Popups arbeiten&quot;&gt;mittels der Popup-Funktion in anderen Applikationen.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Um das Programm anzupassen öffnen Sie &lt;b&gt;Bearbeiten » Einstellungen...&lt;/b&gt;&lt;br /&gt;Viele Einstellungen sind auch mit Tipps versehen.&lt;/p&gt;
+&lt;p&gt;Hilfe, Fragen und Antworten dazu finden Sie im archvierten &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;.&lt;br /&gt;Programm Updates finden sind auf der Webseite &lt;a href=&quot;https://sourceforge.net/projects/goldendict/&quot;&gt;GoldenDict&lt;/a&gt; und den weiterhin gepflegten Source auf &lt;a href=&quot;https://github.com/goldendict/goldendict/&quot;&gt;GoldenDict Source&lt;/a&gt;.
+&lt;br /&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;p&gt;&lt;/p&gt;
+&lt;BODY&gt;
+&lt;DIV&gt;&lt;B&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;
+&lt;HR&gt;
+&lt;/SPAN&gt;&lt;/B&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;Seit 2021: &lt;br /&gt;Ein neuer Fork von XIAO, mit z.B. einer OCR Erkennung mittels dem externen Hilfsprogramm &lt;a href=&quot;https://sourceforge.net/projects/capture2text/&quot;&gt;Capture2Text&lt;/a&gt; und 
+vielen anderen Optimierungen, finden Sie auf der &lt;/SPAN&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;&lt;A 
+href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.&lt;/A&gt;&lt;FONT color=#000000&gt;
+
+&lt;HR&gt;
+</translation>
     </message>
   </context>
   <context>
@@ -291,7 +305,7 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Sounddateien (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Alle Dateien (*.*)</translation>
+      <translation>Audio Dateien (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
@@ -644,11 +658,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Volltextsuche aktiviert</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Volltextsuche deaktiviert</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -658,11 +672,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Index Dateiname:</translation>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Index Ordner öffnen</translation>
     </message>
   </context>
   <context>
@@ -828,7 +842,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Das Suchwort darf nicht leer sein.</translation>
     </message>
     <message>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
@@ -836,7 +850,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Standard</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -1171,7 +1185,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Indizierung: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
@@ -1187,11 +1201,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Indizieren …</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Laden …</translation>
     </message>
   </context>
   <context>
@@ -2454,7 +2468,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WARNUNG: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
@@ -3274,7 +3288,7 @@ Wenn diese Option deaktiviert ist, dann wird das zuoberst erscheinende Wörterbu
     </message>
     <message>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Verzögerungszeit</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3553,83 +3567,83 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Neustart erforderlich</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>Für die Verwendung der Phrasensuche und des NEAR-Operators von Xapian sind Positionsinformationen erforderlich, aber die Datenbankgrösse wird viel grösser sein. Gilt nur für neu eingehende Wörterbücher.</translation>
     </message>
     <message>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Index mit Positionsinformationen aktivieren</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Standardschriftart</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Monospace-Schriftart</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Serif-Schriftart</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Sans-Serif Schriftart</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Erscheinungsbild</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Diese Schriftarten werden angewendet, wenn die in einem Wörterbuch angegebenen Schriftarten nicht gefunden werden.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Fallback-Schriftarten</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Interface-Stil:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Volltextindex mit parallelen Threads erstellen </translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Bei Verwendung der Zwischenablage alles nach Zeilenumbruch entfernen</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Ungültigen Index beim Beenden entfernen</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Sonstiges</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Beim Debuggen mit Wörterbuch CSS/JS, deaktiviere bestimmte Caches ...</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Wörterbuch-Debugging</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Interface-Schriftart</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
     </message>
   </context>
   <context>
@@ -3745,11 +3759,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Fensterzustand zurücksetzen.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>TTS deaktivieren.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
@@ -3765,7 +3779,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Version und Diagnoseinformationen drucken.</translation>
     </message>
   </context>
   <context>
@@ -3870,7 +3884,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WARNUNG: %1</translation>
     </message>
   </context>
   <context>
@@ -3889,7 +3903,7 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>CTRL+G</translation>
     </message>
     <message>
       <source>Highlight &amp;all</source>

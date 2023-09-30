@@ -886,17 +886,25 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
 void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
-  wstring const & word       = gd::removeTrailingZero( index_word );
-  wchar const * wordBegin    = word.c_str();
+  wstring word               = gd::removeTrailingZero( index_word );
   string::size_type wordSize = word.size();
 
   // Safeguard us against various bugs here. Don't attempt adding words
   // which are freakishly huge.
   if ( wordSize > maxHeadwordSize ) {
-    qWarning() << "Skipped too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
+    qWarning() << "Abbreviate the too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
                << "size:" << wordSize;
-    return;
+
+    //find the closest string to the maxHeadwordSize;
+    auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
+    if ( nonSpacePos > 0 )
+      word = word.substr( 0, nonSpacePos );
+    else
+      word = word.substr( 0, maxHeadwordSize );
+
+    wordSize = word.size();
   }
+  wchar const * wordBegin = word.c_str();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {

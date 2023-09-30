@@ -30,12 +30,7 @@ jobs:
     env:
       targetName: GoldenDict
     steps:
-      # - name: prepare env
-      #   run: |
-      #     cd /opt
-      #     mkdir homebrew
-      #     curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-      #     export PATH=$PATH:/opt/homebrew/bin
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -61,9 +56,9 @@ jobs:
           brew install libtool
           brew install opencc
           
-          brew install speex
-          brew tap homebrew-ffmpeg/ffmpeg
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
+          # brew install speex
+          # brew tap homebrew-ffmpeg/ffmpeg
+          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
           brew install libiconv
           brew install lzo bzip2
@@ -83,6 +78,6 @@ jobs:
 
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv CONFIG+=use_xapian
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_iconv CONFIG+=use_xapian  CONFIG+=no_ffmpeg_player
           make 
      

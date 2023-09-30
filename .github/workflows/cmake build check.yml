@@ -57,7 +57,7 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake .
+          cmake .   -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build .
 
   job2:
@@ -84,7 +84,7 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake -S . 
+          cmake -S .   -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build . --config Release
   job3:
     name: macos Build and analyze
@@ -138,6 +138,6 @@ jobs:
       - name: Run build-wrapper
         run: |
           export PKG_CONFIG_PATH=/opt/homebrew/opt/icu4c/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:"$PKG_CONFIG_PATH"
-          cmake .
+          cmake .   -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build .                  
       

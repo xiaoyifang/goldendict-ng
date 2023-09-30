@@ -49,30 +49,11 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->setCompleter( completer );
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
+  completer->popup()->setMinimumHeight( 256 );
 
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::activated ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             translate_line->setText( text );
-             emit returnPressed();
-           } );
-
-
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::highlighted ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             selectedItem = true;
-           } );
-
-  connect( translate_line,
-           &QLineEdit::returnPressed,
-           [ this ]() {
-             if ( selectedItem )
-               return;
-             emit returnPressed();
-           } );
+  connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
+    emit returnPressed();
+  } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
@@ -96,10 +77,12 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & _words )
 {
-  disconnect( completer, 0, translate_line, 0 );
-  auto model = (QStringListModel *)( completer->model() );
+  disconnect( completer, QOverload< const QString & >::of( &QCompleter::activated ), translate_line, nullptr );
+  const auto model = static_cast< QStringListModel * >( completer->model() );
 
   model->setStringList( _words );
+
+  completer->popup()->scrollToTop();
 
   connect( completer,
            QOverload< const QString & >::of( &QCompleter::activated ),
@@ -108,17 +91,10 @@ void TranslateBox::setModel( QStringList & _words )
              translate_line->setText( text );
              emit returnPressed();
            } );
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::highlighted ),
-           translate_line,
-           [ & ]( const QString & text ) {
-             selectedItem = true;
-           } );
 }
 
 void TranslateBox::showPopup()
 {
-  selectedItem = false;
   if ( m_popupEnabled ) {
     completer->popup()->show();
     completer->complete();

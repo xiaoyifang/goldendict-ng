@@ -233,12 +233,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::MinimumExpanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Fixed );
+  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
@@ -2442,6 +2442,8 @@ void MainWindow::setInputLineText( QString text, WildcardPolicy wildcardPolicy, 
   else {
     translateBox->setText( text, popupAction == EnablePopup );
   }
+
+  updateSuggestionList();
   GlobalBroadcaster::instance()->translateLineText = text;
 }
 
@@ -2589,12 +2591,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       if ( const auto focusEvent = dynamic_cast< QFocusEvent * >( ev ); focusEvent->reason() == Qt::MouseFocusReason ) {
         QTimer::singleShot( 0, this, SLOT( focusTranslateLine() ) );
       }
-      return false;
-    }
-
-    if ( ev->type() == QEvent::Resize ) {
-      QResizeEvent * resizeEvent = static_cast< QResizeEvent * >( ev );
-      groupList->setFixedHeight( resizeEvent->size().height() );
       return false;
     }
   }
@@ -3552,11 +3548,28 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     return;
   }
 
+  QString prefix = "window:";
+  if ( message.left( prefix.size() ) == prefix ) {
+    consoleWindowOnce = message.mid( prefix.size() );
+  }
+
   if ( message.left( 15 ) == "translateWord: " ) {
-    if ( scanPopup )
-      scanPopup->translateWord( message.mid( 15 ) );
-    else
-      wordReceived( message.mid( 15 ) );
+    auto word = message.mid( 15 );
+    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+      scanPopup->translateWord( word );
+    }
+    else if ( consoleWindowOnce == "main" ) {
+      wordReceived( word );
+    }
+    else {
+      //default logic
+      if ( scanPopup && enableScanningAction->isChecked() )
+        scanPopup->translateWord( word );
+      else
+        wordReceived( word );
+    }
+
+    consoleWindowOnce.clear();
   }
   else if ( message.left( 10 ) == "setGroup: " ) {
     setGroupByName( message.mid( 10 ), true );

@@ -124,9 +124,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   definition->installEventFilter( this );
   this->installEventFilter( this );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
+  connect( ui.translateBox->translateLine(), &QLineEdit::textEdited, this, &ScanPopup::translateInputChanged );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
+  connect( ui.translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
 
@@ -190,17 +190,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &ScanPopup::mutedDictionariesChanged );
 
   definition->focus();
-
-#if 0 // Experimental code to give window a non-rectangular shape (i.e. \
-      // balloon) using a colorkey mask.
-  QPixmap pixMask( size() );
-  render( &pixMask );
-
-  setMask( pixMask.createMaskFromColor( QColor( 255, 0, 0 ) ) );
-
-  // This helps against flickering
-  setAttribute( Qt::WA_NoSystemBackground );
-#endif
 
   escapeAction.setShortcut( QKeySequence( "Esc" ) );
   addAction( &escapeAction );
@@ -705,6 +694,8 @@ void ScanPopup::typingEvent( QString const & t )
     ui.translateBox->setText( t, true );
     ui.translateBox->translateLine()->setCursorPosition( t.size() );
   }
+
+  updateSuggestionList();
 }
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )

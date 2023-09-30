@@ -94,8 +94,7 @@ jobs:
         id: build
         shell: cmd
         run: |
-          # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.msvc_arch }}
-          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv CONFIG+=use_xapian
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_iconv CONFIG+=use_xapian  CONFIG+=no_ffmpeg_player
           nmake
 
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
@@ -241,7 +240,7 @@ jobs:
             AppImage: Ubuntu-20.04
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
-            based on: ${{github.ref}}
+            based on: ${{github.ref_name}}
 
 
 

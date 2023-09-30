@@ -83,7 +83,7 @@ jobs:
       - name: build goldendict
         run: |
           cmake -S . -B build_dir -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_BUILD_TYPE=Release  -DWITH_FFMPEG_PLAYER=OFF 
           cmake --build build_dir
           cmake --install ./build_dir --prefix=appdir/usr
 
@@ -203,7 +203,7 @@ jobs:
             AppImage: Ubuntu-20.04
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
-            based on: ${{github.ref}}
+            based on: ${{github.ref_name}}
 
             #### Changes
             

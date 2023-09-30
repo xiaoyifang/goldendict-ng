@@ -148,6 +148,7 @@ struct GDOptions
   bool logFile     = false;
   bool togglePopup = false;
   QString word, groupName, popupGroupName;
+  QString window;
 
   inline bool needSetGroup() const
   {
@@ -220,6 +221,14 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            QObject::tr( "Change the group of popup." ),
                                            "popupGroupName" );
 
+  QCommandLineOption window_popupOption( QStringList() << "s"
+                                                       << "scanpopup",
+                                         QObject::tr( "Force the word to be translated in scanpopup" ) );
+
+  QCommandLineOption window_mainWindowOption( QStringList() << "m"
+                                                            << "main-window",
+                                              QObject::tr( "Force the word to be translated in the mainwindow" ) );
+
   QCommandLineOption togglePopupOption( QStringList() << "t"
                                                       << "toggle-scan-popup",
                                         QObject::tr( "Toggle scan popup." ) );
@@ -231,6 +240,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   qcmd.addOption( logFileOption );
   qcmd.addOption( groupNameOption );
   qcmd.addOption( popupGroupNameOption );
+  qcmd.addOption( window_popupOption );
+  qcmd.addOption( window_mainWindowOption );
   qcmd.addOption( togglePopupOption );
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
@@ -253,7 +264,12 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   if ( qcmd.isSet( popupGroupNameOption ) ) {
     result->popupGroupName = qcmd.value( popupGroupNameOption );
   }
-
+  if ( qcmd.isSet( window_popupOption ) ) {
+    result->window = "popup";
+  }
+  if ( qcmd.isSet( window_mainWindowOption ) ) {
+    result->window = "main";
+  }
   if ( qcmd.isSet( togglePopupOption ) ) {
     result->togglePopup = true;
   }
@@ -414,6 +430,7 @@ int main( int argc, char ** argv )
   if ( app.isRunning() ) {
     bool wasMessage = false;
 
+    //TODO .all the following messages can be combined into one.
     if ( gdcl.needSetGroup() ) {
       app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
       wasMessage = true;
@@ -421,6 +438,11 @@ int main( int argc, char ** argv )
 
     if ( gdcl.needSetPopupGroup() ) {
       app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
+      wasMessage = true;
+    }
+
+    if ( !gdcl.window.isEmpty() ) {
+      app.sendMessage( QString( "window:" ) + gdcl.window );
       wasMessage = true;
     }
 
@@ -511,7 +533,8 @@ int main( int argc, char ** argv )
   //System Font
   auto font = QApplication::font();
   if ( !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
-    app.setFont( QFont( cfg.preferences.interfaceFont ) );
+    font.setFamily( cfg.preferences.interfaceFont );
+    app.setFont( font );
   }
 
   QLocale locale( localeName );
