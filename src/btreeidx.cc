@@ -904,7 +904,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
 
     wordSize = word.size();
   }
-  wchar const * wordBegin    = word.c_str();
+  wchar const * wordBegin = word.c_str();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
