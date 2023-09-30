@@ -49,6 +49,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->setCompleter( completer );
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
+  completer->popup()->setMinimumHeight( 256 );
 
   connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
     emit returnPressed();

@@ -3548,11 +3548,28 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     return;
   }
 
+  QString prefix = "window:";
+  if ( message.left( prefix.size() ) == prefix ) {
+    consoleWindowOnce = message.mid( prefix.size() );
+  }
+
   if ( message.left( 15 ) == "translateWord: " ) {
-    if ( scanPopup )
-      scanPopup->translateWord( message.mid( 15 ) );
-    else
-      wordReceived( message.mid( 15 ) );
+    auto word = message.mid( 15 );
+    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+      scanPopup->translateWord( word );
+    }
+    else if ( consoleWindowOnce == "main" ) {
+      wordReceived( word );
+    }
+    else {
+      //default logic
+      if ( scanPopup && enableScanningAction->isChecked() )
+        scanPopup->translateWord( word );
+      else
+        wordReceived( word );
+    }
+
+    consoleWindowOnce.clear();
   }
   else if ( message.left( 10 ) == "setGroup: " ) {
     setGroupByName( message.mid( 10 ), true );
