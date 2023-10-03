@@ -3779,6 +3779,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Print version and diagnosis info.</source>
       <translation>バージョンと診断情報を印刷します。</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>scanpopup で単語を強制的に翻訳する</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>メインウィンドウで単語を強制的に翻訳する</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4000,10 +4008,6 @@ GoldenDict にはまだ実装されていません。</translation>
       <translation>Lingua Libre</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;フランスのウィキメディアメディアライブラリであるリンガ・リブレ&lt;/span&gt;&lt;/a&gt;によって証明された主張。 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>リンガ・リブレを有効にする</translation>
     </message>
@@ -4212,6 +4216,10 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Text to Speech</source>
       <translation>テキスト読み上げ</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;発音は、ウィキメディア フランスの共同言語メディア ライブラリである &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;によって提供されています。 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
