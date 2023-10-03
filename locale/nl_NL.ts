@@ -3776,6 +3776,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Print version and diagnosis info.</source>
       <translation>Printversie en diagnose-info.</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>Forceer het woord om te worden vertaald in scanpopup</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>Forceer dat het woord in het hoofdvenster wordt vertaald</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3997,10 +4005,6 @@ Nog niet geïmplementeerd in GoldenDict.</translation>
       <translation>Lingua Libre</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncaties geleverd door &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, een gezamenlijke taalmediabibliotheek van Wikimedia Frankrijk. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>Lingua Libre inschakelen</translation>
     </message>
@@ -4215,6 +4219,10 @@ groep om ze te gebruiken.</translation>
     <message>
       <source>Text to Speech</source>
       <translation>Tekst naar spraak</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uitspraken geleverd door &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, een gezamenlijke taalkundige mediabibliotheek van Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
