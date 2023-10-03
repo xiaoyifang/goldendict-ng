@@ -17,11 +17,11 @@
     </message>
     <message>
       <source>Copy version info</source>
-      <translation type="unfinished">Copy version info</translation>
+      <translation>Copia versión info ukax mä jach’a uñacht’äwiwa</translation>
     </message>
     <message>
       <source>Copy dictionaries list</source>
-      <translation type="unfinished">Copy dictionaries list</translation>
+      <translation>Diccionarios ukanakan listap copiaña</translation>
     </message>
     <message>
       <source>Credits:</source>
@@ -29,34 +29,34 @@
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Ukax Qt %1 (%2, %3) ukarjam luratawa.</translation>
     </message>
   </context>
   <context>
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>anki: can&apos;t mä tarjeta jan arut luraspa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>Anki thakhi: AnkiConnect ukax janiw ch’amanchatäkiti.</translation>
     </message>
     <message>
       <source>anki: post to anki failed</source>
       <translatorcomment>anki:发布成功</translatorcomment>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: post ukax anki ukarux janiw phuqhaskiti</translation>
     </message>
     <message>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki: post ukax anki suma sarantäwipawa</translation>
     </message>
   </context>
   <context>
     <name>ArticleInspector</name>
     <message>
       <source>Inspect</source>
-      <translation type="unfinished">Inspect</translation>
+      <translation>Uñakipt’aña</translation>
     </message>
   </context>
   <context>
@@ -105,7 +105,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>&lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; ukatakix janiw jaqukipäwix &lt;b&gt;%2&lt;/b&gt;qutunx jikxataskiti.</translation>
     </message>
     <message>
       <source>(picture)</source>
@@ -113,7 +113,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;ukarux walikpun jutapxtaxa!&lt;/h3&gt;&lt;p&gt; &lt;b&gt;&lt;/b&gt;&lt;p&gt;Ukat ukatsti jumax&apos;re wakicht’ataw arunakam uñakipañataki! Ukxa aka ventana ukanxa ch’iqa tuqiru mä panel ukampiwa lurasispa, jan ukaxa &lt;button id=&quot;lookup-popup&quot;&gt;yaqha activos aplicaciones ukanakata aru thaqhaña&lt;/button&gt;. &lt;p&gt;Programa ukarjam lurañatakix, &lt;b&gt;Editar|Preferencias&lt;/b&gt;ukan utjki uka munañanak uñakipt’añamawa. Taqi configuración ukanx herramientas ukanakaw utji, jan armasimti ullart’añamawa kuna tuqit pächassta ukhaxa.&lt;p&gt;Juk’amp yanapt’awinak munasmati, kuna jiskt’awinakas utjaspa, amuyt’awinakas utjaspa jan ukax mayninakax kuns amuyapxi uk jiskt’asiñakiw wakisispa, ukax programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foro&lt;/a&gt;ukanx wali askiwa.&lt;p&gt;Programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; uñakipaña uñakipaña. &lt;p&gt;(c) 2008-2013 maranakanxa Konstantin Isakov. GPLv3 jan ukax qhipa uñt’ayat ukarjam licenciat uñt’ayata.</translation>
     </message>
   </context>
   <context>
@@ -132,7 +132,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>Mä machaq Anki qillqat lurapxam</translation>
     </message>
     <message>
       <source>Query error: %1</source>
@@ -220,11 +220,11 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
-      <translation type="unfinished">Video</translation>
+      <translation>Uñtaña</translation>
     </message>
     <message>
       <source>Video: %1</source>
-      <translation type="unfinished">Video: %1</translation>
+      <translation>Video: %1Ukax mä jach’a uñacht’äwiwa</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
@@ -236,15 +236,15 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+      <translation>Uka referenciado audio programa ukaxa&apos;t ukankiwa.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation type="unfinished">Op&amp;en Link</translation>
+      <translation>Op&amp;en Link ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
+      <translation>Save &amp;Marcador &quot;%1...&quot;juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
@@ -272,11 +272,11 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Phrase not found</source>
-      <translation type="unfinished">Phrase not found</translation>
+      <translation>Frase ukax janiw jikxataskiti</translation>
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
+      <translation>%1 ukat %2 uñt’ayata</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
@@ -292,15 +292,15 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
+      <translation>&amp;Jichha qillqat Anki markar apayani</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;Anki qillqat ajllitanaka apayanipxañani</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation type="unfinished">Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
+      <translation>Sonido qillqatanaka (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Taqi qillqatanaka (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
@@ -308,7 +308,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;Anki qillqata luraña</translation>
     </message>
   </context>
   <context>
@@ -382,7 +382,7 @@ between classic and school orthography in cyrillic)</source>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>costumbre ukar jaqukipaña</translation>
     </message>
   </context>
   <context>
@@ -465,7 +465,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>¿Jumax metadata.toml ukarjam mä tama tamanak lurañ munasmati?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
@@ -477,15 +477,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Auto grupo por carpeta ukax janiw phuqhaskiti.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>Awki tayka directorio %1 ukax janiw puriñjamäkiti.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>¿Jumaxa mä qutu qutuchata luraña muntati carpetas ukanaka utjatapata?</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
@@ -576,7 +576,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
+      <translation>P’iqinchäwinak apkatañataki...</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered: %2</source>
@@ -592,7 +592,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>Janiw exportado archivo jist’arañjamakiti</translation>
     </message>
     <message>
       <source>Export headwords...</source>
@@ -604,11 +604,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>Exportación lurawixa jark’atawa</translation>
     </message>
     <message>
       <source>Export finished</source>
-      <translation type="unfinished">Export finished</translation>
+      <translation>Exportación ukax tukuyatawa</translation>
     </message>
   </context>
   <context>
@@ -655,11 +655,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Phuqat qillqat thaqhañax ch’amanchatawa</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Phuqat qillqat thaqhañax ch’amanchatawa</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -669,11 +669,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Índice qillqatan sutipa:</translation>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Jisk’a carpeta índice uka jist’araña</translation>
     </message>
   </context>
   <context>
@@ -815,11 +815,11 @@ Se han modificado algunas fuentes.
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>Nayra Panka</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation type="unfinished">Next Page</translation>
+      <translation>Jutïr Panka</translation>
     </message>
   </context>
   <context>
@@ -845,15 +845,15 @@ Se han modificado algunas fuentes.
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>Jiskt’ir aruxa janiwa ch’usakïkaspati.</translation>
     </message>
     <message>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
+      <translation>yanapt’añatakix xapian thakhi sintaxis,kunjamakitix UKAT JANIW +/- ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Jan walitxa</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -943,11 +943,11 @@ su propia clave de la API para que este error desaparezca.</translation>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Ukarjama</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Jutiri</translation>
     </message>
   </context>
   <context>
@@ -1020,11 +1020,11 @@ Elegir un grupo (Alt+G)</translation>
     <name>Groups</name>
     <message>
       <source>&lt;</source>
-      <translation type="unfinished">&lt;</translation>
+      <translation>&lt;</translation>
     </message>
     <message>
       <source>&gt;</source>
-      <translation type="unfinished">&gt;</translation>
+      <translation>&gt;</translation>
     </message>
     <message>
       <source>Del</source>
@@ -1091,19 +1091,19 @@ Crear un nuevo grupo de diccionarios.</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Tama Arunakaparjama</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Carpeta ukarjam lurat tamanak luraña.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Grupo ukax Carpetas ukarjam luratawa</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Grupo ukax Metadatos ukarjam luratawa</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
@@ -1183,7 +1183,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1/%2Ukaxa mä juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
@@ -1216,7 +1216,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     <name>Initializing</name>
     <message>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Indexación ukax akhamawa: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
@@ -1232,22 +1232,22 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Indexación ukax...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Ukax mä...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
       <source>Ewe</source>
-      <translation type="unfinished">Ewe</translation>
+      <translation>Ewe</translation>
     </message>
     <message>
       <source>Ido</source>
-      <translation type="unfinished">Ido</translation>
+      <translation>Jïsa</translation>
     </message>
     <message>
       <source>Lao</source>
@@ -1255,11 +1255,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation type="unfinished">Twi</translation>
+      <translation>Twi</translation>
     </message>
     <message>
       <source>Afar</source>
-      <translation type="unfinished">Afar</translation>
+      <translation>Jayankir jaqe</translation>
     </message>
     <message>
       <source>Akan</source>
@@ -1267,15 +1267,15 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation type="unfinished">Cree</translation>
+      <translation>Cree sat jaqe</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation type="unfinished">Igbo</translation>
+      <translation>Igbo markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation type="unfinished">Komi</translation>
+      <translation>Komi</translation>
     </message>
     <message>
       <source>Manx</source>
@@ -1283,7 +1283,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation type="unfinished">Pali</translation>
+      <translation>Pali</translation>
     </message>
     <message>
       <source>Thai</source>
@@ -1291,11 +1291,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation type="unfinished">Urdu</translation>
+      <translation>Urdu aru arsuña</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation type="unfinished">Zulu</translation>
+      <translation>Zulu aru</translation>
     </message>
     <message>
       <source>Czech</source>
@@ -1307,7 +1307,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation type="unfinished">Ganda</translation>
+      <translation>Ganda ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Fulah</source>
@@ -1319,11 +1319,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation type="unfinished">Hausa</translation>
+      <translation>Hausa</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindi arumpixa</translation>
     </message>
     <message>
       <source>Irish</source>
@@ -1347,7 +1347,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation type="unfinished">Maori</translation>
+      <translation>Maori ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Nauru</source>
@@ -1355,19 +1355,19 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation type="unfinished">Oriya</translation>
+      <translation>Oriya markanxa</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation type="unfinished">Oromo</translation>
+      <translation>Oromo</translation>
     </message>
     <message>
       <source>Sango</source>
-      <translation type="unfinished">Sango</translation>
+      <translation>Sango</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation type="unfinished">Shona</translation>
+      <translation>Shona satawa</translation>
     </message>
     <message>
       <source>Tajik</source>
@@ -1375,7 +1375,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation type="unfinished">Tamil</translation>
+      <translation>Tamil arunxa</translation>
     </message>
     <message>
       <source>Tatar</source>
@@ -1383,19 +1383,19 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation type="unfinished">Swati</translation>
+      <translation>Swati satawa</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation type="unfinished">Tonga</translation>
+      <translation>Tonga markanxa</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation type="unfinished">Inupiaq</translation>
+      <translation>Inupiaq</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>Venda ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Uzbek</source>
@@ -1411,7 +1411,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation type="unfinished">Xhosa</translation>
+      <translation>Xhosa satawa</translation>
     </message>
     <message>
       <source>Italian</source>
@@ -1423,11 +1423,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>Dzongkha ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation type="unfinished">Kannada</translation>
+      <translation>Kannada aru uñt’ayaña</translation>
     </message>
     <message>
       <source>North Ndebele</source>
@@ -1443,7 +1443,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation type="unfinished">Kirundi</translation>
+      <translation>Kirundi ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
@@ -1459,7 +1459,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation type="unfinished">Malayalam</translation>
+      <translation>Malayalam arunxa</translation>
     </message>
     <message>
       <source>Kurdish</source>
@@ -1471,7 +1471,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation type="unfinished">Lingala</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <source>Maltese</source>
@@ -1479,7 +1479,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation type="unfinished">Marathi</translation>
+      <translation>Marathi arunxa</translation>
     </message>
     <message>
       <source>Arabic</source>
@@ -1495,11 +1495,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation type="unfinished">Bihari</translation>
+      <translation>Bihari markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Breton</source>
@@ -1515,11 +1515,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation type="unfinished">Divehi</translation>
+      <translation>Divehi ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation type="unfinished">Luba-Katanga</translation>
+      <translation>Luba-Katanga markanxa</translation>
     </message>
     <message>
       <source>Fijian</source>
@@ -1547,7 +1547,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation type="unfinished">Herero</translation>
+      <translation>Herero</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
@@ -1555,7 +1555,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation type="unfinished">Kanuri</translation>
+      <translation>Kanuri</translation>
     </message>
     <message>
       <source>Kazakh</source>
@@ -1563,7 +1563,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation type="unfinished">Kikuyu</translation>
+      <translation>Kikuyu</translation>
     </message>
     <message>
       <source>Korean</source>
@@ -1571,11 +1571,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation type="unfinished">Navajo</translation>
+      <translation>Navajo markankir jaqe</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation type="unfinished">Ndonga</translation>
+      <translation>Ndonga ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Nepali</source>
@@ -1583,7 +1583,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation type="unfinished">Ojibwa</translation>
+      <translation>Ojibwa ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Pashto</source>
@@ -1603,7 +1603,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation type="unfinished">Sindhi</translation>
+      <translation>Sindhi markanxa</translation>
     </message>
     <message>
       <source>Slovak</source>
@@ -1615,15 +1615,15 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation type="unfinished">Telugu</translation>
+      <translation>Telugu arunxa</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation type="unfinished">Tsonga</translation>
+      <translation>Tsonga</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation type="unfinished">Tswana</translation>
+      <translation>Tswana markanxa</translation>
     </message>
     <message>
       <source>Uighur</source>
@@ -1635,11 +1635,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation type="unfinished">Yoruba</translation>
+      <translation>Yoruba aru</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation type="unfinished">Zhuang</translation>
+      <translation>Zhuang sat jilataw ukham luräna</translation>
     </message>
     <message>
       <source>Romanian</source>
@@ -1651,7 +1651,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation type="unfinished">Panjabi</translation>
+      <translation>Panjabi aru</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
@@ -1663,7 +1663,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Esperanto aru</translation>
     </message>
     <message>
       <source>Persian</source>
@@ -1715,7 +1715,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
@@ -1723,7 +1723,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation type="unfinished">Bashkir</translation>
+      <translation>Bashkir ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Belarusian</source>
@@ -1739,11 +1739,11 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation type="unfinished">Hiri Motu</translation>
+      <translation>Hiri Motu ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>qhichwa</translation>
     </message>
     <message>
       <source>Bengali</source>
@@ -1759,7 +1759,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation type="unfinished">Kinyarwanda</translation>
+      <translation>Kinyarwanda ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Afrikaans</source>
@@ -1767,7 +1767,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation type="unfinished">Bislama</translation>
+      <translation>Bislama</translation>
     </message>
     <message>
       <source>Armenian</source>
@@ -1787,7 +1787,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation type="unfinished">Interlingua</translation>
+      <translation>Interlingua uka arunaka</translation>
     </message>
     <message>
       <source>Interlingue</source>
@@ -1843,7 +1843,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation type="unfinished">Tagalog</translation>
+      <translation>Tagalo aru</translation>
     </message>
     <message>
       <source>Assamese</source>
@@ -1899,7 +1899,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation type="unfinished">Inuktitut</translation>
+      <translation>Inuktitut ukaxa</translation>
     </message>
     <message>
       <source>English</source>
@@ -1923,7 +1923,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation type="unfinished">Volapuk</translation>
+      <translation>Volapuk ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Walloon</source>
@@ -1931,7 +1931,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation type="unfinished">Kwanyama</translation>
+      <translation>Kwanyama ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Marshallese</source>
@@ -1947,7 +1947,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation type="unfinished">Chamorro</translation>
+      <translation>Chamorro markanxa</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
@@ -1963,7 +1963,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation type="unfinished">Chichewa</translation>
+      <translation>Chichewa</translation>
     </message>
     <message>
       <source>Lithuanian</source>
@@ -1971,7 +1971,7 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation type="unfinished">Sichuan Yi</translation>
+      <translation>Sichuan Yi</translation>
     </message>
     <message>
       <source>Tigrinya</source>
@@ -2039,178 +2039,178 @@ Crear grupos de diccionarios para pares de idiomas.</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation type="unfinished">Tamazight</translation>
+      <translation>Tamazight ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Lojban satänwa</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Francés aru</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>ispañula</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Bielorruso markankir jaqi</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Búlgaro aru</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Checo arunxa</translation>
     </message>
     <message>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Alemán aru</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>Griego arunjja</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Finlandés aru</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Italiano aru</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Japonés aru</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Corea markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Lituano aru uñt’atawa</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>Macedonia markankir jaqe</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>Holandés aru</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Polonia aru</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Portugués aru</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Ruso aru uñt’ayaña</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>Eslovaco markankir jaqe</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albanés aru uñt’atawa</translation>
     </message>
     <message>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>Serbio (cirílico) ukat juk’ampinaka.</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Suecia markankir jaqi</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Turco aru uñt’ayaña</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Ucrania markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>Chino Simplificado ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Chino Tradicional ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Vietnam markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>Portugués, brasileño aru</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Persa aru</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Kastilla aru, Argentina markana</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindi arumpixa</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Esperanto aru</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation type="unfinished">German, Switzerland</translation>
+      <translation>Alemán, Suiza markankir jaqinaka</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation type="unfinished">Spanish, Bolivia</translation>
+      <translation>Kastilla aru, Bolivia</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tayik arunxa</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>qhichwa</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>Árabe, Arabia Saudita uka arunaka</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Turkmen markankir jaqinakawa</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation type="unfinished">Interlingue</translation>
+      <translation>Interlingue ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Lojban satänwa</translation>
     </message>
     <message>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>inklisa</translation>
     </message>
   </context>
   <context>
@@ -2233,11 +2233,11 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
     <name>MainWindow</name>
     <message>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
@@ -2245,11 +2245,11 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
     </message>
     <message>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <source>F4</source>
-      <translation type="unfinished">F4</translation>
+      <translation>F4</translation>
     </message>
     <message>
       <source>All</source>
@@ -2331,11 +2331,11 @@ Anterior</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
@@ -2392,11 +2392,11 @@ Pulse en &lt;b&gt;Apaqaña&lt;/b&gt; para ir a la página de descarga.</translat
     </message>
     <message>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4 ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5 ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Loading...</source>
@@ -2499,7 +2499,7 @@ Pestaña nueva</translation>
     </message>
     <message>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2519,7 +2519,7 @@ Pestaña nueva</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>AKHAM LURASMA: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
@@ -2544,7 +2544,7 @@ Eliminar la pestaña actual de favoritos</translation>
     </message>
     <message>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2Ukaxa mä juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
@@ -2552,7 +2552,7 @@ Eliminar la pestaña actual de favoritos</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>&amp;Show</source>
@@ -2584,7 +2584,7 @@ Eliminar la pestaña actual de favoritos</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>&amp;Import</source>
@@ -2630,7 +2630,7 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <translation>XML qillqatanaka (*.xml);;Txt qillqatanaka (*.txt);;Taqi qillqatanaka (*.*)</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
@@ -2700,7 +2700,7 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Menu Button</source>
@@ -2712,7 +2712,7 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Full-text search</source>
@@ -2720,7 +2720,7 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
@@ -2750,7 +2750,7 @@ Añadir la pestaña actual a favoritos</translation>
     </message>
     <message>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Export to list</source>
@@ -2770,7 +2770,7 @@ Añadir la pestaña actual a favoritos</translation>
     </message>
     <message>
       <source>Enable Scanning</source>
-      <translation type="unfinished">Enable Scanning</translation>
+      <translation>Escáner ukax ch’amanchatawa</translation>
     </message>
     <message>
       <source>Article, Complete (*.html)</source>
@@ -2786,7 +2786,7 @@ Añadir la pestaña actual a favoritos</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Artículo completo ukar imaña</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2849,7 +2849,7 @@ Añadir la pestaña actual a favoritos</translation>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Couldn&apos;t jist’araña audio buffer uñakipañataki.</translation>
     </message>
   </context>
   <context>
@@ -3020,7 +3020,7 @@ jichha phicchun qhiparasi.</translation>
     </message>
     <message>
       <source>Right Shift only</source>
-      <translation type="unfinished">Right Shift only</translation>
+      <translation>Ch’iqa Shift ukakiw utji</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -3065,7 +3065,7 @@ para todos los accesos a la red del programa.</translation>
     </message>
     <message>
       <source>Lingvo</source>
-      <translation type="unfinished">Lingvo</translation>
+      <translation>Lingvo satänwa</translation>
     </message>
     <message>
       <source>Right Shift</source>
@@ -3226,11 +3226,11 @@ Akasti marcado, thaqhawi ist&apos;araskaniwa.</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Janiw popup uñacht’ayañakiti kunapachatix ajlliwi jan ukax portapapeles ukanakax mä GoldenDict&apos;s pachpa ventanas ukan mayjt’ki ukhaxa</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>GoldenDict&apos;s jupan ajllitapa ukat portapapeles ukan mayjt’awinakapat jan yäqaña</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
@@ -3256,9 +3256,9 @@ Reproducir archivos de audio con el audio por defecto del sistema.</translation>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</translation>
+      <translation>Uk ch’amanchañax GoldenDict ukax jilpach anuncios
+ukar jark’aqaspawa, kunatix contenido (imajinanaka, marcos) ukax janiw sitio
+ukan uñstkiti. Yaqhip sitio ukax uka tuqit p’akintaspa ukhax aka jan ch’amanchañ yant’am.</translation>
     </message>
     <message>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
@@ -3298,7 +3298,7 @@ Janitix naktayatanixa, ESC tiklaxa jaquqipayiri ukaruw ixtayi.</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
+      <translation>Aka amtawixa ajlliñawa jani&apos;t jach’a tabla uñakipaña munkipana kunapachatixa mä sapa tabla jist’aratäki ukhaxa.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -3336,54 +3336,54 @@ Uñstir wintana uñachañatakixa salta ukan mä klik luram. </translation>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
-selection in an article loads the translation and almost immediately
-scrolls to the article from the same dictionary. With this option off,
-however, the article from the topmost dictionary is shown.</translation>
+      <translation>Normalmente, mä enlace ukar ch’iqt’aña, mä arut pä kuti ch’iqt’aña jan ukax mä qillqatan
+ajlliw uñakipañax jaqukipäwiruw apkatxi ukatx niya jank’akiw
+pachpa aru pirwat qillqatar saraña. Ukampirus aka amtawix jist’antatawa,
+ukampis jach’a aru pirwat apst’at qillqataw uñacht’ayasi.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>Automáticamente ukax mä artículo ukar sarañawa</translation>
     </message>
     <message>
       <source>Article Display style:</source>
-      <translation type="unfinished">Article Display style:</translation>
+      <translation>Artículo Uñacht’ayaña estilo:</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>UI ukax ch’amakt’ayatawa.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation type="unfinished">Dark Mode</translation>
+      <translation>Ch’amaka Modo</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>Artículo uñacht’ayañ estilo ch’amakar tukuyaña.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>Ch’amaka Uñakipiri Modo</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>MRU orden: Jichhax apnaqat orden.</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>Pista portapapeles ukax mayjt’iwa kunawsatix Scanning ukax ch’amanchatäki ukhaxa. Uñjaña! Sapa kutiw ukax ch’amanchañapa jan ukax Linux ukan utjkchi ukhaxa.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>Pista Clipboard mayjt’ayaña</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>Pista Ajlliwi mayjt’ayaña</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>Tack ajlliwikiw kunapachatix taqi ajllit teclas ukanakax ch’amanchatäki ukhaxa:</translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
@@ -3391,7 +3391,7 @@ however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Qhiphart’aña pacha</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3411,43 +3411,43 @@ however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation type="unfinished">Anki Connect</translation>
+      <translation>Anki Conectar ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>Imantata:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
+      <translation>Murilu:</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>Aru</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>Vocabulario ukan yapupax...</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>Panka</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>Qhanancht’awi yapu...</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
+      <translation>Urasyuna</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>Oración campo (ch’usakïspawa)...</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
@@ -3469,13 +3469,13 @@ mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translati
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Máximo espacio disco ocupado por GoldenDict&apos;s red caché en
 %1
-If set to 0 the network disk cache will be disabled.</translation>
+Ukaxa 0 ukjamaru utt’ayatawa red disco caché ukaxa janiwa ch’amanchatäkiti.</translation>
     </message>
     <message>
       <source> MiB</source>
-      <translation type="unfinished"> MiB</translation>
+      <translation> MiB</translation>
     </message>
     <message>
       <source>When this option is enabled, GoldenDict
@@ -3509,15 +3509,15 @@ ukax llikat cachep chhaqtayi.</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>Mayat thakhinak thaqhañ pachanxa,mä aru pirwax manual ukamp t’unjatäni ukhax jutïr thakhinx t’unjataw qhiparani</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>Sesión ukax t’unjatawa</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>Machaq thakhinchawinxa, jach’a jan ukax popup ventana ukarux&apos;s uñjkayas uñakipt’añamawa</translation>
     </message>
     <message>
       <source>Favorites</source>
@@ -3590,7 +3590,7 @@ Ak naktayam, jach&apos;a qillqatanaka justupaki suk&apos;asiñataki.</translatio
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation type="unfinished">Ignore punctuation while searching</translation>
+      <translation>Thaqkasajj puntuacionanakarojj janiw yäqañamäkiti</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
@@ -3615,7 +3615,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Babylon</source>
-      <translation type="unfinished">Babylon</translation>
+      <translation>Babilonia markanwa</translation>
     </message>
     <message>
       <source>History</source>
@@ -3677,15 +3677,15 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
+      <translation>Clásico ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation type="unfinished">Modern</translation>
+      <translation>Qhipa uñsta</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation type="unfinished">Lingoes</translation>
+      <translation>Lingoes ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
@@ -3693,15 +3693,15 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source> MB</source>
-      <translation type="unfinished"> MB</translation>
+      <translation> MB</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Wasitat qalltañaw wakisi</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Interfaz ukan estilo mayjt’awip apnaqañatakix wasitat qalltaña.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3709,71 +3709,71 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Índice ukax posicional yatiyawimpiw ch’amanchasi</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Fuente Estándar ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Monoespacio ukax Fuente ukawa</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Serif ukax mä jamuqawa</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Sans-serif ukax mä jamuqawa</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Aparinsya</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>Aka qillqatanakax kunapachatix mä aru pirwan uñt’ayat qillqatanakax jan jikxataskan ukhax apnaqatäniwa.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Fallback ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>Estilo de Interfaz ukax akhamawa:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Índice de texto completo ukax paralelo threads ukanakampiw lurasi </translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>Kunapachatixa portapapeles apnaqañaxa, taqi kunasa machaq línea ukxaruxa ch’ukuñawa</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Uka jan wali índice ukax mistuñkamaw apsuña</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Misilanyas</translation>
     </message>
     <message>
       <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
+      <translation>Kunawsatix diccionario css/js ukamp depuración luraski ukhax yaqhip caché ukar jan ch’amanchañaw jan ch’amäñapataki.</translation>
     </message>
     <message>
       <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
+      <translation>Diccionario debug ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Interfaz ukax Fuente ukawa</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Interfaz ukan qillqañ mayjt’awip apnaqañatakix wasitat qalltaña.</translation>
     </message>
   </context>
   <context>
@@ -3788,7 +3788,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>Html</source>
-      <translation type="unfinished">Html</translation>
+      <translation>Html</translation>
     </message>
     <message>
       <source>Prefix Match</source>
@@ -3811,7 +3811,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>The program has returned exit code %1.</source>
-      <translation type="unfinished">The program has returned exit code %1.</translation>
+      <translation>Programa ukax %1ukham mistuñ chimpunak kutt’ayawayi.</translation>
     </message>
   </context>
   <context>
@@ -3861,7 +3861,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>E-mail: %1%2</source>
-      <translation type="unfinished">E-mail: %1%2</translation>
+      <translation>Correo electrónico: %1%2Ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
@@ -3877,39 +3877,47 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation type="unfinished">A dictionary lookup program.</translation>
+      <translation>Mä diccionario uñakipañ programa.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>Aru jan ukax aruchja jiskt’añataki.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
+      <translation>Debug yatiyawinak gd_log.txt ukar config carpeta ukan imaña.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Ventana estado ukar kutt’ayaña.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Disable ukax tts.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>Jilïr ventana qutuchawi mayjt’ayaña.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>Uka grupo popup ukar mayjt’ayaña.</translation>
     </message>
     <message>
       <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <translation>Toggle escaneo ukax mä popup uñt’ayatawa.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Imprimir versión ukat diagnóstico info.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>Uka aru jaqukipañatakix scanpopup ukar ch’amanchaña</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>Jaqukipaña aru jach’a ventanana ch’amañchaña</translation>
     </message>
   </context>
   <context>
@@ -3964,7 +3972,7 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <name>ScanPopup</name>
     <message>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Dialog</source>
@@ -3998,7 +4006,7 @@ redimensionarla o gerenciarla en otra manera.</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Back</source>
@@ -4014,42 +4022,42 @@ Posterior</translation>
     </message>
     <message>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2Ukaxa mä juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>AKHAM LURASMA: %1</translation>
     </message>
   </context>
   <context>
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation type="unfinished">&amp;Previous</translation>
+      <translation>&amp;Ukarjama</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Jutiri</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
+      <translation>Uñacht’ayaña &amp;all</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;Caso Sensitivo ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Jikxataña:</translation>
     </message>
   </context>
   <context>
@@ -4075,7 +4083,7 @@ Posterior</translation>
     </message>
     <message>
       <source>Hiragana</source>
-      <translation type="unfinished">Hiragana</translation>
+      <translation>Hiragana markanxa</translation>
     </message>
     <message>
       <source>Systems:</source>
@@ -4083,7 +4091,7 @@ Posterior</translation>
     </message>
     <message>
       <source>Nihon-shiki</source>
-      <translation type="unfinished">Nihon-shiki</translation>
+      <translation>Nihon-shiki ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
@@ -4092,7 +4100,7 @@ Posterior</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation type="unfinished">Wikipedia</translation>
+      <translation>Wikipedia ukan uñt’ayata</translation>
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
@@ -4130,31 +4138,27 @@ Todavía no implementado en GoldenDict.</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>Kuna anqäxa wakichäwinakasa. Mä %GDWORD% chimpuxa jiskt’awi arumpiwa turkatarakini. Mä %GDSEARCH% chimpuxa thakhinchawi taypina qillqatampiwa turkatarakini. Panpacha parámetros ukanakax jan churatäkchi ukhaxa, p’iqinchäwix entrada estándar ukar manq’ayatäniwa.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
-      <translation type="unfinished">Lingua Libre</translation>
-    </message>
-    <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>Lingua Libre ukat juk’ampinaka</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>Lingua Libre ukax ch’amanchatawa</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>ISO 639-3 uka arut uñt’ayata</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Forvo apnaqañaxa jichhaxa mä API llave ukawa wakisi, sitio ukan qillqt’asiñamawa juma pachpa llave apsuñataki.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;mä juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Juma pachpa llave &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;aka&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,
@@ -4168,15 +4172,15 @@ ingles arusutampiwa lurata</translation>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Traducción costumbre ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>Ukax thakhi aruchjanakiw apnaqasi, sapa chimpux mä transliteración uñacht’ayi,semicolon separado. Amuyt’añataki, ae;æ, apnaqirinakax ae ukarux æ uñacht’ayañatakiw uñakipapxaspa, ukax amta aruruw uñt’ayasispa.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #akax mä uñacht’äwiwa</translation>
     </message>
     <message>
       <source>Transliteration</source>
@@ -4207,13 +4211,13 @@ Todavia no implementado en GoldenDict.</translation>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Uñacht’awinaka:  &amp;quot;eng&amp;quot; inglés aru, &amp;quot;fra&amp;quot; francés aru &lt;br&gt;
 
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
+Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; akan jikxatasi &lt;/a&gt;</translation>
     </message>
     <message>
       <source>Katakana</source>
-      <translation type="unfinished">Katakana</translation>
+      <translation>Katakana</translation>
     </message>
     <message>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
@@ -4289,15 +4293,15 @@ de los grupos apropiados para utilizarlos.</translation>
     </message>
     <message>
       <source>Hepburn</source>
-      <translation type="unfinished">Hepburn</translation>
+      <translation>Hepburn sat chachan luratawa</translation>
     </message>
     <message>
       <source>Kunrei-shiki</source>
-      <translation type="unfinished">Kunrei-shiki</translation>
+      <translation>Kunrei-shiki ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Forvo</source>
-      <translation type="unfinished">Forvo</translation>
+      <translation>Forvo ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>DICT servers</source>
@@ -4364,6 +4368,10 @@ También puede usar %GD1251% para CP1251, %GDISO1%...%GDISO16% para ISO 8859-1..
     <message>
       <source>Text to Speech</source>
       <translation>Qillqat aru arsuri</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Arsuwinakax &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, mä biblioteca de medios lingüísticos colaborativos de Wikimedia Francia ukan uñt’ayatawa. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;Ukaxa mä juk’a pachanakwa lurasi</translation>
     </message>
   </context>
   <context>
@@ -4460,7 +4468,7 @@ También puede usar %GD1251% para CP1251, %GDISO1%...%GDISO16% para ISO 8859-1..
     </message>
     <message>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id. Ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Icon</source>
