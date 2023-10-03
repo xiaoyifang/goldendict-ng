@@ -3778,6 +3778,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Print version and diagnosis info.</source>
       <translation>Sürümü ve teşhis bilgilerini yazdırın.</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>Scanpopup'ta çevrilecek kelimeyi zorla</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>Ana pencerede çevrilecek kelimeyi zorla</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3999,10 +4007,6 @@ Henüz GoldenDict uygulanmadı.</translation>
       <translation>Serbest Dil</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Telaffuz &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;tarafından sağlanmıştır, Wikimedia Fransa'nın işbirliğine dayalı bir dilbilimsel ortam kitaplığı. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>Lingua Libre'yi Etkinleştir</translation>
     </message>
@@ -4215,6 +4219,10 @@ uygun grupların altlarına ekleyin.</translation>
     <message>
       <source>Text to Speech</source>
       <translation>Metinden Sese</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Telaffuzlar, Wikimedia Fransa'nın ortak dilsel medya kütüphanesi olan &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;tarafından sağlanmıştır. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
