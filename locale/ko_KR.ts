@@ -3776,6 +3776,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Print version and diagnosis info.</source>
       <translation>버전 및 진단 정보를 인쇄합니다.</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>스캔팝업에서 단어를 강제로 번역</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>메인 창에서 단어가 강제로 번역되도록 합니다.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3997,10 +4005,6 @@ Not implemented yet in GoldenDict.</source>
       <translation>링구아 리브레</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;발음은 Wikimedia France의 공동 언어 미디어 라이브러리인 &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;에서 제공합니다. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>링구아 리브레 활성화</translation>
     </message>
@@ -4220,6 +4224,10 @@ GBK와 GB18030 → %GDGBK%, Shift-JIS → %GDSHIFTJIS%</translation>
     <message>
       <source>Text to Speech</source>
       <translation>음성 합성</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;발음은 Wikimedia France의 공동 언어 미디어 라이브러리인 &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;에서 제공됩니다. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
