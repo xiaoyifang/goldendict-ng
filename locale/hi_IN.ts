@@ -3764,6 +3764,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Print version and diagnosis info.</source>
       <translation>प्रिंट संस्करण और निदान जानकारी।</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>शब्द को स्कैनपॉपअप में अनुवादित करने के लिए बाध्य करें</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>शब्द को मुख्य विंडो में अनुवादित करने के लिए बाध्य करें</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3985,10 +3993,6 @@ Not implemented yet in GoldenDict.</source>
       <translation>लिंगुआ लिब्रे</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;उच्चारण &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;लिंगुआ लिबरे&lt;/span&gt;&lt;/a&gt;द्वारा प्रमाणित, विकिमीडिया फ़्रांस की एक सहयोगी भाषाई मीडिया लाइब्रेरी। &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>लिंगुआ लिब्रे सक्षम करें</translation>
     </message>
@@ -4196,6 +4200,10 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Text to Speech</source>
       <translation>वाक् संश्लेषण के लिए पाठ</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;उच्चारण &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;लिंगुआ लिबरे&lt;/span&gt;&lt;/a&gt;द्वारा प्रदान किए गए, जो विकिमीडिया फ़्रांस की एक सहयोगी भाषाई मीडिया लाइब्रेरी है। &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
