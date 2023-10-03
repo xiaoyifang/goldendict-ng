@@ -3773,6 +3773,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Print version and diagnosis info.</source>
       <translation>Phiên bản in và thông tin chẩn đoán.</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>Buộc dịch từ đó trong scanpopup</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>Buộc dịch từ trong cửa sổ chính</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3994,10 +4002,6 @@ Chưa được bổ sung trong Từ điển Vàng.</translation>
       <translation>ngôn ngữ tự do</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations được cung cấp bởi &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, một thư viện phương tiện ngôn ngữ cộng tác của Wikimedia Pháp. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>Kích hoạt Lingua Libre</translation>
     </message>
@@ -4210,6 +4214,10 @@ phù hợp để sử dụng chúng.</translation>
     <message>
       <source>Text to Speech</source>
       <translation>chuyển văn bản thành giọng nói</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prounciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cách phát âm được cung cấp bởi &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, một thư viện phương tiện ngôn ngữ cộng tác của Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
