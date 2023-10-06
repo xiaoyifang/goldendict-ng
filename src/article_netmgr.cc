@@ -239,6 +239,17 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   return new AllowFrameReply( reply );
 }
 
+string ArticleNetworkAccessManager::getHtml( ResourceType resourceType ) {
+  switch ( resourceType ) {
+    case ResourceType::UNTITLE:
+      return articleMaker.makeEmptyPageHtml();
+    case ResourceType::WELCOME:
+      return articleMaker.makeWelcomePageHtml();
+    default:
+      return {};
+  }
+}
+
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl const & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
