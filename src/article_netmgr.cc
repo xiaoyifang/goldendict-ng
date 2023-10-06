@@ -104,7 +104,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   auto op = GetOperation;
 
-  QUrl url                 = req.url();
+  QUrl url            = req.url();
   QMimeType mineType  = db.mimeTypeForUrl( url );
   QString contentType = mineType.name();
 
