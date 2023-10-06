@@ -5,18 +5,9 @@ html {
 }
 
 body {
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    Tahoma, Verdana, "Lucida Sans Unicode","Palatino Linotype", "Arial Unicode MS",
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Tahoma, Verdana,
+    "Lucida Sans Unicode", "Palatino Linotype", "Arial Unicode MS", "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 h1,
