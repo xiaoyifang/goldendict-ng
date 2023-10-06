@@ -309,7 +309,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
     bool search = ( id == "search" );
 
     if ( !search ) {
-      for (const auto & dictionary : dictionaries)
+      for ( const auto & dictionary : dictionaries )
         if ( dictionary->getId() == id ) {
           if ( url.scheme() == "gico" ) {
             QByteArray bytes;
