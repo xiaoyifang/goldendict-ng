@@ -78,7 +78,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     QVector< uint32_t > offsets;
     offsets.resize( setOfOffsets.size() );
-    uint32_t * ptr = &offsets.front();
+    uint32_t * ptr = offsets.data();
 
     for ( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin(); it != setOfOffsets.constEnd(); ++it ) {
       *ptr = *it;
