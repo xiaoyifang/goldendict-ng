@@ -242,9 +242,9 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
 #endif
 
-  auto html = articleNetMgr.getHtml(ResourceType::UNTITLE);
+  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
 
-  webview->setHtml( QString::fromStdString(html) );
+  webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 

@@ -125,7 +125,7 @@ protected:
   }
 };
 
-enum class ResourceType{
+enum class ResourceType {
   UNTITLE,
   WELCOME
 };

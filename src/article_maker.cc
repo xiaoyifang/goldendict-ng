@@ -248,7 +248,7 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
 
 string ArticleMaker::makeWelcomePageHtml() const
 {
-  string result = makeHtmlHeader( tr("Welcome!"), QString(), cfg.alwaysExpandOptionalParts );
+  string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
   //tooltip
   result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
   result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
@@ -356,7 +356,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
   if ( groupId == Instances::Group::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
-      string welcome=makeWelcomePageHtml();
+      string welcome                           = makeWelcomePageHtml();
       sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
       r->appendString( welcome );
@@ -372,7 +372,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
   Instances::Group const * activeGroup = 0;
 
-  for (const auto & group : groups)
+  for ( const auto & group : groups )
     if ( group.id == groupId ) {
       activeGroup = &group;
       break;
@@ -430,7 +430,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( QString const
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 {
-  string result = makeEmptyPageHtml();
+  string result                            = makeEmptyPageHtml();
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
   r->appendString( result );
