@@ -36,9 +36,9 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo )
 void loadFromFile( std::string const & filename, std::vector< char > & data )
 {
   File::Class f( filename, "rb" );
-  QByteArray byteArray{ f.readall() };
-  data.reserve( byteArray.size() );
-  data = std::vector< char >( byteArray.cbegin(), byteArray.cend() );
+  auto size = f.file().size(); // QFile::size() obtains size via statx on Linux
+  data.resize( size );
+  f.read( data.data(), size );
 }
 
 void Class::open( char const * mode )
@@ -82,10 +82,9 @@ Class::Class( std::string_view filename, char const * mode )
 
 void Class::read( void * buf, qint64 size )
 {
-  qint64 result = f.read( static_cast< char * >( buf ), size );
-
-  if ( result != size )
+  if ( f.read( static_cast< char * >( buf ), size ) != size ) {
     throw exReadError();
+  }
 }
 
 size_t Class::readRecords( void * buf, qint64 size, qint64 count )
