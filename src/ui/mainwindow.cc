@@ -1515,15 +1515,15 @@ void MainWindow::setupNetworkCache( int maxSize )
 {
   // x << 20 == x * 2^20 converts mebibytes to bytes.
   qint64 const maxCacheSizeInBytes = maxSize <= 0 ? qint64( 0 ) : static_cast< qint64 >( maxSize ) << 20;
-
+  // There is currently no cache and it is not needed.
+  if ( maxCacheSizeInBytes == 0 )
+    return;
   if ( QAbstractNetworkCache * abstractCache = articleNetMgr.cache() ) {
     QNetworkDiskCache * const diskCache = qobject_cast< QNetworkDiskCache * >( abstractCache );
     Q_ASSERT_X( diskCache, Q_FUNC_INFO, "Unexpected network cache type." );
     diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
     return;
   }
-  if ( maxCacheSizeInBytes == 0 )
-    return; // There is currently no cache and it is not needed.
 
   QString cacheDirectory = Config::getCacheDir();
   if ( !QDir().mkpath( cacheDirectory ) ) {
