@@ -62,45 +62,7 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 
 void AllowFrameReply::applyMetaData()
 {
-  // Set raw headers except X-Frame-Options
-  QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
-  for ( QList< QByteArray >::iterator it = rawHeaders.begin(); it != rawHeaders.end(); ++it ) {
-    auto headerName = it->toLower();
-    if ( headerName != "x-frame-options" && headerName != "content-security-policy" )
-      setRawHeader( *it, baseReply->rawHeader( *it ) );
-  }
-
-  // Set known headers
-  setHeader( QNetworkRequest::ContentDispositionHeader,
-             baseReply->header( QNetworkRequest::ContentDispositionHeader ) );
-  setHeader( QNetworkRequest::ContentTypeHeader, baseReply->header( QNetworkRequest::ContentTypeHeader ) );
-  setHeader( QNetworkRequest::ContentLengthHeader, baseReply->header( QNetworkRequest::ContentLengthHeader ) );
-  setHeader( QNetworkRequest::LocationHeader, baseReply->header( QNetworkRequest::LocationHeader ) );
-  setHeader( QNetworkRequest::LastModifiedHeader, baseReply->header( QNetworkRequest::LastModifiedHeader ) );
-  setHeader( QNetworkRequest::CookieHeader, baseReply->header( QNetworkRequest::CookieHeader ) );
-  setHeader( QNetworkRequest::SetCookieHeader, baseReply->header( QNetworkRequest::SetCookieHeader ) );
-  setHeader( QNetworkRequest::UserAgentHeader, baseReply->header( QNetworkRequest::UserAgentHeader ) );
-  setHeader( QNetworkRequest::ServerHeader, baseReply->header( QNetworkRequest::ServerHeader ) );
-
-  // Set attributes
-  setAttribute( QNetworkRequest::HttpStatusCodeAttribute,
-                baseReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ) );
-  setAttribute( QNetworkRequest::HttpReasonPhraseAttribute,
-                baseReply->attribute( QNetworkRequest::HttpReasonPhraseAttribute ) );
-  setAttribute( QNetworkRequest::RedirectionTargetAttribute,
-                baseReply->attribute( QNetworkRequest::RedirectionTargetAttribute ) );
-  setAttribute( QNetworkRequest::ConnectionEncryptedAttribute,
-                baseReply->attribute( QNetworkRequest::ConnectionEncryptedAttribute ) );
-  setAttribute( QNetworkRequest::SourceIsFromCacheAttribute,
-                baseReply->attribute( QNetworkRequest::SourceIsFromCacheAttribute ) );
-  setAttribute( QNetworkRequest::HttpPipeliningWasUsedAttribute,
-                baseReply->attribute( QNetworkRequest::HttpPipeliningWasUsedAttribute ) );
-  setAttribute( QNetworkRequest::BackgroundRequestAttribute,
-                baseReply->attribute( QNetworkRequest::BackgroundRequestAttribute ) );
-  setAttribute( QNetworkRequest::Http2WasUsedAttribute,
-                baseReply->attribute( QNetworkRequest::Http2WasUsedAttribute ) );
-
-  emit metaDataChanged();
+  // The webengine does not support to customize the headers right now ,maybe until Qt6.7 there should be some api supports
 }
 
 void AllowFrameReply::setReadBufferSize( qint64 size )
@@ -135,29 +97,14 @@ void AllowFrameReply::finishedSlot()
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest const & req )
 {
-  QUrl url;
-  auto op = GetOperation;
-
   if ( req.url().scheme() == "qrcx" ) {
-    // We had to override the local load policy for the qrc URL scheme until QWebSecurityOrigin::addLocalScheme() was
-    // introduced in Qt 4.6. Hence we used a custom qrcx URL scheme and redirected it here back to qrc. Qt versions
-    // older than 4.6 are no longer supported, so GoldenDict itself no longer uses the qrcx scheme. However, qrcx has
-    // been used for many years in our built-in article styles, and so may appear in user-defined article styles.
-    // TODO: deprecate (print a warning or show a warning message box) and eventually remove support for the obsolete
-    // qrcx URL scheme. A recent commit "Add support for qrc:// URL scheme" is the first one where the qrc scheme
-    // works correctly. So the deprecation has to wait until older GoldenDict versions become rarely used.
-    QUrl newUrl( req.url() );
-
-    newUrl.setScheme( "qrc" );
-    newUrl.setHost( "" );
-
-    QNetworkRequest newReq( req );
-    newReq.setUrl( newUrl );
-
-    return QNetworkAccessManager::createRequest( op, newReq, nullptr );
+    // Do not support qrcx which is the custom define protocol.
+    return new BlockedNetworkReply( this );
   }
 
-  url                 = req.url();
+  auto op = GetOperation;
+
+  QUrl url                 = req.url();
   QMimeType mineType  = db.mimeTypeForUrl( url );
   QString contentType = mineType.name();
 
