@@ -341,8 +341,9 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+  if ( ui.translateBox->completerWidget()->font().pointSize() != ps ) {
     ui.translateBox->completerWidget()->setFont( font );
+  }
 
   font = translateLineDefaultFont;
   ps   = font.pointSize();
