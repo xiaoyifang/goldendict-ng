@@ -242,7 +242,9 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
 #endif
 
-  webview->load( QUrl( "gdlookup://localhost?word=(untitled)&blank=1" ) );
+  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
+
+  webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 

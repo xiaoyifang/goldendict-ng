@@ -246,6 +246,79 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
   return result;
 }
 
+string ArticleMaker::makeWelcomePageHtml() const
+{
+  string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
+  //tooltip
+  result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
+  result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
+  result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
+
+
+  result +=
+    tr(
+      "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
+      "<p>To start working with the program, first visit <b>Edit|Dictionaries</b> to add some directory paths where to search "
+      "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
+      "<p>And then you're ready to look up your words! You can do that in this window "
+      "by using a pane to the left, or you can <button id=\"lookup-popup\">look up words from other active applications</button>. "
+      "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
+      "All settings there have tooltips, be sure to read them if you are in doubt about anything."
+      "<p>Should you need further help, have any questions, "
+      "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
+      "<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
+      "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
+
+      )
+      .toUtf8()
+      .data();
+
+  result += R"(<div id="popup" style="display:none;">)";
+  result +=
+    ( tr(
+        "<h3 align=\"center\">Working with the popup</h3>"
+
+        "To look up words from other active applications, you would need to first activate the <i>\"Scan popup functionality\"</i> in <b>Preferences</b>, "
+        "and then enable it at any time either by triggering the 'Popup' icon above, or "
+        "by clicking the tray icon down below with your right mouse button and choosing so in the menu you've popped. " )
+      +
+
+#ifdef Q_OS_WIN32
+      tr( "Then just stop the cursor over the word you want to look up in another application, "
+          "and a window would pop up which would describe it to you." )
+#else
+      tr( "Then just select any word you want to look up in another application by your mouse "
+          "(double-click it or swipe it with mouse with the button pressed), "
+          "and a window would pop up which would describe the word to you." )
+#endif
+        )
+      .toUtf8()
+      .data();
+
+  result += "</div>";
+  QString theme = "";
+  if ( !GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
+    theme = "light";
+  }
+
+  result += QString(
+              R"(<script>
+      const template = document.getElementById('popup');
+
+      tippy('#lookup-popup', {
+        content: template.innerHTML,
+        allowHTML: true,
+        theme: '%1'
+      });
+      </script>)" )
+              .arg( theme )
+              .toStdString();
+
+  result += "</body></html>";
+
+  return result;
+}
+
 sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const & word,
                                                                  unsigned groupId,
                                                                  QMap< QString, QString > const & contexts,
@@ -282,95 +355,26 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
   }
 
   if ( groupId == Instances::Group::HelpGroupId ) {
-    // This is a special group containing internal welcome/help pages
-    string result = makeHtmlHeader( word, QString(), cfg.alwaysExpandOptionalParts );
-
     if ( word == tr( "Welcome!" ) ) {
-      //tooltip
-      result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
-      result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
-      result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
+      string welcome                           = makeWelcomePageHtml();
+      sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-
-      result +=
-        tr(
-          "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
-          "<p>To start working with the program, first visit <b>Edit|Dictionaries</b> to add some directory paths where to search "
-          "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
-          "<p>And then you're ready to look up your words! You can do that in this window "
-          "by using a pane to the left, or you can <button id=\"lookup-popup\">look up words from other active applications</button>. "
-          "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
-          "All settings there have tooltips, be sure to read them if you are in doubt about anything."
-          "<p>Should you need further help, have any questions, "
-          "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
-          "<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
-          "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
-
-          )
-          .toUtf8()
-          .data();
-
-      result += R"(<div id="popup" style="display:none;">)";
-      result +=
-        ( tr(
-            "<h3 align=\"center\">Working with the popup</h3>"
-
-            "To look up words from other active applications, you would need to first activate the <i>\"Scan popup functionality\"</i> in <b>Preferences</b>, "
-            "and then enable it at any time either by triggering the 'Popup' icon above, or "
-            "by clicking the tray icon down below with your right mouse button and choosing so in the menu you've popped. " )
-          +
-
-#ifdef Q_OS_WIN32
-          tr( "Then just stop the cursor over the word you want to look up in another application, "
-              "and a window would pop up which would describe it to you." )
-#else
-          tr( "Then just select any word you want to look up in another application by your mouse "
-              "(double-click it or swipe it with mouse with the button pressed), "
-              "and a window would pop up which would describe the word to you." )
-#endif
-            )
-          .toUtf8()
-          .data();
-
-      result += "</div>";
-      QString theme = "";
-      if ( !GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
-        theme = "light";
-      }
-
-      result += QString(
-                  R"(<script>
-      const template = document.getElementById('popup');
-
-      tippy('#lookup-popup', {
-        content: template.innerHTML,
-        allowHTML: true,
-        theme: '%1'
-      });
-      </script>)" )
-                  .arg( theme )
-                  .toStdString();
+      r->appendString( welcome );
+      return r;
     }
     else {
       // Not found
       return makeNotFoundTextFor( word, "help" );
     }
-
-    result += "</body></html>";
-
-    sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
-
-    r->appendString( result );
-    return r;
   }
 
   // Find the given group
 
   Instances::Group const * activeGroup = 0;
 
-  for ( unsigned x = 0; x < groups.size(); ++x )
-    if ( groups[ x ].id == groupId ) {
-      activeGroup = &groups[ x ];
+  for ( const auto & group : groups )
+    if ( group.id == groupId ) {
+      activeGroup = &group;
       break;
     }
 
@@ -426,17 +430,21 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( QString const
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 {
-  string result = makeHtmlHeader( tr( "(untitled)" ), QString(), true ) + "</body></html>";
-
+  string result                            = makeEmptyPageHtml();
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
   r->appendString( result );
   return r;
 }
 
+string ArticleMaker::makeEmptyPageHtml() const
+{
+  return makeHtmlHeader( tr( "(untitled)" ), QString(), true ) + "</body></html>";
+}
+
 sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & url ) const
 {
-  string result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
+  string const result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
     + R"lit(<a href="javascript: if(history.length>2) history.go(-1)">)lit" + R"(<img src=")" + url + R"(" /></a>)"
     + "</body></html>";
 
