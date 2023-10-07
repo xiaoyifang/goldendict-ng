@@ -3499,8 +3499,11 @@ void MainWindow::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( translateLine->font().pointSize() != ps )
+  if ( translateLine->font().pointSize() != ps ) {
     translateLine->setFont( font );
+
+    translateBox->completerWidget()->setFont( font );
+  }
 
   font = groupListDefaultFont;
 
