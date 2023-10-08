@@ -3290,8 +3290,8 @@ void MainWindow::on_saveArticle_triggered()
 
       if ( complete ) {
         QString folder = fi.absoluteDir().absolutePath() + "/" + fi.baseName() + "_files";
-        QRegExp rx1( "\"((?:bres|gico|gdau|qrcx|gdvideo)://[^\"]+)\"" );
-        QRegExp rx2( "'((?:bres|gico|gdau|qrcx|gdvideo)://[^']+)'" );
+        QRegExp rx1( "\"((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^\"]+)\"" );
+        QRegExp rx2( "'((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^']+)'" );
         set< QByteArray > resourceIncluded;
         vector< pair< QUrl, QString > > downloadResources;
 
