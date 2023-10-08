@@ -961,8 +961,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       // javascripts and images
       QRegularExpressionMatch match = RX::Mdx::inlineScriptRe.match( linkTxt );
       // "script" tag
-      if ( linkType.compare( "script" ) == 0
-           && match.hasMatch() && match.capturedLength() == linkTxt.length() ) {
+      if ( linkType.compare( "script" ) == 0 && match.hasMatch() && match.capturedLength() == linkTxt.length() ) {
         // skip inline scripts
         articleNewText += linkTxt;
         match = RX::Mdx::closeScriptTagRe.match( article, linkPos );
