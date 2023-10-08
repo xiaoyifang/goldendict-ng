@@ -62,6 +62,8 @@ public:
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
   static bool adjustFilePath( QString & fileName );
+  string makeEmptyPageHtml() const;
+  string makeWelcomePageHtml() const;
 
 private:
   std::string readCssFile( QString const & fileName, std::string type ) const;

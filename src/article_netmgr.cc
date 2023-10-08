@@ -239,6 +239,18 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   return new AllowFrameReply( reply );
 }
 
+string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
+{
+  switch ( resourceType ) {
+    case ResourceType::UNTITLE:
+      return articleMaker.makeEmptyPageHtml();
+    case ResourceType::WELCOME:
+      return articleMaker.makeWelcomePageHtml();
+    default:
+      return {};
+  }
+}
+
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl const & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
@@ -309,13 +321,13 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
     bool search = ( id == "search" );
 
     if ( !search ) {
-      for ( unsigned x = 0; x < dictionaries.size(); ++x )
-        if ( dictionaries[ x ]->getId() == id ) {
+      for ( const auto & dictionary : dictionaries )
+        if ( dictionary->getId() == id ) {
           if ( url.scheme() == "gico" ) {
             QByteArray bytes;
             QBuffer buffer( &bytes );
             buffer.open( QIODevice::WriteOnly );
-            dictionaries[ x ]->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
+            dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
             buffer.close();
             sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
             ico->getData().resize( bytes.size() );
@@ -323,10 +335,10 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
             return ico;
           }
           try {
-            return dictionaries[ x ]->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+            return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
           }
           catch ( std::exception & e ) {
-            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionaries[ x ]->getName().c_str() );
+            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
             return sptr< Dictionary::DataRequest >();
           }
         }

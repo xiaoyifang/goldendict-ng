@@ -3780,6 +3780,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Print version and diagnosis info.</source>
       <translation>Версияи чопӣ ва маълумоти ташхис.</translation>
     </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>Маҷбур кунед, ки калимаро дар scanpopup тарҷума кунед</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>Маҷбур кардани калима дар равзанаи асосӣ тарҷума карда шавад</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4001,10 +4009,6 @@ Not implemented yet in GoldenDict.</source>
       <translation>Lingua Libre</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Тарҷумаҳо аз ҷониби &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, китобхонаи муштараки лингвистии Викимедиа Фаронса. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>Lingua Libre-ро фаъол созед</translation>
     </message>
@@ -4219,6 +4223,10 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Text to Speech</source>
       <translation>Матн ба талаффуз</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Талаффузҳо аз ҷониби &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, китобхонаи муштараки лингвистии Викимедиа Фаронса. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>

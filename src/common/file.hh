@@ -13,7 +13,8 @@
 #include <vector>
 #include <QMutex>
 
-/// A simple wrapper over QFile with some convenient GD specific functions
+/// A wrapper over QFile with some GD specific functions
+/// and exception throwing which are required for older coded to work correctly
 /// Consider the wrapped QFile as private implementation in the `Pimpl Idiom`
 ///
 /// Note: this is used *only* in code related to `Dictionary::CLass` to manage dict files.

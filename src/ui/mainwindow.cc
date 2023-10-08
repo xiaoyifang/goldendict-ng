@@ -1224,16 +1224,16 @@ void MainWindow::commitData()
     for ( auto & file : entries ) {
       QString const fileName = file.fileName();
 
+      if ( dictMap.contains( fileName.toStdString() ) )
+        continue;
       //remove both normal index and fts index.
-      if ( !dictMap.contains( fileName.toStdString() ) ) {
-        auto filePath = file.absoluteFilePath();
-        qDebug() << "remove invalid index files & fts dirs";
+      auto filePath = file.absoluteFilePath();
+      qDebug() << "remove invalid index files & fts dirs";
 
-        QFile::remove( filePath );
-        QDir d( filePath + "_FTS_x" );
-        if ( d.exists() ) {
-          d.removeRecursively();
-        }
+      QFile::remove( filePath );
+      QDir d( filePath + "_FTS_x" );
+      if ( d.exists() ) {
+        d.removeRecursively();
       }
     }
   }
@@ -3499,8 +3499,11 @@ void MainWindow::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( translateLine->font().pointSize() != ps )
+  if ( translateLine->font().pointSize() != ps ) {
     translateLine->setFont( font );
+
+    translateBox->completerWidget()->setFont( font );
+  }
 
   font = groupListDefaultFont;
 

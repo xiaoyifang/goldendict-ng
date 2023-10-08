@@ -409,6 +409,7 @@ int main( int argc, char ** argv )
 
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
     webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
                           | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
@@ -534,7 +535,7 @@ int main( int argc, char ** argv )
   auto font = QApplication::font();
   if ( !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
     font.setFamily( cfg.preferences.interfaceFont );
-    app.setFont( font );
+    QApplication::setFont( font );
   }
 
   QLocale locale( localeName );
