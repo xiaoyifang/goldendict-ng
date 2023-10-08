@@ -365,11 +365,12 @@ qint64 ArticleResourceReply::bytesAvailable() const
   if ( avail < 0 )
     return 0;
 
-  if ( !req->isFinished() ) {
-    return 65536;
+  qint64 availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
+  if ( availBytes == 0 && !req->isFinished() ) {
+    return 10240;
   }
 
-  return avail - alreadyRead + QNetworkReply::bytesAvailable();
+  return availBytes;
 }
 
 
