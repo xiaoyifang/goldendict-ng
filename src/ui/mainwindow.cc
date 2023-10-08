@@ -182,7 +182,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
   localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = { "gdlookup","bword", "entry","gdpicture"};
+  QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdpicture" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
@@ -190,7 +190,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   iframeSchemeHandler = new IframeSchemeHandler( this );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
-  QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo",  "gdtts" };
+  QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), resourceSchemeHandler );
