@@ -960,7 +960,8 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       //linkType in ("script","img","source","audio","video")
       // javascripts and images
       QRegularExpressionMatch match = RX::Mdx::inlineScriptRe.match( linkTxt );
-      if ( linkType.at( 1 ) == 'c' // "script" tag
+      // "script" tag
+      if ( linkType.compare( "script" ) == 0
            && match.hasMatch() && match.capturedLength() == linkTxt.length() ) {
         // skip inline scripts
         articleNewText += linkTxt;
