@@ -156,7 +156,7 @@ body { background: #242525; }
 .gdarticle { background: initial;}
 
 .gdarticlebody img{
-  background: white;
+  background: white !important;
 }
 </style>
 <script>
