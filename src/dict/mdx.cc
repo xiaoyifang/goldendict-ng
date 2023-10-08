@@ -908,7 +908,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
     QString linkType = allLinksMatch.captured( 1 ).toLower();
     QString newLink;
 
-    if ( !linkType.isEmpty() && linkType.at( 0 ) == 'a' ) {
+    if ( linkType.compare( "a" ) == 0 || linkType.compare( "area" ) == 0 ) {
       newLink = linkTxt;
 
       QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
@@ -956,8 +956,8 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       else
         newLink = linkTxt.replace( RX::Mdx::stylesRe2, R"(\1"bres://)" + id + R"(/\2")" );
     }
-    else if ( linkType.compare( "script" ) == 0 || linkType.compare( "img" ) == 0
-              || linkType.compare( "source" ) == 0 ) {
+    else {
+      //linkType in ("script","img","source","audio","video")
       // javascripts and images
       QRegularExpressionMatch match = RX::Mdx::inlineScriptRe.match( linkTxt );
       if ( linkType.at( 1 ) == 'c' // "script" tag
@@ -972,6 +972,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         continue;
       }
       else {
+        //audio ,video ,html5 tags fall here.
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
@@ -992,6 +993,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
     }
+
     if ( !newLink.isEmpty() ) {
       articleNewText += newLink;
     }
