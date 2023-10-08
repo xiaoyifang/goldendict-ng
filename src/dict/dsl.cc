@@ -840,61 +840,12 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
-      vector< char > imgdata;
-      bool resize = false;
+      string maxWidthStyle = " style=\"max-width:100%;\" ";
 
-      try {
-        File::loadFromFile( n, imgdata );
-      }
-      catch ( File::exCantOpen & ) {
-        try {
-          n = resourceDir2 + filename;
-          File::loadFromFile( n, imgdata );
-        }
-        catch ( File::exCantOpen & ) {
-          try {
-            n = getContainingFolder().toStdString() + Utils::Fs::separator() + filename;
-            File::loadFromFile( n, imgdata );
-          }
-          catch ( File::exCantOpen & ) {
-            // Try reading from zip file
-            if ( resourceZip.isOpen() ) {
-              QMutexLocker _( &resourceZipMutex );
-              resourceZip.loadFile( Utf8::decode( filename ), imgdata );
-            }
-          }
-        }
-      }
-      catch ( ... ) {
-      }
-
-      if ( !imgdata.empty() ) {
-        if ( Filetype::isNameOfSvg( filename ) ) {
-          // We don't need to render svg file now
-
-          QSvgRenderer svg;
-          svg.load( QByteArray::fromRawData( imgdata.data(), imgdata.size() ) );
-          if ( svg.isValid() ) {
-            QSize imgsize = svg.defaultSize();
-            resize        = maxPictureWidth > 0 && imgsize.width() > maxPictureWidth;
-          }
-        }
-        else {
-          QImage img = QImage::fromData( (unsigned char *)&imgdata.front(), imgdata.size() );
-
-          resize = maxPictureWidth > 0 && img.width() > maxPictureWidth;
-        }
-      }
-
-      if ( resize ) {
-        string link( url.toEncoded().data() );
-        link.replace( 0, 4, "gdpicture" );
-        result += string( "<a href=\"" ) + link + "\">" + "<img src=\"" + url.toEncoded().data() + "\" alt=\""
-          + Html::escape( filename ) + "\"" + "width=\"" + QString::number( maxPictureWidth ).toStdString() + "\"/>"
-          + "</a>";
-      }
-      else
-        result += string( "<img src=\"" ) + url.toEncoded().data() + "\" alt=\"" + Html::escape( filename ) + "\"/>";
+      string link( url.toEncoded().data() );
+      link.replace( 0, 4, "gdpicture" );
+      result += string( "<a href=\"" ) + link + "\">" + "<img src=\"" + url.toEncoded().data() + "\" " + maxWidthStyle
+        + " alt=\"" + Html::escape( filename ) + "\"/>" + "</a>";
     }
     else if ( Filetype::isNameOfVideo( filename ) ) {
       QUrl url;
