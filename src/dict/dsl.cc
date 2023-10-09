@@ -169,9 +169,7 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  DslDictionary( string const & id,
-                 string const & indexFile,
-                 vector< string > const & dictionaryFiles );
+  DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   void deferredInit() override;
 
@@ -283,9 +281,7 @@ private:
   friend class DslFTSResultsRequest;
 };
 
-DslDictionary::DslDictionary( string const & id,
-                              string const & indexFile,
-                              vector< string > const & dictionaryFiles ):
+DslDictionary::DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -838,8 +834,8 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 
       string maxWidthStyle = " style=\"max-width:100%;\" ";
 
-      result +=  "<img src=\"" + url.toEncoded().data() + "\" " + maxWidthStyle
-        + " alt=\"" + Html::escape( filename ) + "\"/>";
+      result +=
+        string("<img src=\"") + url.toEncoded().data() + "\" " + maxWidthStyle + " alt=\"" + Html::escape( filename ) + "\"/>";
     }
     else if ( Filetype::isNameOfVideo( filename ) ) {
       QUrl url;

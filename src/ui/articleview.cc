@@ -964,7 +964,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   Contexts contexts( contexts_ );
 
-  else if ( url.scheme().compare( "ankisearch" ) == 0 ) {
+  if ( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
     return;
   }
