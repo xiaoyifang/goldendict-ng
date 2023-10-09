@@ -1661,7 +1661,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href$=".wma"],
 .mwiki #bodyContent a.external[href$=".WMA"],
 .mwiki .link-audio {
-  background: url("audio.png") center right no-repeat;
+  background: url("qrc:///icons/audio.png") center right no-repeat;
   padding-right: 1em;
 }
 .mwiki #bodyContent a.external[href$=".ogm"],
@@ -1673,7 +1673,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href$=".mpg"],
 .mwiki #bodyContent a.external[href$=".MPG"],
 .mwiki .link-video {
-  background: url("video.png") center right no-repeat;
+  background: url("qrc:///icons/video.png") center right no-repeat;
   padding-right: 1em;
 }
 .mwiki #bodyContent a.external[href$=".pdf"],
@@ -1683,7 +1683,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href*=".pdf?"],
 .mwiki #bodyContent a.external[href*=".PDF?"],
 .mwiki .link-document {
-  background: url("document.png") center right no-repeat;
+  background: url("qrc:///icons/document.png") center right no-repeat;
   padding-right: 12px;
 }
 
@@ -2980,8 +2980,7 @@ table#sv-hooks,
 /****** Wiktionary-specific excerpts *********/
 
 .mwiki .audiolink a {
-  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Loudspeaker.svg/16px-Loudspeaker.svg.png")
-    center left no-repeat !important;
+  background: url("qrc:///icons/audio.png") center left no-repeat !important;
   padding-left: 20px !important;
   padding-right: 0 !important;
 }
