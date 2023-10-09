@@ -1160,9 +1160,6 @@ Class load()
   if ( !root.namedItem( "editDictionaryCommandLine" ).isNull() )
     c.editDictionaryCommandLine = root.namedItem( "editDictionaryCommandLine" ).toElement().text();
 
-  if ( !root.namedItem( "maxPictureWidth" ).isNull() )
-    c.maxPictureWidth = root.namedItem( "maxPictureWidth" ).toElement().text().toInt();
-
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
     if ( value != 0 ) // 0 is invalid value for our purposes
@@ -2170,10 +2167,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "editDictionaryCommandLine" );
     opt.appendChild( dd.createTextNode( c.editDictionaryCommandLine ) );
-    root.appendChild( opt );
-
-    opt = dd.createElement( "maxPictureWidth" );
-    opt.appendChild( dd.createTextNode( QString::number( c.maxPictureWidth ) ) );
     root.appendChild( opt );
 
     opt = dd.createElement( "maxHeadwordSize" );

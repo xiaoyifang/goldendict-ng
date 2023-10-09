@@ -58,7 +58,6 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
   hunspell( cfg.hunspell ),
   transliteration( cfg.transliteration ),
   exceptionText( "Load did not finish" ), // Will be cleared upon success
-  maxPictureWidth( cfg.maxPictureWidth ),
   maxHeadwordSize( cfg.maxHeadwordSize ),
   maxHeadwordToExpand( cfg.maxHeadwordsToExpand )
 {
@@ -168,7 +167,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
   addDicts( Stardict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
   addDicts( Lsa::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts(
-    Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxPictureWidth, maxHeadwordSize ) );
+    Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordSize ) );
   addDicts( DictdFiles::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Xdxf::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Sdict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );

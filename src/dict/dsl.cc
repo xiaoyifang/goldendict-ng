@@ -163,7 +163,6 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
 
   int optionalPartNom;
   quint8 articleNom;
-  int maxPictureWidth;
 
   wstring currentHeadword;
   string resourceDir1, resourceDir2;
@@ -172,8 +171,7 @@ public:
 
   DslDictionary( string const & id,
                  string const & indexFile,
-                 vector< string > const & dictionaryFiles,
-                 int maxPictureWidth_ );
+                 vector< string > const & dictionaryFiles );
 
   void deferredInit() override;
 
@@ -287,16 +285,14 @@ private:
 
 DslDictionary::DslDictionary( string const & id,
                               string const & indexFile,
-                              vector< string > const & dictionaryFiles,
-                              int maxPictureWidth_ ):
+                              vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
   dz( 0 ),
   deferredInitRunnableStarted( false ),
   optionalPartNom( 0 ),
-  articleNom( 0 ),
-  maxPictureWidth( maxPictureWidth_ )
+  articleNom( 0 )
 {
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
@@ -1653,7 +1649,6 @@ sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const &
 vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
                                                       string const & indicesDir,
                                                       Dictionary::Initializing & initializing,
-                                                      int maxPictureWidth,
                                                       unsigned int maxHeadwordSize )
 
 {
@@ -2113,7 +2108,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       } // if need to rebuild
 
-      dictionaries.push_back( std::make_shared< DslDictionary >( dictId, indexFile, dictFiles, maxPictureWidth ) );
+      dictionaries.push_back( std::make_shared< DslDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
       gdWarning( "DSL dictionary reading failed: %s:%u, error: %s\n", fileName.c_str(), atLine, e.what() );
