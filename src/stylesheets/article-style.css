@@ -10,8 +10,15 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.ipa, .phon, .phone, .pron, .audio-gb, .audio-us {
-  font-family: 'Segoe UI', 'Lucida Grande', 'Lucida Sans', 'Droid Sans Mono', 'Droid Sans', 'Arial Unicode MS', "Charis SIL", 'Open Sans', Roboto, Helvetica, Arial, normal;
+.ipa,
+.phon,
+.phone,
+.pron,
+.audio-gb,
+.audio-us {
+  font-family: "Segoe UI", "Lucida Grande", "Lucida Sans", "Droid Sans Mono",
+    "Droid Sans", "Arial Unicode MS", "Charis SIL", "Open Sans", Roboto,
+    Helvetica, Arial, normal;
 }
 
 h1,
