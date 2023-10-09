@@ -862,9 +862,6 @@ void ArticleView::linkHovered( const QString & link )
   else if ( url.scheme() == "gdtts" ) {
     msg = tr( "TTS Voice" );
   }
-  else if ( url.scheme() == "gdpicture" ) {
-    msg = tr( "Picture" );
-  }
   else if ( url.scheme() == "gdvideo" ) {
     if ( url.path().isEmpty() ) {
       msg = tr( "Video" );
@@ -967,8 +964,6 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   Contexts contexts( contexts_ );
 
-  if ( url.scheme().compare( "gdpicture" ) == 0 )
-    load( url );
   else if ( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
     return;

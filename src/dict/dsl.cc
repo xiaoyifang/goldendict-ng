@@ -842,10 +842,8 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
 
       string maxWidthStyle = " style=\"max-width:100%;\" ";
 
-      string link( url.toEncoded().data() );
-      link.replace( 0, 4, "gdpicture" );
-      result += string( "<a href=\"" ) + link + "\">" + "<img src=\"" + url.toEncoded().data() + "\" " + maxWidthStyle
-        + " alt=\"" + Html::escape( filename ) + "\"/>" + "</a>";
+      result +=  "<img src=\"" + url.toEncoded().data() + "\" " + maxWidthStyle
+        + " alt=\"" + Html::escape( filename ) + "\"/>";
     }
     else if ( Filetype::isNameOfVideo( filename ) ) {
       QUrl url;
