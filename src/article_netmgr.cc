@@ -292,13 +292,6 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
     }
   }
 
-  if ( url.scheme() == "gdpicture" ) {
-    contentType = "text/html";
-    QUrl imgUrl( url );
-    imgUrl.setScheme( "bres" );
-    return articleMaker.makePicturePage( imgUrl.toEncoded().data() );
-  }
-
   return sptr< Dictionary::DataRequest >();
 }
 
