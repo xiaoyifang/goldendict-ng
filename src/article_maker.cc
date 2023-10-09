@@ -156,7 +156,7 @@ body { background: #242525; }
 .gdarticle { background: initial;}
 
 .gdarticlebody img{
-  background: white;
+  background: white !important;
 }
 </style>
 <script>
@@ -444,9 +444,8 @@ string ArticleMaker::makeEmptyPageHtml() const
 
 sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & url ) const
 {
-  string const result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
-    + R"lit(<a href="javascript: if(history.length>2) history.go(-1)">)lit" + R"(<img src=")" + url + R"(" /></a>)"
-    + "</body></html>";
+  string const result =
+    makeHtmlHeader( tr( "(picture)" ), QString(), true ) + R"(<img src=")" + url + R"(" />)" + "</body></html>";
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 

@@ -41,20 +41,12 @@ jobs:
        
       - name: install deps on macos
         run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja python
+          brew install cmake ninja
           brew install automake
           brew install autoconf
           brew install libtool
           brew install opencc
-          # brew install speex
-          brew install wavpack
           brew install automake git lame libass libtool shtool texi2html theora wget xvid nasm
-          # brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
-          
-          # brew tap homebrew-ffmpeg/ffmpeg
-          # brew options homebrew-ffmpeg/ffmpeg/ffmpeg 
-          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
 
           brew install libiconv
           brew install lzo bzip2
@@ -76,8 +68,8 @@ jobs:
           cmake -B build -DCMAKE_BUILD_TYPE=release
           cmake --build build --config release
           sudo make install
-          find /usr/local -name libzstd.1.dylib 
-          find /usr/local -name liblzma.5.dylib
+          # find /usr/local -name libzstd.1.dylib 
+          # find /usr/local -name liblzma.5.dylib
       - name: version-file
         shell: bash
         env:

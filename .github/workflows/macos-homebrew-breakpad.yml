@@ -42,8 +42,7 @@ jobs:
        
       - name: install deps on macos
         run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja python
+          brew install cmake ninja
           brew install automake
           brew install autoconf
           brew install libtool
@@ -51,11 +50,7 @@ jobs:
           brew install speex
           brew install wavpack
           brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
-          brew install speex
           
-          brew tap homebrew-ffmpeg/ffmpeg
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
-
           brew install libiconv
           brew install lzo bzip2
           brew install libogg
@@ -105,7 +100,7 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=use_breakpad
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=use_breakpad  CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
           make -j8
           
       - name: package

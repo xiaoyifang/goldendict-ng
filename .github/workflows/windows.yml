@@ -3,21 +3,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: 
-  # workflow_run:
-  #   workflows: [AutoTag]
-  #   types: [completed]
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - master
-      # - staged
-    paths-ignore:
-      - 'docs/**'
-      # - ".github/**"
-      - "howto/**"
-      - "*.md"
-      - ".clang-format"      
+  # push:
+  #   branches:
+  #     - dev
+  #     - master
+  #   paths-ignore:
+  #     - 'docs/**'
+  #     - "howto/**"
+  #     - "*.md"
+  #     - ".clang-format"      
 
 jobs:
   build:
