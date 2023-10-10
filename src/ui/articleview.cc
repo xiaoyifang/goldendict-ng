@@ -357,13 +357,13 @@ void ArticleView::showDefinition( QString const & word,
   if ( mutedDicts.size() )
     Utils::Url::addQueryItem( req, "muted", mutedDicts );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
 
   load( req );
+
+  // Update headwords history
+  emit sendWordToHistory( word );
 
   //QApplication::setOverrideCursor( Qt::WaitCursor );
   webview->setCursor( Qt::WaitCursor );
@@ -401,9 +401,6 @@ void ArticleView::showDefinition( QString const & word,
   if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
 
@@ -411,6 +408,9 @@ void ArticleView::showDefinition( QString const & word,
   searchPanel->highlightAll->setChecked( false );
 
   load( req );
+
+  // Update headwords history
+  emit sendWordToHistory( word );
 
   webview->setCursor( Qt::WaitCursor );
 }
