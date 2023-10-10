@@ -127,7 +127,8 @@ protected:
 
 enum class ResourceType {
   UNTITLE,
-  WELCOME
+  WELCOME,
+  BLANK
 };
 
 class ArticleNetworkAccessManager: public QNetworkAccessManager

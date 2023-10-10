@@ -190,9 +190,11 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
 {
   switch ( resourceType ) {
     case ResourceType::UNTITLE:
-      return articleMaker.makeEmptyPageHtml();
+      return articleMaker.makeUntitleHtml();
     case ResourceType::WELCOME:
-      return articleMaker.makeWelcomePageHtml();
+      return articleMaker.makeWelcomeHtml();
+    case ResourceType::BLANK:
+      return articleMaker.makeBlankHtml();
     default:
       return {};
   }
