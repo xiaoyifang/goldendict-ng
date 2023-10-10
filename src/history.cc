@@ -73,13 +73,11 @@ void History::addItem( Item const & item )
     return;
   }
 
+  //from the normal operation ,there should be only one item in the history at a time.
   if ( items.contains( item ) )
-    items.removeAll( item );
+    items.removeOne( item );
 
-  // Special case: if this items differs from the previous one only by group,
-  // remove it too.  The groupid has not used at all.
-
-
+  //TODO : The groupid has not used at all.
   items.push_front( item );
 
   ensureSizeConstraints();
