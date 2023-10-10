@@ -359,14 +359,12 @@ void ArticleView::showDefinition( QString const & word,
 
   // Any search opened is probably irrelevant now
   closeSearch();
-
+  //QApplication::setOverrideCursor( Qt::WaitCursor );
+  webview->setCursor( Qt::WaitCursor );
   load( req );
 
   // Update headwords history
   emit sendWordToHistory( word );
-
-  //QApplication::setOverrideCursor( Qt::WaitCursor );
-  webview->setCursor( Qt::WaitCursor );
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -406,13 +404,12 @@ void ArticleView::showDefinition( QString const & word,
 
   // Clear highlight all button selection
   searchPanel->highlightAll->setChecked( false );
+  webview->setCursor( Qt::WaitCursor );
 
   load( req );
 
   // Update headwords history
   emit sendWordToHistory( word );
-
-  webview->setCursor( Qt::WaitCursor );
 }
 
 void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
