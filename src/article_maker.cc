@@ -468,6 +468,10 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
   }
   return false;
 }
+string ArticleMaker::makeBlankHtml() const
+{
+  return makeHtmlHeader( "", QString(), true ) + "</body></html>";
+}
 
 //////// ArticleRequest
 

@@ -2104,7 +2104,6 @@ bool ArticleView::closeSearch()
   else if ( ftsSearchIsOpened ) {
     firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsPosition       = 0;
     ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
@@ -2305,6 +2304,12 @@ void ArticleView::on_ftsSearchPrevious_clicked()
 void ArticleView::on_ftsSearchNext_clicked()
 {
   performFtsFindOperation( false );
+}
+void ArticleView::clearContent()
+{
+  auto html = articleNetMgr.getHtml( ResourceType::BLANK );
+
+  webview->setHtml( QString::fromStdString( html ) );
 }
 
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):

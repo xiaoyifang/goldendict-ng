@@ -1017,6 +1017,7 @@ void ScanPopup::hideWindow()
   ui.translateBox->setPopupEnabled( false );
   ui.translateBox->translateLine()->deselect();
   hide();
+  definition->clearContent();
 }
 
 void ScanPopup::interceptMouse()

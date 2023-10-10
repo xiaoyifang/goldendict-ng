@@ -193,6 +193,8 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
       return articleMaker.makeEmptyPageHtml();
     case ResourceType::WELCOME:
       return articleMaker.makeWelcomePageHtml();
+    case ResourceType::BLANK:
+      return articleMaker.makeBlankHtml();
     default:
       return {};
   }
