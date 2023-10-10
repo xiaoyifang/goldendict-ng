@@ -65,11 +65,10 @@ History::Item History::getItem( int index )
 
 void History::addItem( Item const & item )
 {
-  // qDebug() << "adding item " << item.word << ", enabled=" << enabled();
   if ( !enabled() )
     return;
 
-  if ( (unsigned)item.word.size() > getMaxItemLength() || item.word.isEmpty() ) {
+  if ( item.word.isEmpty() ) {
     // The search looks bogus. Don't save it.
     return;
   }
@@ -78,10 +77,8 @@ void History::addItem( Item const & item )
     items.removeAll( item );
 
   // Special case: if this items differs from the previous one only by group,
-  // remove it too.
+  // remove it too.  The groupid has not used at all.
 
-  if ( items.size() && items.first().word == item.word )
-    items.pop_front();
 
   items.push_front( item );
 
