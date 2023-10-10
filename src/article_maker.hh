@@ -63,8 +63,8 @@ public:
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
   static bool adjustFilePath( QString & fileName );
-  string makeEmptyPageHtml() const;
-  string makeWelcomePageHtml() const;
+  string makeUntitleHtml() const;
+  string makeWelcomeHtml() const;
   string makeBlankHtml() const;
 
 private:
