@@ -880,12 +880,11 @@ void ArticleRequest::stemmedSearchFinished()
     continueMatching = true;
   }
 
-  if ( !continueMatching )
+  if ( !continueMatching ) {
     footer += "</body></html>";
-
-  {
-    appendString( footer );
   }
+
+  appendString( footer );
 
   if ( continueMatching )
     update();
@@ -902,8 +901,6 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     if ( lastGoodCompoundResult.size() ) // We have something to append
     {
-      //      GD_DPRINTF( "Appending\n" );
-
       if ( !firstCompoundWasFound ) {
         // Append the beginning
         footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
