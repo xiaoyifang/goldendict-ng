@@ -38,17 +38,16 @@ QString Utils::Url::getSchemeAndHost( QUrl const & url )
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
 {
   if ( noResult ) {
-    QPalette pal( widget->palette() );
-    //    #febb7d
-    QRgb rgb = 0xfebb7d;
-    pal.setColor( QPalette::Base, QColor( rgb ) );
-    widget->setAutoFillBackground( true );
-    widget->setPalette( pal );
+    auto font = widget->font();
+    font.setItalic(true);
+
+    widget->setFont( font );
   }
   else {
-    QPalette pal( widget->style()->standardPalette() );
-    widget->setAutoFillBackground( true );
-    widget->setPalette( pal );
+    auto font = widget->font();
+    font.setItalic(false);
+
+    widget->setFont( font );
   }
 }
 
