@@ -3783,11 +3783,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation type="unfinished">Force the word to be translated in scanpopup</translation>
+      <translation>Erzwinge das Wort im ScanPopUp zu übersetzen</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow</translation>
+      <translation>Erzwinge das Wort im Hauptfenster zu übersetzen</translation>
     </message>
   </context>
   <context>
