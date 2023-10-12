@@ -26,13 +26,15 @@ const static std::string finish_mark = std::string( "dehsinif" );
 bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 {
   try {
-    Xapian::WritableDatabase db( dict->ftsIndexName() );
+    Xapian::WritableDatabase const db( dict->ftsIndexName() );
     auto docid    = db.get_lastdocid();
     auto document = db.get_document( docid );
 
-    qDebug() << document.get_data().c_str();
+    string const lastDoc   = document.get_data();
+    bool const notFinished = lastDoc != finish_mark;
+    qDebug() << dict->ftsIndexName().c_str() << document.get_data().c_str() << notFinished;
     //use a special document to mark the end of the index.
-    return document.get_data() != finish_mark;
+    return notFinished;
   }
   catch ( Xapian::Error & e ) {
     qWarning() << e.get_description().c_str();
@@ -47,7 +49,7 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
-  QMutexLocker _( &dict->getFtsMutex() );
+  QMutexLocker const _( &dict->getFtsMutex() );
 
   //check the index again.
   if ( dict->haveFTSIndex() )
