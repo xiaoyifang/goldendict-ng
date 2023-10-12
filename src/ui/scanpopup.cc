@@ -893,8 +893,7 @@ void ScanPopup::prefixMatchFinished()
       // Reset the noResults mark if it's on right now
       auto translateLine = ui.translateBox->translateLine();
 
-      Utils::Widget::setNoResultColor( translateLine,
-                                       _results.isEmpty() );
+      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
       ui.translateBox->setModel( _results );
     }
   }

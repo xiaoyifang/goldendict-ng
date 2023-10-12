@@ -39,13 +39,13 @@ void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
 {
   if ( noResult ) {
     auto font = widget->font();
-    font.setItalic(true);
+    font.setItalic( true );
 
     widget->setFont( font );
   }
   else {
     auto font = widget->font();
-    font.setItalic(false);
+    font.setItalic( false );
 
     widget->setFont( font );
   }
