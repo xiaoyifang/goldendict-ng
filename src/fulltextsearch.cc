@@ -67,7 +67,7 @@ void Indexing::timeout()
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
     //Finished, clear the msg.
-    if(dictionary->haveFTSIndex()){
+    if ( dictionary->haveFTSIndex() ) {
       continue;
     }
     auto newProgress = dictionary->getIndexingFtsProgress();
