@@ -1067,14 +1067,15 @@ QString DslDictionary::getMainFilename()
 void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
 
   if ( haveFTSIndex() )
     return;
 
-  if ( ensureInitDone().size() )
+  if ( !ensureInitDone().empty() )
     return;
 
   if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
