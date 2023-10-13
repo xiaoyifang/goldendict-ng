@@ -190,9 +190,11 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
 {
   switch ( resourceType ) {
     case ResourceType::UNTITLE:
-      return articleMaker.makeEmptyPageHtml();
+      return articleMaker.makeUntitleHtml();
     case ResourceType::WELCOME:
-      return articleMaker.makeWelcomePageHtml();
+      return articleMaker.makeWelcomeHtml();
+    case ResourceType::BLANK:
+      return articleMaker.makeBlankHtml();
     default:
       return {};
   }
@@ -260,9 +262,10 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
        && url.path().size() ) {
-    //GD_DPRINTF( "Get %s\n", req.url().host().toLocal8Bit().data() );
-    //GD_DPRINTF( "Get %s\n", req.url().path().toLocal8Bit().data() );
 
+
+    QMimeType mineType = db.mimeTypeForUrl( url );
+    contentType        = mineType.name();
     string id = url.host().toStdString();
 
     bool search = ( id == "search" );

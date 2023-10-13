@@ -246,7 +246,7 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
   return result;
 }
 
-string ArticleMaker::makeWelcomePageHtml() const
+string ArticleMaker::makeWelcomeHtml() const
 {
   string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
   //tooltip
@@ -356,7 +356,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
   if ( groupId == Instances::Group::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
-      string welcome                           = makeWelcomePageHtml();
+      string welcome                           = makeWelcomeHtml();
       sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
       r->appendString( welcome );
@@ -430,14 +430,14 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( QString const
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 {
-  string result                            = makeEmptyPageHtml();
+  string result                            = makeUntitleHtml();
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
   r->appendString( result );
   return r;
 }
 
-string ArticleMaker::makeEmptyPageHtml() const
+string ArticleMaker::makeUntitleHtml() const
 {
   return makeHtmlHeader( tr( "(untitled)" ), QString(), true ) + "</body></html>";
 }
@@ -467,6 +467,10 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
     }
   }
   return false;
+}
+string ArticleMaker::makeBlankHtml() const
+{
+  return makeHtmlHeader( "", QString(), true ) + "</body></html>";
 }
 
 //////// ArticleRequest
@@ -876,12 +880,11 @@ void ArticleRequest::stemmedSearchFinished()
     continueMatching = true;
   }
 
-  if ( !continueMatching )
+  if ( !continueMatching ) {
     footer += "</body></html>";
-
-  {
-    appendString( footer );
   }
+
+  appendString( footer );
 
   if ( continueMatching )
     update();
@@ -898,8 +901,6 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     if ( lastGoodCompoundResult.size() ) // We have something to append
     {
-      //      GD_DPRINTF( "Appending\n" );
-
       if ( !firstCompoundWasFound ) {
         // Append the beginning
         footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"

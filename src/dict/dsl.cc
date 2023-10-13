@@ -1067,14 +1067,15 @@ QString DslDictionary::getMainFilename()
 void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
 
   if ( haveFTSIndex() )
     return;
 
-  if ( ensureInitDone().size() )
+  if ( !ensureInitDone().empty() )
     return;
 
   if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
@@ -1150,10 +1151,11 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     size_t begin = pos;
 
     pos = articleData.find_first_of( U"\n\r", begin );
+    if ( pos == wstring::npos )
+      pos = articleData.size();
 
     if ( articleHeadword.empty() ) {
       // Process the headword
-
       articleHeadword = wstring( articleData, begin, pos - begin );
 
       if ( insidedCard && !articleHeadword.empty() && isDslWs( articleHeadword[ 0 ] ) ) {
@@ -1195,12 +1197,12 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     if ( articleData[ pos ] == '\r' )
       ++pos;
 
-    if ( pos != articleData.size() ) {
+    if ( pos < articleData.size() ) {
       if ( articleData[ pos ] == '\n' )
         ++pos;
     }
 
-    if ( pos == articleData.size() ) {
+    if ( pos >= articleData.size() ) {
       // Ok, it's end of article
       break;
     }

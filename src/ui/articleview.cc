@@ -357,16 +357,14 @@ void ArticleView::showDefinition( QString const & word,
   if ( mutedDicts.size() )
     Utils::Url::addQueryItem( req, "muted", mutedDicts );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
-
-  load( req );
-
   //QApplication::setOverrideCursor( Qt::WaitCursor );
   webview->setCursor( Qt::WaitCursor );
+  load( req );
+
+  // Update headwords history
+  emit sendWordToHistory( word );
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -401,18 +399,17 @@ void ArticleView::showDefinition( QString const & word,
   if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
 
   // Clear highlight all button selection
   searchPanel->highlightAll->setChecked( false );
+  webview->setCursor( Qt::WaitCursor );
 
   load( req );
 
-  webview->setCursor( Qt::WaitCursor );
+  // Update headwords history
+  emit sendWordToHistory( word );
 }
 
 void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
@@ -2104,7 +2101,6 @@ bool ArticleView::closeSearch()
   else if ( ftsSearchIsOpened ) {
     firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsPosition       = 0;
     ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
@@ -2305,6 +2301,12 @@ void ArticleView::on_ftsSearchPrevious_clicked()
 void ArticleView::on_ftsSearchNext_clicked()
 {
   performFtsFindOperation( false );
+}
+void ArticleView::clearContent()
+{
+  auto html = articleNetMgr.getHtml( ResourceType::BLANK );
+
+  webview->setHtml( QString::fromStdString( html ) );
 }
 
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):

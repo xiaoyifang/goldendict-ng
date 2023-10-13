@@ -976,17 +976,17 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
-          if ( linkType.at( 1 ) == 'o' ) // "source" tag
-          {
-            QString filename = match.captured( 3 );
-            QString newName  = getCachedFileName( filename );
-            newName.replace( '\\', '/' );
-            newText = match.captured( 1 ) + match.captured( 2 ) + "file:///" + newName + match.captured( 2 );
+          QString scheme;
+          // "source" tag
+          if ( linkType.compare( "source" ) == 0 ) {
+            scheme = "gdvideo://";
           }
           else {
-            newText = match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 )
-              + match.captured( 2 );
+            scheme = "bres://";
           }
+          newText =
+            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else
