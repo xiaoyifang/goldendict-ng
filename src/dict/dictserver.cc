@@ -62,9 +62,8 @@ bool connectToServer( QTcpSocket & socket, QString const & url, QString & errorS
       return false;
 
     socket.connectToHost( serverUrl.host(), port );
-
     if ( socket.state() != QTcpSocket::ConnectedState ) {
-      if ( !socket.waitForConnected( 5000 ) )
+      if ( !socket.waitForConnected( 100 ) )
         break;
     }
 
@@ -335,6 +334,7 @@ void DictServerDictionary::getServerDatabases()
   if ( !errorString.isEmpty() )
     gdWarning( "Retrieving databases from \"%s\" fault: %s\n", getName().c_str(), errorString.toUtf8().data() );
   delete socket;
+  socket = nullptr;
 }
 
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
@@ -482,7 +482,7 @@ void DictServerWordSearchRequest::run()
       if ( count ) {
         QMutexLocker _( &dataMutex );
         for ( int x = 0; x < count; x++ )
-          matches.push_back( gd::toWString( matchesList.at( x ) ) );
+          matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
       }
     }
   }
@@ -496,6 +496,7 @@ void DictServerWordSearchRequest::run()
     disconnectFromServer( *socket );
 
   delete socket;
+  socket = nullptr;
   if ( !Utils::AtomicInt::loadAcquire( isCancelled ) )
     finish();
 }
@@ -503,8 +504,6 @@ void DictServerWordSearchRequest::run()
 void DictServerWordSearchRequest::cancel()
 {
   isCancelled.ref();
-
-  QMutexLocker _( &dataMutex );
   finish();
 }
 
@@ -793,6 +792,7 @@ void DictServerArticleRequest::run()
     disconnectFromServer( *socket );
 
   delete socket;
+  socket = nullptr;
   if ( !Utils::AtomicInt::loadAcquire( isCancelled ) )
     finish();
 }
@@ -801,7 +801,6 @@ void DictServerArticleRequest::cancel()
 {
   isCancelled.ref();
 
-  QMutexLocker _( &dataMutex );
   finish();
 }
 
