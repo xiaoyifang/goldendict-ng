@@ -465,7 +465,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>依文件夾自動分組失敗</translation>
+      <translation>按資料夾自動分組失敗。</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
@@ -473,7 +473,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>您確定要依據語言來產生群組嗎？</translation>
+      <translation>您確定要根據包含的資料夾產生一組群組嗎？</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
@@ -661,7 +661,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation>打開索引文件夾</translation>
+      <translation>打開索引資料夾</translation>
     </message>
   </context>
   <context>
@@ -1064,11 +1064,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>創建基於文件夾的群組</translation>
+      <translation>建立基於資料夾的群組。</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>按文件夾分組</translation>
+      <translation>按資料夾分組</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
@@ -3745,7 +3745,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>將調試消息保存到配置文件夾中的 gd_log.txt。</translation>
+      <translation>將偵錯訊息儲存到 config 資料夾中的 gd_log.txt。</translation>
     </message>
     <message>
       <source>Reset window state.</source>
