@@ -118,7 +118,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     }
   }
 
-  sptr< Dictionary::DataRequest > dr = getResource( url, contentType );
+  auto dr = getResource( url, contentType );
 
   if ( dr.get() )
     return new ArticleResourceReply( this, req, dr, contentType );
@@ -129,7 +129,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   //if not external url,can be blocked from here. no need to continue execute the following code.
   //such as bres://upload.wikimedia....  etc .
   if ( !Utils::isExternalLink( url ) ) {
-    gdWarning( "Blocking element \"%s\" as built-in link ", req.url().toEncoded().data() );
+    gdWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
     return new BlockedNetworkReply( this );
   }
 
@@ -144,7 +144,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     if ( !url.host().endsWith( refererUrl.host() )
          && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
          && !url.scheme().startsWith( "data" ) ) {
-      gdWarning( "Blocking element \"%s\" due to not same domain", url.toEncoded().data() );
+      gdWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
 
       return new BlockedNetworkReply( this );
     }
@@ -153,7 +153,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   if ( req.url().scheme() == "file" ) {
     // Check file presence and adjust path if necessary
     QString fileName = req.url().toLocalFile();
-    if ( req.url().host().isEmpty() && articleMaker.adjustFilePath( fileName ) ) {
+    if ( req.url().host().isEmpty() && ArticleMaker::adjustFilePath( fileName ) ) {
       QUrl newUrl( req.url() );
       QUrl localUrl = QUrl::fromLocalFile( fileName );
 
@@ -236,21 +236,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     // Unpack contexts
 
-    QMap< QString, QString > contexts;
-
-    QString contextsEncoded = Utils::Url::queryItemValue( url, "contexts" );
-
-    if ( contextsEncoded.size() ) {
-      QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
-
-      QBuffer buf( &ba );
-
-      buf.open( QBuffer::ReadOnly );
-
-      QDataStream stream( &buf );
-
-      stream >> contexts;
-    }
+    QString const contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
+    QMap< QString, QString > const contexts = Utils::str2map( contextsEncoded );
 
     // See for ignore diacritics
 
@@ -289,13 +276,13 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
           }
           catch ( std::exception & e ) {
             gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
-            return sptr< Dictionary::DataRequest >();
+            return {};
           }
         }
     }
   }
 
-  return sptr< Dictionary::DataRequest >();
+  return {};
 }
 
 ArticleResourceReply::ArticleResourceReply( QObject * parent,
@@ -356,12 +343,12 @@ void ArticleResourceReply::reqFinished()
 
 qint64 ArticleResourceReply::bytesAvailable() const
 {
-  qint64 avail = req->dataSize();
+  qint64 const avail = req->dataSize();
 
   if ( avail < 0 )
     return 0;
 
-  qint64 availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
+  qint64 const availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
   if ( availBytes == 0 && !req->isFinished() ) {
     return 10240;
   }
@@ -382,17 +369,17 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   if ( maxSize == 0 )
     return 0;
 
-  bool finished = req->isFinished();
+  bool const finished = req->isFinished();
 
-  qint64 avail = req->dataSize();
+  qint64 const avail = req->dataSize();
 
   if ( avail < 0 )
     return finished ? -1 : 0;
 
 
-  qint64 left = avail - alreadyRead;
+  qint64 const left = avail - alreadyRead;
 
-  qint64 toRead = maxSize < left ? maxSize : left;
+  qint64 const toRead = maxSize < left ? maxSize : left;
   if ( !toRead && finished )
     return -1;
   GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
@@ -457,15 +444,15 @@ LocalSchemeHandler::LocalSchemeHandler( ArticleNetworkAccessManager & articleNet
 
 void LocalSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 {
-  QUrl url = requestJob->requestUrl();
+  QUrl const url = requestJob->requestUrl();
   QNetworkRequest request;
   request.setUrl( url );
 
   //all the url reached here must be either gdlookup or bword scheme.
-  auto [ valid, word ] = Utils::Url::getQueryWord( url );
+  auto [ schemeValid, word ] = Utils::Url::getQueryWord( url );
   // or the condition can be (!queryWord.first || word.isEmpty())
   // ( queryWord.first && word.isEmpty() ) is only part of the above condition.
-  if ( valid && word.isEmpty() ) {
+  if ( schemeValid && word.isEmpty() ) {
     // invalid gdlookup url.
     return;
   }

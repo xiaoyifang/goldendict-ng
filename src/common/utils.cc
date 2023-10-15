@@ -7,8 +7,23 @@
 #ifdef _MSC_VER
   #include <stub_msvc.h>
 #endif
+#include <QBuffer>
+
 using std::string;
 namespace Utils {
+QMap< QString, QString > str2map( const QString & contextsEncoded )
+{
+  QMap< QString, QString > contexts;
+
+  if ( contextsEncoded.size() ) {
+    QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
+    QBuffer buf( &ba );
+    buf.open( QBuffer::ReadOnly );
+    QDataStream stream( &buf );
+    stream >> contexts;
+  }
+  return contexts;
+}
 //some str has \0 in the middle of the string. return the string before the \0
 std::string c_string( const QString & str )
 {
