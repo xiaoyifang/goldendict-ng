@@ -236,17 +236,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     // Unpack contexts
 
-    QMap< QString, QString > contexts;
-
-    QString contextsEncoded = Utils::Url::queryItemValue( url, "contexts" );
-
-    if ( contextsEncoded.size() ) {
-      QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
-      QBuffer buf( &ba );
-      buf.open( QBuffer::ReadOnly );
-      QDataStream stream( &buf );
-      stream >> contexts;
-    }
+    QString const contextsEncoded = Utils::Url::queryItemValue( url, "contexts" );
+    QMap< QString, QString > const contexts = Utils::str2map(contextsEncoded);
 
     // See for ignore diacritics
 
