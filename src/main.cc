@@ -410,8 +410,8 @@ int main( int argc, char ** argv )
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme
-                          | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalScheme | QWebEngineUrlScheme::LocalAccessAllowed
+                          | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 

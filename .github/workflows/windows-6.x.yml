@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [6.5.2 ]
+        qt_ver: [6.5.2,6.6.0 ]
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
