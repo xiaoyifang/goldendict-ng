@@ -236,8 +236,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     // Unpack contexts
 
-    QString const contextsEncoded = Utils::Url::queryItemValue( url, "contexts" );
-    QMap< QString, QString > const contexts = Utils::str2map(contextsEncoded);
+    QString const contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
+    QMap< QString, QString > const contexts = Utils::str2map( contextsEncoded );
 
     // See for ignore diacritics
 
