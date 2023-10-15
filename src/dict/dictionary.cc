@@ -40,11 +40,13 @@ void Request::update()
 void Request::finish()
 {
   if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
-    isFinishedFlag.ref();
-    emit finished();
+    {
+      QMutexLocker _( &dataMutex );
+      isFinishedFlag.ref();
 
-    QMutexLocker _( &dataMutex );
-    cond.wakeAll();
+      cond.wakeAll();
+    }
+    emit finished();
   }
 }
 
