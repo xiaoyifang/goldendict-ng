@@ -41,7 +41,6 @@ private:
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )
   QMediaDevices mediaDevices;
   #endif
-
 };
 
 #endif // MAKE_QTMULTIMEDIA_PLAYER

@@ -31,12 +31,8 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
   #endif
 
   #if ( QT_VERSION > QT_VERSION_CHECK( 6, 2, 0 ) )
-  connect( &mediaDevices,
-           &QMediaDevices::audioOutputsChanged,
-           this,
-           &MultimediaAudioPlayer::audioOutputChange );
+  connect( &mediaDevices, &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
   #endif
-
 }
 
 void MultimediaAudioPlayer::audioOutputChange()
@@ -53,10 +49,10 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
     return tr( "Couldn't open audio buffer for reading." );
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   player.setSourceDevice( audioBuffer );
-  #if ( QT_VERSION > QT_VERSION_CHECK( 6, 2, 0 ) )
+    #if ( QT_VERSION > QT_VERSION_CHECK( 6, 2, 0 ) )
   audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
   player.setAudioOutput( &audioOutput );
-  #endif
+    #endif
   #else
   player.setMedia( QMediaContent(), audioBuffer );
   #endif
