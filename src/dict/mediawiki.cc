@@ -137,7 +137,10 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
   Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
 
-  netReply = std::shared_ptr< QNetworkReply >( mgr.get( QNetworkRequest( reqUrl ) ) );
+  QNetworkRequest req( reqUrl );
+  //millseconds.
+  req.setTransferTimeout( 2000 );
+  netReply = std::shared_ptr< QNetworkReply >( mgr.get( req ) );
 
   connect( netReply.get(), SIGNAL( finished() ), this, SLOT( downloadFinished() ) );
 
