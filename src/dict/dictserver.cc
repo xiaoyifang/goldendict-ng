@@ -63,7 +63,7 @@ bool connectToServer( QTcpSocket & socket, QString const & url, QString & errorS
 
     socket.connectToHost( serverUrl.host(), port );
     if ( socket.state() != QTcpSocket::ConnectedState ) {
-      if ( !socket.waitForConnected( 100 ) )
+      if ( !socket.waitForConnected( 1500 ) )
         break;
     }
 
