@@ -196,6 +196,25 @@ public:
     strategies = strategies_.split( QRegularExpression( "[ ,;]" ), Qt::SkipEmptyParts );
     if ( strategies.isEmpty() )
       strategies.append( "prefix" );
+    QUrl serverUrl( url );
+    quint16 port = serverUrl.port( DefaultPort );
+    QString reply;
+    socket.connectToHost( serverUrl.host(), port );
+    connect(&socket,&QTcpSocket::connected,this,[this](){
+      //initialize the description.
+      getServerDatabasesAfterConnect();
+
+    });
+    connect(&socket,&QTcpSocket::stateChanged,this,[](QAbstractSocket::SocketState state){
+      qDebug()<<"socket state change: "<<state;
+    });
+    connect(&socket,&QTcpSocket::errorOccurred,this,[](QAbstractSocket::SocketError error){
+      qDebug()<<"socket error message: "<<error;
+    });
+  }
+
+  ~DictServerDictionary() override{
+    disconnectFromServer(socket);
   }
 
   string getName() noexcept override
@@ -205,7 +224,7 @@ public:
 
   map< Property, string > getProperties() noexcept override
   {
-    return map< Property, string >();
+    return {};
   }
 
   unsigned long getArticleCount() noexcept override
@@ -238,10 +257,9 @@ protected:
 
   void loadIcon() noexcept override;
 
-  void getServerDatabases();
-
   friend class DictServerWordSearchRequest;
   friend class DictServerArticleRequest;
+  void getServerDatabasesAfterConnect();
 };
 
 void DictServerDictionary::loadIcon() noexcept
@@ -261,11 +279,6 @@ void DictServerDictionary::loadIcon() noexcept
 
 QString const & DictServerDictionary::getDescription()
 {
-  if ( serverDatabases.isEmpty() ) {
-    dictionaryDescription.clear();
-    getServerDatabases();
-  }
-
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "\n";
     dictionaryDescription += QCoreApplication::translate( "DictServer", "Databases: " ) + databases.join( ", " ) + "\n";
@@ -282,59 +295,47 @@ QString const & DictServerDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void DictServerDictionary::getServerDatabases()
+void DictServerDictionary::getServerDatabasesAfterConnect()
 {
   QAtomicInt isCancelled;
-  QTcpSocket * socket = new QTcpSocket;
 
-  if ( !socket )
-    return;
+  for ( ;; ) {
+    QString req = QString( "SHOW DB\r\n" );
+    socket.write( req.toUtf8() );
+    socket.waitForBytesWritten( 1000 );
 
-  if ( connectToServer( *socket, url, errorString, isCancelled ) ) {
-    for ( ;; ) {
-      QString req = QString( "SHOW DB\r\n" );
-      socket->write( req.toUtf8() );
-      socket->waitForBytesWritten( 1000 );
+    QString reply;
 
-      QString reply;
+    if ( !readLine( socket, reply, errorString, isCancelled ) )
+      return;
 
-      if ( !readLine( *socket, reply, errorString, isCancelled ) )
-        return;
+    if ( reply.left( 3 ) == "110" ) {
+      int countPos = reply.indexOf( ' ', 4 );
+      // Get databases count
+      int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
-      if ( reply.left( 3 ) == "110" ) {
-        int countPos = reply.indexOf( ' ', 4 );
-        // Get databases count
-        int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
+      // Read databases
+      for ( int x = 0; x < count; x++ ) {
+        if ( !readLine( socket, reply, errorString, isCancelled ) )
+          break;
 
-        // Read databases
-        for ( int x = 0; x < count; x++ ) {
-          if ( !readLine( *socket, reply, errorString, isCancelled ) )
-            break;
+        if ( reply[ 0 ] == '.' )
+          break;
 
-          if ( reply[ 0 ] == '.' )
-            break;
+        while ( reply.endsWith( '\r' ) || reply.endsWith( '\n' ) )
+          reply.chop( 1 );
 
-          while ( reply.endsWith( '\r' ) || reply.endsWith( '\n' ) )
-            reply.chop( 1 );
-
-          if ( !reply.isEmpty() )
-            serverDatabases.append( reply );
-        }
-
-        break;
+        if ( !reply.isEmpty() )
+          serverDatabases.append( reply );
       }
-      else {
-        gdWarning( "Retrieving databases from \"%s\" fault: %s\n", getName().c_str(), reply.toUtf8().data() );
-        break;
-      }
+
+      break;
     }
-    disconnectFromServer( *socket );
+    else {
+      gdWarning( "Retrieving databases from \"%s\" fault: %s\n", getName().c_str(), reply.toUtf8().data() );
+      break;
+    }
   }
-
-  if ( !errorString.isEmpty() )
-    gdWarning( "Retrieving databases from \"%s\" fault: %s\n", getName().c_str(), errorString.toUtf8().data() );
-  delete socket;
-  socket = nullptr;
 }
 
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
@@ -344,14 +345,13 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket;
+  QTcpSocket * socket= nullptr;
 
 public:
 
   DictServerWordSearchRequest( wstring const & word_, DictServerDictionary & dict_ ):
     word( word_ ),
-    dict( dict_ ),
-    socket( 0 )
+    dict( dict_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
