@@ -41,10 +41,6 @@ public:
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;
-  QCache< QString, QByteArray > cache;
-
-  void insertCache( const QString &, QByteArray * );
-
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );

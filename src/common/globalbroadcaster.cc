@@ -18,11 +18,6 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
   return bdcaster;
 }
 
-void GlobalBroadcaster::insertCache( const QString & key, QByteArray * object )
-{
-  cache.insert( key, object );
-}
-
 void GlobalBroadcaster::setPreference( Config::Preferences * p )
 {
   preference = p;
