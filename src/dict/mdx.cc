@@ -749,18 +749,6 @@ void MddResourceRequest::run()
     const QString id = QString::fromUtf8( dict.getId().c_str() );
 
     const QString unique_key = id + QString::fromStdString( u8ResourceName );
-    if ( GlobalBroadcaster::instance()->cache.contains( unique_key ) ) {
-      //take first ,then insert again . the object() method may become null anytime.
-      auto bytes = GlobalBroadcaster::instance()->cache.take( unique_key );
-      if ( bytes ) {
-        hasAnyData = true;
-        data.resize( bytes->size() );
-        memcpy( &data.front(), bytes->constData(), bytes->size() );
-        GlobalBroadcaster::instance()->insertCache( unique_key, bytes );
-        break;
-      }
-    }
-
 
     dict.loadResourceFile( resourceName, data );
 
@@ -789,8 +777,6 @@ void MddResourceRequest::run()
 
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
-        //cache the processed css result to avoid process again.
-        GlobalBroadcaster::instance()->insertCache( unique_key, new QByteArray( bytes ) );
       }
       if ( Filetype::isNameOfTiff( u8ResourceName ) ) {
         // Convert it
