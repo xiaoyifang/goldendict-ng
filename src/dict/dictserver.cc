@@ -200,21 +200,21 @@ public:
     quint16 port = serverUrl.port( DefaultPort );
     QString reply;
     socket.connectToHost( serverUrl.host(), port );
-    connect(&socket,&QTcpSocket::connected,this,[this](){
+    connect( &socket, &QTcpSocket::connected, this, [ this ]() {
       //initialize the description.
       getServerDatabasesAfterConnect();
-
-    });
-    connect(&socket,&QTcpSocket::stateChanged,this,[](QAbstractSocket::SocketState state){
-      qDebug()<<"socket state change: "<<state;
-    });
-    connect(&socket,&QTcpSocket::errorOccurred,this,[](QAbstractSocket::SocketError error){
-      qDebug()<<"socket error message: "<<error;
-    });
+    } );
+    connect( &socket, &QTcpSocket::stateChanged, this, []( QAbstractSocket::SocketState state ) {
+      qDebug() << "socket state change: " << state;
+    } );
+    connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
+      qDebug() << "socket error message: " << error;
+    } );
   }
 
-  ~DictServerDictionary() override{
-    disconnectFromServer(socket);
+  ~DictServerDictionary() override
+  {
+    disconnectFromServer( socket );
   }
 
   string getName() noexcept override
@@ -345,7 +345,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket= nullptr;
+  QTcpSocket * socket = nullptr;
 
 public:
 
