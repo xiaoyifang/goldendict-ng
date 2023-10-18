@@ -275,9 +275,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
 void ScanPopup::refresh()
 {
-
-  // TODO: GroupCombox's update should be moved inside GroupCombox
-
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
   disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
@@ -627,13 +624,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // An empty request always results in an empty result
     wordFinder.cancel();
 
-    // Reset the noResults mark if it's on right now
-    if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() ) {
-      auto translateLine = ui.translateBox->translateLine();
-      translateLine->setProperty( "noResults", false );
 
-      Utils::Widget::setNoResultColor( translateLine, false );
-    }
     return;
   }
 
@@ -899,6 +890,10 @@ void ScanPopup::prefixMatchFinished()
         _results << fst;
       }
 
+      // Reset the noResults mark if it's on right now
+      auto translateLine = ui.translateBox->translateLine();
+
+      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
       ui.translateBox->setModel( _results );
     }
   }

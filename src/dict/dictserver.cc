@@ -805,7 +805,6 @@ void DictServerArticleRequest::cancel()
 }
 
 sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
-
 {
   (void)maxResults;
   if ( word.size() > 80 ) {

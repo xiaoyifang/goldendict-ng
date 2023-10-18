@@ -404,7 +404,6 @@ struct Preferences
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
-  bool dictionaryDebug          = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;
