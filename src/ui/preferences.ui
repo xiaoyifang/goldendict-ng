@@ -1987,16 +1987,6 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="dictionaryDebug">
-            <property name="toolTip">
-             <string>When debugging with dictionary css/js, disable certain cache to make it easier.</string>
-            </property>
-            <property name="text">
-             <string>Dictionary debug</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
