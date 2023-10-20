@@ -345,7 +345,6 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket = nullptr;
 
 public:
 
@@ -375,7 +374,7 @@ void DictServerWordSearchRequest::run()
     return;
   }
 
-  socket = new QTcpSocket;
+  QTcpSocket * socket = new QTcpSocket;
 
   if ( !socket ) {
     finish();
@@ -514,14 +513,12 @@ class DictServerArticleRequest: public Dictionary::DataRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket;
 
 public:
 
   DictServerArticleRequest( wstring const & word_, DictServerDictionary & dict_ ):
     word( word_ ),
-    dict( dict_ ),
-    socket( 0 )
+    dict( dict_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -545,7 +542,7 @@ void DictServerArticleRequest::run()
     return;
   }
 
-  socket = new QTcpSocket;
+  QTcpSocket * socket = new QTcpSocket;
 
   if ( !socket ) {
     finish();
