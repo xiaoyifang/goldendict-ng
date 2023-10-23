@@ -2856,6 +2856,12 @@ void MainWindow::toggleMainWindow( bool onlyShow )
 
 void MainWindow::installHotKeys()
 {
+#if defined( Q_OS_LINUX )
+  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+    return;
+  }
+#endif
+
   hotkeyWrapper.reset(); // Remove the old one
 
   if ( cfg.preferences.enableMainWindowHotkey || cfg.preferences.enableClipboardHotkey ) {
