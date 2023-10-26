@@ -733,7 +733,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == webview ) {
-    
+
     if ( ev->type() == QEvent::KeyPress ) {
       auto keyEvent = static_cast< QKeyEvent * >( ev );
 
