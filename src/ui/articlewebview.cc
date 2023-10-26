@@ -80,7 +80,8 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
         singleClickAction( pe );
       } );
     }
-    mousePressEvent( pe );
+    if ( pe->buttons() & Qt::MiddleButton )
+      midButtonPressed = true;
   }
   if ( ev->type() == QEvent::MouseButtonRelease ) {
     auto pe = dynamic_cast< QMouseEvent * >( ev );
@@ -100,21 +101,6 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
   }
 
   return QWebEngineView::eventFilter( obj, ev );
-}
-
-void ArticleWebView::mousePressEvent( QMouseEvent * event )
-{
-  if ( event->buttons() & Qt::MiddleButton )
-    midButtonPressed = true;
-
-  if ( event->buttons() & Qt::XButton1 ) {
-    back();
-    event->accept();
-  }
-  if ( event->buttons() & Qt::XButton2 ) {
-    forward();
-    event->accept();
-  }
 }
 
 void ArticleWebView::singleClickAction( QMouseEvent * event )
@@ -146,14 +132,6 @@ void ArticleWebView::sendCustomMouseEvent( QEvent::Type type )
   for ( auto child : childrens ) {
     QApplication::sendEvent( child, &ev );
   }
-}
-
-void ArticleWebView::mouseReleaseEvent( QMouseEvent * event )
-{
-  bool noMidButton = !( event->buttons() & Qt::MiddleButton );
-
-  //  if ( midButtonPressed & noMidButton )
-  //    midButtonPressed = false;
 }
 
 void ArticleWebView::doubleClickAction( QMouseEvent * event )

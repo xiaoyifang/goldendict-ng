@@ -1338,9 +1338,7 @@ void ArticleView::updateMutedContents()
 
 bool ArticleView::canGoBack()
 {
-  // First entry in a history is always an empty page,
-  // so we skip it.
-  return webview->history()->currentItemIndex() > 1;
+  return webview->history()->canGoBack();
 }
 
 bool ArticleView::canGoForward()
