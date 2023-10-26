@@ -109,9 +109,11 @@ void ArticleWebView::mousePressEvent( QMouseEvent * event )
 
   if ( event->buttons() & Qt::XButton1 ) {
     back();
+    event->accept();
   }
   if ( event->buttons() & Qt::XButton2 ) {
     forward();
+    event->accept();
   }
 }
 

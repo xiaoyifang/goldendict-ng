@@ -733,18 +733,8 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == webview ) {
-    if ( ev->type() == QEvent::MouseButtonPress ) {
-      auto event = static_cast< QMouseEvent * >( ev );
-      if ( event->button() == Qt::XButton1 ) {
-        back();
-        return true;
-      }
-      if ( event->button() == Qt::XButton2 ) {
-        forward();
-        return true;
-      }
-    }
-    else if ( ev->type() == QEvent::KeyPress ) {
+    
+    if ( ev->type() == QEvent::KeyPress ) {
       auto keyEvent = static_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
