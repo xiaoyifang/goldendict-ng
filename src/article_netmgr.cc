@@ -110,7 +110,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   if ( req.url().scheme() == "gdlookup" ) {
     QString path = url.path();
-    if ( path.size()>1 ) {
+    if ( path.size() > 1 ) {
       url.setPath( "" );
 
       Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
