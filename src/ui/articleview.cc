@@ -733,18 +733,8 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == webview ) {
-    if ( ev->type() == QEvent::MouseButtonPress ) {
-      auto event = static_cast< QMouseEvent * >( ev );
-      if ( event->button() == Qt::XButton1 ) {
-        back();
-        return true;
-      }
-      if ( event->button() == Qt::XButton2 ) {
-        forward();
-        return true;
-      }
-    }
-    else if ( ev->type() == QEvent::KeyPress ) {
+
+    if ( ev->type() == QEvent::KeyPress ) {
       auto keyEvent = static_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
@@ -1348,9 +1338,7 @@ void ArticleView::updateMutedContents()
 
 bool ArticleView::canGoBack()
 {
-  // First entry in a history is always an empty page,
-  // so we skip it.
-  return webview->history()->currentItemIndex() > 1;
+  return webview->history()->canGoBack();
 }
 
 bool ArticleView::canGoForward()

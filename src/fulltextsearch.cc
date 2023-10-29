@@ -41,7 +41,7 @@ void Indexing::run()
         QFuture< void > const f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
           QSemaphoreReleaser const _( sem );
           const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
-          qDebug() << "[FULLTEXT] make fts for the dictionary:" << dictionaryName;
+          qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
           emit sendNowIndexingName( dictionaryName );
           dictionary->makeFTSIndex( isCancelled, false );
         } );
