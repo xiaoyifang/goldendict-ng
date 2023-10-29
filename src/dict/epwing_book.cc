@@ -899,7 +899,7 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
   ret = eb_forward_text( &book, &appendix );
   while ( ret != EB_SUCCESS ) {
 
-    if ( startPos.page >= book.subbook_current->text.end_page )
+    if (  ret== EB_ERR_END_OF_CONTENT || startPos.page >= book.subbook_current->text.end_page )
       return EB_ERR_END_OF_CONTENT;
 
     const auto offset = startPos.offset + 2;
