@@ -250,7 +250,7 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages or Flatpak.
+            Linux users can use Flatpak or build from source.
             https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
