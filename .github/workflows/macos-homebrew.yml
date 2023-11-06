@@ -56,7 +56,7 @@ jobs:
           brew install hunspell
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
-          brew install  xz lzo 
+          # brew install  xz 
           brew install pkg-config
           brew install create-dmg
           brew install xapian
