@@ -63,7 +63,7 @@ bool connectToServer( QTcpSocket & socket, QString const & url, QString & errorS
 
     socket.connectToHost( serverUrl.host(), port );
     if ( socket.state() != QTcpSocket::ConnectedState ) {
-      if ( !socket.waitForConnected( 100 ) )
+      if ( !socket.waitForConnected( 2000 ) )
         break;
     }
 
@@ -344,14 +344,12 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket;
 
 public:
 
   DictServerWordSearchRequest( wstring const & word_, DictServerDictionary & dict_ ):
     word( word_ ),
-    dict( dict_ ),
-    socket( 0 )
+    dict( dict_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -362,7 +360,8 @@ public:
 
   ~DictServerWordSearchRequest() override
   {
-    f.waitForFinished();
+    //with this line ,the gui will be frozened?
+    //    f.waitForFinished();
   }
 
   void cancel() override;
@@ -375,7 +374,7 @@ void DictServerWordSearchRequest::run()
     return;
   }
 
-  socket = new QTcpSocket;
+  auto socket = new QTcpSocket;
 
   if ( !socket ) {
     finish();
@@ -514,14 +513,12 @@ class DictServerArticleRequest: public Dictionary::DataRequest
   QString errorString;
   QFuture< void > f;
   DictServerDictionary & dict;
-  QTcpSocket * socket;
 
 public:
 
   DictServerArticleRequest( wstring const & word_, DictServerDictionary & dict_ ):
     word( word_ ),
-    dict( dict_ ),
-    socket( 0 )
+    dict( dict_ )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -545,7 +542,7 @@ void DictServerArticleRequest::run()
     return;
   }
 
-  socket = new QTcpSocket;
+  auto socket = new QTcpSocket;
 
   if ( !socket ) {
     finish();
