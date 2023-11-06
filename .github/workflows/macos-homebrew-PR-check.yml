@@ -65,7 +65,7 @@ jobs:
           wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
-          brew install  xz lzo 
+          # brew install xz 
           brew install pkg-config
           brew install libiconv
           brew install xapian
