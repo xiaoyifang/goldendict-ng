@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.09.29
-      version-suffix: MoonCake
+      version: 23.11.08
+      version-suffix: BeginningOfWinter
       prerelease: false
     steps:
     

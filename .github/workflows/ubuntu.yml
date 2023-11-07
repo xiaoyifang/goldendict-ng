@@ -25,8 +25,8 @@ jobs:
         qt_ver: [5.15.2]
         qt_arch: [gcc_64]
     env:
-      version: 23.09.29
-      version-suffix: MoonCake
+      version: 23.11.08
+      version-suffix: BeginningOfWinter
       prerelease: false
     steps:
       - name: Install Qt
