@@ -24,7 +24,7 @@ jobs:
         qt_ver: [ 6.5.2,6.6.0 ]
         qt_arch: [gcc_64]
     env:
-      version: 23.10.01
+      version: 23.11.09
       version-suffix: alpha
       prerelease: true
     steps:

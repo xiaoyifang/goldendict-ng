@@ -31,7 +31,7 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 23.10.01
+      version: 23.11.09
       version-suffix: alpha
       prerelease: true
     steps:
