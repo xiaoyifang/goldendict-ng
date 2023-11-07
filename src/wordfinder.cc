@@ -460,7 +460,6 @@ void WordFinder::updateResults()
 void WordFinder::cancelSearches()
 {
   for ( auto & queuedRequest : queuedRequests ) {
-    disconnect( queuedRequest.get(), 0, 0, 0 );
     queuedRequest->cancel();
   }
 }
