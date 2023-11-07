@@ -111,7 +111,7 @@ QLineEdit * TranslateBox::translateLine()
 
 QWidget * TranslateBox::completerWidget()
 {
-  return completer->widget();
+  return completer->popup();
 }
 
 void TranslateBox::rightButtonClicked()

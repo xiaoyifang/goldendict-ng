@@ -49,16 +49,12 @@ jobs:
        
       - name: install deps on macos
         run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja python
+          brew install cmake ninja
           brew install automake
           brew install autoconf
           brew install libtool
           brew install opencc
           
-          # brew install speex
-          # brew tap homebrew-ffmpeg/ffmpeg
-          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
           brew install libao
           brew install libiconv
           brew install lzo bzip2
@@ -69,8 +65,7 @@ jobs:
           wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
-          #brew install qt # or use official offline installer
-          brew install  xz lzo 
+          # brew install xz 
           brew install pkg-config
           brew install libiconv
           brew install xapian

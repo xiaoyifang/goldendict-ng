@@ -88,7 +88,6 @@ class ArticleView: public QWidget
   QStringList uniqueMatches;
   bool ftsSearchIsOpened  = false;
   bool ftsSearchMatchCase = false;
-  int ftsPosition         = 0;
 
   QString delayedHighlightText;
 
@@ -116,6 +115,7 @@ public:
   unsigned getCurrentGroupId();
 
   virtual QSize minimumSizeHint() const;
+  void clearContent();
 
   ~ArticleView();
 

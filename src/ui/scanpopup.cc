@@ -275,9 +275,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
 void ScanPopup::refresh()
 {
-
-  // TODO: GroupCombox's update should be moved inside GroupCombox
-
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
   disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
@@ -341,8 +338,9 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+  if ( ui.translateBox->completerWidget()->font().pointSize() != ps ) {
     ui.translateBox->completerWidget()->setFont( font );
+  }
 
   font = translateLineDefaultFont;
   ps   = font.pointSize();
@@ -626,13 +624,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // An empty request always results in an empty result
     wordFinder.cancel();
 
-    // Reset the noResults mark if it's on right now
-    if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() ) {
-      auto translateLine = ui.translateBox->translateLine();
-      translateLine->setProperty( "noResults", false );
 
-      Utils::Widget::setNoResultColor( translateLine, false );
-    }
     return;
   }
 
@@ -850,18 +842,9 @@ void ScanPopup::enterEvent( QEvent * event )
   }
 }
 
-void ScanPopup::requestWindowFocus()
-{
-  // One of the rare, actually working workarounds for requesting a user keyboard focus on X11,
-  // works for Qt::Popup windows, exactly like our Scan Popup (in unpinned state).
-  // Modern window managers actively resist to automatically focus pop-up windows.
-}
-
 void ScanPopup::showEvent( QShowEvent * ev )
 {
   QMainWindow::showEvent( ev );
-
-  QTimer::singleShot( 100, this, &ScanPopup::requestWindowFocus );
 
   if ( groups.size() <= 1 ) // Only the default group? Hide then.
     ui.groupList->hide();
@@ -907,6 +890,10 @@ void ScanPopup::prefixMatchFinished()
         _results << fst;
       }
 
+      // Reset the noResults mark if it's on right now
+      auto translateLine = ui.translateBox->translateLine();
+
+      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
       ui.translateBox->setModel( _results );
     }
   }
@@ -1016,6 +1003,7 @@ void ScanPopup::hideWindow()
   ui.translateBox->setPopupEnabled( false );
   ui.translateBox->translateLine()->deselect();
   hide();
+  definition->clearContent();
 }
 
 void ScanPopup::interceptMouse()

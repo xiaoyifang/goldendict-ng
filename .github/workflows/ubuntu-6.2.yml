@@ -3,21 +3,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: 
-  # workflow_run:
-  #   workflows: [AutoTag]
-  #   types: [completed]
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - master
-      # - staged
-    paths-ignore:
-      - 'docs/**'
-      # - ".github/**"
-      - "howto/**"
-      - "*.md"
-      - ".clang-format"
+  # push:
+  #   branches:
+  #     - dev
+  #     - master
+  #   paths-ignore:
+  #     - 'docs/**'
+  #     - "howto/**"
+  #     - "*.md"
+  #     - ".clang-format"
 
 jobs:
   build:
@@ -26,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        qt_ver: [ 6.5.2 ]
+        qt_ver: [ 6.5.2,6.6.0 ]
         qt_arch: [gcc_64]
     env:
       version: 23.09.29
@@ -191,8 +186,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages or Flatpak.
-            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
+            Linux users can use Flatpak or build from source.
+            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 

@@ -749,18 +749,6 @@ void MddResourceRequest::run()
     const QString id = QString::fromUtf8( dict.getId().c_str() );
 
     const QString unique_key = id + QString::fromStdString( u8ResourceName );
-    if ( GlobalBroadcaster::instance()->cache.contains( unique_key ) ) {
-      //take first ,then insert again . the object() method may become null anytime.
-      auto bytes = GlobalBroadcaster::instance()->cache.take( unique_key );
-      if ( bytes ) {
-        hasAnyData = true;
-        data.resize( bytes->size() );
-        memcpy( &data.front(), bytes->constData(), bytes->size() );
-        GlobalBroadcaster::instance()->insertCache( unique_key, bytes );
-        break;
-      }
-    }
-
 
     dict.loadResourceFile( resourceName, data );
 
@@ -789,8 +777,6 @@ void MddResourceRequest::run()
 
         data.resize( bytes.size() );
         memcpy( &data.front(), bytes.constData(), bytes.size() );
-        //cache the processed css result to avoid process again.
-        GlobalBroadcaster::instance()->insertCache( unique_key, new QByteArray( bytes ) );
       }
       if ( Filetype::isNameOfTiff( u8ResourceName ) ) {
         // Convert it
@@ -908,7 +894,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
     QString linkType = allLinksMatch.captured( 1 ).toLower();
     QString newLink;
 
-    if ( !linkType.isEmpty() && linkType.at( 0 ) == 'a' ) {
+    if ( linkType.compare( "a" ) == 0 || linkType.compare( "area" ) == 0 ) {
       newLink = linkTxt;
 
       QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
@@ -956,12 +942,12 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       else
         newLink = linkTxt.replace( RX::Mdx::stylesRe2, R"(\1"bres://)" + id + R"(/\2")" );
     }
-    else if ( linkType.compare( "script" ) == 0 || linkType.compare( "img" ) == 0
-              || linkType.compare( "source" ) == 0 ) {
+    else {
+      //linkType in ("script","img","source","audio","video")
       // javascripts and images
       QRegularExpressionMatch match = RX::Mdx::inlineScriptRe.match( linkTxt );
-      if ( linkType.at( 1 ) == 'c' // "script" tag
-           && match.hasMatch() && match.capturedLength() == linkTxt.length() ) {
+      // "script" tag
+      if ( linkType.compare( "script" ) == 0 && match.hasMatch() && match.capturedLength() == linkTxt.length() ) {
         // skip inline scripts
         articleNewText += linkTxt;
         match = RX::Mdx::closeScriptTagRe.match( article, linkPos );
@@ -972,26 +958,28 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         continue;
       }
       else {
+        //audio ,video ,html5 tags fall here.
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
-          if ( linkType.at( 1 ) == 'o' ) // "source" tag
-          {
-            QString filename = match.captured( 3 );
-            QString newName  = getCachedFileName( filename );
-            newName.replace( '\\', '/' );
-            newText = match.captured( 1 ) + match.captured( 2 ) + "file:///" + newName + match.captured( 2 );
+          QString scheme;
+          // "source" tag
+          if ( linkType.compare( "source" ) == 0 ) {
+            scheme = "gdvideo://";
           }
           else {
-            newText = match.captured( 1 ) + match.captured( 2 ) + "bres://" + id + "/" + match.captured( 3 )
-              + match.captured( 2 );
+            scheme = "bres://";
           }
+          newText =
+            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
     }
+
     if ( !newLink.isEmpty() ) {
       articleNewText += newLink;
     }

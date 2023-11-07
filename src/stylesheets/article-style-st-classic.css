@@ -1068,22 +1068,6 @@ div.xdxf {
 }
 /* the left column width is specified in class .portlet */
 
-/* Font size:
-** We take advantage of keyword scaling- browsers won't go below 9px
-** More at http://www.w3.org/2003/07/30-font-size
-** http://style.cleverchimp.com/font_size_intervals/altintervals.html
-*/
-
-/*
-body {
-	font: x-small sans-serif;
-	background: #f9f9f9 url(headbg.jpg) 0 0 no-repeat;
-	color: black;
-	margin: 0;
-	padding: 0;
-}
-*/
-
 /* scale back up to a sane default */
 .mwiki #globalWrapper {
   font-size: 127%;
@@ -1220,7 +1204,6 @@ body {
   list-style-type: square;
   margin: 0.3em 0 0 1.5em;
   padding: 0;
-  list-style-image: url(bullet.gif);
 }
 .mwiki ol {
   line-height: 1.5em;
@@ -1614,38 +1597,7 @@ in the bottom-right corner of the content area */
 ** keep the whitespace in front of the ^=, hides rule from konqueror
 ** this is css3, the validator doesn't like it when validating as css2
 */
-.mwiki #bodyContent a.external,
-.mwiki #bodyContent a[href ^="gopher://"]
-{
-  background: url(external.png) center right no-repeat;
-  padding-right: 1em;
-}
-.mwiki #bodyContent a[href ^="https://"],
-.mwiki .link-https {
-  background: url(lock_icon.gif) center right no-repeat;
-  padding-right: 16px;
-}
-.mwiki #bodyContent a[href^="mailto:"],
-.mwiki .link-mailto {
-  background: url(mail_icon.gif) center right no-repeat;
-  padding-right: 18px;
-}
-.mwiki #bodyContent a[href ^="news://"]
-{
-  background: url(news_icon.png) center right no-repeat;
-  padding-right: 18px;
-}
-.mwiki #bodyContent a[href ^="ftp://"],
-.mwiki .link-ftp {
-  background: url(file_icon.gif) center right no-repeat;
-  padding-right: 18px;
-}
-.mwiki #bodyContent a[href ^="irc://"],
-.mwiki #bodyContent a.extiw[href ^="irc://"],
-.mwiki .link-irc {
-  background: url(discussionitem_icon.gif) center right no-repeat;
-  padding-right: 18px;
-}
+
 .mwiki #bodyContent a.external[href$=".ogg"],
 .mwiki #bodyContent a.external[href$=".OGG"],
 .mwiki #bodyContent a.external[href$=".oga"],
@@ -1661,7 +1613,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href$=".wma"],
 .mwiki #bodyContent a.external[href$=".WMA"],
 .mwiki .link-audio {
-  background: url("audio.png") center right no-repeat;
+  background: url("qrc:///icons/audio.png") center right no-repeat;
   padding-right: 1em;
 }
 .mwiki #bodyContent a.external[href$=".ogm"],
@@ -1673,7 +1625,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href$=".mpg"],
 .mwiki #bodyContent a.external[href$=".MPG"],
 .mwiki .link-video {
-  background: url("video.png") center right no-repeat;
+  background: url("qrc:///icons/video.png") center right no-repeat;
   padding-right: 1em;
 }
 .mwiki #bodyContent a.external[href$=".pdf"],
@@ -1683,7 +1635,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href*=".pdf?"],
 .mwiki #bodyContent a.external[href*=".PDF?"],
 .mwiki .link-document {
-  background: url("document.png") center right no-repeat;
+  background: url("qrc:///icons/document.png") center right no-repeat;
   padding-right: 12px;
 }
 
@@ -1763,7 +1715,6 @@ special external link styling */
 .mwiki .portlet ul {
   line-height: 1.5em;
   list-style-type: square;
-  list-style-image: url(bullet.gif);
   font-size: 95%;
 }
 .mwiki .portlet li {
@@ -1899,7 +1850,6 @@ in bg url to hide it from iemac */
 .mwiki li#pt-userpage,
 .mwiki li#pt-anonuserpage,
 .mwiki li#pt-login {
-  background: url(user.gif) top left no-repeat;
   padding-left: 20px;
   text-transform: none;
 }
@@ -2980,8 +2930,7 @@ table#sv-hooks,
 /****** Wiktionary-specific excerpts *********/
 
 .mwiki .audiolink a {
-  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Loudspeaker.svg/16px-Loudspeaker.svg.png")
-    center left no-repeat !important;
+  background: url("qrc:///icons/audio.png") center left no-repeat !important;
   padding-left: 20px !important;
   padding-right: 0 !important;
 }

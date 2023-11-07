@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12,macos-13]
-        qt_ver: [ 6.5.2 ]
+        qt_ver: [ 6.5.2,6.6.0 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -42,20 +42,12 @@ jobs:
        
       - name: install deps on macos
         run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja python
+          brew install cmake ninja
           brew install automake
           brew install autoconf
           brew install libtool
           brew install opencc
-          # brew install speex
-          brew install wavpack
           brew install automake git lame libass libtool shtool texi2html theora wget xvid nasm
-          # brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
-          
-          # brew tap homebrew-ffmpeg/ffmpeg
-          # brew options homebrew-ffmpeg/ffmpeg/ffmpeg 
-          # brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
 
           brew install libiconv
           brew install lzo bzip2
@@ -65,7 +57,7 @@ jobs:
           brew install hunspell
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
-          brew install  xz lzo 
+          # brew install  xz 
           brew install pkg-config
           brew install create-dmg
           brew install xapian
@@ -77,8 +69,8 @@ jobs:
           cmake -B build -DCMAKE_BUILD_TYPE=release
           cmake --build build --config release
           sudo make install
-          find /usr/local -name libzstd.1.dylib 
-          find /usr/local -name liblzma.5.dylib
+          # find /usr/local -name libzstd.1.dylib 
+          # find /usr/local -name liblzma.5.dylib
       - name: version-file
         shell: bash
         env:
@@ -217,8 +209,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages or Flatpak.
-            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
+            Linux users can use Flatpak or build from source.
+            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 

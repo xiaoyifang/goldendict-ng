@@ -1013,8 +1013,6 @@ Class load()
       c.preferences.removeInvalidIndexOnExit =
         ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
 
-    c.preferences.dictionaryDebug = fromConfig2Preference( preferences.namedItem( "dictionaryDebug" ), "1" );
-
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
 
@@ -1159,9 +1157,6 @@ Class load()
 
   if ( !root.namedItem( "editDictionaryCommandLine" ).isNull() )
     c.editDictionaryCommandLine = root.namedItem( "editDictionaryCommandLine" ).toElement().text();
-
-  if ( !root.namedItem( "maxPictureWidth" ).isNull() )
-    c.maxPictureWidth = root.namedItem( "maxPictureWidth" ).toElement().text().toInt();
 
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
@@ -2003,10 +1998,6 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "dictionaryDebug" );
-    opt.appendChild( dd.createTextNode( c.preferences.dictionaryDebug ? "1" : "0" ) );
-    preferences.appendChild( opt );
-
     opt = dd.createElement( "maxStringsInHistory" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxStringsInHistory ) ) );
     preferences.appendChild( opt );
@@ -2170,10 +2161,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "editDictionaryCommandLine" );
     opt.appendChild( dd.createTextNode( c.editDictionaryCommandLine ) );
-    root.appendChild( opt );
-
-    opt = dd.createElement( "maxPictureWidth" );
-    opt.appendChild( dd.createTextNode( QString::number( c.maxPictureWidth ) ) );
     root.appendChild( opt );
 
     opt = dd.createElement( "maxHeadwordSize" );

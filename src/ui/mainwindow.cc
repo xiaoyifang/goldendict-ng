@@ -182,14 +182,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
   localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "gdlookup", localSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "bword", localSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "entry", localSchemeHandler );
+  QStringList htmlScheme = { "gdlookup", "bword", "entry" };
+  for ( const auto & localScheme : htmlScheme ) {
+    QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
+  }
 
   iframeSchemeHandler = new IframeSchemeHandler( this );
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
 
-  QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdpicture", "gdtts" };
+  QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), resourceSchemeHandler );
@@ -1224,16 +1225,16 @@ void MainWindow::commitData()
     for ( auto & file : entries ) {
       QString const fileName = file.fileName();
 
+      if ( dictMap.contains( fileName.toStdString() ) )
+        continue;
       //remove both normal index and fts index.
-      if ( !dictMap.contains( fileName.toStdString() ) ) {
-        auto filePath = file.absoluteFilePath();
-        qDebug() << "remove invalid index files & fts dirs";
+      auto filePath = file.absoluteFilePath();
+      qDebug() << "remove invalid index files & fts dirs";
 
-        QFile::remove( filePath );
-        QDir d( filePath + "_FTS_x" );
-        if ( d.exists() ) {
-          d.removeRecursively();
-        }
+      QFile::remove( filePath );
+      QDir d( filePath + "_FTS_x" );
+      if ( d.exists() ) {
+        d.removeRecursively();
       }
     }
   }
@@ -2855,6 +2856,12 @@ void MainWindow::toggleMainWindow( bool onlyShow )
 
 void MainWindow::installHotKeys()
 {
+#if defined( Q_OS_LINUX )
+  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+    return;
+  }
+#endif
+
   hotkeyWrapper.reset(); // Remove the old one
 
   if ( cfg.preferences.enableMainWindowHotkey || cfg.preferences.enableClipboardHotkey ) {
@@ -3290,8 +3297,8 @@ void MainWindow::on_saveArticle_triggered()
 
       if ( complete ) {
         QString folder = fi.absoluteDir().absolutePath() + "/" + fi.baseName() + "_files";
-        QRegExp rx1( "\"((?:bres|gico|gdau|qrcx|gdvideo)://[^\"]+)\"" );
-        QRegExp rx2( "'((?:bres|gico|gdau|qrcx|gdvideo)://[^']+)'" );
+        QRegExp rx1( "\"((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^\"]+)\"" );
+        QRegExp rx2( "'((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^']+)'" );
         set< QByteArray > resourceIncluded;
         vector< pair< QUrl, QString > > downloadResources;
 
@@ -3499,8 +3506,11 @@ void MainWindow::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( translateLine->font().pointSize() != ps )
+  if ( translateLine->font().pointSize() != ps ) {
     translateLine->setFont( font );
+
+    translateBox->completerWidget()->setFont( font );
+  }
 
   font = groupListDefaultFont;
 

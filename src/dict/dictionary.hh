@@ -403,6 +403,9 @@ public:
 
   int getIndexingFtsProgress()
   {
+    if ( haveFTSIndex() ) {
+      return 100;
+    }
     auto total = getArticleCount();
     if ( total == 0 )
       return 0;

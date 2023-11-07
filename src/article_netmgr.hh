@@ -125,6 +125,11 @@ protected:
   }
 };
 
+enum class ResourceType {
+  UNTITLE,
+  WELCOME,
+  BLANK
+};
 
 class ArticleNetworkAccessManager: public QNetworkAccessManager
 {
@@ -157,6 +162,7 @@ public:
   sptr< Dictionary::DataRequest > getResource( QUrl const & url, QString & contentType );
 
   virtual QNetworkReply * getArticleReply( QNetworkRequest const & req );
+  string getHtml( ResourceType resourceType );
 };
 
 class ArticleResourceReply: public QNetworkReply

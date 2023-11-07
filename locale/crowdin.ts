@@ -3763,6 +3763,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Print version and diagnosis info.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Force the word to be translated in scanpopup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force the word to be translated in the mainwindow</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>
@@ -3983,10 +3991,6 @@ GoldenDict 尚不支持此方案。</translation>
         <translation>Lingua Libre</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;由 &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;法国维基百科合作语言媒体图书馆 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <source>Enable Lingua Libre</source>
         <translation>启用 Lingua Libre</translation>
     </message>
@@ -4196,6 +4200,10 @@ of the appropriate groups to use them.</source>
     <message>
         <source>Text to Speech</source>
         <translation>语音合成</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

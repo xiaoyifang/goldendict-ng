@@ -40,7 +40,9 @@ void Indexing::run()
         sem.acquire();
         QFuture< void > const f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
           QSemaphoreReleaser const _( sem );
-          emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
+          const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
+          qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
+          emit sendNowIndexingName( dictionaryName );
           dictionary->makeFTSIndex( isCancelled, false );
         } );
         synchronizer.addFuture( f );
@@ -60,17 +62,25 @@ void Indexing::run()
 
 void Indexing::timeout()
 {
-  //display all the dictionary name in the following loop ,may result only one dictionary name been seen.
-  //as the interval is so small.
+  QString indexingDicts;
   for ( const auto & dictionary : dictionaries ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
-
+    //Finished, clear the msg.
+    if ( dictionary->haveFTSIndex() ) {
+      continue;
+    }
     auto newProgress = dictionary->getIndexingFtsProgress();
     if ( newProgress > 0 && newProgress < 100 ) {
-      emit sendNowIndexingName(
+      if ( !indexingDicts.isEmpty() )
+        indexingDicts.append( "," );
+      indexingDicts.append(
         QString( "%1......%%2" ).arg( QString::fromStdString( dictionary->getName() ) ).arg( newProgress ) );
     }
+  }
+
+  if ( !indexingDicts.isEmpty() ) {
+    emit sendNowIndexingName( indexingDicts );
   }
 }
 

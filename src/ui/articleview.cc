@@ -242,7 +242,9 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
 #endif
 
-  webview->load( QUrl( "gdlookup://localhost?word=(untitled)&blank=1" ) );
+  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
+
+  webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 
@@ -355,16 +357,14 @@ void ArticleView::showDefinition( QString const & word,
   if ( mutedDicts.size() )
     Utils::Url::addQueryItem( req, "muted", mutedDicts );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
-
-  load( req );
-
   //QApplication::setOverrideCursor( Qt::WaitCursor );
   webview->setCursor( Qt::WaitCursor );
+  load( req );
+
+  // Update headwords history
+  emit sendWordToHistory( word );
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -399,18 +399,17 @@ void ArticleView::showDefinition( QString const & word,
   if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
 
-  // Update headwords history
-  emit sendWordToHistory( word );
-
   // Any search opened is probably irrelevant now
   closeSearch();
 
   // Clear highlight all button selection
   searchPanel->highlightAll->setChecked( false );
+  webview->setCursor( Qt::WaitCursor );
 
   load( req );
 
-  webview->setCursor( Qt::WaitCursor );
+  // Update headwords history
+  emit sendWordToHistory( word );
 }
 
 void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
@@ -734,18 +733,8 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == webview ) {
-    if ( ev->type() == QEvent::MouseButtonPress ) {
-      auto event = static_cast< QMouseEvent * >( ev );
-      if ( event->button() == Qt::XButton1 ) {
-        back();
-        return true;
-      }
-      if ( event->button() == Qt::XButton2 ) {
-        forward();
-        return true;
-      }
-    }
-    else if ( ev->type() == QEvent::KeyPress ) {
+
+    if ( ev->type() == QEvent::KeyPress ) {
       auto keyEvent = static_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) )
@@ -860,9 +849,6 @@ void ArticleView::linkHovered( const QString & link )
   else if ( url.scheme() == "gdtts" ) {
     msg = tr( "TTS Voice" );
   }
-  else if ( url.scheme() == "gdpicture" ) {
-    msg = tr( "Picture" );
-  }
   else if ( url.scheme() == "gdvideo" ) {
     if ( url.path().isEmpty() ) {
       msg = tr( "Video" );
@@ -965,9 +951,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
   Contexts contexts( contexts_ );
 
-  if ( url.scheme().compare( "gdpicture" ) == 0 )
-    load( url );
-  else if ( url.scheme().compare( "ankisearch" ) == 0 ) {
+  if ( url.scheme().compare( "ankisearch" ) == 0 ) {
     ankiConnector->ankiSearch( url.path() );
     return;
   }
@@ -1354,9 +1338,7 @@ void ArticleView::updateMutedContents()
 
 bool ArticleView::canGoBack()
 {
-  // First entry in a history is always an empty page,
-  // so we skip it.
-  return webview->history()->currentItemIndex() > 1;
+  return webview->history()->canGoBack();
 }
 
 bool ArticleView::canGoForward()
@@ -2107,7 +2089,6 @@ bool ArticleView::closeSearch()
   else if ( ftsSearchIsOpened ) {
     firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsPosition       = 0;
     ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
@@ -2308,6 +2289,12 @@ void ArticleView::on_ftsSearchPrevious_clicked()
 void ArticleView::on_ftsSearchNext_clicked()
 {
   performFtsFindOperation( false );
+}
+void ArticleView::clearContent()
+{
+  auto html = articleNetMgr.getHtml( ResourceType::BLANK );
+
+  webview->setHtml( QString::fromStdString( html ) );
 }
 
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):

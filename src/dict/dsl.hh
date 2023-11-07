@@ -15,7 +15,6 @@ using std::string;
 vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
                                                       string const & indicesDir,
                                                       Dictionary::Initializing &,
-                                                      int maxPictureWidth,
                                                       unsigned int maxHeadwordSize );
 
 } // namespace Dsl

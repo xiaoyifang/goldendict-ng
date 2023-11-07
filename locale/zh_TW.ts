@@ -465,7 +465,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>依文件夾自動分組失敗</translation>
+      <translation>按資料夾自動分組失敗。</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
@@ -473,7 +473,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>您確定要依據語言來產生群組嗎？</translation>
+      <translation>您確定要根據包含的資料夾產生一組群組嗎？</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
@@ -661,7 +661,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation>打開索引文件夾</translation>
+      <translation>打開索引資料夾</translation>
     </message>
   </context>
   <context>
@@ -1064,11 +1064,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>創建基於文件夾的群組</translation>
+      <translation>建立基於資料夾的群組。</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>按文件夾分組</translation>
+      <translation>按資料夾分組</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
@@ -3589,7 +3589,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>外貌</translation>
+      <translation>界面外觀</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3745,7 +3745,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>將調試消息保存到配置文件夾中的 gd_log.txt。</translation>
+      <translation>將偵錯訊息儲存到 config 資料夾中的 gd_log.txt。</translation>
     </message>
     <message>
       <source>Reset window state.</source>
@@ -3770,6 +3770,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>打印版本和診斷信息。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in scanpopup</source>
+      <translation>強制在 scanpopup 中翻譯單字</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow</source>
+      <translation>強制在主視窗中翻譯該單字</translation>
     </message>
   </context>
   <context>
@@ -3992,10 +4000,6 @@ GoldenDict 尚不支援此方案。</translation>
       <translation>Lingua Libre</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prouncations provied by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;發音由 &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt; 提供，後者是法國維基媒體的協作語言媒體庫。 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
       <source>Enable Lingua Libre</source>
       <translation>啟用Lingua Libre</translation>
     </message>
@@ -4207,6 +4211,10 @@ Big-5 使用%GDBIG5%，Big5-HKSCS 使用 %GDBIG5HKSCS% ，GBK 和 GB18030 使用
     <message>
       <source>Text to Speech</source>
       <translation>文字轉語音</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;發音由法國維基媒體合作語言媒體圖書館 &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;提供。 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>

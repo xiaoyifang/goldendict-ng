@@ -24,7 +24,8 @@ QRegularExpression Ftx::token( R"((".*?")|([\w\W\+\-]+))",
                                  | QRegularExpression::CaseInsensitiveOption );
 //mdx
 
-QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source)(?:\s+[^>]+|\s*)>))",
+//<audio src="xxx"> is also a valid url.
+QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source|audio|video)(?:\s+[^>]+|\s*)>))",
                                     QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::wordCrossLink( R"(([\s"']href\s*=)\s*(["'])entry://([^>#]*?)((?:#[^>]*?)?)\2)",
                                        QRegularExpression::CaseInsensitiveOption );

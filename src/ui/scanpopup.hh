@@ -88,7 +88,6 @@ signals:
 #endif
 
 public slots:
-  void requestWindowFocus();
 
   void inspectElementWhenPinned( QWebEnginePage * page );
   /// Translates the word from the clipboard, showing the window etc.

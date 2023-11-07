@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-13]
-        qt_ver: [ 6.5.2 ]
+        qt_ver: [ 6.5.2,6.6.0 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -42,8 +42,7 @@ jobs:
        
       - name: install deps on macos
         run: |
-          brew install pcre2 harfbuzz freetype
-          brew install cmake ninja python
+          brew install cmake ninja
           brew install automake
           brew install autoconf
           brew install libtool
@@ -51,11 +50,7 @@ jobs:
           brew install speex
           brew install wavpack
           brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
-          brew install speex
           
-          brew tap homebrew-ffmpeg/ffmpeg
-          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
-
           brew install libiconv
           brew install lzo bzip2
           brew install libogg
@@ -105,7 +100,7 @@ jobs:
           
       - name: compile
         run: |          
-          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=use_breakpad
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=use_breakpad  CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
           make -j8
           
       - name: package
@@ -209,8 +204,8 @@ jobs:
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
-            Linux users can use AppImages or Flatpak.
-            https://flathub.org/zh-Hans/apps/io.github.xiaoyifang.goldendict_ng
+            Linux users can use Flatpak or build from source.
+            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
 
             macOS users can use `.dmg` installer.
 
