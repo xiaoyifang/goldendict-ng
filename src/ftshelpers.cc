@@ -31,10 +31,8 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
     auto document = db.get_document( docid );
 
     string const lastDoc   = document.get_data();
-    bool const notFinished = lastDoc != finish_mark;
-    qDebug() << dict->ftsIndexName().c_str() << document.get_data().c_str() << notFinished;
+    return lastDoc != finish_mark;
     //use a special document to mark the end of the index.
-    return notFinished;
   }
   catch ( Xapian::Error & e ) {
     qWarning() << e.get_description().c_str();
