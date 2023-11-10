@@ -12,7 +12,7 @@
 #include <exception>
 #include <stdio.h>
 #include <wctype.h>
-
+#include <QtEndian>
 #include <algorithm>
 
 namespace Dsl {
@@ -832,7 +832,33 @@ DslScanner::DslScanner( string const & fileName ):
   bool needExactEncoding = false;
 
   QByteArray ba = QByteArray::fromRawData( (const char *)firstBytes, 50 );
-  codec         = QTextCodec::codecForUtfText( ba, QTextCodec::codecForName( "UTF-8" ) );
+  codec         = QTextCodec::codecForUtfText( ba, nullptr );
+  if ( !codec ) {
+    // the encoding has no bom.
+    // check the first char # (0x23).
+    auto hashTag      = 0x0023;
+
+    auto uci = qFromUnaligned< uint32_t >( firstBytes );
+    if ( uci == qToBigEndian( hashTag ) ) {
+      codec = QTextCodec::codecForMib( 1018 ); // utf-32 be
+    }
+    else if ( uci == qToLittleEndian( hashTag ) ) {
+      codec = QTextCodec::codecForMib( 1019 ); // utf-32 le
+    }
+    else {
+      auto uc = qFromUnaligned< uint16_t >( firstBytes );
+      if ( uc == qToBigEndian( uint16_t( hashTag ) ) ) {
+        codec = QTextCodec::codecForMib( 1013 ); // utf16 be
+      }
+      else if ( uc == qToLittleEndian( uint16_t( hashTag ) ) ) {
+        codec = QTextCodec::codecForMib( 1014 ); // utf16 le
+      }
+      else {
+        //default encoding
+        codec = QTextCodec::codecForName( "UTF-8" );
+      }
+    }
+  }
 
   encoding = Utf8::getEncodingForName( codec->name() );
   qDebug() << codec->name();
