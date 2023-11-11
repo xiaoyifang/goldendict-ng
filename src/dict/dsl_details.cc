@@ -836,7 +836,7 @@ DslScanner::DslScanner( string const & fileName ):
   if ( !codec ) {
     // the encoding has no bom.
     // check the first char # (0x23).
-    auto hashTag      = 0x0023;
+    auto hashTag = 0x0023;
 
     auto uci = qFromUnaligned< uint32_t >( firstBytes );
     if ( uci == qToBigEndian( hashTag ) ) {
