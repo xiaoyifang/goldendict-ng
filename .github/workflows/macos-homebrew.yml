@@ -41,6 +41,7 @@ jobs:
        
       - name: install deps on macos
         run: |
+          export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
           brew install cmake ninja
           brew install automake
           brew install autoconf
