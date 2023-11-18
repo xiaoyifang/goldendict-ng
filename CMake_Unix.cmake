@@ -29,8 +29,6 @@ find_package(PkgConfig REQUIRED)
 # Provided by Cmake
 find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
-find_package(Iconv REQUIRED)
-
 
 # Consider all PkgConfig dependencies as one
 pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
@@ -46,7 +44,6 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         PkgConfig::PKGCONFIG_DEPS
         BZip2::BZip2
         ZLIB::ZLIB
-        Iconv::Iconv
         )
 
 if (WITH_FFMPEG_PLAYER)
