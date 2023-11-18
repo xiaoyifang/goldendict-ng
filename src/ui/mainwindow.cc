@@ -2856,7 +2856,7 @@ void MainWindow::toggleMainWindow( bool onlyShow )
 
 void MainWindow::installHotKeys()
 {
-#if defined( Q_OS_LINUX )
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
     return;
   }
