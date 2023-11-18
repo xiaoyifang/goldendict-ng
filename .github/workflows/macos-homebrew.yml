@@ -101,20 +101,12 @@ jobs:
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
-          otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
-          # otool -L GoldenDict.app/Contents/Frameworks/libav*
-          # otool -L GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib
-          # cp -r /usr/local/Cellar/icu4c/7*/lib/libicu*.dylib  GoldenDict.app/Contents/Frameworks
-          # cp -r /usr/local/Cellar/zstd/1.5.5/lib/libzstd.1.dylib  GoldenDict.app/Contents/Frameworks
-          dylibbundler -of -b -x GoldenDict.app/Contents/Frameworks/libzim.8.dylib -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
-          # dylibbundler -of -b -x GoldenDict.app/Contents/Frameworks/libicu* -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
-          
+  
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
-          # dylibbundler -of   -x  GoldenDict.app/Contents/Frameworks/libavformat.60.dylib -x  GoldenDict.app/Contents/Frameworks/libavcodec.60.dylib   -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
-          # dylibbundler -of -b -x   GoldenDict.app/Contents/Frameworks/libjxl.0.8.dylib     -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/
           
           otool -L GoldenDict.app/Contents/Frameworks/libicu*
-          otool -L GoldenDict.app/Contents/Frameworks/libzim.8.dylib
+          otool -L GoldenDict.app/Contents/Frameworks/libzim*
           otool -L GoldenDict.app/Contents/Frameworks/libxapian.30.dylib
           otool -L GoldenDict.app/Contents/Frameworks/liblzma.5.dylib
 
