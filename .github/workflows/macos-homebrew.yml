@@ -104,8 +104,8 @@ jobs:
           find /usr/local -name "libicudata*.dylib"
           find /usr/local/Cellar -name "libicudata.*.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           ls -al GoldenDict.app/Contents/Frameworks
-          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
           
           otool -L GoldenDict.app/Contents/Frameworks/libicu*
           otool -L GoldenDict.app/Contents/Frameworks/libzim*
