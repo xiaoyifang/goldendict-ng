@@ -101,14 +101,13 @@ jobs:
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
-  
-          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
-          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
+          find /usr/local/Cellar -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
+          
+          dylibbundler -of -b -x GoldenDict.app/Contents/MacOS/GoldenDict -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  
+          dylibbundler -of -cd -b -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  
           
           otool -L GoldenDict.app/Contents/Frameworks/libicu*
           otool -L GoldenDict.app/Contents/Frameworks/libzim*
-          otool -L GoldenDict.app/Contents/Frameworks/libxapian.30.dylib
-          otool -L GoldenDict.app/Contents/Frameworks/liblzma.5.dylib
 
           codesign --force --deep -s - GoldenDict.app
           
