@@ -104,7 +104,7 @@ jobs:
           find /usr/local/Cellar -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           
           dylibbundler -of -b -x GoldenDict.app/Contents/MacOS/GoldenDict -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  
-          dylibbundler -of -b -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  
+          dylibbundler -of -cd -b -x GoldenDict.app/Contents/Frameworks/libicudata.73.dylib -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  
           
           otool -L GoldenDict.app/Contents/Frameworks/libicu*
           otool -L GoldenDict.app/Contents/Frameworks/libzim*
