@@ -101,7 +101,8 @@ jobs:
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
           ls -al GoldenDict.app/Contents/Frameworks
-  
+          find /usr/local  -type f -name "libicudata*" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
+          ls -al GoldenDict.app/Contents/Frameworks
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
           
