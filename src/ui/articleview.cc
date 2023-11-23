@@ -557,7 +557,7 @@ bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
       return false;
     QString script = QString(
                        "var elem=document.getElementById('%1'); "
-                       "if(elem!=undefined){elem.scrollIntoView(true);} gdMakeArticleActive('%2',true);" )
+                       "if(elem!=undefined){elem.scrollIntoView(true);} if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive('%2',true);" )
                        .arg( id, dictId );
     onJsActiveArticleChanged( id );
     webview->page()->runJavaScript( script );
