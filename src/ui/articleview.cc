@@ -555,10 +555,11 @@ bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
     QString dictId = id.mid( 7 );
     if ( dictId.isEmpty() )
       return false;
-    QString script = QString(
-                       "var elem=document.getElementById('%1'); "
-                       "if(elem!=undefined){elem.scrollIntoView(true);} if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive('%2',true);" )
-                       .arg( id, dictId );
+    QString script =
+      QString(
+        "var elem=document.getElementById('%1'); "
+        "if(elem!=undefined){elem.scrollIntoView(true);} if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive('%2',true);" )
+        .arg( id, dictId );
     onJsActiveArticleChanged( id );
     webview->page()->runJavaScript( script );
     setActiveArticleId( dictId );
