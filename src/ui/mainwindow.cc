@@ -1942,7 +1942,7 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   else {
     escaped = title;
   }
-  escaped = Utils::escapeAmps(escaped);
+  escaped = Utils::escapeAmps( escaped );
 
   int index = ui.tabWidget->indexOf( view );
   if ( !escaped.isEmpty() )
