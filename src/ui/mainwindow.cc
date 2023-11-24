@@ -1814,8 +1814,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
 
-  QString escaped = name;
-  escaped.replace( "&", "&&" );
+  QString escaped = Utils::escapeAmps( name );
 
   ui.tabWidget->insertTab( index, view, escaped );
   mruList.append( dynamic_cast< QWidget * >( view ) );
@@ -1943,7 +1942,7 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   else {
     escaped = title;
   }
-  escaped.replace( "&", "&&" );
+  escaped = Utils::escapeAmps(escaped);
 
   int index = ui.tabWidget->indexOf( view );
   if ( !escaped.isEmpty() )
@@ -4264,11 +4263,7 @@ void MainWindow::showFTSIndexingName( QString const & name )
 QString MainWindow::unescapeTabHeader( QString const & header )
 {
   // Reset table header to original headword
-
-  QString escaped = header;
-  escaped.replace( "&&", "&" );
-
-  return escaped;
+  return Utils::unescapeAmps( header );
 }
 
 void MainWindow::addCurrentTabToFavorites()

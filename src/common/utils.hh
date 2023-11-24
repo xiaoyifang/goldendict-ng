@@ -341,6 +341,10 @@ void removeDirectory( QString const & directory );
 void removeDirectory( string const & directory );
 } // namespace Fs
 
+QString escapeAmps( QString const & str );
+
+QString unescapeAmps( QString const & str );
+
 } // namespace Utils
 
 #endif // UTILS_HH

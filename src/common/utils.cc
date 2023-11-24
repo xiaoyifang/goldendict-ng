@@ -35,6 +35,20 @@ bool endsWithIgnoreCase( const string & str1, string str2 )
   return ( str1.size() >= (unsigned)str2.size() )
     && ( strcasecmp( str1.c_str() + ( str1.size() - str2.size() ), str2.data() ) == 0 );
 }
+
+QString escapeAmps( QString const & str )
+{
+  QString result( str );
+  result.replace( "&", "&&" );
+  return result;
+}
+
+QString unescapeAmps( QString const & str )
+{
+  QString result( str );
+  result.replace( "&&", "&" );
+  return result;
+}
 } // namespace Utils
 
 QString Utils::Path::combine( const QString & path1, const QString & path2 )
