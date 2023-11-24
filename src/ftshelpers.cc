@@ -137,7 +137,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       indexer.set_document( doc );
 
       indexer.index_text( articleStr.toStdString() );
-      
+
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
