@@ -477,8 +477,9 @@ void ArticleView::loadFinished( bool result )
   if ( result ) {
     emit pageLoaded( this );
   }
-  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) )
+  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
     highlightFTSResults();
+  }
 }
 
 void ArticleView::handleTitleChanged( QString const & title )
@@ -2137,54 +2138,21 @@ void ArticleView::highlightFTSResults()
   if ( regString.isEmpty() )
     return;
 
-  //<div><i>watch</i>out</div>  to plainText will return "watchout".
-  //if application goes here,that means the article text must contains the search text.
-  //whole word match regString will contain \b . can not match the above senario.
-  //workaround ,remove \b from the regstring="(\bwatch\b)"
-  regString.remove( QRegularExpression( R"(\b)" ) );
 
-  //make it simple ,and do not support too much complex cases. such as wildcard etc.
-  firstAvailableText = regString;
+  //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
+  regString.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])", QRegularExpression::UseUnicodePropertiesOption ),
+                     " " );
 
-  if ( firstAvailableText.isEmpty() ) {
-    return;
-  }
-
-  //remove possible wildcard character.
-  auto cleaned =
-    firstAvailableText.split( QRegularExpression( "\\p{P}", QRegularExpression::UseUnicodePropertiesOption ) );
-
-  if ( cleaned.empty() )
+  if ( regString.trimmed().isEmpty() )
     return;
 
-  firstAvailableText = cleaned.at( 0 );
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  webview->findText( firstAvailableText,
-                     QWebEnginePage::FindBackward,
-                     [ & ]( const QWebEngineFindTextResult & result ) {
-                       qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
+  QString script = QString(
+                     "var context = document.querySelector(\"body\");\n"
+                     "var instance = new Mark(context);\n"
+                     "instance.mark(\"%1\");" )
+                     .arg( regString );
 
-                       if ( result.numberOfMatches() == 0 ) {
-                         ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-                       }
-                       else {
-                         ftsSearchPanel->statusLabel->setText(
-                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-                       }
-
-                       ftsSearchPanel->show();
-                       ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
-                       ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
-
-                       ftsSearchIsOpened = true;
-                     } );
-#else
-  webview->findText( firstAvailableText, QWebEnginePage::FindBackward, [ this ]( bool res ) {
-    ftsSearchPanel->previous->setEnabled( res );
-    if ( !ftsSearchPanel->next->isEnabled() )
-      ftsSearchPanel->next->setEnabled( res );
-  } );
-#endif
+  webview->page()->runJavaScript( script );
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
