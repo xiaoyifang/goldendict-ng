@@ -193,12 +193,12 @@ void FTSResultsRequest::run()
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
-      qp.set_default_op(Xapian::Query::op::OP_AND);
-      int flag = Xapian::QueryParser::FLAG_DEFAULT|Xapian::QueryParser::FLAG_PURE_NOT| Xapian::QueryParser::FLAG_CJK_NGRAM;
-      if ( searchMode == FTS::Wildcards )
-      {
+      qp.set_default_op( Xapian::Query::op::OP_AND );
+      int flag =
+        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+      if ( searchMode == FTS::Wildcards ) {
         flag = flag | Xapian::QueryParser::FLAG_WILDCARD;
-        qp.set_max_expansion(1);
+        qp.set_max_expansion( 1 );
       }
       Xapian::Query query = qp.parse_query( query_string, flag );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
