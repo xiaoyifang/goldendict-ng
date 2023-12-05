@@ -1772,8 +1772,16 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
       if ( !fileName.isEmpty() ) {
         QFileInfo fileInfo( fileName );
-        saveResource( url, webview->url(), fileName );
-        QDesktopServices::openUrl( fileName );
+        auto handler = saveResource( url, webview->url(), fileName );
+
+        if ( !handler->isEmpty() ) {
+          connect( handler, &ResourceToSaveHandler::done, this, [fileName](){
+            QDesktopServices::openUrl( fileName );
+          } );
+        }
+        else{
+          QDesktopServices::openUrl( fileName );
+        }
       }
     }
     else {
