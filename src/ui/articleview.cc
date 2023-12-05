@@ -1767,7 +1767,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       if ( name.length() && name[ name.length() - 1 ] == '\x1F' )
         name.chop( 1 );
 
-      fileName = QString::number(QRandomGenerator::global()->generate()) + name;
+      fileName = QString::number( QRandomGenerator::global()->generate() ) + name;
 
 
       if ( !fileName.isEmpty() ) {
