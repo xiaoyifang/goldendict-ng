@@ -340,6 +340,7 @@ void DictServerDictionary::getServerDatabasesAfterConnect()
 
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
+  Q_OBJECT
   QAtomicInt isCancelled;
   wstring word;
   QString errorString;
@@ -849,5 +850,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
 
   return result;
 }
-
+#include "dictserver.moc"
 } // namespace DictServer
