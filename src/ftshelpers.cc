@@ -116,8 +116,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     for ( auto const & address : offsets ) {
       indexedDoc++;
 
-      if ( address > lastAddress && skip ) {
+      if ( address == lastAddress && skip ) {
         skip = false;
+        continue;
       }
       //skip until to the lastAddress;
       if ( skip ) {
