@@ -511,6 +511,8 @@ void DictServerWordSearchRequest::cancel()
 
 class DictServerArticleRequest: public Dictionary::DataRequest
 {
+  Q_OBJECT
+  
   QAtomicInt isCancelled;
   wstring word;
   QString errorString;
