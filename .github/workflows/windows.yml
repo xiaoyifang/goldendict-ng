@@ -27,8 +27,8 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 23.11.08
-      version-suffix: BeginningOfWinter
+      version: 23.12.07
+      version-suffix: HeavySnow
       prerelease: false
     # 步骤
     steps:

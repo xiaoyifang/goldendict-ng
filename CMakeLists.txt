@@ -22,7 +22,7 @@ option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 23.11.08
+        VERSION 23.12.07
         LANGUAGES CXX C)
 
 if (NOT USE_ALTERNATIVE_NAME)
