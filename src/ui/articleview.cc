@@ -30,6 +30,7 @@
 #include <QWebEngineSettings>
 #include <map>
 #include <QApplication>
+#include <QRandomGenerator>
 
 #if ( QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 ) && QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   #include <QWebEngineContextMenuData>
@@ -477,8 +478,9 @@ void ArticleView::loadFinished( bool result )
   if ( result ) {
     emit pageLoaded( this );
   }
-  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) )
+  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
     highlightFTSResults();
+  }
 }
 
 void ArticleView::handleTitleChanged( QString const & title )
@@ -555,10 +557,11 @@ bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
     QString dictId = id.mid( 7 );
     if ( dictId.isEmpty() )
       return false;
-    QString script = QString(
-                       "var elem=document.getElementById('%1'); "
-                       "if(elem!=undefined){elem.scrollIntoView(true);} gdMakeArticleActive('%2',true);" )
-                       .arg( id, dictId );
+    QString script =
+      QString(
+        "var elem=document.getElementById('%1'); "
+        "if(elem!=undefined){elem.scrollIntoView(true);} if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive('%2',true);" )
+        .arg( id, dictId );
     onJsActiveArticleChanged( id );
     webview->page()->runJavaScript( script );
     setActiveArticleId( dictId );
@@ -1491,6 +1494,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QAction * addHeaderToHistoryAction  = nullptr;
   QAction * sendWordToInputLineAction = nullptr;
   QAction * saveImageAction           = nullptr;
+  QAction * openImageAction           = nullptr;
   QAction * saveSoundAction           = nullptr;
   QAction * saveBookmark              = nullptr;
 
@@ -1534,6 +1538,9 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       menu.addAction( webview->pageAction( QWebEnginePage::CopyImageToClipboard ) );
       saveImageAction = new QAction( tr( "Save &image..." ), &menu );
       menu.addAction( saveImageAction );
+
+      openImageAction = new QAction( tr( "Open image in system viewer..." ), &menu );
+      menu.addAction( openImageAction );
     }
   }
 
@@ -1744,6 +1751,36 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
         QFileInfo fileInfo( fileName );
         emit storeResourceSavePath( QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() ) );
         saveResource( url, webview->url(), fileName );
+      }
+    }
+    else if ( result == openImageAction ) {
+      QUrl url = imageUrl;
+      QString fileName;
+
+
+      QString name = Utils::Url::path( url ).section( '/', -1 );
+      // Image data
+
+      // Check for babylon image name
+      if ( name[ 0 ] == '\x1E' )
+        name.remove( 0, 1 );
+      if ( name.length() && name[ name.length() - 1 ] == '\x1F' )
+        name.chop( 1 );
+
+      fileName = QDir::temp().filePath( QString::number( QRandomGenerator::global()->generate() ) + name );
+
+      if ( !fileName.isEmpty() ) {
+        QFileInfo fileInfo( fileName );
+        auto handler = saveResource( url, webview->url(), fileName );
+
+        if ( !handler->isEmpty() ) {
+          connect( handler, &ResourceToSaveHandler::done, this, [ fileName ]() {
+            QDesktopServices::openUrl( fileName );
+          } );
+        }
+        else {
+          QDesktopServices::openUrl( fileName );
+        }
       }
     }
     else {
@@ -2136,54 +2173,21 @@ void ArticleView::highlightFTSResults()
   if ( regString.isEmpty() )
     return;
 
-  //<div><i>watch</i>out</div>  to plainText will return "watchout".
-  //if application goes here,that means the article text must contains the search text.
-  //whole word match regString will contain \b . can not match the above senario.
-  //workaround ,remove \b from the regstring="(\bwatch\b)"
-  regString.remove( QRegularExpression( R"(\b)" ) );
 
-  //make it simple ,and do not support too much complex cases. such as wildcard etc.
-  firstAvailableText = regString;
+  //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
+  regString.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])", QRegularExpression::UseUnicodePropertiesOption ),
+                     " " );
 
-  if ( firstAvailableText.isEmpty() ) {
-    return;
-  }
-
-  //remove possible wildcard character.
-  auto cleaned =
-    firstAvailableText.split( QRegularExpression( "\\p{P}", QRegularExpression::UseUnicodePropertiesOption ) );
-
-  if ( cleaned.empty() )
+  if ( regString.trimmed().isEmpty() )
     return;
 
-  firstAvailableText = cleaned.at( 0 );
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  webview->findText( firstAvailableText,
-                     QWebEnginePage::FindBackward,
-                     [ & ]( const QWebEngineFindTextResult & result ) {
-                       qInfo() << result.activeMatch() << "of" << result.numberOfMatches() << "matches";
+  QString script = QString(
+                     "var context = document.querySelector(\"body\");\n"
+                     "var instance = new Mark(context);\n"
+                     "instance.mark(\"%1\",{\"accuracy\": \"exactly\"});" )
+                     .arg( regString );
 
-                       if ( result.numberOfMatches() == 0 ) {
-                         ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-                       }
-                       else {
-                         ftsSearchPanel->statusLabel->setText(
-                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-                       }
-
-                       ftsSearchPanel->show();
-                       ftsSearchPanel->previous->setEnabled( result.numberOfMatches() > 1 );
-                       ftsSearchPanel->next->setEnabled( result.numberOfMatches() > 1 );
-
-                       ftsSearchIsOpened = true;
-                     } );
-#else
-  webview->findText( firstAvailableText, QWebEnginePage::FindBackward, [ this ]( bool res ) {
-    ftsSearchPanel->previous->setEnabled( res );
-    if ( !ftsSearchPanel->next->isEnabled() )
-      ftsSearchPanel->next->setEnabled( res );
-  } );
-#endif
+  webview->page()->runJavaScript( script );
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )

@@ -141,6 +141,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
               .toStdString();
 
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
+  result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
   if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
     //only enable this darkmode on modern style.
@@ -674,8 +675,8 @@ void ArticleRequest::bodyFinished()
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
                           R"( <div class="gdarticle {0} {1}" id="{2}"
-                              onClick="gdMakeArticleActive( '{3}', false );"
-                              onContextMenu="gdMakeArticleActive( '{3}', false );">)" ),
+                              onClick="if(typeof gdMakeArticleActive !='undefined')  gdMakeArticleActive( '{3}', false );"
+                              onContextMenu="if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive( '{3}', false );">)" ),
                         closePrevSpan ? "" : " gdactivearticle",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,

@@ -31,10 +31,8 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
     auto document = db.get_document( docid );
 
     string const lastDoc   = document.get_data();
-    bool const notFinished = lastDoc != finish_mark;
-    qDebug() << dict->ftsIndexName().c_str() << document.get_data().c_str() << notFinished;
+    return lastDoc != finish_mark;
     //use a special document to mark the end of the index.
-    return notFinished;
   }
   catch ( Xapian::Error & e ) {
     qWarning() << e.get_description().c_str();
@@ -118,8 +116,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     for ( auto const & address : offsets ) {
       indexedDoc++;
 
-      if ( address > lastAddress && skip ) {
+      if ( address == lastAddress && skip ) {
         skip = false;
+        continue;
       }
       //skip until to the lastAddress;
       if ( skip ) {
@@ -138,12 +137,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
       indexer.set_document( doc );
 
-      if ( GlobalBroadcaster::instance()->getPreference()->fts.enablePosition ) {
-        indexer.index_text( articleStr.toStdString() );
-      }
-      else {
-        indexer.index_text_without_positions( articleStr.toStdString() );
-      }
+      indexer.index_text( articleStr.toStdString() );
+
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
@@ -199,10 +194,14 @@ void FTSResultsRequest::run()
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
-      Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
-      if ( searchMode == FTS::Wildcards )
-        flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag | Xapian::QueryParser::FLAG_CJK_NGRAM );
+      qp.set_default_op( Xapian::Query::op::OP_AND );
+      int flag =
+        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+      if ( searchMode == FTS::Wildcards ) {
+        flag = flag | Xapian::QueryParser::FLAG_WILDCARD;
+        qp.set_max_expansion( 1 );
+      }
+      Xapian::Query query = qp.parse_query( query_string, flag );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.

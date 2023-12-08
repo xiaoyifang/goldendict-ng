@@ -320,7 +320,7 @@ bool MdictParser::readHeader( QDataStream & in )
 
   if ( headerText.contains( "StyleSheet" ) ) {
     // a workaround to bypass https://bugreports.qt.io/browse/QTBUG-102612
-    QRegularExpression rx( "StyleSheet=\"([^\"]*?)\"", QRegularExpression::CaseInsensitiveOption );
+    QRegularExpression const rx( "StyleSheet=\"([^\"]*?)\"", QRegularExpression::CaseInsensitiveOption );
 
     auto match = rx.match( headerText );
 
@@ -333,6 +333,9 @@ bool MdictParser::readHeader( QDataStream & in )
   headerText.remove( QRegularExpression( "\\p{C}", QRegularExpression::UseUnicodePropertiesOption ) );
 
   QDomNamedNodeMap headerAttributes = parseHeaderAttributes( headerText );
+
+  if ( headerAttributes.isEmpty() )
+    return false;
 
   encoding_ = headerAttributes.namedItem( "Encoding" ).toAttr().value();
   if ( encoding_ == "GBK" || encoding_ == "GB2312" ) {

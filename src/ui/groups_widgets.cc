@@ -8,6 +8,7 @@
 #include "langcoder.hh"
 #include "language.hh"
 #include "metadata.hh"
+#include "utils.hh"
 
 #include <QDir>
 #include <QFileDialog>
@@ -517,23 +518,6 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setUsesScrollButtons( true );
 }
 
-namespace {
-
-QString escapeAmps( QString const & str )
-{
-  QString result( str );
-  result.replace( "&", "&&" );
-  return result;
-}
-
-QString unescapeAmps( QString const & str )
-{
-  QString result( str );
-  result.replace( "&&", "&" );
-  return result;
-}
-
-} // namespace
 
 void DictGroupsWidget::populate( Config::Groups const & groups,
                                  vector< sptr< Dictionary::Class > > const & allDicts_,
@@ -546,7 +530,7 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
 
   for ( int x = 0; x < groups.size(); ++x ) {
     const auto gr = new DictGroupWidget( this, *allDicts, groups[ x ] );
-    addTab( gr, escapeAmps( groups[ x ].name ) );
+    addTab( gr, Utils::escapeAmps( groups[ x ].name ) );
     connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
     connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
@@ -569,7 +553,7 @@ Config::Groups DictGroupsWidget::makeGroups() const
 
   for ( int x = 0; x < count(); ++x ) {
     result.push_back( dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup() );
-    result.back().name = unescapeAmps( tabText( x ) );
+    result.back().name = Utils::unescapeAmps( tabText( x ) );
   }
 
   return result;
@@ -638,7 +622,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
   newGroup.id = nextId++;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
-  const int idx = insertTab( currentIndex() + 1, gr, escapeAmps( name ) );
+  const int idx = insertTab( currentIndex() + 1, gr, Utils::escapeAmps( name ) );
   connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
 
   connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
@@ -897,7 +881,7 @@ QString DictGroupsWidget::getCurrentGroupName() const
   const int current = currentIndex();
 
   if ( current >= 0 )
-    return unescapeAmps( tabText( current ) );
+    return Utils::unescapeAmps( tabText( current ) );
 
   return QString();
 }
@@ -907,7 +891,7 @@ void DictGroupsWidget::renameCurrentGroup( QString const & name )
   const int current = currentIndex();
 
   if ( current >= 0 )
-    setTabText( current, escapeAmps( name ) );
+    setTabText( current, Utils::escapeAmps( name ) );
 }
 
 void DictGroupsWidget::removeCurrentGroup()
