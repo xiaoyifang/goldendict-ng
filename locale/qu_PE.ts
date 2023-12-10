@@ -204,10 +204,6 @@
       <translation>TTS Kunka</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Rikchay</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Anki qillqasqata paqarichiy</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3623,14 +3623,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Tukuy rikchaq</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Diccionario css/js kaqwan pantaykunata allichaspa, wakin waqaychasqa kaqta mana llamk'achiy aswan facil kananpaq.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Diccionario pantay allichay</translation>
     </message>
     <message>
       <source>Interface Font</source>
