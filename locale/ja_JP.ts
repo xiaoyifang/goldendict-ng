@@ -204,10 +204,6 @@
       <translation>TTS音声</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>画像</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>動画です。</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>アンキノートを作成(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3626,14 +3626,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>その他</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>dictionary css/jsでデバッグする場合は、キャッシュを無効にすると簡単になります。</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>辞書デバッグ</translation>
     </message>
     <message>
       <source>Interface Font</source>
