@@ -204,10 +204,6 @@
       <translation>TTS Stem</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Afbeelding</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Maak Anki-notitie</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3623,14 +3623,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Gemengd</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Bij het debuggen met woordenboek/js, schakel bepaalde cache uit om het makkelijker te maken.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Woordenboek debug</translation>
     </message>
     <message>
       <source>Interface Font</source>

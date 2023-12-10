@@ -214,10 +214,6 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>TTS Aru</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Jamuqa</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Uñtaña</translation>
@@ -309,6 +305,10 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Anki qillqata luraña</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3758,14 +3758,6 @@ Kunapachanakas thaqhat arunaka imt&apos;aña.
     <message>
       <source>Miscellaneous</source>
       <translation>Misilanyas</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Kunawsatix diccionario css/js ukamp depuración luraski ukhax yaqhip caché ukar jan ch’amanchañaw jan ch’amäñapataki.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Diccionario debug ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Interface Font</source>

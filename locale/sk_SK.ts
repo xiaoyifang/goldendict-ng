@@ -204,10 +204,6 @@
       <translation>TTS Hlas</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Obrázok</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Vytvoriť poznámku Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3620,14 +3620,6 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Zmiešaný</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Pri ladení pomocou slovníka css/js deaktivujte určitú vyrovnávaciu pamäť, aby ste to uľahčili.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Ladenie slovníka</translation>
     </message>
     <message>
       <source>Interface Font</source>

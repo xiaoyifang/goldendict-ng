@@ -204,10 +204,6 @@
       <translation>Овози TTS (Матн ба талаффуз)</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Тасвир</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Видео</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Эҷод кардани ёддошти Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3627,14 +3627,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>Гуногун</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Ҳангоми ислоҳ кардани луғати css/js, кэши муайянро ғайрифаъол кунед, то ин корро осон кунад.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>ислоҳи луғат</translation>
     </message>
     <message>
       <source>Interface Font</source>

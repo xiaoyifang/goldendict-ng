@@ -204,10 +204,6 @@
       <translation>Synthèse vocale TTS</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Image</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Vidéo</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Créer une note Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3623,14 +3623,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Divers</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Lors du débogage avec le dictionnaire css/js, désactivez un certain cache pour le rendre plus facile.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Débogage du dictionnaire</translation>
     </message>
     <message>
       <source>Interface Font</source>

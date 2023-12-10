@@ -204,10 +204,6 @@
       <translation>टी.टीए.एस. ध्वनि</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>छवि</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>वीडियो</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;अंकी नोट बनाएं</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3611,14 +3611,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>मिश्रित</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>डिक्शनरी सीएसएस/जेएस के साथ डिबगिंग करते समय, इसे आसान बनाने के लिए कुछ कैश को अक्षम करें।</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>शब्दकोश डीबग</translation>
     </message>
     <message>
       <source>Interface Font</source>

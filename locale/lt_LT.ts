@@ -204,10 +204,6 @@
       <translation>TTS balsas</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Paveikslėlis</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Vaizdo klipas</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Sukurti Anki užrašą</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3624,14 +3624,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>Įvairūs</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Derindami naudodami žodyną css/js, išjunkite tam tikrą talpyklą, kad būtų lengviau.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Žodyno derinimas</translation>
     </message>
     <message>
       <source>Interface Font</source>

@@ -104,21 +104,7 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 &lt;h3 align=&quot;center&quot;&gt;Willkommen zu &lt;b&gt;GoldenDict&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Das sind die ersten Schritte um mit dem Programm arbeiten zu können. &lt;p&gt; Gehen Sie zunächst auf &lt;b&gt;Bearbeiten » Wörterbücher...&lt;/b&gt; um die Pfade zu abgespeicherten Wörterbüchern hinzuzufügen sowie um Wikipedia und andere Seiten einzurichten oder die Wörterbücher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p&gt;
-&lt;p&gt;Nun sind Sie bereit das erste Wort nachzuschlagen. Dies können Sie im Eingabe-Fenster machen oder &lt;a href=&quot;Mit Popups arbeiten&quot;&gt;mittels der Popup-Funktion in anderen Applikationen.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Um das Programm anzupassen öffnen Sie &lt;b&gt;Bearbeiten » Einstellungen...&lt;/b&gt;&lt;br /&gt;Viele Einstellungen sind auch mit Tipps versehen.&lt;/p&gt;
-&lt;p&gt;Hilfe, Fragen und Antworten dazu finden Sie im archvierten &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;.&lt;br /&gt;Programm Updates finden sind auf der Webseite &lt;a href=&quot;https://sourceforge.net/projects/goldendict/&quot;&gt;GoldenDict&lt;/a&gt; und den weiterhin gepflegten Source auf &lt;a href=&quot;https://github.com/goldendict/goldendict/&quot;&gt;GoldenDict Source&lt;/a&gt;.
-&lt;br /&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;p&gt;&lt;/p&gt;
-&lt;BODY&gt;
-&lt;DIV&gt;&lt;B&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;
-&lt;HR&gt;
-&lt;/SPAN&gt;&lt;/B&gt;&lt;/DIV&gt;
-&lt;DIV&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;Seit 2021: &lt;br /&gt;Ein neuer Fork von XIAO, mit z.B. einer OCR Erkennung mittels dem externen Hilfsprogramm &lt;a href=&quot;https://sourceforge.net/projects/capture2text/&quot;&gt;Capture2Text&lt;/a&gt; und 
-vielen anderen Optimierungen, finden Sie auf der &lt;/SPAN&gt;&lt;SPAN style=&quot;COLOR: red&quot;&gt;&lt;A 
-href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.&lt;/A&gt;&lt;FONT color=#000000&gt;
-
-&lt;HR&gt;
-</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Willkommen bei &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Um mit dem Programm zu arbeiten, besuchen Sie zunächst &lt;b&gt;Bearbeiten|Wörterbücher&lt;/b&gt; , um einige Verzeichnispfade hinzuzufügen, in denen Sie nach Wörterbuchdateien suchen, verschiedene Wikipedia-Sites oder andere Quellen einrichten, die Wörterbuchreihenfolge anpassen oder Wörterbuchgruppen erstellen können.&lt;p&gt;Und dann bist du&apos;, deine Worte nachzuschlagen! Sie können dies in diesem Fenster tun, indem Sie einen Bereich auf der linken Seite verwenden, oder Sie können &lt;button id=&quot;lookup-popup&quot;&gt;aus anderen aktiven Anwendungen nachschlagen&lt;/button&gt;. &lt;p&gt;Um das Programm anzupassen, sehen Sie sich die verfügbaren Einstellungen unter &lt;b&gt;Bearbeiten|Einstellungen&lt;/b&gt;an. Alle dortigen Einstellungen verfügen über Tooltips. Lesen Sie diese unbedingt durch, wenn Sie Zweifel haben.&lt;p&gt;Sollten Sie weitere Hilfe benötigen, Fragen oder Anregungen haben oder sich einfach nur fragen, was die anderen denken, sind Sie im Programm&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;herzlich willkommen.&lt;p&gt;Überprüfen Sie die Website&lt;/a&gt; des Programms&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;auf Aktualisierungen. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lizenziert unter GPLv3 oder höher.</translation>
     </message>
   </context>
   <context>
@@ -219,10 +205,6 @@ href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.
       <translation>TTS Stimme</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Bild</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -314,6 +296,10 @@ href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von XIAO.
     <message>
       <source>&amp;Create Anki note</source>
       <translation>Anki-Notiz &amp;erstellen</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3628,14 +3614,6 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Sonstiges</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Beim Debuggen mit Wörterbuch CSS/JS, deaktiviere bestimmte Caches ...</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Wörterbuch-Debugging</translation>
     </message>
     <message>
       <source>Interface Font</source>

@@ -207,10 +207,6 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
       <translation>TTS Ses</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Resim</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -302,6 +298,10 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Anki notu oluştur</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3625,14 +3625,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Miscellaneous</source>
       <translation>Çeşitli</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Sözlük css/js ile hata ayıklama yaparken, bunu kolaylaştırmak için belirli önbelleği devre dışı bırakın.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Sözlük hata ayıklaması</translation>
     </message>
     <message>
       <source>Interface Font</source>

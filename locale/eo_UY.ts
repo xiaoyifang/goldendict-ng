@@ -204,10 +204,6 @@
       <translation>Parolsintezo</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Bildo</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Krei Anki-noton</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3627,14 +3627,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Diversaj</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Kiam vi elpurigas per vortaro css/js, malŝaltu certan kaŝmemoron por plifaciligi ĝin.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Vortaro elpurigi</translation>
     </message>
     <message>
       <source>Interface Font</source>

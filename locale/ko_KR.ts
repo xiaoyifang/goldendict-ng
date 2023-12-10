@@ -204,10 +204,6 @@
       <translation>TTS 음성</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>그림</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>비디오</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>안키 노트 만들기(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3623,14 +3623,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>여러 가지 잡다한</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>사전 CSS/js로 디버깅할 때 특정 캐시를 비활성화하면 더 쉽게 디버깅할 수 있습니다.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>사전 디버그</translation>
     </message>
     <message>
       <source>Interface Font</source>
