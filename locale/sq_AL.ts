@@ -204,10 +204,6 @@
       <translation>TTS Voice</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Figura</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Krijoni shënimin Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3619,14 +3619,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Të ndryshme</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Kur korrigjoni gabimet me fjalorin css/js, çaktivizoni cache të caktuar për ta bërë më të lehtë.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Korrigjimi i fjalorit</translation>
     </message>
     <message>
       <source>Interface Font</source>
