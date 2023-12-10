@@ -204,10 +204,6 @@
       <translation>Giọng nói TTS</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Hình ảnh</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Tạo ghi chú Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3620,14 +3620,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Điều khoản khác</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Khi gỡ lỗi với từ điển css/js, hãy tắt bộ đệm nhất định để dễ dàng hơn.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Gỡ lỗi từ điển</translation>
     </message>
     <message>
       <source>Interface Font</source>
