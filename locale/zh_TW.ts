@@ -204,10 +204,6 @@
       <translation>文字轉語音聲音</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>圖片</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>影像</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>製作anki note</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3618,14 +3618,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>雜項</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>當使用字典 css/js 進行調試時，禁用某些緩存以使其更容易。</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>字典調試</translation>
     </message>
     <message>
       <source>Interface Font</source>
