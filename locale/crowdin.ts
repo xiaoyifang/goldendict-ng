@@ -204,10 +204,6 @@
         <translation>TTS 音频</translation>
     </message>
     <message>
-        <source>Picture</source>
-        <translation>图片</translation>
-    </message>
-    <message>
         <source>Video</source>
         <translatorcomment>视频: %1</translatorcomment>
         <translation>视频</translation>
@@ -299,6 +295,10 @@
     <message>
         <source>&amp;Create Anki note</source>
         <translation>创建 Anki 笔记(&amp;C)</translation>
+    </message>
+    <message>
+        <source>Open image in system viewer...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3609,14 +3609,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dictionary debug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
