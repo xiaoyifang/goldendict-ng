@@ -204,10 +204,6 @@
       <translation>TTS sesi</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Surat</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Wideo</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp; Anki belligini dörediň</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3626,14 +3626,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Dürli</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Css / js sözlügi bilen düzediş girizilende, aňsatlaşdyrmak üçin belli bir keşi öçüriň.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Sözlük düzediş</translation>
     </message>
     <message>
       <source>Interface Font</source>
