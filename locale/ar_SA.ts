@@ -204,10 +204,6 @@
       <translation>صوت قراءة النّصوص</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>الصورة</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>المرئيات</translation>
@@ -299,6 +295,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp; إنشاء ملاحظة Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
   </context>
   <context>
@@ -3624,14 +3624,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation type="unfinished">Miscellaneous</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation type="unfinished">When debugging with dictionary css/js, disable certain cache to make it easier.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation type="unfinished">Dictionary debug</translation>
     </message>
     <message>
       <source>Interface Font</source>
