@@ -341,7 +341,7 @@ int main( int argc, char ** argv )
   QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
   QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
 #endif
-  qputenv( "QT_AUTO_SCREEN_SCALE_FACTOR", "1" );
+  qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
   QHotkeyApplication app( "GoldenDict-ng", argc, argv );
