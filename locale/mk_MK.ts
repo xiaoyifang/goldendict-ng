@@ -304,7 +304,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>Отворете ја сликата во системскиот прегледувач...</translation>
     </message>
   </context>
   <context>

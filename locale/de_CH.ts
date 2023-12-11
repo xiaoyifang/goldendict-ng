@@ -299,7 +299,7 @@ Dies kann zu jeder Zeit über das &quot;Popup-Symbol&quot; in der Werkzeugleiste
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>Bild im System Viewer öffnen...</translation>
     </message>
   </context>
   <context>

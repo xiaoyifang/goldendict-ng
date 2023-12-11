@@ -301,7 +301,7 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>Resmi sistem görüntüleyicide aç...</translation>
     </message>
   </context>
   <context>
