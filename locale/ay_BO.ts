@@ -308,7 +308,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>Jisk’a uñacht’awix sistema uñakipirin...</translation>
     </message>
   </context>
   <context>
