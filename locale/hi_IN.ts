@@ -298,7 +298,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>सिस्टम व्यूअर में छवि खोलें...</translation>
     </message>
   </context>
   <context>
