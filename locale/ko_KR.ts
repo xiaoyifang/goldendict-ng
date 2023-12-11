@@ -298,7 +298,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>시스템 뷰어에서 이미지 열기...</translation>
     </message>
   </context>
   <context>
