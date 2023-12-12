@@ -88,6 +88,24 @@ protected:
   void loadIcon() noexcept override;
 };
 
+class MediaWikiWordSearchRequestSlots: public Dictionary::WordSearchRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void downloadFinished() {}
+};
+
+class MediaWikiDataRequestSlots: public Dictionary::DataRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void requestFinished( QNetworkReply * ) {}
+};
+
 void MediaWikiDictionary::loadIcon() noexcept
 {
   if ( dictionaryIconLoaded )
@@ -708,4 +726,5 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
   return result;
 }
 
+#include "mediawiki.moc"
 } // namespace MediaWiki

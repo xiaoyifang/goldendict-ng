@@ -75,6 +75,48 @@ protected:
   void loadIcon() noexcept override;
 };
 
+class ForvoArticleRequest: public Dictionary::DataRequest
+{
+  Q_OBJECT
+
+  struct NetReply
+  {
+    sptr< QNetworkReply > reply;
+    string word;
+    bool finished;
+
+    NetReply( sptr< QNetworkReply > const & reply_, string const & word_ ):
+      reply( reply_ ),
+      word( word_ ),
+      finished( false )
+    {
+    }
+  };
+
+  typedef std::list< NetReply > NetReplies;
+  NetReplies netReplies;
+  QString apiKey, languageCode;
+  string dictionaryId;
+
+public:
+
+  ForvoArticleRequest( wstring const & word,
+                       vector< wstring > const & alts,
+                       QString const & apiKey_,
+                       QString const & languageCode_,
+                       string const & dictionaryId_,
+                       QNetworkAccessManager & mgr );
+
+  virtual void cancel();
+
+private:
+
+  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+
+private slots:
+  virtual void requestFinished( QNetworkReply * );
+};
+
 sptr< DataRequest >
 ForvoDictionary::getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool )
 
@@ -343,4 +385,5 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
   return result;
 }
 
+#include "forvo.moc"
 } // namespace Forvo
