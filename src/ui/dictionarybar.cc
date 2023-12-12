@@ -44,6 +44,10 @@ static QString elideDictName( QString const & name )
 
 void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const & dictionaries )
 {
+  if ( dictionaries.empty() ) {
+    return;
+  }
+
   setUpdatesEnabled( false );
 
   allDictionaries.clear();
@@ -53,6 +57,9 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
   dictActions.clear();
 
   for ( const auto & dictionary : dictionaries ) {
+    if ( !dictionary ) {
+      continue;
+    }
     QIcon icon = dictionary->getIcon();
 
     QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
