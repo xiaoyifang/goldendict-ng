@@ -338,6 +338,17 @@ void DictServerDictionary::getServerDatabasesAfterConnect()
   }
 }
 
+enum class DictServerState {
+  START,
+  CONNECT,
+  CONNECTING_FINISHED,
+  CLIENT,
+  AUTH,
+  OPTION,
+  MATCH,
+  FINISHED,
+};
+
 class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
   Q_OBJECT
@@ -348,27 +359,65 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
   DictServerDictionary & dict;
   QTcpSocket * socket;
 
+  QStringList matchesList;
+  int currentStrategy = 0;
+  int currentDatabase = 0;
+
+  DictServerState state = DictServerState::START;
+  QString msgId;
+
 public:
 
-  DictServerWordSearchRequest( wstring const & word_, DictServerDictionary & dict_ ):
-    word( word_ ),
+  DictServerWordSearchRequest( wstring word_, DictServerDictionary & dict_ ):
+    word( std::move( word_ ) ),
     dict( dict_ ),
     socket( 0 )
   {
-    f = QtConcurrent::run( [ this ]() {
-      this->run();
-    } );
+    socket = new QTcpSocket( this );
+
+    if ( !socket ) {
+      finish();
+      return;
+    }
+
+    this->run();
   }
 
   void run();
 
   ~DictServerWordSearchRequest() override
   {
-    f.waitForFinished();
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+      socket->abort();
+    else
+      disconnectFromServer( *socket );
+
+    delete socket;
+    socket = nullptr;
   }
 
   void cancel() override;
+
+  bool connectingServer( QTcpSocket * socket, const QString & url );
 };
+
+bool DictServerWordSearchRequest::connectingServer( QTcpSocket * socket, QString const & url )
+{
+  QUrl serverUrl( url );
+  quint16 port = serverUrl.port( DefaultPort );
+
+
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    return false;
+
+  socket->connectToHost( serverUrl.host(), port );
+  state = DictServerState::CONNECT;
+  connect( socket, &QTcpSocket::connected, this, []() {
+    qDebug() << "connected";
+  } );
+
+  return true;
+}
 
 void DictServerWordSearchRequest::run()
 {
@@ -377,130 +426,146 @@ void DictServerWordSearchRequest::run()
     return;
   }
 
-  socket = new QTcpSocket;
 
-  if ( !socket ) {
-    finish();
-    return;
-  }
+  connectingServer( socket, dict.url );
 
-  if ( connectToServer( *socket, dict.url, errorString, isCancelled ) ) {
-    QStringList matchesList;
+  connect( socket, &QTcpSocket::readyRead, this, [ this ]() {
+    QByteArray reply = socket->readLine();
+    qDebug() << "receive:" << reply;
 
-    for ( int ns = 0; ns < dict.strategies.size(); ns++ ) {
-      for ( int i = 0; i < dict.databases.size(); i++ ) {
-        QString matchReq = QString( "MATCH " ) + dict.databases.at( i ) + " " + dict.strategies.at( ns ) + " \""
-          + QString::fromStdU32String( word ) + "\"\r\n";
-        socket->write( matchReq.toUtf8() );
-        socket->waitForBytesWritten( 1000 );
+    //current stage.
+    if ( state == DictServerState::CONNECT ) {
+      if ( !reply.isEmpty() && reply.left( 3 ) != "220" ) {
+        errorString = "Server refuse connection: " + reply;
+        return false;
+      }
 
-        if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-          break;
+      msgId = reply.mid( reply.lastIndexOf( " " ) ).trimmed();
 
-        QString reply;
+      state = DictServerState::CLIENT;
+      socket->write( QByteArray( "CLIENT GoldenDict\r\n" ) );
+    }
 
-        if ( !readLine( *socket, reply, errorString, isCancelled ) )
-          break;
+    else if ( state == DictServerState::CLIENT ) {
+      QUrl serverUrl( dict.url );
+      if ( !serverUrl.userInfo().isEmpty() ) {
+        QString authCommand = QString( "AUTH " );
+        QString authString  = msgId;
 
-        if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-          break;
-
-        if ( reply.left( 3 ) == "250" ) {
-          // "OK" reply - matches info will be later
-          if ( !readLine( *socket, reply, errorString, isCancelled ) )
-            break;
-
-          if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-            break;
+        int pos = serverUrl.userInfo().indexOf( QRegularExpression( "[:;]" ) );
+        if ( pos > 0 ) {
+          authCommand += serverUrl.userInfo().left( pos );
+          authString += serverUrl.userInfo().mid( pos + 1 );
         }
+        else
+          authCommand += serverUrl.userInfo();
 
-        if ( reply.left( 3 ) == "552" ) {
-          // No matches
-          continue;
+        authCommand += " ";
+        authCommand += QCryptographicHash::hash( authString.toUtf8(), QCryptographicHash::Md5 ).toHex();
+        authCommand += "\r\n";
+
+        state = DictServerState::AUTH;
+        socket->write( authCommand.toUtf8() );
+      }
+      else {
+        state = DictServerState::OPTION;
+
+        socket->write( QByteArray( "OPTION MIME\r\n" ) );
+      }
+    }
+    else if ( state == DictServerState::OPTION || state == DictServerState::AUTH ) {
+      if ( reply.left( 3 ) != "250" ) {
+        // RFC 2229, 3.10.1.1:
+        // OPTION MIME is a REQUIRED server capability,
+        // all DICT servers MUST implement this command.
+        errorString = "Server doesn't support mime capability: " + reply;
+        return false;
+      }
+
+      //found the word.
+      QString matchReq = QString( "MATCH " ) + dict.databases.at( 0 ) + " " + dict.strategies.at( 0 ) + " \""
+        + QString::fromStdU32String( word ) + "\"\r\n";
+      state = DictServerState::MATCH;
+      socket->write( matchReq.toUtf8() );
+      currentDatabase++;
+    }
+    else if ( state == DictServerState::MATCH ) {
+
+      auto code = reply.left( 3 );
+      if ( code[ 0 ] > '0' && code[ 0 ] < '9' ) {
+        if ( reply.left( 3 ) == "152" ) {}
+        else {
+          if ( currentDatabase >= dict.databases.size() ) {
+            currentStrategy++;
+            currentDatabase = 0;
+          }
+          if ( currentStrategy >= dict.strategies.size() ) {
+            state      = DictServerState::FINISHED;
+            int countn = qMin( matchesList.size(), MAX_MATCHES_COUNT );
+
+            if ( countn ) {
+              QMutexLocker _( &dataMutex );
+              for ( int x = 0; x < countn; x++ )
+                matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
+            }
+            finish();
+            return true;
+          }
+
+          QString matchReq = QString( "MATCH " ) + dict.databases.at( currentDatabase ) + " "
+            + dict.strategies.at( currentStrategy ) + " \"" + QString::fromStdU32String( word ) + "\"\r\n";
+          state = DictServerState::MATCH;
+          socket->write( matchReq.toUtf8() );
+          currentDatabase++;
         }
+      }
+      else {
+        do {
+          reply = socket->readLine();
 
-        if ( reply[ 0 ] == '5' || reply[ 0 ] == '4' ) {
-          // Database error
-          gdWarning( "Find matches in \"%s\", database \"%s\", strategy \"%s\" fault: %s\n",
-                     dict.getName().c_str(),
-                     dict.databases.at( i ).toUtf8().data(),
-                     dict.strategies.at( ns ).toUtf8().data(),
-                     reply.toUtf8().data() );
-          continue;
-        }
+          if ( reply.isEmpty() )
+            return true;
 
-        if ( reply.left( 3 ) == "152" ) {
-          // Matches found
-          int countPos = reply.indexOf( ' ', 4 );
 
-          // Get matches count
-          int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
+          while ( reply.endsWith( '\r' ) || reply.endsWith( '\n' ) )
+            reply.chop( 1 );
 
-          // Read matches
-          for ( int x = 0; x <= count; x++ ) {
-            if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-              break;
+          int pos = reply.indexOf( ' ' );
+          if ( pos >= 0 ) {
+            QString word = reply.mid( pos + 1 );
+            if ( word.endsWith( '\"' ) )
+              word.chop( 1 );
+            if ( word[ 0 ] == '\"' )
+              word = word.mid( 1 );
 
-            if ( !readLine( *socket, reply, errorString, isCancelled ) )
-              break;
+            matchesList.append( word );
 
-            if ( reply[ 0 ] == '.' )
-              break;
+            matchesList.removeDuplicates();
+            if ( matchesList.size() >= MAX_MATCHES_COUNT ) {
+              state      = DictServerState::FINISHED;
+              int countn = qMin( matchesList.size(), MAX_MATCHES_COUNT );
 
-            while ( reply.endsWith( '\r' ) || reply.endsWith( '\n' ) )
-              reply.chop( 1 );
+              if ( countn ) {
+                QMutexLocker _( &dataMutex );
+                for ( int x = 0; x < countn; x++ )
+                  matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
 
-            int pos = reply.indexOf( ' ' );
-            if ( pos >= 0 ) {
-              QString word = reply.mid( pos + 1 );
-              if ( word.endsWith( '\"' ) )
-                word.chop( 1 );
-              if ( word[ 0 ] == '\"' )
-                word = word.mid( 1 );
-
-              matchesList.append( word );
+                finish();
+              }
             }
           }
-          if ( Utils::AtomicInt::loadAcquire( isCancelled ) || !errorString.isEmpty() )
-            break;
-        }
-      }
-
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) || !errorString.isEmpty() )
-        break;
-
-      matchesList.removeDuplicates();
-      if ( matchesList.size() >= MAX_MATCHES_COUNT )
-        break;
-    }
-
-    if ( !Utils::AtomicInt::loadAcquire( isCancelled ) && errorString.isEmpty() ) {
-      matchesList.removeDuplicates();
-
-      int count = matchesList.size();
-      if ( count > MAX_MATCHES_COUNT )
-        count = MAX_MATCHES_COUNT;
-
-      if ( count ) {
-        QMutexLocker _( &dataMutex );
-        for ( int x = 0; x < count; x++ )
-          matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
+        } while ( 1 );
       }
     }
-  }
+  } );
 
-  if ( !errorString.isEmpty() )
-    gdWarning( "Prefix find in \"%s\" fault: %s\n", dict.getName().c_str(), errorString.toUtf8().data() );
-
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-    socket->abort();
-  else
-    disconnectFromServer( *socket );
-
-  delete socket;
-  socket = nullptr;
-  if ( !Utils::AtomicInt::loadAcquire( isCancelled ) )
-    finish();
+  connect( socket, &QTcpSocket::stateChanged, this, []( QAbstractSocket::SocketState state ) {
+    qDebug() << "socket state change: " << state;
+  } );
+  connect( socket, &QTcpSocket::errorOccurred, this, [ this ]( QAbstractSocket::SocketError error ) {
+    qDebug() << "socket error message: " << error;
+    cancel();
+  } );
 }
 
 void DictServerWordSearchRequest::cancel()
