@@ -341,7 +341,6 @@ void DictServerDictionary::getServerDatabasesAfterConnect()
 enum class DictServerState {
   START,
   CONNECT,
-  CONNECTING_FINISHED,
   CLIENT,
   AUTH,
   OPTION,
