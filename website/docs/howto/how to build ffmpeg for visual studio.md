@@ -1,4 +1,4 @@
-# Use vcpkg to build ffmpeg.
+# Use vcpkg to build ffmpeg(on Windows).
 
 Steps:
 
@@ -22,17 +22,6 @@ Then replace the dlls and libs in the winlibs\lib\msvc.
 
 **Pros**: Easy to manage.
 
-
-# I have tried the following methods without success
-
-## Use the scripts provided by the following url
-
-https://github.com/Microsoft/FFmpegInterop/issues/67
-
-https://github.com/Microsoft/FFmpegInterop   
-
-
-did not know how to link to libspeex. 
 
 ## conan
   
