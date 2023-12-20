@@ -250,11 +250,6 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
 string ArticleMaker::makeWelcomeHtml() const
 {
   string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
-  //tooltip
-  result += R"(<script src="qrc:///scripts/popper.min.js"></script>)";
-  result += R"(<script src="qrc:///scripts/tippy.min.js"></script>)";
-  result += R"(<link href="qrc:///tippy-light.css" rel="stylesheet">)";
-
 
   result +=
     tr(
@@ -262,7 +257,7 @@ string ArticleMaker::makeWelcomeHtml() const
       "<p>To start working with the program, first visit <b>Edit|Dictionaries</b> to add some directory paths where to search "
       "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
       "<p>And then you're ready to look up your words! You can do that in this window "
-      "by using a pane to the left, or you can <button id=\"lookup-popup\">look up words from other active applications</button>. "
+      "by using a pane to the left, or you can <a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">look up words from other active applications</a>. "
       "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
       "All settings there have tooltips, be sure to read them if you are in doubt about anything."
       "<p>Should you need further help, have any questions, "
@@ -301,19 +296,6 @@ string ArticleMaker::makeWelcomeHtml() const
   if ( !GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
     theme = "light";
   }
-
-  result += QString(
-              R"(<script>
-      const template = document.getElementById('popup');
-
-      tippy('#lookup-popup', {
-        content: template.innerHTML,
-        allowHTML: true,
-        theme: '%1'
-      });
-      </script>)" )
-              .arg( theme )
-              .toStdString();
 
   result += "</body></html>";
 
