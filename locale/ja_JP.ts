@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>次に他のアプリケーションで検索したい単語の上でカーソルを止めると、説明のウィンドウがポップアップします。</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;ポップアップ作業&lt;/h3&gt;他のアクティブなアプリケーションから単語を検索するには、まず &lt;b&gt;[環境設定]&lt;/b&gt; で &lt;i&gt;&quot;スキャン ポップアップ機能&quot;&lt;/i&gt; を有効にする必要があり、次からは上の &apos;ポップアップ アイコンを切り替えるか、または右マウス ボタンで下のトレイ アイコンをクリックしてポップしているメニューで選択することによっていつでも有効にできます。</translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>記事を展開</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>ようこそ!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>次に他のアプリケーションで検索したい単語をマウスで選択 (ダブルクリックまたは長押し) すると、単語を説明するウィンドウがポップアップします。</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>グループ &lt;b&gt;%1&lt;/b&gt; に翻訳が見つかりません。</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(画像)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;へようこそ!&lt;/h3&gt;&lt;p&gt;プログラムの操作を開始するには、まず &lt;b&gt;編集 | 辞書&lt;/b&gt; にアクセスして、辞書ファイルを検索するディレクトリ パスを追加したり、さまざまな Wikipedia サイトやその他のソースを設定したり、辞書の順序を調整したり、辞書グループを作成したりします。&lt;p&gt;そして、あなたは&apos;自分の言葉を調べる準備ができました!このウィンドウでは、左側のペインを使用してこれを行うことができます。また、他のアクティブなアプリケーションから単語を検索 &lt;button id=&quot;lookup-popup&quot;&gt;することもできます&lt;/button&gt;。 &lt;p&gt;プログラムをカスタマイズするには、 &lt;b&gt;Edit|Preferences&lt;/b&gt;で利用可能な設定を確認してください。すべての設定にはツールチップが付いているので、疑問がある場合は必ず読んでください。&lt;p&gt;さらに支援が必要な場合、質問、提案がある場合、または単に他の人がどう思うか気になる場合は、プログラム&apos; &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;フォーラム&lt;/a&gt;にお越しください。&lt;p&gt;プログラム&apos;の &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;ウェブサイト&lt;/a&gt; で更新情報を確認します。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。 GPLv3 以降に基づいてライセンスされています。</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
   </context>
   <context>
