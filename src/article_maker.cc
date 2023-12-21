@@ -254,11 +254,11 @@ string ArticleMaker::makeWelcomeHtml() const
   result +=
     tr(
       "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
-      "<p>To start working with the program, first visit <b>Edit|Dictionaries</b> to add some directory paths where to search "
+      "<p>To start working with the program, first visit <em>Edit | Dictionaries</em> to add some directory paths where to search "
       "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
       "<p>And then you're ready to look up your words! You can do that in this window "
       "by using a pane to the left, or you can <a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">look up words from other active applications</a>. "
-      "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
+      "<p>To customize program, check out the available preferences at <em>Edit | Preferences</em>. "
       "All settings there have tooltips, be sure to read them if you are in doubt about anything."
       "<p>Should you need further help, have any questions, "
       "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
