@@ -269,34 +269,6 @@ string ArticleMaker::makeWelcomeHtml() const
       .toUtf8()
       .data();
 
-  result += R"(<div id="popup" style="display:none;">)";
-  result +=
-    ( tr(
-        "<h3 align=\"center\">Working with the popup</h3>"
-
-        "To look up words from other active applications, you would need to first activate the <i>\"Scan popup functionality\"</i> in <b>Preferences</b>, "
-        "and then enable it at any time either by triggering the 'Popup' icon above, or "
-        "by clicking the tray icon down below with your right mouse button and choosing so in the menu you've popped. " )
-      +
-
-#ifdef Q_OS_WIN32
-      tr( "Then just stop the cursor over the word you want to look up in another application, "
-          "and a window would pop up which would describe it to you." )
-#else
-      tr( "Then just select any word you want to look up in another application by your mouse "
-          "(double-click it or swipe it with mouse with the button pressed), "
-          "and a window would pop up which would describe the word to you." )
-#endif
-        )
-      .toUtf8()
-      .data();
-
-  result += "</div>";
-  QString theme = "";
-  if ( !GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
-    theme = "light";
-  }
-
   result += "</body></html>";
 
   return result;
