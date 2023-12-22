@@ -62,19 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Ukat cursor uk uchasmawa kuna arutix thaqhañ munt ukxaru yaqha aplicación ukana, ukatja mä wintanaw uñstanini, thaqhawi uñachayañataki.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Uñstir wintana apnaqasa&lt;/h3&gt;
-Yaqha aplicaciones ukat arunak thaqhañatakixa, &lt;i&gt;&quot;Escaneo apnaqañatakixa uñstir wintanana&quot;&lt;/i&gt; &lt;b&gt;Askichaña&gt;Ajlliñanaka&lt;/b&gt; ukan naktayañama. Ukatxa jist&apos;arasmawa klik ukampi salta uñstir wintanana jan ukjax klik ukampi sistema wak&apos;ana achakut kupi wutunampi. 
-&lt;h3 align=&quot;center&quot;&gt;Utilización de la ventana emergente&lt;/h3&gt;
-Para buscar palabras desde otras aplicaciones, tiene que activar 
-antes la &lt;i&gt;&quot;función de ventana emergente de búsqueda&quot;&lt;/i&gt; en 
-&lt;b&gt;Askichaña&gt;Ajlliñanaka&lt;/b&gt;, y entonces activar la ventana en cualquier momento con el icono &apos;Ventana emergente&apos; mostrado arriba, o pulsando el icono de la bandeja mostrado abajo con el botón derecho del ratón y eligiendo la opción en el menú que aparece. </translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Qillqa janatataña</translation>
     </message>
@@ -91,14 +78,6 @@ antes la &lt;i&gt;&quot;función de ventana emergente de búsqueda&quot;&lt;/i&g
       <translation>¡Aski jutawi!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>&lt;p&gt;Ukat kawkir aru thaqhañ munt uk ajllismawa yaqha aplicación ukana ukaxa achakumpi (pä kuti limt&apos;am jan ukjax llust&apos;ayam achakun wutunap limt&apos;asa) ukatxa mä wintana uñstanini, thaqhawi uñachayañataki.
-&lt;p&gt;Entonces puedes seleccionar cualquier palabra que 
-quieras buscar en otra aplicación con el ratón (haga doble clic o deslizar 
-sobre la palabra con el botón del ratón oprimido), y aparecerá una ventana 
- que mostrará los resultados de la búsqueda.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; qutuna janiw aru utjkiti.&lt;br&gt;&lt;br&gt;
 No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
@@ -112,8 +91,8 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>(jamuqa)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;ukarux walikpun jutapxtaxa!&lt;/h3&gt;&lt;p&gt; &lt;b&gt;&lt;/b&gt;&lt;p&gt;Ukat ukatsti jumax&apos;re wakicht’ataw arunakam uñakipañataki! Ukxa aka ventana ukanxa ch’iqa tuqiru mä panel ukampiwa lurasispa, jan ukaxa &lt;button id=&quot;lookup-popup&quot;&gt;yaqha activos aplicaciones ukanakata aru thaqhaña&lt;/button&gt;. &lt;p&gt;Programa ukarjam lurañatakix, &lt;b&gt;Editar|Preferencias&lt;/b&gt;ukan utjki uka munañanak uñakipt’añamawa. Taqi configuración ukanx herramientas ukanakaw utji, jan armasimti ullart’añamawa kuna tuqit pächassta ukhaxa.&lt;p&gt;Juk’amp yanapt’awinak munasmati, kuna jiskt’awinakas utjaspa, amuyt’awinakas utjaspa jan ukax mayninakax kuns amuyapxi uk jiskt’asiñakiw wakisispa, ukax programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foro&lt;/a&gt;ukanx wali askiwa.&lt;p&gt;Programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; uñakipaña uñakipaña. &lt;p&gt;(c) 2008-2013 maranakanxa Konstantin Isakov. GPLv3 jan ukax qhipa uñt’ayat ukarjam licenciat uñt’ayata.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;ukarux walikpun jutapxtaxa!&lt;/h3&gt;&lt;p&gt;Programa ukampi irnaqaña qalltañatakixa nayraqata &lt;em&gt;Editar | Diccionarios&lt;/em&gt; mä qawqha directorio thakhinak yapxatañataki kawkhantix diccionario qillqatanaka thaqhaña, kunayman Wikipedia ukan chiqanakap jan ukax yaqha phunchhawinak utt’ayaña, diccionario orden chiqañchaña jan ukax diccionario tamanak luraña.&lt;p&gt;Ukat ukatsti jumax&apos;re wakicht’ataw arunakam uñakipañataki! Ukxa aka ventana ukanxa ch’iqa tuqiru mä panel ukampiwa lurasispa, jan ukaxa &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;yaqha activos aplicaciones ukanakata aru thaqhaña&lt;/a&gt;. &lt;p&gt;Programa ukarjam lurañatakix, &lt;em&gt;Editar | Munañanakapa&lt;/em&gt;. Taqi configuración ukanx herramientas ukanakaw utji, jan armasimti ullart’añamawa kuna tuqit pächassta ukhaxa.&lt;p&gt;Juk’amp yanapt’awinak munasmati, kuna jiskt’awinakas utjaspa, amuyt’awinakas utjaspa jan ukax mayninakax kuns amuyapxi uk jiskt’asiñakiw wakisispa, ukax programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foro&lt;/a&gt;ukanx wali askiwa.&lt;p&gt;Programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; uñakipaña uñakipaña. &lt;p&gt;(c) 2008-2013 maranakanxa Konstantin Isakov. GPLv3 jan ukax qhipa uñt’ayat ukarjam licenciat uñt’ayata.</translation>
     </message>
   </context>
   <context>

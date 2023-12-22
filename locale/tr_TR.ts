@@ -62,17 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Sonra başka bir uygulamada aramak istediğiniz kelimenin üzerine imleci durdurun ve bir pencere açılır.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Ekranda Kelime Yakala ile Çalışma&lt;/h3&gt;Diğer aktif uygulamalarda kelimeleri aramak için,
-ilk önce &lt;b&gt;Tercihler&lt;/b&gt;&apos;de &lt;i&gt;&quot;Ekranda Kelime Yakala Özelliğini&quot;&lt;/i&gt; etkinleştirmelisiniz ve daha sonra
-yukarıda &apos;Ekranda Kelime Yakala&apos; simgesine tıklayarak veya Görev Çubuğu&apos;ndaki simgesine sağ fare tuşuyla
-tıklatarak seçimini değiştirebilirsiniz.</translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Maddeyi genişlet</translation>
     </message>
@@ -89,10 +78,6 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
       <translation>Hoşgeldiniz!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Başka bir uygulamada sözcük bakmak için farenizle istediğiniz herhangi bir kelimeyi (klavye tuşu ve fare ile çift tıklayarak veya okutarak) seçin ve sözcüğü açıklayan bir pencere açılacaktır.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; grubunda hiçbir çeviri bulunamadı.</translation>
     </message>
@@ -105,8 +90,8 @@ tıklatarak seçimini değiştirebilirsiniz.</translation>
       <translation>(resim)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;hoş geldiniz!&lt;/h3&gt;&lt;p&gt;Programla çalışmaya başlamak için, önce sözlük dosyalarının aranacağı, çeşitli Vikipedi sitelerinin veya diğer kaynakların kurulacağı, sözlük sırasının ayarlanacağı veya sözlük grupları oluşturulacağı bazı dizin yolları eklemek için &lt;b&gt;Edit|Dictionaries&lt;/b&gt; ziyaret edin.&lt;p&gt;Ve sonra kelimelerinize bakmaya&apos;! Bunu soldaki bölmeyi kullanarak bu pencerede yapabilir veya diğer etkin uygulamalardaki &lt;button id=&quot;lookup-popup&quot;&gt;sözcükleri arayabilirsiniz&lt;/button&gt; &lt;p&gt;Programı özelleştirmek için &lt;b&gt;Düzenle|Tercihler&lt;/b&gt;adresindeki mevcut tercihlere göz atın. Oradaki tüm ayarların araç ipuçları var, herhangi bir konuda şüpheniz varsa bunları okuduğunuzdan emin olun.&lt;p&gt;Daha fazla yardıma ihtiyacınız varsa, herhangi bir sorunuz veya öneriniz varsa ya da sadece diğerlerinin ne düşündüğünü merak ediyorsanız program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;hoş geldiniz.&lt;p&gt;Güncellemeler için program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web sitesi&lt;/a&gt; kontrol edin. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 veya üzeri lisanslıdır.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;GoldenDict&lt;/b&gt;hoş geldiniz!&lt;/h3&gt;&lt;p&gt;Programla çalışmaya başlamak için önce şu adresi ziyaret edin &lt;em&gt;Düzenle | Sözlükler&lt;/em&gt; sözlük dosyalarının aranacağı, çeşitli Vikipedi sitelerinin veya diğer kaynakların kurulacağı, sözlük sırasının ayarlanacağı veya sözlük gruplarının oluşturulacağı bazı dizin yolları eklemek için kullanılır.&lt;p&gt;Ve sonra kelimelerinize bakmaya&apos;! Bunu soldaki bölmeyi kullanarak bu pencerede yapabilir veya diğer etkin uygulamalardaki &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;sözcükleri arayabilirsiniz&lt;/a&gt; &lt;p&gt;Programı özelleştirmek için &lt;em&gt;Düzenle | Tercihler&lt;/em&gt;. Oradaki tüm ayarların araç ipuçları var, herhangi bir konuda şüpheniz varsa bunları okuduğunuzdan emin olun.&lt;p&gt;Daha fazla yardıma ihtiyacınız varsa, herhangi bir sorunuz veya öneriniz varsa ya da sadece diğerlerinin ne düşündüğünü merak ediyorsanız program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;hoş geldiniz.&lt;p&gt;Güncellemeler için program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;web sitesi&lt;/a&gt; kontrol edin. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. GPLv3 veya üzeri lisanslıdır.</translation>
     </message>
   </context>
   <context>
