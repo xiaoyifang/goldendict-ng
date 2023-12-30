@@ -87,8 +87,7 @@ public:
     QString reply;
     socket.connectToHost( serverUrl.host(), port );
     state = DictServerState::CONNECT;
-    connect( &socket, &QTcpSocket::connected, this, [ this ]() {
-    } );
+    connect( &socket, &QTcpSocket::connected, this, [ this ]() {} );
 
     connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
@@ -503,7 +502,7 @@ void DictServerWordSearchRequest::readMatchData( QByteArray & reply )
       return;
     }
 
-    reply   = reply.trimmed();
+    reply = reply.trimmed();
 
     if ( reply == "." ) {
       //discard left response.  such as
