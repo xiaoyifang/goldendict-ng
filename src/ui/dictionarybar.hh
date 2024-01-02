@@ -25,7 +25,7 @@ public:
 
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.
-  void setDictionaries( std::vector< sptr< Dictionary::Class > > const & );
+  void setDictionaries( std::vector< sptr< Dictionary::Class > > const );
   void setMutedDictionaries( Config::MutedDictionaries * mutedDictionaries_ )
   {
     mutedDictionaries = mutedDictionaries_;
