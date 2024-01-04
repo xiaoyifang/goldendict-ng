@@ -57,4 +57,5 @@ nav:
        - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
        - How to update the crowdin.ts file: howto/how to update crowdin.ts file.md
        - How to debug dictionary js: howto/how to debug dictionary js.md
+       - How to add a program dictionary: howto/how to add a program as dictionary.md
 
