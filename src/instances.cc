@@ -45,7 +45,9 @@ Group::Group( Config::Group const & cfgGroup,
     }
   }
   for ( const auto & dictId : dictOrderList ) {
-    dictionaries.push_back( groupDicts[ dictId ] );
+    if ( groupDicts.contains( dictId ) ) {
+      dictionaries.push_back( groupDicts[ dictId ] );
+    }
   }
 }
 

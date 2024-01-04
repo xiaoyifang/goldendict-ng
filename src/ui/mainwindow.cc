@@ -1652,8 +1652,8 @@ void MainWindow::updateDictionaryBar()
     if ( currentId == Instances::Group::AllGroupId )
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
     else {
-      Config::Group * grp = cfg.getGroup( currentId );
-      dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : nullptr );
+      Config::Group * _grp = cfg.getGroup( currentId );
+      dictionaryBar.setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
     }
 
     dictionaryBar.setDictionaries( grp->dictionaries );
