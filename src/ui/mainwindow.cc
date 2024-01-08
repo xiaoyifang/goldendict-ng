@@ -2413,7 +2413,7 @@ void MainWindow::translateInputFinished( bool checkModifiers )
   respondToTranslationRequest( word, checkModifiers );
 }
 
-void MainWindow::respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo )
+void MainWindow::respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo,  bool focus )
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
@@ -2427,7 +2427,9 @@ void MainWindow::respondToTranslationRequest( QString const & word, bool checkMo
         activateWindow();
     }
 
-    focusArticleView();
+    if ( focus ) {
+      focusArticleView();
+    }
   }
 }
 
@@ -3609,7 +3611,7 @@ void MainWindow::headwordReceived( const QString & word, const QString & ID )
 {
   toggleMainWindow( true );
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ) );
+  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ), false );
 }
 
 void MainWindow::updateFavoritesMenu()
