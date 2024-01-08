@@ -51,15 +51,15 @@ Group::Group( Config::Group const & cfgGroup,
   }
 }
 
-Group::Group( QString  name_ ):
+Group::Group( QString name_ ):
   id( 0 ),
-  name(std::move( name_ ))
+  name( std::move( name_ ) )
 {
 }
 
-Group::Group( unsigned id_, QString  name_ ):
+Group::Group( unsigned id_, QString name_ ):
   id( id_ ),
-  name(std::move( name_ ))
+  name( std::move( name_ ) )
 {
 }
 
@@ -139,7 +139,7 @@ void complementDictionaryOrder( Group & group,
   for ( unsigned x = inactiveDictionaries.dictionaries.size(); x--; )
     presentIds.insert( inactiveDictionaries.dictionaries[ x ]->getId() );
 
-  for (const auto & dict : dicts) {
+  for ( const auto & dict : dicts ) {
     if ( presentIds.find( dict->getId() ) == presentIds.end() )
       group.dictionaries.push_back( dict );
   }
@@ -161,7 +161,7 @@ void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > con
 
 void updateNames( Config::Groups & groups, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
-  for (auto & group : groups)
+  for ( auto & group : groups )
     updateNames( group, allDictionaries );
 }
 

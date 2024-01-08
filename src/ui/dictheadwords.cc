@@ -348,8 +348,8 @@ void DictHeadwords::saveHeadersToFile()
 
   QString const fileName = QFileDialog::getSaveFileName( this,
                                                          tr( "Save headwords to file" ),
-                                                   exportPath,
-                                                   tr( "Text files (*.txt);;All files (*.*)" ) );
+                                                         exportPath,
+                                                         tr( "Text files (*.txt);;All files (*.*)" ) );
   if ( fileName.size() == 0 )
     return;
 
