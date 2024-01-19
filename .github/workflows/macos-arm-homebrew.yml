@@ -1,0 +1,222 @@
+name: macos-arm-homebrew
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - master
+      # - staged
+    paths-ignore:
+      - 'docs/**'
+      # - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - ".clang-format"
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [flyci-macos-large-latest-m2]
+        qt_ver: [ 6.7.0,6.6.0 ]
+        qt_arch: [clang_64]
+    env:
+      targetName: GoldenDict
+      version: 23.12.08
+      version-suffix: alpha
+      prerelease: true
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Set outputs
+        id: githash
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)"    >> $GITHUB_OUTPUT
+       
+      - name: install deps on macos
+        run: |
+          export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
+          brew install cmake ninja
+          brew install automake
+          brew install autoconf
+          brew install libtool
+          brew install opencc
+          brew install automake git lame libass libtool shtool texi2html theora wget xvid nasm
+
+          brew install libiconv
+          brew install lzo bzip2
+          brew install libogg
+          brew install zstd lzip
+          brew install libvorbis
+          brew install hunspell
+          git clone https://github.com/xiaoyifang/eb.git
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..
+          # brew install  xz 
+          brew install pkg-config
+          brew install create-dmg
+          brew install xapian
+          brew install libzim
+
+          # brew install dylibbundler
+          git clone https://github.com/xiaoyifang/macdylibbundler.git
+          cd macdylibbundler
+          cmake -B build -DCMAKE_BUILD_TYPE=release
+          cmake --build build --config release
+          sudo make install
+          # find /usr/local -name libzstd.1.dylib 
+          # find /usr/local -name liblzma.5.dylib
+      - name: version-file
+        shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
+        run: |   
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"     
+                
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: ${{ matrix.qt_arch }}
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          
+      - name: compile
+        run: |          
+          qmake CONFIG+=release CONFIG+=no_macos_universal CONFIG+=zim_support CONFIG+=use_xapian CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
+          make -j8
+          
+      - name: package
+        run: |
+          
+          macdeployqt ${targetName}.app -qmldir=. -verbose=1
+          otool -L GoldenDict.app/Contents/MacOS/GoldenDict
+          ls -al GoldenDict.app/Contents/Frameworks
+          find /usr/local -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
+          
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  ls -al {} \;
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  ls -al {} \;
+          
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libzim*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
+          find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  dylibbundler -of -b -x {} -d GoldenDict.app/Contents/Frameworks/ -p @executable_path/../Frameworks -s /usr/local/ -s /opt/  \;
+          
+          otool -L GoldenDict.app/Contents/Frameworks/libicu*
+          otool -L GoldenDict.app/Contents/Frameworks/libzim*
+
+          codesign --force --deep -s - GoldenDict.app
+          
+          ls -al GoldenDict.app/Contents/Frameworks
+          mkdir tmp
+          mv ${targetName}.app ./tmp
+          # --background "installer_background.png"
+          create-dmg  --hdiutil-verbose --volname "${targetName} Installer" --volicon "icons/macicon.icns" --window-pos 200 120 --window-size 800 400 --icon-size 100 --icon "${targetName}.app" 200 190 --hide-extension "${targetName}.app" --app-drop-link 600 185 --skip-jenkins "${targetName}.dmg" tmp/
+      - name: changelog
+        id: changelog
+        run: |   
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+          echo "previousTag : $previousTag"
+          
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
+
+      - name: Set outputs
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"   >> $GITHUB_OUTPUT
+
+      # tag 上传Release
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: ${{ steps.changelog.outputs.prev_tag }}
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"  
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }          
+      - name: uploadRelease
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.targetName }}.dmg
+          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_homebrew_${{steps.vars.outputs.release_date}}.dmg
+          
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}
+          body: |
+            #### Install instructions for Windows, macOS and Linux 
+
+            <https://xiaoyifang.github.io/goldendict-ng/install/>.
+
+            #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
+
+            Qt6.X is recommended for various enhancements.
+
+            Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
+            The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
+
+            Linux users can use Flatpak or build from source.
+            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
+
+            macOS users can use `.dmg` installer.
+
+            `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
+
+            #### Build Details
+
+            AppImage: Ubuntu-20.04
+            macOS: macOS-12 and macOS-13
+            Windows: Visual studio 2019
+            based on: ${{github.ref_name}}
+
+
+
+            #### Changes
+            
+            ${{steps.build_changelog.outputs.changelog}}
