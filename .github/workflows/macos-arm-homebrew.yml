@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [flyci-macos-large-latest-m2]
-        qt_ver: [ 6.7.0,6.6.0 ]
+        qt_ver: [ 6.7.0 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -100,8 +100,9 @@ jobs:
           
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
+          
+          find /opt -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           ls -al GoldenDict.app/Contents/Frameworks
-          find /usr/local -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  ls -al {} \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  ls -al {} \;
