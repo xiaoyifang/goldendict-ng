@@ -73,6 +73,11 @@ if (WIN32)
     set(GD_WIN_OUTPUT_DIR ${CMAKE_BINARY_DIR}/${GOLDENDICT})
 endif ()
 
+
+include_directories("/usr/local/include")
+link_directories("/usr/local/lib")
+
+
 #### Sources Files
 
 # auto discovery of ui files https://cmake.org/cmake/help/v3.26/prop_tgt/AUTOUIC_SEARCH_PATHS.html
@@ -260,4 +265,11 @@ if (WIN32)
     #TODO: use CPack to make the output folder as NSIS installer
 endif ()
 
+
+
+target_link_libraries(${GOLDENDICT} PRIVATE X11 iconv)
+
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
+
+
+
