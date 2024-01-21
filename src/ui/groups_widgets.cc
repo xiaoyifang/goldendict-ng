@@ -481,14 +481,6 @@ void DictListWidget::focusInEvent( QFocusEvent * )
   emit gotFocus();
 }
 
-void DictListWidget::rowsInserted( QModelIndex const & parent, int start, int end )
-{
-  QListView::rowsInserted( parent, start, end );
-
-  // When inserting new rows, make the first of them current
-  selectionModel()->setCurrentIndex( model.index( start, 0, parent ), QItemSelectionModel::NoUpdate );
-}
-
 void DictListWidget::rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end )
 {
   // When removing rows, if the current row is among the removed ones, select
