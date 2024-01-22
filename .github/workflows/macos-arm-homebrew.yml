@@ -1,4 +1,4 @@
-name: macos-homebrew
+name: macos-arm-homebrew
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-12,macos-13]
+        os: [flyci-macos-large-latest-m2]
         qt_ver: [ 6.6.1 ]
         qt_arch: [clang_64]
     env:
@@ -100,8 +100,9 @@ jobs:
           
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
+          
+          find /opt -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           ls -al GoldenDict.app/Contents/Frameworks
-          find /usr/local/Cellar -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  ls -al {} \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  ls -al {} \;

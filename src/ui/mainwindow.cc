@@ -718,7 +718,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain || cfg.preferences.pronounceOnLoadPopup ) && view != nullptr ) {
-               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               if ( cfg.preferences.pronounceOnLoadPopup ) {
+                 if ( !scanPopup || !scanPopup->isActiveWindow() )
+                   return;
+                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               }
+               else if ( cfg.preferences.pronounceOnLoadMain ) {
+                 if ( scanPopup && scanPopup->isActiveWindow() )
+                   return;
+                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               }
              }
            } );
   applyProxySettings();

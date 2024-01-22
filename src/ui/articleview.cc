@@ -1125,6 +1125,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       sptr< Dictionary::DataRequest > req = articleNetMgr.getResource( url, contentType );
 
       if ( !req.get() ) {
+        qDebug() << "request failed: " << url;
         // Request failed, fail
       }
       else if ( req->isFinished() && req->dataSize() >= 0 ) {
@@ -1145,7 +1146,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
     if ( resourceDownloadRequests.empty() ) // No requests were queued
     {
-      QMessageBox::critical( this, "GoldenDict", tr( "The referenced resource doesn't exist." ) );
+      qDebug() << tr( "The referenced resource doesn't exist." );
       return;
     }
     else
