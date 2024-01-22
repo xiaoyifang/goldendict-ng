@@ -249,7 +249,10 @@ private:
 
   QString unescapeTabHeader( QString const & header );
 
-  void respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo = QString() );
+  void respondToTranslationRequest( QString const & word,
+                                    bool checkModifiers,
+                                    QString const & scrollTo = QString(),
+                                    bool focus               = true );
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );

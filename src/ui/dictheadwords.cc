@@ -168,9 +168,26 @@ void DictHeadwords::savePos()
 bool DictHeadwords::eventFilter( QObject * obj, QEvent * ev )
 {
   if ( obj == ui.headersListView && ev->type() == QEvent::KeyPress ) {
-    QKeyEvent * kev = static_cast< QKeyEvent * >( ev );
+    auto * kev = dynamic_cast< QKeyEvent * >( ev );
     if ( kev->key() == Qt::Key_Return || kev->key() == Qt::Key_Enter ) {
       itemClicked( ui.headersListView->currentIndex() );
+      return true;
+    }
+    else if ( kev->key() == Qt::Key_Up ) {
+      auto index = ui.headersListView->currentIndex();
+      if ( index.row() == 0 )
+        return true;
+      auto preIndex = ui.headersListView->model()->index( index.row() - 1, index.column() );
+      ui.headersListView->setCurrentIndex( preIndex );
+      return true;
+    }
+    else if ( kev->key() == Qt::Key_Down ) {
+      auto index = ui.headersListView->currentIndex();
+      //last row.
+      if ( index.row() == ui.headersListView->model()->rowCount() - 1 )
+        return true;
+      auto preIndex = ui.headersListView->model()->index( index.row() + 1, index.column() );
+      ui.headersListView->setCurrentIndex( preIndex );
       return true;
     }
   }
@@ -278,12 +295,11 @@ void DictHeadwords::showHeadwordsNumber()
                                .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
 }
 
-// TODO , the ui and the code mixed together , this is not the right way to do this. need future refactor
 void DictHeadwords::loadAllSortedWords( QProgressDialog & progress )
 {
   const int headwordsNumber = model->totalCount();
 
-  QMutexLocker _( &mutex );
+  QMutexLocker const _( &mutex );
   if ( sortedWords.isEmpty() ) {
     QSet< QString > allHeadwords;
 
@@ -330,10 +346,10 @@ void DictHeadwords::saveHeadersToFile()
       exportPath = QDir::homePath();
   }
 
-  QString fileName = QFileDialog::getSaveFileName( this,
-                                                   tr( "Save headwords to file" ),
-                                                   exportPath,
-                                                   tr( "Text files (*.txt);;All files (*.*)" ) );
+  QString const fileName = QFileDialog::getSaveFileName( this,
+                                                         tr( "Save headwords to file" ),
+                                                         exportPath,
+                                                         tr( "Text files (*.txt);;All files (*.*)" ) );
   if ( fileName.size() == 0 )
     return;
 
