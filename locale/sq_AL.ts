@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Thjesht ndaleni kursorin te fjala që doni të shikoni nga aplikacioni tjetër, dhe do ju shfaqet një dritare me fjalën e treguar.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Skanimi i jashtëm&lt;/h3&gt;Për të parë fjalët nga aplikacionet aktive, së pari aktivizoni &lt;i&gt;&quot;funksionin Skanimi i jashtëm&quot;&lt;/i&gt; te &lt;b&gt;Preferencat&lt;/b&gt;. Më tej e aktivizoni kurdoherë duke ndezur ikonën e &apos;Skanimit&apos;, ose duke klikuar me të djathtën ikonën te shiriti i sistemit. </translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Zgjeroj artikullin</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>Mirë se erdhët!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Thjesht seleksiononi me maus fjalën që doni të shikoni nga aplikacioni tjetër (klikojeni dy herë ose visheni me butonin e shtypur të miut), dhe do ju shfaqet një dritare me fjalën e treguar.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Nuk gjen përkthimin te grupi &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(figurë)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Mirë se vini në &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Për të filluar punën me programin, vizitoni fillimisht &lt;b&gt;Edit|Fjalorët&lt;/b&gt; për të shtuar disa shtigje direktorie ku të kërkoni për skedarët e fjalorit, të konfiguroni sajte të ndryshme të Wikipedia-s ose burime të tjera, të rregulloni rendin e fjalorëve ose të krijoni grupe fjalorësh.&lt;p&gt;Dhe pastaj ju&apos;jeni gati të kërkoni fjalët tuaja! Ju mund ta bëni këtë në këtë dritare duke përdorur një panel në të majtë, ose mund &lt;button id=&quot;lookup-popup&quot;&gt;kërkoni fjalë nga aplikacione të tjera aktive&lt;/button&gt;. &lt;p&gt;Për të personalizuar programin, shikoni preferencat e disponueshme në &lt;b&gt;Edit|Preferences&lt;/b&gt;. Të gjitha cilësimet atje kanë këshilla veglash, sigurohuni t'i lexoni nëse keni dyshime për ndonjë gjë.&lt;p&gt;Nëse keni nevojë për ndihmë të mëtejshme, keni ndonjë pyetje, sugjerim ose thjesht pyesni veten se çfarë mendojnë të tjerët, jeni të mirëpritur në forumin e programit&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kontrolloni programin&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;faqen e internetit&lt;/a&gt; për përditësimet. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencuar sipas GPLv3 ose më vonë.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Mirë se vini në &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Për të filluar punën me programin, së pari vizitoni &lt;em&gt;Edit | Fjalorët&lt;/em&gt; për të shtuar disa shtigje drejtorie ku mund të kërkoni për skedarët e fjalorit, të konfiguroni sajte të ndryshme të Wikipedia-s ose burime të tjera, të rregulloni renditjen e fjalorëve ose të krijoni grupe fjalorësh.&lt;p&gt;Dhe pastaj ju&apos;jeni gati të kërkoni fjalët tuaja! Ju mund ta bëni këtë në këtë dritare duke përdorur një panel në të majtë, ose mund &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;kërkoni fjalë nga aplikacione të tjera aktive&lt;/a&gt;. &lt;p&gt;Për të personalizuar programin, shikoni preferencat e disponueshme në &lt;em&gt;Edit | Preferencat&lt;/em&gt;. Të gjitha cilësimet atje kanë këshilla veglash, sigurohuni t'i lexoni nëse keni dyshime për ndonjë gjë.&lt;p&gt;Nëse keni nevojë për ndihmë të mëtejshme, keni ndonjë pyetje, sugjerim ose thjesht pyesni veten se çfarë mendojnë të tjerët, jeni të mirëpritur në forumin e programit&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kontrolloni programin&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;faqen e internetit&lt;/a&gt; për përditësimet. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencuar sipas GPLv3 ose më vonë.</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>TTS Voice</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Figura</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Krijoni shënimin Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>Hap imazhin në shikuesin e sistemit...</translation>
     </message>
   </context>
   <context>
@@ -3619,14 +3607,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Të ndryshme</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Kur korrigjoni gabimet me fjalorin css/js, çaktivizoni cache të caktuar për ta bërë më të lehtë.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Korrigjimi i fjalorit</translation>
     </message>
     <message>
       <source>Interface Font</source>

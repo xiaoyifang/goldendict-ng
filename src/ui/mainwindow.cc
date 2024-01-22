@@ -718,7 +718,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain || cfg.preferences.pronounceOnLoadPopup ) && view != nullptr ) {
-               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               if ( cfg.preferences.pronounceOnLoadPopup ) {
+                 if ( !scanPopup || !scanPopup->isActiveWindow() )
+                   return;
+                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               }
+               else if ( cfg.preferences.pronounceOnLoadMain ) {
+                 if ( scanPopup && scanPopup->isActiveWindow() )
+                   return;
+                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               }
              }
            } );
   applyProxySettings();
@@ -1652,8 +1661,8 @@ void MainWindow::updateDictionaryBar()
     if ( currentId == Instances::Group::AllGroupId )
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
     else {
-      Config::Group * grp = cfg.getGroup( currentId );
-      dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : nullptr );
+      Config::Group * _grp = cfg.getGroup( currentId );
+      dictionaryBar.setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
     }
 
     dictionaryBar.setDictionaries( grp->dictionaries );

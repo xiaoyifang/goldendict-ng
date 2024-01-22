@@ -86,6 +86,15 @@ protected:
   void loadIcon() noexcept override;
 };
 
+class WebSiteDataRequestSlots: public Dictionary::DataRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void requestFinished( QNetworkReply * ) {}
+};
+
 sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
@@ -517,4 +526,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   return result;
 }
 
+#include "website.moc"
 } // namespace WebSite

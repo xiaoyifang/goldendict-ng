@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Потім наведіть курсор миші на слово, котре ви бажаєте перекласти, у сторонній програмі, тоді появиться контекстне вікно з потрібним описом слова.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Контекстні вікна&lt;/h3&gt;Для пошуку слів з інших запущених програм вам потрібно ввімкнути &lt;i&gt;«Контекстні вікна»&lt;/i&gt; в меню &lt;b&gt;Налаштування&lt;/b&gt; і потім може увімкнути його в будь-який момент натиснувши піктограму «Контекстне вікно» вище, або натиснувши піктограму в лотку нижче правим клацом мишки і вибравши його в контекстному меню. </translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Розкрити статтю</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>Ласкаво просимо!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Тепер виберіть будь-яке слово,котре ви бажаєте перекласти, у сторонній програмі за допомогою мишки (подвійний клац або підвівши курсор при затиснутій лівій кнопці), тоді появиться контекстне вікно з потрібним описом слова.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Нема перекладу в групі &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(зображення)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спершу відвідайте &lt;b&gt;Редагувати|Словники&lt;/b&gt; , щоб додати деякі шляхи до каталогу, де шукати файли словників, налаштувати різні сайти Вікіпедії чи інші джерела, налаштувати порядок словників або створити групи словників.&lt;p&gt;І тоді ви&apos;готові переглянути свої слова! Ви можете зробити це в цьому вікні, використовуючи панель ліворуч, або ви можете &lt;button id=&quot;lookup-popup&quot;&gt;шукати слова з інших активних програм&lt;/button&gt;. &lt;p&gt;Щоб налаштувати програму, перегляньте доступні параметри в &lt;b&gt;Редагувати|Параметри&lt;/b&gt;. До всіх налаштувань є підказки, обов’язково прочитайте їх, якщо у вас є сумніви.&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання, пропозиції чи просто цікаво, що думають інші, ласкаво просимо на форум програми&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Перевірте програму&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб-сайт&lt;/a&gt; на наявність оновлень. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Ліцензовано під GPLv3 або новішої версії.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спочатку відвідайте &lt;em&gt;Редагувати | Словники&lt;/em&gt; , щоб додати деякі шляхи до каталогу, де шукати файли словників, налаштувати різні сайти Вікіпедії чи інші джерела, налаштувати порядок словників або створити групи словників.&lt;p&gt;І тоді ви&apos;готові переглянути свої слова! Ви можете зробити це в цьому вікні, використовуючи панель ліворуч, або ви можете &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;шукати слова з інших активних програм&lt;/a&gt;. &lt;p&gt;Щоб налаштувати програму, перегляньте доступні налаштування на &lt;em&gt;Редагувати | Уподобання&lt;/em&gt;. До всіх налаштувань є підказки, обов’язково прочитайте їх, якщо у вас є сумніви.&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання, пропозиції чи просто цікаво, що думають інші, ласкаво просимо на форум програми&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Перевірте програму&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб-сайт&lt;/a&gt; на наявність оновлень. &lt;p&gt;(c) 2008-2013 Костянтин Ісаков. Ліцензовано під GPLv3 або новішої версії.</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>Голос TTS</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Зображення</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Відеозапис</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Створити примітку</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>Відкрити зображення в системному переглядачі...</translation>
     </message>
   </context>
   <context>
@@ -3628,14 +3616,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>Різне</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>При налагодженні з словником css/js, вимкніть певний кеш, щоб зробити його простішим.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Налагодження словника</translation>
     </message>
     <message>
       <source>Interface Font</source>

@@ -1,4 +1,4 @@
-name: macos-homebrew
+name: macos-arm-homebrew
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -21,16 +21,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-12,macos-13]
+        os: [flyci-macos-large-latest-m2]
         qt_ver: [ 6.6.1 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.12.07
-      version-suffix: HeavySnow
-      prerelease: false
+      version: 23.12.08
+      version-suffix: alpha
+      prerelease: true
     steps:
-    
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -101,8 +100,9 @@ jobs:
           
           macdeployqt ${targetName}.app -qmldir=. -verbose=1
           otool -L GoldenDict.app/Contents/MacOS/GoldenDict
+          
+          find /opt -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           ls -al GoldenDict.app/Contents/Frameworks
-          find /usr/local/Cellar -name "libicudata.73.dylib" -exec  cp {} GoldenDict.app/Contents/Frameworks/ \;
           
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -name "libicu*" -exec  ls -al {} \;
           find GoldenDict.app/Contents/Frameworks/ -maxdepth 1 -type f -name "libicu*" -exec  ls -al {} \;
@@ -123,12 +123,11 @@ jobs:
       - name: changelog
         id: changelog
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
-
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha"  | sed -n 1p)" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: Set outputs
         id: vars
@@ -191,7 +190,6 @@ jobs:
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}
           body: |
             #### Install instructions for Windows, macOS and Linux 
 

@@ -12,30 +12,10 @@
 namespace MediaWiki {
 
 using std::vector;
-using std::string;
 
 vector< sptr< Dictionary::Class > >
 makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, QNetworkAccessManager & );
 
-/// Exposed here for moc
-class MediaWikiWordSearchRequestSlots: public Dictionary::WordSearchRequest
-{
-  Q_OBJECT
-
-protected slots:
-
-  virtual void downloadFinished() {}
-};
-
-/// Exposed here for moc
-class MediaWikiDataRequestSlots: public Dictionary::DataRequest
-{
-  Q_OBJECT
-
-protected slots:
-
-  virtual void requestFinished( QNetworkReply * ) {}
-};
 
 } // namespace MediaWiki
 

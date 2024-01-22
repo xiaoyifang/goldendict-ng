@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Następnie zatrzymaj kursor w innej aplikacji nad słowem, które chcesz wyszukać. Spowoduje to wyświetlenie okienka wyskakującego zawierającego wyjaśnienie tego słowa.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Praca z okienkiem wyskakującym&lt;/h3&gt;Aby móc wyszukiwać słowa z innych działających aplikacji, aktywuj najpierw funkcję &lt;i&gt;„skanowania automatycznego”&lt;/i&gt; w opcji &lt;b&gt;Preferencje&lt;/b&gt; i w dowolnym momencie włącz ją, przełączając znajdującą się powyżej ikonę skanowania automatycznego lub klikając prawym przyciskiem myszy ikonę na pasku zadań i wybierając odpowiednią opcję z wyświetlonego menu. </translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Rozwiń artykuł</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>Witamy!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Następnie zaznacz w innej aplikacji dowolne słowo za pomocą myszy (kliknij je dwukrotnie lub zaznacz wskaźnikiem myszy przy wciśniętym lewym przycisku). Spowoduje to wyświetlenie okienka wyskakującego zawierającego wyjaśnienie tego słowa.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Nie znaleziono tłumaczenia w grupie &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(obraz)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Witamy w &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Aby rozpocząć pracę z programem, najpierw odwiedź &lt;b&gt;Edycja|Słowniki&lt;/b&gt; , aby dodać ścieżki katalogów, w których można wyszukiwać pliki słowników, skonfigurować różne witryny Wikipedii lub inne źródła, dostosować kolejność słowników lub utworzyć grupy słowników.&lt;p&gt;A potem&apos;gotowy, aby sprawdzić swoje słowa! Możesz to zrobić w tym oknie, korzystając z panelu po lewej stronie, lub możesz &lt;button id=&quot;lookup-popup&quot;&gt;wyszukiwać słowa z innych aktywnych aplikacji&lt;/button&gt;. &lt;p&gt;Aby dostosować program, sprawdź dostępne preferencje w &lt;b&gt;Edycja|Preferencje&lt;/b&gt;. Wszystkie ustawienia mają podpowiedzi, koniecznie je przeczytaj, jeśli masz jakiekolwiek wątpliwości.&lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania, sugestie lub po prostu zastanawiasz się, co myślą inni, zapraszamy na forum programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Sprawdź program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;na stronie&lt;/a&gt; , aby uzyskać aktualizacje. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencja na licencji GPLv3 lub nowszej.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Witamy w &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Aby rozpocząć pracę z programem, najpierw odwiedź &lt;em&gt;Edytuj | Słowniki&lt;/em&gt; , aby dodać ścieżki katalogów, w których można wyszukiwać pliki słowników, skonfigurować różne witryny Wikipedii lub inne źródła, dostosować kolejność słowników lub utworzyć grupy słowników.&lt;p&gt;A potem&apos;gotowy, aby sprawdzić swoje słowa! Możesz to zrobić w tym oknie, korzystając z panelu po lewej stronie, lub możesz &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;wyszukiwać słowa z innych aktywnych aplikacji&lt;/a&gt;. &lt;p&gt;Aby dostosować program, sprawdź dostępne preferencje w &lt;em&gt;Edytuj | Preferencje&lt;/em&gt;. Wszystkie ustawienia mają podpowiedzi, koniecznie je przeczytaj, jeśli masz jakiekolwiek wątpliwości.&lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania, sugestie lub po prostu zastanawiasz się, co myślą inni, zapraszamy na forum programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Sprawdź program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;na stronie&lt;/a&gt; , aby uzyskać aktualizacje. &lt;p&gt;(c) 2008-2013 Konstantin Isakow. Licencja na licencji GPLv3 lub nowszej.</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>Głos TTS</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Obraz</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Wideo</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Utwórz notatkę Anki</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>Otwórz obraz w przeglądarce systemowej...</translation>
     </message>
   </context>
   <context>
@@ -3626,14 +3614,6 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Różnorodny</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Podczas debugowania przy użyciu słownika css/js, wyłącz pamięć podręczną, aby ją ułatwić.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Debugowanie słownika</translation>
     </message>
     <message>
       <source>Interface Font</source>

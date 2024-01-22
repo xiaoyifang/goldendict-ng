@@ -341,20 +341,10 @@ int main( int argc, char ** argv )
   QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
   QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
 #endif
-  qputenv( "QT_AUTO_SCREEN_SCALE_FACTOR", "1" );
+  qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
-
-  char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
-  int newArgc                     = argc + 1 + 1;
-  char ** newArgv                 = new char *[ newArgc ];
-  for ( int i = 0; i < argc; i++ ) {
-    newArgv[ i ] = argv[ i ];
-  }
-  newArgv[ argc ]     = ARG_DISABLE_WEB_SECURITY;
-  newArgv[ argc + 1 ] = nullptr;
-
-  QHotkeyApplication app( "GoldenDict-ng", newArgc, newArgv );
+  QHotkeyApplication app( "GoldenDict-ng", argc, argv );
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );

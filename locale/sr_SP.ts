@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Сада померите курсор на било коју реч и појавиће се искачући прозор са преводом или описом речи.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Искачући прозор&lt;/h3&gt;Да бисте пронашли речи из друге апликације, потребно је да укључите &lt;i&gt;«Омогући искачући прозор»&lt;/i&gt; у &lt;b&gt;Поставке&lt;/b&gt; и након тога омогућити искачуће дугме «Прегледај» у главном прозору или у пливајућем изборнику на икони у системској палети.</translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Прошири чланак</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>Добро дошли!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Сада изаберите реч у додатку (Дупли клик, или држећи миша преко њих док држите леви тастер), и искаче прозор са преводом или описом речи.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>У групи &lt;b&gt;%1&lt;/b&gt; превод није пронађен.</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(слика)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Добродошли у &lt;b&gt;ГолденДицт&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Да бисте почели да радите са програмом, прво посетите &lt;b&gt;Уреди|Речници&lt;/b&gt; да бисте додали неке путање директоријума у којима ћете претраживати датотеке речника, подесити различите сајтове Википедије или друге изворе, прилагодити редослед речника или креирати групе речника.&lt;p&gt;А онда сте&apos;да потражите своје речи! То можете да урадите у овом прозору користећи окно са леве стране или можете &lt;button id=&quot;lookup-popup&quot;&gt;потражити речи из других активних апликација&lt;/button&gt;. &lt;p&gt;Да бисте прилагодили програм, погледајте доступне поставке на &lt;b&gt;Едит|Преференцес&lt;/b&gt;. Сва подешавања тамо имају описе алата, обавезно их прочитајте ако сте у недоумици.&lt;p&gt;Уколико вам је потребна додатна помоћ, имате питања, сугестије или се само питате шта други мисле, добродошли сте на програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форум&lt;/a&gt;.&lt;p&gt;Проверите програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб локацију&lt;/a&gt; за ажурирања. &lt;p&gt;(в) 2008-2013 Konstantin Isakov. Лиценцирано под ГПЛв3 или новијим.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Добродошли у &lt;b&gt;ГолденДицт&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Да бисте почели да радите са програмом, прво посетите &lt;em&gt;Уреди | Речници&lt;/em&gt; да бисте додали неке путање директоријума где да тражите датотеке речника, подесите различите сајтове Википедије или друге изворе, прилагодите редослед речника или креирате групе речника.&lt;p&gt;А онда сте&apos;да потражите своје речи! То можете да урадите у овом прозору користећи окно са леве стране или можете &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;потражити речи из других активних апликација&lt;/a&gt;. &lt;p&gt;Да бисте прилагодили програм, погледајте доступне поставке на &lt;em&gt;Уреди | Преференцес&lt;/em&gt;. Сва подешавања тамо имају описе алата, обавезно их прочитајте ако сте у недоумици.&lt;p&gt;Уколико вам је потребна додатна помоћ, имате питања, сугестије или се само питате шта други мисле, добродошли сте на програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;форум&lt;/a&gt;.&lt;p&gt;Проверите програм&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб локацију&lt;/a&gt; за ажурирања. &lt;p&gt;(в) 2008-2013 Константин Исаков. Лиценцирано под ГПЛв3 или новијим.</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>TTS глас</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Слика</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Видео</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Креирај Анки белешку</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>Отвори слику у прегледнику система...</translation>
     </message>
   </context>
   <context>
@@ -3629,14 +3617,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>Остало</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Када отклањате грешке помоћу речника цсс/јс, онемогућите одређени кеш да бисте то олакшали.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Отклањање грешака у речнику</translation>
     </message>
     <message>
       <source>Interface Font</source>

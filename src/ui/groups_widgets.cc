@@ -481,14 +481,6 @@ void DictListWidget::focusInEvent( QFocusEvent * )
   emit gotFocus();
 }
 
-void DictListWidget::rowsInserted( QModelIndex const & parent, int start, int end )
-{
-  QListView::rowsInserted( parent, start, end );
-
-  // When inserting new rows, make the first of them current
-  selectionModel()->setCurrentIndex( model.index( start, 0, parent ), QItemSelectionModel::NoUpdate );
-}
-
 void DictListWidget::rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end )
 {
   // When removing rows, if the current row is among the removed ones, select
@@ -684,9 +676,9 @@ void DictGroupsWidget::addAutoGroups()
     else if ( !dict->getDictionaryFilenames().empty() ) {
       // Handle special case - morphology dictionaries
 
-      QString fileName = QFileInfo( dict->getDictionaryFilenames()[ 0 ].c_str() ).fileName();
+      QString const fileName = QFileInfo( dict->getDictionaryFilenames()[ 0 ].c_str() ).fileName();
       if ( fileName.endsWith( ".aff", Qt::CaseInsensitive ) ) {
-        QString code = fileName.left( 2 ).toLower();
+        QString const code = fileName.left( 2 ).toLower();
         morphoMap[ code ].push_back( dict );
         continue;
       }
@@ -695,7 +687,7 @@ void DictGroupsWidget::addAutoGroups()
     dictMap[ name ].push_back( dict );
   }
 
-  QStringList groupList = dictMap.keys();
+  QStringList const groupList = dictMap.keys();
 
   // Insert morphology dictionaries into corresponding lists
   for ( const auto & gr : groupList ) {
@@ -711,7 +703,7 @@ void DictGroupsWidget::addAutoGroups()
     const auto idx = addUniqueGroup( gr );
 
     // add dictionaries into the current group
-    QVector< sptr< Dictionary::Class > > vd = dictMap[ gr ];
+    QVector< sptr< Dictionary::Class > > const vd = dictMap[ gr ];
     DictListModel * model                   = getModelAt( idx );
     if ( !model )
       continue;
@@ -803,7 +795,7 @@ void DictGroupsWidget::addAutoGroupsByFolders()
       groupName = path.dirName();
     }
     else {
-      QString directFolder = path.dirName();
+      QString const directFolder = path.dirName();
       if ( !path.cdUp() ) {
         cdUpWentWrong( path.absolutePath() );
         return;
@@ -883,7 +875,7 @@ QString DictGroupsWidget::getCurrentGroupName() const
   if ( current >= 0 )
     return Utils::unescapeAmps( tabText( current ) );
 
-  return QString();
+  return {};
 }
 
 void DictGroupsWidget::renameCurrentGroup( QString const & name )
@@ -949,7 +941,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   QMenu menu( this );
 
   const auto combineSourceAction =
-    new QAction( QString( tr( "Combine groups by source language to \"%1->\"" ) ).arg( name.left( 2 ) ), &menu );
+    new QAction( QString( tr( R"(Combine groups by source language to "%1->")" ) ).arg( name.left( 2 ) ), &menu );
   combineSourceAction->setEnabled( false );
 
   QString grLeft  = name.left( 2 );
@@ -964,11 +956,11 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   menu.addAction( combineSourceAction );
 
   const auto combineTargetAction =
-    new QAction( QString( tr( "Combine groups by target language to \"->%1\"" ) ).arg( name.right( 2 ) ), &menu );
+    new QAction( QString( tr( R"(Combine groups by target language to "->%1")" ) ).arg( name.right( 2 ) ), &menu );
   combineTargetAction->setEnabled( false );
 
   for ( int i = 0; i < count(); i++ ) {
-    QString str = tabText( i );
+    QString const str = tabText( i );
     if ( i != clickedGroup && str.length() == 7 && str.mid( 2, 3 ) == " - " && str.endsWith( grRight ) ) {
       combineTargetAction->setEnabled( true );
       break;
@@ -979,7 +971,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   QAction * combineTwoSidedAction = nullptr;
   if ( grLeft != grRight ) {
     combineTwoSidedAction =
-      new QAction( QString( tr( "Make two-side translate group \"%1-%2-%1\"" ) ).arg( grLeft, grRight ), &menu );
+      new QAction( QString( tr( R"(Make two-side translate group "%1-%2-%1")" ) ).arg( grLeft, grRight ), &menu );
 
     combineTwoSidedAction->setEnabled( false );
 
@@ -1105,7 +1097,7 @@ QuickFilterLine::QuickFilterLine( QWidget * parent ):
   connect( this, &QLineEdit::textChanged, this, &QuickFilterLine::filterChangedInternal );
 }
 
-QuickFilterLine::~QuickFilterLine() {}
+QuickFilterLine::~QuickFilterLine() = default;
 
 void QuickFilterLine::applyTo( QAbstractItemView * source )
 {

@@ -226,6 +226,8 @@ public:
     hasAnyData( false )
   {
   }
+signals:
+  void finishedArticle( QString articleText );
 
 protected:
   bool hasAnyData; // With this being false, dataSize() always returns -1
@@ -235,6 +237,8 @@ protected:
 /// A helper class for synchronous word search implementations.
 class WordSearchRequestInstant: public WordSearchRequest
 {
+  Q_OBJECT
+
 public:
 
   WordSearchRequestInstant()

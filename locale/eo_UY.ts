@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>Tiam simple haltigu la kursoron super la vorto, kiun vi volas serĉi en alia aplikaĵo, kaj aperos fenestro, kiu priskribus ĝin al vi.</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Laborante kun la ŝprucfenestro&lt;/h3&gt;Por serĉi vortojn de aliaj aktivaj aplikaĵoj, vi devus unue aktivigi la &lt;i&gt;&quot;Skani ŝprucfenestron&quot;&lt;/i&gt; en &lt;b&gt;Preferoj&lt;/b&gt;, kaj tiam ebligu ĝin iam ajn aŭ per ekfunkciigo de la &apos;Popup&apos; piktogramo supre, aŭ alklakante la pletikonon sube per via dekstra musbutono kaj elektante tion en la menuo, kiun vi aperis.</translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>Etendi artikolon</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>Bonvenon!</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>Tiam simple elektu iun ajn vorton, kiun vi volas serĉi en alia aplikaĵo per via muso (duoble alklaku ĝin aŭ glitu ĝin per muso kun la butono premita), kaj aperos fenestro, kiu priskribus la vorton al vi.</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Neniu traduko estis trovita en grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>(bildo)</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Bonvenon al &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Por eklabori kun la programo, unue vizitu &lt;b&gt;Redaktu|Vortarojn&lt;/b&gt; por aldoni kelkajn dosierujojn kie serĉi la vortarajn dosierojn, agordi diversajn Vikipediajn retejojn aŭ aliajn fontojn, ĝustigi vortaran ordon aŭ krei vortarajn grupojn.&lt;p&gt;Kaj tiam vi&apos;pretas serĉi viajn vortojn! Vi povas fari tion en ĉi tiu fenestro uzante panelon maldekstre, aŭ vi povas &lt;button id=&quot;lookup-popup&quot;&gt;serĉi vortojn de aliaj aktivaj aplikaĵoj&lt;/button&gt;. &lt;p&gt;Por personecigi programon, kontrolu la disponeblajn preferojn ĉe &lt;b&gt;Redaktu|Preferoj&lt;/b&gt;. Ĉiuj agordoj tie havas konsiletojn, nepre legu ilin se vi dubas pri io ajn.&lt;p&gt;Se vi bezonas plian helpon, havas demandojn, sugestojn aŭ simple scivolas, kion pensas la aliaj, vi bonvenas ĉe la programo&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumo&lt;/a&gt;.&lt;p&gt;Kontrolu programon&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;retejon&lt;/a&gt; por la ĝisdatigoj. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencite laŭ GPLv3 aŭ poste.</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Bonvenon al &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Por komenci labori kun la programo, unue vizitu &lt;em&gt;Redakti | Vortaroj&lt;/em&gt; por aldoni kelkajn dosierujojn kie serĉi la vortarajn dosierojn, agordi diversajn Vikipediajn retejojn aŭ aliajn fontojn, ĝustigi vortaran ordon aŭ krei vortarajn grupojn.&lt;p&gt;Kaj tiam vi&apos;pretas serĉi viajn vortojn! Vi povas fari tion en ĉi tiu fenestro uzante panelon maldekstre, aŭ vi povas &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;serĉi vortojn de aliaj aktivaj aplikaĵoj&lt;/a&gt;. &lt;p&gt;Por personecigi programon, kontrolu la disponeblajn preferojn ĉe &lt;em&gt;Redaktu | Preferoj&lt;/em&gt;. Ĉiuj agordoj tie havas konsiletojn, nepre legu ilin se vi dubas pri io ajn.&lt;p&gt;Se vi bezonas plian helpon, havas demandojn, sugestojn aŭ simple scivolas, kion pensas la aliaj, vi bonvenas ĉe la programo&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forumo&lt;/a&gt;.&lt;p&gt;Kontrolu programon&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;retejon&lt;/a&gt; por la ĝisdatigoj. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencite laŭ GPLv3 aŭ poste.</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>Parolsintezo</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>Bildo</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Krei Anki-noton</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>Malfermu bildon en sistema spektilo...</translation>
     </message>
   </context>
   <context>
@@ -3627,14 +3615,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Miscellaneous</source>
       <translation>Diversaj</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>Kiam vi elpurigas per vortaro css/js, malŝaltu certan kaŝmemoron por plifaciligi ĝin.</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>Vortaro elpurigi</translation>
     </message>
     <message>
       <source>Interface Font</source>

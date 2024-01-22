@@ -62,14 +62,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-      <translation>然后只要将鼠标指针停留在你想要进行抓词查询的单词上，程序就会在弹出式窗口中显示释义。</translation>
-    </message>
-    <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;使用屏幕取词功能&lt;/h3&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;如要从其它程序中直接进行抓词查询，需要首先在&lt;b&gt;首选项&lt;/b&gt;中启用“屏幕取词功能”，然后点击上面的“弹出菜单”图标，或者右键点击系统托盘图标后从弹出菜单中选定“屏幕取词”以激活此功能。</translation>
-    </message>
-    <message>
       <source>Expand article</source>
       <translation>展开文章</translation>
     </message>
@@ -86,10 +78,6 @@
       <translation>欢迎使用！</translation>
     </message>
     <message>
-      <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-      <translation>然后只要用鼠标指针选定你要进行抓词查询的词（双击单词或者用鼠标拖拉选定），程序就会在弹出式窗口中显示释义。</translation>
-    </message>
-    <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>在 &lt;b&gt;%1&lt;/b&gt; 群组中找不到可用的翻译。</translation>
     </message>
@@ -102,8 +90,8 @@
       <translation>（图片）</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;button id=&quot;lookup-popup&quot;&gt;look up words from other active applications&lt;/button&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎使用&lt;b&gt;GoldenDict&lt;/b&gt;！&lt;/h3&gt;&lt;p&gt;要开始使用该程序，请首先访问&lt;b&gt;编辑|词典&lt;/b&gt;添加一些目录路径来搜索字典文件、设置各种维基百科网站或其他来源、调整字典顺序或创建字典组。&lt;p&gt;然后您就可以查找单词了！您可以通过使用左侧的窗格在此窗口中执行此操作，也可以&lt;button id=&quot;lookup-popup&quot;&gt;从其他活动应用程序查找单词&lt;/button&gt;。 &lt;p&gt;要自定义程序，请查看&lt;b&gt;编辑|首选项&lt;/b&gt;中的可用首选项。那里的所有设置都有工具提示，如果您有任何疑问，请务必阅读它们。&lt;p&gt;如果您需要进一步帮助、有任何问题、建议或只是想知道其他人的想法，欢迎您访问该程序的 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;论坛&lt;/a&gt;。&lt;p&gt;检查&lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;网站&lt;/a&gt;是否有更新。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。根据 GPLv3 或更高版本获得许可。</translation>
+      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;欢迎来到 &lt;b&gt;GoldenDict&lt;/b&gt;！&lt;/h3&gt;&lt;p&gt;要开始使用该程序，请首先访问 &lt;em&gt;编辑 | 词典&lt;/em&gt; 添加一些目录路径，用于搜索词典文件、设置各种维基百科站点或其他来源、调整词典顺序或创建词典组。&lt;p&gt;然后你就可以查一下你的话了！您可以通过使用左侧的窗格在此窗口中执行此操作，也可以 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;从其他活动应用程序&lt;/a&gt;查找单词。 &lt;p&gt;要自定义程序，请在 &lt;em&gt;编辑 | 偏好&lt;/em&gt;．那里的所有设置都有工具提示，如果您有任何疑问，请务必阅读它们。&lt;p&gt;如果您需要进一步帮助，有任何问题、建议或只是想知道其他人的想法，欢迎您参加 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;论坛&lt;/a&gt;。&lt;p&gt;检查程序  &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;网站&lt;/a&gt; 的更新。 &lt;p&gt;(c) 2008-2013 Konstantin Isakov。根据 GPLv3 或更高版本获得许可。</translation>
     </message>
   </context>
   <context>
@@ -204,10 +192,6 @@
       <translation>TTS 音频</translation>
     </message>
     <message>
-      <source>Picture</source>
-      <translation>图片</translation>
-    </message>
-    <message>
       <source>Video</source>
       <translatorcomment>视频: %1</translatorcomment>
       <translation>视频</translation>
@@ -299,6 +283,10 @@
     <message>
       <source>&amp;Create Anki note</source>
       <translation>创建 Anki 笔记(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Open image in system viewer...</source>
+      <translation>在系统查看器中打开图像...</translation>
     </message>
   </context>
   <context>
@@ -3610,14 +3598,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Miscellaneous</source>
       <translation>杂项</translation>
-    </message>
-    <message>
-      <source>When debugging with dictionary css/js, disable certain cache to make it easier.</source>
-      <translation>当使用字典 css/js 进行调试时，禁用某些缓存使其更加容易。</translation>
-    </message>
-    <message>
-      <source>Dictionary debug</source>
-      <translation>词典调试</translation>
     </message>
     <message>
       <source>Interface Font</source>
