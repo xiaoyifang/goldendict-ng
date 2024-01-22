@@ -24,8 +24,8 @@ jobs:
         qt_ver: [ 6.6.1 ]
         qt_arch: [gcc_64]
     env:
-      version: 23.12.07
-      version-suffix: HeavySnow
+      version: 24.01.22
+      version-suffix: LoongYear
       prerelease: false
     steps:
       - name: Install Qt

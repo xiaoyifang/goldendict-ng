@@ -26,8 +26,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.12.07
-      version-suffix: HeavySnow
+      version: 24.01.22
+      version-suffix: LoongYear
       prerelease: false
     steps:
                

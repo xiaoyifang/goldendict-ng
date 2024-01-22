@@ -26,9 +26,9 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 23.12.08
-      version-suffix: alpha
-      prerelease: true
+      version: 24.01.22
+      version-suffix: LoongYear
+      prerelease: false
     steps:
       - uses: actions/checkout@v3
         with:

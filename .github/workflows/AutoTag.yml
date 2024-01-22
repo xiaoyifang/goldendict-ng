@@ -21,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 23.12.07
-      version-suffix: HeavySnow
+      version: 24.01.22
+      version-suffix: LoongYear
       prerelease: false
 
     steps:
