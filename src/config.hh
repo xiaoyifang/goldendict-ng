@@ -462,7 +462,7 @@ struct MediaWiki
   {
   }
 
-  MediaWiki( QString const & id_, QString const & name_, QString const & url_, bool enabled_, QString const & icon_, QString const & lang_ ):
+  MediaWiki( QString const & id_, QString const & name_, QString const & url_, bool enabled_, QString const & icon_, QString const & lang_ = "" ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
