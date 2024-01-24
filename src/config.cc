@@ -354,14 +354,30 @@ MediaWikis makeDefaultMediaWikis( bool enable )
     MediaWiki( "f3b4ec8531e52ddf5b10d21e4577a7a2", "Greek Wikipedia", "https://el.wikipedia.org/w", false, "" ) );
   mw.push_back(
     MediaWiki( "5d45232075d06e002dea72fe3e137da1", "Greek Wiktionary", "https://el.wiktionary.org/w", false, "" ) );
-  mw.push_back(
-    MediaWiki( "c015d60c4949ad75b5b7069c2ff6dc2c", "traditional Chinese Wikipedia", "http://zh.wikipedia.org/w", false, "" , "zh-hant" ) );
-  mw.push_back(
-    MediaWiki( "d50828ad6e115bc9d3421b6821543108", "traditional Chinese Wiktionary", "http://zh.wiktionary.org/w", false, "" , "zh-hant" ) );
-  mw.push_back(
-    MediaWiki( "438b17b48cbda1a22d317fea37ec3110", "Simplified Chinese Wikipedia", "https://zh.wikipedia.org/w", false, "" , "zh-hans" ) );
-  mw.push_back(
-    MediaWiki( "b68b9fb71b5a8c766cc7a5ea8237fc6b", "Simplified Chinese Wiktionary", "https://zh.wiktionary.org/w", false, "" , "zh-hans" ) );
+  mw.push_back( MediaWiki( "c015d60c4949ad75b5b7069c2ff6dc2c",
+                           "traditional Chinese Wikipedia",
+                           "http://zh.wikipedia.org/w",
+                           false,
+                           "",
+                           "zh-hant" ) );
+  mw.push_back( MediaWiki( "d50828ad6e115bc9d3421b6821543108",
+                           "traditional Chinese Wiktionary",
+                           "http://zh.wiktionary.org/w",
+                           false,
+                           "",
+                           "zh-hant" ) );
+  mw.push_back( MediaWiki( "438b17b48cbda1a22d317fea37ec3110",
+                           "Simplified Chinese Wikipedia",
+                           "https://zh.wikipedia.org/w",
+                           false,
+                           "",
+                           "zh-hans" ) );
+  mw.push_back( MediaWiki( "b68b9fb71b5a8c766cc7a5ea8237fc6b",
+                           "Simplified Chinese Wiktionary",
+                           "https://zh.wiktionary.org/w",
+                           false,
+                           "",
+                           "zh-hans" ) );
 
   return mw;
 }
