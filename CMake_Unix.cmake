@@ -12,9 +12,13 @@ target_include_directories(${GOLDENDICT} PRIVATE
 
 if (LINUX OR BSD)
     find_package(X11 REQUIRED)
-    pkg_check_modules(LIBXTST IMPORTED_TARGET xtst)
-    target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
-    target_link_libraries(${GOLDENDICT} PRIVATE X11 PkgConfig::LIBXTST)
+    if (X11_FOUND AND X11_Xtst_FOUND)
+        target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
+        target_link_libraries(${GOLDENDICT} PRIVATE ${X11_LIBRARIES} ${X11_Xtst_LIB})
+        target_include_directories(${GOLDENDICT} PRIVATE ${X11_INCLUDE_DIR} ${X11_Xtst_INCLUDE_PATH})
+    else ()
+        message(FATAL_ERROR "Cannot find X11 and libXtst!")
+    endif ()
 endif ()
 
 if (APPLE)
