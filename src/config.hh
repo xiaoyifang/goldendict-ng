@@ -455,24 +455,32 @@ struct MediaWiki
   QString id, name, url;
   bool enabled;
   QString icon;
+  QString lang;
 
   MediaWiki():
     enabled( false )
   {
   }
 
-  MediaWiki( QString const & id_, QString const & name_, QString const & url_, bool enabled_, QString const & icon_ ):
+  MediaWiki( QString const & id_,
+             QString const & name_,
+             QString const & url_,
+             bool enabled_,
+             QString const & icon_,
+             QString const & lang_ = "" ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
     enabled( enabled_ ),
-    icon( icon_ )
+    icon( icon_ ),
+    lang( lang_ )
   {
   }
 
   bool operator==( MediaWiki const & other ) const
   {
-    return id == other.id && name == other.name && url == other.url && enabled == other.enabled && icon == other.icon;
+    return id == other.id && name == other.name && url == other.url && enabled == other.enabled && icon == other.icon
+      && lang == other.lang;
   }
 };
 
