@@ -2756,6 +2756,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Icon</source>
       <translation>Ikoni</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation type="unfinished">Language Variant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
