@@ -2753,6 +2753,10 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
       <source>Icon</source>
       <translation>Symbol</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation type="unfinished">Language Variant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
