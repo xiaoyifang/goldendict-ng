@@ -1887,9 +1887,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( isDslWs( curString[ 0 ] ) )
                 break; // No more headwords
 
-#ifdef QT_DEBUG
-              qDebug() << "Alt headword" << QString::fromStdU32String( curString );
-#endif
+              qDebug() << "dsl Alt headword" << QString::fromStdU32String( curString );
 
               processUnsortedParts( curString, true );
               expandTildes( curString, allEntryWords.front() );

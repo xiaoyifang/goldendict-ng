@@ -1635,9 +1635,7 @@ void MainWindow::updateGroupList()
 
   updateDictionaryBar();
 
-#ifdef QT_DEBUG
   qDebug() << "Reloading all the tabs...";
-#endif
 
   for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
     ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
