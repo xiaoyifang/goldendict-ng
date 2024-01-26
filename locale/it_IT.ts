@@ -2757,6 +2757,10 @@ Per utilizzare nelle ricerche i caratteri &apos;*&apos;, &apos;?&apos;, &apos;[&
       <source>Icon</source>
       <translation>Icona</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation type="unfinished">Language Variant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
