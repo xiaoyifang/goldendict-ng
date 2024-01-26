@@ -2823,6 +2823,10 @@ Añadir la pestaña actual a favoritos</translation>
       <source>Icon</source>
       <translation>Salta</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation type="unfinished">Language Variant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
