@@ -2755,6 +2755,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Icon</source>
       <translation>Symbol</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation type="unfinished">Language Variant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
