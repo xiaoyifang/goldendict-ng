@@ -2758,7 +2758,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Wariant językowy</translation>
     </message>
   </context>
   <context>

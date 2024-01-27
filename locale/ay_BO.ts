@@ -2825,7 +2825,7 @@ Añadir la pestaña actual a favoritos</translation>
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Aru mayjt’ayaña</translation>
     </message>
   </context>
   <context>
