@@ -154,7 +154,7 @@ public:
     if ( links.empty() )
       return false;
 
-    MdictParser::RecordInfo indexEntry;
+    MdictParser::RecordInfo indexEntry{};
     vector< char > chunk;
     // QMutexLocker _( &idxMutex );
     const char * indexEntryPtr = chunks.getBlock( links[ 0 ].articleOffset, chunk );
@@ -1152,7 +1152,7 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     File::loadFromFile( fn, data );
     return;
   }
-  for ( auto mddResource : mddResources ) {
+  for ( const auto& mddResource : mddResources ) {
     if ( mddResource->loadFile( newResourceName, data ) )
       break;
   }
