@@ -91,7 +91,18 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align="center">Willkommen zu &lt;b>GoldenDict-ng&lt;/b>&lt;/h3>&lt;p>Das sind die ersten Schritte um mit dem Programm arbeiten zu können. &lt;/p>&lt;p> Gehen Sie zunächst auf &lt;b>Bearbeiten » Wörterbücher...&lt;/b> um die Pfade zu abgespeicherten Wörterbüchern hinzuzufügen sowie um Wikipedia und andere Seiten einzurichten oder die Wörterbücher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p>
+&lt;p>Nun sind Sie bereit das erste Wort nachzuschlagen. &lt;br>Dies können Sie im Eingabe-Fenster machen oder &lt;button id="lookup-popup">Mit Popups arbeiten &lt;/button> mittels der Popup-Funktion in anderen Applikationen. &lt;/p>
+&lt;p>Um das Programm anzupassen öffnen Sie &lt;b>Bearbeiten » Einstellungen...&lt;/b>&lt;br>Viele Einstellungen sind auch mit Tipps versehen.&lt;/p>
+&lt;p>Hilfestellungen mit Fragen und Antworten zur "ursprünglichen" Version finden Sie immer noch im archivierten &lt;a href="http://goldendict.org/forum/">Forum&lt;/a>. Programm Updates finden sind auf der Webseite &lt;a href="https://sourceforge.net/projects/goldendict/">GoldenDict&lt;/a> und der weiterhin gepflegte Source auf &lt;a href="https://github.com/goldendict/goldendict/">GoldenDict Source&lt;/a>.
+&lt;br>(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;/p>&lt;p>&lt;/p>
+&lt;div>&lt;b>&lt;span style="COLOR: red">
+&lt;hr>
+&lt;/span>&lt;/b>&lt;/div>
+&lt;div>&lt;span style="COLOR: red">&lt;h3>&lt;b>Goldendict-ng (new generation): &lt;/b>&lt;/h3>&lt;p>Seit 2021 existiert nun Goldendict-ng. Ein neuer Fork von Xiao mit z.B. einer OCR Erkennung mittels dem externen Hilfsprogramm &lt;a href="https://sourceforge.net/projects/capture2text/">Capture2Text&lt;/a> und 
+vielen weiteren Optimierungen. &lt;/p>&lt;p>Goldendict-ng finden Sie auf der &lt;/span>&lt;span style="COLOR: red">&lt;a href="https://github.com/xiaoyifang/goldendict/">Webseite von Xiao&lt;/a>.&lt;font color="#000000"> &lt;/p> 
+&lt;hr>
+&lt;/font>&lt;/span>&lt;/div>&lt;/body>&lt;/html></translation>
     </message>
   </context>
   <context>
@@ -274,7 +285,7 @@
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Audio Dateien (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</translation>
+      <translation>Audio Dateien (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Alle Dateien (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
@@ -3532,7 +3543,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>Lingos</translation>
+      <translation>Lingoes</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
@@ -3972,7 +3983,7 @@ Standardisiert als ISO 3602.
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Für externe Programme. Der String %GDWORD% wird mit dem Suchwort ersetzt. Falls eine solche Zeichenkette nicht vorhanden ist, wird das Wort an die Standardeingabe geschickt..</translation>
+      <translation>Für externe Programme. Der String %GDWORD% wird mit dem Suchwort ersetzt. Der String %GDSEARCH% wird mit dem Text im Suchfeld ersetzt. Falls keine der beiden Zeichenketten vorhanden sind, wird das Hauptwort an die Standardeingabe geschickt.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
