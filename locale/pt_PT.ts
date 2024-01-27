@@ -2758,7 +2758,7 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Variante de idioma</translation>
     </message>
   </context>
   <context>
