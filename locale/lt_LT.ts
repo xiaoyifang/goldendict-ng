@@ -2758,7 +2758,7 @@ Norėdami rasti „*“, „?“, „[“, „]“ simbolius, atitinkamai įvesk
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Kalbos variantas</translation>
     </message>
   </context>
   <context>
