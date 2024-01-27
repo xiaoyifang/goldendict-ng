@@ -2760,7 +2760,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>語言變體</translation>
     </message>
   </context>
   <context>
