@@ -4264,7 +4264,7 @@ Fügen Sie entsprechende Wörterbücher am besten am Ende der passenden Gruppe e
     </message>
     <message>
       <source>Rate:</source>
-      <translation>Preis:</translation>
+      <translation>Tempo:</translation>
     </message>
   </context>
   <context>
