@@ -1458,6 +1458,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
     ev->ignore();
     hide();
 #endif
+    commitData();
   }
   else {
     ev->accept();
