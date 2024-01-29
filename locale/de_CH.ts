@@ -3740,11 +3740,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Wechsle Gruppen im Popup.</translation>
+      <translation>Wechsle Gruppen im PopUp.</translation>
     </message>
     <message>
       <source>Toggle scan popup.</source>
-      <translation>Wechsle Scan Popup.</translation>
+      <translation>Wechsle ScanPopUp.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
