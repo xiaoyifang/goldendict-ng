@@ -2756,6 +2756,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Icon</source>
       <translation>Simge</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Dil Varyantı</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

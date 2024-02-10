@@ -2755,6 +2755,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Icon</source>
       <translation>Biểu tượng</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Biến thể ngôn ngữ</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

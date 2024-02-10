@@ -2756,6 +2756,10 @@ Norėdami rasti „*“, „?“, „[“, „]“ simbolius, atitinkamai įvesk
       <source>Icon</source>
       <translation>Ženkliukas</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Kalbos variantas</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

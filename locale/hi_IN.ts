@@ -2755,6 +2755,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Icon</source>
       <translation>चित्रक</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>भाषा संस्करण</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

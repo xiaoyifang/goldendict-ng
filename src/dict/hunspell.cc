@@ -411,9 +411,6 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
-#ifdef QT_DEBUG
-            qDebug() << ">>>>>Alt:" << QString::fromStdU32String( alt );
-#endif
             result.append( alt );
           }
         }

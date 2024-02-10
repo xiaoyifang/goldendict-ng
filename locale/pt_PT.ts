@@ -2756,6 +2756,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Variante de idioma</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

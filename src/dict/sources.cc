@@ -131,32 +131,6 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
     ui.tabWidget->addTab( textToSpeechSource, QIcon( ":/icons/text2speech.svg" ), tr( "Text to Speech" ) );
   }
 #endif
-
-  if ( Config::isPortableVersion() ) {
-    // Paths
-
-    ui.paths->setEnabled( false );
-    ui.addPath->setEnabled( false );
-    ui.removePath->setEnabled( false );
-
-    // Sound dirs
-
-    {
-      QStandardItemModel * model = new QStandardItemModel( this );
-      model->setHorizontalHeaderLabels( QStringList() << " " );
-      model->invisibleRootItem()->appendRow( new QStandardItem( tr( "(not available in portable version)" ) ) );
-      ui.soundDirs->setModel( model );
-      ui.soundDirs->setEnabled( false );
-
-      ui.addSoundDir->setEnabled( false );
-      ui.removeSoundDir->setEnabled( false );
-    }
-
-    // Morpho
-
-    ui.hunspellPath->setEnabled( false );
-    ui.changeHunspellPath->setEnabled( false );
-  }
 }
 
 void Sources::fitPathsColumns()
@@ -1136,6 +1110,13 @@ QModelIndex PathsModel::parent( QModelIndex const & /*parent*/ ) const
 Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
+
+  if ( Config::isPortableVersion() ) {
+    if ( index.isValid() && index.row() == 0 ) {
+      result &= ~Qt::ItemIsSelectable;
+      result &= ~Qt::ItemIsEnabled;
+    }
+  }
 
   if ( index.isValid() && index.column() == 1 )
     result |= Qt::ItemIsUserCheckable;

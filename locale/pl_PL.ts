@@ -2756,6 +2756,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Wariant językowy</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

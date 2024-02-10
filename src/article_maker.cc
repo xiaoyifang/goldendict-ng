@@ -486,21 +486,12 @@ void ArticleRequest::altSearchFinished()
   }
 
   if ( altSearches.empty() ) {
-#ifdef QT_DEBUG
-    qDebug( "alts finished" );
-#endif
 
     // They all've finished! Now we can look up bodies
 
     altsDone = true; // So any pending signals in queued mode won't mess us up
 
     vector< wstring > altsVector( alts.begin(), alts.end() );
-
-#ifdef QT_DEBUG
-    for ( const auto & x : altsVector ) {
-      qDebug() << "Alt:" << QString::fromStdU32String( x );
-    }
-#endif
 
     wstring wordStd = gd::toWString( word );
 

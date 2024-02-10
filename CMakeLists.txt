@@ -22,7 +22,7 @@ option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 23.12.08
+        VERSION 24.01.27
         LANGUAGES CXX C)
 
 if (NOT USE_ALTERNATIVE_NAME)
@@ -41,6 +41,7 @@ find_package(Qt6 REQUIRED COMPONENTS
         Core5Compat
         LinguistTools
         Multimedia
+        PrintSupport
         WebEngineWidgets
         Widgets
         Svg
@@ -125,6 +126,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::Concurrent
         Qt6::Core5Compat
         Qt6::Multimedia
+        Qt6::PrintSupport
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg

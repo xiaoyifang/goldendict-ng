@@ -2756,6 +2756,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Icon</source>
       <translation>아이콘</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>언어 변형</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

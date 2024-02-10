@@ -2756,6 +2756,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Icon</source>
       <translation>Ikon</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Språkvariant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

@@ -12,9 +12,13 @@ target_include_directories(${GOLDENDICT} PRIVATE
 
 if (LINUX OR BSD)
     find_package(X11 REQUIRED)
-    pkg_check_modules(LIBXTST IMPORTED_TARGET xtst)
-    target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
-    target_link_libraries(${GOLDENDICT} PRIVATE X11 PkgConfig::LIBXTST)
+    if (X11_FOUND AND X11_Xtst_FOUND)
+        target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
+        target_link_libraries(${GOLDENDICT} PRIVATE ${X11_LIBRARIES} ${X11_Xtst_LIB})
+        target_include_directories(${GOLDENDICT} PRIVATE ${X11_INCLUDE_DIR} ${X11_Xtst_INCLUDE_PATH})
+    else ()
+        message(FATAL_ERROR "Cannot find X11 and libXtst!")
+    endif ()
 endif ()
 
 if (APPLE)
@@ -29,7 +33,6 @@ find_package(PkgConfig REQUIRED)
 # Provided by Cmake
 find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
-find_package(Iconv REQUIRED)
 
 
 # Consider all PkgConfig dependencies as one
@@ -46,8 +49,19 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         PkgConfig::PKGCONFIG_DEPS
         BZip2::BZip2
         ZLIB::ZLIB
-        Iconv::Iconv
-        )
+)
+
+# On FreeBSD, there are two iconv, libc iconv & GNU libiconv.
+# The system one is good enough, the following is a workaround to use libc iconv on freeBSD.
+if (BSD STREQUAL "FreeBSD")
+    # Simply do nothing. libc includes iconv on freeBSD.
+    # LIBICONV_PLUG is a magic word to turn /usr/include/local/inconv.h, which belong to GNU libiconv, into normal iconv.h
+    # Same hack used by SDL https://github.com/libsdl-org/SDL/blob/d6ebbc2fa4abdbe0bd53d0ce8804a492ecb042b9/src/stdlib/SDL_iconv.c#L27-L28
+    target_compile_definitions(${GOLDENDICT} PUBLIC LIBICONV_PLUG)
+else ()
+    find_package(Iconv REQUIRED)
+    target_link_libraries(${GOLDENDICT} PRIVATE Iconv::Iconv)
+endif ()
 
 if (WITH_FFMPEG_PLAYER)
     pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET

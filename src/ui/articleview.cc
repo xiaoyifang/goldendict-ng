@@ -1886,7 +1886,7 @@ void ArticleView::pasteTriggered()
 
   if ( !word.isEmpty() ) {
     unsigned groupId = getGroup( webview->url() );
-    if ( groupId == 0 ) {
+    if ( groupId == 0 || groupId == Instances::Group::HelpGroupId ) {
       // We couldn't figure out the group out of the URL,
       // so let's try the currently selected group.
       groupId = currentGroupId;
