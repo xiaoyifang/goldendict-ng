@@ -181,7 +181,7 @@ jobs:
 
             #### Build Details
 
-            AppImage: Ubuntu-20.04
+            Flatpak
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
             based on: ${{github.ref_name}}
