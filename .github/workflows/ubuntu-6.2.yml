@@ -21,10 +21,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        qt_ver: [ 6.6.1 ]
+        qt_ver: [ 6.6.2 ]
         qt_arch: [gcc_64]
     env:
-      version: 24.01.27
+      version: 24.02.16
       version-suffix: alpha
       prerelease: true
     steps:
