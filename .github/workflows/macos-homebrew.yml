@@ -22,11 +22,11 @@ jobs:
     strategy:
       matrix:
         os: [macos-12,macos-13]
-        qt_ver: [ 6.6.1 ]
+        qt_ver: [ 6.6.2 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 24.01.27
+      version: 24.02.16
       version-suffix: alpha
       prerelease: true
     steps:
