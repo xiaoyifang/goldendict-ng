@@ -355,13 +355,13 @@ MediaWikis makeDefaultMediaWikis( bool enable )
   mw.push_back(
     MediaWiki( "5d45232075d06e002dea72fe3e137da1", "Greek Wiktionary", "https://el.wiktionary.org/w", false, "" ) );
   mw.push_back( MediaWiki( "c015d60c4949ad75b5b7069c2ff6dc2c",
-                           "traditional Chinese Wikipedia",
+                           "Traditional Chinese Wikipedia",
                            "https://zh.wikipedia.org/w",
                            false,
                            "",
                            "zh-hant" ) );
   mw.push_back( MediaWiki( "d50828ad6e115bc9d3421b6821543108",
-                           "traditional Chinese Wiktionary",
+                           "Traditional Chinese Wiktionary",
                            "https://zh.wiktionary.org/w",
                            false,
                            "",
