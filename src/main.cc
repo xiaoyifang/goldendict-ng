@@ -508,15 +508,6 @@ int main( int argc, char ** argv )
     qInstallMessageHandler( gdMessageHandler );
   }
 
-  if ( Config::isPortableVersion() ) {
-    // For portable version, hardcode some settings
-
-    cfg.paths.clear();
-    cfg.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
-    cfg.soundDirs.clear();
-    cfg.hunspell.dictionariesPath = Config::getPortableVersionMorphoDir();
-  }
-
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;
   QTranslator translator;
