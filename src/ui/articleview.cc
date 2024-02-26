@@ -155,6 +155,8 @@ ArticleView::ArticleView( QWidget * parent,
 
   webview->setUp( const_cast< Config::Class * >( &cfg ) );
 
+  syncBackgroundColorWithCfgDarkReader();
+
   goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
   webview->addAction( &goBackAction );
   connect( &goBackAction, &QAction::triggered, this, &ArticleView::back );
@@ -1359,6 +1361,20 @@ void ArticleView::setDelayedHighlightText( QString const & text )
 {
   delayedHighlightText = text;
 }
+
+void ArticleView::syncBackgroundColorWithCfgDarkReader() const
+{
+  // Only works Qt6.6.3+ https://bugreports.qt.io/browse/QTBUG-112013
+  #if QT_VERSION >= QT_VERSION_CHECK( 6, 6, 3 )
+  if ( cfg.preferences.darkReaderMode ) {
+    webview->page()->setBackgroundColor( Qt::black );
+  }
+  else {
+    webview->page()->setBackgroundColor( Qt::white );
+  }
+  #endif
+}
+
 
 void ArticleView::back()
 {

@@ -2270,7 +2270,7 @@ void MainWindow::editPreferences()
       ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
-
+      view.syncBackgroundColorWithCfgDarkReader();
       if ( needReload ) {
         view.reload();
       }
