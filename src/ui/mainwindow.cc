@@ -1148,7 +1148,6 @@ MainWindow::~MainWindow()
   ftsIndexing.stopIndexing();
 
 
-
   // Close all tabs -- they should be destroyed before network managers
   // do.
   while ( ui.tabWidget->count() ) {

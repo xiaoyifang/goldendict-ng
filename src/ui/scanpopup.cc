@@ -298,7 +298,6 @@ void ScanPopup::refresh()
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
-
 }
 
 void ScanPopup::saveConfigData() const
