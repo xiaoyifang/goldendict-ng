@@ -303,9 +303,9 @@ ArticleView::~ArticleView()
   cleanupTemp();
   audioPlayer->stop();
   //channel->deregisterObject(this);
-  #ifndef Q_OS_MACOS
+#ifndef Q_OS_MACOS
   webview->ungrabGesture( Qt::PanGesture );
-  #endif
+#endif
 }
 
 void ArticleView::showDefinition( QString const & word,
