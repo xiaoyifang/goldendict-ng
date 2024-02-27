@@ -291,6 +291,8 @@ void ScanPopup::refresh()
 
   updateDictionaryBar();
 
+  definition->syncBackgroundColorWithCfgDarkReader();
+
   connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef HAVE_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
