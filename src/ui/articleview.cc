@@ -686,7 +686,8 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       if ( g->gestureType() == Qt::PanGesture && g->state() == Qt::GestureFinished ) {
         auto panGesture = static_cast< QPanGesture * >( g );
         auto offset     = panGesture->offset();
-        if ( qFabs( offset.x() ) > qFabs( offset.y() ) * 6 ) {
+        // Displacement is at least 20 * 7 = 160 and the radian between gesture endpoint and x-axis is lower than 1/6
+        if ( qFabs( offset.x() ) > qFabs( offset.y() > 20 ? offset.y() : 20 ) * 6 ) {
           offset.x() > 0 ? back() : forward();
           gestureEvent->setAccepted( Qt::PanGesture, true );
           return true;
