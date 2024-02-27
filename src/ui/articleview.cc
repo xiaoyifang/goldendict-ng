@@ -276,7 +276,10 @@ ArticleView::ArticleView( QWidget * parent,
     connect( &sendToAnkiAction, &QAction::triggered, this, &ArticleView::handleAnkiAction );
   }
 
+  // stick with built-in gesture sonmac
+#ifndef Q_OS_MACOS
   webview->grabGesture( Qt::PanGesture );
+#endif
 }
 
 // explicitly report the minimum size, to avoid
@@ -300,7 +303,9 @@ ArticleView::~ArticleView()
   cleanupTemp();
   audioPlayer->stop();
   //channel->deregisterObject(this);
+  #ifndef Q_OS_MACOS
   webview->ungrabGesture( Qt::PanGesture );
+  #endif
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -688,7 +693,6 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
         }
       }
     }
-    // Pass down the event to webview handle so that QtWebengine's built-in pinch-to-zoom will work.
     return false;
   }
 #endif
