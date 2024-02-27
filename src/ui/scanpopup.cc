@@ -14,7 +14,6 @@
   #include <QStringList>
 #endif
 #include "gddebug.hh"
-#include "gestures.hh"
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -251,8 +250,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.goBackButton->setEnabled( false );
   ui.goForwardButton->setEnabled( false );
 
-  grabGesture( Gestures::GDPinchGestureType );
-  grabGesture( Gestures::GDSwipeGestureType );
 
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
@@ -302,8 +299,6 @@ ScanPopup::~ScanPopup()
 {
   saveConfigData();
 
-  ungrabGesture( Gestures::GDPinchGestureType );
-  ungrabGesture( Gestures::GDSwipeGestureType );
 }
 
 void ScanPopup::saveConfigData() const

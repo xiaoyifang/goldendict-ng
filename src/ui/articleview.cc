@@ -5,22 +5,25 @@
 #include "dict/programs.hh"
 #include "folding.hh"
 #include "gddebug.hh"
-#include "gestures.hh"
 #include "globalbroadcaster.hh"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "wildcard.hh"
 #include "wstring_qt.hh"
+
+#include <QApplication>
 #include <QBuffer>
 #include <QClipboard>
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
+#include <QGestureEvent>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QMessageBox>
+#include <QRandomGenerator>
 #include <QRegularExpression>
 #include <QVariant>
 #include <QWebChannel>
@@ -28,9 +31,8 @@
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
+
 #include <map>
-#include <QApplication>
-#include <QRandomGenerator>
 
 #if ( QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 ) && QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   #include <QWebEngineContextMenuData>
@@ -249,8 +251,6 @@ ArticleView::ArticleView( QWidget * parent,
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 
-  webview->grabGesture( Gestures::GDPinchGestureType );
-  webview->grabGesture( Gestures::GDSwipeGestureType );
 
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
@@ -275,6 +275,8 @@ ArticleView::ArticleView( QWidget * parent,
     webview->addAction( &sendToAnkiAction );
     connect( &sendToAnkiAction, &QAction::triggered, this, &ArticleView::handleAnkiAction );
   }
+
+  webview->grabGesture( Qt::PanGesture );
 }
 
 // explicitly report the minimum size, to avoid
@@ -298,8 +300,7 @@ ArticleView::~ArticleView()
   cleanupTemp();
   audioPlayer->stop();
   //channel->deregisterObject(this);
-  webview->ungrabGesture( Gestures::GDPinchGestureType );
-  webview->ungrabGesture( Gestures::GDSwipeGestureType );
+  webview->ungrabGesture( Qt::PanGesture );
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -674,62 +675,23 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
 #else
   if ( ev->type() == QEvent::Gesture ) {
-    Gestures::GestureResult result;
-    QPoint pt;
-
-    bool handled = Gestures::handleGestureEvent( obj, ev, result, pt );
-
-    if ( handled ) {
-      if ( result == Gestures::ZOOM_IN )
-        emit zoomIn();
-      else if ( result == Gestures::ZOOM_OUT )
-        emit zoomOut();
-      else if ( result == Gestures::SWIPE_LEFT )
-        back();
-      else if ( result == Gestures::SWIPE_RIGHT )
-        forward();
-      else if ( result == Gestures::SWIPE_UP || result == Gestures::SWIPE_DOWN ) {
-        int delta        = result == Gestures::SWIPE_UP ? -120 : 120;
-        QWidget * widget = static_cast< QWidget * >( obj );
-
-        QPoint angleDelta( 0, delta );
-        QPoint pixelDetal;
-        QWidget * child = widget->childAt( widget->mapFromGlobal( pt ) );
-        if ( child ) {
-          QWheelEvent whev( child->mapFromGlobal( pt ),
-                            pt,
-                            pixelDetal,
-                            angleDelta,
-                            Qt::NoButton,
-                            Qt::NoModifier,
-                            Qt::NoScrollPhase,
-                            false );
-          qApp->sendEvent( child, &whev );
-        }
-        else {
-          QWheelEvent whev( widget->mapFromGlobal( pt ),
-                            pt,
-                            pixelDetal,
-                            angleDelta,
-                            Qt::NoButton,
-                            Qt::NoModifier,
-                            Qt::NoScrollPhase,
-                            false );
-          qApp->sendEvent( widget, &whev );
+    auto gestureEvent   = static_cast< QGestureEvent * >( ev );
+    auto activeGestures = gestureEvent->activeGestures();
+    for ( auto g : activeGestures ) {
+      if ( g->gestureType() == Qt::PanGesture && g->state() == Qt::GestureFinished ) {
+        auto panGesture = static_cast< QPanGesture * >( g );
+        auto offset     = panGesture->offset();
+        if ( qFabs( offset.x() ) > qFabs( offset.y() ) * 6 ) {
+          offset.x() > 0 ? back() : forward();
+          gestureEvent->setAccepted( Qt::PanGesture, true );
+          return true;
         }
       }
     }
-
-    return handled;
+    // Pass down the event to webview handle so that QtWebengine's built-in pinch-to-zoom will work.
+    return false;
   }
 #endif
-
-  if ( ev->type() == QEvent::MouseMove ) {
-    if ( Gestures::isFewTouchPointsPresented() ) {
-      ev->accept();
-      return true;
-    }
-  }
 
   if ( handleF3( obj, ev ) ) {
     return true;

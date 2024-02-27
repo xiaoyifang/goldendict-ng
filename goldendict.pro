@@ -356,7 +356,6 @@ HEADERS += \
     src/ffmpegaudioplayer.hh \
     src/ftshelpers.hh \
     src/fulltextsearch.hh \
-    src/gestures.hh \
     src/headwordsmodel.hh \
     src/history.hh \
     src/hotkeywrapper.hh \
@@ -479,7 +478,6 @@ SOURCES += \
     src/ffmpegaudio.cc \
     src/ftshelpers.cc \
     src/fulltextsearch.cc \
-    src/gestures.cc \
     src/headwordsmodel.cc \
     src/history.cc \
     src/hotkeywrapper.cc \

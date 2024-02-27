@@ -14,7 +14,6 @@
 #include "preferences.hh"
 #include "about.hh"
 #include "mruqmenu.hh"
-#include "gestures.hh"
 #include "dictheadwords.hh"
 #include <QTextStream>
 #include <QDir>
@@ -209,10 +208,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.setupUi( this );
 
-  // Set own gesture recognizers
-#ifndef Q_OS_MAC
-  Gestures::registerRecognizers();
-#endif
   // use our own, custom statusbar
   setStatusBar( nullptr );
   mainStatusBar = new MainStatusBar( this );
@@ -902,9 +897,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
 
-  ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
-  ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );
-
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
     navBack->setIcon( QIcon( ":/icons/next.svg" ) );
@@ -1155,9 +1147,7 @@ MainWindow::~MainWindow()
 
   ftsIndexing.stopIndexing();
 
-  ui.centralWidget->ungrabGesture( Gestures::GDPinchGestureType );
-  ui.centralWidget->ungrabGesture( Gestures::GDSwipeGestureType );
-  //  Gestures::unregisterRecognizers();
+
 
   // Close all tabs -- they should be destroyed before network managers
   // do.
