@@ -25,6 +25,9 @@ a:hover {
   background: white;
   padding-left: 2em;
   padding-right: 2em;
+
+  content-visibility: auto;
+  contain-intrinsic-height: auto 600px;
 }
 
 .gdactivearticle {
