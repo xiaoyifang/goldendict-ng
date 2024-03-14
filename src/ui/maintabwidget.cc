@@ -42,21 +42,13 @@ void MainTabWidget::updateTabBarVisibility()
   tabBar()->setVisible( !hideSingleTab || tabBar()->count() > 1 );
 }
 
-/*
-void MainTabWidget::mouseDoubleClickEvent ( QMouseEvent * event )
-{
-  (void) event;
-  emit doubleClicked();
-}
-*/
-
 bool MainTabWidget::eventFilter( QObject * obj, QEvent * ev )
 {
-  // mouseDoubleClickEvent don't called under Ubuntu
+  // QTabBar::mouseDoubleClickEvent is different from QWidget::mouseDoubleClickEvent
+  // The former only got emitted when an actual tab is clicked, here we want to detect click on empty sapce of the tabbar
   if ( ev->type() == QEvent::MouseButtonDblClick ) {
     QMouseEvent * mev = static_cast< QMouseEvent * >( ev );
-    if ( mev->y() >= tabBar()->rect().y() && mev->y() <= tabBar()->rect().y() + tabBar()->rect().height()
-         && tabBar()->tabAt( mev->pos() ) == -1 ) {
+    if ( tabBar()->rect().contains( mev->position().toPoint() ) && tabBar()->tabAt( mev->position().toPoint() ) == -1 ) {
       emit doubleClicked();
       return true;
     }

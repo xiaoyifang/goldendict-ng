@@ -3,9 +3,6 @@
 
 #include "scanpopup.hh"
 #include "folding.hh"
-#include <QCursor>
-#include <QPixmap>
-#include <QBitmap>
 #include <QMenu>
 #include <QMouseEvent>
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
@@ -709,7 +706,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
     if ( event->type() == QEvent::MouseMove ) {
       QMouseEvent * mouseEvent = (QMouseEvent *)event;
-      reactOnMouseMove( mouseEvent->globalPos() );
+      reactOnMouseMove( mouseEvent->globalPosition().toPoint() );
     }
   }
 
@@ -773,14 +770,14 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
   // With mouse grabs, the press can occur anywhere on the screen, which
   // might mean hiding the window.
 
-  if ( !frameGeometry().contains( ev->globalPos() ) ) {
+  if ( !frameGeometry().contains( ev->globalPosition().toPoint() ) ) {
     hideWindow();
 
     return;
   }
 
   if ( ev->button() == Qt::LeftButton ) {
-    startPos = ev->globalPos();
+    startPos = ev->globalPosition().toPoint();
     setCursor( Qt::ClosedHandCursor );
   }
 
@@ -790,7 +787,7 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
 void ScanPopup::mouseMoveEvent( QMouseEvent * event )
 {
   if ( event->buttons() && cursor().shape() == Qt::ClosedHandCursor ) {
-    QPoint newPos = event->globalPos();
+    QPoint newPos = event->globalPosition().toPoint();
 
     QPoint delta = newPos - startPos;
 
