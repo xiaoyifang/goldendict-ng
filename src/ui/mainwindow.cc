@@ -636,13 +636,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget,
-           &MainTabWidget::tabBarDoubleClicked,
-           [this]( const int index ) {
-             if ( -1 == index ) { // empty space at tabbar clicked.
-               this->addNewTab();
-             }
-           } );
+  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, [ this ]( const int index ) {
+    if ( -1 == index ) { // empty space at tabbar clicked.
+      this->addNewTab();
+    }
+  } );
 
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
