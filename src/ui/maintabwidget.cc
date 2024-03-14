@@ -48,7 +48,8 @@ bool MainTabWidget::eventFilter( QObject * obj, QEvent * ev )
   // The former only got emitted when an actual tab is clicked, here we want to detect click on empty sapce of the tabbar
   if ( ev->type() == QEvent::MouseButtonDblClick ) {
     QMouseEvent * mev = static_cast< QMouseEvent * >( ev );
-    if ( tabBar()->rect().contains( mev->position().toPoint() ) && tabBar()->tabAt( mev->position().toPoint() ) == -1 ) {
+    if ( tabBar()->rect().contains( mev->position().toPoint() )
+         && tabBar()->tabAt( mev->position().toPoint() ) == -1 ) {
       emit doubleClicked();
       return true;
     }
