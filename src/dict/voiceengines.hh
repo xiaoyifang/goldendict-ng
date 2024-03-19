@@ -3,11 +3,11 @@
 #pragma once
 #ifndef NO_TTS_SUPPORT
 
-#include "dictionary.hh"
-#include "config.hh"
-#include "wstring.hh"
+  #include "dictionary.hh"
+  #include "config.hh"
+  #include "wstring.hh"
 
-#include <QCryptographicHash>
+  #include <QCryptographicHash>
 
 
 namespace VoiceEngines {

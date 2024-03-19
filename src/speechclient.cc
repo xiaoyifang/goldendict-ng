@@ -1,10 +1,10 @@
 #ifndef NO_TTS_SUPPORT
 
-#include "speechclient.hh"
+  #include "speechclient.hh"
 
-#include <QtCore>
-#include <QLocale>
-#include <QDebug>
+  #include <QtCore>
+  #include <QLocale>
+  #include <QDebug>
 SpeechClient::SpeechClient( Config::VoiceEngine const & e, QObject * parent ):
   QObject( parent ),
   internalData( new InternalData( e ) )

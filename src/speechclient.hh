@@ -1,12 +1,12 @@
 #pragma once
 #ifndef NO_TTS_SUPPORT
 
-#include <QObject>
-#include "config.hh"
-#include <QTextToSpeech>
-#include <memory>
-#include <QDebug>
-#include <QSharedPointer>
+  #include <QObject>
+  #include "config.hh"
+  #include <QTextToSpeech>
+  #include <memory>
+  #include <QDebug>
+  #include <QSharedPointer>
 
 class SpeechClient: public QObject
 {

@@ -175,7 +175,7 @@ bool EditDictionaries::isSourcesChanged() const
 #ifndef NO_TTS_SUPPORT
     || sources.getVoiceEngines() != cfg.voiceEngines
 #endif
-  ;
+    ;
 }
 
 void EditDictionaries::acceptChangedSources( bool rebuildGroups )

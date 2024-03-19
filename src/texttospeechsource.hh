@@ -5,12 +5,12 @@
 
 #ifndef NO_TTS_SUPPORT
 
-#include "ui_texttospeechsource.h"
-#include "config.hh"
-#include "speechclient.hh"
+  #include "ui_texttospeechsource.h"
+  #include "config.hh"
+  #include "speechclient.hh"
 
-#include <QComboBox>
-#include <QStyledItemDelegate>
+  #include <QComboBox>
+  #include <QStyledItemDelegate>
 
 /// A model to be projected into the text to speech view, according to Qt's MVC model
 class VoiceEnginesModel: public QAbstractItemModel
