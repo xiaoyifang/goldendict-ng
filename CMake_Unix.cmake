@@ -28,12 +28,9 @@ endif ()
 
 ##### Finding packages from package manager
 
-
 find_package(PkgConfig REQUIRED)
-# Provided by Cmake
 find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
-
 
 # Consider all PkgConfig dependencies as one
 pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
@@ -43,7 +40,8 @@ pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
         vorbis # .ogg
         vorbisfile
         liblzma
-        )
+        xapian-core
+)
 
 target_link_libraries(${GOLDENDICT} PRIVATE
         PkgConfig::PKGCONFIG_DEPS
@@ -69,13 +67,8 @@ if (WITH_FFMPEG_PLAYER)
             libavformat
             libavutil
             libswresample
-            )
+    )
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::FFMPEG)
-endif ()
-
-if (WITH_XAPIAN)
-    find_package(Xapian REQUIRED) # https://github.com/xapian/xapian/tree/master/xapian-core/cmake
-    target_link_libraries(${GOLDENDICT} PRIVATE ${XAPIAN_LIBRARIES})
 endif ()
 
 if (WITH_EPWING_SUPPORT)

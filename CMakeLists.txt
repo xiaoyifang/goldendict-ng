@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
-option(WITH_XAPIAN "enable Xapian support" ON)
 option(WITH_ZIM "enable zim support" ON)
 option(WITH_TTS "enable QTexttoSpeech support" ON)
 
@@ -36,18 +35,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #### Qt
 
-find_package(Qt6 REQUIRED COMPONENTS
-        Concurrent
-        Core5Compat
-        LinguistTools
-        Multimedia
-        PrintSupport
-        WebEngineWidgets
-        Widgets
-        Svg
-        Xml
-        TextToSpeech
-        )
+set(GD_QT_COMPONENTS Concurrent Core5Compat LinguistTools Multimedia PrintSupport WebEngineWidgets Widgets Svg Xml)
+
+if (WITH_TTS)
+    list(APPEND GD_QT_COMPONENTS TextToSpeech)
+endif ()
+
+find_package(Qt6 REQUIRED COMPONENTS ${GD_QT_COMPONENTS})
 
 qt_standard_project_setup() # availiable after find_package(Qt6 .... Core
 set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
@@ -130,9 +124,11 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
-        Qt6::TextToSpeech
         )
 
+if (WITH_TTS)
+    target_link_libraries(${GOLDENDICT} PRIVATE Qt6::TextToSpeech)
+endif ()
 
 target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
@@ -170,11 +166,6 @@ endif()
 
 if (NOT WITH_EPWING_SUPPORT)
     target_compile_definitions(${GOLDENDICT} PUBLIC NO_EPWING_SUPPORT)
-endif ()
-
-
-if (WITH_XAPIAN)
-    target_compile_definitions(${GOLDENDICT} PUBLIC USE_XAPIAN)
 endif ()
 
 if (WITH_ZIM)
