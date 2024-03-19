@@ -16,7 +16,9 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
 #endif
+#ifndef NO_TTS_SUPPORT
   textToSpeechSource( nullptr ),
+#endif
   itemDelegate( new QItemDelegate( this ) ),
   itemEditorFactory( new QItemEditorFactory() ),
   mediawikisModel( this, cfg.mediawikis ),
@@ -317,12 +319,14 @@ void Sources::on_removeProgram_clicked()
     programsModel.removeProgram( current.row() );
 }
 
+#ifndef NO_TTS_SUPPORT
 Config::VoiceEngines Sources::getVoiceEngines() const
 {
   if ( !textToSpeechSource )
     return Config::VoiceEngines();
   return textToSpeechSource->getVoiceEnginesModel().getCurrentVoiceEngines();
 }
+#endif
 
 Config::Hunspell Sources::getHunspell() const
 {

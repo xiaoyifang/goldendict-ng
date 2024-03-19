@@ -1,8 +1,9 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __TEXTTOSPEECHSOURCE_HH_INCLUDED__
-#define __TEXTTOSPEECHSOURCE_HH_INCLUDED__
+#pragma once
+
+#ifndef NO_TTS_SUPPORT
 
 #include "ui_texttospeechsource.h"
 #include "config.hh"
@@ -116,4 +117,4 @@ private:
   void adjustSliders();
 };
 
-#endif // __TEXTTOSPEECHSOURCE_HH_INCLUDED__
+#endif

@@ -296,9 +296,9 @@ public:
   {
     return programsModel.getCurrentPrograms();
   }
-
+#ifndef NO_TTS_SUPPORT
   Config::VoiceEngines getVoiceEngines() const;
-
+#endif
   Config::Hunspell getHunspell() const;
 
   Config::Transliteration getTransliteration() const;
@@ -318,9 +318,9 @@ private:
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   ChineseConversion * chineseConversion;
 #endif
-
+#ifndef NO_TTS_SUPPORT
   TextToSpeechSource * textToSpeechSource;
-
+#endif
   QItemDelegate * itemDelegate;
   QScopedPointer< QItemEditorFactory > itemEditorFactory;
 

@@ -1182,6 +1182,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
   }
   else if ( url.scheme() == "gdtts" ) {
+#ifndef NO_TTS_SUPPORT
     // Text to speech
     QString md5Id = Utils::Url::queryItemValue( url, "engine" );
     QString text( url.path().mid( 1 ) );
@@ -1197,7 +1198,11 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         break;
       }
     }
+#else
+    qDebug() << "gdtts:// is not supported due to missing TTS support";
+#endif
   }
+
   else if ( Utils::isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );

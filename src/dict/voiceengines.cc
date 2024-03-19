@@ -1,5 +1,6 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+#ifndef NO_TTS_SUPPORT
 
 #include "voiceengines.hh"
 #include "audiolink.hh"
@@ -137,3 +138,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::VoiceEngines const
 }
 
 } // namespace VoiceEngines
+
+#endif

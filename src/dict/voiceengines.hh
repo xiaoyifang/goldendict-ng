@@ -1,8 +1,7 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-
-#ifndef __VOICEENGINES_HH_INCLUDED__
-#define __VOICEENGINES_HH_INCLUDED__
+#pragma once
+#ifndef NO_TTS_SUPPORT
 
 #include "dictionary.hh"
 #include "config.hh"
