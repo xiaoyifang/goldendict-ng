@@ -12,7 +12,12 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
   const QMimeType mineType                    = db.mimeTypeForUrl( url );
   const sptr< Dictionary::DataRequest > reply = this->mManager.getResource( url, content_type );
   content_type                                = mineType.name();
-  if ( reply->isFinished() ) {
+
+  if ( reply == nullptr ) {
+    qDebug() << "Resource failed to load: " << url.toString();
+    requestJob->fail( QWebEngineUrlRequestJob::RequestFailed );
+  }
+  else if ( reply->isFinished() ) {
     replyJob( reply, requestJob, content_type );
   }
   else
