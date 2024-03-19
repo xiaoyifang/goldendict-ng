@@ -250,10 +250,10 @@ ArticleView::ArticleView( QWidget * parent,
   webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
-
+#ifndef Q_OS_MACOS
   webview->grabGesture( Gestures::GDPinchGestureType );
   webview->grabGesture( Gestures::GDSwipeGestureType );
-
+#endif
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
@@ -300,8 +300,10 @@ ArticleView::~ArticleView()
   cleanupTemp();
   audioPlayer->stop();
   //channel->deregisterObject(this);
+#ifndef Q_OS_MACOS
   webview->ungrabGesture( Gestures::GDPinchGestureType );
   webview->ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -724,7 +726,6 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
     return handled;
   }
-#endif
 
   if ( ev->type() == QEvent::MouseMove ) {
     if ( Gestures::isFewTouchPointsPresented() ) {
@@ -732,6 +733,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       return true;
     }
   }
+#endif
 
   if ( handleF3( obj, ev ) ) {
     return true;

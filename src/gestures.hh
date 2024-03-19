@@ -1,6 +1,6 @@
-#ifndef __GESTURES_HH_INCLUDED__
-#define __GESTURES_HH_INCLUDED__
+#pragma once
 
+#ifndef __APPLE__
 #include <QGestureRecognizer>
 #include <QGesture>
 #include <QTimer>
@@ -120,4 +120,5 @@ bool handleGestureEvent( QObject * obj, QEvent * event, GestureResult & result, 
 
 } // namespace Gestures
 
-#endif // __GESTURES_HH_INCLUDED__
+
+#endif
