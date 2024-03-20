@@ -5,6 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>GoldenDict-ng</name>
+  <developer_name>The GoldenDict-ng Community</developer_name>
   <summary>Advanced dictionary lookup program</summary>
   <categories>
     <category>Education</category>
