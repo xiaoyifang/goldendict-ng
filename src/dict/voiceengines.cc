@@ -1,20 +1,21 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+#ifndef NO_TTS_SUPPORT
 
-#include "voiceengines.hh"
-#include "audiolink.hh"
-#include "htmlescape.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
+  #include "voiceengines.hh"
+  #include "audiolink.hh"
+  #include "htmlescape.hh"
+  #include "utf8.hh"
+  #include "wstring_qt.hh"
 
-#include <string>
-#include <map>
+  #include <string>
+  #include <map>
 
-#include <QDir>
-#include <QFileInfo>
-#include <QCryptographicHash>
+  #include <QDir>
+  #include <QFileInfo>
+  #include <QCryptographicHash>
 
-#include "utils.hh"
+  #include "utils.hh"
 
 namespace VoiceEngines {
 
@@ -137,3 +138,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::VoiceEngines const
 }
 
 } // namespace VoiceEngines
+
+#endif

@@ -845,7 +845,7 @@ Class load()
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
-
+#ifndef NO_TTS_SUPPORT
   QDomNode ves = root.namedItem( "voiceEngines" );
 
   if ( !ves.isNull() ) {
@@ -872,6 +872,7 @@ Class load()
       c.voiceEngines.push_back( v );
     }
   }
+#endif
 
   c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
@@ -1664,7 +1665,7 @@ void save( Class const & c )
       p.setAttributeNode( icon );
     }
   }
-
+#ifndef NO_TTS_SUPPORT
   {
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
@@ -1706,6 +1707,7 @@ void save( Class const & c )
       v.setAttributeNode( rate );
     }
   }
+#endif
 
   {
     QDomElement muted = dd.createElement( "mutedDictionaries" );

@@ -1,8 +1,10 @@
-#include "speechclient.hh"
+#ifndef NO_TTS_SUPPORT
 
-#include <QtCore>
-#include <QLocale>
-#include <QDebug>
+  #include "speechclient.hh"
+
+  #include <QtCore>
+  #include <QLocale>
+  #include <QDebug>
 SpeechClient::SpeechClient( Config::VoiceEngine const & e, QObject * parent ):
   QObject( parent ),
   internalData( new InternalData( e ) )
@@ -67,3 +69,5 @@ bool SpeechClient::tell( QString const & text ) const
 {
   return tell( text, internalData->engine.volume, internalData->engine.rate );
 }
+
+#endif
