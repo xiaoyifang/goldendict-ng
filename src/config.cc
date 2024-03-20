@@ -632,7 +632,7 @@ Class load()
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
   }
 
-  if ( Config::isPortableVersion() && c.paths.empty()) {
+  if ( Config::isPortableVersion() && c.paths.empty() ) {
     // For portable version, hardcode some settings
     c.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
   }
