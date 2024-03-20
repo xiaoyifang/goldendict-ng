@@ -47,7 +47,7 @@ jobs:
           brew install autoconf
           brew install libtool
           brew install opencc
-          brew install automake git lame libass libtool shtool texi2html theora wget xvid nasm
+          brew install automake libtool
 
           brew install libiconv
           brew install lzo bzip2

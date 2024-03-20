@@ -17,6 +17,7 @@
 #include <set>
 #include <QDir>
 #include <QFileInfo>
+#include <QDirIterator>
 
 namespace SoundDir {
 
@@ -438,7 +439,24 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    // Check if the soundDir and its subdirs' modification date changed, that means the user modified the sound files inside
+
+    bool soundDirModified = false;
+    {
+      QDateTime indexFileModifyTime = QFileInfo( QString::fromStdString( indexFile ) ).lastModified();
+      QDirIterator it( dir.path(),
+                       QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
+                       QDirIterator::Subdirectories );
+      while ( it.hasNext() ) {
+        it.next();
+        if ( it.fileInfo().lastModified() > indexFileModifyTime ) {
+          soundDirModified = true;
+          break;
+        }
+      }
+    }
+
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) || soundDirModified ) {
       // Building the index
 
       qDebug() << "Sounds: Building the index for directory: " << soundDir.path;
