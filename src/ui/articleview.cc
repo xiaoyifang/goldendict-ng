@@ -1799,11 +1799,11 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
         if ( !handler->isEmpty() ) {
           connect( handler, &ResourceToSaveHandler::done, this, [ fileName ]() {
-            QDesktopServices::openUrl( fileName );
+            QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
           } );
         }
         else {
-          QDesktopServices::openUrl( fileName );
+          QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
         }
       }
     }
