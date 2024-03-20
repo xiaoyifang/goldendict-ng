@@ -42,26 +42,8 @@ void MainTabWidget::updateTabBarVisibility()
   tabBar()->setVisible( !hideSingleTab || tabBar()->count() > 1 );
 }
 
-/*
-void MainTabWidget::mouseDoubleClickEvent ( QMouseEvent * event )
-{
-  (void) event;
-  emit doubleClicked();
-}
-*/
-
 bool MainTabWidget::eventFilter( QObject * obj, QEvent * ev )
 {
-  // mouseDoubleClickEvent don't called under Ubuntu
-  if ( ev->type() == QEvent::MouseButtonDblClick ) {
-    QMouseEvent * mev = static_cast< QMouseEvent * >( ev );
-    if ( mev->y() >= tabBar()->rect().y() && mev->y() <= tabBar()->rect().y() + tabBar()->rect().height()
-         && tabBar()->tabAt( mev->pos() ) == -1 ) {
-      emit doubleClicked();
-      return true;
-    }
-  }
-
   if ( obj == tabBar() && ev->type() == QEvent::MouseButtonPress ) {
     QMouseEvent * mev = static_cast< QMouseEvent * >( ev );
     if ( mev->button() == Qt::MiddleButton ) {

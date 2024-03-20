@@ -29,7 +29,7 @@ class DecoderThread;
 class AudioService: public QObject
 {
   Q_OBJECT
-  std::shared_ptr< DecoderThread > thread;
+  QScopedPointer< DecoderThread > thread;
 
 public:
   static AudioService & instance();

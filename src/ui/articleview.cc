@@ -155,6 +155,8 @@ ArticleView::ArticleView( QWidget * parent,
 
   webview->setUp( const_cast< Config::Class * >( &cfg ) );
 
+  syncBackgroundColorWithCfgDarkReader();
+
   goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
   webview->addAction( &goBackAction );
   connect( &goBackAction, &QAction::triggered, this, &ArticleView::back );
@@ -248,10 +250,10 @@ ArticleView::ArticleView( QWidget * parent,
   webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
-
+#ifndef Q_OS_MACOS
   webview->grabGesture( Gestures::GDPinchGestureType );
   webview->grabGesture( Gestures::GDSwipeGestureType );
-
+#endif
   // Variable name for store current selection range
   rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
 
@@ -298,8 +300,10 @@ ArticleView::~ArticleView()
   cleanupTemp();
   audioPlayer->stop();
   //channel->deregisterObject(this);
+#ifndef Q_OS_MACOS
   webview->ungrabGesture( Gestures::GDPinchGestureType );
   webview->ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
 }
 
 void ArticleView::showDefinition( QString const & word,
@@ -722,7 +726,6 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
     return handled;
   }
-#endif
 
   if ( ev->type() == QEvent::MouseMove ) {
     if ( Gestures::isFewTouchPointsPresented() ) {
@@ -730,6 +733,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       return true;
     }
   }
+#endif
 
   if ( handleF3( obj, ev ) ) {
     return true;
@@ -1180,6 +1184,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
   }
   else if ( url.scheme() == "gdtts" ) {
+#ifndef NO_TTS_SUPPORT
     // Text to speech
     QString md5Id = Utils::Url::queryItemValue( url, "engine" );
     QString text( url.path().mid( 1 ) );
@@ -1195,7 +1200,11 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         break;
       }
     }
+#else
+    qDebug() << "gdtts:// is not supported due to missing TTS support";
+#endif
   }
+
   else if ( Utils::isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );
@@ -1359,6 +1368,20 @@ void ArticleView::setDelayedHighlightText( QString const & text )
 {
   delayedHighlightText = text;
 }
+
+void ArticleView::syncBackgroundColorWithCfgDarkReader() const
+{
+// Only works Qt6.6.3+ https://bugreports.qt.io/browse/QTBUG-112013
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 6, 3 )
+  if ( cfg.preferences.darkReaderMode ) {
+    webview->page()->setBackgroundColor( Qt::black );
+  }
+  else {
+    webview->page()->setBackgroundColor( Qt::white );
+  }
+#endif
+}
+
 
 void ArticleView::back()
 {
@@ -1776,11 +1799,11 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
         if ( !handler->isEmpty() ) {
           connect( handler, &ResourceToSaveHandler::done, this, [ fileName ]() {
-            QDesktopServices::openUrl( fileName );
+            QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
           } );
         }
         else {
-          QDesktopServices::openUrl( fileName );
+          QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
         }
       }
     }

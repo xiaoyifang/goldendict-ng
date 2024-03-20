@@ -5,7 +5,6 @@
 namespace Version {
 
 const QLatin1String flags = QLatin1String(
-  "USE_XAPIAN"
 #ifdef MAKE_ZIM_SUPPORT
   " MAKE_ZIM_SUPPORT"
 #endif

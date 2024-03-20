@@ -172,6 +172,9 @@ public:
 
   void setDelayedHighlightText( QString const & text );
 
+  /// \brief Set background as black if darkreader mode is enabled.
+  void syncBackgroundColorWithCfgDarkReader() const;
+
 private:
   // widgets
   ArticleWebView * webview;

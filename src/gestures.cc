@@ -1,12 +1,12 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-
-#include <QTouchEvent>
-#include <QSwipeGesture>
-#include <QVariant>
-#include <math.h>
-#include "ui/articleview.hh"
-#include "gestures.hh"
+#ifndef __APPLE__
+  #include <QTouchEvent>
+  #include <QSwipeGesture>
+  #include <QVariant>
+  #include <math.h>
+  #include "ui/articleview.hh"
+  #include "gestures.hh"
 
 namespace Gestures {
 
@@ -351,3 +351,5 @@ void unregisterRecognizers()
 }
 
 } // namespace Gestures
+
+#endif

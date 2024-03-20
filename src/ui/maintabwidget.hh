@@ -23,12 +23,6 @@ public:
   }
   void setHideSingleTab( bool hide );
 
-signals:
-  void doubleClicked();
-
-protected:
-  //  virtual void mouseDoubleClickEvent ( QMouseEvent * event );
-
 private:
   virtual void tabInserted( int index );
   virtual void tabRemoved( int index );

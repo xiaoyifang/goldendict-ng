@@ -251,8 +251,10 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.goBackButton->setEnabled( false );
   ui.goForwardButton->setEnabled( false );
 
+#ifndef Q_OS_MACOS
   grabGesture( Gestures::GDPinchGestureType );
   grabGesture( Gestures::GDSwipeGestureType );
+#endif
 
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
@@ -291,6 +293,8 @@ void ScanPopup::refresh()
 
   updateDictionaryBar();
 
+  definition->syncBackgroundColorWithCfgDarkReader();
+
   connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef HAVE_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
@@ -301,9 +305,10 @@ void ScanPopup::refresh()
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
-
+#ifndef Q_OS_MACOS
   ungrabGesture( Gestures::GDPinchGestureType );
   ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
 }
 
 void ScanPopup::saveConfigData() const

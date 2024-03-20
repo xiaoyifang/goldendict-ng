@@ -779,6 +779,7 @@ struct Program
 
 typedef QVector< Program > Programs;
 
+#ifndef NO_TTS_SUPPORT
 struct VoiceEngine
 {
   bool enabled;
@@ -823,6 +824,7 @@ struct VoiceEngine
 };
 
 typedef QVector< VoiceEngine > VoiceEngines;
+#endif
 
 struct HeadwordsDialog
 {
@@ -856,7 +858,9 @@ struct Class
   Lingua lingua;
   Forvo forvo;
   Programs programs;
+#ifndef NO_TTS_SUPPORT
   VoiceEngines voiceEngines;
+#endif
 
   unsigned lastMainGroupId;  // Last used group in main window
   unsigned lastPopupGroupId; // Last used group in popup window

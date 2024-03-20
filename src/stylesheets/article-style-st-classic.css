@@ -67,8 +67,6 @@ pre {
   background: #fefdeb;
   /*fix for invalid blg*/
   font-style: normal;
-  content-visibility: auto;
-  contain-intrinsic-height: auto 600px;
 }
 
 /* CSS trick to prevent the floating elements to overflow
