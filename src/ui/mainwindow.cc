@@ -1783,7 +1783,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
                                         groupInstances,
                                         false,
                                         cfg,
-                                        *ui.searchInPageAction,
                                         translateLine,
                                         dictionaryBar.toggleViewAction(),
                                         groupList );
@@ -1822,6 +1821,8 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
+
+  connect( ui.searchInPageAction, &QAction::triggered, view, &ArticleView::openSearch );
 
   view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
