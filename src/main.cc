@@ -301,6 +301,24 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
         result->word.chop( 1 );
       }
     }
+
+    // Handle cases where we get encoded URL
+    if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
+      // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
+  #if QT_VERSION >= QT_VERSION_CHECK( 6, 3, 0 )
+      result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
+  #else
+      // Old Qt's fromAce only applies to whitelisted domains, so we add .com to bypass this restriction :)
+      // https://bugreports.qt.io/browse/QTBUG-29080
+      result->word.append( QStringLiteral( ".com" ) );
+      result->word = QUrl::fromAce( result->word.toLatin1() );
+      result->word.chop( 4 );
+  #endif
+    }
+    else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
+      // For Firefox or other browsers where URL are percent encoded
+      result->word = QUrl::fromPercentEncoding( result->word.toLatin1() );
+    }
 #endif
   }
 }
