@@ -452,11 +452,7 @@ GlsDictionary::GlsDictionary( string const & id, string const & indexFile, vecto
 
   idx.seek( sizeof( idxHeader ) );
 
-  vector< char > dName( idx.read< uint32_t >() );
-  if ( dName.size() > 0 ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
+  dictionaryName = idx.readUInt32WithSubsequentStr();
 
   // Initialize the index
 

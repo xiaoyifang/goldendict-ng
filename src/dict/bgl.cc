@@ -256,15 +256,7 @@ BglDictionary::BglDictionary( string const & id, string const & indexFile, strin
 
   // Read the dictionary's name
 
-  size_t len = idx.read< uint32_t >();
-
-  if ( len ) {
-    vector< char > nameBuf( len );
-
-    idx.read( &nameBuf.front(), len );
-
-    dictionaryName = string( &nameBuf.front(), len );
-  }
+  dictionaryName = idx.readUInt32WithSubsequentStr();
 
   // Initialize the index
 
@@ -868,8 +860,7 @@ void BglResourceRequest::run()
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
 
-    vector< char > nameData( idx.read< uint32_t >() );
-    idx.read( &nameData.front(), nameData.size() );
+    vector< char > nameData = idx.readUInt32WithSubsequentVec<char>();
 
     for ( size_t x = nameData.size(); x--; )
       nameData[ x ] = tolower( nameData[ x ] );
@@ -885,9 +876,7 @@ void BglResourceRequest::run()
 
       data.resize( idx.read< uint32_t >() );
 
-      vector< unsigned char > compressedData( idx.read< uint32_t >() );
-
-      idx.read( &compressedData.front(), compressedData.size() );
+      vector< unsigned char > compressedData = idx.readUInt32WithSubsequentVec<unsigned char>();
 
       unsigned long decompressedLength = data.size();
 

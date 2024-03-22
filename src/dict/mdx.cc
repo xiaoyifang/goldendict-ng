@@ -300,22 +300,10 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
   chunks( idx, idxHeader.chunksOffset ),
   deferredInitRunnableStarted( false )
 {
-  // Read the dictionary's name
   idx.seek( sizeof( idxHeader ) );
-  size_t len = idx.read< uint32_t >();
-  vector< char > buf( len );
-  if ( len > 0 ) {
-    idx.read( &buf.front(), len );
-    dictionaryName = string( &buf.front(), len );
-  }
 
-  // then read the dictionary's encoding
-  len = idx.read< uint32_t >();
-  if ( len > 0 ) {
-    buf.resize( len );
-    idx.read( &buf.front(), len );
-    encoding = string( &buf.front(), len );
-  }
+  dictionaryName = idx.readUInt32WithSubsequentStr();
+  encoding       = idx.readUInt32WithSubsequentStr();
 
   dictFile.setFileName( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
   dictFile.open( QIODevice::ReadOnly );

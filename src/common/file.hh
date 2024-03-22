@@ -115,6 +115,24 @@ public:
   /// Closes the file. No further operations are valid.
   void close();
 
+  /// Used in original GD code where in a index file,
+  /// a uint32_t representing length followed by a str of that length
+  std::string readUInt32WithSubsequentStr();
+
+  template<typename T>
+  std::vector< T > readUInt32WithSubsequentVec()
+  {
+    uint32_t size = 0;
+    read( &size, sizeof( uint32_t ) );
+    if ( size > 0 ) {
+      std::vector< T > ret;
+      ret.resize( size );
+      read( ret.data(), size );
+      return ret;
+    }
+    return {};
+  }
+
   ~Class() noexcept;
 
 private:

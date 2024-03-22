@@ -297,17 +297,8 @@ DslDictionary::DslDictionary( string const & id, string const & indexFile, vecto
 
   idx.seek( sizeof( idxHeader ) );
 
-  vector< char > dName( idx.read< uint32_t >() );
-  if ( dName.size() > 0 ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
-
-  vector< char > sName( idx.read< uint32_t >() );
-  if ( sName.size() > 0 ) {
-    idx.read( &sName.front(), sName.size() );
-    preferredSoundDictionary = string( &sName.front(), sName.size() );
-  }
+  dictionaryName = idx.readUInt32WithSubsequentStr();
+  preferredSoundDictionary = idx.readUInt32WithSubsequentStr();
 
   resourceDir1 = getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator();
   QString s    = QString::fromStdString( getDictionaryFilenames()[ 0 ] );

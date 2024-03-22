@@ -198,6 +198,19 @@ void Class::close()
   f.close();
 }
 
+std::string Class::readUInt32WithSubsequentStr()
+{
+  uint32_t size = 0;
+  read( &size, sizeof( uint32_t ) );
+  if ( size > 0 ) {
+    std::string ret;
+    ret.resize( size );
+    read( ret.data(), size );
+    return ret;
+  }
+  return {};
+}
+
 Class::~Class() noexcept
 {
   f.close();
