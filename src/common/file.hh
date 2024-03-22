@@ -119,7 +119,7 @@ public:
   /// a uint32_t representing length followed by a str of that length
   std::string readUInt32WithSubsequentStr();
 
-  template<typename T>
+  template< typename T >
   std::vector< T > readUInt32WithSubsequentVec()
   {
     uint32_t size = 0;

@@ -860,7 +860,7 @@ void BglResourceRequest::run()
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
 
-    vector< char > nameData = idx.readUInt32WithSubsequentVec<char>();
+    vector< char > nameData = idx.readUInt32WithSubsequentVec< char >();
 
     for ( size_t x = nameData.size(); x--; )
       nameData[ x ] = tolower( nameData[ x ] );
@@ -876,7 +876,7 @@ void BglResourceRequest::run()
 
       data.resize( idx.read< uint32_t >() );
 
-      vector< unsigned char > compressedData = idx.readUInt32WithSubsequentVec<unsigned char>();
+      vector< unsigned char > compressedData = idx.readUInt32WithSubsequentVec< unsigned char >();
 
       unsigned long decompressedLength = data.size();
 

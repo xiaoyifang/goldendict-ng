@@ -297,7 +297,7 @@ DslDictionary::DslDictionary( string const & id, string const & indexFile, vecto
 
   idx.seek( sizeof( idxHeader ) );
 
-  dictionaryName = idx.readUInt32WithSubsequentStr();
+  dictionaryName           = idx.readUInt32WithSubsequentStr();
   preferredSoundDictionary = idx.readUInt32WithSubsequentStr();
 
   resourceDir1 = getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator();
