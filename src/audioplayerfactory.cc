@@ -65,9 +65,9 @@ void AudioPlayerFactory::reset()
 #endif
   }
 
-  QScopedPointer< ExternalAudioPlayer > externalPlayer( new ExternalAudioPlayer );
+  std::unique_ptr< ExternalAudioPlayer > externalPlayer( new ExternalAudioPlayer );
   setAudioPlaybackProgram( *externalPlayer );
-  playerPtr.reset( externalPlayer.take() );
+  playerPtr.reset( externalPlayer.release() );
 }
 
 void AudioPlayerFactory::setAudioPlaybackProgram( ExternalAudioPlayer & externalPlayer )

@@ -41,7 +41,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   // anyone?
   QItemEditorCreatorBase * programTypeEditorCreator = new QStandardItemEditorCreator< ProgramTypeEditor >();
 
-  itemEditorFactory->registerEditor( QVariant::Int, programTypeEditorCreator );
+  itemEditorFactory->registerEditor( QMetaType::Int, programTypeEditorCreator );
 
   itemDelegate->setItemEditorFactory( itemEditorFactory.get() );
 

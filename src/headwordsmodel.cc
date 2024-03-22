@@ -150,7 +150,7 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   }
 
   QSet< QString > filtered;
-  for ( const auto & word : qAsConst( headword ) ) {
+  for ( const auto & word : std::as_const( headword ) ) {
     if ( !containWord( word ) )
       filtered.insert( word );
   }
