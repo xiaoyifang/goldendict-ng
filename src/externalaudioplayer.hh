@@ -35,11 +35,11 @@ private:
 
   struct QObjectDeleteLater
   {
-      void operator()( QObject * p )
-      {
-          if ( p )
-            p->deleteLater();
-      }
+    void operator()( QObject * p )
+    {
+      if ( p )
+        p->deleteLater();
+    }
   };
   // deleteLater() is safer because viewer actively participates in the QEventLoop.
   std::unique_ptr< ExternalViewer, QObjectDeleteLater > viewer;

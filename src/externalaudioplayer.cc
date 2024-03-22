@@ -73,7 +73,7 @@ void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
     }
   }
   else if ( viewer.get() == destroyedViewer )
-    viewer.reset(nullptr); // viewer finished and died -> reset
+    viewer.reset( nullptr ); // viewer finished and died -> reset
 }
 
 QString ExternalAudioPlayer::startViewer()
