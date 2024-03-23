@@ -35,13 +35,13 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo )
 
 void loadFromFile( std::string const & filename, std::vector< char > & data )
 {
-  File::Class f( filename, "rb" );
+  File::Index f( filename, "rb" );
   auto size = f.file().size(); // QFile::size() obtains size via statx on Linux
   data.resize( size );
   f.read( data.data(), size );
 }
 
-void Class::open( char const * mode )
+void Index::open( char const * mode )
 {
   QFile::OpenMode openMode = QIODevice::Text;
 
@@ -74,26 +74,26 @@ void Class::open( char const * mode )
     throw exCantOpen( f.fileName().toStdString() + ": " + f.errorString().toUtf8().data() );
 }
 
-Class::Class( std::string_view filename, char const * mode )
+Index::Index( std::string_view filename, char const * mode )
 {
   f.setFileName( QString::fromUtf8( filename.data(), filename.size() ) );
   open( mode );
 }
 
-void Class::read( void * buf, qint64 size )
+void Index::read( void * buf, qint64 size )
 {
   if ( f.read( static_cast< char * >( buf ), size ) != size ) {
     throw exReadError();
   }
 }
 
-size_t Class::readRecords( void * buf, qint64 size, qint64 count )
+size_t Index::readRecords( void * buf, qint64 size, qint64 count )
 {
   qint64 result = f.read( static_cast< char * >( buf ), size * count );
   return result < 0 ? result : result / size;
 }
 
-void Class::write( void const * buf, qint64 size )
+void Index::write( void const * buf, qint64 size )
 {
   if ( 0 == size ) {
     return;
@@ -106,13 +106,13 @@ void Class::write( void const * buf, qint64 size )
   f.write( static_cast< char const * >( buf ), size );
 }
 
-size_t Class::writeRecords( void const * buf, qint64 size, qint64 count )
+size_t Index::writeRecords( void const * buf, qint64 size, qint64 count )
 {
   qint64 result = f.write( static_cast< const char * >( buf ), size * count );
   return result < 0 ? result : result / size;
 }
 
-char * Class::gets( char * s, int size, bool stripNl )
+char * Index::gets( char * s, int size, bool stripNl )
 {
   qint64 len    = f.readLine( s, size );
   char * result = len > 0 ? s : nullptr;
@@ -134,7 +134,7 @@ char * Class::gets( char * s, int size, bool stripNl )
   return result;
 }
 
-std::string Class::gets( bool stripNl )
+std::string Index::gets( bool stripNl )
 {
   char buf[ 1024 ];
 
@@ -144,61 +144,61 @@ std::string Class::gets( bool stripNl )
   return { buf };
 }
 
-QByteArray Class::readall()
+QByteArray Index::readall()
 {
   return f.readAll();
 };
 
 
-void Class::seek( qint64 offset )
+void Index::seek( qint64 offset )
 {
   if ( !f.seek( offset ) )
     throw exSeekError();
 }
 
-uchar * Class::map( qint64 offset, qint64 size )
+uchar * Index::map( qint64 offset, qint64 size )
 {
   return f.map( offset, size );
 }
 
-bool Class::unmap( uchar * address )
+bool Index::unmap( uchar * address )
 {
   return f.unmap( address );
 }
 
 
-void Class::seekEnd()
+void Index::seekEnd()
 {
   if ( !f.seek( f.size() ) )
     throw exSeekError();
 }
 
-void Class::rewind()
+void Index::rewind()
 {
   seek( 0 );
 }
 
-qint64 Class::tell()
+qint64 Index::tell()
 {
   return f.pos();
 }
 
-bool Class::eof() const
+bool Index::eof() const
 {
   return f.atEnd();
 }
 
-QFile & Class::file()
+QFile & Index::file()
 {
   return f;
 }
 
-void Class::close()
+void Index::close()
 {
   f.close();
 }
 
-Class::~Class() noexcept
+Index::~Index() noexcept
 {
   f.close();
 }

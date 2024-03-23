@@ -129,7 +129,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -141,7 +141,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class XdxfDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
   QMutex dzMutex;
@@ -1040,7 +1040,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         //initializing.indexingDictionary( nameFromFileName( dictFiles[ 0 ] ) );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
         map< string, string > abrv;

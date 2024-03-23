@@ -332,7 +332,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -344,7 +344,7 @@ bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 class GlsDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   dictData * dz;
   ChunkedStorage::Reader chunks;
@@ -1233,7 +1233,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           gdDebug( "Gls: Building the index for dictionary: %s\n",
                    QString::fromStdU32String( scanner.getDictionaryName() ).toUtf8().data() );
 
-          File::Class idx( indexFile, "wb" );
+          File::Index idx( indexFile, "wb" );
 
           IdxHeader idxHeader;
 

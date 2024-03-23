@@ -31,11 +31,11 @@ DEF_EX( mapFailed, "Failed to map/unmap the file", Ex )
 class Writer
 {
   vector< uint32_t > offsets;
-  File::Class & file;
+  File::Index & file;
   size_t scratchPadOffset, scratchPadSize;
 
 public:
-  explicit Writer( File::Class & );
+  explicit Writer( File::Index & );
 
   /// Starts new block. Returns its address.
   uint32_t startNewBlock();
@@ -72,12 +72,12 @@ private:
 class Reader
 {
   vector< uint32_t > offsets;
-  File::Class & file;
+  File::Index & file;
 
 public:
   /// Creates reader by giving it a file to read from and the offset returned
   /// by Writer::finish().
-  Reader( File::Class &, uint32_t );
+  Reader( File::Index &, uint32_t );
 
   /// Reads the block previously written by Writer, identified by its address.
   /// Uses the user-provided storage to load the entire chunk, and then to

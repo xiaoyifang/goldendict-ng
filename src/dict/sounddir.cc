@@ -53,7 +53,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -65,7 +65,7 @@ class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
   string name;
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
   QString iconFilename;
@@ -362,7 +362,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   // Now try loading that file
 
   try {
-    File::Class f( fileName.toStdString(), "rb" );
+    File::Index f( fileName.toStdString(), "rb" );
 
     sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -463,7 +463,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
       initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
-      File::Class idx( indexFile, "wb" );
+      File::Index idx( indexFile, "wb" );
 
       IdxHeader idxHeader;
 

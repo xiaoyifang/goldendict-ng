@@ -50,7 +50,7 @@ string const & BtreeDictionary::ensureInitDone()
   return empty;
 }
 
-void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Class & file, QMutex & mutex )
+void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Index & file, QMutex & mutex )
 {
   indexNodeSize = indexInfo.btreeMaxElements;
   rootOffset    = indexInfo.rootOffset;
@@ -754,7 +754,7 @@ void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & cha
 /// leaf nodes.
 static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
                                 size_t indexSize,
-                                File::Class & file,
+                                File::Index & file,
                                 size_t maxElements,
                                 uint32_t & lastLeafLinkOffset )
 {
@@ -984,7 +984,7 @@ void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOf
   operator[]( Utf8::encode( folded ) ).emplace_back( Utf8::encode( word ), articleOffset );
 }
 
-IndexInfo buildIndex( IndexedWords const & indexedWords, File::Class & file )
+IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
 {
   size_t indexSize = indexedWords.size();
   auto nextIndex   = indexedWords.begin();
