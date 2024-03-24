@@ -30,7 +30,6 @@ using std::vector;
 using std::map;
 
 
-
 enum {
   /// This is to be bumped up each time the internal format changes.
   /// The value isn't used here by itself, it is supposed to be added
