@@ -1270,11 +1270,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
-
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( dictFiles, indexFile ) ) {
+    int t = 20;
+mdxbench:
+    if ( true ) {
       // Building the index
 
-      gdDebug( "MDict: Building the index for dictionary: %s\n", fileName.c_str() );
+     // gdDebug( "MDict: Building the index for dictionary: %s\n", fileName.c_str() );
+      auto index_begin = std::chrono::high_resolution_clock::now();
 
       MdictParser parser;
       list< sptr< MdictParser > > mddParsers;
@@ -1432,6 +1434,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );
+
+      auto index_finish = std::chrono::high_resolution_clock::now();
+      std::chrono::duration<double, std::milli> c = index_finish - index_begin;
+      qDebug() << c;
+
+      t = t - 1;
+      if ( t > 0 ) {
+        goto mdxbench;
+      }
     }
 
     dictionaries.push_back( std::make_shared< MdxDictionary >( dictId, indexFile, dictFiles ) );
