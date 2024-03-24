@@ -117,7 +117,8 @@ UI_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 LIBS += -lbz2 \
-        -llzo2
+        -llzo2 \
+        -lzstd
 
 win32{
     Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lzlibd

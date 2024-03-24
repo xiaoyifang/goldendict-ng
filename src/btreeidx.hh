@@ -12,11 +12,12 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include <QFuture>
-#include <QList>
-#include <QSet>
 #include <QVector>
+
+#include "zstd_wrapper.hh"
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -28,11 +29,13 @@ using gd::wstring;
 using std::vector;
 using std::map;
 
+
+
 enum {
   /// This is to be bumped up each time the internal format changes.
   /// The value isn't used here by itself, it is supposed to be added
   /// to each dictionary's internal format version.
-  FormatVersion = 4
+  FormatVersion = 5
 };
 
 // These exceptions which might be thrown during the index traversal
@@ -139,6 +142,9 @@ protected:
 
 protected:
 
+  std::unique_ptr< ZSTD_DCtx, ZSTD::deleter > zstd_dctx;
+
+  // Lifetime of 2 var below is not managed by this class.
   QMutex * idxFileMutex;
   File::Class * idxFile;
 

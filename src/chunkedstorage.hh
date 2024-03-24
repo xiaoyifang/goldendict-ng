@@ -8,7 +8,9 @@
 #include "file.hh"
 
 #include <vector>
-#include <stdint.h>
+#include <memory>
+
+#include "zstd_wrapper.hh"
 
 /// A chunked compression storage. We use this for articles' bodies. The idea
 /// is to store data in a separately-compressed chunks, much like in dictzip,
@@ -66,6 +68,8 @@ private:
   size_t bufferUsed;
 
   void saveCurrentChunk();
+
+  std::unique_ptr< ZSTD_CCtx, ZSTD::deleter > zstd_cctx;
 };
 
 /// This class reads data blocks previously written by Writer.
@@ -83,6 +87,9 @@ public:
   /// Uses the user-provided storage to load the entire chunk, and then to
   /// return a pointer to the requested block inside it.
   char * getBlock( uint32_t address, vector< char > & );
+
+private:
+  std::unique_ptr< ZSTD_DCtx, ZSTD::deleter > zstd_dctx;
 };
 
 } // namespace ChunkedStorage

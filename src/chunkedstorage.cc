@@ -2,11 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "chunkedstorage.hh"
-#include <zlib.h>
+#include <zstd.h>
 #include <string.h>
+
 #include <QDataStream>
-#include <QScopeGuard>
 #include <QMutexLocker>
+#include <QScopeGuard>
 
 namespace ChunkedStorage {
 
@@ -19,6 +20,8 @@ Writer::Writer( File::Class & f ):
   chunkStarted( false ),
   bufferUsed( 0 )
 {
+  zstd_cctx.reset( ZSTD_createCCtx() );
+
   // Create a sratchpad at the beginning of file. We use it to write chunk
   // table if it would fit, in order to save some seek times.
 
@@ -64,21 +67,22 @@ void Writer::addToBlock( void const * data, size_t size )
 
 void Writer::saveCurrentChunk()
 {
-  size_t maxCompressedSize = compressBound( bufferUsed );
 
-  if ( bufferCompressed.size() < maxCompressedSize )
+  if ( size_t maxCompressedSize = ZSTD_compressBound( bufferUsed ); bufferCompressed.size() < maxCompressedSize )
     bufferCompressed.resize( maxCompressedSize );
 
-  unsigned long compressedSize = bufferCompressed.size();
+  const size_t size_or_err =
+    ZSTD_compress2( zstd_cctx.get(), bufferCompressed.data(), bufferCompressed.size(), buffer.data(), bufferUsed );
 
-  if ( compress( &bufferCompressed.front(), &compressedSize, &buffer.front(), bufferUsed ) != Z_OK )
+  if ( ZSTD_isError( size_or_err ) ) {
     throw exFailedToCompressChunk();
+  }
 
   offsets.push_back( file.tell() );
 
   file.write( (uint32_t)bufferUsed );
-  file.write( (uint32_t)compressedSize );
-  file.write( &bufferCompressed.front(), compressedSize );
+  file.write( (uint32_t)size_or_err );
+  file.write( bufferCompressed.data(), size_or_err );
 
   bufferUsed = 0;
 
@@ -118,6 +122,8 @@ uint32_t Writer::finish()
 Reader::Reader( File::Class & f, uint32_t offset ):
   file( f )
 {
+  zstd_dctx.reset( ZSTD_createDCtx() );
+
   file.seek( offset );
 
   uint32_t size = file.read< uint32_t >();
@@ -163,10 +169,11 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
     } );
     Q_UNUSED( autoUnmap )
 
-    unsigned long decompressedLength = chunk.size();
 
-    if ( uncompress( (unsigned char *)&chunk.front(), &decompressedLength, chunkDataBytes, compressedSize ) != Z_OK
-         || decompressedLength != chunk.size() ) {
+    size_t const size_or_err =
+      ZSTD_decompressDCtx( zstd_dctx.get(), chunk.data(), chunk.size(), chunkDataBytes, compressedSize );
+
+    if ( ZSTD_isError( size_or_err ) || size_or_err != chunk.size() ) {
       throw exFailedToDecompressChunk();
     }
   }

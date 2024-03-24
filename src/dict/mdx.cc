@@ -1270,12 +1270,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
-    int t = 20;
-mdxbench:
+    int t            = 20;
+  mdxbench:
     if ( true ) {
       // Building the index
 
-     // gdDebug( "MDict: Building the index for dictionary: %s\n", fileName.c_str() );
+      // gdDebug( "MDict: Building the index for dictionary: %s\n", fileName.c_str() );
       auto index_begin = std::chrono::high_resolution_clock::now();
 
       MdictParser parser;
@@ -1435,9 +1435,10 @@ mdxbench:
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );
 
-      auto index_finish = std::chrono::high_resolution_clock::now();
-      std::chrono::duration<double, std::milli> c = index_finish - index_begin;
-      qDebug() << c;
+      auto index_finish                             = std::chrono::high_resolution_clock::now();
+      std::chrono::duration< double, std::milli > c = index_finish - index_begin;
+      qDebug() << c.count() << "ms";
+      //or qDebug() << c; for qt6.6
 
       t = t - 1;
       if ( t > 0 ) {

@@ -4,8 +4,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "utf8.hh"
-#include <QRunnable>
-#include <QThreadPool>
+
 #include <QSemaphore>
 #include <math.h>
 #include <string.h>
@@ -14,7 +13,6 @@
 #include "wstring_qt.hh"
 #include "utils.hh"
 
-#include <QRegularExpression>
 #include "wildcard.hh"
 #include "globalbroadcaster.hh"
 
@@ -36,6 +34,7 @@ BtreeIndex::BtreeIndex():
   idxFile( nullptr ),
   rootNodeLoaded( false )
 {
+  zstd_dctx.reset( ZSTD_createDCtx() );
 }
 
 BtreeDictionary::BtreeDictionary( string const & id, vector< string > const & dictionaryFiles ):
@@ -409,12 +408,12 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
 
   idxFile->read( &compressedData.front(), compressedData.size() );
 
-  unsigned long decompressedLength = out.size();
+  const size_t size_or_err =
+    ZSTD_decompressDCtx( zstd_dctx.get(), out.data(), out.size(), compressedData.data(), compressedData.size() );
 
-  if ( uncompress( (unsigned char *)&out.front(), &decompressedLength, &compressedData.front(), compressedData.size() )
-         != Z_OK
-       || decompressedLength != out.size() )
+  if ( ZSTD_isError( size_or_err ) || size_or_err != out.size() ) {
     throw exFailedToDecompressNode();
+  }
 }
 
 char const * BtreeIndex::findChainOffsetExactOrPrefix(
@@ -758,6 +757,10 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
                                 size_t maxElements,
                                 uint32_t & lastLeafLinkOffset )
 {
+
+  std::unique_ptr< ZSTD_CCtx, ZSTD::deleter > zstd_cctx;
+  zstd_cctx.reset( ZSTD_createCCtx() );
+
   // We compress all the node data. This buffer would hold it.
   vector< unsigned char > uncompressedData;
 
@@ -846,12 +849,15 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   }
 
   // Save the result.
-  vector< unsigned char > compressedData( compressBound( uncompressedData.size() ) );
+  vector< unsigned char > compressedData( ZSTD_compressBound( uncompressedData.size() ) );
 
-  unsigned long compressedSize = compressedData.size();
+  const size_t size_or_err = ZSTD_compress2( zstd_cctx.get(),
+                                             compressedData.data(),
+                                             compressedData.size(),
+                                             uncompressedData.data(),
+                                             uncompressedData.size() );
 
-  if ( compress( &compressedData.front(), &compressedSize, &uncompressedData.front(), uncompressedData.size() )
-       != Z_OK ) {
+  if ( ZSTD_isError( size_or_err ) ) {
     qFatal( "Failed to compress btree node." );
     abort();
   }
@@ -859,8 +865,8 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   uint32_t offset = file.tell();
 
   file.write< uint32_t >( uncompressedData.size() );
-  file.write< uint32_t >( compressedSize );
-  file.write( &compressedData.front(), compressedSize );
+  file.write< uint32_t >( size_or_err );
+  file.write( &compressedData.front(), size_or_err );
 
   if ( isLeaf ) {
     // A link to the next leef, which is zero and which will be updated
