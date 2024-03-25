@@ -21,12 +21,12 @@
 #endif
 
 #include "termination.hh"
-#include "atomic_rename.hh"
 #include <QByteArray>
 #include <QCommandLineParser>
 #include <QFile>
 #include <QMessageBox>
 #include <QString>
+#include <QStringBuilder>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 
 #include "gddebug.hh"
@@ -498,7 +498,10 @@ int main( int argc, char ** argv )
         return -1;
 
       QString configFile = Config::getConfigFileName();
-      renameAtomically( configFile, configFile + ".bad" );
+      QFile::rename( configFile,
+                     configFile % QStringLiteral( "." )
+                       % QDateTime::currentDateTime().toString( QStringLiteral( "yyyyMMdd_HHmmss" ) )
+                       % QStringLiteral( ".bad" ) );
       continue;
     }
     break;
