@@ -73,7 +73,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -84,7 +84,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class DictdDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx, indexFile; // The later is .index file
+  File::Index idx, indexFile; // The later is .index file
   IdxHeader idxHeader;
   dictData * dz;
   QMutex indexFileMutex, dzMutex;
@@ -579,7 +579,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictionaryName );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 
@@ -592,7 +592,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords indexedWords;
 
-        File::Class indexFile( dictFiles[ 0 ], "rb" );
+        File::Index indexFile( dictFiles[ 0 ], "rb" );
 
         // Read words from index until none's left.
 

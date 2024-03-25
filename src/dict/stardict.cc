@@ -90,7 +90,7 @@ struct Ifo
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  explicit Ifo( File::Class & );
+  explicit Ifo( File::Index & );
 };
 
 enum {
@@ -123,7 +123,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -134,7 +134,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class StardictDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   string bookName;
   string sameTypeSequence;
@@ -1039,7 +1039,7 @@ QString const & StardictDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  File::Class ifoFile( getDictionaryFilenames()[ 0 ], "r" );
+  File::Index ifoFile( getDictionaryFilenames()[ 0 ], "r" );
   Ifo ifo( ifoFile );
 
   if ( !ifo.copyright.empty() ) {
@@ -1402,7 +1402,7 @@ static char const * beginsWith( char const * substr, char const * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
-Ifo::Ifo( File::Class & f ):
+Ifo::Ifo( File::Index & f ):
   wordcount( 0 ),
   synwordcount( 0 ),
   idxfilesize( 0 ),
@@ -1809,7 +1809,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        File::Class ifoFile( fileName, "r" );
+        File::Index ifoFile( fileName, "r" );
 
         Ifo ifo( ifoFile );
 
@@ -1840,7 +1840,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( ifo.bookname );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 
