@@ -3,7 +3,7 @@
 
 #include "config.hh"
 #include "folding.hh"
-#include <QDir>
+#include <QSaveFile>
 #include <QFile>
 #include <QtXml>
 #include <QApplication>
@@ -16,8 +16,6 @@
 #endif
 
 #include <stdint.h>
-
-#include "atomic_rename.hh"
 
 #include <QStandardPaths>
 
@@ -1310,7 +1308,7 @@ void saveGroup( Group const & data, QDomElement & group )
 
 void save( Class const & c )
 {
-  QFile configFile( getConfigFileName() + ".tmp" );
+  QSaveFile configFile( getConfigFileName() );
 
   if ( !configFile.open( QFile::WriteOnly ) )
     throw exCantWriteConfigFile();
@@ -2233,14 +2231,9 @@ void save( Class const & c )
     hd.appendChild( opt );
   }
 
-  QByteArray result( dd.toByteArray() );
-
-  if ( configFile.write( result ) != result.size() )
+  configFile.write( dd.toByteArray() );
+  if ( !configFile.commit() )
     throw exCantWriteConfigFile();
-
-  configFile.close();
-
-  renameAtomically( configFile.fileName(), getConfigFileName() );
 }
 
 QString getConfigFileName()

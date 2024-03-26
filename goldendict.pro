@@ -290,7 +290,6 @@ HEADERS += \
     src/audioplayerinterface.hh \
     src/btreeidx.hh \
     src/chunkedstorage.hh \
-    src/common/atomic_rename.hh \
     src/common/base_type.hh \
     src/common/ex.hh \
     src/common/file.hh \
@@ -419,7 +418,6 @@ SOURCES += \
     src/audioplayerfactory.cc \
     src/btreeidx.cc \
     src/chunkedstorage.cc \
-    src/common/atomic_rename.cc \
     src/common/file.cc \
     src/common/filetype.cc \
     src/common/folding.cc \
