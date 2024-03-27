@@ -8,6 +8,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
 
     paths-ignore:
       - 'docs/**'

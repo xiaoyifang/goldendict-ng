@@ -11,6 +11,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
       # - staged
     paths-ignore:
       - 'docs/**'
