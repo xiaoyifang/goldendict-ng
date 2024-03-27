@@ -6,6 +6,7 @@ on:
       # - dev
       # - master
       - staged
+      - experimental
     paths-ignore:
       - "docs/**"
       # - ".github/**"
