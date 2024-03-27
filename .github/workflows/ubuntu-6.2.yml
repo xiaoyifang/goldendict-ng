@@ -25,7 +25,7 @@ jobs:
         qt_arch: [gcc_64]
     env:
       version: 24.02.16
-      version-suffix: alpha
+      version-suffix: beta
       prerelease: true
     steps:
       - name: Install Qt
@@ -181,6 +181,8 @@ jobs:
             #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
 
             Qt6.X is recommended for various enhancements.
+
+            **ATTENTION: beta version is incompatible with alpha and release version**
 
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).

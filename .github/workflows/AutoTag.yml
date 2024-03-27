@@ -22,7 +22,7 @@ jobs:
       
     env:
       version: 24.02.16
-      version-suffix: alpha
+      version-suffix: beta
       prerelease: true
 
     steps:
