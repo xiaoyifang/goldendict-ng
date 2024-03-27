@@ -28,7 +28,7 @@ jobs:
     env:
       targetName: GoldenDict.exe
       version: 24.02.16
-      version-suffix: beta
+      version-suffix: experimental
       prerelease: true
     # 步骤
     steps:

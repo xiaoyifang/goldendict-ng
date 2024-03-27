@@ -32,7 +32,7 @@ jobs:
     env:
       targetName: GoldenDict.exe
       version: 24.02.16
-      version-suffix: beta
+      version-suffix: experimental
       prerelease: true
     steps:
       - uses: actions/setup-python@v3

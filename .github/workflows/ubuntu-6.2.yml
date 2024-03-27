@@ -25,7 +25,7 @@ jobs:
         qt_arch: [gcc_64]
     env:
       version: 24.02.16
-      version-suffix: beta
+      version-suffix: experimental
       prerelease: true
     steps:
       - name: Install Qt
