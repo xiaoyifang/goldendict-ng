@@ -217,7 +217,7 @@ jobs:
 
             Qt6.X is recommended for various enhancements.
 
-            **ATTENTION: beta version is incompatible with alpha and release version**
+            **ATTENTION: beta version is incompatible with alpha and release version. The experimental version incorporates various incompatible changes,includes but not limted to performance changes, structure changes ,rewrite logic etc.**
 
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
