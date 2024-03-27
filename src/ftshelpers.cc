@@ -91,7 +91,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       throw exUserAbort();
 
-    dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
+    // dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
 
     // incremental build the index.
     // get the last address.
