@@ -509,26 +509,16 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 {
   std::vector< string > sortedList;
 
-  if ( Config::isPortableVersion() ) {
-    // For portable version, we use relative paths
+  
+      // use filename to unify the calculation step
     sortedList.reserve( dictionaryFiles.size() );
 
-    const QDir dictionariesDir( Config::getPortableVersionDictionaryDir() );
 
     for ( const auto & full : dictionaryFiles ) {
       QFileInfo fileInfo( QString::fromStdString( full ) );
-
-      if ( fileInfo.isAbsolute() )
-        sortedList.push_back( dictionariesDir.relativeFilePath( fileInfo.filePath() ).toStdString() );
-      else {
-        // Well, it's relative. We don't technically support those, but
-        // what the heck
-        sortedList.push_back( full );
-      }
+      sortedList.push_back( fileInfo.fileName().toStdString() );
     }
-  }
-  else
-    sortedList = dictionaryFiles;
+    
 
   std::sort( sortedList.begin(), sortedList.end() );
 
