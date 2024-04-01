@@ -70,6 +70,14 @@ function Main() {
     # Copy-Item -Path $multimedia -Destination $archiveName\plugins -Recurse
     # }
 
+    $multimedia_ffmpeg_av_dll="{0}\bin\av*.dll" -f $env:QTDIR.Trim()
+    $multimedia_ffmpeg_sw_dll="{0}\bin\sw*.dll" -f $env:QTDIR.Trim()
+    if (Test-Path $multimedia_ffmpeg_av_dll && Test-Path $multimedia_ffmpeg_sw_dll) {
+        Write-Host "copy multimedia_ffmpeg_dlls $($multimedia_ffmpeg_av_dll) $($multimedia_ffmpeg_sw_dll) from qt"
+        Copy-Item -Path $multimedia_ffmpeg_av_dll -Destination $archiveName\plugins -Recurse
+        Copy-Item -Path $multimedia_ffmpeg_sw_dll -Destination $archiveName\plugins -Recurse
+    }
+
     Write-Host "compress zip..."
     # 打包zip
     Compress-Archive -Path $archiveName -DestinationPath $archiveName'.zip'
