@@ -370,7 +370,7 @@ int main( int argc, char ** argv )
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
 #ifdef Q_OS_WIN32
-  QApplication::setStyle( QStyleFactory::create("WindowsVista") );
+  QApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
 #endif
 
 #if defined( USE_BREAKPAD )
