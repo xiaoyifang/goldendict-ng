@@ -74,8 +74,8 @@ function Main() {
     $multimedia_ffmpeg_sw_dll="{0}\bin\sw*.dll" -f $env:QTDIR.Trim()
     if (Test-Path $multimedia_ffmpeg_av_dll && Test-Path $multimedia_ffmpeg_sw_dll) {
         Write-Host "copy multimedia_ffmpeg_dlls $($multimedia_ffmpeg_av_dll) $($multimedia_ffmpeg_sw_dll) from qt"
-        Copy-Item -Path $multimedia_ffmpeg_av_dll -Destination $archiveName\plugins -Recurse
-        Copy-Item -Path $multimedia_ffmpeg_sw_dll -Destination $archiveName\plugins -Recurse
+        Copy-Item -Path $multimedia_ffmpeg_av_dll -Destination $archiveName\
+        Copy-Item -Path $multimedia_ffmpeg_sw_dll -Destination $archiveName\
     }
 
     Write-Host "compress zip..."
