@@ -8,6 +8,7 @@
 #include <QWebEngineProfile>
 #include "hotkeywrapper.hh"
 #include "version.hh"
+#include <QStyleFactory>
 #ifdef HAVE_X11
   #include <fixx11h.h>
 #endif
@@ -367,6 +368,10 @@ int main( int argc, char ** argv )
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+
+#ifdef Q_OS_WIN32
+  QApplication::setStyle( QStyleFactory::create("WindowsVista") );
+#endif
 
 #if defined( USE_BREAKPAD )
   QString appDirPath = Config::getConfigDir() + "crash";
