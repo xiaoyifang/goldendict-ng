@@ -375,7 +375,7 @@ private slots:
   void dictsPaneVisibilityChanged( bool );
 
   /// Creates a new tab, which is to be populated then with some content.
-  ArticleView * createNewTab( bool switchToIt, QString const & name );
+  QTabWidget  * createNewTab( bool switchToIt, QString const & name );
 
   void openLinkInNewTab( QUrl const &, QUrl const &, QString const &, Contexts const & contexts );
   void showDefinitionInNewTab( QString const & word,

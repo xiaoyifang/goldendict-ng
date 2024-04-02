@@ -1774,8 +1774,9 @@ void MainWindow::addNewTab()
   createNewTab( true, tr( "(untitled)" ) );
 }
 
-ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
+QTabWidget  * MainWindow::createNewTab( bool switchToIt, QString const & name )
 {
+  QTabWidget * tab=new QTabWidget(this);
   ArticleView * view = new ArticleView( this,
                                         articleNetMgr,
                                         audioPlayerFactory.player(),
@@ -1830,18 +1831,23 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   QString escaped = Utils::escapeAmps( name );
 
-  ui.tabWidget->insertTab( index, view, escaped );
-  mruList.append( dynamic_cast< QWidget * >( view ) );
-
-  if ( switchToIt )
-    ui.tabWidget->setCurrentIndex( index );
-
   view->setZoomFactor( cfg.preferences.zoomFactor );
 
 #ifdef Q_OS_WIN32
   view->installEventFilter( this );
 #endif
-  return view;
+  tab->addTab( view, escaped );
+
+  
+
+
+  ui.tabWidget->insertTab( index, tab, escaped );
+  mruList.append( dynamic_cast< QWidget * >( tab ) );
+
+  if ( switchToIt )
+    ui.tabWidget->setCurrentIndex( index );
+
+  return tab;
 }
 
 void MainWindow::inspectElement( QWebEnginePage * page )
