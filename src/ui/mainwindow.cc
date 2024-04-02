@@ -1774,9 +1774,9 @@ void MainWindow::addNewTab()
   createNewTab( true, tr( "(untitled)" ) );
 }
 
-QTabWidget  * MainWindow::createNewTab( bool switchToIt, QString const & name )
+QTabWidget * MainWindow::createNewTab( bool switchToIt, QString const & name )
 {
-  QTabWidget * tab=new QTabWidget(this);
+  QTabWidget * tab   = new QTabWidget( this );
   ArticleView * view = new ArticleView( this,
                                         articleNetMgr,
                                         audioPlayerFactory.player(),
@@ -1837,8 +1837,6 @@ QTabWidget  * MainWindow::createNewTab( bool switchToIt, QString const & name )
   view->installEventFilter( this );
 #endif
   tab->addTab( view, escaped );
-
-  
 
 
   ui.tabWidget->insertTab( index, tab, escaped );
