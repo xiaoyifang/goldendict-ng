@@ -49,7 +49,7 @@ set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
 #### Things required during configuration
 
 block() # generate version.txt
-    string(TIMESTAMP build_time)
+    string(TIMESTAMP build_time UTC)
     find_package(Git)
     if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND GIT_FOUND)
         execute_process(
