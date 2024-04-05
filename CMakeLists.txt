@@ -232,7 +232,6 @@ if (LINUX OR BSD)
 endif ()
 
 if (WIN32)
-    find_program(TOOL_WINDEPLOYQT NAMES windeployqt PATHS "${Qt6_ROOT}/bin")
     set_target_properties(${GOLDENDICT}
             PROPERTIES
             WIN32_EXECUTABLE TRUE
@@ -243,14 +242,24 @@ if (WIN32)
     add_custom_target(windeploy
             COMMENT "Deploy everything to the output dir"
             DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
-            COMMAND ${TOOL_WINDEPLOYQT} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
+            COMMAND ${WINDEPLOYQT_EXECUTABLE} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
             COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
             COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
             COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
             WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
     )
 
-    #TODO: use CPack to make the output folder as NSIS installer
+    # use CPack to make the output folder as NSIS installer
+    install(
+        DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
+        DESTINATION .
+    )
+
+    set(CPACK_PACKAGE_FILE_NAME "${Qt6Widgets_VERSION}-${PROJECT_NAME}-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
+    set(CPACK_GENERATOR "7Z;NSIS")
+    set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
+    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+    include(CPack)
 endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
