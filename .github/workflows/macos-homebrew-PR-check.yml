@@ -39,7 +39,7 @@ jobs:
           arch: ${{ matrix.qt_arch }}
           
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtspeech
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
           submodules: true
