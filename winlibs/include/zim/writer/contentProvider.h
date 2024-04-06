@@ -25,33 +25,34 @@
 #include <zim/zim.h>
 #include <string>
 
-namespace zim {
+namespace zim
+{
 #ifdef _WIN32
   #define DEFAULTFD zim::windows::FD
-namespace windows {
+  namespace windows {
 #else
   #define DEFAULTFD zim::unix::FD
-namespace unix {
+  namespace unix {
 #endif
-class FD;
-}
-namespace writer {
-/**
+    class FD;
+  }
+  namespace writer
+  {
+    /**
      * `ContentProvider` is an abstract class in charge of providing the content to
      * add in the archive to the creator.
      */
-class LIBZIM_API ContentProvider
-{
-public:
-  virtual ~ContentProvider() = default;
-  /**
+    class LIBZIM_API ContentProvider {
+      public:
+        virtual ~ContentProvider() = default;
+        /**
          * The size of the content to add into the archive.
          *
          * @return the total size of the content.
          */
-  virtual zim::size_type getSize() const = 0;
+        virtual zim::size_type getSize() const = 0;
 
-  /**
+        /**
          * Return a blob to add to the archive.
          *
          * The returned blob doesn't have to represent the whole content.
@@ -74,99 +75,85 @@ public:
          * A call to feed ensure that the data returned by a previous call will not
          * be used anymore.
          */
-  virtual Blob feed() = 0;
-};
+        virtual Blob feed() = 0;
+    };
 
-/**
+    /**
      * StringProvider provide the content stored in a string.
      */
-class LIBZIM_API StringProvider: public ContentProvider
-{
-public:
-  /**
+    class LIBZIM_API StringProvider : public ContentProvider {
+      public:
+        /**
          * Create a provider using a string as content.
          * The string content is copied and the reference don't have to be "keep" alive.
          *
          * @param content the content to serve.
          */
-  explicit StringProvider( const std::string & content ):
-    content( content ),
-    feeded( false )
-  {
-  }
-  zim::size_type getSize() const
-  {
-    return content.size();
-  }
-  Blob feed();
+        explicit StringProvider(const std::string& content)
+          : content(content),
+            feeded(false)
+        {}
+        zim::size_type getSize() const { return content.size(); }
+        Blob feed();
 
-protected:
-  std::string content;
-  bool feeded;
-};
+      protected:
+        std::string content;
+        bool feeded;
+    };
 
-/**
+    /**
      * SharedStringProvider provide the content stored in a shared string.
      *
      * It is mostly the same thing that `StringProvider` but use a shared_ptr
      * to avoid copy.
      */
-class LIBZIM_API SharedStringProvider: public ContentProvider
-{
-public:
-  /**
+    class LIBZIM_API SharedStringProvider : public ContentProvider {
+      public:
+        /**
          * Create a provider using a string as content.
          * The string content is not copied.
          *
          * @param content the content to serve.
          */
-  explicit SharedStringProvider( std::shared_ptr< const std::string > content ):
-    content( content ),
-    feeded( false )
-  {
-  }
-  zim::size_type getSize() const
-  {
-    return content->size();
-  }
-  Blob feed();
+        explicit SharedStringProvider(std::shared_ptr<const std::string> content)
+          : content(content),
+            feeded(false)
+        {}
+        zim::size_type getSize() const { return content->size(); }
+        Blob feed();
 
-protected:
-  std::shared_ptr< const std::string > content;
-  bool feeded;
-};
+      protected:
+        std::shared_ptr<const std::string> content;
+        bool feeded;
+    };
 
-/**
+    /**
      * FileProvider provide the content stored in file.
      */
-class LIBZIM_API FileProvider: public ContentProvider
-{
-public:
-  /**
+    class LIBZIM_API FileProvider : public ContentProvider {
+      public:
+        /**
          * Create a provider using file as content.
          *
          * @param filepath the path to the file to serve.
          */
-  explicit FileProvider( const std::string & filepath );
-  ~FileProvider();
-  zim::size_type getSize() const
-  {
-    return size;
+        explicit FileProvider(const std::string& filepath);
+        ~FileProvider();
+        zim::size_type getSize() const { return size; }
+        Blob feed();
+
+      protected:
+        std::string filepath;
+        zim::size_type size;
+
+      private:
+        std::unique_ptr<char[]> buffer;
+        std::unique_ptr<DEFAULTFD> fd;
+        zim::offset_type offset;
+    };
+
   }
-  Blob feed();
-
-protected:
-  std::string filepath;
-  zim::size_type size;
-
-private:
-  std::unique_ptr< char[] > buffer;
-  std::unique_ptr< DEFAULTFD > fd;
-  zim::offset_type offset;
-};
-
-} // namespace writer
-} // namespace zim
+}
 
 #undef DEFAULTFD
 

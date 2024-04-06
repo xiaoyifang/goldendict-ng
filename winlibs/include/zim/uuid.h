@@ -22,46 +22,42 @@
 #ifndef ZIM_UUID_H
 #define ZIM_UUID_H
 
+#include "zim.h"
+
 #include <iosfwd>
 #include <algorithm>
 #include <cstring>
 #include <string>
 
-namespace zim {
-struct Uuid
+namespace zim
 {
-  Uuid()
+  struct LIBZIM_API Uuid
   {
-    std::memset( data, 0, 16 );
-  }
+    Uuid()
+    {
+      std::memset(data, 0, 16);
+    }
 
-  Uuid( const char uuid[ 16 ] )
-  {
-    std::copy( uuid, uuid + 16, data );
-  }
+    Uuid(const char uuid[16])
+    {
+      std::copy(uuid, uuid+16, data);
+    }
 
-  static Uuid generate( std::string value = "" );
+    static Uuid generate(std::string value = "");
 
-  bool operator==( const Uuid & other ) const
-  {
-    return std::equal( data, data + 16, other.data );
-  }
-  bool operator!=( const Uuid & other ) const
-  {
-    return !( *this == other );
-  }
-  unsigned size() const
-  {
-    return 16;
-  }
+    bool operator== (const Uuid& other) const
+      { return std::equal(data, data+16, other.data); }
+    bool operator!= (const Uuid& other) const
+      { return !(*this == other); }
+    unsigned size() const  { return 16; }
 
-  explicit operator std::string() const;
+    explicit operator std::string() const;
 
-  char data[ 16 ];
-};
+    char data[16];
+  };
 
-std::ostream & operator<<( std::ostream & out, const Uuid & uuid );
+  LIBZIM_API std::ostream& operator<< (std::ostream& out, const Uuid& uuid);
 
-} // namespace zim
+}
 
 #endif // ZIM_UUID_H
