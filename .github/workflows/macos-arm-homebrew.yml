@@ -8,6 +8,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
       # - staged
     paths-ignore:
       - 'docs/**'
@@ -30,7 +31,7 @@ jobs:
       version-suffix: alpha
       prerelease: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true

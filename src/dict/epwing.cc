@@ -70,7 +70,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -84,7 +84,7 @@ class EpwingDictionary: public BtreeIndexing::BtreeDictionary
   Q_DECLARE_TR_FUNCTIONS( Epwing::EpwingDictionary )
 
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   string bookName;
   ChunkedStorage::Reader chunks;
@@ -1201,7 +1201,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           QByteArray nameData = str.toUtf8();
           initializing.indexingDictionary( nameData.data() );
 
-          File::Class idx( indexFile, "wb" );
+          File::Index idx( indexFile, "wb" );
 
           IdxHeader idxHeader{};
 

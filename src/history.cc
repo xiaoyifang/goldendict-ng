@@ -3,8 +3,9 @@
 
 #include "history.hh"
 #include "config.hh"
-#include "atomic_rename.hh"
 #include <QFile>
+#include <QSaveFile>
+#include <QDebug>
 
 History::History( unsigned size, unsigned maxItemLength_ ):
   maxSize( size ),
@@ -117,7 +118,7 @@ bool History::save()
   if ( !dirty )
     return true;
 
-  QFile file( Config::getHistoryFileName() + ".tmp" );
+  QSaveFile file( Config::getHistoryFileName() );
 
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
     return false;
@@ -136,11 +137,13 @@ bool History::save()
       return false;
   }
 
-  file.close();
+  if ( file.commit() ) {
+    dirty = false;
+    return true;
+  }
 
-  dirty = false;
-
-  return renameAtomically( file.fileName(), Config::getHistoryFileName() );
+  qDebug() << "Failed to save history file";
+  return false;
 }
 
 void History::clear()

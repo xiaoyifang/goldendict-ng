@@ -103,7 +103,7 @@ struct RefEntry
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -575,7 +575,7 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
   QMutex slobMutex, idxResourceMutex;
-  File::Class idx;
+  File::Index idx;
   BtreeIndex resourceIndex;
   IdxHeader idxHeader;
   SlobFile sf;
@@ -1387,7 +1387,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( sf.getDictionaryName().toUtf8().constData() );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 

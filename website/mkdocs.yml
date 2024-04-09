@@ -1,4 +1,4 @@
-site_name: GoldenDict-NG
+site_name: GoldenDict-ng
 site_description: GoldenDict-ng is a open source, cross platform, multi formats, feature rich dictionary 是一个开源跨平台支持各种格式的字典程序
 site_url: https://xiaoyifang.github.io/goldendict-ng/
 
@@ -36,8 +36,9 @@ nav:
       - ToolBar & DictBar: ui_toolbar.md
       - Favorites: ui_favorites.md
       - Shortcuts: ui_shortcuts.md
-  - Special Usages:
+  - Advanced Usages:
       - Anki Integration: topic_anki.md
+      - Program dictionary: howto/how to add a program as dictionary.md
       - Command Lines: topic_commandline.md
       - Custom Stylesheet & JavaScript: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
@@ -45,17 +46,16 @@ nav:
       - Customize Dictionary: custom_dictionary.md
       - OCR Integration: howto/ocr.md
       - Wayland: topic_wayland.md
+      - Debug dictionary JS: howto/how to debug dictionary js.md
   - Report Bugs & Feedbacks: feedbacks.md
-  - Contributor Guides:
-    - Developer: developer.md
-    - How to:
-       - Build from source: howto/build_from_source.md
-       - Customize the opencc: howto/how to customize the opencc.md
-       - Qt version and github action: howto/how to find out the latest qt version and module in github qt action.md
-       - Use .clang-format: howto/how to use .clang-format to format the code.md
-       - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
-       - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md 
-       - How to update the crowdin.ts file: howto/how to update crowdin.ts file.md
-       - How to debug dictionary js: howto/how to debug dictionary js.md
-       - How to add a program dictionary: howto/how to add a program as dictionary.md
+  - Development Info:
+    - Start develop: developer.md
+    - Architecture: architecture.md
+    - Build from source: howto/build_from_source.md
+    - Customize the opencc: howto/how to customize the opencc.md
+    - Qt version and github action: howto/how to find out the latest qt version and module in github qt action.md
+    - Use .clang-format: howto/how to use .clang-format to format the code.md
+    - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
+    - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md
+    - Update the crowdin.ts file: howto/how to update crowdin.ts file.md
 

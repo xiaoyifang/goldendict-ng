@@ -8,6 +8,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
 
     paths-ignore:
       - 'docs/**'
@@ -26,7 +27,7 @@ jobs:
       prerelease: true
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
             
       - name: set git short sha
         id: vars

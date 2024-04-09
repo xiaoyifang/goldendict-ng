@@ -28,7 +28,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE ${THIRD_PARTY_LIBARY})
 
 # Copy .dlls to output dir
 
-file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.dll")
+file(GLOB DLL_FILES LIST_DIRECTORIES false "${CMAKE_SOURCE_DIR}/winlibs/lib/msvc/*.dll" "${Qt6_ROOT}/bin/av*.dll" "${Qt6_ROOT}/bin/sw*.dll")
 foreach (A_DLL_FILE ${DLL_FILES})
     get_filename_component(TEMP_VAR_HOLDING_DLL_FILENAME ${A_DLL_FILE} NAME)
     configure_file("${A_DLL_FILE}" "${GD_WIN_OUTPUT_DIR}/${TEMP_VAR_HOLDING_DLL_FILENAME}" COPYONLY)

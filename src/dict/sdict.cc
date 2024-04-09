@@ -112,7 +112,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -123,10 +123,10 @@ bool indexIsOldOrBad( string const & indexFile )
 class SdictDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex, sdictMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
-  File::Class df;
+  File::Index df; // Not an index, uses this type for legacy reasons.
 
 public:
 
@@ -676,7 +676,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       try {
         gdDebug( "SDict: Building the index for dictionary: %s\n", fileName.c_str() );
 
-        File::Class df( fileName, "rb" );
+        File::Index df( fileName, "rb" );
 
         DCT_header dictHeader;
 
@@ -706,7 +706,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictName );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 

@@ -20,13 +20,16 @@
 #ifndef ZIM_VERSION_H
 #define ZIM_VERSION_H
 
+#include "zim.h"
 #include <string>
 #include <vector>
 
-namespace zim {
-typedef std::vector< std::pair< std::string, std::string > > LibVersions;
-LibVersions getVersions();
-void printVersions( std::ostream & out = std::cout );
-} // namespace zim
+namespace zim
+{
+  typedef std::vector<std::pair<std::string, std::string>> LibVersions;
+  LIBZIM_API LibVersions getVersions();
+  LIBZIM_API void printVersions(std::ostream& out = std::cout);
+}
 
 #endif // ZIM_VERSION_H
+

@@ -65,7 +65,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -91,10 +91,10 @@ struct Entry
 public:
 
   // Reads an entry from the file's current position
-  Entry( File::Class & f );
+  Entry( File::Index & f );
 };
 
-Entry::Entry( File::Class & f )
+Entry::Entry( File::Index & f )
 {
   bool firstEntry = ( f.tell() == 13 );
   // Read the entry's filename
@@ -147,7 +147,7 @@ Entry::Entry( File::Class & f )
 class LsaDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
 
 public:
@@ -390,7 +390,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
   if ( chain.empty() )
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
 
-  File::Class f( getDictionaryFilenames()[ 0 ], "rb" );
+  File::Index f( getDictionaryFilenames()[ 0 ], "rb" );
 
   f.seek( chain[ 0 ].articleOffset );
   Entry e( f );
@@ -503,7 +503,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       continue;
 
     try {
-      File::Class f( *i, "rb" );
+      File::Index f( *i, "rb" );
 
       /// Check the signature
 
@@ -528,7 +528,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 

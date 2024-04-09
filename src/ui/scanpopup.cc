@@ -85,8 +85,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 {
   ui.setupUi( this );
 
-  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
-
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
@@ -104,7 +102,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 groups,
                                 true,
                                 cfg,
-                                openSearchAction,
                                 ui.translateBox->translateLine(),
                                 dictionaryBar.toggleViewAction() );
 
@@ -113,6 +110,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+
+  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
   wordListDefaultFont      = ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();

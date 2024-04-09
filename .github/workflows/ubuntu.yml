@@ -54,7 +54,7 @@ jobs:
           cd ..
           sudo add-apt-repository --yes --update ppa:kiwixteam/release
           sudo apt install libzim-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 
           submodules: true

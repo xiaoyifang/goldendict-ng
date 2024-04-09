@@ -94,7 +94,6 @@ ArticleView::ArticleView( QWidget * parent,
                           Instances::Groups const & groups_,
                           bool popupView_,
                           Config::Class const & cfg_,
-                          QAction & openSearchAction_,
                           QLineEdit const * translateLine_,
                           QAction * dictionaryBarToggled_,
                           GroupComboBox const * groupComboBox_ ):
@@ -113,7 +112,6 @@ ArticleView::ArticleView( QWidget * parent,
   selectCurrentArticleAction( this ),
   copyAsTextAction( this ),
   inspectAction( this ),
-  openSearchAction( openSearchAction_ ),
   searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
   groupComboBox( groupComboBox_ ),
@@ -200,9 +198,6 @@ ArticleView::ArticleView( QWidget * parent,
   articleDownAction.setShortcut( QKeySequence( "Alt+Down" ) );
   webview->addAction( &articleDownAction );
   connect( &articleDownAction, &QAction::triggered, this, &ArticleView::moveOneArticleDown );
-
-  webview->addAction( &openSearchAction );
-  connect( &openSearchAction, &QAction::triggered, this, &ArticleView::openSearch );
 
   selectCurrentArticleAction.setShortcut( QKeySequence( "Ctrl+Shift+A" ) );
   selectCurrentArticleAction.setText( tr( "Select Current Article" ) );
