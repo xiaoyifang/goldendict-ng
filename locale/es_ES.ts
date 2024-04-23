@@ -4021,11 +4021,11 @@ basado en la fonología del inglés</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Esto solo se aplica en la frase de búsqueda, con cada línea representando una transliteración, separada por punto y coma. Por ejemplo, ae;æ,los usuarios pueden ingresar ae para representar æ en la palabra objetivo.</translation>
+      <translation>Esto solo se aplica en la frase de búsqueda, con cada línea representando una transliteración, separada por punto y coma. Por ejemplo, ae;æ,los usuarios pueden escribir ae para representar æ en la palabra objetivo.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation>ae;æ #este es un ejemplo</translation>
+      <translation>ae;æ #esto es un ejemplo</translation>
     </message>
     <message>
       <source>Transliteration</source>
