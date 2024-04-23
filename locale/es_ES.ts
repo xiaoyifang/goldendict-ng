@@ -91,7 +91,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;¡Bienvenido a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Para comenzar a trabajar con el programa, primero visite &lt;em&gt;Editar | Diccionarios&lt;/em&gt; para agregar algunas rutas de directorio donde buscar archivos de diccionario, configurar varios sitios de Wikipedia u otras fuentes, ajustar el orden del diccionario o crear grupos de diccionario.&lt;p&gt;Y entonces estarás&apos;listo para buscar tus palabras! Puede hacerlo en esta ventana usando un panel a la izquierda, o puede &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;buscar palabras de otras aplicaciones activas&lt;/a&gt;. &lt;p&gt;Para personalizar el programa, consulte las preferencias disponibles en &lt;em&gt;Editar | Preferencias&lt;/em&gt;. Todas las configuraciones tienen información sobre herramientas, asegúrese de leerlas si tiene dudas sobre algo.&lt;p&gt;Si necesita más ayuda, tiene alguna pregunta, sugerencia o simplemente se pregunta qué piensan los demás, es bienvenido al programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foro&lt;/a&gt;.&lt;p&gt;Consulte el programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; para ver las actualizaciones. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licenciado bajo GPLv3 o posterior.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;¡Bienvenido a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Para comenzar a trabajar con el programa, primero visite &lt;em&gt;Editar | Diccionarios&lt;/em&gt; para agregar algunas rutas de directorio donde buscar archivos de diccionario, configurar varios sitios de Wikipedia u otras fuentes, ajustar el orden de los diccionarios o crear grupos de diccionarios.&lt;p&gt;¡Entonces estará&apos;listo para buscar palabras! Puede hacerlo en esta ventana usando un panel a la izquierda, o puede &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;buscar palabras en otras aplicaciones activas&lt;/a&gt;. &lt;p&gt;Para personalizar el programa, consulte las preferencias disponibles en &lt;em&gt;Editar | Preferencias&lt;/em&gt;. Todas las configuraciones tienen descripciones, asegúrese de leerlas si tiene dudas sobre algo.&lt;p&gt;Si necesita más ayuda, tiene alguna pregunta, sugerencia o simplemente se pregunta qué piensan los demás, puede visitar el &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foro&lt;/a&gt; del programa.&lt;p&gt;Consulte el &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;sitio web&lt;/a&gt; del programa para ver las actualizaciones disponibles. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licenciado bajo GPLv3 o posterior.</translation>
     </message>
   </context>
   <context>
@@ -1177,7 +1177,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Indexación...</translation>
+      <translation>Indexando...</translation>
     </message>
     <message>
       <source>Loading...</source>
@@ -2099,7 +2099,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>Portugués de Brasil</translation>
+      <translation>Portugués brasileño</translation>
     </message>
     <message>
       <source>Persian</source>
@@ -3379,7 +3379,7 @@ borra su caché de red del disco durante la salida.</translation>
     </message>
     <message>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>No busque en diccionarios que contengan más de</translation>
+      <translation>No buscar en diccionarios que contengan más de</translation>
     </message>
     <message>
       <source>articles (0 - unlimited)</source>
@@ -3607,15 +3607,15 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>Al usar el portapapeles, elimine todo después de la nueva línea</translation>
+      <translation>Al usar el portapapeles, eliminar todo después de una nueva línea</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation>Eliminar índice no válido al salir</translation>
+      <translation>Eliminar índices no válidos al salir</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>Misceláneas</translation>
+      <translation>Misceláneo</translation>
     </message>
     <message>
       <source>Interface Font</source>
@@ -3743,7 +3743,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>Deshabilitar tts.</translation>
+      <translation>Deshabilitar el texto-a-voz.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
@@ -3759,11 +3759,11 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Versión impresa e información de diagnóstico.</translation>
+      <translation>Imprimir versión e información de diagnóstico.</translation>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation>Forzar la traducción de la palabra en scanpopup</translation>
+      <translation>Forzar la traducción de la palabra en el popup de escaneado</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
