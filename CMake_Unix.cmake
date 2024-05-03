@@ -1,8 +1,12 @@
-#### Include Paths
+#### Various workarounds
 
 if (APPLE)
     # old & new homebrew's include paths
     target_include_directories(${GOLDENDICT} PRIVATE /usr/local/include /opt/homebrew/include)
+
+    # libzim depends on ICU, but the ICU from homebrew is "key-only", we need to manually prioritize it
+    # See `brew info icu4c` if this no longer works
+    set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
 endif ()
 
 target_include_directories(${GOLDENDICT} PRIVATE
