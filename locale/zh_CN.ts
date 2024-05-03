@@ -3577,7 +3577,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>当未找到字典指定的字体时，将应用这些字体。</translation>
+      <translation>当未找到字典指定的字体时，将应用所选字体。</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
@@ -3593,7 +3593,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>使用剪贴板时，删除换行符后的所有内容</translation>
+      <translation>粘贴文本时删除换行符后的所有内容</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
@@ -3749,7 +3749,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation>强制在 scanpopup 中翻译单词</translation>
+      <translation>强制在取词弹窗中翻译单词</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
@@ -4005,7 +4005,7 @@ based on English phonology</source>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
+      <translation>只适用于搜索时。换行以分隔不同转写，使用分号以分隔源文本和转写文本。 例如，ae;æ。此时，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
