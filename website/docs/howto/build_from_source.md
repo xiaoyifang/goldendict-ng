@@ -37,6 +37,8 @@ And a few compression libraries:
 
 ## CMake Build
 
+Basically, you need those commands:
+
 ```shell
 cd goldendict-ng && mkdir build_dir
 # config step
@@ -80,13 +82,13 @@ Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt rela
 
 ### macOS
 
-Similar to Linux build, but need `macdeployqt ./goldendict.app` to copy necessary dependencies to the app bundle.
+If you build in an IDE, then the created `goldendict-ng.app`  will be runnable from the IDE which set up necessary magics for you.
+
+To make the `.app` runnable elsewhere, you can run `cmake --install build_dir/` which will invoke macdeployqt, ad-hoc code signing and various other things. The produced app will end up in `build_dir/redist/goldendict-ng.app`
+
+To create `.dmg` installer, you have to have [create-dmg](https://github.com/create-dmg/create-dmg) installed on your machine, then also `cmake --install build_dir/`.
 
 ## Qmake
-
-```shell
-git clone https://github.com/xiaoyifang/goldendict-ng.git
-```
 
 ### Build Steps
 

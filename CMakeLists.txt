@@ -24,9 +24,8 @@ project(goldendict-ng
         VERSION 24.02.16
         LANGUAGES CXX C)
 
-if (NOT USE_ALTERNATIVE_NAME)
-    set(GOLDENDICT "goldendict") # binary/executable name
-else ()
+set(GOLDENDICT "goldendict") # binary/executable name
+if (USE_ALTERNATIVE_NAME OR APPLE)
     set(GOLDENDICT "goldendict-ng")
 endif ()
 
@@ -80,6 +79,9 @@ file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.c)
 
 if (APPLE)
     file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
+
+    set(MACOS_APP_ICON ${CMAKE_SOURCE_DIR}/icons/macicon.icns)
+    set_source_files_properties(${MACOS_APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 endif ()
 
 if (WIN32)
@@ -102,6 +104,7 @@ target_sources(${GOLDENDICT} PRIVATE
         src/stylesheets/css.qrc
         ${ALL_SOURCE_FILES}
         ${MACOS_SOURCE_FILES}
+        ${MACOS_APP_ICON}
         ${QSINGLEAPP_SOURCE_FILES}
         ${WINDOWS_ICON_RC}
 )
@@ -198,12 +201,51 @@ qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
 #### installation or assemble redistribution
 
 if (APPLE)
+    set(PLIST_FILE "${CMAKE_BINARY_DIR}/info_generated.plist")
+    configure_file("${CMAKE_SOURCE_DIR}/redist/mac_info_plist_template_cmake.plist" "${PLIST_FILE}" @ONLY)
+
     set_target_properties(${GOLDENDICT} PROPERTIES
-            MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-            MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-            MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
             MACOSX_BUNDLE TRUE
-            )
+            MACOSX_BUNDLE_INFO_PLIST "${PLIST_FILE}"
+    )
+
+    set(Assembling_Dir "${CMAKE_BINARY_DIR}/redist")
+    set(Redistributable_APP "${Assembling_Dir}/${GOLDENDICT}.app")
+    qt_generate_deploy_script(
+            TARGET ${GOLDENDICT}
+            OUTPUT_SCRIPT deploy_script
+            CONTENT "qt_deploy_runtime_dependencies(
+                        EXECUTABLE \"${Redistributable_APP}\"
+                        GENERATE_QT_CONF
+                        NO_APP_STORE_COMPLIANCE
+                )"
+    )
+
+    install(TARGETS ${GOLDENDICT} BUNDLE DESTINATION "${Assembling_Dir}")
+    install(FILES ${qm_files} DESTINATION "${Redistributable_APP}/Contents/MacOS/locale")
+    install(DIRECTORY "${CMAKE_SOURCE_DIR}/opencc" DESTINATION "${Redistributable_APP}/Contents/MacOS")
+
+    install(SCRIPT ${deploy_script})
+
+    install(CODE "execute_process(COMMAND codesign --force --deep -s - ${Redistributable_APP})")
+
+    find_program(CREATE-DMG "create-dmg")
+    if (CREATE-DMG)
+        install(CODE "
+        execute_process(COMMAND ${CREATE-DMG} \
+            --skip-jenkins \
+            --format \"ULMO\"
+            --volname ${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR} \
+            --volicon ${CMAKE_SOURCE_DIR}/icons/macicon.icns \
+            --icon \"goldendict-ng.app\" 100 100
+            --app-drop-link 300 100 \
+            \"${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
+            \"${Assembling_Dir}\")"
+        )
+    else ()
+        message(WARNING "create-dmg not found. No .dmg will be created")
+    endif ()
+
 endif ()
 
 if (LINUX OR BSD)
