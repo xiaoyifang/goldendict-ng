@@ -274,7 +274,7 @@
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>声音文件 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
+      <translation>音频文件 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>在系统查看器中打开图像...</translation>
+      <translation>在系统图像查看器中打开...</translation>
     </message>
   </context>
   <context>
@@ -631,7 +631,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>启用全文搜索</translation>
+      <translation>全文搜索已启用</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
