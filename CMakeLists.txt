@@ -25,9 +25,12 @@ project(goldendict-ng
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
-if (USE_ALTERNATIVE_NAME OR APPLE)
+if (USE_ALTERNATIVE_NAME )
     set(GOLDENDICT "goldendict-ng")
 endif ()
+if (APPLE)
+    set(GOLDENDICT "GoldenDict")
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -210,8 +213,9 @@ if (APPLE)
     )
 
     set(Assembling_Dir "${CMAKE_BINARY_DIR}/redist")
-    set(App_Name "GoldenDict.app")
+    set(App_Name "${GOLDENDICT}.app")
     set(Redistributable_APP "${Assembling_Dir}/${App_Name}")
+    
     qt_generate_deploy_script(
             TARGET ${GOLDENDICT}
             OUTPUT_SCRIPT deploy_script
