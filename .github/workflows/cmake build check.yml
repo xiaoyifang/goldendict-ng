@@ -27,7 +27,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: 6.5.1
+          version: 6.6.3
           arch: gcc_64
           
           #serialport linuxdeploy need serialport to work.
