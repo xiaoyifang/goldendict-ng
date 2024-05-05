@@ -82,7 +82,7 @@ Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt rela
 
 ### macOS
 
-If you build in an IDE, then the created `goldendict-ng.app`  will be runnable from the IDE which set up necessary magics for you.
+If you build in an IDE, then the created `GoldenDict.app`  will be runnable from the IDE which set up necessary magics for you.
 
 To make the `.app` runnable elsewhere, you can run `cmake --install build_dir/` which will invoke macdeployqt, ad-hoc code signing and various other things. The produced app will end up in `build_dir/redist/goldendict-ng.app`
 
