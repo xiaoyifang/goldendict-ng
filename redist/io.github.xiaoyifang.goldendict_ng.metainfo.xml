@@ -42,4 +42,8 @@
   <provides>
     <id>org.goldendict_ng.desktop</id>
   </provides>
+  <releases>
+    <release version="24.05.05" date="2024-05-05" />
+    <release version="1.0.0" date="2010-12-03" />
+  </releases>
 </component>
