@@ -11,6 +11,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
       # - staged
     paths-ignore:
       - 'docs/**'
@@ -27,13 +28,13 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [ 6.6.1 ]
+        qt_ver: [ 6.6.3,6.7.0 ]
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 24.01.22
-      version-suffix: LoongYear
-      prerelease: false
+      version: 24.05.05
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'LiXia' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/setup-python@v3
         with:
@@ -47,7 +48,7 @@ jobs:
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
           
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -56,11 +57,11 @@ jobs:
         id: changelog
         shell: bash
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: "Build Changelog"
         id: build_changelog
@@ -188,7 +189,6 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}
 
       - name: upload pdb
         uses: svenstaro/upload-release-action@v2
@@ -200,8 +200,7 @@ jobs:
           tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
-          prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}          
+          prerelease: ${{env.prerelease}}          
 
       - name: copy nsis 
         shell: bash
@@ -227,7 +226,6 @@ jobs:
           overwrite: true 
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}
 
       - name: uploadRelease
         # if: startsWith(github.event.ref, 'refs/tags/')
@@ -241,15 +239,12 @@ jobs:
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}
           body: |
             #### Install instructions for Windows, macOS and Linux 
 
             <https://xiaoyifang.github.io/goldendict-ng/install/>.
 
             #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
-
-            Qt6.X is recommended for various enhancements.
 
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
@@ -263,8 +258,7 @@ jobs:
 
             #### Build Details
 
-            AppImage: Ubuntu-20.04
-            macOS: macOS-12 and macOS-13
+            macOS: macOS-12 (x86_64) and macOS-14 (Arm)
             Windows: Visual studio 2019
             based on: ${{github.ref_name}}
 

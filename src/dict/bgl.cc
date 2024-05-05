@@ -91,7 +91,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -175,7 +175,7 @@ DEF_EX( exChunkIndexOutOfRange, "Chunk index is out of range", Dictionary::Ex )
 class BglDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
 
@@ -809,7 +809,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 {
 
   QMutex & idxMutex;
-  File::Class & idx;
+  File::Index & idx;
   uint32_t resourceListOffset, resourcesCount;
   string name;
 
@@ -819,7 +819,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 public:
 
   BglResourceRequest( QMutex & idxMutex_,
-                      File::Class & idx_,
+                      File::Index & idx_,
                       uint32_t resourceListOffset_,
                       uint32_t resourcesCount_,
                       string const & name_ ):
@@ -953,12 +953,12 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
 class ResourceHandler: public Babylon::ResourceHandler
 {
-  File::Class & idxFile;
+  File::Index & idxFile;
   list< pair< string, uint32_t > > resources;
 
 public:
 
-  ResourceHandler( File::Class & idxFile_ ):
+  ResourceHandler( File::Index & idxFile_ ):
     idxFile( idxFile_ )
   {
   }
@@ -1048,7 +1048,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( b.title() );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 

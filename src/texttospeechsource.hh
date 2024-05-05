@@ -1,15 +1,16 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __TEXTTOSPEECHSOURCE_HH_INCLUDED__
-#define __TEXTTOSPEECHSOURCE_HH_INCLUDED__
+#pragma once
 
-#include "ui_texttospeechsource.h"
-#include "config.hh"
-#include "speechclient.hh"
+#ifndef NO_TTS_SUPPORT
 
-#include <QComboBox>
-#include <QStyledItemDelegate>
+  #include "ui_texttospeechsource.h"
+  #include "config.hh"
+  #include "speechclient.hh"
+
+  #include <QComboBox>
+  #include <QStyledItemDelegate>
 
 /// A model to be projected into the text to speech view, according to Qt's MVC model
 class VoiceEnginesModel: public QAbstractItemModel
@@ -116,4 +117,4 @@ private:
   void adjustSliders();
 };
 
-#endif // __TEXTTOSPEECHSOURCE_HH_INCLUDED__
+#endif

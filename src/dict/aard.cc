@@ -119,7 +119,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -214,10 +214,10 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
   QMutex aardMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
-  File::Class df;
+  File::Index df;
 
 public:
 
@@ -774,7 +774,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           }
         }
 
-        File::Class df( fileName, "rb" );
+        File::Index df( fileName, "rb" );
 
         AAR_header dictHeader;
 
@@ -839,7 +839,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictName );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 

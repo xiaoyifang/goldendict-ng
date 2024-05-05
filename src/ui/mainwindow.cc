@@ -636,7 +636,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, &MainTabWidget::doubleClicked, this, &MainWindow::addNewTab );
+  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, [ this ]( const int index ) {
+    if ( -1 == index ) { // empty space at tabbar clicked.
+      this->addNewTab();
+    }
+  } );
 
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
@@ -901,9 +905,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wasMaximized = isMaximized();
 
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
-
+#ifndef Q_OS_MACOS
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );
+#endif
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -1154,9 +1159,10 @@ MainWindow::~MainWindow()
   closeHeadwordsDialog();
 
   ftsIndexing.stopIndexing();
-
+#ifndef Q_OS_MACOS
   ui.centralWidget->ungrabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
   //  Gestures::unregisterRecognizers();
 
   // Close all tabs -- they should be destroyed before network managers
@@ -1635,9 +1641,7 @@ void MainWindow::updateGroupList()
 
   updateDictionaryBar();
 
-#ifdef QT_DEBUG
   qDebug() << "Reloading all the tabs...";
-#endif
 
   for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
     ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
@@ -1779,7 +1783,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
                                         groupInstances,
                                         false,
                                         cfg,
-                                        *ui.searchInPageAction,
                                         translateLine,
                                         dictionaryBar.toggleViewAction(),
                                         groupList );
@@ -1818,6 +1821,8 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
+
+  connect( ui.searchInPageAction, &QAction::triggered, view, &ArticleView::openSearch );
 
   view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
@@ -2272,7 +2277,7 @@ void MainWindow::editPreferences()
       ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
-
+      view.syncBackgroundColorWithCfgDarkReader();
       if ( needReload ) {
         view.reload();
       }
@@ -2422,7 +2427,10 @@ void MainWindow::translateInputFinished( bool checkModifiers )
   respondToTranslationRequest( word, checkModifiers );
 }
 
-void MainWindow::respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo )
+void MainWindow::respondToTranslationRequest( QString const & word,
+                                              bool checkModifiers,
+                                              QString const & scrollTo,
+                                              bool focus )
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
@@ -2436,7 +2444,9 @@ void MainWindow::respondToTranslationRequest( QString const & word, bool checkMo
         activateWindow();
     }
 
-    focusArticleView();
+    if ( focus ) {
+      focusArticleView();
+    }
   }
 }
 
@@ -3618,7 +3628,7 @@ void MainWindow::headwordReceived( const QString & word, const QString & ID )
 {
   toggleMainWindow( true );
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ) );
+  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ), false );
 }
 
 void MainWindow::updateFavoritesMenu()

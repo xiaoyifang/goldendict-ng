@@ -52,11 +52,12 @@ AudioService::~AudioService()
 void AudioService::playMemory( const char * ptr, int size )
 {
   emit cancelPlaying( false );
+  if ( !thread.isNull() ) {
+    thread->wait();
+  }
   QByteArray audioData( ptr, size );
-  thread = std::make_shared< DecoderThread >( audioData, this );
-  connect( this, &AudioService::cancelPlaying, thread.get(), [ this ]( bool waitFinished ) {
-    thread->cancel( waitFinished );
-  } );
+  thread.reset( new DecoderThread( audioData, this ) );
+  connect( this, &AudioService::cancelPlaying, thread.get(), &DecoderThread::cancel );
   thread->start();
 }
 
@@ -262,6 +263,11 @@ bool DecoderContext::openOutputDevice( QString & errorString )
     return false;
   }
   #endif
+
+  if ( audioOutput == nullptr ) {
+    errorString += QStringLiteral( "Failed to create audioOutput." );
+    return false;
+  }
 
   audioOutput->setAudioFormat( 44100, codecContext_->channels );
   return true;

@@ -2756,6 +2756,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>Taalvariant</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>

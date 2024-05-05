@@ -26,7 +26,7 @@ namespace {
 class MediaWikiDictionary: public Dictionary::Class
 {
   string name;
-  QString url, icon;
+  QString url, icon, lang;
   QNetworkAccessManager & netMgr;
   quint32 langId;
 
@@ -36,11 +36,13 @@ public:
                        string const & name_,
                        QString const & url_,
                        QString const & icon_,
+                       QString const & lang_,
                        QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
     name( name_ ),
     url( url_ ),
     icon( icon_ ),
+    lang( lang_ ),
     netMgr( netMgr_ ),
     langId( 0 )
   {
@@ -132,7 +134,7 @@ class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 
 public:
 
-  MediaWikiWordSearchRequest( wstring const &, QString const & url, QNetworkAccessManager & mgr );
+  MediaWikiWordSearchRequest( wstring const &, QString const & url, QString const & lang, QNetworkAccessManager & mgr );
 
   ~MediaWikiWordSearchRequest();
 
@@ -145,6 +147,7 @@ private:
 
 MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
                                                         QString const & url,
+                                                        QString const & lang,
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
@@ -154,6 +157,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
 
   Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
+  Utils::Url::addQueryItem( reqUrl, "lang", lang );
 
   QNetworkRequest req( reqUrl );
   //millseconds.
@@ -376,12 +380,14 @@ class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
   typedef std::list< std::pair< QNetworkReply *, bool > > NetReplies;
   NetReplies netReplies;
   QString url;
+  QString lang;
 
 public:
 
   MediaWikiArticleRequest( wstring const & word,
                            vector< wstring > const & alts,
                            QString const & url,
+                           QString const & lang,
                            QNetworkAccessManager & mgr,
                            Class * dictPtr_ );
 
@@ -425,9 +431,11 @@ void MediaWikiArticleRequest::cancel()
 MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
                                                   vector< wstring > const & alts,
                                                   QString const & url_,
+                                                  QString const & lang_,
                                                   QNetworkAccessManager & mgr,
                                                   Class * dictPtr_ ):
   url( url_ ),
+  lang( lang_ ),
   dictPtr( dictPtr_ )
 {
   connect( &mgr,
@@ -449,6 +457,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring con
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
 
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
+  Utils::Url::addQueryItem( reqUrl, "variant", lang );
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 3000 );
@@ -690,7 +699,7 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
     return std::make_shared< WordSearchRequestInstant >();
   }
   else
-    return std::make_shared< MediaWikiWordSearchRequest >( word, url, netMgr );
+    return std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
 }
 
 sptr< DataRequest >
@@ -703,7 +712,7 @@ MediaWikiDictionary::getArticle( wstring const & word, vector< wstring > const &
     return std::make_shared< DataRequestInstant >( false );
   }
   else
-    return std::make_shared< MediaWikiArticleRequest >( word, alts, url, netMgr, this );
+    return std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
 }
 
 } // namespace
@@ -720,6 +729,7 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
                                                                  wiki.name.toUtf8().data(),
                                                                  wiki.url,
                                                                  wiki.icon,
+                                                                 wiki.lang,
                                                                  mgr ) );
   }
 

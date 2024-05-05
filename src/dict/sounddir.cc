@@ -17,6 +17,7 @@
 #include <set>
 #include <QDir>
 #include <QFileInfo>
+#include <QDirIterator>
 
 namespace SoundDir {
 
@@ -52,7 +53,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -64,7 +65,7 @@ class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
   string name;
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
   QString iconFilename;
@@ -361,7 +362,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   // Now try loading that file
 
   try {
-    File::Class f( fileName.toStdString(), "rb" );
+    File::Index f( fileName.toStdString(), "rb" );
 
     sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -438,14 +439,31 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    // Check if the soundDir and its subdirs' modification date changed, that means the user modified the sound files inside
+
+    bool soundDirModified = false;
+    {
+      QDateTime indexFileModifyTime = QFileInfo( QString::fromStdString( indexFile ) ).lastModified();
+      QDirIterator it( dir.path(),
+                       QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
+                       QDirIterator::Subdirectories );
+      while ( it.hasNext() ) {
+        it.next();
+        if ( it.fileInfo().lastModified() > indexFileModifyTime ) {
+          soundDirModified = true;
+          break;
+        }
+      }
+    }
+
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) || soundDirModified ) {
       // Building the index
 
       qDebug() << "Sounds: Building the index for directory: " << soundDir.path;
 
       initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
-      File::Class idx( indexFile, "wb" );
+      File::Index idx( indexFile, "wb" );
 
       IdxHeader idxHeader;
 

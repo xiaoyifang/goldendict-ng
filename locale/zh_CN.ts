@@ -274,7 +274,7 @@
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>声音文件 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
+      <translation>音频文件 (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;所有文件 (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>在系统查看器中打开图像...</translation>
+      <translation>在系统图像查看器中打开...</translation>
     </message>
   </context>
   <context>
@@ -631,7 +631,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>启用全文搜索</translation>
+      <translation>全文搜索已启用</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
@@ -2755,6 +2755,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Icon</source>
       <translation>图标</translation>
     </message>
+    <message>
+      <source>Language Variant</source>
+      <translation>语言变体</translation>
+    </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
@@ -3573,7 +3577,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>当未找到字典指定的字体时，将应用这些字体。</translation>
+      <translation>当未找到字典指定的字体时，将应用所选字体。</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
@@ -3589,7 +3593,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>使用剪贴板时，删除换行符后的所有内容</translation>
+      <translation>粘贴文本时删除换行符后的所有内容</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
@@ -3745,7 +3749,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation>强制在 scanpopup 中翻译单词</translation>
+      <translation>强制在取词弹窗中翻译单词</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
@@ -4001,7 +4005,7 @@ based on English phonology</source>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>这只适用于搜索的时候，每行代表一个音译转写，分号分隔。 例如，ae;æ，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
+      <translation>只适用于搜索时。换行以分隔不同转写，使用分号以分隔源文本和转写文本。 例如，ae;æ。此时，用户可以在目标单词中输入 ae 代替实际要输入的 æ。</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>

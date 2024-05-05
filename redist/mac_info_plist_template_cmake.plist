@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>@GOLDENDICT@</string>
+	<key>CFBundleIconFile</key>
+	<string>macicon.icns</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>@CMAKE_PROJECT_VERSION@</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.xiaoyifang</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+</dict>
+</plist>

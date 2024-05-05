@@ -23,39 +23,39 @@
 
 #include "zim.h"
 #include "blob.h"
+#include "entry.h"
 #include <string>
 
-namespace zim {
-class Dirent;
-class FileImpl;
-
-/**
+namespace zim
+{
+  /**
    * An `Item` in an `Archive`
+   *
+   * There is no public constructor - the only way to obtain an `Item`
+   * is via `Entry::getItem()` or `Entry::getRedirect()`.
    *
    * All `Item`'s methods are threadsafe.
    */
-class LIBZIM_API Item
-{
-public: // types
-  typedef std::pair< std::string, offset_type > DirectAccessInfo;
+  class LIBZIM_API Item : private Entry
+  {
+    public: // types
+      typedef std::pair<std::string, offset_type> DirectAccessInfo;
 
-public: // functions
-  explicit Item( std::shared_ptr< FileImpl > file_, entry_index_type idx_ );
+    public: // functions
+      std::string getTitle() const { return Entry::getTitle(); }
+      std::string getPath() const  { return Entry::getPath(); }
+      std::string getMimetype() const;
 
-  std::string getTitle() const;
-  std::string getPath() const;
-  std::string getMimetype() const;
-
-  /** Get the data associated to the item
+      /** Get the data associated to the item
        *
        * Get the data of the item, starting at offset.
        *
        * @param offset The number of byte to skip at begining of the data.
        * @return A blob corresponding to the data.
        */
-  Blob getData( offset_type offset = 0 ) const;
+      Blob getData(offset_type offset=0) const;
 
-  /** Get the data associated to the item
+      /** Get the data associated to the item
        *
        * Get the `size` bytes of data of the item, starting at offset.
        *
@@ -63,15 +63,15 @@ public: // functions
        * @param size The number of byte to read.
        * @return A blob corresponding to the data.
        */
-  Blob getData( offset_type offset, size_type size ) const;
+      Blob getData(offset_type offset, size_type size) const;
 
-  /** The size of the item.
+      /** The size of the item.
        *
        * @return The size (in byte) of the item.
        */
-  size_type getSize() const;
+      size_type getSize() const;
 
-  /** Direct access information.
+      /** Direct access information.
        *
        * Some item are stored raw in the zim file.
        * If possible, this function give information about which file
@@ -84,23 +84,20 @@ public: // functions
        *         If it is not possible to have direct access for this item,
        *         return a pair of `{"", 0}`
        */
-  DirectAccessInfo getDirectAccessInformation() const;
+      DirectAccessInfo getDirectAccessInformation() const;
 
-  entry_index_type getIndex() const
-  {
-    return m_idx;
-  }
+      entry_index_type getIndex() const   { return Entry::getIndex(); }
 
 #ifdef ZIM_PRIVATE
-  cluster_index_type getClusterIndex() const;
+      cluster_index_type getClusterIndex() const;
 #endif
 
-private: // data
-  std::shared_ptr< FileImpl > m_file;
-  entry_index_type m_idx;
-  std::shared_ptr< const Dirent > m_dirent;
-};
+    private: // functions
+      explicit Item(const Entry& entry);
+      friend class Entry;
+  };
 
-} // namespace zim
+}
 
 #endif // ZIM_ITEM_H
+

@@ -3,7 +3,7 @@
 
 #include "config.hh"
 #include "folding.hh"
-#include <QDir>
+#include <QSaveFile>
 #include <QFile>
 #include <QtXml>
 #include <QApplication>
@@ -16,8 +16,6 @@
 #endif
 
 #include <stdint.h>
-
-#include "atomic_rename.hh"
 
 #include <QStandardPaths>
 
@@ -354,6 +352,30 @@ MediaWikis makeDefaultMediaWikis( bool enable )
     MediaWiki( "f3b4ec8531e52ddf5b10d21e4577a7a2", "Greek Wikipedia", "https://el.wikipedia.org/w", false, "" ) );
   mw.push_back(
     MediaWiki( "5d45232075d06e002dea72fe3e137da1", "Greek Wiktionary", "https://el.wiktionary.org/w", false, "" ) );
+  mw.push_back( MediaWiki( "c015d60c4949ad75b5b7069c2ff6dc2c",
+                           "Traditional Chinese Wikipedia",
+                           "https://zh.wikipedia.org/w",
+                           false,
+                           "",
+                           "zh-hant" ) );
+  mw.push_back( MediaWiki( "d50828ad6e115bc9d3421b6821543108",
+                           "Traditional Chinese Wiktionary",
+                           "https://zh.wiktionary.org/w",
+                           false,
+                           "",
+                           "zh-hant" ) );
+  mw.push_back( MediaWiki( "438b17b48cbda1a22d317fea37ec3110",
+                           "Simplified Chinese Wikipedia",
+                           "https://zh.wikipedia.org/w",
+                           false,
+                           "",
+                           "zh-hans" ) );
+  mw.push_back( MediaWiki( "b68b9fb71b5a8c766cc7a5ea8237fc6b",
+                           "Simplified Chinese Wiktionary",
+                           "https://zh.wiktionary.org/w",
+                           false,
+                           "",
+                           "zh-hans" ) );
 
   return mw;
 }
@@ -608,6 +630,11 @@ Class load()
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
   }
 
+  if ( Config::isPortableVersion() && c.paths.empty() ) {
+    // For portable version, hardcode some settings
+    c.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
+  }
+
   QDomNode soundDirs = root.namedItem( "sounddirs" );
 
   if ( !soundDirs.isNull() ) {
@@ -760,6 +787,7 @@ Class load()
       w.url     = mw.attribute( "url" );
       w.enabled = ( mw.attribute( "enabled" ) == "1" );
       w.icon    = mw.attribute( "icon" );
+      w.lang    = mw.attribute( "lang" );
 
       c.mediawikis.push_back( w );
     }
@@ -820,7 +848,7 @@ Class load()
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
-
+#ifndef NO_TTS_SUPPORT
   QDomNode ves = root.namedItem( "voiceEngines" );
 
   if ( !ves.isNull() ) {
@@ -847,6 +875,7 @@ Class load()
       c.voiceEngines.push_back( v );
     }
   }
+#endif
 
   c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
@@ -1279,7 +1308,7 @@ void saveGroup( Group const & data, QDomElement & group )
 
 void save( Class const & c )
 {
-  QFile configFile( getConfigFileName() + ".tmp" );
+  QSaveFile configFile( getConfigFileName() );
 
   if ( !configFile.open( QFile::WriteOnly ) )
     throw exCantWriteConfigFile();
@@ -1527,6 +1556,10 @@ void save( Class const & c )
       QDomAttr icon = dd.createAttribute( "icon" );
       icon.setValue( mediawiki.icon );
       mw.setAttributeNode( icon );
+
+      QDomAttr lang = dd.createAttribute( "lang" );
+      lang.setValue( mediawiki.lang );
+      mw.setAttributeNode( lang );
     }
   }
 
@@ -1635,7 +1668,7 @@ void save( Class const & c )
       p.setAttributeNode( icon );
     }
   }
-
+#ifndef NO_TTS_SUPPORT
   {
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
@@ -1677,6 +1710,7 @@ void save( Class const & c )
       v.setAttributeNode( rate );
     }
   }
+#endif
 
   {
     QDomElement muted = dd.createElement( "mutedDictionaries" );
@@ -2197,14 +2231,9 @@ void save( Class const & c )
     hd.appendChild( opt );
   }
 
-  QByteArray result( dd.toByteArray() );
-
-  if ( configFile.write( result ) != result.size() )
+  configFile.write( dd.toByteArray() );
+  if ( !configFile.commit() )
     throw exCantWriteConfigFile();
-
-  configFile.close();
-
-  renameAtomically( configFile.fileName(), getConfigFileName() );
 }
 
 QString getConfigFileName()

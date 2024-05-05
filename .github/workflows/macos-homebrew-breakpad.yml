@@ -26,12 +26,12 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 24.01.22
-      version-suffix: LoongYear
-      prerelease: false
+      version: 24.02.16
+      version-suffix: alpha
+      prerelease: true
     steps:
                
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -123,12 +123,12 @@ jobs:
       - name: changelog
         id: changelog
         run: |   
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
           echo "previousTag : $previousTag"
           
 
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)" >> $GITHUB_OUTPUT
+          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
 
       - name: Set outputs
         id: vars
@@ -191,7 +191,6 @@ jobs:
           overwrite: true
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
-          target_commit: ${{github.ref}}
           body: |
             #### Install instructions for Windows, macOS and Linux 
 
@@ -213,10 +212,10 @@ jobs:
 
             #### Build Details
 
-            AppImage: Ubuntu-20.04
+            Flatpak
             macOS: macOS-12 and macOS-13
             Windows: Visual studio 2019
-            based on: ${{github.ref}}
+            based on: ${{github.ref_name}}
 
 
 

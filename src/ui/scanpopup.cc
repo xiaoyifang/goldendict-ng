@@ -85,8 +85,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 {
   ui.setupUi( this );
 
-  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
-
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
@@ -104,7 +102,6 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 groups,
                                 true,
                                 cfg,
-                                openSearchAction,
                                 ui.translateBox->translateLine(),
                                 dictionaryBar.toggleViewAction() );
 
@@ -113,6 +110,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+
+  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
   wordListDefaultFont      = ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();
@@ -251,8 +251,10 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.goBackButton->setEnabled( false );
   ui.goForwardButton->setEnabled( false );
 
+#ifndef Q_OS_MACOS
   grabGesture( Gestures::GDPinchGestureType );
   grabGesture( Gestures::GDSwipeGestureType );
+#endif
 
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
@@ -291,6 +293,8 @@ void ScanPopup::refresh()
 
   updateDictionaryBar();
 
+  definition->syncBackgroundColorWithCfgDarkReader();
+
   connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef HAVE_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
@@ -301,9 +305,10 @@ void ScanPopup::refresh()
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
-
+#ifndef Q_OS_MACOS
   ungrabGesture( Gestures::GDPinchGestureType );
   ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
 }
 
 void ScanPopup::saveConfigData() const

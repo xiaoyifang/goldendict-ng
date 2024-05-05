@@ -1,10 +1,11 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+#ifndef NO_TTS_SUPPORT
 
-#include "texttospeechsource.hh"
-#include <QVariant>
-#include <QMessageBox>
-#include <memory>
+  #include "texttospeechsource.hh"
+  #include <QVariant>
+  #include <QMessageBox>
+  #include <memory>
 
 TextToSpeechSource::TextToSpeechSource( QWidget * parent, Config::VoiceEngines voiceEngines ):
   QWidget( parent ),
@@ -431,3 +432,5 @@ void VoiceEngineItemDelegate::setModelData( QWidget * uncastedEditor,
   model->setData( engineIdIndex, editor->engineId() );
   model->setData( engineNameIndex, editor->engineName() );
 }
+
+#endif

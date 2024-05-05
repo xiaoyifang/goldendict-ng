@@ -98,7 +98,7 @@ __attribute__( ( packed ) )
 // Some supporting functions
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -162,7 +162,7 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
   QMutex zimMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ZimFile df;
   set< quint32 > articlesIndexedForFTS;
@@ -842,7 +842,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           initializing.indexingDictionary( firstName.mid( n + 1 ).toUtf8().constData() );
         }
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
         idxHeader.namePtr        = 0xFFFFFFFF;

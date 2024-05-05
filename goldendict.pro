@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 24.01.22
+VERSION = 24.05.05
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -133,7 +133,7 @@ win32 {
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
-        VERSION = 24.01.22 
+        VERSION = 25.05.05
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
@@ -290,7 +290,6 @@ HEADERS += \
     src/audioplayerinterface.hh \
     src/btreeidx.hh \
     src/chunkedstorage.hh \
-    src/common/atomic_rename.hh \
     src/common/base_type.hh \
     src/common/ex.hh \
     src/common/file.hh \
@@ -419,7 +418,6 @@ SOURCES += \
     src/audioplayerfactory.cc \
     src/btreeidx.cc \
     src/chunkedstorage.cc \
-    src/common/atomic_rename.cc \
     src/common/file.cc \
     src/common/filetype.cc \
     src/common/folding.cc \
@@ -533,9 +531,14 @@ SOURCES += \
 
 #speech to text
 SOURCES += src/speechclient.cc \
-           src/texttospeechsource.cc
+          src/texttospeechsource.cc
 HEADERS += src/texttospeechsource.hh \
-           src/speechclient.hh
+          src/speechclient.hh
+          
+CONFIG( no_tts_support ) {
+  DEFINES += NO_TTS_SUPPORT
+}
+
 
 mac {
     HEADERS += src/macos/macmouseover.hh \

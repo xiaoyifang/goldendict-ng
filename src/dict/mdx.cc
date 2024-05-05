@@ -154,7 +154,7 @@ public:
     if ( links.empty() )
       return false;
 
-    MdictParser::RecordInfo indexEntry;
+    MdictParser::RecordInfo indexEntry{};
     vector< char > chunk;
     // QMutexLocker _( &idxMutex );
     const char * indexEntryPtr = chunks.getBlock( links[ 0 ].articleOffset, chunk );
@@ -191,7 +191,7 @@ public:
 class MdxDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   string idxFileName;
   IdxHeader idxHeader;
   string encoding;
@@ -1152,7 +1152,7 @@ void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char
     File::loadFromFile( fn, data );
     return;
   }
-  for ( auto mddResource : mddResources ) {
+  for ( const auto& mddResource : mddResources ) {
     if ( mddResource->loadFile( newResourceName, data ) )
       break;
   }
@@ -1220,7 +1220,7 @@ private:
 
 static bool indexIsOldOrBad( vector< string > const & dictFiles, string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
   IdxHeader header;
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
@@ -1296,7 +1296,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
       }
 
-      File::Class idx( indexFile, "wb" );
+      File::Index idx( indexFile, "wb" );
       IdxHeader idxHeader;
       memset( &idxHeader, 0, sizeof( idxHeader ) );
       // We write a dummy header first. At the end of the process the header

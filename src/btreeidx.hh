@@ -82,7 +82,7 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( IndexInfo const &, File::Class &, QMutex & );
+  void openIndex( IndexInfo const &, File::Index &, QMutex & );
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
@@ -140,7 +140,7 @@ protected:
 protected:
 
   QMutex * idxFileMutex;
-  File::Class * idxFile;
+  File::Index * idxFile;
 
 private:
 
@@ -276,7 +276,7 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
 /// position.
-IndexInfo buildIndex( IndexedWords const &, File::Class & file );
+IndexInfo buildIndex( IndexedWords const &, File::Index & file );
 
 } // namespace BtreeIndexing
 

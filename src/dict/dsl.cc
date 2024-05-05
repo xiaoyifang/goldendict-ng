@@ -131,7 +131,7 @@ struct InsidedCard
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -143,7 +143,7 @@ bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 class DslDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
   string preferredSoundDictionary;
@@ -1718,7 +1718,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           gdDebug( "Dsl: Building the index for dictionary: %s\n",
                    QString::fromStdU32String( scanner.getDictionaryName() ).toUtf8().data() );
 
-          File::Class idx( indexFile, "wb" );
+          File::Index idx( indexFile, "wb" );
 
           IdxHeader idxHeader;
 
@@ -1887,9 +1887,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( isDslWs( curString[ 0 ] ) )
                 break; // No more headwords
 
-#ifdef QT_DEBUG
-              qDebug() << "Alt headword" << QString::fromStdU32String( curString );
-#endif
+              qDebug() << "dsl Alt headword" << QString::fromStdU32String( curString );
 
               processUnsortedParts( curString, true );
               expandTildes( curString, allEntryWords.front() );

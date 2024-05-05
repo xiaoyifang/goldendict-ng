@@ -14,7 +14,7 @@ enum {
   ChunkMaxSize = 65536 // Can't be more since it would overflow the address
 };
 
-Writer::Writer( File::Class & f ):
+Writer::Writer( File::Index & f ):
   file( f ),
   chunkStarted( false ),
   bufferUsed( 0 )
@@ -115,7 +115,7 @@ uint32_t Writer::finish()
   return offset;
 }
 
-Reader::Reader( File::Class & f, uint32_t offset ):
+Reader::Reader( File::Index & f, uint32_t offset ):
   file( f )
 {
   file.seek( offset );

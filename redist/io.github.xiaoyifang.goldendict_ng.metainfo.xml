@@ -5,6 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>GoldenDict-ng</name>
+  <developer_name>The GoldenDict-ng Community</developer_name>
   <summary>Advanced dictionary lookup program</summary>
   <categories>
     <category>Education</category>
@@ -41,4 +42,8 @@
   <provides>
     <id>org.goldendict_ng.desktop</id>
   </provides>
+  <releases>
+    <release version="24.05.05" date="2024-05-05" />
+    <release version="1.0.0" date="2010-12-03" />
+  </releases>
 </component>

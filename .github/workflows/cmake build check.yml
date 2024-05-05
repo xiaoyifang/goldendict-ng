@@ -8,6 +8,7 @@ on:
     branches:
       - dev
       - master
+      - experimental
       - staged
     paths-ignore:
       - 'docs/**'
@@ -26,7 +27,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: 6.5.1
+          version: 6.6.3
           arch: gcc_64
           
           #serialport linuxdeploy need serialport to work.
@@ -50,7 +51,7 @@ jobs:
           sudo make install
           cd ..
           sudo apt-get install libzim-dev
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: false
@@ -77,7 +78,7 @@ jobs:
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
           setup-python: 'false'
       - uses: ilammy/msvc-dev-cmd@v1
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true
@@ -103,7 +104,7 @@ jobs:
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
           setup-python: 'false'
       - uses: ilammy/msvc-dev-cmd@v1
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: false
