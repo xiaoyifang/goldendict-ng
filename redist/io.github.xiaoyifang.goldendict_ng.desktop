@@ -12,3 +12,4 @@ Keywords[zh_CN]=dict;dictionary;字典;
 Icon=goldendict
 Exec=goldendict %u
 MimeType=x-scheme-handler/goldendict;x-scheme-handler/dict;
+StartupWMClass=goldendict
