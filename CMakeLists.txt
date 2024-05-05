@@ -210,7 +210,8 @@ if (APPLE)
     )
 
     set(Assembling_Dir "${CMAKE_BINARY_DIR}/redist")
-    set(Redistributable_APP "${Assembling_Dir}/${GOLDENDICT}.app")
+    set(App_Name "GoldenDict.app")
+    set(Redistributable_APP "${Assembling_Dir}/${App_Name}")
     qt_generate_deploy_script(
             TARGET ${GOLDENDICT}
             OUTPUT_SCRIPT deploy_script
@@ -237,9 +238,9 @@ if (APPLE)
             --format \"ULMO\"
             --volname ${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR} \
             --volicon ${CMAKE_SOURCE_DIR}/icons/macicon.icns \
-            --icon \"goldendict-ng.app\" 100 100
+            --icon \"${App_Name}\" 100 100
             --app-drop-link 300 100 \
-            \"${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
+            \"GoldenDict-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
             \"${Assembling_Dir}\")"
         )
     else ()
