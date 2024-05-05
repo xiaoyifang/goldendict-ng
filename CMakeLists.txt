@@ -29,7 +29,7 @@ if (USE_ALTERNATIVE_NAME )
     set(GOLDENDICT "goldendict-ng")
 endif ()
 if (APPLE)
-    set(GOLDENDICT "GoldenDict")
+    set(GOLDENDICT "GoldenDict-ng")
 endif()
 
 set(CMAKE_CXX_STANDARD 17)
