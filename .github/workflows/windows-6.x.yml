@@ -32,7 +32,7 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 24.02.16
+      version: 24.05.05
       version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'LiXia' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
