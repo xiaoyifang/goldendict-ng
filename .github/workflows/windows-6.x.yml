@@ -32,8 +32,8 @@ jobs:
         qt_arch: [win64_msvc2019_64]
     env:
       targetName: GoldenDict.exe
-      version: 24.05.05
-      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'LiXia' }}
+      version: 24.05.13
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/setup-python@v3

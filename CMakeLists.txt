@@ -21,7 +21,7 @@ option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 24.05.05
+        VERSION 24.05.13
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
