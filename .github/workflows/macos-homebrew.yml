@@ -73,7 +73,7 @@ jobs:
       - name: compile
         run: |
           mkdir build_dir
-          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=Release -D-DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
+          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
           cmake --build build_dir
           
       - name: package
