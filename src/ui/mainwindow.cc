@@ -1305,9 +1305,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 #ifdef Q_OS_WIN32
   if ( darkMode ) {
   //https://forum.qt.io/topic/101391/windows-10-dark-theme
-  #ifdef Q_OS_WIN32
-    qApp->setStyle( QStyleFactory::create( "Fusion" ) );
-  #endif
+
     QPalette darkPalette;
     QColor darkColor     = QColor( 45, 45, 45 );
     QColor disabledColor = QColor( 127, 127, 127 );
@@ -1334,7 +1332,6 @@ void MainWindow::updateAppearances( QString const & addonStyle,
     qApp->setPalette( darkPalette );
   }
   else {
-    qApp->setStyle( new QProxyStyle() );
     qApp->setPalette( QPalette() );
   }
 #endif
