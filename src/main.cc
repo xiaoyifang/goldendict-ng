@@ -352,7 +352,7 @@ int main( int argc, char ** argv )
     freopen( "CON", "w", stderr );
   }
 
-  qputenv( "QT_QPA_PLATFORM","windows:darkmode=1" );
+  qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
 
 #endif
 
