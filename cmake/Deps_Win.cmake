@@ -1,8 +1,3 @@
-target_compile_definitions(${GOLDENDICT} PUBLIC
-        __WIN32
-        INCLUDE_LIBRARY_PATH # temporal hack to let singleapplication compile
-        )
-
 target_include_directories(${GOLDENDICT} PUBLIC
         ${CMAKE_SOURCE_DIR}/winlibs/include/
         )

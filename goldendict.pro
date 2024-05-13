@@ -166,7 +166,7 @@ win32 {
     }
 
     RC_ICONS += icons/programicon.ico icons/programicon_old.ico
-    INCLUDEPATH += winlibs/include
+    INCLUDEPATH += winlibs/include src/windows
 
     # Enable console in Debug mode on Windows, with useful logging messages
     Debug:CONFIG += console
