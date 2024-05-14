@@ -31,6 +31,7 @@
 
 #include "gddebug.hh"
 #include <QMutex>
+#include <QStyleFactory>
 
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
@@ -351,6 +352,8 @@ int main( int argc, char ** argv )
     freopen( "CON", "w", stderr );
   }
 
+  qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
+
 #endif
 
 
@@ -367,6 +370,12 @@ int main( int argc, char ** argv )
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+
+#ifdef Q_OS_WIN
+  // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
+  QHotkeyApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+#endif
+
 
 #if defined( USE_BREAKPAD )
   QString appDirPath = Config::getConfigDir() + "crash";

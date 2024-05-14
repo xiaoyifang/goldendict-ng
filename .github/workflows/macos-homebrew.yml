@@ -27,9 +27,9 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 24.02.16
-      version-suffix: alpha
-      prerelease: true
+      version: 24.05.13
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,7 +73,7 @@ jobs:
       - name: compile
         run: |
           mkdir build_dir
-          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
           cmake --build build_dir
           
       - name: package
@@ -81,12 +81,23 @@ jobs:
           cmake --install build_dir/
       - name: changelog
         id: changelog
+        env:
+          prerelease: ${{env.prerelease}}
         run: |
-          previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
-          echo "previousTag : $previousTag"
-          
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+          fi
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "curr_tag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)" >> $GITHUB_OUTPUT
+          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+          echo "currentTag : $currentTag"
 
       - name: Set outputs
         id: vars
@@ -155,8 +166,6 @@ jobs:
 
             #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
 
-            Qt6.X is recommended for various enhancements.
-
             Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
             The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
 
@@ -169,12 +178,9 @@ jobs:
 
             #### Build Details
 
-            Flatpak
-            macOS: macOS-12 and macOS-13
+            macOS: macOS-12 (x86_64) and macOS-14 (Arm)
             Windows: Visual studio 2019
             based on: ${{github.ref_name}}
-
-
 
             #### Changes
             
