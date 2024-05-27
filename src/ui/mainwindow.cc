@@ -1386,12 +1386,11 @@ void MainWindow::TrayIconUpdateOrInit()
         qDebug() << "Tray icon failed to disconnect signals.";
       };
       connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
-
     }
     // Update the icon to reflect the scanning mode
     trayIcon->setIcon( enableScanningAction->isChecked() ?
-      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
-      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
+                         QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
+                         QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
   }
 
   // The 'Close to tray' action is associated with the tray icon, so we hide
