@@ -597,21 +597,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.historyPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateHistoryMenu );
   connect( ui.showHideHistory, &QAction::triggered, this, &MainWindow::toggle_historyPane );
 
-
-#if !defined( HAVE_X11 )
-  // Show tray icon early so the user would be happy. It won't be functional
-  // though until the program inits fully.
-  // Do not create dummy tray icon in X. Cause QT5 failed to upgrade systemtray context menu.
-  // And as result menu for some DEs apppear to be empty, for example in MATE DE.
-
-  if ( cfg.preferences.enableTrayIcon ) {
-    trayIcon =
-      new QSystemTrayIcon( QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ), this );
-    trayIcon->setToolTip( tr( "Loading..." ) );
-    trayIcon->show();
-  }
-#endif
-
   connect( navBack, &QAction::triggered, this, &MainWindow::backClicked );
   connect( navForward, &QAction::triggered, this, &MainWindow::forwardClicked );
 
@@ -852,7 +837,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
     installHotKeys();
-    updateTrayIcon();
+    TrayIconUpdateOrInit();
   } );
 
   if ( cfg.preferences.startWithScanPopupOn ) {
@@ -862,16 +847,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
-  if ( trayIcon ) {
-    // Upgrade existing dummy tray icon into a full-functional one
-
-    trayIcon->setContextMenu( &trayIconMenu );
-    trayIcon->show();
-
-    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
-  }
-
-  updateTrayIcon();
+  TrayIconUpdateOrInit();
 
   // Update zoomers
   adjustCurrentZoomFactor();
@@ -1391,30 +1367,31 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 }
 
-void MainWindow::updateTrayIcon()
+void MainWindow::TrayIconUpdateOrInit()
 {
-  if ( !trayIcon && cfg.preferences.enableTrayIcon ) {
-    // Need to show it
-    trayIcon =
-      new QSystemTrayIcon( QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ), this );
-    trayIcon->setContextMenu( &trayIconMenu );
-    trayIcon->show();
-
-    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
+  if ( !cfg.preferences.enableTrayIcon ) {
+    if ( trayIcon ) {
+      delete trayIcon;
+      trayIcon = nullptr;
+    }
   }
-  else if ( trayIcon && !cfg.preferences.enableTrayIcon ) {
-    // Need to hide it
-    delete trayIcon;
+  else {
+    if ( !trayIcon ) {
+      trayIcon =
+        new QSystemTrayIcon( QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ), this );
+      trayIcon->setContextMenu( &trayIconMenu );
+      trayIcon->show();
 
-    trayIcon = nullptr;
-  }
-  if ( trayIcon ) {
+      if ( !trayIcon->disconnect() ) {
+        qDebug() << "Tray icon failed to disconnect signals.";
+      };
+      connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
+
+    }
     // Update the icon to reflect the scanning mode
     trayIcon->setIcon( enableScanningAction->isChecked() ?
-                         QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
-                         QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
-
-    trayIcon->setToolTip( "GoldenDict-ng" );
+      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
+      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
   }
 
   // The 'Close to tray' action is associated with the tray icon, so we hide
@@ -2282,7 +2259,7 @@ void MainWindow::editPreferences()
 
     audioPlayerFactory.setPreferences( cfg.preferences );
 
-    updateTrayIcon();
+    TrayIconUpdateOrInit();
     applyProxySettings();
 
     ui.tabWidget->setHideSingleTab( cfg.preferences.hideSingleTab );
