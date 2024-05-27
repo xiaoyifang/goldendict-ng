@@ -1377,14 +1377,13 @@ void MainWindow::TrayIconUpdateOrInit()
   }
   else {
     if ( !trayIcon ) {
-      trayIcon =
-        new QSystemTrayIcon( QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ), this );
+      trayIcon = new QSystemTrayIcon( this );
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->show();
       connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
     }
-    // Update the icon to reflect the scanning mode
+    // Init or Update the icon to reflect the scanning mode
     trayIcon->setIcon( enableScanningAction->isChecked() ?
                          QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
                          QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
