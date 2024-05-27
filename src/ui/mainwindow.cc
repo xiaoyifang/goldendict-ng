@@ -1380,13 +1380,13 @@ void MainWindow::TrayIconUpdateOrInit()
       trayIcon = new QSystemTrayIcon( this );
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
-      trayIcon->show();
       connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
     }
-    // Init or Update the icon to reflect the scanning mode
+    // Update the icon to reflect the scanning mode
     trayIcon->setIcon( enableScanningAction->isChecked() ?
                          QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
                          QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
+    trayIcon->show();
   }
 
   // The 'Close to tray' action is associated with the tray icon, so we hide
