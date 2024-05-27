@@ -1382,10 +1382,6 @@ void MainWindow::TrayIconUpdateOrInit()
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->show();
-
-      if ( !trayIcon->disconnect() ) {
-        qDebug() << "Tray icon failed to disconnect signals.";
-      };
       connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
     }
     // Update the icon to reflect the scanning mode
