@@ -1380,6 +1380,7 @@ void MainWindow::TrayIconUpdateOrInit()
       trayIcon =
         new QSystemTrayIcon( QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ), this );
       trayIcon->setContextMenu( &trayIconMenu );
+      trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->show();
 
       if ( !trayIcon->disconnect() ) {
