@@ -38,6 +38,7 @@ public:
   static QRegularExpression closeScriptTagRe;
   static QRegularExpression srcRe;
   static QRegularExpression srcRe2;
+  static QRegularExpression srcSetRe;
 
   static QRegularExpression links;
   static QRegularExpression fontFace;

@@ -978,6 +978,36 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         else
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
+
+      // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x">
+      // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x, bres://{id}/b-2x.png 2x">
+
+      if ( linkType.compare( "img" ) == 0 ) {
+        static auto whitespace = QRegularExpression( "\\s+" );
+        // ! abnormal code: this operates on newLink instead of LinkTxt like above
+        match = RX::Mdx::srcSetRe.match( newLink );
+        if ( match.hasMatch() ) {
+          auto srcSetText = match.captured( 3 );
+          auto ImageList  = srcSetText.split( u',', Qt::SkipEmptyParts );
+
+          auto replacedText = match.captured( 1 ) + match.captured( 2 );
+
+          for ( auto & img : ImageList ) {
+            auto imgPair = img.split( whitespace );
+            if ( imgPair.length() != 2 ) {
+              // dict error for example srct="a.png 1x 200px;"
+              break;
+            }
+            replacedText.append(
+              QStringLiteral( "bres://" ) % id % "/" % imgPair.at( 0 ) % QStringLiteral( " " ) % imgPair.at( 1 ) %
+              QStringLiteral( "," ) );
+          }
+
+          replacedText.append( match.captured( 2 ) );
+          newLink.replace( match.capturedStart(), match.capturedLength(), replacedText );
+
+        }
+      }
     }
 
     if ( !newLink.isEmpty() ) {
