@@ -979,33 +979,33 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
 
-      // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x">
-      // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x, bres://{id}/b-2x.png 2x">
+      // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x, c.png">
+      // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x,bres://{id}/b-2x.png 2x,bres://{id}/c.png">
 
       if ( linkType.compare( "img" ) == 0 ) {
-        static auto whitespace = QRegularExpression( "\\s+" );
-        // ! abnormal code: this operates on newLink instead of LinkTxt like above
-        match = RX::Mdx::srcSetRe.match( newLink );
+        match = RX::Mdx::srcset.match( newLink ); // have to use newLink since linkTxt may already be modified
         if ( match.hasMatch() ) {
-          auto srcSetText = match.captured( 3 );
-          auto ImageList  = srcSetText.split( u',', Qt::SkipEmptyParts );
+          auto srcsetOriginalText   = match.captured( "text" );
+          QStringList srcsetNewText = {};
 
-          auto replacedText = match.captured( 1 ) + match.captured( 2 );
+          auto ImageList = srcsetOriginalText.split( u',', Qt::SkipEmptyParts );
 
           for ( auto & img : ImageList ) {
-            auto imgPair = img.split( whitespace );
-            if ( imgPair.length() != 2 ) {
-              // dict error for example srct="a.png 1x 200px;"
-              break;
+            auto imgPair = img.split( RX::whiteSpace );
+
+            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "://" ) ) {
+              if ( imgPair.length() == 1 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
+              }
+              else if ( imgPair.length() == 2 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2 %3)" ).arg( id, imgPair.at( 0 ), imgPair.at( 1 ) ) );
+              }
             }
-            replacedText.append(
-              QStringLiteral( "bres://" ) % id % "/" % imgPair.at( 0 ) % QStringLiteral( " " ) % imgPair.at( 1 ) %
-              QStringLiteral( "," ) );
           }
 
-          replacedText.append( match.captured( 2 ) );
-          newLink.replace( match.capturedStart(), match.capturedLength(), replacedText );
-
+          newLink.replace( match.capturedStart(),
+                           match.capturedLength(),
+                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
         }
       }
     }
