@@ -837,7 +837,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
     installHotKeys();
-    TrayIconUpdateOrInit();
+    trayIconUpdateOrInit();
   } );
 
   if ( cfg.preferences.startWithScanPopupOn ) {
@@ -847,7 +847,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
-  TrayIconUpdateOrInit();
+  trayIconUpdateOrInit();
 
   // Update zoomers
   adjustCurrentZoomFactor();
@@ -1367,7 +1367,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 }
 
-void MainWindow::TrayIconUpdateOrInit()
+void MainWindow::trayIconUpdateOrInit()
 {
   if ( !cfg.preferences.enableTrayIcon ) {
     if ( trayIcon ) {
@@ -1381,12 +1381,12 @@ void MainWindow::TrayIconUpdateOrInit()
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
+      trayIcon->show();
     }
     // Update the icon to reflect the scanning mode
     trayIcon->setIcon( enableScanningAction->isChecked() ?
                          QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
                          QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) ) );
-    trayIcon->show();
   }
 
   // The 'Close to tray' action is associated with the tray icon, so we hide
@@ -2254,7 +2254,7 @@ void MainWindow::editPreferences()
 
     audioPlayerFactory.setPreferences( cfg.preferences );
 
-    TrayIconUpdateOrInit();
+    trayIconUpdateOrInit();
     applyProxySettings();
 
     ui.tabWidget->setHideSingleTab( cfg.preferences.hideSingleTab );

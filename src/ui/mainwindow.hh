@@ -195,7 +195,7 @@ private:
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
-  void TrayIconUpdateOrInit();
+  void trayIconUpdateOrInit();
 
   void wheelEvent( QWheelEvent * );
   void closeEvent( QCloseEvent * );
