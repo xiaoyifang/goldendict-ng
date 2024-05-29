@@ -38,6 +38,7 @@ public:
   static QRegularExpression closeScriptTagRe;
   static QRegularExpression srcRe;
   static QRegularExpression srcRe2;
+  static QRegularExpression srcset;
 
   static QRegularExpression links;
   static QRegularExpression fontFace;
@@ -71,6 +72,8 @@ const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseU
 const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{P}])", QRegularExpression::UseUnicodePropertiesOption );
 //contain unicode space and mark.
 const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression::UseUnicodePropertiesOption );
+
+const static QRegularExpression whiteSpace( "\\s+" );
 
 } // namespace RX
 

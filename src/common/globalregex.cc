@@ -55,6 +55,9 @@ QRegularExpression Mdx::srcRe(
 QRegularExpression Mdx::srcRe2(
   R"(([\s"'](?:src|srcset)\s*=)\s*(?![\s"']|\b(?:(?:bres|https?|ftp)://|(?:data|javascript):))(?:file://)?[\x00-\x1f\x7f]*\.*/?([^\s">]+))",
   QRegularExpression::CaseInsensitiveOption );
+// matches srcset in <img srcset="text">
+QRegularExpression Mdx::srcset( R"((?<before>[\s]srcset\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
+                                QRegularExpression::CaseInsensitiveOption );
 
 QRegularExpression Mdx::links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 
