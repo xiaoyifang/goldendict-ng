@@ -993,7 +993,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           for ( auto & img : ImageList ) {
             auto imgPair = img.split( RX::whiteSpace );
 
-            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "://" ) ) {
+            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "//" ) ) {
               if ( imgPair.length() == 1 ) {
                 srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
               }
