@@ -27,11 +27,10 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: 6.6.3
+          # Qt6.4 for testing ubuntu LTS
+          version: 6.4.3
           arch: gcc_64
-          
-          #serialport linuxdeploy need serialport to work.
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
           
       - name: ubuntu install thirdparty dependencies
