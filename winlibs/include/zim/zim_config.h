@@ -5,8 +5,9 @@
 
 #pragma once
 
-#define LIBZIM_DLL
+#define LIBZIM_EXPORT_DLL
 
-#define LIBZIM_VERSION "8.2.0"
+#define LIBZIM_VERSION "9.0.0"
 
 #undef LIBZIM_WITH_XAPIAN
+

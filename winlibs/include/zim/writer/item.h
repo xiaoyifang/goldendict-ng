@@ -28,30 +28,31 @@
 
 #include <map>
 
-namespace zim {
-namespace writer {
-enum HintKeys {
-  COMPRESS,
-  FRONT_ARTICLE,
-};
-using Hints = std::map< HintKeys, uint64_t >;
+namespace zim
+{
+  namespace writer
+  {
+    enum HintKeys {
+      COMPRESS,
+      FRONT_ARTICLE,
+    };
+    using Hints = std::map<HintKeys, uint64_t>;
 
-class ContentProvider;
+    class ContentProvider;
 
-/**
+    /**
      * IndexData represent data of an Item to be indexed in the archive.
      *
      * This is a abstract class the user need to implement.
      * (But default `Item::getIndexData` returns a default implementation
      * for IndexData which works for html content.)
      */
-class LIBZIM_API IndexData
-{
-public:
-  using GeoPosition    = std::tuple< bool, double, double >;
-  virtual ~IndexData() = default;
+    class LIBZIM_API IndexData {
+      public:
+        using GeoPosition = std::tuple<bool, double, double>;
+        virtual ~IndexData() = default;
 
-  /**
+        /**
          * If the IndexData actually has data to index.
          *
          * It can be used to create `IndexData` for all your content
@@ -59,9 +60,9 @@ public:
          *
          * @return true if the item associated to this IndexData must be indexed.
          */
-  virtual bool hasIndexData() const = 0;
+        virtual bool hasIndexData() const = 0;
 
-  /**
+        /**
          * The title to use when indexing the item.
          *
          * May be different than `Item::getTitle()`, even if most of the time
@@ -69,9 +70,9 @@ public:
          *
          * @return the title to use.
          */
-  virtual std::string getTitle() const = 0;
+        virtual std::string getTitle() const = 0;
 
-  /**
+        /**
          * The content to use when indexing the item.
          *
          * This is probably the most important method of `IndexData`.
@@ -81,9 +82,9 @@ public:
          *
          * @return the content to use.
          */
-  virtual std::string getContent() const = 0;
+        virtual std::string getContent() const = 0;
 
-  /**
+        /**
          * The keywords to use when indexing the item.
          *
          * Return a set of keywords, separated by space for the content.
@@ -91,9 +92,9 @@ public:
          *
          * @return a string containing keywords separated by space.
          */
-  virtual std::string getKeywords() const = 0;
+        virtual std::string getKeywords() const = 0;
 
-  /**
+        /**
          * The number of words in the content.
          *
          * This value is not directly used to index the content but it
@@ -102,9 +103,9 @@ public:
          *
          * @return the number of words in the item.
          */
-  virtual uint32_t getWordCount() const = 0;
+        virtual uint32_t getWordCount() const = 0;
 
-  /**
+        /**
          * The Geographical position of the subject covered by the item.
          * (When applicable)
          *
@@ -113,20 +114,20 @@ public:
          *         a 3 tuple (false, _, _) if having a GeoPosition is not
          *         relevant.
          */
-  virtual GeoPosition getGeoPosition() const = 0;
-};
+        virtual GeoPosition getGeoPosition() const = 0;
+    };
 
-/**
+    /**
      * Item represent data to be added to the archive.
      *
      * This is a abstract class the user need to implement.
      * libzim provides `BasicItem`, `StringItem` and `FileItem`
      * to simplify (or avoid) this reimplementation.
      */
-class LIBZIM_API Item
-{
-public:
-  /**
+    class LIBZIM_API Item
+    {
+      public:
+        /**
          * The path of the item.
          *
          * The path must be absolute.
@@ -134,9 +135,9 @@ public:
          *
          * @return the path of the item.
          */
-  virtual std::string getPath() const = 0;
+        virtual std::string getPath() const = 0;
 
-  /**
+        /**
          * The title of the item.
          *
          * Item's title is indexed and is used for the suggestion system.
@@ -144,9 +145,9 @@ public:
          *
          * @return the title of the item.
          */
-  virtual std::string getTitle() const = 0;
+        virtual std::string getTitle() const = 0;
 
-  /**
+        /**
          * The mimetype of the item.
          *
          * Mimetype is store within the content.
@@ -154,9 +155,9 @@ public:
          *
          * @return the mimetype of the item.
          */
-  virtual std::string getMimeType() const = 0;
+        virtual std::string getMimeType() const = 0;
 
-  /**
+        /**
          * The content provider of the item.
          *
          * The content provider is responsible to provide the content to the creator.
@@ -170,9 +171,9 @@ public:
          *
          * @return the contentProvider of the item.
          */
-  virtual std::unique_ptr< ContentProvider > getContentProvider() const = 0;
+        virtual std::unique_ptr<ContentProvider> getContentProvider() const = 0;
 
-  /**
+        /**
          * The index data of the item.
          *
          * The index data is the data to index. (May be different from the content
@@ -197,9 +198,9 @@ public:
          * @return the indexData of the item.
          *         May return a nullptr if there is no indexData.
          */
-  virtual std::shared_ptr< IndexData > getIndexData() const;
+        virtual std::shared_ptr<IndexData> getIndexData() const;
 
-  /**
+        /**
          * Hints to help the creator takes decision about the item.
          *
          * For now two hints are supported:
@@ -214,70 +215,57 @@ public:
          *
          * @return A list of hints.
          */
-  virtual Hints getHints() const;
+        virtual Hints getHints() const;
 
-  /**
+        /**
          * Returns the getHints() amended with default values based on mimetypes.
          */
-  Hints getAmendedHints() const;
-  virtual ~Item() = default;
-};
+        Hints getAmendedHints() const;
+        virtual ~Item() = default;
+    };
 
-/**
+    /**
      * A BasicItem is a partial implementation of a Item.
      *
      * `BasicItem` provides a basic implementation for everything about an `Item`
      * but the actual content of the item.
      */
-class LIBZIM_API BasicItem: public Item
-{
-public:
-  /**
+    class LIBZIM_API BasicItem : public Item
+    {
+      public:
+        /**
          * Create a BasicItem with the given path, mimetype and title.
          *
          * @param path the path of the item.
          * @param mimetype the mimetype of the item.
          * @param title the title of the item.
          */
-  BasicItem( const std::string & path, const std::string & mimetype, const std::string & title, Hints hints ):
-    path( path ),
-    mimetype( mimetype ),
-    title( title ),
-    hints( hints )
-  {
-  }
+        BasicItem(const std::string& path, const std::string& mimetype, const std::string& title, Hints hints)
+          : path(path),
+            mimetype(mimetype),
+            title(title),
+            hints(hints)
+        {}
 
-  std::string getPath() const
-  {
-    return path;
-  }
-  std::string getTitle() const
-  {
-    return title;
-  }
-  std::string getMimeType() const
-  {
-    return mimetype;
-  }
-  Hints getHints() const
-  {
-    return hints;
-  }
+        std::string getPath() const { return path; }
+        std::string getTitle() const { return title; }
+        std::string getMimeType() const { return mimetype; }
+        Hints       getHints() const { return hints; }
 
-protected:
-  std::string path;
-  std::string mimetype;
-  std::string title;
-  Hints hints;
-};
+      protected:
+        std::string path;
+        std::string mimetype;
+        std::string title;
+        Hints hints;
+    };
 
-/**
+    /**
      * A `StringItem` is a full implemented item where the content is stored in a string.
      */
-class LIBZIM_API StringItem: public BasicItem, public std::enable_shared_from_this< StringItem >
-{
-public:
-  /**
+    class LIBZIM_API StringItem : public BasicItem, public std::enable_shared_from_this<StringItem>
+    {
+      public:
+        /**
          * Create a StringItem with the given path, mimetype, title and content.
          *
          * The parameters are the ones of the private constructor.
@@ -287,36 +275,31 @@ public:
          * @param title the title of the item.
          * @param content the content of the item.
          */
-  template< typename... Ts >
-  static std::shared_ptr< StringItem > create( Ts &&... params )
-  {
-    return std::shared_ptr< StringItem >( new StringItem( std::forward< Ts >( params )... ) );
-  }
+        template<typename... Ts>
+        static std::shared_ptr<StringItem> create(Ts&&... params) {
+          return std::shared_ptr<StringItem>(new StringItem(std::forward<Ts>(params)...));
+        }
 
-  std::unique_ptr< ContentProvider > getContentProvider() const;
+        std::unique_ptr<ContentProvider> getContentProvider() const;
 
-protected:
-  std::string content;
+      protected:
+        std::string content;
 
-private:
-  StringItem( const std::string & path,
-              const std::string & mimetype,
-              const std::string & title,
-              Hints hints,
-              const std::string & content ):
-    BasicItem( path, mimetype, title, hints ),
-    content( content )
-  {
-  }
-};
+      private:
+        StringItem(const std::string& path, const std::string& mimetype,
+                   const std::string& title, Hints hints, const std::string& content)
+          : BasicItem(path, mimetype, title, hints),
+            content(content)
+        {}
+    };
 
-/**
+    /**
      * A `FileItem` is a full implemented item where the content is file.
      */
-class LIBZIM_API FileItem: public BasicItem
-{
-public:
-  /**
+    class LIBZIM_API FileItem : public BasicItem
+    {
+      public:
+        /**
          * Create a FileItem with the given path, mimetype, title and filenpath.
          *
          * @param path the path of the item.
@@ -324,23 +307,19 @@ public:
          * @param title the title of the item.
          * @param filepath the path of the file in the filesystem.
          */
-  FileItem( const std::string & path,
-            const std::string & mimetype,
-            const std::string & title,
-            Hints hints,
-            const std::string & filepath ):
-    BasicItem( path, mimetype, title, hints ),
-    filepath( filepath )
-  {
+        FileItem(const std::string& path, const std::string& mimetype,
+                 const std::string& title, Hints hints, const std::string& filepath)
+          : BasicItem(path, mimetype, title, hints),
+            filepath(filepath)
+        {}
+
+        std::unique_ptr<ContentProvider> getContentProvider() const;
+
+      protected:
+        std::string filepath;
+    };
+
   }
-
-  std::unique_ptr< ContentProvider > getContentProvider() const;
-
-protected:
-  std::string filepath;
-};
-
-} // namespace writer
-} // namespace zim
+}
 
 #endif // ZIM_WRITER_ITEM_H

@@ -28,24 +28,7 @@ Popular dictionary formats are all supported.
 
 ## Other Sources
 
-**Programs**
-
-Any external apps can be added by setting a launch command. The `%GDWORD%` will be replaced by word from search line. If command line don't contains such template the word will be fed into standard input stream in 8-bit current locale encoding.
-
-| Type | Notes |
-|--|--|
-| Audio| Application play sound. A sound icon will be provided as article, click it will trigger the program. |
-| Text | Application output some plain text in 8-bit current locale encoding into standard output stream. This text will be shown as separate article. |
-| Html | Application output some html code into standard output stream. This code will be shown as separate article. |
-| Prefix | Application output some word list into standard output stream. This list will be added in common matches list.|
-
-**System Text-to-speech engines**
-
-Its capability is provided via Qt Speech.
-
-On Windows & macOS, the system provides sounds.
-
-On Linux, speech-dispatcher and flite are the backends.
+Various special "dictionaries" can be added, such as Programs, TTS, Morphology, Transliteration, etc... Their doc located at [Sources Management](manage_sources.md)
 
 ## Additional info
 

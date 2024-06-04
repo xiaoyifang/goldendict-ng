@@ -37,6 +37,8 @@ And a few compression libraries:
 
 ## CMake Build
 
+Basically, you need those commands:
+
 ```shell
 cd goldendict-ng && mkdir build_dir
 # config step
@@ -62,31 +64,46 @@ Install Qt6(msvc) through the standard installer and pass Qt's path to CMake
 ```
 -DCMAKE_PREFIX_PATH=F:\Qt\6.4.1\msvc2019_64
 ```
-
 The built artifacts will end up in `build_dir/goldendict`
 
-To run the built `goldendict.exe` directly, you have to add `F:\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable
+#### Using pre-built winlibs
 
-To have a redistributable goldendict (runable on someone else's computer by just copying the folder), you can build the deployment target which will copy necessary files to the folder
+Use `windeploy` target to copy necessary runtime files.
 
 ```
 cmake --build . --target windeploy
 ```
 
-The `build_dir/goldendict` will be ready to share with others.
+Or you can also manually run `windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related things to `build_dir`.
 
-Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related `.dll` and other necessary files automatically.
+#### Using Vcpkg
 
+The dependencies can be built via Vcpkg instead of using the pre-built ones.
+
+Vcpkg CMake build utilize the "manifest mode", all you need to do is basically 
+set `CMAKE_TOOLCHAIN_FILE` as described [here](https://learn.microsoft.com/en-us/vcpkg/consume/manifest-mode?tabs=cmake%2Cbuild-MSBuild#2---integrate-vcpkg-with-your-build-system).
+
+Add this to cmake command:
+```sh
+-DUSE_VCPKG=ON
+```
+
+Most `.dll` built by vcpkg will be automatically copied, but the Qt ones won't.
+
+You can
+* run `cmake --install .` (recommended)
+* manually run windeployqt
+* add `${Qt's install path}\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable
 
 ### macOS
 
-Similar to Linux build, but need `macdeployqt ./goldendict.app` to copy necessary dependencies to the app bundle.
+If you build in an IDE, then the created `GoldenDict.app`  will be runnable from the IDE which set up necessary magics for you.
+
+To make the `.app` runnable elsewhere, you can run `cmake --install build_dir/` which will invoke macdeployqt, ad-hoc code signing and various other things. The produced app will end up in `build_dir/redist/goldendict-ng.app`
+
+To create `.dmg` installer, you have to have [create-dmg](https://github.com/create-dmg/create-dmg) installed on your machine, then also `cmake --install build_dir/`.
 
 ## Qmake
-
-```shell
-git clone https://github.com/xiaoyifang/goldendict-ng.git
-```
 
 ### Build Steps
 

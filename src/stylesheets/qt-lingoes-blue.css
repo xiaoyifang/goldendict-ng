@@ -1,4 +1,5 @@
-MainWindow {
+MainWindow,
+QToolBar {
   background-color: #cfddf0;
 }
 

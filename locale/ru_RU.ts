@@ -36,7 +36,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: не могу создать карту без слов</translation>
+      <translation>Anki: нельзя создать карточку без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -83,7 +83,7 @@
     </message>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>В группе &lt;b&gt;%2&lt;/b&gt;не было найдено перевода для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
+      <translation>В группе &lt;b&gt;%2&lt;/b&gt; не было найдено перевода для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>(picture)</source>

@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 24.02.16
-      version-suffix: alpha
-      prerelease: true
+      version: 24.05.13
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
             
       - name: set git short sha
         id: vars
