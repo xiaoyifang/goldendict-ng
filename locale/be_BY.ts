@@ -91,7 +91,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Вітаем у &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Каб пачаць працаваць з праграмай, спачатку наведайце &lt;em&gt;Edit | Слоўнікі&lt;/em&gt; , каб дадаць некалькі шляхоў да каталогаў, дзе можна шукаць файлы слоўнікаў, наладзіць розныя сайты Вікіпедыі ці іншыя крыніцы, наладзіць парадак слоўнікаў або стварыць групы слоўнікаў.&lt;p&gt;І тады вы&apos;гатовыя шукаць свае словы! Вы можаце зрабіць гэта ў гэтым акне, выкарыстоўваючы панэль злева, або вы можаце &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;шукаць словы з іншых актыўных праграм&lt;/a&gt;. &lt;p&gt;Каб наладзіць праграму, азнаёмцеся з даступнымі параметрамі ў &lt;em&gt;Рэдагаваць | Перавагі&lt;/em&gt;. Усе налады там маюць падказкі, абавязкова прачытайце іх, калі ў чымсьці сумняваецеся.&lt;p&gt;Калі вам патрэбна дадатковая дапамога, ёсць якія-небудзь пытанні, прапановы або проста цікава, што думаюць іншыя, запрашаем вас на форум праграмы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Праверце праграмы&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайт&lt;/a&gt; на наяўнасць абнаўленняў. &lt;p&gt;(с) 2008-2013 Канстанцін Ісакаў. Ліцэнзія GPLv3 або больш позняя.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Вітаем у &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Каб пачаць працаваць з праграмай, спачатку наведайце &lt;em&gt;Edit | Слоўнікі&lt;/em&gt;, каб дадаць некалькі шляхоў да каталогаў, дзе можна шукаць файлы слоўнікаў, наладзіць розныя сайты Вікіпедыі ці іншыя крыніцы, наладзіць парадак слоўнікаў або стварыць групы слоўнікаў.&lt;p&gt;І тады вы гатовыя шукаць свае словы! Вы можаце зрабіць гэта ў гэтым акне, выкарыстоўваючы панэль злева, або вы можаце &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;шукаць словы з іншых актыўных праграм&lt;/a&gt;. &lt;p&gt;Каб наладзіць праграму, азнаёмцеся з даступнымі параметрамі ў &lt;em&gt;Рэдагаваць | Перавагі&lt;/em&gt;. Усе налады там маюць падказкі, абавязкова прачытайце іх, калі ў чымсьці сумняваецеся.&lt;p&gt;Калі вам патрэбна дадатковая дапамога, ёсць якія-небудзь пытанні, прапановы або проста цікава, што думаюць іншыя, запрашаем вас на форум праграмы &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Праверце праграмы &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;сайт&lt;/a&gt; на наяўнасць абнаўленняў. &lt;p&gt;(с) 2008-2013 Канстанцін Ісакаў. Ліцэнзія GPLv3 або больш позняя.</translation>
     </message>
   </context>
   <context>
@@ -286,7 +286,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>Адкрыць выяву ў сістэмным аглядзе...</translation>
+      <translation>Адкрыць выяву ў сістэмнай праграме для прагляду...</translation>
     </message>
   </context>
   <context>
@@ -641,7 +641,7 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Edit the dictionary via command:
 %1</source>
-      <translation>Рэдагаваць слоўнік з дапамогай загаду: %1</translation>
+      <translation>Рэдагаваць слоўнік з дапамогай каманды: %1</translation>
     </message>
     <message>
       <source>Index filename:</source>
@@ -1052,7 +1052,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Стварыыць групы на аснове каталогаў.</translation>
+      <translation>Стварыць групы на аснове каталогаў.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
@@ -3137,7 +3137,7 @@ the program would always start with the scan popup active.</source>
     </message>
     <message>
       <source>Enter audio player command line</source>
-      <translation>Увайсці ў загадны радок аўдыяпрайгравальніка</translation>
+      <translation>Увайсці ў камандны радок аўдыяпрайгравальніка</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
@@ -3412,7 +3412,7 @@ clears its network cache from disk during exit.</source>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
       <translation>Уключыце гэты параметр, каб ігнараваць неапраўдана доўгі тэкст, якія атрымліваецца
-пры навядзенні мышы, выбары, з буфера абмену або загаднага радка</translation>
+пры навядзенні мышы, выбары, з буфера абмену або каманднага радка</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
@@ -3613,7 +3613,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation>Перазапусціце, каб прымяніць змяненне шрыфта інтэрфейсу.</translation>
+      <translation>Перазапусціце, каб ужыць новы шрыфт інтэрфейсу.</translation>
     </message>
   </context>
   <context>
@@ -3670,7 +3670,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Command Line</source>
-      <translation>Загадны радок</translation>
+      <translation>Камандны радок</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -3753,7 +3753,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation>Прымусіць слова быць перакладзены ў scanpopup</translation>
+      <translation>Прымусова перакласці слова ў scanpopup</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
@@ -4192,7 +4192,7 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вымаўленне прадстаўлена &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, сумеснай лінгвістычнай медыятэкай Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вымаўленне пададзена &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, сумеснай лінгвістычнай медыятэкай Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
