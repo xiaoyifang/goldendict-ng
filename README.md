@@ -13,6 +13,14 @@ dictionaries.
 |--|--|--|
 | [<img src="website/docs/img/linux_genshin.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/windows_white.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/mac_black.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) |
 
+[Download & Install](https://xiaoyifang.github.io/goldendict-ng/install/)
+
+[Documentation](https://xiaoyifang.github.io/goldendict-ng/)
+
+[Bug reporting in issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
+
+[General discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
+
 # Some significant features of this fork
 
 - webengine with latest html/css feature support
@@ -26,10 +34,6 @@ dictionaries.
 - daily auto release support
 - lots of bug fixes and improvements
 
-## Installation
-
-<https://xiaoyifang.github.io/goldendict-ng/install/>
-
 ## Help GoldenDict's Development
 
 GoldenDict is developed by volunteers.
@@ -39,16 +43,6 @@ All kinds of help like answering questions, bug reporting, testing, translation 
 To translate the interface, you can use the Crowdin <https://crowdin.com/project/goldendict-ng>
 
 To start development, check out [developer guide](https://xiaoyifang.github.io/goldendict-ng/developer/)
-
-## Build from source
-
-<https://xiaoyifang.github.io/goldendict-ng/howto/build_from_source/>
-
-## Support
-
-Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
-
-General discussions: [discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
 
 
 ## License
