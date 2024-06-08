@@ -48,9 +48,15 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
   ui.dictionaryFileList->setPlainText( filenamesText );
 
   if ( QString info = dict->getDescription(); !info.isEmpty() && info.compare( "NONE" ) != 0 ) {
-    //qtbug QTBUG-112020
-    info.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
-    ui.infoLabel->setHtml( info );
+    // Uses HTML dispaly becuase some formats uses HTML tags for formatting.
+    if ( dict->getMainFilename().contains( ".dsl", Qt::CaseInsensitive ) ) {
+      ui.infoLabel->setPlainText( info );
+    }
+    else {
+      //qtbug QTBUG-112020
+      info.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
+      ui.infoLabel->setHtml( info );
+    }
   }
   else
     ui.infoLabel->clear();
