@@ -216,9 +216,7 @@ endif ()
 
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
         QM_FILES_OUTPUT_VARIABLE qm_files)
-if (WIN32) # TODO: check other OS
-    add_dependencies(${GOLDENDICT} "goldendict-ng_lrelease")
-endif ()
+add_dependencies(${GOLDENDICT} "release_translations")
 
 #### installation or assemble redistribution
 
