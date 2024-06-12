@@ -70,7 +70,7 @@ Main file of DictD dictionary (.dict) or Xdxf dictionary (.xdxf) can be compress
 
 ### Slob
 
-GoldenDict can render formulas in TeX format with the built-in web engine.
+GoldenDict can render TeX formulas when a slob dictionary bundles MathJax.
 
 ### GLS
 
