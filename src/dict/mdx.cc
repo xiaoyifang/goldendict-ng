@@ -978,6 +978,36 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         else
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
+
+      // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x, c.png">
+      // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x,bres://{id}/b-2x.png 2x,bres://{id}/c.png">
+
+      if ( linkType.compare( "img" ) == 0 ) {
+        match = RX::Mdx::srcset.match( newLink ); // have to use newLink since linkTxt may already be modified
+        if ( match.hasMatch() ) {
+          auto srcsetOriginalText   = match.captured( "text" );
+          QStringList srcsetNewText = {};
+
+          auto ImageList = srcsetOriginalText.split( u',', Qt::SkipEmptyParts );
+
+          for ( auto & img : ImageList ) {
+            auto imgPair = img.split( RX::whiteSpace );
+
+            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "//" ) ) {
+              if ( imgPair.length() == 1 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
+              }
+              else if ( imgPair.length() == 2 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2 %3)" ).arg( id, imgPair.at( 0 ), imgPair.at( 1 ) ) );
+              }
+            }
+          }
+
+          newLink.replace( match.capturedStart(),
+                           match.capturedLength(),
+                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+        }
+      }
     }
 
     if ( !newLink.isEmpty() ) {

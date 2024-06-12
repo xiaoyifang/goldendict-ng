@@ -1003,7 +1003,9 @@ QString const & DslDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  dictionaryDescription = "NONE";
+  QString none = QStringLiteral( "NONE" );
+
+  dictionaryDescription = none;
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -1055,6 +1057,9 @@ QString const & DslDictionary::getDescription()
           break;
       }
     }
+  }
+  if ( dictionaryDescription != none ) {
+    dictionaryDescription.replace( QRegularExpression( R"(\R)" ), R"(<br>)" );
   }
   return dictionaryDescription;
 }

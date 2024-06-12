@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 
-# Qt6.4+ only
-
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
@@ -11,12 +9,17 @@ option(WITH_TTS "enable QTexttoSpeech support" ON)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
+# vcpkg build - only tested on Windows, does not support FFMPEG
+option(USE_VCPKG "uses VCPKG for providing dependencies" OFF)
+
 ## Change binary & resources folder to parallel install with original GD.
 ## This flag should be avoided because it leads to small regressions:
 ## 1. There are personal scripts assuming the binary name to be "goldendict" -> require everyone to change the name in their script
 ## 2. There are icon themes that assuming the icon name to be "goldendict" -> invalidate the GD icon when using a icon theme
 ## 3. There are dictionary packages that install files to "/usr/share/goldendict/content" -> nullify the auto dict discovery
 option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
+
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") # to put staff in the ./cmake folder
 
 include(FeatureSummary)
 
@@ -144,6 +147,10 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/ui
         )
 
+if (WIN32)
+    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/src/windows)
+endif ()
+
 if (NOT USE_SYSTEM_TOML)
     target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
 endif ()
@@ -160,6 +167,13 @@ target_compile_definitions(${GOLDENDICT} PUBLIC
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         )
+
+if (WIN32)
+    target_compile_definitions(${GOLDENDICT} PUBLIC
+            __WIN32
+            INCLUDE_LIBRARY_PATH
+    )
+endif ()
 
 if (WITH_FFMPEG_PLAYER)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
@@ -180,10 +194,12 @@ endif ()
 
 #### libraries linking && includes for Win or Unix
 
-if (WIN32)
-    include(CMake_Win.cmake)
+if (USE_VCPKG)
+    include(Deps_Vcpkg)
+elseif (WIN32)
+    include(Deps_Win)
 else ()
-    include(CMake_Unix.cmake)
+    include(Deps_Unix)
 endif ()
 
 #### add translations
@@ -197,9 +213,10 @@ if (WIN32)
 else ()
     set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
 endif ()
-# a wrapper over qt_add_lupdate and  qt_add_lrelease
+
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
         QM_FILES_OUTPUT_VARIABLE qm_files)
+add_dependencies(${GOLDENDICT} "release_translations")
 
 #### installation or assemble redistribution
 
@@ -279,6 +296,7 @@ if (LINUX OR BSD)
 endif ()
 
 if (WIN32)
+
     set_target_properties(${GOLDENDICT}
             PROPERTIES
             WIN32_EXECUTABLE TRUE
@@ -286,27 +304,52 @@ if (WIN32)
             LIBRARY_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
     )
 
-    add_custom_target(windeploy
-            COMMENT "Deploy everything to the output dir"
-            DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
-            COMMAND ${WINDEPLOYQT_EXECUTABLE} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
-            COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
-            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
-            COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
-            WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
-    )
+    if (NOT USE_VCPKG)
+        add_custom_target(windeploy
+                COMMENT "Deploy everything to the output dir"
+                DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
+                COMMAND ${WINDEPLOYQT_EXECUTABLE} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
+                COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
+                COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
+                COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
+                WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
+        )
 
-    # use CPack to make the output folder as NSIS installer
-    install(
-        DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
-        DESTINATION .
-    )
+    else () # VCPKG deploy
+        set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "If you see this message, don't change this unless you want look into CMake build script. If you are an expert, yes, this is wrong. Help welcomed." FORCE)
 
-    set(CPACK_PACKAGE_FILE_NAME "${Qt6Widgets_VERSION}-${PROJECT_NAME}-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
+        qt_generate_deploy_script(
+                TARGET ${GOLDENDICT}
+                OUTPUT_SCRIPT deploy_script
+                CONTENT "qt_deploy_runtime_dependencies(
+                        EXECUTABLE \"${CMAKE_INSTALL_PREFIX}/goldendict.exe\"
+                        BIN_DIR .
+                        LIB_DIR .
+                )"
+        )
+
+        install(SCRIPT ${deploy_script})
+        install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
+        # TODO: do we really need to carry a copy of openSSL?
+        install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-3-x64.dll" DESTINATION .)
+        install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-3-x64.dll" DESTINATION .)
+    endif ()
+
+    # trick CPack to make the output folder as NSIS installer
+    install(DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
+            DESTINATION .
+            FILES_MATCHING
+            PATTERN "*"
+            PATTERN "*.pdb" EXCLUDE
+            PATTERN "*.ilk" EXCLUDE)
+
+
+    set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
     set(CPACK_GENERATOR "7Z;NSIS")
     set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
     set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
     include(CPack)
+
 endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")

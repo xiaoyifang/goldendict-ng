@@ -67,7 +67,7 @@ class ArticleView: public QWidget
   QSet< QString > desktopOpenedTempFiles;
 
   QAction * dictionaryBarToggled;
-  GroupComboBox const * groupComboBox;
+
   unsigned currentGroupId;
   QLineEdit const * translateLine;
 
@@ -105,8 +105,8 @@ public:
                bool popupView,
                Config::Class const & cfg,
                QLineEdit const * translateLine,
-               QAction * dictionaryBarToggled      = nullptr,
-               GroupComboBox const * groupComboBox = nullptr );
+               QAction * dictionaryBarToggled = nullptr,
+               unsigned currentGroupId        = 0 );
 
 
   void setCurrentGroupId( unsigned currengGrgId );

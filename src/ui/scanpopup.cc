@@ -103,7 +103,8 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 true,
                                 cfg,
                                 ui.translateBox->translateLine(),
-                                dictionaryBar.toggleViewAction() );
+                                dictionaryBar.toggleViewAction(),
+                                cfg.lastPopupGroupId );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
