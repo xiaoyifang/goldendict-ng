@@ -579,7 +579,6 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
   BtreeIndex resourceIndex;
   IdxHeader idxHeader;
   SlobFile sf;
-  QString texCgiPath, texCachePath;
 
   string idxFileName;
 
@@ -701,21 +700,10 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
   // Full-text search parameters
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  texCgiPath = Config::getProgramDataDir() + "/mimetex.cgi";
-  if ( QFileInfo( texCgiPath ).exists() ) {
-    QString dirName = QString::fromStdString( getId() );
-    QDir( QDir::tempPath() ).mkdir( dirName );
-    texCachePath = QDir::tempPath() + "/" + dirName;
-  }
-  else
-    texCgiPath.clear();
 }
 
 SlobDictionary::~SlobDictionary()
 {
-  if ( !texCachePath.isEmpty() )
-    Utils::Fs::removeDirectory( texCachePath );
 }
 
 void SlobDictionary::loadIcon() noexcept
@@ -837,141 +825,12 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
   }
   newText.clear();
 
-
-  // Handle TeX formulas via mimetex.cgi
-
-  if ( !texCgiPath.isEmpty() ) {
-    QRegularExpression texImage( R"lit(<\s*img\s+class="([^"]+)"\s*([^>]*)alt="([^"]+)"[^>]*>)lit" );
-    QRegularExpression regFrac( "\\\\[dt]frac" );
-    QRegularExpression regSpaces( R"(\s+([\{\(\[\}\)\]]))" );
-
-    QRegExp multReg( R"(\*\{(\d+)\}([^\{]|\{([^\}]+)\}))", Qt::CaseSensitive, QRegExp::RegExp2 );
-
-    QString arrayDesc( "\\begin{array}{" );
-    pos               = 0;
-    unsigned texCount = 0;
-    QString imgName;
-
-    QRegularExpressionMatchIterator it = texImage.globalMatch( text );
-    QString newText;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      newText += text.mid( pos, match.capturedStart() - pos );
-      pos = match.capturedEnd();
-
-      QStringList list = match.capturedTexts();
-
-
-      if ( list[ 1 ].compare( "tex" ) == 0 || list[ 1 ].compare( "mwe-math-fallback-image-inline" ) == 0
-           || list[ 1 ].endsWith( " tex" ) ) {
-        QString name;
-        name    = name.asprintf( "%04X%04X%04X.gif", entry.itemIndex, entry.binIndex, texCount );
-        imgName = texCachePath + "/" + name;
-
-        if ( !QFileInfo( imgName ).exists() ) {
-
-          // Replace some TeX commands which don't support by mimetex.cgi
-
-          QString tex = list[ 3 ];
-          tex.replace( regSpaces, "\\1" );
-          tex.replace( regFrac, "\\frac" );
-          tex.replace( "\\leqslant", "\\leq" );
-          tex.replace( "\\geqslant", "\\geq" );
-          tex.replace( "\\infin", "\\infty" );
-          tex.replace( "\\iff", "\\Longleftrightarrow" );
-          tex.replace( "\\tbinom", "\\binom" );
-          tex.replace( "\\implies", "\\Longrightarrow" );
-          tex.replace( "{aligned}", "{align*}" );
-          tex.replace( "\\Subset", "\\subset" );
-          tex.replace( "\\xrightarrow", "\\longrightarrow^" );
-          tex.remove( "\\scriptstyle" );
-          tex.remove( "\\mathop" );
-          tex.replace( "\\bigg|", "|" );
-
-          // Format array descriptions (mimetex now don't support *{N}x constructions in it)
-
-          int pos1 = 0;
-          while ( pos1 >= 0 ) {
-            pos1 = tex.indexOf( arrayDesc, pos1, Qt::CaseInsensitive );
-            if ( pos1 >= 0 ) {
-              // Retrieve array description
-              QString desc, newDesc;
-              int n      = 0;
-              int nstart = pos1 + arrayDesc.size();
-              int i;
-              for ( i = 0; i + nstart < tex.size(); i++ ) {
-                if ( tex[ i + nstart ] == '{' )
-                  n += 1;
-                if ( tex[ i + nstart ] == '}' )
-                  n -= 1;
-                if ( n < 0 )
-                  break;
-              }
-              if ( i > 0 && i + nstart + 1 < tex.size() )
-                desc = tex.mid( nstart, i );
-
-              if ( !desc.isEmpty() ) {
-                // Expand multipliers: "*{5}x" -> "xxxxx"
-
-                newDesc = desc;
-                QString newStr;
-                int pos2 = 0;
-                while ( pos2 >= 0 ) {
-                  pos2 = multReg.indexIn( newDesc, pos2 );
-                  if ( pos2 >= 0 ) {
-                    QStringList list = multReg.capturedTexts();
-                    int n            = list[ 1 ].toInt();
-                    for ( int i = 0; i < n; i++ )
-                      newStr += list[ 3 ].isEmpty() ? list[ 2 ] : list[ 3 ];
-                    newDesc.replace( pos2, list[ 0 ].size(), newStr );
-                    pos2 += newStr.size();
-                  }
-                  else
-                    break;
-                }
-                tex.replace( pos1 + arrayDesc.size(), desc.size(), newDesc );
-                pos1 += arrayDesc.size() + newDesc.size();
-              }
-              else
-                pos1 += arrayDesc.size();
-            }
-            else
-              break;
-          }
-
-          QString command = texCgiPath + " -e " + imgName + " \"" + tex + "\"";
-          QProcess::execute( command, QStringList() );
-        }
-
-        QString tag = QString( R"(<img class="imgtex" src="file://)" )
   #ifdef Q_OS_WIN32
-          + "/"
-  #endif
-          + imgName + "\" alt=\"" + list[ 3 ] + "\">";
-
-        newText += tag;
-
-
-        texCount += 1;
-      }
-      else
-        newText += list[ 0 ];
-    }
-    if ( pos ) {
-      newText += text.mid( pos );
-      text = newText;
-    }
-    newText.clear();
-  }
-  #ifdef Q_OS_WIN32
-  else {
     // Increase equations scale
     text = QString::fromLatin1( "<script type=\"text/x-mathjax-config\">MathJax.Hub.Config({" )
       + " SVG: { scale: 170, linebreaks: { automatic:true } }"
       + ", \"HTML-CSS\": { scale: 210, linebreaks: { automatic:true } }"
       + ", CommonHTML: { scale: 210, linebreaks: { automatic:true } }" + " });</script>" + text;
-  }
   #endif
 
   // Fix outstanding elements
