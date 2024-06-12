@@ -142,13 +142,14 @@ jobs:
           echo "$version"  
 
       - name: vcpkg build
-        uses: johnwason/vcpkg-action@v5
+        uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
           # pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
           pkgs: breakpad
           triplet: x64-windows-release
           token: ${{ github.token }}
+          github-binarycache: true
       - name: copy vcpkg packages into winlibs
         shell: bash
         run: |   
