@@ -96,7 +96,7 @@ ArticleView::ArticleView( QWidget * parent,
                           Config::Class const & cfg_,
                           QLineEdit const * translateLine_,
                           QAction * dictionaryBarToggled_,
-                          unsigned int groupComboBox_ ):
+                          unsigned int currentGroupId_ ):
   QWidget( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
