@@ -1712,7 +1712,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       showDefinition( selectedText, currentGroupId, QString() );
     else if ( result == addWordToHistoryAction )
       emit forceAddWordToHistory( selectedText );
-    if ( result == addHeaderToHistoryAction )
+    else if ( result == addHeaderToHistoryAction )
       emit forceAddWordToHistory( webview->title() );
     else if ( result == sendWordToInputLineAction )
       emit sendWordToInputLine( selectedText );
