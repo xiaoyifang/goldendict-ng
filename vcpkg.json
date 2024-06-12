@@ -12,6 +12,7 @@
     "opencc",
     "xapian",
     "zlib",
-    "openssl"
+    "openssl",
+    "breakpad"
   ]
 }

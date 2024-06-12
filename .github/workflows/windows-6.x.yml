@@ -145,8 +145,7 @@ jobs:
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          # pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
-          pkgs: breakpad
+          manifest-dir: ${{ github.workspace }}
           triplet: x64-windows-release
           token: ${{ github.token }}
           github-binarycache: true
