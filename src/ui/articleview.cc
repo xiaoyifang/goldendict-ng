@@ -537,7 +537,7 @@ void ArticleView::jumpToDictionary( QString const & id, bool force )
 {
 
   // jump only if neceessary, or when forced
-  if ( const QString targetArticle = scrollToFromDictionaryId( id ); force || targetArticle != getCurrentArticle() ) {
+  if ( const QString targetArticle = scrollToFromDictionaryId( id ); force && targetArticle != getCurrentArticle() ) {
     setCurrentArticle( targetArticle, true );
   }
 }
