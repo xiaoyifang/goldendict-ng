@@ -2314,9 +2314,11 @@ void MainWindow::currentGroupChanged( int )
   updateSuggestionList();
 
   if ( auto view = getCurrentArticleView() ) {
-    view->setCurrentGroupId( grg_id );
-    QString word = Folding::unescapeWildcardSymbols( view->getWord() );
-    respondToTranslationRequest( word, false );
+    if ( view->getCurrentGroupId() != grg_id ) {
+      view->setCurrentGroupId( grg_id );
+      QString word = Folding::unescapeWildcardSymbols( view->getWord() );
+      respondToTranslationRequest( word, false );
+    }
   }
 
   updateCurrentGroupProperty();
