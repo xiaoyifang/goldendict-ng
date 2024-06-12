@@ -105,8 +105,8 @@ public:
                bool popupView,
                Config::Class const & cfg,
                QLineEdit const * translateLine,
-               QAction * dictionaryBarToggled      = nullptr,
-               unsigned currentGroupId = 0 );
+               QAction * dictionaryBarToggled = nullptr,
+               unsigned currentGroupId        = 0 );
 
 
   void setCurrentGroupId( unsigned currengGrgId );
