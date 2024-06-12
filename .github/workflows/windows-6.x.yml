@@ -152,6 +152,7 @@ jobs:
       - name: copy vcpkg packages into winlibs
         shell: bash
         run: |   
+          vcpkg install --x-feature=breakpad
           cp -R vcpkg/packages/breakpad_x64-windows-release/*  thirdparty/breakpad
           ls -al thirdparty/breakpad
 
