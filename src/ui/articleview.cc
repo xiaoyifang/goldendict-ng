@@ -177,8 +177,6 @@ ArticleView::ArticleView( QWidget * parent,
 
   connect( webview->page(), &QWebEnginePage::titleChanged, this, &ArticleView::handleTitleChanged );
 
-  connect( webview->page(), &QWebEnginePage::urlChanged, this, &ArticleView::handleUrlChanged );
-
   connect( webview, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
 
   connect( webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
@@ -484,24 +482,6 @@ void ArticleView::handleTitleChanged( QString const & title )
 {
   if ( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
     emit titleChanged( this, title );
-}
-
-void ArticleView::handleUrlChanged( QUrl const & url )
-{
-  QIcon icon;
-
-  if ( unsigned group = getGroup( url ) ) {
-    // Find the group's instance corresponding to the fragment value
-    for ( auto const & g : groups ) {
-      if ( g.id == group ) {
-        // Found it
-        icon = g.makeIcon();
-        break;
-      }
-    }
-  }
-
-  emit iconChanged( this, icon );
 }
 
 unsigned ArticleView::getGroup( QUrl const & url )

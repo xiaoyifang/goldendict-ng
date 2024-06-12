@@ -1760,8 +1760,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   connect( view, &ArticleView::titleChanged, this, &MainWindow::titleChanged );
 
-  connect( view, &ArticleView::iconChanged, this, &MainWindow::iconChanged );
-
   connect( view, &ArticleView::pageLoaded, this, &MainWindow::pageLoaded );
 
   connect( view, &ArticleView::updateFoundInDictsList, this, &MainWindow::updateFoundInDictsList );
@@ -2297,6 +2295,10 @@ void MainWindow::currentGroupChanged( int )
 
   if ( igrp ) {
     GlobalBroadcaster::instance()->currentGroupId = grg_id;
+    ui.tabWidget->setTabIcon( ui.tabWidget->currentIndex(), igrp->makeIcon() );
+  }
+  else {
+    ui.tabWidget->setTabIcon( ui.tabWidget->currentIndex(), QIcon() );
   }
 
   updateDictionaryBar();
