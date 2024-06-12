@@ -13,5 +13,11 @@
     "xapian",
     "zlib",
     "openssl"
-  ]
+  ],
+  "features": {
+    "breakpad": {
+      "description": "enable breakpad crash reporting",
+      "dependencies": [ "breakpad" ]
+    }
+  }
 }

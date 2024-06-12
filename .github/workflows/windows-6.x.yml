@@ -140,12 +140,16 @@ jobs:
           echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
           cat version.txt
           echo "$version"  
-
+      # rename the vcpkg.json. with this file existed,the vcpkg action will fall to manifest mode
+      - name: remove vcpkg.json
+        shell: bash
+        run: |   
+          mv vcpkg.json vcpkg.json.bak
       - name: vcpkg build
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          # pkgs: ffmpeg[core,avcodec,avformat,mp3lame,opus,speex,swresample,vorbis,fdk-aac,gpl]  breakpad
+          #manifest-dir: ${{ github.workspace }}
           pkgs: breakpad
           triplet: x64-windows-release
           token: ${{ github.token }}
