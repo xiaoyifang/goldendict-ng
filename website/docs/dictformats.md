@@ -70,7 +70,7 @@ Main file of DictD dictionary (.dict) or Xdxf dictionary (.xdxf) can be compress
 
 ### Slob
 
-GoldenDict can render formulas in TeX format via Mimetex program. Just place "mimetex.cgi" file beside GoldenDict executable file.
+GoldenDict can render TeX formulas when a slob dictionary bundles MathJax.
 
 ### GLS
 
