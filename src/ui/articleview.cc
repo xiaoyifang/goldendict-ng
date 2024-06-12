@@ -114,7 +114,7 @@ ArticleView::ArticleView( QWidget * parent,
   inspectAction( this ),
   searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
-  currentGroupId( groupComboBox_ ),
+  currentGroupId( currentGroupId_ ),
   translateLine( translateLine_ )
 {
 
