@@ -1754,7 +1754,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
                                         cfg,
                                         translateLine,
                                         dictionaryBar.toggleViewAction(),
-                                        groupList );
+                                        groupList->getCurrentGroup() );
 
   connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
 
