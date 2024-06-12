@@ -96,7 +96,7 @@ ArticleView::ArticleView( QWidget * parent,
                           Config::Class const & cfg_,
                           QLineEdit const * translateLine_,
                           QAction * dictionaryBarToggled_,
-                          GroupComboBox const * groupComboBox_ ):
+                          unsigned int currentGroupId_ ):
   QWidget( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
@@ -114,11 +114,9 @@ ArticleView::ArticleView( QWidget * parent,
   inspectAction( this ),
   searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
-  groupComboBox( groupComboBox_ ),
+  currentGroupId( currentGroupId_ ),
   translateLine( translateLine_ )
 {
-  if ( groupComboBox_ )
-    currentGroupId = groupComboBox_->getCurrentGroup();
 
   // setup GUI
   webview        = new ArticleWebView( this );
@@ -1915,9 +1913,7 @@ void ArticleView::pasteTriggered()
 
 unsigned ArticleView::getCurrentGroup()
 {
-  if ( !groupComboBox )
-    return currentGroupId;
-  return groupComboBox->getCurrentGroup();
+  return currentGroupId;
 }
 
 void ArticleView::moveOneArticleUp()
