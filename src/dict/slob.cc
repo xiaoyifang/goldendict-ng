@@ -702,9 +702,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 }
 
-SlobDictionary::~SlobDictionary()
-{
-}
+SlobDictionary::~SlobDictionary() {}
 
 void SlobDictionary::loadIcon() noexcept
 {
@@ -825,13 +823,13 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
   }
   newText.clear();
 
-  #ifdef Q_OS_WIN32
-    // Increase equations scale
-    text = QString::fromLatin1( "<script type=\"text/x-mathjax-config\">MathJax.Hub.Config({" )
-      + " SVG: { scale: 170, linebreaks: { automatic:true } }"
-      + ", \"HTML-CSS\": { scale: 210, linebreaks: { automatic:true } }"
-      + ", CommonHTML: { scale: 210, linebreaks: { automatic:true } }" + " });</script>" + text;
-  #endif
+#ifdef Q_OS_WIN32
+  // Increase equations scale
+  text = QString::fromLatin1( "<script type=\"text/x-mathjax-config\">MathJax.Hub.Config({" )
+    + " SVG: { scale: 170, linebreaks: { automatic:true } }"
+    + ", \"HTML-CSS\": { scale: 210, linebreaks: { automatic:true } }"
+    + ", CommonHTML: { scale: 210, linebreaks: { automatic:true } }" + " });</script>" + text;
+#endif
 
   // Fix outstanding elements
   text += "<br style=\"clear:both;\" />";
