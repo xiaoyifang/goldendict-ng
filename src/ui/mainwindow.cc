@@ -1606,8 +1606,6 @@ void MainWindow::updateGroupList()
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );
 
-  updateCurrentGroupProperty();
-
   updateDictionaryBar();
 
   qDebug() << "Reloading all the tabs...";
@@ -2315,28 +2313,8 @@ void MainWindow::currentGroupChanged( int )
     }
   }
 
-  updateCurrentGroupProperty();
-
   if ( ftsDlg )
     ftsDlg->setCurrentGroup( grg_id );
-}
-
-void MainWindow::updateCurrentGroupProperty()
-{
-  // We maintain currentGroup property so styles could use that to change
-  // fonts based on group names
-  Instances::Group * grp = groupInstances.findGroup( groupList->getCurrentGroup() );
-
-  if ( grp && translateLine->property( "currentGroup" ).toString() != grp->name ) {
-    translateLine->setProperty( "currentGroup", grp->name );
-    ui.wordList->setProperty( "currentGroup", grp->name );
-    QString ss = styleSheet();
-
-    // Only update stylesheet if it mentions currentGroup, as updating the
-    // stylesheet is a slow operation
-    if ( ss.contains( "currentGroup" ) )
-      setStyleSheet( ss );
-  }
 }
 
 void MainWindow::translateInputChanged( QString const & newValue )
