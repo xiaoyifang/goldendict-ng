@@ -261,8 +261,6 @@ public:
 
 signals:
 
-  void iconChanged( ArticleView *, QIcon const & icon );
-
   void titleChanged( ArticleView *, QString const & title );
 
   void pageLoaded( ArticleView * );
@@ -338,7 +336,6 @@ private slots:
   void inspectElement();
   void loadFinished( bool ok );
   void handleTitleChanged( QString const & title );
-  void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
 
   void linkHovered( const QString & link );

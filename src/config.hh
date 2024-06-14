@@ -24,10 +24,6 @@ namespace Config {
 /// Dictionaries which are temporarily disabled via the dictionary bar.
 typedef QSet< QString > MutedDictionaries;
 
-#ifdef Q_OS_WIN
-  #pragma pack( push, 4 )
-#endif
-
 /// A path where to search for the dictionaries
 struct Path
 {
@@ -918,10 +914,6 @@ struct Class
   bool notts = false;
   bool resetState;
 };
-
-#ifdef Q_OS_WIN
-  #pragma pack( pop )
-#endif
 
 /// Configuration-specific events. Some parts of the program need to react
 /// to specific changes in configuration. The object of this class is used

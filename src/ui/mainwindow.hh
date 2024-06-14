@@ -235,8 +235,6 @@ private:
 
   void mousePressEvent( QMouseEvent * event );
 
-  void updateCurrentGroupProperty();
-
 
   /// Handles backward and forward mouse buttons and
   /// returns true if the event is handled.

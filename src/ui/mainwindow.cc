@@ -705,18 +705,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
+             if ( !isActiveWindow() )
+               return;
              auto view = getCurrentArticleView();
-             if ( ( cfg.preferences.pronounceOnLoadMain || cfg.preferences.pronounceOnLoadPopup ) && view != nullptr ) {
-               if ( cfg.preferences.pronounceOnLoadPopup ) {
-                 if ( !scanPopup || !scanPopup->isActiveWindow() )
-                   return;
-                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
-               }
-               else if ( cfg.preferences.pronounceOnLoadMain ) {
-                 if ( scanPopup && scanPopup->isActiveWindow() )
-                   return;
-                 view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
-               }
+             if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
+
+               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
              }
            } );
   applyProxySettings();
@@ -1606,8 +1600,6 @@ void MainWindow::updateGroupList()
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );
 
-  updateCurrentGroupProperty();
-
   updateDictionaryBar();
 
   qDebug() << "Reloading all the tabs...";
@@ -1729,7 +1721,6 @@ void MainWindow::fillWindowsMenu()
       }
     }
   }
-  return;
 }
 
 void MainWindow::switchToWindow( QAction * act )
@@ -1759,8 +1750,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
   connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
 
   connect( view, &ArticleView::titleChanged, this, &MainWindow::titleChanged );
-
-  connect( view, &ArticleView::iconChanged, this, &MainWindow::iconChanged );
 
   connect( view, &ArticleView::pageLoaded, this, &MainWindow::pageLoaded );
 
@@ -1828,7 +1817,7 @@ void MainWindow::tabCloseRequested( int x )
   // and only then remove the old one.
 
   //activate a tab in accordance with MRU
-  if ( cfg.preferences.mruTabOrder && mruList.size() > 0 ) {
+  if ( cfg.preferences.mruTabOrder && !mruList.empty() ) {
     ui.tabWidget->setCurrentWidget( mruList.at( 0 ) );
   }
   else if ( ui.tabWidget->count() > 1 ) {
@@ -1853,11 +1842,9 @@ void MainWindow::closeCurrentTab()
 
 void MainWindow::closeAllTabs()
 {
-  while ( ui.tabWidget->count() > 1 )
+  while ( ui.tabWidget->count() > 0 ) {
     closeCurrentTab();
-
-  // close last tab
-  closeCurrentTab();
+  }
 }
 
 void MainWindow::closeRestTabs()
@@ -1897,19 +1884,13 @@ void MainWindow::switchToPrevTab()
 
 void MainWindow::backClicked()
 {
-  GD_DPRINTF( "Back\n" );
-
   ArticleView * view = getCurrentArticleView();
-
   view->back();
 }
 
 void MainWindow::forwardClicked()
 {
-  GD_DPRINTF( "Forward\n" );
-
   ArticleView * view = getCurrentArticleView();
-
   view->forward();
 }
 
@@ -2243,7 +2224,7 @@ void MainWindow::editPreferences()
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {
-      ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
+      auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
       view.syncBackgroundColorWithCfgDarkReader();
@@ -2265,9 +2246,9 @@ void MainWindow::editPreferences()
     history.setMaxSize( cfg.preferences.maxStringsInHistory );
     ui.historyPaneWidget->updateHistoryCounts();
 
-    for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
-      dictionaries[ x ]->setFTSParameters( cfg.preferences.fts );
-      dictionaries[ x ]->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
+    for ( const auto & dictionarie : dictionaries ) {
+      dictionarie->setFTSParameters( cfg.preferences.fts );
+      dictionarie->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
     }
 
     ui.fullTextSearchAction->setEnabled( cfg.preferences.fts.enabled );
@@ -2305,6 +2286,10 @@ void MainWindow::currentGroupChanged( int )
 
   if ( igrp ) {
     GlobalBroadcaster::instance()->currentGroupId = grg_id;
+    ui.tabWidget->setTabIcon( ui.tabWidget->currentIndex(), igrp->makeIcon() );
+  }
+  else {
+    ui.tabWidget->setTabIcon( ui.tabWidget->currentIndex(), QIcon() );
   }
 
   updateDictionaryBar();
@@ -2321,28 +2306,8 @@ void MainWindow::currentGroupChanged( int )
     }
   }
 
-  updateCurrentGroupProperty();
-
   if ( ftsDlg )
     ftsDlg->setCurrentGroup( grg_id );
-}
-
-void MainWindow::updateCurrentGroupProperty()
-{
-  // We maintain currentGroup property so styles could use that to change
-  // fonts based on group names
-  Instances::Group * grp = groupInstances.findGroup( groupList->getCurrentGroup() );
-
-  if ( grp && translateLine->property( "currentGroup" ).toString() != grp->name ) {
-    translateLine->setProperty( "currentGroup", grp->name );
-    ui.wordList->setProperty( "currentGroup", grp->name );
-    QString ss = styleSheet();
-
-    // Only update stylesheet if it mentions currentGroup, as updating the
-    // stylesheet is a slow operation
-    if ( ss.contains( "currentGroup" ) )
-      setStyleSheet( ss );
-  }
 }
 
 void MainWindow::translateInputChanged( QString const & newValue )
@@ -2497,7 +2462,7 @@ bool MainWindow::handleBackForwardMouseButtons( QMouseEvent * event )
 bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 {
   if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
-    QKeyEvent * ke = dynamic_cast< QKeyEvent * >( ev );
+    auto * ke = dynamic_cast< QKeyEvent * >( ev );
     // Handle F3/Shift+F3 shortcuts
     int const key = ke->key();
     if ( key == Qt::Key_F3 ) {
@@ -2532,7 +2497,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( ev->type() == QEvent::MouseButtonPress ) {
-    auto event = static_cast< QMouseEvent * >( ev );
+    auto event = dynamic_cast< QMouseEvent * >( ev );
 
     return handleBackForwardMouseButtons( event );
   }
@@ -2564,7 +2529,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   if ( obj == translateLine ) {
     if ( ev->type() == QEvent::KeyPress ) {
-      QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
+      QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
 
       if ( cfg.preferences.searchInDock ) {
         if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.wordList->count() ) {
@@ -2586,7 +2551,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   }
   else if ( obj == ui.wordList ) {
     if ( ev->type() == QEvent::KeyPress ) {
-      QKeyEvent * keyEvent = static_cast< QKeyEvent * >( ev );
+      QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
 
       if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !ui.wordList->currentRow() ) {
         ui.wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
@@ -2640,7 +2605,7 @@ void MainWindow::wordListSelectionChanged()
 {
   QList< QListWidgetItem * > selected = ui.wordList->selectedItems();
 
-  if ( selected.size() ) {
+  if ( !selected.empty() ) {
     wordListSelChanged = true;
     showTranslationFor( selected.front()->text() );
   }
@@ -3097,10 +3062,10 @@ void MainWindow::on_newTab_triggered()
 void MainWindow::setAutostart( bool autostart )
 {
 #if defined Q_OS_WIN32
-  QSettings reg( "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat );
+  QSettings reg( R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)", QSettings::NativeFormat );
   if ( autostart ) {
-    QString app_fname = QString( "\"%1\"" ).arg( QCoreApplication::applicationFilePath() );
-    app_fname.replace( "/", "\\" );
+    QString app_fname = QString( R"("%1")" ).arg( QCoreApplication::applicationFilePath() );
+    app_fname.replace( "/", R"(\)" );
     reg.setValue( ApplicationSettingName, app_fname );
   }
   else {
@@ -3139,8 +3104,8 @@ void MainWindow::on_pageSetup_triggered()
 
 void MainWindow::on_printPreview_triggered()
 {
-  QPrinter printer;
-  QPrintPreviewDialog dialog( &printer, this );
+  QPrinter _printer;
+  QPrintPreviewDialog dialog( &_printer, this );
   auto combox = dialog.findChild< QComboBox * >();
   int index   = combox->findText( "100%" );
   combox->setCurrentIndex( index );
@@ -3196,7 +3161,7 @@ static void filterAndCollectResources( QString & html,
 
     if ( resourceIncluded.insert( hash.result() ).second ) {
       // Gather resource information (url, filename) to be download later
-      downloadResources.push_back( pair< QUrl, QString >( url, folder + host + resourcePath ) );
+      downloadResources.emplace_back( url, folder + host + resourcePath );
     }
 
     // Modify original url, set to the native one
@@ -3259,7 +3224,7 @@ void MainWindow::on_saveArticle_triggered()
 
       // Convert internal links
 
-      QRegExp rx3( "href=\"(bword:|gdlookup://localhost/)([^\"]+)\"" );
+      QRegExp rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
       int pos = 0;
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_)[0-9a-f]+_" );
       while ( ( pos = rx3.indexIn( html, pos ) ) != -1 ) {
@@ -3273,7 +3238,7 @@ void MainWindow::on_saveArticle_triggered()
           anchor.replace( anchorRx, "\\1" ); // MDict anchors
         }
         name.replace( rxName, "_" );
-        name = QString( "href=\"" ) + QUrl::toPercentEncoding( name ) + ".html" + anchor + "\"";
+        name = QString( R"(href=")" ) + QUrl::toPercentEncoding( name ) + ".html" + anchor + "\"";
         html.replace( pos, rx3.cap().length(), name );
         pos += name.length();
       }
@@ -3286,7 +3251,7 @@ void MainWindow::on_saveArticle_triggered()
 
       if ( complete ) {
         QString folder = fi.absoluteDir().absolutePath() + "/" + fi.baseName() + "_files";
-        QRegExp rx1( "\"((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^\"]+)\"" );
+        QRegExp rx1( R"lit("((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^"]+)")lit" );
         QRegExp rx2( "'((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^']+)'" );
         set< QByteArray > resourceIncluded;
         vector< pair< QUrl, QString > > downloadResources;
@@ -3294,7 +3259,7 @@ void MainWindow::on_saveArticle_triggered()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        ArticleSaveProgressDialog * progressDialog = new ArticleSaveProgressDialog( this );
+        auto * progressDialog = new ArticleSaveProgressDialog( this );
         // reserve '1' for saving main html file
         int maxVal = 1;
 

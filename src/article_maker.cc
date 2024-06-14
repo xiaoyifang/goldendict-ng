@@ -601,8 +601,6 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
-        //signal finished dictionray for pronounciation
-        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
 
         dictIds << QString::fromStdString( dictId );
         string head;
@@ -688,6 +686,9 @@ void ArticleRequest::bodyFinished()
         wasUpdated = true;
 
         foundAnyDefinitions = true;
+
+        //signal finished dictionary for pronounciation
+        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
       GD_DPRINTF( "erasing.." );
       bodyRequests.pop_front();

@@ -58,6 +58,7 @@ using BtreeIndexing::IndexedWords;
 using BtreeIndexing::IndexInfo;
 
 DEF_EX_STR( exNotSlobFile, "Not an Slob file", Dictionary::Ex )
+DEF_EX( exTruncateFile, "Slob file truncated", Dictionary::Ex )
 using Dictionary::exCantReadFile;
 DEF_EX_STR( exCantDecodeFile, "Can't decode file", Dictionary::Ex )
 DEF_EX_STR( exNoCodecFound, "No text codec found", Dictionary::Ex )
@@ -323,8 +324,8 @@ void SlobFile::open( const QString & name )
     encoding = readTinyText();
 
     codec = QTextCodec::codecForName( encoding.toLatin1() );
-    if ( codec == 0 ) {
-      error = QString( "for encoding \"" ) + encoding + "\"";
+    if ( codec == nullptr ) {
+      error = QString( R"(for encoding "%1")" ).arg( encoding );
       throw exNoCodecFound( string( error.toUtf8().data() ) );
     }
 
@@ -382,6 +383,11 @@ void SlobFile::open( const QString & name )
     if ( file.read( (char *)&tmp, sizeof( tmp ) ) != sizeof( tmp ) )
       break;
     fileSize = qFromBigEndian( tmp );
+
+    //truncated file
+    if ( file.size() < fileSize ) {
+      throw exTruncateFile();
+    }
 
     if ( file.read( (char *)&cnt, sizeof( cnt ) ) != sizeof( cnt ) )
       break;
@@ -672,13 +678,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
   idxHeader( idx.read< IdxHeader >() )
 {
   // Open data file
-
-  try {
-    sf.open( dictionaryFiles[ 0 ].c_str() );
-  }
-  catch ( std::exception & e ) {
-    gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", dictionaryFiles[ 0 ].c_str(), e.what() );
-  }
+  sf.open( dictionaryFiles[ 0 ].c_str() );
 
   // Initialize the indexes
 
