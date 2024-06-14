@@ -157,6 +157,17 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
 
+  connect( &GlobalBroadcaster::instance()->pronounce_engine,
+           &PronounceEngine::emitAudio,
+           this,
+           [ this ]( auto audioUrl ) {
+             if ( !isActiveWindow() )
+               return;
+             if ( cfg.preferences.pronounceOnLoadPopup ) {
+
+               definition->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+             }
+           } );
   pinnedGeometry = cfg.popupWindowGeometry;
   if ( cfg.popupWindowGeometry.size() )
     restoreGeometry( cfg.popupWindowGeometry );
