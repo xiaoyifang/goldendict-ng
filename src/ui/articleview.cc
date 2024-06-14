@@ -244,14 +244,9 @@ ArticleView::ArticleView( QWidget * parent,
   webview->grabGesture( Gestures::GDPinchGestureType );
   webview->grabGesture( Gestures::GDSwipeGestureType );
 #endif
-  // Variable name for store current selection range
-  rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
-
 
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
-
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
-
 
   channel = new QWebChannel( webview->page() );
   agent   = new ArticleViewAgent( this );
@@ -1950,7 +1945,7 @@ void ArticleView::openSearch()
 
   // Clear any current selection
   if ( webview->selectedText().size() ) {
-    webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
+    webview->findText( "" );
   }
 
   if ( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
@@ -2203,11 +2198,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
   if ( ftsSearchMatchCase )
     flags |= QWebEnginePage::FindCaseSensitively;
-
-
-  // Restore saved highlighted selection
-  webview->page()->runJavaScript(
-    QString( "var sel=window.getSelection();sel.removeAllRanges();sel.addRange(%1);_=0;" ).arg( rangeVarName ) );
 
   if ( backwards ) {
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )

@@ -51,7 +51,6 @@ class ArticleView: public QWidget
     copyAsTextAction, inspectAction;
   bool searchIsOpened;
   bool expandOptionalParts;
-  QString rangeVarName;
 
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
