@@ -686,7 +686,7 @@ void ArticleRequest::bodyFinished()
         wasUpdated = true;
 
         foundAnyDefinitions = true;
-        
+
         //signal finished dictionary for pronounciation
         GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
