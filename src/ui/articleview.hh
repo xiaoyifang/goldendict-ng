@@ -84,7 +84,7 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QString firstAvailableText;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened  = false;
+
   bool ftsSearchMatchCase = false;
 
   QString delayedHighlightText;

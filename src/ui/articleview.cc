@@ -607,7 +607,7 @@ bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
         return true;
       }
     }
-    if ( ke->key() == Qt::Key_F3 && ftsSearchIsOpened ) {
+    if ( ke->key() == Qt::Key_F3 && ftsSearchPanel->isVisible() ) {
       if ( !ke->modifiers() ) {
         if ( ev->type() == QEvent::KeyPress )
           on_ftsSearchNext_clicked();
@@ -1930,7 +1930,7 @@ void ArticleView::openSearch()
   if ( !isVisible() )
     return;
 
-  if ( ftsSearchIsOpened )
+  if ( ftsSearchPanel->isVisible() )
     closeSearch();
 
   if ( !searchPanel->isVisible() ) {
@@ -2070,10 +2070,9 @@ bool ArticleView::closeSearch()
 
     return true;
   }
-  else if ( ftsSearchIsOpened ) {
+  if ( ftsSearchPanel->isVisible() ) {
     firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
     webview->setFocus();
@@ -2084,8 +2083,7 @@ bool ArticleView::closeSearch()
 
     return true;
   }
-  else
-    return false;
+  return false;
 }
 
 bool ArticleView::isSearchOpened()
@@ -2156,7 +2154,7 @@ void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 
 void ArticleView::performFtsFindOperation( bool backwards )
 {
-  if ( !ftsSearchIsOpened )
+  if ( !ftsSearchPanel->isVisible() )
     return;
 
   if ( firstAvailableText.isEmpty() ) {
