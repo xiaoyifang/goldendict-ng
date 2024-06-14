@@ -678,14 +678,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
   idxHeader( idx.read< IdxHeader >() )
 {
   // Open data file
-
-  try {
-    sf.open( dictionaryFiles[ 0 ].c_str() );
-  }
-  catch ( std::exception & e ) {
-    gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", dictionaryFiles[ 0 ].c_str(), e.what() );
-    return;
-  }
+  sf.open( dictionaryFiles[ 0 ].c_str() );
 
   // Initialize the indexes
 
