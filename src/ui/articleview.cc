@@ -1948,11 +1948,7 @@ void ArticleView::openSearch()
     webview->findText( "" );
   }
 
-  if ( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
-    searchPanel->lineEdit->setProperty( "noResults", false );
-
-    Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
-  }
+  Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
 }
 
 void ArticleView::on_searchPrevious_clicked()
@@ -2046,12 +2042,7 @@ void ArticleView::performFindOperation( bool backwards )
 
   findText( text, f, [ text, this ]( bool match ) {
     bool setMark = !text.isEmpty() && !match;
-
-    if ( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
-      searchPanel->lineEdit->setProperty( "noResults", setMark );
-
-      Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
-    }
+    Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
   } );
 }
 
