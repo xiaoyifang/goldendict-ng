@@ -1958,18 +1958,18 @@ void ArticleView::openSearch()
 void ArticleView::on_searchPrevious_clicked()
 {
   if ( searchIsOpened )
-    performFindOperation( false, true );
+    performFindOperation( true );
 }
 
 void ArticleView::on_searchNext_clicked()
 {
   if ( searchIsOpened )
-    performFindOperation( false, false );
+    performFindOperation( false );
 }
 
 void ArticleView::on_searchText_textEdited()
 {
-  performFindOperation( true, false );
+  performFindOperation( false );
 }
 
 void ArticleView::on_searchText_returnPressed()
@@ -1984,7 +1984,7 @@ void ArticleView::on_searchCloseButton_clicked()
 
 void ArticleView::on_searchCaseSensitive_clicked()
 {
-  performFindOperation( true, false );
+  performFindOperation( false );
 }
 
 //the id start with "gdform-"
@@ -2032,14 +2032,9 @@ void ArticleView::doubleClicked( QPoint pos )
 }
 
 
-void ArticleView::performFindOperation( bool restart, bool backwards )
+void ArticleView::performFindOperation( bool backwards )
 {
   QString text = searchPanel->lineEdit->text();
-
-  if ( restart ) {
-    // Clear any current selection
-    webview->findText( "" );
-  }
 
   QWebEnginePage::FindFlags f( 0 );
 
