@@ -158,8 +158,6 @@ private:
 
   bool wordListSelChanged;
 
-  bool wasMaximized; // Window state before minimization
-
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
