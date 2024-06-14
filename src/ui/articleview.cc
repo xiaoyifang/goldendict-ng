@@ -116,12 +116,12 @@ ArticleView::ArticleView( QWidget * parent,
   currentGroupId( currentGroupId_ ),
   translateLine( translateLine_ )
 {
-
   // setup GUI
   webview        = new ArticleWebView( this );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
-
+  searchPanel->hide();
+  ftsSearchPanel->hide();
   // Layout
   auto * mainLayout = new QVBoxLayout( this );
   mainLayout->addWidget( webview );
@@ -2064,6 +2064,7 @@ void ArticleView::findText( QString & text,
 
 bool ArticleView::closeSearch()
 {
+  webview->findText( "" );
   if ( searchPanel->isVisible() ) {
     searchPanel->hide();
     webview->setFocus();
