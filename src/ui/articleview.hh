@@ -49,7 +49,7 @@ class ArticleView: public QWidget
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
     copyAsTextAction, inspectAction;
-  bool searchIsOpened;
+
   bool expandOptionalParts;
 
   /// An action used to create Anki notes.
@@ -417,10 +417,6 @@ private:
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
-
-protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject

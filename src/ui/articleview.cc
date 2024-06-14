@@ -112,7 +112,6 @@ ArticleView::ArticleView( QWidget * parent,
   selectCurrentArticleAction( this ),
   copyAsTextAction( this ),
   inspectAction( this ),
-  searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
   currentGroupId( currentGroupId_ ),
   translateLine( translateLine_ )
@@ -1934,10 +1933,9 @@ void ArticleView::openSearch()
   if ( ftsSearchIsOpened )
     closeSearch();
 
-  if ( !searchIsOpened ) {
+  if ( !searchPanel->isVisible() ) {
     searchPanel->show();
     searchPanel->lineEdit->setText( getTitle() );
-    searchIsOpened = true;
   }
 
   searchPanel->lineEdit->setFocus();
@@ -1953,13 +1951,13 @@ void ArticleView::openSearch()
 
 void ArticleView::on_searchPrevious_clicked()
 {
-  if ( searchIsOpened )
+  if ( searchPanel->isVisible() )
     performFindOperation( true );
 }
 
 void ArticleView::on_searchNext_clicked()
 {
-  if ( searchIsOpened )
+  if ( searchPanel->isVisible() )
     performFindOperation( false );
 }
 
@@ -2066,10 +2064,9 @@ void ArticleView::findText( QString & text,
 
 bool ArticleView::closeSearch()
 {
-  if ( searchIsOpened ) {
+  if ( searchPanel->isVisible() ) {
     searchPanel->hide();
     webview->setFocus();
-    searchIsOpened = false;
 
     return true;
   }
@@ -2093,18 +2090,7 @@ bool ArticleView::closeSearch()
 
 bool ArticleView::isSearchOpened()
 {
-  return searchIsOpened;
-}
-
-void ArticleView::showEvent( QShowEvent * ev )
-{
-  QWidget::showEvent( ev );
-
-  if ( !searchIsOpened )
-    searchPanel->hide();
-
-  if ( !ftsSearchIsOpened )
-    ftsSearchPanel->hide();
+  return searchPanel->isVisible();
 }
 
 void ArticleView::copyAsText()
