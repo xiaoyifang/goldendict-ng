@@ -2166,9 +2166,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
   QWebEnginePage::FindFlags flags( 0 );
 
-  if ( ftsSearchMatchCase )
-    flags |= QWebEnginePage::FindCaseSensitively;
-
   if ( backwards ) {
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
     webview->findText( firstAvailableText,

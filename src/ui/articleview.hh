@@ -85,8 +85,6 @@ class ArticleView: public QWidget
   QString firstAvailableText;
   QStringList uniqueMatches;
 
-  bool ftsSearchMatchCase = false;
-
   QString delayedHighlightText;
 
   void highlightFTSResults();
