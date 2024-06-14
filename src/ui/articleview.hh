@@ -363,7 +363,6 @@ private slots:
   void on_searchText_returnPressed();
   void on_searchCloseButton_clicked();
   void on_searchCaseSensitive_clicked();
-  void on_highlightAllButton_clicked();
 
   void on_ftsSearchPrevious_clicked();
   void on_ftsSearchNext_clicked();
@@ -412,7 +411,7 @@ private:
 
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
-  void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
+  void performFindOperation( bool restart, bool backwards );
 
   /// Returns the comma-separated list of dictionary ids which should be muted
   /// for the given group. If there are none, returns empty string.

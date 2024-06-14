@@ -141,7 +141,6 @@ ArticleView::ArticleView( QWidget * parent,
   connect( searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
   connect( searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
   connect( searchPanel->caseSensitive, &QPushButton::clicked, this, &ArticleView::on_searchCaseSensitive_clicked );
-  connect( searchPanel->highlightAll, &QPushButton::clicked, this, &ArticleView::on_highlightAllButton_clicked );
   connect( searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
   connect( searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
   connect( ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
@@ -398,8 +397,6 @@ void ArticleView::showDefinition( QString const & word,
   // Any search opened is probably irrelevant now
   closeSearch();
 
-  // Clear highlight all button selection
-  searchPanel->highlightAll->setChecked( false );
   webview->setCursor( Qt::WaitCursor );
 
   load( req );
@@ -1995,11 +1992,6 @@ void ArticleView::on_searchCaseSensitive_clicked()
   performFindOperation( true, false );
 }
 
-void ArticleView::on_highlightAllButton_clicked()
-{
-  performFindOperation( false, false, true );
-}
-
 //the id start with "gdform-"
 void ArticleView::onJsActiveArticleChanged( QString const & id )
 {
@@ -2045,31 +2037,13 @@ void ArticleView::doubleClicked( QPoint pos )
 }
 
 
-void ArticleView::performFindOperation( bool restart, bool backwards, bool checkHighlight )
+void ArticleView::performFindOperation( bool restart, bool backwards )
 {
   QString text = searchPanel->lineEdit->text();
 
-  if ( restart || checkHighlight ) {
-    if ( restart ) {
-      // Anyone knows how we reset the search position?
-      // For now we resort to this hack:
-      if ( webview->selectedText().size() ) {
-        webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
-      }
-    }
-
-    QWebEnginePage::FindFlags f( 0 );
-
-    if ( searchPanel->caseSensitive->isChecked() )
-      f |= QWebEnginePage::FindCaseSensitively;
-
-    webview->findText( "", f );
-
-    if ( searchPanel->highlightAll->isChecked() )
-      webview->findText( text, f );
-
-    if ( checkHighlight )
-      return;
+  if ( restart ) {
+    // Clear any current selection
+    webview->findText( "" );
   }
 
   QWebEnginePage::FindFlags f( 0 );
