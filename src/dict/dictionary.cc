@@ -378,6 +378,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   if ( css.isEmpty() )
     return;
 
+  //comment syntax like:/* */
   QRegularExpression reg1( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
   QRegularExpression reg2( R"([ \*\>\+,;:\[\{\]])" );
   QRegularExpression reg3( "[,;\\{]" );
@@ -392,6 +393,9 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
 
   // Strip comments
   css.replace( reg1, QString() );
+
+  //replace the pseudo root selector with the prefix,like ":root  {"  to  "html{"
+  css.replace( QRegularExpression( R"(:root\s*{)" ), "html{" );
 
   for ( ;; ) {
     if ( currentPos >= css.length() )

@@ -688,10 +688,10 @@ void GlsDictionary::loadArticle( uint32_t address, string & headword, string & a
 
 QString & GlsDictionary::filterResource( QString & article )
 {
-  QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp|qrcx):))",
-                            QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
-  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
-                             QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
+  QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp|qrcx):))",
+                            QRegularExpression::CaseInsensitiveOption );
+  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                             QRegularExpression::CaseInsensitiveOption );
 
   article.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
     .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
@@ -742,8 +742,8 @@ QString & GlsDictionary::filterResource( QString & article )
   // Handle "audio" tags
 
   QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                              QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption
-                                | QRegularExpression::InvertedGreedinessOption );
+                              QRegularExpression::CaseInsensitiveOption
+                                | QRegularExpression::DotMatchesEverythingOption );
 
 
   pos = 0;
