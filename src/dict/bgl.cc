@@ -923,7 +923,7 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
   QRegularExpression charsetExp(
     R"(<\s*charset\s+c\s*=\s*["']?t["']?\s*>((?:\s*[0-9a-fA-F]+\s*;\s*)*)<\s*/\s*charset\s*>)",
-    QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
+    QRegularExpression::CaseInsensitiveOption );
 
   QRegularExpression oneValueExp( "\\s*([0-9a-fA-F]+)\\s*;" );
   QString result;
