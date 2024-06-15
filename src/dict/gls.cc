@@ -742,7 +742,8 @@ QString & GlsDictionary::filterResource( QString & article )
   // Handle "audio" tags
 
   QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                              QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption );
+                              QRegularExpression::CaseInsensitiveOption
+                                | QRegularExpression::DotMatchesEverythingOption );
 
 
   pos = 0;
