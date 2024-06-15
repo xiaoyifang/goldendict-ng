@@ -38,8 +38,7 @@ QRegularExpression Mdx::anchorIdRe2( R"(([\s"'](?:name|id)\s*=)\s*(?=[^"'])([^\s
 QRegularExpression Mdx::anchorLinkRe( R"(([\s"']href\s*=\s*["'])entry://#)",
                                       QRegularExpression::CaseInsensitiveOption );
 const QRegularExpression Mdx::audioRe( R"(([\s"']href\s*=)\s*(["'])sound://([^">]+)\2)",
-                                       QRegularExpression::CaseInsensitiveOption
-                                         | QRegularExpression::InvertedGreedinessOption );
+                                       QRegularExpression::CaseInsensitiveOption );
 const QRegularExpression Mdx::stylesRe(
   R"(([\s"']href\s*=)\s*(["'])(?!\s*\b(?:(?:bres|https?|ftp)://|(?:data|javascript):))(?:file://)?[\x00-\x1f\x7f]*\.*/?([^">]+)\2)",
   QRegularExpression::CaseInsensitiveOption );
