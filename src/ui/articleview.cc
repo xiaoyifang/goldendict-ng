@@ -220,6 +220,7 @@ ArticleView::ArticleView( QWidget * parent,
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
