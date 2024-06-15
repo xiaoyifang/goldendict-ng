@@ -49,9 +49,8 @@ class ArticleView: public QWidget
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
     copyAsTextAction, inspectAction;
-  bool searchIsOpened;
+
   bool expandOptionalParts;
-  QString rangeVarName;
 
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
@@ -85,8 +84,6 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QString firstAvailableText;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened  = false;
-  bool ftsSearchMatchCase = false;
 
   QString delayedHighlightText;
 
@@ -363,7 +360,6 @@ private slots:
   void on_searchText_returnPressed();
   void on_searchCloseButton_clicked();
   void on_searchCaseSensitive_clicked();
-  void on_highlightAllButton_clicked();
 
   void on_ftsSearchPrevious_clicked();
   void on_ftsSearchNext_clicked();
@@ -412,17 +408,13 @@ private:
 
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
-  void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
+  void performFindOperation( bool backwards );
 
   /// Returns the comma-separated list of dictionary ids which should be muted
   /// for the given group. If there are none, returns empty string.
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
-
-protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject

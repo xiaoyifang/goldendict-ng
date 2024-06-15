@@ -980,12 +980,7 @@ void MainWindow::refreshTranslateLine()
 
   // Visually mark the input line to mark if there's no results
   bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
-
-  if ( translateLine->property( "noResults" ).toBool() != setMark ) {
-    translateLine->setProperty( "noResults", setMark );
-
-    Utils::Widget::setNoResultColor( translateLine, setMark );
-  }
+  Utils::Widget::setNoResultColor( translateLine, setMark );
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m )
@@ -2345,11 +2340,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     ui.wordList->unsetCursor();
 
     // Reset the noResults mark if it's on right now
-    if ( translateLine->property( "noResults" ).toBool() ) {
-      translateLine->setProperty( "noResults", false );
-
-      Utils::Widget::setNoResultColor( translateLine, false );
-    }
+    Utils::Widget::setNoResultColor( translateLine, false );
     return;
   }
 
