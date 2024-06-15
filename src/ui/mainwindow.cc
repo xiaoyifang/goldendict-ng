@@ -2749,7 +2749,6 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   if ( !isVisible() ) {
     show();
 
-    qApp->setActiveWindow( this );
     activateWindow();
     raise();
     shown = true;
@@ -2764,10 +2763,9 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    qApp->setActiveWindow( this );
+    activateWindow();
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
-      activateWindow();
     }
     shown = true;
   }
