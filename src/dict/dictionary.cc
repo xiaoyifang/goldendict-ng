@@ -395,7 +395,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   css.replace( reg1, QString() );
 
   //replace the pseudo root selector with the prefix,like ":root  {"  to  "html{"
-  css.replace( QRegularExpression(R"(:root\s*{)"), "html{" );
+  css.replace( QRegularExpression( R"(:root\s*{)" ), "html{" );
 
   for ( ;; ) {
     if ( currentPos >= css.length() )
