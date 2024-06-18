@@ -24,7 +24,7 @@ markdown_extensions:
 
 nav:
   - Getting started: index.md
-  - Installation : install.md
+  - Download & Install: install.md
   - Dictionary Formats: dictformats.md
   - Manage Dictionaries: 
       - Sources: manage_sources.md
@@ -47,6 +47,7 @@ nav:
       - OCR Integration: howto/ocr.md
       - Wayland: topic_wayland.md
       - Debug dictionary JS: howto/how to debug dictionary js.md
+      - Flatpak/FlatHub: topic_flatpak.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Development Info:
     - Start develop: developer.md
