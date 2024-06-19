@@ -219,7 +219,7 @@ QIcon LangCoder::icon( quint32 _code )
 {
   if ( auto code = intToCode2( _code ); code2Exists( code ) ) {
     const GDLangCode & lc = LANG_CODE_MAP[ code ];
-    return QIcon( ":/flags/" + QString( lc.code ) + ".png" );
+    return QIcon( ":/flags/" + QString( lc.code2 ) + ".png" );
   }
 
   return {};
@@ -243,7 +243,7 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
 
   for ( auto const & lc : LANG_CODE_MAP ) {
     if ( strcasecmp( langFolded.c_str(), lc.lang.c_str() ) == 0 ) {
-      return code2toInt( lc.code.toStdString().c_str() );
+      return code2toInt( lc.code2.toStdString().c_str() );
     }
   }
 
@@ -254,7 +254,7 @@ quint32 LangCoder::findIdForLanguageCode3( std::string const & code )
 {
   for ( auto const & lc : LANG_CODE_MAP ) {
     if ( code == lc.code3 ) {
-      return code2toInt( lc.code );
+      return code2toInt( lc.code2 );
     }
   }
 
@@ -273,7 +273,7 @@ quint32 LangCoder::guessId( const QString & lang )
   if ( lstr.size() >= 3 ) {
     for ( auto const & lc : LANG_CODE_MAP ) {
       if ( lstr == ( lstr.size() == 3 ? QString::fromStdString( lc.code3 ) : QString::fromStdString( lc.lang ) ) ) {
-        return code2toInt( lc.code );
+        return code2toInt( lc.code2 );
       }
     }
   }
@@ -311,7 +311,7 @@ bool LangCoder::isLanguageRTL( quint32 _code )
   if ( auto code = intToCode2( _code ); code2Exists( code ) ) {
     GDLangCode lc = LANG_CODE_MAP[ code ];
     if ( lc.isRTL < 0 ) {
-      lc.isRTL = static_cast< int >( QLocale( lc.code ).textDirection() == Qt::RightToLeft );
+      lc.isRTL = static_cast< int >( QLocale( lc.code2 ).textDirection() == Qt::RightToLeft );
     }
     return lc.isRTL != 0;
   }
