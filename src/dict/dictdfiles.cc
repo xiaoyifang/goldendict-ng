@@ -695,12 +695,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
-        // read languages
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        // read languages from dictioanry file name
+        auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findIdsForFilename( QString::fromStdString( nameFromFileName( dictFiles[ 0 ] ) ) );
+          langs = LangCoder::findLangIdPairFromStr( QString::fromStdString( dictionaryName ) );
         }
 
         idxHeader.langFrom = langs.first;

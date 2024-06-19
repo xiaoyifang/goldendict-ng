@@ -208,19 +208,19 @@ QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
 
 QString LangCoder::decode( quint32 _code )
 {
-  if ( auto code = intToCode2( _code ); exists( code ) )
+  if ( auto code = intToCode2( _code ); code2Exists( code ) )
     return QString::fromStdString( LANG_CODE_MAP[ code ].lang );
 
   return {};
 }
-bool LangCoder::exists( const QString & _code )
+bool LangCoder::code2Exists( const QString & _code )
 {
   return LANG_CODE_MAP.contains( _code );
 }
 
 QIcon LangCoder::icon( quint32 _code )
 {
-  if ( auto code = intToCode2( _code ); exists( code ) ) {
+  if ( auto code = intToCode2( _code ); code2Exists( code ) ) {
     const GDLangCode & lc = LANG_CODE_MAP[ code ];
     return QIcon( ":/flags/" + QString( lc.code ) + ".png" );
   }
@@ -285,7 +285,7 @@ quint32 LangCoder::guessId( const QString & lang )
   return code2toInt( lstr.left( 2 ).toLatin1().data() );
 }
 
-QPair< quint32, quint32 > LangCoder::findIdsForName( QString const & name )
+std::pair< quint32, quint32 > LangCoder::findLangIdPairFromStr( QString const & name )
 {
   QString nameFolded = "|" + name.toCaseFolded() + "|";
   QRegExp reg( "[^a-z]([a-z]{2,3})-([a-z]{2,3})[^a-z]" );
@@ -304,14 +304,14 @@ QPair< quint32, quint32 > LangCoder::findIdsForName( QString const & name )
   return QPair< quint32, quint32 >( 0, 0 );
 }
 
-QPair< quint32, quint32 > LangCoder::findIdsForFilename( QString const & name )
+static std::pair< quint32, quint32 > findLangIdPairFromPath( std::string const & p )
 {
-  return findIdsForName( QFileInfo( name ).fileName() );
+  return LangCoder::findLangIdPairFromStr( QFileInfo( QString::fromStdString( p ) ).fileName() );
 }
 
 bool LangCoder::isLanguageRTL( quint32 _code )
 {
-  if ( auto code = intToCode2( _code ); exists( code ) ) {
+  if ( auto code = intToCode2( _code ); code2Exists( code ) ) {
     GDLangCode lc = LANG_CODE_MAP[ code ];
     if ( lc.isRTL < 0 ) {
       lc.isRTL = static_cast< int >( QLocale( lc.code ).textDirection() == Qt::RightToLeft );

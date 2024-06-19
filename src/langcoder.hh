@@ -39,8 +39,9 @@ public:
 
   static quint32 findIdForLanguageCode3( std::string const & );
 
-  static QPair< quint32, quint32 > findIdsForName( QString const & );
-  static QPair< quint32, quint32 > findIdsForFilename( QString const & );
+  /// find id pairs like en-zh in dictioanry name
+  static std::pair< quint32, quint32 > findLangIdPairFromStr( QString const & );
+  static std::pair< quint32, quint32 > findLangIdPairFromPath( std::string const & );
 
   static quint32 guessId( const QString & lang );
 
@@ -54,7 +55,7 @@ public:
 
 private:
   static QMap< QString, GDLangCode > LANG_CODE_MAP;
-  static bool exists( const QString & _code );
+  static bool code2Exists( const QString & _code );
 };
 
 ///////////////////////////////////////////////////////////////////////////////

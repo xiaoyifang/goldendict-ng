@@ -1318,7 +1318,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.articleCount = articleCount;
         idxHeader.wordCount    = wordCount;
 
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
         idxHeader.langFrom = langs.first;
         idxHeader.langTo   = langs.second;
