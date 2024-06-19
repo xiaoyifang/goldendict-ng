@@ -1903,12 +1903,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.bookNameSize         = ifo.bookname.size();
         idxHeader.sameTypeSequenceSize = ifo.sametypesequence.size();
 
-        // read languages
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFileName ) );
-
+        // read languages from dictioanry file name
+        auto langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictFileName ) );
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findIdsForFilename( QString::fromStdString( ifo.bookname ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( ifo.bookname ) );
         }
 
         idxHeader.langFrom = langs.first;

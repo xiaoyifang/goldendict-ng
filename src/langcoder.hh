@@ -7,7 +7,7 @@
 
 struct GDLangCode
 {
-  QString code;      // ISO 639-1
+  QString code2;     // ISO 639-1 -> always 2 letters thus code2
   std::string code3; // ISO 639-2B ( http://www.loc.gov/standards/iso639-2/ )
   int isRTL;         // Right-to-left writing; 0 - no, 1 - yes, -1 - let Qt define
   std::string lang;  // Language name in English
@@ -39,8 +39,9 @@ public:
 
   static quint32 findIdForLanguageCode3( std::string const & );
 
-  static QPair< quint32, quint32 > findIdsForName( QString const & );
-  static QPair< quint32, quint32 > findIdsForFilename( QString const & );
+  /// find id pairs like en-zh in dictioanry name
+  static QPair< quint32, quint32 > findLangIdPairFromName( QString const & );
+  static QPair< quint32, quint32 > findLangIdPairFromPath( std::string const & );
 
   static quint32 guessId( const QString & lang );
 
@@ -54,7 +55,7 @@ public:
 
 private:
   static QMap< QString, GDLangCode > LANG_CODE_MAP;
-  static bool exists( const QString & _code );
+  static bool code2Exists( const QString & _code );
 };
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1422,12 +1422,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
       }
 
-      // read languages
-      QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( fileName ) );
+      // read languages from dictioanry's file name
+      auto langs = LangCoder::findLangIdPairFromPath( fileName );
 
-      // if no languages found, try dictionary's name
+      // if no languages found, try dictionary name
       if ( langs.first == 0 || langs.second == 0 ) {
-        langs = LangCoder::findIdsForFilename( parser.title() );
+        langs = LangCoder::findLangIdPairFromName( parser.title() );
       }
 
       idxHeader.langFrom = langs.first;

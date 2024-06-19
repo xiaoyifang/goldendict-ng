@@ -1367,11 +1367,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           idxHeader.langTo   = LangCoder::findIdForLanguage( scanner.getLangTo() );
           if ( idxHeader.langFrom == 0 && idxHeader.langTo == 0 ) {
             // if no languages found, try dictionary's file name
-            QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+            auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
             // if no languages found, try dictionary's name
             if ( langs.first == 0 || langs.second == 0 ) {
-              langs = LangCoder::findIdsForFilename( QString::fromStdString( dictionaryName ) );
+              langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictionaryName ) );
             }
             idxHeader.langFrom = langs.first;
             idxHeader.langTo   = langs.second;
