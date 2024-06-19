@@ -57,12 +57,12 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake .   -DWITH_FFMPEG_PLAYER=OFF 
+          cmake .
           cmake --build .
 
   job2:
     name: windows Build and analyze
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
       - uses: actions/setup-python@v3
         with:
@@ -84,7 +84,7 @@ jobs:
 
       - name: Run build-wrapper
         run: |
-          cmake -S .   -DWITH_FFMPEG_PLAYER=OFF 
+          cmake -S . -DWITH_FFMPEG_PLAYER=OFF
           cmake --build . --config Release
   job3:
     name: macos Build and analyze
@@ -137,7 +137,6 @@ jobs:
           brew install icu4c
       - name: Run build-wrapper
         run: |
-          export PKG_CONFIG_PATH=/opt/homebrew/opt/icu4c/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:"$PKG_CONFIG_PATH"
-          cmake .   -DWITH_FFMPEG_PLAYER=OFF 
+          cmake .
           cmake --build .                  
       
