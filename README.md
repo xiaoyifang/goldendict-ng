@@ -27,12 +27,13 @@ dictionaries.
 - support >4GB dictionary
 - support highdpi screen resolution
 - built with xapian as fulltext engine
-- support Qt5.15.2 and higher ,include latest Qt6
+- support latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
 - anki integration
 - dark theme
 - daily auto release support
 - lots of bug fixes and improvements
+- general code improvements for easier development
 
 ## Help GoldenDict's Development
 
