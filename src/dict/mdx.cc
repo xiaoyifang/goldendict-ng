@@ -1427,7 +1427,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       // if no languages found, try dictionary name
       if ( langs.first == 0 || langs.second == 0 ) {
-        langs = LangCoder::findLangIdPairFromStr( parser.title() );
+        langs = LangCoder::findLangIdPairFromName( parser.title() );
       }
 
       idxHeader.langFrom = langs.first;

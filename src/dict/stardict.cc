@@ -1904,10 +1904,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.sameTypeSequenceSize = ifo.sametypesequence.size();
 
         // read languages from dictioanry file name
-        auto langs = LangCoder::findLangIdPairFromStr( QString::fromStdString( dictFileName ) );
+        auto langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictFileName ) );
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findLangIdPairFromStr( QString::fromStdString( ifo.bookname ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( ifo.bookname ) );
         }
 
         idxHeader.langFrom = langs.first;

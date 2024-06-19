@@ -661,7 +661,7 @@ void DictGroupsWidget::addAutoGroups()
       // Attempt to find language pair in dictionary name
 
       const QPair< quint32, quint32 > ids =
-        LangCoder::findLangIdPairFromStr( QString::fromUtf8( dict->getName().c_str() ) );
+        LangCoder::findLangIdPairFromName( QString::fromUtf8( dict->getName().c_str() ) );
       idFrom                              = ids.first;
       idTo                                = ids.second;
     }

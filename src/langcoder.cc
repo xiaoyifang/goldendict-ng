@@ -7,14 +7,11 @@
 
 #include <QFileInfo>
 #include <QLocale>
+#include <QRegularExpression>
 
 #ifdef _MSC_VER
   #include <stub_msvc.h>
 #endif
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#endif
-
 // Language codes
 
 QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
@@ -285,28 +282,28 @@ quint32 LangCoder::guessId( const QString & lang )
   return code2toInt( lstr.left( 2 ).toLatin1().data() );
 }
 
-std::pair< quint32, quint32 > LangCoder::findLangIdPairFromStr( QString const & name )
+
+QPair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & name )
 {
-  QString nameFolded = "|" + name.toCaseFolded() + "|";
-  QRegExp reg( "[^a-z]([a-z]{2,3})-([a-z]{2,3})[^a-z]" );
-  reg.setMinimal( true );
-  int off = 0;
+  static QRegularExpression reg( "(?=([a-z]{2,3})-([a-z]{2,3}))", QRegularExpression::CaseInsensitiveOption );
 
-  while ( reg.indexIn( nameFolded, off ) >= 0 ) {
-    quint32 from = guessId( reg.cap( 1 ) );
-    quint32 to   = guessId( reg.cap( 2 ) );
-    if ( from && to )
-      return QPair< quint32, quint32 >( from, to );
+  auto matches = reg.globalMatch( name );
+  while ( matches.hasNext() ) {
+    auto m = matches.next();
 
-    off += reg.matchedLength();
+    auto fromId = guessId( m.captured( 1 ).toLower() );
+    auto toId   = guessId( m.captured( 2 ).toLower() );
+
+    if ( code2Exists( intToCode2( fromId ) ) && code2Exists( intToCode2( toId ) ) ) {
+      return { fromId, toId };
+    }
   }
-
-  return QPair< quint32, quint32 >( 0, 0 );
+  return { 0, 0 };
 }
 
-static std::pair< quint32, quint32 > findLangIdPairFromPath( std::string const & p )
+QPair< quint32, quint32 > LangCoder::findLangIdPairFromPath( std::string const & p )
 {
-  return LangCoder::findLangIdPairFromStr( QFileInfo( QString::fromStdString( p ) ).fileName() );
+  return findLangIdPairFromName( QFileInfo( QString::fromStdString( p ) ).fileName() );
 }
 
 bool LangCoder::isLanguageRTL( quint32 _code )

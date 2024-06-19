@@ -700,7 +700,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findLangIdPairFromStr( QString::fromStdString( dictionaryName ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictionaryName ) );
         }
 
         idxHeader.langFrom = langs.first;
