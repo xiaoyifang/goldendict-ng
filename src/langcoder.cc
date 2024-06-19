@@ -218,16 +218,6 @@ bool LangCoder::exists( const QString & _code )
   return LANG_CODE_MAP.contains( _code );
 }
 
-QIcon LangCoder::icon( quint32 _code )
-{
-  if ( auto code = intToCode2( _code ); exists( code ) ) {
-    const GDLangCode & lc = LANG_CODE_MAP[ code ];
-    return QIcon( ":/flags/" + QString( lc.code ) + ".png" );
-  }
-
-  return {};
-}
-
 QString LangCoder::intToCode2( quint32 val )
 {
   if ( !val || val == 0xFFffFFff )
