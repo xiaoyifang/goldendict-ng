@@ -22,7 +22,7 @@ int HeadwordListModel::totalCount() const
 
 bool HeadwordListModel::isFinish() const
 {
-  return words.size() >= totalSize;
+  return finished||(words.size() >= totalSize);
 }
 
 // export headword
@@ -37,6 +37,9 @@ QString HeadwordListModel::getRow( int row )
 
 void HeadwordListModel::setFilter( QRegularExpression reg )
 {
+  if(finished){
+    return;
+  }
   if ( reg.pattern().isEmpty() ) {
     filtering = false;
     return;
@@ -131,7 +134,7 @@ QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
 
 bool HeadwordListModel::canFetchMore( const QModelIndex & parent ) const
 {
-  if ( parent.isValid() || filtering )
+  if ( parent.isValid() || filtering || finished )
     return false;
   return ( words.size() < totalSize );
 }
@@ -140,6 +143,19 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
 {
   if ( parent.isValid() || filtering )
     return;
+
+//arbitrary number
+  if(totalSize <500000){
+    finished = true;
+
+    beginInsertRows( QModelIndex(), 0, totalSize-1 );
+    _dict->getHeadwords( &words );
+    
+    endInsertRows();
+    emit numberPopulated( words.size() );
+    return;
+  }
+
 
   QSet< QString > headword;
   QMutexLocker _( &lock );
@@ -192,4 +208,5 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
 {
   _dict     = dict;
   totalSize = _dict->getWordCount();
+  maxElementSizePerNode = sqrt( totalSize ) +1;
 }
