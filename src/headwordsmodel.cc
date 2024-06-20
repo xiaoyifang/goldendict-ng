@@ -6,7 +6,8 @@ HeadwordListModel::HeadwordListModel( QObject * parent ):
   filtering( false ),
   totalSize( 0 ),
   index( 0 ),
-  ptr( nullptr )
+  ptr( nullptr ),
+  finished( false )
 {
 }
 
@@ -149,8 +150,8 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
     finished = true;
 
     beginInsertRows( QModelIndex(), 0, totalSize-1 );
-    _dict->getHeadwords( &words );
-    
+    _dict->getHeadwords( words );
+
     endInsertRows();
     emit numberPopulated( words.size() );
     return;
