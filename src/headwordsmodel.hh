@@ -24,6 +24,7 @@ public:
   int getCurrentIndex() const;
   bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
+  void setMaxFilterResults( int _maxFilterResults );
 signals:
   void numberPopulated( int number );
 
@@ -43,6 +44,7 @@ private:
   bool filtering;
   QStringList fileSortedList;
   long totalSize;
+  int maxFilterResults;
   long maxElementSizePerNode;
   bool finished;
   Dictionary::Class * _dict;

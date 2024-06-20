@@ -5,9 +5,9 @@ HeadwordListModel::HeadwordListModel( QObject * parent ):
   QAbstractListModel( parent ),
   filtering( false ),
   totalSize( 0 ),
+  finished( false ),
   index( 0 ),
-  ptr( nullptr ),
-  finished( false )
+  ptr( nullptr )
 {
 }
 
@@ -55,7 +55,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   }
   filtering = true;
   filterWords.clear();
-  auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), 500 );
+  auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), maxFilterResults );
   connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
   queuedRequests.push_back( sr );
 }
@@ -168,6 +168,11 @@ int HeadwordListModel::getCurrentIndex() const
 bool HeadwordListModel::containWord( const QString & word )
 {
   return hashedWords.contains( word );
+}
+
+void HeadwordListModel::setMaxFilterResults( int _maxFilterResults )
+{
+  this->maxFilterResults = _maxFilterResults;
 }
 
 QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )

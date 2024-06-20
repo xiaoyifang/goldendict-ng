@@ -55,6 +55,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   ui.matchCase->setChecked( cfg.headwordsDialog.matchCase );
 
   model = std::make_shared< HeadwordListModel >();
+  model->setMaxFilterResults( ui.filterMaxResult->value() );
   proxy = new QSortFilterProxyModel( this );
 
   proxy->setSourceModel( model.get() );
@@ -107,6 +108,9 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   connect( ui.headersListView, &QAbstractItemView::clicked, this, &DictHeadwords::itemClicked );
 
   connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
+  connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ this ]( int _value ) {
+    model->setMaxFilterResults( _value );
+  } );
 
   ui.headersListView->installEventFilter( this );
 
