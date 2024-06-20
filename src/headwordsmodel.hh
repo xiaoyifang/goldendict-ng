@@ -27,7 +27,6 @@ public:
   QSet< QString > getRemainRows( int & nodeIndex );
 signals:
   void numberPopulated( int number );
-  void finished( int number );
 
 public slots:
   void setDict( Dictionary::Class * dict );
