@@ -21,7 +21,6 @@ public:
   QString getRow( int row );
   void setFilter( QRegularExpression );
   void appendWord( const QString & word );
-  void addMatches( QStringList matches );
   int getCurrentIndex() const;
   bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
@@ -38,6 +37,7 @@ protected:
 
 private:
   QStringList words;
+  QStringList original_words;
   QSet< QString > hashedWords;
   QStringList filterWords;
   bool filtering;
