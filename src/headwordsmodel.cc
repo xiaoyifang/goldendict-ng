@@ -141,7 +141,7 @@ bool HeadwordListModel::canFetchMore( const QModelIndex & parent ) const
 
 void HeadwordListModel::fetchMore( const QModelIndex & parent )
 {
-  if ( parent.isValid() || filtering )
+  if ( parent.isValid() || filtering || finished)
     return;
 
 //arbitrary number
