@@ -306,13 +306,13 @@ void DictHeadwords::loadAllSortedWords( QProgressDialog & progress, QTextStream 
       continue;
 
     allHeadwords.insert( value.toString() );
-    }
+  }
 
-    for ( const auto & item : allHeadwords ) {
-      progress.setValue( totalCount++ );
+  for ( const auto & item : allHeadwords ) {
+    progress.setValue( totalCount++ );
 
-      writeWordToFile( out, item );
-    }
+    writeWordToFile( out, item );
+  }
 
     // continue to write the remaining headword
     int nodeIndex  = model->getCurrentIndex();
