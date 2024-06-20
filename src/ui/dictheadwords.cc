@@ -294,18 +294,18 @@ void DictHeadwords::loadAllSortedWords( QProgressDialog & progress, QTextStream 
   const int headwordsNumber = model->totalCount();
 
   QMutexLocker const _( &mutex );
-    QSet< QString > allHeadwords;
+  QSet< QString > allHeadwords;
 
-    int totalCount = 0;
-    for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
-      if ( progress.wasCanceled() )
-        break;
+  int totalCount = 0;
+  for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
+    if ( progress.wasCanceled() )
+      break;
 
-      QVariant value = model->getRow( i );
-      if ( !value.canConvert< QString >() )
-        continue;
+    QVariant value = model->getRow( i );
+    if ( !value.canConvert< QString >() )
+      continue;
 
-      allHeadwords.insert( value.toString() );
+    allHeadwords.insert( value.toString() );
     }
 
     for ( const auto & item : allHeadwords ) {
