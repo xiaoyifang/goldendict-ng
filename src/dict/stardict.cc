@@ -614,7 +614,7 @@ void StardictDictionary::pangoToHtml( QString & text )
  * Attributes "fallback", "lang", "gravity", "gravity_hint" just ignored
  */
 
-  QRegularExpression spanRegex( "<span\\s*([^>]*)>", Qt::CaseInsensitive );
+  QRegularExpression spanRegex( "<span\\s*([^>]*)>", QRegularExpression::CaseInsensitiveOption );
   QRegularExpression styleRegex( "(\\w+)=\"([^\"]*)\"" );
 
   text.replace( "\n", "<br>" );
