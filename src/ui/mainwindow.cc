@@ -172,10 +172,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Ensure globalNetworkAccessManager initalized on the UI theread by doing something with side effect.
   qDebug() << "Initalized: " << GlobalNetworkAccessManager->metaObject()->className();
-  std::cout<< "Main thread ID" << std::this_thread::get_id() << std::endl;
+  std::cout << "Main thread ID" << std::this_thread::get_id() << std::endl;
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = {"gdlookup", "bword", "entry"};
+  QStringList htmlScheme = { "gdlookup", "bword", "entry" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
@@ -711,7 +711,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   //set  webengineview font
   changeWebEngineViewFont();
 
-  connect( GlobalNetworkAccessManager, &QNetworkAccessManager::proxyAuthenticationRequired, this, &MainWindow::proxyAuthentication );
+  connect( GlobalNetworkAccessManager,
+           &QNetworkAccessManager::proxyAuthenticationRequired,
+           this,
+           &MainWindow::proxyAuthentication );
 
   connect( &articleNetMgr,
            &QNetworkAccessManager::proxyAuthenticationRequired,
@@ -2844,7 +2847,8 @@ void MainWindow::checkNewRelease()
   // github_release_api.setRawHeader( QByteArray( "Authorization" ), QByteArray( "" ) );
   github_release_api.setRawHeader( QByteArray( "X-GitHub-Api-Version" ), QByteArray( "2022-11-28" ) );
 
-  auto * github_reply = GlobalNetworkAccessManager->get( github_release_api ); // will be marked as deleteLater when reply finished.
+  auto * github_reply =
+    GlobalNetworkAccessManager->get( github_release_api ); // will be marked as deleteLater when reply finished.
 
   QObject::connect( github_reply, &QNetworkReply::finished, [ github_reply, this ]() {
     if ( github_reply->error() != QNetworkReply::NoError ) {

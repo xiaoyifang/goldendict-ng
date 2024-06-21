@@ -13,7 +13,7 @@ QString markTargetWord( QString const & sentence, QString const & word )
 }
 
 AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ):
-  QObject{parent},
+  QObject{ parent },
   cfg( _cfg )
 {
   mgr = GlobalNetworkAccessManager;

@@ -15,7 +15,7 @@
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 4, 0 ) )
 Q_GLOBAL_STATIC( QNetworkAccessManager, GlobalNetworkAccessManager );
 #else
-#include <qapplicationstatic.h>
+  #include <qapplicationstatic.h>
 Q_APPLICATION_STATIC( QNetworkAccessManager, GlobalNetworkAccessManager );
 
 #endif
