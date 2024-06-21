@@ -274,15 +274,12 @@ void DictHeadwords::autoApplyStateChanged( int state )
 
 void DictHeadwords::showHeadwordsNumber()
 {
-  if(ui.filterLine->text().isEmpty())
-  {
-    ui.headersNumber->setText( tr( "Unique headwords total: %1." )
-                               .arg( QString::number( model->totalCount() ) ) );
+  if ( ui.filterLine->text().isEmpty() ) {
+    ui.headersNumber->setText( tr( "Unique headwords total: %1." ).arg( QString::number( model->totalCount() ) ) );
   }
-  else
-  {
+  else {
     ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered(limited): %2" )
-                               .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
+                                 .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
   }
 }
 
