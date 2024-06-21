@@ -21,7 +21,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
                         QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy );
 
   QNetworkReply * reply = GlobalNetworkAccessManager->get( request );
-  std::cout << "thread ID" << std::this_thread::get_id() << std::endl;
+  std::cout << std::this_thread::get_id() << "thread id" << std::endl;
 
   auto finishAction = [ = ]() {
     QByteArray contentType = "text/html";

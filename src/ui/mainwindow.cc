@@ -172,7 +172,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Ensure globalNetworkAccessManager initalized on the UI theread by doing something with side effect.
   qDebug() << "Initalized: " << GlobalNetworkAccessManager->metaObject()->className();
-  std::cout << "Main thread ID" << std::this_thread::get_id() << std::endl;
+  std::cout << std::this_thread::get_id() << "main thread id" << std::endl;
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry" };
