@@ -28,10 +28,6 @@
 #include <QTextCodec>
 #include <QMap>
 #include <QPair>
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
 #include <QProcess>
 #include <QVector>
 
@@ -792,7 +788,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = match.lastCapturedIndex() + 1; i < 5; i++ )
       list.append( QString() );
 

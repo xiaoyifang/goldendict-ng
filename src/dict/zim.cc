@@ -388,7 +388,7 @@ string ZimDictionary::convert( const string & in )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = list.size(); i < 5; i++ )
       list.append( QString() );
 
@@ -435,7 +435,7 @@ string ZimDictionary::convert( const string & in )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = match.lastCapturedIndex() + 1; i < 3; i++ )
       list.append( QString() );
 
