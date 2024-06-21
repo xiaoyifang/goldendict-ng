@@ -16,14 +16,12 @@
 #include <QMutexLocker>
 #include <memory>
 
-#define AUTO_APPLY_LIMIT 150000
 
 enum SearchType {
   FixedString,
   Wildcard,
   Regex
 };
-
 DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary::Class * dict_ ):
   QDialog( parent ),
   cfg( cfg_ ),
@@ -139,15 +137,8 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   proxy->sort( 0 );
   filterChanged();
 
-  if ( size > AUTO_APPLY_LIMIT ) {
-    cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
-    ui.autoApply->setChecked( false );
-    ui.autoApply->setEnabled( false );
-  }
-  else {
-    ui.autoApply->setEnabled( true );
-    ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
-  }
+  ui.autoApply->setEnabled( true );
+  ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
   ui.applyButton->setEnabled( !ui.autoApply->isChecked() );
 
@@ -163,8 +154,7 @@ void DictHeadwords::savePos()
   cfg.headwordsDialog.searchMode = ui.searchModeCombo->currentIndex();
   cfg.headwordsDialog.matchCase  = ui.matchCase->isChecked();
 
-  if ( model->totalCount() <= AUTO_APPLY_LIMIT )
-    cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
+  cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
 
   cfg.headwordsDialog.headwordsDialogGeometry = saveGeometry();
 }
