@@ -38,10 +38,17 @@ QString HeadwordListModel::getRow( int row )
 
 void HeadwordListModel::setFilter( QRegularExpression reg )
 {
+  //if the headword is already finished loaded, do nothing。
   if ( finished ) {
     return;
   }
+  //back to normal state ,restore the original model;
   if ( reg.pattern().isEmpty() ) {
+    QMutexLocker _( &lock );
+    //race condition.
+    if(!filtering){
+      return;
+    }
     filtering = false;
 
     //reset to previous models
@@ -53,7 +60,15 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
 
     return;
   }
-  filtering = true;
+  else{
+    QMutexLocker _( &lock );
+    //the first time to enter filtering mode.
+    if(!filtering){
+      filtering = true;
+      original_words << words;
+    }
+
+  }
   filterWords.clear();
   auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), maxFilterResults );
   connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
@@ -90,11 +105,8 @@ void HeadwordListModel::requestFinished()
       return;
     }
     beginResetModel();
-
-    original_words << words;
     words.clear();
     words << filterWords;
-
     endResetModel();
   }
 }
