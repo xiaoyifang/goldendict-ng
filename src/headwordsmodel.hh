@@ -45,7 +45,6 @@ private:
   QStringList fileSortedList;
   long totalSize;
   int maxFilterResults;
-  long maxElementSizePerNode;
   bool finished;
   Dictionary::Class * _dict;
   int index;

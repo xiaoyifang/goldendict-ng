@@ -193,5 +193,4 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
 {
   _dict     = dict;
   totalSize = _dict->getWordCount();
-  maxElementSizePerNode = sqrt( totalSize ) + 1;
 }
