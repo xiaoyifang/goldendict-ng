@@ -37,10 +37,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
+#include <QRegularExpression>
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
@@ -1091,9 +1088,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( !str.empty() )
                 idxHeader.langTo = getLanguageId( str.c_str() );
 
-              QRegExp regNum( "\\d+" );
-              regNum.indexIn( stream.attributes().value( "revision" ).toString() );
-              idxHeader.revisionNumber = regNum.cap().toUInt();
+              QRegularExpression regNum( "\\d+" );
+              auto match = regNum.match( stream.attributes().value( "revision" ).toString() );
+              idxHeader.revisionNumber = match.captured().toUInt();
 
               bool isLogical =
                 ( stream.attributes().value( "format" ) == u"logical" || idxHeader.revisionNumber >= 34 );
