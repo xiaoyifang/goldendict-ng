@@ -1015,7 +1015,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           auto srcsetOriginalText = match.captured( "text" );
           QString srcsetNewText;
           if ( !srcsetOriginalText.contains( "//" ) ) {
-            srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) );
+            srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, srcsetOriginalText );
           }
 
           newLink.replace( match.capturedStart(),
