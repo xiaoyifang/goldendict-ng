@@ -46,7 +46,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
   if ( reg.pattern().isEmpty() ) {
     QMutexLocker _( &lock );
     //race condition.
-    if(!filtering){
+    if ( !filtering ) {
       return;
     }
     filtering = false;
@@ -60,14 +60,13 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
 
     return;
   }
-  else{
+  else {
     QMutexLocker _( &lock );
     //the first time to enter filtering mode.
-    if(!filtering){
+    if ( !filtering ) {
       filtering = true;
       original_words << words;
     }
-
   }
   filterWords.clear();
   auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), maxFilterResults );
