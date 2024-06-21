@@ -274,8 +274,16 @@ void DictHeadwords::autoApplyStateChanged( int state )
 
 void DictHeadwords::showHeadwordsNumber()
 {
-  ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered: %2" )
+  if(ui.filterLine->text().isEmpty())
+  {
+    ui.headersNumber->setText( tr( "Unique headwords total: %1." )
+                               .arg( QString::number( model->totalCount() ) ) );
+  }
+  else
+  {
+    ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered(limited): %2" )
                                .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
+  }
 }
 
 void DictHeadwords::loadAllSortedWords( QProgressDialog & progress, QTextStream & out )
