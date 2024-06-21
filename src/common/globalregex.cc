@@ -60,7 +60,7 @@ QRegularExpression Mdx::srcset( R"((?<before>[\s]srcset\s*=\s*["'])\s*(?<text>[\
 
 // matches srcset in <object data="text">
 QRegularExpression Mdx::objectdata( R"((?<before>[\s]data\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
-                                QRegularExpression::CaseInsensitiveOption );
+                                    QRegularExpression::CaseInsensitiveOption );
 
 QRegularExpression Mdx::links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 

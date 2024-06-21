@@ -1012,10 +1012,10 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       if ( linkType.compare( "object" ) == 0 ) {
         match = RX::Mdx::objectdata.match( newLink );
         if ( match.hasMatch() ) {
-          auto srcsetOriginalText   = match.captured( "text" );
+          auto srcsetOriginalText = match.captured( "text" );
           QString srcsetNewText;
-          if(!srcsetOriginalText.contains("//")){
-            srcsetNewText= QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) ;
+          if ( !srcsetOriginalText.contains( "//" ) ) {
+            srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) );
           }
 
           newLink.replace( match.capturedStart(),
