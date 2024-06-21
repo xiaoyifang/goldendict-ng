@@ -1,6 +1,9 @@
 #include "iframeschemehandler.hh"
 
+#include <iostream>
 #include <QTextCodec>
+
+#include "global_network_access_manager.hh"
 
 IframeSchemeHandler::IframeSchemeHandler( QObject * parent ):
   QWebEngineUrlSchemeHandler( parent )
@@ -17,7 +20,8 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
   request.setAttribute( QNetworkRequest::RedirectPolicyAttribute,
                         QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy );
 
-  QNetworkReply * reply = mgr.get( request );
+  QNetworkReply * reply = GlobalNetworkAccessManager->get( request );
+  std::cout<< "thread ID" << std::this_thread::get_id() << std::endl;
 
   auto finishAction = [ = ]() {
     QByteArray contentType = "text/html";

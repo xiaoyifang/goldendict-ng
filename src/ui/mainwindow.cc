@@ -6,7 +6,7 @@
 #ifndef NO_EPWING_SUPPORT
   #include "dict/epwing_book.hh"
 #endif
-
+#include <iostream>
 #include "mainwindow.hh"
 #include <QWebEngineProfile>
 #include "editdictionaries.hh"
@@ -16,25 +16,16 @@
 #include "mruqmenu.hh"
 #include "gestures.hh"
 #include "dictheadwords.hh"
-#include <QTextStream>
-#include <QDir>
-#include <QUrl>
+
 #include <QMessageBox>
-#include <QIcon>
-#include <QList>
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QDesktopServices>
-#include <QProcess>
-#include <QCryptographicHash>
 #include <QFileDialog>
 #include <QPrinter>
 #include <QPageSetupDialog>
 #include <QPrintPreviewDialog>
 #include <QPrintDialog>
-#include <QRunnable>
-#include <QThreadPool>
-#include <QSslConfiguration>
 #include <QStyleFactory>
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -49,8 +40,7 @@
 #include "help.hh"
 #include "ui_authentication.h"
 #include "resourceschemehandler.hh"
-#include <QListWidgetItem>
-
+#include "global_network_access_manager.hh"
 #include "globalregex.hh"
 
 #ifdef Q_OS_MAC
@@ -161,7 +151,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                  articleMaker,
                  cfg.preferences.disallowContentFromOtherSites,
                  cfg.preferences.hideGoldenDictHeader ),
-  dictNetMgr( this ),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
@@ -180,8 +169,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
-  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = { "gdlookup", "bword", "entry" };
+
+  // Ensure globalNetworkAccessManager initalized on the UI theread by doing something with side effect.
+  qDebug() << "Initalized: " << GlobalNetworkAccessManager->metaObject()->className();
+  std::cout<< "Main thread ID" << std::this_thread::get_id() << std::endl;
+
+  localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
+  QStringList htmlScheme = {"gdlookup", "bword", "entry"};
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
@@ -717,7 +711,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   //set  webengineview font
   changeWebEngineViewFont();
 
-  connect( &dictNetMgr, &QNetworkAccessManager::proxyAuthenticationRequired, this, &MainWindow::proxyAuthentication );
+  connect( GlobalNetworkAccessManager, &QNetworkAccessManager::proxyAuthenticationRequired, this, &MainWindow::proxyAuthentication );
 
   connect( &articleNetMgr,
            &QNetworkAccessManager::proxyAuthenticationRequired,
@@ -1518,7 +1512,7 @@ void MainWindow::makeDictionaries()
   ftsIndexing.stopIndexing();
   ftsIndexing.clearDictionaries();
 
-  loadDictionaries( this, isVisible(), cfg, dictionaries, dictNetMgr, false );
+  loadDictionaries( this, isVisible(), cfg, dictionaries, *GlobalNetworkAccessManager, false );
 
   //create map
   dictMap = Dictionary::dictToMap( dictionaries );
@@ -2090,7 +2084,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
   { // Limit existence of newCfg
 
     Config::Class newCfg = cfg;
-    EditDictionaries dicts( this, newCfg, dictionaries, groupInstances, dictNetMgr );
+    EditDictionaries dicts( this, newCfg, dictionaries, groupInstances, *GlobalNetworkAccessManager );
 
     connect( &dicts, &EditDictionaries::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
 
@@ -2850,7 +2844,7 @@ void MainWindow::checkNewRelease()
   // github_release_api.setRawHeader( QByteArray( "Authorization" ), QByteArray( "" ) );
   github_release_api.setRawHeader( QByteArray( "X-GitHub-Api-Version" ), QByteArray( "2022-11-28" ) );
 
-  auto * github_reply = dictNetMgr.get( github_release_api ); // will be marked as deleteLater when reply finished.
+  auto * github_reply = GlobalNetworkAccessManager->get( github_release_api ); // will be marked as deleteLater when reply finished.
 
   QObject::connect( github_reply, &QNetworkReply::finished, [ github_reply, this ]() {
     if ( github_reply->error() != QNetworkReply::NoError ) {
@@ -3277,7 +3271,7 @@ void MainWindow::on_rescanFiles_triggered()
   dictionariesUnmuted.clear();
   dictionaryBar.setDictionaries( dictionaries );
 
-  loadDictionaries( this, true, cfg, dictionaries, dictNetMgr );
+  loadDictionaries( this, true, cfg, dictionaries, *GlobalNetworkAccessManager );
   dictMap = Dictionary::dictToMap( dictionaries );
 
   for ( unsigned x = 0; x < dictionaries.size(); x++ ) {

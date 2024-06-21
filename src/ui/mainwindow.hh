@@ -137,9 +137,7 @@ private:
   Instances::Groups groupInstances;
   ArticleMaker articleMaker;
   ArticleNetworkAccessManager articleNetMgr;
-  QNetworkAccessManager dictNetMgr; // We give dictionaries a separate manager,
-                                    // since their requests can be destroyed
-                                    // in a separate thread
+
   AudioPlayerFactory audioPlayerFactory;
 
   //current active translateLine;

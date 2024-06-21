@@ -10,11 +10,6 @@ class IframeSchemeHandler: public QWebEngineUrlSchemeHandler
 public:
   IframeSchemeHandler( QObject * parent = nullptr );
   void requestStarted( QWebEngineUrlRequestJob * requestJob );
-
-protected:
-
-private:
-  QNetworkAccessManager mgr;
 };
 
 #endif // IFRAMESCHEMEHANDLER_H
