@@ -1942,7 +1942,7 @@ void ArticleView::openSearch()
   searchPanel->lineEdit->selectAll();
 
   // Clear any current selection
-  if ( !webview->selectedText().isEmpty() ) {
+  if ( webview->hasSelection() ) {
     webview->findText( "" );
   }
 
