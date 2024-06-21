@@ -1,4 +1,4 @@
-name: macos-homebrew
+name: Release macOS
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -1,4 +1,4 @@
-name: AutoTag
+name: Release AutoTag
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -1,4 +1,4 @@
-name: Windows-6.x
+name: Release Windows
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
