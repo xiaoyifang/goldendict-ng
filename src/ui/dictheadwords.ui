@@ -116,13 +116,13 @@
                       <string/>
                   </property>
                   <property name="minimum">
-                      <number>500</number>
+                      <number>10</number>
                   </property>
                   <property name="maximum">
                       <number>3000</number>
                   </property>
                   <property name="singleStep">
-                      <number>50</number>
+                      <number>10</number>
                   </property>
               </widget>
           </item>
