@@ -471,7 +471,7 @@ void ArticleView::loadFinished( bool result )
 
 void ArticleView::handleTitleChanged( QString const & title )
 {
-  if ( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
+  if ( !title.isEmpty() )
     emit titleChanged( this, title );
 }
 
