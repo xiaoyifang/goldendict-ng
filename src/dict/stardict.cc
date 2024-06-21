@@ -622,13 +622,13 @@ void StardictDictionary::pangoToHtml( QString & text )
   int pos = 0;
   do {
     auto match = spanRegex.match( text, pos );
-    pos = match.capturedStart();
+    pos        = match.capturedStart();
     if ( pos >= 0 ) {
       QString styles = match.captured( 1 );
       QString newSpan( "<span style=\"" );
       int stylePos = 0;
       do {
-        auto styleMatch= styleRegex.match( styles, stylePos );
+        auto styleMatch = styleRegex.match( styles, stylePos );
 
         stylePos      = styleMatch.capturedStart();
         QString style = styleMatch.captured( 1 );
@@ -748,8 +748,8 @@ void StardictDictionary::pangoToHtml( QString & text )
           else if ( style.compare( "font_size", Qt::CaseInsensitive ) == 0
                     || style.compare( "size", Qt::CaseInsensitive ) == 0 ) {
             if ( cap2[ 0 ].isLetter() || cap2.endsWith( "px", Qt::CaseInsensitive )
-                 || cap2.endsWith( "pt", Qt::CaseInsensitive )
-                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
+                 || cap2.endsWith( "pt", Qt::CaseInsensitive ) || cap2.endsWith( "em", Qt::CaseInsensitive )
+                 || cap2.endsWith( "%" ) )
               newSpan += QString( "font-size:" ) + cap2 + ";";
             else {
               int size = cap2.toInt();
@@ -831,8 +831,7 @@ void StardictDictionary::pangoToHtml( QString & text )
               newSpan += QString( "text-decoration-line:none;" );
           }
           else if ( style.compare( "rise", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.endsWith( "px", Qt::CaseInsensitive )
-                 || cap2.endsWith( "pt", Qt::CaseInsensitive )
+            if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
                  || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
               newSpan += QString( "vertical-align:" ) + cap2 + ";";
             else {
@@ -842,8 +841,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             }
           }
           else if ( style.compare( "letter_spacing", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.endsWith( "px", Qt::CaseInsensitive )
-                 || cap2.endsWith( "pt", Qt::CaseInsensitive )
+            if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
                  || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
               newSpan += QString( "letter-spacing:" ) + cap2 + ";";
             else {

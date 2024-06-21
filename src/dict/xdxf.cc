@@ -1084,7 +1084,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 idxHeader.langTo = getLanguageId( str.c_str() );
 
               QRegularExpression regNum( "\\d+" );
-              auto match = regNum.match( stream.attributes().value( "revision" ).toString() );
+              auto match               = regNum.match( stream.attributes().value( "revision" ).toString() );
               idxHeader.revisionNumber = match.captured().toUInt();
 
               bool isLogical =
