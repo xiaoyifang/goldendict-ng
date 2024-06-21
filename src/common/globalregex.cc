@@ -25,7 +25,7 @@ QRegularExpression Ftx::token( R"((".*?")|([\w\W\+\-]+))",
 //mdx
 
 //<audio src="xxx"> is also a valid url.
-QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source|audio|video)(?:\s+[^>]+|\s*)>))",
+QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source|audio|video|object)(?:\s+[^>]+|\s*)>))",
                                     QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::wordCrossLink( R"(([\s"']href\s*=)\s*(["'])entry://([^>#]*?)((?:#[^>]*?)?)\2)",
                                        QRegularExpression::CaseInsensitiveOption );
@@ -57,6 +57,10 @@ QRegularExpression Mdx::srcRe2(
 // matches srcset in <img srcset="text">
 QRegularExpression Mdx::srcset( R"((?<before>[\s]srcset\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
                                 QRegularExpression::CaseInsensitiveOption );
+
+// matches srcset in <object data="text">
+QRegularExpression Mdx::objectdata( R"((?<before>[\s]data\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
+                                    QRegularExpression::CaseInsensitiveOption );
 
 QRegularExpression Mdx::links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 

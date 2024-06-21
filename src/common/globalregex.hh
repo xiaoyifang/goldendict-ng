@@ -39,6 +39,7 @@ public:
   static QRegularExpression srcRe;
   static QRegularExpression srcRe2;
   static QRegularExpression srcset;
+  static QRegularExpression objectdata;
 
   static QRegularExpression links;
   static QRegularExpression fontFace;
