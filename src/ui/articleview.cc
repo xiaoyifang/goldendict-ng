@@ -36,7 +36,6 @@
   #include <QWebEngineContextMenuData>
 #endif
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
   #include <QWebEngineContextMenuRequest>
   #include <QWebEngineFindTextResult>
   #include <utility>
@@ -358,7 +357,7 @@ void ArticleView::showDefinition( QString const & word,
 
 void ArticleView::showDefinition( QString const & word,
                                   QStringList const & dictIDs,
-                                  QRegExp const & searchRegExp,
+                                  QRegularExpression const & searchRegExp,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
@@ -380,10 +379,10 @@ void ArticleView::showDefinition( QString const & word,
   Utils::Url::addQueryItem( req, "word", word );
   Utils::Url::addQueryItem( req, "dictionaries", dictIDs.join( "," ) );
   Utils::Url::addQueryItem( req, "regexp", searchRegExp.pattern() );
-  if ( searchRegExp.caseSensitivity() == Qt::CaseSensitive )
+  if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) )
     Utils::Url::addQueryItem( req, "matchcase", "1" );
-  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
-    Utils::Url::addQueryItem( req, "wildcards", "1" );
+  //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
+  //    Utils::Url::addQueryItem( req, "wildcards", "1" );
   Utils::Url::addQueryItem( req, "group", QString::number( group ) );
   if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
@@ -397,6 +396,14 @@ void ArticleView::showDefinition( QString const & word,
 
   // Update headwords history
   emit sendWordToHistory( word );
+}
+
+void ArticleView::showDefinition( QString const & word,
+                                  QStringList const & dictIDs,
+                                  unsigned group,
+                                  bool ignoreDiacritics )
+{
+  showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
 void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
@@ -942,7 +949,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
       QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-      showDefinition( word, dictsList, QRegExp(), getGroup( ref ), false );
+      showDefinition( word, dictsList, getGroup( ref ), false );
     }
     else
       showDefinition( word, getGroup( ref ), scrollTo, contexts );
@@ -958,7 +965,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-        showDefinition( url.path().mid( 1 ), dictsList, QRegExp(), getGroup( ref ), false );
+        showDefinition( url.path().mid( 1 ), dictsList, getGroup( ref ), false );
         return;
       }
 
@@ -966,7 +973,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-        showDefinition( word, dictsList, QRegExp(), getGroup( url ), false );
+        showDefinition( word, dictsList, getGroup( url ), false );
         return;
       }
 
@@ -2016,7 +2023,7 @@ void ArticleView::doubleClicked( QPoint pos )
 
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
           QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-          showDefinition( selectedText, dictsList, QRegExp(), getGroup( ref ), false );
+          showDefinition( selectedText, dictsList, getGroup( ref ), false );
         }
         else
           showDefinition( selectedText, getGroup( ref ), getCurrentArticle() );
