@@ -449,7 +449,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
 {
   if ( idx.isValid() && idx.row() < results.size() ) {
     QString headword = results[ idx.row() ].headword;
-    QRegExp reg;
+    QRegularExpression reg;
     auto searchText = ui.searchLine->text();
     searchText.replace( RX::Ftx::tokenBoundary, " " );
 
@@ -472,8 +472,7 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     }
 
     if ( !firstAvailbeItem.isEmpty() ) {
-      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
-      reg.setMinimal( true );
+      reg = QRegularExpression( firstAvailbeItem, QRegularExpression::CaseInsensitiveOption );
     }
 
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );

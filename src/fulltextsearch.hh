@@ -10,11 +10,7 @@
 #include <QSemaphore>
 #include <QStringList>
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
+#include <QRegularExpression>
 
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
@@ -212,7 +208,7 @@ class FullTextSearchDialog: public QDialog
 
   FtsIndexing & ftsIdx;
 
-  QRegExp searchRegExp;
+  QRegularExpression searchRegExp;
   int matchedCount;
 
 public:
@@ -258,7 +254,7 @@ private slots:
 signals:
   void showTranslationFor( QString const &,
                            QStringList const & dictIDs,
-                           QRegExp const & searchRegExp,
+                           QRegularExpression const & searchRegExp,
                            bool ignoreDiacritics );
   void closeDialog();
 };

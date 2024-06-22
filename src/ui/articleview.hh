@@ -16,10 +16,7 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-
-#endif
+#include <QRegularExpression>
 #include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
 #include "base_type.hh"
@@ -131,9 +128,10 @@ public:
 
   void showDefinition( QString const & word,
                        QStringList const & dictIDs,
-                       QRegExp const & searchRegExp,
+                       QRegularExpression const & searchRegExp,
                        unsigned group,
                        bool ignoreDiacritics );
+  void showDefinition( QString const & word, QStringList const & dictIDs, unsigned group, bool ignoreDiacritics );
 
   void sendToAnki( QString const & word, QString const & text, QString const & sentence );
   /// Clears the view and sets the application-global waiting cursor,
