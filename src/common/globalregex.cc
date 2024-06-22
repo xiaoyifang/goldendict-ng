@@ -58,7 +58,7 @@ QRegularExpression Mdx::srcRe2(
 QRegularExpression Mdx::srcset( R"((?<before>[\s]srcset\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
                                 QRegularExpression::CaseInsensitiveOption );
 
-// matches srcset in <object data="text">
+// matches data in <object data="text">
 QRegularExpression Mdx::objectdata( R"((?<before>[\s]data\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
                                     QRegularExpression::CaseInsensitiveOption );
 
