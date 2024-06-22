@@ -4,11 +4,6 @@
 #include "dictheadwords.hh"
 #include "gddebug.hh"
 #include "headwordsmodel.hh"
-
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
 #include <QDir>
 #include <QFileDialog>
 #include <QTimer>
@@ -22,6 +17,12 @@
 #include <memory>
 
 #define AUTO_APPLY_LIMIT 150000
+
+enum SearchType {
+  FixedString,
+  Wildcard,
+  Regex
+};
 
 DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary::Class * dict_ ):
   QDialog( parent ),
@@ -41,9 +42,9 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   if ( cfg.headwordsDialog.headwordsDialogGeometry.size() > 0 )
     restoreGeometry( cfg.headwordsDialog.headwordsDialogGeometry );
 
-  ui.searchModeCombo->addItem( tr( "Text" ), QRegExp::FixedString );
-  ui.searchModeCombo->addItem( tr( "Wildcards" ), QRegExp::WildcardUnix );
-  ui.searchModeCombo->addItem( tr( "RegExp" ), QRegExp::RegExp );
+  ui.searchModeCombo->addItem( tr( "Text" ), SearchType::FixedString );
+  ui.searchModeCombo->addItem( tr( "Wildcards" ), SearchType::Wildcard );
+  ui.searchModeCombo->addItem( tr( "RegExp" ), SearchType::Regex );
   ui.searchModeCombo->setCurrentIndex( cfg.headwordsDialog.searchMode );
 
   ui.exportButton->setAutoDefault( false );
@@ -220,8 +221,8 @@ void DictHeadwords::filterChangedInternal()
 
 QRegularExpression DictHeadwords::getFilterRegex() const
 {
-  const QRegExp::PatternSyntax syntax =
-    static_cast< QRegExp::PatternSyntax >( ui.searchModeCombo->itemData( ui.searchModeCombo->currentIndex() ).toInt() );
+  const SearchType syntax =
+    static_cast< SearchType >( ui.searchModeCombo->itemData( ui.searchModeCombo->currentIndex() ).toInt() );
 
   QRegularExpression::PatternOptions options = QRegularExpression::UseUnicodePropertiesOption;
   if ( !ui.matchCase->isChecked() )
@@ -229,10 +230,10 @@ QRegularExpression DictHeadwords::getFilterRegex() const
 
   QString pattern;
   switch ( syntax ) {
-    case QRegExp::FixedString:
+    case SearchType::FixedString:
       pattern = QRegularExpression::escape( ui.filterLine->text() );
       break;
-    case QRegExp::WildcardUnix:
+    case SearchType::Wildcard:
       pattern = wildcardsToRegexp( ui.filterLine->text() );
       break;
     default:
