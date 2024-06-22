@@ -74,6 +74,10 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
+  //arbitrary number.
+  bool exceedLimit = model->totalCount() > HEADWORDS_MAX_LIMIT;
+  ui.filterMaxResult->setEnabled( exceedLimit );
+
   connect( this, &QDialog::finished, this, &DictHeadwords::savePos );
 
   if ( !fromMainWindow ) {
@@ -142,6 +146,10 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
   ui.applyButton->setEnabled( !ui.autoApply->isChecked() );
 
+  //arbitrary number.
+  bool exceedLimit = model->totalCount() > HEADWORDS_MAX_LIMIT;
+  ui.filterMaxResult->setEnabled( exceedLimit );
+
   setWindowIcon( dict->getIcon() );
 
   dictId = QString( dict->getId().c_str() );
@@ -153,9 +161,7 @@ void DictHeadwords::savePos()
 {
   cfg.headwordsDialog.searchMode = ui.searchModeCombo->currentIndex();
   cfg.headwordsDialog.matchCase  = ui.matchCase->isChecked();
-
   cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
-
   cfg.headwordsDialog.headwordsDialogGeometry = saveGeometry();
 }
 
@@ -283,7 +289,7 @@ void DictHeadwords::showHeadwordsNumber()
   }
 }
 
-void DictHeadwords::loadAllSortedWords( QProgressDialog & progress, QTextStream & out )
+void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & out )
 {
   if ( const QRegularExpression regExp = getFilterRegex(); regExp.isValid() && !regExp.pattern().isEmpty() ) {
     loadRegex( progress, out );
@@ -399,7 +405,7 @@ void DictHeadwords::saveHeadersToFile()
   out.setCodec( "UTF-8" );
 #endif
 
-  loadAllSortedWords( progress, out );
+  exportAllWords( progress, out );
 
   file.close();
 
@@ -410,7 +416,6 @@ void DictHeadwords::saveHeadersToFile()
   }
   else {
     //completed.
-    progress.setValue( headwordsNumber * 2 );
     progress.close();
     QMessageBox::information( this, "GoldenDict", tr( "Export finished" ) );
   }

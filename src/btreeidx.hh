@@ -100,9 +100,9 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
+  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
   void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QSet< uint32_t > findNodes();
+  QList< uint32_t > findNodes();
 
   /// Retrieve headwords for presented article addresses
   void

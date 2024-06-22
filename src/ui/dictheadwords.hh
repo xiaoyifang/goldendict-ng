@@ -44,7 +44,7 @@ private:
   Ui::DictHeadwords ui;
   //  QStringList sortedWords;
   QMutex mutex;
-  void writeWordToFile( QTextStream & out, const QString & word );
+  static void writeWordToFile( QTextStream & out, const QString & word );
 
 private slots:
   void savePos();
@@ -56,7 +56,7 @@ private slots:
   void itemClicked( const QModelIndex & index );
   void autoApplyStateChanged( int state );
   void showHeadwordsNumber();
-  void loadAllSortedWords( QProgressDialog & progress, QTextStream & stream );
+  void exportAllWords( QProgressDialog & progress, QTextStream & out );
   void loadRegex( QProgressDialog & progress, QTextStream & out );
   virtual void reject();
 

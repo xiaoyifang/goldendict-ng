@@ -142,7 +142,7 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
     return;
 
   //arbitrary number
-  if ( totalSize < 500000 ) {
+  if ( totalSize < HEADWORDS_MAX_LIMIT ) {
     finished = true;
 
     beginInsertRows( QModelIndex(), 0, totalSize - 1 );
