@@ -161,7 +161,7 @@ void DictHeadwords::savePos()
 {
   cfg.headwordsDialog.searchMode = ui.searchModeCombo->currentIndex();
   cfg.headwordsDialog.matchCase  = ui.matchCase->isChecked();
-  cfg.headwordsDialog.autoApply = ui.autoApply->isChecked();
+  cfg.headwordsDialog.autoApply               = ui.autoApply->isChecked();
   cfg.headwordsDialog.headwordsDialogGeometry = saveGeometry();
 }
 
