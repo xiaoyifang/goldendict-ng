@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019]
-        qt_ver: [5.15.2,6.6.3]
+        qt_ver: [6.6.3]
         qt_arch: [win64_msvc2019_64]
     steps:
       - uses: actions/setup-python@v3

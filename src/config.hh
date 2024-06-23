@@ -864,7 +864,7 @@ struct Class
   QByteArray popupWindowState;           // Binary state saved by QMainWindow
   QByteArray popupWindowGeometry;        // Geometry saved by QMainWindow
   QByteArray dictInfoGeometry;           // Geometry of "Dictionary info" window
-  QByteArray inspectorGeometry;          // Geometry of WebKit inspector window
+  QByteArray inspectorGeometry;          // Geometry of Web Engine inspector window
   QByteArray dictionariesDialogGeometry; // Geometry of Dictionaries dialog
 
   QString historyExportPath; // Path for export/import history
