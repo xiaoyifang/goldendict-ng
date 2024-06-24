@@ -165,7 +165,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
-  wasMaximized( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsDlg( nullptr ),
@@ -872,8 +871,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
 #endif
 
-  wasMaximized = isMaximized();
-
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
 #ifndef Q_OS_MACOS
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
@@ -980,12 +977,7 @@ void MainWindow::refreshTranslateLine()
 
   // Visually mark the input line to mark if there's no results
   bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
-
-  if ( translateLine->property( "noResults" ).toBool() != setMark ) {
-    translateLine->setProperty( "noResults", setMark );
-
-    Utils::Widget::setNoResultColor( translateLine, setMark );
-  }
+  Utils::Widget::setNoResultColor( translateLine, setMark );
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m )
@@ -2345,11 +2337,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
     ui.wordList->unsetCursor();
 
     // Reset the noResults mark if it's on right now
-    if ( translateLine->property( "noResults" ).toBool() ) {
-      translateLine->setProperty( "noResults", false );
-
-      Utils::Widget::setNoResultColor( translateLine, false );
-    }
+    Utils::Widget::setNoResultColor( translateLine, false );
     return;
   }
 
@@ -2489,11 +2477,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       translateBox->setPopupEnabled( false );
       return false;
     }
-  }
-
-  if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
-    auto stev                      = dynamic_cast< QWindowStateChangeEvent * >( ev );
-    wasMaximized                   = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
   }
 
   if ( ev->type() == QEvent::MouseButtonPress ) {
@@ -2724,7 +2707,7 @@ void MainWindow::showTranslationFor( QString const & word, unsigned inGroup, QSt
 
 void MainWindow::showTranslationForDicts( QString const & inWord,
                                           QStringList const & dictIDs,
-                                          QRegExp const & searchRegExp,
+                                          QRegularExpression const & searchRegExp,
                                           bool ignoreDiacritics )
 {
   ArticleView * view = getCurrentArticleView();
@@ -2749,25 +2732,14 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   if ( !isVisible() ) {
     show();
 
-    qApp->setActiveWindow( this );
-    activateWindow();
-    raise();
-    shown = true;
-  }
-  else if ( isMinimized() ) {
-    if ( wasMaximized )
-      showMaximized();
-    else
-      showNormal();
     activateWindow();
     raise();
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    qApp->setActiveWindow( this );
+    activateWindow();
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
-      activateWindow();
     }
     shown = true;
   }
@@ -3138,7 +3110,7 @@ void MainWindow::printPreviewPaintRequested( QPrinter * printer )
 }
 
 static void filterAndCollectResources( QString & html,
-                                       QRegExp & rx,
+                                       QRegularExpression & rx,
                                        const QString & sep,
                                        const QString & folder,
                                        set< QByteArray > & resourceIncluded,
@@ -3146,8 +3118,10 @@ static void filterAndCollectResources( QString & html,
 {
   int pos = 0;
 
-  while ( ( pos = rx.indexIn( html, pos ) ) != -1 ) {
-    QUrl url( rx.cap( 1 ) );
+  auto match = rx.match( html, pos );
+  while ( match.hasMatch() ) {
+    pos = match.capturedStart();
+    QUrl url( match.captured( 1 ) );
     QString host         = url.host();
     QString resourcePath = Utils::Url::path( url );
 
@@ -3157,7 +3131,7 @@ static void filterAndCollectResources( QString & html,
       resourcePath.insert( 0, '/' );
 
     QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( rx.cap().toUtf8() );
+    hash.addData( match.captured().toUtf8() );
 
     if ( resourceIncluded.insert( hash.result() ).second ) {
       // Gather resource information (url, filename) to be download later
@@ -3167,8 +3141,9 @@ static void filterAndCollectResources( QString & html,
     // Modify original url, set to the native one
     resourcePath   = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
     QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
-    html.replace( pos, rx.cap().length(), newUrl );
+    html.replace( pos, match.captured().length(), newUrl );
     pos += newUrl.length();
+    match = rx.match( html, pos );
   }
 }
 
@@ -3224,11 +3199,13 @@ void MainWindow::on_saveArticle_triggered()
 
       // Convert internal links
 
-      QRegExp rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
+      static QRegularExpression rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
       int pos = 0;
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_)[0-9a-f]+_" );
-      while ( ( pos = rx3.indexIn( html, pos ) ) != -1 ) {
-        QString name = QUrl::fromPercentEncoding( rx3.cap( 2 ).simplified().toLatin1() );
+      auto match = rx3.match( html, pos );
+      while ( match.hasMatch() ) {
+        pos          = match.capturedStart();
+        QString name = QUrl::fromPercentEncoding( match.captured( 2 ).simplified().toLatin1() );
         QString anchor;
         name.replace( "?gdanchor=", "#" );
         int n = name.indexOf( '#' );
@@ -3239,8 +3216,9 @@ void MainWindow::on_saveArticle_triggered()
         }
         name.replace( rxName, "_" );
         name = QString( R"(href=")" ) + QUrl::toPercentEncoding( name ) + ".html" + anchor + "\"";
-        html.replace( pos, rx3.cap().length(), name );
+        html.replace( pos, match.captured().length(), name );
         pos += name.length();
+        match = rx3.match( html, pos );
       }
 
       // MDict anchors
@@ -3251,8 +3229,8 @@ void MainWindow::on_saveArticle_triggered()
 
       if ( complete ) {
         QString folder = fi.absoluteDir().absolutePath() + "/" + fi.baseName() + "_files";
-        QRegExp rx1( R"lit("((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^"]+)")lit" );
-        QRegExp rx2( "'((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^']+)'" );
+        static QRegularExpression rx1( R"lit("((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^"]+)")lit" );
+        static QRegularExpression rx2( "'((?:bres|gico|gdau|qrcx|qrc|gdvideo)://[^']+)'" );
         set< QByteArray > resourceIncluded;
         vector< pair< QUrl, QString > > downloadResources;
 
@@ -3308,9 +3286,9 @@ void MainWindow::on_rescanFiles_triggered()
   loadDictionaries( this, true, cfg, dictionaries, dictNetMgr );
   dictMap = Dictionary::dictToMap( dictionaries );
 
-  for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
-    dictionaries[ x ]->setFTSParameters( cfg.preferences.fts );
-    dictionaries[ x ]->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
+  for ( const auto & dictionarie : dictionaries ) {
+    dictionarie->setFTSParameters( cfg.preferences.fts );
+    dictionarie->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
   }
 
   ftsIndexing.setDictionaries( dictionaries );
@@ -3401,7 +3379,7 @@ void MainWindow::adjustCurrentZoomFactor()
 void MainWindow::scaleArticlesByCurrentZoomFactor()
 {
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
+    auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
     view.setZoomFactor( cfg.preferences.zoomFactor );
   }
 

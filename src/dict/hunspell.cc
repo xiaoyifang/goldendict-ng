@@ -13,11 +13,9 @@
 #include <QRunnable>
 #include <QThreadPool>
 #include <QSemaphore>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
+
+#include <QRegularExpression>
+
 #include <QDir>
 #include <QCoreApplication>
 #include <QFileInfo>
@@ -394,7 +392,7 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
       wstring lowercasedWord = Folding::applySimpleCaseOnly( word );
 
-      static QRegExp cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
+      static QRegularExpression cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
       for ( const auto & x : suggestions ) {
         QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
@@ -406,8 +404,9 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
         GD_DPRINTF( ">>>Sugg: %s\n", suggestion.toLocal8Bit().data() );
 
-        if ( cutStem.indexIn( suggestion.trimmed() ) != -1 ) {
-          wstring alt = gd::toWString( cutStem.cap( 1 ) );
+        auto match = cutStem.match( suggestion.trimmed() );
+        if ( match.hasMatch() ) {
+          wstring alt = gd::toWString( match.captured( 1 ) );
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {

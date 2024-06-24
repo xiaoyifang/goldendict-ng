@@ -1,4 +1,4 @@
-name: macos-homebrew
+name: Release macOS
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12,macos-14]
-        qt_ver: [ 6.7.1 ]
+        qt_ver: [ 6.7.2 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict

@@ -2,8 +2,7 @@
 
 [![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
-[![Windows-6.x](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x.yml)
-[![macos-homebrew](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew.yml)
+[![Build](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml)
 
 The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
 supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
@@ -27,12 +26,13 @@ dictionaries.
 - support >4GB dictionary
 - support highdpi screen resolution
 - built with xapian as fulltext engine
-- support Qt5.15.2 and higher ,include latest Qt6
+- support latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
 - anki integration
 - dark theme
 - daily auto release support
 - lots of bug fixes and improvements
+- general code improvements for easier development
 
 ## Help GoldenDict's Development
 

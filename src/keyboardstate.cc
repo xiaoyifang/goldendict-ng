@@ -21,9 +21,7 @@
 
 bool KeyboardState::checkModifiersPressed( int mask )
 {
-#if defined( Q_WS_QWS )
-  return false;
-#elif defined( Q_OS_WIN32 )
+#if defined( Q_OS_WIN32 )
 
   return !( ( mask & Alt && !( GetAsyncKeyState( VK_MENU ) & 0x8000 ) )
             || ( mask & Ctrl && !( GetAsyncKeyState( VK_CONTROL ) & 0x8000 ) )

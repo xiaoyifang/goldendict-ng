@@ -20,11 +20,6 @@ SearchPanel::SearchPanel( QWidget * parent ):
   next->setText( tr( "&Next" ) );
   next->setShortcut( QKeySequence( tr( "Ctrl+G" ) ) );
 
-  highlightAll = new QCheckBox( this );
-  highlightAll->setIcon( QIcon( ":/icons/highlighter.png" ) );
-  highlightAll->setText( tr( "Highlight &all" ) );
-  highlightAll->setChecked( true );
-
   caseSensitive = new QCheckBox( this );
   caseSensitive->setText( tr( "&Case Sensitive" ) );
 
@@ -38,7 +33,6 @@ SearchPanel::SearchPanel( QWidget * parent ):
   auto * buttonsRow = new QHBoxLayout();
   buttonsRow->addWidget( previous );
   buttonsRow->addWidget( next );
-  buttonsRow->addWidget( highlightAll );
   buttonsRow->addWidget( caseSensitive );
   buttonsRow->addStretch();
 

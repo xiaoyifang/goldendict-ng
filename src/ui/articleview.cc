@@ -36,7 +36,6 @@
   #include <QWebEngineContextMenuData>
 #endif
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
   #include <QWebEngineContextMenuRequest>
   #include <QWebEngineFindTextResult>
   #include <utility>
@@ -112,17 +111,16 @@ ArticleView::ArticleView( QWidget * parent,
   selectCurrentArticleAction( this ),
   copyAsTextAction( this ),
   inspectAction( this ),
-  searchIsOpened( false ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
   currentGroupId( currentGroupId_ ),
   translateLine( translateLine_ )
 {
-
   // setup GUI
   webview        = new ArticleWebView( this );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
-
+  searchPanel->hide();
+  ftsSearchPanel->hide();
   // Layout
   auto * mainLayout = new QVBoxLayout( this );
   mainLayout->addWidget( webview );
@@ -141,7 +139,6 @@ ArticleView::ArticleView( QWidget * parent,
   connect( searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
   connect( searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
   connect( searchPanel->caseSensitive, &QPushButton::clicked, this, &ArticleView::on_searchCaseSensitive_clicked );
-  connect( searchPanel->highlightAll, &QPushButton::clicked, this, &ArticleView::on_highlightAllButton_clicked );
   connect( searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
   connect( searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
   connect( ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
@@ -222,7 +219,7 @@ ArticleView::ArticleView( QWidget * parent,
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::PluginsEnabled, true );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->defaultSettings()->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
@@ -230,7 +227,7 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->setAttribute( QWebEngineSettings::PluginsEnabled, true );
+  settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
@@ -245,14 +242,9 @@ ArticleView::ArticleView( QWidget * parent,
   webview->grabGesture( Gestures::GDPinchGestureType );
   webview->grabGesture( Gestures::GDSwipeGestureType );
 #endif
-  // Variable name for store current selection range
-  rangeVarName = QString( "sr_%1" ).arg( QString::number( (quint64)this, 16 ) );
-
 
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
-
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
-
 
   channel = new QWebChannel( webview->page() );
   agent   = new ArticleViewAgent( this );
@@ -365,7 +357,7 @@ void ArticleView::showDefinition( QString const & word,
 
 void ArticleView::showDefinition( QString const & word,
                                   QStringList const & dictIDs,
-                                  QRegExp const & searchRegExp,
+                                  QRegularExpression const & searchRegExp,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
@@ -387,10 +379,10 @@ void ArticleView::showDefinition( QString const & word,
   Utils::Url::addQueryItem( req, "word", word );
   Utils::Url::addQueryItem( req, "dictionaries", dictIDs.join( "," ) );
   Utils::Url::addQueryItem( req, "regexp", searchRegExp.pattern() );
-  if ( searchRegExp.caseSensitivity() == Qt::CaseSensitive )
+  if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) )
     Utils::Url::addQueryItem( req, "matchcase", "1" );
-  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
-    Utils::Url::addQueryItem( req, "wildcards", "1" );
+  //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
+  //    Utils::Url::addQueryItem( req, "wildcards", "1" );
   Utils::Url::addQueryItem( req, "group", QString::number( group ) );
   if ( ignoreDiacritics )
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
@@ -398,14 +390,20 @@ void ArticleView::showDefinition( QString const & word,
   // Any search opened is probably irrelevant now
   closeSearch();
 
-  // Clear highlight all button selection
-  searchPanel->highlightAll->setChecked( false );
   webview->setCursor( Qt::WaitCursor );
 
   load( req );
 
   // Update headwords history
   emit sendWordToHistory( word );
+}
+
+void ArticleView::showDefinition( QString const & word,
+                                  QStringList const & dictIDs,
+                                  unsigned group,
+                                  bool ignoreDiacritics )
+{
+  showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
 void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
@@ -480,7 +478,7 @@ void ArticleView::loadFinished( bool result )
 
 void ArticleView::handleTitleChanged( QString const & title )
 {
-  if ( !title.isEmpty() ) // Qt 5.x WebKit raise signal titleChanges(QString()) while navigation within page
+  if ( !title.isEmpty() )
     emit titleChanged( this, title );
 }
 
@@ -616,7 +614,7 @@ bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
         return true;
       }
     }
-    if ( ke->key() == Qt::Key_F3 && ftsSearchIsOpened ) {
+    if ( ke->key() == Qt::Key_F3 && ftsSearchPanel->isVisible() ) {
       if ( !ke->modifiers() ) {
         if ( ev->type() == QEvent::KeyPress )
           on_ftsSearchNext_clicked();
@@ -951,7 +949,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
       QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-      showDefinition( word, dictsList, QRegExp(), getGroup( ref ), false );
+      showDefinition( word, dictsList, getGroup( ref ), false );
     }
     else
       showDefinition( word, getGroup( ref ), scrollTo, contexts );
@@ -967,7 +965,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-        showDefinition( url.path().mid( 1 ), dictsList, QRegExp(), getGroup( ref ), false );
+        showDefinition( url.path().mid( 1 ), dictsList, getGroup( ref ), false );
         return;
       }
 
@@ -975,7 +973,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
-        showDefinition( word, dictsList, QRegExp(), getGroup( url ), false );
+        showDefinition( word, dictsList, getGroup( url ), false );
         return;
       }
 
@@ -1939,45 +1937,40 @@ void ArticleView::openSearch()
   if ( !isVisible() )
     return;
 
-  if ( ftsSearchIsOpened )
+  if ( ftsSearchPanel->isVisible() )
     closeSearch();
 
-  if ( !searchIsOpened ) {
+  if ( !searchPanel->isVisible() ) {
     searchPanel->show();
     searchPanel->lineEdit->setText( getTitle() );
-    searchIsOpened = true;
   }
 
   searchPanel->lineEdit->setFocus();
   searchPanel->lineEdit->selectAll();
 
   // Clear any current selection
-  if ( webview->selectedText().size() ) {
-    webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
+  if ( webview->hasSelection() ) {
+    webview->findText( "" );
   }
 
-  if ( searchPanel->lineEdit->property( "noResults" ).toBool() ) {
-    searchPanel->lineEdit->setProperty( "noResults", false );
-
-    Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
-  }
+  Utils::Widget::setNoResultColor( searchPanel->lineEdit, false );
 }
 
 void ArticleView::on_searchPrevious_clicked()
 {
-  if ( searchIsOpened )
-    performFindOperation( false, true );
+  if ( searchPanel->isVisible() )
+    performFindOperation( true );
 }
 
 void ArticleView::on_searchNext_clicked()
 {
-  if ( searchIsOpened )
-    performFindOperation( false, false );
+  if ( searchPanel->isVisible() )
+    performFindOperation( false );
 }
 
 void ArticleView::on_searchText_textEdited()
 {
-  performFindOperation( true, false );
+  performFindOperation( false );
 }
 
 void ArticleView::on_searchText_returnPressed()
@@ -1992,12 +1985,7 @@ void ArticleView::on_searchCloseButton_clicked()
 
 void ArticleView::on_searchCaseSensitive_clicked()
 {
-  performFindOperation( true, false );
-}
-
-void ArticleView::on_highlightAllButton_clicked()
-{
-  performFindOperation( false, false, true );
+  performFindOperation( false );
 }
 
 //the id start with "gdform-"
@@ -2035,7 +2023,7 @@ void ArticleView::doubleClicked( QPoint pos )
 
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
           QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-          showDefinition( selectedText, dictsList, QRegExp(), getGroup( ref ), false );
+          showDefinition( selectedText, dictsList, getGroup( ref ), false );
         }
         else
           showDefinition( selectedText, getGroup( ref ), getCurrentArticle() );
@@ -2045,32 +2033,9 @@ void ArticleView::doubleClicked( QPoint pos )
 }
 
 
-void ArticleView::performFindOperation( bool restart, bool backwards, bool checkHighlight )
+void ArticleView::performFindOperation( bool backwards )
 {
   QString text = searchPanel->lineEdit->text();
-
-  if ( restart || checkHighlight ) {
-    if ( restart ) {
-      // Anyone knows how we reset the search position?
-      // For now we resort to this hack:
-      if ( webview->selectedText().size() ) {
-        webview->page()->runJavaScript( "window.getSelection().removeAllRanges();_=0;" );
-      }
-    }
-
-    QWebEnginePage::FindFlags f( 0 );
-
-    if ( searchPanel->caseSensitive->isChecked() )
-      f |= QWebEnginePage::FindCaseSensitively;
-
-    webview->findText( "", f );
-
-    if ( searchPanel->highlightAll->isChecked() )
-      webview->findText( text, f );
-
-    if ( checkHighlight )
-      return;
-  }
 
   QWebEnginePage::FindFlags f( 0 );
 
@@ -2082,12 +2047,7 @@ void ArticleView::performFindOperation( bool restart, bool backwards, bool check
 
   findText( text, f, [ text, this ]( bool match ) {
     bool setMark = !text.isEmpty() && !match;
-
-    if ( searchPanel->lineEdit->property( "noResults" ).toBool() != setMark ) {
-      searchPanel->lineEdit->setProperty( "noResults", setMark );
-
-      Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
-    }
+    Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
   } );
 }
 
@@ -2111,17 +2071,16 @@ void ArticleView::findText( QString & text,
 
 bool ArticleView::closeSearch()
 {
-  if ( searchIsOpened ) {
+  webview->findText( "" );
+  if ( searchPanel->isVisible() ) {
     searchPanel->hide();
     webview->setFocus();
-    searchIsOpened = false;
 
     return true;
   }
-  else if ( ftsSearchIsOpened ) {
+  if ( ftsSearchPanel->isVisible() ) {
     firstAvailableText.clear();
     uniqueMatches.clear();
-    ftsSearchIsOpened = false;
 
     ftsSearchPanel->hide();
     webview->setFocus();
@@ -2132,24 +2091,12 @@ bool ArticleView::closeSearch()
 
     return true;
   }
-  else
-    return false;
+  return false;
 }
 
 bool ArticleView::isSearchOpened()
 {
-  return searchIsOpened;
-}
-
-void ArticleView::showEvent( QShowEvent * ev )
-{
-  QWidget::showEvent( ev );
-
-  if ( !searchIsOpened )
-    searchPanel->hide();
-
-  if ( !ftsSearchIsOpened )
-    ftsSearchPanel->hide();
+  return searchPanel->isVisible();
 }
 
 void ArticleView::copyAsText()
@@ -2215,7 +2162,7 @@ void ArticleView::dictionaryClear( const ActiveDictIds & ad )
 
 void ArticleView::performFtsFindOperation( bool backwards )
 {
-  if ( !ftsSearchIsOpened )
+  if ( !ftsSearchPanel->isVisible() )
     return;
 
   if ( firstAvailableText.isEmpty() ) {
@@ -2226,14 +2173,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
   }
 
   QWebEnginePage::FindFlags flags( 0 );
-
-  if ( ftsSearchMatchCase )
-    flags |= QWebEnginePage::FindCaseSensitively;
-
-
-  // Restore saved highlighted selection
-  webview->page()->runJavaScript(
-    QString( "var sel=window.getSelection();sel.removeAllRanges();sel.addRange(%1);_=0;" ).arg( rangeVarName ) );
 
   if ( backwards ) {
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )

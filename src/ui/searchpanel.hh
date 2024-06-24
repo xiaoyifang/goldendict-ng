@@ -16,7 +16,6 @@ public:
   QPushButton * close;
   QPushButton * previous;
   QPushButton * next;
-  QCheckBox * highlightAll;
   QCheckBox * caseSensitive;
 };
 

@@ -158,8 +158,6 @@ private:
 
   bool wordListSelChanged;
 
-  bool wasMaximized; // Window state before minimization
-
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
@@ -390,7 +388,7 @@ private slots:
 
   void showTranslationForDicts( QString const &,
                                 QStringList const & dictIDs,
-                                QRegExp const & searchRegExp,
+                                QRegularExpression const & searchRegExp,
                                 bool ignoreDiacritics );
 
   void showHistoryItem( QString const & );

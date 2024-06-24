@@ -163,8 +163,7 @@ div.sdct_h {
 }
 
 .sdict_h_wav img {
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
+  vertical-align: middle;
 }
 
 /* StarDict type 'm' -- Pure meaning. Presented as <pre> */
@@ -492,16 +491,14 @@ div.xdxf {
 }
 
 .dsl_s_wav img {
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
+  vertical-align: middle;
 }
 
 .dsl_video .img {
   display: inline-block;
   background: url("qrc:///icons/video.png");
   background-repeat: no-repeat;
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
+  vertical-align: middle;
   width: 22px;
   height: 22px;
   margin: 0;
@@ -3047,6 +3044,5 @@ table#sv-hooks,
 }
 
 .gls_wav img {
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
+  vertical-align: middle;
 }

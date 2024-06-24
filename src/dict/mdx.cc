@@ -1008,6 +1008,21 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
                            match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
         }
       }
+
+      if ( linkType.compare( "object" ) == 0 ) {
+        match = RX::Mdx::objectdata.match( newLink );
+        if ( match.hasMatch() ) {
+          auto srcsetOriginalText = match.captured( "text" );
+          QString srcsetNewText;
+          if ( !srcsetOriginalText.contains( "//" ) ) {
+            srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, srcsetOriginalText );
+          }
+
+          newLink.replace( match.capturedStart(),
+                           match.capturedLength(),
+                           match.captured( "before" ) % srcsetNewText % match.captured( "after" ) );
+        }
+      }
     }
 
     if ( !newLink.isEmpty() ) {
@@ -1422,12 +1437,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
       }
 
-      // read languages
-      QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( fileName ) );
+      // read languages from dictioanry's file name
+      auto langs = LangCoder::findLangIdPairFromPath( fileName );
 
-      // if no languages found, try dictionary's name
+      // if no languages found, try dictionary name
       if ( langs.first == 0 || langs.second == 0 ) {
-        langs = LangCoder::findIdsForFilename( parser.title() );
+        langs = LangCoder::findLangIdPairFromName( parser.title() );
       }
 
       idxHeader.langFrom = langs.first;
