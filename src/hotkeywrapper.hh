@@ -53,7 +53,6 @@ struct HotkeyStruct
 
 //////////////////////////////////////////////////////////////////////////
 
-#if !defined( Q_WS_QWS )
 class HotkeyWrapper: public QThread // Thread is actually only used on X11
 {
   Q_OBJECT
@@ -168,40 +167,6 @@ signals:
 
   #endif
 };
-#else
-
-class HotkeyWrapper: public QObject
-{
-  Q_OBJECT
-
-  friend class QHotkeyApplication;
-
-public:
-
-  DEF_EX( exInit, "Hotkey wrapper failed to init", std::exception )
-
-  HotkeyWrapper( QObject * parent ):
-    QObject( parent )
-  {
-  }
-
-  bool setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
-  {
-    return true;
-  }
-
-  bool setGlobalKey( QKeySequence const &, int )
-  {
-    return true;
-  }
-
-  void unregister() {}
-
-signals:
-
-  void hotkeyActivated( int );
-};
-#endif
 
 //////////////////////////////////////////////////////////////////////////
 
