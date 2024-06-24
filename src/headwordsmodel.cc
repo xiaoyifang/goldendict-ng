@@ -53,10 +53,8 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
 
     //reset to previous models
     beginResetModel();
-    words.clear();
-    words << original_words;
+    words = QStringList( original_words );
     endResetModel();
-    original_words.clear();
 
     return;
   }
@@ -65,7 +63,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
     //the first time to enter filtering mode.
     if ( !filtering ) {
       filtering = true;
-      original_words << words;
+      original_words = QStringList( words );
     }
   }
   filterWords.clear();
