@@ -290,15 +290,15 @@ void BtreeWordSearchRequest::findMatches()
                           || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
                   addMatch( Utf8::decode( x.prefix + x.word ) );
               }
+              if ( matches.size() >= maxResults ) {
+                break;
+              }
             }
 
             if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
               break;
 
             if ( matches.size() >= maxResults ) {
-              // For now we actually allow more than maxResults if the last
-              // chain yield more than one result. That's ok and maybe even more
-              // desirable.
               break;
             }
           }
