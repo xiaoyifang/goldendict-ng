@@ -62,7 +62,7 @@ void HeadwordListModel::setFilter( QRegularExpression reg )
     QMutexLocker _( &lock );
     //the first time to enter filtering mode.
     if ( !filtering ) {
-      filtering = true;
+      filtering      = true;
       original_words = QStringList( words );
     }
   }
