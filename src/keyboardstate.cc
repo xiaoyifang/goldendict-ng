@@ -2,16 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "keyboardstate.hh"
-#include <QObject> // To get Qt Q_OS defines
 
 #include <QApplication>
 
 bool KeyboardState::checkModifiersPressed( int mask )
 {
-
-  auto modifiers = QApplication::keyboardModifiers();
-
-  qDebug() << modifiers;
+  auto modifiers = QApplication::queryKeyboardModifiers();
 
   return !( ( mask & Alt && !( modifiers.testFlag( Qt::AltModifier ) ) )
             || ( mask & Ctrl && !( modifiers.testFlag( Qt::ControlModifier ) ) )
