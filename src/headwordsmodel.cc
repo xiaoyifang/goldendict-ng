@@ -102,9 +102,9 @@ void HeadwordListModel::requestFinished()
       return;
     }
     beginResetModel();
-    words.clear();
-    words << filterWords;
+    words = QStringList( filterWords );
     endResetModel();
+    emit numberPopulated( words.size() );
   }
 }
 

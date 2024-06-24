@@ -109,10 +109,6 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   connect( ui.headersListView, &QAbstractItemView::clicked, this, &DictHeadwords::itemClicked );
 
-  connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
-  connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ this ]( int _value ) {
-    model->setMaxFilterResults( _value );
-  } );
 
   ui.headersListView->installEventFilter( this );
 
@@ -136,6 +132,7 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   const auto size                            = dict->getWordCount();
   std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
   model.swap( other );
+  model->setMaxFilterResults( ui.filterMaxResult->value() );
   model->setDict( dict );
   proxy->setSourceModel( model.get() );
   proxy->sort( 0 );
@@ -155,6 +152,13 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   dictId = QString( dict->getId().c_str() );
 
   QApplication::restoreOverrideCursor();
+  connect( model.get(), &HeadwordListModel::numberPopulated, this, [ this ]( int _ ) {
+    showHeadwordsNumber();
+  } );
+  connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
+  connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ this ]( int _value ) {
+    model->setMaxFilterResults( _value );
+  } );
 }
 
 void DictHeadwords::savePos()
