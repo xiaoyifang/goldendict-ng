@@ -272,6 +272,10 @@ void BtreeWordSearchRequest::findMatches()
             QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+              {
+                break;
+              }
               if ( useWildcards ) {
                 wstring word   = Utf8::decode( x.prefix + x.word );
                 wstring result = Folding::applyDiacriticsOnly( word );
