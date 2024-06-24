@@ -272,8 +272,7 @@ void BtreeWordSearchRequest::findMatches()
             QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
-              if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-              {
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
                 break;
               }
               if ( useWildcards ) {
