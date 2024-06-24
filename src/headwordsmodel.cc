@@ -36,7 +36,7 @@ QString HeadwordListModel::getRow( int row )
   return fileSortedList.at( row );
 }
 
-void HeadwordListModel::setFilter( QRegularExpression reg )
+void HeadwordListModel::setFilter( const QRegularExpression & reg )
 {
   //if the headword is already finished loaded, do nothing。
   if ( finished ) {

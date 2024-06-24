@@ -20,7 +20,7 @@ public:
   bool isFinish() const;
   QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const override;
   QString getRow( int row );
-  void setFilter( QRegularExpression );
+  void setFilter( const QRegularExpression & );
   void appendWord( const QString & word );
   int getCurrentIndex() const;
   bool containWord( const QString & word );
