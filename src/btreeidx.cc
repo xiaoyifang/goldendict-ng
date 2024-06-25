@@ -1123,7 +1123,12 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
         return;
 
       if ( headwords )
-        headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+      {
+        if(i.prefix.empty())
+        {
+          headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+        }
+      }
 
       if ( offsets && offsets->contains( i.articleOffset ) )
         continue;
