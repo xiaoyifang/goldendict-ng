@@ -11,6 +11,5 @@ bool KeyboardState::checkModifiersPressed( int mask )
 
   return !( ( mask & Alt && !( modifiers.testFlag( Qt::AltModifier ) ) )
             || ( mask & Ctrl && !( modifiers.testFlag( Qt::ControlModifier ) ) )
-            || ( mask & Shift && !( modifiers.testFlag( Qt::ShiftModifier ) ) )
-             );
+            || ( mask & Shift && !( modifiers.testFlag( Qt::ShiftModifier ) ) ) );
 }
