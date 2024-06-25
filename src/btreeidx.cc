@@ -1122,10 +1122,8 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
       if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
         return;
 
-      if ( headwords )
-      {
-        if(i.prefix.empty())
-        {
+      if ( headwords ) {
+        if ( i.prefix.empty() ) {
           headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
         }
       }
