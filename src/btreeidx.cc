@@ -1157,13 +1157,9 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   }
 }
 
-void BtreeIndex::findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
+void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
 {
-  int i = 0;
-  for ( auto begin = offsets.begin(); begin != offsets.end(); begin++, i++ ) {
-    if ( i < index ) {
-      continue;
-    }
+  for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
     findSingleNodeHeadwords( *begin, headwords );
     index++;
 
@@ -1207,8 +1203,8 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * he
   }
 }
 
-//find the next chain ptr ,which is large than this currentChainPtr
-QSet< uint32_t > BtreeIndex::findNodes()
+//find the next chain ptr ,which is larger than this currentChainPtr
+QList< uint32_t > BtreeIndex::findNodes()
 {
   QMutexLocker _( idxFileMutex );
 
@@ -1219,12 +1215,12 @@ QSet< uint32_t > BtreeIndex::findNodes()
   }
 
   char const * leaf = &rootNode.front();
-  QSet< uint32_t > leafOffset;
+  QList< uint32_t > leafOffset;
 
   uint32_t leafEntries;
   leafEntries = *(uint32_t *)leaf;
   if ( leafEntries != 0xffffFFFF ) {
-    leafOffset.insert( rootOffset );
+    leafOffset.append( rootOffset );
     return leafOffset;
   }
 
@@ -1234,8 +1230,9 @@ QSet< uint32_t > BtreeIndex::findNodes()
   uint32_t * offsets = (uint32_t *)leaf + 1;
   uint32_t i         = 0;
 
-  while ( i++ < ( indexNodeSize + 1 ) )
-    leafOffset.insert( *( offsets++ ) );
+  while ( i++ < ( indexNodeSize + 1 ) ) {
+    leafOffset.append( *( offsets++ ) );
+  }
 
   return leafOffset;
 }
