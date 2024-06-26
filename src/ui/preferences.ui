@@ -621,26 +621,6 @@ in the pressed state when the word selection changes.</string>
                </item>
                <item>
                 <layout class="QGridLayout" name="gridLayout">
-                 <item row="1" column="1">
-                  <widget class="QCheckBox" name="leftCtrl">
-                   <property name="toolTip">
-                    <string>Left Ctrl only</string>
-                   </property>
-                   <property name="text">
-                    <string>Left Ctrl</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="2">
-                  <widget class="QCheckBox" name="rightShift">
-                   <property name="toolTip">
-                    <string>Right Shift only</string>
-                   </property>
-                   <property name="text">
-                    <string>Right Shift</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="0">
                   <widget class="QCheckBox" name="altKey">
                    <property name="toolTip">
@@ -661,16 +641,6 @@ in the pressed state when the word selection changes.</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="0">
-                  <widget class="QCheckBox" name="leftAlt">
-                   <property name="toolTip">
-                    <string>Left Alt only</string>
-                   </property>
-                   <property name="text">
-                    <string>Left Alt</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="2">
                   <widget class="QCheckBox" name="shiftKey">
                    <property name="toolTip">
@@ -678,36 +648,6 @@ in the pressed state when the word selection changes.</string>
                    </property>
                    <property name="text">
                     <string>Shift</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QCheckBox" name="rightAlt">
-                   <property name="toolTip">
-                    <string>Right Alt only</string>
-                   </property>
-                   <property name="text">
-                    <string>Right Alt</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QCheckBox" name="rightCtrl">
-                   <property name="toolTip">
-                    <string>Right Ctrl only</string>
-                   </property>
-                   <property name="text">
-                    <string>Right Ctrl</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="2">
-                  <widget class="QCheckBox" name="leftShift">
-                   <property name="toolTip">
-                    <string>Left Shift only</string>
-                   </property>
-                   <property name="text">
-                    <string>Left Shift</string>
                    </property>
                   </widget>
                  </item>
@@ -2035,15 +1975,9 @@ from Stardict, Babylon and GLS dictionaries</string>
   <tabstop>startToTray</tabstop>
   <tabstop>closeToTray</tabstop>
   <tabstop>cbAutostart</tabstop>
-  <tabstop>leftCtrl</tabstop>
-  <tabstop>rightShift</tabstop>
   <tabstop>altKey</tabstop>
   <tabstop>ctrlKey</tabstop>
-  <tabstop>leftAlt</tabstop>
   <tabstop>shiftKey</tabstop>
-  <tabstop>rightAlt</tabstop>
-  <tabstop>rightCtrl</tabstop>
-  <tabstop>leftShift</tabstop>
   <tabstop>winKey</tabstop>
   <tabstop>useProxyServer</tabstop>
   <tabstop>proxyType</tabstop>
