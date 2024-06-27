@@ -2126,7 +2126,7 @@ void ArticleView::highlightFTSResults()
   QString script = QString(
                      "var context = document.querySelector(\"body\");\n"
                      "var instance = new Mark(context);\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"exactly\"});" )
+                     "instance.mark(\"%1\");" )
                      .arg( regString );
 
   webview->page()->runJavaScript( script );
