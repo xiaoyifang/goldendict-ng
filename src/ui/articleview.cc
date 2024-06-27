@@ -2125,7 +2125,7 @@ void ArticleView::highlightFTSResults()
 
   QString script = QString(
                      "var context = document.querySelector(\"body\");\n"
-                     "var instance = new Mark(context);\n"
+                     "var instance = new Mark(context);\n instance.unmark();\n"
                      "instance.mark(\"%1\");" )
                      .arg( regString );
 
