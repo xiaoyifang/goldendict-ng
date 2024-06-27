@@ -3,6 +3,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include "utils.hh"
+#include "global_network_access_manager.hh"
 
 QString markTargetWord( QString const & sentence, QString const & word )
 {
@@ -15,7 +16,7 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ):
   QObject{ parent },
   cfg( _cfg )
 {
-  mgr = new QNetworkAccessManager( this );
+  mgr = GlobalNetworkAccessManager;
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
