@@ -478,7 +478,7 @@ void ArticleView::loadFinished( bool result )
 
 void ArticleView::handleTitleChanged( QString const & title )
 {
-  if ( !title.isEmpty() )
+  if ( !title.isEmpty() && !title.contains("://"))
     emit titleChanged( this, title );
 }
 
@@ -1443,7 +1443,10 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 
 QString ArticleView::getTitle()
 {
-  return webview->page()->title();
+  auto title = webview->title();
+  if(title.contains("://"))
+    return {};
+  return webview->title();
 }
 
 QString ArticleView::getWord() const
