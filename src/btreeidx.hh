@@ -197,15 +197,6 @@ public:
     return 0;
   }
 
-  // Sort articles offsets for full-text search in dictionary-specific order
-  // to increase of articles retrieving speed
-  // Default - simple sorting in increase order
-  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-  {
-    Q_UNUSED( isCancelled );
-    std::sort( offsets.begin(), offsets.end() );
-  }
-
   /// Called before each matching operation to ensure that any child init
   /// has completed. Mainly used for deferred init. The default implementation
   /// does nothing.
