@@ -100,9 +100,9 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
+  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
   void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QSet< uint32_t > findNodes();
+  QList< uint32_t > findNodes();
 
   /// Retrieve headwords for presented article addresses
   void
@@ -195,15 +195,6 @@ public:
   virtual uint32_t getFtsIndexVersion()
   {
     return 0;
-  }
-
-  // Sort articles offsets for full-text search in dictionary-specific order
-  // to increase of articles retrieving speed
-  // Default - simple sorting in increase order
-  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-  {
-    Q_UNUSED( isCancelled );
-    std::sort( offsets.begin(), offsets.end() );
   }
 
   /// Called before each matching operation to ensure that any child init

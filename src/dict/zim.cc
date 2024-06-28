@@ -225,8 +225,6 @@ public:
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
-  void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
-
 protected:
 
   void loadIcon() noexcept override;
@@ -502,25 +500,6 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
     gdWarning( "Zim: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
-}
-
-void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-{
-  QVector< QPair< quint32, uint32_t > > offsetsWithClusters;
-  offsetsWithClusters.reserve( offsets.size() );
-
-  for ( QVector< uint32_t >::ConstIterator it = offsets.constBegin(); it != offsets.constEnd(); ++it ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      return;
-
-    QMutexLocker _( &zimMutex );
-    offsetsWithClusters.append( QPair< uint32_t, quint32 >( getArticleCluster( df, *it ), *it ) );
-  }
-
-  std::sort( offsetsWithClusters.begin(), offsetsWithClusters.end() );
-
-  for ( int i = 0; i < offsetsWithClusters.size(); i++ )
-    offsets[ i ] = offsetsWithClusters.at( i ).second;
 }
 
 void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )

@@ -453,26 +453,8 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     auto searchText = ui.searchLine->text();
     searchText.replace( RX::Ftx::tokenBoundary, " " );
 
-    auto it = RX::Ftx::token.globalMatch( searchText );
-    QString firstAvailbeItem;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      auto p = match.captured();
-      if ( p.startsWith( '-' ) )
-        continue;
-
-      //the searched text should be like "term".remove enclosed double quotation marks.
-      if ( p.startsWith( "\"" ) ) {
-        p.remove( "\"" );
-      }
-
-      firstAvailbeItem = p;
-      break;
-    }
-
-    if ( !firstAvailbeItem.isEmpty() ) {
-      reg = QRegularExpression( firstAvailbeItem, QRegularExpression::CaseInsensitiveOption );
+    if ( !searchText.isEmpty() ) {
+      reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
     }
 
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );

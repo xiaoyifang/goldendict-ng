@@ -27,18 +27,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   connect( ui.showScanFlag, &QAbstractButton::toggled, this, &Preferences::showScanFlagToggled );
 
-  connect( ui.altKey, &QAbstractButton::clicked, this, &Preferences::wholeAltClicked );
-  connect( ui.ctrlKey, &QAbstractButton::clicked, this, &Preferences::wholeCtrlClicked );
-  connect( ui.shiftKey, &QAbstractButton::clicked, this, &Preferences::wholeShiftClicked );
-
-  connect( ui.leftAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
-  connect( ui.rightAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
-  connect( ui.leftCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
-  connect( ui.rightCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
-  connect( ui.leftShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
-  connect( ui.rightShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
-
-
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
@@ -206,12 +194,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ctrlKey->setChecked( p.scanPopupModifiers & KeyboardState::Ctrl );
   ui.shiftKey->setChecked( p.scanPopupModifiers & KeyboardState::Shift );
   ui.winKey->setChecked( p.scanPopupModifiers & KeyboardState::Win );
-  ui.leftAlt->setChecked( p.scanPopupModifiers & KeyboardState::LeftAlt );
-  ui.rightAlt->setChecked( p.scanPopupModifiers & KeyboardState::RightAlt );
-  ui.leftCtrl->setChecked( p.scanPopupModifiers & KeyboardState::LeftCtrl );
-  ui.rightCtrl->setChecked( p.scanPopupModifiers & KeyboardState::RightCtrl );
-  ui.leftShift->setChecked( p.scanPopupModifiers & KeyboardState::LeftShift );
-  ui.rightShift->setChecked( p.scanPopupModifiers & KeyboardState::RightShift );
 
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
@@ -250,12 +232,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #ifdef Q_OS_WIN32
   ui.winKey->hide();
 #else
-  ui.leftAlt->hide();
-  ui.rightAlt->hide();
-  ui.leftCtrl->hide();
-  ui.rightCtrl->hide();
-  ui.leftShift->hide();
-  ui.rightShift->hide();
   #ifdef Q_OS_MAC
   ui.altKey->setText( "Opt" );
   ui.winKey->setText( "Ctrl" );
@@ -446,12 +422,6 @@ Config::Preferences Preferences::getPreferences()
   p.scanPopupModifiers += ui.ctrlKey->isChecked() ? KeyboardState::Ctrl : 0;
   p.scanPopupModifiers += ui.shiftKey->isChecked() ? KeyboardState::Shift : 0;
   p.scanPopupModifiers += ui.winKey->isChecked() ? KeyboardState::Win : 0;
-  p.scanPopupModifiers += ui.leftAlt->isChecked() ? KeyboardState::LeftAlt : 0;
-  p.scanPopupModifiers += ui.rightAlt->isChecked() ? KeyboardState::RightAlt : 0;
-  p.scanPopupModifiers += ui.leftCtrl->isChecked() ? KeyboardState::LeftCtrl : 0;
-  p.scanPopupModifiers += ui.rightCtrl->isChecked() ? KeyboardState::RightCtrl : 0;
-  p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift : 0;
-  p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift : 0;
 
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow          = ui.scanToMainWindow->isChecked();
@@ -556,48 +526,6 @@ void Preferences::showScanFlagToggled( bool b )
     ui.enableScanPopupModifiers->setChecked( false );
 }
 
-
-void Preferences::wholeAltClicked( bool b )
-{
-  if ( b ) {
-    ui.leftAlt->setChecked( false );
-    ui.rightAlt->setChecked( false );
-  }
-}
-
-void Preferences::wholeCtrlClicked( bool b )
-{
-  if ( b ) {
-    ui.leftCtrl->setChecked( false );
-    ui.rightCtrl->setChecked( false );
-  }
-}
-
-void Preferences::wholeShiftClicked( bool b )
-{
-  if ( b ) {
-    ui.leftShift->setChecked( false );
-    ui.rightShift->setChecked( false );
-  }
-}
-
-void Preferences::sideAltClicked( bool )
-{
-  if ( ui.leftAlt->isChecked() || ui.rightAlt->isChecked() )
-    ui.altKey->setChecked( false );
-}
-
-void Preferences::sideCtrlClicked( bool )
-{
-  if ( ui.leftCtrl->isChecked() || ui.rightCtrl->isChecked() )
-    ui.ctrlKey->setChecked( false );
-}
-
-void Preferences::sideShiftClicked( bool )
-{
-  if ( ui.leftShift->isChecked() || ui.rightShift->isChecked() )
-    ui.shiftKey->setChecked( false );
-}
 void Preferences::on_enableMainWindowHotkey_toggled( bool checked )
 {
   ui.mainWindowHotkey->setEnabled( checked );

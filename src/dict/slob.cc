@@ -636,7 +636,6 @@ public:
 
   quint64 getArticlePos( uint32_t articleNumber );
 
-  void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
   void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
@@ -886,11 +885,6 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
     sf.getRefEntry( articleNumber, entry );
   }
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
-}
-
-void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-{
-  //Currently , we use xapian to create the fulltext index. The order of offsets is no important.
 }
 
 void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )

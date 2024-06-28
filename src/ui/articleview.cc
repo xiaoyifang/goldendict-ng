@@ -478,7 +478,7 @@ void ArticleView::loadFinished( bool result )
 
 void ArticleView::handleTitleChanged( QString const & title )
 {
-  if ( !title.isEmpty() )
+  if ( !title.isEmpty() && !title.contains( "://" ) )
     emit titleChanged( this, title );
 }
 
@@ -1443,7 +1443,10 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 
 QString ArticleView::getTitle()
 {
-  return webview->page()->title();
+  auto title = webview->title();
+  if ( title.contains( "://" ) )
+    return {};
+  return webview->title();
 }
 
 QString ArticleView::getWord() const
@@ -2125,8 +2128,8 @@ void ArticleView::highlightFTSResults()
 
   QString script = QString(
                      "var context = document.querySelector(\"body\");\n"
-                     "var instance = new Mark(context);\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"exactly\"});" )
+                     "var instance = new Mark(context);\n instance.unmark();\n"
+                     "instance.mark(\"%1\");" )
                      .arg( regString );
 
   webview->page()->runJavaScript( script );
