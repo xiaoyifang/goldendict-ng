@@ -23,6 +23,7 @@
 #include "articlewebview.hh"
 #include "ui/searchpanel.hh"
 #include "ui/ftssearchpanel.hh"
+#include "dictionary_group.hh"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent;
@@ -35,8 +36,7 @@ class ArticleView: public QWidget
 
   ArticleNetworkAccessManager & articleNetMgr;
   AudioPlayerPtr const & audioPlayer;
-  std::vector< sptr< Dictionary::Class > > const & allDictionaries;
-  Instances::Groups const & groups;
+  DictionaryGroup dictionaryGroup;
   bool popupView;
   Config::Class const & cfg;
   QWebChannel * channel;
