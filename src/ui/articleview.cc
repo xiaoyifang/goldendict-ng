@@ -2133,6 +2133,11 @@ void ArticleView::highlightFTSResults()
                      .arg( regString );
 
   webview->page()->runJavaScript( script );
+  auto parts = regString.split( " ", Qt::SkipEmptyParts );
+  if ( !parts.isEmpty() ) {
+    firstAvailableText = parts[ 0 ];
+    ftsSearchPanel->show();
+  }
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
