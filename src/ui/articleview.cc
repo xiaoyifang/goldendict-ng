@@ -99,7 +99,7 @@ ArticleView::ArticleView( QWidget * parent,
   QWidget( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
-  dictionaryGroup(this,allDictionaries_,groups_),
+  dictionaryGroup( this, allDictionaries_, groups_ ),
   popupView( popupView_ ),
   cfg( cfg_ ),
   pasteAction( this ),
@@ -981,7 +981,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         // Link to other dictionary
         QString dictName( Utils::Url::queryItemValue( url, "dict" ) );
         auto dict = dictionaryGroup.getDictionaryByName( dictName );
-        if(dict){
+        if ( dict ) {
           newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( dict->getId().c_str() ) );
         }
       }
@@ -1016,7 +1016,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = dictionaryGroup.getActiveDictionaries(currentGroup);
+      std::vector< sptr< Dictionary::Class > > const * activeDicts =
+        dictionaryGroup.getActiveDictionaries( currentGroup );
 
       if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
@@ -1187,7 +1188,8 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = dictionaryGroup.getActiveDictionaries(currentGroup);
+      std::vector< sptr< Dictionary::Class > > const * activeDicts =
+        dictionaryGroup.getActiveDictionaries( currentGroup );
 
       if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
@@ -1612,28 +1614,26 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     // Find this dictionary
 
     auto dictionary = dictionaryGroup.getDictionaryById( i->toUtf8().data() );
-    if(dictionary){
+    if ( dictionary ) {
       QAction * action = nullptr;
-        if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
-          // Enough! Or the menu would become too large.
-          maxDictionaryRefsAction  = new QAction( ".........", &menu );
-          action                   = maxDictionaryRefsAction;
-          maxDictionaryRefsReached = true;
-        }
-        else {
-          action = new QAction( dictionary->getIcon(),
-                                QString::fromUtf8( dictionary->getName().c_str() ),
-                                &menu );
-          // Force icons in menu on all platforms,
-          // since without them it will be much harder
-          // to find things.
-          action->setIconVisibleInMenu( true );
-        }
-        menu.addAction( action );
+      if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
+        // Enough! Or the menu would become too large.
+        maxDictionaryRefsAction  = new QAction( ".........", &menu );
+        action                   = maxDictionaryRefsAction;
+        maxDictionaryRefsReached = true;
+      }
+      else {
+        action = new QAction( dictionary->getIcon(), QString::fromUtf8( dictionary->getName().c_str() ), &menu );
+        // Force icons in menu on all platforms,
+        // since without them it will be much harder
+        // to find things.
+        action->setIconVisibleInMenu( true );
+      }
+      menu.addAction( action );
 
-        tableOfContents[ action ] = *i;
+      tableOfContents[ action ] = *i;
     }
-    
+
     if ( maxDictionaryRefsReached )
       break;
   }
