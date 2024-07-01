@@ -2134,7 +2134,7 @@ void ArticleView::highlightFTSResults()
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  if(!parts.isEmpty()){
+  if ( !parts.isEmpty() ) {
     firstAvailableText = parts[ 0 ];
     ftsSearchPanel->show();
   }
