@@ -23,13 +23,13 @@ public:
   {
   }
 
-  sptr< Dictionary::Class > getDictionaryByName(QString const & dictionaryName);
+  sptr< Dictionary::Class > getDictionaryByName( QString const & dictionaryName );
 
   const std::vector< sptr< Dictionary::Class > > * getActiveDictionaries( unsigned groupId );
 
   sptr< Dictionary::Class > getDictionaryById( const std::string & dictId );
 
-  Instances::Group const * getGroupById(unsigned groupId);
+  Instances::Group const * getGroupById( unsigned groupId );
 
 
 private:
