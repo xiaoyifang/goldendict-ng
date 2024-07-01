@@ -1584,7 +1584,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     if ( txt.size() > 60 )
       txt = txt.left( 60 ) + "...";
 
-    addHeaderToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( txt ), &menu );
+    addHeaderToHistoryAction = new QAction( tr( R"(&Add "%1" to history)" ).arg( txt ), &menu );
     menu.addAction( addHeaderToHistoryAction );
   }
 
@@ -1602,7 +1602,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   // Add table of contents
   QStringList ids = getArticlesList();
 
-  if ( !menu.isEmpty() && ids.size() )
+  if ( !menu.isEmpty() && !ids.empty() )
     menu.addSeparator();
 
   unsigned refsAdded            = 0;
