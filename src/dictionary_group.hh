@@ -5,7 +5,7 @@
 
 #include "sptr.hh"
 #include <QObject>
-#include "dictionary.hh"
+#include "dict/dictionary.hh"
 #include "instances.hh"
 
 class DictionaryGroup: public QObject
