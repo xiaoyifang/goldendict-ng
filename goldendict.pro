@@ -362,6 +362,7 @@ HEADERS += \
     src/iframeschemehandler.hh \
     src/indexedzip.hh \
     src/initializing.hh \
+    src/dictionary_group.hh \
     src/instances.hh \
     src/keyboardstate.hh \
     src/langcoder.hh \
@@ -484,6 +485,7 @@ SOURCES += \
     src/iframeschemehandler.cc \
     src/indexedzip.cc \
     src/initializing.cc \
+    src/dictionary_group.cc \
     src/instances.cc \
     src/keyboardstate.cc \
     src/langcoder.cc \
