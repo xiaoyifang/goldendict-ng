@@ -91,6 +91,7 @@ Add this to cmake command:
 Most `.dll` built by vcpkg will be automatically copied, but the Qt ones won't.
 
 You can
+
 * run `cmake --install .` (recommended)
 * manually run windeployqt
 * add `${Qt's install path}\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable

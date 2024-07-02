@@ -11,6 +11,7 @@ option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
 # vcpkg build - only tested on Windows, does not support FFMPEG
 option(USE_VCPKG "uses VCPKG for providing dependencies" OFF)
+option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
 
 ## Change binary & resources folder to parallel install with original GD.
 ## This flag should be avoided because it leads to small regressions:
@@ -20,6 +21,10 @@ option(USE_VCPKG "uses VCPKG for providing dependencies" OFF)
 option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") # to put staff in the ./cmake folder
+
+if(WITH_VCPKG_BREAKPAD)
+  list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
+endif()
 
 include(FeatureSummary)
 
@@ -190,6 +195,10 @@ endif ()
 
 if (WITH_ZIM)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_ZIM_SUPPORT)
+endif ()
+
+if (WITH_VCPKG_BREAKPAD)
+    target_compile_definitions(${GOLDENDICT} PUBLIC USE_BREAKPAD)
 endif ()
 
 #### libraries linking && includes for Win or Unix
