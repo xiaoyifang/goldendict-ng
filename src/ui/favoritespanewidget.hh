@@ -17,7 +17,6 @@
 #include <QTreeView>
 
 #include <config.hh>
-#include "delegate.hh"
 
 class FavoritesModel;
 
@@ -101,7 +100,6 @@ private:
   /// when selecting items via mouse and keyboard
   bool itemSelectionChanged;
 
-  WordListItemDelegate * listItemDelegate;
   FavoritesModel * m_favoritesModel;
 
   int timerId;

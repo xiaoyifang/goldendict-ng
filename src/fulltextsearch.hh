@@ -17,7 +17,6 @@
 
 #include "config.hh"
 #include "instances.hh"
-#include "delegate.hh"
 
 namespace FTS {
 
@@ -236,7 +235,6 @@ private:
   Ui::FullTextSearchDialog ui;
   QList< FtsHeadword > results;
   HeadwordsListModel * model;
-  WordListItemDelegate * delegate;
   QAction helpAction;
 
   void showDictNumbers();

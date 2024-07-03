@@ -82,9 +82,6 @@ void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * m
            &HistoryPaneWidget::onSelectionChanged );
 
   connect( m_historyList, &QWidget::customContextMenuRequested, this, &HistoryPaneWidget::showCustomMenu );
-
-  listItemDelegate = new WordListItemDelegate( m_historyList->itemDelegate() );
-  m_historyList->setItemDelegate( listItemDelegate );
 }
 
 HistoryPaneWidget::~HistoryPaneWidget()

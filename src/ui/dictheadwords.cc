@@ -68,10 +68,6 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   // very important call, for performance reasons:
   ui.headersListView->setUniformItemSizes( true );
 
-  delegate = new WordListItemDelegate( ui.headersListView->itemDelegate() );
-  if ( delegate )
-    ui.headersListView->setItemDelegate( delegate );
-
   ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
   //arbitrary number.
@@ -117,8 +113,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
 DictHeadwords::~DictHeadwords()
 {
-  if ( delegate )
-    delegate->deleteLater();
+
 }
 
 void DictHeadwords::setup( Dictionary::Class * dict_ )

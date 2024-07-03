@@ -260,10 +260,6 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
 
   ui.headwordsView->installEventFilter( this );
 
-  delegate = new WordListItemDelegate( ui.headwordsView->itemDelegate() );
-  if ( delegate )
-    ui.headwordsView->setItemDelegate( delegate );
-
   ui.searchLine->selectAll();
 }
 
@@ -274,8 +270,7 @@ void FullTextSearchDialog::setSearchText( const QString & text )
 
 FullTextSearchDialog::~FullTextSearchDialog()
 {
-  if ( delegate )
-    delegate->deleteLater();
+
 }
 
 void FullTextSearchDialog::stopSearch()

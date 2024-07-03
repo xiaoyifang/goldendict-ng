@@ -310,7 +310,6 @@ HEADERS += \
     src/common/wstring_qt.hh \
     src/config.hh \
     src/decompress.hh \
-    src/delegate.hh \
     src/dict/aard.hh \
     src/dict/belarusiantranslit.hh \
     src/dict/bgl.hh \
@@ -433,7 +432,6 @@ SOURCES += \
     src/common/wstring_qt.cc \
     src/config.cc \
     src/decompress.cc \
-    src/delegate.cc \
     src/dict/aard.cc \
     src/dict/belarusiantranslit.cc \
     src/dict/bgl.cc \

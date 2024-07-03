@@ -79,9 +79,6 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   // Favorites tree
   m_favoritesModel = new FavoritesModel( Config::getFavoritiesFileName(), this );
 
-  listItemDelegate = new WordListItemDelegate( m_favoritesTree->itemDelegate() );
-  m_favoritesTree->setItemDelegate( listItemDelegate );
-
   QAbstractItemModel * oldModel = m_favoritesTree->model();
   m_favoritesTree->setModel( m_favoritesModel );
   if ( oldModel )
