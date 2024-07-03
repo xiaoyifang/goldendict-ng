@@ -46,6 +46,7 @@ class ArticleView: public QWidget
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
     copyAsTextAction, inspectAction;
+  QAction & openSearchAction;
 
   bool expandOptionalParts;
 
@@ -98,6 +99,7 @@ public:
                Instances::Groups const &,
                bool popupView,
                Config::Class const & cfg,
+               QAction & openSearchAction_,
                QLineEdit const * translateLine,
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
@@ -310,9 +312,6 @@ signals:
 
 public slots:
 
-  /// Opens the search (Ctrl+F)
-  void openSearch();
-
   void on_searchPrevious_clicked();
   void on_searchNext_clicked();
 
@@ -353,6 +352,9 @@ private slots:
 
   /// Nagivates to the next article relative to the active one.
   void moveOneArticleDown();
+
+  /// Opens the search area
+  void openSearch();
 
   void on_searchText_textEdited();
   void on_searchText_returnPressed();
