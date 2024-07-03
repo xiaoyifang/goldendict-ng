@@ -1878,8 +1878,6 @@ void MainWindow::switchToPrevTab()
 
 void MainWindow::backClicked()
 {
-  GD_DPRINTF( "Back\n" );
-
   ArticleView * view = getCurrentArticleView();
 
   view->back();
@@ -1887,8 +1885,6 @@ void MainWindow::backClicked()
 
 void MainWindow::forwardClicked()
 {
-  GD_DPRINTF( "Forward\n" );
-
   ArticleView * view = getCurrentArticleView();
 
   view->forward();
