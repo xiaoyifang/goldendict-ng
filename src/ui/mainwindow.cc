@@ -1834,9 +1834,11 @@ void MainWindow::closeCurrentTab()
 
 void MainWindow::closeAllTabs()
 {
-  while ( ui.tabWidget->count() > 0 ) {
+  while ( ui.tabWidget->count() > 1 )
     closeCurrentTab();
-  }
+
+  // close last tab
+  closeCurrentTab();
 }
 
 void MainWindow::closeRestTabs()
@@ -1877,12 +1879,14 @@ void MainWindow::switchToPrevTab()
 void MainWindow::backClicked()
 {
   ArticleView * view = getCurrentArticleView();
+
   view->back();
 }
 
 void MainWindow::forwardClicked()
 {
   ArticleView * view = getCurrentArticleView();
+
   view->forward();
 }
 

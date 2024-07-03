@@ -24,6 +24,11 @@ target_link_libraries(${GOLDENDICT}
         ZLIB::ZLIB
 )
 
+if (WITH_VCPKG_BREAKPAD)
+    find_package(unofficial-breakpad REQUIRED)
+    target_link_libraries(${GOLDENDICT} PRIVATE unofficial::breakpad::libbreakpad_client)
+endif ()
+
 if (WITH_EPWING_SUPPORT)
     add_subdirectory(thirdparty/eb EXCLUDE_FROM_ALL)
     target_include_directories(${GOLDENDICT} PRIVATE
