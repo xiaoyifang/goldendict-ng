@@ -36,7 +36,7 @@ class ArticleView: public QWidget
 
   ArticleNetworkAccessManager & articleNetMgr;
   AudioPlayerPtr const & audioPlayer;
-  DictionaryGroup dictionaryGroup;
+  std::unique_ptr<DictionaryGroup> dictionaryGroup;
   bool popupView;
   Config::Class const & cfg;
   QWebChannel * channel;
