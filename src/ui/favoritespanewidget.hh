@@ -28,7 +28,6 @@ public:
   FavoritesPaneWidget( QWidget * parent = 0 ):
     QWidget( parent ),
     itemSelectionChanged( false ),
-    listItemDelegate( 0 ),
     m_favoritesModel( 0 ),
     timerId( 0 )
   {

@@ -120,8 +120,7 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
 
 FavoritesPaneWidget::~FavoritesPaneWidget()
 {
-  if ( listItemDelegate )
-    delete listItemDelegate;
+
 }
 
 bool FavoritesPaneWidget::eventFilter( QObject * obj, QEvent * ev )

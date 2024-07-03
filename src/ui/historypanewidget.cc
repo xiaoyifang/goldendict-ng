@@ -86,8 +86,7 @@ void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * m
 
 HistoryPaneWidget::~HistoryPaneWidget()
 {
-  if ( listItemDelegate )
-    delete listItemDelegate;
+
 }
 
 void HistoryPaneWidget::copySelectedItems()

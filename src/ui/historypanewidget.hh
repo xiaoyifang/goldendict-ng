@@ -23,8 +23,7 @@ class HistoryPaneWidget: public QWidget
 public:
   explicit HistoryPaneWidget( QWidget * parent = 0 ):
     QWidget( parent ),
-    itemSelectionChanged( false ),
-    listItemDelegate( 0 )
+    itemSelectionChanged( false )
   {
   }
   virtual ~HistoryPaneWidget();
