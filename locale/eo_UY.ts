@@ -552,14 +552,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>RegEsp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Ŝarĝante kapvortojn...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unika kapvortoj entute: %1, filtritaj: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Konservu kapvortojn al dosiero</translation>
     </message>
@@ -586,6 +578,22 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Export finished</source>
       <translation>Eksporto finiĝis</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Ŝargo…</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(sentitola)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Komencu al sistema pleto</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Maldekstra Shift nur</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ Kun ĉi tio ŝaltita tamen, novaj langetoj estos malfermitaj sen
       <translation>Komencu per sistemo</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Maldekstra Alt nur</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Retumado kun langeto</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Nur Dekstra Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ por ĉiuj retaj petoj de la programo.</translation>
       <translation>Interfaco-lingvo:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Maldekstra Ctrl nur</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Malfermu novajn langetojn en la fono</translation>
     </message>
@@ -2969,20 +2957,8 @@ por ĉiuj retaj petoj de la programo.</translation>
       <translation>&amp;Reto</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Dekstra Ctrl nur</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Dekstra Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Maldekstra Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3069,32 +3045,12 @@ elŝutan paĝon.</translation>
       <translation>Uzu la sekvan klavon por montri aŭ kaŝi la ĉefan fenestron:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Maldekstra Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Dekstra Alt nur</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Agordoj</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Maldekstra Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Dekstra Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>La klavoj estas tutmondaj kaj funkcias de iu ajn programo kaj ene de ajna kunteksto kondiĉe ke GoldenDict funkcias fone.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Dekstra Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3897,10 +3853,6 @@ povus esti regrandigita aŭ administrita alimaniere.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Elstarigi &amp;ĉion</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Usklecodistinga</translation>
     </message>
@@ -4181,10 +4133,6 @@ de la taŭgaj grupoj por uzi ilin.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Greka transliterado</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(ne havebla en portebla versio)</translation>
     </message>
     <message>
       <source>Programs</source>
