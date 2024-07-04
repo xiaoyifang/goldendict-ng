@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Fjalët kryesore po ngarkohen...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Gjithsej kryefjalë unike: %1, e filtruar: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Ruani kryefjalët në skedar</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksporti përfundoi</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Hap...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(pa titull)</translation>
     </message>
@@ -2856,10 +2860,6 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Nis në shiritin e sistemit</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Vetëm Shift majtas</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2923,16 +2923,8 @@ Por, kur e ndez këtë, fushat e reja hapen pa kaluar te to.</translation>
       <translation>Nis me sistemin</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Vetëm Alt majtas</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Shfletimi me fusha</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Vetëm Shift djathtas</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2954,10 +2946,6 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Gjuha e grafikës:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Vetëm Ctrl majtas</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Hap fushat e reja në sfond</translation>
     </message>
@@ -2966,20 +2954,8 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>&amp;Rrjeti</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Vetëm Ctrl djathtas</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Shift djathtas</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift majtas</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3063,32 +3039,12 @@ kërkon ta shkarkojë.</translation>
       <translation>Përdor një tast për të shfaqur a fshehur dritaren kryesore:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt majtas</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Vetëm Alt djathtas</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Preferencat</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl majtas</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt djathtas</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Tastet kryesore punojnë përgjithësisht në çdo program, për aq kohë sa GoldenDict vepron në sfond.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl djathtas</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3889,10 +3845,6 @@ që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Thekso &amp;të gjitha</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Ndjeshmëri e rasteve</translation>
     </message>
@@ -4172,10 +4124,6 @@ të caktuara për t&apos;i përdorur.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Përkthimi Greqisht</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(nuk mundësohet në versionin portabël)</translation>
     </message>
     <message>
       <source>Programs</source>
