@@ -2217,6 +2217,7 @@ void MainWindow::editPreferences()
     // This line must be here because the components below require cfg's value to reconfigure
     // After this point, p must not be accessed.
     cfg.preferences = p;
+    GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {
