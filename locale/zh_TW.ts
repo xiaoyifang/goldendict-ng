@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>正規表達式</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>加載詞條...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>詞條總數：%1，已篩選出：%2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>將詞條清單儲存成檔案</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>匯出完成</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,12 +2343,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>載入中
-
-</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(未命名)</translation>
     </message>
@@ -2859,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>啟動至系統匣</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>僅限左 Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2926,16 +2924,8 @@ switching to them.</source>
       <translation>隨系統啟動</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>僅限左 Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>分頁瀏覽</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>僅限右 Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2958,10 +2948,6 @@ for all program&apos;s network requests.</source>
       <translation>介面語言：</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>僅限左 Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>在背景開啟新分頁</translation>
     </message>
@@ -2970,20 +2956,8 @@ for all program&apos;s network requests.</source>
       <translation>網路(&amp;N)</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>僅限右 Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>右 Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>左 Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3040,12 @@ download page.</source>
       <translation>使用下列快速鍵顯示或隱藏主視窗：</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>左 Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>僅限右 Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>偏好設定</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>左 Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>右 Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>快速鍵均為全域鍵，只要 GoldenDict 在背景執行，快速鍵就可以在任何程式中使用。</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>右 Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3888,10 +3842,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>全部醒目提示(&amp;A)</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>大小寫視為相異(&amp;C)</translation>
     </message>
@@ -4169,10 +4119,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>希臘文轉寫</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(免安裝版中不可用)</translation>
     </message>
     <message>
       <source>Programs</source>
