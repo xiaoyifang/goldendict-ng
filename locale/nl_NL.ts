@@ -552,14 +552,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Trefwoorden laden...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unieke kopwoorden totaal: %1, gefilterd: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Hoofdwoorden in bestand opslaan</translation>
     </message>
@@ -586,6 +578,22 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exporteren voltooid</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Laden...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(naamloos)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Starten in systeemvak</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Alleen Shift-links</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ geopend zonder ze te selecteren.</translation>
       <translation>Met systeem starten</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Alleen Alt-links</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Tabbladen</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Alleen Shift-rechts</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2955,10 +2947,6 @@ for all program&apos;s network requests.</source>
       <translation>Toepassingstaal:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Alleen Ctrl-links</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Nieuwe tabbladen op de achtergrond openen</translation>
     </message>
@@ -2967,20 +2955,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Netwerk</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Alleen Ctrl-rechts</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Shift-rechts</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift-links</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3064,32 +3040,12 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>De volgende sneltoets gebruiken om het hoofdvenster te tonen of te verbergen:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt-links</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Alleen Alt-rechts</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Instellingen</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl-links</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt-rechts</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>De sneltoetsen werken systeembreed en vanuit elk programma zolang GoldenDict op de achtergrond actief is.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl-rechts</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3893,10 +3849,6 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>&amp;Alles markeren</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>Gevoelig &amp;Zaak</translation>
     </message>
@@ -4177,10 +4129,6 @@ groep om ze te gebruiken.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Griekse transliteratie</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(niet beschikbaar in de draagbare versie)</translation>
     </message>
     <message>
       <source>Programs</source>
