@@ -575,7 +575,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 #endif
 
   if ( ui.pinButton->isChecked() )
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
 
   /// Too large strings make window expand which is probably not what user
   /// wants
