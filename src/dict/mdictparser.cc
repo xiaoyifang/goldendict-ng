@@ -372,7 +372,7 @@ bool MdictParser::readHeader( QDataStream & in )
   // Read metadata
   rtl_          = headerAttributes.namedItem( "Left2Right" ).toAttr().value() != "Yes";
   QString title = headerAttributes.namedItem( "Title" ).toAttr().value();
-  if ( title.isEmpty() || title.length() < 5 || title == "Title (No HTML code allowed)" ) {
+  if ( title.isEmpty() ) {
     // Use filename instead
     QFileInfo fi( filename_ );
     title_ = fi.baseName();
