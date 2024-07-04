@@ -915,7 +915,7 @@ void ScanPopup::pinButtonClicked( bool checked )
     setAttribute( Qt::WA_MacAlwaysShowToolWindow );
 #endif
 
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
     dictionaryBar.setMovable( true );
     hideTimer.stop();
   }
