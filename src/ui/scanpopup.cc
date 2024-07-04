@@ -543,7 +543,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // This produced some funky mouse grip-related bugs so we commented it out
     //QApplication::processEvents(); // Make window appear immediately no matter what
   }
-  else{
+  else {
     // Pinned-down window isn't always on top, so we need to raise it
     show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
