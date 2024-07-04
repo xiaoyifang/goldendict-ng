@@ -552,14 +552,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Wyrażenie regularne</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Ładowanie słów kluczowych...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unikalne hasła łącznie: %1, przefiltrowane: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Zapisz hasła do pliku</translation>
     </message>
@@ -586,6 +578,22 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Export finished</source>
       <translation>Eksport zakończony</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Ctrl + F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Ładowanie...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(bez tytułu)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Uruchamiaj na pasku zadań</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Tylko lewy Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ Włączenie tej opcji powoduje, że nie następuje przejście do nowo otwartej k
       <translation>Uruchamiaj z systemem</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Tylko lewy Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Przeglądanie w kartach</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Tylko prawy Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ for all program&apos;s network requests.</source>
       <translation>Język interfejsu:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Tylko lewy Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Otwieraj nowe karty w tle</translation>
     </message>
@@ -2968,20 +2956,8 @@ for all program&apos;s network requests.</source>
       <translation>Si&amp;eć</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Tylko prawy Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Prawy Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Lewy Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3067,32 +3043,12 @@ otwarcia strony pobierania.</translation>
       <translation>Używaj tego klawisza skrótu do wyświetlenia lub ukrycia okna głównego:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Lewy Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Tylko prawy Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Preferencje</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Lewy Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Prawy Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Te klawisze skrótu są globalne i działają w każdym kontekście każdego programu, o ile tylko program GoldenDict działa w tle.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Prawy Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3896,10 +3852,6 @@ temu można zmieniać jego wielkość i zarządzać nim w inny sposób.</transla
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>&amp;Podświetl wszystko</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Rozmiar liter</translation>
     </message>
@@ -4182,10 +4134,6 @@ właściwej grupy.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Transliteracja grecka</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(niedostępne w wersji przenośnej)</translation>
     </message>
     <message>
       <source>Programs</source>
