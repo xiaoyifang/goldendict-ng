@@ -1090,7 +1090,7 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   // reset the flag when switching UI modes
   wordListSelChanged = false;
 
-  updateGroupList();
+  updateGroupList( false );
   applyWordsZoomLevel();
 
   setInputLineText( text, WildcardPolicy::WildcardsAreAlreadyEscaped, DisablePopup );
@@ -1549,9 +1549,9 @@ void MainWindow::updateStatusLine()
     10000 );
 }
 
-void MainWindow::updateGroupList()
+void MainWindow::updateGroupList( bool reload )
 {
-  bool haveGroups = cfg.groups.size();
+  bool haveGroups = !cfg.groups.empty();
 
   groupList->setVisible( haveGroups );
 
@@ -1580,9 +1580,9 @@ void MainWindow::updateGroupList()
   }
 
   GlobalBroadcaster::instance()->groupFolderMap.clear();
-  for ( int x = 0; x < cfg.groups.size(); ++x ) {
-    groupInstances.push_back( Instances::Group( cfg.groups[ x ], dictionaries, cfg.inactiveDictionaries ) );
-    GlobalBroadcaster::instance()->groupFolderMap.insert( cfg.groups[ x ].id, cfg.groups[ x ].favoritesFolder );
+  for ( auto & group : cfg.groups ) {
+    groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
+    GlobalBroadcaster::instance()->groupFolderMap.insert( group.id, group.favoritesFolder );
   }
 
   // Update names for dictionaries that are present, so that they could be
@@ -1596,10 +1596,12 @@ void MainWindow::updateGroupList()
 
   qDebug() << "Reloading all the tabs...";
 
-  for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
-    ArticleView & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
+  if ( reload ) {
+    for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
+      auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
 
-    view.reload();
+      view.reload();
+    }
   }
 
   connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
@@ -2217,14 +2219,12 @@ void MainWindow::editPreferences()
     // This line must be here because the components below require cfg's value to reconfigure
     // After this point, p must not be accessed.
     cfg.preferences = p;
-    GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {
       auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
-      view.syncBackgroundColorWithCfgDarkReader();
       if ( needReload ) {
         view.reload();
       }
