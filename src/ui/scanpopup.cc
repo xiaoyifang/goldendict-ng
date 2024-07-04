@@ -438,14 +438,7 @@ void ScanPopup::translateWord( QString const & word )
   emit hideScanFlag();
 #endif
 
-  engagePopup( false,
-#ifdef Q_OS_WIN
-               true // We only focus popup under Windows when activated via Ctrl+C+C
-                    // -- on Linux it already has an implicit focus
-#else
-               false
-#endif
-  );
+  engagePopup( false, true );
 }
 
 #ifdef HAVE_X11
@@ -536,14 +529,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
     show();
 
-#if defined( HAVE_X11 )
-    // Ensure that the window always has focus on X11 with Qt::Tool flag.
-    // This also often prevents the window from disappearing prematurely with Qt::Popup flag,
-    // especially when combined with Qt::X11BypassWindowManagerHint flag.
-    if ( !ui.pinButton->isChecked() )
-      giveFocus = true;
-#endif
-
     if ( giveFocus ) {
       activateWindow();
       raise();
@@ -558,7 +543,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // This produced some funky mouse grip-related bugs so we commented it out
     //QApplication::processEvents(); // Make window appear immediately no matter what
   }
-  else if ( ui.pinButton->isChecked() ) {
+  else{
     // Pinned-down window isn't always on top, so we need to raise it
     show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
@@ -566,13 +551,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
       raise();
     }
   }
-#if defined( HAVE_X11 )
-  else if ( ( windowFlags() & Qt::Tool ) == Qt::Tool && cfg.preferences.raiseWindowOnSearch ) {
-    // Ensure that the window with Qt::Tool flag always has focus on X11.
-    activateWindow();
-    raise();
-  }
-#endif
 
   if ( ui.pinButton->isChecked() )
     setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
