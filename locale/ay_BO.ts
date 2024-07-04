@@ -554,14 +554,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Expresión regular</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>P’iqinchäwinak apkatañataki...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Jakhu p&apos;iqi arunaka mayaki: %1, susuyata: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Wayaqa ukan p&apos;iqi arunak imaña</translation>
     </message>
@@ -588,6 +580,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Exportación ukax tukuyatawa</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2378,10 +2386,6 @@ Pulse en &lt;b&gt;Apaqaña&lt;/b&gt; para ir a la página de descarga.</translat
       <translation>Ctrl+F5 ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Ullaskiwa...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(jan sutini)</translation>
     </message>
@@ -2924,10 +2928,6 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>Wak&apos;a sistema ukan qalltaña</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Chiqaki JACH&apos;A QILLQA</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>CTRL</translation>
     </message>
@@ -2994,16 +2994,8 @@ jichha phicchun qhiparasi.</translation>
       <translation>Sistemampi qalltaña</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Chiqaki ALT</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Phichhutjam phicchutjam tuyuri</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Ch’iqa Shift ukakiw utji</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -3031,10 +3023,6 @@ para todos los accesos a la red del programa.</translation>
       <translation>Interfaz aru:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Chiqaki CTRL</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Manqhajanx machaq phichhunak jist&apos;araña</translation>
     </message>
@@ -3043,20 +3031,8 @@ para todos los accesos a la red del programa.</translation>
       <translation>&amp;Llika</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Kupiki CTRL</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo satänwa</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Kupi JACH&apos;A QILLQA</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Chiqa JACH&apos;A QILLQA</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3148,32 +3124,12 @@ Apnaqañatakispa apaqanataki yatiyatam.</translation>
       <translation>Aka jank&apos;a teclanakampi apnaqam, nayrir wintana uñachayañataki jan ukjax imantañataki:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Chiqa ALT</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Kupiki JACH&apos;A QILLQA</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Ajlliñanaka</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Chiqa CTRL</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>ALT qhiqata</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Kunayman programampi jank&apos;a teclanakax apnaqasi, GoldenDict apnaqasiski ukja.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Kupi CTRL</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -4023,10 +3979,6 @@ Posterior</translation>
       <translation>Ctrl+G ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Uñacht’ayaña &amp;all</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Caso Sensitivo ukat juk’ampinaka</translation>
     </message>
@@ -4313,10 +4265,6 @@ de los grupos apropiados para utilizarlos.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Griega arut qillqata</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(móvil ukan janiw lurkiti)</translation>
     </message>
     <message>
       <source>Programs</source>
