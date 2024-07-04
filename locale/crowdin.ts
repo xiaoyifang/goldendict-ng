@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
         <translation>正则表达式</translation>
     </message>
     <message>
-        <source>Loading headwords...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unique headwords total: %1, filtered: %2</source>
-        <translation>总共有%1个不同的词条，已过滤%2个</translation>
-    </message>
-    <message>
         <source>Save headwords to file</source>
         <translation>保存词条至文件</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <source>Export finished</source>
         <translation>导出完成</translation>
+    </message>
+    <message>
+        <source>Specify the maximum filtered headwords returned.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter max results:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unique headwords total: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unique headwords total: %1, filtered(limited): %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
         <translation>Ctrl+F5</translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation>加载中……</translation>
-    </message>
-    <message>
         <source>(untitled)</source>
         <translation>（未命名）</translation>
     </message>
@@ -2856,10 +2860,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation>启动至系统托盘</translation>
     </message>
     <message>
-        <source>Left Shift only</source>
-        <translation>仅限左 Shift</translation>
-    </message>
-    <message>
         <source>Ctrl</source>
         <translation>Ctrl</translation>
     </message>
@@ -2923,16 +2923,8 @@ switching to them.</source>
         <translation>随系统启动</translation>
     </message>
     <message>
-        <source>Left Alt only</source>
-        <translation>仅限左 Alt</translation>
-    </message>
-    <message>
         <source>Tabbed browsing</source>
         <translation>标签页浏览</translation>
-    </message>
-    <message>
-        <source>Right Shift only</source>
-        <translation>仅限右 Shift</translation>
     </message>
     <message>
         <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2955,10 +2947,6 @@ for all program&apos;s network requests.</source>
         <translation>界面语言：</translation>
     </message>
     <message>
-        <source>Left Ctrl only</source>
-        <translation>仅限左 Ctrl</translation>
-    </message>
-    <message>
         <source>Open new tabs in background</source>
         <translation>在后台打开新标签页</translation>
     </message>
@@ -2967,20 +2955,8 @@ for all program&apos;s network requests.</source>
         <translation>网络(&amp;N)</translation>
     </message>
     <message>
-        <source>Right Ctrl only</source>
-        <translation>仅限右 Ctrl</translation>
-    </message>
-    <message>
         <source>Lingvo</source>
         <translation>Lingvo</translation>
-    </message>
-    <message>
-        <source>Right Shift</source>
-        <translation>右 Shift</translation>
-    </message>
-    <message>
-        <source>Left Shift</source>
-        <translation>左 Shift</translation>
     </message>
     <message>
         <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3062,32 +3038,12 @@ download page.</source>
         <translation>使用下列热键显示或隐藏主窗口：</translation>
     </message>
     <message>
-        <source>Left Alt</source>
-        <translation>左 Alt</translation>
-    </message>
-    <message>
-        <source>Right Alt only</source>
-        <translation>仅限右 Alt</translation>
-    </message>
-    <message>
         <source>Preferences</source>
         <translation>首选项</translation>
     </message>
     <message>
-        <source>Left Ctrl</source>
-        <translation>左 Ctrl</translation>
-    </message>
-    <message>
-        <source>Right Alt</source>
-        <translation>右 Alt</translation>
-    </message>
-    <message>
         <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
         <translation>热键均为全局键，只要 GoldenDict 在后台运行，热键就可以在任何程序中使用。</translation>
-    </message>
-    <message>
-        <source>Right Ctrl</source>
-        <translation>右 Ctrl</translation>
     </message>
     <message>
         <source>Hotkeys</source>
@@ -3879,10 +3835,6 @@ could be resized or managed in other ways.</source>
         <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-        <source>Highlight &amp;all</source>
-        <translation>高亮所有结果(&amp;a)</translation>
-    </message>
-    <message>
         <source>&amp;Case Sensitive</source>
         <translation>区分大小写(&amp;C)</translation>
     </message>
@@ -4158,10 +4110,6 @@ of the appropriate groups to use them.</source>
     <message>
         <source>Greek transliteration</source>
         <translation>希腊文转写</translation>
-    </message>
-    <message>
-        <source>(not available in portable version)</source>
-        <translation>（便携版中不可用）</translation>
     </message>
     <message>
         <source>Programs</source>
