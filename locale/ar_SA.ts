@@ -29,14 +29,14 @@
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>بناءً على كيو تي %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
     <name>AnkiConnector</name>
     <message>
       <source>anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">anki: can&apos;t create a card without a word</translation>
+      <translation>أنكي: لا يمكن&apos;إنشاء بطاقة بدون كلمة</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -83,7 +83,7 @@
     </message>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>لم يتم العثور على ترجمة لـ &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; في المجموعة &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>(picture)</source>
@@ -91,7 +91,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;مرحبًا بك في &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;لبدء العمل مع البرنامج قم أولاً بزيارة &lt;em&gt;تحرير | القواميس&lt;/em&gt; لإضافة بعض مسارات الدليل حيث يمكنك البحث عن ملفات القاموس، أو إعداد مواقع ويكيبيديا المختلفة أو مصادر أخرى، أو ضبط ترتيب القاموس أو إنشاء مجموعات القاموس.&lt;p&gt;وبعد ذلك&apos;أنت مستعد للبحث عن كلماتك! يمكنك القيام بذلك في هذه النافذة باستخدام الجزء الموجود على اليسار، أو يمكنك &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;البحث عن كلمات من التطبيقات النشطة الأخرى&lt;/a&gt;. &lt;p&gt;لتخصيص البرنامج، تحقق من التفضيلات المتاحة في &lt;em&gt;تحرير | التفضيلات&lt;/em&gt;. تحتوي جميع الإعدادات هناك على تلميحات أدوات، تأكد من قراءتها إذا كنت تشك في أي شيء.&lt;p&gt;إذا كنت بحاجة إلى مزيد من المساعدة، أو لديك أي أسئلة أو اقتراحات أو تتساءل فقط عن رأي الآخرين، فمرحبًا بك في منتدى البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;تحقق من موقع البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;&lt;/a&gt; للحصول على التحديثات. &lt;p&gt;(ج) 2008-2013 كونستانتين إيزاكوف. مرخص بموجب GPLv3 أو الأحدث.</translation>
     </message>
   </context>
   <context>
@@ -210,7 +210,7 @@
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+      <translation>برنامج الصوت المشار إليه غير موجود&apos;.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>فتح الصورة في عارض النظام...</translation>
     </message>
   </context>
   <context>
@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>جارٍ تحميل الكلمات الرئيسية ...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>إجمالي عدد الكلمات الرئيسية الفريدة: %1، المصفاة: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>حفظ كلمات رئيسية في ملف</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>انتهى التصدير</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -631,11 +639,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>تم تمكين البحث عن النص الكامل</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>تم تعطيل البحث عن النص الكامل</translation>
     </message>
     <message>
       <source>Edit the dictionary via command:
@@ -644,11 +652,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>اسم ملف الفهرس:</translation>
     </message>
     <message>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>افتح مجلد الفهرس</translation>
     </message>
   </context>
   <context>
@@ -816,7 +824,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>لا يمكن أن تكون كلمة الاستعلام فارغة.</translation>
     </message>
     <message>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
@@ -824,7 +832,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>تقصير</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -1011,7 +1019,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group tabs</source>
-      <translation type="unfinished">Group tabs</translation>
+      <translation>علامات تبويب المجموعة</translation>
     </message>
     <message>
       <source>Open groups list</source>
@@ -1159,7 +1167,7 @@ between classic and school orthography in cyrillic)</source>
     <name>Initializing</name>
     <message>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>الفهرسة: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
@@ -1175,11 +1183,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>الفهرسة...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>تحميل...</translation>
     </message>
   </context>
   <context>
@@ -2182,7 +2190,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation type="unfinished">Favo&amp;rites</translation>
+      <translation>المفضلة والطقوس</translation>
     </message>
     <message>
       <source>F3</source>
@@ -2333,10 +2341,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>يحمّل...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(غير معنون)</translation>
     </message>
@@ -2438,17 +2442,17 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add all tabs to Favorites</source>
-      <translation type="unfinished">Add all tabs to Favorites</translation>
+      <translation>إضافة كافة علامات التبويب إلى المفضلة</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>تحذير: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
+      <translation>سلسلة للبحث في القواميس. أحرف البدل &apos;*&apos;, &apos;?&apos; ومجموعات الرموز &apos;[...]&apos; مسموح بها.
+للعثور على &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; تستخدم الرموز &apos;\*&apos;, &apos;\ ؟&apos;، &apos;\[&apos;، &apos;\]&apos; على التوالي</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
@@ -2456,7 +2460,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation type="unfinished">Remove current tab from Favorites</translation>
+      <translation>إزالة علامة التبويب الحالية من المفضلة</translation>
     </message>
     <message>
       <source>%1 - %2</source>
@@ -2560,7 +2564,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation type="unfinished">Dictionary headwords</translation>
+      <translation>الكلمات الرئيسية في القاموس</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
@@ -2572,11 +2576,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
-      <translation type="unfinished">Now indexing for full-text search: </translation>
+      <translation>الآن الفهرسة للبحث عن النص الكامل: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
+      <translation>إزالة الكلمة الرئيسية &quot;%1&quot; من المفضلة؟</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
@@ -2588,7 +2592,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation type="unfinished">Favor&amp;ites Pane</translation>
+      <translation>جزء ال&amp;المفضلة</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
@@ -2636,7 +2640,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>GoldenDict reference</source>
-      <translation type="unfinished">GoldenDict reference</translation>
+      <translation>مرجع GoldenDict</translation>
     </message>
     <message>
       <source>Show</source>
@@ -2756,14 +2760,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>متغير اللغة</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>لا يمكن&apos;فتح المخزن المؤقت للصوت للقراءة.</translation>
     </message>
   </context>
   <context>
@@ -2855,10 +2859,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>ابدأ إلى صينية النظام</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Shift اليساري فقط</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2923,16 +2923,8 @@ switching to them.</source>
       <translation>ابدأ مع النظام</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Alt اليساري فقط</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>التصفّح المبوّب</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Shift اليميني فقط</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2955,10 +2947,6 @@ for all program&apos;s network requests.</source>
       <translation>لغة الواجهة:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Ctrl اليساري فقط</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>افتح الألسنة الجديدة في الخلفية</translation>
     </message>
@@ -2967,20 +2955,8 @@ for all program&apos;s network requests.</source>
       <translation>ال&amp;شّبكة</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Ctrl اليميني فقط</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>لنغفو</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Shift اليميني</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift اليساري</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3042,12 @@ download page.</source>
       <translation>استخدم المفتاح السّريع التالي لإظهار أو إخفاء النافذة الرئيسية:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt اليساري</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Alt اليميني فقط</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>تفضيلات</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl اليساري</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt اليميني</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>المفاتيح السريعة تعمل في أي مكان من الحاسوب خلال أي محتوى طالما القاموس الذهبي يعمل في الخلفية.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl اليميني</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3123,11 +3079,11 @@ the program would always start with the scan popup active.</source>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>لا تظهر النافذة المنبثقة عند التحديد أو الحافظة في أحد تغييرات النوافذ الخاصة بـ GoldenDict&apos;</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
+      <translation>تجاهل اختيار GoldenDict&apos;وتغييرات الحافظة</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
@@ -3275,7 +3231,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>وقت التأخير</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3323,7 +3279,7 @@ however, the article from the topmost dictionary is shown.</source>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>مجال التعريف...</translation>
     </message>
     <message>
       <source>Sentence</source>
@@ -3555,11 +3511,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>إعادة التشغيل مطلوبة</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
@@ -3567,63 +3523,63 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>تمكين الفهرس بالمعلومات الموضعية</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>الخط القياسي</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>الخط الأحادي الفضاء</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>الخط الشريف</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>الخط بلا الرقيق</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>مظهر</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>سيتم تطبيق هذه الخطوط عند عدم العثور على الخطوط المحددة بواسطة القاموس.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>الخطوط الاحتياطية</translation>
     </message>
     <message>
       <source>Interface Style:</source>
-      <translation type="unfinished">Interface Style:</translation>
+      <translation>نمط الواجهة:</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>إنشاء فهرس النص الكامل مع المواضيع المتوازية </translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>عند استخدام الحافظة، قم بإزالة كل شيء بعد السطر الجديد</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>قم بإزالة الفهرس غير الصالح عند الخروج</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>متنوع</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>واجهة الخط</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
     </message>
   </context>
   <context>
@@ -3739,11 +3695,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>إعادة ضبط حالة النافذة.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>تعطيل تحويل النص إلى كلام.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
@@ -3759,15 +3715,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>طباعة النسخة ومعلومات التشخيص.</translation>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation type="unfinished">Force the word to be translated in scanpopup</translation>
+      <translation>فرض ترجمة الكلمة في المسح المنبثق</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow</translation>
+      <translation>فرض ترجمة الكلمة في النافذة الرئيسية</translation>
     </message>
   </context>
   <context>
@@ -3872,7 +3828,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>تحذير: %1</translation>
     </message>
   </context>
   <context>
@@ -3892,10 +3848,6 @@ could be resized or managed in other ways.</source>
     <message>
       <source>Ctrl+G</source>
       <translation>Ctrl+G</translation>
-    </message>
-    <message>
-      <source>Highlight &amp;all</source>
-      <translation>إبراز &amp;الكل</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
@@ -4181,10 +4133,6 @@ of the appropriate groups to use them.</source>
       <translation>النسخ اليوناني الحرفي</translation>
     </message>
     <message>
-      <source>(not available in portable version)</source>
-      <translation>(ليس متوفّرًا في الإصدار المحمول)</translation>
-    </message>
-    <message>
       <source>Programs</source>
       <translation>البرامج</translation>
     </message>
@@ -4208,7 +4156,7 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;النطق مقدمة من &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;، وهي وسيلة لغوية تعاونية مكتبة ويكيميديا فرنسا. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
   </context>
   <context>
