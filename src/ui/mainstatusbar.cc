@@ -66,6 +66,7 @@ void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 
 void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
+  raise();
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
