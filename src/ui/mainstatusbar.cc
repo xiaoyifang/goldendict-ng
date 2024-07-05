@@ -11,7 +11,8 @@
 #include <QPainterPath>
 
 MainStatusBar::MainStatusBar( QWidget * parent ):
-  QWidget( parent )
+  QWidget( parent ),
+  timer( new QTimer( this ) )
 {
   textWidget = new QLabel( QString(), this );
   textWidget->setObjectName( "text" );
@@ -24,7 +25,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   picWidget->setScaledContents( true );
   picWidget->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Ignored );
 
-  timer = new QTimer( this );
+
   timer->setSingleShot( true );
 
   // layout
@@ -32,7 +33,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   layout->setSpacing( 0 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
-  layout->setContentsMargins( 2, 2, 2, 2 );
+  layout->setContentsMargins( 5, 5, 5, 5 );
   layout->addWidget( picWidget );
   layout->addWidget( textWidget );
   setLayout( layout );
@@ -44,22 +45,13 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   setAutoFillBackground( true );
 }
 
-void MainStatusBar::paintEvent( QPaintEvent * event )
-{
-  QPainterPath path;
-  path.addRoundedRect( rect(), 2, 0 );
-  QRegion mask = QRegion( path.toFillPolygon().toPolygon() );
-  setMask( mask );
-
-  QWidget::paintEvent( event );
-}
-
 void MainStatusBar::clearMessage()
 {
   message.clear();
-  textWidget->setText( backgroungMessage );
+  textWidget->setText( backgroundMessage );
   picWidget->setPixmap( QPixmap() );
   timer->stop();
+  hide();
 }
 
 QString MainStatusBar::currentMessage() const
@@ -69,14 +61,16 @@ QString MainStatusBar::currentMessage() const
 
 void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 {
-  backgroungMessage = bkg_message;
+  show();
+  backgroundMessage = bkg_message;
   if ( message.isEmpty() ) {
-    textWidget->setText( backgroungMessage );
+    textWidget->setText( backgroundMessage );
   }
 }
 
 void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
+  show();
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
