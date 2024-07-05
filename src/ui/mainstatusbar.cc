@@ -50,6 +50,16 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   setAutoFillBackground( true );
 }
 
+void MainStatusBar::paintEvent(QPaintEvent *event)
+{
+    QPainterPath path;
+    path.addRoundedRect(rect(), 2, 0);
+    QRegion mask = QRegion(path.toFillPolygon().toPolygon());
+    setMask(mask);
+
+    QWidget::paintEvent(event);
+}
+
 void MainStatusBar::clearMessage()
 {
   message.clear();

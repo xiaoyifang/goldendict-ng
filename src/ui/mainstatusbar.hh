@@ -39,6 +39,7 @@ private:
   QString message;
 
   bool eventFilter( QObject * obj, QEvent * event );
+  void paintEvent( QPaintEvent * event );
 };
 
 #endif // MAINSTATUSBAR_HH
