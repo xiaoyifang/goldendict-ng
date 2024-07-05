@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Exp. reg.</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation type="unfinished">Loading headwords...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unic paroles: total: %1, filtrat: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation type="unfinished">Save headwords to file</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exportation sta completat</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Carga...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(sin nómine)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation type="unfinished">Start to system tray</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Solmen li levul Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ switching to them.</translation>
       <translation>Lansar al inicie</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Solmel li levul Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Navigation in cartes</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Solmen li dextri Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ for all program&apos;s network requests.</translation>
       <translation>Lingue de interfacie:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Solmen li levul Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Aperter nov cartes in li funde</translation>
     </message>
@@ -2969,20 +2957,8 @@ for all program&apos;s network requests.</translation>
       <translation>R&amp;ete</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Solmen li dextri Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>popup</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Dextri Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Levul Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3069,32 +3045,12 @@ download page.</translation>
       <translation>Usar ti rapid-taste por monstar o celar li fenestre principal:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Levul Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Solmel li dextri Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Preferenties</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Levul Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Dextri Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Li rapid-tastes es global e functiona in chascun programma durante que GoldenDict opera in li funde.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Dextri Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3897,10 +3853,6 @@ could be resized or managed in other ways.</translation>
       <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation type="unfinished">Highlight &amp;all</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation type="unfinished">&amp;Case Sensitive</translation>
     </message>
@@ -4181,10 +4133,6 @@ of the appropriate groups to use them.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Grec transliteration</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation type="unfinished">(not available in portable version)</translation>
     </message>
     <message>
       <source>Programs</source>

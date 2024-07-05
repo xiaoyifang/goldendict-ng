@@ -552,14 +552,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Načítání hesel...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unikátní hlavní slova celkem: %1, filtrováno: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Uložit headwords do souboru</translation>
     </message>
@@ -586,6 +578,22 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Export finished</source>
       <translation>Export dokončen</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Ctrl + F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Načítám...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nepojmenovaný)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Spustit se v systémovém panelu</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Pouze levý Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ Takto se budou nové karty otevírat bez přepnutí.</translation>
       <translation>Spustit se systémem</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Pouze levý Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Prohlížení v kartách</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Pouze pravý Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ pro všechny síťové požadavky programu.</translation>
       <translation>Jazyk rozhraní:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Pouze levý Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Otevřít nové karty na pozadí</translation>
     </message>
@@ -2968,20 +2956,8 @@ pro všechny síťové požadavky programu.</translation>
       <translation>&amp;Síť</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Pouze pravý Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Pravý Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Levý Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3042,12 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>Použijte následující klávesovou zkratku pro zobrazení nebo zkrytí hlavního okna:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Levý Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Pouze pravý Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Předvolby</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Levý Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Pravý Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Klávesové zkratky jsou globální a fungují z jakéhokoliv programu a v jakémkoliv kontextu dokud GoldenDict běží na pozadí.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Pravý Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3894,10 +3850,6 @@ Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translatio
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Zvýraznit &amp;vše</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Citlivá písmena</translation>
     </message>
@@ -4178,10 +4130,6 @@ na spodek vhodných skupin.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Řecký přepis</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(nedostupné v portabilní verzi)</translation>
     </message>
     <message>
       <source>Programs</source>

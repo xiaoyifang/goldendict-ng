@@ -552,14 +552,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Carregando palavras-chave...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Total de cabeçalhos únicos: %1, filtrados: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Salvar headwords em arquivo</translation>
     </message>
@@ -586,6 +578,22 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exportação concluída</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Carregandochar@@0</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(sem título)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Iniciar para a bandeja do sistema</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Apenas turno esquerdo</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ mudar para elas.</translation>
       <translation>Iniciar com o sistema</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Apenas ALT esquerda</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Navegação abatida</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Apenas turno direito</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ para todas as solicitações de rede do programa&apos;.</translation>
       <translation>Idioma da interface:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Apenas Ctrl esquerdo</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Abrir novas abas em segundo plano</translation>
     </message>
@@ -2969,20 +2957,8 @@ para todas as solicitações de rede do programa&apos;.</translation>
       <translation>&amp;Rede</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Apenas Ctrl direito</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>SHIFT Direito</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift Esquerdo</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3069,32 +3045,12 @@ página de download.</translation>
       <translation>Use a tecla de atalho a seguir para mostrar ou ocultar a janela principal:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Left Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Apenas ALT direito</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Preferências:</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl Esquerdo</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt Direito</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>As teclas de atalho são globais e funcionam de qualquer programa e em qualquer contexto, desde que o GoldenDict esteja rodando em segundo plano.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl Direito</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3897,10 +3853,6 @@ poderia ser redimensionado ou gerenciado de outras formas.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Realçar &amp;todos</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Caso sensível</translation>
     </message>
@@ -4181,10 +4133,6 @@ dos grupos apropriados para usá-los.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Transliteração grega</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(não disponível na versão portátil)</translation>
     </message>
     <message>
       <source>Programs</source>

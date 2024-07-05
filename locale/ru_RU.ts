@@ -554,14 +554,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Рег. выражение</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Загружаются заголовочные слова...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Неповторяющихся заголовков всего: %1, отфильтрованых: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Сохранить заголовки в файл</translation>
     </message>
@@ -588,6 +580,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Экспорт завершён</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2337,10 +2345,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Загрузка...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без имени)</translation>
     </message>
@@ -2859,10 +2863,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Запустить в системном лотке</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>При зажатии левой клавиши Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2927,16 +2927,8 @@ switching to them.</source>
       <translation>Автозапуск программы</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>При зажатии левой клавиши Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Работа со вкладками</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>При зажатии правой клавиши Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2959,10 +2951,6 @@ for all program&apos;s network requests.</source>
       <translation>Язык программы:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>При зажатии левой клавиши Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Открывать новые вкладки в фоне</translation>
     </message>
@@ -2971,20 +2959,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Сеть</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>При зажатии правой клавиши Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Правый Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Левый Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3072,32 +3048,12 @@ GoldenDict. Если новая версия появилась, програм�
       <translation>Использовать следующую комбинацию для показа/скрытия основного окна:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Левый Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>При зажатии правой клавиши Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Параметры</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Левый Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Правый Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Горячие клавиши являются глобальными и работают из любой программы и в любом состоянии, до тех пор пока GoldenDict работает в фоне.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Правый Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3902,10 +3858,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Выделить &amp;все</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Учитывать регистр</translation>
     </message>
@@ -4189,10 +4141,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>Транслитерация (Греческий)</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(не реализовано в переносимой версии)</translation>
     </message>
     <message>
       <source>Programs</source>

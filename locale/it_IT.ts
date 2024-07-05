@@ -552,14 +552,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Espressione regolare</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Caricamento dei lemmi...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Lemmi unici totali: %1, filtrati: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Salva lemmi in un file</translation>
     </message>
@@ -586,6 +578,22 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Export finished</source>
       <translation>Esportazione terminata</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2336,10 +2344,6 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Caricamento...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(senza titolo)</translation>
     </message>
@@ -2858,10 +2862,6 @@ Per utilizzare nelle ricerche i caratteri &apos;*&apos;, &apos;?&apos;, &apos;[&
       <translation>iconizza nella barra di notifica all&apos;avvio</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Solo tasto MAIUSCOLE sinistro</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ Spuntando questa casella, le nuove schede vengono aperte senza che si passi ad e
       <translation>esegui all&apos;avvio di Windows</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Solo tasto Alt sinistro</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Esplorazione delle schede</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Solo tasto MAIUSCOLE destro</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ per ogni programma della rete che lo richieda.</translation>
       <translation>Lingua interfaccia:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Solo tasto Ctrl sinistro</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>apri le schede sullo sfondo</translation>
     </message>
@@ -2969,20 +2957,8 @@ per ogni programma della rete che lo richieda.</translation>
       <translation>&amp;Rete</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Solo tasto Ctrl destro</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>MAIUSCOLE destro</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>MAIUSCOLE sinistro</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3067,32 +3043,12 @@ e si collega al sito del programma.</translation>
       <translation>utilizza la seguente combinazione di tasti per visualizzare o nascondere la finestra principale:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt sinistro</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Solo tasto Alt destro</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Impostazioni</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl sinistro</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt destro</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Queste combinazioni di tasti sono globali e questo significa che funzionano in qualsiasi programma e contesto a condizione che il programma sia attivo in sottofondo.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl destro</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3895,10 +3851,6 @@ in modo che possa essere ridimensionata o gestita liberamente.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Evidenzia Tutto</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Distingui Maiuscole</translation>
     </message>
@@ -4179,10 +4131,6 @@ in fondo al gruppo linguistico appropriato.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>greco traslitterato</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(funzione non disponibile nella versione portatile)</translation>
     </message>
     <message>
       <source>Programs</source>

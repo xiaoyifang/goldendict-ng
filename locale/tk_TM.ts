@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Baş sözler ýüklenýär ...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Üýtgeşik söz sözleri jemi: %1, süzülen: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Faýl üçin söz sözlerini ýazdyryň</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksport gutardy</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl + F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Ýüklenip alynýar...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(atsyz)</translation>
     </message>
@@ -2856,10 +2860,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Sistema panelinden başlat</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Çep Shift diňe</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ e geçmezden açylar.</translation>
       <translation>Sistema bilen bile b</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Çep Alt diňe</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Wkladkaly agdaryp seretmek</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Sag Shift diňe</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ for all program&apos;s network requests.</source>
       <translation>Interfeýs dili:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Çep Ctrl diňe</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Yzynda täze wkladkalary aç</translation>
     </message>
@@ -2968,20 +2956,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Baglanyşyk ulgamy</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Sag Alt diňe</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Sag Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Çep Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3068,32 +3044,12 @@ göçürip alyş sahypasyny açmagy teklip edýär.</translation>
       <translation>Baş penjiräni görkezmek ýa-da gizlemek üçin şeýle  düwmeleri ulan:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Çep Alt </translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Sag Alt diňe</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Saýlamalar</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Çep Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Sag Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Bu gyzgyn düwmeler globaldyr we GoldenDict açyk duran wagty islendik başga programmada hem ýerlerde  işleýärler.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Sag Alt</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3896,10 +3852,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl + G.</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Hemmesini belläň</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Ýagdaýa bagly</translation>
     </message>
@@ -4176,10 +4128,6 @@ Laýyk gelýän sözlükleri degişli toparlaryň aşagyna goşup ulan.</transla
     <message>
       <source>Greek transliteration</source>
       <translation>Grek transliterasiýa</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(ykjam/portable wersiýada elýeterli däl)</translation>
     </message>
     <message>
       <source>Programs</source>

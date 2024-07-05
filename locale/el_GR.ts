@@ -554,14 +554,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Φόρτωση κεφαλαίων...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Μοναδικό σύνολο κεφαλών: %1, φιλτραρισμένο: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Αποθήκευση κεφαλίδων στο αρχείο</translation>
     </message>
@@ -588,6 +580,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Η εξαγωγή ολοκληρώθηκε</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2336,10 +2344,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Φόρτωση...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(ανώνυμο)</translation>
     </message>
@@ -2858,10 +2862,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Εκκίνηση στην περιοχή ειδοποιήσεων</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Μόνο το αριστερό Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ switching to them.</source>
       <translation>Εκκίνηση μαζί με το σύστημα</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Μόνο το αριστερό Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Καρτέλες</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Μόνο το δεξί Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ for all program&apos;s network requests.</source>
       <translation>Γλώσσα εφαρμογής:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Μόνο το αριστερό Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Άνοιγμα νέων καρτελών στο παρασκήνιο</translation>
     </message>
@@ -2969,20 +2957,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Δίκτυο</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Μόνο το δεξί Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Δεξί Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Αριστερό Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3068,32 +3044,12 @@ GoldenDict. Αν ναι, το πρόγραμμα θα ειδοποιεί το
       <translation>Συντόμευση για εμφάνιση/απόκρυψη κύριου παραθύρου:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Αριστερό Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Μόνο το δεξί Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Προτιμήσεις</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Aριστερό Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Δεξί Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Οι συντομεύσεις λειτουργούν παντού και από οποιαδήποτε εφαρμογή, αρκεί να εκτελείται το GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Δεξί Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3898,10 +3854,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Επισήμανση Όλων</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Διάκριση Πεζών-Κεφαλαίων</translation>
     </message>
@@ -4181,10 +4133,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>Ελληνικά</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(μη διαθέσιμο στη φορητή έκδοση)</translation>
     </message>
     <message>
       <source>Programs</source>

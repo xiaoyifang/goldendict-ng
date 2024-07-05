@@ -552,14 +552,6 @@ arasındaki farkı giderir)</translation>
       <translation>Düzenli İfade</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Başlıklar yükleniyor...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Bütün madde başları: %1 süzülmüş: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Madde başlarını dosyaya kaydet</translation>
     </message>
@@ -586,6 +578,22 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Export finished</source>
       <translation>Dışa aktarma tamamlandı</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ arasındaki farkı giderir)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Yükleniyor...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(başlıksız)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Görev çubuğunda başlat</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Yalnızca Sol Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ Bu seçenekleyse, yeni sekmeler açıldığında hemen o sekmeye geçilmeyecek.<
       <translation>Sistem ile başlat</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Yalnızca Sol Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Sekmeli dolaşma</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Yalnızca Sağ Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>Arayüz dili:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Yalnızca Sol Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Yeni sekmeleri arkaplanda aç</translation>
     </message>
@@ -2968,20 +2956,8 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>&amp;Ağ</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Yalnızca Sağ Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Sağ Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Sol Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3065,32 +3041,12 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>Aşağıdaki kısayolu ana pencereyi göstermek ya da gizlemek için kullanın:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Sol Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Yalnızca Sağ Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Tercihler</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Sol Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Sağ Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Klavye kısayolları geneldir ve GoldenDict arka planda çalışıyorsa tüm işletim sistemi kapsamında çalışmaktadır.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Sağ Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3892,10 +3848,6 @@ Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>&amp;tümünü vurgula</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Harfe duyarlı</translation>
     </message>
@@ -4174,10 +4126,6 @@ uygun grupların altlarına ekleyin.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Yunanca harf çevirisi</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(taşınabilir sürümü yok)</translation>
     </message>
     <message>
       <source>Programs</source>

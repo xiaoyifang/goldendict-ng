@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Рэгулярны выраз</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Загрузка загалоўных слоў...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Агулам унікальных загалоўных слоў: %1, адфільтравана: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Захаваць загалоўныя словы ў файл</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Экспартаванне завершана</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Загрузка...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без назвы)</translation>
     </message>
@@ -2856,10 +2860,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Запускаць на прасторы апавяшчэнняў</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Толькі левы Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2923,16 +2923,8 @@ switching to them.</source>
       <translation>Запускаць разам з сістэмай</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Толькі левы Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Кіраванне ўкладкамі</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Толькі правы Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2953,10 +2945,6 @@ for all program&apos;s network requests.</source>
       <translation>Мова інтэрфейсу:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Толькі левы Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Адкрываць новыя ўкладкі ў фоне</translation>
     </message>
@@ -2965,20 +2953,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Сетка</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Толькі правы Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Правы Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Левы Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3061,32 +3037,12 @@ download page.</source>
       <translation>Выкарыстоўваць наступнае спалучэнне клавіш для паказу або хавання галоўнага акна:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Левы Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Толькі правы Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Налады</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Левы Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Правы Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Спалучэнні клавіш працуюць глабальна і дзейнічаюць у кожнай праграме ў кожным кантэксце, пакуль GoldenDict працуе ў фоне.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Правы Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3883,10 +3839,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Падсвятляць &amp;усе</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Зважаць на рэгістр</translation>
     </message>
@@ -4163,10 +4115,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>Грэчаская транслітарацыя</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(недаступна ў пераноснай версіі)</translation>
     </message>
     <message>
       <source>Programs</source>

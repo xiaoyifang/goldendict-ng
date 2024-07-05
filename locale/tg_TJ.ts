@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ифодаи оддӣ</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Сарлавҳаҳо бор карда мешавад...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Ҳамагӣ калимаҳои аввалини беҳамто: %1, филтршуда: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Захира кардани калимаҳои аввалин ба файл</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Содирот анҷом ёфт</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Бор шуда истодааст...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(беном)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Баъд аз оғози барнома онро танҳо дар панҷараки огоҳиҳо намоиш додан</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Танҳо Shift-и чап</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ switching to them.</source>
       <translation>Луғатро якҷоя бо системаи оператсионӣ оғоз кардан</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Танҳо Alt-и чап</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Варақаҳои тарҷума</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Танҳо Shift-и рост</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ for all program&apos;s network requests.</source>
       <translation>Забони интерфейс:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Танҳо Ctrl-и чап</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Варақаҳои навро дар равзанаи асосӣ кушодан</translation>
     </message>
@@ -2969,20 +2957,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Шабака</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Танҳо Ctrl-и рост</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Луғати Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Shift-и рост</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift-и чап</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3068,32 +3044,12 @@ download page.</source>
       <translation>Барои пинҳон ва намоиш додани равзанаи асосӣ тугмаҳои зеринро истифода баред:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt-и чап</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Танҳо Alt-и рост</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Хусусиятҳо</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl-и чап</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt-и рост</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Тугмаҳои интихобшудаи тезкор ҳамаҷониба мебошанд, вале танҳо ҳангоми фаъол будани луғати GoldenDict бо ягон барнома ё матн кор мекунанд.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl-и рост</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3897,10 +3853,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Таъкид &amp; ҳама</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Ҳарф калон ё хурд аст</translation>
     </message>
@@ -4181,10 +4133,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>Транслитератсияи юнонӣ</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(дар версияи кӯчондашаванда дастрас нест)</translation>
     </message>
     <message>
       <source>Programs</source>
