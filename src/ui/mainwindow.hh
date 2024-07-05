@@ -202,7 +202,7 @@ private:
   void setupNetworkCache( int maxSize );
   void makeDictionaries();
   void updateStatusLine();
-  void updateGroupList();
+  void updateGroupList( bool reload = true );
   void updateDictionaryBar();
 
   void updatePronounceAvailability();
