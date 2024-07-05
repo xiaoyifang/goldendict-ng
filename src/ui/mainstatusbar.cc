@@ -31,7 +31,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   layout->setSpacing( 0 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
-  layout->setContentsMargins( 0, 0, 0, 0 );
+  layout->setContentsMargins( 2, 2, 2, 2 );
   layout->addWidget( picWidget );
   layout->addWidget( textWidget );
   setLayout( layout );
@@ -66,7 +66,6 @@ void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 
 void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
-  raise();
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
@@ -95,6 +94,8 @@ bool MainStatusBar::eventFilter( QObject *, QEvent * e )
 {
   switch ( e->type() ) {
     case QEvent::Resize:
+      raise();
+
       move( QPoint( 0, parentWidget()->height() - height() ) );
       break;
     default:
