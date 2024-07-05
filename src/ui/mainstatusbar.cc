@@ -8,7 +8,6 @@
 #include <QVBoxLayout>
 #include <QEvent>
 #include <QApplication>
-#include <QPainterPath>
 
 MainStatusBar::MainStatusBar( QWidget * parent ):
   QWidget( parent ),
