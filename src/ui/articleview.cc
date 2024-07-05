@@ -1324,7 +1324,7 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 // Only works Qt6.6.3+ https://bugreports.qt.io/browse/QTBUG-112013
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 6, 3 )
   if ( cfg.preferences.darkReaderMode ) {
-    webview->page()->setBackgroundColor( QColor(39, 40, 40) );
+    webview->page()->setBackgroundColor( QColor( 39, 40, 40 ) );
   }
   else {
     webview->page()->setBackgroundColor( Qt::white );
