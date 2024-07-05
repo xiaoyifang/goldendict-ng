@@ -88,6 +88,8 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
   }
 
   if ( parentWidget() ) {
+    raise();
+
     move( 0, parentWidget()->height() - height() );
   }
 }
