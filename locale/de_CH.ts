@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Stichwörter werden geladen...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unterschiedliche Stichwörter insgesamt: %1, gefiltert: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Stichwörter in Datei speichern</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Export abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2332,10 +2340,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>CTRL+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Lade...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(unbenannt)</translation>
     </message>
@@ -2755,7 +2759,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Sprachvariante</translation>
     </message>
   </context>
   <context>
@@ -2854,10 +2858,6 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
       <translation>In die Symbolleiste starten</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Nur Umschalttaste Links</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>CTRL</translation>
     </message>
@@ -2922,16 +2922,8 @@ diese zu selektionieren.</translation>
       <translation>Mit Betriebssystem starten</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Nur ALT Links</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Reiter</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Nur Umschalttaste Rechts</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2952,10 +2944,6 @@ for all program&apos;s network requests.</source>
       <translation>Sprache der Oberfläche:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Nur CTRL Links</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Neue Reiter im Hintergrund öffnen</translation>
     </message>
@@ -2964,20 +2952,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Netzwerk</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Nur CTRL Rechts</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Umschalttaste Rechts</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Umschalttaste Links</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3058,32 +3034,12 @@ Sollte eine neuere Version verfügbar sein informiert GoldenDict den Benutzer un
       <translation>Das folgende Tastenkürzel benutzen, um das Hauptfenster zu zeigen oder zu verbergen:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>ALT Links</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Nur ALT Rechts</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Einstellungen</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>CTRL Links</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>ALT Rechts</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Die Tastenkürzel funktionieren global und in jedem Programm und Kontext, sofern GoldenDict im Hintergrund läuft.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>CTRL Rechts</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3883,10 +3839,6 @@ es in der Grösse verändert, oder andersweitig verwaltet werden kann.</translat
       <translation>CTRL+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>&amp;Alles hervorheben</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Gross und Kleinschreibung beachten</translation>
     </message>
@@ -4165,10 +4117,6 @@ Fügen Sie entsprechende Wörterbücher am besten am Ende der passenden Gruppe e
     <message>
       <source>Greek transliteration</source>
       <translation>Griechische Transliteration</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(Wird in der portablen Version nicht unterstützt !)</translation>
     </message>
     <message>
       <source>Programs</source>

@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>नियमवचन</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>शीर्षक लोड हो रहा है...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>कुल अद्वितीय मुख्यशब्द: %1, छाँटे हुएः  %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>मुख्यशब्दों को फ़ाइल में सहेजें</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>निर्यात समाप्त</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Chargement...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(sans titre)</translation>
     </message>
@@ -2856,10 +2860,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>सिस्टम ट्रे पर प्रारंभ करें</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>केवल वाम शिफ्ट</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>कन्ट्रोल</translation>
     </message>
@@ -2922,16 +2922,8 @@ switching to them.</source>
       <translation>तंत्र से शुरू करें</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>केवल वाम Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>टैब्ड ब्राउज़िंग</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>केवल दक्षिण शिफ्ट</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2952,10 +2944,6 @@ for all program&apos;s network requests.</source>
       <translation>अंतरफलक भाषा:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>केवल वाम कन्ट्रोल</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>पृष्ठभूमि में नए टैब खोलें</translation>
     </message>
@@ -2964,20 +2952,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;संजाल</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>केवल दक्षिण कन्ट्रोल</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>लिंग्वो</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>दक्षिण शिफ्ट</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>वाम शिफ्ट</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3056,32 +3032,12 @@ download page.</source>
       <translation>मुख्य खिड़की दिखाने या छिपाने के लिए निम्न त्वरितृकील का उपयोग करें::</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>वाम Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>केवल दक्षिण Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>प्राथमिकताएं</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>वाम कन्ट्रोल </translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>दक्षिण Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>त्वरयितृ-कीलें वैश्विक हैं और किसी भी प्रोग्राम से तथा किसी भी संदर्भ में जब तक गोल्डनडिक्ट पृष्ठभूमि में चल रहा है।</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>दक्षिण कन्ट्रोल</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3881,10 +3837,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>&amp;सभी को हाइलाइट करें</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;अक्षर संवेदनशील</translation>
     </message>
@@ -4159,10 +4111,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>ग्रीक लिप्यंतरण</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(सुवाह्य संस्करण में उपलब्ध नहीं)</translation>
     </message>
     <message>
       <source>Programs</source>

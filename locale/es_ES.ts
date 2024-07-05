@@ -552,14 +552,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Cargando encabezados...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Total de palabras de cabecera: %1, filtrado: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Guardar headwords en el archivo</translation>
     </message>
@@ -586,6 +578,22 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exportación finalizada</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Ctrl + F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Cargando...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(sin título)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Iniciar en bandeja del sistema</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Sólo Shift izquierda</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ Con esta opción activada, en cambio, las nuevas pestañas se abrirán sin que s
       <translation>Ejecutar automáticamente al arrancar el sistema</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Sólo Alt izquierda</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Navegación con pestañas</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Sólo Mayúsculas derecha</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ para todos los accesos a la red del programa.</translation>
       <translation>Idioma de la interfaz de usuario:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Sólo Ctrl izquierda</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Abrir nuevas pestañas en segundo plano</translation>
     </message>
@@ -2968,20 +2956,8 @@ para todos los accesos a la red del programa.</translation>
       <translation>&amp;Red</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Sólo Ctrl derecha</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Mayúsculas derecha</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Shift izquierda</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3042,12 @@ para su descarga.</translation>
       <translation>Use la siguiente tecla de acceso rápido para mostrar u ocultar la ventana principal:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Alt izquierda</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Sólo Alt derecha</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Preferencias</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ctrl Izquierda</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Alt derecha</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Las teclas de acceso rápido son globales y funcionan desde cualquier programa y en cualquier situación, siempre que GoldenDict se esté ejecutando en segundo plano.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Ctrl derecha</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3894,10 +3850,6 @@ se pueda redimensionar o se pueda manipular de otras maneras.</translation>
       <translation>Control+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Resaltar todo</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Sensibilidad mayúsculas</translation>
     </message>
@@ -4178,10 +4130,6 @@ de los grupos apropiados para utilizarlos.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Transliteración del griego</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(no disponible en la versión portátil)</translation>
     </message>
     <message>
       <source>Programs</source>

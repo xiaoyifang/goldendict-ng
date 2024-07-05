@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>見出し語を読み込んでいます...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>ユニークなヘッドワードの合計: %1, フィルタリング: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>ヘッドワードをファイルに保存</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>エクスポート完了</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>読み込んでいます...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(無題)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>システム トレイに入れて起動する</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>左 Shift のみ</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>(Ctrl)</translation>
     </message>
@@ -2925,16 +2925,8 @@ switching to them.</source>
       <translation>システムと起動する</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>左 Alt のみ</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>タブ ブラウズ</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>右 Shift のみ</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ for all program&apos;s network requests.</source>
       <translation>インターフェイス言語:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>左 Ctrl のみ</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>背景で新しいタブを開く</translation>
     </message>
@@ -2969,20 +2957,8 @@ for all program&apos;s network requests.</source>
       <translation>ネットワーク(&amp;N)</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>右 Ctrl のみ</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>右 Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>左 Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3068,32 +3044,12 @@ download page.</source>
       <translation>メイン ウィンドウを表示または非表示にするのに次のホットキーを使用します:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>左 Al</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>右 Alt のみ</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>環境設定</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>左 Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>右 Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>ホットキーはグローバルであり、GoldenDict が背景で起動中であればすべてのプログラムで脈絡なく実行します。</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>右 Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3896,10 +3852,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>すべてハイライト(&amp;A)</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>大文字と小文字を区別(&amp;C)</translation>
     </message>
@@ -4174,10 +4126,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>ギリシャ語音訳</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(ポータブル バージョンでは利用できません)</translation>
     </message>
     <message>
       <source>Programs</source>

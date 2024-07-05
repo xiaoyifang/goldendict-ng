@@ -552,14 +552,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Ladataan otsikoita...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Ainutlaatuiset otsikot yhteensä: %1, filtered: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Tallenna otsikkosanat tiedostoon</translation>
     </message>
@@ -586,6 +578,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Export finished</source>
       <translation>Vienti valmis</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Ladataan…</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nimetön)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Aloita ilmoitusalueelle</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Vain vasen siirto</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ vaihtamista niihin.</translation>
       <translation>Aloita järjestelmällä</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Vain vasen Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Välilehden selaus</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Vain oikea siirto</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>Käyttöliittymän kieli:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Vain vasen Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Avaa uudet välilehdet taustalla</translation>
     </message>
@@ -2969,20 +2957,8 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>&amp;Verkko</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Vain oikea Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Oikea Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Vasen Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3069,32 +3045,12 @@ lataussivun.</translation>
       <translation>Käytä seuraavaa pikanäppäintä näyttääksesi tai piilottaaksesi pääikkunan:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Vasen Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Vain oikea Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Asetukset</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Vasen Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Oikea Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Pikanäppäimet ovat globaaleja ja toimivat mistä tahansa ohjelmasta ja missä tahansa kontekstissa niin kauan kuin GoldenDict on käynnissä taustalla.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Oikea Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3897,10 +3853,6 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Korosta &amp;kaikki</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Huomioi Kirjainkoko</translation>
     </message>
@@ -4181,10 +4133,6 @@ niiden käyttämiseksi.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>kreikan translitteraatio</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(ei saatavilla kannettavassa versiossa)</translation>
     </message>
     <message>
       <source>Programs</source>

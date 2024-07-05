@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Се вчитуваат зборовите...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Вкупно уникатни наслови: %1, филтрирани: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Зачувајте насловни зборови во датотека</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Извозот е завршен</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2336,10 +2344,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Вчитување...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(неименуван)</translation>
     </message>
@@ -2858,10 +2862,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Стартувај во системската палета</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Само лев Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2926,16 +2926,8 @@ switching to them.</source>
       <translation>Стартувај со системот</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Само лев Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Прегледување со помош на картички</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Само десен Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2958,10 +2950,6 @@ for all program&apos;s network requests.</source>
       <translation>Јазик на интерфејсот:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Само лев Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Отворање нова картичка во позадина</translation>
     </message>
@@ -2970,20 +2958,8 @@ for all program&apos;s network requests.</source>
       <translation>&amp;Мрежа</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Само десен Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Лингво</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Десен Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Лев Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3070,32 +3046,12 @@ GoldenDict. Ако се појави нова верзија,  програмо�
       <translation>Користете следен макро за прикажување/криење на главниот прозорец:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Лев Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Само десен Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Поставки</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Лев Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Десен Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Макро Командите се глобални и работат за секој програм и сите контексти, се додека GoldenDict работи во позадина.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Десен Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3899,10 +3855,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Истакнете ги &amp;сите</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Чувствителен на големи букви</translation>
     </message>
@@ -4185,10 +4137,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>Транслитерација (Грчки)</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(не е достапно во преносна верзија)</translation>
     </message>
     <message>
       <source>Programs</source>

@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>در حال بارگیری کلمات اصلی...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>جمع سرواژه‌های یکتا:  %1، پالایش شده: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>ذخیره سرواژه‌ها در پرونده</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>صادرات به پایان رسید</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2334,10 +2342,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>بارگیری...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(بی‌عنوان)</translation>
     </message>
@@ -2856,10 +2860,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>آغاز برنامه در سینی سیستم</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>تنها تبدیل چپ</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>مهار</translation>
     </message>
@@ -2923,16 +2923,8 @@ switching to them.</source>
       <translation>آغاز هم‌راه با سیستم</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>تنها دگرساز چپ</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>مرور زبانه‌ای</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>تنها تبدیل چپ</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2955,10 +2947,6 @@ for all program&apos;s network requests.</source>
       <translation>زبان رابط کاربری:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>تنها مهار چپ</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>باز کردن زبانه‌های تازه در پس‌زمینه</translation>
     </message>
@@ -2967,20 +2955,8 @@ for all program&apos;s network requests.</source>
       <translation>ش&amp;بکه</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>تنها مهار راست</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>لینگوُ</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>تبدیل راست</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>تبدیل چپ</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3042,12 @@ download page.</source>
       <translation>برای نمایش یا پنهان کردن پنجره اصلی میان‌برهای زیر را به‌کار ببر:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>دگرساز چپ</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>تنها دگرساز راست</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>ترجیحات</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>مهار چپ</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>دگرساز راست</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>کلیدهای میان‌بر سراسری هستند و تا زمانی که گلدن‌دیکت در پس‌زمینه در حال اجراست در هر برنامه و هر متنی کار می‌کنند.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>مهار راست</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3894,10 +3850,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>برجسته کردن &amp;همه</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;حساس به حروف کوچک و بزرگ</translation>
     </message>
@@ -4178,10 +4130,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>نویسه‌گردانی یونانی</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(در نسخه قابل حمل در دست‌رس نیست)</translation>
     </message>
     <message>
       <source>Programs</source>

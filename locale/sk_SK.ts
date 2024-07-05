@@ -552,14 +552,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>RegVýraz</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Načítavajú sa heslá...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unikátnych heslových slov celkom: %1, filtrovaných: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Uložiť heslové slová do súboru</translation>
     </message>
@@ -586,6 +578,22 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Export finished</source>
       <translation>Export dokončený</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2336,10 +2344,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Načítavanie ...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(Bez názvu)</translation>
     </message>
@@ -2858,10 +2862,6 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <translation>Štartovať v systémovom paneli</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Iba ľavý Shift</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2924,16 +2924,8 @@ switching to them.</source>
       <translation>Spustiť pri štarte systému</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Iba ľavý Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Prezeranie v kartách</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Iba pravý Shift</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ pre všetky sieťové požiadavky programu.</translation>
       <translation>Jazyk rozhrania:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Len ľavý Ctrl</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Otvárať nové karty na pozadí</translation>
     </message>
@@ -2968,20 +2956,8 @@ pre všetky sieťové požiadavky programu.</translation>
       <translation>&amp;Sieť</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Iba pravý Ctrl</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Pravý Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Ľavý Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3066,32 +3042,12 @@ na stiahnutie.</translation>
       <translation>Použite nasledujúcu klávesovú skratku pre zobrazenie alebo skrytie hlavného okna:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Ľavý Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Iba pravý Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Nastavenia</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Ľavý Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Pravý Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Klávesové skratky sú globálne a fungujú z akéhokoľvek programu a v akomkoľvek kontexte, kým GoldenDict beží na pozadí.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Pravý Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3890,10 +3846,6 @@ môžete mu zmeniť veľkosť alebo ho inak spravovať.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Zvýrazniť &amp;všetko</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Rozlišovať malé a veľké písmená</translation>
     </message>
@@ -4172,10 +4124,6 @@ vhodné slovníky dole k vhodným skupinám.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Grécky prepis</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(Nie je k dispozícii v prenosnej verzií)</translation>
     </message>
     <message>
       <source>Programs</source>

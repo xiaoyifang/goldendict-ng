@@ -552,14 +552,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Uma simikunata kargachkanki...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Sapaq uma simikuna llapanpi: %1, filtrado: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Uma simikunata willañiqiman waqaychay</translation>
     </message>
@@ -586,6 +578,22 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Export finished</source>
       <translation>Hawa llaqtakunaman apachiy tukusqa</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Ctrl+F5 nisqa</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Jap&apos;ikuchkan...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(Mana sutiyuq)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Sistema nisqaqpa chumpinpi qalliriy</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Sola MAYÚSCULA de izquierda</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>CTRL</translation>
     </message>
@@ -2925,16 +2925,8 @@ abiertas sin trasladar a ellas.</translation>
       <translation>Sistema nisqaqa qallariqtin GoldenDict qallarintaq</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Lloq'e Alt sapallan</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Pestañayuq navegación</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Sapalla paña MAYÚSCULA</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>GoldenDictpa simin:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Lloq'e Ctrl sapallan</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Musuq pestañata kichaqtin kunan pestañamanta ama ripuychu</translation>
     </message>
@@ -2969,20 +2957,8 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>&amp;Llika</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Sapalla paña CTRL</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Paña MAYÚSCULA</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Lluq&apos;i MAYÚSCULA</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3068,32 +3044,12 @@ la página web para descargarla.</translation>
       <translation>Usar la siguiente combinación de teclas para mostrar u ocultar la ventana principal:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Lluq&apos;i ALT</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Sapalla paña ALT</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Aqllanakuna</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Lluq&apos;i CTRL</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Paña ALT</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Las teclas de acceso rápido están globales y funcionan desde cualquier programa o contexto mientras que GoldenDict estén ejecutando en el fondo.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Paña CTRL</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3892,10 +3848,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G nisqa</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Resaltar &amp;tukuy</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Caso Sensitivo nisqa</translation>
     </message>
@@ -4176,10 +4128,6 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Griego simipi t’ikrakuy</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(no disponible en versión portátil)</translation>
     </message>
     <message>
       <source>Programs</source>

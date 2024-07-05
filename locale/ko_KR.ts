@@ -552,14 +552,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>정규식</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>표제어 로드 중...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>전체 표제어 수: %1, 필터링 후: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>표제어들을 파일로 저장합니다</translation>
     </message>
@@ -586,6 +578,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>내보내기 완료</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>불러오는 중...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(제목없음)</translation>
     </message>
@@ -2857,10 +2861,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>시스템 트레이에서 시작</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>왼쪽 Shift 키만</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl 키</translation>
     </message>
@@ -2925,16 +2925,8 @@ switching to them.</source>
       <translation>시스템 시작시 실행</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>왼쪽 Alt 키만</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>탭 설정</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>오른쪽 Shift 키만</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2956,10 +2948,6 @@ for all program&apos;s network requests.</source>
       <translation>언어:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>왼쪽 Ctrl 키만</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>새 탭을 배경으로 열기</translation>
     </message>
@@ -2968,20 +2956,8 @@ for all program&apos;s network requests.</source>
       <translation>네트워크(&amp;N)</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>오른쪽 Ctrl 키만</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>링보</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>오른쪽 Shift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>왼쪽 Shift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3065,32 +3041,12 @@ download page.</source>
       <translation>메인창 보이기/감추기를 위해 다음 단축키를 사용합니다:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>왼쪽 Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>오른쪽 Alt 키만</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>설정</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>왼쪽 Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>오른쪽 Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>단축키는 전역(Global) 키이므로 골든딕이 배경에서 실행중이면 모든 프로그램, 상황에서 작동합니다.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>오른쪽 Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3893,10 +3849,6 @@ could be resized or managed in other ways.</source>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>모두 강조 표시(&amp;A)</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>대소문자 구분(&amp;C)</translation>
     </message>
@@ -4181,10 +4133,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Greek transliteration</source>
       <translation>그리스어 문자변환</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(포터블 버전에서는 설정할 수 없습니다)</translation>
     </message>
     <message>
       <source>Programs</source>

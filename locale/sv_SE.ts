@@ -552,14 +552,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>RegExp</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Läser in sökord...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Unikt huvudord totalt: %1, filtrerat: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Spara huvudord till fil</translation>
     </message>
@@ -586,6 +578,22 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Export finished</source>
       <translation>Export slutförd</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Ctrl+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Läser in …</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(namnlös)</translation>
     </message>
@@ -2857,10 +2861,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Starta programmet minimerat i meddelandefältet</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Endast vänster Skift-tangent</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Ctrl</translation>
     </message>
@@ -2925,16 +2925,8 @@ att växla till dem på en gång.</translation>
       <translation>Starta automatiskt när datorn startar</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Endast vänster Alt-tangent</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Flikar</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Endast höger Skift-tangent</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2958,10 +2950,6 @@ förfrågningar.</translation>
       <translation>Språk för användargränssnittet:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Endast vänster Ctrl-tangent</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Öppna nya flikar i bakgrunden</translation>
     </message>
@@ -2970,20 +2958,8 @@ förfrågningar.</translation>
       <translation>&amp;Nätverk</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Endast höger Ctrl-tangent</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Höger Skift</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Vänster Skift</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3070,32 +3046,12 @@ saken och ber denna att öppna en hämtningssida.</translation>
       <translation>Använd följande kortkommando för att visa eller dölja huvudfönstret:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Vänster Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Endast höger Alt-tangent</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Inställningar</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Vänster Ctrl</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Höger Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Kortkommandona är globala och fungerar inifrån alla program och i alla sammanhang, förutsatt att GoldenDict körs i bakgrunden.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Höger Ctrl</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3899,10 +3855,6 @@ Rutan kan storleksändras och hanteras på andra sätt.</translation>
       <translation>Ctrl+G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Markera &amp;alla</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Ärende känslig</translation>
     </message>
@@ -4183,10 +4135,6 @@ använda dem.</translation>
     <message>
       <source>Greek transliteration</source>
       <translation>Translitterering av grekiska</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(inte tillgängligt i den portabla versionen)</translation>
     </message>
     <message>
       <source>Programs</source>

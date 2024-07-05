@@ -551,14 +551,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Reguliarusis reiškinys</translation>
     </message>
     <message>
-      <source>Loading headwords...</source>
-      <translation>Įkeliami antraštės...</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered: %2</source>
-      <translation>Iš viso nesikartojančių antraštinių žodžių: %1; atrinkta: %2</translation>
-    </message>
-    <message>
       <source>Save headwords to file</source>
       <translation>Antraštinių žodžių įrašymas į failą</translation>
     </message>
@@ -585,6 +577,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksportas baigtas</translation>
+    </message>
+    <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation type="unfinished">Filter max results:</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
@@ -2335,10 +2343,6 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <translation>Vald+F5</translation>
     </message>
     <message>
-      <source>Loading...</source>
-      <translation>Įkeliama...</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nepavadinta)</translation>
     </message>
@@ -2857,10 +2861,6 @@ Norėdami rasti „*“, „?“, „[“, „]“ simbolius, atitinkamai įvesk
       <translation>Paleisti sistemos dėkle</translation>
     </message>
     <message>
-      <source>Left Shift only</source>
-      <translation>Tik kairysis Lyg2</translation>
-    </message>
-    <message>
       <source>Ctrl</source>
       <translation>Vald</translation>
     </message>
@@ -2925,16 +2925,8 @@ Pažymėjus šią parinktį, naujos kortelės nebus aktyvuojamos.
       <translation>Paleisti kartu su sistema</translation>
     </message>
     <message>
-      <source>Left Alt only</source>
-      <translation>Tik kairysis Alt</translation>
-    </message>
-    <message>
       <source>Tabbed browsing</source>
       <translation>Naršymas kortelėse</translation>
-    </message>
-    <message>
-      <source>Right Shift only</source>
-      <translation>Tik dešinysis Lyg2</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
@@ -2957,10 +2949,6 @@ užklausoms naudoti įgaliotąjį serverį.</translation>
       <translation>Sąsajos kalba:</translation>
     </message>
     <message>
-      <source>Left Ctrl only</source>
-      <translation>Tik kairysis Vald</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Naujas korteles atverti fone</translation>
     </message>
@@ -2969,20 +2957,8 @@ užklausoms naudoti įgaliotąjį serverį.</translation>
       <translation>&amp;Tinklas</translation>
     </message>
     <message>
-      <source>Right Ctrl only</source>
-      <translation>Tik dešinysis Vald</translation>
-    </message>
-    <message>
       <source>Lingvo</source>
       <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Right Shift</source>
-      <translation>Dešinysis Lyg2</translation>
-    </message>
-    <message>
-      <source>Left Shift</source>
-      <translation>Kairysis Lyg2</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -3069,32 +3045,12 @@ ir pasiūlys atverti parsisiuntimo puslapį.
       <translation>Nuspaudus spartųjį klavišą parodyti ar paslėpti pagrindinį langą:</translation>
     </message>
     <message>
-      <source>Left Alt</source>
-      <translation>Kairysis Alt</translation>
-    </message>
-    <message>
-      <source>Right Alt only</source>
-      <translation>Tik dešinysis Alt</translation>
-    </message>
-    <message>
       <source>Preferences</source>
       <translation>Nuostatos</translation>
     </message>
     <message>
-      <source>Left Ctrl</source>
-      <translation>Kairysis Vald</translation>
-    </message>
-    <message>
-      <source>Right Alt</source>
-      <translation>Dešinysis Alt</translation>
-    </message>
-    <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
       <translation>Spartieji klavišai yra bendri sitemai ir veikia dirbant bet kuria programa, bet kokioje aplinkoje, kol fone paleistas GoldenDict žodynas.</translation>
-    </message>
-    <message>
-      <source>Right Ctrl</source>
-      <translation>Dešin. Vald</translation>
     </message>
     <message>
       <source>Hotkeys</source>
@@ -3894,10 +3850,6 @@ galėsite keisti lango dydį ar atlikti kitus įprastus langų tvarkymo veiksmus
       <translation>Ctrl + G</translation>
     </message>
     <message>
-      <source>Highlight &amp;all</source>
-      <translation>Paryškinkite &amp;viską</translation>
-    </message>
-    <message>
       <source>&amp;Case Sensitive</source>
       <translation>&amp;Skirti didžiąsias ir mažąsias raides</translation>
     </message>
@@ -4177,10 +4129,6 @@ rašybos spėjimus.
     <message>
       <source>Greek transliteration</source>
       <translation>Transliteracija (graikų)</translation>
-    </message>
-    <message>
-      <source>(not available in portable version)</source>
-      <translation>(neprieinama perkeliamoje versijoje)</translation>
     </message>
     <message>
       <source>Programs</source>

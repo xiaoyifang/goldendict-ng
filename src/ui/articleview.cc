@@ -99,8 +99,7 @@ ArticleView::ArticleView( QWidget * parent,
   QWidget( parent ),
   articleNetMgr( nm ),
   audioPlayer( audioPlayer_ ),
-  allDictionaries( allDictionaries_ ),
-  groups( groups_ ),
+  dictionaryGroup( std::make_unique< DictionaryGroup >( allDictionaries_, groups_ ) ),
   popupView( popupView_ ),
   cfg( cfg_ ),
   pasteAction( this ),
@@ -750,7 +749,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
 {
   if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = groups.findGroup( group );
+    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
 
     // Find muted dictionaries for current group
     Config::Group const * grp = cfg.getGroup( group );
@@ -784,7 +783,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
 {
   if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = groups.findGroup( group );
+    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
 
     // Find muted dictionaries for current group
     Config::Group const * grp = cfg.getGroup( group );
@@ -981,11 +980,9 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       if ( Utils::Url::hasQueryItem( url, "dict" ) ) {
         // Link to other dictionary
         QString dictName( Utils::Url::queryItemValue( url, "dict" ) );
-        for ( const auto & allDictionarie : allDictionaries ) {
-          if ( dictName.compare( QString::fromUtf8( allDictionarie->getName().c_str() ) ) == 0 ) {
-            newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( allDictionarie->getId().c_str() ) );
-            break;
-          }
+        auto dict = dictionaryGroup->getDictionaryByName( dictName );
+        if ( dict ) {
+          newScrollTo = scrollToFromDictionaryId( QString::fromUtf8( dict->getId().c_str() ) );
         }
       }
 
@@ -1019,17 +1016,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
-
-      if ( !groups.empty() ) {
-        for ( const auto & group : groups )
-          if ( group.id == currentGroup ) {
-            activeDicts = &( group.dictionaries );
-            break;
-          }
-      }
-      else
-        activeDicts = &allDictionaries;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts =
+        dictionaryGroup->getActiveDictionaries( currentGroup );
 
       if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
@@ -1200,17 +1188,8 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
 
       unsigned currentGroup = getGroup( ref );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
-
-      if ( groups.size() ) {
-        for ( const auto & group : groups )
-          if ( group.id == currentGroup ) {
-            activeDicts = &( group.dictionaries );
-            break;
-          }
-      }
-      else
-        activeDicts = &allDictionaries;
+      std::vector< sptr< Dictionary::Class > > const * activeDicts =
+        dictionaryGroup->getActiveDictionaries( currentGroup );
 
       if ( activeDicts ) {
         unsigned preferred = UINT_MAX;
@@ -1570,7 +1549,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( addWordToHistoryAction );
 
     Instances::Group const * altGroup =
-      ( currentGroupId != getGroup( webview->url() ) ) ? groups.findGroup( currentGroupId ) : nullptr;
+      ( currentGroupId != getGroup( webview->url() ) ) ? dictionaryGroup->getGroupById( currentGroupId ) : nullptr;
 
     if ( altGroup ) {
       QIcon icon = altGroup->icon.size() ? QIcon( ":/flags/" + altGroup->icon ) : QIcon();
@@ -1607,7 +1586,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     if ( txt.size() > 60 )
       txt = txt.left( 60 ) + "...";
 
-    addHeaderToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( txt ), &menu );
+    addHeaderToHistoryAction = new QAction( tr( R"(&Add "%1" to history)" ).arg( txt ), &menu );
     menu.addAction( addHeaderToHistoryAction );
   }
 
@@ -1625,7 +1604,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   // Add table of contents
   QStringList ids = getArticlesList();
 
-  if ( !menu.isEmpty() && ids.size() )
+  if ( !menu.isEmpty() && !ids.empty() )
     menu.addSeparator();
 
   unsigned refsAdded            = 0;
@@ -1634,31 +1613,27 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i, ++refsAdded ) {
     // Find this dictionary
 
-    for ( unsigned x = allDictionaries.size(); x--; ) {
-      if ( allDictionaries[ x ]->getId() == i->toUtf8().data() ) {
-        QAction * action = nullptr;
-        if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
-          // Enough! Or the menu would become too large.
-          maxDictionaryRefsAction  = new QAction( ".........", &menu );
-          action                   = maxDictionaryRefsAction;
-          maxDictionaryRefsReached = true;
-        }
-        else {
-          action = new QAction( allDictionaries[ x ]->getIcon(),
-                                QString::fromUtf8( allDictionaries[ x ]->getName().c_str() ),
-                                &menu );
-          // Force icons in menu on all platforms,
-          // since without them it will be much harder
-          // to find things.
-          action->setIconVisibleInMenu( true );
-        }
-        menu.addAction( action );
-
-        tableOfContents[ action ] = *i;
-
-        break;
+    auto dictionary = dictionaryGroup->getDictionaryById( i->toUtf8().data() );
+    if ( dictionary ) {
+      QAction * action = nullptr;
+      if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
+        // Enough! Or the menu would become too large.
+        maxDictionaryRefsAction  = new QAction( ".........", &menu );
+        action                   = maxDictionaryRefsAction;
+        maxDictionaryRefsReached = true;
       }
+      else {
+        action = new QAction( dictionary->getIcon(), QString::fromUtf8( dictionary->getName().c_str() ), &menu );
+        // Force icons in menu on all platforms,
+        // since without them it will be much harder
+        // to find things.
+        action->setIconVisibleInMenu( true );
+      }
+      menu.addAction( action );
+
+      tableOfContents[ action ] = *i;
     }
+
     if ( maxDictionaryRefsReached )
       break;
   }
