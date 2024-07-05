@@ -13,12 +13,6 @@
 MainStatusBar::MainStatusBar( QWidget * parent ):
   QWidget( parent )
 {
-  //round corners
-  QPainterPath PainterPath;
-  PainterPath.addRoundedRect( this->rect(), 2, 0 );
-  QRegion mask = QRegion( PainterPath.toFillPolygon().toPolygon() );
-  this->setMask( mask );
-
   textWidget = new QLabel( QString(), this );
   textWidget->setObjectName( "text" );
   textWidget->setFont( QApplication::font( "QStatusBar" ) );
