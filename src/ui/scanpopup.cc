@@ -113,6 +113,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( &openSearchAction );
   connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
