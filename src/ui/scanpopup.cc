@@ -1127,6 +1127,11 @@ void ScanPopup::setGroupByName( QString const & name ) const
     gdWarning( "Group \"%s\" for popup window is not found\n", name.toUtf8().data() );
 }
 
+void ScanPopup::openSearch()
+{
+  definition->openSearch();
+}
+
 void ScanPopup::alwaysOnTopClicked( bool checked )
 {
   bool wasVisible = isVisible();
