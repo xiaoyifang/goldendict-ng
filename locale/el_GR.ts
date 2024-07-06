@@ -583,19 +583,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Καθορίστε τα μέγιστα φιλτραρισμένα headwords που επιστρέφονται.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Φιλτράρισμα μέγιστων αποτελεσμάτων:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Μοναδικό σύνολο κεφαλών: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Μοναδικά headwords total: %1, φιλτραρισμένο(περιορισμένο): %2</translation>
     </message>
   </context>
   <context>
