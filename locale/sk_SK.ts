@@ -581,19 +581,19 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Zadajte maximálny počet vrátených filtrovaných hesiel.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Filtrovať maximálne výsledky:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Celkový počet jedinečných hesiel: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Celkom jedinečných hesiel: %1, filtrované (obmedzene): %2</translation>
     </message>
   </context>
   <context>
