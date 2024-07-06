@@ -581,19 +581,19 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Specifica la massima intestazione filtrata restituita.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Filtro max risultati:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Totale parole chiave unice: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Totale delle headwords unice: %1, filtrato(limitato): %2</translation>
     </message>
   </context>
   <context>
