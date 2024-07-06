@@ -556,6 +556,8 @@ int main( int argc, char ** argv )
 
   QLocale locale( localeName );
   QLocale::setDefault( locale );
+  QApplication::setLayoutDirection( locale.textDirection() );
+
   if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
     qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( &qtTranslator );
