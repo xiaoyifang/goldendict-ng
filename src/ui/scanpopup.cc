@@ -113,6 +113,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( &openSearchAction );
   connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
@@ -1124,6 +1125,11 @@ void ScanPopup::setGroupByName( QString const & name ) const
   }
   if ( i >= ui.groupList->count() )
     gdWarning( "Group \"%s\" for popup window is not found\n", name.toUtf8().data() );
+}
+
+void ScanPopup::openSearch()
+{
+  definition->openSearch();
 }
 
 void ScanPopup::alwaysOnTopClicked( bool checked )
