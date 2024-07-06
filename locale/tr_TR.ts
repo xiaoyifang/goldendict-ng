@@ -581,19 +581,19 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Döndürülen maksimum filtrelenmiş başlık kelimelerini belirtin.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Maksimum sonuçları filtrele:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Benzersiz başlık kelimelerinin toplamı: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Benzersiz başlık kelimeleri toplamı: %1, filtrelenmiş(sınırlı): %2</translation>
     </message>
   </context>
   <context>
