@@ -580,11 +580,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Iň köp süzülen söz sözlerini görkeziň.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Iň ýokary netijeleri süzüň:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
