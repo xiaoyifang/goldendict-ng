@@ -581,19 +581,19 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Indiku la maksimumajn filtritajn kapvortojn resenditajn.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Filtrilaj maksimumaj rezultoj:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Unika kapvortoj entute: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Unika kapvortoj entute: %1, filtrita (limigita): %2</translation>
     </message>
   </context>
   <context>
