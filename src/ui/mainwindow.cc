@@ -1776,7 +1776,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   connect( ui.searchInPageAction, &QAction::triggered, this, [ this, view ]() {
 #ifdef Q_OS_MACOS
-  #workaround to fix macos popup page search Ctrl + F
+    //workaround to fix macos popup page search Ctrl + F
     if ( scanPopup && scanPopup->isActiveWindow() ) {
       scanPopup->openSearch();
       return;
