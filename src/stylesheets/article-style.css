@@ -30,7 +30,10 @@ h6 {
   unicode-bidi: plaintext;
 }
 
-p,em,span,div {
+p,
+em,
+span,
+div {
   unicode-bidi: plaintext;
 }
 /* This stylesheet is used to highligh current selection when doing a search.
