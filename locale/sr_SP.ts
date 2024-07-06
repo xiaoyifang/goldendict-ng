@@ -581,19 +581,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Одредите максималан број враћених филтрираних наслова.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Филтрирајте максималне резултате:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Укупно јединствених наслова: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Укупно јединствених наслова: %1, филтрирано (ограничено): %2</translation>
     </message>
   </context>
   <context>
