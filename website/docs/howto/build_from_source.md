@@ -96,6 +96,8 @@ You can
 * manually run windeployqt
 * add `${Qt's install path}\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable
 
+Note that `-G Ninja` in CMake is assumed to be used. MSBuild has minor bugs for being "Multi-Config".
+
 ### macOS
 
 If you build in an IDE, then the created `GoldenDict.app`  will be runnable from the IDE which set up necessary magics for you.

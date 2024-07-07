@@ -270,7 +270,7 @@ if (APPLE)
             --volicon ${CMAKE_SOURCE_DIR}/icons/macicon.icns \
             --icon \"${App_Name}\" 100 100
             --app-drop-link 300 100 \
-            \"GoldenDict-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
+            \"GoldenDict-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
             \"${Assembling_Dir}\")"
         )
     else ()
@@ -353,12 +353,23 @@ if (WIN32)
             PATTERN "*.ilk" EXCLUDE)
 
 
-    set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
-    set(CPACK_GENERATOR "7Z;NSIS")
-    set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
-    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
-    include(CPack)
+    set(CPACK_PACKAGE_FILE_NAME "GoldenDict-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}")
+    set(CPACK_GENERATOR "7Z;NSIS64")
 
+    # override the default install path, which is $PROGRAMFILES64\${project-name} ${project-version} in NSIS
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "GoldenDict-ng")
+
+    # NSIS specificS
+    set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
+    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/icons/programicon.ico")
+    set(CPACK_NSIS_PACKAGE_NAME "${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}")
+    set(CPACK_NSIS_DISPLAY_NAME "${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}")
+    set(CPACK_NSIS_URL_INFO_ABOUT [=[https://xiaoyifang.github.io/goldendict-ng/]=])
+    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+    set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\GoldenDict-ng.lnk' '$INSTDIR\\\\${GOLDENDICT}.exe'")
+    set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$SMPROGRAMS\\\\$START_MENU\\\\GoldenDict-ng.lnk'")
+
+    include(CPack)
 endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")

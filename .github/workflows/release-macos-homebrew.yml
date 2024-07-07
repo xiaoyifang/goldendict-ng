@@ -160,28 +160,14 @@ jobs:
           release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
           prerelease: ${{env.prerelease}}
           body: |
-            #### Install instructions for Windows, macOS and Linux 
-
-            <https://xiaoyifang.github.io/goldendict-ng/install/>.
-
-            #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
-
-            Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
-            The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
-
-            Linux users can use Flatpak or build from source.
-            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
-
-            macOS users can use `.dmg` installer.
-
-            `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
-
-            #### Build Details
-
-            macOS: macOS-12 (x86_64) and macOS-14 (Arm)
-            Windows: Visual studio 2019
-            based on: ${{github.ref_name}}
-
+            [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
+            
+            Filaname pattern: GoldenDict-[version]-[Qt version]-[system name]-...
+            
+            For Linux, released vesion is on Flathub -> [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+  
+            Based on branch: ${{github.ref_name}}
+  
             #### Changes
             
             ${{steps.build_changelog.outputs.changelog}}
