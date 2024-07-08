@@ -1610,7 +1610,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   unsigned refsAdded            = 0;
   bool maxDictionaryRefsReached = false;
 
-  if( cfg.preferences.maxDictionaryRefsInContextMenu > 0 ) {
+  if ( cfg.preferences.maxDictionaryRefsInContextMenu > 0 ) {
     for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i, ++refsAdded ) {
       // Find this dictionary
 
