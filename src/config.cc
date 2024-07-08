@@ -176,18 +176,6 @@ bool InternalPlayerBackend::isQtmultimedia() const
 #endif
 }
 
-ScanPopupWindowFlags spwfFromInt( int id )
-{
-  if ( id == SPWF_Popup )
-    return SPWF_Popup;
-  if ( id == SPWF_Tool )
-    return SPWF_Tool;
-
-  if ( id != SPWF_default )
-    gdWarning( "Invalid ScanPopup unpinned window flags: %d\n", id );
-  return SPWF_default;
-}
-
 QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
   QString result = inputWord;
