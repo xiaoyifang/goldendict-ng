@@ -719,7 +719,7 @@ void ArticleRequest::bodyFinished()
 
       // Larger words are usually whole sentences - don't clutter the output
       // with their full bodies.
-      footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group.name );
+      footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : word.left(40)+"...", group.name );
 
       // When there were no definitions, we run stemmed search.
       stemmedWordFinder = std::make_shared< WordFinder >( this );
