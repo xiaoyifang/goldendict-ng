@@ -725,10 +725,10 @@ void ArticleRequest::bodyFinished()
       stemmedWordFinder = std::make_shared< WordFinder >( this );
 
       connect( stemmedWordFinder.get(),
-                &WordFinder::finished,
-                this,
-                &ArticleRequest::stemmedSearchFinished,
-                Qt::QueuedConnection );
+               &WordFinder::finished,
+               this,
+               &ArticleRequest::stemmedSearchFinished,
+               Qt::QueuedConnection );
 
       stemmedWordFinder->stemmedMatch( word, activeDicts );
     }
