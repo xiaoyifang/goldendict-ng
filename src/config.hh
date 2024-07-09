@@ -321,22 +321,6 @@ private:
   QString name;
 };
 
-#if defined( HAVE_X11 )
-  // The ScanPopup window flags customization code has been tested
-  // only in X11 desktop environments and window managers.
-  // None of the window flags configurations I have tried works perfectly well
-  // in XFCE with Qt4. Let us enable customization code for Qt5 exclusively to
-  // avoid regressions with Qt4.
-  #define ENABLE_SPWF_CUSTOMIZATION
-#endif
-
-enum ScanPopupWindowFlags {
-  SPWF_default = 0,
-  SPWF_Popup,
-  SPWF_Tool
-};
-ScanPopupWindowFlags spwfFromInt( int id );
-
 /// Various user preferences
 struct Preferences
 {
