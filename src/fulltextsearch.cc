@@ -8,15 +8,6 @@
 
 #include <QThreadPool>
 #include <QMessageBox>
-#include <qalgorithms.h>
-
-#if defined( Q_OS_WIN32 )
-
-  #include "initializing.hh"
-  #include <qt_windows.h>
-  #include <QOperatingSystemVersion>
-
-#endif
 #include "globalregex.hh"
 
 namespace FTS {
