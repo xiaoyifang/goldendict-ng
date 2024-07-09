@@ -162,9 +162,9 @@ jobs:
           body: |
             [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
             
-            Filaname pattern: GoldenDict-[version]-[Qt version]-[system name]-...
+            Filename pattern: GoldenDict-[version]-[Qt version]-[system name]-...
             
-            For Linux, released vesion is on Flathub -> [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+            For Linux, released version is on Flathub -> [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
   
             Based on branch: ${{github.ref_name}}
   
